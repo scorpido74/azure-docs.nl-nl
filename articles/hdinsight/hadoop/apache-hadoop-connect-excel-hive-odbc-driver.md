@@ -1,5 +1,5 @@
 ---
-title: Excel & Apache Hadoop met ODBC Driver - Azure HDInsight
+title: Excel & Apache Hadoop met ODBC-stuurprogramma (Open Database Connectivity) - Azure HDInsight
 description: Meer informatie over het instellen en gebruiken van het Microsoft Hive ODBC-stuurprogramma voor Excel om gegevens in HDInsight-clusters van Microsoft Excel op te vragen.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/02/2020
-ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 5aefd2c344565bf6dcb384996c42c1bc30e7291d
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251072"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024928"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in Azure HDIsight met behulp van het Hive ODBC-stuurprogramma van Microsoft
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-De Big Data-oplossing van Microsoft integreert BI-componenten (Microsoft Business Intelligence) met Apache Hadoop-clusters die zijn geïmplementeerd in Azure HDInsight. Een voorbeeld van deze integratie is de mogelijkheid om Excel te verbinden met het Hive-gegevensmagazijn van een Hadoop-cluster in HDInsight met behulp van het ODBC-stuurprogramma (Microsoft Hive Open Database Connectivity).
+De Big Data-oplossing van Microsoft integreert BI-componenten (Microsoft Business Intelligence) met Apache Hadoop-clusters die zijn geïmplementeerd in HDInsight. Een voorbeeld hiervan is de mogelijkheid om Excel te verbinden met het Hive-gegevensmagazijn van een Hadoop-cluster. Maak verbinding met het ODBC-stuurprogramma (Microsoft Hive Open Database Connectivity).
 
-Het is ook mogelijk om de gegevens die zijn gekoppeld aan een HDInsight-cluster en andere gegevensbronnen, waaronder andere (niet-HDInsight) Hadoop-clusters, vanuit Excel te verbinden met behulp van de Microsoft Power Query-invoegtoepassing voor Excel. Zie [Excel verbinden met HDInsight met Power Query](../hdinsight-connect-excel-power-query.md)voor informatie over het installeren en gebruiken van Power Query.
+U de gegevens die zijn gekoppeld aan een HDInsight-cluster vanuit Excel verbinden met microsoft Power Query-invoegtoepassing voor Excel. Zie [Excel verbinden met HDInsight met Power Query](../hdinsight-connect-excel-power-query.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,13 +32,13 @@ Voordat u met dit artikel begint, moet u de volgende objecten hebben:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC-stuurprogramma installeren
 
-Download en installeer de [Microsoft Hive ODBC Driver-versie](https://www.microsoft.com/download/details.aspx?id=40886) die overeenkomt met de versie van de toepassing waar u het ODBC-stuurprogramma gebruikt.  Voor dit artikel wordt het stuurprogramma gebruikt voor Office Excel.
+Microsoft [Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886)downloaden en installeren. Kies de versie die overeenkomt met de versie van de toepassing waar u het ODBC-stuurprogramma gebruikt.  Voor dit artikel wordt het stuurprogramma gebruikt voor Office Excel.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevensbron maken
 
 In de volgende stappen ziet u hoe u een OdBC-gegevensbron van Hive maakt.
 
-1. Navigeer vanuit Windows naar Start > Windows-beheerprogramma's > ODBC-gegevensbronnen (32-bits)/(64-bits).  Hiermee wordt het venster **ODBC-gegevensbronbeheerder** geopend.
+1. Navigeer vanuit Windows naar **Start > Windows-beheerprogramma's > ODBC-gegevensbronnen (32-bits)/(64-bits)**.  Met deze actie wordt het venster **ODBC-gegevensbronbeheerder** geopend.
 
     ![OBDC-gegevensbronbeheerder](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Een DSN configureren met ODBC-gegevensbronbeheerder")
 
@@ -64,11 +64,11 @@ In de volgende stappen ziet u hoe u een OdBC-gegevensbron van Hive maakt.
    | --- | --- |
    |  Native query gebruiken |Wanneer het is geselecteerd, probeert het ODBC-stuurprogramma TSQL NIET om te zetten in HiveQL. Je gebruikt het alleen als je 100% zeker weet dat je pure HiveQL-verklaringen indient. Wanneer u verbinding maakt met SQL Server of Azure SQL Database, moet u deze niet aangevinkt laten. |
    |  Rijen die per blok worden opgehaald |Bij het ophalen van een groot aantal records kan het afstemmen van deze parameter nodig zijn om optimale prestaties te garanderen. |
-   |  Standaardtekenreekskolomlengte, Binaire kolomlengte, kolomschaal Decimaal |De lengtes en precisie van het gegevenstype kunnen van invloed zijn op de manier waarop gegevens worden geretourneerd. Ze zorgen ervoor dat onjuiste informatie wordt geretourneerd als gevolg van verlies van precisie en/of truncation. |
+   |  Standaardtekenreekskolomlengte, Binaire kolomlengte, kolomschaal Decimaal |De lengtes en precisie van het gegevenstype kunnen van invloed zijn op de manier waarop gegevens worden geretourneerd. Ze zorgen ervoor dat onjuiste informatie wordt geretourneerd als gevolg van verlies van precisie en, of truncation. |
 
     ![Geavanceerde DSN-configuratieopties](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Geavanceerde DSN-configuratieopties")
 
-1. Selecteer **Testen** om de gegevensbron te testen. Wanneer de gegevensbron correct is geconfigureerd, toont het testresultaat **SUCCES!**.  
+1. Selecteer **Testen** om de gegevensbron te testen. Wanneer de gegevensbron correct is geconfigureerd, toont het testresultaat **SUCCES!**
 
 1. Selecteer **OK** om het testvenster te sluiten.  
 
@@ -100,8 +100,5 @@ In dit artikel hebt u geleerd hoe u het Microsoft Hive ODBC-stuurprogramma gebru
 
 * [Visualiseer Apache Hive-gegevens met Microsoft Power BI in Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Visualiseer interactieve queryhive-gegevens met Power BI in Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Gebruik Apache Zeppelin om Apache Hive-query's uit te voeren in Azure HDInsight.](../interactive-query/hdinsight-connect-hive-zeppelin.md)
 * [Sluit Excel aan op Apache Hadoop met Power Query](apache-hadoop-connect-excel-power-query.md).
 * [Maak verbinding met Azure HDInsight en voer Apache Hive-query's uit met Data Lake Tools voor Visual Studio.](apache-hadoop-visual-studio-tools-get-started.md)
-* [Gebruik Azure HDInsight Tool voor Visual Studio Code](../hdinsight-for-vscode.md).
-* [Gegevens uploaden naar HDInsight.](./../hdinsight-upload-data.md)

@@ -2,17 +2,17 @@
 title: Overzicht
 description: Hierin wordt beschreven hoe u Azure Resource Manager kunt gebruiken voor implementatie, beheer, en beheer van toegang tot resources in Azure.
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258138"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870494"
 ---
 # <a name="what-is-azure-resource-manager"></a>Wat is Azure Resource Manager?
 
-Azure Resource Manager is de implementatie- en beheersservice voor Azure. Het biedt een beheerlaag waarmee u resources in uw Azure-abonnement maken, bijwerken en verwijderen. U gebruikt beheerfuncties, zoals toegangscontrole, vergrendelingen en tags, om uw resources na implementatie te beveiligen en te ordenen.
+Azure Resource Manager is de implementatie- en beheersservice voor Azure. Het biedt een beheerlaag waarmee u resources in uw Azure-account maken, bijwerken en verwijderen. U gebruikt beheerfuncties, zoals toegangscontrole, vergrendelingen en tags, om uw resources na implementatie te beveiligen en te ordenen.
 
 Zie [Overzicht van](../templates/overview.md)azure resource manager voor meer informatie over Azure Resource Manager-sjablonen .
 
@@ -30,10 +30,10 @@ Alle mogelijkheden die beschikbaar zijn in de Azure-portal zijn ook beschikbaar 
 
 Als u nog geen ervaring hebt met de Azure Resource Manager, zijn er enkele termen die u mogelijk niet kent.
 
-* **resource** - een beheerbaar item dat beschikbaar is via Azure. Virtuele machines, opslagaccounts, web-apps, databases en virtuele netwerken zijn voorbeelden van resources.
+* **resource** - een beheerbaar item dat beschikbaar is via Azure. Virtuele machines, opslagaccounts, web-apps, databases en virtuele netwerken zijn voorbeelden van resources. Resourcegroepen, abonnementen, beheergroepen en tags zijn ook voorbeelden van resources.
 * **resourcegroep** - een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep bevat die resources die u als groep wilt beheren. U bepaalt welke resources deel uitmaken van een resourcegroep op basis van wat voor uw organisatie het meest zinvol is. Zie [Resourcegroepen](#resource-groups).
 * **resourceprovider** - een service die zorgt voor Azure-resources. Voorbeeld: een veelgebruikte resourceprovider is Microsoft.Compute, die de resource van de virtuele machine levert. Microsoft.Storage is een andere algemene resourceprovider. Zie [Resourceproviders en -typen](resource-providers-and-types.md).
-* **Resource Manager-sjabloon** - Een JavaScript Object Notation (JSON)-bestand dat één of meer resources definieert die worden geïmplementeerd in een resourcegroep of abonnement. De sjabloon kan worden gebruikt om de resources consistent en herhaaldelijk te implementeren. Zie [Overzicht van sjabloonimplementatie](../templates/overview.md).
+* **Resource manager-sjabloon** - Een JSON-bestand (JavaScript Object Notation) dat een of meer bronnen definieert die moeten worden geïmplementeerd in een resourcegroep, abonnement, beheergroep of tenant. De sjabloon kan worden gebruikt om de resources consistent en herhaaldelijk te implementeren. Zie [Overzicht van sjabloonimplementatie](../templates/overview.md).
 * **declaratieve syntaxis** - een syntaxis waarmee u kunt aangeven 'Dit is wat ik wil maken' zonder hiervoor de nodige reeks programmeeropdrachten te hoeven maken. De sjabloon Resource Manager is een voorbeeld van een declaratieve syntaxis. In het bestand definieert u de eigenschappen voor de infrastructuur te implementeren naar Azure.  Zie [Overzicht van sjabloonimplementatie](../templates/overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>De voordelen van Resource Manager
@@ -48,7 +48,7 @@ Met Resource Manager u het als nog niet doen:
 
 * Definieer de afhankelijkheden tussen resources, zodat ze in de juiste volgorde worden geïmplementeerd.
 
-* Pas toegangsbeheer toe op alle services in uw resourcegroep omdat RBAC (Role-Based Access Control) native is geïntegreerd in het beheerplatform.
+* Pas toegangscontrole toe op alle services omdat RBAC (Role-Based Access Control) native is geïntegreerd in het beheerplatform.
 
 * Tags toepassen op resources om logisch alle bronnen in uw abonnement te ordenen.
 
@@ -58,11 +58,11 @@ Met Resource Manager u het als nog niet doen:
 
 Azure biedt vier scopeniveaus: [beheergroepen,](../../governance/management-groups/overview.md)abonnementen, [resourcegroepen](#resource-groups)en resources. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
 
-![Bereik](./media/overview/scope-levels.png)
+![Managementniveaus](./media/overview/scope-levels.png)
 
 U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u bijvoorbeeld een [beleid](../../governance/policy/overview.md) toepast op het abonnement, wordt het beleid toegepast op alle brongroepen en resources in uw abonnement. Wanneer u een beleid toepast op de resourcegroep, wordt dat beleid toegepast op de resourcegroep en al zijn resources. Een andere resourcegroep heeft die beleidstoewijzing echter niet.
 
-U sjablonen implementeren voor beheergroepen, abonnementen of resourcegroepen.
+U sjablonen implementeren voor tenants, beheergroepen, abonnementen of resourcegroepen.
 
 ## <a name="resource-groups"></a>Resourcegroepen
 
@@ -71,6 +71,8 @@ Er zijn een aantal belangrijke factoren waarmee u rekening moet houden bij het d
 * Alle resources in uw groep moeten dezelfde levenscyclus hebben. U implementeert ze samen, werkt ze samen bij en verwijdert ze samen. Als een resource, zoals een databaseserver, in een andere implementatiecyclus moet werken, moet deze in een andere resourcegroep worden geplaatst.
 
 * Elke resource kan in slechte één resourcegroep voorkomen.
+
+* Sommige resources kunnen buiten een resourcegroep bestaan. Deze resources worden geïmplementeerd in de [abonnements-,](../templates/deploy-to-subscription.md) [beheergroep](../templates/deploy-to-management-group.md)of [tenant](../templates/deploy-to-tenant.md). Alleen specifieke resourcetypen worden ondersteund bij deze scopes.
 
 * U kunt een resource op elk gewenst moment toevoegen aan of verwijderen uit een resourcegroep.
 

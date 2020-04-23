@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093184"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Zelfstudie: Azure Active Directory-integratie met Rackspace SSO
 
@@ -187,7 +187,7 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Kenmerktoewijzing instellen in het bedieningspaneel Rackspace
 
-Rackspace gebruikt een **beleid voor toewijzing van kenmerken** om Rackspace-rollen en -groepen toe te wijzen aan uw gebruikers met een malige aanmelding. Het **beleid voor toewijzing** van kenmerken vertaalt Azure AD SAML-claims naar de gebruikersconfiguratievelden die Rackspace nodig heeft. Meer documentatie is te vinden in de [basisdocumentatie voor het toewijzen van rackspace-kenmerken](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/). Enkele overwegingen:
+Rackspace gebruikt een **beleid voor toewijzing van kenmerken** om Rackspace-rollen en -groepen toe te wijzen aan uw gebruikers met een malige aanmelding. Het **beleid voor toewijzing** van kenmerken vertaalt Azure AD SAML-claims naar de gebruikersconfiguratievelden die Rackspace nodig heeft. Meer documentatie is te vinden in de [basisdocumentatie voor het toewijzen van rackspace-kenmerken](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/). Enkele overwegingen:
 
 * Als u verschillende niveaus van Rackspace-toegang wilt toewijzen met Azure AD-groepen, moet u de claim Groepen inschakelen in de instellingen voor eenmalig aanmelden van Azure **Rackspace SSO.** Het **kenmerktoewijzingsbeleid** wordt vervolgens gebruikt om deze groepen af te koppelen aan gewenste Rackspace-rollen en -groepen:
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > Zorg ervoor dat u een teksteditor gebruikt die de syntaxis van YAML valideert bij het bewerken van uw beleidsbestand.
 
-Zie de [basisdocumentatie voor basisbeginselen voor het toewijzen van rackspace-kenmerken](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) voor meer voorbeelden.
+Zie de [basisdocumentatie voor basisbeginselen voor het toewijzen van rackspace-kenmerken](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/) voor meer voorbeelden.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 

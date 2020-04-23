@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873817"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869785"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een consultingserviceaanbieding maken
 
@@ -115,7 +115,7 @@ Hier&#39;de aanbiedingsgegevens definiëren die op de markt worden weergegeven. 
 > [!NOTE]
 > Aanbiedingdetails zijn&#39;niet verplicht om in het Engels &quot;te zijn als de aanbiedingsbeschrijving begint met de woordgroep, Deze toepassing is alleen beschikbaar in [niet-Engelse taal]. &quot; Het&#39;is ook goed om een nuttige link te bieden om inhoud aan te bieden in een taal die anders&#39;dan die in de aanbiedingsgegevens van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt weergegeven als de titel van uw aanbod. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -173,6 +173,9 @@ Voeg maximaal drie (maar ten minste één) ondersteunende PDF-documenten toe voo
 ### <a name="marketplace-images"></a>Marketplace-afbeeldingen
 
 Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in .png-indeling zijn. Wazige afbeeldingen worden afgewezen.
+
+>[!Note]
+>Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
 
 #### <a name="store-logos"></a>Winkellogo's
 

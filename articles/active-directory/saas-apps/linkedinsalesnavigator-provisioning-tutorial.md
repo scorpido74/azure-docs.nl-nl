@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057376"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869748"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelfstudie: LinkedIn Sales Navigator configureren voor automatische gebruikersinrichting
 
@@ -53,7 +53,7 @@ Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Gebruikersvoorziening configureren voor LinkedIn Sales Navigator
 
-Met deze sectie u uw Azure AD verbinden met de SCIM-gebruikersaccountvoorzienings-API van LinkedIn Sales Navigator en de inrichtingsservice configureren om toegewezen gebruikersaccounts te maken, bij te werken en uit te schakelen in LinkedIn Sales Navigator op basis van gebruikers en groepstoewijzing in Azure AD.
+In deze sectie u uw Azure AD verbinden met de SCIM-gebruikersaccountvoorzieningsAPI van LinkedIn Sales Navigator en de inrichtingsservice configureren om toegewezen gebruikersaccounts te maken, bij te werken en uit te schakelen in LinkedIn Sales Navigator op basis van gebruikers- en groepstoewijzing in Azure AD.
 
 > [!TIP]
 > U er ook voor kiezen om SAML-gebaseerde single sign-On in te schakelen voor LinkedIn Sales Navigator, volgens de instructies in [Azure portal.](https://portal.azure.com) Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
@@ -99,7 +99,7 @@ De eerste stap is het ophalen van uw LinkedIn-toegangstoken. Als u een Enterpris
 
 11. Vul de volgende velden in onder **Beheerdersreferenties:**
 
-    * Voer in het veld https://api.linkedin.comUrl van **tenant** .
+    * Voer in het veld https://developer.linkedin.comUrl van **tenant** .
 
     * Voer in het veld **Geheim token** het toegangstoken in dat u in stap 1 hebt gegenereerd en klik op **Verbinding testen** .
 

@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677693"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868388"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform
 
@@ -97,7 +97,7 @@ Zie de referentie van het [Microsoft-identiteitsplatform-protocol voor](active-d
 
 In een [OpenID Connect- of OAuth 2.0-autorisatieaanvraag](active-directory-v2-protocols.md) kan een `scope` app de machtigingen aanvragen die deze nodig heeft met behulp van de queryparameter. Wanneer een gebruiker zich bijvoorbeeld aanmeldt bij een app, stuurt de app een verzoek zoals het volgende voorbeeld (met regeleinden toegevoegd voor leesbaarheid):
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
@@ -179,15 +179,15 @@ Wanneer u de gebruiker aanmeldt bij uw app, u de organisatie identificeren waart
 
 Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organisatie, u de gebruiker doorverwijzen naar het eindpunt van de *toestemming van*de microsoft-identiteitsplatformbeheerder.
 
-```
+```HTTP
 // Line breaks are for legibility only.
-  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-  &scope=
-  https://graph.microsoft.com/calendars.read
-  https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -206,7 +206,7 @@ Op dit moment vereist Azure AD dat een tenantbeheerder zich aanmeldt om de aanvr
 
 Als de beheerder de machtigingen voor uw app goedkeurt, ziet het geslaagde antwoord er als volgt uit:
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -220,7 +220,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 Als de beheerder de machtigingen voor uw app niet goedkeurt, ziet het mislukte antwoord er als volgt uit:
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -235,7 +235,7 @@ Nadat u een succesvol antwoord hebt ontvangen van het eindpunt voor beheerdersto
 
 Nadat de gebruiker toestemming heeft gegeven voor machtigingen voor uw app, kan uw app toegangstokens verkrijgen die de toestemming van uw app vertegenwoordigen om toegang te krijgen tot een bron in een bepaalde hoedanigheid. Een toegangstoken kan alleen worden gebruikt voor één bron, maar gecodeerd in het toegangstoken is elke toestemming dat uw app is verleend voor die bron. Als u een toegangstoken wilt aanschaffen, kan uw app een verzoek indienen bij het eindpunt van het Microsoft-identiteitsplatformtoken, zoals dit:
 
-```
+```HTTP
 POST common/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/json
@@ -287,7 +287,7 @@ In dit voorbeeld heeft de gebruiker `mail.read` al ingestemd met voor de client.
 
 Er bestaat een `/.default` speciaal geval van de `/.default` scope wanneer een client zijn eigen scope aanvraagt. In het volgende voorbeeld wordt dit scenario aangetoond.
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

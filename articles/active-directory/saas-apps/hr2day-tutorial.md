@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442842"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Zelfstudie: Azure Active Directory-integratie met HR2day door Merces
 
@@ -121,7 +121,7 @@ Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2d
 
 6. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit:
 
-    | Name |  Bronkenmerk |
+    | Naam |  Bronkenmerk |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -163,7 +163,7 @@ Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2d
 Als u eenmalige aanmelding op **HR2day aan de kant van Merces** wilt configureren, moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [HR2day door merces-ondersteuningsteam](mailto:servicedesk@merces.nl)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 > [!NOTE]
-> Vermeld aan het Merces-team dat deze integratie de **https://hr2day.force.com/INSTANCENAME**Entiteit-ID moet worden ingesteld met het patroon .
+> Vermeld aan het Merces-team dat voor deze integratie de Entiteits-ID moet worden ingesteld met het patroon **\/https: /hr2day.force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 

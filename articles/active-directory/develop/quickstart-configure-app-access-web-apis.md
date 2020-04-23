@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240896"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082319"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Snelstart: een clienttoepassing configureren om toegang te krijgen tot web-API's
 
@@ -110,7 +110,10 @@ Als u toepassingsinstellingen wilt configureren op basis van het platform of app
    | **Web**              | Voer de **URI omleiden** voor uw toepassing in. |
    | **iOS / macOS**              | Voer de **app Bundle ID**in, die je vinden in XCode in Info.plist of Build Settings. Als u de bundel-id toevoegt, wordt automatisch een omleidings-URI voor de toepassing gemaakt. |
    | **Android**          | Geef de naam van het **app-pakket**op, die u vinden in het bestand AndroidManifest.xml.<br/>De hash **van Handtekening**genereren en invoeren . Als u de handtekeninghash toevoegt, wordt automatisch een omleidings-URI voor de toepassing.  |
-   | **Mobiele en desktoptoepassingen**  | Optioneel. Selecteer een van de aanbevolen **aanbevolen voorgestelde omleidings-URI's** als u apps bouwt voor desktops en apparaten.<br/>Optioneel. Voer een **aangepaste omleidingsURI**in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt naar verificatieverzoeken. Gebruik bijvoorbeeld voor .NET Core-toepassingen waar `https://localhost`u interactie wilt, gebruik . |
+   | **Mobiele en desktoptoepassingen**  | Optioneel. Selecteer een van de aanbevolen **aanbevolen voorgestelde omleidings-URI's** als u apps bouwt voor desktops en apparaten.<br/>Optioneel. Voer een **aangepaste omleidingsURI**in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt naar verificatieverzoeken. Gebruik bijvoorbeeld voor .NET Core-toepassingen waar `http://localhost`u interactie wilt, gebruik . |
+
+   > [!NOTE]
+   > In Active Directory Federation Services (AD FS) en Azure AD B2C moet u ook een poortnummer opgeven.  Bijvoorbeeld: `http://localhost:1234`. 
 
    > [!IMPORTANT]
    > Voor mobiele toepassingen die de nieuwste Microsoft Authentication Library (MSAL) niet gebruiken of geen broker gebruiken, moet u de omleidings-URI's voor deze toepassingen configureren in **Desktop + apparaten.**

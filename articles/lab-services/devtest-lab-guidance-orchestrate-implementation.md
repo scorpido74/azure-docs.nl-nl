@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127341"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024996"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>De implementatie van Azure DevTest Labs orkestreren
 Dit artikel biedt een aanbevolen aanpak voor snelle implementatie en implementatie van Azure DevTest Labs. De volgende afbeelding benadrukt het algemene proces als prescriptieve richtlijnen, waarbij de flexibiliteit wordt nageleefd voor het ondersteunen van verschillende industrievereisten en -scenario's.
@@ -43,7 +43,7 @@ Het eerste aandachtsgebied bij het implementeren van een Azure DevTest Labs-oplo
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>Mijlpaal 2: Zet het pilotlab in
 Zodra de netwerktopologie op zijn plaats is, kan het eerste/pilotlab worden gemaakt door de volgende stappen te nemen:
 
-1. Maak een eerste DevTest Labs-omgeving (stapsgewijze instructies vindt u [hier)](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)
+1. Maak een eerste DevTest Labs-omgeving.
 2. Bepaal toegestane VM-afbeeldingen en -formaten voor gebruik in het lab. Bepaal of aangepaste afbeeldingen kunnen worden geüpload naar Azure voor gebruik met DevTest Labs.
 3. Beveilig de toegang tot het lab door de eerste Role Base Access Controls (RBAC) te maken voor het lab (labeigenaren en labgebruikers). We raden u aan gesynchroniseerde active directory-accounts te gebruiken met Azure Active Directory voor identiteit met DevTest Labs.
 4. Configureer DevTest Labs om beleidsregels te gebruiken, zoals planningen, kostenbeheer, claimbare VM's, aangepaste afbeeldingen of formules.

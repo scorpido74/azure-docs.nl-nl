@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718136"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023619"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatiseer het toevoegen van een labgebruiker aan een lab in Azure DevTest Labs
-Met Azure DevTest Labs u snel selfservice-dev-testomgevingen maken met behulp van de Azure-portal. Als u echter meerdere teams en verschillende DevTest Labs-instanties hebt, kan het automatiseren van het creatieproces tijd besparen. [Met Azure Resource Manager-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) u laboratoria, vm's in laboratoria, aangepaste afbeeldingen, formules en gebruikers op een geautomatiseerde manier toevoegen. Dit artikel richt zich specifiek op het toevoegen van gebruikers aan een DevTest Labs-exemplaar.
+Met Azure DevTest Labs u snel selfservice-dev-testomgevingen maken met behulp van de Azure-portal. Als u echter meerdere teams en verschillende DevTest Labs-instanties hebt, kan het automatiseren van het creatieproces tijd besparen. [Met Azure Resource Manager-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) u laboratoria, vm's in laboratoria, aangepaste afbeeldingen, formules en gebruikers op een geautomatiseerde manier toevoegen. Dit artikel richt zich specifiek op het toevoegen van gebruikers aan een DevTest Labs-exemplaar.
 
 Als u een gebruiker wilt toevoegen aan een lab, voegt u de gebruiker toe aan de rol **DevTest Labs-gebruikers** voor het lab. In dit artikel ziet u hoe u het toevoegen van een gebruiker aan een lab automatiseren op een van de volgende manieren:
 

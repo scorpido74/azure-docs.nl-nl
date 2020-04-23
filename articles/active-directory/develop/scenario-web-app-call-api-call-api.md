@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881805"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868720"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-API's aanroept: een web-API aanroepen
 
@@ -26,7 +26,7 @@ Nu u een token hebt, u een beveiligde web-API aanroepen.
 
 Hier is vereenvoudigde code voor de `HomeController`actie van de . Deze code krijgt een token om Microsoft Graph te bellen. Er is code toegevoegd om te laten zien hoe u Microsoft Graph als REST-API aanroepen. De URL voor de Microsoft Graph API wordt weergegeven in het bestand `webOptions`appsettings.json en wordt gelezen in een variabele met de naam:
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",

@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767592"
+ms.locfileid: "82024401"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in Azure Kubernetes Service
 
@@ -25,7 +25,7 @@ AKS creëert twee beheerde identiteiten:
 - **Beheerde identiteit met systeemtoegewezen :** de identiteit die de Kubernetes-cloudprovider gebruikt om Azure-bronnen namens de gebruiker te maken. De levenscyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
 - **Door de gebruiker toegewezen beheerde identiteit:** de identiteit die wordt gebruikt voor autorisatie in het cluster. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren om Azure Container Registries (ADR's) te gebruiken of om de kubelet te autoriseren om metagegevens van Azure te krijgen.
 
-Invoegtoepassingen verifiëren ook met een beheerde identiteit. Voor elke add-on wordt een beheerde identiteit gecreëerd door AKS en duurt het de levensduur van de add-on. Voor het maken en gebruiken van uw eigen VNet, statisch IP-adres of gekoppelde Azure-schijf waarbij de resources zich buiten de brongroep MC_* bevinden, gebruikt u de PrincipalID van het cluster om een roltoewijzing uit te voeren. Zie Toegang tot andere [Azure-bronnen delegeren voor](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)meer informatie over roltoewijzing.
+Invoegtoepassingen verifiëren ook met een beheerde identiteit. Voor elke add-on wordt een beheerde identiteit gecreëerd door AKS en duurt het de levensduur van de add-on. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -58,6 +58,9 @@ Een succesvol clustermaken met beheerde identiteiten bevat de belangrijkste prof
     "secret": null
   }
 ```
+
+> [!NOTE]
+> Voor het maken en gebruiken van uw eigen VNet, statisch IP-adres of gekoppelde Azure-schijf waarbij de resources zich buiten de resourcegroep MC_* bevinden, gebruikt u de PrincipalID van de beheerde identiteit van het clustersysteem toegewezen om een roltoewijzing uit te voeren. Zie Toegang tot andere [Azure-bronnen delegeren voor](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)meer informatie over roltoewijzing.
 
 Tot slot u referenties opdoen om toegang te krijgen tot het cluster:
 

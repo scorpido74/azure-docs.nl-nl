@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253609"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082115"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
 In dit onderwerp worden de kenmerken weergegeven die worden gesynchroniseerd met azure AD Connect-synchronisatie.  
@@ -375,7 +375,7 @@ Deze groep is een set kenmerken die worden gebruikt als de minimale kenmerken di
 * Yammer (alleen gebruiker wordt verbruikt)
 * [Hybrid Business-to-Business (B2B) cross-org samenwerkingsscenario's aangeboden door bronnen zoals SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Deze groep is een set kenmerken die kunnen worden gebruikt als de Azure AD-map niet wordt gebruikt om Office 365, Dynamics of Intune te ondersteunen. Het heeft een kleine set kernkenmerken.
+Deze groep is een set kenmerken die kunnen worden gebruikt als de Azure AD-map niet wordt gebruikt om Office 365, Dynamics of Intune te ondersteunen. Het heeft een kleine set kernkenmerken. Houd er rekening mee dat voor eenmalige aanmelding of inrichten voor bepaalde toepassingen van derden de synchronisatie van kenmerken moet worden geconfigureerd naast de kenmerken die hier worden beschreven. Toepassingsvereisten worden beschreven in de zelfstudie van de [SaaS-app](../saas-apps/tutorial-list.md) voor elke toepassing.
 
 | Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |

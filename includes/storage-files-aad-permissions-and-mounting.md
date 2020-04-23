@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 608c2619c19a2b5fa7e39c1ecb82be40ff4e83f4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536523"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82072617"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Toegangsmachtigingen toewijzen aan een identiteit
 
@@ -87,15 +87,6 @@ De volgende sets machtigingen worden ondersteund in de hoofdmap van een bestands
 - NT AUTHORITY\SYSTEEM:(F)
 - EIGENAAR VAN DE MAKER:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-machtigingen configureren met icacls
-Gebruik de volgende Opdracht Windows om alle mappen en bestanden onder de bestandsshare, inclusief de hoofdmap, volledige machtigingen te verlenen. Vergeet niet om de tijdelijke aanduidingswaarden in het voorbeeld te vervangen door uw eigen waarden.
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-Zie [de command-line referentie voor icacls voor](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)meer informatie over het gebruik van icacls om NTFS-machtigingen in te stellen en over de verschillende soorten ondersteunde machtigingen.
-
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Een bestandsshare monteren vanuit de opdrachtprompt
 
 Gebruik de opdracht **Windows-net om** de Azure-bestandsshare te monteeren. Vergeet niet om de tijdelijke aanduidingswaarden in het volgende voorbeeld te vervangen door uw eigen waarden. Zie [Een Azure-bestandsshare gebruiken met Windows](../articles/storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het maken van bestandsshares. 
@@ -103,6 +94,7 @@ Gebruik de opdracht **Windows-net om** de Azure-bestandsshare te monteeren. Verg
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
+
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>NTFS-machtigingen configureren met Windows Verkenner
 Gebruik Windows Verkenner om alle mappen en bestanden onder de bestandsshare, inclusief de hoofdmap, volledige toestemming te geven.
 
@@ -114,6 +106,15 @@ Gebruik Windows Verkenner om alle mappen en bestanden onder de bestandsshare, in
 7.    Selecteer **OK**.
 8.    Selecteer op het tabblad **Beveiliging** alle machtigingen die u uw nieuwe gebruiker wilt verlenen.
 9.    Selecteer **Toepassen**.
+
+### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-machtigingen configureren met icacls
+Gebruik de volgende Opdracht Windows om alle mappen en bestanden onder de bestandsshare, inclusief de hoofdmap, volledige machtigingen te verlenen. Vergeet niet om de tijdelijke aanduidingswaarden in het voorbeeld te vervangen door uw eigen waarden.
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+Zie [de command-line referentie voor icacls voor](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)meer informatie over het gebruik van icacls om NTFS-machtigingen in te stellen en over de verschillende soorten ondersteunde machtigingen.
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Een bestandsshare van een vm met domein
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678274"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867966"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstart - Een Private Cloud-omgeving configureren
 
@@ -148,7 +148,7 @@ Het VLAN/subnet wordt gemaakt.  U deze VLAN-id nu gebruiken om een gedistribueer
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Uw omgeving verbinden met een virtueel Azure-netwerk
 
-CloudSimple biedt u een ExpressRoute-circuit voor uw Private Cloud. U uw virtuele netwerk op Azure verbinden met het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network Connection met ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)voor meer informatie over het instellen van de verbinding.
+CloudSimple biedt u een ExpressRoute-circuit voor uw Private Cloud. U uw virtuele netwerk op Azure verbinden met het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network Connection met ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)voor meer informatie over het instellen van de verbinding.
 
 ## <a name="sign-in-to-vcenter"></a>Aanmelden bij vCenter
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f7ce5f5086bcf2d577fb998df307ee684d536c15
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733058"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870105"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Opmerkingen vrijgeven van Azure Media Services Video Indexer
 
@@ -40,7 +40,7 @@ De **widget Player** `locale` heeft een nieuwe parameter. Beide `locale` `langua
 
 Zie de sectie [Widgettypen](video-indexer-embed-widgets.md#widget-types) voor meer informatie. 
 
-## <a name="new-player-skin"></a>Nieuwe spelershuid
+### <a name="new-player-skin"></a>Nieuwe spelershuid
 
 Een nieuwe speler huid gelanceerd met een bijgewerkt ontwerp.
 

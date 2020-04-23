@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251955"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869979"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Zelfstudie: Gegevens van Apache Spark analyseren met Power BI in HDInsight
 
-In deze zelfstudie leert u hoe u [Microsoft Power BI kunt](https://powerbi.microsoft.com/) gebruiken om gegevens in een Apache Spark-cluster in Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/)te visualiseren.
+In deze zelfstudie leert u hoe u Microsoft Power BI gebruiken om gegevens in een Apache Spark-cluster in Azure HDInsight te visualiseren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -70,9 +70,6 @@ In dit gedeelte gebruikt u Power BI om visualisaties, rapporten en dashboards te
 ### <a name="create-a-report-in-power-bi-desktop"></a>Een rapport maken in Power BI Desktop
 
 De eerste stappen om te werken met Spark zijn verbinding maken met het cluster in Power BI Desktop, gegevens uit het cluster laden en eenvoudige visualisatie maken op basis van die gegevens.
-
-> [!NOTE]  
-> De connector die in dit artikel wordt gedemonstreerd is momenteel in preview. Eventuele feedback kunt u doorgeven via de site [Power BI-Community](https://community.powerbi.com/) of via [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas).
 
 1. Open Power BI Desktop. Sluit het welkomstscherm voor het opstarten als het wordt geopend.
 
@@ -180,7 +177,7 @@ Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u [Microsoft Power BI kunt](https://powerbi.microsoft.com/) gebruiken om gegevens in een Apache Spark-cluster in Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/)te visualiseren. Ga door naar het volgende artikel om te zien dat u een machine learning-toepassing maken.
+In deze zelfstudie hebt u geleerd hoe u Microsoft Power BI gebruiken om gegevens in een Apache Spark-cluster in Azure HDInsight te visualiseren. Ga door naar het volgende artikel om te zien dat u een machine learning-toepassing maken.
 
 > [!div class="nextstepaction"]
 > [Een machine learning-toepassing maken](./apache-spark-ipython-notebook-machine-learning.md)

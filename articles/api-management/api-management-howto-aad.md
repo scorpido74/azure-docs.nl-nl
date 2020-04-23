@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473537"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868392"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkelaarsaccounts autoriseren met behulp van Azure Active Directory in Azure API Management
 
@@ -33,12 +33,12 @@ In dit artikel ziet u hoe u toegang tot de ontwikkelaarsportal inschakelt voor g
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkelaarsaccounts autoriseren met Azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Selecteer ![pijl](./media/api-management-howto-aad/arrow.png).
 3. Typ **api** in het zoekvak.
 4. Selecteer **API-beheerservices**.
 5. Selecteer uw service-exemplaar van API Management.
-6. Selecteer **onder Beveiliging**de optie **Identiteiten**.
+6. Selecteer onder **Ontwikkelaarsportal**de optie **Identiteiten**.
 7. Selecteer **+Toevoegen** bovenaan.
 
     Het deelvenster **Identiteitsprovider toevoegen** wordt aan de rechterkant weergegeven.

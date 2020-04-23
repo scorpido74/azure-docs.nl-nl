@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016014"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868081"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple Private Cloud voor het installeren van Oracle RAC
 
@@ -169,7 +169,7 @@ Als u een vSphere-cluster op uw private cloud wilt implementeren, volgt u dit pr
 
 vSAN-beleid definieert de fouten die moeten worden getolereerd en schijfstriping voor de gegevens die zijn opgeslagen op de VM-schijven.  Het gemaakte opslagbeleid moet worden toegepast op de VM-schijven tijdens het maken van de VM.
 
-1. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van uw Private Cloud.
+1. [Meld u aan bij de vSphere-client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) van uw Private Cloud.
 2. Selecteer in het bovenste menu **Beleid en profielen**.
 3. Selecteer in het linkermenu **vm-opslagbeleid** en selecteer vervolgens **Een VM-opslagbeleid maken**.
 4. Voer een betekenisvolle naam in voor het beleid en klik op **VOLGENDE**.
@@ -183,7 +183,7 @@ vSAN-beleid definieert de fouten die moeten worden getolereerd en schijfstriping
 
 Als u een VM voor Oracle wilt maken, kloont u een bestaande vm of maakt u een nieuwe vm.  In deze sectie wordt beschreven hoe u een nieuwe virtuele machine maakt en vervolgens kloont om een tweede te maken na het installeren van het basisbesturingssysteem.  Nadat de VM's zijn gemaakt, u er een toevoegen van schijven aan maken.  Oracle-cluster maakt gebruik van gedeelde schijven voor het opslaan, gegevens, logboeken en opnieuw gebruiken logboeken.
 
-### <a name="create-vms"></a>VM's maken
+### <a name="create-vms"></a>Virtuele machines maken
 
 1. Klik in vCenter op het pictogram **Hosts en Clusters.** Selecteer het cluster dat u voor Oracle hebt gemaakt.
 2. Klik met de rechtermuisknop op het cluster en selecteer **Nieuwe virtuele machine**.

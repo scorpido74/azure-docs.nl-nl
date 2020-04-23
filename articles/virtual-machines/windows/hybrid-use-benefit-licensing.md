@@ -1,24 +1,18 @@
 ---
 title: Azure Hybrid Benefit voor Windows Server
 description: Meer informatie over hoe u uw Windows Software Assurance-voordelen maximaliseren om on-premises licenties naar Azure te brengen
-services: virtual-machines-windows
-documentationcenter: ''
 author: xujing-ms
-manager: gwallace
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911781"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869570"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit voor Windows Server
 Voor klanten met Software Assurance u met Azure Hybrid Benefit voor Windows Server uw on-premises Windows Server-licenties gebruiken en virtuele Windows-machines op Azure uitvoeren tegen lagere kosten. U Azure Hybrid Benefit voor Windows Server gebruiken om nieuwe virtuele machines met Windows OS te implementeren. In dit artikel worden de stappen doorgenomen over het implementeren van nieuwe VM's met Azure Hybrid Benefit voor Windows Server en hoe u bestaande draaiende VM's bijwerken. Zie de [licentiepagina azure hybrid benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)voor Windows Server-licenties en kostenbesparingen voor meer informatie over Azure Hybrid Benefit for Windows Server.

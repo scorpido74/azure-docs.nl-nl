@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677840"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868490"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft-identiteitsplatform en de subsidiestroom voor autorisatievan OAuth 2.0-apparaten
 
@@ -40,7 +40,7 @@ De client moet eerst contact opnemen met de verificatieserver voor een apparaat 
 > Probeer dit verzoek uit te voeren in Postman!
 > [![Probeer dit verzoek uit te voeren in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
@@ -81,7 +81,7 @@ Als de gebruiker zich verifieert met een persoonlijk account (op /common of /con
 
 Terwijl de gebruiker authenticeren `verification_uri`op de , `/token` de client moet worden polling `device_code`het eindpunt voor de gevraagde token met behulp van de .
 
-```
+```HTTP
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 

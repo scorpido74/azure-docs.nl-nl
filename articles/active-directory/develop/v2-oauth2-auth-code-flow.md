@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677950"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868494"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0-autorisatiecodestroom
 
@@ -35,7 +35,7 @@ Op een hoog niveau ziet de volledige verificatiestroom voor een native/mobiele t
 
 ## <a name="request-an-authorization-code"></a>Een autorisatiecode aanvragen
 
-De autorisatiecodestroom begint met de client `/authorize` die de gebruiker naar het eindpunt leidt. In deze aanvraag vraagt `openid`de `offline_access`client `https://graph.microsoft.com/mail.read `de , en machtigingen van de gebruiker.  Sommige machtigingen zijn beperkt door beheerders, bijvoorbeeld het schrijven van `Directory.ReadWrite.All`gegevens naar de map van een organisatie met behulp van . Als uw toepassing toegang vraagt tot een van deze machtigingen van een organisatiegebruiker, ontvangt de gebruiker een foutbericht waarin staat dat hij geen toestemming heeft om in te stemmen met de machtigingen van uw app. Als u toegang wilt vragen tot beheerdersbeperkte scopes, moet u deze rechtstreeks bij een bedrijfsbeheerder aanvragen.  Lees voor meer informatie [machtigingen met beperkte machtigingen voor beheerders](v2-permissions-and-consent.md#admin-restricted-permissions).
+De autorisatiecodestroom begint met de client `/authorize` die de gebruiker naar het eindpunt leidt. In deze aanvraag vraagt `openid`de `offline_access`client `https://graph.microsoft.com/mail.read ` de , en machtigingen van de gebruiker.  Sommige machtigingen zijn beperkt door beheerders, bijvoorbeeld het schrijven van `Directory.ReadWrite.All`gegevens naar de map van een organisatie met behulp van . Als uw toepassing toegang vraagt tot een van deze machtigingen van een organisatiegebruiker, ontvangt de gebruiker een foutbericht waarin staat dat hij geen toestemming heeft om in te stemmen met de machtigingen van uw app. Als u toegang wilt vragen tot beheerdersbeperkte scopes, moet u deze rechtstreeks bij een bedrijfsbeheerder aanvragen.  Lees voor meer informatie [machtigingen met beperkte machtigingen voor beheerders](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -76,7 +76,7 @@ Zodra de gebruiker zich verifieert en toestemming verleent, retourneert het `red
 
 Een succesvol `response_mode=query` antwoord met de daarop beoogt:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
@@ -91,7 +91,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 Foutreacties kunnen ook naar `redirect_uri` de app worden verzonden, zodat de app ze op de juiste manier kan afhandelen:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -122,7 +122,7 @@ In de volgende tabel worden de verschillende foutcodes beschreven die kunnen wor
 
 Nu u een authorization_code hebt verkregen en toestemming hebt gekregen van `code` de `access_token` gebruiker, u de voor een naar de gewenste bron inwisselen. Doe dit door `POST` een `/token` aanvraag naar het eindpunt te sturen:
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -221,7 +221,7 @@ Nu u een `access_token`token hebt aangeschaft, u het token gebruiken in aanvrage
 > [!TIP]
 > Voer dit verzoek uit in Postman! (Vervang `Authorization` eerst de koptekst) [Probeer dit verzoek uit te voeren in Postman ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -235,7 +235,7 @@ Vernieuwingstokens hebben geen opgegeven levensduur. Meestal zijn de levensduur 
 
 Hoewel vernieuwingstokens niet worden ingetrokken wanneer ze worden gebruikt om nieuwe toegangstokens te verkrijgen, wordt van u verwacht dat u het oude vernieuwingstoken verwijdert. De [OAuth 2.0-spec](https://tools.ietf.org/html/rfc6749#section-6) zegt: "De autorisatieserver kan een nieuw vernieuwingstoken uitgeven, in welk geval de client het oude vernieuwingstoken moet verwijderen en vervangen door het nieuwe vernieuwingstoken. De autorisatieserver kan het oude vernieuwingstoken intrekken nadat het een nieuw vernieuwingstoken aan de client heeft uitgegeven."
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -276,6 +276,7 @@ Een succesvolle tokenreactie ziet eruit als volgt:
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
+
 | Parameter     | Beschrijving         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | Het gevraagde toegangstoken. De app kan dit token gebruiken om te verifiëren voor de beveiligde bron, zoals een web-API. |

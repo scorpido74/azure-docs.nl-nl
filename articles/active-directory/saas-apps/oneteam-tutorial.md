@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095913"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Zelfstudie: Azure Active Directory-integratie met Oneteam
 
@@ -118,7 +118,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [oneteam client support team](https://support.one-team.com/hc/requests/new) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met oneteam client support team om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
@@ -136,7 +136,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 ### <a name="configure-oneteam-single-sign-on"></a>Oneteam Single Sign-On configureren
 
-Als u eenmalige aanmelding wilt configureren aan **de kant van Oneteam,** moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [oneteam-ondersteuningsteam](https://support.one-team.com/hc/requests/new)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan **de kant van Oneteam,** moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar oneteam-ondersteuningsteam verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -194,7 +194,7 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Oneteam. Oneteam ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Oneteam, wordt er een nieuwe gemaakt na verificatie.
 
 >[!NOTE]
->Als u handmatig een gebruiker wilt maken, u het ondersteuningsticket verhogen met [oneteamondersteuningsteam.](https://support.one-team.com/hc/requests/new)
+>Als u handmatig een gebruiker wilt maken, u het ondersteuningsticket verhogen met oneteamondersteuningsteam.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

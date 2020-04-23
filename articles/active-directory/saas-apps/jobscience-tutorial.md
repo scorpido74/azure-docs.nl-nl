@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048513"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Zelfstudie: Azure Active Directory-integratie met Jobscience
 
@@ -116,7 +116,7 @@ In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in en confi
     Typ in het tekstvak **AANmeldings-URL** een URL met het volgende patroon:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Krijg deze waarde door [Jobscience Client support team](https://www.jobscience.com/support) of van het SSO profiel dat u maakt, die later in de tutorial wordt uitgelegd. 
+    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Krijg deze waarde door [Jobscience Client support team](http://www.jobscience.com/support) of van het SSO profiel dat u maakt, die later in de tutorial wordt uitgelegd. 
  
 1. Klik in de sectie **SAML-ondertekeningscertificaat** op **Certificaat (Base64)** en sla het certificaatbestand op uw computer op.
 
@@ -134,7 +134,7 @@ In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in en confi
 
 1. Ga naar **Setup**.
    
-   ![Installatie](./media/jobscience-tutorial/IC784358.png "Instellen")
+   ![Setup](./media/jobscience-tutorial/IC784358.png "Setup")
 
 1. Klik in het linkernavigatiedeelvenster in de sectie **Beheren** op **Domeinbeheer** om de gerelateerde sectie uit te vouwen en klik vervolgens op **Mijn domein** om de pagina **Mijn domein** te openen. 
    
@@ -245,7 +245,7 @@ Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Jobscience, mo
 
 1. Ga naar Setup.
    
-   ![Installatie](./media/jobscience-tutorial/ic784358.png "Instellen")
+   ![Setup](./media/jobscience-tutorial/ic784358.png "Setup")
 1. Ga naar **Gebruikers \> beheren**.
    
    ![Gebruikers](./media/jobscience-tutorial/ic784369.png "Gebruikers")
@@ -311,7 +311,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 Wanneer u op de tegel Jobscience in het toegangspaneel klikt, wordt u automatisch aangemeld bij uw Jobscience-toepassing.
 Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
 * [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -1,24 +1,19 @@
 ---
 title: MATLAB clusters op virtuele machines
 description: Gebruik virtuele machines van Microsoft Azure om MATLAB Distributed Computing Server-clusters te maken om uw computerintensieve parallelle MATLAB-workloads uit te voeren
-services: virtual-machines-windows
-documentationcenter: ''
 author: mscurrell
-manager: gwallace
-editor: ''
-ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: Windows
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038148"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869421"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-clusters maken op Azure VM's
 Gebruik virtuele machines van Microsoft Azure om een of meer MATLAB Distributed Computing Server-clusters te maken om uw computerintensieve parallelle MATLAB-workloads uit te voeren. Installeer uw MATLAB Distributed Computing Server-software op een VM om als basisafbeelding te gebruiken en gebruik een Azure quickstart-sjabloon of Azure PowerShell-script (beschikbaar op [GitHub)](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)om het cluster te implementeren en te beheren. Na implementatie maakt u verbinding met het cluster om uw workloads uit te voeren.
@@ -26,7 +21,7 @@ Gebruik virtuele machines van Microsoft Azure om een of meer MATLAB Distributed 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>Over MATLAB en MATLAB Distributed Computing Server
 Het [MATLAB](https://www.mathworks.com/products/matlab/) platform is geoptimaliseerd voor het oplossen van technische en wetenschappelijke problemen. MATLAB-gebruikers met grootschalige simulaties en gegevensverwerkingstaken kunnen parallelcomputerproducten van MathWorks gebruiken om hun rekenintensieve workloads te versnellen door gebruik te maken van compute clusters en grid services. [Met de Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) kunnen MATLAB-gebruikers toepassingen parallellopen en profiteren van multicore-processors, GPU's en compute-clusters. [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) stelt MATLAB-gebruikers in staat om veel computers in een compute cluster te gebruiken.
 
-Door virtuele Azure-machines te gebruiken, u MATLAB Distributed Computing Server-clusters maken die allemaal dezelfde mechanismen beschikbaar hebben om parallel werk in te dienen als on-premises clusters, zoals interactieve taken, batchtaken, onafhankelijke taken en communiceren Taken. Het gebruik van Azure in combinatie met het MATLAB-platform heeft veel voordelen in vergelijking met het inrichten en gebruiken van traditionele on-premises hardware: een reeks virtuele machineformaten, het on-demand maken van clusters, zodat u alleen betaalt voor de rekenresources die u gebruikt en de het vermogen om modellen op schaal te testen.  
+Door virtuele Azure-machines te gebruiken, u MATLAB Distributed Computing Server-clusters maken die allemaal dezelfde mechanismen beschikbaar hebben om parallel werk in te dienen als on-premises clusters, zoals interactieve taken, batchtaken, onafhankelijke taken en communicerende taken. Het gebruik van Azure in combinatie met het MATLAB-platform heeft veel voordelen in vergelijking met het inrichten en gebruiken van traditionele on-premises hardware: een reeks virtuele machineformaten, het on-demand maken van clusters, zodat u alleen betaalt voor de rekenbronnen die u gebruikt en de mogelijkheid om modellen op schaal te testen.  
 
 ## <a name="prerequisites"></a>Vereisten
 * **Clientcomputer** - U hebt een Windows-clientcomputer nodig om na implementatie te communiceren met Azure en het MATLAB Distributed Computing Server-cluster.

@@ -1,19 +1,18 @@
 ---
 title: Automatisch apparaatbeheer op schaal met Azure IoT Hub (CLI) | Microsoft Documenten
 description: Automatische configuraties van Azure IoT Hub gebruiken om meerdere IoT-apparaten of -modules te beheren
-author: Philmea
-manager: bruz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: philmea
-ms.openlocfilehash: 76728b99f1e9309294079d4df88e563054e780e7
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.author: robinsh
+ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767565"
+ms.locfileid: "82024962"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatisch IoT-apparaat- en modulebeheer met de Azure CLI
 

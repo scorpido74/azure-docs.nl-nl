@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014824"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869305"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Private Cloud-bronnen en -activiteiten beheren
 
@@ -21,7 +21,7 @@ Private clouds worden beheerd vanuit cloudsimple portal.  Controleer de status, 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
@@ -37,13 +37,13 @@ Selecteer een Private Cloud voor meer informatie en acties.
 
 ## <a name="private-cloud-summary"></a>Samenvatting van de private cloud
 
-Bekijk een uitgebreid overzicht van de geselecteerde Private Cloud.  Overzichtspagina bevat de DNS-servers die zijn geïmplementeerd in de Private Cloud.  U DNS-forwarding instellen van on-premises DNS-servers naar uw Private Cloud DNS-servers.  Zie DNS configureren voor naamomzetting voor Private Cloud vCenter configureren voor meer informatie over [DNS-forwarding van on-premises](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
+Bekijk een uitgebreid overzicht van de geselecteerde Private Cloud.  Overzichtspagina bevat de DNS-servers die zijn geïmplementeerd in de Private Cloud.  U DNS-forwarding instellen van on-premises DNS-servers naar uw Private Cloud DNS-servers.  Zie DNS configureren voor naamomzetting voor Private Cloud vCenter configureren voor meer informatie over [DNS-forwarding van on-premises](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
 
 ![Samenvatting van de privécloud](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Beschikbare acties
 
-* [VSphere-client starten](https://docs.azure.cloudsimple.com/vsphere-access/). Toegang tot het vCenter voor deze Private Cloud.
+* [VSphere-client starten](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Toegang tot het vCenter voor deze Private Cloud.
 * [Inkoopknooppunten](create-nodes.md). Voeg knooppunten toe aan deze Private Cloud.
 * [Uitvouwen](expand-private-cloud.md). Voeg knooppunten toe aan deze Private Cloud.
 * **Vernieuwen**. Werk de informatie op deze pagina bij.
@@ -58,10 +58,10 @@ Bekijk de lijst met gedefinieerde VLAN's/subnetten voor de geselecteerde Private
 
 ### <a name="available-actions"></a>Beschikbare acties
 
-* [VLANS/Subnetten toevoegen](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Private Cloud.
+* [VLANS/Subnetten toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Private Cloud.
 
 Een VLAN/Subnet selecteren voor volgende acties
-* [Firewalltabel bijvoegen](https://docs.azure.cloudsimple.com/firewall/). Voeg een firewalltabel toe aan deze Private Cloud.
+* [Firewalltabel bijvoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Voeg een firewalltabel toe aan deze Private Cloud.
 * **Bewerken**
 * **Verwijderen** (alleen door de gebruiker gedefinieerde VLAN's/Subnetten)
 

@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677745"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868415"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft-identiteitsplatform en impliciete subsidiestroom
 
@@ -117,7 +117,7 @@ Zodra de gebruiker zich verifieert en toestemming verleent, retourneert het `red
 
 Een succesvolle `response_mode=fragment` reactie `response_type=id_token+token` met behulp van en ziet er als volgt uit (met regeleinden voor leesbaarheid):
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -138,7 +138,7 @@ GET https://localhost/myapp/#
 
 Foutreacties kunnen ook naar `redirect_uri` de app worden verzonden, zodat de app ze op de juiste manier kan afhandelen:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -184,7 +184,7 @@ Dankzij de `prompt=none` parameter zal dit verzoek onmiddellijk slagen of misluk
 
 Een succesvol `response_mode=fragment` antwoord met de daarop beoogt:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -206,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 Foutreacties kunnen ook naar `redirect_uri` de app worden verzonden, zodat deze op de juiste manier kunnen worden verwerkt. In het `prompt=none`geval van , een verwachte fout zal zijn:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently

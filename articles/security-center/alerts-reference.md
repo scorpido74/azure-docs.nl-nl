@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9b39a672cb5640a36490f2cd088092f40065870
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454778"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081605"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligingswaarschuwingen - een referentiegids
 
@@ -399,8 +399,8 @@ Security Center's ondersteunde kill chain intents zijn gebaseerd op de [MITRE&tr
 
 |Intentie|Beschrijving|
 |------|-------|
-|**Vooraanval**</br>(vervangt Indringende)|PreAttack kan een poging zijn om toegang te krijgen tot een bepaalde bron, ongeacht een kwaadwillige bedoeling, of een mislukte poging om toegang te krijgen tot een doelsysteem om informatie te verzamelen voorafgaand aan de exploitatie. Deze stap wordt meestal gedetecteerd als een poging, afkomstig van buiten het netwerk, om het doelsysteem te scannen en een ingangspunt te identificeren.</br>Verdere details over de PreAttack fase kan worden gelezen in [de pagina van MITRE.](https://attack.mitre.org/matrices/pre/)|
-|**InitialAccess**</br>(vervangt exploitatie)|InitialAccess is het stadium waarin een aanvaller erin slaagt om een voet aan de grond te krijgen op de aangevallen bron. Deze fase is relevant voor compute hosts en resources zoals gebruikersaccounts, certificaten etc. Bedreiging actoren zullen vaak in staat zijn om de bron te controleren na deze fase.|
+|**Vooraanval**|PreAttack kan een poging zijn om toegang te krijgen tot een bepaalde bron, ongeacht een kwaadwillige bedoeling, of een mislukte poging om toegang te krijgen tot een doelsysteem om informatie te verzamelen voorafgaand aan de exploitatie. Deze stap wordt meestal gedetecteerd als een poging, afkomstig van buiten het netwerk, om het doelsysteem te scannen en een ingangspunt te identificeren.</br>Verdere details over de PreAttack fase kan worden gelezen in [de pagina van MITRE.](https://attack.mitre.org/matrices/pre/)|
+|**InitialAccess**|InitialAccess is het stadium waarin een aanvaller erin slaagt om een voet aan de grond te krijgen op de aangevallen bron. Deze fase is relevant voor compute hosts en resources zoals gebruikersaccounts, certificaten etc. Bedreiging actoren zullen vaak in staat zijn om de bron te controleren na deze fase.|
 |**Persistentie**|Persistentie is elke toegang, actie of configuratiewijziging van een systeem dat een bedreigingsactor een aanhoudende aanwezigheid op dat systeem geeft. Bedreigingsactoren moeten vaak toegang tot systemen behouden door onderbrekingen zoals het opnieuw opstarten van het systeem, verlies van referenties of andere fouten waarvoor een hulpmiddel voor externe toegang nodig is om opnieuw op te starten of een alternatieve achterdeur te bieden om weer toegang te krijgen.|
 |**PrivilegeEscalation**|Privilege escalatie is het resultaat van acties waarmee een tegenstander een hoger niveau van machtigingen op een systeem of netwerk te verkrijgen. Bepaalde tools of acties vereisen een hoger niveau van bevoegdheden om te werken en zijn waarschijnlijk noodzakelijk op veel punten in een bewerking. Gebruikersaccounts met machtigingen om toegang te krijgen tot specifieke systemen of specifieke functies uit te voeren die nodig zijn voor tegenstanders om hun doel te bereiken, kunnen ook worden beschouwd als een escalatie van bevoegdheden.|
 |**DefenseEvasion**|Verdediging ontduiking bestaat uit technieken die een tegenstander kan gebruiken om detectie te vermijden of andere verdedigingte vermijden. Soms zijn deze acties hetzelfde als (of variaties van) technieken in andere categorieën die het extra voordeel hebben van het ondermijnen van een bepaalde verdediging of mitigatie.|

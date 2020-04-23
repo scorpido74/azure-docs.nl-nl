@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770111"
+ms.locfileid: "82024622"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -33,9 +33,6 @@ De functie leesreplica maakt gebruik van asynchrone replicatie. De functie is ni
 
 ## <a name="cross-region-replication"></a>Replicatie tussen regio's
 U een leesreplica maken in een andere regio dan uw hoofdserver. Replicatie tussen regio's kan handig zijn voor scenario's zoals noodherstelplanning of het dichter bij uw gebruikers brengen van gegevens.
-
-> [!NOTE]
-> Replicatie tussen regio's is in preview.
 
 U een hoofdserver hebben in een [Azure-database voor MariaDB-regio.](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)  Een hoofdserver kan een replica hebben in het gekoppelde gebied of de universele replicagebieden. In de onderstaande afbeelding ziet u welke replicaregio's beschikbaar zijn, afhankelijk van uw hoofdregio.
 

@@ -1,18 +1,18 @@
 ---
-title: Overzicht van Azure Disk Storage voor Windows VM's
-description: Overzicht van azure beheerde schijven, die de opslagaccounts voor u verwerken bij het gebruik van Azure Windows VM's
+title: Overzicht van Azure Disk Storage
+description: Overzicht van azure beheerde schijven, die de opslagaccounts voor u verwerken bij het gebruik van Azure VM's
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7b2c2c1289a40d63b2f396ee59000c3aedb14c3d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 689fc0b5dbf590dd7f2284091188bf96d12477ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75460041"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870001"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Inleiding tot beheerde Azure-schijven
 

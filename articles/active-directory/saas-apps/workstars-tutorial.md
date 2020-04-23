@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086643"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Zelfstudie: Azure Active Directory-integratie met Workstars
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met [workstars clientondersteuningsteam](https://support.workstars.com/) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met [workstars clientondersteuningsteam](http://support.workstars.com/) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -210,7 +210,7 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
 ### <a name="create-workstars-test-user"></a>Werksterrentestgebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Workstars. Werk samen met [workstars-ondersteuningsteam](https://support.workstars.com) om de gebruikers toe te voegen aan het Workstars-platform.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Workstars. Werk samen met [workstars-ondersteuningsteam](http://support.workstars.com) om de gebruikers toe te voegen aan het Workstars-platform.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

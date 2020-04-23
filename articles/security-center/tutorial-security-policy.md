@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906880"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024877"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -62,11 +62,11 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
 1. Kies uit de beschikbare opties op deze pagina:
 
-    1. Als u wilt werken met industriebeleid, klikt u op **Meer standaarden toevoegen**. Zie [Bijwerken naar dynamische compliancepakketten voor](update-regulatory-compliance-packages.md)meer informatie.
+    1. Als u wilt werken met industriebeleid, selecteert u **Meer standaarden toevoegen**. Zie [Bijwerken naar dynamische compliancepakketten voor](update-regulatory-compliance-packages.md)meer informatie.
 
-    1. Als u aangepaste initiatieven wilt toewijzen en beheren, klikt u op **Aangepaste initiatieven toevoegen**. Zie [Aangepast beveiligingsbeleid gebruiken](custom-security-policies.md)voor meer informatie .
+    1. Als u aangepaste initiatieven wilt toewijzen en beheren, selecteert u **Aangepaste initiatieven toevoegen**. Zie [Aangepast beveiligingsbeleid gebruiken](custom-security-policies.md)voor meer informatie .
 
-    1. Als u het standaardbeleid wilt weergeven en bewerken, klikt u op **Effectief beleid weergeven** en gaat u verder zoals hieronder beschreven. 
+    1. Als u het standaardbeleid wilt weergeven en bewerken, selecteert u **Effectief beleid weergeven** en gaat u verder zoals hieronder beschreven. 
 
        ![beleidsscherm](./media/security-center-policies/policy-screen.png)
        
@@ -96,20 +96,20 @@ Security Center gebruikt op rollen gebaseerd toegangsbeheer (RBAC), dat ingebouw
 Als het standaardbeveiligingsbeleid een aanbeveling genereert die niet relevant is voor uw omgeving, u deze stoppen door de beleidsdefinitie uit te schakelen die de aanbeveling verzendt.
 Zie [Beveiligingsaanbevelingen beheren](security-center-recommendations.md)voor meer informatie over aanbevelingen.
 
-1. Klik in het beveiligingscentrum in de sectie **Beleid & Naleving** op **Beveiligingsbeleid**.
+1. Selecteer in Security Center in de sectie **Beleid & compliance** de optie **Beveiligingsbeleid**.
 
    ![beleidsbeheer](./media/tutorial-security-policy/policy-management.png)
 
-2. Klik op de abonnements- of beheergroep waarvoor u de aanbeveling wilt uitschakelen.
+2. Selecteer de abonnements- of beheergroep waarvoor u de aanbeveling wilt uitschakelen.
 
    > [!NOTE]
    > Houd er rekening mee dat in een beheergroep het beleid wordt toepast op alle abonnementen. Als u dus het beleid van een abonnement uitschakelt en het abonnement behoort tot een beheergroep waarin hetzelfde beleid wordt gebruikt, blijft u de beleidsaanbevelingen ontvangen. Het beleid wordt nog steeds toegepast op beheerniveau en de aanbevelingen worden nog steeds gegenereerd.
 
-1. Klik **op Effectief beleid weergeven**.
+1. Selecteer **Effectief beleid weergeven**.
 
    ![beleid uitschakelen](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. Klik op het toegewezen beleid.
+1. Selecteer het toegewezen beleid.
 
    ![beleid uitschakelen](./media/tutorial-security-policy/security-policy.png)
 
@@ -117,7 +117,7 @@ Zie [Beveiligingsaanbevelingen beheren](security-center-recommendations.md)voor 
 
    ![beleid uitschakelen](./media/tutorial-security-policy/disable-policy.png)
 
-1. Klik op **Opslaan**.
+1. Selecteer **Opslaan**.
 
    > [!NOTE]
    > Het kan tot 12 uur duren voordat beleidswijzigingen worden uitgeschakeld.

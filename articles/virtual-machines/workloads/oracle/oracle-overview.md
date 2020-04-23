@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
 ms.author: borisb
-ms.openlocfilehash: e6a2e7c646782f5ad874124e4a86809ed1d79eea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687404"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870505"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en -oplossingen op Azure
 
@@ -49,7 +49,7 @@ Voer bedrijfstoepassingen uit in Azure op ondersteunde Oracle-besturingssystemen
 
 * Gebruik [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) om noodherstel voor uw Oracle Linux VM's in Azure en uw on-premises of fysieke servers te orkestreren en te beheren. 
 
-* Oracle Real Application Clusters (RAC) inschakelen in Azure met [Azure VMWare Solution](https://docs.azure.cloudsimple.com/oracle-rac/) of [FlashGrid SkyCluster.](https://www.flashgrid.io/oracle-rac-in-azure/)
+* Oracle Real Application Clusters (RAC) inschakelen in Azure met [Azure VMWare Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) of [FlashGrid SkyCluster.](https://www.flashgrid.io/oracle-rac-in-azure/)
 
 ## <a name="backup-oracle-workloads"></a>Back-upmaken van Oracle-workloads
 

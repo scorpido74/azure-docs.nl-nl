@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Linux maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758960"
+ms.locfileid: "82024979"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gastconfiguratiebeleid voor Linux maken
 
@@ -26,9 +26,8 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 > Aangepast beleid met gastconfiguratie is een voorbeeldfunctie.
 >
 > De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
-> Als u de extensie op schaal wilt implementeren, wijst u de volgende beleidsdefinities toe:
->   - Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.
->   - Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.
+> Als u de extensie op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleidsdefinitie toe:
+>   - [Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 

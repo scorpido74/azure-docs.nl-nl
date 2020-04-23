@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83dfd1b4df37018329b5d7a707e9b65fdf0782a6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427833"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870370"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark toevoegen en beheren in Azure Synapse Analytics
 
@@ -53,6 +53,16 @@ De gebruikersinterface voor het toevoegen van bibliotheken bevindt zich op het t
 Upload het configuratiebestand van de omgeving met de bestandskiezer in het gedeelte **Pakketten** van de pagina.
 
 ![Python-bibliotheken toevoegen](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python-bibliotheken toevoegen")
+
+### <a name="verifying-installed-libraries"></a>Geïnstalleerde bibliotheken verifiëren
+
+Als u wilt controleren of de juiste versies van de juiste bibliotheken zijn geïnstalleerd, voert u de volgende code uit
+
+```python
+import pip #needed to use the pip functions
+for i in pip.get_installed_distributions(local_only=True):
+    print(i)
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758222"
+ms.locfileid: "82025234"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -60,7 +60,7 @@ Als oplossingsbouwer gebruikt u IoT Central om een aangepaste, door de cloud geh
 - Een cloudtoepassing die telemetriegegevens van uw apparaten ontvangt en die u in staat stelt om deze apparaten te beheren.
 - Meerdere apparaten waarop aangepaste code wordt uitgevoerd en die met uw cloudtoepassing zijn verbonden.
 
-U snel een nieuwe IoT Central-toepassing implementeren en deze vervolgens aanpassen aan uw specifieke vereisten in uw browser. U beginnen met een algemene _toepassingssjabloon_ of met een van de branchegerichte toepassingssjablonen voor [Retail](../retail/overview-iot-central-retail-pnp.md), [Energie](../energy/overview-iot-central-energy.md), [Overheid](../government/overview-iot-central-government.md)of [Gezondheidszorg](../healthcare/overview-iot-central-healthcare.md).
+U snel een nieuwe IoT Central-toepassing implementeren en deze vervolgens aanpassen aan uw specifieke vereisten in uw browser. U beginnen met een algemene _toepassingssjabloon_ of met een van de branchegerichte toepassingssjablonen voor [Retail](../retail/overview-iot-central-retail.md), [Energie](../energy/overview-iot-central-energy.md), [Overheid](../government/overview-iot-central-government.md)of [Gezondheidszorg](../healthcare/overview-iot-central-healthcare.md).
 
 Als oplossingsbouwer gebruikt u de webgebaseerde tools om een _apparaatsjabloon_ te maken voor de apparaten die verbinding maken met uw toepassing. Een apparaatsjabloon is de blauwdruk die de kenmerken en het gedrag van een type apparaat definieert, zoals:
 

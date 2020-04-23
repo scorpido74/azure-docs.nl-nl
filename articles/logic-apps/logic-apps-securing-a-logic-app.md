@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457175"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870564"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -655,7 +655,7 @@ Als de optie [Clientcertificaat](../active-directory/authentication/active-direc
 
 | Eigenschap (ontwerper) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Clientcertificaat** <br>of <br>`ClientCertificate` | Het verificatietype dat moet worden gebruikt voor TLS/SSL-clientcertificaten. Hoewel zelfondertekende certificaten worden ondersteund, worden zelfondertekende certificaten voor TLS/SSL niet ondersteund. |
+| **Verificatie** | `type` | Ja | **Clientcertificaat** <br>of <br>`ClientCertificate` | Het verificatietype dat moet worden gebruikt voor TLS/SSL-clientcertificaten <p><p>**Opmerking:** Hoewel zelfondertekende certificaten worden ondersteund, worden zelfondertekende certificaten voor TLS/SSL niet ondersteund. De HTTP-connector biedt geen ondersteuning voor tussentijdse TLS/SSL-certificaten. |
 | **Pfx Pfx** | `pfx` | Ja | <*gecodeerde pfx-bestandsinhoud*> | De basis64-gecodeerde inhoud uit een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een basisindeling met 64 code, u PowerShell gebruiken door de volgende stappen te volgen: <p>1. Sla de inhoud van het certificaat op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de `ToBase64String()` certificaatinhoud met de functie en sla die inhoud op in een tekstbestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Wachtwoord** | `password`| Nee | <*password-for-pfx-bestand*> | Het wachtwoord voor toegang tot het PFX-bestand |
 |||||

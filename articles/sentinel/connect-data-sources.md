@@ -9,22 +9,22 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e59359d791729d2136003596d80dd1f31a9a2aac
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240084"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025149"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
-Als u Azure Sentinel aan boord wilt hebben, moet u eerst verbinding maken met uw gegevensbronnen. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die uit de doos beschikbaar zijn en realtime integratie bieden, waaronder Microsoft Threat Protection-oplossingen en Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App-beveiliging en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U ook algemene gebeurtenisindeling, Syslog of REST-API gebruiken om uw gegevensbronnen ook met Azure Sentinel te verbinden.  
+Als u Azure Sentinel aan boord wilt hebben, moet u eerst verbinding maken met uw gegevensbronnen. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die uit de doos beschikbaar zijn en realtime integratie bieden, waaronder Microsoft Threat Protection-oplossingen, en Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U ook algemene gebeurtenisindeling, Syslog of REST-API gebruiken om uw gegevensbronnen ook met Azure Sentinel te verbinden.  
 
 1. Selecteer **gegevensconnectoren**in het menu . Op deze pagina ziet u de volledige lijst met connectors die Azure Sentinel biedt en hun status. Selecteer de verbindingsconnector die u wilt aansluiten en selecteer **Connectorpagina openen**. 
 
@@ -47,7 +47,7 @@ De volgende methoden voor gegevensverbinding worden ondersteund door Azure Senti
     - [Amazon Web Services - CloudTrail](connect-aws.md)
     - [Azure-activiteit](connect-azure-activity.md)
     - [Azure AD-controlelogboeken en aanmeldingen](connect-azure-active-directory.md)
-    - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
+    - [Azure AD-identiteitsbeveiliging](connect-azure-ad-Identity-protection.md)
     - [Azure Advanced Threat Protection](connect-azure-atp.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
@@ -56,7 +56,7 @@ De volgende methoden voor gegevensverbinding worden ondersteund door Azure Senti
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
-    - [Windows Firewall](connect-windows-firewall.md)
+    - [Windows-firewall](connect-windows-firewall.md)
     - [Windows-beveiligingsgebeurtenissen](connect-windows-security-events.md)
 
 - **Externe oplossingen via API**: Sommige gegevensbronnen zijn verbonden met API's die worden geleverd door de verbonden gegevensbron. Doorgaans bieden de meeste beveiligingstechnologieën een set API's waarmee gebeurtenislogboeken kunnen worden opgehaald. De API's maken verbinding met Azure Sentinel en verzamelen specifieke gegevenstypen en sturen deze naar Azure Log Analytics. Toestellen die via API zijn verbonden, zijn:

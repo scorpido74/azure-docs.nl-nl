@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309453"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868655"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft-identiteitsplatform en Wachtwoordreferenties voor oAuth 2.0-bronnen
 
@@ -50,8 +50,8 @@ De ROPC-stroom is één verzoek: het stuurt de klantidentificatie en de referent
 > [![Probeer dit verzoek uit te voeren in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De directorytenant waarop u de gebruiker wilt aanmelden. Dit kan in GUID of vriendelijke naam formaat. Deze parameter kan niet `common` worden `consumers`ingesteld op of `organizations`, maar kan worden ingesteld op . |
-| `client_id` | Vereist | De toepassings-id (client) die de [Pagina Azure-portal - App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) aan uw app heeft toegewezen. | 
+| `client_id` | Vereist | De toepassings-id (client) die de [Pagina Azure-portal - App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) aan uw app heeft toegewezen. |
 | `grant_type` | Vereist | Moet ingesteld `password`zijn op. |
 | `username` | Vereist | Het e-mailadres van de gebruiker. |
 | `password` | Vereist | Het wachtwoord van de gebruiker. |
 | `scope` | Aanbevolen | Een lijst met [scopes](v2-permissions-and-consent.md)of machtigingen die de app nodig heeft. In een interactieve stroom moet de beheerder of de gebruiker van tevoren instemmen met deze scopes. |
-| `client_secret`| Soms vereist | Als uw app een openbare `client_secret` client `client_assertion` is, kan de of kan deze niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. | 
-| `client_assertion` | Soms vereist | Een andere `client_secret`vorm van , gegenereerd met behulp van een certificaat.  Zie [certificaatreferenties](active-directory-certificate-credentials.md) voor meer informatie. | 
+| `client_secret`| Soms vereist | Als uw app een openbare `client_secret` client `client_assertion` is, kan de of kan deze niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. |
+| `client_assertion` | Soms vereist | Een andere `client_secret`vorm van , gegenereerd met behulp van een certificaat.  Zie [certificaatreferenties](active-directory-certificate-credentials.md) voor meer informatie. |
 
 ### <a name="successful-authentication-response"></a>Succesvolle verificatierespons
 

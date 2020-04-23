@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731270"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869066"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Een Azure-aanbieding voor virtuele machines maken
 
@@ -240,7 +240,7 @@ Zorg voor de ondersteuningswebsite waar klanten uw ondersteuningsteam kunnen ber
 Geef contactgegevens op die Microsoft-partners kunnen gebruiken wanneer uw klanten een ondersteuningsticket openen. Dit zal niet worden vermeld in de markt.
 
 - Naam
-- Email
+- E-mail
 - Telefoon
 
 ### <a name="engineering-contact"></a>Technisch contact
@@ -248,12 +248,15 @@ Geef contactgegevens op die Microsoft-partners kunnen gebruiken wanneer uw klant
 Geef contactgegevens op die Microsoft kan gebruiken wanneer er problemen zijn met uw aanbieding, waaronder problemen met de certificering. Dit zal niet worden vermeld in de markt.
 
 - Naam
-- Email
+- E-mail
 - Telefoon
 
 ### <a name="marketplace-media"></a>Marktplaatsmedia
 
 Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in PNG-formaat zijn. Onscherpe afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
+
+>[!Note]
+>Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
 
 #### <a name="marketplace-logos"></a>Marketplace-logo's
 

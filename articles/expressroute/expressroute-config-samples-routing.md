@@ -7,33 +7,34 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397733"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024809"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Routerconfiguratievoorbeelden voor het instellen en beheren van routering
-Deze pagina biedt interface- en routeringsconfiguratievoorbeelden voor routers uit de Cisco IOS-XE- en Juniper MX-serie wanneer u met ExpressRoute werkt. Deze zijn uitsluitend bedoeld als monsters voor begeleiding en mogen niet worden gebruikt zoals het is. U met uw leverancier samenwerken om de juiste configuraties voor uw netwerk te bedenken. 
+Deze pagina biedt interface- en routeringsconfiguratievoorbeelden voor routers uit de Cisco IOS-XE- en Juniper MX-serie wanneer u met Azure ExpressRoute werkt.
 
 > [!IMPORTANT]
-> Voorbeelden op deze pagina zijn bedoeld als puur voor begeleiding. U moet samenwerken met het verkoop-/technische team van uw leverancier en uw netwerkteam om met de juiste configuraties te komen om aan uw behoeften te voldoen. Microsoft ondersteunt geen problemen met betrekking tot configuraties die op deze pagina worden vermeld. U moet contact opnemen met uw apparaatleverancier voor ondersteuningsproblemen.
+> Voorbeelden op deze pagina zijn puur ter begeleiding. U moet samenwerken met het verkoop-/technische team van uw leverancier en uw netwerkteam om de juiste configuraties te vinden om aan uw behoeften te voldoen. Microsoft ondersteunt geen problemen met betrekking tot configuraties die op deze pagina worden vermeld. Neem contact op met uw apparaatleverancier voor ondersteuningsproblemen.
 > 
 > 
 
 ## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>MsS-instellingen voor MTU en TCP op routerinterfaces
-* De MTU voor de ExpressRoute-interface is 1500, wat de typische standaard MTU is voor een Ethernet-interface op een router. Tenzij uw router standaard een andere MTU heeft, hoeft u geen waarde op te geven op de routerinterface.
-* In tegenstelling tot een Azure VPN Gateway hoeft de TCP MSS voor een ExpressRoute-circuit niet te worden opgegeven.
+De maximale transmissie-eenheid (MTU) voor de ExpressRoute-interface is 1500, wat de typische standaard MTU is voor een Ethernet-interface op een router. Tenzij uw router standaard een andere MTU heeft, hoeft u geen waarde op te geven op de routerinterface.
 
-Onderstaande routerconfiguratievoorbeelden zijn van toepassing op alle peerings. Bekijk [expressroute-peerings](expressroute-circuit-peerings.md) en [routeringsvereisten voor ExpressRoute](expressroute-routing.md) voor meer informatie over routering.
+In tegenstelling tot een Azure VPN-gateway hoeft de maximale segmentgrootte (MSS) van TCP voor een ExpressRoute-circuit niet te worden opgegeven.
+
+De routerconfiguratievoorbeelden in dit artikel zijn van toepassing op alle peerings. Bekijk [expressroute-peerings](expressroute-circuit-peerings.md) en [routeringsvereisten voor ExpressRoute](expressroute-routing.md) voor meer informatie over routering.
 
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE gebaseerde routers
 De voorbeelden in deze sectie zijn van toepassing op elke router met de IOS-XE OS-familie.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Interfaces en subinterfaces configureren
-U hebt een subinterface per peering nodig in elke router die u met Microsoft verbindt. Een sub-interface kan worden geïdentificeerd met een VLAN-id of een gestapeld paar VLAN-id's en een IP-adres.
+### <a name="configure-interfaces-and-subinterfaces"></a>Interfaces en subinterfaces configureren
+U hebt één subinterface per peering nodig in elke router die u met Microsoft verbindt. Een subinterface kan worden geïdentificeerd met een VLAN-id of een gestapeld paar VLAN-id's en een IP-adres.
 
 **Definitie van de Dot1Q-interface**
 
@@ -45,14 +46,14 @@ Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met één VLA
 
 **QinQ-interfacedefinitie**
 
-Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met twee VLAN-id's. De buitenste VLAN-ID (s-tag), indien gebruikt blijft hetzelfde over alle peerings. De innerlijke VLAN ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
+Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met twee VLAN-id's. De buitenste VLAN-ID (s-tag) blijft, indien gebruikt, hetzelfde voor alle peerings. De innerlijke VLAN ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Opzetten van eBGP-sessies
-U moet een BGP-sessie met Microsoft instellen voor elke peering. In het onderstaande voorbeeld u een BGP-sessie instellen met Microsoft. Als het IPv4-adres dat u voor uw subinterface hebt gebruikt a.b.c.d was, is het IP-adres van de BGP-buurman (Microsoft) a.b.c.d+1. Het laatste octet van het IPv4-adres van de BGP-buurman zal altijd een even getal zijn.
+### <a name="set-up-ebgp-sessions"></a>eBGP-sessies instellen
+U moet een BGP-sessie met Microsoft instellen voor elke peering. Stel een BGP-sessie in met behulp van het volgende voorbeeld. Als het IPv4-adres dat u voor uw subinterface hebt gebruikt a.b.c.d was, is het IP-adres van de BGP-buurman (Microsoft) a.b.c.d+1. Het laatste octet van het IPv4-adres van de BGP-buurman zal altijd een even getal zijn.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -63,8 +64,8 @@ U moet een BGP-sessie met Microsoft instellen voor elke peering. In het ondersta
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Het instellen van voorvoegsels die tijdens de BGP-sessie moeten worden geadverteerd
-U uw router configureren om bepaalde voorvoegsels aan Microsoft te adverteren. U dit doen met behulp van het onderstaande voorbeeld.
+### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Voorvoegsels instellen die tijdens de BGP-sessie kunnen worden geadverteerd
+Configureer uw router om bepaalde voorvoegsels aan Microsoft te adverteren met behulp van het volgende voorbeeld.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -76,8 +77,8 @@ U uw router configureren om bepaalde voorvoegsels aan Microsoft te adverteren. U
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. Routekaarten
-U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die in uw netwerk worden gepropageerd. U het onderstaande voorbeeld gebruiken om de taak uit te voeren. Zorg ervoor dat u de juiste voorvoegsellijsten hebt ingesteld.
+### <a name="route-maps"></a>Routekaarten
+Gebruik routekaarten en voorvoegsellijsten om voorvoegsels te filteren die in uw netwerk worden gepropageerd. Bekijk het volgende voorbeeld en zorg ervoor dat u de juiste voorvoegsellijsten hebt ingesteld.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -93,9 +94,9 @@ U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die 
      match ip address prefix-list <MS_Prefixes>
     !
 
-### <a name="5-configuring-bfd"></a>5. BFD configureren
+### <a name="configure-bfd"></a>BFD configureren
 
-U configureert BFD op twee plaatsen. Een op interface niveau en andere op BGP-niveau. Het voorbeeld hieronder is voor QinQ interface. 
+Je configureert BFD op twee plaatsen: een op interfaceniveau en een op BGP-niveau. Het voorbeeld hier is voor de QinQ-interface. 
 
     interface GigabitEthernet<Interface_Number>.<Number>
      bfd interval 300 min_rx 300 multiplier 3
@@ -114,9 +115,9 @@ U configureert BFD op twee plaatsen. Een op interface niveau en andere op BGP-ni
 
 
 ## <a name="juniper-mx-series-routers"></a>Jeneverbes MX-serie routers
-De voorbeelden in deze sectie zijn van toepassing op routers uit de Juniper MX-serie.
+De voorbeelden in deze sectie zijn van toepassing op elke juniper MX-serie router.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. Interfaces en subinterfaces configureren
+### <a name="configure-interfaces-and-subinterfaces"></a>Interfaces en subinterfaces configureren
 
 **Definitie van de Dot1Q-interface**
 
@@ -137,7 +138,7 @@ Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met één VLA
 
 **QinQ-interfacedefinitie**
 
-Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met twee VLAN-id's. De buitenste VLAN-ID (s-tag), indien gebruikt blijft hetzelfde over alle peerings. De innerlijke VLAN ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
+Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met twee VLAN-id's. De buitenste VLAN-ID (s-tag) blijft, indien gebruikt, hetzelfde voor alle peerings. De innerlijke VLAN ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
     interfaces {
         <Interface_Number> {
@@ -151,8 +152,8 @@ Dit voorbeeld biedt de subinterfacedefinitie voor een subinterface met twee VLAN
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Opzetten van eBGP-sessies
-U moet een BGP-sessie met Microsoft instellen voor elke peering. In het onderstaande voorbeeld u een BGP-sessie instellen met Microsoft. Als het IPv4-adres dat u voor uw subinterface hebt gebruikt a.b.c.d was, is het IP-adres van de BGP-buurman (Microsoft) a.b.c.d+1. Het laatste octet van het IPv4-adres van de BGP-buurman zal altijd een even getal zijn.
+### <a name="set-up-ebgp-sessions"></a>eBGP-sessies instellen
+U moet een BGP-sessie met Microsoft instellen voor elke peering. Stel een BGP-sessie in met behulp van het volgende voorbeeld. Als het IPv4-adres dat u voor uw subinterface hebt gebruikt a.b.c.d was, is het IP-adres van de BGP-buurman (Microsoft) a.b.c.d+1. Het laatste octet van het IPv4-adres van de BGP-buurman zal altijd een even getal zijn.
 
     routing-options {
         autonomous-system <Customer_ASN>;
@@ -167,14 +168,15 @@ U moet een BGP-sessie met Microsoft instellen voor elke peering. In het ondersta
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Het instellen van voorvoegsels die tijdens de BGP-sessie moeten worden geadverteerd
-U uw router configureren om bepaalde voorvoegsels aan Microsoft te adverteren. U dit doen met behulp van het onderstaande voorbeeld.
+### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Voorvoegsels instellen die tijdens de BGP-sessie kunnen worden geadverteerd
+Configureer uw router om bepaalde voorvoegsels aan Microsoft te adverteren met behulp van het volgende voorbeeld.
 
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter <Prefix_to_be_advertised/Subnet_Mask> exact;
+        route-filter 
+    <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -192,8 +194,8 @@ U uw router configureren om bepaalde voorvoegsels aan Microsoft te adverteren. U
     }
 
 
-### <a name="4-route-policies"></a>4. Routebeleid
-U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die in uw netwerk worden gepropageerd. U het onderstaande voorbeeld gebruiken om de taak uit te voeren. Zorg ervoor dat u de juiste voorvoegsellijsten hebt ingesteld.
+### <a name="route-policies"></a>Routebeleid
+U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die in uw netwerk worden gepropageerd. Bekijk het volgende voorbeeld en zorg ervoor dat u de juiste voorvoegsellijsten hebt ingesteld.
 
     policy-options {
         prefix-list MS_Prefixes {
@@ -203,7 +205,7 @@ U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die 
         policy-statement <MS_Prefixes_Inbound> {
             term 1 {
                 from {
-        prefix-list MS_Prefixes;
+                prefix-list MS_Prefixes;
                 }
                 then {
                     accept;
@@ -222,8 +224,8 @@ U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die 
         }                                   
     }
 
-### <a name="4-configuring-bfd"></a>4. BFD configureren
-U configureert BFD alleen onder de sectie Protocol BGP.
+### <a name="configure-bfd"></a>BFD configureren
+Configureer alleen BFD onder de sectie Protocol BGP.
 
     protocols {
         bgp { 
@@ -237,6 +239,7 @@ U configureert BFD alleen onder de sectie Protocol BGP.
             }                               
         }                                   
     }
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie.

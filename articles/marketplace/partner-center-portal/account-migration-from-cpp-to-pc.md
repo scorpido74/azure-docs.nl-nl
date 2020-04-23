@@ -1,18 +1,18 @@
 ---
 title: Accountmigratie van Cloud Partner Portal naar Partner Center - commerciële marktplaats voor Azure
-description: Uw account migreren van CPP naar Partnercenter. - commerciële marktplaats voor Azure
+description: Uw account migreren van CPP naar Partner Center - commerciële marktplaats voor Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730492"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024418"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Accountmigratie van Cloud Partner-portal naar het Partnercentrum
 
@@ -42,6 +42,16 @@ Klik op de banner om het migratieproces van uw account te starten. Er wordt van 
 2. Aanmelden voor Microsoft Partner Network-programma
 
     Als uw CPP-account geen Microsoft Partner Network-id heeft of een niet-geldige cpp-account heeft, moet u zich aanmelden voor het Microsoft Partner Network-programma als onderdeel van het activeringsproces.
+
+## <a name="publishers-moving-from-cpp"></a>Uitgevers die van CPP overstappen
+
+Als uw account is gemigreerd vanuit de [Cloud Partner Portal (CPP),](https://cloudpartner.azure.com)hoeft u geen nieuw PartnerCenter-account aan te maken. U had een aangepaste koppeling naar uw nieuwe Partner Center-account per e-mail en in een bannermelding moeten hebben ontvangen nadat u zich hebt aangemeld bij uw bestaande CPP-account.
+
+Zodra je je nieuwe Partner Center-account hebt ingeschakeld door deze aangepaste link te bezoeken, kun je terugkeren naar je account door het dashboard van de [commerciële marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in partnercentrum te bezoeken.
+
+De publicatieovereenkomst en bedrijfsprofielgegevens worden gemigreerd naar uw nieuwe Partner Center-account, samen met alle eerder ingestelde profielgegevens van accounts, gebruikersaccounts en machtigingen en actieve aanbiedingen die zijn gekoppeld aan uw CPP-account.
+
+Nadat uw accountgegevens zijn verplaatst van CPP naar Partnercenter, gebruikt u CPP niet langer om accountupdates uit te voeren of gebruikers, machtigingen en facturering te beheren. Voor een beperkte tijd worden alle accountupdates die u in het Partnercenter maakt, automatisch bijgewerkt in uw alleen-lezen CPP-account totdat de CPP-portal uiteindelijk wordt afgeschaft.
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Aanmelden voor Microsoft Partner Network-programma
 

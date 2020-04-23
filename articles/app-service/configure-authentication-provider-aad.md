@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392565"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024452"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App-service- of Azure-functie-app configureren om Azure AD-aanmelding te gebruiken
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit:
     |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
-    |Url van uitgever| * \<Tenant-id-id* `https://login.microsoftonline.com/<tenant-id>/v2.0`>gebruiken en vervangen door de **directory -id (tenant)** van de app-registratie. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-tenant en om de juiste metagegevens te downloaden om bijvoorbeeld de juiste tokenondertekeningssleutels en claimwaarde voor tokenuitgevende instellingen te bepalen. De `/v2.0` sectie kan worden weggelaten voor toepassingen met AAD v1. |
+    |Url van uitgever| Gebruik `<authentication-endpoint>/<tenant-id>/v2.0`en vervang * \<verificatie-eindpunt>* door het [verificatieeindpunt voor uw cloudomgeving](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (bijvoorbeeld "https://login.microsoft.comvoor globale Azure), waarbij * \<tenant-id->* wordt vervangen door de **directory-id (tenant) id** waarin de app-registratie is gemaakt. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-tenant en om de juiste metagegevens te downloaden om bijvoorbeeld de juiste tokenondertekeningssleutels en claimwaarde voor tokenuitgevende instellingen te bepalen. De `/v2.0` sectie kan worden weggelaten voor toepassingen met AAD v1. |
     |Clientgeheim (optioneel)| Gebruik het clientgeheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane tokendoelgroepen| Als dit een cloud- of server-app is en u verificatietokens van een web-app wilt toestaan, voegt u hier de **Toepassings-ID URI** van de web-app toe. De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doelgroep. |
 

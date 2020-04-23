@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: b0efed83237c191f02bfffd9b26a0fd9cd2c871f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 6ed0d743f9b9cdc136b8f52f4d9d02583fc63eb9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606580"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870180"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Het netwerk van uw lab verbinden met een virtueel netwerk van collega's in Azure Lab Services
 
@@ -46,7 +46,7 @@ Tijdens het maken van een nieuw [labaccount](tutorial-setup-lab-account.md)u een
 
 ### <a name="address-range"></a>Adresbereik
 
-Er is ook een optie om **adresbereik** voor virtuele machines voor de laboratoria te bieden. Als het adresbereik wordt opgegeven, worden alle virtuele machines in de labs onder het labaccount in dat adresbereik gemaakt. Het adresbereik moet zich in CIDR-notatie bevinden (bijvoorbeeld 10.20.0.0/20) en niet overlappen met bestaande adresbereiken.  Bij het verstrekken van een adresbereik is het belangrijk om na te denken over het aantal *labs* dat wordt gemaakt en een adresbereik te bieden om dat mogelijk te maken. Lab Services gaat uit van maximaal 512 virtuele machines per lab.  Een ip-bereik met '/23' kan bijvoorbeeld slechts één lab creëren.  Een bereik met een '/21' maakt het mogelijk om vier labs te creëren.
+Er is ook een optie om **adresbereik** voor virtuele machines voor de laboratoria te bieden.  De eigenschap **Adresbereik** is alleen van toepassing als **het virtuele netwerk Peer** is ingeschakeld voor het lab.  Als het adresbereik wordt opgegeven, worden alle virtuele machines in de labs onder het labaccount in dat adresbereik gemaakt. Het adresbereik moet zich in CIDR-notatie bevinden (bijvoorbeeld 10.20.0.0/20) en niet overlappen met bestaande adresbereiken.  Bij het verstrekken van een adresbereik is het belangrijk om na te denken over het aantal *labs* dat wordt gemaakt en een adresbereik te bieden om dat mogelijk te maken. Lab Services gaat uit van maximaal 512 virtuele machines per lab.  Een ip-bereik met '/23' kan bijvoorbeeld slechts één lab creëren.  Een bereik met een '/21' maakt het mogelijk om vier labs te creëren.
 
 Als het **adresbereik** niet is opgegeven, gebruikt Lab Services het standaardadresbereik dat Azure aan het adres heeft gegeven bij het maken van het virtuele netwerk dat moet worden gekeken met uw virtuele netwerk.  Het bereik is vaak iets van 10.x.0.0/16.  Dit kan leiden tot overlap tussen ip-bereiken, dus zorg ervoor dat u het bereik in de labinstellingen opgeeft en adresbereik opgeeft of het adresbereik controleert van uw virtuele netwerk dat wordt peered.
 

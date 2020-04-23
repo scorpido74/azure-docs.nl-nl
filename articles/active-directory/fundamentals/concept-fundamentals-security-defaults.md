@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78248850"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869906"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn beveiligingsstandaards?
 
@@ -85,15 +85,13 @@ Organisaties maken gebruik van verschillende Azure-services die worden beheerd v
 
 - Azure Portal 
 - Azure PowerShell 
-- Azure-CLI
+- Azure CLI
 
 Het gebruik van Azure Resource Manager om uw services te beheren is een zeer bevoorrechte actie. Azure Resource Manager kan tenantbrede configuraties wijzigen, zoals service-instellingen en facturering met abonnementen. Single-factor authenticatie is kwetsbaar voor een verscheidenheid van aanvallen zoals phishing en password spray. 
 
 Het is belangrijk om de identiteit te verifiëren van gebruikers die toegang willen krijgen tot Azure Resource Manager en configuraties willen bijwerken. U verifieert hun identiteit door extra verificatie te vereisen voordat u toegang toestaat.
 
 Nadat u beveiligingsstandaarden in uw tenant hebt ingeschakeld, moet elke gebruiker die toegang heeft tot de Azure-portal, Azure PowerShell of de Azure CLI, extra verificatie voltooien. Dit beleid is van toepassing op alle gebruikers die toegang hebben tot Azure Resource Manager, of ze nu een beheerder of een gebruiker zijn. 
-
-Als de gebruiker niet is geregistreerd voor multifactorauthenticatie, moet de gebruiker zich registreren met behulp van de Microsoft Authenticator-app om verder te gaan. Er wordt geen registratieperiode van 14 dagen voor multifactorauthenticatie verstrekt.
 
 > [!NOTE]
 > Exchange Online-tenants van voor 2017 hebben standaard moderne verificatie uitgeschakeld. Om de mogelijkheid van een inloglus te vermijden terwijl u deze tenants authenticeert, moet u [moderne verificatie inschakelen.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)

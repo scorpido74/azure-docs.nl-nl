@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312377"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024488"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met behulp van de Azure-portal
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Gebruik [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) met de duimafdruk die is geretourneerd om een pfx-bestand van het certificaat te exporteren:
+Gebruik [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) met de Thumbprint die is geretourneerd om een pfx-bestand van het certificaat te exporteren. Zorg ervoor dat uw wachtwoord 4 - 12 tekens lang is:
 
-> [!NOTE]
-> Gebruik geen speciale tekens in uw .pfx-bestandswachtwoord. Alleen alfanumerieke tekens worden ondersteund.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Op het tabblad **Configuratie** verbindt u de frontend- en backendpool die u heb
 
    - **PFX-certificaatbestand** - Blader naar en selecteer het c:\appgwcert.pfx-bestand dat u eerder hebt gemaakt.
    - **Certificaatnaam** - Typ *mycert1* voor de naam van het certificaat.
-   - **Wachtwoord** - Typ *Azure123456* voor het wachtwoord.
+   - **Wachtwoord** - Typ uw wachtwoord.
   
         Accepteer de standaardwaarden voor de andere instellingen op het tabblad **Listener** en selecteer vervolgens het tabblad **Backenddoelen** om de rest van de routeringsregel te configureren.
 
@@ -194,10 +192,10 @@ Om dit te doen, zul je:
     - **Resourcegroep**: Selecteer **myResourceGroupAG** voor de naam van de resourcegroep.
     - **Naam van virtuele machine**: Voer *myVM* in voor de naam van de virtuele machine.
     - **Gebruikersnaam**: Voer *azureuser* in voor de gebruikersnaam van de beheerder.
-    - **Wachtwoord**: Voer *Azure123456* in voor het beheerderswachtwoord.
-4. Accepteer de andere standaardinstellingen en selecteer **Volgende: Schijven**.  
-5. Accepteer de standaardinstellingen van het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
-6. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de andere standaardinstellingen en selecteer **Volgende: Beheer**.
+    - **Wachtwoord:** Voer een wachtwoord in voor het beheerdersaccount.
+1. Accepteer de andere standaardinstellingen en selecteer **Volgende: Schijven**.  
+2. Accepteer de standaardinstellingen van het tabblad **Schijven** en selecteer **Volgende: Netwerken**.
+3. Zorg ervoor dat, op het tabblad **Netwerken**, **myVNet** is geselecteerd bij **Virtueel netwerk** en dat **Subnet** is ingesteld op **myBackendSubnet**. Accepteer de andere standaardinstellingen en selecteer **Volgende: Beheer**.
 
    Application Gateway kan communiceren met instanties buiten het virtuele netwerk waarin het zich bevindt, maar u moet ervoor zorgen dat er IP-connectiviteit is.
 1. Op het tabblad **Beheer** stelt u **Diagnostische gegevens over opstarten** in op **Uit**. Accepteer de overige standaardwaarden en selecteer **Beoordelen en maken**.

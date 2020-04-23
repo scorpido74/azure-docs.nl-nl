@@ -7,38 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83ec57290f56a903a7c4456ba760fbbb3b54f885
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289019"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869370"
 ---
 # <a name="azure-application-support-tab"></a>Tabblad Ondersteuning voor Azure-toepassingen
 
-Gebruik het tabblad Ondersteuning om technische en klantondersteuningsinformatie te verstrekken.
- 
-## <a name="identify-contacts-and-websites"></a>Contactpersonen en websites identificeren
+De [Cloud Partner Portal](https://cloudpartner.azure.com/) ondersteunt niet langer het maken en beheren van Azure-toepassingsaanbiedingen. In plaats daarvan is deze functionaliteit verplaatst naar de Microsoft [Partner Center-portal.](https://partner.microsoft.com/) Zie [Een Azure-toepassingsaanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)voor meer informatie.
 
-Gebruik de volgende schermopname als een gids om de vereiste informatie te verstrekken. Alle veldnamen die zijn toegevoegd met een rood sterretje (*) moeten worden voltooid.
-
-  ![Ondersteuningsformulier voor aanbieding](./media/azureapp-support-tab.png)
-
-1. Geef onder **Engineering Contact**informatie voor de volgende velden:
-
-   - **Naam\* ** - Voer de naam in van de technische contactpersoon voor uw app. Deze contactpersoon ontvangt technische communicatie van Microsoft.
-   - **E-mail\* ** - Voer het e-mailadres van de technische contactpersoon in.
-   - **Telefoon\* ** - Voer het telefoonnummer van de technische contactpersoon in.
-  
-2. Geef onder **Contactpersoon voor ondersteuning**informatie voor de volgende velden:
-
-   - **Naam\* ** - Voer de naam in van de ondersteuningscontactpersoon voor uw app. Deze contactpersoon ontvangt ondersteuningsgerelateerde communicatie van Microsoft.
-   - **E-mail\* ** - Voer het e-mailadres van de ondersteuningscontactpersoon voor uw app in.
-   - **Telefoon\* ** - Voer het telefoonnummer van het ondersteuningscontact in.
- 
-3. Geef **onder Url's voor ondersteuning**de juiste ondersteunings-URL's die Microsoft zal gebruiken wanneer uw klanten ondersteuningstickets openen. Deze url's zijn bedoeld voor Public Azure of de Azure Government Cloud.
-4. Selecteer **Opslaan** wanneer u klaar bent.
-
-## <a name="next-steps"></a>Volgende stappen
-
-[Aanbieding voor Azure-toepassing maken publiceren](./cpp-publish-offer.md)
+Voordat u een nieuwe Azure-toepassingsaanbieding maakt, moet u [Een Partnercentrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dashboard Commerciële Marktplaats](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichtspagina.** Volg de instructies in [Een Azure-toepassingsaanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) om uw aanbieding te maken.

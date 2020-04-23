@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Windows maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757414"
+ms.locfileid: "82024894"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gastconfiguratiebeleid voor Windows maken
 
@@ -27,9 +27,8 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 > Aangepast beleid met gastconfiguratie is een voorbeeldfunctie.
 >
 > De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
-> Als u de extensie op schaal wilt implementeren, wijst u de volgende beleidsdefinities toe:
->   - Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.
->   - Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.
+> Als u de extensie op schaal wilt implementeren voor alle Windows-machines, wijst u de volgende beleidsdefinities toe:
+>   - [Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 

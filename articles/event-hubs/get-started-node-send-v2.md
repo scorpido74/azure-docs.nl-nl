@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478470"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025013"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Gebeurtenissen verzenden naar of ontvangen van gebeurtenishubs met JavaScript (versie 5 van Azure/Event-Hubs)
 In deze quickstart ziet u hoe u gebeurtenissen verzendt naar en ontvangt vanuit een gebeurtenishub met het **JavaScript-pakket azure/event-hubs.** 
@@ -185,7 +185,7 @@ Zorg ervoor dat u de verbindingstekenreeks en de containernaam registreert voor 
 1. Voer `node receive.js` een opdrachtprompt uit om dit bestand uit te voeren. In het venster moeten berichten over ontvangen gebeurtenissen worden weergegeven.
 
     > [!NOTE]
-    > Ga voor de volledige broncode, inclusief aanvullende informatieve opmerkingen, naar de [pagina GitHub receiveEventsUsingCheckpointStore.js.](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)
+    > Ga voor de volledige broncode, inclusief aanvullende informatieve opmerkingen, naar de [pagina GitHub receiveEventsUsingCheckpointStore.js.](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)
 
 Gefeliciteerd! Je hebt nu evenementen ontvangen van je evenementenhub. Het ontvangstprogramma ontvangt gebeurtenissen van alle partities van de standaardconsumentengroep in de gebeurtenishub.
 

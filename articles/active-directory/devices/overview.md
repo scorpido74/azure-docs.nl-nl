@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331817"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024435"
 ---
 # <a name="what-is-a-device-identity"></a>Wat is een apparaat-id?
 
@@ -53,6 +53,9 @@ Als u een apparaat in Azure AD wilt krijgen, hebt u meerdere opties:
 
 ![Apparaten die worden weergegeven in het blade van Azure AD-apparaten](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> Een hybride status verwijst naar meer dan alleen de status van een apparaat. Om een hybride status geldig te maken, is ook een geldige Azure AD-gebruiker vereist.
+
 ## <a name="device-management"></a>Apparaatbeheer
 
 Apparaten in Azure AD kunnen worden beheerd met mdm-hulpprogramma's (Mobile Device Management), zoals Microsoft Intune, Microsoft Endpoint Configuration Manager, Group Policy (hybrid Azure AD join), Mam-hulpprogramma's (Mobile Application Management) of andere hulpprogramma's van derden.
@@ -63,6 +66,8 @@ Door apparaten te registreren en samen te voegen met Azure AD kunnen uw gebruike
 
 > [!NOTE]
 > Voor beleid voor voorwaardelijke toegang op basis van apparaten zijn hybride Azure AD-apparaten vereist of azure AD-apparaten of azure AD-geregistreerde apparaten.
+
+Het primaire vernieuwingstoken (PRT) bevat informatie over het apparaat en is vereist voor SSO. Als u een op apparaten gebaseerd beleid voor voorwaardelijke toegang hebt ingesteld op een toepassing, zonder de PRT, wordt de toegang geweigerd. Voor beleid voor hybride voorwaardelijke toegang is een hybride statusapparaat en een geldige gebruiker vereist die is aangemeld.
 
 Apparaten die Azure AD zijn samengevoegd of hybride Azure AD hebben baat bij SSO voor de on-premises resources van uw organisatie en cloudresources. Meer informatie is te vinden in het artikel, [Hoe SSO om on-premises resources werkt op Azure AD samengevoegde apparaten](azuread-join-sso.md).
 

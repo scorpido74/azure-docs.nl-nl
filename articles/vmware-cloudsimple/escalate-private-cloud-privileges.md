@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025313"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870479"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Escaleer de vCenter-rechten voor Private Cloud vanuit de CloudSimple-portal
 
 Voor administratieve toegang tot uw Private Cloud vCenter u uw CloudSimple-bevoegdheden tijdelijk escaleren.  Met verhoogde bevoegdheden u VMware-oplossingen installeren, identiteitsbronnen toevoegen en gebruikers beheren.
 
-Nieuwe gebruikers kunnen worden gemaakt op het vCenter SSO-domein en krijgen toegang tot vCenter.  Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de ingebouwde groepen CloudSimple voor toegang tot vCenter.  Zie [CloudSimple Private Cloud-machtigingsmodel van VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)voor meer informatie.
+Nieuwe gebruikers kunnen worden gemaakt op het vCenter SSO-domein en krijgen toegang tot vCenter.  Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de ingebouwde groepen CloudSimple voor toegang tot vCenter.  Zie [CloudSimple Private Cloud-machtigingsmodel van VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)voor meer informatie.
 
 > [!CAUTION]
 > Breng geen configuratiewijzigingen aan voor beheeronderdelen. Acties die tijdens de geëscaleerde bevoorrechte status worden uitgevoerd, kunnen een negatieve invloed hebben op uw systeem of kunnen ertoe leiden dat uw systeem niet meer beschikbaar is.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="escalate-privileges"></a>Bevoegdheden escaleren
 
@@ -88,5 +88,5 @@ Zodra uw administratieve taken zijn voltooid, moet u uw bevoegdheden de-escalere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VCenter-identiteitsbronnen instellen om Active Directory te gebruiken](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Back-upoplossing installeren om [back-upworkloads virtuele machines](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) te maken
+* [VCenter-identiteitsbronnen instellen om Active Directory te gebruiken](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* Back-upoplossing installeren om [back-upworkloads virtuele machines](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) te maken

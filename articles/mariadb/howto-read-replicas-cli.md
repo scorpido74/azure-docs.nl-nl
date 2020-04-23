@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530577"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025047"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees-replica's maken en beheren in Azure Database voor MariaDB met behulp van de Azure CLI- en REST-API
 
 In dit artikel leert u hoe u leesreplica's maakt en beheert in de Azure Database for MariaDB-service met behulp van de Azure CLI- en REST-API.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 U leesreplica's maken en beheren met de Azure CLI.
 
 ### <a name="prerequisites"></a>Vereisten
@@ -45,9 +45,6 @@ De `az mariadb server replica create` opdracht vereist de volgende parameters:
 | source-server | mydemoserver | De naam of id van de bestaande hoofdserver om van te repliceren. |
 
 Als u een replica voor `--location` het gebied sinterland wilt maken, gebruikt u de parameter. 
-
-> [!NOTE]
-> Replicatie tussen regio's is in preview.
 
 In het onderstaande VOORBEELD CLI wordt de replica in West-US gemaakt.
 
@@ -113,7 +110,7 @@ Als u een hoofdserver wilt verwijderen, u de opdracht voor het verwijderen van d
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 U leesreplica's maken en beheren met de [Azure REST API.](/rest/api/azure/)
 
 ### <a name="create-a-read-replica"></a>Een gelezen replica maken

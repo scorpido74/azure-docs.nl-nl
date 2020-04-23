@@ -3,15 +3,16 @@ title: Een virtuele Windows-machine van niet-beheerde schijven converteren naar 
 description: Een Windows-vm converteren van niet-beheerde schijven naar beheerde schijven met PowerShell in het implementatiemodel Resource Manager
 author: roygara
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460129"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081945"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 
@@ -94,7 +95,7 @@ Voordat u converteert, controleert u of alle VM-extensies in de status 'Geslaagd
 
 U ook onbeheerde schijven converteren naar beheerde schijven met behulp van de Azure-portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de VM in de lijst met VM's in de portal.
 3. Selecteer **Schijven** in het menu in het blad voor de virtuele machine.
 4. Selecteer Migreren **naar beheerde schijven**boven aan het **hoofdvan schijven** .

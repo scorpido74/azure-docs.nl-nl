@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f557753c61af1e57490ae2d10b7f42475bd7c0a6
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730512"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870238"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslaggids voor het gebruik van functies in expressies voor Azure Logic Apps en Power Automate
 
@@ -82,11 +82,11 @@ Tekenreeksfuncties werken alleen op tekenreeksen.
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Combineer twee of meer tekenreeksen en retourneer de gecombineerde tekenreeks. |
 | [endsMet](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Controleer of een tekenreeks eindigt met de opgegeven subtekenreeks. |
 | [opmaakNummer](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Een getal retourneren als tekenreeks op basis van de opgegeven notatie |
-| [Guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Genereer een wereldwijd unieke id (GUID) als tekenreeks. |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Genereer een wereldwijd unieke id (GUID) als tekenreeks. |
 | [indexVan](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Geef de startpositie voor een subtekenreeks terug. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | De startpositie voor het laatste optreden van een subtekenreeks retourneren. |
 | [Vervangen](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Vervang een subtekenreeks door de opgegeven tekenreeks en retourneer de bijgewerkte tekenreeks. |
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Retourneer een array die subtekenreeksen bevat, gescheiden door komma's, van een grotere tekenreeks op basis van een opgegeven scheidingstekenteken in de oorspronkelijke tekenreeks. |
+| [Split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Retourneer een array die subtekenreeksen bevat, gescheiden door komma's, van een grotere tekenreeks op basis van een opgegeven scheidingstekenteken in de oorspronkelijke tekenreeks. |
 | [startMet](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Controleer of een tekenreeks begint met een specifieke subtekenreeks. |
 | [Subtekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Tekens uit een tekenreeks retourneren, vanaf de opgegeven positie. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Retourneer een tekenreeks in kleine letters. |
@@ -151,7 +151,7 @@ Zie de [alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Retourneer de binaire versie voor een door basis64 gecodeerde tekenreeks. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Retourneer de tekenreeksversie voor een tekenreeks met basis64.Return the string version for a base64-coded string. |
 | [Binaire](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Retourneer de binaire versie voor een invoerwaarde. |
-| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneer de Booleaanse versie voor een invoerwaarde. |
+| [booleaans](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneer de Booleaanse versie voor een invoerwaarde. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Retourneer een array van meerdere ingangen. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Retourneer de gegevens URI voor een invoerwaarde. |
 | [datauritobinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Retourneer de binaire versie voor een gegevensURI. |
@@ -161,9 +161,9 @@ Zie de [alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Retourneer een tekenreeks die vluchttekens vervangt door gedecodeerde versies. |
 | [codeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Retourneer een tekenreeks die URL-onveilige tekens vervangt door escape-tekens. |
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Een zwevend puntnummer voor een invoerwaarde retourneren. |
-| [Int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Retourneer de gehele versie voor een tekenreeks. |
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Retourneer de gehele versie voor een tekenreeks. |
 | [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | De Json-typewaarde of object (JavaScript Object Notatie) voor een tekenreeks of XML retourneren. |
-| [Tekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
+| [tekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Retourneer de URI-gecodeerde versie voor een invoerwaarde door URL-onveilige tekens te vervangen door escape-tekens. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Retourneer de binaire versie voor een uri-gecodeerde tekenreeks. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Retourneer de tekenreeksversie voor een uri-gecodeerde tekenreeks. |
@@ -1077,7 +1077,7 @@ En geeft dit resultaat als resultaat:
 
 <a name="bool"></a>
 
-### <a name="bool"></a>Booleaanse waarde
+### <a name="bool"></a>booleaans
 
 Retourneer de Booleaanse versie voor een waarde.
 
@@ -2223,7 +2223,7 @@ En geef deze resultaten terug:
 
 <a name="guid"></a>
 
-### <a name="guid"></a>Guid
+### <a name="guid"></a>guid
 
 Een wereldwijd unieke id (GUID) genereren als tekenreeks, bijvoorbeeld "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
@@ -2426,9 +2426,11 @@ iterationIndexes('<loopName>')
 
 *Voorbeeld* 
 
-In dit voorbeeld wordt een tegenvariabele en stappen die tijdens elke iteratie in een lus Tot worden variabel. In het voorbeeld wordt ook een variabele die de huidige index voor elke iteratie bijhoudt. In de lus Tot wordt tijdens elke iteratie de teller in het voorbeeld verhoogd en wordt de tegenwaarde aan de huidige indexwaarde toewijst en wordt de teller vervolgens verhoogd. U op elk gewenst moment het huidige iteratienummer bepalen door de huidige indexwaarde op te halen.
+In dit voorbeeld wordt een tegenvariabele en stappen die tijdens elke iteratie in een lus Tot worden variabel. In het voorbeeld wordt ook een variabele die de huidige index voor elke iteratie bijhoudt. In de lus Tot wordt tijdens elke iteratie de teller in het voorbeeld verhoogd en wordt de tegenwaarde aan de huidige indexwaarde toewijst en wordt de teller vervolgens verhoogd. Terwijl in de lus, verwijst dit voorbeeld naar `iterationIndexes` de huidige iteratie-index met behulp van de functie:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2461,7 @@ In dit voorbeeld wordt een tegenvariabele en stappen die tijdens elke iteratie i
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2474,15 @@ In dit voorbeeld wordt een tegenvariabele en stappen die tijdens elke iteratie i
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {

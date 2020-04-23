@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347172"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869730"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Apps aanmelden en starten via de portal Mijn apps
 
@@ -110,7 +110,7 @@ Als u toestemming hebt om toegang te krijgen tot en de cloudgebaseerde apps van 
 
 Bekijk en gebruik de apps van uw organisatie vanuit een Intune Managed Browser op uw iOS- en Android-apparaten.
 
-1. Download en installeer op uw mobiele apparaat de Intune Managed Browser-app in de [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) en de Google Play [Store.](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+1. Download en installeer op uw mobiele apparaat de Intune Managed Browser-app in de Apple App Store en de Google Play Store.
 
 2. Open de intune Managed Browser-app, ga naar https://myapps.microsoft.comof gebruik de koppeling van uw https://myapps.microsoft.com/contoso.comorganisatie als ze u naar een aangepaste pagina leiden, zoals .
 

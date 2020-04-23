@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244730"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869337"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Toegang tot de VMware-oplossing per CloudSimple-portal vanuit de Azure-portal
 
@@ -34,7 +34,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
@@ -71,5 +71,5 @@ Als uw machtigingen geen toegang tot de CloudSimple-portal toestaan, neemt u con
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het maken van een private cloud](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* Meer informatie over [het maken van een private cloud](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
 * Meer informatie over [het configureren van een private cloudomgeving](quickstart-create-private-cloud.md)

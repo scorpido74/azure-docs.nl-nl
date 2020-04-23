@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677691"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868323"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft-identiteitsplatform en OpenID Connect-protocol
 
@@ -38,6 +38,7 @@ OpenID Connect beschrijft een metagegevensdocument dat de meeste informatie beva
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > Probeer het nu! Klik [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) hier `common` om de configuratie van de tenants te bekijken.
 
@@ -52,7 +53,7 @@ Het `{tenant}` kan een van de vier waarden:
 
 De metagegevens zijn een eenvoudig Json-document (JavaScript Object Notation). Zie het volgende fragment voor een voorbeeld. De inhoud van het fragment wordt volledig beschreven in de [OpenID Connect-specificatie.](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -84,7 +85,7 @@ Wanneer uw web-app de gebruiker moet verifiëren, `/authorize` kan deze de gebru
 
 Bijvoorbeeld:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -123,7 +124,7 @@ Nadat de gebruiker is geverifieerd en toestemming heeft gegeven, retourneert het
 
 Een succesvol antwoord `response_mode=form_post` wanneer u er als volgt uitziet:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -140,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 Foutreacties kunnen ook worden verzonden naar de omleiding URI, zodat de app ze kan verwerken. Een foutreactie ziet er als volgt uit:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -187,7 +188,7 @@ Wanneer u de gebruiker vanuit uw app wilt afmelden, volstaat het niet om de cook
 
 U de gebruiker `end_session_endpoint` doorverwijzen naar de lijst in het metagegevensdocument van OpenID Connect:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -211,7 +212,7 @@ De volledige aanmeldings- en tokenacquisitiestroom van OpenID Connect lijkt op h
 ## <a name="get-access-tokens"></a>Toegangstokens ontvangen
 Als u toegangstokens wilt verkrijgen, wijzigt u de aanmeldingsaanvraag:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -236,7 +237,7 @@ Door machtigingsscopes op te `response_type=id_token code`nemen in de aanvraag e
 
 Een succesvol antwoord `response_mode=form_post` van het gebruik ziet er als volgt uit:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -254,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 Foutreacties kunnen ook worden verzonden naar de omleiding URI, zodat de app ze op de juiste manier kan verwerken. Een foutreactie ziet er als volgt uit:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van MARS-back-ups (Micr
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537352"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025098"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-service
 
@@ -79,8 +79,8 @@ U uitsluitingsregels toevoegen om bestanden en mappen over te slaan waarvan geen
 
     ![De items selecteren](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> Ga voorzichtig te werk wanneer u een volume volledig uit het beleid verwijdert.  Als u het opnieuw moet toevoegen, dan zal het als nieuw volume worden behandeld. De volgende geplande back-up voert een initial backup (volledige back-up) uit in plaats van Incrementele back-up. Als u items tijdelijk moet verwijderen en later wilt toevoegen, wordt aanbevolen om **uitsluitingsinstellingen** te gebruiken in plaats van **Items verwijderen** om incrementele back-up te garanderen in plaats van volledige back-up.
+    > [!NOTE]
+    > Ga voorzichtig te werk wanneer u een volume volledig uit het beleid verwijdert.  Als u het opnieuw moet toevoegen, dan zal het als nieuw volume worden behandeld. De volgende geplande back-up voert een initial backup (volledige back-up) uit in plaats van Incrementele back-up. Als u items tijdelijk moet verwijderen en later wilt toevoegen, wordt aanbevolen om **uitsluitingsinstellingen** te gebruiken in plaats van **Items verwijderen** om incrementele back-up te garanderen in plaats van volledige back-up.
 
 2. Voer de volgende stappen uit en klik op **Voltooien** om de bewerking te voltooien.
 
@@ -90,7 +90,7 @@ Er zijn twee manieren om de back-up van bestanden en mappen niet meer te beveili
 
 - **Stop de beveiliging en bewaar back-upgegevens.**
   - Met deze optie worden alle toekomstige back-uptaken van de beveiliging gestopt.
-  - Azure Backup-service behoudt alle bestaande herstelpunten voor onbepaalde tijd. Herstelpunten worden niet gecontroleerd op vervaldatum totdat de beveiliging is hervat.
+  - Azure Backup-service blijft alle bestaande herstelpunten behouden.  
   - U de back-upgegevens herstellen voor niet-verlopen herstelpunten.
   - Als u besluit de beveiliging te hervatten, u de optie *Back-upschema opnieuw inschakelen.* Daarna worden gegevens bewaard op basis van het nieuwe bewaarbeleid.
 - **Stop de beveiliging en verwijder back-upgegevens**.
@@ -167,7 +167,6 @@ Een wachtwoordzin wordt gebruikt om gegevens te versleutelen en te decoderen ter
 
     ![Passzin genereren.](./media/backup-azure-manage-mars/passphrase2.png)
 - Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een alternatieve locatie (andere dan de bronmachine), bij voorkeur in de Azure Key Vault. Houd alle wachtwoordzinnen bij als er meerdere machines worden ondersteund met de MARS-agenten.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

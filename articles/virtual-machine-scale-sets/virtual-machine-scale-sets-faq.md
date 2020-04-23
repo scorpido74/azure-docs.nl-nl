@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273712"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870222"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 
@@ -343,7 +343,7 @@ In de Azure Portal u een afzonderlijke instantie of bulkverwijderen verwijderen 
  
 In Azure CLI hebt u alleen de mogelijkheid om een afzonderlijke instantie te verwijderen. Als u probeert een enkele instantie met een vergrendeling te verwijderen, wordt het slot gerespecteerd en u die instantie niet verwijderen. 
 
-## <a name="extensions"></a>Extensies
+## <a name="extensions"></a>Uitbreidingen
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>Hoe verwijder ik een extensie voor virtuele machineschaalsets?
 
@@ -445,7 +445,7 @@ Er zijn twee belangrijke manieren om het wachtwoord voor VM's in schaalsets te w
 
     Werk de beheerdersreferenties rechtstreeks in het model van de schaalset bij (bijvoorbeeld met de Azure Resource Explorer, PowerShell of CLI). Zodra de schaalset is bijgewerkt, hebben alle nieuwe VM's de nieuwe referenties. Bestaande VM's hebben alleen de nieuwe referenties als ze opnieuw worden weergegeven.
 
-- Stel het wachtwoord opnieuw in met de VM-toegangsextensies.
+- Stel het wachtwoord opnieuw in met de VM-toegangsextensies. Zorg ervoor dat u de wachtwoordvereisten volgt zoals [hier](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)beschreven.
 
     Gebruik het volgende PowerShell-voorbeeld:
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671635"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869945"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Overzicht van Azure App Service-diagnose
 
@@ -31,6 +31,10 @@ Ga voor Azure-functies naar uw functie-app en klik in de bovenste navigatie op *
 In de startpagina voor diagnostische gegevens van App Service u de categorie kiezen die het probleem met uw app het beste beschrijft met behulp van de zoekwoorden in elke startpaginategel. Op deze pagina vindt u **ook Diagnostische hulpprogramma's voor Windows-apps.** Zie [Diagnostische hulpprogramma's (alleen voor Windows-apps).](#diagnostic-tools-only-for-windows-app)
 
 ![Startpagina](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> Als uw app is uitgeschakeld of traag presteert, u [een profileringstraceer om](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html) de hoofdoorzaak van het probleem te identificeren. Profilering is licht van gewicht en is ontworpen voor productiescenario's.
+>
 
 ## <a name="interactive-interface"></a>Interactieve interface
 

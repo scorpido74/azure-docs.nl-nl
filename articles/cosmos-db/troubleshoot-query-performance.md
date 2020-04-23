@@ -4,22 +4,22 @@ description: Meer informatie over het identificeren, diagnosticeren en oplossen 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/20/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131384"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870456"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
 In dit artikel wordt een algemene aanbevolen aanpak gevolgd voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u de stappen in dit artikel niet als een volledige verdediging tegen potentiële queryproblemen moet beschouwen, hebben we hier de meest voorkomende prestatietips opgenomen. U moet dit artikel gebruiken als startplaats voor het oplossen van problemen met langzame of dure query's in de SQL-api (Azure Cosmos DB Core). U ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om query's te identificeren die traag zijn of die aanzienlijke hoeveelheden doorvoer verbruiken.
 
-U queryoptimalisaties in Azure Cosmos DB in grote lijnen categoriseren: 
+U queryoptimalisaties in Azure Cosmos DB in grote lijnen categoriseren:
 
 - Optimalisaties die de kosten van de query (Request Unit) verlagen
 - Optimalisaties die alleen de latentie verminderen
@@ -28,19 +28,18 @@ Als u de RU-kosten van een query vermindert, zult u vrijwel zeker ook de latenti
 
 In dit artikel vindt u voorbeelden die [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) u opnieuw maken met behulp van de voedingsgegevensset.
 
-## <a name="important"></a>Belangrijk
+## <a name="common-sdk-issues"></a>Veelvoorkomende SDK-problemen
 
 - Volg de [prestatietips voor](performance-tips.md)de beste prestaties.
     > [!NOTE]
     > Voor betere prestaties raden we windows 64-bits hostverwerking aan. De SQL SDK bevat een native ServiceInterop.dll om query's lokaal te ontlopen en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waar ServiceInterop.dll niet beschikbaar is, wordt een extra netwerkoproep naar de gateway gemaakt om de geoptimaliseerde query te krijgen.
-- Azure Cosmos DB-query's ondersteunen geen minimum aantal items.
-    - Code moet elk paginaformaat verwerken, van nul tot het maximale aantal items.
-    - Het aantal items op een pagina kan en zal zonder kennisgeving veranderen.
-- Lege pagina's worden verwacht voor query's en kunnen op elk gewenst moment worden weergegeven.
-    - Lege pagina's worden weergegeven in de SDK's, omdat die belichting meer mogelijkheden biedt om een query te annuleren. Het maakt ook duidelijk dat de SDK meerdere netwerkgesprekken voert.
-    - Lege pagina's kunnen worden weergegeven in bestaande workloads omdat een fysieke partitie is gesplitst in Azure Cosmos DB. De eerste partitie heeft nul resultaten, waardoor de lege pagina.
-    - Lege pagina's worden veroorzaakt door dat de backend een query voorrang krijgt, omdat de query meer dan een vaste hoeveelheid tijd op de backend in beslag neemt om de documenten op te halen. Als Azure Cosmos DB een query voorloopt, wordt een vervolgtoken weergegeven waarmee de query kan worden voortgezet.
-- Zorg ervoor dat u de query volledig afvoer. Kijk naar de SDK monsters, en gebruik een `while` lus op `FeedIterator.HasMoreResults` om de hele query drain.
+- U `MaxItemCount` een voor uw query's instellen, maar u geen minimumaantal objecten opgeven.
+    - Code moet elke paginagrootte verwerken, `MaxItemCount`van nul tot de .
+    - Het aantal items op een pagina is `MaxItemCount`altijd kleiner dan het opgegeven . Echter, `MaxItemCount` is strikt een maximum en er kunnen minder resultaten dan dit bedrag.
+- Soms kunnen query's lege pagina's hebben, zelfs als er resultaten zijn op een toekomstige pagina. Redenen hiervoor kunnen zijn:
+    - De SDK kan meerdere netwerkgesprekken voeren.
+    - Het kan lang duren voordat de documenten zijn opgehaald.
+- Alle query's hebben een vervolgtoken waarmee de query kan worden voortgezet. Zorg ervoor dat u de query volledig afvoer. Kijk naar de SDK monsters, en gebruik een `while` lus op `FeedIterator.HasMoreResults` om de hele query drain.
 
 ## <a name="get-query-metrics"></a>Querystatistieken opvragen
 
@@ -61,6 +60,8 @@ Raadpleeg de volgende secties om inzicht te krijgen in de relevante queryoptimal
 - [Neem de benodigde paden op in het indexeringsbeleid.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Begrijpen welke systeemfuncties de index gebruiken.](#understand-which-system-functions-use-the-index)
+
+- [Begrijpen welke geaggregeerde query's de index gebruiken.](#understand-which-aggregate-queries-use-the-index)
 
 - [Query's wijzigen met zowel een filter als een order-door-clausule.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
@@ -190,7 +191,7 @@ U op elk gewenst moment eigenschappen toevoegen aan het indexeringsbeleid, zonde
 
 Als een expressie kan worden vertaald in een reeks tekenreekswaarden, kan deze de index gebruiken. Anders kan het niet.
 
-Hier is de lijst met tekenreeksfuncties die de index kunnen gebruiken:
+Hier is de lijst met enkele veelvoorkomende tekenreeksfuncties die de index kunnen gebruiken:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -207,6 +208,50 @@ Hieronder volgen enkele veelvoorkomende systeemfuncties die de index niet gebrui
 ------
 
 Andere delen van de query kunnen de index nog steeds gebruiken, ook al zijn de systeemfuncties dat niet.
+
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Begrijpen welke geaggregeerde query's de index gebruiken
+
+In de meeste gevallen worden de indexfuncties voor geaggregeerde systeemfuncties in Azure Cosmos DB gebruikt. Afhankelijk van de filters of aanvullende clausules in een geaggregeerde query kan de queryengine echter nodig zijn om een groot aantal documenten te laden. Doorgaans past de queryengine gelijkheids- en bereikfilters eerst toe. Na het toepassen van deze filters kan de queryengine extra filters evalueren en de resterende documenten laden om het aggregaat te berekenen, indien nodig.
+
+Gezien deze twee voorbeeldquery's is de query `CONTAINS` met zowel een filter voor gelijkheid als systeemfunctie over het algemeen efficiënter dan een query met alleen een `CONTAINS` systeemfunctiefilter. Dit komt omdat het gelijkheidsfilter eerst wordt toegepast en de index `CONTAINS` gebruikt voordat documenten moeten worden geladen voor het duurdere filter.
+
+Query met `CONTAINS` alleen filter - hogere RU-kosten:
+
+```sql
+SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+Query met zowel `CONTAINS` gelijkheidsfilter als filter - lagere RU-kosten:
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+Hier volgen aanvullende voorbeelden van aggregatenquery's die de index niet volledig zullen gebruiken:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Query's met systeemfuncties die de index niet gebruiken
+
+U moet verwijzen naar de pagina van de betreffende [systeemfunctie](sql-query-system-functions.md) om te zien of de index wordt gebruikt.
+
+```sql
+SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Query's samenvoegen met door de gebruiker gedefinieerde functies (UDF's)
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>Query's met GROEP DOOR
+
+De RU-heffing van `GROUP BY` zal toenemen naarmate `GROUP BY` de kardinaliteit van de eigenschappen in de clausule toeneemt. In dit voorbeeld moet de queryengine elk `c.foodGroup = "Sausages and Luncheon Meats"` document laden dat overeenkomt met het filter, zodat de RU-kosten naar verwachting hoog zijn.
+
+```sql
+SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+```
+
+Als u van plan bent om vaak dezelfde geaggregeerde query's uit te voeren, kan het efficiënter zijn om een real-time gematerialiseerde weergave te bouwen met de [Azure Cosmos DB-wijzigingsfeed](change-feed.md) dan het uitvoeren van afzonderlijke query's.
 
 ### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Query's wijzigen met zowel een filter als een order-door-clausule
 

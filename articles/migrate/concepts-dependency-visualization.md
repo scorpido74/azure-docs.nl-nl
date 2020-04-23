@@ -3,12 +3,12 @@ title: Afhankelijkheidsanalyse in Azure Migrate Server Assessment
 description: Beschrijft hoe u afhankelijkheidsanalyse gebruiken voor beoordeling met Azure Migrate Server Assessment.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537743"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024758"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheidsanalyse
 
@@ -51,7 +51,7 @@ Voor analyse op basis van agenten gebruikt Server Assessment de [servicekaartopl
 
 ### <a name="collected-data"></a>Verzamelde gegevens
 
-Voor op agenten gebaseerde visualisatie worden de volgende gegevens verzameld:
+Voor analyse op basis van agenten worden de volgende gegevens verzameld:
 
 - Naam van de sourcemachineserver, proces, naam van de toepassing.
 - Naam, proces, toepassingsnaam en poort van doelmachineserver.

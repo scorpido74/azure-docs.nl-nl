@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c4cb553ee7edc92b5cb3d319631a985de476b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159303"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Zelfstudie: Azure Active Directory-integratie met CS-sterren
 
@@ -111,7 +111,7 @@ Als u eenmalige aanmelding van Azure AD met CS Stars wilt configureren, voert u 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [klantondersteuningsteam van CS Stars](http://www.riskonnectclearsight.com/support/) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [klantondersteuningsteam van CS Stars](https://riskonnect.com/support/) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
@@ -129,7 +129,7 @@ Als u eenmalige aanmelding van Azure AD met CS Stars wilt configureren, voert u 
 
 ### <a name="configure-cs-stars-single-sign-on"></a>Eenmalige aanmelding configureren voor CS Stars
 
-Als u eenmalige aanmelding aan de zijde van **CS Stars** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste gekopieerde URL's uit de Azure-portal verzenden naar het [ondersteuningsteam van CS Stars](http://www.riskonnectclearsight.com/support/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **CS Stars** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste gekopieerde URL's uit de Azure-portal verzenden naar het [ondersteuningsteam van CS Stars](https://riskonnect.com/support/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -184,7 +184,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 ### <a name="create-cs-stars-test-user"></a>Testgebruiker maken voor CS Stars
 
-In dit gedeelte gaat u in CS Stars een gebruiker maken met de naam Britta Simon. Werk samen met het [ondersteuningsteam van CS Stars](http://www.riskonnectclearsight.com/support/) om de gebruikers toe te voegen aan het CS Stars-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In dit gedeelte gaat u in CS Stars een gebruiker maken met de naam Britta Simon. Werk samen met het [ondersteuningsteam van CS Stars](https://riskonnect.com/support/) om de gebruikers toe te voegen aan het CS Stars-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

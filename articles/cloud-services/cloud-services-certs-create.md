@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811456"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024605"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Overzicht van certificaten voor Azure Cloud Services
 Certificaten worden gebruikt in Azure voor cloudservices[(servicecertificaten)](#what-are-service-certificates)en voor het verifiëren met de beheer-API[(beheercertificaten).](#what-are-management-certificates) In dit onderwerp vindt u een algemeen overzicht van beide certificaattypen, hoe u [deze maken](#create) en implementeren in Azure.
 
 Certificaten die in Azure worden gebruikt, zijn x.509 v3-certificaten en kunnen worden ondertekend door een ander vertrouwd certificaat of kunnen zelf worden ondertekend. Een zelfondertekend certificaat wordt ondertekend door de eigen maker, daarom wordt het niet standaard vertrouwd. In de meeste browsers kan dit probleem worden genegeerd. U mag alleen zelfondertekende certificaten gebruiken bij het ontwikkelen en testen van uw cloudservices. 
 
-Certificaten die door Azure worden gebruikt, kunnen een privé- of een openbare sleutel bevatten. Certificaten hebben een duimafdruk die een middel biedt om ze op een eenduidige manier te identificeren. Deze duimafdruk wordt gebruikt in het [Azure-configuratiebestand](cloud-services-configure-ssl-certificate-portal.md) om te bepalen welk certificaat een cloudservice moet gebruiken. 
+Certificaten die door Azure worden gebruikt, kunnen een openbare sleutel bevatten. Certificaten hebben een duimafdruk die een middel biedt om ze op een eenduidige manier te identificeren. Deze duimafdruk wordt gebruikt in het [Azure-configuratiebestand](cloud-services-configure-ssl-certificate-portal.md) om te bepalen welk certificaat een cloudservice moet gebruiken. 
 
 >[!Note]
 >Azure Cloud Services accepteert geen AES256-SHA256 versleuteld certificaat.
@@ -51,7 +51,7 @@ Er is een limiet van 100 beheercertificaten per abonnement. Er is ook een limiet
 U elk hulpprogramma gebruiken dat beschikbaar is om een zelfondertekend certificaat te maken, zolang ze zich aan deze instellingen houden:
 
 * Een X.509 certificaat.
-* Bevat een privésleutel.
+* Bevat een openbare sleutel.
 * Gemaakt voor sleuteluitwisseling (.pfx-bestand).
 * De onderwerpnaam moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot de cloudservice.
 

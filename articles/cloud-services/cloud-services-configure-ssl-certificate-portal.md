@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811675"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024843"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS configureren voor een toepassing in Azure
 
@@ -32,7 +32,7 @@ Als u TLS voor een toepassing wilt configureren, moet u eerst een TLS/SSL-certif
 
 Het certificaat moet voldoen aan de volgende vereisten voor TLS/SSL-certificaten in Azure:
 
-* Het certificaat moet een privésleutel bevatten.
+* Het certificaat moet een openbare sleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleuteluitwisseling, exporteerbaar naar een bestand voor persoonlijke informatie-uitwisseling (.pfx).
 * De onderwerpnaam van het certificaat moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot de cloudservice. U geen TLS/SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het cloudapp.net domein. U moet een aangepaste domeinnaam aanschaffen om te gebruiken wanneer u toegang krijgt tot uw service. Wanneer u een certificaat aanvraagt bij een CA, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die wordt gebruikt om toegang te krijgen tot uw toepassing. Als uw aangepaste domeinnaam bijvoorbeeld **contoso.com,** zou u een certificaat aanvragen bij uw CA voor ***.contoso.com** of **\.www contoso.com**.
 * Het certificaat moet minimaal 2048-bits versleuteling gebruiken.

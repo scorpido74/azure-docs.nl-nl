@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886378"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868669"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Beheerderstoestemming op het Microsoft-identiteitsplatform
 
-Voor sommige machtigingen is toestemming van een beheerder vereist voordat deze binnen een tenant kunnen worden verleend.  U ook het eindpunt voor beheerderstoestemming gebruiken om machtigingen toe te kennen aan een hele tenant.  
+Voor sommige machtigingen is toestemming van een beheerder vereist voordat deze binnen een tenant kunnen worden verleend.  U ook het eindpunt voor beheerderstoestemming gebruiken om machtigingen toe te kennen aan een hele tenant.
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: de gebruiker aanmelden bij uw app
 
@@ -33,15 +33,15 @@ Wanneer u de gebruiker aanmeldt bij uw app, u de organisatie identificeren waart
 
 Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organisatie, u de gebruiker doorverwijzen naar het eindpunt van de *toestemming van*de microsoft-identiteitsplatformbeheerder.
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 | `client_id` | Vereist | De **toepassings-id (client)** die de [Azure-portal – App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring toegewezen aan uw app. |
 | `redirect_uri` | Vereist |De omleiding URI waar u wilt dat het antwoord wordt verzonden voor uw app te verwerken. Het moet precies overeenkomen met een van de omleiding URI's die u geregistreerd in de app registratie portal. |
 | `state` | Aanbevolen | Een waarde die is opgenomen in het verzoek en die ook wordt geretourneerd in het tokenantwoord. Het kan een reeks van elke inhoud die u wilt. Gebruik de status om informatie te coderen over de status van de gebruiker in de app voordat het verificatieverzoek is ingediend, zoals de pagina of weergave waarop ze zich bevonden. |
-|`scope`        | Vereist      | Hiermee definieert u de set machtigingen die door de toepassing worden aangevraagd. Dit kan statisch zijn (met behulp van /.default) of dynamische scopes.  Dit kan de OIDC`openid`scopes ( , `profile`, ) `email`omvatten. | 
+|`scope`        | Vereist      | Hiermee definieert u de set machtigingen die door de toepassing worden aangevraagd. Dit kan statisch zijn (met behulp van /.default) of dynamische scopes.  Dit kan de OIDC`openid`scopes ( , `profile`, ) `email`omvatten. |
 
 
 Op dit moment vereist Azure AD dat een tenantbeheerder zich aanmeldt om de aanvraag te voltooien. De beheerder wordt gevraagd alle machtigingen goed te keuren `scope` die u in de parameter hebt aangevraagd.  Als u een statische`/.default`( ) waarde hebt gebruikt, werkt deze zoals het eindpunt v1.0-beheerderstoestemming en vraagt u toestemming voor alle scopes die in de vereiste machtigingen voor de app zijn gevonden.

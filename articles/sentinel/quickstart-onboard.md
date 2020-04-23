@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bcb6cd7393419fb8fc75decb00a8f4165d15668c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77581546"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025268"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snelstart: Azure Sentinel aan boord
 
 In deze quickstart leert u hoe u Azure Sentinel aan boord nemen. 
 
-Als u Azure Sentinel aan boord wilt hebben, moet u Azure Sentinel eerst inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die uit de doos beschikbaar zijn en realtime integratie bieden, waaronder Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App-beveiliging en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U ook algemene gebeurtenisindeling, Syslog of REST-API gebruiken om uw gegevensbronnen te verbinden met Azure Sentinel.  
+Als u Azure Sentinel aan boord wilt hebben, moet u Azure Sentinel eerst inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die uit de doos beschikbaar zijn en realtime integratie bieden, waaronder Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U ook algemene gebeurtenisindeling, Syslog of REST-API gebruiken om uw gegevensbronnen te verbinden met Azure Sentinel.  
 
 Nadat u uw gegevensbronnen hebt verbonden, u kiezen uit een galerij met vakkundig gemaakte werkmappen die inzichten op basis van uw gegevens weergeven. Deze werkmappen kunnen eenvoudig worden aangepast aan uw behoeften.
 
@@ -55,7 +55,7 @@ Nadat u uw gegevensbronnen hebt verbonden, u kiezen uit een galerij met vakkundi
 
    >[!NOTE] 
    > - Standaardwerkruimten die zijn gemaakt door Azure Security Center, worden niet weergegeven in de lijst. U Azure Sentinel er niet op installeren.
-   > - Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics,](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) behalve de regio's China, Duitsland en Azure Government. Gegevens die worden gegenereerd door Azure Sentinel (zoals incidenten, bladwijzers en waarschuwingsregels, die sommige klantgegevens uit deze werkruimten kunnen bevatten) worden opgeslagen in West-Europa (voor werkruimten in Europa) of Oost-VS (voor alle werkruimten in de VS, evenals andere regio behalve Europa).
+   > - Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics,](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) behalve de regio's China, Duitsland en Azure Government. Gegevens die worden gegenereerd door Azure Sentinel (zoals incidenten, bladwijzers en waarschuwingsregels, die sommige klantgegevens uit deze werkruimten kunnen bevatten) worden opgeslagen in West-Europa (voor werkruimten in Europa) of Oost-VS (voor alle werkruimten in de VS, evenals elke andere regio behalve Europa).
 
 1. Selecteer **Azure Sentinel toevoegen**.
   
@@ -64,7 +64,7 @@ Nadat u uw gegevensbronnen hebt verbonden, u kiezen uit een galerij met vakkundi
 
 Azure Sentinel maakt de verbinding met services en apps door verbinding te maken met de service en de gebeurtenissen en logboeken door te sturen naar Azure Sentinel. Voor machines en virtuele machines u de Azure Sentinel-agent installeren die de logboeken verzamelt en doorstuurt naar Azure Sentinel. Voor firewalls en proxy's maakt Azure Sentinel gebruik van een Linux Syslog-server. De agent is geïnstalleerd op het en van waaruit de agent verzamelt de logbestanden en stuurt ze door naar Azure Sentinel. 
  
-1. Klik **op Gegevensverzameling**.
+1. Klik **op Gegevensconnectoren**.
 2. Er is een tegel voor elke gegevensbron die u verbinden.<br>
 Klik bijvoorbeeld op **Azure Active Directory**. Als u deze gegevensbron verbindt, streamt u alle logboeken van Azure AD naar Azure Sentinel. U selecteren welk type logboeken u wilt krijgen - aanmeldingslogboeken en/of controlelogboeken. <br>
 Onderaan geeft Azure Sentinel aanbevelingen voor welke werkmappen u voor elke connector moet installeren, zodat u onmiddellijk interessante inzichten over uw gegevens krijgen. <br> Volg de installatie-instructies of [raadpleeg de relevante verbindingsgids](connect-data-sources.md) voor meer informatie. Zie [Microsoft-services verbinden](connect-data-sources.md)voor informatie over gegevensconnectoren.

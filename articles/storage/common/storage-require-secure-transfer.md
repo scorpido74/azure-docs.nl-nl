@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/12/2019
+ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457442"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870520"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Veilige overdracht vereisen om veilige verbindingen te garanderen
 
@@ -25,7 +25,7 @@ Wanneer een veilige overdracht vereist is, moet een aanroep naar een Azure Stora
 
 Verbinding maken met een Azure File-share via SMB zonder versleuteling mislukt wanneer beveiligde overdracht vereist is voor het opslagaccount. Voorbeelden van onveilige verbindingen zijn die gemaakt via SMB 2.1, SMB 3.0 zonder encryptie, of sommige versies van de Linux SMB-client.
 
-Standaard is de vereiste eigenschap **Secure transfer** ingeschakeld wanneer u een opslagaccount maakt in Azure-portal. Het is echter uitgeschakeld wanneer u een opslagaccount met SDK maakt.
+Standaard is de vereiste eigenschap **Secure transfer** ingeschakeld wanneer u een opslagaccount maakt.
 
 > [!NOTE]
 > Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinnamen, wordt deze optie niet toegepast wanneer u een aangepaste domeinnaam gebruikt. En klassieke opslagaccounts worden niet ondersteund.
@@ -54,11 +54,11 @@ U de vereiste eigenschap **Secure transfer** inschakelen wanneer u een opslagacc
 Als u een veilige overdracht programmatisch wilt vereisen, stelt u de eigenschap _supportsHttpsTrafficOnly_ in op het opslagaccount. U deze eigenschap instellen met behulp van de REST API, clientbibliotheken of hulpprogramma's voor storage resource provider rest:
 
 * [REST-API](/rest/api/storagerp/storageaccounts)
-* [Powershell](/powershell/module/az.storage/set-azstorageaccount)
+* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
 * [CLI](/cli/azure/storage/account)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
-* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+* [Python-SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
 ## <a name="require-secure-transfer-with-powershell"></a>Veilige overdracht vereisen met PowerShell

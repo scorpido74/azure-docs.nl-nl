@@ -1,24 +1,18 @@
 ---
 title: Windows VM's maken en beheren in Azure die meerdere NIC's gebruiken
 description: Meer informatie over het maken en beheren van een Windows VM waaraan meerdere NIC's zijn gekoppeld met Azure PowerShell- of Resource Manager-sjablonen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249982"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870260"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine maken en beheren met meerdere NIC's
 Virtuele machines (VM's) in Azure kunnen meerdere virtuele netwerkinterfacekaarten (NIC's) aan hen koppelen. Een veelvoorkomend scenario is om verschillende subnetten voor front-end en back-end connectiviteit te hebben. U meerdere NIC's op een VM koppelen aan meerdere subnetten, maar die subnetten moeten allemaal in hetzelfde virtuele netwerk (vNet) zijn. In dit artikel wordt beschreven hoe u een VM maakt waaraan meerdere NIC's zijn gekoppeld. U leert ook hoe u NIC's toevoegen of verwijderen uit een bestaande virtuele machine. Verschillende [VM-formaten](sizes.md) ondersteunen een wisselend aantal NIC's, zodat de grootte van uw VM dienovereenkomstig.

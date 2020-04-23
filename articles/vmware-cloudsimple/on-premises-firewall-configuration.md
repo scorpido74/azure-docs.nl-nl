@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082964"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868145"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw CloudSimple Private Cloud-omgeving en -toepassingen van on-premises
 
@@ -35,7 +35,7 @@ Om toegang te krijgen tot uw Private Cloud vCenter en NSX-T-manager, moeten poor
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Poorten die nodig zijn voor het gebruik van on-premises active directory als identiteitsbron
 
-Als u on-premises active directory wilt configureren als een identiteitsbron in Private Cloud vCenter, moeten poorten die in de tabel zijn gedefinieerd, worden geopend.  Zie [Azure AD gebruiken als identiteitsprovider voor vCenter op CloudSimple Private Cloud](https://docs.azure.cloudsimple.com/azure-ad/) voor configuratiestappen.
+Als u on-premises active directory wilt configureren als een identiteitsbron in Private Cloud vCenter, moeten poorten die in de tabel zijn gedefinieerd, worden geopend.  Zie [Azure AD gebruiken als identiteitsprovider voor vCenter op CloudSimple Private Cloud](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/) voor configuratiestappen.
 
 | Poort         | Bron                           | Doel                                         | Doel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ Voor virtuele workloads die op Private Cloud worden uitgevoerd, moeten poorten w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VLAN's en subnetten maken en beheren](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Verbinding maken met on-premises netwerk via Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Site-to-Site VPN instellen van on-premises](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [VLAN's en subnetten maken en beheren](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [Verbinding maken met on-premises netwerk via Azure ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [Site-to-Site VPN instellen van on-premises](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)
