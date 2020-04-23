@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988240"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086025"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -65,6 +65,9 @@ Synchroniseer één bestand:
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
+> [!NOTE]
+> De doelblob *moet* bestaan. Met `azcopy copy` gebruiken om één bestand te kopiëren dat nog niet bestaat in de bestemming. Anders treedt de volgende `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`fout op: .
 
 Hetzelfde als hierboven, maar deze keer, ook berekenen MD5 hash van de bestandsinhoud en op te slaan als de blob's Content-MD5 eigenschap:
 
@@ -164,4 +167,4 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="see-also"></a>Zie ook
 
-- [azcopie](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -1,5 +1,5 @@
 ---
-title: Explanability in geautomatiseerde machine learning
+title: Uitleg in geautomatiseerde ML
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uitleg krijgt over hoe uw geautomatiseerde ML-model het belang van de functie bepaalt en voorspellingen doet bij het gebruik van de Azure Machine Learning SDK.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257161"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086416"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpreteerbaarheid: modeluitleg in geautomatiseerde machine learning
 

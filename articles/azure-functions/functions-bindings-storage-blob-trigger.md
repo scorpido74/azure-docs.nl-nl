@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348976"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084954"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob-opslagtrigger voor Azure-functies
 
@@ -40,7 +40,7 @@ Een andere benadering voor het verwerken van blobs is het schrijven van wachtrij
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die `samples-workitems` een logboek schrijft wanneer een blob in de container wordt toegevoegd of bijgewerkt.
 
@@ -196,7 +196,7 @@ public void run(
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de volgende kenmerken om een blobtrigger te configureren:
 
@@ -286,7 +286,7 @@ In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `Bl
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
@@ -352,7 +352,7 @@ Als de blob de naam `name` * {20140101}-soundfile.mp3*heeft, is de variabele waa
 
 ## <a name="metadata"></a>Metagegevens
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
@@ -391,7 +391,7 @@ Azure Functions slaat blob-ontvangstbewijzen op in een container met de naam *az
 * De blobnaam
 * De ETag (een blob-versie-id, bijvoorbeeld: "0x8D1DC6E70A277EF")
 
-Als u opwerking van een blob wilt forceren, verwijdert u het blob-ontvangstbewijs voor die blob handmatig uit de container *azure-webjobs-hosts.* Hoewel opwerking mogelijk niet onmiddellijk plaatsvindt, is het gegarandeerd op een later tijdstip mogelijk.
+Als u opwerking van een blob wilt forceren, verwijdert u het blob-ontvangstbewijs voor die blob handmatig uit de container *azure-webjobs-hosts.* Hoewel opwerking mogelijk niet onmiddellijk plaatsvindt, is het gegarandeerd op een later tijdstip mogelijk. Om de blob *met scaninfo* onmiddellijk opnieuw te verwerken, kan de blob *van azure-webjobs-hosts/blobscaninfo* worden bijgewerkt. Blobs met een laatste gewijzigde `LatestScan` tijdstempel nadat de eigenschap opnieuw worden gescand.
 
 ## <a name="poison-blobs"></a>Gif blobs
 

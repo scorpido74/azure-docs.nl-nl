@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/17/2020
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 571f4421a5d890fab31eda0125802d33918144ef
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726380"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084121"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Meraki Dashboard
 
@@ -57,7 +57,6 @@ Als u de integratie van Meraki Dashboard in Azure AD wilt configureren, moet u M
 1. Typ **Meraki-dashboard** in het zoekvak in de sectie **Toevoegen in de galerie.**
 1. Selecteer **Meraki Dashboard** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Azure AD-aanmelding voor Meraki-dashboard configureren en testen
 
 Azure AD SSO configureren en testen met Meraki Dashboard met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in het Meraki-dashboard.
@@ -81,8 +80,14 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **BasisSAML-configuratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
+1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
+     
+    Typ in het tekstvak **URL beantwoorden** een URL met het volgende patroon:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
+    > [!NOTE]
+    > De waarde van de antwoord-URL is niet de echte waarde. Werk deze waarde bij met de werkelijke URL-waarde van het antwoord, die later in de zelfstudie wordt uitgelegd.
+
+1. Klik op de knop **Opslaan**.
 
 1. Meraki Dashboard-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -92,8 +97,8 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     
     | Naam | Bronkenmerk|
     | ---------------| --------- |
-    | gebruikersnaam | user.userprincipalname |
-    | role | user.assignedroles |
+    | `https://dashboard.meraki.com/saml/attributes/username` | user.userprincipalname |
+    | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
 
     > [!NOTE]
     > Zie [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)voor meer informatie over het configureren van rollen in Azure AD.
@@ -106,7 +111,7 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-1. Kopieer in de sectie **Meraki Dashboard instellen** de juiste URL(s) op basis van uw vereiste.
+1. Kopieer in de sectie **Meraki Dashboard instellen** de URL-waarde van afmelden en sla deze op uw computer op.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -156,7 +161,7 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
     ![Meraki-dashboardconfiguratie](./media/meraki-dashboard-tutorial/configure3.png)
 
-1. Plak de **thumbprint-waarde,** die u hebt gekopieerd van de Azure-portal in **het tekstvak SHA1-vingerafdruk van X.590-cert SHA1.** Klik vervolgens op **Opslaan**.
+1. Plak de **thumbprint-waarde,** die u hebt gekopieerd van de Azure-portal in **het tekstvak SHA1-vingerafdruk van X.590-cert SHA1.** Klik vervolgens op **Opslaan**. Na het opslaan wordt de URL van de consument weergegeven. Kopieer de URL-waarde van de consument en plak deze in het tekstvak **van de URL van antwoord** in de sectie **BasisSAML-configuratie** in de Azure-portal.
 
     ![Meraki-dashboardconfiguratie](./media/meraki-dashboard-tutorial/configure4.png)
 
@@ -182,7 +187,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Meraki Dashboard in het toegangspaneel klikt, moet u automatisch worden aangemeld bij het Meraki-dashboard waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

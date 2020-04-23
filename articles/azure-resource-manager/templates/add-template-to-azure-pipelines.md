@@ -3,12 +3,12 @@ title: CI/CD met Azure-pijplijnen en sjablonen
 description: Beschrijft hoe u continue integratie in Azure Pipelines instellen met azure resourcegroepimplementatieprojecten in Visual Studio om Resource Manager-sjablonen te implementeren.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153451"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084648"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sjablonen integreren met Azure-pijplijnen
 
@@ -28,7 +28,7 @@ In dit artikel wordt ervan uitgegaan dat uw Visual Studio-project en Azure DevOp
 
 * U hebt een Azure DevOps-organisatie. Als je er geen hebt, [maak er dan gratis een.](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) Als uw team al een Azure DevOps-organisatie heeft, controleert u of u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
 
-* U hebt een [serviceverbinding](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) met uw Azure-abonnement geconfigureerd. De taken in de pijplijn worden uitgevoerd onder de identiteit van de serviceprincipal. Zie [Een Ontwikkelaarsproject maken](template-tutorial-use-azure-pipelines.md#create-a-devops-project)voor stappen om de verbinding te maken.
+* U hebt een [serviceverbinding](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) met uw Azure-abonnement geconfigureerd. De taken in de pijplijn worden uitgevoerd onder de identiteit van de serviceprincipal. Zie [Een Ontwikkelaarsproject maken](deployment-tutorial-pipeline.md#create-a-devops-project)voor stappen om de verbinding te maken.
 
 * U hebt een Visual Studio-project dat is gemaakt op basis van de startersjabloon **Azure Resource Group.** Zie [Azure-brongroepen maken en implementeren via Visual Studio](create-visual-studio-deployment-project.md)voor informatie over het maken van dat type project.
 
@@ -261,4 +261,4 @@ U de pijplijn die momenteel wordt uitgevoerd selecteren om details over de taken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Zelfstudie: Continue integratie van ARM-sjablonen met Azure Pipelines](template-tutorial-use-azure-pipelines.md)voor stapsgewijze procedures voor het gebruik van Azure Pipelines met ARM-sjablonen.
+Zie [Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines](deployment-tutorial-pipeline.md)voor stapsgewijze procedures voor het gebruik van Azure Pipelines.

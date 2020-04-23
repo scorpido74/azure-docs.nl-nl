@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c2cddbc9086c80922fcf9c5d96cd197ab4778
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422527"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Trend Micro Web Security (TMWS)
 
@@ -87,7 +87,7 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     b. Typ een URL in het tekstvak **URL beantwoorden:**`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
 
     > [!NOTE]
-    > De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. Neem contact op met [het Ondersteuningsteam van De Web Security (TMWS)](https://success.trendmicro.com/contact-support-north-america) van Trend Micro Web Security om id-waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. U deze waarden ophalen onder de instellingen van de **serviceprovider voor het azure-beheerportalgebied** op het scherm **Verificatiemethode** voor Azure AD van **Beheer > Directory Services**.
 
 1. De TMWS-toepassing (Trend Micro Web Security) verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -173,7 +173,41 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 ## <a name="configure-trend-micro-web-security-sso"></a>Trend Micro Web Security SSO configureren
 
-Als u de **TMWS-kant (Trend Micro Web Security)** wilt configureren, moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure portal naar [het Ondersteuningsteam van Trend Micro Web Security (TMWS)](https://success.trendmicro.com/contact-support-north-america)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+1. Meld u aan bij de TMWS-beheerconsole en ga naar **Gebruikers beheren** > **& AUTHENTICATION** > **Directory Services**.
+
+1. Klik hier op het bovenste gedeelte van het scherm.
+
+1. Klik in het scherm Verificatiemethode dat wordt weergegeven op **Azure AD**.
+
+1. Klik **op Aan** of **Uit** om te beslissen of de AD-gebruikers van uw organisatie websites via TMWS mogen bezoeken als hun gegevens niet zijn gesynchroniseerd met TMWS.
+
+    > [!NOTE]
+    > Gebruikers die niet zijn gesynchroniseerd vanuit Azure AD, kunnen alleen worden geverifieerd via bekende TMWS-gateways of de speciale poort voor uw organisatie.
+
+1. Voer in de sectie **Instellingen voor identiteitsprovider** de volgende stappen uit:
+
+    a. Plak in het veld **Service-URL** de **URL-waarde aanmelding,** die u hebt gekopieerd vanuit azure-portal
+
+    b. Plak in het **kenmerk aanmeldingsnaam** aan logboeken de naam van de claimgebruiker met het kenmerk **user.onpremisessamaccountname** van de Azure-portal.
+
+    c. Gebruik in het veld **Openbaar SSL-certificaat** het gedownloade certificaat **(Base64)** van de Azure-portal.
+
+1. Voer in de sectie **Synchronisatie-instellingen** de volgende stappen uit:
+
+    a. Gebruik in het veld **Tenant** **directory (tenant)** of **aangepaste domeinnaamwaarde** van de Azure-portal.
+
+    b. In het veld **Toepassings-id** wordt **de id-waarde van toepassing (client)** van de Azure-portal verwijderd.
+
+    c. Gebruik **clientgeheim** van de Azure-portal in het veld **Clientgeheim.**
+
+    d. Selecteer in het veld **Synchronisatieplanning** selecteren om handmatig of volgens een planning te synchroniseren met Azure AD. Als u handmatig kiest, wanneer er wijzigingen zijn in de gebruikersgegevens van Active Directory, vergeet dan niet terug te gaan naar het scherm Directory Services en handmatige synchronisatie uit te voeren, zodat de informatie in TMWS actueel blijft.
+
+    e. Klik **op Verbinding testen** om te controleren of de Azure AD-service kan worden verbonden. 
+    
+    f. Klik op **Opslaan**.
+ 
+ > [!NOTE]
+ > Raadpleeg [dit](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx) document voor meer informatie over het configureren van Trend Micro Web Security met Azure AD.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -192,7 +226,7 @@ Nadat u de Azure AD-service hebt geconfigureerd en Azure AD hebt opgegeven als g
 
 1. Typ uw AD-accountreferenties in de Azure AD-aanmelding. U moet zich met succes aanmelden bij TMWS.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

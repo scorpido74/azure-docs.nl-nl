@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562204"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084988"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren in App-service met GitHub-acties
 
@@ -62,7 +62,7 @@ U ook referenties op app-niveau gebruiken, d.w.z. profiel publiceren voor implem
 4. Nu in het werkstroombestand `.github/workflows/workflow.yml` in uw branch: vervang het geheim voor de invoer `publish-profile` van de actie Azure Web App implementeren.
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -75,7 +75,7 @@ U ook referenties op app-niveau gebruiken, d.w.z. profiel publiceren voor implem
 
 Het instellen van de omgeving kan worden gedaan met behulp van een van de setup-acties.
 
-|**Language**  |**Setup-actie**  |
+|**Taal**  |**Setup-actie**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
@@ -182,7 +182,7 @@ In de volgende voorbeelden wordt het deel van de werkstroom weergegeven dat de w
 ```
 ## <a name="deploy-to-app-service"></a>Implementeren naar App Service
 
-Als u uw code wilt implementeren `azure/webapps-deploy@v1 ` in een App Service-app, gebruikt u de actie. Deze actie heeft vier parameters:
+Als u uw code wilt implementeren `azure/webapps-deploy@v2` in een App Service-app, gebruikt u de actie. Deze actie heeft vier parameters:
 
 | **Parameter**  | **Uitleg**  |
 |---------|---------|
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

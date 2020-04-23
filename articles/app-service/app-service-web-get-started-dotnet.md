@@ -3,14 +3,14 @@ title: 'Snelstart: een C# ASP.NET Core-app maken'
 description: Meer informatie over het uitvoeren van web-apps in Azure App Service door de standaardC#ASP.NET Core-webappsjabloon vanuit Visual Studio te implementeren.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313281"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086042"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Snelstart: een ASP.NET Core-web-app maken in Azure
 
@@ -107,7 +107,7 @@ Volg deze stappen om uw web-app bij te werken en opnieuw te implementeren:
 
 1. Open **Pages** > **Index.cshtml**in **Solution Explorer**onder uw project .
 
-1. Vervang de twee `<div>`-tags door de volgende code:
+1. Vervang de `<div>` volledige tag door de volgende code:
 
    ```HTML
    <div class="jumbotron">

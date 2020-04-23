@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae244d93d679199aaa0bd08891cd34d4ca3a2ddc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74024965"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085107"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerdersrollen in Azure Active Directory (voorbeeld)
 
@@ -35,6 +35,22 @@ Het verlenen van toestemming met aangepaste Azure AD-rollen is een proces in twe
 Zodra u uw roldefinitie hebt gemaakt, u deze aan een gebruiker toewijzen door een roltoewijzing te maken. Een roltoewijzing geeft de gebruiker de machtigingen in een roldefinitie op een opgegeven bereik. Met dit proces in twee stappen u één roldefinitie maken en deze vele malen toewijzen op verschillende scopes. Een bereik definieert de set Azure AD-resources waartoe het rollid toegang heeft. De meest voorkomende scope is organisatiebrede (org-wide) scope. Een aangepaste rol kan worden toegewezen aan het hele kader, wat betekent dat het rollid de rolmachtigingen heeft voor alle resources in de organisatie. Een aangepaste rol kan ook worden toegewezen aan een objectbereik. Een voorbeeld van een objectbereik is één toepassing. Dezelfde rol kan worden toegewezen aan één gebruiker voor alle toepassingen in de organisatie en vervolgens aan een andere gebruiker met een bereik van alleen de Contoso Expense Reports-app.  
 
 Azure AD-ingebouwde en aangepaste rollen werken op concepten die vergelijkbaar zijn met [Azure-toegangsbeheer op basis van azure.](../../role-based-access-control/overview.md) Het [verschil tussen deze twee op rollen gebaseerde toegangscontrolesystemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) is dat Azure RBAC de toegang tot Azure-bronnen zoals virtuele machines of opslag regelt met Azure Resource Management en aangepaste azure-rollen de toegang tot Azure AD-bronnen beheren met behulp van Graph API. Beide systemen maken gebruik van het concept van roldefinities en roltoewijzingen.
+
+### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Hoe Azure AD bepaalt of een gebruiker toegang heeft tot een bron
+
+Hieronder volgen de stappen op hoog niveau die Azure AD gebruikt om te bepalen of u toegang hebt tot een beheerbron. Gebruik deze informatie om toegangsproblemen op te lossen.
+
+1. Een gebruiker (of serviceprincipal) verwerft een token voor het eindpunt microsoft graph of Azure AD Graph.
+
+1. De gebruiker voert een API-aanroep naar Azure Active Directory (Azure AD) via Microsoft Graph of Azure AD Graph met behulp van het uitgegeven token.
+
+1. Afhankelijk van de omstandigheden voert Azure AD een van de volgende acties uit:
+
+    - Evalueert de rollidmaatschappen van de gebruiker op basis van de [wids-claim](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) in het toegangstoken van de gebruiker.
+    - Hiermee haalt u alle roltoewijzingen die van toepassing zijn op de gebruiker, rechtstreeks of via groepslidmaatschap, op de resource waarop de actie wordt uitgevoerd.
+
+1. Azure AD bepaalt of de actie in de API-aanroep is opgenomen in de rollen die de gebruiker voor deze bron heeft.
+1. Als de gebruiker geen rol heeft bij de actie op het gevraagde bereik, wordt er geen toegang verleend. Anders wordt toegang verleend.
 
 ### <a name="role-assignments"></a>Roltoewijzingen
 

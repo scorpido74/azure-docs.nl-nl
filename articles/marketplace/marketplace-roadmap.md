@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261972"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084903"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft commerciële marktplaats roadmap
 
@@ -33,7 +33,7 @@ Zodra een mogelijkheid live is, wordt deze uit de routekaart verwijderd. Functio
 * [Standaardcontract](https://aka.ms/standardcontract)
 * [SaaS Fulfillment API](https://aka.ms/saasapiv2)
 * [Marktplaats geo's en valuta's](https://aka.ms/marketplacegeos)
-* [Inzichten voor verkopers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Inzichten voor verkopers](./partner-center-portal/analytics.md)
 * [Microsoft Build Marketplace-blog](https://aka.ms/marketplacebuildblog)
 * [Marketplace kan updates Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * Partnercentrum: / [Accountaccountmigratie beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [vanuit CPP](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc) [maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)

@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270444"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086433"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen implementeren voor Azure Logic Apps
 
 Nadat u een Azure Resource Manager-sjabloon voor uw logische app hebt gemaakt, u uw sjabloon op de volgende manieren implementeren:
 
-* [Azure-portal](#portal)
+* [Azure Portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure-CLI](#cli)
@@ -30,7 +30,7 @@ Nadat u een Azure Resource Manager-sjabloon voor uw logische app hebt gemaakt, u
 
 Als u een sjabloon voor een logische app automatisch wilt implementeren in Azure, u de volgende knop **Implementeren naar Azure** kiezen, die u aanmeldt bij de Azure-portal en u om informatie over uw logische app vraagt. U vervolgens de nodige wijzigingen aanbrengen in de sjabloon of parameters van de logische app.
 
-[![Implementeren naar Azure](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Implementeren in Azure](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 U wordt bijvoorbeeld gevraagd om de volgende informatie nadat u zich hebt aangemeld bij de Azure-portal:
 
@@ -79,7 +79,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 Zie deze onderwerpen voor meer informatie:
 
-* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 
+* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -91,7 +91,7 @@ Om logische app-sjablonen te implementeren en omgevingen te beheren, gebruiken t
 Zie de volgende onderwerpen en voorbeelden voor meer informatie over continue integratie en continue implementatie (CI/CD) voor Azure Resource Manager-sjablonen met Azure Pipelines:
 
 * [Resourcebeheersjablonen integreren met Azure Pipelines](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [Zelfstudie: Continue integratie voor Azure Resource Manager-sjablonen met Azure Pipelines](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
+* [Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
 * [Voorbeeld: Verbinding maken met Azure Service Bus-wachtrijen vanuit Azure Logic Apps en implementeren met Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voorbeeld: Verbinding maken met Azure Storage-accounts vanuit Azure Logic Apps en implementeren met Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voorbeeld: Een functie-app-actie instellen voor Azure Logic Apps en implementeren met Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

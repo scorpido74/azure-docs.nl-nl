@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283664"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086365"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Evenementenhubs veelgestelde vragen
 
@@ -182,7 +182,7 @@ Bij de tests werden de volgende criteria gebruikt:
 De resultaten geven u een idee van wat er bereikt kan worden met een speciaal Cluster Van Event Hubs. Daarnaast wordt een cluster met dedicated geleverd met de Event Hubs Capture die zijn ingeschakeld voor uw microbatch- en langetermijnretentiescenario's.
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hoe maak ik een dedicated cluster voor eventhubs?
-U maakt een speciaal cluster voor gebeurtenishubs door een [ondersteuningsaanvraag voor quotaverhoging](https://portal.azure.com/#create/Microsoft.Support) in te dienen of door contact op te nemen met het [team van Event Hubs.](mailto:askeventhubs@microsoft.com) Het duurt meestal ongeveer twee weken om het cluster geïmplementeerd en overhandigd te worden door u. Dit proces is tijdelijk totdat een volledige self-serve beschikbaar is gesteld via de Azure-portal- of Azure Resource Manager-sjablonen, die ongeveer twee uur duren om het cluster te implementeren.
+U maakt een speciaal cluster voor gebeurtenishubs door een [ondersteuningsaanvraag voor quotaverhoging](https://portal.azure.com/#create/Microsoft.Support) in te dienen of door contact op te nemen met het [team van Event Hubs.](mailto:askeventhubs@microsoft.com) Het duurt meestal ongeveer twee weken om het cluster geïmplementeerd en overhandigd te worden door u. Dit proces is tijdelijk totdat een volledige self-serve beschikbaar is gesteld via de Azure-portal.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -257,5 +257,5 @@ Zie de pagina [Service Level Agreements](https://azure.microsoft.com/support/leg
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
 * [Overzicht van gebeurtenishubs](event-hubs-what-is-event-hubs.md)
-* [Een Event Hub maken](event-hubs-create.md)
+* [Een gebeurtenishub maken](event-hubs-create.md)
 * [Gebeurtenishubs automatisch opblazen](event-hubs-auto-inflate.md)

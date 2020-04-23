@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216749"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085022"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Zelfstudie: Key Vault-verwijzingen gebruiken in een Java Spring-app
 
@@ -82,7 +82,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault-verwijzing toevoegen aan app-configuratie
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Alle resources**en selecteer vervolgens de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources**en selecteer vervolgens de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
 
 1. Selecteer **Configuratieverkenner**.
 
@@ -140,6 +140,14 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault-referentie te gebruiken
 
+1. Maak een omgevingsvariabele genaamd **APP_CONFIGURATION_ENDPOINT**. Stel de waarde in op het eindpunt voor uw app-configuratiearchief. U vindt het eindpunt op het blade **Access Keys** in de Azure-portal.
+
+1. Open *bootstrap.properties* in de map *resources.* Werk dit bestand bij om het eindpunt app-configuratie te gebruiken, in plaats van een verbindingstekenreeks.
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. *MessageProperties.java openen*. Voeg een nieuwe variabele genaamd *keyVaultMessage*toe:
 
     ```java
@@ -166,7 +174,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 1. Maak een nieuw bestand genaamd *AzureCredentials.java* en voeg onderstaande code toe.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 1. Maak een nieuw bestand genaamd *AppConfiguration.java*. En voeg de code hieronder.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Bouw je Spring Boot applicatie met Maven en voer deze uit, bijvoorbeeld:

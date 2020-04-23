@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758633"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084308"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
 In dit artikel leert u hoe u een Virtual Machine (Red Hat Enterprise Linux) voorbereidt voor gebruik in Azure. De versies van RHEL die in dit artikel worden behandeld zijn 6.7+ en 7.1+. De hypervisors ter voorbereiding die in dit artikel worden behandeld zijn Hyper-V, kernel-based virtual machine (KVM) en VMware. Zie de [Cloud Access-website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) van Red Hat en [RHEL uitvoeren op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)voor meer informatie over geschiktheidsvereisten voor deelname aan het Cloud Access-programma van Red Hat. Zie de [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor manieren om RHEL-afbeeldingen te automatiseren.
@@ -202,7 +202,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand van de Red Hat-web
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -326,7 +326,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand van de Red Hat-web
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # waagent -force -deprovision
 
@@ -477,7 +477,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand van de Red Hat-web
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -608,7 +608,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine in VMwar
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -724,7 +724,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine in VMwar
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

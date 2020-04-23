@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: c19471fee9235faffba12a12d9f92de77f60fd4d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770526"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084818"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-certificeringen en -configuraties die worden uitgevoerd op Microsoft Azure
 
@@ -65,7 +65,7 @@ Verwijzingen:
 | SAP BPC 10,01 MS SP08 | Windows en Linux | | Alle NetWeaver Certified VM-typen<br /> SAP-notitie #2451795 |
 | SAP Business Objects BI-platform | Windows en Linux | | SAP-notitie #2145537 |
 | SAP Data Services 4.2 | | | SAP-notitie #2288344 |
-| SAP Hybris Commerce Platform  | Windows | SQL Server, Oracle | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris Commerce Platform  | SLES 12 of recenter | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris Commerce Platform  | RHEL 7 of meer recent | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce Platform  | Windows | SQL Server, Oracle | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Documentatie](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce Platform  | SLES 12 of recenter | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Documentatie](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce Platform  | RHEL 7 of meer recent | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Documentatie]https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
 | SAP (Hybris) Commerce Platform 1811 en hoger  | Windows, SLES of RHEL | SQL Azure DB | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Documentatie](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

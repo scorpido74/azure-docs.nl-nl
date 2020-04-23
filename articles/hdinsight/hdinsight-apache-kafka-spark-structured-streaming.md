@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/22/2020
+ms.openlocfilehash: 5fa25f54faecbc7caf130ffeb0d24c3d8fef7e09
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117213"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084801"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Spark Structured Streaming gebruiken met Apache Kafka op HDInsight
 
@@ -35,7 +35,7 @@ Wanneer u klaar bent met de stappen in dit document, moet u de clusters verwijde
 
 * Weten hoe u [Jupyter Notebooks](https://jupyter.org/) gebruikt met Apache Spark on HDInsight. Zie het document [Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight](spark/apache-spark-load-data-run-query.md) voor meer informatie.
 
-* Bekend met de programmeertaal [Scala](https://www.scala-lang.org/). De code die wordt gebruikt in deze zelfstudie, is geschreven in Scala.
+* Bekend met de programmeertaal Scala. De code die wordt gebruikt in deze zelfstudie, is geschreven in Scala.
 
 * Kennis van Kafka-onderwerpen. Zie het document [Quickstart: Een Apache Kafka-cluster maken in HDInsight](kafka/apache-kafka-get-started.md) voor meer informatie.
 
@@ -48,7 +48,7 @@ Wanneer u klaar bent met de stappen in dit document, moet u de clusters verwijde
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Gestructureerd streamen met Apache Kafka
 
-Spark Structured Streaming is een streamverwerkingsengine gebaseerd op de Spark SQL-engine. Wanneer u Structured Streaming gebruikt, kunt u streamingquery's schrijven op de manier waarop u ook batchquery's schrijft.
+Spark Structured Streaming is een streamverwerkingsengine gebaseerd op de Spark SQL-engine. Wanneer u Structured Streaming gebruikt, u streamingquery's schrijven op dezelfde manier als batchquery's.
 
 De volgende codefragmenten laten zien hoe u gegevens kunt lezen uit Kafka om deze daarna op te slaan in een bestand. Het eerste fragment betreft een batchbewerking, terwijl het tweede een streamingbewerking is:
 
@@ -277,7 +277,7 @@ In dit voorbeeld wordt uitgelegd hoe spark-gestructureerde streaming met Kafka o
     println("Schema declared")
     ```
 
-1. Selecteer gegevens en start de stroom. Met de volgende opdracht wordt uitgelegd hoe u gegevens uit kafka ophalen met behulp van een batchquery en de resultaten vervolgens schrijven naar HDFS op het Spark-cluster. In dit voorbeeld `select` wordt het bericht (waardeveld) van Kafka opgehaald en wordt het schema erop gebruikt. De gegevens worden vervolgens naar HDFS (WASB of ADL) geschreven in parketformaat. Voer de opdracht in uw volgende Jupyter-cel in.
+1. Selecteer gegevens en start de stroom. Met de volgende opdracht ziet u hoe u gegevens uit Kafka ophaalt met behulp van een batchquery. En schrijf vervolgens de resultaten uit naar HDFS op het Spark-cluster. In dit voorbeeld `select` wordt het bericht (waardeveld) van Kafka opgehaald en wordt het schema erop gebruikt. De gegevens worden vervolgens naar HDFS (WASB of ADL) geschreven in parketformaat. Voer de opdracht in uw volgende Jupyter-cel in.
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ In dit voorbeeld wordt uitgelegd hoe spark-gestructureerde streaming met Kafka o
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de in deze zelfstudie gemaakte resources wilt opschonen, kunt u de resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook het bijbehorende HDInsight-cluster en eventuele andere resources die aan de resourcegroep zijn gekoppeld, verwijderd.
+Als u de in deze zelfstudie gemaakte resources wilt opschonen, kunt u de resourcegroep verwijderen. Als u de brongroep verwijdert, wordt ook het bijbehorende HDInsight-cluster verwijderd. En alle andere resources die zijn gekoppeld aan de resourcegroep.
 
 Ga als volgt te werk om de resourcegroep te verwijderen in Azure Portal:
 
@@ -331,7 +331,7 @@ Ga als volgt te werk om de resourcegroep te verwijderen in Azure Portal:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u met [Apache Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) gegevens kunt lezen uit en wegschrijven naar [Apache Kafka](./kafka/apache-kafka-introduction.md) in HDInsight. Gebruik de volgende koppeling voor informatie over hoe u [Apache Storm](./storm/apache-storm-overview.md) gebruikt met Kafka.
+In deze zelfstudie heb je geleerd hoe je Apache Spark Structured Streaming gebruiken. Om gegevens van Apache Kafka op HDInsight te schrijven en te lezen. Gebruik de volgende koppeling voor informatie over hoe u Apache Storm gebruikt met Kafka.
 
 > [!div class="nextstepaction"]
 > [Apache Storm gebruiken met Apache Kafka](hdinsight-apache-storm-with-kafka.md)

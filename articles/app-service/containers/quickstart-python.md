@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: ea5df6a2d4a972638b52587f9edc868f65e25df5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532745"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085124"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstart: een Python-app maken in Azure App Service op Linux
 
@@ -109,25 +109,25 @@ Met `--sku F1` het argument wordt de web-app gemaakt op de prijscategorie Gratis
 
 U optioneel het `-l <location-name>` `<location_name>` argument opnemen waar een Azure-regio is, zoals **centralus,** **eastasia**, **West-Europe,** **Koreasouth,** **Brazilsouth,** **CentralIndia**, enzovoort. U een lijst met toegestane regio's [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) voor uw Azure-account ophalen door de opdracht uit te voeren.
 
-Het `az webapp up` kan enkele minuten duren voordat de opdracht volledig is uitgevoerd. Tijdens het uitvoeren wordt informatie weergegeven die `<app_name>` vergelijkbaar is met het volgende voorbeeld, waar de eerder opgegeven naam zal zijn:
+Het `az webapp up` kan enkele minuten duren voordat de opdracht volledig is uitgevoerd. Tijdens het uitvoeren wordt informatie weergegeven die `<app-name>` vergelijkbaar is met het volgende voorbeeld, waar de eerder opgegeven naam zal zijn:
 
 <pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
-Creating app '<app-name>' ....
+Creating app '&lt;app-name&gt;' ....
 Configuring default logging for the app, if not already enabled
 Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
-You can launch the app at http://<app-name>.azurewebsites.net
+You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 {
-  "URL": "http://<app-name>.net",
+  "URL": "http://&lt;app-name&gt;.net",
   "appserviceplan": "appsvc_asp_Linux_centralus",
   "location": "eastus",
-  "name": "<app-name>",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
   "resourcegroup": "appsvc_rg_Linux_centralus",
   "runtime_version": "python|3.7",

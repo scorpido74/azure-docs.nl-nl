@@ -2,13 +2,13 @@
 title: Beperkingen voor het benoemen van resources
 description: Toont de regels en beperkingen voor het benoemen van Azure-bronnen.
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981525"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086382"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -534,6 +534,13 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | --- | --- | --- | --- |
 > | Clusters | resourcegroep | 4-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
 > | werkruimten | resourcegroep | 4-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Entiteit | Bereik | Lengte | Geldige tekens |
+> | --- | --- | --- | --- |
+> | oplossingen | werkruimte | N.v.t. | Voor oplossingen die door Microsoft zijn geschreven, moet de naam zich in het patroon begeven:<br>`SolutionType(WorkspaceName)`<br><br>Voor door derden geschreven oplossingen moet de naam in het patroon staan:<br>`SolutionType[WorkspaceName]`<br><br>Een geldige naam is bijvoorbeeld:<br>`AntiMalware(contoso-IT)`<br><br>Het oplossingstype is hoofdlettergevoelig. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 

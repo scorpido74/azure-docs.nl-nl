@@ -6,21 +6,21 @@ ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
-ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279141"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085141"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Achtergrondtaken uitvoeren met WebJobs in Azure App Service
 
 In dit artikel ziet u hoe u WebJobs implementeert met behulp van de [Azure-portal](https://portal.azure.com) om een uitvoerbaar of script te uploaden. Zie [WebJobs implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor informatie over het ontwikkelen en implementeren van WebJobs met Behulp van Visual Studio.
 
 ## <a name="overview"></a>Overzicht
-WebJobs is een functie van [Azure App Service](index.yml) waarmee u een programma of script uitvoeren in dezelfde context als een web-app, API-app of mobiele app. Er zijn geen extra kosten verbonden aan het gebruik van WebJobs.
+WebJobs is een functie van [Azure App Service](index.yml) waarmee u een programma of script uitvoeren in hetzelfde exemplaar als een web-app, API-app of mobiele app. Er zijn geen extra kosten verbonden aan het gebruik van WebJobs.
 
 > [!IMPORTANT]
 > WebJobs wordt nog niet ondersteund voor App Service op Linux.
@@ -80,7 +80,7 @@ when making changes in one don't forget the other two.
    | **Naam** | myContinuousWebJob | Een naam die uniek is in een App Service-app. Moet beginnen met een letter of een getal en mag geen andere speciale tekens bevatten dan "-" en "_". |
    | **Bestand uploaden** | ConsoleApp.zip | Een *.zip-bestand* dat uw uitvoerbare of scriptbestand bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde uitvoerbare of scriptbestandstypen worden weergegeven in de sectie [Ondersteunde bestandstypen.](#acceptablefiles) |
    | **Type** | Continu | De [WebJob-typen](#webjob-types) worden eerder in dit artikel beschreven. |
-   | **Schaal** | Meerdere instantie | Alleen beschikbaar voor Continuous WebJobs. Hiermee bepaalt u of het programma of script op alle instanties of slechts één instantie wordt uitgevoerd. De optie om op meerdere instanties uit te voeren, is niet van toepassing op de [prijzenlagen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Gratis of Gedeeld . | 
+   | **Schalen** | Meerdere instantie | Alleen beschikbaar voor Continuous WebJobs. Hiermee bepaalt u of het programma of script op alle instanties of slechts één instantie wordt uitgevoerd. De optie om op meerdere instanties uit te voeren, is niet van toepassing op de [prijzenlagen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Gratis of Gedeeld . | 
 
 4. Klik op **OK**.
 

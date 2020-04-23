@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0943098041af4c247ccd35715161bfb2e91895
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 972f4119fa17b4449fae4038283a183f097ccc4d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726240"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ally"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Ally
 
@@ -37,7 +37,7 @@ Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Director
 Om aan de slag te gaan, heb je de volgende items nodig:
 
 * Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Ally single sign-on (SSO) ingeschakeld abonnement.
+* Een Ally single sign-on (SSO) ingeschakeld abonnement. Als je geen abonnement hebt, [start je gratis proefperiode.](https://www.ally.io/?utm_source=azure&utm_medium=mktgplace&utm_term=tutorial)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -83,13 +83,13 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ een URL in het tekstvak **AANmeldings-URL:**`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    Typ een URL in het tekstvak **AANmeldings-URL:**`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [ally client support team](mailto:contact@ally.io) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -157,7 +157,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Ally in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Bondgenoot waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

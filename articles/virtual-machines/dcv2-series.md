@@ -7,19 +7,19 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256926"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085719"
 ---
-# <a name="preview-dcsv2-series"></a>Preview: DCsv2-serie
+# <a name="dcsv2-series"></a>DCsv2-serie
 
 
 De DCsv2-serie kan helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen terwijl deze in de openbare cloud worden verwerkt. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G Processor met SGX-technologie. Met de Intel Turbo Boost Technology kunnen deze machines tot 5,0 GHz gaan. DCsv2-serie exemplaren stellen klanten in staat om veilige enclave-gebaseerde applicaties te bouwen om hun code en gegevens te beschermen terwijl deze in gebruik zijn.
 
-Voorbeelden hiervan zijn vertrouwelijke meerpartijengegevens, fraudedetectie, anti-witwaspraktijken, blockchain, analyse van vertrouwelijk gebruik, intelligentieanalyse en vertrouwelijke machine learning.
+Voorbeelden hiervan zijn: vertrouwelijke meerpartijengegevens, fraudedetectie, anti-witwaspraktijken, blockchain, vertrouwelijke gebruiksanalyses, intelligentieanalyse en vertrouwelijke machine learning.
 
 Premium opslag: ondersteund*
 
@@ -41,9 +41,9 @@ Updates voor geheugenbehoud: niet ondersteund
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - Vm's uit de DCsv2-serie zijn `Gen2` generatie 2 [VM's](./linux/generation-2.md#creating-a-generation-2-vm) en ondersteunen alleen afbeeldingen.
-- Momenteel alleen beschikbaar in het Verenigd Koninkrijk Zuid en Canada Central.
-- Vorige generatie vertrouwelijke Compute VM's: [DC-serie](sizes-previous-gen.md)
-- Dcsv2 VM's maken met Azure Portal [Create VM - Portal](./linux/quick-create-portal.md)
+- Momenteel alleen beschikbaar in het Verenigd Koninkrijk Zuid, Canada Centraal en het Oosten van de VS.
+- Vorige generatie vertrouwelijke Compute VM's: [DC-serie](sizes-previous-gen.md#preview-dc-series)
+- DCsv2 VM's maken met de [Azure-portal](./linux/quick-create-portal.md) of [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)
 
 
 

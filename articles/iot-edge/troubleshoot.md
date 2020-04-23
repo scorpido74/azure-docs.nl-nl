@@ -4,19 +4,19 @@ description: Gebruik dit artikel om standaarddiagnostische vaardigheden voor Azu
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729276"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086518"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -40,20 +40,19 @@ U `check` de opdracht als volgt `--help` uitvoeren of de vlag opnemen om een vol
   iotedge check
   ```
 
-De soorten controles die door het hulpprogramma worden uitgevoerd, kunnen worden geclassificeerd als:
+Met het hulpprogramma voor probleemoplossing worden veel controles uitgevoerd die zijn gesorteerd in de volgende drie categorieën:
 
 * Configuratiecontroles: onderzoekt details die kunnen voorkomen dat Edge-apparaten verbinding maken met de cloud, inclusief problemen met *config.yaml* en de containerengine.
 * Verbindingscontroles: hiermee controleert u of de runtime van IoT Edge toegang heeft tot poorten op het hostapparaat en kunnen alle IoT Edge-componenten verbinding maken met de IoT-hub.
 * Production readiness checks: Looks for recommended production best practices, such as the state of device certificate authority (CA) certificates and module log file configuration.
 
-Zie Ingebouwde functionaliteit voor [probleemoplossing](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)voor een volledige lijst met diagnostische controles.
+Zie [IoT Edge- problemen met problemen oplossen](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)voor informatie over elk van de diagnostische controles die dit hulpprogramma uitvoert, inclusief wat u moet doen als u een foutmelding of waarschuwing krijgt.
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Verzamel foutopsporingsinformatie met de opdracht 'support-bundle' van iotedge
 
 Wanneer u logboeken van een IoT Edge-apparaat moet verzamelen, is de handigste manier om de `support-bundle` opdracht te gebruiken. Standaard verzamelt deze opdracht module, IoT Edge Security Manager en containerenginelogs, 'iotedge check' JSON-uitvoer en andere nuttige foutopsporingsinformatie. Het comprimeert ze in een enkel bestand voor eenvoudig delen. De `support-bundle` opdracht is beschikbaar in [versie 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) en hoger.
 
 Voer `support-bundle` de opdracht `--since` met de vlag uit om aan te geven hoe lang vanaf het verleden u logboeken wilt ophalen. Bijvoorbeeld `6h` krijgt logs sinds de laatste `6d` 6 uur, `6m` sinds de laatste 6 dagen, sinds de laatste 6 minuten en ga zo maar door. Voeg `--help` de vlag toe om een volledige lijst met opties te bekijken.
-
 
 * Op Linux:
 

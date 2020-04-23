@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406462"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082999"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -52,17 +52,18 @@ De volgende beheerdersrollen zijn beschikbaar:
 Gebruikers in deze rol kunnen alle aspecten van bedrijfstoepassingen, toepassingsregistraties en proxy-instellingen voor toepassingen maken en beheren. Houd er rekening mee dat gebruikers die aan deze rol zijn toegewezen, niet als eigenaar worden toegevoegd bij het maken van nieuwe toepassingsregistraties of bedrijfstoepassingen.
 
 Toepassingsbeheerders kunnen toepassingsreferenties beheren waarmee ze zich kunnen voordoen als de toepassing. Gebruikers die aan deze rol zijn toegewezen, kunnen dus alleen toepassingsreferenties beheren van toepassingen die niet zijn toegewezen aan azure AD-rollen of toepassingen die zijn toegewezen aan volgende beheerdersrollen:
+
 * Toepassingsbeheerder
 * Toepassingsontwikkelaar
 * Beheerder van de cloudtoepassing
 * Directorylezers
 
-Als een toepassing is toegewezen aan een andere rol die hierboven niet wordt vermeld, kan toepassingsbeheerder de referenties van die toepassing niet beheren. 
- 
+Als een toepassing is toegewezen aan een andere rol die hierboven niet wordt vermeld, kan toepassingsbeheerder de referenties van die toepassing niet beheren.
+
 Deze rol biedt ook de mogelijkheid om in te _stemmen met_ gedelegeerde machtigingen en toepassingsmachtigingen, met uitzondering van machtigingen voor de Microsoft Graph API.
 
 > [!IMPORTANT]
-> Deze uitzondering betekent dat u nog steeds toestemming geven voor machtigingen voor _andere_ apps (bijvoorbeeld apps of apps van derden die u hebt geregistreerd), maar niet met machtigingen voor Azure AD zelf. U deze machtigingen nog steeds _aanvragen_ als onderdeel van de app-registratie, maar _voor het verlenen_ (d.w.z. toestemming geven aan) deze machtigingen is een Azure AD-beheerder vereist. Dit betekent dat een kwaadwillende gebruiker zijn machtigingen niet gemakkelijk kan verhogen, bijvoorbeeld door een app te maken en in te stemmen die naar de hele directory kan schrijven en via de machtigingen van die app zichzelf kan verheffen tot een globale beheerder.
+> Deze uitzondering betekent dat u nog steeds toestemming geven voor machtigingen voor _andere_ apps (bijvoorbeeld niet-Microsoft-apps of apps die u hebt geregistreerd), maar niet met machtigingen voor Azure AD zelf. U deze machtigingen nog steeds _aanvragen_ als onderdeel van de app-registratie, maar _voor het verlenen_ (dat wil zeggen, toestemming geven voor) deze machtigingen is een Azure AD-beheerder vereist. Dit betekent dat een kwaadwillende gebruiker zijn machtigingen niet gemakkelijk kan verhogen, bijvoorbeeld door een app te maken en in te stemmen die naar de hele directory kan schrijven en via de machtigingen van die app zichzelf kan verheffen tot een globale beheerder.
 
 ### <a name="application-developer"></a>[Toepassingsontwikkelaar](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ Gebruikers in deze rol kunnen toepassingsregistraties maken wanneer de instellin
 
 ### <a name="authentication-administrator"></a>[Verificatiebeheerder](#authentication-administrator-permissions)
 
-De functie Verificatiebeheerder bevindt zich momenteel in een openbare preview. Gebruikers met deze rol kunnen niet-wachtwoordreferenties instellen of opnieuw instellen en kunnen wachtwoorden bijwerken voor alle gebruikers. Verificatiebeheerders kunnen gebruikers verplichten zich opnieuw te registreren tegen bestaande niet-wachtwoordreferenties (bijvoorbeeld MFA of FIDO) en **onthoud MFA op het apparaat**in te trekken, wat vraagt om MFA bij de volgende aanmelding van gebruikers die niet-beheerders zijn of alleen de volgende rollen hebben toegewezen:
+Gebruikers met deze rol kunnen voor sommige gebruikers niet-wachtwoordreferenties instellen of opnieuw instellen en kunnen wachtwoorden bijwerken voor alle gebruikers. Verificatiebeheerders kunnen gebruikers die niet-beheerders zijn of aan bepaalde rollen zijn toegewezen, verplichten zich opnieuw te registreren tegen bestaande niet-wachtwoordreferenties (bijvoorbeeld MFA of FIDO) en kunnen ook **de herinnering aan MFA op het apparaat**intrekken , wat vraagt om MFA bij de volgende aanmelding. Deze acties zijn alleen van toepassing op gebruikers die niet-beheerders zijn of die een of meer van de volgende rollen toegewezen krijgen:
 
 * Verificatiebeheerder
 * Directorylezers
 * Gast genodigden
 * Berichtcentrumlezer
 * Rapporten Reader
+
+De [bevoegde verificatiebeheerderrol](#privileged-authentication-administrator) heeft toestemming om herregistratie en meervoudige verificatie voor alle gebruikers af te dwingen.
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen referenties wijzigen voor mensen die mogelijk toegang hebben tot gevoelige of privégegevens of kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van de referenties van een gebruiker kan de mogelijkheid betekenen om de identiteit en machtigingen van die gebruiker aan te nemen. Bijvoorbeeld:
@@ -128,6 +131,7 @@ Doet aankopen, beheert abonnementen, beheert ondersteuningstickets en bewaakt de
 Gebruikers in deze rol hebben dezelfde machtigingen als de rol Toepassingsbeheerder, met uitzondering van de mogelijkheid om de proxy van toepassingen te beheren. Deze rol geeft de mogelijkheid om alle aspecten van bedrijfstoepassingen en toepassingsregistraties te maken en te beheren. Deze rol biedt ook de mogelijkheid om in te stemmen met gedelegeerde machtigingen en toepassingsmachtigingen met uitzondering van de Microsoft Graph API. Gebruikers die aan deze rol zijn toegewezen, worden niet als eigenaars toegevoegd bij het maken van nieuwe toepassingsregistraties of bedrijfstoepassingen.
 
 Cloudapplicatiebeheerders kunnen toepassingsreferenties beheren waarmee ze zich kunnen voordoen als de toepassing. Gebruikers die aan deze rol zijn toegewezen, kunnen dus alleen toepassingsreferenties beheren van toepassingen die niet zijn toegewezen aan azure AD-rollen of toepassingen die zijn toegewezen aan volgende beheerdersrollen:
+
 * Toepassingsontwikkelaar
 * Beheerder van de cloudtoepassing
 * Directorylezers
@@ -350,7 +354,13 @@ Gebruikers met deze rol kunnen printers registreren en de printerstatus beheren 
 
 ### <a name="privileged-authentication-administrator"></a>[Beheerder van geprivilegieerde verificatie](#privileged-authentication-administrator-permissions)
 
-Gebruikers met deze rol kunnen niet-wachtwoordreferenties instellen of opnieuw instellen voor alle gebruikers, inclusief globale beheerders, en kunnen wachtwoorden bijwerken voor alle gebruikers. Beheerders van geprivilegieerde verificatie kunnen gebruikers dwingen zich opnieuw te registreren tegen bestaande niet-wachtwoordreferenties (bijvoorbeeld MFA, FIDO) en 'Remember MFA op het apparaat' in te trekken, wat wordt gevraagd om MFA bij de volgende aanmelding van alle gebruikers.
+Gebruikers met deze rol kunnen niet-wachtwoordreferenties instellen of opnieuw instellen voor alle gebruikers, inclusief globale beheerders, en kunnen wachtwoorden bijwerken voor alle gebruikers. Beheerders van geprivilegieerde verificatie kunnen gebruikers dwingen zich opnieuw te registreren tegen bestaande niet-wachtwoordreferenties (zoals MFA of FIDO) en 'Onthoud MFA op het apparaat' in te trekken, wat wordt gevraagd naar MFA bij de volgende aanmelding van alle gebruikers. Met de rol [Verificatiebeheerder](#authentication-administrator) kan opnieuw registratie en MFA worden gedwongen voor alleen niet-beheerders en gebruikers die zijn toegewezen aan de volgende Azure AD-rollen:
+
+* Verificatiebeheerder
+* Directorylezers
+* Gast genodigden
+* Berichtcentrumlezer
+* Rapporten Reader
 
 ### <a name="privileged-role-administrator"></a>[Beheerder van een bevoorrechte rol](#privileged-role-administrator-permissions)
 

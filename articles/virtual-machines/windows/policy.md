@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: cb7580929a40683603263db03f2cfca0e1824233
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 407e5cefe9f7f60c86de6e80133ff1b3f8b9003d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873800"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086535"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Beleidsregels toepassen op Windows VM's met Azure Resource Manager
 Door beleid te gebruiken, kan een organisatie verschillende conventies en regels in de hele onderneming afdwingen. Handhaving van het gewenste gedrag kan helpen risico's te beperken en tegelijkertijd bij te dragen aan het succes van de organisatie. In dit artikel beschrijven we hoe u azure resource manager-beleid gebruiken om het gewenste gedrag voor de virtuele machines van uw organisatie te definiëren.
@@ -36,7 +36,6 @@ Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn me
       {
         "field": "type",
         "in": [
-          "Microsoft.Compute/disks",
           "Microsoft.Compute/virtualMachines",
           "Microsoft.Compute/VirtualMachineScaleSets"
         ]

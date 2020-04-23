@@ -1,15 +1,15 @@
 ---
 title: Continue integratie met Azure-pijplijnen
 description: Meer informatie over het continu bouwen, testen en implementeren van Azure Resource Manager-sjablonen.
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255070"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084325"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines
 
@@ -57,11 +57,7 @@ Zie [Voorwaarden als](#prerequisites)u geen GitHub-account hebt.
 
 1. Selecteer **Nieuw**, een groene knop.
 1. Voer **in repository-naam**een naam van de opslagplaats in.  **AzureRmPipeline-repo**. Vergeet niet om een van **AzureRmPipeline** te vervangen door uw projectnaam. U **openbaar** of **privé** selecteren om deze zelfstudie te doorlopen. En selecteer vervolgens **Repository maken**.
-1. Noteer de URL. De URL van de repository is de volgende indeling:
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. Noteer de URL. De URL van de repository is de volgende indeling - ** https://github.com/[YourAccountName]/[YourRepositoryName]**.
 
 Deze repository wordt aangeduid als een *externe repository*. Elk van de ontwikkelaars van hetzelfde project kan zijn/haar eigen *lokale repository*klonen en de wijzigingen samenvoegen in de externe repository.
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273525"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084274"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor generatie 2 VM's op Azure
 
@@ -27,7 +27,7 @@ Generatie 2 VM's maken gebruik van de nieuwe UEFI-gebaseerde opstartarchitectuur
 Generatie 1 VM's worden ondersteund door alle VM-formaten in Azure (met uitzondering van Mv2-serie VM's). Azure biedt nu generatie 2-ondersteuning voor de volgende geselecteerde VM-reeksen:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC-serie](../dcv2-series.md)
+* [DCsv2-serie](../dcv2-series.md)
 * [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
 * [Esv3-serie](../ev3-esv3-series.md)
 * [Fsv2-serie](../fsv2-series.md)

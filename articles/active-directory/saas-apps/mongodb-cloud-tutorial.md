@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02cc78f7e786e97062cce6d402c972e66fa56860
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688119"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024508"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met MongoDB Cloud
 
@@ -37,7 +37,7 @@ Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Director
 Om aan de slag te gaan, hebt u het volgende nodig:
 
 * Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Een MongoDB Cloud-abonnement dat is ingeschakeld voor single sign-on (SSO).
+* Een MongoDB Cloud-organisatie die is ingeschakeld voor single sign-on (SSO), u zich aanmelden voor een [gratis cluster](https://www.mongodb.com/cloud)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -146,7 +146,7 @@ In deze sectie stelt u B.Simon in staat om Azure single sign-on te gebruiken doo
 
 ## <a name="configure-mongodb-cloud-sso"></a>MongoDB Cloud SSO configureren
 
-Als u eenmalige aanmelding wilt configureren aan de MongoDB Cloud-kant, hebt u de juiste URL's nodig die zijn gekopieerd van de Azure-portal. U moet ook de Federation Application configureren voor uw MongoDB Cloud Organization. Volg de instructies in de [MongoDB Cloud documentatie.](https://docs.atlas.mongodb.com/security/federated-authentication/index.html) Als u een probleem hebt, neemt u contact op met het [ondersteuningsteam van MongoDB Cloud.](https://support.mongodb.com/)
+Als u eenmalige aanmelding wilt configureren aan de MongoDB Cloud-kant, hebt u de juiste URL's nodig die zijn gekopieerd van de Azure-portal. U moet ook de Federation Application configureren voor uw MongoDB Cloud Organization. Volg de instructies in de [MongoDB Cloud documentatie.](https://docs.atlas.mongodb.com/security/federated-auth-azure-ad/) Als u een probleem hebt, neemt u contact op met het [ondersteuningsteam van MongoDB Cloud.](https://support.mongodb.com/)
 
 ### <a name="create-a-mongodb-cloud-test-user"></a>Een MongoDB Cloud-testgebruiker maken
 
@@ -158,7 +158,7 @@ In deze sectie test u uw azure AD-configuratie voor eenmalige aanmelding met acc
 
 Wanneer u de MongoDB Cloud-tegel selecteert in het Access Panel, wordt u automatisch aangemeld bij de MongoDB-cloud waarvoor u SSO hebt ingesteld. Zie [Aanmelden en apps starten via de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 

@@ -3,12 +3,12 @@ title: Overzicht van sjablonen
 description: Beschrijft de voordelen met Azure Resource Manager-sjablonen voor de implementatie van resources.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885732"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086331"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 
@@ -50,7 +50,7 @@ Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de ande
 
 * **Blueprints voor implementatie:** u profiteren van [blauwdrukken](../../governance/blueprints/overview.md) die door Microsoft zijn geleverd om te voldoen aan de wettelijke en nalevingsnormen. Deze blauwdrukken bevatten vooraf gebouwde sjablonen voor verschillende architecturen.
 
-* **CI/CD-integratie**: U sjablonen integreren in uw tools voor continue integratie en continue implementatie (CI/CD), die uw releasepijplijnen kunnen automatiseren voor snelle en betrouwbare applicatie- en infrastructuurupdates. Door azure devOps en resourcebeheersjabloontaak te gebruiken, u Azure Pipelines gebruiken om ARM-sjabloonprojecten continu te bouwen en te implementeren. Zie [VS-project met pijplijnen](add-template-to-azure-pipelines.md) en [continue integratie met Azure Pipelines](template-tutorial-use-azure-pipelines.md)voor meer informatie.
+* **CI/CD-integratie**: U sjablonen integreren in uw tools voor continue integratie en continue implementatie (CI/CD), die uw releasepijplijnen kunnen automatiseren voor snelle en betrouwbare applicatie- en infrastructuurupdates. Door azure devOps en resourcebeheersjabloontaak te gebruiken, u Azure Pipelines gebruiken om ARM-sjabloonprojecten continu te bouwen en te implementeren. Zie [VS-project met pijplijnen](add-template-to-azure-pipelines.md) en [zelfstudie: continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines](./deployment-tutorial-pipeline.md)voor meer informatie.
 
 * **Exporteerbare code:** u een sjabloon voor een bestaande resourcegroep krijgen door de huidige status van de resourcegroep te exporteren of de sjabloon te bekijken die voor een bepaalde implementatie wordt gebruikt. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
 

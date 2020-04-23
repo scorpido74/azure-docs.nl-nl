@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80059998"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084740"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Zelfstudie: Een NAT-gateway maken met de Azure-portal en de NAT-service testen
 
@@ -29,7 +29,7 @@ Indien gewenst, kunt u deze stappen uitvoeren met behulp van de [Azure CLI](tuto
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>De bron voorbereiden op uitgaand verkeer
 
@@ -46,9 +46,9 @@ In deze sectie moet u de volgende parameters in de stappen vervangen door de ond
 | **\<resourcegroepnaam>**  | myResourceGroupNAT |
 | **\<>van de naam van het virtuele netwerk** | myVNetsource          |
 | **\<regionaam>**          | VS - oost 2      |
-| **\<IPv4-adresruimte>**   | 192.168.0.0\16          |
+| **\<IPv4-adresruimte>**   | 192.168.0.0/16          |
 | **\<subnetnaam>**          | mySubnetsource        |
-| **\<subnet-adresbereik>** | 192.168.0.0\24          |
+| **\<subnet-adresbereik>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -104,7 +104,7 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service 
     | ------- | ----- |
     | IP-versie | Selecteer **IPv4**.
     | SKU | Selecteer **Standaard**.
-    | Name | Voer **myPublicIPsource in**. |
+    | Naam | Voer **myPublicIPsource in**. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **myResourceGroupNAT**. |
     | Locatie | Selecteer **VS - oost 2**.|
@@ -169,9 +169,9 @@ In deze sectie moet u de volgende parameters in de stappen vervangen door de ond
 | **\<resourcegroepnaam>**  | myResourceGroupNAT |
 | **\<>van de naam van het virtuele netwerk** | myVNetdestination          |
 | **\<regionaam>**          | VS - oost 2      |
-| **\<IPv4-adresruimte>**   | 192.168.0.0\16          |
+| **\<IPv4-adresruimte>**   | 192.168.0.0/16          |
 | **\<subnetnaam>**          | mySubnetdestination        |
-| **\<subnet-adresbereik>** | 192.168.0.0\24          |
+| **\<subnet-adresbereik>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

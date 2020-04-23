@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424753"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086093"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory Authentication gebruiken voor verificatie met Synapse SQL
 
 Azure Active Directory-verificatie is een mechanisme om verbinding te maken met [Azure Synapse Analytics](../overview-faq.md) met behulp van identiteiten in Azure Active Directory (Azure AD).
 
-Met Azure AD-verificatie u de identiteiten van gebruikers die toegang hebben tot Azure Synapse centraal beheren om het machtigingsbeheer te vereenvoudigen. Dit biedt verschillende voordelen, zoals:
+Met Azure AD-verificatie u gebruikersidentiteiten die toegang hebben tot Azure Synapse centraal beheren om het machtigingsbeheer te vereenvoudigen. Dit biedt verschillende voordelen, zoals:
 
 - Het biedt een alternatief voor regelmatige gebruikersnaam en wachtwoord authenticatie.
 - Helpt de verspreiding van gebruikersidentiteiten tussen databaseservers te stoppen.
@@ -48,26 +48,34 @@ Het definiëren van toegangsrechten op de bestanden en gegevens die worden geres
 
 In het volgende diagram op hoog niveau wordt de oplossingsarchitectuur van het gebruik van Azure AD-verificatie met Synapse SQL samengevat. Als u het azure AD-native gebruikerswachtwoord wilt ondersteunen, wordt alleen het cloudgedeelte en Azure AD/Synapse Synapse SQL in aanmerking genomen. Om Federated-verificatie (of gebruiker/wachtwoord voor Windows-referenties) te ondersteunen, is de communicatie met ADFS-blokkering vereist. De pijlen geven communicatietrajecten aan.
 
-![aad auth-diagram][1]
+![aad auth-diagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-In het volgende diagram worden de federatie-, vertrouwens- en hostingrelaties weergegeven waarmee een client verbinding kan maken met een database door een token in te dienen. Het token wordt geverifieerd door een Azure AD en wordt vertrouwd door de database. Klant 1 kan een Azure Active Directory vertegenwoordigen met native gebruikers of een Azure AD met federatieve gebruikers. Klant 2 vertegenwoordigt een mogelijke oplossing inclusief geïmporteerde gebruikers; in dit voorbeeld afkomstig van een gefedereerde Azure Active Directory met ADFS die wordt gesynchroniseerd met Azure Active Directory. Het is belangrijk om te begrijpen dat toegang tot een database met Azure AD-verificatie vereist dat het hostingabonnement is gekoppeld aan het Azure AD. Hetzelfde abonnement moet worden gebruikt om de SQL Server te maken die de Azure SQL Database of SQL-groep host.
+In het volgende diagram worden de federatie-, vertrouwens- en hostingrelaties weergegeven waarmee een client verbinding kan maken met een database door een token in te dienen. Het token wordt geverifieerd door een Azure AD en wordt vertrouwd door de database. 
 
-![abonnementsrelatie][2]
+Klant 1 kan een Azure Active Directory vertegenwoordigen met native gebruikers of een Azure AD met federatieve gebruikers. Klant 2 vertegenwoordigt een mogelijke oplossing inclusief geïmporteerde gebruikers; in dit voorbeeld afkomstig van een gefedereerde Azure Active Directory met ADFS die wordt gesynchroniseerd met Azure Active Directory. 
+
+Het is belangrijk om te begrijpen dat toegang tot een database met Azure AD-verificatie vereist dat het hostingabonnement is gekoppeld aan het Azure AD. Hetzelfde abonnement moet worden gebruikt om de SQL Server te maken die de Azure SQL Database of SQL-groep host.
+
+![abonnementsrelatie](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>Beheerdersstructuur
 
-Bij het gebruik van Azure AD-verificatie zijn er twee administratoraccounts voor de Synapse SQL. de oorspronkelijke SQL Server-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-databasegebruiker maken in een gebruikersdatabase. De aanmelding van Azure AD-beheerders kan een Azure AD-gebruiker of een Azure AD-groep zijn. 
+Bij het gebruik van Azure AD-verificatie zijn er twee administratoraccounts voor de Synapse SQL. de oorspronkelijke SQL Server-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-databasegebruiker maken in een gebruikersdatabase. 
 
-Wanneer de beheerder een groepsaccount is, kan het door elk groepslid worden gebruikt, waardoor meerdere Azure AD-beheerders voor de Synapse SQL-instantie worden inschakelen. Het gebruik van groepsaccount als beheerder verbetert de beheerbaarheid doordat u groepsleden centraal toevoegen en verwijderen in Azure AD zonder de gebruikers of machtigingen in de werkruimte Synapse Analytics te wijzigen. Slechts één Azure AD-beheerder (een gebruiker of groep) kan op elk gewenst moment worden geconfigureerd.
+De aanmelding van Azure AD-beheerders kan een Azure AD-gebruiker of een Azure AD-groep zijn. Wanneer de beheerder een groepsaccount is, kan het door elk groepslid worden gebruikt, waardoor meerdere Azure AD-beheerders voor de Synapse SQL-instantie worden inschakelen. 
 
-![beheerstructuur][3]
+Het gebruik van groepsaccount als beheerder verbetert de beheerbaarheid doordat u groepsleden centraal toevoegen en verwijderen in Azure AD zonder de gebruikers of machtigingen in de werkruimte Synapse Analytics te wijzigen. Slechts één Azure AD-beheerder (een gebruiker of groep) kan op elk gewenst moment worden geconfigureerd.
+
+![beheerstructuur](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>Machtigingen
 
 Als u nieuwe gebruikers wilt `ALTER ANY USER` maken, moet u de toestemming in de database hebben. De `ALTER ANY USER` toestemming kan worden verleend aan elke databasegebruiker. De `ALTER ANY USER` machtiging is ook in het bezit van `CONTROL ON DATABASE` de `ALTER ON DATABASE` serverbeheerdersaccounts en databasegebruikers `db_owner` met de of toestemming voor die database en door leden van de databaserol.
 
-Als u een opgenomen databasegebruiker wilt maken in Synapse SQL, moet u verbinding maken met de database of instantie met behulp van een Azure AD-identiteit. Als u de eerste databasegebruiker wilt maken, moet u verbinding maken met de database met behulp van een Azure AD-beheerder (de eigenaar van de database). Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt voor Synapse SQL. Als de Azure Active Directory-beheerder van de server is verwijderd, kunnen bestaande Azure Active Directory-gebruikers die eerder in Synapse SQL zijn gemaakt, geen verbinding meer maken met de database met hun Azure Active Directory-referenties.
+Als u een opgenomen databasegebruiker wilt maken in Synapse SQL, moet u verbinding maken met de database of instantie met behulp van een Azure AD-identiteit. Als u de eerste databasegebruiker wilt maken, moet u verbinding maken met de database met behulp van een Azure AD-beheerder (de eigenaar van de database). 
 
+Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt voor Synapse SQL. Als de Azure Active Directory-beheerder van de server is verwijderd, kunnen bestaande Azure Active Directory-gebruikers die eerder in Synapse SQL zijn gemaakt, geen verbinding meer maken met de database met hun Azure Active Directory-referenties.
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD-functies en -beperkingen
 
 - De volgende leden van Azure AD kunnen worden ingericht in Synapse SQL:
@@ -120,21 +128,8 @@ De volgende verificatiemethoden worden ondersteund voor Azure AD-serverprincipal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Synapse SQL access control](../sql/access-control.md)voor een overzicht van toegang en controle in Synapse SQL. Zie Principals voor meer informatie over [databaseprincipals.](https://msdn.microsoft.com/library/ms181127.aspx) Aanvullende informatie over databaserollen vindt u in het artikel [Databaserollen.](https://msdn.microsoft.com/library/ms189121.aspx)
+- Zie [Synapse SQL access control](../sql/access-control.md)voor een overzicht van toegang en controle in Synapse SQL.
+- Zie [Principals](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over database-principals.
+- Zie [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over databaserollen.
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

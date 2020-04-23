@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
-ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e0d2d2ea99822c95b9fab73642db37430771c583
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212827"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083761"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Quickstart: Een Table-API compileren met Node.js en Azure Cosmos DB
 
@@ -50,7 +50,7 @@ In deze quickstart maakt u een Azure Cosmos DB Table API-account en gebruikt u D
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en de app uitvoeren. U zult zien hoe gemakkelijk het is om op een programmatische manier met gegevens te werken. 
+We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en de app uitvoeren. U zult zien hoe gemakkelijk het is om op een programmatische manier met gegevens te werken.
 
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
@@ -69,6 +69,8 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
+
+> ! [TIP] Zie het [voorbeeldartikel Cosmos DB Table API](table-storage-how-to-use-nodejs.md) voor een meer gedetailleerde walkthrough van vergelijkbare code. 
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 

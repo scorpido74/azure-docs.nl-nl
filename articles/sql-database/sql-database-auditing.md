@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 48cdbc8188604ce1992a1cb15289576ba92902a3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685184"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086144"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL-controle
 
@@ -89,7 +89,7 @@ In de volgende sectie wordt de configuratie van controle beschreven met behulp v
   
    ![opslagopties](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a name=""></a><a id="audit-storage-destination">Controle naar opslagbestemming</a>
+### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Controle naar opslagbestemming
 
 Als u het schrijven van controlelogboeken wilt configureren voor een opslagaccount, selecteert u **Opslaggegevens** en **opent u Opslaggegevens**. Selecteer het Azure-opslagaccount waar logboeken worden opgeslagen en selecteer vervolgens de bewaarperiode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de bewaartermijn worden verwijderd.
 
@@ -108,13 +108,13 @@ Als u het schrijven van controlelogboeken wilt configureren voor een opslagaccou
 - Bij het gebruik van AAD-verificatie worden mislukte aanmeldingsrecords *niet* weergegeven in het SQL-controlelogboek. Als u mislukte inlogcontrolerecords wilt weergeven, moet u de [Azure Active Directory-portal]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)bezoeken, die details van deze gebeurtenissen registreert.
 - Controle op [alleen-lezen replica's](sql-database-read-scale-out.md) wordt automatisch ingeschakeld. Zie de [SQL Database Audit Log Format](sql-database-audit-log-format.md)voor meer informatie over de hiërarchie van de opslagmappen, naamgevingsconventies en logboekindeling. 
 
-### <a name=""></a><a id="audit-log-analytics-destination">Controleren op de doelbestemming Log Analytics</a>
+### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Controleren op de doelbestemming Log Analytics
   
 Als u het schrijven van controlelogboeken wilt configureren voor een werkruimte log Analytics, selecteert u **Log Analytics (Voorbeeld)** en opent **u Logboekanalysegegevens**. Selecteer of maak de werkruimte Log Analytics waar logboeken worden geschreven en klik op **OK**.
    
    ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-### <a name=""></a><a id="audit-event-hub-destination">Controle naar de bestemming Gebeurtenishub</a>
+### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Controle naar de bestemming Gebeurtenishub
 
 > [!WARNING]
 > Als u controle inschakelt op een server met een SQL-pool, **wordt de SQL-groep hervat en opnieuw onderbroken,** waardoor factureringskosten kunnen worden inrekening.
@@ -199,7 +199,7 @@ Als u ervoor hebt gekozen om controlelogboeken naar een Azure-opslagaccount te s
 
 <!--The description in this section refers to preceding screen captures.-->
 
-#### <a name="auditing-geo-replicated-databases"></a>Geo-gerepliceerde databases controleren
+### <a name="auditing-geo-replicated-databases"></a>Geo-gerepliceerde databases controleren
 
 Met geo-gerepliceerde databases heeft de secundaire database een identiek controlebeleid wanneer u controle inschakelt op de primaire database. Het is ook mogelijk om auditing in te stellen op de secundaire database door controle op de **secundaire server**in te schakelen , onafhankelijk van de primaire database.
 
@@ -211,7 +211,7 @@ Met geo-gerepliceerde databases heeft de secundaire database een identiek contro
     >[!IMPORTANT]
     >Met controle op databaseniveau zijn de opslaginstellingen voor de secundaire database identiek aan die van de primaire database, waardoor cross-regional verkeer ontstaat. We raden u aan alleen controle op serverniveau in te schakelen en de controle op databaseniveau uitgeschakeld te laten voor alle databases.
 
-#### <a name="storage-key-regeneration"></a>Regeneratie van opslagsleutels
+### <a name="storage-key-regeneration"></a>Regeneratie van opslagsleutels
 
 In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wanneer u controlelogboeken schrijft voor Azure-opslag, moet u uw controlebeleid opnieuw opslaan wanneer u uw sleutels ververst. Het proces is als volgt:
 
@@ -226,7 +226,7 @@ In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wa
 
 ## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>Azure SQL Server- en Databasecontrole beheren
 
-#### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
+### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
 
 **PowerShell-cmdlets (inclusief WHERE-clausuleondersteuning voor extra filtering)**:
 
@@ -239,7 +239,7 @@ In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wa
 
 Zie [Controle- en bedreigingsdetectie configureren met PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)voor een voorbeeld van een script.
 
-#### <a name="using-rest-api"></a>REST API gebruiken
+### <a name="using-rest-api"></a>REST API gebruiken
 
 **REST API**:
 
@@ -255,7 +255,7 @@ Uitgebreid beleid met WHERE-clausuleondersteuning voor extra filtering:
 - [*Uitgebreide* controlebeleid voor database's](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Uitgebreid *controlebeleid* voor server krijgen](/rest/api/sql/server%20auditing%20settings/get)
 
-#### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
 U Azure SQL-databasecontrole beheren met [Azure Resource Manager-sjablonen,](../azure-resource-manager/management/overview.md) zoals in deze voorbeelden wordt weergegeven:
 

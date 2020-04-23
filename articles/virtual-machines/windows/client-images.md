@@ -1,24 +1,19 @@
 ---
 title: Windows-clientafbeeldingen gebruiken in Azure
 description: Voordelen voor het gebruik van Visual Studio-abonnementen gebruiken om Windows 7, Windows 8 of Windows 10 in Azure te implementeren voor dev/testscenario's
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039501"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083271"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-client in Azure gebruiken voor scenario's voor ontwikkelen/testen
 U Windows 7, Windows 8 of Windows 10 Enterprise (x64) in Azure gebruiken voor dev/testscenario's, mits u een geschikt Visual Studio-abonnement (voorheen MSDN) hebt. In dit artikel worden de geschiktheidsvereisten beschreven voor het uitvoeren van Windows 7, Windows 8.1, Windows 10 Enterprise in Azure en het gebruik van de volgende Azure Gallery-afbeeldingen.
@@ -40,7 +35,7 @@ In de volgende tabel worden de aanbiedings-id's beschreven die in aanmerking kom
 
 | Naam van aanbieding | Aanbiedingsnummer | Beschikbare clientafbeeldingen |
 |:--- |:---:|:---:|
-| [Dev/Test met betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
+| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
 | [Visual Studio Enterprise (MPN)-abonnees](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
 | [Visual Studio Professional-abonnees](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
 | [Visual Studio Test Professional-abonnees](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |

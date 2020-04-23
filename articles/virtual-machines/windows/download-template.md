@@ -1,25 +1,19 @@
 ---
 title: De sjabloon voor een Azure VM downloaden
-description: Download de sjabloon voor een VM om te helpen bij het automatiseren van implementaties in het implementatiemodel Resource Manager
-services: virtual-machines-windows
-documentationcenter: ''
+description: Download de sjabloon voor een virtuele machine via de portal of PowerShell.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033550"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085379"
 ---
 # <a name="download-the-template-for-a-vm"></a>De sjabloon voor een VM downloaden
 Wanneer u een VM in Azure maakt met de portal of PowerShell, wordt er automatisch een Resource Manager-sjabloon voor u gemaakt. U deze sjabloon gebruiken om een implementatie snel te dupliceren. De sjabloon bevat informatie over alle bronnen in een resourcegroep. Voor een virtuele machine betekent dit dat de sjabloon alles bevat dat is gemaakt ter ondersteuning van de VM in die resourcegroep, inclusief de netwerkbronnen.

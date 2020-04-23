@@ -1,15 +1,15 @@
 ---
 title: Maak, bouw, & implementeer slimme contracts tutorial - Azure Blockchain Service
 description: Zelfstudie over het gebruik van de Azure Blockchain Development Kit voor Ethereum-extensie in Visual Studio Code om een slim contract op Azure Blockchain Service te maken, te bouwen en te implementeren.
-ms.date: 12/06/2019
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.reviewer: chrisseg
-ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74972825"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086654"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Zelfstudie: Slimme contracten maken, bouwen en implementeren op Azure Blockchain Service
 
@@ -41,7 +41,7 @@ Voor Windows is een geïnstalleerde C++ compiler vereist voor de node-gyp module
 * Als Visual Studio 2019 is geïnstalleerd, stelt u het pad voor MS-buildtools in voor npm. Bijvoorbeeld: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Installeer anders de stand-alone VS `npm install --global windows-build-tools` Build-gereedschappen met behulp van een verhoogde *run als opdrachtshell voor beheerders.*
 
-Voor meer informatie over node-gyp, zie de [node-gyp repository op GitHub](https://github.com/node-gyp).
+Voor meer informatie over node-gyp, zie de [node-gyp repository op GitHub](https://github.com/nodejs/node-gyp).
 
 ## <a name="create-a-smart-contract"></a>Een slim contract maken
 

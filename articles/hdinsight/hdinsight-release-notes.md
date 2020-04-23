@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770819"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084886"
 ---
-# <a name="release-notes"></a>Releaseopmerkingen
+# <a name="release-notes"></a>Opmerkingen bij de release
 
 In dit artikel vindt u informatie over de **meest recente** Azure HDInsight-releaseupdates. Zie [HDInsight Release Notes Archive](hdinsight-release-notes-archive.md)voor informatie over eerdere releases.
 
@@ -66,14 +66,3 @@ HDInsight blijft de betrouwbaarheid van het cluster en de prestaties verbeteren.
 ## <a name="component-version-change"></a>Wijziging van de componentversie
 Geen componentversie wijziging voor deze release. U de huidige componentversies voor HDInsight 4.0 ad HDInsight 3.6 hier vinden.
 
-## <a name="known-issues"></a>Bekende problemen
-
-Vanaf 18 maart 2020 hebben sommige Azure HDInsight-klanten in West-Europa of Noord-Europa foutmeldingen ontvangen bij het maken of schalen van HDInsight-clusters in deze regio's. Fouten in verband met dit probleem zijn onder andere:
-
-- Interne serverfout is opgetreden tijdens het verwerken van de aanvraag. Probeer het verzoek opnieuw of neem contact op met de ondersteuning.
-- Ten minste één bewerking voor de implementatie van resources is mislukt. Vermeld implementatiebewerkingen voor meer informatie. Zie https://aka.ms/DeployOperations voor gebruiksgegevens
-- User SubscriptionId\<'\>Subscription ID ' heeft geen\<cores meer om de clusternaam van de bron> te maken. Vereist: \<\>X , Beschikbaar: 0.
-
-Ingenieurs zijn zich bewust van dit probleem en zijn actief onderzoeken.
-
-Maak voor extra hulp een [ondersteuningsverzoek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

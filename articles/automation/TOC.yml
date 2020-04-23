@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: Configuration Management
       items:
-        - name: State Configuration (DSC) beheren
+        - name: State Configuration (DSC)
           items:
             - name: Overzicht
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: Problemen met DSC oplossen
               href: troubleshoot/desired-state-configuration.md
-        - name: Wijzigingen bijhouden en inventaris beheren
+        - name: Wijzigingen bijhouden en Inventaris
           items:
             - name: Overzicht
               href: change-tracking.md

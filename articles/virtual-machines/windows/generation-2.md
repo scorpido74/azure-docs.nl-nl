@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: HT
+ms.openlocfilehash: 53806a1a627c7ae6bc3470aa387be0982df914fa
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869646"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082255"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor generatie 2 VM's op Azure
 
@@ -28,7 +28,7 @@ Generatie 2 VM's maken gebruik van de nieuwe UEFI-gebaseerde opstartarchitectuur
 Generatie 1 VM's worden ondersteund door alle VM-formaten in Azure (met uitzondering van Mv2-serie VM's). Azure biedt nu generatie 2-ondersteuning voor de volgende geselecteerde VM-reeksen:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC-serie](../dcv2-series.md)
+* [DCsv2-serie](../dcv2-series.md)
 * [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
 * [Dasv4-serie](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3-serie](../ev3-esv3-series.md)

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: b-juche
-ms.openlocfilehash: d28f5469174a2659869ebb01ef01653b7190e30e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772078"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085005"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Voordelen van het gebruik van Azure NetApp-bestanden met Oracle Database
+# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Voordelen van het gebruik van Azure NetApp Files met Oracle Database
 
 Oracle Direct NFS (dNFS) maakt het mogelijk om hogere prestaties te leveren dan het eigen NFS-stuurprogramma van het besturingssysteem. In dit artikel wordt de technologie uitgelegd en wordt een prestatievergelijking gemaakt tussen dNFS en de traditionele NFS-client (Kernel NFS). Het toont ook de voordelen en het gemak van het gebruik van dNFS met Azure NetApp Files.  
 
@@ -39,7 +39,7 @@ Oracle dNFS verbetert daarentegen de prestaties door netwerkverkeer over meerder
 
 Uit [de Oracle FAQ voor Direct NFS](http://www.orafaq.com/wiki/Direct_NFS) blijkt dat Oracle dNFS een geoptimaliseerde NFS-client is. Het biedt snelle en schaalbare toegang tot NFS-opslag die zich op NAS-opslagapparaten bevindt (toegankelijk via TCP/IP). dNFS is ingebouwd in de databasekernel, net als ASM, die voornamelijk wordt gebruikt met DAS- of SAN-opslag. Als zodanig *is de richtlijn om dNFS te gebruiken bij het implementeren van NAS-opslag en ASM te gebruiken bij de implementatie van SAN-opslag.*
 
-dNFS is de standaardoptie in Oracle 18c en de standaardoptie voor RAC.
+dNFS is de standaardoptie in Oracle 18c.
 
 dNFS is beschikbaar vanaf Oracle Database 11g. Het onderstaande diagram vergelijkt dNFS met native NFS. Wanneer u dNFS gebruikt, kan een Oracle-database die op een virtuele Azure-machine wordt uitgevoerd, meer I/O aansturen dan de oorspronkelijke NFS-client.
 

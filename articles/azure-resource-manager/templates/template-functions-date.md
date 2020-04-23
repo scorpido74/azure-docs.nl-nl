@@ -2,13 +2,13 @@
 title: Sjabloonfuncties - datum
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om met datums te werken.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986276"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084784"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datumfuncties voor ARM-sjablonen
 
@@ -21,7 +21,7 @@ Resourcebeheer biedt de volgende functies voor het werken met datums in uw Azure
 
 `dateTimeAdd(base, duration, [format])`
 
-Hiermee voegt u een tijdsduur toe aan een basisdatumwaarde.
+Hiermee voegt u een tijdsduur toe aan een basiswaarde. ISO 8601 formaat wordt verwacht.
 
 ### <a name="parameters"></a>Parameters
 
@@ -74,7 +74,7 @@ In de volgende voorbeeldsjabloon worden verschillende manieren weergegeven om ti
 
 Wanneer de voorgaande sjabloon wordt geïmplementeerd `2020-04-07 14:53:14Z`met een basistijd van , is de uitvoer:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | add3Years | Tekenreeks | 4/7/2023 14:53:14 |
 | subtract9Days | Tekenreeks | 3/29/2020 14:53:14 |
@@ -201,7 +201,7 @@ In de volgende voorbeeldsjabloon worden verschillende indelingen voor de datumti
 
 De uitvoer van het voorgaande voorbeeld varieert voor elke implementatie, maar is vergelijkbaar met:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | utcOutput | tekenreeks | 20190305T175318Z |
 | utcShortOutput | tekenreeks | 03/05/2019 |

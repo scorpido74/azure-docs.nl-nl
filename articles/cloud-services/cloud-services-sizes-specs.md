@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247473"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086246"
 ---
 # <a name="sizes-for-cloud-services"></a>Groottes voor Cloud Services
 In dit onderwerp worden de beschikbare formaten en opties voor rolinstanties van Cloud Service (webrollen en werknemersrollen) beschreven. Het biedt ook overwegingen voor implementatie om op de hoogte te zijn van wanneer u van plan bent deze resources te gebruiken. Elke maat heeft een ID die u in uw [servicedefinitiebestand plaatst.](cloud-services-model-and-package.md#csdef) Prijzen voor elke grootte zijn beschikbaar op de pagina [Prijzen van Cloud Services.](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -147,6 +147,7 @@ Zie [Vm-grootten](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtua
 | Standard_D8_v3  | 8         | 32            | 200                  | 4/hoog |
 | Standard_D16_v3 | 16        | 64            | 400                  | 8/zeer hoog |
 | Standard_D32_v3 | 32        | 128           | 800                  | 8/zeer hoog |
+| Standard_D48_v3 | 48        | 192           | 1200                 | 8/zeer hoog |
 | Standard_D64_v3 | 64        | 256           | 1600                 | 8/zeer hoog |
 
 ## <a name="ev3-series"></a>Ev3-serie
@@ -158,6 +159,7 @@ Zie [Vm-grootten](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtua
 | Standard_E8_v3  | 8         | 64            | 200                  | 4/hoog |
 | Standard_E16_v3 | 16        | 128           | 400                  | 8/zeer hoog |
 | Standard_E32_v3 | 32        | 256           | 800                  | 8/zeer hoog |
+| Standard_E48_v3 | 48        | 384           | 1200                 | 8/zeer hoog |
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/zeer hoog |
 
 

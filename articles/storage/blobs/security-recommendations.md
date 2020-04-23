@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 0ceef2561d84a1fa491ab9577e1eac789b62bef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0b32f7e8fa2ec0d1d28f2fd42147e140d2d03341
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454625"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086110"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Beveiligingsaanbevelingen voor Blob-opslag
 
@@ -57,6 +57,7 @@ Azure Security Center analyseert periodiek de beveiligingsstatus van uw Azure-br
 | Firewallregels inschakelen | Configureer firewallregels om de toegang tot uw opslagaccount te beperken tot aanvragen die afkomstig zijn van opgegeven IP-adressen of -bereiken, of uit een lijst met subnetten in een Azure Virtual Network (VNet). Zie Azure File Sync proxy [en firewall-instellingen](../files/storage-sync-files-firewall-and-proxy.md)voor meer informatie over het configureren van firewallregels. | - |
 | Vertrouwde Microsoft-services toegang geven tot het opslagaccount | Het inschakelen van firewallregels voor uw opslagaccount blokkeert standaard binnenkomende aanvragen voor gegevens, tenzij de aanvragen afkomstig zijn van een service die actief is binnen een Azure Virtual Network (VNet) of van toegestane openbare IP-adressen. Aanvragen die worden geblokkeerd, zijn ook die van andere Azure-services, van de Azure-portal, van logboekregistratie- en metrische services, enzovoort. U aanvragen van andere Azure-services toestaan door een uitzondering toe te voegen om vertrouwde Microsoft-services toegang te geven tot het opslagaccount. Zie [Azure File Sync-proxy- en firewall-instellingen](../files/storage-sync-files-firewall-and-proxy.md)voor meer informatie over het toevoegen van een uitzondering voor vertrouwde Microsoft-services.| - |
 | Privé-eindpunten gebruiken | Een privéeindpunt wijst een privé-IP-adres van uw Azure Virtual Network (VNet) toe aan het opslagaccount. Het beveiligt al het verkeer tussen uw VNet en de opslagaccount via een privéverbinding. Zie [Privé verbinden met een opslagaccount met Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md)voor meer informatie over privéeindpunten. | - |
+| VNet-servicetags gebruiken | Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels van een bepaalde Azure-service. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd. Zie overzicht van [Azure-servicetags](../../virtual-network/service-tags-overview.md)voor meer informatie over servicetags die worden ondersteund door Azure Storage. Zie [Toegang tot PaaS-bronnen beperken voor](../../virtual-network/tutorial-restrict-network-access-to-resources.md)een zelfstudie met informatie over het gebruik van servicetags om uitgaande netwerkregels te maken. | - |
 | Netwerktoegang beperken tot specifieke netwerken | Het beperken van de toegang tot netwerken die toegang vereisen, vermindert de blootstelling van uw bronnen aan netwerkaanvallen. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Logboekregistratie/controle
@@ -67,5 +68,5 @@ Azure Security Center analyseert periodiek de beveiligingsstatus van uw Azure-br
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie over beveiliging in Azure](https://docs.microsoft.com//azure/security/)
+- [Azure-beveiligingsdocumentatie](https://docs.microsoft.com//azure/security/)
 - [Beveiligde ontwikkelingsdocumentatie.](https://docs.microsoft.com/azure/security/develop/)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e3517804cb66a9f98351e4c68f4f7c4387cee8fe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212864"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083798"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Snelstart: een Java-app bouwen om Azure Cosmos DB Table API-gegevens te beheren
 
@@ -52,7 +52,7 @@ In deze quickstart maakt u een Azure Cosmos DB Table API-account en gebruikt u D
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en de app uitvoeren. U zult zien hoe gemakkelijk het is om op een programmatische manier met gegevens te werken. 
+We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en de app uitvoeren. U zult zien hoe gemakkelijk het is om op een programmatische manier met gegevens te werken.
 
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
@@ -71,6 +71,8 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
+
+> ! [TIP] Zie het [voorbeeldartikel Cosmos DB Table API](table-storage-how-to-use-java.md) voor een meer gedetailleerde walkthrough van vergelijkbare code. 
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 

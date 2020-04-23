@@ -1,43 +1,36 @@
 ---
-title: Real-time transitgegevens aanvragen | Microsoft Azure Maps
-description: Vraag realtime gegevens aan met de Microsoft Azure Maps Mobility Service.
-author: philmea
-ms.author: philmea
+title: Real-time gegevens over het openbaar vervoer aanvragen | Microsoft Azure Maps
+description: Vraag realtime gegevens over het openbaar vervoer aan met de Microsoft Azure Maps Mobility Service.
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d3145181a863bf8188dd0b0bb52cd2efc662ce2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4743fbe84f5d41b4659e13d96868d2f64a473e4b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335489"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086074"
 ---
-# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Realtime gegevens aanvragen met de Azure Maps Mobility Service
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Realtime gegevens over openbaar vervoer aanvragen met de Azure Maps Mobility Service
 
-In dit artikel ziet u hoe u Azure Maps [Mobility Service kunt](https://aka.ms/AzureMapsMobilityService) gebruiken om realtime transitgegevens op te vragen.
+In dit artikel ziet u hoe u Azure Maps [Mobility Service kunt](https://aka.ms/AzureMapsMobilityService) gebruiken om realtime gegevens over het openbaar vervoer op te vragen.
 
-In dit artikel leer je hoe je:
-
-
- * Verzoek volgende real-time aankomsten voor alle lijnen die aankomen bij een bepaalde stop
- * Vraag real-time informatie op voor een bepaald bike docking station.
-
+In dit artikel leert u hoe u de volgende real-time aankomsten aanvragen voor alle lijnen die bij een bepaalde stop aankomen
 
 ## <a name="prerequisites"></a>Vereisten
 
 U moet eerst een Azure Maps-account en een abonnementssleutel hebben om te bellen naar de Azure Maps-API's voor openbaar vervoer. Volg instructies voor informatie in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-account te maken. Volg de stappen in [de primaire sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account te verkrijgen. Zie Verificatie beheren in Azure [Maps voor](./how-to-manage-authentication.md)meer informatie over verificatie in Azure Maps.
 
-
 In dit artikel wordt de [Postman-app](https://www.getpostman.com/apps) gebruikt om REST-oproepen te maken. U elke API-ontwikkelomgeving gebruiken die u verkiest.
-
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Real-time aankomsten aanvragen voor een stop
 
-Als u realtime aankomstgegevens van een bepaalde ov-stop wilt aanvragen, moet u een verzoek indienen bij de [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility Service.](https://aka.ms/AzureMapsMobilityService) Je hebt de **metroID** en **stopID** nodig om het verzoek te voltooien. Voor meer informatie over het aanvragen van deze parameters, zie onze gids over het [aanvragen van openbaar vervoer routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
+Als u realtime aankomstgegevens van een bepaalde ov-stop wilt aanvragen, moet u een verzoek indienen bij de [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility Service.](https://aka.ms/AzureMapsMobilityService) Je hebt de **metroID** en **stopID** nodig om het verzoek te voltooien. Voor meer informatie over het aanvragen van deze parameters, zie onze gids over het [aanvragen van openbaar vervoer routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting).
 
 Laten we "522" gebruiken als onze metro-ID, de metro-ID voor het "Seattle-Tacoma-Bellevue, WA" gebied. Gebruik "522---2060603" als de halte-ID, deze bushalte is op "Ne 24th st & 162nd Ave Ne, Bellevue WA". Voer de volgende stappen uit om de volgende vijf realtime aankomstgegevens op te vragen voor alle volgende live aankomsten bij deze halte:
 
@@ -117,94 +110,6 @@ Laten we "522" gebruiken als onze metro-ID, de metro-ID voor het "Seattle-Tacoma
         ]
     }
     ```
-
-
-## <a name="real-time-data-for-bike-docking-station"></a>Real-time data voor bike docking station
-
-Met [de Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) kunnen gebruikers statische en realtime informatie opvragen. Gebruikers kunnen bijvoorbeeld beschikbaarheids- en vacaturegegevens opvragen voor een fiets of een scooterdockingstation. De [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) maakt ook deel uit van de Azure Maps Mobility [Service.](https://aka.ms/AzureMapsMobilityService)
-
-Om een aanvraag in te dienen voor de [Get Transit Dock Info API,](https://aka.ms/AzureMapsMobilityTransitDock)heb je de **dockId** voor dat station nodig. U de dock-id krijgen door een zoekverzoek in te dienen bij de [Transit-API in](https://aka.ms/AzureMapsMobilityNearbyTransit) de buurt komen met de **parameter objectType** die is toegewezen aan bikeDock. Volg de onderstaande stappen om realtime gegevens van een dockingstation voor fietsen te krijgen.
-
-
-### <a name="get-dock-id"></a>Dock-id krijgen
-
-Volg **dockID**de onderstaande stappen om een aanvraag te doen voor de Transit-API in de buurt:
-
-1. Klik in Postman op **Nieuw verzoek** | **GET-aanvraag** en geef de naam **Get dock-id**.
-
-2.  Selecteer op het tabblad Bouwer de METHODE **HTTP OPHALEN,** voer de volgende aanvraag-URL in en klik op **Verzenden**.
- 
-    ```HTTP
-    https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
-    ```
-
-3. Na een geslaagd verzoek ontvangt u het volgende antwoord. Merk op dat we nu de **id** in het antwoord hebben, dat later kan worden gebruikt als queryparameter in de aanvraag voor de API Transit Dock Info krijgen.
-
-    ```JSON
-    {
-        "results": [
-            {
-                "id": "121---4640799",
-                "type": "bikeDock",
-                "objectDetails": {
-                    "availableVehicles": 0,
-                    "vacantLocations": 31,
-                    "lastUpdated": "2019-09-07T00:55:19Z",
-                    "operatorInfo": {
-                        "id": "121---80",
-                        "name": "Citi Bike"
-                    }
-                },
-                "position": {
-                    "latitude": 40.767128,
-                    "longitude": -73.962243
-                },
-                "viewport": {
-                    "topLeftPoint": {
-                        "latitude": 40.768039,
-                        "longitude": -73.963413
-                    },
-                    "btmRightPoint": {
-                        "latitude": 40.766216,
-                        "longitude": -73.961072
-                    }
-                }
-            }
-        ]
-    }
-    ```
-
-
-### <a name="get-real-time-bike-dock-status"></a>Krijg real-time fietsdockstatus
-
-Volg de onderstaande stappen om een aanvraag in te dienen bij de Api Transit Dock Info opvragen om realtime gegevens voor het geselecteerde dock te krijgen.
-
-1. Klik in Postman op **Nieuw verzoek** | **GET-aanvraag** en geef deze een naam **Aan realtime dockgegevens**.
-
-2.  Selecteer op het tabblad Bouwer de METHODE **HTTP OPHALEN,** voer de volgende aanvraag-URL in en klik op **Verzenden**.
- 
-    ```HTTP
-    https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
-    ```
-
-3. Na een geslaagd verzoek ontvangt u een antwoord van de volgende structuur:
-
-    ```JSON
-    {
-        "availableVehicles": 0,
-        "vacantLocations": 31,
-        "position": {
-            "latitude": 40.767128,
-            "longitude": -73.962246
-        },
-        "lastUpdated": "2019-09-07T00:55:19Z",
-        "operatorInfo": {
-            "id": "121---80",
-            "name": "Citi Bike"
-        }
-    }
-    ```
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

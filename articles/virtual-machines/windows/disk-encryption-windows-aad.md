@@ -2,17 +2,18 @@
 title: Azure-schijfversleuteling met Azure AD voor Windows VM's (vorige release)
 description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure Disk Encryption voor Windows IaaS VM's.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d06be85e4d18bc0867835a307b44ec8813c79d7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8677fa2620c1edc646dcffe120938f03fd13a0e5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72245004"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085618"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure-schijfversleuteling met Azure AD voor Windows VM's (vorige release)
 

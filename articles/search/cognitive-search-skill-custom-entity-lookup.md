@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369774"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085736"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitieve vaardigheid voor het opzoeken van aangepaste entiteiten (voorbeeld)
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
 + De maximale ondersteunde invoerrecordgrootte is 256 MB. Als u uw gegevens moet opsplitsen voordat u deze naar de aangepaste entiteitsopzoekvaardigheid verzendt, u overwegen de [vaardigheid Text Split te](cognitive-search-skill-textsplit.md)gebruiken.
-+ De maximale definitietabel voor entiteiten die wordt ondersteund, is 10 MB als deze wordt geleverd met de parameter *entiteitenDefitionUri.* 
++ De maximale definitietabel voor entiteiten die wordt ondersteund, is 10 MB als deze wordt geleverd met de parameter *TitiesDefinitionUri.* 
 + Als de entiteiten inline zijn gedefinieerd met de parameter *inlineEntitiesDefinition,* is de maximale ondersteunde grootte 10 KB.
 
 ## <a name="skill-parameters"></a>Vaardigheidsparameters
@@ -63,13 +63,13 @@ Parameters zijn hoofdlettergevoelig.
 
 Er zijn 3 verschillende manieren om de lijst met aangepaste entiteiten aan de aangepaste entiteitopzoekvaardigheid te verstrekken. U de lijst in een. CSV-bestand, een . JSON-bestand of als inline-definitie als onderdeel van de vaardigheidsdefinitie.  
 
-Als het definitiebestand een . CSV of . JSON-bestand, het pad van het bestand moet worden verstrekt als onderdeel van de parameter *entiteitenDefitionUri.* In dit geval wordt het bestand eenmaal gedownload aan het begin van elke indexerrun. Het bestand moet toegankelijk zijn zolang de indexer is bedoeld om uit te voeren. Ook moet het bestand worden gecodeerd UTF-8.
+Als het definitiebestand een . CSV of . JSON-bestand, het pad van het bestand moet worden verstrekt als onderdeel van de parameter *EntiteitenDefinitionUri.* In dit geval wordt het bestand eenmaal gedownload aan het begin van elke indexerrun. Het bestand moet toegankelijk zijn zolang de indexer is bedoeld om uit te voeren. Ook moet het bestand worden gecodeerd UTF-8.
 
 Als de definitie inline wordt verstrekt, moet deze worden opgegeven als inline als de inhoud van de vaardigheidsparameter *inlineEntiteitenDefinition.* 
 
 ### <a name="csv-format"></a>CSV-indeling
 
-U de definitie opgeven van de aangepaste entiteiten die u moet zoeken in een CSV-bestand (Comma-Separated Value) door het pad naar het bestand op te geven en in te stellen in de vaardigheidsparameter *entiteitenDefitionUri.* Het pad moet zich op een https-locatie bevinden. Het definitiebestand kan maximaal 10 MB groot zijn.
+U de definitie opgeven van de aangepaste entiteiten die u moet zoeken in een CSV-bestand (Comma-Separated Value) door het pad naar het bestand op te geven en in te stellen in de vaardigheidsparameter *entiteitenDefinitionUri.* Het pad moet zich op een https-locatie bevinden. Het definitiebestand kan maximaal 10 MB groot zijn.
 
 Het CSV-formaat is eenvoudig. Elke regel vertegenwoordigt een unieke entiteit, zoals hieronder wordt weergegeven:
 
@@ -85,7 +85,7 @@ In dit geval zijn er drie entiteiten die kunnen worden geretourneerd als entitei
 
 U de definitie van de aangepaste entiteiten om te zoeken in een JSON-bestand ook. De JSON-indeling geeft u een beetje meer flexibiliteit, omdat u hiermee overeenkomende regels per term definiëren. U bijvoorbeeld de fuzzy matching distance (Damerau-Levenshtein afstand) voor elke term opgeven of dat de matching casegevoelig moet zijn of niet. 
 
- Net als bij CSV-bestanden moet u het pad naar het JSON-bestand opgeven en instellen in de vaardigheidsparameter *entiteitenDefitionUri.* Het pad moet zich op een https-locatie bevinden. Het definitiebestand kan maximaal 10 MB groot zijn.
+ Net als bij CSV-bestanden moet u het pad naar het JSON-bestand opgeven en instellen in de vaardigheidsparameter *entiteitenDefinitionUri.* Het pad moet zich op een https-locatie bevinden. Het definitiebestand kan maximaal 10 MB groot zijn.
 
 De meest elementaire lijstmeting van de aangepaste JSON-entiteit kan een lijst zijn met entiteiten die overeenkomen:
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4fe8eb0b363fc95ac5913e66884a2ed8f3d225a6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683252"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086484"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Snelstart: een BACPAC-bestand importeren in een database in Azure SQL-database
 
@@ -61,7 +61,7 @@ Het migreren van een database naar een [beheerde instantie](sql-database-managed
 
 ## <a name="using-sqlpackage"></a>SqlPackage gebruiken
 
-Zie [Parameters en eigenschappen importeren](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)als u een SQL Server-database wilt importeren met het sqlpackage-opdrachtregelhulpprogramma. [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) SqlPackage heeft de nieuwste [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en SQL Server Data Tools voor Visual [Studio.](https://msdn.microsoft.com/library/mt204009.aspx) U ook het nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) downloaden vanuit het Microsoft-downloadcentrum.
+Zie [Parameters en eigenschappen importeren](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)als u een SQL Server-database wilt importeren met het sqlpackage-opdrachtregelhulpprogramma. [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools voor Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) bevatten SqlPackage. U ook het nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) downloaden vanuit het Microsoft-downloadcentrum.
 
 Voor schaal en prestaties raden we aan sqlpackage te gebruiken in de meeste productieomgevingen in plaats van de Azure-portal te gebruiken. Zie Migreren van SQL Server naar `BACPAC` Azure SQL Database [met BACPAC-bestanden](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)voor een SQL Server Customer Advisory Team-blog over het migreren met bestanden.
 

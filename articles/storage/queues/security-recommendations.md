@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 8bb56db9eed962ac8f8202c61a7446527c15dfc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060904"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086610"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Beveiligingsaanbevelingen voor wachtrijopslag
 
@@ -29,7 +29,7 @@ Azure Security Center analyseert periodiek de beveiligingsstatus van uw Azure-br
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Het implementatiemodel azure resource manager gebruiken | Maak nieuwe opslagaccounts met behulp van het Azure Resource Manager-implementatiemodel voor belangrijke beveiligingsverbeteringen, waaronder superieure toegangscontrole (RBAC) en controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang naar Azure Key Vault voor geheimen en verificatie en autorisatie op basis van Azure AD voor toegang tot Azure Storage-gegevens en -bronnen. Migreer indien mogelijk bestaande opslagaccounts die het klassieke implementatiemodel gebruiken om Azure Resource Manager te gebruiken. Zie overzicht azure [resource manager](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
+| Het implementatiemodel azure resource manager gebruiken | Maak nieuwe opslagaccounts met behulp van het Azure Resource Manager-implementatiemodel voor belangrijke beveiligingsverbeteringen, waaronder superieure toegangscontrole (RBAC) en controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en Azure AD-gebaseerde verificatie en autorisatie voor toegang tot Azure Storage-gegevens en -bronnen. Migreer indien mogelijk bestaande opslagaccounts die het klassieke implementatiemodel gebruiken om Azure Resource Manager te gebruiken. Zie overzicht azure [resource manager](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
 | De **vereiste** optie Beveiligde overdracht inschakelen op al uw opslagaccounts | Wanneer u de vereiste optie **Veilige overdracht** inschakelt, moeten alle aanvragen die tegen het opslagaccount worden ingediend, plaatsvinden via beveiligde verbindingen. Alle aanvragen die via HTTP worden gedaan, mislukken. Zie [Veilige overdracht in Azure Storage vereisen](../common/storage-require-secure-transfer.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Geavanceerde bescherming tegen bedreigingen inschakelen voor al uw opslagaccounts | Geavanceerde bedreigingsbeveiliging voor Azure Storage biedt een extra laag beveiligingsinformatie die ongebruikelijke en mogelijk schadelijke pogingen detecteert om toegang te krijgen tot opslagaccounts of deze te exploiteren. Beveiligingswaarschuwingen worden geactiveerd in Azure Security Center wanneer er afwijkingen in activiteit optreden en worden ook via e-mail verzonden naar abonnementsbeheerders, met details over verdachte activiteiten en aanbevelingen over het onderzoeken en oplossen van bedreigingen. Zie [Geavanceerde bedreigingsbeveiliging voor Azure Storage voor](../common/storage-advanced-threat-protection.md)meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | SAS-tokens (Shared Access Signature) beperken tot alleen HTTPS-verbindingen | Als u HTTPS nodig hebt wanneer een client een SAS-token gebruikt om toegang te krijgen tot wachtrijgegevens, u het risico op afluisteren minimaliseren. Zie [Beperkte toegang tot Azure Storage-bronnen verlenen met behulp van gedeelde toegangshandtekeningen (SAS)](../common/storage-sas-overview.md)voor meer informatie. | - |
@@ -52,7 +52,8 @@ Azure Security Center analyseert periodiek de beveiligingsstatus van uw Azure-br
 |-|----|--|
 | Firewallregels inschakelen | Configureer firewallregels om de toegang tot uw opslagaccount te beperken tot aanvragen die afkomstig zijn van opgegeven IP-adressen of -bereiken, of uit een lijst met subnetten in een Azure Virtual Network (VNet). Zie Azure File Sync proxy [en firewall-instellingen](../files/storage-sync-files-firewall-and-proxy.md)voor meer informatie over het configureren van firewallregels. | - |
 | Vertrouwde Microsoft-services toegang geven tot het opslagaccount | Het inschakelen van firewallregels voor uw opslagaccount blokkeert standaard binnenkomende aanvragen voor gegevens, tenzij de aanvragen afkomstig zijn van een service die actief is binnen een Azure Virtual Network (VNet) of van toegestane openbare IP-adressen. Aanvragen die worden geblokkeerd, zijn ook die van andere Azure-services, van de Azure-portal, van logboekregistratie- en metrische services, enzovoort. U aanvragen van andere Azure-services toestaan door een uitzondering toe te voegen om vertrouwde Microsoft-services toegang te geven tot het opslagaccount. Zie [Azure File Sync-proxy- en firewall-instellingen](../files/storage-sync-files-firewall-and-proxy.md)voor meer informatie over het toevoegen van een uitzondering voor vertrouwde Microsoft-services.| - |
-| Privéeindpunten gebruiken | Een privéeindpunt wijst een privé-IP-adres van uw Azure Virtual Network (VNet) toe aan het opslagaccount. Het beveiligt al het verkeer tussen uw VNet en de opslagaccount via een privéverbinding. Zie [Privé verbinden met een opslagaccount met Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md)voor meer informatie over privéeindpunten. | - |
+| Privé-eindpunten gebruiken | Een privéeindpunt wijst een privé-IP-adres van uw Azure Virtual Network (VNet) toe aan het opslagaccount. Het beveiligt al het verkeer tussen uw VNet en de opslagaccount via een privéverbinding. Zie [Privé verbinden met een opslagaccount met Azure Private Endpoint](../../private-link/create-private-endpoint-storage-portal.md)voor meer informatie over privéeindpunten. | - |
+| VNet-servicetags gebruiken | Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels van een bepaalde Azure-service. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd. Zie overzicht van [Azure-servicetags](../../virtual-network/service-tags-overview.md)voor meer informatie over servicetags die worden ondersteund door Azure Storage. Zie [Toegang tot PaaS-bronnen beperken voor](../../virtual-network/tutorial-restrict-network-access-to-resources.md)een zelfstudie met informatie over het gebruik van servicetags om uitgaande netwerkregels te maken. | - |
 | Netwerktoegang beperken tot specifieke netwerken | Het beperken van de toegang tot netwerken die toegang vereisen, vermindert de blootstelling van uw bronnen aan netwerkaanvallen. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Logboekregistratie/controle
@@ -63,5 +64,5 @@ Azure Security Center analyseert periodiek de beveiligingsstatus van uw Azure-br
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie over beveiliging in Azure](https://docs.microsoft.com//azure/security/)
+- [Azure-beveiligingsdocumentatie](https://docs.microsoft.com//azure/security/)
 - [Beveiligde ontwikkelingsdocumentatie.](https://docs.microsoft.com/azure/security/develop/)

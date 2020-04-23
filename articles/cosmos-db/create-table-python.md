@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673155706c3b7d44b41562c2dc8ce24a94ac6a58
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212709"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083628"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Quickstart: Een Table-API compileren met Python en Azure Cosmos DB
 
@@ -72,6 +72,8 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
     ```
 
 3. Open vervolgens het oplossingenbestand in Visual Studio. 
+
+> ! [TIP] Zie het [voorbeeldartikel Cosmos DB Table API](table-storage-how-to-use-python.md) voor een meer gedetailleerde walkthrough van vergelijkbare code.
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
