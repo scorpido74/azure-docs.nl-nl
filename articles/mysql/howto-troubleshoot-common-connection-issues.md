@@ -1,62 +1,62 @@
 ---
-title: Verbindingsproblemen oplossen - Azure Database voor MySQL
-description: Meer informatie over het oplossen van verbindingsproblemen met Azure Database voor MySQL, inclusief tijdelijke fouten die opnieuw moeten worden geprobeerd, firewallproblemen en onderbrekingen.
-keywords: mysql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout
-author: jasonwhowell
-ms.author: jasonh
+title: Verbindings problemen oplossen-Azure Database for MySQL
+description: Meer informatie over het oplossen van verbindings problemen met Azure Database for MySQL, waaronder tijdelijke fouten die moeten worden herhaald, Firewall problemen en storingen.
+keywords: MySQL-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b22d47d177c4606396b0c8b2279301121c905ca2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768270"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100886"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Verbindingsproblemen met Azure Databases for MySQL oplossen
 
-Verbindingsproblemen kunnen worden veroorzaakt door verschillende dingen, waaronder:
+Verbindings problemen kunnen worden veroorzaakt door diverse dingen, waaronder:
 
 * Firewallinstellingen
-* Time-out verbinding
-* Onjuiste inloggegevens
-* Maximale limiet bereikt voor sommige Azure Database voor MySQL-resources
-* Problemen met de infrastructuur van de dienst
-* Onderhoud in de service
-* De rekentoewijzing van de server wordt gewijzigd door het aantal vCores te schalen of naar een andere servicelaag te gaan
+* Time-out van verbinding
+* Onjuiste aanmeldings gegevens
+* De maximum limiet is bereikt op enkele Azure Database for MySQL bronnen
+* Problemen met de infra structuur van de service
+* Onderhoud wordt uitgevoerd in de service
+* De reken toewijzing van de server wordt gewijzigd door het aantal vCores te schalen of naar een andere servicelaag te verplaatsen
 
-Over het algemeen kunnen verbindingsproblemen met Azure Database voor MySQL als volgt worden geclassificeerd:
+Over het algemeen kunnen verbindings problemen met Azure Database for MySQL als volgt worden geclassificeerd:
 
-* Tijdelijke fouten (kortstondig of intermitterend)
-* Permanente of niet-tijdelijke fouten (fouten die zich regelmatig voordoen)
+* Tijdelijke fouten (kort geduurd of tijdelijk)
+* Permanente of niet-tijdelijke fouten (fouten die regel matig worden herhaald)
 
 ## <a name="troubleshoot-transient-errors"></a>Tijdelijke fouten oplossen
 
-Tijdelijke fouten optreden wanneer onderhoud wordt uitgevoerd, het systeem een fout ondervindt met de hardware of software of u de vCores of servicelaag van uw server wijzigt. De Azure Database for MySQL-service heeft een ingebouwde hoge beschikbaarheid en is ontworpen om dit soort problemen automatisch te beperken. Uw toepassing verliest echter zijn verbinding met de server voor een korte periode van meestal minder dan 60 seconden. Sommige gebeurtenissen kunnen soms langer duren om te beperken, bijvoorbeeld wanneer een grote transactie een langdurig herstel veroorzaakt.
+Er treden tijdelijke fouten op wanneer onderhoud wordt uitgevoerd. het systeem detecteert een fout met de hardware of software of u wijzigt de vCores of de servicelaag van de server. De Azure Database for MySQL-service heeft ingebouwde hoge Beschik baarheid en is ontworpen om deze typen problemen automatisch te verhelpen. Uw toepassing verliest echter de verbinding met de server voor een korte periode van meestal minder dan 60 seconden. Sommige gebeurtenissen nemen af en toe meer tijd in beslag om te beperken, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen om tijdelijke verbindingsproblemen op te lossen
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke verbinding
 
-1. Controleer het [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) op bekende storingen die zich hebben voorgedaan tijdens de tijd waarin de fouten door de toepassing zijn gerapporteerd.
-2. Toepassingen die verbinding maken met een cloudservice zoals Azure Database voor MySQL, moeten tijdelijke fouten verwachten en een nieuwe logica implementeren om deze fouten te verwerken in plaats van deze als toepassingsfouten voor gebruikers te vernemen. Controleer [de afhandeling van tijdelijke verbindingsfouten voor Azure Database voor MySQL](concepts-connectivity.md) voor aanbevolen procedures en ontwerprichtlijnen voor het verwerken van tijdelijke fouten.
-3. Als een server de resourcelimieten nadert, kunnen fouten tijdelijk verbindingsprobleem lijken te zijn. Zie [Beperkingen in Azure Database voor MySQL](concepts-limits.md).
-4. Als er verbindingsproblemen blijven optreden of als de duur waarvoor uw toepassing de fout tegenkomt meer dan 60 seconden bedraagt of als u meerdere exemplaren van de fout op een bepaalde dag ziet, dient u een Azure-ondersteuningsaanvraag in door **Ondersteuning op** de [Azure Support-site](https://azure.microsoft.com/support/options) te selecteren.
+1. Controleer het [Microsoft Azure-service dashboard](https://azure.microsoft.com/status) voor eventuele bekende storingen die zijn opgetreden tijdens de periode waarin de fouten zijn gerapporteerd door de toepassing.
+2. Toepassingen die verbinding maken met een Cloud service, zoals Azure Database for MySQL, moeten tijdelijke fouten verwachten en proberen logica te implementeren voor het afhandelen van deze fouten in plaats van deze te halen als toepassings fouten aan gebruikers. Bekijk de [verwerking van tijdelijke connectiviteits fouten voor Azure database for MySQL](concepts-connectivity.md) voor aanbevolen procedures en ontwerp richtlijnen voor het afhandelen van tijdelijke fouten.
+3. Wanneer een server de resource limieten nadert, kunnen fouten een probleem met de tijdelijke verbinding zijn. Zie de [beperkingen in azure database for MySQL](concepts-limits.md).
+4. Als er verbindings problemen blijven bestaan of als de duur waarvoor uw toepassing de fout ondervindt, groter is dan 60 seconden of als er meerdere exemplaren van de fout in een bepaalde dag worden weer gegeven, kunt u een Azure-ondersteunings aanvraag indienen door **ondersteuning** te selecteren op de [ondersteunings](https://azure.microsoft.com/support/options) site van Azure.
 
-## <a name="troubleshoot-persistent-errors"></a>Permanente fouten oplossen
+## <a name="troubleshoot-persistent-errors"></a>Problemen met persistente fouten oplossen
 
-Als de toepassing voortdurend geen verbinding maakt met Azure Database voor MySQL, wordt meestal een probleem met een van de volgende opties aangegeven:
+Als de toepassing permanent geen verbinding kan maken met Azure Database for MySQL, duidt dit meestal op een probleem met een van de volgende:
 
-* Serverfirewallconfiguratie: controleer of de firewall van de Azure Database for MySQL-server is geconfigureerd om verbindingen van uw client toe te staan, inclusief proxyservers en gateways.
-* Clientfirewallconfiguratie: de firewall op uw client moet verbindingen met uw databaseserver toestaan. IP-adressen en poorten van de server die u niet hebben, moeten worden toegestaan, evenals toepassingsnamen zoals MySQL in sommige firewalls.
-* Gebruikersfout: u hebt mogelijk verkeerd getypte verbindingsparameters, zoals de servernaam in de verbindingstekenreeks of een ontbrekend * \@servernaamachtervoegsel* in de gebruikersnaam.
+* Server firewall configuratie: Zorg ervoor dat de firewall van de Azure Database for MySQL-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
+* Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. IP-adressen en poorten van de server die u niet wilt toestaan en toepassings namen zoals MySQL in sommige firewalls.
+* Gebruikers fout: mogelijk hebt u een type verbindings parameter, zoals de server naam in de Connection String of een ontbrekend * \@server* achtervoegsel in de gebruikers naam.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen om permanente verbindingsproblemen op te lossen
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 
-1. Firewallregels [firewall rules](howto-manage-firewall-using-portal.md) instellen om het IP-adres van de client toe te staan. Alleen voor tijdelijke testdoeleinden stelt u een firewallregel in met 0.0.0.0 als start-IP-adres en met 255.255.255.255 als het uiteindelijke IP-adres. Hierdoor wordt de server geopend voor alle IP-adressen. Als dit uw verbindingsprobleem oplost, verwijdert u deze regel en maakt u een firewallregel voor een op de juiste manier beperkt IP-adres- of adresbereik.
-2. Zorg er op alle firewalls tussen de client en het internet voor dat poort 3306 open is voor uitgaande verbindingen.
-3. Controleer uw verbindingstekenreeks en andere verbindingsinstellingen. Controleren [Hoe u toepassingen verbinden met Azure Database voor MySQL](howto-connection-string.md).
-4. Controleer de servicestatus in het dashboard. Als u denkt dat er een regionale storing is, raadpleegt u [Overzicht van bedrijfscontinuïteit met Azure Database voor MySQL](concepts-business-continuity.md) voor stappen om te herstellen naar een nieuwe regio.
+1. Stel [firewall regels](howto-manage-firewall-using-portal.md) in om het client-IP-adres toe te staan. Stel voor tijdelijke test doeleinden alleen een firewall regel in met behulp van 0.0.0.0 als het begin-IP-adres en gebruik 255.255.255.255 als het laatste IP-adres. Hiermee wordt de server op alle IP-adressen geopend. Als uw connectiviteits probleem hiermee wordt opgelost, verwijdert u deze regel en maakt u een firewall regel voor een adequaat beperkt IP-adres of adres bereik.
+2. Controleer op alle firewalls tussen de client en Internet of poort 3306 is geopend voor uitgaande verbindingen.
+3. Controleer uw connection string en andere Verbindings instellingen. Lees [hoe u toepassingen verbindt met Azure database for MySQL](howto-connection-string.md).
+4. Controleer de service status in het dash board. Als u denkt dat er een regionale storing is, raadpleegt u [overzicht van bedrijfs continuïteit met Azure database for MySQL](concepts-business-continuity.md) voor stappen om te herstellen naar een nieuwe regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verwerking van tijdelijke verbindingsfouten voor Azure Database voor MySQL](concepts-connectivity.md)
+* [Verwerking van tijdelijke verbindings fouten voor Azure Database for MySQL](concepts-connectivity.md)

@@ -1,43 +1,37 @@
 ---
-title: Algemene PowerShell-opdrachten voor virtuele Azure-machines
-description: Algemene PowerShell-opdrachten om u aan de slag te helpen bij het maken en beheren van uw Windows VM's in Azure.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Algemene Power shell-opdrachten voor Azure Virtual Machines
+description: Algemene Power shell-opdrachten waarmee u aan de slag met het maken en beheren van virtuele machines in Azure.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ba3839a2-f3d5-4e19-a5de-95bfb1c0e61e
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3d08693b6b07b5a2f1fb40d0c4758ab43729bd76
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8b99b6dd62920ed17d79281b448089754613d4e1
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456359"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098405"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Algemene PowerShell-opdrachten voor het maken en beheren van virtuele Azure-machines
 
-In dit artikel vindt u een aantal van de Azure PowerShell-opdrachten die u gebruiken om virtuele machines in uw Azure-abonnement te maken en te beheren.  Voor meer gedetailleerde hulp bij specifieke opdrachtregelswitches en -opties u de *opdracht* **Hulp** krijgen gebruiken.
+In dit artikel worden enkele van de Azure PowerShell opdrachten beschreven die u kunt gebruiken om virtuele machines in uw Azure-abonnement te maken en te beheren.  Voor gedetailleerde hulp bij specifieke opdracht regel opties en-opties kunt u de *opdracht* **Get-Help** gebruiken.
 
  
 
-Deze variabelen kunnen nuttig zijn voor u als u meer dan één van de opdrachten in dit artikel uitvoert:
+Deze variabelen kunnen nuttig zijn als u meer dan een van de opdrachten in dit artikel uitvoert:
 
-- $location - De locatie van de virtuele machine. U [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) gebruiken om een [geografische regio](https://azure.microsoft.com/regions/) te vinden die voor u werkt.
-- $myResourceGroup - De naam van de resourcegroep die de virtuele machine bevat.
-- $myVM - De naam van de virtuele machine.
+- $location: de locatie van de virtuele machine. U kunt [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) gebruiken om een [geografische regio](https://azure.microsoft.com/regions/) te vinden die geschikt is voor u.
+- $myResourceGroup: de naam van de resource groep die de virtuele machine bevat.
+- $myVM: de naam van de virtuele machine.
 
-## <a name="create-a-vm---simplified"></a>Een VM maken - vereenvoudigd
+## <a name="create-a-vm---simplified"></a>Een virtuele machine maken-vereenvoudigd
 
 | Taak | Opdracht |
 | ---- | ------- |
-| Een eenvoudige vm maken | [Nieuw-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -Naam $myVM <BR></BR><BR></BR> Nieuw-AzVM heeft een set *vereenvoudigde* parameters, waarbij alleen een enkele naam nodig is. De waarde voor -Naam wordt gebruikt als de naam voor alle resources die nodig zijn voor het maken van een nieuwe virtuele machine. U meer opgeven, maar dit is alles wat nodig is.|
-| Een VM maken van een aangepaste installatiekopie | Nieuw-AzVm -ResourceGroupName $myResourceGroup -Naam $myVM ImageName "myImage" -Locatie $location  <BR></BR><BR></BR>U moet al uw eigen [beheerde afbeelding](capture-image-resource.md)hebben gemaakt. U een afbeelding gebruiken om meerdere, identieke VM's te maken. |
+| Een eenvoudige virtuele machine maken | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -name $myVM <BR></BR><BR></BR> New-AzVM heeft een reeks *vereenvoudigde* para meters, waarbij alles wat vereist is, één naam is. De waarde voor-name wordt gebruikt als de naam van alle resources die nodig zijn voor het maken van een nieuwe virtuele machine. U kunt meer opgeven, maar dit is wel het vereiste.|
+| Een VM maken van een aangepaste installatiekopie | New-AzVm-ResourceGroupName $myResourceGroup name $myVM image naam "myImage"-location $location  <BR></BR><BR></BR>U moet al uw eigen [beheerde installatie kopie](capture-image-resource.md)hebben gemaakt. U kunt een installatie kopie gebruiken om meerdere, identieke Vm's te maken. |
 
 
 
@@ -45,30 +39,30 @@ Deze variabelen kunnen nuttig zijn voor u als u meer dan één van de opdrachten
 
 | Taak | Opdracht |
 | ---- | ------- |
-| Een VM-configuratie maken |$vm = [Nieuw-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>De VM-configuratie wordt gebruikt om instellingen voor de VM te definiëren of bij te werken. De configuratie wordt geïnitialiseerd met de naam van de VM en de [grootte](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ervan . |
-| Configuratie-instellingen toevoegen |$vm = [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Besturingssysteeminstellingen inclusief [referenties](https://technet.microsoft.com/library/hh849815.aspx) worden toegevoegd aan het configuratieobject dat u eerder hebt gemaakt met Nieuw-AzVMConfig. |
-| Een netwerkinterface toevoegen |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -VM $vm -Id $nic. Id<BR></BR><BR></BR>Een VM moet een [netwerkinterface](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hebben om te communiceren in een virtueel netwerk. U [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) ook gebruiken om een bestaand netwerkinterfaceobject op te halen. |
-| Een platformafbeelding opgeven |$vm = [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -VM $vm -PublisherName "publisher_name" -Aanbieding "publisher_offer" -Skus "product_sku" -Versie "laatste"<BR></BR><BR></BR>[Afbeeldingsinformatie](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wordt toegevoegd aan het configuratieobject dat u eerder hebt gemaakt met Nieuw-AzVMConfig. Het object dat van deze opdracht wordt geretourneerd, wordt alleen gebruikt wanneer u de osschijf instelt op een platformafbeelding. |
-| Een virtuele machine maken |[Nieuw-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Locatie $location -VM $vm<BR></BR><BR></BR>Alle resources worden gemaakt in een [resourcegroep](../../azure-resource-manager/management/manage-resource-groups-powershell.md). Voer voordat u deze opdracht uitvoert, New-AzVMConfig, Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface en Set-AzVMOSDisk uit. |
-| Een VM bijwerken |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Download de huidige VM-configuratie met Get-AzVM, wijzig de configuratie-instellingen op het VM-object en voer deze opdracht uit. |
+| Een VM-configuratie maken |$vm = [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>De VM-configuratie wordt gebruikt om instellingen voor de virtuele machine te definiëren of bij te werken. De configuratie wordt geïnitialiseerd met de naam van de virtuele machine en de [grootte](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ervan. |
+| Configuratie-instellingen toevoegen |$vm = [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -vm $VM-Windows-ComputerName $MyVM-Credential $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>De instellingen van het besturings systeem, inclusief [referenties](https://technet.microsoft.com/library/hh849815.aspx) , worden toegevoegd aan het configuratie object dat u eerder hebt gemaakt met behulp van New-AzVMConfig. |
+| Een netwerk interface toevoegen |$vm = [add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -vm $VM-id $NIC. Id<BR></BR><BR></BR>Een virtuele machine moet een [netwerk interface](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hebben om te kunnen communiceren in een virtueel netwerk. U kunt ook [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) gebruiken om een bestaand netwerk interface object op te halen. |
+| Een platform installatie kopie opgeven |$vm = [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -vm $VM-uitgever ' publisher_name '-bied "publisher_offer"-sku's "product_sku"-versie "nieuwste"<BR></BR><BR></BR>[Informatie over de installatie kopie](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wordt toegevoegd aan het configuratie object dat u eerder hebt gemaakt met New-AzVMConfig. Het object dat door deze opdracht wordt geretourneerd, wordt alleen gebruikt wanneer u de besturingssysteem schijf instelt op het gebruik van een platform installatie kopie. |
+| Een virtuele machine maken |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup locatie-$location-VM-$VM<BR></BR><BR></BR>Alle resources worden in een [resource groep](../../azure-resource-manager/management/manage-resource-groups-powershell.md)gemaakt. Voordat u deze opdracht uitvoert, voert u New-AzVMConfig, set-AzVMOperatingSystem, set-AzVMSourceImage, add-AzVMNetworkInterface en set-AzVMOSDisk uit. |
+| Een VM bijwerken |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $MYRESOURCEGROUP-vm $VM<BR></BR><BR></BR>Haal de huidige VM-configuratie op met Get-AzVM, wijzig de configuratie-instellingen voor het VM-object en voer deze opdracht uit. |
 
-## <a name="get-information-about-vms"></a>Informatie over VM's
+## <a name="get-information-about-vms"></a>Informatie over Vm's ophalen
 
 | Taak | Opdracht |
 | ---- | ------- |
-| VM's in een abonnement weergeven |[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) |
-| VM's in een resourcegroep weergeven |Get-AzVM -ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Als u een lijst met brongroepen in uw abonnement wilt krijgen, gebruikt u [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup). |
-| Informatie over een VM ophalen |Get-AzVM -ResourceGroupName $myResourceGroup -Naam $myVM |
+| Vm's in een abonnement weer geven |[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) |
+| Vm's in een resource groep weer geven |Get-AzVM-ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Gebruik [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup)om een lijst met resource groepen in uw abonnement op te halen. |
+| Informatie over een VM ophalen |Get-AzVM-ResourceGroupName $myResourceGroup-name $myVM |
 
 ## <a name="manage-vms"></a>Virtuele machines beheren
 | Taak | Opdracht |
 | --- | --- |
-| Een VM starten |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) -ResourceGroupName $myResourceGroup -Naam $myVM |
-| Een VM stoppen |[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) -ResourceGroupName $myResourceGroup -Naam $myVM |
-| Een lopende VM opnieuw starten |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/restart-azvm) -ResourceGroupName $myResourceGroup -Naam $myVM |
-| Een VM verwijderen |[Remove-AzVM](https://docs.microsoft.com/powershell/module/az.compute/remove-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Een VM starten |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) -ResourceGroupName $myResourceGroup naam $myVM |
+| Een VM stoppen |[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) -ResourceGroupName $MyResourceGroup-name $myVM |
+| Een actieve VM opnieuw opstarten |[Restart-AzVM](https://docs.microsoft.com/powershell/module/az.compute/restart-azvm) -ResourceGroupName $MyResourceGroup-name $myVM |
+| Een VM verwijderen |[Remove-AzVM](https://docs.microsoft.com/powershell/module/az.compute/remove-azvm) -ResourceGroupName $MyResourceGroup-name $myVM |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk de basisstappen voor het maken van een virtuele machine in [Een Windows-vm maken met Resource Manager en PowerShell.](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Zie de basis stappen voor het maken van een virtuele machine in [een Windows-VM maken met behulp van Resource Manager en Power shell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

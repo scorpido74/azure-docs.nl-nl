@@ -1,99 +1,101 @@
 ---
 title: Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
-description: Meer informatie over het identificeren, diagnosticeren en oplossen van Azure Cosmos DB SQL-queryproblemen.
+description: Meer informatie over het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB SQL-query's.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/20/2020
+ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870456"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097231"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
-In dit artikel wordt een algemene aanbevolen aanpak gevolgd voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u de stappen in dit artikel niet als een volledige verdediging tegen potentiële queryproblemen moet beschouwen, hebben we hier de meest voorkomende prestatietips opgenomen. U moet dit artikel gebruiken als startplaats voor het oplossen van problemen met langzame of dure query's in de SQL-api (Azure Cosmos DB Core). U ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om query's te identificeren die traag zijn of die aanzienlijke hoeveelheden doorvoer verbruiken.
+In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangs punt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [Diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om query's te identificeren die langzaam zijn of die aanzienlijke hoeveel heden door Voer in beslag nemen.
 
-U queryoptimalisaties in Azure Cosmos DB in grote lijnen categoriseren:
+U kunt query optimalisaties in het Azure Cosmos DB breed categoriseren:
 
-- Optimalisaties die de kosten van de query (Request Unit) verlagen
+- Optimalisaties die de kosten voor de aanvraag eenheid (RU) van de query verminderen
 - Optimalisaties die alleen de latentie verminderen
 
-Als u de RU-kosten van een query vermindert, zult u vrijwel zeker ook de latentie verlagen.
+Als u de RU-kosten van een query reduceert, verkleint u de latentie ook bijna zeker.
 
-In dit artikel vindt u voorbeelden die [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) u opnieuw maken met behulp van de voedingsgegevensset.
+In dit artikel vindt u voor beelden die u opnieuw kunt maken met behulp van de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset.
 
 ## <a name="common-sdk-issues"></a>Veelvoorkomende SDK-problemen
 
-- Volg de [prestatietips voor](performance-tips.md)de beste prestaties.
+Voordat u deze hand leiding leest, moet u rekening houden met veelvoorkomende SDK-problemen die niet zijn gerelateerd aan de query-engine.
+
+- Volg deze [Tips voor prestaties](performance-tips.md)voor de beste prestaties.
     > [!NOTE]
-    > Voor betere prestaties raden we windows 64-bits hostverwerking aan. De SQL SDK bevat een native ServiceInterop.dll om query's lokaal te ontlopen en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waar ServiceInterop.dll niet beschikbaar is, wordt een extra netwerkoproep naar de gateway gemaakt om de geoptimaliseerde query te krijgen.
-- U `MaxItemCount` een voor uw query's instellen, maar u geen minimumaantal objecten opgeven.
-    - Code moet elke paginagrootte verwerken, `MaxItemCount`van nul tot de .
-    - Het aantal items op een pagina is `MaxItemCount`altijd kleiner dan het opgegeven . Echter, `MaxItemCount` is strikt een maximum en er kunnen minder resultaten dan dit bedrag.
-- Soms kunnen query's lege pagina's hebben, zelfs als er resultaten zijn op een toekomstige pagina. Redenen hiervoor kunnen zijn:
-    - De SDK kan meerdere netwerkgesprekken voeren.
-    - Het kan lang duren voordat de documenten zijn opgehaald.
-- Alle query's hebben een vervolgtoken waarmee de query kan worden voortgezet. Zorg ervoor dat u de query volledig afvoer. Kijk naar de SDK monsters, en gebruik een `while` lus op `FeedIterator.HasMoreResults` om de hele query drain.
+    > Voor betere prestaties raden we u aan Windows 64-bits host te verwerken. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren. ServiceInterop. dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop. dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen.
+- Met de SDK kunt u `MaxItemCount` een voor uw query's instellen, maar u kunt geen minimum aantal items opgeven.
+    - Code moet elk pagina formaat afhandelen van 0 tot `MaxItemCount`en met.
+    - Het aantal items op een pagina is altijd minder of gelijk aan het opgegeven `MaxItemCount`. `MaxItemCount` Is echter een strikt maximum en er kunnen minder resultaten zijn dan deze hoeveelheid.
+- Soms bevatten query's lege pagina's, zelfs wanneer er resultaten zijn op een toekomstige pagina. Dit kan de volgende oorzaken hebben:
+    - De SDK kan meerdere netwerk aanroepen uitvoeren.
+    - Het kan lang duren voordat de query de documenten heeft opgehaald.
+- Alle query's hebben een vervolg token waarmee de query kan worden voortgezet. Zorg ervoor dat u de query volledig leegmaakt. Bekijk de voor beelden van `while` `FeedIterator.HasMoreResults` de SDK en gebruik een lus aan om de hele query af te breken.
 
-## <a name="get-query-metrics"></a>Querystatistieken opvragen
+## <a name="get-query-metrics"></a>Metrische query gegevens ophalen
 
-Wanneer u een query optimaliseert in Azure Cosmos DB, is de eerste stap altijd om [de querystatistieken](profile-sql-api-query.md) voor uw query te krijgen. Deze statistieken zijn ook beschikbaar via de Azure-portal:
+Wanneer u een query in Azure Cosmos DB optimaliseert, is de eerste stap altijd om [de metrische gegevens van de query](profile-sql-api-query.md) voor uw query op te halen. Deze metrische gegevens zijn ook beschikbaar via de Azure Portal. Zodra u de query in de Data Explorer hebt uitgevoerd, zijn de metrische gegevens van de query zichtbaar naast het tabblad **resultaten** :
 
-[![Querystatistieken](./media/troubleshoot-query-performance/obtain-query-metrics.png) weergeven](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![Metrische query gegevens](./media/troubleshoot-query-performance/obtain-query-metrics.png) ophalen](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-Nadat u de querystatistieken hebt opgehaald, vergelijkt u het aantal opgehaalde documenten met het aantal uitvoerdocumenten voor uw query. Gebruik deze vergelijking om de relevante secties te identificeren die in dit artikel moeten worden bekeken.
+Nadat u de metrische gegevens van de query hebt opgehaald, vergelijkt u het **opgehaalde aantal documenten** met het **aantal uitvoer documenten** voor uw query. Gebruik deze vergelijking om de relevante secties te identificeren die u in dit artikel kunt controleren.
 
-Het aantal opgehaalde documenten is het aantal documenten dat de query moet laden. Het aantal uitvoerdocumenten is het aantal documenten dat nodig was voor de resultaten van de query. Als het aantal opgehaalde documenten aanzienlijk hoger is dan het aantal uitvoerdocumenten, was er ten minste één deel van uw query dat de index niet kon gebruiken en een scan moest uitvoeren.
+Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat nodig was voor de resultaten van de query. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten**, was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
 
-Raadpleeg de volgende secties om inzicht te krijgen in de relevante queryoptimalisaties voor uw scenario.
+Raadpleeg de volgende secties om inzicht te krijgen in de relevante query optimalisaties voor uw scenario.
 
-### <a name="querys-ru-charge-is-too-high"></a>De RU-kosten van query's zijn te hoog
+### <a name="querys-ru-charge-is-too-high"></a>De RU-kosten van de query zijn te hoog
 
-#### <a name="retrieved-document-count-is-significantly-higher-than-output-document-count"></a>Opgehaald documentaantal is aanzienlijk hoger dan het aantal uitvoerdocumenten
+#### <a name="retrieved-document-count-is-significantly-higher-than-output-document-count"></a>Het opgehaalde document aantal is aanzienlijk hoger dan het aantal uitvoer documenten
 
-- [Neem de benodigde paden op in het indexeringsbeleid.](#include-necessary-paths-in-the-indexing-policy)
+- [Neem de benodigde paden op in het indexerings beleid.](#include-necessary-paths-in-the-indexing-policy)
 
-- [Begrijpen welke systeemfuncties de index gebruiken.](#understand-which-system-functions-use-the-index)
+- [Begrijpen welke systeem functies de index gebruiken.](#understand-which-system-functions-use-the-index)
 
-- [Begrijpen welke geaggregeerde query's de index gebruiken.](#understand-which-aggregate-queries-use-the-index)
+- [Begrijp welke statistische query's de index gebruiken.](#understand-which-aggregate-queries-use-the-index)
 
-- [Query's wijzigen met zowel een filter als een order-door-clausule.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [Optimaliseer query's met zowel een filter als een component ORDER BY.](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [Optimaliseer JOIN-expressies met behulp van een subquery.](#optimize-join-expressions-by-using-a-subquery)
-
-<br>
-
-#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Opgehaald documentaantal is ongeveer gelijk aan het aantal uitvoerdocument
-
-- [Vermijd kruispartitiequery's.](#avoid-cross-partition-queries)
-
-- [Query's optimaliseren met filters voor meerdere eigenschappen.](#optimize-queries-that-have-filters-on-multiple-properties)
-
-- [Query's wijzigen met zowel een filter als een order-door-clausule.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [Optimaliseer de KOPPELINGs expressies met behulp van een subquery.](#optimize-join-expressions-by-using-a-subquery)
 
 <br>
 
-### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>De RU-kosten van query zijn acceptabel, maar de latentie is nog steeds te hoog
+#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Het opgehaalde document aantal is ongeveer gelijk aan het aantal uitvoer documenten
 
-- [Verbeter de nabijheid.](#improve-proximity)
+- [Minimaliseer Kruis partitie query's.](#minimize-cross-partition-queries)
 
-- [Verhoog de ingerichte doorvoer.](#increase-provisioned-throughput)
+- [Query's met filters op meerdere eigenschappen optimaliseren.](#optimize-queries-that-have-filters-on-multiple-properties)
 
-- [Verhoog MaxConcurrency.](#increase-maxconcurrency)
+- [Optimaliseer query's met zowel een filter als een component ORDER BY.](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [Maximaalgebufferd itemaantal verhogen.](#increase-maxbuffereditemcount)
+<br>
 
-## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Query's waarbij opgehaald documentaantal het aantal uitvoerdocumenten overschrijdt
+### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>De RU-kosten van de query zijn acceptabel, maar de latentie is nog te hoog
 
- Het aantal opgehaalde documenten is het aantal documenten dat de query moet laden. Het aantal uitvoerdocumenten is het aantal documenten dat nodig was voor de resultaten van de query. Als het aantal opgehaalde documenten aanzienlijk hoger is dan het aantal uitvoerdocumenten, was er ten minste één deel van uw query dat de index niet kon gebruiken en een scan moest uitvoeren.
+- [Verg root de nabijheid.](#improve-proximity)
 
-Hier is een voorbeeld van scanquery's die niet volledig door de index is weergegeven:
+- [Verhoog de ingerichte door voer.](#increase-provisioned-throughput)
+
+- [Verg root MaxConcurrency.](#increase-maxconcurrency)
+
+- [Verg root MaxBufferedItemCount.](#increase-maxbuffereditemcount)
+
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten groter is dan het aantal uitvoer documenten
+
+ Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat door de query wordt geretourneerd. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten**, was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
+
+Hier volgt een voor beeld van een scan query die niet volledig door de index is geleverd:
 
 Query:
 
@@ -103,7 +105,7 @@ FROM c
 WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
  ```
 
-Querystatistieken:
+Metrische gegevens van query:
 
 ```
 Retrieved Document Count                 :          60,951
@@ -129,23 +131,28 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-Het aantal opgehaalde documenten (60.951) is aanzienlijk hoger dan het aantal uitvoerdocumenten (7), dus deze query moest een scan uitvoeren. In dit geval gebruikt de systeemfunctie [UPPER()](sql-query-upper.md) de index niet.
+Het **opgehaalde document aantal** (60.951) is aanzienlijk hoger dan het **aantal uitvoer documenten** (7), wat inhoudt dat deze query heeft geresulteerd in een document scan. In dit geval gebruikt de systeem functie [Upper ()](sql-query-upper.md) geen index.
 
-### <a name="include-necessary-paths-in-the-indexing-policy"></a>De benodigde paden opnemen in het indexeringsbeleid
+### <a name="include-necessary-paths-in-the-indexing-policy"></a>Benodigde paden in het indexerings beleid toevoegen
 
-Uw indexeringsbeleid moet betrekking `WHERE` hebben `ORDER BY` op `JOIN`alle eigenschappen die zijn opgenomen in clausules, clausules en de meeste systeemfuncties. Het pad dat in het indexbeleid is opgegeven, moet overeenkomen met (hoofdlettergevoelig) van de eigenschap in de JSON-documenten.
+Het indexerings beleid moet betrekking hebben op alle `WHERE` eigenschappen in componenten `ORDER BY` , componenten `JOIN`en de meeste systeem functies. De gewenste paden die zijn opgegeven in het index beleid moeten overeenkomen met de eigenschappen in de JSON-documenten.
 
-Als u een eenvoudige query uitvoert op de [voedingsgegevensset,](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) ziet `WHERE` u een veel lagere RU-kosten wanneer de eigenschap in de clausule wordt geïndexeerd:
+> [!NOTE]
+> Eigenschappen in Azure Cosmos DB indexerings beleid zijn hoofdletter gevoelig
+
+Als u de volgende eenvoudige query uitvoert op de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset, ziet u een veel lagere ru-kosten wanneer de eigenschap in de `WHERE` component wordt geïndexeerd:
 
 #### <a name="original"></a>Origineel
 
 Query:
 
 ```sql
-SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
+SELECT *
+FROM c
+WHERE c.description = "Malabar spinach, cooked"
 ```
 
-Indexeringsbeleid:
+Indexerings beleid:
 
 ```json
 {
@@ -164,11 +171,11 @@ Indexeringsbeleid:
 }
 ```
 
-**RU-kosten:** 409,51 RU's
+**Ru-kosten:** 409,51 RUs
 
 #### <a name="optimized"></a>Geoptimaliseerd
 
-Bijgewerkt indexeringsbeleid:
+Bijgewerkt indexerings beleid:
 
 ```json
 {
@@ -183,89 +190,105 @@ Bijgewerkt indexeringsbeleid:
 }
 ```
 
-**RU-kosten:** 2,98 RU's
+**Ru-kosten:** 2,98 RUs
 
-U op elk gewenst moment eigenschappen toevoegen aan het indexeringsbeleid, zonder dat dit gevolgen heeft voor de beschikbaarheid of prestaties van de schrijftekst. Als u een nieuwe eigenschap aan de index toevoegt, worden met query's die de eigenschap gebruiken onmiddellijk de nieuwe beschikbare index gebruikt. De query gebruikt de nieuwe index tijdens de bouw. Queryresultaten kunnen dus inconsistent zijn terwijl de index wordt hersteld. Als een nieuwe eigenschap wordt geïndexeerd, worden query's die alleen bestaande indexen gebruiken, niet beïnvloed tijdens het opnieuw opbouwen van de index. U [de voortgang van de indextransformatie bijhouden](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+U kunt op elk gewenst moment eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op schrijf Beschik baarheid of-prestaties. Als u een nieuwe eigenschap aan de index toevoegt, zullen query's die gebruikmaken van de eigenschap onmiddellijk de nieuwe beschik bare index gebruiken. De query maakt gebruik van de nieuwe index terwijl deze wordt gebouwd. Daarom kunnen query resultaten inconsistent zijn terwijl het opnieuw opbouwen van de index actief is. Als een nieuwe eigenschap is geïndexeerd, worden query's waarbij alleen bestaande indexen worden gebruikt, niet beïnvloed tijdens het opnieuw opbouwen van de index. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
-### <a name="understand-which-system-functions-use-the-index"></a>Begrijpen welke systeemfuncties de index gebruiken
+### <a name="understand-which-system-functions-use-the-index"></a>Begrijpen welke systeem functies de index gebruiken
 
-Als een expressie kan worden vertaald in een reeks tekenreekswaarden, kan deze de index gebruiken. Anders kan het niet.
+Als een expressie kan worden omgezet in een bereik teken reeks waarden, kan deze de index gebruiken. Als dat niet het geval is, kan dat niet.
 
-Hier is de lijst met enkele veelvoorkomende tekenreeksfuncties die de index kunnen gebruiken:
+Hier volgt een lijst met enkele veelgebruikte teken reeks functies die de index kunnen gebruiken:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr, maar alleen als de eerste num_expr 0 is
+- Subtekenreeks (str_expr, num_expr, num_expr) = str_expr, maar alleen als de eerste num_expr 0 is
 
-Hieronder volgen enkele veelvoorkomende systeemfuncties die de index niet gebruiken en elk document moeten laden:
+Hieronder volgen enkele algemene systeem functies die de index niet gebruiken en elk document moeten laden:
 
-| **Systeemfunctie**                     | **Ideeën voor optimalisatie**             |
+| **Systeem functie**                     | **Ideeën voor optimalisatie**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | Gebruik Azure Search voor zoeken met volledige tekst.                        |
-| BOVEN/ONDER                             | In plaats van de systeemfunctie te gebruiken om gegevens te normaliseren voor vergelijkingen, normaliseer tubijt u de behuizing bij het inbrengen. Een query ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` ```SELECT * FROM c WHERE c.name = 'BOB'```als wordt . |
-| Wiskundige functies (niet-aggregaten) | Als u een waarde vaak in uw query moet berekenen, u overwegen de waarde als eigenschap op te slaan in uw JSON-document. |
+| CONTAINS                                | Gebruik Azure Search voor Zoek opdrachten in volledige tekst.                        |
+| BOVENSTE/ONDERSTE                             | In plaats van de systeem functie te gebruiken voor het normaliseren van gegevens voor vergelijkingen, normaliseert u de behuizing bij het invoegen. Een query zoals ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` dat ```SELECT * FROM c WHERE c.name = 'BOB'```wordt. |
+| Wiskundige functies (non-aggregaties) | Als u een waarde regel matig in uw query wilt berekenen, kunt u overwegen om de waarde op te slaan als een eigenschap in het JSON-document. |
 
 ------
 
-Andere delen van de query kunnen de index nog steeds gebruiken, ook al zijn de systeemfuncties dat niet.
+Andere onderdelen van de query kunnen de index nog steeds gebruiken hoewel het systeem niet werkt.
 
-### <a name="understand-which-aggregate-queries-use-the-index"></a>Begrijpen welke geaggregeerde query's de index gebruiken
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Begrijpen welke statistische query's de index gebruiken
 
-In de meeste gevallen worden de indexfuncties voor geaggregeerde systeemfuncties in Azure Cosmos DB gebruikt. Afhankelijk van de filters of aanvullende clausules in een geaggregeerde query kan de queryengine echter nodig zijn om een groot aantal documenten te laden. Doorgaans past de queryengine gelijkheids- en bereikfilters eerst toe. Na het toepassen van deze filters kan de queryengine extra filters evalueren en de resterende documenten laden om het aggregaat te berekenen, indien nodig.
+In de meeste gevallen zal statistische systeem functies in Azure Cosmos DB de index gebruiken. Afhankelijk van de filters of extra componenten in een statistische query, kan de query-engine echter nodig zijn om een groot aantal documenten te laden. Normaal gesp roken worden er filters voor gelijkheid en bereik toegepast op de query-engine. Na het Toep assen van deze filters kan de query-engine aanvullende filters evalueren en de resterende documenten zo nodig laden om de aggregatie te berekenen.
 
-Gezien deze twee voorbeeldquery's is de query `CONTAINS` met zowel een filter voor gelijkheid als systeemfunctie over het algemeen efficiënter dan een query met alleen een `CONTAINS` systeemfunctiefilter. Dit komt omdat het gelijkheidsfilter eerst wordt toegepast en de index `CONTAINS` gebruikt voordat documenten moeten worden geladen voor het duurdere filter.
+Als deze twee voorbeeld query's worden gebruikt, is de query met zowel een gelijkheid- `CONTAINS` als systeem functie filter doorgaans efficiënter dan een query met een filter voor een `CONTAINS` systeem functie. Dit komt doordat het gelijkheids filter eerst wordt toegepast en de index gebruikt voordat documenten moeten worden geladen voor het duurder `CONTAINS` filter.
 
-Query met `CONTAINS` alleen filter - hogere RU-kosten:
-
-```sql
-SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
-```
-
-Query met zowel `CONTAINS` gelijkheidsfilter als filter - lagere RU-kosten:
+Query met alleen `CONTAINS` filter-hogere ru-kosten:
 
 ```sql
-SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+SELECT COUNT(1)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
 ```
 
-Hier volgen aanvullende voorbeelden van aggregatenquery's die de index niet volledig zullen gebruiken:
-
-#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Query's met systeemfuncties die de index niet gebruiken
-
-U moet verwijzen naar de pagina van de betreffende [systeemfunctie](sql-query-system-functions.md) om te zien of de index wordt gebruikt.
+Query met zowel een gelijkheids `CONTAINS` filter als een filter lagere ru-kosten:
 
 ```sql
-SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+SELECT AVG(c._ts)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
 ```
 
-#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Query's samenvoegen met door de gebruiker gedefinieerde functies (UDF's)
+Hier vindt u meer voor beelden van statistische query's waarbij de index niet volledig wordt gebruikt:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Query's met systeem functies die de index niet gebruiken
+
+Raadpleeg de pagina van de relevante [systeem functie](sql-query-system-functions.md) om te zien of deze gebruikmaakt van de index.
 
 ```sql
-SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+SELECT MAX(c._ts)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
 ```
 
-#### <a name="queries-with-group-by"></a>Query's met GROEP DOOR
-
-De RU-heffing van `GROUP BY` zal toenemen naarmate `GROUP BY` de kardinaliteit van de eigenschappen in de clausule toeneemt. In dit voorbeeld moet de queryengine elk `c.foodGroup = "Sausages and Luncheon Meats"` document laden dat overeenkomt met het filter, zodat de RU-kosten naar verwachting hoog zijn.
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Query's samen stellen met door de gebruiker gedefinieerde functies (UDF)
 
 ```sql
-SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+SELECT AVG(c._ts)
+FROM c
+WHERE udf.MyUDF("Sausages and Luncheon Meats")
 ```
 
-Als u van plan bent om vaak dezelfde geaggregeerde query's uit te voeren, kan het efficiënter zijn om een real-time gematerialiseerde weergave te bouwen met de [Azure Cosmos DB-wijzigingsfeed](change-feed.md) dan het uitvoeren van afzonderlijke query's.
+#### <a name="queries-with-group-by"></a>Query's met GROUP BY
 
-### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Query's wijzigen met zowel een filter als een order-door-clausule
+De RU-kosten van query's `GROUP BY` met worden verhoogd naarmate de kardinaliteit van de eigenschappen in `GROUP BY` de component toeneemt. In de onderstaande query worden de RU-kosten van de query verhoogd naarmate het aantal unieke beschrijvingen toeneemt.
 
-Hoewel query's met een `ORDER BY` filter en een clausule normaal gesproken een bereikindex gebruiken, zijn ze efficiënter als ze kunnen worden bediend vanuit een samengestelde index. Naast het wijzigen van het indexeringsbeleid, moet u alle `ORDER BY` eigenschappen in de samengestelde index aan de component toevoegen. Deze wijziging in de query zorgt ervoor dat de samengestelde index wordt gebruikt.  U de impact waarnemen [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) door een query uit te voeren op de voedingsgegevensset:
+De RU-kosten van een statistische functie met `GROUP BY` een-component zullen hoger zijn dan de ru-kosten van een statistische functie. In dit voor beeld moet de query-engine elk document laden dat overeenkomt met het `c.foodGroup = "Sausages and Luncheon Meats"` filter, zodat de ru-kosten naar verwachting hoog zijn.
+
+```sql
+SELECT COUNT(1)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats"
+GROUP BY c.description
+```
+
+Als u van plan bent om dezelfde statistische query's vaak uit te voeren, is het wellicht efficiënter om een realtime weer gave te bouwen met de [Azure Cosmos DB wijzigings feed](change-feed.md) dan het uitvoeren van afzonderlijke query's.
+
+### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Query's met zowel een filter als een ORDER BY-component optimaliseren
+
+Hoewel query's met een filter en een `ORDER BY` component normaal gesp roken gebruikmaken van een bereik index, zijn ze efficiënter als ze kunnen worden bediend vanuit een samengestelde index. Naast het wijzigen van het indexerings beleid, moet u alle eigenschappen in de samengestelde index toevoegen aan `ORDER BY` de-component. Met deze wijziging in de query wordt ervoor gezorgd dat de samengestelde index wordt gebruikt.  U kunt het effect observeren door een query uit te voeren op de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset:
 
 #### <a name="original"></a>Origineel
 
 Query:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
+SELECT *
+FROM c
+WHERE c.foodGroup = "Soups, Sauces, and Gravies"
+ORDER BY c._ts ASC
 ```
 
-Indexeringsbeleid:
+Indexerings beleid:
 
 ```json
 {
@@ -281,19 +304,20 @@ Indexeringsbeleid:
 }
 ```
 
-**RU-kosten:** 44,28 RU's
+**Ru-kosten:** 44,28 RUs
 
 #### <a name="optimized"></a>Geoptimaliseerd
 
-Bijgewerkte query (bevat beide `ORDER BY` eigenschappen in de clausule):
+Bijgewerkte query (bevat beide eigenschappen in de `ORDER BY` component):
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies"
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
-Bijgewerkt indexeringsbeleid:
+Bijgewerkt indexerings beleid:
 
 ```json
 {  
@@ -321,12 +345,13 @@ Bijgewerkt indexeringsbeleid:
 
 ```
 
-**RU-kosten:** 8,86 RU's
+**Ru-kosten:** 8,86 RUs
 
-### <a name="optimize-join-expressions-by-using-a-subquery"></a>JOIN-expressies optimaliseren met behulp van een subquery
-Subquery's met meerdere `JOIN` waarden kunnen expressies optimaliseren door na elke select-many `WHERE` expressie op basis van selectie te drukken in plaats van dat alle kruisteksten in de clausule worden opgenomen.
+### <a name="optimize-join-expressions-by-using-a-subquery"></a>Expressies voor samen voegen optimaliseren met behulp van een subquery
 
-Houd rekening met deze query:
+Subquery's met meerdere waarden kunnen expressies optimaliseren `JOIN` door predikaten te pushen na elke Select-veel'-expressie in plaats van na alle cross-join's `WHERE` in de component.
+
+Bekijk deze query:
 
 ```sql
 SELECT Count(1) AS Count
@@ -338,13 +363,13 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**RU-lading:** 167,62 RU's
+**Ru-kosten:** 167,62 RUs
 
-Voor deze query komt de index overeen met elk document met een tag met de naam 'zuigelingenvoeding', voedingWaarde groter dan 0 en een weergavebedrag groter dan 1. De `JOIN` expressie hier voert het cross-product uit van alle items van tags, voedingsstoffen en serveerarrays voor elk overeenkomend document voordat een filter wordt toegepast. De `WHERE` clausule past dan het `<c, t, n, s>` filterpredicaat toe op elke tuple.
+Voor deze query komt de index overeen met een document met een tag met de naam `infant formula`, `nutritionValue` groter dan 0 en `amount` groter dan 1. De `JOIN` expressie voert het cross-product uit van alle items met tags, nutriënten en bevat matrices voor elk overeenkomend document voordat een filter wordt toegepast. De `WHERE` component past vervolgens het filter predicaat op elke `<c, t, n, s>` tuple toe.
 
-Als een overeenkomend document bijvoorbeeld 10 items in elk van de drie arrays heeft, worden de tuples uitgebreid tot 1 x 10 x 10 x 10 (dat wil zeggen 1.000). Het gebruik van subquery's hier kan helpen om samengevoegde arrayitems uit te filteren voordat u aansluit bij de volgende expressie.
+Als bijvoorbeeld een overeenkomend document 10 items in elk van de drie matrices heeft, wordt dit uitgebreid tot 1 x 10 x 10 x 10 (1.000) Tuples. Het gebruik van subquery's kan worden gebruikt om gekoppelde matrix items te filteren voordat u met de volgende expressie samenvoegt.
 
-Deze query is gelijk aan de vorige query's, maar gebruikt subquery's:
+Deze query is gelijk aan de voor gaande, maar gebruikt subquery's:
 
 ```sql
 SELECT Count(1) AS Count
@@ -354,63 +379,69 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**RU-kosten:** 22,17 RU's
+**Ru-kosten:** 22,17 RUs
 
-Stel dat slechts één item in de array tags overeenkomt met het filter en dat er vijf items zijn voor zowel de arrays met voedingsstoffen als voor porties. De `JOIN` expressies worden uitgebreid tot 1 x 1 x 5 x 5 = 25 items, in tegenstelling tot 1.000 items in de eerste query.
+Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en dat er vijf items zijn voor de nutriënten en voor het leveren van matrices. De `JOIN` expressies worden uitgebreid tot 1 x 1 x 5 x 5 = 25 items, in tegens telling tot 1.000 items in de eerste query.
 
-## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Query's waarbij opgehaald documentaantal gelijk is aan het aantal uitvoerdocumenten
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten gelijk is aan het aantal uitvoer documenten
 
-Als het aantal opgehaalde documenten ongeveer gelijk is aan het aantal uitvoerdocumenten, hoeft de query niet veel onnodige documenten te scannen. Voor veel query's, zoals query's die het trefwoord TOP gebruiken, kan het aantal opgehaalde documenten met 1 groter zijn. Je hoeft je hier geen zorgen over te maken.
+Als het **aantal opgehaalde documenten** ongeveer gelijk is aan het **aantal uitvoer documenten**, moet de query-engine veel onnodige documenten niet scannen. Voor veel query's, zoals die van het tref `TOP` woord, kan het aantal **opgehaalde documenten** groter zijn dan het **aantal uitvoer documenten** door 1. U hoeft hiervoor geen zorgen te maken.
 
-### <a name="avoid-cross-partition-queries"></a>Kruispartitiequery's vermijden
+### <a name="minimize-cross-partition-queries"></a>Kruis partitie query's minimaliseren
 
-Azure Cosmos DB gebruikt [partitionering](partitioning-overview.md) om afzonderlijke containers te schalen naarmate de behoeften aan aanvraageenheden en de behoeften aan gegevensopslag toenemen. Elke fysieke partitie heeft een aparte en onafhankelijke index. Als uw query een gelijkheidsfilter heeft dat overeenkomt met de partitiesleutel van uw container, moet u alleen de index van de betreffende partitie controleren. Deze optimalisatie vermindert het totale aantal RU's dat de query nodig heeft.
+Azure Cosmos DB maakt gebruik van [partitionering](partitioning-overview.md) om afzonderlijke containers te schalen als aanvraag eenheid en gegevens opslag moeten toenemen. Elke fysieke partitie heeft een afzonderlijke en onafhankelijke index. Als uw query een gelijkheids filter heeft dat overeenkomt met de partitie sleutel van uw container, moet u alleen de index van de relevante partitie controleren. Deze optimalisatie vermindert het totale aantal RUs dat nodig is voor de query.
 
-Als u een groot aantal ingerichte RU's (meer dan 30.000) of een grote hoeveelheid opgeslagen gegevens hebt (meer dan ongeveer 100 GB), hebt u waarschijnlijk een container die groot genoeg is om een aanzienlijke vermindering van de queryRU-kosten te zien.
+Als u een groot aantal ingerichte RUs (meer dan 30.000) of een grote hoeveelheid opgeslagen gegevens (meer dan ongeveer 100 GB) hebt, hebt u waarschijnlijk een grote voldoende container om een aanzienlijke verlaging van de query-RU-kosten te zien.
 
-Als u bijvoorbeeld een container maakt met de partitiesleutel foodGroup, hoeven de volgende query's slechts één fysieke partitie te controleren:
+Als u bijvoorbeeld een container met de partitie sleutel foodGroup maakt, moeten de volgende query's alleen één fysieke partitie controleren:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Deze query's worden ook geoptimaliseerd door de toevoeging van de partitiesleutel in de query:
+Query's met een `IN` filter met de partitie sleutel worden alleen de relevante fysieke partitie (s) gecontroleerd en worden niet ' uitwaaieren ':
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
-Query's met bereikfilters op de partitiesleutel of die geen filters op de partitiesleutel hebben, moeten de index van elke fysieke partitie controleren op resultaten:
+Query's die bereik filters hebben op de partitie sleutel of die geen filters hebben op de partitie sleutel, moeten ' uitwaaieren ' hebben en de index van elke fysieke partitie controleren op resultaten:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.description = "Mushroom, oyster, raw"
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-### <a name="optimize-queries-that-have-filters-on-multiple-properties"></a>Query's optimaliseren met filters op meerdere eigenschappen
+### <a name="optimize-queries-that-have-filters-on-multiple-properties"></a>Query's met filters op meerdere eigenschappen optimaliseren
 
-Hoewel query's met filters op meerdere eigenschappen normaal gesproken een bereikindex gebruiken, zijn ze efficiënter als ze kunnen worden weergegeven vanuit een samengestelde index. Voor kleine hoeveelheden gegevens heeft deze optimalisatie geen significante impact. Het kan echter nuttig zijn voor grote hoeveelheden gegevens. U hoogstens één filter zonder gelijkheid per samengestelde index optimaliseren. Als uw query meerdere filters voor niet-gelijkheid heeft, kiest u een van deze filters die de samengestelde index gebruiken. De rest blijft bereikindexen gebruiken. Het filter voor niet-gelijkheid moet als laatste in de samengestelde index worden gedefinieerd. [Meer informatie over samengestelde indexen](index-policy.md#composite-indexes).
+Hoewel query's met filters voor meerdere eigenschappen normaal gesp roken gebruikmaken van een bereik index, zijn ze efficiënter als ze kunnen worden geleverd vanuit een samengestelde index. Voor kleine hoeveel heden gegevens heeft deze optimalisatie geen aanzienlijke gevolgen. Het kan echter nuttig zijn om grote hoeveel heden gegevens te gebruiken. U kunt Maxi maal één niet-gelijkheids filter per samengestelde index optimaliseren. Als uw query meerdere filters heeft die niet gelijk zijn aan gelijkheid, kiest u een van de query's die de samengestelde index gaan gebruiken. De rest zal de bereik indexen blijven gebruiken. Het niet-gelijkheids filter moet als laatste worden gedefinieerd in de samengestelde index. Meer [informatie over samengestelde indexen](index-policy.md#composite-indexes).
 
-Hier volgen enkele voorbeelden van query's die kunnen worden geoptimaliseerd met een samengestelde index:
+Hier volgen enkele voor beelden van query's die kunnen worden geoptimaliseerd met een samengestelde index:
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts = 1575503264
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 ```
 
-Hier is de relevante samengestelde index:
+Hier volgt de relevante samengestelde index:
 
 ```json
 {  
@@ -437,29 +468,29 @@ Hier is de relevante samengestelde index:
 }
 ```
 
-## <a name="optimizations-that-reduce-query-latency"></a>Optimalisaties die de latentie van query's verminderen
+## <a name="optimizations-that-reduce-query-latency"></a>Optimalisaties die de latentie van query's beperken
 
-In veel gevallen kan de RU-kosten aanvaardbaar zijn wanneer de querylatentie nog steeds te hoog is. In de volgende secties vindt u een overzicht van tips voor het verminderen van de latentie van query's. Als u dezelfde query meerdere keren uitvoert op dezelfde gegevensset, worden elke keer dezelfde RU-kosten in rekening gebracht. De querylatentie kan echter variëren tussen query-uitvoeringen.
+In veel gevallen kunnen de RU-kosten acceptabel zijn wanneer de latentie van de query nog te hoog is. De volgende secties geven een overzicht van tips voor het verminderen van de latentie van query's. Als u dezelfde query meerdere keren op dezelfde gegevensset uitvoert, heeft elke keer dezelfde RU-kosten. Maar de query latentie kan verschillen tussen de uitvoering van query's.
 
-### <a name="improve-proximity"></a>De nabijheid verbeteren
+### <a name="improve-proximity"></a>Proximity verhogen
 
-Query's die vanuit een andere regio worden uitgevoerd dan het Azure Cosmos DB-account, hebben een hogere latentie dan wanneer ze in dezelfde regio worden uitgevoerd. Als u bijvoorbeeld code op uw desktopcomputer uitvoert, moet u verwachten dat de latentie tientallen of honderden milliseconden hoger (of meer) is dan wanneer de query afkomstig is van een virtuele machine binnen dezelfde Azure-regio als Azure Cosmos DB. Het is eenvoudig om gegevens wereldwijd te [distribueren in Azure Cosmos DB](distribute-data-globally.md) om ervoor te zorgen dat u uw gegevens dichter bij uw app brengen.
+Query's die worden uitgevoerd vanuit een andere regio dan het Azure Cosmos DB account, hebben een hogere latentie dan wanneer ze in dezelfde regio werden uitgevoerd. Als u bijvoorbeeld code uitvoert op uw desktop computer, verwacht u dat latentie tien tallen of honderden milliseconden hoger is (of meer) dan als de query afkomstig is van een virtuele machine in dezelfde Azure-regio als Azure Cosmos DB. Het is eenvoudig om [gegevens wereld wijd te distribueren in azure Cosmos DB](distribute-data-globally.md) om ervoor te zorgen dat uw gegevens dichter bij uw app kunnen worden gebracht.
 
-### <a name="increase-provisioned-throughput"></a>Verhoging van de ingerichte doorvoer
+### <a name="increase-provisioned-throughput"></a>Ingerichte door Voer verhogen
 
-In Azure Cosmos DB wordt uw ingerichte doorvoer gemeten in Request Units (RU's). Stel je hebt een query die 5 R's doorvoer verbruikt. Als u bijvoorbeeld 1.000 RU's indient, u die query 200 keer per seconde uitvoeren. Als u de query probeerde uit te voeren wanneer er niet genoeg doorvoer beschikbaar was, zou Azure Cosmos DB een HTTP 429-fout retourneren. Een van de huidige Core (SQL) API SDKs zal deze query automatisch opnieuw proberen na het wachten voor een korte tijd. Throttled-aanvragen duren langer, waardoor een toenemende ingerichte doorvoer de latentie van query's kan verbeteren. U het [totale aantal geweigerde aanvragen](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) observeren op het blade **metrics** van de Azure-portal.
+In Azure Cosmos DB wordt uw ingerichte door Voer gemeten in aanvraag eenheden (RUs). Stel dat u een query hebt die 5 RUs van door Voer gebruikt. Als u bijvoorbeeld 1.000 RUs inricht, kunt u die query 200 keer per seconde uitvoeren. Als u probeert de query uit te voeren terwijl er onvoldoende door Voer beschikbaar is, retourneert Azure Cosmos DB een HTTP 429-fout. Een van de huidige core-api's (SQL) API-Sdk's voert deze query automatisch opnieuw uit nadat u een korte periode hebt gewacht. Vertraagde aanvragen nemen meer tijd in beslag, waardoor de ingerichte door Voer zo kan worden uitgebreid met de query latentie. U kunt het [totale aantal vertraagde aanvragen](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) bekijken op de Blade **metrische gegevens** van de Azure Portal.
 
 ### <a name="increase-maxconcurrency"></a>MaxConcurrency verhogen
 
-Parallelle query's werken door meerdere partities parallel op te vragen. Maar gegevens uit een afzonderlijke partitieverzameling worden serieel opgehaald met betrekking tot de query. Dus, als u MaxConcurrency instelt op het aantal partities, hebt u de beste kans op het bereiken van de meest performante query, op voorwaarde dat alle andere systeemomstandigheden hetzelfde blijven. Als u het aantal partities niet kent, u MaxConcurrency (of MaxDegreesOfParallelism in oudere SDK-versies) instellen op een hoog aantal. Het systeem kiest het minimum (aantal partities, door de gebruiker geleverde input) als de maximale mate van parallellisme.
+Parallelle query's werken door meerdere partities parallel te doorzoeken. Maar gegevens van een afzonderlijke gepartitioneerde verzameling worden serieel opgehaald ten opzichte van de query. Als u MaxConcurrency instelt op het aantal partities, hebt u dus de beste kans om de meest uitvoering van de query te bereiken, mits alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u MaxConcurrency (of MaxDegreesOfParallelism in oudere SDK-versies) instellen op een hoog nummer. Het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de maximale mate van parallelle uitvoering.
 
 ### <a name="increase-maxbuffereditemcount"></a>MaxBufferedItemCount verhogen
 
-Query's zijn ontworpen om resultaten vooraf op te halen terwijl de huidige batch met resultaten wordt verwerkt door de client. Vooraf ophalen helpt om de algehele latentie van een query te verbeteren. Als u MaxBufferedItemCount instelt, wordt het aantal vooraf opgehaalde resultaten beperkt. Als u deze waarde instelt op het verwachte aantal geretourneerde resultaten (of een hoger aantal), kan de query het meeste voordeel halen uit vooraf ophalen. Als u deze waarde instelt op -1, bepaalt het systeem automatisch het aantal items dat moet worden gebufferd.
+Query's zijn ontworpen om resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt de algehele latentie van een query te verbeteren. Het instellen van MaxBufferedItemCount beperkt het aantal vooraf opgehaalde resultaten. Als u deze waarde instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het meest voor deel krijgen van het vooraf ophalen. Als u deze waarde instelt op-1, bepaalt het systeem automatisch het aantal items dat in de buffer wordt opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor informatie over het meten van INFO per query, uitvoeringsstatistieken om uw query's af te stemmen en meer:
+Raadpleeg de volgende artikelen voor meer informatie over het meten van RUs per query, het ophalen van uitvoerings statistieken voor het afstemmen van uw query's en meer:
 
-* [Sql-queryuitvoeringsstatistieken downloaden met .NET SDK](profile-sql-api-query.md)
+* [Metrische gegevens over SQL-query uitvoering ophalen met behulp van .NET SDK](profile-sql-api-query.md)
 * [Queryprestaties afstemmen met Azure Cosmos DB](sql-api-sql-query-metrics.md)
 * [Tips voor betere prestaties voor de .NET-SDK](performance-tips.md)

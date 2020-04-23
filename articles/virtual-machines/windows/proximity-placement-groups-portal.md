@@ -1,57 +1,54 @@
 ---
-title: Een plaatsingsgroep voor nabijheid maken met behulp van de portal
-description: Meer informatie over het maken van een plaatsingsgroep voor nabijheid met behulp van de Azure-portal.
-services: virtual-machines
+title: Een proximity-plaatsings groep maken met behulp van de portal
+description: Meer informatie over het maken van een proximity-plaatsings groep met behulp van de Azure Portal.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 8512d9b701242dc686d49bbe56e8a2059f14ee3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aaecfbd14289840e795c6323737877e267586e16
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73180249"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098642"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Een plaatsingsgroep voor nabijheid maken met behulp van de portal
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Een proximity-plaatsings groep maken met behulp van de portal
 
-Als u VM's zo dicht mogelijk wilt plaatsen en de laagst mogelijke latentie wilt bereiken, moet u deze implementeren binnen een [plaatsingsgroep voor de nabijheid.](co-location.md#proximity-placement-groups)
+Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
 
-Een plaatsingsgroep voor nabijheid is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure-rekenbronnen fysiek dicht bij elkaar staan. Plaatsingsgroepen voor nabijheidzijn handig voor workloads waarbij lage latentie een vereiste is.
+Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
 
 
-## <a name="create-the-proximity-placement-group"></a>De plaatsingsgroep voor nabijheid maken
+## <a name="create-the-proximity-placement-group"></a>De plaatsings groep voor proximity maken
 
-1. Typ **de plaatsingsgroep nabijheid** in de zoekopdracht.
-1. Selecteer **onder Services** in de zoekresultaten de optie **Nabijheidsplaatsingsgroepen**.
-1. Selecteer op de pagina **Plaatsingsgroepen nabijheid** de optie **Toevoegen**.
-1. Controleer op het tabblad **Basisbeginselen** onder **Projectdetails**of het juiste abonnement is geselecteerd.
-1. Selecteer **in de groep Resource** nieuw **maken** om een nieuwe groep te maken of selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
-1. Selecteer **in Regio** de locatie waar u de plaatsingsgroep voor nabijheid wilt maken.
-1. Typ in **de groepsgroep Nabijheid een** naam en selecteer Controleren + **maken**.
-1. Nadat de validatie is doorgegeven, selecteert **u Maken** om de groep nabijheidsplaatsing te maken.
+1. Typ **proximity placement Group** in de zoek opdracht.
+1. Selecteer onder **Services** in de zoek resultaten **proximity placement groups**.
+1. Selecteer op de pagina **proximity placement groups** de optie **toevoegen**.
+1. Controleer op het tabblad **basis beginselen** onder **Project Details**of het juiste abonnement is geselecteerd.
+1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe groep te maken of selecteer een bestaande resource groep in de vervolg keuzelijst.
+1. Selecteer in **regio** de locatie waar u de Proximity-plaatsings groep wilt maken.
+1. Typ in **proximity-naam voor plaatsings groep** een naam en selecteer vervolgens **controleren + maken**.
+1. Nadat de validatie is geslaagd, selecteert u **maken** om de Proximity-plaatsings groep te maken.
 
-    ![Schermafbeelding van het maken van een plaatsingsgroep voor nabijheid](./media/ppg/ppg.png)
+    ![Scherm afbeelding van het maken van een proximity-plaatsings groep](./media/ppg/ppg.png)
 
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-1. Ga tijdens het maken van een vm in de portal naar het tabblad **Geavanceerd.** 
-1. Selecteer in de selectie **voor plaatsingsgroep Nabijheid** de juiste plaatsingsgroep. 
+1. Ga tijdens het maken van een virtuele machine in de portal naar het tabblad **Geavanceerd** . 
+1. Selecteer in de selectie voor de **plaatsings groep** de juiste plaatsings groep. 
 
-    ![Schermafbeelding van de sectie nabijheidsplaatsingbij het maken van een nieuwe virtuele machine in de portal](./media/ppg/vm-ppg.png)
+    ![Scherm afbeelding van de sectie locatie van proximity-groep bij het maken van een nieuwe virtuele machine in de portal](./media/ppg/vm-ppg.png)
 
-1. Wanneer u klaar bent met het maken van alle andere vereiste selecties, selecteert u **Controleren + maken**.
-1. Nadat de validatie is doorstaan, selecteert **u Maken** om de VM in de plaatsingsgroep te implementeren.
+1. Wanneer u klaar bent met het maken van alle andere vereiste selecties, selecteert u **controleren + maken**.
+1. Nadat de validatie is door gegeven, selecteert u **maken** om de virtuele machine in de plaatsings groep te implementeren.
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U de [Azure PowerShell](proximity-placement-groups.md) ook gebruiken om nabijheidsplaatsingsgroepen te maken.
+U kunt ook de [Azure PowerShell](proximity-placement-groups.md) gebruiken om proximity-plaatsings groepen te maken.
 

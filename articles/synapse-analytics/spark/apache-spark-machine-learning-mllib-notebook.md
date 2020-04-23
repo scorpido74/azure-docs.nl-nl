@@ -1,6 +1,6 @@
 ---
 title: Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
-description: Meer informatie over het gebruik van Apache Spark MLlib om een machine learning-app te maken die een gegevensset analyseert met behulp van classificatie via logistieke regressie.
+description: Meer informatie over het gebruik van Apache Spark MLlib voor het maken van een machine learning-app die een gegevensset analyseert met behulp van logistiek regressie.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -8,47 +8,47 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 9dc4047b9e95b088bb614858091f43286cefe361
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430004"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096296"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
-In dit artikel leert u hoe u Apache Spark [MLlib](https://spark.apache.org/mllib/) gebruiken om een machine learning-toepassing te maken die eenvoudige voorspellende analyses doet op een open Azure-gegevensset. Spark biedt ingebouwde machine learning-bibliotheken. In dit voorbeeld wordt gebruik gemaakt van *classificatie* via logistieke regressie.
+In dit artikel leert u hoe u Apache Spark [MLlib](https://spark.apache.org/mllib/) kunt gebruiken om een machine learning toepassing te maken die eenvoudige voorspellende analyse op een open bare gegevensset van Azure biedt. Spark biedt ingebouwde machine learning bibliotheken. In dit voor beeld wordt *classificatie* gebruikt via logistiek regressie.
 
-MLlib is een kernsparkbibliotheek die veel hulpprogramma's biedt die nuttig zijn voor machine learning-taken, waaronder hulpprogramma's die geschikt zijn voor:
+MLlib is een belang rijke Spark-bibliotheek die veel hulpprogram ma's biedt die nuttig zijn voor het machine learning taken, waaronder hulpprogram ma's die geschikt zijn voor:
 
 - Classificatie
 - Regressie
 - Clustering
-- Onderwerpmodellering
-- Enkelvoudwaardedecompositie (SVD) en hoofdcomponentanalyse (PCA)
-- Hypothesetesten en het berekenen van steekproefstatistieken
+- Onderwerpen model leren
+- Enkelvouds waarde (SVD) en Principal component analyse (PCA)
+- Hypo Thesen testen en voorbeeld statistieken berekenen
 
-## <a name="understand-classification-and-logistic-regression"></a>Begrijp classificatie en logistieke regressie
+## <a name="understand-classification-and-logistic-regression"></a>Meer informatie over classificatie en logistiek regressie
 
-*Classificatie*, een populaire machine learning taak, is het proces van het sorteren van invoergegevens in categorieën. Het is de taak van een classificatiealgoritme om erachter te komen hoe *u labels* toewijzen aan invoergegevens die u verstrekt. U bijvoorbeeld denken aan een machine learning-algoritme dat voorraadinformatie accepteert als invoer en de voorraad opdeelt in twee categorieën: aandelen die u moet verkopen en aandelen die u moet houden.
+*Classificatie*, een populaire machine learning taak, is het proces waarbij invoer gegevens in categorieën worden gesorteerd. Het is de taak van een classificatie algoritme om te bepalen hoe *labels* moeten worden toegewezen aan invoer gegevens die u opgeeft. U kunt bijvoorbeeld zien wat een machine learning-algoritme is dat aandelen informatie als invoer accepteert en het aandeel in twee categorieën opsplitsen: aandelen die u moet verkopen en aandelen die u moet houden.
 
-*Logistieke regressie* is een algoritme dat u gebruiken voor classificatie. Spark's logistieke regressie API is handig voor *binaire classificatie,* of classificeren van invoergegevens in een van de twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)voor meer informatie over logistieke regressies.
+*Logistiek regressie* is een algoritme dat u voor classificatie kunt gebruiken. De logistiek regressie-API van Spark is handig voor *binaire classificatie*of het classificeren van invoer gegevens in een van twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)voor meer informatie over logistiek regressies.
 
-Samengevat, het proces van logistieke regressie produceert een *logistieke functie* die kan worden gebruikt om de waarschijnlijkheid te voorspellen dat een invoervector in de ene groep of de andere thuishoort.
+In samen vatting produceert het proces van logistiek regressie een *logistiek functie* die kan worden gebruikt om de kans te voors pellen dat een invoer vector deel uitmaakt van de ene groep of de andere.
 
-## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>Voorbeeld van voorspellende analyse op nyc taxigegevens
+## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>Voor beeld van voorspellende analyse op NYC taxi-gegevens
 
-In dit voorbeeld gebruikt u Spark om een aantal voorspellende analyses uit te voeren op tipgegevens van taxiritten uit New York. De gegevens zijn beschikbaar via [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Deze subset van de gegevensset bevat informatie over gele taxiritten, inclusief informatie over elke rit, de begin- en eindtijd en locaties, de kosten en andere interessante kenmerken.
+In dit voor beeld gebruikt u Spark voor het uitvoeren van een bepaalde voorspellende analyse op basis van gegevens over de taxi-fooi van New York. De gegevens zijn beschikbaar via [data sets van Azure open](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Deze subset van de gegevensset bevat informatie over gele taxi reizen, inclusief informatie over elke reis, de begin-en eind tijd en locaties, de kosten en andere interessante kenmerken.
 
 > [!IMPORTANT]
-> Er kunnen extra kosten in rekening worden gebracht voor het ophalen van deze gegevens van de opslaglocatie.
+> Er zijn mogelijk extra kosten voor het ophalen van deze gegevens uit de opslag locatie.
 
-In de volgende stappen ontwikkelt u een model om te voorspellen of een bepaalde reis een tip bevat of niet.
+In de volgende stappen ontwikkelt u een model om te voors pellen of een bepaalde reis een tip bevat of niet.
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Een Apache Spark MLlib machine learning-app maken
 
-1. Maak een notitieblok met de PySpark-kernel. Zie [Een notitieblok maken](./apache-spark-notebook-create-spark-use-sql.md#create-a-notebook)voor de instructies.
-2. Importeer de typen die nodig zijn voor deze toepassing. Kopieer en plak de volgende code in een lege cel en druk op **SHIFT + ENTER**of voer de cel uit met het blauwe afspeelpictogram links van de code.
+1. Een notitie blok maken met behulp van de PySpark-kernel. Zie [een notitie blok maken](../quickstart-apache-spark-notebook.md#create-a-notebook)voor instructies.
+2. Importeer de typen die vereist zijn voor deze toepassing. Kopieer en plak de volgende code in een lege cel en druk op **SHIFT + ENTER**of voer de cel uit met behulp van het blauwe afspeel pictogram links van de code.
 
     ```python
     import matplotlib.pyplot as plt
@@ -64,13 +64,13 @@ In de volgende stappen ontwikkelt u een model om te voorspellen of een bepaalde 
     from pyspark.ml.evaluation import BinaryClassificationEvaluator
     ```
 
-    Vanwege de PySpark-kernel hoeft u geen contexten expliciet te maken. De Spark-context wordt automatisch voor u gemaakt wanneer u de eerste codecel uitvoert.
+    Vanwege de PySpark-kernel hoeft u geen contexten expliciet te maken. De Spark-context wordt automatisch voor u gemaakt wanneer u de eerste code-cel uitvoert.
 
-## <a name="construct-the-input-dataframe"></a>Het invoergegevensframe construeren
+## <a name="construct-the-input-dataframe"></a>De invoer-data frame maken
 
-Omdat de ruwe gegevens een parketindeling hebben, u de Spark-context gebruiken om het bestand rechtstreeks als gegevensframe in het geheugen te halen. Terwijl de onderstaande code de standaardopties gebruikt, is het mogelijk om het toewijzen van gegevenstypen en andere schemakenmerken te forceren indien nodig.
+Omdat de onbewerkte gegevens zich in een Parquet-indeling bevindt, kunt u de Spark-context gebruiken om het bestand rechtstreeks in het geheugen te halen als een data frame. Hoewel in de volgende code de standaard opties worden gebruikt, is het mogelijk om zo nodig de toewijzing van gegevens typen en andere schema kenmerken te forceren.
 
-1. Voer de volgende regels uit om een Spark-gegevensframe te maken door de code in een nieuwe cel te plakken. In de eerste sectie worden azure-opslagtoegangsgegevens toebedeeld aan variabelen. In het tweede deel kan Spark op afstand uitlezen vanuit blobopslag. De laatste regel code leest parket, maar er worden op dit moment geen gegevens geladen.
+1. Voer de volgende regels uit om een Spark-data frame te maken door de code in een nieuwe cel te plakken. In de eerste sectie worden Azure Storage-toegangs gegevens aan variabelen toegewezen. In het tweede gedeelte kan Spark van de Blob-opslag op afstand worden gelezen. De laatste regel code leest Parquet, maar er worden op dit moment geen gegevens geladen.
 
     ```python
     # Azure storage access info
@@ -87,7 +87,7 @@ Omdat de ruwe gegevens een parketindeling hebben, u de Spark-context gebruiken o
     df = spark.read.parquet(wasbs_path)
     ```
 
-2. Het trekken van al deze gegevens genereert ongeveer 1,5 miljard rijen. Afhankelijk van de grootte van uw Spark-pool (voorbeeld) kunnen de ruwe gegevens te groot zijn of te veel tijd in beslag nemen om te werken. U deze gegevens filteren op iets kleiners. Voeg indien nodig de volgende regels toe om de gegevens tot ongeveer 2 miljoen rijen te filteren voor een meer responsieve ervaring. Gebruik deze parameters om een week aan gegevens op te halen.
+2. Als u al deze gegevens ophaalt, worden er meer dan 1.500.000.000 rijen gegenereerd. Afhankelijk van de grootte van uw Spark-groep (preview) kunnen de onbewerkte gegevens te groot zijn of te veel tijd in beslag nemen. U kunt deze gegevens naar een kleiner filter filteren. Voeg, indien nodig, de volgende regels toe om de gegevens te filteren op ongeveer 2.000.000 rijen voor een snellere ervaring. Gebruik deze para meters om één week van gegevens te verzamelen.
 
     ```python
     # Create an ingestion filter
@@ -97,37 +97,37 @@ Omdat de ruwe gegevens een parketindeling hebben, u de Spark-context gebruiken o
     filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
     ```
 
-3. Het nadeel van eenvoudige filtering is dat, vanuit een statistisch perspectief, het kan bias in de gegevens te introduceren. Een andere benadering is het gebruik van de bemonstering ingebouwd in Spark. De volgende code reduceert de gegevensset tot ongeveer 2000 rijen, indien toegepast na de bovenstaande code. Deze bemonsteringsstap kan worden gebruikt in plaats van het eenvoudige filter of in combinatie met het eenvoudige filter.
+3. Het nadeel van eenvoudige filtering is dat, vanuit een statistisch perspectief, het kan leiden tot een afwijking in de gegevens. Een andere benadering is het gebruik van de in Spark ingebouwde steek proeven. Met de volgende code wordt de gegevensset in ongeveer 2000 rijen kleiner als deze na de bovenstaande code wordt toegepast. Deze steekproef stap kan worden gebruikt in plaats van het eenvoudige filter of in combi natie met het eenvoudige filter.
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. Het is nu mogelijk om te kijken naar de gegevens om te zien wat er werd gelezen. Het is normaal gesproken beter om gegevens te bekijken met een subset in plaats van de volledige set, afhankelijk van de grootte van de gegevensset. De volgende code biedt twee manieren om de gegevens te bekijken: de eerste is basic en de laatste biedt een veel rijkere rasterervaring, evenals de mogelijkheid om de gegevens grafisch te visualiseren.
+4. Het is nu mogelijk om de gegevens te bekijken om te zien wat er is gelezen. Normaal gesp roken is het beter om gegevens met een subset te bekijken in plaats van de volledige set, afhankelijk van de grootte van de gegevensset. De volgende code biedt twee manieren om de gegevens weer te geven: de eerste basis en de laatste die een veel rijkere raster ervaring bieden, evenals de mogelijkheid om de gegevens grafisch te visualiseren.
 
     ```python
     sampled_taxi_df.show(5)
     display(sampled_taxi_df.show(5))
     ```
 
-5. Afhankelijk van de grootte van de gegevenssetgrootte die is gegenereerd en de noodzaak om het notitieblok vele malen te experimenteren of uit te voeren, kan het raadzaam zijn om de gegevensset lokaal in de werkruimte in de cache op te nemen. Er zijn drie manieren om expliciete caching uit te voeren:
+5. Afhankelijk van de grootte van de gegenereerde gegevensset en de nood zaak om het notitie blok meermaals te experimenteren of uit te voeren, kan het raadzaam zijn om de gegevensset lokaal in de cache op te slaan in de werk ruimte. Er zijn drie manieren om expliciet caching uit te voeren:
 
-   - Het gegevensframe lokaal opslaan als bestand
-   - Het gegevensframe opslaan als tijdelijke tabel of weergave
-   - Het gegevensframe opslaan als permanente tabel
+   - Sla het data frame lokaal op als een bestand
+   - De data frame opslaan als een tijdelijke tabel of weer gave
+   - De data frame opslaan als een permanente tabel
 
-De eerste 2 van deze benaderingen zijn opgenomen in de volgende codevoorbeelden.
+De eerste twee van deze benaderingen zijn opgenomen in de volgende code voorbeelden.
 
-Het maken van een tijdelijke tabel of weergave biedt verschillende toegangspaden tot de gegevens, maar duurt alleen voor de duur van de Spark-instantiesessie.
+Het maken van een tijdelijke tabel of weer gave biedt verschillende toegangs paden naar de gegevens, maar het duurt alleen voor de duur van de Spark-sessie.
 
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
 
-## <a name="understand-the-data"></a>De gegevens begrijpen
+## <a name="understand-the-data"></a>Informatie over de gegevens
 
-Normaal gesproken zou je gaan door middel van een fase van *verkennende data-analyse* (EDA) op dit punt om een goed begrip van de gegevens te ontwikkelen. De volgende code toont drie verschillende visualisaties van de gegevens met betrekking tot tips die leiden tot conclusies over de status en kwaliteit van de gegevens.
+Normaal gesp roken gaat u op dit punt een fase van *experimentele gegevens analyse* (EDA) door lopen om een goed idee van de gegevens te ontwikkelen. De volgende code toont drie verschillende visualisaties van de gegevens met betrekking tot tips die leiden tot conclusies over de status en kwaliteit van de gegevens.
 
 ```python
 # The charting package needs a Pandas dataframe or numpy array do the conversion
@@ -159,20 +159,20 @@ plt.suptitle('')
 plt.show()
 ```
 
-![Histogram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![Box Whisker Plot](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![Scatter Plot](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![Het](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+![spreidings diagram van het](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+![histogram Box whisker tekenen](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>De gegevens voorbereiden
 
-De gegevens in zijn ruwe vorm zijn vaak niet geschikt om rechtstreeks naar een model over te gaan. Een reeks acties moet worden uitgevoerd op de gegevens om het in een staat te krijgen waar het model het kan verbruiken.
+De gegevens in de onbewerkte vorm zijn vaak niet geschikt om rechtstreeks aan een model door te geven. Er moet een reeks acties worden uitgevoerd op de gegevens om deze op te halen in een staat waarin het model deze kan gebruiken.
 
-In de onderstaande code worden vier bewerkingen uitgevoerd:
+In de code onder vier bewerkings categorieën worden de volgende bewerkingen uitgevoerd:
 
-- Het verwijderen van uitschieters/onjuiste waarden door middel van filtering.
-- Het verwijderen van kolommen, die niet nodig zijn.
-- Het maken van nieuwe kolommen afgeleid van de ruwe gegevens om het model effectiever te laten werken, ook wel featurization genoemd.
-- Etikettering, als u bezig bent binaire classificatie (zal er een tip of niet op een bepaalde reis) is er een noodzaak om de tip bedrag om te zetten in een 0 of 1 waarde.
+- Het verwijderen van uitschieters/onjuiste waarden via filteren.
+- Het verwijderen van kolommen is niet nodig.
+- Het maken van nieuwe kolommen die zijn afgeleid van de onbewerkte gegevens om het model effectiever te maken, ook wel parametrisatie genoemd.
+- Labelen: als u een binaire classificatie hebt (er is een tip of niet op een bepaalde reis), moet u het fooie bedrag converteren naar een waarde van 0 of 1.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -192,7 +192,7 @@ taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paym
                                 )
 ```
 
-Een tweede pas wordt vervolgens gemaakt over de gegevens om de uiteindelijke functies toe te voegen.
+Vervolgens wordt er een tweede fase van de gegevens gemaakt om de laatste functies toe te voegen.
 
 ```Python
 taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'passengerCount'\
@@ -206,9 +206,9 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
                                        .filter((taxi_df.tripTimeSecs >= 30) & (taxi_df.tripTimeSecs <= 7200))
 ```
 
-## <a name="create-a-logistic-regression-model"></a>Een logistiek regressiemodel maken
+## <a name="create-a-logistic-regression-model"></a>Een logistiek regressie model maken
 
-De uiteindelijke taak is om de gelabelde gegevens om te zetten in een formaat dat kan worden geanalyseerd door logistieke regressie. De invoer naar een logistiek regressiealgoritme moet een set vectorparen van *labelfuncties*zijn, waarbij de *functievector* een vector is van getallen die het invoerpunt vertegenwoordigen. We moeten de categorische kolommen omzetten in getallen. De `trafficTimeBins` `weekdayString` kolommen en kolommen moeten worden omgezet in gehele representaties. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de aanpak in dit voorbeeld is *OneHotEncoding*, een gemeenschappelijke aanpak.
+De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` kolommen `weekdayString` en moeten worden geconverteerd naar gehele getallen. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -221,11 +221,11 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Dit resulteert in een nieuw gegevensframe met alle kolommen in de juiste indeling om een model te trainen.
+Dit resulteert in een nieuwe data frame met alle kolommen in de juiste indeling voor het trainen van een model.
 
-## <a name="train-a-logistic-regression-model"></a>Train een logistiek regressiemodel
+## <a name="train-a-logistic-regression-model"></a>Een logistiek regressie model trainen
 
-De eerste taak is het splitsen van de gegevensset in een trainingsset en een test- of validatieset. De splitsing hier is willekeurig en je moet spelen met verschillende split instellingen om te zien of ze invloed hebben op het model.
+De eerste taak bestaat uit het splitsen van de gegevensset in een Trainingsset en een test-of validatieset. De Splits hier is wille keurig en u moet met andere Splits instellingen spelen om te zien of ze van invloed zijn op het model.
 
 ```python
 #Decide on the split between training and testing data from the dataframe
@@ -237,7 +237,7 @@ seed = 1234
 train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, testingFraction], seed=seed)
 ```
 
-Nu er twee DataFrames zijn, is de volgende taak om de modelformule te maken en deze uit te voeren tegen het trainingsdataframe en vervolgens te valideren tegen het testgegevensframe. U moet experimenteren met verschillende versies van de modelformule om de impact van verschillende combinaties te zien.
+Nu er twee DataFrames zijn, bestaat de volgende taak uit het maken van de model formule en voert u deze uit met de training data frame en valideert u vervolgens op basis van de test data frame. Experimenteer met verschillende versies van de model formule om de impact van verschillende combi Naties te bekijken.
 
 ```python
 ## Create a new LR object for the model
@@ -268,9 +268,9 @@ De uitvoer van deze cel is
 Area under ROC = 0.9779470729751403
 ```
 
-## <a name="create-a-visual-representation-of-the-prediction"></a>Een visuele weergave van de voorspelling maken
+## <a name="create-a-visual-representation-of-the-prediction"></a>Een visuele weer gave van de voor spelling maken
 
-U nu een definitieve visualisatie maken om u te helpen redeneren over de resultaten van deze test. Een [ROC Curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) is een manier om het resultaat te bekijken.
+U kunt nu een definitieve visualisatie maken om u te helpen de resultaten van deze test te controleren. Een [ROC-curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) is een manier om het resultaat te bekijken.
 
 ```python
 ## Plot the ROC curve, no need for pandas as this uses the modelSummary object
@@ -284,21 +284,21 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![ROC Curve voor Logistieke Regressie tipmodel](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "ROC Curve voor Logistieke Regressie tipmodel")
+![ROC curve voor logistiek regressie model](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "ROC curve voor logistiek regressie model")
 
-## <a name="shut-down-the-spark-instance"></a>De spark-instantie afsluiten
+## <a name="shut-down-the-spark-instance"></a>Het Spark-exemplaar afsluiten
 
-Nadat u klaar bent met het uitvoeren van de toepassing, sluit u het notitieblok af om de bronnen vrij te geven door het tabblad te sluiten of selecteer **de sessie beëindigen** in het statuspaneel onder aan het notitieblok.
+Wanneer u klaar bent met het uitvoeren van de toepassing, sluit u het notitie blok om de resources vrij te geven door het tabblad te sluiten of door **sessie beëindigen** te selecteren in het status paneel onder aan het notitie blok.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Overzicht: Apache Spark op Azure Synapse Analytics](apache-spark-overview.md)
+- [Overzicht: Apache Spark in azure Synapse Analytics](apache-spark-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET voor Apache Spark-documentatie](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark officiële documentatie](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> Sommige van de officiële Apache Spark-documentatie is gebaseerd op het gebruik van de Spark-console, die niet beschikbaar is op Azure Synapse Spark. Gebruik in plaats daarvan de [ervaringen van het notitieblok](../spark/apache-spark-notebook-create-spark-use-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) of [IntelliJ.](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die niet beschikbaar is in azure Synapse Spark. Gebruik in plaats daarvan de ervaring [notebook](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) of [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .

@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-script: toegestane VM-formaten instellen in Azure Lab Services | Microsoft Documenten'
-description: Deze artikelen bevatten een voorbeeld van PowerShell-script waarin toegestane vm-formaten (virtual machine) zijn ingesteld in Azure Lab Services.
+title: 'Power shell-script: toegestane VM-grootten instellen in Azure Lab Services | Microsoft Docs'
+description: In deze artikelen vindt u een voor beeld van een Power shell-script waarmee toegestane VM-grootten (Virtual Machine) in Azure Lab Services worden ingesteld.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a1b0e9a4aed475f04ec8dcffa9bc95b7c7c713e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760445"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100767"
 ---
-# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>PowerShell gebruiken om toegestane VM-formaten in Azure Lab Services in te stellen
+# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Power shell gebruiken om toegestane VM-grootten in Azure Lab Services in te stellen
 
-Met dit voorbeeld powershell-scriptsets zijn vm-formaten (virtual machine) toegestaan in Azure Lab Services.
+Met dit Power shell-voorbeeld script worden toegestane groottes van virtuele machines (VM) in Azure Lab Services ingesteld.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Een lab.** Het script vereist dat je een bestaand lab hebt. 
+* **Een Lab**. Het script vereist dat u een bestaand Lab hebt. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -40,13 +40,13 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| Find-AzResource | Hiermee wordt gezocht naar resources op basis van opgegeven parameters. |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Krijgt middelen. |
-| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Hiermee wijzigt u een bron. |
-| [Nieuw-AzResource](/powershell/module/az.resources/new-azresource) | Een resource maken. |
+| Zoeken-AzResource | Zoekt naar bronnen op basis van opgegeven para meters. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Haalt resources op. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Wijzigt een resource. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Een resource maken. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Lab Services PowerShell-scriptvoorbeelden zijn te vinden in de [Azure Lab Services PowerShell-voorbeelden.](../samples-powershell.md)
+Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.

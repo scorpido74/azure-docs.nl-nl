@@ -1,97 +1,97 @@
 ---
-title: Azure Automation Start/Stop VM's tijdens off hours-oplossing inschakelen
-description: In dit artikel wordt beschreven hoe u de VM-oplossing Voor Azure Automation Start/Stop inschakelt voor uw virtuele Azure-machines.
+title: De oplossing voor het starten/stoppen van Vm's in Azure Automation
+description: In dit artikel wordt beschreven hoe u de oplossing voor het Azure Automation starten/stoppen van VM'S voor uw virtuele Azure-machines inschakelt.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2414567b74232d634fa0a34202691a8e43ae6135
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: d47daa29c65f847fdeb33b9e24a892ac1f31b52a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604750"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096959"
 ---
-# <a name="enable-azure-automation-startstop-vms-solution"></a>Azure Automation Start/Stop VM's-oplossing inschakelen
+# <a name="enable-azure-automation-startstop-vms-solution"></a>Vm's van Azure Automation starten/stoppen inschakelen
 
-Voer de volgende stappen uit om de **VM's starten/stoppen toe** te voegen tijdens off-hours oplossing aan een nieuw of bestaand Automatiseringsaccount en gekoppelde Log Analytics-werkruimte. Configureer na het voltooien van het onboardingproces de variabelen om de oplossing aan te passen.
+Voer de volgende stappen uit om de **VM's buiten bedrijfsuren starten/stoppen** -oplossing toe te voegen aan een nieuw of bestaand Automation-account en gekoppelde log Analytics werk ruimte. Nadat het voorbereidings proces is voltooid, configureert u de variabelen om de oplossing aan te passen.
 
 >[!NOTE]
->Als u deze oplossing wilt gebruiken met klassieke VM's, hebt u een Classic Run As-account nodig, dat niet standaard is gemaakt. Zie [Een Klassiek run as-account maken](automation-create-standalone-account.md#create-a-classic-run-as-account)voor instructies voor het maken van een Classic Run As-account .
+>Als u deze oplossing wilt gebruiken met klassieke Vm's, hebt u een klassiek uitvoeren als-account nodig, dat niet standaard wordt gemaakt. Zie [een klassiek uitvoeren als-account maken](automation-create-standalone-account.md#create-a-classic-run-as-account)voor instructies voor het maken van een klassiek uitvoeren als-account.
 >
 
 ## <a name="enable-solution"></a>Oplossing inschakelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij Azure [Portal](https://portal.azure.com).
 
-2. Zoeken naar en selecteer **Automatiseringsaccounts**.
+2. Zoek en selecteer **Automation-accounts**.
 
-3. Selecteer op de pagina Automatiseringsaccounts uw automatiseringsaccount in de lijst.
+3. Selecteer op de pagina Automation-accounts uw Automation-account in de lijst.
 
-4. Selecteer **VM starten/stoppen** in het automatiseringsaccount onder **Gerelateerde resources**. Klik hier op **Meer informatie over en schakel de oplossing in.** Als u al een Start/Stop VM-oplossing hebt geïmplementeerd, u deze selecteren door op **De oplossing beheren** en deze in de lijst te vinden.
+4. Selecteer in het Automation-account de optie **VM starten/stoppen** onder **gerelateerde resources**. Hier kunt u op meer **informatie klikken en de oplossing inschakelen**. Als u al een VM-oplossing voor starten/stoppen hebt geïmplementeerd, kunt u deze selecteren door te klikken op **de oplossing beheren** en deze te zoeken in de lijst.
 
-   ![Inschakelen vanuit automatiseringsaccount](./media/automation-solution-vm-management/enable-from-automation-account.png)
+   ![Inschakelen vanuit Automation-account](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > U deze ook overal in de Azure-portal maken door op **Een resource maken**te klikken. Typ op de marketplace-pagina een trefwoord zoals **Start** of **Start/Stop**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. U ook een of meer zoekwoorden intypen vanuit de volledige naam van de oplossing en vervolgens op Enter drukken. Selecteer **VM's starten/stoppen tijdens off-uren** in de zoekresultaten.
+   > U kunt de app ook maken op een wille keurige locatie in de Azure Portal door te klikken op **een resource maken**. Typ op de pagina Marketplace een tref woord zoals **starten** of **starten/stoppen**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. U kunt ook een of meer tref woorden in de volledige naam van de oplossing typen en vervolgens op ENTER drukken. Selecteer **VM's buiten bedrijfsuren starten/stoppen** in de zoek resultaten.
 
-5. Bekijk in de pagina **VM's starten/stoppen tijdens off-hours** voor de geselecteerde oplossing de overzichtsgegevens en klik vervolgens op **Maken**.
+5. Controleer op de pagina **VM's buiten bedrijfsuren starten/stoppen** voor de geselecteerde oplossing de samenvattings informatie en klik vervolgens op **maken**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-6. De pagina Oplossing toevoegen wordt weergegeven. U wordt gevraagd de oplossing te configureren voordat u deze importeren in uw automatiseringsabonnement.
+6. De pagina oplossing toevoegen wordt weer gegeven. U wordt gevraagd om de oplossing te configureren voordat u deze kunt importeren in uw Automation-abonnement.
 
-   ![Pagina Oplossing toevoegen van VM-beheer](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+   ![Pagina oplossing toevoegen van VM-beheer](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-7. Selecteer **werkruimte**op de pagina Oplossing toevoegen . Selecteer een Log Analytics-werkruimte die is gekoppeld aan hetzelfde Azure-abonnement waarin het Automatiseringsaccount zich bevindt. Als u geen werkruimte hebt, selecteert u **Nieuwe werkruimte maken**. Voer op de werkruimtepagina Log Analytics de volgende stappen uit:
+7. Selecteer op de pagina oplossing toevoegen de optie **werk ruimte**. Selecteer een Log Analytics-werk ruimte die is gekoppeld aan hetzelfde Azure-abonnement waarin het Automation-account zich bevindt. Als u geen werk ruimte hebt, selecteert u **nieuwe werk ruimte maken**. Voer de volgende stappen uit op de pagina werk ruimte Log Analytics:
 
-   - Geef een naam op voor de nieuwe Werkruimte Log Analytics, zoals **ContosoLAWorkspace**.
-   - Selecteer een **abonnement** waarnaar u wilt linken door in de vervolgkeuzelijst te selecteren of de standaardoptie niet geschikt is.
-   - Voor **resourcegroep**u een nieuwe resourcegroep maken of een bestaande groep selecteren.
+   - Geef een naam op voor de nieuwe Log Analytics-werk ruimte, zoals **ContosoLAWorkspace**.
+   - Selecteer een **abonnement** om te koppelen door te selecteren in de vervolg keuzelijst, als de standaard optie is geselecteerd, niet geschikt is.
+   - Voor **resource groep**kunt u een nieuwe resource groep maken of een bestaande selecteren.
    - Selecteer een **locatie**.
-   - Selecteer een **prijslaag**. Kies de optie **Per GB (Standalone).** Azure Monitor-logboeken hebben [de prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) bijgewerkt en de laag Per GB is de enige optie.
+   - Selecteer een **prijs categorie**. Kies de optie **per GB (zelfstandig)** . Azure Monitor-logboeken hebben bijgewerkte [prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) en de laag per GB is de enige optie.
 
    > [!NOTE]
-   > Bij het inschakelen van oplossingen worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte en een Automatiseringsaccount.
+   > Bij het inschakelen van oplossingen worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account.
    >
-   > Zie [Regiotoewijzing voor Automatiseringsaccount en Log Analytics-werkruimte voor](how-to/region-mappings.md)een lijst met ondersteunde toewijzingsparen.
+   > Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
 
-8. Nadat u de vereiste informatie op de werkruimtepagina Log Analytics hebt verstrekt, klikt u op **Maken**. U de voortgang bijhouden onder **Meldingen** in het menu, waarmee u wordt geretourneerd naar de pagina Oplossing toevoegen wanneer u klaar bent.
+8. Nadat u de vereiste gegevens op de pagina Log Analytics werk ruimte hebt opgegeven, klikt u op **maken**. U kunt de voortgang bijhouden onder **meldingen** in het menu, waarmee u wordt teruggebracht naar de pagina oplossing toevoegen wanneer u klaar bent.
 
-9. Selecteer op de pagina Oplossing toevoegen de optie **Automatiseringsaccount**. Als u een nieuwe Log Analytics-werkruimte maakt, u een nieuw automatiseringsaccount maken waaraan u moet worden gekoppeld of een bestaand automatiseringsaccount selecteren dat nog niet is gekoppeld aan een Log Analytics-werkruimte. Selecteer een bestaand Automatiseringsaccount of klik op **Een automatiseringsaccount maken**en geef op de pagina Automatiseringsaccount toevoegen de volgende gegevens op:
+9. Selecteer op de pagina oplossing toevoegen de optie **Automation-account**. Als u een nieuwe Log Analytics-werk ruimte maakt, kunt u een nieuw Automation-account maken dat u eraan wilt koppelen of een bestaand Automation-account selecteren dat nog niet aan een Log Analytics-werk ruimte is gekoppeld. Selecteer een bestaand Automation-account of klik op **een Automation-account maken**en geef op de pagina Automation-account toevoegen de volgende informatie op:
  
    - Voer in het veld **Naam** de naam van het Automation-account in.
 
-     Alle andere opties worden automatisch ingevuld op basis van de geselecteerde werkruimte Log Analytics. Deze opties kunnen niet worden gewijzigd. Een Uitvoeren als-account voor Azure is de standaardmethode voor verificatie voor de runbooks die zijn opgenomen in deze oplossing. Nadat u op **OK**hebt geklikt, worden de configuratieopties gevalideerd en wordt het automatiseringsaccount gemaakt. U kunt de voortgang bijhouden onder **Meldingen** in het menu.
+     Alle andere opties worden automatisch ingevuld op basis van de geselecteerde Log Analytics werk ruimte. Deze opties kunnen niet worden gewijzigd. Een Uitvoeren als-account voor Azure is de standaardmethode voor verificatie voor de runbooks die zijn opgenomen in deze oplossing. Nadat u op **OK**hebt geklikt, worden de configuratie opties gevalideerd en wordt het Automation-account gemaakt. U kunt de voortgang bijhouden onder **Meldingen** in het menu.
 
-10. Selecteer tot slot op de pagina Oplossing toevoegen de optie **Configuratie**. De pagina Parameters wordt weergegeven.
+10. Selecteer ten slotte op de pagina oplossing toevoegen de optie **configuratie**. De pagina para meters wordt weer gegeven.
 
-    ![Parameters pagina voor oplossing](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
+    ![De pagina para meters voor de oplossing](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
-   Hier wordt u gevraagd om:
+   Hier wordt u gevraagd het volgende te doen:
   
-   - Geef de **namen van doelbrongroepen op**. Deze waarden zijn namen van resourcegroepen die VM's bevatten die door deze oplossing moeten worden beheerd. U meer dan één naam invoeren en elk afzonderlijk maken met behulp van een komma (waarden zijn niet hoofdlettergevoelig). Jokertekens worden ondersteund als de bewerking moet worden gericht op VM's in alle resourcegroepen in het abonnement. Deze waarde wordt opgeslagen in de **variabelen External_Start_ResourceGroupNames** en **External_Stop_ResourceGroupNames.**
+   - Geef de **namen**van de doel-ResourceGroup op. Deze waarden zijn namen van resource groepen die virtuele machines bevatten die door deze oplossing moeten worden beheerd. U kunt meer dan één naam invoeren en deze scheiden door een komma te gebruiken (waarden zijn niet hoofdletter gevoelig). Jokertekens worden ondersteund als de bewerking moet worden gericht op VM's in alle resourcegroepen in het abonnement. Deze waarde wordt opgeslagen in de variabelen **External_Start_ResourceGroupNames** en **External_Stop_ResourceGroupNames** .
   
-   - Geef de **lijst met vm-uitsluiting (tekenreeks) op**. Deze waarde is de naam van een of meer virtuele machines uit de doelgroep. U meer dan één naam invoeren en elk afzonderlijk maken met behulp van een komma (waarden zijn niet hoofdlettergevoelig). Het gebruik van een wildcard wordt ondersteund. Deze waarde wordt opgeslagen in de **variabele External_ExcludeVMNames.**
+   - Geef de **lijst met uitsluitingen van de virtuele machine op (teken reeks)**. Deze waarde is de naam van een of meer virtuele machines uit de doel resource groep. U kunt meer dan één naam invoeren en deze scheiden door een komma te gebruiken (waarden zijn niet hoofdletter gevoelig). Het gebruik van een Joker teken wordt ondersteund. Deze waarde wordt opgeslagen in de variabele **External_ExcludeVMNames** .
   
-   - Selecteer een **planning**. Selecteer een datum en tijd voor uw planning. Er wordt een terugkerende dagelijkse planning gemaakt vanaf het tijdstip dat u hebt geselecteerd. Het selecteren van een andere regio is niet beschikbaar. Zie [Het opstart- en afsluitschema wijzigen](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)als u de planning wilt configureren voor uw specifieke tijdzone.
+   - Selecteer een **planning**. Selecteer een datum en tijd voor de planning. Een opnieuw uitgevoerd dagelijks schema wordt gemaakt op basis van de tijd die u hebt geselecteerd. Het selecteren van een andere regio is niet beschikbaar. Zie [het schema voor opstarten en afsluiten aanpassen](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)als u de planning wilt configureren voor uw specifieke tijd zone nadat u de oplossing hebt geconfigureerd.
   
-   - Als u **e-mailmeldingen** van een actiegroep wilt ontvangen, accepteert u de standaardwaarde **Ja** en geeft u een geldig e-mailadres op. Als u **Nee selecteert,** maar op een later tijdstip besluit dat u e-mailmeldingen wilt ontvangen, u de [actiegroep](../azure-monitor/platform/action-groups.md) bijwerken die is gemaakt met geldige e-mailadressen, gescheiden door een komma. U moet ook de volgende waarschuwingsregels inschakelen:
+   - Als u **e-mail meldingen** van een actie groep wilt ontvangen, accepteert u de standaard waarde **Ja** en geeft u een geldig e-mail adres op. Als u **Nee** selecteert maar besluit op een later tijdstip dat u e-mail meldingen wilt ontvangen, kunt u de [actie groep](../azure-monitor/platform/action-groups.md) bijwerken die is gemaakt met geldige e-mail adressen gescheiden door een komma. U moet ook de volgende waarschuwings regels inschakelen:
 
      - AutoStop_VM_Child
      - Scheduled_StartStop_Parent
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > De standaardwaarde voor **doelgroepgroepnamen** is een **&ast;**. Dit richt zich op alle VM's in een abonnement. Als u niet wilt dat de oplossing om alle VM's in uw abonnement te targeten, deze waarde moet worden bijgewerkt naar een lijst met namen van resourcegroepen voordat de planningen worden ingeschakeld.
+     > De standaard waarde voor de **namen van doel** - **&ast;** ResourceGroup is een. Hiermee worden alle virtuele machines in een abonnement gericht. Als u niet wilt dat de oplossing alle virtuele machines in uw abonnement heeft, moet deze waarde worden bijgewerkt naar een lijst met namen van resource groepen voordat de planningen worden ingeschakeld.
 
-11. Nadat u de eerste instellingen hebt geconfigureerd die nodig zijn voor de oplossing, klikt u op **OK** om de pagina Parameters te sluiten en **selecteer Maken**. 
+11. Nadat u de aanvankelijk vereiste instellingen voor de oplossing hebt geconfigureerd, klikt u op **OK** om de pagina para meters te sluiten en selecteert u **maken**. 
 
-Nadat alle instellingen zijn gevalideerd, wordt de oplossing geïmplementeerd in uw abonnement. Dit proces kan enkele seconden duren en u de voortgang ervan bijhouden onder **Meldingen** in het menu.
+Nadat alle instellingen zijn gevalideerd, wordt de oplossing geïmplementeerd voor uw abonnement. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder **meldingen** in het menu.
 
 > [!NOTE]
-> Als u een Azure Cloud Solution Provider-abonnement (Azure CSP) hebt, gaat u na implementatie voltooid in uw Automatiseringsaccount naar **Variabelen** onder **Gedeelde resources** en stelt u de [**External_EnableClassicVMs**](automation-solution-vm-management.md#variables) variabele in op **False**. Dit voorkomt dat de oplossing op zoek gaat naar klassieke VM-bronnen.
+> Als u een abonnement voor Azure Cloud Solution Provider (Azure CSP) hebt nadat de implementatie is voltooid, gaat u in uw Automation-account naar **variabelen** onder **gedeelde resources** en stelt u de [External_EnableClassicVMs](automation-solution-vm-management.md#variables) variabele in op **Onwaar**. Zo stopt de oplossing met het zoeken naar klassieke VM-resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de oplossing hebt ingeschakeld, u [deze configureren](automation-solution-vm-management-config.md) om uw VM-beheervereisten te ondersteunen.
+Nu u de oplossing hebt ingeschakeld, kunt u deze [configureren](automation-solution-vm-management-config.md) ter ondersteuning van uw vereisten voor VM-beheer.

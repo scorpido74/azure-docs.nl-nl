@@ -1,132 +1,129 @@
 ---
 title: Een web-app publiceren naar een Azure VM vanuit Visual Studio
-description: Een ASP.NET webtoepassing publiceren naar een Azure Virtual Machine vanuit Visual Studio
-services: virtual-machines-windows
+description: Een ASP.NET-webtoepassing publiceren naar een virtuele machine van Azure vanuit Visual Studio
 author: ghogen
 manager: jillfra
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abf0570ee9f01a2378e8c0370cfc3ba5fecc7406
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71970865"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098228"
 ---
-# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Een web-app van ASP.NET publiceren naar een Azure VM vanuit Visual Studio
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Een ASP.NET-Web-app publiceren naar een Azure VM vanuit Visual Studio
 
-In dit document wordt beschreven hoe u een ASP.NET-webtoepassing publiceert naar een virtuele Azure-machine (VM) met behulp van de publicatiefunctie **Microsoft Azure Virtual Machines** in Visual Studio 2019.  
+In dit document wordt beschreven hoe u een ASP.NET-webtoepassing publiceert naar een virtuele Azure-machine (VM) met behulp van de functie voor het publiceren van **Microsoft Azure virtual machines** in Visual Studio 2019.  
 
 ## <a name="prerequisites"></a>Vereisten
-Om Visual Studio te gebruiken om een ASP.NET project te publiceren naar een Azure VM, moet de VM correct zijn ingesteld.
+Als u Visual Studio wilt gebruiken om een ASP.NET-project te publiceren op een virtuele machine van Azure, moet de virtuele machine correct zijn ingesteld.
 
-- Machine moet zijn geconfigureerd om een ASP.NET webtoepassing uit te voeren en WebDeploy te laten installeren.
+- De machine moet worden geconfigureerd voor het uitvoeren van een ASP.NET-webtoepassing en waarvoor Web Deploy is geïnstalleerd.
 
-- De VM moet een DNS-naam hebben geconfigureerd. Zie [Een volledig gekwalificeerde domeinnaam maken in de Azure-portal voor een Windows-vm voor](portal-create-fqdn.md)meer informatie.
+- Voor de virtuele machine moet een DNS-naam zijn geconfigureerd. Zie [een Fully Qualified Domain name maken in de Azure portal voor een Windows-VM](portal-create-fqdn.md)voor meer informatie.
 
-## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Uw ASP.NET web-app publiceren naar de Azure VM met Visual Studio
-In de volgende sectie wordt beschreven hoe u een bestaande ASP.NET-webtoepassing publiceert naar een virtuele Azure-machine.
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Uw ASP.NET-Web-app publiceren naar de Azure-VM met behulp van Visual Studio
+In de volgende sectie wordt beschreven hoe u een bestaande ASP.NET-webtoepassing publiceert naar een virtuele machine van Azure.
 
 1. Open uw web-app-oplossing in Visual Studio 2019.
-2. Klik met de rechtermuisknop op het project in Solution Explorer en kies **Publiceren...**
-3. Gebruik de pijl rechts van de pagina om door de publicatieopties te bladeren totdat u **Microsoft Azure Virtual Machines vindt.**  
+2. Klik met de rechter muisknop op het project in Solution Explorer en kies **publiceren...**
+3. Gebruik de pijl aan de rechter kant van de pagina om door de publicatie opties te schuiven totdat u **Microsoft Azure virtual machines**hebt gevonden.  
 
-   ![Pagina publiceren - Pijl-rechts]
+   ![Pagina publiceren-pijl-rechts]
 
-4. Selecteer het pictogram **Microsoft Azure Virtual Machines** en selecteer **Publiceren**.
+4. Selecteer het **Microsoft Azure virtual machines** pictogram en selecteer **publiceren**.
 
-   ![Pagina publiceren - Pictogram Microsoft Azure Virtual Machine]
+   ![Het pictogram pagina publiceren-Microsoft Azure virtuele machine]
 
-5. Kies het juiste account (met Een Azure-abonnement dat is verbonden met uw virtuele machine).  
-   - Als u bent aangemeld bij Visual Studio, wordt de accountlijst gevuld met al uw geverifieerde accounts.  
-   - Als u niet bent aangemeld of als het account dat u nodig hebt niet wordt vermeld, kiest u 'Een account toevoegen...'. en volg de aanwijzingen om in te loggen.  
-   ![Azure-accountkiezer]  
+5. Kies het juiste account (met een Azure-abonnement dat is verbonden met uw virtuele machine).  
+   - Als u bent aangemeld bij Visual Studio, wordt de lijst met accounts gevuld met al uw geverifieerde accounts.  
+   - Als u niet bent aangemeld of als het account dat u nodig hebt niet wordt weer gegeven, kiest u een account toevoegen... en volg de aanwijzingen om u aan te melden.  
+   ![Azure-account kiezer]  
 
-6. Selecteer de juiste VM in de lijst met bestaande virtuele machines.
+6. Selecteer de juiste VM in de lijst met bestaande Virtual Machines.
 
    > [!Note]
-   > Het vullen van deze lijst kan enige tijd duren.
+   > Het invullen van deze lijst kan enige tijd duren.
 
-   ![Azure VM-kiezer]
+   ![VM-selector van Azure]
 
 7. Klik op OK om te beginnen met publiceren.
 
-8. Wanneer u om referenties wordt gevraagd, geeft u de gebruikersnaam en het wachtwoord van een gebruikersaccount op de doel-VM die is geconfigureerd met publicatierechten. Deze referenties zijn meestal de gebruikersnaam en het wachtwoord van de beheerder die worden gebruikt bij het maken van de VM.  
+8. Wanneer u om referenties wordt gevraagd, geeft u de gebruikers naam en het wacht woord op van een gebruikers account op de doel-VM die is geconfigureerd met publicatie rechten. Deze referenties zijn doorgaans de gebruikers naam en het wacht woord voor beheerders die worden gebruikt bij het maken van de virtuele machine.  
 
-   ![WebDeploy-aanmelding]
+   ![Aanmelding bij webdeploy]
 
-9. Accepteer het beveiligingscertificaat.
+9. Accepteer het beveiligings certificaat.
 
-   ![Certificaatfout]
+   ![Certificaat fout]
 
-10. Bekijk het venster Uitvoer om de voortgang van de publicatiebewerking te controleren.
+10. Bekijk het uitvoer venster om de voortgang van de publicatie bewerking te controleren.
 
     ![Uitvoervenster]
 
-11. Als publiceren succesvol is, wordt een browser gestart om de URL van de nieuw gepubliceerde site te openen.
+11. Als het publiceren is gelukt, wordt een browser gestart om de URL van de zojuist gepubliceerde site te openen.
 
-**Succes!**
+**Geleverd!**
 
-U hebt uw web-app nu met succes gepubliceerd naar een virtuele Azure-machine.
+U hebt nu uw web-app gepubliceerd naar een virtuele machine van Azure.
 
-## <a name="publish-page-options"></a>Paginaopties publiceren
+## <a name="publish-page-options"></a>Pagina opties publiceren
 
-Nadat de wizard Publiceren is voltooid, wordt de pagina Publiceren goed in het document geopend met het nieuwe publicatieprofiel geselecteerd.
+Nadat de wizard Publiceren is voltooid, wordt de pagina publiceren in het document goed geopend met het nieuwe publicatie profiel geselecteerd.
 
 ### <a name="re-publish"></a>Opnieuw publiceren
 
-Als u updates voor uw webtoepassing wilt publiceren, selecteert u de knop **Publiceren** op de pagina Publiceren.  
-- Voer de gebruikersnaam en het wachtwoord in als u daarom wordt gevraagd.  
+Als u updates voor uw webtoepassing wilt publiceren, selecteert u de knop **publiceren** op de pagina publiceren.  
+- Voer de gebruikers naam en het wacht woord in als u hierom wordt gevraagd.  
 - Publiceren begint onmiddellijk.
 
-![Pagina publiceren - Knop Publiceren]
+![Pagina publiceren-knop publiceren]
 
-### <a name="modify-publish-profile-settings"></a>Instellingen voor publicatieprofiel wijzigen
+### <a name="modify-publish-profile-settings"></a>Instellingen van het publicatie profiel wijzigen
 
-Als u de instellingen voor het publicatieprofiel wilt weergeven en wijzigen, selecteert u **Instellingen...**.  
+Als u de instellingen voor het publicatie profiel wilt weer geven en wijzigen, selecteert u **instellingen...**.  
 
-![Pagina publiceren - knop Instellingen]
+![Pagina publiceren-instellingen knop]
 
-Uw instellingen moeten er ongeveer zo uitzien:  
+De instellingen moeten er ongeveer als volgt uitzien:  
 
-![Publicatie-instellingen - pagina Verbinding]
+![Publicatie-instellingen-pagina verbinding]
 
-#### <a name="save-user-name-and-password"></a>Gebruikersnaam en wachtwoord opslaan
-- Vermijd het verstrekken van verificatie-informatie elke keer dat u publiceert. Vul hiervoor de velden **Gebruikersnaam** en **Wachtwoord** in en selecteer het vak **Wachtwoord opslaan.**
-- Gebruik de knop **Verbindings valideren** om te bevestigen dat u de juiste gegevens hebt ingevoerd.
+#### <a name="save-user-name-and-password"></a>Gebruikers naam en wacht woord opslaan
+- Vermijd elke keer dat u een verificatie gegevens opgeeft. Als u dit wilt doen, vult u de velden **gebruikers naam** en **wacht woord** in en selecteert u het vak **wacht woord opslaan** .
+- Gebruik de knop **verbinding valideren** om te bevestigen dat u de juiste gegevens hebt ingevoerd.
 
-#### <a name="deploy-to-clean-web-server"></a>Implementeren op schone webserver
+#### <a name="deploy-to-clean-web-server"></a>Implementeren voor schone webserver
 
-- Als u ervoor wilt zorgen dat de webserver na elke upload een schone kopie van de webtoepassing heeft en dat er geen **Settings** andere bestanden meer over zijn van een eerdere implementatie, u het selectievakje **Extra bestanden verwijderen op het** tabblad Bestemming controleren.
+- Als u ervoor wilt zorgen dat de webserver een schone kopie van de webtoepassing heeft na elke upload en dat er geen andere bestanden van een vorige implementatie zijn, schakelt u het selectie vakje **extra bestanden in doel verwijderen** in op het tabblad **instellingen** .
 
-- Waarschuwing: Als u met deze instelling publiceert, worden alle bestanden die op de webserver aanwezig zijn (wwwroot-map) verwijderd. Zorg ervoor dat u de status van de machine weet voordat u publiceert met deze optie ingeschakeld. 
+- Waarschuwing: als u met deze instelling publiceert, worden alle bestanden verwijderd die bestaan op de webserver (wwwroot Directory). Zorg ervoor dat u de status van de computer kent voordat u deze optie inschakelt. 
 
-![Publicatie-instellingen - pagina Instellingen]
+![Publicatie-instellingen-pagina instellingen]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>CI/CD instellen voor geautomatiseerde implementatie naar Azure VM
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>CI/CD instellen voor automatische implementatie naar Azure VM
 
-Zie [Implementeren naar een Virtuele Windows-machine als](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)u een pijplijn voor continue levering met Azure Pipelines wilt instellen.
+Zie [implementeren op een virtuele Windows-machine](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)om een continue leverings pijplijn met Azure-pijp lijnen in te stellen.
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[Pagina publiceren - Pijl-rechts]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[Pagina publiceren - Pictogram Microsoft Azure Virtual Machine]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
-[Azure-accountkiezer]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
-[Azure VM-kiezer]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
-[WebDeploy-aanmelding]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
-[Certificaatfout]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
+[Pagina publiceren-pijl-rechts]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[Het pictogram pagina publiceren-Microsoft Azure virtuele machine]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Azure-account kiezer]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
+[VM-selector van Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[Aanmelding bij webdeploy]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
+[Certificaat fout]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
 [Uitvoervenster]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[Pagina publiceren - Knop Publiceren]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
-[Pagina publiceren - knop Instellingen]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[Publicatie-instellingen - pagina Verbinding]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
-[Publicatie-instellingen - pagina Instellingen]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png
+[Pagina publiceren-knop publiceren]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Pagina publiceren-instellingen knop]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[Publicatie-instellingen-pagina verbinding]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Publicatie-instellingen-pagina instellingen]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

@@ -1,7 +1,7 @@
 ---
-title: NSG-stroomlogboeken beheren met Grafana
+title: NSG-stroom logboeken beheren met Grafana
 titleSuffix: Azure Network Watcher
-description: Netwerkbeveiligingsgroepstroomlogboeken beheren en analyseren in Azure met Behulp van Network Watcher en Grafana.
+description: Beheer van stroom logboeken voor netwerk beveiligings groepen in azure beheren en analyseren met behulp van Network Watcher en Grafana.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,56 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: c48d5a02cdb8ef63904642c6c2c76cb5d61e1f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f038412079ad0620a445b85e4bbc3c325e1aa211
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840907"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100104"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Stroomlogboeken van netwerkbeveiligingsgroepen beheren en analyseren met Behulp van Network Watcher en Grafana
+# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Stroom logboeken voor netwerk beveiligings groepen beheren en analyseren met behulp van Network Watcher en Grafana
 
-[Netwerkbeveiligingsgroep (NSG)-stroomlogboeken](network-watcher-nsg-flow-logging-overview.md) bieden informatie die kan worden gebruikt om inzicht te krijgen in binnendringen en IP-verkeer op netwerkinterfaces te verwijderen. Deze stroomlogboeken tonen uitgaande en binnenkomende stromen op basis van een NSG-regel, de NIC waarop de stroom van toepassing is, 5-tuple-informatie over de stroom (Bron/Bestemming-IP, Bron/Bestemmingspoort, Protocol) en als het verkeer is toegestaan of geweigerd.
+[Stroom logboeken voor netwerk beveiligings groepen (NSG)](network-watcher-nsg-flow-logging-overview.md) bevatten informatie die kan worden gebruikt voor het begrijpen van binnenkomend en IP-verkeer op netwerk interfaces. In deze stroom logboeken worden uitgaande en inkomende stromen weer gegeven op basis van een per NSG regel, de NIC waarop de stroom van toepassing is, 5-tuple informatie over de stroom (bron/doel-IP, bron/doel poort, Protocol) en als het verkeer is toegestaan of geweigerd.
 
-> [!Warning]  
-> De volgende stappen werken met stroomlogboeken versie 1. Zie Inleiding [tot stroomlogboekregistratie voor netwerkbeveiligingsgroepen voor](network-watcher-nsg-flow-logging-overview.md)meer informatie. De volgende instructies werken niet met versie 2 van de logbestanden, zonder wijziging.
-
-U veel NSG's in uw netwerk hebben met flow logging ingeschakeld. Deze hoeveelheid logboekregistratiegegevens maakt het omslachtig om te ontleeden en inzichten te krijgen uit uw logboeken. Dit artikel biedt een oplossing voor het centraal beheren van deze NSG-stroomlogboeken met Grafana, een open source-grafiektool, ElasticSearch, een gedistribueerde zoek- en analyse-engine en Logstash, een open source-pijplijn voor gegevensverwerking aan de serverzijde.  
+U kunt veel Nsg's in uw netwerk hebben waarvoor stroom logboek registratie is ingeschakeld. Deze hoeveelheid logboek registratie gegevens maakt het lastig om uw logboeken te parseren en inzicht te krijgen. Dit artikel biedt een oplossing voor het centraal beheren van deze NSG-stroom logboeken met behulp van Grafana, een open-source Graphing tool, ElasticSearch, een gedistribueerde zoek-en analyse-engine en Logstash, een open-source-pipeline voor gegevens verwerking.  
 
 ## <a name="scenario"></a>Scenario
 
-NSG-stroomlogboeken zijn ingeschakeld met Network Watcher en worden opgeslagen in Azure blob-opslag. Een Logstash-plug-in wordt gebruikt om stroomlogboeken van blobopslag aan te sluiten en te verwerken en deze naar ElasticSearch te sturen.  Zodra de stroomlogboeken zijn opgeslagen in ElasticSearch, kunnen ze worden geanalyseerd en gevisualiseerd in aangepaste dashboards in Grafana.
+NSG-stroom logboeken zijn ingeschakeld met Network Watcher en worden opgeslagen in Azure Blob-opslag. Een Logstash-invoeg toepassing wordt gebruikt om stroom logboeken te verbinden en te verwerken vanuit Blob Storage en deze te verzenden naar ElasticSearch.  Zodra de stroom logboeken zijn opgeslagen in ElasticSearch, kunnen ze worden geanalyseerd en gevisualiseerd in aangepaste Dash boards in Grafana.
 
 ![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Installatiestappen
 
-### <a name="enable-network-security-group-flow-logging"></a>Logboekregistratie van netwerkbeveiligingsgroep inschakelen
+### <a name="enable-network-security-group-flow-logging"></a>Logboek registratie van stroom van netwerk beveiligings groep inschakelen
 
-Voor dit scenario moet u Network Security Group Flow Logging hebben ingeschakeld in ten minste één netwerkbeveiligingsgroep in uw account. Raadpleeg het volgende artikel [Inleiding tot stroomregistratie voor netwerkbeveiligingsgroepen voor](network-watcher-nsg-flow-logging-overview.md)instructies voor het inschakelen van netwerkbeveiligingsstroomlogboeken.
+Voor dit scenario moet u logboek registratie van stroom netwerk beveiligings groep ingeschakeld hebben op ten minste één netwerk beveiligings groep in uw account. Raadpleeg het volgende artikel [Inleiding tot stroom logboeken voor netwerk beveiligings groepen](network-watcher-nsg-flow-logging-overview.md)voor instructies over het inschakelen van Logboeken voor netwerk beveiligings stromen.
 
 ### <a name="setup-considerations"></a>Overwegingen bij de installatie
 
-In dit voorbeeld worden Grafana, ElasticSearch en Logstash geconfigureerd op een Ubuntu 16.04 LTS-server die in Azure is geïmplementeerd. Deze minimale setup wordt gebruikt voor het uitvoeren van alle drie de componenten - ze draaien allemaal op dezelfde VM. Deze instelling mag alleen worden gebruikt voor het testen en niet-kritieke workloads. Logstash, Elasticsearch en Grafana kunnen allemaal worden ontworpen om onafhankelijk te schalen in vele gevallen. Zie voor meer informatie de documentatie voor elk van deze onderdelen.
+In dit voor beeld worden Grafana, ElasticSearch en Logstash geconfigureerd op een Ubuntu 16,04 LTS-server die is geïmplementeerd in Azure. Deze minimale installatie wordt gebruikt voor het uitvoeren van alle drie de onderdelen – ze worden allemaal uitgevoerd op dezelfde VM. Deze installatie mag alleen worden gebruikt voor test doeleinden en niet-essentiële workloads. Logstash, Elasticsearch en Grafana kunnen allemaal worden ontworpen om onafhankelijk van elkaar te schalen. Zie de documentatie voor elk van deze onderdelen voor meer informatie.
 
 ### <a name="install-logstash"></a>Logstash installeren
 
-U gebruikt Logstash om de JSON-opgemaakte stroomlogboeken af te vlakken naar een stroomtupleniveau.
+U gebruikt Logstash om de door JSON geformatteerde stroom logboeken samen te voegen met een stroom-tuple niveau.
 
-1. Voer de volgende opdrachten uit om Logstash te installeren:
+1. Als u Logstash wilt installeren, voert u de volgende opdrachten uit:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 
-2. Configureer Logstash om de stroomlogboeken te ontwenen en naar ElasticSearch te sturen. Maak een Logstash.conf-bestand met:
+2. Configureer Logstash om de stroom logboeken te parseren en te verzenden naar ElasticSearch. Maak een Logstash. conf-bestand met behulp van:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Voeg de volgende inhoud toe aan het bestand. Wijzig de naam en toegangssleutel voor het opslagaccount om uw opslagaccountgegevens weer te geven:
+3. Voeg de volgende inhoud toe aan het bestand. Wijzig de naam van het opslag account en de toegangs sleutel zodat deze overeenkomen met de gegevens van uw opslag account:
 
    ```bash
     input {
@@ -107,6 +104,11 @@ U gebruikt Logstash om de JSON-opgemaakte stroomlogboeken af te vlakken naar een
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -137,27 +139,27 @@ U gebruikt Logstash om de JSON-opgemaakte stroomlogboeken af te vlakken naar een
     }
    ```
 
-Het meegeleverde logstash config-bestand bestaat uit drie delen: de invoer, het filter en de uitvoer.
-De invoersectie wijst de invoerbron aan van de logboeken die Logstash zal verwerken - in dit geval gaan we een "azureblob"-invoerplug-in gebruiken (geïnstalleerd in de volgende stappen) waarmee we toegang hebben tot de JSON-bestanden van de NSG-stroomlogboek die zijn opgeslagen in blobopslag. 
+Het opgegeven Logstash-configuratie bestand bestaat uit drie delen: de invoer, het filter en de uitvoer.
+In het gedeelte invoer wordt de invoer bron aangegeven van de logboeken die door Logstash worden verwerkt. in dit geval gaan we een ' azureblob-invoeg toepassing gebruiken (geïnstalleerd in de volgende stappen) waarmee we toegang krijgen tot de NSG flow log-logboek bestanden die zijn opgeslagen in Blob Storage. 
 
-De filtersectie hiermee wordt elk stroomlogboekbestand afgevlakt, zodat elke afzonderlijke stroomtuple en de bijbehorende eigenschappen een afzonderlijke Logstash-gebeurtenis worden.
+De sectie filter wordt vervolgens elk logboek bestand van de stroom afgevlakt zodat elke afzonderlijke stroom tuple en de bijbehorende eigenschappen een afzonderlijke Logstash-gebeurtenis worden.
 
-Ten slotte stuurt de uitvoersectie elke Logstash-gebeurtenis door naar de ElasticSearch-server. Voel je vrij om het Logstash config-bestand aan te passen aan uw specifieke behoeften.
+Ten slotte stuurt het gedeelte uitvoer elke Logstash-gebeurtenis naar de ElasticSearch-server. U kunt het Logstash-configuratie bestand aanpassen aan uw specifieke behoeften.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>De logstash-invoerplug-in voor Azure Blob-opslag installeren
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>De Logstash-invoer-invoeg toepassing voor Azure Blob Storage installeren
 
-Met deze Logstash-plug-in u rechtstreeks toegang krijgen tot de stroomlogboeken van hun aangewezen blob-opslagaccount. Als u deze plug-in wilt installeren, voert u in de standaard logstash-installatiemap (in dit geval /usr/share/logstash/bin) de opdracht uit:
+Met deze Logstash-invoeg toepassing kunt u rechtstreeks toegang krijgen tot de stroom logboeken van het opgegeven Blob Storage-account. Als u deze invoeg toepassing wilt installeren, voert u de volgende opdracht uit in de standaard Logstash-installatiemap (in dit geval/usr/share/logstash/bin):
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Zie [Logstash-invoerplug-in voor Azure Storage Blobs voor](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)meer informatie over deze plug-in.
+Zie voor meer informatie over deze invoeg toepassing [Logstash-invoer-invoeg toepassing voor Azure Storage-blobs](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
 ### <a name="install-elasticsearch"></a>ElasticSearch installeren
 
-U het volgende script gebruiken om ElasticSearch te installeren. Zie [Elastic Stack](https://www.elastic.co/guide/en/elastic-stack/current/index.html)voor informatie over het installeren van ElasticSearch.
+U kunt het volgende script gebruiken om ElasticSearch te installeren. Zie [elastische stack](https://www.elastic.co/guide/en/elastic-stack/current/index.html)voor meer informatie over het installeren van ElasticSearch.
 
 ```bash
 apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen -y
@@ -181,27 +183,27 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-Zie Installeren op [Debian / Ubuntu voor](https://docs.grafana.org/installation/debian/)aanvullende installatiegegevens.
+Zie [installaties op Debian/Ubuntu](https://docs.grafana.org/installation/debian/)voor aanvullende informatie over de installatie.
 
-#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>De ElasticSearch-server toevoegen als gegevensbron
+#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>De ElasticSearch-server toevoegen als gegevens bron
 
-Vervolgens moet u de ElasticSearch-index met stroomlogboeken toevoegen als gegevensbron. U een gegevensbron toevoegen door **Gegevensbron toevoegen** te selecteren en het formulier met de relevante informatie in te vullen. Een voorbeeld van deze configuratie is te vinden in de volgende schermafbeelding:
+Vervolgens moet u de ElasticSearch-index met stroom logboeken toevoegen als een gegevens bron. U kunt een gegevens bron toevoegen door **gegevens bron toevoegen** te selecteren en het formulier met de relevante gegevens in te vullen. Een voor beeld van deze configuratie vindt u in de volgende scherm afbeelding:
 
 ![Gegevensbron toevoegen](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Een dashboard maken
 
-Nu u Grafana met succes hebt geconfigureerd om te lezen uit de ElasticSearch-index met NSG-stroomlogboeken, u dashboards maken en personaliseren. Als u een nieuw dashboard wilt maken, selecteert **u Uw eerste dashboard maken**. In de volgende voorbeeldgrafiekconfiguratie worden stromen weergegeven die zijn gesegmenteerd door de NSG-regel:
+Nu u Grafana hebt geconfigureerd voor het lezen van de ElasticSearch-index met NSG-stroom logboeken, kunt u Dash boards maken en personaliseren. Als u een nieuw dash board wilt maken, selecteert u **uw eerste dash board maken**. De volgende voorbeeld grafiek configuratie toont stromen, gesegmenteerd door NSG regel:
 
-![Dashboardgrafiek](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
+![Dashboard grafiek](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
-De volgende screenshot toont een grafiek en grafiek met de bovenste stromen en hun frequentie. Stromen worden ook weergegeven door NSG regel en stromen per besluit. Grafana is zeer aanpasbaar, dus het is raadzaam dat u dashboards maakt die passen bij uw specifieke bewakingsbehoeften. In het volgende voorbeeld ziet u een typisch dashboard:
+In de volgende scherm afbeelding ziet u een grafiek en grafiek met de belangrijkste stromen en hun frequentie. Stromen worden ook weer gegeven door de NSG-regel en stromen op beslissing. Grafana is zeer aanpasbaar, dus het is raadzaam om Dash boards te maken op basis van uw specifieke bewakings behoeften. In het volgende voor beeld ziet u een typisch dash board:
 
-![Dashboardgrafiek](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Dashboard grafiek](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Conclusie
 
-Door Network Watcher te integreren met ElasticSearch en Grafana, hebt u nu een handige en gecentraliseerde manier om NSG-stroomlogboeken en andere gegevens te beheren en te visualiseren. Grafana heeft een aantal andere krachtige grafische functies die ook kunnen worden gebruikt om stroomlogboeken verder te beheren en uw netwerkverkeer beter te begrijpen. Nu u een Grafana-exemplaar hebt ingesteld en verbonden met Azure, u de andere functionaliteit die het biedt, blijven verkennen.
+Als u Network Watcher integreert met ElasticSearch en Grafana, hebt u nu een handige en gecentraliseerde manier om NSG-stroom logboeken en andere gegevens te beheren en visualiseren. Grafana heeft een aantal andere krachtige grafiek functies die ook kunnen worden gebruikt om stroom logboeken verder te beheren en inzicht te krijgen in het netwerk verkeer. Nu u een Grafana-exemplaar hebt ingesteld en verbonden met Azure, kunt u door gaan met het verkennen van de andere functionaliteit die het biedt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

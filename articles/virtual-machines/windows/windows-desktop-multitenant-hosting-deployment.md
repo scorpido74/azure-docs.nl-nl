@@ -1,36 +1,30 @@
 ---
-title: Windows 10 implementeren op Azure met Multitenant-hostingrechten
-description: Meer informatie over hoe u uw Windows Software Assurance-voordelen maximaliseren om on-premises licenties naar Azure te brengen
-services: virtual-machines-windows
-documentationcenter: ''
+title: Windows 10 implementeren op Azure met multi tenant-hosting rechten
+description: Meer informatie over hoe u uw voor delen van Windows Software Assurance kunt maximaliseren om on-premises licenties naar Azure te brengen
 author: xujing
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101491"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101549"
 ---
-# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 implementeren op Azure met Multitenant-hostingrechten 
-Voor klanten met Windows 10 Enterprise E3/E5 per gebruiker of Windows Virtual Desktop Access per gebruiker (gebruikersabonnementslicenties of invoegtoepassing gebruikersabonnementslicenties) u met Multitenant Hosting Rechten voor Windows 10 uw Windows 10-licenties naar de cloud brengen en Windows 10 Virtual Machines op Azure uitvoeren zonder te betalen voor een andere licentie. Zie [Multitenant Hosting voor Windows 10 voor](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)meer informatie.
+# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 implementeren op Azure met multi tenant-hosting rechten 
+Voor klanten met Windows 10 Enter prise E3/E5 per gebruiker of Windows Virtual Desktop Access per gebruiker (licenties voor gebruikers abonnement of licenties voor gebruikers abonnementen), kunt u met multi tenant hosting rechten voor Windows 10 uw Windows 10-licenties naar de Cloud brengen en Windows 10-Virtual Machines op Azure uitvoeren zonder dat u voor een andere licentie betaalt. Zie [multi tenant-hosting voor Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)voor meer informatie.
 
 > [!NOTE]
-> In dit artikel ziet u de licentievoordelen voor Windows 10 Pro Desktop-afbeeldingen implementeren op Azure Marketplace.
-> - Voor Windows 7-, 8.1-, 10 Enterprise-afbeeldingen (x64) op Azure Marketplace voor MSDN-abonnementen verwijzen weu naar [Windows-client in Azure voor dev/testscenario's](client-images.md)
-> - Voor licentievoordelen voor Windows Server verwijzen we je naar [Azure Hybrid-gebruiksvoordelen voor Windows Server-afbeeldingen.](hybrid-use-benefit-licensing.md)
+> In dit artikel wordt beschreven hoe u het voor deel van de licentie voor Windows 10 Pro Desktop-installatie kopieën op Azure Marketplace implementeert.
+> - Voor Windows 7, 8,1, 10 Enter prise (x64) installatie kopieën op Azure Marketplace voor MSDN-abonnementen raadpleegt u de [Windows-client in azure voor ontwikkel-en test scenario's](client-images.md)
+> - Raadpleeg voor delen van Windows Server-licentie verlening voor delen [van Azure Hybrid use voor Windows Server-installatie kopieën](hybrid-use-benefit-licensing.md).
 >
 
-## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Windows 10-afbeelding implementeren vanuit Azure Marketplace 
-Voor powershell-, CLI- en Azure Resource Manager-sjabloonimplementaties is de Windows 10-afbeelding te vinden met de volgende naam van de uitgever, aanbieding, sku.
+## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Windows 10-installatie kopie implementeren vanuit Azure Marketplace 
+Voor implementaties van Power shell, CLI en Azure Resource Manager-sjabloon kunt u de Windows 10-installatie kopie vinden met de volgende Uitgever, aanbieding, SKU.
 
 | OS  |      PublisherName      |  Aanbieding | Sku |
 |:----------|:-------------:|:------|:------|
@@ -40,13 +34,13 @@ Voor powershell-, CLI- en Azure Resource Manager-sjabloonimplementaties is de Wi
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD uploaden naar Azure
-Als u een gegeneraliseerde Windows 10 VHD uploadt, moet u er rekening mee houden dat Windows 10 standaard geen ingebouwd beheerdersaccount heeft ingeschakeld. Als u het ingebouwde beheerdersaccount wilt inschakelen, neemt u de volgende opdracht op als onderdeel van de extensie Aangepast script.
+Als u een gegeneraliseerde virtuele harde schijf met Windows 10 uploadt, moet u er rekening mee houden dat Windows 10 geen ingebouwd Administrator-account standaard is ingeschakeld. Als u het ingebouwde Administrator account wilt inschakelen, neemt u de volgende opdracht op als onderdeel van de aangepaste script extensie.
 
 ```powershell
 Net user <username> /active:yes
 ```
 
-Het volgende powershell-fragment is om alle beheerdersaccounts als actief te markeren, inclusief de ingebouwde beheerder. Dit voorbeeld is handig als de gebruikersnaam van de ingebouwde beheerder onbekend is.
+Het volgende Power shell-fragment is het markeren van alle beheerders accounts als actief, met inbegrip van de ingebouwde Administrator. Dit voor beeld is handig als de ingebouwde gebruikers naam van de beheerder onbekend is.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -57,11 +51,11 @@ if($adminAccount.Disabled)
 ```
 Voor meer informatie: 
 * [VHD uploaden naar Azure](upload-generalized-managed.md)
-* [Een Windows VHD voorbereiden om te uploaden naar Azure](prepare-for-upload-vhd-image.md)
+* [Een Windows-VHD voorbereiden om te uploaden naar Azure](prepare-for-upload-vhd-image.md)
 
 
-## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Windows 10 implementeren met multitenant-hostingrechten
-Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview)hebt geïnstalleerd en geconfigureerd. Zodra u uw VHD hebt voorbereid, uploadt u `Add-AzVhd` de VHD naar uw Azure Storage-account met de cmdlet als volgt:
+## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Implementatie van Windows 10 met multi tenant-hosting rechten
+Zorg ervoor dat u [de nieuwste Azure PowerShell hebt geïnstalleerd en geconfigureerd](/powershell/azure/overview). Nadat u uw VHD hebt voor bereid, uploadt u de VHD naar uw Azure Storage `Add-AzVhd` -account met de cmdlet als volgt:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -69,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Implementeren met Azure Resource Manager-sjabloonimplementatie** Binnen uw Resource Manager-sjablonen `licenseType` kan een extra parameter worden opgegeven. U meer lezen over [het ontwerpen van Azure Resource Manager-sjablonen.](../../resource-group-authoring-templates.md) Zodra u uw VHD hebt geüpload naar Azure, bewerkt u de sjabloon Resource Manager om het licentietype op te nemen als onderdeel van de compute provider en uw sjabloon als normaal te implementeren:
+**Implementeren met behulp van Azure Resource Manager-sjabloon implementatie** In uw Resource Manager-sjablonen kunt u een extra `licenseType` para meter voor opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md). Wanneer u uw VHD hebt geüpload naar Azure, bewerkt u de Resource Manager-sjabloon zodanig dat het licentie type wordt opgenomen als onderdeel van de compute-provider en uw sjabloon als normaal implementeren:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -78,18 +72,18 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Implementeren via PowerShell** Wanneer u uw Windows Server VM via PowerShell `-LicenseType`implementeert, hebt u een extra parameter voor . Zodra u uw VHD naar Azure hebt geüpload, maakt u een VM met het `New-AzVM` licentietype als volgt:
+**Implementeren via Power shell** Wanneer u uw Windows Server-VM implementeert via Power shell, hebt u `-LicenseType`een extra para meter voor. Zodra u uw VHD hebt geüpload naar Azure, maakt u een VM met `New-AzVM` en geeft u het type licentie als volgt op:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
-## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Controleer of uw VM gebruikmaakt van het licentievoordeel
-Zodra u uw VM hebt geïmplementeerd via de implementatiemethode PowerShell of `Get-AzVM` Resource Manager, controleert u het licentietype als volgt:
+## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Controleren of uw virtuele machine gebruikmaakt van het voor deel van de licentie
+Nadat u uw virtuele machine hebt geïmplementeerd met de implementatie methode Power shell of Resource Manager, controleert u het licentie `Get-AzVM` type als volgt:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-De uitvoer is vergelijkbaar met het volgende voorbeeld voor Windows 10 met het juiste licentietype:
+De uitvoer is vergelijkbaar met het volgende voor beeld voor Windows 10 met het juiste licentie type:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -97,7 +91,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Deze uitvoer staat in contrast met de volgende VM die is geïmplementeerd zonder Azure Hybrid Use Benefit-licentieverlening, zoals een VM die rechtstreeks vanuit de Azure Gallery wordt geïmplementeerd:
+Deze uitvoer is in tegens telling tot de volgende VM die zonder Azure Hybrid Use Benefit-licentie verlening is geïmplementeerd, zoals een virtuele machine die rechtstreeks vanuit de Azure-galerie wordt geïmplementeerd:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -105,14 +99,14 @@ Location                 : westus
 LicenseType              :
 ```
 
-## <a name="additional-information-about-joining-azure-ad"></a>Aanvullende informatie over deelname aan Azure AD
+## <a name="additional-information-about-joining-azure-ad"></a>Meer informatie over deelname aan Azure AD
 >[!NOTE]
->Azure voorziet alle Windows VM's met een ingebouwd beheerdersaccount, dat niet kan worden gebruikt om lid te worden van AAD. *Instellingen > account > Access Work of School >+Connect* werken bijvoorbeeld niet. U moet een tweede beheerdersaccount maken en aanmelden om handmatig lid te worden van Azure AD. U Azure AD ook configureren met een inrichtingspakket, gebruik de koppeling is de sectie *Volgende stappen* voor meer informatie.
+>Azure richt zich op alle Windows-Vm's met het ingebouwde Administrator account, dat niet kan worden gebruikt om lid te worden van AAD. Zo werken *instellingen > Account > toegang tot werk of School > + Connect* niet. U moet als een tweede beheerders account worden gemaakt en aangemeld om hand matig lid te worden van Azure AD. U kunt Azure AD ook configureren met behulp van een inrichtings pakket, de koppeling is de sectie *volgende stappen* voor meer informatie.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [het configureren van VDA voor Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
-- Meer informatie over [Multitenant Hosting voor Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
+- Meer informatie over het [configureren van VDA voor Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- Meer informatie over [multi tenant hosting voor Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 

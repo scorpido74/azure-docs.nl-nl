@@ -1,35 +1,28 @@
 ---
 title: Virtuele machines in een Azure Resource Manager-sjabloon | Microsoft Azure
-description: Meer informatie over hoe de virtuele machinebron wordt gedefinieerd in een Azure Resource Manager-sjabloon.
-services: virtual-machines-windows
-documentationcenter: ''
+description: Meer informatie over hoe de bron van de virtuele machine wordt gedefinieerd in een Azure Resource Manager sjabloon.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: c9bf1cf0564655c932e066e5b74225382375e9c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235425"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100529"
 ---
-# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager-sjabloon
+# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager sjabloon
 
-In dit artikel worden aspecten beschreven van een Azure Resource Manager-sjabloon die van toepassing zijn op virtuele machines. In dit artikel wordt geen volledige sjabloon beschreven voor het maken van een virtuele machine. daarvoor hebt u brondefinities nodig voor opslagaccounts, netwerkinterfaces, openbare IP-adressen en virtuele netwerken. Zie de [sjabloon walkthrough resourcebeheer voor](../../azure-resource-manager/resource-manager-template-walkthrough.md)meer informatie over hoe deze resources samen kunnen worden gedefinieerd.
+In dit artikel worden aspecten van een Azure Resource Manager sjabloon beschreven die van toepassing zijn op virtuele machines. In dit artikel wordt geen volledige sjabloon beschreven voor het maken van een virtuele machine. u hebt resource definities nodig voor opslag accounts, netwerk interfaces, open bare IP-adressen en virtuele netwerken. Zie het [overzicht van Resource Manager-sjablonen](../../azure-resource-manager/resource-manager-template-walkthrough.md)voor meer informatie over hoe deze bronnen samen kunnen worden gedefinieerd.
 
-Er zijn veel [sjablonen in de galerie](https://azure.microsoft.com/documentation/templates/?term=VM) die de VM-bron bevatten. Niet alle elementen die in een sjabloon kunnen worden opgenomen, worden hier beschreven.
+Er zijn veel [sjablonen in de galerie](https://azure.microsoft.com/documentation/templates/?term=VM) die de VM-resource bevatten. Niet alle elementen die kunnen worden opgenomen in een sjabloon, worden hier beschreven.
 
  
 
-In dit voorbeeld wordt een typische resourcesectie van een sjabloon weergegeven voor het maken van een opgegeven aantal VM's:
+In dit voor beeld ziet u een typische resource sectie van een sjabloon voor het maken van een opgegeven aantal Vm's:
 
 ```json
 "resources": [
@@ -147,30 +140,30 @@ In dit voorbeeld wordt een typische resourcesectie van een sjabloon weergegeven 
 ``` 
 
 > [!NOTE] 
->Dit voorbeeld is gebaseerd op een opslagaccount dat eerder is gemaakt. U het opslagaccount maken door het te implementeren vanuit de sjabloon. Het voorbeeld is ook gebaseerd op een netwerkinterface en de afhankelijke bronnen die in de sjabloon worden gedefinieerd. Deze bronnen worden niet weergegeven in het voorbeeld.
+>In dit voor beeld wordt gebruikgemaakt van een opslag account dat eerder is gemaakt. U kunt het opslag account maken door het te implementeren vanuit de sjabloon. Het voor beeld is ook afhankelijk van een netwerk interface en de afhankelijke resources die in de sjabloon zouden worden gedefinieerd. Deze resources worden niet weer gegeven in het voor beeld.
 >
 >
 
 ## <a name="api-version"></a>API-versie
 
-Wanneer u resources implementeert met behulp van een sjabloon, moet u een versie van de API opgeven die u wilt gebruiken. In het voorbeeld wordt de bron van de virtuele machine weergegeven met behulp van dit apiVersion-element:
+Wanneer u resources implementeert met behulp van een sjabloon, moet u een versie van de API opgeven die moet worden gebruikt. In het voor beeld wordt de resource van de virtuele machine weer gegeven met dit apiVersion-element:
 
 ```json
 "apiVersion": "2016-04-30-preview",
 ```
 
-De versie van de API die u in uw sjabloon opgeeft, is van invloed op welke eigenschappen u in de sjabloon definiëren. In het algemeen moet u de meest recente API-versie selecteren bij het maken van sjablonen. Voor bestaande sjablonen u bepalen of u een eerdere API-versie wilt blijven gebruiken of uw sjabloon wilt bijwerken voor de nieuwste versie om te profiteren van nieuwe functies.
+De versie van de API die u in de sjabloon opgeeft, is van invloed op de eigenschappen die u in de sjabloon kunt definiëren. Over het algemeen moet u de meest recente API-versie selecteren bij het maken van sjablonen. Voor bestaande sjablonen kunt u bepalen of u wilt door gaan met het gebruik van een eerdere API-versie of de sjabloon voor de nieuwste versie bijwerken om te profiteren van nieuwe functies.
 
-Gebruik deze mogelijkheden voor het verkrijgen van de nieuwste API-versies:
+Gebruik deze mogelijkheden voor het ophalen van de nieuwste API-versies:
 
-- REST API - [Alle resourceproviders weergeven](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API: [alle resource providers weer geven](https://docs.microsoft.com/rest/api/resources/providers)
+- Power shell- [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI- [AZ provider show](https://docs.microsoft.com/cli/azure/provider)
 
 
-## <a name="parameters-and-variables"></a>Parameters en variabelen
+## <a name="parameters-and-variables"></a>Para meters en variabelen
 
-[Met parameters](../../resource-group-authoring-templates.md) u eenvoudig waarden opgeven voor de sjabloon wanneer u deze uitvoert. Deze sectie parameters wordt gebruikt in het voorbeeld:
+Met [para meters](../../resource-group-authoring-templates.md) kunt u eenvoudig waarden voor de sjabloon opgeven wanneer u deze uitvoert. Dit gedeelte para meters wordt gebruikt in het voor beeld:
 
 ```json
 "parameters": {
@@ -180,9 +173,9 @@ Gebruik deze mogelijkheden voor het verkrijgen van de nieuwste API-versies:
 },
 ```
 
-Wanneer u de voorbeeldsjabloon implementeert, voert u waarden in voor de naam en het wachtwoord van het beheerdersaccount op elke vm en het aantal VM's dat u wilt maken. U hebt de mogelijkheid om parameterwaarden op te geven in een afzonderlijk bestand dat met de sjabloon wordt beheerd of waarden op te geven wanneer daarom wordt gevraagd.
+Wanneer u de voorbeeld sjabloon implementeert, voert u waarden in voor de naam en het wacht woord van het beheerders account op elke virtuele machine en het aantal Vm's dat moet worden gemaakt. U hebt de optie om parameter waarden op te geven in een afzonderlijk bestand dat wordt beheerd met de sjabloon of waarmee waarden worden opgegeven wanneer u hierom wordt gevraagd.
 
-[Variabelen](../../resource-group-authoring-templates.md) maken het gemakkelijk voor u om waarden in de sjabloon in te stellen die herhaaldelijk in de sjabloon worden gebruikt of die in de loop van de tijd kunnen veranderen. Deze sectie variabelen wordt gebruikt in het voorbeeld:
+Met [variabelen](../../resource-group-authoring-templates.md) kunt u eenvoudig waarden instellen in de sjabloon die in het hele spel worden gebruikt of die in de loop van de tijd kunnen worden gewijzigd. Deze variabelen sectie wordt in het voor beeld gebruikt:
 
 ```json
 "variables": { 
@@ -215,11 +208,11 @@ Wanneer u de voorbeeldsjabloon implementeert, voert u waarden in voor de naam en
 }, 
 ```
 
-Wanneer u de voorbeeldsjabloon implementeert, worden variabele waarden gebruikt voor de naam en id van het eerder gemaakte opslagaccount. Variabelen worden ook gebruikt om de instellingen voor de diagnostische extensie te bieden. Gebruik de [aanbevolen procedures voor het maken van Azure Resource Manager-sjablonen](../../resource-manager-template-best-practices.md) om u te helpen bepalen hoe u de parameters en variabelen in uw sjabloon wilt structureren.
+Wanneer u de voorbeeld sjabloon implementeert, worden variabelen waarden gebruikt voor de naam en id van het eerder gemaakte opslag account. Variabelen worden ook gebruikt om de instellingen voor de diagnostische uitbrei ding op te geven. Gebruik de [Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](../../resource-manager-template-best-practices.md) waarmee u kunt bepalen hoe u de para meters en variabelen in uw sjabloon wilt structureren.
 
-## <a name="resource-loops"></a>Resourcelussen
+## <a name="resource-loops"></a>Resource lussen
 
-Wanneer u meer dan één virtuele machine voor uw toepassing nodig hebt, u een kopieerelement in een sjabloon gebruiken. Met dit optionele element wordt het aantal VM's gemaakt dat u als parameter hebt opgegeven:
+Als u meer dan één virtuele machine voor uw toepassing nodig hebt, kunt u een copy-element in een sjabloon gebruiken. Dit optionele element loopt door het maken van het aantal Vm's dat u hebt opgegeven als para meter:
 
 ```json
 "copy": {
@@ -228,7 +221,7 @@ Wanneer u meer dan één virtuele machine voor uw toepassing nodig hebt, u een k
 },
 ```
 
-Let ook op in het voorbeeld dat de lusindex wordt gebruikt bij het opgeven van een aantal waarden voor de resource. Als u bijvoorbeeld een aantal voorbeelden van drie hebt ingevoerd, zijn de namen van de schijven van het besturingssysteem myOSDisk1, myOSDisk2 en myOSDisk3:
+U ziet ook in het voor beeld dat de lus-index wordt gebruikt bij het opgeven van een aantal waarden voor de resource. Als u bijvoorbeeld een aantal exemplaren van drie hebt ingevoerd, zijn de namen van de besturingssysteem schijven myOSDisk1, myOSDisk2 en myOSDisk3:
 
 ```json
 "osDisk": { 
@@ -239,11 +232,11 @@ Let ook op in het voorbeeld dat de lusindex wordt gebruikt bij het opgeven van e
 ```
 
 > [!NOTE] 
->In dit voorbeeld worden beheerde schijven voor de virtuele machines gebruikt.
+>In dit voor beeld worden beheerde schijven voor de virtuele machines gebruikt.
 >
 >
 
-Houd er rekening mee dat het maken van een lus voor één resource in de sjabloon mogelijk vereist dat u de lus gebruikt bij het maken of openen van andere bronnen. Meerdere VM's kunnen bijvoorbeeld niet dezelfde netwerkinterface gebruiken, dus als uw sjabloon door loopt met het maken van drie VM's, moet deze ook worden herhaald door het maken van drie netwerkinterfaces. Wanneer u een netwerkinterface aan een VM toewijst, wordt de lusindex gebruikt om deze te identificeren:
+Als u een lus voor een resource in de sjabloon wilt maken, moet u mogelijk de lus gebruiken bij het maken of openen van andere resources. Meerdere Vm's kunnen bijvoorbeeld niet gebruikmaken van dezelfde netwerk interface, dus als uw sjabloon een lus heeft gemaakt door drie Vm's te maken, moet er ook een lus worden gemaakt met het maken van drie netwerk interfaces. Bij het toewijzen van een netwerk interface aan een virtuele machine wordt de lus-index gebruikt om deze te identificeren:
 
 ```json
 "networkInterfaces": [ { 
@@ -254,7 +247,7 @@ Houd er rekening mee dat het maken van een lus voor één resource in de sjabloo
 
 ## <a name="dependencies"></a>Afhankelijkheden
 
-De meeste resources zijn afhankelijk van andere resources om correct te werken. Virtuele machines moeten worden gekoppeld aan een virtueel netwerk en om dat te doen, heeft het een netwerkinterface nodig. Het element [dependsOn](../../resource-group-define-dependencies.md) wordt gebruikt om ervoor te zorgen dat de netwerkinterface klaar is om te worden gebruikt voordat de VM's worden gemaakt:
+De meeste resources zijn afhankelijk van andere resources om goed te kunnen werken. Virtuele machines moeten worden gekoppeld aan een virtueel netwerk en hiervoor is een netwerk interface vereist. Het element [dependsOn](../../resource-group-define-dependencies.md) wordt gebruikt om ervoor te zorgen dat de netwerk interface gereed is om te worden gebruikt voordat de virtuele machines worden gemaakt:
 
 ```json
 "dependsOn": [
@@ -262,9 +255,9 @@ De meeste resources zijn afhankelijk van andere resources om correct te werken. 
 ],
 ```
 
-Resourcemanager implementeert tegelijkertijd alle resources die niet afhankelijk zijn van een andere resource die wordt geïmplementeerd. Wees voorzichtig bij het instellen van afhankelijkheden, omdat u per ongeluk uw implementatie vertragen door onnodige afhankelijkheden op te geven. Afhankelijkheden kunnen door meerdere resources worden geketend. De netwerkinterface is bijvoorbeeld afhankelijk van het openbare IP-adres en virtuele netwerkbronnen.
+Resource Manager implementeert in parallelle resources die niet afhankelijk zijn van een andere resource die wordt geïmplementeerd. Wees voorzichtig bij het instellen van afhankelijkheden omdat u per ongeluk uw implementatie kunt vertragen door onnodige afhankelijkheden op te geven. Afhankelijkheden kunnen worden gekoppeld aan meerdere resources. De netwerk interface is bijvoorbeeld afhankelijk van het open bare IP-adres en de bronnen van het virtuele netwerk.
 
-Hoe weet u of een afhankelijkheid vereist is? Bekijk de waarden die u in de sjabloon hebt ingesteld. Als een element in de definitie van virtuele machinebronnen wijst op een andere resource die in dezelfde sjabloon wordt geïmplementeerd, hebt u een afhankelijkheid nodig. Uw voorbeeld virtuele machine definieert bijvoorbeeld een netwerkprofiel:
+Hoe weet u of een afhankelijkheid vereist is? Bekijk de waarden die u in de sjabloon hebt ingesteld. Als een element in de resource definitie van de virtuele machine verwijst naar een andere resource die in dezelfde sjabloon is geïmplementeerd, hebt u een afhankelijkheid nodig. Uw voor beeld van een virtuele machine definieert bijvoorbeeld een netwerk profiel:
 
 ```json
 "networkProfile": { 
@@ -275,25 +268,25 @@ Hoe weet u of een afhankelijkheid vereist is? Bekijk de waarden die u in de sjab
 },
 ```
 
-Om deze eigenschap in te stellen, moet de netwerkinterface bestaan. Daarom hebt u een afhankelijkheid nodig. U moet ook een afhankelijkheid instellen wanneer een resource (een onderliggende bron) is gedefinieerd binnen een andere resource (een bovenliggende bron). De diagnostische instellingen en aangepaste scriptextensies worden bijvoorbeeld zowel gedefinieerd als onderliggende resources van de virtuele machine. Ze kunnen pas worden gemaakt als de virtuele machine bestaat. Daarom zijn beide resources gemarkeerd als afhankelijk van de virtuele machine.
+Als u deze eigenschap wilt instellen, moet de netwerk interface aanwezig zijn. Daarom moet u een afhankelijkheid hebben. U moet ook een afhankelijkheid instellen als er een resource (een onderliggend item) is gedefinieerd in een andere resource (een bovenliggend). De diagnostische instellingen en aangepaste script extensies zijn bijvoorbeeld beide gedefinieerd als onderliggende resources van de virtuele machine. Ze kunnen pas worden gemaakt als de virtuele machine bestaat. Daarom worden beide resources gemarkeerd als afhankelijk van de virtuele machine.
 
 ## <a name="profiles"></a>Profielen
 
-Verschillende profielelementen worden gebruikt bij het definiëren van een virtuele machinebron. Sommige zijn vereist en sommige zijn optioneel. De hardwareProfiel-, osProfile-, storageProfile- en networkProfile-elementen zijn bijvoorbeeld vereist, maar de diagnoseProfiel is optioneel. Deze profielen definiëren instellingen zoals:
+Er worden verschillende profiel elementen gebruikt bij het definiëren van een virtuele-machine bron. Sommige zijn vereist en sommige zijn optioneel. De elementen hardwareProfile, osProfile, storageProfile en networkProfile zijn bijvoorbeeld vereist, maar de diagnosticsProfile is optioneel. Deze profielen definiëren instellingen zoals:
    
-- [Grootte](sizes.md)
+- [size](sizes.md)
 - [naam](/azure/architecture/best-practices/resource-naming) en referenties
-- schijf- en [besturingssysteeminstellingen](cli-ps-findimage.md)
-- [netwerkinterface](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
-- opstartdiagnostiek
+- instellingen voor schijf en [besturings systeem](cli-ps-findimage.md)
+- [netwerk interface](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- Diagnostische gegevens over opstarten
 
-## <a name="disks-and-images"></a>Schijven en afbeeldingen
+## <a name="disks-and-images"></a>Schijven en installatie kopieën
    
-In Azure kunnen vhd-bestanden [schijven of afbeeldingen](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)weergeven. Wanneer het besturingssysteem in een vhd-bestand is gespecialiseerd om een specifieke VM te zijn, wordt het een schijf genoemd. Wanneer het besturingssysteem in een vhd-bestand wordt gegeneraliseerd om te worden gebruikt om veel VM's te maken, wordt het een afbeelding genoemd.   
+In azure kunnen VHD-bestanden [schijven of installatie kopieën](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)vertegenwoordigen. Wanneer het besturings systeem in een VHD-bestand speciaal is bedoeld voor een specifieke virtuele machine, wordt dit een schijf genoemd. Wanneer het besturings systeem in een VHD-bestand wordt gegeneraliseerd om veel Vm's te maken, wordt dit een installatie kopie genoemd.   
     
-### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Nieuwe virtuele machines en nieuwe schijven maken op basis van een platformafbeelding
+### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Nieuwe virtuele machines en nieuwe schijven maken op basis van een platform installatie kopie
 
-Wanneer u een vm maakt, moet u bepalen welk besturingssysteem u wilt gebruiken. Het element imageReference wordt gebruikt om het besturingssysteem van een nieuwe virtuele machine te definiëren. In het voorbeeld wordt een definitie voor een Windows Server-besturingssysteem weergegeven:
+Wanneer u een virtuele machine maakt, moet u bepalen welk besturings systeem u wilt gebruiken. Het element imageReference wordt gebruikt voor het definiëren van het besturings systeem van een nieuwe virtuele machine. In het voor beeld ziet u een definitie voor een Windows Server-besturings systeem:
 
 ```json
 "imageReference": { 
@@ -304,7 +297,7 @@ Wanneer u een vm maakt, moet u bepalen welk besturingssysteem u wilt gebruiken. 
 },
 ```
 
-Als u een Linux-besturingssysteem wilt maken, u deze definitie gebruiken:
+Als u een Linux-besturings systeem wilt maken, kunt u deze definitie gebruiken:
 
 ```json
 "imageReference": {
@@ -315,7 +308,7 @@ Als u een Linux-besturingssysteem wilt maken, u deze definitie gebruiken:
 },
 ```
 
-Configuratie-instellingen voor de schijf van het besturingssysteem worden toegewezen met het element osDisk. In het voorbeeld wordt een nieuwe beheerde schijf gedefinieerd met de cachemodus die is ingesteld op **ReadWrite** en dat de schijf wordt gemaakt op basis van een [platformafbeelding:](cli-ps-findimage.md)
+Configuratie-instellingen voor de schijf met het besturings systeem worden toegewezen aan het osDisk-element. In het voor beeld wordt een nieuwe beheerde schijf gedefinieerd met de cache modus ingesteld op **readwrite** en de schijf wordt gemaakt op basis van een [platform installatie kopie](cli-ps-findimage.md):
 
 ```json
 "osDisk": { 
@@ -325,9 +318,9 @@ Configuratie-instellingen voor de schijf van het besturingssysteem worden toegew
 },
 ```
 
-### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Nieuwe virtuele machines maken op bestaande beheerde schijven
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Nieuwe virtuele machines maken op basis van bestaande beheerde schijven
 
-Als u virtuele machines wilt maken van bestaande schijven, verwijdert u de imageReference en de elementen osProfile en definieert u deze schijfinstellingen:
+Als u virtuele machines wilt maken op basis van bestaande schijven, verwijdert u de imageReference-en osProfile-elementen en definieert u deze schijf instellingen:
 
 ```json
 "osDisk": { 
@@ -340,9 +333,9 @@ Als u virtuele machines wilt maken van bestaande schijven, verwijdert u de image
 },
 ```
 
-### <a name="create-new-virtual-machines-from-a-managed-image"></a>Nieuwe virtuele machines maken op basis van een beheerde afbeelding
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>Nieuwe virtuele machines maken op basis van een beheerde installatie kopie
 
-Als u een virtuele machine wilt maken op basis van een beheerde afbeelding, wijzigt u het element imageReference en definieert u de volgende schijfinstellingen:
+Als u een virtuele machine wilt maken op basis van een beheerde installatie kopie, wijzigt u het imageReference-element en definieert u deze schijf instellingen:
 
 ```json
 "storageProfile": { 
@@ -358,9 +351,9 @@ Als u een virtuele machine wilt maken op basis van een beheerde afbeelding, wijz
 },
 ```
 
-### <a name="attach-data-disks"></a>Gegevensschijven koppelen
+### <a name="attach-data-disks"></a>Gegevens schijven koppelen
 
-U optioneel gegevensschijven toevoegen aan de VM's. Het [aantal schijven](sizes.md) is afhankelijk van de grootte van de schijf van het besturingssysteem die u gebruikt. Met de grootte van de VM's ingesteld op Standard_DS1_v2, het maximum aantal gegevensschijven die kunnen worden toegevoegd aan de hen is twee. In het voorbeeld wordt aan elke vm één beheerde gegevensschijf toegevoegd:
+U kunt eventueel ook gegevens schijven toevoegen aan de Vm's. Het [aantal schijven](sizes.md) is afhankelijk van de grootte van de besturingssysteem schijf die u gebruikt. Met de grootte van de virtuele machines die zijn ingesteld op Standard_DS1_v2, is het maximum aantal gegevens schijven dat kan worden toegevoegd aan de Vm's twee. In het voor beeld wordt één beheerde gegevens schijf aan elke virtuele machine toegevoegd:
 
 ```json
 "dataDisks": [
@@ -374,9 +367,9 @@ U optioneel gegevensschijven toevoegen aan de VM's. Het [aantal schijven](sizes.
 ],
 ```
 
-## <a name="extensions"></a>Extensies
+## <a name="extensions"></a>Uitbreidingen
 
-Hoewel [extensies](extensions-features.md) een afzonderlijke bron zijn, zijn ze nauw verbonden met VM's. Extensies kunnen worden toegevoegd als onderliggende bron van de VM of als een afzonderlijke bron. In het voorbeeld wordt de [diagnostische extensie](extensions-diagnostics-template.md) weergegeven die aan de VM's wordt toegevoegd:
+Hoewel [uitbrei dingen](extensions-features.md) een afzonderlijke resource zijn, zijn ze nauw verbonden met vm's. Extensies kunnen worden toegevoegd als een onderliggende resource van de virtuele machine of als een afzonderlijke resource. In het voor beeld ziet u de [uitbrei ding van diagnostische gegevens](extensions-diagnostics-template.md) die wordt toegevoegd aan de vm's:
 
 ```json
 { 
@@ -409,9 +402,9 @@ Hoewel [extensies](extensions-features.md) een afzonderlijke bron zijn, zijn ze 
 },
 ```
 
-Deze extensiebron gebruikt de variabele storageName en de diagnostische variabelen om waarden op te geven. Als u de gegevens die door deze extensie worden verzameld, wilt wijzigen, u meer prestatiemeteritems toevoegen aan de variabele wadperfcounters. U er ook voor kiezen om de diagnostische gegevens in een ander opslagaccount te plaatsen dan waar de VM-schijven worden opgeslagen.
+Deze extensie resource gebruikt de variabele storagenaam en de diagnostische variabelen om waarden op te geven. Als u de gegevens wilt wijzigen die door deze uitbrei ding worden verzameld, kunt u meer prestatie meter items toevoegen aan de variabele wadperfcounters. U kunt er ook voor kiezen om de diagnostische gegevens in een ander opslag account te plaatsen dan waar de VM-schijven worden opgeslagen.
 
-Er zijn veel extensies die u installeren op een VM, maar het meest nuttig is waarschijnlijk de [Custom Script Extensie](extensions-customscript.md). In het voorbeeld wordt op elke VM een PowerShell-script met de naam start.ps1 uitgevoerd:
+Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar de handigste is waarschijnlijk de [aangepaste script extensie](extensions-customscript.md). In het voor beeld wordt een Power shell-script met de naam start. ps1 uitgevoerd op elke virtuele machine wanneer deze voor het eerst wordt gestart:
 
 ```json
 {
@@ -438,27 +431,27 @@ Er zijn veel extensies die u installeren op een VM, maar het meest nuttig is waa
 }
 ```
 
-Het script start.ps1 kan veel configuratietaken uitvoeren. De gegevensschijven die in het voorbeeld aan de VM's worden toegevoegd, worden bijvoorbeeld niet geïnitialiseerd. u een aangepast script gebruiken om ze te initialiseren. Als u meerdere opstarttaken moet uitvoeren, u het start.ps1-bestand gebruiken om andere PowerShell-scripts in Azure-opslag aan te roepen. Het voorbeeld maakt gebruik van PowerShell, maar u elke scriptmethode gebruiken die beschikbaar is op het besturingssysteem dat u gebruikt.
+Het script start. ps1 kan veel configuratie taken uitvoeren. De gegevens schijven die zijn toegevoegd aan de virtuele machines in het voor beeld, worden bijvoorbeeld niet geïnitialiseerd. u kunt een aangepast script gebruiken om ze te initialiseren. Als u meerdere opstart taken hebt, kunt u het bestand start. ps1 gebruiken om andere Power shell-scripts in azure Storage aan te roepen. In het voor beeld wordt Power shell gebruikt, maar u kunt elke script methode gebruiken die beschikbaar is in het besturings systeem dat u gebruikt.
 
-U de status van de geïnstalleerde extensies zien via de instellingen voor extensies in de portal:
+U kunt de status van de geïnstalleerde uitbrei dingen bekijken via de uitbrei dingen in de portal:
 
-![Extensiestatus krijgen](./media/template-description/virtual-machines-show-extensions.png)
+![Status van uitbrei ding ophalen](./media/template-description/virtual-machines-show-extensions.png)
 
-U ook extensiegegevens opvragen met de opdracht **Get-AzVMExtension** PowerShell, de **vm-extensie krijgt** Azure CLI of de REST API **voor extensiegegevens voor informatie opvragen.**
+U kunt ook informatie over de uitbrei ding ophalen met behulp van de Power shell **-opdracht Get-AzVMExtension** , de **VM-extensie** Azure cli-opdracht ophalen of de **extensie gegevens ophalen** rest API.
 
 ## <a name="deployments"></a>Implementaties
 
-Wanneer u een sjabloon implementeert, houdt Azure de resources bij die u als groep hebt geïmplementeerd en wijst u automatisch een naam toe aan deze geïmplementeerde groep. De naam van de implementatie is dezelfde als de naam van de sjabloon.
+Wanneer u een sjabloon implementeert, traceert Azure de resources die u als groep hebt geïmplementeerd en wijst deze automatisch een naam toe aan deze geïmplementeerde groep. De naam van de implementatie is hetzelfde als de naam van de sjabloon.
 
-Als u nieuwsgierig bent naar de status van resources in de implementatie, bekijkt u de brongroep in de Azure-portal:
+Als u op de hoogte bent van de status van resources in de implementatie, bekijkt u de resource groep in de Azure Portal:
 
-![Implementatiegegevens verzamelen](./media/template-description/virtual-machines-deployment-info.png)
+![Implementatie gegevens ophalen](./media/template-description/virtual-machines-deployment-info.png)
     
-Het is geen probleem om dezelfde sjabloon te gebruiken om bronnen te maken of om bestaande bronnen bij te werken. Wanneer u opdrachten gebruikt om sjablonen te implementeren, u aangeven welke [modus](../../resource-group-template-deploy.md) u wilt gebruiken. De modus kan worden ingesteld op **Voltooien** of **Incrementeel**. De standaardinstelling is om incrementele updates uit te voeren. Wees voorzichtig bij het gebruik van de **modus Voltooien,** omdat u per ongeluk bronnen verwijderen. Wanneer u de modus instelt op **Voltooien,** verwijdert Resourcemanager alle bronnen in de resourcegroep die niet in de sjabloon staan.
+Het is geen probleem om dezelfde sjabloon te gebruiken om resources te maken of om bestaande resources bij te werken. Wanneer u opdrachten gebruikt om sjablonen te implementeren, hebt u de mogelijkheid om te zeggen welke [modus](../../resource-group-template-deploy.md) u wilt gebruiken. De modus kan worden ingesteld op **voltooid** of **Incrementeel**. De standaard instelling is incrementele updates. Wees voorzichtig wanneer u de **volledige** modus gebruikt, omdat u per ongeluk resources kunt verwijderen. Wanneer u de modus instelt op **voltooid**, worden alle resources in de resource groep die zich niet in de sjabloon bevinden, door Resource Manager verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak uw eigen sjabloon met [Azure Resource Manager-sjablonen voor ontwerpen.](../../resource-group-authoring-templates.md)
-- Implementeer de sjabloon die u hebt gemaakt met [een virtuele Windows-machine maken met een resourcemanagersjabloon.](ps-template.md)
-- Meer informatie over het beheren van de VM's die u hebt gemaakt door [Windows VM's maken en beheren met de Azure PowerShell-module](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Zie [Azure Resource Manager-sjabloonverwijzing](/azure/templates/)voor de syntaxis en eigenschappen van JSON in sjablonen.
+- Maak uw eigen sjabloon met behulp van [ontwerp Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md).
+- Implementeer de sjabloon die u hebt gemaakt met een [virtuele Windows-machine maken met een resource manager-sjabloon](ps-template.md).
+- Meer informatie over het beheren van de virtuele machines die u hebt gemaakt door [Windows-Vm's maken en beheren te bekijken met de module Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Zie [Azure Resource Manager-sjabloon verwijzing](/azure/templates/)voor de JSON-syntaxis en-eigenschappen van resource typen in sjablonen.

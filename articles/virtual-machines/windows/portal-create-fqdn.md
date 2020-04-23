@@ -1,39 +1,34 @@
 ---
-title: FQDN maken voor een Windows-vm in de Azure-portal
-description: Meer informatie over het maken van een volledig gekwalificeerde domeinnaam of FQDN voor een virtuele machine op basis van Resource Manager in de Azure-portal.
-services: virtual-machines-windows
-documentationcenter: ''
+title: FQDN maken voor een Windows-VM in de Azure Portal
+description: Meer informatie over het maken van een FQDN-naam (Fully Qualified Domain Name) voor een virtuele machine op basis van een resource manager in de Azure Portal.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: a2ae5887-76df-485e-ae19-0efd96df8600
 ms.service: virtual-machines-windows
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7bfa510068d71afb7701ab8964f06053d38ac70
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ece0877c97d3c2cda30aab1b3f7fe56f20080996
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458893"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101651"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Een volledig gekwalificeerde domeinnaam maken in de Azure-portal voor een Windows-vm
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Een Fully Qualified Domain Name maken in de Azure Portal voor een Windows-VM
 
-Wanneer u een virtuele machine (VM) maakt in de [Azure-portal,](https://portal.azure.com)wordt automatisch een openbare IP-bron voor de virtuele machine gemaakt. U gebruikt dit IP-adres om op afstand toegang te krijgen tot de VM. Hoewel de portal geen [volledig gekwalificeerde domeinnaam](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)of FQDN maakt, u er een maken zodra de VM is gemaakt. In dit artikel worden de stappen getoond om een DNS-naam of FQDN te maken.
+Wanneer u een virtuele machine (VM) maakt in de [Azure Portal](https://portal.azure.com), wordt er automatisch een open bare IP-resource voor de virtuele machine gemaakt. U gebruikt dit IP-adres om op afstand toegang te krijgen tot de virtuele machine. Hoewel de portal geen [Fully Qualified Domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)of FQDN maakt, kunt u één keer maken nadat de virtuele machine is gemaakt. In dit artikel worden de stappen beschreven voor het maken van een DNS-naam of FQDN.
 
 ## <a name="create-a-fqdn"></a>Een FQDN maken
-In dit artikel wordt ervan uitgegaan dat u al een vm hebt gemaakt. Indien nodig u [een VM maken in de portal](quick-create-portal.md) of met Azure [PowerShell.](quick-create-powershell.md) Volg deze stappen zodra uw vm actief is:
+In dit artikel wordt ervan uitgegaan dat u al een virtuele machine hebt gemaakt. Als dat nodig is, kunt u [een virtuele machine maken in de portal](quick-create-portal.md) of [met Azure PowerShell](quick-create-powershell.md). Volg deze stappen als uw virtuele machine actief is:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-U nu op afstand verbinding maken met de VM met deze DNS-naam, zoals voor Extern bureaublad-protocol (RDP).
+U kunt nu extern verbinding maken met de virtuele machine met behulp van deze DNS-naam, zoals voor Remote Desktop Protocol (RDP).
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu uw VM een openbare IP- en DNS-naam heeft, u algemene toepassingsframeworks of -services implementeren, zoals IIS, SQL of SharePoint.
+Nu uw VM een open bare IP-en DNS-naam heeft, kunt u algemene toepassings raamwerken of-services implementeren, zoals IIS, SQL of share point.
 
-U ook meer lezen over [het gebruik van Resource Manager](../../azure-resource-manager/management/overview.md) voor tips over het bouwen van uw Azure-implementaties.
+U kunt ook meer lezen over het [gebruik van Resource Manager](../../azure-resource-manager/management/overview.md) voor tips over het bouwen van uw Azure-implementaties.
 

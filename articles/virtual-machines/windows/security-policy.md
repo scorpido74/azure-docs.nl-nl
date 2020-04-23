@@ -1,26 +1,21 @@
 ---
-title: Beleidsregels beveiligen en gebruiken op uw Windows VM's in Azure
-description: Meer informatie over beveiliging en beleid voor Windows en virtuele machines in Azure.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Beleid beveiligen en gebruiken op uw Vm's in azure
+description: Meer informatie over beveiliging en beleid voor virtuele machines in Azure.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 514e86075f7671d237536d812557d709a28b51a5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4910acd99abd6059de40e67a1b1629259c8215cc
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460287"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099407"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Beleidsregels beveiligen en gebruiken op virtuele machines in Azure
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Beleid op virtuele machines in azure beveiligen en gebruiken
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

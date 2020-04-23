@@ -1,37 +1,38 @@
 ---
-title: PowerShell gebruiken om Azure Spot VM's te implementeren
-description: Meer informatie over het gebruik van Azure PowerShell om Spot VM's te implementeren om kosten te besparen.
+title: Power shell gebruiken voor het implementeren van Azure spot-Vm's
+description: Meer informatie over het gebruik van Azure PowerShell voor het implementeren van spot-Vm's om kosten op te slaan.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 234cf3f51173c53ef8ca15af4ca6f24881be3109
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547286"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100614"
 ---
-# <a name="deploy-spot-vms-using-azure-powershell"></a>SpotVM's implementeren met Azure PowerShell
+# <a name="deploy-spot-vms-using-azure-powershell"></a>Plaats virtuele machines met behulp van Azure PowerShell
 
 
-Met behulp van [Spot VM's](spot-vms.md) u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
+Met behulp van [Spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
-De prijzen voor spotVM's zijn variabel, gebaseerd op regio en SKU. Zie VM-prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot VM's - Prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de max.
+Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
 
-Je hebt de mogelijkheid om een maximale prijs die u bereid bent te betalen, per uur, voor de VM. De maximale prijs voor een Spot VM kan worden ingesteld in Amerikaanse dollars (USD), met behulp van maximaal 5 decimalen. De waarde `0.98765`is bijvoorbeeld een maximale prijs van $ 0,98765 USD per uur. Als u de maximale `-1`prijs instelt, wordt de VM niet uitgezet op basis van de prijs. De prijs voor de VM zal de huidige prijs voor spot of de prijs voor een standaard VM, die ooit minder is, zolang er capaciteit en quotum beschikbaar is.
+U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765`is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1`, wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Opnemen `-Priority Spot` en `-MaxPrice` instellen op:
-- `-1`dus de VM is niet uitgezet op basis van de prijs.
-- een dollarbedrag, tot 5 cijfers. Bijvoorbeeld, `-MaxPrice .98765` betekent dat de VM zal worden deallocated zodra de prijs voor een spotVM gaat ongeveer $.98765 per uur.
+Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Insluiten `-Priority Spot` en instellen `-MaxPrice` op:
+- `-1`de virtuele machine wordt dus niet verwijderd op basis van de prijs.
+- een dollar bedrag, Maxi maal vijf cijfers. `-MaxPrice .98765` Betekent bijvoorbeeld dat de toewijzing van de virtuele machine ongedaan wordt gemaakt wanneer de prijs voor een spotVM ongeveer $. 98765 per uur duurt.
 
 
-In dit voorbeeld wordt een spotVM gemaakt die niet wordt toegewezen op basis van prijzen (alleen wanneer Azure de capaciteit terug nodig heeft).
+In dit voor beeld wordt een spotVM gemaakt die niet wordt toegewezen op basis van de prijzen (alleen wanneer Azure de capaciteit nodig heeft).
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -64,7 +65,7 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Nadat de VM is gemaakt, u de maximale prijs voor alle VM's in de resourcegroep bekijken.
+Nadat de VM is gemaakt, kunt u een query uitvoeren om de maximum prijs voor alle virtuele machines in de resource groep weer te geven.
 
 ```azurepowershell-interactive
 Get-AzVM -ResourceGroupName $resourceGroup | `
@@ -73,6 +74,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U ook een spot-vm maken met de [Azure CLI](../linux/spot-cli.md) of een [sjabloon.](../linux/spot-template.md)
+U kunt ook een spot-VM maken met behulp van de [Azure cli](../linux/spot-cli.md) of een [sjabloon](../linux/spot-template.md).
 
-Zie [Foutcodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u een fout tegenkomt.
+Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

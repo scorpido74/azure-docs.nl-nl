@@ -1,47 +1,119 @@
 ---
-title: Webhooks maken voor regels in Azure IoT Central | Microsoft Documenten
-description: Maak webhooks in Azure IoT Central om andere toepassingen automatisch op de hoogte te stellen wanneer regels worden gestart.
+title: Webhooks maken voor regels in azure IoT Central | Microsoft Docs
+description: Webhooks maken in azure IoT Central om andere toepassingen automatisch te waarschuwen wanneer regels worden gestart.
 author: viv-liu
 ms.author: viviali
-ms.date: 12/02/2019
+ms.date: 04/03/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d97bd7a3c6de92f22a9880040f407960d5257f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb80b54c75d637842c5f50d9336629dedf758fa
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158092"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100121"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-acties maken voor regels in Azure IoT Central
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-acties maken voor regels in azure IoT Central
 
 *Dit onderwerp is van toepassing op bouwers en beheerders.*
 
-Webhooks stellen u in staat om uw IoT Central-app te verbinden met andere toepassingen en services voor bewaking en meldingen op afstand. Webhooks stellen automatisch andere toepassingen en services op de hoogte die u verbindt wanneer een regel wordt geactiveerd in uw IoT Central-app. Uw IoT Central-app stuurt een POST-verzoek naar het HTTP-eindpunt van de andere toepassing wanneer een regel wordt geactiveerd. De payload bevat apparaatdetails en regeltriggerdetails.
+Met webhooks kunt u uw IoT Central-app verbinden met andere toepassingen en services voor externe controle en meldingen. Webhooks melden automatisch andere toepassingen en services die u maakt wanneer een regel wordt geactiveerd in uw IoT Central-app. De IoT Central-app verzendt een POST-aanvraag naar het HTTP-eind punt van de andere toepassing wanneer een regel wordt geactiveerd. De payload bevat details over het apparaat en de regel trigger.
 
 ## <a name="set-up-the-webhook"></a>De webhook instellen
 
-In dit voorbeeld maakt u verbinding met RequestBin om een melding te krijgen wanneer regels met behulp van webhooks worden gebruikt.
+In dit voor beeld maakt u verbinding met RequestBin om een melding te ontvangen wanneer regels worden gestart met webhooks.
 
-1. [Open RequestBin](https://requestbin.net/).
+1. Open [RequestBin](https://requestbin.net/).
 
-1. Maak een nieuwe RequestBin en kopieer de **URL van de prullenbak**.
+1. Maak een nieuwe RequestBin en kopieer de **URL van de opslag locatie**.
 
-1. Een [telemetrieregel maken](tutorial-create-telemetry-rules.md). Sla de regel op en voeg een nieuwe actie toe.
+1. Maak een [telemetrie-regel](tutorial-create-telemetry-rules.md). Sla de regel op en voeg een nieuwe actie toe.
 
-    ![Scherm voor het maken van webhook](media/howto-create-webhooks/webhookcreate.png)
+    ![Scherm webhook maken](media/howto-create-webhooks/webhookcreate.png)
 
-1. Kies de webhook-actie en geef een weergavenaam op en plak de URL van de prullenbak als de URL van Callback.
+1. Kies de actie webhook en geef een weergave naam op en plak de URL van de opslag plaats als de URL voor terugbellen.
 
-1. Bewaar de regel.
+1. Sla de regel op.
 
-Wanneer de regel wordt geactiveerd, ziet u een nieuwe aanvraag verschijnen in RequestBin.
+Wanneer de regel wordt geactiveerd, ziet u nu een nieuwe aanvraag wordt weer gegeven in RequestBin.
 
 ## <a name="payload"></a>Nettolading
 
-Wanneer een regel wordt geactiveerd, wordt een HTTP POST-verzoek ingediend naar de terugbel-URL met een json-payload met de telemetrie, het apparaat, de regel en de toepassingsgegevens. De payload kan er als volgt uitzien:
+Wanneer een regel wordt geactiveerd, wordt er een HTTP POST-aanvraag verzonden naar de call back-URL met een JSON-nettolading met de telemetrie, het apparaat, de regel en de toepassings gegevens. De payload kan er als volgt uitzien:
+
+```json
+{
+    "timestamp": "2020-04-06T00:20:15.06Z",
+    "action": {
+        "id": "<id>",
+        "type": "WebhookAction",
+        "rules": [
+            "<rule_id>"
+        ],
+        "displayName": "Webhook 1",
+        "url": "<callback_url>"
+    },
+    "application": {
+        "id": "<application_id>",
+        "displayName": "Contoso",
+        "subdomain": "contoso",
+        "host": "contoso.azureiotcentral.com"
+    },
+    "device": {
+        "id": "<device_id>",
+        "etag": "<etag>",
+        "displayName": "MXChip IoT DevKit - 1yl6vvhax6c",
+        "instanceOf": "<device_template_id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true,
+        "cloudProperties": {
+            "City": {
+                "value": "Seattle"
+            }
+        },
+        "properties": {
+            "deviceinfo": {
+                "firmwareVersion": {
+                    "value": "1.0.0"
+                }
+            }
+        },
+        "telemetry": {
+            "<interface_instance_name>": {
+                "humidity": {
+                    "value": 47.33228889360127
+                }
+            }
+        }
+    },
+    "rule": {
+        "id": "<rule_id>",
+        "displayName": "Humidity monitor"
+    }
+}
+```
+Als de regel de geaggregeerde telemetrie in een bepaalde periode bewaakt, bevat de payload een andere telemetrie-sectie.
+
+```json
+{
+    "telemetry": {
+        "<interface_instance_name>": {
+            "Humidity": {
+                "avg": 39.5
+            }
+        }
+    }
+}
+```
+
+## <a name="data-format-change-notice"></a>Wijzigings waarschuwing voor gegevens indeling
+
+Als u een of meer webhooks hebt gemaakt en opgeslagen vóór **3 April 2020**, moet u de webhook verwijderen en een nieuwe webhook maken. Dit komt doordat oudere webhooks een oudere Payload-indeling gebruiken die in de toekomst zal worden afgeschaft.
+
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Payload van webhook (indeling afgeschaft vanaf 3 april 2020)
 
 ```json
 {
@@ -80,10 +152,10 @@ Wanneer een regel wordt geactiveerd, wordt een HTTP POST-verzoek ingediend naar 
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 
-Momenteel is er geen programmatische manier van abonneren / afmelden van deze webhooks via een API.
+Er is momenteel geen programmatische manier om u te abonneren op of afmelden bij deze webhooks via een API.
 
-Als je ideeën hebt om deze functie te verbeteren, plaats je je suggesties op ons [user voice-forum.](https://feedback.azure.com/forums/911455-azure-iot-central)
+Als u ideeën hebt voor het verbeteren van deze functie, plaatst u uw suggesties op het [forum voor gebruikers spraak](https://feedback.azure.com/forums/911455-azure-iot-central).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u webhooks instellen en gebruiken, is de voorgestelde volgende stap het [verkennen van het configureren van Azure Monitor-actiegroepen.](howto-use-action-groups.md)
+Nu u hebt geleerd hoe u webhooks kunt instellen en gebruiken, is de voorgestelde volgende stap het configureren van [Azure monitor actie groepen](howto-use-action-groups.md)verkennen.

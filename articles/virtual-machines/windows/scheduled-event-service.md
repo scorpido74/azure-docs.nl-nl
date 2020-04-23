@@ -1,48 +1,45 @@
 ---
-title: Geplande gebeurtenissen voor uw Windows VM's in Azure bewaken
+title: Geplande gebeurtenissen controleren voor uw Windows-Vm's in azure
 description: Meer informatie over het bewaken van uw virtuele Azure-machines voor geplande gebeurtenissen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: mysarn
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
+ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
-ms.topic: conceptual
-ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073315"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099594"
 ---
-# <a name="monitoring-scheduled-events"></a>Geplande gebeurtenissen bewaken
+# <a name="monitoring-scheduled-events"></a>Bewakings Scheduled Events
 
-Updates worden elke dag toegepast op verschillende delen van Azure, om de services op deze services veilig en up-to-date te houden. Naast geplande updates kunnen er ook ongeplande gebeurtenissen plaatsvinden. Als er bijvoorbeeld hardwaredegradatie of -fout wordt gedetecteerd, moeten Azure-services mogelijk ongepland onderhoud uitvoeren. Met behulp van live migratie, geheugen behoud van updates en in het algemeen het bijhouden van een strikte bar op de impact van updates, in de meeste gevallen deze gebeurtenissen zijn bijna transparant voor klanten, en ze hebben geen invloed of hooguit leiden tot een paar seconden van virtuele machine bevriezen. Echter, voor sommige toepassingen, zelfs een paar seconden van virtuele machine bevriezen kan een impact veroorzaken. Vooraf weten over aankomend Azure-onderhoud is belangrijk om de beste ervaring voor die toepassingen te garanderen. [Scheduled Events service](scheduled-events.md) biedt u een programmatische interface om op de hoogte te worden gesteld van aankomend onderhoud, en stelt u in staat om het onderhoud op een elegante manier af te handelen. 
+Updates worden elke dag toegepast op verschillende onderdelen van Azure, om ervoor te zorgen dat de services die worden uitgevoerd, veilig en up-to-date blijven. Naast geplande updates kunnen ook niet-geplande gebeurtenissen optreden. Als er bijvoorbeeld hardware-degradatie of-fouten worden gedetecteerd, moeten Azure-Services mogelijk niet-gepland onderhoud uitvoeren. Het gebruik van Livemigratie, het bewaren van updates en het algemeen houden van een strikte balk over de impact van updates, in de meeste gevallen zijn deze gebeurtenissen bijna transparant voor klanten en ze hebben geen invloed op een paar seconden van het blok keren van virtuele machines. Voor sommige toepassingen kan het echter zelfs enkele seconden duren voordat de blok kering van de virtuele machine gevolgen kan hebben. Het is belang rijk dat u op de hoogte bent van aanstaande onderhouds werkzaamheden van Azure, om ervoor te zorgen dat deze toepassingen optimaal worden ervaren. [Scheduled events-service](scheduled-events.md) biedt u een programmatische interface om op de hoogte te worden gesteld van aanstaande onderhouds werkzaamheden en kunt u het onderhoud op de juiste manier afhandelen. 
 
-In dit artikel laten we zien hoe u geplande gebeurtenissen gebruiken om op de hoogte te worden gesteld van onderhoudsgebeurtenissen die van invloed kunnen zijn op uw VM's en een basisautomatisering bouwen die kan helpen bij monitoring en analyse.
+In dit artikel laten we zien hoe u geplande gebeurtenissen kunt gebruiken om te worden gewaarschuwd over onderhouds gebeurtenissen die van invloed kunnen zijn op uw Vm's en een eenvoudige automatisering kunnen bouwen die u kan helpen bij het bewaken en analyseren.
 
 
-## <a name="routing-scheduled-events-to-log-analytics"></a>Geplande gebeurtenissen routeren naar Log Analytics
+## <a name="routing-scheduled-events-to-log-analytics"></a>Door sturen van geplande gebeurtenissen naar Log Analytics
 
-Geplande gebeurtenissen zijn beschikbaar als onderdeel van de [Azure Instance Metadata Service](instance-metadata-service.md), die beschikbaar is op elke virtuele Azure-machine. Klanten kunnen automatisering schrijven om het eindpunt van hun virtuele machines op te vragen om geplande onderhoudsmeldingen te vinden en oplossingen uit te voeren, zoals het opslaan van de status en het uit de rotatie halen van de virtuele machine. We raden gebouwautomatisering aan om de geplande gebeurtenissen vast te leggen, zodat u een controlelogboek van Azure-onderhoudsgebeurtenissen hebben. 
+Scheduled Events is beschikbaar als onderdeel van de [Azure-instance metadata service](instance-metadata-service.md)die beschikbaar is op elke virtuele machine van Azure. Klanten kunnen Automation schrijven om een query uit te voeren op het eind punt van hun virtuele machines om geplande onderhouds meldingen te vinden en oplossingen te doen, zoals het opslaan van de status en de virtuele machine uit de rotatie halen. Het is raadzaam om Automation te bouwen om de Scheduled Events te registreren, zodat u een audit logboek van Azure-onderhouds gebeurtenissen kunt hebben. 
 
-In dit artikel nemen we je mee door hoe je geplande onderhoudsgebeurtenissen vastleggen om Analytics te registreren. Vervolgens activeren we een aantal basismeldingsacties, zoals het verzenden van een e-mail naar uw team en het krijgen van een historisch overzicht van alle gebeurtenissen die van invloed zijn geweest op uw virtuele machines. Voor de gebeurtenisaggregatie en automatisering gebruiken we [Log Analytics,](/azure/azure-monitor/learn/quick-create-workspace)maar u elke bewakingsoplossing gebruiken om deze logboeken te verzamelen en automatisering te activeren.
+In dit artikel wordt stapsgewijs uitgelegd hoe u onderhouds Scheduled Events vastlegt op Log Analytics. Vervolgens worden enkele basis meldings acties geactiveerd, zoals het verzenden van een e-mail naar uw team en het verkrijgen van een historisch overzicht van alle gebeurtenissen die van invloed zijn op uw virtuele machines. Voor de gebeurtenissen aggregatie en automatisering worden [log Analytics](/azure/azure-monitor/learn/quick-create-workspace)gebruikt, maar u kunt elke bewakings oplossing gebruiken om deze logboeken te verzamelen en automatisering te activeren.
 
-![Diagram met de levenscyclus van gebeurtenissen](./media/notifications/events.png)
+![Diagram waarin de levens cyclus van gebeurtenissen wordt weer gegeven](./media/notifications/events.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit voorbeeld moet u een [Virtuele Windows-machine maken in een beschikbaarheidsset.](tutorial-availability-sets.md) Geplande gebeurtenissen bieden meldingen over wijzigingen die van invloed kunnen zijn op een van de virtuele machines in uw beschikbaarheidsset, Cloud Service, Virtual Machine Scale Set of standalone VM's. We zullen een [dienst](https://github.com/microsoft/AzureScheduledEventsService) uitvoeren die polls voor geplande evenementen op een van de VM's die zal fungeren als een verzamelaar, om evenementen te krijgen voor alle andere VM's in de beschikbaarheid set.    
+Voor dit voor beeld moet u een [virtuele Windows-machine maken in een beschikbaarheidsset](tutorial-availability-sets.md). Scheduled Events geven meldingen over wijzigingen die van invloed kunnen zijn op de virtuele machines in uw beschikbaarheidsset, Cloud service, virtuele-machine Schaalset of zelfstandige Vm's. Er wordt een [service](https://github.com/microsoft/AzureScheduledEventsService) uitgevoerd waarmee geplande gebeurtenissen worden gecontroleerd op een van de virtuele machines die als Collector fungeren, om gebeurtenissen voor alle andere virtuele machines in de beschikbaarheidsset op te halen.    
 
-Verwijder de groepresourcegroep niet aan het einde van de zelfstudie.
+Verwijder de groeps resource groep niet aan het einde van de zelf studie.
 
-U moet ook [een Log Analytics-werkruimte maken](/azure/azure-monitor/learn/quick-create-workspace) die we gebruiken om informatie uit de VM's in de beschikbaarheidsset samen te voegen.
+U moet ook [een log Analytics-werk ruimte maken](/azure/azure-monitor/learn/quick-create-workspace) die we gaan gebruiken om informatie te verzamelen van de virtuele machines in de beschikbaarheidsset.
 
 ## <a name="set-up-the-environment"></a>De omgeving instellen
 
-U moet nu 2 initiële VM's in een beschikbaarheidsset hebben. Nu moeten we een 3e VM maken, genaamd myCollectorVM, in dezelfde beschikbaarheidsset. 
+Nu moet u twee initiële Vm's in een beschikbaarheidsset hebben. Nu moet u in dezelfde beschikbaarheidsset een derde VM maken met de naam myCollectorVM. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -59,9 +56,9 @@ New-AzVm `
 ```
  
 
-Download het installatiebestand .zip van het project van [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
+Down load het zip-bestand van de installatie van het project vanuit [github](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Maak verbinding met **myCollectorVM** en kopieer het .zip-bestand naar de virtuele machine en haal alle bestanden eruit. Open op uw VM een PowerShell-prompt. Verplaats uw prompt naar `SchService.ps1`de map `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`met bijvoorbeeld: , en stel de service in.
+Maak verbinding met **myCollectorVM** en kopieer het zip-bestand naar de virtuele machine en pak alle bestanden uit. Open een Power shell-prompt op de virtuele machine. Verplaats de prompt naar de map met `SchService.ps1`, bijvoorbeeld: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, en stel de service in.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -73,71 +70,71 @@ Start de service.
 .\SchService.ps1 -Start
 ```
 
-De service begint nu elke 10 seconden met het peilen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Freeze, Reboot, Redeploy en Preempt zijn de gebeurtenissen die zijn vastgelegd door Gebeurtenissen plannen.   Houd er rekening mee dat u het script uitbreiden om bepaalde oplossingen te activeren voordat u de gebeurtenis goedkeurt.
+De service begint nu elke 10 seconden te pollen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Bevriezen, opnieuw opstarten, opnieuw implementeren en voor rang nemen de gebeurtenissen vastgelegd door het plannen van gebeurtenissen.   Houd er rekening mee dat u het script kunt uitbreiden om enkele oplossingen te activeren voordat de gebeurtenis wordt goedgekeurd.
 
-Valideer de servicestatus en zorg ervoor dat deze wordt uitgevoerd.
+Valideer de status van de service en zorg ervoor dat deze wordt uitgevoerd.
 
 ```powershell
 .\SchService.ps1 -status  
 ```
 
-Dit moet `Running`terugkeren.
+Dit moet worden `Running`geretourneerd.
 
-De service begint nu elke 10 seconden met het peilen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Freeze, Reboot, Redeploy en Preempt zijn de gebeurtenissen die zijn vastgelegd door Gebeurtenissen plannen. U het script uitbreiden om een aantal oplossingen te activeren voordat u de gebeurtenis goedkeurt.
+De service begint nu elke 10 seconden te pollen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Bevriezen, opnieuw opstarten, opnieuw implementeren en voor rang nemen gebeurtenissen vastgelegd door het plannen van gebeurtenissen. U kunt het script uitbreiden om enkele oplossingen te activeren voordat u de gebeurtenis goedkeurt.
 
-Wanneer een van de bovenstaande gebeurtenissen wordt vastgelegd door de planningsgebeurtenisservice, wordt deze aangemeld bij de status van gebeurtenisgebeurtenis van de gebeurtenis toepassing, gebeurtenistype, resources (namen van virtuele machines) en NotBefore (minimale opzegtermijn). U de gebeurtenissen met ID 1234 vinden in het gebeurtenislogboek voor toepassingen.
+Wanneer een van de bovenstaande gebeurtenissen wordt vastgelegd door de Schedule Event-service, worden de gebeurtenis status van het toepassings gebeurtenis logboek geregistreerd, gebeurtenis type, resources (namen van virtuele machines) en NotBefore (minimale kennisgevings periode). U kunt de gebeurtenissen met ID 1234 vinden in het logboek voor toepassings gebeurtenissen.
 
-Zodra de service is ingesteld en gestart, worden gebeurtenissen in de logboeken van Windows-toepassingen logboeken.   Als u wilt controleren of dit werkt, start u een van de virtuele machines in de beschikbaarheidsset opnieuw en ziet u een gebeurtenis die wordt aangemeld bij logboeken in Windows-logboeken > toepassingslogboek met de vm opnieuw is gestart. 
+Zodra de service is ingesteld en gestart, worden gebeurtenissen geregistreerd in de Windows-toepassings Logboeken.   U kunt dit controleren door een van de virtuele machines in de beschikbaarheidsset opnieuw op te starten. er wordt een gebeurtenis weer gegeven die wordt vastgelegd in Logboeken in Windows logs > toepassings logboek waarin de VM opnieuw is opgestart. 
 
-![Schermafbeelding van de logboekkijker.](./media/notifications/event-viewer.png)
+![Scherm opname van Logboeken.](./media/notifications/event-viewer.png)
 
-Wanneer gebeurtenissen worden vastgelegd door de planningsgebeurtenisservice, wordt deze geregistreerd in de toepassing, zelfs als u zich aanmeldt bij gebeurtenisstatus, gebeurtenistype, resources (VM-naam) en NotBefore (minimale opzegtermijn). U de gebeurtenissen met ID 1234 vinden in het gebeurtenislogboek voor toepassingen.
+Wanneer gebeurtenissen worden vastgelegd door de Schedule Event-service, wordt het logboek geregistreerd in de toepassing, zelfs met de gebeurtenis status, het gebeurtenis type, de resources (VM-naam) en NotBefore (minimale kennisgevings periode). U kunt de gebeurtenissen met ID 1234 vinden in het logboek voor toepassings gebeurtenissen.
 
 > [!NOTE] 
-> In dit voorbeeld, de virtuele machines waren in een beschikbaarheid set, die ons in staat stelde om een virtuele machine aan te wijzen als de verzamelaar om te luisteren en route geplande gebeurtenissen naar onze log analytics werkt ruimte. Als u zelfstandige virtuele machines hebt, u de service op elke virtuele machine uitvoeren en deze vervolgens afzonderlijk verbinden met uw werkruimte voor logboekanalyse.
+> In dit voor beeld bevinden de virtuele machines zich in een beschikbaarheidsset, die ons in staat stelt om één virtuele machine toe te wijzen als de collector voor het Luis teren en routeren van geplande gebeurtenissen naar de Works-ruimte log Analytics. Als u zelfstandige virtuele machines hebt, kunt u de service uitvoeren op elke virtuele machine en deze vervolgens afzonderlijk verbinden met uw log Analytics-werk ruimte.
 >
-> Voor onze set-up hebben we voor Windows gekozen, maar u een soortgelijke oplossing op Linux ontwerpen.
+> Voor onze installatie hebt u Windows gekozen, maar u kunt een vergelijk bare oplossing voor Linux ontwerpen.
 
-Op elk moment u de Geplande gebeurtenisservice `–stop` `–remove`stoppen/verwijderen met behulp van de switches en.
+U kunt de geplande gebeurtenis service op elk gewenst moment stoppen/verwijderen met behulp `–stop` van `–remove`de Schakel opties en.
 
-## <a name="connect-to-the-workspace"></a>Verbinding maken met de werkruimte
+## <a name="connect-to-the-workspace"></a>Verbinding maken met de werk ruimte
 
 
-We willen nu een Log Analytics Workspace koppelen aan de verzamelaar VM. De werkruimte Log Analytics fungeert als een opslagplaats en we configureren gebeurtenislogboekverzameling om de toepassingslogboeken van de verzamel-VM vast te leggen. 
+We willen nu een Log Analytics-werk ruimte verbinden met de Collector-VM. De werk ruimte Log Analytics fungeert als opslag plaats en er wordt een gebeurtenis logboek verzameling geconfigureerd om de toepassings logboeken van de Collector-VM vast te leggen. 
 
- Als u de geplande gebeurtenissen wilt routeren naar het gebeurtenislogboek, dat door onze service als toepassingslogboek wordt opgeslagen, moet u uw virtuele machine verbinden met uw loganalytics-werkruimte.  
+ Als u de Scheduled Events wilt omleiden naar het gebeurtenissen logboek dat wordt opgeslagen als toepassings logboek door onze service, moet u uw virtuele machine verbinden met uw Log Analytics-werk ruimte.  
  
-1. Open de pagina voor de werkruimte die u hebt gemaakt.
-1. Selecteer **onder Verbinding maken met een gegevensbron** Azure virtual machines **(VM's)**.
+1. Open de pagina voor de werk ruimte die u hebt gemaakt.
+1. Onder **verbinding maken met een gegevens bron selecteert u** **Azure virtual machines (vm's)**.
 
-    ![Verbinding maken met een virtuele machine als gegevensbron](./media/notifications/connect-to-data-source.png)
+    ![Verbinding maken met een virtuele machine als gegevens bron](./media/notifications/connect-to-data-source.png)
 
-1. Zoeken naar en selecteer **myCollectorVM**. 
-1. Selecteer **Connect**op de nieuwe pagina voor **myCollectorVM**.
+1. Zoek en selecteer **myCollectorVM**. 
+1. Selecteer op de pagina nieuw voor **myCollectorVM**de optie **verbinding maken**.
 
-Hiermee wordt de [Microsoft Monitoring-agent](/azure/virtual-machines/extensions/oms-windows) in uw virtuele machine geïnstalleerd. Het duurt enkele minuten om uw VM aan te sluiten op de werkruimte en de extensie te installeren. 
+Hiermee wordt de [micro soft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) op uw virtuele machine geïnstalleerd. Het duurt enkele minuten om uw virtuele machine te verbinden met de werk ruimte en de uitbrei ding te installeren. 
 
-## <a name="configure-the-workspace"></a>De werkruimte configureren
+## <a name="configure-the-workspace"></a>De werk ruimte configureren
 
-1. Open de pagina voor uw werkruimte en selecteer **Geavanceerde instellingen**.
-1. Selecteer **Gegevens** in het linkermenu en selecteer **vervolgens Windows-gebeurtenislogboeken**.
-1. Begin in **Verzamelen in de volgende gebeurtenislogboeken**met het typen van *toepassingen* en selecteer **Vervolgens Toepassing** in de lijst.
+1. Open de pagina voor uw werk ruimte en selecteer **Geavanceerde instellingen**.
+1. Selecteer **gegevens** in het menu links en selecteer vervolgens **Windows-gebeurtenis logboeken**.
+1. In **verzamelen uit de volgende gebeurtenis logboeken**begint u met het typen van de *toepassing* en selecteert u vervolgens **toepassing** in de lijst.
 
     ![Geavanceerde instellingen selecteren](./media/notifications/advanced.png)
 
-1. Laat **FOUT,** **WAARSCHUWING**en **INFORMATIE geselecteerd** en selecteer **Opslaan** om de instellingen op te slaan.
+1. Geef **fout**, **waarschuwing**en **informatie** ingeschakeld en selecteer **Opslaan** om de instellingen op te slaan.
 
 
 > [!NOTE]
-> Er zal enige vertraging zijn en het kan tot 10 minuten duren voordat het logboek beschikbaar is. 
+> Er kan enige vertraging optreden en het kan tot tien minuten duren voordat het logboek beschikbaar is. 
 
 
-## <a name="creating-an-alert-rule-with-azure-monitor"></a>Een waarschuwingsregel maken met Azure Monitor 
+## <a name="creating-an-alert-rule-with-azure-monitor"></a>Een waarschuwings regel maken met Azure Monitor 
 
 
-Zodra de gebeurtenissen naar Log Analytics zijn gepusht, u de volgende [query](/azure/azure-monitor/log-query/get-started-portal) uitvoeren om te zoeken naar de planningsgebeurtenissen.
+Zodra de gebeurtenissen naar Log Analytics zijn gepusht, kunt u de volgende [query](/azure/azure-monitor/log-query/get-started-portal) uitvoeren om de plannings gebeurtenissen te zoeken.
 
-1. Selecteer boven aan de pagina **Logboeken** en plak het volgende in het tekstvak:
+1. Selecteer aan de bovenkant van de pagina **Logboeken** en plak het volgende in het tekstvak:
 
     ```
     Event
@@ -153,28 +150,28 @@ Zodra de gebeurtenissen naar Log Analytics zijn gepusht, u de volgende [query](/
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Selecteer **Opslaan**en typ *logQuery* voor de naam, laat **Query** als type, typ *VMLogs* als **categorie**en selecteer **Vervolgens Opslaan**. 
+1. Selecteer **Opslaan**en typ *logQuery* voor de naam, geef **query** op als type, typ *VMLogs* als de **categorie**en selecteer vervolgens **Opslaan**. 
 
     ![De query opslaan](./media/notifications/save-query.png)
 
 1. Selecteer **Nieuwe waarschuwingsregel**. 
-1. Ga **op** de pagina `collectorworkspace` Regel maken als **bron**.
-1. Selecteer **onder voorwaarde**het item Wanneer de zoekopdracht van het *klantenlogboek is <login undefined> *. De pagina **Signaallogica configureren** wordt geopend.
-1. Voer **onder Drempelwaarde** *0* in en selecteer **Gereed**.
-1. Selecteer **onder Acties**de optie Actiegroep **maken**. De pagina **Actiegroep toevoegen** wordt geopend.
-1. Typ *myActionGroup*in **de naam van**de actiegroep .
-1. In **Korte naam**, typ **myActionGroup**.
-1. Selecteer **myResourceGroupAvailability**in **de groep Resourcegroep**.
-1. Selecteer onder Acties in **ACTIENAAM** **type E-mail**en selecteer **Vervolgens E-mail/SMS/Push/Voice**. De **pagina E-mail/SMS/Push/Voice** wordt geopend.
-1. Selecteer **E-mail,** typ uw e-mailadres en selecteer **OK**.
-1. Selecteer **OK**op de pagina **Actiegroep toevoegen** . 
-1. Typ *myAlert* voor de **regelnaam Waarschuwen**op de pagina **Regel maken** onder **WAARSCHUWINGSGEGEVENS**en typ *vervolgens de waarschuwingsregel E-mail* voor de **beschrijving**.
-1. Wanneer u klaar bent, selecteert u **Waarschuwingsregel maken**.
-1. Start een van de VM's opnieuw in de beschikbaarheidsset. Binnen een paar minuten ontvangt u een e-mail dat de waarschuwing is geactiveerd.
+1. Op de pagina **regel maken** , gaat `collectorworkspace` u naar de **resource**.
+1. Onder **voor waarde**selecteert u de vermelding *wanneer het zoeken naar <login undefined>logboeken van de klant *. De pagina **signaal logica configureren** wordt geopend.
+1. Voer bij **drempel waarde** *0* in en selecteer vervolgens **gereed**.
+1. Onder **acties**, selecteer **actie groep maken**. De pagina **actie groep toevoegen** wordt geopend.
+1. Typ *myActionGroup*in de naam van de **actie groep**.
+1. Typ **myActionGroup**in **short name**.
+1. Selecteer **resourcegroupavailability**in de **resource groep**.
+1. Onder acties, Typ in **actie naam** **e-mail**en selecteer vervolgens **e-mail/SMS/push/Voice**. De pagina **e-mail/SMS/push/Voice** wordt geopend.
+1. Selecteer **e-mail**, typ uw e-mail adres en selecteer vervolgens **OK**.
+1. Selecteer **OK**op de pagina **actie groep toevoegen** . 
+1. Typ *myAlert* voor de naam van de **waarschuwings regel**in de pagina **regel maken** **, en**Typ vervolgens *e-mail waarschuwings regel* voor de **Beschrijving**.
+1. Wanneer u klaar bent, selecteert u **waarschuwings regel maken**.
+1. Start een van de virtuele machines in de beschikbaarheidsset opnieuw op. Binnen een paar minuten ontvangt u een e-mail bericht dat de waarschuwing is geactiveerd.
 
-Als u uw waarschuwingsregels wilt beheren, gaat u naar de brongroep, selecteert u **Waarschuwingen** in het linkermenu en selecteert u **Waarschuwingsregels beheren** boven aan de pagina.
+Als u uw waarschuwings regels wilt beheren, gaat u naar de resource groep, selecteert u **waarschuwingen** in het linkermenu en selecteert u vervolgens **waarschuwings regels beheren** boven aan de pagina.
 
      
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [servicepagina Geplande evenementen](https://github.com/microsoft/AzureScheduledEventsService) op GitHub voor meer informatie.
+Zie de pagina [geplande gebeurtenissen service](https://github.com/microsoft/AzureScheduledEventsService) op github voor meer informatie.

@@ -1,43 +1,43 @@
 ---
-title: De portal gebruiken om Azure Spot VM's te implementeren
-description: Meer informatie over het gebruik van Azure PowerShell om Spot VM's te implementeren om kosten te besparen.
-services: virtual-machines
+title: De portal gebruiken om Azure spot-Vm's te implementeren
+description: Meer informatie over het gebruik van Azure PowerShell voor het implementeren van spot-Vm's om kosten op te slaan.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 045cec080b9b1b8f2e4cb589b053c421897db5be
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547390"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100648"
 ---
-# <a name="deploy-spot-vms-using-the-azure-portal"></a>SpotVM's implementeren met de Azure-portal
+# <a name="deploy-spot-vms-using-the-azure-portal"></a>Plaats virtuele machines met behulp van de Azure Portal
 
-Met behulp van [Spot VM's](spot-vms.md) u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
+Met behulp van [Spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
-De prijzen voor spotVM's zijn variabel, gebaseerd op regio en SKU. Zie VM-prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot VM's - Prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de max.
+Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
 
-Je hebt de mogelijkheid om een maximale prijs die u bereid bent te betalen, per uur, voor de VM. De maximale prijs voor een Spot VM kan worden ingesteld in Amerikaanse dollars (USD), met behulp van maximaal 5 decimalen. De waarde `0.05701`is bijvoorbeeld een maximale prijs van $ 0,05701 USD per uur. Als u de maximale `-1`prijs instelt, wordt de VM niet uitgezet op basis van de prijs. De prijs voor de VM zal de huidige prijs voor spot of de prijs voor een standaard VM, die ooit minder is, zolang er capaciteit en quotum beschikbaar is.
+U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.05701`is bijvoorbeeld een maximum prijs van $0,05701 USD per uur. Als u de maximale prijs instelt op `-1`, wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Het proces voor het maken van een VM die Spot VM's gebruikt is hetzelfde als beschreven in de [quickstart.](quick-create-portal.md) Wanneer u een VM implementeert, u ervoor kiezen een Azure-spotinstantie te gebruiken.
+Het proces voor het maken van een virtuele machine met behulp van spot Vm's is hetzelfde als in de [Snelstartgids](quick-create-portal.md). Wanneer u een virtuele machine implementeert, kunt u ervoor kiezen om een Azure spot-instantie te gebruiken.
 
 
-Op het tabblad **Basisbeginselen** in de sectie **Instantiedetails** is **Nee** de standaardinstelling voor het gebruik van een Azure-steuninstantie.
+Op het tabblad **basis beginselen** , in de sectie **Details van exemplaar** , is **Nee** de standaard waarde voor het gebruik van een Azure spot-instantie.
 
-![Schermopname voor het kiezen van nee, geen Azure-spotinstantie gebruiken](media/spot-portal/no.png)
+![Scherm opname voor het kiezen van Nee, gebruik geen Azure spot-instantie](media/spot-portal/no.png)
 
-Het selecteert u **Ja,** de sectie wordt uitgebreid en u uw [uitzettingstype en uitzettingsbeleid](spot-vms.md#eviction-policy)kiezen. 
+Als u **Ja**selecteert, wordt de sectie uitgebreid en kunt u het [verwijderings type en verwijderings beleid](spot-vms.md#eviction-policy)kiezen. 
 
-![Schermopname voor het kiezen van ja, gebruik een Azure-spotinstantie](media/spot-portal/yes.png)
+![Scherm opname voor het kiezen van Ja, een Azure spot-instantie gebruiken](media/spot-portal/yes.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U ook Spot VM's maken met [PowerShell](spot-powershell.md).
+U kunt ook spot Vm's maken met behulp van [Power shell](spot-powershell.md).

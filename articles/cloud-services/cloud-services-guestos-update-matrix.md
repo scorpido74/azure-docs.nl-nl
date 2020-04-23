@@ -1,319 +1,319 @@
 ---
-title: Meer informatie over de nieuwste Azure Guest OS Releases | Microsoft Documenten
-description: Het laatste persbericht en SDK-compatibiliteit voor Azure Cloud Services Guest OS.
+title: Meer informatie over de nieuwste versies van het Azure-gast besturingssysteem | Microsoft Docs
+description: De nieuwste versie nieuws en SDK-compatibiliteit voor Azure Cloud Services-gast besturingssysteem.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/2/2020
-ms.author: raiye
-ms.openlocfilehash: 95c27cd906717d52a232b5ed85eba2b93bc6569d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 4/22/2020
+ms.author: yohaddad
+ms.openlocfilehash: 83ecbf05ab892e0673b31df893f66b03373957b7
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618279"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101498"
 ---
-# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS-releases en SDK-compatibiliteitsmatrix
-Biedt u up-to-date informatie over de nieuwste Azure Guest OS-releases voor Cloud Services. Met deze informatie u uw upgradepad plannen voordat een gastbesturingssysteem is uitgeschakeld. Als u uw rollen configureert om *automatische* updates van het gastbesturingssysteem te gebruiken zoals beschreven in [azure guest os-update-instellingen,][Azure Guest OS Update Settings]is het niet van vitaal belang dat u deze pagina leest.
+# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases en SDK Compatibility Matrix
+Voorziet in actuele informatie over de nieuwste versies van het Azure-gast besturingssysteem voor Cloud Services. Deze informatie helpt u bij het plannen van het upgradepad voordat een gast besturingssysteem wordt uitgeschakeld. Als u uw rollen configureert voor het gebruik van *automatische* updates van gast besturingssystemen zoals beschreven in de update-instellingen van het [Azure-gast besturingssysteem][Azure Guest OS Update Settings], is het niet belang rijk dat u deze pagina leest.
 
 > [!IMPORTANT]
-> Deze pagina is van toepassing op web- en werknemersrollen van Cloud Services, die bovenop een gastbesturingssysteem worden uitgevoerd. Het **is niet van toepassing op** IaaS Virtual Machines.
+> Deze pagina is van toepassing op Cloud Services Web-en werk rollen, die bovenop een gast besturingssysteem worden uitgevoerd. Het is **niet van toepassing** op IaaS virtual machines.
 >
 >
 
 
 > [!TIP]
->  Abonneer u op de [RSS-feed voor gastapparatenvan os update] om de meest tijdige melding te ontvangen over alle wijzigingen in gastbesturingssysteem.
+>  Abonneer u op de RSS-feed voor het [gast besturingssysteem] om de meest recente melding over alle wijzigingen in het gast besturingssysteem te ontvangen.
 >
 >
 
 > [!IMPORTANT]
-> Alleen de laatste 2 versies van het gastbesturingssysteem worden ondersteund en beschikbaar in de Azure-portal.
+> Alleen de nieuwste twee versies van het gast besturingssysteem worden ondersteund en zijn beschikbaar in de Azure Portal.
 >
 >
 
-Weet u niet zeker hoe u uw gastbesturingssysteem bijwerken? Kijk [hier eens][cloud updates] naar.
+Weet u niet zeker hoe u uw gast besturingssysteem kunt bijwerken? Bekijk [Dit][cloud updates] uit.
 
-## <a name="news-updates"></a>Nieuwsupdates
+## <a name="news-updates"></a>Nieuws updates
 
 ###### <a name="april-2-2020"></a>**2 april 2020**
-De March Guest OS heeft vrijgegeven. 
+Het besturings systeem maart gast is uitgebracht. 
 
 ###### <a name="march-5-2020"></a>**5 maart 2020**
-De Februari Guest OS heeft vrijgegeven. 
+Het besturings systeem februari gast is uitgebracht. 
 
 ###### <a name="january-24-2020"></a>**24 januari 2020**
-De Januari Guest OS heeft vrijgegeven. 
+Het besturings systeem voor januari gast is uitgebracht. 
 
 ###### <a name="january-8-2020"></a>**8 januari 2020**
-De December Guest OS heeft vrijgegeven.
+Het besturings systeem december gast is uitgebracht.
 
 ###### <a name="december-5-2019"></a>**5 december 2019**
-De November Guest OS heeft vrijgegeven.
+Het besturings systeem november gast is uitgebracht.
 
 ###### <a name="november-1-2019"></a>**1 november 2019**
-De Oktober Guest OS heeft vrijgegeven.
+Het besturings systeem van oktober gast is uitgebracht.
 
 ###### <a name="october-7-2019"></a>**7 oktober 2019**
-De September Guest OS heeft vrijgegeven.
+Het besturings systeem september gast is uitgebracht.
 
 ###### <a name="september-4-2019"></a>**4 september 2019**
-De augustus Guest OS heeft vrijgegeven.
+Het besturings systeem voor augustus gast is uitgebracht.
 
 ###### <a name="july-26-2019"></a>**26 juli 2019**
-De Juli Guest OS heeft vrijgegeven.
+Het besturings systeem van juli wordt uitgebracht.
 
 ###### <a name="july-8-2019"></a>**8 juli 2019**
-De Juni Guest OS heeft vrijgegeven.
+Het besturings systeem van juni gast is uitgebracht.
 
 ###### <a name="june-6-2019"></a>**6 juni 2019**
-De May Guest OS heeft vrijgegeven.
+Het kan zijn dat het besturings systeem gast is losgelaten.
 
 ###### <a name="may-7-2019"></a>**7 mei 2019**
-De April Guest OS heeft vrijgegeven.
+Het besturings systeem van april gast is uitgebracht.
 
 ###### <a name="march-26-2019"></a>**26 maart 2019**
-De March Guest OS heeft vrijgegeven.
+Het besturings systeem maart gast is uitgebracht.
 
 ###### <a name="march-12-2019"></a>**12 maart 2019**
-De Februari Guest OS heeft vrijgegeven.
+Het besturings systeem februari gast is uitgebracht.
 
 ###### <a name="february-5-2019"></a>**5 februari 2019**
-De Januari Guest OS heeft vrijgegeven.
+Het besturings systeem voor januari gast is uitgebracht.
 
 ###### <a name="january-24-2019"></a>**24 januari 2019**
-Family 6 Guest OS (Windows Server 2019) is uitgebracht.
+Family 6-gast besturingssysteem (Windows Server 2019) is uitgebracht.
 
 ###### <a name="january-7-2019"></a>**7 januari 2019**
-De December Guest OS heeft vrijgegeven.
+Het besturings systeem december gast is uitgebracht.
 
 ###### <a name="december-14-2018"></a>**14 december 2018**
-De November Guest OS heeft vrijgegeven.
+Het besturings systeem november gast is uitgebracht.
 
 ###### <a name="november-8-2018"></a>**8 november 2018**
-De Oktober Guest OS heeft vrijgegeven.
+Het besturings systeem van oktober gast is uitgebracht.
 
 ###### <a name="october-12-2018"></a>**12 oktober 2018**
-De September Guest OS heeft vrijgegeven.
+Het besturings systeem september gast is uitgebracht.
 
 ## <a name="releases"></a>Releases
 
-## <a name="family-6-releases"></a>Familie 6 releases
+## <a name="family-6-releases"></a>Versies van familie 6
 **Windows Server 2019**
 
-.NET Framework geïnstalleerd: 3.5, 4.7.2
+.NET Framework geïnstalleerd: 3,5, 4.7.2
 
 > [!NOTE]
-> De Windows Azure SDK voor .NET - 3.0 kan [hier][Windows Azure SDK]worden gedownload.
+> De Windows Azure SDK voor .NET-3,0 kan [hier][Windows Azure SDK]worden gedownload.
 >
->Installatiestappen:
->1. Verwijder oudere versies van MicrosoftAzureAuthoringTools*.msi
->2. De [Azure SDK voor .NET installeren - 3.0][Windows Azure SDK]
->3. Start uw machine opnieuw op
->4. Een nieuw Cloud Service-project maken en één werknemersrol toevoegen
->5. De OS-familie wijzigen in 6 en een pakket bouwen
->6. Het pakket implementeren naar Azure met behulp van de Azure-portal of Visual Studio
+>Installatie stappen:
+>1. Verwijder alle oudere versies van MicrosoftAzureAuthoringTools*. msi
+>2. De [Azure SDK voor .net-3,0][Windows Azure SDK] installeren
+>3. De computer opnieuw opstarten
+>4. Een nieuw Cloud service project maken en één worker-rol toevoegen
+>5. De besturingssysteem familie wijzigen in 6 en een pakket bouwen
+>6. Het pakket implementeren op Azure met behulp van de Azure Portal of Visual Studio
 >
->Guest OS Family 6 release dwingt TLS 1.2 af door TLS 1.0 en 1.1 expliciet uit te schakelen en een specifieke set cipher suites te definiëren. Meer [weten?]
+>De release van het gast besturingssysteem Family 6 dwingt TLS 1,2 af door TLS 1,0 en 1,1 expliciet uit te scha kelen en een specifieke set coderings suites te definiëren. [Meer]informatie.
 
 
-| Configuratietekenreeks | Releasedatum | Datum uitschakelen |
+| Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-|  WA-GUEST-OS-6.17_202003-01  |  2 april 2020  |  Post 6.19  |  
-|  WA-GUEST-OS-6.16_202002-01  |  5 maart 2020  |  Post 6.18  |  
-|~~WA-GUEST-OS-6.15_202001-01~~|  24 januari 2020  |  2 april 2020  |  
-|~~WA-GUEST-OS-6.14_201912-01~~| 8 januari 2020 | 5 maart 2020 |  
-|~~WA-GUEST-OS-6.13_201911-01~~| 5 december 2019 | 24 januari 2020 |  
-|~~WA-GUEST-OS-6.12_201910-01~~| 1 november 2019 | 8 januari 2020 |  
-|~~WA-GUEST-OS-6.11_201909-01~~| 7 oktober 2019 | 5 december 2019 |  
-|~~WA-GUEST-OS-6.10_201908-01~~| 4 augustus 2019 | 1 november 2019  |  
-|~~WA-GUEST-OS-6.9_201907-0~~|26 juli 2019 | 7 oktober 2019 |
-|~~WA-GUEST-OS-6.8_201906-01~~|8 juli 2019 |4 augustus 2019 |
-|~~WA-GUEST-OS-6.7_201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-6.6_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24 januari 2019 |5 februari 2019 |
+|  WA-GUEST-OS-6.17 _202003-01  |  2 april 2020  |  Post 6,19  |  
+|  WA-GUEST-OS-6.16 _202002-01  |  5 maart 2020  |  Post 6,18  |  
+|~~WA-GUEST-OS-6.15 _202001-01~~|  24 januari 2020  |  2 april 2020  |  
+|~~WA-GUEST-OS-6.14 _201912-01~~| 8 januari 2020 | 5 maart 2020 |  
+|~~WA-GUEST-OS-6.13 _201911-01~~| 5 december 2019 | 24 januari 2020 |  
+|~~WA-GUEST-OS-6,12 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
+|~~WA-GUEST-OS-6.11 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
+|~~WA-GUEST-OS-6.10 _201908-01~~| 4 augustus 2019 | 1 november 2019  |  
+|~~WA-GUEST-OS-6,9 _201907-0~~|26 juli 2019 | 7 oktober 2019 |
+|~~WA-GUEST-OS-6,8 _201906-01~~|8 juli 2019 |4 augustus 2019 |
+|~~WA-GUEST-OS-6,7 _201905-01~~ |6 juni 2019 |26 juli 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-6,6 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-6.5 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-6.4 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-6.3 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-6.2 _201812-01~~ |24 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-6.1 _201811-01~~ |24 januari 2019 |5 februari 2019 |
 
-## <a name="family-5-releases"></a>Familie 5 releases
+## <a name="family-5-releases"></a>Versies van familie 5
 **Windows Server 2016**
 
-.NET Framework geïnstalleerd: 3.5, 4.6
+.NET Framework geïnstalleerd: 3,5, 4.6.2
 
 > [!NOTE]
-> Het RDP-wachtwoord voor OS-familie 5 moet minimaal 10 tekens bevatten.
+> Het RDP-wacht woord voor besturingssysteem familie 5 moet mini maal 10 tekens bevatten.
 >
 
 
-| Configuratietekenreeks | Releasedatum | Datum uitschakelen |
+| Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-|  WA-GUEST-OS-5.41_202003-01  |  2 april 2020  |  Post 5.43  |  
-|  WA-GUEST-OS-5.40_202002-01  |  5 maart 2020  |  Post 5.42  |  
-|~~WA-GUEST-OS-5.39_202001-01~~|  24 januari 2020  |  2 april 2020  |  
-|~~WA-GUEST-OS-5.38_201912-01~~| 8 januari 2020 | 5 maart 2020 |  
-|~~WA-GUEST-OS-5.37_201911-01~~| 5 december 2019 | 24 januari 2020 |  
-|~~WA-GUEST-OS-5.36_201910-01~~| 1 november 2019 | 8 januari 2020 |  
-|~~WA-GUEST-OS-5.35_201909-01~~| 7 oktober 2019 | 5 december 2019 |  
-|~~WA-GUEST-OS-5.34_201908-01~~|  4 augustus 2019  | 1 november 2019 |  
-|~~WA-GUEST-OS-5.33_201907-01~~| 26 juli 2019 | 7 oktober 2019 |  
-|~~WA-GUEST-OS-5.32_201906-01~~|8 juli 2019 |4 augustus 2019 |
-|~~WA-GUEST-OS-5.31_201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-5.30_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|  WA-GUEST-OS-5.41 _202003-01  |  2 april 2020  |  Post 5,43  |  
+|  WA-GUEST-OS-5.40 _202002-01  |  5 maart 2020  |  Post 5,42  |  
+|~~WA-GUEST-OS-5.39 _202001-01~~|  24 januari 2020  |  2 april 2020  |  
+|~~WA-GUEST-OS-5.38 _201912-01~~| 8 januari 2020 | 5 maart 2020 |  
+|~~WA-GUEST-OS-5.37 _201911-01~~| 5 december 2019 | 24 januari 2020 |  
+|~~WA-GUEST-OS-5.36 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
+|~~WA-GUEST-OS-5.35 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
+|~~WA-GUEST-OS-5.34 _201908-01~~|  4 augustus 2019  | 1 november 2019 |  
+|~~WA-GUEST-OS-5.33 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |  
+|~~WA-GUEST-OS-5.32 _201906-01~~|8 juli 2019 |4 augustus 2019 |
+|~~WA-GUEST-OS-5.31 _201905-01~~ |6 juni 2019 |26 juli 2019 |
+|~~WA-GUEST-OS-5.30 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-5.29 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-5.28 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-5.27 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-5.26 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-5,25 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-5.24 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-5.23 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
-## <a name="family-4-releases"></a>Familie 4 releases
+## <a name="family-4-releases"></a>Releases van familie 4
 **Windows Server 2012 R2**
 
-.NET Framework geïnstalleerd: 3.5, 4.5.1, 4.5.2
+.NET Framework geïnstalleerd: 3,5, 4.5.1, 4.5.2
 
-| Configuratietekenreeks | Releasedatum | Datum uitschakelen |
+| Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-|  WA-GUEST-OS-4.76_202003-01  |  2 april 2020  |  Post 4.78  |  
-|  WA-GUEST-OS-4.75_202002-01  |  5 maart 2020  |  Post 4.77  |  
-|~~WA-GUEST-OS-4.74_202001-01~~|  24 januari 2020  |  2 april 2020  |  
-|~~WA-GUEST-OS-4.73_201912-01~~| 8 januari 2020 | 5 maart 2020 |  
-|~~WA-GUEST-OS-4.72_201911-01~~| 5 december 2019 | 24 januari 2020 |  
-|~~WA-GUEST-OS-4.71_201910-01~~| 1 november 2019 | 8 januari 2020 |  
-|~~WA-GUEST-OS-4.70_201909-01~~| 7 oktober 2019 | 5 december 2019 |  
-|~~WA-GUEST-OS-4.69_201908-01~~| 4 augustus 2019 | 1 november 2019 |  
-|~~WA-GUEST-OS-4.68_201907-01~~| 26 juli 2019  | 7 oktober 2019 |
-|~~WA-GUEST-OS-4.67_201906-01~~| 8 juli 2019 |4 augustus 2019 |
-|~~WA-GUEST-OS-4.66_201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-4.65_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|  WA-GUEST-OS-4.76 _202003-01  |  2 april 2020  |  Post 4,78  |  
+|  WA-GUEST-OS-4.75 _202002-01  |  5 maart 2020  |  Post 4,77  |  
+|~~WA-GUEST-OS-4.74 _202001-01~~|  24 januari 2020  |  2 april 2020  |  
+|~~WA-GUEST-OS-4.73 _201912-01~~| 8 januari 2020 | 5 maart 2020 |  
+|~~WA-GUEST-OS-4.72 _201911-01~~| 5 december 2019 | 24 januari 2020 |  
+|~~WA-GUEST-OS-4.71 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
+|~~WA-GUEST-OS-4.70 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
+|~~WA-GUEST-OS-4.69 _201908-01~~| 4 augustus 2019 | 1 november 2019 |  
+|~~WA-GUEST-OS-4.68 _201907-01~~| 26 juli 2019  | 7 oktober 2019 |
+|~~WA-GUEST-OS-4.67 _201906-01~~| 8 juli 2019 |4 augustus 2019 |
+|~~WA-GUEST-OS-4.66 _201905-01~~ |6 juni 2019 |26 juli 2019 |
+|~~WA-GUEST-OS-4.65 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-4.64 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-4.63 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-4.62 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-4.61 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-4.60 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-4.59 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-4.58 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
-## <a name="family-3-releases"></a>Familie 3 releases
+## <a name="family-3-releases"></a>Versies van familie 3
 **Windows Server 2012**
 
-.NET Framework geïnstalleerd: 3.5, 4.5
+.NET Framework geïnstalleerd: 3,5, 4,5
 
-| Configuratietekenreeks | Releasedatum | Datum uitschakelen |
+| Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-|  WA-GUEST-OS-3.83_202003-01  |  2 april 2020  |  Post 3.85  |  
-|  WA-GUEST-OS-3.82_202002-01  |  5 maart 2020  |  Post 3.84  |  
-|~~WA-GUEST-OS-3.81_202001-01~~|  24 januari 2020  |  2 april 2020  |  
-|~~WA-GUEST-OS-3.80_201912-01~~| 8 januari 2020 | 5 maart 2020 |  
-|~~WA-GUEST-OS-3.79_201911-01~~| 5 december 2019 | 24 januari 2020 |  
-|~~WA-GUEST-OS-3.78_201910-01~~| 1 november 2019 | 8 januari 2020 |  
-|~~WA-GUEST-OS-3.77_201909-01~~| 7 oktober 2019 | 5 december 2019 |  
-|~~WA-GUEST-OS-3.76_201908-01~~|  4 augustus 2019  |  1 november 2019  |  
-|~~WA-GUEST-OS-3.75_201907-01~~| 26 juli 2019 | 7 oktober 2019 |
-|~~WA-GUEST-OS-3.74_201906-01~~| 8 juli 2019 |4 augustus 2019 |
-|~~WA-GUEST-OS-3.73_201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-3.72_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-3.66_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-3.65_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|  WA-GUEST-OS-3.83 _202003-01  |  2 april 2020  |  Post 3,85  |  
+|  WA-GUEST-OS-3.82 _202002-01  |  5 maart 2020  |  Post 3,84  |  
+|~~WA-GUEST-OS-3.81 _202001-01~~|  24 januari 2020  |  2 april 2020  |  
+|~~WA-GUEST-OS-3.80 _201912-01~~| 8 januari 2020 | 5 maart 2020 |  
+|~~WA-GUEST-OS-3.79 _201911-01~~| 5 december 2019 | 24 januari 2020 |  
+|~~WA-GUEST-OS-3.78 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
+|~~WA-GUEST-OS-3.77 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
+|~~WA-GUEST-OS-3.76 _201908-01~~|  4 augustus 2019  |  1 november 2019  |  
+|~~WA-GAST BESTURINGSSYSTEEM-3,75 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |
+|~~WA-GUEST-OS-3.74 _201906-01~~| 8 juli 2019 |4 augustus 2019 |
+|~~WA-GUEST-OS-3.73 _201905-01~~ |6 juni 2019 |26 juli 2019 |
+|~~WA-GUEST-OS-3.72 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-3.71 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-3.70 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-3.69 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-3.68 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-3.67 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-3.66 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-3.65 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
-## <a name="family-2-releases"></a>Familie 2 releases
+## <a name="family-2-releases"></a>Versies van familie 2
 **Windows Server 2008 R2 SP1**
 
-.NET Framework geïnstalleerd: 3.5 (inclusief 2.0 en 3.0), 4.5
+.NET Framework geïnstalleerd: 3,5 (inclusief 2,0 en 3,0), 4,5
 
-| Configuratietekenreeks | Releasedatum | Datum uitschakelen |
+| Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-|  WA-GUEST-OS-2.96_202003-01  |  2 april 2020  |  Post 2.98  |  
-|  WA-GUEST-OS-2.95_202002-01  |  5 maart 2020  |  Post 2.97  |  
-|~~WA-GUEST-OS-2.94_202001-01~~|  24 januari 2020  |  2 april 2020  |  
-|~~WA-GUEST-OS-2.93_201912-01~~| 8 januari 2020 | 5 maart 2020 |  
-|~~WA-GUEST-OS-2.92_201911-01~~| 5 december 2019 | 24 januari 2020 |  
-|~~WA-GUEST-OS-2.91_201910-01~~| 1 november 2019 | 8 januari 2020 |  
-|~~WA-GUEST-OS-2.90_201909-01~~| 7 oktober 2019 | 5 december 2019 |  
-|~~WA-GUEST-OS-2.89_201908-01~~| 4 augustus 2019 | 1 november 2019 |  
-|~~WA-GUEST-OS-2.88_201907-01~~| 26 juli 2019 | 7 oktober 2019 |
-|~~WA-GUEST-OS-2.87_201906-01~~|8 juli 2019 | 4 augustus 2019 |
-|~~WA-GUEST-OS-2.86_201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-2.85_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|  WA-GUEST-OS-2.96 _202003-01  |  2 april 2020  |  Post 2,98  |  
+|  WA-GUEST-OS-2.95 _202002-01  |  5 maart 2020  |  Post 2,97  |  
+|~~WA-GUEST-OS-2.94 _202001-01~~|  24 januari 2020  |  2 april 2020  |  
+|~~WA-GUEST-OS-2.93 _201912-01~~| 8 januari 2020 | 5 maart 2020 |  
+|~~WA-GUEST-OS-2.92 _201911-01~~| 5 december 2019 | 24 januari 2020 |  
+|~~WA-GUEST-OS-2.91 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
+|~~WA-GUEST-OS-2.90 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
+|~~WA-GUEST-OS-2.89 _201908-01~~| 4 augustus 2019 | 1 november 2019 |  
+|~~WA-GUEST-OS-2,88 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |
+|~~WA-GUEST-OS-2.87 _201906-01~~|8 juli 2019 | 4 augustus 2019 |
+|~~WA-GUEST-OS-2.86 _201905-01~~ |6 juni 2019 |26 juli 2019 |
+|~~WA-GUEST-OS-2.85 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-2.84 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-2.83 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-2.82 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-2.81 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-2,80 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-2.79 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-2.78 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
-## <a name="msrc-patch-updates"></a>MSRC patch updates
-De lijst met patches die zijn opgenomen bij elke maandelijkse Guest OS release is [hier][patches]beschikbaar.
+## <a name="msrc-patch-updates"></a>Updates van MSRC-patch
+De lijst met patches die zijn opgenomen in elke maandelijkse versie van het gast besturingssysteem, is [hier][patches]beschikbaar.
 
 ## <a name="sdk-support"></a>SDK-ondersteuning
-Hoewel het [pensioenbeleid voor de Azure SDK][retire policy sdk] aangeeft dat alleen versies boven 2.2 worden ondersteund, u met specifieke Gast-OS-families eerdere versies gebruiken. Gebruik altijd de nieuwste ondersteunde SDK.
+Hoewel het [pensionerings beleid voor de Azure SDK][retire policy sdk] aangeeft dat alleen de versies hoger dan 2,2 worden ondersteund, kunt u met specifieke gast besturingssysteem families eerdere versies gebruiken. U moet altijd de meest recente ondersteunde SDK gebruiken.
 
-| Gast OS-familie | Compatibele SDK-versies |
+| Gast besturingssysteem familie | Compatibele SDK-versies |
 | --- | --- |
-| 6 |Versie 2.9.6+ |
-| 5 |Versie 2.9.5.1+ |
-| 4 |Versie 2.1+ |
-| 3 |Versie 1.8+ |
-| 2 |Versie 1.3+ |
-| 1 |Versie 1.0+ |
+| 6 |Versie 2.9.6 + |
+| 5 |Versie 2.9.5.1 + |
+| 4 |Versie 2.1 + |
+| 3 |Versie 1.8 + |
+| 2 |Versie 1.3 + |
+| 1 |Versie 1.0 + |
 
-## <a name="guest-os-release-information"></a>Informatie over de release van gast-besturingssysteem
-Er zijn drie datums die belangrijk zijn voor gastosreleases: **releasedatum,** **uitgeschakelde** datum en **vervaldatum.** Een gastbesturingssysteem wordt als beschikbaar beschouwd wanneer het zich in de portal bevindt en kan worden geselecteerd als het doelgast-besturingssysteem. Wanneer een gastbesturingssysteem de **uitgeschakelde** datum bereikt, wordt het uit Azure verwijderd. Elke Cloud Service die is gericht op dat gastbesturingssysteem werkt echter nog steeds als normaal.
+## <a name="guest-os-release-information"></a>Release-informatie voor het gast besturingssysteem
+Er zijn drie datums die belang rijk zijn voor de releases van gast besturingssystemen: **release** datum, **Uitgeschakelde** datum en **verval** datum. Een gast besturingssysteem wordt beschouwd als beschikbaar wanneer het zich in de portal bevindt en kan worden geselecteerd als het doel-gast besturingssysteem. Wanneer een gast besturingssysteem de **Uitgeschakelde** datum bereikt, wordt het verwijderd uit Azure. Elke Cloud service die gericht is op het gast besturingssysteem, blijft echter gewoon functioneren.
 
-Het venster tussen de **uitgeschakelde** datum en de **vervaldatum** biedt u een buffer om eenvoudig over te schakelen van het ene gastbesturingssysteem naar een nieuwer. Als u *automatisch als* gastbesturingssysteem gebruikt, bent u altijd op de nieuwste versie en hoeft u zich geen zorgen te maken dat deze afloopt.
+In het venster tussen de **Uitgeschakelde** datum en de **verval** datum kunt u eenvoudig van het ene naar het andere gast besturingssysteem overstappen. Als u *automatisch* gebruikt als uw gast besturingssysteem, hebt u altijd de nieuwste versie en hoeft u zich geen zorgen te maken over het verlopen van het besturings systeem.
 
-Wanneer de **vervaldatum** verstrijkt, wordt elke Cloud Service die dat gastbesturingssysteem nog steeds gebruikt, gestopt, verwijderd of gedwongen om te upgraden. U meer lezen over het pensioenbeleid [hier][retirepolicy].
+Wanneer de **verloop** datum wordt verstreken, wordt een Cloud service die nog steeds gebruikmaakt van dat gast besturingssysteem, gestopt, verwijderd of gedwongen bijgewerkt. U kunt [hier][retirepolicy]meer lezen over het pensionerings beleid.
 
-## <a name="guest-os-family-version-explanation"></a>Uitleg gastOS-familieversie
-De Guest OS-families zijn gebaseerd op uitgebrachte versies van Microsoft Windows Server. Het gastbesturingssysteem is het onderliggende besturingssysteem waarop Azure Cloud Services wordt uitgevoerd. Elk gastbesturingssysteem heeft een gezins-, versie- en releasenummer.
+## <a name="guest-os-family-version-explanation"></a>Gast besturingssysteem familie-versie uitleg
+De gast besturingssysteem families zijn gebaseerd op release versies van micro soft Windows Server. Het gast besturingssysteem is het onderliggende besturings systeem waarop Azure Cloud Services worden uitgevoerd. Elk gast besturingssysteem heeft een familie, versie en release nummer.
 
-* **Gast OS-familie**  
-  Een windows server-besturingssysteemrelease waarop een gastbesturingssysteem is gebaseerd. *Gezins3* is bijvoorbeeld gebaseerd op Windows Server 2012.
-* **Gast-OS-versie**  
-  Specifiek voor een gastbesturingssysteemfamilieafbeelding plus relevante [MSRC-patches (Microsoft Security Response Center)][msrc] die beschikbaar zijn op de datum waarop de nieuwe Gast-OS-versie wordt geproduceerd. Niet alle patches kunnen worden opgenomen.
+* **Gast besturingssysteem familie**  
+  Een versie van het Windows Server-besturings systeem waarop een gast besturingssysteem is gebaseerd. Bijvoorbeeld: *Family 3* is gebaseerd op Windows Server 2012.
+* **Versie van gast besturingssysteem**  
+  Specifiek voor een installatie kopie van een gast besturingssysteem-serie en relevante [MSRC-patches (micro soft Security Response Center)][msrc] die beschikbaar zijn op de datum waarop de nieuwe versie van het gast besturingssysteem is geproduceerd. Mogelijk zijn niet alle patches opgenomen.
 
-    Getallen beginnen bij 0 en verhogen met 1 telkens wanneer een nieuwe set updates wordt toegevoegd. Trailing nullen worden alleen weergegeven als belangrijk. Dat wil zeggen, versie 2.10 is een andere, veel latere versie dan versie 2.1.
-* **Gast OS release**  
-  Een heruitgave van een Guest OS-versie. Er vindt een herrelease plaats als Microsoft problemen constateert tijdens het testen; die veranderingen vereisen. De nieuwste release vervangt altijd alle eerdere releases, openbaar of niet. Met de Azure-portal kunnen gebruikers alleen de nieuwste versie voor een bepaalde versie kiezen. Implementaties die worden uitgevoerd op een vorige release worden meestal niet gedwongen geüpgraded, afhankelijk van de ernst van de bug.
+    Nummers beginnen bij 0 en elke keer dat er een nieuwe set updates wordt toegevoegd, verhoogd met 1. Volg nullen worden alleen weer gegeven als belang rijk. Dat wil zeggen versie 2,10 is een andere, veel latere versie dan versie 2,1.
+* **Release van gast besturingssysteem**  
+  Een heruitgave van een versie van een gast besturingssysteem. Een heruitgave treedt op als micro soft problemen tijdens het testen vindt; wijzigingen moeten worden aangebracht. De meest recente versie heeft altijd voor rang op eerdere releases, openbaar of niet. Met de Azure Portal kunnen gebruikers alleen de meest recente release voor een bepaalde versie kiezen. Implementaties die op een eerdere versie worden uitgevoerd, worden doorgaans niet geforceerd bijgewerkt, afhankelijk van de ernst van de fout.
 
-In het onderstaande voorbeeld, 2 is de familie, 12 is de versie en "rel2" is de release.
+In het onderstaande voor beeld is 2 de familie, 12 de versie en ' rel2 ' is de release.
 
-**Gast OS release** - 2.12 rel2
+**Release van gast besturingssysteem** -2,12 rel2
 
-**Configuratietekenreeks voor deze release** - WA-GUEST-OS-2.12_201208-02
+**Configuratie teken reeks voor deze release** -wa-Guest-OS-2.12 _201208-02
 
-De configuratietekenreeks voor een gastbesturingssysteem heeft dezelfde informatie ingebed, samen met een datum die laat zien welke MSRC-patches voor die release in aanmerking zijn genomen. In dit voorbeeld werden MSRC-patches die tot en met augustus 2012 voor Windows Server 2008 R2 zijn geproduceerd, in aanmerking genomen voor opname. Alleen patches die specifiek op die versie van Windows Server zijn toegepast, zijn inbegrepen. Als er bijvoorbeeld een MSRC-patch van toepassing is op Microsoft Office, wordt deze niet opgenomen omdat dat product geen deel uitmaakt van de basisafbeelding van Windows Server.
+In de configuratie teken reeks voor een gast besturingssysteem zijn dezelfde gegevens Inge sloten, samen met een datum waarop wordt aangegeven welke MSRC-patches voor die release werden overwogen. In dit voor beeld worden de MSRC-patches die voor Windows Server 2008 R2 zijn geproduceerd tot en met augustus 2012, opgenomen. Er zijn alleen patches opgenomen die specifiek van toepassing zijn op die versie van Windows Server. Als een MSRC-patch bijvoorbeeld van toepassing is op Microsoft Office, wordt deze niet opgenomen omdat dat product geen deel uitmaakt van de basis installatie kopie van Windows Server.
 
-## <a name="guest-os-system-update-process"></a>GastOS-systeemupdateproces
-Deze pagina bevat informatie over aankomende Gast OS Releases. Klanten hebben aangegeven dat ze willen weten wanneer een release plaatsvindt omdat hun cloudservicerollen opnieuw worden opgestart als ze zijn ingesteld op 'Automatisch' bijwerken. Gast OS releases meestal optreden 2-3 weken na de MSRC update release die optreedt op de tweede dinsdag van elke maand. Nieuwe releases bevatten alle relevante MSRC-patches voor elke Gast-OS-familie.
+## <a name="guest-os-system-update-process"></a>Update proces voor het gast besturingssysteem systeem
+Deze pagina bevat informatie over aanstaande versies van het gast besturingssysteem. Klanten hebben aangegeven dat ze willen weten wanneer een release plaatsvindt omdat hun Cloud service rollen opnieuw worden opgestart als ze zijn ingesteld op ' automatische ' update. Gast besturingssysteem releases vinden doorgaans 2-3 weken na de release van de MSRC-update die op de tweede dinsdag van elke maand plaatsvindt. Nieuwe releases bevatten alle relevante MSRC-patches voor elke gast besturingssysteem familie.
 
-Microsoft Azure brengt voortdurend updates uit. Het gastbesturingssysteem is slechts één dergelijke update in de pijplijn. Een release kan worden beïnvloed door vele factoren te talrijk om hier lijst. Bovendien draait Azure op letterlijk honderdduizenden machines. Dit betekent dat het onmogelijk is om een exacte datum en tijd te geven wanneer je rol(en) opnieuw wordt opgestart. We werken aan een plan om reboots te beperken of te timen.
+De updates worden voortdurend door Microsoft Azure vrijgegeven. Het gast besturingssysteem is slechts één update in de pijp lijn. Een release kan worden beïnvloed door een groot aantal factoren die hier kunnen worden weer gegeven. Bovendien wordt Azure op duizenden computers uitgevoerd op meer dan duizend tallen. Dit betekent dat het niet mogelijk is om een exacte datum en tijd te geven wanneer uw rol (len) opnieuw wordt opgestart. Er wordt gewerkt aan een abonnement om het opnieuw opstarten te beperken of in te stellen.
 
-Wanneer een nieuwe versie van het gastbesturingssysteem wordt gepubliceerd, kan het tijd kosten om volledig te worden gepropageerd in Azure. Als services worden bijgewerkt naar het nieuwe gastbesturingssysteem, worden ze opnieuw opgestart ter ere van updatedomeinen. Services die zijn ingesteld op het gebruik van "Automatische" updates, krijgen eerst een release. Na de update ziet u de nieuwe gastversie voor uw service in de Azure-portal. In deze periode kunnen opnieuw releases optreden. Sommige versies kunnen worden geïmplementeerd over langere perioden en automatische upgrade reboots kan niet optreden gedurende vele weken na de officiële releasedatum. Zodra een gastbesturingssysteem beschikbaar is, u die versie expliciet kiezen uit de portal of in uw configuratiebestand.
+Wanneer een nieuwe versie van het gast besturingssysteem wordt gepubliceerd, kan het enige tijd duren voordat Azure wordt door gegeven. Wanneer Services worden bijgewerkt naar het nieuwe gast besturingssysteem, worden ze opnieuw opgestart met update domeinen. Services die zijn ingesteld voor het gebruik van automatische updates, krijgen eerst een release. Na de update wordt de nieuwe versie van het gast besturingssysteem voor uw service weer gegeven in de Azure Portal. Tijdens deze periode kunnen er opnieuw uitgebrachte versies plaatsvinden. Sommige versies kunnen meer tijd in beslag nemen en het automatisch opnieuw opstarten van de upgrade wordt mogelijk niet veel weken na de officiële release datum uitgevoerd. Zodra een gast besturingssysteem beschikbaar is, kunt u de desbetreffende versie expliciet kiezen in de portal of in uw configuratie bestand.
 
-Voor een groot deel van waardevolle informatie over opnieuw opstarten en verwijzingen naar meer informatie technische details van Gast en Host OS updates, zie de MSDN blog post getiteld [Role Instance Herstart wegens OS Upgrades][restarts].
+Zie het MSDN-blog bericht met de titel [instantie wordt opnieuw opgestart vanwege upgrades van het besturings systeem][restarts]voor een grote hoeveelheid informatie over het opnieuw opstarten en verwijzingen naar meer informatie technische details van gast-en host OS-updates.
 
-Als u uw gastbesturingssysteem handmatig bijwerkt, raadpleegt u het [pensioenbeleid voor gastbesturingssysteem][retirepolicy] voor aanvullende informatie.
+Als u het gast besturingssysteem hand matig bijwerkt, raadpleegt u het [uittredings beleid voor gast besturingssysteem][retirepolicy] voor aanvullende informatie.
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Ondersteuning van gast-besturingssysteem en pensioenbeleid
-De Guest OS supportability en pensioen beleid wordt [hier][retirepolicy]uitgelegd .
+## <a name="guest-os-supportability-and-retirement-policy"></a>Ondersteunings beleid voor gast besturingssystemen en buiten gebruik stellen
+Het beleid voor de ondersteuning van gast besturingssystemen en het buiten gebruik stellen wordt [hier][retirepolicy]uitgelegd.
 
 [cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
-[RsS-feed gastos-update]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
+[RSS-feed voor het gast besturingssysteem bijwerken]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
@@ -334,4 +334,4 @@ De Guest OS supportability en pensioen beleid wordt [hier][retirepolicy]uitgeleg
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[Meer]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[grotere]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  

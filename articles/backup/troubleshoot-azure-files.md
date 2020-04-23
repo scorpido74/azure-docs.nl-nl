@@ -1,73 +1,284 @@
 ---
-title: Problemen met het maken van back-ups van Azure-bestandsshares oplossen
+title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
-ms.date: 08/20/2019
+ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252387"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100053"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Problemen bij het maken van back-ups van Azure-bestanden oplossen
+# <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
-U kunt met behulp van de informatie in de volgende tabellen problemen en fouten oplossen die optreden tijdens het maken van back-ups van Azure-bestandsshares.
+In dit artikel vindt u informatie over het oplossen van problemen bij het configureren van back-ups of het herstellen van Azure-bestands shares met behulp van de Azure Backup-service.
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Beperkingen voor het maken van back-ups van Azure-bestandsshares in de preview-versie
+## <a name="common-configuration-issues"></a>Veelvoorkomende configuratie problemen
 
-Back-up voor Azure-bestandsshares is in preview. Azure-bestandsshares worden ondersteund in de accounts voor algemeen gebruik v1 en v2. De volgende back-upscenario's worden niet ondersteund voor Azure-bestandsshares:
+### <a name="could-not-find-my-storage-account-to-configure-backup-for-the-azure-file-share"></a>Kan mijn opslag account niet vinden voor het configureren van de back-up voor de Azure-bestands share
 
-- Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
-- Het maximumaantal geplande back-ups per dag is één.
-- Het maximumaantal on-demand back-ups per dag is vier.
-- Gebruik [bronvergrendelingen](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) op het opslagaccount om te voorkomen dat back-ups per ongeluk worden verwijderd in uw vault van Recovery Services.
-- Verwijder geen momentopnamen die met Azure Backup zijn gemaakt. Het verwijderen van momentopnamen kan leiden tot het verlies van herstelpunten en/of herstelfouten.
-- Verwijder geen bestandsshares die zijn beveiligd met Azure Backup. Met de huidige oplossing worden alle momentopnamen die zijn gemaakt met Azure Backup, verwijderd zodra de bestandsshare wordt verwijderd. Alle herstelpunten gaan dan dus verloren
+- Wacht totdat de detectie is voltooid.
+- Controleer of een bestands share onder het opslag account al is beveiligd met een andere Recovery Services kluis.
 
-Back-up voor Azure-bestandsshares in opslagaccounts met replicatie via [zone-redundante opslag](../storage/common/storage-redundancy-zrs.md) (ZRS) is momenteel alleen beschikbaar in VS - centraal (CUS), VS - oost (EUS), VS - oost 2 (EUS2),Europa - noord (NE), Azië - zuidoost (SEA), Europa - west (WE) en VS - west 2 (WUS2).
+  >[!NOTE]
+  >Alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. U kunt [Dit script](scripts/backup-powershell-script-find-recovery-services-vault.md) gebruiken om de Recovery Services-kluis te vinden waar uw opslag account is geregistreerd.
 
-## <a name="configuring-backup"></a>Back-up configureren
+- Zorg ervoor dat de bestands share niet aanwezig is in een van de niet-ondersteunde opslag accounts. Raadpleeg de [ondersteunings matrix voor Azure file share backup](azure-file-share-support-matrix.md) om ondersteunde opslag accounts te vinden.
 
-De volgende tabel is bedoeld voor het configureren van de back-up:
+### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt
 
-| Foutberichten | Tips voor (tijdelijke) oplossing |
-| ------------------ | ----------------------------- |
-| Kan mijn opslagaccount niet vinden voor het configureren van back-up voor Azure-bestandsshares | <ul><li>Wacht totdat de detectie is voltooid. <li>Controleer of een bestandsshare van het opslagaccount al is beveiligd met een andere Recovery Services-kluis. **Opmerking**: alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. <li>Controleer of de bestandsshare niet aanwezig is in een van de niet-ondersteunde opslagaccounts.<li> Controleer of het selectievakje **Vertrouwde Microsoft-services toestaan toegang te krijgen tot dit opslagaccount** is ingeschakeld in het opslagaccount. [Meer weten?](../storage/common/storage-network-security.md)|
-| Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt. | Als uw abonnement een partnerabonnement (CSP ingeschakeld) is, kunt u de fout negeren. Als CSP niet is ingeschakeld voor uw abonnement en uw opslagaccounts niet kunnen worden gedetecteerd, neemt u contact op met de ondersteuning.|
-| Validatie of registratie van geselecteerd opslagaccount is mislukt.| Voer de bewerking opnieuw uit. Neem contact op met de ondersteuning als het probleem zich blijft voordoen.|
-| Kan bestandsshares niet vinden of weergeven in het geselecteerde opslagaccount. | <ul><li> Controleer of het opslagaccount bestaat in de resourcegroep (en niet is verwijderd of verplaatst na de laatste validatie/registratie in de kluis).<li>Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd. <li>Controleer of het opslagaccount een ondersteund opslagaccount voor het maken van back-ups van bestandsshares is.<li>Controleer of de bestandsshare al in dezelfde Recovery Services-kluis wordt beveiligd.|
-| Configuratie van de back-up van bestandsshares (of de configuratie van het beveiligingsbeleid) mislukt. | <ul><li>Voer de bewerking opnieuw uit om te kijken of het probleem zich blijft voordoen. <li> Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd. <li> Als u probeert om meerdere bestandsshares tegelijk te beveiligen en sommige bestandsshares mislukken, kunt u de back-up van de mislukte bestandsshares opnieuw proberen te configureren. |
-| De Recovery Services-kluis kan niet worden verwijderd nadat de beveiliging van een bestandsshare is gestopt. | Open in de Azure-portal uw Vault-> **Back-upinfrastructuuropslagaccounts** > **Storage accounts** en klik op **Aanmelden** verwijderen om het opslagaccount uit de kluis Herstelservices te verwijderen.|
+Als u een partner abonnement hebt (CSP-enabled), negeert u de fout. Neem contact op met de ondersteuning als uw abonnement geen CSP-functionaliteit heeft en uw opslag accounts niet kunnen worden gedetecteerd.
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Foutberichten voor back-ups of taakfouten herstellen
+### <a name="selected-storage-account-validation-or-registration-failed"></a>De geselecteerde opslag account is niet gevalideerd of de registratie is mislukt
 
-| Foutberichten | Tips voor (tijdelijke) oplossing |
-| -------------- | ----------------------------- |
-| Bewerking is mislukt omdat de bestandsshare niet is gevonden. | Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd.|
-| Opslagaccount niet gevonden of wordt niet ondersteund. | <ul><li>Controleer of het opslagaccount bestaat in de resourcegroep en niet uit de resourcegroep is verwijderd of verplaatst na de laatste validatie. <li> Controleer of het opslagaccount een ondersteund opslagaccount voor het maken van back-ups van bestandsshares is.|
-| U hebt het maximumaantal momentopnamen voor deze bestandsshare bereikt. U kunt nieuwe maken zodra de oudere zijn verlopen. | <ul><li> Deze fout kan optreden wanneer u meerdere back-ups op aanvraag voor een bestand maakt. <li> Er is een limiet van 200 momentopnamen per bestandsshare, met inbegrip van de opnamen die worden gemaakt door Azure Backup. Oudere geplande back-ups (of momentopnamen) worden automatisch opgeschoond. Back-ups (of momentopnamen) op aanvraag moeten worden verwijderd als de limiet is bereikt.<li> Verwijder de back-ups op aanvraag (momentopnamen van Azure-bestandsshares) uit de Azure Files-portal. **Opmerking**: als u momentopnamen verwijdert die zijn gemaakt door Azure Backup, gaan de herstelpunten verloren. |
-| Back-up of terugzetten van bestandsshare is mislukt vanwege een beperking van de opslagservice. Dit komt mogelijk doordat de opslagservice bezig is met het verwerken van andere aanvragen voor het betreffende opslagaccount.| Probeer de bewerking na enige tijd opnieuw. |
-| Terugzetten is mislukt met de melding Kan de doelbestandsshare niet vinden. | <ul><li>Controleer of het geselecteerde opslagaccount bestaat en of de doelbestandsshare niet is verwijderd. <li> Controleer of het opslagaccount een ondersteund opslagaccount voor het maken van back-ups van bestandsshares is. |
-| Back-up- of hersteltaken mislukken omdat het opslagaccount is vergrendeld. | Verwijder de vergrendeling van het opslagaccount of gebruik verwijderingsvergrendeling in plaats van leesvergrendeling en probeer het opnieuw. |
-| Herstellen mislukt omdat het aantal mislukte bestanden de drempelwaarde overschrijdt. | <ul><li> De oorzaken voor het mislukken van het herstellen worden in een bestand weergegeven (het pad staat in de taakgegevens). Los de fouten op en voer de herstelbewerking alleen opnieuw uit voor de mislukte bestanden. <li> Veelvoorkomende redenen voor fouten bij bestand terugzetten: <br/> -Controleer of de mislukte bestanden niet op dit moment worden gebruikt. <br/> -Er bestaat een map met dezelfde naam als het mislukte bestand in de bovenliggende map. |
-| Herstellen mislukt omdat er geen bestand kan worden hersteld. | <ul><li> De oorzaken voor het mislukken van het herstellen worden in een bestand weergegeven (het pad staat in de taakgegevens). Los de fouten op en voer de herstelbewerkingen alleen opnieuw uit voor de mislukte bestanden. <li> Veelvoorkomende redenen voor fouten bij bestand terugzetten: <br/> -Controleer of de mislukte bestanden niet op dit moment worden gebruikt. <br/> -Er bestaat een map met dezelfde naam als het mislukte bestand in de bovenliggende map. |
-| Terugzetten mislukt omdat een van de bestanden in de bron niet bestaat. | <ul><li> De geselecteerde items zijn niet aanwezig in de herstelpuntgegevens. Geef de juiste bestandslijst op om de bestanden te herstellen. <li> De momentopname van de bestandsshare die overeenkomt met het herstelpunt wordt handmatig verwijderd. Selecteer een ander herstelpunt en voer de herstelbewerking opnieuw uit. |
-| Er is een hersteltaak actief met hetzelfde doel. | <ul><li>Back-ups van bestandsshares ondersteunen geen parallel herstel naar dezelfde doelbestandsshare. <li>Wacht tot de bestaande hersteltaak is voltooid en probeer het opnieuw. Als u geen hersteltaak in de Recovery Services-kluis kunt vinden, controleert u andere Recovery Services-kluizen in hetzelfde abonnement. |
-| Herstelbewerking mislukt omdat de doelbestandsshare vol is. | Vergroot het quotum voor grootte van de doelbestandsshare om ruimte te bieden voor de herstelgegevens en probeer het opnieuw. |
-| Herstel is mislukt omdat er een fout is opgetreden tijdens het uitvoeren van pre-herstelbewerkingen op aan de doelbestandsshare gekoppelde bestandssynchronisatieserviceresources. | Probeer het later opnieuw. Neem contact op met Microsoft ondersteuning als het probleem zich blijft voordoen. |
-| Een of meer bestanden kunnen niet worden hersteld. Controleer de lijst met mislukte bestanden in het pad hierboven voor meer informatie. | <ul> <li> Oorzaken voor het mislukken van de hersteltaak worden in het bestand vermeld (pad staat in de taakgegevens). Los de oorzaken op en voer de herstelbewerking alleen voor de mislukte bestanden opnieuw uit. <li> Veelvoorkomende oorzaken voor fouten bij bestand terugzetten: <br/> -Controleer of de mislukte bestanden niet in gebruik zijn op dit moment. <br/> -Er bestaat een map met dezelfde naam als het mislukte bestand in de bovenliggende map. |
+Voer de registratie opnieuw uit. Neem contact op met de ondersteuning als het probleem zich blijft voordoen.
 
-## <a name="modify-policy"></a>Beleid wijzigen
+### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>Kan de bestands shares in het geselecteerde opslag account niet weer geven of vinden
 
-| Foutberichten | Tips voor (tijdelijke) oplossing |
-| ------------------ | ----------------------------- |
-| Er wordt een andere configuratiebewerking voor beveiliging uitgevoerd voor dit item. | Wacht totdat de vorige bewerking voor het aanpassen van het beleid is voltooid en probeer het na enige tijd opnieuw.|
-| Er wordt een andere bewerking uitgevoerd op het geselecteerde item. | Wacht totdat de andere bewerking is voltooid en probeer het na enige tijd opnieuw |
+- Zorg ervoor dat het opslag account bestaat in de resource groep en niet is verwijderd of verplaatst na de laatste validatie of registratie in de kluis.
+- Zorg ervoor dat de bestands share die u wilt beveiligen, niet is verwijderd.
+- Zorg ervoor dat het opslag account een ondersteund opslag account is voor het maken van een back-up van bestands shares. Raadpleeg de [ondersteunings matrix voor Azure file share backup](azure-file-share-support-matrix.md) om ondersteunde opslag accounts te vinden.
+- Controleer of de bestands share al in dezelfde Recovery Services kluis wordt beveiligd.
+
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>De configuratie van de back-upbestands share (of de configuratie van het beveiligings beleid) is mislukt
+
+- Voer de configuratie opnieuw uit om te zien of het probleem zich blijft voordoen.
+- Zorg ervoor dat de bestands share die u wilt beveiligen, niet is verwijderd.
+- Als u meerdere bestands shares tegelijk wilt beveiligen en een aantal van de bestands shares mislukt, kunt u proberen om de back-up van de mislukte bestands shares opnieuw te configureren.
+
+### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Kan de Recovery Services kluis niet verwijderen na het ongedaan maken van de beveiliging van een bestands share
+
+Open in de Azure Portal uw **kluis** > **back-upinfrastructuur** > **opslag accounts** en klik op **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
+
+>[!NOTE]
+>Een Recovery Services-kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.
+
+## <a name="common-backup-or-restore-errors"></a>Veelvoorkomende back-up-of herstel fouten
+
+### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound: de bewerking is mislukt omdat de bestands share niet is gevonden
+
+Fout code: FileShareNotFound
+
+Fout bericht: de bewerking is mislukt omdat de bestands share niet is gevonden
+
+Zorg ervoor dat de bestands share die u wilt beveiligen, niet is verwijderd.
+
+### <a name="usererrorfileshareendpointunreachable--storage-account-not-found-or-not-supported"></a>UserErrorFileShareEndpointUnreachable-opslag account niet gevonden of wordt niet ondersteund
+
+Fout code: UserErrorFileShareEndpointUnreachable
+
+Fout bericht: het opslag account is niet gevonden of wordt niet ondersteund
+
+- Zorg ervoor dat het opslag account bestaat in de resource groep en niet is verwijderd of verwijderd uit de resource groep na de laatste validatie.
+
+- Zorg ervoor dat het opslag account een ondersteund opslag account is voor het maken van een back-up van bestands shares.
+
+### <a name="afsmaxsnapshotreached--you-have-reached-the-max-limit-of-snapshots-for-this-file-share-you-will-be-able-to-take-more-once-the-older-ones-expire"></a>AFSMaxSnapshotReached-u hebt de maximum limiet voor moment opnamen voor deze bestands share bereikt. u kunt meer doen als de oudere versies verlopen
+
+Fout code: AFSMaxSnapshotReached
+
+Fout bericht: de maximum limiet van moment opnamen voor deze bestands share is bereikt. u kunt meer doen als de oudere versies verlopen.
+
+- Deze fout kan optreden wanneer u meerdere back-ups op aanvraag voor een bestands share maakt.
+- Er geldt een limiet van 200 moment opnamen per bestands share, met inbegrip van de bestanden die door Azure Backup worden gemaakt. Oudere geplande back-ups (of momentopnamen) worden automatisch opgeschoond. Back-ups (of momentopnamen) op aanvraag moeten worden verwijderd als de limiet is bereikt.
+
+Verwijder de back-ups op aanvraag (momentopnamen van Azure-bestandsshares) uit de Azure Files-portal.
+
+>[!NOTE]
+> als u momentopnamen verwijdert die zijn gemaakt door Azure Backup, gaan de herstelpunten verloren.
+
+### <a name="usererrorstorageaccountnotfound--operation-failed-as-the-specified-storage-account-does-not-exist-anymore"></a>UserErrorStorageAccountNotFound: de bewerking is mislukt omdat het opgegeven opslag account niet meer bestaat
+
+Fout code: UserErrorStorageAccountNotFound
+
+Fout bericht: de bewerking is mislukt omdat het opgegeven opslag account niet meer bestaat.
+
+Zorg ervoor dat het opslag account nog bestaat en niet is verwijderd.
+
+### <a name="usererrordtsstorageaccountnotfound--the-storage-account-details-provided-are-incorrect"></a>UserErrorDTSStorageAccountNotFound-de gegevens van het opslag account zijn onjuist
+
+Fout code: UserErrorDTSStorageAccountNotFound
+
+Fout bericht: de ingevoerde gegevens van het opslag account zijn onjuist.
+
+Zorg ervoor dat het opslag account nog bestaat en niet is verwijderd.
+
+### <a name="usererrorresourcegroupnotfound--resource-group-doesnt-exist"></a>UserErrorResourceGroupNotFound-resource groep bestaat niet
+
+Fout code: UserErrorResourceGroupNotFound
+
+Fout bericht: de resource groep bestaat niet
+
+Selecteer een bestaande resource groep of maak een nieuwe resource groep.
+
+### <a name="parallelsnapshotrequest--a-backup-job-is-already-in-progress-for-this-file-share"></a>ParallelSnapshotRequest: er wordt al een back-uptaak uitgevoerd voor deze bestands share
+
+Fout code: ParallelSnapshotRequest
+
+Fout bericht: er wordt al een back-uptaak uitgevoerd voor deze bestands share.
+
+- Back-up van bestands shares biedt geen ondersteuning voor aanvragen voor parallelle moment opnamen voor dezelfde bestands share.
+
+- Wacht tot de bestaande back-uptaak is voltooid en probeer het opnieuw. Als u geen back-uptaak kunt vinden in de Recovery Services kluis, raadpleegt u de andere Recovery Services kluizen in hetzelfde abonnement.
+
+### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling-back-up van bestands share of herstellen is mislukt vanwege beperking van de opslag service. Dit komt mogelijk doordat de opslag service bezig is met het verwerken van andere aanvragen voor het opgegeven opslag account
+
+Fout code: FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling
+
+Fout bericht: het maken van een back-up of herstel van de bestands share is mislukt vanwege een beperking van de opslag service. Dit komt mogelijk doordat de opslagservice bezig is met het verwerken van andere aanvragen voor het betreffende opslagaccount.
+
+Probeer de back-up-of herstel bewerking op een later tijdstip.
+
+### <a name="targetfilesharenotfound--target-file-share-not-found"></a>TargetFileShareNotFound-doel bestands share niet gevonden
+
+Fout code: TargetFileShareNotFound
+
+Fout bericht: kan de doel bestands share niet vinden.
+
+- Zorg ervoor dat het geselecteerde opslag account bestaat en dat de bestands share van het doel niet wordt verwijderd.
+
+- Zorg ervoor dat het opslag account een ondersteund opslag account is voor het maken van een back-up van bestands shares.
+
+### <a name="usererrorstorageaccountislocked--backup-or-restore-jobs-failed-due-to-storage-account-being-in-locked-state"></a>UserErrorStorageAccountIsLocked-back-up-of herstel taken zijn mislukt omdat het opslag account is vergrendeld
+
+Fout code: UserErrorStorageAccountIsLocked
+
+Fout bericht: back-up-of herstel taken zijn mislukt omdat het opslag account is vergrendeld.
+
+Verwijder de vergren deling van het opslag account of gebruik **verwijderings vergrendeling** in plaats van **Lees vergrendeling** en voer de back-up-of herstel bewerking opnieuw uit.
+
+### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached-herstel is mislukt omdat het aantal mislukte bestanden groter is dan de drempel waarde
+
+Fout code: DataTransferServiceCoFLimitReached
+
+Fout bericht: herstel is mislukt omdat het aantal mislukte bestanden groter is dan de drempel waarde.
+
+- Oorzaken voor herstel fouten worden weer gegeven in een bestand (pad dat is opgegeven in de taak gegevens). Los de fouten op en voer de herstel bewerking alleen opnieuw uit voor de mislukte bestanden.
+
+- Veelvoorkomende redenen voor fouten bij het herstellen van bestanden:
+
+  - bestanden die zijn mislukt, zijn momenteel in gebruik
+  - Er bestaat al een map met dezelfde naam als het mislukte bestand in de bovenliggende map.
+
+### <a name="datatransferserviceallfilesfailedtorecover--recovery-failed-as-no-file-could-be-recovered"></a>DataTransferServiceAllFilesFailedToRecover-herstel is mislukt omdat er geen bestand kan worden hersteld
+
+Fout code: DataTransferServiceAllFilesFailedToRecover
+
+Fout bericht: het herstellen is mislukt omdat er geen bestand kan worden hersteld.
+
+- Oorzaken voor herstel fouten worden weer gegeven in een bestand (pad dat is opgegeven in de taak gegevens). Los de fouten op en voer de herstelbewerkingen alleen opnieuw uit voor de mislukte bestanden.
+
+- Veelvoorkomende redenen voor fouten bij het herstellen van bestanden:
+
+  - bestanden die zijn mislukt, zijn momenteel in gebruik
+  - Er bestaat al een map met dezelfde naam als het mislukte bestand in de bovenliggende map.
+
+### <a name="usererrordtssourceurinotvalid---restore-fails-because-one-of-the-files-in-the-source-does-not-exist"></a>UserErrorDTSSourceUriNotValid-herstel mislukt omdat een van de bestanden in de bron niet bestaat
+
+Fout code: DataTransferServiceSourceUriNotValid
+
+Fout bericht: het herstellen is mislukt omdat een van de bestanden in de bron niet bestaat.
+
+- De geselecteerde items zijn niet aanwezig in de herstelpuntgegevens. Geef de juiste bestandslijst op om de bestanden te herstellen.
+- De momentopname van de bestandsshare die overeenkomt met het herstelpunt wordt handmatig verwijderd. Selecteer een ander herstelpunt en voer de herstelbewerking opnieuw uit.
+
+### <a name="usererrordtsdestlocked--a-recovery-job-is-in-process-to-the-same-destination"></a>UserErrorDTSDestLocked: een herstel taak wordt uitgevoerd op hetzelfde doel
+
+Fout code: UserErrorDTSDestLocked
+
+Fout bericht: een herstel taak wordt uitgevoerd op hetzelfde doel.
+
+- Back-up van bestands shares biedt geen ondersteuning voor parallelle herstel naar dezelfde doel bestands share.
+
+- Wacht tot de bestaande hersteltaak is voltooid en probeer het opnieuw. Als u een herstel taak niet kunt vinden in de Recovery Services kluis, raadpleegt u de andere Recovery Services kluizen in hetzelfde abonnement.
+
+### <a name="usererrortargetfilesharefull--restore-operation-failed-as-target-file-share-is-full"></a>UserErrorTargetFileShareFull: de herstel bewerking is mislukt omdat de doel bestands share vol is
+
+Fout code: UserErrorTargetFileShareFull
+
+Fout bericht: de herstel bewerking is mislukt omdat de doel bestands share vol is.
+
+Verhoog het quotum voor de grootte van de doel bestands share om ruimte te maken voor de herstel gegevens en voer de herstel bewerking opnieuw uit.
+
+### <a name="usererrortargetfilesharequotanotsufficient--target-file-share-does-not-have-sufficient-storage-size-quota-for-restore"></a>UserErrorTargetFileShareQuotaNotSufficient-doel bestands share heeft onvoldoende opslag quotum grootte voor herstellen
+
+Fout code: UserErrorTargetFileShareQuotaNotSufficient
+
+Fout bericht: de doel bestands share heeft niet voldoende opslag quotum grootte voor herstellen
+
+Verhoog het quotum voor de grootte van de doel bestands share om ruimte te maken voor de herstel gegevens en voer de bewerking opnieuw uit
+
+### <a name="file-sync-prerestorefailed--restore-operation-failed-as-an-error-occurred-while-performing-pre-restore-operations-on-file-sync-service-resources-associated-with-the-target-file-share"></a>File Sync PreRestoreFailed: de herstel bewerking is mislukt omdat er een fout is opgetreden tijdens het uitvoeren van pre-herstel bewerkingen op File Sync Service resources die zijn gekoppeld aan de doel bestands share
+
+Fout code: File Sync PreRestoreFailed
+
+Fout bericht: de herstel bewerking is mislukt omdat er een fout is opgetreden bij het uitvoeren van voor bereide bewerkingen op File Sync Service resources die zijn gekoppeld aan de doel bestands share.
+
+Probeer de gegevens op een later tijdstip terug te zetten. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.
+
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-Azure File Sync Service wijzigingen worden gedetecteerd voor de doel bestands share. De wijzigings detectie is geactiveerd door een eerdere herstel bewerking naar de doel bestands share
+
+Fout code: AzureFileSyncChangeDetectionInProgress
+
+Fout bericht: detectie van Azure File Sync Service wijzigingen wordt uitgevoerd voor de doel bestands share. De wijzigings detectie is geactiveerd door een eerdere herstel bewerking naar de doel bestands share.
+
+Gebruik een andere doel bestands share. U kunt ook wachten tot de detectie van Azure File Sync Service-wijzigingen is voltooid voor de doel bestands share voordat u de herstel bewerking opnieuw uitvoert.
+
+### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>UserErrorAFSRecoverySomeFilesNotRestored: een of meer bestanden kunnen niet worden hersteld. Raadpleeg de lijst met mislukte bestanden in het pad dat hierboven wordt vermeld voor meer informatie
+
+Fout code: UserErrorAFSRecoverySomeFilesNotRestored
+
+Fout bericht: een of meer bestanden kunnen niet worden hersteld. Controleer de lijst met mislukte bestanden in het pad hierboven voor meer informatie.
+
+- Oorzaken voor herstel fouten worden weer gegeven in het bestand (pad dat is opgegeven in de taak gegevens). Los de redenen op en voer de herstel bewerking alleen voor de mislukte bestanden opnieuw uit.
+- Veelvoorkomende redenen voor fouten bij het herstellen van bestanden:
+
+  - bestanden die zijn mislukt, zijn momenteel in gebruik
+  - Er bestaat al een map met dezelfde naam als het mislukte bestand in de bovenliggende map.
+
+### <a name="usererrorafssourcesnapshotnotfound--azure-file-share-snapshot-corresponding-to-recovery-point-cannot-be-found"></a>UserErrorAFSSourceSnapshotNotFound: de moment opname van de Azure-bestands share die overeenkomt met het herstel punt is niet gevonden
+
+Fout code: UserErrorAFSSourceSnapshotNotFound
+
+Fout bericht: kan de moment opname van de Azure-bestands share die overeenkomt met het herstel punt niet vinden
+
+- Zorg ervoor dat de moment opname van de bestands share, die overeenkomt met het herstel punt dat u voor herstel wilt gebruiken, nog bestaat.
+
+  >[!NOTE]
+  >Als u een moment opname van een bestands share verwijdert die is gemaakt door Azure Backup, worden de bijbehorende herstel punten onbruikbaar. U wordt aangeraden geen moment opnamen te verwijderen om gegarandeerd herstel te garanderen.
+
+- Selecteer een ander herstel punt om uw gegevens te herstellen.
+
+### <a name="usererroranotherrestoreinprogressonsametarget--another-restore-job-is-in-progress-on-the-same-target-file-share"></a>UserErrorAnotherRestoreInProgressOnSameTarget: een andere herstel taak wordt uitgevoerd op dezelfde doel bestands share
+
+Fout code: UserErrorAnotherRestoreInProgressOnSameTarget
+
+Fout bericht: er wordt een andere herstel taak uitgevoerd op dezelfde doel bestands share
+
+Gebruik een andere doel bestands share. U kunt ook annuleren of wachten tot de andere herstel bewerking is voltooid.
+
+## <a name="common-modify-policy-errors"></a>Veelvoorkomende beleids fouten voor wijzigingen
+
+### <a name="bmsusererrorconflictingprotectionoperation--another-configure-protection-operation-is-in-progress-for-this-item"></a>BMSUserErrorConflictingProtectionOperation-er wordt een andere beveiligings bewerking voor het configureren van dit item uitgevoerd
+
+Fout code: BMSUserErrorConflictingProtectionOperation
+
+Fout bericht: er wordt een andere configure Protection-bewerking uitgevoerd voor dit item.
+
+Wacht tot de vorige wijzigings beleids bewerking is voltooid en probeer het later opnieuw.
+
+### <a name="bmsusererrorobjectlocked--another-operation-is-in-progress-on-the-selected-item"></a>BMSUserErrorObjectLocked: er wordt een andere bewerking uitgevoerd voor het geselecteerde item
+
+Fout code: BMSUserErrorObjectLocked
+
+Fout bericht: er wordt een andere bewerking uitgevoerd voor het geselecteerde item.
+
+Wacht totdat de andere bewerking in uitvoering is voltooid en probeer het later opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken van back-ups van Azure-bestandsshares:
+Zie voor meer informatie over het maken van back-ups van Azure-bestands shares:
 
-- [Back-ups maken van Azure-bestandsshares](backup-afs.md)
-- [Veelgestelde vragen over azure-bestandsshare](backup-azure-files-faq.md)
+- [Back-ups maken van Azure-bestands shares](backup-afs.md)
+- [Veelgestelde vragen over back-ups van Azure file share](backup-azure-files-faq.md)

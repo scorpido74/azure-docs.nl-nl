@@ -1,21 +1,19 @@
 ---
-title: Vooraf betalen voor virtuele Azure-machines om geld te besparen
-description: Meer informatie over het kopen van Azure Reserved Virtual Machine Instances om te besparen op uw rekenkosten.
-services: virtual-machines-windows
+title: Vooruitbetalen voor Azure virtual machines om geld te besparen
+description: Meer informatie over het kopen van Azure Reserved Virtual Machine Instances om uw reken kosten op te slaan.
 author: yashar
 manager: yashar
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: 15e71494e9c7eecea7153ac213318b7a2e4b31ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d9b883c5319108166951814fcedb18181e25145
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371657"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098659"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Kosten besparen met Azure Reserved VM Instances
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Bespaar kosten met Azure Reserved VM Instances
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
