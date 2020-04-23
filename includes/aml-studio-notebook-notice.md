@@ -16,5 +16,5 @@ ms.lasthandoff: 04/16/2020
 ms.locfileid: "81411904"
 ---
 > [!NOTE]
-> De functie Notebooks (preview) is op *13 april 2020*verwijderd. Het verwijderen van het tabblad Notitieblokken en gebruikersnotitieblokbestanden wordt momenteel wereldwijd uitgerold naar Azure-regio's.
+> De functie notebooks (preview) is verwijderd op *13 2020 april*. Het verwijderen van het tabblad notebooks en notitieblok bestanden van gebruikers wordt momenteel geïmplementeerd naar Azure-regio's wereld wijd.
       

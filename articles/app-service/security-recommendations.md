@@ -1,6 +1,6 @@
 ---
 title: Aanbevelingen voor beveiliging
-description: Implementeer de beveiligingsaanbevelingen om te helpen voldoen aan uw beveiligingsverplichtingen zoals vermeld in ons gedeelde verantwoordelijkheidsmodel. Verbeter de beveiliging van uw app.
+description: Implementeer de beveiligings aanbevelingen om te voldoen aan uw beveiligings verplichtingen, zoals vermeld in ons model van de gedeelde groep. Verbeter de beveiliging van uw app.
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
@@ -14,50 +14,50 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
 ms.locfileid: "80546702"
 ---
-# <a name="security-recommendations-for-app-service"></a>Beveiligingsaanbevelingen voor App-service
+# <a name="security-recommendations-for-app-service"></a>Beveiligings aanbevelingen voor App Service
 
-Dit artikel bevat beveiligingsaanbevelingen voor Azure App Service. Door deze aanbevelingen uit te voeren, u voldoen aan uw beveiligingsverplichtingen zoals beschreven in ons gedeelde verantwoordelijkheidsmodel en wordt de algehele beveiliging voor uw Web App-oplossingen verbeterd. Lees [Azure-infrastructuurbeveiliging](../security/fundamentals/infrastructure.md)voor meer informatie over wat Microsoft doet om de verantwoordelijkheden van de serviceprovider te vervullen.
+Dit artikel bevat beveiligings aanbevelingen voor Azure App Service. Als u deze aanbevelingen implementeert, kunt u voldoen aan uw beveiligings verplichtingen zoals beschreven in ons gedeelde verantwoordelijkheids model en wordt de algehele beveiliging van uw web-app-oplossingen verbeterd. Lees [Azure-infrastructuur beveiliging](../security/fundamentals/infrastructure.md)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
 
 ## <a name="general"></a>Algemeen
 
 | Aanbeveling | Opmerkingen |
 |-|-|----|
-| Blijf up-to-date | Gebruik de nieuwste versies van ondersteunde platforms, programmeertalen, protocollen en frameworks. |
+| Blijf up-to-date | Gebruik de nieuwste versies van ondersteunde platforms, programmeer talen, protocollen en frameworks. |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
 | Aanbeveling | Opmerkingen |
 |-|----|
-| Anonieme toegang uitschakelen | Tenzij u anonieme verzoeken moet ondersteunen, schakelt u anonieme toegang uit. Zie [Verificatie en autorisatie in Azure App Service](overview-authentication-authorization.md)voor meer informatie over verificatieopties voor Azure App Service.|
-| Verificatie vereisen | Gebruik waar mogelijk de verificatiemodule van App Service in plaats van code te schrijven om verificatie en autorisatie te verwerken. Zie [Verificatie en autorisatie in Azure App Service](overview-authentication-authorization.md). |
-| Back-endresources beveiligen met geverifieerde toegang | U de identiteit van de gebruiker gebruiken of een toepassingsidentiteit gebruiken om te verifiëren naar een back-endbron. Wanneer u ervoor kiest om een toepassingsidentiteit te gebruiken, gebruikt u een [beheerde identiteit.](overview-managed-identity.md)
-| Verificatie van clientcertificaat vereisen | Clientcertificaatverificatie verbetert de beveiliging door alleen verbindingen van clients toe te staan die kunnen verifiëren met certificaten die u verstrekt. |
+| Anonieme toegang uitschakelen | Schakel anonieme toegang uit, tenzij u anonieme aanvragen moet ondersteunen. Zie [verificatie en autorisatie in azure app service](overview-authentication-authorization.md)voor meer informatie over Azure app service verificatie opties.|
+| Verificatie vereisen | Gebruik waar mogelijk de module App Service verificatie in plaats van code te schrijven om verificatie en autorisatie te verwerken. Zie [verificatie en autorisatie in azure app service](overview-authentication-authorization.md). |
+| Back-end-bronnen beveiligen met geverifieerde toegang | U kunt de identiteit van de gebruiker gebruiken of een toepassings-id gebruiken om een back-end-bron te verifiëren. Wanneer u ervoor kiest om een toepassings-id te gebruiken, moet u een [beheerde identiteit](overview-managed-identity.md)gebruiken.
+| Verificatie van client certificaat vereisen | Verificatie van client certificaten verbetert de beveiliging door alleen verbindingen toe te staan van clients die kunnen worden geverifieerd met behulp van door u verstrekte certificaten. |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Aanbeveling | Opmerkingen |
 |-|-|
-| HTTP omleiden naar HTTP's | Clients kunnen standaard verbinding maken met webapps via zowel HTTP als HTTPS. We raden u aan HTTP om te leiden naar HTTP's omdat HTTPS het SSL/TLS-protocol gebruikt om een beveiligde verbinding te bieden, die zowel versleuteld als geverifieerd is. |
-| Communicatie versleutelen naar Azure-bronnen | Wanneer uw app verbinding maakt met [Azure-bronnen,](https://azure.microsoft.com/services/sql-database/) zoals SQL Database of [Azure Storage,](/azure/storage/)blijft de verbinding in Azure. Aangezien de verbinding via de gedeelde netwerken in Azure verloopt, moet u altijd alle communicatie versleutelen. |
-| De nieuwste TLS-versie vereisen mogelijk | Sinds 2018 maken nieuwe Azure App Service-apps gebruik van TLS 1.2. Nieuwere versies van TLS bevatten beveiligingsverbeteringen ten opzichte van oudere protocolversies. |
-| FTPS gebruiken | App Service ondersteunt zowel FTP als FTPS voor het implementeren van uw bestanden. Gebruik FTPS in plaats van FTP indien mogelijk. Wanneer een of beide protocollen niet in gebruik zijn, moet u [ze uitschakelen.](deploy-ftp.md#enforce-ftps) |
-| Toepassingsgegevens beveiligen | Sla toepassingsgeheimen, zoals databasereferenties, API-tokens of privésleutels, niet op in uw code of configuratiebestanden. De algemeen aanvaarde aanpak is om toegang te krijgen tot hen als [omgevingsvariabelen](https://wikipedia.org/wiki/Environment_variable) met behulp van het standaardpatroon in uw taal van keuze. In Azure App Service u omgevingsvariabelen definiëren via [app-instellingen](web-sites-configure.md) en [verbindingstekenreeksen.](web-sites-configure.md) App-instellingen en verbindingstekenreeksen worden versleuteld opgeslagen in Azure. De app-instellingen worden alleen gedecodeerd voordat ze in het procesgeheugen van uw app worden geïnjecteerd wanneer de app wordt gestart. De encryptiesleutels worden regelmatig gedraaid. U ook uw Azure App Service-app integreren met [Azure Key Vault](/azure/key-vault/) voor geavanceerd geheimenbeheer. Door [toegang te krijgen tot de Key Vault met een beheerde identiteit,](../key-vault/tutorial-web-application-keyvault.md)heeft uw App Service-app veilig toegang tot de geheimen die u nodig hebt. |
+| HTTP omleiden naar HTTPs | Clients kunnen standaard verbinding maken met web-apps met behulp van HTTP of HTTPS. U kunt het beste HTTP omleiden naar HTTPs omdat HTTPS het SSL/TLS-protocol gebruikt om een beveiligde verbinding te bieden, die zowel is versleuteld als geverifieerd. |
+| De communicatie met Azure-resources versleutelen | Wanneer uw app verbinding maakt met Azure-resources, zoals [SQL database](https://azure.microsoft.com/services/sql-database/) of [Azure Storage](/azure/storage/), blijft de verbinding in Azure. Omdat de verbinding via het gedeelde netwerk in azure verloopt, moet u altijd alle communicatie versleutelen. |
+| Vereisen dat de nieuwste TLS-versie mogelijk is | Sinds 2018 nieuwe Azure App Service-apps gebruiken TLS 1,2. Nieuwere versies van TLS bevatten beveiligings verbeteringen ten opzichte van oudere protocol versies. |
+| FTPS gebruiken | App Service ondersteunt zowel FTP-als FTPS voor het implementeren van uw bestanden. Gebruik waar mogelijk FTPS in plaats van FTP. Wanneer een of beide protocollen niet in gebruik zijn, moet u [deze uitschakelen](deploy-ftp.md#enforce-ftps). |
+| Toepassingsgegevens beveiligen | Sla geen toepassings geheimen op, zoals database referenties, API-tokens of persoonlijke sleutels in uw code of configuratie bestanden. De algemeen geaccepteerde aanpak is om ze als [omgevings variabelen](https://wikipedia.org/wiki/Environment_variable) te benaderen met het standaard patroon in uw taal. In Azure App Service kunt u omgevings variabelen definiëren met behulp van [app-instellingen](web-sites-configure.md) en [verbindings reeksen](web-sites-configure.md). App-instellingen en verbindings reeksen worden versleuteld opgeslagen in Azure. De app-instellingen worden alleen ontsleuteld voordat ze worden ingevoegd in het proces geheugen van uw app wanneer de app wordt gestart. De versleutelings sleutels worden regel matig gedraaid. U kunt ook uw Azure App Service-app integreren met [Azure Key Vault](/azure/key-vault/) voor het beheer van geavanceerde geheimen. Door [de Key Vault met een beheerde identiteit te openen](../key-vault/tutorial-web-application-keyvault.md), heeft uw app service-app veilig toegang tot de geheimen die u nodig hebt. |
 
 ## <a name="networking"></a>Netwerken
 
 | Aanbeveling | Opmerkingen |
 |-|-|
-| Statische IP-beperkingen gebruiken | Met Azure App Service op Windows u een lijst met IP-adressen definiëren die toegang hebben tot uw app. De toegestane lijst kan afzonderlijke IP-adressen of een reeks IP-adressen bevatten die zijn gedefinieerd door een subnetmasker. Zie [Statische IP-beperkingen van Azure App Service](app-service-ip-restrictions.md)voor meer informatie .  |
-| De geïsoleerde prijslaag gebruiken | Behalve de geïsoleerde prijscategorie worden uw apps in alle lagen uitgevoerd op de gedeelde netwerkinfrastructuur in Azure App Service. De geïsoleerde laag geeft u volledige netwerkisolatie door uw apps uit te voeren in een speciale [App Service-omgeving.](environment/intro.md) Een App Service-omgeving wordt uitgevoerd in uw eigen exemplaar van [Azure Virtual Network.](/azure/virtual-network/)|
-| Veilige verbindingen gebruiken bij toegang tot on-premises bronnen | U [hybride verbindingen,](app-service-hybrid-connections.md) [integratie van virtuele netwerken](web-sites-integrate-with-vnet.md)of [app-serviceomgevingen](environment/intro.md) gebruiken om verbinding te maken met on-premises bronnen. |
-| Blootstelling aan binnenkomend netwerkverkeer beperken | Met netwerkbeveiligingsgroepen u de toegang tot het netwerk beperken en het aantal blootgestelde eindpunten beheren. Zie [Inkomend verkeer naar een app-serviceomgeving beheren voor](environment/app-service-app-service-environment-control-inbound-traffic.md)meer informatie. |
+| Statische IP-beperkingen gebruiken | Met Azure App Service in Windows kunt u een lijst met IP-adressen definiëren die toegang hebben tot uw app. De lijst met toegestane namen kan afzonderlijke IP-adressen bevatten of een bereik van IP-adressen die zijn gedefinieerd door een subnetmasker. Zie [Azure app service static IP-beperkingen](app-service-ip-restrictions.md)voor meer informatie.  |
+| De geïsoleerde prijs categorie gebruiken | Met uitzonde ring van de geïsoleerde prijs categorie worden met alle lagen uw apps uitgevoerd op de gedeelde netwerk infrastructuur in Azure App Service. De geïsoleerde laag biedt u volledige netwerk isolatie door uw apps in een speciale [app service omgeving](environment/intro.md)uit te voeren. Een App Service omgeving wordt uitgevoerd in uw eigen exemplaar van [Azure Virtual Network](/azure/virtual-network/).|
+| Beveiligde verbindingen gebruiken voor toegang tot on-premises resources | U kunt [hybride verbindingen](app-service-hybrid-connections.md), [Virtual Network integratie](web-sites-integrate-with-vnet.md)of [app service omgeving](environment/intro.md) gebruiken om verbinding te maken met on-premises resources. |
+| Beperk de bloot stelling aan binnenkomend netwerk verkeer | Met netwerk beveiligings groepen kunt u netwerk toegang beperken en het aantal weer gegeven eind punten beheren. Zie voor meer informatie [inkomend verkeer naar een app service Environment beheren](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
 ## <a name="monitoring"></a>Bewaking
 
 | Aanbeveling | Opmerkingen |
 |-|-|
-|Standaardlaag Azure Security Center gebruiken | [Azure Security Center](../security-center/security-center-app-services.md) is native geïntegreerd met Azure App Service. Het kan beoordelingen uitvoeren en beveiligingsaanbevelingen geven. |
+|Azure Security Center Standard-laag gebruiken | [Azure Security Center](../security-center/security-center-app-services.md) is systeem eigen geïntegreerd met Azure app service. Dit kan analyses uitvoeren en aanbevelingen voor beveiliging bieden. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Neem contact op met uw toepassingsprovider om te zien of er aanvullende beveiligingsvereisten zijn. Zie [Beveiligde ontwikkelingsdocumentatie](../security/fundamentals/abstract-develop-secure-apps.md)voor meer informatie over het ontwikkelen van veilige toepassingen.
+Neem contact op met uw toepassings provider om na te gaan of er aanvullende beveiligings vereisten gelden. Zie [documentatie voor beveiligde ontwikkel aars](../security/fundamentals/abstract-develop-secure-apps.md)voor meer informatie over het ontwikkelen van beveiligde toepassingen.

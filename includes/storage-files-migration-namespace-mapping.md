@@ -1,6 +1,6 @@
 ---
 title: Een mapstructuur toewijzen aan een Azure File Sync-topologie
-description: Een bestaande bestands- en mapstructuur toewijzen aan Azure-bestandsshares voor gebruik met Azure File Sync. Een gemeenschappelijk tekstblok, gedeeld tussen migratiedocumenten.
+description: Wijs een bestaande bestands-en mapstructuur toe aan Azure-bestands shares voor gebruik met Azure File Sync. Een gemeen schappelijk tekst blok, gedeeld tussen migratie documenten.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -14,67 +14,67 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80124738"
 ---
-In deze stap evalueert u hoeveel Azure-bestandsshares u nodig hebt. Eén Windows Server (of cluster) kan maximaal 30 Azure-bestandsshares synchroniseren.
+In deze stap evalueert u hoeveel Azure-bestands shares u nodig hebt. Eén Windows-Server (of-cluster) kan Maxi maal 30 Azure-bestands shares synchroniseren.
 
-Mogelijk hebt u meer mappen op uw volumes die u momenteel lokaal deelt als SMB-aandelen deelt met uw gebruikers en apps. De eenvoudigste zou zijn om voor te stellen voor een on-premises delen om 1:1 in kaart te brengen naar een Azure-bestandsshare. Als u een klein genoeg getal hebt, onder de 30 voor één Windows-server, wordt een 1:1-toewijzing aanbevolen.
+Mogelijk hebt u meer mappen op uw volumes die momenteel lokaal worden gedeeld als SMB-shares voor uw gebruikers en apps. Het is de eenvoudigste manier om een on-premises share te gebruiken om 1:1 te koppelen aan een Azure-bestands share. Als u een klein aantal voldoende nummers hebt, onder 30 voor één Windows-Server, wordt een 1:1-toewijzing aanbevolen.
 
-Als u meer aandelen dan 30 hebt, is het vaak niet nodig om een on-premises share 1:1 toe te voegen aan een Azure-bestandsshare.
-Overweeg de volgende opties:
+Als u meer shares dan 30 hebt, is het vaak niet nodig om een on-premises share 1:1 toe te wijzen aan een Azure-bestands share.
+Houd rekening met de volgende opties:
 
 #### <a name="share-grouping"></a>Groepering delen
 
-Als uw HR-afdeling bijvoorbeeld in totaal 15 aandelen heeft, u overwegen om alle HR-gegevens op te slaan in één Azure-bestandsshare. Het opslaan van meerdere on-premises shares in één Azure-bestandsshare belet u niet om de gebruikelijke 15 SMB-shares te maken op uw lokale Windows Server. Het betekent alleen dat u de hoofdmappen van deze 15 shares organiseert als submappen onder een gemeenschappelijke map. Vervolgens synchroniseert u deze algemene map met een Azure-bestandsshare. Op die manier is slechts één Azure-bestandsaandeel in de cloud nodig voor deze groep on-premises aandelen.
+Als uw HR-afdeling bijvoorbeeld een totaal van 15 shares heeft, kunt u overwegen om alle HR-gegevens op te slaan in één Azure-bestands share. Als u meerdere on-premises shares in een Azure-bestands share opslaat, is het niet mogelijk om de gebruikelijke 15 SMB-shares op uw lokale Windows-Server te maken. Dit betekent alleen dat u de hoofd mappen van deze 15 shares als submappen in een gemeen schappelijke map ordent. Vervolgens synchroniseert u deze algemene map naar een Azure-bestands share. Op die manier is slechts één Azure-bestands share in de Cloud nodig voor deze groep lokale shares.
 
-#### <a name="volume-sync"></a>Volumesynchronisatie
+#### <a name="volume-sync"></a>Volume synchronisatie
 
-Azure File Sync ondersteunt het synchroniseren van de hoofdmap van een volume naar een Azure-bestandsshare.
-Als u de hoofdmap synchroniseert, komen alle submappen en bestanden in dezelfde Azure-bestandsshare terecht.
+Azure File Sync ondersteunt het synchroniseren van de hoofdmap van een volume naar een Azure-bestands share.
+Als u de hoofdmap synchroniseert, worden alle submappen en bestanden in dezelfde Azure-bestands share weer beëindigd.
 
-Het synchroniseren van de wortel van het volume is niet altijd het beste antwoord. Er zijn voordelen in het synchroniseren van meerdere locaties, waardoor het aantal items lager per synchronisatiebereik blijft. Het instellen van Azure File Sync met een lager aantal items is niet alleen gunstig voor bestandssynchronisatie. Een lager aantal items komt ook andere scenario's ten goede, zoals:
+Het synchroniseren van de hoofdmap van het volume is niet altijd het beste antwoord. Er zijn voor delen in het synchroniseren van meerdere locaties, waardoor het aantal items lager per synchronisatie bereik kan worden bewaard. Het instellen van Azure File Sync met een lager aantal items is niet alleen nuttig voor bestands synchronisatie. Een lager aantal items heeft ook voor delen voor andere scenario's zoals:
 
-* cloud-side restore from an Azure file share snapshot taken as a backup cloud-side restore from an Azure file share snapshot taken as a backup cloud-side restore from an Azure file share snapshot taken as a backup cloud-
-* noodherstel van een on-premises server kan aanzienlijk versnellen
-* wijzigingen die rechtstreeks in een Azure-bestandsshare (buiten synchronisatie) zijn aangebracht, kunnen sneller worden gedetecteerd en gesynchroniseerd
+* herstellen aan de Cloud zijde vanuit een moment opname van een Azure-bestands share die is gemaakt als back-up
+* herstel na nood gevallen van een on-premises server kan aanzienlijk sneller worden
+* wijzigingen die rechtstreeks in een Azure-bestands share (buiten de synchronisatie) zijn aangebracht, kunnen sneller worden gedetecteerd en gesynchroniseerd
 
-#### <a name="a-structured-approach-to-a-deployment-map"></a>Een gestructureerde benadering van een implementatiekaart
+#### <a name="a-structured-approach-to-a-deployment-map"></a>Een gestructureerde benadering van een implementatie toewijzing
 
-Voordat u cloudopslag in een volgende stap implementeert, is het belangrijk om een kaart te maken tussen on-premises mappen en Azure-bestandsshares. Deze toewijzing geeft vervolgens aan hoeveel en welke Azure File Sync-groepresources u indient. Een synchronisatiegroep koppelt de Azure-bestandsshare en de map op uw server aan elkaar en maakt een synchronisatieverbinding.
+Voordat u de Cloud opslag in een volgende stap implementeert, is het belang rijk om een kaart te maken tussen on-premises mappen en Azure-bestands shares. Met deze toewijzing wordt vervolgens op de hoogte gesteld van het aantal en welke Azure File Sync resources voor synchronisatie groep u wilt inrichten. Een synchronisatie groep is gekoppeld aan de Azure-bestands share en de map op uw server en brengt een synchronisatie verbinding tot stand.
 
-Als u wilt beslissen hoeveel Azure-bestandsshares u nodig hebt, controleert u de volgende limieten en aanbevolen procedures. Als u dit doet, u uw kaart optimaliseren:
+Bekijk de volgende limieten en aanbevolen procedures om de beslissing te nemen over het aantal Azure-bestands shares dat u nodig hebt. Dit helpt u bij het optimaliseren van uw kaart:
 
-* Een server waarop de Azure File Sync-agent is geïnstalleerd, kan worden gesynchroniseerd met maximaal 30 Azure-bestandsshares.
-* Een Azure-bestandsshare wordt geïmplementeerd in een opslagaccount. Dat maakt het opslagaccount een schaaldoel voor prestatienummers zoals IOPS en doorvoer. Twee standaard (niet premium) Azure-bestandsshares kunnen in theorie de maximale prestaties verzadigen die een opslagaccount kan leveren. Als u alleen Azure File Sync wilt koppelen aan deze bestandsshares, ontstaat er geen probleem om meerdere Azure-bestandsshares in hetzelfde opslagaccount te groeperen. Bekijk de prestatiedoelen voor Azure-bestandsshare voor meer inzicht in de relevante statistieken die u moet overwegen. Als u van plan bent een app naar Azure op te tillen waarmee het Azure-bestandsshare native wordt gebruikt, hebt u mogelijk meer prestaties nodig van uw Azure-bestandsshare. Als dit een mogelijkheid is, zelfs in de toekomst, is het toewijzen van een Azure-bestandsshare aan een eigen opslagaccount het beste.
-* Er is een limiet van 250 opslagaccounts per abonnement in één Azure-regio.
+* Een server waarop de Azure File Sync-agent is geïnstalleerd, kan synchroniseren met Maxi maal 30 Azure-bestands shares.
+* Een Azure-bestands share wordt in een opslag account geïmplementeerd. Hiermee wordt het opslag account een schaal doel voor prestatie cijfers zoals IOPS en door voer. Twee standaard (geen Premium) Azure-bestands shares kunnen theoretisch de maximale prestaties van een opslag account in beslag nemen. Als u van plan bent om Azure File Sync toe te voegen aan deze bestands shares, kunt u met het groeperen van verschillende Azure-bestands shares tot hetzelfde opslag account geen probleem maken. Bekijk de prestatie doelen van de Azure-bestands share voor dieper inzicht in de relevante metrische gegevens om rekening mee te houden. Als u van plan bent om een app te heffen op Azure die de Azure-bestands share systeem eigen gebruikt, hebt u mogelijk meer prestaties nodig van uw Azure-bestands share. Als dit mogelijk is, kunt u zelfs in de toekomst een Azure-bestands share toewijzen aan een eigen opslag account.
+* Er is een limiet van 250 opslag accounts per abonnement in één Azure-regio.
 
 > [!TIP]
-> Met deze informatie in het achterhoofd wordt het vaak noodzakelijk om meerdere mappen op het hoogste niveau op uw volumes te groeperen in een gemeenschappelijke, nieuwe hoofdmap. Vervolgens synchroniseert u deze nieuwe hoofdmap en alle mappen die u erin hebt gegroepeerd, met één Azure-bestandsshare.                                                    
+> Met deze informatie in het algemeen is het vaak nodig om meerdere mappen op het hoogste niveau op uw volumes te groeperen in een gemeen schappelijke, nieuwe hoofdmap. Vervolgens synchroniseert u deze nieuwe hoofdmap en alle mappen die u erin hebt gegroepeerd, naar één Azure-bestands share.                                                    
 
-Met deze techniek u binnen de 30 Azure-synchronisatielimiet voor bestandsdelen per server blijven.
-Deze groepering onder een gemeenschappelijke hoofdwortel heeft geen invloed op de toegang tot uw gegevens. Uw ACL's blijven zoals het is, u hoeft alleen maar delen paden (zoals SMB of NFS aandelen) die u zou kunnen hebben op de server mappen die u nu veranderd in een gemeenschappelijke root aan te passen. Verder verandert er niets.
+Met deze techniek kunt u binnen de 30 Azure-synchronisatie limiet voor de bestands share per server blijven.
+Deze groepering onder een gemeen schappelijke hoofdmap heeft geen invloed op de toegang tot uw gegevens. Uw Acl's blijven net zo lang. u hoeft alleen share paden (zoals SMB-of NFS-shares) aan te passen die u mogelijk hebt op de Server mappen die u nu hebt gewijzigd in een algemene hoofdmap. Niets else wijzigt.
 
-Een ander belangrijk aspect van Azure File Sync en een evenwichtige prestaties en ervaring is inzicht in de schaalfactoren voor azure file sync prestaties. Uiteraard, wanneer bestanden worden gesynchroniseerd via het internet, grotere bestanden meer tijd en bandbreedte te synchroniseren.
+Een ander belang rijk aspect van Azure File Sync en een evenwichtige prestaties en ervaring is een goed idee van de schaal factoren voor Azure File Sync prestaties. Wanneer bestanden worden gesynchroniseerd via internet, nemen grotere bestanden uiteraard meer tijd en band breedte in beslag om te synchroniseren.
 
 > [!IMPORTANT]
-> De belangrijkste schaalvector voor Azure File Sync is het aantal items (bestanden en mappen) dat moet worden gesynchroniseerd.
+> De belangrijkste schaal vector voor Azure File Sync is het aantal items (bestanden en mappen) dat moet worden gesynchroniseerd.
 
-Azure File Sync ondersteunt het synchroniseren van maximaal 100.000 items naar één Azure-bestandsshare. Deze limiet kan worden overschreden en geeft alleen weer wat het Azure File Sync-team regelmatig test.
+Azure File Sync ondersteunt het synchroniseren van Maxi maal 100.000 items naar één Azure-bestands share. Deze limiet kan worden overschreden en illustreert alleen hoe het Azure File Sync team regel matig wordt getest.
 
-Het is een aanbevolen gewoonte om het aantal items per synchronisatiebereik laag te houden. Dat aspect is een belangrijke factor die moet worden overwogen bij het toewijzen van mappen naar Azure-bestandsshares.
+Het is een best practice om te voor komen dat het aantal items per synchronisatie bereik laag is. Dit aspect is een belang rijke factor voor de toewijzing van mappen aan Azure-bestands shares.
 
-Zelfs als in uw situatie een set mappen logisch kan synchroniseren met dezelfde Azure-bestandsshare (met behulp van de nieuwe, gemeenschappelijke hoofdmapbenadering van bovenaf), is het misschien nog steeds beter om mappen zodanig te hergroeperen dat ze worden gesynchroniseerd met twee in plaats van één Azure-bestandsshare. Deze aanpak kan worden gebruikt om het aantal bestanden en mappen per bestandsaandeel in evenwicht te houden op de server.
+Zelfs als in uw situatie een set mappen logisch kan worden gesynchroniseerd met dezelfde Azure-bestands share (met behulp van de nieuwe benadering van de algemene hoofdmap), is het beter om mappen zodanig te hergroepen dat ze worden gesynchroniseerd met twee in plaats van een Azure-bestands share. Deze benadering kan worden gebruikt om het aantal bestanden en mappen per bestands share op de hele server te houden.
 
-#### <a name="create-a-mapping-table"></a>Een toewijzingstabel maken
+#### <a name="create-a-mapping-table"></a>Een toewijzings tabel maken
 
 :::row:::
     :::column:::
         [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
-        Gebruik een combinatie van de vorige concepten om te bepalen hoeveel Azure-bestandsshares u nodig hebt en in welke delen van uw bestaande gegevens worden beland in welke Azure-bestandsshare.
+        Gebruik een combi natie van de voor gaande concepten om te bepalen hoeveel Azure-bestands shares u nodig hebt, en welke onderdelen van uw bestaande gegevens in de Azure-bestands share moeten eindigen.
         
-        Maak een tabel die uw gedachten registreert, zodat u er in de volgende stap naar verwijzen. Georganiseerd blijven is belangrijk omdat het gemakkelijk kan zijn om details van uw toewijzingsplan te verliezen bij het inrichten van veel Azure-resources tegelijk. Als u wilt helpen bij het maken van een volledige toewijzing, u een Microsoft Excel-bestand als sjabloon downloaden.
+        Maak een tabel waarin uw ideeën worden vastgelegd, zodat u deze in de volgende stap kunt raadplegen. Georganiseerd is belang rijk omdat het eenvoudig is om gegevens van uw toewijzings plan te verliezen bij het inrichten van een groot aantal Azure-resources tegelijk. Om u te helpen bij het maken van een volledige toewijzing, kunt u een micro soft Excel-bestand downloaden als een sjabloon.
 
-[//]: # (HTML wordt weergegeven als de enige manier om een geneste tabel met twee kolommen toe te voegen met werkende afbeeldingsparsing en tekst/hyperlink op dezelfde regel.)
+[//]: # (HTML wordt weer gegeven als de enige manier om een geneste tabel met twee kolommen toe te voegen met het parseren van de werk installatie kopie en tekst/Hyper link op dezelfde regel.)
 
 <br>
 <table>
@@ -83,7 +83,7 @@ Zelfs als in uw situatie een set mappen logisch kan synchroniseren met dezelfde 
             <img src="media/storage-files-migration-namespace-mapping/excel.png" alt="Microsoft Excel file icon that helps to set the context for the type of file download for the link next to it.">
         </td>
         <td>
-            <a href="https://download.microsoft.com/download/1/8/D/18DC8184-E7E2-45EF-823F-F8A36B9FF240/Azure File Sync - Namespace Mapping.xlsx">Download een sjabloon voor naamruimtetoewijzing.</a>
+            <a href="https://download.microsoft.com/download/1/8/D/18DC8184-E7E2-45EF-823F-F8A36B9FF240/Azure File Sync - Namespace Mapping.xlsx">Down load een sjabloon voor het toewijzen van naam ruimten.</a>
         </td>
     </tr>
 </table>

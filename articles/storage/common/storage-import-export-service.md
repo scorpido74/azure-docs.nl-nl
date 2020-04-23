@@ -1,6 +1,6 @@
 ---
-title: Azure Importeren/exporteren gebruiken om gegevens van en naar Azure Storage over te dragen | Microsoft Documenten
-description: Meer informatie over het maken van import- en exporttaken in de Azure-portal voor het overbrengen van gegevens van en naar Azure Storage.
+title: Azure import/export gebruiken om gegevens over te dragen van en naar Azure Storage | Microsoft Docs
+description: Meer informatie over het maken van import-en export taken in de Azure Portal voor het overbrengen van gegevens van en naar Azure Storage.
 author: alkohli
 services: storage
 ms.service: storage
@@ -15,108 +15,108 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80282440"
 ---
-# <a name="what-is-azure-importexport-service"></a>Wat is azure import/exportservice?
+# <a name="what-is-azure-importexport-service"></a>Wat is Azure import/export-service?
 
-Azure Import/Export-service wordt gebruikt om grote hoeveelheden gegevens veilig te importeren naar Azure Blob-opslag en Azure Files door schijfstations naar een Azure-datacenter te verzenden. Deze service kan ook worden gebruikt om gegevens van Azure Blob-opslag over te zetten naar schijven en te verzenden naar uw on-premises sites. Gegevens van een of meer schijven kunnen worden geïmporteerd naar Azure Blob-opslag of Azure Files.
+Azure import/export-service wordt gebruikt voor het veilig importeren van grote hoeveel heden gegevens naar Azure Blob-opslag en Azure Files door het verzenden van schijf stations naar een Azure-Data Center. Deze service kan ook worden gebruikt om gegevens over te dragen van Azure Blob-opslag naar schijf stations en te verzenden naar uw on-premises sites. Gegevens van een of meer schijf stations kunnen worden geïmporteerd naar Azure Blob-opslag of Azure Files.
 
-Lever uw eigen schijven en breng gegevens over met de Azure Import/Export-service. U ook schijven gebruiken die door Microsoft worden geleverd.
+Geef uw eigen schijf stations op en breng gegevens over naar de Azure import/export-service. U kunt ook schijf stations gebruiken die worden geleverd door micro soft.
 
-Als u gegevens wilt overdragen met behulp van door Microsoft geleverde schijven, u [Azure Data Box Disk](../../databox/data-box-disk-overview.md) gebruiken om gegevens in Azure te importeren. Microsoft verzendt tot 5 versleutelde solid-state disk drives (SSD's) met een totale capaciteit van 40 TB per bestelling naar uw datacenter via een regionale luchtvaartmaatschappij. U snel schijven configureren, gegevens kopiëren naar schijven via een USB 3.0-verbinding en de schijven terugsturen naar Azure. Ga voor meer informatie naar [het overzicht van Azure Data Box Disk](../../databox/data-box-disk-overview.md).
+Als u gegevens wilt overdragen met behulp van schijf stations die door micro soft worden geleverd, kunt u [Azure data Box Disk](../../databox/data-box-disk-overview.md) gebruiken om gegevens te importeren in Azure. Micro soft stuurt Maxi maal 5 versleutelde Solid-State Disk-schijven (Ssd's) met een totale capaciteit van 40 TB per bestelling, naar uw Data Center via een regionale luchtvaart maatschappij. U kunt snel schijf stations configureren, gegevens naar schijf stations kopiëren via een USB 3,0-verbinding en de schijf stations weer naar Azure verzenden. Ga naar [Azure data Box Disk-overzicht](../../databox/data-box-disk-overview.md)voor meer informatie.
 
-## <a name="azure-importexport-use-cases"></a>Use Cases voor Azure Import/Export
+## <a name="azure-importexport-use-cases"></a>Azure import/export-use cases
 
-Overweeg om azure import/export-service te gebruiken wanneer het uploaden of downloaden van gegevens via het netwerk te traag is of het verkrijgen van extra netwerkbandbreedte is onbetaalbaar. Gebruik deze service in de volgende scenario's:
+U kunt de Azure import/export-service gebruiken wanneer het uploaden of downloaden van gegevens via het netwerk te langzaam is, of als u extra netwerk bandbreedte nodig hebt. Gebruik deze service in de volgende scenario's:
 
-* **Gegevensmigratie naar de cloud:** verplaats grote hoeveelheden gegevens snel en kosteneffectief naar Azure.
-* **Contentdistributie**: Stuur snel gegevens naar sites van uw klanten.
-* **Back-up:** maak back-ups van uw on-premises gegevens om op te slaan in Azure Storage.
-* **Gegevensherstel:** herstel grote hoeveelheden gegevens die in de opslag zijn opgeslagen en laat deze op uw locatie worden afgeleverd.
+* **Gegevens migratie naar de Cloud**: Verplaats grote hoeveel heden gegevens snel en kosten effectief naar Azure.
+* **Inhouds distributie**: snel gegevens verzenden naar uw sites van klanten.
+* **Back-up**: Maak back-ups van uw on-premises gegevens om in azure Storage op te slaan.
+* **Gegevens herstel**: een grote hoeveelheid gegevens die is opgeslagen in de opslag herstellen en deze aan uw on-premises locatie laten leveren.
 
-## <a name="importexport-components"></a>Onderdelen importeren/exporteren
+## <a name="importexport-components"></a>Import/export-onderdelen
 
-De import/exportservice gebruikt de volgende componenten:
+Import/export-service maakt gebruik van de volgende onderdelen:
 
-* **Import/Exportservice:** deze service die beschikbaar is in Azure-portal helpt de gebruiker bij het maken en bijhouden van taken voor het importeren van gegevens (uploaden) en exporteren (downloaden).  
+* **Import/export-service**: deze service die beschikbaar is in azure Portal helpt de gebruiker bij het maken en bijhouden van gegevens import (upload) en voor het exporteren (downloaden) van taken.  
 
-* **GEREEDSCHAP WAImportExport**: Dit is een opdrachtregelgereedschap dat het volgende doet:
-  * Bereidt uw schijven voor die worden verzonden voor import.
-  * Vergemakkelijkt het kopiëren van uw gegevens naar het station.
-  * Hiermee versleutelt u de gegevens op het station met AES 128-bits BitLocker. U een externe sleutelbeschermer gebruiken om uw BitLocker-sleutel te beschermen.
-  * Hiermee genereert u de drive-logboekbestanden die worden gebruikt tijdens het maken van invoer.
-  * Helpt bij het identificeren van het aantal stations dat nodig is voor exporttaken.
+* **Hulp programma WAImportExport**: dit is een opdracht regel programma dat het volgende doet:
+  * Bereidt uw schijf stations voor die worden verzonden om te worden geïmporteerd.
+  * Vereenvoudigt het kopiëren van uw gegevens naar het station.
+  * Hiermee worden de gegevens op het station versleuteld met AES 128-bits BitLocker. U kunt een externe sleutel beveiliging gebruiken om uw BitLocker-sleutel te beveiligen.
+  * Genereert de logboek bestanden van het station die worden gebruikt tijdens het maken van het importeren.
+  * Helpt bij het identificeren van het aantal stations dat nodig is voor het exporteren van taken.
 
 > [!NOTE]
-> De WAImportExport tool is beschikbaar in twee versies, versie 1 en 2. Wij raden u aan:
+> Het hulp programma WAImportExport is beschikbaar in twee versies, versie 1 en 2. U kunt het beste het volgende gebruiken:
 >
 > * Versie 1 voor importeren/exporteren naar Azure Blob-opslag.
-> * Versie 2 voor het importeren van gegevens in Azure-bestanden.
+> * Versie 2 voor het importeren van gegevens in azure files.
 >
-> Het hulpprogramma WAImportExport is alleen compatibel met een 64-bits Windows-besturingssysteem. Ga voor specifieke ondersteunde BE-versies naar [Azure Import/Export-vereisten](storage-import-export-requirements.md#supported-operating-systems).
+> Het hulpprogramma WAImportExport is alleen compatibel met een 64-bits Windows-besturingssysteem. Voor specifieke ondersteunde versies van besturings systemen gaat u naar [Azure import/export-vereisten](storage-import-export-requirements.md#supported-operating-systems).
 
-* **Schijven:** u Solid-state drives (SSD's) of harde schijven (HDD's) verzenden naar het Azure-datacenter. Wanneer u een importtaak maakt, verzendt u schijven met uw gegevens. Wanneer u een exporttaak maakt, verzendt u lege schijven naar het Azure-datacenter. Ga voor specifieke schijftypen naar [ondersteunde schijftypen](storage-import-export-requirements.md#supported-hardware).
+* **Schijf stations**: u kunt Ssd's (Solid-state drives) of harde schijven (hdd's) verzenden naar het Azure-Data Center. Wanneer u een import taak maakt, verzendt u schijf stations met uw gegevens. Wanneer u een export taak maakt, verzendt u lege stations naar het Azure-Data Center. Voor specifieke schijf typen gaat u naar [ondersteunde schijf typen](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Hoe werkt Import/Export?
 
-Azure Import/Export-service maakt gegevensoverdracht naar Azure Blobs en Azure Files mogelijk door taken te maken. Gebruik Azure portal of Azure Resource Manager REST API om taken te maken. Elke taak is gekoppeld aan één opslagaccount.
+Met Azure import/export-service kunt u gegevens overdragen naar Azure-blobs en Azure Files door taken te maken. Gebruik Azure Portal of Azure Resource Manager REST API om taken te maken. Elke taak is gekoppeld aan één opslag account.
 
-De taken kunnen import- of exporttaken zijn. Met een importtaak u gegevens importeren in Azure Blobs- of Azure-bestanden, terwijl de exporttaak het mogelijk maakt gegevens te exporteren vanuit Azure Blobs. Voor een importtaak verzendt u schijven met uw gegevens. Wanneer u een exporttaak maakt, verzendt u lege schijven naar een Azure-datacenter. In elk geval u maximaal 10 schijven per taak verzenden.
+De taken kunnen import-of export taken zijn. Met een import taak kunt u gegevens importeren in azure blobs of Azure files, terwijl de export taak toestaat dat gegevens worden geëxporteerd uit Azure-blobs. Voor een import taak levert u stations met uw gegevens. Wanneer u een export taak maakt, verzendt u lege stations naar een Azure-Data Center. In elk geval kunt u Maxi maal tien schijf stations per taak verzenden.
 
-### <a name="inside-an-import-job"></a>Binnen een importtaak
+### <a name="inside-an-import-job"></a>Binnen een import taak
 
-Op een hoog niveau omvat een importtaak de volgende stappen:
+Op hoog niveau omvat een import taak de volgende stappen:
 
-1. Bepaal de gegevens die moeten worden geïmporteerd, het aantal schijven dat u nodig hebt, de locatie van de doelblob voor uw gegevens in Azure-opslag.
-2. Gebruik het gereedschap WAImportExport om gegevens naar schijven te kopiëren. Versleutel de schijven met BitLocker.
-3. Maak een importtaak in uw doelopslagaccount in Azure-portal. Upload de stationslogboekbestanden.
-4. Geef het retouradres en het rekeningnummer van de vervoerder op voor het verzenden van de schijven naar u.
-5. Verzend de schijven naar het verzendadres dat tijdens het maken van een taak wordt opgegeven.
-6. Werk het volgnummer voor de levering bij in de taakgegevens van importeren en dien de importtaak in.
-7. De stations worden ontvangen en verwerkt in het Azure-datacenter.
-8. De stations worden verzonden met uw provideraccount naar het retouradres in de importtaak.
+1. Bepaal de gegevens die moeten worden geïmporteerd, het aantal stations dat u nodig hebt, doel-BLOB-locatie voor uw gegevens in azure Storage.
+2. Gebruik het hulp programma WAImportExport om gegevens naar schijf stations te kopiëren. Versleutel de schijf stations met BitLocker.
+3. Maak een import taak in uw doel-opslag account in Azure Portal. Upload de logboek bestanden van het station.
+4. Geef het retour adres en het account nummer van de transporteur op om de schijven terug te sturen.
+5. Verzend de schijf stations naar het verzend adres dat wordt vermeld tijdens het maken van de taak.
+6. Werk het tracking nummer van de levering bij in de taak Details importeren en verzend de import taak.
+7. De stations worden ontvangen en verwerkt in het Azure-Data Center.
+8. De stations worden verzonden met behulp van uw vervoerders account naar het retour adres dat in de import taak is opgenomen.
 
 > [!NOTE]
-> Voor lokale (binnen datacenterland/regio) zendingen u een binnenlandse luchtvaartrekening delen.
+> Voor lokale verzen dingen (binnen het land/regio van het Data Center) moet u een account voor een binnenlandse transporteur delen.
 >
-> Voor zendingen in het buitenland (buiten datacenterland/regio) u een internationale luchtvaartrekening delen.
+> Voor verzen dingen in het buiten land, een internationaal gegevens centrum, moet u een account voor internationale telecomers delen.
 
- ![Figuur 1:Taakstroom importeren](./media/storage-import-export-service/importjob.png)
+ ![Afbeelding 1: taak stroom importeren](./media/storage-import-export-service/importjob.png)
 
-Ga voor stapsgewijze instructies over het importeren van gegevens naar:
+Voor stapsgewijze instructies over het importeren van gegevens gaat u naar:
 
-* [Gegevens importeren in Azure Blobs](storage-import-export-data-to-blobs.md)
-* [Gegevens importeren in Azure-bestanden](storage-import-export-data-to-files.md)
+* [Gegevens importeren in azure blobs](storage-import-export-data-to-blobs.md)
+* [Gegevens importeren in Azure Files](storage-import-export-data-to-files.md)
 
-### <a name="inside-an-export-job"></a>Binnen een exporttaak
+### <a name="inside-an-export-job"></a>Binnen een export taak
 
 > [!IMPORTANT]
-> De service ondersteunt alleen de export van Azure Blobs. Exporteren van Azure-bestanden wordt niet ondersteund.
+> De service ondersteunt alleen het exporteren van Azure-blobs. Het exporteren van Azure files wordt niet ondersteund.
 
-Op een hoog niveau omvat een exporttaak de volgende stappen:
+Op hoog niveau omvat een export taak de volgende stappen:
 
-1. Bepaal de gegevens die moeten worden geëxporteerd, het aantal stations dat u nodig hebt, bronblobs of containerpaden van uw gegevens in Blob-opslag.
-2. Maak een exporttaak in uw bronopslagaccount in Azure-portal.
-3. Geef bronblobs of containerpaden op voor de gegevens die moeten worden geëxporteerd.
-4. Geef het retouradres en het rekeningnummer van de vervoerder op voor het verzenden van de schijven naar u.
-5. Verzend de schijven naar het verzendadres dat tijdens het maken van een taak wordt opgegeven.
-6. Werk het volgnummer voor de levering bij in de taakgegevens exporteren en dien de exporttaak in.
-7. De stations worden ontvangen en verwerkt in het Azure-datacenter.
-8. De schijven zijn versleuteld met BitLocker en de sleutels zijn beschikbaar via de Azure-portal.  
-9. De stations worden verzonden met uw provideraccount naar het retouradres in de importtaak.
+1. Bepaal de gegevens die moeten worden geëxporteerd, het aantal stations dat u nodig hebt, bron-blobs of container paden van uw gegevens in Blob Storage.
+2. Maak een export taak in uw bron-opslag account in Azure Portal.
+3. Geef de bron-blobs of container paden op voor de gegevens die moeten worden geëxporteerd.
+4. Geef het retour adres en het account nummer van de transporteur op om de schijven terug te sturen.
+5. Verzend de schijf stations naar het verzend adres dat wordt vermeld tijdens het maken van de taak.
+6. Werk het tracking nummer van de levering bij in de export taak Details en verzend de export taak.
+7. De stations worden ontvangen en verwerkt in het Azure-Data Center.
+8. De stations zijn versleuteld met BitLocker en de sleutels zijn beschikbaar via de Azure Portal.  
+9. De stations worden verzonden met behulp van uw vervoerders account naar het retour adres dat in de import taak is opgenomen.
 
 > [!NOTE]
-> Voor lokale (binnen datacenterland/regio) zendingen u een binnenlandse luchtvaartrekening delen.
+> Voor lokale verzen dingen (binnen het land/regio van het Data Center) moet u een account voor een binnenlandse transporteur delen.
 >
-> Voor zendingen in het buitenland (buiten datacenterland/regio) u een internationale luchtvaartrekening delen.
+> Voor verzen dingen in het buiten land, een internationaal gegevens centrum, moet u een account voor internationale telecomers delen.
   
- ![Figuur 2:Taakstroom exporteren](./media/storage-import-export-service/exportjob.png)
+ ![Afbeelding 2: taak stroom exporteren](./media/storage-import-export-service/exportjob.png)
 
-Ga voor stapsgewijze instructies voor het exporteren van gegevens naar [Gegevens exporteren vanuit Azure Blobs.](storage-import-export-data-from-blobs.md)
+Ga voor stapsgewijze instructies voor het exporteren van gegevens naar [gegevens exporteren vanuit Azure blobs](storage-import-export-data-from-blobs.md).
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-De Azure Import/Export-service ondersteunt het kopiëren van gegevens van en naar alle Azure-opslagaccounts. U schijven verzenden naar een van de vermelde locaties. Als uw opslagaccount zich op een Azure-locatie bevindt die hier niet is opgegeven, wordt een alternatieve verzendlocatie opgegeven wanneer u de taak maakt.
+De Azure import/export-service ondersteunt het kopiëren van gegevens van en naar alle Azure Storage-accounts. U kunt schijf stations verzenden naar een van de vermelde locaties. Als uw opslag account zich in een Azure-locatie bevindt die hier niet is opgegeven, wordt er een alternatieve verzend locatie opgegeven wanneer u de taak maakt.
 
-### <a name="supported-shipping-locations"></a>Ondersteunde verzendlocaties
+### <a name="supported-shipping-locations"></a>Ondersteunde verzend locaties
 
 |Land/regio  |Land/regio  |Land/regio  |Land/regio  |
 |---------|---------|---------|---------|
@@ -131,36 +131,36 @@ De Azure Import/Export-service ondersteunt het kopiëren van gegevens van en naa
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
-De gegevens op het station worden versleuteld met AES 128-bits BitLocker Drive Encryption. Deze versleuteling beschermt uw gegevens tijdens het transport.
+De gegevens op het station worden versleuteld met AES 128-bits BitLocker-stationsversleuteling. Deze versleuteling beschermt uw gegevens tijdens de overdracht.
 
-Voor importtaken worden stations op twee manieren versleuteld.  
+Voor import taken worden stations op twee manieren versleuteld.  
 
-* Geef de optie op wanneer u het bestand *dataset.csv* gebruikt tijdens het uitvoeren van het gereedschap WAImportExport tijdens de voorbereiding van het station.
+* Geef de optie op wanneer u het bestand *DataSet. CSV* gebruikt tijdens het uitvoeren van het hulp programma WAImportExport tijdens de voor bereiding van het station.
 
-* BitLocker-versleuteling handmatig inschakelen op het station. Geef de versleutelingssleutel op in de *driveset.csv* wanneer u de opdrachtregel van het gereedschap WAImportExport uitvoert tijdens de voorbereiding van het station. De BitLocker-versleutelingssleutel kan verder worden beschermd met behulp van een externe sleutelbeschermer (ook bekend als de door Microsoft beheerde sleutel) of een door de klant beheerde sleutel. Zie voor meer informatie hoe [u een door de klant beheerde sleutel gebruikt om uw BitLocker-sleutel te beschermen.](storage-import-export-encryption-key-portal.md)
+* BitLocker-versleuteling hand matig inschakelen op het station. Geef de versleutelings sleutel op in *stationset. CSV* tijdens het uitvoeren van de opdracht regel van het WAImportExport-hulp programma tijdens het voorbereiden van het station. De BitLocker-versleutelings sleutel kan verder worden beveiligd met behulp van een externe-sleutel beveiliging (ook wel bekend als de door micro soft beheerde sleutel) of een door de klant beheerde sleutel. Zie [een door de klant beheerde sleutel gebruiken voor het beveiligen van uw BitLocker-sleutel](storage-import-export-encryption-key-portal.md)voor meer informatie.
 
-Voor het exporteren van taken, nadat uw gegevens zijn gekopieerd naar de stations, de dienst versleutelt het station met behulp van BitLocker voordat u het terugnaar u. De versleutelingssleutel wordt u via de Azure-portal geleverd. Het station moet worden ontgrendeld met behulp van de WAImporExport tool met behulp van de sleutel.
+Wanneer de gegevens zijn gekopieerd naar de stations, wordt het station door de service met BitLocker versleuteld voordat het naar u wordt verzonden. De versleutelings sleutel wordt u via de Azure Portal verschaft. Het station moet worden ontgrendeld met het hulp programma WAImporExport met behulp van de-sleutel.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ### <a name="pricing"></a>Prijzen
 
-**Kosten voor rijafhandeling**
+**Verwerkings kosten voor station**
 
-Er zijn kosten voor het afhandelen van stations voor elk station dat wordt verwerkt als onderdeel van uw import- of exporttaak. Bekijk de details over de [Azure Import/Export Pricing](https://azure.microsoft.com/pricing/details/storage-import-export/).
+Er zijn kosten voor het verwerken van stations voor elk station dat is verwerkt als onderdeel van uw import-of export taak. Bekijk de details van de [Azure import/export-prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/).
 
-**Verzendkosten**
+**Verzend kosten**
 
-Wanneer u schijven naar Azure verzendt, betaalt u de verzendkosten aan de vervoerder. Wanneer Microsoft de schijven aan u retourneert, worden de verzendkosten in rekening gebracht op het carrieraccount dat u hebt opgegeven op het moment van het maken van een baan.
+Wanneer u stations naar Azure verzendt, betaalt u de verzend kosten voor de vervoerder. Wanneer micro soft de stations naar u retourneert, worden de verzend kosten in rekening gebracht voor het vervoerder account dat u hebt geleverd op het moment dat de taak wordt gemaakt.
 
 **Transactiekosten**
 
-[Standaardopslagtransactiekosten](https://azure.microsoft.com/pricing/details/storage/) zijn van toepassing tijdens het importeren en exporteren van gegevens. Er zijn ook standaardkosten voor uitgangen van toepassing, samen met kosten voor opslagtransacties wanneer gegevens worden geëxporteerd vanuit Azure Storage. Zie [Kosten voor gegevensoverdracht](https://azure.microsoft.com/pricing/details/data-transfers/)voor meer informatie over uitgaande kosten.
+[Standaard kosten voor opslag transacties](https://azure.microsoft.com/pricing/details/storage/) gelden tijdens het importeren en exporteren van gegevens. Standaard kosten voor uitgaand verkeer zijn ook van toepassing op kosten voor opslag transacties wanneer gegevens worden geëxporteerd uit Azure Storage. Zie [prijzen voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/)voor meer informatie over de kosten van de uitgang.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het gebruik van de service Importeren/exporteren om:
+Meer informatie over het gebruik van de import/export-service voor:
 
-* [Gegevens importeren in Azure Blobs](storage-import-export-data-to-blobs.md)
-* [Gegevens exporteren vanuit Azure Blobs](storage-import-export-data-from-blobs.md)
-* [Gegevens importeren in Azure-bestanden](storage-import-export-data-to-files.md)
+* [Gegevens importeren in azure blobs](storage-import-export-data-to-blobs.md)
+* [Gegevens exporteren uit Azure-blobs](storage-import-export-data-from-blobs.md)
+* [Gegevens importeren in Azure Files](storage-import-export-data-to-files.md)

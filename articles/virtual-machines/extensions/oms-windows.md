@@ -1,6 +1,6 @@
 ---
 title: De virtuele-machine-extensie Log Analytics voor Windows
-description: Implementeer de Log Analytics-agent op de virtuele machine van Windows met behulp van een virtuele machine-extensie.
+description: Implementeer de Log Analytics-agent op virtuele Windows-machines met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
 author: axayjo
@@ -23,42 +23,42 @@ ms.locfileid: "79530985"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
 
-Azure Monitor Logs biedt bewakingsmogelijkheden voor cloud- en on-premises assets. De softwareextensie voor virtuele machines van de Log Analytics-agent voor Windows wordt gepubliceerd en ondersteund door Microsoft. De extensie installeert de Log Analytics-agent op virtuele Azure-machines en schrijft virtuele machines in een bestaande Log Analytics-werkruimte. In dit document worden de ondersteunde platforms, configuraties en implementatieopties voor de extensie voor virtuele machines van Log Analytics voor Windows beschreven.
+Azure Monitor Logboeken biedt bewakings mogelijkheden voor Cloud-en on-premises assets. De extensie van de virtuele machine van Log Analytics agent voor Windows wordt gepubliceerd en ondersteund door micro soft. Met de uitbrei ding wordt de Log Analytics agent op virtuele machines van Azure geïnstalleerd en worden virtuele machines geregistreerd in een bestaande Log Analytics-werk ruimte. In dit document vindt u informatie over de ondersteunde platforms, configuraties en implementatie opties voor de Log Analytics extensie van de virtuele machine voor Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het overzichtsartikel van de [agent Log Analytics](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) voor meer informatie over de ondersteunde Windows-besturingssystemen.
+Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) voor meer informatie over de ondersteunde Windows-besturings systemen.
 
-### <a name="agent-and-vm-extension-version"></a>Versie agent- en VM-extensie
-In de volgende tabel vindt u een toewijzing van de versie van de VM-extensie Windows Log Analytics en de log-analyse-agentbundel voor elke release. 
+### <a name="agent-and-vm-extension-version"></a>Versie van agent en VM-extensie
+De volgende tabel bevat een overzicht van de versie van de Windows Log Analytics VM-extensie en Log Analytics agent bundel voor elke release. 
 
-| Versie van Windows-agentbundel log Analytics | Versie van Windows VM-extensie log Analytics | Releasedatum | Releaseopmerkingen |
+| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Releaseopmerkingen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Voegt ondersteuning voor SHA-2-codeondertekening toe</li><li>Verbetert de installatie en het beheer van VM-extensies</li><li>Hiermee lost u een bug in Azure Arc voor de integratie van servers op</li><li>Voegt een ingebouwde hulpprogramma voor probleemoplossing toe voor klantenondersteuning</li><li>Voegt ondersteuning toe voor extra Azure Government-regio's</li> |
-| 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleine bugfixes en stabilisatieverbeteringen </li></ul> |
-| 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleine bugfixes en stabilisatieverbeteringen </li><li> Verhoogde MaxExpressionDepth tot 10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleine bugfixes en stabilisatieverbeteringen </li><li> Added ability to disable default credentials when making proxy connection (support for WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
-| 10.19.13515 | 1.0.13515 | Maart 2019 | <ul><li>Kleine stabilisatiefixes </li></ul> |
-| 10.19.10006 | N.v.t. | December 2018 | <ul><li> Kleine stabilisatiefixes </li></ul> | 
-| 8.0.11136 | N.v.t. | Sept 2018 |  <ul><li> Ondersteuning toegevoegd voor het detecteren van resource-ID-wijziging op VM-verplaatsing </li><li> Added Support for reporting resource ID when using non-extension install Added Support for reporting resource ID when using non-extension install Added Support for reporting resource ID when using non-extension install Added Support </li></ul>| 
+| 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Hiermee wordt ondersteuning voor het ondertekenen van SHA-2-code toegevoegd</li><li>Verbetert de installatie en het beheer van de VM-extensie</li><li>Hiermee wordt een fout in azure Arc voor servers-integratie opgelost</li><li>Voegt een ingebouwd hulp programma voor probleem oplossing toe voor klant ondersteuning</li><li>Voegt ondersteuning toe voor aanvullende Azure Government regio's</li> |
+| 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li></ul> |
+| 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li><li> Verhoogde MaxExpressionDepth tot 10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li><li> De mogelijkheid om standaard referenties uit te scha kelen is toegevoegd bij het maken van een proxy verbinding (ondersteuning voor WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
+| 10.19.13515 | 1.0.13515 | Maart 2019 | <ul><li>Problemen met kleine stabilisatie </li></ul> |
+| 10.19.10006 | N.v.t. | Dec 2018 | <ul><li> Problemen met kleine stabilisatie </li></ul> | 
+| 8.0.11136 | N.v.t. | Sept 2018 |  <ul><li> Er is ondersteuning toegevoegd voor het detecteren van een wijziging in de resource-ID bij verplaatsen van de VM </li><li> Er is ondersteuning toegevoegd voor de resource-ID voor rapportage bij gebruik van een installatie zonder extensie </li></ul>| 
 | 8.0.11103 | N.v.t. |  April 2018 | |
-| 8.0.11081 | 1.0.11081 | November 2017 | | 
+| 8.0.11081 | 1.0.11081 | Nov 2017 | | 
 | 8.0.11072 | 1.0.11072 | Sept 2017 | |
-| 8.0.11049 | 1.0.11049 | Februari 2017 | |
+| 8.0.11049 | 1.0.11049 | Feb 2017 | |
 
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center voorziet automatisch in de Log Analytics-agent en verbindt deze met de standaard werkruimte Log Analytics van het Azure-abonnement. Als u Azure Security Center gebruikt, voert u de stappen in dit document niet uit. Hierdoor overschrijft u de geconfigureerde werkruimte en verbreekt u de verbinding met Azure Security Center.
+Azure Security Center de Log Analytics agent automatisch te voorzien van een verbinding met de standaard Log Analytics-werk ruimte van het Azure-abonnement. Als u Azure Security Center gebruikt, voert u de stappen in dit document niet uit. Als u dit doet, wordt de geconfigureerde werk ruimte overschreven en wordt de verbinding met Azure Security Center verbroken.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
-De Log Analytics-agentextensie voor Windows vereist dat de beoogde virtuele machine is verbonden met het internet. 
+De Log Analytics agent-extensie voor Windows vereist dat de virtuele doel machine is verbonden met internet. 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-In de volgende JSON wordt het schema voor de extensie van de Log Analytics-agent weergegeven. De extensie vereist de werkruimte-id en werkruimtesleutel van de doellogboekanalysewerkruimte. Deze zijn te vinden in de instellingen voor de werkruimte in de Azure-portal. Omdat de werkruimtesleutel moet worden behandeld als gevoelige gegevens, moet deze worden opgeslagen in een configuratie met beveiligde instellingen. Azure VM-extensiebeveiligde instellingsgegevens worden versleuteld en alleen gedecodeerd op de virtuele doelmachine. WerkruimteId **workspaceId** en **werkruimteSleutel** zijn hoofdlettergevoelig.
+De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agent. De uitbrei ding vereist de werk ruimte-ID en de werkruimte sleutel van de doel Log Analytics werk ruimte. Deze kunt u vinden in de instellingen voor de werk ruimte in de Azure Portal. Omdat de werkruimte sleutel moet worden behandeld als gevoelige gegevens, moet deze worden opgeslagen in een configuratie met een beveiligde instelling. De beveiligde instellings gegevens voor de Azure VM-extensie zijn versleuteld en worden alleen ontsleuteld op de virtuele doel machine. Houd er rekening mee dat **workspaceId** en **workspaceKey** hoofdletter gevoelig zijn.
 
 ```json
 {
@@ -83,32 +83,32 @@ In de volgende JSON wordt het schema voor de extensie van de Log Analytics-agent
     }
 }
 ```
-### <a name="property-values"></a>Eigenschapswaarden
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde / Voorbeeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| uitgever | Microsoft.EnterpriseCloud.Monitoring |
+| uitgever | Micro soft. EnterpriseCloud. monitoring |
 | type | MicrosoftMonitoringAgent |
-| typeHandlerVersie | 1.0 |
-| workspaceId (bijv.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| workspaceKey (bijv. | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9XffbrTahyrwv35W0pOqQAU7uQ== |
+| typeHandlerVersion | 1.0 |
+| workspaceId (bijvoorbeeld) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (bijvoorbeeld) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*De workspaceId wordt de consumerId genoemd in de Log Analytics API.
+\*De workspaceId wordt de consumerId in de Log Analytics-API genoemd.
 
 > [!NOTE]
-> Zie Azure [Connect Windows Computers voor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)extra eigenschappen met Azure Monitor .
+> Zie Azure [Connect Windows computers to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)voor extra eigenschappen.
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie is beschreven, kan worden gebruikt in een Azure Resource Manager-sjabloon om de extensie van de log-analyseagent uit te voeren tijdens een azure resource manager-sjabloonimplementatie. Een voorbeeldsjabloon met de VM-extensie Log Analytics-agent is te vinden in de [Azure Quickstart Gallery.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm) 
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon om de Log Analytics agent-extensie uit te voeren tijdens de implementatie van een Azure Resource Manager-sjabloon. Een voorbeeld sjabloon met de extensie van de Log Analytics agent-VM vindt u in de [Galerie van Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)start. 
 
 >[!NOTE]
->De sjabloon biedt geen ondersteuning voor het opgeven van meer dan één werkruimte-id en werkruimtesleutel wanneer u de agent wilt configureren om aan meerdere werkruimten te rapporteren. Zie [Een werkruimte toevoegen of verwijderen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)als u de agent wilt configureren om te rapporteren aan meerdere werkruimten.  
+>De sjabloon biedt geen ondersteuning voor het opgeven van meer dan één werk ruimte-ID en werkruimte sleutel wanneer u de agent wilt configureren om te rapporteren aan meerdere werk ruimten. Zie [een werk ruimte toevoegen of verwijderen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)als u de agent wilt configureren om te rapporteren aan meerdere werk ruimten.  
 
-De JSON voor een virtuele machine-extensie kan worden genest in de bron van de virtuele machine of op het hoofd- of hoogste niveau van een JSON-sjabloon voor Resource Manager worden geplaatst. De plaatsing van de JSON is van invloed op de waarde van de resourcenaam en -type. Zie [Naam en type voor onderliggende bronnen instellen voor](../../azure-resource-manager/templates/child-resource-name-type.md)meer informatie . 
+De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
-In het volgende voorbeeld wordt ervan uitgegaan dat de extensie Log Analytics is genest in de bron van de virtuele machine. Bij het nesten van de extensiebron wordt `"resources": []` de JSON in het object van de virtuele machine geplaatst.
+In het volgende voor beeld wordt ervan uitgegaan dat de extensie Log Analytics is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []` object van de virtuele machine geplaatst.
 
 
 ```json
@@ -135,7 +135,7 @@ In het volgende voorbeeld wordt ervan uitgegaan dat de extensie Log Analytics is
 }
 ```
 
-Wanneer u de uitbreidingsJSON aan de hoofdmap van de sjabloon plaatst, bevat de bronnaam een verwijzing naar de bovenliggende virtuele machine en het type weerspiegelt de geneste configuratie. 
+Bij het plaatsen van de JSON van de extensie in de hoofdmap van de sjabloon, bevat de resource naam een verwijzing naar de bovenliggende virtuele machine en het type weerspiegelt de geneste configuratie. 
 
 ```json
 {
@@ -161,9 +161,9 @@ Wanneer u de uitbreidingsJSON aan de hoofdmap van de sjabloon plaatst, bevat de 
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell-implementatie
+## <a name="powershell-deployment"></a>Power shell-implementatie
 
-De `Set-AzVMExtension` opdracht kan worden gebruikt om de virtuele machineextensie Log Analytics-agent te implementeren op een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de openbare en privéconfiguraties worden opgeslagen in een PowerShell-hashtabel. 
+De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de log Analytics agent virtuele machine op een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
@@ -184,13 +184,13 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure PowerShell-module. Als u de implementatiestatus van extensies voor een bepaalde vm wilt bekijken, voert u de volgende opdracht uit met de Azure PowerShell-module.
+Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit het Azure Portal en met behulp van de module Azure PowerShell. Als u de implementatie status van extensies voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de module Azure PowerShell.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-De uitvoer van extensieuitvoering wordt vastgelegd in bestanden in de volgende map:
+Uitvoer voor uitvoering van extensie wordt vastgelegd in bestanden die zijn gevonden in de volgende map:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -198,4 +198,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

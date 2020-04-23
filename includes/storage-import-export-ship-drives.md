@@ -15,11 +15,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80282474"
 ---
-FedEx, UPS of DHL kunnen worden gebruikt om het pakket naar Azure-datacenter te verzenden. Als u een andere provider dan FedEx/DHL wilt gebruiken, neemt u contact op met het Azure Data Box Operations-team op`adbops@microsoft.com`
+FedEx, UPS of DHL kan worden gebruikt om het pakket naar Azure Data Center te verzenden. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op`adbops@microsoft.com`
 
-* Geef een geldig FedEx-, UPS- of DHL-provideraccountnummer op dat Microsoft zal gebruiken om de schijven terug te verzenden.
-  * Een FedEx-, UPS- of DHL-rekeningnummer is vereist voor het verzenden van schijven terug vanuit de VS en Europa.A FedEx, UPS, or DHL account number is required for shipping drives back from the U and Europe locations.
-    * Een DHL-rekeningnummer heeft de voorkeur voor het verzenden van schijven terug uit Azië en Australië locaties.
-    * Als u geen rekeningnummer hebt, maakt u een [FedEx-](https://www.fedex.com/us/oadr/) of [DHL-carrieraccount](http://www.dhl.com/) aan.
-* Wanneer u uw pakketten verzendt, moet u de [Microsoft Azure-servicevoorwaarden volgen.](https://azure.microsoft.com/support/legal/services-terms/)
-* Pak de uwe schijven goed in te pakken om mogelijke schade en vertragingen in de verwerking te voorkomen.
+* Geef een geldig account nummer voor FedEx, UPS of DHL op dat door micro soft wordt gebruikt om de stations terug te leveren.
+  * Een FedEx-, UPS-of DHL-account nummer is vereist voor het terugsturen van schijven vanaf de VS-en Europe-locaties.
+    * Een DHL-account nummer verdient de voor keur voor het terugsturen van schijven uit Azië en Australia-locaties.
+    * Als u geen account nummer hebt, maakt u een [FedEx](https://www.fedex.com/us/oadr/) -of [DHL](http://www.dhl.com/) -draaggolf account.
+* Wanneer u uw pakketten verzendt, moet u de [Microsoft Azure Service voorwaarden](https://azure.microsoft.com/support/legal/services-terms/)volgen.
+* Pak de schijven op de juiste manier in om mogelijke schade en vertragingen bij de verwerking te voor komen.

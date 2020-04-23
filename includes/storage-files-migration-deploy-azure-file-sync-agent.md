@@ -1,6 +1,6 @@
 ---
 title: De Azure File Sync-agent implementeren
-description: De Azure File Sync-agent implementeren. Een gemeenschappelijk tekstblok, gedeeld tussen migratiedocumenten.
+description: De Azure File Sync-agent implementeren. Een gemeen schappelijk tekst blok, gedeeld tussen migratie documenten.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -14,28 +14,28 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209413"
 ---
-In deze sectie installeert u de Azure File Sync-agent op uw Windows Server.
-De [implementatiehandleiding](../articles/storage/files/storage-sync-files-deployment-guide.md) illustreert dat u de verbeterde beveiliging van **IE**moet uitschakelen. IE enhanced security is een beveiligingsmaatregel die niet van toepassing is met Azure File Sync en door deze uit te schakelen u zonder problemen verifiëren naar Azure.
+In deze sectie installeert u de Azure File Sync-agent op uw Windows-Server.
+In de [implementatie handleiding](../articles/storage/files/storage-sync-files-deployment-guide.md) ziet u dat u de **Verbeterde beveiliging van Internet Explorer**moet uitschakelen. Verbeterde beveiliging van Internet Explorer is een beveiligings maatregel die niet van toepassing is op Azure File Sync. Als u deze functie uitschakelt, kunt u zonder problemen verifiëren bij Azure.
 
-Open PowerShell en installeer de vereiste PowerShell-modules met de volgende opdrachten. Zorg ervoor dat u de volledige module en de NuGet-provider installeert wanneer u daarom wordt gevraagd:
+Open Power shell en installeer de vereiste Power shell-modules met de volgende opdrachten. Zorg ervoor dat u de volledige module en de NuGet-provider installeert, wanneer u hierom wordt gevraagd:
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Als u problemen hebt met het bereiken van het internet van uw server, is dit het moment om ze op te lossen. Azure File Sync maakt gebruik van elke beschikbare netwerkverbinding met het internet.
-Het vereisen van een proxyserver om het internet te bereiken wordt ook ondersteund. U nu een machinebrede proxy configureren of een proxy opgeven die alleen bestandssynchronisatie zal gebruiken tijdens de installatie van de agent.
+Als er problemen zijn met het Internet vanaf uw server, is dit nu de tijd om deze op te lossen. Azure File Sync gebruikt een beschik bare netwerk verbinding met het internet.
+Het vereisen van een proxy server voor het bereiken van Internet wordt ook ondersteund. U kunt nu een proxy voor alle computers configureren, of een proxy opgeven die alleen voor bestands synchronisatie wordt gebruikt tijdens de installatie van de agent.
 
-Als dat betekent dat u uw firewalls voor deze server moet openen, dan is dat misschien een aanvaardbare benadering voor u. Aan het einde van de serverinstallatie, na voltooiing van de serverregistratie, wordt een rapport over de netwerkconnectiviteit weergegeven met de exacte eindpunt-URL's in Azure, waarmee bestandssynchronisatie moet communiceren voor de regio die u hebt geselecteerd. Het rapport vertelt u ook de reden waarom communicatie nodig is. U het rapport gebruiken om vervolgens de firewalls rond deze server te vergrendelen naar specifieke URL's.
+Als dat het geval is, moet u de firewalls voor deze server openen, en dat kan een acceptabele benadering voor u zijn. Na voltooiing van de server-installatie wordt er na de registratie van de server een netwerk connectiviteits rapport weer gegeven met de exacte eindpunt-Url's in azure, waarna de bestands synchronisatie moet communiceren met voor de regio die u hebt geselecteerd. Het rapport geeft ook de reden aan waarom communicatie nodig is. U kunt het rapport gebruiken om de firewalls rond deze server op specifieke Url's te vergren delen.
 
-U ook een conservatievere benadering volgen, waarbij u de firewalls niet breed opent, maar in plaats daarvan de server beperkt om te communiceren naar DNS-naamruimten op hoger niveau - er is meer documentatie en details beschikbaar in het artikel [azure file sync proxy en firewall-instellingen.](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) Volg uw eigen netwerkbest practices.
+U kunt ook een meer conservatieve benadering volgen, waarbij u de firewalls niet breed opent, maar de server wordt beperkt tot het gebruik van DNS-naam ruimten op een hoger niveau. er zijn meer documentatie en Details beschikbaar in het artikel [Azure file sync proxy en Firewall-instellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) . Volg uw aanbevolen procedures voor netwerk gebruik.
 
-Aan het einde van de wizard *serverinstallatie* verschijnt een wizard *serverregistratie.*
-Registreer de server van eerder op uw Azure-bron voor Storage Sync Service.
+Aan het einde van de wizard Server- *installatie* wordt de wizard Server *registratie* weer gegeven.
+Registreer de server bij de opslag synchronisatie service Azure-resource van vroeger.
 
-Deze stappen worden in de implementatiehandleiding nader beschreven, inclusief de bovenstaande PowerShell-modules die u eerst moet installeren: [Azure File Sync-agent installeert](../articles/storage/files/storage-sync-files-deployment-guide.md).
+Deze stappen worden uitgebreid beschreven in de implementatie handleiding, inclusief de bovenstaande Power shell-modules die u eerst moet installeren: [Azure file sync agent installeren](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-De nieuwste agent moet worden gebruikt en kan worden gedownload van Microsoft Download Center: [Azure File Sync - agent](https://aka.ms/AFS/agent "Azure File Sync-agent downloaden").
+De nieuwste agent moet worden gebruikt en kan worden gedownload van het micro soft Download centrum: [Azure file sync-agent](https://aka.ms/AFS/agent "Downloaden van Azure File Sync-agent").
 
-Na een succesvolle installatie- en serverregistratie u controleren of u deze stap hebt voltooid: Navigeer naar de bron Storage Sync Service in de Azure-portal en volg het linkermenu naar 'Geregistreerde servers'. U ziet uw server daar meteen vermeld.
+Na een geslaagde installatie en Server registratie kunt u controleren of u deze stap hebt voltooid: Navigeer naar de resource van de opslag synchronisatie service in de Azure Portal en volg vervolgens het menu aan de linkerkant naar ' geregistreerde servers '. U ziet dat uw server meteen wordt weer gegeven.

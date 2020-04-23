@@ -1,6 +1,6 @@
 ---
-title: Inloggen bij een Linux-vm met Azure Active Directory-referenties
-description: Meer informatie over het maken en configureren van een Linux-vm om u aan te melden met Azure Active Directory-verificatie.
+title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory referenties
+description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
 author: iainfoulds
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,72 +14,72 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "80366483"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voorbeeld: Inloggen bij een virtuele Linux-machine in Azure met Azure Active Directory-verificatie
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
-Als u de beveiliging van Virtuele Linux-machines (VM's) in Azure wilt verbeteren, u integreren met Azure Active Directory (AD)-verificatie. Wanneer u Azure AD-verificatie voor Linux-VM's gebruikt, beheert en handhaaft u beleid dat toegang tot de VM's toestaat of weigert. In dit artikel ziet u hoe u een Linux-vm maakt en configureert om Azure AD-verificatie te gebruiken.
+Als u de beveiliging van virtuele Linux-machines (Vm's) in azure wilt verbeteren, kunt u integreren met Azure Active Directory (AD)-verificatie. Wanneer u Azure AD-verificatie voor Linux-Vm's gebruikt, beheert en afdwingt u de mogelijkheid om toegang tot de Vm's toe te staan of te weigeren. In dit artikel wordt beschreven hoe u een virtuele Linux-machine maakt en configureert voor het gebruik van Azure AD-verificatie.
 
 
 > [!IMPORTANT]
-> Azure Active Directory-verificatie bevindt zich momenteel in een openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
-> Gebruik deze functie op een virtuele testmachine die u na het testen verwacht te verwijderen.
+> Azure Active Directory-verificatie is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Gebruik deze functie op een virtuele test machine die u na het testen naar verwachting wilt verwijderen.
 >
 
 
-Er zijn veel voordelen van het gebruik van Azure AD-verificatie om in te loggen op Linux-VM's in Azure, waaronder:
+Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te melden bij Linux-Vm's in azure, waaronder:
 
 - **Verbeterde beveiliging:**
-  - U uw bedrijfsAD-referenties gebruiken om u aan te melden bij Azure Linux VM's. Het is niet nodig om lokale beheerdersaccounts te maken en de levensduur van de referenties te beheren.
-  - Door het verminderen van uw afhankelijkheid van lokale beheerdersaccounts, hoeft u zich geen zorgen te maken over verlies van referenties/ diefstal, gebruikers die zwakke referenties configureren enz.
-  - De wachtwoordcomplexiteit en het wachtwoordlevenslangbeleid dat is geconfigureerd voor uw Azure AD-map, helpen ook Linux VM's te beveiligen.
-  - Als u de aanmelding bij virtuele Azure-machines verder wilt beveiligen, u meervoudige verificatie configureren.
-  - De mogelijkheid om in te loggen op Linux VM's met Azure Active Directory werkt ook voor klanten die [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md)gebruiken.
+  - U kunt uw zakelijke AD-referenties gebruiken om u aan te melden bij Azure Linux-Vm's. Het is niet nodig om lokale beheerders accounts te maken en de geldigheids duur van de referentie te beheren.
+  - Als u de afhankelijkheid van lokale beheerders accounts vermindert, hoeft u zich geen zorgen te maken over referentie verlies/dief stal, gebruikers die zwakke referenties configureren, enzovoort.
+  - De beleids regels voor wachtwoord complexiteit en het wacht woord levens duur die zijn geconfigureerd voor uw Azure AD-Directory helpen u ook bij het beveiligen van Linux-Vm's.
+  - U kunt multi-factor Authentication configureren om de aanmelding bij Azure virtual machines verder te beveiligen.
+  - De mogelijkheid om u aan te melden bij Linux-Vm's met Azure Active Directory werkt ook voor klanten die gebruikmaken van [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Naadloze samenwerking:** Met RBAC (Role-Based Access Control) u opgeven wie zich als gewone gebruiker of met beheerdersrechten kan aanmelden bij een bepaalde VM. Wanneer gebruikers lid worden van of uw team verlaten, u het RBAC-beleid bijwerken dat de VM toegang verleent. Deze ervaring is veel eenvoudiger dan vm's te moeten schrobben om onnodige SSH-openbare sleutels te verwijderen. Wanneer werknemers uw organisatie verlaten en hun gebruikersaccount is uitgeschakeld of verwijderd uit Azure AD, hebben ze geen toegang meer tot uw bronnen.
+- **Naadloze samen werking:** Met Access Control op basis van rollen (RBAC) kunt u opgeven wie zich kan aanmelden bij een bepaalde VM als een gewone gebruiker of met beheerders bevoegdheden. Wanneer gebruikers lid worden van of uw team verlaten, kunt u het RBAC-beleid voor de virtuele machine bijwerken om zo nodig toegang te verlenen. Deze ervaring is veel eenvoudiger dan het reinigen van Vm's om onnodige SSH-open bare sleutels te verwijderen. Wanneer werk nemers uw organisatie verlaten en hun gebruikers account is uitgeschakeld of verwijderd uit Azure AD, hebben ze geen toegang meer tot uw resources.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Ondersteunde Azure-regio's en Linux-distributies
 
-De volgende Linux-distributies worden momenteel ondersteund tijdens de preview van deze functie:
+De volgende Linux-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
 | Distributie | Versie |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE Leap 42.3 |
-| Red Hat Enterprise Linux | RHEL 6. | 
+| openSUSE | openSUSE Schrikkel 42,3 |
+| Red Hat Enterprise Linux | RHEL 6, RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
-| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 en Ubuntu Server 18.04 |
+| Ubuntu Server | Ubuntu 14,04 LTS, Ubuntu Server 16,04 en Ubuntu Server 18,04 |
 
 
-De volgende Azure-regio's worden momenteel ondersteund tijdens de preview van deze functie:
+De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-- Alle wereldwijde Azure-regio's
+- Alle wereld wijde Azure-regio's
 
 >[!IMPORTANT]
-> Als u deze voorbeeldfunctie wilt gebruiken, implementeert u alleen een ondersteunde Linux-distro en in een ondersteunde Azure-regio. De functie wordt niet ondersteund in Azure Government of sovereign clouds.
+> Als u deze preview-functie wilt gebruiken, implementeert u alleen een ondersteunde Linux-distributie en in een ondersteunde Azure-regio. De functie wordt niet ondersteund in Azure Government of soevereine Clouds.
 >
-> Deze extensie wordt niet ondersteund voor het gebruik van deze extensie op AKS-clusters (Azure Kubernetes Service). Zie [Ondersteuningsbeleid voor AKS voor](../../aks/support-policies.md)meer informatie .
+> Het wordt niet ondersteund voor het gebruik van deze uitbrei ding op Azure Kubernetes Service-clusters (AKS). Zie het [ondersteunings beleid voor AKS](../../aks/support-policies.md)voor meer informatie.
 
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, vereist deze zelfstudie dat u de Azure CLI-versie 2.0.31 of hoger uitvoert. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.0.31 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
-Als u Azure AD-verificatie voor uw Linux VM's in Azure wilt inschakelen, moet u ervoor zorgen dat uw VM's-netwerkconfiguratie uitgaande toegang tot de volgende eindpunten via TCP-poort 443 mogelijk maken:
+Als u Azure AD-verificatie wilt inschakelen voor uw virtuele Linux-machines in azure, moet u ervoor zorgen dat de VM-netwerk configuratie uitgaande toegang tot de volgende eind punten via TCP-poort 443 toestaat:
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
 * https:\//device.login.microsoftonline.com
-* https:\//pas.windows.net
+* https:\//pas.Windows.net
 * https:\//management.azure.com
-* https:\//packages.microsoft.com
+* https:\//packages.Microsoft.com
 
 > [!NOTE]
-> Op dit moment kunnen Azure-netwerkbeveiligingsgroepen niet worden geconfigureerd voor VM's die zijn ingeschakeld met Azure AD-verificatie.
+> Momenteel kunnen Azure-netwerk beveiligings groepen niet worden geconfigureerd voor Vm's die zijn ingeschakeld met Azure AD-verificatie.
 
 ## <a name="create-a-linux-virtual-machine"></a>Een virtuele Linux-machine maken
 
-Maak een resourcegroep met [de az-groep maken,](/cli/azure/group#az-group-create)maak vervolgens een VM met [az vm maken](/cli/azure/vm#az-vm-create) met behulp van een ondersteunde distro en in een ondersteunde regio. In het volgende voorbeeld wordt een VM met de naam *myVM* geïmplementeerd die *Ubuntu 16.04 LTS* gebruikt in een resourcegroep met de naam *myResourceGroup* in de *regio southcentralus.* In de volgende voorbeelden u indien nodig uw eigen resourcegroep en VM-namen opgeven.
+Maak een resource groep met [AZ Group Create](/cli/azure/group#az-group-create)en maak vervolgens een virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create) met behulp van een ondersteunde distributie en in een ondersteunde regio. In het volgende voor beeld wordt een virtuele machine met de naam *myVM* die gebruikmaakt van *Ubuntu 16,04 LTS* , geïmplementeerd in een resource groep met de naam *myResourceGroup* in de *southcentralus* -regio. In de volgende voor beelden kunt u zo nodig uw eigen resource groep en VM-namen opgeven.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location southcentralus
@@ -94,12 +94,12 @@ az vm create \
 
 Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten.
 
-## <a name="install-the-azure-ad-login-vm-extension"></a>De VM-extensie Azure AD-aanmelding installeren
+## <a name="install-the-azure-ad-login-vm-extension"></a>De Azure AD-VM-extensie voor aanmelden installeren
 
 > [!NOTE]
-> Als het implementeren van deze extensie naar een eerder gemaakte VM ervoor zorgt dat de machine ten minste 1 GB geheugen heeft toegewezen, anders wordt de extensie niet geïnstalleerd
+> Als u deze uitbrei ding implementeert op een eerder gemaakte virtuele machine, controleert u of er ten minste 1 GB aan geheugen is toegewezen, anders kan de uitbrei ding niet worden geïnstalleerd
 
-Als u zich wilt aanmelden bij een Linux-VM met Azure AD-referenties, installeert u de VM-extensie Azure Active Directory.To log in to be in to an Linux VM with Azure AD credentials, install the Azure Active Directory login VM extension. VM-extensies zijn kleine toepassingen die configuratie- en automatiseringstaken na implementatie bieden op virtuele Azure-machines. Gebruik [de AZ VM-extensieset](/cli/azure/vm/extension#az-vm-extension-set) om de *AADLoginForLinux-extensie* te installeren op de VM met de naam *myVM* in de *brongroep myResourceGroup:*
+Als u zich wilt aanmelden bij een virtuele Linux-machine met Azure AD-referenties, installeert u de Azure Active Directory aanmeld-VM-extensie. VM-extensies zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie bieden op virtuele machines van Azure. Gebruik [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) om de *AADLoginForLinux* -extensie te installeren op de virtuele machine met de naam *MyVM* in de resource groep *myResourceGroup* :
 
 ```azurecli-interactive
 az vm extension set \
@@ -109,19 +109,19 @@ az vm extension set \
     --vm-name myVM
 ```
 
-De *provisioningState* *of Succeeded wordt* weergegeven zodra de extensie met succes is geïnstalleerd op de VM. De VM heeft een draaiende VM-agent nodig om de extensie te installeren. Zie [VM-agentoverzicht](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)voor meer informatie.
+De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding is geïnstalleerd op de virtuele machine. De VM moet een actieve VM-agent hebben om de uitbrei ding te installeren. Zie overzicht van VM- [agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)voor meer informatie.
 
-## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen configureren voor de VM
+## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
-Het RBAC-beleid (Azure Role-Based Access Control) bepaalt wie zich kan aanmelden bij de VM. Twee RBAC-rollen worden gebruikt om VM-aanmelding te autoriseren:
+Met het beleid voor Access Control op basis van rollen (RBAC) van Azure wordt bepaald wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
 
-- **Inloggen voor virtuele machinebeheerder**: Gebruikers met deze toegewezen rol kunnen zich aanmelden bij een virtuele Azure-machine met Windows Administrator- of Linux-rootgebruikersrechten.
-- **Virtual Machine User Login**: Gebruikers met deze toegewezen rol kunnen zich aanmelden bij een virtuele Azure-machine met regelmatige gebruikersrechten.
+- Aanmelding van de beheerder van de **virtuele machine**: gebruikers met deze rol kunnen zich aanmelden bij een virtuele Azure-machine met Windows-beheerders-of Linux-hoofd gebruikers bevoegdheden.
+- **Gebruikers aanmelding van de virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met gewone gebruikers bevoegdheden.
 
 > [!NOTE]
-> Als u wilt toestaan dat een gebruiker zich via SSH aanmeldt bij de VM, moet u de *rol Voor het inloggen van de virtuele machinebeheerder* of de rol Van de gebruiker van de virtuele machine *toewijzen.* Een Azure-gebruiker met de *eigenaar-* of *inzenderrollen die* zijn toegewezen voor een vm, heeft niet automatisch bevoegdheden om zich aan te melden bij de VM via SSH.
+> Als u een gebruiker wilt toestaan zich via SSH aan te melden bij de VM, moet u zich aanmelden voor de beheerder van de *virtuele machine* of de gebruiker aanmeldt voor de *virtuele machine* . Een Azure-gebruiker met de rol *eigenaar* of *Inzender* die is toegewezen aan een virtuele machine, is niet automatisch gemachtigd om zich via SSH aan te melden bij de VM.
 
-In het volgende voorbeeld wordt [az-toewijzingstoewijzing gebruikt](/cli/azure/role/assignment#az-role-assignment-create) om de *inlogrol voor virtuele machinebeheerder* toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikersnaam van uw actieve Azure-account wordt verkregen met [de AZ-account show](/cli/azure/account#az-account-show)en het *bereik* is ingesteld op de VM die is gemaakt in een eerdere stap met de [AZ VM-show.](/cli/azure/vm#az-vm-show) Het bereik kan ook worden toegewezen op resourcegroep- of abonnementsniveau en normale RBAC-overervingsmachtigingen zijn van toepassing. Zie [Toegangsbesturingselementen op basis van rollen](../../role-based-access-control/overview.md) voor meer informatie
+In het volgende voor beeld wordt [AZ roltoewijzing Create](/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de *virtuele machine* toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](/cli/azure/account#az-account-show)en de *Scope* wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en de normale machtigingen voor RBAC-overname zijn van toepassing. Zie [op rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor meer informatie
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -134,39 +134,39 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Als uw AAD-domein en aanmeldingsgebruikersnaam domein niet overeenkomen, moet u de object-ID van uw gebruikersaccount opgeven met de *--assignee-object-id,* niet alleen de gebruikersnaam voor *--assignee.* U de object-ID voor uw gebruikersaccount verkrijgen met [de az-advertentiegebruikerslijst.](/cli/azure/ad/user#az-ad-user-list)
+> Als uw AAD-domein en de gebruikers naam van het aanmeldings domein niet overeenkomen, moet u de object-ID van uw gebruikers account opgeven met de id van de *toegewezen*gebruiker, niet alleen de gebruikers naam voor *--Assign*. U kunt de object-ID voor uw gebruikers account verkrijgen met [AZ AD-gebruikers lijst](/cli/azure/ad/user#az-ad-user-list).
 
-Zie voor meer informatie over het gebruik van RBAC voor het beheren van toegang tot uw Azure-abonnementsbronnen de [Azure CLI,](../../role-based-access-control/role-assignments-cli.md) [Azure-portal](../../role-based-access-control/role-assignments-portal.md)of [Azure PowerShell.](../../role-based-access-control/role-assignments-powershell.md)
+Zie Using the [Azure cli](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)of [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het gebruik van RBAC om de toegang tot uw Azure-abonnements resources te beheren.
 
-U Azure AD ook configureren om multifactorauthenticatie voor een specifieke gebruiker te vereisen om zich aan te melden bij de virtuele Linux-machine. Zie [Aan de slag met Azure Multi-Factor Authentication in de cloud](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)voor meer informatie.
+U kunt Azure AD ook zo configureren dat multi-factor Authentication is vereist voor een specifieke gebruiker om zich aan te melden bij de virtuele Linux-machine. Zie [aan de slag met Azure multi-factor Authentication in de Cloud](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)voor meer informatie.
 
-## <a name="log-in-to-the-linux-virtual-machine"></a>Log in op de Virtuele Linux machine
+## <a name="log-in-to-the-linux-virtual-machine"></a>Meld u aan bij de virtuele Linux-machine
 
-Bekijk eerst het openbare IP-adres van uw VM met [az vm show:](/cli/azure/vm#az-vm-show)
+Bekijk eerst het open bare IP-adres van uw virtuele machine met [AZ VM show](/cli/azure/vm#az-vm-show):
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Meld u aan bij de virtuele Azure Linux-machine met uw Azure AD-referenties. Met `-l` de parameter u uw eigen Azure AD-accountadres opgeven. Vervang het voorbeeldaccount door het eigen account. Accountadressen moeten in alle kleine letters worden ingevoerd. Vervang het voorbeeld-IP-adres door het openbare IP-adres van uw vm uit de vorige opdracht.
+Meld u aan bij de virtuele machine van Azure Linux met uw Azure AD-referenties. Met `-l` de para meter kunt u uw eigen Azure ad-account adres opgeven. Vervang het voorbeeld account door eigen. De account adressen moeten in alle kleine letters worden ingevoerd. Vervang het voor beeld-IP-adres door het open bare IP-adres van uw virtuele machine uit de vorige opdracht.
 
 ```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-U wordt gevraagd zich aan te melden bij Azure [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)AD met een eenmalige gebruikscode op . Kopieer en plak de eenmalige gebruikscode naar de inlogpagina van het apparaat.
+U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebruik [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)op. Kopieer de code voor eenmalig gebruik en plak deze in de aanmeldings pagina van het apparaat.
 
-Voer desgevraagd uw Azure AD-inloggegevens in op de aanmeldingspagina. 
+Wanneer u hierom wordt gevraagd, voert u uw Azure AD-aanmeldings referenties in op de aanmeldings pagina. 
 
-Het volgende bericht wordt weergegeven in de webbrowser wanneer u zich hebt geverifieerd:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificatie hebt uitgevoerd:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
-Sluit het browservenster, ga terug naar de SSH-prompt en druk op **enter.** 
+Sluit het browser venster, ga terug naar de SSH-prompt en druk op **Enter** . 
 
-U bent nu aangemeld bij de virtuele Azure Linux-machine met de toegewezen rolmachtigingen, zoals *VM-gebruiker* of *VM-beheerder.* Als aan uw gebruikersaccount de *rol Voor het inloggen van de beheerder van virtuele machines* is toegewezen, kunt `sudo` u opdrachten uitvoeren waarvoor hoofdbevoegdheden nodig zijn.
+U bent nu aangemeld bij de virtuele machine van Azure Linux met de rolmachtigingen zoals toegewezen, zoals de *VM-gebruiker* of de *VM-beheerder*. Als aan uw gebruikers account de rol van de beheerder van de *virtuele machine* is toegewezen `sudo` , kunt u gebruiken om opdrachten uit te voeren waarvoor hoofd bevoegdheden zijn vereist.
 
-## <a name="sudo-and-aad-login"></a>Sudo en AAD inloggen
+## <a name="sudo-and-aad-login"></a>Sudo en AAD-aanmelding
 
-De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, `/etc/sudoers.d/aad_admins` u uw sudoersbestand bewerken en deze regel vervangen:
+De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, kunt u het sudo-bestand `/etc/sudoers.d/aad_admins` bewerken en deze regel vervangen:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -179,13 +179,13 @@ Met deze regel:
 ```
 
 
-## <a name="troubleshoot-sign-in-issues"></a>Aanmeldingsproblemen oplossen
+## <a name="troubleshoot-sign-in-issues"></a>Problemen met aanmelden oplossen
 
-Enkele veelvoorkomende fouten wanneer u ssh probeert te gebruiken met Azure AD-referenties, bevatten geen Toegewezen RBAC-rollen en herhaalde aanwijzingen om u aan te melden. Gebruik de volgende secties om deze problemen te verhelpen.
+Enkele veelvoorkomende fouten wanneer u probeert te SSHen met Azure AD-referenties, zijn geen RBAC-rollen toegewezen en herhaalde prompts om zich aan te melden. Gebruik de volgende secties om deze problemen te verhelpen.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Toegang geweigerd: RBAC-rol niet toegewezen
+### <a name="access-denied-rbac-role-not-assigned"></a>De toegang is geweigerd: de RBAC-rol is niet toegewezen
 
-Als u de volgende fout op uw SSH-prompt ziet, controleert u of u RBAC-beleidsregels hebt geconfigureerd voor de VM waarmee de gebruiker de *rol Aanmelding van virtuele machinebeheerder* of *bijmelding van virtuele machinegebruikers toekent:*
+Als het volgende fout bericht wordt weer gegeven op de SSH-prompt, controleert u of u RBAC-beleid hebt geconfigureerd voor de virtuele machine die de gebruiker de *aanmeldings naam* van de beheerder of de gebruiker van de *virtuele* machine verleent:
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com
@@ -196,21 +196,21 @@ Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute
 Access denied
 ```
 
-### <a name="continued-ssh-sign-in-prompts"></a>Vervolg SSH aanmeldingsprompts
+### <a name="continued-ssh-sign-in-prompts"></a>Voortdurende aanmeldings prompts voor SSH
 
-Als u de verificatiestap in een webbrowser met succes voltooit, wordt u mogelijk onmiddellijk gevraagd om opnieuw in te loggen met een nieuwe code. Deze fout wordt meestal veroorzaakt door een mismatch tussen de aanmeldingsnaam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD. Ga als volgt te werk om dit probleem te verhelpen:
+Als u de verificatie stap in een webbrowser hebt voltooid, wordt u mogelijk onmiddellijk gevraagd om u opnieuw aan te melden met een nieuwe code. Deze fout wordt meestal veroorzaakt door een conflict tussen de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD. U kunt dit probleem als volgt oplossen:
 
-- Controleer of de aanmeldingsnaam die u bij de SSH-prompt hebt opgegeven, juist is. Een typfout in de aanmeldingsnaam kan leiden tot een mismatch tussen de aanmeldingsnaam die u bij de SSH-prompt hebt opgegeven en het account waarmee u zich hebt aangemeld bij Azure AD. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* getypt in plaats van *azureuser-contoso.onmicrosoft.com\@*.
-- Als u meerdere gebruikersaccounts hebt, moet u ervoor zorgen dat u geen ander gebruikersaccount in het browservenster opgeeft wanneer u zich aanmeldt bij Azure AD.
-- Linux is een case-gevoelig besturingssysteem. Er is eenAzureuser@contoso.onmicrosoft.comverschil tussenazureuser@contoso.onmicrosoft.com' en ' ', wat een mismatch kan veroorzaken. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdlettergevoeligheid bij de SSH-prompt.
+- Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* in plaats van *azureuser\@contoso.onmicrosoft.com*getypt.
+- Als u meerdere gebruikers accounts hebt, moet u ervoor zorgen dat u in het browser venster geen ander gebruikers account opgeeft wanneer u zich aanmeldt bij Azure AD.
+- Linux is een hoofdletter gevoelig besturings systeem. Er is een verschil tussen 'Azureuser@contoso.onmicrosoft.com' en 'azureuser@contoso.onmicrosoft.com', wat kan leiden tot een niet-overeenkomend. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdletter gevoeligheid bij de SSH-prompt.
 
 ### <a name="other-limitations"></a>Andere beperkingen
 
-Gebruikers die toegangsrechten overnemen via geneste groepen of roltoewijzingen, worden momenteel niet ondersteund. De gebruiker of groep moet direct de [vereiste roltoewijzingen](#configure-role-assignments-for-the-vm)toegewezen krijgen. Het gebruik van beheergroepen of geneste groepsroltoewijzingen geeft bijvoorbeeld niet de juiste machtigingen om de gebruiker toe te staan zich aan te melden.
+Gebruikers die toegangs rechten overnemen via geneste groepen of roltoewijzingen, worden momenteel niet ondersteund. De gebruiker of groep moet rechtstreeks de [vereiste roltoewijzingen](#configure-role-assignments-for-the-vm)toewijzen. Het gebruik van beheer groepen of geneste groeps roltoewijzingen wijst bijvoorbeeld niet de juiste machtigingen toe om de gebruiker in staat te stellen zich aan te melden.
 
 ## <a name="preview-feedback"></a>Feedback voor de preview-versie
 
-Uw feedback over deze voorbeeldfunctie delen of problemen melden op het [Feedbackforum van Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
+Deel uw feedback over deze preview-functie of rapport problemen met behulp van IT in het [Feedback forum van Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -18,9 +18,9 @@ ms.locfileid: "78262751"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Een vault van Recovery Services is een opslagentiteit die de herstelpunten opslaat die in de loop van de tijd zijn gemaakt. Het bevat ook het back-upbeleid dat is gekoppeld aan beveiligde items.
+Een Recovery Services kluis is een opslag entiteit waarin de herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt. Het bevat ook het back-upbeleid dat is gekoppeld aan beveiligde items.
 
-Voer deze stappen uit om een kluis van Recovery Services te maken.
+Voer de volgende stappen uit om een Recovery Services kluis te maken.
 
 1. Meld u aan bij uw abonnement in [Azure Portal](https://portal.azure.com/).
 
@@ -28,34 +28,34 @@ Voer deze stappen uit om een kluis van Recovery Services te maken.
 
     ![Alle services selecteren](./media/backup-create-rs-vault/click-all-services.png)
 
-1. In het dialoogvenster **Alle services** voert u *Recovery Services* in. De lijst met bronnen filtert op basis van uw invoer. Selecteer in de lijst met bronnen de **optie Kluizen van Recovery Services**.
+1. In het dialoogvenster **Alle services** voert u *Recovery Services* in. De lijst met resources filtert op basis van uw invoer. Selecteer **Recovery Services kluizen**in de lijst met resources.
 
     ![Recovery Services-kluizen invoeren en kiezen](./media/backup-create-rs-vault/all-services.png)
 
     De lijst met Recovery Services-kluizen in het abonnement wordt weergeven.
 
-1. Selecteer In het dashboard van de **vaults van Recovery Services** de optie **Toevoegen**.
+1. Selecteer **toevoegen**op het **Recovery Services kluizen** -dash board.
 
-    ![Een kluis van Recovery Services toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
+    ![Een Recovery Services kluis toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Het **dialoogvenster Herstelservices wordt** geopend. Geef waarden op voor de **groep Naam**, **Abonnement**, **Resource**en **Locatie**.
+    Het dialoog venster **Recovery Services kluis** wordt geopend. Geef waarden op voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
 
-    ![De kluis Recovery Services configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![De Recovery Services kluis configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Naam:** Voer een vriendelijke naam in om de kluis te identificeren. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op met ten minste 2 maar niet meer dan 50 tekens. De naam moet beginnen met een letter en alleen bestaan uit letters, cijfers en koppeltekens.
-   - **Abonnement**: Kies het te gebruiken abonnement. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u wilt gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere opties als uw werk- of schoolaccount is gekoppeld aan meer dan één Azure-abonnement.
-   - **Resourcegroep:** gebruik een bestaande resourcegroep of maak een nieuwe groep. Als u de lijst met beschikbare brongroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken**en selecteert u vervolgens een resource in de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuw maken** en voert u de naam in. Zie overzicht azure resource [manager](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resourcegroepen.
-   - **Locatie:** Selecteer het geografische gebied voor de kluis. Om een kluis te maken om virtuele machines te beschermen, *moet* de kluis zich in dezelfde regio bevinden als de virtuele machines.
+   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van ten minste 2, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
+   - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaard abonnement (aanbevolen). Er zijn alleen meerdere opties als uw werk-of school account is gekoppeld aan meer dan één Azure-abonnement.
+   - **Resource groep**: gebruik een bestaande resource groep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resource groep wilt maken, selecteert u **nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resource groepen.
+   - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis *moet* zich in dezelfde regio bevinden als de virtuele machines om een kluis te maken om virtuele machines te beveiligen.
 
       > [!IMPORTANT]
-      > Als u niet zeker bent van de locatie van uw virtuele machine, sluit u het dialoogvenster. Ga naar de lijst met virtuele machines in het portaal. Als u virtuele machines in verschillende regio's hebt, maakt u in elke regio een kluis van Recovery Services. Maak de kluis op de eerste locatie, voordat u de kluis maakt voor een andere locatie. Het is niet nodig om opslagaccounts op te geven om de back-upgegevens op te slaan. De kluis Recovery Services en Azure Backup verwerken dat automatisch.
+      > Als u niet zeker bent van de locatie van de virtuele machine, sluit u het dialoog venster. Ga naar de lijst met virtuele machines in de portal. Als u virtuele machines in meerdere regio's hebt, moet u in elke regio een Recovery Services kluis maken. Maak de kluis op de eerste locatie voordat u de kluis voor een andere locatie maakt. U hoeft geen opslag accounts op te geven om de back-upgegevens op te slaan. De Recovery Services kluis en Azure Backup die automatisch worden verwerkt.
       >
       >
 
-1. Wanneer u klaar bent om de kluis Recovery Services te maken, selecteert u **Maken**.
+1. Wanneer u klaar bent om de Recovery Services kluis te maken, selecteert u **maken**.
 
-    ![De kluis Recovery Services maken](./media/backup-create-rs-vault/click-create-button.png)
+    ![De Recovery Services kluis maken](./media/backup-create-rs-vault/click-create-button.png)
 
-    Het kan even duren voordat de kluis Van Recovery Services is gemaakt. Controleer de statusmeldingen in het gebied **Meldingen** in de rechterbovenhoek van de portal. Nadat uw kluis is gemaakt, is deze zichtbaar in de lijst met kluizen van Recovery Services. Als u uw kluis niet ziet, selecteert u **Vernieuwen**.
+    Het kan even duren om de Recovery Services kluis te maken. Bewaak de status meldingen in het gebied **meldingen** in de rechter bovenhoek van de portal. Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst met Recovery Services kluizen. Als uw kluis niet wordt weer geven, selecteert u **vernieuwen**.
 
      ![De lijst met back-upkluizen vernieuwen](./media/backup-create-rs-vault/refresh-button.png)

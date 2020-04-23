@@ -15,39 +15,39 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80117227"
 ---
-Shared Image Gallery is een service waarmee u structuur en organisatie opbouwen rond uw beheerde afbeeldingen. Gedeelde galerieën bieden:
+Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
-- Beheerde wereldwijde replicatie van afbeeldingen.
-- Versiebeheer en groepering van afbeeldingen voor eenvoudiger beheer.
-- Afbeeldingen met ZRS-accounts (Zone Redundant Storage) in regio's die beschikbaarheidszones ondersteunen. ZRS biedt een betere veerkracht tegen zonale mislukkingen.
-- Delen tussen abonnementen en zelfs tussen AD-tenants (Active Directory) met RBAC.
-- Hiermee schalen uw implementaties met afbeeldingsreplica's in elke regio.
+- Beheerde algemene replicatie van installatie kopieën.
+- Versie beheer en groepering van installatie kopieën voor eenvoudiger beheer.
+- Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden-fouten.
+- Het delen van meerdere abonnementen en zelfs tussen Active Directory (AD)-tenants met behulp van RBAC.
+- Het schalen van uw implementaties met afbeeldings replica's in elke regio.
 
-Met behulp van een gedeelde afbeeldingsgalerie u uw afbeeldingen delen met verschillende gebruikers, serviceprincipals of AD-groepen binnen uw organisatie. Gedeelde afbeeldingen kunnen worden gerepliceerd naar meerdere regio's, voor een snellere schaling van uw implementaties.
+Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie. Gedeelde installatie kopieën kunnen worden gerepliceerd naar meerdere regio's, zodat u uw implementaties sneller kunt schalen.
 
-Een beheerde afbeelding is een kopie van een volledige VM (inclusief bijgevoegde gegevensschijven) of alleen de OS-schijf, afhankelijk van hoe u de afbeelding maakt. Wanneer u een VM maakt op basis van de afbeelding, wordt een kopie van de VHD's in de afbeelding gebruikt om de schijven voor de nieuwe virtuele machine te maken. De beheerde afbeelding blijft in opslag en kan steeds opnieuw worden gebruikt om nieuwe VM's te maken.
+Een beheerde installatie kopie is een kopie van een volledige virtuele machine (inclusief eventuele gekoppelde gegevens schijven) of alleen de besturingssysteem schijf, afhankelijk van hoe u de installatie kopie maakt. Wanneer u een virtuele machine maakt op basis van de installatie kopie, wordt een kopie van de Vhd's in de installatie kopie gebruikt voor het maken van de schijven voor de nieuwe virtuele machine. De beheerde installatie kopie blijft in de opslag en kan opnieuw worden gebruikt voor het maken van nieuwe Vm's.
 
-Als u een groot aantal beheerde afbeeldingen hebt die u moet onderhouden en deze beschikbaar wilt stellen in uw hele bedrijf, u een Shared Image Gallery gebruiken als opslagplaats waarmee u uw afbeeldingen eenvoudig delen. 
+Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en deze beschikbaar wilt maken in het hele bedrijf, kunt u een galerie met gedeelde afbeeldingen gebruiken als opslag plaats waarmee u gemakkelijk uw installatie kopieën kan delen. 
 
-De functie Gedeelde galerie heeft meerdere resourcetypen:
+De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
 
 | Resource | Beschrijving|
 |----------|------------|
-| **Beheerde afbeelding** | Een basisafbeelding die alleen kan worden gebruikt of kan worden gebruikt om een **afbeeldingsversie** in een afbeeldingsgalerie te maken. Beheerde afbeeldingen worden gemaakt op [gealgemene](#generalized-and-specialized-images) VM's. Een beheerde afbeelding is een speciaal type VHD dat kan worden gebruikt om meerdere VM's te maken en kan nu worden gebruikt om versies van gedeelde afbeeldingen te maken. |
-| **Momentopname** | Een kopie van een VHD die kan worden gebruikt om een **afbeeldingsversie**te maken. Momentopnamen kunnen worden genomen van een [gespecialiseerde](#generalized-and-specialized-images) VM (een die niet is gegeneraliseerd) dan alleen gebruikt of met snapshots van gegevensschijven, om een gespecialiseerde afbeeldingversie te maken.
-| **Afbeeldingsgalerie** | Net als de Azure Marketplace is een **afbeeldingsgalerie** een opslagplaats voor het beheren en delen van afbeeldingen, maar u bepaalt wie toegang heeft. |
-| **Afbeeldingsdefinitie** | Afbeeldingen worden gedefinieerd in een galerie en bevatten informatie over de afbeelding en vereisten voor het gebruik ervan binnen uw organisatie. U informatie opnemen zoals of de afbeelding algemeen of gespecialiseerd is, het besturingssysteem, minimale en maximale geheugenvereisten en releasenotes. Het is een definitie van een type beeld. |
-| **Versie van installatiekopie** | Een **afbeeldingsversie** is wat u gebruikt om een vm te maken wanneer u een galerie gebruikt. U meerdere versies van een afbeelding hebben als dat nodig is voor uw omgeving. Net als een beheerde afbeelding wordt de afbeeldingsversie gebruikt om nieuwe schijven voor de virtuele machine te maken wanneer u een **afbeeldingsversie** gebruikt om een afbeeldingsversie te maken. Afbeeldingsversies kunnen meerdere keren worden gebruikt. |
+| **Beheerde installatie kopie** | Een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van [gegeneraliseerde](#generalized-and-specialized-images) vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
+| **Snapshot** | Een kopie van een VHD die kan worden gebruikt om een **installatie kopie versie**te maken. Moment opnamen kunnen worden gemaakt op basis van een [gespecialiseerde](#generalized-and-specialized-images) virtuele machine (een die niet is gegeneraliseerd) en vervolgens alleen worden gebruikt of met moment opnamen van gegevens schijven, om een gespecialiseerde installatie kopie versie te maken.
+| **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
+| **Definitie van installatie kopie** | Installatie kopieën worden in een galerie gedefinieerd en bevatten informatie over de installatie kopie en vereisten voor het gebruik ervan binnen uw organisatie. U kunt informatie toevoegen zoals of de installatie kopie wordt gegeneraliseerd of gespecialiseerd, het besturings systeem, de minimale en maximale geheugen vereisten en release opmerkingen. Het is een definitie van een type installatie kopie. |
+| **Versie van installatiekopie** | Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Net als bij een beheerde installatie kopie wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine wanneer u een **installatie kopie** gebruikt voor het maken van een virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt. |
 
 <br>
 
-![Afbeelding die laat zien hoe u meerdere versies van een afbeelding in uw galerie hebben](./media/shared-image-galleries/shared-image-gallery.png)
+![Afbeelding die laat zien hoe u meerdere versies van een afbeelding in uw galerie kunt hebben](./media/shared-image-galleries/shared-image-gallery.png)
 
-## <a name="image-definitions"></a>Afbeeldingsdefinities
+## <a name="image-definitions"></a>Afbeeldings definities
 
-Afbeeldingsdefinities zijn een logische groepering voor versies van een afbeelding. De afbeeldingsdefinitie bevat informatie over waarom de afbeelding is gemaakt, voor welk besturingssysteem het is en informatie over het gebruik van de afbeelding. Een afbeeldingsdefinitie is als een plan voor alle details rond het maken van een specifieke afbeelding. U implementeert een VM niet vanuit een afbeeldingsdefinitie, maar vanuit de afbeeldingsversie die is gemaakt met de definitie.
+Afbeeldings definities zijn een logische groepering voor versies van een installatie kopie. De definitie van de installatie kopie bevat informatie over waarom de installatie kopie is gemaakt, waarvoor het besturings systeem is en informatie over het gebruik van de installatie kopie. Een definitie van een installatie kopie is een plan voor alle details over het maken van een specifieke installatie kopie. U implementeert geen VM op basis van een definitie van een installatie kopie, maar vanuit de installatie kopie versie die is gemaakt op basis van de definitie.
 
-Er zijn drie parameters voor elke afbeeldingsdefinitie die in combinatie worden gebruikt - **Publisher,** **Offer** en **SKU**. Deze worden gebruikt om een specifieke afbeeldingsdefinitie te vinden. U afbeeldingsversies hebben die een of twee delen, maar niet alle drie de waarden.  Hier zijn bijvoorbeeld drie afbeeldingsdefinities en hun waarden:
+Er zijn drie para meters voor elke definitie van de installatie kopie die worden gebruikt in combi natie: **Publisher**, **aanbieding** en **SKU**. Deze worden gebruikt om een specifieke definitie van een installatie kopie te vinden. U kunt installatie kopie versies die een of twee delen, maar niet alle drie waarden bevatten.  Dit zijn bijvoorbeeld drie afbeeldings definities en hun waarden:
 
 |Definitie van installatiekopie|Uitgever|Aanbieding|Sku|
 |---|---|---|---|
@@ -55,135 +55,135 @@ Er zijn drie parameters voor elke afbeeldingsdefinitie die in combinatie worden 
 |myImage2|Contoso|Finance|Front-end|
 |myImage3|Testen|Finance|Front-end|
 
-Alle drie van deze hebben unieke sets van waarden. De indeling is vergelijkbaar met de manier waarop u momenteel uitgever, aanbieding en SKU voor [Azure Marketplace-afbeeldingen](../articles/virtual-machines/windows/cli-ps-findimage.md) in Azure PowerShell opgeven om de nieuwste versie van een Marketplace-afbeelding te krijgen. Elke afbeeldingsdefinitie moet een unieke set van deze waarden hebben.
+Alle drie deze hebben unieke sets waarden. De indeling is vergelijkbaar met de manier waarop u op dit moment Publisher, aanbieding en SKU kunt opgeven voor [installatie kopieën van Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) in azure PowerShell om de nieuwste versie van een Marketplace-installatie kopie te verkrijgen. Elke afbeeldings definitie moet een unieke set van deze waarden hebben.
 
-De volgende parameters zijn andere parameters die kunnen worden ingesteld op uw afbeeldingsdefinitie, zodat u uw bronnen gemakkelijker bijhouden:
+Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definitie van uw installatie kopie, zodat u uw resources gemakkelijker kunt bijhouden:
 
-* Status van het besturingssysteem - U de status van het besturingssysteem instellen op [gegeneraliseerd of gespecialiseerd](#generalized-and-specialized-images).
-* Besturingssysteem - kan windows of Linux.
-* Beschrijving - gebruik beschrijving om meer gedetailleerde informatie te geven over waarom de afbeeldingsdefinitie bestaat. U bijvoorbeeld een afbeeldingsdefinitie hebben voor uw front-endserver waarop de toepassing vooraf is geïnstalleerd.
-* Eula - kan worden gebruikt om te wijzen op een licentieovereenkomst voor eindgebruikers die specifiek is voor de beelddefinitie.
-* Privacyverklaring en releasenotities - sla releasenotities en privacyverklaringen op in Azure-opslag en bieden een URI voor toegang tot deze notities als onderdeel van de afbeeldingsdefinitie.
-* Einddatum - voeg een einddatum aan uw afbeeldingsdefinitie toe om automatisering te kunnen gebruiken om oude afbeeldingsdefinities te verwijderen.
-* Tag - u tags toevoegen wanneer u uw afbeeldingsdefinitie maakt. Zie [Labels gebruiken om uw bronnen te ordenen](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie over tags
-* Minimale en maximale vCPU- en geheugenaanbevelingen - als uw afbeelding vCPU- en geheugenaanbevelingen heeft, u die informatie koppelen aan uw afbeeldingsdefinitie.
-* Niet-toegestane schijftypen : u informatie geven over de opslagbehoeften van uw virtuele machine. Als de afbeelding bijvoorbeeld niet geschikt is voor standaard HDD-schijven, voegt u deze toe aan de lijst met niet-toegestane schijven.
+* Status van besturings systeem: u kunt de besturingssysteem status instellen op [gegeneraliseerd of gespecialiseerd](#generalized-and-specialized-images).
+* Besturings systeem: dit kan Windows of Linux zijn.
+* Beschrijving: gebruik beschrijving om meer gedetailleerde informatie te geven over waarom de definitie van de installatie kopie bestaat. U kunt bijvoorbeeld een definitie van een installatie kopie hebben voor de front-end-server waarop de toepassing vooraf is geïnstalleerd.
+* EULA: kan worden gebruikt om te verwijzen naar een gebruiksrecht overeenkomst die specifiek is voor de definitie van de installatie kopie.
+* Privacyverklaring en opmerkingen bij de release: Sla release opmerkingen en privacyverklaringen op in azure Storage en geef een URI op om ze te openen als onderdeel van de definitie van de installatie kopie.
+* Datum van einde van de levens duur: koppel een einddatum datum aan de definitie van uw installatie kopie om oude afbeeldings definities te kunnen verwijderen.
+* Tag: u kunt labels toevoegen wanneer u de definitie van de installatie kopie maakt. Zie [Tags gebruiken om uw resources te organiseren](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie over tags.
+* Minimale en maximale vCPU-en geheugen aanbevelingen: als uw installatie kopie vCPU en geheugen aanbevelingen heeft, kunt u die gegevens koppelen aan de definitie van uw installatie kopie.
+* Niet-toegestane schijf typen: u kunt informatie geven over de opslag behoeften voor uw VM. Als de installatie kopie bijvoorbeeld niet geschikt is voor standaard HDD-schijven, voegt u deze toe aan de lijst niet toegestaan.
 
-## <a name="generalized-and-specialized-images"></a>Algemene en gespecialiseerde afbeeldingen
+## <a name="generalized-and-specialized-images"></a>Gegeneraliseerde en gespecialiseerde installatie kopieën
 
-Er zijn twee besturingssysteemstatussen die worden ondersteund door Shared Image Gallery. Afbeeldingen vereisen doorgaans dat de VM die wordt gebruikt om de afbeelding te maken, is gegeneraliseerd voordat de afbeelding wordt gemaakt. Generaliseren is een proces dat machine- en gebruikersspecifieke informatie uit de VM verwijdert. Voor Windows wordt ook de Sysprep gebruikt. Voor Linux u [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` parameters gebruiken.
+Er zijn twee statussen van het besturings systeem die worden ondersteund door de galerie met gedeelde afbeeldingen. Normaal gesp roken moeten installatie kopieën ervoor zorgen dat de virtuele machine die wordt gebruikt om de installatie kopie te maken, wordt gegeneraliseerd voordat de installatie kopie wordt gemaakt. Generalisatie is een proces waarbij computer-en gebruikersspecifieke gegevens van de virtuele machine worden verwijderd. Voor Windows wordt ook het Sysprep-bestand gebruikt. Voor Linux kunt u [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` para meters gebruiken.
 
-Gespecialiseerde VM's hebben geen proces doorlopen om machinespecifieke informatie en accounts te verwijderen. Ook vm's gemaakt van gespecialiseerde `osProfile` afbeeldingen hebben geen bijbehorende. Dit betekent dat gespecialiseerde afbeeldingen een aantal beperkingen hebben.
+Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computerspecifieke informatie en-accounts. Daarnaast hebben Vm's die zijn gemaakt op basis van gespecialiseerde installatie `osProfile` kopieën er geen gekoppeld aan. Dit betekent dat gespecialiseerde installatie kopieën enkele beperkingen zullen hebben.
 
-- Accounts die kunnen worden gebruikt om zich aan te melden bij de VM, kunnen ook worden gebruikt op elke vm die is gemaakt met behulp van de gespecialiseerde afbeelding die is gemaakt met die VM.
-- VM's hebben de **computernaam** van de VM waarvan de afbeelding is overgenomen. U moet de naam van de computer wijzigen om botsingen te voorkomen.
-- Het `osProfile` is hoe sommige gevoelige informatie wordt `secrets`doorgegeven aan de VM, met behulp van . Dit kan problemen veroorzaken met KeyVault, WinRM `secrets` en `osProfile`andere functionaliteit die wordt gebruikt in de . In sommige gevallen u managed service identitalen (MSI) gebruiken om deze beperkingen te omzeilen.
+- Accounts die kunnen worden gebruikt om zich aan te melden bij de virtuele machine, kunnen ook worden gebruikt op elke virtuele machine die is gemaakt met behulp van de gespecialiseerde installatie kopie die is gemaakt op basis van die VM.
+- Vm's krijgen de **computer naam** van de virtuele machine waaruit de installatie kopie is gemaakt. Wijzig de computer naam om conflicten te voor komen.
+- De `osProfile` is hoe gevoelige informatie wordt door gegeven aan de virtuele machine, `secrets`met behulp van. Dit kan problemen veroorzaken met behulp van de sleutel kluis, WinRM en `secrets` andere functionaliteit `osProfile`die wordt gebruikt in de. In sommige gevallen kunt u de beheerde service-identiteiten (MSI) gebruiken om deze beperkingen te omzeilen.
 
 > [!IMPORTANT]
-> Gespecialiseerde afbeeldingen zijn momenteel in openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Gespecialiseerde installatie kopieën zijn momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> **Bekende preview-beperkingen** VM's kunnen alleen worden gemaakt op basis van gespecialiseerde afbeeldingen met behulp van de portal of API. Het is geen CLI of PowerShell ondersteuning voor de preview.
+> **Bekende preview-beperkingen** Vm's kunnen alleen worden gemaakt op basis van gespecialiseerde installatie kopieën met behulp van de portal of API. De is geen CLI-of Power Shell-ondersteuning voor de preview-versie.
 
 
-## <a name="regional-support"></a>Regionale steun
+## <a name="regional-support"></a>Regionale ondersteuning
 
-Bronregio's worden vermeld in de onderstaande tabel. Alle openbare regio's kunnen doelregio's zijn, maar om te repliceren naar Australia Central en Australia Central 2 moet u uw abonnement op de witte lijst hebben staan. Ga naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
+De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet u uw abonnement white list. Als u White List wilt aanvragen, gaat u naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
-| Bronregio's        |                   |                    |                    |
+| Bron regio's        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Australië - centraal     | China East        | India - zuid        | Europa -west        |
-| Australië - centraal 2   | China Oost 2      | Azië - zuidoost     | Verenigd Koninkrijk Zuid           |
+| Australië - centraal 2   | China-oost 2      | Azië - zuidoost     | Verenigd Koninkrijk Zuid           |
 | Australië - oost        | China - noord       | Japan - oost         | Verenigd Koninkrijk West            |
-| Australië - zuidoost   | China Noord 2     | Japan - west         | US DoD Central     |
+| Australië - zuidoost   | China-noord 2     | Japan - west         | US DoD Central     |
 | Brazilië - zuid          | Azië - oost         | Korea - centraal      | US DoD East        |
 | Canada - midden        | VS - oost           | Korea - zuid        | VS (overheid) - Arizona     |
 | Canada - oost           | VS - oost 2         | VS - noord-centraal   | VS (overheid) - Texas       |
-| India - centraal         | Oost-VS 2 EUAP    | Europa - noord       | VS (overheid) - Virginia    |
+| India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | VS (overheid) - Virginia    |
 | VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
-| Centrale EUAP van de VS       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
+| Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
 |                       |                   |                    | VS - west 2          |
 
 
 
 ## <a name="limits"></a>Limieten 
 
-Er zijn limieten per abonnement voor het implementeren van bronnen met gedeelde galerieën:
-- 100 gedeelde beeldgalerijen, per abonnement, per regio
-- 1.000 beelddefinities, per abonnement, per regio
-- 10.000 afbeeldingsversies, per abonnement, per regio
-- Elke schijf die aan de afbeelding is gekoppeld, moet kleiner zijn dan of gelijk zijn aan 1 TB groot
+Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
+- 100 gedeelde afbeeldings galerieën, per abonnement, per regio
+- 1.000 installatie kopie definities, per abonnement, per regio
+- 10.000 installatie kopie versies, per abonnement, per regio
+- Schijven die zijn gekoppeld aan de installatie kopie moeten kleiner zijn dan of gelijk zijn aan 1 TB groot
 
-Zie [Resourcegebruik controleren op limieten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) voor voorbeelden van het controleren van uw huidige gebruik voor meer informatie.
+Zie voor meer informatie [resource gebruik controleren op limieten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) voor voor beelden van het controleren van uw huidige gebruik.
  
 ## <a name="scaling"></a>Schalen
-Met Shared Image Gallery u het aantal replica's opgeven dat azure van de afbeeldingen wilt bewaren. Dit helpt in multi-VM implementatie scenario's als de VM-implementaties kunnen worden verspreid naar verschillende replica's waardoor de kans op het maken van instanties verwerking wordt beperkt als gevolg van overbelasting van een enkele replica.
+Met de galerie voor gedeelde afbeeldingen kunt u het aantal replica's opgeven dat door Azure moet worden bewaard voor de installatie kopieën. Dit helpt bij implementatie scenario's met meerdere VM'S als de VM-implementaties kunnen worden gespreid naar verschillende replica's, waardoor de kans dat verwerking van het proces voor het maken van exemplaren wordt beperkt door overbelasting van één replica wordt verkleind.
 
-Met Shared Image Gallery u nu maximaal 1.000 VM-exemplaren implementeren in een virtuele machineschaalset (vanaf 600 met beheerde afbeeldingen). Afbeeldingsreplica's zorgen voor betere implementatieprestaties, betrouwbaarheid en consistentie. U in elke doelregio een ander aantal replica's instellen op basis van de schaalbehoeften voor de regio. Aangezien elke replica een diepe kopie van uw afbeelding is, helpt dit uw implementaties lineair te schalen met elke extra replica. Hoewel we begrijpen dat geen twee afbeeldingen of regio's hetzelfde zijn, volgt hier onze algemene richtlijn voor het gebruik van replica's in een regio:
+Met de galerie voor gedeelde afbeeldingen kunt u nu tot 1.000 VM-exemplaren implementeren in een schaalset voor virtuele machines (tot 600 met beheerde installatie kopieën). Image replica's bieden betere implementatie prestaties, betrouw baarheid en consistentie. U kunt in elke doel regio een ander aantal replica's instellen, op basis van de schaal behoeften voor de regio. Omdat elke replica een diepe kopie van uw installatie kopie is, kunt u hiermee uw implementaties lineair schalen met elke extra replica. We begrijpen dat er niet twee installatie kopieën of regio's hetzelfde zijn. Hier volgt onze algemene richt lijnen voor het gebruik van replica's in een regio:
 
-- VmsS-implementaties (non-Virtual Machine Scale Set) - Voor elke 20 VM's die u gelijktijdig maakt, raden we u aan één replica te bewaren. Als u bijvoorbeeld tegelijkertijd 120 VM's maakt met dezelfde afbeelding in een regio, raden we u aan ten minste 6 replica's van uw afbeelding te bewaren. 
-- VMSS-implementaties (Virtual Machine Scale Set) - Voor elke implementatie van schaalsetsets met maximaal 600 exemplaren raden we u aan ten minste één replica te bewaren. Als u bijvoorbeeld 5 schaalsets tegelijk maakt, elk met 600 VM-exemplaren met dezelfde afbeelding in één regio, raden we u aan ten minste 5 replica's van uw afbeelding te bewaren. 
+- Voor implementaties met een niet-virtuele machine Scale set (VMSS): voor elke 20 Vm's die u gelijktijdig maakt, raden we u aan één replica te blijven gebruiken. Als u 120 Vm's gelijktijdig maakt met behulp van dezelfde installatie kopie in een regio, wordt u aangeraden minstens 6 replica's van uw installatie kopie te gebruiken. 
+- Voor implementaties van Virtual Machine Scale set (VMSS): voor elke implementatie van een schaalset met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld vijf schaal sets gelijktijdig maakt, waarbij elk 600 VM-exemplaren dezelfde installatie kopie in één regio gebruikt, wordt u aangeraden ten minste vijf replica's van uw installatie kopie te gebruiken. 
 
-We raden u altijd aan om het aantal replica's te overprovisioneren vanwege factoren zoals afbeeldingsgrootte, inhoud en ostype.
+We raden u altijd aan het aantal replica's te overtreffen door factoren zoals afbeeldings grootte, inhoud en type besturings systeem.
 
-![Afbeelding die laat zien hoe u afbeeldingen schalen](./media/shared-image-galleries/scaling.png)
+![Afbeelding die laat zien hoe u afbeeldingen kunt schalen](./media/shared-image-galleries/scaling.png)
 
-## <a name="make-your-images-highly-available"></a>Maak uw afbeeldingen zeer beschikbaar
+## <a name="make-your-images-highly-available"></a>Uw afbeeldingen Maxi maal beschikbaar maken
 
-[Azure Zone Redundant Storage (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) biedt veerkracht tegen een storing in de beschikbaarheidszone in de regio. Met de algemene beschikbaarheid van Gedeelde afbeeldingengalerij u ervoor kiezen om uw afbeeldingen op te slaan in ZRS-accounts in regio's met beschikbaarheidszones. 
+[Azure zone redundant Storage (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) biedt een tolerantie voor een fout in de beschikbaarheids zone in de regio. Met de algemene Beschik baarheid van de galerie gedeelde afbeeldingen kunt u ervoor kiezen om uw installatie kopieën op te slaan in ZRS-accounts in regio's met Beschikbaarheidszones. 
 
-U ook het accounttype voor elk van de doelgebieden kiezen. Het standaardopslagaccounttype is Standard_LRS, maar u Standard_ZRS kiezen voor regio's met beschikbaarheidszones. Bekijk [hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)de regionale beschikbaarheid van ZRS.
+U kunt ook het account type kiezen voor elk van de doel regio's. Het standaard type opslag account is Standard_LRS, maar u kunt Standard_ZRS voor regio's met Beschikbaarheidszones kiezen. Controleer [hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)de regionale beschik BAARHEID van ZRS.
 
 ![Afbeelding met ZRS](./media/shared-image-galleries/zrs.png)
 
 ## <a name="replication"></a>Replicatie
-Met Shared Image Gallery u uw afbeeldingen ook automatisch repliceren naar andere Azure-regio's. Elke versie met gedeelde afbeelding kan worden gerepliceerd naar verschillende regio's, afhankelijk van wat zinvol is voor uw organisatie. Een voorbeeld is om altijd de nieuwste afbeelding in meerdere regio's te repliceren, terwijl alle oudere versies alleen beschikbaar zijn in 1 regio. Dit kan helpen besparen op opslagkosten voor Shared Image-versies. 
+Met de galerie voor gedeelde afbeeldingen kunt u ook automatisch uw installatie kopieën naar andere Azure-regio's repliceren. Elke versie van een gedeelde installatie kopie kan worden gerepliceerd naar verschillende regio's, afhankelijk van wat voor uw organisatie zinvol is. Een voor beeld is om altijd de nieuwste afbeelding in meerdere regio's te repliceren terwijl alle oudere versies alleen beschikbaar zijn in één regio. Dit kan helpen besparen op opslag kosten voor gedeelde installatie kopie versies. 
 
-De regio's waareen gedeelde afbeeldingsversie op wordt gerepliceerd, kunnen worden bijgewerkt na het maken van de tijd. De tijd die nodig is om te repliceren naar verschillende regio's is afhankelijk van de hoeveelheid gegevens die wordt gekopieerd en het aantal regio's waarin de versie wordt gerepliceerd. Dit kan in sommige gevallen enkele uren duren. Terwijl de replicatie plaatsvindt, u de status van replicatie per regio bekijken. Zodra de afbeeldingsreplicatie in een regio is voltooid, u vervolgens een vm of schaalset implementeren met die afbeeldingsversie in de regio.
+De regio's waarvan een versie van de gedeelde installatie kopie wordt gerepliceerd naar, kunnen worden bijgewerkt na de aanmaak tijd. De tijd die nodig is om naar verschillende regio's te repliceren, is afhankelijk van de hoeveelheid gegevens die wordt gekopieerd en het aantal regio's waarnaar de versie wordt gerepliceerd. Dit kan in sommige gevallen enkele uren duren. Terwijl de replicatie plaatsvindt, kunt u de status van de replicatie per regio weer geven. Zodra de replicatie van de installatie kopie in een regio is voltooid, kunt u een virtuele machine of schaalset implementeren met behulp van de installatie kopie versie in de regio.
 
-![Afbeelding die laat zien hoe u afbeeldingen repliceren](./media/shared-image-galleries/replication.png)
+![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
 ## <a name="access"></a>Toegang
 
-Omdat de gedeelde afbeeldingsgalerie, beelddefinitie en afbeeldingsversie allemaal bronnen zijn, kunnen ze worden gedeeld met de ingebouwde native Azure RBAC-besturingselementen. Met RBAC u deze bronnen delen met andere gebruikers, serviceprincipals en groepen. U zelfs toegang delen tot personen buiten de tenant waarin ze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie gedeelde afbeelding, kan hij een VM of een virtuele machineschaalset implementeren.  Hier is de matrix voor delen die helpt te begrijpen waartoe de gebruiker toegang krijgt:
+Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
 | Gedeeld met gebruiker     | Galerie met gedeelde installatiekopieën | Definitie van installatiekopie | Versie van installatiekopie |
 |----------------------|----------------------|--------------|----------------------|
 | Galerie met gedeelde installatiekopieën | Ja                  | Ja          | Ja                  |
 | Definitie van installatiekopie     | Nee                   | Ja          | Ja                  |
 
-We raden u aan om op galerijniveau te delen voor de beste ervaring. We raden het delen van afzonderlijke afbeeldingsversies af. Zie [Toegang tot Azure-bronnen beheren met RBAC](../articles/role-based-access-control/role-assignments-portal.md)voor meer informatie over RBAC.
+U wordt aangeraden op Galerie niveau te delen voor de beste ervaring. Het is niet raadzaam om afzonderlijke versies van een installatie kopie te delen. Zie [toegang tot Azure-resources beheren met RBAC](../articles/role-based-access-control/role-assignments-portal.md)voor meer informatie over RBAC.
 
-Afbeeldingen kunnen ook op schaal worden gedeeld, zelfs voor huurders met behulp van een registratie van een multi-tenant-app. Zie [VM-afbeeldingen delen in Azure-tenants](../articles/virtual-machines/linux/share-images-across-tenants.md)voor meer informatie over het delen van afbeeldingen tussen tenants in Azure.
+Installatie kopieën kunnen ook worden gedeeld, op schaal, zelfs via tenants met behulp van een multi tenant-app-registratie. Zie [Galerie-VM-installatie kopieën delen in azure-tenants](../articles/virtual-machines/linux/share-images-across-tenants.md)voor meer informatie over het delen van installatie kopieën tussen tenants.
 
 ## <a name="billing"></a>Billing
-Er zijn geen extra kosten verbonden aan het gebruik van de shared image gallery-service. Er worden kosten in rekening gebracht voor de volgende bronnen:
-- Opslagkosten voor het opslaan van de versies gedeelde afbeelding. De kosten zijn afhankelijk van het aantal replica's van de afbeeldingsversie en het aantal regio's waaraan de versie is gerepliceerd. Als u bijvoorbeeld 2 afbeeldingen hebt en beide worden gerepliceerd naar 3 regio's, worden er 6 beheerde schijven in rekening gebracht op basis van hun grootte. Zie [Prijzen voor beheerde schijven voor](https://azure.microsoft.com/pricing/details/managed-disks/)meer informatie .
-- Netwerkuitgangen kosten voor replicatie van de eerste afbeeldingsversie van het brongebied naar de gerepliceerde regio's. Volgende replica's worden afgehandeld binnen de regio, dus er zijn geen extra kosten. 
+Er worden geen extra kosten in rekening gebracht voor het gebruik van de service voor de gedeelde afbeeldingen galerie. Er worden kosten in rekening gebracht voor de volgende resources:
+- Opslag kosten voor het opslaan van de versies van de gedeelde installatie kopieën. De kosten zijn afhankelijk van het aantal replica's van de versie van de installatie kopie en het aantal regio's waarnaar de versie wordt gerepliceerd. Als u bijvoorbeeld twee installatie kopieën hebt en beide worden gerepliceerd naar drie regio's, worden er 6 beheerde schijven in rekening gebracht op basis van de grootte. Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie.
+- Uitgaande netwerk kosten voor replicatie van de eerste versie van de installatie kopie van de bron regio naar de gerepliceerde regio's. Volgende replica's worden binnen de regio verwerkt, zodat er geen extra kosten in rekening worden gebracht. 
 
-## <a name="updating-resources"></a>Bronnen bijwerken
+## <a name="updating-resources"></a>Resources bijwerken
 
-Nadat u bent gemaakt, u enkele wijzigingen aanbrengen in de bronnen van de afbeeldingsgalerie. Deze zijn beperkt tot:
+Nadat u deze hebt gemaakt, kunt u enkele wijzigingen aanbrengen in de afbeeldingen galerie-resources. Deze zijn beperkt tot:
  
-Gedeelde afbeeldingsgalerie:
+Galerie met gedeelde afbeeldingen:
 - Beschrijving
 
-Afbeeldingsdefinitie:
-- Aanbevolen vCPU's
+Definitie van installatie kopie:
+- Aanbevolen Vcpu's
 - Aanbevolen geheugen
 - Beschrijving
-- Einddatum van het einde van de levensduur
+- Einde van de levens duur
 
-Afbeeldingsversie:
+Versie van installatie kopie:
 - Aantal regionale replica's
-- Doelregio's
-- Uitsluiten van de laatste
-- Einddatum van het einde van de levensduur
+- Doel regio's
+- Van laatste uitsluiten
+- Einde van de levens duur
 
 ## <a name="sdk-support"></a>SDK-ondersteuning
 
-De volgende SDK's ondersteunen het maken van gedeelde galerieën:
+Met de volgende Sdk's wordt ondersteuning geboden voor het maken van gedeelde afbeeldings galerieën:
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
@@ -193,118 +193,118 @@ De volgende SDK's ondersteunen het maken van gedeelde galerieën:
 
 ## <a name="templates"></a>Sjablonen
 
-U bronnen voor Shared Image Gallery maken met sjablonen. Er zijn verschillende Azure Quickstart-sjablonen beschikbaar: 
+U kunt een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure Quick Start-sjablonen beschikbaar: 
 
-- [Een gedeelde afbeeldingsgalerie maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Een afbeeldingsdefinitie maken in een gedeelde afbeeldingsgalerie](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Een afbeeldingsversie maken in een gedeelde afbeeldingsgalerie](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Een VM maken op basis van afbeeldingsversie](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Een galerie met gedeelde afbeeldingen maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Een definitie van een installatie kopie maken in een galerie met gedeelde afbeeldingen](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Een installatie kopie versie maken in een galerie met gedeelde afbeeldingen](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Een VM maken op basis van de installatie kopie versie](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen 
 
-* [Hoe kan ik alle bronnen van gedeelde afbeeldingengalerij voor verschillende abonnementen weergeven?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
-* [Kan ik mijn bestaande afbeelding verplaatsen naar de gedeelde afbeeldingsgalerie?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
-* [Kan ik een afbeeldingsversie maken vanaf een gespecialiseerde schijf?](#can-i-create-an-image-version-from-a-specialized-disk)
-* [Kan ik de bron Shared Image Gallery verplaatsen naar een ander abonnement nadat deze is gemaakt?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
-* [Kan ik mijn afbeeldingsversies repliceren in clouds zoals Azure China 21Vianet of Azure Germany of Azure Government Cloud?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
-* [Kan ik mijn afbeeldingsversies repliceren voor verschillende abonnementen?](#can-i-replicate-my-image-versions-across-subscriptions)
-* [Kan ik afbeeldingsversies delen in Azure AD-tenants?](#can-i-share-image-versions-across-azure-ad-tenants)
-* [Hoe lang duurt het om afbeeldingsversies te repliceren in de doelregio's?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
-* [Wat is het verschil tussen bronregio en doelregio?](#what-is-the-difference-between-source-region-and-target-region)
-* [Hoe geef ik het brongebied op tijdens het maken van de afbeeldingsversie?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
-* [Hoe geef ik het aantal replica's van afbeeldingsversies op dat in elke regio moet worden gemaakt?](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
-* [Kan ik de gedeelde afbeeldingsgalerie op een andere locatie maken dan die voor de afbeeldingsdefinitie en afbeeldingsversie?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
-* [Wat zijn de kosten voor het gebruik van de Gedeelde Afbeeldingsgalerie?](#what-are-the-charges-for-using-the-shared-image-gallery)
-* [Welke API-versie moet ik gebruiken om Shared Image Gallery en Image Definition en Image Version te maken?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
-* [Welke API-versie moet ik gebruiken om gedeelde VM- of virtuele machineschaalset te maken uit de afbeeldingsversie?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Hoe kan ik alle resources van de galerie met gedeelde afbeeldingen in abonnementen weer geven?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
+* [Kan ik mijn bestaande afbeelding verplaatsen naar de galerie met gedeelde afbeeldingen?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
+* [Kan ik een installatie kopie versie van een gespecialiseerde schijf maken?](#can-i-create-an-image-version-from-a-specialized-disk)
+* [Kan ik de resource van de gedeelde afbeeldingen galerie verplaatsen naar een ander abonnement nadat deze is gemaakt?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [Kan ik mijn afbeeldings versies in Clouds, zoals Azure China 21Vianet of Azure Duitsland of Azure Government Cloud, repliceren?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+* [Kan ik mijn installatie kopie versies in abonnementen repliceren?](#can-i-replicate-my-image-versions-across-subscriptions)
+* [Kan ik installatie kopie versies delen in azure AD-tenants?](#can-i-share-image-versions-across-azure-ad-tenants)
+* [Hoe lang duurt het om installatie kopieën in de doel regio's te repliceren?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
+* [Wat is het verschil tussen bron gebied en doel regio?](#what-is-the-difference-between-source-region-and-target-region)
+* [Hoe kan ik de bron regio opgeven tijdens het maken van de installatie kopie versie?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
+* [Hoe kan ik geeft u het aantal afbeeldings versie replica's op dat in elke regio moet worden gemaakt?](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
+* [Kan ik de galerie met gedeelde afbeeldingen maken op een andere locatie dan die voor de definitie van de installatie kopie en de versie van de installatie kopie?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
+* [Wat zijn de kosten voor het gebruik van de galerie met gedeelde afbeeldingen?](#what-are-the-charges-for-using-the-shared-image-gallery)
+* [Welke API-versie moet ik gebruiken voor het maken van een galerie met gedeelde afbeeldingen en een afbeeldings definitie en installatie kopie versie?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
+* [Welke API-versie moet ik gebruiken om een gedeelde VM of schaal van een virtuele machine te maken op de installatie kopie versie?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
 
-### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Hoe kan ik alle bronnen van gedeelde afbeeldingengalerij voor verschillende abonnementen weergeven?
+### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Hoe kan ik alle resources van de galerie met gedeelde afbeeldingen in abonnementen weer geven?
 
-Voer de onderstaande stappen uit om alle bronnen van Shared Image Gallery weer te geven voor abonnementen waartoe u toegang hebt op de Azure-portal:
+Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie galerie weer te geven in abonnementen waartoe u toegang hebt op de Azure Portal:
 
 1. Open de [Azure Portal](https://portal.azure.com).
-1. Ga naar **Alle bronnen.**
-1. Selecteer alle abonnementen waaronder u alle bronnen wilt weergeven.
-1. Zoek naar bronnen van het type **Privégalerie**.
+1. Ga naar **alle resources**.
+1. Selecteer alle abonnementen waaronder u alle resources wilt weer geven.
+1. Zoek naar bronnen van het type **persoonlijke galerie**.
  
-   Als u de afbeeldingsdefinities en afbeeldingsversies wilt zien, selecteert u ook **Verborgen typen weergeven**.
+   Als u de afbeeldings definities en afbeeldings versies wilt zien, moet u ook **verborgen typen weer geven**selecteren.
  
-   Als u alle bronnen van Shared Image Gallery wilt weergeven voor abonnementen waar toe u machtigingen hebt, gebruikt u de volgende opdracht in de Azure CLI:
+   Als u alle resources van de galerie met gedeelde afbeeldingen wilt weer geven voor alle abonnementen waarvoor u machtigingen hebt, gebruikt u de volgende opdracht in de Azure CLI:
 
    ```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 
-### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Kan ik mijn bestaande afbeelding verplaatsen naar de gedeelde afbeeldingsgalerie?
+### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Kan ik mijn bestaande afbeelding verplaatsen naar de galerie met gedeelde afbeeldingen?
  
-Ja. Er zijn 3 scenario's gebaseerd op de soorten afbeeldingen die u mogelijk hebt.
+Ja. Er zijn drie scenario's die zijn gebaseerd op de typen installatie kopieën die u mogelijk hebt.
 
- Scenario 1: Als u een beheerde afbeelding in hetzelfde abonnement hebt als uw SIG, u er een afbeeldingsdefinitie en afbeeldingsversie van maken.
+ Scenario 1: als u een beheerde installatie kopie hebt in hetzelfde abonnement als uw SIG, kunt u een afbeeldings definitie en een installatie kopie versie van de afbeelding maken.
 
- Scenario 2: Als u een onbeheerde afbeelding in hetzelfde abonnement hebt als uw SIG, u er een beheerde afbeelding van maken en er vervolgens een afbeeldingsdefinitie en afbeeldingsversie van maken. 
+ Scenario 2: als u een niet-beheerde installatie kopie hebt in hetzelfde abonnement als uw SIG, kunt u er een beheerde installatie kopie van maken en vervolgens een installatie kopie-en afbeeldings versie maken. 
 
- Scenario 3: Als u een VHD in uw lokale bestandssysteem hebt, moet u de VHD uploaden naar een beheerde afbeelding, dan u er een afbeeldingsdefinitie en afbeeldingsversie van maken.
+ Scenario 3: als u een VHD in het lokale bestands systeem hebt, moet u de VHD uploaden naar een beheerde installatie kopie, waarna u een installatie kopie en afbeeldings versie van de virtuele harde schijf kunt maken.
 
-- Zie [Een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)als de VHD van een Windows-VM is.
-- Als de VHD voor een Linux-VM is, [raadpleegt u Een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- Zie [een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)als de VHD van een Windows-virtuele machine is.
+- Zie [een VHD uploaden](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd) als de VHD voor een virtuele Linux-machine is.
 
-### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kan ik een afbeeldingsversie maken vanaf een gespecialiseerde schijf?
+### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kan ik een installatie kopie versie van een gespecialiseerde schijf maken?
 
-Ja, ondersteuning voor gespecialiseerde schijven als afbeeldingen is in preview. U alleen een VM maken op basis van een gespecialiseerde afbeelding met behulp van de portal[(Windows](../articles/virtual-machines/linux/shared-images-portal.md) of [Linux)](../articles/virtual-machines/linux/shared-images-portal.md)en API. Er is geen PowerShell-ondersteuning voor de preview.
+Ja, ondersteuning voor speciale schijven als installatie kopieën is in de preview-versie. U kunt alleen een virtuele machine maken op basis van een gespecialiseerde installatie kopie met behulp van de portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) of [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) en de API. Er is geen Power Shell-ondersteuning voor de preview-versie.
 
-### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kan ik de bron Shared Image Gallery verplaatsen naar een ander abonnement nadat deze is gemaakt?
+### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kan ik de resource van de gedeelde afbeeldingen galerie verplaatsen naar een ander abonnement nadat deze is gemaakt?
 
-Nee, u de bron voor gedeelde afbeeldingsgaleries niet verplaatsen naar een ander abonnement. U de afbeeldingsversies in de galerie echter naar behoefte repliceren naar andere regio's.
+Nee, u kunt de resource van de gedeelde afbeeldings galerie niet naar een ander abonnement verplaatsen. U kunt de installatie kopieën in de galerie echter naar andere regio's repliceren.
 
-### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Kan ik mijn afbeeldingsversies repliceren in clouds zoals Azure China 21Vianet of Azure Germany of Azure Government Cloud?
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Kan ik mijn afbeeldings versies in Clouds, zoals Azure China 21Vianet of Azure Duitsland of Azure Government Cloud, repliceren?
 
-Nee, u afbeeldingsversies niet repliceren in verschillende clouds.
+Nee, u kunt geen afbeeldings versies van Clouds repliceren.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kan ik mijn afbeeldingsversies repliceren voor verschillende abonnementen?
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kan ik mijn installatie kopie versies in abonnementen repliceren?
 
-Nee, u de afbeeldingsversies in verschillende regio's in een abonnement repliceren en gebruiken in andere abonnementen via RBAC.
+Nee, u kunt de installatie kopie versies van de verschillende regio's in een abonnement repliceren en deze gebruiken in andere abonnementen via RBAC.
 
-### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Kan ik afbeeldingsversies delen in Azure AD-tenants? 
+### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Kan ik installatie kopie versies delen in azure AD-tenants? 
 
-Ja, u RBAC gebruiken om te delen met personen in verschillende huurders. Maar als u wilt delen op schaal, raadpleegt u 'Galerijafbeeldingen delen tussen Azure-tenants' met [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) of [CLI.](../articles/virtual-machines/linux/share-images-across-tenants.md)
+Ja, u kunt RBAC gebruiken om te delen met personen in een Tenant. Als u echter op schaal wilt delen, raadpleegt u ' Galerie-installatie kopieën delen in azure-tenants ' met [Power shell](../articles/virtual-machines/windows/share-images-across-tenants.md) of [cli](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>Hoe lang duurt het om afbeeldingsversies te repliceren in de doelregio's?
+### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>Hoe lang duurt het om installatie kopieën in de doel regio's te repliceren?
 
-De replicatietijd van de afbeeldingsversie is volledig afhankelijk van de grootte van de afbeelding en het aantal regio's waarin deze wordt gerepliceerd. Als aanbevolen praktijk wordt u echter aangeraden de afbeelding klein te houden en de bron- en doelregio's dicht te houden voor de beste resultaten. U de status van de replicatie controleren met de vlag -Replicatiestatus.
+De replicatie tijd van de installatie kopie is geheel afhankelijk van de grootte van de installatie kopie en het aantal regio's waarnaar deze wordt gerepliceerd. Als best practice, kunt u echter het beste de installatie kopie klein en de bron-en doel regio's sluiten voor optimale resultaten. U kunt de status van de replicatie controleren met de vlag-ReplicationStatus.
 
-### <a name="what-is-the-difference-between-source-region-and-target-region"></a>Wat is het verschil tussen bronregio en doelregio?
+### <a name="what-is-the-difference-between-source-region-and-target-region"></a>Wat is het verschil tussen bron gebied en doel regio?
 
-Brongebied is het gebied waar uw afbeeldingsversie wordt gemaakt en doelregio's zijn de regio's waar een kopie van uw afbeeldingsversie wordt opgeslagen. Voor elke afbeeldingsversie u slechts één brongebied hebben. Zorg er ook voor dat u de locatie van het brongebied doorgeeft als een van de doelgebieden wanneer u een afbeeldingsversie maakt.
+Bron regio is de regio waarin de versie van de installatie kopie wordt gemaakt en de doel regio's zijn de regio's waarin een kopie van de afbeeldings versie wordt opgeslagen. Voor elke installatie kopie versie kunt u slechts één bron regio hebben. Zorg er ook voor dat u de locatie van het bron gebied als een van de doel regio's doorgeeft wanneer u een installatie kopie versie maakt.
 
-### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>Hoe geef ik het brongebied op tijdens het maken van de afbeeldingsversie?
+### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>Hoe kan ik de bron regio opgeven tijdens het maken van de installatie kopie versie?
 
-Tijdens het maken van een afbeeldingsversie u de **locatietag** in CLI en de **locatietag** in PowerShell gebruiken om het brongebied op te geven. Zorg ervoor dat de beheerde afbeelding die u gebruikt als basisafbeelding om de afbeeldingsversie te maken zich op dezelfde locatie bevindt als de locatie waar u de afbeeldingsversie wilt maken. Zorg er ook voor dat u de locatie van het brongebied doorgeeft als een van de doelgebieden wanneer u een afbeeldingsversie maakt.  
+Tijdens het maken van een installatie kopie, kunt u de **-locatie-** tag in CLI en de tag **-Location** in Power shell gebruiken om de bron regio op te geven. Zorg ervoor dat de beheerde installatie kopie die u als basis installatie kopie gebruikt voor het maken van de installatie kopie versie, zich op dezelfde locatie bevindt als de locatie waar u de installatie kopie versie wilt maken. Zorg er ook voor dat u de locatie van het bron gebied als een van de doel regio's doorgeeft wanneer u een installatie kopie versie maakt.  
 
-### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>Hoe geef ik het aantal replica's van afbeeldingsversies op dat in elke regio moet worden gemaakt?
+### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>Hoe kan ik geeft u het aantal afbeeldings versie replica's op dat in elke regio moet worden gemaakt?
 
-Er zijn twee manieren waarop u het aantal replica's van afbeeldingsversies opgeven dat in elke regio moet worden gemaakt:
+Er zijn twee manieren waarop u kunt opgeven hoeveel afbeeldings versie replica's er moeten worden gemaakt in elke regio:
  
-1. Het aantal regionale replica's dat het aantal replica's opgeeft dat u per regio wilt maken. 
-2. Het algemene aantal replica's dat het standaardaantal per regio is, wordt niet opgegeven als het aantal regionale replica's niet is opgegeven. 
+1. Het regionale aantal replica's waarmee het aantal replica's wordt opgegeven dat u per regio wilt maken. 
+2. Het aantal algemene replica's dat de standaard waarde per regio is, in het geval dat het aantal regionale replica's is opgegeven. 
 
-Als u het aantal regionale replica's wilt opgeven, geeft u de locatie door samen met het aantal replica's dat u in die regio wilt maken: "South Central US=2". 
+Als u het aantal regionale replica's wilt opgeven, geeft u de locatie door, samen met het aantal replica's dat u wilt maken in die regio: "Zuid-Centraal VS = 2". 
 
-Als het aantal regionale replica's niet bij elke locatie is opgegeven, is het standaardaantal replica's het algemene aantal replica's dat u hebt opgegeven. 
+Als er voor elke locatie geen regionaal aantal replica's is opgegeven, is het standaard aantal replica's het aantal gemeen schappelijke replica's dat u hebt opgegeven. 
 
-Als u het algemene aantal replica's in CLI wilt `az sig image-version create` opgeven, gebruikt u het argument **--replica-telling** in de opdracht.
+Als u het aantal algemene replica's in CLI wilt opgeven, gebruikt u het argument **--replica-Count** in de `az sig image-version create` opdracht.
 
-### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Kan ik de gedeelde afbeeldingsgalerie op een andere locatie maken dan die voor de afbeeldingsdefinitie en afbeeldingsversie?
+### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Kan ik de galerie met gedeelde afbeeldingen maken op een andere locatie dan die voor de definitie van de installatie kopie en de versie van de installatie kopie?
 
-Ja, dat is mogelijk. Maar als aanbevolen praktijk raden we u aan om de brongroep, gedeelde afbeeldingsgalerie, afbeeldingsdefinitie en afbeeldingsversie op dezelfde locatie te houden.
+Ja, dat is mogelijk. Maar als best practice, raden we u aan de resource groep, de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de installatie kopie versie op dezelfde locatie te laten staan.
 
-### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Wat zijn de kosten voor het gebruik van de Gedeelde Afbeeldingsgalerie?
+### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Wat zijn de kosten voor het gebruik van de galerie met gedeelde afbeeldingen?
 
-Er zijn geen kosten verbonden aan het gebruik van de shared image gallery-service, behalve de opslagkosten voor het opslaan van de afbeeldingsversies en netwerkuitgangskosten voor het repliceren van de afbeeldingsversies van bronregio naar doelregio's.
+Er worden geen kosten in rekening gebracht voor het gebruik van de service voor de gedeelde installatie kopie galerie, met uitzonde ring van de opslag kosten voor het opslaan van de installatie kopie versies en de kosten van het netwerk uitgaand voor het repliceren van de installatie kopieën van de bron regio
 
-### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Welke API-versie moet ik gebruiken om Shared Image Gallery en Image Definition en Image Version te maken?
+### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Welke API-versie moet ik gebruiken voor het maken van een galerie met gedeelde afbeeldingen en een afbeeldings definitie en installatie kopie versie?
 
-Als u wilt werken met galerieën voor gedeelde afbeeldingen, afbeeldingsdefinities en afbeeldingsversies, raden we u aan API-versie 2018-06-01 te gebruiken. Zone Redundant Storage (ZRS) vereist versie 2019-03-01 of hoger.
+Als u wilt werken met de gemeen schappelijke afbeeldings galerieën, afbeeldings definities en afbeeldings versies, raden we u aan API-versie 2018-06-01 te gebruiken. Voor zone redundant Storage (ZRS) is versie 2019-03-01 of hoger vereist.
 
-### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Welke API-versie moet ik gebruiken om gedeelde VM- of virtuele machineschaalset te maken uit de afbeeldingsversie?
+### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Welke API-versie moet ik gebruiken om een gedeelde VM of schaal van een virtuele machine te maken op de installatie kopie versie?
 
-Voor implementaties van VM- en Virtuele machineschaalsets met een afbeeldingsversie raden we u aan API-versie 2018-04-01 of hoger te gebruiken.
+Voor VM-en virtuele-machine schaal sets die gebruikmaken van een installatie kopie versie raden we u aan om API-versie 2018-04-01 of hoger te gebruiken.

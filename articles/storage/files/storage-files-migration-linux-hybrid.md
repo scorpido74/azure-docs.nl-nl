@@ -1,6 +1,6 @@
 ---
 title: Linux-migratie naar Azure File Sync
-description: Meer informatie over het migreren van bestanden van een Linux-serverlocatie naar een hybride cloudimplementatie met Azure File Sync en Azure-bestandsshares.
+description: Meer informatie over het migreren van bestanden van een locatie van een Linux-server naar een hybride Cloud implementatie met Azure File Sync en Azure-bestands shares.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -14,122 +14,122 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80247715"
 ---
-# <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van Linux naar een hybride cloudimplementatie met Azure File Sync
+# <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van Linux naar een hybride Cloud implementatie met Azure File Sync
 
-Azure File Sync werkt op Windows-servers met Direct Attached Storage (DAS). Het ondersteunt geen synchronisatie van en naar Linux of een extern SMB-aandeel.
-Als gevolg hiervan maakt het transformeren van uw bestandsservices in een hybride implementatie een migratie naar een Windows Server noodzakelijk. Dit artikel begeleidt u bij de planning en uitvoering van een dergelijke migratie.
+Azure File Sync werkt op Windows-servers met Direct Attached Storage (DAS). De functie biedt geen ondersteuning voor synchronisatie van en naar Linux of een externe SMB-share.
+Als gevolg hiervan is het transformeren van uw bestands Services naar een hybride implementatie een migratie naar een Windows-Server nodig. Dit artikel begeleidt u bij het plannen en uitvoeren van een dergelijke migratie.
 
 ## <a name="migration-goals"></a>Migratiedoelen
 
-Het doel is om de aandelen die je hebt op je Linux Samba server te verplaatsen naar een Windows Server. Gebruik vervolgens Azure File Sync voor een hybride cloudimplementatie. Deze migratie moet gebeuren op een manier die de integriteit van de productiegegevens en de beschikbaarheid tijdens de migratie garandeert. Dit laatste vereist het tot een minimum beperken van downtime, zodat het in of slechts een beetje hoger kan zijn dan reguliere onderhoudsvensters.
+Het doel is om de shares die u op uw Linux Samba-server hebt geplaatst, te verplaatsen naar een Windows-Server. Gebruik vervolgens Azure File Sync voor een hybride Cloud implementatie. Deze migratie moet zo worden uitgevoerd dat de integriteit van de productie gegevens en de beschik baarheid tijdens de migratie gewaarborgd is. Ten laatste moet de downtime tot een minimum worden beperkt, zodat deze kan worden aangepast aan of slechts een beetje meer regel matig onderhouds Vensters kan hebben.
 
-## <a name="migration-overview"></a>Overzicht migratie
+## <a name="migration-overview"></a>Overzicht van Migratie
 
-Zoals vermeld in het [overzichtsoverzicht azure](storage-files-migration-overview.md)files, is het belangrijk om het juiste kopieergereedschap en de juiste aanpak te gebruiken. Uw Linux Samba-server stelt SMB-aandelen rechtstreeks bloot op uw lokale netwerk. RoboCopy, ingebouwd in Windows Server, is de beste manier om uw bestanden te verplaatsen in dit migratiescenario.
+Zoals vermeld in het [overzichts artikel](storage-files-migration-overview.md)over Azure files migratie, met het juiste Kopieer programma en de aanpak is belang rijk. Uw Linux Samba-server maakt SMB-shares rechtstreeks beschikbaar op uw lokale netwerk. RoboCopy, ingebouwde Windows Server, is de beste manier om uw bestanden in dit migratie scenario te verplaatsen.
 
-Als u Samba niet op uw Linux-server uitvoert en mappen liever wilt migreren naar een hybride implementatie op een Windows Server, u Linux-kopieertools gebruiken in plaats van RoboCopy. Als u dat doet, moet u zich bewust zijn van de getrouwheidsmogelijkheden in uw hulpmiddel voor bestandskopie. Bekijk de [sectie migratiebasisprincipes](storage-files-migration-overview.md#migration-basics) in het artikel over migratieoverzicht om te leren waar u op moet letten in een kopieergereedschap.
+Als u samba niet uitvoert op uw Linux-server en liever mappen wilt migreren naar een hybride implementatie op een Windows-Server, kunt u Linux-Kopieer hulpprogramma's gebruiken in plaats van RoboCopy. Als u dit doet, moet u rekening houden met de betrouw baarheid van uw hulp programma voor het kopiëren van bestanden. Raadpleeg de [sectie basis beginselen](storage-files-migration-overview.md#migration-basics) van migratie in het artikel migratie overzicht voor meer informatie over wat u moet zoeken in een kopieer programma.
 
-- Fase 1: [bepalen hoeveel Azure-bestandsshares u nodig hebt](#phase-1-identify-how-many-azure-file-shares-you-need)
-- Fase 2: [On-premises een geschikte Windows Server inrichten](#phase-2-provision-a-suitable-windows-server-on-premises)
-- Fase 3: [De Azure File Sync-cloudbron implementeren](#phase-3-deploy-the-azure-file-sync-cloud-resource)
-- Fase 4: [Azure-opslagbronnen implementeren](#phase-4-deploy-azure-storage-resources)
-- Fase 5: [De Azure File Sync-agent implementeren](#phase-5-deploy-the-azure-file-sync-agent)
-- Fase 6: [Azure-bestandssynchronisatie configureren op de Windows Server](#phase-6-configure-azure-file-sync-on-the-windows-server)
-- Fase 7: [RoboCopy](#phase-7-robocopy)
-- Fase 8: [Gebruiker cut-over](#phase-8-user-cut-over)
+- Fase 1: [bepalen hoeveel Azure-bestands shares u nodig hebt](#phase-1-identify-how-many-azure-file-shares-you-need)
+- Fase 2: [een geschikte Windows Server on-premises inrichten](#phase-2-provision-a-suitable-windows-server-on-premises)
+- Fase 3: [de Azure file sync Cloud resource implementeren](#phase-3-deploy-the-azure-file-sync-cloud-resource)
+- Fase 4: [Azure storage-resources implementeren](#phase-4-deploy-azure-storage-resources)
+- Fase 5: [de Azure file sync-agent implementeren](#phase-5-deploy-the-azure-file-sync-agent)
+- Fase 6: [Azure file sync configureren op de Windows-Server](#phase-6-configure-azure-file-sync-on-the-windows-server)
+- Fase 7: [Robocopy](#phase-7-robocopy)
+- Fase 8: [gebruikers knippen](#phase-8-user-cut-over)
 
-## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Fase 1: bepalen hoeveel Azure-bestandsshares u nodig hebt
+## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Fase 1: bepalen hoeveel Azure-bestands shares u nodig hebt
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>Fase 2: On-premises een geschikte Windows Server inrichten
+## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>Fase 2: een geschikte Windows Server on-premises inrichten
 
-* Maak een Windows Server 2019 - minimaal 2012R2 - als virtuele machine of fysieke server. Een fail-overcluster van Windows Server wordt ook ondersteund.
-* Direct Attached Storage inrichten of toevoegen (DAS in vergelijking met NAS, die niet wordt ondersteund).
+* Maak een Windows Server 2019-met een minimale 2012R2-als een virtuele machine of fysieke server. Een failover-cluster van Windows Server wordt ook ondersteund.
+* Het inrichten of toevoegen van direct gekoppelde opslag (DAS in vergelijking met NAS), wat niet wordt ondersteund.
 
-    De hoeveelheid opslagruimte die u indient, kan kleiner zijn dan wat u momenteel gebruikt op uw Linux Samba-server, als u de functie Azure File Syncs [cloudtiering](storage-sync-cloud-tiering.md) gebruikt.
-    Wanneer u uw bestanden echter in een latere fase kopieert van de grotere Linux Samba-serverruimte naar het kleinere Windows Server-volume, moet u in batches werken:
+    De hoeveelheid opslag ruimte die u hebt ingericht, kan kleiner zijn dan wat u momenteel gebruikt op uw Linux Samba-server, als u Azure-bestands synchronisaties functie voor [Cloud lagen](storage-sync-cloud-tiering.md) gebruikt.
+    Wanneer u echter uw bestanden vanuit de grotere Linux Samba-server ruimte naar het kleinere Windows Server-volume in een latere fase kopieert, moet u in batches werken:
 
-    1. Een set bestanden verplaatsen die op de schijf past.
-    2. Laat bestandssynchronisatie en cloudtiering in gebruik nemen.
-    3. Wanneer er meer vrije ruimte wordt gecreëerd op het volume, gaat u verder met de volgende batch bestanden. 
+    1. Verplaats een reeks bestanden die op de schijf passen.
+    2. Bestands synchronisatie en Cloud lagen laten deel nemen.
+    3. Wanneer er meer vrije ruimte op het volume wordt gemaakt, gaat u door met de volgende batch bestanden. 
     
-    U deze batching-benadering voorkomen door de equivalente ruimte op de Windows-server in te richten die uw bestanden innemen op de Linux Samba-server. Overweeg ontdubbeling in Te schakelen op Windows. Als u deze hoge hoeveelheid opslagruimte niet permanent aan uw Windows Server wilt verbinden, u de volumegrootte na de migratie verkleinen en voordat u het beleid voor cloudlagen aanpast. Hierdoor wordt een kleinere on-premises cache van uw Azure-bestandsshares mogelijk.
+    U kunt deze methode voor batch verwerking vermijden door de gelijkwaardige ruimte op de Windows-Server in te richten die uw bestanden op de Linux Samba-server innemen. Overweeg om ontdubbeling in Windows in te scha kelen. Als u deze hoge hoeveelheid opslag ruimte niet permanent wilt door voeren naar uw Windows-Server, kunt u de volume grootte na de migratie verkleinen en voordat u het beleid voor Cloud lagen hebt aangepast. Hiermee maakt u een kleinere on-premises cache van uw Azure-bestands shares.
 
-De bronconfiguratie (rekenkracht en RAM) van de Windows Server die u implementeert, is grotendeels afhankelijk van het aantal items (bestanden en mappen) dat u synchroniseert. We raden u aan om met een hogere prestatieconfiguratie te gaan als u zich zorgen maakt.
+De resource configuratie (reken kracht en RAM) van de Windows-Server die u implementeert, is vooral afhankelijk van het aantal items (bestanden en mappen) dat u wilt synchroniseren. Als u problemen hebt, kunt u het beste een configuratie met hogere prestaties uitvoeren.
 
-[Meer informatie over het vergroten van een Windows Server op basis van het aantal items (bestanden en mappen) dat u moet synchroniseren.](storage-sync-files-planning.md#recommended-system-resources)
+[Meer informatie over het aanpassen van de grootte van een Windows-Server op basis van het aantal items (bestanden en mappen) dat u wilt synchroniseren.](storage-sync-files-planning.md#recommended-system-resources)
 
 > [!NOTE]
-> Het eerder gekoppelde artikel presenteert een tabel met een bereik voor servergeheugen (RAM). U zich oriënteren op het kleinere aantal voor uw server, maar verwachten dat de eerste synchronisatie aanzienlijk meer tijd in beslag kan nemen.
+> Het eerder gekoppelde artikel bevat een tabel met een bereik voor Server geheugen (RAM). U kunt naar het kleinere nummer voor uw server richten, maar u kunt verwachten dat initiële synchronisatie aanzienlijk meer tijd kan duren.
 
-## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>Fase 3: De Azure File Sync-cloudbron implementeren
+## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>Fase 3: de Azure File Sync Cloud resource implementeren
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
-## <a name="phase-4-deploy-azure-storage-resources"></a>Fase 4: Azure-opslagbronnen implementeren
+## <a name="phase-4-deploy-azure-storage-resources"></a>Fase 4: Azure storage-resources implementeren
 
-Raadpleeg in deze fase de toewijzingstabel van fase 1 en gebruikt deze om het juiste aantal Azure-opslagaccounts en bestandsshares in deze fase in te richten.
+In deze fase raadpleegt u de toewijzings tabel uit fase 1 en gebruikt u deze om het juiste aantal Azure-opslag accounts en bestands shares in te richten.
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
-## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>Fase 5: De Azure File Sync-agent implementeren
+## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>Fase 5: de Azure File Sync-agent implementeren
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>Fase 6: Azure-bestandssynchronisatie configureren op de Windows Server
+## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>Fase 6: Azure File Sync configureren op de Windows-Server
 
-Uw geregistreerde on-premises Windows Server moet voor dit proces klaar zijn en verbonden zijn met internet.
+Uw geregistreerde on-premises Windows-Server moet gereed zijn en verbonden zijn met internet voor dit proces.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!IMPORTANT]
-> Cloudtiering is de AFS-functie waarmee de lokale server minder opslagcapaciteit heeft dan in de cloud is opgeslagen, maar toch de volledige naamruimte beschikbaar heeft. Lokaal interessante gegevens worden ook lokaal opgeslagen voor snelle toegangsprestaties. Cloudtiering is een optionele functie per Azure File Sync "server eindpunt".
+> Cloud lagen is de AFS-functie waarmee de lokale server minder opslag capaciteit kan hebben dan is opgeslagen in de Cloud, maar die de volledige naam ruimte beschikbaar heeft. Lokaal interessante gegevens worden ook lokaal in de cache opgeslagen voor snelle toegang tot de prestaties. Cloud lagen is een optionele functie per Azure File Sync server-eind punt.
 
 > [!WARNING]
-> Als u minder opslagruimte op uw Windows-servervolume(s) hebt ingericht dan uw gegevens die op de Linux Samba-server worden gebruikt, is cloudtiering verplicht. Als u cloudtiering niet inschakelt, maakt uw server geen ruimte vrij om alle bestanden op te slaan. Stel uw gelaagdbeleid tijdelijk in voor de migratie op 99% volumevrije ruimte. Zorg ervoor dat u terugkeert naar uw cloud-gelaagdheidinstellingen nadat de migratie is voltooid en stel deze in op een nuttiger niveau op lange termijn.
+> Als u minder opslag ruimte op uw Windows Server-volume (s) hebt ingericht dan uw gegevens die op de Linux Samba-server worden gebruikt, is Cloud lagen verplicht. Als u Cloud lagen niet inschakelt, maakt de server geen ruimte vrij om alle bestanden op te slaan. Stel het beleid voor lagen tijdelijk in voor de migratie tot 99% beschik bare ruimte op het volume. Ga terug naar de instellingen voor de Cloud lagen nadat de migratie is voltooid en stel deze in op een meer lange termijn handig niveau.
 
-Herhaal de stappen van het maken van synchronisatiegroepen en de toevoeging van de overeenkomende servermap als een servereindpunt voor alle Azure-bestandsshares / serverlocaties, die moeten worden geconfigureerd voor synchronisatie.
+Herhaal de stappen voor het maken van de synchronisatie groep en het toevoegen van de overeenkomende servermap als server-eind punt voor alle Azure-bestands shares/server locaties die moeten worden geconfigureerd voor synchronisatie.
 
-Na het maken van alle servereindpunten werkt de synchronisatie. U een testbestand maken en het synchroniseren vanaf uw serverlocatie naar de verbonden Azure-bestandsshare (zoals beschreven door het cloudeindpunt in de synchronisatiegroep).
+Na het maken van alle server eindpunten werkt synchronisatie. U kunt een test bestand maken en het synchroniseren vanuit uw server locatie naar de verbonden Azure-bestands share (zoals beschreven in het Cloud-eind punt in de synchronisatie groep).
 
-Beide locaties, de servermappen en de Azure-bestandsshares zijn anders leeg en wachten op gegevens op beide locaties. In de volgende stap begint u bestanden te kopiëren naar de Windows Server voor Azure File Sync om ze naar de cloud te verplaatsen. In het geval dat u cloudtiering hebt ingeschakeld, begint de server bestanden te tieren, mocht u geen capaciteit meer hebben op het lokale volume(en).
+Beide locaties, de Server mappen en de Azure-bestands shares zijn op een andere locatie leeg en wachten op gegevens. In de volgende stap gaat u bestanden kopiëren naar de Windows-Server voor Azure File Sync om ze naar de cloud te verplaatsen. Als u Cloud lagen hebt ingeschakeld, begint de server vervolgens met het trapsgewijs delen van bestanden. Als u geen capaciteit meer hebt op de lokale volume (s).
 
 ## <a name="phase-7-robocopy"></a>Fase 7: RoboCopy
 
-De basismigratiebenadering is een RoboCopy van uw Linux Samba-server naar uw Windows Server en Azure File Sync naar Azure-bestandsshares.
+De basis benadering voor migratie is een RoboCopy van uw Linux Samba-server naar uw Windows-Server en Azure File Sync naar Azure-bestands shares.
 
-Voer de eerste lokale kopie uit naar uw windows server-doelmap:
+Voer de eerste lokale kopie uit naar de doelmap van Windows Server:
 
-1. Identificeer de eerste locatie op uw Linux Samba-server.
-1. Identificeer de overeenkomende map op de Windows Server, waarop al Azure File Sync is geconfigureerd.
-1. Start de kopie met RoboCopy.
+1. Bepaal de eerste locatie op de Linux Samba-server.
+1. Identificeer de overeenkomende map op de Windows-Server, waarop al Azure File Sync zijn geconfigureerd.
+1. Start de kopie met behulp van RoboCopy.
 
-Met de volgende opdracht RoboCopy worden bestanden van uw Opslag voor Linux Samba-servers naar uw doelmap van Windows Server gekopieerd. De Windows Server synchroniseert deze met de Azure-bestandsshare(s). 
+Met de volgende RoboCopy-opdracht worden bestanden van uw Linux Samba-servers opslag gekopieerd naar de doelmap van uw Windows-Server. De Windows-Server synchroniseert deze met de Azure-bestands share (s). 
 
-Als u minder opslagruimte op uw Windows Server hebt ingericht dan uw bestanden op de Linux Samba-server, hebt u cloudlagen geconfigureerd. Als het lokale Windows Server-volume vol raakt, worden [cloudlagen](storage-sync-cloud-tiering.md) in- en laagbestanden opgenomen die al zijn gesynchroniseerd. Cloud tiering genereert voldoende ruimte om de kopie van de Linux Samba-server voort te zetten. Cloud tiering controleert eenmaal per uur om te zien wat er is gesynchroniseerd en om schijfruimte vrij te maken om de 99% volumevrije ruimte te bereiken.
-Het is mogelijk dat RoboCopy bestanden sneller verplaatst dan u lokaal synchroniseren met de cloud en de laag, waardoor de lokale schijfruimte opraakt. RoboCopy zal mislukken. Het wordt aanbevolen dat u de aandelen in een reeks doorneemt die dat voorkomt. Bijvoorbeeld, niet het starten van RoboCopy-taken voor alle aandelen op hetzelfde moment, of alleen het verplaatsen van aandelen die passen op de huidige hoeveelheid vrije ruimte op de Windows Server, om er een paar te noemen.
+Als u minder opslag ruimte op uw Windows-Server hebt ingericht dan uw bestanden op de Linux Samba-server innemen, hebt u Cloud lagen geconfigureerd. Omdat het lokale Windows Server-volume vol is, worden er [Cloud lagen](storage-sync-cloud-tiering.md) in gemaakt en lagen die al zijn gesynchroniseerd. Cloud-lagen genereren voldoende ruimte om de kopie van de Linux Samba-server voort te zetten. Controles voor Cloud lagen worden één keer per uur uitgevoerd om te zien wat er is gesynchroniseerd en om schijf ruimte vrij te maken voor het bereiken van de beschik bare ruimte van 99% volume.
+Het is mogelijk dat RoboCopy bestanden sneller verplaatst dan u naar de Cloud en laag lokaal kunt synchroniseren, waardoor er geen lokale schijf ruimte meer beschikbaar is. RoboCopy mislukt. Het wordt aanbevolen dat u de shares in een volg orde doorloopt, waardoor dat niet mogelijk is. U kunt bijvoorbeeld geen RoboCopy-taken voor alle shares tegelijk starten of alleen shares verplaatsen die passen bij de huidige hoeveelheid beschik bare ruimte op de Windows-Server, om een paar te vermelden.
 
 ```console
 Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Achtergrond:
+Achtergrondbitmap
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      Hiermee kan RoboCopy multithread-reeksen uitvoeren. Standaard is 8, max is 128.
+      Hiermee kan RoboCopy meerdere threads uitvoeren. De standaard waarde is 8, maximum is 128.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<bestandsnaam\>
+      /UNILOG:\<bestands naam\>
    :::column-end:::
    :::column span="1":::
-      Uitvoerstatus naar LOG-bestand als UNICODE (overschrijft bestaande logboek).
+      Hiermee wordt de status van de uitvoer naar een logboek bestand opgeslagen als UNICODE (het bestaande logboek wordt overschreven).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -137,7 +137,7 @@ Achtergrond:
       /TEE
    :::column-end:::
    :::column span="1":::
-      Uitgangen naar het consolevenster. Wordt gebruikt in combinatie met uitvoer naar een logboekbestand.
+      Uitvoer naar console venster. Wordt gebruikt in combi natie met uitvoer naar een logboek bestand.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -145,7 +145,7 @@ Achtergrond:
       /B
    :::column-end:::
    :::column span="1":::
-      Draait RoboCopy in dezelfde modus die een back-uptoepassing zou gebruiken. Hiermee kan RoboCopy bestanden verplaatsen waar de huidige gebruiker geen machtigingen voor heeft.
+      Voert RoboCopy uit in dezelfde modus als een back-uptoepassing zou gebruiken. Hiermee kan RoboCopy bestanden verplaatsen waarnaar de huidige gebruiker geen machtigingen heeft.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -153,15 +153,15 @@ Achtergrond:
       /MIR
    :::column-end:::
    :::column span="1":::
-      Maakt het mogelijk om deze RoboCopy-opdracht meerdere keren uit te voeren, achtereenvolgens op hetzelfde doel / doel. Het identificeert wat eerder is gekopieerd en laat het weg. Alleen wijzigingen, toevoegingen en "*deletes*" worden verwerkt, die zich hebben voorgedaan sinds de laatste run. Als de opdracht niet eerder is uitgevoerd, wordt er niets weggelaten. De */MIR-vlag* is een uitstekende optie voor bronlocaties die nog steeds actief worden gebruikt en gewijzigd.
+      Hiermee kan deze RoboCopy-opdracht verschillende keren worden uitgevoerd, opeenvolgend op hetzelfde doel/dezelfde bestemming. Hiermee wordt aangegeven wat er eerder is gekopieerd en wordt deze wegge laten. Alleen wijzigingen, toevoegingen en '*verwijderingen*' worden verwerkt, die zijn opgetreden sinds de laatste uitvoering. Als de opdracht nog niet eerder is uitgevoerd, wordt er niets wegge laten. De vlag */Mir* is een uitstekende optie voor bron locaties die nog steeds worden gebruikt en worden gewijzigd.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY:copyflag[s]
+      /COPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      getrouwheid van de bestandskopie (standaard is /COPY:DAT), copy flags: D=Data, A=Attributes, T=Timestamps, S=Security=NTFS ATFS' s, O=Owner info, U=aUditing info
+      betrouw baarheid van het bestand kopiëren (standaard is/COPY: DAT), kopieer vlaggen: D = gegevens, A = kenmerken, T = tijds tempels, S = Security = NTFS Acl's, O = eigenaargegevens, U = controle-informatie
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -169,65 +169,65 @@ Achtergrond:
       / COPYALL
    :::column-end:::
    :::column span="1":::
-      ALLE bestandsgegevens kopiëren (gelijk aan /COPY:DATSOU)
+      ALLE bestands gegevens kopiëren (gelijk aan/COPY: DATSOU)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY:copyflag[s]
+      /DCOPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      getrouwheid voor de kopie van mappen (standaard is /DCOPY:DA), copy flags: D=Data, A=Attributes, T=Timestamps
+      betrouw baarheid voor het kopiëren van mappen (standaard is/DCOPY: DA), kopieer vlaggen: D = gegevens, A = kenmerken, T = tijds tempels
    :::column-end:::
 :::row-end:::
 
-## <a name="phase-8-user-cut-over"></a>Fase 8: Gebruiker cut-over
+## <a name="phase-8-user-cut-over"></a>Fase 8: gebruikers knippen
 
-Wanneer u de RoboCopy-opdracht voor de eerste keer uitvoert, hebben uw gebruikers en toepassingen nog steeds toegang tot bestanden op de Linux Samba-server en wijzigen ze mogelijk. Het is mogelijk, dat RoboCopy een directory heeft verwerkt, naar de volgende is gegaan en vervolgens een gebruiker op de bronlocatie (Linux) een bestand toevoegt, wijzigt of verwijdert dat nu niet wordt verwerkt in deze huidige RoboCopy-run. Dit gedrag is verwacht.
+Wanneer u de RoboCopy-opdracht voor de eerste keer uitvoert, hebben uw gebruikers en toepassingen nog steeds toegang tot bestanden op de Linux Samba-server en kunnen ze worden gewijzigd. Het is mogelijk dat RoboCopy een map heeft verwerkt, naar de volgende gaat en vervolgens een gebruiker op de bron locatie (Linux) een bestand toevoegt, wijzigt of verwijdert dat nu niet wordt verwerkt in deze huidige RoboCopy-uitvoering. Dit gedrag is verwacht.
 
-De eerste run gaat over het verplaatsen van het grootste deel van de gegevens naar uw Windows Server en naar de cloud via Azure File Sync. Dit eerste exemplaar kan lang duren, afhankelijk van:
+De eerste keer dat u het meren deel van de gegevens naar uw Windows-Server en naar de Cloud verplaatst via Azure File Sync. Het eerste exemplaar kan enige tijd in beslag nemen, afhankelijk van:
 
-* Uw downloadbandbreedte.
-* De uploadbandbreedte.
-* De lokale netwerksnelheid en het aantal hoe optimaal het aantal RoboCopy-threads overeenkomt.
+* De Download bandbreedte.
+* De upload bandbreedte.
+* De snelheid van het lokale netwerk en het aantal hoe optimaal het aantal RoboCopy-threads overeenkomt met het.
 * Het aantal items (bestanden en mappen) dat moet worden verwerkt door RoboCopy en Azure File Sync.
 
-Zodra de eerste run is voltooid, voert u de opdracht opnieuw uit.
+Zodra de eerste uitvoering is voltooid, voert u de opdracht opnieuw uit.
 
-De tweede keer zal het sneller eindigen, omdat het alleen maar veranderingen hoeft te vervoeren die sinds de laatste run zijn gebeurd. Tijdens deze tweede run kunnen zich nog steeds nieuwe veranderingen ophopen.
+De tweede keer dat deze sneller wordt voltooid, hoeft alleen wijzigingen te worden transporteren die sinds de laatste uitvoering zijn opgetreden. Tijdens deze tweede uitvoering kunnen er nog steeds nieuwe wijzigingen worden verzameld.
 
-Herhaal dit proces totdat u ervan overtuigd bent dat de hoeveelheid tijd die nodig is om een RoboCopy voor een specifieke locatie te voltooien binnen een aanvaardbaar venster voor downtime ligt.
+Herhaal dit proces totdat u tevreden bent over de hoeveelheid tijd die nodig is voor het volt ooien van een RoboCopy voor een specifieke locatie binnen een aanvaardbaar venster voor uitval tijd.
 
-Wanneer u de downtime acceptabel vindt en u bereid bent de Linux-locatie offline te halen: Om de toegang van gebruikers offline te halen, hebt u de mogelijkheid om ACL's op de shareroot te wijzigen, zodat gebruikers geen toegang meer hebben tot de locatie of andere geschikte stap die voorkomt dat inhoud wordt gewijzigd in deze map op uw Linux-server.
+Wanneer u de beschik bare downtime in overweging neemt en u bent voor bereid de Linux-locatie offline te halen: als u de gebruikers toegang offline wilt maken, kunt u de Acl's op de hoofdmap van de share wijzigen, zodat gebruikers geen toegang meer hebben tot de locatie of een andere geschikte stap kunnen ondernemen die voor komt dat inhoud in deze map op uw Linux-server kan worden gewijzigd.
 
-Voer nog een laatste RoboCopy-ronde uit. Het zal pick-up eventuele wijzigingen, die kunnen zijn gemist.
-Hoe lang deze laatste stap duurt, is afhankelijk van de snelheid van de RoboCopy-scan. U de tijd (die gelijk is aan uw downtime) schatten door te meten hoe lang de vorige run heeft geduurd.
+Voer een laatste RoboCopy-ronde uit. Er worden wijzigingen opgehaald, die mogelijk zijn gemist.
+Hoe lang deze laatste stap duurt, is afhankelijk van de snelheid van de RoboCopy-scan. U kunt een schatting maken van de tijd (die gelijk is aan uw downtime) door te meten hoe lang de vorige uitvoering heeft geduurd.
 
-Maak een aandeel in de Windows Server-map en pas eventueel uw DFS-N-implementatie aan om erop te wijzen. Zorg ervoor dat u dezelfde machtigingen op aandelenniveau instelt als op uw SMB-aandelen van uw Linux Samba-server. Als u lokale gebruikers op uw Linux Samba-server hebt gebruikt, moet u deze gebruikers opnieuw maken als lokale gebruikers van Windows Server en de bestaande ID's die RoboCopy naar uw Windows Server verplaatst, toewijzen aan de SID's van uw nieuwe lokale gebruikers van Windows Server. Als u AD-accounts en ACL's hebt gebruikt, verplaatst RoboCopy deze zoals het is en is er geen verdere actie nodig.
+Maak een share op de Windows Server-map en stel eventueel uw DFS-N-implementatie zodanig in dat deze ernaar verwijst. Zorg ervoor dat u dezelfde machtigingen op share niveau hebt ingesteld als voor de SMB-shares van de Linux Samba-server. Als u lokale gebruikers hebt gebruikt op uw Linux Samba-server, moet u deze gebruikers opnieuw maken als lokale gebruikers van Windows Server en de bestaande Sid's van de nieuwe Windows Server-server naar de Sid's van uw nieuw, lokale gebruikers van micro Point verplaatsen. Als u AD-accounts en-Acl's hebt gebruikt, worden deze als zodanig door RoboCopy verplaatst en is er geen verdere actie nodig.
 
-U bent klaar met het migreren van een aandeel / groep aandelen naar een gemeenschappelijke basis of volume. (Afhankelijk van uw toewijzing van fase 1)
+U bent klaar met het migreren van een share/groep shares naar een gemeen schappelijke hoofdmap of volume. (Afhankelijk van uw toewijzing vanuit fase 1)
 
-U proberen om een paar van deze kopieën parallel uit te voeren. We raden u aan het bereik van één Azure-bestandsshare tegelijk te verwerken.
+U kunt proberen enkele van deze kopieën parallel uit te voeren. Het is raadzaam om het bereik van een Azure-bestands share tegelijk te verwerken.
 
 > [!WARNING]
-> Zodra u alle gegevens van uw Linux Samba-server naar de Windows Server hebt verplaatst en uw migratie is voltooid: keer terug naar ***alle*** synchronisatiegroepen in de Azure-portal en pas de waarde van de volumevrije ruimte voor cloudlagen aan om iets dat beter geschikt is voor cachegebruik, bijvoorbeeld 20%. 
+> Wanneer u alle gegevens van de Linux Samba-server naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar ***alle*** synchronisatie groepen in het Azure Portal en past u de waarde voor het percentage beschik bare ruimte in de Cloud-laag aan om iets beter geschikt te maken voor het gebruik van de cache, bijvoorbeeld 20%. 
 
-Het beleid voor cloudtiering-volumevrije ruimte werkt op volumeniveau met mogelijk meerdere servereindpunten die ermee worden gesynchroniseerd. Als u vergeet de vrije ruimte op zelfs één servereindpunt aan te passen, blijft synchronisatie de meest beperkende regel toepassen en probeert u 99% vrije schijfruimte te behouden, waardoor de lokale cache niet presteert zoals u zou verwachten. Tenzij het uw doel is om alleen de naamruimte te hebben voor een volume dat slechts zelden toegankelijk is, archiveringsgegevens en u de rest van de opslagruimte reserveert voor een ander scenario.
+Het beleid voor beschik bare ruimte op het niveau van de Cloud-laag is een volume dat mogelijk meerdere server eindpunten synchroniseert. Als u vergeet de beschik bare ruimte op zelfs één server eindpunt aan te passen, blijft synchronisatie de meest beperkende regel Toep assen en wordt geprobeerd om 99% vrije schijf ruimte te houden, waardoor de lokale cache niet wordt uitgevoerd zoals u zou verwachten. Tenzij het uw doel is om alleen de naam ruimte te hebben voor een volume dat slechts zelden wordt gebruikt, worden de archiverings gegevens opgeslagen en moet u de rest van de opslag ruimte voor een ander scenario reserveren.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Het meest waarschijnlijke probleem dat u tegenkomen, is dat de robocopy-opdracht mislukt met *'Volume vol'* aan de Windows Server-kant. Cloudtiering werkt eenmaal per uur om inhoud te evacueren van de lokale Windows Server-schijf, die is gesynchroniseerd. Het doel is om uw 99% vrije ruimte op het volume te bereiken.
+Het meest waarschijnlijke probleem dat u kunt uitvoeren in, is dat de RoboCopy-opdracht mislukt met *' volume vol '* aan de Windows Server-zijde. Cloud lagen reageert eenmaal elk uur om inhoud te verlaten van de lokale Windows Server-schijf, die is gesynchroniseerd. Het doel is om uw 99% beschik bare ruimte op het volume te bereiken.
 
-Laat voortgang synchroniseren en cloudtiering schijfruimte vrijmaken. Dat zie je in Verkenner op je Windows Server.
+Laat de voortgang van de synchronisatie en Cloud lagen vrij schijf ruimte vrijmaken. U ziet dat in Verkenner op uw Windows-Server.
 
-Wanneer uw Windows Server over voldoende beschikbare capaciteit beschikt, wordt het probleem opgelost door de opdracht opnieuw uit te voeren. Niets breekt als je in deze situatie en je verder gaan met vertrouwen. Ongemak van het uitvoeren van het commando opnieuw is het enige gevolg.
+Als uw Windows-Server voldoende beschik bare capaciteit heeft, wordt het probleem opgelost door de opdracht opnieuw uit te voeren. Er zijn geen onderbrekingen wanneer u deze situatie krijgt en u kunt door gaan met vertrouwen. Het ongemak van het uitvoeren van de opdracht is het enige gevolg.
 
-Controleer de koppeling in de volgende sectie voor het oplossen van Azure File Sync-problemen.
+Controleer de koppeling in de volgende sectie voor het oplossen van problemen met Azure File Sync.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Er is meer te ontdekken over Azure-bestandsshares en Azure File Sync. In de volgende artikelen u inzicht krijgen in geavanceerde opties, aanbevolen procedures en helpen bij het oplossen van problemen. Deze artikelen koppelen naar [Azure file share documentatie](storage-files-introduction.md) naar gelang van het geval.
+Er is meer informatie over Azure-bestands shares en Azure File Sync. De volgende artikelen helpen u bij het begrijpen van geavanceerde opties, aanbevolen procedures en ook voor het oplossen van problemen. Deze artikelen maken een koppeling naar de [documentatie van Azure file share](storage-files-introduction.md) .
 
-* [AFS-overzicht](https://aka.ms/AFS)
-* [AFS-implementatiehandleiding](storage-files-deployment-guide.md)
-* [AFS-probleemoplossing](storage-sync-files-troubleshoot.md)
+* [Overzicht van AFS](https://aka.ms/AFS)
+* [AFS-implementatie handleiding](storage-files-deployment-guide.md)
+* [Problemen met AFS oplossen](storage-sync-files-troubleshoot.md)

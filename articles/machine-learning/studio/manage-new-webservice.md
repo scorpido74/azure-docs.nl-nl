@@ -1,7 +1,7 @@
 ---
 title: Webservices beheren
 titleSuffix: ML Studio (classic) - Azure
-description: Beheer uw nieuwe en klassieke webservices voor Machine Learning via de Microsoft Azure Machine Learning Web Services-portal. Aangezien Classic Web services en New Web services zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze technologieën iets andere beheermogelijkheden.
+description: Beheer uw Machine Learning nieuwe en klassieke webservices met behulp van de Microsoft Azure Machine Learning Web Services-portal. Aangezien klassieke webservices en nieuwe webservices zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze onderdelen enigszins verschillende beheer mogelijkheden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -17,143 +17,143 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217964"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren met de Azure Machine Learning Studio (klassieke) Web Services-portal
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren via de portal voor webservices van Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-U uw Machine Learning New and Classic Web services beheren via de Microsoft Azure Machine Learning Web Services-portal. Aangezien Classic Web services en New Web services zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze technologieën iets andere beheermogelijkheden.
+U kunt uw Machine Learning nieuwe en klassieke webservices beheren met behulp van de Microsoft Azure Machine Learning Web Services-portal. Aangezien klassieke webservices en nieuwe webservices zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze onderdelen enigszins verschillende beheer mogelijkheden.
 
-In de Machine Learning Web Services-portal u:
+In de Machine Learning Web Services-portal kunt u het volgende doen:
 
-* Controleer hoe de webservice wordt gebruikt.
-* Configureer de beschrijving, werk de sleutels voor de webservice bij (alleen nieuw), werk uw opslagaccountsleutel bij (alleen nieuw), schakel logboekregistratie in en schakel voorbeeldgegevens in of schakel deze uit.
+* Bewaak hoe de webservice wordt gebruikt.
+* De beschrijving configureren, de sleutels voor de webservice bijwerken (nieuw alleen), de sleutel van uw opslag account bijwerken (nieuw alleen), logboek registratie inschakelen en voorbeeld gegevens in-of uitschakelen.
 * Verwijder de webservice.
-* Factureringsplannen maken, verwijderen of bijwerken (alleen nieuw).
-* Eindpunten toevoegen en verwijderen (alleen klassiek)
+* Facturerings plannen maken, verwijderen of bijwerken (nieuw).
+* Eind punten toevoegen en verwijderen (alleen klassiek)
 
 >[!NOTE]
->U klassieke webservices ook beheren in [Machine Learning Studio (klassiek)](https://studio.azureml.net) op het tabblad **Webservices.**
+>U kunt klassieke webservices ook beheren in [machine learning Studio (klassiek)](https://studio.azureml.net) op het tabblad **webservices** .
 
-## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Machtigingen voor het beheren van webservices op basis van nieuwe resources manager
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Machtigingen voor het beheren van nieuwe webservices op basis van Resource Manager
 
-Nieuwe webservices worden geïmplementeerd als Azure-bronnen. Als zodanig moet u over de juiste machtigingen beschikken om nieuwe webservices te implementeren en te beheren.  Als u Nieuwe webservices wilt implementeren of beheren, moet u een bijdrager of beheerder toegewezen krijgen aan het abonnement waarvoor de webservice is geïmplementeerd. Als u een andere gebruiker uitnodigt voor een machine learning-werkruimte, moet u deze toewijzen aan een bijdrager of beheerdersrol in het abonnement voordat deze webservices kan implementeren of beheren. 
+Nieuwe webservices worden geïmplementeerd als Azure-resources. U moet de juiste machtigingen hebben om nieuwe webservices te implementeren en te beheren.  Als u nieuwe webservices wilt implementeren of beheren, moet u een rol Inzender of beheerder toewijzen aan het abonnement waarop de webservice is geïmplementeerd. Als u een andere gebruiker uitnodigt voor een machine learning-werk ruimte, moet u deze toewijzen aan de rol Inzender of beheerder voor het abonnement voordat ze webservices kunnen implementeren of beheren. 
 
-Als de gebruiker niet over de juiste machtigingen beschikt om toegang te krijgen tot bronnen in de Azure Machine Learning Web Services-portal, ontvangt deze gebruiker de volgende fout wanneer hij een webservice probeert te implementeren:
+Als de gebruiker niet over de juiste machtigingen beschikt voor toegang tot resources in de Azure Machine Learning webservices-Portal, wordt de volgende fout weer gegeven bij het implementeren van een webservice:
 
-*De implementatie van webservice is mislukt. Dit account heeft onvoldoende toegang tot het Azure-abonnement dat de Workspace bevat. Als u een webservice wilt implementeren in Azure, moet hetzelfde account worden uitgenodigd voor de werkruimte en toegang krijgen tot het Azure-abonnement dat de werkruimte bevat.*
+*De webservice-implementatie is mislukt. Dit account heeft onvoldoende toegang tot het Azure-abonnement met de werk ruimte. Als u een webservice wilt implementeren in azure, moet hetzelfde account worden uitgenodigd voor de werk ruimte en moet het toegang krijgen tot het Azure-abonnement met de werk ruimte.*
 
-Zie [Een Azure Machine Learning Studio -werkruimte maken en delen](create-workspace.md)voor meer informatie over het maken van een werkruimte.
+Zie [een Azure machine learning Studio (klassieke) werk ruimte maken en delen](create-workspace.md)voor meer informatie over het maken van een werk ruimte.
 
-Zie [Toegang beheren met RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangsmachtigingen.
+Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
 
 
 ## <a name="manage-new-web-services"></a>Nieuwe webservices beheren
-Ga als volgende over het beheer van uw nieuwe webservices:
+Uw nieuwe webservices beheren:
 
-1. Meld u aan bij de [Microsoft Azure Machine Learning Web Services-portal](https://services.azureml.net/quickstart) met uw Microsoft Azure-account : gebruik het account dat is gekoppeld aan het Azure-abonnement.
-2. Klik in het menu op **Webservices**.
+1. Meld u aan bij de [Microsoft Azure machine learning Web Services](https://services.azureml.net/quickstart) -Portal met uw Microsoft Azure account: gebruik het account dat is gekoppeld aan het Azure-abonnement.
+2. Klik in het menu op **Web Services**.
 
-Hier wordt een lijst met geïmplementeerde webservices voor uw abonnement weergegeven. 
+Hier wordt een lijst met geïmplementeerde webservices weer gegeven voor uw abonnement. 
 
-Als u een webservice wilt beheren, klikt u op Webservices. Vanaf de webpagina WebServices u:
+Als u een webservice wilt beheren, klikt u op webservices. U kunt op de pagina Web Services het volgende doen:
 
 * Klik op de webservice om deze te beheren.
-* Klik op het factureringsplan voor de webservice om deze bij te werken.
+* Klik op het facturerings abonnement voor de webservice om het bij te werken.
 * Een webservice verwijderen.
-* Kopieer een webservice en implementeer deze naar een andere regio.
+* Kopieer een webservice en implementeer deze in een andere regio.
 
-Wanneer u op een webservice klikt, wordt de pagina Quickstart van de webservice geopend. De pagina Quickstart voor webservice heeft twee menuopties waarmee u uw webservice beheren:
+Wanneer u op een webservice klikt, wordt de pagina Quick Start van web service geopend. De Quick Start-pagina van web service heeft twee menu opties waarmee u uw webservice kunt beheren:
 
-* **DASHBOARD** - Hiermee u het gebruik van de webservice weergeven.
-* **CONFIGUREREN** - Hiermee u beschrijvende tekst toevoegen, de sleutel bijwerken voor het opslagaccount dat is gekoppeld aan de webservice en voorbeeldgegevens in- of uitschakelen.
+* **Dash board** : Hiermee kunt u het gebruik van webservices weer geven.
+* **Configureren** : Hiermee kunt u beschrijvende tekst toevoegen, de sleutel bijwerken voor het opslag account dat is gekoppeld aan de webservice en voorbeeld gegevens in-of uitschakelen.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Controleren hoe de webservice wordt gebruikt
-Klik op het tabblad **DASHBOARD.**
+Klik op het tabblad **dash board** .
 
-Vanuit het dashboard u het algehele gebruik van uw webservice gedurende een bepaalde periode bekijken. U de periode selecteren die u wilt weergeven in het vervolgkeuzemenu Periode rechtsboven in de gebruiksgrafieken. Het dashboard toont de volgende informatie:
+Vanuit het dash board kunt u het totale gebruik van uw web-service gedurende een bepaalde periode bekijken. U kunt de periode selecteren die u wilt weer geven in de vervolg keuzelijst periode in de rechter bovenhoek van de gebruiks diagrammen. Het dash board bevat de volgende informatie:
 
-* **Aanvragen in de loop van de tijd** geeft een stapgrafiek weer van het aantal aanvragen over de geselecteerde periode. Het kan helpen identificeren of u pieken in het gebruik ervaart.
-* **Aanvragen voor aanvragen geeft** het totale aantal aanroepen voor aanvragen en antwoord weer die de service heeft ontvangen gedurende de geselecteerde periode en hoeveel van deze oproepen zijn mislukt.
-* **De gemiddelde rekentijd van de aanvraagrespons** geeft een gemiddelde weer van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
-* **Batchaanvragen** geeft het totale aantal batchaanvragen weer dat de service heeft ontvangen gedurende de geselecteerde periode en hoeveel van deze aanvragen zijn mislukt.
-* **De gemiddelde taaklatentie** geeft een gemiddelde weer van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
-* **In fouten** wordt het geaggregeerde aantal fouten weergegeven dat is opgetreden bij oproepen naar de webservice.
-* **Serviceskosten** geven de kosten weer voor het factureringsplan dat aan de service is gekoppeld.
+* **Aanvragen in** de loop van de tijd geeft een stap grafiek weer van het aantal aanvragen gedurende de geselecteerde tijds periode. Zo kunt u nagaan of u problemen ondervindt met pieken in het gebruik.
+* **Aanvraag-antwoord aanvragen** geeft het totale aantal aanvraag/antwoord-aanroepen weer dat de service heeft ontvangen over de geselecteerde tijds periode en het aantal mislukte aanvragen.
+* **Gemiddelde reken tijd aanvraag-antwoord** geeft een gemiddelde van de tijd weer die nodig is om de ontvangen aanvragen uit te voeren.
+* Met **batch-aanvragen** wordt het totale aantal batch-aanvragen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
+* Bij **gemiddelde taak latentie** wordt een gemiddelde weer gegeven van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
+* **Fouten** geeft het totale aantal fouten weer dat is opgetreden bij aanroepen naar de webservice.
+* Met **kosten voor services** worden de kosten weer gegeven voor het facturerings plan dat is gekoppeld aan de service.
 
 ### <a name="configuring-the-web-service"></a>De webservice configureren
-Klik op de **menuoptie CONFIGUREREN.**
+Klik op de menu optie **configureren** .
 
-U de volgende eigenschappen bijwerken:
+U kunt de volgende eigenschappen bijwerken:
 
-* **Met** de beschrijving u een beschrijving voor de webservice invoeren.
-* **Met** titel u een titel voor de webservice invoeren
-* **Met toetsen** u uw primaire en secundaire API-sleutels roteren.
-* **Met de opslagaccountsleutel** u de sleutel bijwerken voor het opslagaccount dat is gekoppeld aan de wijzigingen in de webservice. 
-* **Met Voorbeeldgegevens** u voorbeeldgegevens verstrekken die u gebruiken om de service Verzoek-antwoord te testen. Als u de webservice hebt gemaakt in Machine Learning Studio (klassiek), worden de voorbeeldgegevens ontleend aan de gegevens die u hebt gebruikt om uw model te trainen. Als u de service programmatisch hebt gemaakt, worden de gegevens ontleend aan de voorbeeldgegevens die u hebt opgegeven als onderdeel van het JSON-pakket.
+* Met **Beschrijving** kunt u een beschrijving invoeren voor de webservice.
+* Met **titel** kunt u een titel voor de webservice invoeren
+* Met **sleutels** kunt u de primaire en secundaire API-sleutels draaien.
+* Met de sleutel voor het **opslag account** kunt u de sleutel bijwerken voor het opslag account dat is gekoppeld aan de wijzigingen in de webservice. 
+* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de aanvraag-antwoord service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
 
-### <a name="managing-billing-plans"></a>Factureringsplannen beheren
-Klik op de **menuoptie Plannen** op de quickstartpagina van webservices. U ook op het abonnement klikken dat is gekoppeld aan een specifieke webservice om dat abonnement te beheren.
+### <a name="managing-billing-plans"></a>Facturerings plannen beheren
+Klik op de menu optie **plannen** op de pagina Quick Start van Web Services. U kunt ook klikken op het plan dat is gekoppeld aan de specifieke webservice om dat plan te beheren.
 
-* **Met Nieuw** u een nieuw plan maken.
-* **Met de instantie Plan toevoegen/verwijderen** u een bestaand plan uitschalen om capaciteit toe te voegen.
-* **Met Upgrade/DownGrade** u een bestaand plan opschalen om capaciteit toe te voegen.
-* **Met Delete** u een abonnement verwijderen.
+* Met **Nieuw** kunt u een nieuw plan maken.
+* Met een **plan exemplaar toevoegen/verwijderen** kunt u een bestaand plan uitschalen om capaciteit toe te voegen.
+* Met **upgrade/downgrade** kunt u een bestaand plan omhoog schalen om capaciteit toe te voegen.
+* Met **verwijderen** kunt u een abonnement verwijderen.
 
-Klik op een plan om het dashboard weer te geven. Het dashboard geeft u een momentopname of plangebruik over een bepaalde periode. Als u de periode wilt selecteren die u wilt weergeven, klikt u op de **vervolgkeuzelijst Periode** rechtsboven in het dashboard. 
+Klik op een plan om het dash board ervan weer te geven. Met het dash board kunt u een moment opname maken of het gebruik plannen voor een geselecteerde periode. Als u de tijds periode wilt selecteren die u wilt weer geven, klikt u op de vervolg keuzelijst voor de **periode** in de rechter bovenhoek van het dash board. 
 
-Het plandashboard bevat de volgende informatie:
+Het plan Dashboard bevat de volgende informatie:
 
-* **Met de beschrijving van het** abonnement wordt informatie weergegeven over de kosten en capaciteit die aan het plan zijn gekoppeld.
-* **Plangebruik** geeft het aantal transacties en rekenuren weer dat in rekening is gebracht tegen het plan.
-* **Web Services** geeft het aantal webservices weer dat dit abonnement gebruikt.
-* **Top Web Service By Calls** geeft de top vier webservices weer die gesprekken voeren die in rekening worden gebracht tegen het abonnement.
-* **Top Web Services by Compute Hrs** geeft de vier beste webservices weer die rekenbronnen gebruiken die in rekening worden gebracht tegen het abonnement.
+* **Plan beschrijving** geeft informatie weer over de kosten en de capaciteit die zijn gekoppeld aan het plan.
+* Met het **plan gebruik** wordt het aantal trans acties en reken uren weer gegeven dat voor het plan in rekening is gebracht.
+* **Webservices** geeft het aantal webservices weer dat dit abonnement gebruikt.
+* **Met de bovenste webservice op aanroepen** worden de vier webservices weer gegeven die aanroepen voor het abonnement in rekening worden gebracht.
+* De belangrijkste **webservices per reken uren** geeft de vier webservices weer die gebruikmaken van reken resources die worden gefactureerd op basis van het plan.
 
 ## <a name="manage-classic-web-services"></a>Klassieke webservices beheren
 > [!NOTE]
-> De procedures in deze sectie zijn relevant voor het beheer van klassieke webservices via de Azure Machine Learning Web Services-portal. Zie [Een Azure Machine Learning Studio -werkruimte beheren](manage-workspace.md)voor informatie over het beheren van klassieke webservices via de Machine Learning Studio (klassiek) en de Azure-portal.
+> De procedures in deze sectie zijn relevant voor het beheer van klassieke webservices via de Azure Machine Learning Web Services-portal. Zie [een Azure machine learning Studio (klassieke) werk ruimte beheren](manage-workspace.md)voor meer informatie over het beheren van klassieke webservices via de machine learning Studio (klassiek) en de Azure Portal.
 > 
 > 
 
-Ga als u uw Klassieke Webservices beheren:
+Uw klassieke webservices beheren:
 
-1. Meld u aan bij de [Microsoft Azure Machine Learning Web Services-portal](https://services.azureml.net/quickstart) met uw Microsoft Azure-account : gebruik het account dat is gekoppeld aan het Azure-abonnement.
-2. Klik in het menu op **Klassieke webservices**.
+1. Meld u aan bij de [Microsoft Azure machine learning Web Services](https://services.azureml.net/quickstart) -Portal met uw Microsoft Azure account: gebruik het account dat is gekoppeld aan het Azure-abonnement.
+2. Klik in het menu op **klassieke webservices**.
 
-Als u een klassieke webservice wilt beheren, klikt u op **Klassieke webservices**. Vanaf de pagina Classic Web Services u:
+Als u een klassieke webservice wilt beheren, klikt u op **klassieke**webservices. U kunt op de pagina klassiek Web Services het volgende doen:
 
-* Klik op de webservice om de bijbehorende eindpunten weer te geven.
+* Klik op de webservice om de bijbehorende eind punten weer te geven.
 * Een webservice verwijderen.
 
-Wanneer u een Classic Web-service beheert, beheert u elk van de eindpunten afzonderlijk. Wanneer u op een webservice klikt op de webpagina Webservices, wordt de lijst met eindpunten die aan de service zijn gekoppeld, geopend. 
+Wanneer u een klassieke webservice beheert, beheert u elk van de eind punten afzonderlijk. Wanneer u op een webservice klikt op de pagina webservices, wordt de lijst met eind punten die aan de service zijn gekoppeld, geopend. 
 
-Op de pagina Classic Web Service-eindpunten u eindpunten aan de service toevoegen en verwijderen. Zie Eindpunten maken voor meer informatie over het toevoegen [van eindpunten](create-endpoint.md).
+Op de pagina klassiek-webservice-eind punt kunt u eind punten toevoegen en verwijderen voor de service. Zie [eind punten maken](create-endpoint.md)voor meer informatie over het toevoegen van eind punten.
 
-Klik op een van de eindpunten om de pagina Quickstart van de webservice te openen. Op de pagina Snelstart zijn er twee menu-opties waarmee u uw webservice beheren:
+Klik op een van de eind punten om de pagina Web Service Quick Start te openen. Op de pagina Quick start ziet u twee menu opties waarmee u uw webservice kunt beheren:
 
-* **DASHBOARD** - Hiermee u het gebruik van de webservice weergeven.
-* **CONFIGUREREN** - Hiermee u beschrijvende tekst toevoegen, foutlogboekregistratie in- en uitschakelen, de sleutel voor het opslagaccount bijwerken dat is gekoppeld aan de webservice en voorbeeldgegevens in- en uitschakelen.
+* **Dash board** : Hiermee kunt u het gebruik van webservices weer geven.
+* **Configureren** : Hiermee kunt u beschrijvende tekst toevoegen, fout logboek registratie in-en uitschakelen, de sleutel bijwerken voor het opslag account dat is gekoppeld aan de webservice en voorbeeld gegevens in-en uitschakelen.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Controleren hoe de webservice wordt gebruikt
-Klik op het tabblad **DASHBOARD.**
+Klik op het tabblad **dash board** .
 
-Vanuit het dashboard u het algehele gebruik van uw webservice gedurende een bepaalde periode bekijken. U de periode selecteren die u wilt weergeven in het vervolgkeuzemenu Periode rechtsboven in de gebruiksgrafieken. Het dashboard toont de volgende informatie:
+Vanuit het dash board kunt u het totale gebruik van uw web-service gedurende een bepaalde periode bekijken. U kunt de periode selecteren die u wilt weer geven in de vervolg keuzelijst periode in de rechter bovenhoek van de gebruiks diagrammen. Het dash board bevat de volgende informatie:
 
-* **Aanvragen in de loop van de tijd** geeft een stapgrafiek weer van het aantal aanvragen over de geselecteerde periode. Het kan helpen identificeren of u pieken in het gebruik ervaart.
-* **Aanvragen voor aanvragen geeft** het totale aantal aanroepen voor aanvragen en antwoord weer die de service heeft ontvangen gedurende de geselecteerde periode en hoeveel van deze oproepen zijn mislukt.
-* **De gemiddelde rekentijd van de aanvraagrespons** geeft een gemiddelde weer van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
-* **Batchaanvragen** geeft het totale aantal batchaanvragen weer dat de service heeft ontvangen gedurende de geselecteerde periode en hoeveel van deze aanvragen zijn mislukt.
-* **De gemiddelde taaklatentie** geeft een gemiddelde weer van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
-* **In fouten** wordt het geaggregeerde aantal fouten weergegeven dat is opgetreden bij oproepen naar de webservice.
-* **Serviceskosten** geven de kosten weer voor het factureringsplan dat aan de service is gekoppeld.
+* **Aanvragen in** de loop van de tijd geeft een stap grafiek weer van het aantal aanvragen gedurende de geselecteerde tijds periode. Zo kunt u nagaan of u problemen ondervindt met pieken in het gebruik.
+* **Aanvraag-antwoord aanvragen** geeft het totale aantal aanvraag/antwoord-aanroepen weer dat de service heeft ontvangen over de geselecteerde tijds periode en het aantal mislukte aanvragen.
+* **Gemiddelde reken tijd aanvraag-antwoord** geeft een gemiddelde van de tijd weer die nodig is om de ontvangen aanvragen uit te voeren.
+* Met **batch-aanvragen** wordt het totale aantal batch-aanvragen weer gegeven dat de service heeft ontvangen over de geselecteerde tijds periode en hoeveel er is mislukt.
+* Bij **gemiddelde taak latentie** wordt een gemiddelde weer gegeven van de tijd die nodig is om de ontvangen aanvragen uit te voeren.
+* **Fouten** geeft het totale aantal fouten weer dat is opgetreden bij aanroepen naar de webservice.
+* Met **kosten voor services** worden de kosten weer gegeven voor het facturerings plan dat is gekoppeld aan de service.
 
 ### <a name="configuring-the-web-service"></a>De webservice configureren
-Klik op de **menuoptie CONFIGUREREN.**
+Klik op de menu optie **configureren** .
 
-U de volgende eigenschappen bijwerken:
+U kunt de volgende eigenschappen bijwerken:
 
-* **Met** de beschrijving u een beschrijving voor de webservice invoeren. Beschrijving is een vereist veld.
-* **Met logboekregistratie** u foutlogboekregistratie op het eindpunt in- of uitschakelen. Zie Logboekregistratie inschakelen [voor Machine Learning-webservices voor](web-services-logging.md)meer informatie over logboekregistratie.
-* **Met Voorbeeldgegevens** u voorbeeldgegevens verstrekken die u gebruiken om de service Verzoek-antwoord te testen. Als u de webservice hebt gemaakt in Machine Learning Studio (klassiek), worden de voorbeeldgegevens ontleend aan de gegevens die u hebt gebruikt om uw model te trainen. Als u de service programmatisch hebt gemaakt, worden de gegevens ontleend aan de voorbeeldgegevens die u hebt opgegeven als onderdeel van het JSON-pakket.
+* Met **Beschrijving** kunt u een beschrijving invoeren voor de webservice. Beschrijving is een verplicht veld.
+* Met **logboek registratie** kunt u fout logboek registratie op het eind punt in-of uitschakelen. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
+* Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de aanvraag-antwoord service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
 
 

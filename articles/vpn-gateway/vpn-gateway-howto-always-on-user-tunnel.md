@@ -1,7 +1,7 @@
 ---
-title: Een Always-On VPN-gebruikerstunnel configureren
+title: Een permanente VPN-gebruikers tunnel configureren
 titleSuffix: Azure VPN Gateway
-description: In dit artikel wordt beschreven hoe u een Always On VPN-gebruikerstunnel configureert voor uw VPN-gateway
+description: In dit artikel wordt beschreven hoe u een always on-VPN-gebruikers tunnel configureert voor uw VPN-gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -21,9 +21,9 @@ ms.locfileid: "79502271"
 
 ## <a name="configure-the-gateway"></a>De gateway configureren
 
- Gebruik de instructies in het artikel [Een vpn-verbindingsartikel configureren](vpn-gateway-howto-point-to-site-resource-manager-portal.md) om de VPN-gateway te configureren om IKEv2 en verificatie op basis van certificaten te gebruiken.
+ Gebruik de instructies in het artikel [een punt-naar-site-VPN-verbinding configureren](vpn-gateway-howto-point-to-site-resource-manager-portal.md) om de VPN-gateway te configureren voor het gebruik van IKEv2 en verificatie op basis van een certificaat.
 
-## <a name="configure-a-user-tunnel"></a>Een gebruikerstunnel configureren
+## <a name="configure-a-user-tunnel"></a>Een gebruikers tunnel configureren
 
 [!INCLUDE [user configuration](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
@@ -37,10 +37,10 @@ Als u een profiel wilt verwijderen, gebruikt u de volgende stappen:
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. Koppel de verbinding los en schakel het selectievakje **Verbinding automatisch** uit.
+1. Verbreek de verbinding en schakel het selectie vakje **automatisch verbinding maken** uit.
 
    ![Opschonen](./media/vpn-gateway-howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure point-to-site-verbindingsproblemen](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)voor het oplossen van verbindingsproblemen.
+Zie [problemen met Azure Point-to-site-verbindingen](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)voor informatie over het oplossen van verbindings problemen die zich kunnen voordoen.

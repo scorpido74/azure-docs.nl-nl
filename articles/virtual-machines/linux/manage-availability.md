@@ -1,6 +1,6 @@
 ---
-title: De beschikbaarheid van Linux VM's in Azure beheren
-description: Meer informatie over het gebruik van meerdere virtuele machines om een hoge beschikbaarheid voor uw Linux-toepassing in Azure te garanderen
+title: De beschik baarheid van Linux Vm's in azure beheren
+description: Meer informatie over het gebruik van meerdere virtuele machines om te zorgen voor hoge Beschik baarheid voor uw Linux-toepassing in azure
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -16,10 +16,10 @@ ms.locfileid: "79267207"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>De beschikbaarheid van virtuele Linux-machines beheren
 
-Leer manieren om meerdere virtuele machines in te stellen en te beheren om een hoge beschikbaarheid voor uw Linux-toepassing in Azure te garanderen. U ook [de beschikbaarheid van virtuele Windows-machines beheren.](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Meer informatie over manieren om meerdere virtuele machines in te stellen en te beheren om hoge Beschik baarheid voor uw Linux-toepassing in azure te garanderen. U kunt ook [de beschik baarheid van virtuele Windows-machines beheren](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Load Balancing virtuele machines voor](../virtual-machines-linux-load-balance.md)meer informatie over het balanceren van uw virtuele machines.
+Zie [virtuele machines met taak verdeling](../virtual-machines-linux-load-balance.md)voor meer informatie over taak verdeling voor uw virtuele machines.
 

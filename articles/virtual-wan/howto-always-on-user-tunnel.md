@@ -1,7 +1,7 @@
 ---
-title: Een Always-On VPN-gebruikerstunnel configureren
+title: Een permanente VPN-gebruikers tunnel configureren
 titleSuffix: Azure Virtual WAN
-description: In dit artikel wordt beschreven hoe u een Always On VPN-gebruikerstunnel configureert voor uw Virtuele WAN
+description: In dit artikel wordt beschreven hoe u een always on-VPN-gebruikers tunnel configureert voor uw virtuele WAN
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -15,18 +15,18 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79502865"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Een Always On VPN-gebruikerstunnel configureren voor Virtual WAN
+# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Een always on-VPN-gebruikers tunnel configureren voor virtuele WAN
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een point-to-site-configuratie maken en de virtuele hubtoewijzing bewerken. Zie de volgende secties voor instructies:
+U moet een punt-naar-site-configuratie maken en de toewijzing van de virtuele hub bewerken. Raadpleeg de volgende secties voor instructies:
 
 * [Een P2S-configuratie maken](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [De hubtoewijzing bewerken](virtual-wan-point-to-site-portal.md#edit)
+* [De hub-toewijzing bewerken](virtual-wan-point-to-site-portal.md#edit)
 
-## <a name="configure-a-user-tunnel"></a>Een gebruikerstunnel configureren
+## <a name="configure-a-user-tunnel"></a>Een gebruikers tunnel configureren
 
 [!INCLUDE [user tunnel](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
@@ -40,10 +40,10 @@ Als u een profiel wilt verwijderen, gebruikt u de volgende stappen:
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. Koppel de verbinding los en schakel het selectievakje **Verbinding automatisch** uit.
+1. Verbreek de verbinding en schakel het selectie vakje **automatisch verbinding maken** uit.
 
    ![Opschonen](./media/howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [veelgestelde vragen voor](virtual-wan-faq.md)meer informatie over Virtual WAN.
+Raadpleeg de [Veelgestelde vragen](virtual-wan-faq.md)voor meer informatie over Virtual WAN.

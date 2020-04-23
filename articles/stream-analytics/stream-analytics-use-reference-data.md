@@ -1,6 +1,6 @@
 ---
-title: Referentiegegevens gebruiken voor opzoekingen in Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u referentiegegevens gebruikt om gegevens op te zoeken of te correleren in het queryontwerp van een Azure Stream Analytics-taak.
+title: Referentie gegevens gebruiken voor Zoek opdrachten in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u referentie gegevens kunt gebruiken om gegevens in het query ontwerp van een Azure Stream Analytics-taak te zoeken of correleren.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -14,103 +14,103 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267285"
 ---
-# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentiegegevens gebruiken voor opzoekingen in Stream Analytics
+# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
-Referentiegegevens (ook wel opzoektabel genoemd) is een eindige gegevensset die statisch is of langzaam van aard verandert, wordt gebruikt om een opzoeking uit te voeren of om uw gegevensstromen uit te breiden. In een IoT-scenario u bijvoorbeeld metagegevens over sensoren (die niet vaak veranderen) opslaan in referentiegegevens en deze aansluiten bij realtime IoT-gegevensstromen. Azure Stream Analytics laadt referentiegegevens in het geheugen om te komen tot verwerking met een lage latentiestroom. Als u referentiegegevens wilt gebruiken in uw Azure Stream Analytics-taak, gebruikt u doorgaans een [verwijzingsgegevensjoin](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. 
+Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd in aard, die wordt gebruikt om een zoek actie uit te voeren of om uw gegevens stromen te verbeteren. In een IoT-scenario kunt u bijvoorbeeld meta gegevens over Sens oren opslaan (die niet vaak veranderen) in referentie gegevens en deze koppelen aan real time IoT-gegevensstreams. Azure Stream Analytics laadt referentie gegevens in het geheugen om stroom verwerking met lage latentie te garanderen. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. 
 
-Stream Analytics ondersteunt Azure Blob-opslag en Azure SQL Database als de opslaglaag voor referentiegegevens. U ook referentiegegevens transformeren en/of kopiëren naar Blob-opslag vanuit Azure Data Factory om [een willekeurig aantal cloudgebaseerde en on-premises gegevensopslag](../data-factory/copy-activity-overview.md)te gebruiken.
+Stream Analytics biedt ondersteuning voor Azure Blob Storage en Azure SQL Database als opslaglaag voor referentie gegevens. U kunt ook referentie gegevens transformeren en/of kopiëren naar Blob-opslag van Azure Data Factory om [een wille keurig aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md)te gebruiken.
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Referentiegegevens worden gemodelleerd als een reeks blobs (gedefinieerd in de invoerconfiguratie) in oplopende volgorde van de datum/tijd die is opgegeven in de blobnaam. Het ondersteunt **alleen** het toevoegen aan het einde van de reeks met behulp van een datum / tijd **groter** dan de datum die is opgegeven door de laatste blob in de reeks.
+Referentie gegevens worden gemodelleerd als een reeks blobs (gedefinieerd in de invoer configuratie) in oplopende volg orde van de datum/tijd die is opgegeven in de naam van de blob. Het kan **alleen** worden toegevoegd aan het einde van de reeks door gebruik te maken van een datum/tijd die **groter is** dan de waarde die is opgegeven door de laatste Blob in de reeks.
 
-### <a name="configure-blob-reference-data"></a>Blobreferentiegegevens configureren
+### <a name="configure-blob-reference-data"></a>BLOB-referentie gegevens configureren
 
-Als u uw referentiegegevens wilt configureren, moet u eerst een invoer maken die van het type **Referentiegegevens**is. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet leveren terwijl u de invoer van referentiegegevens maakt met de beschrijving:
+Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken van het type **referentie gegevens**. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de referentie gegevens invoer met de beschrijving:
 
 |**Naam van eigenschap**  |**Beschrijving**  |
 |---------|---------|
-|Invoeralias   | Een vriendelijke naam die wordt gebruikt in de taakquery om naar deze invoer te verwijzen.   |
-|Opslagaccount   | De naam van het opslagaccount waar uw blobs zich bevinden. Als het in hetzelfde abonnement staat als je Stream Analytics-taak, kun je deze selecteren in de vervolgkeuzelijst.   |
-|Opslagaccountsleutel   | De geheime sleutel die is gekoppeld aan het opslagaccount. Dit wordt automatisch ingevuld als het opslagaccount zich in hetzelfde abonnement bevindt als uw Stream Analytics-taak.   |
-|Opslagcontainer   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob-service. Wanneer u een blob uploadt naar de Blob-service, moet u een container voor die blob opgeven.   |
-|Padpatroon   | Het pad dat wordt gebruikt om uw blobs in de opgegeven container te lokaliseren. Binnen het pad u ervoor kiezen om een of meer exemplaren van de volgende 2 variabelen op te geven:<BR>{date}, {time}<BR>Voorbeeld 1: producten/{date}/{time}/product-list.csv<BR>Voorbeeld 2: producten/{date}/product-list.csv<BR>Voorbeeld 3: productlijst.csv<BR><br> Als de blob niet bestaat in het opgegeven pad, wacht de taak Stream Analytics voor onbepaalde tijd tot de blob beschikbaar is.   |
-|Datumnotatie [optioneel]   | Als u {date} hebt gebruikt in het door u opgegeven padpatroon, u de datumnotatie selecteren waarin uw blobs zijn georganiseerd in de vervolgkeuzelijst van ondersteunde indelingen.<BR>Voorbeeld: YYYY/MM/DD, MM/DD/YYYY, etc.   |
-|Tijdnotatie [optioneel]   | Als u {time} hebt gebruikt in het opgegeven padpatroon, u de tijdindeling selecteren waarin uw blobs zijn georganiseerd in de vervolgkeuzelijst van ondersteunde indelingen.<BR>Voorbeeld: HH, HH/mm of HH-mm.  |
-|Indeling voor gebeurtenisserialisatie   | Om ervoor te zorgen dat uw query's werken zoals u verwacht, moet Stream Analytics weten welke serialisatie-indeling u gebruikt voor binnenkomende gegevensstromen. Voor referentiegegevens zijn de ondersteunde indelingen CSV en JSON.  |
-|Encoding   | UTF-8 is op dit moment het enige ondersteunde coderingsformaat.  |
+|Invoeralias   | Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.   |
+|Opslagaccount   | De naam van het opslag account waarin uw blobs zich bevinden. Als deze zich in hetzelfde abonnement bevindt als uw Stream Analytics-taak, kunt u deze selecteren in de vervolg keuzelijst.   |
+|Sleutel van het opslag account   | De geheime sleutel die is gekoppeld aan het opslag account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
+|Opslag container   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven.   |
+|Padpatroon   | Het pad dat wordt gebruikt om de blobs binnen de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende twee variabelen opgeven:<BR>{date}, {time}<BR>Voor beeld 1: producten/{date}/{time}/product-list. CSV<BR>Voor beeld 2: producten/{date}/product-list. CSV<BR>Voor beeld 3: product-list. CSV<BR><br> Als de BLOB niet bestaat in het opgegeven pad, wacht de Stream Analytics taak oneindig voordat de BLOB beschikbaar wordt.   |
+|Datum notatie [Optioneel]   | Als u {date} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de datum notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: JJJJ/MM/DD, MM/DD/JJJJ, enzovoort.   |
+|Tijd notatie [Optioneel]   | Als u {time} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de tijd notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: HH, HH/mm of uu-mm.  |
+|Serialisatie-indeling voor gebeurtenissen   | Om ervoor te zorgen dat uw query's werken zoals verwacht, Stream Analytics moet weten welke serialisatie-indeling u gebruikt voor binnenkomende gegevens stromen. Voor referentie gegevens zijn de ondersteunde indelingen CSV en JSON.  |
+|Encoding   | UTF-8 is op dit moment de enige coderings indeling die wordt ondersteund.  |
 
-### <a name="static-reference-data"></a>Statische referentiegegevens
+### <a name="static-reference-data"></a>Statische referentie gegevens
 
-Als de referentiegegevens naar verwachting niet worden gewijzigd, wordt ondersteuning voor statische referentiegegevens ingeschakeld door een statisch pad in de invoerconfiguratie op te geven. Azure Stream Analytics pikt de blob op van het opgegeven pad. {date} en {time} substitutietokens zijn niet vereist. Omdat referentiegegevens onveranderlijk zijn in Stream Analytics, wordt het niet aanbevolen om een statische referentiegegevensblob te overschrijven.
+Als uw referentie gegevens niet naar verwachting worden gewijzigd, wordt ondersteuning voor statische referentie gegevens ingeschakeld door een statisch pad op te geven in de invoer configuratie. Azure Stream Analytics haalt de BLOB op uit het opgegeven pad. {date} en {time} substitutie tokens zijn niet vereist. Omdat referentie gegevens onveranderbaar zijn in Stream Analytics, wordt het overschrijven van een statische referentie gegevens-BLOB niet aanbevolen.
 
-### <a name="generate-reference-data-on-a-schedule"></a>Referentiegegevens genereren in een planning
+### <a name="generate-reference-data-on-a-schedule"></a>Referentie gegevens op basis van een planning genereren
 
-Als uw referentiegegevens een langzaam veranderende gegevensset zijn, wordt ondersteuning voor het vernieuwen van referentiegegevens ingeschakeld door een padpatroon op te geven in de invoerconfiguratie met behulp van de vervangingstokens {date} en {time}. Stream Analytics pikt de bijgewerkte definities van referentiegegevens op op basis van dit padpatroon. `sample/{date}/{time}/products.csv` Een patroon van bijvoorbeeld met een datumformaat van **"YYYY-MM-DD"** en een tijdindeling van **"HH-mm"** instrueert Stream Analytics om de bijgewerkte blob `sample/2015-04-16/17-30/products.csv` op 16 april 2015 UTC-tijdzone om 17:30 uur op te halen.
+Als uw referentie gegevens een langzaam gewijzigde gegevensset zijn, wordt de ondersteuning voor het vernieuwen van referentie gegevens ingeschakeld door een pad patroon op te geven in de invoer configuratie met behulp van de {date}-en {time} substitutie tokens. Stream Analytics worden de bijgewerkte definities voor referentie gegevens opgehaald op basis van dit pad patroon. Een patroon van `sample/{date}/{time}/products.csv` met de datum notatie **' jjjj-mm-dd '** en een tijd notatie van **' uu-mm '** zorgt er stream Analytics voor het ophalen van de bijgewerkte BLOB `sample/2015-04-16/17-30/products.csv` bij 5:30 uur op zestiende, 2015 UTC-tijd zone.
 
-Azure Stream Analytics scant automatisch op vernieuwde referentiegegevensblobs met een interval van één minuut. Als een blob met tijdstempel 10:30:00 wordt geüpload met een kleine vertraging (bijvoorbeeld 10:30:30), ziet u een kleine vertraging in stream Analytics taak die verwijst naar deze blob. Om dergelijke scenario's te voorkomen, wordt aanbevolen om de blob eerder te uploaden dan de doeleffectieve tijd (10:30:00 in dit voorbeeld) om de Stream Analytics-taak voldoende tijd te geven om deze te ontdekken en te laden in het geheugen en bewerkingen uit te voeren. 
+Azure Stream Analytics automatisch wordt gescand op vernieuwde referentie gegevens-blobs met een interval van één minuut. Als een blob met tijds tempel 10:30:00 met een kleine vertraging is geüpload (bijvoorbeeld 10:30:30), ziet u een kleine vertraging in Stream Analytics taak die naar deze BLOB verwijst. Om dergelijke scenario's te voor komen, is het raadzaam om de BLOB vóór de effectief beoogde doel tijd (10:30:00 in dit voor beeld) te uploaden om de Stream Analytics taak genoeg tijd te geven om deze in het geheugen te detecteren en te laden en bewerkingen uit te voeren. 
 
 > [!NOTE]
-> Momenteel zoeken Stream Analytics-taken alleen naar vernieuwing van de blob wanneer de machinetijd wordt vervijfvoudigd naar de tijd die is gecodeerd in de naam van de blob. De taak zoekt `sample/2015-04-16/17-30/products.csv` bijvoorbeeld zo snel mogelijk, maar niet eerder dan 17:30 uur op de UTC-tijdzone van 16 april 2015. Het zal *nooit* op zoek naar een blob met een gecodeerde tijd eerder dan de laatste die wordt ontdekt.
+> Momenteel Stream Analytics taken alleen voor het vernieuwen van blobs kijken wanneer de machine tijd overgaat op de tijd die in de naam van de blob is gecodeerd. De taak zoekt bijvoorbeeld `sample/2015-04-16/17-30/products.csv` zo snel mogelijk, maar niet eerder dan 5:30 uur op zestien April, 2015 UTC-tijd zone. Er wordt *nooit* gezocht naar een blob met een gecodeerde tijd die ouder is dan de laatste die is gedetecteerd.
 > 
-> Als de taak bijvoorbeeld de `sample/2015-04-16/17-30/products.csv` blob vindt, worden bestanden met een gecodeerde datum eerder dan 16 april 2015 genegeerd, dus als er een te laat aankomende `sample/2015-04-16/17-25/products.csv` blob in dezelfde container wordt gemaakt, wordt de taak niet gebruikt.
+> Zodra de taak de BLOB `sample/2015-04-16/17-30/products.csv` heeft gevonden, worden alle bestanden met een versleutelde datum die ouder is dan 5:30 uur, 16 April, 2015, dus als `sample/2015-04-16/17-25/products.csv` er een late aankomtde BLOB wordt gemaakt in dezelfde container die de taak niet gebruikt.
 > 
-> Evenzo `sample/2015-04-16/17-30/products.csv` als alleen wordt geproduceerd om 22:03 16 april 2015, maar geen blob met een eerdere datum aanwezig is in de container, zal de taak dit bestand gebruiken vanaf 16 april 20:03 uur en de vorige referentiegegevens tot die tijd gebruiken.
+> `sample/2015-04-16/17-30/products.csv` De taak zal dit bestand ook gebruiken op basis van 10:03 tot 16 april 2015, maar er is geen blob met een eerdere datum aanwezig in de container. deze wordt vanaf 10:03 uur vanaf 16 april, 2015 en de vorige referentie gegevens gebruikt tot dan.
 > 
-> Een uitzondering hierop is wanneer de taak gegevens opnieuw in de tijd moet verwerken of wanneer de taak voor het eerst wordt gestart. Bij het begin is de taak op zoek naar de meest recente blob die is geproduceerd vóór de opgegeven begintijd van de taak. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentiegegevensset is wanneer de taak begint. Als er geen wordt gevonden, wordt `Initializing input without a valid reference data blob for UTC time <start time>`in de taak de volgende diagnose weergegeven: .
+> Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt de volgende diagnose weer gegeven `Initializing input without a valid reference data blob for UTC time <start time>`in de taak:.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak van het maken van de bijgewerkte blobs die stream analytics nodig heeft om referentiegegevensdefinities bij te werken, te orkestreren. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt [het eenvoudig verbinden met een groot aantal cloudgebaseerde en on-premises datastores](../data-factory/copy-activity-overview.md) en het eenvoudig verplaatsen van gegevens volgens een regelmatig schema dat u opgeeft. Voor meer informatie en stapsgewijze richtlijnen voor het instellen van een Data Factory-pijplijn om referentiegegevens te genereren voor Stream Analytics, die wordt vernieuwd volgens een vooraf gedefinieerd schema, raadpleegt u deze [GitHub-steekproef.](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
 
-### <a name="tips-on-refreshing-blob-reference-data"></a>Tips voor het vernieuwen van blobreferentiegegevens
+### <a name="tips-on-refreshing-blob-reference-data"></a>Tips voor het vernieuwen van BLOB-referentie gegevens
 
-1. Overschrijf geen verwijzingengegevensblobs omdat ze onveranderlijk zijn.
-2. De aanbevolen manier om referentiegegevens te vernieuwen is:
-    * {date}/{time} gebruiken in het padpatroon
-    * Een nieuwe blob toevoegen met hetzelfde container- en padpatroon dat is gedefinieerd in de taakinvoer
-    * Gebruik een datum/tijd **die groter is** dan de datum die is opgegeven door de laatste blob in de reeks.
-3. Referentiegegevensblobs worden **niet** geordend op basis van de 'Laatst gewijzigde' tijd van de blob, maar alleen op de tijd en datum die in de blobnaam zijn opgegeven met behulp van de vervangingen {date} en {time}.
-3. Om te voorkomen dat u een groot aantal blobs moet vermelden, u overwegen om zeer oude blobs te verwijderen waarvoor de verwerking niet meer wordt uitgevoerd. Houd er rekening mee dat ASA mogelijk een klein bedrag opnieuw moet verwerken in sommige scenario's, zoals een herstart.
+1. Overschrijf de blobs van referentie gegevens niet omdat ze onveranderbaar zijn.
+2. De aanbevolen manier om referentie gegevens te vernieuwen, is:
+    * {Date}/{time} in het pad patroon gebruiken
+    * Een nieuwe BLOB toevoegen met hetzelfde container-en pad-patroon dat is gedefinieerd in de taak invoer
+    * Gebruik een datum/tijd die **groter is** dan het tijdstip dat is opgegeven door de laatste Blob in de reeks.
+3. Referentie gegevens-blobs worden **niet** gerangschikt op de tijd ' laatst gewijzigd ' van de blob, maar alleen door de tijd en de datum die zijn opgegeven in de naam van de blob met de {date}-en {time} vervangingen.
+3. Om te voor komen dat een groot aantal blobs wordt vermeld, kunt u overwegen om zeer oude blobs te verwijderen waarvoor de verwerking niet meer wordt uitgevoerd. ASA kan worden uitgevoerd om een kleine hoeveelheid opnieuw te verwerken in sommige scenario's, zoals opnieuw opstarten.
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-Azure SQL Database-referentiegegevens worden opgehaald door uw Stream Analytics-taak en worden opgeslagen als momentopname in het geheugen voor verwerking. De momentopname van uw referentiegegevens wordt ook opgeslagen in een container in een opslagaccount dat u opgeeft in de configuratie-instellingen. De container wordt automatisch gemaakt wanneer de taak wordt gestart. Als de taak wordt gestopt of een mislukte status wordt ingegaan, worden de automatisch gemaakte containers verwijderd wanneer de taak opnieuw wordt gestart.  
+Azure SQL Database referentie gegevens worden opgehaald door uw Stream Analytics-taak en worden opgeslagen als een moment opname in het geheugen voor verwerking. De moment opname van de referentie gegevens wordt ook opgeslagen in een container in een opslag account dat u opgeeft in de configuratie-instellingen. De container wordt automatisch gemaakt wanneer de taak wordt gestart. Als de taak wordt gestopt of een mislukte status krijgt, worden de automatisch gemaakte containers verwijderd wanneer de taak opnieuw wordt gestart.  
 
-Als uw referentiegegevens een langzaam veranderende gegevensset zijn, moet u de momentopname die in uw taak wordt gebruikt, periodiek vernieuwen. Met Stream Analytics u een verversingssnelheid instellen wanneer u uw Azure SQL Database-invoerverbinding configureert. De runtime van Stream Analytics zal uw Azure SQL Database opvragen met het interval dat is opgegeven door de verversingsfrequentie. De snelste refresh rate ondersteund is eenmaal per minuut. Voor elke vernieuwing slaat Stream Analytics een nieuwe momentopname op in het opgegeven opslagaccount.
+Als uw referentie gegevens een langzaam gewijzigde gegevensset zijn, moet u de moment opname die wordt gebruikt in uw taak regel matig vernieuwen. Met Stream Analytics kunt u een vernieuwings frequentie instellen wanneer u uw Azure SQL Database invoer verbinding configureert. De Stream Analytics runtime zal een query uitvoeren op uw Azure SQL Database met het interval dat is opgegeven met de vernieuwings frequentie. De hoogste vernieuwings frequentie die wordt ondersteund, is eenmaal per minuut. Voor elke vernieuwing slaat Stream Analytics een nieuwe moment opname op in het beschik bare opslag account.
 
-Stream Analytics biedt twee opties voor het opvragen van uw Azure SQL Database. Een momentopnamequery is verplicht en moet in elke taak worden opgenomen. Stream Analytics voert de momentopnamequery periodiek uit op basis van het vernieuwingsinterval en gebruikt het resultaat van de query (de momentopname) als referentiegegevensset. De momentopnamequery moet passen bij de meeste scenario's, maar als u prestatieproblemen ondervindt met grote gegevenssets en snelle verversingssnelheden, u de deltaqueryoptie gebruiken. Query's die meer dan 60 seconden nodig hebben om de referentiegegevensset terug te sturen, resulteren in een time-out.
+Stream Analytics biedt twee opties voor het uitvoeren van query's op uw Azure SQL Database. Een momentopname query is verplicht en moet worden opgenomen in elke taak. Stream Analytics voert de momentopname query periodiek uit op basis van het Vernieuwings interval en gebruikt het resultaat van de query (de moment opname) als de set met referentie gegevens. De momentopname query moet in de meeste scenario's passen, maar als u prestatie problemen ondervindt met grote gegevens sets en snelle vernieuwings frequenties, kunt u de optie Delta-query gebruiken. Query's die meer dan 60 seconden duren om de referentie gegevensset te retour neren, resulteren in een time-out.
 
-Met de deltaqueryoptie voert Stream Analytics de momentopnamequery in eerste instantie uit om een basislijnverwijzingsgegevensset te krijgen. Daarna voert Stream Analytics de deltaquery periodiek uit op basis van het vernieuwingsinterval om incrementele wijzigingen op te halen. Deze incrementele wijzigingen worden voortdurend toegepast op de referentiegegevensset om deze bijgewerkt te houden. Het gebruik van deltaquery kan helpen de opslagkosten en netwerk-I/O-bewerkingen te verlagen.
+Met de optie Delta query Stream Analytics wordt de momentopname query in eerste instantie uitgevoerd om een basislijn referentie gegevensset op te halen. Daarna voert Stream Analytics de Delta query periodiek uit op basis van het Vernieuwings interval om incrementele wijzigingen op te halen. Deze incrementele wijzigingen worden doorlopend toegepast op de set met referentie gegevens om deze bijgewerkt te houden. Het gebruik van een Delta query kan helpen de opslag kosten en netwerk-I/O-bewerkingen te verlagen.
 
-### <a name="configure-sql-database-reference"></a>SQL-databasereferentie configureren
+### <a name="configure-sql-database-reference"></a>SQL Database referentie configureren
 
-Als u uw SQL-databasereferentiegegevens wilt configureren, moet u eerst **referentiegegevensinvoer** maken. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet leveren terwijl u de invoer van referentiegegevens maakt met de beschrijving. Zie [Referentiegegevens uit een SQL-database gebruiken voor een Azure Stream Analytics-taak voor](sql-reference-data.md)meer informatie.
+Als u uw SQL Database referentie gegevens wilt configureren, moet u eerst **referentie gegevens** invoer maken. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de invoer van referentie gegevens met de beschrijving. Zie [referentie gegevens van een SQL database gebruiken voor een Azure stream Analytics taak](sql-reference-data.md)voor meer informatie.
 
-U [Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) gebruiken als referentiegegevensinvoer. U moet [het openbare eindpunt in Azure SQL Database Managed Instance configureren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens handmatig de volgende instellingen in Azure Stream Analytics configureren. Azure virtual machine running SQL Server with a database attached is also supported by manually configuring the settings below.
+U kunt [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) gebruiken als invoer voor referentie gegevens. U moet een [openbaar eind punt configureren in Azure SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
 |**Naam van eigenschap**|**Beschrijving**  |
 |---------|---------|
-|Invoeralias|Een vriendelijke naam die wordt gebruikt in de taakquery om naar deze invoer te verwijzen.|
+|Invoeralias|Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.|
 |Abonnement|Kies uw abonnement|
-|Database|De Azure SQL-database die uw referentiegegevens bevat. Voor Azure SQL Database Managed Instance is het vereist om de poort 3342 op te geven. Voorbeeld van *sampleserver.public.database.windows.net,3342*|
-|Gebruikersnaam|De gebruikersnaam die is gekoppeld aan uw Azure SQL Database.|
-|Wachtwoord|Het wachtwoord dat is gekoppeld aan uw Azure SQL Database.|
-|Periodiek vernieuwen|Met deze optie u een verversingsfrequentie kiezen. Als u 'Aan' kiest, u de verversingsfrequentie opgeven in DD:HH:MM.|
-|Momentopnamequery|Dit is de standaardqueryoptie waarmee de referentiegegevens uit uw SQL-database worden opgehaald.|
-|Deltaquery|Kies voor geavanceerde scenario's met grote gegevenssets en een korte verversingsfrequentie de optie om een deltaquery toe te voegen.|
+|Database|De Azure SQL Database die uw referentie gegevens bevat. Voor Azure SQL Database beheerde instantie moet het poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342*|
+|Gebruikersnaam|De gebruikers naam die aan uw Azure SQL Database is gekoppeld.|
+|Wachtwoord|Het wacht woord dat is gekoppeld aan uw Azure SQL Database.|
+|Periodiek vernieuwen|Met deze optie kunt u een vernieuwings frequentie kiezen. Als u aan kiest, kunt u de vernieuwings frequentie opgeven in DD: uu: MM.|
+|Momentopname query|Dit is de standaard optie voor query's waarmee de referentie gegevens uit uw SQL Database worden opgehaald.|
+|Delta query|Kies voor geavanceerde scenario's met grote gegevens sets en een korte vernieuwings frequentie om een Delta query toe te voegen.|
 
-## <a name="size-limitation"></a>Groottebeperking
+## <a name="size-limitation"></a>Grootte beperken
 
-Stream Analytics ondersteunt referentiegegevens met **een maximale grootte van 300 MB.** De limiet van 300 MB van de maximale grootte van referentiegegevens is alleen haalbaar met eenvoudige query's. Naarmate de complexiteit van query's toeneemt tot stateful processing, zoals gevensterde aggregaten, temporele joins en tijdelijke analytische functies, wordt verwacht dat de maximale ondersteunde grootte van referentiegegevens afneemt. Als Azure Stream Analytics de referentiegegevens niet kan laden en complexe bewerkingen kan uitvoeren, is de taak zonder geheugen en mislukt deze. In dergelijke gevallen zal de su % gebruiksstatistiek 100% bereiken.    
+Stream Analytics ondersteunt referentie gegevens met een **maximale grootte van 300 MB**. De limiet van 300 MB voor de maximale grootte van referentie gegevens is alleen haalbaar voor eenvoudige query's. Naarmate de complexiteit van de query toeneemt met stateful verwerking, zoals statistische gegevens over het venster, tijdelijke samen voegingen en tijdelijke analytische functies, wordt ervan uitgegaan dat de Maxi maal ondersteunde grootte van de referentie data afneemt. Als Azure Stream Analytics de referentie gegevens niet kan laden en complexe bewerkingen kunt uitvoeren, kan de taak geen geheugen meer gebruiken. In dergelijke gevallen is het gebruik van metrische gegevens van% en een bereik van 100%.    
 
-|**Aantal streaming-eenheden**  |**Ondersteuning voor maximaal formaat (in MB)**  |
+|**Aantal streaming-eenheden**  |**Ondersteuning voor Maxi maal ondersteunde grootte (in MB)**  |
 |---------|---------|
 |1   |50   |
 |3   |150   |
-|6 en verder   |300   |
+|6 en hoger   |300   |
 
-Het toenemende aantal streamingeenheden van een taak van meer dan 6 verhoogt de maximale ondersteunde grootte van referentiegegevens niet.
+Wanneer het aantal streaming-eenheden van een taak groter wordt dan 6, wordt de Maxi maal ondersteunde grootte van referentie gegevens niet verhoogd.
 
-Ondersteuning voor compressie is niet beschikbaar voor referentiegegevens. 
+Ondersteuning voor compressie is niet beschikbaar voor referentie gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

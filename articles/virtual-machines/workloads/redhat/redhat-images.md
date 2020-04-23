@@ -1,6 +1,6 @@
 ---
-title: Red Hat Enterprise Linux-afbeeldingen in Azure | Microsoft Documenten
-description: Meer informatie over Red Hat Enterprise Linux-afbeeldingen in Microsoft Azure.
+title: Installatie kopieën Red Hat Enterprise Linux in azure | Microsoft Docs
+description: Meer informatie over Red Hat Enterprise Linux installatie kopieën in Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -19,167 +19,167 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80239876"
 ---
-# <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux afbeeldingen
+# <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 
-In dit artikel worden beschikbare RHEL-afbeeldingen (Red Hat Enterprise Linux) in Azure Marketplace en beleid rond de naamgeving en retentie ervan beschreven.
+In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise Linux (RHEL) in azure Marketplace en het beleid beschreven om hun naam en retentie te behouden.
 
-Zie [Red Hat Enterprise Linux levenscyclus](https://access.redhat.com/support/policy/updates/errata)voor informatie over het ondersteuningsbeleid van Red Hat voor alle versies van RHEL. Zie [Azure-prijscalculator](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)voor prijsgegevens .
+Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL. Zie [Azure prijs calculator](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)voor prijzen voor meer informatie.
 
 >[!IMPORTANT]
-> RHEL-afbeeldingen die momenteel beschikbaar zijn in Azure Marketplace ondersteunen byos-licentiemodellen (Bring-your-own-subscription) of pay-as-you-go.RHEL images currently available in Azure Marketplace support either bring-your-own-subscription (BYOS) or pay-as-you-go licensing models. De [Azure Hybrid Use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) en dynamische switching tussen BYOS en pay-as-you-go licenties worden niet ondersteund. Als u de licentiemodus wilt inschakelen, moet u de VM opnieuw implementeren vanuit de bijbehorende afbeelding.
+> RHEL-installatie kopieën die momenteel beschikbaar zijn in azure Marketplace ondersteunen de licentie modellen van uw eigen abonnement (BYOS) of betalen naar gebruik. De [Azure Hybrid use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) en dynamische scha KELEN tussen BYOS en betalen naar gebruik-licenties worden niet ondersteund. Als u de licentie modus wilt wijzigen, moet u de virtuele machine opnieuw implementeren vanuit de bijbehorende installatie kopie.
 
 >[!NOTE]
-> Voor elk probleem met betrekking tot RHEL-afbeeldingen in Azure Marketplace, dient u een ondersteuningsticket in bij Microsoft.
+> Voor een probleem met betrekking tot RHEL-installatie kopieën in azure Marketplace kunt u een ondersteunings ticket indienen bij micro soft.
 
-## <a name="view-images-available-in-azure"></a>Afbeeldingen weergeven die beschikbaar zijn in Azure
+## <a name="view-images-available-in-azure"></a>Beschik bare installatie kopieën weer geven in azure
 
-Wanneer u zoekt naar 'Red Hat' in Azure Marketplace of wanneer u een bron maakt in de gebruikersinterface van de Azure-portal, ziet u slechts een subset van alle beschikbare RHEL-afbeeldingen. U altijd de volledige set beschikbare VM-afbeeldingen verkrijgen met behulp van de Azure CLI, PowerShell en API.
+Wanneer u zoekt naar "Red Hat" in azure Marketplace of wanneer u een resource in de Azure Portal-gebruikers interface maakt, ziet u slechts een subset van alle beschik bare RHEL-installatie kopieën. U kunt altijd de volledige set beschik bare VM-installatie kopieën verkrijgen met behulp van de Azure CLI, Power shell en API.
 
-Voer de volgende opdracht uit om de volledige set beschikbare Red Hat-afbeeldingen in Azure te bekijken:
+Voer de volgende opdracht uit om de volledige set beschik bare Red Hat-afbeeldingen in azure weer te geven:
 
 ```azurecli-interactive
 az vm image list --publisher RedHat --all
 ```
 
-### <a name="naming-convention"></a>Naming
+### <a name="naming-convention"></a>Naamgevings Conventie
 
-VM-afbeeldingen in Azure worden georganiseerd door uitgever, aanbieding, SKU en versie. De combinatie van Publisher:Offer:SKU:Version is de afbeelding URN en identificeert op unieke wijze de afbeelding die moet worden gebruikt.
+VM-installatie kopieën in azure zijn ingedeeld op uitgever, aanbieding, SKU en versie. De combi natie van Publisher: aanbieding: SKU: version is de afbeelding URN en identificeert de afbeelding die moet worden gebruikt.
 
-Verwijst bijvoorbeeld `RedHat:RHEL:8-LVM:8.1.20200318` naar een RHEL 8.1 LVM-partitioned image gebouwd op 18 maart 2020.
+`RedHat:RHEL:8-LVM:8.1.20200318` Verwijst bijvoorbeeld naar een RHEL 8,1 LVM-gepartitioneerde afbeelding die is gebouwd op 18 maart 2020.
 
-Hier wordt een voorbeeld getoond van het maken van een RHEL 8.1 VM.
+Hier wordt een voor beeld gegeven van het maken van een RHEL 8,1 VM.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1.20200318 --no-wait
 ```
 
-### <a name="the-latest-moniker"></a>De "nieuwste" bijnaam
+### <a name="the-latest-moniker"></a>De ' meest recente ' moniker
 
-De Azure REST API maakt het gebruik van de bijnaam "laatste" voor de versie in plaats van de specifieke versie. Met behulp van "laatste" bepalingen de meest recente beschikbare afbeelding voor de gegeven uitgever, aanbieding en SKU.
+De Azure REST API staat het gebruik van de moniker ' laatste ' toe voor de versie in plaats van de specifieke versie. De meest recente beschik bare installatie kopie voor de opgegeven Uitgever, aanbieding en SKU wordt met ' meest recent ' ingericht.
 
-Verwijst bijvoorbeeld `RedHat:RHEL:8-LVM:latest` naar de nieuwste RHEL 8-serie LVM-partitieafbeelding beschikbaar.
+`RedHat:RHEL:8-LVM:latest` Verwijst bijvoorbeeld naar de meest recente LVM-gepartitioneerde afbeelding van RHEL 8 Family.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
 ```
 
 >[!NOTE]
-> In het algemeen volgt de vergelijking van versies om de laatste te bepalen de regels van de [CompareTo-methode](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
-Deze vergelijking van de afbeeldingsversie wordt gedaan door de waarden te vergelijken als een object [Version,](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) niet als een tekenreeks.
+> In het algemeen is het vergelijken van versies om het meest recent te bepalen, de regels van de [methode CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+Deze vergelijking van de afbeeldings versie wordt uitgevoerd door de waarden te vergelijken als een [versie](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) object, niet als een teken reeks.
 
-## <a name="rhel-6-image-types"></a>RHEL 6-afbeeldingstypen
+## <a name="rhel-6-image-types"></a>RHEL 6-afbeeldings typen
 
-Voor RHEL 6.x-afbeeldingen worden de afbeeldingstypen weergegeven in de volgende tabel.
+Voor RHEL 6. x-installatie kopieën worden de afbeeldings typen weer gegeven in de volgende tabel.
 
 |Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|-----------|---------|--------
-|RedHat | RHEL | Secundaire versie (bijvoorbeeld 6.9) | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 6.9.2018010506) | Alle standaard RHEL 6.x beelden volgen deze conventie.
-|RedHat | rhel-byos | rhel-raw69 | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 6.9.20181023) | Deze afbeelding is een RHEL 6.9 BYOS afbeelding.
-|RedHat | RHEL | RHEL-SAP-APPS | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 6.8.2017053118) | Deze afbeelding is een RHEL 6.8 voor SAP Applications afbeelding. Het heeft recht op toegang tot SAP Applications repositories en base RHEL repositories.
-|RedHat | RHEL | RHEL-SAP-HANA | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 6.7.2017053121) | Deze afbeelding is een RHEL 6.7 voor SAP HANA afbeelding. Het heeft recht op toegang tot SAP HANA repositories en basis RHEL repositories.
+|RedHat | RHEL | Secundaire versie (bijvoorbeeld 6,9) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.2018010506) | Alle Standard RHEL 6. x-installatie kopieën volgen deze Conventie.
+|RedHat | RHEL-BYOS | RHEL-raw69 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.20181023) | Deze installatie kopie is een RHEL 6,9 BYOS-installatie kopie.
+|RedHat | RHEL | RHEL-SAP-APPS | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.8.2017053118) | Deze installatie kopie is een installatie kopie van RHEL 6,8 voor SAP-toepassingen. Het is in het bezit van toegang tot SAP-toepassingen opslag plaatsen en base RHEL-opslag plaatsen.
+|RedHat | RHEL | RHEL-SAP-HANA | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.7.2017053121) | Deze installatie kopie is een RHEL 6,7 voor SAP HANA-installatie kopie. Het is gerechtigd om toegang te krijgen tot SAP HANA opslagplaatsen en base RHEL-opslag plaatsen.
 
-## <a name="rhel-7-image-types"></a>RHEL 7-afbeeldingstypen
+## <a name="rhel-7-image-types"></a>RHEL 7-afbeeldings typen
 
-Voor RHEL 7.x-afbeeldingen zijn er een paar verschillende beeldtypen. De volgende tabel toont de verschillende sets van beelden die wij aanbieden. Als u een volledige lijst wilt `az vm image list --publisher redhat --all`bekijken, gebruikt u de opdracht Azure CLI .
+Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen installatie kopieën. In de volgende tabel ziet u de verschillende sets met installatie kopieën die wij bieden. Als u een volledige lijst wilt weer geven, gebruikt u `az vm image list --publisher redhat --all`de Azure cli-opdracht.
 
 >[!NOTE]
-> Tenzij anders aangegeven, zijn alle afbeeldingen LVM-partitie en maken ze verbinding met reguliere RHEL-repositories. Dat wil zeggen dat de repositories geen Extended Update Support (EUS) zijn en geen Update Services voor SAP (E4S) zijn. In de toekomst gaan we over op het publiceren van alleen LVM-partitieafbeeldingen, maar staan we open voor feedback over deze beslissing. Zie [Red Hat Enterprise Linux levenscyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Extended Update Support and Update Services voor SAP.
+> Tenzij anders aangegeven, worden alle installatie kopieën LVM gepartitioneerd en wordt er verbinding gemaakt met gewone RHEL-opslag plaatsen. Dat wil zeggen dat de opslag plaatsen geen uitgebreide update ondersteuning (EUS) en geen Update Services voor SAP (E4S) zijn. We gaan nu door met het publiceren van alleen LVM-gepartitioneerde installatie kopieën, maar zijn geopend voor feedback over deze beslissing. Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over ondersteuning voor uitgebreide updates en Update Services voor SAP.
 
 |Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | Secundaire versie (bijvoorbeeld 7.6) | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019102813) | Afbeeldingen die vóór april 2019 zijn gepubliceerd, zijn gekoppeld aan standaard RHEL-repositories. Afbeeldingen die na april 2019 zijn gepubliceerd, zijn gekoppeld aan de EUS-repositories van Red Hat om het vergrendelen van een specifieke secundaire versie mogelijk te maken. Klanten die regelmatig repositories willen, moeten de afbeeldingen gebruiken die 7-LVM of 7-RAW in de SKU-waarde bevatten (details volgen). RHEL 7.7 en later afbeeldingen zijn LVM verdeeld. Alle andere afbeeldingen in deze categorie zijn onverdeeld.
-|RedHat | RHEL | 7-RAW | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019102813) | Deze afbeeldingen zijn onverdeeld (er zijn bijvoorbeeld geen logische volumes toegevoegd).
-|RedHat | RHEL | 7-RAW-CI | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019072418) | Deze afbeeldingen zijn onverdeeld (er zijn bijvoorbeeld geen logische volumes toegevoegd) en gebruiken cloud-init voor provisioning.
-|RedHat | RHEL | 7-LVM | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019062414) | Deze afbeeldingen zijn LVM-verdeeld.
-|RedHat | rhel-byos | rhel-{lvm, raw} | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.7.20190819) | Deze afbeeldingen zijn de RHEL 7 BYOS afbeeldingen. Ze zijn niet gekoppeld aan repositories en brengen geen kosten in rekening voor de RHEL-premie. Als je geïnteresseerd bent in de RHEL BYOS-afbeeldingen, [vraag dan toegang aan.](https://aka.ms/rhel-byos) SKU-waarden eindigen met de secundaire versie en geven aan of de afbeelding raw of LVM partitioned is. Een SKU-waarde van rhel-lvm77 geeft bijvoorbeeld een door LVM verdeelde RHEL 7.7-afbeelding aan.
-|RedHat | RHEL | RHEL-SAP | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019071300) | Deze afbeeldingen zijn RHEL voor SAP-afbeeldingen. Ze hebben recht op toegang tot de SAP HANA- en Applications-repositories en RHEL E4S-repositories. Facturering omvat de RHEL-premie en de SAP-premie bovenop de basisrekenkosten.
-|RedHat | RHEL | RHEL-SAP-HA | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019062320) | Deze afbeeldingen zijn RHEL voor SAP met afbeeldingen met hoge beschikbaarheid en Update Services. Ze hebben recht op toegang tot de SAP HANA- en Applications-repositories en de High Availability repositories en RHEL E4S repositories. Facturering omvat de RHEL-premie, SAP-premie en hoge beschikbaarheidspremie bovenop de basisrekenkosten.
-|RedHat | RHEL | RHEL-HA | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.6.2019062019) | Deze afbeeldingen zijn RHEL-afbeeldingen die ook recht hebben op toegang tot de add-on met hoge beschikbaarheid. Ze rekenen iets extra bovenop de RHEL en basisrekenkosten vanwege de high availability add-on premium.
-|RedHat | RHEL | RHEL-SAP-APPS | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.3.2017053118) | Deze afbeeldingen zijn verouderd omdat de SAP Applications en SAP HANA repositories werden gecombineerd in de SAP repositories. Deze afbeeldingen zijn RHEL voor SAP Applications afbeeldingen. Ze hebben recht op toegang tot SAP Applications repositories en base RHEL repositories.
-|RedHat | RHEL | RHEL-SAP-HANA | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 7.3.2018051421) | Deze afbeeldingen zijn verouderd omdat de SAP Applications en SAP HANA repositories werden gecombineerd in de SAP repositories. Deze beelden zijn RHEL voor SAP HANA beelden. Ze hebben recht op toegang tot SAP HANA repositories en base RHEL repositories.
+|RedHat | RHEL | Secundaire versie (bijvoorbeeld 7,6) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Afbeeldingen die vóór april 2019 zijn gepubliceerd, zijn gekoppeld aan standaard RHEL-opslag plaatsen. Installatie kopieën die zijn gepubliceerd na april 2019 zijn gekoppeld aan de EUS-opslag plaatsen van Red Hat zodat een specifieke secundaire versie kan worden vergrendeld. Klanten die normale opslag plaatsen willen, moeten de installatie kopieën gebruiken die 7-LVM of 7-RAW bevatten in de SKU-waarde (Details volgen). RHEL 7,7 en latere installatie kopieën van LVM worden gepartitioneerd. Alle andere installatie kopieën in deze categorie worden gepartitioneerd.
+|RedHat | RHEL | 7-RAW | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Deze installatie kopieën worden gepartitioneerd (er zijn bijvoorbeeld geen logische volumes toegevoegd).
+|RedHat | RHEL | 7-RAW-CI | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019072418) | Deze installatie kopieën worden gepartitioneerd (er zijn bijvoorbeeld geen logische volumes toegevoegd) en u kunt Cloud-init gebruiken voor het inrichten.
+|RedHat | RHEL | 7-LVM | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019062414) | Deze installatie kopieën zijn LVM gepartitioneerd.
+|RedHat | RHEL-BYOS | RHEL-{LVM, RAW} | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.7.20190819) | Deze installatie kopieën zijn de RHEL 7 BYOS-installatie kopieën. Ze zijn niet gekoppeld aan opslag plaatsen en worden niet in rekening gebracht voor de kosten voor RHEL Premium. Als u geïnteresseerd bent in de RHEL BYOS-installatie kopieën, [vraagt u om toegang](https://aka.ms/rhel-byos). SKU-waarden eindigen met de secundaire versie en duiden aan of de afbeelding RAW of LVM is gepartitioneerd. Een SKU-waarde van RHEL-lvm77 duidt bijvoorbeeld op een LVM gepartitioneerde RHEL 7,7-installatie kopie.
+|RedHat | RHEL | RHEL-SAP | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019071300) | Deze installatie kopieën zijn RHEL voor SAP-installatie kopieën. Ze hebben het recht om toegang te krijgen tot de opslag plaatsen SAP HANA en toepassingen, evenals RHEL E4S-opslag plaatsen. Facturering bevat de RHEL Premium en de SAP Premium boven op de basis reken kosten.
+|RedHat | RHEL | RHEL-SAP-HA | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019062320) | Deze installatie kopieën zijn RHEL voor SAP met hoge Beschik baarheid en installatie kopieën van Update Services. Ze hebben het recht om toegang te krijgen tot de opslag plaatsen SAP HANA en toepassingen en de opslag plaatsen met hoge Beschik baarheid, evenals RHEL E4S-opslag plaatsen. Billing bevat de Premium van RHEL Premium, SAP Premium en hoge Beschik baarheid boven op de basis reken kosten.
+|RedHat | RHEL | RHEL-HA | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019062019) | Deze installatie kopieën zijn RHEL installatie kopieën die ook recht hebben op toegang tot de invoeg toepassing met hoge Beschik baarheid. Ze kosten iets extra boven op de RHEL en de basis reken kosten als gevolg van de Premium-premie voor hoge Beschik baarheid.
+|RedHat | RHEL | RHEL-SAP-APPS | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.3.2017053118) | Deze installatie kopieën zijn verouderd omdat de SAP-toepassingen en SAP HANA-opslag plaatsen zijn gecombineerd in de SAP-opslag plaatsen. Deze installatie kopieën zijn RHEL voor SAP-toepassingen installatie kopieën. Ze zijn gerechtigd om toegang te krijgen tot SAP-toepassings opslagplaatsen en RHEL-opslag plaatsen.
+|RedHat | RHEL | RHEL-SAP-HANA | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.3.2018051421) | Deze installatie kopieën zijn verouderd omdat de SAP-toepassingen en SAP HANA-opslag plaatsen zijn gecombineerd in de SAP-opslag plaatsen. Deze installatie kopieën zijn RHEL for SAP HANA installatie kopieën. Ze hebben toegang tot SAP HANA opslagplaatsen en basis RHEL-opslag plaatsen.
 
-## <a name="rhel-8-image-types"></a>RHEL 8-afbeeldingstypen
+## <a name="rhel-8-image-types"></a>RHEL 8-afbeeldings typen
 
-Details voor RHEL 8 beeldtypen zijn hieronder.
+Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 
 |Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | 8 | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 8.0.20191023) | Deze afbeeldingen zijn RHEL 8 LVM-partitieafbeeldingen die zijn verbonden met standaard Red Hat-repositories.
-|RedHat | RHEL | 8-gen2 | Gelijktijdige waarden van de rhel-versie en de gepubliceerde datum (bijvoorbeeld 8.0.20191024) | Deze afbeeldingen zijn Hyper-V Generation 2 RHEL 8 LVM-partitie afbeeldingen die zijn aangesloten op standaard Red Hat-repositories. Zie [Ondersteuning voor Generatie 2 VM's op Azure voor](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)meer informatie over Generatie 2 VM's in Azure.
+|RedHat | RHEL | 8 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191023) | Deze installatie kopieën zijn RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met standaard Red Hat-opslag plaatsen.
+|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)voor meer informatie over virtuele machines van de tweede generatie in Azure.
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL langere ondersteuning add-ons
+## <a name="rhel-longer-support-add-ons"></a>RHEL meer ondersteuning voor invoeg toepassingen
 
 ### <a name="extended-update-support"></a>Ondersteuning voor uitgebreide updates
 
-Vanaf april 2019 zijn RHEL-afbeeldingen standaard beschikbaar die zijn gekoppeld aan de EUS-repositories. Meer informatie over RHEL EUS is beschikbaar in [de documentatie van Red Hat.](https://access.redhat.com/articles/rhel-eus)
+Vanaf 2019 april zijn er RHEL-installatie kopieën beschikbaar die standaard zijn gekoppeld aan de EUS-opslag plaatsen. Meer informatie over RHEL EUS is beschikbaar in [de documentatie van Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Overschakelen naar EUS-repositories is mogelijk en wordt ondersteund. Zie [RHEL EUS en rhel VM's](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)voor versievergrendeling voor instructies over het overschakelen naar EUS en meer informatie over EUS-ondersteuning voor de einddatum van EUS.
+Overschakelen naar EUS-opslag plaatsen is mogelijk en wordt ondersteund. Zie [RHEL Eus and versie-locking RHEL vm's](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)(Engelstalig) voor instructies over het overschakelen van de virtuele machine naar Eus en meer informatie over Eus.
 
 >[!NOTE]
-> EUS wordt niet ondersteund op RHEL Extra's. Dit betekent dat als u een pakket installeert dat meestal beschikbaar is via het RHEL Extras-kanaal, u dit niet doen terwijl u op EUS bent. Zie de levenscyclus van Red Hat Enterprise [Linux Extras](https://access.redhat.com/support/policy/updates/extras/)voor meer informatie over de levenscyclus van het Red Hat Extras-product.
+> EUS wordt niet ondersteund voor RHEL-Extra's. Dit betekent dat als u een pakket installeert dat doorgaans beschikbaar is via het RHEL extras-kanaal, u dit niet kunt doen wanneer u op EUS. Zie [Red Hat Enterprise Linux extra's levens cyclus](https://access.redhat.com/support/policy/updates/extras/)voor meer informatie over de levens cyclus van Red Hat extras.
 
-#### <a name="differentiate-between-regular-and-eus-images"></a>Onderscheid maken tussen gewone en EUS-afbeeldingen
+#### <a name="differentiate-between-regular-and-eus-images"></a>Onderscheid maken tussen reguliere en EUSe installatie kopieën
 
-Klanten die afbeeldingen willen gebruiken die zijn gekoppeld aan EUS-repositories, moeten de RHEL-afbeelding gebruiken die een RHEL-versienummer in de SKU bevat.
+Klanten die installatie kopieën willen gebruiken die zijn gekoppeld aan EUS-opslag plaatsen, moeten de RHEL-installatie kopie gebruiken die een RHEL-secundair versie nummer in de SKU bevat.
 
-U ziet bijvoorbeeld de volgende twee RHEL 7.4-afbeeldingen beschikbaar.
+U kunt bijvoorbeeld de volgende twee RHEL 7,4-installatie kopieën zien die beschikbaar zijn.
 
 ```bash
 RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-In dit `RedHat:RHEL:7.6:7.6.2019102813` geval is standaard gekoppeld aan EUS-repositories. De SKU-waarde is 7,4. En `RedHat:RHEL:7-LVM:7.6.2019062414` is standaard gekoppeld aan niet-EUS-repositories. De SKU-waarde is 7-LVM.
+In dit geval wordt `RedHat:RHEL:7.6:7.6.2019102813` standaard gekoppeld aan Eus-opslag plaatsen. De SKU-waarde is 7,4. En `RedHat:RHEL:7-LVM:7.6.2019062414` is standaard gekoppeld aan niet-Eus-opslag plaatsen. De SKU-waarde is 7-LVM.
 
-Als u reguliere (niet-EUS)-opslagplaatsen wilt gebruiken, gebruikt u een afbeelding die geen klein versienummer in de SKU bevat.
+Als u normale (niet-EUS) opslag plaatsen wilt gebruiken, gebruikt u een installatie kopie die geen secundair versie nummer in de SKU bevat.
 
-#### <a name="rhel-images-with-eus"></a>RHEL-beelden met EUS
+#### <a name="rhel-images-with-eus"></a>RHEL-installatie kopieën met EUS
 
-Informatie in de volgende tabel is van toepassing op RHEL-afbeeldingen die zijn verbonden met EUS-repositories.
+De informatie in de volgende tabel is van toepassing op RHEL-installatie kopieën die zijn verbonden met EUS-opslag plaatsen.
 
 >[!NOTE]
-> Op het moment van schrijven hebben alleen RHEL 7.4- en latere secundaire versies EUS-ondersteuning. EUS wordt niet langer ondersteund voor RHEL <=7,3.
+> Op het moment van schrijven hebben alleen RHEL 7,4 en latere secundaire versies EUS-ondersteuning. EUS wordt niet meer ondersteund voor RHEL <= 7,3.
 >
-> Zie de levenscyclus van Red Hat [Enterprise Linux voor](https://access.redhat.com/support/policy/updates/errata)meer informatie over de beschikbaarheid van RHEL EUS.
+> Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over de beschik BAARHEID van RHEL Eus.
 
-Secundaire versie |EUS-beeldvoorbeeld              |EUS-status                                                   |
+Secundaire versie |Voor beeld van een EUS-afbeelding              |EUS-status                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
-RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | Afbeeldingen gepubliceerd april 2019 en later zijn standaard EUS.|
-RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Afbeeldingen gepubliceerd juni 2019 en later zijn standaard EUS. |
-RHEL 7.6      |RedHat:RHEL:7.6:7-6.2019052206 | Afbeeldingen gepubliceerd mei 2019 en later zijn standaard EUS. |
-RHEL 8.0      |N.v.t.                            | Er is geen EUS beschikbaar bij Red Hat.                               |
+RHEL 7,4      |RedHat: RHEL: 7,4:7.4.2019041718 | Afbeeldingen die zijn gepubliceerd 2019 april en hoger zijn standaard EUS.|
+RHEL 7.5      |RedHat: RHEL: 7,5:7.5.2019060305 | Afbeeldingen die zijn gepubliceerd in juni 2019 en hoger, zijn standaard EUS. |
+RHEL 7,6      |RedHat: RHEL: 7,6:7.6.2019052206 | Afbeeldingen die zijn gepubliceerd, zijn mogelijk 2019 en hoger EUS. |
+RHEL 8,0      |N.v.t.                            | Er is geen EUS beschikbaar in Red Hat.                               |
 
-### <a name="update-services-for-sap"></a>Services bijwerken voor SAP
+### <a name="update-services-for-sap"></a>Update Services voor SAP
 
-De nieuwste RHEL voor SAP-afbeeldingen wordt gekoppeld aan de Update Services for SAP Solutions subscriptions (E4S). Zie de [Red Hat-documentatie](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)voor meer informatie over E4S.
+De meest recente RHEL voor SAP-installatie kopieën worden aangesloten op de Update Services for SAP Solutions abonnementen (E4S). Zie de Red Hat- [documentatie](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)voor meer informatie over E4S.
 
-#### <a name="rhel-images-with-e4s"></a>RHEL-afbeeldingen met E4S
+#### <a name="rhel-images-with-e4s"></a>RHEL-installatie kopieën met E4S
 
-Afbeeldingen van de volgende aanbiedingen die na december 2019 zijn gemaakt, zijn verbonden met E4S-repositories:
+Installatie kopieën van de volgende aanbiedingen die na december 2019 zijn gemaakt, zijn verbonden met E4S-opslag plaatsen:
 
 * RHEL-SAP (RHEL voor SAP)
-* RHEL-SAP-HA (RHEL voor SAP met hoge beschikbaarheid en updatediensten)
+* RHEL-SAP-HA (RHEL voor SAP met hoge Beschik baarheid en Update Services)
 
-## <a name="other-available-offers-and-skus"></a>Andere beschikbare aanbiedingen en SKU's
+## <a name="other-available-offers-and-skus"></a>Andere beschik bare aanbiedingen en Sku's
 
-De volledige lijst met beschikbare aanbiedingen en SKU's bevat mogelijk extra afbeeldingen die verder gaan dan wat in de vorige tabel wordt vermeld. Een voorbeeld is `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Deze aanbiedingen kunnen worden gebruikt om ondersteuning te bieden voor specifieke marktoplossingen. Of ze kunnen worden gepubliceerd voor previews en testdoeleinden. Ze kunnen worden gewijzigd of verwijderd op elk gewenst moment zonder waarschuwing. Gebruik ze niet tenzij hun aanwezigheid openbaar is gedocumenteerd door Microsoft of Red Hat.
+De volledige lijst met beschik bare aanbiedingen en Sku's bevat mogelijk extra installatie kopieën die groter zijn dan de voor gaande tabel. Een voorbeeld is `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Deze aanbiedingen kunnen worden gebruikt om ondersteuning te bieden voor specifieke Marketplace-oplossingen. Of ze kunnen worden gepubliceerd voor voor beelden en test doeleinden. Ze kunnen op elk gewenst moment zonder waarschuwing worden gewijzigd of verwijderd. Gebruik deze niet, tenzij hun aanwezigheid openbaar is gedocumenteerd door micro soft of Red Hat.
 
-## <a name="publishing-policy"></a>Publicatiebeleid
+## <a name="publishing-policy"></a>Publicatie beleid
 
-Microsoft en Red Hat updaten afbeeldingen als nieuwe secundaire versies worden vrijgegeven, zoals vereist om specifieke veelvoorkomende kwetsbaarheden en blootstellingen (CvEs) of voor incidentele configuratiewijzigingen of updates aan te pakken. We streven ernaar om zo snel mogelijk bijgewerkte afbeeldingen te leveren binnen drie werkdagen na een release of beschikbaarheid van een CVE-oplossing.
+Micro soft en Red Hat update-installatie kopieën als nieuwe secundaire versies worden uitgebracht, indien nodig voor het oplossen van specifieke veelvoorkomende beveiligings lekken en bloot stellingen (CVEs) of voor incidentele configuratie wijzigingen of updates. We streven ernaar bijgewerkte installatie kopieën zo snel mogelijk binnen drie werk dagen na een release of Beschik baarheid van een CVE-oplossing te bieden.
 
-We werken alleen de huidige kleine release in een bepaalde afbeeldingsfamilie bij. Met de release van een nieuwere secundaire versie, stoppen we met het bijwerken van de oudere secundaire versie. Met de release van RHEL 7.6 worden RHEL 7.5-afbeeldingen bijvoorbeeld niet meer bijgewerkt.
+Alleen de huidige secundaire versie van een bepaalde installatie kopie serie wordt bijgewerkt. Als er een nieuwere secundaire versie wordt uitgebracht, wordt de oudere secundaire versie niet meer bijgewerkt. Met de release van RHEL 7,6 worden RHEL 7,5-installatie kopieën bijvoorbeeld niet meer bijgewerkt.
 
 >[!NOTE]
-> Actieve Azure VM's die zijn ingericht met RHEL-pay-as-you-go-afbeeldingen zijn verbonden met de Azure RHUI en kunnen updates en oplossingen ontvangen zodra ze door Red Hat zijn uitgebracht en worden gerepliceerd naar de Azure RHUI. De timing is meestal minder dan 24 uur na de officiële release door Red Hat. Deze VM's vereisen geen nieuwe gepubliceerde afbeelding voor het verkrijgen van de updates. Klanten hebben volledige controle over wanneer ze de update moeten starten.
+> Actieve Azure-Vm's die zijn ingericht op basis van RHEL betalen per gebruik-installatie kopieën zijn verbonden met de Azure-RHUI en kunnen updates en oplossingen ontvangen zodra deze door Red Hat worden vrijgegeven en worden gerepliceerd naar de Azure-RHUI. De timing is doorgaans minder dan 24 uur na de officiële release door Red Hat. Voor deze Vm's is geen nieuwe gepubliceerde installatie kopie vereist voor het ophalen van de updates. Klanten hebben volledige controle over wanneer ze de update kunnen initiëren.
 
-## <a name="image-retention-policy"></a>Beleid voor het behoud van afbeeldingen
+## <a name="image-retention-policy"></a>Beleid voor het bewaren van installatie kopieën
 
-Huidig beleid is om alle eerder gepubliceerde afbeeldingen te behouden. We behouden ons het recht voor om afbeeldingen te verwijderen waarvan bekend is dat ze problemen van welke aard dan ook veroorzaken. Afbeeldingen met onjuiste configuraties als gevolg van latere platform- of componentupdates kunnen bijvoorbeeld worden verwijderd. Afbeeldingen die mogelijk worden verwijderd, volgen het huidige Azure Marketplace-beleid om meldingen te geven tot 30 dagen voordat de afbeelding wordt verwijderd.
+Het huidige beleid is om alle eerder gepubliceerde installatie kopieën te blijven gebruiken. Wij behouden ons het recht voor om installatie kopieën te verwijderen waarvan bekend is dat ze problemen kunnen veroorzaken. Zo kunnen installatie kopieën met onjuiste configuraties door volgende platform-of onderdeel updates worden verwijderd. Installatie kopieën die kunnen worden verwijderd, volgen het huidige beleid van de Azure Marketplace om meldingen tot 30 dagen te geven voordat de installatie kopie wordt verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [RHEL-afbeeldingen (Red Hat Enterprise Linux) (RHEL) beschikbaar in Azure](./redhat-imagelist.md)om de volledige lijst met RHEL-afbeeldingen in Azure weer te geven.
-* Zie Red Hat Update Infrastructure voor [on-demand RHEL VM's in Azure voor](https://aka.ms/rhui-update)meer informatie over de Azure Red Hat Update Infrastructure.
-* Zie [Red Hat Enterprise Linux bring-your-own-subscription Gold Images in Azure](./byos.md)voor meer informatie over het RHEL BYOS-aanbod.
-* Zie [Red Hat Enterprise Linux levenscyclus](https://access.redhat.com/support/policy/updates/errata)voor informatie over het ondersteuningsbeleid van Red Hat voor alle versies van RHEL.
+* Zie [Red Hat Enterprise Linux (RHEL)-installatie kopieën die beschikbaar zijn in azure](./redhat-imagelist.md)om de volledige lijst met RHEL-installatie kopieën in azure weer te geven.
+* Zie voor meer informatie over de Azure Red Hat-update-infra [structuur voor Red Hat update voor on-demand RHEL-vm's in azure](https://aka.ms/rhui-update).
+* Voor meer informatie over de RHEL BYOS-aanbieding raadpleegt u [Red Hat Enterprise Linux uw Gold-installatie kopieën met uw eigen abonnement in azure](./byos.md).
+* Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL.

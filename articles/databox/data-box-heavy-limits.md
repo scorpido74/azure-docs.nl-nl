@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Zware limieten | Microsoft Documenten
-description: Beschrijft systeemlimieten en aanbevolen formaten voor de Microsoft Azure Data Box Heavy-componenten en -verbindingen.
+title: Azure Data Box Heavy limieten | Microsoft Docs
+description: Hierin worden systeem limieten en aanbevolen grootten voor de Microsoft Azure Data Box Heavy onderdelen en verbindingen beschreven.
 services: databox
 author: alkohli
 ms.service: databox
@@ -15,21 +15,21 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260096"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Zware limieten
+# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy limieten
 
-Houd rekening met deze limieten wanneer u uw Azure Data Box Heavy-apparaat implementeert en bedient. In de volgende tabel worden deze limieten voor het gegevensvak beschreven.
+Houd rekening met deze limieten wanneer u uw Azure Data Box Heavy-apparaat implementeert en gebruikt. In de volgende tabel worden deze limieten voor de Data Box beschreven.
 
 
-## <a name="data-box-heavy-service-limits"></a>Data Box Zware servicelimieten
+## <a name="data-box-heavy-service-limits"></a>Data Box Heavy-service limieten
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-heavy-limits"></a>Data Box Zware limieten
+## <a name="data-box-heavy-limits"></a>Data Box Heavy limieten
 
-- Data Box Heavy kan maximaal 1 miljard bestanden per knooppunt opslaan.
-- Data Box Heavy ondersteunt maximaal 512 containers of shares per node in de cloud. De topmappen binnen het gebruikersaandeel worden containers of Azure-bestandsshares in de cloud.
+- Data Box Heavy kunt Maxi maal 1.000.000.000 bestanden per knoop punt opslaan.
+- Data Box Heavy ondersteunt Maxi maal 512 containers of shares per knoop punt in de Cloud. De mappen op het hoogste niveau binnen de gebruikers share worden containers of Azure-bestands shares in de Cloud.
 
-## <a name="azure-storage-limits"></a>Azure-opslaglimieten
+## <a name="azure-storage-limits"></a>Azure Storage limieten
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 
@@ -37,14 +37,14 @@ Houd rekening met deze limieten wanneer u uw Azure Data Box Heavy-apparaat imple
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-limits"></a>Limieten voor Azure-opslagaccount
+## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account
 
 [!INCLUDE [data-box-storage-account-size-limits](../../includes/data-box-storage-account-size-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Limieten voor azure-objectgrootte
+## <a name="azure-object-size-limits"></a>Limieten voor Azure-object grootte
 
 [!INCLUDE [data-box-object-size-limits](../../includes/data-box-object-size-limits.md)]
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure-blokblob-, paginablob- en bestandsnaamgevingsconventies
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure Block blob-, page Blob-en file naamgevings conventies
 
 [!INCLUDE [data-box-naming-conventions](../../includes/data-box-naming-conventions.md)]

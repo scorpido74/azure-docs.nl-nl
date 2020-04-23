@@ -1,6 +1,6 @@
 ---
-title: VPN-doorvoer naar een Microsoft Azure Virtual Network valideren
-description: Het doel van dit document is om een gebruiker te helpen de netwerkdoorvoer te valideren van hun on-premises resources naar een virtuele Azure-machine.
+title: VPN-door voer naar een Microsoft Azure Virtual Network valideren
+description: Het doel van dit document is om een gebruiker te helpen bij het valideren van de netwerk doorvoer van hun on-premises resources naar een virtuele machine van Azure.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -19,59 +19,59 @@ ms.locfileid: "80631775"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-doorvoer naar een virtueel netwerk valideren
 
-Met een VPN-gatewayverbinding u veilige, cross-premises connectiviteit tot stand brengen tussen uw virtuele netwerk binnen Azure en uw on-premises IT-infrastructuur.
+Met een VPN-gateway verbinding kunt u een veilige, cross-premises verbinding tot stand brengen tussen uw Virtual Network in Azure en uw on-premises IT-infra structuur.
 
-In dit artikel ziet u hoe u de netwerkdoorvoer valideren van de on-premises resources naar een virtuele Azure-machine (VM).
+In dit artikel wordt beschreven hoe u de netwerk doorvoer kunt valideren van de on-premises resources naar een virtuele machine van Azure (VM).
 
 > [!NOTE]
-> Dit artikel is bedoeld om veelvoorkomende problemen te diagnosticeren en op te lossen. Als u het probleem niet oplossen met behulp van de volgende informatie, neemt [u contact op met de ondersteuning.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+> Dit artikel is bedoeld om veelvoorkomende problemen te diagnosticeren en op te lossen. Als u het probleem niet kunt oplossen met behulp van de volgende informatie, [neemt u contact op](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)met de ondersteuning.
 
 ## <a name="overview"></a>Overzicht
 
-De VPN-gatewayverbinding omvat de volgende componenten:
+De VPN-gateway verbinding bestaat uit de volgende onderdelen:
 
-* On-premises VPN-apparaat (Bekijk een lijst met [gevalideerde VPN-apparaten](vpn-gateway-about-vpn-devices.md#devicetable).)
-* Openbaar internet
+* On-premises VPN-apparaat (een lijst met [gevalideerde VPN-apparaten](vpn-gateway-about-vpn-devices.md#devicetable)weer geven.)
+* Openbaar Internet
 * Azure VPN-gateway
 * Azure VM
 
-Het volgende diagram toont de logische connectiviteit van een on-premises netwerk met een Virtueel Azure-netwerk via VPN.
+In het volgende diagram ziet u de logische connectiviteit van een on-premises netwerk met een virtueel Azure-netwerk via VPN.
 
-![Logische connectiviteit van het klantennetwerk met MSFT Network via VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
+![Logische verbinding van klant netwerk met MSFT-netwerk via VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
 
-## <a name="calculate-the-maximum-expected-ingressegress"></a>Bereken de maximaal verwachte binnendringen/uitgang
+## <a name="calculate-the-maximum-expected-ingressegress"></a>Het verwachte maximum aantal ingangs-en uitgangs gegevens berekenen
 
-1. Bepaal de basislijndoorvoervereisten van uw toepassing.
-1. Bepaal de doorvoerlimieten van uw Azure VPN-gateway. Zie voor hulp het gedeelte "Gateway SKU's" van [About VPN Gateway.](vpn-gateway-about-vpngateways.md#gwsku)
-1. Bepaal de [azure VM-doorvoerrichtlijnen](../virtual-machines/virtual-machines-windows-sizes.md) voor uw VM-grootte.
-1. Bepaal de bandbreedte van uw internetserviceprovider (ISP).
-1. Bereken uw verwachte doorvoer door de minste bandbreedte van de VM, VPN Gateway of ISP te nemen; die wordt gemeten in Megabits per seconde (/) gedeeld door acht (8).
+1. Bepaal de vereisten voor de basislijn doorvoer van uw toepassing.
+1. Bepaal de doorvoer limieten van Azure VPN gateway. Zie de sectie ' gateway-Sku's ' van [About VPN gateway](vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie.
+1. Bepaal de [Azure VM-doorvoer richtlijnen](../virtual-machines/virtual-machines-windows-sizes.md) voor uw VM-grootte.
+1. Bepaal de band breedte van uw Internet provider (ISP).
+1. Bereken de verwachte door voer door de minste band breedte van de virtuele machine, VPN Gateway of ISP, te nemen. Dit wordt gemeten in megabits per seconde (/) gedeeld door acht (8).
 
-Als uw berekende doorvoer niet voldoet aan de vereisten voor basislijndoorvoer van uw toepassing, moet u de bandbreedte van de resource die u als knelpunt hebt geïdentificeerd, verhogen. Zie [Een gateway-SKU wijzigen](vpn-gateway-about-vpn-gateway-settings.md#gwsku)als u het formaat van een Azure VPN-gateway wilt wijzigen. Zie Het formaat van een virtuele machine wijzigen als u het formaat van een virtuele machine wilt [wijzigen.](../virtual-machines/virtual-machines-windows-resize-vm.md) Als u de verwachte internetbandbreedte niet ervaart, u ook contact opnemen met uw internetprovider.
+Als de berekende door Voer niet voldoet aan de vereisten voor basis doorvoer van uw toepassing, moet u de band breedte verg Roten van de bron die u als bottleneck hebt geïdentificeerd. Als u het formaat van een Azure VPN Gateway wilt wijzigen, raadpleegt u [een gateway-SKU wijzigen](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Zie [het formaat van een](../virtual-machines/virtual-machines-windows-resize-vm.md)virtuele machine wijzigen als u het formaat van een VM wilt wijzigen. Als u niet de verwachte Internet bandbreedte ondervindt, kunt u ook contact opnemen met uw Internet provider.
 
 > [!NOTE]
-> VPN-gatewaydoorvoer is een aggregaat van alle site-to-site\VNET-naar-VNET- of Point-to-Site-verbindingen.
+> VPN Gateway door Voer is een aggregatie van alle Site-to-Site\VNET-to-VNET-of Point-to-site-verbindingen.
 
-## <a name="validate-network-throughput-by-using-performance-tools"></a>Netwerkdoorvoer valideren met prestatietools
+## <a name="validate-network-throughput-by-using-performance-tools"></a>Netwerk doorvoer valideren met behulp van prestatie hulpprogramma's
 
-Deze validatie moet worden uitgevoerd tijdens niet-piekuren, omdat de overslagverzadiging van de VPN-tunnel tijdens het testen geen nauwkeurige resultaten oplevert.
+Deze validatie moet worden uitgevoerd tijdens niet-piek uren, aangezien bij het testen van de prestaties van de VPN-tunnel geen nauw keurige resultaten worden verstrekt.
 
-De tool die we gebruiken voor deze test is iPerf, die werkt op zowel Windows als Linux en zowel client- als servermodi heeft. Het is beperkt tot 3Gbps voor Windows VM's.
+Het hulp programma dat voor deze test wordt gebruikt, is iPerf, dat werkt op zowel Windows als Linux en zowel de client-als server modus heeft. Het is beperkt tot 3Gbps voor Windows-Vm's.
 
-Met deze tool worden geen lees-/schrijfbewerkingen uitgevoerd op de schijf. Het produceert alleen zelf gegenereerd TCP-verkeer van de ene naar de andere kant. Het genereert statistieken op basis van experimenten die de beschikbare bandbreedte tussen client- en serverknooppunten meten. Bij het testen tussen twee knooppunten fungeert één knooppunt als de server en fungeert het andere knooppunt als client. Zodra deze test is voltooid, raden we u aan de rollen van de knooppunten om te keren om zowel de upload- als downloaddoorvoer op beide knooppunten te testen.
+Dit hulp programma voert geen lees-en schrijf bewerkingen uit op schijf. Het produceert alleen zelf gegenereerd TCP-verkeer van het ene eind naar het andere. Er worden statistieken gegenereerd op basis van experimenten die de band breedte beschik bare tussen client-en server knooppunten meet. Bij het testen tussen twee knoop punten fungeert één knoop punt als de-server en fungeert het andere knoop punt als een-client. Wanneer deze test is voltooid, wordt u aangeraden de rollen van de knoop punten om te keren van zowel upload-als download doorvoer door Voer op beide knoop punten.
 
 ### <a name="download-iperf"></a>IPerf downloaden
 
-Download [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zie [iPerf-documentatie](https://iperf.fr/iperf-doc.php)voor meer informatie.
+Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zie [iPerf-documentatie](https://iperf.fr/iperf-doc.php)voor meer informatie.
 
  > [!NOTE]
- > De producten van derden die in dit artikel worden besproken, worden vervaardigd door bedrijven die onafhankelijk zijn van Microsoft. Microsoft geeft geen garantie, impliciet of anderszins, over de prestaties of betrouwbaarheid van deze producten.
+ > De producten van derden die in dit artikel worden besproken, worden geproduceerd door bedrijven die onafhankelijk zijn van micro soft. Micro soft biedt geen enkele garantie, impliciet noch anderszins, over de prestaties of betrouw baarheid van deze producten.
 
-### <a name="run-iperf-iperf3exe"></a>IPerf uitvoeren (iperf3.exe)
+### <a name="run-iperf-iperf3exe"></a>IPerf uitvoeren (iperf3. exe)
 
-1. Schakel een NSG/ACL-regel in die het verkeer toestaat (voor openbare IP-adrestests op Azure VM).
+1. Schakel een NSG/ACL-regel in die het verkeer toestaat (voor het testen van het open bare IP-adres op de VM van Azure).
 
-1. Schakel op beide knooppunten een firewalluitzondering in voor poort 5001.
+1. Schakel op beide knoop punten een firewall uitzondering in voor poort 5001.
 
    **Windows:** Voer de volgende opdracht uit als beheerder:
 
@@ -79,15 +79,15 @@ Download [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zie
    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
    ```
 
-   Voer de regel uit als u de regel wilt verwijderen wanneer het testen is voltooid:
+   Als u de regel wilt verwijderen wanneer het testen is voltooid, voert u de volgende opdracht uit:
 
    ```CMD
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Azure Linux-afbeeldingen hebben tolerante firewalls. Als er een toepassing luistert op een poort, is het verkeer toegestaan door. Aangepaste afbeeldingen die zijn beveiligd, moeten mogelijk poorten expliciet openen. Veelvoorkomende Linux OS-laagfirewalls zijn , `iptables` `ufw`of `firewalld`.
+   **Azure Linux:** Azure Linux-installatie kopieën hebben een strikte firewall. Als er een toepassing luistert op een poort, wordt het verkeer toegestaan via. Voor aangepaste installatie kopieën die zijn beveiligd, zijn mogelijk poorten expliciet geopend. Algemene firewalls voor Linux-besturings `iptables`systemen `ufw`bevatten, `firewalld`, of.
 
-1. Wijzig op het serverknooppunt de map waar iperf3.exe wordt geëxtraheerd. Voer vervolgens iPerf uit in de servermodus en stel deze in om te luisteren op poort 5001 als de volgende opdrachten:
+1. Ga naar de map waarin iperf3. exe is geëxtraheerd op het server knooppunt. Voer vervolgens iPerf uit in de server modus en stel deze in op poort 5001 als de volgende opdrachten:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -96,84 +96,84 @@ Download [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zie
    ```
 
    > [!Note]
-   > Poort 5001 is aanpasbaar om rekening te houden met bepaalde firewallbeperkingen in uw omgeving.
+   > Poort 5001 is aanpasbaar aan accounts voor bepaalde firewall beperkingen in uw omgeving.
 
-1. Wijzig op het clientknooppunt de map waar het gereedschap iperf wordt geëxtraheerd en voer vervolgens de volgende opdracht uit:
+1. Ga op het client-knoop punt naar de map waarin het hulp programma iperf wordt geëxtraheerd en voer de volgende opdracht uit:
 
    ```CMD
    iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
    ```
 
-   De client stuurt dertig seconden verkeer op poort 5001 naar de server. De vlag '-P' geeft aan dat we 32 gelijktijdige verbindingen maken met het serverknooppunt.
+   De client stuurt dertig seconden aan verkeer op poort 5001, naar de server. De vlag-P geeft aan dat er Maxi maal 32 gelijktijdige verbindingen met het server knooppunt worden gemaakt.
 
-   In het volgende scherm ziet u de uitvoer uit dit voorbeeld:
+   In het volgende scherm ziet u de uitvoer van dit voor beeld:
 
    ![Uitvoer](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
-1. (OPTIONEEL) Voer de gewenste opdracht uit om de testresultaten te behouden:
+1. Beschrijving Als u de test resultaten wilt behouden, voert u deze opdracht uit:
 
    ```CMD
    iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
    ```
 
-1. Nadat u de vorige stappen hebt voltooid, voert u dezelfde stappen uit waarbij de rollen zijn omgekeerd, zodat het serverknooppunt nu het clientknooppunt is en vice versa.
+1. Nadat u de voor gaande stappen hebt voltooid, voert u dezelfde stappen uit met de functies die zijn omgekeerd, zodat het server knooppunt nu het client knooppunt is en vice versa.
 
 > [!Note]
-> Iperf is niet het enige gereedschap. [NTTTCP is een alternatieve oplossing voor het testen.](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)
+> Iperf is niet het enige hulp programma. [NTTTCP is een alternatieve oplossing voor testen](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
 
-## <a name="test-vms-running-windows"></a>VM's met Windows testen
+## <a name="test-vms-running-windows"></a>Vm's met Windows testen
 
-### <a name="load-latteexe-onto-the-vms"></a>Latte.exe op de VM's laden
+### <a name="load-latteexe-onto-the-vms"></a>Latte. exe laden op de Vm's
 
-Download de nieuwste versie van [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+De meest recente versie van [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) downloaden
 
-Overweeg om Latte.exe in een aparte map te plaatsen, zoals`c:\tools`
+Overweeg om latte. exe in een afzonderlijke map te plaatsen, zoals`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte.exe toestaan via de Windows-firewall
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte. exe toestaan via de Windows Firewall
 
-Maak op de ontvanger een regel Toestaan op de Windows Firewall zodat het Latte.exe-verkeer kan binnenkomen. Het is het gemakkelijkst om het hele Latte.exe-programma op naam toe te staan in plaats van specifieke TCP-poorten toe te staan.
+Maak op de ontvanger een regel voor toestaan op de Windows Firewall zodat het latte. exe-verkeer kan binnenkomen. Het is eenvoudig om het hele latte. exe-programma op naam toe te staan in plaats van specifieke TCP-poorten toestaan.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Latte.exe toestaan via de Windows Firewall als volgt
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Latte. exe toestaan via de Windows Firewall als volgt
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Als u bijvoorbeeld latte.exe hebt gekopieerd naar de map 'c:\tools', is dit de opdracht
+Als u bijvoorbeeld latte. exe hebt gekopieerd naar de map ' c:\Tools ', is dit de opdracht
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-### <a name="run-latency-tests"></a>Latentietests uitvoeren
+### <a name="run-latency-tests"></a>Latentie tests uitvoeren
 
-Start latte.exe op de ONTVANGER (uitgevoerd vanaf CMD, niet van PowerShell):
+Start latte. exe op de ontvanger (uitvoeren vanuit CMD, niet vanuit Power shell):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
-Ongeveer 65k iteraties is lang genoeg om representatieve resultaten terug te keren.
+Rond 65k-iteraties is lang genoeg om representatieve resultaten te retour neren.
 
-Alle beschikbare poortnummer is prima.
+Elk beschikbaar poort nummer is prima.
 
-Als de VM een IP-adres van 10.0.0.4 heeft, ziet het er als volgt uit
+Als de virtuele machine een IP-adres heeft van 10.0.0.4, ziet deze er als volgt uit:
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Start latte.exe op de AFZENDER (uitgevoerd vanaf CMD, niet van PowerShell)
+Latte. exe starten op de afzender (uitvoeren vanuit CMD, niet vanuit Power shell)
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
-De resulterende opdracht is hetzelfde als op de ontvanger, behalve met de toevoeging van "-c" om aan te geven dat dit de "client" of afzender
+De resulterende opdracht is hetzelfde als op de ontvanger, behalve met de toevoeging van '-c ' om aan te geven dat dit de ' client ' of afzender is
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Wacht op de resultaten. Afhankelijk van hoe ver uit elkaar de VM's zijn, kan het een paar minuten duren om te voltooien. Overweeg om te beginnen met minder iteraties om te testen op succes voordat u langere tests uitvoert.
+Wacht op de resultaten. Afhankelijk van hoe ver de Vm's bestaan, kan het enkele minuten duren voordat het proces is voltooid. Overweeg te beginnen met minder herhalingen om te testen op geslaagde pogingen voordat u langere tests uitvoert.
 
-## <a name="test-vms-running-linux"></a>VM's testen met Linux
+## <a name="test-vms-running-linux"></a>Vm's met Linux testen
 
-Gebruik [SockPerf](https://github.com/mellanox/sockperf) om VM's te testen.
+Gebruik [SockPerf](https://github.com/mellanox/sockperf) om vm's te testen.
 
-### <a name="install-sockperf-on-the-vms"></a>Installeer SockPerf op de VM's
+### <a name="install-sockperf-on-the-vms"></a>SockPerf installeren op de virtuele machines
 
-Voer op de Linux VM's (zowel AFZENDER als ONTVANGER) deze opdrachten uit om SockPerf voor te bereiden op uw VM's:
+Voer op de virtuele Linux-machines (zowel de afzender als de ontvanger) deze opdrachten uit om SockPerf op uw virtuele machines voor te bereiden:
 
-#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS / RHEL - GIT en andere handige tools installeren
+#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS/RHEL-Installeer GIT en andere nuttige hulpprogram ma's
 
 `sudo yum install gcc -y -q`
 `sudo yum install git -y -q`
@@ -181,23 +181,23 @@ Voer op de Linux VM's (zowel AFZENDER als ONTVANGER) deze opdrachten uit om Sock
 `sudo yum install ncurses-devel -y`
 `sudo yum install -y automake`
 
-#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu - GIT en andere handige tools installeren
+#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu: GIT en andere nuttige hulpprogram ma's installeren
 
 `sudo apt-get install build-essential -y`
 `sudo apt-get install git -y -q`
 `sudo apt-get install -y autotools-dev`
 `sudo apt-get install -y automake`
 
-#### <a name="bash---all"></a>Bash - alles
+#### <a name="bash---all"></a>Bash-alle
 
-Van bash commandolijn (veronderstelt git is geïnstalleerd)
+Vanaf de opdracht regel van bash (ervan uitgaande dat Git is geïnstalleerd)
 
 `git clone https://github.com/mellanox/sockperf`
 `cd sockperf/`
 `./autogen.sh`
 `./configure --prefix=`
 
-Maken is langzamer, kan enkele minuten duren
+Het maken van een tragere, kan enkele minuten duren
 
 `make`
 
@@ -205,64 +205,64 @@ Installeren is snel
 
 `sudo make install`
 
-### <a name="run-sockperf-on-the-vms"></a>Run SockPerf op de VM's
+### <a name="run-sockperf-on-the-vms"></a>SockPerf uitvoeren op de Vm's
 
-#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Voorbeeldopdrachten na installatie. Server/ontvanger - gaat ervan uit dat het IP-adres van de server 10.0.0.4 is
+#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Voorbeeld opdrachten na installatie. Server/ontvanger: neemt het IP-adres van de server 10.0.0.4
 
 `sudo sockperf sr --tcp -i 10.0.0.4 -p 12345 --full-rtt`
 
-#### <a name="client---assumes-servers-ip-is-10004"></a>Client - gaat ervan uit dat het IP-adres van de server 10.0.0.4 is
+#### <a name="client---assumes-servers-ip-is-10004"></a>Client-gaat ervan uit dat de server-IP 10.0.0.4 is
 
 `sockperf ping-pong -i 10.0.0.4 --tcp -m 1400 -t 101 -p 12345  --full-rtt`
 
 > [!Note]
-> Zorg ervoor dat er geen tussenliggende hop (bijvoorbeeld virtueel toestel) tijdens de doorvoer testen tussen de VM en Gateway.
-> Als er slechte resultaten (in termen van totale doorvoer) afkomstig van de iPERF / NTTTCP tests hierboven, verwijzen wij u naar het volgende artikel om de belangrijkste factoren achter de mogelijke onderliggende oorzaken van het probleem te begrijpen:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Zorg ervoor dat er geen tussenliggende hops (bijvoorbeeld virtueel apparaat) zijn tijdens het testen van de door Voer tussen de virtuele machine en de gateway.
+> Raadpleeg het volgende artikel om inzicht te krijgen in de belangrijkste factoren achter de mogelijke hoofd oorzaken van het probleem, als er sprake is van slechte resultaten (wat een algemene door Voer is) die afkomstig zijn van de hierboven genoemde iPERF/NTTTCP-tests.https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
-Met name de analyse van packet capture traces (Wireshark/Network Monitor) die tijdens die tests parallel van client en server worden verzameld, zal helpen bij het beoordelingen van slechte prestaties. Deze sporen kunnen pakketverlies, hoge latentie, MTU-grootte omvatten. fragmentatie, TCP 0 Window, Out of Order-fragmenten, enzovoort.
+Met name de analyse van pakket Capture-traceringen (wireshark/Network Monitor) die parallel van de client en de server zijn verzameld tijdens deze tests, kunnen helpen bij de evaluatie van slechte prestaties. Deze traceringen kunnen pakket verlies, hoge latentie, MTU-grootte omvatten. fragmentatie, TCP 0-venster, fragmenten met een andere volg orde, enzovoort.
 
-## <a name="address-slow-file-copy-issues"></a>Problemen met langzame bestandskopieën aanpakken
+## <a name="address-slow-file-copy-issues"></a>Problemen met trage bestanden kopiëren oplossen
 
-Zelfs als de totale doorvoer beoordeeld met de vorige stappen (iPERF / NTTTCP / etc..) was goed, u ervaren trage file coping bij het gebruik van Windows Explorer, of slepen en laten vallen door middel van een RDP-sessie. Dit probleem is normaal gesproken te wijten aan een of beide van de volgende factoren:
+Zelfs als de algemene door Voer die is beoordeeld met de vorige stappen (iPERF/NTTTCP/etc..) goed was, kunt u trage bestands omgaan ervaren wanneer u Windows Verkenner gebruikt, of door middel van het slepen en neerzetten via een RDP-sessie. Dit probleem wordt meestal veroorzaakt door een van de volgende factoren:
 
-* Bestandskopietoepassingen, zoals Windows Verkenner en RDP, gebruiken geen meerdere threads bij het kopiëren van bestanden. Voor betere prestaties gebruikt u een toepassing voor het kopiëren met meerdere threads, zoals [Richcopy,](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) om bestanden te kopiëren met behulp van 16 of 32 threads. Als u het draadnummer voor bestandskopie in Richcopy wilt wijzigen, klikt u op > **Actiekopieeropties** > **Bestandskopie**. **Action**
+* Voor het kopiëren van bestanden, zoals Windows Verkenner en RDP, worden niet meerdere threads gebruikt tijdens het kopiëren. Gebruik voor betere prestaties een multi-threaded Copy-toepassing zoals [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) om bestanden te kopiëren met behulp van 16-of 32-threads. Als u het thread nummer voor het kopiëren van bestanden in RichCopy wilt wijzigen, klikt u op **actie** > **kopiëren opties** > **bestand kopiëren**.
 
-   ![Problemen met het langzaam kopiëren van bestanden](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
+   ![Problemen bij het kopiëren van bestanden vertragen](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
    > [!Note]
-   > Niet alle toepassingen werken hetzelfde, en niet alle toepassing / proces maakt gebruik van alle threads. Als u de test uitvoert, u zien dat sommige threads leeg zijn en geen nauwkeurige doorvoerresultaten opleveren.
-   > Als u de prestaties van uw toepassingsbestandsoverdracht wilt controleren, gebruikt u multi-thread door het aantal thread achter elkaar te verhogen of te verlagen om de optimale doorvoer van de toepassing of bestandsoverdracht te vinden.
+   > Niet alle toepassingen werken hetzelfde en niet alle threads worden gebruikt voor alle toepassingen en processen. Als u de test uitvoert, ziet u dat sommige threads leeg zijn en geen nauw keurige doorvoer resultaten opleveren.
+   > Als u de prestaties van de bestands overdracht van uw toepassing wilt controleren, gebruikt u multi-thread door het aantal threads achter elkaar of afnemend te verhogen om de optimale door Voer van de toepassing of bestands overdracht te vinden.
 
-* Onvoldoende VM-schijflees-/schrijfsnelheid. Zie [Azure Storage Troubleshooting](../storage/common/storage-e2e-troubleshooting.md)voor meer informatie.
+* Onvoldoende VM-Lees-en schrijf snelheid. Zie [Azure Storage Troubleshooting](../storage/common/storage-e2e-troubleshooting.md)(Engelstalig) voor meer informatie.
 
-## <a name="on-premises-device-external-facing-interface"></a>On-premises interface voor externe apparaten
+## <a name="on-premises-device-external-facing-interface"></a>On-premises apparaat extern gerichte interface
 
-Vermeldde de subnetten van on-premises bereiken die u wilt dat Azure bereikt via VPN op Local Network Gateway. Definieer tegelijkertijd de VNET-adresruimte in Azure op het on-premises apparaat.
+Vermeld de subnetten van on-premises bereiken die door Azure moeten worden bereikt via VPN op de lokale netwerk gateway. Definieer tegelijkertijd de VNET-adres ruimte in azure op het on-premises apparaat.
 
-* **Routegebaseerde gateway:** de beleids- of verkeerskiezer voor routegebaseerde VPN's zijn geconfigureerd als elke -to-any (of wild cards).
+* **Op route gebaseerde gateway**: het beleid of de selectie van verkeer voor op route gebaseerde vpn's worden geconfigureerd als een wille keurig (of Joker).
 
-* **Policy Based Gateway**: Op beleid gebaseerde VPN's versleutelen en sturen pakketten door IPsec-tunnels op basis van de combinaties van adresvoorvoegsels tussen uw on-premises netwerk en het Azure VNet. Het beleid (of de verkeersselector) wordt gewoonlijk gedefinieerd als een toegangslijst in de VPN-configuratie.
+* **Op beleid gebaseerde gateway**: op beleid gebaseerde vpn's versleutelen en direct pakketten via IPSec-tunnels op basis van de combi Naties van adres voorvoegsels tussen uw on-premises netwerk en Azure VNet. Het beleid (of de verkeersselector) wordt gewoonlijk gedefinieerd als een toegangslijst in de VPN-configuratie.
 
-* **UsePolicyBasedTrafficSelector-verbindingen:** ("UsePolicyBasedTrafficSelectors" om te $True op een verbinding, configureert de Azure VPN-gateway om verbinding te maken met vpn-firewall op basis van beleid op locatie. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat uw VPN-apparaat de overeenkomende verkeersselectors heeft gedefinieerd met alle combinaties van uw voorvoegsels voor het lokale netwerk (local network gateway) van en naar de voorvoegsels van het Azure-virtuele netwerk, in plaats van alle-to-any.If you enable policyBasedTrafficSelectselectors, you need to ensure your VPN device has has the matching traffic selectors defined with all combinations of your on-premises network (local network gateway) prefixes to and from the Azure virtual network prefixes, instead of any-to-any.
+* **UsePolicyBasedTrafficSelector** -verbindingen: (' UsePolicyBasedTrafficSelectors ' om een verbinding te $True, configureert de Azure VPN-gateway om verbinding te maken met op beleid gebaseerde VPN-Firewall on-premises. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat op uw VPN-apparaat de overeenkomende verkeers selectie is gedefinieerd met alle combi Naties van uw on-premises netwerk (lokale netwerk gateway) voor voegsels van en naar de voor voegsels van het virtuele Azure-netwerk in plaats van any.
 
-Ongepaste configuratie kan leiden tot frequente verbreekt binnen de tunnel, packet drops, slechte doorvoer, en latentie.
+Onjuiste configuratie kan leiden tot veelvuldige verbindingen binnen de tunnel, pakket drup pels, ongeldige door Voer en latentie.
 
 ## <a name="check-latency"></a>Latentie controleren
 
-U de latentie controleren met behulp van de volgende gereedschappen:
+U kunt de latentie controleren met behulp van de volgende hulpprogram ma's:
 
-* WinMTR (WinMTR)
-* Tcptraceroute
-* `ping`en `psping` (Deze tools kunnen een goede schatting van RTT geven, maar ze kunnen niet in alle gevallen worden gebruikt.)
+* WinMTR
+* TCPTraceroute
+* `ping`en `psping` (deze hulpprogram ma's kunnen een goede schatting van de RTT bieden, maar ze kunnen niet in alle gevallen worden gebruikt.)
 
 ![Latentie controleren](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-Als u een hoge latentiepiek merkt bij een van de hop voordat u de MS Network-backbone binnengaat, u verder onderzoek doen met uw internetserviceprovider.
+Als u een hoge latentie piek bij een van de hops ziet voordat u MS Network backbone invoert, wilt u mogelijk door gaan met verdere onderzoeken met uw Internet provider.
 
-Als een grote, ongebruikelijke latentiepiek wordt opgemerkt door hop binnen "msn.net", neem dan contact op met MS-ondersteuning voor verder onderzoek.
+Als er een grote, ongebruikelijke latentie piek wordt opgemerkt vanuit hops binnen "msn.net", neemt u contact op met MS ondersteuning voor verdere onderzoeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie of hulp naar de volgende link:
+Bekijk de volgende koppeling voor meer informatie of hulp:
 
 * [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

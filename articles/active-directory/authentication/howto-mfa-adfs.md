@@ -1,5 +1,5 @@
 ---
-title: Bronnen beveiligen met Azure MFA en ADFS - Azure Active Directory
+title: Resources beveiligen met Azure MFA en ADFS-Azure Active Directory
 description: Dit is de pagina Azure Multi-Factor Authentication waarop wordt beschreven hoe u aan de slag kunt met Azure MFA en AD FS in de cloud.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -27,14 +27,14 @@ Als uw organisatie is gefedereerd met behulp van Azure Active Directory, kunt u 
 Voor de beveiliging van uw cloudresource stelt u een claimregel in die ervoor zorgt dat Active Directory Federation Services de multipleauthn-claim verstuurt wanneer een gebruiker de verificatie in twee stappen voltooit. Deze claim wordt doorgegeven aan Azure AD. Volg deze procedure om de stappen te doorlopen:
 
 1. Open AD FS-beheer.
-2. Selecteer aan de linkerkant **vertrouwensrelaties van relying party**.
+2. Selecteer aan de linkerkant de **vertrouwens relatie van de relying**Party.
 3. Klik met de rechtermuisknop op **Identiteitsplatform van Microsoft Office 365** en selecteer **Claimregels bewerken**.
 
-   ![ADFS-console - vertrouwensrelaties van relying party](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS-console-vertrouwens relaties van Relying Party](./media/howto-mfa-adfs/trustedip1.png)
 
 4. Klik bij Uitgifte transformatieregels op**Regel toevoegen**.
 
-   ![Transformatieregels voor uitgifte bewerken](./media/howto-mfa-adfs/trustedip2.png)
+   ![Regels voor uitgifte transformatie bewerken](./media/howto-mfa-adfs/trustedip2.png)
 
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
 
@@ -57,16 +57,16 @@ In dit voorbeeld wordt Office 365 gebruikt voor onze Relying Party-vertrouwensre
 Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee claimregels: één voor het claimtype Binnen bedrijfsnetwerk en een extra regel om de gebruikers aangemeld te houden.
 
 1. Open AD FS-beheer.
-2. Selecteer aan de linkerkant **vertrouwensrelaties van relying party**.
-3. Klik met de rechtermuisknop op **Microsoft Office 365 Identity Platform** en selecteer **Claimregels bewerken...** 
-   ADFS-console - Claimregels ![bewerken](./media/howto-mfa-adfs/trustedip1.png)
-4. Klik bij Uitgiftetransformatieregels op **Regel toevoegen.** 
-    ![toevoegen](./media/howto-mfa-adfs/trustedip2.png)
+2. Selecteer aan de linkerkant de **vertrouwens relatie van de relying**Party.
+3. Klik met de rechter muisknop op **Microsoft Office 365-identiteits platform** en selecteer **claim regels bewerken...** 
+   ADFS-console-claim ![regels bewerken](./media/howto-mfa-adfs/trustedip1.png)
+4. Klik bij uitgifte transformatie regels op **regel toevoegen.** 
+    ![](./media/howto-mfa-adfs/trustedip2.png)
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
    ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfa-adfs/trustedip3.png)
 6. Geef de claimregel een naam in het vak bij Naam claimregel. Bijvoorbeeld: BinnenBedrijfsNet.
 7. In de vervolgkeuzelijst naast Binnenkomend claimtype, selecteert u **Binnen bedrijfsnetwerk**.
-   ![Claim voor Inside Corporate Network toevoegen](./media/howto-mfa-adfs/trustedip4.png)
+   ![Toevoegen binnen bedrijfs netwerk claim](./media/howto-mfa-adfs/trustedip4.png)
 8. Klik op **Voltooien**.
 9. Klik bij Uitgifte transformatieregels op**Regel toevoegen**.
 10. Selecteer in de wizard Transformatieclaimregels toevoegen **Claim verzenden met een aangepaste regel** in de vervolgkeuzelijst en klik op **Volgende**.
@@ -75,7 +75,7 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Aangepaste claim maken om gebruikers aan te houden](./media/howto-mfa-adfs/trustedip5.png)
+    ![Aangepaste claim maken om gebruikers aangemeld te blijven](./media/howto-mfa-adfs/trustedip5.png)
 13. Klik op **Voltooien**.
 14. Klik op **Toepassen**.
 15. Klik op **Ok**.
@@ -85,11 +85,11 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 
 Nu de claims zijn gemaakt, kunnen we goedgekeurde IP-adressen gaan configureren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer**locaties met**voorwaardelijke toegang met voorwaardelijke toegang voor Azure Active**Directory-beveiliging** > **Conditional Access** >  **Azure Active Directory** > .
-3. Selecteer **MFA trusted IP's configureren** in het blad Voorwaardelijke toegang - Benoemde **locaties**
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang** > met de**naam locaties**.
+3. Selecteer op de Blade **voorwaardelijke toegang-benoemde locaties** de optie **MFA-vertrouwde IP-adressen configureren**
 
-   ![Azure AD Conditional Access named locations Configure MFA trusted IP's Azure AD Conditional Access named locations Configure MFA trusted IP's Azure AD](./media/howto-mfa-adfs/trustedip6.png)
+   ![Voorwaardelijke toegang voor Azure AD benoemde locaties geconfigureerde MFA-IP-adressen configureren](./media/howto-mfa-adfs/trustedip6.png)
 
 4. Selecteer op de pagina Service-instellingen onder **Vertrouwde IP's** de optie **Meervoudige verificatie overslaan voor aanvragen van federatieve gebruikers op mijn intranet**.  
 5. Klik op **Opslaan**.

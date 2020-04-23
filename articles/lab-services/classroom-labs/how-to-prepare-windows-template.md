@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor het instellen van een Windows-sjabloonmachine | Microsoft Documenten
-description: Algemene stappen om een Windows-sjabloonmachine voor te bereiden in Lab Services.  Deze stappen omvatten het instellen van Windows Update-planning, het installeren van OneDrive en het installeren van Office.
+title: Hand leiding voor het instellen van een Windows-sjabloon machine | Microsoft Docs
+description: Algemene stappen voor het voorbereiden van een Windows-sjabloon machine in Lab-Services.  Deze stappen omvatten het instellen van Windows Update planning, het installeren van OneDrive en het installeren van Office.
 services: lab-services
 documentationcenter: na
 author: EMaher
@@ -17,22 +17,22 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/01/2020
 ms.locfileid: "80521176"
 ---
-# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Handleiding voor het instellen van een Windows-sjabloonmachine in Azure Lab Services
+# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
 
-Als u een Windows 10-sjabloonmachine instelt voor Azure Lab Services, vindt u hier enkele aanbevolen procedures en tips waarmee u rekening moet houden. De onderstaande configuratiestappen zijn allemaal optioneel.  Deze voorbereidende stappen kunnen uw leerlingen echter productiever maken, onderbrekingen van de lestijd minimaliseren en ervoor zorgen dat ze de nieuwste technologieën gebruiken.
+Als u een Windows 10-sjabloon computer instelt voor Azure Lab Services, zijn hier enkele aanbevolen procedures en tips die u kunt overwegen. De onderstaande configuratie stappen zijn allemaal optioneel.  Deze voorbereidende stappen kunnen u helpen om uw studenten productiever te maken, de duur van het klassetijd te beperken en ervoor te zorgen dat ze de nieuwste technologieën gebruiken.
 
 >[!IMPORTANT]
->Dit artikel bevat PowerShell-fragmenten om het wijzigingsproces van de machinesjabloon te stroomlijnen.  Voor alle PowerShell-scripts die worden weergegeven, wilt u ze uitvoeren in Windows PowerShell met beheerdersbevoegdheden. In Windows 10 u dat snel doen door met de rechtermuisknop op het menu Start te klikken en de optie Windows PowerShell (Beheerder) te kiezen.In Windows 10, a quick way to doing that is to click the Right-click the Start Menu and choose the Windows PowerShell (Admin).
+>Dit artikel bevat Power shell-fragmenten om het wijzigings proces van de machine sjabloon te stroom lijnen.  Voor alle Power shell-scripts die worden weer gegeven, moet u deze uitvoeren in Windows Power shell met beheerders bevoegdheden. In Windows 10 kunt u een snelle manier om dit te doen met de rechter muisknop op het menu Start klikken en de ' Windows Power shell (beheerder) ' kiezen.
 
 ## <a name="install-and-configure-onedrive"></a>OneDrive installeren en configureren
 
-Om te voorkomen dat studentengegevens verloren gaan als een virtuele machine wordt gereset, raden we studenten aan hun gegevens terug te zetten naar de cloud.  Microsoft OneDrive kan studenten helpen hun gegevens te beschermen.  
+Als u wilt voor komen dat student gegevens verloren gaan als een virtuele machine opnieuw is ingesteld, raden wij studenten aan om hun gegevens terug te zetten naar de Cloud.  Micro soft OneDrive kan leerlingen/studenten helpen bij het beveiligen van hun gegevens.  
 
 ### <a name="install-onedrive"></a>OneDrive installeren
 
-Zie de downloadpagina's van [OneDrive](https://onedrive.live.com/about/download/) of [OneDrive voor Bedrijven](https://onedrive.live.com/about/business/) als u OneDrive handmatig wilt downloaden en installeren.
+Zie de Download pagina's van [onedrive](https://onedrive.live.com/about/download/) of [onedrive voor bedrijven](https://onedrive.live.com/about/business/) om onedrive hand matig te downloaden en te installeren.
 
-U ook het volgende PowerShell-script gebruiken.  Het zal automatisch downloaden en installeren van de nieuwste versie van OneDrive.  Zodra de OneDrive-client is geïnstalleerd, voert u het installatieprogramma uit.  In ons voorbeeld gebruiken `/allUsers` we de schakelaar om OneDrive te installeren voor alle gebruikers op de machine. We gebruiken `/silent` de schakelaar ook om OneDrive in stilte te installeren.
+U kunt ook het volgende Power shell-script gebruiken.  De meest recente versie van OneDrive wordt automatisch gedownload en geïnstalleerd.  Zodra de OneDrive-client is geïnstalleerd, voert u het installatie programma uit.  In ons voor beeld gebruiken we de `/allUsers` switch om OneDrive te installeren voor alle gebruikers op de computer. We gebruiken ook de `/silent` Schakel optie om OneDrive op de achtergrond te installeren.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -50,23 +50,23 @@ Write-Host "Installing OneDrive..."
 & $env:USERPROFILE/Downloads/OneDriveSetup.exe /allUsers /silent
 ```
 
-### <a name="onedrive-customizations"></a>OneDrive-aanpassingen
+### <a name="onedrive-customizations"></a>Aanpassingen in OneDrive
 
-Er zijn veel [aanpassingen die kunnen worden gedaan om OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Laten we een aantal van de meest voorkomende aanpassingen.
+Er zijn veel [aanpassingen die u kunt uitvoeren in OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Laten we een aantal van de meest voorkomende aanpassingen behandelen.
 
-#### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows-bekende mappen stilletjes verplaatsen naar OneDrive
+#### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows bekende mappen op de achtergrond verplaatsen naar OneDrive
 
-Mappen zoals documenten, downloads en afbeeldingen worden vaak gebruikt om studentenbestanden op te slaan. Om ervoor te zorgen dat er een back-up van deze mappen wordt gemaakt in OneDrive, raden we u aan deze mappen naar OneDrive te verplaatsen.
+Mappen als documenten, down loads en afbeeldingen worden vaak gebruikt om student bestanden op te slaan. Om ervoor te zorgen dat deze mappen in OneDrive worden opgeslagen, raden we u aan deze mappen naar OneDrive te verplaatsen.
 
-Als u zich op een machine bevindt die Active Directory niet gebruikt, kunnen gebruikers deze mappen handmatig verplaatsen naar OneDrive zodra ze zijn geverifieerd naar OneDrive.
+Als u zich op een computer bevindt die niet gebruikmaakt van Active Directory, kunnen gebruikers deze mappen hand matig verplaatsen naar OneDrive zodra ze zijn geverifieerd in OneDrive.
 
 1. Verkenner openen
-2. Klik met de rechtermuisknop op de map Documenten, Downloads of Afbeeldingen.
-3. Ga naar Eigenschappen > locatie.  Verplaats de map naar een nieuwe map in de OneDrive-map.
+2. Klik met de rechter muisknop op de map documenten, down loads of afbeeldingen.
+3. Ga naar eigenschappen > locatie.  Verplaats de map naar een nieuwe map in de OneDrive-map.
 
-Als uw virtuele machine is verbonden met Active Directory, u instellen dat de sjabloonmachine uw leerlingen automatisch vraagt om de bekende mappen naar OneDrive te verplaatsen.  
+Als uw virtuele machine is verbonden met Active Directory, kunt u instellen dat de sjabloon machine automatisch uw studenten vraagt om de bekende mappen naar OneDrive te verplaatsen.  
 
-U moet eerst uw Office-tenant-id ophalen.  Zie [uw Office 365-tenant-id zoeken](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U de Office 365 Tenant ID ook krijgen met behulp van de volgende PowerShell.
+U moet eerst uw Office-Tenant-ID ophalen.  Zie [uw Office 365-Tenant-id zoeken](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U kunt ook de Office 365-Tenant-ID ophalen met behulp van de volgende Power shell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -76,7 +76,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Zodra u uw Office 365-tenant-id hebt, stelt u OneDrive in om bekende mappen naar OneDrive te verplaatsen met de volgende PowerShell.
+Zodra u uw Office 365-Tenant-ID hebt, stelt u OneDrive in om bekende mappen naar OneDrive te verplaatsen met behulp van de volgende Power shell.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -88,9 +88,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "KFMSilentOptIn" -Value $officeTenantID -PropertyType STRING
 ```
 
-### <a name="use-onedrive-files-on-demand"></a>On-demand OneDrive-bestanden gebruiken
+### <a name="use-onedrive-files-on-demand"></a>OneDrive-bestanden op aanvraag gebruiken
 
-Studenten kunnen veel bestanden in hun OneDrive-accounts hebben. Om ruimte op de machine te besparen en de downloadtijd te verkorten, raden we u aan om alle bestanden die zijn opgeslagen in het OneDrive-account van de student on-demand te maken.  On-demandbestanden worden pas gedownload als een gebruiker toegang heeft tot het bestand.
+Studenten hebben mogelijk veel bestanden binnen hun OneDrive-accounts. Om ruimte te besparen op de computer en de download tijd te beperken, wordt u aangeraden alle bestanden die zijn opgeslagen in het OneDrive-account van studenten op aanvraag in te stellen.  Bestanden op aanvraag worden alleen gedownload zodra een gebruiker toegang heeft tot het bestand.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -98,9 +98,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "FilesOnDemandEnabled" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="silently-sign-in-users-to-onedrive"></a>Gebruikers in stilte aanmelden bij OneDrive
+### <a name="silently-sign-in-users-to-onedrive"></a>Gebruikers op de achtergrond aanmelden bij OneDrive
 
-OneDrive kan worden ingesteld om automatisch in te loggen met de Windows-referenties van de aangemelde gebruiker.  Automatisch aanmelden is handig voor klassen waarbij de student zich aanmeldt met hun Office 365-schoolgegevens.
+OneDrive kan worden ingesteld om automatisch aan te melden met de Windows-referenties van de aangemelde gebruiker.  Automatische aanmelding is handig voor klassen waarbij de student zich aanmeldt met hun Office 365 school-referenties.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -108,9 +108,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "SilentAccountConfig" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>De zelfstudie uitschakelen die wordt weergegeven aan het einde van de OneDrive-installatie
+### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>De zelf studie uitschakelen die wordt weer gegeven aan het einde van de installatie van OneDrive
 
-Met deze instelling u voorkomen dat de zelfstudie wordt gestart in een webbrowser aan het einde van OneDrive Setup.
+Met deze instelling kunt u voor komen dat de zelf studie wordt gestart in een webbrowser aan het einde van de installatie van OneDrive.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -120,7 +120,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>De maximale grootte instellen van een bestand dat automatisch moet worden gedownload
 
-Deze instelling wordt gebruikt in combinatie met het stilletjes aanmelden van gebruikers bij de OneDrive-synchronisatieclient met hun Windows-referenties op apparaten waarop OneDrive Files On-Demand niet is ingeschakeld. Elke gebruiker die een OneDrive heeft die groter is dan de opgegeven drempelwaarde (in MB) wordt gevraagd de mappen te kiezen die ze willen synchroniseren voordat de OneDrive-synchronisatieclient (OneDrive.exe) de bestanden downloadt.  In ons voorbeeld is "1111-2222-3333-4444" de Office 365 tenant ID en 0005000 stelt een drempel van 5 GB in.
+Deze instelling wordt gebruikt in combi natie met gebruikers die zich op de achtergrond aanmelden bij de OneDrive-Sync-Client met hun Windows-referenties op apparaten waarvoor geen OneDrive-bestanden op aanvraag zijn ingeschakeld. Gebruikers met een OneDrive die groter is dan de opgegeven drempel waarde (in MB), wordt gevraagd de mappen te kiezen die ze willen synchroniseren voordat de OneDrive-synchronisatieclient (OneDrive. exe) de bestanden downloadt.  In ons voor beeld is ' 1111-2222-3333-4444 ' de Tenant-ID van Office 365 en 0005000 wordt een drempel van 5 GB ingesteld.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -131,18 +131,18 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office 365 installeren en configureren
 
-### <a name="install-microsoft-office-365"></a>Microsoft Office 365 installeren
+### <a name="install-microsoft-office-365"></a>Installeer Microsoft Office 365
 
-Als uw sjabloonmachine Office nodig heeft, raden we u aan Office te installeren via de [ODT (Office Deployment Tool).](https://www.microsoft.com/download/details.aspx?id=49117 ) U moet een herbruikbaar configuratiebestand maken met de [Office 365 Client Configuration Service](https://config.office.com/) om te kiezen welke architectuur, welke functies u van Office nodig hebt en hoe vaak deze worden bijgewerkt.
+Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installeren via het [Office Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). U moet een herbruikbaar configuratie bestand maken met behulp van de [Office 365-client configuratie service](https://config.office.com/) om te kiezen welke architectuur, welke functies u nodig hebt vanuit Office en hoe vaak het wordt bijgewerkt.
 
-1. Ga naar [Office 365 Client Configuration Service](https://config.office.com/) en download uw eigen configuratiebestand.
-2. Office [Deployment Tool downloaden](https://www.microsoft.com/download/details.aspx?id=49117).  Gedownload bestand zal `setup.exe`zijn .
+1. Ga naar de [Office 365-client configuratie service](https://config.office.com/) en down load uw eigen configuratie bestand.
+2. Down load [Office Deployment Tool](https://www.microsoft.com/download/details.aspx?id=49117).  Het gedownloade `setup.exe`bestand is.
 3. Voer `setup.exe /download configuration.xml` uit om Office-onderdelen te downloaden.
 4. Voer `setup.exe /configure configuration.xml` uit om Office-onderdelen te installeren.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Het updatekanaal van Microsoft Office 365 wijzigen
+### <a name="change-the-microsoft-office-365-update-channel"></a>Het Microsoft Office 365-update kanaal wijzigen
 
-Met het Office Configuration Tool u instellen hoe vaak Office updates ontvangt. Als u echter moet wijzigen hoe vaak Office updates ontvangt na de installatie, u de URL van het updatekanaal wijzigen. URL-adressen van het updatekanaal zijn te vinden op [Het updatekanaal van Office 365 ProPlus wijzigen voor apparaten in uw organisatie.](https://docs.microsoft.com/deployoffice/change-update-channels) In het onderstaande voorbeeld ziet u hoe u Office 365 instelt op het kanaal voor maandelijkse updates.
+Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal vindt [u in het Office 365 ProPlus-update kanaal voor apparaten in uw organisatie wijzigen](https://docs.microsoft.com/deployoffice/change-update-channels). In het volgende voor beeld ziet u hoe u Office 365 instelt voor het gebruik van het maandelijkse update kanaal.
 
 ```powershell
 # Update to the Office 365 Monthly Channel
@@ -154,16 +154,16 @@ Set-ItemProperty
 
 ## <a name="install-and-configure-updates"></a>Updates installeren en configureren
 
-### <a name="install-the-latest-windows-updates"></a>De nieuwste Windows-updates installeren
+### <a name="install-the-latest-windows-updates"></a>Installeer de meest recente Windows-updates
 
-We raden u aan de nieuwste Microsoft-updates op de sjabloonmachine te installeren voor beveiligingsdoeleinden voordat u de sjabloon-VM publiceert.  Het voorkomt ook dat studenten worden verstoord in hun werk wanneer updates op onverwachte momenten worden uitgevoerd.
+U wordt aangeraden de meest recente micro soft-updates op de sjabloon computer te installeren voor beveiligings doeleinden voordat u de sjabloon-VM publiceert.  Het is ook mogelijk om te voor komen dat studenten in hun werk worden onderbroken wanneer updates op onverwachte tijden worden uitgevoerd.
 
-1. **Startinstellingen** in het menu Start
-2. Klik op **&-beveiliging** bijwerken
-3. Klik **op Controleren op updates**
+1. **Instellingen** starten vanuit het menu Start
+2. Klik op **Update** & beveiliging
+3. Klik op **controleren op updates**
 4. Updates worden gedownload en geïnstalleerd.
 
-U PowerShell ook gebruiken om de sjabloonmachine bij te werken.
+U kunt Power shell ook gebruiken om de sjabloon machine bij te werken.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -174,18 +174,18 @@ Set-ExecutionPolicy default -Force
 ```
 
 >[!NOTE]
->Voor sommige updates moet de machine mogelijk opnieuw worden opgestart.  U wordt gevraagd of een herstart vereist is.
+>Voor sommige updates moet de computer mogelijk opnieuw worden opgestart.  U wordt gevraagd of opnieuw opstarten is vereist.
 
 ### <a name="install-the-latest-updates-for-microsoft-store-apps"></a>De nieuwste updates voor Microsoft Store-apps installeren
 
-We raden u aan dat alle Microsoft Store-apps worden bijgewerkt naar de nieuwste versies.  Hier vindt u instructies voor het handmatig bijwerken van toepassingen vanuit de Microsoft Store.  
+Het is raadzaam dat alle Microsoft Store-apps worden bijgewerkt naar de nieuwste versie.  Hier volgen instructies voor het hand matig bijwerken van toepassingen van de Microsoft Store.  
 
-1. **Microsoft Store-toepassing** starten.
-2. Klik op de ellips (...) naast uw gebruikersfoto in de bovenhoek van de toepassing.
-3. Selecteer **Downloaden** en updates in het vervolgkeuzemenu.
-4. Klik **op Update downloaden.**
+1. Start **Microsoft Store** -toepassing.
+2. Klik op het weglatings teken (...) naast uw gebruikers foto in de bovenste hoek van de toepassing.
+3. Selecteer **downloaden** en bijwerken in de vervolg keuzelijst.
+4. Klik op de knop **update ophalen** .
 
-U PowerShell ook gebruiken om Microsoft Store-toepassingen bij te werken die al zijn geïnstalleerd.
+U kunt ook Power shell gebruiken voor het bijwerken van Microsoft Store toepassingen die al zijn geïnstalleerd.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -193,9 +193,9 @@ U PowerShell ook gebruiken om Microsoft Store-toepassingen bij te werken die al 
 
 ### <a name="stop-automatic-windows-updates"></a>Automatische Windows-updates stoppen
 
-Nadat u Windows hebt bijgewerkt naar de nieuwste versie, u overwegen Windows-updates te stoppen.  Automatische updates kunnen mogelijk de geplande lestijd verstoren.  Als uw cursus langer wordt uitgevoerd, u studenten vragen om handmatig te controleren op updates of automatische updates in te stellen voor een tijd buiten de geplande lesuren.  Zie de [extra Windows Update-instellingen beheren](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)voor meer informatie over aanpassingsopties voor Windows Update.
+Nadat u Windows hebt bijgewerkt naar de nieuwste versie, kunt u overwegen Windows-updates te stoppen.  Automatische updates kunnen problemen veroorzaken met de geplande tijd van de klasse.  Als uw cursus een langere keer wordt uitgevoerd, kunt u de cursisten vragen om hand matig te controleren op updates of automatische updates in te stellen voor een tijd buiten de geplande uren.  Zie voor meer informatie over aanpassings opties voor Windows Update de [instellingen voor het beheren van aanvullende Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
 
-Automatische Windows-updates kunnen worden gestopt met het volgende PowerShell-script.
+Automatische Windows-updates worden mogelijk gestopt met het volgende Power shell-script.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
@@ -203,37 +203,37 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
     -Name "NoAutoUpdate" -Value "1" -PropertyType DWORD
 ```
 
-## <a name="install-foreign-language-packs"></a>Pakketten voor vreemde talen installeren
+## <a name="install-foreign-language-packs"></a>Vreemde taal pakketten installeren
 
-Als u extra talen op de virtuele machine wilt installeren, u deze toevoegen via de Microsoft Store.
+Als u extra talen hebt geïnstalleerd op de virtuele machine, kunt u deze toevoegen via de Microsoft Store.
 
 1. Microsoft Store starten
-2. Zoek naar "taalpakket"
-3. Taal kiezen om te installeren
+2. Zoeken naar taal pakket
+3. Selecteer de taal die u wilt installeren
 
-Als u al bent aangemeld bij de sjabloon-VM, gebruikt u [de snelkoppeling 'Taalpakket installeren'](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) om rechtstreeks naar de juiste instellingenpagina te gaan.
+Als u al bent aangemeld bij de sjabloon-VM, gebruikt u de [snelkoppeling taal pakket installeren](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) om rechtstreeks naar de juiste instellingen pagina te gaan.
 
-## <a name="remove-unneeded-built-in-apps"></a>Onnodige ingebouwde apps verwijderen
+## <a name="remove-unneeded-built-in-apps"></a>Overbodige ingebouwde apps verwijderen
 
-Windows 10 wordt geleverd met veel ingebouwde toepassingen die mogelijk niet nodig zijn voor uw specifieke klasse. Als u de machineafbeelding voor studenten wilt vereenvoudigen, u bepaalde toepassingen van uw sjabloonmachine verwijderen.  Als u een lijst met geïnstalleerde `Get-AppxPackage` toepassingen wilt bekijken, gebruikt u de PowerShell-cmdlet.  In het onderstaande voorbeeld worden alle geïnstalleerde toepassingen weergegeven die kunnen worden verwijderd.
+Windows 10 wordt geleverd met veel ingebouwde toepassingen die mogelijk niet nodig zijn voor uw specifieke klasse. Als u de machine installatie kopie voor studenten wilt vereenvoudigen, kunt u sommige toepassingen van de sjabloon computer verwijderen.  Als u een lijst met geïnstalleerde toepassingen wilt weer geven, `Get-AppxPackage` gebruikt u de Power shell-cmdlet.  In het onderstaande voor beeld ziet u alle geïnstalleerde toepassingen die kunnen worden verwijderd.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
 ```
 
-Als u een toepassing wilt verwijderen, gebruikt u de cmdlet Remove-Appx.  In het onderstaande voorbeeld ziet u hoe u alles met XBox-gerelateerd verwijderen.
+Als u een toepassing wilt verwijderen, gebruikt u de cmdlet Remove-appx.  In het onderstaande voor beeld ziet u hoe u alle XBox-gerelateerde kunt verwijderen.
 
 ```powershell
 Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-AppxPackage $_} }
 ```
 
-## <a name="install-common-teaching-related-applications"></a>Algemene onderwijsgerelateerde toepassingen installeren
+## <a name="install-common-teaching-related-applications"></a>Algemene onderwijs toepassingen installeren
 
-Installeer andere apps die vaak worden gebruikt voor lesgeven via de Windows Store-app. Suggesties omvatten toepassingen zoals [Microsoft Whiteboard-app,](https://www.microsoft.com/store/productId/9MSPC6MP8FM4) [Microsoft Teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)en Minecraft [Education Edition](https://education.minecraft.net/). Deze toepassingen moeten handmatig worden geïnstalleerd via de Windows Store of via hun respectievelijke websites op de sjabloon-VM.
+Andere apps installeren die vaak worden gebruikt voor het onderwijs via de Windows Store-app. Suggesties zijn onder andere toepassingen zoals [micro soft White Board app](https://www.microsoft.com/store/productId/9MSPC6MP8FM4), [micro soft teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)en [Minecraft Education Edition](https://education.minecraft.net/). Deze toepassingen moeten hand matig worden geïnstalleerd via de Windows Store of via hun respectieve websites op de sjabloon-VM.
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit artikel ziet u optionele stappen om uw Windows-sjabloon-VM voor te bereiden op een effectieve klasse.  Stappen zijn het installeren van OneDrive en het installeren van Office 365, het installeren van de updates voor Windows en het installeren van updates voor Microsoft Store-apps.  We hebben ook besproken hoe u updates instellen voor een schema dat het beste werkt voor uw klas.  
+In dit artikel vindt u optionele stappen voor het voorbereiden van uw Windows-sjabloon-VM voor een doel treffende klasse.  Stappen zijn het installeren van OneDrive en het installeren van Office 365, het installeren van updates voor Windows en het installeren van updates voor Microsoft Store-apps.  Ook wordt uitgelegd hoe u updates instelt voor een planning die het beste werkt voor uw klasse.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het artikel over het beheren van het afsluiten van Windows-gedrag om te helpen bij het beheren van kosten: [handleiding voor het beheren van het shutdown-gedrag van Windows](how-to-windows-shutdown.md)
+Raadpleeg het artikel over het beheren van het afsluit gedrag van Windows voor hulp bij het beheren van kosten: [hand leiding voor het beheren van het afsluit gedrag van Windows](how-to-windows-shutdown.md)

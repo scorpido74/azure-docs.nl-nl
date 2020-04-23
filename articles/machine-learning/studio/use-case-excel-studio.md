@@ -1,7 +1,7 @@
 ---
-title: Analytics migreren vanuit Excel
+title: Analyses migreren vanuit Excel
 titleSuffix: ML Studio (classic) - Azure
-description: Een vergelijking van lineaire regressiemodellen in Excel en in Azure Machine Learning Studio (klassiek)
+description: Een vergelijking van lineaire regressie modellen in Excel en in Azure Machine Learning Studio (klassiek)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -17,126 +17,126 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217797"
 ---
-# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Analytics migreren van Excel naar Azure Machine Learning Studio (klassiek)
+# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Analytics van Excel migreren naar Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-> *Kate Baroni* en *Ben Boatman* zijn enterprise solution architects in Microsoft's Data Insights Center of Excellence. In dit artikel beschrijven ze hun ervaring met het migreren van een bestaande regressieanalysesuite naar een cloudgebaseerde oplossing met Azure Machine Learning Studio (klassiek).
+> *Kate Baroni* en *ben Boatman* zijn Enter prise Solution Architects in het data Insights Center van micro soft. In dit artikel beschrijven ze hun ervaring met het migreren van een bestaande regressie analyse Suite naar een Cloud oplossing met behulp van Azure Machine Learning Studio (klassiek).
 
 ## <a name="goal"></a>Doel
 
-Ons project begon met twee doelen in gedachten: 
+Ons project is gestart met twee doel stellingen: 
 
-1. Gebruik voorspellende analyses om de nauwkeurigheid van de maandelijkse inkomstenprognoses van onze organisatie te verbeteren 
-2. Gebruik Azure Machine Learning Studio (klassiek) om onze snelheid te bevestigen, optimaliseren, verhogen en schalen van onze resultaten. 
+1. Gebruik predictive analytics om de nauw keurigheid van de maandelijkse omzet prognoses van onze organisatie te verbeteren 
+2. Gebruik Azure Machine Learning Studio (klassiek) om onze resultaten te bevestigen, te optimaliseren, te verhogen en te schalen. 
 
-Net als veel andere bedrijven, onze organisatie gaat door middel van een maandelijkse inkomsten prognose proces. Ons kleine team van bedrijfsanalisten was belast met het gebruik van Azure Machine Learning Studio (klassiek) om het proces te ondersteunen en de nauwkeurigheid van de prognose te verbeteren. Het team heeft enkele maanden besteed aan het verzamelen van gegevens uit meerdere bronnen en het uitvoeren van de gegevenskenmerken door middel van statistische analyse die belangrijke kenmerken identificeerde die relevant zijn voor het voorspellen van de verkoop van services. De volgende stap was om te beginnen met het prototypen van statistische regressiemodellen op de gegevens in Excel. Binnen een paar weken hadden we een Excel-regressiemodel dat beter presteerde dan het huidige veld en de prognoseprocessen voor financiën. Dit werd het resultaat van de basislijnvoorspelling. 
+Net als bij veel bedrijven gaat onze organisatie door een maandelijks omzet prognose proces. Ons kleine team van bedrijfs analisten is gewerkt met het gebruik van Azure Machine Learning Studio (klassiek) ter ondersteuning van het proces en de nauw keurigheid van de prognose te verbeteren. Het team heeft een aantal maanden besteed aan het verzamelen van gegevens uit meerdere bronnen en het uitvoeren van de gegevens kenmerken via statistische analyses, waarmee belang rijke kenmerken van de verkoop prognoses van services worden geïdentificeerd. De volgende stap was het starten van het prototypen van statistische regressie modellen op de gegevens in Excel. Binnen een paar weken moesten we een Excel-regressie model maken dat het huidige veld heeft uitgevoerd en de prognoses voor het verwerken van de Financiën heeft uitgewerkt. Dit is het voor Spellings resultaat van de basis lijn. 
 
-Vervolgens hebben we de volgende stap gezet om onze predictive analytics over te heen naar Studio (klassiek) om erachter te komen hoe Studio (klassiek) de voorspellende prestaties kan verbeteren.
+We hebben vervolgens de volgende stap gevolgd om onze predictive analytics over te zetten naar Studio (klassiek) om erachter te komen hoe Studio (klassiek) kan worden verbeterd voor voorspellende prestaties.
 
-## <a name="achieving-predictive-performance-parity"></a>Het bereiken van voorspellende prestatiepariteit
-Onze eerste prioriteit was het bereiken van pariteit tussen Studio (klassiek) en Excel regressiemodellen. Gezien dezelfde gegevens, en dezelfde splitsing voor trainings- en testgegevens, wilden we voorspellende prestatiepariteit tussen Excel en Studio (klassiek) bereiken. In eerste instantie hebben we gefaald. Het Excel-model presteerde beter dan studio (klassiek) model. De storing was te wijten aan een gebrek aan begrip van de basis tool instelling in Studio (klassiek). Na een synchronisatie met het Studio (classic) productteam kregen we een beter inzicht in de basisinstelling die nodig is voor onze datasets en bereikten we pariteit tussen de twee modellen. 
+## <a name="achieving-predictive-performance-parity"></a>Vertraagde prestatie pariteit
+Onze eerste prioriteit is om de pariteit te halen tussen studio-en Excel-regressie modellen. Gezien dezelfde gegevens, en dezelfde splitsing voor trainings-en test gegevens, wilden we anticiperen op voorspellende prestatie pariteit tussen Excel en Studio (klassiek). In eerste instantie mislukt. Het Excel-model van een uitvoerbaar Studio model (klassiek). De fout is veroorzaakt door het ontbreken van een uitleg van de instelling basis hulpprogramma in Studio (klassiek). Na een synchronisatie met het Studio-product team (klassiek), hebben we een beter inzicht in de basis instelling die is vereist voor onze gegevens sets, en is er pariteit tussen de twee modellen behaald. 
 
-### <a name="create-regression-model-in-excel"></a>Regressiemodel maken in Excel
-Onze Excel Regression maakte gebruik van het standaard lineaire regressiemodel in de Excel Analysis ToolPak. 
+### <a name="create-regression-model-in-excel"></a>Regressie model maken in Excel
+In onze Excel-regressie werd het standaard lineaire regressie model gebruikt dat is gevonden in het Analysis ToolPak van Excel. 
 
-We *berekenden Gemiddelde Absolute % Fout* en gebruikten deze als prestatiemeting voor het model. Het duurde 3 maanden om te komen tot een werkend model met behulp van Excel. We brachten veel van het leren in Studio (klassieke) experiment die uiteindelijk gunstig was in het begrijpen van eisen.
+We hebben het *gemiddelde absolute% error* berekend en gebruiken als de prestatie meting voor het model. Het duurde drie maanden om aan een werkend model te komen met Excel. We hebben een groot deel van het leer proces in Studio (klassiek) ontwikkeld, wat uiteindelijk nuttig was bij het inzicht in vereisten.
 
-### <a name="create-comparable-experiment-in-studio-classic"></a>Vergelijkbare experiment maken in Studio (klassiek)
-We volgden deze stappen om ons experiment in Studio (klassiek) te maken: 
+### <a name="create-comparable-experiment-in-studio-classic"></a>Vergelijkbaar experiment maken in Studio (klassiek)
+We hebben deze stappen gevolgd om ons experiment te maken in Studio (klassiek): 
 
-1. De gegevensset geüpload als csv-bestand naar Studio (klassiek) (zeer klein bestand)
-2. Een nieuw experiment gemaakt en de module [Kolommen selecteren in gegevensset][select-columns] gebruiken om dezelfde gegevensfuncties te selecteren die in Excel worden gebruikt 
-3. De module [Gesplitste gegevens][split] (met de modus *Relatieve expressie)* gebruikt om de gegevens te verdelen in dezelfde trainingsgegevenssets als in Excel 
-4. Geëxperimenteerd met de [module Lineaire regressie][linear-regression] (alleen standaardopties), gedocumenteerd en de resultaten vergeleken met ons Excel-regressiemodel
+1. De gegevensset is geüpload als een CSV-bestand naar Studio (klassiek) (zeer klein bestand)
+2. Een nieuw experiment gemaakt en de module [select columns in dataset][select-columns] gebruiken om dezelfde gegevens functies te selecteren die worden gebruikt in Excel 
+3. De module voor het [splitsen van gegevens][split] (met de *relatieve expressie* modus) gebruikt om de gegevens te verdelen in dezelfde trainings gegevens sets die zijn uitgevoerd in Excel 
+4. Experimenteren met de [lineaire regressie][linear-regression] module (alleen de standaard opties), gedocumenteerd en vergeleken met de resultaten in het regressie model van Excel
 
-### <a name="review-initial-results"></a>Bekijk de eerste resultaten
-In eerste instantie presteerde het Excel-model duidelijk beter dan het Studio(klassieke) model: 
+### <a name="review-initial-results"></a>Initiële resultaten controleren
+In eerste instantie heeft het Excel-model duidelijk het model studio (klassiek) uitgevoerd: 
 
 |  | Excel | Studio (klassiek) |
 | --- |:---:|:---:|
 | Prestaties | | |
-| <ul style="list-style-type: none;"><li>Aangepast R-vierkant</li></ul> |0.96 |N.v.t. |
-| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Bepaling</li></ul> |N.v.t. |0,78<br />(lage nauwkeurigheid) |
-| Gemiddelde absolute fout |$ 9,5 miljoen |$ 19,4 Miljoen |
-| Gemiddelde absolute fout (%) |6.03% |12.2% |
+| <ul style="list-style-type: none;"><li>Aangepast R-kwadraat</li></ul> |0,96 |N.v.t. |
+| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Analyses</li></ul> |N.v.t. |0,78<br />(lage nauw keurigheid) |
+| Gemiddelde absolute fout |$9.5 m |$19.4 m |
+| Gemiddelde absolute fout (%) |6,03% |12,2% |
 
-Toen we ons proces en de resultaten van de ontwikkelaars en data scientists van het Machine Learning-team hebben uitgevoerd, gaven ze al snel een aantal nuttige tips. 
+Wanneer we het proces en de resultaten door de ontwikkel aars en gegevens wetenschappers op het Machine Learning team heeft uitgevoerd, hebben ze snel enkele nuttige tips gegeven. 
 
-* Wanneer u de [module Lineaire Regressie][linear-regression] in Studio (klassiek) gebruikt, worden twee methoden meegeleverd:
-  * Online Gradiënt Afdaling: Kan meer geschikt zijn voor grotere problemen
-  * Gewone minste vierkanten: Dit is de methode die de meeste mensen denken als ze lineaire regressie horen. Voor kleine datasets kunnen gewone minimumvierkantjes een meer optimale keuze zijn.
-* Overweeg het aanpassen van de parameter L2 Regularization Weight om de prestaties te verbeteren. Het is standaard ingesteld op 0,001, maar voor onze kleine gegevensset stellen we het in op 0,005 om de prestaties te verbeteren. 
+* Wanneer u de [lineaire regressie][linear-regression] module in Studio (klassiek) gebruikt, zijn er twee methoden aanwezig:
+  * Online verloop Daal: is mogelijk beter geschikt voor grotere problemen
+  * Normale minimale kwadraten: dit is de methode waarvan de meeste gebruikers denken wanneer ze lineaire regressie horen. Voor kleine gegevens sets is het mogelijk dat gewone, minimale kwadraten een meer optimale keuze zijn.
+* U kunt de para meter voor het regularisatie gewicht van L2 aanpassen om de prestaties te verbeteren. De instelling is standaard ingesteld op 0,001, maar voor de kleine gegevensset is deze ingesteld op 0,005 om de prestaties te verbeteren. 
 
-### <a name="mystery-solved"></a>Mysterie opgelost!
-Toen we de aanbevelingen toepasten, bereikten we dezelfde basislijnprestaties in Studio (klassiek) als in Excel: 
+### <a name="mystery-solved"></a>Mysterie opgelost.
+Toen we de aanbevelingen hebben toegepast, hebben we dezelfde basislijn prestaties in Studio (klassiek) bereikt als bij Excel: 
 
-|  | Excel | Studio (klassiek) (Initial) | Studio (klassiek) w/ Minste Vierkanten |
+|  | Excel | Studio (klassiek) (oorspronkelijk) | Studio (klassiek) met minste kwadraten |
 | --- |:---:|:---:|:---:|
-| Gelabelde waarde |Werkelijke artikelen (numeriek) |Dezelfde |Dezelfde |
-| Leerling |Excel -> gegevensanalyse -> regressie |Lineaire regressie. |Lineaire regressie |
-| Leerlingopties |N.v.t. |Standaardwaarden |gewone minste vierkantjes<br />L2 = 0,005 |
-| Gegevensset |26 rijen, 3 functies, 1 label. Allemaal numeriek. |Dezelfde |Dezelfde |
-| Split: Trein |Excel trainde op de eerste 18 rijen, getest op de laatste 8 rijen. |Dezelfde |Dezelfde |
-| Splitsen: Testen |Excel-regressieformule toegepast op de laatste 8 rijen |Dezelfde |Dezelfde |
+| Label waarde |Werkelijke waarden (numeriek) |dezelfde |dezelfde |
+| Learner |Excel-> gegevens analyse-> regressie |Lineaire regressie. |Lineaire regressie |
+| Opties voor meer informatie |N.v.t. |Standaardwaarden |normale minimale kwadraten<br />L2 = 0,005 |
+| Gegevensset |26 rijen, 3 kenmerken, 1 label. Alle getallen. |dezelfde |dezelfde |
+| Splitsen: trainen |Excel getraind op de eerste 18 rijen, getest op de laatste 8 rijen. |dezelfde |dezelfde |
+| Splitsen: testen |Formule van Excel-regressie toegepast op de laatste 8 rijen |dezelfde |dezelfde |
 | **Prestaties** | | | |
-| Aangepast R-vierkant |0.96 |N.v.t. | |
-| Bepalingscoëfficiënt |N.v.t. |0,78 |0.952049 |
-| Gemiddelde absolute fout |$ 9,5 miljoen |$ 19,4 Miljoen |$ 9,5 miljoen |
-| Gemiddelde absolute fout (%) |<span style="background-color: 00FF00;">6.03%</span> |12.2% |<span style="background-color: 00FF00;">6.03%</span> |
+| Aangepast R-kwadraat |0,96 |N.v.t. | |
+| Determinatie coëfficiënt |N.v.t. |0,78 |0,952049 |
+| Gemiddelde absolute fout |$9.5 m |$19.4 m |$9.5 m |
+| Gemiddelde absolute fout (%) |<span style="background-color: 00FF00;">6,03%</span> |12,2% |<span style="background-color: 00FF00;">6,03%</span> |
 
-Bovendien zijn de Excel-coëfficiënten goed vergeleken met de functiegewichten in het door Azure opgeleide model:
+Daarnaast worden de Excel-coëfficiënten vergeleken met het onderdeel gewichten in het door Azure getrainde model:
 
-|  | Excel-coëfficiënten | Azure-functiegewichten |
+|  | Excel-coëfficiënten | Gewichten van Azure-functies |
 | --- |:---:|:---:|
-| Onderschepping/bias |19470209.88 |19328500 |
-| -functie A |0.832653063 |0.834156 |
-| Functie B |11071967.08 |11007300 |
-| Functie C |25383318.09 |25140800 |
+| Interceptie/afwijking |19470209,88 |19328500 |
+| -functie A |0,832653063 |0,834156 |
+| Functie B |11071967,08 |11007300 |
+| Functie C |25383318,09 |25140800 |
 
 ## <a name="next-steps"></a>Volgende stappen
-We wilden de Machine Learning-webservice binnen Excel gebruiken. Onze bedrijfsanalisten vertrouwen op Excel en we hadden een manier nodig om de Machine Learning-webservice te bellen met een rij Excel-gegevens en de voorspelde waarde terug te geven aan Excel. 
+We wilden de Machine Learning-webservice in Excel gebruiken. Onze bedrijfs analisten vertrouwen op Excel en we hebben een manier nodig om de Machine Learning-webservice aan te roepen met een rij Excel-gegevens en de voorspelde waarde te retour neren naar Excel. 
 
-We wilden ook ons model optimaliseren, met behulp van de opties en algoritmen die beschikbaar zijn in Studio (klassiek).
+We wilden ons model ook optimaliseren met behulp van de opties en algoritmen die beschikbaar zijn in Studio (klassiek).
 
 ### <a name="integration-with-excel"></a>Integratie met Excel
-Onze oplossing was om ons Machine Learning regressiemodel te operationaliseren door een webservice te maken van het getrainde model. Binnen een paar minuten werd de webservice gemaakt en konden we deze rechtstreeks vanuit Excel bellen om een voorspelde omzetwaarde terug te geven. 
+Onze oplossing was om ons Machine Learning regressie model te operationeel maken door een webservice te maken op basis van het getrainde model. Binnen een paar minuten is de webservice gemaakt en kunnen we deze rechtstreeks vanuit Excel aanroepen om een voorspelde omzet waarde te retour neren. 
 
-De sectie *Web Services Dashboard* bevat een downloadbare Excel-werkmap. De werkmap wordt vooraf opgemaakt met de webservice-API en schema-informatie die is ingesloten. Wanneer u op *Excel-werkmap downloaden*klikt, wordt de werkmap geopend en u deze opslaan op uw lokale computer. 
+De sectie *Web Services-dash board* bevat een Excel-werkmap die kan worden gedownload. De werkmap wordt vooraf opgemaakt met de webservice-API en de Inge sloten schema-informatie. Wanneer u op *Excel-werkmap downloaden*klikt, wordt de werkmap geopend en kunt u deze opslaan op de lokale computer. 
 
-![Excel-werkmap downloaden vanuit het Dashboard WebServices](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![Excel-werkmap downloaden via het dash board van webservices](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
-Kopieer de vooraf gedefinieerde parameters naar de blauwe parametersectie zoals hieronder wordt weergegeven. Zodra de parameters zijn ingevoerd, roept Excel naar de webservice Machine Learning en worden de voorspelde punten weergegeven in de groene sectie Voorspelde waarden. De werkmap blijft voorspellingen maken voor parameters op basis van uw getrainde model voor alle rijitems die onder Parameters zijn ingevoerd. Zie [Een Azure Machine Learning Web Service](consuming-from-excel.md)gebruiken vanuit Excel voor meer informatie over het gebruik van deze functie. 
+Als de werkmap is geopend, kopieert u de vooraf gedefinieerde para meters naar de blauwe para meter sectie, zoals hieronder wordt weer gegeven. Als de para meters zijn ingevoerd, wordt Excel aangeroepen naar de Machine Learning-webservice en worden de voorspelde labels weer gegeven in de sectie voor waarden voor voor spellingen. De werkmap blijft voor spellingen maken voor para meters op basis van uw getrainde model voor alle rij-items die onder para meters zijn ingevoerd. Zie voor meer informatie over het gebruik van deze functie [een Azure machine learning-webservice gebruiken vanuit Excel](consuming-from-excel.md). 
 
 ![Sjabloon Excel-werkmap die verbinding maakt met de geïmplementeerde webservice](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalisatie en verdere experimenten
-Nu we een basislijn hadden met ons Excel-model, zijn we verder gegaan om ons Machine Learning Linear Regression Model te optimaliseren. We gebruikten de module [Filter-Based Feature Selection][filter-based-feature-selection] om onze selectie van de eerste gegevenselementen te verbeteren en het hielp ons een prestatieverbetering van 4,6% Mean Absolute Error te bereiken. Voor toekomstige projecten zullen we deze functie gebruiken die ons weken kan besparen door middel van gegevensattributen om de juiste set functies te vinden die we kunnen gebruiken voor het modelleren. 
+Nu we een basis lijn hadden met ons Excel-model, zijn we eerder verhuisd om het lineaire regressie model van Machine Learning te optimaliseren. We hebben de functie voor het [filteren op basis][filter-based-feature-selection] van module filters gebruikt voor het verbeteren van de selectie van de eerste gegevens elementen en het heeft ons geholpen een prestatie verbetering van 4,6% te bereiken met een absolute fout. Voor toekomstige projecten gebruiken we deze functie die in de toekomst weken kan besparen bij het door lopen van gegevens kenmerken om de juiste set functies te vinden die moeten worden gebruikt voor het model leren. 
 
-Vervolgens zijn we van plan om extra algoritmen zoals [Bayesian][bayesian-linear-regression] of [Boosted Decision Trees][boosted-decision-tree-regression] op te nemen in ons experiment om prestaties te vergelijken. 
+Daarna plannen we extra algoritmen zoals [Bayesiaanse][bayesian-linear-regression] of [versterkte beslissings structuren][boosted-decision-tree-regression] in ons experiment om de prestaties te vergelijken. 
 
-Als u wilt experimenteren met regressie, is een goede gegevensset om te proberen de voorbeeldgegevensset Energie-efficiëntie regressie, die veel numerieke kenmerken heeft. De gegevensset wordt geleverd als onderdeel van de voorbeeldgegevenssets in Studio (klassiek). U verschillende leermodules gebruiken om verwarmingsbelasting of koelbelasting te voorspellen. De onderstaande grafiek is een prestatievergelijking van verschillende regressieleert ten opzichte van de energie-efficiëntie gegevensset voorspellen voor de doelvariabele koelingsbelasting: 
+Als u wilt experimenteren met regressie, is een goede gegevensset om te proberen de gegevensset energie-efficiëntie regressie te testen, die veel numerieke kenmerken heeft. De gegevensset wordt gegeven als onderdeel van de voorbeeld gegevens sets in Studio (klassiek). U kunt verschillende leer modules gebruiken om te voors pellen van de belasting of de koel belasting. In de onderstaande grafiek ziet u een vergelijking van de prestaties van verschillende regressies voor het voors pellen van de gegevensset voor energie-efficiëntie voor de berekenings variabele van de doel variabelen: 
 
-| Model | Gemiddelde absolute fout | Hoofdgemiddelde kwadraatfout | Relatieve absolute fout | Relatieve kwadraatfout | Bepalingscoëfficiënt |
+| Model | Gemiddelde absolute fout | Wortel fout in kwadraat | Relatieve absolute fout | Relatief gekwadrateerde fout | Determinatie coëfficiënt |
 | --- | --- | --- | --- | --- | --- |
-| Versterkte beslissingsstructuur |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
-| Lineaire regressie (verloopafdaling) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
-| Regressie neuraal netwerk |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
-| Lineaire regressie (gewone kleinste vierkanten) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
+| Versterkte beslissings structuur |0,930113 |1,4239 |0,106647 |0,021662 |0,978338 |
+| Lineaire regressie (kleur overgang Daal) |2,035693 |2,98006 |0,233414 |0,094881 |0,905119 |
+| Regressie neuraal netwerk |1,548195 |2,114617 |0,177517 |0,047774 |0,952226 |
+| Lineaire regressie (gewone, minimale kwadraten) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
 
-## <a name="key-takeaways"></a>Belangrijkste afhaalmaaltijden
-We hebben veel geleerd door excel regressie en Studio (klassieke) experimenten parallel uit te voeren. Het maken van het basislijnmodel in Excel en het vergelijken met modellen met Machine Learning [Linear Regression][linear-regression] hielp ons Studio (klassiek) te leren en we ontdekten mogelijkheden om de gegevensselectie en modelprestaties te verbeteren. 
+## <a name="key-takeaways"></a>Key Takeaways
+We hebben een hoop geleerd van het uitvoeren van Excel-experimenten met regressie en Studio (klassiek) parallel. Het basis model maken in Excel en vergelijken met modellen met behulp van Machine Learning [lineaire regressie][linear-regression] heeft ons geholpen bij het leren van Studio (klassiek) en we hebben mogelijkheden gedetecteerd om de gegevens selectie en de prestaties van het model te verbeteren. 
 
-We vonden ook dat het raadzaam is om [filtergebaseerde functieselectie][filter-based-feature-selection] te gebruiken om toekomstige voorspellingsprojecten te versnellen. Door functieselectie toe te passen op uw gegevens, u een verbeterd model maken in Studio (klassiek) met betere algemene prestaties. 
+We hebben ook geadviseerd om op [filter gebaseerde functie selectie][filter-based-feature-selection] te gebruiken om toekomstige Voorspellings projecten te versnellen. Door functie selectie toe te passen op uw gegevens, kunt u een verbeterd model maken in Studio (klassiek) met betere algehele prestaties. 
 
-De mogelijkheid om de voorspellende analytische prognoses systemisch over te zetten van Studio (klassiek) naar Excel maakt een aanzienlijke toename van de mogelijkheid om met succes resultaten te leveren aan een breed zakelijk gebruikerspubliek mogelijk. 
+De mogelijkheid om de voorspellende analytische prognose van Studio (klassiek) over te dragen naar Excel System root, maakt een aanzienlijke toename van de mogelijkheid om resultaten te bieden aan een brede zakelijke gebruikers publiek. 
 
 ## <a name="resources"></a>Resources
-Hier volgen enkele bronnen om u te helpen met regressie te werken: 
+Hier volgen enkele bronnen voor hulp bij het werken met regressie: 
 
-* Regressie in Excel. Als u regressie in Excel nog nooit hebt geprobeerd, maakt deze zelfstudie het eenvoudig:[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* Regressie versus prognoses. Tyler Chessman schreef een blog artikel uit te leggen hoe je tijd serie forecasting doen in Excel, die een goede beginner beschrijving van lineaire regressie bevat. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
-* Gewone minst vierkanten lineaire regressie: gebreken, problemen en valkuilen. Voor een inleiding en bespreking van Regressie: [ https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Regressie in Excel. Als u nog niet hebt geprobeerd regressie in Excel te maken, kunt u met deze zelf studie eenvoudig het volgende doen:[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
+* Regressie versus prognoses. Tyler Schaakman schreef een blog artikel waarin wordt uitgelegd hoe u een time series-prognose in Excel kunt maken. dit document bevat een goede beschrijving van lineaire regressie. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
+* Normale minimale kwadraten lineaire regressie: fouten, problemen en Valk uilen. Voor een inleiding en bespreking van regressie: [ https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

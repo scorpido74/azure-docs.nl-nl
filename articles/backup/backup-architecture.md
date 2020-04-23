@@ -1,6 +1,6 @@
 ---
 title: Overzicht van de architectuur
-description: Biedt een overzicht van de architectuur, componenten en processen die worden gebruikt door de Azure Backup-service.
+description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
@@ -10,211 +10,211 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273616"
 ---
-# <a name="azure-backup-architecture-and-components"></a>Azure Backup-architectuur en -componenten
+# <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
-U de [Azure Backup-service](backup-overview.md) gebruiken om een back-up te maken van gegevens naar het Microsoft Azure-cloudplatform. In dit artikel worden azure back-uparchitectuur, componenten en processen samengevat.
+U kunt de [Azure backup-service](backup-overview.md) gebruiken om een back-up te maken van gegevens naar het Microsoft Azure Cloud platform. Dit artikel bevat een overzicht van Azure Backup architectuur, onderdelen en processen.
 
 ## <a name="what-does-azure-backup-do"></a>Wat doet Azure Backup?
 
-Azure Backup maakt een back-up van de gegevens, machinestatus en workloads die worden uitgevoerd op on-premises machines en VM-exemplaren (Azure. Er zijn een aantal Azure Backup-scenario's.
+Azure Backup maakt een back-up van de gegevens, machine status en workloads die worden uitgevoerd op on-premises machines en Azure virtual machine-exemplaren (VM). Er zijn een aantal Azure Backup scenario's.
 
 ## <a name="how-does-azure-backup-work"></a>Hoe werkt Azure Backup?
 
-U een back-up maken van machines en gegevens met behulp van een aantal methoden:
+U kunt met behulp van een aantal methoden back-ups maken van computers en gegevens:
 
-- **Back-up on-premises machines:**
-  - U back-ups maken met on-premises Windows-machines rechtstreeks naar Azure met behulp van de MARS-agent (Azure Backup Microsoft Backup Services). Linux-machines worden niet ondersteund.
-  - U back-ups maken van on-premises machines naar een back-upserver - of System Center Data Protection Manager (DPM) of Microsoft Azure Backup Server (MABS). U vervolgens een back-up maken van de back-upserver naar een vault van Recovery Services in Azure.
+- **Back-ups van on-premises machines**:
+  - U kunt rechtstreeks een back-up maken van on-premises Windows-machines naar Azure met behulp van de MARS-agent (Azure Backup Microsoft Azure Recovery Services). Linux-machines worden niet ondersteund.
+  - U kunt back-ups van on-premises machines maken op een back-upserver: System Center Data Protection Manager (DPM) of Microsoft Azure Backup Server (MABS). U kunt vervolgens een back-up maken van de back-upserver naar een Recovery Services kluis in Azure.
 
-- **Back-ups maken van Azure VM's:**
-  - U rechtstreeks back-ups maken van Azure VM's. Azure Backup installeert een back-upextensie voor de Azure VM-agent die op de VM wordt uitgevoerd. Deze extensie maakt een back-up van de hele VM.
-  - U een back-up maken van specifieke bestanden en mappen op de Azure VM door de MARS-agent uit te voeren.
-  - U een back-up maken van Azure VM's naar de MABS die in Azure wordt uitgevoerd, en u vervolgens een back-up maken van de MABS naar een vault van Recovery Services.
+- **Back-ups maken van virtuele Azure-machines**:
+  - U kunt rechtstreeks back-ups maken van Azure-Vm's. Azure Backup installeert een back-upextensie in de Azure VM-agent die wordt uitgevoerd op de VM. Deze uitbrei ding maakt een back-up van de volledige VM.
+  - U kunt een back-up maken van specifieke bestanden en mappen op de virtuele Azure-machine door de MARS-agent uit te voeren.
+  - U kunt back-ups maken van virtuele Azure-machines naar de MABS die worden uitgevoerd in azure, en u kunt vervolgens een back-up maken van de MABS naar een Recovery Services kluis.
 
-Meer informatie over [wat u maken van een back-up](backup-overview.md) en over ondersteunde [back-upscenario's.](backup-support-matrix.md)
+Meer informatie over [waarvan u een back-up kunt maken](backup-overview.md) en over [ondersteunde back-upscenario's](backup-support-matrix.md).
 
 ## <a name="where-is-data-backed-up"></a>Waar wordt een back-up van gegevens gemaakt?
 
-Azure Backup slaat back-upgegevens op in een vault van Recovery Services. Een kluis is een entiteit met onlineopslag in Azure die wordt gebruikt om gegevens vast te houden, zoals back-ups, herstelpunten en back-upbeleid.
+Azure Backup slaat back-upgegevens op in een Recovery Services kluis. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
 
-Vaults van Recovery Services hebben de volgende functies:
+Recovery Services kluizen hebben de volgende kenmerken:
 
-- Kluizen maken het eenvoudig om uw back-upgegevens te ordenen, terwijl de overhead van het beheer wordt geminimaliseerd.
-- In elk Azure-abonnement u maximaal 500 kluizen maken.
-- U back-upitems in een kluis controleren, waaronder Azure VM's en on-premises machines.
-- U kluistoegang beheren met [Azure-role-based access control (RBAC).](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- Kluizen maken het eenvoudig om uw back-upgegevens te organiseren en zo de beheer overhead te minimaliseren.
+- In elk Azure-abonnement kunt u Maxi maal 500 kluizen maken.
+- U kunt back-upitems bewaken in een kluis, waaronder Azure Vm's en on-premises machines.
+- U kunt de toegang tot de kluis beheren met [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)van Azure.
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
-  - **Lokaal redundante opslag (LRS)**: Om te beschermen tegen storingen in een datacenter, u LRS gebruiken. LRS repliceert gegevens naar een opslagschaaleenheid. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundante opslag (GRS)**: Om te beschermen tegen regio-brede storingen, u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
-  - Standaard gebruiken Vaults van Recovery Services GRS.
+  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - Recovery Services kluizen gebruiken standaard GRS.
 
 ## <a name="backup-agents"></a>Back-upagents
 
-Azure Backup biedt verschillende back-ups, afhankelijk van het type machine dat een back-up maakt:
+Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
-**Agent** | **Details**
+**Agent** | **Nadere**
 --- | ---
-**MARS-agent** | <ul><li>Wordt uitgevoerd op afzonderlijke on-premises Windows Server-machines om een back-up te maken van bestanden, mappen en de systeemstatus.</li> <li>Wordt uitgevoerd op Azure VM's om een back-up te maken van bestanden, mappen en de systeemstatus.</li> <li>Wordt uitgevoerd op DPM/MABS-servers om een back-up te maken van de lokale DPM/MABS-opslagschijf naar Azure.</li></ul>
-**Azure VM-extensie** | Wordt uitgevoerd op Azure VM's om een back-up te maken van een kluis.
+**MARS-agent** | <ul><li>Wordt uitgevoerd op afzonderlijke on-premises Windows Server-machines om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op virtuele machines van Azure om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op DPM-MABS-servers om een back-up te maken van de lokale opslag schijf DPM/MABS naar Azure.</li></ul>
+**VM-extensie van Azure** | Wordt uitgevoerd op virtuele Azure-machines om een back-up te maken naar een kluis.
 
 ## <a name="backup-types"></a>Back-uptypen
 
-In de volgende tabel worden de verschillende typen back-ups uitgelegd en wanneer deze worden gebruikt:
+In de volgende tabel worden de verschillende typen back-ups beschreven en wanneer deze worden gebruikt:
 
-**Back-uptype** | **Details** | **Gebruik**
+**Back-uptype** | **Nadere** | **Belasting**
 --- | --- | ---
-**Volledig** | Een volledige back-up bevat de volledige gegevensbron. Neemt meer netwerkbandbreedte dan differentiële of incrementele back-ups. | Gebruikt voor de eerste back-up.
-**Differentiële** |  Een differentiële back-up slaat de blokken op die zijn gewijzigd sinds de eerste volledige back-up. Gebruikt een kleinere hoeveelheid netwerk en opslag en bewaart geen overbodige kopieën van ongewijzigde gegevens.<br/><br/> Inefficiënt omdat gegevensblokken die ongewijzigd zijn tussen latere back-ups worden overgedragen en opgeslagen. | Niet gebruikt door Azure Backup.
-**Incrementeel** | Een incrementele back-up slaat alleen de blokken met gegevens op die zijn gewijzigd sinds de vorige back-up. Hoge opslag- en netwerkefficiëntie. <br/><br/> Met incrementele back-up, is er geen noodzaak om aan te vullen met volledige back-ups. | Gebruikt door DPM/MABS voor schijfback-ups en gebruikt in alle back-ups van Azure. Niet gebruikt voor SQL Server-back-up.
+**Volledig** | Een volledige back-up bevat de volledige gegevens bron. Vergt meer netwerk bandbreedte dan differentiële of incrementele back-ups. | Wordt gebruikt voor de eerste back-up.
+**Differentiële** |  Een differentiële back-up slaat de blokken op die zijn gewijzigd sinds de eerste volledige back-up. Maakt gebruik van een kleinere hoeveelheid netwerk en opslag, en houdt geen redundante kopieën van ongewijzigde gegevens in beslag.<br/><br/> Inefficiënt omdat gegevens blokken die niet worden gewijzigd tussen latere back-ups worden overgebracht en opgeslagen. | Niet gebruikt door Azure Backup.
+**Incrementeel** | Een incrementele back-up slaat alleen de gegevens blokken op die zijn gewijzigd sinds de vorige back-up. Hoge opslag en netwerk efficiency. <br/><br/> Met incrementele back-up hoeft u niet aan te vullen met volledige back-ups. | Gebruikt door DPM-MABS voor schijf back-ups en wordt gebruikt in alle back-ups naar Azure. Wordt niet gebruikt voor SQL Server back-up.
 
-## <a name="sql-server-backup-types"></a>SQL Server-back-uptypen
+## <a name="sql-server-backup-types"></a>SQL Server back-uptypen
 
-In de volgende tabel worden de verschillende typen back-ups uitgelegd die worden gebruikt voor SQL Server-databases en hoe vaak deze worden gebruikt:
+In de volgende tabel worden de verschillende typen back-ups beschreven die worden gebruikt voor SQL Server data bases en hoe vaak ze worden gebruikt:
 
-**Back-uptype** | **Details** | **Gebruik**
+**Back-uptype** | **Nadere** | **Belasting**
 --- | --- | ---
-**Volledige back-up** | Bij een volledige back-up wordt er een back-up van de hele database gemaakt. Het bevat alle gegevens in een specifieke database of in een set bestandsgroepen of bestanden. Een volledige back-up bevat ook voldoende logboeken om die gegevens te herstellen. | U kunt maximaal één volledige back-up per dag activeren.<br/><br/> U ervoor kiezen om een volledige back-up te maken op een dagelijkse of wekelijkse interval.
-**Differentiële back-up** | Een differentiële back-up is gebaseerd op de meest recente, vorige back-up met volledige gegevens.<br/><br/> Het legt alleen de gegevens vast die zijn gewijzigd sinds de volledige back-up. |  U kunt maximaal één differentiële back-up per dag activeren.<br/><br/> U kunt niet zowel een volledige back-up als een differentiële back-up configureren op dezelfde dag.
-**Back-up van transactielogboeken** | Met een logboekback-up kunt u herstel naar een bepaald tijdstip uitvoeren, tot op een specifieke seconde. | U kunt maximaal elke 15 minuten een back-up van het transactielogboek configureren.
+**Volledige back-up** | Bij een volledige back-up wordt er een back-up van de hele database gemaakt. Het bevat alle gegevens in een specifieke data base of in een set bestands groepen of bestanden. Een volledige back-up bevat ook voldoende Logboeken om die gegevens te herstellen. | U kunt maximaal één volledige back-up per dag activeren.<br/><br/> U kunt ervoor kiezen om een volledige back-up op een dagelijks of wekelijks interval te maken.
+**Differentiële back-up** | Een differentiële back-up is gebaseerd op de meest recente back-up van de vorige volledige gegevens.<br/><br/> Het legt alleen de gegevens vast die zijn gewijzigd sinds de volledige back-up. |  U kunt maximaal één differentiële back-up per dag activeren.<br/><br/> U kunt niet zowel een volledige back-up als een differentiële back-up configureren op dezelfde dag.
+**Back-up van transactie logboek** | Met een logboekback-up kunt u herstel naar een bepaald tijdstip uitvoeren, tot op een specifieke seconde. | U kunt maximaal elke 15 minuten een back-up van het transactielogboek configureren.
 
 ### <a name="comparison-of-backup-types"></a>Vergelijking van back-uptypen
 
-Opslagverbruik, hersteltijddoelstelling (RTO) en netwerkverbruik variëren voor elk type back-up. In de volgende afbeelding ziet u een vergelijking van de back-uptypen:
+Het opslag verbruik, de beoogde herstel tijd (RTO) en het netwerk verbruik variëren voor elk type back-up. In de volgende afbeelding ziet u een vergelijking van de back-uptypen:
 
-- Gegevensbron A bestaat uit 10 opslagblokken, A1-A10, waarvan maandelijks een back-up wordt ondersteund.
+- Gegevens bron A bestaat uit tien opslag blokken, a1-A10, die maandelijks een back-up maken.
 - Blokken A2, A3, A4 en A9 zijn in de eerste maand gewijzigd, en blok A5 is de maand erna gewijzigd.
-- Voor differentiële back-ups worden in de tweede maand gewijzigde blokken A2, A3, A4 en A9 geback-upt. In de derde maand wordt er opnieuw een back-up gemaakt van dezelfde blokken en van het gewijzigde blok A5. Van de gewijzigde blokken worden back-ups gemaakt totdat de volgende volledige back-up wordt uitgevoerd.
-- Voor incrementele back-ups worden in de tweede maand de blokken A2, A3, A4 en A9 gemarkeerd als gewijzigd en overgedragen. In het derde maand wordt alleen gewijzigd blok A5 gemarkeerd als gemarkeerd en overgedragen.
+- Voor differentiële back-ups, in de tweede maand, zijn er een back-up gemaakt van de blokken a2, a3, A4 en A9. In de derde maand wordt er opnieuw een back-up gemaakt van dezelfde blokken en van het gewijzigde blok A5. Van de gewijzigde blokken worden back-ups gemaakt totdat de volgende volledige back-up wordt uitgevoerd.
+- Voor incrementele back-ups worden in de tweede maand de blokken a2, a3, A4 en A9 gemarkeerd als gewijzigd en overgedragen. In het derde maand wordt alleen gewijzigd blok A5 gemarkeerd als gemarkeerd en overgedragen.
 
-![Afbeelding met vergelijkingen van back-upmethoden](./media/backup-architecture/backup-method-comparison.png)
+![Afbeelding van de vergelijking van back-upmethoden](./media/backup-architecture/backup-method-comparison.png)
 
 ## <a name="backup-features"></a>Back-upfuncties
 
-In de volgende tabel worden de ondersteunde functies voor de verschillende typen back-ups samengevat:
+De volgende tabel bevat een overzicht van de ondersteunde functies voor de verschillende typen back-ups:
 
-**Functie** | **Directe back-up van bestanden en mappen (met MARS-agent)** | **Azure VM-back-up** | **Machines of apps met DPM/MABS**
+**Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
-Back-up naar kluis | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Een back-up maken naar de DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
-Gegevens comprimeren die zijn verzonden voor back-up | ![Ja][green] | Er wordt geen compressie gebruikt bij het overbrengen van gegevens. Opslag wordt iets opgeblazen, maar de restauratie gaat sneller.  | ![Ja][green]
+Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
-Back-ups van gededupliceerdschijven | | | ![Gedeeltelijk][yellow]<br/><br/> Alleen voor DPM/MABS-servers die on-premises worden geïmplementeerd.
+Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 
-![Tabeltoets](./media/backup-architecture/table-key.png)
+![Tabel sleutel](./media/backup-architecture/table-key.png)
 
-## <a name="backup-policy-essentials"></a>Essentiële back-upbeleid
+## <a name="backup-policy-essentials"></a>Basis beginselen van back-upbeleid
 
-- Per kluis wordt een back-upbeleid gemaakt.
-- Er kan een back-upbeleid worden gemaakt voor de back-up van volgende workloads
+- Er wordt een back-upbeleid per kluis gemaakt.
+- Er kan een back-upbeleid worden gemaakt voor het maken van een back-up van de volgende werk belastingen
   - Azure VM
-  - SQL in Azure VM
+  - SQL in azure VM
   - Azure-bestandsshare
-- Aan veel resources kan een beleid worden toegewezen. Een Azure VM-back-upbeleid kan worden gebruikt om veel Azure VM's te beschermen.
-- Een beleid bestaat uit twee componenten
-  - Planning: Wanneer neemt u de back-up
-  - Retentie: Hoe lang elke back-up moet worden behouden.
-- Schema kan worden gedefinieerd als "dagelijks" of "wekelijks" met een specifiek tijdstip.
-- Retentie kan worden gedefinieerd voor "dagelijks", "wekelijks", "maandelijks", "jaarlijks" back-uppunten.
-- "wekelijks" verwijst naar een back-up op een bepaalde dag van de week, "maandelijks" betekent een back-up op een bepaalde dag van de maand en "jaarlijks" verwijst naar een back-up op een bepaalde dag van het jaar.
-- Retentie voor "maandelijkse", "jaarlijkse" back-uppunten wordt aangeduid als "LongTermRetention".
-- Wanneer een kluis wordt gemaakt, wordt ook een beleid voor Azure VM-backs met de naam 'Standaardbeleid' gemaakt en kan het worden gebruikt om back-ups van Azure VM's te maken.
+- Een beleid kan aan veel resources worden toegewezen. Een Azure VM-back-upbeleid kan worden gebruikt om veel virtuele Azure-machines te beveiligen.
+- Een beleid bestaat uit twee onderdelen
+  - Planning: wanneer de back-up moet worden gemaakt
+  - Bewaren: voor hoe lang elke back-up moet worden bewaard.
+- De planning kan worden gedefinieerd als dagelijks of wekelijks met een bepaald tijd punt.
+- U kunt Bewaar perioden definiëren voor ' dagelijks ', ' Wekelijks ', ' maandelijks ', ' jaarlijks ' back-uppunten.
+- ' Wekelijks ' verwijst naar een back-up op een bepaalde dag van de week, ' maandelijks ' betekent een back-up op een bepaalde dag van de maand en ' jaarlijks ' verwijst naar een back-up op een bepaalde dag van het jaar.
+- Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt ' LongTermRetention ' genoemd.
+- Wanneer een kluis wordt gemaakt, wordt er ook een beleid voor Azure VM-back-ups met de naam ' Defaultpolicy bij ' gemaakt en dit kan worden gebruikt voor het maken van back-ups van virtuele Azure-machines.
 
-## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM Backup
+## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 
-1. Wanneer u een back-up inschakelt voor een Azure VM, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
-1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de VM wordt uitgevoerd.
-    - Voor Windows VM's is de VMSnapshot-extensie geïnstalleerd.
-    - Voor Linux VM's is de VMSnapshot Linux extensie geïnstalleerd.
-1. De extensie maakt een momentopname op opslagniveau.
-    - Voor Windows VM's die worden uitgevoerd, coördineert Back-up met de Windows Volume Shadow Copy Service (VSS) om een app-consistente momentopname van de VM te maken. Back-up maakt standaard volledige VSS-back-ups. Als Back-up geen momentopname voor app-consistent kan maken, wordt er een momentopname voor bestand nodig.
-    - Voor Linux VM's maakt Backup een momentopname voor bestand. Voor app-consistente momentopnamen moet u vooraf/post-scripts handmatig aanpassen.
-    - Back-up wordt geoptimaliseerd door een back-up te maken van elke VM-schijf parallel. Voor elke schijf die een back-up maakt, leest Azure Backup de blokken op schijf en worden alleen de gewijzigde gegevens opgeslagen.
-1. Nadat de momentopname is gemaakt, worden de gegevens overgebracht naar de kluis.
-    - Alleen blokken gegevens die sinds de laatste back-up zijn gewijzigd, worden gekopieerd.
-    - Gegevens zijn niet versleuteld. Azure Backup kan een back-up maken van Azure VM's die zijn versleuteld met Azure Disk Encryption.
-    - Momentopnamegegevens worden mogelijk niet onmiddellijk naar de kluis gekopieerd. Op piekmomenten kan de back-up enkele uren duren. De totale back-uptijd voor een VM is minder dan 24 uur voor het dagelijkse back-upbeleid.
-1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstelpunt gemaakt. Snapshots worden standaard twee dagen bewaard voordat ze worden verwijderd. Deze functie maakt herstelbewerking van deze momentopnamen mogelijk, waardoor de hersteltijden worden afgebroken. Het vermindert de tijd die nodig is om gegevens uit de kluis te transformeren en terug te kopiëren. Zie [Azure Backup Instant Restore Capability](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
+1. Wanneer u back-up voor een virtuele machine van Azure inschakelt, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
+1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de virtuele machine wordt uitgevoerd.
+    - Voor virtuele Windows-machines wordt de VMSnapshot-extensie geïnstalleerd.
+    - Voor virtuele Linux-machines wordt de VMSnapshot Linux-extensie geïnstalleerd.
+1. De uitbrei ding neemt een moment opname op het opslag niveau.
+    - Voor Windows-Vm's waarop wordt uitgevoerd, worden er back-upcoördinaten met de Windows-Volume Shadow Copy Service (VSS) gebruikt voor het maken van een app-consistente moment opname van de virtuele machine. Standaard maakt back-ups volledige VSS-back-ups. Als back-up geen app-consistente moment opname kan maken, wordt een bestands consistente moment opname gebruikt.
+    - Voor Linux-Vm's neemt Backup een bestands consistente moment opname. Voor app-consistente moment opnamen moet u hand matig vooraf/post-scripts aanpassen.
+    - De back-up wordt geoptimaliseerd door een back-up te maken van elke VM-schijf parallel. Voor elke schijf waarvan een back-up wordt gemaakt, leest Azure Backup de blokken op de schijf en worden alleen de gewijzigde gegevens opgeslagen.
+1. Nadat de moment opname is gemaakt, worden de gegevens overgedragen naar de kluis.
+    - Alleen gegevens blokken die zijn gewijzigd sinds de laatste back-up zijn gekopieerd.
+    - De gegevens zijn niet versleuteld. Azure Backup kunt een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption.
+    - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
+1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-U hoeft geen expliciete internetverbinding toe te staan om een back-up van uw Azure VM's te maken.
+U hoeft geen expliciete Internet connectiviteit toe te staan om een back-up te maken van uw Azure-Vm's.
 
-![Back-up van Azure VM's](./media/backup-architecture/architecture-azure-vm.png)
+![Back-ups van virtuele Azure-machines](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architectuur: directe back-up van on-premises Windows Server-machines of Azure VM-bestanden of -mappen
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architectuur: directe back-ups van on-premises Windows Server-machines of Azure-VM-bestanden of-mappen
 
-1. Als u het scenario wilt instellen, downloadt en installeert u de MARS-agent op de machine. Vervolgens selecteert u wat u wilt back-ups maken, wanneer back-ups worden uitgevoerd en hoe lang deze in Azure worden bewaard.
+1. Als u het scenario wilt instellen, downloadt en installeert u de MARS-agent op de computer. Selecteer vervolgens waarvan u een back-up wilt maken, wanneer back-ups worden uitgevoerd en hoe lang ze in Azure worden bewaard.
 1. De eerste back-up wordt uitgevoerd volgens uw back-upinstellingen.
-1. De MARS-agent gebruikt VSS om een point-in-time momentopname te maken van de volumes die zijn geselecteerd voor back-up.
-    - De MARS-agent gebruikt alleen de schrijfbewerking van het Windows-systeem om de momentopname vast te leggen.
-    - Omdat de agent geen vss-schrijvers van toepassing gebruikt, worden er geen app-consistente momentopnamen vastgelegd.
-1. Nadat u de momentopname met VSS hebt gemaakt, maakt de MARS-agent een virtuele harde schijf (VHD) in de cachemap die u hebt opgegeven toen u de back-up configureerde. De agent slaat ook checksums op voor elk gegevensblok.
-1. Incrementele back-ups worden uitgevoerd volgens het schema dat u opgeeft, tenzij u een on-demand back-up uitvoert.
-1. In incrementele back-ups worden gewijzigde bestanden geïdentificeerd en wordt een nieuwe VHD gemaakt. De VHD wordt gecomprimeerd en versleuteld, en dan wordt het naar de kluis verzonden.
-1. Nadat de incrementele back-up is voltooid, wordt de nieuwe VHD samengevoegd met de VHD die is gemaakt na de eerste replicatie. Deze samengevoegde VHD biedt de nieuwste status die moet worden gebruikt voor vergelijking voor doorlopende back-up.
+1. De MARS-agent gebruikt VSS om een tijdgebonden moment opname te maken van de volumes die zijn geselecteerd voor back-up.
+    - De MARS-agent gebruikt alleen de Windows-systeem schrijf bewerking voor het vastleggen van de moment opname.
+    - Omdat de agent geen VSS-schrijvers van toepassingen gebruikt, worden er geen app-consistente moment opnamen vastgelegd.
+1. Na het maken van de moment opname met VSS, maakt de MARS-agent een virtuele harde schijf (VHD) in de cachemap die u hebt opgegeven tijdens het configureren van de back-up. De agent slaat ook de controle sommen voor elk gegevens blok op.
+1. Incrementele back-ups worden uitgevoerd volgens het schema dat u opgeeft, tenzij u een back-up op aanvraag uitvoert.
+1. In incrementele back-ups worden gewijzigde bestanden geïdentificeerd en wordt een nieuwe VHD gemaakt. De VHD wordt gecomprimeerd en versleuteld en vervolgens naar de kluis verzonden.
+1. Nadat de incrementele back-up is voltooid, wordt de nieuwe VHD samengevoegd met de VHD die is gemaakt na de initiële replicatie. Deze samengevoegde VHD bevat de meest recente status om te vergelijken voor continue back-ups.
 
-![Back-up van on-premises Windows Server-machines met MARS-agent](./media/backup-architecture/architecture-on-premises-mars.png)
+![Back-ups van on-premises Windows Server-machines met MARS agent](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architectuur: back-ups maken van DPM/MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>Architectuur: back-up naar DPM-MABS
 
-1. U installeert de DPM- of MABS-beveiligingsagent op machines die u wilt beschermen. Vervolgens voegt u de machines toe aan een DPM-beveiligingsgroep.
-    - Om on-premises machines te beschermen, moet de DPM- of MABS-server zich on-premises bevinden.
-    - Om Azure VM's te beschermen, moet de MABS-server zich in Azure bevinden en wordt uitgevoerd als een Azure VM.
-    - Met DPM/MABS u back-upvolumes, shares, bestanden en mappen beveiligen. U ook de systeemstatus van een machine (bare metal) beschermen en u specifieke apps beveiligen met app-bewuste back-upinstellingen.
-1. Wanneer u beveiliging instelt voor een machine of app in DPM/MABS, selecteert u een back-up te maken naar de lokale MABS/DPM-schijf voor opslag op korte termijn en naar Azure voor onlinebescherming. U geeft ook op wanneer de back-up naar lokale DPM/MABS-opslag moet worden uitgevoerd en wanneer de online back-up naar Azure moet worden uitgevoerd.
-1. Er wordt een back-up van de schijf van de beveiligde werkbelasting gemaakt naar de lokale MABS/DPM-schijven, volgens de door u opgegeven planning.
-1. De DPM/MABS-schijven worden naar de kluis geback-upt door de MARS-agent die op de DPM/MABS-server wordt uitgevoerd.
+1. U installeert de DPM-of MABS-beveiligings agent op computers die u wilt beveiligen. Vervolgens voegt u de machines toe aan een DPM-beveiligings groep.
+    - Als u on-premises machines wilt beveiligen, moet de DPM-of MABS-server zich lokaal bevinden.
+    - Om virtuele Azure-machines te beveiligen, moet de MABS-server zich in azure bevinden, die wordt uitgevoerd als een virtuele machine van Azure.
+    - Met DPM-MABS kunt u back-upvolumes, shares, bestanden en mappen beveiligen. U kunt ook de systeem status van een computer beveiligen (bare metal) en u kunt specifieke apps beveiligen met app-Aware back-upinstellingen.
+1. Wanneer u de beveiliging voor een machine of app in DPM-MABS instelt, selecteert u een back-up naar de lokale MABS/DPM-schijf voor kortetermijnbeveiliging en naar Azure voor online beveiliging. U geeft ook op wanneer de back-up naar de lokale DPM-MABS-opslag moet worden uitgevoerd en wanneer de online back-up naar Azure moet worden uitgevoerd.
+1. Op de schijf van de beveiligde werk belasting wordt een back-up gemaakt op de lokale MABS/DPM-schijven volgens het schema dat u hebt opgegeven.
+1. Er wordt een back-up van de DPM-MABS-schijven gemaakt op de kluis door de MARS-agent die wordt uitgevoerd op de DPM/MABS-server.
 
-![Back-up van machines en workloads die worden beschermd door DPM of MABS](./media/backup-architecture/architecture-dpm-mabs.png)
+![Back-ups van machines en workloads die worden beveiligd door DPM of MABS](./media/backup-architecture/architecture-dpm-mabs.png)
 
 ## <a name="azure-vm-storage"></a>Azure VM-opslag
 
-Azure VM's gebruiken schijven om hun besturingssysteem, apps en gegevens op te slaan. Elke Azure VM heeft ten minste twee schijven: een schijf voor het besturingssysteem en een tijdelijke schijf. Azure VM's kunnen ook gegevensschijven voor app-gegevens bevatten. Schijven worden opgeslagen als VHD's.
+Azure-Vm's gebruiken schijven voor het opslaan van hun besturings systeem, apps en gegevens. Elke virtuele machine van Azure heeft ten minste twee schijven: een schijf voor het besturings systeem en een tijdelijke schijf. Virtuele Azure-machines kunnen ook gegevens schijven hebben voor app-gegevens. Schijven worden opgeslagen als Vhd's.
 
-- VHD's worden opgeslagen als paginablobs in standaard- of premium opslagaccounts in Azure:
-  - **Standaardopslag:** Betrouwbare, goedkope schijfondersteuning voor VM's met workloads die niet gevoelig zijn voor latentie. Standaardopslag kan gebruik maken van standaard SSD-schijven (Solid State Drive) of standaard harde schijfschijven (HDD's).
-  - **Premium opslag:** Krachtige schijfondersteuning. Maakt gebruik van premium SSD-schijven.
-- Er zijn verschillende prestatielagen voor schijven:
-  - **Standaard HDD-schijf:** Ondersteund door HDD's en gebruikt voor kosteneffectieve opslag.
-  - **Standaard SSD-schijf:** Combineert elementen van premium SSD-schijven en standaard HDD-schijven. Biedt consistentere prestaties en betrouwbaarheid dan HDD, maar nog steeds kosteneffectief.
-  - **Premium SSD schijf:** Ondersteund door SSD's en biedt krachtige en lage latentie voor VM's waarop I/O-intensieve workloads worden uitgevoerd.
-- Schijven kunnen worden beheerd of niet beheerd:
-  - **Niet-beheerde schijven:** Traditioneel type schijven dat door VM's wordt gebruikt. Voor deze schijven maakt u uw eigen opslagaccount aan en geeft u dit op wanneer u de schijf maakt. Vervolgens moet u uitzoeken hoe u de opslagresources voor uw VM's maximaliseren.
-  - **Beheerde schijven:** Azure maakt en beheert de opslagaccounts voor u. U geeft de schijfgrootte en prestatielaag op en Azure maakt beheerde schijven voor u. Terwijl u schijven toevoegt en VM's schaalt, verwerkt Azure de opslagaccounts.
+- Vhd's worden opgeslagen als pagina-blobs in standaard-of Premium Storage-accounts in Azure:
+  - **Standaard opslag:** Betrouw bare, voordelige schijf ondersteuning voor Vm's met werk belastingen die niet gevoelig zijn voor latentie. Standaard opslag kan gebruikmaken van standaard SSD-schijven (Solid-State Drive) of harde schijven van harde schijven.
+  - **Premium-opslag:** Ondersteuning voor schijf met hoge prestaties. Maakt gebruik van Premium SSD-schijven.
+- Er zijn verschillende prestatie lagen voor schijven:
+  - **Standard-HDD schijf:** Ondersteund door Hdd's en gebruikt voor rendabele opslag.
+  - **Standard-SSD schijf:** Hiermee worden elementen van Premium SSD-schijven en standaard HDD-schijven gecombineerd. Biedt consistente prestaties en betrouw baarheid dan HDD, maar nog steeds rendabel.
+  - **Premium-SSD schijf:** Ondersteund door Ssd's en biedt hoge prestaties en lage latentie voor Vm's met I/O-intensieve workloads.
+- Schijven kunnen worden beheerd of onbeheerd:
+  - Niet- **beheerde schijven:** Traditioneel type schijven dat wordt gebruikt door Vm's. Voor deze schijven maakt u uw eigen opslag account en geeft u deze op wanneer u de schijf maakt. Vervolgens moet u nagaan hoe u de opslag resources voor uw virtuele machines kunt maximaliseren.
+  - **Beheerde schijven:** Azure maakt en beheert de opslag accounts voor u. U geeft de schijf grootte en de prestatie-laag op en Azure maakt beheerde schijven voor u. Wanneer u schijven toevoegt en virtuele machines schaalt, worden de opslag accounts door Azure afgehandeld.
 
-Zie de volgende artikelen voor meer informatie over schijfopslag en de beschikbare schijftypen voor VM's:
+Zie de volgende artikelen voor meer informatie over schijf ruimte en de beschik bare schijf typen voor Vm's:
 
-- [Azure beheerde schijven voor Windows VM's](../virtual-machines/windows/managed-disks-overview.md)
-- [Azure beheerde schijven voor Linux VM's](../virtual-machines/linux/managed-disks-overview.md)
-- [Beschikbare schijftypen voor VM's](../virtual-machines/windows/disks-types.md)
+- [Azure Managed disks voor Windows-Vm's](../virtual-machines/windows/managed-disks-overview.md)
+- [Azure Managed disks voor Linux Vm's](../virtual-machines/linux/managed-disks-overview.md)
+- [Beschik bare schijf typen voor Vm's](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Back-ups maken en Azure VM's herstellen met premium opslag
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Back-ups van virtuele Azure-machines maken en herstellen met Premium Storage
 
-U een back-up maken van Azure VM's met behulp van premium opslag met Azure Backup:
+U kunt back-ups van virtuele Azure-machines maken met behulp van Premium Storage met Azure Backup:
 
-- Tijdens het proces van back-ups van VM's met premium opslag, maakt de Back-upservice een tijdelijke faseringslocatie, genaamd *AzureBackup,* in het opslagaccount. De grootte van de faseringslocatie is gelijk aan de grootte van de momentopname van het herstelpunt.
-- Zorg ervoor dat het premium opslagaccount voldoende vrije ruimte heeft om de tijdelijke halteplaats te huisvesten. Zie [Schaalbaarheidsdoelen voor blob-opslagaccounts voor premium pagina's](../storage/blobs/scalability-targets-premium-page-blobs.md)voor meer informatie . Wijzig de faseringslocatie niet.
-- Nadat de back-uptaak is voltooid, wordt de faseringslocatie verwijderd.
-- De prijs van de opslag die wordt gebruikt voor de halteplaats is in overeenstemming met [de prijzen voor premium opslag](../virtual-machines/windows/disks-types.md#billing).
+- Tijdens het proces van het maken van back-ups van virtuele machines met Premium Storage maakt de back-upservice een tijdelijke faserings locatie met de naam *AzureBackup-* in het opslag account. De grootte van de faserings locatie is gelijk aan de grootte van de moment opname van het herstel punt.
+- Zorg ervoor dat het Premium-opslag account voldoende vrije ruimte heeft voor de tijdelijke faserings locatie. Zie [schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../storage/blobs/scalability-targets-premium-page-blobs.md)voor meer informatie. Wijzig de faserings locatie niet.
+- Nadat de back-uptaak is voltooid, wordt de faserings locatie verwijderd.
+- De prijs van de opslag die wordt gebruikt voor de faserings locatie is consistent met de [prijzen voor Premium Storage](../virtual-machines/windows/disks-types.md#billing).
 
-Wanneer u Azure VM's herstelt met behulp van premium opslag, u deze herstellen naar premium- of standaardopslag. Normaal gesproken zou u ze herstellen naar premium opslag. Maar als u slechts een subset van bestanden van de VM nodig hebt, kan het kosteneffectief zijn om ze te herstellen naar standaardopslag.
+Wanneer u Azure-Vm's herstelt met behulp van Premium-opslag, kunt u ze herstellen naar de Premium-of Standard-opslag. Normaal gesp roken herstelt u ze naar Premium Storage. Maar als u slechts een subset van bestanden van de virtuele machine nodig hebt, is het mogelijk rendabel om ze te herstellen naar de standaard opslag.
 
-### <a name="back-up-and-restore-managed-disks"></a>Back-ups maken en beheerde schijven herstellen
+### <a name="back-up-and-restore-managed-disks"></a>Back-up en herstel van beheerde schijven
 
-U een back-up maken van Azure VM's met beheerde schijven:
+U kunt back-ups maken van virtuele Azure-machines met beheerde schijven:
 
-- U maakt een back-up van VM's met beheerde schijven op dezelfde manier als elke andere Azure-vm. U de vm rechtstreeks vanuit de instellingen van de virtuele machine een back-up maken of u back-ups voor VM's inschakelen in de kluis Van Herstelservices.
+- U maakt een back-up van virtuele machines met beheerde schijven op dezelfde manier als andere virtuele Azure-machines. U kunt rechtstreeks vanuit de instellingen van de virtuele machine een back-up van de VM maken of u kunt back-ups voor virtuele machines inschakelen in de Recovery Services kluis.
 - U kunt back-ups maken van virtuele machines op beheerde schijven via RestorePoint-verzamelingen die zijn gebouwd boven op beheerde schijven.
-- Azure Backup ondersteunt ook back-ups van VM's met beheerde schijven die zijn versleuteld met Azure Disk Encryption.
+- Azure Backup biedt ook ondersteuning voor het maken van back-ups van virtuele machines met beheerde schijven die zijn versleuteld met behulp van Azure Disk Encryption.
 
-Wanneer u VM's herstelt met beheerde schijven, u herstellen naar een volledige virtuele machine met beheerde schijven of naar een opslagaccount:
+Wanneer u Vm's herstelt met Managed disks, kunt u een volledige VM met beheerde schijven of een opslag account herstellen:
 
-- Tijdens het herstelproces verwerkt Azure de beheerde schijven. Als u de optie opslagaccount gebruikt, beheert u het opslagaccount dat tijdens het herstelproces is gemaakt.
-- Als u een versleutelde beheerde vm herstelt, controleert u of de sleutels en geheimen van de vm in de sleutelkluis bestaan voordat u het herstelproces start.
+- Tijdens het herstel proces verwerkt Azure de beheerde schijven. Als u de optie voor het opslag account gebruikt, beheert u het opslag account dat tijdens het herstel proces is gemaakt.
+- Als u een beheerde virtuele machine herstelt die is versleuteld, moet u ervoor zorgen dat de sleutels en geheimen van de virtuele machine in de sleutel kluis voor komen voordat u het herstel proces start.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de ondersteuningsmatrix voor [meer informatie over ondersteunde functies en beperkingen voor back-upscenario's.](backup-support-matrix.md)
-- Back-up instellen voor een van deze scenario's:
-  - [Back-ups maken van Azure VM's](backup-azure-arm-vms-prepare.md).
+- Raadpleeg de ondersteunings matrix voor [meer informatie over ondersteunde functies en beperkingen voor back-upscenario's](backup-support-matrix.md).
+- Stel de back-up in voor een van deze scenario's:
+  - [Maak een back-up van virtuele Azure-machines](backup-azure-arm-vms-prepare.md).
   - [Rechtstreeks een back-up maken van Windows-machines](tutorial-backup-windows-server-to-azure.md), zonder een back-upserver.
   - [MABS instellen](backup-azure-microsoft-azure-backup.md) voor het maken van een back-up naar Azure, en vervolgens een back-up van workloads naar MABS maken.
   - [DPM instellen](backup-azure-dpm-introduction.md) voor het maken van een back-up naar Azure, en vervolgens een back-up van workloads naar DPM maken.

@@ -1,6 +1,6 @@
 ---
-title: Levering en nieuwe poging van Azure Event Grid
-description: Beschrijft hoe Azure Event Grid gebeurtenissen en hoe het omgaat met niet-geleverde berichten.
+title: Azure Event Grid levering en probeer het opnieuw
+description: Hierin wordt beschreven hoe Azure Event Grid gebeurtenissen levert en hoe er niet-bezorgde berichten worden verwerkt.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -14,31 +14,31 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921059"
 ---
-# <a name="event-grid-message-delivery-and-retry"></a>Levering en opnieuw proberen van gebeurtenisrasterberichten
+# <a name="event-grid-message-delivery-and-retry"></a>Bericht bezorging Event Grid en probeer het opnieuw
 
-In dit artikel wordt beschreven hoe Azure Event Grid omgaat met gebeurtenissen wanneer de levering niet wordt erkend.
+In dit artikel wordt beschreven hoe Azure Event Grid gebeurtenissen afhandelt wanneer de levering niet wordt bevestigd.
 
-Event Grid biedt duurzame levering. Het levert elk bericht ten minste eenmaal voor elk abonnement. Gebeurtenissen worden onmiddellijk naar het geregistreerde eindpunt van elk abonnement verzonden. Als een eindpunt de ontvangst van een gebeurtenis niet bevestigt, wordt de weergave van de gebeurtenis opnieuw ingeroepen.
+Event Grid biedt een duurzame levering. Het levert elk bericht ten minste één keer per abonnement. Gebeurtenissen worden direct naar het geregistreerde eind punt van elk abonnement verzonden. Als een eind punt de ontvangst van een gebeurtenis niet bevestigt, Event Grid nieuwe pogingen van de gebeurtenis.
 
-## <a name="batched-event-delivery"></a>Batched event delivery
+## <a name="batched-event-delivery"></a>Levering van batch gebeurtenissen
 
-Event Grid kan standaard elke gebeurtenis afzonderlijk naar abonnees verzenden. De abonnee ontvangt een array met één gebeurtenis. U Gebeurtenisraster configureren op batchgebeurtenissen voor levering voor verbeterde HTTP-prestaties in scenario's met een hoge doorvoer.
+Event Grid standaard elke gebeurtenis afzonderlijk naar abonnees verzenden. De abonnee ontvangt een matrix met één gebeurtenis. U kunt Event Grid voor de levering van batch gebeurtenissen configureren voor betere HTTP-prestaties in scenario's met hoge door voer.
 
-Batched delivery heeft twee instellingen:
+De batch levering heeft twee instellingen:
 
-* **Maximale gebeurtenissen per batch** - Maximaal aantal gebeurtenissen Event Grid zal leveren per batch. Dit aantal zal nooit worden overschreden, maar er mogen minder evenementen worden geleverd als er geen andere evenementen beschikbaar zijn op het moment van publicatie. Gebeurtenisraster vertraagt gebeurtenissen niet om een batch te maken als er minder gebeurtenissen beschikbaar zijn. Moet tussen de 1 en 5.000 zijn.
-* **Voorkeursbatchgrootte in kilobytes** - Doelplafond voor batchgrootte in kilobytes. Net als bij max-gebeurtenissen kan de batchgrootte kleiner zijn als er op het moment van publicatie niet meer gebeurtenissen beschikbaar zijn. Het is mogelijk dat een batch groter is dan de gewenste batchgrootte *als* een enkele gebeurtenis groter is dan de gewenste grootte. Als de gewenste grootte bijvoorbeeld 4 KB is en een gebeurtenis van 10 KB wordt gepusht naar Gebeurtenisraster, wordt de gebeurtenis 10 KB nog steeds in de eigen batch geleverd in plaats van te worden verwijderd.
+* **Max. gebeurtenissen per batch** -maximum aantal gebeurtenissen Event grid per batch worden geleverd. Dit aantal wordt nooit overschreden. er kunnen echter minder gebeurtenissen worden geleverd als er geen andere gebeurtenissen beschikbaar zijn op het moment van publiceren. Event Grid vertraging gebeurtenissen niet op om een batch te maken als er minder gebeurtenissen beschikbaar zijn. Moet tussen 1 en 5.000.
+* De **voor Keurs-Batch grootte in kilo bytes** -doel plafond voor Batch grootte in kB. Net als bij de maximale gebeurtenissen kan de Batch grootte kleiner zijn als er meer gebeurtenissen niet beschikbaar zijn op het moment van publiceren. Het is mogelijk dat een batch groter is dan de voorkeurs Batch grootte *als* één gebeurtenis groter is dan de voorkeurs grootte. Als de voorkeurs grootte bijvoorbeeld 4 KB is en een gebeurtenis van 10 KB naar Event Grid wordt gepusht, wordt de gebeurtenis met 10 KB nog steeds in een eigen batch opgenomen, in plaats van dat deze wordt verwijderd.
 
-Batched delivery in configured on a per-event subscription basis via de portal, CLI, PowerShell of SDKs.
+Batch levering is geconfigureerd op basis van per gebeurtenis abonnement via de portal, CLI, Power shell of Sdk's.
 
 ### <a name="azure-portal"></a>Azure Portal: 
-![Instellingen voor batchbezorging](./media/delivery-and-retry/batch-settings.png)
+![Instellingen voor batch levering](./media/delivery-and-retry/batch-settings.png)
 
-### <a name="azure-cli"></a>Azure-CLI
-Gebruik bij het maken van een gebeurtenisabonnement de volgende parameters: 
+### <a name="azure-cli"></a>Azure CLI
+Gebruik de volgende para meters bij het maken van een gebeurtenis abonnement: 
 
-- **max-events-per-batch** - Maximaal aantal gebeurtenissen in een batch. Moet een getal tussen 1 en 5000 zijn.
-- **preferred-batch-size-in-kilobytes** - Voorkeursbatchgrootte in kilobytes. Moet een getal tussen 1 en 1024 zijn.
+- **Max-gebeurtenissen-per batch** -maximum aantal gebeurtenissen in een batch. Moet een getal tussen 1 en 5000 zijn.
+- **voor keur-Batch-grootte-in-kilo bytes** -de gewenste Batch grootte in kB. Moet een getal tussen 1 en 1024 zijn.
 
 ```azurecli
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -52,11 +52,11 @@ az eventgrid event-subscription create \
   --preferred-batch-size-in-kilobytes 512
 ```
 
-Zie [Route-opslaggebeurtenissen naar webeindpunt met Azure CLI](../storage/blobs/storage-blob-event-quickstart.md)voor meer informatie over het gebruik van Azure CLI met gebeurtenisraster.
+Voor meer informatie over het gebruik van Azure CLI met Event Grid raadpleegt [u opslag gebeurtenissen naar een webeindpunt routeren met Azure cli](../storage/blobs/storage-blob-event-quickstart.md).
 
-## <a name="retry-schedule-and-duration"></a>Schema en duur opnieuw proberen
+## <a name="retry-schedule-and-duration"></a>Schema en duur van opnieuw proberen
 
-Event Grid wacht 30 seconden op een antwoord na het afleveren van een bericht. Als het eindpunt na 30 seconden niet heeft gereageerd, wordt het bericht in de wachtrij geplaatst voor het opnieuw proberen. Event Grid gebruikt een exponentieel backoff retry-beleid voor het leveren van gebeurtenissen. Gebeurtenisgrid herzendingen levering op de volgende schema op een best effort basis:
+Event Grid 30 seconden wachten op een reactie na het afleveren van een bericht. Als het eind punt 30 seconden niet heeft gereageerd, wordt het bericht in de wachtrij geplaatst voor opnieuw proberen. Event Grid gebruikt een exponentiële uitstel beleid voor opnieuw proberen voor gebeurtenis levering. Event Grid nieuwe pogingen op het volgende schema worden uitgevoerd op basis van de beste inspanningen:
 
 - 10 seconden
 - 30 seconden
@@ -65,67 +65,67 @@ Event Grid wacht 30 seconden op een antwoord na het afleveren van een bericht. A
 - 10 minuten
 - 30 minuten
 - 1 uur
-- Uurtijd tot 24 uur
+- Maxi maal 24 uur per uur
 
-Als het eindpunt binnen 3 minuten reageert, probeert Gebeurtenisgrid de gebeurtenis op basis van de beste inspanning uit de wachtrij voor opnieuw proberen te verwijderen, maar kunnen er nog steeds duplicaten worden ontvangen.
+Als het eind punt binnen drie minuten reageert, probeert Event Grid de gebeurtenis te verwijderen uit de wachtrij voor nieuwe pogingen, maar zijn er dubbele items mogelijk wel ontvangen.
 
-Event Grid voegt een kleine randomisatie toe aan alle stappen opnieuw proberen en kan op opportunistische wijze bepaalde nieuwe pogingen overslaan als een eindpunt consistent ongezond is, voor een lange periode omlaag of overweldigd lijkt te zijn.
+Event Grid voegt een kleine wille keurige stap toe aan alle stappen voor opnieuw proberen en kan eventueel bepaalde nieuwe pogingen overs Laan als een eind punt zich in de consistente status bevindt, gedurende een lange periode niet actief is of niet wordt overbelast.
 
-Stel voor deterministisch gedrag de gebeurtenistijd in op live- en max-leveringspogingen in het [beleid voor het opnieuw proberen van abonnementen](manage-event-delivery.md).
+Stel voor deterministisch gedrag de gebeurtenis tijd in op Live en Maxi maal bezorgings pogingen in het [beleid voor opnieuw proberen](manage-event-delivery.md)van het abonnement.
 
-Standaard verloopt gebeurtenisraster alle gebeurtenissen die niet binnen 24 uur worden geleverd. U [het beleid voor opnieuw proberen aanpassen](manage-event-delivery.md) bij het maken van een gebeurtenisabonnement. U geeft het maximum aantal afleverpogingen op (standaard is 30) en de gebeurtenis time-to-live (standaard is 1440 minuten).
+Event Grid verloopt standaard alle gebeurtenissen die binnen 24 uur niet worden geleverd. U kunt [het beleid voor opnieuw proberen](manage-event-delivery.md) aan te passen bij het maken van een gebeurtenis abonnement. U geeft het maximum aantal bezorgings pogingen op (standaard 30) en de gebeurtenis time-to-Live (de standaard waarde is 1440 minuten).
 
 ## <a name="delayed-delivery"></a>Vertraagde levering
 
-Aangezien een eindpunt leveringsfouten ondervindt, begint Gebeurtenisgrid de levering en het opnieuw proberen van gebeurtenissen naar dat eindpunt uit te stellen. Als bijvoorbeeld de eerste 10 gebeurtenissen die zijn gepubliceerd op een eindpunt mislukken, gaat Gebeurtenisgrid ervan uit dat het eindpunt problemen ondervindt en worden alle volgende nieuwe pogingen *en nieuwe* leveringen enige tijd uitgesteld - in sommige gevallen tot enkele uren.
+Als een eind punt uitvalt, worden de levering en het opnieuw proberen van gebeurtenissen naar dat eind punt door Event Grid uitgesteld. Als bijvoorbeeld de eerste 10 gebeurtenissen die naar een eind punt zijn gepubliceerd, mislukt, Event Grid ervan uitgaan dat het eind punt problemen ondervindt en alle volgende pogingen *en nieuwe* leveringen gedurende een bepaalde periode tot enkele uren in enkele gevallen vertragen.
 
-Het functionele doel van vertraagde levering is het beschermen van ongezonde eindpunten en het Event Grid-systeem. Zonder back-off en vertraging van de levering aan ongezonde eindpunten, kunnen de beleid- en volumemogelijkheden van Event Grid een systeem gemakkelijk overweldigen.
+Het functionele doel van een vertraagde levering is het beveiligen van beschadigde eind punten en het Event Grid systeem. Als er geen back-up wordt uitgevoerd en er wordt uitgegaan van de levering aan de beschadigde eind punten, kan het beleid voor opnieuw proberen van Event Grid en kunnen de volume mogelijkheden eenvoudig een systeem overbelasten.
 
-## <a name="dead-letter-events"></a>Dode-letter gebeurtenissen
+## <a name="dead-letter-events"></a>Onbestelbare gebeurtenissen
 
-Wanneer Event Grid geen gebeurtenis kan leveren, kan het de niet-geleverde gebeurtenis naar een opslagaccount sturen. Dit proces staat bekend als dead-lettering. Standaard schakelt Event Grid geen dead-lettering in. Als u dit wilt inschakelen, moet u een opslagaccount opgeven om niet-geleverde gebeurtenissen vast te houden bij het maken van het gebeurtenisabonnement. U haalt gebeurtenissen uit dit opslagaccount om leveringen op te lossen.
+Als Event Grid geen gebeurtenis kan leveren, kan deze de niet-bezorgde gebeurtenis verzenden naar een opslag account. Dit proces wordt onbestelbare berichten genoemd. Standaard wordt door Event Grid geen onbestelbare berichten ingeschakeld. Als u deze functie wilt inschakelen, moet u een opslag account opgeven om niet-bezorgde gebeurtenissen te bewaren tijdens het maken van het gebeurtenis abonnement. U haalt gebeurtenissen uit dit opslag account op om leveringen op te lossen.
 
-Event Grid stuurt een gebeurtenis naar de dode-letter locatie wanneer het al zijn pogingen tot nieuwe pogingen heeft geprobeerd. Als Event Grid een responscode van 400 (Bad Request) of 413 (Request Entity Too Large) ontvangt, wordt de gebeurtenis onmiddellijk naar het eindpunt van de dode letter gestuurd. Deze antwoordcodes geven aan dat de levering van de gebeurtenis nooit zal slagen.
+Event Grid verzendt een gebeurtenis naar de locatie van de onbestelbare berichten wanneer deze alle nieuwe pogingen heeft geprobeerd uit te voeren. Als Event Grid een respons code van 400 (ongeldige aanvraag) of 413 (te grote aanvraag entiteit) ontvangt, wordt de gebeurtenis onmiddellijk naar het eind punt voor onbestelbare berichten verzonden. Met deze antwoord codes wordt aangegeven dat de levering van de gebeurtenis nooit slaagt.
 
-Er is een vertraging van vijf minuten tussen de laatste poging om een gebeurtenis te leveren en wanneer deze op de dode-letterlocatie wordt afgeleverd. Deze vertraging is bedoeld om het aantal Blob-opslagbewerkingen te verminderen. Als de dode-letterlocatie vier uur niet beschikbaar is, wordt de gebeurtenis verwijderd.
+Er is een vertraging van vijf minuten tussen de laatste poging om een gebeurtenis te leveren en wanneer deze wordt geleverd aan de locatie van de onbestelbare berichten. Deze vertraging is bedoeld om het aantal Blob Storage-bewerkingen te verminderen. Als de locatie voor onbestelbare berichten vier uur niet beschikbaar is, wordt de gebeurtenis verwijderd.
 
-Voordat u de dode-letterlocatie instelt, moet u een opslagaccount bij een container hebben. U geeft het eindpunt voor deze container op bij het maken van het gebeurtenisabonnement. Het eindpunt is in de vorm van:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Voordat u de locatie van de onbestelbare letter instelt, moet u een opslag account hebben met een container. U geeft het eind punt voor deze container op bij het maken van het gebeurtenis abonnement. Het eind punt heeft de volgende indeling:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-U een melding ontvangen wanneer een gebeurtenis naar de locatie van de dode letter is verzonden. Als u Gebeurtenisraster wilt gebruiken om te reageren op niet-geleverde gebeurtenissen, [maakt u een gebeurtenisabonnement](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) voor de opslag van de dode letterblob. Elke keer dat uw dode-letter blob-opslag een niet-geleverde gebeurtenis ontvangt, waarschuwt Event Grid uw handler. De handler reageert met acties die u wilt uitvoeren voor het combineren van niet-geleverde gebeurtenissen.
+Mogelijk wilt u een melding ontvangen wanneer een gebeurtenis naar de locatie van de onbestelbare brief is verzonden. Als u Event Grid wilt gebruiken om te reageren op niet-bezorgde gebeurtenissen, [maakt u een gebeurtenis abonnement](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) voor de onbestelbare Blob-opslag. Telkens wanneer uw dead-letter-Blob-opslag een niet-bezorgd gebeurtenis ontvangt, wordt Event Grid een melding verzonden naar uw handler. De handler reageert met de acties die u wilt uitvoeren voor het afstemmen van niet-bezorgde gebeurtenissen.
 
-Zie [Dode letter en beleid opnieuw proberen](manage-event-delivery.md)voor een voorbeeld van het instellen van een dode letterlocatie.
+Zie [Dead-letter en beleid voor opnieuw proberen](manage-event-delivery.md)voor een voor beeld van het instellen van een locatie met een onbestelbare letter.
 
-## <a name="message-delivery-status"></a>Status van berichtbezorging
+## <a name="message-delivery-status"></a>Leverings status van bericht
 
-Event Grid gebruikt HTTP-antwoordcodes om de ontvangst van gebeurtenissen te bevestigen. 
+Event Grid maakt gebruik van HTTP-antwoord codes om de ontvangst van gebeurtenissen te bevestigen. 
 
-### <a name="success-codes"></a>Succescodes
+### <a name="success-codes"></a>Geslaagde codes
 
-Event Grid beschouwt **alleen** de volgende HTTP-antwoordcodes als geslaagde leveringen. Alle andere statuscodes worden beschouwd als mislukte leveringen en worden opnieuw geprobeerd of naar gelang van het geval opnieuw gebriefd. Na ontvangst van een succesvolle statuscode beschouwt Event Grid de levering als voltooid.
+Event Grid beschouwt **alleen** de volgende HTTP-antwoord codes als geslaagde leveringen. Alle andere status codes worden beschouwd als mislukte leveringen en worden indien nodig opnieuw geprobeerd of deadlettered. Wanneer de status code is ontvangen, wordt de levering van Event Grid beschouwd als voltooid.
 
 - 200 OK
-- 201 Gemaakt
-- 202 Geaccepteerd
-- 203 Niet-gezaghebbende informatie
-- 204 Geen inhoud
+- 201 gemaakt
+- 202 geaccepteerd
+- 203 niet-bindende informatie
+- 204 geen inhoud
 
-### <a name="failure-codes"></a>Foutcodes
+### <a name="failure-codes"></a>Fout codes
 
-Alle andere codes die niet in de bovenstaande set (200-204) staan, worden als mislukt beschouwd en worden opnieuw geprobeerd. Sommige hebben specifieke retry beleid gebonden aan hen hieronder beschreven, alle anderen volgen de standaard exponentiële back-off model. Het is belangrijk om in gedachten te houden dat als gevolg van de sterk parallelle aard van de architectuur van Event Grid, het retry-gedrag niet-deterministisch is. 
+Alle andere codes die zich niet in de bovenstaande set (200-204) bevinden, worden beschouwd als fouten en worden opnieuw geprobeerd. Enkele van de specifieke beleids regels voor opnieuw proberen die hieronder worden beschreven, volgen alle andere voor beelden van het standaard exponentiële uitstel model. Het is belang rijk dat u er rekening mee houdt dat het gedrag van de nieuwe poging niet-deterministisch is als gevolg van de zeer parallelle aard van de architectuur van Event Grid. 
 
-| Statuscode | Gedrag opnieuw proberen |
+| Statuscode | Gedrag voor opnieuw proberen |
 | ------------|----------------|
-| 400 Slecht verzoek | Opnieuw proberen na 5 minuten of meer (Deadletter onmiddellijk als deadletter setup) |
-| 401 Ongeautoriseerd | Probeer het opnieuw na 5 minuten of meer |
-| 403 Verboden | Probeer het opnieuw na 5 minuten of meer |
-| 404 Niet gevonden | Probeer het opnieuw na 5 minuten of meer |
-| 408 Time-out van aanvraag | Probeer het opnieuw na 2 minuten of meer |
-| 413 Entiteit te groot aanvragen | Opnieuw proberen na 10 seconden of meer (Deadletter onmiddellijk als deadletter setup) |
-| 503 Service niet beschikbaar | Probeer het opnieuw na 30 seconden of meer |
-| Alle anderen | Probeer het opnieuw na 10 seconden of meer |
+| 400 ongeldige aanvraag | Na 5 minuten of meer opnieuw proberen (Deadletter direct bij het instellen van Deadletter) |
+| 401 niet gemachtigd | Opnieuw proberen na 5 minuten of langer |
+| 403 verboden | Opnieuw proberen na 5 minuten of langer |
+| 404 Niet gevonden | Opnieuw proberen na 5 minuten of langer |
+| 408 Time-out van aanvraag | Opnieuw proberen na twee minuten of langer |
+| de 413-aanvraag entiteit is te groot | Na 10 seconden of meer opnieuw proberen (Deadletter onmiddellijk als Deadletter is ingesteld) |
+| 503 Service niet beschikbaar | Opnieuw proberen na 30 seconden of langer |
+| Alle andere | Opnieuw proberen na 10 seconden of langer |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Gebeurtenisnetbezorging controleren](monitor-event-delivery.md)om de status van gebeurtenisleveringen te bekijken.
-* Zie [Dode letter en beleid opnieuw proberen](manage-event-delivery.md)als u opties voor het bezorgen van gebeurtenissen wilt aanpassen.
+* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)als u de status van de gebeurtenis bezorgingen wilt weer geven.
+* Zie [Dead-letter en beleid voor opnieuw proberen](manage-event-delivery.md)om de bezorgings opties voor gebeurtenissen aan te passen.

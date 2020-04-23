@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen over schijven
-description: Veelgestelde vragen over Azure IaaS Linux VM-schijven en premium schijven (beheerd en onbeheerd)
+description: Veelgestelde vragen over Azure IaaS Linux VM-schijven en Premium-schijven (beheerd en onbeheerd)
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual

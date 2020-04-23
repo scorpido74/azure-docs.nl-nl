@@ -15,15 +15,15 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79500199"
 ---
-1. Installeer clientcertificaten op de Windows 10-client, zoals in [dit point-to-site VPN-clientartikel](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) wordt weergegeven. Het certificaat moet zich in het huidige gebruikersarchief begeven.
+1. Installeer client certificaten op de Windows 10-client, zoals wordt weer gegeven in dit artikel van [punt-naar-site VPN-client](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Het certificaat moet zich in het huidige gebruikers archief beslaan.
 
-1. Configureer de Always On VPN-client via PowerShell, Configuration Manager of Intune door de instructies in [Windows 10-client Altijd op VPN-verbindingen configureren te](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)volgen.
+1. Configureer de always on VPN-client via Power shell, Configuration Manager of intune door de instructies in [Windows 10 client altijd op VPN-verbindingen configureren](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)te volgen.
 
-### <a name="example-configuration-for-the-user-tunnel"></a>Voorbeeldconfiguratie voor de gebruikerstunnel
+### <a name="example-configuration-for-the-user-tunnel"></a>Voorbeeld configuratie voor de gebruikers tunnel
 
-Nadat u de virtuele netwerkgateway hebt geconfigureerd en het clientcertificaat hebt geïnstalleerd in het lokale machinearchief op de Windows 10-client, configureert u een clientapparaattunnel met behulp van de volgende voorbeelden:
+Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaat in het archief van de lokale computer op de Windows 10-client hebt geïnstalleerd, configureert u een tunnel voor client apparaten met behulp van de volgende voor beelden:
 
-1. Kopieer de volgende tekst en sla deze op als *usercert.ps1:*
+1. Kopieer de volgende tekst en sla deze op als *usercert. ps1*:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Nadat u de virtuele netwerkgateway hebt geconfigureerd en het clientcertificaat 
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Kopieer de volgende tekst en sla deze op als *VPNProfile.xml* in dezelfde map als *usercert.ps1*. Bewerk de volgende tekst die overeenkomt met uw omgeving:
+1. Kopieer de volgende tekst en sla deze op als *VPNProfile. XML* in dezelfde map als *usercert. ps1*. Bewerk de volgende tekst zodat deze overeenkomt met uw omgeving:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,13 +121,13 @@ Nadat u de virtuele netwerkgateway hebt geconfigureerd en het clientcertificaat 
    ```
 1. Voer PowerShell uit als beheerder.
 
-1. Schakel in PowerShell over naar de map waar *usercert.ps1* en *VPNProfile.xml* zich bevinden en voer de volgende opdracht uit:
+1. Ga in Power shell naar de map waarin *usercert. ps1* en *VPNProfile. XML* zich bevinden en voer de volgende opdracht uit:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. Zoek **onder VPN-instellingen**naar de **usertest-vermelding** en selecteer **Verbinding maken**.
+1. Zoek de vermelding **UserTest** onder **VPN-instellingen**en selecteer vervolgens **verbinding maken**.
 
-1. Als de verbinding slaagt, hebt u een gebruikerstunnel always on geconfigureerd.
+1. Als de verbinding is geslaagd, hebt u een always on-gebruikers tunnel geconfigureerd.

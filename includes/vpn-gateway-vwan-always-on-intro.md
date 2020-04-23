@@ -15,14 +15,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80117021"
 ---
-Een nieuwe functie van de Windows 10 VPN-client, Always On, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always On kan het actieve VPN-profiel automatisch verbinding maken en verbonden blijven op basis van triggers, zoals aanmelding door de gebruiker, wijziging van de netwerkstatus of apparaatscherm actief.
+Een nieuwe functie van de Windows 10 VPN-client, altijd aan, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always on kan het actieve VPN-profiel automatisch verbinding maken en blijven verbonden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
 
-U gateways met Windows 10 Always On gebruiken om permanente gebruikerstunnels en apparaattunnels naar Azure vast te stellen. In dit artikel u een Always On VPN-gebruikerstunnel configureren.
+U kunt gateways met Windows 10 altijd gebruiken om permanente gebruikers tunnels en tunnels voor apparaten te maken met Azure. Dit artikel helpt u bij het configureren van een always on-VPN-gebruikers tunnel.
 
-Always On VPN-verbindingen omvatten een van de twee soorten tunnels:
+Altijd op VPN-verbindingen zijn twee typen tunnels:
 
-* **Apparaattunnel**: maakt verbinding met opgegeven VPN-servers voordat gebruikers zich bij het apparaat aanmelden. Vooraf aanmelden connectiviteitsscenario's en apparaatbeheer maken gebruik van een apparaattunnel.
+* **Tunnel van apparaat**: Hiermee maakt u verbinding met opgegeven VPN-servers voordat gebruikers zich aanmelden bij het apparaat. Bij connectiviteits scenario's voor aanmelding en Apparaatbeheer wordt een tunnel gebruikt.
 
-* **Gebruikerstunnel**: maakt alleen verbinding nadat gebruikers zich bij het apparaat hebben aangemeld. Door gebruik te maken van gebruikerstunnels hebt u toegang tot organisatiebronnen via VPN-servers.
+* **Gebruikers tunnel**: maakt alleen verbinding nadat gebruikers zich aanmelden op het apparaat. Door gebruikers tunnels te gebruiken, hebt u toegang tot bedrijfs bronnen via VPN-servers.
 
-Apparaattunnels en gebruikerstunnels werken onafhankelijk van hun VPN-profielen. Ze kunnen tegelijkertijd worden verbonden en ze kunnen verschillende verificatiemethoden en andere VPN-configuratie-instellingen gebruiken, indien van toepassing.
+Tunnels en gebruikers tunnels van apparaten worden onafhankelijk van hun VPN-profielen gebruikt. Ze kunnen tegelijkertijd worden verbonden en ze kunnen, indien van toepassing, verschillende verificatie methoden en andere VPN-configuratie-instellingen gebruiken.

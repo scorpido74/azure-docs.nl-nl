@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenisschema azure-activiteitslogboek
-description: Beschrijft het gebeurtenisschema voor elke categorie in het Azure-activiteitenlogboek.
+title: Gebeurtenis schema voor Azure-activiteiten logboek
+description: Beschrijft het gebeurtenis schema voor elke categorie in het Azure-activiteiten logboek.
 author: bwren
 services: azure-monitor
 ms.topic: reference
@@ -14,15 +14,15 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79472738"
 ---
-# <a name="azure-activity-log-event-schema"></a>Gebeurtenisschema azure-activiteitslogboek
-Het [azure-activiteitenlogboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnementsniveau die zich in Azure hebben voorgedaan. In dit artikel wordt het gebeurtenisschema voor elke categorie beschreven. 
+# <a name="azure-activity-log-event-schema"></a>Gebeurtenis schema voor Azure-activiteiten logboek
+Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema voor elke categorie beschreven. 
 
-In de onderstaande voorbeelden wordt het schema weergegeven wanneer u het activiteitslogboek opent vanuit de portal, PowerShell, CLI en REST API. Het schema is anders wanneer u [het activiteitenlogboek streamt naar opslag- of gebeurtenishubs.](resource-logs-stream-event-hubs.md) Aan het einde van het artikel wordt een toewijzing van de eigenschappen aan het [resourcelogboekenschema](diagnostic-logs-schema.md) verstrekt.
+In de onderstaande voor beelden wordt het schema weer gegeven wanneer u het activiteiten logboek opent vanuit de portal, Power shell, CLI en REST API. Het schema is anders wanneer u [het activiteiten logboek streamt naar Storage of event hubs](resource-logs-stream-event-hubs.md). Aan het einde van het artikel wordt een toewijzing van de eigenschappen aan het [schema van bron logboeken](diagnostic-logs-schema.md) gegeven.
 
 ## <a name="administrative"></a>Administratief
-Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en actie die via Resource Manager worden uitgevoerd. Voorbeelden van de typen gebeurtenissen die u in deze categorie zou zien, zijn 'virtuele machine maken' en 'netwerkbeveiligingsgroep verwijderen' Elke actie die wordt uitgevoerd door een gebruiker of toepassing met Resource Manager, wordt gemodelleerd als een bewerking op een bepaald resourcetype. Als het bewerkingstype Schrijven, Verwijderen of Actie is, worden de records van zowel het begin als het succes of het mislukken van die bewerking geregistreerd in de categorie Beheer. De categorie Beheer bevat ook wijzigingen in op rollen gebaseerd toegangsbeheer in een abonnement.
+Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven zijn onder andere "virtuele machine maken" en "netwerk beveiligings groep verwijderen" elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type schrijven, verwijderen of actie is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. De beheer categorie bevat ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 ```json
 {
     "authorization": {
@@ -110,37 +110,37 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 
 ```
 
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| autorisatie |Blob van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen 'actie', 'rol' en 'scope'. |
-| Beller |E-mailadres van de gebruiker die de bewerking heeft uitgevoerd, UPN-claim of SPN-claim op basis van beschikbaarheid. |
-| Kanalen |Een van de volgende waarden: "Beheerder", "Bewerking" |
-| claims |Het JWT-token dat door Active Directory wordt gebruikt om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resourcebeheer. |
-| correlationId |Meestal een GUID in de tekenreeksindeling. Gebeurtenissen die een correlationId delen, behoren tot dezelfde uber-actie. |
-| description |Statische tekstbeschrijving van een gebeurtenis. |
-| eventDataId |Unieke id van een gebeurtenis. |
-| gebeurtenisNaam | Vriendelijke naam van het administratieve evenement. |
-| category | Altijd "Administratief" |
-| httpRequest httpRequest httpRequest httpRequest |Blob die de Http-aanvraag beschrijft. Omvat meestal de "clientRequestId", "clientIpAddress" en "methode" (HTTP-methode. BIJVOORBEELD PUT). |
-| niveau |Niveau van het evenement. Een van de volgende waarden: "Kritiek", "Fout", "Waarschuwing" en "Informatief" |
-| resourceGroupName |Naam van de resourcegroep voor de getroffen resource. |
-| resourceProviderName |Naam van de resourceprovider voor de getroffen resource |
-| resourceType | Het type resource dat is beïnvloed door een administratieve gebeurtenis. |
-| resourceId |Resource-id van de getroffen resource. |
+| autorisatie |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
+| aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. |
+| detailhandelkanalen |Een van de volgende waarden: ' admin ', ' Operation ' |
+| claims |Het JWT-token dat wordt gebruikt door Active Directory om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resource Manager. |
+| correlationId |Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
+| description |Statische tekst beschrijving van een gebeurtenis. |
+| eventDataId |De unieke id van een gebeurtenis. |
+| eventName | Beschrijvende naam van de beheer gebeurtenis. |
+| category | Altijd ' beheer ' |
+| httpRequest |BLOB waarmee de HTTP-aanvraag wordt beschreven. Bevat meestal de ' clientRequestId ', ' clientIpAddress ' en ' methode ' (HTTP-methode. Bijvoorbeeld PUT). |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| resourceGroupName |De naam van de resource groep voor de betrokken resource. |
+| resourceProviderName |De naam van de resource provider voor de betrokken resource |
+| resourceType | Het type resource dat is beïnvloed door een beheer gebeurtenis. |
+| resourceId |De resource-ID van de betrokken resource. |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de gebeurtenis worden beschreven. |
-| status |Tekenreeks die de status van de bewerking beschrijft. Enkele veelvoorkomende waarden zijn: Gestart, In uitvoering, Geslaagd, Mislukt, Actief, Opgelost. |
-| subStatus |Meestal is de HTTP-statuscode van de bijbehorende REST-aanroep, maar kan ook andere tekenreeksen bevatten die een substatus beschrijven, zoals deze gemeenschappelijke waarden: OK (HTTP-statuscode: 200), Gemaakt (HTTP-statuscode: 201), Geaccepteerd (HTTP-statuscode: 202), Geen inhoud (HTTP-status Code: 204), Bad Request (HTTP Status Code: 400), Not Found (HTTP Status Code: 404), Conflict (HTTP Status Code: 409), Internal Server Error (HTTP Status Code: 500), Service Unavailable (HTTP Status Code: 503), Gateway Timeout (HTTP Status Code: 504). |
-| eventTimestamp |Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName |De naam van de bewerking. |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
+| status |De teken reeks die de status van de bewerking beschrijft. Enkele algemene waarden zijn: gestart, in uitvoering, geslaagd, mislukt, actief, opgelost. |
+| subStatus |Doorgaans de HTTP-status code van de bijbehorende REST-aanroep, maar kan ook andere teken reeksen bevatten die een substatus beschrijven, zoals deze algemene waarden: OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code) : 409), interne server fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503), time-out voor gateway (HTTP-status code: 504). |
+| eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
 ## <a name="service-health"></a>Status van service
-Deze categorie bevat de registratie van eventuele servicestatusincidenten die zich in Azure hebben voorgedaan. Een voorbeeld van het type gebeurtenis dat u in deze categorie zou zien, is 'SQL Azure in Oost-VS ondervindt downtime'. Servicestatusgebeurtenissen zijn er in vijf varianten: Actie vereist, Assisted Recovery, Incident, Maintenance, Information of Security en worden alleen weergegeven als u een bron in het abonnement hebt die door de gebeurtenis wordt beïnvloed.
+Deze categorie bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' SQL Azure in VS-Oost ondervindt downtime. ' Service Health-gebeurtenissen zijn beschikbaar in vijf rassen: actie vereist, assistentie herstel, incident, onderhoud, informatie of beveiliging, en alleen als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 ```json
 {
   "channels": "Admin",
@@ -195,12 +195,12 @@ Deze categorie bevat de registratie van eventuele servicestatusincidenten die zi
   }
 }
 ```
-Raadpleeg het artikel [servicestatusmeldingen](./../../azure-monitor/platform/service-notifications.md) voor documentatie over de waarden in de eigenschappen.
+Raadpleeg het artikel over [service status meldingen](./../../azure-monitor/platform/service-notifications.md) voor documentatie over de waarden in de eigenschappen.
 
 ## <a name="resource-health"></a>Status van resources
-Deze categorie bevat de registratie van alle gebeurtenissen in de resourcestatus die zijn opgetreden in uw Azure-bronnen. Een voorbeeld van het type gebeurtenis dat u in deze categorie zou zien, is 'Status virtuele machine gewijzigd in niet beschikbaar'. Gebeurtenissen in resourcestatus kunnen een van de vier statussen vertegenwoordigen: Beschikbaar, Niet beschikbaar, gedegradeerd en onbekend. Bovendien kunnen gebeurtenissen in resourcestatus worden gecategoriseerd als platform geïnitieerd of door de gebruiker geïnitieerd.
+Deze categorie bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de status van de virtuele machine is gewijzigd in niet beschikbaar. Resource Health-gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: beschikbaar, niet beschikbaar, gedegradeerd en onbekend. Daarnaast kunnen resource status gebeurtenissen worden gecategoriseerd als platform gestart of door de gebruiker gestart.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 
 ```json
 {
@@ -257,39 +257,39 @@ Deze categorie bevat de registratie van alle gebeurtenissen in de resourcestatus
 }
 ```
 
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Kanalen | Altijd "Admin, Operation" |
-| correlationId | Een GUID in de tekenreeksindeling. |
-| description |Statische tekstbeschrijving van de waarschuwingsgebeurtenis. |
-| eventDataId |Unieke id van de waarschuwingsgebeurtenis. |
+| detailhandelkanalen | Altijd ' admin, bewerking ' |
+| correlationId | Een GUID in de teken reeks indeling. |
+| description |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
+| eventDataId |De unieke id van de waarschuwings gebeurtenis. |
 | category | Altijd "ResourceHealth" |
-| eventTimestamp |Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| niveau |Niveau van het evenement. Een van de volgende waarden: "Kritiek", "Fout", "Waarschuwing", "Informatief" en "Verbose" |
+| eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing", "informatief" en "uitgebreid" |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
-| resourceGroupName |Naam van de resourcegroep die de resource bevat. |
-| resourceProviderName |Altijd "Microsoft.Resourcehealth/healthevent/action". |
-| resourceType | Het type resource dat is beïnvloed door een gebeurtenis Resourcestatus. |
-| resourceId | Naam van de resource-id voor de getroffen resource. |
-| status |Tekenreeks die de status van de status van de statusgebeurtenis beschrijft. Waarden kunnen zijn: Actief, Opgelost, InProgress, Bijgewerkt. |
-| subStatus | Meestal null voor waarschuwingen. |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName |De naam van de bewerking. |
+| resourceGroupName |De naam van de resource groep die de resource bevat. |
+| resourceProviderName |Altijd ' micro soft. Resourcehealth/healthevent/Action '. |
+| resourceType | Het type resource dat is beïnvloed door een Resource Health gebeurtenis. |
+| resourceId | De naam van de resource-ID voor de betrokken resource. |
+| status |Een teken reeks die de status van de status gebeurtenis beschrijft. De waarden kunnen zijn: actief, opgelost, InProgress, bijgewerkt. |
+| subStatus | Meestal Null voor waarschuwingen. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de gebeurtenis worden beschreven.|
-| eigenschappen.titel | Een gebruiksvriendelijke tekenreeks die de status van de resource beschrijft. |
-| eigenschappen.details | Een gebruiksvriendelijke tekenreeks die verdere details over de gebeurtenis beschrijft. |
-| properties.currentHealthStatus | De huidige status van de resource. Een van de volgende waarden: "Beschikbaar", "Niet beschikbaar", "Gedegradeerd" en "Onbekend". |
-| properties.previousHealthStatus | De vorige status van de resource. Een van de volgende waarden: "Beschikbaar", "Niet beschikbaar", "Gedegradeerd" en "Onbekend". |
-| eigenschappen.type | Een beschrijving van het type gebeurtenis resourcestatus. |
-| eigenschappen.oorzaak | Een beschrijving van de oorzaak van de gebeurtenis resourcestatus. Ofwel "UserInitiated" en "PlatformInitiated". |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de gebeurtenis worden beschreven.|
+| Eigenschappen. title | Een gebruiks vriendelijke teken reeks die de status van de resource beschrijft. |
+| Eigenschappen. Details | Een gebruiks vriendelijke teken reeks met een beschrijving van meer informatie over de gebeurtenis. |
+| Eigenschappen. currentHealthStatus | De huidige integriteits status van de resource. Een van de volgende waarden: ' beschikbaar ', ' niet beschikbaar ', ' gedegradeerd ' en ' onbekend '. |
+| Eigenschappen. previousHealthStatus | De vorige integriteits status van de resource. Een van de volgende waarden: ' beschikbaar ', ' niet beschikbaar ', ' gedegradeerd ' en ' onbekend '. |
+| Properties. type | Een beschrijving van het type resource status gebeurtenis. |
+| Eigenschappen. oorzaak | Een beschrijving van de oorzaak van de resource status gebeurtenis. ' UserInitiated ' en ' PlatformInitiated '. |
 
 
 ## <a name="alert"></a>Waarschuwing
-Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwingen. Een voorbeeld van het type gebeurtenis dat u in deze categorie zou zien, is 'CPU% op myVM is de afgelopen 5 minuten meer dan 80 geweest'. Verschillende Azure-systemen hebben een waarschuwingsconcept: u een regel van een bepaalde soort definiëren en een melding ontvangen wanneer de voorwaarden overeenkomen met die regel. Elke keer dat aan een ondersteund Azure-waarschuwingstype 'wordt geactiveerd' of aan de voorwaarden wordt voldaan om een melding te genereren, wordt ook een record van de activering naar deze categorie van het activiteitenlogboek gepusht.
+Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwingen. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' CPU% op myVM is in de afgelopen vijf minuten meer dan 80. ' Een groot aantal Azure-systemen heeft een waarschuwings concept: u kunt een regel van een bepaalde sortering definiëren en een melding ontvangen wanneer de voor waarden overeenkomen met die regel. Telkens wanneer een ondersteund Azure-waarschuwings type ' activeren ' of aan de voor waarden wordt voldaan om een melding te genereren, wordt er ook een record van de activering naar deze categorie van het activiteiten logboek gepusht.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 
 ```json
 {
@@ -350,60 +350,60 @@ Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwing
 }
 ```
 
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Beller | Altijd Microsoft.Insights/alertRegels |
-| Kanalen | Altijd "Admin, Operation" |
-| claims | JSON-blob met de SPN -naam (servicehoofdnaam) of resourcetype van de waarschuwingsengine. |
-| correlationId | Een GUID in de tekenreeksindeling. |
-| description |Statische tekstbeschrijving van de waarschuwingsgebeurtenis. |
-| eventDataId |Unieke id van de waarschuwingsgebeurtenis. |
-| category | Altijd "Alert" |
-| niveau |Niveau van het evenement. Een van de volgende waarden: "Kritiek", "Fout", "Waarschuwing" en "Informatief" |
-| resourceGroupName |Naam van de resourcegroep voor de impactgevende resource als het een metrische waarschuwing is. Voor andere waarschuwingstypen is dit de naam van de resourcegroep die de waarschuwing zelf bevat. |
-| resourceProviderName |Naam van de resourceprovider voor de impactgevende resource als het een metrische waarschuwing is. Voor andere waarschuwingstypen is dit de naam van de resourceprovider voor de waarschuwing zelf. |
-| resourceId | Naam van de resource-id voor de impactgevende resource als het een metrische waarschuwing is. Voor andere waarschuwingstypen is dit de resource-id van de waarschuwingsbron zelf. |
+| aanroeper | Altijd micro soft. Insights/alertRules |
+| detailhandelkanalen | Altijd ' admin, bewerking ' |
+| claims | JSON-blob met de SPN (Service Principal Name) of het resource type van de waarschuwings-engine. |
+| correlationId | Een GUID in de teken reeks indeling. |
+| description |Statische tekst beschrijving van de waarschuwings gebeurtenis. |
+| eventDataId |De unieke id van de waarschuwings gebeurtenis. |
+| category | Altijd "waarschuwing" |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| resourceGroupName |De naam van de resource groep voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is dit de naam van de resource groep die de waarschuwing zelf bevat. |
+| resourceProviderName |De naam van de resource provider voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is dit de naam van de resource provider voor de waarschuwing zelf. |
+| resourceId | De naam van de resource-ID voor de betrokken resource als het een metrische waarschuwing is. Voor andere waarschuwings typen is het de resource-ID van de waarschuwings resource zelf. |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de gebeurtenis worden beschreven. |
-| status |Tekenreeks die de status van de bewerking beschrijft. Enkele veelvoorkomende waarden zijn: Gestart, In uitvoering, Geslaagd, Mislukt, Actief, Opgelost. |
-| subStatus | Meestal null voor waarschuwingen. |
-| eventTimestamp |Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName |De naam van de bewerking. |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
+| status |De teken reeks die de status van de bewerking beschrijft. Enkele algemene waarden zijn: gestart, in uitvoering, geslaagd, mislukt, actief, opgelost. |
+| subStatus | Meestal Null voor waarschuwingen. |
+| eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
-### <a name="properties-field-per-alert-type"></a>Eigenschappenveld per waarschuwingstype
-Het veld Eigenschappen bevat verschillende waarden, afhankelijk van de bron van de waarschuwingsgebeurtenis. Twee veelvoorkomende aanbieders van waarschuwingsgebeurtenissen zijn waarschuwingen voor activiteitenlogboeken en metrische waarschuwingen.
+### <a name="properties-field-per-alert-type"></a>Eigenschappen veld per waarschuwings type
+Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van de waarschuwings gebeurtenis. Twee veelvoorkomende waarschuwings gebeurtenis providers zijn activiteiten logboek waarschuwingen en metrische waarschuwingen.
 
-#### <a name="properties-for-activity-log-alerts"></a>Eigenschappen voor waarschuwingen voor activiteitenlogboeken
+#### <a name="properties-for-activity-log-alerts"></a>Eigenschappen voor waarschuwingen voor activiteiten logboeken
 | Naam van element | Beschrijving |
 | --- | --- |
-| properties.subscriptionId | De abonnements-ID van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| properties.eventDataId | De gebeurtenisgegevens-id van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| properties.resourceGroep | De resourcegroep van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| properties.resourceId | De resource-id van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| properties.eventTimestamp | De gebeurtenistijdstempel van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| properties.operationName | De bewerkingsnaam van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd. |
-| eigenschappen.status | De status van de gebeurtenis activiteitslogboek waardoor deze waarschuwingsregel voor activiteitenlogboeken is geactiveerd.|
+| Eigenschappen. subscriptionId | De abonnements-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
+| Eigenschappen. eventDataId | De gebeurtenis gegevens-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek is geactiveerd. |
+| Eigenschappen. resourceGroup | De resource groep van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
+| Eigenschappen. resourceId | De resource-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
+| Eigenschappen. eventTimestamp | De gebeurtenis-time stamp van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
+| Eigenschappen. operationname | De bewerkings naam van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
+| Eigenschappen. status | De status van de gebeurtenis in het activiteiten logboek die de waarschuwings regel voor het activiteiten logboek heeft veroorzaakt dat deze wordt geactiveerd.|
 
 #### <a name="properties-for-metric-alerts"></a>Eigenschappen voor metrische waarschuwingen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Eigenschappen. RuleUri (RuleUri) | Resource-ID van de metrische waarschuwingsregel zelf. |
-| Eigenschappen. RegelNaam | De naam van de metrische waarschuwingsregel. |
-| Eigenschappen. RegelBeschrijving | De beschrijving van de metrische waarschuwingsregel (zoals gedefinieerd in de waarschuwingsregel). |
-| Eigenschappen. Drempel | De drempelwaarde die wordt gebruikt bij de evaluatie van de metrische waarschuwingsregel. |
-| Eigenschappen. WindowsizeinMinutes | De venstergrootte die wordt gebruikt bij de evaluatie van de metrische waarschuwingsregel. |
-| Eigenschappen. Aggregatie | Het aggregatietype dat is gedefinieerd in de metrische waarschuwingsregel. |
-| Eigenschappen. Operator | De voorwaardelijke operator die wordt gebruikt bij de evaluatie van de metrische waarschuwingsregel. |
-| Eigenschappen. MetricName | De metrische naam van de statistiek die wordt gebruikt bij de evaluatie van de metrische waarschuwingsregel. |
-| Eigenschappen. MetricUnit | De metrische eenheid voor de statistiek die wordt gebruikt bij de evaluatie van de metrische waarschuwingsregel. |
+| eigenschappen. RuleUri | Resource-ID van de metrische waarschuwings regel zelf. |
+| eigenschappen. RuleName | De naam van de waarschuwings regel voor metrische gegevens. |
+| eigenschappen. RuleDescription | De beschrijving van de metrische waarschuwings regel (zoals gedefinieerd in de waarschuwings regel). |
+| eigenschappen. Spreek | De drempel waarde die wordt gebruikt voor de evaluatie van de metrische waarschuwings regel. |
+| eigenschappen. WindowSizeInMinutes | De grootte van het venster die wordt gebruikt in de evaluatie van de metrische waarschuwings regel. |
+| eigenschappen. Aggregatie | Het aggregatie type dat is gedefinieerd in de metrische waarschuwings regel. |
+| eigenschappen. And | De voorwaardelijke operator die wordt gebruikt voor de evaluatie van de metrische waarschuwings regel. |
+| eigenschappen. MetricName | De metrische naam van de metrische gegevens die wordt gebruikt in de evaluatie van de metrische waarschuwings regel. |
+| eigenschappen. MetricUnit | De metrische eenheid voor de metrische gegevens die wordt gebruikt in de evaluatie van de metrische waarschuwings regel. |
 
 ## <a name="autoscale"></a>Automatisch schalen
-Deze categorie bevat de registratie van alle gebeurtenissen die verband houden met de werking van de autoscale-engine op basis van de instellingen voor automatische schaal die u in uw abonnement hebt gedefinieerd. Een voorbeeld van het type gebeurtenis dat u in deze categorie zou zien, is 'Actie automatisch schalen opschalen is mislukt'. Met behulp van automatisch schalen u automatisch het aantal exemplaren in een ondersteund resourcetype uitschalen of schalen op basis van tijd van de dag en/of (metrische) gegevens laden met behulp van een instelling voor automatisch schalen. Wanneer aan de voorwaarden is voldaan om op of omlaag te worden geschaald, worden de gebeurtenissen voor het starten en het starten of mislukte of mislukte in deze categorie geregistreerd.
+Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de actie omhoog schalen naar boven schalen is mislukt. Met automatisch schalen kunt u het aantal exemplaren in een ondersteund bron type, op basis van een tijd van de dag en/of belasting (metrische gegevens), in een door de instelling voor automatisch schalen schalen. Wanneer aan de voor waarden wordt voldaan om omhoog of omlaag te schalen, worden de gebeurtenissen start en geslaagd of mislukt in deze categorie vastgelegd.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 ```json
 {
   "caller": "Microsoft.Insights/autoscaleSettings",
@@ -460,37 +460,37 @@ Deze categorie bevat de registratie van alle gebeurtenissen die verband houden m
 
 ```
 
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Beller | Altijd Microsoft.Insights/autoscaleInstellingen |
-| Kanalen | Altijd "Admin, Operation" |
-| claims | JSON-blob met de SPN -hoofdnaam of resourcetype van de autoscale-engine. |
-| correlationId | Een GUID in de tekenreeksindeling. |
-| description |Statische tekstbeschrijving van de gebeurtenis automatisch schalen. |
-| eventDataId |Unieke id van de gebeurtenis automatisch schalen. |
-| niveau |Niveau van het evenement. Een van de volgende waarden: "Kritiek", "Fout", "Waarschuwing" en "Informatief" |
-| resourceGroupName |Naam van de resourcegroep voor de instelling automatisch schalen. |
-| resourceProviderName |Naam van de resourceprovider voor de instelling automatisch schalen. |
-| resourceId |Resource-id van de instelling voor automatisch schalen. |
+| aanroeper | Altijd micro soft. Insights/autoscaleSettings |
+| detailhandelkanalen | Altijd ' admin, bewerking ' |
+| claims | JSON-blob met de SPN (Service Principal Name) of het resource type van de engine voor automatisch schalen. |
+| correlationId | Een GUID in de teken reeks indeling. |
+| description |Statische tekst beschrijving van de gebeurtenis automatisch schalen. |
+| eventDataId |De unieke id van de gebeurtenis voor automatisch schalen. |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" en "informatief" |
+| resourceGroupName |De naam van de resource groep voor de instelling voor automatisch schalen. |
+| resourceProviderName |De naam van de resource provider voor de instelling voor automatisch schalen. |
+| resourceId |Resource-ID van de instelling voor automatisch schalen. |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de gebeurtenis worden beschreven. |
-| Eigenschappen. Beschrijving | Gedetailleerde beschrijving van wat de autoscale motor aan het doen was. |
-| Eigenschappen. Resourcename | Resource-id van de impactdie resource heeft gehad (de resource waarop de schaalactie werd uitgevoerd) |
-| Eigenschappen. OldInstancesCount | Het aantal exemplaren voordat de actie automatisch schalen van kracht werd. |
-| Eigenschappen. NewInstancesCount | Het aantal exemplaren nadat de actie automatisch schalen van kracht is geworden. |
-| Eigenschappen. Laatste schaalactietijd | De tijdstempel van wanneer de actie automatisch schalen heeft plaatsgevonden. |
-| status |Tekenreeks die de status van de bewerking beschrijft. Enkele veelvoorkomende waarden zijn: Gestart, In uitvoering, Geslaagd, Mislukt, Actief, Opgelost. |
-| subStatus | Meestal null voor autoscale. |
-| eventTimestamp |Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName |De naam van de bewerking. |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
+| eigenschappen. Beschrijvingen | Gedetailleerde beschrijving van de werking van de engine voor automatisch schalen. |
+| eigenschappen. ResourceName | De resource-ID van de betrokken resource (de resource waarop de schaal actie werd uitgevoerd) |
+| eigenschappen. OldInstancesCount | Het aantal exemplaren voordat de actie voor automatisch schalen van kracht werd. |
+| eigenschappen. NewInstancesCount | Het aantal exemplaren nadat de actie voor automatisch schalen is doorgevoerd. |
+| eigenschappen. LastScaleActionTime | De tijds tempel van het tijdstip waarop de actie voor automatisch schalen heeft plaatsgevonden. |
+| status |De teken reeks die de status van de bewerking beschrijft. Enkele algemene waarden zijn: gestart, in uitvoering, geslaagd, mislukt, actief, opgelost. |
+| subStatus | Normaal gesp roken is null voor automatisch schalen. |
+| eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
 ## <a name="security"></a>Beveiliging
-Deze categorie bevat de record eventuele waarschuwingen die worden gegenereerd door Azure Security Center. Een voorbeeld van het type gebeurtenis dat u in deze categorie zou zien, is 'Verdacht bestand met dubbele extensie uitgevoerd'.
+Deze categorie bevat alle waarschuwingen die door Azure Security Center worden gegenereerd. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is het ' verdachte dubbele extensie bestand uitgevoerd '.
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 ```json
 {
     "channels": "Operation",
@@ -550,35 +550,35 @@ Deze categorie bevat de record eventuele waarschuwingen die worden gegenereerd d
 
 ```
 
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Kanalen | Altijd "Operatie" |
-| correlationId | Een GUID in de tekenreeksindeling. |
-| description |Statische tekstbeschrijving van de beveiligingsgebeurtenis. |
-| eventDataId |Unieke id van de beveiligingsgebeurtenis. |
-| gebeurtenisNaam |Vriendelijke naam van het beveiligingsevenement. |
-| category | Altijd "Veiligheid" |
-| Id |Unieke resource-id van de beveiligingsgebeurtenis. |
-| niveau |Niveau van het evenement. Een van de volgende waarden: 'Kritiek', 'Fout', 'Waarschuwing' of 'Informatief' |
-| resourceGroupName |Naam van de resourcegroep voor de resource. |
-| resourceProviderName |Naam van de resourceprovider voor Azure Security Center. Altijd "Microsoft.Security". |
-| resourceType |Het type resource dat de beveiligingsgebeurtenis heeft gegenereerd, zoals 'Microsoft.Security/locaties/waarschuwingen'. |
-| resourceId |Resource-id van de beveiligingswaarschuwing. |
+| detailhandelkanalen | Altijd ' bewerking ' |
+| correlationId | Een GUID in de teken reeks indeling. |
+| description |Statische tekst beschrijving van de beveiligings gebeurtenis. |
+| eventDataId |De unieke id van de beveiligings gebeurtenis. |
+| eventName |Beschrijvende naam van de beveiligings gebeurtenis. |
+| category | Altijd ' Beveiliging ' |
+| Id |De unieke resource-id van de beveiligings gebeurtenis. |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
+| resourceGroupName |De naam van de resource groep voor de resource. |
+| resourceProviderName |De naam van de resource provider voor Azure Security Center. Altijd ' micro soft. Security '. |
+| resourceType |Het type resource dat de beveiligings gebeurtenis heeft gegenereerd, zoals ' micro soft. Security/locations/Alerts ' |
+| resourceId |De resource-ID van de beveiligings waarschuwing. |
 | operationId |Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de gebeurtenis worden beschreven. Deze eigenschappen variëren afhankelijk van het type beveiligingswaarschuwing. Zie [deze pagina](../../security-center/security-center-alerts-overview.md) voor een beschrijving van de typen waarschuwingen die afkomstig zijn van Security Center. |
-| Eigenschappen. Ernst |Het ernstniveau. Mogelijke waarden zijn 'Hoog', 'Gemiddeld' of 'Laag'. |
-| status |Tekenreeks die de status van de bewerking beschrijft. Enkele veelvoorkomende waarden zijn: Gestart, In uitvoering, Geslaagd, Mislukt, Actief, Opgelost. |
-| subStatus | Meestal null voor beveiligingsgebeurtenissen. |
-| eventTimestamp |Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName |De naam van de bewerking. |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de gebeurtenis worden beschreven. Deze eigenschappen variëren afhankelijk van het type beveiligings waarschuwing. Zie [Deze pagina](../../security-center/security-center-alerts-overview.md) voor een beschrijving van de typen waarschuwingen die afkomstig zijn van Security Center. |
+| eigenschappen. Ernst |Het Ernst niveau. Mogelijke waarden zijn ' hoog ', ' gemiddeld ' of ' laag '. |
+| status |De teken reeks die de status van de bewerking beschrijft. Enkele algemene waarden zijn: gestart, in uitvoering, geslaagd, mislukt, actief, opgelost. |
+| subStatus | Meestal Null voor beveiligings gebeurtenissen. |
+| eventTimestamp |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
 ## <a name="recommendation"></a>Aanbeveling
-Deze categorie bevat de registratie van eventuele nieuwe aanbevelingen die voor uw services worden gegenereerd. Een voorbeeld van een aanbeveling is 'Beschikbaarheidssets gebruiken voor verbeterde fouttolerantie'. Er zijn vier soorten aanbevelingsgebeurtenissen die kunnen worden gegenereerd: hoge beschikbaarheid, prestaties, beveiliging en kostenoptimalisatie. 
+Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services worden gegenereerd. Een voor beeld van een aanbeveling is ' beschikbaarheids sets gebruiken voor verbeterde fout tolerantie. ' Er zijn vier typen Aanbevelings gebeurtenissen die kunnen worden gegenereerd: hoge Beschik baarheid, prestaties, beveiliging en kosten optimalisatie. 
 
-### <a name="sample-event"></a>Voorbeeldgebeurtenis
+### <a name="sample-event"></a>Voorbeeld gebeurtenis
 ```json
 {
     "channels": "Operation",
@@ -631,35 +631,35 @@ Deze categorie bevat de registratie van eventuele nieuwe aanbevelingen die voor 
 }
 
 ```
-### <a name="property-descriptions"></a>Beschrijvingen van onroerend goed
+### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
 | Naam van element | Beschrijving |
 | --- | --- |
-| Kanalen | Altijd "Operatie" |
-| correlationId | Een GUID in de tekenreeksindeling. |
-| description |Statische tekstbeschrijving van de aanbevelingsgebeurtenis |
-| eventDataId | Unieke id van de aanbevelingsgebeurtenis. |
-| category | Altijd "Aanbeveling" |
-| Id |Unieke resource-id van de aanbevelingsgebeurtenis. |
-| niveau |Niveau van het evenement. Een van de volgende waarden: 'Kritiek', 'Fout', 'Waarschuwing' of 'Informatief' |
-| operationName |Naam van de bewerking.  Altijd "Microsoft.Advisor/genererenAanbevelingen/actie"|
-| resourceGroupName |Naam van de resourcegroep voor de resource. |
-| resourceProviderName |Naam van de resourceprovider voor de resource waarop deze aanbeveling van toepassing is, zoals 'MICROSOFT.COMPUTE'. |
-| resourceType |Naam van het resourcetype voor de resource waarop deze aanbeveling van toepassing is, zoals 'MICROSOFT.COMPUTE/virtualmachines'. |
-| resourceId |Resource-id van de resource waarop de aanbeveling van toepassing is |
+| detailhandelkanalen | Altijd ' bewerking ' |
+| correlationId | Een GUID in de teken reeks indeling. |
+| description |Statische tekst beschrijving van de gebeurtenis recommender |
+| eventDataId | De unieke id van de aanbevelings gebeurtenis. |
+| category | Altijd ' aanbeveling ' |
+| Id |De unieke resource-id van de aanbevelings gebeurtenis. |
+| niveau |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
+| operationName |De naam van de bewerking.  Altijd ' micro soft. Advisor/generateRecommendations/Action '|
+| resourceGroupName |De naam van de resource groep voor de resource. |
+| resourceProviderName |De naam van de resource provider voor de resource waarop deze aanbeveling van toepassing is, zoals ' micro soft. COMPUTe ' |
+| resourceType |De naam van het resource type voor de resource waarop deze aanbeveling van toepassing is, zoals ' micro soft. COMPUTe/informatie ' |
+| resourceId |De resource-ID van de resource waarop de aanbeveling van toepassing is |
 | status | Altijd "actief" |
-| indieningTijdstempel |Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen een woordenboek) waarin de details van de aanbeveling worden beschreven.|
-| properties.recommendationSchemaVersion| Schemaversie van de aanbevelingseigenschappen die zijn gepubliceerd in de vermelding Activiteitslogboek |
-| eigenschappen.aanbevelingCategorie | Categorie van de aanbeveling. Mogelijke waarden zijn 'Hoge beschikbaarheid', 'Prestaties', 'Beveiliging' en 'Kosten' |
-| properties.recommendationImpact| Impact van de aanbeveling. Mogelijke waarden zijn "Hoog", "Medium", "Laag" |
-| eigenschappen.recommendationRisk| Risico van de aanbeveling. Mogelijke waarden zijn 'Fout', 'Waarschuwing', 'Geen' |
+| properties |Set `<Key, Value>` paren (dat wil zeggen een woorden lijst) waarin de details van de aanbeveling worden beschreven.|
+| Eigenschappen. recommendationSchemaVersion| Schema versie van de aanbevolen eigenschappen die zijn gepubliceerd in de vermelding in het activiteiten logboek |
+| Eigenschappen. recommendationCategory | Categorie van de aanbeveling. Mogelijke waarden zijn ' hoge Beschik baarheid ', ' prestaties ', ' Beveiliging ' en ' kosten ' |
+| Eigenschappen. recommendationImpact| Impact van de aanbeveling. Mogelijke waarden zijn ' hoog ', ' medium ', ' laag ' |
+| Eigenschappen. recommendationRisk| Risico van de aanbeveling. Mogelijke waarden zijn ' error ', ' warning ', ' none ' |
 
 ## <a name="policy"></a>Beleid
 
-Deze categorie bevat records van alle effectactiebewerkingen die worden uitgevoerd door [Azure Policy](../../governance/policy/overview.md). Voorbeelden van de typen gebeurtenissen die u in deze categorie zou zien, zijn _Audit_ en _Weigeren._ Elke actie die door Beleid wordt ondernomen, is gemodelleerd als een bewerking op een resource.
+Deze categorie bevat records van alle bewerkingen voor effect acties die worden uitgevoerd door [Azure Policy](../../governance/policy/overview.md). Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven, zijn onder andere _controleren_ en _weigeren_. Elke actie die wordt uitgevoerd door beleid, wordt gemodelleerd als een bewerking voor een resource.
 
-### <a name="sample-policy-event"></a>Voorbeeldvan beleidsgebeurtenis
+### <a name="sample-policy-event"></a>Voor beeld van beleids gebeurtenis
 
 ```json
 {
@@ -740,68 +740,68 @@ Deze categorie bevat records van alle effectactiebewerkingen die worden uitgevoe
 }
 ```
 
-### <a name="policy-event-property-descriptions"></a>Beschrijvingen van eigenschappen van beleidsgebeurtenis
+### <a name="policy-event-property-descriptions"></a>Beschrijvingen van eigenschap beleids gebeurtenis
 
 | Naam van element | Beschrijving |
 | --- | --- |
-| autorisatie | Array van RBAC-eigenschappen van de gebeurtenis. Voor nieuwe bronnen is dit de actie en de reikwijdte van het verzoek dat een evaluatie heeft geactiveerd. Voor bestaande bronnen is de actie "Microsoft.Resources/checkPolicyCompliance/read". |
-| Beller | Voor nieuwe bronnen, de identiteit die een implementatie heeft gestart. Voor bestaande bronnen is de GUID van de Microsoft Azure Policy Insights RP. |
-| Kanalen | Beleidsgebeurtenissen gebruiken alleen het kanaal 'Bewerking'. |
-| claims | Het JWT-token dat door Active Directory wordt gebruikt om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resourcebeheer. |
-| correlationId | Meestal een GUID in de tekenreeksindeling. Gebeurtenissen die een correlationId delen, behoren tot dezelfde uber-actie. |
-| description | Dit veld is leeg voor beleidsgebeurtenissen. |
-| eventDataId | Unieke id van een gebeurtenis. |
-| gebeurtenisNaam | "BeginRequest" of "EndRequest". "BeginRequest" wordt gebruikt voor vertraagde auditIfNotExists en deployIfNotExists evaluaties en wanneer een deployIfNotExists effect een template implementatie start. Alle andere bewerkingen retourneren "EndRequest". |
-| category | Verklaart de gebeurtenis activiteitenlogboek als behorend tot "Beleid". |
-| eventTimestamp | Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| Id | Unieke id van de gebeurtenis op de specifieke resource. |
-| niveau | Niveau van het evenement. Bij Audit wordt 'Waarschuwing' en Weigeren gebruikt als 'Fout'. Een fout van auditIfNotExists of deployIfNotExists kan 'Waarschuwing' of 'Fout' genereren, afhankelijk van de ernst. Alle andere beleidsgebeurtenissen gebruiken "Informatief". |
+| autorisatie | Matrix van RBAC-eigenschappen van de gebeurtenis. Voor nieuwe resources zijn dit de actie en het bereik van de aanvraag die de evaluatie heeft geactiveerd. Voor bestaande resources is de actie ' micro soft. resources/checkPolicyCompliance/lezen '. |
+| aanroeper | Voor nieuwe resources, de identiteit die een implementatie heeft gestart. Voor bestaande resources, de GUID van de Microsoft Azure Policy Insights RP. |
+| detailhandelkanalen | Beleids gebeurtenissen gebruiken alleen het kanaal ' bewerking '. |
+| claims | Het JWT-token dat wordt gebruikt door Active Directory om de gebruiker of toepassing te verifiëren om deze bewerking uit te voeren in Resource Manager. |
+| correlationId | Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
+| description | Dit veld is leeg voor beleids gebeurtenissen. |
+| eventDataId | De unieke id van een gebeurtenis. |
+| eventName | ' BeginRequest ' of ' EndRequest '. "BeginRequest" wordt gebruikt voor uitgestelde auditIfNotExists-en deployIfNotExists-evaluaties en wanneer een deployIfNotExists effect een sjabloon implementatie start. Alle andere bewerkingen retour neren ' EndRequest '. |
+| category | Declareert de gebeurtenis in het activiteiten logboek als onderdeel van het beleid. |
+| eventTimestamp | Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| Id | De unieke id van de gebeurtenis voor de specifieke resource. |
+| niveau | Het niveau van de gebeurtenis. Bij controle wordt gebruikgemaakt van "waarschuwing" en weigeren wordt "fout". Een auditIfNotExists-of deployIfNotExists-fout kan "waarschuwing" of "fout" genereren, afhankelijk van de ernst. Alle andere beleids gebeurtenissen gebruiken ' informatief '. |
 | operationId | Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName | Naam van de bewerking en correleert rechtstreeks met het effect Beleid. |
-| resourceGroupName | Naam van de resourcegroep voor de geëvalueerde resource. |
-| resourceProviderName | Naam van de resourceprovider voor de geëvalueerde resource. |
-| resourceType | Voor nieuwe resources is dit het type dat wordt geëvalueerd. Als u voor bestaande bronnen retourneert, retourneert u 'Microsoft.Resources/checkPolicyCompliance'. |
-| resourceId | Resource-id van de geëvalueerde resource. |
-| status | Tekenreeks die de status van het resultaat van de beleidsevaluatie beschrijft. De meeste beleidsevaluaties retourneren 'Geslaagd', maar een fout weigeren geeft als resultaat 'Mislukt'. Fouten in auditIfNotExists of deployIfNotExists keren ook 'Mislukt' terug. |
-| subStatus | Veld is leeg voor beleidsgebeurtenissen. |
-| indieningTijdstempel | Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's. |
+| operationName | De naam van de bewerking en is rechtstreeks gerelateerd aan het beleids effect. |
+| resourceGroupName | De naam van de resource groep voor de geëvalueerde resource. |
+| resourceProviderName | De naam van de resource provider voor de geëvalueerde resource. |
+| resourceType | Voor nieuwe resources is het type dat wordt geëvalueerd. Voor bestaande resources retourneert ' micro soft. resources/checkPolicyCompliance '. |
+| resourceId | Resource-ID van de geëvalueerde resource. |
+| status | Teken reeks die de status van het resultaat van het beleids evaluatie beschrijft. De meeste beleids evaluaties retour neren ' geslaagd ', maar een deny-effect retourneert ' failed '. Fouten in auditIfNotExists of deployIfNotExists retour neren ook ' failed '. |
+| subStatus | Veld is leeg voor beleids gebeurtenissen. |
+| submissionTimestamp | Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId | Azure-abonnements-ID. |
-| properties.isComplianceCheck | Retourneert 'False' wanneer een nieuwe resource wordt geïmplementeerd of de eigenschappen resourcebeheer van een bestaande resource worden bijgewerkt. Alle andere [evaluatietriggers](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) resulteren in "True". |
-| properties.resourceLocatie | Het Azure-gebied van de resource die wordt geëvalueerd. |
-| properties.ancestors | Een door komma's gescheiden lijst van oudermanagementgroepen die van directe ouder tot verste grootouder werden besteld. |
-| eigenschappen.beleid | Bevat details over de beleidsdefinitie, toewijzing, effect en parameters waarvan deze beleidsevaluatie het resultaat is. |
-| gerelateerdeEvenementen | Dit veld is leeg voor beleidsgebeurtenissen. |
+| Eigenschappen. isComplianceCheck | Retourneert ' false ' wanneer een nieuwe resource wordt geïmplementeerd of de eigenschappen van de Resource Manager van een bestaande resource worden bijgewerkt. Alle andere [evaluatie triggers](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) resulteren in ' waar '. |
+| Eigenschappen. resourceLocation | De Azure-regio van de resource die wordt geëvalueerd. |
+| Eigenschappen. bovenliggende elementen | Een door komma's gescheiden lijst met bovenliggende beheer groepen die zijn besteld vanuit direct Parent naar het meest verouderde groot ouders. |
+| Eigenschappen. beleids regels | Bevat details over de beleids definitie, toewijzing, effect en para meters die door deze beleids evaluatie worden geretourneerd. |
+| relatedEvents | Dit veld is leeg voor beleids gebeurtenissen. |
 
 
-## <a name="schema-from-storage-account-and-event-hubs"></a>Schema van opslagaccount- en gebeurtenishubs
-Wanneer u het Azure Activity-logboek streamt naar een opslagaccount of gebeurtenishub, volgen de gegevens het [schema voor bronlogboeken](diagnostic-logs-schema.md). De onderstaande tabel biedt een toewijzing van eigenschappen uit het bovenstaande schema aan het schema voor resourcelogboeken.
+## <a name="schema-from-storage-account-and-event-hubs"></a>Schema van opslag account en Event hubs
+Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](diagnostic-logs-schema.md). De onderstaande tabel bevat een overzicht van eigenschappen van het bovenstaande schema aan het schema voor bron Logboeken.
 
 > [!IMPORTANT]
-> De indeling van activiteitslogboekgegevens die zijn geschreven naar een opslagaccount, is op 1 november 2018 gewijzigd in JSON Lines. Zie [Voorbereiden op formaatwijziging in Azure Monitor-bronlogboeken die zijn gearchiveerd naar een opslagaccount](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelingswijziging.
+> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
 
 
-| Resourcelogboekenschema, eigenschap | ActiviteitslogboekAPI-schema, eigenschap | Opmerkingen |
+| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
 | --- | --- | --- |
 | tijd | eventTimestamp |  |
-| resourceId | resourceId | abonnementId, resourceType, resourceGroupName zijn allemaal afgeleid van de resourceId. |
-| operationName | operationName.value |  |
-| category | Deel van de naam van de bewerking | Uitbraak van het bewerkingstype - "Schrijven"/"Verwijderen"/"Actie" |
-| resultType | status.waarde | |
-| resultSignature | substatus.waarde | |
+| resourceId | resourceId | subscriptionId, resource type, resourceGroupName zijn alle uitgestelde van de resourceId. |
+| operationName | operationname. waarde |  |
+| category | Onderdeel van de naam van de bewerking | Groepen van het bewerkings type-"schrijven"/"verwijderen"/"actie" |
+| resultType | status. waarde | |
+| resultSignature | substatus. waarde | |
 | resultDescription | description |  |
 | durationMs | N.v.t. | Altijd 0 |
-| callerIpAddress | httpRequest.clientIpAddress |  |
+| callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
-| identity | claims en autorisatie-eigenschappen |  |
+| identity | Eigenschappen voor claims en autorisatie |  |
 | Niveau | Niveau |  |
-| location | N.v.t. | Locatie van de plaats waar het evenement is verwerkt. *Dit is niet de locatie van de resource, maar waar de gebeurtenis is verwerkt. Deze eigenschap wordt verwijderd in een toekomstige update.* |
-| Eigenschappen | properties.eventEigenschappen |  |
-| properties.eventCategorie | category | Als properties.eventCategory niet aanwezig is, is categorie 'Administratief' |
-| properties.eventName | gebeurtenisNaam |  |
-| properties.operationId | operationId |  |
-| properties.eventEigenschappen | properties |  |
+| location | N.v.t. | Locatie van waar de gebeurtenis is verwerkt. *Dit is niet de locatie van de resource, maar in plaats van de gebeurtenis. Deze eigenschap wordt verwijderd in een toekomstige update.* |
+| Eigenschappen | Eigenschappen. eventProperties |  |
+| Eigenschappen. eventCategory | category | Als Properties. eventCategory niet aanwezig is, is de categorie ' beheer ' |
+| Eigenschappen. eventname | eventName |  |
+| Eigenschappen. operationId | operationId |  |
+| Eigenschappen. eventProperties | properties |  |
 
-Hieronder volgt een voorbeeld van een gebeurtenis die dit schema gebruikt..
+Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit schema..
 
 ``` JSON
 {
@@ -864,6 +864,6 @@ Hieronder volgt een voorbeeld van een gebeurtenis die dit schema gebruikt..
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het activiteitenlogboek](platform-logs-overview.md)
-* [Een diagnostische instelling maken om activiteitslogboek en logboekanalysewerkruimte, Azure-opslag of gebeurtenishubs te verzenden](diagnostic-settings.md)
+* [Meer informatie over het activiteiten logboek](platform-logs-overview.md)
+* [Een diagnostische instelling maken om het activiteiten logboek te verzenden naar Log Analytics-werk ruimte, Azure-opslag of event hubs](diagnostic-settings.md)
 

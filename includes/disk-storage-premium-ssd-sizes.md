@@ -15,12 +15,12 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/29/2020
 ms.locfileid: "80385160"
 ---
-| Premium SSD maten | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
+| Premium-SSD grootten | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Schijfgrootte in GiB | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1,024 | 2048 | 4,096 | 8.192 | 16.384 | 32.767 |
+| Schijf grootte in GiB | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1.024 | 2048 | 4.096 | 8.192 | 16.384 | 32.767 |
 | Ingerichte IOPS per schijf | 120 | 120 | 120 | 120 | 240 | 500 | 1100 | 2.300 | 5.000 | 7.500 | 7.500 | 16.000 | 18.000 | 20.000 |
-| Ingerichte doorvoer per schijf | 25 MiB/sec | 25 MiB/sec | 25 MiB/sec | 25 MiB/sec | 50 MiB/sec | 100 MiB/sec | 125 MiB/sec | 150 MiB/sec | 200 MiB/sec | 250 MiB/sec | 250 MiB/sec| 500 MiB/sec | 750 MiB/sec | 900 MiB/sec |
+| Ingerichte door Voer per schijf | 25 MiB per seconde | 25 MiB per seconde | 25 MiB per seconde | 25 MiB per seconde | 50-MiB per seconde | 100-MiB per seconde | 125-MiB per seconde | 150-MiB per seconde | 200-MiB per seconde | 250-MiB per seconde | 250-MiB per seconde| 500-MiB per seconde | 750-MiB per seconde | 900-MiB per seconde |
 | Max burst IOPS per schijf | 3500 | 3500 | 3500 | 3500 | 3500 | 3500 | 3500 | 3500 |
-| Maximale burstdoorvoer per schijf | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec | 170 MiB/sec |
-| Maximale burst duur | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  |
-| In aanmerking komen voor reservering | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Ja, tot een jaar | Ja, tot een jaar | Ja, tot een jaar | Ja, tot een jaar | Ja, tot een jaar | Ja, tot een jaar |
+| Maximale burst-door Voer per schijf | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde | 170-MiB per seconde |
+| Maximale burst-duur | 30 minuten  | 30 minuten  | 30 minuten  | 30 minuten  | 30 minuten  | 30 minuten  | 30 minuten  | 30 minuten  |
+| Geschikt voor reserve ring | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Nee  | Ja, Maxi maal één jaar | Ja, Maxi maal één jaar | Ja, Maxi maal één jaar | Ja, Maxi maal één jaar | Ja, Maxi maal één jaar | Ja, Maxi maal één jaar |
