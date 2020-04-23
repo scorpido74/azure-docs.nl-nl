@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096913"
+ms.locfileid: "82106029"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen buiten kantoor uren in Azure Automation
 
 Het **starten/stoppen van vm's buiten kantoor uren** oplossing start of stopt uw Azure virtual machines. Hiermee worden computers op door de gebruiker gedefinieerde planningen gestart of gestopt, vindt u inzichten via Azure Monitor-logboeken en verzendt u optionele e-mail berichten met behulp van [actie groepen](../azure-monitor/platform/action-groups.md). De oplossing ondersteunt zowel Azure Resource Manager als klassieke Vm's voor de meeste scenario's. 
 
-Deze oplossing biedt een gecentraliseerde automatiserings optie met lage kosten voor gebruikers die hun VM-kosten willen optimaliseren. Met deze oplossing kunt u het volgende doen:
+Deze oplossing maakt gebruik van de cmdlet [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) voor het stoppen van vm's.
+
+> [!NOTE]
+> De oplossing voor het **starten/stoppen van vm's buiten kantoor uren** is bijgewerkt ter ondersteuning van de nieuwste versies van de Azure-modules die beschikbaar zijn.
+
+De oplossing biedt een gecentraliseerde automatiserings optie met lage kosten voor gebruikers die hun VM-kosten willen optimaliseren. Met deze oplossing kunt u het volgende doen:
 
 - [Plan vm's om te starten en te stoppen](automation-solution-vm-management-config.md#schedule).
 - Plan Vm's om in oplopende volg orde te starten en te stoppen met [behulp van Azure Tags](automation-solution-vm-management-config.md#tags) (niet ondersteund voor klassieke vm's).
 - Werk Vm's autostop op basis van [laag CPU-gebruik](automation-solution-vm-management-config.md#cpuutil).
-
-> [!NOTE]
-> De oplossing voor het **starten/stoppen van vm's buiten kantoor uren** is bijgewerkt ter ondersteuning van de nieuwste versies van de Azure-modules die beschikbaar zijn.
 
 De volgende beperkingen zijn van toepassing op de huidige oplossing:
 

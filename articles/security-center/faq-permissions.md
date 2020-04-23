@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Security Center - vragen over machtigingen
-description: Deze veelgestelde vragen beantwoorden vragen over machtigingen in Azure Security Center, een product waarmee u bedreigingen voorkomen, detecteren en erop reageren.
+title: 'Azure Security Center Veelgestelde vragen: vragen over machtigingen'
+description: Deze veelgestelde vragen vindt u antwoorden op vragen over machtigingen in Azure Security Center, een product waarmee u bedreigingen kunt voor komen, detecteren en reageren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89b3233966ac53d6c384ca6bd5ac30322fbb0b02
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599390"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106590"
 ---
 # <a name="permissions"></a>Machtigingen
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>Hoe werken machtigingen in Azure Security Center?
+## <a name="how-do-permissions-work-in-azure-security-center"></a>Hoe werken de machtigingen in Azure Security Center?
 
 Het Azure Beveiligingscentrum gebruikt [op rollen gebaseerd toegangsbeheer (RBAC)](../role-based-access-control/role-assignments-portal.md), dat [ingebouwde rollen](../role-based-access-control/built-in-roles.md) biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Security Center beoordeelt de configuratie van uw resources om beveiligingsproblemen en kwetsbaarheden te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource wanneer u de rol van eigenaar, bijdrager of lezer krijgt toegewezen voor het abonnement of de resourcegroep waartoe een resource behoort.
+Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie die betrekking heeft op een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
 
-Zie [Machtigingen in Azure Security Center](security-center-permissions.md) voor meer informatie over rollen en toegestane acties in beveiligingscentrum.
+Zie [machtigingen in azure Security Center](security-center-permissions.md) voor meer informatie over rollen en toegestane acties in Security Center.
 
 
 
-## <a name="who-can-modify-a-security-policy"></a>Wie kan een beveiligingsbeleid wijzigen?
+## <a name="who-can-modify-a-security-policy"></a>Wie kan een beveiligings beleid wijzigen?
 
-Als u een beveiligingsbeleid wilt wijzigen, moet u een beveiligingsbeheerder of eigenaar of bijdrager van dat abonnement zijn.
+Als u een beveiligings beleid wilt wijzigen, moet u een beveiligings beheerder of een eigenaar of bijdrager van het abonnement zijn.
 
-Zie [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md)voor meer informatie over het configureren van een beveiligingsbeleid.
+Zie [beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md)voor meer informatie over het configureren van een beveiligings beleid.

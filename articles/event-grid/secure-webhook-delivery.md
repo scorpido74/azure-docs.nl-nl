@@ -1,41 +1,41 @@
 ---
-title: Secure WebHook delivery with Azure AD in Azure Event Grid
-description: Beschrijft hoe u gebeurtenissen leveren aan HTTPS-eindpunten die zijn beveiligd door Azure Active Directory met Azure Event Grid
+title: Secure webhook-levering met Azure AD in Azure Event Grid
+description: Hierin wordt beschreven hoe u gebeurtenissen kunt leveren aan HTTPS-eind punten die worden beveiligd door Azure Active Directory met behulp van Azure Event Grid
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cb8168cd6d1c19cc797a7cd5454b96131fa35be
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931542"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106614"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar azure Active Directory-beveiligde eindpunten
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar Azure Active Directory beveiligde eind punten
 
-In dit artikel wordt beschreven hoe u gebruik maken van Azure Active Directory om de verbinding tussen uw gebeurtenisabonnement en uw webhook-eindpunt te beveiligen. Zie overzicht van [Microsoft Identity Platform (v2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en serviceprincipals.
+In dit artikel wordt beschreven hoe u Azure Active Directory kunt gebruiken om de verbinding tussen uw gebeurtenis abonnement en het eind punt van de webhook te beveiligen. Zie [overzicht van micro soft Identity platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en-service-principals.
 
-In dit artikel wordt de Azure-portal gebruikt voor demonstratie, maar de functie kan ook worden ingeschakeld met CLI, PowerShell of de SDK's.
+In dit artikel wordt gebruikgemaakt van de Azure Portal voor demonstratie, maar de functie kan ook worden ingeschakeld met CLI, Power shell of de Sdk's.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>Een Azure AD-toepassing maken
 
-Begin met het maken van een Azure AD-toepassing voor uw beveiligde eindpunt. Zie https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+Maak eerst een Azure AD-toepassing voor uw beveiligde eind punt. Zie https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Configureer uw beveiligde API om te worden aangeroepen door een daemon-app.
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Gebeurtenisraster inschakelen om uw Azure AD-toepassing te gebruiken
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Event Grid inschakelen voor het gebruik van uw Azure AD-toepassing
 
-Gebruik het Onderstaande PowerShell-script om een rol- en serviceprincipe te maken in uw Azure AD-toepassing. U hebt de tenant-id en object-id van uw Azure AD-toepassing nodig:
+Gebruik het onderstaande Power shell-script om een functie-en service principe te maken in uw Azure AD-toepassing. U hebt de Tenant-ID en de object-ID van uw Azure AD-toepassing nodig:
 
     > [!NOTE]
     > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-1. Wijzig de $myTenantId van het PowerShell-script om uw Azure AD-tenant-id te gebruiken.
-1. De $myAzureADApplicationObjectId van het PowerShell-script wijzigen om de object-id van uw Azure AD-toepassing te gebruiken
+1. Wijzig de $myTenantId van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
+1. Wijzig de $myAzureADApplicationObjectId van het Power shell-script om de object-ID van uw Azure AD-toepassing te gebruiken
 1. Voer het gewijzigde script uit.
 
 ```PowerShell
@@ -103,28 +103,28 @@ else
     
 New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
     
-Write-Host "My Azure AD Tenant Id" + $myTenantId
-Write-Host "My Azure AD Application Id" + $myAzureADApplicationObjectId
-Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
-Write-Host "My Azure AD Application's Roles"
+Write-Host "My Azure AD Tenant Id: $myTenantId"
+Write-Host "My Azure AD Application Id: $($myApp.AppId)"
+Write-Host "My Azure AD Application ObjectId: $($myApp.ObjectId)"
+Write-Host "My Azure AD Application's Roles: "
 Write-Host $myApp.AppRoles
 ```
     
-## <a name="configure-the-event-subscription"></a>Het gebeurtenisabonnement configureren
+## <a name="configure-the-event-subscription"></a>Het gebeurtenis abonnement configureren
 
-Selecteer eindpunttype 'Webhook' in de creatiestroom voor uw evenementabonnement. Zodra u uw eindpunt URI hebt gegeven, klikt u op het tabblad Extra functies boven aan het blad voor gebeurtenisabonnementen maken.
+Selecteer in de stroom voor het maken van uw gebeurtenis abonnement het eindpunt type ' webhook '. Zodra u uw eind punt-URI hebt opgegeven, klikt u op het tabblad Extra functies boven aan de Blade gebeurtenis abonnementen maken.
 
-![Webhook van eindpunttype selecteren](./media/secure-webhook-delivery/select-webhook.png)
+![Type webhook voor eind punt selecteren](./media/secure-webhook-delivery/select-webhook.png)
 
-Schakel op het tabblad Extra functies het selectievakje 'AAD-verificatie gebruiken' in en configureer de tenant-id en toepassings-id:
+Schakel op het tabblad Extra functies het selectie vakje ' AAD-verificatie gebruiken ' in en configureer de Tenant-ID en toepassings-ID:
 
-* Kopieer de Azure AD-tenant-id uit de uitvoer van het script en voer deze in het veld AAD Tenant-id in.
-* Kopieer de Azure AD-toepassings-id uit de uitvoer van het script en voer deze in het veld AAD-toepassings-id in.
+* Kopieer de Azure AD-Tenant-ID uit de uitvoer van het script en voer deze in het veld AAD-Tenant-ID in.
+* Kopieer de Azure AD-toepassings-ID uit de uitvoer van het script en voer deze in het veld AAD-toepassings-ID in.
 
-    ![Veilige Webhook-actie](./media/secure-webhook-delivery/aad-configuration.png)
+    ![Actie beveiligde webhook](./media/secure-webhook-delivery/aad-configuration.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Gebeurtenisnetbezorging controleren](monitor-event-delivery.md)voor informatie over het bewaken van gebeurtenisleveringen.
-* Zie [Beveiliging en verificatie van gebeurtenisraster](security-authentication.md)voor meer informatie over de verificatiesleutel.
-* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
+* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)voor meer informatie over het bewaken van gebeurtenis leveringen.
+* Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie over de verificatie sleutel.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

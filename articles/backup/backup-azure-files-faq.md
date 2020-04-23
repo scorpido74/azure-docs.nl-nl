@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101158"
+ms.locfileid: "82105638"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -74,7 +74,7 @@ Ja. Raadpleeg de [gedetailleerde documentatie voor meer informatie.](backup-azur
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Kan ik toegang krijgen tot de moment opnamen die zijn gemaakt door Azure backups en deze koppelen?
 
-Alle moment opnamen die door Azure Backup worden gemaakt, zijn toegankelijk via moment opnamen weer geven in de portal, Power shell of CLI. Meer informatie over momentopnamen van Azure-bestandsshares vindt u in [Overzicht van share-momentopnamen voor Azure Files (preview)](../storage/files/storage-snapshots-files.md).
+Alle moment opnamen die door Azure Backup worden gemaakt, zijn toegankelijk via moment opnamen weer geven in de portal, Power shell of CLI. Zie [overzicht van moment opnamen van shares voor Azure files](../storage/files/storage-snapshots-files.md)voor meer informatie over Azure files moment opnamen van shares.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale Bewaar periode die ik voor back-ups kan configureren?
 

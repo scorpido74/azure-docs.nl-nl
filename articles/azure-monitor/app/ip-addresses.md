@@ -1,45 +1,45 @@
 ---
-title: IP-adressen die worden gebruikt door Application Insights en Log Analytics | Microsoft Documenten
-description: Uitzonderingen op serverfirewalls vereist door Application Insights
+title: IP-adressen die worden gebruikt door Application Insights en Log Analytics | Microsoft Docs
+description: Uitzonde ringen voor Server firewalls vereist voor Application Insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 12/19/2019
-ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/23/2020
+ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984143"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82105842"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
-De [Azure Application Insights-service](../../azure-monitor/app/app-insights-overview.md) gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u controleert, achter een firewall wordt gehost.
+De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
 
 > [!NOTE]
-> Hoewel deze adressen statisch zijn, is het mogelijk dat we ze van tijd tot tijd moeten wijzigen. Alle Application Insights-verkeer vertegenwoordigt uitgaand verkeer, met uitzondering van beschikbaarheidsbewaking en webhooks waarvoor inkomende firewallregels nodig zijn.
+> Hoewel deze adressen statisch zijn, is het mogelijk dat we deze van tijd tot tijd moeten wijzigen. Alle Application Insights verkeer staat voor uitgaand verkeer met uitzonde ring van beschikbaarheids bewaking en webhooks waarvoor binnenkomende firewall regels zijn vereist.
 > 
 > 
 
 > [!TIP]
-> Abonneer je op deze pagina als https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom een RSS-feed door toe te voegen aan uw favoriete RSS / ATOM-lezer om op de hoogte te blijven van de laatste wijzigingen.
+> Abonneer u op deze pagina als een RSS-feed https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom door toe te voegen aan uw favoriete RSS/Atom-lezer om op de hoogte te worden gesteld van de laatste wijzigingen.
 > 
 > 
 
 ## <a name="outgoing-ports"></a>Uitgaande poorten
-U moet een aantal uitgaande poorten openen in de firewall van uw server, zodat de Application Insights SDK en/of Statusmonitor gegevens naar de portal kunnen verzenden:
+U moet een aantal uitgaande poorten in de firewall van uw server openen zodat de Application Insights SDK en/of Status Monitor gegevens naar de portal kunnen verzenden:
 
 | Doel | URL | IP | Poorten |
 | --- | --- | --- | --- |
 | Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
-| Live Metrics Stream (Oost-VS) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
-| Live Metrics Stream (South Central US) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
-| Live Metrics Stream (Noord-Europa) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
-| Live Metrics Stream (West-Europa) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
-| Live Metrics Stream (Oost-Azië) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
+| Live Metrics Stream (VS-Oost) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
+| Live Metrics Stream (Zuid-Centraal VS) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
+| Live Metrics Stream (Europa-noord) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
+| Live Metrics Stream (Europa-west) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
+| Live Metrics Stream (Azië-oost) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
 | Live Metrics Stream (Zuidoost-Azië) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
-Status monitor configuratie - alleen nodig bij het aanbrengen van wijzigingen.
+Status Monitor configuratie: alleen nodig als u wijzigingen aanbrengt.
 
 | Doel | URL | IP | Poorten |
 | --- | --- | --- | --- |
@@ -53,24 +53,24 @@ Status monitor configuratie - alleen nodig bij het aanbrengen van wijzigingen.
 | Installeren | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Beschikbaarheidstests
-Dit is de lijst met adressen van waaruit [webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests op uw app wilt uitvoeren, maar uw webserver is beperkt tot het bedienen van specifieke clients, moet u binnenkomend verkeer van onze beschikbaarheidstestservers toestaan.
+Dit is de lijst met adressen waarvan de [webtesten voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
 
 ### <a name="service-tag"></a>Servicetag
 
-Als u Azure Network Security Groups gebruikt, voegt u gewoon een **inkomende poortregel** toe om verkeer toe te staan uit beschikbaarheidstests van Application Insights door **Servicetag** te selecteren als **bron-** en **toepassingsbeschikbaarheidals** **bronservicetag.**
+Als u Azure-netwerk beveiligings groepen gebruikt, voegt u gewoon **een regel voor binnenkomende poort** toe om verkeer van Application Insights-beschikbaarheids tests toe te staan door **service Tags** als **bron** -en **ApplicationInsightsAvailability** te selecteren als bron **service label**.
 
 >[!div class="mx-imgBorder"]
->![Selecteer onder instellingen Binnenkomende beveiligingsregels en selecteer toevoegen boven aan het tabblad](./media/ip-addresses/add-inbound-security-rule.png)
+>![Selecteer onder instellingen regels voor binnenkomende beveiliging en selecteer vervolgens toevoegen boven aan het tabblad](./media/ip-addresses/add-inbound-security-rule.png)
 
 >[!div class="mx-imgBorder"]
->![Tabblad Binnenkomende beveiligingsregel toevoegen](./media/ip-addresses/add-inbound-security-rule2.png)
+>![Tabblad inkomende beveiligings regel toevoegen](./media/ip-addresses/add-inbound-security-rule2.png)
 
-Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer vanaf deze adressen (IP-adressen worden gegroepeerd op locatie):
+Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adressen (IP-adressen zijn gegroepeerd op locatie):
 
 ### <a name="addresses-grouped-by-location"></a>Adressen gegroepeerd op locatie
 
 > [!NOTE]
-> Deze adressen worden vermeld met behulp van CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat `51.144.56.112/28` een item als gelijk is `51.144.56.112` aan `51.144.56.127`16 IP's vanaf en eindigend op .
+> Deze adressen worden weer gegeven met een CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat een item zoals `51.144.56.112/28` het equivalent is aan 16 IP- `51.144.56.112` adressen, beginnend `51.144.56.127`bij en eindigt op.
 
 ```
 Australia East
@@ -180,54 +180,47 @@ East US
 
 ```  
 
-## <a name="application-insights-api"></a>API voor toepassingsinzichten
-| Doel | URI | IP | Poorten |
+## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics-Api's
+
+| Doel | URI |  IP | Poorten |
 | --- | --- | --- | --- |
-| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80.443 |
-| API-documenten |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80.443 |
-| Azure Pipeline-annotatiesextensie |aigs1.aisvc.visualstudio.com |dynamisch|443 |
+| API |`api.applicationinsights.io`<br/>`api1.applicationinsights.io`<br/>`api2.applicationinsights.io`<br/>`api3.applicationinsights.io`<br/>`api4.applicationinsights.io`<br/>`api5.applicationinsights.io`<br/>`dev.applicationinsights.io`<br/>`dev.applicationinsights.microsoft.com`<br/>`dev.aisvc.visualstudio.com`<br/>`www.applicationinsights.io`<br/>`www.applicationinsights.microsoft.com`<br/>`www.aisvc.visualstudio.com`<br/>`api.loganalytics.io`<br/>`*.api.loganalytics.io`<br/>`dev.loganalytics.io`<br>`docs.loganalytics.io`<br/>`www.loganalytics.io` |20.37.52.188 <br/> 20.37.53.231 <br/> 20.36.47.130 <br/> 20.40.124.0 <br/> 20.43.99.158 <br/> 20.43.98.234 <br/> 13.70.127.61 <br/> 40.81.58.225 <br/> 20.40.160.120 <br/> 23.101.225.155 <br/> 52.139.8.32 <br/> 13.88.230.43 <br/> 52.230.224.237 <br/> 52.242.230.209 <br/> 52.173.249.138 <br/> 52.229.218.221 <br/> 52.229.225.6 <br/> 23.100.94.221 <br/> 52.188.179.229 <br/> 52.226.151.250 <br/> 52.150.36.187 <br/> 40.121.135.131 <br/> 20.44.73.196 <br/> 20.41.49.208 <br/> 40.70.23.205 <br/> 20.40.137.91 <br/> 20.40.140.212 <br/> 40.89.189.61 <br/> 52.155.118.97 <br/> 52.156.40.142 <br/> 23.102.66.132 <br/> 52.231.111.52 <br/> 52.231.108.46 <br/> 52.231.64.72 <br/> 52.162.87.50 <br/> 23.100.228.32 <br/> 40.127.144.141 <br/> 52.155.162.238 <br/> 137.116.226.81 <br/> 52.185.215.171 <br/> 40.119.4.128 <br/> 52.171.56.178 <br/> 20.43.152.45 <br/> 20.44.192.217 <br/> 13.67.77.233 <br/> 51.104.255.249 <br/> 51.104.252.13 <br/> 51.143.165.22 <br/> 13.78.151.158 <br/> 51.105.248.23 <br/> 40.74.36.208 <br/> 40.74.59.40 <br/> 13.93.233.49 <br/> 52.247.202.90 |80.443 |
+| Uitbrei ding voor Azure pipeline-aantekeningen |aigs1.aisvc.visualstudio.com |dynamisch|443 | 
 
-## <a name="log-analytics-api"></a>Api voor logboekanalyse
-
-| Doel | URI | IP | Poorten |
-| --- | --- | --- | --- |
-| API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80.443 |
-| API-documenten |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80.443 |
-
-## <a name="application-insights-analytics"></a>Analytics voor applicatie-inzichten
+## <a name="application-insights-analytics"></a>Application Insights Analytics
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Analytics-portal | analytics.applicationinsights.io | dynamisch | 80.443 |
+| Analytics Portal | analytics.applicationinsights.io | dynamisch | 80.443 |
 | CDN | applicationanalytics.azureedge.net | dynamisch | 80.443 |
-| Media-CDN | applicationanalyticsmedia.azureedge.net | dynamisch | 80.443 |
+| Media CDN | applicationanalyticsmedia.azureedge.net | dynamisch | 80.443 |
 
-Opmerking: *.applicationinsights.io domein is eigendom van het Application Insights-team.
+Opmerking: het domein applicationinsights.io is eigendom van Application Insights team.
 
-## <a name="log-analytics-portal"></a>Logboekanalyseportal
+## <a name="log-analytics-portal"></a>Log Analytics Portal
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
 | Portal | portal.loganalytics.io | dynamisch | 80.443 |
 | CDN | applicationanalytics.azureedge.net | dynamisch | 80.443 |
 
-Opmerking: *.loganalytics.io domein is eigendom van het Log Analytics-team.
+Opmerking: het loganalytics.io-domein is eigendom van het Log Analytics-team.
 
-## <a name="application-insights-azure-portal-extension"></a>Azure-portalextensie voor toepassingsinzichten
+## <a name="application-insights-azure-portal-extension"></a>Uitbrei ding voor Application Insights Azure Portal
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Uitbreiding Applicatie-inzichten | stamp2.app.insightsportal.visualstudio.com | dynamisch | 80.443 |
-| APPLICATION Insights-extensie CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamisch | 80.443 |
+| Application Insights extensie | stamp2.app.insightsportal.visualstudio.com | dynamisch | 80.443 |
+| CDN van Application Insights extensie | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamisch | 80.443 |
 
-## <a name="application-insights-sdks"></a>Application Insights SDKs
+## <a name="application-insights-sdks"></a>Application Insights Sdk's
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | dynamisch | 80.443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamisch | 80.443 |
+| Application Insights Java-SDK | aijavasdk.blob.core.windows.net | dynamisch | 80.443 |
 
-## <a name="alert-webhooks"></a>Alerte webhooks
+## <a name="alert-webhooks"></a>Webhooks voor waarschuwingen
 
 | Doel | IP | Poorten
 | --- | --- | --- |
@@ -237,7 +230,7 @@ Opmerking: *.loganalytics.io domein is eigendom van het Log Analytics-team.
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Agent | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443
 
@@ -248,6 +241,6 @@ Opmerking: *.loganalytics.io domein is eigendom van het Log Analytics-team.
 
 | Doel | URI | IP | Poorten |
 | --- | --- | --- | --- |
-| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Agent | ppe.azureserviceprofiler.net<br/>*. ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | dynamisch | 443
 | Storage | *.core.windows.net | dynamisch | 443

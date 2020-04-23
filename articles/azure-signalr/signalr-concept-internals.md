@@ -1,25 +1,23 @@
 ---
 title: Interne werking van Azure SignalR Service
-description: Meer informatie over de internals van Azure SignalR Service, de architectuur, de verbindingen en de manier waarop gegevens worden verzonden.
+description: Meer informatie over de interne service van Azure signalering, de architectuur, de verbindingen en hoe gegevens worden verzonden.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74157594"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82105757"
 ---
 # <a name="azure-signalr-service-internals"></a>Interne werking van Azure SignalR Service
 
-Azure SignalR Service is gebouwd op basis van het ASP.NET Core SignalR-framework. Azure SignalR Service ondersteunt ook ASP.NET SignalR als preview-functie.
+Azure SignalR Service is gebouwd op basis van het ASP.NET Core SignalR-framework. Het biedt ook ondersteuning voor ASP.NET-Signa lering door het gegevens Protocol van ASP.NET signalering boven op het ASP.NET Core-Framework opnieuw te implementeren.
 
-> Voor de ondersteuning van ASP.NET SignalR wordt het gegevensprotocol van ASP.NET SignalR opnieuw geïmplementeerd op basis van het ASP.NET Core-framework door Azure SignalR Service
-
-U kunt eenvoudig een lokale ASP.NET Core SignalR-toepassing migreren voor werking met SignalR Service door slechts enkele regels code te wijzigen.
+U kunt eenvoudig een lokale ASP.NET Core Signalr-toepassing of ASP.NET signalerings toepassing migreren om met de signaal service te werken, met een paar regels code wijziging.
 
 In het volgende diagram wordt de typische architectuur beschreven voor gebruik van SignalR Service met uw toepassingsserver.
 

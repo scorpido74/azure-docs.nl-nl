@@ -1,257 +1,261 @@
 ---
-title: EDIFACT-berichten voor B2B-integratie
-description: Exchange EDIFACT-berichten in EDI-indeling voor B2B-bedrijfsintegratie in Azure Logic Apps met Enterprise Integration Pack
+title: EDIFACT berichten voor B2B-integratie
+description: Exchange EDIFACT-berichten in EDI-indeling voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/26/2016
-ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 8aed4f44b597235557a495a263c6a4ddf8e93ce7
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651454"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106318"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EdIFACT-berichten uitwisselen voor B2B-bedrijfsintegratie in Azure Logic Apps met Enterprise Integration Pack
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange EDIFACT-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
-Voordat u EDIFACT-berichten uitwisselen voor Azure Logic Apps, moet u een EDIFACT-overeenkomst maken en die overeenkomst opslaan in uw integratieaccount. Hier volgen de stappen voor het maken van een EDIFACT-overeenkomst.
+Voordat u EDIFACT-berichten kunt uitwisselen voor Azure Logic Apps, moet u een EDIFACT-overeenkomst maken en die overeenkomst opslaan in uw integratie account. Hier volgen de stappen voor het maken van een EDIFACT-overeenkomst.
 
 > [!NOTE]
-> Deze pagina bevat de EDIFACT-functies voor Azure Logic Apps. Zie [X12](logic-apps-enterprise-integration-x12.md)voor meer informatie.
+> Op deze pagina worden de EDIFACT-functies voor Azure Logic Apps beschreven. Zie [X12](logic-apps-enterprise-integration-x12.md)voor meer informatie.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Dit zijn de items die je nodig hebt:
+Dit zijn de items die u nodig hebt:
 
-* Een [integratieaccount](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en is gekoppeld aan uw Azure-abonnement  
-* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratieaccount
+* Een [integratie account](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en gekoppeld aan uw Azure-abonnement  
+* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratie account
 
 > [!NOTE]
-> Wanneer u een overeenkomst maakt, moet de inhoud in de berichten die u ontvangt of verzendt van en naar de partner overeenkomen met het type overeenkomst.
+> Wanneer u een overeenkomst maakt, moet de inhoud in de berichten die u ontvangt of van en naar de partner verzendt, overeenkomen met het overeenkomst type.
 
-Nadat u [een integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) hebt gemaakt en [partners hebt toegevoegd,](logic-apps-enterprise-integration-partners.md)u een EDIFACT-overeenkomst maken door deze stappen te volgen.
+Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) en [partners hebt toegevoegd](logic-apps-enterprise-integration-partners.md), kunt u een Edifact-overeenkomst maken door de volgende stappen uit te voeren.
 
 ## <a name="create-an-edifact-agreement"></a>Een EDIFACT-overeenkomst maken 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com "Azure Portal"). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure Portal"). 
 
-2. Selecteer **alle services**in het hoofdmenu van Azure . Voer in het zoekvak 'integratie' in en selecteer **Integratieaccounts**.
+2. Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' Integration ' in en selecteer vervolgens **integratie accounts**.
 
-   ![Uw integratieaccount zoeken](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![Uw integratie account zoeken](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
    > [!TIP]
-   > Als **Alle services** niet worden weergegeven, moet u mogelijk eerst het menu uitbreiden. Selecteer boven aan het samengevouwen menu de optie **Tekstlabels weergeven**.
+   > Als **alle services** niet worden weer gegeven, moet u het menu mogelijk eerst uitbreiden. Selecteer boven in het samengevouwen menu de optie **Tekstlabels weer geven**.
 
-3. Selecteer **onder Integratieaccounts**het integratieaccount waar u de overeenkomst wilt maken.
+3. Onder **integratie accounts**selecteert u het integratie account waar u de overeenkomst wilt maken.
 
-   ![Integratieaccount selecteren waar u de overeenkomst maken](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+   ![Integratie account selecteren waar de overeenkomst moet worden gemaakt](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Kies **Overeenkomsten**. Als u geen tegel Overeenkomsten hebt, voegt u eerst de tegel toe.   
+4. Kies **overeenkomsten**. Als u geen tegel overeenkomsten hebt, voegt u eerst de tegel toe.   
 
-   ![De tegel 'Overeenkomsten' kiezen](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+   ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. Kies op de pagina Overeenkomsten de optie **Toevoegen**.
+5. Kies op de pagina overeenkomsten de optie **toevoegen**.
 
-   ![Kies 'Toevoegen'](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![Kies toevoegen](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. Voer **onder Toevoegen**een **naam** in voor uw overeenkomst. Selecteer **EDIFACT**voor **het type Overeenkomst**. Selecteer de **hostpartner,** **hostidentiteit,** **gastpartner**en **gastidentiteit** voor uw overeenkomst.
+6. Voer onder **toevoegen**een **naam** in voor uw overeenkomst. Selecteer voor **type overeenkomst**de optie **EDIFACT**. Selecteer de **host-partner**, de **identiteit**van de host, de **gast partner**en de **gast identiteit** voor uw overeenkomst.
 
-   ![Details van de overeenkomst verstrekken](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![Details van overeenkomst opgeven](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
    | Eigenschap | Beschrijving |
    | --- | --- |
-   | Name |Naam van de overeenkomst |
+   | Naam |Naam van de overeenkomst |
    | Type overeenkomst | Moet EDIFACT zijn |
-   | Gastpartner |Een overeenkomst heeft zowel een gast- als gastpartner nodig. De hostpartner vertegenwoordigt de organisatie die de overeenkomst configureert. |
-   | Host identiteit |Een id voor de hostpartner |
-   | Gastpartner |Een overeenkomst heeft zowel een gast- als gastpartner nodig. De gastpartner vertegenwoordigt de organisatie die zaken doet met de gastpartner. |
-   | Gastidentiteit |Een id voor de gastpartner |
-   | Instellingen voor ontvangen |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst zijn ontvangen. |
-   | Verzendinstellingen |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst worden verzonden. |
+   | Host-partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
+   | Host-id |Een id voor de host-partner |
+   | Gast partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner. |
+   | Gast identiteit |Een id voor de gast partner |
+   | Instellingen voor ontvangen |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst worden ontvangen. |
+   | Instellingen verzenden |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst worden verzonden. |
    ||| 
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Configureren hoe uw overeenkomst met ontvangen berichten omgaat
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Configureren hoe uw overeenkomst ontvangen berichten verwerkt
 
-Nu u de overeenkomsteigenschappen hebt ingesteld, u configureren hoe deze overeenkomst binnenkomende berichten identificeert en verwerkt die via deze overeenkomst van uw partner zijn ontvangen.
+Nu u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren hoe deze overeenkomst inkomende berichten die van uw partner worden ontvangen via deze overeenkomst identificeren en verwerken.
 
-1. Selecteer **Onder Toevoegen**de optie Instellingen **ontvangen**.
-Configureer deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u uitwisselt. Zie de tabellen in deze sectie voor eigenschapbeschrijvingen.
+> [!IMPORTANT]
+> De EDIFACT-connector ondersteunt alleen UTF-8-tekens.
+> Als uw uitvoer onverwachte tekens bevat, controleert u of uw EDIFACT-berichten gebruikmaken van de UTF-8-tekenset.
 
-   **Instellingen voor ontvangen** is ingedeeld in deze secties: Id's, Bevestiging, Schema's, Controlenummers, Validatie en Interne instellingen.
+1. Onder **toevoegen**selecteert u **instellingen voor ontvangen**.
+Configureer deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u uitwisselt. Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
 
-   !['Instellingen voor ontvangen' configureren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   **Ontvangst-instellingen** zijn ingedeeld in de volgende secties: Id's, bevestiging, Schema's, controle nummers, validatie en interne instellingen.
 
-2. Nadat u klaar bent, moet u uw instellingen opslaan door **OK**te kiezen.
+   ![Instellingen voor het ontvangen van berichten configureren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-Nu is uw overeenkomst klaar om binnenkomende berichten te verwerken die voldoen aan de geselecteerde instellingen.
+2. Wanneer u klaar bent, slaat u de instellingen op door **OK**te kiezen.
 
-### <a name="identifiers"></a>Identificatiemiddelen
+U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de geselecteerde instellingen.
+
+### <a name="identifiers"></a>Id's
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| UNB6.1 (wachtwoord voor geadresseerden) |Voer een alfanumerieke waarde in die varieert van 1 tot 14 tekens. |
-| UNB6.2 (Referentiekwalificatie voor ontvangers) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal twee tekens. |
+| UNB 6.1 (referentie wacht woord van de ontvanger) |Voer een alfanumerieke waarde tussen 1 en 14 tekens in. |
+| UNB 6.2 (referentie kwalificatie van de ontvanger) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal twee tekens. |
 
 ### <a name="acknowledgments"></a>Erkenningen
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Ontvangst van bericht (CONTRL) |Schakel dit selectievakje in om een technische bevestiging (CONTRL) terug te sturen naar de afzender van de uitwisseling. De bevestiging wordt verzonden naar de afzender van de uitwisseling op basis van de verzendinstellingen verzenden voor de overeenkomst. |
-| Erkenning (CONTRL) |Schakel dit selectievakje in om een functionele (CONTRL)-bevestiging terug te sturen naar de afzender van de uitwisseling De bevestiging wordt naar de afzender van de uitwisseling verzonden op basis van de verzendinstellingen voor de overeenkomst. |
+| Ontvangst van bericht (CONTRL) |Schakel dit selectie vakje in om een technische (CONTRL) bevestiging te retour neren naar de verzender van het uitwisselings certificaat. De bevestiging wordt verzonden naar de verzender van het uitwisselings bericht op basis van de instellingen voor verzenden voor de overeenkomst. |
+| Bevestiging (CONTRL) |Schakel dit selectie vakje in om een functionele (CONTRL) bevestiging te retour neren naar de verzender van het uitwisselings bericht dat de bevestiging wordt verzonden naar de verzender van het uitwisselings certificaat op basis van de instellingen voor het verzenden van de overeenkomst. |
 
 ### <a name="schemas"></a>Schema 's
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| UNH2.1 (TYPE) |Selecteer een type transactieset. |
-| UNH2.2 (VERSIE) |Voer het versienummer van het bericht in. (Minimum, één teken; maximaal, drie tekens). |
-| UNH2.3 (RELEASE) |Voer het releasenummer van het bericht in. (Minimum, één teken; maximaal, drie tekens). |
-| UNH2.5 (BIJBEHORENDE TOEGEWEZEN CODE) |Voer de toegewezen code in. (Maximaal, zes tekens. Moet alfanumeriek zijn). |
-| UNG2.1 (APP SENDER ID) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal 35 tekens. |
-| UNG2.2 (KWALIFICATIE VOOR DE AFZENDER VAN DE APP) |Voer een alfanumerieke waarde in, met een maximum van vier tekens. |
-| SCHEMA |Selecteer het eerder geüploade schema dat u wilt gebruiken in uw gekoppelde integratieaccount. |
+| UNH 2.1 (TYPE) |Selecteer een type transactieset. |
+| UNH 2.2 (VERSIE) |Voer het versie nummer van het bericht in. (Mini maal, één teken; maximum, drie tekens). |
+| UNH 2.3 (RELEASE) |Voer het nummer van het bericht in. (Mini maal, één teken; maximum, drie tekens). |
+| UNH 2.5 (GEKOPPELDE TOEGEWEZEN CODE) |Voer de toegewezen code in. (Maxi maal zes tekens. Moet alfanumeriek zijn). |
+| UNG 2.1 (ID VAN DE APP-AFZENDER) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 35 tekens. |
+| UNG 2.2 (APP SENDER CODE QUALIFIER) |Voer een alfanumerieke waarde in met een maximum van vier tekens. |
+| SCHEMA |Selecteer het eerder geüploade schema dat u wilt gebruiken uit het gekoppelde integratie account. |
 
-### <a name="control-numbers"></a>Controlenummers
+### <a name="control-numbers"></a>Controle nummers
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Duplicaten van interchange control number weigeren |Als u dubbele knooppunten wilt blokkeren, selecteert u deze eigenschap. Indien geselecteerd, controleert de EDIFACT Decode Action of het interchange control number (UNB5) voor de ontvangen uitwisseling niet overeenkomt met een eerder verwerkt interchange control nummer. Als een overeenkomst wordt gedetecteerd, wordt het knooppunt niet verwerkt. |
-| Controleer elke (dag) op dubbele UNB5 |Als u ervoor hebt gekozen dubbele uitwisselingscontrolenummers te verbieden, u het aantal dagen opgeven waarop u de controle moet uitvoeren door de juiste waarde voor deze instelling op te geven. |
-| Groepcontrolenummerduplicaten weigeren |Als u knooppunten wilt blokkeren met dubbele groepscontrolenummers (UNG5), selecteert u deze eigenschap. |
-| Dubbele gegevens van transactiesetregelnummer weigeren |Als u knooppunten wilt blokkeren met dubbele transactiesetcontrolenummers (UNH1), selecteert u deze eigenschap. |
-| EDIFACT Bevestigingscontrolenummer |Als u de referentienummers van de transactieset wilt aanwijzen voor gebruik in een bevestiging, voert u een waarde in voor het voorvoegsel, een bereik van referentienummers en een achtervoegsel. |
+| Dubbele uitwisselings controle nummers niet toestaan |Selecteer deze eigenschap om dubbele interwijzigingen te blok keren. Als u deze waarde selecteert, controleert de decoderings actie EDIFACT of het uitwisselings controle nummer (UNB5) voor de ontvangen uitwisseling niet overeenkomt met een eerder verwerkte Interchange Control-nummer. Als er een overeenkomst wordt gedetecteerd, wordt de uitwisseling niet verwerkt. |
+| Controleren op dubbele UNB5 elke (dagen) |Als u dubbele uitwisselings controle nummers niet toestaat, kunt u het aantal dagen opgeven wanneer de controle moet worden uitgevoerd door de juiste waarde voor deze instelling op te geven. |
+| Dubbele items van groeps controle nummers niet toestaan |Selecteer deze eigenschap om interwijzigen met dubbele groeps controle nummers (UNG5) te blok keren. |
+| Geen duplicaten voor het instellen van transactie sets toestaan |Selecteer deze eigenschap om interacties te blok keren met dubbele trans actie-UNH1 (set Control Numbers). |
+| EDIFACT bevestigings controle nummer |Als u de referentie nummers van de transactie set wilt opgeven voor gebruik in een bevestiging, voert u een waarde in voor het voor voegsel, een bereik van de referentie nummers en een achtervoegsel. |
 
 ### <a name="validation"></a>Validatie
 
-Wanneer u elke validatierij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, gebruikt validatie de rij Standaard.
+Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Berichttype |Selecteer het type EDI-bericht. |
-| EDI-validatie |Voer EDI-validatie uit op gegevenstypen zoals gedefinieerd door de EDI-eigenschappen van het schema, lengtebeperkingen, lege gegevenselementen en trailing-scheidingstekens. |
-| Uitgebreide validatie |Als het gegevenstype geen EDI is, bevindt validatie zich op de vereiste gegevenselement en is herhaling, opsommingen en validatie van gegevenselementen (min/max) toegestaan. |
-| Toestaan Dat nullen voor/nalopen |Behoudt eventuele extra voor- of achterlooptekens en spatietekens. Verwijder deze tekens niet. |
-| Voorloop-/naloopnullen bijsnijden |Verwijder voorloop- of achterlooptekens en spatietekens. |
-| Scheidingsbeleid slepen |Trailing separators genereren. <p>Selecteer **Niet toegestaan** om trailing-scheidingstekens en scheidingstekens in de ontvangen uitwisseling te verbieden. Als de uitwisseling trailing limiters en separatoren heeft, wordt de uitwisseling niet geldig verklaard. <p>Selecteer **Optioneel** om knooppunten te accepteren met of zonder trailing-scheidingstekens en scheidingstekens. <p>Selecteer **Verplicht** wanneer de ontvangen uitwisseling achterliggende scheidingstekens en scheidingstekens moet hebben. |
+| Bericht type |Selecteer het type EDI-bericht. |
+| EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
+| Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
+| Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
+| Voor loop-en volg nullen bijsnijden |Voor loop-of volg spaties verwijderen. |
+| Volg scheidings beleid |Navolgende scheidings tekens genereren. <p>Selecteer **niet toegestaan** om navolgende scheidings tekens en schei in de ontvangen uitwisseling te verbieden. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>Selecteer **optioneel** om wissels met of zonder navolgende scheidings tekens en schei te accepteren. <p>Selecteer **verplicht** wanneer de ontvangen uitwisseling een Volg scheidings teken en scheidings tekens moet hebben. |
 
 ### <a name="internal-settings"></a>Interne instellingen
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Lege XML-tags maken als trailing separators zijn toegestaan |Schakel dit selectievakje in om de afzender van de uitwisseling lege XML-tags voor slepende scheidingstekens op te laten staan. |
-| Split interchange als transactiesets - transactiesets op fout opschorten|Parseert elke transactie die is ingesteld in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen op de transactieset. Alleen de transactiesets opschorten die niet-validatie uitvoeren. |
-| Split Interchange als transactiesets - knooppunt opfout opschorten|Parseert elke transactie die in een uitwisseling is ingesteld in een afzonderlijk XML-document door de juiste envelop toe te passen. De volledige uitwisseling opschorten wanneer een of meer transacties in de validatie van de uitwisselingsfail. | 
-| Knooppunt behouden - transactiesets op fout opschorten |Hiermee blijft de uitwisseling intact, maakt u een XML-document voor de volledige batch-uitwisseling. Alleen de transactiesets die niet-validatie uitvoeren, onderbreken terwijl alle andere transactiesets worden verwerkt. |
-| Interchange behouden - knooppunt op fout opschorten |Hiermee blijft de uitwisseling intact, maakt u een XML-document voor de volledige batch-uitwisseling. De volledige uitwisseling opschorten wanneer een of meer transacties in de validatie van de uitwisselingsfail. |
+| Lege XML-tags maken als navolgende scheidings tekens zijn toegestaan |Schakel dit selectie vakje in als u wilt dat de verzender van de uitwisseling lege XML-codes bevat voor afsluitende scheidings tekens. |
+| Gesplitste uitwisseling als transactie sets-transactie sets uitstellen bij fout|Parseert elke transactie set in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen op de transactieset. Alleen de transactie sets onderbreken waarvoor validatie is mislukt. |
+| Gesplitste uitwisseling als transactie sets: uitwisseling onderbreken bij fout|Parseert elke transactie set in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen. De volledige uitwisseling onderbreken wanneer een of meer transactie sets in de uitwisseling mislukt. | 
+| Trans actie sets met uitwisselingen behouden bij fout |Laat de uitwisseling intact, maakt een XML-document voor de gehele gebatcheerde uitwisseling. Alleen de transactie sets onderbreken die niet zijn gevalideerd, terwijl alle andere transactie sets worden verwerkt. |
+| Uitwisseling van uitwisseling met fouten behouden |Laat de uitwisseling intact, maakt een XML-document voor de gehele gebatcheerde uitwisseling. De volledige uitwisseling onderbreken wanneer een of meer transactie sets in de uitwisseling mislukt. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Configureren hoe uw overeenkomst berichten verzendt
 
-U configureren hoe deze overeenkomst uitgaande berichten identificeert en verwerkt die u via deze overeenkomst naar uw partners verzendt.
+U kunt configureren hoe deze overeenkomst uitgaande berichten identificeert en verwerkt die u via deze overeenkomst naar uw partners verzendt.
 
-1.  Selecteer **Onder Toevoegen**de optie Instellingen **verzenden**.
-Configureer deze eigenschappen op basis van uw overeenkomst met uw partner die berichten met u uitwisselt. Zie de tabellen in deze sectie voor eigenschapbeschrijvingen.
+1.  Onder **toevoegen**selecteert u **instellingen verzenden**.
+Configureer deze eigenschappen op basis van uw overeenkomst met uw partner die berichten met u uitwisselt. Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
 
-    **Verzendinstellingen** zijn ingedeeld in deze secties: Id's, Bevestiging, Schema's, Enveloppen, Tekensets en Scheidingstekens, Controlenummers en Validaties.
+    De **instellingen voor verzenden** zijn ingedeeld in de volgende secties: Id's, bevestiging, Schema's, enveloppen, teken sets en scheidings tekens, controle nummers en validaties.
 
-    !['Instellingen verzenden' configureren](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
+    ![Instellingen voor verzenden configureren](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Nadat u klaar bent, moet u uw instellingen opslaan door **OK**te kiezen.
+2. Wanneer u klaar bent, slaat u de instellingen op door **OK**te kiezen.
 
-Nu is uw overeenkomst klaar om uitgaande berichten te verwerken die voldoen aan de geselecteerde instellingen.
+Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die voldoen aan de geselecteerde instellingen.
 
-### <a name="identifiers"></a>Identificatiemiddelen
-
-| Eigenschap | Beschrijving |
-| --- | --- |
-| UNB1.2 (Syntaxisversie) |Selecteer een waarde tussen **1** en **4**. |
-| UNB2.3 (Afzender Reverse Routing Address) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal 14 tekens. |
-| UNB3.3 (Reverse Routing Address Recipient Reverse Routing) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal 14 tekens. |
-| UNB6.1 (wachtwoord voor geadresseerden) |Voer een alfanumerieke waarde in met een minimum van één en maximaal 14 tekens. |
-| UNB6.2 (Referentiekwalificatie voor ontvangers) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal twee tekens. |
-| UNB7 (referentie-id voor toepassingen) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal 14 tekens |
-
-### <a name="acknowledgment"></a>Erkenning
+### <a name="identifiers"></a>Id's
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Ontvangst van bericht (CONTRL) |Schakel dit selectievakje in als de gehoste partner een technische bevestiging (CONTRL) verwacht te ontvangen. Deze instelling geeft aan dat de gehoste partner, die het bericht verzendt, een bevestiging van de gastpartner aanvraagt. |
-| Erkenning (CONTRL) |Schakel dit selectievakje in als de gehoste partner een functionele (CONTRL)-bevestiging verwacht. Deze instelling geeft aan dat de gehoste partner, die het bericht verzendt, een bevestiging van de gastpartner aanvraagt. |
-| SG1/SG4-lus genereren voor geaccepteerde transactiesets |Als u ervoor kiest om een functionele bevestiging aan te vragen, schakelt u dit selectievakje in om het genereren van SG1/SG4-lussen te forceren in functionele CONTRL-bevestigingen voor geaccepteerde transactiesets. |
+| UNB 1.2 (syntaxis versie) |Selecteer een waarde tussen **1** en **4**. |
+| UNB 2.3 (afzender adres voor omkerend verkeer) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 14 tekens. |
+| UNB 3.3 (omgekeerd routerings adres van ontvanger) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 14 tekens. |
+| UNB 6.1 (referentie wacht woord van de ontvanger) |Voer een alfanumerieke waarde in met mini maal één en Maxi maal 14 tekens. |
+| UNB 6.2 (referentie kwalificatie van de ontvanger) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal twee tekens. |
+| UNB7 (toepassings verwijzing-ID) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 14 tekens |
+
+### <a name="acknowledgment"></a>Bevestiging
+
+| Eigenschap | Beschrijving |
+| --- | --- |
+| Ontvangst van bericht (CONTRL) |Schakel dit selectie vakje in als de gehoste partner verwacht een technische bevestiging (CONTRL) te ontvangen. Met deze instelling geeft u op dat de gehoste partner, die het bericht verzendt, een bevestiging vraagt van de gast partner. |
+| Bevestiging (CONTRL) |Schakel dit selectie vakje in als de gehoste partner verwacht een CONTRL-bevestiging te ontvangen. Met deze instelling geeft u op dat de gehoste partner, die het bericht verzendt, een bevestiging vraagt van de gast partner. |
+| SG1/SG4-lus genereren voor geaccepteerde transactie sets |Als u ervoor hebt gekozen om een functionele bevestiging aan te vragen, schakelt u dit selectie vakje in om het genereren van SG1/SG4-lussen in functionele CONTRL-ontvangst bevestigingen voor geaccepteerde transactie sets af te dwingen. |
 
 ### <a name="schemas"></a>Schema 's
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| UNH2.1 (TYPE) |Selecteer een type transactieset. |
-| UNH2.2 (VERSIE) |Voer het versienummer van het bericht in. |
-| UNH2.3 (RELEASE) |Voer het releasenummer van het bericht in. |
-| SCHEMA |Selecteer het te gebruiken schema. Schema's bevinden zich in uw integratieaccount. Als u toegang wilt krijgen tot uw schema's, koppelt u eerst uw integratieaccount aan uw Logic-app. |
+| UNH 2.1 (TYPE) |Selecteer een type transactieset. |
+| UNH 2.2 (VERSIE) |Voer het versie nummer van het bericht in. |
+| UNH 2.3 (RELEASE) |Voer het nummer van het bericht in. |
+| SCHEMA |Selecteer het schema dat u wilt gebruiken. Schema's bevinden zich in uw integratie account. Als u toegang wilt krijgen tot uw schema's, koppelt u eerst uw integratie account aan uw logische app. |
 
 ### <a name="envelopes"></a>Enveloppen
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| UNB8 (Priority Code verwerken) |Voer een alfabetische waarde in die niet meer dan één teken lang is. |
-| UNB10 (communicatieovereenkomst) |Voer een alfanumerieke waarde in met minimaal één teken en maximaal 40 tekens. |
-| UNB11 (testindicator) |Schakel dit selectievakje in om aan te geven dat de gegenereerde uitwisseling testgegevens zijn |
-| UNA-segment toepassen (servicetekenreeksadvies) |Schakel dit selectievakje in om een UNA-segment te genereren voor de uitwisseling die moet worden verzonden. |
-| Ung-segmenten toepassen (koptekst van functiegroep) |Schakel dit selectievakje in om groeperingssegmenten te maken in de functionele groepskop in de berichten die naar de gastpartner worden verzonden. De volgende waarden worden gebruikt om de UNG-segmenten te maken: <p>Voer voor **UNG1**een alfanumerieke waarde in met minimaal één teken en maximaal zes tekens. <p>Voer voor **UNG2.1**een alfanumerieke waarde in met een minimum van één teken en maximaal 35 tekens. <p>Voer **voor UNG2.2**een alfanumerieke waarde in met een maximum van vier tekens. <p>Voer **voor UNG3.1**een alfanumerieke waarde in met een minimum van één teken en maximaal 35 tekens. <p>Voer **voor UNG3.2**een alfanumerieke waarde in met een maximum van vier tekens. <p>Voer voor **UNG6**een alfanumerieke waarde in met een minimum van één en maximaal drie tekens. <p>Voer **voor UNG7.1**een alfanumerieke waarde in met minimaal één teken en maximaal drie tekens. <p>Voer **voor UNG7.2**een alfanumerieke waarde in met minimaal één teken en maximaal drie tekens. <p>Voer **voor UNG7.3**een alfanumerieke waarde in met een minimum van 1 teken en maximaal 6 tekens. <p>Voer voor **UNG8**een alfanumerieke waarde in met minimaal één teken en maximaal 14 tekens. |
+| UNB8 (verwerkings prioriteits code) |Voer een alfabetische waarde in die niet meer dan één teken lang is. |
+| UNB10 (communicatie overeenkomst) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 40 tekens. |
+| UNB11 (test indicator) |Schakel dit selectie vakje in om aan te geven dat het gegenereerde uitwisseling test gegevens is |
+| UNA segment Toep assen (advies voor service teken reeks) |Schakel dit selectie vakje in om een UNA-segment te genereren voor het verzenden van de uitwisseling. |
+| UNG segmenten Toep assen (koptekst functie groep) |Schakel dit selectie vakje in om Groepeer segmenten in de kop van de functionele groep te maken in de berichten die naar de gast partner worden verzonden. De volgende waarden worden gebruikt om de UNG-segmenten te maken: <p>Voer voor **UNG1**een alfanumerieke waarde in met mini maal één teken en Maxi maal zes tekens. <p>Voer voor **Ung 2.1**een alfanumerieke waarde in met mini maal één teken en maxi maal 35 tekens. <p>Voer voor **Ung 2.2**een alfanumerieke waarde in met een maximum van vier tekens. <p>Voer voor **ung 3.1**een alfanumerieke waarde in met mini maal één teken en maxi maal 35 tekens. <p>Voer voor **ung 3.2**een alfanumerieke waarde in met een maximum van vier tekens. <p>Voer voor **UNG6**een alfanumerieke waarde in met mini maal één en Maxi maal drie tekens. <p>Voer voor **ung 7.1**een alfanumerieke waarde in met mini maal één teken en Maxi maal drie tekens. <p>Voer voor **ung 7.2**een alfanumerieke waarde in met mini maal één teken en Maxi maal drie tekens. <p>Voer voor **ung 7.3**een alfanumerieke waarde in met mini maal 1 teken en Maxi maal 6 tekens. <p>Voer voor **UNG8**een alfanumerieke waarde in met mini maal één teken en Maxi maal 14 tekens. |
 
-### <a name="character-sets-and-separators"></a>Tekensets en scheidingstekens
+### <a name="character-sets-and-separators"></a>Teken sets en scheidings tekens
 
-Anders dan de tekenset u een andere set scheidingstekens invoeren die voor elk berichttype moeten worden gebruikt. Als een tekenset niet is opgegeven voor een bepaald berichtschema, wordt de standaardtekenset gebruikt.
-
-| Eigenschap | Beschrijving |
-| --- | --- |
-| UNB1.1 (systeem-id) |Selecteer de EDIFACT-tekenset die moet worden toegepast op de uitgaande uitwisseling. |
-| Schema |Selecteer een schema in de vervolgkeuzelijst. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe rij toegevoegd. Selecteer voor het geselecteerde schema de scheidingstekens die u wilt gebruiken op basis van de onderstaande scheidingsbeschrijvingen. |
-| Invoertype |Selecteer een invoertype in de vervolgkeuzelijst. |
-| Componentscheidingsteken |Als u samengestelde gegevenselementen wilt scheiden, voert u één teken in. |
-| Scheidingsteken van gegevenselement |Als u eenvoudige gegevenselementen wilt scheiden in samengestelde gegevenselementen, voert u één teken in. |
-| Segment Terminator |Als u het einde van een EDI-segment wilt aangeven, voert u één teken in. |
-| Achtervoegsel |Selecteer het teken dat wordt gebruikt met de segment-id. Als u een achtervoegsel aanwijst, kan het segmentterminator-gegevenselement leeg zijn. Als de segmentterminator leeg blijft, moet u een achtervoegsel aanwijzen. |
-
-### <a name="control-numbers"></a>Controlenummers
+Met uitzonde ring van de tekenset kunt u een andere set scheidings tekens invoeren die voor elk bericht type moeten worden gebruikt. Als er geen tekenset is opgegeven voor een bepaald bericht schema, wordt de standaard tekenset gebruikt.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| UNB5 (Interchange Control Number) |Voer een voorvoegsel, een bereik van waarden voor het knooppuntcontrolenummer en een achtervoegsel in. Deze waarden worden gebruikt om een uitgaande uitwisseling te genereren. Het voorvoegsel en het achtervoegsel zijn optioneel, terwijl het controlenummer vereist is. Het besturingselementnummer wordt verhoogd voor elk nieuw bericht; het voorvoegsel en het achtervoegsel blijven hetzelfde. |
-| UNG5 (groepscontrolenummer) |Voer een voorvoegsel, een bereik van waarden voor het knooppuntcontrolenummer en een achtervoegsel in. Deze waarden worden gebruikt om het groepsbesturingselementnummer te genereren. Het voorvoegsel en het achtervoegsel zijn optioneel, terwijl het controlenummer vereist is. Het besturingselementnummer wordt voor elk nieuw bericht verhoogd totdat de maximale waarde is bereikt; het voorvoegsel en het achtervoegsel blijven hetzelfde. |
-| UNH1 (referentienummer van de berichtkop) |Voer een voorvoegsel, een bereik van waarden voor het knooppuntcontrolenummer en een achtervoegsel in. Deze waarden worden gebruikt om het referentienummer van de berichtkop te genereren. Het voorvoegsel en het achtervoegsel zijn optioneel, terwijl het referentienummer vereist is. Het referentienummer wordt verhoogd voor elk nieuw bericht; het voorvoegsel en het achtervoegsel blijven hetzelfde. |
+| UNB 1.1 (systeem-id) |Selecteer de teken reeks EDIFACT die u wilt Toep assen op de uitgaande uitwisseling. |
+| Schema |Selecteer een schema in de vervolg keuzelijst. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe rij toegevoegd. Voor het geselecteerde schema selecteert u de scheidings tekens die u wilt gebruiken, op basis van de onderstaande scheidings tekens. |
+| Invoertype |Selecteer een invoer type in de vervolg keuzelijst. |
+| Onderdeel scheidings teken |Voer één teken in om samengestelde gegevens elementen van elkaar te scheiden. |
+| Scheidings teken voor gegevens elementen |Als u eenvoudige gegevens elementen in samengestelde gegevens elementen wilt scheiden, voert u één teken in. |
+| Segment Terminator |Voer één teken in om het einde van een EDI-segment aan te geven. |
+| Achtervoegsel |Selecteer het teken dat wordt gebruikt met de segment-id. Als u een achtervoegsel aanwijst, kan het gegevens element van het segment Terminator leeg zijn. Als de eind afsluit van het segment leeg blijft, moet u een achtervoegsel aanwijzen. |
+
+### <a name="control-numbers"></a>Controle nummers
+
+| Eigenschap | Beschrijving |
+| --- | --- |
+| UNB5 (Interchange Control Number) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt voor het genereren van een uitgaande uitwisseling. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het controle nummer is vereist. Het controle nummer wordt voor elk nieuw bericht verhoogd. het voor voegsel en achtervoegsel blijven hetzelfde. |
+| UNG5 (groeps controle nummer) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt om het groeps controle nummer te genereren. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het controle nummer is vereist. Het controle nummer wordt voor elk nieuw bericht verhoogd totdat de maximum waarde is bereikt. het voor voegsel en achtervoegsel blijven hetzelfde. |
+| UNH1 (referentie nummer van de bericht header) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt om het referentie nummer van de bericht header te genereren. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het referentie nummer is vereist. Het referentie nummer wordt voor elk nieuw bericht verhoogd. het voor voegsel en achtervoegsel blijven hetzelfde. |
 
 ### <a name="validation"></a>Validatie
 
-Wanneer u elke validatierij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, gebruikt validatie de rij Standaard.
+Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Berichttype |Selecteer het type EDI-bericht. |
-| EDI-validatie |Voer EDI-validatie uit op gegevenstypen zoals gedefinieerd door de EDI-eigenschappen van het schema, lengtebeperkingen, lege gegevenselementen en trailing-scheidingstekens. |
-| Uitgebreide validatie |Als het gegevenstype geen EDI is, bevindt validatie zich op de vereiste gegevenselement en is herhaling, opsommingen en validatie van gegevenselementen (min/max) toegestaan. |
-| Toestaan Dat nullen voor/nalopen |Behoudt eventuele extra voor- of achterlooptekens en spatietekens. Verwijder deze tekens niet. |
-| Voorloop-/naloopnullen bijsnijden |Verwijder voorloop- of achterloopnultekens. |
-| Scheidingsbeleid slepen |Trailing separators genereren. <p>Selecteer **Niet toegestaan** om trailing-limiters en scheidingstekens in de verzonden uitwisseling te verbieden. Als de uitwisseling trailing limiters en separatoren heeft, wordt de uitwisseling niet geldig verklaard. <p>Selecteer **Optioneel** om knooppunten te verzenden met of zonder trailing-scheidingstekens en scheidingstekens. <p>Selecteer **Verplicht** als het verzonden knooppunt achterliggende scheidingstekens en scheidingstekens moet hebben. |
+| Bericht type |Selecteer het type EDI-bericht. |
+| EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen van het schema, de lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens. |
+| Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
+| Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
+| Voor loop-en volg nullen bijsnijden |Voor loop-of volg spaties verwijderen. |
+| Volg scheidings beleid |Navolgende scheidings tekens genereren. <p>Selecteer **niet toegestaan** om het afsluiten van de scheidings tekens en schei ding van de gezonden uitwisseling te verhinderen. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>Selecteer **optioneel** om wissels met of zonder navolgende scheidings tekens en schei dingen te verzenden. <p>Selecteer **verplicht** als het gestuurde uitwisseling moet navolgende scheidings tekens en schei ding. |
 
 ## <a name="find-your-created-agreement"></a>Uw gemaakte overeenkomst zoeken
 
-1.  Nadat u al uw overeenkomsteigenschappen hebt ingesteld, kiest u op de pagina **Toevoegen** **ok** om uw overeenkomst te voltooien en terug te keren naar uw integratieaccount.
+1.  Nadat u alle eigenschappen van de overeenkomst hebt ingesteld, kiest u **OK** op de pagina **toevoegen** om uw overeenkomst te maken en terug te keren naar uw integratie account.
 
-    Uw nieuw toegevoegde overeenkomst wordt nu weergegeven in uw **lijst met overeenkomsten.**
+    De zojuist toegevoegde overeenkomst wordt nu weer gegeven in de lijst met **overeenkomsten** .
 
-2.  U uw overeenkomsten ook bekijken in het overzicht van uw integratieaccount. Kies in het menu Van uw integratieaccount **overzicht**en selecteer vervolgens de tegel **Overeenkomsten.** 
+2.  U kunt uw overeenkomsten ook bekijken in het overzicht van het integratie account. Kies **overzicht**in het menu integratie account en selecteer vervolgens de tegel **overeenkomsten** . 
 
-    ![De tegel 'Overeenkomsten' kiezen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentiepagina van](https://docs.microsoft.com/connectors/edifact/)de connector voor meer technische details over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector.
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/edifact/).
 
 > [!NOTE]
-> Voor logische apps in een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)gebruikt de ISE-versie met HET LABEL ISE in plaats daarvan de [ISE-berichtlimieten.](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

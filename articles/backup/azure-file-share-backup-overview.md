@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: bea5035ff50eaf4047f56cde3bd671d81e21f5d3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101417"
+ms.locfileid: "82105740"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -47,12 +47,7 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 
 ## <a name="backup-costs"></a>Back-upkosten
 
-Back-ups van Azure-bestands shares zijn een op moment opnamen gebaseerde oplossing en opslag kosten die worden gemaakt voor moment opnamen, worden in rekening gebracht samen met Azure Files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/)vermelde prijs gegevens.
-
-De kosten voor het beveiligde exemplaar voor het gebruik van de back-upoplossing zijn echter gebaseerd op het prijs model dat wordt beschreven in de sectie [back-up voor Azure files](https://azure.microsoft.com/pricing/details/backup/) . Op dit moment is de werkelijke prijs alleen bijgewerkt voor West-Centraal vs. Voor andere regio's worden de exacte prijzen binnenkort bijgewerkt met enkele regionale verschillen, maar met behulp van hetzelfde prijs model.
-
->[!NOTE]
->Er zijn nu geen ' beveiligde instantie kosten ' en u wordt alleen in rekening gebracht voor moment opnamen volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/)vermelde prijzen.
+Op dit moment worden alleen moment opnamen in rekening gebracht, omdat Azure file share Backup een oplossing op basis van moment opnamen is. De opslag kosten die worden gemaakt voor moment opnamen worden gefactureerd samen met Azure Files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/)genoemde prijs gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

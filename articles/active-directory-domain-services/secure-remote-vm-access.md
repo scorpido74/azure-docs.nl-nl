@@ -1,6 +1,6 @@
 ---
-title: Externe VM-toegang beveiligen in Azure AD Domain Services | Microsoft Documenten
-description: Meer informatie over het beveiligen van externe toegang tot VM's met behulp van Network Policy Server (NPS) en Azure Multi-Factor Authentication met een Implementatie van Extern bureaublad-services in een beheerd beheerd domein van Azure Active Directory Domain Services.
+title: Toegang tot externe VM'S beveiligen in Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over het beveiligen van externe toegang tot virtuele machines met behulp van Network Policy Server (NPS) en Azure Multi-Factor Authentication met een Extern bureaublad-services-implementatie in een Azure Active Directory Domain Services beheerd domein.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -10,99 +10,100 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8bc36dfdf3010b2bde485228f6ee110b0b826d31
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654757"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82105723"
 ---
-# <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Externe toegang tot virtuele machines beveiligen in Azure Active Directory Domain Services
+# <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Externe toegang tot virtuele machines in Azure Active Directory Domain Services beveiligen
 
-Als u externe toegang wilt beveiligen tot virtuele machines (VM's) die worden uitgevoerd in een azure active directory domain services (Azure AD DS) beheerd domein, u RdS (Remote Desktop Services) en Network Policy Server (NPS) gebruiken. Azure AD DS verifieert gebruikers wanneer ze toegang aanvragen via de RDS-omgeving. Voor verbeterde beveiliging u Azure Multi-Factor Authentication integreren om een extra verificatieprompt te geven tijdens aanmeldingsgebeurtenissen. Azure Multi-Factor Authentication maakt gebruik van een extensie voor NPS om deze functie te bieden.
+Als u externe toegang tot virtuele machines (Vm's) wilt beveiligen die worden uitgevoerd in een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein, kunt u Extern bureaublad-services (RDS) en Network Policy Server (NPS) gebruiken. Azure AD DS verifieert gebruikers wanneer ze toegang aanvragen via de RDS-omgeving. Voor een betere beveiliging kunt u Azure Multi-Factor Authentication integreren om een extra verificatie prompt te bieden tijdens aanmeldings gebeurtenissen. Azure Multi-Factor Authentication maakt gebruik van een uitbrei ding voor NPS om deze functie te bieden.
 
 > [!IMPORTANT]
-> De aanbevolen manier om veilig verbinding te maken met uw VM's in een door Azure AD DS beheerd domein is het gebruik van Azure Bastion, een volledig door platforms beheerde PaaS-service die u inuw virtuele netwerk indient. Een bastionhost biedt veilige en naadloze RDP-connectiviteit (Remote Desktop Protocol) rechtstreeks in de Azure-portal via SSL. Wanneer u verbinding maakt via een bastionhost, hebben uw VM's geen openbaar IP-adres nodig en hoeft u geen netwerkbeveiligingsgroepen te gebruiken om toegang tot RDP op TCP-poort 3389 bloot te stellen.
+> De aanbevolen manier om veilig verbinding te maken met uw virtuele machines in een Azure AD DS beheerde domein is Azure Bastion, een volledig door het platform beheerde PaaS-service die u in uw virtuele netwerk hebt ingericht. Een bastion-host voorziet in een veilige en Remote Desktop Protocol naadloze RDP-verbinding met uw Vm's rechtstreeks in de Azure Portal via SSL. Wanneer u verbinding maakt via een bastion-host, hebben uw Vm's geen openbaar IP-adres nodig en hoeft u geen netwerk beveiligings groepen te gebruiken om de toegang tot RDP op TCP-poort 3389 beschikbaar te maken.
 >
-> We raden u ten zeerste aan Azure Bastion te gebruiken in alle regio's waar het wordt ondersteund. Volg in regio's zonder azure bastion-beschikbaarheid de stappen die in dit artikel worden beschreven totdat Azure Bastion beschikbaar is. Zorg ervoor dat openbare IP-adressen worden toegewezen aan VM's die zijn gekoppeld aan Azure AD DS, waar al het inkomende RDP-verkeer is toegestaan.
+> We raden u ten zeerste aan Azure Bastion te gebruiken in alle regio's waar dit wordt ondersteund. In regio's zonder Azure Bastion-Beschik baarheid voert u de stappen uit die in dit artikel worden beschreven totdat Azure Bastion beschikbaar is. Wees voorzichtig met het toewijzen van open bare IP-adressen aan Vm's die zijn toegevoegd aan Azure AD DS waarbij al het binnenkomende RDP-verkeer is toegestaan.
 >
-> Zie Wat is Azure Bastion voor meer [informatie?][bastion-overview]
+> Zie [Wat is Azure Bastion?][bastion-overview]voor meer informatie.
 
-In dit artikel ziet u hoe u RDS configureert in Azure AD DS en optioneel de AZURE Multi-Factor Authentication NPS-extensie gebruikt.
+In dit artikel wordt beschreven hoe u RDS configureert in azure AD DS en optioneel de Azure Multi-Factor Authentication NPS-extensie gebruikt.
 
-![Extern bureaublad-services (RDS) overzicht](./media/enable-network-policy-server/remote-desktop-services-overview.png)
+![Overzicht van Extern bureaublad-services (RDS)](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om dit artikel te voltooien, hebt u de volgende bronnen nodig:
+U hebt de volgende resources nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
-    * Maak en configureer indien nodig [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
-* Een *subnet voor workloads* dat is gemaakt in uw virtuele Azure Directory Domain Services-netwerk.
-    * Configureer indien nodig [virtuele netwerken voor een beheerd Azure Directory Domain Services-domein][configure-azureadds-vnet].
-* Een gebruikersaccount dat lid is van de Azure *AD DC-beheerdersgroep* in uw Azure AD-tenant.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
+* Een subnet met *werk belastingen* dat is gemaakt in uw Azure Active Directory Domain Services virtuele netwerk.
+    * Configureer zo nodig [virtuele netwerken voor een beheerde Azure Active Directory Domain Services domein][configure-azureadds-vnet].
+* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
-## <a name="deploy-and-configure-the-remote-desktop-environment"></a>De extern bureaublad-omgeving implementeren en configureren
+## <a name="deploy-and-configure-the-remote-desktop-environment"></a>De Extern bureaublad omgeving implementeren en configureren
 
-Maak minimaal twee Azure VM's met Windows Server 2016 of Windows Server 2019 om aan de slag te gaan. Voor redundantie en hoge beschikbaarheid van uw Extern bureaublad-omgeving (RD) u later extra hosts toevoegen en laden.
+Om aan de slag te gaan, moet u Mini maal twee virtuele Azure-machines maken waarop Windows Server 2016 of Windows Server 2019 wordt uitgevoerd. Voor redundantie en hoge Beschik baarheid van uw Extern bureaublad-omgeving (RD) kunt u later extra hosts toevoegen en verdelen.
 
-Een voorgestelde RDS-implementatie bevat de volgende twee VM's:
+Een voorgestelde RDS-implementatie omvat de volgende twee Vm's:
 
-* *RDGVM01* - Voert de Extern bureaublad Connection Broker-server, Extern bureaublad-webtoegangsserver en Extern bureaublad-gatewayserver uit.
-* *RDSHVM01* - Voert de Extern bureaublad-sessiehostserver uit.
+* *RDGVM01* : voert de RD Connection Broker-server, RD Web Access-server en RD-gateway-server uit.
+* *RDSHVM01* : de RD Session Host-server wordt uitgevoerd.
 
-Zorg ervoor dat VM's worden geïmplementeerd in *een* subnet van uw Azure AD DS-netwerk en sluit je vervolgens aan bij de VM's voor het beheerde Azure AD DS-domein. Zie voor meer informatie hoe u [een Windows Server VM maakt en lid maakt van een door Azure AD DS beheerd domein][tutorial-create-join-vm].
+Zorg ervoor dat Vm's zijn geïmplementeerd in een subnet met *werk belastingen* van uw Azure AD DS virtuele netwerk en voeg vervolgens de vm's toe aan Azure AD DS beheerd domein. Zie [een Windows Server-VM maken en toevoegen aan een door Azure AD DS beheerd domein][tutorial-create-join-vm]voor meer informatie.
 
-De implementatie van de Rd-omgeving bevat een aantal stappen. De bestaande rd-implementatiehandleiding kan worden gebruikt zonder specifieke wijzigingen die moeten worden gebruikt in een door Azure AD DS beheerd domein:
+De implementatie van de extern bureau blad-omgeving bevat een aantal stappen. De bestaande extern bureau blad-implementatie handleiding kan worden gebruikt zonder dat er specifieke wijzigingen kunnen worden gebruikt in een beheerd domein van Azure AD DS:
 
-1. Meld u aan bij VM's die zijn gemaakt voor de RD-omgeving met een account dat deel uitmaakt van de azure *AD DC-beheerdersgroep,* zoals *contosoadmin*.
-1. Als u RDS wilt maken en configureren, gebruikt u de bestaande [implementatiehandleiding voor extern bureaublad-omgeving][deploy-remote-desktop]. Verdeel de rd-servercomponenten naar wens over uw Azure VM's.
-1. Als u toegang wilt bieden via een webbrowser, [stelt u de extern bureaublad-webclient in voor uw gebruikers.][rd-web-client]
+1. Meld u aan bij Vm's die zijn gemaakt voor de RD-omgeving met een account dat deel uitmaakt van de groep *Administrators van Azure AD DC* , zoals *contosoadmin*.
+1. Als u RDS wilt maken en configureren, gebruikt u de bestaande [implementatie handleiding][deploy-remote-desktop]voor de Extern bureaublad-omgeving. Distribueer de onderdelen van de extern bureau blad-server op uw virtuele Azure-machines naar wens.
+    * Specifiek voor Azure AD DS: als u extern bureau blad-licentie verlening configureert, stelt u deze in op de modus **per apparaat** , niet **per gebruiker** , zoals vermeld in de implementatie handleiding.
+1. Als u toegang wilt verlenen via een webbrowser, stelt u [de Extern bureaublad-webclient in voor uw gebruikers][rd-web-client].
 
-Met RD geïmplementeerd in het beheerde Azure AD DS-domein, u de service beheren en gebruiken zoals u dat zou doen met een on-premises AD DS-domein.
+Wanneer RD is geïmplementeerd in het beheerde domein van Azure AD DS, kunt u de service beheren en gebruiken zoals u dat zou doen met een on-premises AD DS domein.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>NPS en de Azure MFA NPS-extensie implementeren en configureren
 
-Als u de beveiliging van de aanmeldingservaring van de gebruiker wilt verhogen, u de RD-omgeving optioneel integreren met Azure Multi-Factor Authentication. Met deze configuratie ontvangen gebruikers een extra prompt tijdens het aanmelden om hun identiteit te bevestigen.
+Als u de beveiliging van de gebruikers ervaring wilt verbeteren, kunt u de extern bureau blad-omgeving eventueel integreren met Azure Multi-Factor Authentication. Met deze configuratie ontvangen gebruikers een extra prompt tijdens het aanmelden om hun identiteit te bevestigen.
 
-Om deze mogelijkheid te bieden, wordt een extra Network Policy Server (NPS) in uw omgeving geïnstalleerd, samen met de Azure Multi-Factor Authentication NPS-extensie. Deze extensie integreert met Azure AD om de status van multi-factor authenticatieprompts op te vragen en terug te geven.
+Als u deze mogelijkheid wilt bieden, wordt er een extra Network Policy Server (NPS) geïnstalleerd in uw omgeving, samen met de Azure Multi-Factor Authentication NPS-extensie. Deze uitbrei ding kan worden geïntegreerd met Azure AD om de status van de multi-factor Authentication-prompts aan te vragen en te retour neren.
 
-Gebruikers moeten zijn [geregistreerd om Azure Multi-Factor Authentication te gebruiken,][user-mfa-registration]waarvoor mogelijk aanvullende Azure AD-licenties nodig zijn.
+Gebruikers moeten zijn [geregistreerd voor het gebruik van azure multi-factor Authentication][user-mfa-registration], waarvoor mogelijk extra Azure AD-licenties nodig zijn.
 
-Als u Azure Multi-Factor Authentication wilt integreren in uw Azure AD DS-extern bureaublad-omgeving, maakt u een NPS-server en installeert u de extensie:
+Als u Azure Multi-Factor Authentication wilt integreren in uw Azure AD DS Extern bureaublad omgeving, maakt u een NPS-server en installeert u de extensie:
 
-1. Maak een extra Windows Server 2016- of 2019-vm, zoals *NPSVM01,* die is verbonden met een *subnet met workloads* in uw virtuele Azure AD DS-netwerk. Word lid van de VM naar het beheerde Azure AD DS-domein.
-1. Meld u aan bij NPS VM als account dat deel uitmaakt van de azure *AD DC Administrators-groep,* zoals *contosoadmin*.
-1. Selecteer vanuit **Serverbeheer** **Rollen en onderdelen toevoegen**en installeer vervolgens de rol *Netwerkbeleid en Toegangsservices.*
-1. Gebruik het bestaande how-to-artikel om [de Azure MFA NPS-extensie][nps-extension]te installeren en te configureren.
+1. Maak een extra Windows Server 2016-of 2019-VM, zoals *NPSVM01*, die is verbonden met een subnet met *werk belastingen* in uw Azure AD DS virtuele netwerk. Voeg de virtuele machine toe aan het beheerde domein van Azure AD DS.
+1. Meld u aan bij de NPS-VM als een account dat deel uitmaakt van de groep *Azure AD DC-Administrators* , zoals *contosoadmin*.
+1. In **Serverbeheer**selecteert u **functies en onderdelen toevoegen**en installeert u vervolgens de functie *Services voor netwerk beleid en-toegang* .
+1. Gebruik het bestaande artikel met instructies om [de Azure MFA NPS-extensie te installeren en te configureren][nps-extension].
 
-Als de NPS-server en azure multi-factor authentication NPS-extensie zijn geïnstalleerd, voltooit u de volgende sectie om deze te configureren voor gebruik met de RD-omgeving.
+Als de NPS-server en de Azure Multi-Factor Authentication NPS-extensie zijn geïnstalleerd, voltooit u de volgende sectie om deze te configureren voor gebruik met de RD-omgeving.
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>Extern bureaublad-gateway en Azure-multifactorverificatie integreren
+## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>Extern bureaublad-gateway en Azure Multi-Factor Authentication integreren
 
-Als u de AZURE Multi-Factor Authentication NPS-extensie wilt integreren, gebruikt u het bestaande artikel how-to om [uw Extern bureaublad-gateway-infrastructuur te integreren met behulp van de NPS-extensie (Network Policy Server) en Azure AD.][azure-mfa-nps-integration]
+Als u de Azure Multi-Factor Authentication NPS-extensie wilt integreren, gebruikt u het bestaande procedure-artikel om [uw extern bureaublad-gateway-infra structuur te integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD][azure-mfa-nps-integration].
 
-De volgende aanvullende configuratieopties zijn nodig om te integreren met een door Azure AD DS beheerd domein:
+De volgende aanvullende configuratie opties zijn nodig voor de integratie met een door Azure AD DS beheerd domein:
 
-1. [Registreer de NPS-server][register-nps-ad]niet in Active Directory. Deze stap mislukt in een door Azure AD DS beheerd domein.
-1. Schakel in [stap 4 het netwerkbeleid te configureren,][create-nps-policy]schakel ook het selectievakje in om **inbeleigenschappen van gebruikersaccounts**te negeren .
-1. Als u Windows Server 2019 gebruikt voor de NPS-server en azure Multi-Factor Authentication NPS-extensie, voert u de volgende opdracht uit om het beveiligde kanaal bij te werken zodat de NPS-server correct kan communiceren:
+1. [Registreer de NPS-server niet in Active Directory][register-nps-ad]. Deze stap mislukt in een door Azure AD DS beheerd domein.
+1. In [stap 4 om netwerk beleid te configureren][create-nps-policy], schakelt u ook het selectie vakje in om de **inbel eigenschappen van het gebruikers account te negeren**.
+1. Als u Windows Server 2019 voor de NPS-server en Azure Multi-Factor Authentication NPS-extensie gebruikt, voert u de volgende opdracht uit om het beveiligde kanaal bij te werken zodat de NPS-server op de juiste wijze kan communiceren:
 
     ```powershell
     sc sidtype IAS unrestricted
     ```
 
-Gebruikers wordt nu gevraagd om een extra verificatiefactor wanneer ze zich aanmelden, zoals een sms-bericht of prompt in de Microsoft Authenticator-app.
+Gebruikers wordt nu gevraagd om een extra verificatie factor wanneer ze zich aanmelden, zoals een tekst bericht of prompt in de Microsoft Authenticator-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Extern bureaublad-services - Hoge beschikbaarheid][rds-high-availability]voor meer informatie over het verbeteren van de tolerantie van uw implementatie.
+Zie [extern bureaublad-services-hoge Beschik baarheid][rds-high-availability]voor meer informatie over het verbeteren van de tolerantie van uw implementatie.
 
-Zie Hoe het werkt voor meer informatie over het beveiligen van de aanmelding van [gebruikers: Azure Multi-Factor Authentication][concepts-mfa].
+Zie [hoe het werkt: Azure multi-factor Authentication][concepts-mfa]voor meer informatie over het beveiligen van gebruikers aanmelding.
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md
