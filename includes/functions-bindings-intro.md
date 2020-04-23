@@ -14,10 +14,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "76277382"
 ---
-Dit is referentiegegevens voor Azure Functions-ontwikkelaars. Als azure-functies nieuw zijn voor Azure-functies, begint u met de volgende bronnen:
+Dit is referentie-informatie voor Azure Functions-ontwikkel aars. Als u nog geen ervaring hebt met Azure Functions, begint u met de volgende resources:
 
-* Maak uw eerste functie: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript,](../articles/azure-functions/functions-create-first-azure-function.md) [Java](../articles/azure-functions/functions-create-first-java-maven.md)of [Python](../articles/azure-functions/functions-create-first-function-python.md).
-* [Verwijzing naar azure functions-ontwikkelaars.](../articles/azure-functions/functions-reference.md)
-* Taalspecifieke referentie: [C#](../articles/azure-functions/functions-dotnet-class-library.md), [C# script,](../articles/azure-functions/functions-reference-csharp.md) [F#](../articles/azure-functions/functions-reference-fsharp.md), [Java,](../articles/azure-functions/functions-reference-java.md) [JavaScript](../articles/azure-functions/functions-reference-node.md)of [Python](../articles/azure-functions/functions-reference-python.md).
-* [Azure Functions activeert en bindt concepten.](../articles/azure-functions/functions-triggers-bindings.md)
+* Maak uw eerste functie: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [Java script](../articles/azure-functions/functions-create-first-azure-function.md), [Java](../articles/azure-functions/functions-create-first-java-maven.md)of [python](../articles/azure-functions/functions-create-first-function-python.md).
+* [Azure Functions referentie voor ontwikkel aars.](../articles/azure-functions/functions-reference.md)
+* Taalspecifieke Referentie: [c#](../articles/azure-functions/functions-dotnet-class-library.md), [c# script](../articles/azure-functions/functions-reference-csharp.md), [F #](../articles/azure-functions/functions-reference-fsharp.md), [Java](../articles/azure-functions/functions-reference-java.md), [Java script](../articles/azure-functions/functions-reference-node.md)of [python](../articles/azure-functions/functions-reference-python.md).
+* [Azure Functions triggers en bindingen.](../articles/azure-functions/functions-triggers-bindings.md)
 * [Codeer en test Azure Functions lokaal.](../articles/azure-functions/functions-develop-local.md)

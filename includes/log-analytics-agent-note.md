@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67122560"
 ---
 >[!NOTE]
->Als onderdeel van de voortdurende overgang van Microsoft Operations Management Suite naar Azure Monitor wordt de Operations Management Suite Agent voor Windows of Linux de Log Analytics-agent voor Windows en Log Analytics-agent voor Linux genoemd.
+>Als onderdeel van de lopende overgang van Microsoft Operations Management Suite naar Azure Monitor wordt de Operations Management Suite-agent voor Windows of Linux aangeduid als de Log Analytics agent voor Windows en Log Analytics agent voor Linux.

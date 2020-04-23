@@ -16,4 +16,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "70050307"
 ---
 >[!NOTE]
->Sommige van de functies die in dit artikel worden genoemd, zoals cloud-to-device messaging, device twins en device management, zijn alleen beschikbaar in de standaardlaag van IoT Hub. Raadpleeg [How to choose the right IoT Hub tier](../articles/iot-hub/iot-hub-scaling.md) (De juiste IoT Hub-prijscategorie kiezen) voor meer informatie over de Basic- en Standard-prijscategorieën van IoT Hub.
+>Sommige van de functies die in dit artikel worden genoemd, zoals Cloud-naar-apparaat-berichten, apparaatdubbels en Apparaatbeheer, zijn alleen beschikbaar in de laag standaard van IoT Hub. Raadpleeg [How to choose the right IoT Hub tier](../articles/iot-hub/iot-hub-scaling.md) (De juiste IoT Hub-prijscategorie kiezen) voor meer informatie over de Basic- en Standard-prijscategorieën van IoT Hub.

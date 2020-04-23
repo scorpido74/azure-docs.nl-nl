@@ -1,6 +1,6 @@
 ---
-title: Inzicht in Azure AD Connect 1.4.xx.x en het verdwijnen van apparaten | Microsoft Documenten
-description: In dit document wordt een probleem beschreven dat zich voordoet met versie 1.4.xx.x van Azure AD Connect
+title: Meer informatie over Azure AD Connect 1.4. xx. x en apparaat weer geven | Microsoft Docs
+description: In dit document wordt een probleem beschreven dat zich voordoet bij versie 1.4. xx. x van Azure AD Connect
 services: active-directory
 author: billmath
 manager: daveba
@@ -17,32 +17,32 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176024"
 ---
-# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Inzicht in Azure AD Connect 1.4.xx.x en het verdwijnen van apparaten
-Met versie 1.4.xx.x van Azure AD Connect zien sommige klanten sommige of al hun Windows-apparaten uit Azure AD verdwijnen. Dit is geen reden tot bezorgdheid, omdat deze apparaatidentiteiten niet worden gebruikt door Azure AD tijdens de voorwaardelijke toegangsautorisatie. Met deze wijziging worden geen Windows-apparaten verwijderd die correct zijn geregistreerd bij Azure AD voor Hybride Azure AD Join.
+# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Meer informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten
+Met versie 1.4. xx. x van Azure AD Connect kunnen sommige klanten enkele of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Met deze wijziging worden geen Windows-apparaten verwijderd die correct zijn geregistreerd bij Azure AD voor hybride Azure AD-deelname.
 
-Als u het verwijderen van apparaatobjecten in Azure AD de exportverwijderingsdrempel ziet overschrijden, wordt de klant aangeraden de verwijderingen door te laten gaan. [How To: deletes laten stromen wanneer ze de verwijderingsdrempel overschrijden](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+Als u ziet dat de verwijdering van object-objecten in azure AD de drempel waarde voor het verwijderen van het exporteren overschrijdt, wordt u geadviseerd dat de klant de verwijderingen kan door lopen. [Procedure: verwijderingen naar flow toestaan wanneer deze de drempel waarde voor verwijderen overschrijden](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="background"></a>Achtergrond
-Windows-apparaten die zijn geregistreerd als Hybride Azure AD Joined, worden in Azure AD weergegeven als apparaatobjecten. Deze apparaatobjecten kunnen worden gebruikt voor voorwaardelijke toegang. Windows 10-apparaten worden gesynchroniseerd met de cloud via Azure AD Connect, Windows-apparaten op downniveau worden rechtstreeks geregistreerd via AD FS of naadloze enkele aanmelding.
+Windows-apparaten die zijn geregistreerd als Hybrid Azure AD join, worden weer gegeven in azure AD als objecten voor apparaten. Deze apparaatobject kunnen worden gebruikt voor voorwaardelijke toegang. Windows 10-apparaten worden gesynchroniseerd met de Cloud via Azure AD Connect, Windows-apparaten met een lagere versie worden rechtstreeks geregistreerd met behulp van AD FS of naadloze eenmalige aanmelding.
 
 ## <a name="windows-10-devices"></a>Windows 10-apparaten
-Alleen Windows 10-apparaten met een specifieke userCertificate-kenmerkwaarde die is geconfigureerd door Hybrid Azure AD Join, worden door Azure AD Connect met de cloud gesynchroniseerd. In eerdere versies van Azure AD Connect is deze vereiste niet rigoureus afgedwongen, wat resulteerde in onnodige apparaatobjecten in Azure AD. Dergelijke apparaten in Azure AD bleven altijd in de status 'in behandeling', omdat deze apparaten niet bedoeld waren om te worden geregistreerd bij Azure AD. 
+Alleen Windows 10-apparaten met een specifieke userCertificate-kenmerk waarde die is geconfigureerd met hybride Azure AD-deelname, moeten worden gesynchroniseerd met de Cloud door Azure AD Connect. In eerdere versies van Azure AD Connect was deze vereiste niet strikt afgedwongen, wat leidt tot overbodige apparaatfuncties in azure AD. Dergelijke apparaten in azure AD hebben altijd de status ' in behandeling ', omdat deze apparaten niet zijn bedoeld om te worden geregistreerd bij Azure AD. 
 
-Deze versie van Azure AD Connect synchroniseert alleen Windows 10-apparaten die correct zijn geconfigureerd om Hybride Azure AD Joined te zijn. Windows 10-apparaatobjecten zonder de Azure AD join-specifieke userCertificate worden verwijderd uit Azure AD.
+Met deze versie van Azure AD Connect worden alleen Windows 10-apparaten gesynchroniseerd die correct zijn geconfigureerd voor hybride Azure AD. Windows 10-apparaatgroepen zonder de specifieke userCertificate van Azure AD worden verwijderd uit Azure AD.
 
-## <a name="down-level-windows-devices"></a>Windows-apparaten op downniveau
-Azure AD Connect mag [windows-apparaten](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)op downniveau nooit synchroniseren. Alle apparaten in Azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD. Als Azure AD Connect probeert [Windows-apparaten op downniveau](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)te verwijderen, is het apparaat niet het apparaat dat is gemaakt door de [Microsoft Workplace Join voor msi-computers die niet zijn voor Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden verbruikt door andere Azure AD-functies.
+## <a name="down-level-windows-devices"></a>Windows-apparaten op lagere niveaus
+Azure AD Connect moet nooit [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)synchroniseren. Alle apparaten in azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD. Als Azure AD Connect probeert [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)te verwijderen, is het apparaat niet de versie die is gemaakt door het [micro soft-Workplace join voor niet-Windows 10-computers MSI](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden gebruikt door een andere Azure AD-functie.
 
-Sommige klanten moeten mogelijk opnieuw [naar How To: Plan uw hybride Azure Active Directory-join-implementatie](../devices/hybrid-azuread-join-plan.md) om hun Windows-apparaten correct te laten registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deelnemen aan voorwaardelijke toegang op basis van apparaten. 
+Sommige klanten moeten mogelijk opnieuw door gaan met het [plannen van uw hybrid Azure Active Directory-implementatie](../devices/hybrid-azuread-join-plan.md) om de Windows-apparaten op de juiste wijze te registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. 
 
-## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hoe kan ik controleren welke apparaten met deze update worden verwijderd?
+## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hoe kan ik controleren welke apparaten worden verwijderd met deze update?
 
-Als u wilt controleren welke apparaten worden verwijderd, u dit PowerShell-script gebruiken:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+U kunt dit Power shell-script gebruiken om te controleren welke apparaten worden verwijderd:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
-Dit script genereert een rapport over certificaten die zijn opgeslagen in Active Directory Computer-objecten, met name certificaten die zijn uitgegeven door de functie Hybride Azure AD.This script generates a report about certificates stored in Active Directory Computer objects, specifically, certificates issued by the Hybrid Azure AD join feature.
-Het controleert de certificaten die aanwezig zijn in de eigenschap UserCertificate van een computerobject in AD en valideert voor elk niet-verlopen certificaat dat aanwezig is, of het certificaat is uitgegeven voor de hybride apo-advertentie-joinfunctie (d.w.z. Onderwerpnaam komt overeen met CN={ObjectGUID}).
-Voorheen synchroniseerde Azure AD Connect elke computer met Azure AD die ten minste één geldig certificaat bevat, maar vanaf Azure AD Connect-versie 1.4 kan de synchronisatie-engine hybride Azure AD-joincertificaten identificeren en wordt het cloudfilter 'cloudfilter' computerobject van synchronisatie naar Azure AD, tenzij er een geldig Hybride Azure AD-joincertificaat is.
-Azure AD-apparaten die al zijn gesynchroniseerd met AD, maar geen geldig Hybride Azure AD-joincertificaat hebben, worden door de synchronisatieengine verwijderd (CloudFiltered=TRUE).
+Met dit script wordt een rapport gegenereerd over certificaten die zijn opgeslagen in Active Directory computer objecten, met name certificaten die zijn uitgegeven door de hybride Azure AD-functie voor deelname.
+Hiermee wordt gecontroleerd of de certificaten aanwezig zijn in de eigenschap UserCertificate van een computer object in AD en, voor elk niet-verlopen certificaat, wordt gevalideerd of het certificaat is uitgegeven voor de hybride functie voor Azure AD-deelname (de onderwerpnaam komt overeen met CN = {ObjectGUID}).
+Voordat Azure AD Connect synchroniseert met Azure AD op elke computer die ten minste één geldig certificaat bevat, maar vanaf Azure AD Connect versie 1,4, kan de synchronisatie-engine hybride Azure AD-deelname certificaten identificeren en ' cloudfilter ' het computer object van synchroniseren naar Azure AD tenzij er een geldig hybride Azure AD-deelname certificaat is.
+Azure AD-apparaten die al zijn gesynchroniseerd met AD, maar geen geldig hybride Azure AD-deelname certificaat hebben, worden verwijderd (CloudFiltered = TRUE) door de synchronisatie-engine.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Geschiedenis van azure AD Connect-versie](reference-connect-version-history.md)
+- [Geschiedenis van Azure AD Connect-versie](reference-connect-version-history.md)

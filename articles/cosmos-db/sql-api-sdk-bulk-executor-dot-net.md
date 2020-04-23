@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Bulk executor .NET API, SDK & resources'
-description: Lees alles over de bulkexecutor .NET API en SDK, inclusief releasedatums, pensioendatums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB-bulkexecutor .NET SDK.
+title: 'Azure Cosmos DB: bulk-uitvoerder .NET API, SDK & resources'
+description: Meer informatie over de bulk-uitvoerder .NET API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen de verschillende versies van de Azure Cosmos DB bulk-vervoerder .NET SDK.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,146 +15,146 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169403"
 ---
-# <a name="net-bulk-executor-library-download-information"></a>.NET bulk executor library: Informatie downloaden 
+# <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigingsfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Rest](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk executor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **Beschrijving**| Met de .Net-bulkexecutorbibliotheek kunnen clienttoepassingen bulkbewerkingen uitvoeren op Azure Cosmos DB-accounts. Deze bibliotheek biedt naamruimten Voor BulkImport, BulkUpdate en BulkDelete. De BulkImport-module kan documenten zodanig innemen dat de doorvoer die voor een verzameling is ingericht, maximaal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in Azure Cosmos-containers bulkbijwerken als patches. De BulkDelete-module kan documenten op een geoptimaliseerde manier verwijderen, zodat de doorvoer die voor een verzameling is ingericht, maximaal wordt verbruikt.|
-|**SDK downloaden**| [NuGet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **Bulk executor bibliotheek in GitHub**| [GitHub GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API-documentatie**|[.NET API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Slag**|[Aan de slag met de bulkexecutorbibliotheek .NET SDK](bulk-executor-dot-net.md)|
-| **Huidig ondersteund kader**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2.0 |
+| **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
+|**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+| **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+|**API-documentatie**|[Naslag documentatie voor .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Aan de slag**|[Aan de slag met de bibliotheek voor bulk-uitvoerder .NET SDK](bulk-executor-dot-net.md)|
+| **Huidig ondersteund Framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
 
 > [!NOTE]
-> Als u bulkexecutor gebruikt, raadpleegt u de nieuwste versie 3.x van de [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md), waarin bulkexecutor is ingebouwd in de SDK. 
+> Als u een bulk-uitvoerder gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md), die in de SDK is ingebouwd. 
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1-preview
+### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1-Preview
 
-* Fixed TotalElapsedTime in the response of BulkDelete to correct measure the total time including any retries.
+* Vaste TotalElapsedTime in het antwoord van BulkDelete om de totale tijd correct te meten, inclusief eventuele nieuwe pogingen.
 
-### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0-preview
+### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0-Preview
 
-* Sdk-afhankelijkheid gewijzigd in >= 2,5,1
+* De SDK-afhankelijkheid is gewijzigd in >= 2.5.1
 
 ### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
-* Ondersteuning toegevoegd voor de bulkuitvoerder van grafiekom ttl op vertices en randen te accepteren
+* Er is ondersteuning toegevoegd voor de bulk-uitvoerder van de grafiek om TTL op hoek punten en randen te accepteren
 
 ### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
 
-* Fixed an issue, which caused exceptions during elastic scaling of Azure Cosmos DB when running in Gateway mode. Deze fix maakt het functioneel gelijk aan 1.4.1 release.
+* Er is een probleem opgelost, waardoor uitzonde ringen worden veroorzaakt tijdens het gebruik van elastische schaling van Azure Cosmos DB wanneer de gateway modus wordt uitgevoerd. Deze oplossing maakt IT functioneel equivalent aan 1.4.1-release.
 
 ### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
 
-* Added BulkDelete support for SQL API accounts to accept partition key, document id tuples to delete. Deze wijziging maakt het functioneel gelijk aan 1.4.0 release.
+* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-id-Tuples. Deze wijziging is functioneel gelijk aan 1.4.0-release.
 
 ### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
-* Inclusief MongoBulkExecutor ter ondersteuning van .NET Standard 2.0. Deze functie maakt het functioneel gelijk aan 1.3.0 release, met de toevoeging van ondersteuning .NET Standard 2.0 als het doelkader.
+* Inclusief MongoBulkExecutor ter ondersteuning van .NET Standard 2,0. Deze functie is functioneel gelijk aan 1.3.0-release, met toevoeging van ondersteuning van .NET Standard 2,0 als het doel raamwerk.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
-* Toegevoegd .NET Standard 2.0 als een van de ondersteunde doelkaders om de bulk executor bibliotheek te laten werken met .NET Core toepassingen.
+* .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel stellingen om de bulk-uitvoerder bibliotheek te laten werken met .NET core-toepassingen.
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 
-* Fixed an issue on MongoBulkExecutor that was increasing the document size unexpectedly by adding padding and in some cases, going over the maximum document size limit.
+* Er is een probleem opgelost in MongoBulkExecutor die de document grootte onverwacht heeft verhoogd door opvulling toe te voegen en in sommige gevallen de maximale document grootte te overschrijden.
 
 ### <a name="187"></a><a name="1.8.7"/>1.8.7
 
-* Fixed an issue with BulkDeleteAsync when the Collection has nested partition key paths.
+* Er is een probleem met BulkDeleteAsync opgelost wanneer de verzameling geneste partitie sleutel paden heeft.
 
 ### <a name="186"></a><a name="1.8.6"/>1.8.6
 
-* MongoBulkExecutor implementeert nu IDisposable en het zal naar verwachting worden verwijderd na gebruik.
+* MongoBulkExecutor implementeert nu IDisposable en wordt naar verwachting buiten gebruik gesteld.
 
 ### <a name="185"></a><a name="1.8.5"/>1.8.5
 
-* Verwijderd slot op SDK-versie. Pakket is nu afhankelijk van SDK >= 2.5.1.
+* De vergren deling op de SDK-versie is verwijderd. Pakket is nu afhankelijk van SDK >= 2.5.1.
 
 ### <a name="184"></a><a name="1.8.4"/>1.8.4
 
-* Vaste verwerking van id's bij het aanroepen van BulkImport met een lijst met POCO-objecten met numerieke waarden.
+* Vast verwerken van id's bij het aanroepen van BulkImport met een lijst met POCO-objecten met numerieke waarden.
 
 ### <a name="183"></a><a name="1.8.3"/>1.8.3
 
-* Fixed TotalElapsedTime in the response of BulkDelete to correct measure the total time including any retries.
+* Vaste TotalElapsedTime in het antwoord van BulkDelete om de totale tijd correct te meten, inclusief eventuele nieuwe pogingen.
 
 ### <a name="182"></a><a name="1.8.2"/>1.8.2
 
-* Fixed high CPU verbruik op bepaalde scenario's.
-* Tracing maakt nu gebruik van TraceSource. Gebruikers kunnen listeners `BulkExecutorTrace` definiëren voor de bron.
-* Fixed a rare scenario that could cause a lock when sending documents near 2Mb of size.
+* Vast hoog CPU-verbruik voor bepaalde scenario's.
+* Tracering maakt nu gebruik van TraceSource. Gebruikers kunnen listeners voor de `BulkExecutorTrace` bron definiëren.
+* Er is een zeldzaam scenario opgelost dat kan leiden tot een vergren deling bij het verzenden van documenten bij een grootte van 2 MB.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
 
-* De bulkuitvoerder bijgewerkt om nu de nieuwste versie van de Azure Cosmos DB .NET SDK (2.4.0) te gebruiken
+* De bulk-uitvoerder is bijgewerkt naar nu de nieuwste versie van de Azure Cosmos DB .NET SDK (2.4.0)
 
 ### <a name="150"></a><a name="1.5.0"/>1.5.0
 
-* Ondersteuning toegevoegd voor de bulkuitvoerder van grafiekom ttl op vertices en randen te accepteren
+* Er is ondersteuning toegevoegd voor de bulk-uitvoerder van de grafiek om TTL op hoek punten en randen te accepteren
 
 ### <a name="141"></a><a name="1.4.1"/>1.4.1
 
-* Fixed an issue, which caused exceptions during elastic scaling of Azure Cosmos DB when running in Gateway mode.
+* Er is een probleem opgelost, waardoor uitzonde ringen worden veroorzaakt tijdens het gebruik van elastische schaling van Azure Cosmos DB wanneer de gateway modus wordt uitgevoerd.
 
 ### <a name="140"></a><a name="1.4.0"/>1.4.0
 
-* Added BulkDelete support for SQL API accounts to accept partition key, document id tuples to delete.
+* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-id-Tuples.
 
 ### <a name="130"></a><a name="1.3.0"/>1.3.0
 
-* Een probleem opgelost, waardoor een opmaakprobleem is ontstaan in de gebruikersagent die wordt gebruikt door bulkuitvoerder.
+* Er is een probleem opgelost, waardoor er een opmaak probleem is opgetreden in de gebruikers agent die wordt gebruikt door bulk-uitvoerder.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 
-* Verbeteringen aangebracht in het importeren en bijwerken van API's voor bulkuitvoerders om zich transparant aan te passen aan elastische schaling van Cosmos-container wanneer de opslag de huidige capaciteit overschrijdt zonder uitzonderingen te gooien.
+* Verbetering van de import-en update-Api's voor bulk-uitvoerder om op transparante wijze aan te passen aan elastisch schalen van de Cosmos-container wanneer opslag de huidige capaciteit overschrijdt zonder uitzonde ringen te genereren.
 
 ### <a name="112"></a><a name="1.1.2"/>1.1.2
 
-* Steeg de DocumentDB .NET SDK afhankelijkheid naar versie 2.1.3.
+* Bewaak de DocumentDB .NET SDK-afhankelijkheid naar versie 2.1.3.
 
 ### <a name="111"></a><a name="1.1.1"/>1.1.1
 
-* Fixed an issue, which caused bulk executor to throw JSRT error while importing to fixed collections.
+* Er is een probleem opgelost, waardoor een bulk-uitvoerder de JSRT-fout genereert tijdens het importeren in vaste verzamelingen.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
 
-* Added support for BulkDelete operation for Azure Cosmos DB SQL API accounts.
-* Ondersteuning toegevoegd voor bulkimport-bewerking voor accounts met de API van Azure Cosmos DB voor MongoDB.
-* Steeg de DocumentDB .NET SDK afhankelijkheid naar versie 2.0.0. 
+* Er is ondersteuning toegevoegd voor de BulkDelete-bewerking voor Azure Cosmos DB SQL-API-accounts.
+* Er is ondersteuning toegevoegd voor BulkImport-bewerking voor accounts met de API van Azure Cosmos DB voor MongoDB.
+* Bewaak de DocumentDB .NET SDK-afhankelijkheid naar versie 2.0.0. 
 
 ### <a name="102"></a><a name="1.0.2"/>1.0.2
 
-* Ondersteuning toegevoegd voor bulkimportbewerking voor Azure Cosmos DB Gremlin API-accounts.
+* Er is ondersteuning toegevoegd voor de BulkImport-bewerking voor de Azure Cosmos DB Gremlin-API-accounts.
 
 ### <a name="101"></a><a name="1.0.1"/>1.0.1
 
-* Kleine bugfix voor de BulkImport-bewerking voor Azure Cosmos DB SQL API-accounts.
+* Kleine fout oplossing voor de BulkImport-bewerking voor Azure Cosmos DB SQL-API-accounts.
 
 ### <a name="100"></a><a name="1.0.0"/>1.0.0
 
-* Added support for BulkImport and BulkUpdate operations for Azure Cosmos DB SQL API accounts.
+* Er is ondersteuning toegevoegd voor BulkImport-en BulkUpdate-bewerkingen voor Azure Cosmos DB SQL-API-accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor meer informatie over de Java-bibliotheek voor bulkuitvoeraars:
+Zie het volgende artikel voor meer informatie over de Java-bibliotheek voor bulk-uitvoerder:
 
-[Java bulk executor library SDK en release informatie](sql-api-sdk-bulk-executor-java.md)
+[SDK en release-informatie voor de Java bulk-uitvoerder](sql-api-sdk-bulk-executor-java.md)

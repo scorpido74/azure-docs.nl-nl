@@ -15,13 +15,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176560"
 ---
-Name | Commerciële URL | URL van de overheid | Beschrijving
+Naam | Commerciële URL | Overheids-URL | Beschrijving
 --- | --- | --- | ---
-Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Wordt gebruikt voor toegangscontrole en identiteitsbeheer met Azure Active Directory. 
-Back-up | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Wordt gebruikt voor overdracht en coördinatie van replicatiegegevens.
+Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Wordt gebruikt voor toegangs beheer en identiteits beheer met behulp van Azure Active Directory. 
+Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Wordt gebruikt voor overdracht en coördinatie van replicatiegegevens.
 Replicatie | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | Wordt gebruikt voor bewerkingen en coördinatie in het kader van replicatiebeheer.
 Storage | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | Wordt gebruikt voor toegang tot het opslagaccount waarin de gerepliceerde gegevens worden opgeslagen.
 Telemetrie (optioneel) | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | Gebruikt voor telemetrie.
-Tijdsynchronisatie | ``time.windows.com`` | ``time.nist.gov`` | Wordt gebruikt om tijdsynchronisatie tussen systeem- en globale tijd in alle implementaties te controleren.
+Tijdsynchronisatie | ``time.windows.com`` | ``time.nist.gov`` | Wordt gebruikt om de tijd synchronisatie tussen systeem en globale tijd in alle implementaties te controleren.
 
 

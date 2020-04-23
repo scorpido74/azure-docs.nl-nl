@@ -12,11 +12,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "66244588"
 ---
-Dit zijn de afmetingen van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die zijn geüpload aan deze limieten voldoen.
+Dit zijn de groottes van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die worden geüpload voldoen aan deze limieten.
 
-| Azure-objecttype | Standaardlimiet                                             |
+| Azure-object type | Standaardlimiet                                             |
 |-------------------|-----------------------------------------------------------|
 | Blok-blob        | ~ 4,75 TiB                                                 |
-| Pagina-blob         | 8 TiB <br> Elk bestand dat in paginablobformaat wordt geüpload moet 512 bytes zijn uitgelijnd (een integraal veelvoud), anders mislukt de upload. <br> VHD en VHDX zijn 512 bytes uitgelijnd. |
+| Pagina-blob         | 8 TiB <br> Elk bestand dat is geüpload in de pagina-BLOB-indeling moet 512 bytes uitgelijnd (een integraal veelvoud), anders mislukt het uploaden. <br> VHD en VHDX zijn 512 bytes uitgelijnd. |
 | Azure Files        | 1 TiB                                                      |
-| Managed Disks     | 4 TiB <br> Zie voor meer informatie over grootte en limieten: <li>[Schaalbaarheidsdoelen van standaard SSD's](../articles/virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Schaalbaarheidsdoelstellingen van Premium SSD's](../articles/virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Schaalbaarheidsdoelen van standaard HDD's](../articles/virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Prijzen en facturering van beheerde schijven](../articles/virtual-machines/windows/disks-types.md#billing)</li>  
+| Managed Disks     | 4 TiB <br> Zie voor meer informatie over grootte en limieten: <li>[Schaalbaarheids doelen van de Standard-Ssd's](../articles/virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Schaalbaarheids doelen van Premium-Ssd's](../articles/virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Schaalbaarheids doelen van de Standard-Hdd's](../articles/virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Prijzen en facturering van beheerde schijven](../articles/virtual-machines/windows/disks-types.md#billing)</li>  

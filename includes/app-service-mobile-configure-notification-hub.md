@@ -11,14 +11,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176538"
 ---
-De functie Mobiele apps van Azure App Service maakt gebruik van [Azure Notification Hubs] om pushes te verzenden, zodat u een meldingshub voor uw mobiele app configureert.
+De functie Mobile Apps van Azure App Service gebruikt [Azure notification hubs] voor het verzenden van pushes, zodat u een notification hub kunt configureren voor uw mobiele app.
 
-1. Ga in de [Azure-portal]naar **App Services**en selecteer vervolgens de back-end van uw app. Selecteer **Onder Instellingen**de optie **Push**.
-2. Als u een bron voor de meldingshub aan de app wilt toevoegen, selecteert u **Verbinding maken**. U een hub maken of verbinding maken met een bestaande hub.
+1. Ga in het [Azure Portal]naar **app Services**en selecteer vervolgens de back-end van uw app. Onder **instellingen**selecteert u **Push**.
+2. Selecteer **verbinding maken**om een notification hub-resource aan de app toe te voegen. U kunt een hub maken of met een bestaande verbinding verbinden.
 
     ![Een hub configureren](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)
 
-Nu hebt u een meldingshub gekoppeld aan uw back-endproject voor mobiele apps. Later configureert u deze meldingshub om verbinding te maken met een platformmeldingssysteem (PNS) om naar apparaten te pushen.
+U hebt nu een notification hub verbonden met uw Mobile Apps back-end-project. Later configureert u deze notification hub om verbinding te maken met een platform Notification System (PNS) om naar apparaten te pushen.
 
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-push-notification-overview/

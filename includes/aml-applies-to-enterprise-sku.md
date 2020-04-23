@@ -16,4 +16,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75527294"
 ---
-**VAN TOEPASSING OP:** ![geen](media/aml-applies-to-skus/no.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Basic ![edition ja](media/aml-applies-to-skus/yes.png)Enterprise edition[(Upgrade naar Enterprise)](../articles/machine-learning/how-to-manage-workspace.md#upgrade)
+**Van toepassing op:** ![geen](media/aml-applies-to-skus/no.png)Basic ![Edition](media/aml-applies-to-skus/yes.png)ja Enter &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; prise &nbsp; Edition &nbsp; (upgrade[naar Enter prise](../articles/machine-learning/how-to-manage-workspace.md#upgrade)) &nbsp; &nbsp; &nbsp;

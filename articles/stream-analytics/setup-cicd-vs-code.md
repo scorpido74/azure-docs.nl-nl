@@ -1,6 +1,6 @@
 ---
-title: Een Azure Stream Analytics-taak implementeren met een CI/CD-npm-pakket
-description: In dit artikel wordt beschreven hoe u het CI/CD-npm-pakket van Azure Stream Analytics gebruiken om een continu integratie- en implementatieproces in te stellen.
+title: Een Azure Stream Analytics-taak implementeren met CI/CD NPM-pakket
+description: In dit artikel wordt beschreven hoe u Azure Stream Analytics CI/CD NPM-pakket gebruikt om een doorlopend integratie-en implementatie proces in te stellen.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -15,42 +15,42 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76962164"
 ---
-# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Een Azure Stream Analytics-taak implementeren met een CI/CD-npm-pakket 
+# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Een Azure Stream Analytics-taak implementeren met CI/CD NPM-pakket 
 
-U het Ci/CD-npm-pakket azure stream Analytics gebruiken om een continu integratie- en implementatieproces voor uw Stream Analytics-taken in te stellen. In dit artikel wordt beschreven hoe u het npm-pakket in het algemeen gebruiken met een CI/CD-systeem, evenals specifieke instructies voor implementatie met Azure Pipelines.
+U kunt het Azure Stream Analytics CI/CD NPM-pakket gebruiken om een doorlopend integratie-en implementatie proces voor uw Stream Analytics-taken in te stellen. In dit artikel wordt beschreven hoe u het NPM-pakket gebruikt in het algemeen met een CI/CD-systeem, evenals specifieke instructies voor implementatie met Azure-pijp lijnen.
 
-Zie [Implementeren met een Resource Manager-sjabloonbestand en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)voor meer informatie over het implementeren met Powershell. U ook meer informatie krijgen over het [gebruik van een object als parameter in een resourcemanagersjabloon.](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)
+Zie [Deploy with a Resource Manager Temp late File and Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)voor meer informatie over het implementeren met Power shell. U kunt ook meer te weten komen over het [gebruik van een object als een para meter in een resource manager-sjabloon](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
-## <a name="build-the-vs-code-project"></a>Het VS Code-project bouwen
+## <a name="build-the-vs-code-project"></a>Het VS code-project bouwen
 
-U continue integratie en implementatie inschakelen voor Azure Stream Analytics-taken met behulp van het **asa-streamanalytics-cicd npm-pakket.** Het npm-pakket biedt de hulpprogramma's voor het genereren van Azure Resource Manager-sjablonen van [Stream Analytics Visual Studio Code-projecten.](quick-create-vs-code.md) Het kan worden gebruikt op Windows, macOS en Linux zonder Visual Studio Code te installeren.
+U kunt continue integratie en implementatie voor Azure Stream Analytics-taken inschakelen met het NPM **-pakket ASA-streamanalytics-cicd** . Het NPM-pakket bevat de hulpprogram ma's voor het genereren van Azure Resource Manager sjablonen van [Stream Analytics Visual Studio-code projecten](quick-create-vs-code.md). Het kan worden gebruikt in Windows, macOS en Linux zonder Visual Studio code te installeren.
 
-U [het pakket](https://www.npmjs.com/package/azure-streamanalytics-cicd) rechtstreeks downloaden of `npm install -g azure-streamanalytics-cicd` [wereldwijd](https://docs.npmjs.com/downloading-and-installing-packages-globally) installeren via de opdracht. Dit is de aanbevolen aanpak, die ook kan worden gebruikt in een PowerShell- of Azure CLI-scripttaak van een buildpijplijn in **Azure Pipelines.**
+U kunt [het pakket rechtstreeks downloaden](https://www.npmjs.com/package/azure-streamanalytics-cicd) of het [wereld wijd](https://docs.npmjs.com/downloading-and-installing-packages-globally) installeren via de `npm install -g azure-streamanalytics-cicd` opdracht. Dit is de aanbevolen benadering, die ook kan worden gebruikt in een Power shell-of Azure CLI-script taak van een build-pijp lijn in **Azure-pijp lijnen**.
 
-Zodra u het pakket hebt geïnstalleerd, gebruikt u de volgende opdracht om de Azure Resource Manager-sjablonen uit te voeren. Het argument **scriptPath** is het absolute pad naar het **asaql-bestand** in uw project. Zorg ervoor dat de asaproj.json- en JobConfig.json-bestanden zich in dezelfde map met het scriptbestand bevinden. Als het **uitvoerpad** niet is opgegeven, worden de sjablonen in de map **Implementeren** onder de **opslaglocatiemap** van het project geplaatst.
+Nadat u het pakket hebt geïnstalleerd, gebruikt u de volgende opdracht om de Azure Resource Manager-sjablonen uit te voeren. Het argument **ScriptPath** is het absolute pad naar het **asaql** -bestand in uw project. Zorg ervoor dat de bestanden asaproj. json en JobConfig. json zich in dezelfde map bevinden als het script bestand. Als de **outputPath** niet is opgegeven, worden de sjablonen geplaatst in de map **Deploy** onder de **bin** -map van het project.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
 ```
-Voorbeeld (op macOS)
+Voor beeld (op macOS)
 ```powershell
 azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
-Wanneer een Project voor Visual Studio Code van Stream Analytics succesvol wordt opgebouwd, worden de volgende twee Sjabloonbestanden van Azure Resource Manager gegenereerd onder de map Foutopsporing/Detailhandel/Detailhandel:When a Stream Analytics Visual Studio Code project builds successfully, it generates the following two Azure Resource Manager template files under the **bin/[Debug/Retail]/Deploy** folder: 
+Wanneer een Stream Analytics Visual Studio code-project is gebouwd, worden de volgende twee Azure Resource Manager sjabloon bestanden gegenereerd in de map **bin/[debug/Retail]/Deploy** : 
 
-*  Resource Manager-sjabloonbestand
+*  Resource Manager-sjabloon bestand
 
        [ProjectName].JobTemplate.json 
 
-*  Bestand resourcebeheerparameters
+*  Resource Manager-parameter bestand
 
        [ProjectName].JobTemplate.parameters.json   
 
-De standaardparameters in het bestand parameters.json zijn afkomstig van de instellingen in uw Visual Studio Code-project. Als u wilt implementeren naar een andere omgeving, vervangt u de parameters dienovereenkomstig.
+De standaard parameters in het bestand para meters. json zijn afkomstig uit de instellingen in uw Visual Studio code-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
 
 > [!NOTE]
-> Voor alle referenties worden de standaardwaarden ingesteld op null. U **moet** de waarden instellen voordat u deze implementeert in de cloud.
+> Voor alle referenties worden de standaard waarden ingesteld op null. U **moet** de waarden instellen voordat u naar de Cloud implementeert.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -60,136 +60,136 @@ De standaardparameters in het bestand parameters.json zijn afkomstig van de inst
 
 ## <a name="deploy-with-azure-pipelines"></a>Implementeren met Azure Pipelines
 
-In dit gedeelte wordt beschreven hoe u Azure Pipelines [maakt voor het maken](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) en vrijgeven [van](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) pijplijnen met behulp van npm.
+In deze sectie vindt u informatie over het maken van pijp lijnen voor het [bouwen](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) en [vrijgeven](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) van Azure-pipelines met behulp van NPM.
 
-Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio Code-project.
+Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio code-project.
 
-1. Selecteer **Builds**onder **Pijplijnen** in het linkernavigatiemenu . Selecteer vervolgens **Nieuwe pijplijn**
+1. Selecteer **builds**onder **pijp lijnen** in het navigatie menu aan de linkerkant. Selecteer vervolgens **nieuwe pijp lijn**
 
-   ![Nieuwe Azure-pijplijn maken](./media/setup-cicd-vs-code/new-pipeline.png)
+   ![Nieuwe Azure-pijp lijn maken](./media/setup-cicd-vs-code/new-pipeline.png)
 
-2. Selecteer **De klassieke editor gebruiken** om een pijplijn te maken zonder YAML.
+2. Selecteer **de klassieke editor gebruiken** om een pijp lijn zonder yaml te maken.
 
-3. Selecteer uw brontype, teamproject en opslagplaats. Selecteer vervolgens **Doorgaan**.
+3. Selecteer het bron type, het team project en de opslag plaats. Selecteer vervolgens **Doorgaan**.
 
-   ![Azure Stream Analytics-project selecteren](./media/setup-cicd-vs-code/select-repo.png)
+   ![Azure Stream Analytics project selecteren](./media/setup-cicd-vs-code/select-repo.png)
 
-4. Selecteer op de pagina **Een sjabloon kiezen** de optie Taak **leegmaken**.
+4. Selecteer op de pagina **een sjabloon kiezen** de optie **lege taak**.
 
 ### <a name="add-npm-task"></a>NPM-taak toevoegen
 
-1. Selecteer **op** de pagina Taken het plusteken naast **agenttaak 1**. Voer 'npm' in de taakzoekopdracht in en selecteer **npm**.
+1. Selecteer op de pagina **taken** het plus teken naast **Agent taak 1**. Geef ' NPM ' op in de zoek opdracht van de taak en selecteer **NPM**.
 
    ![NPM-taak selecteren](./media/setup-cicd-vs-code/search-npm.png)
 
-2. Geef de taak een **weergavenaam**. Wijzig de optie **Opdracht** in *aangepast* en voer de volgende opdracht in **Opdracht en argumenten**in. Laat de resterende standaardopties achter.
+2. Geef de taak een **weergave naam**. Wijzig de **opdracht** optie in *aangepast* en voer de volgende opdracht in: **opdracht en argumenten**. Wijzig de overige standaard opties.
 
    ```cmd
    install -g azure-streamanalytics-cicd
    ```
 
-   ![Configuraties invoeren voor npm-taak](./media/setup-cicd-vs-code/npm-config.png)
+   ![Configuraties voor NPM-taak invoeren](./media/setup-cicd-vs-code/npm-config.png)
 
-### <a name="add-command-line-task"></a>Opdrachtregeltaak toevoegen
+### <a name="add-command-line-task"></a>Opdracht regel taak toevoegen
 
-1. Selecteer **op** de pagina Taken het plusteken naast **agenttaak 1**. Zoeken naar **opdrachtregel**.
+1. Selecteer op de pagina **taken** het plus teken naast **Agent taak 1**. Zoeken naar **opdracht regel**.
 
-2. Geef de taak een **weergavenaam** en voer het volgende script in. Wijzig het script met de naam van uw opslagplaats en de projectnaam.
+2. Geef de taak een **weergave naam** en voer het volgende script in. Wijzig het script met de naam van uw opslag plaats en de project naam.
 
    ```cmd
    azure-streamanalytics-cicd build -scriptPath $(Build.SourcesDirectory)/myASAProject/myASAProj.asaql
    ```
 
-   ![Configuraties voor opdrachtregeltaak invoeren](./media/setup-cicd-vs-code/commandline-config.png)
+   ![Configuraties voor opdracht regel taak invoeren](./media/setup-cicd-vs-code/commandline-config.png)
 
-### <a name="add-copy-files-task"></a>Taak kopieerbestanden toevoegen
+### <a name="add-copy-files-task"></a>Taak voor het kopiëren van bestanden toevoegen
 
-1. Selecteer **op** de pagina Taken het plusteken naast **agenttaak 1**. Zoeken naar **kopieerbestanden**. Voer vervolgens de volgende configuraties in.
+1. Selecteer op de pagina **taken** het plus teken naast **Agent taak 1**. Zoeken naar **Kopieer bestanden**. Voer vervolgens de volgende configuraties in.
 
    |Parameter|Invoer|
    |-|-|
-   |Weergavenaam|Bestanden kopiëren naar: $(build.artifactstagingdirectory)|
+   |Weergavenaam|Bestanden kopiëren naar: $ (build. artifactstagingdirectory)|
    |Bronmap|`$(system.defaultworkingdirectory)`| 
    |Inhoud| `**\Deploy\**` |
    |Doelmap| `$(build.artifactstagingdirectory)`|
 
-   ![Configuraties voor kopieertaak invoeren](./media/setup-cicd-vs-code/copy-config.png)
+   ![Configuraties voor kopieer taak invoeren](./media/setup-cicd-vs-code/copy-config.png)
 
-### <a name="add-publish-build-artifacts-task"></a>Taak Artefacten publiceren publiceren toevoegen
+### <a name="add-publish-build-artifacts-task"></a>Taak voor het maken van opbouw van publicatie-indexen toevoegen
 
-1. Selecteer **op** de pagina Taken het plusteken naast **agenttaak 1**. Zoek naar **artefacten publiceren en** selecteer de optie met het zwarte pijlpictogram. 
+1. Selecteer op de pagina **taken** het plus teken naast **Agent taak 1**. Zoek naar **Build-artefacten publiceren** en selecteer de optie met het pictogram met de zwarte pijl. 
 
-2. Wijzig geen standaardconfiguraties.
+2. Wijzig geen van de standaard configuraties.
 
 ### <a name="save-and-run"></a>Opslaan en uitvoeren
 
-Zodra u klaar bent met het toevoegen van de npm, opdrachtregel, het kopiëren van bestanden en het publiceren van taken voor het maken van artefacten, selecteert **u Opslaan & wachtrij**. Wanneer u wordt gevraagd, voert u een opmerking opslaan in en selecteert u **Opslaan en uitvoeren**.
+Wanneer u klaar bent met het toevoegen van de taken NPM, opdracht regel, copy files en Publish builds-artefacten, selecteert u **& wachtrij opslaan**. Wanneer u hierom wordt gevraagd, voert u een opmerking opslaan in en selecteert u **opslaan en uitvoeren**.
 
-## <a name="release-with-azure-pipelines"></a>Vrijgeven met Azure-pijplijnen
+## <a name="release-with-azure-pipelines"></a>Release met Azure-pijp lijnen
 
-Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio Code-project.
+Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio code-project.
 
-1. Selecteer **Onder Pijplijnen** in het linkernavigatiemenu de optie **Releases**. Selecteer vervolgens **Nieuwe pijplijn**.
+1. Selecteer onder **pijp lijnen** in het navigatie menu aan de linkerkant de optie **releases**. Selecteer vervolgens **nieuwe pijp lijn**.
 
-2. Selecteer **Begin met een lege taak**.
+2. Selecteer **beginnen met een lege taak**.
 
-3. Selecteer in het vak **Artefacten** de optie **+ Een artefact toevoegen.** Selecteer **onder Bron**de buildpijplijn die u zojuist hebt gemaakt en selecteer **Toevoegen**.
+3. Selecteer in het vak **artefacten** **+ een artefact toevoegen**. Selecteer onder **bron**de build-pijp lijn die u zojuist hebt gemaakt en selecteer **toevoegen**.
 
-   ![Artefact voor buildpijplijn invoeren](./media/setup-cicd-vs-code/build-artifact.png)
+   ![Bouw pijplijn artefact invoeren](./media/setup-cicd-vs-code/build-artifact.png)
 
-4. Wijzig de naam van **fase 1** in Taak implementeren **in testomgeving**.
+4. Wijzig de naam van **fase 1** in de implementatie van de **taak in de test omgeving**.
 
-5. Voeg een nieuw fase toe en geef deze naam **Taak implementeren in de productieomgeving**.
+5. Voeg een nieuwe fase toe en geef deze de naam **implementatie taak aan de productie omgeving**.
 
 ### <a name="add-tasks"></a>Taken toevoegen
 
-1. Selecteer taak **implementeren naar testomgeving**in de vervolgkeuzelijst Taken . 
+1. Selecteer in de vervolg keuzelijst taken de optie **taak implementeren naar test omgeving**. 
 
-2. Selecteer **+** de volgende taak **voor Agent** en zoek naar *de implementatie van Azure-brongroepen*. Voer de volgende parameters in:
-
-   |Instelling|Waarde|
-   |-|-|
-   |Weergavenaam| *MyASAJob implementeren*|
-   |Azure-abonnement| Kies uw abonnement.|
-   |Actie| *Resourcegroep maken of bijwerken*|
-   |Resourcegroep| Kies een naam voor de testbrongroep die uw Stream Analytics-taak bevat.|
-   |Locatie|Kies de locatie van uw testbrongroep.|
-   |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
-   |Sjabloonparameters|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
-   |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $(test_eventhubname)|
-   |Implementatiemodus|Incrementeel|
-
-3. Selecteer taak **implementeren naar productieomgeving**in de vervolgkeuzelijst Taken .
-
-4. Selecteer **+** de volgende taak **voor Agent** en zoek naar *de implementatie van Azure-brongroepen*. Voer de volgende parameters in:
+2. Selecteer de **+** taak volgende bij **agent** en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
 
    |Instelling|Waarde|
    |-|-|
    |Weergavenaam| *MyASAJob implementeren*|
    |Azure-abonnement| Kies uw abonnement.|
-   |Actie| *Resourcegroep maken of bijwerken*|
-   |Resourcegroep| Kies een naam voor de productiebrongroep die uw Stream Analytics-taak bevat.|
-   |Locatie|Kies de locatie van uw productiebrongroep.|
+   |Bewerking| *Resourcegroep maken of bijwerken*|
+   |Resourcegroep| Kies een naam voor de test resource groep die uw Stream Analytics-taak bevat.|
+   |Locatie|Kies de locatie van de test resource groep.|
    |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
-   |Sjabloonparameters|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
-   |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $(eventhubname)|
-   |Implementatiemodus|Incrementeel|
+   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
+   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
+   |Implementatie modus|Incrementeel|
+
+3. Selecteer in de vervolg keuzelijst taken de optie **taak op productie omgeving implementeren**.
+
+4. Selecteer de **+** taak volgende bij **agent** en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
+
+   |Instelling|Waarde|
+   |-|-|
+   |Weergavenaam| *MyASAJob implementeren*|
+   |Azure-abonnement| Kies uw abonnement.|
+   |Bewerking| *Resourcegroep maken of bijwerken*|
+   |Resourcegroep| Kies een naam voor de productie resource groep die uw Stream Analytics-taak bevat.|
+   |Locatie|Kies de locatie van de productie resource groep.|
+   |Sjabloonlocatie| *Gekoppeld artefact*|
+   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
+   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
+   |Implementatie modus|Incrementeel|
 
 ### <a name="create-release"></a>Release maken
 
-Als u een release wilt maken, selecteert u **Release maken** in de rechterbovenhoek.
+Als u een release wilt maken, selecteert u **vrijgave maken** in de rechter bovenhoek.
 
-![Een release maken met Azure Pipelines](./media/setup-cicd-vs-code/create-release.png)
+![Een release maken met behulp van Azure-pijp lijnen](./media/setup-cicd-vs-code/create-release.png)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-Als u Managed Identity voor Azure Data Lake Store Gen1 wilt gebruiken als uitvoerzink, moet u toegang tot de serviceprincipal bieden met PowerShell voordat u wordt geïmplementeerd in Azure. Meer informatie over het [implementeren van ADLS Gen1 met de sjabloon Managed Identity met Resource Manager](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
+Als u beheerde identiteit voor Azure Data Lake Store gen1 als uitvoer Sink wilt gebruiken, moet u toegang geven tot de service-principal met behulp van Power shell voordat u implementeert in Azure. Meer informatie over het [implementeren van ADLS gen1 met beheerde identiteit met een resource manager-sjabloon](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstart: een Azure Stream Analytics-cloudtaak maken in Visual Studio Code (Preview)](quick-create-vs-code.md)
-* [Query's van TestStream Analytics lokaal met Visual Studio Code (Preview)](visual-studio-code-local-run.md)
-* [Azure Stream Analytics verkennen met Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md)
+* [Quick Start: een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)](quick-create-vs-code.md)
+* [Stream Analytics query's lokaal testen met Visual Studio code (preview)](visual-studio-code-local-run.md)
+* [Azure Stream Analytics verkennen met Visual Studio code (preview)](visual-studio-code-explore-jobs.md)

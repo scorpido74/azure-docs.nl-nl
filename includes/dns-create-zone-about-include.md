@@ -24,4 +24,4 @@ Bij het maken van een DNS-zone in Azure DNS:
 > [!NOTE]
 > U hoeft niet de eigenaar van een domeinnaam te zijn om een DNS-zone met die domeinnaam in Azure DNS te maken. U moet echter wel de eigenaar van het domein zijn om de Azure DNS-naamservers bij de domeinnaamregistrar te configureren als de juiste naamservers voor de domeinnaam.
 > 
-> Zie [Een domein delegeren aan Azure DNS](../articles/dns/dns-domain-delegation.md)voor meer informatie.
+> Zie [een domein delegeren voor Azure DNS](../articles/dns/dns-domain-delegation.md)voor meer informatie.

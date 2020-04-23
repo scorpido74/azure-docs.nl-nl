@@ -24,7 +24,7 @@ ms.locfileid: "64868300"
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Bestanden vanuit Azure StorSimple uploaden naar een Azure Media Services-account  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 >
 > 
 > Azure StorSimple Data Manager bevindt zich momenteel in Private Preview. 
@@ -32,7 +32,7 @@ ms.locfileid: "64868300"
 
 ## <a name="overview"></a>Overzicht
 
-In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. Het item kan video, audio, afbeeldingen, miniatuurverzamelingen, teksttracks en bestanden met ondertiteling (en de metagegevens over deze bestanden)The Asset can contain video, audio, images, thumbnail collections, text tracks and closed caption files (and the metadata about these files.) Zodra de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming.
+In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. De Asset kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten. Zodra de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming.
 
 [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) gebruikt cloudopslag als een uitbreiding van de on-premises oplossing en verdeelt gegevens automatisch over de on-premises opslag en de cloudopslag. Het StorSimple-apparaat ontdubbelt en comprimeert uw gegevens voordat deze naar de cloud worden verzonden, zodat grote bestanden zeer efficiënt in de cloud kunnen worden opgeslagen. De [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md)-service biedt API's waarmee u gegevens kunt extraheren uit StorSimple om deze vervolgens als AMS-assets te presenteren.
 
@@ -47,7 +47,7 @@ In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) e
 
 ## <a name="see-also"></a>Zie ook
 
-[Gebruik de .NET SDK om taken te activeren in Gegevensbeheer](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[De .NET SDK gebruiken om taken in de Data Manager te activeren](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -19,42 +19,42 @@ ms.locfileid: "70935121"
 2. Nadat u uw project hebt gemaakt, selecteert u **Firebase toevoegen aan uw Android-app**. 
 
     ![Firebase toevoegen aan uw Android-app](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
-3. Ga op de pagina **Firebase toevoegen aan uw Android-app** de volgende stappen uit: 
-    1. Kopieer voor de naam van het **Android-pakket**de waarde van uw **applicatieId** in het build.gradle-bestand van uw toepassing. In dit voorbeeld is `com.fabrikam.fcmtutorial1app`het. 
+3. Voer de volgende stappen uit op de pagina **Firebase toevoegen aan uw Android-app** : 
+    1. Voor de naam van het **Android-pakket**kopieert u de waarde van uw **applicationId** in het bestand build. gradle van uw toepassing. In dit voor beeld is `com.fabrikam.fcmtutorial1app`dat. 
 
-        ![De naam van het pakket opgeven](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
-    2. Selecteer **App registreren**. 
-4. Selecteer **Google-services.json downloaden,** sla het bestand op in de **app-map** van uw project en selecteer **Volgende**. 
+        ![De pakket naam opgeven](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
+    2. Selecteer **app registreren**. 
+4. Selecteer **Google-services. json downloaden**, sla het bestand op in de map **app** van het project en selecteer vervolgens **volgende**. 
 
-    ![Download google-services.json](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
-5. Breng de volgende **configuratiewijzigingen** aan in uw project in Android Studio. 
-    1.  Voeg in uw bestand build.gradle&gt;op projectniveau (project&lt;/build.gradle) de volgende instructie toe aan de sectie **afhankelijkheden.** 
+    ![Google-services. json downloaden](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
+5. Breng de volgende **configuratie wijzigingen** aan in uw project in Android Studio. 
+    1.  Voeg in het bestand build. gradle van project niveau&lt;(&gt;project/build.gradle) de volgende instructie toe aan de sectie **dependencies** . 
 
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. Voeg in uw bestand build.gradle&gt;/&lt;op&gt;app-niveau (project&lt;app-module /build.gradle) de volgende instructies toe aan de sectie **afhankelijkheden.** 
+    2. Voeg in het bestand build. gradle van uw app&lt;-&gt;/&lt;niveau (project&gt;app-module/build.gradle) de volgende instructies toe aan de sectie **dependencies** . 
 
         ```
         implementation 'com.google.firebase:firebase-core:16.0.8'
         implementation 'com.google.firebase:firebase-messaging:17.3.4'
         ```
 
-    3. Voeg de volgende regel toe aan het einde van het build.gradle-bestand op app-niveau na de sectie afhankelijkheden. 
+    3. Voeg de volgende regel toe aan het einde van het build. gradle-bestand op app-niveau na de sectie dependencies. 
 
         ```
         apply plugin: 'com.google.gms.google-services'
         ```        
-    4. Selecteer **Nu synchroniseren** op de werkbalk. 
+    4. Selecteer **Nu synchroniseren** op de werk balk. 
  
-        ![build.gradle configuratiewijzigingen](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
-6. Selecteer **Volgende**. 
-7. Selecteer **Deze stap overslaan**. 
+        ![wijzigingen in de configuratie van build. gradle](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
+6. Selecteer **Next**. 
+7. Selecteer **deze stap overs Laan**. 
 
-    ![De laatste stap overslaan](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)
+    ![De laatste stap overs Laan](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)
 8. Selecteer in de Firebase-console het tandwiel van uw project. Selecteer vervolgens **Projectinstellingen**.
 
     ![Selecteer Projectinstellingen](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. Als u het bestand google-services.json nog niet hebt gedownload in de **app-map** van uw Android Studio-project, u dit op deze pagina doen. 
-5. Ga naar het tabblad **Cloudmessaging** bovenaan. 
-6. Kopieer en sla de **serversleutel** op voor later gebruik. U gebruikt deze waarde om uw hub te configureren.
+4. Als u het bestand Google-services. json niet hebt gedownload naar de map **app** van uw Android Studio-project, kunt u dit doen op deze pagina. 
+5. Schakel over naar het tabblad **Cloud Messa ging** bovenaan. 
+6. Kopieer de **Server sleutel** en sla deze op voor later gebruik. U gebruikt deze waarde om uw hub te configureren.

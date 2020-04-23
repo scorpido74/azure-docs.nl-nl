@@ -1,6 +1,6 @@
 ---
-title: Een bestaande uitvoerbare voor Azure Service Fabric verpakken
-description: Meer informatie over het verpakken van een bestaande toepassing als een gast uitvoerbaar, zodat deze kan worden geïmplementeerd in een Service Fabric-cluster.
+title: Een bestaand uitvoerbaar bestand verpakken naar Azure Service Fabric
+description: Meer informatie over het verpakken van een bestaande toepassing als een uitvoerbaar gast bestand, zodat het kan worden geïmplementeerd in een Service Fabric cluster.
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
@@ -10,34 +10,34 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457830"
 ---
-# <a name="deploy-an-existing-executable-to-service-fabric"></a>Een bestaande uitvoerbare fabric implementeren
-U elk type code, zoals Node.js, Java of C++, uitvoeren in Azure Service Fabric as a service. Service Fabric verwijst naar dit soort services als gastexecutables.
+# <a name="deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand implementeren naar Service Fabric
+U kunt elk type code, zoals node. js, Java of C++, uitvoeren in azure Service Fabric als een service. Service Fabric verwijst naar deze typen services als uitvoer bare gast bestanden.
 
-Gastexecutables worden behandeld door Service Fabric als stateless services. Als gevolg hiervan worden ze op knooppunten in een cluster geplaatst, op basis van beschikbaarheid en andere statistieken. In dit artikel wordt beschreven hoe u een gast verpakken en implementeren die kan worden uitgevoerd in een Cluster van Servicefabric, met behulp van Visual Studio of een command-line hulpprogramma.
+Uitvoer bare gast bestanden worden behandeld door Service Fabric zoals stateless Services. Als gevolg hiervan worden ze op knoop punten in een cluster geplaatst, op basis van Beschik baarheid en andere metrische gegevens. In dit artikel wordt beschreven hoe u een uitvoerbaar gast bestand verpakken en implementeert in een Service Fabric cluster met behulp van Visual Studio of een opdracht regel programma.
 
-## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Voordelen van het uitvoeren van een gast die uitvoerbaar is in Service Fabric
-Er zijn verschillende voordelen aan het uitvoeren van een gast die uitvoerbaar is in een cluster van Service Fabric:
+## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Voor delen van het uitvoeren van een gast bestand in Service Fabric
+Er zijn verschillende voor delen voor het uitvoeren van een uitvoerbaar gast bestand in een Service Fabric cluster:
 
-* Hoge beschikbaarheid. Toepassingen die in Service Fabric worden uitgevoerd, worden in hoge mate beschikbaar gesteld. Service Fabric zorgt ervoor dat exemplaren van een toepassing worden uitgevoerd.
-* Gezondheidsmonitoring. Service Fabric health monitoring detecteert of een toepassing wordt uitgevoerd en biedt diagnostische informatie als er een storing optreedt.   
-* Beheer van de levenscyclus van toepassingen. Naast het verstrekken van upgrades zonder downtime, Service Fabric biedt automatische rollback naar de vorige versie als er een slechte gezondheid gebeurtenis gemeld tijdens een upgrade.    
-* Dichtheid. U meerdere toepassingen in een cluster uitvoeren, waardoor elke toepassing niet meer op zijn eigen hardware hoeft te worden uitgevoerd.
-* Vindbaarheid: met REST u de servicefabricnaamgevingsservice bellen om andere services in het cluster te vinden. 
+* Hoge beschikbaarheid. Toepassingen die in Service Fabric worden uitgevoerd, worden Maxi maal beschikbaar gemaakt. Service Fabric zorgt ervoor dat exemplaren van een toepassing worden uitgevoerd.
+* Status controle. Service Fabric status bewaking detecteert of een toepassing wordt uitgevoerd en bevat diagnostische gegevens als er een fout optreedt.   
+* Beheer van toepassings levenscyclus. Naast het bieden van upgrades zonder downtime, biedt Service Fabric automatisch terugdraaien naar de vorige versie als er een slechte status gebeurtenis is gerapporteerd tijdens een upgrade.    
+* Veebezetting. U kunt meerdere toepassingen uitvoeren in een cluster, waardoor de nood zaak van elke toepassing niet op eigen hardware hoeft te worden uitgevoerd.
+* Vind baarheid: met behulp van REST kunt u de Service Fabric naamgevings service aanroepen om andere services in het cluster te vinden. 
 
 ## <a name="samples"></a>Voorbeelden
-* [Monster voor het verpakken en implementeren van een gast uitvoerbaar](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Voorbeeld van twee gastexecutables (C# en nodejs) die communiceren via de naamgevingsservice via REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Voor beeld van twee gast uitvoer bare bestanden (C# en nodejs) die communiceren via de naamgevings service met REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="overview-of-application-and-service-manifest-files"></a>Overzicht van toepassings- en servicemanifestbestanden
-Als onderdeel van het implementeren van een gast uitvoerbaar, is het handig om het Service Fabric-verpakkings- en implementatiemodel te begrijpen zoals beschreven in [het toepassingsmodel.](service-fabric-application-model.md) Het Service Fabric-verpakkingsmodel is gebaseerd op twee XML-bestanden: de toepassing en service manifesteert zich. De schemadefinitie voor de bestanden ApplicationManifest.xml en ServiceManifest.xml is met de Service Fabric SDK geïnstalleerd in *C:\Program Files\Microsoft SDKs\Service Fabric\schema's\ServiceFabricServiceModel.xsd*.
+## <a name="overview-of-application-and-service-manifest-files"></a>Overzicht van toepassings-en service manifest bestanden
+Als onderdeel van het implementeren van een uitvoerbaar gast bestand, is het handig om inzicht te krijgen in het model van Service Fabric-verpakking en-implementatie zoals beschreven in het [toepassings model](service-fabric-application-model.md). Het Service Fabric-verpakkende model is afhankelijk van twee XML-bestanden: de toepassings-en service manifesten. De schema definitie voor de bestanden ApplicationManifest. XML en ServiceManifest. XML wordt met de SDK van Service Fabric geïnstalleerd in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
 
-* **Aanvraagmanifest** Het toepassingsmanifest wordt gebruikt om de toepassing te beschrijven. Het bevat de services die deze samenstellen en andere parameters die worden gebruikt om te definiëren hoe een of meer services moeten worden geïmplementeerd, zoals het aantal exemplaren.
+* **Toepassings manifest** Het toepassings manifest wordt gebruikt om de toepassing te beschrijven. Hierin worden de services weer gegeven die het samen stellen en andere para meters die worden gebruikt om te definiëren hoe een of meer services moeten worden geïmplementeerd, zoals het aantal exemplaren.
 
-  In Service Fabric is een toepassing een eenheid van implementatie en upgrade. Een toepassing kan worden geüpgraded als één eenheid waar potentiële fouten en potentiële rollbacks worden beheerd. Service Fabric garandeert dat het upgradeproces succesvol is of, als de upgrade mislukt, de toepassing niet in een onbekende of instabiele toestand verlaat.
-* **Servicemanifest** Het servicemanifest beschrijft de onderdelen van een service. Het bevat gegevens, zoals de naam en het type service, en de code en configuratie ervan. Het servicemanifest bevat ook enkele aanvullende parameters die kunnen worden gebruikt om de service te configureren zodra deze is geïmplementeerd.
+  In Service Fabric is een toepassing een eenheid van implementatie en upgrade. Een toepassing kan worden bijgewerkt als één eenheid waar mogelijke fouten en mogelijke terugdraai bewerkingen worden beheerd. Service Fabric garandeert dat het upgrade proces is geslaagd of dat als de upgrade mislukt, de toepassing niet in een onbekende of onstabiele staat blijft.
+* **Service manifest** In het service manifest worden de onderdelen van een service beschreven. Het bevat gegevens, zoals de naam en het type van de service en de code en configuratie. Het service manifest bevat ook enkele aanvullende para meters die kunnen worden gebruikt om de service te configureren zodra deze is geïmplementeerd.
 
-## <a name="application-package-file-structure"></a>Bestandsstructuur van toepassingspakket
-Als u een toepassing wilt implementeren in Service Fabric, moet de toepassing een vooraf gedefinieerde directorystructuur volgen. Het volgende is een voorbeeld van die structuur.
+## <a name="application-package-file-structure"></a>Bestands structuur toepassings pakket
+Als u een toepassing wilt implementeren op Service Fabric, moet de toepassing een vooraf gedefinieerde mapstructuur volgen. Hier volgt een voor beeld van deze structuur.
 
 ```
 |-- ApplicationPackageRoot
@@ -51,22 +51,22 @@ Als u een toepassing wilt implementeren in Service Fabric, moet de toepassing ee
     |-- ApplicationManifest.xml
 ```
 
-De ApplicationPackageRoot bevat het bestand ApplicationManifest.xml dat de toepassing definieert. Een submap voor elke service die in de toepassing is opgenomen, wordt gebruikt om alle artefacten te bevatten die de service vereist. Deze submappen zijn servicemanifest.xml en, typisch, de volgende:
+De Application Package root bevat het ApplicationManifest. XML-bestand dat de toepassing definieert. Een submap voor elke service die in de toepassing wordt opgenomen, wordt gebruikt voor alle artefacten die de service nodig heeft. Deze submappen zijn de ServiceManifest. XML en bevatten meestal het volgende:
 
-* *Code*. Deze map bevat de servicecode.
-* *Config*. Deze map bevat een Bestand Settings.xml (en indien nodig andere bestanden) dat de service tijdens runtime kan openen om specifieke configuratie-instellingen op te halen.
-* *Gegevens*. Dit is een extra map om extra lokale gegevens op te slaan die de service mogelijk nodig heeft. Gegevens moeten worden gebruikt om alleen kortstondige gegevens op te slaan. Service Fabric kopieert of repliceert geen wijzigingen in de gegevensmap als de service moet worden verplaatst (bijvoorbeeld tijdens failover).
+* *Code*. Deze map bevat de service code.
+* *Configuratie*. Deze map bevat een bestand met instellingen. XML (en andere bestanden indien nodig) die de service tijdens runtime kan openen om specifieke configuratie-instellingen op te halen.
+* *Gegevens*. Dit is een extra Directory voor het opslaan van aanvullende lokale gegevens die de service mogelijk nodig heeft. Gegevens moeten worden gebruikt om alleen tijdelijke gegevens op te slaan. Service Fabric kopieert of repliceert geen wijzigingen naar de gegevensdirectory als de service opnieuw moet worden gevonden (bijvoorbeeld tijdens failover).
 
 > [!NOTE]
-> Je hoeft niet om `config` de `data` en mappen te maken als je ze niet nodig hebt.
+> Als u deze niet nodig hebt `config` , `data` hoeft u de-en-mappen niet te maken.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor gerelateerde informatie en taken.
+Raadpleeg de volgende artikelen voor gerelateerde informatie en taken.
 * [Een toepassing implementeren die door een gast kan worden uitgevoerd](service-fabric-deploy-existing-app.md)
 * [Meerdere toepassingen implementeren die door gasten kunnen worden uitgevoerd](service-fabric-deploy-multiple-apps.md)
-* [Maak uw eerste gast uitvoerbare toepassing met Visual Studio](quickstart-guest-app.md)
-* [Monster voor het verpakken en implementeren van een gast uitvoerbaar,](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)inclusief een link naar de prerelease van de verpakkingstool
-* [Voorbeeld van twee gastexecutables (C# en nodejs) die communiceren via de naamgevingsservice via REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Uw eerste uitvoer bare gast toepassing maken met Visual Studio](quickstart-guest-app.md)
+* [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), met inbegrip van een koppeling naar de Prerelease van het verpakkings programma
+* [Voor beeld van twee gast uitvoer bare bestanden (C# en nodejs) die communiceren via de naamgevings service met REST](https://github.com/Azure-Samples/service-fabric-containers)
 

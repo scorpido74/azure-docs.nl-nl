@@ -1,6 +1,6 @@
 ---
-title: Herstel na noodgevallen van Dynamics AX met Azure-siteherstel
-description: Meer informatie over het instellen van noodherstel voor Dynamics AX met Azure Site Recovery
+title: Herstel na nood gevallen van Dynamics AX met Azure Site Recovery
+description: Meer informatie over het instellen van herstel na nood gevallen voor Dynamics AX met Azure Site Recovery
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
@@ -12,174 +12,174 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941593"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Noodherstel instellen voor een multitier Dynamics AX-toepassing   
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Herstel na nood geval instellen voor een Dynamics AX-toepassing met meerdere lagen   
 
 
 
 
- Dynamics AX is een van de meest populaire ERP-oplossingen die door ondernemingen worden gebruikt om processen op verschillende locaties te standaardiseren, resources te beheren en naleving te vereenvoudigen. Omdat de toepassing essentieel is voor een organisatie, moet de toepassing in geval van een ramp in minimale tijd operationeel zijn.
+ Dynamics AX is een van de populairste ERP-oplossingen die door ondernemingen worden gebruikt voor het standaardiseren van processen op verschillende locaties, het beheren van resources en het vereenvoudigen van de naleving. Omdat de toepassing cruciaal is voor een organisatie, moet de toepassing in het geval van een nood situatie in de minimale tijd actief zijn.
 
-Vandaag biedt Dynamics AX geen out-of-the-box disaster recovery-mogelijkheden. Dynamics AX bestaat uit veel servercomponenten, zoals Windows Application Object Server, Azure Active Directory, Azure SQL Database, SharePoint Server en Reporting Services. Het beheren van de disaster recovery van elk van deze componenten handmatig is niet alleen duur, maar ook foutgevoelig.
+Dynamics AX biedt vandaag geen mogelijkheden voor herstel na nood gevallen. Dynamics AX bestaat uit vele Server onderdelen, zoals Windows Application object Server, Azure Active Directory, Azure SQL Database, share Point server en Reporting Services. Het hand matig beheren van herstel na nood gevallen van elk van deze onderdelen is niet alleen duur, maar ook gevoelig voor fouten.
 
-In dit artikel wordt uitgelegd hoe u een oplossing voor noodherstel maken voor uw Dynamics AX-toepassing met Azure [Site Recovery.](site-recovery-overview.md) Het omvat ook geplande / ongeplande testfailovers met behulp van een herstelplan met één klik, ondersteunde configuraties en vereisten.
+In dit artikel wordt uitgelegd hoe u een nood herstel oplossing voor uw Dynamics AX-toepassing kunt maken met behulp van [Azure site Recovery](site-recovery-overview.md). Het behandelt ook geplande/ongeplande testfailover met een herstel plan met één klik, ondersteunde configuraties en vereisten.
 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het implementeren van disaster recovery voor Dynamics AX-toepassing met behulp van Site Recovery vereist de volgende vereisten:
+Voor het implementeren van herstel na nood gevallen voor de Dynamics AX-toepassing met behulp van Site Recovery zijn de volgende vereisten vereist:
 
 • Stel een on-premises Dynamics AX-implementatie in.
 
-• Maak een siteherstelkluis in een Azure-abonnement.
+• Maak een Site Recovery kluis in een Azure-abonnement.
 
-• Als Azure uw herstelsite is, voert u het hulpprogramma voor de beoordeling van gereedheid van Azure Virtual Machine uit op de VM's. Ze moeten compatibel zijn met de Azure Virtual Machines en Site Recovery-services.
+• Als Azure uw herstel site is, voert u het hulp programma Azure virtual machine Readiness Assessment uit op de Vm's. Ze moeten compatibel zijn met de Azure Virtual Machines-en Site Recovery-Services.
 
 ## <a name="site-recovery-support"></a>Ondersteuning voor Site Recovery
 
-Voor het maken van dit artikel gebruikten we virtuele VMware-machines met Dynamics AX 2012 R3 op Windows Server 2012 R2 Enterprise. Omdat replicatie van siteherstel toepassingsagnostisch is, verwachten we dat de aanbevelingen die hier worden gegeven, gelden voor de volgende scenario's.
+Voor het maken van dit artikel hebben we virtuele VMware-machines gebruikt met Dynamics AX 2012 R3 op Windows Server 2012 R2 Enter prise. Omdat Site Recovery replicatie neutraal is, verwachten we de aanbevelingen die hier worden gegeven voor de volgende scenario's.
 
 ### <a name="source-and-target"></a>Bron en doel
 
 **Scenario** | **Op een secundaire site** | **Naar Azure**
 --- | --- | ---
 **Hyper-V** | Ja | Ja
-**Vmware** | Ja | Ja
+**VMware** | Ja | Ja
 **Fysieke server** | Ja | Ja
 
-## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Noodherstel van de Dynamics AX-toepassing inschakelen met siteherstel
-### <a name="protect-your-dynamics-ax-application"></a>Bescherm uw Dynamics AX-toepassing
-Om de volledige toepassingsreplicatie en -herstel in te schakelen, moet elk onderdeel van Dynamics AX worden beveiligd.
+## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Herstel na nood gevallen van de Dynamics AX-toepassing inschakelen met behulp van Site Recovery
+### <a name="protect-your-dynamics-ax-application"></a>Uw Dynamics AX-toepassing beveiligen
+Als u de volledige replicatie en het herstel van de toepassing wilt inschakelen, moet elk onderdeel van Dynamics AX worden beveiligd.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Active Directory- en DNS-replicatie instellen
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Active Directory-en DNS-replicatie instellen
 
-Active Directory is vereist op de rampherstelsite om de Dynamics AX-toepassing te laten functioneren. We raden de volgende twee keuzes aan op basis van de complexiteit van de on-premises omgeving van de klant.
+Active Directory is vereist op de site voor herstel na nood gevallen voor de werking van de Dynamics AX-toepassing. We raden de volgende twee keuzes aan op basis van de complexiteit van de on-premises omgeving van de klant.
 
 **Optie 1**
 
-De klant heeft een klein aantal toepassingen en één domeincontroller voor de gehele on-premises site en is van plan om samen over de hele site te falen. We raden u aan siteherstelreplicatie te gebruiken om de domeincontrollermachine te repliceren naar een secundaire site (van toepassing op zowel site-to-site- als site-to-Azure-scenario's).
+De klant heeft een klein aantal toepassingen en één domein controller voor de hele on-premises site en de plannen om de hele site samen te laten mislukken. We raden u aan Site Recovery replicatie te gebruiken om de computer van de domein controller te repliceren naar een secundaire site (van toepassing op de scenario's van site-naar-site en site-naar-Azure).
 
 **Optie 2**
 
-De klant heeft een groot aantal toepassingen en draait een Active Directory-forest en is van plan om een paar toepassingen tegelijk te mislukken. We raden u aan een extra domeincontroller in te stellen op de rampherstelsite (een secundaire site of in Azure).
+De klant beschikt over een groot aantal toepassingen en voert een Active Directory forest en abonnementen uit om een aantal toepassingen tegelijk uit te voeren. U wordt aangeraden een extra domein controller in te stellen op de nood herstel site (een secundaire site of in Azure).
 
- Zie [Een domeincontroller beschikbaar maken op een locatie voor noodherstel](site-recovery-active-directory.md)voor meer informatie. Voor de rest van dit document gaan we ervan uit dat er een domeincontroller beschikbaar is op de site voor noodherstel.
+ Zie [een domein controller beschikbaar maken op een nood herstel site](site-recovery-active-directory.md)voor meer informatie. Voor de rest van dit document wordt ervan uitgegaan dat er een domein controller beschikbaar is op de site voor herstel na nood gevallen.
 
-### <a name="2-set-up-sql-server-replication"></a>2. SQL Server-replicatie instellen
-Zie Toepassingen repliceren met SQL Server en Azure [Site Recovery](site-recovery-sql.md)voor technische richtlijnen voor de aanbevolen optie voor het beveiligen van de SQL-laag.
+### <a name="2-set-up-sql-server-replication"></a>2. SQL Server replicatie instellen
+Zie [toepassingen repliceren met SQL Server en Azure site Recovery](site-recovery-sql.md)voor technische richt lijnen over de aanbevolen optie voor het beveiligen van de SQL-laag.
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Beveiliging inschakelen voor de Dynamics AX-client- en toepassingsobjectservervm's
-Voer relevante siteherstelconfiguratie uit op basis van de vraag of de VM's worden geïmplementeerd op [Hyper-V](site-recovery-hyper-v-site-to-azure.md) of [VMware.](site-recovery-vmware-to-azure.md)
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Schakel de beveiliging voor de virtuele machines van de Dynamics AX-client en de Application object server in
+Voer relevante Site Recovery configuratie uit op basis van of de Vm's op [Hyper-V](site-recovery-hyper-v-site-to-azure.md) of [VMware](site-recovery-vmware-to-azure.md)zijn geïmplementeerd.
 
 > [!TIP]
-> We raden u aan de crashconsistente frequentie te configureren tot 15 minuten.
+> We raden u aan de crash-consistente frequentie in te stellen op 15 minuten.
 >
 
-De volgende momentopname toont de beveiligingsstatus van Dynamics-component VM's in een VMware-beveiligingsscenario voor site-to-Azure.The following snapshot shows the protection status of Dynamics-component VM's in a VMware site-to-Azure protection scenario.
+In de volgende moment opname ziet u de beveiligings status van de Vm's van Dynamics-onderdelen in een scenario met beveiliging van VMware site-naar-Azure.
 
-![Beveiligde objecten](./media/site-recovery-dynamics-ax/protecteditems.png)
+![Beveiligde items](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. Netwerken configureren
-**Vm-compute- en netwerkinstellingen configureren**
+### <a name="4-configure-networking"></a>4. netwerken configureren
+**De compute-en netwerk instellingen voor de virtuele machine configureren**
 
-Configureer netwerkinstellingen in Site Recovery voor de Dynamics AX-client- en toepassingsobjectserver, zodat de VM-netwerken na een failover worden gekoppeld aan het juiste disaster recovery-netwerk. Controleer of het disaster recovery-netwerk voor deze lagen routetabel is voor de SQL-laag.
+Configureer voor de virtuele machines van de Dynamics AX-client en Application object Server netwerk instellingen in Site Recovery zodat de VM-netwerken na een failover aan het juiste netwerk voor herstel na nood geval worden gekoppeld. Zorg ervoor dat het nood herstel netwerk voor deze lagen routeerbaar is naar de SQL-laag.
 
-U de VM in de gerepliceerde items selecteren om de netwerkinstellingen te configureren, zoals in de volgende momentopname wordt weergegeven:
+U kunt de virtuele machine in de gerepliceerde items selecteren om de netwerk instellingen te configureren, zoals wordt weer gegeven in de volgende moment opname:
 
-* Selecteer voor Application Object Server-servers de juiste beschikbaarheidsset.
+* Voor Application object Server-servers selecteert u de juiste beschikbaarheidsset.
 
-* Als u een statisch IP-adres gebruikt, geeft u het IP op dat de VM moet gebruiken in het **doel-IP-tekstvak.**
+* Als u een statisch IP-adres gebruikt, geeft u het IP-adres op dat u wilt dat de virtuele machine in het tekstvak **doel-IP** moet worden uitgevoerd.
 
     ![Netwerkinstellingen](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Maak een herstelplan
+### <a name="5-create-a-recovery-plan"></a>5. een herstel plan maken
 
-U een herstelplan maken in Site recovery om het failoverproces te automatiseren. Voeg een app-laag en een weblaag toe in het herstelplan. Bestel ze in verschillende groepen, zodat de front-end wordt afgesloten vóór de app-laag.
+U kunt een herstel plan maken in Site Recovery om het failoverproces te automatiseren. Voeg een app-laag en een weblaag toe in het herstel plan. Volg deze in verschillende groepen, zodat de front-end wordt afgesloten vóór de app-laag.
 
-1. Selecteer de kluis Siteherstel in uw abonnement en selecteer de tegel **Herstelplannen.**
+1. Selecteer de Site Recovery kluis in uw abonnement en selecteer de tegel **herstel plannen** .
 
-2. Selecteer **+ Herstelplan**en geef een naam op.
+2. Selecteer **+ herstel plan**en geef een naam op.
 
-3. Selecteer de **bron** en **het doel**. Het doel kan Azure of een secundaire site zijn. Als u Azure kiest, moet u het implementatiemodel opgeven.
+3. Selecteer de **bron** en het **doel**. Het doel kan Azure of een secundaire site zijn. Als u Azure kiest, moet u het implementatie model opgeven.
 
     ![Herstelplan maken](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Selecteer de toepassingsobjectserver en de client-VM's voor het herstelplan en selecteer de ✓.
+4. Selecteer de Application object Server en de client-Vm's voor het herstel plan en selecteer de ✓.
 
-    ![Objecten selecteren](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Items selecteren](./media/site-recovery-dynamics-ax/selectvms.png)
 
-    Voorbeeld van herstelplan:
+    Voor beeld van herstel plan:
 
     ![Details herstelplan](./media/site-recovery-dynamics-ax/recoveryplan.png)
 
-U het herstelplan voor de Dynamics AX-toepassing aanpassen door de volgende stappen toe te voegen. De vorige momentopname toont het volledige herstelplan nadat u alle stappen hebt toegevoegd.
+U kunt het herstel plan voor de Dynamics AX-toepassing aanpassen door de volgende stappen toe te voegen. In de vorige moment opname wordt het volledige herstel plan weer gegeven nadat u alle stappen hebt toegevoegd.
 
 
-* **SQL Server-failoverstappen:** zie [Replicatietoepassingen met SQL Server en Azure Site Recovery](site-recovery-sql.md)voor informatie over herstelstappen die specifiek zijn voor SQL-server.
+* **Stappen voor SQL Server failover**: Zie [Replication Applications with SQL Server and Azure site Recovery](site-recovery-sql.md)(Engelstalig) voor informatie over de specifieke herstel stappen voor SQL Server.
 
-* **Failovergroep 1:** Fail over de Vmen van de toepassingsobjectserver.
-Zorg ervoor dat het geselecteerde herstelpunt zo dicht mogelijk bij de database PIT ligt, maar niet vooruit.
+* **Failovergroep 1**: failover van de Application object Server vm's.
+Zorg ervoor dat het geselecteerde herstel punt zo dicht mogelijk bij de data base-PIT ligt, maar niet vóór het.
 
-* **Script**: Load balancer toevoegen (alleen E-A).
-Voeg een script toe (via Azure Automation) nadat de VM-groep Application Object Server wordt weergegeven om er een load balancer aan toe te voegen. U een script gebruiken om deze taak uit te voeren. Zie [Een load balancer toevoegen voor multitier application disaster recovery voor](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)meer informatie.
+* **Script**: add Load Balancer (alleen E-A).
+Voeg een script toe (via Azure Automation) nadat de VM-groep van de toepassings object Server een load balancer toevoegen. U kunt een script gebruiken om deze taak uit te voeren. Zie [een Load Balancer toevoegen voor herstel na nood gevallen](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)voor meerdere lagen voor meer informatie.
 
-* **Failover groep 2:** Fail over de Dynamics AX client VM's. Fail over de web tier VM's als onderdeel van het herstelplan.
+* **Failover-groep 2**: failover van de Dynamics AX-client-vm's. Failover van de virtuele machines van de weblaag als onderdeel van het herstel plan.
 
 
 ### <a name="perform-a-test-failover"></a>Een testfailover uitvoeren
 
-Zie de begeleidende handleiding 'Active Directory disaster recovery solution' voor meer informatie over Active Directory tijdens de failovervan de test.
+Zie de aanvullende hand leiding ' Active Directory nood herstel oplossing ' voor meer informatie over het Active Directory tijdens de testfailover.
 
-Zie [Toepassingen repliceren met SQL Server en Azure Site Recovery](site-recovery-sql.md)voor meer informatie over SQL-server tijdens de failovervan test.
+Zie [toepassingen repliceren met SQL Server en Azure site Recovery](site-recovery-sql.md)voor meer informatie die specifiek is voor SQL Server tijdens een testfailover.
 
-1. Ga naar de Azure-portal en selecteer de kluis Siteherstel.
+1. Ga naar de Azure Portal en selecteer uw Site Recovery kluis.
 
-2. Selecteer het herstelplan dat is gemaakt voor Dynamics AX.
+2. Selecteer het herstel plan dat voor Dynamics AX is gemaakt.
 
 3. Selecteer **Failover testen**.
 
-4. Selecteer het virtuele netwerk om het failoverproces te starten.
+4. Selecteer het virtuele netwerk om het proces van de testfailover te starten.
 
-5. Nadat de secundaire omgeving is ingesteld, u uw validaties uitvoeren.
+5. Nadat de secundaire omgeving is ingesteld, kunt u uw validaties uitvoeren.
 
-6. Nadat de validaties zijn voltooid, selecteert u **Validaties voltooid** en wordt de failoveromgeving van de test gereinigd.
+6. Nadat de validaties zijn voltooid, selecteert u de **validaties voltooid** en wordt de testfailover gereinigd.
 
-Zie [Failovertesten naar Azure testen in Siterecovery](site-recovery-test-failover-to-azure.md)voor meer informatie over het uitvoeren van een testfailover.
+Zie [failover testen naar Azure in site Recovery](site-recovery-test-failover-to-azure.md)voor meer informatie over het uitvoeren van een testfailover.
 
 ### <a name="perform-a-failover"></a>Een failover uitvoeren
 
-1. Ga naar de Azure-portal en selecteer de kluis Siteherstel.
+1. Ga naar de Azure Portal en selecteer uw Site Recovery kluis.
 
-2. Selecteer het herstelplan dat is gemaakt voor Dynamics AX.
+2. Selecteer het herstel plan dat voor Dynamics AX is gemaakt.
 
-3. Selecteer **Failover**en selecteer **Failover**.
+3. Selecteer **failover**en selecteer **failover**.
 
-4. Selecteer het doelnetwerk en selecteer **✓** om het failoverproces te starten.
+4. Selecteer het doelnet werk en selecteer **✓** om het failoverproces te starten.
 
-Zie Failover in Site Recovery voor meer informatie over het doen van een [failover.](site-recovery-failover.md)
+Zie [failover in site Recovery](site-recovery-failover.md)voor meer informatie over het uitvoeren van een failover.
 
 ### <a name="perform-a-failback"></a>Failback uitvoeren
 
-Zie [Toepassingen repliceren met SQL Server en Azure Site Recovery](site-recovery-sql.md)voor overwegingen die specifiek zijn voor SQL Server tijdens failback.
+Zie [toepassingen repliceren met SQL Server en Azure site Recovery](site-recovery-sql.md)voor overwegingen die specifiek zijn voor SQL Server tijdens het failback.
 
-1. Ga naar de Azure-portal en selecteer de kluis Siteherstel.
+1. Ga naar de Azure Portal en selecteer uw Site Recovery kluis.
 
-2. Selecteer het herstelplan dat is gemaakt voor Dynamics AX.
+2. Selecteer het herstel plan dat voor Dynamics AX is gemaakt.
 
-3. Selecteer **Failover**en selecteer **Failover**.
+3. Selecteer **failover**en selecteer **failover**.
 
-4. Selecteer **Richting wijzigen**.
+4. Selecteer **richting wijzigen**.
 
-5. Selecteer de juiste opties: gegevenssynchronisatie en het maken van vm's.
+5. Selecteer de juiste opties: gegevens synchronisatie en VM maken.
 
 6. Selecteer **✓** om het failbackproces te starten.
 
 
-Zie [Failback VMware VM's van Azure naar on-premises](site-recovery-failback-azure-to-vmware.md)voor meer informatie over het doen van een failback.
+Zie voor meer informatie over het uitvoeren van een failback [failback VMware-vm's van Azure naar on-premises](site-recovery-failback-azure-to-vmware.md).
 
 ## <a name="summary"></a>Samenvatting
-Met Site Recovery u een volledig geautomatiseerd noodherstelplan maken voor uw Dynamics AX-toepassing. In het geval van een onderbreking u de failover binnen enkele seconden vanaf elke locatie starten en de toepassing binnen enkele minuten operationeel krijgen.
+U kunt met behulp van Site Recovery een volledig geautomatiseerd plan voor herstel na nood gevallen maken voor uw Dynamics AX-toepassing. In het geval van een onderbreking kunt u de failover binnen enkele seconden initiëren en de toepassing in een paar minuten actief maken en uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Welke workloads kan ik beveiligen](site-recovery-workload.md)voor meer informatie over het beveiligen van bedrijfsworkloads met Site Recovery? .
+Zie [welke workloads kan ik beveiligen?](site-recovery-workload.md)voor meer informatie over het beveiligen van zakelijke workloads met site Recovery.

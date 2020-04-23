@@ -15,4 +15,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "74707791"
 ---
-[RBAC (Azure role-based access control)](../articles/role-based-access-control/overview.md) is het autorisatiesysteem dat u gebruikt om de toegang tot Azure-bronnen te beheren. Als u toegang wilt verlenen, wijst u rollen toe aan gebruikers, groepen, serviceprincipals of beheerde identiteiten op een bepaald bereik.
+[Op rollen gebaseerd toegangs beheer (RBAC) van Azure](../articles/role-based-access-control/overview.md) is het autorisatie systeem dat u gebruikt om de toegang tot Azure-resources te beheren. Als u toegang wilt verlenen, wijst u rollen toe aan gebruikers, groepen, service-principals of beheerde identiteiten voor een bepaald bereik.

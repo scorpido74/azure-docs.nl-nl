@@ -52,16 +52,16 @@ Application Insights Trends maakt een tijdreeksvisualisatie op basis van de tele
 
 Gebruik de besturingselementen boven in het venster om aan te passen welke typen telemetrie u wilt weergeven. Kies eerst de telemetrietypen waarin u bent geïnteresseerd:
 
-* **Telemetrietype** - Serveraanvragen, uitzonderingen, afhankelijkheden of aangepaste gebeurtenissen
+* **Type telemetrie** -server aanvragen, uitzonde ringen, afhankelijkheden of aangepaste gebeurtenissen
 * **Tijdsbereik** - ongeacht uw locatie van de laatste 30 minuten in de afgelopen 3 dagen
 * **Groeperen op** - uitzonderingstype, probleem-id, land/regio en meer.
 
-Klik vervolgens op **Telemetrie analyseren** om de query uit te voeren.
+Klik vervolgens op **telemetrie analyseren** om de query uit te voeren.
 
 U kunt als volgt tussen de bellen in de visualisatie navigeren:
 
 * Klik om een bel te selecteren, waarmee de filters onder in het venster worden bijgewerkt en de gebeurtenissen tijdens een bepaalde periode worden samengevat
-* Dubbelklik op een bel om naar het zoekgereedschap te navigeren en alle afzonderlijke telemetriegebeurtenissen te bekijken die zich in die periode hebben voorgedaan
+* Dubbel klik op een bel om naar de zoek functie te gaan en alle afzonderlijke telemetrie-gebeurtenissen te zien die tijdens die periode zijn opgetreden
 * Ctrl-klik om de selectie ervan in de visualisatie op te heffen.
 
 > [!TIP]
@@ -70,7 +70,7 @@ U kunt als volgt tussen de bellen in de visualisatie navigeren:
 > 
 
 ## <a name="filter"></a>Filteren
-Ontdek meer specifieke trends met de filterbesturingselementen aan de onderkant van het venster. Als u een filter wilt toepassen, klikt u op de naam ervan. U kunt snel schakelen tussen verschillende filters voor het detecteren van trends die in een dimensie van uw telemetrie kunnen worden verborgen. Als u een filter in één dimensie toepast, zoals Uitzonderingstype, blijven filters in andere dimensies klikbaar, ook al worden ze grijs weergegeven. Als u een filter niet meer wilt toepassen, klikt u er nogmaals op. Ctrl-klik om meerdere filters in dezelfde dimensie selecteren.
+Ontdek meer specifieke trends met de filterbesturingselementen aan de onderkant van het venster. Als u een filter wilt toepassen, klikt u op de naam ervan. U kunt snel schakelen tussen verschillende filters voor het detecteren van trends die in een dimensie van uw telemetrie kunnen worden verborgen. Als u een filter in één dimensie toepast, zoals een uitzonderings type, blijven filters in andere dimensies klikken, zelfs als ze grijs worden weer gegeven. Klik opnieuw op een filter om het ongedaan te maken. Ctrl-klik om meerdere filters in dezelfde dimensie selecteren.
 
 ![Trendfilters](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -86,7 +86,7 @@ Als u de toepassing van een van deze filters wilt opheffen, klikt u op de knop *
 ![Meerdere filters](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Afwijkingen vinden
-Het hulpprogramma Trends kan bellen markeren van gebeurtenissen die afwijken ten opzichte van de andere bellen in dezelfde tijdreeks. Kies in de vervolgkeuzelijst Weergavetype **Aantal in tijdsinterval (afwijkingen markeren)** of **Percentages in tijdsinterval (afwijkingen markeren)**. Rode bellen zijn afwijkingen. Afwijkingen worden gedefinieerd als bellen met tellingen/percentages die meer dan 2,1 keer de standaarddeviatie van de tellingen/percentages die zich in de afgelopen twee perioden hebben voorgedaan (48 uur als u de laatste 24 uur bekijkt, enz.).
+Het hulpprogramma Trends kan bellen markeren van gebeurtenissen die afwijken ten opzichte van de andere bellen in dezelfde tijdreeks. Kies in de vervolgkeuzelijst Weergavetype **Aantal in tijdsinterval (afwijkingen markeren)** of **Percentages in tijdsinterval (afwijkingen markeren)**. Rode bellen zijn afwijkingen. Afwijkingen worden gedefinieerd als bellen met aantallen/percentages van meer dan 2,1 keer de standaard afwijking van de aantallen/percentages die zijn opgetreden in de afgelopen twee Peri Oden (48 uur als u de afgelopen 24 uur, enzovoort) bekijkt.
 
 ![Gekleurde punten geven afwijkingen aan](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

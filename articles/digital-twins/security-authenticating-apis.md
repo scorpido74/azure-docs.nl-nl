@@ -1,6 +1,6 @@
 ---
-title: API-verificatie begrijpen - Azure Digital Twins | Microsoft Documenten
-description: Meer informatie over hoe u verbinding maken met API's en deze verifiëren met API's met Azure Digital Twins.
+title: API-verificatie begrijpen-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over hoe u verbinding kunt maken met Api's en hoe u deze kunt verifiëren met behulp van Azure Digital Apparaatdubbels.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,44 +15,44 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76512995"
 ---
-# <a name="connect-to-and-authenticate-with-apis"></a>Verbinding maken met en verifiëren met API's
+# <a name="connect-to-and-authenticate-with-apis"></a>Verbinding maken met en verifiëren met Api's
 
-Azure Digital Twins gebruikt Azure Active Directory (Azure AD) om gebruikers te verifiëren en toepassingen te beschermen. Azure AD ondersteunt verificatie voor verschillende moderne architecturen. Ze zijn allemaal gebaseerd op de industriestandaard protocollen OAuth 2.0 of OpenID Connect. Bovendien kunnen ontwikkelaars Azure AD gebruiken om LOB-toepassingen (single-tenant en line-of-business) te bouwen. Ontwikkelaars kunnen Azure AD ook gebruiken om [multitenant-toepassingen](how-to-multitenant-applications.md)te ontwikkelen.
+Azure Digital Apparaatdubbels maakt gebruik van Azure Active Directory (Azure AD) om gebruikers te verifiëren en toepassingen te beveiligen. Azure AD biedt ondersteuning voor verificatie voor verschillende moderne architecturen. Ze zijn allemaal gebaseerd op de industrie standaard protocollen OAuth 2,0 of OpenID Connect Connect. Daarnaast kunnen ontwikkel aars Azure AD gebruiken om single tenant-en LOB-toepassingen (line-of-Business) te bouwen. Ontwikkel aars kunnen ook Azure AD gebruiken voor het ontwikkelen van [multi tenant-toepassingen](how-to-multitenant-applications.md).
 
-Ga voor een overzicht van Azure AD naar de [pagina Basisfundamenten](https://docs.microsoft.com/azure/active-directory/fundamentals/) voor stapsgewijze handleidingen, concepten en snelstarts.
+Ga voor een overzicht van Azure AD naar de [pagina fundamentals](https://docs.microsoft.com/azure/active-directory/fundamentals/) voor stapsgewijze hand leidingen, concepten en Quick starts.
 
 > [!TIP]
-> Volg de [zelfstudie](tutorial-facilities-setup.md) om een voorbeeld-app van Azure Digital Twins in te stellen en uit te voeren.
+> Volg de [zelf studie](tutorial-facilities-setup.md) om een Azure Digital apparaatdubbels-voor beeld-app in te stellen en uit te voeren.
 
-Om een toepassing of service met Azure Active Directory te integreren, moet een ontwikkelaar de toepassing eerst bij Azure Active Directory registreren. Voor gedetailleerde instructies en screenshots, lees [deze quickstart](../active-directory/develop/quickstart-register-app.md).
+Om een toepassing of service met Azure Active Directory te integreren, moet een ontwikkelaar de toepassing eerst bij Azure Active Directory registreren. Lees [deze Snelstartgids](../active-directory/develop/quickstart-register-app.md)voor gedetailleerde instructies en scherm afbeeldingen.
 
-[Vijf primaire toepassingsscenario's](../active-directory/develop/v2-app-types.md) worden ondersteund door Azure AD:
+Er worden [vijf primaire toepassings scenario's](../active-directory/develop/v2-app-types.md) ondersteund door Azure AD:
 
-* Spa(SPA) een enkele pagina: een gebruiker moet zich aanmelden bij een toepassing van één pagina die is beveiligd door Azure AD.
-* Webbrowser naar webtoepassing: een gebruiker moet zich aanmelden bij een webtoepassing die is beveiligd door Azure AD.
-* Native application to web API: A native application that runs on a phone, tablet, or PC needs to authenticate a user to get resources from a web API that's secured by Azure AD.
-* Webtoepassing naar web-API: een webtoepassing moet resources krijgen uit een web-API die is beveiligd door Azure AD.
-* Daemon of servertoepassing naar web-API: een daemon-toepassing of een servertoepassing zonder webgebruikersinterface moet resources krijgen van een web-API die is beveiligd door Azure AD.
+* Toepassing met één pagina (SPA): een gebruiker moet zich aanmelden bij een toepassing met één pagina die wordt beveiligd door Azure AD.
+* Webbrowser naar Web Application: een gebruiker moet zich aanmelden bij een webtoepassing die wordt beveiligd door Azure AD.
+* Systeem eigen toepassing op Web-API: een systeem eigen toepassing die wordt uitgevoerd op een telefoon, tablet of PC moet een gebruiker verifiëren om bronnen te verkrijgen van een web-API die wordt beveiligd door Azure AD.
+* Web Application to Web API: een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
+* Daemon of server toepassing op Web-API: een daemon-toepassing of een server toepassing zonder webgebruikersinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 
 > [!IMPORTANT]
-> Azure Digital Twins ondersteunt beide verificatiebibliotheken:
-> * De meer recente [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * De [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+> Azure Digital Apparaatdubbels ondersteunt de volgende verificatie bibliotheken:
+> * De recentere [micro soft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * De [Azure Active Directory-verificatie bibliotheek (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
-## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Bel Digital Twins vanuit een internet-API op het middensegment
+## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digital Apparaatdubbels aanroepen vanuit een web-API in de middelste laag
 
-Wanneer ontwikkelaars Digital Twins-oplossingen ontwerpen, maken ze meestal een toepassing of API op het middenniveau. De app of API roept vervolgens de Digital Twins API stroomafwaarts aan. Als u deze standaardarchitectuur voor weboplossingen wilt ondersteunen, moet u ervoor zorgen dat gebruikers eerst:
+Wanneer ontwikkel aars oplossingen voor digitale Apparaatdubbels ontwikkelen, maken ze doorgaans een toepassing op middelste laag of API. De app of API roept vervolgens de Digital Apparaatdubbels API downstream aan. Als u deze standaard architectuur voor weboplossing wilt ondersteunen, moet u ervoor zorgen dat gebruikers eerst het volgende doen:
 
-1. Verifiëren met de toepassing op de middelste laag
+1. Verifiëren met de toepassing voor middelste laag
 
-1. Een OAuth 2.0 On-Behalf-Of token wordt aangeschaft tijdens verificatie
+1. Er is een OAuth 2,0--of-token voor het verkrijgen van validatie tijdens verificatie
 
-1. Het verkregen token wordt vervolgens gebruikt om API's te verifiëren of te bellen die verder stroomafwaarts zijn met behulp van de on-behalf-of-flow
+1. Het aangeschafte token wordt vervolgens gebruikt voor verificatie met of aanroepen van Api's die verder downstream worden gebruikt met behulp van de namens-stroom
 
-Voor instructies over het orkestreren van de stroom namens de stroom, leest u [OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). U ook codevoorbeelden bekijken in [Een downstream web API aanroepen.](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)
+Lees [OAuth 2,0 voor-of-flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)voor instructies over het indelen van de namens-stroom. U kunt ook code voorbeelden bekijken in [het aanroepen van een stroomafwaartse Web-API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u Azure Digital Twins wilt configureren en testen met de impliciete subsidiestroom van OAuth 2.0, leest u [Postman configureren](./how-to-configure-postman.md).
+Lees [Configure postman](./how-to-configure-postman.md)om Azure Digital apparaatdubbels te configureren en te testen met behulp van de OAuth 2,0 impliciete toekennings stroom.
 
-Lees [Roltoewijzingen maken en beheren](./security-create-manage-role-assignments.md)voor meer informatie over azure digital twins-beveiliging.
+Voor meer informatie over de beveiliging van Azure Digital Apparaatdubbels leest u [roltoewijzingen maken en beheren](./security-create-manage-role-assignments.md).

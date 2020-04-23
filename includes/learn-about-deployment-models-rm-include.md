@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75978838"
 ---
 > [!NOTE]
-> Azure heeft twee verschillende implementatiemodellen die u gebruiken om resources te maken en ermee te werken: [Azure Resource Manager en klassiek](../articles/azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het implementatiemodel Resource Manager gebruikt. We raden het implementatiemodel voor Resource Manager aan voor nieuwe implementaties in plaats van het klassieke implementatiemodel.
+> Azure heeft twee verschillende implementatie modellen die u kunt gebruiken voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../articles/azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het Resource Manager-implementatie model besproken. Het implementatie model van Resource Manager wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.

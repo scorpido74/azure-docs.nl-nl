@@ -12,9 +12,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75468884"
 ---
-Hier volgen de limieten voor de grootte van de gegevens die worden gekopieerd naar een opslagaccount. Zorg ervoor dat de gegevens die u uploadt aan deze limieten voldoen. Zie [Schaalbaarheid en prestatiedoelen voor blob-opslag en](../articles/storage/blobs/scalability-targets.md) [Azure-bestanden](../articles/storage/files/storage-files-scale-targets.md)voor de meest actuele informatie over deze limieten.
+Dit zijn de limieten voor de grootte van de gegevens die worden gekopieerd naar het opslag account. Zorg ervoor dat de gegevens die u uploadt, voldoen aan deze limieten. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../articles/storage/blobs/scalability-targets.md) en [Azure files schaalbaarheids-en prestatie doelen](../articles/storage/files/storage-files-scale-targets.md)voor de meest actuele informatie over deze limieten.
 
-| Grootte van gegevens die zijn gekopieerd naar Azure-opslagaccount                      | Standaardlimiet          |
+| Grootte van gegevens die zijn gekopieerd naar een Azure-opslag account                      | Standaardlimiet          |
 |---------------------------------------------------------------------|------------------------|
-| Blob- en paginablob blokkeren                                            | 2 PB voor de VS en Europa.<br>500 TB voor alle andere regio's, waaronder het Verenigd Koninkrijk.  <br> Dit omvat gegevens uit alle bronnen, waaronder Data Box.|
-| Azure Files                                                          | 5 TB per aandeel.<br> Alle mappen onder *StorageAccount_AzureFiles* moeten deze limiet volgen.       |
+| BLOB en pagina-BLOB blok keren                                            | 2 PB voor Verenigde Staten en Europa.<br>500 TB voor alle andere regio's, inclusief het Verenigd Konink rijk.  <br> Dit omvat gegevens uit alle bronnen met inbegrip van Data Box.|
+| Azure Files                                                          | 5 TB per share.<br> Alle mappen onder *StorageAccount_AzureFiles* moeten deze limiet volgen.       |

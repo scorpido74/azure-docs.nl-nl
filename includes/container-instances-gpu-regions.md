@@ -13,9 +13,9 @@ ms.locfileid: "75445823"
 ---
 ### <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-| Regio's | OS | Beschikbare GPU SKU's |
+| Regio's | OS | Beschik bare GPU Sku's |
 | -------- | ---- | :-----------: |
-| Oost-VS, West-Europa, West US 2 | Linux | K80, P100, V100 |
+| VS-Oost, Europa-west, VS-West 2 | Linux | K80, P100, V100 |
 | Azië - zuidoost | Linux | P100, V100|
 | India - centraal | Linux | V100 |
-| Europa - noord | Linux | K80 K80 |
+| Europa - noord | Linux | K80 |

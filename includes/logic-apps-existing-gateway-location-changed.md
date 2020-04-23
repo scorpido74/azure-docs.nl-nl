@@ -11,5 +11,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792064"
 ---
-**V:** Waarom is de locatie voor mijn bestaande gateway gewijzigd? <br/>
-**A:** Gatewayresources die vóór 3 mei 2017 zijn gemaakt, zijn verplaatst naar de oorspronkelijke locaties van de Azure AD-tenant voor het werk- of schoolaccount waarmee deze gateways zijn gemaakt. Deze wijzigingen mogen echter geen invloed hebben op de huidige huidige logische apps, die gewoon moeten blijven werken. Met de algemene beschikbaarheid van de gateway in mei kunnen gatewayresourcelocaties verschillen van logische app-locaties.
+**V**: Waarom is de locatie voor mijn bestaande gateway gewijzigd? <br/>
+**A**: gateway bronnen die vóór 3 mei 2017 zijn gemaakt, zijn verplaatst naar de oorspronkelijke locatie van de Azure AD-Tenant voor het werk-of school account waarmee deze gateways zijn gemaakt. Deze wijzigingen zijn echter niet van invloed op actieve Logic apps, die normaal gesp roken blijven werken. Met de algemene Beschik baarheid van de gateway in mei kunnen gateway bron locaties verschillen van logische app-locaties.

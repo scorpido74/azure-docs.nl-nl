@@ -11,4 +11,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175822"
 ---
-Wanneer u lokaal ontwikkelt, gaan de app-instellingen naar het [bestand local.settings.json](../articles/azure-functions/functions-run-local.md#local-settings-file).
+Wanneer u lokaal ontwikkelt, gaan de app-instellingen naar het [bestand local. settings. json](../articles/azure-functions/functions-run-local.md#local-settings-file).

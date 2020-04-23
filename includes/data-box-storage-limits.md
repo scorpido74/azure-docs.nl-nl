@@ -11,13 +11,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "66244672"
 ---
-In deze sectie worden de limieten voor Azure Storage-service en de vereiste naamgevingsconventies voor Azure-bestanden, Azure-blokblobs en Azure-paginablobs beschreven, zoals van toepassing op de Data Box-service. Bekijk de opslaglimieten zorgvuldig en volg alle aanbevelingen.
+In deze sectie worden de limieten voor de Azure Storage-service en de vereiste naam conventies voor Azure Files, Azure Block blobs en Azure-pagina-blobs beschreven, zoals van toepassing op de Data Box Service. Controleer de opslag limieten zorgvuldig en volg alle aanbevelingen.
 
-Ga voor de meest recente informatie over azure-opslagservicelimieten en aanbevolen procedures voor het benoemen van shares, containers en bestanden naar:
+Voor de meest recente informatie over Azure Storage-service limieten en aanbevolen procedures voor het benoemen van shares, containers en bestanden, gaat u naar:
 
-- [Het benoemen en verwijzen van containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Naamgeving en verwijzen naar containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Naamgeving van en verwijzing naar shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blobs en paginablobconventies blokkeren](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Conventies voor blok-blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Als er bestanden of mappen zijn die de azure storageservicelimieten overschrijden of niet voldoen aan azure-bestanden/blob-naamgevingsconventies, worden deze bestanden of mappen niet opgenomen in de Azure Storage via de Data Box-service.
+> Als er bestanden of mappen zijn die de Azure Storage service limieten overschrijden of niet voldoen aan de naamgevings conventies van Azure Files/blob, worden deze bestanden of mappen niet opgenomen in de Azure Storage via de Data Box-Service.

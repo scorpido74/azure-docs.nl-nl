@@ -12,5 +12,5 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "66733273"
 ---
 > [!IMPORTANT]
-> Omdat de IoT-hub openbaar vindbaar is als DNS-eindpunt, moet u voorkomen dat u gevoelige of persoonlijk identificeerbare informatie invoert wanneer u deze een naam geeft.
+> Omdat de IoT-hub openbaar kan worden gedetecteerd als een DNS-eind punt, moet u ervoor zorgen dat u geen gevoelige of persoonlijke gegevens invoert wanneer u deze een naam geeft.
 >

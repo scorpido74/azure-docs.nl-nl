@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB-wijzigingsfeed gebruiken om realtime gegevensanalyses te visualiseren
-description: In dit artikel wordt beschreven hoe een wijzigingsfeed door een retailbedrijf kan worden gebruikt om gebruikerspatronen te begrijpen, realtime gegevensanalyse en visualisatie uit te voeren
+title: Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
+description: In dit artikel wordt beschreven hoe wijzigings invoer door een retail bedrijf kan worden gebruikt om gebruikers patronen te begrijpen, analyse en visualisatie in realtime-gegevens uit te voeren
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
@@ -14,23 +14,23 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513489"
 ---
-# <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB-wijzigingsfeed gebruiken om realtime gegevensanalyses te visualiseren
+# <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
 
-De Azure Cosmos DB-wijzigingsfeed is een mechanisme om een continue en incrementele feed van records uit een Azure Cosmos-container te krijgen terwijl deze records worden gemaakt of gewijzigd. Feedsupport wijzigen werkt door naar de container te luisteren voor eventuele wijzigingen. Als output verschijnt er vervolgens een gesorteerde lijst met gewijzigde documenten op volgorde van wijziging. Zie Werken met het [feedartikel wijzigen](change-feed.md) voor meer informatie over het wijzigen van de feed. 
+De Azure Cosmos DB wijzigings feed is een mechanisme voor het verkrijgen van een doorlopende en incrementele feed van records uit een Azure Cosmos-container wanneer die records worden gemaakt of gewijzigd. De ondersteuning voor feeds kan worden gewijzigd door naar de container te Luis teren. Als output verschijnt er vervolgens een gesorteerde lijst met gewijzigde documenten op volgorde van wijziging. Zie [werken met het artikel Change feed](change-feed.md) voor meer informatie over wijzigings invoer. 
 
-In dit artikel wordt beschreven hoe de change feed door een e-commercebedrijf kan worden gebruikt om gebruikerspatronen te begrijpen, real-time gegevensanalyse en visualisatie uit te voeren. U analyseert gebeurtenissen zoals een gebruiker die een item bekijkt, een item toevoegt aan zijn winkelwagentje of een item koopt. Wanneer een van deze gebeurtenissen optreedt, wordt een nieuwe record gemaakt en wordt de feedlogboeken die record record wijzigen. Wijzig vervolgens de feed en activeert een reeks stappen die resulteren in visualisatie van statistieken die de bedrijfsprestaties en -activiteit analyseren. Voorbeeldstatistieken die u visualiseren, zijn inkomsten, unieke sitebezoekers, populairste items en de gemiddelde prijs van de objecten die worden bekeken versus toegevoegd aan een winkelwagen versus gekocht. Deze voorbeeldstatistieken kunnen een e-commercebedrijf helpen zijn sitepopulariteit te evalueren, zijn advertentie- en prijsstrategieën te ontwikkelen en beslissingen te nemen over welke voorraad u moet investeren.
+In dit artikel wordt beschreven hoe wijzigings invoer door een e-commerce bedrijf kan worden gebruikt om gebruikers patronen te begrijpen, analyse en visualisatie in realtime-gegevens uit te voeren. U gaat gebeurtenissen analyseren zoals een gebruiker die een item bekijkt, een item toevoegt aan hun winkel wagen of een item koopt. Wanneer een van deze gebeurtenissen zich voordoet, wordt er een nieuwe record gemaakt en wordt die record door de wijzigings feed vastgelegd. Wijzigings feed vervolgens wordt een reeks stappen geactiveerd die resulteren in een visualisatie van metrische gegevens die de prestaties en activiteit van het bedrijf analyseren. Voor beelden van metrische gegevens die u kunt visualiseren, zijn inkomsten, unieke site bezoekers, populairste items en de gemiddelde prijs van de items die worden weer gegeven versus die zijn toegevoegd aan een winkel wagen en de aankoop. Deze metrische voorbeeld gegevens kunnen bijdragen aan een e-commerce bedrijf om de populariteit van de site te evalueren, hun reclame-en prijs strategieën te ontwikkelen en beslissingen te nemen over de inventaris om in te investeren in.
 
-Zie de volgende video als u een video over de oplossing wilt bekijken voordat u aan de slag gaat:
+Bekijk de volgende video voor meer informatie over het bekijken van een video over de oplossing voordat u aan de slag gaat:
 
 > [!VIDEO https://www.youtube.com/embed/AYOiMkvxlzo]
 >
 
 ## <a name="solution-components"></a>Oplossingsonderdelen
-Het volgende diagram geeft de gegevensstroom en componenten die bij de oplossing betrokken zijn, weer:
+Het volgende diagram geeft de gegevens stroom en onderdelen die bij de oplossing horen:
 
-![Projectvisueel](./media/changefeed-ecommerce-solution/project-visual.png)
+![Project-visueel element](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Datageneratie:** Gegevenssimulator wordt gebruikt om retailgegevens te genereren die gebeurtenissen vertegenwoordigen, zoals een gebruiker die een item bekijkt, een item aan zijn winkelwagentje toevoegt en een item koopt. U grote set voorbeeldgegevens genereren met behulp van de gegevensgenerator. De gegenereerde voorbeeldgegevens bevatten documenten in de volgende indeling:
+1. **Gegevens genereren:** Data Simulator wordt gebruikt voor het genereren van Retail gegevens die gebeurtenissen vertegenwoordigen, zoals een gebruiker die een item bekijkt, een item toevoegt aan hun mandje en een item koopt. U kunt een grote set voorbeeld gegevens genereren met behulp van de gegevens generator. De gegenereerde voorbeeld gegevens bevatten documenten met de volgende indeling:
    
    ```json
    {      
@@ -41,189 +41,189 @@ Het volgende diagram geeft de gegevensstroom en componenten die bij de oplossing
    }
    ```
 
-2. **Kosmos DB:** De gegenereerde gegevens worden opgeslagen in een Azure Cosmos-container.  
+2. **Cosmos DB:** De gegenereerde gegevens worden opgeslagen in een Azure Cosmos-container.  
 
-3. **Feed wijzigen:** In de wijzigingsfeed wordt geluisterd naar wijzigingen in de Azure Cosmos-container. Elke keer dat een nieuw document aan de verzameling wordt toegevoegd (dat wil zeggen wanneer een gebeurtenis plaatsvindt, zoals een gebruiker die een item bekijkt, een item toevoegt aan zijn winkelwagentje of een item koopt), activeert de wijzigingsfeed een [Azure-functie](../azure-functions/functions-overview.md).  
+3. **Wijzigings feed:** De wijzigings feed wordt geluisterd naar wijzigingen in de Azure Cosmos-container. Telkens wanneer er een nieuw document wordt toegevoegd aan de verzameling (dat wil zeggen wanneer een gebeurtenis zich voordoet als een gebruiker die een item bekijkt, een item toevoegt aan het wagentje of een item aanschaft), wordt een [Azure-functie](../azure-functions/functions-overview.md)geactiveerd door de wijzigings feed.  
 
-4. **Azure, functie:** De Azure-functie verwerkt de nieuwe gegevens en stuurt deze naar een [Azure Event Hub.](../event-hubs/event-hubs-about.md)  
+4. **Azure-functie:** Met de functie Azure worden de nieuwe gegevens verwerkt en verzonden naar een [Azure Event hub](../event-hubs/event-hubs-about.md).  
 
-5. **Gebeurtenishub:** De Azure Event Hub slaat deze gebeurtenissen op en stuurt ze naar [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) om verdere analyses uit te voeren.  
+5. **Event hub:** Deze gebeurtenissen worden opgeslagen in de Azure Event hub en verzonden naar [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) om verdere analyses uit te voeren.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definieert query's om de gebeurtenissen te verwerken en realtime gegevensanalyse uit te voeren. Deze gegevens worden vervolgens verzonden naar [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure stream Analytics:** Azure Stream Analytics definieert query's om de gebeurtenissen te verwerken en realtime gegevens analyse uit te voeren. Deze gegevens worden vervolgens naar [micro soft power bi](https://docs.microsoft.com/power-bi/desktop-what-is-desktop)verzonden.  
 
-7. **Power BI:** Power BI wordt gebruikt om de gegevens te visualiseren die door Azure Stream Analytics worden verzonden. U een dashboard maken om te zien hoe de statistieken in realtime veranderen.  
+7. **Power BI:** Power BI wordt gebruikt voor het visualiseren van de gegevens die worden verzonden door Azure Stream Analytics. U kunt een dash board maken om te zien hoe de metrische gegevens in realtime worden gewijzigd.  
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Microsoft .NET Framework 4.7.1 of hoger
 
-* Microsoft .NET Core 2.1 (of hoger)
+* Microsoft .NET Core 2,1 (of hoger)
 
-* Visual Studio met universal Windows Platform development, .NET desktop development en ASP.NET en web development workloads
+* Visual Studio met Universeel Windows-platform ontwikkeling, .NET Desktop Development en ASP.NET-en Web Development-workloads
 
-* Microsoft Azure-abonnement
+* Microsoft Azure abonnement
 
-* Microsoft Power BI-account
+* Micro soft Power BI-account
 
-* Download het [Azure Cosmos DB change feed lab](https://github.com/Azure-Samples/azure-cosmos-db-change-feed-dotnet-retail-sample) van GitHub. 
+* Down load het [Azure Cosmos DB Change feed Lab](https://github.com/Azure-Samples/azure-cosmos-db-change-feed-dotnet-retail-sample) van github. 
 
 ## <a name="create-azure-resources"></a>Azure-resources maken 
 
-Maak de Azure-resources - Azure Cosmos DB, Storage-account, Event Hub, Stream Analytics die vereist zijn door de oplossing. U implementeert deze resources via een Azure Resource Manager-sjabloon. Gebruik de volgende stappen om deze resources te implementeren: 
+Maak de Azure-resources-Azure Cosmos DB,-opslag account, Event hub Stream Analytics vereist door de oplossing. U kunt deze resources implementeren via een Azure Resource Manager sjabloon. Gebruik de volgende stappen om deze bronnen te implementeren: 
 
-1. Stel het uitvoeringsbeleid van Windows PowerShell in op **Onbeperkt**. Open **hiervoor Windows PowerShell als beheerder** en voer de volgende opdrachten uit:
+1. Stel het Windows Power shell-uitvoerings beleid in op **onbeperkt**. Als u dit wilt doen, opent u **Windows Power shell als beheerder** en voert u de volgende opdrachten uit:
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Vanuit de GitHub-opslagplaats die u in de vorige stap hebt gedownload, navigeert u naar de map **Azure Resource Manager** en opent u het bestand **parameters.json.**  
+2. Ga vanuit de GitHub-opslag plaats die u in de vorige stap hebt gedownload naar de map **Azure Resource Manager** en open het bestand met de naam **para meters. json** .  
 
-3. Geef waarden op voor cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, parameters zoals aangegeven in het bestand **parameters.json.** U moet later de namen gebruiken die u aan elk van uw bronnen geeft.  
+3. Geef waarden op voor de cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, para meters zoals aangegeven in het bestand **para meters. json** . U moet de namen die u aan uw resources verstrekt, later gebruiken.  
 
-4. Navigeer vanuit **Windows PowerShell**naar de map **Azure Resource Manager** en voer de volgende opdracht uit:
+4. Ga vanuit **Windows Power shell**naar de map **Azure Resource Manager** en voer de volgende opdracht uit:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Voer desgevraagd uw Azure **Subscription ID**in, **wijzigt feedlab** voor de naam van de brongroep en **voert 1** uit voor de implementatienaam. Zodra de resources beginnen te implementeren, kan het tot 10 minuten duren voordat de resources zijn voltooid.
+5. Voer desgevraagd uw Azure **-abonnements-id**in, **changefeedlab** voor de naam van de resource groep en **RUN1** voor de implementatie naam. Zodra de resources zijn geïmplementeerd, kan het tot tien minuten duren voordat deze is voltooid.
 
-## <a name="create-a-database-and-the-collection"></a>Een database en de verzameling maken
+## <a name="create-a-database-and-the-collection"></a>Een Data Base en de verzameling maken
 
-U maakt nu een verzameling voor het houden van e-commerce site-evenementen. Wanneer een gebruiker een item bekijkt, een item toevoegt aan zijn winkelwagentje of een item koopt, ontvangt de verzameling een record met de actie ('bekeken', 'toegevoegd' of 'gekocht'), de naam van het betrokken object, de prijs van het betrokken object en het ID-nummer van de gebruikerswinkelwagen Betrokken.
+U gaat nu een verzameling maken voor het opslaan van e-commerce-site gebeurtenissen. Wanneer een gebruiker een item bekijkt, een item toevoegt aan hun winkel wagen of een item koopt, ontvangt de verzameling een record met de actie (' bekeken ', ' toegevoegd ' of ' aangeschaft '), de naam van het betrokken item, de prijs van het betrokken item en het ID-nummer van de betrokken gebruikers wagen.
 
-1. Ga naar [Azure portal](https://portal.azure.com/) en zoek het Azure **Cosmos DB-account** dat is gemaakt door de sjabloonimplementatie.  
+1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek het **Azure Cosmos DB account** dat is gemaakt door de sjabloon implementatie.  
 
-2. Selecteer in het deelvenster **Gegevensverkenner** de optie **Nieuwe verzameling** en vul het formulier in met de volgende details:  
+2. Selecteer in het deel venster **Data Explorer** de optie **nieuwe verzameling** en vul het formulier in met de volgende details:  
 
-   * Selecteer voor het veld **Database-id** de optie **Nieuw maken**en voer vervolgens **changefeedlabdatabase**in . Laat het **doorvoervak voor de gegevensstroomvoorziening** niet ingeschakeld.  
-   * Voer voor het veld **Verzamelingen-id** **de verzameling changefeedlabin .**  
-   * Voer voor het veld **Partitiesleutel** **/Item**in . Dit is hoofdlettergevoelig, dus zorg ervoor dat u het correct invoert.  
-   * Voer voor het veld **Doorvoer** **10000**in .  
+   * Selecteer **nieuwe maken**in het veld **Data Base-id** en voer vervolgens **changefeedlabdatabase**in. Zorg ervoor dat het vakje **doorvoer database inrichten** niet is ingeschakeld.  
+   * Voer voor het veld **verzamelings** -id **changefeedlabcollection**in.  
+   * Voer **/item**in bij het veld **partitie sleutel** . Dit is hoofdletter gevoelig. Zorg er dus voor dat u deze correct invoert.  
+   * Voer **10000**in voor het veld **door Voer** .  
    * Selecteer de knop **OK**.  
 
-3. Maak vervolgens een andere verzameling met de naam **leases** voor wijzigingfeedverwerking. De leases collectie coördineert de verwerking van de wijziging feed over meerdere werknemers. Een aparte collectie wordt gebruikt om de leases op te slaan met één lease per partitie.  
+3. Maak vervolgens een andere verzameling met de naam **leases** voor wijziging van de feed. De leases-verzameling coördineert de verwerking van de wijzigings feed voor meerdere werk nemers. Er wordt een afzonderlijke verzameling gebruikt voor het opslaan van leases met één lease per partitie.  
 
-4. Ga terug naar het deelvenster **Gegevensverkenner** en selecteer **Nieuwe verzameling** en vul het formulier in met de volgende details:
+4. Ga terug naar het **Data Explorer** venster en selecteer **nieuwe verzameling** en vul het formulier in met de volgende details:
 
-   * Selecteer voor het veld **Database-id** de optie **Bestaand gebruiken**en voer vervolgens **changefeedlabdatabase in**.  
-   * Voer **huurovereenkomsten**in voor het veld **Ophalen van id.**  
-   * Selecteer **Vast**voor **opslagcapaciteit**.  
-   * Laat het veld **Doorvoer** instellen op de standaardwaarde.  
+   * Selecteer in het veld **Data Base-id** de optie **bestaande gebruiken**en voer vervolgens **changefeedlabdatabase**in.  
+   * Voer **leases**in bij het veld **verzamelings-id** .  
+   * Selecteer **vast**bij **opslag capaciteit**.  
+   * Zorg ervoor dat het veld **door Voer** is ingesteld op de standaard waarde.  
    * Selecteer de knop **OK**.
 
-## <a name="get-the-connection-string-and-keys"></a>De verbindingstekenreeks en toetsen ophalen
+## <a name="get-the-connection-string-and-keys"></a>De connection string en sleutels ophalen
 
-### <a name="get-the-azure-cosmos-db-connection-string"></a>De tekenreeks Azure Cosmos DB-verbinding
+### <a name="get-the-azure-cosmos-db-connection-string"></a>De Azure Cosmos DB ophalen connection string
 
-1. Ga naar [Azure portal](https://portal.azure.com/) en zoek het Azure **Cosmos DB-account** dat is gemaakt door de sjabloonimplementatie.  
+1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek het **Azure Cosmos DB account** dat is gemaakt door de sjabloon implementatie.  
 
-2. Navigeer naar het deelvenster **Sleutels,** kopieer de tekenreeks primaire verbinding en kopieer deze naar een notitieblok of een ander document waar toe u in het hele lab toegang hebt. U moet het **Cosmos DB Connection String labelen.** U moet de tekenreeks later in uw code kopiëren, dus neem een notitie en onthoud waar u deze opslaat.
+2. Navigeer naar het deel venster **sleutels** , kopieer de primaire verbindings reeks en kopieer deze naar een Klad blok of een ander document waartoe u toegang hebt tot het hele Lab. U moet de label **Cosmos DB de verbindings reeks**. U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
 
-### <a name="get-the-storage-account-key-and-connection-string"></a>De opslagaccountsleutel en verbindingstekenreeks oppakken
+### <a name="get-the-storage-account-key-and-connection-string"></a>De sleutel voor het opslag account en het connection string ophalen
 
-Met Azure Storage-accounts kunnen gebruikers gegevens opslaan. In dit lab gebruikt u een opslagaccount om gegevens op te slaan die worden gebruikt door de Azure-functie. De Azure-functie wordt geactiveerd wanneer de verzameling wordt gewijzigd.
+Met Azure Storage accounts kunnen gebruikers gegevens opslaan. In dit Lab gebruikt u een opslag account om gegevens op te slaan die worden gebruikt door de Azure-functie. De functie Azure wordt geactiveerd wanneer een wijziging wordt aangebracht in de verzameling.
 
-1. Ga terug naar uw resourcegroep en open het opslagaccount dat u eerder hebt gemaakt  
+1. Ga terug naar de resource groep en open het opslag account dat u eerder hebt gemaakt  
 
-2. Selecteer **Toegangstoetsen** in het menu aan de linkerkant.  
+2. Selecteer **toegangs sleutels** in het menu aan de linkerkant.  
 
-3. Kopieer de waarden onder **toets 1** naar een notitieblok of een ander document waar toe u toegang hebt in het hele lab. U moet de **sleutel labelen** als **opslagsleutel** en de **verbindingstekenreeks** als **tekenreeks voor opslagverbinding**. U moet deze tekenreeksen later in uw code kopiëren, dus neem een notitie en onthoud waar u ze opslaat.  
+3. Kopieer de waarden onder **sleutel 1** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. Voorzie de **sleutel** als de **opslag sleutel** en de **verbindings reeks** als **verbindings reeks voor opslag**. U moet deze teken reeksen later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u ze opslaat.  
 
-### <a name="get-the-event-hub-namespace-connection-string"></a>De verbindingstekenreeks voor de naamruimte van de gebeurtenishub opgebruiken
+### <a name="get-the-event-hub-namespace-connection-string"></a>De naam ruimte van de Event Hub ophalen connection string
 
-Een Azure Event Hub ontvangt de gebeurtenisgegevens, slaat, verwerkt en stuurt de gegevens door. In dit lab ontvangt de Azure Event Hub een document telkens wanneer een nieuwe gebeurtenis plaatsvindt (d.w.z. een item wordt bekeken door een gebruiker, wordt toegevoegd aan het winkelwagentje van een gebruiker of is gekocht door een gebruiker) en stuurt dat document vervolgens door naar Azure Stream Analytics.
+Een Azure Event hub ontvangt de gegevens van de gebeurtenis, opslaat, verwerkt en stuurt deze door. In dit Lab ontvangt de Azure Event hub een document telkens wanneer er een nieuwe gebeurtenis plaatsvindt (dat wil zeggen dat een item wordt bekeken door een gebruiker, wordt toegevoegd aan de winkel wagen van een gebruiker of door een gebruiker wordt gekocht). vervolgens wordt het document doorgestuurd naar Azure Stream Analytics.
 
-1. Keer terug naar uw resourcegroep en open de **naamruimte van de gebeurtenishub** die u in het prelab hebt gemaakt en benoemd.  
+1. Ga terug naar de resource groep en open de **Event hub-naam ruimte** die u hebt gemaakt en benoemd in het prelab.  
 
-2. Selecteer **Beleid voor gedeelde toegang** in het menu aan de linkerkant.  
+2. Selecteer **beleid voor gedeelde toegang** in het menu aan de linkerkant.  
 
-3. selecteer **RootManageSharedAccessKey**. Kopieer de **primaire verbindingstoets** naar een notitieblok of een ander document waar toe u toegang hebt in het hele lab. U moet de verbindingstekenreeks **Gebeurtenishubnaamruimte** labelen. U moet de tekenreeks later in uw code kopiëren, dus neem een notitie en onthoud waar u deze opslaat.
+3. selecteer **RootManageSharedAccessKey**. Kopieer de **verbindings reeks-primaire sleutel** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. U moet de naam ruimte van de IT **Event Hub** Connection String labelen. U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
 
-## <a name="set-up-azure-function-to-read-the-change-feed"></a>Azure-functie instellen om de wijzigingsfeed te lezen
+## <a name="set-up-azure-function-to-read-the-change-feed"></a>Azure function instellen om de wijzigings feed te lezen
 
-Wanneer een nieuw document wordt gemaakt of een huidig document wordt gewijzigd in een Cosmos-container, wordt dat gewijzigde document automatisch toegevoegd aan de geschiedenis van verzamelingswijzigingen. U bouwt en voert nu een Azure-functie uit die de wijzigingsfeed verwerkt. Wanneer een document wordt gemaakt of gewijzigd in de verzameling die u hebt gemaakt, wordt de Azure-functie geactiveerd door de wijzigingsfeed. Vervolgens stuurt de Azure-functie het gewijzigde document naar de gebeurtenishub.
+Wanneer een nieuw document wordt gemaakt of een huidig document is gewijzigd in een Cosmos-container, voegt de wijzigings feed het gewijzigde document automatisch toe aan de geschiedenis van verzamelings wijzigingen. U gaat nu een Azure-functie bouwen en uitvoeren waarmee de wijzigings feed wordt verwerkt. Wanneer een document wordt gemaakt of gewijzigd in de verzameling die u hebt gemaakt, wordt de Azure-functie geactiveerd door de wijzigings feed. Vervolgens verzendt de Azure-functie het gewijzigde document naar de Event hub.
 
-1. Keer terug naar de opslagplaats die je op je apparaat hebt gekloond.  
+1. Ga terug naar de opslag plaats die u hebt gekloond op het apparaat.  
 
-2. Klik met de rechtermuisknop op het bestand met de naam **ChangeFeedLabSolution.sln** en selecteer **Openen met Visual Studio**.  
+2. Klik met de rechter muisknop op het bestand met de naam **ChangeFeedLabSolution. SLN** en selecteer **openen met Visual Studio**.  
 
-3. Navigeer naar **local.settings.json** in Visual Studio. Gebruik vervolgens de waarden die u eerder hebt geregistreerd om de spaties in te vullen.  
+3. Navigeer naar **Local. settings. json** in Visual Studio. Gebruik vervolgens de waarden die u eerder hebt vastgelegd om de lege velden in te vullen.  
 
-4. Navigeer naar **ChangeFeedProcessor.cs**. Voer in de parameters voor de functie **Uitvoeren** de volgende acties uit:  
+4. Navigeer naar **ChangeFeedProcessor.cs**. Voer de volgende acties uit in de para meters voor de functie **Run** :  
 
-   * Vervang de tekst **UW COLLECTIENAAM HIER** door de naam van uw verzameling. Als u eerdere instructies hebt opgevolgd, wordt de naam van uw verzameling gewijzigdfeedlabcollectie.  
-   * Vervang hier de naam **YOUR LEASES COLLECTION** door de naam van uw leasecollectie. Als u eerdere instructies hebt opgevolgd, is de naam van uw leasecollectie **huurovereenkomsten.**  
-   * Controleer boven aan Visual Studio of het vak Project opstarten links van de groene pijl **ChangeFeedFunction**staat.  
+   * Vervang de tekst van **uw verzamelings naam hier** door de naam van uw verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw verzameling changefeedlabcollection.  
+   * Vervang de naam van **uw leases-verzameling** door de naam van uw leases-verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw leases-verzameling **leases**.  
+   * Zorg ervoor dat boven aan Visual Studio het vak Startup-project aan de linkerkant van de groene pijl de tekst **ChangeFeedFunction**.  
    * Selecteer **Start** boven aan de pagina om het programma uit te voeren  
-   * U bevestigen dat de functie wordt uitgevoerd wanneer de console-app 'Jobhost is gestart' zegt.
+   * U kunt controleren of de functie wordt uitgevoerd wanneer de console-App "job host is gestart" aangeeft.
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Gegevens invoegen in Azure Cosmos DB 
 
-Als u wilt zien hoe de feed voor wijzigingen nieuwe acties op een e-commercesite verwerkt, moet u gegevens simuleren die gebruikers vertegenwoordigen die items uit de productcatalogus bekijken, deze items toevoegen aan hun winkelwagentjes en de artikelen in hun winkelwagentjes kopen. Deze gegevens zijn willekeurig en met het oog op het repliceren van welke gegevens op een e-commercesite eruit zouden zien.
+Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site worden verwerkt, moet u gegevens simuleren die gebruikers weer geven van items uit de product catalogus, het toevoegen van die items aan hun winkel wagen en het kopen van de items in hun wagen. Deze gegevens zijn wille keurig en voor het repliceren van de gegevens op een site van Commerce.
 
-1. Navigeer terug naar de opslagplaats in Verkenner en klik met de rechtermuisknop op **ChangeFeedFunction.sln** om deze opnieuw te openen in een nieuw Visual Studio-venster.  
+1. Ga terug naar de opslag plaats in Verkenner en klik met de rechter muisknop op **ChangeFeedFunction. SLN** om het opnieuw te openen in een nieuw Visual Studio-venster.  
 
-2. Navigeer naar het **bestand App.config.** Voeg `<appSettings>` binnen het blok het eindpunt en de unieke **primaire sleutel** toe die van uw Azure Cosmos DB-account dat u eerder hebt opgehaald.  
+2. Navigeer naar het bestand **app. config** . Voeg binnen `<appSettings>` het blok het eind punt en de unieke **primaire sleutel** toe van uw Azure Cosmos DB account dat u eerder hebt opgehaald.  
 
-3. Voeg de **verzamelings-** en **databasenamen** toe. (Deze namen moeten **changefeedlabcollection** en **changefeedlabdatabase** zijn, tenzij u ervoor kiest om de jouwe anders een naam te geven.)
+3. Voeg de namen van de **verzameling** en de **Data Base** toe. (Deze namen moeten **changefeedlabcollection** en **changefeedlabdatabase** zijn, tenzij u een andere naam wilt opgeven.)
 
-   ![Verbindingstekenreeksen bijwerken](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   ![Verbindings reeksen bijwerken](./media/changefeed-ecommerce-solution/update-connection-string.png)
  
 4. Sla de wijzigingen op in alle bestanden die zijn bewerkt.  
 
-5. Zorg er boven aan Visual Studio voor dat het vak **Opstarten project** links van de groene pijl **DataGenerator**zegt. Selecteer vervolgens **Start** boven aan de pagina om het programma uit te voeren.  
+5. Zorg ervoor dat boven aan Visual Studio het vak Startup- **project** aan de linkerkant van de groene pijl de tekst **DataGenerator**. Selecteer vervolgens **beginnen** bovenaan de pagina om het programma uit te voeren.  
  
-6. Wacht tot het programma wordt uitgevoerd. De sterren betekenen dat de gegevens binnenkomen! Houd het programma draaiende - het is belangrijk dat veel gegevens worden verzameld.  
+6. Wacht totdat het programma is uitgevoerd. Het sterretje betekent dat de gegevens beschikbaar zijn. Laat het programma actief. het is belang rijk dat er veel gegevens worden verzameld.  
 
-7. Als u naar [azure-portal](https://portal.azure.com/) navigeert en vervolgens naar het Cosmos DB-account binnen uw brongroep en vervolgens naar **Gegevensverkenner,** ziet u de gerandomiseerde gegevens die zijn geïmporteerd in uw **changefeedlabcollectie.**
+7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer**, ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
  
-   ![Gegevens gegenereerd in portal](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   ![Gegevens die in de portal worden gegenereerd](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
-## <a name="set-up-a-stream-analytics-job"></a>Een streamanalysetaak instellen
+## <a name="set-up-a-stream-analytics-job"></a>Een stream Analytics-taak instellen
 
-Azure Stream Analytics is een volledig beheerde cloudservice voor realtime verwerking van streaminggegevens. In dit lab gebruikt u streamanalyses om nieuwe gebeurtenissen vanuit de Gebeurtenishub te verwerken (d.w.z. wanneer een item wordt bekeken, toegevoegd aan een winkelwagentje of gekocht), deze gebeurtenissen op te nemen in realtime gegevensanalyse en deze naar Power BI te verzenden voor visualisatie.
+Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verwerking van streaming-gegevens. In dit Lab gebruikt u Stream Analytics om nieuwe gebeurtenissen van de Event hub te verwerken (dat wil zeggen wanneer een item wordt weer gegeven, wordt toegevoegd aan een winkel wagen of is gekocht), neemt u deze gebeurtenissen op in realtime gegevens analyse en verzendt u deze naar Power BI voor visualisatie.
 
-1. Navigeer vanuit de [Azure-portal](https://portal.azure.com/)naar uw brongroep en **streamtaak1** (de streamanalysetaak die u in het prelab hebt gemaakt).  
+1. Navigeer vanuit het [Azure Portal](https://portal.azure.com/)naar de resource groep en vervolgens naar **streamjob1** (de stream Analytics-taak die u hebt gemaakt in de prelab).  
 
-2. Selecteer **Invoer** zoals hieronder gedemonstreerd.  
+2. Selecteer de **invoer** zoals hieronder wordt geïllustreerd.  
 
    ![Invoer maken](./media/changefeed-ecommerce-solution/create-input.png)
 
-3. Selecteer **+ Streaminvoer toevoegen**. Selecteer **vervolgens Gebeurtenishub** in het vervolgkeuzemenu.  
+3. Selecteer **+ stroom invoer toevoegen**. Selecteer vervolgens **Event hub** in de vervolg keuzelijst.  
 
-4. Vul het nieuwe invoerformulier in met de volgende details:
+4. Vul het nieuwe invoer formulier in met de volgende details:
 
-   * Voer in het veld **Invoeralias** **invoer**in .  
-   * Selecteer de optie voor **Gebeurtenishub selecteren in uw abonnementen**.  
-   * Stel het veld **Abonnement** in op uw abonnement.  
-   * Voer in het **veld Naamruimte voor gebeurtenishub** de naam in van de naamruimte van de gebeurtenishub die u tijdens het voorvoeglab hebt gemaakt.  
-   * Selecteer in het **veld Naam van gebeurtenishub** de optie Bestaand **gebruiken** en kies **gebeurtenishub1** in het vervolgkeuzemenu.  
-   * Laat **het veld Beleidsnaam van gebeurtenishub** instellen op de standaardwaarde.  
-   * Laat **de serialisatie-indeling van gebeurtenissen** als **JSON .**  
-   * Laat **het veld Codering** in- en weer staan ingesteld op **UTF-8**.  
-   * Het veld **compressietype gebeurtenis** laten ingesteld op **Geen**.  
+   * Voer in het veld **invoer** alias de **invoer**in.  
+   * Selecteer de optie **Event hub selecteren bij uw abonnementen**.  
+   * Stel het veld **abonnement** in op uw abonnement.  
+   * Voer in het veld **naam ruimte van de Event hub** de naam in van de Event hub-naam ruimte die u hebt gemaakt tijdens de prelab.  
+   * Selecteer in het veld naam van de **Event hub** de optie voor het **gebruik van bestaande** en kies **gebeurtenis-hub1** in de vervolg keuzelijst.  
+   * Zorg ervoor dat het veld naam van **beleids regel voor Event hub** is ingesteld op de standaard waarde.  
+   * De **serialisatie-indeling** van de gebeurtenis verlaten als **JSON**.  
+   * Zorg ervoor dat het **veld encoding** is ingesteld op **UTF-8**.  
+   * Vul het veld **compressie type voor gebeurtenis** in op **geen**.  
    * Selecteer de knop **Opslaan**.
 
-5. Navigeer terug naar de vacaturepagina voor streamanalyse en selecteer **Uitvoer.**  
+5. Ga terug naar de pagina stream Analytics-taak en selecteer **uitvoer**.  
 
-6. Selecteer **+ Toevoegen**. Selecteer **vervolgens Power BI** in het vervolgkeuzemenu.  
+6. Selecteer **+ Toevoegen**. Selecteer vervolgens **Power bi** in de vervolg keuzelijst.  
 
-7. Als u een nieuwe Power BI-uitvoer wilt maken om de gemiddelde prijs te visualiseren, voert u de volgende acties uit:
+7. Voer de volgende acties uit om een nieuwe Power BI uitvoer te maken om de gemiddelde prijs te visualiseren:
 
-   * Voer in het veld **Uitvoeralias** **de gemiddelde Prijsuitvoer**invoeren .  
-   * Laat het veld **Groepswerkruimte** instellen op **Verbinding autoriseren voor het laden van werkruimten**.  
-   * Voer in het veld **Naam van gegevensset** **de gemiddelde prijs**in .  
-   * Voer in het veld **Tabelnaam** **de gemiddelde prijs in**.  
-   * Selecteer de knop **Autoriseren** en volg de instructies om de verbinding met Power BI te autoriseren.  
+   * Voer in het veld **uitvoer alias** **averagePriceOutput**in.  
+   * Zorg ervoor dat het veld **groeps werkruimte** is ingesteld om **verbinding te autoriseren om werk ruimten te laden**.  
+   * Typ **averagePrice**in het veld **naam van gegevensset** .  
+   * Voer in het veld **tabel naam** **averagePrice**in.  
+   * Selecteer de knop **autoriseren** en volg de instructies om de verbinding met Power bi te autoriseren.  
    * Selecteer de knop **Opslaan**.  
 
-8. Ga vervolgens terug naar **streamjob1** en selecteer **Query bewerken**.
+8. Ga vervolgens terug naar **streamjob1** en selecteer **query bewerken**.
 
    ![Query bewerken](./media/changefeed-ecommerce-solution/edit-query.png)
  
-9. Plak de volgende query in het queryvenster. De **query GEMIDDELDE PRIJS** berekent de gemiddelde prijs van alle artikelen die door gebruikers worden bekeken, de gemiddelde prijs van alle artikelen die aan winkelwagentjes van gebruikers worden toegevoegd en de gemiddelde prijs van alle artikelen die door gebruikers zijn gekocht. Deze statistiek kan e-commercebedrijven helpen beslissen welke prijzen artikelen moeten verkopen en in welke voorraad ze moeten investeren. Als de gemiddelde prijs van bekeken artikelen bijvoorbeeld veel hoger is dan de gemiddelde prijs van gekochte artikelen, kan een bedrijf ervoor kiezen om minder dure artikelen aan zijn voorraad toe te voegen.
+9. Plak de volgende query in het query venster. De **gemiddelde prijs** query berekent de gemiddelde prijs van alle items die worden weer gegeven door gebruikers, de gemiddelde prijs van alle items die worden toegevoegd aan de manden van gebruikers en de gemiddelde prijs van alle items die door gebruikers worden gekocht. Met deze metriek kunnen e-commerce-bedrijven helpen bij het bepalen van de prijzen voor het verkopen van artikelen op en de inventarisatie in. Als de gemiddelde prijs van items die worden weer gegeven, bijvoorbeeld veel hoger is dan de gemiddelde prijs van de gekochte artikelen, kan een bedrijf ervoor kiezen minder dure artikelen toe te voegen aan de inventaris.
 
    ```sql
    /*AVERAGE PRICE*/      
@@ -232,33 +232,33 @@ Azure Stream Analytics is een volledig beheerde cloudservice voor realtime verwe
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Selecteer **vervolgens Opslaan** in de linkerbovenhoek.  
+10. Selecteer vervolgens **Opslaan** in de linkerbovenhoek.  
 
-11. Ga nu terug naar **streamjob1** en selecteer de knop **Start** boven aan de pagina. Azure Stream Analytics kan een paar minuten duren om op te starten, maar uiteindelijk ziet u het veranderen van 'Starten' naar 'Uitvoeren'.
+11. Ga nu terug naar **streamjob1** en selecteer de knop **Start** boven aan de pagina. Het kan een paar minuten duren voordat Azure Stream Analytics worden opgestart, maar u ziet uiteindelijk dat de wijziging wordt doorgevoerd van ' starten ' in ' wordt uitgevoerd '.
 
 ## <a name="connect-to-power-bi"></a>Verbinding maken met Power BI
 
-Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kunt analyseren en inzichten kunt delen. Het is een geweldig voorbeeld van hoe je de geanalyseerde gegevens strategisch visualiseren.
+Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kunt analyseren en inzichten kunt delen. Het is een goed voor beeld van hoe u de geanalyseerde gegevens strategisch kunt visualiseren.
 
-1. Meld u aan bij Power BI en navigeer naar **Mijn werkruimte** door het menu aan de linkerkant van de pagina te openen.  
+1. Meld u aan bij Power BI en navigeer naar **mijn werk ruimte** door het menu aan de linkerkant van de pagina te openen.  
 
-2. Selecteer **+ Maak** in de rechterbovenhoek en selecteer **Dashboard** om een dashboard te maken.  
+2. Selecteer **+ maken** in de rechter bovenhoek en selecteer vervolgens **dash board** om een dash board te maken.  
 
-3. Selecteer **+ Voeg tegel toe** in de rechterbovenhoek.  
+3. Selecteer **+ tegel toevoegen** in de rechter bovenhoek.  
 
-4. Selecteer **Aangepaste streaminggegevens**en selecteer vervolgens de knop **Volgende.**  
+4. Selecteer **aangepaste streaminggegevens**en selecteer vervolgens de knop **volgende** .  
  
-5. Selecteer **gemiddeldePrijs** in **uw gegevenssets**en selecteer **Volgende**.  
+5. Selecteer **averagePrice** in **de gegevens sets**en selecteer vervolgens **volgende**.  
 
-6. Kies in het veld **Visualisatietype** de optie **Geclusterd staafdiagram** in het vervolgkeuzemenu. Voeg **onder As**actie toe. Sla **Legenda** over zonder iets toe te voegen. Voeg vervolgens onder de volgende sectie **waarde**toe, **voeg avg**toe . Selecteer **Volgende,** plaats vervolgens het diagram en selecteer **Toepassen**. U ziet een nieuwe grafiek op uw dashboard!  
+6. Kies in het veld **type visualisatie** de optie **gegroepeerd staaf diagram** in de vervolg keuzelijst. Voeg onder **as**actie toe. **Legenda** overs laan zonder iets toe te voegen. Voeg vervolgens in de volgende sectie de naam **Value**toe: **Gem**. Selecteer **volgende**, geef een titel op voor de grafiek en selecteer **Toep assen**. Er wordt nu een nieuwe grafiek op het dash board weer geven.  
 
-7. Als u nu meer statistieken wilt visualiseren, u teruggaan naar **stream1** en nog drie uitvoermaken met de volgende velden.
+7. Als u nu meer metrische gegevens wilt visualiseren, kunt u teruggaan naar **streamjob1** en drie meer uitvoer maken met de volgende velden.
 
-   a. **Uitvoeralias:** inkomendeRevenueOutput, naam van gegevensset: inkomende inkomsten, tabelnaam: binnenkomende inkomsten  
-   b. **Uitvoeralias:** top5Output, naam van gegevensset: top5, tabelnaam: top5  
-   c. **Uitvoeralias:** unieke VisitorCountOutput, naam van dataset: uniekBezoekersaantal, tabelnaam: uniekBezoekersaantal
+   a. **Uitvoer alias:** incomingRevenueOutput, naam gegevensset: IncomingRevenue, tabel naam: incomingRevenue  
+   b. **Uitvoer alias:** top5Output, naam gegevensset: Top5, tabel naam: top5  
+   c. **Uitvoer alias:** uniqueVisitorCountOutput, naam gegevensset: UniqueVisitorCount, tabel naam: uniqueVisitorCount
 
-   Selecteer vervolgens **Query bewerken** en plak de volgende query's **boven** de query die u al hebt geschreven.
+   Selecteer vervolgens **query bewerken** en plak de volgende query's die u **hierboven** hebt geschreven.
 
    ```sql
     /*TOP 5*/
@@ -300,52 +300,52 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
     GROUP BY TumblingWindow(second, 5)
    ```
    
-   De TOP 5-query berekent de top 5-items, gerangschikt op het aantal keren dat ze zijn gekocht. Deze statistiek kan e-commercebedrijven helpen evalueren welke artikelen het populairst zijn en de advertentie-, prijs- en voorraadbeslissingen van het bedrijf kunnen beïnvloeden.
+   De TOP 5 query berekent de bovenste 5 items, gerangschikt op het aantal keren dat ze zijn gekocht. Deze metrische gegevens kunnen e-commerce bedrijven helpen om te beoordelen welke items het meest populair zijn en kunnen van invloed zijn op de reclame-, prijs-en voorraad beslissingen van het bedrijf.
 
-   De opbrengstquery berekent de opbrengst door de prijzen van alle gekochte artikelen per minuut op te tellen. Deze statistiek kan e-commercebedrijven helpen de financiële prestaties te evalueren en ook te begrijpen op welke momenten van de dag bijdragen aan de meeste inkomsten. Dit kan van invloed zijn op de algemene bedrijfsstrategie, met name marketing.
+   De omzet query berekent de omzet door de prijzen bij elkaar op te tellen van alle items die elke minuut zijn gekocht. Deze metrische gegevens kunnen e-commerce bedrijven helpen om financiële prestaties te beoordelen en ook te begrijpen welke tijden van de dag bijdragen aan de meeste omzet. Dit kan invloed hebben op de algehele bedrijfs strategie, in het bijzonder in de handel.
 
-   De unieke bezoekersquery berekent hoeveel unieke bezoekers er elke 5 seconden op de site zijn door unieke winkel-ID's te detecteren. Deze statistiek kan e-commercebedrijven helpen hun siteactiviteit te evalueren en te strategiseren hoe ze meer klanten kunnen werven.
+   De unieke bezoekers query berekent hoeveel unieke bezoekers elke vijf seconden op de site zijn door de unieke ID van de winkel wagen te detecteren. Met deze metrische gegevens kunnen e-commerce bedrijven hun site activiteiten evalueren en bij hoe meer klanten kunnen worden aangeschaft.
 
-8. U nu ook tegels voor deze gegevenssets toevoegen.
+8. U kunt nu ook tegels voor deze gegevens sets toevoegen.
 
-   * Voor Top 5 is het zinvol om een geclusterd kolomdiagram te maken met de items als as en de telling als waarde.  
-   * Voor inkomsten zou het zinvol zijn om een lijndiagram te maken met de tijd als de as en de som van de prijzen als de waarde. Het tijdvenster om weer te geven moet zo groot mogelijk zijn om zoveel mogelijk informatie te kunnen leveren.  
-   * Voor unieke bezoekers, zou het zinvol zijn om een kaart visualisatie te doen met het aantal unieke bezoekers als de waarde.
+   * Voor de top 5 zou het zinvol zijn om een gegroepeerd kolom diagram te maken met de items als de as en het aantal als de waarde.  
+   * Voor omzet zou het zinvol zijn om een lijn diagram te maken met tijd als de as en de som van de prijzen als waarde. Het tijd venster dat moet worden weer gegeven, is het grootst mogelijk om zoveel mogelijk informatie te leveren.  
+   * Voor unieke bezoekers zou het zinvol zijn om een kaart visualisatie te maken met het aantal unieke bezoekers als waarde.
 
-   Zo ziet een voorbeelddashboard er met deze grafieken uit:
+   Zo ziet een voorbeeld dashboard eruit met deze grafieken:
 
    ![visualisaties](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: visualiseren met een e-commercesite
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: visualiseren met een E-commerce-site
 
-U zult nu observeren hoe u uw nieuwe data-analyse tool gebruiken om verbinding te maken met een echte e-commerce site. Gebruik een Azure Cosmos-database om de lijst met productcategorieën (dames, heren, Unisex), de productcatalogus en een lijst met de populairste items op te slaan om de e-commercesite te bouwen.
+U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken om verbinding te maken met een echte e-commerce-site. Als u de e-commerce-site wilt maken, gebruikt u een Azure Cosmos-data base om de lijst met product categorieën (vrouwen, heren, unisex), de product catalogus en een lijst met veelgebruikte items op te slaan.
 
-1. Navigeer terug naar de [Azure-portal](https://portal.azure.com/)en vervolgens naar uw **Cosmos DB-account**en vervolgens naar **Data Explorer.**  
+1. Ga terug naar de [Azure Portal](https://portal.azure.com/), vervolgens naar uw **Cosmos DB account**en vervolgens naar **Data Explorer**.  
 
-   Voeg twee verzamelingen toe onder **changefeedlabdatabase-producten** - **products** en **-categorieën** met vaste opslagcapaciteit.
+   Voeg twee verzamelingen onder **changefeedlabdatabase** - -**producten** en- **Categorieën** met vaste opslag capaciteit toe.
 
-   Voeg een andere verzameling toe onder **changefeedlabdatabase** met de naam **topItems** en **/Item** als partitiesleutel.
+   Voeg een andere verzameling toe onder **changefeedlabdatabase** met de naam **topItems** en **/item** als de partitie sleutel.
 
-2. Selecteer de **topItems-verzameling** en stel onder **Schalen en Instellingen** de tijd in op **Live** op **30 seconden,** zodat topItems elke 30 seconden wordt bijgewerkt.
+2. Selecteer de **topItems** -verzameling en stel onder **schaal en instellingen** de **time to Live** in op **30 seconden** zodat topItems elke 30 seconden wordt bijgewerkt.
 
    ![Time To Live](./media/changefeed-ecommerce-solution/time-to-live.png)
 
-3. Als u de **topItems-verzameling** wilt vullen met de meest gekochte items, navigeert u terug naar **streamjob1** en voegt u een nieuwe **uitvoer toe.** Selecteer **Cosmos DB**.
+3. Als u de **topItems** verzameling met de meest gekochte items wilt vullen, gaat u terug naar **streamjob1** en voegt u een nieuwe **uitvoer**toe. Selecteer **Cosmos DB**.
 
-4. Vul de vereiste velden in zoals hieronder afgebeeld.
+4. Vul de vereiste velden in zoals hieronder wordt beschreven.
 
-   ![Cosmos-uitvoer](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   ![Cosmos uitvoer](./media/changefeed-ecommerce-solution/cosmos-output.png)
  
-5. Als u de optionele TOP 5-query in het vorige deel van het lab hebt toegevoegd, gaat u verder met deel 5a. Zo niet, ga dan naar deel 5b.
+5. Als u de optionele TOP 5-query in het vorige deel van het Lab hebt toegevoegd, gaat u verder met deel 5a. Als dat niet het geval is, gaat u verder met stap 5.
 
-   5a. Selecteer in **streamjob1** **Query bewerken** en plak de volgende query in uw Azure Stream Analytics-queryeditor onder de TOP 5-query, maar boven de rest van de query's.
+   5a. Selecteer in **streamjob1**de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics onder de top 5 query, maar boven de overige query's.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. Selecteer in **streamjob1** **Query bewerken** en plak de volgende query in uw Azure Stream Analytics-queryeditor boven alle andere query's.
+   5b. Selecteer in **streamjob1**de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics boven alle andere query's.
 
    ```sql
    /*TOP 5*/
@@ -374,24 +374,24 @@ U zult nu observeren hoe u uw nieuwe data-analyse tool gebruiken om verbinding t
    FROM arrayselect
    ```
 
-6. Open **EcommerceWebApp.sln** en navigeer naar het **web.config-bestand** in de **Solution Explorer.**  
+6. Open **EcommerceWebApp. SLN** en navigeer naar het bestand **Web. config** in de **Solution Explorer**.  
 
-7. Voeg `<appSettings>` binnen het blok de **URI-** en **primaire sleutel toe** die u eerder hebt opgeslagen waar hier uw **URI** en uw primaire **sleutel staat.** Voeg vervolgens de naam en **verzamelnaam** van uw **database** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor kiest om de jouwe anders een naam te geven.)
+7. Voeg binnen `<appSettings>` het blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij **uw URI hier** en **uw primaire sleutel**worden vermeld. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)
 
-   Vul de naam van de collectie van uw **producten,** **de naam van de categorieën collectie**en de naam van de verzameling van **topitems** in zoals aangegeven. (Deze namen moeten **producten, categorieën en topItems zijn,** tenzij u ervoor kiest om de jouwe anders te noemen.)  
+   Vul de naam van uw **producten verzameling**, de **verzamelings naam**van de categorie en de **verzamelings naam van de bovenste items** in zoals aangegeven. (Deze namen moeten **producten, categorieën en topItems** zijn, tenzij u een andere naam hebt gekozen.)  
 
-8. Navigeer naar en open de **map Afhandeling** in **EcommerceWebApp.sln.** Open vervolgens het **bestand Web.config** in die map.  
+8. Navigeer naar en open de **map Checkout** in **EcommerceWebApp. SLN.** Open vervolgens het bestand **Web. config** in die map.  
 
-9. Voeg `<appSettings>` in het blok de **URI-** en **primaire sleutel toe** die u eerder hebt opgeslagen, waar aangegeven. Voeg vervolgens de naam en **verzamelnaam** van uw **database** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor kiest om de jouwe anders een naam te geven.)  
+9. Voeg binnen `<appSettings>` het blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij u hebt opgegeven. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)  
 
-10. Druk boven aan de pagina op **Start** om het programma uit te voeren.  
+10. Klik boven aan de pagina op **Start** om het programma uit te voeren.  
 
-11. Nu u spelen op de e-commerce site. Wanneer u een item bekijkt, een item aan uw winkelwagentje toevoegt, de hoeveelheid van een item in uw winkelwagentje wijzigt of een item koopt, worden deze gebeurtenissen doorgegeven via de Feed Cosmos DB change naar Event Hub, ASA en vervolgens Naar Power BI. We raden u aan DataGenerator te blijven uitvoeren om belangrijke webverkeersgegevens te genereren en een realistische set "Hot Products" op de e-commercesite te bieden.
+11. U kunt nu op de e-commerce-site spelen. Wanneer u een item bekijkt, een item toevoegt aan uw winkel wagen, de hoeveelheid van een item in uw winkel wagen wijzigt of een item aanschaft, worden deze gebeurtenissen door gegeven via de Cosmos DB Change feed to Event hub, ASA en vervolgens Power BI. We raden u aan om DataGenerator uit te voeren voor het genereren van belang rijke gegevens over webverkeer en biedt een realistische set ' Hot Products ' op de e-commerce-site.
 
-## <a name="delete-the-resources"></a>De bronnen verwijderen
+## <a name="delete-the-resources"></a>De resources verwijderen
 
-Als u de resources wilt verwijderen die u tijdens dit lab hebt gemaakt, navigeert u naar de brongroep op [azure-portal](https://portal.azure.com/)en selecteert u **Resourcegroep verwijderen** in het menu boven aan de pagina en volgt u de opgegeven instructies.
+Als u de resources wilt verwijderen die u hebt gemaakt tijdens dit lab, gaat u naar de resource groep op [Azure Portal](https://portal.azure.com/)en selecteert u **resource groep verwijderen** in het menu boven aan de pagina en volgt u de instructies die worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen 
   
-* Zie Werken met ondersteuning [voor change feed in Azure Cosmos DB](change-feed.md) voor meer informatie over wijzigingsfeed 
+* Zie [werken met ondersteuning voor wijzigings feeds in azure Cosmos DB](change-feed.md) voor meer informatie over wijzigings invoer. 

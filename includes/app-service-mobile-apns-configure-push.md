@@ -11,11 +11,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176533"
 ---
-1. Start **Keychain Access**op je Mac. Open **Mijn certificaten**op de linkernavigatiebalk onder **Rubriek**. Zoek het SSL-certificaat dat u in de vorige sectie hebt gedownload en maak de inhoud ervan bekend. Selecteer alleen het certificaat (selecteer niet de privésleutel). Exporteer [het](https://support.apple.com/kb/PH20122?locale=en_US)dan.
-2. Selecteer in de [Azure-portal](https://portal.azure.com/) **Bladeren door Alle** > **App-services**. Selecteer vervolgens de back-end van mobiele apps. 
-3. Selecteer **onder Instellingen**de optie App Service **Push**. Selecteer vervolgens de naam van de meldingshub. 
-4. Ga naar **het Uploadcertificaat voor PushNotification Services** > **van**Apple. Upload het .p12-bestand en selecteer de juiste **modus** (afhankelijk van of uw client SSL-certificaat van vroeger productie of sandbox is). Eventuele wijzigingen opslaan.
+1. Start de **sleutel keten toegang**op uw Mac. Open op de navigatie balk aan de **Category**linkerkant onder categorie **de map Mijn certificaten**. Zoek het SSL-certificaat dat u in de vorige sectie hebt gedownload en geef de inhoud ervan op. Selecteer alleen het certificaat (niet de persoonlijke sleutel selecteren). [Exporteer het](https://support.apple.com/kb/PH20122?locale=en_US)vervolgens.
+2. Selecteer in de [Azure Portal](https://portal.azure.com/) **Bladeren alle** > **app Services**. Selecteer vervolgens uw Mobile Apps back-end. 
+3. Selecteer **app Service push**onder **instellingen**. Selecteer vervolgens de naam van de notification hub. 
+4. Ga naar **Apple Push Notification Services** > **Upload certificaat**. Upload het. P12-bestand, waarbij u de juiste **modus** selecteert (afhankelijk van of uw client-SSL-certificaat van eerdere productie of sandbox is). Sla de wijzigingen op.
 
-Uw service is nu geconfigureerd om te werken met pushmeldingen op iOS.
+Uw service is nu geconfigureerd om te werken met push meldingen op iOS.
 
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png

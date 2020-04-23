@@ -15,15 +15,15 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176249"
 ---
-Nadat u de schijven hebt verzonden, gaat u terug naar de pagina **Importeren/exporteren** op de Azure-portal. 
+Nadat de schijven zijn verzonden, keert u terug naar de pagina **importeren/exporteren** op het Azure Portal. 
 
 > [!IMPORTANT] 
-> Als het trackingnummer niet binnen 2 weken na het maken van de taak wordt bijgewerkt, vervalt de taak. 
+> Als het tracking nummer niet binnen twee weken na het maken van de taak wordt bijgewerkt, verloopt de taak. 
 
-Voer de volgende stappen uit om het volgnummer bij te werken.
+Voer de volgende stappen uit om het tracking nummer bij te werken.
  
 1. Selecteer en klik op de taak.
-2. Klik **op Taakstatus bijwerken en informatie bijhouden zodra stations zijn verzonden**. 
-3. Schakel het selectievakje in tegen **Markeren als verzonden**.
-4. Geef het **carrier-** en **volgnummer op.**
-5. Volg de voortgang van de taak op het portaldashboard. Ga voor een beschrijving van elke taakstatus naar [Uw functiestatus weergeven.](../articles/storage/common/storage-import-export-view-drive-status.md)
+2. Klik op **taak status bijwerken en tracerings informatie zodra de stations zijn verzonden**. 
+3. Schakel het selectie vakje op de optie **markeren als verzonden in**.
+4. Geef de **vervoerder** en het **tracking nummer**op.
+5. Volg de voortgang van de taak op het dash board van de portal. Voor een beschrijving van elke taak status gaat u naar [de status van uw taak weer geven](../articles/storage/common/storage-import-export-view-drive-status.md).

@@ -1,6 +1,6 @@
 ---
-title: Azurite-emulator gebruiken voor lokale Azure Storage-ontwikkeling
-description: De Azurite open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure-opslagtoepassingen.
+title: Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage
+description: De Azurite open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Storage-toepassingen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 08/31/2019
@@ -14,99 +14,99 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76029924"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor lokale Azure Storage-ontwikkeling en -tests (voorbeeld)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor het ontwikkelen en testen van lokale Azure Storage (preview-versie)
 
-De Azurite versie 3.2 open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure blob en wachtrij opslag toepassingen. Als u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de cloud. De emulator biedt cross-platform ondersteuning op Windows, Linux en MacOS. Azurite v3 ondersteunt API's die zijn geïmplementeerd door de Azure Blob-service.
+De Azurite-versie 3,2 open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Blob-en Queue Storage-toepassingen. Wanneer u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de Cloud. De emulator biedt ondersteuning voor meerdere platforms voor Windows, Linux en MacOS. Azurite v3 ondersteunt Api's die door Azure Blob service worden geïmplementeerd.
 
-Azurite is het toekomstige opslagemulatorplatform. Azurite vervangt de [Azure Storage Emulator.](storage-use-emulator.md) Azurite blijft worden bijgewerkt om de nieuwste versies van Azure Storage API's te ondersteunen.
+Azurite is het toekomstige opslag emulator-platform. Azurite vervangt de [Azure Storage-emulator](storage-use-emulator.md). Azurite zal nog steeds worden bijgewerkt ter ondersteuning van de nieuwste versies van Azure Storage-Api's.
 
-Er zijn verschillende manieren om Azurite op uw lokale systeem te installeren en uit te voeren:
+Er zijn verschillende manieren om Azurite te installeren en uit te voeren op uw lokale systeem:
 
-  1. [De Azurite Visual Studio Code-extensie installeren en uitvoeren](#install-and-run-the-azurite-visual-studio-code-extension)
-  1. [Azurite installeren en uitvoeren met NPM](#install-and-run-azurite-by-using-npm)
-  1. [De Azurite Docker-afbeelding installeren en uitvoeren](#install-and-run-the-azurite-docker-image)
-  1. [Kloon, bouw en voer Azurite uit vanuit de GitHub-repository](#clone-build-and-run-azurite-from-the-github-repository)
+  1. [De Azurite Visual Studio code-extensie installeren en uitvoeren](#install-and-run-the-azurite-visual-studio-code-extension)
+  1. [Azurite installeren en uitvoeren met behulp van NPM](#install-and-run-azurite-by-using-npm)
+  1. [De Azurite docker-installatie kopie installeren en uitvoeren](#install-and-run-the-azurite-docker-image)
+  1. [Azurite klonen, bouwen en uitvoeren vanuit de GitHub-opslag plaats](#clone-build-and-run-azurite-from-the-github-repository)
 
-## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>De Azurite Visual Studio Code-extensie installeren en uitvoeren
+## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>De Azurite Visual Studio code-extensie installeren en uitvoeren
 
-Selecteer in Visual Studio Code het deelvenster **EXTENSIES** en zoek naar *Azurite* in de **OPTIE-EXTENSIES:MARKETPLACE**.
+Selecteer in Visual Studio code het deel venster **uitbrei dingen** en zoek naar *Azurite* in de **modules extensies: marketplace**.
 
-![Visual Studio Code-extensies marktplaats](media/storage-use-azurite/azurite-vs-code-extension.png)
+![Marketplace voor Visual Studio-code uitbreidingen](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-U ook naar [de VS-extensiemarkt voor code in](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) uw browser navigeren. Selecteer de knop **Installeren** om Visual Studio Code te openen en ga rechtstreeks naar de uitbreidingspagina van Azurite.
+U kunt ook naar de [VS code-uitbreidings markt](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) in uw browser navigeren. Selecteer de knop **installeren** om Visual Studio code te openen en direct naar de uitbrei ding pagina Azurite te gaan.
 
-U Azurite snel starten of sluiten door te klikken op **[Azurite Blob Service]** of **[Azurite Queue Service]** in de VS-codestatusbalk of door de volgende opdrachten uit te geven in het vs-code-opdrachtpalet. Druk op **F1** in VS-code om het opdrachtpalet te openen.
+U kunt Azurite snel starten of sluiten door te klikken op **[Azurite BLOB Service]** of **[Azurite Queue Service]** in de status balk VS-code of door de volgende opdrachten uit te geven in het palet met de VS code-opdracht. Druk op **F1** in VS code om het opdracht palet te openen.
 
-De extensie ondersteunt de volgende opdrachten voor Visual Studio Code:
+De extensie ondersteunt de volgende Visual Studio-code opdrachten:
 
-   * **Azurite: Start** - Start alle Azurite diensten
-   * **Azurite: Close** - Sluit alle Azurite-diensten
-   * **Azurite: Clean** - Reset alle Azurite-services persistency data
-   * **Azurite: Blob-service starten** - Blob-service starten
-   * **Azurite: Blob-service sluiten** - Blob-service sluiten
-   * **Azurite: Clean Blob Service** - Schone blob service
-   * **Azurite: Wachtrijservice starten** - Wachtrijservice starten
-   * **Azurite: Close Queue Service** - Close queue service
-   * **Azurite: Clean Queue Service** - Clean queue service
+   * **Azurite: start** -alle Azurite-Services starten
+   * **Azurite: sluiten** -alle Azurite-Services sluiten
+   * **Azurite:** alle Azurite Services opereren-gegevens opnieuw instellen
+   * **Azurite: de BLOB-service starten** -BLOB-service starten
+   * **Azurite: de BLOB-service sluiten** -BLOB-service sluiten
+   * **Azurite: de BLOB-service opschonen** -BLOB-service opschonen
+   * **Azurite: wachtrij service starten** -wachtrij service starten
+   * **Azurite: de wachtrij service sluiten** -wachtrij service sluiten
+   * **Azurite: wachtrij service opschonen** -wachtrij service wissen
 
-Als u Azurite wilt configureren in Visual Studio Code, selecteert u het deelvenster Extensies. Selecteer het pictogram **Beheren** (versnelling) voor **Azurite**. Selecteer **Extensie-instellingen configureren**.
+Als u Azurite in Visual Studio code wilt configureren, selecteert u het deel venster uitbrei dingen. Selecteer het pictogram **beheren** (vistuig) voor **Azurite**. Selecteer **extensie-instellingen configureren**.
 
-![Instellingen voor azurite configureren](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azurite configureren](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 De volgende instellingen worden ondersteund:
 
-   * **Azurite: Blob Host** - Het luistereindpunt van de Blob-service. De standaardinstelling is 127.0.0.1.
-   * **Azurite: Blob Port** - De Blob-serviceluisterpoort. De standaardpoort is 10000.
-   * **Azurite: Debug** - Uitvoer het foutopsporingslogboek naar het Azurite-kanaal. De standaardwaarde is **onwaar**.
-   * **Azurite: Locatie** - Het locatiepad van de werkruimte. De standaardinstelling is de map Visual Studio Code working.
-   * **Azurite: Queue Host** - Het luistereindpunt van de wachtrijservice. De standaardinstelling is 127.0.0.1.
-   * **Azurite: Queue Port** - The Queue service listening port. De standaardpoort is 10001.
-   * **Azurite: Silent** - Silent mode schakelt het toegangslogboek uit. De standaardwaarde is **onwaar**.
+   * **Azurite: BLOB host** : het BLOB service luisterende eind punt. De standaard instelling is 127.0.0.1.
+   * **Azurite: BLOB-poort** -de BLOB service Luister poort. De standaard poort is 10000.
+   * **Azurite: debug** -het logboek voor fout opsporing uitvoeren op het Azurite-kanaal. De standaardwaarde is **onwaar**.
+   * **Azurite: locatie** -het pad naar de locatie van de werk ruimte. De standaard waarde is de werkmap Visual Studio-code.
+   * **Azurite: wachtrij-host** -het Queue-service luisterende eind punt. De standaard instelling is 127.0.0.1.
+   * **Azurite: wachtrij poort** : de Queue-service Luister poort. De standaard poort is 10001.
+   * **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaardwaarde is **onwaar**.
 
-## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met NPM
+## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 
-Deze installatiemethode vereist dat [Node.js versie 8.0 of hoger](https://nodejs.org) is geïnstalleerd. **npm** is de package management tool bij elke Node.js installatie. Nadat u Node.js hebt geïnstalleerd, voert u de volgende **npm-opdracht** uit om Azurite te installeren.
+Deze installatie methode vereist dat [node. js versie 8,0 of hoger](https://nodejs.org) is geïnstalleerd. **NPM** is het hulp programma voor pakket beheer dat bij elke node. js-installatie is opgenomen. Na de installatie van node. js voert u de volgende **NPM** -opdracht uit om Azurite te installeren.
 
 ```console
 npm install -g azurite
 ```
 
-Na het installeren van Azurite, zie [Run Azurite vanaf een command-line](#run-azurite-from-a-command-line).
+Nadat u Azurite hebt geïnstalleerd, raadpleegt u [Azurite uitvoeren vanaf een opdracht regel](#run-azurite-from-a-command-line).
 
-## <a name="install-and-run-the-azurite-docker-image"></a>De Azurite Docker-afbeelding installeren en uitvoeren
+## <a name="install-and-run-the-azurite-docker-image"></a>De Azurite docker-installatie kopie installeren en uitvoeren
 
-Gebruik [DockerHub](https://hub.docker.com/) om de [nieuwste Azurite-afbeelding](https://hub.docker.com/_/microsoft-azure-storage-azurite) te trekken met behulp van de volgende opdracht:
+Gebruik [DockerHub](https://hub.docker.com/) voor het ophalen van de [meest recente Azurite-installatie kopie](https://hub.docker.com/_/microsoft-azure-storage-azurite) met behulp van de volgende opdracht:
 
 ```console
 docker pull mcr.microsoft.com/azure-storage/azurite
 ```
 
-**Voer de Azurite Docker-afbeelding uit:**
+**Voer de Azurite docker-installatie kopie uit**:
 
-Met de volgende opdracht wordt de afbeelding van Azurite Docker uitgevoerd. De `-p 10000:10000` parameter verwijst aanvragen van de poort 10000 van de hostmachine om naar de instantie Docker.
+Met de volgende opdracht wordt de Azurite docker-installatie kopie uitgevoerd. De `-p 10000:10000` para meter stuurt aanvragen van de poort 10000 van de hostcomputer door naar het docker-exemplaar.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 ```
 
-**Geef de locatie van de werkruimte op:**
+**De locatie van de werk ruimte opgeven**:
 
-In het volgende `-v c:/azurite:/data` voorbeeld geeft de parameter *c:/azurite* aan als de Azurite-gegevenslocatie. De map, *c:/azurite,* moet worden gemaakt voordat de opdracht Docker wordt uitgevoerd.
+In het volgende voor beeld geeft `-v c:/azurite:/data` de para meter *c:/Azurite* op als de persistente gegevens locatie Azurite. De map, *c:/Azurite*, moet worden gemaakt voordat u de opdracht docker uitvoert.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
-**Alleen de blobservice uitvoeren**
+**Alleen de BLOB-service uitvoeren**
 
 ```console
 docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
-**Stel alle Azurite-parameters in:**
+**Alle Azurite-para meters instellen**:
 
-In dit voorbeeld ziet u hoe u alle opdrachtregelparameters instelt. Alle onderstaande parameters moeten op één opdrachtregel worden geplaatst.
+In dit voor beeld ziet u hoe u alle opdracht regel parameters kunt instellen. Alle onderstaande para meters moeten op één opdracht regel worden geplaatst.
 
 ```console
 docker run -p 8888:8888
@@ -120,17 +120,17 @@ docker run -p 8888:8888
            --queueHost 0.0.0.0
 ```
 
-Zie [Opdrachtregelopties](#command-line-options) voor meer informatie over het configureren van Azurite bij het opstarten.
+Zie [opdracht regel opties](#command-line-options) voor meer informatie over het configureren van Azurite bij het opstarten.
 
-## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Kloon, bouw en voer Azurite uit vanuit de GitHub-repository
+## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Azurite klonen, bouwen en uitvoeren vanuit de GitHub-opslag plaats
 
-Deze installatiemethode vereist dat u [Git](https://git-scm.com/) hebt geïnstalleerd. Kloon de [GitHub-repository](https://github.com/azure/azurite) voor het Azurite-project met behulp van de volgende consoleopdracht.
+Voor deze installatie methode moet [Git](https://git-scm.com/) zijn geïnstalleerd. Kloon de [github-opslag plaats](https://github.com/azure/azurite) voor het Azurite-project met behulp van de volgende console opdracht.
 
 ```console
 git clone https://github.com/Azure/Azurite.git
 ```
 
-Na het klonen van de broncode voert u volgende opdrachten uit vanaf de wortel van de gekloonde repo om Azurite te bouwen en te installeren.
+Nadat u de bron code hebt gekloond, voert u de volgende opdrachten uit vanuit de hoofdmap van de gekloonde opslag plaats om Azurite te bouwen en te installeren.
 
 ```console
 npm install
@@ -138,24 +138,24 @@ npm run build
 npm install -g
 ```
 
-Na het installeren en bouwen van Azurite, zie [Run Azurite vanaf een command-line](#run-azurite-from-a-command-line).
+Ga na het installeren en maken van Azurite naar [Azurite uitvoeren vanaf een opdracht regel](#run-azurite-from-a-command-line).
 
-## <a name="run-azurite-from-a-command-line"></a>Azurite uitvoeren vanaf een opdrachtregel
+## <a name="run-azurite-from-a-command-line"></a>Azurite uitvoeren vanaf een opdracht regel
 
 > [!NOTE]
-> Azurite kan niet vanaf de opdrachtregel worden uitgevoerd als u alleen de Visual Studio Code-extensie hebt geïnstalleerd. Gebruik in plaats daarvan het opdrachtpalet VS-code. Zie [De Azurite Visual Studio Code-extensie installeren en uitvoeren](#install-and-run-the-azurite-visual-studio-code-extension)voor meer informatie.
+> Azurite kan niet worden uitgevoerd vanaf de opdracht regel als u de Visual Studio code extension alleen hebt geïnstalleerd. Gebruik in plaats daarvan het opdracht palet VS code. Zie [Install and run the Azurite Visual Studio code extension](#install-and-run-the-azurite-visual-studio-code-extension)(Engelstalig) voor meer informatie.
 
-Als u onmiddellijk aan de slag wilt met de opdrachtregel, maakt u een map met de naam **c:\azurite**en start u Azurite door de volgende opdracht uit te geven:
+Als u direct aan de slag wilt gaan met de opdracht regel, maakt u een map met de naam **c:\azurite**en start u Azurite door de volgende opdracht te geven:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Met deze opdracht moet Azurite alle gegevens opslaan in een bepaalde map, **c:\azurite**. Als de **optie --locatie** wordt weggelaten, wordt de huidige werkmap gebruikt.
+Met deze opdracht wordt Azurite om alle gegevens op te slaan in een bepaalde map, **c:\azurite**. Als de optie **--locatie** wordt wegge laten, wordt de huidige werkmap gebruikt.
 
 ## <a name="command-line-options"></a>Opdrachtregelopties
 
-In deze sectie worden de schakels van de opdrachtlijn beschreven die beschikbaar zijn bij het starten van Azurite. Alle command-line switches zijn optioneel.
+In deze sectie vindt u meer informatie over de opdracht regel opties die beschikbaar zijn bij het starten van Azurite. Alle opdracht regel opties zijn optioneel.
 
 ```console
 C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
@@ -164,13 +164,13 @@ C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
     [-s | --silent] [-h | --help]
 ```
 
-De **-d** is een snelkoppeling voor **--debug**, **-l-schakelaar** is een snelkoppeling voor **--locatie,** **-s** is een snelkoppeling voor **--stil**en **-h** is een snelkoppeling voor **--help**.
+De **-d** is een snelkoppeling voor **--** de schakel optie- **l** is een snelkoppeling voor **--locatie**, **-s** is een snelkoppeling voor **--Silent**en **-h** is een snelkoppeling voor **--Help**.
 
-### <a name="blob-listening-host"></a>Blob-luisterhost
+### <a name="blob-listening-host"></a>BLOB luistert host
 
-**Optioneel** Standaard luistert Azurite naar 127.0.0.1 als lokale server. Gebruik de **--blobHost-schakelaar** om het adres in te stellen op uw vereisten.
+**Optioneel** Azurite wordt standaard naar 127.0.0.1 geluisterd als de lokale server. Gebruik de schakel optie **--blobHost** om het adres in te stellen op uw vereisten.
 
-Accepteer alleen aanvragen op de lokale machine:
+Alleen aanvragen op de lokale computer accepteren:
 
 ```console
 azurite --blobHost 127.0.0.1
@@ -183,34 +183,34 @@ azurite --blobHost 0.0.0.0
 ```
 
 > [!CAUTION]
-> Het toestaan van externe verzoeken kan uw systeem kwetsbaar maken voor externe aanvallen.
+> Het toestaan van externe aanvragen kan uw systeem kwetsbaar maken voor externe aanvallen.
 
-### <a name="blob-listening-port-configuration"></a>Blob-luisterpoortconfiguratie
+### <a name="blob-listening-port-configuration"></a>Poort configuratie voor BLOB-Luister
 
-**Optioneel** Azurite luistert standaard naar de Blob-service op poort 10000. Gebruik de **--blobPort-schakelaar** om de gewenste luisterpoort op te geven.
+**Optioneel** Azurite luistert standaard naar de Blob service op poort 10000. Gebruik de schakel optie **--blobPort** om de luisterende poort op te geven die u nodig hebt.
 
 > [!NOTE]
-> Nadat u een aangepaste poort hebt gebruikt, moet u de verbindingstekenreeks of de bijbehorende configuratie bijwerken in uw Azure Storage-hulpprogramma's of SDK's.
+> Nadat u een aangepaste poort hebt gebruikt, moet u de connection string of de bijbehorende configuratie bijwerken in uw Azure Storage-hulpprogram ma's of Sdk's.
 
-Pas de luisterpoort van de Blob-service aan:
+De Blob service-Luister poort aanpassen:
 
 ```console
 azurite --blobPort 8888
 ```
 
-Laat het systeem automatisch een beschikbare poort selecteren:
+Het systeem automatisch een beschik bare poort laten selecteren:
 
 ```console
 azurite --blobPort 0
 ```
 
-De in gebruik zijnde poort wordt weergegeven tijdens het opstarten van Azurite.
+De poort die in gebruik is, wordt weer gegeven tijdens het opstarten van Azurite.
 
-### <a name="queue-listening-host"></a>Luisterende wachtrij
+### <a name="queue-listening-host"></a>Luisterende host in wachtrij plaatsen
 
-**Optioneel** Standaard luistert Azurite naar 127.0.0.1 als lokale server. Gebruik de **schakelaar -wachtrijHost** om het adres in te stellen op uw vereisten.
+**Optioneel** Azurite wordt standaard naar 127.0.0.1 geluisterd als de lokale server. Gebruik de schakel optie **--queueHost** om het adres in te stellen op uw vereisten.
 
-Accepteer alleen aanvragen op de lokale machine:
+Alleen aanvragen op de lokale computer accepteren:
 
 ```console
 azurite --queueHost 127.0.0.1
@@ -223,32 +223,32 @@ azurite --queueHost 0.0.0.0
 ```
 
 > [!CAUTION]
-> Het toestaan van externe verzoeken kan uw systeem kwetsbaar maken voor externe aanvallen.
+> Het toestaan van externe aanvragen kan uw systeem kwetsbaar maken voor externe aanvallen.
 
-### <a name="queue-listening-port-configuration"></a>Configuratie van de luisterpoort in de wachtrij
+### <a name="queue-listening-port-configuration"></a>Poort configuratie voor Luis teren in wachtrij
 
-**Optioneel** Azurite luistert standaard naar de Queue-service op poort 10001. Gebruik de **poortschakelaar --queue** om de gewenste luisterpoort op te geven.
+**Optioneel** Azurite luistert standaard naar de Queue-service op poort 10001. Gebruik de schakel optie **--queuePort** om de luisterende poort op te geven die u nodig hebt.
 
 > [!NOTE]
-> Nadat u een aangepaste poort hebt gebruikt, moet u de verbindingstekenreeks of de bijbehorende configuratie bijwerken in uw Azure Storage-hulpprogramma's of SDK's.
+> Nadat u een aangepaste poort hebt gebruikt, moet u de connection string of de bijbehorende configuratie bijwerken in uw Azure Storage-hulpprogram ma's of Sdk's.
 
-Pas de luisterpoort van de wachtrijservice aan:
+De Queue-service-Luister poort aanpassen:
 
 ```console
 azurite --queuePort 8888
 ```
 
-Laat het systeem automatisch een beschikbare poort selecteren:
+Het systeem automatisch een beschik bare poort laten selecteren:
 
 ```console
 azurite --queuePort 0
 ```
 
-De in gebruik zijnde poort wordt weergegeven tijdens het opstarten van Azurite.
+De poort die in gebruik is, wordt weer gegeven tijdens het opstarten van Azurite.
 
-### <a name="workspace-path"></a>Werkruimtepad
+### <a name="workspace-path"></a>Pad naar werk ruimte
 
-**Optioneel** Azurite slaat gegevens op de lokale schijf tijdens de uitvoering. Gebruik de **--locatieschakelaar** om een pad op te geven als de locatie van de werkruimte. Standaard wordt de huidige werkmap voor processen gebruikt.
+**Optioneel** Azurite slaat gegevens op de lokale schijf op tijdens de uitvoering. Gebruik de schakel optie **--locatie** om een pad op te geven als locatie van de werk ruimte. Standaard wordt de huidige werk directory van het proces gebruikt.
 
 ```console
 azurite --location c:\azurite
@@ -258,9 +258,9 @@ azurite --location c:\azurite
 azurite -l c:\azurite
 ```
 
-### <a name="access-log"></a>Toegangslogboek
+### <a name="access-log"></a>Access-logboek
 
-**Optioneel** Standaard wordt het toegangslogboek weergegeven in het consolevenster. Schakel de weergave van het toegangslogboek uit met behulp van de **stille** schakelaar.
+**Optioneel** Het toegangs logboek wordt standaard weer gegeven in het console venster. Schakel de weer gave van het toegangs logboek uit met behulp van de **--Silent-** switch.
 
 ```console
 azurite --silent
@@ -270,9 +270,9 @@ azurite --silent
 azurite -s
 ```
 
-### <a name="debug-log"></a>Foutopsporingslogboek
+### <a name="debug-log"></a>Logboek voor fout opsporing
 
-**Optioneel** Het foutopsporingslogboek bevat gedetailleerde informatie over elk verzoek en de lijsttracering van uitzonderingen. Schakel het foutopsporingslogboek in door een geldig lokaal bestandspad naar de **foutopsporingsschakelaar** te geven.
+**Optioneel** Het logboek voor fout opsporing bevat gedetailleerde informatie over elke aanvraag en uitzonderings Stack tracering. Schakel het logboek voor fout opsporing in door een geldig lokaal bestandspad op te geven bij de schakel optie voor het **opsporen van fouten** .
 
 ```console
 azurite --debug path/debug.log
@@ -284,35 +284,35 @@ azurite -d path/debug.log
 
 ### <a name="loose-mode"></a>Losse modus
 
-**Optioneel** Azurite past standaard een strikte modus toe om niet-ondersteunde aanvraagkoppen en -parameters te blokkeren. Schakel de strikte modus uit met de **losse** schakelaar.
+**Optioneel** Azurite past standaard de strikte modus toe om niet-ondersteunde aanvraag headers en-para meters te blok keren. Schakel de strikte modus uit met behulp van de **--losse** switch.
 
 ```console
 azurite --loose
 ```
 
-Let op de kapitaaltoetsschakelaar 'L':
+Let op de schakel optie voor de hoofd letter ' L ':
 
 ```console
 azurite -L
 ```
 
-## <a name="authorization-for-tools-and-sdks"></a>Autorisatie voor gereedschappen en SDK's
+## <a name="authorization-for-tools-and-sdks"></a>Autorisatie voor hulpprogram ma's en Sdk's
 
-Maak verbinding met Azurite via Azure Storage SDKs of hulpprogramma's, zoals [Azure Storage Explorer,](https://azure.microsoft.com/features/storage-explorer/)met behulp van een verificatiestrategie. Verificatie is vereist. Azurite ondersteunt autorisatie met Shared Key en shared access signatures (SAS). Azurite ondersteunt ook anonieme toegang tot openbare containers.
+Maak verbinding met Azurite van Azure Storage Sdk's of hulpprogram ma's, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), met behulp van een verificatie strategie. Verificatie is vereist. Azurite ondersteunt verificatie met gedeelde sleutel en Shared Access signatures (SAS). Azurite biedt ook ondersteuning voor anonieme toegang tot open bare containers.
 
-### <a name="well-known-storage-account-and-key"></a>Bekende opslagrekening en sleutel
+### <a name="well-known-storage-account-and-key"></a>Bekende opslag account en-sleutel
 
-U de volgende accountnaam en sleutel met Azurite gebruiken. Dit is dezelfde bekende account en sleutel die wordt gebruikt door de verouderde Azure-opslagemulator.
+U kunt de volgende account naam en-sleutel gebruiken met Azurite. Dit is dezelfde bekende account en sleutel die wordt gebruikt door de verouderde Azure-opslag emulator.
 
-* Accountnaam:`devstoreaccount1`
-* Accountsleutel:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+* Account naam:`devstoreaccount1`
+* Account sleutel:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 > [!NOTE]
-> Naast SharedKey-verificatie ondersteunt Azurite account- en serviceSAS-verificatie. Anonieme toegang is ook beschikbaar wanneer een container is ingesteld om openbare toegang mogelijk te maken.
+> Naast SharedKey-verificatie ondersteunt Azurite ondersteuning voor account-en service-SAS-verificatie. Anonieme toegang is ook beschikbaar wanneer een container is ingesteld om open bare toegang toe te staan.
 
 ### <a name="connection-string"></a>Verbindingsreeks
 
-De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing is door een verbindingstekenreeks in het configuratiebestand van uw toepassing te configureren die verwijst naar de snelkoppeling *UseDevelopmentStorage=true.* Hier is een voorbeeld van een verbindingstekenreeks in een *app.config-bestand:*
+De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing is het configureren van een connection string in het configuratie bestand van uw toepassing dat verwijst naar de snelkoppeling *UseDevelopmentStorage = True*. Hier volgt een voor beeld van een connection string in een *app. config* -bestand:
 
 ```xml
 <appSettings>
@@ -320,82 +320,82 @@ De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing i
 </appSettings>
 ```
 
-Zie [Azure Storage-verbindingstekenreeksen configureren](storage-configure-connection-string.md)voor meer informatie .
+Zie [Azure Storage-verbindings reeksen configureren](storage-configure-connection-string.md)voor meer informatie.
 
-### <a name="custom-storage-accounts-and-keys"></a>Aangepaste opslagaccounts en -sleutels
+### <a name="custom-storage-accounts-and-keys"></a>Aangepaste opslag accounts en-sleutels
 
-Azurite ondersteunt aangepaste opslagaccountnamen en `AZURITE_ACCOUNTS` -sleutels door de `account1:key1[:key2];account2:key1[:key2];...`omgevingsvariabele in de volgende indeling in te stellen: .
+Azurite ondersteunt aangepaste opslag accountnamen en-sleutels door de `AZURITE_ACCOUNTS` omgevings variabele in te stellen in de `account1:key1[:key2];account2:key1[:key2];...`volgende indeling:.
 
-Gebruik bijvoorbeeld een aangepast opslagaccount met één sleutel:
+Gebruik bijvoorbeeld een aangepast opslag account met één sleutel:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
-Of gebruik meerdere opslagaccounts met elk 2 sleutels:
+Of gebruik meerdere opslag accounts met twee sleutels:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
-Azurite vernieuwt standaard standaard standaard aangepaste accountnamen en sleutels uit de omgevingsvariabele elke minuut. Met deze functie u de accountsleutel dynamisch roteren of nieuwe opslagaccounts toevoegen zonder Azurite opnieuw te starten.
+Met Azurite worden aangepaste account namen en sleutels standaard elke minuut vernieuwd van de omgevings variabele. Met deze functie kunt u de account sleutel dynamisch draaien of nieuwe opslag accounts toevoegen zonder dat u Azurite opnieuw hoeft op te starten.
 
 > [!NOTE]
-> Het `devstoreaccount1` standaardopslagaccount is uitgeschakeld wanneer u aangepaste opslagaccounts instelt.
+> Het standaard `devstoreaccount1` opslag account is uitgeschakeld wanneer u aangepaste opslag accounts instelt.
 
 > [!NOTE]
-> Werk de verbindingstekenreeks dienovereenkomstig bij wanneer u aangepaste accountnamen en -sleutels gebruikt.
+> Werk de connection string dienovereenkomstig bij met aangepaste account namen en sleutels.
 
 > [!NOTE]
-> Gebruik `export` het trefwoord om omgevingsvariabelen in te `set` stellen in een Linux-omgeving die wordt gebruikt in Windows.
+> Gebruik het `export` sleutel woord voor het instellen van omgevings variabelen in een `set` Linux-omgeving. gebruik in Windows.
 
 ### <a name="storage-explorer"></a>Opslagverkenner
 
-Maak in Azure Storage Explorer verbinding met Azurite door op het pictogram **Account toevoegen** te klikken en vervolgens **Bijvoegen aan een lokale emulator te** selecteren en op Verbinding **maken**te klikken.
+In Azure Storage Explorer maakt u verbinding met Azurite door op het pictogram **account toevoegen** te klikken en vervolgens **koppelen aan een lokale emulator te** selecteren. Klik vervolgens op **verbinding maken**.
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Verschillen tussen Azurite en Azure Storage
 
-Er zijn functionele verschillen tussen een lokaal exemplaar van Azurite en een Azure Storage-account in de cloud.
+Er zijn functionele verschillen tussen een lokaal exemplaar van Azurite en een Azure Storage-account in de Cloud.
 
-### <a name="endpoint-and-connection-url"></a>URL voor eindpunt en verbinding
+### <a name="endpoint-and-connection-url"></a>Eind punt en verbindings-URL
 
-De serviceeindpunten voor Azurite verschillen van de eindpunten van een Azure Storage-account. De lokale computer doet geen domeinnaamresolutie, waarbij Azurite-eindpunten lokale adressen moeten zijn.
+De service-eind punten voor Azurite verschillen van de eind punten van een Azure Storage-account. De lokale computer voert geen domeinnaam omzetting uit en vereist dat Azurite-eind punten lokale adressen hebben.
 
-Wanneer u een resource in een Azure Storage-account aangeeft, maakt de accountnaam deel uit van de URI-hostnaam. De resource die wordt aangepakt, maakt deel uit van het URI-pad:
+Wanneer u een resource in een Azure Storage-account adresseert, is de account naam onderdeel van de URI-hostnaam. De bron die wordt geadresseerd, maakt deel uit van het URI-pad:
 
 `<http|https>://<account-name>.<service-name>.core.windows.net/<resource-path>`
 
-De volgende URI is een geldig adres voor een blob in een Azure Storage-account:
+De volgende URI is een geldig adres voor een BLOB in een Azure Storage-account:
 
 `https://myaccount.blob.core.windows.net/mycontainer/myblob.txt`
 
-Aangezien de lokale computer geen domeinnaamresolutie doet, maakt de accountnaam deel uit van het URI-pad in plaats van de hostnaam. Gebruik de volgende URI-indeling voor een resource in Azurite:
+Omdat de lokale computer geen domein naam omzetting heeft, maakt de account naam deel uit van het URI-pad in plaats van de hostnaam. Gebruik de volgende URI-indeling voor een resource in Azurite:
 
 `http://<local-machine-address>:<port>/<account-name>/<resource-path>`
 
-Het volgende adres kan worden gebruikt voor toegang tot een blob in Azurite:
+Het volgende adres kan worden gebruikt voor toegang tot een BLOB in Azurite:
 
 `http://127.0.0.1:10000/myaccount/mycontainer/myblob.txt`
 
 ### <a name="scaling-and-performance"></a>Schalen en prestaties
 
-Azurite is geen schaalbare opslagservice en ondersteunt geen groot aantal gelijktijdige clients. Er is geen prestatiegarantie. Azurite is bedoeld voor ontwikkelings- en testdoeleinden.
+Azurite is geen schaal bare opslag service en biedt geen ondersteuning voor een groot aantal gelijktijdige clients. Er is geen prestatie garantie. Azurite is bedoeld voor ontwikkelings-en test doeleinden.
 
 ### <a name="error-handling"></a>Foutafhandeling
 
-Azurite is afgestemd op de logica voor foutafhandeling van Azure Storage, maar er zijn verschillen. Foutberichten kunnen bijvoorbeeld verschillen, terwijl foutstatuscodes worden uitgelijnd.
+Azurite is uitgelijnd met Azure Storage fout bij het verwerken van fouten, maar er zijn verschillen. Fout berichten kunnen bijvoorbeeld verschillen, terwijl fout status codes worden uitgelijnd.
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite ondersteunt georedundante replicatie (read-access geo-redundante replicatie). Voor opslagbronnen u de secundaire locatie openen door **-secundair** aan de accountnaam toe te schrijven. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met het alleen-lezen secundaire in Azurite:
+Azurite ondersteunt geo-redundante replicatie met lees toegang (RA-GRS). Voor opslag bronnen opent u de secundaire locatie door deze toe te voegen **-secundair** aan de account naam. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van de alleen-lezen secundair in Azurite:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
-## <a name="azurite-is-open-source"></a>Azurite is open-source
+## <a name="azurite-is-open-source"></a>Azurite is open source
 
-Bijdragen en suggesties voor Azurite zijn welkom. Ga naar de Azurite [GitHub-projectpagina](https://github.com/Azure/Azurite/projects) of [GitHub-problemen](https://github.com/Azure/Azurite/issues) voor mijlpalen en werkitems die we bijhouden voor aankomende functies en bugfixes. Gedetailleerde werkitems worden ook bijgehouden in GitHub.
+Bijdragen en suggesties voor Azurite zijn welkom. Ga naar de Azurite [github-project](https://github.com/Azure/Azurite/projects) pagina of [github problemen](https://github.com/Azure/Azurite/issues) voor mijl palen en werk items die we volgen op aanstaande functies en oplossingen voor problemen. Gedetailleerde werk items worden ook bijgehouden in GitHub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gebruik de Azure-opslagemulator voor het ontwikkelen en testen van](storage-use-emulator.md) documenten de verouderde Azure-opslagemulator, die wordt vervangen door Azurite.
-* [Configureer Azure Storage-verbindingstekenreeksen](storage-configure-connection-string.md) hoe u een geldige Azure STorage-verbindingstekenreeks samenstellen.
+* [Gebruik de Azure-opslag emulator voor het ontwikkelen en testen van](storage-use-emulator.md) documenten de verouderde Azure-opslag emulator, die wordt vervangen door Azurite.
+* [Azure Storage verbindings reeksen configureren](storage-configure-connection-string.md) wordt uitgelegd hoe u een geldige Azure Storage-Connection String kunt samen stellen.

@@ -61,6 +61,6 @@ ms.locfileid: "67176558"
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Nadat de updates zijn geïnstalleerd, wordt hierover een bericht weergegeven op de blade Apparaatupdates. De softwareversie verandert ook in **10.0.10288.0**. 
+9. Nadat de updates zijn geïnstalleerd, wordt hierover een bericht weergegeven op de blade Apparaatupdates. De software versie verandert ook in **10.0.10288.0**. 
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

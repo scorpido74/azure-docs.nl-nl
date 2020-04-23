@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176144"
 ---
 > [!NOTE]
-> Voordat u deze zelfstudie start, voltooit u de [online simulatorzelfstudie](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) van raspberry pi of een van de zelfstudies van het apparaat; bijvoorbeeld [Raspberry Pi met node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). In deze artikelen stelt u uw Azure IoT-apparaat en IoT-hub in en implementeert u een voorbeeldtoepassing om op uw apparaat uit te voeren. De applicatie stuurt verzamelde sensorgegevens naar uw IoT-hub.
+> Voordat u met deze zelf studie begint, voltooit u de zelf studie [Raspberry Pi online Simulator](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node. js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). In deze artikelen stelt u uw Azure IoT-apparaat en IoT-hub in en implementeert u een voorbeeld toepassing om op uw apparaat te worden uitgevoerd. De toepassing stuurt verzamelde sensor gegevens naar uw IoT-hub.

@@ -11,10 +11,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176494"
 ---
-Als u apparaatproblemen ondervindt, u een ondersteuningspakket maken op basis van de systeemlogboeken. Microsoft Support gebruikt dit pakket om de problemen op te lossen. Volg de volgende stappen om een ondersteuningspakket te maken:
+Als u problemen ondervindt met het apparaat, kunt u een ondersteunings pakket maken op basis van de systeem Logboeken. Microsoft Ondersteuning gebruikt dit pakket om de problemen op te lossen. Volg deze stappen voor het maken van een ondersteunings pakket:
 
-1. [Maak verbinding met de PowerShell-interface van uw apparaat.](#connect-to-the-powershell-interface)
-2. Gebruik `Get-HcsNodeSupportPackage` de opdracht om een ondersteuningspakket te maken. Het gebruik van de cmdlet is als volgt:
+1. [Verbinding maken met de Power shell-interface van uw apparaat](#connect-to-the-powershell-interface).
+2. Gebruik de `Get-HcsNodeSupportPackage` opdracht om een ondersteunings pakket te maken. Het gebruik van de cmdlet is als volgt:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ Als u apparaatproblemen ondervindt, u een ondersteuningspakket maken op basis va
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    De cmdlet verzamelt logboeken van uw apparaat en kopieert deze logboeken naar een opgegeven netwerk of lokaal aandeel.
+    De cmdlet verzamelt logboeken van uw apparaat en kopieert deze logboeken naar een opgegeven netwerk of lokale share.
 
-    De gebruikte parameters zijn als volgt:
+    De volgende para meters worden gebruikt:
 
-    - `-Path`- Geef het netwerk of het lokale pad op waarnaar u het ondersteuningspakket wilt kopiëren. (verplicht)
-    - `-Credential`- Geef de referenties op om toegang te krijgen tot het beveiligde pad.
-    - `-Zip`- Geef op om een zip-bestand te genereren.
-    - `-Include`- Geef op de onderdelen op te nemen die in het ondersteuningspakket moeten worden opgenomen. Indien niet `Default` opgegeven, wordt aangenomen.
-    - `-IncludeArchived`- Geef op om gearchiveerde logboeken op te nemen in het ondersteuningspakket.
-    - `-IncludePeriodicStats`- Geef op om periodieke stat-logboeken op te nemen in het ondersteuningspakket.
+    - `-Path`-Geef het netwerk of het lokale pad op waarnaar u het ondersteunings pakket wilt kopiëren. lang
+    - `-Credential`-Geef de referenties op voor toegang tot het beveiligde pad.
+    - `-Zip`-Geef op of u een zip-bestand wilt genereren.
+    - `-Include`-Geef op of u de onderdelen wilt opnemen die moeten worden opgenomen in het ondersteunings pakket. Als niet wordt opgegeven `Default` , wordt ervan uitgegaan.
+    - `-IncludeArchived`-Geef op of u gearchiveerde logboeken wilt toevoegen aan het ondersteunings pakket.
+    - `-IncludePeriodicStats`-Geef op of u periodieke Statie logboeken wilt gebruiken in het ondersteunings pakket.
 
     

@@ -21,11 +21,11 @@ ms.locfileid: "67176223"
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. Als er software-updates beschikbaar zijn, wordt er een bericht weergegeven. U kunt ook op **Scannen** klikken om naar updates te zoeken. Noteer de softwareversie die u uitvoert. 
+3. Als er software-updates beschikbaar zijn, wordt er een bericht weergegeven. U kunt ook op **Scannen** klikken om naar updates te zoeken. Noteer de software versie die u gebruikt. 
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate3m1.png)
 
-    U wordt op de hoogte gesteld wanneer de scan wordt gestart en voltooid.
+    U ontvangt een melding wanneer de scan wordt gestart en voltooid.
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate5m.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "67176223"
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. Bekijk in het **nieuwe updateblad** de releasenotes. Houd er ook rekening mee dat nadat de updates zijn gedownload, u de installatie moet bevestigen. Klik op **OK**.
+5. Bekijk de opmerkingen bij de release op de Blade **nieuwe updates** . Nadat de updates zijn gedownload, moet u de installatie bevestigen. Klik op **OK**.
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 
@@ -57,11 +57,11 @@ ms.locfileid: "67176223"
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate15m1.png)
 
-    Met deze actie gaat u naar het blade **Updates installeren.** Hier kunt u gedetailleerde informatie over de taak weergeven.
+    Met deze actie gaat u naar de Blade **updates installeren** . Hier kunt u gedetailleerde informatie over de taak weergeven.
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate16m1.png)
 
-9. Als u bent begonnen met een virtuele array met softwareversie Update 0.6 (10.0.10293.0), voert u nu Update 1 uit en bent u klaar. U de resterende stappen overslaan. Als u bent begonnen met een virtuele array met een softwareversie voorafgaand aan Update 0.6 (10.0.10293.0), wordt u nu bijgewerkt naar Update 0.6. U ziet een ander bericht dat aangeeft dat er updates beschikbaar zijn. Herhaal stap 4-8 om Update 1 te installeren.
+9. Als u bent begonnen met een virtuele array met software versie update 0,6 (10.0.10293.0), voert u update 1 uit en bent u klaar. U kunt de resterende stappen overs Laan. Als u bent begonnen met een virtuele matrix met een software versie vóór update 0,6 (10.0.10293.0), bent u nu bijgewerkt met het bijwerken van 0,6. U ziet een ander bericht dat aangeeft dat er updates beschikbaar zijn. Herhaal stap 4-8 om update 1 te installeren.
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate17.png)
 

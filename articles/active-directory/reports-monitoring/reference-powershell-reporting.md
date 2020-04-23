@@ -1,6 +1,6 @@
 ---
-title: Azure AD PowerShell-cmdlets voor rapportage | Microsoft Documenten
-description: Referentie van de Azure AD PowerShell-cmdlets voor rapportage.
+title: Azure AD Power shell-cmdlets voor rapportage | Microsoft Docs
+description: Verwijzing van de Azure AD Power shell-cmdlets voor rapportage.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -27,64 +27,64 @@ ms.locfileid: "75495305"
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
 
 > [!NOTE] 
-> Deze Powershell-cmdlets werken momenteel alleen met de [Azure AD Preview-module.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) Houd er rekening mee dat de preview-module niet wordt voorgesteld voor productiegebruik. 
+> Deze Power shell-cmdlets werken momenteel alleen met de [Azure ad-preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) -module. Houd er rekening mee dat de preview-module niet wordt voorgesteld voor productie gebruik. 
 
-Als u de openbare preview-release wilt installeren, gebruikt u het volgende. 
+Gebruik het volgende om de open bare preview-versie te installeren. 
 
 ```powershell
 Install-module AzureADPreview
 ```
-Zie het artikel [Azure AD Powershell for Graph voor](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)meer informatie over hoe u verbinding maken met Azure AD met Powershell.  
+Raadpleeg het artikel [Azure AD Power shell voor Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)voor meer informatie over het maken van een verbinding met Azure AD met behulp van Power shell.  
 
-Met Azure Active Directory-rapporten (Azure AD) u informatie krijgen over activiteiten rond alle schrijfbewerkingen in uw richting (controlelogboeken) en verificatiegegevens (aanmeldingslogboeken). Hoewel de informatie beschikbaar is met behulp van de MS Graph API, u nu dezelfde gegevens ophalen met behulp van de Azure AD PowerShell-cmdlets voor rapportage.
+Met Azure Active Directory-rapporten (Azure AD) kunt u Details opvragen over activiteiten rond alle schrijf bewerkingen in uw richting (audit Logboeken) en verificatie gegevens (aanmeld Logboeken). Hoewel de informatie beschikbaar is via de MS Graph API, kunt u nu dezelfde gegevens ophalen met behulp van de Azure AD Power shell-cmdlets voor rapportage.
 
-Dit artikel geeft u een overzicht van de PowerShell-cmdlets die u gebruiken voor controlelogboeken en aanmeldingslogboeken.
+In dit artikel vindt u een overzicht van de Power shell-cmdlets die moeten worden gebruikt voor audit logboeken en aanmeldings Logboeken.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-[Controlelogboeken](concept-audit-logs.md) bieden traceerbaarheid via logboeken voor alle wijzigingen die worden uitgevoerd door verschillende functies binnen Azure AD. Voorbeelden van controlelogboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleidsregels.
+[Audit logboeken](concept-audit-logs.md) bieden traceer baarheid via Logboeken voor alle wijzigingen die worden uitgevoerd door diverse functies in azure AD. Voor beelden van audit logboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleid.
 
-U krijgt toegang tot de controlelogboeken met de cmdlet 'Get-AzureADAuditDirectoryLogs'.
+U krijgt toegang tot de audit logboeken met behulp van de cmdlet Get-AzureADAuditDirectoryLogs.
 
 
 | Scenario                      | PowerShell-opdracht |
 | :--                           | :--                |
-| Naam van toepassingsweergave      | Get-AzureADAuditDirectoryLogs -Filter "geïnitieerdDoor/app/displayName eq 'Azure AD Cloud Sync'" |
-| Categorie                      | Get-AzureADAuditDirectoryLogs -Filter "categorie eq 'Application Management'" |
-| Datum activiteitsdatum            | Get-AzureADAuditDirectoryLogs -Filter "activityDateTime gt 2019-04-18" |
-| Alle bovenstaande              | Get-AzureADAuditDirectoryLogs -Filter "geïnitieerdDoor/app/displayName eq 'Azure AD Cloud Sync' en categorie eq 'Application Management' en activityDateTime gt 2019-04-18"|
+| Weergave naam van toepassing      | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
+| Categorie                      | Get-AzureADAuditDirectoryLogs-filter "categorie EQ" toepassings beheer "" |
+| Datum en tijd van activiteit            | Get-AzureADAuditDirectoryLogs-filter "activityDateTime gt 2019-04-18" |
+| Alle bovenstaande              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en categorie EQ" toepassings beheer "en activityDateTime gt 2019-04-18"|
 
 
-In de volgende afbeelding ziet u een voorbeeld voor deze opdracht. 
+In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
 
-![De knop 'Gegevensoverzicht'](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![De knop gegevens overzicht](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
 ## <a name="sign-in-logs"></a>Aanmeldingslogboeken
 
-De [aanmeldingslogboeken](concept-sign-ins.md) geven informatie over het gebruik van beheerde toepassingen en aanmeldingsactiviteiten voor gebruikers.
+De [aanmeldings](concept-sign-ins.md) logboeken bevatten informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
 
-U krijgt toegang tot de aanmeldingslogboeken met de cmdlet 'Get-AzureADAuditSignInLogs.You get access to the sign-in logs using the 'Get-AzureADAuditSignInLogs cmdlet.
+U krijgt toegang tot de aanmeld logboeken met behulp van de cmdlet Get-AzureADAuditSignInLogs.
 
 
 | Scenario                      | PowerShell-opdracht |
 | :--                           | :--                |
-| Gebruikersnaam             | Get-AzureADAuditSignInLogs -Filter "userDisplayName eq 'Timothy Perkins'" |
-| Datumtijd maken              | Get-AzureADAuditSignInLogs -Filter "createdDateTime gt 2019-04-18T17:30:00.0Z" (Alles sinds 17:30 uur op 4/18) |
-| Status                        | Get-AzureADAuditSignInLogs -Filter "status/foutCode eq 50105" |
-| Naam van toepassingsweergave      | Get-AzureADAuditSignInLogs -Filter "appDisplayName eq 'StoreFrontStudio [wsfed enabled]'" |
-| Alle bovenstaande              | Get-AzureADAuditSignInLogs -Filter "userDisplayName eq 'Timothy Perkins' and status/errorCode ne 0 and appDisplayName eq 'StoreFrontStudio [wsfed enabled]'" |
+| Weergave naam van gebruiker             | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ" Timothy Perkins ' " |
+| Datum en tijd maken              | Get-AzureADAuditSignInLogs-filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (alles sinds 5:30 uur op 4/18) |
+| Status                        | Get-AzureADAuditSignInLogs-filter "status/error code EQ 50105" |
+| Weergave naam van toepassing      | Get-AzureADAuditSignInLogs-filter "appDisplayName EQ" StoreFrontStudio [wsfed ingeschakeld] "" |
+| Alle bovenstaande              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
 
 
-In de volgende afbeelding ziet u een voorbeeld voor deze opdracht. 
+In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
 
-![De knop 'Gegevensoverzicht'](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![De knop gegevens overzicht](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure AD-rapporten](overview-reports.md).
-- [Rapport controlelogboeken](concept-audit-logs.md). 
+- [Rapport controle logboeken](concept-audit-logs.md). 
 - [Programmatische toegang tot Azure AD-rapporten](concept-reporting-api.md)

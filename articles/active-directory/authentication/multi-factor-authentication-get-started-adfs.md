@@ -1,5 +1,5 @@
 ---
-title: Verificatie in twee stappen Azure MFA en ADFS - Azure Active Directory
+title: Verificatie in twee stappen Azure MFA en ADFS-Azure Active Directory
 description: Dit is de Azure Multi-Factor Authentication-pagina waarop wordt beschreven hoe u met Azure MFA en AD FS aan de slag kunt gaan.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74847130"
 
 <center>
 
-![Azure MFA en ADFS aan de slag](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Aan de slag met Azure MFA en ADFS](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Als uw organisatie met behulp van AD FS uw on-premises Active Directory heeft gefedereerd met Azure Active Directory, zijn er twee opties voor het gebruik van Azure Multi-Factor Authentication.
 

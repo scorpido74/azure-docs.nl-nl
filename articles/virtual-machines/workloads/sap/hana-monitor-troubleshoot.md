@@ -1,6 +1,6 @@
 ---
-title: Monitoring en probleemoplossing van HANA-kant op SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
-description: Monitoring en probleemoplossing van HANA-kant op SAP HANA op een Azure (Large Instances).
+title: Bewaking en probleem oplossing van HANA-zijde op SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Bewaking en probleem oplossing van HANA-zijde op SAP HANA in een Azure (grote instanties).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -22,151 +22,151 @@ ms.locfileid: "77617081"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Bewaken en problemen oplossen vanaf de HANA-zijde
 
-Om problemen met betrekking tot SAP HANA op Azure (Large Instances) effectief te analyseren, is het handig om de hoofdoorzaak van een probleem te beperken. SAP heeft een grote hoeveelheid documentatie gepubliceerd om u te helpen.
+Om het effectief analyseren van problemen met betrekking tot SAP HANA op Azure (grote instanties), is het handig om de hoofd oorzaak van een probleem te beperken. SAP heeft een grote hoeveelheid documentatie gepubliceerd om u te helpen.
 
-Toepasselijke veelgestelde vragen met betrekking tot SAP HANA-prestaties zijn te vinden in de volgende SAP Notes:
+De toepasselijke Veelgestelde vragen met betrekking tot de SAP HANA prestaties vindt u in de volgende SAP-opmerkingen:
 
-- [SAP Note #2222200 – VEELGESTELDE VRAGEN: SAP HANA Network](https://launchpad.support.sap.com/#/notes/2222200)
-- [SAP Note #2100040 – VEELgestelde vragen: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [SAP Note #199997 – VEELgestelde vragen: SAP HANA-geheugen](https://launchpad.support.sap.com/#/notes/2177064)
-- [SAP Note #200000 – VEELgestelde vragen: SAP HANA Performance Optimization](https://launchpad.support.sap.com/#/notes/2000000)
-- [SAP Note #199930 – VEELGESTELDE VRAGEN: SAP HANA I/O-analyse](https://launchpad.support.sap.com/#/notes/1999930)
-- [SAP Note #2177064 – VEELgestelde vragen: SAP HANA-service herstart en crasht](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP-Opmerking #2222200: veelgestelde vragen: SAP HANA netwerk](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP-Opmerking #2100040: veelgestelde vragen: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP Opmerking #199997: veelgestelde vragen: SAP HANA geheugen](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Opmerking #200000: veelgestelde vragen: optimalisatie van SAP HANA prestaties](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP-Opmerking #199930: veelgestelde vragen: SAP HANA I/O-analyse](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP Opmerking #2177064: veelgestelde vragen: SAP HANA service opnieuw opstarten en crashes](https://launchpad.support.sap.com/#/notes/2177064)
 
-## <a name="sap-hana-alerts"></a>SAP HANA-waarschuwingen
+## <a name="sap-hana-alerts"></a>SAP HANA waarschuwingen
 
-Controleer als eerste stap de huidige SAP HANA-waarschuwingslogboeken. Ga in SAP HANA Studio naar **Administration Console: Alerts: Show: all alerts**. Op dit tabblad worden alle SAP HANA-waarschuwingen weergegeven voor specifieke waarden (gratis fysiek geheugen, CPU-gebruik, enz.) die buiten de ingestelde minimum- en maximumdrempels vallen. Standaard worden controles elke 15 minuten automatisch vernieuwd.
+Controleer als eerste stap de huidige SAP HANA waarschuwings Logboeken. Ga in SAP HANA Studio naar de **beheer console: waarschuwingen: weer geven: alle waarschuwingen**. Op dit tabblad worden alle SAP HANA waarschuwingen weer gegeven voor specifieke waarden (vrij fysiek geheugen, CPU-gebruik, enzovoort) die buiten de ingestelde minimum-en maximum drempelwaarde vallen. Standaard worden controles automatisch elke 15 minuten vernieuwd.
 
-![Ga in SAP HANA Studio naar Administration Console: Waarschuwingen: Toon: alle waarschuwingen](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![Ga in SAP HANA Studio naar de beheer console: waarschuwingen: weer geven: alle waarschuwingen](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
-Voor een waarschuwing die wordt geactiveerd vanwege onjuiste drempelinstelling, moet een oplossing worden gereset naar de standaardwaarde of een redelijkere drempelwaarde.
+Voor een waarschuwing die wordt geactiveerd door een onjuiste drempel waarde, moet een oplossing worden ingesteld op de standaard waarde of een redelijke drempelwaarde.
 
-![De standaardwaarde of een redelijkere drempelwaarde opnieuw instellen](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
+![Opnieuw instellen op de standaard waarde of een redelijke drempel waarde](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
 
-De volgende waarschuwingen kunnen wijzen op CPU-bronproblemen:
+De volgende waarschuwingen kunnen duiden op CPU-resource problemen:
 
-- CPU-gebruik host (Waarschuwing 5)
-- Meest recente savepoint-bewerking (Waarschuwing 28)
-- Duur van savepoint (Waarschuwing 54)
+- CPU-gebruik van host (waarschuwing 5)
+- Meest recente opslag punt bewerking (waarschuwing 28)
+- Duur van opslag punt (waarschuwing 54)
 
-U een hoog CPU-verbruik op uw SAP HANA-database opmerken uit een van de volgende opties:
+U kunt een hoog CPU-verbruik in uw SAP HANA-data base opmerken van een van de volgende:
 
-- Alert 5 (Host CPU-gebruik) wordt verhoogd voor huidig of afgelopen CPU-gebruik
-- Het weergegeven CPU-gebruik op het overzichtsscherm
+- Waarschuwing 5 (host-CPU-gebruik) is geactiveerd voor het huidige of het vorige CPU-gebruik
+- Het weer gegeven CPU-gebruik in het scherm overzicht
 
-![Weergegeven CPU-gebruik op het overzichtsscherm](./media/troubleshooting-monitoring/image3-cpu-usage.png)
+![Weer gegeven CPU-gebruik in het scherm overzicht](./media/troubleshooting-monitoring/image3-cpu-usage.png)
 
-De grafiek Laden kan een hoog CPU-verbruik of een hoog verbruik in het verleden weergeven:
+De laad grafiek kan een hoog CPU-verbruik of hoog verbruik in het verleden weer geven:
 
-![De grafiek Laden kan een hoog CPU-verbruik of een hoog verbruik in het verleden weergeven](./media/troubleshooting-monitoring/image4-load-graph.png)
+![De laad grafiek kan een hoog CPU-verbruik of hoog verbruik in het verleden weer geven](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-Een waarschuwing die wordt geactiveerd als gevolg van een hoog CPU-gebruik kan worden veroorzaakt door verschillende redenen, waaronder, maar niet beperkt tot: uitvoering van bepaalde transacties, het laden van gegevens, taken die niet reageren, langlopende SQL-instructies en slechte queryprestaties (bijvoorbeeld met BW op HANA kubussen).
+Een waarschuwing die wordt geactiveerd als gevolg van een hoog CPU-gebruik kan verschillende oorzaken hebben, waaronder, maar niet beperkt tot: uitvoering van bepaalde trans acties, het laden van gegevens, taken die niet reageren, langdurige SQL-instructies en slechte query prestaties (bijvoorbeeld met BW op HANA-kubussen).
 
-Raadpleeg de [SAP HANA Troubleshooting: CPU Related Causes and Solutions-site](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) voor gedetailleerde stappen voor het oplossen van problemen.
+Raadpleeg het [SAP Hana probleem oplossing: oorzaken voor CPU-problemen en oplossingen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) voor gedetailleerde probleemoplossings stappen.
 
 ## <a name="operating-system"></a>Besturingssysteem
 
-Een van de belangrijkste controles voor SAP HANA op Linux is om ervoor te zorgen dat Transparante Grote Pagina's worden uitgeschakeld, zie [SAP Note #2131662 – Transparent Huge Pages (THP) op SAP HANA Servers](https://launchpad.support.sap.com/#/notes/2131662).
+Een van de belangrijkste controles voor SAP HANA op Linux is om ervoor te zorgen dat transparante, enorme pagina's worden uitgeschakeld. Zie [SAP Note #2131662 – transparent enorme Pages (THP) op SAP Hana servers](https://launchpad.support.sap.com/#/notes/2131662)voor meer informatie.
 
-- U controleren of transparante enorme pagina's zijn ingeschakeld via de volgende Linux-opdracht: **cat /sys/kernel/mm/transparent\_hugepage/enabled**
-- Als _altijd_ is ingesloten tussen haakjes zoals hieronder, betekent dit dat de transparante enorme pagina's zijn ingeschakeld: [altijd] madvise nooit; als _nooit_ is ingesloten tussen haakjes zoals hieronder, betekent dit dat de transparante grote pagina's zijn uitgeschakeld: altijd madvise [nooit]
+- U kunt controleren of transparante enorme pagina's zijn ingeschakeld via de volgende Linux-opdracht: **kat\_/sys/kernel/mm/transparent hugepage/ingeschakeld**
+- Als er _altijd_ tussen vier Kante haken staan zoals hieronder, betekent dit dat de transparante enorme pagina's zijn ingeschakeld: [always] madvise nooit; Als er _nooit_ tussen vier Kante haken staan zoals hieronder, betekent dit dat de transparante enorme pagina's zijn uitgeschakeld: altijd madvise [nooit]
 
-De volgende Linux opdracht moet niets **retourneren: rpm -qa | grep ulimit.** Als blijkt _dat Ulimit_ is geïnstalleerd, verwijdert u deze onmiddellijk.
+De volgende Linux-opdracht zou niets kunnen retour neren: **rpm-QA | grep-ulimit.** Als wordt weer gegeven dat _ulimit_ is geïnstalleerd, verwijdert u dit onmiddellijk.
 
 ## <a name="memory"></a>Geheugen
 
-U vaststellen dat de hoeveelheid geheugen die door de SAP HANA-database wordt toegewezen hoger is dan verwacht. De volgende waarschuwingen geven problemen met een hoog geheugengebruik aan:
+U kunt zien dat de hoeveelheid geheugen die is toegewezen door de SAP HANA data base hoger is dan verwacht. De volgende waarschuwingen wijzen op problemen met een hoog geheugen gebruik:
 
-- Fysiek geheugengebruik hosten (Waarschuwing 1)
-- Geheugengebruik van naamserver (Waarschuwing 12)
-- Totaal geheugengebruik van Kolomarchieftabellen (Waarschuwing 40)
-- Geheugengebruik van services (Alert 43)
-- Geheugengebruik van de hoofdopslag van kolomarchieftabellen (Waarschuwing 45)
-- Runtime-dumpbestanden (Waarschuwing 46)
+- Fysiek geheugen gebruik van host (waarschuwing 1)
+- Geheugen gebruik van naam server (waarschuwing 12)
+- Totaal geheugen gebruik van Column Store-tabellen (waarschuwing 40)
+- Geheugen gebruik van Services (waarschuwing 43)
+- Geheugen gebruik van de hoofd opslag van Column Store-tabellen (waarschuwing 45)
+- Runtime dump bestanden (waarschuwing 46)
 
-Raadpleeg de [SAP HANA Troubleshooting: Memory Problems-site](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) voor gedetailleerde stappen voor het oplossen van problemen.
+Raadpleeg de [SAP Hana problemen oplossen: site geheugen problemen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) voor gedetailleerde stappen voor probleem oplossing.
 
 ## <a name="network"></a>Netwerk
 
-Raadpleeg [SAP Note #2081065 – Sap HANA-netwerk oplossen en](https://launchpad.support.sap.com/#/notes/2081065) voer de stappen voor het oplossen van problemen in het netwerk uit in deze SAP Note.
+Raadpleeg [SAP note #2081065: problemen met SAP Hana netwerk oplossen](https://launchpad.support.sap.com/#/notes/2081065) en de stappen voor het oplossen van problemen met het netwerk uitvoeren in deze SAP-notitie.
 
-1. Het analyseren van de retourtijd tussen server en client.
-  A. Voer het SQL-script [_\_\_HANA-netwerkclients uit_](https://launchpad.support.sap.com/#/notes/1969700)_._
+1. De round-trip tijd tussen de server en de client analyseren.
+  A. Voer het SQL- [_script\_Hana\_-netwerkclients_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
   
-2. Analyseer internode communicatie.
-  A. Sql-script [_\_HANA\_Network Services_](https://launchpad.support.sap.com/#/notes/1969700)uitvoeren _._
+2. Analyseer communicatie tussen knoop punten.
+  A. Voer SQL script [_Hana\_-\_netwerk services_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
 
-3. Voer **Linux-opdrachtifconfig uit** (de uitvoer geeft aan of er pakketverliezen optreden).
-4. Run Linux opdracht **tcpdump**.
+3. Voer Linux-opdracht **ifconfig** uit (de uitvoer geeft aan of er pakket verlies optreedt).
+4. Voer Linux-opdracht **tcpdump**uit.
 
-Gebruik ook de open source [IPERF-tool](https://iperf.fr/) (of iets dergelijks) om de prestaties van het echte toepassingsnetwerk te meten.
+U kunt ook het open source [IPERF](https://iperf.fr/) -hulp programma (of vergelijkbaar) gebruiken om de prestaties van het werkelijke toepassings netwerk te meten.
 
-Raadpleeg de site [SAP HANA Troubleshooting: Networking Performance and Connectivity Problems](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) voor gedetailleerde stappen voor het oplossen van problemen.
+Raadpleeg de [SAP Hana probleem oplossing: netwerk prestaties en connectiviteits problemen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) site voor gedetailleerde probleemoplossings stappen.
 
 ## <a name="storage"></a>Storage
 
-Vanuit het oogpunt van de eindgebruiker, een applicatie (of het systeem als geheel) draait traag, reageert niet, of kan zelfs lijken te stoppen met reageren als er problemen zijn met I / O prestaties. Op het tabblad **Volumes** in SAP HANA Studio ziet u de bijgevoegde volumes en welke volumes door elke service worden gebruikt.
+Vanuit het oogpunt van eind gebruikers loopt een toepassing (of het systeem als geheel) traag, reageert niet of kan zelfs reageren als er problemen zijn met de I/O-prestaties. Op het tabblad **volumes** in SAP Hana Studio ziet u de bijgevoegde volumes en welke volumes door elke service worden gebruikt.
 
-![Op het tabblad Volumes in SAP HANA Studio ziet u de bijgevoegde volumes en welke volumes door elke service worden gebruikt](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
+![Op het tabblad volumes in SAP HANA Studio ziet u de bijgevoegde volumes en welke volumes door elke service worden gebruikt.](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
-Bijgevoegde volumes in het onderste deel van het scherm u details van de volumes, zoals bestanden en I / O-statistieken.
+Bijgevoegde volumes in het onderste gedeelte van het scherm kunt u de details van de volumes, zoals bestanden en I/O-statistieken, bekijken.
 
-![Bijgevoegde volumes in het onderste deel van het scherm u details van de volumes zien, zoals bestanden en I/O-statistieken](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
+![Bijgevoegde volumes in het onderste gedeelte van het scherm kunt u de details van de volumes, zoals bestanden en I/O-statistieken, bekijken](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Raadpleeg de [SAP HANA Troubleshooting: I/O Related Root Causes and Solutions](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) en SAP [HANA Troubleshooting: Disk Related Root Causes and Solutions](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) site voor gedetailleerde stappen voor het oplossen van problemen.
+Raadpleeg het [SAP Hana probleem oplossing: I/O-gerelateerde hoofd oorzaken en oplossingen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) en [SAP Hana probleem oplossing: schijf gerelateerde hoofd oorzaken en oplossingen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) site voor gedetailleerde probleemoplossings stappen.
 
-## <a name="diagnostic-tools"></a>Diagnostische hulpprogramma's
+## <a name="diagnostic-tools"></a>Diagnostische Hulpprogram Ma's
 
-Voer een SAP HANA Health\_\_Check uit via HANA Configuration Minichecks. Deze tool retourneert potentieel kritieke technische problemen die al als waarschuwingen in SAP HANA Studio hadden moeten worden aangekaart.
+Voer een SAP HANA Health Check uit via\_de\_Hana-configuratie Minichecks. Met dit hulp programma worden mogelijk kritieke technische problemen geretourneerd die al zouden worden gegenereerd als waarschuwingen in SAP HANA Studio.
 
-Raadpleeg [SAP Note #1969700 – SQL-instructieverzameling voor SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) en download het SQL Statements.zip-bestand dat aan die notitie is gekoppeld. Sla dit zip-bestand op de lokale harde schijf op.
+Raadpleeg [SAP Note #1969700-verzameling van SQL-instructies voor SAP Hana](https://launchpad.support.sap.com/#/notes/1969700) en down load het zip-bestand van SQL statements dat aan deze opmerking is gekoppeld. Sla dit zip-bestand op de lokale harde schijf op.
 
-Klik in SAP HANA Studio op het tabblad **Systeemgegevens** met de rechtermuisknop in de kolom **Naam** en selecteer **SQL-instructies importeren**.
+Klik in SAP HANA Studio met de rechter muisknop in de kolom **naam** op het tabblad **systeem informatie** en selecteer **SQL-instructies importeren**.
 
-![Klik in SAP HANA Studio op het tabblad Systeemgegevens met de rechtermuisknop in de kolom Naam en selecteer SQL-instructies importeren](./media/troubleshooting-monitoring/image7-import-statements-a.png)
+![Klik in SAP HANA Studio met de rechter muisknop in de kolom naam op het tabblad systeem informatie en selecteer SQL-instructies importeren](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Selecteer het SQL Statements.zip-bestand dat lokaal is opgeslagen en er wordt een map met de bijbehorende SQL-instructies geïmporteerd. Op dit punt kunnen de vele verschillende diagnostische controles worden uitgevoerd met deze SQL-instructies.
+Selecteer de SQL-instructies. zip-bestand lokaal opgeslagen en er wordt een map met de bijbehorende SQL-instructies geïmporteerd. Op dit punt kunnen de vele verschillende diagnostische controles worden uitgevoerd met deze SQL-instructies.
 
-Als u bijvoorbeeld de bandbreedtevereisten voor SAP HANA-systeemreplicatie wilt testen, klikt u met de rechtermuisknop op de **bandbreedteinstructie** onder **Replicatie: Bandbreedte** en selecteert u **Openen** in SQL-console.
+Als u bijvoorbeeld de bandbreedte vereisten voor SAP HANA systeem replicatie wilt testen, klikt u met de rechter muisknop op de overzicht van de **band breedte** onder **replicatie: band breedte** en selecteert u **openen** in SQL-console.
 
-De volledige SQL-instructie wordt geopend, zodat invoerparameters (wijzigingssectie) kunnen worden gewijzigd en vervolgens kunnen worden uitgevoerd.
+De volledige SQL-instructie opent het toestaan van invoer parameters (sectie wijzigen) om deze te wijzigen en vervolgens uit te voeren.
 
-![De volledige SQL-instructie wordt geopend, zodat invoerparameters (wijzigingssectie) kunnen worden gewijzigd en vervolgens kunnen worden uitgevoerd](./media/troubleshooting-monitoring/image8-import-statements-b.png)
+![De volledige SQL-instructie opent het toestaan van invoer parameters (sectie wijzigen) die moeten worden gewijzigd en vervolgens uitgevoerd](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Een ander voorbeeld is met de rechtermuisknop op de instructies onder **Replicatie: Overzicht**. Selecteer **Uitvoeren** in het contextmenu:
+Een ander voor beeld is het klikken met de rechter muisknop op de instructies onder **replicatie: overzicht**. Selecteer **uitvoeren** in het context menu:
 
-![Een ander voorbeeld is met de rechtermuisknop op de instructies onder Replicatie: Overzicht. Uitvoeren selecteren in het contextmenu](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![Een ander voor beeld is het klikken met de rechter muisknop op de instructies onder replicatie: overzicht. Selecteer uitvoeren in het context menu](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
 Dit resulteert in informatie die helpt bij het oplossen van problemen:
 
-![Dit zal resulteren in informatie die zal helpen bij het oplossen van problemen](./media/troubleshooting-monitoring/image10-import-statements-d.png)
+![Dit leidt tot informatie die helpt bij het oplossen van problemen](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Doe hetzelfde voor\_\_HANA Configuration Minichecks en controleer op _X-markeringen_ in de kolom _C_ (Critical).
+Doe hetzelfde voor de HANA\_-\_configuratie Minichecks en controleer of er _X_ -tekens in de kolom _C_ (kritiek) staan.
 
-Voorbeelduitgangen:
+Voorbeeld uitvoer:
 
-**HANA\_\_Configuration\_MiniChecks Rev102.01+1** voor algemene SAP HANA-controles.
+**Hana\_-\_configuratie\_MiniChecks Rev 102.01 + 1** voor algemene SAP Hana controles.
 
-![HANA\_\_Configuration\_MiniChecks Rev102.01+1 voor algemene SAP HANA-controles](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA\_-\_configuratie\_MiniChecks rev 102.01 + 1 voor algemene SAP Hana controles](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**HANA\_\_Services Overzicht** voor een overzicht van wat SAP HANA-services momenteel draaien.
+**Overzicht\_van\_Hana-Services** voor een overzicht van de SAP Hana services die momenteel worden uitgevoerd.
 
-![HANA\_\_Services Overzicht voor een overzicht van welke SAP HANA-services momenteel actief zijn](./media/troubleshooting-monitoring/image12-services-overview.png)
+![Overzicht\_van\_Hana-Services voor een overzicht van de SAP Hana services die momenteel worden uitgevoerd](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**HANA\_\_Services Statistieken** voor SAP HANA service informatie (CPU, geheugen, enz.).
+**Hana\_-\_services statistieken** voor SAP Hana service-informatie (CPU, geheugen, enzovoort).
 
-![HANA\_\_Services Statistieken voor SAP HANA service informatie](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![Statistieken\_voor\_Hana-Services voor informatie over SAP Hana-service](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_\_Configuratieoverzicht\_Rev110+** voor algemene informatie over het SAP HANA-exemplaar.
+**Hana\_-\_configuratie\_Overview Rev110 +** voor algemene informatie over het SAP Hana-exemplaar.
 
-![HANA\_\_Configuratieoverzicht\_Rev110+ voor algemene informatie over het SAP HANA-exemplaar](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![HANA\_-\_configuratie\_Overview Rev110 + voor algemene informatie over het SAP Hana-exemplaar](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_\_Configuration\_Parameters Rev70+** om SAP HANA-parameters te controleren.
+**Hana\_-\_configuratie\_parameters Rev70 +** om SAP Hana parameters te controleren.
 
-![HANA\_\_Configuration\_Parameters Rev70+ om SAP HANA-parameters te controleren](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA\_-\_configuratie\_parameters Rev70 + om SAP Hana parameters te controleren](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **Volgende stappen**
 
-- Doorverwijzen [Hoge beschikbaarheid die in SUSE is ingesteld met behulp van de STONITH.](ha-setup-with-stonith.md)
+- Raadpleeg [de maximale Beschik baarheid die in SuSE is ingesteld met behulp van de STONITH](ha-setup-with-stonith.md).

@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67671204"
 ---
-1. Installeer dapl, rdmacm, ibverbs en mlx4
+1. Dapl, rdmacm, ibverbs en mlx4 installeren
 
    ```bash
    sudo apt-get update
@@ -20,7 +20,7 @@ ms.locfileid: "67671204"
 
    ```
 
-2. Schakel RDMA in /etc/waagent.conf in door de volgende configuratieregels niet te becommentariërd. U hebt roottoegang nodig om dit bestand te bewerken.
+2. In/etc/waagent.conf schakelt u RDMA in door de volgende configuratie regels op te heffen. U hebt toegang tot de hoofdmap nodig om dit bestand te bewerken.
   
    ```
    OS.EnableRDMA=y
@@ -28,7 +28,7 @@ ms.locfileid: "67671204"
    OS.UpdateRdmaDriver=y
    ```
 
-3. Voeg de volgende geheugeninstellingen in KB toe of wijzig deze in het bestand /etc/security/limits.conf. U hebt roottoegang nodig om dit bestand te bewerken. Voor testdoeleinden u memlock instellen op onbeperkt. Bijvoorbeeld: `<User or group name>   hard    memlock   unlimited`.
+3. Voeg de volgende geheugen instellingen in KB toe of wijzig deze in het/etc/security/limits.conf-bestand. U hebt toegang tot de hoofdmap nodig om dit bestand te bewerken. Voor test doeleinden kunt u memlock instellen op onbeperkt. Bijvoorbeeld: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>
@@ -36,17 +36,17 @@ ms.locfileid: "67671204"
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
   
-4. Installeer De Intel MPI-bibliotheek. Ofwel [kopen en downloaden](https://software.intel.com/intel-mpi-library/) van de bibliotheek van Intel of download de gratis evaluatie [versie](https://registrationcenter.intel.com/en/forms/?productid=1740).
+4. Installeer de Intel MPI-bibliotheek. [Koop en down load](https://software.intel.com/intel-mpi-library/) de bibliotheek van Intel of down load de [gratis evaluatie versie](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
  
-   Alleen Intel MPI 5.x runtimes worden ondersteund.
+   Alleen Intel MPI 5. x-Runtimes worden ondersteund.
  
-   Zie de [installatiehandleiding voor de Intel MPI-bibliotheek voor](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)installatiestappen voor installatiestappen voor installatie.
+   Zie de installatie handleiding voor de [Intel mpi-bibliotheek](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)voor installatie stappen.
 
-5. Ptrace inschakelen voor niet-root niet-foutopsporingsprocessen (nodig voor de meest recente versies van Intel MPI).
+5. Schakel ptrace in voor niet-hoofd processen zonder fout opsporing (vereist voor de meest recente versies van Intel MPI).
  
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope

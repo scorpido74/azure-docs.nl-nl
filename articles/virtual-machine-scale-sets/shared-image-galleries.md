@@ -1,6 +1,6 @@
 ---
-title: VM-afbeeldingen delen met gedeelde galerieën
-description: Meer informatie over het gebruik van gedeelde afbeeldingsgalerieën om VM-afbeeldingen in uw organisatie te delen.
+title: VM-installatie kopieën delen met gedeelde galerieën
+description: Meer informatie over het gebruik van de gemeen schappelijke afbeeldings galerieën om VM-installatie kopieën te delen in uw organisatie.
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
 tags: azure-resource-manager
@@ -19,7 +19,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276350"
 ---
-# <a name="shared-image-galleries-overview"></a>Overzicht van gedeelde galerieën
+# <a name="shared-image-galleries-overview"></a>Overzicht van galerieën met gedeelde afbeeldingen
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -27,4 +27,4 @@ ms.locfileid: "76276350"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het implementeren van gedeelde afbeeldingen met azure [CLI](shared-images-cli.md) en [Azure PowerShell](shared-images-powershell.md)
+Meer informatie over het implementeren van gedeelde installatie kopieën met behulp van [Azure cli](shared-images-cli.md) en [Azure PowerShell](shared-images-powershell.md)

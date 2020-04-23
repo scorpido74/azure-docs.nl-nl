@@ -16,10 +16,10 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67659785"
 ---
-In de volgende tabel wordt uitgelegd hoe u ondersteuning voor deze binding in elke ontwikkelomgeving toevoegen.
+De volgende tabel bevat informatie over het toevoegen van ondersteuning voor deze binding in elke ontwikkel omgeving.
 
 | Ontwikkelomgeving               | Ondersteuning toevoegen in <br>Functions 1.x  |
 |----------------------|----------------|
-|Lokale ontwikkeling - C# klassenbibliotheek       | [Het pakket installeren](../articles/azure-functions/functions-bindings-register.md#vs) | 
-|Lokale ontwikkeling - C# script, JavaScript, F # |Automatisch         |
-|Portalontwikkeling|  Automatisch    |
+|Lokale ontwikkeling: C#-klassen bibliotheek       | [Het pakket installeren](../articles/azure-functions/functions-bindings-register.md#vs) | 
+|Lokale ontwikkeling: C# script, java script, F # |Automatisch         |
+|Portal-ontwikkeling|  Automatisch    |

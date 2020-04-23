@@ -16,6 +16,6 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "68589944"
 ---
 > [!IMPORTANT]
-> StorSimple Virtual Array (1200-serie) bereikt zijn [einde van de levensduur](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) in december 2020. Als u nieuwe implementaties van StorSimple Virtual Array overweegt, raden we u aan andere alternatieven te verkennen, zoals [Azure File Sync-](../articles/storage/files/storage-sync-files-deployment-guide.md) of [Azure Data Box Online-apparaten](https://docs.microsoft.com/azure/databox-online/) voor uw workloads.
+> De StorSimple Virtual array (1200-serie) bereikt het [einde van de levens duur](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) in december 2020. Als u nieuwe implementaties van StorSimple Virtual array overweegt, raden we u aan andere alternatieven te verkennen, zoals [Azure file sync](../articles/storage/files/storage-sync-files-deployment-guide.md) of [Azure data Box online apparaten](https://docs.microsoft.com/azure/databox-online/) voor uw workloads.
 
 

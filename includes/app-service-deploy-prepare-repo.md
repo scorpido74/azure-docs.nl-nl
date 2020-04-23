@@ -15,25 +15,25 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67836804"
 ---
-## <a name="prepare-your-repository"></a>Uw opslagplaats voorbereiden
+## <a name="prepare-your-repository"></a>Uw opslag plaats voorbereiden
 
-Als u automatische builds wilt krijgen van de Azure App Service Kudu-buildserver, controleert u of uw bronmap de juiste bestanden in uw project heeft.
+Zorg ervoor dat de hoofdmap van uw opslag plaats de juiste bestanden bevat in het project om automatische builds op te halen van Azure App Service kudu-buildserver.
 
-| Runtime | Hoofdmapbestanden |
+| Runtime | Hoofdmap bestanden |
 |-|-|
-| ASP.NET (alleen Windows) | _*.sln_, _*.csproj_of _default.aspx_ |
-| ASP.NET Core | _*.sln_ of _*.csproj_ |
-| PHP | _Index.php_ |
-| Ruby (alleen Linux) | _Gemfile Gemfile_ |
-| Node.js | _server.js_, _app.js_of _package.json_ met een startscript |
-| Python | .py , _requirements.txt_, of _runtime.txt_ _ \*_ |
-| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_of _iisstart.htm_ |
-| Webtaken | _\<job_name>/run. extensie \<>_ onder _\_App-gegevens/-taken/continu_ voor continue WebJobs of _App-gegevens/taken/geactiveerd\__ voor geactiveerde WebJobs. Zie [Kudu WebJobs-documentatie](https://github.com/projectkudu/kudu/wiki/WebJobs)voor meer informatie. |
-| Functions | Zie [Continue implementatie voor Azure-functies](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
+| ASP.NET (alleen Windows) | _*. SLN_, _*. csproj_of _default. aspx_ |
+| ASP.NET Core | _*. SLN_ of _*. csproj_ |
+| PHP | _index. php_ |
+| Ruby (alleen Linux) | _Gemfile_ |
+| Node.js | _server. js_, _app. js_of _package. json_ met een begin script |
+| Python | . py, _Requirements. txt_of _runtime. txt_ _ \*_ |
+| HTML | _default. htm_, _default. html_, _default. asp_, _index. htm_, _index. html_of _iisstart. htm_ |
+| Webtaken | _\<job_name>/run. extensie \<>_ onder _app\_-gegevens/-taken/doorlopend_ voor doorlopende webjobs, of _app\_-gegevens/-taken/geactiveerd_ voor getriggerde webjobs. Zie [kudu](https://github.com/projectkudu/kudu/wiki/WebJobs)voor meer informatie. |
+| Functions | Zie [continue implementatie voor Azure functions](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
 
-Als u uw implementatie wilt aanpassen, neemt u een *.deployment-bestand* op in de hoofdmap van de opslagplaats. Zie [Implementaties en](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) Aangepast [implementatiescript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)aanpassen voor meer informatie.
+Als u uw implementatie wilt aanpassen, neemt u een *. Deployment* -bestand op in de hoofdmap van de opslag plaats. Zie [implementaties](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) en [aangepast implementatie script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)aanpassen voor meer informatie.
 
 > [!NOTE]
-> Als u zich ontwikkelt in Visual Studio, laat [Visual Studio dan een opslagplaats voor u maken.](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio) Het project is direct klaar om te worden geïmplementeerd met behulp van Git.
+> Als u in Visual Studio ontwikkelt, kunt [u Visual Studio een opslag plaats laten maken](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). Het project kan direct worden geïmplementeerd met behulp van Git.
 >
 

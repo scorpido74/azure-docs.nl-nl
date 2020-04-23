@@ -1,6 +1,6 @@
 ---
-title: Slimme contractintegratiepatronen - Azure Blockchain Workbench
-description: Overzicht van slimme contractintegratiepatronen in Azure Blockchain Workbench Preview.
+title: Integratie patronen voor Smart-contracten-Azure Block Chain workbench
+description: Overzicht van de integratie patronen voor Smart-contracten in azure Block Chain Workbench preview.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
@@ -13,226 +13,226 @@ ms.locfileid: "74325974"
 ---
 # <a name="smart-contract-integration-patterns"></a>Integratiepatronen voor slimme contracten
 
-Slimme contracten vertegenwoordigen vaak een zakelijke workflow die moet worden geïntegreerd met externe systemen en apparaten.
+Slimme contracten vertegenwoordigen vaak een zakelijke werk stroom die moet worden geïntegreerd met externe systemen en apparaten.
 
-De vereisten van deze werkstromen omvatten de noodzaak om transacties te starten op een gedistribueerd grootboek met gegevens van een extern systeem, service of apparaat. Ze moeten ook externe systemen laten reageren op gebeurtenissen die voortkomen uit slimme contracten op een gedistribueerd grootboek.
+De vereisten van deze werk stromen zijn een nood zaak om trans acties te initiëren op een gedistribueerd groot boek dat gegevens van een extern systeem, een service of een apparaat bevat. Daarnaast moeten externe systemen reageren op gebeurtenissen die afkomstig zijn van slimme contracten op een gedistribueerd groot boek.
 
-De REST API- en messaging-integratie verzendt transacties van externe systemen naar slimme contracten die zijn opgenomen in een Azure Blockchain Workbench-toepassing. Het stuurt ook gebeurtenismeldingen naar externe systemen op basis van wijzigingen die plaatsvinden binnen een toepassing.
+De integratie van REST API en berichten verzendt trans acties van externe systemen naar slimme contracten die zijn opgenomen in een Azure Block Chain Workbench-toepassing. Ook worden gebeurtenis meldingen naar externe systemen verzonden op basis van wijzigingen die in een toepassing plaatsvinden.
 
-Voor scenario's voor gegevensintegratie bevat Azure Blockchain Workbench een reeks databaseweergaven die een combinatie van transactionele gegevens uit de blockchain en meta-gegevens over toepassingen en slimme contracten samenvoegen.
+Voor scenario's voor gegevens integratie bevat Azure Block Chain Workbench een set database weergaven waarmee u een combi natie van transactionele gegevens uit de Block chain en meta gegevens over toepassingen en slimme contracten kunt samen voegen.
 
-Bovendien kunnen sommige scenario's, zoals die met betrekking tot de toeleveringsketen of media, ook de integratie van documenten vereisen. Hoewel Azure Blockchain Workbench geen API-aanroepen biedt voor het rechtstreeks verwerken van documenten, kunnen documenten worden opgenomen in een blockchain-toepassing. Deze sectie bevat ook dat patroon.
+Daarnaast is het mogelijk dat er voor sommige scenario's, zoals die met betrekking tot de toeleverings keten of media, ook de integratie van documenten vereist is. Hoewel Azure Block Chain Workbench geen API-aanroepen biedt voor het rechtstreeks verwerken van documenten, kunnen documenten worden opgenomen in een Block Chain-toepassing. Deze sectie bevat ook dat patroon.
 
 Deze sectie bevat de patronen die zijn geïdentificeerd voor het implementeren van elk van deze typen integraties in uw end-to-end-oplossingen.
 
-## <a name="rest-api-based-integration"></a>REST API-gebaseerde integratie
+## <a name="rest-api-based-integration"></a>Integratie op basis van REST API
 
-Mogelijkheden binnen de door Azure Blockchain Workbench gegenereerde webtoepassing worden blootgesteld via de REST API. Tot de mogelijkheden behoren het uploaden, configureren en beheren van toepassingen in Azure Blockchain Workbench, het verzenden van transacties naar een gedistribueerd grootboek en het opvragen van metagegevens en grootboekgegevens van toepassingen.
+De mogelijkheden van Azure Block Chain Workbench gegenereerde webtoepassingen worden weer gegeven via de REST API. De mogelijkheden zijn onder andere Azure Block Chain Workbench upload, configuratie en beheer van toepassingen, het verzenden van trans acties naar een gedistribueerd groot boek en het uitvoeren van query's op meta gegevens van toepassingen en de grootboek informatie.
 
-De REST API wordt voornamelijk gebruikt voor interactieve clients zoals web-, mobiele en bottoepassingen.
+De REST API wordt voornamelijk gebruikt voor interactieve clients, zoals web-, mobiele en bot-toepassingen.
 
-In deze sectie wordt gekeken naar patronen die zijn gericht op de aspecten van de REST API die transacties verzenden naar een gedistribueerd grootboek en patronen die gegevens over transacties uit de SQL-database van Azure Blockchain Workbench *opvragen.*
+In deze sectie wordt aandacht besteed aan patronen die gericht zijn op de aspecten van de REST API die trans acties verzenden naar een gedistribueerd groot boek en patronen waarmee gegevens over trans acties uit Azure Block Chain Workbench worden *opgevraagd SQL database.*
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Transacties verzenden naar een gedistribueerd grootboek vanuit een extern systeem
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Trans acties vanuit een extern systeem naar een gedistribueerd groot boek verzenden
 
-De Azure Blockchain Workbench REST API verzendt geverifieerde aanvragen om transacties uit te voeren op een gedistribueerd grootboek.
+Met Azure Block Chain Workbench REST API worden geverifieerde aanvragen verzonden voor het uitvoeren van trans acties in een gedistribueerd groot boek.
 
-![Transacties verzenden naar een gedistribueerd grootboek](./media/integration-patterns/send-transactions-ledger.png)
+![Trans acties naar een gedistribueerd groot boek verzenden](./media/integration-patterns/send-transactions-ledger.png)
 
-Het uitvoeren van transacties vindt plaats met behulp van het eerder afgebeelde proces, waarbij:
+Trans acties worden uitgevoerd met behulp van het proces dat eerder is weer gegeven, waarbij:
 
--   De externe toepassing wordt geverifieerd naar de Azure Active Directory die is ingericht als onderdeel van de Azure Blockchain Workbench-implementatie.
--   Geautoriseerde gebruikers ontvangen een token aan toonder dat kan worden verzonden met aanvragen naar de API.
--   Externe toepassingen bellen naar de REST API met behulp van het token aan toonder.
--   De REST API verpakt de aanvraag als een bericht en stuurt deze naar de ServiceBus. Vanaf hier wordt het opgehaald, ondertekend en verzonden naar het juiste gedistribueerde grootboek.
--   De REST API doet een verzoek aan de Azure Blockchain Workbench SQL DB om de aanvraag vast te leggen en de huidige inrichtingsstatus vast te stellen.
--   De SQL DB retourneert de inrichtingsstatus en de API-aanroep retourneert de ID naar de externe toepassing die de id heeft genoemd.
+-   De externe toepassing wordt geverifieerd bij de Azure Active Directory ingericht als onderdeel van de Azure Block Chain Workbench-implementatie.
+-   Geautoriseerde gebruikers ontvangen een Bearer-token dat met aanvragen naar de API kan worden verzonden.
+-   Externe toepassingen voeren de REST API met behulp van het Bearer-token.
+-   De aanvraag wordt door de REST API als een bericht verpakt en verzonden naar de Service Bus. Hier wordt het opgehaald, ondertekend en verzonden naar het juiste gedistribueerde groot boek.
+-   De REST API maakt een aanvraag voor de Azure Block Chain Workbench SQL-Data Base om de aanvraag vast te leggen en de huidige inrichtings status in te stellen.
+-   De SQL-data base retourneert de inrichtings status en de API-aanroep retourneert de ID naar de externe toepassing die de naam heeft aangeroepen.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Blockchain Workbench-metagegevens en gedistribueerde grootboektransacties opvragen
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Query's uitvoeren op meta gegevens van Block Chain Workbench en gedistribueerde grootboek transacties
 
-De Azure Blockchain Workbench REST API verzendt geverifieerde aanvragen naar querygegevens met betrekking tot slimme contractuitvoering op een gedistribueerd grootboek.
+Met Azure Block Chain Workbench REST API worden geverifieerde aanvragen verzonden naar query Details met betrekking tot het uitvoeren van een slim contract in een gedistribueerd groot boek.
 
-![Metagegevens opvragen](./media/integration-patterns/querying-metadata.png)
+![Meta gegevens opvragen](./media/integration-patterns/querying-metadata.png)
 
-Query's vindt plaats met behulp van het eerder afgebeelde proces, waarbij:
+Query's worden uitgevoerd op basis van het proces dat eerder is getoond, waarbij:
 
-1. De externe toepassing wordt geverifieerd naar de Azure Active Directory die is ingericht als onderdeel van de Azure Blockchain Workbench-implementatie.
-2. Geautoriseerde gebruikers ontvangen een token aan toonder dat kan worden verzonden met aanvragen naar de API.
-3. Externe toepassingen bellen naar de REST API met behulp van het token aan toonder.
-4. De REST API query's de gegevens voor de aanvraag van de SQL DB en retourneert deze naar de client.
+1. De externe toepassing wordt geverifieerd bij de Azure Active Directory ingericht als onderdeel van de Azure Block Chain Workbench-implementatie.
+2. Geautoriseerde gebruikers ontvangen een Bearer-token dat met aanvragen naar de API kan worden verzonden.
+3. Externe toepassingen voeren de REST API met behulp van het Bearer-token.
+4. De REST API query's uitvoeren op de gegevens voor de aanvraag van de SQL-data base en retourneert deze naar de client.
 
 ## <a name="messaging-integration"></a>Integratie van berichten
 
-Messaging-integratie vergemakkelijkt de interactie met systemen, services en apparaten waarbij een interactieve aanmelding niet mogelijk of wenselijk is. Messaging-integratie richt zich op twee soorten berichten: berichten waarin om transacties worden gevraagd, worden uitgevoerd op een gedistribueerd grootboek en gebeurtenissen die door dat grootboek worden weergegeven wanneer transacties hebben plaatsgevonden.
+Integratie van berichten vereenvoudigt de interactie met systemen, services en apparaten waarbij een interactieve aanmelding niet mogelijk of wenselijk is. Integratie van berichten gericht op twee typen berichten: berichten die trans acties aanvragen, worden uitgevoerd op een gedistribueerd groot boek, en gebeurtenissen die door het groot boek worden weer gegeven wanneer er trans acties zijn uitgevoerd.
 
-Messaging-integratie richt zich op de uitvoering en monitoring van transacties met betrekking tot het maken van gebruikers, het maken van contracten en de uitvoering van transacties op contracten en wordt voornamelijk gebruikt door *headless* back-end systemen.
+Integratie van berichten richt zich op de uitvoering en controle van trans acties met betrekking tot het maken van een gebruiker, het maken van contracten en het uitvoeren van trans acties voor contracten en wordt voornamelijk gebruikt door *headless* back-endsystemen.
 
-In deze sectie wordt gekeken naar patronen die zijn gericht op de aspecten van de op berichten gebaseerde API die transacties verzenden naar een gedistribueerd grootboek en patronen die gebeurtenisberichten weergeven die worden blootgesteld door het onderliggende gedistribueerde grootboek.
+In deze sectie ziet u patronen die gericht zijn op de aspecten van de API op basis van berichten die trans acties verzendt naar een gedistribueerd groot boek en patronen die gebeurtenis berichten vertegenwoordigen die worden weer gegeven door het onderliggende gedistribueerde groot boek.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>One-way event delivery from a smart contract to a event consumer 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Eenrichtings gebeurtenis levering van een slim contract naar een event consumer 
 
-In dit scenario vindt een gebeurtenis plaats binnen een slim contract, bijvoorbeeld een statuswijziging of de uitvoering van een specifiek type transactie. Dit evenement wordt via een Event Grid uitgezonden naar downstream consumenten, en die consumenten nemen vervolgens passende maatregelen.
+In dit scenario treedt er een gebeurtenis op in een slim contract, bijvoorbeeld een status wijziging of de uitvoering van een specifiek type trans actie. Deze gebeurtenis wordt uitgezonden via een Event Grid naar downstream-consumenten en deze consumenten nemen vervolgens de nodige maat regelen.
 
-Een voorbeeld van dit scenario is dat wanneer een transactie plaatsvindt, een consument wordt gewaarschuwd en actie kan ondernemen, zoals het opnemen van de informatie in een SQL DB of de Common Data Service. Dit scenario is hetzelfde patroon dat Workbench volgt om de SQL DB *van de off-chain* te vullen.
+Een voor beeld van dit scenario is dat wanneer een trans actie wordt uitgevoerd, een consument wordt gewaarschuwd en actie kan ondernemen, zoals het vastleggen van de gegevens in een SQL-data base of de Common Data Service. Dit scenario is hetzelfde patroon dat Workbench volgt om de SQL-Data Base *uit de buiten keten* te vullen.
 
-Een ander zou zijn als een slim contract overgaat naar een bepaalde staat, bijvoorbeeld wanneer een contract gaat in een *OutOfCompliance*. Wanneer deze statuswijziging plaatsvindt, kan deze een waarschuwing activeren die naar de mobiele telefoon van een beheerder moet worden verzonden.
+Een ander zou zijn als een slimme contract overgang naar een bepaalde status, bijvoorbeeld wanneer een contract in een *OutOfCompliance*gaat. Wanneer deze status wijziging optreedt, kan een waarschuwing worden gegenereerd om te worden verzonden naar de mobiele telefoon van de beheerder.
 
-![Levering van eenenkele gebeurtenis](./media/integration-patterns/one-way-event-delivery.png)
+![Eenrichtings gebeurtenis levering](./media/integration-patterns/one-way-event-delivery.png)
 
-Dit scenario vindt plaats met behulp van het eerder afgebeelde proces, waarbij:
+Dit scenario treedt op met behulp van het proces dat eerder is weer gegeven, waarbij:
 
--   Het slimme contract wordt overgezet naar een nieuwe status en stuurt een gebeurtenis naar het grootboek.
--   Het grootboek ontvangt en levert het evenement aan Azure Blockchain Workbench.
--   Azure Blockchain Workbench is geabonneerd op gebeurtenissen uit het grootboek en ontvangt de gebeurtenis.
--   Azure Blockchain Workbench publiceert de gebeurtenis aan abonnees op het Event Grid.
--   Externe systemen zijn geabonneerd op het gebeurtenisraster, verbruiken het bericht en nemen de juiste acties.
+-   Het slimme contract verandert in een nieuwe status en verzendt een gebeurtenis naar het groot boek.
+-   Het groot boek ontvangt en levert de gebeurtenis aan Azure Block Chain Workbench.
+-   Azure Block Chain Workbench is geabonneerd op gebeurtenissen van het groot boek en ontvangt de gebeurtenis.
+-   Azure Block Chain Workbench publiceert de gebeurtenis naar abonnees op het Event Grid.
+-   Externe systemen zijn geabonneerd op de Event Grid, gebruiken het bericht en nemen de nodige maat regelen.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>One-way event levering van een bericht van een extern systeem naar een slim contract
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Eenrichtings gebeurtenis aflevering van een bericht van een extern systeem naar een slim contract
 
-Er is ook een scenario dat uit de tegenovergestelde richting stroomt. In dit geval wordt een gebeurtenis gegenereerd door een sensor of een extern systeem en moeten de gegevens van die gebeurtenis naar een slim contract worden verzonden.
+Er is ook een scenario dat van de tegenovergestelde richting loopt. In dit geval wordt een gebeurtenis gegenereerd door een sensor of een extern systeem en de gegevens van die gebeurtenis moeten naar een slim contract worden verzonden.
 
-Een veelvoorkomend voorbeeld is de levering van gegevens van financiële markten, bijvoorbeeld prijzen van grondstoffen, aandelen of obligaties, aan een slim contract.
+Een voor beeld hiervan is het leveren van gegevens van financiële markten, bijvoorbeeld prijzen van grond stoffen, aandelen of obligaties, aan een slim contract.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Directe levering van een Azure Blockchain Workbench in de verwachte indeling
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Directe levering van een Azure Block Chain workbench in de verwachte indeling
 
-Sommige toepassingen zijn gebouwd om te integreren met Azure Blockchain Workbench en genereert en verzendt berichten rechtstreeks in de verwachte indelingen.
+Sommige toepassingen zijn gebouwd om te integreren met Azure Block Chain Workbench en kunnen berichten rechtstreeks genereren en verzenden in de verwachte indelingen.
 
 ![Directe levering](./media/integration-patterns/direct-delivery.png)
 
-Deze levering vindt plaats met behulp van het proces dat eerder is afgebeeld, waarbij:
+Deze levering vindt plaats met behulp van het proces dat eerder is weer gegeven, waarbij:
 
--   Een gebeurtenis vindt plaats in een extern systeem dat het maken van een bericht voor Azure Blockchain Workbench activeert.
--   Het externe systeem heeft code geschreven om dit bericht in een bekende indeling te maken en stuurt het rechtstreeks naar de Service Bus.
--   Azure Blockchain Workbench is geabonneerd op gebeurtenissen uit de ServiceBus en haalt het bericht op.
--   Azure Blockchain Workbench initieert een oproep naar het grootboek en verzendt gegevens van het externe systeem naar een specifiek contract.
--   Na ontvangst van het bericht wordt het contract overgezet naar een nieuwe staat.
+-   Er treedt een gebeurtenis op in een extern systeem dat het maken van een bericht voor Azure Block Chain Workbench activeert.
+-   Het externe systeem heeft code geschreven om dit bericht in een bekende indeling te maken en het rechtstreeks naar de Service Bus te verzenden.
+-   Azure Block Chain Workbench is geabonneerd op gebeurtenissen van de Service Bus en haalt het bericht op.
+-   Azure Block Chain Workbench initieert een aanroep van het groot boek, waarbij gegevens van het externe systeem naar een specifiek contract worden verzonden.
+-   Na ontvangst van het bericht wordt het contract overgezet naar een nieuwe status.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Levering van een bericht in een indeling die onbekend is met Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Levering van een bericht in een indeling die onbekend is bij Azure Block Chain workbench
 
-Sommige systemen kunnen niet worden gewijzigd om berichten af te leveren in de standaardindelingen die worden gebruikt door Azure Blockchain Workbench. In deze gevallen kunnen vaak bestaande mechanismen en berichtformaten van deze systemen worden gebruikt. In het bijzonder kunnen de native berichttypen van deze systemen worden getransformeerd met Behulp van Logische Apps, Azure-functies of andere aangepaste code om toe te leiden naar een van de verwachte standaardberichtenindelingen.
+Sommige systemen kunnen niet worden gewijzigd voor het leveren van berichten in de standaard indelingen die worden gebruikt door Azure Block Chain Workbench. In dergelijke gevallen kunnen bestaande mechanismen en bericht indelingen van deze systemen vaak worden gebruikt. Met name de systeem eigen bericht typen van deze systemen kunnen worden getransformeerd met behulp van Logic Apps, Azure Functions of andere aangepaste code, zodat deze kan worden toegewezen aan een van de standaard indelingen voor berichten die worden verwacht.
 
-![Onbekende berichtindeling](./media/integration-patterns/unknown-message-format.png)
+![Onbekende bericht indeling](./media/integration-patterns/unknown-message-format.png)
 
-Dit gebeurt met behulp van het eerder afgebeelde proces, waarbij:
+Dit gebeurt op basis van het proces dat eerder is weer gegeven, waarbij:
 
--   Een gebeurtenis vindt plaats in een extern systeem dat het maken van een bericht activeert.
--   Een Logic App of aangepaste code wordt gebruikt om dat bericht te ontvangen en om te zetten in een standaard Azure Blockchain Workbench-opgemaakte bericht.
--   De Logic App stuurt het getransformeerde bericht rechtstreeks naar de ServiceBus.
--   Azure Blockchain Workbench is geabonneerd op gebeurtenissen uit de ServiceBus en haalt het bericht op.
--   Azure Blockchain Workbench initieert een aanroep naar het grootboek en verzendt gegevens van het externe systeem naar een specifieke functie op het contract.
--   De functie wordt uitgevoerd en wijzigt doorgaans de status. De statuswijziging wordt doordeverplaatsingen van de bedrijfsworkflow die in het slimme contract wordt weerspiegeld, zodat andere functies nu naar gelang van het geval kunnen worden uitgevoerd.
+-   Er treedt een gebeurtenis op in een extern systeem dat het maken van een bericht activeert.
+-   Een logische app of aangepaste code wordt gebruikt om het bericht te ontvangen en te transformeren naar een standaard bericht voor Azure Block Chain Workbench-indeling.
+-   De logische app verzendt het getransformeerde bericht rechtstreeks naar de Service Bus.
+-   Azure Block Chain Workbench is geabonneerd op gebeurtenissen van de Service Bus en haalt het bericht op.
+-   Azure Block Chain Workbench initieert een aanroep van het groot boek, waarbij gegevens van het externe systeem naar een specifieke functie in het contract worden verzonden.
+-   De functie wordt uitgevoerd en wijzigt doorgaans de status. De wijziging van de status verplaatst de bedrijfs werk stroom in het slimme contract, zodat andere functies nu kunnen worden uitgevoerd, indien van toepassing.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Overgang controle naar een extern proces en wachten op voltooiing
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Besturings element overstappen op een extern proces en wacht op voltooiing
 
-Er zijn scenario's waarin een slim contract de interne uitvoering moet stoppen en moet overdragen aan een extern proces. Dat externe proces zou dan voltooien, een bericht sturen naar het slimme contract, en de uitvoering zou dan doorgaan binnen het slimme contract.
+Er zijn scenario's waarin een slim contract de interne uitvoering moet stoppen en aan een extern proces kan worden overgedragen. Het externe proces wordt vervolgens voltooid, een bericht verzonden naar het slimme contract en de uitvoering wordt vervolgens voortgezet in het slimme contract.
 
 #### <a name="transition-to-the-external-process"></a>Overgang naar het externe proces
 
-Dit patroon wordt meestal geïmplementeerd met de volgende aanpak:
+Dit patroon wordt gewoonlijk geïmplementeerd met de volgende methode:
 
--   Het slimme contract wordt overgezet naar een specifieke status. In deze toestand kunnen geen of een beperkt aantal functies worden uitgevoerd totdat een extern systeem de gewenste actie onderneemt.
--   De verandering van staat wordt opgedoken als een gebeurtenis aan een downstream consument.
--   De downstream-consument ontvangt de gebeurtenis en activeert externe codeuitvoering.
+-   De slimme contract overgangen naar een specifieke status. In deze status kunt u geen of een beperkt aantal functies uitvoeren totdat een extern systeem een gewenste actie onderneemt.
+-   De wijziging van de status wordt geoppereerd als een gebeurtenis voor een downstream-Consumer.
+-   De downstream-consument ontvangt de gebeurtenis en activeert het uitvoeren van externe code.
 
-![Overgangscontrole naar extern proces](./media/integration-patterns/transition-external-process.png)
+![Besturings element overgang naar extern proces](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Terugkeer van de controle van het slimme contract
+#### <a name="return-of-control-from-the-smart-contract"></a>Het besturings element van het slimme contract retour neren
 
-Afhankelijk van de mogelijkheid om het externe systeem aan te passen, kan het al dan niet in staat zijn om berichten te leveren in een van de standaardindelingen die Azure Blockchain Workbench verwacht. Op basis van de externe systemen mogelijkheid om een van deze berichten te genereren bepalen welke van de volgende twee terugkeer paden wordt genomen.
+Afhankelijk van de mogelijkheid om het externe systeem aan te passen, kunnen er mogelijk geen berichten worden bezorgd in een van de standaard indelingen die Azure Block Chain Workbench verwacht. Bepaal op basis van de mogelijkheid externe systemen een van deze berichten te genereren welke van de volgende twee retour paden worden genomen.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Directe levering van een Azure Blockchain Workbench in de verwachte indeling
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Directe levering van een Azure Block Chain workbench in de verwachte indeling
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-In dit model vindt de communicatie naar het contract en de daaropvolgende statuswijziging plaats na het vorige proces waarbij -
+In dit model wordt de communicatie met het contract en de volgende status wijziging uitgevoerd na het vorige proces waarbij-
 
--   Bij het bereiken van de voltooiing of een specifieke mijlpaal in de uitvoering van de externe code wordt een gebeurtenis verzonden naar de ServiceBus die is verbonden met Azure Blockchain Workbench.
+-   Na het bereiken van de voltooiing of een specifieke mijl paal tijdens het uitvoeren van externe code, wordt een gebeurtenis verzonden naar de Service Bus die is verbonden met Azure Block Chain Workbench.
 
--   Voor systemen die niet direct kunnen worden aangepast om een bericht te schrijven dat voldoet aan de verwachtingen van de API, wordt het getransformeerd.
+-   Voor systemen die niet rechtstreeks kunnen worden aangepast om een bericht te schrijven dat voldoet aan de verwachtingen van de API, wordt het getransformeerd.
 
--   De inhoud van het bericht wordt verpakt en verzonden naar een specifieke functie op het slimme contract. Deze levering gebeurt namens de gebruiker die is gekoppeld aan het externe systeem.
+-   De inhoud van het bericht wordt verpakt en verzonden naar een specifieke functie van het slimme contract. Deze levering geschiedt namens de gebruiker die is gekoppeld aan het externe systeem.
 
--   De functie wordt uitgevoerd en wijzigt doorgaans de status. De statuswijziging wordt doordeverplaatsingen van de bedrijfsworkflow die in het slimme contract wordt weerspiegeld, zodat andere functies nu naar gelang van het geval kunnen worden uitgevoerd.
+-   De functie wordt uitgevoerd en wijzigt doorgaans de status. De wijziging van de status verplaatst de bedrijfs werk stroom in het slimme contract, zodat andere functies nu kunnen worden uitgevoerd, indien van toepassing.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Levering van een bericht in een indeling die onbekend is met Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Levering van een bericht in een indeling die onbekend is bij Azure Block Chain workbench
 
-![Onbekende berichtindeling](./media/integration-patterns/unknown-message-format.png)
+![Onbekende bericht indeling](./media/integration-patterns/unknown-message-format.png)
 
-In dit model waarin een bericht in een standaardformaat niet rechtstreeks kan worden verzonden, vindt de communicatie naar het contract en de daaropvolgende statuswijziging plaats na het vorige proces wanneer:
+In dit model waarbij een bericht in een standaard indeling niet rechtstreeks kan worden verzonden, wordt de communicatie met het contract en de volgende status wijziging uitgevoerd na het vorige proces, waarbij:
 
-1.  Bij het bereiken van de voltooiing of een specifieke mijlpaal in de uitvoering van de externe code wordt een gebeurtenis verzonden naar de ServiceBus die is verbonden met Azure Blockchain Workbench.
-2.  Een Logic App of aangepaste code wordt gebruikt om dat bericht te ontvangen en om te zetten in een standaard Azure Blockchain Workbench-opgemaakte bericht.
-3.  De Logic App stuurt het getransformeerde bericht rechtstreeks naar de ServiceBus.
-4.  Azure Blockchain Workbench is geabonneerd op gebeurtenissen uit de ServiceBus en haalt het bericht op.
-5.  Azure Blockchain Workbench initieert een oproep naar het grootboek en verzendt gegevens van het externe systeem naar een specifiek contract.
-6. De inhoud van het bericht wordt verpakt en verzonden naar een specifieke functie op het slimme contract. Deze levering gebeurt namens de gebruiker die is gekoppeld aan het externe systeem.
-7.  De functie wordt uitgevoerd en wijzigt doorgaans de status. De statuswijziging wordt doordeverplaatsingen van de bedrijfsworkflow die in het slimme contract wordt weerspiegeld, zodat andere functies nu naar gelang van het geval kunnen worden uitgevoerd.
+1.  Na het bereiken van de voltooiing of een specifieke mijl paal tijdens het uitvoeren van externe code, wordt een gebeurtenis verzonden naar de Service Bus die is verbonden met Azure Block Chain Workbench.
+2.  Een logische app of aangepaste code wordt gebruikt om het bericht te ontvangen en te transformeren naar een standaard bericht voor Azure Block Chain Workbench-indeling.
+3.  De logische app verzendt het getransformeerde bericht rechtstreeks naar de Service Bus.
+4.  Azure Block Chain Workbench is geabonneerd op gebeurtenissen van de Service Bus en haalt het bericht op.
+5.  Azure Block Chain Workbench initieert een aanroep van het groot boek, waarbij gegevens van het externe systeem naar een specifiek contract worden verzonden.
+6. De inhoud van het bericht wordt verpakt en verzonden naar een specifieke functie van het slimme contract. Deze levering geschiedt namens de gebruiker die is gekoppeld aan het externe systeem.
+7.  De functie wordt uitgevoerd en wijzigt doorgaans de status. De wijziging van de status verplaatst de bedrijfs werk stroom in het slimme contract, zodat andere functies nu kunnen worden uitgevoerd, indien van toepassing.
 
 ## <a name="iot-integration"></a>IoT-integratie
 
-Een veelvoorkomend integratiescenario is het opnemen van telemetriegegevens die zijn opgehaald van sensoren in een slim contract. Op basis van gegevens die door sensoren worden geleverd, kunnen slimme contracten geïnformeerde acties ondernemen en de staat van het contract wijzigen.
+Een veelvoorkomend integratie scenario is het opnemen van telemetriegegevens die zijn opgehaald uit Sens oren in een slim contract. Op basis van gegevens die door Sens oren worden geleverd, kunnen slimme contracten gefundeerde acties uitvoeren en de status van het contract wijzigen.
 
-Als een vrachtwagen die medicijnen levert bijvoorbeeld zijn temperatuur tot 110 graden heeft laten stijgen, kan dit de effectiviteit van het geneesmiddel beïnvloeden en kan dit een probleem met de openbare veiligheid veroorzaken als het niet wordt gedetecteerd en uit de toeleveringsketen wordt verwijderd. Als een bestuurder zijn auto naar 100 mijl per uur heeft versneld, kan de resulterende sensorinformatie leiden tot een annulering van de verzekering door zijn verzekeringsmaatschappij. Als de auto een huurauto was, konden GPS-gegevens aangeven wanneer de bestuurder buiten een geografie ging die onder hun huurovereenkomst viel en een boete in rekening brengt.
+Als een vracht wagen die medicijnen levert, bijvoorbeeld is via, kan dit van invloed zijn 110 op de effectiviteit van de medicijnen en kan dit een openbaar veiligheids probleem veroorzaken als dit niet wordt gedetecteerd en verwijderd uit de toeleverings keten. Als een stuur programma zijn auto versnelt naar 100 mijl per uur, zou de resulterende sensor informatie een annulering van de verzekering door hun verzekerings provider kunnen activeren. Als de auto een huur auto was, kunnen GPS-gegevens erop wijzen dat het stuur programma buiten een geografische regio wordt gedekt door hun huur overeenkomst en een boete in rekening wordt gebracht.
 
-De uitdaging is dat deze sensoren constant data kunnen leveren en het is niet gepast om al deze gegevens naar een slim contract te sturen. Een typische aanpak is om het aantal berichten dat naar de blockchain wordt verzonden te beperken terwijl u alle berichten naar een secundaire winkel levert. Lever bijvoorbeeld berichten die met een vast interval worden ontvangen, bijvoorbeeld één keer per uur, en wanneer een opgenomen waarde buiten een overeengekomen bereik valt voor een slim contract. Het controleren van waarden die buiten toleranties vallen, zorgt ervoor dat de gegevens die relevant zijn voor de bedrijfslogica van contracten worden ontvangen en uitgevoerd. Het controleren van de waarde op het interval bevestigt dat de sensor nog steeds rapporteert. Alle gegevens worden verzonden naar een secundair rapportagearchief om bredere rapportage, analyse en machine learning mogelijk te maken. Bijvoorbeeld, terwijl het krijgen van sensor lezingen voor GPS kan niet elke minuut nodig zijn voor een slim contract, kunnen ze interessante gegevens worden gebruikt in rapporten of mapping routes.
+De uitdaging is dat deze Sens oren gegevens op een constante basis kunnen leveren en niet geschikt zijn om al deze gegevens naar een slim contract te verzenden. Een typische aanpak is het beperken van het aantal berichten dat naar de Block Chain wordt verzonden terwijl alle berichten aan een secundair archief worden geleverd. Zo kunt u alleen berichten afleveren die zijn ontvangen met een vast interval, bijvoorbeeld één keer per uur, en wanneer een Inge sloten waarde buiten een overeengekomen bereik valt voor een slim contract. Het controleren van waarden die buiten de tolerantie vallen, zorgt ervoor dat de gegevens die relevant zijn voor de bedrijfs logica van de contracten, worden ontvangen en uitgevoerd. Bij het controleren van de waarde bij het interval wordt bevestigd dat de sensor nog steeds rapporteert. Alle gegevens worden verzonden naar een secundair rapportage archief om uitgebreidere rapporten, analyses en machine learning mogelijk te maken. Het ophalen van sensor-aflezingen voor GPS is bijvoorbeeld niet elke minuut vereist voor een slim contract, maar ze kunnen interessante gegevens leveren die worden gebruikt in rapporten of toewijzings routes.
 
-Op het Azure-platform wordt de integratie met apparaten meestal uitgevoerd met IoT Hub. IoT Hub biedt routering van berichten op basis van inhoud en maakt het type functionaliteit dat eerder wordt beschreven, mogelijk.
+Op het Azure-platform wordt de integratie met apparaten doorgaans uitgevoerd met IoT Hub. IoT Hub voorziet in route ring van berichten op basis van inhoud en schakelt het type functionaliteit in dat eerder is beschreven.
 
 ![IoT-berichten](./media/integration-patterns/iot.png)
 
-Het proces toont een patroon:
+In het proces wordt een patroon weer gegeven:
 
--   Een apparaat communiceert rechtstreeks of via een veldgateway naar IoT Hub.
--   IoT Hub ontvangt de berichten en evalueert de berichten op routes die bijvoorbeeld de inhoud van het bericht controleren. *Meldt de sensor een temperatuur van meer dan 50 graden?*
--   De IoT Hub stuurt berichten die voldoen aan de criteria naar een gedefinieerde servicebus voor de route.
--   Een Logische App of een andere code luistert naar de ServiceBus die IoT Hub voor de route heeft ingesteld.
--   De Logic App of andere code haalt het bericht op en transformeert het bericht naar een bekende indeling.
--   Het getransformeerde bericht, dat nu in een standaardformaat is, wordt verzonden naar de ServiceBus voor Azure Blockchain Workbench.
--   Azure Blockchain Workbench is geabonneerd op gebeurtenissen uit de ServiceBus en haalt het bericht op.
--   Azure Blockchain Workbench initieert een oproep naar het grootboek en verzendt gegevens van het externe systeem naar een specifiek contract.
--   Na ontvangst van het bericht evalueert het contract de gegevens en kan de status veranderen op basis van de uitkomst van die evaluatie, bijvoorbeeld voor een hoge temperatuur, de status wijzigen in *Out of Compliance.*
+-   Een apparaat communiceert rechtstreeks of via een veld Gateway naar IoT Hub.
+-   IoT Hub ontvangt de berichten en evalueert de berichten op basis van routes die zijn ingesteld voor het controleren van de inhoud van het bericht. *Rapporteert de sensor een Tempe ratuur groter dan 50 graden?*
+-   De IoT Hub stuurt berichten die voldoen aan de criteria aan een gedefinieerd Service Bus voor de route.
+-   Een logische app of andere code luistert naar de Service Bus die IoT Hub voor de route heeft ingesteld.
+-   Met de logische app of andere code wordt het bericht opgehaald en getransformeerd naar een bekende indeling.
+-   Het getransformeerde bericht, nu in een standaard indeling, wordt verzonden naar de Service Bus voor Azure Block Chain Workbench.
+-   Azure Block Chain Workbench is geabonneerd op gebeurtenissen van de Service Bus en haalt het bericht op.
+-   Azure Block Chain Workbench initieert een aanroep van het groot boek, waarbij gegevens van het externe systeem naar een specifiek contract worden verzonden.
+-   Na ontvangst van het bericht evalueert het contract de gegevens en kan de status worden gewijzigd op basis van het resultaat van deze evaluatie, bijvoorbeeld voor een hoge Tempe ratuur, wijzigt u de status in *niet-naleving*.
 
 ## <a name="data-integration"></a>Gegevensintegratie
 
-Naast REST en message-based API biedt Azure Blockchain Workbench ook toegang tot een SQL DB gevuld met toepassings- en contractmetagegevens en transactionele gegevens uit gedistribueerde grootboeken.
+Azure Block Chain Workbench biedt naast REST en op berichten gebaseerde API ook toegang tot een SQL-data base die is gevuld met de meta gegevens van de toepassing en het contract, evenals transactionele gegevens uit gedistribueerde groot boeken.
 
 ![Gegevensintegratie](./media/integration-patterns/data-integration.png)
 
-De data-integratie is bekend:
+De gegevens integratie is bekend:
 
--   Azure Blockchain Workbench slaat metadata op over toepassingen, workflows, contracten en transacties als onderdeel van het normale bedrijfsgedrag.
--   Externe systemen of hulpprogramma's bieden een of meer dialogen om het verzamelen van informatie over de database te vergemakkelijken, zoals de naam van de databaseserver, de naam van de database, het type verificatie, inloggegevens en welke databaseweergaven moeten worden gebruikt.
--   Query's zijn geschreven tegen SQL-databaseweergaven om downstream-verbruik te vergemakkelijken door externe systemen, services, rapportage, hulpprogramma's voor ontwikkelaars en productiviteitstools voor bedrijven.
+-   Azure Block Chain Workbench slaat meta gegevens over toepassingen, werk stromen, contracten en trans acties op als onderdeel van het normale gedrag van het besturings systeem.
+-   Externe systemen of hulpprogram ma's bieden een of meer dialoog vensters om het verzamelen van informatie over de data base te vergemakkelijken, zoals de naam van de database server, de database naam, het type verificatie, aanmeldings referenties en de database weergaven die moeten worden gebruikt.
+-   Query's worden geschreven tegen SQL database weergaven om het downstream-gebruik door externe systemen, services, rapportage, hulpprogram ma's voor ontwikkel aars en hulpprogram ma's voor bedrijfs productiviteit te vergemakkelijken.
 
-## <a name="storage-integration"></a>Opslagintegratie
+## <a name="storage-integration"></a>Opslag integratie
 
-Veel scenario's vereisen mogelijk de noodzaak om attestable-bestanden op te nemen. Om meerdere redenen is het ongepast om bestanden op een blockchain te plaatsen. In plaats daarvan is een gemeenschappelijke aanpak het uitvoeren van een cryptografische hash (bijvoorbeeld SHA-256) tegen een bestand en die hash delen op een gedistribueerd grootboek. Als u de hash in de toekomst opnieuw uitvoert, moet dit hetzelfde resultaat opleveren. Als het bestand wordt gewijzigd, zelfs als slechts één pixel in een afbeelding wordt gewijzigd, geeft de hash een andere waarde als resultaat.
+Voor veel scenario's is het nood zakelijk dat Attestation-bestanden worden opgenomen. Om meerdere redenen is het niet ongepaste bestanden op een Block chain te plaatsen. In plaats daarvan is het een gemeen schappelijke benadering om een cryptografische hash (bijvoorbeeld SHA-256) uit te voeren voor een bestand en die hash te delen in een gedistribueerd groot boek. Als u de hash op een later tijdstip opnieuw uitvoert, zou hetzelfde resultaat moeten worden geretourneerd. Als het bestand wordt gewijzigd, zelfs als er slechts één pixel is gewijzigd in een afbeelding, retourneert de hash een andere waarde.
 
-![Opslagintegratie](./media/integration-patterns/storage-integration.png)
+![Opslag integratie](./media/integration-patterns/storage-integration.png)
 
-Het patroon kan worden toegepast wanneer:
+Het patroon kan worden geïmplementeerd, waarbij:
 
--   Een extern systeem blijft bestaan in een bestand in een opslagmechanisme, zoals Azure Storage.
--   Er wordt een hash gegenereerd met het bestand of het bestand en bijbehorende metagegevens, zoals een id voor de eigenaar, de URL waar het bestand zich bevindt, enz.
--   De hash en alle metagegevens worden verzonden naar een functie op een slim contract, zoals *FileAdded*
--   In de toekomst kunnen het bestand en meta-gegevens opnieuw worden gehasht en vergeleken met de waarden die op het grootboek zijn opgeslagen.
+-   Een extern systeem persistent een bestand in een opslag mechanisme, zoals Azure Storage.
+-   Er wordt een hash gegenereerd met het bestand of het bestand en de bijbehorende meta gegevens, zoals een id voor de eigenaar, de URL waar het bestand zich bevindt, enzovoort.
+-   De hash en meta gegevens worden verzonden naar een functie in een slim contract, zoals *FileAdded*
+-   In de toekomst kunnen het bestand en de meta gegevens opnieuw worden gehasht en vergeleken met de waarden die zijn opgeslagen in het groot boek.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Voorwaarden voor het implementeren van integratiepatronen met behulp van de REST- en bericht-API's
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Vereisten voor het implementeren van integratie patronen met behulp van de REST-en bericht-Api's
 
-Om de mogelijkheid voor een extern systeem of apparaat om te communiceren met het slimme contract met behulp van de REST of message API te vergemakkelijken, moet het volgende optreden -
+Om te zorgen dat een extern systeem of apparaat kan communiceren met het slimme contract met behulp van de REST-of Message-API, moet het volgende optreden:
 
 1. In de Azure Active Directory voor het consortium wordt een account gemaakt dat het externe systeem of apparaat vertegenwoordigt.
-2. Een of meer geschikte slimme contracten voor uw Azure Blockchain Workbench-toepassing hebben functies die zijn gedefinieerd om de gebeurtenissen van uw externe systeem of apparaat te accepteren.
-3. Het toepassingsconfiguratiebestand voor uw slimme contract bevat de rol, waaraan het systeem of apparaat is toegewezen.
-4. Het toepassingsconfiguratiebestand voor uw slimme contract identificeert in welke toestanden deze functie wordt aangeroepen door de gedefinieerde rol.
-5. Het configuratiebestand van de toepassing en de slimme contracten worden geüpload naar Azure Blockchain Workbench.
+2. Een of meer geschikte slimme contracten voor uw Azure Block Chain Workbench-toepassing hebben functies die zijn gedefinieerd om de gebeurtenissen van uw externe systeem of apparaat te accepteren.
+3. Het configuratie bestand van de toepassing voor uw slimme contract bevat de rol, waaraan het systeem of apparaat is toegewezen.
+4. Het configuratie bestand van de toepassing voor uw slimme contract identificeert in welke status deze functie wordt aangeroepen door de gedefinieerde rol.
+5. Het configuratie bestand van de toepassing en de bijbehorende slimme contracten worden geüpload naar Azure Block Chain Workbench.
 
-Zodra de toepassing is geüpload, wordt het Azure Active Directory-account voor het externe systeem toegewezen aan het contract en de bijbehorende rol.
+Zodra de toepassing is geüpload, wordt het Azure Active Directory account voor het externe systeem toegewezen aan het contract en de bijbehorende rol.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Externe systeemintegratiestromen testen voordat integratiecode wordt geschreven 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Externe systeem integratie stromen testen voorafgaand aan schrijven van integratie code 
 
-Integratie met externe systemen is een belangrijke vereiste van vele scenario's. Het is wenselijk om slim contractontwerp te kunnen valideren voorafgaand aan of parallel aan de ontwikkeling van code om te integreren met externe systemen.
+Integratie met externe systemen is een belang rijke vereiste voor veel scenario's. Het is wenselijk om het ontwerp van het slimme contract te valideren vóór of parallel aan de ontwikkeling van code om te integreren met externe systemen.
 
-Het gebruik van Azure Active Directory (Azure AD) kan de productiviteit van ontwikkelaars en de time-to-value sterk versnellen. In het bijzonder kan de code-integratie met een extern systeem een niet-triviale hoeveelheid tijd in beslag nemen. Door Azure AD te gebruiken en de automatische generatie UX door Azure Blockchain Workbench te gebruiken, u ontwikkelaars toestaan zich aan te melden bij Blockchain Workbench als het externe systeem en waarden van het externe systeem via de UX te vullen. U ideeën snel ontwikkelen en valideren in een proof of concept omgeving voordat integratiecode wordt geschreven voor de externe systemen.
+Het gebruik van Azure Active Directory (Azure AD) kan de productiviteit van ontwikkel aars en de tijd aanzienlijk versnellen. Met name de code integratie met een extern systeem kan een niet-trivial tijd duren. Met behulp van Azure AD en de automatische generatie van UX door Azure Block Chain Workbench kunt u ontwikkel aars zich aanmelden bij Block Chain Workbench als het externe systeem en waarden van het externe systeem via de UX vullen. U kunt snel ideeën ontwikkelen en valideren in een test omgeving voordat integratie code wordt geschreven voor de externe systemen.

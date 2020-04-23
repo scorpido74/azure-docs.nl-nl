@@ -1,6 +1,6 @@
 ---
-title: AMQP 1.0 in protocolgids azure servicebus en gebeurtenishubs | Microsoft Documenten
-description: Protocolhandleiding voor expressies en beschrijving van AMQP 1.0 in Azure Service Bus en Event Hubs
+title: AMQP 1,0 in Azure Service Bus en Event Hubs protocol handleiding | Microsoft Docs
+description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure Service Bus en Event Hubs
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: axisc
@@ -21,407 +21,407 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086139"
 ---
-# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in protocolhandleiding Azure Service Bus en Event Hubs
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
 
-Het Advanced Message Queueing Protocol 1.0 is een gestandaardiseerd framing- en transferprotocol voor asynchroon, veilig en betrouwbaar overbrengen van berichten tussen twee partijen. Dit is het primaire protocol van Azure Service Bus Messaging en Azure Event Hubs. Beide services ondersteunen ook HTTPS. Het eigen SBMP-protocol dat ook wordt ondersteund, wordt uitgefaseerd ten gunste van AMQP.
+Het Advanced Message queueing Protocol 1,0 is een gestandaardiseerd protocol voor framing en overdracht voor asynchrone, veilige en betrouw bare overdracht van berichten tussen twee partijen. Het is het primaire protocol van Azure Service Bus Messa ging en Azure Event Hubs. Beide services ondersteunen ook HTTPS. Het eigen SBMP-protocol dat ook wordt ondersteund, wordt in het voor deel van AMQP.
 
-AMQP 1.0 is het resultaat van brede samenwerking in de industrie die middleware-leveranciers, zoals Microsoft en Red Hat, samenbracht met veel messaging middleware-gebruikers zoals JP Morgan Chase die de financiële dienstensector vertegenwoordigen. Het technische standaardisatieforum voor het AMQP-protocol en de uitbreidingsspecificaties is OASIS en heeft als ISO/IEC 19494 een formele goedkeuring gekregen als ISO/IEC 19494.
+AMQP 1,0 is het resultaat van een brede samen werking bij het samen stellen van middleware-leveranciers, zoals micro soft en Red Hat, met veel gebruikers voor het door geven van berichten, zoals JP Morgan, die de financiële dienst verleners vertegenwoordigen. Het technisch normalisatie forum voor het AMQP-protocol en de extensie specificaties is OASIS en heeft een formele goed keuring behaald als een internationale norm als ISO/IEC 19494.
 
 ## <a name="goals"></a>Doelstellingen
 
-Dit artikel vat kort de kernconcepten van de AMQP 1.0-berichtenspecificatie samen met een kleine set conceptuitbreidingsspecificaties samen die momenteel worden afgerond in de technische commissie van OASIS AMQP en legt uit hoe Azure Service Bus implementeert en bouwt voort op deze specificaties.
+In dit artikel vindt u een beknopt overzicht van de basis concepten van de AMQP 1,0 Messa ging-specificatie, samen met een kleine set concepten-extensie specificaties die momenteel worden voltooid in het OASIS AMQP Technical Committee en wordt uitgelegd hoe Azure Service Bus implementeert en bouwt op basis van deze specificaties.
 
-Het doel is dat elke ontwikkelaar elke bestaande AMQP 1.0-clientstack op elk platform gebruikt om via AMQP 1.0 te kunnen communiceren met Azure Service Bus.
+Het doel is voor alle ontwikkel aars die een bestaande AMQP 1,0-client stack gebruiken op elk platform om te kunnen communiceren met Azure Service Bus via AMQP 1,0.
 
-Gemeenschappelijke AMQP 1.0-stacks voor algemene doeleinden, zoals Apache Proton of AMQP.NET Lite, implementeren al alle kern-AMQP 1.0-protocollen. Die fundamentele gebaren zijn soms verpakt met een api op een hoger niveau; Apache Proton biedt zelfs twee, de verplichte Messenger API en de reactieve Reactor API.
+Algemene AMQP 1,0-stacks van algemeen gebruik, zoals Apache proton of AMQP.NET lite, implementeren al alle kern AMQP 1,0-protocollen. Deze basis bewegingen worden soms verpakt met een API van een hoger niveau. Apache Proton biedt zelfs twee, de verplichte Mess enger-API en de reactieve reactor-API.
 
-In de volgende discussie gaan we ervan uit dat het beheer van AMQP-verbindingen, sessies en koppelingen en de afhandeling van frameoverdrachten en stroombesturing worden afgehandeld door de desbetreffende stack (zoals Apache Proton-C) en niet veel of geen specifieke aandacht vereisen van applicatie-ontwikkelaars. We nemen abstract het bestaan van een paar API primitieven, zoals de mogelijkheid om verbinding te maken, `send()` `receive()` en om een vorm van *afzender* en *ontvanger* abstractie objecten, die vervolgens een of andere vorm van en operaties te creëren, respectievelijk.
+In de volgende bespreking gaan we ervan uit dat het beheer van AMQP-verbindingen,-sessies en-koppelingen en de verwerking van frame overdrachten en datatransport besturing worden verwerkt door de respectieve stack (zoals Apache Proton-C) en niet veel als enige specifieke aandacht van toepassings ontwikkelaars. We gaan abstracten uitgaan van een paar API-primitieven, zoals de mogelijkheid om verbinding te maken, en om een vorm van de abstractie objecten van de *afzender* en de *ontvanger* te `send()` maken `receive()` , die respectievelijk een of meer vorm en bewerkingen hebben.
 
-Bij het bespreken van geavanceerde mogelijkheden van Azure Service Bus, zoals het browsen door berichten of het beheer van sessies, worden deze functies uitgelegd in AMQP-termen, maar ook als een gelaagde pseudo-implementatie bovenop deze veronderstelde API-abstractie.
+Bij het bespreken van geavanceerde mogelijkheden van Azure Service Bus, zoals het bladeren door berichten of het beheer van sessies, worden deze functies uitgelegd in AMQP-voor waarden, maar ook als een gelaagde pseudo-implementatie boven op de API-abstractie.
 
 ## <a name="what-is-amqp"></a>Wat is AMQP?
 
-AMQP is een framing en transfer protocol. Framing betekent dat het structuur biedt voor binaire gegevensstromen die in beide richtingen van een netwerkverbinding stromen. De structuur biedt afbakening voor verschillende blokken van gegevens, *frames*genaamd, worden uitgewisseld tussen de aangesloten partijen. De overdrachtsmogelijkheden zorgen ervoor dat beide communicerende partijen een gedeeld inzicht kunnen krijgen over wanneer frames moeten worden overgedragen en wanneer overdrachten als voltooid worden beschouwd.
+AMQP is een framing-en overdrachts protocol. Framing houdt in dat het een structuur biedt voor binaire gegevens stromen die in een van beide richtingen van een netwerk verbinding stromen. De structuur biedt een overzicht van de afzonderlijke gegevens blokken ( *frames*genoemd) die moeten worden uitgewisseld tussen de verbonden partijen. De overdrachts mogelijkheden zorgen ervoor dat beide communicerende partijen een gemeen schappelijk inzicht kunnen krijgen over wanneer frames moeten worden overgedragen, en wanneer overdrachten worden beschouwd als voltooid.
 
-In tegenstelling tot eerdere verlopen conceptversies die door de AMQP-werkgroep worden geproduceerd en die nog steeds worden gebruikt door een paar berichtmakelaars, schrijft het definitieve en gestandaardiseerde AMQP 1.0-protocol de aanwezigheid van een berichtenmakelaar of een bepaalde topologie voor entiteiten binnen een berichtenmakelaar.
+In tegens telling tot eerdere verlopen concept versies die zijn geproduceerd door de AMQP-werk groep en die nog steeds worden gebruikt door een paar bericht Brokers, schrijft de laatste en gestandaardiseerde AMQP 1,0-protocol niet de aanwezigheid van een Message Broker of een bepaalde topologie voor entiteiten binnen een Message Broker.
 
-Het protocol kan worden gebruikt voor symmetrische peer-to-peer-communicatie, voor interactie met berichtenmakelaars die wachtrijen ondersteunen en entiteiten publiceren/abonneren, zoals Azure Service Bus doet. Het kan ook worden gebruikt voor interactie met messaging-infrastructuur waar de interactiepatronen verschillen van reguliere wachtrijen, zoals het geval is met Azure Event Hubs. Een gebeurtenishub fungeert als een wachtrij wanneer gebeurtenissen naar de gebeurtenis worden verzonden, maar fungeert meer als een seriële opslagservice wanneer gebeurtenissen worden gelezen; het lijkt enigszins op een tape drive. De client kiest een verschuiving in de beschikbare gegevensstroom en wordt vervolgens alle gebeurtenissen van die offset tot de laatst beschikbare gebeurtenis geserveerd.
+Het protocol kan worden gebruikt voor symmetrische peer-to-peer-communicatie, voor interactie met bericht Brokers die ondersteuning bieden voor wacht rijen en het publiceren/abonneren van entiteiten, zoals Azure Service Bus. Het kan ook worden gebruikt voor interactie met de infra structuur voor berichten waarbij de interactie patronen verschillen van de normale wacht rijen, zoals het geval is bij Azure Event Hubs. Een event hub fungeert als een wachtrij wanneer er gebeurtenissen naar worden verzonden, maar fungeert meer als een seriële opslag service wanneer er gebeurtenissen van worden gelezen. het lijkt iets op een tape station. De client kiest een offset in de beschik bare gegevens stroom en vervolgens worden alle gebeurtenissen van die offset naar de meest recente Beschik baarheid verzonden.
 
-Het AMQP 1.0-protocol is ontworpen om uitbreidbaar te zijn, waardoor verdere specificaties de mogelijkheden kunnen verbeteren. De drie uitbreidingsspecificaties die in dit document worden besproken, illustreren dit. Voor communicatie via bestaande HTTPS/WebSockets-infrastructuur kan het configureren van de native AMQP TCP-poorten moeilijk zijn. Een bindende specificatie definieert hoe amqp over WebSockets kan worden laag. Voor interactie met de berichteninfrastructuur op een aanvraag-/antwoordmodus voor beheerdoeleinden of om geavanceerde functionaliteit te bieden, definieert de AMQP-beheerspecificatie de vereiste basisinteractieprimitieven. Voor federatieve autorisatiemodelintegratie bepaalt de OP AMQP-claims gebaseerde beveiligingsspecificatie hoe autorisatietokens die zijn gekoppeld aan koppelingen kunnen worden gekoppeld en verlengd.
+Het AMQP 1,0-protocol is uitbreidbaar, waardoor er meer specificaties kunnen worden ontwikkeld om de mogelijkheden te verbeteren. De drie extensie specificaties die in dit document worden beschreven, illustreren dit. Voor communicatie over een bestaande HTTPS/websockets-infra structuur is het configureren van de systeem eigen AMQP TCP-poorten mogelijk lastig. Een bindings specificatie definieert hoe AMQP worden gelaagd via websockets. Voor interactie met de Messa ging-infra structuur in een aanvraag/antwoord mode voor beheer doeleinden of om geavanceerde functionaliteit te bieden, definieert de AMQP Management-specificatie de vereiste basis interactie primitieven. Voor de integratie van federatieve verificatie modellen definieert de AMQP op claims gebaseerde beveiliging het koppelen en vernieuwen van autorisatie tokens die zijn gekoppeld aan koppelingen.
 
-## <a name="basic-amqp-scenarios"></a>Basis-AMQP-scenario's
+## <a name="basic-amqp-scenarios"></a>Eenvoudige AMQP-scenario's
 
-In dit gedeelte wordt het basisgebruik van AMQP 1.0 met Azure Service Bus uitgelegd, waaronder het maken van verbindingen, sessies en koppelingen en het overbrengen van berichten van en naar servicebusentiteiten zoals wachtrijen, onderwerpen en abonnementen.
+In deze sectie wordt het basis gebruik van AMQP 1,0 met Azure Service Bus uitgelegd. Dit omvat het maken van verbindingen, sessies en koppelingen, en het overdragen van berichten naar en van Service Bus entiteiten zoals wacht rijen, onderwerpen en abonnementen.
 
-De meest gezaghebbende bron om te leren over hoe AMQP werkt is de AMQP 1.0-specificatie, maar de specificatie is geschreven om de implementatie nauwkeurig te begeleiden en het protocol niet te onderwijzen. Deze sectie richt zich op het introduceren van zoveel terminologie als nodig is voor het beschrijven van hoe Service Bus AMQP 1.0 gebruikt. Voor een uitgebreidere introductie tot AMQP, evenals een bredere discussie over AMQP 1.0, u [deze videocursus][this video course]bekijken.
+De meest gezaghebbende bron om meer te weten te komen over de manier waarop AMQP werkt, is de AMQP 1,0-specificatie, maar de specificatie werd geschreven om de implementatie nauw keurig te begeleiden en niet om het protocol te leren kennen. Deze sectie richt zich op het introduceren van zoveel terminologie als nodig is voor het beschrijven van de manier waarop Service Bus AMQP 1,0 gebruikt. Voor een uitgebreidere inleiding tot AMQP, evenals een bredere bespreking van AMQP 1,0, kunt u [deze video cursus][this video course]bekijken.
 
 ### <a name="connections-and-sessions"></a>Verbindingen en sessies
 
-AMQP noemt de communicatieprogramma's *containers*; die *knooppunten*bevatten, die de communicerende entiteiten binnen die containers zijn. Een wachtrij kan zo'n knooppunt zijn. AMQP zorgt voor multiplexing, dus een enkele verbinding kan worden gebruikt voor veel communicatiepaden tussen knooppunten; Een toepassingsclient kan bijvoorbeeld gelijktijdig van de ene wachtrij ontvangen en via dezelfde netwerkverbinding naar een andere wachtrij verzenden.
+AMQP roept *de Program ma's*voor communicatie Programma's aan; Deze bevatten *knoop punten*, die de communicerende entiteiten binnen deze containers zijn. Een wachtrij kan een dergelijk knoop punt zijn. AMQP maakt multiplexing mogelijk, waardoor een enkele verbinding kan worden gebruikt voor veel communicatie paden tussen knoop punten. een toepassings-client kan bijvoorbeeld gelijktijdig van de ene wachtrij ontvangen en via dezelfde netwerk verbinding naar een andere wachtrij verzenden.
 
 ![][1]
 
-De netwerkverbinding is dus verankerd op de container. Deze wordt geïnitieerd door de container in de clientrol die een uitgaande TCP-socketverbinding maakt met een container in de ontvangerrol, die naar binnenkomende TCP-verbindingen luistert en accepteert. De verbindingshandshake omvat het onderhandelen over de protocolversie, het declareren of onderhandelen over het gebruik van Transport Level Security (TLS/SSL) en een verificatie/autorisatiehandshake op de verbindingsscope die is gebaseerd op SASL.
+De netwerk verbinding is daarom verankerd op de container. Het wordt gestart door de container in de client functie en maakt een uitgaande TCP-socket verbinding met een container in de ontvanger receive die binnenkomende TCP-verbindingen luistert en accepteert. De verbindings-Handshake omvat het onderhandelen over de Protocol versie, het declareren of onderhandelen van het gebruik van beveiliging op transport niveau (TLS/SSL) en een verificatie/autorisatie-Handshake bij het verbindings bereik dat is gebaseerd op SASL.
 
-Azure Service Bus vereist te allen tijde het gebruik van TLS. Het ondersteunt verbindingen via TCP-poort 5671, waarbij de TCP-verbinding eerst wordt bedekt met TLS voordat u de AMQP-protocolhandshake invoert, en ondersteunt ook verbindingen via TCP-poort 5672, waarbij de server onmiddellijk een verplichte upgrade van de verbinding aanbiedt tls met behulp van het amqp-voorgeschreven model. De AMQP WebSockets-binding maakt een tunnel over TCP-poort 443 die vervolgens gelijk is aan AMQP 5671-verbindingen.
+Voor Azure Service Bus is het gebruik van TLS te allen tijde vereist. Het ondersteunt verbindingen via TCP-poort 5671, waarbij de TCP-verbinding voor het eerst wordt overlapt met TLS voordat de AMQP-protocol-handshake wordt ingevoerd en ook verbindingen via TCP-poort 5672 worden ondersteund, waarbij de server onmiddellijk een verplichte upgrade van de verbinding met TLS biedt met behulp van het door AMQP voorgeschreven model. Met de AMQP-websockets binding wordt een tunnel via TCP-poort 443 gemaakt die vervolgens overeenkomt met AMQP 5671-verbindingen.
 
-Na het instellen van de verbinding en TLS biedt Service Bus twee SASL-mechanismeopties:
+Nadat u de verbinding en TLS hebt ingesteld, biedt Service Bus twee opties voor SASL-mechanisme:
 
-* SASL PLAIN wordt vaak gebruikt voor het doorgeven van gebruikersnaam- en wachtwoordreferenties aan een server. Service Bus heeft geen accounts, maar wel [gedeelde toegangsbeveiligingsregels,](service-bus-sas.md)die rechten verlenen en zijn gekoppeld aan een sleutel. De naam van een regel wordt gebruikt als gebruikersnaam en de sleutel (als basis64 gecodeerde tekst) wordt gebruikt als wachtwoord. De rechten die aan de gekozen regel zijn gekoppeld, bepalen de bewerkingen die op de verbinding zijn toegestaan.
-* SASL ANONYMOUS wordt gebruikt voor het omzeilen van SASL-autorisatie wanneer de klant het op claims gebaseerde beveiliging (CBS)-model wil gebruiken dat later wordt beschreven. Met deze optie kan een klantverbinding voor een korte tijd anoniem tot stand worden gebracht waarin de klant alleen met het CBS-eindpunt kan communiceren en de CBS-handdruk moet worden voltooid.
+* SASL PLAIN wordt doorgaans gebruikt om gebruikers naam-en wachtwoord referenties door te geven aan een server. Service Bus heeft geen accounts, maar met de naam [Shared Access Security Rules](service-bus-sas.md)die rechten verlenen en aan een sleutel zijn gekoppeld. De naam van een regel wordt gebruikt als de gebruikers naam en de sleutel (als base64-gecodeerde tekst) wordt gebruikt als het wacht woord. De rechten die zijn gekoppeld aan de gekozen regel bepalen welke bewerkingen zijn toegestaan voor de verbinding.
+* SASL ANONYMOUS wordt gebruikt voor het overs laan van SASL-autorisatie wanneer de client het CBS-model (Claims-based-Security) wil gebruiken dat later wordt beschreven. Met deze optie kan een client verbinding anoniem worden ingesteld voor een korte periode waarin de client alleen kan communiceren met het CBS-eind punt en de CBS-Handshake moet worden voltooid.
 
-Nadat de transportverbinding is ingesteld, geven de containers elk de maximale framegrootte aan die ze bereid zijn te hanteren, en na een niet-actieve time-out zullen ze eenzijdig de verbinding verbreken als er geen activiteit op de verbinding is.
+Nadat de transport verbinding tot stand is gebracht, declareren de containers elk de maximum grootte van het frame die ze kunnen verwerken en na een time-out voor inactiviteit, wordt de verbinding verbroken als er geen activiteit is voor het verbinden.
 
-Ze geven ook aan hoeveel gelijktijdige kanalen worden ondersteund. Een kanaal is een unidirectioneel, uitgaand, virtueel transferpad bovenop de verbinding. Een sessie neemt een kanaal van elk van de onderling verbonden containers om een bidirectioneel communicatiepad te vormen.
+Ze declareren ook hoeveel gelijktijdige kanalen worden ondersteund. Een kanaal is een virtueel overdrachts traject van één locatie, bovenop de verbinding. Een sessie haalt een kanaal van elk van de onderling verbonden containers op om een bidirectionele communicatie traject te maken.
 
-Sessies hebben een op venster gebaseerd stroombesturingselementmodel; wanneer een sessie wordt gemaakt, verklaart elke partij hoeveel frames zij bereid is te accepteren in het ontvangstvenster. Als de partijen frames uitwisselen, vullen overgedragen frames dat venster en overdrachten stoppen wanneer het venster vol is en totdat het venster wordt gereset of uitgebreid met behulp van de *stroom performatief* *(performatief* is de AMQP-term voor protocol-niveau gebaren uitgewisseld tussen de twee partijen).
+Sessies hebben een flow control model op basis van een venster; Wanneer een sessie wordt gemaakt, declareert elke partij hoeveel frames het kan accepteren in het venster ontvangen. Wanneer de partijen Exchange-frames gebruiken, vullen de overgebrachte frames het venster en de overdracht stoppen wanneer het venster vol is en totdat het venster opnieuw wordt ingesteld of uitgevouwen met behulp van de *flow Performative* (*PERFORMATIVE* is de AMQP-term voor op protocol niveau geruilde bewegingen tussen de twee partijen).
 
-Dit venstergebaseerde model is ongeveer analoog aan het TCP-concept van venstergebaseerde stroomregeling, maar op sessieniveau in de socket. Het protocol concept van het toestaan van meerdere gelijktijdige sessies bestaat, zodat hoge prioriteit verkeer kan worden gehaast langs gasgevend normaal verkeer, zoals op een snelweg snelstrook.
+Dit model op basis van een venster is ongeveer hetzelfde als het TCP-concept van een datatransport besturing op basis van een venster, maar op het sessie niveau binnen de socket. Het concept van het protocol dat meerdere gelijktijdige sessies mogelijk maakt, bestaat, zodat het verkeer met hoge prioriteit een vertraging heeft onderlopend normaal verkeer, zoals een snelle Lane in de weg.
 
-Azure Service Bus gebruikt momenteel precies één sessie voor elke verbinding. De maximale framegrootte van de Service Bus is 262.144 bytes (256-K bytes) voor Service Bus Standard en Event Hubs. Het is 1.048.576 (1 MB) voor Service Bus Premium. Service Bus legt geen specifieke throttlingvensters op sessieniveau op, maar stelt het venster regelmatig opnieuw in als onderdeel van de stroomregeling op koppelingsniveau (zie [de volgende sectie).](#links)
+Azure Service Bus gebruikt momenteel slechts één sessie voor elke verbinding. De Service Bus maximale frame grootte is 262.144 bytes (256-K bytes) voor Service Bus standaard en Event Hubs. Het is 1.048.576 (1 MB) voor Service Bus Premium. Service Bus geen specifieke beperkings Vensters op sessie niveau, maar het venster wordt regel matig opnieuw ingesteld als onderdeel van datatransport besturing op koppelings niveau (Zie [de volgende sectie](#links)).
 
-Verbindingen, kanalen en sessies zijn vluchtig. Als de onderliggende verbinding samenstort, moeten verbindingen, TLS-tunnel, SASL-autorisatiecontext en sessies opnieuw worden ingesteld.
+Verbindingen, kanalen en sessies zijn kortstondig. Als de onderliggende verbinding is samengevouwen, worden verbindingen, TLS-tunnel, SASL-autorisatie context en sessies opnieuw tot stand gebracht.
 
-### <a name="amqp-outbound-port-requirements"></a>AMQP-uitgaande poortvereisten
+### <a name="amqp-outbound-port-requirements"></a>AMQP voor de uitgaande poort
 
-Clients die AMQP-verbindingen via TCP gebruiken, vereisen dat poorten 5671 en 5672 worden geopend in de lokale firewall. Samen met deze poorten kan het nodig zijn om extra poorten te openen als de [enablelinkredirect-functie](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) is ingeschakeld. `EnableLinkRedirect`is een nieuwe berichtenfunctie die helpt bij het overslaan van one-hop tijdens het ontvangen van berichten, waardoor de doorvoer wordt verbeterd. De klant zou direct gaan communiceren met de back-end service via poortbereik 104XX, zoals in de volgende afbeelding wordt weergegeven. 
+Clients die gebruikmaken van AMQP-verbindingen via TCP, moeten poorten 5671 en 5672 in de lokale firewall moeten worden geopend. Naast deze poorten is het mogelijk nodig extra poorten te openen als de [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) -functie is ingeschakeld. `EnableLinkRedirect`is een nieuwe berichten functie waarmee u een hop kunt overs Laan tijdens het ontvangen van berichten, waardoor de door Voer wordt verbeterd. De client begint direct met de back-end-service te communiceren via het poort bereik 104XX, zoals wordt weer gegeven in de volgende afbeelding. 
 
-![Lijst van bestemmingshavens][4]
+![Lijst met doel poorten][4]
 
-Een .NET-client zou mislukken met een SocketException ("Er is een poging gedaan om toegang te krijgen tot een socket op een manier die verboden is door de toegangsmachtigingen") als deze poorten door de firewall worden geblokkeerd. De functie kan worden `EnableAmqpLinkRedirect=false` uitgeschakeld door in te stellen in de connectiong-tekenreeks, waardoor de clients worden dwingt om met de externe service via poort 5671 te communiceren.
+Een .NET-client zou mislukken met een SocketException (' er is een poging gedaan om toegang te krijgen tot een socket op een manier die niet wordt toegestaan door de toegangs machtigingen ') als deze poorten zijn geblokkeerd door de firewall. De functie kan worden uitgeschakeld door de `EnableAmqpLinkRedirect=false` instelling in de met-teken reeks, waardoor de clients met de externe service via poort 5671 kunnen communiceren.
 
 
 ### <a name="links"></a>Koppelingen
 
-AMQP brengt berichten over links. Een koppeling is een communicatiepad dat is gemaakt over een sessie waarmee berichten in één richting kunnen worden overgedragen. de onderhandeling over de overdrachtsstatus is over de verbinding en bi-directioneel tussen de verbonden partijen.
+AMQP brengt berichten over koppelingen over. Een koppeling is een communicatie traject dat is gemaakt over een sessie die het overdragen van berichten in één richting mogelijk maakt. de onderhandeling over de overdrachts status bevindt zich boven de koppeling en bidirectionele tussen de verbonden partijen.
 
 ![][2]
 
-Links kunnen worden gemaakt door een container op elk gewenst moment en over een bestaande sessie, waardoor AMQP anders is dan veel andere protocollen, waaronder HTTP en MQTT, waar het initiëren van overdrachten en overdrachtspad een exclusief voorrecht is van de partij die de verbinding met de aansluiting.
+Koppelingen kunnen worden gemaakt door elke container op elk gewenst moment en via een bestaande sessie, waardoor AMQP afwijkt van een groot aantal andere protocollen, waaronder HTTP en MQTT, waarbij het initiëren van transfers en transfer Path een exclusieve bevoegdheid is van de partij die de socket verbinding maakt.
 
-De container die door de koppeling wordt gestart, vraagt de tegenovergestelde container om een koppeling te accepteren en kiest een rol van afzender of ontvanger. Daarom kan een van beide containers het maken van unidirectionele of bidirectionele communicatiepaden initiëren, waarbij de laatste is gemodelleerd als koppelingenparen.
+De koppeling voor het initiëren van de container vraagt de tegenovergestelde container om een koppeling te accepteren en kiest een rol van de afzender of ontvanger. Daarom kan een container met behulp van het maken van een eenrichtings-of bidirectionele communicatie paden worden gestart, met het laatste model als paar koppelingen.
 
-Koppelingen worden benoemd en gekoppeld aan knooppunten. Zoals in het begin vermeld, zijn knooppunten de communicerende entiteiten in een container.
+Koppelingen hebben de naam en zijn gekoppeld aan knoop punten. Zoals vermeld in het begin, zijn knoop punten de communicerende entiteiten binnen een container.
 
-In ServiceBus is een knooppunt direct gelijk aan een wachtrij, een onderwerp, een abonnement of een dodelettersubwachtrij van een wachtrij of abonnement. De naam van het knooppunt dat in AMQP wordt gebruikt, is daarom de relatieve naam van de entiteit binnen de naamruimte van de servicebus. Als een wachtrij `myqueue`wordt genoemd, is dat ook de naam van het AMQP-knooppunt. Een onderwerp abonnement volgt de HTTP API conventie door te worden gesorteerd in een "abonnementen" resource collectie en dus een abonnement **sub** op een onderwerp **mytopic** heeft de AMQP node naam **mytopic / abonnementen / sub**.
+In Service Bus is een knoop punt rechtstreeks gelijk aan een wachtrij, een onderwerp, een abonnement of een subwachtrij deadletter van een wachtrij of abonnement. De naam van het knoop punt dat in AMQP wordt gebruikt, is daarom de relatieve naam van de entiteit binnen de naam ruimte Service Bus. Als de naam van een `myqueue`wachtrij is, is dat ook de naam van het AMQP-knoop punt. Een onderwerp-abonnement volgt de HTTP API-Conventie door te sorteren in een ' Abonnementen ' resource verzameling. Daarom heeft een abonnement **Sub** in een onderwerp **mytopic** de AMQP-knooppunt naam **mytopic/abonnementen/sub**.
 
-De verbindende client is ook verplicht om een lokale knooppuntnaam te gebruiken voor het maken van koppelingen; Service Bus is niet prescriptief over die knooppuntnamen en interpreteert ze niet. AMQP 1.0 client stacks maken over het algemeen gebruik van een schema om ervoor te zorgen dat deze kortstondige node namen uniek zijn in het bereik van de client.
+De client waarmee verbinding moet worden gemaakt, is ook vereist voor het gebruik van een lokale knooppunt naam voor het maken van koppelingen. Service Bus is geen voor schriften voor de namen van deze knoop punten en interpreteert deze niet. AMQP 1,0-client stacks gebruiken meestal een schema om ervoor te zorgen dat deze namen van tijdelijke knoop punten uniek zijn binnen het bereik van de client.
 
-### <a name="transfers"></a>Transfers
+### <a name="transfers"></a>Making
 
-Zodra een link is vastgesteld, kunnen berichten worden overgedragen via die link. In AMQP wordt een overdracht uitgevoerd met een *transfer* expliciete protocolgebaar (het overdrachtsperformatief) waarmee een bericht van afzender naar ontvanger via een koppeling wordt verplaatst. Een overdracht is voltooid wanneer deze "geregeld" is, wat betekent dat beide partijen een gedeeld begrip hebben vastgesteld van de uitkomst van die overdracht.
+Zodra een koppeling tot stand is gebracht, kunnen berichten via die koppeling worden verzonden. In AMQP wordt een overdracht uitgevoerd met een expliciete protocol beweging (de *overdrachts* -Performative) die een bericht verplaatst van afzender naar ontvanger via een koppeling. Een overdracht is voltooid wanneer het ' verrekend ' is, wat inhoudt dat beide partijen een gedeeld memorandum hebben vastgesteld van het resultaat van die overdracht.
 
 ![][3]
 
-In het eenvoudigste geval kan de afzender ervoor kiezen om berichten te verzenden "vooraf geregeld", wat betekent dat de klant niet geïnteresseerd is in het resultaat en de ontvanger geen feedback geeft over de uitkomst van de bewerking. Deze modus wordt ondersteund door Service Bus op HET NIVEAU van het AMQP-protocol, maar wordt niet weergegeven in een van de client-API's.
+In het meest eenvoudige geval kan de afzender kiezen voor het verzenden van berichten ' vooraf vereffend ', wat betekent dat de client niet geïnteresseerd is in het resultaat en dat de ontvanger geen feedback geeft over het resultaat van de bewerking. Deze modus wordt ondersteund door Service Bus op het niveau van het AMQP-protocol, maar wordt niet weer gegeven in een van de client-Api's.
 
-Het reguliere geval is dat berichten worden verzonden onrustig, en de ontvanger geeft dan acceptatie of afwijzing met behulp van de *dispositie* performatief. Afwijzing vindt plaats wanneer de ontvanger het bericht om welke reden dan ook niet kan accepteren en het afwijzingsbericht informatie bevat over de reden, wat een foutstructuur is die door AMQP is gedefinieerd. Als berichten worden geweigerd vanwege interne fouten in Service Bus, retourneert de service extra informatie in die structuur die kan worden gebruikt voor het verstrekken van diagnostische tips om personeel te ondersteunen als u ondersteuningsverzoeken indient. U leert later meer informatie over fouten.
+Het gewone geval is dat berichten niet-vereffend worden verzonden en dat de ontvanger vervolgens aanvaar ding of weigering aanduidt met behulp van de *dispositie* Performative. Weigering treedt op wanneer de ontvanger het bericht om de een of andere reden niet kan accepteren en het afwijzings bericht bevat informatie over de reden. Dit is een fout structuur die is gedefinieerd door AMQP. Als berichten worden afgewezen als gevolg van interne fouten in de Service Bus, retourneert de service extra informatie in die structuur die kan worden gebruikt om diagnostische hints te bieden om personeel te ondersteunen als u ondersteunings aanvragen indient. Later vindt u meer informatie over fouten.
 
-Een bijzondere vorm van afwijzing is de *vrijgegeven* staat, die aangeeft dat de curator geen technisch bezwaar heeft tegen de overdracht, maar ook geen belang heeft bij de afwikkeling van de overdracht. Die aanvraag bestaat bijvoorbeeld wanneer een bericht wordt afgeleverd bij een Service Bus-client en de client ervoor kiest het bericht te "verlaten" omdat het niet het werk kan uitvoeren dat voortvloeit uit het verwerken van het bericht; de berichtlevering zelf is niet in gebreke. Een variatie van die status is de *gewijzigde* status, waarmee wijzigingen in het bericht als het wordt vrijgegeven. Deze staat wordt momenteel niet gebruikt door Service Bus.
+Een speciale vorm van afwijzing is de *uitgebrachte* status, waarmee wordt aangegeven dat de ontvanger geen technische objecten heeft voor de overdracht, maar dat er geen belang is voor het vereffenen van de overdracht. Dit is bijvoorbeeld het geval wanneer een bericht wordt bezorgd bij een Service Bus-client en de client het bericht ' abandon ' kiest omdat het werk niet kan worden uitgevoerd als gevolg van het verwerken van het bericht. de bericht bezorging zelf is niet fout. Een variant van deze status is de *gewijzigde* status, waardoor het bericht kan worden gewijzigd wanneer het wordt losgelaten. Deze status wordt op dit moment niet door Service Bus gebruikt.
 
-De AMQP 1.0-specificatie definieert een verdere dispositie status genaamd *ontvangen*, die specifiek helpt om link herstel te behandelen. Linkherstel maakt het mogelijk om de status van een koppeling en eventuele in behandeling zijnde leveringen opnieuw in te stellen bovenop een nieuwe verbinding en sessie, wanneer de eerdere verbinding en sessie verloren zijn gegaan.
+De AMQP 1,0-specificatie definieert een verdere status met de naam *Received*, die specifiek helpt om het herstel van koppelingen te verwerken. Met koppelings herstel kunt u de status van een koppeling en eventuele bezorgings aanvragen boven op een nieuwe verbinding en sessie, wanneer de eerdere verbinding en sessie verloren zijn gegaan.
 
-Service Bus ondersteunt geen linkherstel; Als de client de verbinding met Service Bus verliest met een ongeregelde berichtoverdracht in behandeling, gaat die berichtoverdracht verloren en moet de client opnieuw verbinding maken, de koppeling herstellen en de overdracht opnieuw proberen.
+Service Bus biedt geen ondersteuning voor koppelings herstel. Als de client de verbinding met Service Bus met een niet-vereffende bericht overdracht verliezen, gaat de bericht overdracht verloren en moet de client opnieuw verbinding maken, de koppeling herstellen en de overdracht opnieuw proberen.
 
-Als zodanig ondersteunen Service Bus en Event Hubs "ten minste eenmaal" overdracht waarbij de afzender kan worden verzekerd voor het bericht is opgeslagen en geaccepteerd, maar geen ondersteuning bieden voor "precies een keer" transfers op AMQP-niveau, waar het systeem zou proberen om de link te herstellen en blijven onderhandelen over de leveringsstatus om duplicatie van de berichtoverdracht te voorkomen.
+Zo kunnen Service Bus en Event Hubs ten minste één keer worden ondersteund, waarbij de afzender kan worden gegarandeerd dat het bericht is opgeslagen en geaccepteerd, maar ' slechts eenmaal ' overdrachten op het AMQP niveau, waarbij het systeem zou proberen de koppeling te herstellen en te blijven onderhandelen over de leverings status om te voor komen dat de bericht overdracht wordt verdubbeld.
 
-Om mogelijke dubbele verzendingen te compenseren, ondersteunt Service Bus dubbele detectie als een optionele functie voor wachtrijen en onderwerpen. Dubbele detectie registreert de bericht-id's van alle binnenkomende berichten tijdens een door de gebruiker gedefinieerd tijdvenster en laat vervolgens in stilte alle berichten die in hetzelfde venster met dezelfde bericht-id's worden verzonden, vallen.
+Om mogelijke dubbele verzen dingen te compenseren, ondersteunt Service Bus duplicaten detectie als een optionele functie in wacht rijen en onderwerpen. Met duplicaten detectie worden de bericht-Id's van alle inkomende berichten geregistreerd tijdens een door de gebruiker gedefinieerd tijd venster en worden alle berichten die met dezelfde bericht-Id's worden verzonden, in dat zelfde venster weer gegeven.
 
-### <a name="flow-control"></a>Stroomregeling
+### <a name="flow-control"></a>Datatransport besturing
 
-Naast het eerder besproken flow control-model op sessieniveau heeft elke koppeling zijn eigen flow control-model. Flow control op sessieniveau beschermt de container tegen het tegelijk verwerken van te veel frames, waarbij de stroomregeling op koppelingsniveau de leiding geeft over het aantal berichten dat de container vanuit een koppeling wil verwerken en wanneer.
+Naast het stroom beheer model op sessie niveau dat eerder is besproken, heeft elke koppeling een eigen stroom beheer model. Met Datatransport besturing op sessie niveau kan de container te allen tijde niet te veel frames tegelijk verwerken, de Datatransport besturing op koppelings niveau zorgt ervoor dat de toepassing wordt belast met het aantal berichten dat via een koppeling moet worden verwerkt en wanneer.
 
 ![][4]
 
-Op een link kunnen overdrachten alleen plaatsvinden als de afzender voldoende *linktegoed*heeft. Linkcredit is een teller die *flow* door de ontvanger is ingesteld met behulp van de stroomperformatieve, die is ingesteld op een link. Wanneer de afzender koppelingstegoed is toegewezen, probeert deze dat tegoed te gebruiken door berichten af te leveren. Elke berichtlevering decrements het resterende verbindingskrediet door 1. Wanneer het linktegoed is opgebruikt, stoppen de leveringen.
+Bij een koppeling kunnen de overdrachten alleen plaatsvinden wanneer de afzender voldoende *link-tegoed*heeft. Link tegoed is een teller die door de ontvanger wordt ingesteld met behulp van de *flow* Performative, die is gericht op een koppeling. Wanneer de afzender een koppelings tegoed heeft gekregen, wordt geprobeerd dat tegoed te gebruiken door berichten te leveren. Elke bericht bezorging verlaagt het resterende tegoed van de link met 1. Wanneer het tegoed voor de koppeling wordt gebruikt, worden de leveringen gestopt.
 
-Wanneer Service Bus zich in de ontvangerrol bevindt, biedt deze de afzender direct voldoende linktegoed, zodat berichten onmiddellijk kunnen worden verzonden. Als linkkrediet wordt gebruikt, stuurt Service Bus af en toe een *stroompertief* naar de afzender om het linkkredietsaldo bij te werken.
+Als Service Bus zich in de ontvanger van de receiver bevindt, wordt de afzender direct een tegoed van meer dan links verstrekt, zodat berichten direct kunnen worden verzonden. Als tegoed voor de koppeling wordt gebruikt, stuurt Service Bus af en toe een *stroom* Performative naar de afzender om het tegoed van de link bij te werken.
 
-In de verzendrol stuurt Service Bus berichten om een uitstaand linktegoed op te gebruiken.
+In de rol afzender verzendt Service Bus berichten om een openstaand link-tegoed te gebruiken.
 
-Een "ontvangen" oproep op API-niveau vertaalt zich in een *flow* formatief dat door de client naar Service Bus wordt verzonden, en Service Bus verbruikt dat krediet door het eerste beschikbare, ontgrendelde bericht uit de wachtrij te nemen, het te vergrendelen en over te dragen. Als er geen bericht beschikbaar is voor levering, blijft elk uitstaand krediet door een link die met die specifieke entiteit is vastgesteld, geregistreerd in volgorde van aankomst, en worden berichten vergrendeld en overgedragen zodra ze beschikbaar zijn, om een uitstaand krediet te gebruiken.
+Een ' Receive '-aanroep op het API-niveau wordt omgezet in een *stroom* Performative die wordt verzonden naar service bus door de client. service bus verbruikt dat tegoed door het eerste beschik bare, niet-vergrendelde bericht uit de wachtrij te vergren delen en te verplaatsen. Als er geen bericht beschikbaar is om te worden geleverd, blijft het openstaande tegoed door een koppeling die is gemaakt met die entiteit, opgeslagen in de volg orde van aankomst, en worden berichten vergrendeld en overgedragen zodra deze beschikbaar komen, om een openstaand tegoed te gebruiken.
 
-Het slot op een bericht wordt vrijgegeven wanneer de overdracht wordt verrekend in een van de terminalstaten *die zijn geaccepteerd*, *afgewezen*of *vrijgegeven*. Het bericht wordt uit de servicebus verwijderd wanneer de terminalstatus wordt *geaccepteerd.* Het blijft in Service Bus en wordt geleverd aan de volgende ontvanger wanneer de overdracht een van de andere staten bereikt. Service Bus verplaatst het bericht automatisch naar de wachtrij voor deadletter van de entiteit wanneer het het maximale aantal verzendkosten bereikt dat is toegestaan voor de entiteit als gevolg van herhaalde afwijzingen of releases.
+De vergren deling van een bericht wordt vrijgegeven wanneer de overdracht wordt vereffend met een van de *geaccepteerde*, *Geweigerde*of *vrijgegeven*statussen van de Terminal. Het bericht wordt van Service Bus verwijderd wanneer de status van de terminal wordt *geaccepteerd*. Het blijft in Service Bus en wordt bij de volgende ontvanger bezorgd wanneer de overdracht een van de andere statussen bereikt. Service Bus verplaatst het bericht automatisch naar de deadletter-wachtrij van de entiteit wanneer het maximum aantal bezorgingen dat is toegestaan voor de entiteit bereikt als gevolg van herhaalde weigeringen of releases.
 
-Hoewel de Service Bus API's niet direct een dergelijke optie bloot vandaag, een lager niveau AMQP protocol client kan gebruik maken van de link-credit model om de "pull-style" interactie van de afgifte van een eenheid van krediet voor elke ontvangen verzoek om te zetten in een "push-stijl" model door het uitgeven van een groot aantal linkcredits en ontvang vervolgens berichten zodra ze beschikbaar komen zonder verdere interactie. Push wordt ondersteund via de instellingen van de eigenschap [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) of [MessageReceiver.PrefetchCount.](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) Wanneer ze niet-nul zijn, gebruikt de AMQP-client het als het linkkrediet.
+Hoewel de Service Bus-Api's een dergelijke optie vandaag niet direct beschikbaar maken, kan een AMQP-client met een lager niveau het link-credit model gebruiken om de interactie ' pull-Style ' in te scha kelen voor elke ontvangst aanvraag in een ' push-stijl ' model door een groot aantal koppelings kredieten te verlenen en vervolgens berichten te ontvangen wanneer deze beschikbaar zijn zonder verdere interactie. Push wordt ondersteund via de instellingen van de eigenschap [MessagingFactory. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) of [MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) . Als ze niet gelijk zijn aan nul, gebruikt de AMQP-client deze als het tegoed van de koppeling.
 
-In deze context is het belangrijk om te begrijpen dat de klok voor het verstrijken van het bericht in het bericht in de entiteit begint wanneer het bericht van de entiteit wordt overgenomen, niet wanneer het bericht op de draad wordt geplaatst. Wanneer de klant aangeeft dat de klant bereid is om berichten te ontvangen door linkkrediet uit te geven, wordt daarom verwacht dat hij actief berichten over het netwerk trekt en klaar is om ze te verwerken. Anders is het berichtslot mogelijk verlopen voordat het bericht wordt bezorgd. Het gebruik van link-credit flow control moet direct de onmiddellijke bereidheid weerspiegelen om de beschikbare berichten die naar de ontvanger worden verzonden, te behandelen.
+In deze context is het belang rijk om te begrijpen dat de klok voor het verlopen van de vergren deling van het bericht in de entiteit wordt gestart wanneer het bericht wordt opgehaald van de entiteit, niet wanneer het bericht wordt geplaatst op de kabel. Wanneer de client gereedheid aangeeft om berichten te ontvangen door het verzenden van een koppelings tegoed, wordt verwacht dat er actief berichten over het netwerk worden opgehaald en gereed zijn om ze te verwerken. Anders is het mogelijk dat de bericht vergrendeling is verlopen voordat het bericht zelfs wordt bezorgd. Het gebruik van de Datatransport besturing van de link-tegoed moet rechtstreeks overeenkomen met de onmiddellijke gereedheid om te omgaan met beschik bare berichten die naar de ontvanger worden verzonden.
 
-Samengevat geven de volgende secties een schematisch overzicht van de performatieve stroom tijdens verschillende API-interacties. Elke sectie beschrijft een andere logische bewerking. Sommige van deze interacties kunnen "lui" zijn, wat betekent dat ze alleen kunnen worden uitgevoerd wanneer dat nodig is. Het maken van een afzender van een bericht kan geen netwerkinteractie veroorzaken totdat het eerste bericht is verzonden of aangevraagd.
+In samen vatting bieden de volgende secties een schematisch overzicht van de Performative-stroom tijdens verschillende API-interacties. In elke sectie wordt een andere logische bewerking beschreven. Sommige van deze interacties kunnen ' luie ' zijn, wat betekent dat ze alleen kunnen worden uitgevoerd wanneer dat nodig is. Het maken van een bericht afzender kan geen netwerk interactie veroorzaken totdat het eerste bericht wordt verzonden of aangevraagd.
 
-De pijlen in de volgende tabel geven de performatieve stroomrichting weer.
+De pijlen in de volgende tabel geven de stroom richting van Performative weer.
 
-#### <a name="create-message-receiver"></a>Berichtontvanger maken
-
-| Client | Service Bus |
-| --- | --- |
-| --> hechten(<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**ontvanger**,<br/>source={entity name},<br/>target={clientlink-ID}<br/>) |Client hecht aan entiteit als ontvanger |
-| Service Bus antwoordt het toevoegen van het einde van de link |<.<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**afzender**,<br/>source={entity name},<br/>target={clientlink-ID}<br/>) |
-
-#### <a name="create-message-sender"></a>Afzender van berichten maken
+#### <a name="create-message-receiver"></a>Bericht ontvanger maken
 
 | Client | Service Bus |
 | --- | --- |
-| --> hechten(<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**afzender**,<br/>source={client link ID},<br/>doel={naam van de entiteit}<br/>) |Geen actie |
-| Geen actie |<.<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**ontvanger**,<br/>source={client link ID},<br/>doel={naam van de entiteit}<br/>) |
+| --> koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**ontvanger**,<br/>bron = {naam entiteit},<br/>doel = {client koppelings-ID}<br/>) |Client gekoppeld aan entiteit als ontvanger |
+| Service Bus antwoorden die het einde van de koppeling koppelen |<--koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**Sender**,<br/>bron = {naam entiteit},<br/>doel = {client koppelings-ID}<br/>) |
 
-#### <a name="create-message-sender-error"></a>Afzender van berichten maken (fout)
-
-| Client | Service Bus |
-| --- | --- |
-| --> hechten(<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**afzender**,<br/>source={client link ID},<br/>doel={naam van de entiteit}<br/>) |Geen actie |
-| Geen actie |<.<br/>naam={linknaam},<br/>handle={numerieke handgreep},<br/>rol=**ontvanger**,<br/>source=null,<br/>target=null<br/>)<br/><br/><.<br/>handle={numerieke handgreep},<br/>gesloten=**waar**,<br/>error={error info}<br/>) |
-
-#### <a name="close-message-receiversender"></a>Ontvanger/afzender van berichten sluiten
+#### <a name="create-message-sender"></a>Bericht afzender maken
 
 | Client | Service Bus |
 | --- | --- |
-| --> losmaken.<br/>handle={numerieke handgreep},<br/>closed=**true**<br/>) |Geen actie |
-| Geen actie |<.<br/>handle={numerieke handgreep},<br/>closed=**true**<br/>) |
+| --> koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**Sender**,<br/>Bron = {client koppelings-ID},<br/>doel = {naam entiteit}<br/>) |Geen actie |
+| Geen actie |<--koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**ontvanger**,<br/>Bron = {client koppelings-ID},<br/>doel = {naam entiteit}<br/>) |
 
-#### <a name="send-success"></a>Verzenden (succes)
+#### <a name="create-message-sender-error"></a>Afzender van het bericht maken (fout)
 
 | Client | Service Bus |
 | --- | --- |
-| --> overdracht(<br/>delivery-id={numerieke handgreep},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,,meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |Geen actie |
-| Geen actie |<.<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>geregeld=**waar**,<br/>staat=**geaccepteerd**<br/>) |
+| --> koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**Sender**,<br/>Bron = {client koppelings-ID},<br/>doel = {naam entiteit}<br/>) |Geen actie |
+| Geen actie |<--koppelen (<br/>name = {naam koppeling},<br/>ingang = {numerieke ingang},<br/>Role =**ontvanger**,<br/>Bron = null,<br/>doel = Null<br/>)<br/><br/><--ontkoppelen (<br/>ingang = {numerieke ingang},<br/>gesloten =**True**,<br/>fout = {fout info}<br/>) |
+
+#### <a name="close-message-receiversender"></a>Bericht ontvanger/afzender sluiten
+
+| Client | Service Bus |
+| --- | --- |
+| --> loskoppelen (<br/>ingang = {numerieke ingang},<br/>gesloten =**True**<br/>) |Geen actie |
+| Geen actie |<--ontkoppelen (<br/>ingang = {numerieke ingang},<br/>gesloten =**True**<br/>) |
+
+#### <a name="send-success"></a>Verzenden (geslaagd)
+
+| Client | Service Bus |
+| --- | --- |
+| --> overdracht (<br/>delivery-id = {numerieke ingang},<br/>Delivery-tag = {binaire ingang},<br/>afgewikkeld =**False**,, meer =**False**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |Geen actie |
+| Geen actie |<--toestand (<br/>Role = ontvanger,<br/>First = {Delivery-ID},<br/>Last = {Delivery-ID},<br/>vereffend =**waar**,<br/>status =**geaccepteerd**<br/>) |
 
 #### <a name="send-error"></a>Verzenden (fout)
 
 | Client | Service Bus |
 | --- | --- |
-| --> overdracht(<br/>delivery-id={numerieke handgreep},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,,meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |Geen actie |
-| Geen actie |<.<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>geregeld=**waar**,<br/>staat=**afgewezen**(<br/>error={error info}<br/>)<br/>) |
+| --> overdracht (<br/>delivery-id = {numerieke ingang},<br/>Delivery-tag = {binaire ingang},<br/>afgewikkeld =**False**,, meer =**False**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |Geen actie |
+| Geen actie |<--toestand (<br/>Role = ontvanger,<br/>First = {Delivery-ID},<br/>Last = {Delivery-ID},<br/>vereffend =**waar**,<br/>status =**afgewezen**(<br/>fout = {fout info}<br/>)<br/>) |
 
 #### <a name="receive"></a>Ontvangen
 
 | Client | Service Bus |
 | --- | --- |
-| --> stroom(<br/>link-credit=1<br/>) |Geen actie |
-| Geen actie |< transfer.<br/>delivery-id={numerieke handgreep},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,<br/>meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |
-| --> dispositie(<br/>rol=**ontvanger**,<br/>first={delivery ID},<br/>last={delivery ID},<br/>geregeld=**waar**,<br/>staat=**geaccepteerd**<br/>) |Geen actie |
+| --> flow (<br/>link-Credit = 1<br/>) |Geen actie |
+| Geen actie |< overdracht (<br/>delivery-id = {numerieke ingang},<br/>Delivery-tag = {binaire ingang},<br/>vereffend =**Onwaar**,<br/>meer =**Onwaar**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |
+| --> toestand (<br/>Role =**ontvanger**,<br/>First = {Delivery-ID},<br/>Last = {Delivery-ID},<br/>vereffend =**waar**,<br/>status =**geaccepteerd**<br/>) |Geen actie |
 
-#### <a name="multi-message-receive"></a>Ontvangen meerdere berichten
+#### <a name="multi-message-receive"></a>Ontvangen van meerdere berichten
 
 | Client | Service Bus |
 | --- | --- |
-| --> stroom(<br/>link-credit=3<br/>) |Geen actie |
-| Geen actie |< transfer.<br/>delivery-id={numerieke handgreep},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,<br/>meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |
-| Geen actie |< transfer.<br/>delivery-id={numerieke handgreep+1},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,<br/>meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |
-| Geen actie |< transfer.<br/>delivery-id={numerieke handgreep+2},<br/>delivery-tag={binaire handgreep},<br/>geregeld=**vals**,<br/>meer=**vals**,<br/>staat=**null**,<br/>cv=**false**<br/>) |
-| --> dispositie(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID+2},<br/>geregeld=**waar**,<br/>staat=**geaccepteerd**<br/>) |Geen actie |
+| --> flow (<br/>link-credit = 3<br/>) |Geen actie |
+| Geen actie |< overdracht (<br/>delivery-id = {numerieke ingang},<br/>Delivery-tag = {binaire ingang},<br/>vereffend =**Onwaar**,<br/>meer =**Onwaar**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |
+| Geen actie |< overdracht (<br/>delivery-id = {numerieke ingang + 1},<br/>Delivery-tag = {binaire ingang},<br/>vereffend =**Onwaar**,<br/>meer =**Onwaar**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |
+| Geen actie |< overdracht (<br/>delivery-id = {numerieke ingang + 2},<br/>Delivery-tag = {binaire ingang},<br/>vereffend =**Onwaar**,<br/>meer =**Onwaar**,<br/>status =**Null**,<br/>Resume =**False**<br/>) |
+| --> toestand (<br/>Role = ontvanger,<br/>First = {Delivery-ID},<br/>Last = {Delivery-ID + 2},<br/>vereffend =**waar**,<br/>status =**geaccepteerd**<br/>) |Geen actie |
 
 ### <a name="messages"></a>Berichten
 
-In de volgende secties wordt uitgelegd welke eigenschappen van de standaard AMQP-berichtsecties worden gebruikt door Service Bus en hoe deze worden toegewezen aan de API-set servicebus.
+In de volgende secties wordt uitgelegd welke eigenschappen van de standaard AMQP-bericht secties worden gebruikt door Service Bus en hoe deze worden toegewezen aan de API-set van Service Bus.
 
-Elke eigenschap die toepassing moet definieert, moet worden `application-properties` toegewezen aan de kaart van AMQP.
+Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten worden toegewezen `application-properties` aan de toewijzing van AMQP.
 
 #### <a name="header"></a>koptekst
 
 | Veldnaam | Gebruik | API-naam |
 | --- | --- | --- |
-| Duurzaam |- |- |
+| duurzame |- |- |
 | priority |- |- |
-| ttl |Tijd om te leven voor dit bericht |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| eerste-acquirer |- |- |
-| aantal levering |- |[Aantal bezorging](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| ttl |Time to Live voor dit bericht |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| eerste acquirer |- |- |
+| aantal leveringen |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="properties"></a>properties
 
 | Veldnaam | Gebruik | API-naam |
 | --- | --- | --- |
-| bericht-id |Toepassingsgedefinieerde, vrije-form id voor dit bericht. Wordt gebruikt voor dubbele detectie. |[Messageid](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| user-id |Door toepassingen gedefinieerde gebruikers-id, niet geïnterpreteerd door Service Bus. |Niet toegankelijk via de Api servicebus. |
-| tot |Toepassingsgedefinieerde bestemmings-id, niet geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Onderwerp |Toepassingsgedefinieerde berichtdoel-id, niet geïnterpreteerd door Service Bus. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| reply-to |Toepassingsgedefinieerde antwoordpadindicator, niet geïnterpreteerd door Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Door toepassing gedefinieerde correlatie-id, niet geïnterpreteerd door Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| inhoudstype |Toepassingsgedefinieerde inhoudstype-indicator voor de body, niet geïnterpreteerd door Service Bus. |[Contenttype](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| inhoudscodering |Toepassingsgedefinieerde content-encoding-indicator voor de body, niet geïnterpreteerd door Service Bus. |Niet toegankelijk via de Api servicebus. |
-| absolute-expiry-time |Verklaart op welk moment het bericht verloopt. Genegeerd op input (header TTL wordt waargenomen), gezaghebbend op output. |[Verlooptatutc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| creatie-tijd |Verklaart op welk moment het bericht is gemaakt. Niet gebruikt door Service Bus |Niet toegankelijk via de Api servicebus. |
-| groeps-id |Toepassingsgedefinieerde id voor een gerelateerde set berichten. Gebruikt voor Service Bus sessies. |[Sessionid](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| groepsreeks |Teller die het relatieve volgordenummer van het bericht in een sessie identificeert. Genegeerd door Service Bus. |Niet toegankelijk via de Api servicebus. |
-| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| bericht-id |Een door de toepassing gedefinieerde, vrije-vorm-id voor dit bericht. Wordt gebruikt voor duplicaten detectie. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| user-id |Door de toepassing gedefinieerde gebruikers-id die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
+| tot |De door de toepassing gedefinieerde doel-id, die niet wordt geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Adres](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| beantwoorden |Een door de toepassing gedefinieerde antwoord-Path-Indicator die niet wordt geïnterpreteerd door Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[Correlatie](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| inhouds type |Door de toepassing gedefinieerde inhouds type-indicator voor de hoofd tekst, niet geïnterpreteerd door Service Bus. |[Invoer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-encoding |De door de toepassing gedefinieerde coderings indicator voor de hoofd tekst, die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
+| absoluut-verloop tijd |Declareert op welke absolute direct het bericht verloopt. Genegeerd bij invoer (TTL van header wordt waargenomen), gezaghebbend op uitvoer. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| aanmaak tijd |Declareert op welk tijdstip het bericht is gemaakt. Niet gebruikt door Service Bus |Niet toegankelijk via de Service Bus-API. |
+| groep-ID |Een door de toepassing gedefinieerde id voor een gerelateerde set berichten. Wordt gebruikt voor Service Bus sessies. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| groep-reeks |Teller waarmee het relatieve Volg nummer van het bericht binnen een sessie wordt geïdentificeerd. Genegeerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
+| antwoord-naar-groep-ID |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
-#### <a name="message-annotations"></a>Aantekeningen voor berichten
+#### <a name="message-annotations"></a>Bericht aantekeningen
 
-Er zijn weinig andere servicebusberichtberichten, die geen deel uitmaken van amqp-berichteigenschappen en worden doorgegeven zoals `MessageAnnotations` in het bericht.
+Er zijn enkele andere eigenschappen van Service Bus-berichten, die geen deel uitmaken van AMQP-bericht eigenschappen, en `MessageAnnotations` die worden door gegeven als op het bericht.
 
-| Kaarttoets annotatie | Gebruik | API-naam |
+| Toewijzings sleutel van annotatie | Gebruik | API-naam |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | Verklaart op welk tijdstip het bericht op de entiteit moet worden weergegeven |[Geplandewachtrijtijd](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partitietoets | Toepassingsgedefinieerde sleutel die bepaalt in welke partitie het bericht moet landen. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | Toepassingsgedefinieerde partitiesleutelwaarde wanneer een transactie moet worden gebruikt om berichten via een transferwachtrij te verzenden. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-inqueued-time | Servicegedefinieerde UTC-tijd die de werkelijke tijd van het uiten van het bericht weergeeft. Genegeerd bij invoer. | [InqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-nummer | Servicegedefinieerd uniek nummer dat is toegewezen aan een bericht. | [SequenceNummer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | Service-gedefinieerd volgordenummer van het bericht in de wachtrij. | [In het aantal in de wachtrij plaatsen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | Service-gedefinieerd. De datum en tijd tot welke het bericht wordt vergrendeld in de wachtrij/abonnement. | [Vergrendeldtotutc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-bron | Service gedefinieerd. Als het bericht wordt ontvangen uit de wachtrij met dode letters, wordt de bron van het oorspronkelijke bericht weergegeven. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-time | Declareert op welk tijdstip het bericht moet worden weer gegeven op de entiteit |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-Partition-sleutel | Een door de toepassing gedefinieerde sleutel die bepaalt in welke partitie het bericht moet worden gegrond. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-Partition-sleutel | Een door de toepassing gedefinieerde partitie sleutel waarde wanneer een trans actie moet worden gebruikt voor het verzenden van berichten via een overdrachts wachtrij. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-in-time | De door de service gedefinieerde UTC-tijd voor de werkelijke tijd van het enqueuing van het bericht. Genegeerd bij invoer. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-Sequence-Number | Een door de service gedefinieerd uniek nummer dat is toegewezen aan een bericht. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-offset | Service-gedefinieerd Volg nummer van in wachtrij geplaatste bericht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-Lock-until | Service gedefinieerd. De datum en tijd tot wanneer het bericht in de wachtrij/het abonnement wordt vergrendeld. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | Service gedefinieerd. Als het bericht wordt ontvangen van de wachtrij voor onbestelbare berichten, de bron van het oorspronkelijke bericht. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
-### <a name="transaction-capability"></a>Transactiemogelijkheden
+### <a name="transaction-capability"></a>Transactie mogelijkheid
 
-Een transactie groepeert twee of meer bewerkingen in een uitvoeringsbereik. Een dergelijke transactie moet er van nature voor zorgen dat alle transacties die tot een bepaalde groep transacties behoren, gezamenlijk slagen of mislukken.
-De bewerkingen worden gegroepeerd `txn-id`op een id .
+Een transactie groepeert twee of meer bewerkingen in een uitvoeringsbereik. Een dergelijke trans actie moet er dus voor zorgen dat alle bewerkingen die tot een bepaalde groep bewerkingen behoren, slagen of mislukken.
+De bewerkingen worden gegroepeerd op een id `txn-id`.
 
-Voor transactionele interactie fungeert de `transaction controller` client als een , die de bewerkingen regelt die moeten worden gegroepeerd. Service Bus Service `transactional resource` fungeert als een en `transaction controller`voert werkzaamheden uit zoals gevraagd door de .
+Voor transactionele interactie fungeert de client als een `transaction controller` , waarmee de bewerkingen worden beheerd die samen moeten worden gegroepeerd. Service Bus-service fungeert als `transactional resource` een en voert het werk uit zoals `transaction controller`aangevraagd door de.
 
-De klant en service `control link` communiceren over een , die is vastgesteld door de klant. De `declare` `discharge` berichten en berichten worden verzonden door de controller over de controle link toe te wijzen en transacties te voltooien respectievelijk (ze vertegenwoordigen niet de afbakening van transactionele werk). Het daadwerkelijke verzenden/ontvangen wordt niet uitgevoerd op deze link. Elke gevraagde transactionele bewerking wordt expliciet geïdentificeerd `txn-id` met de gewenste en kan daarom plaatsvinden op elke link op de verbinding. Als de controlekoppeling wordt gesloten terwijl er niet-geloste transacties zijn die zijn gemaakt, worden al deze transacties onmiddellijk teruggedraaid en zullen pogingen om verdere transactionele werkzaamheden aan deze transacties uit te voeren, leiden tot mislukken. Berichten op de controlekoppeling mogen niet vooraf worden vereffend.
+De client en service communiceren via een `control link` , die door de client is vastgesteld. De `declare` - `discharge` en-berichten worden door de controller via de beheer koppeling verzonden om respectievelijk trans acties toe te wijzen en te volt ooien (ze vertegenwoordigen niet de afbakening van transactioneel werk). De daad werkelijke verzen ding/ontvangst wordt niet uitgevoerd op deze koppeling. Elke aangevraagde transactionele bewerking wordt expliciet geïdentificeerd met `txn-id` de gewenste en kan daarom worden uitgevoerd op een koppeling op de verbinding. Als de koppeling van het besturings element wordt gesloten terwijl er nog niet-gefactureerde trans acties bestaan, worden alle dergelijke trans acties onmiddellijk teruggedraaid en wordt geprobeerd om verdere transactionele werkzaamheden uit te voeren. Berichten op de besturings koppeling mogen niet vooraf worden afgerekend.
 
-Elke verbinding moet een eigen controlekoppeling initiëren om transacties te kunnen starten en beëindigen. De service definieert een speciaal `coordinator`doel dat functioneert als een . De client/controller legt een besturingskoppeling naar dit doel. Controlekoppeling valt buiten de grens van een entiteit, dat wil zeggen dat dezelfde controlekoppeling kan worden gebruikt om transacties voor meerdere entiteiten te initiëren en te ontladen.
+Elke verbinding moet een eigen beheer koppeling initiëren om trans acties te kunnen starten en beëindigen. De service definieert een speciaal doel dat fungeert als een `coordinator`. De client/controller brengt een beheer koppeling naar dit doel tot stand. De beheer koppeling valt buiten de grens van een entiteit, dat wil zeggen, dezelfde beheer koppeling kan worden gebruikt om trans acties voor meerdere entiteiten te initiëren en te corrigeren.
 
-#### <a name="starting-a-transaction"></a>Een transactie starten
+#### <a name="starting-a-transaction"></a>Een trans actie starten
 
-Om te beginnen met transactioneel werk. de verwerkingsverantwoordelijke `txn-id` moet een van de coördinator verkrijgen. Het doet dit `declare` door het verzenden van een type bericht. Als de verklaring succesvol is, reageert de coördinator `txn-id`met een dispositieresultaat, dat toegewezen draagt.
+Om te beginnen met transactioneel werk. de controller moet een `txn-id` van de coördinator verkrijgen. Dit doet u door een `declare` type bericht te verzenden. Als de declaratie is geslaagd, reageert de coördinator met een positie resultaat, waarmee de toewijzing `txn-id`wordt uitgevoerd.
 
-| Client (controller) | | ServiceBus (Coördinator) |
+| Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
-| bevestig(<br/>naam={linknaam},<br/>... ,<br/>rol=**afzender**,<br/>target=**Coördinator**<br/>) | ------> |  |
-|  | <------ | bevestig(<br/>naam={linknaam},<br/>... ,<br/>target=Coördinator()<br/>) |
-| overdracht(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declareer()**)}| ------> |  |
-|  | <------ | beschikking( <br/> first=0, last=0, <br/>staat=**Aangegeven**(<br/>**txn-id**={transactie-ID}<br/>))|
+| Koppel<br/>name = {naam koppeling},<br/>... ,<br/>Role =**Sender**,<br/>target =**coördinator**<br/>) | ------> |  |
+|  | <------ | Koppel<br/>name = {naam koppeling},<br/>... ,<br/>doel = coördinator ()<br/>) |
+| overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (**Declare ()**)}| ------> |  |
+|  | <------ | toestand <br/> First = 0, last = 0, <br/>status =**gedeclareerd**(<br/>**trans actie-id**= {trans actie-id}<br/>))|
 
-#### <a name="discharging-a-transaction"></a>Het uitvoeren van een transactie
+#### <a name="discharging-a-transaction"></a>Een trans actie wordt geloosd
 
-De controller rondt het transactionele werk af door een `discharge` bericht te sturen naar de coördinator. De verwerkingsverantwoordelijke geeft aan dat hij het transactionele `fail` werk wil vastleggen of terugdraaien door de vlag op de ontladingsinstantie in te stellen. Als de coördinator niet in staat is om de `transaction-error`kwijting te voltooien, wordt het bericht afgewezen met deze uitkomst met de .
+De controller sluit de transactionele werkzaamheden door een `discharge` bericht naar de coördinator te verzenden. De controller geeft aan dat de transactionele werkzaamheden moeten worden doorgevoerd of teruggedraaid door de `fail` vlag in te stellen op de kwijtings instantie. Als de coördinator de kwijting niet kan volt ooien, wordt het bericht met dit resultaat afgewezen `transaction-error`.
 
-> Opmerking: fail=true verwijst naar terugdraaien van een transactie en fail=false verwijst naar Commit.
+> Opmerking: Fail = True verwijst naar terugdraaien van een trans actie, en fout = False verwijst naar door voeren.
 
-| Client (controller) | | ServiceBus (Coördinator) |
+| Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
-| overdracht(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | beschikking( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transactie-ID}<br/>))|
-| | . . . <br/>Transactioneel werk<br/>op andere links<br/> . . . |
-| overdracht(<br/>delivery-id=57,...)<br/>{ AmqpValue (<br/>**Ontlading(txn-id=0,<br/>fail=false)**)}| ------> |  |
-| | <------ | beschikking( <br/> first=57, last=57, <br/>staat=**Geaccepteerd()**)|
+| overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
+|  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
+| | . . . <br/>Transactioneel werk<br/>op andere koppelingen<br/> . . . |
+| overbrengen<br/>levering-id = 57,...)<br/>{ AmqpValue (<br/>**Kwijting (trans actie-id = 0,<br/>Fail = false)**)}| ------> |  |
+| | <------ | toestand <br/> First = 57, last = 57, <br/>status =**geaccepteerd ()**)|
 
-#### <a name="sending-a-message-in-a-transaction"></a>Een bericht verzenden in een transactie
+#### <a name="sending-a-message-in-a-transaction"></a>Een bericht in een trans actie verzenden
 
-Al het transactionele werk wordt gedaan `transactional-state` met de transactionele leveringsstatus die de txn-id draagt. In het geval van het verzenden van berichten wordt de transactionele status gedragen door het overdrachtsframe van het bericht. 
+Alle transactionele werkzaamheden worden uitgevoerd met de transactionele leverings `transactional-state` status die de trans actie-id uitvoert. In het geval van het verzenden van berichten wordt de transactionele status uitgevoerd door het overdrachts frame van het bericht. 
 
-| Client (controller) | | ServiceBus (Coördinator) |
+| Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
-| overdracht(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | beschikking( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transactie-ID}<br/>))|
-| overdracht(<br/>handle=1,<br/>delivery-id=1, <br/>**staat=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
-| | <------ | beschikking( <br/> first=1, last=1, <br/>staat=**<br/>TransactionalState( txn-id=0,<br/>outcome=Accepted()**))|
+| overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
+|  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
+| overbrengen<br/>ingang = 1,<br/>delivery-id = 1, <br/>**status =<br/>TransactionalState (<br/>trans actie-id = 0)**)<br/>nettolading| ------> |  |
+| | <------ | toestand <br/> First = 1, last = 1, <br/>status =**TransactionalState (<br/>trans actie-id = 0,<br/>resultaat = geaccepteerd ()**))|
 
-#### <a name="disposing-a-message-in-a-transaction"></a>Een bericht in een transactie verwijderen
+#### <a name="disposing-a-message-in-a-transaction"></a>Een bericht in een trans actie afstoten
 
-Berichtdispositie `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer`omvat bewerkingen zoals . Als u deze bewerkingen binnen `transactional-state` een transactie wilt uitvoeren, moet u de met de dispositie doorgeven.
+`Complete`  /  `Abandon`  /  `DeadLetter`  / Bericht toestand bevat bewerkingen zoals `Defer`. Als u deze bewerkingen binnen een trans actie wilt uitvoeren `transactional-state` , geeft u het door met de toestand.
 
-| Client (controller) | | ServiceBus (Coördinator) |
+| Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
-| overdracht(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | beschikking( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transactie-ID}<br/>))|
-| | <------ |overdracht(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
-| beschikking( <br/> first=11, last=11, <br/>staat=**<br/>TransactionalState( txn-id=0,<br/>outcome=Accepted()**))| ------> |
+| overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
+|  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
+| | <------ |overbrengen<br/>ingang = 2,<br/>delivery-id = 11, <br/>status = Null)<br/>nettolading|  
+| toestand <br/> First = 11, last = 11, <br/>status =**TransactionalState (<br/>trans actie-id = 0,<br/>resultaat = geaccepteerd ()**))| ------> |
 
 
-## <a name="advanced-service-bus-capabilities"></a>Geavanceerde servicebusmogelijkheden
+## <a name="advanced-service-bus-capabilities"></a>Geavanceerde Service Bus mogelijkheden
 
-Deze sectie behandelt geavanceerde mogelijkheden van Azure Service Bus die zijn gebaseerd op concept-extensies voor AMQP, die momenteel worden ontwikkeld in het OASIS Technical Committee voor AMQP. Service Bus implementeert de nieuwste versies van deze concepten en keurt wijzigingen aan die zijn ingevoerd omdat deze concepten de standaardstatus bereiken.
+In deze sectie vindt u geavanceerde mogelijkheden van Azure Service Bus die zijn gebaseerd op concept uitbreidingen op AMQP, die momenteel worden ontwikkeld in het OASIS Technical Committee for AMQP. Service Bus implementeert de nieuwste versies van deze concepten en neemt wijzigingen op die zijn geïntroduceerd in de standaard status.
 
 > [!NOTE]
-> Geavanceerde services busberichten worden ondersteund via een aanvraag-/antwoordpatroon. De details van deze bewerkingen worden beschreven in het artikel [AMQP 1.0 in Service Bus: request-response-based operations](service-bus-amqp-request-response.md).
+> Geavanceerde bewerkingen voor berichten van Service Bus worden ondersteund via een aanvraag/antwoord patroon. De details van deze bewerkingen worden beschreven in het artikel [AMQP 1,0 in service bus: bewerkingen op basis van aanvragen](service-bus-amqp-request-response.md).
 > 
 > 
 
 ### <a name="amqp-management"></a>AMQP-beheer
 
-De AMQP-beheerspecificatie is de eerste van de conceptextensies die in dit artikel worden besproken. Deze specificatie definieert een set protocollen die bovenop het AMQP-protocol zijn gelaagd en die beheerinteracties met de berichteninfrastructuur via AMQP mogelijk maken. De specificatie definieert algemene bewerkingen zoals *maken,* *lezen,* *bijwerken*en *verwijderen* voor het beheren van entiteiten binnen een berichteninfrastructuur en een set querybewerkingen.
+De AMQP-beheer specificatie is de eerste van de concept uitbreidingen die in dit artikel worden besproken. Deze specificatie definieert een set protocollen die is gelaagd boven op het AMQP-protocol waarmee beheer interacties met de infra structuur voor berichten via AMQP worden toegestaan. De specificatie definieert algemene bewerkingen, zoals *maken*, *lezen*, *bijwerken*en *verwijderen* voor het beheren van entiteiten in een infra structuur voor berichten en een set query bewerkingen.
 
-Al deze gebaren vereisen een interactie tussen verzoek/antwoord tussen de client en de berichteninfrastructuur, en daarom bepaalt de specificatie hoe u dat interactiepatroon boven OP AMQP modelleren: de client maakt verbinding met de berichteninfrastructuur, initieert een sessie en maakt vervolgens een paar koppelingen. Op de ene link fungeert de klant als afzender en aan de andere kant fungeert hij als ontvanger, waardoor een paar links ontstaat die als bidirectioneel kanaal kunnen fungeren.
+Voor al deze gebaren is een aanvraag/antwoord interactie tussen de client en de infra structuur voor berichten vereist. de specificatie definieert daarom hoe u het interactie patroon op AMQP kunt model leren: de client maakt verbinding met de infra structuur voor berichten, initieert een sessie en maakt vervolgens een paar koppelingen. Op één koppeling fungeert de-client als afzender en op de andere, fungeert deze als ontvanger, waardoor er een paar koppelingen worden gemaakt die kunnen fungeren als een bi-directioneel kanaal.
 
 | Logische bewerking | Client | Service Bus |
 | --- | --- | --- |
-| Pad voor het antwoord op aanvragen maken |--> hechten(<br/>naam={*linknaam*},<br/>handle={*numerieke handgreep*},<br/>rol=**afzender**,<br/>bron=**null**,<br/>target="myentity/$management"<br/>) |Geen actie |
-| Pad voor het antwoord op aanvragen maken |Geen actie |\<-- hechten(<br/>naam={*linknaam*},<br/>handle={*numerieke handgreep*},<br/>rol=**ontvanger**,<br/>source=null,<br/>target="myentity"<br/>) |
-| Pad voor het antwoord op aanvragen maken |--> hechten(<br/>naam={*linknaam*},<br/>handle={*numerieke handgreep*},<br/>rol=**ontvanger**,<br/>bron="myentity/$management",<br/>target="myclient$id"<br/>) | |
-| Pad voor het antwoord op aanvragen maken |Geen actie |\<-- hechten(<br/>naam={*linknaam*},<br/>handle={*numerieke handgreep*},<br/>rol=**afzender**,<br/>source="myentity",<br/>target="myclient$id"<br/>) |
+| Reactie pad voor aanvraag maken |--> koppelen (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**Sender**,<br/>bron =**Null**,<br/>target = "myentity/$management"<br/>) |Geen actie |
+| Reactie pad voor aanvraag maken |Geen actie |\<--attach (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**ontvanger**,<br/>Bron = null,<br/>target = "myentity"<br/>) |
+| Reactie pad voor aanvraag maken |--> koppelen (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**ontvanger**,<br/>source = "myentity/$management",<br/>target = "myclient $ id"<br/>) | |
+| Reactie pad voor aanvraag maken |Geen actie |\<--attach (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**Sender**,<br/>Bron = "myentity",<br/>target = "myclient $ id"<br/>) |
 
-Met dat paar koppelingen is de implementatie van het verzoek/antwoord eenvoudig: een verzoek is een bericht dat wordt verzonden naar een entiteit binnen de berichteninfrastructuur die dit patroon begrijpt. In dat verzoekbericht wordt het *antwoordveld* in de sectie *eigenschappen* ingesteld op de *doel-id* voor de koppeling waarop het antwoord moet worden geleverd. De verwerkingsentiteit verwerkt de aanvraag en geeft het antwoord vervolgens via de koppeling waarvan de *doel-id* overeenkomt met de aangegeven *reply-to-id.*
+Met dat paar koppelingen op locatie is de aanvraag/antwoord-implementatie eenvoudig: een aanvraag is een bericht dat wordt verzonden naar een entiteit in de infra structuur voor berichten die dit patroon begrijpt. In dat verzoek-bericht wordt het veld *beantwoorden* in de sectie *Eigenschappen* ingesteld op de *doel* -id voor de koppeling waarop het antwoord moet worden afgeleverd. De entiteit handling verwerkt de aanvraag en stuurt vervolgens het antwoord over de koppeling waarvan de *doel* -id overeenkomt met de opgegeven *antwoord-* id.
 
-Het patroon vereist uiteraard dat de clientcontainer en de door de client gegenereerde id voor de antwoordbestemming uniek zijn voor alle clients en om veiligheidsredenen ook moeilijk te voorspellen zijn.
+Het patroon vereist uiteraard dat de client container en de door de client gegenereerde id voor de antwoord bestemming uniek zijn op alle clients en om veiligheids redenen moeilijk te voors pellen.
 
-De berichtuitwisselingen die worden gebruikt voor het beheerprotocol en voor alle andere protocollen die hetzelfde patroon gebruiken, vinden plaats op toepassingsniveau; ze definiëren geen nieuwe AMQP-protocol-niveau gebaren. Dat is opzettelijk, zodat toepassingen direct kunnen profiteren van deze extensies met compatibele AMQP 1.0-stacks.
+De bericht uitwisselingen die worden gebruikt voor het beheer protocol en voor alle andere protocollen die gebruikmaken van hetzelfde patroon, gebeuren op toepassings niveau. Er worden geen nieuwe AMQP-bewegingen voor het protocol niveau gedefinieerd. Dat is opzettelijk, zodat toepassingen onmiddellijk kunnen profiteren van deze uitbrei dingen met compatibele AMQP 1,0-stacks.
 
-Service Bus implementeert momenteel geen van de kernkenmerken van de managementspecificatie, maar het aanvraag-/antwoordpatroon dat wordt gedefinieerd door de managementspecificatie is fundamenteel voor de op claims gebaseerde beveiligingsfunctie en voor bijna alle geavanceerde mogelijkheden die in de volgende secties worden besproken:
+Service Bus implementeert momenteel geen van de kern functies van de beheer specificatie, maar het aanvraag/antwoord-patroon dat door de beheer specificatie is gedefinieerd, is voor de functie op claims gebaseerde beveiliging en voor vrijwel alle geavanceerde mogelijkheden die in de volgende secties worden besproken:
 
 ### <a name="claims-based-authorization"></a>Autorisatie op basis van claims
 
-Het CBS-specificatieconcept (AMQP Claims-Based-Authorization) bouwt voort op het aanvraag/responspatroon voor managementspecificatie en beschrijft een algemeen model voor het gebruik van federatieve beveiligingstokens met AMQP.
+De specificatie van het AMQP Claims based Authorization (CBS) is gebaseerd op het patroon van de beheer specificatie aanvraag/reactie en beschrijft een gegeneraliseerde model voor het gebruik van federatieve beveiligings tokens met AMQP.
 
-Het standaard beveiligingsmodel van AMQP dat in de inleiding wordt besproken, is gebaseerd op SASL en integreert met de AMQP-verbindingshandshake. Het gebruik van SASL heeft het voordeel dat het een uitbreidbaar model biedt waarvoor een reeks mechanismen is gedefinieerd waarvan elk protocol dat formeel op SASL leunt, kan profiteren. Onder deze mechanismen zijn "PLAIN" voor de overdracht van gebruikersnamen en wachtwoorden, "EXTERN" te binden aan TLS-niveau beveiliging, "ANONIEM" om de afwezigheid van expliciete authenticatie / autorisatie uit te drukken, en een breed scala aan extra mechanismen die het mogelijk maken het passeren van authenticatie en / of autorisatie referenties of tokens.
+Het standaard beveiligings model van AMQP dat in de inleiding wordt besproken, is gebaseerd op SASL en kan worden geïntegreerd met de AMQP-Handshake van de verbinding. Het gebruik van SASL heeft het voor deel dat het een uitbreidbaar model biedt waarvoor een set mechanismen is gedefinieerd, op basis waarvan elk protocol dat op SASL formeel kan profiteren. Een van deze mechanismen is "PLAIN" voor de overdracht van gebruikers namen en wacht woorden "EXTERNAL" om te verbinden met beveiliging op TLS-niveau, "anoniem" om het ontbreken van expliciete verificatie/autorisatie, en een groot aantal extra mechanismen waarmee verificatie en/of autorisatie referenties of-tokens kunnen worden door gegeven.
 
-AmQP's SASL integratie heeft twee nadelen:
+De SASL-integratie van AMQP heeft twee nadelen:
 
-* Alle referenties en tokens zijn scoped aan de verbinding. Een berichten-infrastructuur kan een gedifferentieerde toegangscontrole per entiteit willen bieden; bijvoorbeeld, zodat de drager van een token naar wachtrij A kan worden verzonden, maar niet in wachtrij B. Met de autorisatiecontext die is verankerd in de verbinding, is het niet mogelijk om één verbinding te gebruiken en toch verschillende toegangstokens te gebruiken voor wachtrij A en wachtrij B.
-* Toegangstokens zijn meestal slechts tijdelijk geldig. Deze geldigheid vereist dat de gebruiker periodiek tokens opnieuw verwerft en biedt de tokenuitgever de mogelijkheid om de uitgifte van een nieuw token te weigeren als de toegangsmachtigingen van de gebruiker zijn gewijzigd. AMQP-verbindingen kunnen voor langere tijd duren. Het SASL-model biedt alleen een kans om een token in te stellen op verbindingstijd, wat betekent dat de berichteninfrastructuur de client moet loskoppelen wanneer het token verloopt, ofwel het risico moet accepteren dat verdere communicatie wordt toegestaan met een klant die toegangsrechten kunnen tussentijds zijn ingetrokken.
+* Alle referenties en tokens zijn binnen het bereik van de verbinding. Een infra structuur voor berichten kan een gedifferentieerd toegangs beheer op basis van afzonderlijke eenheden bieden. bijvoorbeeld, zodat de drager van een token kan verzenden naar de wachtrij A, maar niet naar de wachtrij B. Met de autorisatie context verankerd op de verbinding, is het niet mogelijk om één verbinding te gebruiken en nog verschillende toegangs tokens voor wachtrij A en wachtrij B te gebruiken.
+* Toegangs tokens zijn doorgaans alleen geldig voor een beperkte periode. Deze geldigheid vereist dat de gebruiker periodiek tokens opnieuw ophaalt en de uitgever van het token de mogelijkheid biedt om een nieuw token te weigeren als de toegangs machtigingen van de gebruiker zijn gewijzigd. AMQP-verbindingen kunnen lange tijd duren. Het SASL-model biedt alleen de mogelijkheid om een token in te stellen op verbindings tijd, wat betekent dat de infra structuur van berichten de client moet loskoppelen wanneer het token verloopt of dat het risico moet worden geaccepteerd dat permanente communicatie met een client die toegangs rechten toestaat, mogelijk is ingetrokken in de tijdelijke oplossing.
 
-De AMQP CBS-specificatie, geïmplementeerd door Service Bus, maakt een elegante oplossing mogelijk voor beide problemen: het stelt een client in staat om toegangstokens aan elk knooppunt te koppelen en deze tokens bij te werken voordat ze verlopen, zonder de berichtstroom te onderbreken.
+De AMQP CBS-specificatie, geïmplementeerd door Service Bus, maakt een elegante tijdelijke oplossing voor beide problemen: Hiermee kan een client toegangs tokens aan elk knoop punt koppelen en deze tokens bijwerken voordat ze verlopen, zonder de berichten stroom te onderbreken.
 
-CBS definieert een virtueel beheerknooppunt, genaamd *$cbs,* dat wordt geleverd door de berichteninfrastructuur. Het beheerknooppunt accepteert tokens namens andere knooppunten in de berichteninfrastructuur.
+CBS definieert een virtueel beheer knooppunt, met de naam *$CBS*, dat wordt opgegeven door de infra structuur voor berichten. Het beheer knooppunt accepteert tokens namens andere knoop punten in de Messa ging-infra structuur.
 
-Het protocolgebaar is een uitwisseling tussen aanvragen en antwoorden zoals gedefinieerd in de beheerspecificatie. Dat betekent dat de client een paar koppelingen met het *$cbs* knooppunt maakt en vervolgens een verzoek doorgeeft op de uitgaande koppeling en vervolgens wacht op het antwoord op de binnenkomende koppeling.
+De protocol beweging is een aanvraag/antwoord uitwisseling zoals gedefinieerd door de beheer specificatie. Dit betekent dat de client een paar koppelingen tot stand brengt met het *$CBS* knoop punt en vervolgens een aanvraag doorgeeft op de uitgaande koppeling en vervolgens wacht op de reactie op de inkomende koppeling.
 
-Het aanvraagbericht heeft de volgende toepassingseigenschappen:
-
-| Sleutel | Optioneel | Waardetype | Inhoud van waarde |
-| --- | --- | --- | --- |
-| Bewerking |Nee |tekenreeks |**put-token** |
-| type |Nee |tekenreeks |Het type token dat wordt geplaatst. |
-| name |Nee |tekenreeks |Het "publiek" waarop het token van toepassing is. |
-| Verloop |Ja |tijdstempel |De vervaldatum van het token. |
-
-De *eigenschap naam* identificeert de entiteit waarmee het token moet worden gekoppeld. In Service Bus is dit het pad naar de wachtrij, of onderwerp / abonnement. De *eigenschap type* identificeert het tokentype:
-
-| Tokentype | Tokenbeschrijving | Lichaamstype | Opmerkingen |
-| --- | --- | --- | --- |
-| amqp:jwt |JSON-webtoken (JWT) |AMQP-waarde (tekenreeks) |Nog niet beschikbaar. |
-| amqp:swt |Eenvoudige webtoken (SWT) |AMQP-waarde (tekenreeks) |Alleen ondersteund voor SWT-tokens uitgegeven door AAD/ACS |
-| servicebus.windows.net:sastoken |Servicebus SAS-token |AMQP-waarde (tekenreeks) |- |
-
-Tokens verlenen rechten. Service Bus kent drie grondrechten: "Send" maakt verzenden, "Luisteren" mogelijk en "Beheren" maakt het manipuleren van entiteiten mogelijk. SWT-tokens uitgegeven door AAD/ACS bevatten deze rechten expliciet als claims. SAS-tokens voor servicebussen verwijzen naar regels die zijn geconfigureerd op de naamruimte of entiteit en deze regels zijn geconfigureerd met rechten. Als u het token ondertekent met de sleutel die aan die regel is gekoppeld, drukt het token dus de betreffende rechten uit. Het token dat is gekoppeld aan een entiteit die *put-token* gebruikt, stelt de verbonden client in staat om te communiceren met de entiteit per de tokenrechten. Een koppeling waarbij de client de *verzendrol* op zich neemt, vereist het recht 'Verzenden'; het nemen van de *ontvanger* rol vereist de "Luisteren" recht.
-
-Het antwoordbericht heeft de volgende *waarden voor toepassingseigenschappen*
+Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 
 | Sleutel | Optioneel | Waardetype | Inhoud van waarde |
 | --- | --- | --- | --- |
-| statuscode |Nee |int |HTTP-antwoordcode **[RFC2616]**. |
-| statusbeschrijving |Ja |tekenreeks |Beschrijving van de status. |
+| schijf |Nee |tekenreeks |**put-token** |
+| type |Nee |tekenreeks |Het type van het token dat wordt geplaatst. |
+| name |Nee |tekenreeks |De "doel groep" waarop het token van toepassing is. |
+| verval |Ja |tijdstempel |De verloop tijd van het token. |
 
-De client kan herhaaldelijk *put-token* bellen en voor elke entiteit in de berichteninfrastructuur. De tokens zijn scoped naar de huidige client en verankerd op de huidige verbinding, wat betekent dat de server alle bewaarde tokens laat vallen wanneer de verbinding daalt.
+De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
 
-De huidige Service Bus implementatie staat alleen CBS in combinatie met de SASL methode "ANONIEM." Er moet altijd een SSL/TLS-verbinding bestaan vóór de SASL-handdruk.
+| Token type | Beschrijving van het token | Type hoofd tekst | Opmerkingen |
+| --- | --- | --- | --- |
+| AMQP: JWT |JSON Web Token (JWT) |AMQP-waarde (teken reeks) |Nog niet beschikbaar. |
+| AMQP: swt |Eenvoudig webtoken (SWT) |AMQP-waarde (teken reeks) |Alleen ondersteund voor SWT-tokens die zijn uitgegeven door AAD/ACS |
+| servicebus. Windows. net: sastoken |Service Bus SAS-token |AMQP-waarde (teken reeks) |- |
 
-Het ANONYMOUS mechanisme moet daarom ondersteund worden door de gekozen AMQP 1.0 client. Anonieme toegang betekent dat de eerste verbindingshanddruk, inclusief het maken van de eerste sessie, plaatsvindt zonder dat Service Bus weet wie de verbinding maakt.
+Tokens verlenen rechten. Service Bus weet ongeveer drie fundamentele rechten: verzenden ondersteunt het verzenden, Luis teren van ontvangen en beheren van entiteiten. SWT-tokens die zijn uitgegeven door AAD/ACS, bevatten expliciet die rechten als claims. Service Bus SAS-tokens verwijzen naar regels die zijn geconfigureerd op de naam ruimte of entiteit, en deze regels worden geconfigureerd met rechten. Als u het token ondertekent met de sleutel die aan deze regel is gekoppeld, maakt het token de respectieve rechten. Met het token dat is gekoppeld aan een entiteit die gebruikmaakt van een *put-token,* kan de verbonden client communiceren met de entiteit per de token rechten. Voor een koppeling waarbij de client de rol van *afzender* gebruikt, is het recht ' verzenden ' vereist. voor het nemen van de rol *ontvanger* is het recht ' Luis teren ' vereist.
 
-Zodra de verbinding en sessie is vastgesteld, zijn het koppelen van de koppelingen aan het *$cbs* knooppunt en het verzenden van de *put-token* aanvraag de enige toegestane bewerkingen. Een geldig token moet binnen 20 seconden na het tot stand zijn gebracht met een *put-tokenaanvraag* voor een entiteitsknooppunt worden ingesteld, anders wordt de verbinding eenzijdig verwijderd door Service Bus.
+Het antwoord bericht heeft de volgende *eigenschaps* waarden van de toepassing:
 
-De klant is vervolgens verantwoordelijk voor het bijhouden van token expiratie. Wanneer een token verloopt, laat Service Bus onmiddellijk alle koppelingen op de verbinding met de desbetreffende entiteit vallen. Om te voorkomen dat er problemen optreden, kan de client het token *$cbs* voor het knooppunt op elk gewenst moment vervangen door een nieuw token door het virtuele $cbs-beheerknooppunt met hetzelfde *put-token-gebaar* en zonder het payload-verkeer dat op verschillende links stroomt in de weg te staan.
+| Sleutel | Optioneel | Waardetype | Inhoud van waarde |
+| --- | --- | --- | --- |
+| status-code |Nee |int |HTTP-antwoord code **[RFC2616]**. |
+| status-beschrijving |Ja |tekenreeks |De beschrijving van de status. |
 
-### <a name="send-via-functionality"></a>Send-via-functionaliteit
+De client kan *put-token* herhaaldelijk aanroepen en voor elke entiteit in de infra structuur voor berichten. De tokens zijn toegewezen aan de huidige client en verankerd op de huidige verbinding, wat betekent dat de server behouden tokens verwijdert wanneer de verbinding wordt verbroken.
 
-[Verzend-via / Transfer afzender](service-bus-transactions.md#transfers-and-send-via) is een functionaliteit waarmee service bus doorsturen van een bepaald bericht naar een doelentiteit via een andere entiteit. Deze functie wordt gebruikt om bewerkingen uit te voeren tussen entiteiten in één transactie.
+Met de huidige Service Bus-implementatie is CBS alleen toegestaan in combi natie met de SASL-methode ' ANONYMOUS '. Er moet altijd een SSL/TLS-verbinding bestaan vóór de SASL-handshake.
 
-Met deze functionaliteit maakt u een afzender en `via-entity`legt u de koppeling naar de . Bij het leggen van de link wordt aanvullende informatie doorgegeven om de werkelijke bestemming van de berichten/overdrachten op deze link vast te stellen. Zodra de attached succesvol is, worden alle berichten die op deze link worden verzonden automatisch doorgestuurd naar de *bestemmingsentiteit* via *de via-entiteit*. 
+Het anonieme mechanisme moet daarom worden ondersteund door de gekozen AMQP 1,0-client. Anonieme toegang betekent dat de eerste verbindings-Handshake, inclusief het maken van de eerste sessie, wordt uitgevoerd zonder Service Bus weten wie de verbinding maakt.
 
-> Opmerking: Verificatie moet worden uitgevoerd voor zowel *via-entiteit* als *bestemmingsentiteit* voordat deze koppeling wordt gemaakt.
+Zodra de verbinding en sessie tot stand zijn gebracht, koppelt u de koppelingen aan het knoop punt *$CBS* en verzendt u de aanvraag van de *put-token* als enige toegestane bewerkingen. Een geldig token moet worden ingesteld met behulp van een *put-token* aanvraag voor een bepaald entity-knoop punt binnen 20 seconden nadat de verbinding tot stand is gebracht, anders wordt de verbinding met Service Bus verwijderd.
+
+De client wordt vervolgens verantwoordelijk voor het bijhouden van de verval datum van tokens. Wanneer een token verloopt, Service Bus u alle koppelingen op de verbinding met de betreffende entiteit onmiddellijk weglaten. Om het probleem te voor komen, kan de client het token voor het knoop punt op elk gewenst moment vervangen door het knoop punt virtuele *$CBS* -beheer met dezelfde *put-token-* beweging, en zonder de manier te ontvangen van het payload-verkeer dat op verschillende koppelingen stromen.
+
+### <a name="send-via-functionality"></a>Functionaliteit voor verzenden via
+
+Send [-by/overdracht Sender](service-bus-transactions.md#transfers-and-send-via) is een functie waarmee service bus een bepaald bericht via een andere entiteit kan door sturen naar een doel entiteit. Deze functie wordt gebruikt voor het uitvoeren van bewerkingen tussen entiteiten in één trans actie.
+
+Met deze functionaliteit maakt u een afzender en brengt u de koppeling tot stand `via-entity`. Tijdens het maken van de koppeling wordt aanvullende informatie door gegeven om de werkelijke bestemming van de berichten/overdrachten op deze koppeling tot stand te brengen. Zodra het koppelen is gelukt, worden alle berichten die via deze koppeling worden verzonden, automatisch doorgestuurd naar de *doel entiteit* via *via-entity*. 
+
+> Opmerking: verificatie moet worden uitgevoerd voor zowel *via-entity* als *doel-entiteit* voordat deze koppeling tot stand wordt gebracht.
 
 | Client | | Service Bus |
 | --- | --- | --- |
-| bevestig(<br/>naam={linknaam},<br/>role=sender,<br/>source={client link ID},<br/>doel=**{via-entiteit}**,<br/>**eigenschappen=kaart [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
-| | <------ | bevestig(<br/>naam={linknaam},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
+| Koppel<br/>name = {naam koppeling},<br/>Role = Sender,<br/>Bron = {client koppelings-ID},<br/>doel =**{via-entity}**,<br/>**Eigenschappen = map [(<br/>com. micro soft: overdracht-doel-adres<br/>= {doel-entiteit})]** ) | ------> | |
+| | <------ | Koppel<br/>name = {naam koppeling},<br/>Role = ontvanger,<br/>Bron = {client koppelings-ID},<br/>doel = {via-entity},<br/>eigenschappen = map [(<br/>com. micro soft: overdracht-bestemming-adres =<br/>{Destination-entity})] ) |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over AMQP naar de volgende links:
+Ga voor meer informatie over AMQP naar de volgende koppelingen:
 
-* [Overzicht servicebus AMQP]
-* [AMQP 1.0-ondersteuning voor wachtrijen en onderwerpen voor servicebus]
-* [AMQP in servicebus voor Windows Server]
+* [Overzicht van Service Bus AMQP]
+* [AMQP 1,0-ondersteuning voor Service Bus gepartitioneerde wacht rijen en onderwerpen]
+* [AMQP in Service Bus voor Windows Server]
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -429,6 +429,6 @@ Ga voor meer informatie over AMQP naar de volgende links:
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[Overzicht servicebus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-ondersteuning voor wachtrijen en onderwerpen voor servicebus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[AMQP in servicebus voor Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Overzicht van Service Bus AMQP]: service-bus-amqp-overview.md
+[AMQP 1,0-ondersteuning voor Service Bus gepartitioneerde wacht rijen en onderwerpen]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP in Service Bus voor Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx

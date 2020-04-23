@@ -1,6 +1,6 @@
 ---
-title: Beveiliging en verificatie - Azure Event Grid IoT Edge | Microsoft Documenten
-description: Beveiliging en verificatie in Gebeurtenisraster op IoT Edge.
+title: Beveiliging en verificatie-Azure Event Grid IoT Edge | Microsoft Docs
+description: Beveiliging en verificatie in Event Grid op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -18,149 +18,149 @@ ms.locfileid: "76844510"
 ---
 # <a name="security-and-authentication"></a>Verificatie en beveiliging
 
-Beveiliging en verificatie is een geavanceerd concept en vereist eerst vertrouwdheid met de basisprincipes van Event Grid. Begin [hier](concepts.md) als je nieuw bent in Event Grid op IoT Edge. Event Grid-module bouwt voort op de bestaande beveiligingsinfrastructuur op IoT Edge. Raadpleeg [deze documentatie](../../iot-edge/security.md) voor meer informatie en installatie.
+Beveiliging en verificatie is een geavanceerd concept en vereist eerst kennis met Event Grid basis beginselen. Begin [hier](concepts.md) als u geen ervaring hebt met Event Grid op IOT Edge. Event Grid module bouwt voort op de bestaande beveiligings infrastructuur op IoT Edge. Raadpleeg [deze documentatie](../../iot-edge/security.md) voor meer informatie en installatie.
 
-In de volgende secties wordt in detail beschreven hoe deze instellingen zijn beveiligd en geverifieerd:
+In de volgende secties wordt beschreven hoe deze instellingen worden beveiligd en geverifieerd:
 
 * TLS-configuratie
-* Binnenkomende clientverificatie
-* Uitgaande serververificatie
-* Uitgaande clientverificatie
+* Verificatie van inkomende clients
+* Uitgaande server authenticatie
+* Verificatie van uitgaande clients
 
 >[!IMPORTANT]
->Event Grid module security and authentication leverage's the existing infrastructure available on IoT Edge. De veronderstelling is dat het IoT Edge-subsysteem veilig is.
+>De bestaande infra structuur die beschikbaar is op IoT Edge van Event Grid module beveiliging en verificatie De veronderstelling is dat IoT Edge subsysteem veilig is.
 
 >[!IMPORTANT]
->De configuratie van gebeurtenisraster is **standaard beveiligd.** In de volgende subsecties worden alle opties en mogelijke waarde(s) uitgelegd die u gebruiken om aspecten van verificatie te overschrijven. Begrijp de impact voordat u wijzigingen aanbrengt. Om wijzigingen van kracht te laten worden, moet de module Gebeurtenisraster opnieuw worden geïmplementeerd.
+>Event Grid configuratie is **standaard beveiligd**. In de volgende subsecties worden alle opties en mogelijke waarden beschreven die u kunt gebruiken om aspecten van verificatie te overschrijven. Meer informatie over de impact voordat u wijzigingen aanbrengt. Om de wijzigingen van kracht te laten worden, moet de Event Grid-module opnieuw worden geïmplementeerd.
 
-## <a name="tls-configuration-aka-server-authentication"></a>TLS-configuratie (a.k.a serververificatie)
+## <a name="tls-configuration-aka-server-authentication"></a>TLS-configuratie (a. k. a Server-verificatie)
 
-De module Gebeurtenisraster host zowel HTTP- als HTTPS-eindpunten. Elke IoT Edge-module krijgt een servercertificaat toegewezen door de beveiligingsdaemon van de IoT Edge. We gebruiken het servercertificaat om het eindpunt te beveiligen. Na afloop wordt de module automatisch vernieuwd met een nieuw certificaat van de IoT Edge security daemon.
+Event Grid-module fungeert zowel HTTP-als HTTPS-eind punten. Aan elke IoT Edge-module is een server certificaat toegewezen door de beveiligings-daemon van de IoT Edge. We gebruiken het server certificaat om het eind punt te beveiligen. Na verloop van tijd wordt de module automatisch vernieuwd met een nieuw certificaat van de IoT Edge Security daemon.
 
-Standaard is alleen HTTPS-communicatie toegestaan. U dit gedrag overschrijven via **inbound__serverAuth__tlsPolicy** configuratie. In de volgende tabel wordt de mogelijke waarde(en) van deze eigenschap vastgelegd.
+Standaard is alleen HTTPS-communicatie toegestaan. U kunt dit gedrag negeren via **inbound__serverAuth__tlsPolicy** configuratie. In de volgende tabel worden de mogelijke waarden van deze eigenschap vastgelegd.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ---------------- | ------------ |
-| Strikt | Standaard. Hiermee schakelt u alleen HTTPS in
-| Ingeschakeld | Schakelt zowel HTTP als HTTPS in
-| Uitgeschakeld | Maakt alleen HTTP-
+| Strikt | Standaard. Alleen HTTPS inschakelen
+| Ingeschakeld | Maakt zowel HTTP als HTTPS mogelijk
+| Uitgeschakeld | Schakelt alleen HTTP in
 
-## <a name="inbound-client-authentication"></a>Binnenkomende clientverificatie
+## <a name="inbound-client-authentication"></a>Verificatie van inkomende clients
 
-Clients zijn entiteiten die beheer- en/of runtime-bewerkingen uitvoeren. Clients kunnen andere IoT Edge-modules zijn, niet-IoT-toepassingen.
+Clients zijn entiteiten die beheer en/of runtime-bewerkingen uitvoeren. Clients kunnen andere IoT Edge modules zijn, niet-IoT-toepassingen.
 
-Event Grid-module ondersteunt twee typen clientverificatie:
+De module Event Grid ondersteunt twee typen client verificatie:
 
-* SAS-sleutel (Shared Access Signature)
+* Op basis van Shared Access Signature (SAS)-sleutel
 * op basis van certificaten
 
-Standaard is de module Gebeurtenisraster geconfigureerd om alleen verificatie op basis van certificaten te accepteren. Bij het opstarten haalt de Module Event Grid "TrustBundle" op van IoT Edge security daemon en gebruikt deze om elk clientcertificaat te valideren. Clientcertificaten die niet worden opgelost in deze `UnAuthorized`keten, worden geweigerd met .
+De module Event Grid is standaard geconfigureerd om alleen op certificaten gebaseerde verificatie te accepteren. Bij het opstarten haalt Event Grid-module ' TrustBundle ' op uit IoT Edge Security daemon en gebruikt deze om een client certificaat te valideren. Client certificaten die niet worden omgezet in deze keten, worden geweigerd met `UnAuthorized`.
 
-### <a name="certificate-based-client-authentication"></a>Clientverificatie op basis van certificaten
+### <a name="certificate-based-client-authentication"></a>Client authenticatie op basis van certificaten
 
-Verificatie op basis van certificaten is standaard ingeschakeld. U ervoor kiezen om verificatie op basis van certificaten uit te schakelen via de **eigenschap inbound__clientAuth__clientCert__enabled.** In de volgende tabel wordt de mogelijke waarde(en) vastgelegd.
+Verificatie op basis van certificaten is standaard ingeschakeld. U kunt ervoor kiezen op certificaten gebaseerde verificatie uit te scha kelen via de eigenschap **inbound__clientAuth__clientCert__enabled**. In de volgende tabel worden mogelijke waarden vastgelegd.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
-| waar | Standaard. Voor alle aanvragen in de module Gebeurtenisraster moet een clientcertificaat worden ingediend. Daarnaast moet u **inbound__clientAuth__clientCert__source**configureren.
-| false | Dwing een klant niet om een certificaat te presenteren.
+| waar | Standaard. Vereist dat alle aanvragen in de module Event Grid een client certificaat presen teren. Daarnaast moet u **inbound__clientAuth__clientCert__source**configureren.
+| false | Laat een client niet afdwingen dat het certificaat wordt weer gegeven.
 
-In de volgende tabel wordt de mogelijke waarde(en) voor **inbound__clientAuth__clientCert__source**
+In de volgende tabel worden mogelijke waarden voor **inbound__clientAuth__clientCert__source** vastgelegd
 
 | Mogelijke waarde(n) | Beschrijving |
 | ---------------- | ------------ |
-| IoT Edge | Standaard. Gebruikt de Vertrouwensbundel van IoT Edge om alle clientcertificaten te valideren.
+| IoT Edge | Standaard. Maakt gebruik van de Trustbundle van de IoT Edge om alle client certificaten te valideren.
 
-Als een client een zelfondertekende, standaard presenteert, zal de module Gebeurtenisraster dergelijke aanvragen afwijzen. U ervoor kiezen om zelfondertekende clientcertificaten toe te staan via **inbound__clientAuth__clientCert__allowUnknownCA** eigenschap. In de volgende tabel wordt de mogelijke waarde(en) vastgelegd.
+Als een client een zelfondertekende presenteert, worden deze aanvragen standaard door de module Event Grid geweigerd. U kunt zelfondertekende client certificaten toestaan via **inbound__clientAuth__clientCert__allowUnknownCA** eigenschap. In de volgende tabel worden mogelijke waarden vastgelegd.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------|
-| waar | Standaard. Hiermee kunnen zelfondertekende certificaten met succes worden gepresenteerd.
-| false | Wordt mislukt als zelfondertekende certificaten worden weergegeven.
+| waar | Standaard. Toestaan dat zelfondertekende certificaten correct worden weer gegeven.
+| false | Mislukt als er zelfondertekende certificaten worden weer gegeven.
 
 >[!IMPORTANT]
->In productiescenario's u **inbound__clientAuth__clientCert__allowUnknownCA** instellen op **false**.
+>In productie scenario's kunt u **inbound__clientAuth__clientCert__allowUnknownCA** instellen op **Onwaar**.
 
-### <a name="sas-key-based-client-authentication"></a>SAS-clientverificatie op basis van sleutels
+### <a name="sas-key-based-client-authentication"></a>SAS-client authenticatie op basis van sleutel
 
-Naast verificatie op basis van certificaten kan de Event Grid-module ook SAS Key-gebaseerde verificatie doen. SAS-toets is als een geheim geconfigureerd in de Event Grid-module die het moet gebruiken om alle binnenkomende oproepen te valideren. Clients moeten het geheim opgeven in de HTTP Header 'aeg-sas-key'. Aanvraag wordt afgewezen `UnAuthorized` als het niet overeenkomt.
+Naast op certificaten gebaseerde verificatie kan de module Event Grid ook op SAS-sleutel gebaseerde verificatie uitvoeren. SAS-sleutel is een geheim dat is geconfigureerd in de Event Grid-module, die het moet gebruiken om alle binnenkomende oproepen te valideren. Clients moeten het geheim opgeven in de HTTP-header ' AEG-SAS-key '. De aanvraag wordt geweigerd `UnAuthorized` als deze niet overeenkomt.
 
-De configuratie voor het beheren van SAS-verificatie op basis van sleutels is **inbound__clientAuth__sasKeys__enabled.**
+De configuratie voor het beheren van SAS-sleutel verificatie is **inbound__clientAuth__sasKeys__enabled**.
 
 | Mogelijke waarde(n) | Beschrijving  |
 | ----------------  | ------------ |
-| waar | Hiermee u verificatie op basis van SAS-sleutels gebruiken. Vereist **inbound__clientAuth__sasKeys__key1** of **inbound__clientAuth__sasKeys__key2**
-| false | Standaard. Verificatie op basis van SAS Key is uitgeschakeld.
+| waar | Hiermee staat u verificatie op basis van SAS-sleutel toe. Vereist **inbound__clientAuth__sasKeys__key1** of **inbound__clientAuth__sasKeys__key2**
+| false | Standaard. Verificatie op basis van SAS-sleutel is uitgeschakeld.
 
- **inbound__clientAuth__sasKeys__key1** en **inbound__clientAuth__sasKeys__key2** zijn sleutels waarmee u de module Gebeurtenisraster configureert om te controleren op binnenkomende aanvragen. Ten minste één van de sleutels moet worden geconfigureerd. De klant die het verzoek indient, moet de sleutel presenteren als onderdeel van de**aeg-sas-key**van de aanvraagheader. Als beide sleutels zijn geconfigureerd, kan de client een van de sleutels presenteren.
+ **inbound__clientAuth__sasKeys__key1** en **inbound__clientAuth__sasKeys__key2** zijn sleutels waarmee u de Event grid module kunt controleren op inkomende aanvragen. Ten minste één van de sleutels moet worden geconfigureerd. Client die de aanvraag maakt, moet de sleutel als onderdeel van de aanvraag header '**AEG-SAS-Key**' presen teren. Als beide sleutels zijn geconfigureerd, kan de client een van de sleutels bevatten.
 
 > [!NOTE]
->U beide verificatiemethoden configureren. In een dergelijk geval wordt de SAS-sleutel eerst gecontroleerd en alleen als dat mislukt, wordt de verificatie op basis van certificaten uitgevoerd. Als een verzoek om te slagen, hoeft slechts één van de verificatiemethoden te slagen.
+>U kunt beide verificatie methoden configureren. In een dergelijk geval wordt de SAS-sleutel eerst gecontroleerd en alleen als dit mislukt, wordt de verificatie op basis van certificaten uitgevoerd. Een aanvraag kan alleen worden uitgevoerd als slechts een van de verificatie methoden slaagt.
 
-## <a name="outbound-client-authentication"></a>Uitgaande clientverificatie
+## <a name="outbound-client-authentication"></a>Verificatie van uitgaande clients
 
-Client in uitgaande context verwijst naar de module Gebeurtenisraster. De bewerking die wordt uitgevoerd is het leveren van evenementen aan abonnees. Een abonnement op modules wordt beschouwd als de server.
+De client in de uitgaande context verwijst naar de module Event Grid. De bewerking die wordt uitgevoerd, levert gebeurtenissen aan abonnees. Geabonneerde modules worden beschouwd als de-server.
 
-Elke IoT Edge-module krijgt een identiteitscertificaat toegewezen door de beveiligingsdaemon van de IoT Edge. We gebruiken het identiteitscertificaat voor uitgaande gesprekken. Na afloop wordt de module automatisch vernieuwd met een nieuw certificaat van de IoT Edge security daemon.
+Aan elke IoT Edge-module wordt een identiteits certificaat toegewezen door de beveiligings-daemon van de IoT Edge. We gebruiken het identiteits certificaat voor uitgaande oproepen. Na verloop van tijd wordt de module automatisch vernieuwd met een nieuw certificaat van de IoT Edge Security daemon.
 
-De configuratie voor het beheren van uitgaande clientverificatie is **outbound__clientAuth__clientCert__enabled**.
+De configuratie voor het beheren van de uitgaande client verificatie is **outbound__clientAuth__clientCert__enabled**.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
-| waar | Standaard. Voor alle uitgaande aanvragen van de module Gebeurtenisraster moet een certificaat worden ingediend. Moet **outbound__clientAuth__clientCert__source**configureren .
-| false | De module Gebeurtenisraster hoeft het certificaat niet te presenteren.
+| waar | Standaard. Vereist dat alle uitgaande aanvragen van de module Event Grid een certificaat presen teren. **Outbound__clientAuth__clientCert__source**moet worden geconfigureerd.
+| false | Event Grid-module niet vereist om het certificaat weer te geven.
 
-De configuratie die de bron voor het certificaat regelt, is **outbound__clientAuth__clientCert__source**.
+De configuratie voor het beheren van de bron voor het certificaat is **outbound__clientAuth__clientCert__source**.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ---------------- | ------------ |
-| IoT Edge | Standaard. Gebruikt het identiteitscertificaat van de module geconfigureerd door IoT Edge security daemon.
+| IoT Edge | Standaard. Maakt gebruik van het identiteits certificaat van de module dat is geconfigureerd door IoT Edge Security daemon.
 
-### <a name="outbound-server-authentication"></a>Uitgaande serververificatie
+### <a name="outbound-server-authentication"></a>Uitgaande server authenticatie
 
-Een van de doeltypen voor een eventgridabonnee is "Webhook". Standaard worden alleen HTTPS-eindpunten geaccepteerd voor dergelijke abonnees.
+Een van de doel typen voor een Event Grid-abonnee is webhook. Standaard worden alleen HTTPS-eind punten geaccepteerd voor dergelijke abonnees.
 
-De configuratie om het webhook-bestemmingsbeleid **te beheren outbound__webhook__httpsOnly**.
-
-| Mogelijke waarde(n) | Beschrijving |
-| ----------------  | ------------ |
-| waar | Standaard. Hiermee staan alleen abonnees met HTTPS-eindpunt toe.
-| false | Hiermee kunnen abonnees met http- of HTTPS-eindpunt worden gebruikt.
-
-De module Gebeurtenisraster valideert standaard het servercertificaat van de abonnee. U validatie overslaan door **outbound__webhook__skipServerCertValidation**te overschrijven. Mogelijke waarden zijn:
+De configuratie voor het beheren van het webhook-doel beleid **outbound__webhook__httpsOnly**.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
-| waar | Valideer het servercertificaat van de abonnee niet.
-| false | Standaard. Het servercertificaat van abonnees valideren.
+| waar | Standaard. Alleen abonnees met een HTTPS-eind punt zijn toegestaan.
+| false | Hiermee kunnen abonnees een HTTP-of HTTPS-eind punt hebben.
 
-Als het certificaat van een abonnee zelf is ondertekend, worden dergelijke abonnees standaard geweigerd door de module Gebeurtenisraster. Als u zelfondertekend certificaat wilt toestaan, u **outbound__webhook__allowUnknownCA**overschrijven. In de volgende tabel wordt de mogelijke waarde(en) vastgelegd.
+Event Grid-module valideert standaard het server certificaat van de abonnee. U kunt de validatie overs Laan door **outbound__webhook__skipServerCertValidation**te overschrijven. Mogelijke waarden zijn:
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
-| waar | Standaard. Hiermee kunnen zelfondertekende certificaten met succes worden gepresenteerd.
-| false | Wordt mislukt als zelfondertekende certificaten worden weergegeven.
+| waar | Valideer het server certificaat van de abonnee niet.
+| false | Standaard. Het server certificaat van de abonnee valideren.
+
+Als het certificaat van de abonnee zelf is ondertekend, worden deze abonnees door standaard Event Grid-module geweigerd. Als u een zelfondertekend certificaat wilt toestaan, kunt u **outbound__webhook__allowUnknownCA**onderdrukken. In de volgende tabel worden de mogelijke waarden vastgelegd.
+
+| Mogelijke waarde(n) | Beschrijving |
+| ----------------  | ------------ |
+| waar | Standaard. Toestaan dat zelfondertekende certificaten correct worden weer gegeven.
+| false | Mislukt als er zelfondertekende certificaten worden weer gegeven.
 
 >[!IMPORTANT]
->In productiescenario's wilt u **outbound__webhook__allowUnknownCA** instellen op **false.**
+>In productie scenario's moet u **outbound__webhook__allowUnknownCA** instellen op **Onwaar**.
 
 > [!NOTE]
->De IoT Edge-omgeving genereert zelfondertekende certificaten. Aanbeveling is het genereren van certificaten uitgegeven door geautoriseerde CA's voor productieworkloads en **set toestaanUnknownCA** eigenschap op zowel inkomende als uitgaande naar **false**.
+>IoT Edge omgeving genereert zelfondertekende certificaten. Aanbeveling is het genereren van certificaten die zijn uitgegeven door geautoriseerde certificerings instanties voor werk belastingen voor productie en stel de eigenschap **allowUnknownCA** in op inkomend en uitgaand naar **Onwaar**.
 
 ## <a name="summary"></a>Samenvatting
 
-Een module Event Grid is **standaard beveiligd**. We raden u aan deze standaardwaarden voor uw productie-implementaties te behouden.
+Een Event Grid module is **standaard beveiligd**. We raden u aan deze standaard waarden te bewaren voor uw productie-implementaties.
 
-De volgende zijn de leidende principes te gebruiken tijdens het configureren:
+Hieronder vindt u de richt lijnen die u kunt gebruiken bij het configureren van:
 
-* Alleen HTTPS-aanvragen toestaan in de module.
-* Alleen clientverificatie op basis van certificaten toestaan. Sta alleen certificaten toe die zijn uitgegeven door bekende CA's. Zelfondertekende certificaten niet toestaan.
-* SASKey-gebaseerde clientverificatie weigeren.
-* Presenteer altijd het identiteitscertificaat van de Event Grid-module bij uitgaande oproepen.
-* Alleen HTTPS-abonnees toestaan voor Webhook-doeltypen.
-* Valideer altijd het servercertificaat van abonnees voor webhook-doeltypen. Alleen certificaten toestaan die zijn uitgegeven door bekende CA's. Zelfondertekende certificaten niet toestaan.
+* Sta alleen HTTPS-aanvragen in de module toe.
+* Alleen client authenticatie op basis van certificaten toestaan. Sta alleen certificaten toe die zijn uitgegeven door bekende certificerings instanties. Zelfondertekende certificaten niet toestaan.
+* Client verificatie op basis van SASKey niet toestaan.
+* Het identiteits certificaat van Event Grid module altijd presen teren bij uitgaande oproepen.
+* Alleen HTTPS-abonnees voor webhook-doel typen toestaan.
+* Valideer altijd het server certificaat van de abonnee voor webhook-doel typen. Sta alleen certificaten toe die zijn uitgegeven door bekende certificerings instanties. Zelfondertekende certificaten niet toestaan.
 
-Standaard wordt de module Gebeurtenisraster geïmplementeerd met de volgende configuratie:
+Event Grid module wordt standaard geïmplementeerd met de volgende configuratie:
 
  ```json
  {

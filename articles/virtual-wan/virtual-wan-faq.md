@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Virtual WAN | Microsoft Documenten
-description: Veelgestelde vragen over Virtual WAN
+title: Veelgestelde vragen over Azure Virtual WAN | Microsoft Docs
+description: Veelgestelde vragen over virtuele WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -15,6 +15,6 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "73491654"
 ---
-# <a name="virtual-wan-faq"></a>Virtuele WAN-veelgestelde vragen
+# <a name="virtual-wan-faq"></a>Veelgestelde vragen over virtuele WAN
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]

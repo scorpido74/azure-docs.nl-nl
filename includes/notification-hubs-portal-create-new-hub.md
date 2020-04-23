@@ -15,9 +15,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67509081"
 ---
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **Alle services** in het linkermenu en selecteer vervolgens **Meldingshubs** in de sectie **Mobiel.** Selecteer het sterpictogram naast de servicenaam om de service toe te voegen aan de sectie **FAVORIETEN** in het linkermenu. Nadat u **Notificatiehubs** hebt toegevoegd aan **FAVORIETEN,** selecteert u deze in het linkermenu.
+1. Selecteer **alle services** in het linkermenu en selecteer vervolgens **Notification hubs** in het **mobiele** gedeelte. Selecteer het ster pictogram naast de service naam om de service toe te voegen aan de sectie **Favorieten** in het menu links. Nadat u **Notification hubs** aan **Favorieten**hebt toegevoegd, selecteert u deze in het menu links.
 
       ![Azure Portal - Notification Hubs selecteren](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
@@ -27,26 +27,26 @@ ms.locfileid: "67509081"
 
 1. Voer op de pagina **Notification Hub** de volgende stappen uit:
 
-    1. Voer een naam in **de meldingshub in**.  
+    1. Voer een naam in de **Notification hub**in.  
 
-    1. Voer een naam in **Een nieuwe naamruimte maken**. Een naamruimte bevat een of meer hubs.
+    1. Geef een naam op in **een nieuwe naam ruimte maken**. Een naamruimte bevat een of meer hubs.
 
-    1. Selecteer een waarde in de vervolgkeuzelijst **Locatie.** Deze waarde geeft de locatie aan waarin u de hub wilt maken.
+    1. Selecteer een waarde in de vervolg keuzelijst **locatie** . Met deze waarde geeft u de locatie op waarin u de hub wilt maken.
 
-    1. Selecteer een bestaande resourcegroep in **Resourcegroep**of maak een naam voor een nieuwe resourcegroep.
+    1. Selecteer een bestaande resource groep in de **resource groep**of maak een naam voor een nieuwe resource groep.
 
     1. Selecteer **Maken**.
 
         ![Azure Portal - eigenschappen van de Notification Hub instellen](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-1. Selecteer **Meldingen** (het belpictogram) en selecteer **Ga naar resource**. U de lijst ook vernieuwen op de pagina **Meldingenhubs** en uw hub selecteren.
+1. Selecteer **meldingen** (het klok pictogram) en selecteer vervolgens **Ga naar resource**. U kunt de lijst ook op de **Notification hubs** pagina vernieuwen en uw hub selecteren.
 
       ![Azure Portal - Meldingen -> Naar de resource gaan](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
-1. Selecteer **Toegangsbeleid** in de lijst. Houd er rekening mee dat de twee verbindingstekenreeksen voor u beschikbaar zijn. Je hebt ze later nodig om pushmeldingen te verwerken.
+1. Selecteer **Toegangsbeleid** in de lijst. Houd er rekening mee dat de twee verbindings reeksen voor u beschikbaar zijn. U hebt deze later nodig voor het afhandelen van push meldingen.
 
       >[!IMPORTANT]
-      >Gebruik het **defaultFullSharedAccessSignature-beleid** *niet* in uw toepassing. Dit is bedoeld om alleen in je back-end te worden gebruikt.
+      >Gebruik het **DefaultFullSharedAccessSignature** -beleid *niet* in uw toepassing. Dit is uitsluitend bedoeld om te worden gebruikt in uw back-end.
       >
 
       ![Azure Portal - verbindingsreeksen voor de Notification Hub](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

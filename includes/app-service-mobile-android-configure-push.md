@@ -11,11 +11,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176537"
 ---
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) **Bladeren door Alle** > **App-services**. Selecteer vervolgens de back-end van mobiele apps. 
-2. Selecteer **Onder Instellingen**de optie **Push**. Selecteer vervolgens **Pushmeldingsservices configureren**.
-2. Ga naar **Google (GCM)**. Voer de FCM legacy-serversleutel in die u hebt verkregen van de Firebase-console en selecteer **Opslaan**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/) **Bladeren alle** > **app Services**. Selecteer vervolgens uw Mobile Apps back-end. 
+2. Onder **instellingen**selecteert u **Push**. Selecteer vervolgens **Push Notification Services configureren**.
+2. Ga naar **Google (GCM)**. Voer de FCM legacy-server sleutel in die u hebt verkregen via de Firebase-console en selecteer vervolgens **Opslaan**.
 
-Uw service is nu geconfigureerd om te werken met Firebase Cloud Messaging.
+Uw service is nu geconfigureerd om te werken met Firebase Cloud Messa ging.
 
 <!-- URLs. -->
 

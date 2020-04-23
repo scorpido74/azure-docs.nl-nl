@@ -1,6 +1,6 @@
 ---
-title: Jachtbladwijzers gebruiken voor gegevensonderzoeken in Azure Sentinel
-description: In dit artikel wordt beschreven hoe u de Azure Sentinel-jachtbladwijzers gebruiken om gegevens bij te houden.
+title: Jacht-blad wijzers gebruiken voor gegevens onderzoek in azure Sentinel
+description: In dit artikel wordt beschreven hoe u de Azure Sentinel jacht-blad wijzers gebruikt om gegevens bij te houden.
 author: yelevin
 ms.author: yelevin
 manager: rkarlin
@@ -19,138 +19,138 @@ ms.locfileid: "77588685"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Gegevens bijhouden tijdens de jacht met Azure Sentinel
 
-Threat hunting vereist meestal het herzien van bergen van log gegevens op zoek naar bewijs van kwaadaardig gedrag. Tijdens dit proces, onderzoekers vinden gebeurtenissen die ze willen onthouden, opnieuw bezoeken, en analyseren als onderdeel van het valideren van potentiële hypothesen en het begrijpen van het volledige verhaal van een compromis.
+Voor de dreigings-jacht moet u de bergen aan logboek gegevens controleren op het zoeken naar informatie over schadelijk gedrag. Tijdens dit proces vinden onderzoekers gebeurtenissen die ze graag willen onthouden, opnieuw bezoeken en analyseren als onderdeel van het valideren van mogelijke hypo theses en het volledige verhaal van een inbreuk.
 
-Door bladwijzers in Azure Sentinel te verkennen, u dit doen door de query's te behouden die u in **Azure Sentinel - Logboeken hebt**uitgevoerd, samen met de queryresultaten die u relevant acht. U ook uw contextuele waarnemingen vastleggen en uw bevindingen verwijzen door notities en tags toe te voegen. Gegevens met bladwijzers zijn zichtbaar voor jou en je teamgenoten voor eenvoudige samenwerking.
+Bewaak blad wijzers in azure Sentinel Help u dit doen door de query's te behouden die u in **Azure Sentinel-logs**hebt uitgevoerd, samen met de query resultaten die u relevant acht. U kunt ook uw contextuele waarnemingen vastleggen en naar uw bevindingen verwijzen door notities en tags toe te voegen. Blade gegevens zijn zichtbaar voor u en uw team leden voor eenvoudige samen werking.
 
-U uw gegevens met bladwijzers op elk gewenst moment opnieuw bekijken op het tabblad **Bladwijzers** van het **deelvenster Jacht.** U filter- en zoekopties gebruiken om snel specifieke gegevens voor uw huidige onderzoek te vinden. U uw gegevens met bladwijzers ook rechtstreeks bekijken in de **huntingbookmark-tabel** in uw werkruimte Log Analytics. Bijvoorbeeld:
+U kunt uw bladwijzer gegevens op elk gewenst moment opnieuw bezoeken op het tabblad **blad wijzers** in het deel venster **jacht** . U kunt filters en zoek opties gebruiken om snel specifieke gegevens te vinden voor uw huidige onderzoek. U kunt uw gebladde gegevens ook rechtstreeks in de tabel **HuntingBookmark** in uw log Analytics-werk ruimte weer geven. Bijvoorbeeld:
 
 > [!div class="mx-imgBorder"]
-> ![Tabel HuntingBookmark bekijken](./media/bookmarks/bookmark-table.png)
+> ![HuntingBookmark-tabel weer geven](./media/bookmarks/bookmark-table.png)
 
-Als u bladwijzers uit de tabel bekijkt, u gegevens met bladwijzers filteren, samenvatten en aansluiten bij andere gegevensbronnen, zodat u gemakkelijk zoeken naar bevestigend bewijs.
+Door blad wijzers in de tabel weer te geven, kunt u met andere gegevens bronnen gebladeerde gegevens filteren, samenvatten en samen voegen, zodat u gemakkelijk corroborating bewijs materiaal kunt vinden.
 
-Momenteel in preview, als je iets vindt dat dringend moet worden aangepakt tijdens de jacht in uw logboeken, in een paar klikken, u een bladwijzer maken en promoten tot een incident, of de bladwijzer toevoegen aan een bestaand incident. Zie [Zelfstudie: Incidenten onderzoeken met Azure Sentinel](tutorial-investigate-cases.md)voor meer informatie over incidenten. 
+Als er momenteel een preview-versie beschikbaar is, kunt u, als u iets vindt dat in uw logboeken dringend moet worden aangepakt, een blad wijzer maken en deze promo veren naar een incident, of de blad wijzer toevoegen aan een bestaand incident. Zie voor meer informatie over incidenten [zelf studie: incidenten onderzoeken met Azure Sentinel](tutorial-investigate-cases.md). 
 
-Ook in preview u uw gegevens met bladwijzers visualiseren door op **Onderzoeken** te klikken op de bladwijzerdetails. Dit lanceert de onderzoekservaring waarin u uw bevindingen bekijken, onderzoeken en visueel communiceren met behulp van een interactief entiteitsdiagram en tijdlijn.
+U kunt ook in de preview-versie uw bladwijzer gegevens visualiseren door te klikken op **onderzoeken** in de bladwijzer gegevens. Hiermee wordt de onderzoek ervaring gestart waarbij u uw bevindingen kunt bekijken, onderzoeken en visueel kunnen communiceren met behulp van een interactief diagram en tijd lijn van een interactieve entiteit.
 
 ## <a name="add-a-bookmark"></a>Een bladwijzer toevoegen
 
-1. Navigeer in de Azure-portal naar **Sentinel** > **Threat management** > **Hunting** om query's uit te voeren voor verdacht en afwijkend gedrag.
+1. Navigeer in het Azure Portal naar **Sentinel** > **Threat Management** > -**jacht** om query's uit te voeren voor verdacht en afwijkend gedrag.
 
-2. Select one of the hunting queries and on the right, in the hunting query details, select **Run Query**. 
+2. Selecteer een van de zoek query's en rechts in de details van de query query's **uitvoeren**. 
 
-3. Selecteer **Queryresultaten weergeven**. Bijvoorbeeld:
+3. Selecteer **query resultaten weer geven**. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
-    > ![queryresultaten van Azure Sentinel-jacht weergeven](./media/bookmarks/new-processes-observed-example.png)
+    > ![query resultaten van Azure Sentinel-jacht weer geven](./media/bookmarks/new-processes-observed-example.png)
     
-    Met deze actie worden de queryresultaten geopend in het deelvenster **Logboeken.**
+    Met deze actie worden de resultaten van de query in het deel venster **Logboeken** geopend.
 
-4. Gebruik in de lijst met logboekqueryresultaten de selectievakjes om een of meer rijen te selecteren die de informatie bevatten die u interessant vindt.
+4. Gebruik de selectie vakjes in de resultaten lijst van de logboek query om een of meer rijen te selecteren die de informatie bevatten die u interessant vindt.
 
-5. Selecteer **Bladwijzer toevoegen:**
-    
-    > [!div class="mx-imgBorder"]
-    > ![Jachtbladwijzer toevoegen aan query](./media/bookmarks/add-hunting-bookmark.png)
-
-6. Werk aan de rechterkant in het **deelvenster Bladwijzer toevoegen** optioneel de bladwijzernaam bij, voeg tags en notities toe om u te helpen bepalen wat er interessant was aan het item.
-
-7. Gebruik in de sectie **Querygegevens** de vervolgkeuzelijsten om informatie uit de queryresultaten voor de typen **entiteitaccount,** **Host**en **IP-adres** te extraheren. Met deze actie wordt het geselecteerde entiteitstype toegewezen aan een specifieke kolom uit het queryresultaat. Bijvoorbeeld:
+5. Selecteer **blad wijzer toevoegen**:
     
     > [!div class="mx-imgBorder"]
-    > ![Entiteitstypen toewijzen voor de jachtopbladwijzer](./media/bookmarks/map-entity-types-bookmark.png)
-    
-    Als u de bladwijzer in de onderzoeksgrafiek wilt weergeven (momenteel in voorbeeld) moet u ten minste één entiteitstype toewijzen dat **account,** **host**of **IP-adres**is . 
+    > ![Jacht-blad wijzer aan query toevoegen](./media/bookmarks/add-hunting-bookmark.png)
 
-5. Klik **op Opslaan** om de wijzigingen te verbinden en voeg de bladwijzer toe. Alle gegevens met bladwijzers worden gedeeld met andere onderzoekers en zijn een eerste stap in de richting van een gezamenlijke onderzoekservaring.
+6. Op de rechter kant kunt u in het deel venster **blad wijzer toevoegen** optioneel de naam van de blad wijzer bijwerken, Tags toevoegen en notities om u te helpen bij het identificeren van wat er interessant is voor het item.
+
+7. Gebruik in de sectie **query gegevens** de vervolg keuzelijst om informatie uit de query resultaten voor de entiteits typen **account**, **host**en **IP-adres** te extra heren. Met deze actie wordt het geselecteerde entiteits type toegewezen aan een specifieke kolom uit het query resultaat. Bijvoorbeeld:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Entiteits typen toewijzen voor jacht-blad wijzer](./media/bookmarks/map-entity-types-bookmark.png)
+    
+    Als u de blad wijzer in het onderzoek diagram (momenteel in preview-versie) wilt weer geven, moet u ten minste één entiteits type toewijzen dat een **account**, **host**of **IP-adres**is. 
+
+5. Klik op **Opslaan** om uw wijzigingen door te voeren en de blad wijzer toe te voegen. Alle gegevens met een blad wijzer worden gedeeld met andere onderzoekers en zijn een eerste stap in de buurt van een samenwerkings ervaring.
 
  
 > [!NOTE]
-> De resultaten van de logboekquery ondersteunen bladwijzers wanneer dit deelvenster wordt geopend vanuit Azure Sentinel. U selecteert bijvoorbeeld **Algemene** > **logboeken in** de navigatiebalk, selecteert gebeurteniskoppelingen in de onderzoeksgrafiek of selecteert een waarschuwings-id uit de volledige details van een incident (momenteel in preview). U geen bladwijzers maken wanneer het deelvenster **Logboeken** wordt geopend vanaf andere locaties, zoals rechtstreeks vanuit Azure Monitor.
+> De query resultaten van de logboeken ondersteunen blad wijzers wanneer dit deel venster wordt geopend vanuit Azure Sentinel. U kunt bijvoorbeeld **algemene** > **Logboeken** selecteren op de navigatie balk, gebeurtenis koppelingen selecteren in de grafiek onderzoeken of een waarschuwings-id selecteren uit de volledige details van een incident (momenteel als preview-versie). U kunt geen blad wijzers maken wanneer het deel venster **Logboeken** wordt geopend vanaf andere locaties, zoals rechtstreeks vanuit Azure monitor.
 
-## <a name="view-and-update-bookmarks"></a>Bladwijzers weergeven en bijwerken 
+## <a name="view-and-update-bookmarks"></a>Blad wijzers weer geven en bijwerken 
 
-1. Navigeer in de Azure-portal naar **Sentinel** > **Threat management** > **Hunting.** 
+1. Navigeer in het Azure Portal naar **Sentinel** > **Threat Management** > -**jacht**. 
 
-2. Selecteer het tabblad **Bladwijzers** om de lijst met bladwijzers weer te geven.
+2. Selecteer het tabblad **blad wijzers** om de lijst met blad wijzers weer te geven.
 
-3. Gebruik het zoekvak of de filteropties om u te helpen een specifieke bladwijzer te vinden.
+3. Gebruik het zoekvak of de filter opties om een specifieke blad wijzer te vinden.
 
-4. Selecteer afzonderlijke bladwijzers en bekijk de bladwijzerdetails in het deelvenster met rechtse details.
+4. Selecteer afzonderlijke blad wijzers en Bekijk de bladwijzer Details in het rechterdeel venster met details.
 
-5. Breng uw wijzigingen aan indien nodig, die automatisch worden opgeslagen.
+5. Breng de gewenste wijzigingen aan, die automatisch worden opgeslagen.
 
-## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Bladwijzers verkennen in de onderzoeksgrafiek
-
-> [!IMPORTANT]
-> Het verkennen van bladwijzers in de onderzoeksgrafiek en de onderzoeksgrafiek zelf zijn momenteel in openbare preview.
-> Deze functies worden geleverd zonder een servicelevelovereenkomst en worden niet aanbevolen voor productieworkloads.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
-
-1. Navigeer in de Azure-portal naar het tabblad**Hunting** > **Bookmarks** voor **Sentinel** > **Threat Management** > en selecteer de bladwijzers of bladwijzers die u wilt onderzoeken.
-
-2. Controleer in de bladwijzerdetails of ten minste één entiteit in kaart is gebracht. Voor **ENTITEITEN**ziet u bijvoorbeeld vermeldingen voor **IP,** **Machine**of **Account**.
-
-3. Klik **op Onderzoeken** om de bladwijzer in de onderzoeksgrafiek weer te geven.
-
-Zie [De onderzoeksgrafiek gebruiken om diep te duiken voor](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)instructies om de onderzoeksgrafiek te gebruiken.
-
-## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Bladwijzers toevoegen aan een nieuw of bestaand incident
+## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Blad wijzers in het onderzoek diagram verkennen
 
 > [!IMPORTANT]
-> Het toevoegen van bladwijzers aan een nieuw of bestaand incident is momenteel in openbare preview.
-> Deze functie wordt geleverd zonder een serviceniveauovereenkomst en wordt niet aanbevolen voor productieworkloads.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Het verkennen van blad wijzers in het onderzoek diagram en de onderzoek grafiek zelf bevinden zich momenteel in de open bare preview.
+> Deze functies worden zonder service level agreement gegeven en worden niet aanbevolen voor productie werkbelastingen.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Navigeer in de Azure-portal naar het tabblad**Hunting** > **Bookmarks** voor **Sentinel** > **Threat Management** > en selecteer de bladwijzers of bladwijzers die u aan een incident wilt toevoegen.
+1. Ga in het Azure Portal naar het tabblad voor het zoeken naar **Sentinel** > **Threat Management** > **Hunting** > -**Blades** en selecteer de blad wijzer of blad wijzers die u wilt onderzoeken.
 
-2. Selecteer **Incidentacties (Voorbeeld)** op de opdrachtbalk:
+2. Zorg er in de Blade Details voor dat er ten minste één entiteit is toegewezen. Voor **entiteiten**ziet u bijvoorbeeld vermeldingen voor **IP**, **machine**of **account**.
+
+3. Klik op **onderzoeken** om de blad wijzer in het onderzoek diagram weer te geven.
+
+Voor instructies voor het gebruik van de onderzoek grafiek raadpleegt u [de onderzoek grafiek gebruiken om te diep](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)vinden.
+
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Blad wijzers toevoegen aan een nieuw of bestaand incident
+
+> [!IMPORTANT]
+> Het toevoegen van blad wijzers aan een nieuw of bestaand incident is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. Ga in het Azure Portal naar het tabblad voor het zoeken naar **Sentinel** > **Threat Management** > **Hunting** > -**Blades** en selecteer de blad wijzer of blad wijzers die u aan een incident wilt toevoegen.
+
+2. Selecteer **incident acties (preview)** op de opdracht balk:
     
     > [!div class="mx-imgBorder"]
-    > ![Bladwijzers toevoegen aan incident](./media/bookmarks/incident-actions.png)
+    > ![Blad wijzers toevoegen aan incident](./media/bookmarks/incident-actions.png)
 
-3. Selecteer **Nieuw incident maken** of **Toevoegen aan bestaande incidenten,** indien vereist. Daarna kunt u het volgende doen:
+3. Selecteer een **nieuw incident maken** of **toevoegen aan een bestaand incident**, indien nodig. Daarna kunt u het volgende doen:
     
-    - Voor een nieuw incident: werk optioneel de details voor het incident bij en selecteer **Vervolgens Maken**.
-    - Als u een bladwijzer aan een bestaand incident wilt toevoegen: Selecteer één incident en selecteer **Toevoegen**. 
+    - Voor een nieuw incident: werk eventueel de details van het incident bij en selecteer vervolgens **maken**.
+    - Ga als volgt te werk om een blad wijzer toe te voegen aan een bestaand incident: Selecteer één incident en selecteer vervolgens **toevoegen**. 
 
-Als u de bladwijzer in het incident wilt bekijken: Navigeer naar **Sentinel** > **Threat management** > **Incidenten** en selecteer het incident met uw bladwijzer. Selecteer **Volledige details weergeven**en selecteer vervolgens het tabblad **Bladwijzers.**
+De blad wijzer binnen het incident bekijken: Navigeer naar **Sentinel** > **Threat Management** > **incidenten** en selecteer het incident met uw blad wijzer. Selecteer **volledige details weer geven**en selecteer vervolgens het tabblad **blad wijzers** .
 
 > [!TIP]
-> Als alternatief voor de optie **Incidentacties (Voorbeeld)** op de opdrachtbalk u het contextmenu (**...**) gebruiken voor een of meer bladwijzers om opties te selecteren voor **Het maken van nieuw incident,** **Toevoegen aan bestaande incidenten**en Verwijderen **van incident**. 
+> Als alternatief voor de optie **incident acties (preview)** op de opdracht balk kunt u het context menu (**...**) gebruiken voor een of meer blad wijzers om opties te selecteren voor het maken van een **nieuw incident**, **het toevoegen van een bestaand incident en het** **verwijderen van incidenten**. 
 
-## <a name="view-bookmarked-data-in-logs"></a>Gegevens met bladwijzers weergeven in logboeken
+## <a name="view-bookmarked-data-in-logs"></a>Blade gegevens in logboeken weer geven
 
-Als u query's, resultaten of hun geschiedenis met bladwijzers wilt weergeven, selecteert u de bladwijzer op het tabblad**Bladwijzers** **jagen** > en gebruikt u de koppelingen in het detailvenster: 
+Als u de Blade query's, resultaten of hun geschiedenis wilt weer geven, selecteert u de blad wijzer op het tabblad **jacht** > -**blad wijzers** en gebruikt u de koppelingen in het detail venster: 
 
-- **Bronquery weergeven** om de bronquery weer te geven in het deelvenster **Logboeken.**
+- **Bron query weer** geven om de bron query in het deel venster **Logboeken** weer te geven.
 
-- **Bekijk bladwijzerlogboeken** om alle metagegevens van bladwijzers weer te geven, waaronder wie de update heeft uitgevoerd, de bijgewerkte waarden en het tijdstip waarop de update heeft plaatsgevonden.
+- **Bekijk de blad wijzer logboeken** om alle meta gegevens van de blad wijzer te bekijken. deze bevatten de bijgewerkte waarden en de tijd waarop de update is uitgevoerd.
 
-U ook de ruwe bladwijzergegevens voor alle bladwijzers weergeven door **Bladwijzerlogboeken te** selecteren op de opdrachtbalk op het tabblad**Bladwijzers** **jagen:** > 
+U kunt ook de gegevens van de onbewerkte Blade voor alle blad wijzers weer geven door **bladwijzer logboeken** te selecteren in de opdracht balk op het tabblad **jacht** > -**blad wijzers** :
 
 > [!div class="mx-imgBorder"]
-> ![Bladwijzerlogboeken](./media/bookmarks/bookmark-logs.png)
+> ![Bladwijzer logboeken](./media/bookmarks/bookmark-logs.png)
 
-In deze weergave worden al uw bladwijzers met bijbehorende metagegevens weergegeven. U KQL-query's [(Keyword Query Language)](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) gebruiken om naar de nieuwste versie van de specifieke bladwijzer te filteren die u zoekt.
+In deze weer gave worden alle blad wijzers met gekoppelde meta gegevens weer gegeven. U kunt [query language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) -query's (KQL) gebruiken om te filteren op de nieuwste versie van de Blade die u zoekt.
 
 > [!NOTE]
-> Er kan een aanzienlijke vertraging (gemeten in minuten) zijn tussen het moment dat u een bladwijzer maakt en wanneer deze wordt weergegeven op het tabblad **Bladwijzers.**
+> Er kan een aanzienlijke vertraging optreden (gemeten in minuten) tussen de tijd dat u een blad wijzer maakt en wanneer deze wordt weer gegeven op het tabblad **blad wijzers** .
 
-## <a name="delete-a-bookmark"></a>Een bladwijzer verwijderen
+## <a name="delete-a-bookmark"></a>Een blad wijzer verwijderen
  
-1.  Navigeer in de Azure-portal naar het tabblad**Hunting** > **bookmarks** voor **Sentinel** > **Threat management** > en selecteer de bladwijzers of bladwijzers die u wilt verwijderen. 
+1.  Ga in het Azure Portal naar het tabblad voor het zoeken naar **Sentinel** > **Threat Management** > **Hunting** > -**Blades** en selecteer de blad wijzer of blad wijzers die u wilt verwijderen. 
 
-2. Klik met de rechtermuisknop op uw selecties en selecteer de optie om de bladwijzer of bladwijzers te verwijderen. Verwijder bijvoorbeeld **bladwijzer als** u slechts één bladwijzer hebt geselecteerd en Twee **bladwijzers verwijderen** als u twee bladwijzers hebt geselecteerd.
+2. Klik met de rechter muisknop op uw selecties en selecteer de optie voor het verwijderen van de blad wijzer of blad wijzers. U kunt bijvoorbeeld **blad wijzer verwijderen** als u slechts één blad wijzer hebt geselecteerd en **2 blad wijzers verwijderen** als u twee blad wijzers hebt geselecteerd.
     
-Als u de bladwijzer verwijdert, wordt de bladwijzer uit de lijst op het tabblad **Bladwijzer** verwijderd. De **HuntingBookmark-tabel** voor uw loganalytics-werkruimte blijft eerdere bladwijzervermeldingen bevatten, maar de laatste vermelding wijzigt de **SoftDelete-waarde** in true, waardoor het gemakkelijk is om oude bladwijzers uit te filteren. Als u een bladwijzer verwijdert, worden geen entiteiten verwijderd uit de onderzoekservaring die zijn gekoppeld aan andere bladwijzers of waarschuwingen. 
+Als u de blad wijzer verwijdert, wordt de blad wijzer verwijderd uit de lijst op het tabblad **blad wijzer** . De tabel **HuntingBookmark** voor uw log Analytics-werk ruimte blijft vorige bladwijzer vermeldingen bevatten, maar met de laatste vermelding wordt de **SoftDelete** -waarde gewijzigd in True, waardoor het gemakkelijk is om oude blad wijzers te filteren. Als u een blad wijzer verwijdert, worden er geen entiteiten uit de onderzoek ervaring verwijderd die aan andere blad wijzers of waarschuwingen zijn gekoppeld. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een jachtonderzoek uitvoeren met behulp van bladwijzers in Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit artikel hebt u geleerd hoe u een jacht onderzoek uitvoert met behulp van blad wijzers in azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 
 
-- [Proactief op zoek naar bedreigingen](hunting.md)
-- [Notitieblokken gebruiken om geautomatiseerde jachtcampagnes uit te voeren](notebooks.md)
+- [Proactief zoeken naar bedreigingen](hunting.md)
+- [Notitie blokken gebruiken voor het uitvoeren van geautomatiseerde jacht-campagnes](notebooks.md)

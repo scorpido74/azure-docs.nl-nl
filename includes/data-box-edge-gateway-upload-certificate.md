@@ -11,16 +11,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67448632"
 ---
-Een goed SSL-certificaat zorgt ervoor dat u versleutelde informatie naar de juiste server verzendt. Naast versleuteling maakt het certificaat ook authenticatie mogelijk. U uw eigen vertrouwde SSL-certificaat uploaden via de PowerShell-interface van het apparaat.
+Een correct SSL-certificaat zorgt ervoor dat u versleutelde gegevens naar de juiste server verzendt. Behalve versleuteling, kan het certificaat ook worden geverifieerd. U kunt uw eigen vertrouwde SSL-certificaat uploaden via de Power shell-interface van het apparaat.
 
-1. [Maak verbinding met de PowerShell-interface](#connect-to-the-powershell-interface).
-2. Gebruik `Set-HcsCertificate` de cmdlet om het certificaat te uploaden. Geef de volgende parameters op wanneer u daarom wordt gevraagd:
+1. [Verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
+2. Gebruik de `Set-HcsCertificate` cmdlet om het certificaat te uploaden. Geef desgevraagd de volgende para meters op:
 
-   - `CertificateFilePath`- Ga naar het aandeel dat het certificaatbestand bevat in *.pfx-indeling.*
-   - `CertificatePassword`- Een wachtwoord dat wordt gebruikt om het certificaat te beschermen.
-   - `Credentials`- Gebruikersnaam om toegang te krijgen tot het aandeel dat het certificaat bevat. Geef het wachtwoord op aan het netwerkaandeel wanneer daarom wordt gevraagd.
+   - `CertificateFilePath`-Het pad naar de share met het certificaat bestand in *PFX* -indeling.
+   - `CertificatePassword`-Een wacht woord dat wordt gebruikt om het certificaat te beveiligen.
+   - `Credentials`-Gebruikers naam voor toegang tot de share met het certificaat. Geef het wacht woord voor de netwerk share op wanneer u hierom wordt gevraagd.
 
-     In het volgende voorbeeld ziet u het gebruik van deze cmdlet:
+     In het volgende voor beeld ziet u het gebruik van deze cmdlet:
 
      ```
      Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username"

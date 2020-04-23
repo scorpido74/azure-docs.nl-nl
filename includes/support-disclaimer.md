@@ -11,5 +11,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175850"
 ---
-Als uw Azure-probleem niet wordt verholpen in dit artikel, gaat u naar de Azure-forums op [MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U uw probleem in deze [ @AzureSupport ](https://twitter.com/AzureSupport)forums, of post op Twitter. U ook een Azure-ondersteuningsaanvraag indienen. Als u een ondersteuningsverzoek wilt indienen, selecteert u op de [ondersteuningspagina van Azure](https://azure.microsoft.com/support/options/) de optie **Ondersteuning opvragen**.
+Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht plaatsen [ @AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de pagina [ondersteuning voor Azure](https://azure.microsoft.com/support/options/) de optie **ondersteuning ophalen**.
 

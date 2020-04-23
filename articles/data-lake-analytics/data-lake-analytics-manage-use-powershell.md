@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure PowerShell
-description: In dit artikel wordt beschreven hoe u Azure PowerShell gebruiken voor het beheren van Data Lake Analytics-accounts, gegevensbronnen, gebruikers & taken.
+description: In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om Data Lake Analytics accounts, gegevens bronnen, gebruikers & taken te beheren.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -19,19 +19,19 @@ ms.locfileid: "66156421"
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure Data Lake Analytics beheren met Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-In dit artikel wordt beschreven hoe u Azure Data Lake Analytics-accounts, gegevensbronnen, gebruikers en taken beheert met Azure PowerShell.
+In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken beheert met behulp van Azure PowerShell.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u PowerShell wilt gebruiken met Data Lake Analytics, verzamelt u de volgende gegevens: 
+Als u Power shell met Data Lake Analytics wilt gebruiken, verzamelt u de volgende informatie: 
 
-* **Abonnements-id**: de id van het Azure-abonnement dat uw Data Lake Analytics-account bevat.
-* **Resourcegroep:** de naam van de Azure-brongroep die uw Data Lake Analytics-account bevat.
-* **Data Lake Analytics-accountnaam:** de naam van uw Data Lake Analytics-account.
-* **Standaard gegevens Lake Store-accountnaam**: elk Data Lake Analytics-account heeft een standaard Data Lake Store-account.
-* **Locatie:** de locatie van uw Data Lake Analytics-account, zoals 'East US 2' of andere ondersteunde locaties.
+* **Abonnements-id**: de id van het Azure-abonnement met uw data Lake Analytics-account.
+* **Resource groep**: de naam van de Azure-resource groep die uw data Lake Analytics-account bevat.
+* **Data Lake Analytics account naam**: de naam van uw data Lake Analytics-account.
+* **Standaard data Lake Store accountnaam**: elk data Lake Analytics account heeft een standaard data Lake Store-account.
+* **Locatie**: de locatie van uw data Lake Analytics-account, zoals "VS-Oost 2" of andere ondersteunde locaties.
 
 De PowerShell-fragmenten in deze zelfstudie gebruiken deze variabelen om deze informatie op te slaan
 
@@ -45,9 +45,9 @@ $location = "<Location>"
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-### <a name="log-in-using-interactive-user-authentication"></a>Inloggen met interactieve gebruikersverificatie
+### <a name="log-in-using-interactive-user-authentication"></a>Meld u aan met interactieve gebruikers verificatie
 
-Inloggen met een abonnements-id of op abonnementsnaam
+Meld u aan met een abonnements-ID of abonnements naam
 
 ```powershell
 # Using subscription id
@@ -57,9 +57,9 @@ Connect-AzAccount -SubscriptionId $subId
 Connect-AzAccount -SubscriptionName $subname 
 ```
 
-## <a name="saving-authentication-context"></a>Verificatiecontext opslaan
+## <a name="saving-authentication-context"></a>Verificatie context opslaan
 
-De `Connect-AzAccount` cmdlet vraagt altijd om referenties. U voorkomen dat u wordt gevraagd door de volgende cmdlets te gebruiken:
+De `Connect-AzAccount` cmdlet vraagt altijd om referenties. U kunt voor komen dat u wordt gevraagd door gebruik te maken van de volgende cmdlets:
 
 ```powershell
 # Save login session information
@@ -69,7 +69,7 @@ Save-AzAccounts -Path D:\profile.json
 Select-AzAccounts -Path D:\profile.json 
 ```
 
-### <a name="log-in-using-a-service-principal-identity-spi"></a>Inloggen met een Service Principal Identity (SPI)
+### <a name="log-in-using-a-service-principal-identity-spi"></a>Aanmelden met behulp van een Service-Principal-identiteit (SPI)
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
@@ -96,7 +96,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>Een account maken
 
-Elke Data Lake Analytics-account vereist een Data Lake Store-standaardaccount dat wordt gebruikt voor het opslaan van logboeken. U een bestaand account opnieuw gebruiken of een account aanmaken. 
+Elke Data Lake Analytics-account vereist een Data Lake Store-standaardaccount dat wordt gebruikt voor het opslaan van logboeken. U kunt een bestaand account opnieuw gebruiken of een account maken. 
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -104,9 +104,9 @@ New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="get-account-information"></a>Accountgegevens opvragen
+### <a name="get-account-information"></a>Account gegevens ophalen
 
-Meer informatie over een account.
+Details over een account ophalen.
 
 ```powershell
 Get-AdlAnalyticsAccount -Name $adla
@@ -119,21 +119,21 @@ Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>Gegevensbronnen beheren
-Azure Data Lake Analytics ondersteunt momenteel de volgende gegevensbronnen:
+Azure Data Lake Analytics ondersteunt momenteel de volgende gegevens bronnen:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Elk Data Lake Analytics-account heeft een standaard Data Lake Store-account. Het standaard Data Lake Store-account wordt gebruikt om metagegevens en taakcontrolelogboeken op te slaan. 
+Elk Data Lake Analytics-account heeft een standaard Data Lake Store-account. De standaard Data Lake Store-account wordt gebruikt voor het opslaan van meta gegevens van taken en taak controle Logboeken. 
 
-### <a name="find-the-default-data-lake-store-account"></a>Het standaard GegevensLake Store-account zoeken
+### <a name="find-the-default-data-lake-store-account"></a>De standaard Data Lake Store account zoeken
 
 ```powershell
 $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-U het standaard Data Lake Store-account vinden door `IsDefault` de lijst met gegevensbronnen door de eigenschap te filteren:
+U kunt het standaard Data Lake Store-account vinden door de lijst met gegevens bronnen te filteren `IsDefault` op de eigenschap:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
@@ -153,7 +153,7 @@ $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
 Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
 ```
 
-### <a name="list-data-sources"></a>Gegevensbronnen weergeven
+### <a name="list-data-sources"></a>Gegevens bronnen weer geven
 
 ```powershell
 # List all the data sources
@@ -168,7 +168,7 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ## <a name="submit-u-sql-jobs"></a>U-SQL-taken verzenden
 
-### <a name="submit-a-string-as-a-u-sql-job"></a>Een tekenreeks indienen als U-SQL-taak
+### <a name="submit-a-string-as-a-u-sql-job"></a>Een teken reeks als U-SQL-taak verzenden
 
 ```powershell
 $script = @"
@@ -189,7 +189,7 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-### <a name="submit-a-file-as-a-u-sql-job"></a>Een bestand verzenden als een U-SQL-taak
+### <a name="submit-a-file-as-a-u-sql-job"></a>Een bestand verzenden als U-SQL-taak
 
 ```powershell
 $scriptpath = "d:\test.usql"
@@ -197,7 +197,7 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
-### <a name="list-jobs"></a>Taken weergeven
+### <a name="list-jobs"></a>Taken weer geven
 
 De uitvoer bevat de taken die momenteel worden uitgevoerd en de taken die onlangs zijn voltooid.
 
@@ -205,17 +205,17 @@ De uitvoer bevat de taken die momenteel worden uitgevoerd en de taken die onlang
 Get-AdlJob -Account $adla
 ```
 
-### <a name="list-the-top-n-jobs"></a>De topN-taken weergeven
+### <a name="list-the-top-n-jobs"></a>De eerste N taken weer geven
 
-Standaard wordt de lijst met taken gesorteerd op verzendtijd. Dus de meest recent ingediende vacatures verschijnen eerst. Standaard onthoudt het ADLA-account taken gedurende 180 dagen, maar de Get-AdlJob-cmdlet retourneert standaard alleen de eerste 500. Gebruik de parameter Top om een specifiek aantal taken weer te geven.
+Standaard wordt de lijst met taken gesorteerd op tijdstip van verzenden. De meest recent verzonden taken worden dus eerst weer gegeven. Het ADLA-account maakt standaard gebruik van taken voor 180 dagen, maar de cmdlet Get-AdlJob retourneert standaard alleen de eerste 500. De para meter-top gebruiken om een specifiek aantal taken weer te geven.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
-### <a name="list-jobs-by-job-state"></a>Taken op taakstatus weergeven
+### <a name="list-jobs-by-job-state"></a>Taken weer geven op taak status
 
-Met `-State` behulp van de parameter. U een van deze waarden combineren:
+Met behulp van de `-State` para meter. U kunt elk van deze waarden combi neren:
 
 * `Accepted`
 * `Compiling`
@@ -238,9 +238,9 @@ Get-AdlJob -Account $adla -State Ended
 Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 ```
 
-### <a name="list-jobs-by-job-result"></a>Taken op functieresultaat weergeven
+### <a name="list-jobs-by-job-result"></a>Taken weer geven op taak resultaat
 
-Gebruik `-Result` de parameter om te detecteren of voltooide taken zijn voltooid. Het heeft deze waarden:
+Gebruik de `-Result` para meter om te detecteren of beëindigde taken zijn voltooid. Deze bevat deze waarden:
 
 * Geannuleerd
 * Mislukt
@@ -255,17 +255,17 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-### <a name="list-jobs-by-job-submitter"></a>Taken aanbieden op vacatureindiener
+### <a name="list-jobs-by-job-submitter"></a>Taken weer geven per taak indiener
 
-Met `-Submitter` de parameter u bepalen wie een taak heeft ingediend.
+De `-Submitter` para meter helpt u bij het identificeren van wie een taak heeft ingediend.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 ```
 
-### <a name="list-jobs-by-submission-time"></a>Taken aanbieden op indieningstijd
+### <a name="list-jobs-by-submission-time"></a>Taken weer geven op Verzend tijd
 
-Het `-SubmittedAfter` is handig bij het filteren naar een tijdsbereik.
+De `-SubmittedAfter` is handig voor het filteren op een tijds bereik.
 
 
 ```powershell
@@ -278,7 +278,7 @@ $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
 
-### <a name="get-job-status"></a>De status van een taak krijgen
+### <a name="get-job-status"></a>Taak status ophalen
 
 Haal de status van een bepaalde taak op.
 
@@ -295,26 +295,26 @@ Stop-AdlJob -Account $adla -JobID $jobID
 
 ### <a name="wait-for-a-job-to-finish"></a>Wachten tot een taak is voltooid
 
-In plaats `Get-AdlAnalyticsJob` van te herhalen tot een `Wait-AdlJob` taak is voltooid, u de cmdlet gebruiken om te wachten tot de taak is beëindigd.
+In plaats van `Get-AdlAnalyticsJob` herhalen totdat een taak is voltooid, kunt u de `Wait-AdlJob` cmdlet gebruiken om te wachten tot de taak is beëindigd.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-## <a name="analyzing-job-history"></a>Functiegeschiedenis analyseren
+## <a name="analyzing-job-history"></a>Taak geschiedenis analyseren
 
-Het gebruik van Azure PowerShell om de geschiedenis van taken te analyseren die zijn uitgevoerd in Data Lake-analyses is een krachtige techniek. U het gebruiken om inzicht te krijgen in gebruik en kosten. U meer informatie vinden door te kijken naar de [Job History Analysis steekproef repo](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
+Het gebruik van Azure PowerShell om de geschiedenis te analyseren van taken die zijn uitgevoerd in Data Lake Analytics is een krachtige techniek. U kunt deze gebruiken om inzicht te krijgen in het gebruik en de kosten. U kunt meer te weten komen door te kijken naar het voor beeld van de [taak geschiedenis analyse opslag plaats](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
 
-## <a name="list-job-pipelines-and-recurrences"></a>Taakpijplijnen en herhalingen weergeven
+## <a name="list-job-pipelines-and-recurrences"></a>Taak pijplijnen en-herhalingen weer geven
 
-Gebruik `Get-AdlJobPipeline` de cmdlet om de eerder ingediende pijplijngegevens te bekijken.
+Gebruik de `Get-AdlJobPipeline` cmdlet om de pijplijn informatie te bekijken die eerder taken heeft ingediend.
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-Gebruik `Get-AdlJobRecurrence` de cmdlet om de herhalingsgegevens voor eerder ingediende taken te bekijken.
+Gebruik de `Get-AdlJobRecurrence` cmdlet om de terugkeer gegevens voor eerder ingediende taken weer te geven.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -323,19 +323,19 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 ```
 
 
-## <a name="manage-compute-policies"></a>Rekenbeleid beheren
+## <a name="manage-compute-policies"></a>Reken beleid beheren
 
-### <a name="list-existing-compute-policies"></a>Bestaande rekenbeleid weergeven
+### <a name="list-existing-compute-policies"></a>Bestaande Compute-beleids regels weer geven
 
-De `Get-AdlAnalyticsComputePolicy` cmdlet haalt informatie op over het rekenbeleid voor een Data Lake Analytics-account.
+De `Get-AdlAnalyticsComputePolicy` cmdlet haalt informatie op over reken beleid voor een Data Lake Analytics-account.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 ```
 
-### <a name="create-a-compute-policy"></a>Een rekenbeleid maken
+### <a name="create-a-compute-policy"></a>Een reken beleid maken
 
-De `New-AdlAnalyticsComputePolicy` cmdlet maakt een nieuw rekenbeleid voor een Data Lake Analytics-account. In dit voorbeeld worden de maximale AU's die beschikbaar zijn voor de opgegeven gebruiker ingesteld op 50 en de minimale taakprioriteit op 250.
+De `New-AdlAnalyticsComputePolicy` cmdlet maakt een nieuw reken beleid voor een Data Lake Analytics-account. In dit voor beeld wordt het maximum aantal van AUs dat beschikbaar is voor de opgegeven gebruiker ingesteld op 50 en de minimale taak prioriteit tot 250.
 
 ```powershell
 $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -352,7 +352,7 @@ Test-AdlStoreItem -Account $adls -Path "/data.csv"
 
 ### <a name="uploading-and-downloading"></a>Uploaden en downloaden
 
-Een bestand uploaden.
+Upload een bestand.
 
 ```powershell
 Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
@@ -364,26 +364,26 @@ Upload een hele map recursief.
 Import-AdlStoreItem -AccountName $adls -Path "c:\myData\" -Destination "/myData/" -Recurse
 ```
 
-Download een bestand.
+Down load een bestand.
 
 ```powershell
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "c:\data.csv"
 ```
 
-Download een hele map recursief.
+Down load een hele map recursief.
 
 ```powershell
 Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recurse
 ```
 
 > [!NOTE]
-> Als het upload- of downloadproces wordt onderbroken, u proberen het ``-Resume`` proces te hervatten door de cmdlet opnieuw uit te voeren met de vlag.
+> Als het uploaden of downloaden wordt onderbroken, kunt u proberen het proces te hervatten door de cmdlet opnieuw uit te voeren met de ``-Resume`` vlag.
 
-## <a name="manage-the-u-sql-catalog"></a>De U-SQL-catalogus beheren
+## <a name="manage-the-u-sql-catalog"></a>De U-SQL-Catalogus beheren
 
-De U-SQL-catalogus wordt gebruikt om gegevens en code te structureren, zodat ze kunnen worden gedeeld door U-SQL-scripts. De catalogus biedt de hoogst mogelijke prestaties met gegevens in Azure Data Lake. Zie [U-SQL-catalogus gebruiken](data-lake-analytics-use-u-sql-catalog.md) voor meer informatie.
+De U-SQL-catalogus wordt gebruikt om gegevens en code te structureren zodat ze kunnen worden gedeeld door U-SQL-scripts. De catalogus maakt de hoogst mogelijke prestaties mogelijk met gegevens in Azure Data Lake. Zie [U-SQL-catalogus gebruiken](data-lake-analytics-use-u-sql-catalog.md) voor meer informatie.
 
-### <a name="list-items-in-the-u-sql-catalog"></a>Items in de U-SQL-catalogus aanbieden
+### <a name="list-items-in-the-u-sql-catalog"></a>Items in de U-SQL-catalogus weer geven
 
 ```powershell
 # List U-SQL databases
@@ -396,7 +396,7 @@ Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database.schema"
 ```
 
-### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>Alle samenstellingen van de U-SQL-catalogus weergeven
+### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>Alle assembly's van de U-SQL-catalogus weer geven
 
 ```powershell
 $dbs = Get-AdlCatalogItem -Account $adla -ItemType Database
@@ -413,7 +413,7 @@ foreach ($db in $dbs)
 }
 ```
 
-### <a name="get-details-about-a-catalog-item"></a>Meer informatie over een catalogusitem
+### <a name="get-details-about-a-catalog-item"></a>Details over een catalogus item ophalen
 
 ```powershell
 # Get details of a table
@@ -425,7 +425,7 @@ Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
 
 ### <a name="store-credentials-in-the-catalog"></a>Referenties opslaan in de catalogus
 
-Maak in een U-SQL-database een referentieobject voor een database die wordt gehost in Azure. Momenteel zijn U-SQL-referenties het enige type catalogusitem dat u maken via PowerShell.
+Maak binnen een U-SQL database een referentie object voor een Data Base die wordt gehost in Azure. Momenteel zijn U-SQL-referenties het enige type catalogus item dat u kunt maken via Power shell.
 
 ```powershell
 $dbName = "master"
@@ -439,15 +439,15 @@ New-AdlCatalogCredential -AccountName $adla `
           -Uri $dbUri
 ```
 
-## <a name="manage-firewall-rules"></a>Firewallregels beheren
+## <a name="manage-firewall-rules"></a>Firewall regels beheren
 
-### <a name="list-firewall-rules"></a>Firewallregels weergeven
+### <a name="list-firewall-rules"></a>Firewall regels weer geven
 
 ```powershell
 Get-AdlAnalyticsFirewallRule -Account $adla
 ```
 
-### <a name="add-a-firewall-rule"></a>Een firewallregel toevoegen
+### <a name="add-a-firewall-rule"></a>Een firewall regel toevoegen
 
 ```powershell
 $ruleName = "Allow access from on-prem server"
@@ -457,19 +457,19 @@ $endIpAddress = "<end IP address>"
 Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
 ```
 
-### <a name="modify-a-firewall-rule"></a>Een firewallregel wijzigen
+### <a name="modify-a-firewall-rule"></a>Een firewall regel wijzigen
 
 ```powershell
 Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
 ```
 
-### <a name="remove-a-firewall-rule"></a>Een firewallregel verwijderen
+### <a name="remove-a-firewall-rule"></a>Een firewall regel verwijderen
 
 ```powershell
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
 
-### <a name="allow-azure-ip-addresses"></a>Azure-IP-adressen toestaan
+### <a name="allow-azure-ip-addresses"></a>IP-adressen van Azure toestaan
 
 ```powershell
 Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
@@ -483,13 +483,13 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 
 ## <a name="working-with-azure"></a>Werken met Azure
 
-### <a name="get-error-details"></a>Foutgegevens opvragen
+### <a name="get-error-details"></a>Fout Details ophalen
 
 ```powershell
 Resolve-AzError -Last
 ```
 
-### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Controleren of u als administrator op uw Windows-machine werkt
+### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Controleren of u als beheerder werkt op de Windows-computer
 
 ```powershell
 function Test-Administrator  
@@ -500,9 +500,9 @@ function Test-Administrator
 }
 ```
 
-### <a name="find-a-tenantid"></a>Een tenantid zoeken
+### <a name="find-a-tenantid"></a>Een TenantID zoeken
 
-Van een abonnementsnaam:
+Van de naam van een abonnement:
 
 ```powershell
 function Get-TenantIdFromSubscriptionName( [string] $subname )
@@ -514,7 +514,7 @@ function Get-TenantIdFromSubscriptionName( [string] $subname )
 Get-TenantIdFromSubscriptionName "ADLTrainingMS"
 ```
 
-Vanaf een abonnements-ID:
+Van een abonnements-ID:
 
 ```powershell
 function Get-TenantIdFromSubscriptionId( [string] $subid )
@@ -527,7 +527,7 @@ $subid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Get-TenantIdFromSubscriptionId $subid
 ```
 
-Vanaf een domeinadres zoals 'contoso.com'
+Van een domein adres zoals ' contoso.com '
 
 ```powershell
 function Get-TenantIdFromDomain( $domain )
@@ -540,7 +540,7 @@ $domain = "contoso.com"
 Get-TenantIdFromDomain $domain
 ```
 
-### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Al uw abonnementen en tenant---geïdentificeerde gegevens weergeven
+### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Alle abonnementen en Tenant-Id's weer geven
 
 ```powershell
 $subs = Get-AzSubscription
@@ -553,9 +553,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Een Data Lake Analytics-account maken met behulp van een sjabloon
 
-U ook een sjabloon voor Azure Resource Group gebruiken met het volgende voorbeeld: [Een Data Lake Analytics-account maken met een sjabloon](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+U kunt ook een Azure Resource Group-sjabloon gebruiken met behulp van het volgende voor beeld: [een Data Lake Analytics-account maken met behulp van een sjabloon](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* Aan de slag met Data Lake Analytics met de [Azure-portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md)
-* Azure Data Lake Analytics beheren met [Azure-portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) 
+* Aan de slag met data Lake Analytics met behulp van de [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure cli](data-lake-analytics-get-started-cli.md)
+* Azure data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [cli](data-lake-analytics-manage-use-cli.md) 

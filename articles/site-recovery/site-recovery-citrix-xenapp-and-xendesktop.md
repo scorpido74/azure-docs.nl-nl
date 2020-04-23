@@ -1,6 +1,6 @@
 ---
-title: Citrix XenDesktop/XenApp disaster recovery instellen met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u noodherstel instellen voor Citrix XenDesktop- en XenApp-implementaties met Azure Site Recovery.
+title: XenDesktop/XenApp-herstel na nood gevallen met Azure Site Recovery instellen met behulp van Citrix
+description: In dit artikel wordt beschreven hoe u met behulp van Azure Site Recovery herstel na nood gevallen kunt instellen voor Citrix XenDesktop-en XenApp-implementaties.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
@@ -14,182 +14,182 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084543"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>disaster recovery instellen voor een multi-tier Citrix XenApp en XenDesktop implementatie
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>herstel na nood geval instellen voor een Citrix XenApp-en XenDesktop-implementatie met meerdere lagen
 
 
 
-Citrix XenDesktop is een desktopvirtualisatieoplossing die desktops en applicaties als ondemand-service levert aan elke gebruiker, waar dan ook. Met FlexCast-leveringstechnologie kan XenDesktop snel en veilig applicaties en desktops leveren aan gebruikers.
-Tegenwoordig biedt Citrix XenApp geen mogelijkheden voor noodherstel.
+Citrix XenDesktop is een Desktop Virtualization-oplossing die Desk tops en toepassingen levert als een OnDemand-service aan elke gebruiker, waar dan ook. Met FlexCast Delivery Technology kunnen XenDesktop snel en veilig toepassingen en Desk tops leveren aan gebruikers.
+Op dit moment biedt Citrix XenApp geen mogelijkheden voor herstel na nood gevallen.
 
-Een goede oplossing voor noodherstel, moet modellering van herstelplannen rond de bovenstaande complexe toepassingsarchitecturen mogelijk maken en ook de mogelijkheid hebben om aangepaste stappen toe te voegen om toepassingstoewijzingen tussen verschillende lagen te verwerken, vandaar een enkele klik te bieden sure shot oplossing in het geval van een ramp leidt tot een lagere RTO.
+Een goede oplossing voor herstel na nood gevallen, moet het mogelijk maken dat herstel plannen worden gemodelleerd rond de bovenstaande complexe toepassings architecturen. Daarnaast kunnen ze aangepaste stappen toevoegen voor het afhandelen van toepassings toewijzingen tussen de verschillende lagen, waardoor het mogelijk is om een oplossing met één muis klik te bieden in het geval van een nood situatie met een lagere RTO.
 
-Dit document biedt stapsgewijze richtlijnen voor het bouwen van een oplossing voor noodherstel voor uw on-premises Citrix XenApp-implementaties op Hyper-V- en VMware-vSphere-platforms. In dit document wordt ook beschreven hoe u een testfailover (disaster recovery drill) en ongeplande failover naar Azure uitvoeren met behulp van herstelplannen, de ondersteunde configuraties en vereisten.
+Dit document bevat stapsgewijze richt lijnen voor het bouwen van een oplossing voor herstel na nood gevallen voor uw on-premises Citrix XenApp-implementaties op Hyper-V en VMware vSphere platforms. In dit document wordt ook beschreven hoe u een testfailover (nood herstel analyse) en een niet-geplande failover naar Azure uitvoert met behulp van herstel plannen, de ondersteunde configuraties en vereisten.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer voordat u begint het volgende:
+Voordat u begint, moet u het volgende weten:
 
 1. [Een virtuele machine repliceren naar Azure](site-recovery-vmware-to-azure.md)
-1. Een [herstelnetwerk ontwerpen](site-recovery-network-design.md)
-1. [Een testfailover naar Azure](site-recovery-test-failover-to-azure.md)
-1. [Een failover naar Azure](site-recovery-failover.md)
-1. Een [domeincontroller repliceren](site-recovery-active-directory.md)
-1. SQL [Server repliceren](site-recovery-sql.md)
+1. [Een herstel netwerk ontwerpen](site-recovery-network-design.md)
+1. [Een testfailover naar Azure uitvoeren](site-recovery-test-failover-to-azure.md)
+1. [Een failover naar Azure uitvoeren](site-recovery-failover.md)
+1. [Een domein controller repliceren](site-recovery-active-directory.md)
+1. [SQL server repliceren](site-recovery-sql.md)
 
-## <a name="deployment-patterns"></a>Implementatiepatronen
+## <a name="deployment-patterns"></a>Implementatie patronen
 
-Een Citrix XenApp- en XenDesktop-farm hebben doorgaans het volgende implementatiepatroon:
+Een Citrix XenApp-en XenDesktop-Farm hebben doorgaans het volgende implementatie patroon:
 
-**Implementatiepatroon**
+**Implementatie patroon**
 
-Citrix XenApp en XenDesktop implementatie met AD DNS server, SQL database server, Citrix Delivery Controller, StoreFront server, XenApp Master (VDA), Citrix XenApp License Server
+Citrix XenApp-en XenDesktop-implementatie met AD DNS-server, SQL database server, Citrix Delivery controller, winkel server, XenApp Master (VDA), Citrix XenApp-licentie server
 
-![Implementatiepatroon 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
+![Implementatie patroon 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
 ## <a name="site-recovery-support"></a>Ondersteuning voor Site Recovery
 
-Voor de toepassing van dit artikel werden Citrix-implementaties op Virtuele VMware-machines beheerd door vSphere 6.0 / System Center VMM 2012 R2 gebruikt om DR in te stellen.
+Voor het doel van dit artikel zijn Citrix-implementaties op virtuele VMware-machines die worden beheerd door vSphere 6,0/System Center VMM 2012 R2, gebruikt voor het instellen van DR.
 
 ### <a name="source-and-target"></a>Bron en doel
 
 **Scenario** | **Op een secundaire site** | **Naar Azure**
 --- | --- | ---
-**Hyper-V** | Niet in het toepassingsgebied | Ja
-**Vmware** | Niet in het toepassingsgebied | Ja
-**Fysieke server** | Niet in het toepassingsgebied | Ja
+**Hyper-V** | Niet binnen het bereik | Ja
+**VMware** | Niet binnen het bereik | Ja
+**Fysieke server** | Niet binnen het bereik | Ja
 
 ### <a name="versions"></a>Versies
-Klanten kunnen XenApp-componenten implementeren als virtuele machines die draaien op Hyper-V of VMware of als fysieke servers. Azure Site Recovery kan zowel fysieke als virtuele implementaties naar Azure beschermen.
-Aangezien XenApp 7.7 of hoger wordt ondersteund in Azure, kunnen alleen implementaties met deze versies worden uitgevoerd naar Azure voor disaster recovery of migratie.
+Klanten kunnen XenApp-onderdelen implementeren als Virtual Machines die worden uitgevoerd op Hyper-V of VMware of als fysieke servers. Azure Site Recovery kunt zowel fysieke als virtuele implementaties beveiligen naar Azure.
+Omdat XenApp 7,7 of hoger wordt ondersteund in azure, kunnen alleen implementaties met deze versies naar Azure worden gemigreerd voor herstel na nood geval of migratie.
 
 ### <a name="things-to-keep-in-mind"></a>Zaken om rekening mee te houden
 
-1. Ondersteuning voor bescherming en herstel van on-premises implementaties met serveros-machines om xenApp-gepubliceerde apps te leveren en xenApp-gepubliceerde desktops worden ondersteund.
+1. De beveiliging en het herstel van on-premises implementaties met behulp van Server besturingssysteem computers voor het leveren van XenApp gepubliceerde apps en XenApp gepubliceerde Bureau bladen worden ondersteund.
 
-2. Bescherming en herstel van on-premises implementaties met desktop-os-machines om desktop-VDI te leveren voor virtuele clientdesktops, waaronder Windows 10, wordt niet ondersteund. Dit komt omdat Site Recovery het herstel van machines met desktop OS'es niet ondersteunt.  Ook een aantal client virtuele desktop besturingssystemen (bijv. Windows 7) worden nog niet ondersteund voor licenties in Azure. [Meer informatie](https://azure.microsoft.com/pricing/licensing-faq/) over licentieverlening voor clientbureaubladen en serverdesktops in Azure.
+2. De beveiliging en het herstel van on-premises implementaties met desktop besturingssystemen om Desktop VDI te bieden voor virtuele Bureau bladen van clients, waaronder Windows 10, wordt niet ondersteund. Dit komt doordat Site Recovery het herstellen van machines met Desktop OS'es niet ondersteunt.  Ook zijn sommige besturings systemen van virtueel bureau blad van de client (bijvoorbeeld Windows 7) worden nog niet ondersteund voor licentie verlening in Azure. [Meer informatie](https://azure.microsoft.com/pricing/licensing-faq/) over licentieverlening voor clientbureaubladen en serverdesktops in Azure.
 
-3.  Azure Site Recovery kan bestaande on-premises MCS- of PVS-klonen niet repliceren en beveiligen.
-U moet deze klonen opnieuw maken met Azure RM-inrichting van de Delivery-controller.
+3.  Azure Site Recovery kunt bestaande on-premises MCS-of PVS-klonen niet repliceren en beveiligen.
+U moet deze klonen opnieuw maken met behulp van Azure RM-inrichting van de bezorgings controller.
 
-4. NetScaler kan niet worden beveiligd met Azure Site Recovery, omdat NetScaler is gebaseerd op FreeBSD en Azure Site Recovery geen ondersteuning biedt voor bescherming van FreeBSD OS. U moet een nieuw NetScaler-toestel implementeren en configureren vanaf Azure Market-plaats na een fail-over naar Azure.
+4. NetScaler kan niet worden beveiligd met Azure Site Recovery als NetScaler is gebaseerd op FreeBSD en Azure Site Recovery biedt geen ondersteuning voor de beveiliging van FreeBSD-besturings systeem. U moet een nieuw NetScaler-apparaat implementeren en configureren vanaf de Azure-markt plaats na een failover naar Azure.
 
 
 ## <a name="replicating-virtual-machines"></a>Virtuele machines repliceren
 
-De volgende onderdelen van de Citrix XenApp-implementatie moeten worden beschermd om replicatie en herstel mogelijk te maken.
+De volgende onderdelen van de Citrix XenApp-implementatie moeten worden beveiligd om replicatie en herstel mogelijk te maken.
 
 * Beveiliging van AD DNS-server
-* Beveiliging van SQL-databaseserver
-* Bescherming van Citrix Delivery Controller
-* Beveiliging van StoreFront-server.
-* Bescherming van XenApp Master (VDA)
-* Bescherming van Citrix XenApp License Server
+* Beveiliging van SQL database server
+* Beveiliging van Citrix Delivery controller
+* Beveiliging van de winkel server.
+* Beveiliging van XenApp-Master (VDA)
+* Beveiliging van Citrix XenApp-licentie server
 
 
-**AD DNS-serverreplicatie**
+**AD DNS-Server replicatie**
 
-Raadpleeg [Active Directory en DNS met Azure Site Recovery](site-recovery-active-directory.md) op richtlijnen voor het repliceren en configureren van een domeincontroller in Azure.
+Raadpleeg [Active Directory en DNS beveiligen met Azure site Recovery](site-recovery-active-directory.md) over de richt lijnen voor het repliceren en configureren van een domein controller in Azure.
 
-**SQL-databaseserverreplicatie**
+**Replicatie van SQL database server**
 
-Raadpleeg [SQL Server beveiligen met SQL Server disaster recovery en Azure Site Recovery](site-recovery-sql.md) voor gedetailleerde technische richtlijnen over de aanbevolen opties voor het beveiligen van SQL-servers.
+Raadpleeg [SQL Server met SQL Server herstel na nood gevallen en Azure site Recovery](site-recovery-sql.md) voor gedetailleerde technische richt lijnen voor de aanbevolen opties voor het beveiligen van SQL-servers.
 
-Volg [deze richtlijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de andere virtuele onderdelenmachines naar Azure.
+Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de andere virtuele machines van het onderdeel naar Azure.
 
-![Bescherming van XenApp-componenten](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
+![Beveiliging van XenApp-onderdelen](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
-**Reken- en netwerkinstellingen**
+**Reken-en netwerk instellingen**
 
-Nadat de machines zijn beveiligd (status wordt weergegeven als 'Beveiligd' onder gerepliceerde items), moeten de compute- en netwerkinstellingen worden geconfigureerd.
-In de eigenschappen Compute en Network > Compute u de naam en de doelgrootte van Azure VM opgeven.
-Wijzig indien nodig de naam om te voldoen aan de Azure-vereisten. U ook informatie weergeven en toevoegen over het doelnetwerk, subnet en IP-adres dat wordt toegewezen aan de Azure VM.
+Nadat de computers zijn beveiligd (status wordt weer gegeven als ' beveiligd ' onder gerepliceerde items), moeten de berekenings-en netwerk instellingen worden geconfigureerd.
+In Compute en Network > compute properties kunt u de naam en doel grootte van de Azure-VM opgeven.
+Wijzig indien nodig de naam om te voldoen aan de Azure-vereisten. U kunt ook informatie weer geven en toevoegen over het doelnet werken, het subnet en het IP-adres dat wordt toegewezen aan de Azure VM.
 
 Houd rekening met het volgende:
 
-* U kunt het doel-IP-adres instellen. Als u geen adres opgeeft, maakt de machine waarvoor een failover is uitgevoerd, gebruik van DHCP. Als u een adres instelt dat niet beschikbaar is bij failover, werkt de failover niet. Hetzelfde doel-IP-adres kan worden gebruikt voor een testfailover als het adres beschikbaar is in het testfailovernetwerk.
+* U kunt het doel-IP-adres instellen. Als u geen adres opgeeft, maakt de machine waarvoor een failover is uitgevoerd, gebruik van DHCP. Als u een adres instelt dat niet beschikbaar is op failover, werkt de failover niet. Hetzelfde doel-IP-adres kan worden gebruikt voor een testfailover als het adres beschikbaar is in het testfailovernetwerk.
 
-* Als u voor de AD/DNS-server het on-premises adres behoudt, u hetzelfde adres opgeven als de DNS-server voor het Azure Virtual-netwerk.
+* Voor de AD/DNS-server, die het on-premises adres behoudt, kunt u hetzelfde adres opgeven als de DNS-server voor het virtuele Azure-netwerk.
 
 Het aantal netwerkadapters wordt bepaald door de grootte die u voor de virtuele doelmachine opgeeft. Dat werkt als volgt:
 
 *   Als het aantal netwerkadapters op de bronmachine kleiner is dan of gelijk is aan het aantal adapters dat is toegestaan voor de grootte van de doelmachine, heeft het doel hetzelfde aantal adapters als de bron.
 *   Als het aantal adapters voor de virtuele bronmachine meer is dan is toegestaan voor de doelgrootte, wordt het maximum voor de doelgrootte gebruikt.
 * Als een bronmachine bijvoorbeeld twee netwerkadapters heeft en met de grootte van de doelmachine vier netwerkadapters worden ondersteund, heeft de doelcomputer twee adapters. Als de bronmachine twee adapters heeft, maar de grootte van de doelmachine slechts één adapter ondersteunt, heeft de doelmachine één adapter.
-*   Als de virtuele machine meerdere netwerkadapters heeft, maken ze allemaal verbinding met hetzelfde netwerk.
-*   Als de virtuele machine meerdere netwerkadapters heeft, wordt de eerste in de lijst de standaardnetwerkadapter in de virtuele Azure-machine.
+*   Als de virtuele machine meerdere netwerk adapters heeft, worden deze allemaal verbonden met hetzelfde netwerk.
+*   Als de virtuele machine meerdere netwerk adapters heeft, wordt de eerste die in de lijst wordt weer gegeven, de standaard netwerk adapter in de virtuele machine van Azure.
 
 
-## <a name="creating-a-recovery-plan"></a>Een herstelplan maken
+## <a name="creating-a-recovery-plan"></a>Een herstel plan maken
 
-Nadat replicatie is ingeschakeld voor de VM's van xenApp-component, is de volgende stap het maken van een herstelplan.
-Een herstelplan groepeert virtuele machines met vergelijkbare vereisten voor failover en herstel.  
+Nadat de replicatie is ingeschakeld voor de virtuele machines van het XenApp-onderdeel, is de volgende stap het maken van een herstel plan.
+In een herstel plan worden virtuele machines gegroepeerd met vergelijk bare vereisten voor failover en herstel.  
 
-**Stappen om een herstelplan te maken**
+**Stappen voor het maken van een herstel plan**
 
-1. Voeg de virtuele machines van de XenApp-component toe aan het herstelplan.
-2. Klik op Herstelplannen -> + Herstelplan. Geef een intuïtieve naam voor het herstelplan.
-3. Voor virtuele VMware-machines: selecteer bron als VMware-processerver, target als Microsoft Azure en implementatiemodel als Resource Manager en klik op Items selecteren.
-4. Voor virtuele machines van Hyper-V: Selecteer bron als VMM-server, target als Microsoft Azure en implementatiemodel als Resource Manager en klik op Items selecteren en selecteer vervolgens de VM's voor xenApp-implementatie.
+1. Voeg de virtuele machines van het XenApp-onderdeel toe in het herstel plan.
+2. Klik op herstel plannen-> en herstel plan. Geef een intuïtieve naam op voor het herstel plan.
+3. Voor virtuele VMware-machines: Selecteer bron als VMware-proces server, doel als Microsoft Azure en implementatie model als Resource Manager en klik op items selecteren.
+4. Voor virtuele Hyper-V-machines: Selecteer bron als VMM-server, doel als Microsoft Azure en implementatie model als Resource Manager, en klik op items selecteren en selecteer vervolgens de virtuele machines met XenApp-implementatie.
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuele machines toevoegen aan failovergroepen
+### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuele machines toevoegen aan failover-groepen
 
-Herstelplannen kunnen worden aangepast om failovergroepen toe te voegen voor specifieke opstartvolgorde, scripts of handmatige acties. De volgende groepen moeten worden toegevoegd aan het herstelplan.
+Herstel plannen kunnen worden aangepast om failover-groepen toe te voegen voor specifieke opstart volgorde, scripts of hand matige acties. De volgende groepen moeten worden toegevoegd aan het herstel plan.
 
-1. Failovergroep1: AD DNS
-2. Failovergroep2: SQL Server VM's
-2. Failovergroep3: VDA Master Image VM
-3. Failover Group4: Delivery Controller en StoreFront server VM's
+1. Failover-Group1: AD DNS
+2. Failover-group2: SQL Server Vm's
+2. Failover-Group3: VDA master image VM
+3. Failover-Group4: bezorgings controller en winkel server-Vm's
 
 
-### <a name="adding-scripts-to-the-recovery-plan"></a>Scripts toevoegen aan het herstelplan
+### <a name="adding-scripts-to-the-recovery-plan"></a>Scripts toevoegen aan het herstel plan
 
-Scripts kunnen worden uitgevoerd voor of na een specifieke groep in een herstelplan. Handmatige acties kunnen ook worden opgenomen en uitgevoerd tijdens failover.
+Scripts kunnen worden uitgevoerd vóór of na een specifieke groep in een herstel plan. Hand matige acties kunnen ook worden opgenomen en uitgevoerd tijdens failover.
 
-Het aangepaste herstelplan ziet er als volgt uit:
+Het aangepaste herstel plan ziet er als volgt uit:
 
-1. Failovergroep1: AD DNS
-2. Failovergroep2: SQL Server VM's
-3. Failovergroep3: VDA Master Image VM
+1. Failover-Group1: AD DNS
+2. Failover-group2: SQL Server Vm's
+3. Failover-Group3: VDA master image VM
 
    >[!NOTE]     
-   >Stap 4, 6 en 7 met handmatige of scriptacties zijn alleen van toepassing op een on-premises XenApp->omgeving met MCS/PVS-catalogi.
+   >Stap 4, 6 en 7 met hand matige of script acties zijn alleen van toepassing op een on-premises XenApp->omgeving met MCS/PVS-catalogi.
 
-4. Handleiding- of scriptactie groep 3: VDA VM afsluiten.
-De Master VDA VM wanneer deze niet is overgegaan naar Azure, is in een status van uitvoeren. Als u nieuwe MCS-catalogi wilt maken met Azure-hosting, moet de master-VDA VM zich in de status Gestopt (toegewezen) bevinden. Sluit de VM af vanuit Azure-portal.
+4. Hand matig of script actie van groep 3: de virtuele machine van het hoofd VDA afsluiten.
+De hoofd-VDA-VM bij een failover naar Azure wordt uitgevoerd. Als u nieuwe MCS-catalogussen wilt maken met behulp van Azure-hosting, moet de hoofd-VDA-VM de status gestopt (de toegewezen) hebben. Sluit de VM af vanaf Azure Portal.
 
-5. Failover Group4: Delivery Controller en StoreFront server VM's
-6. Group3-handleiding of scriptactie 1:
+5. Failover-Group4: bezorgings controller en winkel server-Vm's
+6. Group3 hand matig of script actie 1:
 
-    ***Azure RM-hostverbinding toevoegen***
+    ***Azure RM-hostrecord toevoegen***
 
-    Maak Azure-hostverbinding in de machine delivery controller om nieuwe MCS-catalogi in Azure te voorzien. Volg de stappen zoals uitgelegd in dit [artikel](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    Maak verbinding met Azure-host op de computer van de bezorgings controller om nieuwe MCS-catalogussen in te richten in Azure. Volg de stappen die in dit [artikel](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)worden beschreven.
 
-7. Group3-handleiding of scriptactie 2:
+7. Group3 hand matig of script actie 2:
 
-    ***McS-catalogi opnieuw maken in Azure***
+    ***MCS-catalogi opnieuw maken in azure***
 
-    De bestaande MCS- of PVS-klonen op de primaire site worden niet gerepliceerd naar Azure. U moet deze klonen opnieuw maken met behulp van de gerepliceerde master VDA en Azure-inrichting van de Delivery-controller. Volg de stappen zoals uitgelegd in dit [artikel](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) om MCS-catalogi in Azure te maken.
+    De bestaande MCS-of PVS-klonen op de primaire site worden niet gerepliceerd naar Azure. U moet deze klonen opnieuw maken met het gerepliceerde hoofd VDA en Azure Provisioning van de bezorgings controller. Volg de stappen in dit [artikel](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) voor het maken van MCS-catalogussen in Azure.
 
-![Herstelplan voor XenApp-componenten](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
+![Herstel plan voor XenApp-onderdelen](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 
 
    >[!NOTE]
-   >U scripts op [locatie](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) gebruiken om de DNS bij te werken met de nieuwe IP's van de mislukte >virtuele machines of om indien nodig een load balancer op de defecte virtuele machine te bevestigen.
+   >U kunt scripts op [locatie](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) gebruiken om de DNS bij te werken met de nieuwe IP-adressen van de failover->virtuele machines of om een Load Balancer te koppelen aan de virtuele machine waarvoor een failover is uitgevoerd, indien nodig.
 
 
-## <a name="doing-a-test-failover"></a>Het doen van een test failover
+## <a name="doing-a-test-failover"></a>Een testfailover uitvoeren
 
-Volg [deze richtlijnen](site-recovery-test-failover-to-azure.md) om een testfailover te doen.
+Volg [deze richt lijnen](site-recovery-test-failover-to-azure.md) om een testfailover uit te voeren.
 
 ![Herstelplan](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-tfo.png)
 
 
-## <a name="doing-a-failover"></a>Het doen van een failover
+## <a name="doing-a-failover"></a>Een failover uitvoeren
 
-Volg [deze richtlijnen](site-recovery-failover.md) wanneer u bezig bent met een failover.
+Volg [deze richt lijnen](site-recovery-failover.md) wanneer u een failover uitvoert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze whitepaper [vindt u meer informatie](https://aka.ms/citrix-xenapp-xendesktop-with-asr) over het repliceren van Citrix XenApp- en XenDesktop-implementaties. Bekijk de richtlijnen voor het repliceren van [andere toepassingen](site-recovery-workload.md) met Site Recovery.
+In dit artikel vindt u [meer informatie](https://aka.ms/citrix-xenapp-xendesktop-with-asr) over het repliceren van Citrix XenApp-en XenDesktop-implementaties. Bekijk de richt lijnen voor het [repliceren van andere toepassingen](site-recovery-workload.md) met site Recovery.

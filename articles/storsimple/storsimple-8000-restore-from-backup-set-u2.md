@@ -1,6 +1,6 @@
 ---
-title: Herstel een volume van back-up op een StorSimple 8000-serie | Microsoft Documenten
-description: Hier wordt uitgelegd hoe u de StorSimple Device Manager-service Back-upcatalogus gebruiken om een StorSimple-volume te herstellen vanaf een back-upset.
+title: Een volume terugzetten vanuit een back-up in een StorSimple 8000-serie | Microsoft Docs
+description: Hierin wordt uitgelegd hoe u de StorSimple Apparaatbeheer service Backup Catalog kunt gebruiken om een StorSimple-volume te herstellen vanuit een back-upset.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -25,122 +25,122 @@ ms.locfileid: "60723340"
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt de herstelbewerking beschreven die is uitgevoerd op een apparaat uit de StorSimple 8000-serie met behulp van een bestaande back-upset. Gebruik het blade van de **back-upcatalogus** om een volume te herstellen van een lokale of cloudback-up. Het blade van de **back-upcatalogus** geeft alle back-upsets weer die worden gemaakt wanneer handmatige of geautomatiseerde back-ups worden gemaakt. De herstelbewerking van een back-upset brengt het volume onmiddellijk online terwijl gegevens op de achtergrond worden gedownload.
+In deze zelf studie wordt de herstel bewerking beschreven die wordt uitgevoerd op een StorSimple 8000 serie apparaat met behulp van een bestaande back-upset. Gebruik de Blade **back-upcatalogus** om een volume terug te zetten van een lokale of een back-up van de Cloud. Op de Blade **back-upcatalogus** worden alle back-upsets weer gegeven die worden gemaakt wanneer hand matig of automatisch maken van back-ups worden uitgevoerd. Met de herstel bewerking van een back-upset wordt het volume onmiddellijk beschikbaar wanneer gegevens op de achtergrond worden gedownload.
 
-Een alternatieve methode om te beginnen met herstellen is om naar **Apparaten > [Uw apparaat] > Volumes**te gaan. Selecteer in het blad **Volumes** een volume, klik met de rechtermuisknop om het contextmenu aan te roepen en selecteer **Herstellen**.
+Een alternatieve methode om te beginnen met terugzetten is door naar **apparaten > [uw apparaat] > volumes**te gaan. Selecteer op de Blade **volumes** een volume, klik met de rechter muisknop om het context menu aan te roepen en selecteer vervolgens **herstellen**.
 
 ## <a name="before-you-restore"></a>Voordat u herstelt
 
-Voordat u een herstel start, bekijkt u de volgende kanttekeningen:
+Controleer de volgende opmerkingen voordat u een herstel bewerking start:
 
-* **U moet het volume offline halen** : neem het volume offline op zowel de host als het apparaat voordat u de herstelbewerking start. Hoewel de herstelbewerking automatisch het volume online brengt op het apparaat, moet u het apparaat handmatig online op de host brengen. U het volume online op de host brengen zodra het volume online is op het apparaat. (U hoeft niet te wachten tot de herstelbewerking is voltooid.) Ga voor procedures naar [Een volume offline nemen.](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)
+* **U moet het volume offline halen** : Neem het volume offline op de host en het apparaat voordat u de herstel bewerking start. Hoewel de herstel bewerking het volume automatisch online brengt op het apparaat, moet u het apparaat hand matig online plaatsen op de host. U kunt het volume online plaatsen op de host zodra het volume online is op het apparaat. (U hoeft niet te wachten totdat de herstel bewerking is voltooid.) Voor procedures gaat u naar [een volume offline halen](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
 
-* **Volumetype na herstel** : verwijderde volumes worden hersteld op basis van het type in de momentopname; dat wil zeggen dat volumes die lokaal zijn vastgemaakt, worden hersteld als lokaal vastgemaakte volumes en volumes die zijn gelaagd, worden hersteld als gelaagde volumes.
+* **Volume type na het herstellen** : verwijderde volumes worden hersteld op basis van het type in de moment opname. dat wil zeggen dat volumes die lokaal zijn vastgemaakt, worden teruggezet als lokaal vastgemaakte volumes en volumes die zijn trapsgewijs worden teruggezet als gelaagde volumes.
 
-    Voor bestaande volumes overschrijft het huidige gebruikstype van het volume het type dat in de momentopname is opgeslagen. Als u bijvoorbeeld een volume herstelt van een momentopname die is gemaakt toen het volumetype werd gelaagd en dat volumetype nu lokaal is vastgemaakt (vanwege een conversiebewerking die is uitgevoerd), wordt het volume hersteld als een lokaal vastgemaakt volume. Als een bestaand lokaal vastgemaakt volume is uitgebreid en vervolgens is hersteld van een oudere momentopname die is gemaakt toen het volume kleiner was, behoudt het herstelde volume de huidige uitgebreide grootte.
+    Voor bestaande volumes overschrijft het huidige gebruiks type van het volume het type dat is opgeslagen in de moment opname. Als u bijvoorbeeld een volume herstelt op basis van een moment opname die is gemaakt toen het volume type werd gelaagd en dat volume type nu lokaal is vastgemaakt (vanwege een conversie bewerking die is uitgevoerd), wordt het volume teruggezet als een lokaal vastgemaakt volume. En als een bestaand lokaal vastgemaakt volume is uitgevouwen en vervolgens wordt hersteld vanuit een oudere moment opname die is gemaakt toen het volume kleiner werd, behoudt het herstelde volume de huidige uitgebreide grootte.
 
-    U een volume niet converteren van een gelaagd volume naar een lokaal vastgemaakt volume of van een lokaal vastgemaakt volume naar een gelaagd volume terwijl het volume wordt hersteld. Wacht tot de herstelbewerking is voltooid en vervolgens u het volume converteren naar een ander type. Ga naar [Het volumetype wijzigen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)voor informatie over het converteren van een volume. 
+    U kunt een volume niet converteren van een gelaagd volume naar een lokaal vastgemaakt volume of van een lokaal vastgemaakt volume naar een gelaagd volume terwijl het volume wordt hersteld. Wacht tot de herstel bewerking is voltooid en converteer het volume vervolgens naar een ander type. Ga voor informatie over het converteren van een volume naar [het wijzigen van het volume type](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
 
-* **De volumegrootte wordt weergegeven in het herstelde volume:** dit is een belangrijke overweging als u een lokaal vastgemaakt volume herstelt dat is verwijderd (omdat lokaal vastgemaakte volumes volledig zijn ingericht). Zorg ervoor dat u voldoende ruimte hebt voordat u een lokaal vastgemaakt volume probeert te herstellen dat eerder is verwijderd.
+* **De grootte van het volume wordt weer gegeven in het herstelde volume** : dit is een belang rijke overweging als u een lokaal vastgemaakt volume herstelt dat is verwijderd (omdat lokaal vastgemaakte volumes volledig zijn ingericht). Zorg ervoor dat u voldoende ruimte hebt voordat u probeert een lokaal vastgemaakt volume te herstellen dat eerder is verwijderd.
 
-* **U een volume niet uitbreiden terwijl het wordt hersteld:** Wacht totdat de herstelbewerking is voltooid voordat u probeert het volume uit te vouwen. Ga voor informatie over het uitbreiden van een volume naar [Een volume wijzigen](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* Het **is niet mogelijk om een volume uit te breiden terwijl het wordt hersteld** : wacht tot de herstel bewerking is voltooid voordat u het volume probeert uit te breiden. Ga voor meer informatie over het uitbreiden van een volume naar [het wijzigen van een volume](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **U een back-up uitvoeren terwijl u een lokaal volume herstelt:** Ga voor procedures naar [De StorSimple Device Manager-service gebruiken om back-upbeleid te beheren.](storsimple-8000-manage-backup-policies-u2.md)
+* **U kunt een back-up uitvoeren terwijl u een lokaal volume herstelt** – voor procedures gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om het back-upbeleid te beheren](storsimple-8000-manage-backup-policies-u2.md).
 
-* **U een herstelbewerking annuleren:** als u de hersteltaak annuleert, wordt het volume teruggedraaid naar de status waarin het zich bevond voordat u de herstelbewerking initieerde. Ga voor procedures naar [Een taak annuleren.](storsimple-8000-manage-jobs-u2.md#cancel-a-job)
+* **U kunt een herstel bewerking annuleren** : als u de herstel taak annuleert, wordt het volume teruggedraaid naar de status waarin het zich bevond voordat u de herstel bewerking startte. Ga voor procedures naar [een taak annuleren](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
-## <a name="how-does-restore-work"></a>Hoe werkt herstel
+## <a name="how-does-restore-work"></a>Hoe werkt herstellen
 
-Voor apparaten met Update 4 of hoger wordt een herstel op basis van heatmap geïmplementeerd. Als de host verzoeken om toegang tot gegevens het apparaat bereiken, worden deze aanvragen bijgehouden en wordt een heatmap gemaakt. Hoge aanvraagsnelheid resulteert in gegevensbrokken met hogere warmte, terwijl een lagere aanvraagsnelheid zich vertaalt in brokken met een lagere warmte. U moet de gegevens ten minste twee keer openen om als _heet_te worden gemarkeerd. Een bestand dat wordt gewijzigd, wordt ook gemarkeerd als _hot_. Zodra u het herstel initieert, vindt proactieve hydratatie van gegevens plaats op basis van de heatmap. Voor versies die eerder zijn dan update 4, worden de gegevens gedownload tijdens het herstellen op basis van alleen toegang.
+Voor apparaten met update 4 of hoger wordt een herstel op basis van Heatmap geïmplementeerd. Wanneer de host verzoekt om toegang tot gegevens te krijgen, worden deze aanvragen gevolgd en wordt er een heatmap gemaakt. Hoge aanvraag frequentie resulteert in gegevens segmenten met hogere hitte, terwijl lagere aanvraag frequenties worden omgezet in segmenten met een lagere hitte. U moet ten minste twee keer toegang hebben tot de gegevens om als _dynamisch_te worden gemarkeerd. Een bestand dat wordt gewijzigd, wordt ook gemarkeerd als _dynamisch_. Zodra u de herstel bewerking initieert, worden de proactieve Hydration van gegevens op basis van de heatmap. Voor oudere versies dan update 4 worden de gegevens tijdens het herstellen gedownload op basis van alleen toegang.
 
-De volgende kanttekeningen zijn van toepassing op heatmap-gebaseerde herstelt:
+De volgende voor behoud zijn van toepassing op heatmap herstel:
 
-* Heatmap-tracking is alleen ingeschakeld voor gelaagde volumes en lokaal vastgemaakte volumes worden niet ondersteund.
+* Heatmap tracering is alleen ingeschakeld voor gelaagde volumes en lokaal vastgemaakte volumes worden niet ondersteund.
 
 * Herstel op basis van Heatmap wordt niet ondersteund bij het klonen van een volume naar een ander apparaat. 
 
-* Als er een in-place herstellen en een lokale momentopname voor het volume te herstellen bestaat op het apparaat, dan doen we niet rehydrateren (als gegevens is al lokaal beschikbaar). 
+* Als er een in-place herstel bewerking is en een lokale moment opname voor het volume op het apparaat moet worden hersteld, wordt niet opnieuw gehydrateerd (omdat de gegevens al lokaal beschikbaar zijn). 
 
-* Wanneer u herstelt, worden standaard de rehydratietaken gestart die gegevens op basis van de heatmap proactief hydrateren. 
+* Wanneer u herstelt, worden de rehydratatie-taken standaard gestart, waarbij de gegevens op basis van de heatmap proactief opnieuw worden gehydrateerd. 
 
-In Update 4 kunnen Windows PowerShell-cmdlets worden gebruikt om rehydratietaken op te vragen, een rehydratietaak te annuleren en de status van de rehydratietaak te krijgen.
+In update 4 kunnen Windows Power shell-cmdlets worden gebruikt om een query uit te voeren op rehydratatie-taken, een rehydratatie-taak te annuleren en de status van de rehydratatie-taak op te halen.
 
-* `Get-HcsRehydrationJob`- Deze cmdlet krijgt de status van de rehydratiebaan. Een enkele rehydratietaak wordt geactiveerd voor één volume.
+* `Get-HcsRehydrationJob`-Met deze cmdlet wordt de status van de rehydratatie-taak opgehaald. Eén rehydratatie-taak wordt geactiveerd voor één volume.
 
-* `Set-HcsRehydrationJob`- Met deze cmdlet u pauzeren, stoppen, de rehydratietaak hervatten wanneer de rehydratie aan de gang is.
+* `Set-HcsRehydrationJob`-Met deze cmdlet kunt u de rehydratatie-taak onderbreken, stoppen en hervatten wanneer de rehydratatie wordt uitgevoerd.
 
-Ga voor meer informatie over rehydratiecmdlets naar [Windows PowerShell-cmdlet-verwijzing voor StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Voor meer informatie over rehydratatie-cmdlets gaat u naar [Windows Power shell cmdlet Reference voor StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Bij automatische rehydratie worden doorgaans hogere tijdelijke leesprestaties verwacht. De werkelijke omvang van verbeteringen is afhankelijk van verschillende factoren, zoals toegangspatroon, gegevensverloop en gegevenstype. 
+Met automatische rehydratatie is er meestal meer tijdelijke Lees prestaties verwacht. De werkelijke omvang van verbeteringen is afhankelijk van verschillende factoren, zoals het toegangs patroon, het verloop van gegevens en het gegevens type. 
 
-Om een rehydratietaak te annuleren, u de PowerShell-cmdlet gebruiken. Als u rehydratietaken permanent wilt uitschakelen voor alle toekomstige herstelwerkzaamheden, neemt [u contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+Als u een rehydratatie-taak wilt annuleren, kunt u de Power shell-cmdlet gebruiken. Als u rehydratatie-taken permanent wilt uitschakelen voor alle toekomstige herstel bewerkingen, neemt u [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-to-use-the-backup-catalog"></a>De back-upcatalogus gebruiken
+## <a name="how-to-use-the-backup-catalog"></a>De back-catalogus gebruiken
 
-Het blade **back-upcatalogus** biedt een query waarmee u de selectie voor back-upseten verkleinen. U de back-upsets filteren die zijn opgehaald op basis van de volgende parameters:
+De Blade **back-upcatalogus** bevat een query waarmee u de selectie van de back-upset kunt beperken. U kunt de back-upsets filteren die worden opgehaald op basis van de volgende para meters:
 
-* **Tijdbereik** : de datum en het tijdsbereik waarop de back-upset is gemaakt.
-* **Apparaat** – Het apparaat waarop de back-upset is gemaakt.
-* **Back-upbeleid** of **-volume:** het back-upbeleid of het back-upvolume dat aan deze back-upset is gekoppeld.
+* **Tijds bereik** : het datum-en tijds bereik waarop de back-upset is gemaakt.
+* **Apparaat** : het apparaat waarop de back-upset is gemaakt.
+* **Back-upbeleid** of **volume** : het back-upbeleid of het volume dat is gekoppeld aan deze back-upset.
 
-De gefilterde back-upsets worden vervolgens getabuleerd op basis van de volgende kenmerken:
+De gefilterde back-upsets worden vervolgens getabeld op basis van de volgende kenmerken:
 
 * **Naam** : de naam van het back-upbeleid of het volume dat is gekoppeld aan de back-upset.
-* **Type** : Back-upsets kunnen lokale momentopnamen of cloudmomentopnamen zijn. Een lokale momentopname is een back-up van al uw volumegegevens die lokaal op het apparaat zijn opgeslagen, terwijl een cloudmomentopname verwijst naar de back-up van volumegegevens die zich in de cloud bevinden. Lokale momentopnamen bieden snellere toegang, terwijl cloudmomentopnamen worden gekozen voor gegevenstolerantie.
+* **Type** : back-upsets kunnen lokale moment opnamen of Cloud momentopnamen zijn. Een lokale moment opname is een back-up van alle volume gegevens die lokaal zijn opgeslagen op het apparaat, terwijl een Cloud momentopname verwijst naar de back-up van volume gegevens die zich in de cloud bevinden. Lokale moment opnamen bieden snellere toegang, terwijl Cloud momentopnamen worden gekozen voor gegevens tolerantie.
 * **Grootte** : de werkelijke grootte van de back-upset.
-* **Gemaakt op** - De datum en tijd waarop de back-ups zijn gemaakt. 
+* **Gemaakt op** : de datum en tijd waarop de back-ups zijn gemaakt. 
 * **Volumes** : het aantal volumes dat is gekoppeld aan de back-upset.
-* **Gestart** - De back-ups kunnen automatisch worden gestart volgens een schema of handmatig door een gebruiker. (U een back-upbeleid gebruiken om back-ups te plannen. U ook de optie **Back-up maken** maken om een interactieve of on-demand back-up te maken.)
+* **Gestart** : de back-ups kunnen automatisch worden geïnitieerd volgens een planning of hand matig door een gebruiker. (U kunt een back-upbeleid gebruiken om back-ups te plannen. U kunt ook de optie **back-up** maken gebruiken om een interactieve of on-demand back-up te maken.)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Uw StorSimple-volume herstellen vanuit een back-up
+## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Uw StorSimple-volume terugzetten vanuit een back-up
 
-U het blade van de **back-upcatalogus** gebruiken om uw StorSimple-volume te herstellen vanuit een specifieke back-up. Houd er echter rekening mee dat het herstellen van een volume het volume teruggeeft naar de status waarin het zich bevond toen de back-up werd genomen. Alle gegevens die na de back-upbewerking zijn toegevoegd, gaan verloren.
+U kunt de Blade **back-up** van de catalogus gebruiken om uw StorSimple-volume te herstellen op basis van een specifieke back-up. Houd er echter rekening mee dat bij het herstellen van een volume het volume wordt teruggezet naar de status waarin de back-up werd gemaakt. Alle gegevens die zijn toegevoegd na de back-upbewerking, gaan verloren.
 
 > [!WARNING]
-> Als u herstelt vanuit een back-up, worden de bestaande volumes van de back-up vervangen. Dit kan leiden tot het verlies van gegevens die zijn geschreven nadat de back-up is genomen.
+> Wanneer u een back-up herstelt, worden de bestaande volumes vervangen door de back-up. Dit kan leiden tot verlies van gegevens die zijn geschreven nadat de back-up werd gemaakt.
 
 
 ### <a name="to-restore-your-volume"></a>Uw volume herstellen
-1. Ga naar uw StorSimple Device Manager-service en klik op **Back-upcatalogus**.
+1. Ga naar de StorSimple-Apparaatbeheer service en klik vervolgens op **back-upcatalogus**.
 
-2. Selecteer als volgt een back-upset:
+2. Selecteer een back-upset als volgt:
    
-   1. Geef het tijdsbereik op.
-   2. Selecteer het juiste apparaat.
-   3. Kies in de vervolgkeuzelijst het volume- of back-upbeleid voor de back-up die u wilt selecteren.
-   4. Klik **op Toepassen** om deze query uit te voeren.
+   1. Geef het tijds bereik op.
+   2. Selecteer het betreffende apparaat.
+   3. Kies in de vervolg keuzelijst het volume of back-upbeleid voor de back-up die u wilt selecteren.
+   4. Klik op **Toep assen** om deze query uit te voeren.
 
-      De back-ups die zijn gekoppeld aan het geselecteerde volume- of back-upbeleid moeten worden weergegeven in de lijst met back-upsets.
+      De back-ups die zijn gekoppeld aan het geselecteerde volume of back-upbeleid, moeten worden weer gegeven in de lijst met back-upsets.
    
-      ![Lijst met back-upset](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Lijst met back-upsets](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Vouw de back-upset uit om de bijbehorende volumes weer te geven. Deze volumes moeten offline worden gehaald op de host en het apparaat voordat u ze herstellen. Krijg toegang tot de volumes op het **volumesblad** van uw apparaat en volg de stappen in [Een volume offline uitvoeren](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) om ze offline te halen.
+3. Vouw de back-upset uit om de bijbehorende volumes weer te geven. Deze volumes moeten offline worden gehaald op de host en het apparaat voordat u ze kunt herstellen. Open de volumes op de Blade **volumes** van uw apparaat en volg de stappen in [een volume offline halen](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) om ze offline te zetten.
    
    > [!IMPORTANT]
-   > Zorg ervoor dat u de volumes eerst offline hebt gehaald op de host, voordat u de volumes offline haalt op het apparaat. Als u de volumes niet offline haalt op de host, kan dit mogelijk leiden tot gegevensbeschadiging.
+   > Zorg ervoor dat u de volumes eerst offline hebt gezet op de host voordat u de volumes offline zet op het apparaat. Als u de volumes niet offline zet op de host, kan dit leiden tot beschadigde gegevens.
    
-4. Navigeer terug naar het tabblad **Back-upcatalogus** en selecteer een back-upset. Klik met de rechtermuisknop en selecteer vervolgens in het contextmenu **Herstellen**.
+4. Ga terug naar het tabblad **back-upcatalogus** en selecteer een back-upset. Klik met de rechter muisknop en selecteer vervolgens **herstellen**in het context menu.
 
-    ![Lijst met back-upset](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Lijst met back-upsets](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. U wordt gevraagd om een bevestiging. Controleer de herstelgegevens en schakel het selectievakje Bevestiging in.
+5. U wordt gevraagd om een bevestiging. Controleer de herstel gegevens en schakel vervolgens het selectie vakje bevestiging in.
    
     ![Bevestigingspagina](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. Klik **op Herstellen**. Hiermee wordt een hersteltaak gestart die u weergeven door toegang te krijgen tot de pagina **Vacatures.**
+7. Klik op **herstellen**. Hiermee initieert u een herstel taak die u kunt weer geven door de pagina **taken** te openen.
 
    ![Bevestigingspagina](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. Nadat het herstel is voltooid, controleert u of de inhoud van uw volumes wordt vervangen door volumes van de back-up.
+8. Nadat het herstellen is voltooid, controleert u of de inhoud van uw volumes worden vervangen door volumes van de back-up.
 
 
-## <a name="if-the-restore-fails"></a>Als het herstel mislukt
+## <a name="if-the-restore-fails"></a>Als de herstel bewerking is mislukt
 
-U ontvangt een waarschuwing als de herstelbewerking om welke reden dan ook mislukt. Als dit gebeurt, vernieuwt u de back-uplijst om te controleren of de back-up nog steeds geldig is. Als de back-up geldig is en u herstelt vanuit de cloud, kunnen verbindingsproblemen het probleem veroorzaken.
+U ontvangt een waarschuwing als de herstel bewerking om een of andere reden is mislukt. Als dit het geval is, moet u de back-uplijst vernieuwen om te controleren of de back-up nog geldig is. Als de back-up geldig is en u herstelt vanuit de Cloud, wordt het probleem mogelijk veroorzaakt door verbindings problemen.
 
-Als u de herstelbewerking wilt voltooien, neemt u het volume offline op de host en probeert u de herstelbewerking opnieuw. Houd er rekening mee dat eventuele wijzigingen in de volumegegevens die tijdens het herstelproces zijn uitgevoerd, verloren gaan.
+Als u de herstel bewerking wilt volt ooien, neemt u het volume offline op de host en voert u de herstel bewerking opnieuw uit. Houd er rekening mee dat wijzigingen in de volume gegevens die tijdens het herstel proces werden uitgevoerd, verloren gaan.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het beheren van StorSimple-volumes.](storsimple-8000-manage-volumes-u2.md)
-* Meer informatie over het [gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Meer informatie over het [beheren van StorSimple-volumes](storsimple-8000-manage-volumes-u2.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

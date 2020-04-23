@@ -1,6 +1,6 @@
 ---
-title: Servers - Azure Database voor PostgreSQL - Single Server
-description: In dit artikel vindt u overwegingen en richtlijnen voor het configureren en beheren van Azure Database voor PostgreSQL - Single Server.
+title: Servers-Azure Database for PostgreSQL-één server
+description: In dit artikel vindt u overwegingen en richt lijnen voor het configureren en beheren van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -14,56 +14,56 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768160"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - één server
-In dit artikel vindt u overwegingen en richtlijnen voor het werken met Azure Database voor PostgreSQL - Single Server.
+In dit artikel vindt u overwegingen en richt lijnen voor het werken met Azure Database for PostgreSQL-één server.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Wat is een Azure Database for PostgreSQL-server?
-Een server in de Azure Database for PostgreSQL - Single Server-implementatieoptie is een centraal beheerpunt voor meerdere databases. Het is dezelfde PostgreSQL-serverconstructie die u mogelijk kent in de on-premises wereld. Concreet wordt de PostgreSQL-service beheerd, biedt het prestatiegaranties, legt toegang en functies op serverniveau bloot.
+Een server in de Azure Database for PostgreSQL-implementatie optie met één server is een centraal beheer punt voor meerdere data bases. Het is dezelfde PostgreSQL-server constructie die u mogelijk kent in de on-premises wereld. Met name de PostgreSQL-service wordt beheerd, biedt prestatie garanties, geeft toegang en functies op server niveau.
 
-Een Azure-database voor PostgreSQL-server:
+Een Azure Database for PostgreSQL-server:
 
-- Is gemaakt binnen een Azure-abonnement.
-- Is de bovenliggende bron voor databases.
-- Biedt een naamruimte voor databases.
-- Is een container met een sterke levenslange semantiek - verwijder een server en verwijdert de opgenomen databases.
-- Collocates resources in een regio.
-- Biedt een verbindingseindpunt voor server- en databasetoegang 
-- Biedt de ruimte voor beheerbeleid dat van toepassing is op de databases: login, firewall, gebruikers, rollen, configuraties, enz.
-- Is beschikbaar in meerdere versies. Zie voor meer informatie [ondersteunde PostgreSQL-databaseversies](concepts-supported-versions.md).
-- Is uitbreidbaar door gebruikers. Zie [PostgreSQL-extensies](concepts-extensions.md)voor meer informatie .
+- Wordt gemaakt binnen een Azure-abonnement.
+- Is de bovenliggende resource voor data bases.
+- Biedt een naam ruimte voor data bases.
+- Is een container met sterke levens duur semantiek: een server verwijderen en de Inge sloten data bases verwijdert.
+- Groepeert bronnen in een regio.
+- Biedt een verbindings eindpunt voor Server-en database toegang 
+- Voorziet in het bereik voor beheer beleid dat van toepassing is op de bijbehorende data bases: aanmelden, firewall, gebruikers, rollen, configuraties, enzovoort.
+- Is beschikbaar in meerdere versies. Zie [supported postgresql data base versions](concepts-supported-versions.md)(Engelstalig) voor meer informatie.
+- Is uitbreidbaar door gebruikers. Zie [postgresql Extensions](concepts-extensions.md)(Engelstalig) voor meer informatie.
 
-Binnen een Azure Database voor PostgreSQL-server u één of meerdere databases maken. U kunt kiezen voor het maken van één database per server om gebruik te maken van alle resources of voor meerdere databases om de resources te delen. De prijzen zijn gestructureerd per server, gebaseerd op de configuratie van de prijscategorie, vCores en opslag (GB). Zie [Prijsniveaus voor](./concepts-pricing-tiers.md)meer informatie .
+Binnen een Azure Database for PostgreSQL-server kunt u een of meer data bases maken. U kunt kiezen voor het maken van één database per server om gebruik te maken van alle resources of voor meerdere databases om de resources te delen. De prijzen zijn gestructureerd per server, op basis van de configuratie van de prijs categorie, vCores en opslag (GB). Zie [prijs categorieën](./concepts-pricing-tiers.md)voor meer informatie.
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Hoe maak ik verbinding en verifieer ik met een Azure Database voor PostgreSQL-server?
-De volgende elementen zorgen voor een veilige toegang tot uw database:
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Hoe kan ik verbinding maken en verifiëren met een Azure Database for PostgreSQL-server?
+De volgende elementen zorgen voor veilige toegang tot uw Data Base:
 
 |||
 |:--|:--|
-| **Verificatie en autorisatie** | Azure Database voor PostgreSQL-server ondersteunt native PostgreSQL-verificatie. U verbinding maken en verifiëren met de server met de administronering s.you can connect and authenticate to server with the server's admin login. |
-| **Protocol** | De service ondersteunt een op berichten gebaseerd protocol dat wordt gebruikt door PostgreSQL. |
-| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domeinsockets. |
-| **Firewall** | Om uw gegevens te beschermen, voorkomt een firewallregel alle toegang tot uw server en de databases ervan, totdat u opgeeft welke computers toestemming hebben. Zie [Azure Database voor PostgreSQL Server-firewallregels](concepts-firewall-rules.md). |
+| **Verificatie en autorisatie** | Azure Database for PostgreSQL-Server ondersteunt native PostgreSQL-verificatie. U kunt verbinding maken met en verifiëren met de server met de beheerders aanmelding van de server. |
+| **Protocolsubstatus** | De service ondersteunt een op berichten gebaseerd protocol dat door PostgreSQL wordt gebruikt. |
+| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
+| **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot de server en de data bases, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for PostgreSQL Server firewall-regels](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Uw server beheren
-U Azure Database voor PostgreSQL-servers beheren met behulp van de [Azure-portal](https://portal.azure.com) of de [Azure CLI.](/cli/azure/postgres)
+U kunt Azure Database for PostgreSQL servers beheren door gebruik te maken van de [Azure Portal](https://portal.azure.com) of de [Azure cli](/cli/azure/postgres).
 
-Tijdens het maken van een server stelt u de referenties in voor uw beheerdersgebruiker. De beheerdersgebruiker is de gebruiker met de hoogste bevoegdheid die u op de server hebt. Het behoort tot de rol azure_pg_admin. Deze rol heeft geen volledige superusermachtigingen. 
+Tijdens het maken van een server stelt u de referenties voor de gebruiker van de beheerder in. De gebruiker met beheerders rechten is de hoogste bevoegdheids gebruiker op de server. Deze behoort tot de rol azure_pg_admin. Deze rol heeft geen machtigingen voor volledige super gebruiker. 
 
-Het kenmerk PostgreSQL-superuser wordt toegewezen aan de azure_superuser, die behoort tot de beheerde service. Je hebt geen toegang tot deze rol.
+Het kenmerk PostgreSQL user wordt toegewezen aan de azure_superuser, die bij de beheerde service hoort. U hebt geen toegang tot deze rol.
 
-Een Azure Database voor PostgreSQL-server heeft standaarddatabases: 
-- **postgres** - Een standaarddatabase waarmee u verbinding maken zodra uw server is gemaakt.
-- **azure_maintenance** - Deze database wordt gebruikt om de processen die de beheerde service bieden, te scheiden van gebruikersacties. U hebt geen toegang tot deze database.
-- **azure_sys** - Een database voor het queryarchief. Deze database verzamelt geen gegevens wanneer queryarchief is uitgeschakeld. dit is de standaardinstelling. Zie het overzicht van de [Querystore](concepts-query-store.md)voor meer informatie.
+Een Azure Database for PostgreSQL server heeft standaard databases: 
+- **post gres** : een standaard database waarmee u verbinding kunt maken zodra de server is gemaakt.
+- **azure_maintenance** : deze data base wordt gebruikt om de processen die de beheerde service bieden van gebruikers acties te scheiden. U hebt geen toegang tot deze data base.
+- **azure_sys** : een Data Base voor het query archief. Deze data base verzamelt geen gegevens wanneer het query archief is uitgeschakeld; Dit is de standaard instelling. Zie het [overzicht van query Store](concepts-query-store.md)voor meer informatie.
 
 
 ## <a name="server-parameters"></a>Serverparameters
-De PostgreSQL-serverparameters bepalen de configuratie van de server. In Azure Database voor PostgreSQL kan de lijst met parameters worden bekeken en bewerkt met de Azure-portal of de Azure CLI. 
+De para meters van de PostgreSQL-server bepalen de configuratie van de server. In Azure Database for PostgreSQL kan de lijst met para meters worden weer gegeven en bewerkt met behulp van de Azure Portal of de Azure CLI. 
 
-Als beheerde service voor Postgres zijn de configureerbare parameters in Azure Database voor PostgreSQL een subset van de parameters in een lokale Postgres-instantie (Zie de [PostgreSQL-documentatie](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over Postgres-parameters). Uw Azure Database voor PostgreSQL-server is ingeschakeld met standaardwaarden voor elke parameter bij het maken. Sommige parameters waarvoor een server opnieuw moet worden opgestart of dat wijzigingen van kracht moeten worden, kunnen niet door de gebruiker worden geconfigureerd.
+Als beheerde service voor post gres zijn de Configureer bare para meters in Azure Database for PostgreSQL een subset van de para meters in een lokale post gres-instantie (Zie de [documentatie van postgresql](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over post gres-para meters). Uw Azure Database for PostgreSQL-server is ingeschakeld met standaard waarden voor elke para meter bij het maken. Sommige para meters waarvoor het opnieuw opstarten van de server of de toegang tot de gebruikers beheerder moet worden toegepast, kunnen niet door de gebruiker worden geconfigureerd.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie Azure Database for [PostgreSQL-overzicht voor](overview.md)een overzicht van de service voor een overzicht van de service.
-- Zie [Servicelagen](concepts-pricing-tiers.md)voor informatie over specifieke resourcequota en -beperkingen op basis van uw **servicelaag.**
-- Zie [Verbindingsbibliotheken voor Azure Database voor PostgreSQL voor](concepts-connection-libraries.md)informatie over verbinding maken met de service.
-- Serverparameters weergeven en bewerken via [Azure portal](howto-configure-server-parameters-using-portal.md) of [Azure CLI](howto-configure-server-parameters-using-cli.md).
+- Zie [overzicht van Azure database for PostgreSQL](overview.md)voor een overzicht van de service.
+- Zie [service lagen](concepts-pricing-tiers.md)voor informatie over specifieke resource quota en beperkingen op basis **van uw servicelaag**.
+- Zie [verbindings bibliotheken voor Azure database for PostgreSQL](concepts-connection-libraries.md)voor meer informatie over het maken van een verbinding met de service.
+- Server parameters weer geven en bewerken via [Azure Portal](howto-configure-server-parameters-using-portal.md) of [Azure cli](howto-configure-server-parameters-using-cli.md).

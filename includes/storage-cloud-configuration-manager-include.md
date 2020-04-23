@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "72038167"
 ---
-De [Configuration Manager-bibliotheek van Microsoft Azure voor .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) biedt een klasse voor het parseren van een verbindingsreeks uit een configuratiebestand. De klasse [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) onteert configuratie-instellingen. Het ontziet instellingen voor clienttoepassingen die worden uitgevoerd op het bureaublad, op een mobiel apparaat, in een virtuele Azure-machine of in een Azure-cloudservice.
+De [Configuration Manager-bibliotheek van Microsoft Azure voor .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) biedt een klasse voor het parseren van een verbindingsreeks uit een configuratiebestand. De klasse [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) parseert configuratie-instellingen. Het parseert instellingen voor client toepassingen die worden uitgevoerd op het bureau blad, op een mobiel apparaat, op een virtuele machine van Azure of in een Azure-Cloud service.
 
-Voeg als `CloudConfigurationManager` referentie naar `using` het pakket de volgende richtlijnen toe:
+Als u wilt `CloudConfigurationManager` verwijzen naar het pakket, `using` voegt u de volgende instructies toe:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
@@ -28,4 +28,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Het gebruik van Azure Configuration Manager is optioneel. U ook een API gebruiken, zoals de [klasse ConfigurationManager van](/dotnet/api/system.configuration.configurationmanager).NET Framework.
+Het gebruik van Azure Configuration Manager is optioneel. U kunt ook een API gebruiken, zoals de ConfigurationManager- [klasse](/dotnet/api/system.configuration.configurationmanager)van de .NET Framework.

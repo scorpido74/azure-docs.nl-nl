@@ -1,6 +1,6 @@
 ---
-title: Sleutelkluissleutel herstellen & geheim voor versleutelde VM
-description: Meer informatie over het herstellen van key vault-sleutel en geheim in Azure Backup met PowerShell
+title: Key Vault sleutel & geheim voor versleutelde VM herstellen
+description: Meer informatie over het herstellen van Key Vault sleutel en geheim in Azure Backup met behulp van Power shell
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 35bcb919cadd46c603b1f2ad49742c5435f873d2
@@ -12,25 +12,25 @@ ms.locfileid: "75450053"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Key Vault-sleutel en -geheim voor versleutelde virtuele machines terugzetten met Azure Backup
 
-In dit artikel wordt gesproken over het gebruik van Azure VM Backup om versleutelde Azure VM's te herstellen, als uw sleutel en geheim niet bestaan in de sleutelkluis. Deze stappen kunnen ook worden gebruikt als u een afzonderlijke kopie van de sleutel (sleutelsleutel) en een geheime (BitLocker-versleutelingssleutel) voor de herstelde VM wilt behouden.
+In dit artikel vindt u informatie over het gebruik van Azure VM backup voor het uitvoeren van herstel van versleutelde virtuele machines in azure, als uw sleutel en geheim niet aanwezig zijn in de sleutel kluis. Deze stappen kunnen ook worden gebruikt als u een afzonderlijke kopie van de sleutel (sleutel versleutelings sleutel) en geheim (BitLocker-versleutelings sleutel) wilt onderhouden voor de herstelde VM.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Back-ups van versleutelde VM's** - Er is een back-up gemaakt van versleutelde Azure VM's met Azure Backup. Raadpleeg het artikel [Back-ups beheren en herstellen van Azure VM's met PowerShell](backup-azure-vms-automation.md) voor meer informatie over het maken van back-ups van versleutelde Azure VM's.
-* **Azure Key Vault configureren:** zorg ervoor dat de sleutelkluis waaraan sleutels en geheimen moeten worden hersteld, al aanwezig is. Raadpleeg het artikel [Aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) voor meer informatie over sleutelkluisbeheer.
-* **Schijf herstellen** : controleer of u de hersteltaak hebt geactiveerd voor het herstellen van schijven voor versleutelde vm met [PowerShell-stappen.](backup-azure-vms-automation.md#restore-an-azure-vm) Dit komt omdat deze taak een JSON-bestand genereert in uw opslagaccount met sleutels en geheimen voor het herstellen van de versleutelde vm.
+* **Back-up van versleutelde vm's met virtuele machines** -versleutelde Azure vm's zijn gemaakt met Azure backup. Raadpleeg het artikel [back-ups en herstel van Azure-Vm's beheren met Power shell](backup-azure-vms-automation.md) voor meer informatie over het maken van een back-up van versleutelde virtuele machines in Azure.
+* **Azure Key Vault configureren** : Zorg ervoor dat sleutel kluis waarmee sleutels en geheimen moeten worden hersteld, al aanwezig is. Raadpleeg het artikel aan de [slag met Azure Key Vault](../key-vault/key-vault-get-started.md) voor meer informatie over het beheer van de sleutel kluis.
+* **Herstel schijf** : Zorg ervoor dat u de herstel taak hebt geactiveerd voor het herstellen van schijven voor een versleutelde VM met behulp van [Power shell-stappen](backup-azure-vms-automation.md#restore-an-azure-vm). Dit komt doordat met deze taak een JSON-bestand wordt gegenereerd in uw opslag account met sleutels en geheimen voor de versleutelde virtuele machine die moet worden hersteld.
 
-## <a name="get-key-and-secret-from-azure-backup"></a>Sleutel en geheim ophalen van Azure Backup
+## <a name="get-key-and-secret-from-azure-backup"></a>Sleutel en geheim ophalen uit Azure Backup
 
 > [!NOTE]
-> Zodra de schijf is hersteld voor de versleutelde VM, moet u ervoor zorgen dat:
+> Nadat de schijf is hersteld voor de versleutelde VM, moet u het volgende doen:
 >
-> * $details wordt gevuld met gegevens over de schijftaak herstellen, zoals vermeld in [PowerShell-stappen in de sectie Schijven herstellen](backup-azure-vms-automation.md#restore-an-azure-vm)
-> * VM mag alleen worden gemaakt van herstelde schijven **nadat de sleutel en het geheim zijn hersteld naar de sleutelkluis.**
+> * $details is gevuld met herstel schijf taak Details, zoals vermeld in [Power shell-stappen in de sectie schijven herstellen](backup-azure-vms-automation.md#restore-an-azure-vm)
+> * De virtuele machine moet worden gemaakt van de herstelde schijven pas **nadat de sleutel en het geheim zijn hersteld in de sleutel kluis**.
 
-Queryer de herstelde schijfeigenschappen voor de taakgegevens.
+De herstelde schijf eigenschappen voor de taak Details opvragen.
 
 ```powershell
 $properties = $details.properties
@@ -39,7 +39,7 @@ $containerName = $properties["Config Blob Container Name"]
 $encryptedBlobName = $properties["Encryption Info Blob Name"]
 ```
 
-Stel de Azure-opslagcontext in en herstel JSON-configuratiebestand met sleutel- en geheime gegevens voor versleutelde VM.Set the Azure storage context and restore JSON configuration file containing key and secret details for encrypted VM.
+Stel de Azure Storage-context in en herstel het JSON-configuratie bestand met sleutel-en geheim gegevens voor versleutelde virtuele machine.
 
 ```powershell
 Set-AzCurrentStorageAccount -Name $storageaccountname -ResourceGroupName '<rg-name>'
@@ -50,7 +50,7 @@ $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 
 ## <a name="restore-key"></a>Sleutel herstellen
 
-Zodra het JSON-bestand is gegenereerd in het bovenstaande doelpad, genereert u het belangrijkste blobbestand van de JSON en voert u het uit om de toetscmdlet te herstellen om de sleutel (KEK) terug in de sleutelkluis te plaatsen.
+Zodra het JSON-bestand is gegenereerd in het hierboven vermelde doelpad, Genereer dan het sleutel-blobbestand van de JSON en voer het in om de sleutel-cmdlet te herstellen om de sleutel (KEK) terug te zetten in de sleutel kluis.
 
 ```powershell
 $keyDestination = 'C:\keyDetails.blob'
@@ -60,9 +60,9 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 ## <a name="restore-secret"></a>Geheim herstellen
 
-Gebruik het JSON-bestand dat hierboven is gegenereerd om geheime naam en waarde te krijgen en het te voeden om geheime cmdlet in te stellen om het geheim (BEK) terug in de sleutelkluis te plaatsen.Gebruik deze cmdlets als uw **VM is versleuteld met BEK en KEK.**
+Gebruik het hierboven gegenereerde JSON-bestand om een geheime naam en waarde op te halen en de feed in te stellen voor het instellen van een geheime cmdlet om het geheim (BEK) terug te zetten in de sleutel kluis.Gebruik deze cmdlets als uw **virtuele machine is versleuteld met bek en Kek**.
 
-**Gebruik deze cmdlets als uw Windows VM is versleuteld met BEK en KEK.**
+**Gebruik deze cmdlets als uw Windows-virtuele machine is versleuteld met BEK en KEK.**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -72,7 +72,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-**Gebruik deze cmdlets als uw Linux VM is versleuteld met BEK en KEK.**
+**Gebruik deze cmdlets als uw virtuele Linux-machine is versleuteld met BEK en KEK.**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Gebruik het JSON-bestand dat hierboven is gegenereerd om geheime naam en waarde te krijgen en het te voeden om geheime cmdlet in te stellen om het geheim (BEK) terug in de sleutelkluis te plaatsen.Gebruik deze cmdlets als uw **VM alleen met BEK is versleuteld.**
+Gebruik het hierboven gegenereerde JSON-bestand om een geheime naam en waarde op te halen en de feed in te stellen voor het instellen van een geheime cmdlet om het geheim (BEK) terug te zetten in de sleutel kluis.Gebruik deze cmdlets als uw **virtuele machine is versleuteld met alleen bek** .
 
 ```powershell
 $secretDestination = 'C:\secret.blob'
@@ -92,22 +92,22 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de output van $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl en het gebruik van tekst na geheimen / bijvoorbeeld output geheime URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 en geheime naam is B3284AA-DAAA-4AAA-B393-60CAA848AAAA
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl en met behulp van tekst na geheimen/bijv. https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 de URL voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
 >
 >
 
-## <a name="create-virtual-machine-from-restored-disk"></a>Virtuele machine maken vanaf herstelde schijf
+## <a name="create-virtual-machine-from-restored-disk"></a>Een virtuele machine maken op basis van de herstelde schijf
 
-Als u een back-up hebt gemaakt van versleutelde VM met Azure VM Backup, helpen de hierboven genoemde PowerShell-cmdlets u de sleutel en het geheim terug te zetten naar de sleutelkluis. Nadat u deze hebt hersteld, raadpleegt u het artikel [Back-up beheren en herstellen van Azure VM's met PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) om versleutelde VM's te maken van herstelde schijf, sleutel en geheim.
+Als u een back-up hebt gemaakt van een versleutelde VM met behulp van Azure VM backup, kunt u de Power shell-cmdlets die hierboven worden genoemd, gebruiken om de sleutel en het geheim terug te zetten Nadat u ze hebt teruggezet, raadpleegt u het artikel [back-up en herstel van Azure-Vm's beheren met Power shell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) om versleutelde vm's te maken op basis van de herstelde schijf, sleutel en geheim.
 
-## <a name="legacy-approach"></a>Legacy-aanpak
+## <a name="legacy-approach"></a>Verouderde aanpak
 
-De hierboven genoemde aanpak zou werken voor alle herstelpunten. Echter, de oudere aanpak van het verkrijgen van belangrijke en geheime informatie van herstelpunt, zou geldig zijn voor herstelpunten ouder dan 11 juli 2017 voor VM's versleuteld met BEHULP VAN BEK en KEK. Zodra de taak van de herstelschijf is voltooid voor versleutelde VM met [PowerShell-stappen,](backup-azure-vms-automation.md#restore-an-azure-vm)moet u ervoor zorgen dat $rp wordt gevuld met een geldige waarde.
+De hierboven genoemde benadering werkt voor alle herstel punten. De oudere benadering van het ophalen van sleutel-en geheime gegevens van het herstel punt is echter geldig voor herstel punten die ouder zijn dan 11 juli 2017 voor virtuele machines die zijn versleuteld met BEK en KEK. Zodra de herstel schijf taak is voltooid voor een versleutelde VM met behulp van [Power shell-stappen](backup-azure-vms-automation.md#restore-an-azure-vm), moet $RP worden gevuld met een geldige waarde.
 
 ### <a name="restore-key"></a>Sleutel herstellen
 
-Gebruik de volgende cmdlets om belangrijke (KEK)-informatie te krijgen vanaf het herstelpunt en deze te voeden om de sleutelcmdlet te herstellen om het terug in de sleutelkluis te plaatsen.
+Gebruik de volgende cmdlets om informatie over de sleutel (KEK) op te halen uit het herstel punt en de feed in te voeren om de sleutel-cmdlet terug te zetten in de sleutel kluis.
 
 ```powershell
 $rp1 = Get-AzRecoveryServicesBackupRecoveryPoint -RecoveryPointId $rp[0].RecoveryPointId -Item $backupItem -KeyFileDownloadLocation 'C:\Users\downloads'
@@ -116,7 +116,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile 'C:\Use
 
 ### <a name="restore-secret"></a>Geheim herstellen
 
-Gebruik de volgende cmdlets om geheime (BEK)-informatie van het herstelpunt te krijgen en deze te voeden om een geheime cmdlet in te stellen om het terug in de sleutelkluis te plaatsen.
+Gebruik de volgende cmdlets voor het verkrijgen van geheime informatie (BEK) van het herstel punt en voer deze in om de geheime cmdlet in te stellen om deze terug te zetten in de sleutel kluis.
 
 ```powershell
 $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
@@ -128,12 +128,12 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * Waarde voor $secretname kan worden verkregen door te verwijzen naar de output van $rp1. KeyAndSecretDetails.SecretUrl and using text after secrets/ b.v. output secret URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 and secret name is B3284AAA-DAAA-4AAA-B393-60CAA848AAAAA
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $rp 1. KeyAndSecretDetails. SecretUrl en het gebruik van tekst na geheimen/bijv. de URL https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
-> * Waarde voor DiskEncryptionKeyEncryptionKeyURL kan worden verkregen uit de sleutelkluis na het herstellen van de sleutels terug en het gebruik van [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) cmdlet
+> * De waarde voor DiskEncryptionKeyEncryptionKeyURL kan worden verkregen uit de sleutel kluis nadat de sleutels terug zijn hersteld en de cmdlet [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) wordt gebruikt
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de sleutel en het geheim hebt hersteld naar de sleutelkluis, raadpleegt u het artikel [Back-up beheren en herstellen van Azure VM's met PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) om versleutelde VM's te maken van herstelde schijf, sleutel en geheim.
+Nadat u de sleutel en het geheim terug naar de sleutel kluis hebt teruggezet, raadpleegt u het artikel [back-ups en herstel van virtuele Azure-machines beheren met Power shell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) om versleutelde vm's te maken op basis van de herstelde schijf, sleutel

@@ -1,6 +1,6 @@
 ---
-title: Bewaking instellen met Azure Monitor-logboeken
-description: Meer informatie over het instellen van Azure Monitor-logboeken voor het visualiseren en analyseren van gebeurtenissen om uw Azure Service Fabric-clusters te controleren.
+title: Bewaking met Azure Monitor-logboeken instellen
+description: Meer informatie over het instellen van Azure Monitor-logboeken voor het visualiseren en analyseren van gebeurtenissen voor het bewaken van uw Azure Service Fabric-clusters.
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
@@ -12,86 +12,86 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609924"
 ---
-# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor-logboeken instellen voor een cluster
+# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor-logboeken voor een cluster instellen
 
-Azure Monitor-logboeken is onze aanbeveling om gebeurtenissen op clusterniveau te controleren. U de werkruimte Log Analytics instellen via Azure Resource Manager, PowerShell of Azure Marketplace. Als u een bijgewerkte Resource Manager-sjabloon van uw implementatie bijhoudt voor toekomstig gebruik, gebruikt u dezelfde sjabloon om uw Azure Monitor-logboekomgeving in te stellen. Implementatie via Marketplace is eenvoudiger als u al een cluster hebt geïmplementeerd met diagnostische gegevens ingeschakeld. Als u geen toegang op abonnementsniveau hebt in het account waarnaar u implementeert, implementeert u met PowerShell of de sjabloon ResourceManager.
+Azure Monitor-Logboeken is onze aanbeveling om gebeurtenissen op cluster niveau te bewaken. U kunt Log Analytics werk ruimte instellen via Azure Resource Manager, Power shell of Azure Marketplace. Als u een bijgewerkte Resource Manager-sjabloon van uw implementatie wilt behouden voor toekomstig gebruik, gebruikt u dezelfde sjabloon om uw Azure Monitor-logboeken omgeving in te stellen. Implementatie via Marketplace is eenvoudiger als u al een cluster hebt dat is geïmplementeerd met diagnostische gegevens. Als u geen toegang op abonnements niveau hebt in het account waarmee u implementeert, implementeert u met Power shell of de Resource Manager-sjabloon.
 
 > [!NOTE]
-> Als u Azure Monitor-logboeken wilt instellen om uw cluster te controleren, moet u diagnostische gegevens hebben ingeschakeld om gebeurtenissen op clusterniveau of platformniveau weer te geven. Raadpleeg [hoe u diagnostische gegevens in Windows-clusters instelt](service-fabric-diagnostics-event-aggregation-wad.md) en [hoe u diagnostische gegevens in Linux-clusters instelt](service-fabric-diagnostics-oms-syslog.md) voor meer
+> Als u Azure Monitor logboeken wilt instellen om uw cluster te bewaken, moet u Diagnostische gegevens hebben ingeschakeld om gebeurtenissen op cluster niveau of platform niveau weer te geven. Zie [Diagnostische gegevens instellen in Windows-clusters](service-fabric-diagnostics-event-aggregation-wad.md) en [Diagnostische gegevens in Linux-clusters instellen](service-fabric-diagnostics-oms-syslog.md) voor meer informatie
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Een Logboekanalysewerkruimte implementeren met Azure Marketplace
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Een Log Analytics-werk ruimte implementeren met behulp van Azure Marketplace
 
-Als u een Log Analytics-werkruimte wilt toevoegen nadat u een cluster hebt geïmplementeerd, gaat u naar Azure Marketplace in de portal en zoekt u naar **Service Fabric Analytics.** Dit is een aangepaste oplossing voor Service Fabric-implementaties met gegevens die specifiek zijn voor Service Fabric. In dit proces maakt u zowel de oplossing (het dashboard om inzichten te bekijken) als werkruimte (de aggregatie van de onderliggende clustergegevens).
+Als u een Log Analytics werkruimte wilt toevoegen nadat u een cluster hebt geïmplementeerd, gaat u naar Azure Marketplace in de portal en zoekt u naar **service Fabric-analyse**. Dit is een aangepaste oplossing voor Service Fabric implementaties met specifieke gegevens voor Service Fabric. In dit proces maakt u de oplossing (het dash board om inzichten weer te geven) en de werk ruimte (de aggregatie van de onderliggende cluster gegevens).
 
-1. Selecteer **Nieuw** in het linkernavigatiemenu. 
+1. Selecteer **Nieuw** in het navigatie menu links. 
 
-2. Zoeken naar **Service Fabric Analytics**. Selecteer de resource die wordt weergegeven.
+2. Zoeken naar **service Fabric-analyse**. Selecteer de resource die wordt weer gegeven.
 
 3. Selecteer **Maken**.
 
-    ![Service Fabric Analytics in Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Service Fabric-analyse in Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. Selecteer in het venster Voor het maken van servicefabric-analyses de optie **Een werkruimte selecteren** voor het veld **OMS-werkruimte** en **maak vervolgens een nieuwe werkruimte**. Vul de benodigde vermeldingen in. De enige vereiste hier is dat het abonnement voor het cluster Service Fabric en de werkruimte hetzelfde is. Wanneer uw vermeldingen zijn gevalideerd, wordt uw werkruimte geïmplementeerd. De implementatie duurt slechts een paar minuten.
+4. Selecteer in het venster Service Fabric-analyse maken **een werk ruimte selecteren** voor het veld **OMS-werk** ruimte en **Maak vervolgens een nieuwe werk ruimte**. Vul de vereiste vermeldingen in. De enige vereiste hier is dat het abonnement voor het Service Fabric cluster en de werk ruimte hetzelfde is. Wanneer uw vermeldingen zijn gevalideerd, wordt de werk ruimte geïmplementeerd. De implementatie duurt slechts enkele minuten.
 
-5. Als u klaar bent, selecteert u Opnieuw **maken** onder aan het venster Voor het maken van Service Fabric Analytics. Controleer of de nieuwe werkruimte wordt weergegeven onder **OMS Workspace**. Met deze actie wordt de oplossing toegevoegd aan de werkruimte die u hebt gemaakt.
+5. Wanneer u klaar bent, selecteert u opnieuw **maken** onder aan het venster Service Fabric-analyse maken. Zorg ervoor dat de nieuwe werk ruimte wordt weer gegeven onder de **OMS-werk ruimte**. Met deze actie wordt de oplossing toegevoegd aan de werk ruimte die u hebt gemaakt.
 
-Als u Windows gebruikt, gaat u verder met de volgende stappen om Azure Monitor-logboeken te verbinden met het opslagaccount waar uw clustergebeurtenissen zijn opgeslagen. 
+Als u Windows gebruikt, gaat u door met de volgende stappen om Azure Monitor logboeken te verbinden met het opslag account waarin uw cluster gebeurtenissen zijn opgeslagen. 
 
 >[!NOTE]
->De Service Fabric Analytics-oplossing wordt alleen ondersteund voor Windows-clusters. Voor Linux-clusters, bekijk ons artikel over [het instellen van Azure Monitor-logboeken voor Linux-clusters.](service-fabric-diagnostics-oms-syslog.md)  
+>De Service Fabric-analyse oplossing wordt alleen ondersteund voor Windows-clusters. Voor Linux-clusters raadpleegt u ons artikel over [het instellen van Azure monitor logboeken voor Linux-clusters](service-fabric-diagnostics-oms-syslog.md).  
 
-### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>De werkruimte Log Analytics verbinden met uw cluster 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>De Log Analytics-werk ruimte koppelen aan uw cluster 
 
-1. De werkruimte moet worden gekoppeld aan de diagnostische gegevens die afkomstig zijn van uw cluster. Ga naar de resourcegroep waarin u de Service Fabric Analytics-oplossing hebt gemaakt. Selecteer **ServiceFabric\<\> nameOfWorkspace** en ga naar de overzichtspagina. Van daaruit u oplossingsinstellingen, werkruimte-instellingen en toegang tot de werkruimte Log Analytics wijzigen.
+1. De werk ruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn uit uw cluster. Ga naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric\<nameOfWorkspace\> ** en ga naar de pagina overzicht. Hier kunt u de instellingen voor de oplossing, de werk ruimte-instellingen wijzigen en toegang krijgen tot de Log Analytics-werk ruimte.
 
-2. Selecteer in het linkernavigatiemenu onder **Werkruimtegegevensbronnen**de optie **Opslagaccountslogboeken**.
+2. Selecteer in het navigatie menu aan de linkerkant onder **werkruimte gegevens bronnen**de optie **Logboeken voor opslag accounts**.
 
-3. **Selecteer** bovenaan **toevoegen** om de logboeken van uw cluster toe te voegen aan de werkruimte.
+3. Op de pagina **Logboeken voor opslag accounts** selecteert u bovenaan **toevoegen** om de logboeken van uw cluster toe te voegen aan de werk ruimte.
 
-4. Selecteer **Opslagaccount** om het juiste account toe te voegen dat in uw cluster is gemaakt. Als u de standaardnaam hebt gebruikt, is het opslagaccount **sfdg\<resourceGroupName\>**. U dit ook bevestigen met de azure resource manager-sjabloon die wordt gebruikt om uw cluster te implementeren, door de waarde te controleren die wordt gebruikt voor **applicationDiagnosticsStorageAccountName**. Als de naam niet wordt weergegeven, scrolt u omlaag en selecteert **u Meer laden**. Selecteer de naam van het opslagaccount.
+4. Selecteer **opslag account** om het juiste account toe te voegen dat in het cluster is gemaakt. Als u de standaard naam hebt gebruikt, is het opslag **account\<sfdg\>resourceGroupName**. U kunt dit ook bevestigen met de Azure Resource Manager sjabloon die wordt gebruikt voor het implementeren van uw cluster door de waarde te controleren die wordt gebruikt voor **applicationDiagnosticsStorageAccountName**. Als de naam niet wordt weer gegeven, schuift u omlaag en selecteert u **laden meer**. Selecteer de naam van het opslag account.
 
-5. Geef het gegevenstype op. Stel deze in op **Service Fabric-gebeurtenissen.**
+5. Geef het gegevens type op. Stel deze in op **service Fabric-gebeurtenissen**.
 
-6. Zorg ervoor dat de bron automatisch is ingesteld op **WADServiceFabric\*EventTable**.
+6. Zorg ervoor dat de bron automatisch wordt ingesteld **op\*WADServiceFabric EventTable**.
 
-7. Selecteer **OK** om uw werkruimte te verbinden met de logboeken van uw cluster.
+7. Selecteer **OK** om uw werk ruimte te koppelen aan de logboeken van uw cluster.
 
-    ![Opslagaccountlogboeken toevoegen aan Azure Monitor-logboeken](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Logboeken voor opslag accounts toevoegen aan Azure Monitor logboeken](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
-Het account wordt nu weergegeven als onderdeel van uw opslagaccountlogboeken in de gegevensbronnen van uw werkruimte.
+Het account wordt nu weer gegeven als onderdeel van de logboeken van uw opslag account in de gegevens bronnen van uw werk ruimte.
 
-U hebt de Service Fabric Analytics-oplossing toegevoegd in een Log Analytics-werkruimte die nu correct is verbonden met de platform- en toepassingslogboektabel van uw cluster. U op dezelfde manier extra bronnen aan de werkruimte toevoegen.
+U hebt de oplossing Service Fabric-analyse toegevoegd aan een Log Analytics-werk ruimte die nu correct is verbonden met het platform en de toepassings logboek tabel van het cluster. U kunt op dezelfde manier extra bronnen toevoegen aan de werk ruimte.
 
 
 ## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Azure Monitor-logboeken implementeren met Azure Resource Manager
 
-Wanneer u een cluster implementeert met behulp van een resourcemanagersjabloon, maakt de sjabloon een nieuwe werkruimte Log Analytics, voegt u de oplossing Servicefabric toe aan de werkruimte en configureert u deze om gegevens uit de juiste opslagtabellen te lezen.
+Wanneer u een cluster implementeert met behulp van een resource manager-sjabloon, maakt de sjabloon een nieuwe Log Analytics-werk ruimte, voegt de Service Fabric oplossing toe aan de werk ruimte en configureert deze voor het lezen van gegevens uit de juiste opslag tabellen.
 
-U [deze voorbeeldsjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) gebruiken en wijzigen om aan uw vereisten te voldoen. Deze sjabloon doet het volgende
+U kunt [deze voorbeeld sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) gebruiken en wijzigen om te voldoen aan uw vereisten. Deze sjabloon doet het volgende:
 
-* Hiermee maakt u een cluster met 5 node Service Fabric
-* Maakt een Workspace and Service Fabric-oplossing voor Log Analytics
-* Hiermee configureert u de agent Log Analytics om 2 voorbeeldprestatiemeteritems naar de werkruimte te verzamelen en te verzenden
-* Configureert WAD om servicefabric te verzamelen en stuurt deze naar Azure-opslagtabellen (WADServiceFabric*EventTable)
-* Hiermee configureert u de werkruimte Log Analytics om de gebeurtenissen uit deze tabellen te lezen
+* Hiermee maakt u een 5 knoop punt Service Fabric cluster
+* Hiermee maakt u een Log Analytics werkruimte en Service Fabric oplossing
+* Hiermee configureert u de Log Analytics-agent voor het verzamelen en verzenden van twee voorbeeld prestatie meter items naar de werk ruimte
+* Hiermee configureert u WAD voor het verzamelen van Service Fabric en verzendt u deze naar Azure Storage-tabellen (WADServiceFabric * EventTable)
+* Hiermee configureert u de Log Analytics-werk ruimte om de gebeurtenissen uit deze tabellen te lezen
 
 
-U de sjabloon implementeren als een upgrade `New-AzResourceGroupDeployment` van Resource Manager naar uw cluster met behulp van de API in de Azure PowerShell-module. Een voorbeeldopdracht is:
+U kunt de sjabloon als een resource manager-upgrade naar uw cluster implementeren met behulp van de `New-AzResourceGroupDeployment` API in de module Azure PowerShell. Een voor beeld van een opdracht is:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
 ``` 
 
-Azure Resource Manager detecteert dat deze opdracht een update is voor een bestaande bron. Het verwerkt alleen de wijzigingen tussen de sjabloon die de bestaande implementatie aansturen en de nieuwe sjabloon die wordt geleverd.
+Azure Resource Manager detecteert dat deze opdracht een update is van een bestaande resource. De wijzigingen worden alleen verwerkt tussen de sjabloon die de bestaande implementatie bedient en de nieuwe sjabloon.
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure Monitor-logboeken implementeren met Azure PowerShell
 
-U uw logboekanalysebron ook implementeren `New-AzOperationalInsightsWorkspace` via PowerShell met behulp van de opdracht. Als u deze methode wilt gebruiken, controleert u of u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)hebt geïnstalleerd. Gebruik dit script om een nieuwe log analytics-werkruimte te maken en de Service Fabric-oplossing toe te voegen: 
+U kunt uw log Analytics-resource ook via Power shell implementeren met `New-AzOperationalInsightsWorkspace` behulp van de opdracht. Als u deze methode wilt gebruiken, zorg er dan voor dat u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)hebt geïnstalleerd. Gebruik dit script om een nieuwe Log Analytics-werk ruimte te maken en de Service Fabric oplossing hieraan toe te voegen: 
 
 ```powershell
 
@@ -117,11 +117,11 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ```
 
-Wanneer u klaar bent, volgt u de stappen in de vorige sectie om Azure Monitor-logboeken te verbinden met het juiste opslagaccount.
+Wanneer u klaar bent, volgt u de stappen in de vorige sectie om Azure Monitor logboeken te verbinden met het juiste opslag account.
 
-U ook andere oplossingen toevoegen of andere wijzigingen aanbrengen in uw Log Analytics-werkruimte met PowerShell. Zie [Azure Monitor-logboeken beheren met PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)voor meer informatie.
+U kunt ook andere oplossingen toevoegen of andere wijzigingen aanbrengen in uw Log Analytics-werk ruimte met behulp van Power shell. Zie [Azure monitor-logboeken beheren met Power shell](../azure-monitor/platform/powershell-workspace-configuration.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Implementeer de Log Analytics-agent](service-fabric-diagnostics-oms-agent.md) op uw knooppunten om prestatiemeteritems te verzamelen en dockerstatistieken en -logboeken voor uw containers te verzamelen
-* Maak kennis met de [functies voor zoeken en query's voor logboeken](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure Monitor-logboeken
-* [View Designer gebruiken om aangepaste weergaven te maken in Azure Monitor-logboeken](../azure-monitor/platform/view-designer.md)
+* [Implementeer de log Analytics-agent](service-fabric-diagnostics-oms-agent.md) op uw knoop punten om prestatie meter items te verzamelen en docker-statistieken en-logboeken te verzamelen voor uw containers
+* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
+* [De weer gave Designer gebruiken om aangepaste weer gaven te maken in Azure Monitor-logboeken](../azure-monitor/platform/view-designer.md)

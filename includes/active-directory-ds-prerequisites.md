@@ -1,6 +1,6 @@
 ---
 title: bestand opnemen
-description: bestand met vereisten opnemen
+description: bestand met vereisten toevoegen
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -24,8 +24,8 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "68426875"
 ---
 > [!IMPORTANT]
-> **Schakel wachtwoordhashsynchronisatie in op Azure AD Domain Services voordat u de taken in dit artikel voltooit.**
+> **Schakel wacht woord-hash-synchronisatie in op Azure AD Domain Services, voordat u de taken in dit artikel voltooit.**
 >
-> Volg de onderstaande instructies, afhankelijk van het type gebruikers in uw Azure AD-map. Vul beide sets instructies in als u een mix van alleen cloud- en gesynchroniseerde gebruikersaccounts in uw Azure AD-map hebt. U mogelijk niet de volgende bewerkingen uitvoeren in het geval u een B2B Guest-account probeert te gebruiken (bijvoorbeeld uw gmail of MSA van een andere identiteitsprovider die we toestaan), omdat we het wachtwoord voor deze gebruikers niet hebben gesynchroniseerd met beheerd domein, omdat dit gastaccounts in de directory. De volledige informatie over deze accounts, inclusief hun wachtwoorden, zou buiten Azure AD liggen en omdat deze informatie niet in Azure AD staat, wordt deze niet eens gesynchroniseerd met het beheerde domein. 
-> - [Instructies voor gebruikersaccounts met alleen cloud](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
-> - [Instructies voor gebruikersaccounts die zijn gesynchroniseerd vanuit een on-premises map](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> Volg de onderstaande instructies, afhankelijk van het type gebruikers in uw Azure AD-adres lijst. Volg beide instructies als u een combi natie van alleen Cloud-en gesynchroniseerde gebruikers accounts in uw Azure AD-adres lijst hebt. U kunt de volgende bewerkingen mogelijk niet uitvoeren als u een B2B-gast account wilt gebruiken (bijvoorbeeld uw Gmail of MSA van een andere ID-provider die we toestaan) omdat het wacht woord voor deze gebruikers niet is gesynchroniseerd met het beheerde domein, aangezien gast accounts in de Directory zijn. De volledige informatie over deze accounts met inbegrip van hun wacht woorden zou zich buiten Azure AD bevinden en omdat deze informatie niet in azure AD wordt gebruikt, wordt deze zelfs niet gesynchroniseerd met het beheerde domein. 
+> - [Instructies voor Cloud gebruikers accounts](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
+> - [Instructies voor gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises Directory](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)

@@ -1,6 +1,6 @@
 ---
-title: Wat is er nieuw voor Azure AD in Microsoft 365-overheid? | Microsoft Docs
-description: Meer informatie over enkele wijzigingen in Azure Active Directory (Azure AD) in het cloudexemplaar van Microsoft 365 Government, die van invloed kunnen zijn op u.
+title: Wat is er nieuw voor Azure AD in Microsoft 365 overheid? | Microsoft Docs
+description: Meer informatie over enkele wijzigingen in Azure Active Directory (Azure AD) in het Cloud exemplaar van Microsoft 365 Government. Dit kan van invloed zijn op u.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -20,46 +20,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425541"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Nieuwe nieuwe auto's voor Azure Active Directory in Microsoft 365-overheid
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Wat is er nieuw voor Azure Active Directory in Microsoft 365 overheid
 
-We hebben een aantal wijzigingen aangebracht in Azure Active Directory (Azure AD) in het cloudexemplaar van Microsoft 365 Government, dat van toepassing is op klanten die de volgende services gebruiken:
+Er zijn enkele wijzigingen aangebracht in Azure Active Directory (Azure AD) in het Cloud exemplaar van Microsoft 365 Government, dat van toepassing is op klanten die de volgende services gebruiken:
 
-- Microsoft Azure-overheid
+- Microsoft Azure Government
 
-- Microsoft 365 Overheid – GCC Hoog
+- Microsoft 365 overheid – GCC hoog
 
-- Microsoft 365 Overheid – DoD
+- Microsoft 365 overheid – DoD
 
-Dit artikel is niet van toepassing op Microsoft 365 Government - GCC-klanten.
+Dit artikel is niet van toepassing op Microsoft 365 Government-GCC-klanten.
 
-## <a name="changes-to-the-initial-domain-name"></a>Wijzigingen in de oorspronkelijke domeinnaam
+## <a name="changes-to-the-initial-domain-name"></a>Wijzigingen in de oorspronkelijke domein naam
 
-Tijdens de eerste aanmelding van uw organisatie voor een online service van microsoft 365 `<your-domain-name>.onmicrosoft.com`Government werd u gevraagd om de domeinnaam van uw organisatie te kiezen. Als u al een domeinnaam met het achtervoegsel .com hebt, verandert er niets.
+Tijdens de eerste aanmelding van uw organisatie voor een online-Microsoft 365 Government-service, hebt u gevraagd om de domein naam van uw organisatie `<your-domain-name>.onmicrosoft.com`te kiezen. Als u al een domein naam met het achtervoegsel. com hebt, wordt niets gewijzigd.
 
-Als u zich echter aanmeldt voor een nieuwe Microsoft 365-overheidsdienst, wordt u gevraagd `.us` een domeinnaam te kiezen met behulp van het achtervoegsel. Dus, het `<your-domain-name>.onmicrosoft.us`zal.
+Als u zich echter aanmeldt voor een nieuwe Microsoft 365 overheids service, wordt u gevraagd een domein naam te kiezen met behulp `.us` van het achtervoegsel. Dit is dus `<your-domain-name>.onmicrosoft.us`.
 
 >[!Note]
->Deze wijziging is niet van toepassing op klanten die worden beheerd door cloudserviceproviders (CSP's).
+>Deze wijziging is niet van toepassing op klanten die worden beheerd door Cloud serviceproviders (Csp's).
 
-## <a name="changes-to-portal-access"></a>Wijzigingen in portaltoegang
+## <a name="changes-to-portal-access"></a>Wijzigingen in de toegang tot de portal
 
-We hebben de portaleindpunten voor Microsoft Azure Government, Microsoft 365 Government – GCC High en Microsoft 365 Government – DoD bijgewerkt, zoals weergegeven in de [Endpoint-toewijzingstabel.](#endpoint-mapping)
+We hebben de portal-eind punten voor Microsoft Azure Government bijgewerkt, Microsoft 365 Government – GCC High en Microsoft 365 Government – DoD, zoals wordt weer gegeven in de [eindpunt toewijzings tabel](#endpoint-mapping).
 
-Voorheen konden klanten zich aanmelden via de wereldwijde Azure -portals (portal.azure.com) en Office 365 (portal.office.com). Met deze update moeten klanten zich nu aanmelden met de specifieke Microsoft Azure Government, Microsoft 365 Government - GCC High en Microsoft 365 Government - DoD-portals.
+Voorheen kunnen klanten zich aanmelden met behulp van de wereld wijde Azure-portals (portal.azure.com) en Office 365 (portal.office.com). Met deze update moeten klanten zich nu aanmelden met behulp van de specifieke Microsoft Azure Government, Microsoft 365 Government-GCC High en Microsoft 365 Government-DoD-portals.
 
-## <a name="endpoint-mapping"></a>Eindpunttoewijzing
+## <a name="endpoint-mapping"></a>Eindpunt toewijzing
 
-In de volgende tabel worden de eindpunten voor alle klanten weergegeven:
+In de volgende tabel worden de eind punten voor alle klanten weer gegeven:
 
-| Name | Eindpuntdetails |
+| Naam | Details van eind punt |
 |------|------------------|
-| Portals |Microsoft Azure-overheid:https://portal.azure.us<p>Microsoft 365 Overheid – GCC Hoog:https://portal.office365.us<p>Microsoft 365 Overheid – DoD:https://portal.apps.mil |
-| Eindpunt azure Active Directory Authority | https://login.microsoftonline.us |
-| Microsoft Graph API voor Microsoft 365 Government - GCC High | https://graph.microsoft.us |
-| Microsoft Graph API voor Microsoft 365 Government - DoD | https://dod-graph.microsoft.us |
-| Eindpunten azure-overheidsdiensten | Zie Azure [Government-ontwikkelaarshandleiding](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) voor meer informatie |
-| Microsoft 365-overheid - Hoge eindpunten van GCC | Zie [GCC High Endpoints van de Amerikaanse overheid](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) voor meer informatie |
-| Microsoft 365-regering - DoD | Zie [Dod-eindpunten van de Amerikaanse overheid](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) voor meer informatie |
+| Portals |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 overheid – GCC hoog:https://portal.office365.us<p>Microsoft 365 overheid – DoD:https://portal.apps.mil |
+| Eind punt van Azure Active Directory instantie | https://login.microsoftonline.us |
+| Microsoft Graph-API voor Microsoft 365 Government GCC High | https://graph.microsoft.us |
+| Microsoft Graph-API voor Microsoft 365 Government-DoD | https://dod-graph.microsoft.us |
+| Azure Government services-eind punten | Zie [Azure Government ontwikkelaars handleiding](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) voor meer informatie |
+| GCC High-eind punten Microsoft 365 overheid | Zie voor meer informatie [Office 365 Amerikaanse overheid gcc High-eind punten](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 overheid-DoD | Zie [Office 365 Amerikaanse Government DoD-eind punten](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) voor meer informatie |
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -67,8 +67,8 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
-- [Azure Government AAD Authority Endpoint Update](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
+- [Azure Government AAD Authority-eind punt update](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [Microsoft Graph-eindpunten in de cloud van de Amerikaanse overheid](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [Microsoft Graph eind punten in de Amerikaanse overheids Cloud](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 GCC High en DoD van de Amerikaanse overheid](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 Amerikaanse overheid GCC hoog en DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

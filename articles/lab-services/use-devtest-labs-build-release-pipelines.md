@@ -1,6 +1,6 @@
 ---
 title: DevTest Labs in Azure Pipelines gebruiken om pijplijnen te ontwikkelen en uit te brengen
-description: Meer informatie over het gebruik van Azure DevTest Labs in Azure Pipelines build- en releasepipelines.
+description: Meer informatie over het gebruik van Azure DevTest Labs in azure-pijp lijnen build-en release pijplijnen.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -20,83 +20,83 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169227"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>DevTest Labs in Azure Pipelines gebruiken om pijplijnen te ontwikkelen en uit te brengen
-In dit artikel vindt u informatie over hoe DevTest Labs kan worden gebruikt in azure pipelines voor het maken en vrijgeven van pijplijnen. 
+In dit artikel vindt u informatie over de manier waarop DevTest Labs kan worden gebruikt in azure pipelines build-en release-pijp lijnen. 
 
-## <a name="overall-flow"></a>Totale stroom
-De basisstroom is het hebben van een **buildpijplijn** die de volgende taken uitvoert:
+## <a name="overall-flow"></a>Algehele stroom
+De basis stroom is een build- **pijp lijn** die de volgende taken doet:
 
-1. Bouw de toepassingscode.
-1. Maak de basisomgeving in DevTest Labs.
+1. Bouw de toepassings code op.
+1. Maak de basis omgeving in DevTest Labs.
 1. Werk de omgeving bij met aangepaste informatie.
 1. De toepassing implementeren in de DevTest Labs-omgeving
 1. Test de code. 
 
-Zodra de build is voltooid, gebruikt de **releasepijplijn** de buildartefacten om fasering of productie te implementeren. 
+Zodra de build is voltooid, worden de build-artefacten door de **release pijplijn** gebruikt voor het implementeren van staging of productie. 
 
-Een van de noodzakelijke uitgangspunten is dat alle informatie die nodig is om het geteste ecosysteem opnieuw te maken beschikbaar is binnen de buildartefacten, inclusief de configuratie van de Azure-bronnen. Omdat Azure-resources kosten maken wanneer ze worden gebruikt, willen bedrijven het gebruik van deze resources beheren of bijhouden. In sommige situaties kunnen Azure Resource Manager-sjablonen die worden gebruikt om de resources te maken en configureren, worden beheerd door een andere afdeling zoals IT. En deze sjablonen kunnen worden opgeslagen in een andere opslagplaats. Het leidt tot een interessante situatie waarin een build wordt gemaakt en getest, en zowel de code als de configuratie moeten worden opgeslagen in de buildartefacten om het systeem in productie correct opnieuw te maken. 
+Een van de nodige lokalen is dat alle informatie die nodig is voor het opnieuw maken van het geteste ecosysteem beschikbaar is binnen de bouw artefacten, inclusief de configuratie van de Azure-resources. Als Azure-resources kosten in rekening brengen, willen bedrijven het gebruik van deze resources zelf kunnen beheren of bijhouden. In sommige gevallen kunnen Azure Resource Manager sjablonen die worden gebruikt om de resources te maken en te configureren, worden beheerd door een andere afdeling zoals het. Deze sjablonen kunnen worden opgeslagen in een andere opslag plaats. Het leidt naar een interessante situatie waarin een build wordt gemaakt en getest, en zowel de code als de configuratie moeten worden opgeslagen in de constructie artefacten om het systeem op de juiste manier opnieuw in productie te maken. 
 
-Met Behulp van DevTest Labs tijdens de build/testfase u Azure Resource Manager-sjablonen en ondersteunende bestanden toevoegen aan de buildbronnen, zodat tijdens de releasefase de exacte configuratie wordt geïmplementeerd waarmee wordt getest, wordt geïmplementeerd in productie. Met de taak **Azure DevTest Labs-omgeving maken** met de juiste configuratie worden de Resource Manager-sjablonen in de buildartefacten opgeslagen. In dit voorbeeld gebruikt u de code uit de [zelfstudie: een .NET Core- en SQL Database-webapp in Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)om de web-app in Azure te implementeren en te testen.
+Wanneer u DevTest Labs gebruikt tijdens de build/test-fase, kunt u Azure Resource Manager sjablonen en ondersteunende bestanden toevoegen aan de build-bronnen, zodat tijdens de release fase de exacte configuratie die wordt gebruikt om te testen met wordt geïmplementeerd voor productie. Met de taak **Azure DevTest Labs omgeving maken** met de juiste configuratie worden de Resource Manager-sjablonen in de build-artefacten opgeslagen. Voor dit voor beeld gebruikt u de code uit de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)om de web-app in azure te implementeren en te testen.
 
-![Totale stroom](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
+![Algehele stroom](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
-Er zijn een paar items die vooraf moeten worden gemaakt:
+Er zijn een aantal items die moeten worden gemaakt:
 
-- Twee opslagplaatsen. De eerste met de code uit de zelfstudie en een Resource Manager-sjabloon met twee extra VM's. De tweede bevat de sjabloon Azure Resource Manager (bestaande configuratie) basis.
-- Een resourcegroep voor de implementatie van de productiecode en -configuratie.
-- Er moet een lab worden ingesteld met een [verbinding met de configuratieopslagplaats](devtest-lab-create-environment-from-arm.md) voor de buildpijplijn. De sjabloon Resourcemanager moet worden ingecheckt in de configuratierepository als azuredeploy.json met de metadata.json, zodat DevTest Labs de sjabloon kunnen herkennen en implementeren.
+- Twee opslag plaatsen. Het eerste met de code uit de zelf studie en een resource manager-sjabloon met twee extra Vm's. De tweede bevat de basis Azure Resource Manager sjabloon (bestaande configuratie).
+- Een resource groep voor de implementatie van de productie code en configuratie.
+- Een lab moet worden ingesteld met een verbinding met [de configuratie opslagplaats](devtest-lab-create-environment-from-arm.md) voor de build-pijp lijn. De Resource Manager-sjabloon moet worden gecontroleerd in de configuratie opslagplaats als azuredeploy. json met de meta gegevens. json zodat DevTest Labs de sjabloon kan herkennen en implementeren.
 
-De buildpipeline maakt een DevTest Labs-omgeving en implementeert de code voor het testen.
+Met de build-pijp lijn wordt een DevTest Labs-omgeving gemaakt en de code voor het testen geïmplementeerd.
 
-## <a name="set-up-a-build-pipeline"></a>Een buildpijplijn instellen
-Maak in Azure Pipelines een buildpijplijn met de code uit de [zelfstudie: een .NET Core- en SQL Database-webapp maken in Azure App Service.](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md) Gebruik de **sjabloon ASP.NET Core,** die de benodigde taak vult om de code te bouwen, te testen en te publiceren.
+## <a name="set-up-a-build-pipeline"></a>Een build-pijp lijn instellen
+Maak in azure-pijp lijnen een build-pijp lijn met behulp van de code in de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Gebruik de **ASP.net core** sjabloon, waarmee de benodigde taak wordt gevuld om de code te bouwen, te testen en te publiceren.
 
-![De ASP.NET sjabloon selecteren](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
+![De ASP.NET-sjabloon selecteren](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
 U moet drie extra taken toevoegen om de omgeving in DevTest Labs te maken en te implementeren in de omgeving.
 
-![Pijplijn met drie taken](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
+![Pijp lijn met drie taken](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
 
-### <a name="create-environment-task"></a>Omgevingstaak maken
-Gebruik de vervolgkeuzelijsten om de volgende waarden te selecteren in de taak omgeving maken van de omgeving **(Azure DevTest Labs Create Create Environment)** de vervolgkeuzelijsten gebruiken om de volgende waarden te selecteren:
+### <a name="create-environment-task"></a>Omgevings taak maken
+Gebruik in de taak omgeving maken (**Azure DevTest Labs omgeving maken** ) de vervolg keuzelijsten om de volgende waarden te selecteren:
 
 - Azure-abonnement
 - naam van het lab
-- naam van de opslagplaats
-- naam van de sjabloon (die de map toont waar de omgeving is opgeslagen). 
+- de naam van de opslag plaats
+- de naam van de sjabloon (waarin de map wordt weer gegeven waarin de omgeving is opgeslagen). 
 
-We raden u aan vervolgkeuzelijsten op de pagina te gebruiken in plaats van de informatie handmatig in te voeren. Als u de gegevens handmatig invoert, voert u volledig gekwalificeerde Azure Resource Id's in. De taak geeft de vriendelijke namen weer in plaats van resource-id's. 
+We raden u aan vervolg keuzelijsten op de pagina te gebruiken in plaats van de gegevens hand matig in te voeren. Als u de informatie hand matig invoert, voert u volledig gekwalificeerde Azure-resource-Id's in. In de taak worden de beschrijvende namen weer gegeven in plaats van resource-Id's. 
 
-De omgevingsnaam is de weergegeven naam die wordt weergegeven in DevTest Labs. Het moet een unieke naam voor elke build. Bijvoorbeeld: **TestEnv$(Build.BuildId)**. 
+De naam van de omgeving is de weer gegeven naam die wordt weer gegeven in DevTest Labs. Dit moet een unieke naam zijn voor elke build. Bijvoorbeeld: **TestEnv $ (build. BuildId)**. 
 
-U parametersbestand of parameters opgeven om informatie door te geven aan de sjabloon Resourcebeheer. 
+U kunt para meters bestand of para meters opgeven voor het door geven van gegevens in de Resource Manager-sjabloon. 
 
-Selecteer de **uitvoervariabelen maken op basis van de** uitvoeroptie omgevingssjabloon en voer een referentienaam in. Voer in dit voorbeeld **BaseEnv** in voor de referentienaam. U gebruikt deze BaseEnv bij het configureren van de volgende taak. 
+Selecteer de **uitvoer variabelen maken op basis van de optie voor de uitvoer van de omgevings sjabloon** en voer een referentie naam in. Voor dit voor beeld voert u **BaseEnv** in als referentie naam. U gebruikt deze BaseEnv bij het configureren van de volgende taak. 
 
-![Azure DevTest Labs-omgevingtaak maken](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
+![Taak voor Azure DevTest Labs omgeving maken](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
 
-### <a name="populate-environment-task"></a>Omgevingstaak invullen
-De tweede taak **(Azure DevTest Labs Populate Environment** taak) is het bijwerken van de bestaande DevTest Labs-omgeving. De taak voor omgevingmaken uitvoert **BaseEnv.environmentResourceId** uit die wordt gebruikt om de omgevingsnaam voor deze taak te configureren. De sjabloon Resourcemanager voor dit voorbeeld heeft twee parameters : **adminUserName** en **adminPassword**. 
+### <a name="populate-environment-task"></a>Omgevings taak vullen
+De tweede taak (**Azure DevTest Labs het invullen van de omgevings** taak) is het bijwerken van de bestaande DevTest Labs-omgeving. De taak voor het maken van een omgeving **BaseEnv. environmentResourceId** die wordt gebruikt voor het configureren van de omgevings naam voor deze taak. De Resource Manager-sjabloon voor dit voor beeld heeft twee para meters: **adminUserName** en **adminPassword**. 
 
-![Azure DevTest Labs-omgeving taak invullen](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
+![Taak voor Azure DevTest Labs omgeving vullen](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
-## <a name="app-service-deploy-task"></a>Implementatietaak app-service
-De derde taak is de **Azure App Service Deploy-taak.** Het app-type is ingesteld op **Web App** en de naam van de App-service is ingesteld op **$(WebSite).**
+## <a name="app-service-deploy-task"></a>Taak implementeren App Service
+De derde taak is de taak **implementatie Azure app service** . Het app-type is ingesteld op **Web-app** en de naam van de app service is ingesteld op **$ (website)**.
 
-![Taak App-service implementeren](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
+![Taak implementeren App Service](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="set-up-release-pipeline"></a>Releasepijplijn instellen
-U maakt een releasepijplijn met twee taken: **Azure Deployment: Create or Update Resource Group** en Deploy Azure App **Service**. 
+## <a name="set-up-release-pipeline"></a>Release pijplijn instellen
+U maakt een release pijplijn met twee taken: **Azure-implementatie: resource groep maken of bijwerken** en **Azure app service implementeren**. 
 
-Geef voor de eerste taak de naam en locatie van de resourcegroep op. De sjabloonlocatie is een gekoppeld artefact. Als de sjabloon Resourcebeheer gekoppelde sjablonen bevat, moet een aangepaste implementatie van resourcegroepen worden geïmplementeerd. De sjabloon bevindt zich in het gepubliceerde dropartefact. Sjabloonparameters overschrijven voor de sjabloon Resourcebeheer. U de resterende instellingen met standaardwaarden laten. 
+Geef voor de eerste taak de naam en de locatie van de resource groep op. De locatie van de sjabloon is een gekoppeld artefact. Als de Resource Manager-sjabloon gekoppelde sjablonen bevat, moet een aangepaste implementatie van een resource groep worden geïmplementeerd. De sjabloon bevindt zich in het gepubliceerde drop-artefact. Temp late para meters voor de Resource Manager-sjabloon negeren. U kunt de resterende instellingen met standaard waarden laten staan. 
 
-Voor de tweede taak **Deploy Azure App Service**geeft u het Azure-abonnement op, selecteert u Web **App** voor het **app-type**en **$(WebSite)** voor de **naam appservice**. U de resterende instellingen met standaardwaarden laten. 
+Voor de tweede taak **implementeren Azure app service**, geeft u het Azure-abonnement op, selecteert u **Web-app** voor het **app-type**en **$ (website)** voor de naam van de **app service**. U kunt de resterende instellingen met standaard waarden laten staan. 
 
-## <a name="test-run"></a>Testrun
-Nu beide pijplijnen zijn ingesteld, handmatig wachtrij een build en zie het werken. De volgende stap is om de juiste trigger voor de build in te stellen en de build aan te sluiten op de releasepijplijn.
+## <a name="test-run"></a>Test uitvoering
+Nu beide pijp lijnen zijn ingesteld, kunt u een build hand matig in de wachtrij plaatsen en de IT-afdeling weer geven. De volgende stap is het instellen van de juiste trigger voor de build en het maken van de build met de release pijplijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- [Azure DevTest Labs integreren in uw Azure Pipelines-pijplijn en continue integratie- en leveringspijplijn](devtest-lab-integrate-ci-cd-vsts.md)
-- [Omgevingen integreren in uw CI/CD-pijplijnen voor Azure Pipelines](integrate-environments-devops-pipeline.md)
+- [Azure DevTest Labs integreren in uw Azure pipelines continue integratie en leverings pijplijn](devtest-lab-integrate-ci-cd-vsts.md)
+- [Omgevingen integreren in uw Azure pipelines CI/CD-pijp lijnen](integrate-environments-devops-pipeline.md)

@@ -13,7 +13,7 @@ ms.locfileid: "69014669"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (recentste)
 
-Bekijk de nieuwste versie van Azure Media Services! 
+Bekijk de nieuwste versie van Azure Media Services. 
 
 * [Overzicht](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [Concepten](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
@@ -24,5 +24,5 @@ Bekijk de nieuwste versie van Azure Media Services!
 
 * [Overzicht](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
 * [Account maken](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [On-demand leveren](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
+* [Op aanvraag leveren](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
 * [Live leveren](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

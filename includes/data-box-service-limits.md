@@ -12,5 +12,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "66244606"
 ---
- - Als u meerdere opslagaccounts gebruikt met de Data Box-service, moeten alle opslagaccounts tot dezelfde Azure-regio behoren.
- - We raden u aan niet meer dan drie opslagaccounts te gebruiken. Het gebruik van meer opslagaccounts kan mogelijk de prestaties beïnvloeden.
+ - Als u meerdere opslag accounts met de Data Box-Service gebruikt, moeten alle opslag accounts tot dezelfde Azure-regio behoren.
+ - U wordt aangeraden niet meer dan drie opslag accounts te gebruiken. Het gebruik van meer opslag accounts kan de prestaties mogelijk beïnvloeden.

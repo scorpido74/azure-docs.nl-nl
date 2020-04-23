@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
-description: Meer informatie over het gebruik van Azure Data Lake Tools voor Visual Studio Code voor het maken, testen en uitvoeren van U-SQL-scripts.
+description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio code voor het maken, testen en uitvoeren van U-SQL-scripts.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: Jejiang
@@ -18,55 +18,55 @@ ms.locfileid: "60508891"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
 
-Lees in dit artikel hoe u Azure Data Lake Tools for Visual Studio Code (VS-code) gebruiken om U-SQL-scripts te maken, te testen en uit te voeren. De informatie wordt ook behandeld in de volgende video:
+In dit artikel leert u hoe u Azure Data Lake-Hulpprogram Ma's voor Visual Studio code (VS code) kunt gebruiken om U-SQL-scripts te maken, te testen en uit te voeren. De informatie wordt ook behandeld in de volgende video:
 
 <a href="https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Data Lake Tools voor VS Code ondersteunt Windows, Linux en macOS.U-SQL local run en local debug werkt alleen in Windows.
+Azure Data Lake-Hulpprogram Ma's voor VS-code ondersteunt Windows, Linux en macOS.Lokaal uitvoeren van U-SQL en lokale fout opsporing werken alleen in Windows.
 
-- [Visual Studio-code](https://www.visualstudio.com/products/code-vs.aspx)
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
 Voor MacOS en Linux:
-- [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)
-- [Mono 5.2.x](https://www.mono-project.com/download/)
+- [.NET Core SDK 2,0](https://www.microsoft.com/net/download/core)
+- [Mono 5.2. x](https://www.mono-project.com/download/)
 
-## <a name="install-azure-data-lake-tools"></a>Azure Data Lake-hulpprogramma's installeren
+## <a name="install-azure-data-lake-tools"></a>Azure Data Lake-Hulpprogram Ma's installeren
 
-Nadat u de vereisten hebt geïnstalleerd, u Azure Data Lake Tools voor VS-code installeren.
+Nadat u de vereiste onderdelen hebt geïnstalleerd, kunt u Azure Data Lake-Hulpprogram Ma's voor VS code installeren.
 
-**Azure Data Lake-hulpprogramma's installeren**
+**Azure Data Lake-Hulpprogram Ma's installeren**
 
 1. Open Visual Studio Code.
-2. Selecteer **Extensies** in het linkerdeelvenster. Voer **Azure Data Lake Tools** in het zoekvak in.
-3. Selecteer **Installeren** naast **Azure Data Lake Tools**. 
+2. Selecteer **uitbrei dingen** in het linkerdeel venster. Voer **Azure data Lake-Hulpprogram ma's** in het zoekvak in.
+3. Selecteer **installeren** naast **Azure data Lake-hulpprogram ma's**. 
 
-   ![Selecties voor het installeren van Data Lake-hulpprogramma's](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
+   ![Selecties voor het installeren van Data Lake-Hulpprogram Ma's](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
-   Na enkele seconden wordt de knop **Installeren** gewijzigd in **Opnieuw laden.**
-4. Selecteer **Opnieuw laden** om de extensie Azure Data Lake Tools **te** activeren.
-5. Selecteer **Venster opnieuw laden** om te bevestigen. U **Azure Data Lake Tools zien** in het deelvenster **Extensies.**
+   Na enkele seconden wordt de knop **installeren** gewijzigd in **opnieuw laden**.
+4. Selecteer **opnieuw laden** om de uitbrei ding **Azure data Lake tools** te activeren.
+5. Selecteer **venster opnieuw laden** om te bevestigen. U ziet **Azure data Lake-Hulpprogram ma's** in het deel venster **uitbrei dingen** .
 
  
-## <a name="activate-azure-data-lake-tools"></a>Azure Data Lake-hulpprogramma's activeren
-Maak een .usql-bestand of open een bestaand .usql-bestand om de extensie te activeren. 
+## <a name="activate-azure-data-lake-tools"></a>Azure Data Lake-Hulpprogram Ma's activeren
+Maak een. usql-bestand of open een bestaand usql-bestand om de uitbrei ding te activeren. 
 
 
 ## <a name="work-with-u-sql"></a>Werken met U-SQL
 
-Als u met U-SQL wilt werken, moet u een U-SQL-bestand of een map openen.
+Als u wilt werken met U-SQL, moet u een U-SQL-bestand of een map openen.
 
-**Het voorbeeldscript openen**
+**Het voorbeeld script openen**
 
-Open het opdrachtpalet (Ctrl+Shift+P) en voer **ADL in: Voorbeeldscript openen**. Hiermee wordt een ander voorbeeld van dit voorbeeld geopend. U ook een script bewerken, configureren en verzenden in dit exemplaar.
+Open het opdracht palet (CTRL + SHIFT + P) en voer **ADL: voorbeeld script openen**in. Er wordt een ander exemplaar van dit voor beeld geopend. U kunt ook een script voor dit exemplaar bewerken, configureren en verzenden.
 
-**Een map openen voor uw U-SQL-project**
+**Een map voor uw U-SQL-project openen**
 
-1. Selecteer in Visual Studio Code het menu **Bestand** en selecteer **Map openen**.
-2. Geef een map op en selecteer **Map selecteren**.
-3. Selecteer het menu **Bestand** en selecteer **Nieuw**. Er wordt een Untitled-1-bestand aan het project toegevoegd.
-4. Voer de volgende code in het bestand Untitled-1 in:
+1. In Visual Studio code selecteert u het menu **bestand** en selecteert u **map openen**.
+2. Geef een map op en selecteer vervolgens **map selecteren**.
+3. Selecteer het menu **bestand** en selecteer vervolgens **Nieuw**. Een naamloos-1-bestand wordt toegevoegd aan het project.
+4. Voer de volgende code in het bestand naamloos-1 in:
 
         @departments  = 
             SELECT * FROM 
@@ -82,107 +82,107 @@ Open het opdrachtpalet (Ctrl+Shift+P) en voer **ADL in: Voorbeeldscript openen**
             TO "/Output/departments.csv"
         USING Outputters.Csv();
 
-    Het script maakt een bestand van departments.csv met enkele gegevens in de map /output.
+    Het script maakt een. CSV-bestand van afdelingen met enkele gegevens die zijn opgenomen in de map/output.
 
-5. Sla het bestand op als **myUSQL.usql** in de geopende map.
+5. Sla het bestand op als **myUSQL. usql** in de map geopend.
 
 **Een U-SQL-script compileren**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2. Voer **ADL: Compileren Script**. De compileerresultaten worden weergegeven in het venster **Uitvoer.** U ook met de rechtermuisknop op een scriptbestand klikken en vervolgens **ADL: Compileren script** selecteren om een U-SQL-taak samen te stellen. Het compilatieresultaat wordt weergegeven in het deelvenster **Uitvoer.**
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2. Voer **ADL in: script compileren**. De compilatie resultaten worden weer gegeven in het **uitvoer** venster. U kunt ook met de rechter muisknop op een script bestand klikken en vervolgens **ADL: compilatie script** selecteren om een U-SQL-taak te compileren. Het compilatie resultaat wordt weer gegeven in het deel venster **uitvoer** .
  
 **Een U-SQL-script verzenden**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2. Voer **ADL in: Taak verzenden**. U ook met de rechtermuisknop op een scriptbestand klikken en vervolgens **ADL: Taak verzenden selecteren.** 
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2. Voer **ADL: taak verzenden**in. U kunt ook met de rechter muisknop op een script bestand klikken en vervolgens **ADL: taak verzenden**selecteren. 
 
-Nadat u een U-SQL-taak hebt verzonden, worden de indieningslogboeken weergegeven in het venster **Uitvoer** in VS-code. De taakweergave wordt in het rechterdeelvenster weergegeven. Als de indiening succesvol is, wordt de url van de taak ook weergegeven. U de taak-URL openen in een webbrowser om de status van de realtime taak bij te houden. 
+Nadat u een U-SQL-taak hebt verzonden, worden de inzendings logboeken weer gegeven in het **uitvoer** venster in VS code. De taak weergave wordt weer gegeven in het rechterdeel venster. Als de verzen ding is gelukt, wordt de taak-URL ook weer gegeven. U kunt de taak-URL in een webbrowser openen om de real-time taak status bij te houden. 
 
-Op het tabblad **OVERZICHT** van de taakweergave ziet u de taakgegevens. De belangrijkste functies zijn het opnieuw indienen van een script, het dupliceren van een script en openen in de portal. Op het tabblad **GEGEVENS** van de taakweergave u verwijzen naar de invoerbestanden, uitvoerbestanden en bronbestanden. Bestanden kunnen worden gedownload naar de lokale computer.
+Op het tabblad **samen vatting** van de taak weergave ziet u de taak Details. Hoofd functies omvatten het opnieuw verzenden van een script, het dupliceren van een script en het openen in de portal. Op het tabblad **gegevens** van de taak weergave kunt u verwijzen naar de invoer bestanden, uitvoer bestanden en bron bestanden. Bestanden kunnen naar de lokale computer worden gedownload.
 
-![Tabblad Overzicht in de taakweergave](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-summary.png)
+![Tabblad samen vatting in de taak weergave](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-summary.png)
 
-![Tabblad Gegevens in de taakweergave](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-data.png)
+![Het tabblad gegevens in de taak weergave](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-data.png)
 
-**De standaardcontext instellen**
+**De standaard context instellen**
 
-U de standaardcontext instellen om deze instelling toe te passen op alle scriptbestanden als u geen parameters voor bestanden afzonderlijk hebt ingesteld.
+U kunt de standaard context instellen om deze instelling toe te passen op alle script bestanden als u geen para meters voor bestanden afzonderlijk hebt ingesteld.
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2. Voer **ADL in: Stel standaardcontext in**. Of klik met de rechtermuisknop op de scripteditor en selecteer **ADL: Standaardcontext instellen**.
-3. Kies het gewenste account, database en schema. De instelling wordt opgeslagen in het configuratiebestand xxx_settings.json.
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2. Voer **ADL in: Stel de standaard context**in. Of klik met de rechter muisknop op de script editor en selecteer **ADL: standaard context instellen**.
+3. Kies het account, de data base en het schema dat u wilt. De instelling wordt opgeslagen in het configuratie bestand xxx_settings. json.
 
-   ![Account, database en schemaset als standaardcontext](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
+   ![Het account, de data base en het schema zijn ingesteld als de standaard context](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
 
-**Scriptparameters instellen**
+**Script parameters instellen**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2. Voer **ADL in: Scriptparameters instellen**.
-3. Het bestand xxx_settings.json wordt geopend met de volgende eigenschappen:
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2. Voer **ADL in: script parameters instellen**.
+3. Het bestand xxx_settings. json wordt geopend met de volgende eigenschappen:
 
-   - **account:** een Azure Data Lake Analytics-account onder uw Azure-abonnement dat nodig is om U-SQL-taken samen te stellen en uit te voeren. U moet het computeraccount configureren voordat u U-SQL-taken compileert en uitvoert.
-   - **database**: Een database onder uw account. De standaardinstelling is **stramien**.
-   - **schema**: Een schema onder uw database. De standaard instelling is **dbo**.
-   - **optioneelInstellingen:**
-        - **prioriteit**: Het prioriteitsbereik is 1 tot 1000, met 1 als hoogste prioriteit. De standaardwaarde is **1000**.
-        - **mateOfParallelisme**: Het parallellisme bereik is van 1 tot 150. De standaardwaarde is de maximale parallellisme die is toegestaan in uw Azure Data Lake Analytics-account. 
+   - **account**: een Azure data Lake Analytics account onder uw Azure-abonnement dat nodig is voor het compileren en uitvoeren van U-SQL-taken. U moet het computer account configureren voordat u U-SQL-taken kunt compileren en uitvoeren.
+   - **Data Base**: een Data Base onder uw account. De standaard waarde is **Master**.
+   - **schema**: een schema onder uw data base. De standaard waarde is **dbo**.
+   - **optionalSettings**:
+        - **prioriteit**: het prioriteits bereik is 1 tot en met 1000, met 1 als de hoogste prioriteit. De standaardwaarde is **1000**.
+        - **degreeOfParallelism**: het parallellisme bereik is 1 tot en met 150. De standaard waarde is de maximale parallelle grootte die is toegestaan in uw Azure Data Lake Analytics-account. 
 
    ![Inhoud van het JSON-bestand](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-setting.png)
       
 > [!NOTE] 
-> Nadat u de configuratie hebt opgeslagen, worden de account-, database- en schemagegevens weergegeven op de statusbalk in de linkerbenedenhoek van het bijbehorende .usql-bestand als u geen standaardcontext hebt ingesteld.
+> Nadat u de configuratie hebt opgeslagen, verschijnen de gegevens van het account, de data base en het schema op de status balk in de linkerbenedenhoek van het overeenkomstige usql-bestand als u geen standaard context hebt ingesteld.
 
-**Git negeren instellen**
+**Git-negeren instellen**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2. Voer **ADL in: Git negeren instellen**.
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2. Voer **ADL in: Git instellen negeren**.
 
-   - Als u geen **.gitIgnore-bestand** in uw vs-code-werkmap hebt, wordt er een bestand met de naam **.gitIgnore** gemaakt in uw map. Er worden standaard vier items (**usqlCodeBehindReference**, **usqlCodeBehindGenerated**, **.cache**, **obj**) in het bestand toegevoegd. U indien nodig meer updates uitvoeren.
-   - Als u al een **.gitIgnore-bestand** in uw VS-code-map hebt, voegt het hulpprogramma vier items **(usqlCodeBehindReference**, **usqlCodeBehindGenerated**, **.cache**, **obj)** toe aan uw **.gitIgnore-bestand** als de vier items niet in het bestand zijn opgenomen.
+   - Als u nog geen **. gitIgnore** -bestand in de map VS code hebt, wordt een bestand met de naam **. gitIgnore** in uw map gemaakt. In het bestand worden standaard vier items (**usqlCodeBehindReference**, **usqlCodeBehindGenerated**, **. cache**, **obj**) toegevoegd. U kunt zo nodig meer updates maken.
+   - Als u al een **. gitIgnore** -bestand in de map VS code hebt, voegt het hulp programma vier items **(usqlCodeBehindReference**, **usqlCodeBehindGenerated**, **. cache**, **obj**) toe in uw **. gitIgnore** -bestand als de vier items niet zijn opgenomen in het bestand.
 
-   ![Items in het bestand .gitIgnore](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
+   ![Items in het. gitIgnore-bestand](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
 
 
-## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>Werken met code-behind bestanden: C Sharp, Python en R
+## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>Werken met code-behind bestanden: C-Kruis, python en R
 
-Azure Data Lake Tools ondersteunt meerdere aangepaste codes. Zie [U-SQL ontwikkelen met Python, R en C Sharp voor Azure Data Lake Analytics in VS-code voor](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)instructies.
+Azure Data Lake-Hulpprogram Ma's ondersteunt meerdere aangepaste codes. Zie [U-SQL ontwikkelen met python, R en C voor Azure data Lake Analytics in VS code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)voor instructies.
 
-## <a name="work-with-assemblies"></a>Werken met assemblages
+## <a name="work-with-assemblies"></a>Werken met assembly's
 
-Zie [U-SQL-samenstellingen ontwikkelen voor Azure Data Lake Analytics-taken voor](data-lake-analytics-u-sql-develop-assemblies.md)informatie over het ontwikkelen van assemblages.
+Zie voor meer informatie over het ontwikkelen van assembly's [U-SQL-Assembly's ontwikkelen voor Azure data Lake Analytics taken](data-lake-analytics-u-sql-develop-assemblies.md).
 
-U Data Lake Tools gebruiken om aangepaste codeverzamelingen te registreren in de Data Lake Analytics-catalogus.
+U kunt Data Lake-Hulpprogram Ma's gebruiken om aangepaste code-assembly's te registreren in de Data Lake Analytics catalogus.
 
-**Een vergadering registreren**
+**Een assembly registreren**
 
-U de assemblage registreren via de **ADL: Register Assembly** of **ADL: Register Assembly (Advanced)** opdracht.
+U kunt de assembly registreren via de **ADL: REGI ster-assembly** of **ADL: registratie van de assembly (Geavanceerd)** opdracht.
 
-**Registreren via de opdracht ADL: Assemblee registreren**
-1.  Selecteer Ctrl+Shift+P om het opdrachtpalet te openen.
-2.  Voer **ADL: Register Assembly**. 
-3.  Geef het lokale assemblagepad op. 
+**Registreren via de ADL: opdracht assembly registreren**
+1.  Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+2.  Voer **ADL: assembly registreren**in. 
+3.  Geef het pad van de lokale assembly op. 
 4.  Selecteer een Data Lake Analytics-account.
-5.  Selecteer een database.
+5.  Selecteer een Data Base.
 
-Het portaal wordt geopend in een browser en geeft het assemblageregistratieproces weer.  
+De portal wordt geopend in een browser en geeft het registratie proces van de assembly weer.  
 
-Een handigere manier om de opdracht **ADL: Register Assembly** te activeren, is door met de rechtermuisknop op het .dll-bestand in Verkenner te klikken. 
+Een handigere manier om de **ADL: registratie van de assembly** te activeren, is door met de rechter muisknop te klikken op het dll-bestand in Verkenner. 
 
-**Registreren via de opdracht ADL: Register Assembly (Advanced)**
-1.  Selecteer Ctrl+Shift+P om het opdrachtpalet te openen.
-2.  Voer **ADL: Register Assembly (Advanced)**. 
-3.  Geef het lokale assemblagepad op. 
-4.  Het JSON-bestand wordt weergegeven. Controleer en bewerk indien nodig de afhankelijkheden en resourceparameters van de assemblage. Instructies worden weergegeven in het venster **Uitvoer.** Als u naar de assemblageregistratie wilt gaan, slaat u (Ctrl+S) het JSON-bestand op.
+**Registreren via de opdracht ADL: assembly registreren (Geavanceerd)**
+1.  Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+2.  Voer **ADL in: registratie van assembly (Geavanceerd)**. 
+3.  Geef het pad van de lokale assembly op. 
+4.  Het JSON-bestand wordt weer gegeven. Controleer en bewerk zo nodig de assembly-afhankelijkheden en resource parameters. De instructies worden weer gegeven in het **uitvoer** venster. Als u wilt door gaan met de assembly-registratie, slaat u het JSON-bestand op (CTRL + S).
 
-    ![JSON-bestand met assemblageafhankelijkheden en resourceparameters](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
+    ![JSON-bestand met assembly-afhankelijkheden en resource parameters](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
     
 >[!NOTE]
->- Azure Data Lake Tools detecteert automatisch of de DLL afhankelijkheden voor assemblage smaakt. De afhankelijkheden worden weergegeven in het JSON-bestand nadat ze zijn gedetecteerd. 
->- U uw DLL-resources (bijvoorbeeld .txt, .png en .csv) uploaden als onderdeel van de assemblageregistratie. 
+>- Azure Data Lake Hulpprogram Ma's automatisch detecteert of de DLL assembly-afhankelijkheden heeft. De afhankelijkheden worden weer gegeven in het JSON-bestand nadat ze zijn gedetecteerd. 
+>- U kunt uw DLL-bronnen (bijvoorbeeld. txt,. png en. CSV) uploaden als onderdeel van de assembly-registratie. 
 
-Een andere manier om de **opdracht ADL: Register Assembly (Advanced)** te activeren, is door met de rechtermuisknop op het .dll-bestand in Verkenner te klikken. 
+Een andere manier om de opdracht **ADL: REGI ster registreren (Geavanceerd)** te activeren, is door met de rechter muisknop te klikken op het dll-bestand in Verkenner. 
 
-De volgende U-SQL-code laat zien hoe u een assemblage aanroepen. In het monster wordt de verzamelnaam *getest.*
+De volgende U-SQL-code laat zien hoe u een assembly aanroept. In het voor beeld wordt de naam van de assembly *getest*.
 
 
         REFERENCE ASSEMBLY [test];
@@ -215,282 +215,282 @@ De volgende U-SQL-code laat zien hoe u een assemblage aanroepen. In het monster 
             USING Outputters.Tsv();
 
 
-## <a name="use-u-sql-local-run-and-local-debug-for-windows-users"></a>U-SQL local run en lokale foutopsporing voor Windows-gebruikers gebruiken
-U-SQL local run test uw lokale gegevens en valideert uw script lokaal voordat uw code wordt gepubliceerd naar Data Lake Analytics. U de lokale foutopsporingsfunctie gebruiken om de volgende taken te voltooien voordat uw code wordt verzonden naar Data Lake Analytics: 
-- Debug je C# code-behind. 
-- Stap door de code. 
+## <a name="use-u-sql-local-run-and-local-debug-for-windows-users"></a>Lokaal uitvoeren van U-SQL-en lokale fout opsporing voor Windows-gebruikers gebruiken
+Met U-SQL Local run worden uw lokale gegevens getest en wordt uw script lokaal gevalideerd voordat de code naar Data Lake Analytics wordt gepubliceerd. U kunt de functie Local debug gebruiken om de volgende taken uit te voeren voordat de code wordt verzonden naar Data Lake Analytics: 
+- Fout opsporing van uw C#-code. 
+- Door loop de code. 
 - Valideer uw script lokaal.
 
-De lokale run- en lokale foutopsporingsfunctie werkt alleen in Windows-omgevingen en wordt niet ondersteund op macOS- en Linux-gebaseerde besturingssystemen.
+De lokale functie voor het uitvoeren van en de lokale fout opsporing werkt alleen in Windows-omgevingen en wordt niet ondersteund op macOS-en Linux-besturings systemen.
 
-Zie [U-SQL local run en local debug met Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)voor instructies over lokale run en lokale foutopsporing.
+Zie voor meer informatie over lokaal uitvoeren en lokaal fout opsporing [U-SQL Local run en Local debug with Visual Studio code](data-lake-tools-for-vscode-local-run-and-debug.md).
 
 
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
 
-Voordat u U-SQL-scripts compileren en uitvoeren in Data Lake Analytics, moet u verbinding maken met uw Azure-account.
+Voordat u U-SQL-scripts in Data Lake Analytics kunt compileren en uitvoeren, moet u verbinding maken met uw Azure-account.
 
-<b id="sign-in-by-command">Verbinding maken met Azure met een opdracht</b>
+<b id="sign-in-by-command">Verbinding maken met Azure met behulp van een opdracht</b>
 
-1.  Selecteer Ctrl+Shift+P om het opdrachtpalet te openen. 
-2.  Voer **ADL in: Log in.** De inloggegevens verschijnen rechtsonder.
+1.  Selecteer CTRL + SHIFT + P om het opdracht palet te openen. 
+2.  Voer **ADL: Login**. De aanmeldings gegevens worden rechtsonder weer gegeven.
 
-    ![De opdracht Aanmelding invoeren](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
+    ![De aanmeldings opdracht opgeven](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
 
     ![Melding over aanmelding en verificatie](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
 
-3.  Selecteer **& openen kopiëren** om de [aanmeldingswebpagina](https://aka.ms/devicelogin)te openen . Plak de code in het vak en selecteer **Doorgaan**.
+3.  Selecteer **kopiëren & openen** om de [webpagina aanmelden](https://aka.ms/devicelogin)te openen. Plak de code in het vak en selecteer vervolgens **door gaan**.
 
-    ![Opmeldwebpagina](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png)  
+    ![Aanmeldings webpagina](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png)  
      
-4.  Volg de instructies om in te loggen vanaf de webpagina. Wanneer u verbonden bent, wordt uw Azure-accountnaam weergegeven op de statusbalk in de linkerbenedenhoek van het VS-codevenster. 
+4.  Volg de instructies om u aan te melden vanaf de webpagina. Wanneer u bent verbonden, wordt de naam van uw Azure-account weer gegeven op de status balk in de linkerbenedenhoek van het VS code-venster. 
 
 > [!NOTE] 
->- Data Lake Tools meldt u automatisch in de volgende keer als u zich niet afmeldt.
->- Als uw account twee factoren heeft ingeschakeld, raden we u aan telefoonverificatie te gebruiken in plaats van een pincode te gebruiken.
+>- Met Data Lake-Hulpprogram Ma's wordt u de volgende keer automatisch aangemeld als u zich niet afmeldt.
+>- Als er twee factoren zijn ingeschakeld voor uw account, wordt u aangeraden verificatie via telefoon te gebruiken in plaats van een pincode te gebruiken.
 
 
-Als u zich wilt afmelden, voert u de opdracht **ADL: Afmelden in.**
+Als u zich wilt afmelden, voert u de opdracht **ADL: Afmelden**in.
 
-**Verbinding maken met Azure vanuit de verkenner**
+**Verbinding maken met Azure vanuit de Explorer**
 
-Azure **DATALAKE**uitvouwen, **aanmelden bij Azure**selecteren en vervolgens stap 3 en stap 4 van Verbinding maken met Azure volgen met een [opdracht](#sign-in-by-command).
+Vouw **Azure DATALAKE**uit, selecteer **Aanmelden bij Azure**en volg stap 3 en stap 4 van [om verbinding te maken met Azure met behulp van een opdracht](#sign-in-by-command).
 
-![Selectie 'Aanmelden bij Azure' in de verkenner](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-sign-in-from-explorer.png )  
+![De selectie ' aanmelden bij Azure ' in de Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-sign-in-from-explorer.png )  
 
-Je je niet afmelden bij de ontdekkingsreiziger. Zie [Verbinding maken met Azure met een opdracht](#sign-in-by-command)om u af te melden.
+U kunt zich niet afmelden bij de Verkenner. Zie [verbinding maken met Azure met behulp van een opdracht](#sign-in-by-command)om u af te melden.
 
 
-## <a name="create-an-extraction-script"></a>Een extractiescript maken 
-U een extractiescript maken voor .csv-, .tsv- en .txt-bestanden met behulp van de opdracht **ADL: EXTRACT Script maken** of vanuit de Azure Data Lake-verkenner.
+## <a name="create-an-extraction-script"></a>Een extractie script maken 
+U kunt een extractie script maken voor CSV-, TSV-en txt-bestanden met behulp van de opdracht **ADL: uitpak script maken** of van de Azure data Lake Explorer.
 
-**Een extractiescript maken met een opdracht**
+**Een extractie script maken met behulp van een opdracht**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen en voer **ADL in: EXTRACT Script maken**.
-2. Geef het volledige pad op voor een Azure Storage-bestand en selecteer de Enter-toets.
-3. Selecteer één account.
-4. Selecteer een scheidingsteken om het bestand te extraheren voor een .txt-bestand. 
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen en voer **ADL: uitpak script maken**in.
+2. Geef het volledige pad voor een Azure Storage bestand op en selecteer de Enter-toets.
+3. Selecteer een account.
+4. Selecteer voor een txt-bestand een scheidings teken om het bestand uit te pakken. 
 
-![Proces voor het maken van een extractiescript](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-process.png)
+![Proces voor het maken van een extractie script](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-process.png)
 
-Het extractiescript wordt gegenereerd op basis van uw vermeldingen. Voor een script dat de kolommen niet kan detecteren, kiest u een van de twee opties. Zo niet, dan wordt er slechts één script gegenereerd.
+Het uitpak script wordt gegenereerd op basis van uw vermeldingen. Kies voor een script dat de kolommen niet kan detecteren, een van de twee opties. Als dat niet het geval is, wordt er slechts één script gegenereerd.
 
-![Resultaat van het maken van een extractiescript](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-result.png)
+![Resultaat van het maken van een extractie script](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-result.png)
 
-**Een extractiescript maken vanuit de verkenner**
+**Een extractie script maken vanuit de Explorer**
 
-Een andere manier om het extractiescript te maken, is via het menu met de rechtermuisknop (snelkoppeling) in het csv-, .tsv- of .txt-bestand in Azure Data Lake Store of Azure Blob-opslag.
+Een andere manier om het uitpak script te maken, is via het snelmenu (snelkoppeling) in het bestand. CSV,. TSV of. txt in Azure Data Lake Store of Azure Blob-opslag.
 
-![Opdracht 'EXTRACTscript maken' in het snelmenu](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu.png)
+![Opdracht ' UITPAK script maken ' in het snelmenu](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu.png)
 
 ## <a name="integrate-with-azure-data-lake-analytics-through-a-command"></a>Integreren met Azure Data Lake Analytics via een opdracht
 
-U hebt toegang tot Azure Data Lake Analytics-bronnen om accounts weer te geven, metagegevens te openen en analytics-taken weer te geven. 
+U hebt toegang tot Azure Data Lake Analytics resources om accounts weer te geven, meta gegevens te openen en analyse taken weer te geven. 
 
-**De Azure Data Lake Analytics-accounts weergeven onder uw Azure-abonnement**
+**De Azure Data Lake Analytics accounts onder uw Azure-abonnement weer geven**
 
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen.
-2. Voer **ADL in: Accounts weergeven**. De accounts worden weergegeven in het deelvenster **Uitvoer.**
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+2. Voer **ADL in: List accounts**. De accounts worden weer gegeven in het deel venster **uitvoer** .
 
-**Toegang krijgen tot azure Data Lake Analytics-metagegevens**
+**Toegang tot Azure Data Lake Analytics meta gegevens**
 
-1.  Selecteer Ctrl+Shift+P en voer **ADL in: Lijsttabellen**.
-2.  Selecteer een van de Data Lake Analytics-accounts.
-3.  Selecteer een van de Data Lake Analytics-databases.
-4.  Selecteer een van de schema's. U de lijst met tabellen bekijken.
+1.  Selecteer CTRL + SHIFT + P en voer vervolgens **ADL in: List Tables**.
+2.  Selecteer een van de Data Lake Analytics accounts.
+3.  Selecteer een van de Data Lake Analytics-data bases.
+4.  Selecteer een van de schema's. U kunt de lijst met tabellen weer geven.
 
-**Azure Data Lake Analytics-taken weergeven**
-1.  Open het opdrachtpalet (Ctrl+Shift+P) en selecteer **ADL: Taken weergeven**. 
+**Azure Data Lake Analytics taken weer geven**
+1.  Open het opdracht palet (CTRL + SHIFT + P) en selecteer **ADL: Jobs weer geven**. 
 2.  Selecteer een Data Lake Analytics of een lokaal account. 
-3.  Wacht tot de lijst met vacatures wordt weergegeven voor het account.
-4.  Selecteer een taak in de lijst met vacatures. Data Lake Tools opent de taakweergave in het rechterdeelvenster en geeft bepaalde informatie weer in de VS-code-uitvoer.
+3.  Wacht totdat de taken lijst voor het account wordt weer gegeven.
+4.  Selecteer een taak in de lijst met taken. Met Data Lake-Hulpprogram Ma's wordt de taak weergave in het rechterdeel venster geopend en wordt bepaalde informatie in de VS code-uitvoer weer gegeven.
 
-    ![Lijst met vacatures](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
+    ![Taken lijst](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
 ## <a name="integrate-with-azure-data-lake-store-through-a-command"></a>Integreren met Azure Data Lake Store via een opdracht
 
-U opdrachten met betrekking tot Azure Data Lake Store gebruiken om:
- - [Blader door de Azure Data Lake Store-bronnen](#list-the-storage-path) 
- - [Een voorbeeld van het Azure Data Lake Store-bestand bekijken](#preview-the-storage-file) 
- - Het bestand rechtstreeks uploaden naar Azure Data Lake Store in VS-code
- - Het bestand rechtstreeks downloaden vanuit Azure Data Lake Store in VS-code
+U kunt Azure Data Lake Store-gerelateerde opdrachten gebruiken voor het volgende:
+ - [Bladeren door de Azure Data Lake Store resources](#list-the-storage-path) 
+ - [Een voor beeld van het Azure Data Lake Store-bestand bekijken](#preview-the-storage-file) 
+ - Upload het bestand rechtstreeks naar Azure Data Lake Store in VS code
+ - Down load het bestand rechtstreeks vanuit Azure Data Lake Store in VS code
 
-### <a name="list-the-storage-path"></a>Het opslagpad weergeven 
+### <a name="list-the-storage-path"></a>Het opslagpad weer geven 
 
-**Het opslagpad weergeven in het opdrachtpalet**
+**Het opslagpad weer geven via het opdracht palet**
 
-1. Klik met de rechtermuisknop op de scripteditor en selecteer **ADL: Lijstpad**.
-2. Kies de map in de lijst of selecteer **Een pad invoeren** of Bladeren vanaf het **hoofdpad**. (We gebruiken **Een pad invoeren** als voorbeeld.) 
+1. Klik met de rechter muisknop op de script editor en selecteer **ADL: pad naar de lijst**.
+2. Kies de map in de lijst of selecteer **een pad invoeren** of **Bladeren vanuit hoofdpad**. (We gebruiken **een pad opgeven** als voor beeld.) 
 3. Selecteer uw Data Lake Analytics-account.
-4. Blader naar of voer het pad van de opslagmap in (bijvoorbeeld /output/).  
+4. Blader naar of typ het pad naar de opslagmap (bijvoorbeeld/output/).  
 
-Het opdrachtpalet bevat de padgegevens op basis van uw vermeldingen.
+Het opdracht palet bevat de padgegevens op basis van uw vermeldingen.
 
-![Resultaten van opslagpaden](./media/data-lake-analytics-data-lake-tools-for-vscode/list-storage-path.png)
+![Resultaten van opslagpad](./media/data-lake-analytics-data-lake-tools-for-vscode/list-storage-path.png)
 
-Een handigere manier om het relatieve pad weer te geven is via het snelmenu.
+Een handigere manier om het relatieve pad weer te geven, is via het snelmenu.
 
-**Het opslagpad weergeven via het snelmenu**
+**Het opslagpad weer geven via het snelmenu**
 
-Klik met de rechtermuisknop op de padtekenreeks en selecteer **Lijstpad**.
+Klik met de rechter muisknop op de padtekenreeks en selecteer **pad naar lijst**.
 
-!['Pad weergeven' in het snelmenu](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
+!["Pad naar lijst" in het snelmenu](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
 
 
-### <a name="preview-the-storage-file"></a>Een voorbeeld van het opslagbestand bekijken
+### <a name="preview-the-storage-file"></a>Voor beeld van het opslag bestand
 
-1. Klik met de rechtermuisknop op de scripteditor en selecteer **ADL: voorbeeldbestand**.
+1. Klik met de rechter muisknop op de script editor en selecteer **ADL: Preview-bestand**.
 2. Selecteer uw Data Lake Analytics-account. 
-3. Voer een azure-bestandspad in (bijvoorbeeld /output/SearchLog.txt). 
+3. Voer een Azure Storage bestandspad in (bijvoorbeeld/output/SearchLog.txt). 
 
-Het bestand wordt geopend in VS-code.
+Het bestand wordt geopend in VS code.
 
-![Stappen en resultaat voor het bekijken van het opslagbestand](./media/data-lake-analytics-data-lake-tools-for-vscode/preview-storage-file.png)
+![Stappen en resultaat voor het bekijken van een voor beeld van het opslag bestand](./media/data-lake-analytics-data-lake-tools-for-vscode/preview-storage-file.png)
 
-Een andere manier om een voorbeeld van het bestand te bekijken, is via het snelmenu op het volledige pad van het bestand of het relatieve pad van het bestand in de scripteditor. 
+Een andere manier om het bestand te bekijken, is via het snelmenu van het volledige pad van het bestand of het relatieve pad van het bestand in de Script Editor. 
 
 ### <a name="upload-a-file-or-folder"></a>Een bestand of map uploaden
 
-1. Klik met de rechtermuisknop op de scripteditor en selecteer **Bestand uploaden** of **Map uploaden**.
-2. Kies één bestand of meerdere bestanden als u **Bestand uploaden**hebt geselecteerd of kies de hele map als u **Map uploaden**hebt geselecteerd. Selecteer vervolgens **Uploaden**. 
-3. Kies de opslagmap in de lijst of selecteer **Een pad invoeren** of Bladeren vanaf het **hoofdpad**. (We gebruiken **Een pad invoeren** als voorbeeld.) 
+1. Klik met de rechter muisknop op de script editor en selecteer **bestand uploaden** of **map uploaden**.
+2. Kies één bestand of meerdere bestanden als u **bestand uploaden**hebt geselecteerd of kies de hele map als u de **map upload**hebt geselecteerd. Selecteer vervolgens **Uploaden**. 
+3. Kies de opslagmap in de lijst of selecteer **een pad invoeren** of **Bladeren vanuit basispad**. (We gebruiken **een pad opgeven** als voor beeld.) 
 4. Selecteer uw Data Lake Analytics-account. 
-5. Blader naar of voer het pad van de opslagmap in (bijvoorbeeld /output/). 
-6. Selecteer **Huidige map kiezen** om uw uploadbestemming op te geven.
+5. Blader naar of typ het pad naar de opslagmap (bijvoorbeeld/output/). 
+6. Selecteer **huidige map kiezen** om de upload bestemming op te geven.
 
 ![Stappen en resultaat voor het uploaden van een bestand of map](./media/data-lake-analytics-data-lake-tools-for-vscode/upload-file.png)    
 
-Een andere manier om bestanden naar opslag te uploaden is via het snelmenu op het volledige pad van het bestand of het relatieve pad van het bestand in de scripteditor.
+Een andere manier om bestanden te uploaden naar de opslag ruimte is via het snelmenu op het volledige pad van het bestand of het relatieve pad van het bestand in de Script Editor.
 
-U [de uploadstatus controleren.](#check-storage-tasks-status)
+U kunt [de upload status bewaken](#check-storage-tasks-status).
 
 
 ### <a name="download-a-file"></a>Bestand downloaden 
-U een bestand downloaden met behulp van de opdracht **ADL: Download Bestand** of **ADL: Download Bestand (Geavanceerd)**.
+U kunt een bestand downloaden met behulp van de opdracht **ADL: down load file** of **ADL: down load file (Advanced)**.
 
-**Een bestand downloaden via de opdracht ADL: Download File (Advanced)**
-1. Klik met de rechtermuisknop op de scripteditor en selecteer **Bestand downloaden (geavanceerd)**.
-2. VS-code geeft een JSON-bestand weer. U bestandspaden invoeren en meerdere bestanden tegelijk downloaden. Instructies worden weergegeven in het venster **Uitvoer.** Als u het bestand of de bestanden wilt downloaden, slaat u het JSON-bestand op (Ctrl+S).
+**Een bestand downloaden via de opdracht ADL: bestand downloaden (Geavanceerd)**
+1. Klik met de rechter muisknop op de script editor en selecteer vervolgens **bestand downloaden (Geavanceerd)**.
+2. VS code geeft een JSON-bestand weer. U kunt bestands paden invoeren en tegelijkertijd meerdere bestanden downloaden. De instructies worden weer gegeven in het **uitvoer** venster. Als u wilt door gaan met het downloaden van het bestand of de bestanden, slaat u (CTRL + S) het JSON-bestand op.
 
     ![JSON-bestand met paden voor het downloaden van bestanden](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
 
-In het venster **Uitvoer** wordt de status van het downloaden van bestanden weergegeven.
+In het **uitvoer** venster wordt de Download status van het bestand weer gegeven.
 
-![Uitvoervenster met downloadstatus](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-file-result.png)     
+![Uitvoer venster met Download status](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-file-result.png)     
 
-U [de downloadstatus controleren.](#check-storage-tasks-status)
+U kunt [de Download status bewaken](#check-storage-tasks-status).
 
-**Een bestand downloaden via de opdracht ADL: Bestands downloaden**
+**Een bestand downloaden via de opdracht ADL: bestand downloaden**
 
-1. Klik met de rechtermuisknop op de scripteditor, selecteer **Bestand downloaden**en selecteer vervolgens de doelmap in het dialoogvenster **Map selecteren.**
-2. Kies de map in de lijst of selecteer **Een pad invoeren** of Bladeren vanaf het **hoofdpad**. (We gebruiken **Een pad invoeren** als voorbeeld.) 
+1. Klik met de rechter muisknop op Script Editor, selecteer **bestand downloaden**en selecteer vervolgens de doelmap in het dialoog venster **map selecteren** .
+2. Kies de map in de lijst of selecteer **een pad invoeren** of **Bladeren vanuit hoofdpad**. (We gebruiken **een pad opgeven** als voor beeld.) 
 3. Selecteer uw Data Lake Analytics-account. 
-4. Blader naar of voer het pad van de opslagmap in (bijvoorbeeld /output/) en kies vervolgens een bestand dat u wilt downloaden.
+4. Blader naar of typ het pad naar de opslagmap (bijvoorbeeld/output/) en kies vervolgens een bestand om te downloaden.
 
 ![Stappen en resultaat voor het downloaden van een bestand](./media/data-lake-analytics-data-lake-tools-for-vscode/download-file.png) 
 
-Een andere manier om opslagbestanden te downloaden is via het snelmenu op het volledige pad van het bestand of het relatieve pad van het bestand in de scripteditor.
+Een andere manier om opslag bestanden te downloaden is via het snelmenu van het volledige pad van het bestand of het relatieve pad van het bestand in de Script Editor.
 
-U [de downloadstatus controleren.](#check-storage-tasks-status)
+U kunt [de Download status bewaken](#check-storage-tasks-status).
 
-### <a name="check-storage-tasks-status"></a>De status van opslagtaken controleren
-De upload- en downloadstatus wordt weergegeven op de statusbalk. Selecteer de statusbalk en vervolgens wordt de status weergegeven op het tabblad **UITVOER.**
+### <a name="check-storage-tasks-status"></a>De status van de opslag taken controleren
+De status van uploaden en downloaden wordt weer gegeven op de status balk. Selecteer de status balk en vervolgens de status wordt weer gegeven op het tabblad **uitvoer** .
 
-![Statusbalk en uitvoerdetails](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
+![Status balk en uitvoer Details](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
 
 
-## <a name="integrate-with-azure-data-lake-analytics-from-the-explorer"></a>Integreren met Azure Data Lake Analytics vanuit de verkenner
+## <a name="integrate-with-azure-data-lake-analytics-from-the-explorer"></a>Integreren met Azure Data Lake Analytics vanuit de Explorer
 
-Nadat u zich hebt aangemeld, worden alle abonnementen voor uw Azure-account weergegeven in het linkerdeelvenster, onder **AZURE DATALAKE**. 
+Nadat u zich hebt aangemeld, worden alle abonnementen voor uw Azure-account weer gegeven in het linkerdeel venster onder **Azure DATALAKE**. 
 
-![Data Lake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
+![Data Lake Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-### <a name="data-lake-analytics-metadata-navigation"></a>Gegevens Lake Analytics-metagegevensnavigatie
+### <a name="data-lake-analytics-metadata-navigation"></a>Navigatie van meta gegevens Data Lake Analytics
 
-Uw Azure-abonnement uitbreiden. Onder het knooppunt **U-SQL Databases** u door uw U-SQL-database bladeren en mappen bekijken zoals **Schema's,** **Referenties,** **Verzamelingen**, **Tabellen**en **Index**.
+Breid uw Azure-abonnement uit. Onder het knoop punt **u-SQL-data bases** kunt u bladeren door de u-SQL database en mappen zoals **schema's**, **referenties**, **assembly's**, **tabellen**en **index**weer geven.
 
-### <a name="data-lake-analytics-metadata-entity-management"></a>Beheer van gegevenslake analytics-metagegevens
+### <a name="data-lake-analytics-metadata-entity-management"></a>Entiteits beheer voor Data Lake Analytics van meta gegevens
 
-**U-SQL-databases**uitbreiden . U een database, schema, tabel, tabeltype, index of statistiek maken door met de rechtermuisknop op het bijbehorende knooppunt te klikken en vervolgens Script te selecteren **om te maken** in het snelmenu. Bewerk het script op de geopende scriptpagina op basis van uw behoeften. Dien de taak vervolgens in door er met de rechtermuisknop op te klikken en **ADL: Job verzenden te**selecteren. 
+Breid **U-SQL-data bases**uit. U kunt een Data Base, schema, tabel, tabel type, index of statistiek maken door met de rechter muisknop op het bijbehorende knoop punt te klikken en vervolgens **script te selecteren om te maken** in het snelmenu. Bewerk op de pagina geopend script het script volgens uw behoeften. Verzend de taak vervolgens door met de rechter muisknop erop te klikken en **ADL: taak verzenden**te selecteren. 
 
-Nadat u klaar bent met het maken van het item, klikt u met de rechtermuisknop op het knooppunt en selecteert u **Vernieuwen** om het item weer te geven. U het item ook verwijderen door er met de rechtermuisknop op te klikken en vervolgens **Verwijderen**te selecteren.
+Nadat u het item hebt gemaakt, klikt u met de rechter muisknop op het knoop punt en selecteert u vervolgens **vernieuwen** om het item weer te geven. U kunt het item ook verwijderen door er met de rechter muisknop op te klikken en vervolgens **verwijderen**te selecteren.
 
-![Opdracht 'Script om te maken' in het snelmenu in de Data Lake-verkenner](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create.png)
+![De opdracht ' te maken script ' in het snelmenu van de Data Lake Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create.png)
 
-![Scriptpagina voor het nieuwe item](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create-snippet.png)
+![Script pagina voor het nieuwe item](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create-snippet.png)
 
-### <a name="data-lake-analytics-assembly-registration"></a>Registratie van Data Lake Analytics-assemblage
+### <a name="data-lake-analytics-assembly-registration"></a>Registratie van Data Lake Analytics-assembly
 
-U een verzameling registreren in de bijbehorende database door met de rechtermuisknop op het knooppunt **Assembleies** te klikken en vervolgens **De assemblage register**te selecteren.
+U kunt een assembly registreren in de bijbehorende data base door met de rechter muisknop op het knoop punt **assembly's** te klikken en vervolgens **Assembly registreren**te selecteren.
 
-![Opdracht 'Assemblage registreren' in het snelmenu voor het knooppunt Assembleies](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
+![De opdracht ' assembly registreren ' in het snelmenu voor het knoop punt Assembly's](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
 
-## <a name="integrate-with-azure-data-lake-store-from-the-explorer"></a>Integreren met Azure Data Lake Store vanuit de verkenner
+## <a name="integrate-with-azure-data-lake-store-from-the-explorer"></a>Integreren met Azure Data Lake Store vanuit de Explorer
 
-Blader naar **Data Lake Store:**
+Ga naar **Data Lake Store**:
 
-- U met de rechtermuisknop op het mapknooppunt klikken en vervolgens de opdrachten **Vernieuwen,** **Verwijderen,** **Uploaden,** **Mappen uploaden,** **Relatief pad kopiëren**en Volledig pad **kopiëren** gebruiken in het snelmenu.
+- U kunt met de rechter muisknop op het map-knoop punt klikken en vervolgens de opdrachten **vernieuwen**, **verwijderen**, **uploaden**, **map uploaden**, **relatief pad kopiëren**en **volledig pad kopiëren** in het snelmenu gebruiken.
 
-   ![Opdrachten voor snelmenu's voor een mapknooppunt in de Data Lake-verkenner](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
+   ![Menu opdrachten in het snelmenu voor een map-knoop punt in de Data Lake Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
-- U met de rechtermuisknop op het bestandsknooppunt klikken en vervolgens de opdrachten **Voorbeeld**, **Downloaden**, **Verwijderen**, **EXTRACTscript maken** (alleen beschikbaar voor CSV-, TSV- en TXT-bestanden), Relatieve **pad kopiëren**en Volledige **pad kopiëren** in het snelmenu gebruiken.
+- U kunt met de rechter muisknop op het bestand knoop punt klikken en vervolgens het **voor beeld**, **downloaden**, **verwijderen**, **uitpak script maken** gebruiken (alleen beschikbaar voor CSV-, TSV-en txt-bestanden), het **relatieve pad kopiëren**en de opdrachten **volledig pad kopiëren** in het snelmenu.
 
-   ![Opdrachten voor snelmenu's voor een bestandsknooppunt in de Data Lake-verkenner](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
+   ![Menu opdrachten in het snelmenu voor een bestand knooppunt in de Data Lake Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
-## <a name="integrate-with-azure-blob-storage-from-the-explorer"></a>Integreren met Azure Blob-opslag vanuit de verkenner
+## <a name="integrate-with-azure-blob-storage-from-the-explorer"></a>Integreren met Azure Blob Storage vanuit de Explorer
 
-Blader naar Blob-opslag:
+Bladeren naar Blob Storage:
 
-- U met de rechtermuisknop op het blobcontainerknooppunt klikken en vervolgens de opdrachten **Blobcontainer vernieuwen, Blobcontainer verwijderen**en **Blob uploaden** gebruiken in het snelmenu. **Refresh**
+- U kunt met de rechter muisknop op het knoop punt van de BLOB-container klikken en vervolgens de opdrachten **vernieuwen**, **BLOB-container verwijderen**en **BLOB uploaden** in het snelmenu gebruiken.
 
-   ![Snelmenuopdrachten voor een blobcontainerknooppunt onder Blob-opslag](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+   ![Opdrachten in het snelmenu voor een BLOB-container knooppunt onder Blob Storage](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
 
-- U met de rechtermuisknop op het mapknooppunt klikken en vervolgens de opdrachten Blob **vernieuwen** en **uploaden** gebruiken in het snelmenu.
+- U kunt met de rechter muisknop op het map-knoop punt klikken en vervolgens de opdrachten BLOB **vernieuwen** en **uploaden** in het snelmenu gebruiken.
 
-   ![Opdrachten voor snelmenu's voor een mapknooppunt onder Blob-opslag](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+   ![Opdrachten in het snelmenu voor een map-knoop punt onder Blob Storage](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
 
-- U met de rechtermuisknop op het bestandsknooppunt klikken en vervolgens de opdrachten **Voorbeeld/Bewerken**, **Downloaden**, **Verwijderen**, **EXTRACTScript maken** (alleen beschikbaar voor CSV-, TSV- en TXT-bestanden), Relatieve **pad kopiëren**en **Volledige padkopiëren** gebruiken in het snelmenu.
+- U kunt met de rechter muisknop op het knoop punt bestand klikken en vervolgens het script **voor beeld/bewerken**, **downloaden**, **verwijderen**, **extra heren maken** (alleen beschikbaar voor CSV-, TSV-en txt-bestanden), het **relatieve pad kopiëren**en de opdrachten **volledig pad kopiëren** in het snelmenu.
 
-    ![Opdrachten voor snelmenu's voor een bestandsknooppunt onder Blob-opslag](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
+    ![Opdrachten in het snelmenu voor een bestands knooppunt onder Blob Storage](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
 
-## <a name="open-the-data-lake-explorer-in-the-portal"></a>De Data Lake-verkenner openen in de portal
-1. Selecteer Ctrl+Shift+P om het opdrachtpalet te openen.
-2. Voer **Open Web Azure Storage Explorer** in of klik met de rechtermuisknop op een relatief pad of het volledige pad in de scripteditor en selecteer Vervolgens Web Azure Storage Explorer **openen**.
+## <a name="open-the-data-lake-explorer-in-the-portal"></a>Open de Data Lake Verkenner in de portal
+1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+2. Voer **open web Azure Storage Explorer** in of klik met de rechter muisknop op een relatief pad of het volledige pad in de script editor en selecteer vervolgens **Web openen Azure Storage Explorer**.
 3. Selecteer een Data Lake Analytics-account.
 
-Data Lake Tools opent het Azure Storage-pad in de Azure-portal. U het pad vinden en een voorbeeld van het bestand bekijken vanaf het web.
+Data Lake-Hulpprogram Ma's opent het Azure Storage pad in de Azure Portal. U kunt het pad vinden en een voor beeld van het bestand bekijken op het web.
 
-## <a name="additional-features"></a>Extra functies
+## <a name="additional-features"></a>Aanvullende functies
 
-Data Lake Tools voor VS Code ondersteunt de volgende functies:
+Data Lake-Hulpprogram Ma's voor VS-code biedt ondersteuning voor de volgende functies:
 
--   **IntelliSense automatisch aanvullen:** suggesties worden weergegeven in pop-upvensters rond items zoals trefwoorden, methoden en variabelen. Verschillende pictogrammen vertegenwoordigen verschillende soorten objecten:
+-   **Automatisch aanvullen IntelliSense**: suggesties worden weer gegeven in pop-upvensters rondom items zoals tref woorden, methoden en variabelen. Verschillende pictogrammen vertegenwoordigen verschillende typen objecten:
 
-    - Scala-gegevenstype
-    - Complex gegevenstype
-    - Ingebouwde UDT's
-    - .NET-verzamelingen en -klassen
+    - Scala-gegevens type
+    - Complex gegevens type
+    - Ingebouwde UDTs
+    - .NET-verzameling en-klassen
     - C#-expressies
-    - Ingebouwde C# UDF's, UDO's en UDAAGs 
+    - Ingebouwde C# Udf's, Udo's en UDAAGs 
     - U-SQL-functies
-    - U-SQL-vensterfuncties
+    - U-SQL-venster functies
  
-    ![IntelliSense-objecttypen](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
+    ![IntelliSense-object typen](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
  
--   **IntelliSense automatisch aanvullen op data lake analytics-metagegevens:** Data Lake Tools downloadt de gegevensmetagegevens van Data Lake Analytics lokaal. De IntelliSense-functie vult automatisch objecten uit de metagegevens van Data Lake Analytics. Deze objecten omvatten de database, schema, tabel, weergave, tabelwaardefunctie, procedures en C#-samenstellingen.
+-   **Automatisch aanvullen IntelliSense op Data Lake Analytics meta gegevens: met**data Lake-hulpprogram ma's worden de data Lake Analytics meta gegevens lokaal gedownload. De IntelliSense-functie vult automatisch objecten van de Data Lake Analytics meta gegevens. Tot deze objecten behoren de data base, het schema, de tabel, de weer gave, de functie voor tabel waarden, procedures en C#-assembly's.
  
-    ![IntelliSense-metagegevens](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
+    ![IntelliSense-meta gegevens](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 
--   **Foutmarkering IntelliSense**: Data Lake Tools onderstreept bewerkingsfouten voor U-SQL en C#. 
--   **Syntaxishoogtepunten:** Hulpmiddelen voor Gegevensmeer gebruikt kleuren om items zoals variabelen, trefwoorden, gegevenstypen en functies te onderscheiden. 
+-   **Fout markering voor IntelliSense**: data Lake hulp middelen onderstrepen het bewerken van fouten voor U-SQL en C#. 
+-   **Syntaxis hooglichten**: data Lake-hulpprogram ma's gebruiken kleuren om onderscheid te maken tussen items zoals variabelen, tref woorden, gegevens typen en functies. 
 
     ![Syntaxis met verschillende kleuren](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
 > [!NOTE]
-> We raden u aan een upgrade te geven naar Azure Data Lake Tools voor Visual Studio-versie 2.3.3000.4 of hoger. De vorige versies zijn niet meer beschikbaar om te downloaden en zijn nu afgeschaft.  
+> U wordt aangeraden om een upgrade uit te voeren naar Azure Data Lake-Hulpprogram Ma's voor Visual Studio versie 2.3.3000.4 of hoger. De vorige versies zijn niet meer beschikbaar om te downloaden en zijn nu afgeschaft.  
    
 ## <a name="next-steps"></a>Volgende stappen
-- [U-SQL ontwikkelen met Python, R en C Sharp voor Azure Data Lake Analytics in VS-code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-- [U-SQL local run en local debug met Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
-- [Zelfstudie: Aan de slag met Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)
-- [Zelfstudie: U-SQL-scripts ontwikkelen met Behulp van Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+- [U-SQL ontwikkelen met python, R en C voor Azure Data Lake Analytics in VS code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+- [Lokale U-SQL-uitvoering en lokale fout opsporing met Visual Studio code](data-lake-tools-for-vscode-local-run-and-debug.md)
+- [Zelf studie: aan de slag met Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)
+- [Zelf studie: U-SQL-scripts ontwikkelen met behulp van Data Lake-Hulpprogram Ma's voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
