@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: Pools maken
       items:
-        - name: Apache Spark-pool maken met behulp van webhulpprogramma's
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: Apache Spark-notebook maken met behulp van webhulpprogramma's
+          href: quickstart-apache-spark-notebook.md
         - name: Apache Spark-pool maken met behulp van de Azure-portal
           href: quickstart-create-apache-spark-pool.md
         - name: SQL-pool maken

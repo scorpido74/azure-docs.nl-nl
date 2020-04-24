@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: Concepten
   items:
+    - name: Overzicht van Automation-accountverificatie
+      href: automation-security-overview.md
     - name: Overzicht van het uitvoeren van een runbook
       href: automation-runbook-execution.md
     - name: Overzicht van Hybrid Runbook Worker
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: Een Automation-account maken met een Resource Manager-sjabloon
           href: automation-create-account-template.md
+        - name: Verificatie configureren met Amazon Web Services
+          href: automation-config-aws-account.md
         - name: Een Uitvoeren als-account van Automation beheren
           href: manage-runas-account.md
         - name: Rolmachtigingen en beveiliging beheren
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: Problemen met DSC oplossen
               href: troubleshoot/desired-state-configuration.md
+            - name: Versiegeschiedenis van Azure DSC-extensie
+              href: automation-dsc-extension-history.md
         - name: Wijzigingen bijhouden en Inventaris
           items:
             - name: Overzicht
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Office 365-services beheren
           href: manage-office-365.md
-        - name: Runbooks verifiëren met Amazon Web Services
-          href: automation-config-aws-account.md
         - name: Een AWS-VM implementeren met een Automation-runbook
           href: automation-scenario-aws-deployment.md
         - name: Een Resource Manager-sjabloon implementeren met een runbook

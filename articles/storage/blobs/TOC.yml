@@ -49,6 +49,8 @@
                   href: storage-quickstart-blobs-nodejs.md
                 - name: JavaScript (v10 SDK voor Node.js)
                   href: storage-quickstart-blobs-nodejs-legacy.md
+                - name: JavaScript (v12 SDK voor browser)
+                  href: quickstart-blobs-javascript-browser.md
                 - name: JavaScript (v10 SDK voor browser)
                   href: storage-quickstart-blobs-javascript-client-libraries-legacy.md
             - name: Aan de slag
@@ -113,6 +115,8 @@
           items:
             - name: Aanbevelingen voor beveiliging
               href: security-recommendations.md
+            - name: Beveiligingsbasislijn
+              href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Versleuteling-at-rest in Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:

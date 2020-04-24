@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: Een externe gebruiker aan een lab toevoegen
+          href: scripts/add-external-user-to-lab.md
+        - name: Marketplace-afbeeldingen toevoegen aan een lab
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: Een aangepaste installatiekopie maken vanuit een VHD
+          href: scripts/create-custom-image-from-vhd.md
+        - name: Een aangepaste rol maken in een lab
+          href: scripts/create-custom-role-in-lab.md
+        - name: Toegestane VM-grootten instellen in een lab
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell - Az.DevTestLabs2-module
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: Beschikbaarheid van een VM maken en verifiëren
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: Een VM starten
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: Een virtuele machine stoppen en verwijderen
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: Concepten
   items:
     - name: DevTest Labs-concepten
@@ -32,7 +50,7 @@
       href: best-practices-distributive-collaborative-development-environment.md
     - name: Integratie met Azure DevOps
       href: devtest-lab-dev-ops.md
-    - name: Scenario 's
+    - name: Scenario's
       items:
         - name: Populaire scenario's voor het gebruik van DevTest Labs
           href: devtest-lab-guidance-get-started.md
@@ -118,9 +136,9 @@
           href: use-command-line-start-stop-virtual-machines.md
         - name: Een VM opnieuw opstarten
           href: devtest-lab-restart-vm.md
-        - name: De grootte van een VM wijzigen
+        - name: De grootte van een virtuele machine wijzigen
           href: devtest-lab-resize-vm.md
-        - name: Een VM opnieuw implementeren
+        - name: Een virtuele machine opnieuw implementeren
           href: devtest-lab-redeploy-vm.md
         - name: Automatisch afsluiten van compute- en lab-VM's configureren
           href: devtest-lab-auto-shutdown.md
@@ -227,7 +245,7 @@
           href: devtest-lab-guidance-orchestrate-implementation.md
         - name: DevTest Labs-infrastructuur beheren
           items:
-            - name: Bronnen
+            - name: Resources
               href: devtest-lab-guidance-governance-resources.md
             - name: Kosten en eigendom
               href: devtest-lab-guidance-governance-cost-ownership.md
@@ -255,7 +273,7 @@
       href: 'https://docs.microsoft.com/rest/api/dtl/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.devtestlab/allversions
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-updates
       href: 'https://azure.microsoft.com/updates/?product=devtest-lab'

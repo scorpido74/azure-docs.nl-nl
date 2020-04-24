@@ -19,6 +19,8 @@
   items:
     - name: Certificaat importeren
       href: tutorial-import-certificate.md
+    - name: Certificaatrotatie configureren
+      href: tutorial-rotate-certificates.md
 - name: Concepten
   items:
     - name: Aan de slag gaan met Key Vault-certificaten

@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - Jenkins implementeren met Azure DevOps
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a - DevOps voor IaaS en PaaS in Azure
+    - name: 15a - Strategie voor Rolling-implementatie configureren
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b - CI/CD met Azure Pipelines(YAML)
+    - name: 15b - Strategie voor Canary-implementatie configureren
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c - Strategie voor Blue-Green-implementatie configureren
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d - CI/CD met Azure Pipelines(YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - Een LAMP-stack maken
       href: tutorial-lamp-stack.md

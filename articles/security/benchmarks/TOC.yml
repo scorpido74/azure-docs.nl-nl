@@ -34,6 +34,8 @@
       href: security-baselines-overview.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Basislijn voor back-ups
+      href: ../../backup/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
     - name: Container Registry-beveiligingsbasislijn
@@ -56,3 +58,5 @@
       href: ../../postgresql/security-baseline.md
     - name: Basislijn voor SQL Database-beveiliging
       href: ../../sql-database/security-baseline.md
+    - name: Basislijn voor opslagbeveiliging
+      href: ../../storage/common/security-baseline.md

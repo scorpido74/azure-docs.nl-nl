@@ -232,7 +232,7 @@
           items:
             - name: Een suggester maken
               href: index-add-suggesters.md
-            - name: Suggesties of automatisch aanvullen toevoegen
+            - name: Automatisch aanvullen en suggesties toevoegen
               href: search-autocomplete-tutorial.md
         - name: Query uitvoeren vanuit Power Apps
           href: search-howto-powerapps.md
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Begrip van verzamelingsfilters
           href: search-query-understand-collection-filters.md
-        - name: Voorbeelden van facetten op meerdere niveaus
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: Filteren op taal
+          href: search-filters-language.md
     - name: Resultaten
       items:
         - name: Werken met resultaten
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Demo met JFK-bestanden
           href: 'https://aka.ms/jfkfiles'
-        - name: Demo met NYC-taken
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Scenario’s zoeken
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: Training
       items:
         - name: Inleiding (Microsoft Learn)

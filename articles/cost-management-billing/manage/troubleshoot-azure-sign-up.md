@@ -1,23 +1,24 @@
 ---
-title: Problemen met Azure-aanmelding oplossen
+title: Kan niet registreren voor een nieuw Azure-account
 description: Een probleem oplossen bij aanmelding voor een nieuw account in het Microsoft Azure Portal-accountcentrum.
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409458"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641741"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Problemen met Azure-aanmelding oplossen
+# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
 
-Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azure-accountcentrum probeert aan te melden voor een nieuw account. Controleer het volgende voordat u het probleem gaat oplossen:
+Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azure-accountcentrum probeert te registreren voor een nieuw account. Controleer het volgende voordat u het probleem gaat oplossen:
 
 - De gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon), zijn correct.
 - De creditcardgegevens zijn correct.
@@ -25,7 +26,7 @@ Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azu
 
 ## <a name="resolutions"></a>Oplossingen
 
-Selecteer het probleem dat optreedt bij aanmelding voor Azure om fouten te corrigeren.
+Selecteer het probleem dat optreedt bij registratie voor Azure om fouten te corrigeren.
 
 ### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fout: *De aanmelding kan niet worden voltooid vanwege een probleem met uw account. Neem contact op met ondersteuning voor facturering.*
 
@@ -37,9 +38,9 @@ Volg deze stappen om het probleem op te lossen:
 
 3. Zorg ervoor dat alle adresvelden zijn ingevuld en geldig zijn.
 
-4. Wanneer u zich aanmeldt voor het Azure-abonnement, moet u ervoor zorgen dat het factuuradres voor de creditcardregistratie overeenkomt met uw bankgegevens.
+4. Wanneer u zich registreert voor het Azure-abonnement, moet u ervoor zorgen dat het factuuradres voor de creditcardregistratie overeenkomt met uw bankgegevens.
 
-Als het foutbericht nog steeds wordt weer gegeven, probeert u zich aan te melden in een andere browser.
+Als het foutbericht nog steeds wordt weer gegeven, probeert u zich te registreren in een andere browser.
 
 ### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>De voortgangsbalk loopt vast in de sectie *Identiteitverificatie via creditcard*.
 
@@ -84,7 +85,7 @@ Hebt u in het verleden een Azure-abonnement gebruikt? De gebruiksvoorwaarden van
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Ik heb kosten gezien voor mijn gratis proefaccount
 
-U kunt na aanmelding een kleine verificatiepost voor uw creditcardaccount aantreffen. Deze wordt binnen drie tot vijf dagen verwijderd. Lees meer over [Onverwachte kosten voorkomen](getting-started.md) als u zich zorgen maakt over het kostenbeheer.
+U kunt na registratie een kleine verificatiepost voor uw creditcardaccount aantreffen. Deze wordt binnen drie tot vijf dagen verwijderd. Lees meer over [Onverwachte kosten voorkomen](getting-started.md) als u zich zorgen maakt over het kostenbeheer.
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Kan het Azure-vergoedingsplan, bijvoorbeeld MSDN, BizSpark, BizSparkPlus of MPN, niet activeren
 
@@ -116,7 +117,7 @@ U kunt dit probleem oplossen door het volgende te controleren:
 
 Dit probleem kan zich voordoen als het account is geregistreerd in een [niet-beheerde Azure AD-directory](../../active-directory/users-groups-roles/directory-self-service-signup.md) en niet is opgenomen in de Azure AD-directory van uw organisatie.
 
-U kunt dit probleem oplossen door het Azure-account aan te melden met behulp van een ander account of door de niet-beheerde AD-directory over te nemen. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md) voor meer informatie.
+U kunt dit probleem oplossen door het Azure-account te registreren met behulp van een ander account of door de niet-beheerde AD-directory over te nemen. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md) voor meer informatie.
 
 ## <a name="additional-help-resources"></a>Aanvullende ondersteuningsresources
 
