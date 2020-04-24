@@ -7,10 +7,12 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Lid maken - Portal
+    - name: Leden maken met de portal
       href: create-member.md
-    - name: Lid maken - CLI
+    - name: Leden maken met CLI
       href: create-member-cli.md
+    - name: Leden maken met een sjabloon
+      href: create-member-template.md
     - name: Verbinding maken met transactieknooppunt
       items:
         - name: VS Code gebruiken

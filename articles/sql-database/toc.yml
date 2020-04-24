@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL-controle
               href: sql-database-auditing.md
-            - name: Voor opslag achter VNet of firewall
+            - name: Controleren op opslagaccount achter VNet of firewall
               href: create-auditing-storage-account-vnet-firewall.md
             - name: Indeling van auditlogboek
               href: sql-database-audit-log-format.md

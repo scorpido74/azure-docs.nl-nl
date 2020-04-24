@@ -149,8 +149,9 @@
             - name: Private Link gebruiken
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Webservices beveiligen met SSL
+            - name: Webservices beveiligen met TLS
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: Azure AD-identiteit gebruiken in AKS-implementaties
               href: how-to-use-azure-ad-identity.md
             - name: Opslagtoegangssleutels opnieuw genereren

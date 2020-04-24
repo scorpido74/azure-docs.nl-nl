@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Machine Learning
-summary: Meer informatie over het gebruik van Azure Machine Learning om machine learning-modellen en -pijplijnen op schaal te trainen, implementeren en beheren. Aan de hand van zelfstudies, codevoorbeelden, API-verwijzingen en voorbeelden leert u hoe u dit doet.
+summary: Meer informatie over het trainen, implementeren en beheren van machine learning-modellen, AutoML-experimenten en pijplijnen op schaal met Azure Machine Learning. Aan de hand van zelfstudies, codevoorbeelden, API-verwijzingen en voorbeelden leert u hoe u dit doet.
 metadata:
   title: Documentatie voor Azure Machine Learning
-  description: Meer informatie over het gebruik van Azure Machine Learning om machine learning-modellen en -pijplijnen op schaal te trainen, implementeren en beheren. Aan de hand van zelfstudies, codevoorbeelden, API-verwijzingen en voorbeelden leert u hoe u dit doet.
+  description: Meer informatie over het trainen, implementeren en beheren van machine learning-modellen, AutoML-experimenten en pijplijnen op schaal met Azure Machine Learning. Aan de hand van zelfstudies, codevoorbeelden, API-verwijzingen en voorbeelden leert u hoe u dit doet.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/18/2020
-  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/22/2020
+  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80063959"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084206"
 landingContent:
 - title: Aan de slag met machine learning
   linkLists:
@@ -27,16 +27,28 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: De ontwerpfunctie (slepen en neerzetten)
       url: tutorial-designer-automobile-price-train-score.md
+    - text: AutoML (geen code/weinig code)
+      url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-    - text: Geautomatiseerde ML
-      url: tutorial-first-experiment-automated-ml.md
+- title: De webervaring van studio gebruiken
+  linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure Machine Learning?
-      url: overview-what-is-azure-ml.md
-    - text: Architectuur en concepten
-      url: concept-azure-machine-learning-architecture.md
+    - text: Wat is de ontwerper (slepen en neerzetten)?
+      url: concept-designer.md
+    - text: Wat is geautomatiseerde machine learning?
+      url: concept-automated-ml.md
+  - linkListType: tutorial
+    links:
+    - text: 'AutoML: een classificatiemodel bouwen'
+      url: tutorial-first-experiment-automated-ml.md
+    - text: 'AutoML: ML-modellen trainen en implementeren'
+      url: how-to-use-automated-ml-for-ml-models.md
+    - text: 'De designer: automatische prijzen voorspellen'
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: Een labelingsproject voor installatiekopieën maken
+      url: tutorial-labeling.md
 - title: De Python-SDK gebruiken
   linkLists:
   - linkListType: tutorial
@@ -47,6 +59,8 @@ landingContent:
       url: tutorial-train-models-with-aml.md
     - text: Taxitarieven voorspellen met AutoML
       url: tutorial-auto-train-models.md
+    - text: Azure ML-pijplijnen maken
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: Uw omgeving instellen
@@ -59,20 +73,8 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Trainen met Keras
       url: how-to-train-keras.md
-- title: ML-pijplijnen bouwen
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Machine Learning-pijplijnen maken (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: Lineaire regressie om prijzen te voorspellen (ontwerper)
-      url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: overview
-    links:
     - text: Wat zijn machine Learning-pijplijnen?
       url: concept-ml-pipelines.md
-    - text: Wat is de ontwerpfunctie?
-      url: concept-designer.md
 - title: Modellen implementeren en beheren
   linkLists:
   - linkListType: how-to-guide
@@ -81,27 +83,25 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Hoe en waar implementeren
       url: how-to-deploy-and-where.md
-    - text: MLOps-voorbeelden
-      url: https://github.com/microsoft/MLOps
     - text: Realtime-voorspelling
       url: how-to-consume-web-service.md
     - text: Batchvoorspelling
       url: how-to-use-parallel-run-step.md
-    - text: Verificatie
-      url: how-to-setup-authentication.md
 - title: Referentiedocumenten raadplegen
   linkLists:
   - linkListType: reference
     links:
     - text: SDK voor Python
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: SDK voor R
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: Algoritmen en modules voor ontwerper
+      url: algorithm-module-reference/module-reference.md
+    - text: Voorbeeldenopslagplaats voor MLOps
+      url: https://github.com/microsoft/MLOps
     - text: REST-API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine learning-CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: Algoritmen en modules voor ontwerper
-      url: algorithm-module-reference/module-reference.md
     - text: AI-referentiearchitecturen (GitHub)
       url: https://github.com/Microsoft/AI
+    - text: SDK voor R
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html

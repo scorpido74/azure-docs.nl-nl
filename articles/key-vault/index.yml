@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 90867d51bd0952eea350ed9120d2274d40b30d99
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81536264"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81867264"
 highlightedContent:
   items:
   - title: Inleiding tot Azure Key Vault
@@ -89,14 +89,34 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: Meer informatie
-  - title: Opslagsleutels beheren
+  - title: Key Vault met Storage
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: Opslagsleutels - CLI
+      text: Opslagsleutels beheren - CLI
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: Opslagsleutels - PowerShell
+      text: Opslagsleutels beheren - PowerShell
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: SAS-tokens ophalen in code
+  - title: Key Vault met Virtual Machines
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: Key Vault-VM-extensie - Windows
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: Key Vault-VM-extensie - Linux
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: Key Vault met Linux-VM's in Ansible
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault met Azure Disk Encryption - Windows
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault met Azure Disk Encryption - Linux
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault met virtuele-machineschaalsets

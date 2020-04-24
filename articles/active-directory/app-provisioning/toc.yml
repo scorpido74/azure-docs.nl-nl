@@ -79,6 +79,8 @@
   items:
     - name: Naleving van SCIM 2.0-protocol
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM- en Graph-scenario's
+      href: scim-graph-scenarios.md
     - name: Een inrichtingsmethode kiezen
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: HR-inrichting in de cloud
@@ -91,7 +93,7 @@
       items:
         - name: Versiegeschiedenis van de inrichtingsagent
           href: provisioning-agent-release-version-history.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Ondersteunings- en Help-opties voor ontwikkelaars
       href: /azure/active-directory/develop/developer-support-help-options
