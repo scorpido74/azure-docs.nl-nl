@@ -1,25 +1,15 @@
 ---
-title: Aan de slag met Azure CLI voor Batch | Microsoft Docs
+title: Aan de slag met Azure CLI voor batch
 description: Een korte inleiding in de Batch-opdrachten in Azure CLI voor het beheren van Azure Batch-serviceresources
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020179"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117366"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-resources beheren met Azure CLI
 
@@ -62,7 +52,7 @@ Als u de Azure CLI wilt gebruiken met Batch, moet u zich aanmelden en verifiëre
 Er zijn een aantal manieren om u aan te melden bij Azure, zoals u kunt lezen in [Aanmelden met de Azure CLI](/cli/azure/authenticate-azure-cli):
 
 1. [Interactief aanmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u interactief aan wanneer u zelf Azure CLI-opdrachten uitvoert vanaf de opdrachtregel.
-2. [Log in met een serviceprincipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u aan met een service-principal wanneer u Azure CLI-opdrachten uitvoert vanuit een script of een toepassing.
+2. [Meld u aan met een Service-Principal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u aan met een service-principal wanneer u Azure CLI-opdrachten uitvoert vanuit een script of een toepassing.
 
 Ten behoeve van dit artikel laten we zien hoe u zich interactief aanmeldt bij Azure. Typ [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) op de opdrachtregel:
 
@@ -83,7 +73,7 @@ Als u de Azure CLI wilt gebruiken voor het beheren van Batch-resources, zoals po
 
 Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
 
-- **Azure AD-verificatie (Azure Directory) gebruiken** 
+- **Met behulp van Azure Active Directory-verificatie (Azure AD)** 
 
     Verificatie met Azure AD is de standaardinstelling als u de Azure CLI gebruikt met Batch en wordt aanbevolen voor de meeste scenario's. 
     
@@ -97,7 +87,7 @@ Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **Door verificatie van gedeelde sleutels te gebruiken**
+- **Met behulp van gedeelde sleutel verificatie**
 
     Bij [gedeelde sleutelverificatie](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) worden de toegangssleutels van uw account gebruikt om Azure CLI-opdrachten te verifiëren voor de Batch-service.
 

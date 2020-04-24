@@ -1,22 +1,16 @@
 ---
 title: Parallelle R-simulatie met Azure Batch
 description: 'Zelfstudie: Stapsgewijze instructies voor het uitvoeren van een financiële Monte Carlo-simulatie in Azure Batch met het R-pakket doAzureParallel'
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77025840"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117094"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Parallelle R-simulatie uitvoeren met Azure Batch 
 
@@ -40,7 +34,7 @@ In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een par
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>doAzureParallel installeren
@@ -226,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de toepassingen in de Azure Portal. Ga naar **Batch-accounts** > *myBatchAccount*. Klik op*MijnPoolnaam* **zwembaden** > . 
+De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de toepassingen in de Azure Portal. Ga naar **batch-accounts** > *mybatchaccount gemaakt*. Klik op **Pools** > *myPoolName*. 
 
 ![Heatmap van pool waarin parallelle R-taken worden uitgevoerd](media/tutorial-r-doazureparallel/pool.png)
 

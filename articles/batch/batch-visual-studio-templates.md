@@ -1,133 +1,123 @@
 ---
-title: Oplossingen bouwen met Visual Studio-sjablonen - Azure Batch | Microsoft Documenten
-description: Ontdek hoe projectsjablonen van Visual Studio u kunnen helpen bij het implementeren en uitvoeren van uw computerintensieve workloads op Azure Batch.
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
-ms.service: batch
+title: Oplossingen ontwikkelen met Visual Studio-sjablonen-Azure Batch | Microsoft Docs
+description: Meer informatie over hoe u met Visual Studio project-sjablonen uw computerintensieve werk belastingen op Azure Batch kunt implementeren en uitvoeren.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254560"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117519"
 ---
-# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Projectsjablonen voor Visual Studio gebruiken om batchoplossingen een vliegende start te geven
+# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio-project sjablonen gebruiken om batch-oplossingen te starten
 
-De **Job Manager-** en **Taakprocessor Visual Studio-sjablonen** voor Batch bieden code waarmee u uw computerintensieve workloads op Batch met de minste inspanning implementeren en uitvoeren. Dit document beschrijft deze sjablonen en biedt richtlijnen voor het gebruik ervan.
+De **Visual Studio-sjablonen** van **taak beheer** en taak processor voor batch bevatten code waarmee u uw computerintensieve werk belastingen op batch kunt implementeren en uitvoeren met de minste inspanning. In dit document worden deze sjablonen beschreven en vindt u richt lijnen voor het gebruik ervan.
 
 > [!IMPORTANT]
-> In dit artikel worden alleen informatie besproken die van toepassing is op deze twee sjablonen en wordt ervan uitgegaan dat u bekend bent met de Batch-service en de bijbehorende sleutelconcepten: pools, compute nodes, taken en taken, taken voor taakbeheer, omgevingsvariabelen en andere relevante informatie. Meer informatie vindt u in het overzicht [van de basisbeginselen van azure batch-](batch-technical-overview.md) en [batchfuncties voor ontwikkelaars.](batch-api-basics.md)
+> In dit artikel worden alleen de gegevens van deze twee sjablonen beschreven en wordt ervan uitgegaan dat u bekend bent met de batch-service en de belangrijkste concepten die hieraan zijn gerelateerd: groepen, reken knooppunten, taken en taken, taak beheer taken, omgevings variabelen en andere relevante informatie. Meer informatie vindt u in [basis beginselen van Azure batch](batch-technical-overview.md) en [Batch functie overzicht voor ontwikkel aars](batch-api-basics.md).
 > 
 > 
 
 ## <a name="high-level-overview"></a>Overzicht op hoog niveau
-De sjablonen JobManager en Taakprocessor kunnen worden gebruikt om twee nuttige componenten te maken:
+De sjablonen taak beheer en taak processor kunnen worden gebruikt voor het maken van twee nuttige onderdelen:
 
-* Een taak voor taakbeheer die een taaksplitter implementeert die een taak kan opsplitsen in meerdere taken die onafhankelijk kunnen worden uitgevoerd, parallel.
-* Een taakprocessor die kan worden gebruikt om voorbewerking en nabewerking uit te voeren rond een opdrachtregel voor toepassingen.
+* Een taak beheer taak waarmee een taak splitsing kan worden opgesplitst in meerdere taken die onafhankelijk van elkaar kunnen worden uitgevoerd.
+* Een taak processor die kan worden gebruikt voor het uitvoeren van voor bereiding en naverwerking rondom een opdracht regel van de toepassing.
 
-In een scenario voor het renderen van films wordt bijvoorbeeld door de taaksplitter van één filmtaak omgezet in honderden of duizenden afzonderlijke taken die afzonderlijke frames afzonderlijk verwerken. De taakverwerker zou de rendering-toepassing en alle afhankelijke processen die nodig zijn om elk frame weer te geven, en eventuele aanvullende acties uitvoeren (bijvoorbeeld het kopiëren van het gerenderde frame naar een opslaglocatie).
+In een scenario voor het weer geven van films zou de taak Splitser bijvoorbeeld één film taak omzetten in honderden of duizenden afzonderlijke taken die afzonderlijke frames afzonderlijk verwerken. De taak processor zou de rendering-toepassing en alle afhankelijke processen die nodig zijn om elk frame weer te geven, ook aanroepen, en eventuele aanvullende acties uitvoeren (bijvoorbeeld het gerenderde frame naar een opslag locatie kopiëren).
 
 > [!NOTE]
-> De sjablonen JobManager en Taakbeheer zijn onafhankelijk van elkaar, zodat u ervoor kiezen om beide of slechts één van deze sjablonen te gebruiken, afhankelijk van de vereisten van uw rekentaak en uw voorkeuren.
+> De sjablonen voor taak beheer en taak processor zijn onafhankelijk van elkaar, zodat u kunt kiezen of u beide wilt gebruiken, afhankelijk van de vereisten van uw reken taak en uw voor keuren.
 > 
 > 
 
-Zoals in het onderstaande diagram wordt weergegeven, gaat een rekentaak die deze sjablonen gebruikt drie fasen:
+Zoals u in het onderstaande diagram kunt zien, loopt een reken taak die gebruikmaakt van deze sjablonen drie fasen:
 
-1. De clientcode (bijvoorbeeld toepassing, webservice, enz.) verzendt een taak bij de Batch-service op Azure, waarbij het taakbeheerprogramma als taakmanager wordt opgegeven.
-2. The Batch service runs the job manager task on a compute node and the job splitter launches the specified number of task processor tasks, on as many compute nodes as required, based on the parameters and specifications in the job splitter code.
-3. De taakprocessortaken worden onafhankelijk uitgevoerd, parallel, om de invoergegevens te verwerken en de uitvoergegevens te genereren.
+1. De client code (bijvoorbeeld toepassing, webservice, enz.) verzendt een taak naar de batch-service op Azure, waarbij de taak manager-taak het programma job manager wordt opgegeven.
+2. De batch-service voert de taak job manager uit op een reken knooppunt en de taak Splitter Start het opgegeven aantal taak verwerkings taken, op zoveel reken knooppunten als vereist, op basis van de para meters en specificaties in de job splitter-code.
+3. De taak verwerkings taken worden onafhankelijk uitgevoerd, parallel, om de invoer gegevens te verwerken en de uitvoer gegevens te genereren.
 
-![Diagram met de interactie van clientcode met de Batch-service][diagram01]
+![Diagram waarin wordt weer gegeven hoe client code communiceert met de batch-service][diagram01]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de batchsjablonen wilt gebruiken, hebt u het volgende nodig:
+Als u de batch-sjablonen wilt gebruiken, hebt u het volgende nodig:
 
-* Een computer met Visual Studio 2015 geïnstalleerd. Batchsjablonen worden momenteel alleen ondersteund voor Visual Studio 2015.
-* De Batch-sjablonen, die beschikbaar zijn in de [Visual Studio Gallery][vs_gallery] als Visual Studio-extensies. Er zijn twee manieren om de sjablonen te krijgen:
+* Een computer waarop Visual Studio 2015 is geïnstalleerd. Batch-sjablonen worden momenteel alleen ondersteund voor Visual Studio 2015.
+* De batch-sjablonen, die beschikbaar zijn in de [Visual Studio-galerie][vs_gallery] als Visual Studio-uitbrei dingen. Er zijn twee manieren om de sjablonen op te halen:
   
-  * Installeer de sjablonen met het dialoogvenster **Extensies en updates** in Visual Studio (zie Visual [Studio-extensies zoeken en gebruiken][vs_find_use_ext]voor meer informatie). Zoek **en** download in het dialoogvenster Extensies en updates de volgende twee extensies:
+  * De sjablonen installeren met behulp van het dialoog venster **extensies en updates** in Visual Studio (Zie [Visual Studio-uitbrei dingen zoeken en gebruiken][vs_find_use_ext]) voor meer informatie. Zoek en down load in het dialoog venster **extensies en updates** de volgende twee uitbrei dingen:
     
-    * Azure Batch Job Manager met Job Splitter
-    * Azure Batch-taakprocessor
-  * De sjablonen downloaden uit de online galerie voor Visual Studio: [Microsoft Azure Batch Project Templates][vs_gallery_templates]
-* Als u van plan bent de functie [Toepassingspakketten](batch-application-packages.md) te gebruiken om de taakbeheer en taakprocessor te implementeren naar de batchcomputeknooppunten, moet u een opslagaccount koppelen aan uw Batch-account.
+    * Taak beheer Azure Batch met taak splitsing
+    * Azure Batch-taak processor
+  * Down load de sjablonen uit de online galerie voor Visual Studio: [Microsoft Azure batch project sjablonen][vs_gallery_templates]
+* Als u van plan bent de functie [toepassings pakketten](batch-application-packages.md) te gebruiken om de taak-en taak processor te implementeren op de batch Compute-knoop punten, moet u een opslag account koppelen aan uw batch-account.
 
 ## <a name="preparation"></a>Voorbereiding
-We raden u aan een oplossing te maken die uw jobmanager en uw taakprocessor kan bevatten, omdat dit het gemakkelijker kan maken om code te delen tussen uw jobmanager en taakprocessorprogramma's. Voer de volgende stappen uit om deze oplossing te maken:
+We raden u aan om een oplossing te maken die uw taak manager en uw taak processor kan bevatten, omdat dit het gemakkelijker maakt om code te delen tussen uw taak beheer-en taak verwerkings Programma's. Voer de volgende stappen uit om deze oplossing te maken:
 
-1. Open Visual Studio en selecteer **Bestand** > **Nieuw** > **project**.
-2. Vouw **onder Sjablonen**andere **projecttypen**uit, klik op Visuele **studio-oplossingen**en selecteer Vervolgens Lege **oplossing**.
-3. Typ een naam die uw toepassing en het doel van deze oplossing beschrijft (bijvoorbeeld 'LitwareBatchTaskPrograms').
-4. Als u de nieuwe oplossing wilt maken, klikt u op **OK**.
+1. Open Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
+2. Onder **sjablonen**vouwt u **andere project typen**uit, klikt u op **Visual Studio-oplossingen**en selecteert u **lege oplossing**.
+3. Typ een naam die uw toepassing beschrijft en het doel van deze oplossing (bijvoorbeeld ' LitwareBatchTaskPrograms ').
+4. Klik op **OK**om de nieuwe oplossing te maken.
 
-## <a name="job-manager-template"></a>Sjabloon Jobmanager
-Met de sjabloon Jobmanager u een taak voor taak voor taak voor taakbeheer implementeren die de volgende acties kan uitvoeren:
+## <a name="job-manager-template"></a>Taak beheer sjabloon
+De job manager-sjabloon helpt u bij het implementeren van een taak beheer taak die de volgende acties kan uitvoeren:
 
-* Een taak splitsen in meerdere taken.
-* Die taken verzenden om op Batch uit te voeren.
+* Een taak in meerdere taken splitsen.
+* Dien deze taken in om uit te voeren op batch.
 
 > [!NOTE]
-> Zie Overzicht van de [functie Batch voor ontwikkelaars voor](batch-api-basics.md#job-manager-task)meer informatie over taken voor taakbeheer.
+> Zie [overzicht van batch-functies voor ontwikkel aars](batch-api-basics.md#job-manager-task)voor meer informatie over taken van taak beheer.
 > 
 > 
 
-### <a name="create-a-job-manager-using-the-template"></a>Een JobManager maken met de sjabloon
-Voer de volgende stappen uit om een taakmanager toe te voegen aan de oplossing die u eerder hebt gemaakt:
+### <a name="create-a-job-manager-using-the-template"></a>Een taak beheerder maken met behulp van de sjabloon
+Als u een taak beheerder wilt toevoegen aan de oplossing die u eerder hebt gemaakt, voert u de volgende stappen uit:
 
 1. Open uw bestaande oplossing in Visual Studio.
-2. Klik in Solution Explorer met de rechtermuisknop op de oplossing en klik op**Nieuw project** **toevoegen** > .
-3. Klik **onder Visual C#** op **Cloud**en klik vervolgens op Azure Batch Job Manager met **Job Splitter**.
-4. Typ een naam die uw sollicitatie beschrijft en identificeert dit project als de jobmanager (bijvoorbeeld "LitwareJobManager").
-5. Als u het project wilt maken, klikt u op **OK**.
-6. Bouw ten slotte het project om Visual Studio te dwingen alle nuget-pakketten te laden en om te controleren of het project geldig is voordat u begint met wijzigen.
+2. Klik in Solution Explorer met de rechter muisknop op de oplossing en vervolgens op**Nieuw project** **toevoegen** > .
+3. Klik onder **Visual C#** op **Cloud**en klik vervolgens op **Azure batch job manager met Job splitter**.
+4. Typ een naam die uw toepassing beschrijft en identificeert dit project als taak beheerder (bijvoorbeeld ' LitwareJobManager ').
+5. Klik op **OK**om het project te maken.
+6. Stel tot slot het project op om te forceren dat Visual Studio alle NuGet-pakketten waarnaar wordt verwezen, laadt en om te controleren of het project geldig is voordat u het gaat wijzigen.
 
-### <a name="job-manager-template-files-and-their-purpose"></a>Job Manager-sjabloonbestanden en hun doel
-Wanneer u een project maakt met de sjabloon Jobmanager, genereert het drie groepen codebestanden:
+### <a name="job-manager-template-files-and-their-purpose"></a>Taak beheer sjabloon bestanden en hun doel
+Wanneer u een project maakt met behulp van de job manager-sjabloon, worden er drie groepen code bestanden gegenereerd:
 
-* Het hoofdprogrammabestand (Program.cs). Dit bevat het instappunt van het programma en de afhandeling van uitzondering op het hoogste niveau. Normaal gesproken hoeft u dit niet aan te passen.
-* De kadermap. Dit bevat de bestanden die verantwoordelijk zijn voor de 'boilerplate' werk gedaan door de job manager programma - uitpakken parameters, het toevoegen van taken aan de Batch taak, enz. Normaal gesproken hoeft u deze bestanden niet te wijzigen.
-* Het taaksplitterbestand (JobSplitter.cs). Hier zet u uw toepassingsspecifieke logica in voor het splitsen van een taak in taken.
+* Het hoofd programma bestand (Program.cs). Dit bevat het programma-ingangs punt en de verwerking van uitzonde ringen op het hoogste niveau. Normaal gesp roken hoeft u dit niet te wijzigen.
+* De Framework-map. Dit bevat de bestanden die verantwoordelijk zijn voor het ' standaard ' werk dat door het job manager-programma wordt uitgevoerd – het uitpakken van para meters, het toevoegen van taken aan de batch-taak, enzovoort. Normaal gesp roken hoeft u deze bestanden niet te wijzigen.
+* Het taak splitter-bestand (JobSplitter.cs). Hier plaatst u uw toepassingsspecifieke logica voor het splitsen van een taak in taken.
 
-Natuurlijk u extra bestanden toevoegen als dat nodig is om uw taaksplittercode te ondersteunen, afhankelijk van de complexiteit van de logica voor het splitsen van de taak.
+Natuurlijk kunt u extra bestanden toevoegen die nodig zijn om uw job splitter-code te ondersteunen, afhankelijk van de complexiteit van de logica voor het splitsen van taken.
 
-De sjabloon genereert ook standaard .NET-projectbestanden, zoals een .csproj-bestand, app.config, packages.config, enz.
+De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app. config, packages. config, enzovoort.
 
-De rest van deze sectie beschrijft de verschillende bestanden en hun codestructuur en legt uit wat elke klasse doet.
+In de rest van deze sectie worden de verschillende bestanden en hun code structuur beschreven en wordt uitgelegd wat elke klasse doet.
 
-![Visual Studio Solution Explorer met de sjabloonoplossing Voor JobManager][solution_explorer01]
+![Visual Studio Solution Explorer de oplossing van de taak manager-sjabloon weer geven][solution_explorer01]
 
 **Framework-bestanden**
 
-* `Configuration.cs`: Bevat het laden van taakconfiguratiegegevens zoals batchaccountgegevens, gekoppelde opslagaccountreferenties, taak- en taakgegevens en taakparameters. Het biedt ook toegang tot batch-gedefinieerde omgevingsvariabelen (zie Omgevingsinstellingen voor taken, in de batchdocumentatie) via de klasse Configuration.EnvironmentVariable.
-* `IConfiguration.cs`: Hernieuwt de implementatie van de klasse Configuration, zodat u uw taaksplitter testen met behulp van een nep- of nepconfiguratieobject.
-* `JobManager.cs`: Orkestreert de onderdelen van het jobmanagerprogramma. Het is verantwoordelijk voor het initialiseren van de taaksplitter, het inroepen van de taaksplitter en het verzenden van de taken die door de taaksplitter worden geretourneerd naar de taakindiener.
-* `JobManagerException.cs`: Vertegenwoordigt een fout die vereist dat de taakbeheerder moet worden beëindigd. JobManagerException wordt gebruikt om 'verwachte' fouten te verwerken waarbij specifieke diagnostische informatie kan worden verstrekt als onderdeel van beëindiging.
-* `TaskSubmitter.cs`: Deze klasse is verantwoordelijk voor het toevoegen van taken die door de taaksplitter zijn geretourneerd aan de batchtaak. De klasse JobManager verzamelt de volgorde van taken in batches voor een efficiënte maar tijdige aanvulling op de taak en roept vervolgens Taakindiener.SubmitTasks op een achtergrondthread voor elke batch.
+* `Configuration.cs`: Het laden van taak configuratie gegevens, zoals Details van de batch-account, de referenties van een gekoppeld opslag account, taak-en taak gegevens en taak parameters. Het biedt ook toegang tot met batch gedefinieerde omgevings variabelen (Zie omgevings instellingen voor taken in de batch-documentatie) via de klasse Configuration. EnvironmentVariable.
+* `IConfiguration.cs`: Abstracten de implementatie van de configuratie klasse, zodat u uw taak splitsing kunt testen met behulp van een configuratie object voor een valse of model.
+* `JobManager.cs`: Coördineert de onderdelen van het programma taak beheer. Het is verantwoordelijk voor het initialiseren van de taak splitsing, het aanroepen van de taak splitsing en het verzenden van de taken die door de taak splitsing naar de taak indiener worden geretourneerd.
+* `JobManagerException.cs`: Dit is een fout die vereist dat de taak beheerder wordt beëindigd. JobManagerException wordt gebruikt om ' verwachte ' fouten op te slaan waarbij specifieke diagnostische gegevens kunnen worden verstrekt als onderdeel van de beëindiging.
+* `TaskSubmitter.cs`: Deze klasse is verantwoordelijk voor het toevoegen van taken die zijn geretourneerd door de taak splitter naar de batch-taak. De JobManager-klasse voegt de volg orde van taken in batches toe voor een efficiënte maar tijdige aanvulling op de taak en roept vervolgens TaskSubmitter. SubmitTasks aan op een achtergrond thread voor elke batch.
 
-**Taaksplitter**
+**Taak splitsen**
 
-`JobSplitter.cs`: Deze klasse bevat toepassingsspecifieke logica voor het splitsen van de taak in taken. Het framework beroept zich op de JobSplitter.Split-methode om een reeks taken te verkrijgen, die het toevoegt aan de taak terwijl de methode deze retourneert. Dit is de klas waar je de logica van je werk injecteert. Implementeer de methode Splitsen om een reeks CloudTask-exemplaren te retourneren die de taken weergeven waarin u de taak wilt verdelen.
+`JobSplitter.cs`: Deze klasse bevat toepassingsspecifieke logica voor het splitsen van de taak in taken. Het Framework roept de methode JobSplitter. split op om een reeks taken te verkrijgen, die wordt toegevoegd aan de taak als deze door de methode wordt geretourneerd. Dit is de klasse waar u de logica van uw taak gaat injecteren. Implementeer de split-methode om een reeks CloudTask-exemplaren te retour neren die de taken vertegenwoordigen waarin u de taak wilt partitioneren.
 
-**Projectbestanden voor standaard .NET-opdrachtregel**
+**Standard .NET-opdracht regel project bestanden**
 
-* `App.config`: Standaard configuratiebestand voor .NET-toepassingen.
-* `Packages.config`: Standaard NuGet-pakketafhankelijkheidsbestand.
-* `Program.cs`: Bevat het instappunt van het programma en de afhandeling van uitzonderingen op het hoogste niveau.
+* `App.config`: Standaard .NET-toepassings configuratie bestand.
+* `Packages.config`: Standaard NuGet package-afhankelijkheids bestand.
+* `Program.cs`: Bevat het programma-ingangs punt en uitzonde ringen op het hoogste niveau.
 
-### <a name="implementing-the-job-splitter"></a>De taaksplitter implementeren
-Wanneer u het sjabloonproject Jobmanager opent, wordt het JobSplitter.cs standaard geopend. U de gesplitste logica voor de taken in uw werkbelasting implementeren met de methode Split() hieronder weergeven:
+### <a name="implementing-the-job-splitter"></a>De taak splitter implementeren
+Wanneer u het taak beheer sjabloon project opent, wordt het JobSplitter.cs-bestand standaard geopend in het project. U kunt de Splits logica voor de taken in uw workload implementeren met behulp van de methode split () die hieronder wordt weer gegeven:
 
 ```csharp
 /// <summary>
@@ -156,56 +146,56 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> De geannoteerde sectie `Split()` in de methode is het enige gedeelte van de sjablooncode Jobmanager die u moet wijzigen door de logica toe te voegen om uw taken in verschillende taken op te splitsen. Als u een ander gedeelte van de sjabloon wilt wijzigen, moet u ervoor zorgen dat u vertrouwd bent met de werking van Batch en een paar van de [batchcodevoorbeelden][github_samples]uitproberen.
+> De sectie met aantekeningen in de `Split()` methode is de enige sectie van de sjabloon voor de taak manager die is bedoeld om te wijzigen door de logica toe te voegen om uw taken te splitsen in verschillende taken. Als u een andere sectie van de sjabloon wilt wijzigen, moet u ervoor zorgen dat u bekend bent met de manier waarop batch werkt en kunt u enkele voor [beelden van batch code][github_samples]uitproberen.
 > 
 > 
 
-Uw Split()-implementatie heeft toegang tot:
+Uw Split-implementatie () heeft toegang tot:
 
-* De taakparameters, `_parameters` via het veld.
-* Het CloudJob-object dat de `_job` taak vertegenwoordigt, via het veld.
-* Het object CloudTask dat de taak `_jobManagerTask` van de taak voor taaktaak functiebeheer vertegenwoordigt, via het veld.
+* De taak parameters via het `_parameters` veld.
+* Het eigenschap cloudjob-object dat de taak via het `_job` veld vertegenwoordigt.
+* Het CloudTask-object dat de taak beheerder via het `_jobManagerTask` veld vertegenwoordigt.
 
-Uw `Split()` implementatie hoeft geen taken rechtstreeks aan de taak toe te voegen. In plaats daarvan moet uw code een reeks CloudTask-objecten retourneren en deze worden automatisch aan de taak toegevoegd door de frameworkklassen die de taaksplitter aanroepen. Het is gebruikelijk om c #'s iterator (`yield return`) functie te gebruiken om taaksplitters te implementeren, omdat dit de taken in staat stelt om zo snel mogelijk te beginnen met draaien in plaats van te wachten tot alle taken worden berekend.
+Uw `Split()` implementatie hoeft geen taken rechtstreeks aan de taak toe te voegen. In plaats daarvan moet uw code een reeks CloudTask-objecten retour neren. deze worden automatisch aan de taak toegevoegd door de Framework klassen die de taak splitter aanroepen. Het is gebruikelijk de functie iterator (`yield return`) van C# te gebruiken om taak splitsingen te implementeren, omdat hierdoor de taken zo snel mogelijk kunnen worden uitgevoerd in plaats van dat er wordt gewacht tot alle taken moeten worden berekend.
 
-**Fout van taaksplitter**
+**Taak splitter-fout**
 
-Als uw taaksplitter een fout tegenkomt, moet deze ook:
+Als uw job splitter een fout tegen komt, moet dit een van de volgende zijn:
 
-* Beëindig de reeks met `yield break` de C#-instructie, in welk geval de jobmanager als succesvol wordt behandeld; Of
-* Gooi een uitzondering, in welk geval de jobmanager als mislukt wordt behandeld en opnieuw kan worden geprobeerd, afhankelijk van hoe de client deze heeft geconfigureerd).
+* Beëindig de reeks met de C# `yield break` -instructie. in dat geval wordt de taak beheerder als geslaagd behandeld. of
+* Hiermee wordt een uitzonde ring gegenereerd. in dat geval wordt de taak beheerder als mislukt beschouwd en wordt er mogelijk een nieuwe poging gedaan, afhankelijk van hoe de client deze heeft geconfigureerd.
 
-In beide gevallen komen taken die al zijn geretourneerd door de taaksplitter en die zijn toegevoegd aan de batchtaak, in aanmerking om uit te voeren. Als je niet wilt dat dit gebeurt, dan kun je:
+In beide gevallen kunnen taken die al zijn geretourneerd door de taak splitter en worden toegevoegd aan de batch-taak, in aanmerking komen voor uitvoering. Als u dit niet wilt doen, kunt u het volgende doen:
 
-* De taak beëindigen voordat u terugkeert van de taaksplitter
-* Formuleer de volledige taakverzameling voordat u `ICollection<CloudTask>` deze `IList<CloudTask>` teruggeeft (dat wil zeggen, een of in plaats van uw taaksplitter te implementeren met behulp van een C# iterator)
-* Taakafhankelijkheden gebruiken om alle taken afhankelijk te maken van de succesvolle voltooiing van de taakmanager
+* De taak beëindigen voordat deze wordt geretourneerd vanuit de taak splitter
+* De volledige taak verzameling formuleren voordat u deze retourneert (dat wil zeggen, `ICollection<CloudTask>` een `IList<CloudTask>` of in plaats van de taak splitsing te implementeren met behulp van een C#-iterator)
+* Taak afhankelijkheden gebruiken om alle taken te laten afhangen van de voltooide voltooiing van de taak beheerder
 
-**Job manager nieuwe pogingen**
+**Nieuwe pogingen taak beheer**
 
-Als de taakmanager mislukt, kan deze opnieuw worden geprobeerd door de Batch-service, afhankelijk van de instellingen voor het opnieuw proberen van de client. In het algemeen is dit veilig, omdat wanneer het framework taken toevoegt aan de taak, het alle taken negeert die al bestaan. Als het berekenen van taken echter duur is, u niet de kosten maken voor het opnieuw berekenen van taken die al aan de taak zijn toegevoegd. omgekeerd, als de re-run is niet gegarandeerd om dezelfde taak-id's te genereren dan de 'negeren duplicaten' gedrag zal niet kick in. In deze gevallen moet u uw taaksplitter ontwerpen om het werk te detecteren dat al is gedaan en niet herhalen, bijvoorbeeld door een CloudJob.ListTasks uit te voeren voordat u taken begint op te leveren.
+Als de taak beheerder mislukt, wordt het mogelijk opnieuw door de batch-service getracht, afhankelijk van de instellingen voor nieuwe pogingen van de client. In het algemeen is dit veilig, omdat wanneer het Framework taken aan de taak toevoegt, alle taken die al bestaan, worden genegeerd. Als het berekenen van taken duur is, wilt u mogelijk de kosten voor het opnieuw berekenen van taken die al zijn toegevoegd aan de taak niet uitvoeren. Als het opnieuw uitvoeren van de taak-Id's echter niet is gegarandeerd, zal het gedrag voor het negeren van duplicaten niet worden gestart. In deze gevallen moet u uw taak splitsen ontwerpen om het werk te detecteren dat al is uitgevoerd en dit niet herhalen, bijvoorbeeld door het uitvoeren van een eigenschap cloudjob. ListTasks voordat u begint met het leveren van taken.
 
-### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Codes en uitzonderingen afsluiten in de sjabloon Jobmanager
-Exit codes en uitzonderingen bieden een mechanisme om de uitkomst van het uitvoeren van een programma te bepalen, en ze kunnen helpen om eventuele problemen met de uitvoering van het programma te identificeren. De sjabloon Jobmanager implementeert de exitcodes en uitzonderingen die in deze sectie worden beschreven.
+### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Afsluit codes en uitzonde ringen in de job manager-sjabloon
+Afsluit codes en uitzonde ringen bieden een mechanisme om het resultaat van het uitvoeren van een programma te bepalen, en ze kunnen u helpen bij het identificeren van problemen met de uitvoering van het programma. De job manager-sjabloon implementeert de afsluit codes en uitzonde ringen die in deze sectie worden beschreven.
 
-Een taak voor taakbeheer die wordt geïmplementeerd met de sjabloon Jobmanager, kan drie mogelijke exitcodes retourneren:
+Een taak beheer taak die is geïmplementeerd met de job manager-sjabloon kan drie mogelijke afsluit codes retour neren:
 
 | Code | Beschrijving |
 | --- | --- |
-| 0 |De jobmanager is succesvol afgerond. Uw taaksplittercode is voltooid en alle taken zijn toegevoegd aan de taak. |
-| 1 |De taak voor taakbeheer is mislukt met een uitzondering in een 'verwacht' deel van het programma. De uitzondering werd vertaald naar een JobManagerException met diagnostische informatie en, waar mogelijk, suggesties voor het oplossen van de fout. |
-| 2 |De taak voor taakbeheer is mislukt met een 'onverwachte' uitzondering. De uitzondering is vastgelegd op standaarduitvoer, maar de taakbeheerder kan geen aanvullende diagnostische of herstelgegevens toevoegen. |
+| 0 |De taak beheerder is voltooid. De taak splitter-code is voltooid en alle taken zijn aan de taak toegevoegd. |
+| 1 |De taak taak beheer is mislukt met een uitzonde ring in een ' verwacht ' deel van het programma. De uitzonde ring is omgezet naar een JobManagerException met diagnostische gegevens en, waar mogelijk, suggesties voor het oplossen van de fout. |
+| 2 |De taak taak beheer is mislukt met een onverwachte uitzonde ring. De uitzonde ring is vastgelegd in de standaard uitvoer, maar de taak beheerder kan geen verdere diagnostische of herstel gegevens toevoegen. |
 
-In het geval van taakfout van taakbeheer zijn mogelijk nog steeds taken aan de service toegevoegd voordat de fout is opgetreden. Deze taken worden normaal uitgevoerd. Zie hierboven 'Fout fout in taak' voor bespreking van dit codepad.
+In het geval van taak beheer mislukt, zijn er mogelijk nog enkele taken aan de service toegevoegd voordat de fout optrad. Deze taken worden normaal uitgevoerd. Zie ' taak splitter-fout ' hierboven voor discussie over dit codepad.
 
-Alle informatie die door uitzonderingen wordt geretourneerd, wordt geschreven in stdout.txt- en stderr.txt-bestanden. Zie [Foutafhandeling](batch-api-basics.md#error-handling)voor meer informatie .
+Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie voor meer informatie [fout afhandeling](batch-api-basics.md#error-handling).
 
-### <a name="client-considerations"></a>Overwegingen van de klant
-In deze sectie worden enkele vereisten voor clientimplementatie beschreven wanneer u een functiemanager inroept op basis van deze sjabloon. Zie [Hoe u parameters en omgevingsvariabelen uit de clientcode doorgeven](#pass-environment-settings) voor meer informatie over het doorgeven van parameters en omgevingsinstellingen.
+### <a name="client-considerations"></a>Overwegingen voor de client
+In deze sectie worden enkele vereisten voor client implementatie beschreven bij het aanroepen van een taak beheerder op basis van deze sjabloon. Zie [para meters en omgevings variabelen door geven uit de client code](#pass-environment-settings) voor meer informatie over het door geven van para meters en omgevings instellingen.
 
 **Verplichte referenties**
 
-Om taken toe te voegen aan de Azure Batch-taak, vereist de taak voor taakbeheer uw URL en sleutel van het Azure Batch-account. U moet deze doorgeven in omgevingsvariabelen met de naam YOUR_BATCH_URL en YOUR_BATCH_KEY. U deze instellen in de instellingen voor taakomgeving jobbeheer. Bijvoorbeeld in een C#-client:
+Om taken toe te voegen aan de Azure Batch-taak, moeten de URL en de sleutel van uw Azure Batch-account zijn vereist voor de taak beheer taak. U moet deze door geven in omgevings variabelen met de naam YOUR_BATCH_URL en YOUR_BATCH_KEY. U kunt deze instellen in de taak omgevings instellingen van taak beheer. Bijvoorbeeld in een C#-client:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -213,9 +203,9 @@ job.JobManagerTask.EnvironmentSettings = new [] {
     new EnvironmentSetting("YOUR_BATCH_KEY", "{your_base64_encoded_account_key}"),
 };
 ```
-**Opslagreferenties**
+**Opslag referenties**
 
-Doorgaans hoeft de client de gekoppelde opslagaccountreferenties niet aan de taak voor taak taak voor taak taak taak voor taak te verstrekken, omdat (a) de meeste taakmanagers niet expliciet toegang hoeven te krijgen tot het gekoppelde opslagaccount en (b) het gekoppelde opslagaccount vaak wordt verstrekt aan alle taken als gemeenschappelijke omgevinginstelling voor de taak. Als u het gekoppelde opslagaccount niet verstrekt via de algemene omgevingsinstellingen en de taakbeheerbeheerder toegang tot gekoppelde opslag vereist, moet u de gekoppelde opslagreferenties als volgt leveren:
+Normaal gesp roken hoeft de client niet de referenties voor het gekoppelde opslag account op te geven voor de taak van taak beheer, omdat (a) de meeste taak beheerders geen expliciete toegang nodig hebben tot het gekoppelde opslag account. (b) het gekoppelde opslag account wordt vaak door gegeven aan alle taken als een algemene omgevings instelling voor de taak. Als u het gekoppelde opslag account niet opgeeft via de instellingen van de gemeen schappelijke omgeving en de taak beheerder toegang tot de gekoppelde opslag vereist, moet u de gekoppelde opslag referenties als volgt opgeven:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -225,83 +215,83 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 };
 ```
 
-**Taakinstellingen voor taakbeheer**
+**Taak instellingen taak beheer**
 
-De klant moet de jobmanager *killJobOnCompletion* vlag op **false**instellen.
+De client moet de taak beheerder *killJobOnCompletion* -vlag instellen op **False**.
 
-Het is meestal veilig voor de klant om *runExclusive* in te stellen op **false.**
+Het is doorgaans veilig voor de client om *runExclusive* in te stellen op **False**.
 
-De client moet de *resourceFiles* of *applicationPackageReferences-verzameling* gebruiken om de taakmanager uitvoerbaar (en de vereiste DLL's) te laten implementeren in het compute-knooppunt.
+De client moet de verzameling *Resource files* of *applicationPackageReferences* gebruiken om het uitvoer bare bestand van de job manager (en de vereiste dll's) te laten implementeren naar het reken knooppunt.
 
-Standaard wordt de jobmanager niet opnieuw geprobeerd als deze mislukt. Afhankelijk van de logica van uw jobmanager kan de client nieuwe pogingen inschakelen via *beperkingen*/*maxTaskRetryCount.*
+De taak beheerder wordt standaard niet opnieuw geprobeerd als deze mislukt. Afhankelijk van de logica van uw taak beheer, is het mogelijk dat de client opnieuw proberen in te scha kelen via *beperkingen*/*maxTaskRetryCount*.
 
 **Taakinstellingen**
 
-Als de taaksplitter taken met afhankelijkheden uitzendt, moet de client het gebruik van de taaktaakafhankelijkheden intrueinstellen.
+Als de taak splitsing taken met afhankelijkheden aflevert, moet de client de usesTaskDependencies van de taak instellen op True.
 
-In het taaksplittermodel is het ongebruikelijk dat clients taken willen toevoegen aan taken boven wat de taaksplitter maakt. De client moet daarom normaal gesproken de *taak onAllTasksComplete* instellen op **beëindiging van de taak**.
+In het taak scheidings model is het ongebruikelijk dat clients taken willen toevoegen aan taken boven en boven wat de taak splitsing maakt. De client moet daarom normaal gesp roken de *onAllTasksComplete* van de taak instellen op **terminatejob**.
 
-## <a name="task-processor-template"></a>Sjabloon Taakprocessor
-Met een sjabloon Taakprocessor u een taakprocessor implementeren die de volgende acties kan uitvoeren:
+## <a name="task-processor-template"></a>Taak processor sjabloon
+Een taak processor sjabloon helpt u bij het implementeren van een taak processor die de volgende acties kan uitvoeren:
 
-* Stel de informatie in die vereist is voor elke batchtaak die moet worden uitgevoerd.
-* Voer alle acties uit die vereist zijn voor elke batchtaak.
-* Sla taakuitvoer op in permanente opslag.
+* Stel de informatie in die voor elke batch taak vereist is om uit te voeren.
+* Alle acties uitvoeren die voor elke batch taak zijn vereist.
+* Sla de taak uitvoer op in permanente opslag.
 
-Hoewel een taakprocessor niet vereist is om taken uit te voeren op Batch, is het belangrijkste voordeel van het gebruik van een taakprocessor dat deze een wrapper biedt om alle taakuitvoeringsacties op één locatie te implementeren. Als u bijvoorbeeld meerdere toepassingen in de context van elke taak moet uitvoeren of als u gegevens na het voltooien van elke taak naar permanente opslag moet kopiëren.
+Hoewel een taak processor niet vereist is voor het uitvoeren van taken voor batch, is het belangrijkste voor deel van het gebruik van een taak processor dat het een wrapper biedt om alle taken voor taak uitvoering op één locatie uit te voeren. Als u bijvoorbeeld meerdere toepassingen in de context van elke taak moet uitvoeren, of als u gegevens naar permanente opslag moet kopiëren nadat elke taak is voltooid.
 
-De acties die door de taakprocessor worden uitgevoerd, kunnen zo eenvoudig of complex zijn en zo veel of zo weinig, zoals vereist door uw werkbelasting. Bovendien u, door alle taakacties in één taakprocessor te implementeren, eenvoudig acties bijwerken of toevoegen op basis van wijzigingen in toepassingen of werkbelastingvereisten. In sommige gevallen is een taakprocessor echter niet de optimale oplossing voor uw implementatie, omdat deze onnodige complexiteit kan toevoegen, bijvoorbeeld bij het uitvoeren van taken die snel kunnen worden gestart vanaf een eenvoudige opdrachtregel.
+De acties die door de taak processor worden uitgevoerd, kunnen zo eenvoudig of complex zijn, en zo veel of zo weinig, zoals vereist voor uw werk belasting. Daarnaast kunt u, door alle taak acties in één taak processor te implementeren, acties direct bijwerken of toevoegen op basis van wijzigingen in toepassingen of werk belasting vereisten. In sommige gevallen is het echter mogelijk dat een taak processor niet de optimale oplossing is voor uw implementatie, omdat deze een onnodige complexiteit kan toevoegen, bijvoorbeeld wanneer taken worden uitgevoerd die snel kunnen worden gestart vanaf een eenvoudige opdracht regel.
 
-### <a name="create-a-task-processor-using-the-template"></a>Een taakprocessor maken met de sjabloon
-Voer de volgende stappen uit om een taakprocessor toe te voegen aan de oplossing die u eerder hebt gemaakt:
+### <a name="create-a-task-processor-using-the-template"></a>Een taak processor maken met behulp van de sjabloon
+Als u een taak processor wilt toevoegen aan de oplossing die u eerder hebt gemaakt, voert u de volgende stappen uit:
 
 1. Open uw bestaande oplossing in Visual Studio.
-2. Klik in Solution Explorer met de rechtermuisknop op de oplossing, klik op **Toevoegen**en klik vervolgens op **Nieuw project**.
-3. Klik **onder Visual C#** op **Cloud**en klik vervolgens op Azure Batch **Task Processor**.
-4. Typ een naam die uw toepassing beschrijft en identificeert dit project als de taakprocessor (bijvoorbeeld 'LitwareTaskProcessor').
-5. Als u het project wilt maken, klikt u op **OK**.
-6. Bouw ten slotte het project om Visual Studio te dwingen alle nuget-pakketten te laden en om te controleren of het project geldig is voordat u begint met wijzigen.
+2. Klik in Solution Explorer met de rechter muisknop op de oplossing, klikt u op **toevoegen**en klik vervolgens op **Nieuw project**.
+3. Klik onder **Visual C#** op **Cloud**en klik vervolgens op **Azure batch taak processor**.
+4. Typ een naam die uw toepassing beschrijft en identificeert dit project als de taak processor (bijvoorbeeld ' LitwareTaskProcessor ').
+5. Klik op **OK**om het project te maken.
+6. Stel tot slot het project op om te forceren dat Visual Studio alle NuGet-pakketten waarnaar wordt verwezen, laadt en om te controleren of het project geldig is voordat u het gaat wijzigen.
 
-### <a name="task-processor-template-files-and-their-purpose"></a>Sjabloonbestanden taakprocessor en hun doel
-Wanneer u een project maakt met de sjabloon taakverwerker, genereert het drie groepen codebestanden:
+### <a name="task-processor-template-files-and-their-purpose"></a>Sjabloon bestanden voor taak processor en hun doel
+Wanneer u een project maakt met behulp van de taak processor sjabloon, worden er drie groepen code bestanden gegenereerd:
 
-* Het hoofdprogrammabestand (Program.cs). Dit bevat het instappunt van het programma en de afhandeling van uitzondering op het hoogste niveau. Normaal gesproken hoeft u dit niet aan te passen.
-* De kadermap. Dit bevat de bestanden die verantwoordelijk zijn voor de 'boilerplate' werk gedaan door de job manager programma - uitpakken parameters, het toevoegen van taken aan de Batch taak, enz. Normaal gesproken hoeft u deze bestanden niet te wijzigen.
-* Het taakprocessorbestand (TaskProcessor.cs). Dit is waar u uw toepassingsspecifieke logica voor het uitvoeren van een taak plaatst (meestal door een bestaande uitvoerbare opdracht te geven). Pre- en post-processing code, zoals het downloaden van extra gegevens of het uploaden van resultaatbestanden, gaat hier ook.
+* Het hoofd programma bestand (Program.cs). Dit bevat het programma-ingangs punt en de verwerking van uitzonde ringen op het hoogste niveau. Normaal gesp roken hoeft u dit niet te wijzigen.
+* De Framework-map. Dit bevat de bestanden die verantwoordelijk zijn voor het ' standaard ' werk dat door het job manager-programma wordt uitgevoerd – het uitpakken van para meters, het toevoegen van taken aan de batch-taak, enzovoort. Normaal gesp roken hoeft u deze bestanden niet te wijzigen.
+* Het taak processor bestand (TaskProcessor.cs). Hier plaatst u uw toepassingsspecifieke logica voor het uitvoeren van een taak (meestal door een bestaand uitvoerbaar bestand aan te roepen). De code vóór en na het verwerken, zoals het downloaden van extra gegevens of het uploaden van resultaat bestanden, komt hier ook.
 
-Natuurlijk u extra bestanden toevoegen als dat nodig is om uw taakprocessorcode te ondersteunen, afhankelijk van de complexiteit van de logica voor taaksplitsing.
+Natuurlijk kunt u extra bestanden toevoegen die nodig zijn om uw taak processor code te ondersteunen, afhankelijk van de complexiteit van de logica voor het splitsen van taken.
 
-De sjabloon genereert ook standaard .NET-projectbestanden, zoals een .csproj-bestand, app.config, packages.config, enz.
+De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app. config, packages. config, enzovoort.
 
-De rest van deze sectie beschrijft de verschillende bestanden en hun codestructuur en legt uit wat elke klasse doet.
+In de rest van deze sectie worden de verschillende bestanden en hun code structuur beschreven en wordt uitgelegd wat elke klasse doet.
 
-![Visual Studio Solution Explorer met de sjabloonoplossing Taakprocessor][solution_explorer02]
+![Visual Studio Solution Explorer de oplossing van de taak processor sjabloon weer geven][solution_explorer02]
 
 **Framework-bestanden**
 
-* `Configuration.cs`: Bevat het laden van taakconfiguratiegegevens zoals batchaccountgegevens, gekoppelde opslagaccountreferenties, taak- en taakgegevens en taakparameters. Het biedt ook toegang tot batch-gedefinieerde omgevingsvariabelen (zie Omgevingsinstellingen voor taken, in de batchdocumentatie) via de klasse Configuration.EnvironmentVariable.
-* `IConfiguration.cs`: Hernieuwt de implementatie van de klasse Configuration, zodat u uw taaksplitter testen met behulp van een nep- of nepconfiguratieobject.
-* `TaskProcessorException.cs`: Vertegenwoordigt een fout die vereist dat de taakbeheerder moet worden beëindigd. TaskProcessorException wordt gebruikt om 'verwachte' fouten te verwerken waarbij specifieke diagnostische informatie kan worden verstrekt als onderdeel van beëindiging.
+* `Configuration.cs`: Het laden van taak configuratie gegevens, zoals Details van de batch-account, de referenties van een gekoppeld opslag account, taak-en taak gegevens en taak parameters. Het biedt ook toegang tot met batch gedefinieerde omgevings variabelen (Zie omgevings instellingen voor taken in de batch-documentatie) via de klasse Configuration. EnvironmentVariable.
+* `IConfiguration.cs`: Abstracten de implementatie van de configuratie klasse, zodat u uw taak splitsing kunt testen met behulp van een configuratie object voor een valse of model.
+* `TaskProcessorException.cs`: Dit is een fout die vereist dat de taak beheerder wordt beëindigd. TaskProcessorException wordt gebruikt om ' verwachte ' fouten op te slaan waarbij specifieke diagnostische gegevens kunnen worden verstrekt als onderdeel van de beëindiging.
 
-**Taakprocessor**
+**Taak processor**
 
-* `TaskProcessor.cs`: Voert de taak uit. Het framework beroept zich op de methode TaskProcessor.Run. Dit is de klasse waar u de toepassingsspecifieke logica van uw taak zult injecteren. Implementeer de methode Uitvoeren om:
-  * Alle taakparameters ontleden en valideren
-  * Stel de opdrachtregel samen voor elk extern programma dat u wilt aanroepen
-  * Log alle diagnostische informatie die u nodig hebt voor debugging doeleinden
-  * Een proces starten met die opdrachtregel
+* `TaskProcessor.cs`: De taak wordt uitgevoerd. Het Framework roept de methode TaskProcessor. run aan. Dit is de klasse waarin u de toepassingsspecifieke logica van uw taak wilt injecteren. Implementeer de methode Run voor het volgende:
+  * Taak parameters parseren en valideren
+  * De opdracht regel opstellen voor elk extern programma dat u wilt aanroepen
+  * Diagnostische gegevens registreren die u mogelijk nodig hebt voor fout opsporing
+  * Een proces starten met die opdracht regel
   * Wacht tot het proces is afgesloten
-  * De afsluitcode van het proces vastleggen om te bepalen of het is gelukt of mislukt
-  * Alle uitvoerbestanden opslaan die u wilt behouden voor permanente opslag
+  * Leg de afsluit code van het proces vast om te bepalen of dit is gelukt of mislukt
+  * Sla uitvoer bestanden op die u wilt behouden voor permanente opslag
 
-**Projectbestanden voor standaard .NET-opdrachtregel**
+**Standard .NET-opdracht regel project bestanden**
 
-* `App.config`: Standaard configuratiebestand voor .NET-toepassingen.
-* `Packages.config`: Standaard NuGet-pakketafhankelijkheidsbestand.
-* `Program.cs`: Bevat het instappunt van het programma en de afhandeling van uitzonderingen op het hoogste niveau.
+* `App.config`: Standaard .NET-toepassings configuratie bestand.
+* `Packages.config`: Standaard NuGet package-afhankelijkheids bestand.
+* `Program.cs`: Bevat het programma-ingangs punt en uitzonde ringen op het hoogste niveau.
 
-## <a name="implementing-the-task-processor"></a>De taakprocessor implementeren
-Wanneer u het sjabloonproject Taakprocessor opent, wordt het TaskProcessor.cs bestand standaard geopend. U de uitvoeringslogica voor de taken in uw werkbelasting implementeren met de methode Run() hieronder weergegeven:
+## <a name="implementing-the-task-processor"></a>De taak processor implementeren
+Wanneer u het taak processor sjabloon project opent, wordt het TaskProcessor.cs-bestand standaard geopend in het project. U kunt de uitvoerings logica voor de taken in uw workload implementeren met behulp van de methode Run () die hieronder wordt weer gegeven:
 
 ```csharp
 /// <summary>
@@ -347,44 +337,44 @@ public async Task<int> Run()
 }
 ```
 > [!NOTE]
-> De geannoteerde sectie in de methode Run() is het enige gedeelte van de sjablooncode Taakprocessor dat u moet wijzigen door de run-logica voor de taken in uw werkbelasting toe te voegen. Als u een ander gedeelte van de sjabloon wilt wijzigen, moet u eerst vertrouwd raken met hoe Batch werkt door de batchdocumentatie te bekijken en een paar van de batchcodevoorbeelden uit te proberen.
+> De sectie met aantekeningen in de methode Run () is de enige sectie van de sjabloon voor de taak processor die u wilt aanpassen door de uitvoerings logica voor de taken in uw werk belasting toe te voegen. Als u een andere sectie van de sjabloon wilt wijzigen, moet u eerst nagaan hoe batch werkt door de batch-documentatie te controleren en een aantal van de batch-code voorbeelden uit te proberen.
 > 
 > 
 
-De methode Run() is verantwoordelijk voor het starten van de opdrachtregel, het starten van een of meer processen, wachten tot alle processen zijn voltooid, het opslaan van de resultaten en uiteindelijk terugkeren met een exitcode. Met de methode Run() implementeert u de verwerkingslogica voor uw taken. Het taakprocessorframework roept de methode Run() voor u op; je hoeft het niet zelf te noemen.
+De methode Run () is verantwoordelijk voor het starten van de opdracht regel, het starten van een of meer processen, wacht op het volt ooien van het proces, het opslaan van de resultaten en uiteindelijk retour met een afsluit code. Met de methode Run () implementeert u de verwerkings logica voor uw taken. Het taak verwerkings raamwerk roept de methode Run () aan voor u. u hoeft deze niet zelf aan te roepen.
 
-Uw Run()-implementatie heeft toegang tot:
+Uw run ()-implementatie heeft toegang tot:
 
-* De taakparameters, `_parameters` via het veld.
-* De taak- en taak-id's, via de `_jobId` velden en `_taskId` velden.
-* De taakconfiguratie, `_configuration` via het veld.
+* De taak parameters, via het `_parameters` veld.
+* De taak-en taak-id's via `_jobId` de `_taskId` velden en.
+* De taak configuratie, via het `_configuration` veld.
 
-**Taakfout**
+**Taak fout**
 
-In het geval van een storing u de methode Run() afsluiten door een uitzondering te maken, maar dit laat de uitzonderingshandler op het hoogste niveau de controle over de taakexitcode. Als u de exitcode moet beheren, zodat u verschillende soorten fouten onderscheiden, bijvoorbeeld voor diagnostische doeleinden of omdat sommige foutmodi de taak moeten beëindigen en andere niet, moet u de methode Run() afsluiten door een niet-nulexitcode terug te sturen. Dit wordt de taakexitcode.
+Als er een fout is opgetreden, kunt u de methode Run () afsluiten door een uitzonde ring uit te voeren, maar hierdoor blijft de uitzonderings-handler op het hoogste niveau in de controle over de afsluit code van de taak. Als u de afsluit code moet bepalen zodat u verschillende soorten storingen kunt onderscheiden, bijvoorbeeld voor diagnostische doel einden of omdat sommige fout modi de taak moeten beëindigen en andere niet, moet u de methode Run () afsluiten door een afsluit code van niet nul te retour neren. Dit wordt de afsluit code van de taak.
 
-### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Codes en uitzonderingen afsluiten in de sjabloon Taakprocessor
-Exit codes en uitzonderingen bieden een mechanisme om de uitkomst van het uitvoeren van een programma te bepalen, en ze kunnen helpen bij het identificeren van eventuele problemen met de uitvoering van het programma. De sjabloon Taakprocessor implementeert de exitcodes en uitzonderingen die in deze sectie worden beschreven.
+### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Afsluit codes en uitzonde ringen in de taak processor sjabloon
+Afsluit codes en uitzonde ringen bieden een mechanisme om het resultaat van het uitvoeren van een programma te bepalen, en ze kunnen u helpen bij het identificeren van problemen met de uitvoering van het programma. De taak verwerkings sjabloon implementeert de afsluit codes en uitzonde ringen die in deze sectie worden beschreven.
 
-Een taakverwerkertaak die is geïmplementeerd met de sjabloon Taakprocessor, kan drie mogelijke exitcodes retourneren:
+Een taak processor taak die is geïmplementeerd met de taak processor sjabloon kan drie mogelijke afsluit codes retour neren:
 
 | Code | Beschrijving |
 | --- | --- |
-| [Process.ExitCode][process_exitcode] |De taakprocessor is voltooid. Houd er rekening mee dat dit niet betekent dat het programma dat u aanriep, is geslaagd , alleen dat de taakverwerker het heeft aangeroepen en elke nabewerking zonder uitzonderingen heeft uitgevoerd. De betekenis van de exitcode is afhankelijk van het aangeroepen programma - meestal exit code 0 betekent dat het programma geslaagd en een andere exit code betekent dat het programma is mislukt. |
-| 1 |De taakprocessor is mislukt met een uitzondering in een 'verwacht' deel van het programma. De uitzondering werd `TaskProcessorException` vertaald naar een met diagnostische informatie en, waar mogelijk, suggesties voor het oplossen van de fout. |
-| 2 |De taakprocessor is mislukt met een 'onverwachte' uitzondering. De uitzondering werd vastgelegd op standaarduitvoer, maar de taakprocessor kan geen aanvullende diagnostische of herstelgegevens toevoegen. |
+| [Process. ExitCode][process_exitcode] |De taak processor is voltooid. Houd er rekening mee dat dit niet impliceert dat het programma dat u hebt aangeroepen, is geslaagd: alleen dat de taak processor het heeft aangeroepen en zonder uitzonde ringen na de verwerking is uitgevoerd. De betekenis van de afsluit code is afhankelijk van het aangeroepen programma, meestal afsluit code 0 betekent dat het programma is geslaagd en andere afsluit code betekent dat het programma is mislukt. |
+| 1 |De taak processor is mislukt met een uitzonde ring in een ' verwacht ' deel van het programma. De uitzonde ring is vertaald `TaskProcessorException` naar een met diagnostische gegevens en, waar mogelijk, suggesties voor het oplossen van de fout. |
+| 2 |De taak processor is mislukt met een onverwachte uitzonde ring. De uitzonde ring is vastgelegd in de standaard uitvoer, maar de taak processor kan geen verdere diagnostische of herstel gegevens toevoegen. |
 
 > [!NOTE]
-> Als het programma dat u aanroept exitcodes 1 en 2 gebruikt om specifieke foutmodi aan te geven, is het gebruik van exitcodes 1 en 2 voor fouten in taakverwerkers dubbelzinnig. U deze foutcodes voor taakbewerkingen wijzigen in onderscheidende exitcodes door de uitzonderingsgevallen in het Program.cs bestand te bewerken.
+> Als het programma dat u aanroept afsluit codes 1 en 2 gebruikt om specifieke fout modi aan te geven, is het gebruik van afsluit codes 1 en 2 voor fouten van de taak processor dubbel zinnig. U kunt deze fout codes voor taak processors wijzigen in onderscheidende afsluit codes door de uitzonderings cases in het Program.cs-bestand te bewerken.
 > 
 > 
 
-Alle informatie die door uitzonderingen wordt geretourneerd, wordt geschreven in stdout.txt- en stderr.txt-bestanden. Zie Foutafhandeling in de batchdocumentatie voor meer informatie.
+Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie fout afhandeling in de batch-documentatie voor meer informatie.
 
-### <a name="client-considerations"></a>Overwegingen van de klant
-**Opslagreferenties**
+### <a name="client-considerations"></a>Overwegingen voor de client
+**Opslag referenties**
 
-Als uw taakprocessor Azure blob-opslag gebruikt om uitvoer voort te houden, bijvoorbeeld met behulp van de helperbibliotheek voor bestandsconventies, heeft deze toegang nodig *tot* de referenties van de cloudopslagaccount *of* een URL van blobcontainers met een SAS (Shared Access Signature). De sjabloon bevat ondersteuning voor het verstrekken van referenties via algemene omgevingsvariabelen. Uw klant kan de opslagreferenties als volgt doorgeven:
+Als uw taak processor gebruikmaakt van Azure Blob-opslag om uitvoer te behouden, bijvoorbeeld met behulp van de bestands conventies helper-bibliotheek, *moet u toegang hebben tot de referenties* van het Cloud Storage-account *of* een BLOB-container-URL die een Shared Access Signature (SAS) bevat. De sjabloon bevat ondersteuning voor het opgeven van referenties via algemene omgevings variabelen. De client kan de opslag referenties als volgt door geven:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -393,50 +383,50 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-Het opslagaccount is vervolgens beschikbaar in `_configuration.StorageAccount` de klasse TaskProcessor via de eigenschap.
+Het opslag account is vervolgens beschikbaar in de TaskProcessor-klasse via `_configuration.StorageAccount` de eigenschap.
 
-Als u liever een container-URL met SAS gebruikt, u dit ook doorgeven via een algemene taakinstelling, maar de sjabloon voor taakbewerker bevat momenteel geen ingebouwde ondersteuning hiervoor.
+Als u liever een container-URL met SAS gebruikt, kunt u dit ook door geven via een gemeen schappelijke omgevings instelling, maar de taak verwerkings sjabloon bevat momenteel geen ingebouwde ondersteuning.
 
-**Opslaginstellingen**
+**Opslag instellen**
 
-Het wordt aanbevolen dat de taak client of jobmanager containers maakt die nodig zijn voor taken voordat de taken aan de taak worden toegevoegd. Dit is verplicht als u een container-URL met SAS gebruikt, omdat een URL geen toestemming bevat om de container te maken. Het wordt aanbevolen, zelfs als u de referenties van opslagaccountdoorgeeft, omdat het elke taak opslaat die CloudBlobContainer moet aanroepen.CreateIfNotExistsAsync op de container.
+Het wordt aanbevolen dat de client of taak beheer-taak containers maakt voor taken voordat u de taken toevoegt aan de taak. Dit is verplicht als u een container-URL met SAS gebruikt, omdat een URL geen machtiging bevat voor het maken van de container. Het wordt aanbevolen zelfs als u referenties voor het opslag account doorgeeft, omdat hiermee elke taak wordt opgeslagen die CloudBlobContainer. CreateIfNotExistsAsync op de container aanroept.
 
-## <a name="pass-parameters-and-environment-variables"></a>Parameters en omgevingsvariabelen doorgeven
-### <a name="pass-environment-settings"></a>Omgevingsinstellingen doorgeven
-Een klant kan informatie doorgeven aan de taak voor taak van de taak voor de taak van de taak in de vorm van omgevinginstellingen. Deze informatie kan vervolgens worden gebruikt door de taak taak voor taakbeheer bij het genereren van de taakprocessortaken die worden uitgevoerd als onderdeel van de rekentaak. Voorbeelden van de informatie die u doorgeven als omgevingsinstellingen zijn:
+## <a name="pass-parameters-and-environment-variables"></a>Para meters en omgevings variabelen door geven
+### <a name="pass-environment-settings"></a>Instellingen van de omgeving door geven
+Een client kan gegevens door geven aan de taak van de taak beheerder in de vorm van omgevings instellingen. Deze informatie kan vervolgens worden gebruikt door de taak taak beheer bij het genereren van de taak verwerkings taken die worden uitgevoerd als onderdeel van de reken taak. Voor beelden van de informatie die u kunt door geven als omgevings instellingen zijn:
 
-* Naam van het opslagaccount en accountsleutels
-* URL batchaccount
-* Batch-accountsleutel
+* Naam en account sleutels van het opslag account
+* URL van het batch-account
+* Batch-account sleutel
 
-De Batch-service heeft een eenvoudig mechanisme om omgevingsinstellingen `EnvironmentSettings` door te geven aan een taak voor taakvoor taak met behulp van de eigenschap in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask].
+De batch-service heeft een eenvoudig mechanisme om omgevings instellingen door te geven aan een taak beheer `EnvironmentSettings` taak met behulp van de eigenschap in [micro soft. Azure. batch. JobManagerTask][net_jobmanagertask].
 
-Als u bijvoorbeeld `BatchClient` de instantie voor een Batch-account wilt ophalen, u als omgevingsvariabelen van de clientcode de URL en gedeelde sleutelreferenties voor het Batch-account doorgeven. Als u toegang wilt krijgen tot het opslagaccount dat is gekoppeld aan het Batch-account, u ook de naam van het opslagaccount en de opslagaccountsleutel doorgeven als omgevingsvariabelen.
+Als u bijvoorbeeld het `BatchClient` exemplaar voor een batch-account wilt ophalen, kunt u door geven als omgevings variabelen van de client code de URL en de referenties van de gedeelde sleutel voor het batch-account. Op dezelfde manier kunt u toegang krijgen tot het opslag account dat is gekoppeld aan het batch-account door de naam van het opslag account en de sleutel van het opslag account als omgevings variabelen door te geven.
 
-### <a name="pass-parameters-to-the-job-manager-template"></a>Parameters doorgeven aan de sjabloon Jobmanager
-In veel gevallen is het handig om parameters per taak door te geven aan de taak taak taak voor taakbeheer, om het taaksplitsingsproces te beheren of om de taken voor de taak te configureren. U dit doen door een JSON-bestand met de naam parameters.json te uploaden als bronbestand voor de taak voor taakbeheer. De parameters kunnen dan `JobSplitter._parameters` beschikbaar komen in het veld in de sjabloon Jobmanager.
+### <a name="pass-parameters-to-the-job-manager-template"></a>Para meters door geven aan de job manager-sjabloon
+In veel gevallen is het handig om per taak para meters door te geven aan de taak beheer taak, hetzij om het proces voor het splitsen van taken te beheren of om de taken voor de taak te configureren. U kunt dit doen door een JSON-bestand met de naam para meters. json te uploaden als een resource bestand voor de taak taak beheer. De para meters kunnen vervolgens beschikbaar worden `JobSplitter._parameters` in het veld in de job manager-sjabloon.
 
 > [!NOTE]
-> De ingebouwde parameterhandler ondersteunt alleen dia-to-string woordenboeken. Als u complexe JSON-waarden als parameterwaarden wilt doorgeven, moet u deze als tekenreeksen doorgeven en deze `Configuration.GetJobParameters` in de taaksplitter ontleden of de methode van het framework wijzigen.
+> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak splitsing, of de methode `Configuration.GetJobParameters` van het Framework wijzigen.
 > 
 > 
 
-### <a name="pass-parameters-to-the-task-processor-template"></a>Parameters doorgeven aan de sjabloon Taakprocessor
-U ook parameters doorgeven aan afzonderlijke taken die zijn geïmplementeerd met de sjabloon Taakprocessor. Net als bij de sjabloon voor taakbeheer zoekt de sjabloon voor taakbewerker naar een bronbestand met de naam
+### <a name="pass-parameters-to-the-task-processor-template"></a>Para meters door geven aan de taak processor sjabloon
+U kunt ook para meters door geven aan afzonderlijke taken die zijn geïmplementeerd met behulp van de taak verwerkings sjabloon. Net als bij de taak beheer sjabloon zoekt de taak processor sjabloon naar een bron bestand met de naam
 
-parameters.json, en als gevonden laadt het als de parameters woordenboek. Er zijn een aantal opties voor het doorgeven van parameters aan de taken van de taakverwerker:
+para meters. json, en als deze wordt gevonden, wordt deze geladen als de woorden lijst met para meters. Er zijn een aantal opties voor het door geven van para meters aan taak verwerkings taken:
 
-* De taakparameters JSON opnieuw gebruiken. Dit werkt goed als de enige parameters taakbrede parameters zijn (bijvoorbeeld een renderhoogte en -breedte). Voeg hiervoor bij het maken van een CloudTask in de taaksplitter een verwijzing toe naar het resourcebestandobject parameters.json van de ResourceFiles ( ) van de taak ResourceFiles van`JobSplitter._jobManagerTask.ResourceFiles`de taak ( ) aan de ResourceFiles-verzameling van CloudTask.
-* Een taakspecifieke parameters.json-document genereren en uploaden als onderdeel van de uitvoering van taaksplitters en verwijs naar die blob in de verzameling resourcebestanden van de taak. Dit is nodig als verschillende taken verschillende parameters hebben. Een voorbeeld hiervan is een 3D-renderingscenario waarbij de frameindex als parameter aan de taak wordt doorgegeven.
+* De JSON van de taak parameters opnieuw gebruiken. Dit werkt goed als de enige para meters voor de hele taak zijn (bijvoorbeeld een weergave hoogte en-breedte). Als u dit wilt doen, voegt u bij het maken van een CloudTask in de taak splitter een verwijzing toe naar het Resource object para meters. json van`JobSplitter._jobManagerTask.ResourceFiles`de Resource files () van de job manager-taak naar de Resource files-verzameling van CloudTask.
+* Genereer en upload een gebruikersspecifieke para meters. JSON-document als onderdeel van de uitvoering van taak splitter en referentie die Blob in de verzameling bron bestanden van de taak. Dit is nodig als verschillende taken verschillende para meters hebben. Een voor beeld hiervan is een 3D-rendering-scenario waarbij de frame-index wordt door gegeven aan de taak als een para meter.
 
 > [!NOTE]
-> De ingebouwde parameterhandler ondersteunt alleen dia-to-string woordenboeken. Als u complexe JSON-waarden als parameterwaarden wilt doorgeven, moet u deze als tekenreeksen doorgeven en deze `Configuration.GetTaskParameters` in de taakprocessor ontleden of de methode van het framework wijzigen.
+> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak processor, of de methode `Configuration.GetTaskParameters` van het Framework wijzigen.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-### <a name="persist-job-and-task-output-to-azure-storage"></a>Taak- en taakuitvoer naar Azure Storage blijven uitvoeren
-Een ander handig hulpmiddel bij batchoplossingsontwikkeling is [Azure Batch File Conventions][nuget_package]. Gebruik deze .NET-klassenbibliotheek (momenteel in preview) in uw Batch .NET-toepassingen om takenuitvoer van en naar Azure Storage eenvoudig op te slaan en op te halen. [Persist Azure Batch-taak- en taakuitvoer](batch-task-output.md) bevat een volledige discussie over de bibliotheek en het gebruik ervan.
+### <a name="persist-job-and-task-output-to-azure-storage"></a>Taak-en taak uitvoer persistent maken naar Azure Storage
+Een ander handig hulp middel bij het ontwikkelen van batch oplossingen is [Azure batch bestands conventies][nuget_package]. Gebruik deze .NET-klassebibliotheek (momenteel in Preview) in uw batch .NET-toepassingen om snel taak uitvoer van en naar Azure Storage op te slaan en op te halen. [Azure batch taak en taak uitvoer blijven behouden](batch-task-output.md) , bevat een volledige bespreking van de tape wisselaar en het gebruik ervan.
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

@@ -1,66 +1,59 @@
 ---
-title: Een virtueel bestandssysteem op een groep monteren - Azure Batch | Microsoft Documenten
-description: Meer informatie over het monteren van een virtueel bestandssysteem op een batchgroep.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Een virtueel bestands systeem koppelen aan een pool-Azure Batch | Microsoft Docs
+description: Meer informatie over het koppelen van een virtueel bestands systeem aan een batch-pool.
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 703b65f0a1571659d7be479776dd8fdf02d86731
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919002"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117026"
 ---
-# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestandssysteem op een batchgroep monteren
+# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
-Azure Batch ondersteunt nu het opzetten van cloudopslag of een extern bestandssysteem op Windows- of Linux-computenodes in uw batchgroepen. Wanneer een compute node lid wordt van een pool, wordt het virtuele bestandssysteem gemonteerd en behandeld als een lokaal station op dat knooppunt. U bestandssystemen zoals Azure Files, Azure Blob-opslag, Network File System (NFS) monteren, inclusief een [Avere vFXT-cache](../avere-vfxt/avere-vfxt-overview.md)of Common Internet File System (CIFS).
+Azure Batch ondersteunt nu het koppelen van Cloud opslag of een extern bestands systeem op Windows-of Linux-reken knooppunten in uw batch-Pools. Wanneer een reken knooppunt wordt toegevoegd aan een pool, wordt het virtuele bestands systeem gekoppeld en behandeld als een lokaal station op het knoop punt. U kunt bestands systemen zoals Azure Files, Azure Blob Storage, Network File System (NFS), waaronder een [avere vFXT-cache](../avere-vfxt/avere-vfxt-overview.md)of een common Internet File System (CIFS) koppelen.
 
-In dit artikel leert u hoe u een virtueel bestandssysteem monteren op een groep compute-knooppunten met behulp van de [BatchManagement-bibliotheek voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
+In dit artikel leert u hoe u een virtueel bestands systeem koppelt aan een pool van reken knooppunten met behulp [van de batch-beheer bibliotheek voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
 
 > [!NOTE]
-> Het monteren van een virtueel bestandssysteem wordt ondersteund op batchpools die zijn gemaakt op of na 2019-08-19. Batchpools die vóór 2019-08-19 zijn gemaakt, ondersteunen deze functie niet.
+> Het koppelen van een virtueel bestands systeem wordt ondersteund op batch-Pools die zijn gemaakt op of na 2019-08-19. Batch-Pools die zijn gemaakt vóór 2019-08-19 bieden geen ondersteuning voor deze functie.
 > 
-> De API's voor het monteren van bestandssystemen op een compute node maken deel uit van de [Batch .NET-bibliotheek.](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet)
+> De Api's voor het koppelen van bestands systemen op een reken knooppunt maken deel uit van de [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -bibliotheek.
 
-## <a name="benefits-of-mounting-on-a-pool"></a>Voordelen van montage op een zwembad
+## <a name="benefits-of-mounting-on-a-pool"></a>Voor delen van koppelen aan een groep
 
-Het opzetten van het bestandssysteem naar de groep, in plaats van taken hun eigen gegevens uit een grote gegevensset te laten ophalen, maakt het eenvoudiger en efficiënter voor taken om toegang te krijgen tot de benodigde gegevens.
+Het bestands systeem koppelen aan de groep, in plaats van taken om hun eigen gegevens uit een grote gegevensset op te halen, is het eenvoudiger en efficiënter voor taken om toegang te krijgen tot de gegevens die nodig zijn.
 
-Overweeg een scenario met meerdere taken die toegang vereisen tot een algemene set gegevens, zoals het renderen van een film. Elke taak maakt een of meer frames tegelijk uit de scènebestanden. Door een station te monteren dat de scènebestanden bevat, is het eenvoudiger voor compute nodes om toegang te krijgen tot gedeelde gegevens. Bovendien kan het onderliggende bestandssysteem onafhankelijk worden gekozen en geschaald op basis van de prestaties en schaal (doorvoer en IOPS) die vereist zijn door het aantal compute nodes dat gelijktijdig toegang heeft tot de gegevens. Een [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) gedistribueerde in-memory cache kan bijvoorbeeld worden gebruikt om grote renders op filmschaal te ondersteunen met duizenden gelijktijdige renderknooppunten, die toegang hebben tot brongegevens die on-premises aanwezig zijn. Als alternatief kan [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) voor gegevens die zich al in blobopslag in de cloud bevinden, worden gebruikt om deze gegevens te monteren als een lokaal bestandssysteem. Blobfuse is alleen beschikbaar op Linux-knooppunten, maar [Azure Files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) biedt een vergelijkbare workflow en is beschikbaar op zowel Windows als Linux.
+Overweeg een scenario met meerdere taken waarvoor toegang tot een gemeen schappelijke set gegevens is vereist, zoals het renderen van een film. Met elke taak worden een of meer frames tegelijk uit de scène bestanden weer gegeven. Door een station met de scène bestanden te koppelen, is het eenvoudiger voor reken knooppunten om toegang te krijgen tot gedeelde gegevens. Daarnaast kan het onderliggende bestands systeem afzonderlijk worden gekozen en geschaald op basis van de prestaties en de schaal (door Voer en IOPS) die vereist zijn voor het aantal reken knooppunten dat gelijktijdig toegang heeft tot de gegevens. Een gedistribueerde in-memory cache van [avere](../avere-vfxt/avere-vfxt-overview.md) kan bijvoorbeeld worden gebruikt voor het ondersteunen van grootschalige Renders op schaal van een afbeelding met duizenden gelijktijdige weergave knooppunten, waarbij toegang wordt verkregen tot bron gegevens die on-premises zijn opgeslagen. Voor gegevens die zich al in Cloud opslag op basis van een BLOB bevinden, kan [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) ook worden gebruikt om deze gegevens als een lokaal bestands systeem te koppelen. Blobfuse is alleen beschikbaar op Linux-knoop punten. [Azure files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) biedt echter een vergelijk bare werk stroom en is beschikbaar op Windows en Linux.
 
-## <a name="mount-a-virtual-file-system-on-a-pool"></a>Een virtueel bestandssysteem op een groep monteren  
+## <a name="mount-a-virtual-file-system-on-a-pool"></a>Een virtueel bestands systeem koppelen aan een groep  
 
-Door een virtueel bestandssysteem op een groep te monteren, is het bestandssysteem beschikbaar voor elk compute-knooppunt in de groep. Het bestandssysteem wordt geconfigureerd wanneer een compute node lid wordt van een groep of wanneer het knooppunt opnieuw wordt gestart of opnieuw wordt weergegeven.
+Als u een virtueel bestands systeem op een groep koppelt, wordt het bestands systeem beschikbaar voor elk reken knooppunt in de pool. Het bestands systeem wordt geconfigureerd wanneer een reken knooppunt wordt toegevoegd aan een groep of wanneer het knoop punt opnieuw wordt opgestart of de installatie kopie wordt gerecycled.
 
-Als u een bestandssysteem op `MountConfiguration` een groep wilt monteren, maakt u een object. Kies het object dat bij `AzureBlobFileSystemConfiguration`uw `AzureFileShareConfiguration` `NfsMountConfiguration`virtuele `CifsMountConfiguration`bestandssysteem past: , , of .
+Als u een bestands systeem in een groep wilt koppelen, `MountConfiguration` maakt u een-object. Kies het object dat bij uw virtuele bestands systeem past `AzureBlobFileSystemConfiguration`: `AzureFileShareConfiguration`, `NfsMountConfiguration`,, `CifsMountConfiguration`of.
 
-Alle configuratieobjecten voor het monteren hebben de volgende basisparameters nodig. Sommige mount configuraties hebben parameters die specifiek zijn voor het bestandssysteem wordt gebruikt, die worden besproken in meer detail in de code voorbeelden.
+Voor alle koppel configuratie objecten zijn de volgende basis parameters vereist. Sommige koppel configuraties hebben specifieke para meters voor het bestands systeem dat wordt gebruikt. dit wordt in meer detail beschreven in de code voorbeelden.
 
-- **Accountnaam of bron:** Als u een virtueel bestandsaandeel wilt maken, hebt u de naam van het opslagaccount of de bron ervan nodig.
-- **Relatieve bevestigingspad of bron:** de locatie van het bestandssysteem dat `fsmounts` op het compute-knooppunt `AZ_BATCH_NODE_MOUNTS_DIR`is gemonteerd, ten opzichte van de standaardmap die toegankelijk is op het knooppunt via . De exacte locatie is afhankelijk van het besturingssysteem dat op het knooppunt wordt gebruikt. De fysieke locatie op een Ubuntu-knooppunt is `mnt\batch\tasks\fsmounts`bijvoorbeeld toegewezen aan , en op `mnt\resources\batch\tasks\fsmounts`een CentOS-knooppunt wordt deze toegewezen aan .
-- **Opties voor het instellen of blobfuse-opties:** deze opties beschrijven specifieke parameters voor het monteren van een bestandssysteem.
+- **Account naam of-bron**: voor het koppelen van een virtuele bestands share hebt u de naam van het opslag account of de bron nodig.
+- **Relatief koppel pad of bron**: de locatie van het bestands systeem dat is gekoppeld aan het reken knooppunt, ten `fsmounts` opzichte van de standaard `AZ_BATCH_NODE_MOUNTS_DIR`Directory die toegankelijk is op het knoop punt via. De exacte locatie varieert, afhankelijk van het besturings systeem dat op het knoop punt wordt gebruikt. Bijvoorbeeld, de fysieke locatie op een Ubuntu-knoop punt wordt toegewezen `mnt\batch\tasks\fsmounts`aan en op een CentOS-knoop punt waaraan deze `mnt\resources\batch\tasks\fsmounts`is toegewezen.
+- Opties voor **koppelen of blobfuse**: deze opties beschrijven specifieke para meters voor het koppelen van een bestands systeem.
 
-Zodra `MountConfiguration` het object is gemaakt, `MountConfigurationList` wijst u het object toe aan de eigenschap wanneer u de groep maakt. Het bestandssysteem wordt gemonteerd wanneer een knooppunt lid wordt van een pool of wanneer het knooppunt opnieuw wordt gestart of opnieuw wordt weergegeven.
+Wanneer het `MountConfiguration` object is gemaakt, moet u het object toewijzen `MountConfigurationList` aan de eigenschap wanneer u de groep maakt. Het bestands systeem wordt gekoppeld wanneer een knoop punt wordt toegevoegd aan een pool of wanneer het knoop punt opnieuw wordt opgestart of een installatie kopie wordt gemaakt.
 
-Wanneer het bestandssysteem is gemonteerd, `AZ_BATCH_NODE_MOUNTS_DIR` wordt een omgevingsvariabele gemaakt die verwijst naar de locatie van de gemonteerde bestandssystemen en logbestanden, die nuttig zijn voor het oplossen en debuggen. Logbestanden worden in de sectie [Diagnose-bevestigingsfouten](#diagnose-mount-errors) nader toegelicht.  
+Wanneer het bestands systeem is gekoppeld, wordt er een `AZ_BATCH_NODE_MOUNTS_DIR` omgevings variabele gemaakt die verwijst naar de locatie van de gekoppelde bestands systemen en de logboek bestanden, die handig zijn voor het oplossen van problemen en fout opsporing. Logboek bestanden worden uitgebreid beschreven in het gedeelte fout bij het vaststellen van de [koppeling](#diagnose-mount-errors) .  
 
 > [!IMPORTANT]
-> Het maximum aantal gemonteerde bestandssystemen op een pool is 10. Zie [Batchservicequota en -limieten](batch-quota-limit.md#other-limits) voor details en andere limieten.
+> Het maximum aantal gekoppelde bestands systemen in een groep is 10. Zie [quota's en limieten](batch-quota-limit.md#other-limits) voor de batch-service voor meer informatie en andere beperkingen.
 
 ## <a name="examples"></a>Voorbeelden
 
-De volgende codevoorbeelden tonen het monteren van verschillende bestandsshares aan een pool van compute nodes.
+De volgende code voorbeelden laten zien hoe u een verscheidenheid aan bestands shares koppelt aan een pool van reken knooppunten.
 
-### <a name="azure-files-share"></a>Azure-bestanden delen
+### <a name="azure-files-share"></a>Azure Files share
 
-Azure Files is het standaard Azure-cloudbestandssysteemdat wordt aangeboden. Zie [Een Azure-bestandsaandeel gebruiken](../storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het zoeken naar een van de parameters in het voorbeeld van de configuratiecode voor het monteren.
+Azure Files is de standaard aanbieding van het Azure Cloud-bestands systeem. Zie [een Azure Files share gebruiken](../storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het verkrijgen van een van de para meters in het koppel configuratie code voorbeeld.
 
 ```csharp
 new PoolAddParameter
@@ -83,11 +76,11 @@ new PoolAddParameter
 }
 ```
 
-### <a name="azure-blob-file-system"></a>Azure Blob-bestandssysteem
+### <a name="azure-blob-file-system"></a>Azure Blob-bestands systeem
 
-Een andere optie is het gebruik van Azure Blob-opslag via [blobfuse.](../storage/blobs/storage-how-to-mount-container-linux.md) Het monteren van een `AccountKey` `SasKey` blob-bestandssysteem vereist een of voor uw opslagaccount. Zie [Toegangssleutels voor opslagaccount beheren](../storage/common/storage-account-keys-manage.md)of [Delen van toegangshandtekeningen (SAS) gebruiken voor](../storage/common/storage-dotnet-shared-access-signature-part-1.md)informatie over het ophalen van deze sleutels. Zie de [veelgestelde vragen](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)over het oplossen van problemen met blobfuse voor meer informatie over het gebruik van blobfuse. Voer de taak uit als **administrator**om standaardtoegang te krijgen tot de blobfuse-map. Blobfuse monteert de map op de gebruikersruimte en bij het maken van de pool wordt deze als root gemonteerd. In Linux zijn alle **administratortaken** root. Alle opties voor de FUSE-module worden beschreven op de [referentiepagina VAN FUSE.](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)
+Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB- `AccountKey` bestands `SasKey` systeem is een or vereist voor uw opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)of [hand tekeningen voor gedeelde toegang gebruiken (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
-Naast de handleiding voor het oplossen van problemen zijn GitHub-problemen in de blobfuse-opslagplaats een handige manier om te controleren op huidige blobfuse-problemen en -oplossingen. Zie [blobfuse-problemen voor](https://github.com/Azure/azure-storage-fuse/issues)meer informatie .
+Naast de hand leiding voor het oplossen van problemen, zijn GitHub problemen in de blobfuse-opslag plaats een handige manier om te controleren of er problemen zijn met blobfuse en oplossingen. Zie [blobfuse issues](https://github.com/Azure/azure-storage-fuse/issues)(Engelstalig) voor meer informatie.
 
 ```csharp
 new PoolAddParameter
@@ -111,9 +104,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="network-file-system"></a>Netwerkbestandssysteem
+### <a name="network-file-system"></a>Netwerk bestandssysteem
 
-Network File Systems (NFS) kunnen ook worden gemonteerd op knooppunten die traditionele bestandssystemen eenvoudig toegankelijk maken voor Azure Batch-knooppunten. Dit kan een enkele NFS-server zijn die in de cloud wordt geïmplementeerd of een on-premises NFS-server die via een virtueel netwerk wordt geopend. U ook profiteren van de [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) gedistribueerde in-memory cache-oplossing, die naadloze connectiviteit biedt met on-premises opslag, gegevens on-demand in de cache leest en hoge prestaties en schaal levert aan cloudgebaseerde compute nodes.
+Network File System (NFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden benaderd door Azure Batch knooppunten. Dit kan een enkele NFS-server zijn die is geïmplementeerd in de Cloud, of een on-premises NFS-server die toegankelijk is via een virtueel netwerk. U kunt ook profiteren van de [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) gedistribueerde in-memory-cache oplossing, waarmee naadloze connectiviteit wordt geboden met on-premises opslag, het lezen van gegevens op aanvraag in de cache en het leveren van hoge prestaties en schaal baarheid tot Cloud Compute-knoop punten.
 
 ```csharp
 new PoolAddParameter
@@ -134,9 +127,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="common-internet-file-system"></a>Gemeenschappelijk internetbestandssysteem
+### <a name="common-internet-file-system"></a>Common Internet File System
 
-Common Internet File Systems (CIFS) kan ook worden gemonteerd op knooppunten die traditionele bestandssystemen gemakkelijk toegankelijk maken voor Azure Batch-knooppunten. CIFS is een protocol voor het delen van bestanden dat een open en cross-platform mechanisme biedt voor het aanvragen van netwerkserverbestanden en -services. CIFS is gebaseerd op de verbeterde versie van microsoft's Server Message Block (SMB) protocol voor het delen van internet en intranet bestanden en wordt gebruikt om externe bestandssystemen op Windows-knooppunten te monteren. Zie [Bestandsserver en smb](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)voor meer informatie over SMB.
+Common Internet File Systems (CIFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden geopend door Azure Batch knooppunten. CIFS is een protocol voor het delen van bestanden dat een open en platformoverschrijdende mechanisme biedt voor het aanvragen van netwerk server bestanden en-services. CIFS is gebaseerd op de verbeterde versie van het SMB-protocol (Server Message Block) van micro soft voor het delen van Internet-en intranet bestanden en wordt gebruikt om externe bestands systemen te koppelen aan Windows-knoop punten. Zie [File Server and SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)(Engelstalig) voor meer informatie over SMB.
 
 ```csharp
 new PoolAddParameter
@@ -159,33 +152,33 @@ new PoolAddParameter
 }
 ```
 
-## <a name="diagnose-mount-errors"></a>Bevestigingsfouten diagnosticeren
+## <a name="diagnose-mount-errors"></a>Fouten bij koppelen vaststellen
 
-Als een bevestigingsconfiguratie mislukt, mislukt het compute-knooppunt in de groep en wordt de knooppuntstatus onbruikbaar. Als u een configuratiefout [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) wilt diagnosticeren, controleert u de eigenschap op details over de fout.
+Als een koppelings configuratie mislukt, mislukt het reken knooppunt in de groep en wordt de status van het knoop punt onbruikbaar. Als u een fout bij het koppelen van een configuratie [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) wilt vaststellen, inspecteert u de eigenschap voor meer informatie over de fout.
 
-Als u de logboekbestanden voor foutopsporing wilt `*.log` ophalen, gebruikt u [Uitvoerbestanden](batch-task-output-files.md) om de bestanden te uploaden. De `*.log` bestanden bevatten informatie over de `AZ_BATCH_NODE_MOUNTS_DIR` bestandssysteem mount op de locatie. Mount log bestanden hebben `<type>-<mountDirOrDrive>.log` het formaat: voor elke mount. Bijvoorbeeld, een `cifs` mount op een `test` mount directory met de `cifs-test.log`naam zal een mount log bestand met de naam: .
+Als u de logboek bestanden voor fout opsporing wilt [OutputFiles](batch-task-output-files.md) ophalen, gebruikt u `*.log` OutputFiles om de bestanden te uploaden. De `*.log` bestanden bevatten informatie over de bestandssysteem koppeling op de `AZ_BATCH_NODE_MOUNTS_DIR` locatie. Het koppelen van logboek bestanden heeft de `<type>-<mountDirOrDrive>.log` volgende indeling: voor elke koppeling. Een `cifs` koppeling op een koppelings Directory met de naam `test` heeft bijvoorbeeld een koppel logboek bestand met de `cifs-test.log`naam:.
 
-## <a name="supported-skus"></a>Ondersteunde SKU's
+## <a name="supported-skus"></a>Ondersteunde Sku's
 
-| Uitgever | Aanbieding | SKU | Azure-bestanden delen | Blobfuse | NFS-bevestiging | CIFS-bevestiging |
+| Uitgever | Aanbieding | SKU | Azure Files share | Blobfuse | NFS-koppeling | CIFS koppelen |
 |---|---|---|---|---|---|---|
-| batch | rendering-centos73 | rendering | :heavy_check_mark: <br>Opmerking: Compatibel met CentOS 7.7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-advertenties | linux-data-science-vm | linuxdsvm linuxdsvm | :heavy_check_mark: <br>Opmerking: Compatibel met CentOS 7.4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9-opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7.4, 7.3, 7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
-| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | :x: | :x: | :x: |
+| batch | Rendering-centos73 | aanwijzer | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | BxDxH | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Ads | Linux-Data-Science-VM | linuxdsvm | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Azure-batch | CentOS-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Azure-batch | CentOS-container-RDMA | 7.4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9 opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-Azure-batch | Ubuntu-Server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| micro soft-dsvm | Linux-Data-Science-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Oracle | Oracle-Linux | 7,6 | BxDxH | BxDxH | BxDxH | BxDxH |
+| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | BxDxH | BxDxH | BxDxH |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het maken van een Azure Files-share met [Windows](../storage/files/storage-how-to-use-files-windows.md) of [Linux](../storage/files/storage-how-to-use-files-linux.md).
-- Meer informatie over het gebruik en de montage van virtuele bestandssystemen [van blobfuse.](https://github.com/Azure/azure-storage-fuse)
-- Zie [overzicht van het netwerkbestandssysteem](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) voor meer informatie over NFS en de bijbehorende toepassingen.
-- Zie [overzicht van het Microsoft SMB-protocol en het CIFS-protocol](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) voor meer informatie over CIFS.
+- Meer informatie over het koppelen van een Azure Files share met [Windows](../storage/files/storage-how-to-use-files-windows.md) of [Linux](../storage/files/storage-how-to-use-files-linux.md).
+- Meer informatie over het gebruik van en koppelen van [blobfuse](https://github.com/Azure/azure-storage-fuse) Virtual File Systems.
+- Zie [overzicht Network File System](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) voor meer informatie over NFS en de bijbehorende toepassingen.
+- Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) voor meer informatie over CIFS.

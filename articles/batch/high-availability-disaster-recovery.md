@@ -1,53 +1,43 @@
 ---
-title: Hoge beschikbaarheid en herstel na noodgevallen - Azure Batch
-description: Meer informatie over het ontwerpen van uw Batch-toepassing voor een regionale storing. Workloads moeten mislukken naar een andere regio of worden verdeeld over twee of meer regio's.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
+title: Hoge Beschik baarheid en herstel na nood gevallen-Azure Batch
+description: Meer informatie over het ontwerpen van uw batch-toepassing voor een regionale storing. Werk belastingen moeten een failover uitvoeren naar een andere regio of moeten worden gesplitst tussen twee of meer regio's.
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: labrenne
-ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da46753906e27a94e3c76fcaf9c4a26861bba6c8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026078"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117434"
 ---
 # <a name="design-your-application-for-high-availability"></a>Een toepassing voor hoge beschikbaarheid ontwerpen
 
-Azure Batch is een regionale service. Batch is beschikbaar in alle Azure-regio's, maar wanneer een Batch-account wordt gemaakt, moet deze aan een regio zijn gekoppeld. Alle bewerkingen voor het batchaccount zijn vervolgens van toepassing op die regio. Zwembaden en bijbehorende virtuele machines (VM's) worden bijvoorbeeld gemaakt in dezelfde regio als het Batch-account.
+Azure Batch is een regionale service. Batch is beschikbaar in alle Azure-regio's, maar wanneer een batch-account wordt gemaakt, moet het worden gekoppeld aan een regio. Alle bewerkingen voor het batch-account worden toegepast op die regio. Pools en gekoppelde virtuele machines (Vm's) worden bijvoorbeeld gemaakt in dezelfde regio als het batch-account.
 
-Bij het ontwerpen van een toepassing die Batch gebruikt, moet u rekening houden met de mogelijkheid dat Batch niet beschikbaar is in een regio. Het is mogelijk om een zeldzame situatie tegen te komen waarin er een probleem is met de regio als geheel, de hele Batch-service in de regio of een probleem met uw specifieke Batch-account.
+Bij het ontwerpen van een toepassing die gebruikmaakt van batch, moet u rekening houden met de mogelijkheid van een batch die niet beschikbaar is in een regio. Het is mogelijk om een zeldzame situatie te ondervinden waarbij er sprake is van een probleem met de regio als geheel, de volledige batch-service in de regio of een probleem met uw specifieke batch-account.
 
-Als de toepassing of oplossing met Batch altijd beschikbaar moet zijn, moet deze zijn ontworpen om naar een andere regio te mislukken of de werkbelasting altijd te verdelen over twee of meer regio's. Beide benaderingen vereisen ten minste twee Batch-accounts, waarbij elk account zich in een andere regio bevindt.
+Als de toepassing of oplossing die gebruikmaakt van batch altijd beschikbaar moet zijn, moet deze zijn ontworpen om een failover naar een andere regio te kunnen uitvoeren of de werk belasting over twee of meer regio's te splitsen. Beide benaderingen vereisen ten minste twee batch-accounts, waarbij elk account zich in een andere regio bevindt.
 
-## <a name="multiple-batch-accounts-in-multiple-regions"></a>Meerdere Batch-accounts in meerdere regio's
+## <a name="multiple-batch-accounts-in-multiple-regions"></a>Meerdere batch-accounts in meerdere regio's
 
-Als u meerdere Batch-accounts in verschillende regio's gebruikt, uw toepassing blijven draaien als een Batch-account in een andere regio niet beschikbaar is. Het gebruik van meerdere accounts is vooral belangrijk als uw toepassing zeer beschikbaar moet zijn.
+Het gebruik van meerdere batch-accounts in verschillende regio's biedt de mogelijkheid om uw toepassing verder uit te voeren als een batch-account in een andere regio niet meer beschikbaar is. Het gebruik van meerdere accounts is met name belang rijk als uw toepassing Maxi maal beschikbaar moet zijn.
 
-In sommige gevallen kan een toepassing worden ontworpen om altijd twee of meer regio's te gebruiken. Wanneer u bijvoorbeeld een aanzienlijke hoeveelheid capaciteit nodig hebt, kan het nodig zijn om meerdere regio's te gebruiken om een grootschalige toepassing te verwerken of om tegemoet te komen aan toekomstige groei.
+In sommige gevallen kan een toepassing worden ontworpen om altijd twee of meer regio's te gebruiken. Als u bijvoorbeeld een aanzienlijke hoeveelheid capaciteit nodig hebt, moet u mogelijk meerdere regio's gebruiken om een grootschalige toepassing te verwerken of voor toekomstige groei.
 
-## <a name="design-considerations-for-providing-failover"></a>Ontwerpoverwegingen voor het verstrekken van failover
+## <a name="design-considerations-for-providing-failover"></a>Ontwerp overwegingen voor het leveren van failover
 
-Een belangrijk punt om te overwegen bij het verstrekken van de mogelijkheid om failover naar een alternatieve regio is dat alle componenten in een oplossing moeten worden overwogen; het volstaat niet om gewoon een tweede Batch-account te hebben. In de meeste Batch-toepassingen is bijvoorbeeld een Azure-opslagaccount vereist, waarbij het opslagaccount en batch-account zich in dezelfde regio moeten bevinden voor acceptabele prestaties.
+Wanneer u rekening moet houden met de mogelijkheid om een failover naar een andere regio uit te geven, is het belang rijk om te overwegen dat alle onderdelen in een oplossing moeten worden overwogen; het is niet voldoende om simpelweg een tweede batch-account te hebben. In de meeste batch-toepassingen is bijvoorbeeld een Azure-opslag account vereist, waarbij het opslag account en het batch-account moeten worden opgeslagen in dezelfde regio voor aanvaard bare prestaties.
 
-Houd rekening met de volgende punten bij het ontwerpen van een oplossing die kan mislukken:
+Houd rekening met de volgende punten bij het ontwerpen van een oplossing die failover kan:
 
-- Maak vooraf alle vereiste accounts in elke regio, zoals het Batch-account en het opslagaccount. Er zijn vaak geen kosten voor het maken van accounts, alleen wanneer er gegevens zijn opgeslagen of het account wordt gebruikt.
-- Zorg ervoor dat quota van tevoren op de accounts zijn ingesteld, zodat u het vereiste aantal cores toewijzen met behulp van het Batch-account.
-- Gebruik sjablonen en/of scripts om de implementatie van de toepassing in een regio te automatiseren.
-- Houd toepassingsbinaries en referentiegegevens up-to-date in alle regio's. Als u up-to-date blijft, zorgt u ervoor dat de regio snel online kan worden gebracht zonder te hoeven wachten op het uploaden en implementeren van bestanden. Als bijvoorbeeld een aangepaste toepassing die moet worden geïnstalleerd op poolknooppunten wordt opgeslagen en waarnaar wordt verwezen met batchtoepassingspakketten, moet deze worden geüpload naar elk Batch-account en wordt verwezen naar de poolconfiguratie (of maken van de nieuwe versie de standaardversie).
-- In de toepassing die Batch, opslag en andere services aanroept, schakelt u eenvoudig clients of de belasting over naar de verschillende regio.
-- Een beste praktijk om ervoor te zorgen dat een failover succesvol zal zijn, is om vaak over te schakelen naar een alternatieve regio als onderdeel van de normale werking. Met twee implementaties in afzonderlijke regio's schakelt u bijvoorbeeld elke maand over naar de alternatieve regio.
+- Maak vooraf alle vereiste accounts in elke regio, zoals het batch-account en het opslag account. Vaak worden er geen kosten in rekening gebracht voor het maken van accounts, alleen wanneer er gegevens zijn opgeslagen of als het account wordt gebruikt.
+- Zorg ervoor dat quota's vooraf zijn ingesteld op de accounts, zodat u het vereiste aantal kernen kunt toewijzen met behulp van het batch-account.
+- Gebruik sjablonen en/of scripts voor het automatiseren van de implementatie van de toepassing in een regio.
+- Binaire toepassings bestanden en referentie gegevens up-to-date houden in alle regio's. Als u up-to-date blijft, kunt u ervoor zorgen dat de regio snel online kan worden gebracht zonder te hoeven wachten op het uploaden en implementeren van bestanden. Als een aangepaste toepassing bijvoorbeeld op groeps knooppunten wordt opgeslagen en ernaar wordt verwezen met behulp van batch-toepassings pakketten, moet de nieuwe versie van de toepassing worden geüpload naar elk batch-account en wordt verwezen door de groeps configuratie (of de nieuwe versie de standaard versie maken).
+- In de toepassing die batch, opslag en andere services aanroept, kunt u eenvoudig clients of de belasting naar de andere regio overschakelen.
+- Een best practice om ervoor te zorgen dat een failover wordt uitgevoerd, is het regel matig overschakelen naar een alternatieve regio als onderdeel van de normale werking. Bijvoorbeeld, met twee implementaties in afzonderlijke regio's, wordt elke maand overschakeld naar de alternatieve regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het maken van Batch-accounts met de [Azure-portal,](batch-account-create-portal.md)de [Azure CLI,](cli-samples.md) [PowerShell](batch-powershell-cmdlets-get-started.md)of de [Api voor batchbeheer](batch-management-dotnet.md).
-- Standaardquota zijn gekoppeld aan een Batch-account; [in dit artikel](batch-quota-limit.md) worden de standaardquotumwaarden beschreven en wordt beschreven hoe de quota kunnen worden verhoogd.
+- Meer informatie over het maken van batch-accounts met de [Azure Portal](batch-account-create-portal.md), de [Azure cli](cli-samples.md), [Power shell](batch-powershell-cmdlets-get-started.md)of de [batch-beheer-API](batch-management-dotnet.md).
+- Standaard quota's zijn gekoppeld aan een batch-account. in [dit artikel](batch-quota-limit.md) worden de standaard quotum waarden beschreven en wordt uitgelegd hoe de quota's kunnen worden verhoogd.

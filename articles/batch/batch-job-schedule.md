@@ -1,85 +1,78 @@
 ---
 title: Uw taken plannen
-description: Gebruik taakplanning om uw taken te beheren.
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
+description: Gebruik taak planning om uw taken te beheren.
 ms.topic: article
-ms.workload: big-compute
 ms.date: 02/20/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 55ea8fb4cc0e65deaa89d718c4a46513716dcf54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b2064d38f9f646c6189d859479d2414569ff60
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672431"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116873"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Taken plannen voor efficiëntie
 
-Met batchtaken u eerst prioriteit geven aan de taken die u wilt uitvoeren, rekening houdend met taken die afhankelijk zijn van andere taken. Door uw taken te plannen, u ervoor zorgen dat u de minste hoeveelheid resources gebruikt. Knooppunten kunnen worden buiten gebruik gesteld wanneer dit niet nodig is, taken die afhankelijk zijn van andere taken worden net op tijd opgebouwd om de werkstromen te optimaliseren. Er wordt maar één taak per keer uitgevoerd. Een nieuwe start pas als de vorige is voltooid. U uw taak automatisch aanvullen. 
+Met batch-taken plannen kunt u de taken die u voor het eerst wilt uitvoeren, rangschikken terwijl u rekening houdt met taken die afhankelijkheden hebben met andere taken. Door uw taken te plannen, kunt u ervoor zorgen dat u de kleinste hoeveelheid resources gebruikt. Knoop punten kunnen worden buiten gebruik gesteld wanneer dit niet nodig is. taken die afhankelijk zijn van andere taken, worden alleen in de tijd voor het optimaliseren van de werk stromen. Er wordt slechts één taak tegelijk uitgevoerd. Er wordt pas een nieuw item gestart wanneer het vorige item is voltooid. U kunt de taak instellen op automatisch aanvullen. 
 
-## <a name="benefit-of-job-scheduling"></a>Voordeel van taakplanning
+## <a name="benefit-of-job-scheduling"></a>Voor deel van taak planning
 
-Het voordeel van het plannen van taken is dat u een planning voor het maken van banen opgeven. De taken die u plant met taakbeheertaken, zijn gekoppeld aan een taak. De taak voor taakvoor taak maakt taken voor de taak. Hiervoor moet de taak voor taak voor taak voor taak taak worden geverifieerd met het Batch-account. Gebruik het AZ_BATCH_AUTHENTICATION_TOKEN access token. Het token geeft toegang tot de rest van de taak. 
+Het voor deel van het plannen van taken is dat u een planning kunt opgeven voor het maken van taken. De taken die u plant met taak beheer taak zijn gekoppeld aan een taak. Met de taak taak beheer worden taken voor de taak gemaakt. Om dit te doen, moet de taak beheer taak verifiëren met het batch-account. Gebruik het toegangs token AZ_BATCH_AUTHENTICATION_TOKEN. Het token staat toegang tot de rest van de taak toe. 
 
 ## <a name="use-the-portal-to-schedule-a-job"></a>De portal gebruiken om een taak te plannen
 
    1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-   2. Selecteer het Batch-account waarin u taken wilt plannen.
+   2. Selecteer het batch-account waarin u taken wilt plannen.
 
-   3. Selecteer **Toevoegen** om een nieuw taakschema te maken en vul het **basisformulier in**.
+   3. Selecteer **toevoegen** om een nieuwe taak planning te maken en het **basis formulier**te volt ooien.
 
 
 
 ![Een taak plannen][1]
 
-**Taakschema-id**: de unieke id voor dit taakschema.
+**Taak schema-ID**: de unieke id voor deze taak planning.
 
-**Weergavenaam:** De weergavenaam voor de taak hoeft niet uniek te zijn, maar heeft een maximale lengte van 1024 tekens.
+**Weergave naam**: de weergave naam voor de taak hoeft niet uniek te zijn, maar heeft een maximale lengte van 1024 tekens.
 
-**Niet uitvoeren totdat**: Hiermee geeft u de vroegste tijd op dat de taak wordt uitgevoerd. Als u dit niet instelt, wordt het schema klaar om taken onmiddellijk uit te voeren.
+**Niet uitvoeren tot**: geeft de vroegste tijd aan waarop de taak wordt uitgevoerd. Als u deze niet instelt, wordt de planning gereed om taken direct uit te voeren.
 
-**Niet uitvoeren na**: Geen taken worden uitgevoerd na de tijd die u hier instelt. Als u geen tijd opgeeft, maakt u een terugkerend taakschema dat actief blijft totdat u het expliciet beëindigt.
+**Niet uitvoeren na**: er worden geen taken uitgevoerd na de tijd die u hier hebt ingesteld. Als u geen tijd opgeeft, maakt u een terugkerende taak planning die actief blijft totdat u deze expliciet beëindigt.
 
-**Herhalingsinterval:** u de hoeveelheid tijd tussen taken opgeven. U slechts één taak tegelijk hebben gepland, dus als het tijd is om een nieuwe taak te maken onder een taakschema, maar de vorige taak wordt nog steeds uitgevoerd, wordt de batchservice pas als de vorige taak is voltooid.  
+**Herhalings interval**: u kunt de hoeveelheid tijd tussen taken opgeven. U kunt slechts één taak tegelijk gepland hebben, dus als het tijd is om een nieuwe taak te maken onder een taak schema, maar de vorige taak nog steeds wordt uitgevoerd, maakt de batch-service de nieuwe taak pas nadat de vorige taak is voltooid.  
 
-**Startvenster**: Hier geeft u het tijdsinterval op, vanaf het tijdstip waarop de planning aangeeft dat er een taak moet worden gemaakt, totdat deze moet worden voltooid. Als de huidige taak niet wordt voltooid tijdens het venster, wordt de volgende taak niet gestart.
+**Start venster**: Hier geeft u het tijds interval op, beginnend bij het tijdstip waarop de planning aangeeft dat een taak moet worden gemaakt, totdat deze is voltooid. Als de huidige taak niet is voltooid tijdens het venster, wordt de volgende taak niet gestart.
 
-Onderaan het basisformulier geeft u de pool op waarop u de taak wilt uitvoeren. Als u uw pool-id-gegevens wilt vinden, selecteert u **Bijwerken**. 
+Onder aan het basis formulier geeft u de pool op waarop u de taak wilt uitvoeren. Selecteer **Update**om de gegevens van uw groeps-id te vinden. 
 
 ![Groep opgeven][2]
 
 
-**Pool ID:** Identificeer de pool waarop u de taak uitvoert.
+**Groeps-id**: Identificeer de pool waarop u de taak wilt uitvoeren.
 
-**Taakconfiguratietaak**: Selecteer **Bijwerken** om de taak Jobmanager en de taken voor het voorbereiden en vrijgeven van taken voor taak te benoemen als u deze gebruikt.
+Taak taak **configuratie**: Selecteer **bijwerken** om de taak taak beheer een naam te geven, evenals de taak voorbereidings-en release taken als u deze gebruikt.
 
-**Prioriteit**: Geef de baan een prioriteit.
+**Prioriteit**: Geef de taak een prioriteit.
 
-**Maximale wandkloktijd**: Stel de maximale tijd in waarvoor de taak kan worden uitgevoerd. Als de taak niet binnen het tijdsbestek wordt voltooid, beëindigt Batch de taak. Als u dit niet instelt, is er geen tijdslimiet voor de taak.
+**Maximale klok tijd**van de wand: Stel de maximale hoeveelheid tijd in waarop de taak kan worden uitgevoerd. Als deze niet binnen het tijds bestek wordt voltooid, wordt de taak door batch beëindigd. Als u dit niet instelt, is er geen tijds limiet voor de taak.
 
-**Maximaal aantal taken:** geef het aantal keren op dat een taak maximaal vier keer opnieuw kan worden geprobeerd. Dit is niet hetzelfde als het aantal nieuwe pogingen dat een API-aanroep zou kunnen hebben.
+**Maximum aantal nieuwe pogingen**voor de taak: Geef op hoe vaak een taak Maxi maal vier keer kan worden uitgevoerd. Dit is niet hetzelfde als het aantal nieuwe pogingen dat een API-aanroep kan hebben.
 
-**Wanneer alle taken zijn voltooid:** de standaardinstelling is geen actie.
+**Wanneer alle taken zijn voltooid**: de standaard waarde is geen actie.
 
-**Wanneer een taak mislukt:** De standaardinstelling is geen actie. Een taak mislukt als het aantal nieuwe gegevens is uitgeput of er een fout is opgetreden bij het starten van de taak. 
+**Wanneer een taak mislukt**: de standaard waarde is geen actie. Een taak mislukt als het aantal nieuwe pogingen is uitgeput of als er een fout is opgetreden bij het starten van de taak. 
 
-Nadat u **Opslaan**hebt geselecteerd, als u naar **Taakschema's** in de linkernavigatie gaat, u de uitvoering van de taak bijhouden door **Uitvoeringsgegevens te**selecteren.
+Nadat u **Opslaan**hebt geselecteerd en u in de linkernavigatiebalk naar **taak planningen** gaat, kunt u de uitvoering van de taak volgen door **uitvoerings gegevens**te selecteren.
 
 
 ## <a name="for-more-information"></a>Voor meer informatie
 
-Zie het taakschema van de [AZ-batch](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)om een taak te beheren met de Azure CLI.
+Zie [AZ batch job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)voor informatie over het beheren van een taak met behulp van de Azure cli.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Maak taakafhankelijkheden om taken uit te voeren die afhankelijk zijn van andere taken](batch-task-dependencies.md).
+[Maak taak afhankelijkheden om taken uit te voeren die afhankelijk zijn van andere taken](batch-task-dependencies.md).
 
 
 

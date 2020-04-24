@@ -1,22 +1,15 @@
 ---
-title: Zelfstudie - De Azure Batch-clientbibliotheek voor Node.js gebruiken | Microsoft Docs
+title: 'Zelf studie: de Azure Batch-client bibliotheek gebruiken voor node. js'
 description: Leer de basisconcepten van Azure Batch en bouw een eenvoudige oplossing met behulp van Node.js.
-services: batch
-author: shwetams
-manager: evansma
 ms.assetid: ''
-ms.service: batch
-ms.devlang: nodejs
 ms.topic: conceptual
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: shg
-ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023647"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116856"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Aan de slag met de Batch-SDK voor Node.js
 
@@ -67,7 +60,7 @@ Met deze opdracht wordt de meest recente versie van de Azure Batch Node-SDK geï
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Stap 2: een Azure Batch-account maken
 
-U deze maken vanuit de [Azure-portal](batch-account-create-portal.md) of van de opdrachtregel[(PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI).](/cli/azure)
+U kunt deze maken via de [Azure Portal](batch-account-create-portal.md) of vanaf de opdracht regel ([Power shell](batch-powershell-cmdlets-get-started.md) /[Azure cli](/cli/azure)).
 
 Nu volgende opdrachten om er een te maken via Azure CLI.
 

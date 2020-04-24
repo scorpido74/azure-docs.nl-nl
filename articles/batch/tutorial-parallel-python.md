@@ -1,21 +1,16 @@
 ---
-title: Een parallelle workload uitvoeren - Azure Batch Python
+title: Een parallelle workload uitvoeren
 description: 'Zelfstudie: Mediabestanden parallel verwerken met ffmpeg in Azure Batch met behulp van de clientbibliotheek Batch Python'
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77023086"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117111"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Zelfstudie: Een parallelle workload uitvoeren met Azure Batch met behulp van de Python API
 
@@ -37,13 +32,13 @@ In deze zelfstudie zet u MP4-mediabestanden parallel om in de MP3-indeling met b
 
 * [Python-versie 2.7 of 3.3 of later](https://www.python.org/downloads/)
 
-* [pip-pakketmanager](https://pip.pypa.io/en/stable/installing/)
+* [PIP](https://pip.pypa.io/en/stable/installing/) -pakket beheer
 
 * Een Azure Batch-account en een gekoppeld Azure Storage-account. Zie de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 
@@ -107,13 +102,13 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Ga naar uw Batch-account in de Azure Portal om de pool, rekenknooppunten, job en taken te controleren. Als u bijvoorbeeld een heatmap van de compute nodes in uw groep wilt bekijken, klikt u op*LinuxFFmpegPool* **.** > 
+Ga naar uw Batch-account in de Azure Portal om de pool, rekenknooppunten, job en taken te controleren. Als u bijvoorbeeld een heatmap van de reken knooppunten in uw pool wilt zien, klikt u op **Pools** > *LinuxFFmpegPool*.
 
 Wanneer taken worden uitgevoerd, ziet de heatmap er bijvoorbeeld als volgt uit:
 
 ![Heatmap van pool](./media/tutorial-parallel-python/pool.png)
 
-De normale uitvoeringstijd is ongeveer **5 minuten** wanneer u de toepassing in de standaardconfiguratie uitvoert. Het maken van de pool kost de meeste tijd. 
+Typische uitvoerings tijd is ongeveer **5 minuten** wanneer u de toepassing uitvoert in de standaard configuratie. Het maken van de pool kost de meeste tijd. 
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -131,7 +126,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
-De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md)om individuele gebruikers of een onbeheerde toepassing te verifiëren.
+De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md), om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,

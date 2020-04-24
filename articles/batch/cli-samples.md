@@ -1,26 +1,16 @@
 ---
-title: Azure CLI-voorbeelden - Batch
-description: Azure CLI-voorbeelden voor Azure Batch-service. Meer informatie over het maken van een Batch-account en het toevoegen van een toepassing.
-services: batch
-documentationcenter: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
+title: Voor beelden van Azure CLI
+description: Voor beelden van Azure CLI voor Azure Batch service. Meer informatie over het maken van een batch-account en het toevoegen van een toepassing.
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: ''
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: dd95511365a25c8f642cb7dcc5ef477f90926d31
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6674c3e1523408ea24a0b1b956c72af905821bb3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77022695"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117468"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure CLI-voorbeelden voor Azure Batch
 

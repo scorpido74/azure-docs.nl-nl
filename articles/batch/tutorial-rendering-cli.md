@@ -1,20 +1,15 @@
 ---
-title: Een scène renderen in de cloud - Azure Batch
+title: Een scène weer geven in de Cloud
 description: 'Zelfstudie: Een Autodesk 3ds Max-scène renderen met Arnold met behulp van de Batch-renderingservice en de Azure-opdrachtregelinterface'
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78672982"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117128"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
@@ -33,7 +28,7 @@ In deze zelfstudie rendert u een 3ds Max-scène met Batch met behulp van de ray-
 
 U hebt een abonnement op basis van betalen-per-gebruik of een andere betaalde Azure-optie nodig om renderingtoepassingen in Batch te kunnen gebruiken op basis van betalen per gebruik. **Licenties op basis van betalen per gebruik worden niet ondersteund als u gebruikmaakt van een gratis Azure-aanbieding die een financieel tegoed biedt.**
 
-De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright &copy; Autodesk, Inc.)
+De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright &copy; auto Desk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -70,7 +65,7 @@ az batch account create \
     --location eastus2
 ```
 
-Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken uw `az batch`-opdrachten gebruik van deze accountcontext. In het volgende voorbeeld wordt verificatie met gedeelde sleutels gebruikt, op basis van de naam en sleutel van het Batch-account. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md)om individuele gebruikers of een onbeheerde toepassing te verifiëren.
+Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken uw `az batch`-opdrachten gebruik van deze accountcontext. In het volgende voorbeeld wordt verificatie met gedeelde sleutels gebruikt, op basis van de naam en sleutel van het Batch-account. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md), om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
 
 ```azurecli-interactive 
 az batch account login \
@@ -138,7 +133,7 @@ Maak een Batch-pool voor rendering met de opdracht [az batch pool create](/cli/a
   "enableInterNodeCommunication": false 
 }
 ```
-Batch ondersteunt speciale knooppunten en knooppunten [met een lage prioriteit](batch-low-pri-vms.md) en u een van beide of beide in uw groepen gebruiken. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft. 
+Batch ondersteunt toegewezen knoop punten en knoop punten met een [lage prioriteit](batch-low-pri-vms.md) en u kunt een of beide gebruiken in uw Pools. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft. 
 
 De opgegeven pool bevat één knooppunt met lage prioriteit waarop een installatiekopie van Windows Server wordt uitgevoerd met software voor de Batch-renderingservice. Deze pool heeft een licentie om te renderen met 3ds Max en Arnold. In een latere stap schaalt u de pool naar een groter aantal knooppunten.
 
@@ -168,7 +163,7 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Batch moet een SAS-token (Shared Access Signature) gebruiken om uitvoerbestanden naar de container te kunnen schrijven. Maak het token met de opdracht [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In dit voorbeeld wordt een token gemaakt om naar elke blobcontainer in het account te schrijven en het token verloopt op 15 november 2020:
+Batch moet een SAS-token (Shared Access Signature) gebruiken om uitvoerbestanden naar de container te kunnen schrijven. Maak het token met de opdracht [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In dit voor beeld wordt een token gemaakt om te schrijven naar een BLOB-container in het account en het token verloopt op 15 november 2020:
 
 ```azurecli-interactive
 az storage account generate-sas \
@@ -291,7 +286,7 @@ Deze wijziging duurt enkele minuten. Tijdens dit proces stelt u de volgende take
 
 ## <a name="render-a-multiframe-scene"></a>Een scène met meerdere frames renderen
 
-Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds *Max-scène MotionBlur-DragonFlying.max*weer te geven.
+Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U kunt het bestand downloaden van [github](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) In elk van de zes taken wordt een Arnold-opdracht regel opgegeven voor het weer geven van één frame van de 3ds Max scène *motionblur dragonflying. Max*.
 
 Maak een bestand in uw huidige shell met de naam *myrendertask_multi.json* en kopieer en plak de inhoud uit het gedownloade bestand. Wijzig de elementen `blobSource` en `containerURL` in het JSON-bestand, zodat ze de naam van uw opslagaccount en uw SAS-token bevatten. Let erop dat u de instellingen voor elk van de zes taken wijzigt. Sla het bestand op en voer de volgende opdracht uit om de taken in de wachtrij te plaatsen:
 
@@ -317,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-De taken genereren uitvoerbestanden met de naam *dragon0002.jpg* - *dragon0007.jpg* op de compute nodes en uploadze naar de *job-myrenderjob* container in uw opslagaccount. Als u de uitvoer wilt bekijken, downloadt u de bestanden naar een map op uw lokale computer met de opdracht [az storage blob download-batch](/cli/azure/storage/blob). Bijvoorbeeld:
+De taken genereren uitvoer bestanden met de naam *dragon0002. jpg* - *dragon0007. jpg* op de reken knooppunten en uploaden ze naar de container *Job-myrenderjob* in uw opslag account. Als u de uitvoer wilt bekijken, downloadt u de bestanden naar een map op uw lokale computer met de opdracht [az storage blob download-batch](/cli/azure/storage/blob). Bijvoorbeeld:
 
 ```azurecli-interactive
 az storage blob download-batch \

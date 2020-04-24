@@ -1,22 +1,16 @@
 ---
-title: Een parallelle workload uitvoeren - Azure Batch .NET
+title: Een parallelle workload uitvoeren
 description: 'Zelfstudie: Mediabestanden parallel transcoderen met ffmpeg in Azure Batch met behulp van de clientbibliotheek Batch .NET'
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24f68ee1d2650a5f3e77b61fb30b5c0185cd82b1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254594"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117145"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Zelfstudie: Een parallelle workload uitvoeren met Azure Batch met behulp van de .NET API
 
@@ -37,7 +31,7 @@ In deze zelfstudie zet u MP4-mediabestanden parallel om in de MP3-indeling met b
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Visual Studio 2017 of hoger](https://www.visualstudio.com/vs)of [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) voor Linux, macOS of Windows.
+* [Visual Studio 2017 of hoger](https://www.visualstudio.com/vs), of [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) voor Linux, macOS of Windows.
 
 * Een Batch-account en een gekoppeld Azure Storage-account. Zie de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts.
 
@@ -45,14 +39,14 @@ In deze zelfstudie zet u MP4-mediabestanden parallel om in de MP3-indeling met b
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="add-an-application-package"></a>Een toepassingspakket toevoegen
 
 Gebruik de Azure Portal om ffmpeg als een [toepassingspakket](batch-application-packages.md) toe te voegen aan uw Batch-account. Toepassingspakketten helpen u bij het beheer van taaktoepassingen en de implementatie ervan in de rekenknooppunten in uw pool. 
 
-1. Klik in de Azure-portal op**Batch-accounts** **met meer services** > en klik op de naam van uw Batch-account.
-3. Klik**op Toevoegen van** **toepassingen** > .
+1. Klik in het Azure Portal op **meer services** > **batch-accounts**en klik op de naam van uw batch-account.
+3. Klik op **toepassingen** > **toevoegen**.
 4. Voer *ffmpeg* in voor **Toepassings-id** met een pakketversie van *3.4*. Selecteer het zip-bestand voor ffmpeg dat u eerder hebt gedownload en klik vervolgens op **OK**. Het toepassingspakket voor ffmpeg wordt toegevoegd aan uw Batch-account.
 
 ![Toepassingspakket toevoegen](./media/tutorial-parallel-dotnet/add-application.png)
@@ -97,7 +91,7 @@ const string appPackageVersion = "3.4";
 
 Bouw de toepassing in Visual Studio en voer deze uit. U kunt ook de opdrachtregel gebruiken met de opdrachten `dotnet build` en `dotnet run`. Nadat de toepassing is uitgevoerd, bekijkt u de code voor meer informatie over wat elk onderdeel van de toepassing doet. Dit kan bijvoorbeeld als volgt in Visual Studio:
 
-* Klik met de rechtermuisknop op de oplossing in Solution Explorer en klik op **Oplossing bouwen**. 
+* Klik met de rechter muisknop op de oplossing in Solution Explorer en klik op **Build Solution**. 
 
 * Bevestig het herstel van alle NuGet-pakketten als dit wordt gevraagd. Als u ontbrekende pakketten moet downloaden, zorgt u ervoor dat [NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) is geïnstalleerd.
 
@@ -124,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Ga naar uw Batch-account in de Azure Portal om de pool, rekenknooppunten, job en taken te controleren. Als u bijvoorbeeld een warmtekaart van de compute nodes in uw groep wilt bekijken, klikt u op **Pools** > *WinFFmpegPool*.
+Ga naar uw Batch-account in de Azure Portal om de pool, rekenknooppunten, job en taken te controleren. Als u bijvoorbeeld een heatmap van de reken knooppunten in uw pool wilt zien, klikt u op **Pools** > *WinFFmpegPool*.
 
 Wanneer taken worden uitgevoerd, ziet de heatmap er bijvoorbeeld als volgt uit:
 
@@ -199,7 +193,7 @@ Daarna wordt in het voorbeeld met behulp van een aanroep naar `CreatePoolIfNotEx
 Het aantal knooppunten en de VM-grootte worden ingesteld met behulp van gedefinieerde constanten. Batch ondersteunt toegewezen knooppunten en [knooppunten met een lage prioriteit](batch-low-pri-vms.md) en u kunt een of beide gebruiken in uw pools. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft. In het voorbeeld wordt standaard een pool met slechts 5 knooppunten met lage prioriteit gemaakt met de grootte *Standard_A1_v2*.
 
 >[!Note]
->Zorg ervoor dat u uw knooppunt quota controleren. Zie [Batchservicequota en -limieten](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) voor instructies voor het maken van een quotumaanvraag.".
+>Controleer de quota van uw knoop punten. Zie [quota's en limieten](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) voor de batch-service voor instructies voor het maken van een quotum aanvraag.
 
 De toepassing ffmpeg wordt geïmplementeerd in de rekenknooppunten door een [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) toe te voegen aan de poolconfiguratie.
 
@@ -340,4 +334,4 @@ Voor meer voorbeelden van het gebruik van de .NET API om Batch-workloads te plan
 > [C#-voorbeelden voor Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
 
 
-Het instellen van de instantievariabele LowPriorityNodeCount=0 en de DedicatedNodeCount=5 hebben het probleem opgelost en de taak kunnen voltooien.
+Het instellen van de exemplaar variabele LowPriorityNodeCount = 0 en de DedicatedNodeCount = 5 hebben het probleem opgelost en de taak volledig toegestaan.

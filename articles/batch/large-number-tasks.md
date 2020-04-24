@@ -1,70 +1,59 @@
 ---
-title: Een groot aantal taken verzenden - Azure Batch | Microsoft Documenten
-description: Een zeer groot aantal taken efficiënt indienen in één Azure Batch-taak
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
+title: Een groot aantal taken indienen
+description: Efficiënte verzen ding van een zeer groot aantal taken in een enkele Azure Batch taak
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 08/24/2018
-ms.author: labrenne
-ms.custom: ''
-ms.openlocfilehash: c3857e512da5fe4fceefa5f735ddc65f73e11623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0be30e1a413a224d566db535d369a0b285b1f668
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026044"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117400"
 ---
-# <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Een groot aantal taken verzenden naar een batchtaak
+# <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Een groot aantal taken verzenden naar een batch-taak
 
-Wanneer u grootschalige Azure Batch-workloads uitvoert, u tienduizenden, honderdduizenden of zelfs meer taken naar één taak verzenden. 
+Wanneer u grootschalige Azure Batch werk belastingen uitvoert, wilt u mogelijk tien tallen duizenden, honderd duizenden of zelfs meer taken verzenden naar één taak. 
 
-Dit artikel geeft richtlijnen en enkele codevoorbeelden om grote aantallen taken in te dienen met een aanzienlijk verhoogde doorvoer naar één batchtaak. Nadat taken zijn verzonden, worden de batchwachtrij ingevoerd voor verwerking in de groep die u voor de taak opgeeft.
+Dit artikel bevat richt lijnen en enkele code voorbeelden voor het indienen van een groot aantal taken met een aanzienlijk verhoogde door Voer voor één batch-taak. Nadat de taken zijn verzonden, voeren ze de batch-wachtrij in voor verwerking op de groep die u voor de taak opgeeft.
 
-## <a name="use-task-collections"></a>Taakverzamelingen gebruiken
+## <a name="use-task-collections"></a>Taak verzamelingen gebruiken
 
-De Batch API's bieden methoden om taken efficiënt toe te voegen aan een taak als *verzameling,* naast één tegelijk. Wanneer u een groot aantal taken toevoegt, moet u de juiste methoden of overbelasting gebruiken om taken toe te voegen als verzameling. Over het algemeen maakt u een taakverzameling door taken te definiëren terwijl u een reeks invoerbestanden of parameters voor uw taak overneemt.
+De batch-Api's bieden methoden om op efficiënte wijze taken toe te voegen aan een taak als een *verzameling*, naast elkaar. Bij het toevoegen van een groot aantal taken moet u de juiste methoden of Overloads gebruiken om taken als een verzameling toe te voegen. Over het algemeen maakt u een taak verzameling door taken te definiëren tijdens het herhalen van een set invoer bestanden of para meters voor uw taak.
 
-De maximale grootte van de taakverzameling die u in één gesprek toevoegen, is afhankelijk van de Batch-API die u gebruikt:
+De maximale grootte van de taak verzameling die u in één aanroep kunt toevoegen, is afhankelijk van de batch-API die u gebruikt:
 
-* De volgende Batch-API's beperken de verzameling tot **100 taken**. De limiet kan kleiner zijn, afhankelijk van de grootte van de taken, bijvoorbeeld als de taken een groot aantal resourcebestanden of omgevingsvariabelen hebben.
+* De volgende batch-Api's beperken de verzameling tot **100 taken**. De limiet kan kleiner zijn, afhankelijk van de grootte van de taken, bijvoorbeeld als de taken een groot aantal bron bestanden of omgevings variabelen hebben.
 
-    * [REST-API](/rest/api/batchservice/task/addcollection)
+    * [REST API](/rest/api/batchservice/task/addcollection)
     * [Python-API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
+    * [Node. js-API](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
-  Wanneer u deze API's gebruikt, moet u logica bieden om het aantal taken te verdelen om aan de verzamellimiet te voldoen en fouten en nieuwe pogingen te verwerken in het geval de toevoeging van taken mislukt. Als een taakverzameling te groot is om toe te voegen, genereert de aanvraag een fout en moet deze opnieuw worden geprobeerd met minder taken.
+  Wanneer u deze Api's gebruikt, moet u logica opgeven om het aantal taken te verdelen om te voldoen aan de verzamelings limiet, en om fouten te verwerken en nieuwe pogingen te doen voor het toevoegen van taken mislukt. Als een taak verzameling te groot is om toe te voegen, genereert de aanvraag een fout en moet deze opnieuw worden uitgevoerd met minder taken.
 
-* De volgende API's ondersteunen veel grotere taakverzamelingen - alleen beperkt door de beschikbaarheid van RAM op de verzendende client. Deze API's verwerken op transparante wijze het verdelen van de taakverzameling in 'segmenten' voor de API's en nieuwe vermeldingen op een lager niveau als de toevoeging van taken mislukt.
+* De volgende Api's ondersteunen veel grotere taak verzamelingen: alleen beperkt door de RAM-Beschik baarheid van de verzendende client. Deze Api's behandelen op transparante wijze de verzameling van de taken in ' chunks ' voor de Api's op lagere niveaus en nieuwe pogingen als het toevoegen van taken mislukt.
 
     * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
     * [Java-API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
-    * [Azure Batch CLI-extensie](batch-cli-templates.md) met Batch CLI-sjablonen
+    * [Azure batch cli-extensie](batch-cli-templates.md) met batch-cli-sjablonen
     * [Python SDK-extensie](https://pypi.org/project/azure-batch-extensions/)
 
-## <a name="increase-throughput-of-task-submission"></a>Doorvoer van taakindiening verhogen
+## <a name="increase-throughput-of-task-submission"></a>De door Voer van het verzenden van taken verhogen
 
-Het kan enige tijd duren om een grote verzameling taken toe te voegen aan een taak - bijvoorbeeld tot 1 minuut om 20.000 taken toe te voegen via de .NET API. Afhankelijk van de Batch API en uw workload u de taakdoorvoer verbeteren door een of meer van de volgende opties te wijzigen:
+Het kan enige tijd duren om een grote verzameling taken toe te voegen aan een taak, bijvoorbeeld Maxi maal 1 minuut om 20.000 taken toe te voegen via de .NET API. Afhankelijk van de batch-API en uw workload, kunt u de door Voer van de taak verbeteren door een of meer van de volgende wijzigingen aan te brengen:
 
-* **Taakgrootte** - Het toevoegen van grote taken duurt langer dan het toevoegen van kleinere taken. Als u de grootte van elke taak in een verzameling wilt verkleinen, u de taakopdrachtregel vereenvoudigen, het aantal omgevingsvariabelen verminderen of de vereisten voor taakuitvoering efficiënter afhandelen. In plaats van bijvoorbeeld een groot aantal bronbestanden te gebruiken, installeert u taakafhankelijkheden met behulp van een [starttaak](batch-api-basics.md#start-task) op de groep of gebruikt u een [toepassingspakket](batch-application-packages.md) of [Docker-container.](batch-docker-container-workloads.md)
+* **Taak grootte** : het toevoegen van grote taken duurt langer dan kleinere items. Als u de grootte van elke taak in een verzameling wilt verkleinen, kunt u de taak opdracht regel vereenvoudigen, het aantal omgevings variabelen verminderen of de vereisten voor het uitvoeren van taken efficiënter afhandelen. In plaats van een groot aantal bron bestanden te gebruiken, moet u bijvoorbeeld taak afhankelijkheden installeren met behulp van een [begin taak](batch-api-basics.md#start-task) in de pool of een [toepassings pakket](batch-application-packages.md) of [docker-container](batch-docker-container-workloads.md)gebruiken.
 
-* **Aantal parallelle bewerkingen** - Afhankelijk van de Batch API verhoogt u de doorvoer door het maximum aantal gelijktijdige bewerkingen door de batchclient te verhogen. Configureer deze instelling met de eigenschap [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) `threads` in de .NET API of de parameter van methoden zoals [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) in de Batch Python SDK-extensie. (Deze eigenschap is niet beschikbaar in de native Batch Python SDK.) Standaard is deze eigenschap ingesteld op 1, maar stelt deze hoger in om de doorvoer van bewerkingen te verbeteren. U ruilt verhoogde doorvoer af door netwerkbandbreedte en cpu-prestaties te verbruiken. Taakdoorvoer neemt toe met maximaal `MaxDegreeOfParallelism` 100 keer de of `threads`. In de praktijk moet u het aantal gelijktijdige bewerkingen onder de 100 instellen. 
+* **Aantal parallelle bewerkingen** : Verhoog de door Voer, afhankelijk van de batch-API door het maximum aantal gelijktijdige bewerkingen door de batch-client te verhogen. Configureer deze instelling met behulp van de eigenschap [BatchClientParallelOptions. MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) in de .net API `threads` of de para meter van methoden zoals [TaskOperations. ADD_COLLECTION](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) in de batch python SDK-extensie. (Deze eigenschap is niet beschikbaar in de systeem eigen batch python SDK.) Standaard is deze eigenschap ingesteld op 1, maar is deze hoger ingesteld om de door Voer van bewerkingen te verbeteren. U kunt een verhoogde door Voer afhandelen door gebruik te maken van de netwerk bandbreedte en enkele CPU-prestaties. De door Voer van de taak wordt verhoogd met `MaxDegreeOfParallelism` maxi `threads`maal 100 keer de of. In de praktijk moet u het aantal gelijktijdige bewerkingen onder 100 instellen. 
  
-  De Azure Batch CLI-extensie met batchsjablonen verhoogt het aantal gelijktijdige bewerkingen automatisch op basis van het aantal beschikbare kernen, maar deze eigenschap is niet configureerbaar in de CLI. 
+  Met de Azure Batch CLI-uitbrei ding met batch sjablonen wordt het aantal gelijktijdige bewerkingen automatisch verhoogd op basis van het aantal beschik bare kernen, maar deze eigenschap kan niet worden geconfigureerd in de CLI. 
 
-* **HTTP-verbindingslimieten** - Het aantal gelijktijdige HTTP-verbindingen kan de prestaties van de Batch-client beperken wanneer deze grote aantallen taken toevoegt. Het aantal HTTP-verbindingen is beperkt met bepaalde API's. Bij het ontwikkelen met de .NET API is de eigenschap [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) standaard ingesteld op 2. We raden u aan de waarde te verhogen tot een getal dat dicht bij of groter is dan het aantal parallelle bewerkingen.
+* **Http-verbindings limieten** : het aantal gelijktijdige http-verbindingen kan de prestaties van de batch-client beperken wanneer er grote aantallen taken worden toegevoegd. Het aantal HTTP-verbindingen is beperkt met bepaalde Api's. Bij het ontwikkelen met de .NET API, bijvoorbeeld de eigenschap [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) is standaard ingesteld op 2. U wordt aangeraden de waarde te verhogen naar een getal dat dicht bij of gelijk is aan het aantal parallelle bewerkingen.
 
-## <a name="example-batch-net"></a>Voorbeeld: Batch .NET
+## <a name="example-batch-net"></a>Voor beeld: batch .NET
 
-In de volgende C#-fragmenten worden instellingen weergegeven die u wilt configureren bij het toevoegen van een groot aantal taken met de Batch .NET API.
+In de volgende C#-fragmenten worden instellingen weer gegeven voor configuratie bij het toevoegen van een groot aantal taken met behulp van de batch .NET-API.
 
-Als u de taakdoorvoer wilt verhogen, verhoogt u de waarde van de eigenschap [MaxDegreeOfParallelisme](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) van de [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Bijvoorbeeld:
+Verhoog de waarde van de eigenschap [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) van de [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet)om de door Voer van de taak te verg Roten. Bijvoorbeeld:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -73,8 +62,8 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
   };
 ...
 ```
-Voeg een taakverzameling toe aan de taak met de juiste overbelasting van de methode [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) of [AddTask.](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
-) Bijvoorbeeld:
+Voeg een taak verzameling toe aan de taak met behulp van de juiste overbelasting van de methode [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) of [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
+) . Bijvoorbeeld:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -84,11 +73,11 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>Voorbeeld: Batch CLI-extensie
+## <a name="example-batch-cli-extension"></a>Voor beeld: batch CLI-extensie
 
-Met de Azure Batch CLI-extensies met [Batch CLI-sjablonen](batch-cli-templates.md)maakt u een JSON-bestand voor taaksjablonen met een [taakfabriek](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md). De taakfabriek configureert een verzameling gerelateerde taken voor een taak vanuit één taakdefinitie.  
+Maak met behulp van de Azure Batch CLI-extensies met [batch-cli-sjablonen](batch-cli-templates.md)een taak sjabloon-JSON-bestand dat een [taak fabriek](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md)bevat. De taak-Factory configureert een verzameling van gerelateerde taken voor een taak uit een enkele taak definitie.  
 
-Het volgende is een voorbeeldtaaksjabloon voor een eendimensionale parametrische veegtaak met een groot aantal taken - in dit geval 250.000. De opdrachtregel voor `echo` taken is een eenvoudige opdracht.
+Hier volgt een voor beeld van een taak sjabloon voor een one-dimensionale parametrische sweep-taak met een groot aantal taken-in dit geval 250.000. De opdracht regel van de taak is `echo` een eenvoudige opdracht.
 
 ```json
 {
@@ -125,18 +114,18 @@ Het volgende is een voorbeeldtaaksjabloon voor een eendimensionale parametrische
     }
 }
 ```
-Zie [Azure Batch CLI-sjablonen en bestandsoverdracht gebruiken](batch-cli-templates.md)als u een taak met de sjabloon wilt uitvoeren.
+Zie [Azure batch cli-sjablonen en-bestands overdracht gebruiken](batch-cli-templates.md)als u een taak wilt uitvoeren met de sjabloon.
 
-## <a name="example-batch-python-sdk-extension"></a>Voorbeeld: Batch Python SDK-extensie
+## <a name="example-batch-python-sdk-extension"></a>Voor beeld: batch python SDK-extensie
 
-Als u de Azure Batch Python SDK-extensie wilt gebruiken, installeert u eerst de Python SDK en de extensie:
+Als u de Azure Batch python SDK-extensie wilt gebruiken, installeert u eerst de python-SDK en de uitbrei ding:
 
 ```
 pip install azure-batch
 pip install azure-batch-extensions
 ```
 
-Een set `BatchExtensionsClient` instellen die de SDK-extensie gebruikt:
+Stel een `BatchExtensionsClient` waarde in die gebruikmaakt van de SDK-extensie:
 
 ```python
 
@@ -145,7 +134,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-Maak een verzameling taken die aan een taak moet worden toegevoegd. Bijvoorbeeld:
+Een verzameling taken maken om aan een taak toe te voegen. Bijvoorbeeld:
 
 
 ```python
@@ -154,7 +143,7 @@ tasks = list()
 ...
 ```
 
-Voeg de taakverzameling toe met [taak.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python). Stel `threads` de parameter in om het aantal gelijktijdige bewerkingen te verhogen:
+Voeg de taak verzameling toe met behulp van [Task. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python). Stel de `threads` para meter in om het aantal gelijktijdige bewerkingen te verhogen:
 
 ```python
 try:
@@ -163,7 +152,7 @@ except Exception as e:
     raise e
 ```
 
-De Batch Python SDK-extensie ondersteunt ook het toevoegen van taakparameters aan taken met behulp van een JSON-specificatie voor een taakfabriek. Configureer bijvoorbeeld taakparameters voor een parametrische veegverbinding die vergelijkbaar is met die in het voorgaande sjabloonvoorbeeld batch CLI:
+De batch python SDK-extensie biedt ook ondersteuning voor het toevoegen van taak parameters aan een taak met behulp van een JSON-specificatie voor een taak fabriek. Zo kunt u bijvoorbeeld taak parameters configureren voor een parametrische sweep die vergelijkbaar is met die in de voor gaande batch CLI-sjabloon:
 
 ```python
 parameter_sweep = {
@@ -200,7 +189,7 @@ job_json = client.job.expand_template(parameter_sweep)
 job_parameter = client.job.jobparameter_from_json(job_json)
 ```
 
-Voeg de taakparameters toe aan de taak. Stel `threads` de parameter in om het aantal gelijktijdige bewerkingen te verhogen:
+Voeg de taak parameters toe aan de taak. Stel de `threads` para meter in om het aantal gelijktijdige bewerkingen te verhogen:
 
 ```python
 try:
@@ -211,5 +200,5 @@ except Exception as e:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het gebruik van de Azure Batch CLI-extensie met [Batch CLI-sjablonen](batch-cli-templates.md).
-* Meer informatie over de [Batch Python SDK-extensie](https://pypi.org/project/azure-batch-extensions/).
+* Meer informatie over het gebruik van de Azure Batch CLI-uitbrei ding met [batch-cli-sjablonen](batch-cli-templates.md).
+* Meer informatie over de [batch PYTHON SDK-extensie](https://pypi.org/project/azure-batch-extensions/).

@@ -1,7 +1,7 @@
 ---
-title: Het voorbeeldlabelingshulpmiddel Formulierherkenning implementeren
+title: Het hulp programma voor het labelen van het voor beeld van een formulier herkenning implementeren
 titleSuffix: Azure Cognitive Services
-description: Ontdek de verschillende manieren waarop u het labelingshulpmiddel Voor formulierherkenning implementeren om te helpen bij het onder toezicht leren.
+description: Meer informatie over de verschillende manieren waarop u het hulp programma voor het labelen van het voor beeld van een formulier herkenning kunt implementeren voor meer informatie
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,37 +9,37 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81531334"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117264"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen implementeren
 
-Het voorbeeldlabelingshulpprogramma Form Recognizer is een toepassing die een eenvoudige gebruikersinterface (UI) biedt, waarmee u formulieren (documenten) handmatig labelen met het oog op begeleid leren. In dit artikel geven we links en instructies die je leren hoe je:
+Het hulp programma voor het labelen van het voor beeld van een formulier herkenning is een toepassing die een eenvoudige gebruikers interface (UI) biedt, die u kunt gebruiken om formulieren (documenten) hand matig te labelen voor leren met Super visie. In dit artikel vindt u koppelingen en instructies voor het volgende:
 
-* [Het voorbeeldlabelingsgereedschap lokaal uitvoeren](#run-the-sample-labeling-tool-locally)
-* [Het voorbeeldlabelingshulpprogramma implementeren in een Azure Container Instance (ACI)](#deploy-with-azure-container-instances-aci)
-* [Gebruik en draag bij aan de open-source OCR Form Labeling Tool](#open-source-on-github)
+* [Voer het hulp programma voor het labelen van het voor beeld lokaal uit](#run-the-sample-labeling-tool-locally)
+* [Het hulp programma voor het labelen van de voorbeeld code implementeren in een Azure container instance (ACI)](#deploy-with-azure-container-instances-aci)
+* [Gebruiken en bijdragen aan het open-source OCR-formulier labelen hulp programma](#open-source-on-github)
 
-## <a name="run-the-sample-labeling-tool-locally"></a>Het voorbeeldlabelingsgereedschap lokaal uitvoeren
+## <a name="run-the-sample-labeling-tool-locally"></a>Voer het hulp programma voor het labelen van het voor beeld lokaal uit
 
-De snelste manier om gegevens te labelen is door het voorbeeldlabelingsprogramma lokaal uit te voeren. De volgende quickstart gebruikt de FORM Recognizer REST API en het voorbeeldlabelingsgereedschap om een aangepast model te trainen met handmatig gelabelde gegevens. 
+De snelste manier om gegevens labelen te beginnen, is het hulp programma voor het labelen van de voorbeeld code lokaal uit te voeren. De volgende Snelstartgids maakt gebruik van de REST API formulier Recognizer en het hulp programma labelen voor het trainen van een aangepast model met hand matig gelabelde gegevens. 
 
-* [Snelstart: labelformulieren, train een model en analyseer een formulier met behulp van het voorbeeldlabelgereedschap](./quickstarts/label-tool.md).
+* [Quick Start: formulieren labelen, een model trainen en een formulier analyseren met behulp van het voor beeld-label programma](./quickstarts/label-tool.md).
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Implementeren met Azure Container Instances (ACI)
 
-Voordat we aan de slag gaan, is het belangrijk op te merken dat er twee manieren zijn om het voorbeeldlabelingshulpprogramma te implementeren in een Azure Container Instance (ACI). Beide opties worden gebruikt om het voorbeeldlabelingsprogramma met ACI uit te voeren: 
+Voordat we aan de slag gaan, is het belang rijk te weten dat er twee manieren zijn om het hulp programma voor het labelen van het voor beeld te implementeren in een Azure container instance (ACI). Beide opties worden gebruikt voor het uitvoeren van het hulp programma labelen met ACI: 
 
 * [Azure Portal gebruiken](#azure-portal)
 * [Azure CLI gebruiken](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Volg deze stappen om een nieuwe bron te maken met de Azure-portal: 
+Volg deze stappen om een nieuwe resource te maken met behulp van de Azure Portal: 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/signin/index/).
 2. Selecteer **Een resource maken**. 
@@ -48,81 +48,81 @@ Volg deze stappen om een nieuwe bron te maken met de Azure-portal:
    > [!div class="mx-imgBorder"]
    > ![Web-app selecteren](./media/quickstarts/formre-create-web-app.png)
    
-4. Controleer eerst of het tabblad **Basisbeginselen** is geselecteerd. Nu moet je wat informatie geven: 
+4. Controleer eerst of het tabblad **basis beginselen** is geselecteerd. Nu moet u een aantal gegevens opgeven: 
 
    > [!div class="mx-imgBorder"]
-   > ![Basisbeginselen selecteren](./media/quickstarts/formre-select-basics.png)
-   * Abonnement - Selecteer een bestaand Azure-abonnement
-   * Resourcegroep : u een bestaande resourcegroep opnieuw gebruiken of een nieuwe groep voor dit project maken. Het maken van een nieuwe resourcegroep wordt aanbevolen.
-   * Naam - Geef uw web-app een naam. 
-   * Publiceren - **Dockercontainer selecteren**
-   * Besturingssysteem - Selecteer **Linux**
-   * Regio - Kies een regio die voor u zinvol is.
-   * Linux-abonnement - Selecteer een prijscategorie/-abonnement voor uw app-service. 
+   > ![Basis principes selecteren](./media/quickstarts/formre-select-basics.png)
+   * Abonnement: Selecteer een bestaand Azure-abonnement
+   * Resource groep: u kunt een bestaande resource groep opnieuw gebruiken of een nieuwe maken voor dit project. Het is raadzaam om een nieuwe resource groep te maken.
+   * Naam: Geef uw web-app een naam. 
+   * Publiceren- **docker-container** selecteren
+   * Besturings systeem- **Linux** selecteren
+   * Regio: Kies een regio die voor u zinvol is.
+   * Linux-abonnement: Selecteer een prijs categorie/plan voor uw app service. 
 
    > [!div class="mx-imgBorder"]
    > ![Uw web-app configureren](./media/quickstarts/formre-select-docker-linux.png)
 
-5. Selecteer vervolgens het tabblad **Docker.** 
+5. Selecteer vervolgens het tabblad **docker** . 
 
    > [!div class="mx-imgBorder"]
    > ![Docker selecteren](./media/quickstarts/formre-select-docker.png)
 
-6. Laten we nu uw Docker-container configureren. Alle velden zijn vereist, tenzij anders vermeld:
+6. Nu gaan we uw docker-container configureren. Alle velden zijn vereist tenzij anders vermeld:
 
-   * Opties - Eén **container selecteren**
-   * Afbeeldingsbron - **Privéregister selecteren** 
-   * Server-URL - Stel dit in op`https://mcr.microsoft.com`
-   * Gebruikersnaam (optioneel) - Een gebruikersnaam maken. 
-   * Wachtwoord (optioneel) - Maak een veilig wachtwoord dat u zult onthouden.
-   * Afbeelding en tag - Stel dit in op`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Continue implementatie : stel dit in op **Aan** als u automatische updates wilt ontvangen wanneer het ontwikkelteam wijzigingen aanbrengt in het voorbeeldlabelingsprogramma.
-   * Opstartopdracht - Stel dit in op`./run.sh eula=accept`
+   * Opties: **Eén container** selecteren
+   * Bron van installatie kopie- **persoonlijk REGI ster** selecteren 
+   * Server-URL: Stel dit in op`https://mcr.microsoft.com`
+   * Gebruikers naam (optioneel): Maak een gebruikers naam. 
+   * Wacht woord (optioneel): Maak een veilig wacht woord dat u moet onthouden.
+   * Afbeelding en tag: Stel dit in op`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Doorlopende implementatie: Stel dit in **op** aan als u automatische updates wilt ontvangen wanneer het ontwikkelings team wijzigingen in het voor beeld labeling-hulp programma aanbrengt.
+   * Opstart opdracht: Stel dit in op`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]
    > ![Docker configureren](./media/quickstarts/formre-configure-docker.png)
 
-7. Dat is alles. Selecteer vervolgens **Controleren + Maken**en vervolgens **Maken** om uw web-app te implementeren. Als u klaar bent, hebt u toegang tot uw web-app op de URL in het **overzicht** voor uw bron.
+7. Dat is alles. Selecteer vervolgens **bekijken + maken**en vervolgens **maken** om uw web-app te implementeren. Wanneer u klaar bent, hebt u toegang tot uw web-app op de URL die u in het **overzicht** voor uw resource hebt gekregen.
 
 > [!NOTE]
-> Bij het maken van uw web-app u ook autorisatie/verificatie configureren. Dit is niet nodig om aan de slag te gaan. 
+> Wanneer u uw web-app maakt, kunt u ook autorisatie/verificatie configureren. Dit is niet nodig om aan de slag te gaan. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als alternatief voor het gebruik van de Azure-portal u een bron maken met behulp van de Azure CLI. Voordat u verdergaat, moet u de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. U deze stap overslaan als u al met de Azure CLI werkt. 
+Als alternatief voor het gebruik van de Azure Portal kunt u een resource maken met behulp van de Azure CLI. Voordat u doorgaat, moet u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. U kunt deze stap overs Laan als u al werkt met de Azure CLI. 
 
-Er zijn een paar dingen die je moet weten over deze opdracht:
+Er zijn enkele dingen die u moet weten over deze opdracht:
 
-* `DNS_NAME_LABEL=aci-demo-$RANDOM`genereert een willekeurige DNS-naam. 
-* In dit voorbeeld wordt ervan uitgegaan dat u een resourcegroep hebt die u gebruiken om een resource te maken. Vervang `<resource_group_name>` door een geldige resourcegroep die is gekoppeld aan uw abonnement. 
-* U moet opgeven waar u de resource wilt maken. Vervang `<region name>` de gewenste regio voor de web-app. 
-* Dit commando accepteert automatisch EULA.
+* `DNS_NAME_LABEL=aci-demo-$RANDOM`Hiermee wordt een wille keurige DNS-naam gegenereerd. 
+* In dit voor beeld wordt ervan uitgegaan dat u een resource groep hebt die u kunt gebruiken om een resource te maken. Vervang `<resource_group_name>` door een geldige resource groep die is gekoppeld aan uw abonnement. 
+* U moet opgeven waar u de resource wilt maken. Vervang `<region name>` door de gewenste regio voor de web-app. 
+* Met deze opdracht wordt de gebruiksrecht overeenkomst automatisch geaccepteerd.
 
-Voer vanuit Azure CLI deze opdracht uit om een web-app-bron voor het voorbeeldlabelingsgereedschap te maken: 
+Voer in de Azure CLI deze opdracht uit om een web-app-resource te maken voor het hulp programma voor het labelen van het voor beeld. 
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
-  --resource-group <resorunce_group_name> \
+  --resource-group <resource_group_name> \
   --name <name> \
   --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
   --cpu 2 \
-  --memory 8
+  --memory 8 \
   --command-line "./run.sh eula=accept"
 ```
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Verbinding maken met Azure AD voor autorisatie
 
-Het wordt aanbevolen om uw web-app te verbinden met Azure Active Directory. Dit zorgt ervoor dat alleen gebruikers met geldige referenties zich kunnen aanmelden en uw web-app kunnen gebruiken. Volg de instructies in [De app-app configureren](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) om verbinding te maken met Azure Active Directory.
+Het is raadzaam om uw web-app te verbinden met Azure Active Directory. Op deze manier kunnen alleen gebruikers met geldige referenties zich aanmelden en uw web-app gebruiken. Volg de instructies in [uw app service-app configureren](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) om verbinding te maken met Azure Active Directory.
 
 ## <a name="open-source-on-github"></a>Open source op GitHub
 
-De OCR Form Labeling Tool is ook beschikbaar als een open-source project op GitHub. De tool is een webapplicatie die is gebouwd met React + Redux en is geschreven in TypeScript. Zie [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)voor meer informatie of bijdragen.
+Het hulp programma voor het labelen van OCR-formulieren is ook beschikbaar als een open-source project op GitHub. Het hulp programma is een webtoepassing die is gebouwd met reageren op + Redux en is geschreven in type script. Zie [OCR Form labeling tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)(Engelstalig) voor meer informatie of bijdragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de [trein met labels](./quickstarts/label-tool.md) snel aan de slag om te leren hoe u de tool gebruiken om trainingsgegevens handmatig te labelen en begeleid leren uit te voeren.
+Gebruik de Snelstartgids [van de trein met labels](./quickstarts/label-tool.md) voor meer informatie over het gebruik van het hulp programma voor het hand matig labelen van trainings gegevens en het uitvoeren van gecontroleerde lessen.
