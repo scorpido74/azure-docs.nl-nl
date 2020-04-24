@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183160"
 ---
 > [!NOTE]
-> In Azure Active Directory B2C zijn [aangepaste beleidsregels](../articles/active-directory-b2c/custom-policy-get-started.md) voornamelijk ontworpen om complexe scenario's aan te pakken. Voor de meeste scenario's raden we u aan ingebouwde [gebruikersstromen te](../articles/active-directory-b2c/user-flow-overview.md)gebruiken.
+> In Azure Active Directory B2C zijn [aangepaste beleids regels](../articles/active-directory-b2c/custom-policy-get-started.md) voornamelijk ontworpen om complexe scenario's te verhelpen. Voor de meeste scenario's wordt u aangeraden ingebouwde [gebruikers stromen](../articles/active-directory-b2c/user-flow-overview.md)te gebruiken.
