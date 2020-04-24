@@ -1,6 +1,6 @@
 ---
-title: Pim - Azure Active Directory gebruiken | Microsoft Documenten
-description: Meer informatie over het inschakelen en aan de slag gaan met Azure AD Privileged Identity Management (PIM) in de Azure-portal.
+title: Beginnen met het gebruik van PIM-Azure Active Directory | Microsoft Docs
+description: Meer informatie over het inschakelen en aan de slag met Azure AD Privileged Identity Management (PIM) in de Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,88 +10,89 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/13/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cbb9b4340a7cdb9be5039722a8f75e09288ec48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472857"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112215"
 ---
 # <a name="start-using-privileged-identity-management"></a>Aan de slag met Privileged Identity Management
 
-Met Privileged Identity Management (PIM) u toegang beheren, beheren en bewaken binnen uw Azure AD-organisatie (Azure AD) van Azure. Dit bereik omvat toegang tot Azure-bronnen, Azure AD en andere Online-services van Microsoft, zoals Office 365 of Microsoft Intune.
+In dit artikel wordt beschreven hoe u Privileged Identity Management (PIM) inschakelt en aan de slag gaat met het gebruik ervan.
 
-In dit artikel wordt beschreven hoe u Privileged Identity Management inschakelen en aan de slag gaan.
+Gebruik Privileged Identity Management (PIM) om toegang te beheren, te controleren en te controleren binnen uw Azure Active Directory Azure AD-organisatie. Met PIM kunt u zo nodig en just-in-time toegang bieden tot Azure-resources, Azure AD-resources en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Privileged Identity Management wilt gebruiken, moet u over een van de volgende licenties beschikken:
+Als u Privileged Identity Management wilt gebruiken, hebt u een van de volgende licenties nodig:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Zie [Licentievereisten voor het gebruik van Privileged Identity Management voor](subscription-requirements.md)meer informatie.
+Zie [licentie vereisten voor het gebruik van privileged Identity Management](subscription-requirements.md)voor meer informatie.
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>PIM aanmelden voor Azure AD-rollen
+## <a name="prepare-pim-for-azure-ad-roles"></a>PIM voorbereiden voor Azure AD-rollen
 
-Zodra u Privileged Identity Management voor uw directory hebt ingeschakeld, moet u privileged identity management aanmelden om Azure AD-rollen te beheren.
+Zodra u Privileged Identity Management hebt ingeschakeld voor uw directory, kunt u Privileged Identity Management voorbereiden om Azure AD-rollen te beheren.
 
-1. Azure **AD Privileged Identity Management openen**.
+Hier volgen de taken die wij u aanraden voor het voorbereiden van Azure AD-rollen, in volg orde:
 
-1. Selecteer **Azure AD-rollen**.
+1. [Instellingen voor Azure AD-functies configureren](pim-how-to-change-default-settings.md).
+1. [Geef in aanmerking komende toewijzingen](pim-how-to-add-role-to-user.md)op.
+1. [Sta gebruikers in staat om hun Azure AD-rol just-in-time te activeren](pim-how-to-activate-role.md).
 
-    ![Privileged Identity Management aanmelden voor Azure AD-rollen](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+## <a name="prepare-pim-for-azure-roles"></a>PIM voorbereiden voor Azure-rollen
 
-1. Selecteer **Aanmelden**.
+Zodra u Privileged Identity Management hebt ingeschakeld voor uw directory, kunt u Privileged Identity Management voorbereiden voor het beheren van Azure-rollen voor toegang tot Azure-resources voor een abonnement.
 
-1. Klik in het bericht dat wordt weergegeven op **Ja** om privileged identity management aan te melden om Azure AD-rollen te beheren.
+Hier volgen de taken die wij u aanraden om Azure-rollen voor te bereiden, in de volgende volg orde:
 
-    ![Privileged Identity Management aanmelden voor het bericht van Azure AD-rollen](./media/pim-getting-started/sign-up-pim-message.png)
-
-    Wanneer het aanmelden is voltooid, worden de Azure AD-opties ingeschakeld. Mogelijk moet u de portal vernieuwen.
-
-    Zie [Azure-bronnen ontdekken in Privileged Identity Management](pim-resource-roles-discover-resources.md)voor informatie over het ontdekken en selecteren van de Azure-resources die u wilt beveiligen met Privileged Identity Management.
+1. [Azure-resources detecteren](pim-resource-roles-discover-resources.md)
+1. [Instellingen voor Azure-functies configureren](pim-resource-roles-configure-role-settings.md).
+1. [Geef in aanmerking komende toewijzingen](pim-resource-roles-assign-roles.md)op.
+1. [Sta in aanmerking komende gebruikers toe hun Azure-rollen just-in-time te activeren](pim-resource-roles-activate-your-roles.md).
 
 ## <a name="navigate-to-your-tasks"></a>Navigeer naar uw taken
 
-Zodra Privileged Identity Management is ingesteld, u uw identiteitsbeheertaken starten.
+Zodra Privileged Identity Management is ingesteld, kunt u uw weg ontdekken.
 
-![Navigatievenster in Privileged Identity Management met opties voor taken en beheer](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigatie venster in Privileged Identity Management taken weer geven en opties beheren](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Taak + Beheren | Beschrijving |
+| Taak + beheren | Beschrijving |
 | --- | --- |
-| **Mijn rollen**  | Hiermee wordt een lijst weergegeven met in aanmerking komende en actieve rollen die aan u zijn toegewezen. Hier kunt u alle in aanmerking komende toegewezen rollen activeren. |
-| **Mijn verzoeken** | Hiermee geeft u uw aanvragen in behandeling om in aanmerking komende roltoewijzingen te activeren. |
-| **Aanvragen goedkeuren** | Hiermee wordt een lijst weergegeven met aanvragen voor het activeren van in aanmerking komende rollen door gebruikers in uw map die u moet goedkeuren. |
-| **Toegang beoordelen** | Hier worden actieve toegangsbeoordelingen weergegeven die u hebt toegewezen, of u de toegang voor uzelf of iemand anders bekijkt. |
-| **Azure AD-rollen** | Hiermee worden een dashboard en instellingen weergegeven voor bevoorrechte rolbeheerders om Azure AD-roltoewijzingen te beheren. Dit dashboard is uitgeschakeld voor iedereen die geen beheerder met een bevoorrechte rol is. Deze gebruikers hebben toegang tot een speciaal dashboard met de titel Mijn weergave. Het dashboard Mijn weergave bevat alleen informatie over de gebruiker die toegang heeft tot het dashboard, niet de gehele tenant. |
-| **Azure-resources** | Hiermee worden een dashboard en instellingen weergegeven voor bevoorrechte rolbeheerders om toewijzingen van Azure-bronnen te beheren. Dit dashboard is uitgeschakeld voor iedereen die geen beheerder met een bevoorrechte rol is. Deze gebruikers hebben toegang tot een speciaal dashboard met de titel Mijn weergave. Het dashboard Mijn weergave bevat alleen informatie over de gebruiker die toegang heeft tot het dashboard, niet de gehele tenant. |
+| **Mijn rollen**  | Geeft een lijst weer met in aanmerking komende en actieve rollen die aan u zijn toegewezen. Hier kunt u alle in aanmerking komende toegewezen rollen activeren. |
+| **Mijn aanvragen** | Hiermee worden de in behandeling zijnde aanvragen voor het activeren van in aanmerking komende roltoewijzingen weer gegeven. |
+| **Aanvragen goedkeuren** | Geeft een lijst weer van aanvragen voor het activeren van in aanmerking komende rollen door gebruikers in uw directory die u hebt ingesteld om goed te keuren. |
+| **Toegang beoordelen** | Een lijst met actieve toegangs beoordelingen die u hebt toegewezen aan volt ooien, of u nu de toegang bekijkt voor uzelf of iemand anders. |
+| **Azure AD-rollen** | Geeft een dash board en instellingen weer voor bevoegde beheerdersrol voor het beheren van toewijzingen van Azure AD-rollen. Dit dashboard is uitgeschakeld voor iedereen die geen beheerder met een bevoorrechte rol is. Deze gebruikers hebben toegang tot een speciaal dashboard met de titel Mijn weergave. Het dashboard Mijn weergave bevat alleen informatie over de gebruiker die toegang heeft tot het dashboard, niet de gehele tenant. |
+| **Azure-resources** | Geeft een dash board en instellingen weer voor beheerders met verhoogde rollen voor het beheren van toewijzingen van Azure-resource rollen. Dit dashboard is uitgeschakeld voor iedereen die geen beheerder met een bevoorrechte rol is. Deze gebruikers hebben toegang tot een speciaal dashboard met de titel Mijn weergave. Het dashboard Mijn weergave bevat alleen informatie over de gebruiker die toegang heeft tot het dashboard, niet de gehele tenant. |
 
-## <a name="add-a-pim-tile-to-the-dashboard"></a>Een PIM-tegel toevoegen aan het dashboard
+## <a name="add-a-pim-tile-to-the-dashboard"></a>Een PIM-tegel toevoegen aan het dash board
 
-Als u het openen van Privileged Identity Management eenvoudiger wilt maken, voegt u een tegel Voor voorkeursidentiteitsbeheer toe aan uw Azure-portaldashboard.
+Voeg een PIM-tegel toe aan uw Azure Portal dash board om het openen van Privileged Identity Management gemakkelijker te maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer **Alle services** en zoek de Azure AD Privileged Identity **Management-service.**
+1. Selecteer **alle services** en zoek de **Azure AD privileged Identity Management** -service.
 
-    ![Azure AD Privileged Identity Management in Alle services](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management in alle services](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Selecteer de Quickstart Voor voorkeursidentiteitsbeheer.
+1. Selecteer de Privileged Identity Management Snelstartgids.
 
-1. Schakel **Het mes vastmaken aan het dashboard** om het quickstartblad voor voorkeursidentiteitsbeheer vast te maken aan het dashboard.
+1. Schakel de **Blade vastmaken aan dash board** in om de blade privileged Identity Management Snelstartgids aan het dash board vast te maken.
 
-    ![Pictogram Pushpin om het blade van Privileged Identity Management vast te maken aan het dashboard](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Pictogram punaise om Privileged Identity Management Blade aan het dash board vast te maken](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
-    Op het Azure-dashboard ziet u een tegel als volgt:
+    In het Azure-dash board ziet u een tegel zoals deze:
 
-    ![Tegel Snelstart voor voorkeursidentiteitsbeheer op het dashboard](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Tegel Privileged Identity Management Snelstartgids op het dash board](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure AD-rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Azure-bronnen ontdekken die moeten worden beheerd in Privileged Identity Management](pim-resource-roles-discover-resources.md)
+- [Toegang tot Azure-resources beheren in Privileged Identity Management](pim-resource-roles-discover-resources.md)

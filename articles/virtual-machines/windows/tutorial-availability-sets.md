@@ -1,26 +1,20 @@
 ---
-title: Zelfstudie - Hoge beschikbaarheid voor Windows VM's in Azure
+title: 'Zelf studie: hoge Beschik baarheid voor virtuele Windows-machines in azure'
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om maximaal beschikbare virtuele machines in beschikbaarheidssets te implementeren
-documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985708"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100444"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met Azure PowerShell
 
@@ -37,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="availability-set-overview"></a>Overzicht beschikbaarheidsset
 
-Een beschikbaarheidsset is een logische groeperingsmogelijkheid voor het isoleren van VM-resources van elkaar wanneer ze worden geïmplementeerd. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, compute-racks, opslageenheden en netwerkswitches worden uitgevoerd. Als er een hardware- of softwarefout optreedt, heeft dit gevolgen voor slechts een subset van uw VM’s en blijft uw totale oplossing operationeel. Beschikbaarheidssets zijn essentieel voor het bouwen van betrouwbare cloudoplossingen.
+Een Beschikbaarheidsset is een logische groeperings mogelijkheid voor het isoleren van VM-resources van elkaar wanneer deze worden geïmplementeerd. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, compute-racks, opslageenheden en netwerkswitches worden uitgevoerd. Als er een hardware- of softwarefout optreedt, heeft dit gevolgen voor slechts een subset van uw VM’s en blijft uw totale oplossing operationeel. Beschikbaarheidssets zijn essentieel voor het bouwen van betrouwbare cloudoplossingen.
 
 Laten we eens kijken naar een typische VM-oplossing met vier front-end webservers en twee VM's in de back-end. Met Azure wilt u twee beschikbaarheidssets definiëren voordat u uw VM's implementeert: eentje voor de web-laag en eentje voor de back-endlaag. Wanneer u een nieuwe VM maakt, geeft u de beschikbaarheidsset op als parameter. Azure zorgt ervoor dat de VM’s worden geïsoleerd over meerdere fysieke hardwareresources. Als er een probleem is met de fysieke hardware waarop een van uw servers draait, weet u dat de andere instanties van uw servers actief blijven, omdat ze worden uitgevoerd op andere hardware.
 
@@ -47,7 +41,7 @@ Gebruik beschikbaarheidssets wanneer u betrouwbare VM-oplossingen wilt implement
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
@@ -107,13 +101,13 @@ for ($i=1; $i -le 2; $i++)
 
 Het duurt enkele minuten om beide VM's te maken en te configureren. Wanneer dit klaar is, hebt u twee virtuele machines die zijn gedistribueerd over de onderliggende hardware. 
 
-Als u kijkt naar de beschikbaarheid in de portal door naar **Resourcegroepen** > **myResourceGroupAvailability** > **myAvailabilitySet**te gaan, moet u zien hoe de VM's worden verdeeld over de twee fout- en updatedomeinen.
+Als u de beschikbaarheidsset in de portal bekijkt door naar **resource groepen** > **resourcegroupavailability** > **myAvailabilitySet**te gaan, ziet u hoe de vm's worden verdeeld over de twee fout-en update domeinen.
 
 ![Beschikbaarheidsset in de portal](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Beschikbare VM-grootten controleren 
 
-Wanneer u een vm maakt in een beschikbaarheidsset, moet u weten welke VM-formaten beschikbaar zijn op de hardware. Gebruik de opdracht [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) om alle beschikbare formaten voor virtuele machines te krijgen die u implementeren in de beschikbaarheidsset.
+Wanneer u een virtuele machine in een beschikbaarheidsset maakt, moet u weten welke VM-grootten op de hardware beschikbaar zijn. Gebruik de opdracht [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) om alle beschik bare grootten voor virtuele machines op te halen die u in de beschikbaarheidsset kunt implementeren.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -130,7 +124,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com), selecteer **Alle servic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een beschikbaarheidsset maken

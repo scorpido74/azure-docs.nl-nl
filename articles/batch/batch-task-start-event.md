@@ -1,29 +1,21 @@
 ---
-title: Begingebeurtenis Azure Batch-taak
-description: Referentiegegevens voor batchtaakstartgebeurtenis. Deze gebeurtenis wordt uitgezonden zodra een taak is gepland om te starten op een compute node door de planner.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Gebeurtenis Azure Batch taak starten
+description: Naslag informatie voor de begin gebeurtenis van de batch-taak. Deze gebeurtenis wordt verzonden zodra een taak is gepland om te starten op een reken knooppunt door de scheduler.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: bed3749e29867298f3e8258a08448b7b094055ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022814"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116397"
 ---
 # <a name="task-start-event"></a>Gebeurtenis taak starten
 
- Deze gebeurtenis wordt uitgezonden zodra een taak is gepland om te starten op een compute node door de planner. Houd er rekening mee dat als de taak opnieuw wordt geprobeerd of opnieuw in de wachtrij wordt geplaatst, deze gebeurtenis opnieuw wordt uitgezonden voor dezelfde taak, maar dat de versie van het aantal opnieuw proberen en de versie van de systeemtaak dienovereenkomstig worden bijgewerkt.
+ Deze gebeurtenis wordt verzonden zodra een taak is gepland om te starten op een reken knooppunt door de scheduler. Houd er rekening mee dat als de taak opnieuw wordt geprobeerd of opnieuw in de wachtrij wordt geplaatst, deze gebeurtenis opnieuw wordt verzonden voor dezelfde taak, maar de versie van het aantal nieuwe pogingen en de systeem taak wordt dienovereenkomstig bijgewerkt.
 
 
- In het volgende voorbeeld wordt de hoofdtekst van een gebeurtenis voor het starten van taken weergegeven.
+ In het volgende voor beeld ziet u de hoofd tekst van een taak begin gebeurtenis.
 
 ```
 {
@@ -49,36 +41,36 @@ ms.locfileid: "77022814"
 
 |Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`jobId`|Tekenreeks|De id van de taak die de taak bevat.|
-|`id`|Tekenreeks|De id van de taak.|
-|`taskType`|Tekenreeks|Het type taak. Dit kan 'JobManager' zijn die aangeeft dat het een taak voor jobmanager is of 'Gebruiker' die aangeeft dat het geen taak voor jobmanager is.|
-|`systemTaskVersion`|Int32|Dit is de interne retry teller op een taak. Intern kan de Batch-service een taak opnieuw proberen om tijdelijke problemen te verwerken. Deze problemen kunnen interne planningsfouten of pogingen omvatten om te herstellen van compute nodes in een slechte staat.|
-|[`nodeInfo`](#nodeInfo)|Complex Type|Bevat informatie over het rekenknooppunt waarop de taak is uitgevoerd.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Complex Type|Hiermee geeft u op dat de taak multi-instancetaak is waarvoor meerdere rekenknooppunten nodig zijn.  Zie [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) voor meer informatie.|
-|[`constraints`](#constraints)|Complex Type|De uitvoeringsbeperkingen die op deze taak van toepassing zijn.|
-|[`executionInfo`](#executionInfo)|Complex Type|Bevat informatie over de uitvoering van de taak.|
+|`jobId`|Tekenreeks|De ID van de taak die de taak bevat.|
+|`id`|Tekenreeks|De ID van de taak.|
+|`taskType`|Tekenreeks|Het type taak. Dit kan ' JobManager ' zijn. Dit geeft aan dat het een taak beheerder of ' gebruiker ' is die aangeeft dat het geen taak manager taak is.|
+|`systemTaskVersion`|Int32|Dit is de interne teller voor een nieuwe poging van een taak. Intern kan de batch-service een taak opnieuw uitvoeren om tijdelijke problemen op te lossen. Deze problemen kunnen interne plannings fouten bevatten of proberen te herstellen van reken knooppunten met een onjuiste status.|
+|[`nodeInfo`](#nodeInfo)|Complex type|Bevat informatie over het reken knooppunt waarop de taak is uitgevoerd.|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Complex type|Hiermee geeft u op dat de taak een taak met meerdere exemplaren waarvoor meerdere reken knooppunten zijn vereist.  Zie [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) voor meer informatie.|
+|[`constraints`](#constraints)|Complex type|De uitvoerings beperkingen die van toepassing zijn op deze taak.|
+|[`executionInfo`](#executionInfo)|Complex type|Bevat informatie over de uitvoering van de taak.|
 
-###  <a name="nodeinfo"></a><a name="nodeInfo"></a>knooppuntInfo
-
-|Elementnaam|Type|Opmerkingen|
-|------------------|----------|-----------|
-|`poolId`|Tekenreeks|De ID van de pool waarop de taak is uitgevoerd.|
-|`nodeId`|Tekenreeks|De id van het knooppunt waarop de taak is uitgevoerd.|
-
-###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>multiInstanceInstellingen
+###  <a name="nodeinfo"></a><a name="nodeInfo"></a>nodeInfo
 
 |Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`numberOfInstances`|Int|Het aantal compute nodes dat vereist is voor de taak.|
+|`poolId`|Tekenreeks|De ID van de pool waarvoor de taak is uitgevoerd.|
+|`nodeId`|Tekenreeks|De ID van het knoop punt waarop de taak is uitgevoerd.|
 
-###  <a name="constraints"></a><a name="constraints"></a>Beperkingen
-
-|Elementnaam|Type|Opmerkingen|
-|------------------|----------|-----------|
-|`maxTaskRetryCount`|Int32|Het maximum aantal keren dat de taak opnieuw wordt geprobeerd. De batchservice probeert een taak opnieuw als de exitcode niet-nul is.<br /><br /> Houd er rekening mee dat deze waarde specifiek het aantal nieuwe pogingen regelt. De batchservice probeert de taak één keer uit en kan deze limiet vervolgens opnieuw proberen. Als het maximale aantal pogingen opnieuw proberen 3 is, probeert Batch een taak tot 4 keer (één eerste poging en 3 nieuwe pogingen).<br /><br /> Als het maximale aantal nieuwe try's 0 is, probeert de batchservice taken niet opnieuw.<br /><br /> Als het maximale aantal nieuwe pogingen -1 is, worden taken zonder limiet opnieuw geprobeerd door de batchservice.<br /><br /> De standaardwaarde is 0 (geen nieuwe pogingen).|
-
-###  <a name="executioninfo"></a><a name="executionInfo"></a>uitvoeringInfo
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>multiInstanceSettings
 
 |Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`retryCount`|Int32|Het aantal keren dat de taak opnieuw is geprobeerd door de batchservice. De taak wordt opnieuw geprobeerd als deze wordt afgesloten met een niet-nulexitcode, tot het opgegeven MaxTaskRetryCount|
+|`numberOfInstances`|Int|Het aantal reken knooppunten dat is vereist voor de taak.|
+
+###  <a name="constraints"></a><a name="constraints"></a>standaardwaarde
+
+|Elementnaam|Type|Opmerkingen|
+|------------------|----------|-----------|
+|`maxTaskRetryCount`|Int32|Het maximum aantal keren dat de taak opnieuw kan worden uitgevoerd. De batch-service probeert een taak opnieuw uit te proberen als de afsluit code niet gelijk is aan nul.<br /><br /> Houd er rekening mee dat deze waarde specifiek het aantal nieuwe pogingen bepaalt. De batch-service probeert de taak één keer uit te voeren en kan vervolgens de limiet opnieuw proberen. Als het maximum aantal nieuwe pogingen bijvoorbeeld 3 is, probeert batch een taak Maxi maal 4 keer uit te voeren (één eerste poging en 3 nieuwe pogingen).<br /><br /> Als het maximum aantal nieuwe pogingen 0 is, worden taken niet opnieuw geprobeerd met de batch-service.<br /><br /> Als het maximum aantal nieuwe pogingen-1 is, probeert de batch-service zonder limiet taken uit te voeren.<br /><br /> De standaard waarde is 0 (geen nieuwe pogingen).|
+
+###  <a name="executioninfo"></a><a name="executionInfo"></a>executionInfo
+
+|Elementnaam|Type|Opmerkingen|
+|------------------|----------|-----------|
+|`retryCount`|Int32|Het aantal keren dat de batch-service opnieuw is geprobeerd om de taak uit te proberen. De taak wordt opnieuw uitgevoerd als deze wordt afgesloten met een afsluit code die niet gelijk is aan nul, tot de opgegeven MaxTaskRetryCount|

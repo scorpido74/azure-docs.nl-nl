@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Table API en Azure Table-opslag gebruiken met Python
+title: Azure Cosmos DB Table-API en Azure-tabel opslag gebruiken met python
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table

@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 995c87ca6f091e9ccf0b82af831bbf43ff17846f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100835"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114271"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules beheren in Azure Automation
 
@@ -22,7 +22,6 @@ Met Azure Automation kunt u Power shell-modules importeren om cmdlets in te scha
 * [Azure PowerShell AZ. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
 * Interne `Orchestrator.AssetManagement.Cmdlets` module voor de log Analytics-agent voor Windows
-* [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)
 * Andere Power shell-modules
 * Aangepaste modules die u maakt 
 
@@ -40,7 +39,7 @@ Wanneer Azure Automation runbook-en DSC-compilatie taken uitvoert, worden de mod
 
 De volgende tabel bevat de modules die standaard door Azure Automation worden geïmporteerd wanneer u uw Automation-account maakt. Met Automation kunnen nieuwere versies van deze modules worden geïmporteerd. U kunt de oorspronkelijke versie echter niet verwijderen uit uw Automation-account, zelfs als u een nieuwere versie verwijdert. Houd er rekening mee dat deze standaard modules verschillende AzureRM-modules bevatten. 
 
-AZ. Automation-modules worden aanbevolen in uw runbooks en DSC-configuraties. Azure Automation importeert de hoofdmap AZ-module echter niet automatisch in nieuwe of bestaande Automation-accounts. Zie [Migrating to AZ modules](#migrating-to-az-modules)(Engelstalig) voor meer informatie over het werken met deze modules.
+Azure Automation importeert de hoofdmap AZ module niet automatisch in nieuwe of bestaande Automation-accounts. Zie [Migrating to AZ modules](#migrating-to-az-modules)(Engelstalig) voor meer informatie over het werken met deze modules.
 
 > [!NOTE]
 > Het is niet raadzaam om modules en runbooks te wijzigen in Automation-accounts die de [VM's buiten bedrijfsuren starten/stoppen oplossing in azure Automation](../automation-solution-vm-management.md)bevatten.
@@ -72,6 +71,10 @@ AZ. Automation-modules worden aanbevolen in uw runbooks en DSC-configuraties. Az
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
+## <a name="az-module-cmdlets"></a>AZ module-cmdlets
+
+Voor AZ. Automation hebben de meeste cmdlets dezelfde namen als voor de AzureRM-modules, behalve dat het voor voegsel AzureRm is gewijzigd in AZ. Zie [lijst met uitzonde ringen](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)voor een lijst met AZ-modules die niet voldoen aan deze naamgevings Conventie.
+
 ## <a name="internal-cmdlets"></a>Interne cmdlets
 
 De volgende tabel definieert de interne cmdlets die door de `Orchestrator.AssetManagement.Cmdlets` module worden ondersteund. Gebruik deze cmdlets in uw runbooks en DSC-configuraties om te communiceren met Azure-assets binnen het Automation-account. De cmdlets zijn ontworpen om te worden gebruikt in plaats van Azure PowerShell-cmdlets om geheimen op te halen van versleutelde variabelen, referenties en versleutelde verbindingen. 
@@ -91,41 +94,47 @@ De volgende tabel definieert de interne cmdlets die door de `Orchestrator.AssetM
 
 Houd er rekening mee dat de interne cmdlets verschillen van de namen van de cmdlets AZ en AzureRM. Interne cmdlet-namen bevatten geen woorden zoals ' Azure ' of ' AZ ' in het zelfstandig naam woord, maar u kunt wel gebruikmaken van ' Automation '. We raden u aan het gebruik van AZ of AzureRM-cmdlets te gebruiken tijdens het uitvoeren van een runbook in een Azure sandbox of op een Windows Hybrid Worker. Ze vereisen minder para meters en worden uitgevoerd in de context van de taak die al wordt uitgevoerd.
 
-Gebruik AZ of AzureRM-cmdlets voor het bewerken van Azure Automation resources buiten de context van een runbook. In dergelijke gevallen moet u impliciet verbinding maken met Azure wanneer u de-cmdlets gebruikt, zoals wanneer u een uitvoeren als-account gebruikt om te verifiëren bij Azure. 
+U wordt aangeraden AZ-of AzureRM-cmdlets te gebruiken voor het bewerken van Azure Automation resources buiten de context van een runbook. 
 
-## <a name="modules-supporting-get-automationpscredential"></a>Modules die Get-AutomationPSCredential ondersteunen
+## <a name="module-supporting-get-automationpscredential"></a>Module die Get-AutomationPSCredential ondersteunt
 
-Voor lokale ontwikkeling met behulp van de Azure Automation authoring `Get-AutomationPSCredential` Toolkit maakt de cmdlet deel uit van de assembly- [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9). Voor Azure die werkt met de automatiserings context, is de `Orchestrator.AssetManagement.Cmdlets`cmdlet in. Zie [referentie-assets in azure Automation](credentials.md)voor meer informatie over het gebruik van referenties in azure Automation.
-
-Houd er `Get-AutomationPsCredential` rekening mee `PSCredential` dat een object dat wordt verwacht door de meeste Power shell-cmdlets die met referenties werken, wordt geretourneerd. Meestal moet u deze cmdlet gebruiken in plaats van de cmdlet [Get-AzAutomationCredential](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationcredential?view=azps-3.8.0) . `Get-AzAutomationCredential`Hiermee wordt een [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) -object opgehaald dat meta gegevens bevat over de referentie. Deze informatie is doorgaans niet nuttig voor het door geven van een andere cmdlet.
+De `Get-AutomationPSCredential` cmdlet maakt deel uit van de `Orchestrator.AssetManagement.Cmdlets`module. Met deze cmdlet wordt `PSCredential` een object geretourneerd dat wordt verwacht door de meeste Power shell-cmdlets die met referenties werken. Zie [referentie-assets in azure Automation](credentials.md)voor meer informatie over het gebruik van referenties in azure Automation.
 
 ## <a name="migrating-to-az-modules"></a>Migreren naar AZ-modules
 
-Er zijn verschillende dingen waarmee u rekening moet houden bij het gebruik van de AZ-modules in Azure Automation:
+### <a name="migration-considerations"></a>Overwegingen bij migratie
 
-* Het is niet raadzaam om AzureRM modules en AZ-modules in hetzelfde Automation-account uit te voeren, omdat het gegarandeerde problemen veroorzaakt. Zie [Azure PowerShell migreren van AzureRM naar AZ](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
+In deze sectie vindt u overwegingen waarbij u rekening moet houden bij het migreren naar de AZ-modules in Azure Automation. Zie ook [Azure PowerShell migreren van AzureRM naar AZ](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
 
-* Zorg ervoor dat u alle runbooks en DSC-configuraties zorgvuldig test in een afzonderlijk Automation-account voordat u de AZ-modules importeert. 
+#### <a name="use-of-azurerm-modules-and-az-modules-in-the-same-automation-account"></a>Gebruik van AzureRM-modules en AZ-modules in hetzelfde Automation-account
 
-* Wanneer u een AZ-module importeert in uw Automation-account, wordt de module niet automatisch geïmporteerd in de Power shell-sessie die door runbooks wordt gebruikt. Modules worden in de volgende situaties geïmporteerd in de Power shell-sessie:
+ Het is niet raadzaam om AzureRM-modules en AZ-modules uit te voeren in hetzelfde Automation-account. Wanneer u zeker weet dat u van AzureRM naar AZ wilt migreren, kunt u het beste volledig door voeren in een volledige migratie. De belangrijkste reden hiervoor is dat Azure Automation vaak sandboxs in het Automation-account opnieuw gebruikt om op te slaan op de opstart tijden. Als u geen volledige module migratie maakt, kunt u een taak starten met alleen AzureRM-modules en vervolgens een andere taak starten met alleen AZ-modules. De sandbox loopt binnenkort vast en er wordt een fatale fout weer gegeven met de mede deling dat de modules niet compatibel zijn. Deze situatie leidt ertoe dat er op wille keurige wijze crashes optreden voor een wille keurig runbook of configuratie. 
 
-    * Wanneer een runbook een cmdlet aanroept vanuit een module
-    * Wanneer een runbook de module expliciet importeert met de cmdlet [import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7)
-    * Wanneer een runbook een andere afhankelijke module importeert
+#### <a name="import-of-az-modules-into-the-powershell-session"></a>Importeren van AZ-modules in de Power shell-sessie
 
-Nadat u de migratie van uw modules hebt voltooid, probeert u runbooks niet te starten met AzureRM-modules op het Automation-account. Het is ook raadzaam om geen AzureRM-modules op het account te importeren of bij te werken. Houd rekening met het account dat is gemigreerd naar AZ. Automation en alleen met AZ-modules kan worden gebruikt.
+Wanneer u een AZ-module importeert in uw Automation-account, wordt de module niet automatisch geïmporteerd in de Power shell-sessie die door runbooks wordt gebruikt. Modules worden in de volgende situaties geïmporteerd in de Power shell-sessie:
 
->[!IMPORTANT]
->Wanneer u een nieuw Automation-account maakt, installeert Azure Automation standaard de AzureRM-modules. U kunt de zelf studie-runbooks nog steeds bijwerken met AzureRM-cmdlets. U moet deze runbooks echter niet uitvoeren.
+* Wanneer een runbook een cmdlet aanroept vanuit een module
+* Wanneer een runbook de module expliciet importeert met de cmdlet [import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7)
+* Wanneer een runbook een andere afhankelijke module importeert
+    
+#### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Testen van uw runbooks en DSC-configuraties vóór de module migratie
+
+Zorg ervoor dat u alle runbooks en DSC-configuraties zorgvuldig test in een afzonderlijk Automation-account voordat u migreert naar de AZ-modules. 
+
+#### <a name="updates-for-tutorial-runbooks"></a>Updates voor zelf studie-runbooks 
+
+Wanneer u een nieuw Automation-account maakt, zelfs na migratie naar AZ-modules, worden in Azure Automation standaard de AzureRM-modules geïnstalleerd. U kunt de zelf studie-runbooks nog steeds bijwerken met de AzureRM-cmdlets. U moet deze runbooks echter niet uitvoeren.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Alle runbooks die gebruikmaken van AzureRM-modules stoppen en de planning ervan opheffen
 
-Om ervoor te zorgen dat u geen bestaande runbooks uitvoert die gebruikmaken van AzureRM-modules, stopt en plant u alle betrokken runbooks met behulp van de cmdlet [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) . Het is belang rijk om elk schema afzonderlijk te controleren om ervoor te zorgen dat u het in de toekomst opnieuw kunt plannen voor uw runbooks, indien nodig.
+Om ervoor te zorgen dat u geen bestaande runbooks of DSC-configuraties uitvoert die gebruikmaken van AzureRM-modules, moet u alle betrokken runbooks en configuraties stoppen en de planning ervan opheffen. Zorg er eerst voor dat u elke runbook-of DSC-configuratie en de bijbehorende schema's afzonderlijk bekijkt om ervoor te zorgen dat u het item indien nodig opnieuw kunt plannen in de toekomst. 
 
-```powershell
-Get-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01" 
-Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
-```
+Wanneer u klaar bent om uw planningen te verwijderen, kunt u de Azure Portal of de cmdlet [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) gebruiken. Zie [een schema verwijderen](schedules.md#removing-a-schedule).
+
+### <a name="remove-the-azurerm-modules"></a>De AzureRM-modules verwijderen
+
+Het is mogelijk om de AzureRM-modules te verwijderen voordat u de AZ-modules importeert. Het verwijderen van de AzureRM-modules kan echter de synchronisatie van broncode beheer onderbreken en ertoe leiden dat scripts die nog niet zijn gepland, mislukken. Als u besluit de modules te verwijderen, raadpleegt u [AzureRM verwijderen](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
 
 ### <a name="import-the-az-modules"></a>De AZ-modules importeren
 
@@ -144,17 +153,11 @@ Dit import proces kan ook worden uitgevoerd via de [PowerShell Gallery](https://
 
 ### <a name="test-your-runbooks"></a>Uw runbooks testen
 
-Zodra u de AZ-modules in het Automation-account hebt geïmporteerd, kunt u beginnen met het bewerken van de runbooks om de nieuwe modules te gebruiken. De meeste cmdlets hebben dezelfde namen als voor de AzureRM-modules, behalve dat het voor voegsel AzureRm is gewijzigd in AZ. Zie [lijst met uitzonde ringen](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)voor een lijst met modules die niet voldoen aan deze naamgevings Conventie.
-
-Een manier om de wijziging van een runbook te testen om de nieuwe cmdlets te gebruiken, `Enable-AzureRmAlias -Scope Process` is aan het begin van het runbook. Door deze opdracht aan uw runbook toe te voegen, kan het script zonder wijzigingen worden uitgevoerd. 
+Zodra u de AZ-modules in het Automation-account hebt geïmporteerd, kunt u beginnen met het bewerken van uw runbooks en DSC-configuraties om de nieuwe modules te gebruiken. Een manier om de wijziging van een runbook te testen om de nieuwe cmdlets te gebruiken, `Enable-AzureRmAlias -Scope Process` is aan het begin van het runbook. Door deze opdracht aan uw runbook toe te voegen, kan het script zonder wijzigingen worden uitgevoerd. 
 
 ## <a name="authoring-modules"></a>Ontwerp modules
 
 U wordt aangeraden de overwegingen in deze sectie te volgen wanneer u een Power shell-module ontwerpt voor gebruik in Azure Automation.
-
-### <a name="references-to-azurerm-and-az"></a>Verwijzingen naar AzureRM en AZ
-
-Als u verwijst naar de AZ-modules in uw module, zorgt u ervoor dat u niet ook verwijst naar de AzureRM-modules. U kunt niet beide sets met modules tegelijk gebruiken. 
 
 ### <a name="version-folder"></a>Versie map
 

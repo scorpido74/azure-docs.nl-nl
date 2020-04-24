@@ -15,4 +15,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818615"
 ---
-U kunt in Azure Table Storage of in Azure Cosmos DB met tabellen werken. Zie [Tabelaanbiedingen](../articles/cosmos-db/table-introduction.md#table-offerings)voor meer informatie over de verschillen tussen de services. U moet een account maken voor de service die u gaat gebruiken.
+U kunt in Azure Table Storage of in Azure Cosmos DB met tabellen werken. Zie voor meer informatie over de verschillen tussen de services [tabel aanbiedingen](../articles/cosmos-db/table-introduction.md#table-offerings). U moet een account maken voor de service die u gaat gebruiken.

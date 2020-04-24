@@ -1,6 +1,6 @@
 ---
-title: Regio's toevoegen, failoverprioriteit wijzigen, failover activeren voor een Azure Cosmos-account
-description: Regio's toevoegen, failoverprioriteit wijzigen, failover activeren voor een Azure Cosmos-account
+title: Regio's toevoegen, prioriteit van failover wijzigen, failover activeren voor een Azure Cosmos-account
+description: Regio's toevoegen, prioriteit van failover wijzigen, failover activeren voor een Azure Cosmos-account
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -14,25 +14,25 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275547"
 ---
-# <a name="add-regions-change-failover-priority-trigger-failover-for-an-azure-cosmos-account-using-azure-cli"></a>Regio's toevoegen, failoverprioriteit wijzigen, failover activeren voor een Azure Cosmos-account met Azure CLI
+# <a name="add-regions-change-failover-priority-trigger-failover-for-an-azure-cosmos-account-using-azure-cli"></a>Regio's toevoegen, failover-prioriteit wijzigen, failover activeren voor een Azure Cosmos-account met behulp van Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit onderwerp de Azure CLI-versie 2.0.73 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.0.73 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Dit script toont drie bewerkingen.
+In dit script worden drie bewerkingen gedemonstreerd.
 
-- Een regio toevoegen aan een bestaand Azure Cosmos-account.
-- Regionale failoverprioriteit wijzigen (geldt voor accounts met automatische failover)
-- Een handmatige failover activeren van primaire naar secundaire regio's (geldt voor accounts met handmatige failover)
-
-> [!NOTE]
-> Regiobewerkingen toevoegen en verwijderen op een Cosmos-account kunnen niet worden uitgevoerd terwijl andere eigenschappen worden gewijzigd.
+- Voeg een regio toe aan een bestaand Azure Cosmos-account.
+- De prioriteit van de regionale failover wijzigen (is van toepassing op accounts met automatische failover)
+- Een hand matige failover activeren vanuit primaire naar secundaire regio's (van toepassing op accounts met hand matige failover)
 
 > [!NOTE]
-> Dit voorbeeld toont aan dat u een SQL (Core) API-account gebruikt, maar deze bewerkingen zijn identiek voor alle database-API's in Cosmos DB.
+> Het toevoegen en verwijderen van regio bewerkingen voor een Cosmos-account kan niet worden uitgevoerd terwijl andere eigenschappen worden gewijzigd.
+
+> [!NOTE]
+> Dit voor beeld laat zien hoe u een SQL (core) API-account gebruikt, maar deze bewerkingen zijn identiek voor alle data base-Api's in Cosmos DB.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/regions.sh "Regional operations for Cosmos DB.")]
 
@@ -52,12 +52,12 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
-| [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Werkt een Azure Cosmos DB-account bij (regio toevoegen of verwijderen). |
-| [az cosmosdb failover-prioriteit-verandering](/cli/azure/cosmosdb#az-cosmosdb-failover-priority-change) | Update failover prioriteit of trigger failover op een Azure Cosmos DB-account. |
+| [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Hiermee werkt u een Azure Cosmos DB-account (regio toevoegen of verwijderen) bij. |
+| [AZ cosmosdb failover-Priority-Change](/cli/azure/cosmosdb#az-cosmosdb-failover-priority-change) | Failover-prioriteit bijwerken of failover activeren voor een Azure Cosmos DB-account. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Cosmos DB CLI-documentatie](/cli/azure/cosmosdb)voor meer informatie over de Azure Cosmos DB CLI.
+Zie [Azure Cosmos DB cli-documentatie](/cli/azure/cosmosdb)voor meer informatie over de Azure Cosmos DB cli.
 
-Alle Azure Cosmos DB CLI-scriptvoorbeelden zijn te vinden in de [Azure Cosmos DB CLI GitHub Repository.](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)
+Alle Azure Cosmos DB CLI-voorbeeld scripts vindt u in de [Azure Cosmos DB cli github-opslag plaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).

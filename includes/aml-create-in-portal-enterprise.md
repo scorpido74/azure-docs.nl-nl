@@ -16,34 +16,34 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "73929634"
 ---
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
-1. Selecteer in de linkerbovenhoek van de Azure-portal de optie **+ Een resource maken**.
+1. Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken**.
 
       ![Een nieuwe resource maken](media/aml-create-in-portal/create-workspace.gif)
 
-1. Gebruik de zoekbalk om **Machine Learning**te vinden.
+1. Gebruik de zoek balk om **machine learning**te vinden.
 
-1. Selecteer **Machine learning**.
+1. Selecteer **machine learning**.
 
-1. Selecteer Maken om te beginnen **in** het deelvenster **Machine learning.**
+1. Selecteer in het deel venster **machine learning** de optie **maken** om te beginnen.
 
-1. Geef de volgende informatie op om uw nieuwe werkruimte te configureren:
+1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
 
    Veld|Beschrijving 
    ---|---
-   Naam van de werkruimte |Voer een unieke naam in die uw werkruimte identificeert. In dit voorbeeld gebruiken we **docs-ws**. Namen moeten uniek zijn in de resourcegroep. Gebruik een naam die gemakkelijk te herinneren is en om te onderscheiden van werkruimten die door anderen zijn gemaakt. 
+   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. 
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml**. 
-   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers staat en de gegevensbronnen om uw werkruimte te maken.
-   Werkruimte-editie | Selecteer **Onderneming**. Deze zelfstudie vereist het gebruik van de Enterprise-editie. De Enterprise-editie is in preview en voegt momenteel geen extra kosten toe. 
+   Resourcegroep | Gebruik een bestaande resource groep in uw abonnement of voer een naam in om een nieuwe resource groep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
+   Werkruimte editie | Selecteer **Enter prise**. Voor deze zelf studie is het gebruik van de Enter prise-editie vereist. De Enter prise Edition is een preview-versie en voegt momenteel geen extra kosten toe. 
 
-1. Nadat u klaar bent met het configureren van de werkruimte, selecteert u **Maken**. 
+1. Nadat u klaar bent met het configureren van de werk ruimte, selecteert u **maken**. 
 
    > [!WARNING] 
-   > Het kan enkele minuten duren voordat uw werkruimte in de cloud is gemaakt.
+   > Het kan enkele minuten duren om uw werk ruimte in de cloud te maken.
 
-   Wanneer het proces is voltooid, wordt een bericht met een implementatiesucces weergegeven. 
+   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
  
- 1. Als u de nieuwe werkruimte wilt weergeven, selecteert u **Ga naar resource**.
+ 1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
 

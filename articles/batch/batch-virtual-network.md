@@ -1,73 +1,68 @@
 ---
-title: Een pool inrichten in een virtueel netwerk - Azure Batch | Microsoft Documenten
-description: Een batchgroep maken in een virtueel Azure-netwerk, zodat rekenknooppunten veilig kunnen communiceren met andere VM's in het netwerk, zoals een bestandsserver.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+title: Een pool inrichten in een virtueel netwerk-Azure Batch | Microsoft Docs
+description: Het maken van een batch-pool in een virtueel Azure-netwerk, zodat reken knooppunten veilig kunnen communiceren met andere virtuele machines in het netwerk, zoals een bestands server.
 ms.topic: article
 ms.date: 04/03/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a653b645fb8713698e8baf283b3ab6226841dfcd
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657468"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111892"
 ---
-# <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch-groep maken in een virtueel netwerk
+# <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
-Wanneer u een Azure Batch-groep maakt, u de groep inrichten in een subnet van een [Virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) (VNet) dat u opgeeft. In dit artikel wordt uitgelegd hoe u een batchpool in een VNet instelt.
+Wanneer u een Azure Batch groep maakt, kunt u de groep inrichten in een subnet van een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) (VNet) dat u opgeeft. In dit artikel wordt uitgelegd hoe u een batch-pool in een VNet instelt.
 
 ## <a name="why-use-a-vnet"></a>Waarom een VNet gebruiken?
 
-Een Azure Batch-groep heeft instellingen waarmee compute nodes met elkaar kunnen communiceren, bijvoorbeeld om taken met meerdere instanties uit te voeren. Voor deze instellingen is geen aparte VNet vereist. De knooppunten kunnen echter standaard niet communiceren met virtuele machines die geen deel uitmaken van de batchgroep, zoals een licentieserver of een bestandsserver. Als u de groepcomputenodes veilig wilt laten communiceren met andere virtuele machines of met een on-premises netwerk, u de groep inrichten in een subnet van een Azure VNet.
+Een Azure Batch groep heeft instellingen waarmee reken knooppunten met elkaar kunnen communiceren, bijvoorbeeld om taken met meerdere instanties uit te voeren. Deze instellingen vereisen geen afzonderlijk VNet. De knoop punten kunnen echter standaard niet communiceren met virtuele machines die geen deel uitmaken van de batch-pool, zoals een licentie server of een bestands server. U kunt de groep in een subnet van een Azure-VNet inrichten als u wilt toestaan dat groeps Compute-knoop punten veilig kunnen communiceren met andere virtuele machines of met een on-premises netwerk.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Verificatie**. Het gebruik van een Azure VNet vereist dat de Batch-client-API gebruikmaakt van Azure Active Directory-verificatie (AD). Azure Batch-ondersteuning voor Azure AD wordt beschreven in [Oplossingen van Batch-service verifiëren met Active Directory](batch-aad-auth.md).
 
-* **Een Azure VNet**. Zie de volgende sectie voor VNet-vereisten en -configuratie. Als u een VNet vooraf met een of meer subnetten wilt voorbereiden, u de Azure-portal, Azure PowerShell, de Azure Command-Line Interface (CLI) of andere methoden gebruiken.
-  * Zie Een virtueel netwerk maken als u een VNet op basis van Azure Resource Manager wilt [maken.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Een VNet op basis van Resource Manager wordt aanbevolen voor nieuwe implementaties en wordt alleen ondersteund op groepen in de configuratie van de virtuele machine.
-  * Zie Een virtueel netwerk [(klassiek) maken met meerdere subnetten](../virtual-network/create-virtual-network-classic.md)als u een klassieke VNet wilt maken. Een klassieke VNet wordt alleen ondersteund op pools in de Cloud Services-configuratie.
+* **Een Azure-VNet**. Raadpleeg de volgende sectie voor VNet-vereisten en-configuratie. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure-opdracht regel interface (CLI) of een andere methode gebruiken.
+  * Zie [een virtueel netwerk maken](../virtual-network/manage-virtual-network.md#create-a-virtual-network)voor het maken van een op Azure Resource Manager gebaseerde VNet. Een VNet op basis van Resource Manager wordt aanbevolen voor nieuwe implementaties en wordt alleen ondersteund voor groepen in de configuratie van de virtuele machine.
+  * Zie [een virtueel netwerk (klassiek) met meerdere subnetten maken](../virtual-network/create-virtual-network-classic.md)om een klassiek VNet te maken. Een klassiek VNet wordt alleen ondersteund voor Pools in de Cloud Services configuratie.
 
 ## <a name="vnet-requirements"></a>Vereisten voor VNet
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Een pool maken met een VNet in de portal
+## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Een pool met een VNet maken in de portal
 
-Zodra u uw VNet hebt gemaakt en er een subnet aan hebt toegewezen, u een batchgroep maken met dat VNet. Volg deze stappen om een groep te maken vanuit de Azure-portal: 
+Wanneer u uw VNet hebt gemaakt en hieraan een subnet hebt toegewezen, kunt u een batch-pool met dat VNet maken. Volg deze stappen om een groep te maken op basis van de Azure Portal: 
 
-1. Ga in Azure Portal naar uw Batch-account. Dit account moet zich in hetzelfde abonnement en dezelfde regio bevinden als de resourcegroep die de VNet bevat die u wilt gebruiken.
-2. Selecteer in het venster **Instellingen** aan de linkerkant het **menu-item Groeping.**
-3. Selecteer **in** het venster Pools de opdracht **Toevoegen.**
-4. Selecteer **in** het venster Groep toevoegen de optie die u wilt gebruiken in de vervolgkeuzelijst **Afbeeldingstype.**
-5. Selecteer de juiste **Uitgever/Aanbieding/Sku** voor uw aangepaste afbeelding.
-6. Geef de resterende vereiste instellingen op, waaronder de **grootte van knooppunt,** **speciale knooppunten voor doel**en knooppunten met lage **prioriteit,** evenals de gewenste optionele instellingen.
-7. Selecteer **in Virtueel netwerk**het virtuele netwerk en subnet dat u wilt gebruiken.
+1. Ga in Azure Portal naar uw Batch-account. Dit account moet zich in hetzelfde abonnement en dezelfde regio bevinden als de resource groep die het VNet bevat dat u wilt gebruiken.
+2. Selecteer in het venster **instellingen** aan de linkerkant de menu opdracht **groepen** .
+3. Selecteer in het venster **groepen** de opdracht **toevoegen** .
+4. Selecteer in het venster **groep toevoegen** de optie die u wilt gebruiken in de vervolg keuzelijst **afbeeldings type** .
+5. Selecteer de juiste **Uitgever/aanbieding/SKU** voor uw aangepaste installatie kopie.
+6. Geef de overige vereiste instellingen op, zoals de **knooppunt grootte**, het **doel toegewezen knoop punten**en **knoop punten met lage prioriteit**, evenals de gewenste optionele instellingen.
+7. Selecteer in **Virtual Network**het virtuele netwerk en het subnet dat u wilt gebruiken.
 
-   ![Pool toevoegen aan virtueel netwerk](./media/batch-virtual-network/add-vnet-pool.png)
+   ![Groep toevoegen met virtueel netwerk](./media/batch-virtual-network/add-vnet-pool.png)
 
-## <a name="user-defined-routes-for-forced-tunneling"></a>Door de gebruiker gedefinieerde routes voor gedwongen tunneling
+## <a name="user-defined-routes-for-forced-tunneling"></a>Door de gebruiker gedefinieerde routes voor geforceerde tunneling
 
-Mogelijk hebt u vereisten in uw organisatie om internetgebonden verkeer van het subnet terug te leiden naar uw on-premises locatie voor inspectie en logboekregistratie. Mogelijk hebt u gedwongen tunneling voor de subnetten in uw VNet ingeschakeld.
+Mogelijk hebt u vereisten in uw organisatie om Internet-gebonden verkeer van het subnet terug te sturen naar uw on-premises locatie voor inspectie en logboek registratie. Mogelijk hebt u geforceerde tunneling ingeschakeld voor de subnetten in uw VNet.
 
-Als u ervoor wilt zorgen dat uw gegevensknooppunten voor de Azure Batch-groep-groep werken in een VNet dat gedwongen tunneling heeft ingeschakeld, moet u de volgende [door de gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md) voor dat subnet toevoegen:
+Om ervoor te zorgen dat de reken knooppunten van uw Azure Batch pool werken in een VNet waarvoor geforceerde tunneling is ingeschakeld, moet u de volgende door de [gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md) toevoegen voor dat subnet:
 
-* De batchservice moet communiceren met rekenknooppunten voor het plannen van gegevens. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de Batch-service in het gebied waar uw Batch-account bestaat. Zie [Servicetags on-premises](../virtual-network/service-tags-overview.md)voor meer informatie over het verkrijgen van de lijst met IP-adressen van de Batch-service. De IP-adressen van de batchservice worden gekoppeld aan de `BatchNodeManagement` servicetag (of de regionale variant die overeenkomt met uw batchaccountgebied).
+* De batch-service moet communiceren met pool Compute-knoop punten voor het plannen van taken. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de batch-service in de regio waar uw batch-account bestaat. Zie [on-premises service Tags](../virtual-network/service-tags-overview.md)voor meer informatie over het verkrijgen van een lijst met IP-adressen van de batch-service. De IP-adressen van de batch-service worden `BatchNodeManagement` gekoppeld aan de servicetag (of de regionale variant die overeenkomt met de regio van uw batch-account).
 
-* Zorg ervoor dat uitgaand verkeer naar Azure Storage `<account>.table.core.windows.net` `<account>.queue.core.windows.net`(met `<account>.blob.core.windows.net`name URL's van het formulier en ) niet wordt geblokkeerd via uw on-premises netwerktoestel.
+* Zorg ervoor dat uitgaand verkeer naar Azure Storage (met name url's `<account>.table.core.windows.net`van `<account>.queue.core.windows.net`het formulier `<account>.blob.core.windows.net`, en) niet wordt geblokkeerd via uw on-premises netwerk apparaat.
 
-Wanneer u een door de gebruiker gedefinieerde route toevoegt, definieert u de route voor elk gerelateerd batch-IP-adresvoorvoegsel en stelt u **Het volgende hoptype** in op **internet**. Zie het volgende voorbeeld:
+Wanneer u een door de gebruiker gedefinieerde route toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het **type volgende hop** in op **Internet**. Zie het volgende voorbeeld:
 
 ![Door de gebruiker gedefinieerde route](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> Ip-adressen van batchservice kunnen in de loop van de tijd veranderen. Om een storing als gevolg van een IP-adreswijziging te voorkomen, raden we u aan een periodiek proces in te stellen om IP-adressen van batchservice automatisch te vernieuwen en up-to-date te houden in uw routetabel.
+> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Om te voor komen dat er een storing optreedt als gevolg van een wijziging in een IP-adres, wordt u aangeraden een periodiek proces voor het vernieuwen van de batch service-IP-adressen te maken en deze up-to-date te houden in uw route tabel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Grootschalige parallelle rekenoplossingen ontwikkelen met Batch](batch-api-basics.md)voor een diepgaand overzicht van Batch.
-- Zie Een door de gebruiker gedefinieerde [route maken - Azure-portal](../virtual-network/tutorial-create-route-table-portal.md)voor meer informatie over het maken van een door de gebruiker gedefinieerde route.
+- Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+- Zie voor meer informatie over het maken van een door de gebruiker gedefinieerde route [een door de gebruiker gedefinieerde route-Azure portal maken](../virtual-network/tutorial-create-route-table-portal.md).

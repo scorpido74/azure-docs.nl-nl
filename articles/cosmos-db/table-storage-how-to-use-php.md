@@ -1,5 +1,5 @@
 ---
-title: Azure Storage Table-service of Azure Cosmos DB Table API van PHP gebruiken
+title: Azure Storage Table service of Azure Cosmos DB Table-API van PHP gebruiken
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 author: sakash279
 ms.author: akshanka
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 Zie [Het gegevensmodel van de tabelservice][table-data-model] voor meer informatie over beperkingen voor tabelnamen.
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
-Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen op meerdere entiteiten die op hetzelfde knooppunt zijn opgeslagen, presteren beter dan op entiteiten die op verschillende knooppunten zijn opgeslagen.) Het `RowKey` is de unieke ID van een entiteit binnen een partitie.
+Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen op meerdere entiteiten die op hetzelfde knoop punt zijn opgeslagen, kunnen beter worden uitgevoerd dan op entiteiten die op verschillende knoop punten zijn opgeslagen.) De `RowKey` is de unieke id van een entiteit binnen een partitie.
 
 ```php
 require_once 'vendor/autoload.php';

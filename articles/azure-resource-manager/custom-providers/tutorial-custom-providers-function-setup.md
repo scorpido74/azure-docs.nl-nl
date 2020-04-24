@@ -1,6 +1,6 @@
 ---
 title: Azure Functions instellen
-description: Deze zelfstudie gaat over het maken van een Azure-functie-app en deze instellen om te werken met Azure Custom Providers
+description: In deze zelf studie wordt uitgelegd hoe u een Azure function-app maakt en deze instelt op werken met aangepaste Azure-providers
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
@@ -12,46 +12,46 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649986"
 ---
-# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure-functies instellen voor Azure Custom Providers
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor aangepaste Azure-providers
 
-Een aangepaste provider is een contract tussen Azure en een eindpunt. Met aangepaste providers u werkstromen in Azure wijzigen. In deze zelfstudie ziet u hoe u een Azure-functie-app instelt om te werken als een aangepast eindpunt van de provider.
+Een aangepaste provider is een contract tussen Azure en een eind punt. Met aangepaste providers kunt u werk stromen wijzigen in Azure. In deze zelf studie leert u hoe u een Azure function-app instelt voor gebruik als een eind punt voor een aangepaste provider.
 
 ## <a name="create-the-azure-function-app"></a>De Azure-functie-app maken
 
 > [!NOTE]
-> In deze zelfstudie maakt u een eenvoudig serviceeindpunt dat een Azure-functie-app gebruikt. Een aangepaste provider kan echter elk openbaar toegankelijk eindpunt gebruiken. Alternatieven zijn Azure Logic Apps, Azure API Management en de Web Apps-functie van Azure App Service.
+> In deze zelf studie maakt u een eenvoudig service-eind punt dat gebruikmaakt van een Azure-functie-app. Een aangepaste provider kan echter elk openbaar toegankelijk eind punt gebruiken. Alternatieven zijn Azure Logic Apps, Azure API Management en de Web Apps functie van Azure App Service.
 
-Als u deze zelfstudie wilt starten, moet u eerst de zelfstudie Volgen [Maak uw eerste Azure-functie-app in de Azure-portal.](../../azure-functions/functions-create-first-azure-function.md) Die zelfstudie maakt een .NET-kernwebhook-functie die kan worden gewijzigd in de Azure-portal. Het is ook de basis voor de huidige tutorial.
+Als u deze zelf studie wilt starten, moet u eerst de zelf studie [uw eerste Azure-functie-app maken in de Azure Portal](../../azure-functions/functions-create-first-azure-function.md). In deze zelf studie maakt u een .NET core-webhook-functie die kan worden gewijzigd in de Azure Portal. Het is ook de basis van de huidige zelf studie.
 
-## <a name="install-azure-table-storage-bindings"></a>Azure Table-opslagbindingen installeren
+## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage-bindingen installeren
 
-Ga als het gaat om het installeren van de Azure Table-opslagbindingen:
+De Azure Table Storage-bindingen installeren:
 
-1. Ga naar het tabblad **Integreren** voor de HttpTrigger.
-1. Selecteer **+ Nieuwe invoer**.
-1. Selecteer **Azure-tabelopslag**.
-1. Installeer de extensie Microsoft.Azure.WebJobs.Extensions.Storage als deze nog niet is geïnstalleerd.
-1. Voer **tabelOpslag**in in het vak Naam van de **parametertabel** .
-1. Voer in het vak **Tabelnaam** **myCustomResources**in .
-1. Selecteer **Opslaan** om de bijgewerkte invoerparameter op te slaan.
+1. Ga naar het tabblad **integreren** voor de http trigger.
+1. Selecteer **+ nieuwe invoer**.
+1. Selecteer **Azure Table Storage**.
+1. Installeer de extensie micro soft. Azure. webjobs. Extensions. Storage als deze nog niet is geïnstalleerd.
+1. Typ **tableStorage**in het vak **naam para meter van tabel** .
+1. Voer in het vak **tabel naam** **myCustomResources**in.
+1. Selecteer **Opslaan** om de bijgewerkte invoer parameter op te slaan.
 
-![Overzicht van aangepaste providermet tabelbindingen](./media/create-custom-provider/azure-functions-table-bindings.png)
+![Overzicht van de aangepaste provider waarin tabel bindingen worden weer gegeven](./media/create-custom-provider/azure-functions-table-bindings.png)
 
-## <a name="update-restful-http-methods"></a>RESTful HTTP-methoden bijwerken
+## <a name="update-restful-http-methods"></a>RESTERENDE HTTP-methoden bijwerken
 
-Ga als u de Azure-functie zo in stelt dat de aangepaste provider RESTful-aanvraagmethoden zijn opgenomen:
+De Azure-functie zo instellen dat de vervolg aanvraag methoden van de aangepaste provider worden toegevoegd:
 
-1. Ga naar het tabblad **Integreren** voor de HttpTrigger.
-1. Selecteer **onder Geselecteerde HTTP-methoden**de optie **GET,** **POST**, **Delete**en **PUT**.
+1. Ga naar het tabblad **integreren** voor de http trigger.
+1. Selecteer onder **geselecteerde HTTP-methoden** **ophalen**, **plaatsen**, **verwijderen**en **plaatsen**.
 
-![Overzicht van aangepaste providermet HTTP-methoden](./media/create-custom-provider/azure-functions-http-methods.png)
+![Overzicht van de aangepaste provider met HTTP-methoden](./media/create-custom-provider/azure-functions-http-methods.png)
 
 ## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Resource Manager NuGet-pakketten toevoegen
 
 > [!NOTE]
-> Als uw C#-projectbestand ontbreekt in de projectmap, u het handmatig toevoegen. Of het wordt weergegeven nadat de extensie Microsoft.Azure.WebJobs.Extensions.Storage is geïnstalleerd in de functie-app.
+> Als uw C#-project bestand ontbreekt in de projectmap, kunt u dit hand matig toevoegen. Het wordt ook weer gegeven nadat de uitbrei ding micro soft. Azure. webjobs. Extensions. Storage is geïnstalleerd op de functie-app.
 
-Werk vervolgens het C#-projectbestand bij met handige NuGet-bibliotheken. Deze bibliotheken maken het eenvoudiger om binnenkomende aanvragen van aangepaste providers te ontleden. Volg de stappen om extensies toe te [voegen vanuit de portal](../../azure-functions/install-update-binding-extensions-manual.md) en werk het C#-projectbestand bij om de volgende pakketverwijzingen op te nemen:
+Werk vervolgens het C#-project bestand bij om nuttige NuGet-bibliotheken op te laten bevatten. Deze bibliotheken maken het gemakkelijker om binnenkomende aanvragen van aangepaste providers te parseren. Volg de stappen om [uitbrei dingen toe te voegen vanuit de portal](../../azure-functions/install-update-binding-extensions-manual.md) en het C#-project bestand bij te werken om de volgende pakket verwijzingen op te nemen:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -59,7 +59,7 @@ Werk vervolgens het C#-projectbestand bij met handige NuGet-bibliotheken. Deze b
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-Het volgende XML-element is een voorbeeld C#-projectbestand:
+Het volgende XML-element is een voor beeld van een C#-project bestand:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -77,7 +77,7 @@ Het volgende XML-element is een voorbeeld C#-projectbestand:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie stelt u een Azure-functie-app in om te werken als eindpunt van een aangepaste Azure-provider.
+In deze zelf studie stelt u een Azure function-app in om te werken als een Azure aangepaste provider-eind punt.
 
-Zie Zelfstudie: Een restful aangepast providereindpunt voor meer informatie over het maken van een RESTful custom provider.To learn how to author a RESTful custom provider endpoint, see [Tutorial: Authoring a RESTful custom provider endpoint](./tutorial-custom-providers-function-authoring.md).
+Zie [zelf studie: een Gedegend, aangepast provider-eind punt](./tutorial-custom-providers-function-authoring.md)maken voor meer informatie over het maken van een gedegend aangepast provider eindpunt.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure CLI'
-description: Ga aan de slag met het maken van een aangepaste rol voor Azure-resources met Azure CLI in deze zelfstudie.
+title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met Azure CLI'
+description: In deze zelf studie kunt u aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure CLI.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239866"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
+Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 > * Een aangepaste rol bijwerken
 > * Een aangepaste rol verwijderen
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
 
-Meld u aan bij [Azure CLI](/cli/azure/authenticate-azure-cli).
+Meld u aan bij [Azure cli](/cli/azure/authenticate-azure-cli).
 
 ## <a name="create-a-custom-role"></a>Een aangepaste rol maken
 

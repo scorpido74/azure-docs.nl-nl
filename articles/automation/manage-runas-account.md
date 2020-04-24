@@ -1,134 +1,134 @@
 ---
-title: Azure Automation Run beheren als accounts
-description: In dit artikel wordt beschreven hoe u uw Run As-accounts beheert met PowerShell of via de portal.
+title: Azure Automation uitvoeren als-accounts beheren
+description: In dit artikel wordt beschreven hoe u uw uitvoeren als-accounts beheert met Power shell of via de portal.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/24/2019
+ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8d2c2f1e7ee10153108e54649ceba45b927b0cd2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676630"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113303"
 ---
-# <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation Run beheren als accounts
+# <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation uitvoeren als-accounts beheren
 
-Uitvoeren Als accounts in Azure Automation verificatie bieden voor het beheren van resources in Azure met behulp van de Azure-cmdlets. Wanneer u een Run As-account maakt, wordt een nieuwe hoofdgebruiker van de service gemaakt in Azure Active Directory (AD) en wordt de rol inzender aan deze gebruiker toegeschreven op abonnementsniveau. Voor runbooks die hybride runbook-werknemers op virtuele Azure-machines gebruiken, u [beheerde identiteiten voor Azure-resources](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) gebruiken in plaats van Als-accounts uitvoeren om te verifiëren voor uw Azure-bronnen.
+Uitvoeren als-accounts in Azure Automation bieden verificatie voor het beheren van resources in azure met behulp van de Azure-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er een nieuwe Service-Principal-gebruiker in Azure Active Directory (AD) gemaakt en wordt de rol Inzender toegewezen aan deze gebruiker op het abonnements niveau.
 
-De serviceprincipal voor een Run as-account heeft geen machtigingen om Azure AD standaard te lezen. Als u machtigingen wilt toevoegen om Azure AD te lezen of te beheren, moet u de machtigingen voor de serviceprincipal onder **API-machtigingen**verlenen. Zie [Machtigingen toevoegen om toegang te krijgen tot webAPI's voor](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)meer informatie.
+## <a name="types-of-run-as-accounts"></a>Typen run as-accounts
 
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
-
-## <a name="types-of-run-as-accounts"></a>Typen Run As-accounts
-
-Azure Automation gebruikt twee typen Run As-accounts:
+Azure Automation gebruikt twee typen uitvoeren als-accounts:
 
 * Azure Run As-account
-* Azure Classic Run As-account
+* Klassiek uitvoeren als-account van Azure
 
 >[!NOTE]
->CSP-abonnementen (Azure Cloud Solution Provider) ondersteunen alleen het Azure Resource Manager-model. Niet-Azure Resource Manager-services zijn niet beschikbaar in het programma. Wanneer u een CSP-abonnement gebruikt, wordt het Azure Classic Run As-account niet gemaakt, maar wordt het Azure Run As-account gemaakt. Zie [Beschikbare services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP-abonnementen.
+>Azure Cloud Solution Provider-abonnementen (CSP) ondersteunen alleen het Azure Resource Manager model. Niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer u een CSP-abonnement gebruikt, wordt het klassieke uitvoeren als-account van Azure niet gemaakt, maar wordt het uitvoeren als-account van Azure gemaakt. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP-abonnementen.
+
+De service-principal voor een uitvoeren als-account heeft geen machtigingen om Azure AD standaard te lezen. Als u machtigingen wilt toevoegen om Azure AD te lezen of te beheren, moet u de machtigingen voor de Service-Principal verlenen onder **API-machtigingen**. Zie [machtigingen toevoegen voor toegang tot Web-api's](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
 
 ### <a name="run-as-account"></a>Run As-account
 
-Het run As-account beheert [resources voor het implementatiemodel resourcebeheer.](../azure-resource-manager/management/deployment-models.md) Het doet de volgende taken.
+Het run as-account beheert resources van het [Resource Manager-implementatie model](../azure-resource-manager/management/deployment-models.md) . Hiermee worden de volgende taken uitvoeren.
 
-* Er wordt een Azure AD-toepassing met een zelf-ondertekend certificaat gemaakt. Daarnaast wordt er voor de toepassing in Azure AD een service-principalaccount gemaakt en wordt aan dit account de rol Inzender toegewezen in uw huidige abonnement. U de certificaatinstelling wijzigen in Eigenaar of een andere rol. Zie [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md) voor meer informatie.
+* Er wordt een Azure AD-toepassing met een zelf-ondertekend certificaat gemaakt. Daarnaast wordt er voor de toepassing in Azure AD een service-principalaccount gemaakt en wordt aan dit account de rol Inzender toegewezen in uw huidige abonnement. U kunt de certificaat instelling wijzigen in eigenaar of een andere rol. Zie [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md) voor meer informatie.
   
-* Hiermee maakt u `AzureRunAsCertificate` een automatiseringscertificaatasset met de naam in het opgegeven automatiseringsaccount. Het certificaatitem bevat de privésleutel van het certificaat die de Azure AD-toepassing gebruikt.
+* Hiermee maakt u een Automation `AzureRunAsCertificate` -certificaat Asset met de naam in het opgegeven Automation-account. De certificaat Asset bevat de persoonlijke sleutel van het certificaat dat door de Azure AD-toepassing wordt gebruikt.
   
-* Hiermee maakt u `AzureRunAsConnection` een automatiseringsverbindingselement met de naam in het opgegeven automatiseringsaccount. Het verbindingsitem bevat de toepassings-id, tenant-id, abonnements-ID en certificaatduimafdruk.
+* Hiermee wordt een Automation- `AzureRunAsConnection` verbindings element gemaakt met de naam in het opgegeven Automation-account. Het verbindings element bevat de toepassings-ID, Tenant-ID, abonnements-ID en vinger afdruk van het certificaat.
 
 ### <a name="azure-classic-run-as-account"></a>Klassieke Azure Uitvoeren als-account
 
-Het Azure Classic Run As-account beheert [klassieke implementatiemodelbronnen.](../azure-resource-manager/management/deployment-models.md) U moet een medebeheerder zijn bij het abonnement om dit type account aan te maken of te verlengen.
+Met het klassieke uitvoeren als-account van Azure worden de resources van het [klassieke implementatie model](../azure-resource-manager/management/deployment-models.md) beheerd. U moet een mede beheerder zijn van het abonnement om dit type account te maken of te vernieuwen.
 
-Het Azure Classic Run As-account voert de volgende taken uit.
+Het klassieke uitvoeren als-account van Azure voert de volgende taken uit.
 
-  * Hiermee maakt u een beheercertificaat in het abonnement.
+  * Hiermee maakt u een beheer certificaat in het abonnement.
 
-  * Hiermee maakt u `AzureClassicRunAsCertificate` een automatiseringscertificaatasset met de naam in het opgegeven automatiseringsaccount. Het certificaatasset bevat de persoonlijke sleutel van het certificaat die wordt gebruikt door het beheercertificaat.
+  * Hiermee maakt u een Automation `AzureClassicRunAsCertificate` -certificaat Asset met de naam in het opgegeven Automation-account. Het certificaatasset bevat de persoonlijke sleutel van het certificaat die wordt gebruikt door het beheercertificaat.
 
-  * Hiermee maakt u `AzureClassicRunAsConnection` een automatiseringsverbindingselement met de naam in het opgegeven automatiseringsaccount. Het verbindingsitem bevat de naam van het abonnement, de abonnements-ID en de naam van het certificaatitem.
+  * Hiermee wordt een Automation- `AzureClassicRunAsConnection` verbindings element gemaakt met de naam in het opgegeven Automation-account. Het verbindings element bevat de naam van het abonnement, de abonnements-ID en de naam van de certificaat Asset.
 
-## <a name="run-as-account-permissions"></a><a name="permissions"></a>Machtigingen voor als account uitvoeren
+>[!NOTE]
+>Het klassieke uitvoeren als-account van Azure wordt niet standaard op hetzelfde moment gemaakt als u een Automation-account maakt. Dit account wordt afzonderlijk gemaakt volgens de stappen die verderop in dit artikel worden beschreven.
 
-In deze sectie worden machtigingen gedefinieerd voor zowel gewone Run As-accounts als Classic Run As-accounts.
+## <a name="run-as-account-permissions"></a><a name="permissions"></a>Machtigingen voor het run as-account
 
-### <a name="permissions-to-configure-run-as-accounts"></a>Machtigingen voor het configureren van Run As-accounts
+In deze sectie worden de machtigingen voor reguliere run as-accounts en klassieke uitvoeren als-accounts gedefinieerd.
 
-Als u een Run As-account wilt maken of bijwerken, moet u specifieke bevoegdheden en machtigingen hebben. Een toepassingsbeheerder in Azure Active Directory en een eigenaar in een abonnement kunnen alle taken uitvoeren. In een situatie waarin u takenscheiding hebt, wordt in de volgende tabel een lijst weergegeven van de taken, de gelijkwaardige cmdlet en de machtigingen die nodig zijn:
+### <a name="permissions-to-configure-run-as-accounts"></a>Machtigingen voor het configureren van run as-accounts
 
-|Taak|Cmdlet  |Minimummachtigingen  |Waar u de machtigingen instelt|
+Als u een uitvoeren als-account wilt maken of bijwerken, moet u specifieke bevoegdheden en machtigingen hebben. Een toepassings beheerder in Azure Active Directory en een eigenaar van een abonnement kan alle taken volt ooien. In een situatie waarin u een schei ding van taken hebt, ziet u in de volgende tabel een lijst van de taken, de gelijkwaardige cmdlet en de benodigde machtigingen:
+
+|Taak|Cmdlet  |Minimale machtigingen  |Waar u de machtigingen instelt|
 |---|---------|---------|---|
-|Azure AD-toepassing maken|[Nieuwe-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Rol 1<sup>1</sup> toepassingsontwikkelaar        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Azure AD->-app-registraties |
-|Voeg een referentie toe aan de toepassing.|[Nieuw-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Toepassingsbeheerder of globale beheerder<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Azure AD->-app-registraties|
-|Een Azure AD-serviceprincipal maken en deze krijgen|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Toepassingsbeheerder of globale beheerder<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Azure AD->-app-registraties|
-|De RBAC-rol toewijzen of krijgen voor de opgegeven principal|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Beheerder of eigenaar van gebruikerstoegang, of de volgende machtigingen:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonnement](../role-based-access-control/role-assignments-portal.md)</br>Home >-abonnementen \<\> > abonnementsnaam - Toegangsbeheer (IAM)|
-|Een automatiseringscertificaat maken of verwijderen|[Nieuw-AzAutomationCertificaat](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Certificaat voor het verwijderen van azautomation](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Bijdrager op resourcegroep         |Automatiseringsaccountbrongroep|
-|Een automatiseringsverbinding maken of verwijderen|[Nieuwe-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Verbinding verwijderen-azautomation](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Bijdrager op resourcegroep |Automatiseringsaccountbrongroep|
+|Een Azure AD-toepassing maken|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Application Developer-rol<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties |
+|Voeg een referentie toe aan de toepassing.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Toepassings beheerder of globale beheerder<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties|
+|Een Azure AD-service-principal maken en ophalen|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Toepassings beheerder of globale beheerder<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties|
+|De RBAC-rol voor de opgegeven Principal toewijzen of ophalen|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Beheerder of eigenaar van de gebruikers toegang of de volgende machtigingen hebben:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonnement](../role-based-access-control/role-assignments-portal.md)</br>Home >-abonnementen \<> abonnements\> naam-Access Control (IAM)|
+|Een Automation-certificaat maken of verwijderen|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Inzender voor resource groep         |Resource groep voor Automation-account|
+|Een Automation-verbinding maken of verwijderen|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Inzender voor resource groep |Resource groep voor Automation-account|
 
-<sup>1</sup> Niet-beheerdersgebruikers in uw Azure AD-tenant kunnen [AD-toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) als de gebruikers van de Azure AD-tenant de optie **Toepassingen kunnen registreren** op de pagina Gebruikersinstellingen is ingesteld op **Ja**. Als de instelling voor toepassingsregistratie **nee**is, moet de gebruiker die deze actie uitvoert, zijn zoals gedefinieerd in deze tabel.
+<sup>1</sup> gebruikers die geen beheerder zijn in uw Azure AD-TENANT kunnen [ad-toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) als de optie gebruikers van de Azure AD-Tenant **kunnen toepassingen registreren** op de pagina gebruikers instellingen is ingesteld op **Ja**. Als de instelling voor de registratie van de toepassing **Nee**is, moet de gebruiker die deze actie uitvoert, worden gedefinieerd in deze tabel.
 
-Als u geen lid bent van het Active Directory-exemplaar van het abonnement voordat u wordt toegevoegd aan de rol globale beheerder van het abonnement, wordt u als gast toegevoegd. In deze situatie ontvangt `You do not have permissions to create…` u een waarschuwing op de pagina Automatiseringsaccount toevoegen. 
+Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van globale beheerder van het abonnement, wordt u als gast toegevoegd. In dit geval ontvangt u een `You do not have permissions to create…` waarschuwing op de pagina Automation-account toevoegen. 
 
-Als u lid bent van het Active Directory-exemplaar van het abonnement wanneer `You do not have permissions to create…` de functie Globale beheerder is toegewezen, u ook een waarschuwing ontvangen op de pagina Automatiseringsaccount toevoegen. In dit geval u verwijdering aanvragen uit het Active Directory-exemplaar van het abonnement en vervolgens vragen om opnieuw te worden toegevoegd, zodat u een volledige gebruiker in Active Directory wordt.
+Als u lid bent van het Active Directory exemplaar van het abonnement wanneer de rol globale beheerder is toegewezen, kunt u ook een `You do not have permissions to create…` waarschuwing ontvangen op de pagina Automation-account toevoegen. In dit geval kunt u het verwijderen aanvragen van het Active Directory exemplaar van het abonnement en vervolgens aanvragen om opnieuw toe te voegen, zodat u een volledige gebruiker wordt in Active Directory.
 
-Ga als volgt te werk om te controleren of de situatie waarin de foutmelding wordt geproduceerd, is verholpen:
+Om te controleren of de situatie die het fout bericht produceert, is opgelost:
 
-1. Selecteer **gebruikers en groepen**in het azure Active Directory-deelvenster in de Azure-portal. 
-2. Selecteer **Alle gebruikers**selecteren .
-3. Kies uw naam en selecteer **Profiel**. 
-4. Controleer of de waarde van het kenmerk **Gebruikerstype** onder het profiel van uw gebruiker niet is ingesteld op **Gast.**
+1. Selecteer in het deel venster Azure Active Directory in het Azure Portal de optie **gebruikers en groepen**. 
+2. Selecteer **alle gebruikers**.
+3. Kies uw naam en selecteer vervolgens **profiel**. 
+4. Zorg ervoor dat de waarde van het kenmerk **gebruikers type** onder het profiel van de gebruiker niet is ingesteld op **gast**.
 
-### <a name="permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Machtigingen voor het configureren van Classic Run As-accounts
+### <a name="permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Machtigingen voor het configureren van klassieke uitvoeren als-accounts
 
-Als u Classic Run As-accounts wilt configureren of vernieuwen, moet u de rol van co-beheerder op abonnementsniveau hebben. Zie [Azure classic subscription administrators](../role-based-access-control/classic-administrators.md#add-a-co-administrator)voor meer informatie over klassieke abonnementsmachtigingen.
+Als u klassieke uitvoeren als-accounts wilt configureren of vernieuwen, moet u de rol co-beheerder hebben op het abonnements niveau. Zie voor meer informatie over de machtigingen voor klassieke abonnementen [Azure Classic Subscription Administrators](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
-## <a name="creating-a-run-as-account-in-azure-portal"></a>Een Run As-account maken in Azure-portal
+## <a name="creating-a-run-as-account-in-azure-portal"></a>Een uitvoeren als-account maken in Azure Portal
 
-Voer de volgende stappen uit om uw Azure Automation-account bij te werken in de Azure-portal. Maak de Run As en Classic Run As-accounts afzonderlijk. Als u geen klassieke resources hoeft te beheren, kunt u alleen de Uitvoeren als-account van Azure maken.
+Voer de volgende stappen uit om uw Azure Automation-account bij te werken in de Azure Portal. Maak de uitvoeren als-en klassieke uitvoeren als-accounts afzonderlijk. Als u geen klassieke resources hoeft te beheren, kunt u alleen de Uitvoeren als-account van Azure maken.
 
 1. Meld u bij Azure Portal aan met een account dat lid is van de rol Abonnementsbeheerders en dat medebeheerder is van het abonnement.
-2. Zoeken naar en selecteer **Automatiseringsaccounts**.
-3. Selecteer op de pagina Automatiseringsaccounts uw automatiseringsaccount in de lijst.
-4. Selecteer In het linkerdeelvenster de optie **Als accounts uitvoeren** in de sectie Accountinstellingen.
+2. Zoek en selecteer **Automation-accounts**.
+3. Selecteer op de pagina Automation-accounts uw Automation-account in de lijst.
+4. Selecteer in het linkerdeel venster **uitvoeren als-accounts** in de sectie account instellingen.
 5. Afhankelijk van welk account u nodig hebt, selecteert u **Uitvoeren als-account van Azure ** of **Klassiek Uitvoeren als-account van Azure**. 
-6. Afhankelijk van het account van belang, gebruikt u het deelvenster **Azure Run As** toevoegen of Azure Classic Run toevoegen als **account.** Klik na het bekijken van de overzichtsinformatie op **Maken**.
-6. Terwijl in Azure het Uitvoeren als-account wordt gemaakt, kunt u in het menu onder **Meldingen** de voortgang hiervan volgen. Er wordt ook een banner weergegeven waarin staat dat het account wordt gemaakt. Het proces kan enkele minuten in beslag nemen.
+6. Afhankelijk van het gewenste account, gebruikt u het deel venster **Azure uitvoeren als** - **account toevoegen of klassiek uitvoeren als-accounts** toevoegen. Nadat u de overzichts informatie hebt bekeken, klikt u op **maken**.
+6. Terwijl in Azure het Uitvoeren als-account wordt gemaakt, kunt u in het menu onder **Meldingen** de voortgang hiervan volgen. Er wordt ook een banner weer gegeven met de mede deling dat het account wordt gemaakt. Het proces kan een paar minuten duren.
 
-## <a name="creating-a-run-as-account-using-powershell"></a>Een Run As-account maken met PowerShell
+## <a name="creating-a-run-as-account-using-powershell"></a>Een uitvoeren als-account maken met behulp van Power shell
 
-In de volgende lijst vindt u de vereisten voor het maken van een Run As-account in PowerShell. Deze vereisten zijn van toepassing op beide typen Run As-accounts.
+De volgende lijst bevat de vereisten voor het maken van een uitvoeren als-account in Power shell. Deze vereisten zijn van toepassing op beide typen run as-accounts.
 
-* Windows 10 of Windows Server 2016 met Azure Resource Manager-modules 3.4.1 en hoger. Het PowerShell-script biedt geen ondersteuning voor eerdere versies van Windows.
+* Windows 10 of Windows Server 2016 met Azure Resource Manager modules 3.4.1 en hoger. Het Power shell-script biedt geen ondersteuning voor eerdere versies van Windows.
 * Azure PowerShell 1.0 en hoger. Zie [Azure PowerShell installeren en configureren](/powershell/azureps-cmdlets-docs) voor meer informatie over de PowerShell 1.0-release.
-* Een automatiseringsaccount, dat wordt aangeduid als `AutomationAccountName` `ApplicationDisplayName` de waarde voor de parameters en parameters.
-* Machtigingen die gelijkwaardig zijn aan de machtigingen die worden vermeld in [Vereiste machtigingen om Run As-accounts te configureren.](#permissions)
+* Een Automation-account waarnaar wordt verwezen als de waarde voor de `AutomationAccountName` para `ApplicationDisplayName` meters en.
+* Machtigingen die gelijk zijn aan de items in de [vereiste machtigingen voor het configureren van run as-accounts](#permissions).
 
-Voer de volgende `SubscriptionId` `ResourceGroupName`stappen uit om de waarden voor , en welke parameters vereist is voor het PowerShell-script te voltooien.
+Voer de volgende stappen uit `SubscriptionId`om `ResourceGroupName`de waarden voor,, en, de vereiste para meters voor het Power shell-script, op te halen.
 
-1. Selecteer **automatiseringsaccounts**in de Azure-portal .
-1. Selecteer op de pagina Automatiseringsaccounts uw automatiseringsaccount.
-1. Selecteer **Eigenschappen**in de sectie Accountinstellingen .
-1. Let op de waarden voor **NAAM,** **ABONNEMENTS-ID**en **RESOURCEGROEP** op de pagina Eigenschappen. Deze waarden komen overeen `AutomationAccountName` `SubscriptionId`met `ResourceGroupName` de waarden voor respectievelijk de scriptparameters , en PowerShell.
+1. Selecteer in de Azure Portal **Automation-accounts**.
+1. Selecteer uw Automation-account op de pagina Automation-accounts.
+1. Selecteer in de sectie account instellingen de optie **Eigenschappen**.
+1. Noteer de waarden voor **naam**, **abonnements-id**en **resource groep** op de pagina Eigenschappen. Deze waarden komen overeen met respectievelijk de waarden `AutomationAccountName`voor `SubscriptionId`de para `ResourceGroupName` meters, en en Power shell-script.
 
-   ![Pagina Eigenschappen van automatiseringsaccount](media/manage-runas-account/automation-account-properties.png)
+   ![Eigenschappen pagina voor Automation-account](media/manage-runas-account/automation-account-properties.png)
 
-### <a name="powershell-script-to-create-a-run-as-account"></a>PowerShell-script om een Run As-account te maken
+### <a name="powershell-script-to-create-a-run-as-account"></a>Power shell-script voor het maken van een uitvoeren als-account
 
-In deze sectie wordt een PowerShell-script aangemaakt om een Run As-account te maken. Het script bevat ondersteuning voor verschillende configuraties.
+Deze sectie bevat een Power shell-script voor het maken van een uitvoeren als-account. Het script bevat ondersteuning voor verschillende configuraties.
 
 * Een Uitvoeren als-account maken met een zelfondertekend certificaat.
 * Een Uitvoeren als-account en een klassiek Uitvoeren als-account maken met een zelfondertekend certificaat.
 * Maak een Uitvoeren als-account en een klassiek Uitvoeren als-account via een certificaat dat is uitgegeven door de certificeringsinstantie van uw bedrijf.
 * Een Uitvoeren als-account en een klassiek Uitvoeren als-account maken met een zelfondertekend certificaat in de cloud van Azure Government.
 
-Het script maakt gebruik van meerdere Azure Resource Manager-cmdlets om resources te maken. Zie Machtigingen voor het configureren van [Run As-accounts voor](#permissions-to-configure-run-as-accounts)de cmdlets en de machtigingen die ze nodig hebben.
+Het script maakt gebruik van meerdere Azure Resource Manager-cmdlets voor het maken van resources. Zie machtigingen voor het [configureren van run as-accounts](#permissions-to-configure-run-as-accounts)voor de cmdlets en de machtigingen die ze nodig hebben.
 
-Sla het script op uw computer op met de bestandsnaam **New-RunAsAccount.ps1**.
+Sla het script op uw computer op met de bestands naam **New-RunAsAccount. ps1**.
 
 ```powershell
 #Requires -RunAsAdministrator
@@ -310,36 +310,36 @@ if ($CreateClassicRunAsAccount) {
 ```
 
 >[!NOTE]
->`Add-AzAccount`en `Add-AzureRMAccount` zijn aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U deze cmdlets gebruiken of u [uw modules](automation-update-azure-modules.md) in uw Automation-account updaten naar de nieuwste versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+>`Add-AzAccount`en `Add-AzureRMAccount` zijn aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
 
-### <a name="execute-the-powershell-script"></a>Het PowerShell-script uitvoeren
+### <a name="execute-the-powershell-script"></a>Het Power shell-script uitvoeren
 
 1. Start op uw computer **Windows PowerShell** op vanaf het **Start**scherm met verhoogde gebruikersrechten.
-1. Ga vanuit de shell van de opdrachtregel naar de map met uw script.
-1. Voer het script uit met behulp van de parameterwaarden voor de configuratie die u nodig hebt.
-1. Als u een Classic Run As-account maakt, uploadt u, nadat het script is uitgevoerd, het openbare certificaat (**.cer** filename extension) naar het beheerarchief voor het abonnement waarin het automatiseringsaccount is gemaakt.
+1. Ga vanuit de opdracht regel shell met verhoogde bevoegdheid naar de map die het script bevat.
+1. Voer het script uit met behulp van de parameter waarden voor de configuratie die u nodig hebt.
+1. Als u een klassiek uitvoeren als-account maakt nadat het script is uitgevoerd, uploadt u het open bare certificaat (**. CER** filename) naar het beheer Archief voor het abonnement waarin het Automation-account is gemaakt.
 
-Nadat het script is uitgevoerd, wordt u gevraagd te verifiëren met Azure. Meld u aan met een account dat lid is van de rol van abonnementsbeheerders en medebeheerder van het abonnement.
+Nadat het script is uitgevoerd, wordt u gevraagd om u te verifiëren bij Azure. Meld u aan met een account dat lid is van de rol abonnements beheerders en mede beheerder van het abonnement.
 
-#### <a name="create-a-run-as-account-by-using-a-self-signed-certificate"></a>Een Run As-account maken met een zelfondertekend certificaat
+#### <a name="create-a-run-as-account-by-using-a-self-signed-certificate"></a>Een uitvoeren als-account maken met behulp van een zelfondertekend certificaat
 
 ```powershell
 .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
 ```
 
-#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate"></a>Een Run As-account en een Classic Run As-account maken met een zelfondertekend certificaat
+#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate"></a>Een uitvoeren als-account en een klassiek uitvoeren als-account maken met behulp van een zelfondertekend certificaat
 
 ```powershell
 .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
 ```
 
-#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-an-enterprise-certificate"></a>Een Run As-account en een Classic Run As-account maken met behulp van een bedrijfscertificaat
+#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-an-enterprise-certificate"></a>Een uitvoeren als-account en een klassiek uitvoeren als-account maken met behulp van een bedrijfs certificaat
 
 ```powershell
 .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
 ```
 
-Als u een Classic Run As-account hebt gemaakt met een openbaar ondernemingscertificaat **(.cer-bestand),** gebruikt u dit certificaat. Zie [Een beheer-API-certificaat uploaden naar de Azure-portal](../azure-api-management-certs.md).
+Als u een klassiek uitvoeren als-account hebt gemaakt met een openbaar certificaat (**. CER** -bestand) van een onderneming, gebruikt u dit certificaat. Zie [een beheer-API-certificaat uploaden naar de Azure Portal](../azure-api-management-certs.md).
 
 #### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate-in-the-azure-government-cloud"></a>Een Uitvoeren als-account en een klassiek Uitvoeren als-account maken met een zelfondertekend certificaat in de cloud van Azure Government
 
@@ -347,19 +347,19 @@ Als u een Classic Run As-account hebt gemaakt met een openbaar ondernemingscerti
 .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
 ```
 
-Als u een Classic Run As-account hebt gemaakt met een zelfondertekend openbaar certificaat (**.cer-bestand),** maakt en slaat het script op in de map tijdelijke bestanden op uw computer. Het is te vinden `%USERPROFILE%\AppData\Local\Temp`in het gebruikersprofiel , dat u hebt gebruikt om de PowerShell-sessie uit te voeren.
+Als u een klassiek uitvoeren als-account hebt gemaakt met een zelfondertekend openbaar certificaat (**. CER** -bestand), wordt het door het script gemaakt en opgeslagen in de map met tijdelijke bestanden op uw computer. Dit kan worden gevonden in het gebruikers profiel `%USERPROFILE%\AppData\Local\Temp`, dat u hebt gebruikt om de Power shell-sessie uit te voeren.
 
-## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Een run als- of klassiek run-account verwijderen
+## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Een uitvoeren als-of klassiek uitvoeren als-account verwijderen
 
-In deze sectie wordt beschreven hoe u een Run As- of Classic Run As-account verwijdert. Als u deze actie uitvoert, blijft het Automation-account behouden. Nadat u het account hebt verwijderd, u het opnieuw maken in de Azure-portal.
+In deze sectie wordt beschreven hoe u een uitvoeren als-of klassiek uitvoeren als-account verwijdert. Als u deze actie uitvoert, blijft het Automation-account behouden. Nadat u het account hebt verwijderd, kunt u het opnieuw maken in de Azure Portal.
 
 1. Open in Azure Portal het Automation-account.
 
-2. Selecteer In het linkerdeelvenster de optie **Als accounts uitvoeren** in de sectie Accountinstellingen.
+2. Selecteer in het linkerdeel venster **uitvoeren als-accounts** in de sectie account instellingen.
 
 3. Selecteer op de pagina Uitvoeren als-accounts het Uitvoeren als- of klassieke Uitvoeren als-account dat u wilt verwijderen. 
 
-4. Klik in het deelvenster Eigenschappen voor het geselecteerde account op **Verwijderen**.
+4. Klik in het deel venster Eigenschappen voor het geselecteerde account op **verwijderen**.
 
    ![Uitvoeren als-account verwijderen](media/manage-runas-account/automation-account-delete-runas.png)
 
@@ -371,52 +371,52 @@ In deze sectie wordt beschreven hoe u een Run As- of Classic Run As-account verw
 
 ## <a name="renewing-a-self-signed-certificate"></a><a name="cert-renewal"></a>Een zelfondertekend certificaat vernieuwen
 
-Het zelfondertekende certificaat dat u hebt gemaakt voor het Run As-account verloopt een jaar na de datum van aanmaken. Op een gegeven moment voordat je Run As-account verloopt, moet je het certificaat verlengen. U het op elk gewenst moment verlengen voordat het verloopt. 
+Het zelfondertekende certificaat dat u voor het uitvoeren als-account hebt gemaakt, verloopt één jaar na de aanmaak datum. Op een bepaald moment voordat het run as-account verloopt, moet u het certificaat vernieuwen. U kunt deze op elk gewenst moment vernieuwen voordat het verloopt. 
 
-Wanneer u het zelfondertekende certificaat verlengt, blijft het huidige geldige certificaat behouden om ervoor te zorgen dat alle runbooks die in de wachtrij staan of actief worden uitgevoerd en die zich verifiëren met het account Uitvoeren als, niet negatief worden beïnvloed. Het certificaat blijft geldig tot de vervaldatum.
-
->[!NOTE]
->Als u denkt dat het run as-account is gecompromitteerd, u het zelfondertekende certificaat verwijderen en opnieuw maken.
+Wanneer u het zelfondertekende certificaat verlengt, wordt het huidige geldige certificaat bewaard om ervoor te zorgen dat alle runbooks die in de wachtrij zijn geplaatst of actief actief zijn, en die worden geverifieerd met het uitvoeren als-account, niet negatief worden beïnvloed. Het certificaat blijft geldig tot de vervaldatum.
 
 >[!NOTE]
->Als u uw Run As-account hebt geconfigureerd om een certificaat te gebruiken dat is uitgegeven door uw enterprise certificate authority en u de optie gebruikt om een zelfondertekende certificaatoptie te verlengen, wordt het bedrijfscertificaat vervangen door een zelfondertekend certificaat.
+>Als u denkt dat het uitvoeren als-account is aangetast, kunt u het zelfondertekende certificaat verwijderen en opnieuw maken.
+
+>[!NOTE]
+>Als u uw uitvoeren als-account hebt geconfigureerd voor het gebruik van een certificaat dat is uitgegeven door de certificerings instantie van uw bedrijf en u de optie voor het vernieuwen van een zelfondertekend certificaat gebruikt, wordt het ondernemings certificaat vervangen door een zelfondertekend certificaat.
 
 Gebruik de volgende stappen om het zelfondertekende certificaat te vernieuwen.
 
 1. Open in Azure Portal het Automation-account.
 
-1. Selecteer **Als-accounts uitvoeren** in de sectie Accountinstellingen.
+1. Selecteer **uitvoeren als-accounts** in de sectie account instellingen.
 
     ![Eigenschappendeelvenster voor Automation-account](media/manage-runas-account/automation-account-properties-pane.png)
 
-1. Selecteer op de eigenschappenpagina Als-accounts uitvoeren de optie Als-account uitvoeren of het account Classic Run As waarvoor u het certificaat wilt vernieuwen.
+1. Selecteer op de pagina uitvoeren als-accounts het uitvoeren als-account of het klassieke uitvoeren als-account waarvoor u het certificaat wilt vernieuwen.
 
-1. Klik in het eigenschappenvenster voor het geselecteerde account op **Certificaat verlengen**.
+1. Klik in het deel venster Eigenschappen voor het geselecteerde account op **certificaat vernieuwen**.
 
     ![Certificaat vernieuwen voor Uitvoeren als-account](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
 1. Terwijl het certificaat wordt gemaakt, kunt u in het menu onder **Meldingen** de voortgang hiervan volgen.
 
-## <a name="setting-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Automatische certificaatverlenging instellen met een automatiseringsrunbook
+## <a name="setting-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Automatische certificaat vernieuwing instellen met een Automation-runbook
 
-Als u certificaten automatisch wilt vernieuwen, u een automatiseringsrunbook gebruiken. Dit script op [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) maakt deze functionaliteit mogelijk in uw Automation-account.
+Als u certificaten automatisch wilt vernieuwen, kunt u een Automation-runbook gebruiken. Met dit script op [github](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) kunt u deze functionaliteit inschakelen in uw Automation-account.
 
 >[!NOTE]
->U moet een globale beheerder of bedrijfsbeheerder in Azure AD zijn om het script uit te voeren.
+>U moet een globale beheerder of bedrijfs beheerder zijn in azure AD om het script uit te voeren.
 
-Met dit script wordt een wekelijks schema gemaakt om Run As-accountcertificaten te vernieuwen. Het voegt een **Update-AutomationRunAsCredential** runbook toe aan uw Automatiseringsaccount. U de runbook-code bekijken op GitHub, in het script [Update-AutomationRunAsCredential.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1). U de PowerShell-code in het bestand gebruiken om certificaten handmatig te vernieuwen, indien nodig.
+Met dit script maakt u een wekelijks schema voor het vernieuwen van run as-account certificaten. Er wordt een **Update-AutomationRunAsCredential-** runbook toegevoegd aan uw Automation-account. U kunt de runbook-code weer geven op GitHub in het script [Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1). U kunt de Power shell-code in het bestand gebruiken om certificaten, indien nodig, hand matig te vernieuwen.
 
-Gebruik de volgende stappen om het vernieuwingsproces onmiddellijk te testen.
+Gebruik de volgende stappen om het vernieuwings proces direct te testen.
 
-1. Bewerk de **runbook Update-AutomationRunAsCredential** en plaats een opmerkingsteken (#) op regel 122, voor de opdracht **Exit(1).**
+1. Bewerk het runbook **Update-AutomationRunAsCredential** en plaats een commentaar teken (#) op regel 122, vóór de opdracht **Exit (1)** .
 
    ```powershell
    #Exit(1)
    ```
 
 2. Publiceer het runbook.
-3. Start het loopboek.
-4. Controleer succesvolle verlenging met de volgende code:
+3. Start het runbook.
+4. Controleer de geslaagde vernieuwing met de volgende code:
 
    ```powershell
    (Get-AzAutomationCertificate -AutomationAccountName TestAA
@@ -429,17 +429,17 @@ Gebruik de volgende stappen om het vernieuwingsproces onmiddellijk te testen.
    Thursday, November 7, 2019 7:00:00 PM
    ```
 
-5. Bewerk na de test het runbook en verwijder het opmerkingsteken dat u in stap 1 hebt toegevoegd.
+5. Nadat de test is, bewerkt u het runbook en verwijdert u het opmerkings teken dat u in stap 1 hebt toegevoegd.
 6. Publiceer het runbook.
 
-## <a name="limiting-run-as-account-permissions"></a><a name="limiting-run-as-account-permissions"></a>Machtigingen voor run als-account beperken
+## <a name="limiting-run-as-account-permissions"></a><a name="limiting-run-as-account-permissions"></a>Machtigingen voor het uitvoeren als-account beperken
 
-Als u de targeting van Automatisering wilt beheren op resources in Azure, u het script [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) uitvoeren. Dit script wijzigt uw bestaande run as-accountserviceprincipal om een aangepaste roldefinitie te maken en te gebruiken. De rol heeft machtigingen voor alle resources, behalve [Key Vault.](https://docs.microsoft.com/azure/key-vault/)
+U kunt het script [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) uitvoeren om het doel te bepalen van automatisering op basis van resources in Azure. Met dit script wordt de bestaande service-principal van het run as-account gewijzigd om een aangepaste roldefinitie te maken en te gebruiken. De rol heeft machtigingen voor alle resources, met uitzonde ring van [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 >[!IMPORTANT]
->Nadat u het script **Update-AutomationRunAsAccountRoleAssignments.ps1** hebt uitgevoerd, werken boeken die toegang hebben tot Key Vault via het gebruik van Run As-accounts niet meer. Voordat u het script uitvoert, moet u runbooks in uw account controleren op oproepen naar Azure Key Vault. Als u toegang tot Key Vault vanuit Azure Automation-runbooks wilt inschakelen, moet u [het Run As-account toevoegen aan de machtigingen van Key Vault.](#add-permissions-to-key-vault)
+>Nadat u het script **Update-AutomationRunAsAccountRoleAssignments. ps1** hebt uitgevoerd, werken runbooks die toegang Key Vault via het gebruik van run as-accounts niet meer. Voordat u het script uitvoert, moet u runbooks in uw account controleren op aanroepen naar Azure Key Vault. Als u toegang tot Key Vault van Azure Automation runbooks wilt inschakelen, moet u [het uitvoeren als-account toevoegen aan de machtigingen van Key Vault](#add-permissions-to-key-vault).
 
-Als u wilt beperken, verder wat de run als serviceprincipal kan `NotActions` doen, u andere resourcetypen toevoegen aan het element van de aangepaste roldefinitie. In het volgende voorbeeld `Microsoft.Compute/*`wordt de toegang tot . Als u dit resourcetype toevoegt aan `NotActions` de roldefinitie, heeft de rol geen toegang tot een Compute-bron. Zie [Roldefinities voor Azure-resources begrijpen voor](../role-based-access-control/role-definitions.md)meer informatie over roldefinities.
+Als u de beperking wilt beperken, kunt u ook andere resource typen toevoegen aan het `NotActions` element van de definitie van de aangepaste functie. In `Microsoft.Compute/*`het volgende voor beeld wordt de toegang beperkt tot. Als u dit resource type toevoegt aan `NotActions` voor de roldefinitie, heeft de rol geen toegang tot een reken resource. Zie [inzicht in roldefinities voor Azure-resources](../role-based-access-control/role-definitions.md)voor meer informatie over functie definities.
 
 ```powershell
 $roleDefinition = Get-AzRoleDefinition -Name 'Automation RunAs Contributor'
@@ -447,39 +447,39 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-U bepalen of de serviceprincipal die wordt gebruikt door uw Run As-account zich bevindt in de definitie van de rolmedewerker of een aangepaste. 
+U kunt bepalen of de service-principal die wordt gebruikt door het run as-account zich in de roldefinitie van de rol van Inzender bevindt of een aangepast item. 
 
-1. Ga naar uw automatiseringsaccount en selecteer **Uitvoeren als accounts** in de sectie Accountinstellingen.
-2. Selecteer **Azure Run as Account**. 
-3. Selecteer **Rol** om de roldefinitie te zoeken die wordt gebruikt.
+1. Ga naar uw Automation-account en selecteer **uitvoeren als-accounts** in de sectie account instellingen.
+2. Selecteer een **uitvoeren als-account voor Azure**. 
+3. Selecteer **rol** om de roldefinitie te zoeken die wordt gebruikt.
 
 [![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
-U ook de roldefinitie bepalen die wordt gebruikt door de accounts Uitvoeren als voor meerdere abonnementen of automatiseringsaccounts. Doe dit met het script [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) in de PowerShell Gallery.
+U kunt ook de roldefinitie bepalen die wordt gebruikt door de run as-accounts voor meerdere abonnementen of Automation-accounts. Dit doet u door het script [Check-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug5) te gebruiken in de PowerShell Gallery.
 
 ### <a name="add-permissions-to-key-vault"></a>Machtigingen toevoegen aan Key Vault
 
-U Azure Automation toestaan om te controleren of Key Vault en uw Run As-accountserviceprincipal een aangepaste roldefinitie gebruiken. U moet:
+U kunt Azure Automation laten verifiëren of Key Vault en de service-principal van het run as-account een aangepaste roldefinitie gebruiken. U moet het volgende doen:
 
 * Machtigingen verlenen aan Key Vault.
-* Stel het toegangsbeleid in.
+* Stel het toegangs beleid in.
 
-U het script [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) gebruiken in de PowerShell Gallery om uw Run As-accountmachtigingen te geven aan Key Vault. Zie [Toegang tot toepassingen verlenen tot een sleutelkluis](../key-vault/general/group-permissions-for-apps.md) voor meer informatie over het instellen van machtigingen op Key Vault.
+U kunt het script [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) in de PowerShell Gallery gebruiken om uw uitvoeren als-account machtigingen te geven voor Key Vault. Zie [toepassingen toegang verlenen tot een sleutel kluis](../key-vault/general/group-permissions-for-apps.md) voor meer informatie over het instellen van machtigingen voor Key Vault.
 
-## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Foutconfiguratieproblemen voor Run As-accounts oplossen
+## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Onjuiste configuratie problemen oplossen voor Run as-accounts
 
-Sommige configuratie-items die nodig zijn voor een Run As- of Classic Run As-account, zijn mogelijk verwijderd of onjuist gemaakt tijdens de eerste installatie. Mogelijke gevallen van verkeerde configuratie zijn:
+Bepaalde configuratie-items die nodig zijn voor een uitvoeren als-of klassiek uitvoeren als-account, zijn mogelijk verwijderd of onjuist gemaakt tijdens de eerste installatie. Mogelijke instanties van een onjuiste configuratie zijn:
 
 * Certificaatasset
 * Verbindingsasset
-* Als-account uitvoeren dat is verwijderd uit de rol Inzender
+* Het run as-account is verwijderd uit de rol Inzender
 * Service-principal of toepassing in Azure AD
 
-Voor dergelijke foutconfiguratie-exemplaren detecteert het automatiseringsaccount de `Incomplete` wijzigingen en geeft het een status weer van in het eigenschappenvenster Uitvoeren als accounts voor het account.
+Voor dergelijke configuratie-instanties detecteert het Automation-account de wijzigingen en geeft de `Incomplete` status weer in het deel venster met eigenschappen van het run as-account voor het account.
 
 ![Onvolledige Uitvoeren als-configuratiestatus](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 
-Wanneer u het account Uitvoeren als selecteert, wordt in het deelvenster Accounteigenschappen het volgende foutbericht weergegeven:
+Wanneer u het uitvoeren als-account selecteert, wordt het volgende fout bericht weer gegeven in het deel venster Eigenschappen van account:
 
 ```text
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.
@@ -489,5 +489,5 @@ U kunt deze problemen met het Uitvoeren als-account snel oplossen door het accou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Toepassingsobjecten en serviceprincipalobjecten](../active-directory/develop/app-objects-and-service-principals.md)voor meer informatie over serviceprincipals.
-* Zie Overzicht van certificaten voor [Azure Cloud Services voor](../cloud-services/cloud-services-certs-create.md)meer informatie over certificaten en Azure-services.
+* Zie [Application Objects and Service Principal Objects](../active-directory/develop/app-objects-and-service-principals.md)(Engelstalig) voor meer informatie over service-principals.
+* Zie [overzicht van certificaten voor azure Cloud Services](../cloud-services/cloud-services-certs-create.md)voor meer informatie over certificaten en Azure-Services.

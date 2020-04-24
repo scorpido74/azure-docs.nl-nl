@@ -1,60 +1,51 @@
 ---
-title: Multifunctionele taken gebruiken om MPI-toepassingen uit te voeren - Azure Batch | Microsoft Documenten
-description: Meer informatie over het uitvoeren van MPI-toepassingen (Message Passing Interface) met behulp van het taaktype meerdere instance's in Azure Batch.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
-ms.service: batch
+title: Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen
+description: Meer informatie over het uitvoeren van MPI-toepassingen (Message Passing Interface) met het taak type meerdere instanties in Azure Batch.
 ms.topic: article
-ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1896fea3c401299b4f77235ab3c02d85708b7041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023664"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115972"
 ---
-# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Meerdere taken gebruiken om MPI-toepassingen (Message Passing Interface) uit te voeren in Batch
+# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen (Message Passing Interface) in batch
 
-Met taken met meerdere instanties u een Azure Batch-taak tegelijk uitvoeren op meerdere compute-knooppunten. Deze taken maken high performance computing-scenario's mogelijk, zoals MPI-toepassingen (Message Passing Interface) in Batch. In dit artikel leert u hoe u taken met meerdere instantie uitvoert met de [Batch .NET-bibliotheek.][api_net]
-
-> [!NOTE]
-> Terwijl de voorbeelden in dit artikel zich richten op Batch .NET, MS-MPI en Windows compute nodes, zijn de hier besproken taakconcepten met meerdere instanties van toepassing op andere platforms en technologieën (Python en Intel MPI op Linux-knooppunten, bijvoorbeeld).
->
->
-
-## <a name="multi-instance-task-overview"></a>Overzicht van taken met meerdere instance's
-In Batch wordt elke taak normaal gesproken uitgevoerd op één compute-knooppunt: u verzendt meerdere taken naar een taak en de batchservice plant elke taak voor uitvoering op een knooppunt. Door de instellingen voor **meerdere instanties**van een taak te configureren, vertelt u Batch echter om in plaats daarvan één primaire taak en meerdere subtaken te maken die vervolgens op meerdere knooppunten worden uitgevoerd.
-
-![Overzicht van taken met meerdere instance's][1]
-
-Wanneer u een taak met instellingen voor meerdere instanties naar een taak verzendt, voert Batch verschillende stappen uit die uniek zijn voor taken met meerdere instanties:
-
-1. Met de batchservice worden één **primaire** en meerdere **subtaken** gemaakt op basis van de instellingen voor meerdere taken. Het totale aantal taken (primair plus alle subtaken) komt overeen met het aantal **exemplaren** (compute nodes) dat u opgeeft in de instellingen voor meerdere instanties.
-2. Batch wijst een van de compute nodes aan als de **master**en plant de primaire taak die moet worden uitgevoerd op de master. Het plant de subtaken uit te voeren op de rest van de compute nodes toegewezen aan de multi-instance taak, een subtaak per knooppunt.
-3. De primaire en alle subtaken downloaden **alle algemene bronbestanden** die u opgeeft in de instellingen voor meerdere taken.
-4. Nadat de algemene bronbestanden zijn gedownload, voeren de primaire en subtaken de **coördinatieopdracht** uit die u opgeeft in de instellingen voor meerdere taken. De coördinatieopdracht wordt meestal gebruikt om knooppunten voor te bereiden op het uitvoeren van de taak. Dit kan bestaan uit het starten van `smpd.exe`achtergrondservices (zoals die van [Microsoft MPI)][msmpi_msdn]en controleren of de knooppunten klaar zijn om internodeberichten te verwerken.
-5. De primaire taak voert de **toepassingsopdracht** uit op het hoofdknooppunt *nadat* de coördinatieopdracht is voltooid door de primaire en alle subtaken. De opdracht toepassing is de opdrachtregel van de multi-instance taak zelf en wordt alleen uitgevoerd door de primaire taak. In een [op MS-MPI][msmpi_msdn]gebaseerde oplossing voert u uw TOEPASSING `mpiexec.exe`met MPI uit met behulp van .
+Met taken met meerdere instanties kunt u een Azure Batch taak op meerdere reken knooppunten tegelijk uitvoeren. Met deze taken worden High Performance Computing scenario's ingeschakeld, zoals MPI-toepassingen (Message Passing Interface) in batch. In dit artikel leert u hoe u taken met meerdere instanties kunt uitvoeren met behulp van de [batch .net][api_net] -bibliotheek.
 
 > [!NOTE]
-> Hoewel het functioneel onderscheidend is, is de "multi-instance taak" geen uniek taaktype zoals de [Taak StartTask][net_starttask] of [JobPreparationTask.][net_jobprep] De taak met meerdere instanties is gewoon een standaardbatchtaak[(CloudTask][net_task] in Batch .NET) waarvan de instellingen voor meerdere instanties zijn geconfigureerd. In dit artikel noemen we dit de **taak met meerdere gevallen.**
+> Hoewel de voor beelden in dit artikel gericht zijn op batch .NET-, MS-MPI-en Windows Compute-knoop punten, zijn de taak concepten voor meerdere instanties die hier worden besproken, van toepassing op andere platforms en technologieën (python en Intel MPI op Linux-knoop punten).
 >
 >
 
-## <a name="requirements-for-multi-instance-tasks"></a>Vereisten voor taken met meerdere taken
-Voor taken met meerdere instanties is een pool nodig **met internodecommunicatie ingeschakeld**en met **gelijktijdige taakuitvoering uitgeschakeld**. Als u gelijktijdige taakuitvoering wilt uitschakelen, stelt u de eigenschap [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) in op 1.
+## <a name="multi-instance-task-overview"></a>Overzicht van taken met meerdere instanties
+In batch wordt elke taak normaal gesp roken uitgevoerd op één Compute-knoop punt: u verzendt meerdere taken naar een taak en de batch-service plant elke taak voor uitvoering op een knoop punt. Door de **instellingen voor meerdere instanties**van een taak te configureren, vertelt u batch in plaats daarvan een primaire taak en verschillende subtaken die vervolgens op meerdere knoop punten worden uitgevoerd.
+
+![Overzicht van taken met meerdere instanties][1]
+
+Wanneer u een taak met instellingen voor meerdere instanties naar een taak verzendt, voert batch verschillende stappen uit die uniek zijn voor taken met meerdere instanties:
+
+1. Met de batch-service worden één **primaire** en verschillende **subtaken** gemaakt op basis van de instellingen voor meerdere instanties. Het totale aantal taken (primaire plus alle subtaken) komt overeen met het aantal **exemplaren** (reken knooppunten) dat u opgeeft in de instellingen voor meerdere instanties.
+2. Met batch wordt een van de reken knooppunten aangeduid als de **Master**en wordt de primaire taak gepland om te worden uitgevoerd op de Master. De subtaken worden gepland om te worden uitgevoerd op de rest van de reken knooppunten die aan de taak met meerdere instanties zijn toegewezen, één subtaak per knoop punt.
+3. De primaire en alle subtaken downloaden alle **algemene bron bestanden** die u opgeeft in de instellingen voor meerdere instanties.
+4. Nadat de gemeen schappelijke bron bestanden zijn gedownload, voeren de primaire en subtaken de **coördinatie opdracht** uit die u in de instellingen voor meerdere instanties opgeeft. De coördinatie opdracht wordt doorgaans gebruikt om knoop punten voor het uitvoeren van de taak voor te bereiden. Dit kan onder andere het starten van `smpd.exe`de achtergrond Services zijn (zoals [micro soft mpi][msmpi_msdn]) en te controleren of de knoop punten gereed zijn voor het verwerken van berichten tussen knoop punten.
+5. De primaire taak voert de **toepassing opdracht** uit op het hoofd knooppunt *nadat* de coördinatie opdracht met succes is voltooid door de primaire en alle subtaken. De opdracht toepassing is de opdracht regel van de taak voor meerdere exemplaren zelf en wordt alleen uitgevoerd door de primaire taak. In een op [MS-mpi][msmpi_msdn]gebaseerde oplossing kunt u uw mpi-toepassing uitvoeren met `mpiexec.exe`.
 
 > [!NOTE]
-> Batch [beperkt](batch-quota-limit.md#pool-size-limits) de grootte van een groep waarop communicatie tussen knooppunten is ingeschakeld.
+> Hoewel de taak ' meerdere instanties ' is, is dit geen uniek taak type zoals [StartTask][net_starttask] of [JobPreparationTask][net_jobprep]. De taak met meerdere instanties is gewoon een standaard batch taak ([CloudTask][net_task] in batch .net) waarvan de instellingen voor meerdere instanties zijn geconfigureerd. In dit artikel verwijzen we naar deze **taak met meerdere exemplaren**.
+>
+>
+
+## <a name="requirements-for-multi-instance-tasks"></a>Vereisten voor taken met meerdere instanties
+Voor taken met meerdere instanties is een pool vereist waarvoor **communicatie tussen knoop punten is ingeschakeld**en waarvoor **gelijktijdige taak uitvoering is uitgeschakeld**. Als u het uitvoeren van gelijktijdige taken wilt uitschakelen, stelt u de eigenschap [CloudPool. MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) in op 1.
+
+> [!NOTE]
+> Batch [beperkt](batch-quota-limit.md#pool-size-limits) de grootte van een pool waarvoor communicatie tussen knoop punten is ingeschakeld.
 
 
-In dit codefragment ziet u hoe u een groep maakt voor taken met meerdere instanties met behulp van de Batch .NET-bibliotheek.
+Dit code fragment laat zien hoe u een pool voor taken met meerdere instanties maakt met behulp van de batch .NET-bibliotheek.
 
 ```csharp
 CloudPool myCloudPool =
@@ -71,11 +62,11 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
 > [!NOTE]
-> Als u een taak met meerdere instanties probeert uit te voeren in een groep met internodecommunicatie uitgeschakeld of met een *maxTasksPerNode-waarde* groter dan 1, wordt de taak nooit gepland- deze blijft voor onbepaalde tijd in de status 'actief'. 
+> Als u probeert een taak met meerdere instanties uit te voeren in een groep waarvoor communicatie tussen knoop punten is uitgeschakeld, of met een *maxTasksPerNode* -waarde die groter is dan 1, wordt de taak nooit gepland, omdat deze voor onbepaalde tijd in de status actief blijft. 
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Een StartTask gebruiken om MPI te installeren
-Als u MPI-toepassingen met een taak met meerdere instanties wilt uitvoeren, moet u eerst een MPI-implementatie (bijvoorbeeld MS-MPI of Intel MPI) installeren op de compute-knooppunten in de groep. Dit is een goed moment om een [StartTask][net_starttask]te gebruiken, die wordt uitgevoerd wanneer een knooppunt lid wordt van een groep of opnieuw wordt gestart. Met dit codefragment wordt een StartTask gemaakt die het MS-MPI-installatiepakket opgeeft als een [bronbestand][net_resourcefile]. De opdrachtregel van de starttaak wordt uitgevoerd nadat het bronbestand is gedownload naar het knooppunt. In dit geval voert de opdrachtregel een onbewaakte installatie van MS-MPI uit.
+Als u MPI-toepassingen met een taak met meerdere exemplaren wilt uitvoeren, moet u eerst een MPI-implementatie (MS-MPI of Intel MPI) installeren op de reken knooppunten in de pool. Dit is een goed moment om een [StartTask][net_starttask]te gebruiken, die wordt uitgevoerd wanneer een knoop punt wordt toegevoegd aan een pool of opnieuw wordt opgestart. Met dit code fragment maakt u een StartTask die het MS-MPI-installatie pakket opgeeft als een [resource bestand][net_resourcefile]. De opdracht regel van de begin taak wordt uitgevoerd nadat het bron bestand naar het knoop punt is gedownload. In dit geval voert de opdracht regel een installatie van MS-MPI zonder toezicht uit.
 
 ```csharp
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -94,25 +85,25 @@ myCloudPool.StartTask = startTask;
 await myCloudPool.CommitAsync();
 ```
 
-### <a name="remote-direct-memory-access-rdma"></a>Externe directe geheugentoegang (RDMA)
-Wanneer u een [RDMA-formaat](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kiest, zoals A9 voor de compute nodes in uw Batch-groep, kan uw MPI-toepassing profiteren van het krachtige, low-latency remote direct memory access (RDMA)-netwerk van Azure.
+### <a name="remote-direct-memory-access-rdma"></a>Remote Direct Memory Access (RDMA)
+Wanneer u kiest voor een [grootte van RDMA-functionaliteit](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , zoals A9 voor de reken knooppunten in uw batch-pool, kan uw mpi-toepassing profiteren van het snelle RDMA-netwerk met hoge prestaties van Azure met lage latentie.
 
-Zoek naar de maten die in de volgende artikelen zijn opgegeven als "RDMA geschikt":
+Zoek naar de grootten die zijn opgegeven als ' RDMA capable ' in de volgende artikelen:
 
-* **Groepen CloudServiceConfiguration**
+* **CloudServiceConfiguration** -groepen
 
-  * [Formaten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (alleen Windows)
-* **VirtualMachineConfiguration-groepen**
+  * [Grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (alleen Windows)
+* **VirtualMachineConfiguration** -groepen
 
-  * [Formaten voor virtuele machines in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Groottes voor virtuele machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Grootten voor virtuele machines in azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Grootten voor virtuele machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Om te profiteren van RDMA op [Linux compute nodes,](batch-linux-nodes.md)moet u **Intel MPI** gebruiken op de knooppunten. 
+> Als u wilt profiteren van RDMA op [Linux-reken knooppunten](batch-linux-nodes.md), moet u **Intel mpi** gebruiken op de knoop punten. 
 >
 
-## <a name="create-a-multi-instance-task-with-batch-net"></a>Een taak met meerdere instanties maken met Batch .NET
-Nu we de vereisten voor het zwembad en de mpi-pakketinstallatie hebben gedekt, maken we de taak voor meerdere voorbeelden. In dit fragment maken we een standaard [CloudTask][net_task]en configureren we de eigenschap [MultiInstanceSettings.][net_multiinstance_prop] Zoals eerder vermeld, is de taak met meerdere instanties geen afzonderlijk taaktype, maar een standaardbatchtaak die is geconfigureerd met instellingen voor meerdere instanties.
+## <a name="create-a-multi-instance-task-with-batch-net"></a>Een taak met meerdere instanties maken met batch .NET
+Nu we de groeps vereisten en de MPI-pakket installatie hebben behandeld, gaan we de taak voor meerdere instanties maken. In dit code fragment maakt u een standaard [CloudTask][net_task]en configureert u vervolgens de eigenschap [MultiInstanceSettings][net_multiinstance_prop] . Zoals eerder vermeld, is de taak met meerdere instanties geen verschillend taak type, maar een standaard batch taak die is geconfigureerd met instellingen voor meerdere instanties.
 
 ```csharp
 // Create the multi-instance task. Its command line is the "application command"
@@ -138,47 +129,47 @@ await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask
 ```
 
 ## <a name="primary-task-and-subtasks"></a>Primaire taak en subtaken
-Wanneer u de instellingen voor meerdere instanties voor een taak maakt, geeft u het aantal compute nodes op dat de taak moet uitvoeren. Wanneer u de taak naar een taak verzendt, maakt de batchservice één **primaire** taak en voldoende **subtaken** die samen overeenkomen met het aantal knooppunten dat u hebt opgegeven.
+Wanneer u de instellingen voor meerdere instanties voor een taak maakt, geeft u het aantal reken knooppunten op waarmee de taak moet worden uitgevoerd. Wanneer u de taak bij een taak indient, maakt de batch-service één **primaire** taak en voldoende **subtaken** die samen overeenkomen met het aantal knoop punten dat u hebt opgegeven.
 
-Deze taken krijgen een geheel getal-id toegewezen in het bereik van 0 tot *getalOfInstances* - 1. De taak met id 0 is de primaire taak en alle andere id's zijn subtaken. Als u bijvoorbeeld de volgende instellingen voor meerdere instanties voor een taak maakt, heeft de primaire taak een id van 0 en hebben de subtaken id's van 1 tot en met 9.
+Aan deze taken wordt een geheel getal-id toegewezen in het bereik van 0 tot *numberOfInstances* -1. De taak met id 0 is de primaire taak en alle andere id's zijn subtaken. Als u bijvoorbeeld de volgende instellingen voor meerdere instanties voor een taak maakt, is de primaire taak een id van 0 en de subtaken hebben de id's 1 tot en met 9.
 
 ```csharp
 int numberOfNodes = 10;
 myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNodes);
 ```
 
-### <a name="master-node"></a>Masterknooppunt
-Wanneer u een taak met meerdere instanties indient, wijst de batchservice een van de compute-knooppunten aan als het hoofdknooppunt en plant de primaire taak die moet worden uitgevoerd op het hoofdknooppunt. De subtaken worden gepland om uit te voeren op de rest van de knooppunten toegewezen aan de multi-instance taak.
+### <a name="master-node"></a>Hoofd knooppunt
+Wanneer u een taak met meerdere instanties verzendt, wijst de batch-service een van de reken knooppunten aan als het ' hoofd knooppunt ' en wordt de primaire taak gepland voor uitvoering op het hoofd knooppunt. De subtaken worden gepland om te worden uitgevoerd op de rest van de knoop punten die aan de taak met meerdere instanties zijn toegewezen.
 
-## <a name="coordination-command"></a>Coördinatie, opdracht
-De **coördinatieopdracht** wordt uitgevoerd door zowel de primaire als de subtaken.
+## <a name="coordination-command"></a>Coördinatie opdracht
+De **coördinatie opdracht** wordt uitgevoerd door de primaire en subtaken.
 
-De aanroep van de coördinatieopdracht is blokkeren-- Batch voert de toepassingsopdracht pas uit nadat de coördinatieopdracht is teruggekeerd voor alle subtaken. De coördinatieopdracht moet daarom alle vereiste achtergrondservices starten, controleren of ze klaar zijn voor gebruik en vervolgens worden afgesloten. Deze coördinatieopdracht voor een oplossing met MS-MPI-versie 7 start bijvoorbeeld de SMPD-service op het knooppunt en wordt vervolgens afgesloten:
+De aanroep van de coördinatie opdracht wordt geblokkeerd-batch voert de opdracht van de toepassing niet uit totdat de coördinatie opdracht voor alle subtaken geslaagd is. De coördinatie opdracht moet daarom de vereiste achtergrond Services starten, controleren of ze gereed zijn voor gebruik en vervolgens afsluiten. Met deze coördinatie opdracht voor een oplossing die gebruikmaakt van MS-MPI versie 7, wordt bijvoorbeeld de SMPD-service op het knoop punt gestart. vervolgens wordt het volgende afgesloten:
 
 ```
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Let op `start` het gebruik van in deze coördinatie opdracht. Dit is vereist `smpd.exe` omdat de toepassing niet onmiddellijk na de uitvoering terugkeert. Zonder het gebruik van de [startopdracht][cmd_start] zou deze coördinatieopdracht niet terugkeren en daarom de toepassingsopdracht blokkeren om uit te voeren.
+Let op het gebruik `start` van in deze coördinatie opdracht. Dit is vereist omdat de `smpd.exe` toepassing niet direct na de uitvoering wordt geretourneerd. Zonder het gebruik van de [Start][cmd_start] opdracht, wordt deze coördinatie opdracht niet geretourneerd en wordt de toepassings opdracht daarom geblokkeerd.
 
-## <a name="application-command"></a>Toepassing, opdracht
-Zodra de primaire taak en alle subtaken klaar zijn met het uitvoeren van de coördinatieopdracht, wordt de opdrachtregel van de opdrachttaak met meerdere instance's *alleen*uitgevoerd door de primaire taak. We noemen dit de **toepassingsopdracht** om het te onderscheiden van de coördinatieopdracht.
+## <a name="application-command"></a>Toepassings opdracht
+Zodra de primaire taak en alle subtaken klaar zijn met het uitvoeren van de coördinatie opdracht, wordt de opdracht regel van de multi-instance taak *alleen*uitgevoerd door de primaire taak. We noemen deze opdracht om de **toepassing** te onderscheiden van de coördinatie opdracht.
 
-Voor MS-MPI-toepassingen gebruikt u de toepassingsopdracht om uw `mpiexec.exe`toepassing met MPI uit te voeren met . Hier is bijvoorbeeld een toepassingsopdracht voor een oplossing met MS-MPI-versie 7:
+Voor MS-MPI-toepassingen gebruikt u de opdracht toepassing om uw MPI-toepassing uit te `mpiexec.exe`voeren met. Dit is bijvoorbeeld een toepassings opdracht voor een oplossing met behulp van MS-MPI versie 7:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> Omdat MS-MPI's `mpiexec.exe` `CCP_NODES` de variabele standaard gebruiken (zie [Omgevingsvariabelen)](#environment-variables)sluit de bovenstaande opdrachtregel van de voorbeeldtoepassing deze uit.
+> Omdat MS-MPI standaard `mpiexec.exe` de `CCP_NODES` variabele gebruikt (Zie [omgevings variabelen](#environment-variables)), wordt de opdracht regel van de toepassing hierboven uitgesloten.
 >
 >
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
-Batch maakt verschillende [omgevingsvariabelen][msdn_env_var] die specifiek zijn voor taken met meerdere instanties op de compute nodes die zijn toegewezen aan een taak met meerdere instanties. Uw coördinatie- en toepassingsopdrachtregels kunnen verwijzen naar deze omgevingsvariabelen, evenals de scripts en programma's die ze uitvoeren.
+Batch maakt verschillende [omgevings variabelen][msdn_env_var] die specifiek zijn voor taken met meerdere instanties op de reken knooppunten die zijn toegewezen aan een taak met meerdere exemplaren. Uw coördinatie-en toepassings opdracht regels kunnen verwijzen naar deze omgevings variabelen, evenals de scripts en Program ma's die ze uitvoeren.
 
-De volgende omgevingsvariabelen worden gemaakt door de batchservice voor gebruik door taken met meerdere taken:
+De volgende omgevings variabelen worden gemaakt door de batch-service voor gebruik door taken met meerdere instanties:
 
 * `CCP_NODES`
 * `AZ_BATCH_NODE_LIST`
@@ -187,45 +178,45 @@ De volgende omgevingsvariabelen worden gemaakt door de batchservice voor gebruik
 * `AZ_BATCH_TASK_SHARED_DIR`
 * `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-Zie [Compute node-omgevingsvariabelen][msdn_env_var]voor meer informatie over deze en de andere batch-omgevingsvariabelen voor compute node, inclusief hun inhoud en zichtbaarheid.
+Zie [omgevings variabelen voor reken knooppunten][msdn_env_var]voor volledige informatie over deze en de andere batch compute node-omgevings variabelen, inclusief de inhoud en zicht baarheid.
 
 > [!TIP]
-> Het batch-Linux MPI-codevoorbeeld bevat een voorbeeld van hoe verschillende van deze omgevingsvariabelen kunnen worden gebruikt. Het [coördinatie-cmd Bash-script][coord_cmd_example] downloadt algemene toepassings- en invoerbestanden uit Azure Storage, maakt een NFS-share (Network File System) op het hoofdknooppunt mogelijk en configureert de andere knooppunten die aan de taak met meerdere instanties zijn toegewezen als NFS-clients.
+> Het batch Linux MPI code sample bevat een voor beeld van hoe u een aantal van deze omgevings variabelen kunt gebruiken. Met het [coördinatie-cmd bash-][coord_cmd_example] script worden algemene toepassings-en invoer bestanden gedownload van Azure Storage, wordt een NFS-share (Network File System) op het hoofd knooppunt ingesteld, en worden de andere knoop punten die aan de taak met meerdere instanties zijn toegewezen, geconfigureerd als NFS-clients.
 >
 >
 
-## <a name="resource-files"></a>Bronbestanden
-Er zijn twee sets resourcebestanden die u moet overwegen voor taken met meerdere taken: **algemene bronbestanden** die *alle* taken downloaden (zowel primaire als subtaken) en de **bronbestanden** die zijn opgegeven voor de taak met meerdere taken zelf, die *alleen de primaire* taak downloadt.
+## <a name="resource-files"></a>Bron bestanden
+Er zijn twee sets bron bestanden voor het uitvoeren van taken met meerdere instanties: **algemene bron bestanden** die door *alle* taken worden gedownload (zowel primaire als subtaken), en de **bron bestanden** die zijn opgegeven voor de taak voor meerdere exemplaren zelf, waarbij *alleen de primaire* taak wordt gedownload.
 
-U een of meer **algemene bronbestanden** opgeven in de instellingen voor meerdere instanties voor een taak. Deze algemene bronbestanden worden gedownload van [Azure Storage](../storage/common/storage-introduction.md) naar de **gedeelde map** taak van elk knooppunt door de primaire en alle subtaken. U hebt toegang tot de gedeelde taakmap via `AZ_BATCH_TASK_SHARED_DIR` opdrachtregels voor toepassingen en coördinatie met behulp van de omgevingsvariabele. Het `AZ_BATCH_TASK_SHARED_DIR` pad is identiek op elk knooppunt dat is toegewezen aan de taak met meerdere instanties, zodat u één coördinatieopdracht delen tussen de primaire en alle subtaken. Batch deelt de directory niet in een externe toegangszin, maar u deze gebruiken als een mount- of share-punt zoals eerder vermeld in de tip over omgevingsvariabelen.
+U kunt een of meer **algemene bron bestanden** opgeven in de instellingen voor meerdere instanties voor een taak. Deze algemene bron bestanden worden gedownload van [Azure Storage](../storage/common/storage-introduction.md) naar de **gedeelde map** van elk knoop punt op basis van de primaire en alle subtaken. U kunt met behulp van de `AZ_BATCH_TASK_SHARED_DIR` omgevings variabele toegang krijgen tot de gedeelde map van de toepassing en de coördinatie opdracht regels. Het `AZ_BATCH_TASK_SHARED_DIR` pad is identiek op elk knoop punt dat aan de taak met meerdere instanties is toegewezen, zodat u één coördinatie opdracht tussen de primaire en alle subtaken kunt delen. Batch heeft geen ' deel ' van de map in een RAS-Sense, maar u kunt deze gebruiken als een koppelings-of share punt zoals eerder is vermeld in de tip op omgevings variabelen.
 
-Bronbestanden die u opgeeft voor de taak met meerdere instance's `AZ_BATCH_TASK_WORKING_DIR`zelf, worden standaard gedownload naar de werkmap van de taak. Zoals vermeld, in tegenstelling tot gemeenschappelijke bronbestanden, worden alleen de primaire taakbronbestanden gedownload die zijn opgegeven voor de taak met meerdere taken zelf.
+Bron bestanden die u opgeeft voor de taak voor meerdere exemplaren zelf, `AZ_BATCH_TASK_WORKING_DIR`worden standaard gedownload naar de werkmap van de taak. Zoals vermeld, in tegens telling tot algemene bron bestanden, worden met alleen de primaire taak bron bestanden gedownload die zijn opgegeven voor de taak met meerdere instanties zelf.
 
 > [!IMPORTANT]
-> Gebruik altijd de `AZ_BATCH_TASK_SHARED_DIR` omgevingsvariabelen en `AZ_BATCH_TASK_WORKING_DIR` verwijs naar deze mappen in uw opdrachtregels. Probeer de paden niet handmatig te construeren.
+> Gebruik altijd de omgevings `AZ_BATCH_TASK_SHARED_DIR` variabelen `AZ_BATCH_TASK_WORKING_DIR` en Raadpleeg deze mappen in de opdracht regels. Probeer de paden niet hand matig te maken.
 >
 >
 
-## <a name="task-lifetime"></a>Levensduur van de taak
-De levensduur van de primaire taak bepaalt de levensduur van de volledige taak met meerdere taken. Wanneer de primaire uitgangen worden afgesloten, worden alle subtaken beëindigd. De exitcode van het primaire is de exitcode van de taak en wordt daarom gebruikt om het succes of falen van de taak te bepalen voor nieuwe doeleinden.
+## <a name="task-lifetime"></a>Levens duur van taak
+De levens duur van de primaire taak bepaalt de levens duur van de hele taak met meerdere exemplaren. Wanneer de primaire taak wordt afgesloten, worden alle subtaken beëindigd. De afsluit code van de primaire is de afsluit code van de taak en wordt daarom gebruikt om het slagen of mislukken van de taak te bepalen voor nieuwe pogingen.
 
-Als een van de subtaken mislukt, mislukt u bijvoorbeeld met een niet-nulretourcode, mislukt de hele taak met meerdere instanties. De taak met meerdere instancewordt vervolgens beëindigd en opnieuw geprobeerd, tot de limiet voor opnieuw proberen.
+Als een van de subtaken mislukt, wordt afgesloten met een retour code die niet gelijk is aan nul, bijvoorbeeld als de hele taak met meerdere exemplaren mislukt. De taak met meerdere exemplaren wordt vervolgens afgesloten en opnieuw geprobeerd, tot de limiet voor nieuwe pogingen is bereikt.
 
-Wanneer u een taak met meerdere instanties verwijdert, worden de primaire en alle subtaken ook verwijderd door de batchservice. Alle subtaakmappen en hun bestanden worden verwijderd uit de compute nodes, net als voor een standaardtaak.
+Wanneer u een taak met meerdere instanties verwijdert, worden ook de primaire en alle subtaken verwijderd door de batch-service. Alle subtaak mappen en de bijbehorende bestanden worden verwijderd uit de reken knooppunten, net als bij een standaard taak.
 
-[Taakbeperkingen][net_taskconstraints] voor een taak met meerdere instanties, zoals de eigenschappen [MaxTaskRetryCount,][net_taskconstraint_maxretry] [MaxWallClockTime][net_taskconstraint_maxwallclock]en [RetentionTime,][net_taskconstraint_retention] worden gehonoreerd zoals ze zijn voor een standaardtaak en zijn van toepassing op de primaire en alle subtaken. Als u echter de eigenschap [RetentionTime][net_taskconstraint_retention] wijzigt nadat u de taak met meerdere instantie aan de taak hebt toegevoegd, wordt deze wijziging alleen toegepast op de primaire taak. Alle subtaken blijven de oorspronkelijke [retentiontime][net_taskconstraint_retention]gebruiken.
+[TaskConstraints][net_taskconstraints] voor een taak met meerdere instanties, zoals de eigenschappen [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime][net_taskconstraint_maxwallclock]en [RetentionTime][net_taskconstraint_retention] , worden gehonoreerd als voor een standaard taak en gelden voor de primaire en alle subtaken. Als u echter de eigenschap [RetentionTime][net_taskconstraint_retention] wijzigt nadat u de taak voor meerdere instanties aan de taak hebt toegevoegd, wordt deze wijziging alleen toegepast op de primaire taak. Alle subtaken blijven gebruikmaken van de oorspronkelijke [RetentionTime][net_taskconstraint_retention].
 
-De recente takenlijst van een compute node geeft de id van een subtaak weer als de recente taak deel uitmaakte van een taak met meerdere instanties.
+De lijst met recente taken van een compute-knoop punt weerspiegelt de id van een subtaak als de recente taak deel uitmaakt van een taak met meerdere exemplaren.
 
-## <a name="obtain-information-about-subtasks"></a>Informatie verkrijgen over subtaken
-Als u informatie wilt verkrijgen over subtaken met behulp van de Batch .NET-bibliotheek, roept u de methode [CloudTask.ListSubtasks aan.][net_task_listsubtasks] Met deze methode worden informatie over alle subtaken geretourneerd en informatie over het rekenknooppunt waarmee de taken zijn uitgevoerd. Op basis van deze informatie u de hoofdmap van elke subtaak, de pool-id, de huidige status, de exitcode en meer bepalen. U deze informatie gebruiken in combinatie met de [methode PoolOperations.GetNodeFile][poolops_getnodefile] om de bestanden van de subtaak te verkrijgen. Houd er rekening mee dat deze methode geen informatie voor de primaire taak (id 0) retourneert.
+## <a name="obtain-information-about-subtasks"></a>Informatie over subtaken ophalen
+Als u informatie over subtaken wilt ophalen met behulp van de batch .NET-bibliotheek, roept u de methode [CloudTask. ListSubtasks][net_task_listsubtasks] aan. Deze methode retourneert informatie over alle subtaken en informatie over het reken knooppunt waarmee de taken worden uitgevoerd. Vanuit deze informatie kunt u de hoofdmap van elke subtaak bepalen, de groeps-id, de huidige status, afsluit code en meer. U kunt deze informatie in combi natie met de methode [pool Operations. GetNodeFile][poolops_getnodefile] gebruiken om de bestanden van de subtaak op te halen. Houd er rekening mee dat met deze methode geen informatie wordt geretourneerd voor de primaire taak (id 0).
 
 > [!NOTE]
-> Tenzij anders vermeld, zijn Batch .NET-methoden die werken op de [cloudtaak][net_task] met meerdere instantie zelf *alleen* van toepassing op de primaire taak. Wanneer u bijvoorbeeld de methode [CloudTask.ListNodeFiles][net_task_listnodefiles] aanroept voor een taak met meerdere instanties, worden alleen de bestanden van de primaire taak geretourneerd.
+> Tenzij anders vermeld, zijn de batch .NET-methoden die worden toegepast op de multi-instance [CloudTask][net_task] zelf *alleen* van toepassing op de primaire taak. Wanneer u bijvoorbeeld de methode [CloudTask. ListNodeFiles][net_task_listnodefiles] aanroept voor een taak met meerdere instanties, worden alleen de bestanden van de primaire taak geretourneerd.
 >
 >
 
-In het volgende codefragment ziet u hoe u subtaakgegevens verkrijgen en hoe u de inhoud van het bestand aanvragen van de knooppunten waarop ze zijn uitgevoerd.
+Het volgende code fragment laat zien hoe u informatie over subtaken kunt ophalen, evenals de inhoud van een aanvraag bestand van de knoop punten waarop ze zijn uitgevoerd.
 
 ```csharp
 // Obtain the job and the multi-instance task from the Batch service
@@ -265,34 +256,34 @@ await subtasks.ForEachAsync(async (subtask) =>
 ```
 
 ## <a name="code-sample"></a>Codevoorbeeld
-Het voorbeeld [van de code multiinstancetasks][github_mpi] op GitHub laat zien hoe u een taak met meerdere instanties gebruiken om een [MS-MPI-toepassing][msmpi_msdn] uit te voeren op batchcomputenodes. Volg de stappen in [Voorbereiding](#preparation) en [uitvoering](#execution) om het voorbeeld uit te voeren.
+Het [MultiInstanceTasks][github_mpi] -code voorbeeld op github demonstreert hoe u een taak met meerdere instanties gebruikt om een [MS-mpi-][msmpi_msdn] toepassing uit te voeren op batch Compute-knoop punten. Volg de stappen in voor [bereiding](#preparation) en [uitvoering](#execution) om het voor beeld uit te voeren.
 
 ### <a name="preparation"></a>Voorbereiding
-1. Volg de eerste twee stappen in [Hoe een eenvoudig MS-MPI-programma te compileren en uit te voeren.][msmpi_howto] Dit voldoet aan de voorwaarden voor de volgende stap.
-2. Bouw een *releaseversie* van het [MPIHelloWorld-voorbeeld][helloworld_proj] MPI-programma. Dit is het programma dat wordt uitgevoerd op compute nodes door de multi-instance taak.
-3. Maak een zip-bestand met `MPIHelloWorld.exe` (dat u `MSMpiSetup.exe` hebt gebouwd stap 2) en (dat u hebt gedownload stap 1). Je uploadt dit zip-bestand als een aanvraagpakket in de volgende stap.
-4. Gebruik de [Azure-portal][portal] om een [batchtoepassing](batch-application-packages.md) met de naam 'MPIHelloWorld' te maken en het zip-bestand op te geven dat u in de vorige stap hebt gemaakt als versie "1.0" van het toepassingspakket. Zie [Toepassingen uploaden en beheren](batch-application-packages.md#upload-and-manage-applications) voor meer informatie.
+1. Volg de eerste twee stappen in het [compileren en uitvoeren van een eenvoudig MS-MPI-programma][msmpi_howto]. Dit voldoet aan de vereisten voor de volgende stap.
+2. Bouw een *release* versie van het [MPIHelloWorld][helloworld_proj] -voor beeld MPI-programma. Dit is het programma dat wordt uitgevoerd op reken knooppunten door de taak met meerdere exemplaren.
+3. Maak een zip-bestand `MPIHelloWorld.exe` met (dat u stap 2 hebt gemaakt `MSMpiSetup.exe` ) en (dat u stap 1 hebt gedownload). In de volgende stap uploadt u dit zip-bestand als een toepassings pakket.
+4. Gebruik de [Azure Portal][portal] om een batch- [toepassing](batch-application-packages.md) te maken met de naam ' MPIHelloWorld ' en geef het zip-bestand op dat u in de vorige stap hebt gemaakt als versie ' 1,0 ' van het toepassings pakket. Zie [toepassingen uploaden en beheren](batch-application-packages.md#upload-and-manage-applications) voor meer informatie.
 
 > [!TIP]
-> Bouw een *Release-versie* van, `MPIHelloWorld.exe` zodat u geen extra afhankelijkheden `msvcp140d.dll` hoeft `vcruntime140d.dll`op te nemen (bijvoorbeeld of ) in uw toepassingspakket.
+> Bouw een *release* versie van `MPIHelloWorld.exe` zodat u geen aanvullende afhankelijkheden (bijvoorbeeld `msvcp140d.dll` of `vcruntime140d.dll`) in uw toepassings pakket hoeft op te geven.
 >
 >
 
 ### <a name="execution"></a>Uitvoering
-1. Download de [azure-batch-samples][github_samples_zip] van GitHub.
-2. Open de MultiInstanceTasks-oplossing in Visual Studio 2019. **solution** Het `MultiInstanceTasks.sln` oplossingsbestand bevindt zich in:
+1. Down load de [Azure-batch-voor beelden][github_samples_zip] van github.
+2. Open de MultiInstanceTasks- **oplossing** in Visual Studio 2019. Het `MultiInstanceTasks.sln` oplossings bestand bevindt zich in:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. Voer uw batch- en `AccountSettings.settings` opslagaccountreferenties in in het project **Microsoft.Azure.Batch.Samples.Common.**
-4. **Bouw en voer** de multiinstancetasks-oplossing uit om de MPI-voorbeeldtoepassing uit te voeren op compute nodes in een batchgroep.
-5. *Optioneel:* gebruik de [Azure-portal][portal] of [Batch Explorer][batch_labs] om de voorbeeldgroep, taak en taak ('MultiInstanceSamplePool', 'MultiInstanceSampleJob', 'MultiInstanceSampleTask') te onderzoeken voordat u de resources verwijdert.
+3. Voer uw batch-en Storage-account `AccountSettings.settings` referenties in in het **micro soft. Azure. batch. samples. common** project.
+4. **Bouw en voer** de MultiInstanceTasks-oplossing uit om de voorbeeld toepassing mpi uit te voeren op reken knooppunten in een batch-pool.
+5. *Optioneel*: gebruik de [Azure Portal][portal] of [batch Explorer][batch_labs] om de voorbeeld groep, taak en taak ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask") te controleren voordat u de resources verwijdert.
 
 > [!TIP]
-> Je [Visual Studio Community][visual_studio] gratis downloaden als je geen Visual Studio hebt.
+> Als u Visual Studio niet hebt, kunt u de [Visual Studio-Community][visual_studio] gratis downloaden.
 >
 >
 
-De `MultiInstanceTasks.exe` uitvoer van is vergelijkbaar met de volgende:
+Uitvoer van `MultiInstanceTasks.exe` is vergelijkbaar met het volgende:
 
 ```
 Creating pool [MultiInstanceSamplePool]...
@@ -328,8 +319,8 @@ Sample complete, hit ENTER to exit...
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* De Blog Microsoft HPC & Azure Batch Team bespreekt [MPI-ondersteuning voor Linux op Azure Batch][blog_mpi_linux]en bevat informatie over het gebruik van [OpenFOAM][openfoam] met Batch. U Python-codevoorbeelden vinden voor het [Voorbeeld Van OpenFOAM op GitHub.][github_mpi]
-* Meer informatie over het [maken van groepen Linux-compute nodes](batch-linux-nodes.md) voor gebruik in uw Azure Batch MPI-oplossingen.
+* De blog van het micro soft HPC & Azure Batch-team bevat informatie over [MPI-ondersteuning voor Linux op Azure batch][blog_mpi_linux]. Daarnaast vindt u in het onderwerp open [schuim][openfoam] met batch. U kunt python-code voorbeelden vinden voor het [Open schuim-voor beeld op github][github_mpi].
+* Meer informatie over het [maken van Pools van Linux-reken knooppunten](batch-linux-nodes.md) voor gebruik in uw Azure batch mpi-oplossingen.
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
 
@@ -373,4 +364,4 @@ Sample complete, hit ENTER to exit...
 [portal]: https://portal.azure.com
 [rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 
-[1]: ./media/batch-mpi/batch_mpi_01.png "Overzicht van meerdere gevallen"
+[1]: ./media/batch-mpi/batch_mpi_01.png "Overzicht van meerdere exemplaren"

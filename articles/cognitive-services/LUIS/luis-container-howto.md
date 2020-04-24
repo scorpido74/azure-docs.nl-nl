@@ -1,7 +1,7 @@
 ---
-title: Docker containers - LUIS
+title: Docker-containers-LUIS
 titleSuffix: Azure Cognitive Services
-description: De LUIS-container laadt uw getrainde of gepubliceerde app in een dockercontainer en biedt toegang tot de queryvoorspellingen van de API-eindpunten van de container.
+description: De LUIS-container laadt uw getrainde of gepubliceerde app in een docker-container en biedt toegang tot de query voorspellingen van de API-eind punten van de container.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,154 +11,154 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fec6b16eb7f80369904eefc407a9a9c8d6629c9a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879321"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100240"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>Luis dockercontainers installeren en uitvoeren
- 
-De LUIS-container (Language Understanding) laadt uw getrainde of gepubliceerde taalbegripsmodel. Als [LUIS-app](https://www.luis.ai)biedt de dockercontainer toegang tot de queryvoorspellingen van de API-eindpunten van de container. U querylogboeken uit de container verzamelen en deze uploaden naar de app Taalbegrip om de nauwkeurigheid van de voorspelling van de app te verbeteren.
+# <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
 
-De volgende video toont het gebruik van deze container.
+De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd Language Understanding model. Als [Luis-app](https://www.luis.ai)biedt de docker-container toegang tot de query voorspellingen van de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze opnieuw uploaden naar de Language Understanding-app om de nauw keurigheid van de app te verbeteren.
 
-[![Containerdemonstratie voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+In de volgende video ziet u hoe u deze container gebruikt.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+[![Container demonstratie voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de LUIS-container wilt uitvoeren, houdt u de volgende voorwaarden op:
+Als u de LUIS-container wilt uitvoeren, moet u rekening houden met de volgende vereisten:
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| U moet de Docker Engine geïnstalleerd op een [hostcomputer.](#the-host-computer) Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet zijn geconfigureerd om de containers in staat te stellen verbinding te maken met en factureringsgegevens naar Azure te verzenden. <br><br> **Op Windows**moet Docker ook zijn geconfigureerd om Linux-containers te ondersteunen.<br><br>|
-|Vertrouwdheid met Docker | U moet een basiskennis hebben van Docker-concepten, zoals registers, opslagplaatsen, containers en `docker` containerafbeeldingen, evenals kennis van basisopdrachten.| 
-|Azure-bron- `Cognitive Services` en [LUIS-pakket-appbestand](luis-how-to-start-new-app.md) |Om de container te kunnen gebruiken, moet u beschikken over:<br><br>* Een _Azure-bron voor Cognitive Services_ en de bijbehorende factureringssleutel het factureringseindpunt URI. Beide waarden zijn beschikbaar op de pagina's Overzicht en Sleutels voor de resource en zijn vereist om de container te starten. <br>* Een getrainde of gepubliceerde app verpakt als een gemonteerde ingang naar de container met de bijbehorende App ID. U het verpakte bestand ophalen via de LUIS-portal of de auteurs-API's. Als u luis verpakte app krijgt van de [authoring API's,](#authoring-apis-for-package-file)moet u ook uw _authoring key_.<br><br>Deze vereisten worden gebruikt om opdrachtregelargumenten door te geven aan de volgende variabelen:<br><br>**{AUTHORING_KEY}**: Deze sleutel wordt gebruikt om de verpakte app uit de LUIS-service in de cloud te halen en de querylogboeken terug te uploaden naar de cloud. De indeling is `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}**: Deze id wordt gebruikt om de App te selecteren. De indeling is `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}**: Deze sleutel wordt gebruikt om de container te starten. U vindt de eindpuntsleutel op twee plaatsen. De eerste is de Azure-portal in de lijst met sleutels van de _bron van Cognitive Services._ De eindpuntsleutel is ook beschikbaar in de LUIS-portal op de pagina Sleutels en Eindpuntinstellingen. Gebruik de startsleutel niet.<br><br>**{ENDPOINT_URI}**: Het eindpunt zoals vermeld op de pagina Overzicht.<br><br>De [ontwerpsleutel en de eindpunttoets](luis-boundaries.md#key-limits) hebben verschillende doeleinden. Gebruik ze niet door elkaar. |
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.|
+|App `Cognitive Services` -bestand voor Azure-resource en Luis- [pakket](luis-how-to-start-new-app.md) |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>* Een _Cognitive Services_ Azure-resource en de gekoppelde facturerings sleutel de URI van het facturerings eindpunt. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten. <br>* Een getrainde of gepubliceerde app is verpakt als gekoppelde invoer voor de container met de bijbehorende App-ID. U kunt het verpakte bestand ophalen uit de LUIS-portal of de ontwerp-Api's. Als u een LUIS-app-pakket van de [ontwerp-api's](#authoring-apis-for-package-file)krijgt, hebt u ook uw _ontwerp sleutel_nodig.<br><br>Deze vereisten worden gebruikt om opdracht regel argumenten door te geven aan de volgende variabelen:<br><br>**{AUTHORING_KEY}**: deze sleutel wordt gebruikt om de verpakte app uit de Luis-service in de Cloud op te halen en uploadt de query logboeken terug naar de Cloud. De indeling is `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}**: deze id wordt gebruikt om de app te selecteren. De indeling is `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}**: deze sleutel wordt gebruikt om de container te starten. U kunt de eindpunt sleutel op twee plaatsen vinden. De eerste is de Azure Portal in de lijst sleutels van de _Cognitive Services_ resource. De eindpunt sleutel is ook beschikbaar in de LUIS-Portal op de pagina sleutels en eindpunt instellingen. Gebruik niet de start sleutel.<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina overzicht.<br><br>De [ontwerp sleutel en de eindpunt sleutel](luis-limits.md#key-limits) hebben verschillende doel einden. Gebruik deze niet om te zetten. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="authoring-apis-for-package-file"></a>API's voor pakketbestand maken
+### <a name="authoring-apis-for-package-file"></a>Api's voor het pakket bestand ontwerpen
 
-API's voor verpakte apps maken:
+Api's voor verpakte apps ontwerpen:
 
-* [Gepubliceerde pakket-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
-* [Niet-gepubliceerde, alleen getrainde pakket-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
+* [API voor gepubliceerd pakket](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [Niet-gepubliceerd, alleen getrainde pakket-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>De hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
+### <a name="container-requirements-and-recommendations"></a>Container vereisten en aanbevelingen
 
-Deze container ondersteunt minimum- en aanbevolen waarden voor de instellingen:
+Deze container ondersteunt minimale en aanbevolen waarden voor de instellingen:
 
-|Container| Minimum | Aanbevolen | Tps<br>(Minimum, Maximum)|
+|Container| Minimum | Aanbevolen | TPS<br>(Mini maal, Maxi maal)|
 |-----------|---------|-------------|--|
-|LUIS|1 core, 2 GB geheugen|1 core, 4 GB geheugen|20, 40|
+|LUIS|1 Core, 2 GB geheugen|1 kern geheugen van 4 GB|20, 40|
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
-* TPS - transacties per seconde
+* TPS-trans acties per seconde
 
-Kern en geheugen `--cpus` komen `--memory` overeen met de en `docker run` instellingen, die worden gebruikt als onderdeel van de opdracht.
+Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De containerafbeelding biju halen`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
 
-Gebruik [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) de opdracht om een `mcr.microsoft.com/azure-cognitive-services/luis` containerafbeelding uit de opslagplaats te downloaden:
+Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden `mcr.microsoft.com/azure-cognitive-services/luis` uit de opslag plaats:
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
-Zie LUIS op Docker Hub `latest` voor een volledige beschrijving [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) van beschikbare tags, zoals die in de vorige opdracht worden gebruikt.
+Zie Luis op docker hub voor een volledige beschrijving `latest` van de beschik bare Tags, [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) zoals in de voor gaande opdracht wordt gebruikt.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Hoe de container te gebruiken
+## <a name="how-to-use-the-container"></a>De container gebruiken
 
-Zodra de container zich op de [hostcomputer bevindt,](#the-host-computer)gebruikt u het volgende proces om met de container te werken.
+Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruikt u het volgende proces om met de container te werken.
 
-![Proces voor het gebruik van LUIS-container (Language Understanding)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
+![Proces voor het gebruik van Language Understanding-container (LUIS)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
-1. [Exportpakket](#export-packaged-app-from-luis) voor container van LUIS-portal of LUIS API's.
-1. Pakketbestand verplaatsen naar de vereiste **invoermap** op de [hostcomputer](#the-host-computer). Wijzig, wijzig, overschrijf of decomprimeer het LUIS-pakketbestand niet.
-1. [Voer de container](#run-the-container-with-docker-run)uit met de vereiste _invoerbevestigings-_ en factureringsinstellingen. Meer [voorbeelden](luis-container-configuration.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar. 
-1. [Het voorspellingseindpunt van de container opvragen](#query-the-containers-prediction-endpoint). 
-1. Wanneer u klaar bent met de container, [importeert u de eindpuntlogboeken](#import-the-endpoint-logs-for-active-learning) van de uitvoerbevestiging in de LUIS-portal en [stopt u](#stop-the-container) de container.
-1. Gebruik luis portal's [active learning](luis-how-to-review-endpoint-utterances.md) op de pagina **Eindpuntuitingen controleren** om de app te verbeteren.
+1. [Exporteer pakket](#export-packaged-app-from-luis) voor container van Luis-portal-of Luis-api's.
+1. Verplaats pakket bestand naar de vereiste **invoer** Directory op de [hostcomputer](#the-host-computer). Wijzig de naam van het pakket bestand van het LUIS niet, wijzig, vervang of Decomprimeer het.
+1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste _invoer koppeling_ en facturerings instellingen. Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar.
+1. [Query's uitvoeren op het voor Spellings eindpunt van de container](#query-the-containers-prediction-endpoint).
+1. Wanneer u klaar bent met de container, [importeert u de eindpunt logboeken](#import-the-endpoint-logs-for-active-learning) van de uitvoer koppeling in de Luis-Portal en [stopt](#stop-the-container) u de container.
+1. Gebruik het [actieve leer proces](luis-how-to-review-endpoint-utterances.md) van de Luis-Portal op de pagina **endpoint uitingen controleren** om de app te verbeteren.
 
-De app die in de container wordt uitgevoerd, kan niet worden gewijzigd. Als u de app in de container wilt wijzigen, moet u de app in de LUIS-service wijzigen via de [LUIS-portal](https://www.luis.ai) of de [LUIS-ontwerp-API's](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)gebruiken. Vervolgens trainen en /of publiceren, download dan een nieuw pakket en voer de container opnieuw uit.
+De app die in de container wordt uitgevoerd, kan niet worden gewijzigd. In volg orde van de wijziging van de app in de container moet u de App wijzigen in de LUIS-service met behulp van de [Luis](https://www.luis.ai) -portal of de Luis- [ontwerp-api's](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)gebruiken. Vervolgens traint en/of publiceert u een nieuw pakket en voert u de container opnieuw uit.
 
-De LUIS-app in de container kan niet worden geëxporteerd naar de LUIS-service. Alleen de querylogboeken kunnen worden geüpload. 
+De LUIS-app in de container kan niet worden geëxporteerd naar de LUIS-service. Alleen de query logboeken kunnen worden geüpload.
 
-## <a name="export-packaged-app-from-luis"></a>Verpakte app exporteren vanuit LUIS
+## <a name="export-packaged-app-from-luis"></a>App-pakket exporteren uit LUIS
 
-De LUIS-container vereist een getrainde of gepubliceerde LUIS-app om voorspellingsquery's van gebruikersuitingen te beantwoorden. Gebruik de API voor het getrainde of gepubliceerde pakket om de LUIS-app te krijgen. 
+De LUIS-container vereist een getrainde of gepubliceerde LUIS-app voor het beantwoorden van voorspellings query's van de gebruikers uitingen. Als u de LUIS-app wilt ophalen, gebruikt u de getrainde of gepubliceerde pakket-API.
 
-De standaardlocatie `input` is de submap ten `docker run` opzichte van waar u de opdracht uitvoert.  
+De standaard locatie is de `input` submap in relatie tot waar u de `docker run` opdracht uitvoert.
 
-Plaats het pakketbestand in een map en verwijs naar deze map als de invoerhouder wanneer u de dockercontainer uitvoert. 
+Plaats het pakket bestand in een map en verwijs naar deze map als de invoer koppeling wanneer u de docker-container uitvoert.
 
-### <a name="package-types"></a>Pakkettypen
+### <a name="package-types"></a>Pakket typen
 
-De invoerbevestigingsmap kan tegelijkertijd de modellen **Productie,** **Staging**en **Versioned** van de app bevatten. Alle pakketten zijn gemonteerd.
+De map invoer koppeling kan de modellen **productie**, **fase ring**en **versie** van de app tegelijkertijd bevatten. Alle pakketten zijn gekoppeld.
 
-|Pakkettype|Query-eindpunt-API|Beschikbaarheid van query's|Bestandsnaamindeling voor pakket|
+|Pakket type|Query eind punt-API|Beschik baarheid van query's|Bestands naam indeling pakket|
 |--|--|--|--|
 |Versie|GET, POST|Alleen container|`{APP_ID}_v{APP_VERSION}.gz`|
 |Faseren|GET, POST|Azure en container|`{APP_ID}_STAGING.gz`|
 |Productie|GET, POST|Azure en container|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> Wijzig de naam, wijziging, overschrijven of decomprimeren van de LUIS-pakketbestanden niet.
+> Wijzig de namen van de LUIS-pakket bestanden niet, vervang ze en voer deze uit.
 
-### <a name="packaging-prerequisites"></a>Verpakkingsvereisten
+### <a name="packaging-prerequisites"></a>Vereisten voor verpakking
 
-Voordat u een LUIS-toepassing verpakt, moet u het volgende hebben:
+Voordat u een LUIS-toepassing kunt inpakken, hebt u het volgende nodig:
 
-|Verpakkingsvereisten|Details|
+|Vereisten voor verpakking|Details|
 |--|--|
-|Azure _Cognitive Services-broninstantie_|Ondersteunde regio's zijn o.a.<br><br>West US`westus`( )<br>West-Europa`westeurope`( )<br>Australië-Oost`australiaeast`( )|
-|Getrainde of gepubliceerde LUIS-app|Zonder [niet-ondersteunde afhankelijkheden.][unsupported-dependencies] |
-|Toegang tot het bestandssysteem van de [hostcomputer](#the-host-computer) |De hostcomputer moet een [invoerbevestiging](luis-container-configuration.md#mount-settings)toestaan.|
-  
-### <a name="export-app-package-from-luis-portal"></a>App-pakket exporteren vanuit LUIS-portal
+|Resource-exemplaar van Azure _Cognitive Services_|Ondersteunde regio's zijn onder andere<br><br>VS-West`westus`()<br>Europa-west (`westeurope`)<br>Australië-oost (`australiaeast`)|
+|Getrainde of gepubliceerde LUIS-app|Zonder niet- [ondersteunde afhankelijkheden][unsupported-dependencies]. |
+|Toegang tot het bestands systeem van de [hostcomputer](#the-host-computer) |De hostcomputer moet een [invoer koppeling](luis-container-configuration.md#mount-settings)toestaan.|
 
-De [LUIS-portal](https://www.luis.ai) biedt de mogelijkheid om het pakket van de getrainde of gepubliceerde app te exporteren.
+### <a name="export-app-package-from-luis-portal"></a>App-pakket exporteren vanuit de LUIS-Portal
 
-### <a name="export-published-apps-package-from-luis-portal"></a>Het pakket van gepubliceerde apps exporteren vanuit LUIS-portal
+De LUIS- [Portal](https://www.luis.ai) biedt de mogelijkheid om het getrainde of gepubliceerde app-pakket te exporteren.
 
-Het pakket van de gepubliceerde app is beschikbaar op de **lijstpagina Mijn apps.** 
+### <a name="export-published-apps-package-from-luis-portal"></a>Het pakket van de gepubliceerde app exporteren vanuit de LUIS-Portal
 
-1. Meld u aan bij het [LUIS-portaal](https://www.luis.ai).
-1. Schakel het selectievakje links van de app-naam in de lijst in. 
-1. Selecteer het item **Exporteren** op de contextuele werkbalk boven de lijst.
-1. Selecteer **Exporteren voor container (GZIP)**.
-1. Selecteer de omgeving van **productiesleuf** of **faseringssleuf**.
-1. Het pakket wordt gedownload van de browser.
+Het pakket van de gepubliceerde app is beschikbaar op de lijst pagina **mijn apps** .
 
-![Het gepubliceerde pakket voor de container exporteren vanuit het menu Exporteren van de app](./media/luis-container-how-to/export-published-package-for-container.png)
+1. Meld u aan bij de LUIS- [Portal](https://www.luis.ai).
+1. Schakel het selectie vakje links van de naam van de app in de lijst in.
+1. Selecteer het item **exporteren** in de contextuele werk balk boven de lijst.
+1. Selecteer **exporteren voor container (gzip)**.
+1. Selecteer de omgeving van **productie sleuf** of **faserings sleuf**.
+1. Het pakket wordt gedownload vanuit de browser.
 
-### <a name="export-versioned-apps-package-from-luis-portal"></a>Het pakket van de versieversie-app exporteren vanuit LUIS-portal
+![Het gepubliceerde pakket voor de container exporteren vanuit het menu exporteren van de app-pagina](./media/luis-container-how-to/export-published-package-for-container.png)
 
-Het pakket van de versie-app is beschikbaar op de **lijstpagina Versies.**
+### <a name="export-versioned-apps-package-from-luis-portal"></a>Het pakket met de versie van de app exporteren uit de LUIS-Portal
 
-1. Meld u aan bij het [LUIS-portaal](https://www.luis.ai).
-1. Selecteer de app in de lijst. 
-1. Selecteer **Beheren** in de navigatiebalk van de app.
-1. Selecteer **Versies** op de linkernavigatiebalk.
-1. Schakel het selectievakje links van de versienaam in de lijst in.
-1. Selecteer het item **Exporteren** op de contextuele werkbalk boven de lijst.
-1. Selecteer **Exporteren voor container (GZIP)**.
-1. Het pakket wordt gedownload van de browser.
+Het pakket met de versie van de app is beschikbaar op de lijst pagina met **versies** .
 
-![Het getrainde pakket voor de container exporteren vanuit het menu Exporteren van de pagina Versies](./media/luis-container-how-to/export-trained-package-for-container.png)
+1. Meld u aan bij de LUIS- [Portal](https://www.luis.ai).
+1. Selecteer de app in de lijst.
+1. Selecteer **beheren** in de navigatie balk van de app.
+1. Selecteer **versies** in de linkernavigatiebalk.
+1. Schakel het selectie vakje links van de versie naam in de lijst in.
+1. Selecteer het item **exporteren** in de contextuele werk balk boven de lijst.
+1. Selecteer **exporteren voor container (gzip)**.
+1. Het pakket wordt gedownload vanuit de browser.
 
-### <a name="export-published-apps-package-from-api"></a>Het pakket van gepubliceerde apps exporteren uit API
+![Het getrainde pakket voor de container exporteren vanuit het menu exporteren van de pagina versies](./media/luis-container-how-to/export-trained-package-for-container.png)
 
-Gebruik de volgende REST API-methode om een LUIS-app te verpakken die u al hebt [gepubliceerd.](luis-how-to-publish-app.md) Vervang uw eigen juiste waarden voor de tijdelijke aanduidingen in de API-aanroep met behulp van de tabel onder de HTTP-specificatie.
+### <a name="export-published-apps-package-from-api"></a>Het pakket van de gepubliceerde app uit de API exporteren
+
+Gebruik de volgende REST API methode voor het inpakken van een LUIS-app die u al hebt [gepubliceerd](luis-how-to-publish-app.md). Door uw eigen juiste waarden te vervangen door de tijdelijke aanduidingen in de API-aanroep, met behulp van de tabel onder de HTTP-specificatie.
 
 ```http
 GET /luis/api/v2.0/package/{APP_ID}/slot/{SLOT_NAME}/gzip HTTP/1.1
@@ -170,14 +170,14 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |-------------|-------|
 | **{APP_ID}** | De toepassings-ID van de gepubliceerde LUIS-app. |
 | **{SLOT_NAME}** | De omgeving van de gepubliceerde LUIS-app. Gebruik een van de volgende waarden:<br/>`PRODUCTION`<br/>`STAGING` |
-| **{AUTHORING_KEY}** | De ontwerpsleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U uw ontwerpsleutel ophalen via de pagina **Gebruikersinstellingen** op de LUIS-portal. |
-| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`- West US<br/>`westeurope`- West-Europa<br/>`australiaeast`- Australië Oost |
+| **{AUTHORING_KEY}** | De ontwerp sleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U kunt uw ontwerp sleutel verkrijgen via de pagina **gebruikers instellingen** op de Luis-Portal. |
+| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`-VS-West<br/>`westeurope`-Europa-west<br/>`australiaeast`-Australië-oost |
 
-Als u het gepubliceerde pakket wilt downloaden, raadpleegt u hier de [API-documentatie.][download-published-package] Als deze is gedownload, is het antwoord een LUIS-pakketbestand. Sla het bestand op in de opslaglocatie die is opgegeven voor de invoerbevestiging van de container. 
+Als u het gepubliceerde pakket wilt downloaden, raadpleegt u de [API-documentatie hier][download-published-package]. Als het downloaden is voltooid, is het antwoord een LUIS-pakket bestand. Sla het bestand op in de opslag locatie die is opgegeven voor de invoer koppeling van de container.
 
-### <a name="export-versioned-apps-package-from-api"></a>Het pakket van versieversies exporteren uit API
+### <a name="export-versioned-apps-package-from-api"></a>Pakket met versie-apps exporteren vanuit API
 
-Gebruik de volgende REST API-methode om een LUIS-toepassing te verpakken die u al hebt [getraind.](luis-how-to-train.md) Vervang uw eigen juiste waarden voor de tijdelijke aanduidingen in de API-aanroep met behulp van de tabel onder de HTTP-specificatie.
+Gebruik de volgende REST API methode voor het inpakken van een LUIS-toepassing die u al hebt [opgeleid](luis-how-to-train.md). Door uw eigen juiste waarden te vervangen door de tijdelijke aanduidingen in de API-aanroep, met behulp van de tabel onder de HTTP-specificatie.
 
 ```http
 GET /luis/api/v2.0/package/{APP_ID}/versions/{APP_VERSION}/gzip HTTP/1.1
@@ -187,18 +187,18 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Tijdelijke aanduiding | Waarde |
 |-------------|-------|
-| **{APP_ID}** | De applicatie-id van de getrainde LUIS-app. |
-| **{APP_VERSION}** | De toepassingsversie van de getrainde LUIS-app. |
-| **{AUTHORING_KEY}** | De ontwerpsleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U uw ontwerpsleutel ophalen via de pagina **Gebruikersinstellingen** op de LUIS-portal. |
-| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`- West US<br/>`westeurope`- West-Europa<br/>`australiaeast`- Australië Oost |
+| **{APP_ID}** | De toepassings-ID van de getrainde LUIS-app. |
+| **{APP_VERSION}** | De toepassings versie van de getrainde LUIS-app. |
+| **{AUTHORING_KEY}** | De ontwerp sleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U kunt uw ontwerp sleutel verkrijgen via de pagina **gebruikers instellingen** op de Luis-Portal. |
+| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`-VS-West<br/>`westeurope`-Europa-west<br/>`australiaeast`-Australië-oost |
 
-Als u het versiepakket wilt downloaden, raadpleegt u hier de [API-documentatie.][download-versioned-package] Als deze is gedownload, is het antwoord een LUIS-pakketbestand. Sla het bestand op in de opslaglocatie die is opgegeven voor de invoerbevestiging van de container. 
+Raadpleeg de [API-documentatie][download-versioned-package]om het pakket met versies te downloaden. Als het downloaden is voltooid, is het antwoord een LUIS-pakket bestand. Sla het bestand op in de opslag locatie die is opgegeven voor de invoer koppeling van de container.
 
 ## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [Docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg [het verzamelen van vereiste parameters](#gathering-required-parameters) `{ENDPOINT_URI}` voor `{API_KEY}` meer informatie over hoe u de en waarden krijgen.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
 
-[Voorbeelden](luis-container-configuration.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
+[Voor beelden](luis-container-configuration.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -212,77 +212,77 @@ Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
 ```
 
-* In dit voorbeeld wordt `C:` de map buiten het station gebruikt om eventuele machtigingsconflicten op Windows te voorkomen. Als u een specifieke map als invoermap moet gebruiken, moet u mogelijk de dockerservicetoestemming verlenen. 
-* Wijzig de volgorde van de argumenten niet, tenzij u bekend bent met dockercontainers.
-* Als u een ander besturingssysteem gebruikt, gebruikt u de juiste console/terminal, mapsyntaxis voor bevestigingen en regelvervolgteken voor uw systeem. In deze voorbeelden wordt uitgegaan van `^`een Windows-console met een regelvervolgteken . Omdat de container een Linux-besturingssysteem is, maakt de doelhouder gebruik van een syntaxis van de Linux-stijl.
+* In dit voor beeld wordt de Directory `C:` uit het station gebruikt om te voor komen dat er machtigings conflicten optreden in Windows. Als u een specifieke directory moet gebruiken als de invoer Directory, moet u mogelijk de machtiging docker-service verlenen.
+* Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
+* Als u een ander besturings systeem gebruikt, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw systeem. In deze voor beelden wordt ervan uitgegaan dat een Windows `^`-console met een regel voortzettings teken. Omdat de container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
 
 Met deze opdracht gebeurt het volgende:
 
-* Een container uit de LUIS-containerafbeelding worden uitgevoerd
-* Laadt LUIS-app vanaf invoerbevestiging bij *C:\-invoer*, zich op containerhost
-* Hiermee worden twee CPU-cores en 4 gigabyte (GB) geheugen toegewezen
-* Stelt TCP-poort 5000 bloot en wijst een pseudo-TTY toe voor de container
-* Slaat container- en LUIS-logboeken op om de uitvoerte vast te zetten bij *C:\output*, op containerhost
-* Verwijdert automatisch de container nadat deze is afgesloten. De containerafbeelding is nog steeds beschikbaar op de hostcomputer. 
+* Hiermee wordt een container uit de installatie kopie van de LUIS-container uitgevoerd
+* Hiermee wordt de LUIS-app geladen vanuit de invoer koppeling op *C:\Input*, die zich op de container host bevindt
+* Wijst twee CPU-kernen en 4 gigabyte (GB) aan geheugen toe
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY toe voor de container
+* Slaat container-en LUIS-logboeken op naar de uitvoer koppeling op *C:\output*, dat zich op de container host bevindt
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-Meer [voorbeelden](luis-container-configuration.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar. 
+Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar.
 
 > [!IMPORTANT]
-> De `Eula` `Billing`opties `ApiKey` en de opties moeten worden opgegeven om de container uit te voeren; Anders start de container niet.  Zie [Facturering voor](#billing)meer informatie.
-> De ApiKey-waarde is de **sleutel** van de pagina **Azure Resources** `Cognitive Services` in de LUIS-portal en is ook beschikbaar op de pagina Azure-bronsleutels.  
+> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De ApiKey-waarde is de **sleutel** van de **Azure-resources** -pagina in de Luis-Portal en is ook `Cognitive Services` beschikbaar op de pagina Azure-resource sleutels.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="endpoint-apis-supported-by-the-container"></a>Eindpunt API's ondersteund door de container
+## <a name="endpoint-apis-supported-by-the-container"></a>Endpoint-Api's die door de container worden ondersteund
 
-Zowel V2- als [V3-versies](luis-migration-api-v3.md) van de API zijn beschikbaar met de container. 
+Zowel v2-als [v3](luis-migration-api-v3.md) -versies van de API zijn beschikbaar in de container.
 
-## <a name="query-the-containers-prediction-endpoint"></a>Het voorspellingseindpunt van de container opvragen
+## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
-De container biedt OP RUST gebaseerde queryvoorspellingseindpunt-API's. Eindpunten voor gepubliceerde (staging of productie)apps hebben een _andere_ route dan eindpunten voor versie-apps.
+De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. Eind punten voor gepubliceerde (staging-of productie)-apps hebben een _andere_ route dan eind punten voor apps met versie nummer.
 
-Gebruik de `http://localhost:5000`host, voor container API's.
+Gebruik de host, `http://localhost:5000`voor container-api's.
 
-# <a name="v3-prediction-endpoint"></a>[V3 voorspelling eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
 
 |Pakkettype|HTTP-woord|Route|Queryparameters|
 |--|--|--|--|
 |Gepubliceerd|GET, POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Versie|GET, POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
-De queryparameters configureren hoe en wat wordt geretourneerd in het queryantwoord:
+De query parameters configureren hoe en wat wordt geretourneerd in de query-antwoord:
 
-|Queryparameter|Type|Doel|
+|Query parameter|Type|Doel|
 |--|--|--|
-|`query`|tekenreeks|De uiting van de gebruiker.|
-|`verbose`|booleaans|Een booleaanse waarde die aangeeft of alle metagegevens voor de voorspelde modellen moeten worden retourneren. De standaardinstelling is onwaar.|
-|`log`|booleaans|Hiermee worden query's logboeken opgeslagen, die later kunnen worden gebruikt voor [actief leren.](luis-how-to-review-endpoint-utterances.md) De standaardinstelling is onwaar.|
-|`show-all-intents`|booleaans|Een booleaanse waarde die aangeeft of alle intenties of alleen de intentie voor het hoogste scoren moeten worden retourneren. De standaardinstelling is onwaar.|
+|`query`|tekenreeks|De utterance van de gebruiker.|
+|`verbose`|booleaans|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
+|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
+|`show-all-intents`|booleaans|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
 
-# <a name="v2-prediction-endpoint"></a>[V2 voorspellingeindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
 
 |Pakkettype|HTTP-woord|Route|Queryparameters|
 |--|--|--|--|
-|Gepubliceerd|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
+|Gepubliceerd|[Get](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Versie|GET, POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
-De queryparameters configureren hoe en wat wordt geretourneerd in het queryantwoord:
+De query parameters configureren hoe en wat wordt geretourneerd in de query-antwoord:
 
-|Queryparameter|Type|Doel|
+|Query parameter|Type|Doel|
 |--|--|--|
-|`q`|tekenreeks|De uiting van de gebruiker.|
-|`timezoneOffset`|getal|Met de tijdzoneOffset u [de tijdzone wijzigen](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt gebruikt door de vooraf gebouwde entiteitsdatumV2.|
-|`verbose`|booleaans|Geeft als resultaat alle intenties en hun scores wanneer ze op true zijn ingesteld. Standaard is false, wat alleen de bovenste intentie retourneert.|
-|`staging`|booleaans|Retourneert query uit resultaten van de faseringsomgeving als deze is ingesteld op true. |
-|`log`|booleaans|Hiermee worden query's logboeken opgeslagen, die later kunnen worden gebruikt voor [actief leren.](luis-how-to-review-endpoint-utterances.md) De standaardwaarde is true.|
+|`q`|tekenreeks|De utterance van de gebruiker.|
+|`timezoneOffset`|getal|Met de time zone offset kunt u [de tijd zone wijzigen](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt gebruikt door de vooraf samengestelde entiteit datetimeV2.|
+|`verbose`|booleaans|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
+|`staging`|booleaans|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
+|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
 
 ***
 
-### <a name="query-the-luis-app"></a>De LUIS-app opvragen
+### <a name="query-the-luis-app"></a>Query's uitvoeren op de LUIS-app
 
-Een voorbeeld van de opdracht CURL voor het opvragen van de container voor een gepubliceerde app is:
+Een voor beeld van een krul opdracht voor het uitvoeren van query's op de container voor een gepubliceerde app is:
 
-# <a name="v3-prediction-endpoint"></a>[V3 voorspelling eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 
@@ -294,11 +294,11 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Als u query's wilt `production` maken in `staging`de **omgeving Fasen,** vervangt u in de route:
+Als u query's wilt uitvoeren naar de **faserings** omgeving, vervangt `production` u `staging`in de route door:
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
-Als u een versiemodel wilt opvragen, gebruikt u de volgende API:
+Voor het uitvoeren van een query op een versie model gebruikt u de volgende API:
 
 ```bash
 curl -G \
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpoint"></a>[V2 voorspellingeindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 
@@ -317,35 +317,35 @@ curl -X GET \
 "http://localhost:5000/luis/v2.0/apps/{APP_ID}?q=turn%20on%20the%20lights&staging=false&timezoneOffset=0&verbose=false&log=true" \
 -H "accept: application/json"
 ```
-Als u query's wilt maken in de **omgeving Fasering,** wijzigt u de parameterwaarde van de **faseringsqueryreeks** in true: 
+Als u query's wilt uitvoeren naar de **faserings** omgeving, wijzigt u de parameter waarde voor de **faserings** query teken reeks in waar:
 
 `staging=true`
 
-Als u een versiemodel wilt opvragen, gebruikt u de volgende API:
+Voor het uitvoeren van een query op een versie model gebruikt u de volgende API:
 
 ```bash
 curl -X GET \
 "http://localhost:5000/luis/v2.0/apps/{APP_ID}/versions/{APP_VERSION}?q=turn%20on%20the%20lights&timezoneOffset=0&verbose=false&log=true" \
 -H "accept: application/json"
 ```
-De versienaam heeft een maximum van 10 tekens en bevat alleen tekens die zijn toegestaan in een URL.
+De versie naam mag Maxi maal 10 tekens bevatten en bevat alleen tekens die in een URL zijn toegestaan.
 
 ***
 
-## <a name="import-the-endpoint-logs-for-active-learning"></a>De eindpuntlogboeken importeren voor actief leren
+## <a name="import-the-endpoint-logs-for-active-learning"></a>De eindpunt logboeken voor actief leren importeren
 
-Als een uitvoerbevestiging is opgegeven voor de LUIS-container, worden app-querylogboekbestanden opgeslagen in de uitvoermap, waar `{INSTANCE_ID}` is de container-ID. Het app-querylogboek bevat de query-, respons- en tijdstempels voor elke voorspellingsquery die is ingediend bij de LUIS-container. 
+Als er een uitvoer koppeling is opgegeven voor de LUIS-container, worden de logboek bestanden van de app-query opgeslagen `{INSTANCE_ID}` in de uitvoermap, waar de container-ID is. Het logboek van de app-query bevat de query, het antwoord en de tijds tempels voor elke Voorspellings query die wordt verzonden naar de LUIS-container.
 
-De volgende locatie toont de geneste mapstructuur voor de logboekbestanden van de container.
+Op de volgende locatie wordt de geneste mapstructuur voor de logboek bestanden van de container weer gegeven.
 ```
 /output/luis/{INSTANCE_ID}/
 ```
- 
-Selecteer in de LUIS-portal uw app en selecteer **Vervolgens Eindpuntlogboeken importeren** om deze logboeken te uploaden. 
 
-![Logbestanden van containers importeren voor actief leren](./media/luis-container-how-to/upload-endpoint-log-files.png)
+Selecteer uw app in de LUIS-Portal en selecteer vervolgens **eindpunt logboeken importeren** om deze logboeken te uploaden.
 
-Nadat het logboek is geüpload, [controleert u de eindpuntuitingen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) in de LUIS-portal.
+![De logboek bestanden van de container importeren voor actief leren](./media/luis-container-how-to/upload-endpoint-log-files.png)
+
+Nadat het logboek is geüpload, [controleert u het eind punt](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) uitingen in de Luis-Portal.
 
 <!--  ## Validate container is running -->
 
@@ -353,44 +353,44 @@ Nadat het logboek is geüpload, [controleert u de eindpuntuitingen](https://docs
 
 ## <a name="stop-the-container"></a>De container stoppen
 
-Als u de container wilt afsluiten, drukt u in de opdrachtregelomgeving waar de container wordt uitgevoerd op **Ctrl+C**.
+Als u de container wilt afsluiten, drukt u in de opdracht regel omgeving waar de container wordt uitgevoerd op **CTRL + C**.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de container uitvoert met een [uitvoerbevestiging](luis-container-configuration.md#mount-settings) en logboekregistratie is ingeschakeld, genereert de container logboekbestanden die handig zijn om problemen op te lossen die zich voordoen tijdens het starten of uitvoeren van de container.
+Als u de container uitvoert met een uitvoer [koppeling](luis-container-configuration.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 
-De LUIS-container verzendt factureringsgegevens naar Azure met behulp van een _resource voor Cognitive Services_ op uw Azure-account. 
+De LUIS-container verzendt facturerings gegevens naar Azure met behulp van een _Cognitive Services_ resource in uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [Containers configureren](luis-container-configuration.md)voor meer informatie over deze opties.
+Zie [containers configureren](luis-container-configuration.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werkstroom geleerd voor het downloaden, installeren en uitvoeren van LUIS-containers (Language Understanding). Samenvatting:
+In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, installeren en uitvoeren van Language Understanding-containers (LUIS). Samenvatting:
 
-* Language Understanding (LUIS) biedt één Linux-container voor Docker die eindpuntqueryvoorspellingen van uitingen biedt.
-* Containerafbeeldingen worden gedownload uit het Microsoft Container Registry (MCR).
-* Containerafbeeldingen worden uitgevoerd in Docker.
-* U REST API gebruiken om de eindpunten van de container op te vragen door de hostURI van de container op te geven.
-* U moet factureringsgegevens opgeven bij het momentmaken van een container.
+* Language Understanding (LUIS) biedt een Linux-container voor docker voor de voor spellingen van eindpunt query's van uitingen.
+* Container installatie kopieën worden gedownload uit de micro soft-Container Registry (MCR).
+* Container installatie kopieën worden uitgevoerd in docker.
+* U kunt REST API gebruiken om de container-eind punten te doorzoeken door de URI van de host op te geven.
+* U moet factuur gegevens opgeven bij het instantiëren van een container.
 
 > [!IMPORTANT]
-> Cognitive Services-containers hebben geen licentie om uit te voeren zonder dat deze is verbonden met Azure voor meting. Klanten moeten de containers te allen tijde in staat stellen factureringsgegevens met de meetservice te communiceren. Cognitive Services-containers verzenden geen klantgegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar Microsoft.
+> Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Controleer [Containers configureren](luis-container-configuration.md) voor configuratie-instellingen.
-* Zie [LUIS-containerbeperkingen](luis-container-limitations.md) voor bekende capaciteitsbeperkingen.
-* Raadpleeg [Probleemoplossing](troubleshooting.md) om problemen met luis-functionaliteit op te lossen.
-* Meer [Cognitive Services-containers gebruiken](../cognitive-services-container-support.md)
+* Bekijk [containers configureren](luis-container-configuration.md) voor configuratie-instellingen.
+* Zie [Luis-container beperkingen](luis-container-limitations.md) voor bekende beperkingen van de functionaliteit.
+* Raadpleeg [problemen oplossen](troubleshooting.md) voor het oplossen van problemen met betrekking tot de functionaliteit van Luis.
+* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken
 
 <!-- Links - external -->
 [download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip

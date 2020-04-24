@@ -1,259 +1,261 @@
 ---
-title: Servers beoordelen met behulp van geïmporteerde servergegevens met Azure Migrate Server Assessment
-description: Beschrijft hoe u on-premises servers beoordelen op migratie naar Azure met Azure Migrate Server Assessment met behulp van geïmporteerde gegevens.
+title: Servers beoordelen door geïmporteerde server gegevens te gebruiken met Azure Migrate server-evaluatie
+description: Hierin wordt beschreven hoe u on-premises servers kunt evalueren voor migratie naar Azure met Azure Migrate server evaluatie met behulp van geïmporteerde gegevens.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 9e6b451901da00243c458c06d51ba19fb64c0fdc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530450"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114561"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
 
-In dit artikel wordt uitgelegd hoe u on-premises servers beoordeelt met het azure [migrate: serverassessmenttool](migrate-services-overview.md#azure-migrate-server-assessment-tool) door servermetagegevens te importeren in de CSV-indeling (comma-separate values). Voor deze beoordelingsmethode hoeft u het Azure Migrate-toestel niet in te stellen om een beoordeling te maken. Het is handig als:
+In dit artikel wordt uitgelegd hoe u on-premises servers kunt beoordelen met de [Azure migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool door meta gegevens van de server te importeren in CSV-indeling (door komma's gescheiden waarden). Voor deze evaluatie methode hoeft u het Azure Migrate apparaat niet in te stellen om een evaluatie te maken. Het is handig als:
 
-- U wilt een snelle, eerste beoordeling maken voordat u het apparaat implementeert.
-- U het Azure Migrate-toestel niet implementeren in uw organisatie.
-- U geen referenties delen die toegang bieden tot on-premises servers.
-- Beveiligingsbeperkingen voorkomen dat u gegevens verzamelt en verzendt die door het toestel naar Azure worden verzameld. U de gegevens beheren die u deelt in een geïmporteerd bestand. Ook veel van de gegevens (bijvoorbeeld het verstrekken van IP-adressen) is optioneel.
+- U wilt een snelle, initiële evaluatie maken voordat u het apparaat implementeert.
+- U kunt het Azure Migrate apparaat niet in uw organisatie implementeren.
+- U kunt geen referenties delen die toegang bieden tot on-premises servers.
+- Vanwege beveiligings beperkingen kunt u geen gegevens verzamelen en verzenden die zijn verzameld door het apparaat naar Azure. U kunt de gegevens die u in een geïmporteerd bestand deelt, beheren. Ook zijn veel van de gegevens (bijvoorbeeld IP-adressen opgeven) optioneel.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Wees je bewust van deze punten:
+Houd rekening met de volgende punten:
 
-- U maximaal 20.000 servers toevoegen in één CSV-bestand.
-- U maximaal 20.000 servers toevoegen aan een Azure Migrate-project met CSV.
-- U servergegevens meerdere keren uploaden naar Serverassessment met CSV.
-- Het verzamelen van toepassingsinformatie is handig bij het evalueren van uw on-premises omgeving voor migratie. Serverassessment voert momenteel echter geen beoordeling op toepassingsniveau uit of houdt geen rekening met toepassingen bij het maken van een beoordeling.
+- U kunt Maxi maal 20.000 servers in één CSV-bestand toevoegen.
+- U kunt Maxi maal 20.000 servers in een Azure Migrate project toevoegen met behulp van CSV.
+- U kunt Server gegevens meerdere keren naar de server beoordeling uploaden met behulp van CSV.
+- Het verzamelen van toepassings gegevens is handig bij het evalueren van uw on-premises omgeving voor migratie. Server evaluatie voert momenteel echter geen evaluatie op toepassings niveau uit of zet toepassingen bij het maken van een evaluatie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Stel een Azure Migrate-project in.
-> * Vul een CSV-bestand in met servergegevens.
-> * Importeer het bestand om servergegevens toe te voegen aan Serverbeoordeling.
-> * Maak en beoordeel een beoordeling.
+> * Stel een Azure Migrate project in.
+> * Vul een CSV-bestand in met server gegevens.
+> * Importeer het bestand om Server gegevens toe te voegen aan de server evaluatie.
+> * Een evaluatie maken en bekijken.
 
 > [!NOTE]
-> In zelfstudies ziet u het eenvoudigste implementatiepad voor een scenario, zodat u snel een proof of concept instellen. Tutorials maken gebruik van standaardopties waar mogelijk, en niet alle mogelijke instellingen en paden weer te geven. Bekijk de handleidingen voor gedetailleerde instructies.
+> Zelf studies laten u het eenvoudigste installatiepad voor een scenario zien, zodat u snel een taal concept kunt instellen. Zelf studies gebruiken waar mogelijk standaard opties en worden niet alle mogelijke instellingen en paden weer gegeven. Raadpleeg de hand leidingen voor meer informatie.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-machtigingen instellen voor Azure Migreren
+## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-machtigingen instellen voor Azure Migrate
 
-Uw Azure-account heeft machtigingen nodig om een Azure Migrate-project te maken.
+Uw Azure-account moet machtigingen hebben om een Azure Migrate project te maken.
 
-1. Open het abonnement in de Azure-portal en selecteer **Toegangsbeheer (IAM)**.
-2. Zoek **in Toegang controleren**het relevante account en selecteer het om machtigingen weer te geven.
-3. Zorg ervoor dat je machtigingen **voor inzender** of **eigenaar** hebt.
+1. Open in het Azure Portal het abonnement en selecteer **toegangs beheer (IAM)**.
+2. In **toegang controleren**, zoek het relevante account en selecteer dit om de machtigingen weer te geven.
+3. Zorg ervoor dat u de machtigingen **Inzender** of **eigenaar** hebt.
     - Als u zojuist een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
-    - Als u niet de eigenaar van het abonnement bent, werkt u samen met de eigenaar om de rol toe te wijzen.
+    - Als u niet de eigenaar van het abonnement bent, kunt u met de eigenaar samen werken om de rol toe te wijzen.
 
-## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate-project instellen
+## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
 
-Ga als volgende voor een nieuw Azure Migrate-project:
+Een nieuw Azure Migrate project instellen:
 
-1. Zoek in de Azure-portal in **Alle services**naar **Azure Migreren**.
+1. Zoek in de Azure Portal in **alle services**naar **Azure migrate**.
 2. Onder **Services** selecteert u **Azure Migrate**.
-3. Selecteer in **Overzicht**onder **Servers ontdekken, beoordelen en migreren**de optie Servers beoordelen en **migreren**.
+3. Selecteer in **overzicht**onder **servers detecteren, evalueren en migreren**de optie **servers beoordelen en migreren**.
 
-    ![Servers ontdekken en beoordelen](./media/tutorial-assess-import/assess-migrate.png)
+    ![Servers detecteren en beoordelen](./media/tutorial-assess-import/assess-migrate.png)
 
-4. Selecteer in **Aan de slag**het **gereedschap(en) toevoegen**.
+4. Selecteer **hulp programma (s) toevoegen**in **aan de slag**.
 5. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
-6. Geef in **PROJECTDETAILS**de projectnaam en de geografie op waarin u het project wilt maken. Voor meer informatie:
+6. Geef in **Project Details**de project naam en het geografie op waarin u het project wilt maken. Voor meer informatie:
 
-    - Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
+    - Bekijk de ondersteunde geographs voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
     - Wanneer u een migratie uitvoert, kunt u elke gewenste doelregio selecteren.
 
-    ![Een Azure-migratieproject maken](./media/tutorial-assess-import/migrate-project.png)
+    ![Een Azure Migrate-project maken](./media/tutorial-assess-import/migrate-project.png)
 
 7. Selecteer **Next**.
-8. Selecteer Azure **Migrate: Server Assessment** > **Next**in **Het beoordelingshulpprogramma selecteren.**
+8. Selecteer in **hulp programma voor beoordeling selecteren**de optie **Azure migrate: Server analyse** > **volgende**.
 
-    ![Een azure-migratiebeoordeling maken](./media/tutorial-assess-import/assessment-tool.png)
+    ![Een Azure Migrate-evaluatie maken](./media/tutorial-assess-import/assessment-tool.png)
 
 9. In **Migratieprogramma selecteren** selecteert u **Het toevoegen van een migratieprogramma voorlopig overslaan** > **Volgende**.
-10. Bekijk in **Controle + hulpprogramma's de**instellingen en selecteer Gereedschappen **toevoegen**.
-11. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. U wordt dan naar de projectpagina gebracht. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
+10. Controleer de instellingen in **hulp middelen voor beoordeling en toevoegen**en selecteer vervolgens **hulp middelen toevoegen**.
+11. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. Vervolgens wordt u naar de project pagina geleid. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
 
 ## <a name="prepare-the-csv"></a>De CSV voorbereiden
 
-Download de CSV-sjabloon en voeg er servergegevens aan toe.
+De CSV-sjabloon downloaden en er Server gegevens aan toevoegen.
 
 ### <a name="download-the-template"></a>De sjabloon downloaden
 
-1. Selecteer in **Migratiedoelenservers** > **Servers** > **Azure Migreren: Serverbeoordeling**, selecteer **Ontdekken**.
-2. Selecteer **Importeren met CSV**in Machines **ontdekken**.
-3. Selecteer **Downloaden** om de CSV-sjabloon te downloaden. U [het ook rechtstreeks downloaden.](https://go.microsoft.com/fwlink/?linkid=2109031)
+1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**selecteert u **detecteren**.
+2. Selecteer in **computers detecteren**de optie **importeren met CSV**.
+3. Selecteer **downloaden** om de CSV-sjabloon te downloaden. U kunt [deze ook rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![CSV-sjabloon downloaden](./media/tutorial-assess-import/download-template.png)
 
-### <a name="add-server-information"></a>Servergegevens toevoegen
+### <a name="add-server-information"></a>Server gegevens toevoegen
 
-Servergegevens verzamelen en toevoegen aan het CSV-bestand.
+Verzamel Server gegevens en voeg deze toe aan het CSV-bestand.
 
-- Als u gegevens wilt verzamelen, u deze exporteren vanuit hulpprogramma's die u gebruikt voor on-premises serverbeheer, zoals VMware vSphere of uw configuratiebeheerdatabase (CMDB).
-- Als u voorbeeldgegevens wilt bekijken, downloadt u ons [voorbeeldbestand](https://go.microsoft.com/fwlink/?linkid=2108405).
+- Als u gegevens wilt verzamelen, kunt u deze exporteren vanuit hulpprogram ma's die u gebruikt voor on-premises server beheer, zoals VMware vSphere of uw CMDB (Configuration Management data base).
+- Down load ons [voorbeeld bestand](https://go.microsoft.com/fwlink/?linkid=2108405)om voorbeeld gegevens te bekijken.
 
-In de volgende tabel worden de bestandsvelden samengevat die moeten worden ingevuld:
+De volgende tabel bevat een overzicht van de bestands velden die moeten worden ingevuld:
 
-**Veldnaam** | **Verplicht** | **Details**
+**Veldnaam** | **Verplicht** | **Nadere**
 --- | --- | ---
-**Servernaam** | Ja | We raden u aan de volledig gekwalificeerde domeinnaam (FQDN) op te geven.
-**IP-adres** | Nee | Serveradres.
-**Kernen** | Ja | Aantal processorkernen dat aan de server is toegewezen.
-**Geheugen** | Ja | Totaal RAM, in MB, toegewezen aan de server.
-**Os-naam** | Ja | Server besturingssysteem. <br/> Namen van het besturingssysteem die overeenkomen met of de namen in [deze](#supported-operating-system-names) lijst bevatten, worden herkend door de beoordeling.
-**Versie van het besturingssysteem** | Nee | Server-besturingssysteemversie.
-**Aantal schijven** | Nee | Niet nodig als er individuele schijfgegevens worden verstrekt.
-**Schijf 1-formaat**  | Nee | Maximale grootte van de schijf, in GB.<br/>U details voor meer schijven toevoegen door [kolommen toe](#add-multiple-disks) te voegen aan de sjabloon. U maximaal acht schijven toevoegen.
-**Schijf 1-aflezingsops** | Nee | Schijfleesbewerkingen per seconde.
-**Schijf 1 schrijfops** | Nee | Schijfschrijfbewerkingen per seconde.
-**Leesdoorvoer van schijf 1** | Nee | Gegevens die worden gelezen vanaf de schijf per seconde, in MB per seconde.
-**Schrijfdoorvoer van schijf 1** | Nee | Gegevens die naar de schijf per seconde worden geschreven, in MB per seconde.
-**CPU-gebruikspercentage** | Nee | Percentage cpu gebruikt.
-**Percentage geheugengebruik** | Nee | Percentage ram gebruikt.
-**Totaal aantal schijven lezen ops** | Nee | Schijfleesbewerkingen per seconde.
-**Totaal schijven schrijven ops** | Nee | Schijfschrijfbewerkingen per seconde.
-**Totaal aantal schijven leesdoorvoer** | Nee | Gegevens die vanaf de schijf worden gelezen, in MB per seconde.
-**Totaal aantal schrijfdoorvoer van schijven** | Nee | Gegevens die naar de schijf zijn geschreven, in MB per seconde.
-**Netwerk in doorvoer** | Nee | Gegevens die door de server worden ontvangen, in MB per seconde.
-**Netwerkuitdoorvoer** | Nee | Gegevens die door de server worden verzonden, in MB per seconde.
-**Firmwaretype** | Nee | Serverfirmware. Waarden kunnen "BIOS" of "UEFI" zijn.
-**MAC-adres**| Nee | Server MAC-adres.
+**Server naam** | Ja | U kunt het beste de Fully Qualified Domain Name (FQDN) opgeven.
+**IP-adres** | Nee | Server adres.
+**Kernen** | Ja | Het aantal processor kernen dat aan de server is toegewezen.
+**Geheugen** | Ja | Het totale RAM-geheugen (in MB) dat aan de server is toegewezen.
+**Naam van besturings systeem** | Ja | Besturings systeem van de server. <br/> Namen van besturings systemen die overeenkomen met de namen in [deze](#supported-operating-system-names) lijst worden herkend door de evaluatie.
+**Versie van het besturingssysteem** | Nee | Versie van het besturings systeem van de server.
+**Aantal schijven** | Nee | Niet nodig als er details van de afzonderlijke schijf worden gegeven.
+**Grootte van schijf 1**  | Nee | De maximale grootte van de schijf, in GB.<br/>U kunt Details voor meer schijven toevoegen door [kolommen toe te voegen](#add-multiple-disks) aan de sjabloon. U kunt Maxi maal acht schijven toevoegen.
+**Schijf 1 read OPS** | Nee | Lees bewerkingen op de schijf per seconde.
+**Write OPS schijf 1** | Nee | Schrijf bewerkingen op de schijf per seconde.
+**Schijf 1 Lees doorvoer** | Nee | Gegevens die per seconde van de schijf worden gelezen, in MB per seconde.
+**Schrijf doorvoer schijf 1** | Nee | Gegevens geschreven naar schijf per seconde, in MB per seconde.
+**Percentage CPU-gebruik** | Nee | Percentage CPU-gebruik.
+**Percentage geheugen gebruik** | Nee | Percentage van het gebruikte RAM-geheugen.
+**Totaal aantal schijven gelezen OPS** | Nee | Lees bewerkingen per seconde voor de schijf.
+**Totaal aantal schijven schrijven OPS** | Nee | Schrijf bewerkingen per seconde voor de schijf.
+**Totale Lees doorvoer van schijven** | Nee | Gegevens die van de schijf worden gelezen, in MB per seconde.
+**Totale schrijf doorvoer van schijven** | Nee | Gegevens die naar de schijf worden geschreven, in MB per seconde.
+**Netwerk in door Voer** | Nee | Gegevens ontvangen door de server, in MB per seconde.
+**Netwerk-door Voer** | Nee | Gegevens die door de server worden verzonden, in MB per seconde.
+**Type firmware** | Nee | Server firmware. Waarden kunnen "BIOS" of "UEFI" zijn.
+**MAC-adres**| Nee | MAC-adres van de server.
 
 
-### <a name="add-operating-systems"></a>Besturingssystemen toevoegen
+### <a name="add-operating-systems"></a>Besturings systemen toevoegen
 
-Assessment herkent specifieke namen van het besturingssysteem. Elke naam die u opgeeft, moet exact overeenkomen met een van de tekenreeksen in de [lijst met ondersteunde namen](#supported-operating-system-names).
+Beoordeling herkent specifieke namen van besturings systemen. Een naam die u opgeeft, moet exact overeenkomen met een van de teken reeksen in de [lijst met ondersteunde namen](#supported-operating-system-names).
 
 ### <a name="add-multiple-disks"></a>Meerdere schijven toevoegen
 
-De sjabloon bevat standaardvelden voor de eerste schijf. U vergelijkbare kolommen toevoegen voor maximaal acht schijven.
+De sjabloon biedt standaard velden voor de eerste schijf. U kunt vergelijk bare kolommen voor Maxi maal acht schijven toevoegen.
 
-Als u bijvoorbeeld alle velden voor een tweede schijf wilt opgeven, voegt u de volgende kolommen toe:
+Als u bijvoorbeeld alle velden voor een tweede schijf wilt opgeven, voegt u deze kolommen toe:
 
-- Schijf 2-formaat
-- Schijf 2-afleesops
-- Schijf 2 schrijfops
-- Schijf 2 leesdoorvoer
-- Schrijfdoorvoer van schijf 2
+- Grootte van schijf 2
+- Schijf 2 OPS lezen
+- Schijf 2-schrijf bewerkingen
+- Schijf 2 Lees doorvoer
+- Schrijf doorvoer schijf 2
 
 
-## <a name="import-the-server-information"></a>De servergegevens importeren
+## <a name="import-the-server-information"></a>De server gegevens importeren
 
-Nadat u informatie aan de CSV-sjabloon hebt toegevoegd, importeert u de servers in Serverbeoordeling.
+Nadat u informatie aan de CSV-sjabloon hebt toegevoegd, importeert u de servers in de server evaluatie.
 
-1. Ga in Azure Migrate in **Machines ontdekken**naar de voltooide sjabloon.
-2. Selecteer **Importeren**.
-3. De importstatus wordt weergegeven.
-    - Als waarschuwingen in de status worden weergegeven, u deze oplossen of doorgaan zonder ze aan te pakken.
-    - Om de nauwkeurigheid van de beoordeling te verbeteren, verbetert u de servergegevens zoals voorgesteld in waarschuwingen.
-    - Als u waarschuwingen wilt weergeven en oplossen, selecteert u **Waarschuwingsgegevens downloaden . CSV**. Deze bewerking downloadt de CSV met inbegrepen waarschuwingen. Bekijk de waarschuwingen en los problemen op als dat nodig is.
-    - Als er fouten in de status worden weergegeven, zodat de importstatus **is mislukt,** moet u deze fouten herstellen voordat u verder gaan met het importeren:
-        1. Download de CSV, die nu foutgegevens bevat.
-        1. De fouten zo nodig controleren en aanpakken. 
+1. Ga in Azure Migrate naar de voltooide sjabloon op de **computer detecteren**.
+2. Selecteer **importeren**.
+3. De import status wordt weer gegeven.
+    - Als er waarschuwingen worden weer gegeven in de status, kunt u deze herstellen of door gaan zonder ze te adresseren.
+    - Als u de nauw keurigheid van de beoordeling wilt verbeteren, kunt u de server gegevens verbeteren, zoals wordt voorgesteld in waarschuwingen
+    - Als u waarschuwingen wilt weer geven en herstellen, selecteert u **waarschuwings Details downloaden. CSV**. Met deze bewerking wordt het CSV-bestand gedownload met de waarschuwingen opgenomen. Bekijk de waarschuwingen en Los zo nodig problemen op.
+    - Als fouten worden weer gegeven in de status zodat de import status **mislukt**, moet u deze fouten oplossen voordat u kunt door gaan met het importeren:
+        1. Down load de CSV, die nu fout gegevens bevat.
+        1. Controleer de fouten en los ze op. 
         1. Upload het gewijzigde bestand opnieuw.
-4. Wanneer de importstatus is **voltooid,** is de servergegevens geïmporteerd.
+4. Wanneer de status van importeren is **voltooid**, zijn de gegevens van de server geïmporteerd.
 
-## <a name="update-server-information"></a>Servergegevens bijwerken
+## <a name="update-server-information"></a>Server gegevens bijwerken
 
-U de gegevens voor een server bijwerken door de gegevens voor de server opnieuw te importeren met dezelfde **servernaam.** U het veld **Servernaam** niet wijzigen. Het verwijderen van servers wordt momenteel niet ondersteund.
+U kunt de gegevens voor een server bijwerken door de gegevens voor de server opnieuw te importeren met dezelfde **Server naam**. U kunt het veld **Server naam** niet wijzigen. Het verwijderen van servers wordt momenteel niet ondersteund.
 
-## <a name="verify-servers-in-the-portal"></a>Servers in de portal verifiëren
+## <a name="verify-servers-in-the-portal"></a>Servers in de portal controleren
 
-Ga als volgt te werk om na detectie te controleren of de servers na detectie in de Azure-portal worden weergegeven:
+Controleren of de servers worden weer gegeven in de Azure Portal na detectie:
 
-1. Open het Azure Migrate-dashboard.
-2. Selecteer op de pagina **Azure Migrate - Servers** > **Azure Migrate: Server Assessment** het pictogram waarop het aantal **gedetecteerde servers**wordt weergegeven.
-3. Selecteer het tabblad **Importeren op basis van** invoer.
+1. Open het Azure Migrate dash board.
+2. Selecteer op de pagina **Azure migrate-servers** > **Azure migrate: Server bepaling** het pictogram dat het aantal voor **gedetecteerde servers**weergeeft.
+3. Selecteer het tabblad **op basis van import** .
 
-## <a name="set-up-and-run-an-assessment"></a>Een beoordeling instellen en uitvoeren
+## <a name="set-up-and-run-an-assessment"></a>Een evaluatie instellen en uitvoeren
 
-U twee typen beoordelingen maken met serverbeoordeling.
+U kunt twee soorten evaluaties maken met behulp van server evaluatie.
 
-**Beoordelingstype** | **Details** | **Gegevens**
+**Beoordelings type** | **Nadere** | **Gegevens**
 --- | --- | ---
-**Op prestaties gebaseerd** | Beoordelingen op basis van opgegeven prestatiegegevenswaarden. | **Aanbevolen VM-grootte:** gebaseerd op cpu- en geheugengebruiksgegevens.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf):** op basis van de input/output per seconde (IOPS) en doorvoer van de on-premises schijven.
-**Als on-premises** | Beoordelingen op basis van on-premises dimensionering. | **Aanbevolen VM-grootte:** op basis van de opgegeven servergrootte.<br/><br> **Aanbevolen schijftype:** op basis van de instelling van het opslagtype die u voor de beoordeling selecteert.
+**Op basis van prestaties** | Evaluaties op basis van de opgegeven prestatie gegevens waarden. | **Aanbevolen VM-grootte**: op basis van gegevens van CPU en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)**: op basis van de invoer/uitvoer per seconde (IOPS) en de door Voer van de on-premises schijven.
+**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: op basis van de opgegeven server grootte.<br/><br> **Aanbevolen schijf type**: op basis van de opslag type-instelling die u voor de evaluatie selecteert.
 
-Ga als een assessment als een beoordeling:
+Een evaluatie uitvoeren:
 
-1. Bekijk de [aanbevolen procedures](best-practices-assessment.md) voor het maken van beoordelingen.
-2. Selecteer **op** het tabblad Servers in de tegel **Azure Migreren: Serverbeoordeling** de optie **Beoordelen**.
+1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
+2. Selecteer op het tabblad **servers** in de tegel **Azure migrate: Server bepaling** de optie **evalueren**.
 
     ![Evalueren](./media/tutorial-assess-physical/assess.png)
 
-3. Geef **in Servers beoordelen**een naam op voor de beoordeling.
-4. Selecteer in **detectiebron** **Machines die via import zijn toegevoegd aan Azure Migreren**.
-5. Selecteer **Alles weergeven** om de beoordelingseigenschappen te controleren.
+3. Geef in **servers beoordelen**een naam op voor de evaluatie.
+4. Selecteer in **detectie bron**de optie **machines die zijn toegevoegd via importeren in azure migrate**.
+5. Selecteer **alles weer geven** om de eigenschappen van de evaluatie te bekijken.
 
-    ![Beoordelingseigenschappen](./media/tutorial-assess-physical/view-all.png)
+    ![Eigenschappen van beoordeling](./media/tutorial-assess-physical/view-all.png)
 
-6. Selecteer in **Een groep selecteren of maken**de optie Nieuw **maken**en geef een groepsnaam op. Een groep verzamelt een of meer VM's voor beoordeling.
-7. Selecteer in **Machines toevoegen aan de groep**servers die u aan de groep wilt toevoegen.
-8. Selecteer **Beoordeling maken** om de groep te maken en voer de beoordeling uit.
+6. In **een groep selecteren of maken**, selecteert u **nieuwe maken**en geeft u een groeps naam op. Een groep verzamelt een of meer Vm's samen voor evaluatie.
+7. Selecteer op **computers toevoegen aan de groep de**optie servers die aan de groep moeten worden toegevoegd.
+8. Selecteer **evaluatie maken** om de groep te maken en voer vervolgens de evaluatie uit.
 
     ![Een evaluatie maken](./media/tutorial-assess-physical/assessment-create.png)
 
-9. Nadat de beoordeling is gemaakt, bekijkt u deze in **Servers** > **Azure Migrate: Server Assessment** > **Assessments**.
-10. Selecteer **Beoordeling exporteren** om het te downloaden als een Microsoft Excel-bestand.
+9. Nadat de evaluatie is gemaakt, bekijkt u deze in **servers** > **Azure migrate: Server evaluatie** > -**evaluaties**.
+10. Selecteer **evaluatie exporteren** om deze te downloaden als een micro soft Excel-bestand.
 
-## <a name="review-an-assessment"></a>Een beoordeling beoordelen
+## <a name="review-an-assessment"></a>Een evaluatie controleren
 
-Een beoordeling beschrijft:
+Een evaluatie beschrijft:
 
 - **Azure-gereedheid**: of servers geschikt zijn voor migratie naar Azure.
-- **Schatting van de maandelijkse kosten:** Geschatte maandelijkse reken- en opslagkosten voor het uitvoeren van de servers in Azure.
-- **Schatting van de maandelijkse opslagkosten**: Geschatte kosten voor schijfopslag na migratie.
+- **Schatting maandelijkse kosten**: geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de servers in Azure.
+- **Schatting maandelijkse opslag kosten**: geschatte kosten voor schijf opslag na migratie.
 
-### <a name="view-an-assessment"></a>Bekijk een beoordeling
+### <a name="view-an-assessment"></a>Een evaluatie weer geven
 
-1. Selecteer In **Servers voor migratiedoelen** > **Servers**de optie **Beoordelingen** in **Azure Migreren: Serverbeoordeling**.
-2. Selecteer in **Assessments**een beoordeling om deze te openen.
+1. In **migratie doelen** > **servers**selecteert u **evaluaties** in **Azure migrate: Server evaluatie**.
+2. Selecteer in **beoordelingen**een evaluatie om deze te openen.
 
-    ![Evaluatiesamenvatting](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Evaluatie samenvatting](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure-gereedheid controleren
 
-1. Bepaal in **Azure-gereedheid**of de servers klaar zijn voor migratie naar Azure.
+1. Bepaal in **Azure Readiness**of de servers gereed zijn voor migratie naar Azure.
 2. Controleer de status:
-    - **Klaar voor Azure:** Azure Migrate beveelt in de beoordeling een VM-grootte en kostenramingen voor VM's aan.
-    - **Klaar met voorwaarden**: Toont problemen en voorgestelde sanering.
-    - **Niet klaar voor Azure:** toont problemen en voorgestelde herstel.
-    - **Gereedheid onbekend**: Azure Migrate kan de gereedheid niet beoordelen vanwege problemen met de beschikbaarheid van gegevens.
+    - **Gereed voor Azure**: Azure migrate RAADT een VM-grootte en schattingen voor de kosten aan voor vm's in de evaluatie.
+    - **Klaar met voor waarden**: toont problemen en voorgestelde herstel.
+    - **Niet gereed voor Azure**: toont problemen en voorgestelde herbemiddeling.
+    - **Gereedheid onbekend**: Azure migrate kan de gereedheid niet beoordelen vanwege problemen met de beschik baarheid van gegevens.
 
-3. Selecteer een **Azure-gereedheidsstatus.** U de gegevens over de gereedheid van de server bekijken en inzoomen om servergegevens te bekijken, waaronder rekenkracht, opslag en netwerkinstellingen.
+3. Selecteer een **Azure Readiness** -status. U kunt details over de server voorbereiding bekijken en inzoomen op de details van de server, inclusief compute-, opslag-en netwerk instellingen.
 
-### <a name="review-cost-details"></a>Kostendetails bekijken
+### <a name="review-cost-details"></a>Details van kosten bekijken
 
-In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het uitvoeren van VM's in Azure. U kunt:
+In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure. U kunt:
 
-- Bekijk de maandelijkse reken- en opslagkosten. De kosten worden geaggregeerd voor alle servers in de beoordeelde groep.
+- Bekijk de maandelijkse reken-en opslag kosten. De kosten worden geaggregeerd voor alle servers in de geraamde groep.
 
-    - Kostenramingen zijn gebaseerd op de grootteaanbevelingen voor een machine en de schijven en eigenschappen ervan.
-    - Geschatte maandelijkse kosten voor rekenkracht en opslag worden weergegeven.
-    - De kostenraming is voor het uitvoeren van de on-premises servers als Infrastructure-as-a-service (IaaS) VM's. Server Assessment houdt geen rekening met de kosten van platform-as-a-service (PaaS) of software-as-a-service (SaaS).
+    - Schattingen van kosten zijn gebaseerd op de grootte aanbevelingen voor een machine en de schijven en eigenschappen.
+    - De geschatte maandelijkse kosten voor Compute en opslag worden weer gegeven.
+    - De kosten raming is voor het uitvoeren van de on-premises servers als IaaS-Vm's (Infrastructure-as-a-Service). De evaluatie van de server houdt geen rekening met PaaS (platform-as-a-Service) of SaaS-kosten (Software-as-a-Service).
 
-- Bekijk de maandelijkse opslagkostenramingen. Deze weergave toont geaggregeerde opslagkosten voor de beoordeelde groep, verdeeld over verschillende soorten opslagschijven.
-- Inzoomen om details voor specifieke VM's te zien.
+- Bekijk de maandelijkse schattingen voor de opslag kosten. In deze weer gave worden de geaggregeerde opslag kosten voor de geraamde groep weer gegeven, verdeeld over verschillende typen opslag schijven.
+- Inzoomen om de details van specifieke Vm's weer te geven.
 
 > [!NOTE]
-> Vertrouwensclassificaties worden niet toegewezen aan beoordelingen van servers die zijn geïmporteerd in Serverbeoordeling met behulp van CSV.
+> Vertrouwens classificaties worden niet toegewezen aan beoordelingen van servers die worden geïmporteerd in Server evaluatie met behulp van CSV.
 
-## <a name="supported-operating-system-names"></a>Ondersteunde namen van het besturingssysteem
+## <a name="supported-operating-system-names"></a>Ondersteunde namen van besturings systemen
+
+De namen van besturings systemen in de CSV moeten overeenkomen of de namen in deze lijst bevatten. Dit is nodig om de opgegeven namen als geldig te herkennen door de evaluatie.
 
 <!-- BEGIN A - H -->
 
 :::row:::
    :::column span="2":::
-      **A - H**
+      **A-H**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -292,15 +294,15 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
 
 :::row:::
    :::column span="2":::
-      **I - R**
+      **I-R**
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      IBM OS/2
+      IBM-BESTURINGS SYSTEEM/2
    :::column-end:::
    :::column span="":::
-      Ms-dos
+      opdracht
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -323,7 +325,7 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
       Red Hat Enterprise Linux 5<br/>
       Red Hat Enterprise Linux 6<br/>
       Red Hat Enterprise Linux 7<br/>
-      Rode Hoed Fedora
+      Red Hat Fedora
    :::column-end:::
 :::row-end:::
 
@@ -331,13 +333,13 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
 
 :::row:::
    :::column span="2":::
-      **S - T**
+      **S-T**
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      SCO OpenServer 5<br/>
-      SCO OpenServer 6<br/>
+      SCO Openserver 5<br/>
+      SCO Openserver 6<br/>
       SCO UnixWare 7
    :::column-end:::
    :::column span="":::
@@ -351,19 +353,19 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
       Sun Microsystems Solaris 9
    :::column-end:::
    :::column span="":::
-      SUSE Linux Enterprise 10<br/>
-      SUSE Linux Enterprise 11<br/>
-      SUSE Linux Enterprise 12<br/>
-      SUSE Linux Enterprise 8/9<br/>
-      SUSE Linux Enterprise 11<br/>
-      SUSE opentSUSE
+      SUSE Linux Enter prise 10<br/>
+      SUSE Linux Enter prise 11<br/>
+      SUSE Linux Enter prise 12<br/>
+      SUSE Linux Enter prise 8/9<br/>
+      SUSE Linux Enter prise 11<br/>
+      SUSE openSUSE
    :::column-end:::
 :::row-end:::
 
 <!-- BEGIN U - Z -->
 :::row:::
    :::column span="2":::
-      **U - Z**
+      **U-Z**
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -396,7 +398,7 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
       Windows Server 2012 R2<br/>
       Windows Server 2016<br/>
       Windows Server 2019<br/>
-      Drempelwaarde voor Windows Server<br/>
+      Drempel waarde voor Windows Server<br/>
       Windows Vista<br/>
       Windows Web Server 2008 R2<br/>
       Windows XP Professional
@@ -408,7 +410,7 @@ In deze weergave worden de geschatte reken- en opslagkosten weergegeven voor het
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Geïmporteerde servers in Azure Migrate: Serverassessment met BEHULP van CSV.
-> * Een beoordeling maken en herzien.
+> * Geïmporteerde servers in Azure Migrate: Server analyse met behulp van CSV.
+> * Een evaluatie gemaakt en geëvalueerd.
 
-Implementeer [nu een toestel](./migrate-appliance.md) voor nauwkeurigere beoordelingen en verzamel servers in groepen voor een diepere beoordeling met behulp van [afhankelijkheidsanalyse.](./concepts-dependency-visualization.md)
+Implementeer nu [een apparaat](./migrate-appliance.md) voor nauw keurige evaluaties en verzamel servers in groepen voor een diep gaande beoordeling door gebruik te maken van [afhankelijkheids analyse](./concepts-dependency-visualization.md).

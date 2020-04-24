@@ -1,5 +1,5 @@
 ---
-title: Azure Table-opslag of de Azure Cosmos DB Table API van Java gebruiken
+title: Azure-tabel opslag of de Azure Cosmos DB Table-API van Java gebruiken
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -215,7 +215,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-a-batch-of-entities"></a>Een batch entiteiten invoegen
-U kunt in één schrijfbewerking een batch entiteiten invoegen in de tabelservice. Met de volgende code maakt u een **TableBatchOperation**-object en voegt hier vervolgens drie invoegbewerkingen aan toe. Elke invoegbewerking wordt toegevoegd door een nieuw entiteitsobject te maken, de waarden in te stellen en vervolgens de **invoegmethode** aan te roepen op het object **TableBatchOperation** om de entiteit te koppelen aan een nieuwe invoegbewerking. Vervolgens roept u met de code **execute** aan op het **CloudTable**-object, waarbij de tabel 'mensen' en het **TableBatchOperation**-object worden gespecificeerd. Zo wordt de batch met tabelbewerkingen in één aanvraag verzonden naar de opslagservice.
+U kunt in één schrijfbewerking een batch entiteiten invoegen in de tabelservice. Met de volgende code maakt u een **TableBatchOperation**-object en voegt hier vervolgens drie invoegbewerkingen aan toe. Elke invoeg bewerking wordt toegevoegd door een nieuw entiteits object te maken, de waarden in te stellen en vervolgens de **Insert** -methode aan te roepen voor het object **TableBatchOperation** om de entiteit te koppelen aan een nieuwe bewerking insert. Vervolgens roept u met de code **execute** aan op het **CloudTable**-object, waarbij de tabel 'mensen' en het **TableBatchOperation**-object worden gespecificeerd. Zo wordt de batch met tabelbewerkingen in één aanvraag verzonden naar de opslagservice.
 
 ```java
 try
@@ -454,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Een query uitvoeren op een subset van entiteitseigenschappen
-Met een query naar een tabel kunnen slechts enkele eigenschappen van een entiteit worden opgehaald. Deze methode, projectie genoemd, verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Met de query in de volgende code gebruikt u de methode **select** om alleen de e-mailadressen van de entiteiten in de tabel te retourneren. De resultaten worden geprojecteerd in een verzameling van **String** met een **entiteitResolver**. Deze voert de typeconversie uit op de entiteiten die van de server worden geretourneerd. Meer informatie over projectie vindt u in [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection]. Houd er rekening mee dat projectie niet wordt ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de Tabelservice.
+Met een query naar een tabel kunnen slechts enkele eigenschappen van een entiteit worden opgehaald. Deze methode, projectie genoemd, verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Met de query in de volgende code gebruikt u de methode **select** om alleen de e-mailadressen van de entiteiten in de tabel te retourneren. De resultaten worden geprojecteerd in een verzameling van **String** met een **entiteitResolver**. Deze voert de typeconversie uit op de entiteiten die van de server worden geretourneerd. Meer informatie over projectie vindt u in [Azure Tables: Inleiding tot Upsert en query projectie] [Azure Tables: introductie van Upsert en query projectie]. Houd er rekening mee dat projectie niet wordt ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de Tabelservice.
 
 ```java
 try
@@ -496,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Een entiteit invoegen of vervangen
-Vaak zult u een entiteit aan een tabel willen toevoegen zonder te weten of deze entiteit al in de tabel bestaat. Met een bewerking voor invoegen of vervangen, kunt u één aanvraag maken waarmee de entiteit wordt ingevoegd als deze niet bestaat of wordt vervangen als er al een bestaat. Op basis van de vorige voorbeelden voegt u met de volgende code de entiteit voor ‘Walter Harp’ in of vervangt u met de code deze entiteit. Na het maken van een nieuwe entiteit roept u met deze code de methode **TableOperation.insertOrReplace** aan. Met deze code roept u vervolgens **execute** op het **CloudTable**-object aan met de tabel en de tabelbewerking voor invoegen of vervangen als parameters. Als u slechts een deel van een entiteit wilt bijwerken, kunt u de methode **TableOperation.insertOrMerge** gebruiken. Houd er rekening mee dat invoegen of vervangen niet wordt ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de tabelservice. U meer informatie over invoegen of vervangen en invoegen of samenvoegen in deze [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection].
+Vaak zult u een entiteit aan een tabel willen toevoegen zonder te weten of deze entiteit al in de tabel bestaat. Met een bewerking voor invoegen of vervangen, kunt u één aanvraag maken waarmee de entiteit wordt ingevoegd als deze niet bestaat of wordt vervangen als er al een bestaat. Op basis van de vorige voorbeelden voegt u met de volgende code de entiteit voor ‘Walter Harp’ in of vervangt u met de code deze entiteit. Na het maken van een nieuwe entiteit roept u met deze code de methode **TableOperation.insertOrReplace** aan. Met deze code roept u vervolgens **execute** op het **CloudTable**-object aan met de tabel en de tabelbewerking voor invoegen of vervangen als parameters. Als u slechts een deel van een entiteit wilt bijwerken, kunt u de methode **TableOperation.insertOrMerge** gebruiken. Houd er rekening mee dat invoegen of vervangen niet wordt ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de tabelservice. Meer informatie over invoegen en vervangen en invoegen of samen voegen vindt u in deze [Azure Tables: Inleiding tot Upsert en query projectie] [Azure Tables: introductie van Upsert en query projectie].
 
 ```java
 try

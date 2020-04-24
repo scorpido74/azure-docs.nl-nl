@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Implementeren van GitHub naar Azure App Service met Jenkins'
+title: 'Zelf studie: implementeren van GitHub naar Azure App Service met Jenkins'
 description: Jenkins instellen voor continue integratie (CI) vanuit GitHub en continue implementatie (CD) in Azure App Service voor Java-web-apps
 ms.topic: tutorial
 ms.date: 10/23/2019
@@ -15,7 +15,7 @@ ms.locfileid: "74158398"
 
 In deze zelfstudie implementeert u een voorbeeld van een Java-web-app vanuit GitHub in [Azure App Service op Linux](/azure/app-service/containers/app-service-linux-intro) door het instellen van continue integratie (CI) en continue implementatie (CD) in Jenkins. Wanneer u de app bijwerkt door doorvoeracties te pushen naar GitHub, wordt uw app automatisch door Jenkins gecompileerd en opnieuw gepubliceerd naar Azure App Service. De voorbeeld-app in deze zelfstudie is ontwikkeld met behulp van het [Spring Boot](https://projects.spring.io/spring-boot/)-framework. 
 
-![Overzicht van de implementatie van GitHub naar Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
+![Overzicht van GitHub naar Azure App Service-implementatie](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 In deze zelfstudie voert u de volgende taken uit:
 
@@ -41,7 +41,7 @@ Voor het voltooien van deze zelfstudie hebt u de volgende items nodig:
 
   Als u geen Jenkins-server hebt, volg deze stappen dan in de Azure-portal: [Vanuit de Azure-portal een Jenkins-server maken op een virtuele Linux-machine in Azure](/azure/jenkins/install-jenkins-solution-template)
 
-* Een [GitHub-account](https://github.com) zodat u een werkende kopie (vork) krijgen voor de voorbeeld-Java-web-app. 
+* Een [github](https://github.com) -account, zodat u een werk kopie (fork) voor de Java-voor beeld-Web-App kunt krijgen. 
 
 * [Azure CLI](/cli/azure/install-azure-cli), die u kunt uitvoeren vanaf uw lokale opdrachtregel of [Azure Cloud Shell](/azure/cloud-shell/overview)
 
@@ -51,7 +51,7 @@ Voor het voltooien van deze zelfstudie hebt u de volgende items nodig:
 
    `https://<Jenkins-server-name>.<Azure-region>.cloudapp.azure.com`
 
-1. Selecteer op de hoofdpagina van Jenkins de optie Jenkins > Beheren van**plug-ins** **beheren.**
+1. Selecteer op de hoofd pagina Jenkins de optie **Jenkins** > **beheren invoeg toepassingen**beheren.
 
    ![Jenkins-invoegtoepassingen beheren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-plugins.png)
 
@@ -59,12 +59,12 @@ Voor het voltooien van deze zelfstudie hebt u de volgende items nodig:
 
    - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
-   - Jenkins [Environment Injector Plug-in](https://plugins.jenkins.io/envinject)
+   - Jenkins [Environment Injection-invoeg toepassing](https://plugins.jenkins.io/envinject)
    - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
 
    Als deze invoegtoepassingen niet worden weergegeven, controleer dan of niet al zijn geïnstalleerd. Daartoe opent u het tabblad **Installed**.
 
-1. Als u de geselecteerde plug-ins wilt installeren, selecteert u **Nu downloaden en installeren nadat u opnieuw bent opgestart.**
+1. Selecteer **nu downloaden en installeren na opnieuw opstarten**om de geselecteerde invoeg toepassingen te installeren.
 
 1. Wanneer u klaar bent, selecteert u in het Jenkins-menu de optie **Manage Jenkins** om naar de beheerpagina van Jenkins terug te keren voor verdere stappen.
 
@@ -72,7 +72,7 @@ Voor het voltooien van deze zelfstudie hebt u de volgende items nodig:
 
 1. [Meld u aan bij GitHub-opslagplaats voor de Spring Boot-voorbeeld-app](https://github.com/spring-guides/gs-spring-boot). 
 
-1. Selecteer **Fork**in de rechterbovenhoek van GitHub .
+1. Selecteer **Fork**in de rechter bovenhoek van github.
 
    ![Fork maken van voorbeeldopslagplaats vanuit GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -92,21 +92,21 @@ Als u wilt dat Jenkins GitHub bewaakt en reageert wanneer er nieuwe doorvoeracti
 
 1. Selecteer op de pagina **Manage Jenkins** de optie **Configure System**. 
 
-   ![Systeem configureren in Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Het systeem in Jenkins configureren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. Geef in de sectie **GitHub** details op voor uw GitHub-server. Selecteer in de lijst **Add GitHub Server** de optie **GitHub Server**. 
 
-   ![GitHub-server toevoegen aan Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![GitHub-server toevoegen in Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
-1. Als de eigenschap **Manage hooks** niet is geselecteerd, selecteert u deze eigenschap. Selecteer **Geavanceerd,** zodat u andere instellingen opgeven. 
+1. Als de eigenschap **Manage hooks** niet is geselecteerd, selecteert u deze eigenschap. Selecteer **Geavanceerd** zodat u andere instellingen kunt opgeven. 
 
-   ![Geavanceerde Jenkins-instellingen opgeven voor GitHub Server](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Geavanceerde instellingen voor Jenkins voor GitHub-server opgeven](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. Selecteer in de lijst **Manage additional GitHub actions** de optie **Convert login and password to token**.
 
-   ![De aanmelding en het wachtwoord converteren naar token voor GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![De aanmelding en het wacht woord naar het token voor GitHub converteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
-1. Selecteer **From login and password** zodat u uw GitHub-gebruikersnaam en -wachtwoord kunt invoeren. Wanneer u klaar bent, selecteert u **Tokenreferenties maken,** waardoor een [GitHub-token voor persoonlijke toegang (PAT) wordt](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)gemaakt.   
+1. Selecteer **From login and password** zodat u uw GitHub-gebruikersnaam en -wachtwoord kunt invoeren. Wanneer u klaar bent, selecteert u **token referenties maken**, waarmee u een [github Personal Access token (Pat)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)maakt.   
 
    ![GitHub-PAT maken op basis van gebruikersnaam en wachtwoord](media/tutorial-jenkins-deploy-web-app-azure-app-service/create-github-token-credentials.png)
 
@@ -118,7 +118,7 @@ Vervolgens maakt u de Azure-service-principal die Jenkins gebruikt voor verifica
 
 ## <a name="create-service-principal"></a>Een service-principal maken
 
-In een volgende sectie maakt u een Jenkins-pijplijntaak waarmee uw app wordt gecompileerd vanuit GitHub en wordt geïmplementeerd in Azure App Service. Om ervoor te zorgen dat Jenkins toegang heeft tot Azure zonder dat uw referenties moeten worden ingevoerd, maakt u voor Jenkins een [service-principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) in Azure Active Directory. Een service-principal is een afzonderlijke identiteit die Jenkins kan gebruiken voor de verificatie van en toegang tot Azure-resources. Als u deze serviceprincipal wilt [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)maken, voert u de opdracht Azure CLI uit, bijvoorbeeld vanaf uw lokale opdrachtregel of Azure Cloud Shell: 
+In een volgende sectie maakt u een Jenkins-pijplijntaak waarmee uw app wordt gecompileerd vanuit GitHub en wordt geïmplementeerd in Azure App Service. Om ervoor te zorgen dat Jenkins toegang heeft tot Azure zonder dat uw referenties moeten worden ingevoerd, maakt u voor Jenkins een [service-principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) in Azure Active Directory. Een service-principal is een afzonderlijke identiteit die Jenkins kan gebruiken voor de verificatie van en toegang tot Azure-resources. Als u deze service-principal wilt maken, voert u [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)de Azure cli-opdracht uit vanaf uw lokale opdracht regel of Azure Cloud shell, bijvoorbeeld: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -126,7 +126,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 Zorg dat u aanhalingstekens plaatst rond de naam van de service-principal. Zorg er ook voor dat u een sterk wachtwoord maakt op basis van [de regels en beperkingen voor wachtwoorden in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy). Als u geen wachtwoord opgeeft, maakt de Azure CLI een wachtwoord voor u. 
 
-Hier is de uitvoer **`create-for-rbac`** gegenereerd door de opdracht: 
+Dit is de uitvoer die wordt gegenereerd **`create-for-rbac`** door de opdracht: 
 
 ```json
 {
@@ -146,7 +146,7 @@ Hier is de uitvoer **`create-for-rbac`** gegenereerd door de opdracht:
 
 ## <a name="add-service-principal-to-jenkins"></a>Service-principal toevoegen aan Jenkins
 
-1. Selecteer op de hoofdpagina van Jenkins de optie **Credentials** > **System**. 
+1. Selecteer op de hoofd pagina Jenkins de optie **referentie** > **systeem**. 
 
 1. Selecteer op de pagina **System** onder **Domain** de optie **Global credentials (unrestricted)**.
 
@@ -160,13 +160,13 @@ Hier is de uitvoer **`create-for-rbac`** gegenereerd door de opdracht:
 
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------| 
-   | **Subscription ID** | <*uw AzureSubscription-ID*> | De GUID-waarde voor uw Azure-abonnement <p>**Tip**: als u uw Azure-abonnements-id niet weet, voert u deze Azure CLI-opdracht uit vanaf de opdrachtregel of in de Cloud Shell en gebruikt u vervolgens de GUID-waarde `id`: <p>`az account list` | 
-   | **Client-id** | <*uw AzureServicePrincipal-ID*> | De GUID-waarde van `appId` die eerder is gegenereerd voor uw Azure-service-principal | 
-   | **Client Secret** | <*uwSecurePassword*> | De waarde van `password` of het 'geheim' dat u hebt opgegeven voor uw Azure-service-principal | 
+   | **Subscription ID** | <*yourAzureSubscription-ID*> | De GUID-waarde voor uw Azure-abonnement <p>**Tip**: als u uw Azure-abonnements-id niet weet, voert u deze Azure CLI-opdracht uit vanaf de opdrachtregel of in de Cloud Shell en gebruikt u vervolgens de GUID-waarde `id`: <p>`az account list` | 
+   | **Client-ID** | <*yourAzureServicePrincipal-ID*> | De GUID-waarde van `appId` die eerder is gegenereerd voor uw Azure-service-principal | 
+   | **Client Secret** | <*yourSecurePassword*> | De waarde van `password` of het 'geheim' dat u hebt opgegeven voor uw Azure-service-principal | 
    | **Tenant-id** | <*yourAzureActiveDirectoryTenant-ID*> | De GUID-waarde van `tenant` voor uw Azure Active Directory-tenant | 
-   | **Id** | <*yourAzureServicePrincipalName*> | De waarde van `displayName` voor uw Azure-service-principal | 
+   | **ID** | <*yourAzureServicePrincipalName*> | De waarde van `displayName` voor uw Azure-service-principal | 
 
-1. Als u wilt bevestigen of uw serviceprincipal werkt, selecteert u **Serviceprincipal verifiëren**. Wanneer u gereed bent, selecteert u **OK**.
+1. Selecteer **Service-Principal controleren**om te controleren of uw Service-Principal werkt. Wanneer u gereed bent, selecteert u **OK**.
 
 Vervolgens maakt u de Jenkins-pijplijn waarmee uw app wordt gecompileerd en geïmplementeerd.
 
@@ -178,9 +178,9 @@ Maak in Jenkins de pijplijntaak voor het compileren en implementeren van uw app.
 
    ![Een Jenkins-pijplijn maken](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Geef een naam op voor de pijplijntaak, bijvoorbeeld 'Mijn-Java-Web-App' en selecteer **Pijplijn**. Selecteer onderin **OK**.  
+1. Geef een naam op voor de pijplijntaak, bijvoorbeeld 'Mijn-Java-Web-App' en selecteer **Pijplijn**. Selecteer aan de onderkant **OK**.  
 
-   ![De jenkins-pijplijntaak een naam geven](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![De Jenkins-pijplijn taak een naam](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Stel Jenkins in met uw service-principal, zodat Jenkins kan implementeren in Azure zonder gebruik te maken van uw eigen referenties.
 
@@ -194,7 +194,7 @@ Maak in Jenkins de pijplijntaak voor het compileren en implementeren van uw app.
       WEB_APP=yourWebAppName
       ```
 
-      ![Een omgeving voorbereiden op de run en de omgevingsvariabelen instellen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
+      ![Een omgeving voorbereiden voor de uitvoering en omgevings variabelen instellen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 
@@ -249,7 +249,7 @@ Nu geeft u het build- en implementatiescript op dat Jenkins moet gebruiken.
 
 1. Selecteer in Jenkins de eerder gemaakte pijplijntaak. 
 
-   ![De jenkins-pijplijntaak voor uw web-app selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![De Jenkins-pijplijn taak voor uw web-app selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. Selecteer **Configure** in het linkermenu.
 
@@ -267,7 +267,7 @@ Nu geeft u het build- en implementatiescript op dat Jenkins moet gebruiken.
 
    Wanneer u klaar bent, ziet de pijplijndefinitie er ongeveer uit als in dit voorbeeld: 
 
-   ![Richt uw Jenkins-pijplijn op het script](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Uw Jenkins-pijp lijn naar het script wijzen](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 
@@ -305,7 +305,7 @@ Vervolgens gaat u de app compileren en implementeren in Azure App Service.
 
    `complete/src/main/java/Hello/Application.java`
    
-1. Selecteer **dit bestand**bewerken in de rechterbovenhoek in GitHub.
+1. Selecteer in de rechter bovenhoek van GitHub de optie **dit bestand bewerken**.
 
 1. Breng deze wijziging aan in de methode `commandLineRunner()` en voer de wijziging door in de vertakking `master` van de opslagplaats. Door deze doorvoering in de vertakking `master` wordt een build in Jenkins gestart. 
    

@@ -1,6 +1,6 @@
 ---
-title: Overzicht - Querygegevens in opslag met SQL on-demand (voorbeeld)
-description: Deze sectie bevat voorbeeldquery's die u gebruiken om de SQL on-demand (preview)-bron in Azure Synapse Analytics uit te proberen.
+title: "Overzicht: Query's uitvoeren op gegevens in de opslag met behulp van SQL op aanvraag (preview)"
+description: Deze sectie bevat voorbeeld query's die u kunt gebruiken om de SQL on-demand (preview)-resource in azure Synapse Analytics uit te proberen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,52 +9,52 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424900"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116244"
 ---
-# <a name="overview-query-data-in-storage"></a>Overzicht: Querygegevens in de opslag
+# <a name="overview-query-data-in-storage"></a>Overzicht: gegevens in opslag opvragen
 
-Deze sectie bevat voorbeeldquery's die u gebruiken om de SQL on-demand (preview)-bron in Azure Synapse Analytics uit te proberen.
+Deze sectie bevat voorbeeld query's die u kunt gebruiken om de SQL on-demand (preview)-resource in azure Synapse Analytics uit te proberen.
 Momenteel ondersteunde bestanden zijn: 
 - CSV
-- Parket
+- Parquet
 - JSON
 
 ## <a name="prerequisites"></a>Vereisten
 
-De hulpprogramma's die u nodig hebt om query's uit te geven:
+De hulpprogram ma's die u nodig hebt om query's uit te voeren:
 
-- SQL-client van uw keuze:
-    - Azure Synapse Studio (voorbeeld)
+- Gewenste SQL-client:
+    - Azure Synapse Studio (preview-versie)
     - Azure Data Studio
     - SQL Server Management Studio
 
-Bovendien zijn de parameters als volgt:
+Daarnaast zijn de para meters als volgt:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL on-demand serviceeindpuntadres    | Wordt gebruikt als servernaam.                                   |
-| SQL on-demand serviceendpoint-regio     | Zal worden gebruikt om de opslag die wordt gebruikt in de monsters te bepalen. |
-| Gebruikersnaam en wachtwoord voor toegang tot eindpunten | Wordt gebruikt om toegang te krijgen tot het eindpunt.                               |
-| De database die u gebruikt om weergaven te maken     | Deze database zal worden gebruikt als uitgangspunt voor de monsters.       |
+| SQL on-demand service-eindpunt adres    | Wordt gebruikt als de server naam.                                   |
+| SQL on-demand service-eindpunt regio     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in de voor beelden. |
+| Gebruikers naam en wacht woord voor endpoint Access | Wordt gebruikt voor toegang tot het eind punt.                               |
+| De data base die u gebruikt voor het maken van weer gaven     | Deze data base wordt gebruikt als uitgangs punt voor de voor beelden.       |
 
-## <a name="first-time-setup"></a>First-time setup
+## <a name="first-time-setup"></a>Eerste keer instellen
 
-Voordat u de voorbeelden die later in dit artikel zijn opgenomen, gebruikt, hebt u twee stappen:
+Voordat u de voor beelden verderop in dit artikel gebruikt, hebt u twee stappen:
 
-- Een database maken voor uw weergaven (voor het geval u weergaven wilt gebruiken)
-- Referenties maken die door SQL on-demand kunnen worden gebruikt om toegang te krijgen tot de bestanden in de opslag
+- Een Data Base voor uw weer gaven maken (als u weer gaven wilt gebruiken)
+- Referenties maken voor gebruik door SQL op aanvraag om toegang te krijgen tot de bestanden in de opslag
 
 ### <a name="create-database"></a>Database maken
 
-U hebt een database nodig om weergaven te maken. U gebruikt deze database voor een aantal voorbeeldquery's in deze documentatie.
+U hebt een data base nodig om weer gaven te maken. U gebruikt deze data base voor enkele van de voorbeeld query's in deze documentatie.
 
 > [!NOTE]
-> Databases worden alleen gebruikt voor het bekijken van metadata, niet voor werkelijke gegevens.  Noteer de databasenaam die u gebruikt, u zult deze later nodig hebben.
+> Data bases worden alleen gebruikt voor het weer geven van meta gegevens, niet voor werkelijke gegevens.  Noteer de naam van de data base die u gebruikt. u hebt deze later nodig.
 
 ```sql
 CREATE DATABASE mydbname;
@@ -62,21 +62,18 @@ CREATE DATABASE mydbname;
 
 ### <a name="create-credentials"></a>Referenties maken
 
-U moet referenties maken voordat u query's uitvoeren. Deze referentie wordt gebruikt door SQL on-demand service om toegang te krijgen tot de bestanden in opslag.
+U moet referenties maken voordat u query's kunt uitvoeren. Deze referentie wordt gebruikt door de SQL-service op aanvraag om toegang te krijgen tot de bestanden in de opslag.
 
 > [!NOTE]
-> Om How To's in deze sectie succesvol uit te voeren, moet je SAS-token gebruiken.
+> Als u de procedure in deze sectie wilt uitvoeren, moet u een SAS-token gebruiken.
 >
-> Om SAS-tokens te gaan gebruiken, moet je de UserIdentity laten vallen die wordt uitgelegd in het volgende [artikel.](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)
+> Als u SAS-tokens wilt gebruiken, moet u de UserIdentity verwijderen die wordt beschreven in het volgende [artikel](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
 >
-> SQL on-demand maakt standaard altijd gebruik van AAD-pass-through.
+> SQL on-demand standaard maakt altijd gebruik van AAD Pass-through.
 
-Voor meer informatie over het beheren van opslagtoegangsbeheer, raadpleegt u deze [koppeling](develop-storage-files-storage-access-control.md).
+Raadpleeg deze [koppeling](develop-storage-files-storage-access-control.md)voor meer informatie over het beheren van toegangs beheer voor opslag.
 
-> [!WARNING]
-> U moet referenties maken voor een opslagaccount dat zich in uw eindpuntgebied bevindt. Hoewel SQL on-demand toegang heeft tot opslag vanuit verschillende regio's, biedt opslag en eindpunt in dezelfde regio een betere prestatie-ervaring.
-
-Voer de onderstaande code uit om referenties voor CSV-, JSON- en parketcontainers te maken:
+Voer de volgende code uit om referenties te maken voor de CSV-, JSON-en Parquet-containers:
 
 ```sql
 -- create credentials for CSV container in our demo storage account
@@ -110,37 +107,37 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="provided-demo-data"></a>Verstrekte demogegevens
+## <a name="provided-demo-data"></a>Gegeven demo gegevens
 
-Demogegevens bevatten de volgende gegevenssets:
+Demo gegevens bevatten de volgende gegevens sets:
 
-- NYC Taxi - Yellow Taxi Trip Records - onderdeel van openbare NYC data set
+- NYC-gelede taxi-reis records-onderdeel van een open bare NYC-gegevensset
   - CSV-indeling
   - Parquet-indeling
-- Bevolkingsgegevensset
+- Gegevens verzameling in populatie
   - CSV-indeling
-- Voorbeeld van parketbestanden met geneste kolommen
+- Voor beeld van Parquet-bestanden met geneste kolommen
   - Parquet-indeling
-- Boeken JSON
+- Rapporten JSON
   - JSON-indeling
 
 | Mappad                                                  | Beschrijving                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| /csv/                                                        | Bovenliggende map voor gegevens in CSV-indeling                         |
-| /csv/bevolking/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Mappen met gegevensbestanden van populatie in verschillende CSV-indelingen. |
-| /csv/taxi/                                                   | Map met openbare NYC-gegevensbestanden in CSV-indeling              |
-| /parket/                                                    | Bovenliggende map voor gegevens in parketindeling                     |
-| /parket/taxi                                                | NYC openbare gegevensbestanden in parketformaat, verdeeld per jaar en maand met behulp van Hive / Hadoop partitionering regeling. |
-| /parket/genest/                                             | Voorbeeld van parketbestanden met geneste kolommen                     |
-| /json/                                                       | Bovenliggende map voor gegevens in JSON-indeling                        |
-| /json/boeken/                                                 | JSON-bestanden met boekengegevens                                   |
+| bestand                                                        | Bovenliggende map voor gegevens in CSV-indeling                         |
+| /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Mappen met gegevens bestanden met een populatie in verschillende CSV-indelingen. |
+| /csv/taxi/                                                   | Map met open bare NYC-gegevens bestanden in CSV-indeling              |
+| Parquet                                                    | Bovenliggende map voor de gegevens in de Parquet-indeling                     |
+| /parquet/taxi                                                | NYC open bare gegevens bestanden in Parquet-indeling, gepartitioneerd per jaar en maand met behulp van Hive/Hadoop-partitie schema. |
+| /parquet/nested/                                             | Voor beeld van Parquet-bestanden met geneste kolommen                     |
+| JSON                                                       | Bovenliggende map voor gegevens in JSON-indeling                        |
+| /json/books/                                                 | JSON-bestanden met boeken gegevens                                   |
 
 ## <a name="validation"></a>Validatie
 
 Voer de volgende drie query's uit en controleer of de referenties correct zijn gemaakt.
 
 > [!NOTE]
-> Alle URI's in de voorbeeldquery's gebruiken een opslagaccount in de Azure-regio Noord-Europa. Zorg ervoor dat u de juiste referentie hebt gemaakt. Voer de onderstaande query uit en zorg ervoor dat het opslagaccount wordt weergegeven.
+> Alle Uri's in de voorbeeld query's gebruiken een opslag account in de Azure-regio Europa-noord. Zorg ervoor dat u de juiste referentie hebt gemaakt. Voer de onderstaande query uit en controleer of het opslag account wordt vermeld.
 
 ```sql
 SELECT name
@@ -151,7 +148,7 @@ WHERE
      'https://sqlondemandstorage.blob.core.windows.net/json');
 ```
 
-Als u de juiste referenties niet vinden, schakelt u [First-time setup in.](#first-time-setup)
+Als u de juiste referentie niet kunt vinden, controleert u de [eerste keer](#first-time-setup)dat u de installatie uitvoert.
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
@@ -167,22 +164,22 @@ FROM
     ) AS nyc;
 ```
 
-De bovenstaande query moet dit nummer retourneren: **8945574**.
+De bovenstaande query moet dit nummer retour neren: **8945574**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Je bent nu klaar om verder te gaan met de volgende How To-artikelen:
+U kunt nu door gaan met de volgende artikelen:
 
-- [Query enkel CSV-bestand](query-single-csv-file.md)
+- [Query uitvoeren op één CSV-bestand](query-single-csv-file.md)
 
-- [Querymappen en meerdere CSV-bestanden](query-folders-multiple-csv-files.md)
+- [Query mappen en meerdere CSV-bestanden](query-folders-multiple-csv-files.md)
 
-- [Specifieke bestanden opvragen](query-specific-files.md)
+- [Query's uitvoeren op specifieke bestanden](query-specific-files.md)
 
-- [Parketbestanden voor query's](query-parquet-files.md)
+- [Query uitvoeren op Parquet-bestanden](query-parquet-files.md)
 
-- [Geneste querygenese](query-parquet-nested-types.md)
+- [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md)
 
-- [JSON-bestanden opvragen](query-json-files.md)
+- [Query uitvoeren op JSON-bestanden](query-json-files.md)
 
-- [Weergaven maken en gebruiken](create-use-views.md)
+- [Weer gaven maken en gebruiken](create-use-views.md)

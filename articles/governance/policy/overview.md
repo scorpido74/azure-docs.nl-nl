@@ -3,52 +3,52 @@ title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
 ms.date: 04/21/2020
 ms.topic: overview
-ms.openlocfilehash: 68005a9a07e7f081a646c75566a0be4046f078ad
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770586"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097367"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
-Azure Policy helpt bij het afdwingen van organisatienormen en het beoordelen van naleving op schaal. Via het compliance-dashboard biedt het een geaggregeerde weergave om de algehele toestand van de omgeving te evalueren, met de mogelijkheid om in te zoomen op de granulariteit per resource per beleid. Het helpt ook om uw resources te voldoen aan de regels door middel van bulksanering voor bestaande resources en automatische herstel voor nieuwe resources.
+Azure Policy helpt organisatie standaarden af te dwingen en de naleving op schaal te beoordelen. Via het dash board voor compatibiliteit biedt het een geaggregeerde weer gave om de algehele status van de omgeving te evalueren, met de mogelijkheid om in te zoomen op de nauw keurigheid per bron per beleid. Het helpt u ook om uw resources te laten voldoen aan de naleving van bulksgewijs herstel voor bestaande resources en automatisch herstel voor nieuwe resources.
 
-Veelvoorkomende gebruiksvoorbeelden voor Azure Policy zijn het implementeren van governance voor consistentie van resources, naleving van de regelgeving, beveiliging, kosten en beheer. Beleidsdefinities voor deze algemene use cases zijn al beschikbaar in uw Azure-omgeving als ingebouwde omgevingom eenvoudig aan de slag te gaan.
+Veelvoorkomende use cases voor Azure Policy omvatten het implementeren van governance voor bron consistentie, naleving van regelgeving, beveiliging, kosten en beheer. Beleids definities voor deze algemene use cases zijn al beschikbaar in uw Azure-omgeving als ingebouwde invoeg toepassingen om u te helpen aan de slag te gaan.
 
 ## <a name="overview"></a>Overzicht
 
-Azure Policy evalueert resources in Azure door de eigenschappen van deze resources te vergelijken met bedrijfsregels. Deze bedrijfsregels, beschreven in [JSON-formaat](./concepts/definition-structure.md), staan bekend als [beleidsdefinities](#policy-definition). Om het beheer te vereenvoudigen, kunnen verschillende bedrijfsregels worden gegroepeerd om een [beleidsinitiatief](#initiative-definition) te vormen (ook wel _beleidsset_genoemd). Zodra uw bedrijfsregels zijn gevormd, wordt de beleidsdefinitie of het initiatief [toegewezen aan](#assignments) elk bereik van resources dat Azure ondersteunt, zoals [beheergroepen,](../management-groups/overview.md)abonnementen, [resourcegroepen](../../azure-resource-manager/management/overview.md#resource-groups)of afzonderlijke resources. De toewijzing is van toepassing op alle resources die binnen het [bereik](../../azure-resource-manager/management/overview.md#understand-scope) van die toewijzing vallen.
-Subscopen kunnen worden uitgesloten, indien nodig.
+Azure Policy evalueert resources in azure door de eigenschappen van die resources te vergelijken met bedrijfs regels. Deze bedrijfs regels, die worden beschreven in [JSON-indeling](./concepts/definition-structure.md), worden [beleids definities](#policy-definition)genoemd. Om het beheer te vereenvoudigen, kunnen meerdere bedrijfs regels worden gegroepeerd om een [beleids initiatief](#initiative-definition) (ook wel een _beleidsset_genoemd) te vormen. Zodra uw bedrijfs regels zijn gevormd, wordt de beleids definitie of het initiatief [toegewezen](#assignments) aan een bereik van resources die door Azure worden ondersteund, zoals [beheer groepen](../management-groups/overview.md), abonnementen, [resource groepen](../../azure-resource-manager/management/overview.md#resource-groups)of individuele resources. De toewijzing is van toepassing op alle resources binnen het [bereik](../../azure-resource-manager/management/overview.md#understand-scope) van die toewijzing.
+Subbereiken kunnen, indien nodig, worden uitgesloten.
 
-Azure Policy gebruikt een [JSON-indeling](./concepts/definition-structure.md) om de logica te vormen die de evaluatie gebruikt om te bepalen of een resource compatibel is of niet. Definities omvatten metadata en de beleidsregel. De gedefinieerde regel kan functies, parameters, logische operatoren, voorwaarden en [eigenschapsaliassen](./concepts/definition-structure.md#aliases) gebruiken om precies het gewenste scenario te evenaren. De beleidsregel bepaalt welke resources in het bereik van de toewijzing worden geëvalueerd.
+Azure Policy een [JSON-indeling](./concepts/definition-structure.md) gebruikt om de logica te vormen die door de evaluatie wordt gebruikt om te bepalen of een resource compatibel is of niet. Definities bevatten meta gegevens en de beleids regel. De gedefinieerde regel kan gebruikmaken van functies, para meters, logische Opera Tors, voor waarden en eigenschaps [aliassen](./concepts/definition-structure.md#aliases) die exact overeenkomen met het scenario dat u wilt. De beleids regel bepaalt welke resources in het bereik van de toewijzing worden geëvalueerd.
 
-### <a name="understand-evaluation-outcomes"></a>Begrijp evaluatieresultaten
+### <a name="understand-evaluation-outcomes"></a>Uitleg over evaluatie resultaten
 
-Resources worden geëvalueerd op specifieke tijdstippen tijdens de levenscyclus van de resource, de levenscyclus van beleidstoewijzingen en voor regelmatige voortdurende nalevingsevaluatie. De volgende tijden of gebeurtenissen die ervoor zorgen dat een resource wordt geëvalueerd:
+Resources worden geëvalueerd op specifieke tijdstippen tijdens de levens cyclus van resources, de levens cyclus van de beleids toewijzing en voor een regel matige doorlopende evaluatie van de naleving. Hier volgen de tijden of gebeurtenissen die ertoe leiden dat een resource wordt geëvalueerd:
 
-- Een resource wordt gemaakt, bijgewerkt of verwijderd in een bereik met een beleidstoewijzing.
-- Een beleid of initiatief is nieuw toegewezen aan een scope.
-- Een beleid of initiatief dat al aan een scope is toegewezen, wordt bijgewerkt.
-- Tijdens de standaard compliance evaluatiecyclus, die eens per 24 uur plaatsvindt.
+- Een resource wordt gemaakt, bijgewerkt of verwijderd in een bereik met een beleids toewijzing.
+- Een beleid of initiatief is nieuw toegewezen aan een bereik.
+- Een beleid of initiatief dat al is toegewezen aan een bereik wordt bijgewerkt.
+- Tijdens de standaard beoordelings cyclus van de naleving die elke 24 uur plaatsvindt.
 
-Zie [Evaluatietriggers](./how-to/get-compliance-data.md#evaluation-triggers)voor gedetailleerde informatie over wanneer en hoe de beleidsevaluatie plaatsvindt.
+Zie [evaluatie triggers](./how-to/get-compliance-data.md#evaluation-triggers)voor meer informatie over wanneer en hoe de beleids evaluatie wordt uitgevoerd.
 
-### <a name="control-the-response-to-an-evaluation"></a>Controle over de reactie op een evaluatie
+### <a name="control-the-response-to-an-evaluation"></a>De reactie op een evaluatie controleren
 
-Bedrijfsregels voor het verwerken van niet-conforme resources verschillen sterk tussen organisaties. Voorbeelden van hoe een organisatie wil dat het platform reageert op een niet-klachtbron, zijn:
+Bedrijfs regels voor het verwerken van niet-compatibele resources variëren in grote mate tussen organisaties. Voor beelden van hoe een organisatie wil dat het platform reageert op een niet-klachten bron, zijn:
 
-- De resourcewijziging weigeren
-- De wijziging in de resource registreren
-- De resource wijzigen voordat de wijziging wordt gewijzigd
+- De resource wijziging weigeren
+- De wijziging in de resource vastleggen
+- De resource wijzigen vóór de wijziging
 - De resource wijzigen na de wijziging
 - Gerelateerde compatibele resources implementeren
 
-Azure Policy maakt elk van deze zakelijke antwoorden mogelijk door toepassing van [effecten.](./concepts/effects.md) Effecten worden ingesteld in het gedeelte van de **beleidsregel** van de [beleidsdefinitie](./concepts/definition-structure.md).
+Azure Policy maakt al deze zakelijke antwoorden mogelijk via de toepassing van [effecten](./concepts/effects.md). Effecten worden ingesteld in het gedeelte **beleids regel** van de [beleids definitie](./concepts/definition-structure.md).
 
 ### <a name="remediate-non-compliant-resources"></a>Niet-compatibele resources herstellen
 
-Hoewel deze effecten voornamelijk van invloed zijn op een resource wanneer de resource wordt gemaakt of bijgewerkt, ondersteunt Azure Policy ook het omgaan met bestaande niet-compatibele resources zonder dat deze resource hoeft te worden gewijzigd. Zie [Resources herstellen](./how-to/remediate-resources.md)voor meer informatie over het compliant maken van bestaande resources.
+Hoewel deze effecten voornamelijk van invloed zijn op een resource wanneer de resource wordt gemaakt of bijgewerkt, ondersteunt Azure Policy ook het verwerken van bestaande niet-compatibele resources zonder dat deze resource hoeft te worden gewijzigd. Zie [bronnen herstellen](./how-to/remediate-resources.md)voor meer informatie over het voldoen aan bestaande resources.
 
 ### <a name="video-overview"></a>Video-overzicht
 
@@ -58,13 +58,13 @@ Het volgende overzicht van Azure Policy is afkomstig van build 2018. Voor het do
 
 ## <a name="getting-started"></a>Aan de slag
 
-### <a name="azure-policy-and-rbac"></a>Azure-beleid en RBAC
+### <a name="azure-policy-and-rbac"></a>Azure Policy en RBAC
 
-Er zijn een paar belangrijke verschillen tussen Azure Policy en role-based access control (RBAC). Azure Policy evalueert de status door eigenschappen te onderzoeken op resources die zijn vertegenwoordigd in Resource Manager en eigenschappen van sommige ResourceProviders. Azure Policy beperkt geen acties (ook wel _bewerkingen_genoemd). Azure Policy zorgt ervoor dat de resourcestatus voldoet aan uw bedrijfsregels zonder dat u zich zorgen maakt over wie de wijziging heeft aangebracht of die toestemming heeft om een wijziging aan te brengen.
+Er zijn enkele belang rijke verschillen tussen Azure Policy en op rollen gebaseerd toegangs beheer (RBAC). Azure Policy evalueert de status door de eigenschappen te controleren van resources die worden weer gegeven in Resource Manager en in de eigenschappen van sommige resource providers. Azure Policy beperkt acties (ook wel _bewerkingen_genoemd) niet. Azure Policy zorgt ervoor dat de resource status voldoet aan uw bedrijfs regels zonder dat u zeker weet wie de wijziging heeft aangebracht of wie toestemming heeft gegeven om een wijziging aan te brengen.
 
-RBAC richt zich op het beheren van [gebruikersacties](../../role-based-access-control/resource-provider-operations.md) op verschillende scopes. Als controle van een actie vereist is, dan is RBAC het juiste hulpmiddel om te gebruiken. Zelfs als een persoon toegang heeft tot het uitvoeren van een actie, blokkeert Azure Policy nog steeds de maken of bijwerken als het resultaat een niet-compatibele bron is.
+RBAC is gericht op het beheren van gebruikers [acties](../../role-based-access-control/resource-provider-operations.md) in verschillende bereiken. Als het besturings element van een actie vereist is, is RBAC het juiste hulp programma om te gebruiken. Zelfs als een persoon toegang heeft om een actie uit te voeren en het resultaat een niet-compatibele resource is, blokkeert Azure Policy nog steeds het maken of bijwerken.
 
-De combinatie van RBAC en Azure Policy biedt volledige scopecontrole in Azure.
+De combi natie van RBAC en Azure Policy bieden een volledig bereik van beheer in Azure.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-machtigingen in Azure Policy
 
@@ -73,16 +73,16 @@ Azure Policy heeft diverse machtigingen, oftewel bewerkingen, in twee verschille
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De functie **Resourcebeleidsbijdrager** bevat de meeste Azure-beleidsbewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **inzender** als **Reader** hebben toegang tot alle _leesbewerkingen_ van Azure Policy. **Inzender** kan leiden tot herstel van resources, maar kan geen definities of toewijzingen _maken._
+Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De rol **Inzender voor resource beleid** bevat de meeste Azure Policy bewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **Inzender** als **lezer** hebben toegang tot alle _Lees_ -Azure Policy bewerkingen. **Inzender** kan resource herbemiddeling activeren, maar kan geen definities of toewijzingen _maken_ .
 
 Als geen van de ingebouwde rollen de vereiste machtigingen heeft, maakt u een [aangepaste rol](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> De beheerde identiteit van een **deployIfNotExists-beleidstoewijzing** heeft voldoende machtigingen nodig om resources in de sjabloon te maken of bij te werken. Zie [Beleidsdefinities configureren voor herstel voor](./how-to/remediate-resources.md#configure-policy-definition)meer informatie voor meer informatie.
+> De beheerde identiteit van een **deployIfNotExists** -beleids toewijzing vereist voldoende machtigingen om resources te maken of bij te werken die zijn opgenomen in de sjabloon. Zie [beleids definities voor herstel configureren](./how-to/remediate-resources.md#configure-policy-definition)voor meer informatie.
 
-### <a name="resources-covered-by-azure-policy"></a>Bronnen die onder Azure-beleid vallen
+### <a name="resources-covered-by-azure-policy"></a>Resources die worden gedekt door Azure Policy
 
-Azure Policy evalueert alle resources in Azure. Voor bepaalde resourceproviders zoals [Gastconfiguratie,](./concepts/guest-configuration.md) [Azure Kubernetes Service](../../aks/intro-kubernetes.md)en Azure Key [Vault](../../key-vault/key-vault-overview.md)is er een diepere integratie voor het beheren van instellingen en objecten. Zie [Resourceprovider-modi](./concepts/definition-structure.md)voor meer informatie.
+Azure Policy evalueert alle resources in Azure. Voor bepaalde resource providers, zoals [gast configuratie](./concepts/guest-configuration.md), [Azure Kubernetes-service](../../aks/intro-kubernetes.md)en [Azure Key Vault](../../key-vault/key-vault-overview.md), is er een diep gaande integratie voor het beheren van instellingen en objecten. Zie voor meer informatie [resource provider modi](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Aanbevelingen voor het beheren van beleid
 
@@ -100,7 +100,7 @@ Enkele tips om rekening mee te houden:
 - Wanneer een initiatieftoewijzing wordt beoordeeld, worden alle beleidsregels in het initiatief ook beoordeeld.
   Als u een beleidsregel afzonderlijk wilt beoordelen, is het beter deze niet op te nemen in een initiatief.
 
-## <a name="azure-policy-objects"></a>Azure-beleidsobjecten
+## <a name="azure-policy-objects"></a>Azure Policy objecten
 
 ### <a name="policy-definition"></a>Beleidsdefinitie
 
@@ -108,13 +108,13 @@ Het maken en implementeren van een beleidsregel in Azure Policy begint met het m
 
 In Azure Policy wordt een aantal ingebouwde beleidsregels geboden dat standaard beschikbaar is. Bijvoorbeeld:
 
-- **Toegestane SKU's** voor opslagaccount (Weigeren): bepaalt of een opslagaccount dat wordt geïmplementeerd zich binnen een reeks SKU-formaten bevindt. Het bijbehorende effect is om alle opslagaccounts te weigeren die niet in overeenstemming zijn met de gedefinieerde SKU-grootten.
-- **Toegestaan resourcetype** (Weigeren): hiermee definieert u de resourcetypen die u implementeren. Het bijbehorende effect is om alle resources te weigeren die geen deel uitmaken van deze gedefinieerde lijst.
-- **Toegestane locaties** (Weigeren): beperkt de beschikbare locaties voor nieuwe bronnen. Het bijbehorende effect wordt gebruikt om uw geografisch nalevingsvereisten af te dwingen.
-- **Toegestane SKU's** voor virtuele machines (Weigeren): hiermee geeft u een set sku's voor virtuele machines op die u implementeren.
-- **Een tag toevoegen aan resources** (Wijzigen): Past een vereiste tag en de standaardwaarde toe als deze niet is opgegeven door de implementatieaanvraag.
-- **Tag toevoegen en de standaardwaarde** (Toevoegen): hiermee wordt een vereiste tag en de waarde ervan afgedwongen voor een resource.
-- **Niet toegestaan resourcetypen** (Weigeren): hiermee voorkomt u dat een lijst met resourcetypen wordt geïmplementeerd.
+- **Toegestane opslag account-sku's** (weigeren): bepaalt of een opslag account dat wordt geïmplementeerd binnen een set SKU-grootten valt. Het bijbehorende effect is om alle opslagaccounts te weigeren die niet in overeenstemming zijn met de gedefinieerde SKU-grootten.
+- **Toegestaan resource type** (weigeren): definieert de resource typen die u kunt implementeren. Het bijbehorende effect is om alle resources te weigeren die geen deel uitmaken van deze gedefinieerde lijst.
+- **Toegestane locaties** (weigeren): Hiermee beperkt u de beschik bare locaties voor nieuwe resources. Het bijbehorende effect wordt gebruikt om uw geografisch nalevingsvereisten af te dwingen.
+- **Toegestane sku's van de virtuele machine** (weigeren): Hiermee geeft u een set virtuele machine-sku's op die u kunt implementeren.
+- **Een tag toevoegen aan resources** (wijzigen): past een vereiste tag en de standaard waarde toe als deze niet is opgegeven door de implementatie aanvraag.
+- **Tag toevoegen en de standaard waarde** (Append): Hiermee wordt een vereiste tag en de waarde ervan afgedwongen voor een resource.
+- **Niet-toegestane resource typen** (weigeren): Hiermee wordt voor komen dat een lijst met resource typen wordt geïmplementeerd.
 
 Als u deze beleidsdefinities (zowel de ingebouwde als de aangepaste) wilt implementeren, dient u ze eerst toe te wijzen. U kunt elk van deze typen beleid toewijzen via Azure Portal, PowerShell of Azure CLI.
 
@@ -133,7 +133,7 @@ Zie [Definitiestructuur - parameters](./concepts/definition-structure.md#paramet
 Een initiatiefdefinitie is een verzameling beleidsdefinities die zijn aangepast voor het bereiken van één overkoepelend doel. Initiatiefdefinities maken het beheren en toewijzen van beleidsdefinities eenvoudiger. Dit gebeurt door het groeperen van een reeks beleidsregels als één item. U kunt bijvoorbeeld een initiatief maken met de titel **Controleren inschakelen in Azure Security Center** met als doel om alle beschikbare beveiligingsaanbevelingen in uw Azure Security Center te controleren.
 
 > [!NOTE]
-> De SDK, zoals Azure CLI en Azure PowerShell, gebruikt eigenschappen en parameters met de naam **PolicySet** om naar initiatieven te verwijzen.
+> De SDK, zoals Azure CLI en Azure PowerShell, gebruiken eigenschappen en para meters met de naam **policyset** om te verwijzen naar initiatieven.
 
 Onder dit initiatief vallen beleidsdefinities zoals:
 
@@ -153,22 +153,22 @@ Neem bijvoorbeeld een scenario met initiatiefdefinitie **initiativeC**, waarbij 
 In dit scenario hebt u, bij het definiëren van de initiatiefparameters voor **initiativeC**, drie opties:
 
 - Gebruik de parameters van de beleidsdefinities binnen dit initiatief: in dit voorbeeld worden _allowedLocations_ en _allowedSingleLocation_ initiatiefparameters voor **initiativeC **.
-- Geef waarden op voor de parameters van de beleidsdefinities binnen deze initiatiefdefinitie. In dit voorbeeld u een lijst met locaties aan de parameter **policyA** **(toegestaanLocaties** en **policyB's**parameter ) **opgeven, toegestaanSingleLocation**. U kunt ook waarden opgeven bij het toewijzen van dit initiatief.
+- Geef waarden op voor de parameters van de beleidsdefinities binnen deze initiatiefdefinitie. In dit voor beeld kunt u een lijst met locaties opgeven voor de para meter van de **beleids regel**- **allowedLocations** en **policyB**- **allowedSingleLocation**. U kunt ook waarden opgeven bij het toewijzen van dit initiatief.
 - Geef een lijst met _waarde_opties op die kunnen worden gebruikt bij het toewijzen van dit initiatief. Als u dit initiatief toewijst, kunnen de overgenomen parameters van de beleidsdefinities binnen het initiatief, alleen waarden hebben uit de opgegeven lijst.
 
 Als u waardeopties maakt in een initiatiefdefinitie, is het niet mogelijk om tijdens het toewijzen van het initiatief andere waarden op te geven, omdat deze niet op de lijst staan.
 
 ### <a name="assignments"></a>Toewijzingen
 
-Een toewijzing is een beleidsdefinitie of -initiatief die binnen een specifiek bereik moet plaatsvinden. Dit bereik kan variëren van een [beheergroep](../management-groups/overview.md) tot een afzonderlijke resource. De term _scope_ verwijst naar alle resources, resourcegroepen, abonnementen of beheergroepen waaraan de definitie is toegewezen. Toewijzingen worden overgenomen door alle onderliggende bronnen. Dit ontwerp betekent dat een definitie die wordt toegepast op een resourcegroep ook wordt toegepast op resources in die resourcegroep. U echter wel een subscope uitsluiten van de toewijzing.
+Een toewijzing is een beleids definitie of-initiatief dat is toegewezen voor het uitvoeren van een bepaald bereik. Dit bereik kan variëren van een [beheer groep](../management-groups/overview.md) tot een afzonderlijke resource. Het term _bereik_ verwijst naar alle resources, resource groepen, abonnementen of beheer groepen waaraan de definitie is toegewezen. Toewijzingen worden overgenomen door alle onderliggende resources. Dit ontwerp houdt in dat een definitie die wordt toegepast op een resource groep ook wordt toegepast op resources in die resource groep. U kunt echter een subbereik uitsluiten van de toewijzing.
 
-U bijvoorbeeld bij het abonnementsbereik een definitie toewijzen die het maken van netwerkbronnen voorkomt. U kunt echter één resourcegroep binnen het abonnement uitsluiten, namelijk degene die is bedoeld voor netwerkinfrastructuur. U verleent vervolgens toegang tot deze netwerkresourcegroep aan gebruikers aan wie u het maken van de netwerkresourcegroep toevertrouwt.
+U kunt bijvoorbeeld bij het abonnements bereik een definitie toewijzen waarmee wordt voor komen dat netwerk bronnen worden gemaakt. U kunt echter één resourcegroep binnen het abonnement uitsluiten, namelijk degene die is bedoeld voor netwerkinfrastructuur. U verleent vervolgens toegang tot deze netwerkresourcegroep aan gebruikers aan wie u het maken van de netwerkresourcegroep toevertrouwt.
 
-In een ander voorbeeld u een lijstdefinitie van resourcetypen toewijzen op het niveau van de beheergroep. Vervolgens wijst u een meer tolerant beleid toe (waardoor meer resourcetypen) worden toegestaan aan een onderliggende beheergroep of zelfs rechtstreeks op abonnementen. Dit voorbeeld zou echter niet werken omdat Azure Policy een expliciet weigeringssysteem is. In plaats daarvan moet u de onderliggende beheergroep of het abonnement uitsluiten van de toewijzing op managementgroepniveau. Wijs vervolgens de meer tolerante definitie toe aan de onderliggende beheergroep of het abonnementsniveau. Als een toewijzing ertoe leidt dat een resource wordt geweigerd, is de enige manier om de resource toe te staan de weigeringstoewijzing te wijzigen.
+In een ander voor beeld kunt u een lijst definitie voor een resource type toestaan toewijzen op het niveau van de beheer groep. Vervolgens wijst u een strengere beleids regel toe (waardoor meer bron typen worden toegestaan) in een onderliggende beheer groep of zelfs rechtstreeks op abonnementen. Dit voor beeld zou echter niet werken omdat Azure Policy een expliciete deny-systeem is. In plaats daarvan moet u de onderliggende beheer groep of het abonnement uitsluiten van de toewijzing van de beheer groep. Vervolgens wijst u de meer strikte definitie toe aan de onderliggende beheer groep of het abonnements niveau. Als een toewijzing resulteert in het weigeren van een resource, is de enige manier om de resource toe te staan de weigerings toewijzing te wijzigen.
 
-Zie [Een beleidstoewijzing maken om niet-compatibele resources in uw Azure-omgeving te identificeren](assign-policy-portal.md)voor meer informatie over het instellen van toewijzingen via de portal. Er zijn ook stappen voor [PowerShell](assign-policy-powershell.md) en [Azure CLI](assign-policy-azurecli.md) beschikbaar.
+Zie [een beleids toewijzing maken om niet-compatibele resources te identificeren in uw Azure-omgeving](assign-policy-portal.md)voor meer informatie over het instellen van toewijzingen via de portal. Er zijn ook stappen voor [PowerShell](assign-policy-powershell.md) en [Azure CLI](assign-policy-azurecli.md) beschikbaar.
 
-## <a name="maximum-count-of-azure-policy-objects"></a>Maximaal aantal Azure-beleidsobjecten
+## <a name="maximum-count-of-azure-policy-objects"></a>Maximum aantal Azure Policy objecten
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -176,5 +176,5 @@ Zie [Een beleidstoewijzing maken om niet-compatibele resources in uw Azure-omgev
 
 Nu u een overzicht hebt van Azure Policy en enkele van de belangrijkste geïntroduceerde concepten, ziet u hier de voorgestelde volgende stappen:
 
-- [Bekijk de beleidsdefinitiestructuur](./concepts/definition-structure.md).
-- [Een beleidsdefinitie toewijzen met behulp van de portal](./assign-policy-portal.md).
+- [Controleer de structuur van de beleids definitie](./concepts/definition-structure.md).
+- [Een beleids definitie toewijzen met behulp van de portal](./assign-policy-portal.md).

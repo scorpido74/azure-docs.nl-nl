@@ -15,4 +15,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818667"
 ---
-Zie Een databaseaccount maken voor instructies voor het maken van een Azure Cosmos DB Table [API-account](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
+Zie [een database account maken](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)voor instructies over het maken van een Azure Cosmos db table-API-account.

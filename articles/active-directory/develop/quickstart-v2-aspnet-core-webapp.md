@@ -1,6 +1,6 @@
 ---
-title: Aanmelding met Microsoft toevoegen aan ASP.NET Core-webapps - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het implementeren van Microsoft Sign-In op een ASP.NET Core-webapp met OpenID Connect
+title: Aanmelden met micro soft toevoegen aan ASP.NET Core web apps-micro soft Identity platform | Azure
+description: Meer informatie over het implementeren van micro soft-aanmelding op een ASP.NET Core web-app met behulp van OpenID Connect Connect
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536162"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112708"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snelstart: aanmelden bij Microsoft toevoegen aan een web-app van ASP.NET Core
-In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-webapp persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk- en schoolaccounts uit een Azure AD-exemplaar (Azure AD) kan aanmelden. (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een ASP.NET Core web-app
+In deze Quick Start gebruikt u een code voorbeeld om te zien hoe een ASP.NET Core web-app zich kan aanmelden bij persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk-en school accounts van elk Azure Active Directory (Azure AD)-exemplaar. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
@@ -28,7 +28,7 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
-> 1. Ga naar de [Azure-portal - App-registraties](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Ga naar de [Azure Portal-app-registraties](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
@@ -37,15 +37,15 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
-> 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+> 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
-> 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
-> 1. Selecteer **Nieuwe registratie**.
+> 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
+> 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `AspNetCore-Quickstart`.
->    - Voeg in Redirect `https://localhost:44321/` **URI**toevoegen en selecteer **Registreren**.
+>    - In **omleidings**- `https://localhost:44321/`URI, toevoegen en **registreren**selecteren.
 > 1. Selecteer het menu **Verificatie** en voeg dan de volgende gegevens toe:
->    - Voeg in **URI's omleiden**, voeg toe `https://localhost:44321/signin-oidc`en selecteer **Opslaan**.
+>    - In **omleidings**- `https://localhost:44321/signin-oidc`uri's toevoegen en selecteert u **Opslaan**.
 >    - Bij **Geavanceerde instellingen** stelt u de **afmeldings-URL** in op `https://localhost:44321/signout-oidc`.
 >    - Bij **Impliciete toekenning** controleert u de **id-tokens**.
 >    - Selecteer **Opslaan**.
@@ -62,24 +62,24 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 #### <a name="step-2-download-your-aspnet-core-project"></a>Stap 2: uw ASP.NET Core-project downloaden
 
 > [!div renderon="docs"]
-> [Download de Visual Studio 2019-oplossing](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [Down load de Visual Studio 2019-oplossing](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Voer het project uit met Visual Studio 2019.
+> Voer het project uit met behulp van Visual Studio 2019.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om uit te voeren
-> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd.
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: uw app is geconfigureerd en klaar om te worden uitgevoerd
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project uitvoeren
+> #### <a name="step-3-run-your-visual-studio-project"></a>Stap 3: uw Visual Studio-project uitvoeren
 > 1. Pak het zip-bestand uit in een lokale map in de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
-> 1. De oplossing openen in Visual Studio
-> 1. Bewerk het bestand **appsettings.json**. Zoek `ClientId` en werk `ClientId` de waarde bij van de waarde van de **applicatie (client) ID-waarde** van de door u geregistreerde toepassing.
+> 1. Open de oplossing in Visual Studio
+> 1. Bewerk het bestand **appsettings.json**. Zoek `ClientId` en werk de waarde bij `ClientId` met de waarde van de **toepassing (client) ID** van de toepassing die u hebt geregistreerd.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -101,10 +101,10 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 
 ## <a name="more-information"></a>Meer informatie
 
-In deze sectie vindt u een overzicht van de code die nodig is om gebruikers aan te melden. Dit overzicht kan handig zijn om te begrijpen hoe de code werkt, de belangrijkste argumenten, en ook als u aanmelding wilt toevoegen aan een bestaande ASP.NET Core-toepassing.
+In deze sectie vindt u een overzicht van de code die is vereist om gebruikers aan te melden. Dit overzicht kan handig zijn om te begrijpen hoe de code werkt, hoofd argumenten en ook als u aanmelden wilt toevoegen aan een bestaande ASP.NET Core-toepassing.
 
-### <a name="how-the-sample-works"></a>Hoe het voorbeeld werkt
-![Laat zien hoe de voorbeeld-app die door deze quickstart wordt gegenereerd, werkt](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Opstartklasse
 
@@ -141,9 +141,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-De `AddAuthentication` methode configureert de service om cookiegebaseerde verificatie toe te voegen, die wordt gebruikt in browserscenario's en om de uitdaging in te stellen op OpenID Connect.
+De- `AddAuthentication` methode configureert de service om verificatie op basis van cookies toe te voegen, die wordt gebruikt in browser scenario's en om de uitdaging voor OpenID connect-verbinding in te stellen.
 
-De regel `.AddAzureAd` met de verificatie van het Microsoft-identiteitsplatform wordt toegevoegd aan uw toepassing. Het is vervolgens geconfigureerd om in te loggen met behulp van het eindpunt van het Microsoft-identiteitsplatform.
+De regel met `.AddAzureAd` de micro soft Identity platform-verificatie toevoegen aan uw toepassing. Deze wordt vervolgens geconfigureerd om u aan te melden met het micro soft Identity platform-eind punt.
 
 > |Waar  |  |
 > |---------|---------|
@@ -153,18 +153,31 @@ De regel `.AddAzureAd` met de verificatie van het Microsoft-identiteitsplatform 
 
 
 > [!NOTE]
-> Instelling `ValidateIssuer = false` is een vereenvoudiging voor deze quickstart. In echte toepassingen moet u de uitgever valideren.
-> Zie de voorbeelden om te begrijpen hoe dat te doen.
+> De `ValidateIssuer = false` instelling is een vereenvoudiging voor deze Quick Start. In echte toepassingen moet u de uitgever valideren.
+> Bekijk de voor beelden om te begrijpen hoe u dit doet.
+>
+> Let ook op `Configure` de methode die twee belang rijke methoden `app.UserCookiePolicy()` bevat: en`app.UseAuthentication()`
+
+```csharp
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    // more core
+    app.UseCookiePolicy();
+    app.UseAuthentication();
+    // more core
+}
+```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Een controller of de methode van een controller beveiligen
 
-U kunt een controller of controllermethoden beveiligen met behulp van het kenmerk `[Authorize]`. Dit kenmerk beperkt de toegang tot de controller of methoden door alleen geverifieerde gebruikers toe te staan, wat betekent dat verificatieuitdaging kan worden gestart om toegang te krijgen tot de controller als de gebruiker niet is geverifieerd.
+U kunt een controller of controllermethoden beveiligen met behulp van het kenmerk `[Authorize]`. Met dit kenmerk wordt de toegang tot de controller of methoden beperkt door alleen geverifieerde gebruikers toe te staan, wat betekent dat de verificatie vraag kan worden gestart om toegang te krijgen tot de controller als de gebruiker niet is geverifieerd.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de GitHub repo voor deze ASP.NET Core-zelfstudie voor meer informatie, inclusief instructies over het toevoegen van verificatie aan een gloednieuwe ASP.NET Core-webtoepassing, hoe u Microsoft Graph aanroepen en andere Microsoft API's, hoe u uw eigen API's bellen, hoe u autorisatie toevoegen, hoe u zich aanmelden bij gebruikers in nationale clouds of met sociale identiteiten en meer :
+Bekijk de GitHub-opslag plaats voor deze ASP.NET Core-zelf studie voor meer informatie, waaronder instructies over het toevoegen van verificatie aan een gloed nieuwe ASP.NET Core-webtoepassing, het aanroepen van Microsoft Graph en andere micro soft-Api's, het aanroepen van uw eigen Api's, het toevoegen van autorisatie, het aanmelden van gebruikers in nationale Clouds of met sociale identiteiten en meer :
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core-webapp-zelfstudie](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [Zelf studie voor ASP.NET Core web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

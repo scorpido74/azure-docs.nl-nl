@@ -1,28 +1,23 @@
 ---
-title: Verschillen tussen beheer-API's en service-API's - Azure Batch | Microsoft Documenten
-description: API's werken op de verschillende lagen van de Azure Batch-service.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+title: Verschillen tussen beheer-Api's en service-Api's
+description: Api's werken op de verschillende lagen van de Azure Batch service.
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 181515c0f497af8ffadcb909c13e51a40bfbf3b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33b8c5980aba1090155d6b136c6707e928666abf
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672766"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115394"
 ---
-# <a name="service-level-and-management-level-apis"></a>API's op serviceniveau en beheerniveau
+# <a name="service-level-and-management-level-apis"></a>Api's voor service niveau en beheer niveau
 
-Azure Batch heeft twee sets API's, één voor het serviceniveau en één voor het beheerniveau. De naamgeving is vaak vergelijkbaar, maar ze keren verschillende resultaten. Als u activiteitslogboeken wilt, moet u de beheer-API's gebruiken. API's op serviceniveau omzeilen de laag Azure Resource Management en worden niet geregistreerd.
+Azure Batch heeft twee sets Api's: één voor het service niveau en één voor het beheer niveau. De naam is vaak vergelijkbaar, maar retourneert verschillende resultaten. Als u activiteiten logboeken wilt, moet u de beheer-Api's gebruiken. Api's op service niveau negeren de Azure Resource Management-laag en worden niet geregistreerd.
 
 
-Batchbeheer en Batchservice hebben bijvoorbeeld API's voor Pool. 
-- Deze API voor het verwijderen van de groep is rechtstreeks gericht op het batchaccount:https://docs.microsoft.com/rest/api/batchservice/pool/delete 
+Batch-beheer en batch-service hebben beide Api's voor de groep, bijvoorbeeld. 
+- Deze API voor het verwijderen van een groep is rechtstreeks gericht op het batch-account:https://docs.microsoft.com/rest/api/batchservice/pool/delete 
 
-- Deze API voor https://docs.microsoft.com/rest/api/batchmanagement/pool/delete het verwijderen van de groep is gericht op de management.azure.com laag.
+- Deze API voor het verwijderen https://docs.microsoft.com/rest/api/batchmanagement/pool/delete van de groep is gericht op de Management.Azure.com-laag.
 

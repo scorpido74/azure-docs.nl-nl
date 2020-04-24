@@ -1,6 +1,6 @@
 ---
-title: Evaluatie van continue toegang in Azure AD
-description: Sneller reageren op wijzigingen in de gebruikersstatus met continue toegangsevaluatie in Azure AD
+title: Evaluatie van doorlopende toegang in azure AD
+description: Sneller reageren op wijzigingen in de gebruikers status met de evaluatie van continue toegang in azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,41 +11,43 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b70c11cd6bc24f945b437decf22586cfb97557
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873301"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112572"
 ---
-# <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
+# <a name="continuous-access-evaluation"></a>Evaluatie van voortdurende toegang
 
-Microsoft-services, zoals Azure Active Directory (Azure AD) en Office 365, gebruiken open standaarden en protocollen om de interoperabiliteit te maximaliseren. Een van de meest kritische is Open ID Connect (OIDC). Wanneer een clienttoepassing zoals Outlook verbinding maakt met een service zoals Exchange Online, worden de API-aanvragen geautoriseerd met OAuth 2.0-toegangstokens. Standaard zijn deze toegangstokens een uur geldig. Wanneer deze verlopen, wordt de client doorgestuurd naar Azure AD om ze te vernieuwen. Dat biedt ook de mogelijkheid om beleid voor gebruikerstoegang opnieuw te evalueren : we kunnen ervoor kiezen om het token niet te vernieuwen vanwege een beleid voor voorwaardelijke toegang of omdat de gebruiker is uitgeschakeld in de directory. 
+Micro soft-Services, zoals Azure Active Directory (Azure AD) en Office 365, gebruiken open standaarden en protocollen om interoperabiliteit te maximaliseren. Een van de meest essentiële items is open ID Connect (OIDC). Wanneer een client toepassing, zoals Outlook, verbinding maakt met een service zoals Exchange Online, worden de API-aanvragen geautoriseerd met OAuth 2,0-toegangs tokens. De toegangs tokens zijn standaard één uur geldig. Wanneer de client is verlopen, wordt deze teruggeleid naar Azure AD om ze te vernieuwen. Dit biedt ook de mogelijkheid om beleid voor gebruikers toegang opnieuw te evalueren. we kunnen ervoor kiezen om het token niet te vernieuwen vanwege een beleid voor voorwaardelijke toegang, of omdat de gebruiker is uitgeschakeld in de map. 
 
-We hebben de overweldigende feedback van onze klanten gehoord: een vertraging van een uur als gevolg van de levensduur van toegangstoken voor het opnieuw toepassen van voorwaardelijke toegangsbeleid en wijzigingen in de gebruikersstatus (bijvoorbeeld uitgeschakeld als gevolg van verlof) is niet goed genoeg.
+Het verlopen van tokens en vernieuwen is een standaard mechanisme in de branche. Dat gezegde klanten hebben het probleem geconstateerd over de vertraging tussen de wijziging van de risico omstandigheden voor de gebruiker (bijvoorbeeld: verplaatsen van het hoofd kantoor naar de lokale horeca of de gebruikers referenties die op de zwarte markt zijn gedetecteerd) en wanneer beleids regels kunnen worden afgedwongen voor deze wijziging. We hebben experimenteren met de benadering ' Blunt object ' van een gereduceerde levens duur van tokens, maar ze kunnen de gebruikers ervaringen en betrouw baarheid verlagen zonder Risico's te elimineren.
 
-Microsoft heeft al vroeg deelgenomen aan het Continuous Access Evaluation Protocol (CAEP) als onderdeel van de werkgroep [Gedeelde signalen en evenementen](https://openid.net/wg/sse/) van de OpenID Foundation. Identiteitsproviders en relying parties kunnen gebruik maken van de beveiligingsgebeurtenissen en -signalen die door de werkgroep zijn gedefinieerd om de toegang opnieuw te autoriseren of te beëindigen. Het is spannend werk en zal de beveiliging op veel platforms en toepassingen verbeteren.
+Voor een tijdige reactie op beleids schendingen of beveiligings problemen is een ' conversatie ' vereist tussen de uitgever van het token, zoals Azure AD, en de Relying Party, zoals Exchange Online. Deze twee richtings conversatie biedt ons twee belang rijke mogelijkheden. De Relying Party kan zien wanneer dingen zijn gewijzigd, zoals een client die afkomstig is van een nieuwe locatie, en de uitgever van het token kenbaar maakt. Het biedt ook de token uitgever een manier om de Relying Party te laten weten dat tokens voor een bepaalde gebruiker niet meer worden geëerbiedigd vanwege inbreuk op het account, het uitschakelen of andere problemen. Het mechanisme voor deze conversatie is een voortdurende toegangs beoordeling (CAE).
 
-Omdat de beveiligingsvoordelen zo groot zijn, rollen we een Microsoft-specifieke eerste implementatie uit, parallel aan ons voortdurende werk binnen de normalisatie-instellingen. Terwijl we werken aan het implementeren van deze CAE-mogelijkheden (Continuous Access Evaluation) in Microsoft-services, hebben we veel geleerd en delen we deze informatie met de standaardencommunity. We hopen dat onze ervaring met implementatie kan helpen om een nog betere industriestandaard te helpen en zijn toegewijd aan de implementatie van die standaard nadat deze is geratificeerd, zodat alle deelnemende diensten kunnen profiteren.
+Micro soft is een vroege deel nemer geweest in het CAEP-initiatief (continue Access Evaluation Protocol) als onderdeel van de werk groep [gedeelde signalen en gebeurtenissen](https://openid.net/wg/sse/) in de OpenID Connect Foundation. Id-providers en relying party's kunnen gebruikmaken van de beveiligings gebeurtenissen en signalen die zijn gedefinieerd door de werk groep om de toegang opnieuw te autoriseren of te beëindigen. Het is interessante werkzaamheden en verbetert de beveiliging op verschillende platforms en toepassingen.
 
-## <a name="how-does-cae-work-in-microsoft-services"></a>Hoe werkt CAE in Microsoft-services?
+Omdat de beveiligings voordelen zo fantastisch zijn, implementeren we een micro soft-specifieke initiële implementatie parallel met onze voortgezette werkzaamheden binnen de standaards. We werken samen met het implementeren van deze functies voor continue toegang Evaluation (CAE) in micro soft-Services, maar we hebben een hoop geleerd en delen deze gegevens met de standaard community. We hopen dat onze ervaring in implementatie u kan helpen een nog betere industrie norm te informeren en deze standaard te implementeren, zodat alle deelnemende Services kunnen profiteren.
 
-We richten onze eerste implementatie van continue toegangsevaluatie op Exchange en Teams. We hopen de ondersteuning voor andere Microsoft-services in de toekomst uit te breiden. We zullen beginnen met het inschakelen van continue toegang evaluatie alleen voor huurders zonder voorwaardelijke toegang beleid. We zullen onze lessen uit deze fase van CAE gebruiken om onze voortdurende uitrol van CAE te informeren.
+## <a name="how-does-cae-work-in-microsoft-services"></a>Hoe werkt CAE in micro soft-Services?
 
-## <a name="service-side-requirements"></a>Service-eisen
+We richten onze eerste implementatie van voortdurende toegang tot Exchange en teams. We hopen in de toekomst ondersteuning voor andere micro soft-services uit te breiden. We gaan de evaluatie van continue toegang alleen inschakelen voor tenants zonder beleid voor voorwaardelijke toegang. We zullen onze informatie uit deze fase van CAE gebruiken om onze voortdurende implementatie van CAE te informeren.
 
-Continue toegangsevaluatie wordt geïmplementeerd door services (resourceproviders) in staat te stellen zich te abonneren op kritieke gebeurtenissen in Azure AD, zodat deze gebeurtenissen in de buurt van realtime kunnen worden geëvalueerd en afgedwongen. De volgende gebeurtenissen worden afgedwongen in deze eerste CAE-implementatie:
+## <a name="service-side-requirements"></a>Vereisten aan de service zijde
 
-- Gebruikersaccount wordt verwijderd of uitgeschakeld
-- Wachtwoord voor een gebruiker wordt gewijzigd of opnieuw ingesteld
-- Beheerder trekt expliciet alle vernieuwingstokens in voor een gebruiker
-- Verhoogd gebruikersrisico gedetecteerd door Azure AD-identiteitsbeveiliging
+De evaluatie van voortdurende toegang wordt geïmplementeerd door Services (resource providers) in te scha kelen voor het abonneren op kritieke gebeurtenissen in azure AD, zodat deze gebeurtenissen in de buurt van real-time kunnen worden geëvalueerd en afgedwongen. De volgende gebeurtenissen worden afgedwongen in deze eerste CAE-implementatie:
 
-In de toekomst hopen we meer evenementen toe te voegen, waaronder gebeurtenissen zoals wijzigingen in de locatie- en apparaatstatus. **Terwijl ons doel is voor de handhaving om onmiddellijk te zijn, in sommige gevallen latentie van maximaal 15 minuten kan worden waargenomen als gevolg van gebeurtenis voortplantingtijd**. 
+- Gebruikers account is verwijderd of uitgeschakeld
+- Het wacht woord voor een gebruiker wordt gewijzigd of opnieuw ingesteld
+- De beheerder trekt expliciet alle vernieuwings tokens voor een gebruiker in
+- Er is een verhoogd gebruikers risico gedetecteerd door Azure AD Identity Protection
 
-## <a name="client-side-claim-challenge"></a>Client-side claim uitdaging
+In de toekomst hopen we meer gebeurtenissen toe, waaronder gebeurtenissen zoals locatie en Apparaatstatus. **Hoewel ons doel is om direct te kunnen afdwingen, kan in sommige gevallen een latentie van Maxi maal 15 minuten worden waargenomen als gevolg van de doorgifte tijd van de gebeurtenis**. 
 
-Vóór continue toegangsevaluatie zouden clients altijd proberen het toegangstoken opnieuw uit de cache te spelen zolang het niet is verlopen. Met CAE introduceren we een nieuwe case dat een resourceprovider een token kan weigeren, zelfs als het niet is verlopen. Om klanten te informeren om hun cache te omzeilen, ook al zijn de tokens in de cache nog niet verlopen, introduceren we een mechanisme genaamd **claimchallenge.** CAE vereist een clientupdate om de claimuitdaging te begrijpen. De nieuwste versie van de volgende toepassingen hieronder ondersteuning claim uitdaging:
+## <a name="client-side-claim-challenge"></a>Claim vraag aan client zijde
+
+Voordat de evaluatie doorlopend wordt gedetecteerd, proberen clients altijd het toegangs token opnieuw af te spelen uit de cache zolang het niet is verlopen. Met CAE wordt een nieuw geval geïntroduceerd dat een resource provider een token kan afwijzen, zelfs wanneer het niet is verlopen. Om clients te informeren dat hun cache wordt omzeild, zelfs als de tokens in de cache niet zijn verlopen, introduceren we een mechanisme dat **claim Challenge**wordt genoemd. Voor CAE is een client update vereist om de claim Challenge te begrijpen. De meest recente versie van de volgende toepassingen ondersteunen claim Challenge:
 
 - Outlook voor Windows 
 - Outlook iOS 
@@ -54,43 +56,43 @@ Vóór continue toegangsevaluatie zouden clients altijd proberen het toegangstok
 - Teams voor Windows
 - Teams iOS 
 - Teams Android 
-- Teams Mac 
+- Mac voor teams 
 
 ## <a name="token-lifetime"></a>Levensduur van token
 
-Omdat risico's en beleid in realtime worden geëvalueerd, vertrouwen clients die onderhandelen over doorlopende toegangsevaluatiebewuste sessies op CAE in plaats van op bestaande statische toegangstokenlevenslangbeleid, wat betekent dat configureerbaar tokenlevenslangbeleid niet meer wordt gehonoreerd voor CAE-geschikte clients die cae-bewuste sessies onderhandelen.
+Omdat het risico en het beleid in realtime worden geëvalueerd, zullen clients die onderhandelen over continue toegang-evaluatie sessies, vertrouwen op CAE in plaats van het bestaande beleid voor de levens duur van een statisch toegangs token, wat betekent dat het Configureer bare token levensduur beleid niet meer wordt gehonoreerd voor CAE-compatibele clients die onderhandelen over CAE-compatibele sessies.
 
-We verhogen de levensduur van toegangstoken tot 24 uur in CAE-sessies. Intrekking wordt gedreven door kritieke gebeurtenissen en beleidsevaluatie, niet door een willekeurige periode. Deze wijziging verhoogt de stabiliteit van uw toepassingen zonder dat dit gevolgen heeft voor uw beveiligingshouding. 
+De levens duur van het toegangs token wordt verhoogd naar 24 uur in CAE-sessies. Intrekken wordt aangestuurd door kritieke gebeurtenissen en beleids evaluatie, geen wille keurige tijds periode. Met deze wijziging wordt de stabiliteit van uw toepassingen verhoogd zonder dat dit van invloed is op uw beveiligings postuur. 
 
-## <a name="example-flows"></a>Voorbeeldstromen
+## <a name="example-flows"></a>Voorbeeld stromen
 
-### <a name="user-revocation-event-flow"></a>Gebeurtenisstroom voor herroeping van gebruikers:
+### <a name="user-revocation-event-flow"></a>Stroom voor het intrekken van de gebruiker:
 
-![Gebeurtenisstroom voor gebruikersintrekking](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
+![Stroom voor het intrekken van de gebruiker](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
 
-1. Een CLIENT die geschikt is voor CAE presenteert referenties of een vernieuwingstoken aan AAD met de vraag om een toegangstoken voor een bepaalde bron.
-1. Een toegangstoken wordt samen met andere artefacten teruggestuurd naar de client.
-1. Een beheerder trekt expliciet [alle vernieuwingstokens voor de gebruiker in.](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) Vanuit Azure AD wordt een intrekkingsgebeurtenis naar de resourceprovider verzonden.
-1. Een toegangstoken wordt gepresenteerd aan de resourceprovider. De resourceprovider evalueert de geldigheid van het token en controleert of er een intrekkingsgebeurtenis voor de gebruiker is. De resourceprovider gebruikt deze informatie om te beslissen om al dan niet toegang te verlenen tot de bron.
-1. In dit geval weigert de resourceprovider de toegang en stuurt een 401+ claimuitdaging terug naar de klant
-1. De CAE-capabele klant begrijpt de 401+ claim uitdaging. Het omzeilt de caches en gaat terug naar stap 1, het verzenden van de refresh token samen met de claim uitdaging terug naar Azure AD. Azure AD evalueert vervolgens alle voorwaarden opnieuw en vraagt de gebruiker om in dit geval opnieuw te verifiëren.
+1. Een client met CAE-ondersteuning presenteert referenties of een vernieuwings token naar AAD die vraagt om een toegangs token voor een bepaalde resource.
+1. Een toegangs token wordt samen met andere artefacten naar de client geretourneerd.
+1. Een beheerder [trekt expliciet alle vernieuwings tokens voor de gebruiker in](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Er wordt een intrekkings gebeurtenis verzonden naar de resource provider vanuit Azure AD.
+1. Er wordt een toegangs token aan de resource provider door gegeven. De resource provider evalueert de geldigheid van het token en controleert of er een intrekkings gebeurtenis voor de gebruiker is. De resource provider gebruikt deze informatie om te bepalen of u toegang wilt verlenen aan de resource.
+1. In dit geval weigert de resource provider de toegang en stuurt een 401 + claim-Challenge terug naar de client
+1. De-client die geschikt is voor CAE, begrijpt de 401 + claim Challenge. Het omzeilt de caches en gaat terug naar stap 1, verzendt het vernieuwings token samen met de claim uitdaging terug naar Azure AD. Azure AD evalueert vervolgens alle voor waarden en vraagt de gebruiker in dit geval opnieuw te verifiëren.
  
 ## <a name="faqs"></a>Veelgestelde vragen
 
-### <a name="what-is-the-lifetime-of-my-access-token"></a>Wat is de levensduur van mijn Access Token?
+### <a name="what-is-the-lifetime-of-my-access-token"></a>Wat is de levens duur van mijn toegangs token?
 
-Als u geen CAE-geschikte clients gebruikt, bedraagt de standaard levensduur van toegangstoken nog steeds 1 uur, tenzij u de levensduur van Access Token hebt geconfigureerd met de previewfunctie [Configurable Token Lifetime (CTL).](../develop/active-directory-configurable-token-lifetimes.md)
+Als u geen gebruik maakt van CAE-compatibele clients, is de standaard levens duur van het toegangs token nog steeds 1 uur, tenzij u de levens duur van uw toegangs token hebt geconfigureerd met de preview-functie voor de [Configureer bare levens duur van de token (CTL)](../develop/active-directory-configurable-token-lifetimes.md) .
 
-Als u CAE-geschikte clients gebruikt die onderhandelen over CAE-bewuste sessies, worden uw CTL-instellingen voor de levensduur van Access Token overschreven en duurt de levensduur van Access Token 24 uur.
+Als u gebruik wilt maken van CAE-compatibele clients die onderhandelen over CAE-sessies, worden uw CTL-instellingen voor de levens duur van het toegangs token overschreven en is de levens duur van het toegangs token 24 uur.
 
-### <a name="how-quick-is-enforcement"></a>Hoe snel gaat handhaving?
+### <a name="how-quick-is-enforcement"></a>Hoe snel is afdwinging?
 
-Hoewel ons doel is dat handhaving onmiddellijk is, kan in sommige gevallen latentie van maximaal 15 minuten worden waargenomen vanwege de voortplantingstijd van gebeurtenissen.
+Hoewel ons doel is om direct te kunnen afdwingen, kan in sommige gevallen een latentie van Maxi maal 15 minuten worden waargenomen als gevolg van de doorgifte tijd van de gebeurtenis.
 
-### <a name="how-will-cae-work-with-sign-in-frequency"></a>Hoe werkt CAE met Aanmeldingsfrequentie?
+### <a name="how-will-cae-work-with-sign-in-frequency"></a>Hoe wordt het gebruik van CAE met de aanmeldings frequentie?
 
-Aanmeldingsfrequentie wordt gehonoreerd met of zonder CAE.
+De aanmeldings frequentie wordt gerespecteerd met of zonder CAE.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Aankondiging van continue toegangsevaluatie](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+[Aangekondigde evaluatie van voortdurende toegang](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

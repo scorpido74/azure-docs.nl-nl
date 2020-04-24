@@ -1,45 +1,40 @@
 ---
-title: 'Zelfstudie: Een Windows-webserver beveiligen met TLS/SSL-certificaten in Azure'
-description: In deze zelfstudie leert u hoe u Azure PowerShell gebruiken om een virtuele Windows-machine te beveiligen waarop de IIS-webserver wordt uitgevoerd met TLS/SSL-certificaten die zijn opgeslagen in Azure Key Vault.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 'Zelf studie: een Windows-webserver beveiligen met TLS/SSL-certificaten in azure'
+description: In deze zelf studie leert u hoe u Azure PowerShell kunt gebruiken om een virtuele Windows-machine te beveiligen waarop de IIS-webserver wordt uitgevoerd met TLS/SSL-certificaten die zijn opgeslagen in Azure Key Vault.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2795d45cd5bba7aab33b06350faee23e83189c30
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: da9834636944c6bb816c4f49b0e9bf3abda2264a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455577"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097775"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Zelfstudie: Een webserver beveiligen op een Virtuele Windows-machine in Azure met TLS/SSL-certificaten die zijn opgeslagen in Key Vault
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Zelf studie: een webserver op een virtuele Windows-machine beveiligen in azure met TLS/SSL-certificaten die zijn opgeslagen in Key Vault
 
 > [!NOTE]
-> Momenteel werkt dit document alleen voor gegeneraliseerde afbeeldingen. Als u deze zelfstudie probeert met een gespecialiseerde schijf, ontvangt u een foutmelding. 
+> Dit document werkt momenteel alleen voor gegeneraliseerde installatie kopieën. Als u deze zelf studie probeert te gebruiken met behulp van een speciale schijf, treedt er een fout op. 
 
-Om webservers te beveiligen, kan een TLS (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), worden gebruikt om webverkeer te versleutelen. Deze TLS/SSL-certificaten kunnen worden opgeslagen in Azure Key Vault en veilige implementaties van certificaten naar Virtuele Windows-machines (VM's) in Azure toestaan. In deze zelfstudie leert u het volgende:
+Als u webservers wilt beveiligen, kan een Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), worden gebruikt voor het versleutelen van webverkeer. Deze TLS/SSL-certificaten kunnen worden opgeslagen in Azure Key Vault en beveiligde implementaties van certificaten op virtuele Windows-machines (Vm's) in azure toestaan. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een Azure Key Vault maken
 > * Een certificaat genereren of uploaden naar de Key Vault
 > * Een virtuele machine maken en de IIS-webserver installeren
-> * Injecteer het certificaat in de VM en configureer IIS met een TLS-binding
+> * Het certificaat in de virtuele machine injecteren en IIS configureren met een TLS-binding
 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 
 ## <a name="overview"></a>Overzicht
@@ -57,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Maak vervolgens een Key Vault met [New-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) Elke Key Vault moet een unieke naam hebben van alleen kleine letters. Vervang `mykeyvault` in het volgende voorbeeld door de naam van uw eigen unieke Key Vault:
+Maak vervolgens een Key Vault met [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Elke Key Vault moet een unieke naam hebben van alleen kleine letters. Vervang `mykeyvault` in het volgende voorbeeld door de naam van uw eigen unieke Key Vault:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -68,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Een certificaat genereren en opslaan in Key Vault
-Voor productiegebruik moet u een geldig certificaat importeren dat is ondertekend door de vertrouwde provider met [Import-AzKeyVaultCertificate.](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate) In deze zelfstudie ziet u in het volgende voorbeeld hoe u een zelfondertekend certificaat genereren met [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) dat het standaardcertificaatbeleid van [Nieuw-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy)gebruikt. 
+Voor productie gebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider met [import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). Voor deze zelf studie ziet u in het volgende voor beeld hoe u een zelfondertekend certificaat kunt genereren met [add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) dat gebruikmaakt van het standaard certificaat beleid van [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -121,7 +116,7 @@ Het duurt enkele minuten voordat de virtuele machine wordt gemaakt. In de laatst
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Een certificaat toevoegen aan de virtuele machine vanuit Key Vault
-Als u het certificaat van Key Vault aan een VM wilt toevoegen, u de id van uw certificaat verkrijgen met [Get-AzKeyVaultSecret.](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret) Voeg het certificaat toe aan de virtuele machine met [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+Om het certificaat van Key Vault toe te voegen aan een virtuele machine, moet u de ID van uw certificaat verkrijgen met [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Voeg het certificaat toe aan de virtuele machine met [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -171,13 +166,13 @@ Uw beveiligde IIS-website wordt vervolgens weergegeven zoals in het volgende voo
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u een IIS-webserver beveiligd met een TLS/SSL-certificaat dat is opgeslagen in Azure Key Vault. U hebt geleerd hoe u:
+In deze zelf studie hebt u een IIS-webserver beveiligd met een TLS/SSL-certificaat dat is opgeslagen in Azure Key Vault. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een Azure Key Vault maken
 > * Een certificaat genereren of uploaden naar de Key Vault
 > * Een virtuele machine maken en de IIS-webserver installeren
-> * Injecteer het certificaat in de VM en configureer IIS met een TLS-binding
+> * Het certificaat in de virtuele machine injecteren en IIS configureren met een TLS-binding
 
 Volg deze link om voorbeelden te zien van vooraf gemaakte virtuele machinescripts.
 

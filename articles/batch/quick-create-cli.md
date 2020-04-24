@@ -1,21 +1,15 @@
 ---
 title: Azure-snelstartgids - Batch-taak uitvoeren - CLI
-description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI. Azure-resources maken en beheren vanuit de opdrachtregel of in scripts.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: azurecli
+description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI. Maak en beheer Azure-resources vanaf de opdracht regel of in scripts.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3ec3ab6cc988ba1d11231a1bda1eec15d6e811c8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77024497"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116329"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met Azure CLI
 
@@ -39,7 +33,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 U kunt een Azure-opslagaccount aan het Batch-account koppelen. Hoewel dit niet is vereist voor deze snelstartgids, is een opslagaccount handig voor het implementeren van toepassingen, en voor het opslaan van invoer- en uitvoergegevens voor de meeste workloads uit de praktijk. Maak een opslagaccount in de resourcegroep met behulp van de opdracht [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 

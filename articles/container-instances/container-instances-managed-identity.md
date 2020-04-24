@@ -1,62 +1,57 @@
 ---
-title: Beheerde identiteit inschakelen in containergroep
-description: Meer informatie over het inschakelen van een beheerde identiteit in Azure Container Instances die kan worden geverifieerd met andere Azure-services
+title: Beheerde identiteit inschakelen in container groep
+description: Meer informatie over het inschakelen van een beheerde identiteit in Azure Container Instances die kan worden geverifieerd met andere Azure-Services
 ms.topic: article
-ms.date: 01/29/2020
-ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/15/2020
+ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685647"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115717"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
 
-Gebruik [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) om code uit te voeren in Azure Container Instances die met andere Azure-services communiceren - zonder geheimen of referenties in code te bewaren. De functie biedt een Azure Container Instances-implementatie met een automatisch beheerde identiteit in Azure Active Directory.
+Gebruik [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) voor het uitvoeren van code in azure container instances die samenwerkt met andere Azure-Services, zonder geheimen of referenties in code te behouden. De functie biedt een Azure Container Instances implementatie met een automatisch beheerde identiteit in Azure Active Directory.
 
 In dit artikel vindt u meer informatie over beheerde identiteiten in Azure Container Instances en:
 
 > [!div class="checklist"]
-> * Een door de gebruiker toegewezen of door het systeem toegewezen identiteit in een containergroep inschakelen
-> * De identiteit toegang verlenen tot een Azure-sleutelkluis
-> * De beheerde identiteit gebruiken om toegang te krijgen tot een sleutelkluis vanuit een lopende container
+> * Een door de gebruiker toegewezen of door het systeem toegewezen identiteit inschakelen in een container groep
+> * De identiteit toegang verlenen tot een Azure-sleutel kluis
+> * De beheerde identiteit gebruiken om toegang te krijgen tot een sleutel kluis van een actieve container
 
-Pas de voorbeelden aan om identiteiten in Azure Container Instances in te schakelen en te gebruiken om toegang te krijgen tot andere Azure-services. Deze voorbeelden zijn interactief. In de praktijk worden uw containerafbeeldingen echter code uitgevoerd om toegang te krijgen tot Azure-services.
-
-> [!NOTE]
-> Momenteel u een beheerde identiteit niet gebruiken in een containergroep die is geïmplementeerd in een virtueel netwerk.
+De voor beelden aanpassen om identiteiten in Azure Container Instances in te scha kelen en te gebruiken voor toegang tot andere Azure-Services. Deze voor beelden zijn interactief. In de praktijk voeren uw container installatie kopieën echter code uit voor toegang tot Azure-Services.
+ 
+> [!IMPORTANT]
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt. Beheerde identiteiten op Azure Container Instances worden momenteel alleen ondersteund met Linux-containers en nog niet met Windows-containers.
 
 ## <a name="why-use-a-managed-identity"></a>Waarom een beheerde identiteit gebruiken?
 
-Gebruik een beheerde identiteit in een lopende container om te verifiëren voor een [service die Azure AD-verificatie ondersteunt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) zonder referenties in uw containercode te beheren. Voor services die geen AD-verificatie ondersteunen, u geheimen opslaan in een Azure-sleutelkluis en de beheerde identiteit gebruiken om toegang te krijgen tot de sleutelkluis om referenties op te halen. Zie [Wat zijn beheerde identiteiten voor Azure-bronnen voor](../active-directory/managed-identities-azure-resources/overview.md) meer informatie over het gebruik van een beheerde identiteit?
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt. Momenteel worden beheerde identiteiten op Azure Container Instances alleen ondersteund met Linux-containers en nog niet met Windows-containers.
->  
+Gebruik een beheerde identiteit in een actieve container om te verifiëren bij elke [service die ondersteuning biedt voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) zonder dat u referenties in uw container code hoeft te beheren. Voor services die geen ondersteuning bieden voor AD-verificatie, kunt u geheimen opslaan in een Azure-sleutel kluis en de beheerde identiteit gebruiken voor toegang tot de sleutel kluis om referenties op te halen. Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie over het gebruik van een beheerde identiteit.
 
 ### <a name="enable-a-managed-identity"></a>Een beheerde identiteit inschakelen
 
- In Azure Container Instances worden beheerde identiteiten voor Azure-resources ondersteund vanaf REST API-versie 2018-10-01 en bijbehorende SDK's en hulpprogramma's. Wanneer u een containergroep maakt, schakelt u een of meer beheerde identiteiten in door een eigenschap [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) in te stellen. U beheerde identiteiten ook in- of bijwerken nadat een containergroep wordt uitgevoerd, omdat de containergroep opnieuw wordt opgestart. Als u de identiteiten wilt instellen op een nieuwe of bestaande containergroep, gebruikt u de Azure CLI, een resourcemanagersjabloon of een YAML-bestand. 
+ Wanneer u een container groep maakt, moet u een of meer beheerde identiteiten inschakelen door een eigenschap [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) in te stellen. U kunt beheerde identiteiten ook inschakelen of bijwerken nadat een container groep is uitgevoerd. deze bewerking zorgt ervoor dat de container groep opnieuw wordt gestart. Als u de identiteiten voor een nieuwe of bestaande container groep wilt instellen, gebruikt u de Azure CLI, een resource manager-sjabloon, een YAML-bestand of een ander Azure-hulp programma. 
 
-Azure Container Instances ondersteunt beide typen beheerde Azure-identiteiten: door de gebruiker toegewezen en systeemtoegewezen. In een containergroep u een door het systeem toegewezen identiteit, een of meer door de gebruiker toegewezen identiteiten of beide typen identiteiten inschakelen. 
-
-* Een door de gebruiker toegewezen beheerde identiteit wordt gemaakt als een zelfstandige Azure-bron in de Azure **AD-tenant** die wordt vertrouwd door het abonnement dat in gebruik is. Nadat de identiteit is gemaakt, kan de identiteit worden toegewezen aan een of meer Azure-bronnen (in Azure Container Instances of andere Azure-services). De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd vanaf de levenscyclus van de containergroepen of andere serviceresources waaraan de identiteit is toegewezen. Dit gedrag is vooral handig in Azure Container Instances. Omdat de identiteit verder gaat dan de levensduur van een containergroep, u deze opnieuw gebruiken, samen met andere standaardinstellingen om de implementaties van uw containergroep zeer herhaalbaar te maken.
-
-* Een **door het systeem toegewezen beheerde** identiteit is rechtstreeks ingeschakeld op een containergroep in Azure Container Instances. Wanneer dit is ingeschakeld, maakt Azure een identiteit voor de groep in de Azure AD-tenant die wordt vertrouwd door het abonnement van de instantie. Nadat de identiteit is gemaakt, worden de referenties in elke container in de containergroep ingericht. De levenscyclus van een door het systeem toegewezen identiteit is rechtstreeks gekoppeld aan de containergroep waarop deze is ingeschakeld. Wanneer de groep wordt verwijderd, ruimt Azure automatisch de referenties en de identiteit op in Azure AD.
+Azure Container Instances ondersteunt beide typen beheerde Azure-identiteiten: aan de gebruiker toegewezen en het systeem toegewezen. In een container groep kunt u een door het systeem toegewezen identiteit, een of meer door de gebruiker toegewezen identiteiten of beide typen identiteiten inschakelen. Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u het [overzicht](../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="use-a-managed-identity"></a>Een beheerde identiteit gebruiken
 
-Als u een beheerde identiteit wilt gebruiken, moet de identiteit in eerste instantie toegang krijgen tot een of meer Azure-servicebronnen (zoals een web-app, een sleutelkluis of een opslagaccount) in het abonnement. Als u de Azure-bronnen vanuit een lopende container wilt openen, moet uw code een *toegangstoken* verkrijgen van een Azure AD-eindpunt. Vervolgens verzendt uw code het toegangstoken op een gesprek naar een service die Azure AD-verificatie ondersteunt. 
+Als u een beheerde identiteit wilt gebruiken, moet aan de identiteit toegang worden verleend tot een of meer Azure-service resources (zoals een web-app, een sleutel kluis of een opslag account) in het abonnement. Het gebruik van een beheerde identiteit in een container die wordt uitgevoerd, is vergelijkbaar met het gebruik van een identiteit in een Azure-VM. Zie de VM-richt lijnen voor het gebruik van een [token](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), [Azure POWERSHELL of Azure cli](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)of de [Azure sdk's](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
 
-Het gebruik van een beheerde identiteit in een lopende container is in wezen hetzelfde als het gebruik van een identiteit in een Azure VM. Zie de VM-richtlijnen voor het gebruik van een [token,](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) [Azure PowerShell of Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)of de Azure [SDKs](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
+### <a name="limitations"></a>Beperkingen
+
+* Op dit moment kunt u geen beheerde identiteit gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
+* U kunt een beheerde identiteit niet gebruiken voor het ophalen van een installatie kopie van Azure Container Registry bij het maken van een container groep. De identiteit is alleen beschikbaar in een actieve container.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.0.49 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.49 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-key-vault"></a>Een Azure-sleutelkluis maken
+## <a name="create-an-azure-key-vault"></a>Een Azure-sleutel kluis maken
 
-De voorbeelden in dit artikel gebruiken een beheerde identiteit in Azure Container Instances om toegang te krijgen tot een Azure-sleutelkluisgeheim. 
+In de voor beelden in dit artikel wordt een beheerde identiteit in Azure Container Instances gebruikt om toegang te krijgen tot een geheim van Azure sleutel kluis. 
 
 Maak eerst een resourcegroep met de naam *myResourceGroup* op de locatie *eastus* met behulp van de volgende [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)-opdracht:
 
@@ -64,7 +59,7 @@ Maak eerst een resourcegroep met de naam *myResourceGroup* op de locatie *eastus
 az group create --name myResourceGroup --location eastus
 ```
 
-Gebruik de opdracht [AZ Keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) om een sleutelkluis te maken. Zorg ervoor dat u een unieke naam van de sleutelkluis opgeeft. 
+Gebruik de opdracht [AZ Key kluis Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) om een sleutel kluis te maken. Zorg ervoor dat u een unieke naam voor de sleutel kluis opgeeft. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -73,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-Bewaar een voorbeeldgeheim in de sleutelkluis met de opdracht [az keyvault secret set:](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set)
+Sla een voor beeld geheim op in de sleutel kluis met behulp van de opdracht [AZ Key kluis Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) :
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -82,13 +77,13 @@ az keyvault secret set \
   --description ACIsecret --vault-name mykeyvault
 ```
 
-Ga verder met de volgende voorbeelden om toegang te krijgen tot de sleutelkluis met behulp van een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit in Azure Container Instances.
+Ga door met de volgende voor beelden om toegang te krijgen tot de sleutel kluis met behulp van een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit in Azure Container Instances.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Voorbeeld 1: Een door de gebruiker toegewezen identiteit gebruiken om toegang te krijgen tot Azure-sleutelkluis
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Voor beeld 1: een door de gebruiker toegewezen identiteit gebruiken om toegang te krijgen tot Azure sleutel kluis
 
 ### <a name="create-an-identity"></a>Een identiteit maken
 
-Maak eerst een identiteit in uw abonnement met behulp van de opdracht [AZ-identiteit maken.](/cli/azure/identity?view=azure-cli-latest#az-identity-create) U dezelfde resourcegroep gebruiken die wordt gebruikt om de sleutelkluis te maken of een andere groep te gebruiken.
+Maak eerst een identiteit in uw abonnement met behulp van de opdracht [AZ Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) . U kunt dezelfde resource groep gebruiken als voor het maken van de sleutel kluis of een andere gebruiken.
 
 ```azurecli-interactive
 az identity create \
@@ -96,21 +91,39 @@ az identity create \
   --name myACIId
 ```
 
-Als u de identiteit in de volgende stappen wilt gebruiken, gebruikt u de opdracht [AZ-identiteitsshow](/cli/azure/identity?view=azure-cli-latest#az-identity-show) om de serviceprincipal-id en resource-id van de identiteit op te slaan in variabelen.
+Als u de identiteit in de volgende stappen wilt gebruiken, gebruikt u de opdracht [AZ Identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) om de Service-Principal-id en resource-id van de identiteit op te slaan in variabelen.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
-spID=$(az identity show --resource-group myResourceGroup --name myACIId --query principalId --output tsv)
+spID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query principalId --output tsv)
 
 # Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --query id --output tsv)
+resourceID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query id --output tsv)
 ```
 
-### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Een door de gebruiker toegewezen identiteit inschakelen voor een containergroep
+### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Aan de gebruiker toegewezen identiteits toegang verlenen tot de sleutel kluis
 
-Voer de volgende opdracht [voor het maken van AZ-containers uit](/cli/azure/container?view=azure-cli-latest#az-container-create) om een containerexemplaar te maken op basis van de afbeelding van `azure-cli` Microsoft. In dit voorbeeld wordt een groep met één container die u interactief gebruiken om de Azure CLI uit te voeren om toegang te krijgen tot andere Azure-services. In deze sectie wordt alleen het basis Ubuntu-besturingssysteem gebruikt. 
+Voer de volgende [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest) opdracht uit om een toegangs beleid in te stellen op de sleutel kluis. In het volgende voor beeld is het mogelijk dat de door de gebruiker toegewezen identiteit geheimen van de sleutel kluis krijgt:
 
-De `--assign-identity` parameter geeft uw door de gebruiker toegewezen beheerde identiteit door aan de groep. De langlopende opdracht houdt de container draaiende. In dit voorbeeld wordt dezelfde resourcegroep gebruikt die wordt gebruikt om de sleutelkluis te maken, maar u een andere groep opgeven.
+```azurecli-interactive
+ az keyvault set-policy \
+    --name mykeyvault \
+    --resource-group myResourceGroup \
+    --object-id $spID \
+    --secret-permissions get
+```
+
+### <a name="enable-user-assigned-identity-on-a-container-group"></a>Door de gebruiker toegewezen identiteit inschakelen voor een container groep
+
+Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis `azure-cli` van de installatie kopie van micro soft. Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. In deze sectie wordt alleen het basis besturingssysteem gebruikt. Zie voor een voor beeld van het gebruik van de Azure CLI in de container de door [het systeem toegewezen identiteit inschakelen voor een container groep](#enable-system-assigned-identity-on-a-container-group). 
+
+De `--assign-identity` para meter geeft uw door de gebruiker toegewezen beheerde identiteit door aan de groep. De langlopende opdracht zorgt ervoor dat de container wordt uitgevoerd. In dit voor beeld wordt dezelfde resource groep gebruikt als voor het maken van de sleutel kluis, maar u kunt een andere naam opgeven.
 
 ```azurecli-interactive
 az container create \
@@ -121,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status met de opdracht [AZ Container Show.](/cli/azure/container?view=azure-cli-latest#az-container-show)
+Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status met de opdracht [AZ container show](/cli/azure/container?view=azure-cli-latest#az-container-show) .
 
 ```azurecli-interactive
 az container show \
@@ -129,7 +142,7 @@ az container show \
   --name mycontainer
 ```
 
-De `identity` sectie in de uitvoer ziet er vergelijkbaar uit als het volgende, waarbij de identiteit wordt weergegeven in de containergroep. Het `principalID` `userAssignedIdentities` onder is het serviceprincipal van de identiteit die u hebt gemaakt in Azure Active Directory:
+De `identity` sectie in de uitvoer ziet er ongeveer als volgt uit, waarin wordt weer gegeven dat de identiteit is ingesteld in de container groep. De `principalID` onder `userAssignedIdentities` is de service-principal van de identiteit die u hebt gemaakt in azure Active Directory:
 
 ```console
 [...]
@@ -147,21 +160,9 @@ De `identity` sectie in de uitvoer ziet er vergelijkbaar uit als het volgende, w
 [...]
 ```
 
-### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Gebruikerstoegewezen identiteitstoegang verlenen tot de sleutelkluis
+### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Door gebruiker toegewezen identiteit gebruiken om geheim te halen uit sleutel kluis
 
-Voer de volgende opdracht [voor het sleutelkluisbeleid van AZ](/cli/azure/keyvault?view=azure-cli-latest) uit om een toegangsbeleid in te stellen voor de sleutelkluis. In het volgende voorbeeld kan de door de gebruiker toegewezen identiteit geheimen uit de sleutelkluis krijgen:
-
-```azurecli-interactive
- az keyvault set-policy \
-    --name mykeyvault \
-    --resource-group myResourceGroup \
-    --object-id $spID \
-    --secret-permissions get
-```
-
-### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Gebruik door de gebruiker toegewezen identiteit om geheim te halen uit sleutelkluis
-
-Nu u de beheerde identiteit in de lopende containerinstantie gebruiken om toegang te krijgen tot de sleutelkluis. Start eerst een bash shell in de container:
+U kunt nu de beheerde identiteit binnen het actieve container exemplaar gebruiken voor toegang tot de sleutel kluis. Start eerst een bash-shell in de container:
 
 ```azurecli-interactive
 az container exec \
@@ -170,7 +171,7 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Voer de volgende opdrachten uit in de bashshell in de container. Voer de volgende opdracht uit om een toegangstoken te gebruiken dat Azure Active Directory gebruikt om te verifiëren voor sleutelkluis:
+Voer de volgende opdrachten uit in de bash-shell in de container. Voer de volgende opdracht uit om een toegangs token te verkrijgen voor het gebruik van Azure Active Directory om te verifiëren bij de sleutel kluis:
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
@@ -182,32 +183,32 @@ Uitvoer:
 {"access_token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9......xxxxxxxxxxxxxxxxx","refresh_token":"","expires_in":"28799","expires_on":"1539927532","not_before":"1539898432","resource":"https://vault.azure.net/","token_type":"Bearer"}
 ```
 
-Voer de volgende opdracht uit om het toegangstoken in een variabele op te slaan dat u in volgende opdrachten wilt gebruiken om te verifiëren:
+Voer de volgende opdracht uit om het toegangs token op te slaan in een variabele die in de volgende opdrachten moet worden gebruikt om te verifiëren:
 
 ```bash
 token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true | jq -r '.access_token')
 
 ```
 
-Gebruik nu het toegangstoken om te verifiëren voor sleutelkluis en lees een geheim. Zorg ervoor dat u de naam van uw sleutelkluis vervangt in de URL (*https:\//mykeyvault.vault.azure.net/...*):
+Gebruik nu het toegangs token om te verifiëren bij de sleutel kluis en lees een geheim. Zorg ervoor dat u de naam van de sleutel kluis in de URL (*https:\//mykeyvault.Vault.Azure.net/...*) vervangt:
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
-Het antwoord lijkt op het volgende, met het geheim. In uw code, zou je ontindirect deze output om het geheim te verkrijgen. Gebruik het geheim vervolgens in een volgende bewerking om toegang te krijgen tot een andere Azure-bron.
+Het antwoord ziet er ongeveer als volgt uit, waarin het geheim wordt weer gegeven. In uw code parseert u deze uitvoer om het geheim te verkrijgen. Gebruik vervolgens het geheim in een volgende bewerking om toegang te krijgen tot een andere Azure-resource.
 
 ```bash
 {"value":"Hello Container Instances","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Voorbeeld 2: Een door het systeem toegewezen identiteit gebruiken om toegang te krijgen tot Azure-sleutelkluis
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Voor beeld 2: een door het systeem toegewezen identiteit gebruiken om toegang te krijgen tot de Azure sleutel kluis
 
-### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Een systeemtoegewezen identiteit inschakelen voor een containergroep
+### <a name="enable-system-assigned-identity-on-a-container-group"></a>Door het systeem toegewezen identiteit inschakelen voor een container groep
 
-Voer de volgende opdracht [voor het maken van AZ-containers uit](/cli/azure/container?view=azure-cli-latest#az-container-create) om een containerexemplaar te maken op basis van de afbeelding van `azure-cli` Microsoft. In dit voorbeeld wordt een groep met één container die u interactief gebruiken om de Azure CLI uit te voeren om toegang te krijgen tot andere Azure-services. 
+Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis `azure-cli` van de installatie kopie van micro soft. Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. 
 
-De `--assign-identity` parameter zonder extra waarde maakt een door het systeem toegewezen beheerde identiteit op de groep mogelijk. De identiteit is beperkt tot de resourcegroep van de containergroep. De langlopende opdracht houdt de container draaiende. In dit voorbeeld wordt dezelfde resourcegroep gebruikt die wordt gebruikt om de sleutelkluis te maken, maar u een andere groep opgeven.
+Met `--assign-identity` de para meter zonder extra waarde kan een door het systeem toegewezen beheerde identiteit voor de groep worden ingeschakeld. De identiteit ligt binnen het bereik van de resource groep van de container groep. De langlopende opdracht zorgt ervoor dat de container wordt uitgevoerd. In dit voor beeld wordt dezelfde resource groep gebruikt voor het maken van de sleutel kluis die zich binnen het bereik van de identiteit bevindt.
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -222,7 +223,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status met de opdracht [AZ Container Show.](/cli/azure/container?view=azure-cli-latest#az-container-show)
+Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status met de opdracht [AZ container show](/cli/azure/container#az-container-show) .
 
 ```azurecli-interactive
 az container show \
@@ -230,7 +231,7 @@ az container show \
   --name mycontainer
 ```
 
-De `identity` sectie in de uitvoer lijkt op het volgende, waaruit blijkt dat een door het systeem toegewezen identiteit is gemaakt in Azure Active Directory:
+De `identity` sectie in de uitvoer ziet er ongeveer als volgt uit, waarin wordt weer gegeven dat er een door het systeem toegewezen identiteit is gemaakt in azure Active Directory:
 
 ```console
 [...]
@@ -243,15 +244,18 @@ De `identity` sectie in de uitvoer lijkt op het volgende, waaruit blijkt dat een
 [...]
 ```
 
-Stel een variabele in `principalId` op de waarde van (de serviceprincipal-id) van de identiteit, die u in latere stappen gebruiken.
+Stel een variabele in op de waarde `principalId` van (de Service-Principal-id) van de identiteit, die u in latere stappen moet gebruiken.
 
 ```azurecli-interactive
-spID=$(az container show --resource-group myResourceGroup --name mycontainer --query identity.principalId --out tsv)
+spID=$(az container show \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-container-group-access-to-the-key-vault"></a>Containergroep toegang verlenen tot de sleutelkluis
+### <a name="grant-container-group-access-to-the-key-vault"></a>Container groep toegang verlenen tot de sleutel kluis
 
-Voer de volgende opdracht [voor het sleutelkluisbeleid van AZ](/cli/azure/keyvault?view=azure-cli-latest) uit om een toegangsbeleid in te stellen voor de sleutelkluis. In het volgende voorbeeld kan de door het systeem beheerde identiteit geheimen uit de sleutelkluis krijgen:
+Voer de volgende [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest) opdracht uit om een toegangs beleid in te stellen op de sleutel kluis. In het volgende voor beeld is het mogelijk dat de door het systeem beheerde identiteit geheimen van de sleutel kluis krijgt:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -261,9 +265,9 @@ Voer de volgende opdracht [voor het sleutelkluisbeleid van AZ](/cli/azure/keyvau
    --secret-permissions get
 ```
 
-### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>De identiteit van de containergroep gebruiken om geheim te halen uit sleutelkluis
+### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>De identiteit van een container groep gebruiken om geheim te halen uit de sleutel kluis
 
-Nu u de beheerde identiteit gebruiken om toegang te krijgen tot de sleutelkluis binnen de lopende containerinstantie. Start eerst een bash shell in de container:
+U kunt nu de beheerde identiteit gebruiken om toegang te krijgen tot de sleutel kluis binnen het actieve container exemplaar. Start eerst een bash-shell in de container:
 
 ```azurecli-interactive
 az container exec \
@@ -272,13 +276,13 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Voer de volgende opdrachten uit in de bashshell in de container. Log eerst in bij de Azure CLI met de beheerde identiteit:
+Voer de volgende opdrachten uit in de bash-shell in de container. Meld u eerst aan bij de Azure CLI met behulp van de beheerde identiteit:
 
 ```bash
 az login --identity
 ```
 
-Haal uit de lopende container het geheim uit de sleutelkluis:
+Haal in de actieve container het geheim op uit de sleutel kluis:
 
 ```bash
 az keyvault secret show \
@@ -292,19 +296,19 @@ De waarde van het geheim wordt opgehaald:
 "Hello Container Instances"
 ```
 
-## <a name="enable-managed-identity-using-resource-manager-template"></a>Beheerde identiteit inschakelen met de sjabloon Resourcebeheer
+## <a name="enable-managed-identity-using-resource-manager-template"></a>Beheerde identiteit inschakelen met Resource Manager-sjabloon
 
-Als u een beheerde identiteit in een containergroep `identity` wilt `Microsoft.ContainerInstance/containerGroups` inschakelen met `ContainerGroupIdentity` behulp van een [resourcemanagersjabloon,](container-instances-multi-container-group.md)stelt u de eigenschap van het object in met een object. In de volgende `identity` fragmenten wordt de eigenschap weergegeven die is geconfigureerd voor verschillende scenario's. Zie de verwijzing naar de [sjabloon ResourceManager](/azure/templates/microsoft.containerinstance/containergroups). Geef een `apiVersion` `2018-10-01`minimum van .
+Als u een beheerde identiteit in een container groep wilt inschakelen met een [Resource Manager](container-instances-multi-container-group.md)-sjabloon `identity` , stelt u `Microsoft.ContainerInstance/containerGroups` de eigenschap van `ContainerGroupIdentity` het object in met een-object. De volgende fragmenten bevatten de eigenschap `identity` die voor verschillende scenario's is geconfigureerd. Zie de [Naslag informatie voor Resource Manager-sjablonen](/azure/templates/microsoft.containerinstance/containergroups). Geef een minimum `apiVersion` van `2018-10-01`op.
 
-### <a name="user-assigned-identity"></a>Door de gebruiker toegewezen identiteit
+### <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 
-Een door de gebruiker toegewezen identiteit is een bron-id van het formulier:
+Een door de gebruiker toegewezen identiteit is een resource-ID van het formulier:
 
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
 ``` 
 
-U een of meer door gebruikers toegewezen identiteiten inschakelen.
+U kunt een of meer door de gebruiker toegewezen identiteiten inschakelen.
 
 ```json
 "identity": {
@@ -316,7 +320,7 @@ U een of meer door gebruikers toegewezen identiteiten inschakelen.
     }
 ```
 
-### <a name="system-assigned-identity"></a>Systeemtoegewezen identiteit
+### <a name="system-assigned-identity"></a>Door het systeem toegewezen identiteit
 
 ```json
 "identity": {
@@ -324,9 +328,9 @@ U een of meer door gebruikers toegewezen identiteiten inschakelen.
     }
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Door het systeem en de gebruiker toegewezen identiteiten
+### <a name="system--and-user-assigned-identities"></a>Systeem-en door de gebruiker toegewezen identiteiten
 
-In een containergroep u zowel een door het systeem toegewezen identiteit als een of meer door de gebruiker toegewezen identiteiten inschakelen.
+In een container groep kunt u een door het systeem toegewezen identiteit en een of meer door de gebruiker toegewezen identiteiten inschakelen.
 
 ```json
 "identity": {
@@ -341,18 +345,18 @@ In een containergroep u zowel een door het systeem toegewezen identiteit als een
 
 ## <a name="enable-managed-identity-using-yaml-file"></a>Beheerde identiteit inschakelen met YAML-bestand
 
-Als u een beheerde identiteit wilt inschakelen in een containergroep die is geïmplementeerd met een [YAML-bestand,](container-instances-multi-container-yaml.md)bevat u de volgende YAML.
-Geef een `apiVersion` `2018-10-01`minimum van .
+Als u een beheerde identiteit wilt inschakelen in een container groep die is geïmplementeerd met behulp van een [yaml-bestand](container-instances-multi-container-yaml.md), neemt u de volgende YAML op.
+Geef een minimum `apiVersion` van `2018-10-01`op.
 
-### <a name="user-assigned-identity"></a>Door de gebruiker toegewezen identiteit
+### <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 
-Een door de gebruiker toegewezen identiteit is een bron-id van het formulier 
+Een door de gebruiker toegewezen identiteit is een resource-ID van het formulier 
 
 ```
 '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
 ```
 
-U een of meer door gebruikers toegewezen identiteiten inschakelen.
+U kunt een of meer door de gebruiker toegewezen identiteiten inschakelen.
 
 ```YAML
 identity:
@@ -361,16 +365,16 @@ identity:
     {'myResourceID1':{}}
 ```
 
-### <a name="system-assigned-identity"></a>Systeemtoegewezen identiteit
+### <a name="system-assigned-identity"></a>Door het systeem toegewezen identiteit
 
 ```YAML
 identity:
   type: SystemAssigned
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Door het systeem en de gebruiker toegewezen identiteiten
+### <a name="system--and-user-assigned-identities"></a>Systeem-en door de gebruiker toegewezen identiteiten
 
-In een containergroep u zowel een door het systeem toegewezen identiteit als een of meer door de gebruiker toegewezen identiteiten inschakelen.
+In een container groep kunt u een door het systeem toegewezen identiteit en een of meer door de gebruiker toegewezen identiteiten inschakelen.
 
 ```YAML
 identity:
@@ -381,13 +385,13 @@ identity:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u over beheerde identiteiten in Azure Container Instances en hoe u:
+In dit artikel hebt u geleerd over beheerde identiteiten in Azure Container Instances en leert u het volgende:
 
 > [!div class="checklist"]
-> * Een door de gebruiker toegewezen of door het systeem toegewezen identiteit in een containergroep inschakelen
-> * De identiteit toegang verlenen tot een Azure-sleutelkluis
-> * De beheerde identiteit gebruiken om toegang te krijgen tot een sleutelkluis vanuit een lopende container
+> * Een door de gebruiker toegewezen of door het systeem toegewezen identiteit inschakelen in een container groep
+> * De identiteit toegang verlenen tot een Azure-sleutel kluis
+> * De beheerde identiteit gebruiken om toegang te krijgen tot een sleutel kluis van een actieve container
 
-* Meer informatie over [beheerde identiteiten voor Azure-bronnen](/azure/active-directory/managed-identities-azure-resources/).
+* Meer informatie over [beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/).
 
-* Bekijk een [Azure Go SDK-voorbeeld](https://medium.com/@samkreter/c98911206328) van het gebruik van een beheerde identiteit om toegang te krijgen tot een sleutelkluis vanuit Azure Container Instances.
+* Bekijk een [Azure go SDK-voor beeld](https://medium.com/@samkreter/c98911206328) van het gebruik van een beheerde identiteit voor toegang tot een sleutel kluis van Azure container instances.

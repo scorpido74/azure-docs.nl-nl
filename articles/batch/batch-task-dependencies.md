@@ -1,46 +1,36 @@
 ---
-title: Taakafhankelijkheden maken om taken uit te voeren - Azure Batch
-description: Taken maken die afhankelijk zijn van de voltooiing van andere taken voor het verwerken van MapReduce-stijl en vergelijkbare big data-workloads in Azure Batch.
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
-ms.service: batch
+title: Taak afhankelijkheden maken om taken uit te voeren-Azure Batch
+description: Maak taken die afhankelijk zijn van de voltooiing van andere taken voor het verwerken van MapReduce stijl en soort gelijke big data werk belastingen in Azure Batch.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca771117e889afc8e143c4ca4626ab2d3bb4da2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022899"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116482"
 ---
-# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Taakafhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken
+# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Taak afhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken
 
-U taakafhankelijkheden definiëren om een taak of set taken uit te voeren nadat een bovenliggende taak is voltooid. Enkele scenario's waarin taakafhankelijkheden nuttig zijn, zijn:
+U kunt taak afhankelijkheden definiëren om een taak of een set taken alleen uit te voeren nadat een bovenliggende taak is voltooid. Enkele scenario's waarbij taak afhankelijkheden handig zijn, zijn onder andere:
 
-* MapWorkloads in de cloud verminderen.
-* Taken waarvan de gegevensverwerkingstaken kunnen worden uitgedrukt als een gerichte acyclische grafiek (DAG).
-* Pre-rendering en post-rendering processen, waar elke taak moet voltooien voordat de volgende taak kan beginnen.
-* Elke andere taak waarbij downstreamtaken afhankelijk zijn van de output van upstreamtaken.
+* MapReduce-werk belastingen in de Cloud.
+* Taken waarvan de taken voor gegevens verwerking kunnen worden uitgedrukt als een Directed Acyclic Graph (DAG).
+* Processen vóór rendering en na het renderen, waarbij elke taak moet worden voltooid voordat de volgende taak kan worden gestart.
+* Een andere taak waarin downstream-taken afhankelijk zijn van de uitvoer van upstream-taken.
 
-Met batchtaakafhankelijkheden u taken maken die zijn gepland voor uitvoering op compute-knooppunten na het voltooien van een of meer bovenliggende taken. U bijvoorbeeld een taak maken die elk frame van een 3D-film met afzonderlijke, parallelle taken rendert. De laatste taak- de "samenvoegtaak"-- voegt de gerenderde frames pas samen in de volledige film nadat alle frames zijn gerenderd.
+Met batch taak afhankelijkheden kunt u taken maken die zijn gepland voor uitvoering op reken knooppunten na het volt ooien van een of meer bovenliggende taken. U kunt bijvoorbeeld een taak maken waarmee elk frame van een 3D-film met afzonderlijke, parallelle taken wordt weer gegeven. De laatste taak--de taak samen voegen: Hiermee worden de gerenderde frames pas samengevoegd in de volledige film nadat alle frames zijn gerenderd.
 
-Afhankelijke taken worden standaard pas voor uitvoering gepland nadat de bovenliggende taak is voltooid. U een afhankelijkheidsactie opgeven om het standaardgedrag te overschrijven en taken uit te voeren wanneer de bovenliggende taak mislukt. Zie de sectie [Afhankelijkheidsacties](#dependency-actions) voor meer informatie.  
+Standaard worden afhankelijke taken alleen gepland voor uitvoering nadat de bovenliggende taak is voltooid. U kunt een afhankelijkheids actie opgeven om het standaard gedrag te overschrijven en taken uit te voeren wanneer de bovenliggende taak mislukt. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie.  
 
-U taken maken die afhankelijk zijn van andere taken in een één-op-één- of één-op-één-relatie. U ook een bereikafhankelijkheid maken waarbij een taak afhankelijk is van de voltooiing van een groep taken binnen een bepaald taak-id. U deze drie basisscenario's combineren om veel-op-veel relaties te maken.
+U kunt taken maken die afhankelijk zijn van andere taken in een een-op-een-of een-op-veel-relatie. U kunt ook een bereik afhankelijkheid maken waarbij een taak afhankelijk is van de voltooiing van een groep taken binnen een opgegeven reeks taak-Id's. U kunt deze drie basis scenario's combi neren om veel-op-veel-relaties te maken.
 
-## <a name="task-dependencies-with-batch-net"></a>Taakafhankelijkheden met Batch .NET
-In dit artikel bespreken we hoe u taakafhankelijkheden configureert met behulp van de [Batch .NET-bibliotheek.][net_msdn] We laten u eerst zien hoe u [taakafhankelijkheid](#enable-task-dependencies) van uw taken inschakelen en laten vervolgens zien hoe [u een taak configureren met afhankelijkheden.](#create-dependent-tasks) We beschrijven ook hoe u een afhankelijkheidsactie opgeeft om afhankelijke taken uit te voeren als de bovenliggende onderneming faalt. Tot slot bespreken we de [afhankelijkheidsscenario's](#dependency-scenarios) die Batch ondersteunt.
+## <a name="task-dependencies-with-batch-net"></a>Taak afhankelijkheden met batch .NET
+In dit artikel wordt beschreven hoe taak afhankelijkheden worden geconfigureerd met behulp van de [batch .net][net_msdn] -bibliotheek. We laten u eerst zien hoe u de [taak afhankelijkheid kunt inschakelen](#enable-task-dependencies) voor uw taken en hoe u [een taak configureert met afhankelijkheden](#create-dependent-tasks). Daarnaast wordt beschreven hoe u een afhankelijkheids actie opgeeft voor het uitvoeren van afhankelijke taken als het bovenliggende item mislukt. Ten slotte bespreken we de [afhankelijkheids scenario's](#dependency-scenarios) die door batch worden ondersteund.
 
-## <a name="enable-task-dependencies"></a>Taakafhankelijkheden inschakelen
-Als u taakafhankelijkheden wilt gebruiken in uw Batch-toepassing, moet u eerst de taak configureren om taakafhankelijkheden te gebruiken. Schakel in Batch .NET het in op uw [CloudJob][net_cloudjob] `true`door de eigenschap [UsesTaskDependencies][net_usestaskdependencies] in te stellen op:
+## <a name="enable-task-dependencies"></a>Taak afhankelijkheden inschakelen
+Als u taak afhankelijkheden in uw batch-toepassing wilt gebruiken, moet u eerst de taak configureren voor het gebruik van taak afhankelijkheden. Schakel in batch .NET het in op uw [eigenschap cloudjob][net_cloudjob] door de eigenschap [UsesTaskDependencies][net_usestaskdependencies] in te `true`stellen op:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -50,10 +40,10 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-In het voorgaande codefragment is 'batchClient' een instantie van de klasse [BatchClient.][net_batchclient]
+In het voor gaande code fragment is ' batchClient ' een instantie van de klasse [batchClient][net_batchclient] .
 
 ## <a name="create-dependent-tasks"></a>Afhankelijke taken maken
-Als u een taak wilt maken die afhankelijk is van de voltooiing van een of meer bovenliggende taken, u opgeven dat de taak afhankelijk is van de andere taken. Configureer in Batch .NET de [CloudTask][net_cloudtask]. [DependsOn][net_dependson] met een instantie van de klasse [Taakafhankelijkheden:][net_taskdependencies]
+Als u een taak wilt maken die afhankelijk is van het volt ooien van een of meer bovenliggende taken, kunt u opgeven dat de taak afhankelijk is van de andere taken. Configureer de [CloudTask][net_cloudtask]in batch .net. De eigenschap [DependsOn][net_dependson] met een exemplaar van de klasse [TaskDependencies][net_taskdependencies] :
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -64,29 +54,29 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
-In dit codefragment wordt een afhankelijke taak gemaakt met taak-ID 'Bloemen'. De taak "Bloemen" is afhankelijk van taken "Regen" en "Zon". Taak "Bloemen" wordt alleen op een compute-knooppunt uitgevoerd nadat taken 'Regen' en 'Zon' zijn voltooid.
+Met dit code fragment maakt u een afhankelijke taak met taak-ID "bloemen". De taak "bloemen" is afhankelijk van de taken "regen" en "Sun". Taak "bloemen" wordt alleen gepland om te worden uitgevoerd op een reken knooppunt nadat taken "regen" en "Sun" zijn voltooid.
 
 > [!NOTE]
-> Standaard wordt een taak als voltooid beschouwd wanneer **completed** deze in de voltooide `0`status staat en de **exitcode** . In Batch .NET betekent dit een [CloudTask][net_cloudtask]. [Waarde van][net_taskstate] `Completed` de eigenschap State van en de [TaskExecutionInformation][net_taskexecutioninformation]van de CloudTask . [De][net_exitcode] waarde van `0`de eigenschap ExitCode is . Zie de sectie [Afhankelijkheidsacties](#dependency-actions) voor het wijzigen van dit artikel.
+> Standaard wordt een taak als voltooid beschouwd als deze de status **voltooid** heeft en de **afsluit code** ervan `0`. In batch .NET betekent dit een [CloudTask][net_cloudtask]. [State][net_taskstate] Waarde van de eigenschap `Completed` State van en de [TaskExecutionInformation][net_taskexecutioninformation]van het CloudTask. [ExitCode][net_exitcode] De waarde van de `0`eigenschap ExitCode is. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie over hoe u dit kunt wijzigen.
 > 
 > 
 
-## <a name="dependency-scenarios"></a>Afhankelijkheidsscenario's
-Er zijn drie basisscenario's voor taakafhankelijkheid die u gebruiken in Azure Batch: één-op-één, één-op-één en afhankelijkheid van taak-id-bereik. Deze kunnen worden gecombineerd om een vierde scenario te bieden, veel-op-veel.
+## <a name="dependency-scenarios"></a>Afhankelijkheids scenario's
+Er zijn drie elementaire scenario's voor taak afhankelijkheden die u in Azure Batch kunt gebruiken: een-op-een-, een-op-veel-en taak-ID-bereik afhankelijkheid. Deze kunnen worden gecombineerd om een vierde scenario te bieden. veel-op-veel.
 
-| Scenario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Voorbeeld |  |
+| Omstandigheden&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Voorbeeld |  |
 |:---:| --- | --- |
-|  [Een-op-een](#one-to-one) |*taskB* is afhankelijk van *taskA* <p/> *taskB* wordt pas gepland voor uitvoering als *taskA* is voltooid |![Diagram: één-op-één taakafhankelijkheid][1] |
-|  [Een-op-veel](#one-to-many) |*taskC* is afhankelijk van zowel *taskA* als *taskB* <p/> *taskC* wordt pas gepland voor uitvoering als zowel *taskA* als *taskB* met succes zijn voltooid |![Diagram: één-op-veel taakafhankelijkheid][2] |
-|  [Taak-id-bereik](#task-id-range) |*taskD* is afhankelijk van een reeks taken <p/> *taakD* wordt pas gepland voor uitvoering als de taken met iD's *1* tot en met *10* zijn voltooid |![Diagram: Afhankelijkheid taak-id-bereik][3] |
+|  [Een-op-een](#one-to-one) |*taakb kan pas* is afhankelijk van *taaka* <p/> *taakb kan pas* wordt niet gepland voor uitvoering totdat *taaka* is voltooid |![Diagram: een-op-een-taak afhankelijkheid][1] |
+|  [Een-op-veel](#one-to-many) |*taakc* is afhankelijk van zowel *Taaka* als *taakb kan pas* <p/> *taakc* wordt pas ingepland als de uitvoering van *Takena* en *taakb kan pas* is voltooid |![Diagram: een-op-veel-taak afhankelijkheid][2] |
+|  [Bereik taak-ID](#task-id-range) |*taken* zijn afhankelijk van een reeks taken <p/> de *taak* wordt niet gepland voor uitvoering totdat de taken met de id *1* t/m *10* zijn voltooid |![Diagram: afhankelijkheid van taak-id-bereik][3] |
 
 > [!TIP]
-> U **veel-op-veel** relaties maken, zoals waar taken C, D, E en F elk afhankelijk zijn van taken A en B. Dit is bijvoorbeeld handig in parallelle voorbewerkingsscenario's waarbij uw downstreamtaken afhankelijk zijn van de uitvoer van meerdere upstreamtaken.
+> U kunt **veel-op-veel** -relaties maken, zoals de taken C, D, E en F elk zijn afhankelijk van de taken A en B. Dit is bijvoorbeeld handig in scenario's met een geparalleld preproces waarbij uw downstream-taken afhankelijk zijn van de uitvoer van meerdere upstream-taken.
 > 
-> In de voorbeelden in deze sectie wordt een afhankelijke taak pas uitgevoerd nadat de bovenliggende taken zijn voltooid. Dit gedrag is het standaardgedrag voor een afhankelijke taak. U een afhankelijke taak uitvoeren nadat een bovenliggende taak is mislukt door een afhankelijkheidsactie op te geven om het standaardgedrag te overschrijven. Zie de sectie [Afhankelijkheidsacties](#dependency-actions) voor meer informatie.
+> In de voor beelden in deze sectie wordt een afhankelijke taak alleen uitgevoerd nadat de bovenliggende taken zijn voltooid. Dit gedrag is het standaard gedrag voor een afhankelijke taak. U kunt een afhankelijke taak uitvoeren nadat een bovenliggende taak is mislukt door een afhankelijkheids actie op te geven om het standaard gedrag te negeren. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie.
 
 ### <a name="one-to-one"></a>Een-op-een
-In een één-op-één relatie is een taak afhankelijk van de succesvolle voltooiing van een bovenliggende taak. Als u de afhankelijkheid wilt maken, geeft u één taak-id op aan de [taakafhankelijkheden][net_taskdependencies]. Statische methode [onId][net_onid] wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]vult .
+Bij een een-op-een-relatie is een taak afhankelijk van de geslaagde voltooiing van één bovenliggende taak. Als u de afhankelijkheid wilt maken, geeft u één taak-ID op voor de [TaskDependencies][net_taskdependencies]. [OnId][net_onid] static-methode wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]invult.
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -100,7 +90,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>Een-op-veel
-In een één-op-veel relatie is een taak afhankelijk van de voltooiing van meerdere bovenliggende taken. Als u de afhankelijkheid wilt maken, verstrekt u een verzameling taak-id's aan de [taakafhankelijkheden][net_taskdependencies]. Statische methode [OnIds][net_onids] wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]vult .
+Bij een een-op-veel-relatie is een taak afhankelijk van het volt ooien van meerdere bovenliggende taken. Als u de afhankelijkheid wilt maken, geeft u een verzameling taak-Id's op voor de [TaskDependencies][net_taskdependencies]. [OnIds][net_onids] static-methode wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]invult.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -115,16 +105,16 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ``` 
 
-### <a name="task-id-range"></a>Taak-id-bereik
-In een afhankelijkheid van een reeks bovenliggende taken is een taak afhankelijk van de voltooiing van taken waarvan de id's binnen een bereik liggen.
-Als u de afhankelijkheid wilt maken, geeft u de eerste en laatste taak-id's in het bereik op aan de [taakafhankelijkheden][net_taskdependencies]. Statische methode [OnIdRange][net_onidrange] wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]invult .
+### <a name="task-id-range"></a>Bereik taak-ID
+In een afhankelijkheid van een reeks bovenliggende taken is een taak afhankelijk van de voltooiing van taken waarvan de Id's binnen een bereik liggen.
+Als u de afhankelijkheid wilt maken, geeft u de eerste en laatste taak-Id's op in het bereik tot de [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] static-methode wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]invult.
 
 > [!IMPORTANT]
-> Wanneer u taak-ID-bereiken gebruikt voor uw afhankelijkheden, worden alleen taken met id's die gehele waarden vertegenwoordigen, geselecteerd op het bereik. Dus het `1..10` bereik `3` selecteert `7`taken `5flamingoes`en , maar niet . 
+> Wanneer u taak-ID-bereiken voor uw afhankelijkheden gebruikt, worden alleen de taken met Id's die gehele waarden vertegenwoordigen, geselecteerd door het bereik. Daarom worden in `1..10` het bereik taken `3` en `7`, maar niet `5flamingoes`geselecteerd. 
 > 
-> Het voorlopen van nullen is niet significant bij het `4` `04` evalueren `004` van afhankelijkheden van het bereik, dus `4`taken met tekenreeks-id's en bevinden zich allemaal *binnen* het bereik en worden allemaal als taak behandeld, dus de eerste die wordt voltooid, voldoet aan de afhankelijkheid.
+> Voorloop nullen zijn niet significant bij het evalueren van de bereik afhankelijkheden, dus taken `4`met `04` teken `004` reeks-id's, en zijn allemaal *binnen* het bereik en ze worden allemaal `4`beschouwd als taak, zodat de eerste die moet worden voltooid, aan de afhankelijkheid wordt voldaan.
 > 
-> Elke taak in het bereik moet voldoen aan de afhankelijkheid, hetzij door het voltooien met succes of door te voltooien met een fout die is toegewezen aan een afhankelijkheidactie ingesteld **op Voldoen**. Zie de sectie [Afhankelijkheidsacties](#dependency-actions) voor meer informatie.
+> Elke taak in het bereik moet voldoen aan de afhankelijkheid, hetzij door het volt ooien of door het volt ooien van een fout die is toegewezen aan een afhankelijkheids actie ingesteld op **voldaan**. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie.
 >
 >
 
@@ -146,28 +136,28 @@ new CloudTask("4", "cmd.exe /c echo 4")
 },
 ```
 
-## <a name="dependency-actions"></a>Afhankelijkheidsacties
+## <a name="dependency-actions"></a>Afhankelijkheids acties
 
-Standaard wordt een afhankelijke taak of set taken alleen uitgevoerd nadat een bovenliggende taak is voltooid. In sommige scenario's u afhankelijke taken uitvoeren, zelfs als de bovenliggende taak mislukt. U het standaardgedrag overschrijven door een afhankelijkheidsactie op te geven. Een afhankelijkheidsactie geeft aan of een afhankelijke taak in aanmerking komt voor uitvoeren, op basis van het succes of falen van de bovenliggende taak. 
+Een afhankelijke taak of set taken wordt standaard pas uitgevoerd nadat een bovenliggende taak is voltooid. In sommige gevallen wilt u wellicht afhankelijke taken uitvoeren, zelfs als de bovenliggende taak mislukt. U kunt het standaard gedrag negeren door een afhankelijkheids actie op te geven. Een afhankelijkheids actie geeft aan of een afhankelijke taak in aanmerking komt voor uitvoering, op basis van het slagen of mislukken van de bovenliggende taak. 
 
-Stel dat een afhankelijke taak wacht op gegevens van de voltooiing van de upstreamtaak. Als de upstream-taak mislukt, kan de afhankelijke taak mogelijk nog steeds worden uitgevoerd met oudere gegevens. In dit geval kan een afhankelijkheidsactie opgeven dat de afhankelijke taak in aanmerking komt voor uitvoeren ondanks het mislukken van de bovenliggende taak.
+Stel bijvoorbeeld dat een afhankelijke taak wacht op gegevens van het volt ooien van de upstream-taak. Als de upstream-taak mislukt, kan de afhankelijke taak mogelijk nog steeds worden uitgevoerd met oudere gegevens. In dit geval kan een afhankelijkheids actie opgeven dat de afhankelijke taak kan worden uitgevoerd ondanks het mislukken van de bovenliggende taak.
 
-Een afhankelijkheidsactie is gebaseerd op een exitvoorwaarde voor de bovenliggende taak. U een afhankelijkheidsactie opgeven voor een van de volgende exitvoorwaarden. zie voor .NET de klasse [ExitConditions][net_exitconditions] voor meer informatie:
+Een afhankelijkheids actie is gebaseerd op een afsluit voorwaarde voor de bovenliggende taak. U kunt een afhankelijkheids actie voor elk van de volgende afsluit voorwaarden opgeven. voor .NET raadpleegt u de klasse [ExitConditions][net_exitconditions] voor meer informatie:
 
-- Wanneer een pre-processing fout optreedt.
-- Wanneer er een fout optreedt bij het uploaden van bestanden. Als de taak wordt afgesloten met een exitcode die is opgegeven via **exitCodes** of **exitCodeRanges,** en vervolgens een fout voor het uploaden van bestanden tegenkomt, heeft de actie die is opgegeven door de exitcode voorrang.
-- Wanneer de taak wordt afgesloten met een exitcode die is gedefinieerd door de eigenschap **ExitCodes.**
-- Wanneer de taak wordt afgesloten met een exitcode die binnen een bereik valt dat is opgegeven door de eigenschap **ExitCodeRanges.**
-- De standaardcase, als de taak wordt afgesloten met een exitcode die niet is gedefinieerd door **ExitCodes** of **ExitCodeRanges,** of als de taak wordt afgesloten met een pre-processing fout en de eigenschap **PreProcessingError** niet is ingesteld, of als de taak mislukt met een fout bij het uploaden van bestanden en de eigenschap **FileUploadError** niet is ingesteld. 
+- Als er een fout optreedt die voorafgaat aan de verwerking.
+- Wanneer er een fout optreedt bij het uploaden van het bestand. Als de taak wordt afgesloten met een afsluit code die is opgegeven via **exitCodes** of **exitCodeRanges**, en vervolgens een fout bij het uploaden van het bestand ondervindt, heeft de actie die is opgegeven door de afsluit code prioriteit.
+- Wanneer de taak wordt afgesloten met een afsluit code die is gedefinieerd door de eigenschap **ExitCodes** .
+- Wanneer de taak wordt afgesloten met een afsluit code die binnen een bereik valt dat is opgegeven met de eigenschap **ExitCodeRanges** .
+- Als de taak wordt afgesloten met een afsluit code die niet is gedefinieerd door **ExitCodes** of **ExitCodeRanges**, of als de taak wordt afgesloten met een pre-verwerkings fout en de eigenschap **PreProcessingError** niet is ingesteld, of als de taak mislukt met een fout bij het uploaden van het bestand en de eigenschap **FileUploadError** niet is ingesteld. 
 
-Als u een afhankelijkheidsactie wilt opgeven in .NET, stelt u de [ExitOptions][net_exitoptions]in . [DependencyAction][net_dependencyaction] eigenschap voor de exit voorwaarde. De eigenschap **DependencyAction** heeft een van de twee waarden:
+Als u een afhankelijkheids actie in .NET wilt opgeven, stelt u de [ExitOptions][net_exitoptions]in. [DependencyAction][net_dependencyaction] -eigenschap voor de afsluit voorwaarde. De eigenschap **DependencyAction** neemt een van de twee volgende waarden:
 
-- Als u de eigenschap **DependencyAction** instelt **op Voldoen,** geeft u aan dat afhankelijke taken in aanmerking komen om uit te voeren als de bovenliggende taak wordt afgesloten met een opgegeven fout.
-- Als u de eigenschap **DependencyAction** instelt **op Blokkeren,** geeft u aan dat afhankelijke taken niet in aanmerking komen voor uitvoeren.
+- Als u de eigenschap **DependencyAction** instelt op **voldaan** , geeft u aan dat afhankelijke taken kunnen worden uitgevoerd als de bovenliggende taak wordt afgesloten met een opgegeven fout.
+- Als u de eigenschap **DependencyAction** instelt op **blok keren** , wordt aangegeven dat er geen afhankelijke taken mogen worden uitgevoerd.
 
-De standaardinstelling voor de eigenschap **DependencyAction** is **Voldoen** aan voor exitcode 0 en **Blokkeren** voor alle andere exitvoorwaarden.
+De standaard instelling voor de eigenschap **DependencyAction** is te **voldoen aan** de afsluit code 0 en **blok keren** voor alle andere afsluit voorwaarden.
 
-In het volgende codefragment wordt de eigenschap **DependencyAction** ingesteld voor een bovenliggende taak. Als de bovenliggende taak wordt afgesloten met een voorbewerkingsfout of met de opgegeven foutcodes, wordt de afhankelijke taak geblokkeerd. Als de bovenliggende taak wordt afgesloten met een andere fout zonder nul, komt de afhankelijke taak in aanmerking voor uitvoeren.
+Met het volgende code fragment wordt de eigenschap **DependencyAction** ingesteld voor een bovenliggende taak. Als de bovenliggende taak wordt afgesloten met een pre-verwerkings fout of met de opgegeven fout codes, wordt de afhankelijke taak geblokkeerd. Als de bovenliggende taak wordt afgesloten met een andere fout die niet gelijk is aan nul, komt de afhankelijke taak in aanmerking voor uitvoering.
 
 ```csharp
 // Task A is the parent task.
@@ -203,18 +193,18 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Codevoorbeeld
-Het voorbeeldproject [Taakafhankelijkheden][github_taskdependencies] is een van de [azure batchcodevoorbeelden][github_samples] op GitHub. Deze Visual Studio-oplossing toont:
+Het [TaskDependencies][github_taskdependencies] -voorbeeld project is een van de [Azure batch code voorbeelden][github_samples] op github. Deze Visual Studio-oplossing demonstreert:
 
-- Taakafhankelijkheid van een taak inschakelen
+- Taak afhankelijkheid voor een taak inschakelen
 - Taken maken die afhankelijk zijn van andere taken
-- Deze taken uitvoeren op een pool van compute nodes.
+- Taken uitvoeren op een pool van reken knooppunten.
 
 ## <a name="next-steps"></a>Volgende stappen
 ### <a name="application-deployment"></a>Toepassingsimplementatie
-De [functie toepassingspakketten](batch-application-packages.md) van Batch biedt een eenvoudige manier om de toepassingen die uw taken uitvoeren op compute nodes te implementeren en te versionen.
+De functie [toepassings pakketten](batch-application-packages.md) van batch biedt een eenvoudige manier om de toepassingen te implementeren en te installeren die uw taken uitvoeren op reken knooppunten.
 
-### <a name="installing-applications-and-staging-data"></a>Toepassingen en faseringsgegevens installeren
-Zie [Toepassingen installeren en gegevens met tijdelijke bestanden op batchcomputenodes][forum_post] plaatsen in het Azure Batch-forum voor een overzicht van methoden voor het voorbereiden van uw knooppunten om taken uit te voeren. Geschreven door een van de Azure Batch-teamleden, dit bericht is een goede inleiding over de verschillende manieren om toepassingen, taakinvoergegevens en andere bestanden naar uw compute nodes te kopiëren.
+### <a name="installing-applications-and-staging-data"></a>Toepassingen en faserings gegevens installeren
+Zie [toepassingen en faserings gegevens installeren op batch Compute-knoop punten][forum_post] in het Azure batch-forum voor een overzicht van de methoden voor het voorbereiden van het uitvoeren van taken. Dit bericht is geschreven door een van de Azure Batch-team leden en is een goede primer op de verschillende manieren om toepassingen, invoer gegevens van taken en andere bestanden naar uw reken knooppunten te kopiëren.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -236,6 +226,6 @@ Zie [Toepassingen installeren en gegevens met tijdelijke bestanden op batchcompu
 [net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
 [net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
 
-[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: één-op-één afhankelijkheid"
-[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: één-op-veel afhankelijkheid"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: afhankelijkheid taak-id-bereik"
+[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: een-op-een-afhankelijkheid"
+[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: een-op-veel-afhankelijkheid"
+[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: afhankelijkheid van taak-id-bereik"

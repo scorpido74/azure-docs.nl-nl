@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een data science-experiment maken'
+title: 'Snelstartgids: een Data science-experiment maken'
 titleSuffix: ML Studio (classic) - Azure
 description: Deze quickstart over machine learning leidt u door een eenvoudig gegevenswetenschappelijk experiment. We voorspellen de prijs van een auto met behulp van een regressiealgoritme.
 services: machine-learning
@@ -17,13 +17,13 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "79204559"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Snelstart: uw eerste data science-experiment maken in Azure Machine Learning Studio (klassiek)
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-In deze quickstart maakt u een machine learning-experiment in [Azure Machine Learning Studio (klassiek)](what-is-ml-studio.md) dat de prijs van een auto voorspelt op basis van verschillende variabelen zoals merk en technische specificaties.
+In deze Quick Start maakt u een machine learning experiment in [Azure machine learning Studio (klassiek)](what-is-ml-studio.md) waarmee de prijs van een auto wordt voor speld op basis van verschillende variabelen, zoals het merk en de technische specificaties.
 
 Als u nog geen ervaring hebt met machine learning, is de videoserie [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md) een geweldige inleiding tot machine learning, in gewone taal en met bekende begrippen.
 
@@ -36,26 +36,26 @@ In deze quickstart wordt de standaardwerkstroom voor een experiment gevolgd:
 1. **Het model trainen**
     - [Een algoritme kiezen en toepassen]
 1. **Het model beoordelen en testen**
-    - [Voorspel nieuwe autoprijzen]
+    - [Nieuwe prijzen voor auto's voors pellen]
 
 [De gegevens ophalen]: #get-the-data
 [De gegevens voorbereiden]: #prepare-the-data
 [Functies definiëren]: #define-features
 [Een algoritme kiezen en toepassen]: #choose-and-apply-an-algorithm
-[Voorspel nieuwe autoprijzen]: #predict-new-automobile-prices
+[Nieuwe prijzen voor auto's voors pellen]: #predict-new-automobile-prices
 
 ## <a name="get-the-data"></a>De gegevens ophalen
 
 Het eerste wat u voor machine learning nodig hebt, zijn gegevens.
-Er zijn verschillende voorbeeldgegevenssets opgenomen bij Studio (klassiek) die u gebruiken, of u gegevens importeren uit vele bronnen. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)**. Deze is opgenomen in de werkruimte.
+Er zijn verschillende voorbeeld gegevens sets opgenomen in Studio (klassiek) die u kunt gebruiken, maar u kunt ook gegevens importeren uit een groot aantal bronnen. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)**. Deze is opgenomen in de werkruimte.
 Deze gegevensset bevat vermeldingen voor verschillende auto's, inclusief informatie over het merk, het model, de technische specificaties en de prijs.
 
 > [!TIP]
-> U vindt een werkende kopie van het volgende experiment in de [Azure AI Gallery](https://gallery.azure.ai). Ga naar **[uw eerste data science experiment - Autoprijsvoorspelling](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** en klik op Openen in **Studio** om een kopie van het experiment te downloaden naar uw Machine Learning Studio (klassieke) werkruimte.
+> U vindt een werkende kopie van het volgende experiment in de [Azure AI Gallery](https://gallery.azure.ai). Ga naar **[uw eerste proef versie van data Science-auto Mobile Price prediction](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** en klik op **Open in Studio** om een kopie van het experiment te downloaden naar de werk ruimte machine learning Studio (klassiek).
 
 U voegt de gegevensset als volgt toe aan uw experiment.
 
-1. Maak een nieuw experiment door onder aan het venster Machine Learning Studio (klassiek) op **+NIEUW** te klikken. Selecteer **EXPERIMENT** >  **Leeg Experiment**.
+1. Maak een nieuw experiment door onder aan het venster Machine Learning Studio (klassiek) op **+ Nieuw** te klikken. Selecteer **experiment** >  **blank experimenten**.
 
 1. Het experiment krijgt een standaardnaam die boven aan het canvas wordt weergegeven. Selecteer deze tekst en wijzig de naam in iets relevants, bijvoorbeeld **prijzen auto's voorspellen**. De naam hoeft niet uniek te zijn.
 
@@ -109,7 +109,7 @@ Eerst voegen we een module toe waarmee de kolom **normalized-losses** volledig w
      ![Het deelvenster met eigenschappen geeft aan dat de kolom normalized-losses is uitgesloten](./media/create-experiment/showing-excluded-column.png)
 
      > [!TIP] 
-     > U kunt een opmerking aan een module toevoegen door te dubbelklikken op de module en tekst in te voeren. Zodoende kunt u in één oogopslag zien wat de module in uw experiment doet. Dubbelklik in dit geval op de module Kolommen selecteren in de module [Gegevensset][select-columns] en typ de opmerking 'Genormaliseerde verliezen uitsluiten'.
+     > U kunt een opmerking aan een module toevoegen door te dubbelklikken op de module en tekst in te voeren. Zodoende kunt u in één oogopslag zien wat de module in uw experiment doet. Dubbel klik in dit geval op de module [select columns in dataset][select-columns] en typ de opmerking ' normale verliezen uitsluiten '.
 
      ![Op een module dubbelklikken om een opmerking toe te voegen](./media/create-experiment/add-comment.png)
 
@@ -132,7 +132,7 @@ Nu de gegevens zijn opgeschoond, kunt u opgeven welke functies u wilt gebruiken 
 
 ## <a name="define-features"></a>Functies definiëren
 
-In machine learning zijn *functies* individuele meetbare eigenschappen van iets waarin u geïnteresseerd bent. In onze gegevensset staat elke rij voor één auto en elke kolom bevat een kenmerk van die auto.
+In machine learning zijn *onderdelen* afzonderlijke meet bare eigenschappen van iets waarin u geïnteresseerd bent. In onze gegevensset staat elke rij voor één auto en elke kolom bevat een kenmerk van die auto.
 
 Voor een goede set kenmerken voor het maken van een voorspellend model, moet u experimenteren en beschikken over kennis van het probleem dat u wilt oplossen. Bepaalde kenmerken zijn beter voor het voorspellen van het doel dan andere. Sommige kenmerken hebben een nauwe correlatie met andere kenmerken en kunnen worden verwijderd. City-mpg en highway-mpg lijken bijvoorbeeld sterk op elkaar, waardoor we een van de twee kunnen verwijderen zonder de voorspelling al te veel te beïnvloeden.
 
@@ -242,7 +242,7 @@ Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde
 In deze quickstart hebt u een eenvoudig experiment uitgevoerd met behulp van een voorbeeldgegevensset. Als u het proces van het maken en implementeren van een model nader wilt verkennen, gaat u naar de zelfstudie over voorspellende oplossingen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Ontwikkel een voorspellende oplossing in Studio (klassiek)](tutorial-part1-credit-risk.md)
+> [Zelf studie: een voorspellende oplossing ontwikkelen in Studio (klassiek)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

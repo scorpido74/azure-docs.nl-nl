@@ -1,28 +1,21 @@
 ---
-title: De begingebeurtenis voor het wijzigen van het formaat van de Azure Batch-groep
-description: Referentie voor batchgroep wijzigt de begingebeurtenis voor het formaat van de groep. In het voorbeeld ziet u de hoofdtekst van een begingebeurtenis voor het wijzigen van het formaat van een groep voor het wijzigen van het formaat van 0 naar 2 knooppunten met een handmatigformaat.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Gebeurtenis voor het wijzigen van de grootte van de groep Azure Batch
+description: Verwijzing voor de begin gebeurtenis van de grootte van de batch-pool. Voor beeld toont de hoofd tekst van de start gebeurtenis voor het wijzigen van een pool voor een groep waarvan de grootte wordt gewijzigd van 0 naar 2 knoop punten met een hand matige grootte van het formaat.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: 1866e51da30fe5ed148d019c8720755e99757df7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4aa503c5dfbe00a77216277bdaf7e4c0dc3b1bd
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023579"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115870"
 ---
 # <a name="pool-resize-start-event"></a>Gebeurtenis formaat pool wijzigen starten
 
- Deze gebeurtenis wordt uitgezonden wanneer het formaat van een groep is gewijzigd. Aangezien het formaat van de groep een asynchrone gebeurtenis is, u verwachten dat een volledige gebeurtenis voor het vergroten van de grootte van een groep wordt uitgevoerd zodra de bewerking voor het formaat van de grootte is voltooid.
+ Deze gebeurtenis wordt verzonden wanneer het formaat van een pool wordt gestart. Aangezien de grootte van de pool een asynchrone gebeurtenis is, kunt u verwachten dat een gebeurtenis voor het wijzigen van de pool grootte moet worden verzonden als de grootte van de bewerking is voltooid.
 
- In het volgende voorbeeld ziet u de hoofdtekst van een begingebeurtenis voor het wijzigen van het formaat van een groep voor het wijzigen van het formaat van 0 naar 2 knooppunten met een handmatigformaat.
+ In het volgende voor beeld ziet u de hoofd tekst van een groep voor het wijzigen van de grootte van een pool voor het wijzigen van de grootte van 0 naar 2 knoop punten met een hand matige grootte.
 
 ```
 {
@@ -39,11 +32,11 @@ ms.locfileid: "77023579"
 
 |Element|Type|Opmerkingen|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van het zwembad.|
-|`nodeDeallocationOption`|Tekenreeks|Hiermee geeft u op wanneer knooppunten uit de groep kunnen worden verwijderd als de grootte van de groep afneemt.<br /><br /> Mogelijke waarden zijn:<br /><br /> **opnieuw in de wachtrij** : Beëindig lopende taken en zet ze opnieuw in de wachtrij. De taken worden opnieuw uitgevoerd wanneer de taak is ingeschakeld. Verwijder knooppunten zodra taken zijn beëindigd.<br /><br /> **beëindigen** – Lopende taken beëindigen. De taken worden niet opnieuw uitgevoerd. Verwijder knooppunten zodra taken zijn beëindigd.<br /><br /> **taakvoltooiing** : Laat momenteel uitvoeren van taken uitvoeren toe. Plan geen nieuwe taken tijdens het wachten. Verwijder knooppunten wanneer alle taken zijn voltooid.<br /><br /> **Bewaarde gegevens** - Laat momenteel taken uitvoeren om te voltooien en wacht vervolgens tot alle bewaartermijnen voor taakgegevens zijn verlopen. Plan geen nieuwe taken tijdens het wachten. Verwijder knooppunten wanneer alle taakbewaartermijnen zijn verstreken.<br /><br /> De standaardwaarde is opnieuw in de wachtrij.<br /><br /> Als de grootte van de groep toeneemt, wordt de waarde ingesteld op **ongeldig**.|
-|`currentDedicatedNodes`|Int32|Het aantal rekenknooppunten dat momenteel aan de groep is toegewezen.|
-|`targetDedicatedNodes`|Int32|Het aantal compute nodes dat wordt aangevraagd voor de groep.|
-|`currentLowPriorityNodes`|Int32|Het aantal rekenknooppunten dat momenteel aan de groep is toegewezen.|
-|`targetLowPriorityNodes`|Int32|Het aantal compute nodes dat wordt aangevraagd voor de groep.|
-|`enableAutoScale`|Booleaanse waarde|Hiermee geeft u op of de grootte van de groep zich na verloop van tijd automatisch aanpast.|
-|`isAutoPool`|Booleaanse waarde|Hiermee geeft u op of de groep is gemaakt via het AutoPool-mechanisme van een taak.|
+|`id`|Tekenreeks|De ID van de pool.|
+|`nodeDeallocationOption`|Tekenreeks|Hiermee geeft u op wanneer knoop punten uit de pool kunnen worden verwijderd als de pool grootte afneemt.<br /><br /> Mogelijke waarden zijn:<br /><br /> opnieuw **in wachtrij plaatsen** : lopende taken worden beëindigd en opnieuw in de wachtrij worden geplaatst. De taken worden opnieuw uitgevoerd wanneer de taak is ingeschakeld. Knoop punten verwijderen zodra de taken zijn beëindigd.<br /><br /> **beëindigen** : actieve taken worden beëindigd. De taken worden niet opnieuw uitgevoerd. Knoop punten verwijderen zodra de taken zijn beëindigd.<br /><br /> **taskcompletion** : Hiermee staat u toe dat taken die momenteel worden uitgevoerd, worden voltooid. Geen nieuwe taken plannen tijdens het wachten. Knoop punten verwijderen wanneer alle taken zijn voltooid.<br /><br /> **Retaineddata** : Hiermee staat u toe dat actieve taken worden voltooid en wacht u totdat alle Bewaar perioden voor de taak gegevens verlopen. Geen nieuwe taken plannen tijdens het wachten. Knoop punten verwijderen wanneer alle Bewaar perioden van taken zijn verlopen.<br /><br /> De standaard waarde is opnieuw in de wachtrij.<br /><br /> Als de pool grootte wordt verhoogd, wordt de waarde ingesteld op **ongeldig**.|
+|`currentDedicatedNodes`|Int32|Het aantal reken knooppunten dat momenteel aan de pool is toegewezen.|
+|`targetDedicatedNodes`|Int32|Het aantal reken knooppunten dat is aangevraagd voor de groep.|
+|`currentLowPriorityNodes`|Int32|Het aantal reken knooppunten dat momenteel aan de pool is toegewezen.|
+|`targetLowPriorityNodes`|Int32|Het aantal reken knooppunten dat is aangevraagd voor de groep.|
+|`enableAutoScale`|Booleaanse waarde|Hiermee geeft u op of de pool grootte automatisch in de loop van de tijd wordt aangepast.|
+|`isAutoPool`|Booleaanse waarde|Hiermee geeft u op of de groep is gemaakt via het mechanisme voor de groep van een taak.|

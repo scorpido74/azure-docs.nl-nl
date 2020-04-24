@@ -1,83 +1,72 @@
 ---
-title: Azure-bestandsshare voor Azure Batch-groepen | Microsoft Documenten
-description: Een Azure-bestandenaandeel monteren vanaf compute-knooppunten in een Linux- of Windows-groep in Azure Batch.
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
+title: Azure-bestands share voor Azure Batch Pools
+description: Een Azure Files-share koppelen vanuit reken knooppunten in een Linux-of Windows-groep in Azure Batch.
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: labrenne
-ms.custom: ''
-ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022508"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115445"
 ---
-# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestandsshare gebruiken met een batchgroep
+# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestands share gebruiken met een batch-pool
 
-[Azure Files](../storage/files/storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het SMB-protocol (Server Message Block). In dit artikel vindt u informatie en codevoorbeelden voor het monteren en gebruiken van een Azure-bestandsshare op rekenknooppunten voor de groep. De codevoorbeelden gebruiken de Batch .NET en Python SDKs, maar u vergelijkbare bewerkingen uitvoeren met andere Batch-SDK's en hulpprogramma's.
+[Azure files](../storage/files/storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het SMB-protocol (Server Message Block). Dit artikel bevat informatie en code voorbeelden voor het koppelen en gebruiken van een Azure-bestands share op groeps berekenings knooppunten. De code voorbeelden gebruiken de batch .NET-en python Sdk's, maar u kunt vergelijk bare bewerkingen uitvoeren met andere batch-Sdk's en-hulpprogram ma's.
 
-Batch biedt native API-ondersteuning voor het gebruik van Azure Storage-blobs om gegevens te lezen en te schrijven. In sommige gevallen wilt u echter wel toegang krijgen tot een Azure-bestandsshare vanaf uw rekenknooppunten van de groep. U hebt bijvoorbeeld een verouderde workload die afhankelijk is van een smb-bestandsaandeel of uw taken moeten toegang krijgen tot gedeelde gegevens of gedeelde uitvoer produceren. 
+Batch biedt systeem eigen API-ondersteuning voor het gebruik van Azure Storage blobs om gegevens te lezen en te schrijven. In sommige gevallen wilt u echter een Azure-bestands share openen vanuit uw pool-reken knooppunten. Stel dat u een verouderde werk belasting hebt die afhankelijk is van een SMB-bestands share, of dat uw taken toegang moeten hebben tot gedeelde gegevens of gedeelde uitvoer kunnen produceren. 
 
-## <a name="considerations-for-use-with-batch"></a>Overwegingen voor gebruik met Batch
+## <a name="considerations-for-use-with-batch"></a>Overwegingen voor gebruik met batch
 
-* Overweeg een Azure-bestandsshare te gebruiken wanneer u pools hebt die een relatief laag aantal parallelle taken uitvoeren. Controleer de [prestatie- en schaaldoelen](../storage/files/storage-files-scale-targets.md) om te bepalen of Azure-bestanden (die een Azure Storage-account gebruiken) moeten worden gebruikt, gezien de verwachte grootte van de groep en het aantal assetbestanden. 
+* Overweeg het gebruik van een Azure-bestands share wanneer u Pools hebt die een relatief laag aantal parallelle taken uitvoeren. Bekijk de [prestaties en schaal doelen](../storage/files/storage-files-scale-targets.md) om te bepalen of Azure files (die gebruikmaakt van een Azure Storage-account) moet worden gebruikt, op basis van de verwachte grootte van de groep en het aantal Asset-bestanden. 
 
-* Azure-bestandsshares zijn [kostenefficiënt](https://azure.microsoft.com/pricing/details/storage/files/) en kunnen worden geconfigureerd met gegevensreplicatie naar een andere regio, zodat deze wereldwijd overbodig zijn. 
+* Azure-bestands shares zijn [rendabel](https://azure.microsoft.com/pricing/details/storage/files/) en kunnen worden geconfigureerd met gegevens replicatie naar een andere regio, waardoor het wereld wijd redundant is. 
 
-* U een Azure-bestandsshare gelijktijdig monteren vanaf een on-premises computer.
+* U kunt een Azure-bestands share gelijktijdig koppelen van een on-premises computer.
 
-* Zie ook de algemene [planningsoverwegingen](../storage/files/storage-files-planning.md) voor Azure-bestandsshares.
+* Zie ook de algemene [overwegingen](../storage/files/storage-files-planning.md) bij de planning voor Azure-bestands shares.
 
 
 ## <a name="create-a-file-share"></a>Een bestandsshare maken
 
-[Maak een bestandsshare](../storage/files/storage-how-to-create-file-share.md) in een opslagaccount dat is gekoppeld aan uw Batch-account of in een afzonderlijk opslagaccount.
+[Maak een bestands share](../storage/files/storage-how-to-create-file-share.md) in een opslag account dat is gekoppeld aan uw batch-account, of in een afzonderlijk opslag account.
 
-## <a name="mount-a-share-on-a-windows-pool"></a>Een aandeel op een Windows-groep monteren
+## <a name="mount-a-share-on-a-windows-pool"></a>Een share koppelen aan een Windows-groep
 
-In deze sectie vindt u voorbeelden van stappen en code om een Azure-bestandsshare te monteren en te gebruiken op een groep Windows-knooppunten. Zie voor meer achtergrond de [documentatie](../storage/files/storage-how-to-use-files-windows.md) voor het monteren van een Azure-bestandsshare op Windows. 
+In deze sectie vindt u stappen en code voorbeelden voor het koppelen en gebruiken van een Azure-bestands share op een groep Windows-knoop punten. Zie de [documentatie](../storage/files/storage-how-to-use-files-windows.md) voor het koppelen van een Azure-bestands share in Windows voor aanvullende achtergrond. 
 
-In Batch moet u het aandeel elke keer dat een taak wordt uitgevoerd op een Windows-knooppunt, weergeven. Momenteel is het niet mogelijk om de netwerkverbinding tussen taken op Windows-knooppunten voort te zetten.
+In batch moet u de share koppelen telkens wanneer een taak wordt uitgevoerd op een Windows-knoop punt. Op dit moment is het niet mogelijk om de netwerk verbinding tussen taken op Windows-knoop punten te behouden.
 
-Voeg bijvoorbeeld een `net use` opdracht toe om de bestandsshare te monteren als onderdeel van elke opdrachtregel voor taken. Om de bestandsshare te monteren, zijn de volgende referenties nodig:
+Neem bijvoorbeeld een `net use` opdracht op voor het koppelen van de bestands share als onderdeel van de opdracht regel van elke taak. De volgende referenties zijn nodig om de bestands share te koppelen:
 
-* **Gebruikersnaam**:\\\<AZURE storageaccountname\>,\\bijvoorbeeld AZURE*mystorageaccountname*
-* **Wachtwoord** \<: StorageAccountKeyWhichEnds in==> bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXXXXXXXX==*
+* **Gebruikers naam**: Azure\\\<storageaccountname\>, bijvoorbeeld Azure\\*mystorageaccountname*
+* **Wacht woord**: \<StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
 
-Met de volgende opdracht wordt een *myfileshare* voor bestandsshare gemonteerd in *mijn accountnaam voor opslagaccount* als de *S:* station:
+Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *Mystorageaccountname* als station *S* :
 
 ```
 net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\mystorageaccountname XXXXXXXXXXXXXXXXXXXXX==
 ```
 
-Voor de eenvoud geven de voorbeelden hier de referenties rechtstreeks in tekst door. In de praktijk raden we u ten zeerste aan de referenties te beheren met behulp van omgevingsvariabelen, certificaten of een oplossing zoals Azure Key Vault.
+Ter vereenvoudiging geven de voor beelden hier de referenties direct in de tekst door. In de praktijk raden wij u ten zeerste aan de referenties te beheren met behulp van omgevings variabelen, certificaten of een oplossing zoals Azure Key Vault.
 
-Als u de houderbewerking wilt vereenvoudigen, blijven optioneel de referenties op de knooppunten bestaan. Vervolgens u het aandeel zonder referenties monteren. Voer de volgende twee stappen uit:
+Als u de koppelings bewerking wilt vereenvoudigen, kunt u eventueel de referenties op de knoop punten behouden. Daarna kunt u de share koppelen zonder referenties. Voer de volgende twee stappen uit:
 
-1. Voer `cmdkey` het hulpprogramma voor de opdrachtregel uit met een starttaak in de poolconfiguratie. Dit blijft de referenties op elk Windows-knooppunt. De opdrachtregel voor taak starten is vergelijkbaar met:
+1. Voer het `cmdkey` opdracht regel hulpprogramma uit met behulp van een begin taak in de pool configuratie. Hierdoor blijven de referenties op elk Windows-knoop punt. De opdracht regel van de begin taak is vergelijkbaar met:
 
    ```
    cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
    ```
 
-2. Monteer het aandeel op elk knooppunt `net use`als onderdeel van elke taak met behulp van . De volgende taakopdrachtregel monteert bijvoorbeeld de bestandsshare als het *S:-station.* Dit zou worden gevolgd door een opdracht of script dat verwijst naar het aandeel. Referenties in cache worden gebruikt `net use`in de aanroep naar . In deze stap wordt ervan uitgegaan dat u dezelfde gebruikersidentiteit gebruikt voor de taken die u hebt gebruikt in de begintaak in de groep, wat niet geschikt is voor alle scenario's.
+2. Koppel de share op elk knoop punt als onderdeel van elke taak `net use`met behulp van. Met de volgende opdracht regel van de taak wordt bijvoorbeeld de bestands share gekoppeld als het station *S:* . Dit wordt gevolgd door een opdracht of script dat verwijst naar de share. Referenties in de cache worden gebruikt in de aanroep `net use`van. Bij deze stap wordt ervan uitgegaan dat u dezelfde gebruikers-id gebruikt voor de taken die u hebt gebruikt in de begin taak van de pool. Dit is niet geschikt voor alle scenario's.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
    ```
 
-### <a name="c-example"></a>C# voorbeeld
-In het volgende c#-voorbeeld ziet u hoe u de referenties in een Windows-groep blijven gebruiken met een starttaak. De naam van de opslagbestandsservice en de opslagreferenties worden doorgegeven als gedefinieerde constanten. Hier wordt de starttaak uitgevoerd onder een standaard (niet-beheerders) automatisch gebruikersaccount met een poolbereik.
+### <a name="c-example"></a>C#-voor beeld
+In het volgende C#-voor beeld ziet u hoe u de referenties voor een Windows-groep persistent maakt met behulp van een begin taak. De naam van de opslag bestands service en de opslag referenties worden door gegeven als gedefinieerde constanten. Hier wordt de start taak uitgevoerd onder een standaard account voor automatische gebruikers (niet-beheerders) met groeps bereik.
 
 ```csharp
 ...
@@ -101,7 +90,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Nadat u de referenties hebt opgeslagen, gebruikt u de taakopdrachtregels om het aandeel te monteren en verwijst u naar het aandeel in lees- of schrijfbewerkingen. Als basisvoorbeeld gebruikt de opdrachtregel van de `dir` taak in het volgende fragment de opdracht om bestanden in de bestandsshare weer te geven. Zorg ervoor dat elke taaktaak wordt uitgevoerd met dezelfde [gebruikersidentiteit](batch-user-accounts.md) die u hebt gebruikt om de starttaak in de groep uit te voeren. 
+Na het opslaan van de referenties gebruikt u de opdracht regels van uw taak om de share te koppelen en te verwijzen naar de share in lees-of schrijf bewerkingen. Als basis voor beeld gebruikt de opdracht regel van de taak in het volgende fragment `dir` de opdracht om bestanden in de bestands share weer te geven. Zorg ervoor dat elke taak taak wordt uitgevoerd met dezelfde [gebruikers-id](batch-user-accounts.md) die u hebt gebruikt om de begin taak in de groep uit te voeren. 
 
 ```csharp
 ...
@@ -115,34 +104,34 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(
 tasks.Add(task);
 ```
 
-## <a name="mount-a-share-on-a-linux-pool"></a>Een aandeel op een Linux-pool monteren
+## <a name="mount-a-share-on-a-linux-pool"></a>Een share koppelen aan een Linux-groep
 
-Azure-bestandsshares kunnen worden gemonteerd in Linux-distributies met behulp van de [CIFS-kernelclient.](https://wiki.samba.org/index.php/LinuxCIFS) In het volgende voorbeeld ziet u hoe u een bestandsshare monteert op een groep Ubuntu 16.04 LTS-computenodes. Als u een andere Linux-distributie gebruikt, zijn de algemene stappen vergelijkbaar, maar gebruikt u de package manager die geschikt is voor de distributie. Zie [Azure-bestanden gebruiken met Linux](../storage/files/storage-how-to-use-files-linux.md)voor meer informatie en aanvullende voorbeelden.
+Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [CIFS-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In het volgende voor beeld ziet u hoe u een bestands share koppelt aan een groep van Ubuntu 16,04 LTS Compute-knoop punten. Als u een andere Linux-distributie gebruikt, zijn de algemene stappen vergelijkbaar, maar u kunt het pakket beheer gebruiken dat geschikt is voor de distributie. Zie [Azure files gebruiken met Linux](../storage/files/storage-how-to-use-files-linux.md)voor meer informatie en voor beelden.
 
-Installeer eerst onder de identiteit `cifs-utils` van een beheerder het pakket en maak het bevestigingspunt (bijvoorbeeld */mnt/MyAzureFileShare)* in het lokale bestandssysteem. Een map voor een bevestigingspunt kan overal op het bestandssysteem worden gemaakt, `/mnt` maar het is gebruikelijk om dit onder de map te maken. Zorg ervoor dat u geen `/mnt` bevestigingspunt direct op `/mnt/resource` (op Ubuntu) of (op andere distributies) maakt.
+Installeer eerst het pakket onder een gebruikers-id van `cifs-utils` de beheerder en maak het koppel punt (bijvoorbeeld */mnt/MyAzureFileShare*) in het lokale bestands systeem. U kunt een map voor een koppel punt maken op een wille keurige locatie in het bestands systeem, maar dit is de `/mnt` gebruikelijke Conventie voor het maken van deze in de map. Zorg ervoor dat u geen koppel punt rechtstreeks maakt op `/mnt` (op Ubuntu) of `/mnt/resource` (op andere distributies).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
 ```
 
-Voer vervolgens `mount` de opdracht uit om de bestandsshare te monteren en geeft deze referenties op:
+Voer vervolgens de `mount` opdracht uit om de bestands share te koppelen, zodat u deze referenties kunt opgeven:
 
-* **Gebruikersnaam**: \<accountnaam\>van de opslag, bijvoorbeeld *mystorageaccountnaam*
-* **Wachtwoord** \<: StorageAccountKeyWhichEnds in==> bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXXXXXXXX==*
+* **Gebruikers naam**: \<storageaccountname\>, bijvoorbeeld *mystorageaccountname*
+* **Wacht woord**: \<StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
 
-Met de volgende opdracht wordt een *myfileshare* voor bestandsshare gemonteerd in *mijnaccountnaam van* het opslagaccount bij */mnt/MyAzureFileShare:* 
+Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *mystorageaccountname* op */mnt/MyAzureFileShare*: 
 
 ```
 mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAzureFileShare -o vers=3.0,username=mystorageaccountname,password=XXXXXXXXXXXXXXXXXXXXX==,dir_mode=0777,file_mode=0777,serverino && ls /mnt/MyAzureFileShare
 ```
 
-Voor de eenvoud geven de voorbeelden hier de referenties rechtstreeks in tekst door. In de praktijk raden we u ten zeerste aan de referenties te beheren met behulp van omgevingsvariabelen, certificaten of een oplossing zoals Azure Key Vault.
+Ter vereenvoudiging geven de voor beelden hier de referenties direct in de tekst door. In de praktijk raden wij u ten zeerste aan de referenties te beheren met behulp van omgevings variabelen, certificaten of een oplossing zoals Azure Key Vault.
 
-In een Linux-pool u al deze stappen combineren in één starttaak of ze uitvoeren in een script. Voer de starttaak uit als beheerdersgebruiker in de groep. Stel uw starttaak in om te wachten om te wachten met het voltooien voordat u verdere taken uitvoert op de groep die naar het aandeel verwijst.
+In een Linux-groep kunt u al deze stappen combi neren in één start taak of uitvoeren in een script. De start taak uitvoeren als een beheerder gebruiker van de groep. Stel de begin taak zo in dat deze volledig is voltooid voordat verdere taken worden uitgevoerd op de groep die verwijst naar de share.
 
-### <a name="python-example"></a>Python voorbeeld
+### <a name="python-example"></a>Python-voor beeld
 
-In het volgende Python-voorbeeld ziet u hoe u een Ubuntu-groep configureert om het aandeel in een starttaak te monteren. Het bevestigingspunt, het eindpunt voor bestandsdelen en de opslagreferenties worden doorgegeven als gedefinieerde constanten. De starttaak wordt uitgevoerd onder een automatisch gebruikersaccount van een beheerder met een poolbereik.
+In het volgende python-voor beeld ziet u hoe u een Ubuntu kunt configureren om de share in een begin taak te koppelen. Het koppel punt, het eind punt van de bestands share en de opslag referenties worden door gegeven als gedefinieerde constanten. De start taak wordt uitgevoerd onder een account voor automatische gebruikers met beheerders rechten voor het groeps bereik.
 
 ```python
 pool = batch.models.PoolAddParameter(
@@ -169,7 +158,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-Nadat u het aandeel hebt gemonteerd en een taak hebt gedefinieerd, gebruikt u het aandeel in de taakopdrachtregels. De volgende basisopdracht wordt `ls` bijvoorbeeld gebruikt om bestanden in de bestandsshare weer te geven.
+Na het koppelen van de share en het definiëren van een taak, gebruikt u de share in de opdracht regels van uw taak. De volgende basis opdracht wordt bijvoorbeeld gebruikt `ls` om bestanden in de bestands share weer te geven.
 
 ```python
 ...
@@ -183,6 +172,6 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het [overzicht batchfunctie](batch-api-basics.md) en [Taak- en taakuitvoer](batch-task-output.md)voor andere opties om gegevens in Batch te lezen en te schrijven.
+* Voor andere opties voor het lezen en schrijven van gegevens in batch, raadpleegt u het [overzicht van batch-functies](batch-api-basics.md) en de taak- [en taak uitvoer persistent](batch-task-output.md).
 
-* Zie ook de [Batch Shipyard toolkit,](https://github.com/Azure/batch-shipyard) die [Shipyard recepten](https://github.com/Azure/batch-shipyard/tree/master/recipes) bevat om bestandssystemen te implementeren voor Batch container workloads.
+* Zie ook de [batch Shipyard](https://github.com/Azure/batch-shipyard) Toolkit, die [Shipyard recepten](https://github.com/Azure/batch-shipyard/tree/master/recipes) bevat voor het implementeren van bestands systemen voor werk belastingen voor batch-containers.

@@ -1,7 +1,7 @@
 ---
-title: Bekende problemen & probleemoplossing
+title: Bekende problemen bij het oplossen van problemen &
 titleSuffix: Azure Machine Learning
-description: Hier vindt u een lijst met de bekende problemen, tijdelijke oplossingen en probleemoplossing voor Azure Machine Learning.
+description: Een lijst met bekende problemen, tijdelijke oplossingen en probleem oplossing voor Azure Machine Learning ophalen.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -10,101 +10,115 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619381"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116312"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en het oplossen van problemen met Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
-Met dit artikel u fouten of fouten vinden of corrigeren die u tegenkomen bij het gebruik van Azure Machine Learning.
+Dit artikel helpt u bij het vinden en corrigeren van fouten of fouten die kunnen optreden bij het gebruik van Azure Machine Learning.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
-Soms kan het handig zijn als u diagnostische informatie verstrekken wanneer u om hulp vraagt. Ga als iemand te werk om een aantal logboeken te bekijken: 
-1. Ga naar [Azure Machine Learning-studio](https://ml.azure.com). 
-1. Selecteer **Experiment** aan de linkerkant 
+Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om hulp vraagt. Voor een overzicht van de logboeken: 
+1. Ga naar [Azure machine learning Studio](https://ml.azure.com). 
+1. Selecteer aan de linkerkant **experimenteren** 
 1. Selecteer een experiment.
 1. Selecteer een run.
-1. Selecteer bovenaan **Uitvoer + logboeken**.
+1. Selecteer bovenaan **uitvoer en logboeken**.
 
 > [!NOTE]
-> Azure Machine Learning registreert informatie uit verschillende bronnen tijdens de training, zoals AutoML of de Docker-container die de trainingstaak uitvoert. Veel van deze logboeken zijn niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met Microsoft-ondersteuning, kunnen deze logboeken mogelijk worden gebruikt tijdens het oplossen van problemen.
+> Azure Machine Learning registreert gegevens uit verschillende bronnen tijdens de training, zoals AutoML of de docker-container die de trainings taak uitvoert. Veel van deze logboeken zijn niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
 
 
 ## <a name="resource-quotas"></a>Resourcequota
 
-Meer informatie over de [resourcequota](how-to-manage-quotas.md) die u tegenkomen wanneer u met Azure Machine Learning werkt.
+Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt tegen komen bij het werken met Azure machine learning.
 
 ## <a name="installation-and-import"></a>Installatie en import
 
-* **Foutbericht: Kan 'PyYAML' niet verwijderen**
+* **Fout bericht: kan PyYAML niet verwijderen**
 
-    Azure Machine Learning SDK voor Python: `distutils` PyYAML is een geïnstalleerd project. Daarom kunnen we niet nauwkeurig bepalen welke bestanden ertoe behoren als er een gedeeltelijke verwijderen is. Gebruik het als volgt te gaan met het installeren van de SDK terwijl u deze fout negeert:
+    Azure Machine Learning SDK voor python: PyYAML is een `distutils` geïnstalleerd project. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK en het negeren van deze fout:
     
     ```Python
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Databricks-storing bij het installeren van pakketten**
+* **Databricks-fout bij het installeren van pakketten**
 
-    Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, `psutil`zoals , kunnen conflicten veroorzaken. Als u installatiefouten wilt voorkomen, installeert u pakketten door de bibliotheekversie te bevriezen. Dit probleem is gerelateerd aan Databricks en niet aan de Azure Machine Learning SDK. Mogelijk u dit probleem ook met andere bibliotheken ervaren. Voorbeeld:
+    Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil`, kunnen conflicten veroorzaken. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
     
     ```python
     psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
     ```
 
-    U ook init-scripts gebruiken als u te maken blijft krijgen met installatieproblemen met Python-bibliotheken. Deze aanpak wordt niet officieel ondersteund. Zie [Init-scripts met clusterscoped voor](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)meer informatie .
+    U kunt ook init-scripts gebruiken als u problemen ondervindt bij de installatie van python-bibliotheken. Deze aanpak wordt niet officieel ondersteund. Zie voor meer informatie [cluster-scoped init-scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks import error: cannot import name 'Timedelta' from 'pandas._libs.tslibs'**: Als u deze fout ziet wanneer u geautomatiseerde machine learning gebruikt, voert u de twee volgende regels in uw notitieblok uit:
+* **Databricks import-fout: kan de naam ' timedelta ' niet importeren uit ' Pandas. _libs. tslibs '**: als u deze fout ziet wanneer u automatische machine learning gebruikt, voert u de twee volgende regels uit in uw notitie blok:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Databricks import error: No module named 'pandas.core.indexes'**: Als u deze fout ziet wanneer u geautomatiseerde machine learning gebruikt:
+* **Databricks-import fout: geen module met de naam ' Pandas. core. indices '**: als u deze fout ziet wanneer u gebruikmaakt van automatische machine learning:
 
-    1. Voer deze opdracht uit om twee pakketten in uw Azure Databricks-cluster te installeren:
+    1. Voer deze opdracht uit om twee pakketten te installeren in uw Azure Databricks cluster:
     
        ```bash
        scikit-learn==0.19.1
        pandas==0.22.0
        ```
     
-    1. Maak het cluster los en bevestig het opnieuw aan uw notitieblok.
+    1. Ontkoppel het cluster en koppel het vervolgens opnieuw aan uw notitie blok.
     
-    Als deze stappen het probleem niet oplossen, probeert u het cluster opnieuw op te starten.
+    Als u met deze stappen het probleem niet kunt oplossen, probeert u het cluster opnieuw op te starten.
 
-* **Databricks FailToSendFeather:** Als `FailToSendFeather` u een fout ziet bij het lezen van gegevens op het Azure Databricks-cluster, raadpleegt u de volgende oplossingen:
+* **Databricks FailToSendFeather**: als er een `FailToSendFeather` fout wordt weer gegeven bij het lezen van gegevens op Azure Databricks cluster, raadpleegt u de volgende oplossingen:
     
-    * Upgradepakket `azureml-sdk[automl]` naar de nieuwste versie.
+    * Upgrade `azureml-sdk[automl]` pakket naar de nieuwste versie.
     * Voeg `azureml-dataprep` versie 1.1.8 of hoger toe.
-    * Voeg `pyarrow` versie 0.11 of hoger toe.
+    * Voeg `pyarrow` versie 0,11 of hoger toe.
+    
+* **PIP-installatie: Dependecies zijn niet gegarandeerd consistent met de installatie van een enkele regel**: dit is een bekende beperking van PIP omdat er geen werkende afhankelijkheids conflict is wanneer u als één regel installeert. De eerste unieke afhankelijkheid is de enige die er wordt weer gegeven. Als u bijvoorbeeld Azure-ml-datadrift installeert waarvoor versie > 1,0 en azureml-Train-automl vereist is die versie < 1,2 vereist en als de meest recente versie 1,3 is, wanneer de gebruiker de pakketten op één regel installeert, zoals hieronder wordt weer gegeven, wordt alles bijgewerkt naar 1,3, ook al wordt een oudere versie van het pakket voor azureml-Train-automl vereist. 
 
-## <a name="create-and-manage-workspaces"></a>Werkruimten maken en beheren
+    * Er wordt inconsistente dependecies weer geven met de installatie van één regel.
+    ```python
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   
+    * Als u ervoor wilt zorgen dat de juiste versies voor uw pakketten zijn geïnstalleerd, installeert u met meerdere regels, zoals in de volgende code. Volg orde is hier niet van belang.
+    
+     ```python
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
+## <a name="create-and-manage-workspaces"></a>Werk ruimten maken en beheren
 
 > [!WARNING]
-> Het verplaatsen van uw Azure Machine Learning-werkruimte naar een ander abonnement of het verplaatsen van het eigen abonnement naar een nieuwe tenant wordt niet ondersteund. Dit kan fouten veroorzaken.
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
-* **Azure-portal:** Als u uw werkruimte rechtstreeks vanuit een koppeling voor delen van de SDK of de portal bekijkt, u de normale **overzichtspagina** met abonnementsgegevens in de extensie niet bekijken. U ook niet overschakelen naar een andere werkruimte. Als u een andere werkruimte wilt bekijken, gaat u rechtstreeks naar [Azure Machine Learning-studio](https://ml.azure.com) en zoekt u naar de naam van de werkruimte.
+* **Azure Portal**: als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale **overzicht** niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
 
 ## <a name="set-up-your-environment"></a>Uw omgeving instellen
 
-* **Problemen met het maken van AmlCompute:** er is een zeldzame kans dat sommige gebruikers die hun Azure Machine Learning-werkruimte hebben gemaakt vanaf de Azure-portal vóór de GA-release, mogelijk geen AmlCompute in die werkruimte kunnen maken. U een ondersteuningsverzoek indienen tegen de service of een nieuwe werkruimte maken via de portal of de SDK om uzelf onmiddellijk te deblokkeren.
+* **Problemen**met het maken van AmlCompute: er is een zeldzame kans dat sommige gebruikers die hun Azure machine learning werk ruimte hebben gemaakt vanaf de Azure Portal vóór de Ga-release mogelijk geen AmlCompute in die werk ruimte kunnen maken. U kunt een ondersteunings aanvraag voor de service verhogen of een nieuwe werk ruimte maken via de portal of de SDK om uzelf direct te deblokkeren.
 
 ## <a name="work-with-data"></a>Werken met gegevens
 
 ### <a name="overloaded-azurefile-storage"></a>Overbelaste AzureFile-opslag
 
-Als u een `Unable to upload project files to working directory in AzureFile because the storage is overloaded`fout ontvangt, past u de volgende tijdelijke oplossingen toe.
+Als er een fout `Unable to upload project files to working directory in AzureFile because the storage is overloaded`bericht wordt weer gegeven, moet u de volgende tijdelijke oplossingen Toep assen.
 
-Als u bestandsshare gebruikt voor andere workloads, zoals gegevensoverdracht, is de aanbeveling om blobs te gebruiken, zodat bestandsshare gratis kan worden gebruikt voor het verzenden van uitvoeringen. U de werkbelasting ook verdelen over twee verschillende werkruimten.
+Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overdracht, is de aanbeveling om blobs te gebruiken zodat de bestands share gratis kan worden gebruikt voor het verzenden van uitvoeringen. U kunt de werk belasting ook splitsen tussen twee verschillende werk ruimten.
 
-### <a name="passing-data-as-input"></a>Gegevens doorgeven als invoer
+### <a name="passing-data-as-input"></a>Gegevens door geven als invoer
 
-*  **TypeError: FileNotFound: geen dergelijk bestand of map:** deze fout treedt op als het bestandspad dat u opgeeft niet is waar het bestand zich bevindt. U moet ervoor zorgen dat de manier waarop u naar het bestand verwijst, overeenkomt met de plaats waar u uw gegevensset op uw gegevensset hebt gemonteerd. Om een deterministische toestand te garanderen, raden we u aan het abstracte pad te gebruiken bij het monteren van een gegevensset op een compute-doel. In de volgende code monteren we bijvoorbeeld de gegevensset onder de `/tmp`hoofdmap van het bestandssysteem van het rekendoel. 
+*  **TypeError: FileNotFound: bestand of map**: deze fout treedt op als het bestandspad dat u opgeeft niet waar het bestand zich bevindt. U moet ervoor zorgen dat de manier waarop u naar het bestand verwijst consistent is met de locatie waar u uw gegevensset op het reken doel hebt gekoppeld. We raden u aan het abstracte pad te gebruiken bij het koppelen van een gegevensset aan een reken doel om te zorgen voor een deterministische status. In de volgende code koppelen we bijvoorbeeld de gegevensset aan onder de hoofdmap van het bestands systeem van het berekenings `/tmp`doel. 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -113,65 +127,65 @@ Als u bestandsshare gebruikt voor andere workloads, zoals gegevensoverdracht, is
     } 
     ```
 
-    Als u de leidende slash naar voren niet opneemt, '/', moet u `/mnt/batch/.../tmp/dataset` de werkmap vooraf maken, bijvoorbeeld op het rekendoel om aan te geven waar u de gegevensset wilt monteren.
+    Als u de voorloop back slash (/) niet opneemt, moet u voor voegsel `/mnt/batch/.../tmp/dataset` van de werkmap opgeven, bijvoorbeeld op het berekenings doel om aan te geven waar u de gegevensset wilt koppelen.
 
-### <a name="data-labeling-projects"></a>Projecten voor het labelen van gegevens
+### <a name="data-labeling-projects"></a>Gegevens label projecten
 
 |Probleem  |Oplossing  |
 |---------|---------|
-|Alleen gegevenssets die zijn gemaakt op blob-gegevensbestanden kunnen worden gebruikt     |  dit is een bekende beperking van de huidige release.       |
-|Na de creatie toont het project lange tijd "Initialiseren"     | De pagina handmatig vernieuwen. Initialisatie moet plaatsvinden op ongeveer 20 datapunten per seconde. Het ontbreken van autorefresh is een bekend probleem.         |
-|Bij het bekijken van afbeeldingen worden nieuw gelabelde afbeeldingen niet weergegeven     |   Als u alle gelabelde afbeeldingen wilt laden, kiest u de knop **Eerste.** De **eerste** knop brengt u terug naar de voorkant van de lijst, maar laadt alle gelabelde gegevens.      |
-|Als u op de Esc-toets drukt terwijl u labelt voor objectdetectie, wordt een nulformaatlabel in de linkerbovenhoek aangebracht. Het indienen van labels in deze status mislukt.     |   Verwijder het label door op het kruisteken ernaast te klikken.  |
+|Alleen gegevens sets die zijn gemaakt op BLOB-gegevens opslag kunnen worden gebruikt     |  Dit is een bekende beperking van de huidige release.       |
+|Nadat het project is gemaakt, wordt het ' initialiseren ' gedurende een lange periode weer gegeven     | Vernieuw de pagina hand matig. De initialisatie moet ongeveer 20 data Points per seconde door lopen. Het ontbreken van automatisch vernieuwen is een bekend probleem.         |
+|Bij het controleren van afbeeldingen worden nieuwe gelabelde afbeeldingen niet weer gegeven     |   Als u alle gelabelde afbeeldingen wilt laden, kiest u de **eerste** knop. Met de **eerste** knop gaat u terug naar de voor kant van de lijst, maar worden alle gelabelde gegevens geladen.      |
+|Druk op ESC-toets terwijl labels voor object detectie een label met een grootte van nul maken in de linkerbovenhoek. Het verzenden van labels met deze status mislukt.     |   Verwijder het label door te klikken op de kruis markering ernaast.  |
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerper
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 
 Bekende problemen:
 
-* **Lange voorbereidingstijd voor berekenen**: Het kan een paar minuten of zelfs langer zijn wanneer u voor het eerst verbinding maakt met of een rekendoel maakt. 
+* **Tijd van lange Compute-voor bereiding**: het kan enkele minuten of zelfs langer duren wanneer u voor het eerst verbinding maakt of een compute-doel maakt. 
 
 ## <a name="train-models"></a>Modellen trainen
 
-* **ModuleFouten (geen module met de naam)**: Als u modulefouten tegenkomt tijdens het indienen van experimenten in Azure ML, betekent dit dat het trainingsscript verwacht dat een pakket wordt geïnstalleerd, maar niet wordt toegevoegd. Zodra u de pakketnaam hebt opgemaakt, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor uw trainingsrun. 
+* **ModuleErrors (geen module met de naam)**: als u in ModuleErrors uitvoert terwijl experimenten in azure ml worden ingediend, betekent dit dat het trainings script verwacht dat er een pakket wordt geïnstalleerd, maar dit wordt niet toegevoegd. Wanneer u de naam van het pakket opgeeft, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor de uitvoering van uw training. 
 
-    Als u [Schatters](concept-azure-machine-learning-architecture.md#estimators) gebruikt om experimenten in te `pip_packages` dienen, u een pakketnaam opgeven via of `conda_packages` parameter in de schatter op basis van de bron waarvan u het pakket wilt installeren. U ook een yml-bestand opgeven `conda_dependencies_file`met al uw afhankelijkheden met `pip_requirements_file` behulp van of een lijst van al uw pip-vereisten in een txt-bestand met behulp van parameter. Als u uw eigen Azure ML-omgevingsobject hebt dat u de standaardafbeelding wilt overschrijven `environment` die door de schatter wordt gebruikt, u die omgeving opgeven via de parameter van de schatterconstructor.
+    Als u [schattingen](concept-azure-machine-learning-architecture.md#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven `pip_packages` via `conda_packages` of para meter in de Estimator op basis van de bron die u wilt installeren van het pakket. U kunt ook een yml-bestand met al uw afhankelijkheden `conda_dependencies_file`opgeven of al uw PIP-vereisten in een txt- `pip_requirements_file` bestand met behulp van para meter. Als u uw eigen Azure ML-omgevings object hebt dat u de standaard installatie kopie wilt overschrijven die wordt gebruikt door de Estimator, kunt u die `environment` omgeving opgeven via de para meter van de Estimator-constructor.
 
-    Azure ML biedt ook kaderspecifieke schatters voor Tensorflow, PyTorch, Chainer en SKLearn. Met behulp van deze schatters zal ervoor zorgen dat de kern kader afhankelijkheden worden geïnstalleerd namens u in de omgeving die wordt gebruikt voor training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven beschreven. 
+    Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de basis raamwerk afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  
-    Azure ML onderhouden docker afbeeldingen en de inhoud ervan kan worden gezien in [AzureML Containers](https://github.com/Azure/AzureML-Containers).
-    Kaderspecifieke afhankelijkheden worden vermeld in de desbetreffende kaderdocumentatie - [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+    Azure ML bewaart docker-installatie kopieën en de inhoud ervan kunnen worden weer gegeven in [AzureML-containers](https://github.com/Azure/AzureML-Containers).
+    Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
     > [!Note]
-    > Als u denkt dat een bepaald pakket vaak genoeg is om te worden toegevoegd in azure ml onderhouden afbeeldingen en omgevingen, u een GitHub-probleem in [AzureML-containers](https://github.com/Azure/AzureML-Containers)opte roepen. 
+    > Als u denkt dat een bepaald pakket algemeen genoeg is om te worden toegevoegd aan de bewaarde afbeeldingen en omgevingen van Azure ML, kunt u een GitHub-probleem veroorzaken in [AzureML-containers](https://github.com/Azure/AzureML-Containers). 
  
-* **NameError (Naam niet gedefinieerd), AttributeError (Object heeft geen attribuut)**: Deze uitzondering moet afkomstig zijn van uw trainingsscripts. U de logboekbestanden van azure-portal bekijken om meer informatie te krijgen over de specifieke naam die niet is gedefinieerd of een kenmerkfout. Vanuit de SDK kunt `run.get_details()` u de foutmelding bekijken. Dit bevat ook een lijst van alle logboekbestanden die voor uw run zijn gegenereerd. Zorg ervoor dat u uw trainingsscript bekijkt en de fout oplost voordat u de run opnieuw indient. 
+* **NameError (naam niet gedefinieerd), AttributeError (object heeft geen kenmerk)**: Deze uitzonde ring moet afkomstig zijn uit uw trainings scripts. U kunt de logboek bestanden van Azure Portal bekijken voor meer informatie over de specifieke naam niet gedefinieerd of kenmerk fout. U kunt de SDK gebruiken `run.get_details()` om het fout bericht te bekijken. Hiermee worden ook alle logboek bestanden weer geven die zijn gegenereerd voor de uitvoering. Bekijk uw trainings script en los het probleem op voordat u de uitvoering opnieuw verzendt. 
 
-* **Horovod is stilgelegd**: In de meeste gevallen als je tegenkomt "AbortedError: Horovod is stilgelegd" deze uitzondering betekent dat er een onderliggende uitzondering in een van de processen die horovod veroorzaakt af te sluiten. Elke rang in de MPI-taak krijgt een eigen specifiek logboekbestand in Azure ML. Deze logboeken `70_driver_logs`hebben de naam . In het geval van gedistribueerde training, `_rank` zijn de log namen achtervoegsel met om het gemakkelijker te maken om de logs te onderscheiden. Om de exacte fout die horovod veroorzaakt af te sluiten, `Traceback` ga door alle log bestanden en zoeken aan het einde van de driver_log bestanden. Een van deze bestanden geeft u de werkelijke onderliggende uitzondering. 
+* **Horovod is uitgeschakeld**: in de meeste gevallen is het mogelijk dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor Horovod werd afgesloten als u problemen ondervindt met ' AbortedError: Horovod is afgesloten '. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben `70_driver_logs`de naam. In het geval van gedistribueerde trainingen worden de namen van de `_rank` Logboeken in een achtervoegsel opgenomen, zodat het eenvoudiger is om de logboeken te onderscheiden. Als u de exacte fout wilt vinden die ervoor heeft gezorgd dat Horovod wordt afgesloten, gaat u naar alle logboek `Traceback` bestanden en zoekt u aan het einde van de driver_log bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
 
-* **Verwijdering of verwijdering van het experiment uitvoeren of experimenteren**: Experimenten kunnen worden gearchiveerd met behulp van de methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) of via de tabbladweergave Experiment in azure Machine Learning-studioclient via de knop 'Archiefexperiment'. Met deze actie wordt het experiment verborgen in lijstquery's en weergaven, maar wordt het niet verwijderd.
+* **Verwijdering van de uitvoering of het experiment**: experimenten kunnen worden gearchiveerd met behulp van de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client via de knop ' Archief experiment '. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
 
-    Permanente verwijdering van individuele experimenten of uitvoeringen wordt momenteel niet ondersteund. Zie Uw [Machine Learning-servicewerkruimtegegevens exporteren of verwijderen](how-to-export-delete-data.md)voor meer informatie over het verwijderen van workspace-elementen van Workspace.
+    Het permanent verwijderen van afzonderlijke experimenten of uitvoeringen wordt momenteel niet ondersteund. Zie [uw machine learning service-werkruimte gegevens exporteren of verwijderen](how-to-export-delete-data.md)voor meer informatie over het verwijderen van werk ruimte-assets.
 
-* **Metrische document is te groot:** Azure Machine Learning heeft interne limieten voor de grootte van metrische objecten die in één keer kunnen worden geregistreerd vanaf een trainingsrun. Als u een fout 'Metrisch document is te groot' tegenkomt bij het registreren van een statistiek met een lijstwaarde, probeert u de lijst op te splitsen in kleinere segmenten, bijvoorbeeld:
+* Het **metrieke document is te groot**: Azure machine learning heeft interne limieten voor de grootte van metrische objecten die tegelijk kunnen worden geregistreerd vanuit een training-uitvoering. Als er een fout bericht wordt weer gegeven dat het metrische document te groot is bij het vastleggen van een metrische waarde voor een lijst, kunt u de lijst in kleinere segmenten splitsen, bijvoorbeeld:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
     run.log_list("my metric name", my_metric[N:])
     ```
 
-    Intern voegt Azure ML de blokken met dezelfde metrische naam samen in een aaneengesloten lijst.
+    Intern voegt Azure ML de blokken met dezelfde metrische naam toe aan een aaneengesloten lijst.
 
 ## <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
 
-* **Tensor Flow**: Automated machine learning ondersteunt momenteel geen tensorflowversie 1.13. Als u deze versie installeert, worden pakketafhankelijkheden niet meer werkt. We werken eraan om dit probleem op te lossen in een toekomstige release.
+* **Tensor flow**: automatisch machine learning biedt momenteel geen ondersteuning voor tensor flow-versie 1,13. Als u deze versie installeert, werken de pakket afhankelijkheden niet meer. We werken in een toekomstige release aan het oplossen van dit probleem.
 
-* **Experiment grafieken:** Binaire classificatie grafieken (precisie-recall, ROC, gain curve etc.) weergegeven in geautomatiseerde ML experiment iteraties zijn niet correct rendering in user interface sinds 4/12. Grafiekplots tonen momenteel omgekeerde resultaten, waarbij beter presterende modellen worden weergegeven met lagere resultaten. Een resolutie wordt onderzocht.
+* **Experimenteer grafieken**: binaire classificatie grafieken (Precision-intrekken, Roc, winst curve enz.) die worden weer gegeven in automatische ml-experimenten, worden niet correct gerenderd in de gebruikers interface sinds 4/12. In grafiek grafieken worden momenteel inverse resultaten weer gegeven, waarbij betere modellen worden weer gegeven met lagere resultaten. Een oplossing wordt onderzocht.
 
-* **Databricks annuleert een geautomatiseerde machine learning-run:** wanneer u geautomatiseerde machine learning-mogelijkheden op Azure Databricks gebruikt om een run te annuleren en een nieuw experiment te starten, start u uw Azure Databricks-cluster opnieuw.
+* **Databricks annuleren automatische uitvoering van een machine learning**: wanneer u gebruikmaakt van geautomatiseerde machine learning mogelijkheden op Azure Databricks, kunt u een uitvoering annuleren en een nieuwe uitvoering van het experiment starten door het Azure Databricks-cluster opnieuw op te starten.
 
-* **Databricks >10 iteraties voor geautomatiseerde machine learning:** In geautomatiseerde machine learning-instellingen, als u meer dan 10 iteraties hebt, ingesteld `show_output` op `False` wanneer u de run indient.
+* **Databricks >tien herhalingen voor automatische machine learning**machine learning: als u meer dan 10 iteraties hebt, moet u instellen `show_output` op `False` wanneer u de uitvoering verzendt.
 
-* **Databricks-widget voor de Azure Machine Learning SDK en geautomatiseerde machine learning:** de Azure Machine Learning SDK-widget wordt niet ondersteund in een Databricks-notitieblok omdat de notitieblokken geen HTML-widgets kunnen ontleden. U de widget in de portal bekijken met deze Python-code in uw Azure Databricks-notitieblokcel:
+* **Databricks-widget voor de Azure machine learning SDK en geautomatiseerde machine learning**: de SDK-widget Azure machine learning wordt niet ondersteund in een Databricks-notebook omdat de notebooks geen HTML-widgets kunnen parseren. U kunt de widget in de portal weer geven met behulp van deze python-code in uw Azure Databricks notebook-cel:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
@@ -179,19 +193,19 @@ Bekende problemen:
 
 ## <a name="deploy--serve-models"></a>Modellen implementeren & bedienen
 
-Volg de volgende acties voor de volgende fouten:
+Voer deze acties uit voor de volgende fouten:
 
 |Fout  | Oplossing  |
 |---------|---------|
-|Imagebuilding-fout bij het implementeren van webservice     |  Voeg 'pynacl==1.2.1' toe als pip-afhankelijkheid van Conda-bestand voor afbeeldingsconfiguratie       |
-|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Wijzig de SKU voor VM's die in uw implementatie worden gebruikt in een implementatie met meer geheugen. |
-|FPGA-storing     |  U geen modellen implementeren op FPGA's totdat u hebt aangevraagd en goedgekeurd voor FPGA-quota. Als u toegang wilt aanvragen, vult u het formulier voor het quotumaanvraagformulier in:https://aka.ms/aml-real-time-ai       |
+|Fout bij het maken van de installatie kopie bij het implementeren van de webservice     |  Voeg ' pynacl = = 1.2.1 ' toe als een PIP-afhankelijkheid voor het Conda-bestand voor installatie kopie configuratie       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Wijzig de SKU voor virtuele machines die in uw implementatie worden gebruikt naar een met meer geheugen. |
+|FPGA-fout     |  U kunt geen modellen implementeren op Fpga's totdat u hebt aangevraagd en goedgekeurd voor FPGA-quotum. Vul het quotum aanvraag formulier in om toegang aan te vragen:https://aka.ms/aml-real-time-ai       |
 
-### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Azure Machine Learning-componenten bijwerken in AKS-cluster
+### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Azure Machine Learning-onderdelen in AKS-cluster bijwerken
 
-Updates voor Azure Machine Learning-componenten die zijn geïnstalleerd in een Azure Kubernetes Service-cluster, moeten handmatig worden toegepast. 
+Updates voor Azure Machine Learning onderdelen die zijn geïnstalleerd in een Azure Kubernetes service-cluster, moeten hand matig worden toegepast. 
 
-U deze updates toepassen door het cluster los te koppelen van de Azure Machine Learning-werkruimte en het cluster vervolgens opnieuw aan de werkruimte te koppelen. Als TLS is ingeschakeld in het cluster, moet u het TLS/SSL-certificaat en de privésleutel leveren bij het opnieuw koppelen van het cluster. 
+U kunt deze updates Toep assen door het cluster te ontkoppelen van de Azure Machine Learning-werk ruimte en vervolgens het cluster opnieuw te koppelen aan de werk ruimte. Als TLS is ingeschakeld in het cluster, moet u het TLS/SSL-certificaat en de persoonlijke sleutel opgeven wanneer u het cluster opnieuw koppelt. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -212,18 +226,18 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Als u het TLS/SSL-certificaat en de privésleutel niet meer hebt of als u een certificaat gebruikt dat is gegenereerd `kubectl` door Azure Machine `azuremlfessl`Learning, u de bestanden ophalen voordat u het cluster loskoppelt door verbinding te maken met het cluster met behulp van en het geheime op te halen.
+Als u het TLS/SSL-certificaat en de persoonlijke sleutel niet meer hebt of als u een certificaat gebruikt dat is gegenereerd door Azure Machine Learning, kunt u de bestanden ophalen voordat u het cluster ontkoppelt door verbinding `kubectl` te maken met het cluster `azuremlfessl`met behulp van en het geheim op te halen.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes slaat de geheimen op in het gecodeerde formaat base-64. U moet basis-64 decoderen `cert.pem` `key.pem` van de en onderdelen van `attach_config.enable_ssl`de geheimen voorafgaand aan het verstrekken van hen aan . 
+>Kubernetes slaat de geheimen op in de indeling basis-64-code ring. U moet base-64 decoderen van `cert.pem` de `key.pem` -en-onderdelen van de geheimen voordat u `attach_config.enable_ssl`deze opgeeft. 
 
-### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webservices in Azure Kubernetes Service-fouten
+### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webservices in azure Kubernetes-service fouten
 
-Veel webservicefouten in Azure Kubernetes Service kunnen worden gedebugged door verbinding te maken met het cluster met behulp van `kubectl`. U `kubeconfig.json` het voor een Azure Kubernetes Service Cluster krijgen door
+Veel webservice-fouten in de Azure Kubernetes-service kunnen worden opgespoord door verbinding te maken met `kubectl`het cluster met behulp van. U kunt het voor `kubeconfig.json` een Azure Kubernetes-service cluster verkrijgen door het uit te voeren
 
 ```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -231,7 +245,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="authentication-errors"></a>Verificatiefouten
 
-Als u een beheerbewerking uitvoert op een rekendoel vanuit een externe taak, ontvangt u een van de volgende fouten:
+Als u een beheer bewerking uitvoert op een reken doel van een externe taak, wordt een van de volgende fouten weer gegeven:
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -241,4 +255,4 @@ Als u een beheerbewerking uitvoert op een rekendoel vanuit een externe taak, ont
 {"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
 ```
 
-U ontvangt bijvoorbeeld een fout als u een compute-doel probeert te maken of koppelen aan een ML-pijplijn die is ingediend voor uitvoering op afstand.
+U ontvangt bijvoorbeeld een fout melding als u een reken doel probeert te maken of koppelen van een ML-pijp lijn die wordt ingediend voor externe uitvoering.

@@ -15,8 +15,8 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "75972901"
 ---
-De eenvoudigste manier om een Azure-opslagaccount te maken, is door de [Azure-portal te gebruiken.](https://portal.azure.com) Zie [Een opslagaccount maken](../articles/storage/common/storage-account-create.md) voor meer informatie.
+De eenvoudigste manier om een Azure Storage-account te maken, is met behulp van de [Azure Portal](https://portal.azure.com). Zie [Een opslagaccount maken](../articles/storage/common/storage-account-create.md) voor meer informatie.
 
 U kunt ook een Azure Storage-account maken met behulp van [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md) of de [Azure CLI](../articles/storage/common/storage-azure-cli.md).
 
-Als u op dit moment liever nog geen opslagaccount maakt, kunt u ook de Azure-opslagemulator gebruiken om de code in een lokale omgeving uit te voeren en te testen. Zie [De Azure-opslagemulator gebruiken voor ontwikkeling en testen voor](../articles/storage/common/storage-use-emulator.md)meer informatie.
+Als u op dit moment liever nog geen opslagaccount maakt, kunt u ook de Azure-opslagemulator gebruiken om de code in een lokale omgeving uit te voeren en te testen. Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](../articles/storage/common/storage-use-emulator.md)voor meer informatie.

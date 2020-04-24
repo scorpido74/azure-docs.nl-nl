@@ -1,52 +1,51 @@
 ---
-title: 'Zelfstudie voor afbeeldingsclassificatie: modellen implementeren'
+title: 'Zelf studie voor installatie kopie classificatie: modellen implementeren'
 titleSuffix: Azure Machine Learning
-description: In deze zelfstudie, tweede van een tweedelige serie, wordt uitgelegd hoe u Azure Machine Learning gebruiken om een afbeeldingsclassificatiemodel te implementeren met scikit-learn in een Python Jupyter-notitieblok.
+description: In deze zelf studie, een tweede van een reeks van twee delen, wordt uitgelegd hoe u Azure Machine Learning kunt gebruiken om een installatie kopie classificatie model te implementeren met scikit-Learn in een python Jupyter-notebook.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87ce101910a94cbddf0af4df7b04fc000928845f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159066"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111858"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  Nu bent u klaar om het model te implementeren als een webservice. Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
+Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  U bent nu klaar om het model te implementeren als een webservice. Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
 
-In dit deel van de zelfstudie gebruikt u Azure Machine Learning voor de volgende taken:
+In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de volgende taken:
 
 > [!div class="checklist"]
 > * Uw testomgeving instellen
 > * Het model ophalen uit uw werkruimte
-> * Het model lokaal testen
 > * Het model implementeren in Container Instances
 > * Het geïmplementeerde model testen
 
 Container Instances is een uitstekende oplossing voor het testen en inzicht krijgen in de werkstroom. Voor schaalbare productie-implementaties is het misschien beter om Azure Kubernetes Service te gebruiken. Zie [Modellen implementeren met de Azure Machine Learning-service](how-to-deploy-and-where.md) voor meer informatie.
 
 >[!NOTE]
-> Code in dit artikel is getest met Azure Machine Learning SDK versie 1.0.41.
+> De code in dit artikel is getest met Azure Machine Learning SDK-versie 1.0.83.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het notitieblok wilt uitvoeren, voltooit u eerst de modeltraining in [Zelfstudie (deel 1): Een afbeeldingsclassificatiemodel trainen](tutorial-train-models-with-aml.md).   Open vervolgens het *img-classification-part2-deploy.ipynb-notitieblok* in uw gekloonde *tutorials/map image-classification-mnist-data.*
+Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook *IMG-classificatie-part2-Deploy. ipynb* in uw gekloonde *zelf studies/image-classificatie-mnist-data-* map.
 
-Deze zelfstudie is ook beschikbaar op [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u het wilt gebruiken op uw eigen [lokale omgeving.](how-to-configure-environment.md#local)  Zorg ervoor dat `matplotlib` `scikit-learn` u hebt geïnstalleerd en in uw omgeving. 
+Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u en `matplotlib` `scikit-learn` in uw omgeving hebt geïnstalleerd. 
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als u in het notitieblok ziet.  
+> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
 >
-> Schakel nu over naar het Jupyter-notitieblok als u wilt meelezen terwijl u de code uitvoert.
-> Als u één codecel in een notitieblok wilt uitvoeren, klikt u op de codecel en klikt u op **Shift+Enter**. Of voer het hele notitieblok uit door **Alles uitvoeren** vanaf de bovenste werkbalk te kiezen.
+> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code.
+> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
 
 ## <a name="set-up-the-environment"></a><a name="start"></a>De omgeving instellen
 
@@ -54,78 +53,177 @@ Begin met het instellen van een testomgeving.
 
 ### <a name="import-packages"></a>Pakketten importeren
 
-Importeer de Python-pakketten die nodig zijn voor deze zelfstudie:
+Importeer de Python-pakketten die nodig zijn voor deze zelfstudie.
+
 
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
  
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
 
 # Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="retrieve-the-model"></a>Het model ophalen
+## <a name="deploy-as-web-service"></a>Als webservice implementeren
 
-Bij de vorige zelfstudie hebt u een model geregistreerd in uw werkruimte. Nu gaat u deze werkruimte laden en het model downloaden naar uw lokale map:
+Implementeer het model als een webservice die wordt gehost in ACI. 
+
+Geef de volgende zaken op om de juiste omgeving te maken voor ACI:
+* Een scoring-script dat aangeeft hoe het model moet worden gebruikt
+* Een configuratiebestand om de ACI mee te bouwen
+* Het model dat u eerder hebt getraind
+
+### <a name="create-scoring-script"></a>Scoring-script maken
+
+Maak een scoring-script, met de naam score.py, dat door de aanroep van de webservice wordt gebruikt om aan te geven hoe het model moet worden gebruikt.
+
+Er zijn twee functies die u verplicht in het scoring-script moet opnemen:
+* De functie `init()`, die het model doorgaans in een algemeen object laadt. Deze functie wordt slechts één keer uitgevoerd wanneer de Docker-container wordt gestart. 
+
+* De functie `run(input_data)` gebruikt het model om een waarde te voorspellen op basis van de invoergegevens. De in- en uitvoer van de uitvoerbewerking maken doorgaans gebruik van JSON voor serialisatie en deserialisatie, maar andere indelingen worden ook ondersteund.
+
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+import joblib
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment.
+    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    model = joblib.load(model_path)
+
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
+```
+
+### <a name="create-configuration-file"></a>Een configuratiebestand maken
+
+Maak een configuratiebestand voor de implementatie en geef het aantal CPU's en het aantal gigabytes aan RAM-geheugen op dat nodig is voor uw ACI-container. Het verschilt per model, maar voor de meeste modellen is de standaardhoeveelheid van 1 kerngeheugen en 1 gigabyte aan RAM-geheugen wel voldoende. Als u er later meer nodig hebt, moet u de installatiekopie opnieuw maken en de service opnieuw implementeren.
 
 
 ```python
+from azureml.core.webservice import AciWebservice
+
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+                                               description='Predict MNIST with sklearn')
+```
+
+### <a name="deploy-in-aci"></a>Implementeren in ACI
+Geschatte tijd om te volt ooien: **ongeveer 2-5 minuten**
+
+Configureer en implementeer de installatiekopie. De volgende code doorloopt de volgende stappen:
+
+1. Maak een omgevings object met afhankelijkheden die nodig zijn voor het`tutorial-env`model met behulp van de omgeving () die is opgeslagen tijdens de training.
+1. Maak een benodigde configuratie voor het afnemen van een aanvraag om het model als een webservice te implementeren met behulp van:
+   * Het scoring-bestand (`score.py`)
+   * het omgevings object dat u in de vorige stap hebt gemaakt
+1. Implementeer het model in de ACI-container.
+1. Haal het HTTP-eindpunt van de webservice op.
+
+
+```python
+%%time
+from azureml.core.webservice import Webservice
+from azureml.core.model import InferenceConfig
+from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os
+
 ws = Workspace.from_config()
 model = Model(ws, 'sklearn_mnist')
 
-model.download(target_dir=os.getcwd(), exist_ok=True)
 
-# verify the downloaded model file
-file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
+inference_config = InferenceConfig(entry_script="score.py", environment=tutorial-env)
 
-os.stat(file_path)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc3', 
+                       models=[model], 
+                       inference_config=inference_config, 
+                       deployment_config=aciconfig)
+
+service.wait_for_deployment(show_output=True)
 ```
 
-## <a name="test-the-model-locally"></a>Het model lokaal testen
+Haal het HTTP-eindpunt van de scoring-webservice op, die REST-clientaanroepen accepteert. Dit eindpunt kan worden gedeeld met iedereen die de webservice wil testen of wil integreren in een toepassing.
 
-Voordat u het model implementeert, moet u controleren of het model lokaal werkt. Voer hiervoor deze stappen uit:
-* Laad testgegevens.
-* Voorspel testgegevens.
-* Bekijk de verwarringsmatrix.
+
+```python
+print(service.scoring_uri)
+```
+
+## <a name="test-the-model"></a>Het model testen
+
+
+### <a name="download-test-data"></a>Test gegevens downloaden
+De test gegevens downloaden naar de Directory **./data/**
+
+
+```python
+import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
+
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok=True)
+
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
+```
 
 ### <a name="load-test-data"></a>Testgegevens laden
 
-Laad de testgegevens uit de map **./data/** die u hebt gemaakt tijdens de zelfstudie over het trainen van modellen:
+Laad de test gegevens vanuit de map **./data/** die is gemaakt tijdens de training zelf studie.
+
 
 ```python
 from utils import load_data
 import os
+import glob
 
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>Testgegevens voorspellen
 
-U kunt voorspellingen opvragen door de set met testgegevens door te geven aan het model:
+Voer de testgegevensset in het model in om voorspellingen te krijgen.
+
+
+De volgende code doorloopt de volgende stappen:
+1. Verzend de gegevens als JSON-matrix naar de webservice die wordt gehost in ACI. 
+
+1. Gebruik de API `run` van de SDK om de service aan te roepen. U kunt ook onbewerkte aanroepen doen met behulp van een HTTP-hulpprogramma zoals curl.
+
 
 ```python
-import pickle
-from sklearn.externals import joblib
-
-clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
-y_hat = clf.predict(X_test)
+import json
+test = json.dumps({"data": X_test.tolist()})
+test = bytes(test, encoding='utf8')
+y_hat = service.run(input_data=test)
 ```
 
 ###  <a name="examine-the-confusion-matrix"></a>De verwarringsmatrix bestuderen
 
-Genereer een verwarringsmatrix om te zien hoeveel voorbeelden uit de testset juist zijn geclassificeerd. Let op de onjuist geclassificeerde waarden voor de onjuiste voorspellingen: 
+Genereer een verwarringsmatrix om te zien hoeveel voorbeelden uit de testset juist zijn geclassificeerd. Let op de verkeerd ingedeelde waarden voor de onjuiste voorspellingen.
+
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -150,7 +248,7 @@ In de uitvoer wordt de verwarringsmatrix weergegeven:
     Overall accuracy: 0.9204
    
 
-Gebruik `matplotlib` om de verwarringsmatrix weer te geven in een grafiek. In deze grafiek bevat de X-as de daadwerkelijke waarden en de Y-as de voorspelde waarden. De kleur in elk raster geeft de foutfrequentie aan. Hoe lichter de kleur, hoe hoger de foutfrequentie. De 5 wordt vaak verkeerd ingedeeld als een 3. Daarom ziet u een lichtgekleurd raster bij (5,3):
+Gebruik `matplotlib` om de verwarringsmatrix weer te geven in een grafiek. In deze grafiek staat de X-as voor de daadwerkelijke waarden en de Y-as voor de voorspelde waarden. De kleur van elke cel staat voor de foutfrequentie. Hoe lichter de kleur, hoe hoger de foutfrequentie. De 5 is vaak verkeerd ingedeeld als een 3. U ziet een helder raster op (5, 3).
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -175,141 +273,17 @@ plt.show()
 
 ![Grafiek met een verwarringsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-a-web-service"></a>Als webservice implementeren
 
-Nadat u het model hebt getest en als tevreden bent met de resultaten, kunt u het model implementeren als een webservice die wordt gehost in Container Instances. 
+## <a name="show-predictions"></a>Voor spellingen weer geven
 
-U hebt de volgende onderdelen nodig om de juiste omgeving in te richten voor Container Instances:
-* Een scoring-script dat aangeeft hoe het model moet worden gebruikt.
-* Een omgevingsbestand dat aangeeft welke pakketten moeten worden geïnstalleerd.
-* Een configuratiebestand om de containerinstantie mee te bouwen.
-* Het model dat u eerder hebt getraind.
+Test het geïmplementeerde model met een wille keurig voor beeld van 30 afbeeldingen van de test gegevens.  
 
-<a name="make-script"></a>
-
-### <a name="create-scoring-script"></a>Scoring-script maken
-
-Maak een scoring-script met de naam **score.py**. Bij het aanroepen van de webservice wordt dit script gebruikt om te laten zien hoe het model moet worden gebruikt.
-
-Deze twee functies moet u verplicht opnemen in het scoring-script:
-* De functie `init()`, die het model doorgaans in een algemeen object laadt. Deze functie wordt slechts één keer uitgevoerd wanneer de Docker-container wordt gestart. 
-
-* De functie `run(input_data)` gebruikt het model om een waarde te voorspellen op basis van de invoergegevens. De in- en uitvoer van de uitvoerbewerking maken doorgaans gebruik van JSON voor serialisatie en deserialisatie, maar andere indelingen worden ook ondersteund.
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-
-from azureml.core.model import Model
-
-def init():
-    global model
-    # retrieve the path to the model file using the model name
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-    model = joblib.load(model_path)
-
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
-    return y_hat.tolist()
-```
-
-<a name="make-myenv"></a>
-
-### <a name="create-environment-file"></a>Omgevingsbestand maken
-
-Maak vervolgens een omgevingsbestand, met de naam **myenv.yml**, waarin alle pakketafhankelijkheden van het script zijn opgenomen. Dit bestand wordt gebruikt om ervoor te zorgen dat al die afhankelijkheden in de Docker-installatiekopie worden geïnstalleerd. Voor dit model zijn `scikit-learn` en `azureml-sdk` nodig. Alle aangepaste omgevingsbestanden moeten azureml-standaardinstellingen met verion >= 1,0,45 als pip-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als webservice te hosten.
-
-```python
-from azureml.core.conda_dependencies import CondaDependencies
-
-myenv = CondaDependencies()
-myenv.add_conda_package("scikit-learn")
-myenv.add_pip_package("azureml-defaults")
-
-with open("myenv.yml", "w") as f:
-    f.write(myenv.serialize_to_string())
-```
-Controleer de inhoud van het bestand `myenv.yml`:
-
-```python
-with open("myenv.yml", "r") as f:
-    print(f.read())
-```
-
-### <a name="create-a-configuration-file"></a>Een configuratiebestand maken
-
-Maak een configuratiebestand voor de implementatie. Geef het aantal CPU's en het aantal gigabytes aan RAM-geheugen op dat nodig is voor uw Container Instances-container. Hoewel dit per model verschilt, is de standaardhoeveelheid van 1 kerngeheugen en 1 gigabyte aan RAM-geheugen voldoende voor de meeste modellen. Als u later meer resources nodig hebt, moet u de installatiekopie opnieuw maken en de service opnieuw implementeren.
-
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  
-                                                     "method": "sklearn"},
-                                               description='Predict MNIST with sklearn')
-```
-
-### <a name="deploy-in-container-instances"></a>Implementeren in Container Instances
-De geschatte tijd voor het voltooien van de implementatie is **ongeveer zeven tot acht minuten**.
-
-Configureer en implementeer de installatiekopie. De volgende code doorloopt de volgende stappen:
-
-1. Bouw een installatiekopie met behulp van deze bestanden:
-   * Het scoring-bestand, `score.py`.
-   * Het omgevingsbestand, `myenv.yml`.
-   * Het modelbestand.
-1. Registreer de installatiekopie in de werkruimte. 
-1. Verzend de installatiekopie naar de Container Instances-container.
-1. Start een Container Instances-container met behulp van de installatiekopie.
-1. Haal het HTTP-eindpunt van de webservice op.
-
-Houd er rekening mee dat als u uw eigen omgevingsbestand definieert, u azureml-standaardinstellingen moet vermelden met versie >= 1.0,45 als pip-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als webservice te hosten.
-
-```python
-%%time
-from azureml.core.webservice import Webservice
-from azureml.core.model import InferenceConfig
-from azureml.core.environment import Environment
-
-myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
-service = Model.deploy(workspace=ws,
-                       name='sklearn-mnist-svc',
-                       models=[model], 
-                       inference_config=inference_config,
-                       deployment_config=aciconfig)
-
-service.wait_for_deployment(show_output=True)
-```
-
-Haal het HTTP-eindpunt van de scoring-webservice op, die REST-clientaanroepen accepteert. Dit eindpunt kan worden gedeeld met iedereen die de webservice wil testen of wil integreren in een toepassing: 
-
-```python
-print(service.scoring_uri)
-```
-
-## <a name="test-the-deployed-service"></a>De geïmplementeerde service testen
-
-Eerder hebt u alle testgegevens gescoord met de lokale versie van het model. Nu kunt u het geïmplementeerde model testen met een steekproef van 30 afbeeldingen uit de testgegevens.  
-
-De volgende code doorloopt de volgende stappen:
-1. Verzend de gegevens als JSON-matrix naar de webservice die wordt gehost in Container Instances. 
-
-1. Gebruik de API `run` van de SDK om de service aan te roepen. U kunt ook onbewerkte aanroepen doen met behulp van een HTTP-hulpprogramma zoals **curl**.
 
 1. Druk de geretourneerde voorspellingen af en geef die weer samen met de invoerafbeeldingen. De verkeerd geclassificeerde voorbeelden worden aangegeven met een rood lettertype en inversie (wit op zwart). 
 
-Aangezien de nauwkeurigheid van het model hoog is, kan het nodig zijn om de volgende code een paar keer uit te voeren voordat u een voorbeeld van een onjuiste classificatie ziet.
+ Aangezien de nauwkeurigheid van het model hoog is, kan het nodig zijn om de volgende code een paar keer uit te voeren voordat u een voorbeeld van een onjuiste classificatie ziet.
+
+
 
 ```python
 import json
@@ -326,7 +300,7 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize=(20, 1))
+plt.figure(figsize = (20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
@@ -344,11 +318,8 @@ for s in sample_indices:
 plt.show()
 ```
 
-Dit is het resultaat van één steekproef van testafbeeldingen:
+U kunt ook HTTP-aanvragen op basis van onbewerkte gegevens verzenden om de webservice te testen.
 
-![Afbeelding met resultaten](./media/tutorial-deploy-models-with-aml/results.png)
-
-U kunt ook HTTP-aanvragen op basis van onbewerkte gegevens verzenden om de webservice te testen:
 
 ```python
 import requests
@@ -384,7 +355,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ Meer informatie over alle [implementatieopties voor Azure Machine Learning](how-to-deploy-and-where.md).
++ Meer informatie over de [implementatie opties voor Azure machine learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
 +  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-use-parallel-run-step.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).

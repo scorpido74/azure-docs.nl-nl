@@ -1,38 +1,30 @@
 ---
 title: Azure Batch Analytics
-description: De onderwerpen in Batch Analytics bevatten referentiegegevens voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor Batch-servicebronnen.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+description: De onderwerpen in batch Analytics bevatten referentie-informatie voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor batch-service resources.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: d9538461dfa48a961f9325566b2adaf265e8daeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35bf249a3ae5dd06f42b89c3d5c2773f9508603
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025959"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113065"
 ---
 # <a name="batch-analytics"></a>Batch-analyse
-De onderwerpen in Batch Analytics bevatten referentiegegevens voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor Batch-servicebronnen.
+De onderwerpen in batch Analytics bevatten referentie-informatie voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor batch-service resources.
 
-Zie [Diagnostische logboekregistratie van Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) voor meer informatie over het inschakelen en consumeren van diagnostische logboeken van batch.
+Zie [Azure batch diagnostische logboek registratie](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) voor meer informatie over het inschakelen en gebruiken van batch diagnose Logboeken.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
-De Azure Batch-service zendt de volgende diagnostische logboekgebeurtenissen uit tijdens de levensduur van bepaalde batchresources.
+De Azure Batch-service verzendt de volgende diagnostische logboek gebeurtenissen tijdens de levens duur van bepaalde batch-resources.
 
-**Serviceloggebeurtenissen**
-* [Poolen maken](batch-pool-create-event.md)
-* [Begin van het verwijderen van de groep](batch-pool-delete-start-event.md)
-* [Groep verwijderen voltooid](batch-pool-delete-complete-event.md)
-* [Beginvan het formaat van de groep](batch-pool-resize-start-event.md)
-* [Het formaat van de groep wijzigen voltooid](batch-pool-resize-complete-event.md)
-* [Taakstart](batch-task-start-event.md)
+**Service logboek gebeurtenissen**
+* [Groep maken](batch-pool-create-event.md)
+* [Groep verwijderen starten](batch-pool-delete-start-event.md)
+* [Groep verwijderen is voltooid](batch-pool-delete-complete-event.md)
+* [Begin grootte van groep wijzigen](batch-pool-resize-start-event.md)
+* [Grootte van groep volt ooien voltooid](batch-pool-resize-complete-event.md)
+* [Taak starten](batch-task-start-event.md)
 * [Taak voltooid](batch-task-complete-event.md)
 * [Taak mislukt](batch-task-fail-event.md)

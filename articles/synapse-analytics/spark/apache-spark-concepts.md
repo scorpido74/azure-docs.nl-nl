@@ -1,6 +1,6 @@
 ---
-title: Apache Spark in Azure Synapse Analytics - Kernconcepten
-description: In dit artikel vindt u een inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
+title: Apache Spark in azure Synapse Analytics-basis concepten
+description: Dit artikel bevat een inleiding tot Apache Spark in azure Synapse Analytics en de verschillende concepten.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,58 +9,58 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3cf654e77bf68c5194a0213d4452242b5c44e234
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423668"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096279"
 ---
-# <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark in Azure Synapse Analytics Kernconcepten
+# <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark in azure Synapse Analytics core-concepten
 
-Apache Spark is een framework voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. Apache Spark in Azure Synapse Analytics is een van de implementaties van Apache Spark door Microsoft in de cloud. 
+Apache Spark is een framework voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. Apache Spark in azure Synapse Analytics is een van de implementaties van Apache Spark van micro soft in de Cloud. 
 
-Azure Synapse maakt het eenvoudig om Spark-mogelijkheden in Azure te maken en te configureren. Azure Synapse biedt een andere implementatie van deze Spark-mogelijkheden die hier zijn gedocumenteerd.
+Met Azure Synapse kunt u eenvoudig Spark-mogelijkheden maken en configureren in Azure. Azure Synapse biedt een andere implementatie van deze Spark-mogelijkheden die hier worden beschreven.
 
-## <a name="spark-pools-preview"></a>Spark-pools (voorbeeld)
+## <a name="spark-pools-preview"></a>Spark-Pools (preview-versie)
 
-Er wordt een Spark-pool (voorbeeld) gemaakt in de Azure-portal. Het is de definitie van een Spark-pool die, wanneer deze wordt geinstantd, wordt gebruikt om een Spark-instantie te maken die gegevens verwerkt. Wanneer een Spark-pool wordt gemaakt, bestaat deze alleen als metagegevens. er worden geen resources verbruikt, uitgevoerd of in rekening gebracht. Een Spark-pool heeft een reeks eigenschappen die de kenmerken van een Spark-instantie bepalen. deze kenmerken omvatten, maar zijn niet beperkt tot naam, grootte, schaalgedrag, tijd om te leven.
+Er wordt een Spark-groep (preview-versie) gemaakt in de Azure Portal. Het is de definitie van een Spark-groep die, wanneer geïnstantieerd, wordt gebruikt voor het maken van een Spark-instantie waarmee gegevens worden verwerkt. Wanneer een Spark-groep wordt gemaakt, bestaat deze alleen als meta gegevens; Er worden geen resources verbruikt, uitgevoerd of in rekening gebracht voor. Een Spark-groep bevat een reeks eigenschappen die de kenmerken van een Spark-exemplaar bepalen; deze kenmerken omvatten, maar zijn niet beperkt tot naam, grootte, schaal gedrag, time to Live.
 
-Omdat er geen dollar- of resourcekosten zijn gekoppeld aan het maken van Spark-pools, kan elk nummer worden gemaakt met een willekeurig aantal verschillende configuraties. Machtigingen kunnen ook worden toegepast op Spark-pools, zodat gebruikers alleen toegang hebben tot sommige en niet tot anderen.
+Omdat er geen dollar of resource kosten zijn gekoppeld aan het maken van Spark-Pools, kan elk gewenst nummer worden gemaakt met een wille keurig aantal verschillende configuraties. Machtigingen kunnen ook worden toegepast op Spark-Pools zodat gebruikers alleen toegang hebben tot sommige en geen andere.
 
-Een aanbevolen toepassing is het maken van kleinere Spark-pools die kunnen worden gebruikt voor ontwikkeling en foutopsporing en vervolgens grotere voor het uitvoeren van productieworkloads.
+Een best practice is het maken van kleinere Spark-groepen die kunnen worden gebruikt voor ontwikkeling en fout opsporing en vervolgens groter worden voor het uitvoeren van productie werkbelastingen.
 
-U lezen hoe u een Spark-pool maakt en al hun eigenschappen hier bekijken [Aan de slag met Spark-pools in Synapse Analytics](apache-spark-notebook-create-spark-use-sql.md#create-an-apache-spark-pool)
+U kunt lezen hoe u een Spark-pool maakt en alle bijbehorende eigenschappen hier [aan de slag gaat met Spark-Pools in Synapse Analytics](../quickstart-create-apache-spark-pool.md)
 
-## <a name="spark-instances"></a>Spark-exemplaren
+## <a name="spark-instances"></a>Spark-instanties
 
-Spark-exemplaren worden gemaakt wanneer u verbinding maakt met een Spark-pool, een sessie maakt en een taak uitvoert. Omdat meerdere gebruikers toegang hebben tot één Spark-groep, wordt er een nieuwe Spark-instantie gemaakt voor elke gebruiker die verbinding maakt. 
+Spark-instanties worden gemaakt wanneer u verbinding maakt met een Spark-pool, een sessie maakt en een taak uitvoert. Aangezien meerdere gebruikers toegang tot één Spark-groep hebben, wordt er een nieuw Spark-exemplaar gemaakt voor elke gebruiker die verbinding maakt. 
 
-Wanneer u een tweede taak indient, dan als er capaciteit in de pool is, heeft de bestaande Spark-instantie ook capaciteit, dan zal de bestaande instantie de taak verwerken; zo niet en is er capaciteit op poolniveau, dan wordt er een nieuwe Spark-instantie gemaakt.
+Wanneer u een tweede taak indient en er capaciteit is in de pool, heeft de bestaande Spark-instantie ook capaciteit. vervolgens wordt de taak door het bestaande exemplaar verwerkt. Als dat niet het geval is en er sprake is van capaciteit op het niveau van de groep, wordt er een nieuw Spark-exemplaar gemaakt.
 
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-- U maakt een Spark-pool met de naam SP1; het heeft een vaste clustergrootte van 20 knooppunten.
-- U dient een notitiebloktaak in, J1 die 10 knooppunten gebruikt, een Spark-instantie, SI1 wordt gemaakt om de taak te verwerken.
-- U verzendt nu een andere taak, J2, die 10 knooppunten gebruikt omdat er nog capaciteit in de groep is en de instantie, de J2, wordt verwerkt door SI1.
-- Als J2 om 11 knooppunten had gevraagd, zou er geen capaciteit in SP1 of SI1 zijn geweest. In dit geval, als J2 uit een notitieboekje komt, dan zal de baan worden verworpen; als J2 afkomstig is van een batchtaak, wordt deze in de wachtrij geplaatst.
+- U maakt een Spark-pool met de naam SP1; het heeft een vaste cluster grootte van 20 knoop punten.
+- U verzendt een notitieblok taak, J1 die gebruikmaakt van tien knoop punten, een Spark-instantie, SI1 wordt gemaakt om de taak te verwerken.
+- U verzendt nu een andere taak, j2, die 10 knoop punten gebruikt omdat er nog capaciteit in de groep en het exemplaar, de J2, wordt verwerkt door SI1.
+- Als j2 voor 11 knoop punten werd gevraagd, is er geen capaciteit in SP1 of SI1. Als j2 afkomstig is uit een notitie blok, wordt de taak geweigerd. Als j2 afkomstig is van een batch-taak, wordt deze in de wachtrij geplaatst.
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-- U maakt een Spark-pooloproep SP2; het heeft een autoscale ingeschakeld 10 - 20 knooppunten
-- U dient een notitiebloktaak in, J1 die 10 knooppunten gebruikt, een Spark-instantie, SI1, wordt gemaakt om de taak te verwerken.
-- U dient nu een andere taak in, J2, die 10 knooppunten gebruikt, omdat er nog steeds capaciteit in de groep is, het instantieauto-exemplaar groeit naar 20 knooppunten en verwerkt J2.
+- U maakt een Spark-pool aanroep SP2; Er zijn 10 – 20 knoop punten automatisch schalen ingeschakeld
+- U verzendt een notitieblok taak, J1 die gebruikmaakt van tien knoop punten, een Spark-instantie, SI1, wordt gemaakt om de taak te verwerken.
+- U verzendt nu een andere taak, j2, die tien knoop punten gebruikt, omdat de groep nog steeds de capaciteit heeft die automatisch wordt uitgebreid tot 20 knoop punten en processen j2.
 
 ### <a name="example-3"></a>Voorbeeld 3
 
-- U maakt een Spark-pool met de naam SP1; het heeft een vaste clustergrootte van 20 knooppunten.
-- U dient een notitiebloktaak in, J1 die 10 knooppunten gebruikt, een Spark-instantie, SI1 wordt gemaakt om de taak te verwerken.
-- Een andere gebruiker, U2, dient een taak in, J3, die 10 knooppunten gebruikt, een nieuwe Spark-instantie, SI2, wordt gemaakt om de taak te verwerken.
-- U dient nu een andere taak in, J2, die 10 knooppunten gebruikt omdat er nog capaciteit in de groep is en de instantie, J2, wordt verwerkt door SI1.
+- U maakt een Spark-pool met de naam SP1; het heeft een vaste cluster grootte van 20 knoop punten.
+- U verzendt een notitieblok taak, J1 die gebruikmaakt van tien knoop punten, een Spark-instantie, SI1 wordt gemaakt om de taak te verwerken.
+- Een andere gebruiker, U2, verzendt een taak, J3, die gebruikmaakt van tien knoop punten, een nieuwe Spark-instantie, SI2, wordt gemaakt om de taak te verwerken.
+- U verzendt nu een andere taak, j2, die 10 knoop punten gebruikt omdat er nog capaciteit in de groep en het exemplaar j2 is verwerkt door SI1.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Documentatie apache vonk](https://spark.apache.org/docs/2.4.4/)
+- [Documentatie over Apache Spark](https://spark.apache.org/docs/2.4.4/)

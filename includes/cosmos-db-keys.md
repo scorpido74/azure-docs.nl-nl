@@ -11,6 +11,6 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "71299356"
 ---
-  Ga naar de azure cosmos DB-accountpagina en selecteer **Sleutels**. Kopieer de waarden die u wilt gebruiken in de webtoepassing die u vervolgens maakt.
+  Ga naar de pagina Azure Cosmos DB-account en selecteer **sleutels**. Kopieer de waarden die moeten worden gebruikt in de webtoepassing die u hierna maakt.
 
-![Schermafbeelding van de Azure-portal met de knop Sleutels gemarkeerd op de pagina Azure Cosmos DB-account](./media/cosmos-db-keys/copy-keys.png)
+![Scherm afbeelding van de Azure Portal met de knop sleutels gemarkeerd op de pagina Azure Cosmos DB-account](./media/cosmos-db-keys/copy-keys.png)

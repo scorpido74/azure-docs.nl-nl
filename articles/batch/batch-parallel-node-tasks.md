@@ -1,61 +1,51 @@
 ---
-title: Taken parallel uitvoeren om rekenresources te optimaliseren - Azure Batch
-description: Verhoog de efficiëntie en verlaag de kosten door minder rekenknooppunten te gebruiken en gelijktijdige taken uit te voeren op elk knooppunt in een Azure Batch-groep
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
-ms.service: batch
+title: Taken parallel uitvoeren om reken resources te optimaliseren
+description: Verhoog de efficiëntie en verlaag de kosten met minder reken knooppunten en voer gelijktijdige taken uit op elk knoop punt in een Azure Batch pool
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465771cb97ef9d8d5c451a6bafc61c4621d3c4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180294e7da95392e5c6c8055e53cea1ad3b4c7a6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023630"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116754"
 ---
-# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Taken gelijktijdig uitvoeren om het gebruik van batchcomputenodes te maximaliseren 
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gelijktijdig taken uitvoeren om het gebruik van batch Compute-knoop punten te maximaliseren 
 
-Door meer dan één taak tegelijk uit te voeren op elk compute-knooppunt in uw Azure Batch-groep, u het resourcegebruik maximaliseren op een kleiner aantal knooppunten in de groep. Voor sommige workloads kan dit leiden tot kortere werktijden en lagere kosten.
+Door meer dan één taak tegelijk uit te voeren op elk reken knooppunt in uw Azure Batch pool, kunt u het resource gebruik maximaliseren op een kleiner aantal knoop punten in de groep. Voor sommige werk belastingen kan dit leiden tot kortere taak tijden en lagere kosten.
 
-Hoewel sommige scenario's profiteren van het wijden van alle resources van een knooppunt aan één taak, profiteren verschillende situaties van het toestaan van meerdere taken om deze resources te delen:
+Hoewel sommige scenario's van toepassing zijn op het reserveren van alle resources van een knoop punt voor één enkele taak, profiteren verschillende situaties van het toestaan van meerdere taken om deze resources te delen:
 
-* **Gegevensoverdracht minimaliseren** wanneer taken gegevens kunnen delen. In dit scenario u de kosten voor gegevensoverdracht drastisch verlagen door gedeelde gegevens naar een kleiner aantal knooppunten te kopiëren en taken parallel op elk knooppunt uit te voeren. Dit geldt met name als de gegevens die naar elk knooppunt moeten worden gekopieerd, moeten worden overgedragen tussen geografische regio's.
-* **Het maximaliseren van het geheugengebruik** wanneer taken een grote hoeveelheid geheugen vereisen, maar alleen tijdens korte perioden en op variabele tijden tijdens de uitvoering. U minder, maar grotere rekenknooppunten met meer geheugen gebruiken om dergelijke pieken efficiënt te verwerken. Deze knooppunten zouden meerdere taken parallel op elk knooppunt hebben, maar elke taak zou profiteren van het overvloedige geheugen van de knooppunten op verschillende tijdstippen.
-* **Beperkende nodenummerlimieten** wanneer communicatie tussen knooppunten vereist is binnen een pool. Momenteel zijn pools die zijn geconfigureerd voor internodecommunicatie beperkt tot 50 compute nodes. Als elk knooppunt in een dergelijke groep taken parallel kan uitvoeren, kan een groter aantal taken tegelijkertijd worden uitgevoerd.
-* **Een on-premises compute cluster repliceren,** bijvoorbeeld wanneer u een compute-omgeving voor het eerst naar Azure verplaatst. Als uw huidige on-premises oplossing meerdere taken per compute-knooppunt uitvoert, u het maximum aantal knooppunttaken verhogen om die configuratie beter te weerspiegelen.
+* Het **minimaliseren van gegevens overdracht** wanneer taken gegevens kunnen delen. In dit scenario kunt u de kosten voor gegevens overdracht aanzienlijk verminderen door gedeelde gegevens naar een kleiner aantal knoop punten te kopiëren en taken parallel uit te voeren op elk knoop punt. Dit is met name van toepassing als de gegevens die naar elk knoop punt moeten worden gekopieerd, moeten worden overgedragen tussen geografische regio's.
+* **Geheugen gebruik maximaliseren** wanneer taken een grote hoeveelheid geheugen vereisen, maar alleen tijdens korte Peri Oden, en op variabele tijdstippen tijdens de uitvoering. U kunt minder, maar grotere, reken knooppunten met meer geheugen gebruiken om dergelijke pieken efficiënt af te handelen. Op deze knoop punten worden meerdere taken parallel uitgevoerd op elk knoop punt, maar elke taak zou gebruikmaken van het geheugen van de knoop punten op verschillende tijdstippen.
+* **Beperken van knooppunt aantal limieten** bij communicatie tussen knoop punten in een groep. Op dit moment zijn groepen die zijn geconfigureerd voor communicatie tussen knoop punten beperkt tot 50 Compute-knoop punten. Als elk knoop punt in een dergelijke groep parallelle taken kan uitvoeren, kan een groter aantal taken tegelijkertijd worden uitgevoerd.
+* **Repliceren van een on-premises Compute-Cluster**, zoals wanneer u een reken omgeving voor het eerst naar Azure verplaatst. Als uw huidige on-premises oplossing meerdere taken per Compute-knoop punt uitvoert, kunt u het maximum aantal knooppunt taken verhogen om deze configuratie beter te spie gelen.
 
 ## <a name="example-scenario"></a>Voorbeeldscenario
-Als voorbeeld om de voordelen van parallelle taakuitvoering te illustreren, laten we zeggen dat uw taaktoepassing CPU- en geheugenvereisten heeft, zodat [standaard\_D1-knooppunten](../cloud-services/cloud-services-sizes-specs.md) voldoende zijn. Maar om de taak in de vereiste tijd te voltooien, zijn 1.000 van deze knooppunten nodig.
+Als voor beeld van het illustreren van de voor delen van het uitvoeren van parallelle taken, laten we zien dat uw taak toepassing CPU-en geheugen vereisten heeft, zodat de [standaard\_D1](../cloud-services/cloud-services-sizes-specs.md) -knoop punten voldoende zijn. Maar 1.000 van deze knoop punten zijn nodig om de taak in de vereiste tijd te volt ooien.
 
-In plaats\_van standaard D1-knooppunten te gebruiken met een CPU-kern van 1 CPU, u [standaard\_D14-knooppunten](../cloud-services/cloud-services-sizes-specs.md) gebruiken die elk 16 cores hebben en parallelle taakuitvoering inschakelen. Daarom kunnen *16 keer minder knooppunten* worden gebruikt - in plaats van 1.000 knooppunten, slechts 63 nodig zou zijn. Bovendien, als grote toepassingsbestanden of referentiegegevens nodig zijn voor elk knooppunt, worden de taakduur en de efficiëntie opnieuw verbeterd, omdat de gegevens worden gekopieerd naar slechts 63 knooppunten.
+In plaats van gebruik\_te maken van standaard D1-knoop punten met 1 CPU-kern, kunt u [standaard\_D14](../cloud-services/cloud-services-sizes-specs.md) -knoop punten gebruiken met elke 16 kernen en de uitvoering van parallelle taken inschakelen. Daarom kunnen *16 keer minder knoop punten* worden gebruikt:--in plaats van 1.000-knoop punten, alleen 63 vereist. Als er bovendien grote toepassings bestanden of referentie gegevens voor elk knoop punt zijn vereist, zijn de duur en efficiëntie van de taak opnieuw verbeterd, omdat de gegevens slechts naar 63 knoop punten worden gekopieerd.
 
-## <a name="enable-parallel-task-execution"></a>Parallelle taakuitvoering inschakelen
-U configureert rekenknooppunten voor parallelle taakuitvoering op poolniveau. Stel met de batch .NET-bibliotheek de eigenschap [CloudPool.MaxTasksPerComputeNode][maxtasks_net] in wanneer u een groep maakt. Als u de Batch REST API gebruikt, stelt u het element [maxTasksPerNode][rest_addpool] in de aanvraaginstantie in tijdens het maken van de groep.
+## <a name="enable-parallel-task-execution"></a>Uitvoering van parallelle taak inschakelen
+U kunt reken knooppunten voor het uitvoeren van parallelle taken configureren op het groeps niveau. Stel in de batch .NET-bibliotheek de eigenschap [CloudPool. MaxTasksPerComputeNode][maxtasks_net] in wanneer u een pool maakt. Als u de batch-REST API gebruikt, stelt u het element [maxTasksPerNode][rest_addpool] in de hoofd tekst van de aanvraag in tijdens het maken van de groep.
 
-Met Azure Batch u taken per knooppunt instellen tot (4x) het aantal kernknooppunten. Als de groep bijvoorbeeld is geconfigureerd met knooppunten van grootte 'Groot' (vier kernen), kan deze `maxTasksPerNode` worden ingesteld op 16. Ongeacht het aantal cores dat het knooppunt heeft, u echter niet meer dan 256 taken per knooppunt hebben. Zie [Grootte voor Cloud Services voor](../cloud-services/cloud-services-sizes-specs.md)meer informatie over het aantal cores voor elk van de nodeformaten. Zie Quota en limieten [voor de Azure Batch-service voor](batch-quota-limit.md)meer informatie over servicelimieten.
+Met Azure Batch kunt u taken per knoop punt instellen op het aantal kern knooppunten. Als de pool bijvoorbeeld is geconfigureerd met knoop punten met de grootte ' groot ' (vier kernen), `maxTasksPerNode` kan deze worden ingesteld op 16. Ongeacht het aantal kernen dat het knoop punt heeft, kunt u niet meer dan 256 taken per knoop punt hebben. Zie [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)voor meer informatie over het aantal kernen voor elk van de groottes van knoop punten. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md)voor meer informatie over service limieten.
 
 > [!TIP]
-> Zorg ervoor dat u `maxTasksPerNode` rekening houdt met de waarde wanneer u een [autoscale-formule][enable_autoscaling] voor uw groep maakt. Een formule die evalueert, `$RunningTasks` kan bijvoorbeeld drastisch worden beïnvloed door een toename van taken per knooppunt. Zie [Compute-knooppunten automatisch schalen in een Azure Batch-groep](batch-automatic-scaling.md) voor meer informatie.
+> Zorg ervoor dat u rekening moet houden `maxTasksPerNode` met de waarde wanneer u een [formule voor automatisch schalen][enable_autoscaling] voor uw groep bouwt. Een formule die evalueert, `$RunningTasks` kan bijvoorbeeld aanzienlijk worden beïnvloed door een toename van taken per knoop punt. Zie [reken knooppunten automatisch schalen in een Azure batch groep](batch-automatic-scaling.md) voor meer informatie.
 >
 >
 
-## <a name="distribution-of-tasks"></a>Verdeling van taken
-Wanneer de compute nodes in een groep taken gelijktijdig kunnen uitvoeren, is het belangrijk om op te geven hoe u de taken wilt verdelen over de knooppunten in de groep.
+## <a name="distribution-of-tasks"></a>Distributie van taken
+Wanneer de reken knooppunten in een pool gelijktijdig taken kunnen uitvoeren, is het belang rijk om op te geven hoe u wilt dat de taken worden gedistribueerd over de knoop punten in de pool.
 
-Door de eigenschap [CloudPool.TaskSchedulingPolicy te][task_schedule] gebruiken, u opgeven dat taken gelijkmatig moeten worden toegewezen aan alle knooppunten in de groep ('verspreiden'). U ook opgeven dat aan elk knooppunt zoveel mogelijk taken moeten worden toegewezen voordat taken worden toegewezen aan een ander knooppunt in de groep ('verpakking').
+Met de eigenschap [CloudPool. TaskSchedulingPolicy][task_schedule] kunt u opgeven dat taken gelijkmatig moeten worden toegewezen op alle knoop punten in de pool (' sprei ding '). U kunt ook opgeven dat er zoveel mogelijk taken moeten worden toegewezen aan elk knoop punt voordat taken worden toegewezen aan een ander knoop punt in de pool (' verpakking ').
 
-Als voorbeeld van hoe deze functie waardevol is, u rekening houden met de pool van [Standaard\_D14-knooppunten](../cloud-services/cloud-services-sizes-specs.md) (in het bovenstaande voorbeeld) die is geconfigureerd met een [CloudPool.MaxTasksPerComputeNode-waarde][maxtasks_net] van 16. Als het [CloudPool.TaskSchedulingPolicy][task_schedule] is geconfigureerd met een [ComputeNodeFillType][fill_type] van *Pack,* zou dit het gebruik van alle 16 kernen van elk knooppunt maximaliseren en een [automatisch schalende groep](batch-automatic-scaling.md) toestaan om ongebruikte knooppunten uit de groep te snoeien (knooppunten zonder toegewezen taken). Dit minimaliseert het gebruik van resources en bespaart geld.
+Als voor beeld van hoe deze functie waardevol is, moet u rekening houden met de pool van [standaard\_D14](../cloud-services/cloud-services-sizes-specs.md) -knoop punten (in het bovenstaande voor beeld) die is geconfigureerd met een [CloudPool. MaxTasksPerComputeNode][maxtasks_net] -waarde van 16. Als [CloudPool. TaskSchedulingPolicy][task_schedule] is geconfigureerd met een [ComputeNodeFillType][fill_type] - *pakket*, wordt het gebruik van alle 16 kernen van elk knoop punt gemaximaliseerd en kan een groep voor automatisch [schalen](batch-automatic-scaling.md) ongebruikte knoop punten uit de groep weghalen (knoop punten zonder toegewezen taken). Hiermee wordt het resource gebruik geminimaliseerd en bespaart u geld.
 
-## <a name="batch-net-example"></a>Batch .NET, voorbeeld
-In [dit batchfragment van de NET][api_net] API-code wordt een aanvraag weergegeven om een groep te maken die vier knooppunten bevat met maximaal vier taken per knooppunt. Hiermee wordt een taakplanningsbeleid opgegeven dat elk knooppunt vult met taken voordat taken worden toewijzen aan een ander knooppunt in de groep. Zie [BatchClient.PoolOperations.CreatePool][poolcreate_net]voor meer informatie over het toevoegen van pools met behulp van de Batch .NET API.
+## <a name="batch-net-example"></a>Batch .NET-voor beeld
+Dit code fragment voor [batch .net][api_net] API bevat een aanvraag voor het maken van een groep die vier knoop punten bevat met een maximum van vier taken per knoop punt. Hiermee wordt een beleid voor taak planning opgegeven waarmee elk knoop punt met taken wordt gevuld voordat taken worden toegewezen aan een ander knoop punt in de pool. Zie [BatchClient. pool Operations. CreatePool][poolcreate_net]voor meer informatie over het toevoegen van groepen met behulp van de batch .net-API.
 
 ```csharp
 CloudPool pool =
@@ -70,8 +60,8 @@ pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 pool.Commit();
 ```
 
-## <a name="batch-rest-example"></a>Voorbeeld batchREST
-Dit [API-fragment Batch REST][api_rest] toont een aanvraag om een groep te maken die twee grote knooppunten bevat met maximaal vier taken per knooppunt. Zie Een groep toevoegen [aan een account voor][rest_addpool]meer informatie over het toevoegen van pools met behulp van de API REST.
+## <a name="batch-rest-example"></a>Batch REST-voor beeld
+Het fragment van de [batch rest][api_rest] API bevat een aanvraag voor het maken van een groep die twee grote knoop punten bevat met een maximum van vier taken per knoop punt. Zie [een pool toevoegen aan een account][rest_addpool]voor meer informatie over het toevoegen van groepen met behulp van de rest API.
 
 ```json
 {
@@ -89,14 +79,14 @@ Dit [API-fragment Batch REST][api_rest] toont een aanvraag om een groep te maken
 ```
 
 > [!NOTE]
-> U `maxTasksPerNode` het element en de eigenschap [MaxTasksPerComputeNode][maxtasks_net] alleen instellen op tijd voor het maken van de groep. Ze kunnen niet worden gewijzigd nadat er al een pool is gemaakt.
+> U kunt de eigenschap `maxTasksPerNode` element en [MaxTasksPerComputeNode][maxtasks_net] alleen instellen tijdens het maken van de groep. Ze kunnen niet worden gewijzigd nadat er al een pool is gemaakt.
 >
 >
 
 ## <a name="code-sample"></a>Codevoorbeeld
-Het [ParallelNodeTasks-project][parallel_tasks_sample] op GitHub illustreert het gebruik van de eigenschap [CloudPool.MaxTasksPerComputeNode.][maxtasks_net]
+Het [ParallelNodeTasks][parallel_tasks_sample] -project op github illustreert het gebruik van de eigenschap [CloudPool. MaxTasksPerComputeNode][maxtasks_net] .
 
-Deze C#-consoletoepassing gebruikt de [Batch .NET-bibliotheek][api_net] om een groep te maken met een of meer rekenknooppunten. Het voert een configureerbaar aantal taken op die knooppunten uit om variabele belasting te simuleren. Uitvoer van de toepassing geeft aan welke knooppunten elke taak hebben uitgevoerd. De toepassing geeft ook een overzicht van de taakparameters en duur. Het overzichtsgedeelte van de uitvoer van twee verschillende uitvoeringen van de voorbeeldtoepassing wordt hieronder weergegeven.
+Deze C#-console toepassing maakt gebruik van de [batch .net][api_net] -bibliotheek om een groep met een of meer reken knooppunten te maken. Er wordt een configureerbaar aantal taken op deze knoop punten uitgevoerd om variabele belasting te simuleren. De uitvoer van de toepassing geeft aan welke knoop punten elke taak uitvoeren. De toepassing biedt ook een samen vatting van de taak parameters en-duur. Hieronder ziet u het overzicht van de uitvoer van twee verschillende uitvoeringen van de voorbeeld toepassing.
 
 ```
 Nodes: 1
@@ -106,7 +96,7 @@ Tasks: 32
 Duration: 00:30:01.4638023
 ```
 
-De eerste uitvoering van de voorbeeldtoepassing toont aan dat met één knooppunt in de groep en de standaardinstelling van één taak per knooppunt de taakduur meer dan 30 minuten bedraagt.
+De eerste uitvoering van de voorbeeld toepassing laat zien dat met één knoop punt in de pool en de standaard instelling van één taak per knoop punt, de taak duur meer dan 30 minuten is.
 
 ```
 Nodes: 1
@@ -116,16 +106,16 @@ Tasks: 32
 Duration: 00:08:48.2423500
 ```
 
-De tweede run van de steekproef toont een aanzienlijke daling van de duur van de taak. Dit komt omdat de groep is geconfigureerd met vier taken per knooppunt, waardoor parallelle taakuitvoering de taak in bijna een kwart van de tijd kan voltooien.
+Bij de tweede uitvoering van het voor beeld ziet u een aanzienlijke afname van de taak duur. De reden hiervoor is dat de groep is geconfigureerd met vier taken per knoop punt, waardoor parallelle taken kunnen worden uitgevoerd om de taak in bijna een kwart van de tijd te volt ooien.
 
 > [!NOTE]
-> De taakduur in de bovenstaande samenvattingen omvat geen tijd voor het maken van de groep. Elk van de bovenstaande taken is ingediend bij eerder gemaakte groepen waarvan de rekenknooppunten in de status *Niet-actief* waren tijdens het indienen.
+> De taak duur in de bovenstaande samen vattingen bevat geen groeps aanmaak tijd. Elk van de bovenstaande taken is verzonden naar eerder gemaakte Pools waarvan de reken knooppunten de status *niet-actief* hadden tijdens het indienen.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-### <a name="batch-explorer-heat-map"></a>Batch Explorer-heatkaart
-[Batch Explorer][batch_labs] is een gratis, rijk uitgeruste, zelfstandige clienttool om Azure Batch-toepassingen te maken, te debuggen en te controleren. Batch Explorer bevat een *Heat Map-functie* die de uitvoering van taken biedt. Wanneer u de voorbeeldtoepassing [ParallelTasks][parallel_tasks_sample] uitvoert, u de functie Heat Map gebruiken om de uitvoering van parallelle taken op elk knooppunt eenvoudig te visualiseren.
+### <a name="batch-explorer-heat-map"></a>Heatmap Batch Explorer
+[Batch Explorer][batch_labs] is een gratis, uitgebreid, zelfstandig client hulpprogramma waarmee Azure batch toepassingen kunnen worden gemaakt, opgespoord en gecontroleerd. Batch Explorer bevat een functie voor *heatmap* die de visualisatie van taak uitvoering biedt. Wanneer u de voorbeeld toepassing [ParallelTasks][parallel_tasks_sample] uitvoert, kunt u de functie heatmap gebruiken om eenvoudig de uitvoering van parallelle taken op elk knoop punt te visualiseren.
 
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx

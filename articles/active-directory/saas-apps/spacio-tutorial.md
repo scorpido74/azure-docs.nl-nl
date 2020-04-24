@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Spacio | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Spacio | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Spacio.
 services: active-directory
 documentationCenter: na
@@ -22,36 +22,36 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090074"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Zelfstudie: Azure Active Directory-integratie met Spacio
+# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Zelf studie: integratie Azure Active Directory met Spacio
 
-In deze zelfstudie leert u hoe u Spacio integreren met Azure Active Directory (Azure AD).
-De integratie van Spacio met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Spacio integreert met Azure Active Directory (Azure AD).
+Het integreren van Spacio met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Spacio.
-* U uw gebruikers automatisch laten aanmelden bij Spacio (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Spacio.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Spacio (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met Spacio wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Spacio wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Spacio single sign-on enabled subscription Spacio single sign-on enabled subscription Spacio single sign-on enabled subscription Spacio
+* Abonnement voor eenmalige aanmelding Spacio ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Spacio steunt **door SP** geïnitieerde SSO
+* Spacio ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-spacio-from-the-gallery"></a>Het toevoegen van Spacio uit de galerie
+## <a name="adding-spacio-from-the-gallery"></a>Spacio toevoegen uit de galerie
 
-Als u de integratie van Spacio in Azure AD wilt configureren, moet u Spacio vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Spacio in azure AD wilt configureren, moet u Spacio uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Spacio vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om Spacio toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Spacio in Azure AD wilt configureren, moet u Spacio vanu
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Spacio**in het zoekvak , selecteer **Spacio** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **Spacio**in het zoekvak, selecteer **Spacio** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Spacio in de resultatenlijst](common/search-new-app.png)
+     ![Spacio in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Spacio op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding op het werk moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Spacio.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Spacio op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Spacio tot stand worden gebracht.
 
-Als u Azure AD-single sign-on met Spacio wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Spacio, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Spacio Single Sign-On](#configure-spacio-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Spacio eenmalige aanmelding configureren](#configure-spacio-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Spacio-testgebruiker](#create-spacio-test-user)** - om een tegenhanger van Britta Simon in Spacio te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een Spacio-test gebruiker](#create-spacio-test-user)** -om een equivalent van Julia Simon in Spacio te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Spacio te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Spacio:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Spacio-toepassingsintegratie** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Spacio** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,22 +103,22 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Spacio Domain en URL's single sign-on informatie](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Spacio domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://sso.spac.io/<brokerageID>`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://sso.spac.io/<brokerageID>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ondersteuningsteam van Spacio Client](mailto:support@spac.io) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Spacio-clients](mailto:support@spac.io) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-spacio-single-sign-on"></a>Spacio Single Sign-On configureren
+### <a name="configure-spacio-single-sign-on"></a>Eenmalige aanmelding voor Spacio configureren
 
-Als u eenmalige aanmelding wilt configureren aan **de Spacio-kant,** moet u de url van de **appfederatie-metagegevens** naar [spacio-ondersteuningsteam](mailto:support@spac.io)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Spacio** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [Spacio ondersteunings team](mailto:support@spac.io). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -128,7 +128,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -143,19 +143,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Spacio.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Spacio.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Spacio**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Spacio**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Spacio**in de lijst met toepassingen.
+2. Selecteer in de lijst toepassingen de optie **Spacio**.
 
-    ![De Spacio-link in de lijst Met toepassingen](common/all-applications.png)
+    ![De koppeling Spacio in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -165,26 +165,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-spacio-test-user"></a>Spacio-testgebruiker maken
+### <a name="create-spacio-test-user"></a>Spacio-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Spacio. Werk samen met [het ondersteuningsteam van Spacio](mailto:support@spac.io) om de gebruikers toe te voegen aan het Spacio-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Spacio. Werk samen met [Spacio-ondersteunings team](mailto:support@spac.io) om de gebruikers toe te voegen in het Spacio-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Spacio-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Spacio waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Spacio in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Spacio waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

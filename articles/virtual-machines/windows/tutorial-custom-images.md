@@ -1,23 +1,20 @@
 ---
-title: Zelfstudie - Aangepaste VM-afbeeldingen maken met Azure PowerShell
+title: 'Zelf studie: aangepaste VM-installatie kopieën maken met Azure PowerShell'
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een aangepaste installatiekopie van een virtuele machine te maken in Azure
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 87347cfea0e45d3498c48f07578523a20d5a13e2
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 108ff8d89771217ed2833f2a47aa52ff05aa2f13
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641085"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100376"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure PowerShell
 
@@ -30,19 +27,19 @@ Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopie
 > * Alle installatiekopieën in uw abonnement weergeven
 > * Een aangepaste installatiekopie verwijderen
 
-In openbare preview hebben we de [Azure VM Image Builder-service.](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) Beschrijf eenvoudig uw aanpassingen in een sjabloon en de stappen voor het maken van afbeeldingen in dit artikel. [Probeer Azure Image Builder (voorbeeld)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
+In de open bare preview hebben we de [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) -service nodig. Geef een beschrijving van uw aanpassingen in een sjabloon en de stappen voor het maken van de installatie kopie worden verwerkt in dit artikel. [Probeer Azure Image Builder (preview)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 In de onderstaande stappen wordt gedetailleerd beschreven hoe u van een bestaande virtuele machine een herbruikbare aangepaste installatiekopie maakt die u kunt gebruiken om nieuwe virtuele machines te maken.
 
-Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Indien nodig kan dit [scriptvoorbeeld](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) er een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
+Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Zo nodig kan dit [voorbeeld script](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="prepare-vm"></a>VM voorbereiden
 
@@ -63,7 +60,7 @@ Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine
 
 Voor het maken van een installatiekopie moet de toewijzing van de virtuele machine ongedaan worden gemaakt en moet de VM worden gemarkeerd als gegeneraliseerd in Azure.
 
-Detoewijzing van de VM met [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Hef de toewijzing van de virtuele machine op met behulp van [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -112,7 +109,7 @@ New-AzImage `
  
 ## <a name="create-vms-from-the-image"></a>VM's maken van de installatiekopie
 
-Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's van de installatiekopie maken met behulp. Het maken van een VM op basis van een aangepaste installatiekopie is vergelijkbaar met het maken van een VM met behulp van een Marketplace-installatiekopie. Wanneer u een Marketplace-installatiekopie gebruikt, hebt u de informatie over de installatiekopie, de leverancier van de installatiekopie, de aanbieding, de SKU en de versie. Met de vereenvoudigde parameterset voor de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) hoeft u alleen de naam op te geven van de aangepaste installatiekopie, zolang deze zich in dezelfde resourcegroep bevindt. Als u van plan bent VM in een andere resourcegroep te maken, geeft u de resource-id van de afbeelding op voor de parameter -ImageName.
+Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's van de installatiekopie maken met behulp. Het maken van een VM op basis van een aangepaste installatiekopie is vergelijkbaar met het maken van een VM met behulp van een Marketplace-installatiekopie. Wanneer u een Marketplace-installatiekopie gebruikt, hebt u de informatie over de installatiekopie, de leverancier van de installatiekopie, de aanbieding, de SKU en de versie. Met de vereenvoudigde parameterset voor de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) hoeft u alleen de naam op te geven van de aangepaste installatiekopie, zolang deze zich in dezelfde resourcegroep bevindt. Als u van plan bent om een virtuele machine in een andere resource groep te maken, geeft u de para meter resource-id van de installatie kopie op.
 
 In dit voorbeeld wordt een VM met de naam *myVMfromImage* gemaakt van een installatiekopie met de naam *myImage* in *myResourceGroup*.
 
@@ -130,7 +127,7 @@ New-AzVm `
     -OpenPorts 3389
 ```
 
-We raden u aan het aantal gelijktijdige implementaties te beperken tot 20 VM's vanuit één afbeelding. Als u grootschalige, gelijktijdige implementaties van meer dan 20 VM's van dezelfde aangepaste afbeelding plant, moet u een [gedeelde afbeeldingsgalerie](shared-image-galleries.md) met meerdere afbeeldingsreplica's gebruiken. 
+We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines uit één installatie kopie. Als u grootschalige, gelijktijdige implementaties van meer dan 20 Vm's van dezelfde aangepaste installatie kopie plant, moet u een galerie met [gedeelde afbeeldingen](shared-image-galleries.md) gebruiken met meerdere installatie kopieën van replica's. 
 
 
 ## <a name="image-management"></a>Installatiekopiebeheer 
@@ -163,7 +160,7 @@ In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele mach
 > * Alle installatiekopieën in uw abonnement weergeven
 > * Een aangepaste installatiekopie verwijderen
 
-Ga naar de volgende zelfstudie om meer te weten te komen over het maken van zeer beschikbare virtuele machines.
+Ga naar de volgende zelf studie voor meer informatie over het maken van Maxi maal beschik bare virtuele machines.
 
 > [!div class="nextstepaction"]
 > [Virtuele machines met hoge beschikbaarheid maken](tutorial-availability-sets.md)

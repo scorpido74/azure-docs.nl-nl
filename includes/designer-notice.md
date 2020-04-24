@@ -16,6 +16,6 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "80371970"
 ---
 > [!TIP]
-> Klanten die Machine Learning Studio (klassiek) gebruiken of evalueren, worden aangemoedigd om [Azure Machine Learning designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (preview) te proberen, die ML-modules slepen en neerzetten __biedt, plus__ schaalbaarheid, versiebeheer en bedrijfsbeveiliging.
+> Klanten die momenteel gebruikmaken van of evalueren van Machine Learning Studio (klassiek), worden aangemoedigd om [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (preview) te proberen, met behulp van de modules voor slepen en neerzetten, __plus__ schaal baarheid, versie beheer en ondernemings beveiliging.
 >
->Zie [Azure Machine Learning vs Machine Learning Studio (klassiek)](../articles/machine-learning/compare-azure-ml-to-studio-classic.md)voor meer informatie.
+>Zie [Azure machine learning vs Machine Learning Studio (klassiek)](../articles/machine-learning/compare-azure-ml-to-studio-classic.md)voor meer informatie.

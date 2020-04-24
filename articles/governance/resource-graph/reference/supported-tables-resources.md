@@ -1,482 +1,487 @@
 ---
-title: Ondersteunde resourcemanager-resourcetypen
-description: Geef een lijst op met de resourcetypen Resource Manager die worden ondersteund door Azure Resource Graph en Wijzigingsgeschiedenis.
-ms.date: 04/20/2020
+title: Ondersteunde resource typen Resource Manager
+description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
+ms.date: 04/23/2020
 ms.topic: reference
-ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685482"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116635"
 ---
-# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Tabel en verwijzing naar resourcetype azure resourcegraph
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
-Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource beheer](../../../azure-resource-manager/management/overview.md). Elk **resourcetype** maakt deel uit van een **tabel** in ResourceGraph.
+De resource grafiek van Azure biedt ondersteuning voor de volgende **resource typen** van [Azure Resource Manager](../../../azure-resource-manager/management/overview.md). Elk **resource type** maakt deel uit van een **tabel** in de resource grafiek.
 
-## <a name="advisorresources"></a>adviseurresources
+## <a name="advisorresources"></a>advisorresources
 
-- microsoft.advisor/configuraties
-- microsoft.advisor/aanbevelingen
-- microsoft.advisor/onderdrukkingen
+- micro soft. Advisor/configuraties
+- micro soft. Advisor/aanbevelingen
+- micro soft. Advisor/onderdrukkingen
 
-## <a name="alertsmanagementresources"></a>waarschuwingsbeheerbronnen
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
-- microsoft.alertsbeheer/waarschuwingen
+- micro soft. alertsmanagement/Alerts
 
-## <a name="maintenanceresources"></a>onderhoudsmiddelen
+## <a name="maintenanceresources"></a>maintenanceresources
 
-- microsoft.maintenance/configurationassignments
-- microsoft.maintenance/updates
+- micro soft. Maintenance/configurationassignments
+- micro soft. onderhoud/updates
 
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-- microsoft.resources/abonnementen
-- microsoft.resources/abonnementen/resourcegroepen
+- micro soft. resources/abonnementen
+- micro soft. resources/abonnementen/ResourceGroups
 
 ## <a name="resources"></a>resources
 
-- 84codes.cloudamqp/servers
-- citrix.services/xenappessentials
-- citrix.services/xendesktopessentials
-- conexlink.mycloudit/accounts
-- crypteron.datasecurity/apps
-- gridpro.evops/accounts
-- gridpro.evops/accounts/eventrules
-- gridpro.evops/accounts/requesttemplates
-- gridpro.evops/accounts/weergaven
-- hive.streaming/services
-- incapsula.waf/accounts
-- livearena.broadcast/diensten
-- mailjet.email/services
-- microsoft.aad/domainservices
-- microsoft.aadiam/privatelinkforazuread
-- microsoft.aadiam/huurders
-- microsoft.aisupercomputer/accounts
-- microsoft.aisupercomputer/accounts/jobgroepen
-- microsoft.aisupercomputer/accounts/jobgroepen/jobs
-- microsoft.alertsmanagement/actieregels
-- microsoft.alertsmanagement/smartdetectoralertrules
-- microsoft.analysisservices/servers
-- microsoft.apimanagement/service
-- microsoft.appconfiguration/configurationstores
-- microsoft.appplatform/veer
-- microsoft.archive/collecties
-- microsoft.automation/automationaccounts
-- microsoft.automation/automationaccounts/configuraties
-- microsoft.automation/automationaccounts/runbooks
-- microsoft.azconfig/configurationstores
-- microsoft.azureactivedirectory/b2cdirectories
-- microsoft.azuredata/datacontrollers
-- microsoft.azuredata/hybriddatamanagers
-- microsoft.azuredata/postgresinstances
-- microsoft.azuredata/sqlbigdataclusters
-- microsoft.azuredata/sqlinstances
-- microsoft.azuredata/sqlserverregistraties
-- microsoft.azurestack/registraties
-- microsoft.baremetal/consoleaansluitingen
-- microsoft.baremetal/crayservers
-- microsoft.baremetal/monitoringservers
-- microsoft.batch/batchaccounts
-- microsoft.batchai/clusters
-- microsoft.batchai/bestandsservers
-- microsoft.batchai/jobs
-- microsoft.batchai/werkruimten
-- microsoft.bingmaps/mapapis
-- microsoft.biztalkservices/biztalk
-- microsoft.blockchain/blockchainleden
-- microsoft.blockchain/cordamembers
-- microsoft.blockchain/watchers
-- microsoft.botservice/botservices
-- microsoft.cache/redis
-- microsoft.cdn/cdnwebapplicationfirewallbeleid
-- microsoft.cdn/profielen
-- microsoft.cdn/profiles/endpoints
-- microsoft.certificateregistration/certificateorders
-- microsoft.classiccompute/domeinnamen
-- microsoft.classiccompute/virtualmachines
-- microsoft.classicnetwork/networksecuritygroups
-- microsoft.classicnetwork/reservedips
-- microsoft.classicnetwork/virtualnetworks
-- microsoft.classicstorage/storageaccounts
-- microsoft.cloudes/accounts
-- microsoft.cloudsearch/indexen
-- microsoft.cognition/syntheticsaccounts
-- microsoft.cognitiveservices/accounts
-- microsoft.compute/availabilitysets
-- microsoft.compute/diskencryptionsets
-- microsoft.compute/disks
-- microsoft.compute/galerijen
-- microsoft.compute/galerijen/toepassingen
-- microsoft.compute/galerijen/toepassingen/versies
-- microsoft.compute/galerijen/afbeeldingen
-- microsoft.compute/galleries/images/versions
-- microsoft.compute/hostgroepen
-- microsoft.compute/hostgroepen/hosts
-- microsoft.compute/images
-- microsoft.compute/proximityplacementgroepen
-- microsoft.compute/restorepointcollections
-- microsoft.compute/sharedvm-extensies
-- microsoft.compute/sharedvmextensions/versies
-- microsoft.compute/sharedvmimages
-- microsoft.compute/sharedvmimages/versies
-- microsoft.compute/snapshots
-- microsoft.compute/sshpublickeys
-- microsoft.compute/virtualmachines
-- microsoft.compute/virtualmachines/extensies
-- microsoft.compute/virtualmachinescalesets
-- microsoft.containerinstance/containergroepen
-- microsoft.containerregistry/registers
-- microsoft.containerregistry/registers/agentpools
-- microsoft.containerregistry/registries/buildtaken
-- microsoft.containerregistry/registers/replicaties
-- microsoft.containerregistry/registries/taskruns
-- microsoft.containerregistry/registries/tasks
-- microsoft.containerregistry/registers/webhooks
-- microsoft.containerservice/containerservices
-- microsoft.containerservice/managedclusters
-- microsoft.containerservice/openshiftmanagedclusters
-- microsoft.contoso/medewerkers
-- microsoft.costmanagement/connectors
-- microsoft.customproviders/resourceproviders
-- microsoft.databox/jobs
-- microsoft.databoxedge/databoxedgedevices
-- microsoft.databricks/workspaces
-- microsoft.datacatalog/catalogi
-- microsoft.datacatalog/datacatalogi
-- microsoft.datafactory/datafabrieken
-- microsoft.datafactory/fabrieken
-- microsoft.datalakeanalytics/accounts
-- microsoft.datalakestore/accounts
-- microsoft.datamigratie/services
-- microsoft.datamigration/services/projecten
-- microsoft.datamigratie/-sleuven
-- microsoft.dataprotection/backupvaults
-- microsoft.datashare/accounts
-- microsoft.dbformariadb/servers
-- microsoft.dbformysql/servers
-- microsoft.dbforpostgresql/servergroepen
-- microsoft.dbforpostgresql/servers
-- microsoft.dbforpostgresql/serversv2
-- microsoft.dbforpostgresql/singleservers
-- microsoft.deploymentmanager/artefactenbronnen
-- microsoft.deploymentmanager/implementaties
-- microsoft.deploymentmanager/servicetopologieën
-- microsoft.deploymentmanager/servicetopologieën/services
-- microsoft.deploymentmanager/servicetopologieën/services/serviceunits
-- microsoft.deploymentmanager/stappen
-- microsoft.desktopvirtualisatie/toepassingsgroepen
-- microsoft.desktopvirtualisatie/hostpools
-- microsoft.desktopvirtualisatie/werkruimten
-- microsoft.detonationservice/detonatieinstanties
-- microsoft.devices/elasticpools
-- microsoft.devices/elasticpools/iothubtenants
-- microsoft.devices/iothubs
-- microsoft.devices/provisioningservices
-- microsoft.devops/pipelines
-- microsoft.devspaces/controllers
-- microsoft.devtestlab/labcenters
-- microsoft.devtestlab/labs
-- microsoft.devtestlab/labs/servicerunners
-- microsoft.devtestlab/labs/virtualmachines
-- microsoft.devtestlab/schema's
-- microsoft.digitaltwins/digitaltwinsinstances
-- microsoft.documentdb/databaseaccounts
-- microsoft.domainregistration/domains
-- microsoft.enterpriseknowledgegraph/services
-- microsoft.eventgrid/domeinen
-- microsoft.eventgrid/partnernaamspaces
-- microsoft.eventgrid/partnerregistraties
-- microsoft.eventgrid/partneronderwerpen
-- microsoft.eventgrid/systemtopics
-- microsoft.eventgrid/topics
-- microsoft.eventhub/clusters
-- microsoft.eventhub/naamruimten
-- microsoft.experimenteer-/experimentwerkruimten
-- microsoft.falcon/namespaces
-- microsoft.gaming/titels
-- microsoft.genomics/accounts
-- microsoft.guestconfiguration/automanagedaccounts
-- microsoft.hanaonazure/hanainstances
-- microsoft.hanaonazure/sapmonitors
-- microsoft.hardwaresecuritymodules/dedicatedhsms
-- microsoft.hdinsight/clusters
-- microsoft.healthcareapis/services
-- microsoft.hybridcompute/machines
-- microsoft.hybridcompute/machines/extensies
-- microsoft.hybriddata/datamanagers
-- microsoft.hydra/componenten
-- microsoft.hydra/networkscopes
-- microsoft.importexport/jobs
-- microsoft.insights/actiegroepen
-- microsoft.insights/activitylogalerts
-- microsoft.insights/waarschuwingsregels
-- microsoft.insights/autoscalesettings
-- microsoft.insights/componenten
-- microsoft.insights/datacollectionrules
-- microsoft.insights/guestdiagnosticsettings
-- microsoft.insights/metrische waarschuwingen
-- microsoft.insights/meldingsgroepen
-- microsoft.insights/notificationrules
-- microsoft.insights/privatelinkscopes
-- microsoft.insights/scheduledqueryregels
-- microsoft.insights/webtests
-- microsoft.insights/werkmappen
-- microsoft.insights/werkmapsjablonen
-- microsoft.iotcentral/iotapps
-- microsoft.iotspaces/graph
-- microsoft.keyvault/hsmpools
-- microsoft.keyvault/vaults
-- microsoft.kubernetes/connectedclusters
-- microsoft.kusto/clusters
-- microsoft.kusto/clusters/databases
-- microsoft.labservices/labaccounts
-- microsoft.logic/integrationaccounts
-- microsoft.logic/integrationserviceomgevingen
-- microsoft.logic/integrationserviceenvironments/managedapis
-- microsoft.logic/workflows
-- microsoft.machinelearning/commitmentplannen
-- microsoft.machinelearning/webservices
-- microsoft.machinelearning/werkruimten
-- microsoft.machinelearningcompute/operationalizationclusters
-- microsoft.machinelearningservices/werkruimten
-- microsoft.maintenance/maintenanceconfiguraties
-- microsoft.maintenance/maintenancepolicies
-- microsoft.managedidentity/groups
-- microsoft.managedidentity/userassignedidentities
-- microsoft.managednetwork/managednetworkgroups
-- microsoft.managednetwork/managednetworkpeering policies microsoft.managednetwork/managednetworkpeering policies microsoft.managednetwork/managednetworkpeering policies microsoft.
-- microsoft.managednetwork/managednetworks
-- microsoft.managednetwork/managednetworks/managednetworkgroups
-- microsoft.managednetwork/managednetworks/managednetworkpeering policies microsoft.managednetwork/managednetworkpeering policies microsoft.managednetwork/managednetworks/managednetworkpeering policies microsoft.managednetwork/
-- microsoft.maps/accounts
-- microsoft.maps/accounts/privateatlases
-- microsoft.marketplaceapps/classicdevservices
-- microsoft.media/mediaservices
-- microsoft.media/mediaservices/liveevents
-- microsoft.media/mediaservices/streamingendpoints
-- microsoft.media/mediaservices/transformaties
-- microsoft.microservices4spring/appclusters
-- microsoft.migrate/assessmentprojecten
-- microsoft.migrate/migrateprojects
-- microsoft.migrate/movecollections
-- microsoft.migrate/projecten
-- microsoft.mixedreality/holographicsbroadcastaccounts
-- microsoft.mixedreality/objectunderstandingaccounts
-- microsoft.mixedreality/remoterenderingaccounts
-- microsoft.mixedreality/spatialanchorsaccounts
-- microsoft.mixedreality/surfacereconstructionaccounts
-- microsoft.netapp/netappaccounts
-- microsoft.netapp/netappaccounts/back-upbeleid
-- microsoft.netapp/netappaccounts/capaciteitspools
-- microsoft.netapp/netappaccounts/capaciteitspools/volumes
-- microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
-- microsoft.netapp/netappaccounts/capacitypools/volumes/snapshots
-- microsoft.network/applicationgateways
-- microsoft.network/applicationgatewaywebapplicationfirewallbeleid
-- microsoft.network/applicationsecuritygroups
-- microsoft.network/azurefirewalls
-- microsoft.network/bastionhosts
-- microsoft.network/verbindingen
-- microsoft.network/ddoscustompolicies
-- microsoft.network/ddosprotectionplans
-- microsoft.network/dnszones
-- microsoft.network/expressroutecircuits
-- microsoft.network/expressroutecrossconnections
-- microsoft.network/expressroutegateways
-- microsoft.network/expressrouteports
-- microsoft.network/firewallpolicies
-- microsoft.network/frontdoors
-- microsoft.network/frontdoorwebapplicationfirewallbeleid
-- microsoft.network/ipallocations
-- microsoft.network/ipgroups
-- microsoft.network/loadbalancers
-- microsoft.network/localnetworkgateways
-- microsoft.network/natgateways
-- microsoft.network/networkexperimentprofielen
-- microsoft.network/networkintentpolicies
-- microsoft.network/networkinterfaces
-- microsoft.network/networkmanagers
-- microsoft.network/netwerkprofielen
-- microsoft.network/networksecuritygroups
-- microsoft.network/networkvirtualappliances
-- microsoft.network/networkwatchers
-- microsoft.network/networkwatchers/connectionmonitors
-- microsoft.network/networkwatchers/flowlogs
-- microsoft.network/networkwatchers/lenzen
-- microsoft.network/networkwatchers/pingmeshes
-- microsoft.network/p2svpngateways
-- microsoft.network/privatednszones
-- microsoft.network/privatednszones/virtualnetworklinks
-- microsoft.network/privateendpointredirectmaps
-- microsoft.network/privateendpoints
-- microsoft.network/privatelinkservices
-- microsoft.network/publicipaddresses
-- microsoft.network/publicipprefixes
-- microsoft.network/routefilters
-- microsoft.network/routetabellen
-- microsoft.network/sampleresources
-- microsoft.network/securitypartnerproviders
-- microsoft.network/serviceendpoint-beleid
-- microsoft.network/trafficmanagerprofielen
-- microsoft.network/virtualhubs
-- microsoft.network/virtualnetworkgateways
-- microsoft.network/virtualnetworks
-- microsoft.network/virtualnetworktaps
-- microsoft.network/virtualrouters
-- microsoft.network/virtualwans
-- microsoft.network/vpngateways
-- microsoft.network/vpnserverconfiguraties
-- microsoft.network/vpnsites
-- microsoft.notificationhubs/naamruimten
-- microsoft.notificationhubs/namespaces/notificationhubs
-- microsoft.objectstore/osnamespaces
-- microsoft.offazure/hypervsites
-- microsoft.offazure/importsites
-- microsoft.offazure/serversites
-- microsoft.offazure/vmwaresites
-- microsoft.operationalinsights/clusters
-- microsoft.operationalinsights/workspaces
-- microsoft.operationsmanagement/oplossingen
-- microsoft.operationsmanagement/weergaven
-- microsoft.peering/peerings
-- microsoft.peering/peeringservices
-- microsoft.portal/dashboards
-- microsoft.portalsdk/rootresources
-- microsoft.powerbi/workspacecollecties
-- microsoft.powerbidedicated/capaciteiten
-- microsoft.projectarcadia/werkruimten
-- microsoft.projectarcadia/workspaces/sparkcomputes
-- microsoft.projectarcadia/workspaces/sqlcomputes
-- microsoft.projectbabylon/accounts
-- microsoft.quantum/werkruimten
-- microsoft.recoveryservices/kluizen
-- microsoft.redhatopenshift/openshiftclusters
-- microsoft.relay/naamruimten
-- microsoft.remoteapp/verzamelingen
-- microsoft.resourcegraph/query's
-- microsoft.resources/deploymentscripts
-- microsoft.resources/templatespecs
-- microsoft.saas/applicaties
-- microsoft.scheduler/jobcollections
-- microsoft.search/searchservices
-- microsoft.security/automatiseringen
-- microsoft.security/iotsecuritysolutions
-- microsoft.securitydetonatie/kamers
-- microsoft.servicebus/naamruimten
-- microsoft.servicefabric/clusters
-- microsoft.servicefabric/containergroupsets
-- microsoft.servicefabric/managedclusters
-- microsoft.servicefabricmesh/toepassingen
-- microsoft.servicefabricmesh/gateways
-- microsoft.servicefabricmesh/netwerken
-- microsoft.servicefabricmesh/geheimen
-- microsoft.servicefabricmesh/volumes
-- microsoft.signalrservice/signaalgever
-- microsoft.solutions/appliancedefinities
-- microsoft.solutions/appliances
-- microsoft.solutions/applicationdefinitions
-- microsoft.solutions/applications
-- microsoft.solutions/jitrequests
-- microsoft.spoolservice/spoelen
-- microsoft.sql/instancepools
-- microsoft.sql/managedinstances
-- microsoft.sql/managedinstances/databases
-- microsoft.sql/servers
-- microsoft.sql/servers/databases
-- microsoft.sql/servers/elasticpools
-- microsoft.sql/servers/jobaccounts
-- microsoft.sql/servers/jobagents
-- microsoft.sql/virtualclusters
-- microsoft.sqlvirtualmachine/sqlvirtualmachinegroups
-- microsoft.sqlvirtualmachine/sqlvirtualmachines
-- microsoft.sqlvm/dwvm
-- microsoft.storage/storageaccounts
-- microsoft.storagecache/caches
-- microsoft.storagesync/storagesyncservices
-- microsoft.storagesyncdev/storagesyncservices
-- microsoft.storagesyncint/storagesyncservices
-- microsoft.storsimple/managers
-- microsoft.streamanalytics/streamingjobs
-- microsoft.synaps/werkruimten
-- microsoft.synaps/workspaces/bigdatapools
-- microsoft.synapse/workspaces/sqlpools
-- microsoft.terraformoss/providerregistraties
-- microsoft.timeseriesinsights/omgevingen
-- microsoft.timeseriesinsights/environments/eventsources
-- microsoft.timeseriesinsights/environments/referencedatasets
-- microsoft.token/stores
-- microsoft.tokenvault/vaults
-- microsoft.virtualmachineimages/imagetemplates
-- microsoft.visualstudio/account
-- microsoft.visualstudio/account/extensie
-- microsoft.visualstudio/account/project
-- microsoft.vmware/arczones
-- microsoft.vmwarecloudsimple/dedicatedcloudnodes
-- microsoft.vmwarecloudsimple/dedicatedcloudservices
-- microsoft.vmwarecloudsimple/virtualmachines
-- microsoft.vmwareonazure/privateclouds
-- microsoft.vmwarevirtustream/privateclouds
-- microsoft.vnfmanager/apparaten
-- microsoft.vnfmanager/vnfs
-- microsoft.vsonline/accounts
-- microsoft.vsonline/plannen
-- microsoft.web/apimanagementaccounts/apiis
-- microsoft.web/certificaten
-- microsoft.web/connectiongateways
-- microsoft.web/verbindingen
-- microsoft.web/customapis
-- microsoft.web/hostingomgevingen
-- microsoft.web/kubeomgevingen
-- microsoft.web/serverfarms
-- microsoft.web/sites
-- microsoft.web/sites/premieraddons
-- microsoft.web/sites/sleuven
-- microsoft.web/staticsites
-- microsoft.windowsesu/multipleactivationkeys
-- microsoft.windowsiot/deviceservices
-- myget.packagemanagement/services
-- paraleap.cloudmonix/services
-- pokitdok.platform/services
-- providers.test/statefulibizaengines
-- providers.test/statefulresources
-- providers.test/statefulresources/geneste resources
-- providers.test/statelessresources
-- ravenhq.db/databases
-- raygun.crashreporting/apps
-- sendgrid.email/accounts
-- sparkpost.basic/services
-- stackify.retrace/services
-- test.shoebox/testresources
-- test.shoebox/testresources2
-- trendmicro.deepsecurity/accounts
-- u2uconsult.theidentityhub/services
-- wandisco.fusion/fusiongroepen
-- wandisco.fusion/fusiongroups/azurezones
-- wandisco.fusion/fusiongroups/azurezones/plug-ins
-- wandisco.fusion/fusiongroups/hivereplicationrules
-- wandisco.fusion/fusiongroups/managedonpremzones
-- wandisco.fusion/fusiegroepen/onpremzones
-- wandisco.fusion/fusiegroepen/replicatieregels
+- 84codes. cloudamqp/servers
+- Citrix. Services/xenappessentials
+- Citrix. Services/xendesktopessentials
+- conexlink. mycloudit/accounts
+- crypteron. datasecurity/apps
+- gridpro. evops/accounts
+- gridpro. evops/accounts/eventrules
+- gridpro. evops/accounts/requesttemplates
+- gridpro. evops/accounts/weer gaven
+- component. streaming/services
+- incapsula. WAF/accounts
+- livearena. broadcast/Services
+- mailjet. e-mail/services
+- micro soft. Aad/domainservices
+- micro soft. aadiam/privatelinkforazuread
+- micro soft. aadiam/tenants
+- micro soft. aisupercomputer/accounts
+- micro soft. aisupercomputer/accounts/jobgroups
+- micro soft. aisupercomputer/accounts/jobgroups/Jobs
+- micro soft. alertsmanagement/actionrules
+- micro soft. alertsmanagement/smartdetectoralertrules
+- micro soft. analysisservices/servers
+- micro soft. apimanagement/service
+- micro soft. appconfiguration/configurationstores
+- micro soft. appplatform/lente
+- micro soft. Archive/Collections
+- micro soft. Automation/automationaccounts
+- micro soft. Automation/automationaccounts/-configuraties
+- micro soft. Automation/automationaccounts/runbooks
+- micro soft. azconfig/configurationstores
+- micro soft. azureactivedirectory/b2cdirectories
+- micro soft. azureworden/datacontrollers
+- micro soft. azureworden/hybriddatamanagers
+- micro soft. azureworden/postgresinstances
+- micro soft. azureworden/sqlbigdataclusters
+- micro soft. azureworden/sqlinstances
+- micro soft. azureworden/sqlserverregistrations
+- micro soft. azurestack/registraties
+- micro soft. baremetal/consoleconnections
+- micro soft. baremetal/crayservers
+- micro soft. baremetal/monitoringservers
+- micro soft. batch/batchaccounts
+- micro soft. batchai/clusters
+- micro soft. batchai/fileservers
+- micro soft. batchai/Jobs
+- micro soft. batchai/werk ruimten
+- micro soft. bingmaps/mapapis
+- micro soft. biztalkservices/BizTalk
+- micro soft. Block Chain/blockchainmembers
+- micro soft. Block Chain/cordamembers
+- micro soft. Block Chain/volgers
+- micro soft. botservice/botservices
+- micro soft. cache/redis
+- micro soft. CDN/cdnwebapplicationfirewallpolicies
+- micro soft. CDN/profielen
+- micro soft. CDN/profielen/eind punten
+- micro soft. certificateregistration/certificateorders
+- micro soft. classiccompute/domainname
+- micro soft. classiccompute/informatie
+- micro soft. classicnetwork/networksecuritygroups
+- micro soft. classicnetwork/reservedips
+- micro soft. classicnetwork/virtualnetworks
+- micro soft. classicstorage/Storage accounts
+- micro soft. Clouds/accounts
+- micro soft. Cloud Search/indices
+- micro soft. cognition/syntheticsaccounts
+- micro soft. cognitiveservices/accounts
+- micro soft. Compute/Availability sets
+- micro soft. Compute/diskencryptionsets
+- micro soft. Compute/schijven
+- micro soft. Compute/galerieën
+- micro soft. Compute/galerieën/toepassingen
+- micro soft. Compute/galerieën/toepassingen/versies
+- micro soft. Compute/galerieën/afbeeldingen
+- micro soft. Compute/galerieën/afbeeldingen/versies
+- micro soft. Compute/hostgroups
+- micro soft. Compute/hostgroups/hosts
+- micro soft. Compute/images
+- micro soft. Compute/proximityplacementgroups
+- micro soft. Compute/restorepointcollections
+- micro soft. Compute/sharedvmextensions
+- micro soft. Compute/sharedvmextensions/versies
+- micro soft. Compute/sharedvmimages
+- micro soft. Compute/sharedvmimages/versies
+- micro soft. Compute/moment opnamen
+- micro soft. Compute/sshpublickeys
+- micro soft. Compute/informatie
+- micro soft. Compute/informatie/Extensions
+- micro soft. Compute/virtualmachinescalesets
+- micro soft. containerinstance/containergroups
+- micro soft. containerregistry/registers
+- micro soft. containerregistry/registers/agentpools
+- micro soft. containerregistry/registers/buildtasks
+- micro soft. containerregistry/registers/replicaties
+- micro soft. containerregistry/registers/taskruns
+- micro soft. containerregistry/registers/taken
+- micro soft. containerregistry/registers/webhooks
+- micro soft. container service/containerservices
+- micro soft. container service/managedclusters
+- micro soft. container service/openshiftmanagedclusters
+- micro soft. contoso/werk nemers
+- micro soft. costmanagement/connectors
+- micro soft. customproviders/resourceproviders
+- micro soft. databox/Jobs
+- micro soft. databoxedge/databoxedgedevices
+- micro soft. databricks/werk ruimten
+- micro soft. datacatalog/Catalogs
+- micro soft. datacatalog/datacatalogs
+- micro soft. DataFactory/datafactories
+- micro soft. DataFactory/fabrieken
+- micro soft. datalakeanalytics/accounts
+- micro soft. data Lake Store/accounts
+- micro soft. datamigration/Services
+- micro soft. datamigration/services/projecten
+- micro soft. datamigration/-sleuven
+- micro soft. dataprotection/backupvaults
+- micro soft. DataShare/accounts
+- micro soft. dbformariadb/servers
+- micro soft. dbformysql/servers
+- micro soft. dbforpostgresql/servergroups
+- micro soft. dbforpostgresql/servers
+- micro soft. dbforpostgresql/serversv2
+- micro soft. dbforpostgresql/singleservers
+- micro soft. deploymentmanager/artifactsources
+- micro soft. deploymentmanager/-implementaties
+- micro soft. deploymentmanager/servicetopologies
+- micro soft. deploymentmanager/servicetopologies/Services
+- micro soft. deploymentmanager/servicetopologies/Services/serviceunits
+- micro soft. deploymentmanager/stappen
+- micro soft. desktopvirtualization/applicationgroups
+- micro soft. desktopvirtualization/hostpools
+- micro soft. desktopvirtualization/werk ruimten
+- micro soft. detonationservice/detonationinstances
+- micro soft. devices/elasticpools
+- micro soft. devices/elasticpools/iothubtenants
+- micro soft. devices/iothubs
+- micro soft. devices/provisioningservices
+- micro soft. devops/pijp lijnen
+- micro soft. devspaces/controllers
+- micro soft. devtestlab/labcenters
+- micro soft. devtestlab/Labs
+- micro soft. devtestlab/Labs/servicerunners
+- micro soft. devtestlab/Labs/informatie
+- micro soft. devtestlab/planningen
+- micro soft. digitaltwins/digitaltwinsinstances
+- micro soft. documentdb/databaseaccounts
+- micro soft. domainregistration/domeinen
+- micro soft. enterpriseknowledgegraph/Services
+- micro soft. eventgrid/domeinen
+- micro soft. eventgrid/partnernamespaces
+- micro soft. eventgrid/partnerregistrations
+- micro soft. eventgrid/partnertopics
+- micro soft. eventgrid/systemtopics
+- micro soft. eventgrid/topics
+- micro soft. eventhub/clusters
+- micro soft. eventhub/naam ruimten
+- micro soft. experimenten/experimentworkspaces
+- micro soft. Falcon/naam ruimten
+- micro soft. gaming/titels
+- micro soft. Genomics/accounts
+- micro soft. guestconfiguration/automanagedaccounts
+- micro soft. hanaonazure/hanainstances
+- micro soft. hanaonazure/sapmonitors
+- micro soft. hardwaresecuritymodules/dedicatedhsms
+- micro soft. hdinsight/clusters
+- micro soft. healthcareapis/Services
+- micro soft. hybridcompute/machines
+- micro soft. hybridcompute/machines/uitbrei dingen
+- micro soft. hybriddata/datamanagers
+- micro soft. Hydra/-onderdelen
+- micro soft. Hydra/networkscopes
+- micro soft. importexport/Jobs
+- micro soft. Insights/actiongroups
+- micro soft. Insights/activitylogalerts
+- micro soft. Insights/alertrules
+- micro soft. Insights/autoscalesettings
+- micro soft. Insights/onderdelen
+- micro soft. Insights/datacollectionrules
+- micro soft. Insights/guestdiagnosticsettings
+- micro soft. Insights/metricalerts
+- micro soft. Insights/notificationgroups
+- micro soft. Insights/notificationrules
+- micro soft. Insights/privatelinkscopes
+- micro soft. Insights/scheduledqueryrules
+- micro soft. Insights/webtests
+- micro soft. Insights/werkmappen
+- micro soft. Insights/workbooktemplates
+- micro soft. iotcentral/iotapps
+- micro soft. iotspaces/Graph
+- micro soft. hsmpools
+- micro soft.-sleutel kluis/-kluizen
+- micro soft. kubernetes/connectedclusters
+- micro soft. kusto/clusters
+- micro soft. kusto/clusters/data bases
+- micro soft. labservices/labaccounts
+- micro soft. Logic/integrationaccounts
+- micro soft. Logic/integrationserviceenvironments
+- micro soft. Logic/integrationserviceenvironments/beheerdeapi's
+- micro soft. Logic/werk stromen
+- micro soft. MachineLearning/commitmentplans
+- micro soft. MachineLearning/webservices
+- micro soft. MachineLearning/werk ruimten
+- micro soft. machinelearningcompute/operationalizationclusters
+- micro soft. machinelearningservices/werk ruimten
+- micro soft. Maintenance/maintenanceconfigurations
+- micro soft. Maintenance/maintenancepolicies
+- micro soft. managedidentity/groepen
+- micro soft. managedidentity/userassignedidentities
+- micro soft. managednetwork/managednetworkgroups
+- micro soft. managednetwork/managednetworkpeeringpolicies
+- micro soft. managednetwork/managednetworks
+- micro soft. managednetwork/managednetworks/managednetworkgroups
+- micro soft. managednetwork/managednetworks/managednetworkpeeringpolicies
+- micro soft. Maps/accounts
+- micro soft. Maps/accounts/privateatlases
+- micro soft. marketplaceapps/classicdevservices
+- micro soft. Media/Media Services
+- micro soft. Media/Media Services/liveevents
+- micro soft. Media/Media Services/streamingendpoints
+- micro soft. Media/Media Services/trans formaties
+- micro soft. microservices4spring/appclusters
+- micro soft. migrate/assessmentprojects
+- micro soft. migrate/migrateprojects
+- micro soft. migrate/movecollections
+- micro soft. migrate/projects
+- micro soft. mixedreality/holographicsbroadcastaccounts
+- micro soft. mixedreality/objectunderstandingaccounts
+- micro soft. mixedreality/remoterenderingaccounts
+- micro soft. mixedreality/spatialanchorsaccounts
+- micro soft. mixedreality/surfacereconstructionaccounts
+- micro soft. NetApp/netappaccounts
+- micro soft. NetApp/netappaccounts/backuppolicies
+- micro soft. NetApp/netappaccounts/capacitypools
+- micro soft. NetApp/netappaccounts/capacitypools/volumes
+- micro soft. NetApp/netappaccounts/capacitypools/volumes/mounttargets
+- micro soft. NetApp/netappaccounts/capacitypools/volumes/moment opnamen
+- micro soft. Network/applicationgateways
+- micro soft. Network/applicationgatewaywebapplicationfirewallpolicies
+- micro soft. Network/applicationsecuritygroups
+- micro soft. Network/azurefirewalls
+- micro soft. Network/bastionhosts
+- micro soft. Network/Connections
+- micro soft. Network/ddoscustompolicies
+- micro soft. Network/ddosprotectionplans
+- micro soft. Network/dnszones
+- micro soft. Network/expressroutecircuits
+- micro soft. Network/expressroutecrossconnections
+- micro soft. Network/expressroutegateways
+- micro soft. Network/expressrouteports
+- micro soft. Network/firewallpolicies
+- micro soft. Network/frontdoors
+- micro soft. Network/frontdoorwebapplicationfirewallpolicies
+- micro soft. Network/ipallocations
+- micro soft. Network/ipgroups
+- micro soft. Network/loadbalancers
+- micro soft. Network/localnetworkgateways
+- micro soft. Network/natgateways
+- micro soft. Network/networkexperimentprofiles
+- micro soft. Network/networkintentpolicies
+- micro soft. Network/networkinterfaces
+- micro soft. Network/networkmanagers
+- micro soft. Network/networkprofiles
+- micro soft. Network/networksecuritygroups
+- micro soft. Network/networkvirtualappliances
+- micro soft. Network/networkwatchers
+- micro soft. Network/networkwatchers/connectionmonitors
+- micro soft. Network/networkwatchers/flowlogs
+- micro soft. Network/networkwatchers/lenzen
+- micro soft. Network/networkwatchers/pingmeshes
+- micro soft. Network/p2svpngateways
+- micro soft. Network/privatednszones
+- micro soft. Network/privatednszones/virtualnetworklinks
+- micro soft. Network/privateendpointredirectmaps
+- micro soft. Network/privateendpoints
+- micro soft. Network/privatelinkservices
+- micro soft. Network/publicipaddresses
+- micro soft. Network/publicipprefixes
+- micro soft. Network/routefilters
+- micro soft. Network/routetables
+- micro soft. Network/sampleresources
+- micro soft. Network/securitypartnerproviders
+- micro soft. Network/serviceendpointpolicies
+- micro soft. Network/trafficmanagerprofiles
+- micro soft. Network/virtualhubs
+- micro soft. Network/virtualnetworkgateways
+- micro soft. Network/virtualnetworks
+- micro soft. Network/virtualnetworktaps
+- micro soft. Network/virtualrouters
+- micro soft. Network/virtualwans
+- micro soft. Network/vpngateways
+- micro soft. Network/vpnserverconfigurations
+- micro soft. Network/vpnsites
+- micro soft. notification hubs/naam ruimten
+- micro soft. notification hubs/naam ruimten/notification hubs
+- micro soft. objectstore/osnamespaces
+- micro soft. offazure/hypervsites
+- micro soft. offazure/importsites
+- micro soft. offazure/serversites
+- micro soft. offazure/vmwaresites
+- micro soft. operationalinsights/clusters
+- micro soft. operationalinsights/werk ruimten
+- micro soft. operationsmanagement/oplossingen
+- micro soft. operationsmanagement/views
+- micro soft. peering/peering
+- micro soft. peering/peeringservices
+- micro soft. Portal/Dash boards
+- micro soft. portalsdk/rootresources
+- micro soft. powerbi/workspacecollections
+- micro soft. powerbidedicated/capaciteiten
+- micro soft. projectarcadia/werk ruimten
+- micro soft. projectarcadia/werk ruimten/sparkcomputes
+- micro soft. projectarcadia/werk ruimten/sqlcomputes
+- micro soft. projectbabylon/accounts
+- micro soft. Quantum/werk ruimten
+- micro soft. Recovery Services/kluizen
+- micro soft. redhatopenshift/openshiftclusters
+- micro soft. relay/naam ruimten
+- micro soft. RemoteApp/verzamelingen
+- micro soft. resourcegraph/query's
+- micro soft. resources/deploymentscripts
+- micro soft. resources/templatespecs
+- micro soft. SaaS/toepassingen
+- micro soft. scheduler/jobcollections
+- micro soft. Search/searchservices
+- micro soft. Security/automaters
+- micro soft. Security/iotsecuritysolutions
+- micro soft. securitydetonation/kamers
+- micro soft. servicebus/naam ruimten
+- micro soft. servicefabric/clusters
+- micro soft. servicefabric/containergroupsets
+- micro soft. servicefabric/managedclusters
+- micro soft. servicefabricmesh/toepassingen
+- micro soft. servicefabricmesh/gateways
+- micro soft. servicefabricmesh/Networks
+- micro soft. servicefabricmesh/geheimen
+- micro soft. servicefabricmesh/volumes
+- micro soft. signalrservice/Signa lering
+- micro soft. Solutions/appliancedefinitions
+- micro soft. Solutions/toestellen
+- micro soft. Solutions/applicationdefinitions
+- micro soft. Solutions/toepassingen
+- micro soft. Solutions/jitrequests
+- micro soft. spoolservice/spools
+- micro soft. SQL/instancepools
+- micro soft. SQL/managedinstances
+- micro soft. SQL/managedinstances/data bases
+- micro soft. SQL/servers
+- micro soft. SQL/servers/data bases
+- micro soft. SQL/servers/elasticpools
+- micro soft. SQL/servers/jobaccounts
+- micro soft. SQL/servers/jobagents
+- micro soft. SQL/virtualclusters
+- micro soft. sqlvirtualmachine/sqlvirtualmachinegroups
+- micro soft. sqlvirtualmachine/sqlvirtualmachines
+- micro soft. sqlvm/dwvm
+- micro soft. Storage/Storage accounts
+- micro soft. storagecache/caches
+- micro soft. storagesync/storagesyncservices
+- micro soft. storagesyncdev/storagesyncservices
+- micro soft. storagesyncint/storagesyncservices
+- micro soft. storsimple/managers
+- micro soft. streamanalytics/streamingjobs
+- micro soft. Synapse/werk ruimten
+- micro soft. Synapse/werk ruimten/bigdatapools
+- micro soft. Synapse/werk ruimten/sqlpools
+- micro soft. terraformoss/providerregistrations
+- micro soft. timeseriesinsights/omgevingen
+- micro soft. timeseriesinsights/omgevingen/eventsources
+- micro soft. timeseriesinsights/omgevingen/referencedatasets
+- micro soft. tokens/winkels
+- micro soft. tokenvault/kluizen
+- micro soft. virtualmachineimages/imagetemplates
+- micro soft. Visual Studio/account
+- micro soft. Visual Studio/account/extension
+- micro soft. Visual Studio/account/project
+- micro soft. VMware/arczones
+- micro soft. VMware/resourcepools
+- micro soft. VMware/vCenter
+- micro soft. VMware/informatie
+- micro soft. VMware/virtualmachinetemplates
+- micro soft. VMware/virtualnetworks
+- micro soft. vmwarecloudsimple/dedicatedcloudnodes
+- micro soft. vmwarecloudsimple/dedicatedcloudservices
+- micro soft. vmwarecloudsimple/informatie
+- micro soft. vmwareonazure/privateclouds
+- micro soft. vmwarevirtustream/privateclouds
+- micro soft. vnfmanager/apparaten
+- micro soft. vnfmanager/vnfs
+- micro soft. vsonline/accounts
+- micro soft. vsonline/plannen
+- micro soft. Web/apimanagementaccounts/api's
+- micro soft. web/certificaten
+- micro soft. Web/connectiongateways
+- micro soft. Web/verbindingen
+- micro soft. Web/customapis
+- micro soft. Web/hostingenvironments
+- micro soft. Web/kubeenvironments
+- micro soft. web/server farms
+- micro soft. web/sites
+- micro soft. web/sites/premieraddons
+- micro soft. web/sites/sleuven
+- micro soft. Web/staticsites
+- micro soft. windowsesu/multipleactivationkeys
+- micro soft. windowsiot/deviceservices
+- myget. Package Management/Services
+- paraleap. cloudmonix/Services
+- pokitdok. platform/Services
+- providers. test-statefulibizaengines
+- providers. test-statefulresources
+- providers. test-statefulresources/nestedresources
+- providers. test-statelessresources
+- ravenhq. db/data bases
+- , geeft Raygun. crashreporting/apps
+- sendgrid. e-mail/accounts
+- sparkpost. Basic/Services
+- stackify. retrace/Services
+- test. Shoebox/testresources
+- test. Shoebox/testresources2
+- Trend Micro. deepsecurity/accounts
+- u2uconsult. theidentityhub/Services
+- wandisco. Fusion/fusiongroups
+- wandisco. Fusion/fusiongroups/azurezones
+- wandisco. Fusion/fusiongroups/azurezones/plugins
+- wandisco. Fusion/fusiongroups/hivereplicationrules
+- wandisco. Fusion/fusiongroups/managedonpremzones
+- wandisco. Fusion/fusiongroups/onpremzones
+- wandisco. Fusion/fusiongroups/replicationrules
 
-## <a name="securityresources"></a>beveiligingsresources
+## <a name="securityresources"></a>securityresources
 
-- microsoft.security/assessments
-- microsoft.security/assessments/subbeoordelingen
-- microsoft.security/prijzen
-- microsoft.security/regulatorycompliancestandards
-- microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
-- microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
-- microsoft.security/securitystatussen
-- microsoft.security/securitystatuss/containerhosts
-- microsoft.security/securitystatuss/onpremisemachines
-- microsoft.security/securitystatuss/servers
-- microsoft.security/securitystatuss/subnetten
-- microsoft.security/securitystatuss/virtualmachines
-- microsoft.security/securitystatusessummaries
+- micro soft. Security/beoordelingen
+- micro soft. Security/beoordelingen/subevaluaties
+- micro soft. Security/prijzen
+- micro soft. Security/regulatorycompliancestandards
+- micro soft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
+- micro soft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- micro soft. Security/securitystatuses
+- micro soft. Security/securitystatuses/containerhosts
+- micro soft. Security/securitystatuses/onpremisemachines
+- micro soft. Security/securitystatuses/servers
+- micro soft. Security/securitystatuses/subnetten
+- micro soft. Security/securitystatuses/informatie
+- micro soft. Security/securitystatusessummaries
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [querytaal](../concepts/query-language.md).
-- Meer informatie over het [verkennen van bronnen.](../concepts/explore-resources.md)
-- Zie voorbeelden van [Starter-query's](../samples/starter.md).
+- Meer informatie over de [query taal](../concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
+- Bekijk voor beelden van [Start query's](../samples/starter.md).

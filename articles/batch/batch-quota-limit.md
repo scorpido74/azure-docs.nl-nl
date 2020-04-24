@@ -1,151 +1,141 @@
 ---
-title: Servicequota en -limieten - Azure Batch | Microsoft Documenten
-description: Meer informatie over standaardazure batchquota, limieten en beperkingen en hoe u quotaverhogingen aanvragen
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Servicequota en -limieten
+description: Meer informatie over standaard Azure Batch quota's, limieten en beperkingen, en het aanvragen van quotum verhogingen
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a901d54ea584ec67bfa679e9cdc716ab27d45eca
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248227"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115819"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
-Net als bij andere Azure-services zijn er beperkingen voor bepaalde resources die zijn gekoppeld aan de Batch-service. Veel van deze limieten zijn standaardquota die door Azure worden toegepast op abonnements- of accountniveau. In dit artikel worden deze standaardinstellingen besproken en hoe u quotaverhogingen aanvragen.
+Net als bij andere Azure-Services gelden er limieten voor bepaalde resources die zijn gekoppeld aan de batch-service. Veel van deze limieten zijn standaard quota's die worden toegepast door Azure op het niveau van de abonnement of het account. In dit artikel worden deze standaard waarden beschreven en wordt uitgelegd hoe u quotum verhogingen kunt aanvragen.
 
-Houd rekening met deze quota bij het ontwerpen en opschalen van uw Batch-workloads. Als uw groep bijvoorbeeld het door u opgegeven doelaantal rekenknooppunten niet bereikt, hebt u mogelijk de limiet voor het kernquotum voor uw Batch-account bereikt.
+Houd bij het ontwerpen en opschalen van uw batch-workloads de volgende quota's in acht. Als uw pool bijvoorbeeld niet het doel aantal reken knooppunten bereikt dat u hebt opgegeven, hebt u mogelijk de kern quotum limiet voor uw batch-account bereikt.
 
 U kunt in één Batch-account meerdere Batch-workloads uitvoeren of uw workloads verdelen over Batch-accounts in hetzelfde abonnement maar in verschillende Azure-regio's.
 
-Als u van plan bent productieworkloads uit te voeren in Batch, moet u mogelijk een of meer van de quota boven de standaardinstelling verhogen. Als u een quotum wilt verhogen, u kosteloos een online [verzoek voor klantenondersteuning](#increase-a-quota) openen.
+Als u in batch productie werkbelastingen wilt uitvoeren, moet u mogelijk een of meer van de quota's boven de standaard waarde verhogen. Als u een quotum wilt verhogen, kunt u gratis een online [klant ondersteunings aanvraag](#increase-a-quota) openen.
 
 ## <a name="resource-quotas"></a>Resourcequota
 
-Een quotum is een kredietlimiet, geen capaciteitsgarantie. Als u op grote schaal capaciteitsbehoeften hebt, neemt u contact op met Azure-ondersteuning.
+Een quotum is een krediet limiet, geen capaciteits garantie. Neem contact op met de ondersteuning van Azure als u de capaciteits behoeften op grote schaal hebt.
 
-Houd er ook rekening mee dat quota geen gegarandeerde waarden zijn. Quota kunnen variëren op basis van wijzigingen van de Batch-service of een gebruikersverzoek om een quotumwaarde te wijzigen.
+Houd er ook rekening mee dat quota's geen gegarandeerde waarden zijn. Quota kunnen variëren op basis van wijzigingen van de batch-service of een gebruikers aanvraag om een quotum waarde te wijzigen.
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-### <a name="cores-quotas-in-user-subscription-mode"></a>Kernen quota in gebruikersabonnementsmodus
+### <a name="cores-quotas-in-user-subscription-mode"></a>Kernen quota's in de modus gebruikers abonnement
 
-Als u een Batch-account hebt gemaakt met de toewijzingsmodus voor een groep ingesteld op **gebruikersabonnement,** worden quota anders toegepast. In deze modus worden batch-VM's en andere bronnen rechtstreeks in uw abonnement gemaakt wanneer een groep wordt gemaakt. De quota azure batch-cores zijn niet van toepassing op een account dat in deze modus is gemaakt. In plaats daarvan worden de quota in uw abonnement voor regionale rekenkernen en andere resources toegepast. Meer informatie over deze quota in [Azure-abonnements- en servicelimieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Als u een batch-account hebt gemaakt met de groeps toewijzings modus ingesteld op **gebruikers abonnement**, worden quota anders toegepast. In deze modus worden batch-Vm's en andere resources rechtstreeks in uw abonnement gemaakt wanneer er een groep wordt gemaakt. De quota voor de Azure Batch-kernen zijn niet van toepassing op een account dat in deze modus wordt gemaakt. In plaats daarvan worden de quota's in uw abonnement voor regionale reken kernen en andere resources toegepast. Meer informatie over deze quota's vindt u in [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-## <a name="pool-size-limits"></a>Limieten voor de grootte van de groep
+## <a name="pool-size-limits"></a>Limieten voor groeps grootte
 
-Limieten voor de grootte van de groep worden ingesteld door de batchservice. In tegenstelling tot [resourcequota](#resource-quotas)kunnen deze waarden niet worden gewijzigd. Alleen groepen met internodecommunicatie en aangepaste afbeeldingen hebben beperkingen die verschillen van het standaardquotum.
+Limieten voor groeps grootte worden ingesteld door de batch-service. In tegens telling tot [resource quota](#resource-quotas)kunnen deze waarden niet worden gewijzigd. Alleen groepen met communicatie tussen knoop punten en aangepaste installatie kopieën hebben andere beperkingen dan het standaard quotum.
 
 | **Resource** | **Maximumaantal** |
 | --- | --- |
-| **Compute-knooppunten in [internodecommunicatie ingeschakeld](batch-mpi.md)**  ||
-| Toewijzingsmodus batchservicegroep | 100 |
-| Toewijzingsmodus voor batchabonnementen | 80 |
-| **Gegevensknooppunten in [groep die zijn gemaakt met een beheerde afbeeldingsbron](batch-custom-images.md)**<sup>1</sup> ||
+| **Reken knooppunten in de [groep communicatie tussen knoop](batch-mpi.md) punten**  ||
+| Pool toewijzings modus Batch-service | 100 |
+| Groeps toewijzings modus Batch-abonnement | 80 |
+| **Reken knooppunten in [de groep die zijn gemaakt met een beheerde installatie kopie bron](batch-custom-images.md)**<sup>1</sup> ||
 | Toegewezen knooppunten | 2000 |
 | Knooppunten met lage prioriteit | 1000 |
 
-<sup>1</sup> Voor zwembaden die geen internodecommunicatie zijn ingeschakeld.
+<sup>1</sup> voor groepen waarvoor geen communicatie tussen knoop punten is ingeschakeld.
 
 ## <a name="other-limits"></a>Andere limieten
 
-Extra limieten die zijn ingesteld door de Batch-service. In tegenstelling tot [resourcequota](#resource-quotas)kunnen deze waarden niet worden gewijzigd.
+Aanvullende limieten die zijn ingesteld door de batch-service. In tegens telling tot [resource quota](#resource-quotas)kunnen deze waarden niet worden gewijzigd.
 
 | **Resource** | **Maximumaantal** |
 | --- | --- |
-| [Gelijktijdige taken](batch-parallel-node-tasks.md) per compute-knooppunt | 4 x aantal node-kernen |
-| [Toepassingen](batch-application-packages.md) per batchaccount | 20 |
-| Toepassingspakketten per toepassing | 40 |
-| Toepassingspakketten per groep | 10 |
-| Maximale taaklevensduur | 180 dagen<sup>1</sup> |
-| [Mounts](virtual-file-mount.md) per compute node | 10 |
+| [Gelijktijdige taken](batch-parallel-node-tasks.md) per reken knooppunt | 4 x het aantal knooppunt kernen |
+| [Toepassingen](batch-application-packages.md) per batch-account | 20 |
+| Toepassings pakketten per toepassing | 40 |
+| Toepassings pakketten per pool | 10 |
+| Maximale levens duur van taken | 180 dagen<sup>1</sup> |
+| [Koppelingen](virtual-file-mount.md) per Compute-knoop punt | 10 |
 
-<sup>1</sup> De maximale levensduur van een taak, vanaf het moment dat deze aan de taak wordt toegevoegd tot wanneer deze is voltooid, is 180 dagen. Voltooide taken blijven zeven dagen duren; gegevens voor taken die niet binnen de maximale levensduur zijn voltooid, zijn niet toegankelijk.
+<sup>1</sup> de maximale levens duur van een taak, van wanneer deze wordt toegevoegd aan de taak wanneer deze is voltooid, is 180 dagen. Voltooide taken blijven zeven dagen geldig; gegevens voor taken die niet binnen de maximale levens duur zijn voltooid, zijn niet toegankelijk.
 
-## <a name="view-batch-quotas"></a>Batchquota weergeven
+## <a name="view-batch-quotas"></a>Batch quota's weer geven
 
-Uw Batch-accountquota weergeven in de [Azure-portal.][portal]
+Bekijk uw batch-account quota's in het [Azure Portal][portal].
 
-1. Selecteer **Batch-accounts** in de portal en selecteer vervolgens het Batch-account waarin u geïnteresseerd bent.
-1. Selecteer **Quota** in het menu van het batchaccount.
-1. De quota weergeven die momenteel worden toegepast op de batchrekening
+1. Selecteer **batch-accounts** in de portal en selecteer vervolgens het batch-account waarin u bent geïnteresseerd.
+1. Selecteer **quota's** in het menu van het batch-account.
+1. De quota's weer geven die momenteel zijn toegepast op het batch-account
 
-    ![Batchaccountquota][account_quotas]
+    ![Quota voor batch-account][account_quotas]
 
 ## <a name="increase-a-quota"></a>Een quotum verhogen
 
-Volg deze stappen om een quotumverhoging aan te vragen voor uw Batch-account of uw abonnement via de [Azure-portal.][portal] Het type quotumverhoging is afhankelijk van de pooltoewijzingsmodus van uw Batch-account. Als u een quotumverhoging wilt aanvragen, moet u de VM-reeks opnemen waarvoor u het quotum wilt verhogen. Wanneer de quotumverhoging wordt toegepast, wordt deze toegepast op alle reeksen VM's.
+Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of uw abonnement met behulp van de [Azure Portal][portal]. Het type quotum toename is afhankelijk van de pool toewijzings modus van uw batch-account. Als u een quotum toename wilt aanvragen, moet u de VM-reeks toevoegen waarvoor u het quotum wilt verhogen. Wanneer de quota toename wordt toegepast, wordt deze toegepast op alle reeksen Vm's.
 
-### <a name="increase-cores-quota-in-batch"></a>Kernenquotum in batch verhogen 
+### <a name="increase-cores-quota-in-batch"></a>Het quotum voor kernen in batch verhogen 
 
-1. Selecteer de **help + ondersteuningstegel** op het portaaldashboard of het vraagteken (**?**) in de rechterbovenhoek van de portal.
-1. Selecteer **Basisbeginselen voor nieuwe** > **ondersteuningsaanvragen**.
-1. In **de basis:**
+1. Selecteer de tegel **Help + ondersteuning** in het dash board van de portal of het vraag teken (**?**) in de rechter bovenhoek van de portal.
+1. Selecteer**basis principes** **nieuwe ondersteunings aanvraag** > .
+1. In de **basis beginselen**:
    
-    a. **Probleemservice en** > **abonnementslimieten (quota)**
+    a. **Issue Type** > **Limieten voor de service en abonnementen** van het probleem type (quota's)
    
     b. Selecteer uw abonnement.
    
-    c. **Onderdeel van** > **quotatype**
+    c. **Quota type** > **Batch** voor quotum type
       
-    Selecteer **Volgende**.
+    Selecteer **Next**.
     
 1. In **Details**:
       
-    a. Geef **in Details opgeven**de locatie, het quotumtype en batchaccount op.
+    a. Geef in **Details**opgeven de locatie, het quotum type en het batch-account op.
     
-    ![Verhoging batchquota][quota_increase]
+    ![Verhoging van batch quotum][quota_increase]
 
-    Quotatypen zijn:
+    De volgende quota typen zijn beschikbaar:
 
-    * **Per batchaccount**  
-        Waarden die specifiek zijn voor één batchaccount, inclusief toegewezen en kernen met lage prioriteit, en het aantal taken en groepen.
+    * **Per batch-account**  
+        Waarden die specifiek zijn voor één batch-account, inclusief specifieke kernen met een lage prioriteit en het aantal taken en Pools.
         
     * **Per regio**  
-        Waarden die van toepassing zijn op alle Batch-accounts in een regio en het aantal Batch-accounts per regio per abonnement bevatten.
+        Waarden die van toepassing zijn op alle batch-accounts in een regio en bevat het aantal batch-accounts per regio per abonnement.
 
-    Quota met lage prioriteit zijn één waarde voor alle VM-reeksen. Als u beperkte SKU's nodig hebt, moet u kernen met lage prioriteit selecteren en de **VM-families** opnemen die u wilt aanvragen.
+    Quota met lage prioriteit is één waarde in alle VM-reeksen. Als u beperkte Sku's nodig hebt, moet u **kernen met een lage prioriteit** selecteren en de te aanvragen VM-families toevoegen.
 
-    b. Selecteer een **ernst** op basis van uw [bedrijfsimpact.][support_sev]
+    b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
-1. In **Contactgegevens**:
+1. Bij **contact gegevens**:
    
-    a. Selecteer een **methode voor voorkeurscontactpersonen**.
+    a. Selecteer een **Voorkeurs methode voor contact personen**.
    
-    b. Controleer en voer de vereiste contactgegevens in.
+    b. Controleer de vereiste contact gegevens en geef deze op.
    
-    Selecteer **Maken** om het ondersteuningsverzoek in te dienen.
+    Selecteer **maken** om de ondersteunings aanvraag in te dienen.
 
-Zodra u uw ondersteuningsaanvraag hebt ingediend, neemt Azure-ondersteuning contact met u op. Quotaaanvragen kunnen binnen enkele minuten of maximaal twee werkdagen worden voltooid.
+Zodra u uw ondersteunings aanvraag hebt ingediend, neemt de ondersteuning van Azure contact met u op. Quota aanvragen kunnen binnen een paar minuten of Maxi maal twee werk dagen worden voltooid.
 
-## <a name="related-quotas-for-vm-pools"></a>Gerelateerde quota voor VM-groepen
+## <a name="related-quotas-for-vm-pools"></a>Gerelateerde quota's voor VM-groepen
 
-Batchgroepen in de virtuele machineconfiguratie die zijn geïmplementeerd in een virtueel Azure-netwerk, wijzen automatisch extra Azure-netwerkbronnen toe. De volgende resources zijn nodig voor elke 50 poolknooppunten in een virtueel netwerk:
+Batch-Pools in de virtuele-machine configuratie die is geïmplementeerd in een virtueel Azure-netwerk, worden automatisch extra Azure-netwerk resources toegewezen. De volgende resources zijn nodig voor elk 50 pool-knoop punten in een virtueel netwerk:
 
-* Eén [netwerkbeveiligingsgroep](../virtual-network/security-overview.md#network-security-groups)
+* Eén [netwerk beveiligings groep](../virtual-network/security-overview.md#network-security-groups)
 * Eén [openbaar IP-adres](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-* Eén [load balancer](../load-balancer/load-balancer-overview.md)
+* Een [Load Balancer](../load-balancer/load-balancer-overview.md)
 
-Deze resources worden toegewezen in het abonnement dat het virtuele netwerk bevat dat wordt geleverd bij het maken van de batchgroep. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Als u grote poolimplementaties plant in een virtueel netwerk, controleert u de quota van het abonnement voor deze resources. Vraag indien nodig een verhoging van de Azure-portal aan door **Help + ondersteuning te**selecteren.
+Deze resources worden toegewezen in het abonnement met het virtuele netwerk dat is geleverd bij het maken van de batch-pool. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Als u implementaties van grote groepen plant in een virtueel netwerk, controleert u de quota van het abonnement voor deze resources. Vraag, indien nodig, een verhoging van de Azure Portal aan door **Help en ondersteuning**te selecteren.
 
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 * [Een Azure Batch-account in de Azure Portal maken](batch-account-create-portal.md)
-* [Overzicht van azure batch-functies](batch-api-basics.md)
-* [Azure-abonnements- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)
+* [Overzicht van Azure Batch-functies](batch-api-basics.md)
+* [Azure-abonnements-en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

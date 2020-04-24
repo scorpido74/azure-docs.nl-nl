@@ -1,6 +1,6 @@
 ---
 title: AS2-berichten verzenden en ontvangen voor B2B
-description: Exchange AS2-berichten voor B2B-bedrijfsintegratiescenario's met Azure Logic Apps met Enterprise Integration Pack
+description: AS2-berichten uitwisselen voor B2B-scenario's voor bedrijfs integratie met behulp van Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,122 +8,122 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458825"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115496"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B-bedrijfsintegratie in Azure Logic Apps met Enterprise Integration Pack
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
 > [!IMPORTANT]
-> De originele AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)-connector** gebruikt. Deze versie biedt dezelfde mogelijkheden als de oorspronkelijke versie, is inheems in de runtime van Logic Apps en biedt aanzienlijke prestatieverbeteringen in termen van doorvoer en berichtgrootte. De native v2-connector vereist ook niet dat u een verbinding maakt met uw integratieaccount. Zorg er in plaats daarvan, zoals beschreven in de vereisten, voor dat u uw integratieaccount koppelt aan de logische app waar u de connector wilt gebruiken.
+> De oorspronkelijke AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)** -connector gebruikt. Deze versie biedt dezelfde functionaliteit als de oorspronkelijke versie, is standaard voor de runtime van de Logic Apps en biedt aanzienlijke prestatie verbeteringen in de voor waarden voor door Voer en bericht grootte. Daarnaast hoeft de systeem eigen v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
 
-Als u wilt werken met AS2-berichten in Azure Logic Apps, u de AS2-connector gebruiken, die triggers en acties biedt voor het beheer van AS2-communicatie. Om bijvoorbeeld de veiligheid en betrouwbaarheid bij het verzenden van berichten vast te stellen, u de volgende acties gebruiken:
+Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze bevat triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
 
-* [ **AS2 Codeer** actie](#encode) voor het leveren van versleuteling, digitale ondertekening en bevestigingen via Message Disposition Notifications (MDN), die helpen bij het ondersteunen van niet-afwijzing. Met deze actie worden bijvoorbeeld AS2/HTTP-kopteksten uitgevoerd en worden deze taken uitgevoerd wanneer deze zijn geconfigureerd:
+* [ **AS2 Codeer** actie](#encode) voor het leveren van versleuteling, digitale ondertekening en bevestigingen via bericht beschikkings meldingen (MDN), die ondersteuning bieden voor niet-afwijzing. Deze actie past bijvoorbeeld AS2/HTTP-headers toe en voert deze taken uit wanneer deze zijn geconfigureerd:
 
-  * Tekent uitgaande berichten.
+  * Ondertekent uitgaande berichten.
   * Versleutelt uitgaande berichten.
-  * Comprimeert het bericht.
-  * Verzendt de bestandsnaam in de MIME-header.
+  * Hiermee comprimeert u het bericht.
+  * Verzendt de bestands naam in de MIME-header.
 
-* [ **AS2 Decoderen** actie](#decode) voor het verstrekken van decryptie, digitale ondertekening, en bevestigingen via Message Disposition Notifications (MDN). Met deze actie worden bijvoorbeeld de volgende taken uitgevoerd:
+* [ **AS2 decodeer** actie](#decode) voor het leveren van ontsleuteling, digitale ondertekening en bevestigingen via bericht beschikkings meldingen (MDN). Met deze actie worden bijvoorbeeld de volgende taken uitgevoerd:
 
   * Verwerkt AS2/HTTP-headers.
-  * Hiermee worden ontvangen MDN's verzoend met de oorspronkelijke uitgaande berichten.
-  * Updates en correlaten van records in de niet-verwerpingsdatabase.
-  * Schrijft records voor AS2 status rapportage.
-  * De inhoud van het laadvermogen wordt uitgevoerd als base64-gecodeerd.
-  * Hiermee bepaalt u of MDN's vereist zijn. Op basis van de AS2-overeenkomst bepaalt u of MDN's synchroon of asynchroon moeten zijn.
-  * Hiermee genereert u synchrone of asynchrone MDN's op basis van de AS2-overeenkomst.
-  * Hiermee stelt u de correlatietokens en -eigenschappen in op MDN's.
+  * MDNs met de oorspronkelijke uitgaande berichten afgestemd.
+  * Hiermee worden de records in de niet-bewaarde data base bijgewerkt en gecorreleerd.
+  * Schrijft records voor AS2-status rapportage.
+  * Voert inhoud van Payload uit als base64-gecodeerd.
+  * Hiermee wordt bepaald of MDNs zijn vereist. Op basis van de AS2-overeenkomst bepaalt u of MDNs synchroon of asynchroon moet zijn.
+  * Genereert synchrone of asynchrone MDNs op basis van de AS2-overeenkomst.
+  * Hiermee stelt u de correlatie tokens en eigenschappen in op MDNs.
 
-  Met deze actie worden deze taken ook uitgevoerd wanneer deze zijn geconfigureerd:
+  Deze actie voert ook deze taken uit wanneer deze zijn geconfigureerd:
 
-  * Controleert de handtekening.
-  * Decodeert de berichten.
-  * Decomprimeert het bericht.
-  * Dubbele duplicaat van bericht-id controleren en weigeren.
+  * Hiermee wordt de hand tekening gecontroleerd.
+  * Hiermee worden de berichten gedecodeerd.
+  * Hiermee wordt het bericht gedecomprimeerd.
+  * Dubbele bericht-id's controleren en weigeren.
 
-In dit artikel ziet u hoe u de as2-coderings- en decoderingsacties toevoegt aan een bestaande logische app.
+In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt toevoegen aan een bestaande logische app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account.](https://azure.microsoft.com/free/)
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De logische app van waaruit u de AS2-connector wilt gebruiken en een trigger waarmee de werkstroom van uw logische app wordt gestart. De AS2-connector biedt alleen acties, geen triggers. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quickstart: Uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* De logische app van waaruit u de AS2-connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De AS2-connector biedt alleen acties, geen triggers. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en is gekoppeld aan de logische app waarin u de AS2-connector wilt gebruiken. Zowel uw logische app als integratieaccount moeten op dezelfde locatie of azure-regio bestaan.
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en gekoppeld aan de logische app waar u de AS2-connector wilt gaan gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
-* Ten minste twee [handelspartners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratieaccount met behulp van de AS2-identiteitskwalificatie.
+* Ten minste twee [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratie account met behulp van de AS2-identiteits kwalificatie.
 
-* Voordat u de AS2-connector gebruiken, [agreement](../logic-apps/logic-apps-enterprise-integration-agreements.md) moet u een AS2-overeenkomst tussen uw handelspartners maken en die overeenkomst opslaan in uw integratieaccount.
+* Voordat u de AS2-connector kunt gebruiken, moet u een AS2- [overeenkomst](../logic-apps/logic-apps-enterprise-integration-agreements.md) maken tussen uw handels partners en de overeenkomst opslaan in uw integratie account.
 
-* Als u [Azure Key Vault](../key-vault/general/overview.md) gebruikt voor certificaatbeheer, controleert u of uw kluissleutels de **versleutelings-** en **decryptebewerkingen** toestaan. Anders mislukken de coderings- en decoderingsacties.
+* Als u [Azure Key Vault](../key-vault/general/overview.md) gebruikt voor certificaat beheer, controleert u of uw kluis sleutels de bewerkingen voor **versleuteling** en **ontsleuteling** toestaan. Anders mislukken de coderings-en decodeer acties.
 
-  Ga in de Azure-portal naar de sleutel in uw sleutelkluis, bekijk de **toegestane bewerkingen**van uw sleutel en controleer of de **bewerkingen Versleutelen** en **decoderen** zijn geselecteerd, bijvoorbeeld:
+  Ga in het Azure Portal naar de sleutel in uw sleutel kluis, Controleer de **toegestane bewerkingen**van uw sleutel en bevestig dat de bewerkingen voor **versleutelen** en **ontsleutelen** zijn geselecteerd, bijvoorbeeld:
 
-  ![Vault-sleutelbewerkingen controleren](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
+  ![Controleer de bewerkingen van de kluis sleutel](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
 ## <a name="encode-as2-messages"></a>AS2-berichten coderen
 
-1. Als u dat nog niet hebt gedaan, opent u in de [Azure-portal](https://portal.azure.com)uw logische app in de Logic App Designer.
+1. Als u dat nog niet hebt gedaan, opent u in de [Azure Portal](https://portal.azure.com)de logische app in de ontwerp functie voor logische apps.
 
-1. Voeg in de ontwerper een nieuwe actie toe aan uw logica-app.
+1. Voeg in de ontwerp functie een nieuwe actie toe aan uw logische app.
 
-1. Selecteer **onder Een actie kiezen** en het zoekvak de optie **Alles**. Typ in het zoekvak 'as2-coderen' en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 Coderen**
+1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 encode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 Encode**
 
-   ![Selecteer 'AS2 Coderen'](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   ![Selecteer ' AS2 encode '](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. Geef nu informatie voor deze eigenschappen:
+1. Geef nu informatie op voor deze eigenschappen:
 
    | Eigenschap | Beschrijving |
    |----------|-------------|
-   | **Bericht om te coderen** | Het bericht payload |
-   | **AS2 van** | De id voor de afzender van het bericht zoals opgegeven door uw AS2-overeenkomst |
-   | **AS2 naar** | De id voor de berichtontvanger zoals opgegeven door uw AS2-overeenkomst |
+   | **Bericht dat moet worden gecodeerd** | De bericht lading |
+   | **AS2 van** | De id van de afzender van het bericht zoals opgegeven door de AS2-overeenkomst |
+   | **AS2 naar** | De id voor de ontvanger van het bericht zoals opgegeven door de AS2-overeenkomst |
    |||
 
    Bijvoorbeeld:
 
-   ![Eigenschappen voor het coderen van berichten](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+   ![Bericht coderings eigenschappen](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
 > [!TIP]
-> Als u problemen ondervindt bij het verzenden van ondertekende of versleutelde berichten, u overwegen verschillende SHA256-algoritmeindelingen uit te proberen. De AS2-specificatie geeft geen informatie over SHA256-indelingen, dus elke provider gebruikt zijn eigen implementatie of indeling.
+> Als u problemen ondervindt bij het verzenden van ondertekende of versleutelde berichten, kunt u overwegen verschillende SHA256-algoritme indelingen te proberen. De AS2-specificatie biedt geen informatie over SHA256-indelingen, dus elke provider gebruikt een eigen implementatie of indeling.
 
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>AS2-berichten decoderen
 
-1. Als u dat nog niet hebt gedaan, opent u in de [Azure-portal](https://portal.azure.com)uw logische app in de Logic App Designer.
+1. Als u dat nog niet hebt gedaan, opent u in de [Azure Portal](https://portal.azure.com)de logische app in de ontwerp functie voor logische apps.
 
-1. Voeg in de ontwerper een nieuwe actie toe aan uw logica-app.
+1. Voeg in de ontwerp functie een nieuwe actie toe aan uw logische app.
 
-1. Selecteer **onder Een actie kiezen** en het zoekvak de optie **Alles**. Voer in het zoekvak 'as2-decode' in en zorg ervoor dat u de as2-actie (v2) selecteert: **AS2 Decoderen**
+1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 decode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 decoderen**
 
-   ![Selecteer 'AS2 Decoderen'](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   ![Selecteer ' AS2 decoderen '](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. Selecteer deze waarden uit eerdere trigger- of actie-uitvoervoor **het bericht dat moet worden coderen** en de eigenschappen van de **berichtenkoppen.**
+1. Selecteer voor het **bericht dat moet worden gecodeerd** en de eigenschappen van de **bericht koppen** deze waarden van vorige trigger of actie-uitvoer.
 
-   Stel dat uw logica-app berichten ontvangt via een trigger verzoek. U de uitgangen van die trigger selecteren.
+   Stel bijvoorbeeld dat uw logische app berichten ontvangt via een aanvraag trigger. U kunt de uitvoer van die Trigger selecteren.
 
-   ![Hoofdtekst en kopteksten selecteren in uitvoeraanvragen](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
+   ![Hoofd tekst en kopteksten selecteren in uitvoer van aanvragen](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
 ## <a name="sample"></a>Voorbeeld
 
-Zie de [as2-logische appsjabloon en -scenario](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)als u wilt proberen een volledig operationele logica-app en voorbeeld as2-scenario te implementeren.
+Zie de [sjabloon en het scenario voor de AS2 Logic-app](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)als u een volledig operationele logische app en een voor beeld van een AS2 scenario wilt implementeren.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentiepagina van](https://docs.microsoft.com/connectors/as2/)de connector voor meer technische details over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector. 
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/as2/). 
 
 > [!NOTE]
-> Voor logische apps in een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)gebruikt de oorspronkelijke ISE-versie met HET LABEL ISE in plaats daarvan de [ISE-berichtlimieten.](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt de ISE-label versie van deze connector de [limieten voor B2B-berichten voor ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

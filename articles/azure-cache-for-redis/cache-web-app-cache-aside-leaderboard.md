@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een web-app maken (opzij zetten voor cache) - Azure-cache voor Redis'
-description: Meer informatie over het maken van een web-app met Azure-cache voor Redis die gebruikmaakt van het cache-apart patroon.
+title: 'Zelf studie: een web-app maken (caching-legging)-Azure cache voor redis'
+description: Meer informatie over het maken van een web-app met Azure cache voor redis die gebruikmaakt van het cache-leggings patroon.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * Deze zelfstudie gaat verder waar u was gebleven in [Quickstart van ASP.NET voor Azure Cache voor Redis](cache-web-app-howto.md). Als u dat nog niet hebt gedaan, volgt u eerst de snelstartgids.
-* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     * ASP.NET-ontwikkeling en webontwikkeling
     * Azure-ontwikkeling
     * .NET-desktopontwikkeling met SQL Server Express LocalDB of [SQL Server 2017 Express-editie](https://www.microsoft.com/sql-server/sql-server-editions-express).
@@ -148,7 +148,7 @@ Meer informatie over dit pakket vindt u op de NuGet-pagina [EntityFramework](htt
 
 1. Voeg de volgende sectie `connectionStrings` toe aan de sectie `configuration`. De naam van de verbindingsreeks moet overeenkomen met de naam van de contextklasse van de Entity Framework-database. Dit is `TeamContext`.
 
-    Deze verbindingstekenreeks gaat ervan uit dat u aan de [vereisten hebt](#prerequisites) voldaan en SQL Server Express LocalDB hebt geïnstalleerd, die deel uitmaakt van de *.NET-werkbelasting voor bureaubladontwikkeling* die is geïnstalleerd met Visual Studio 2019.
+    In deze connection string wordt ervan uitgegaan dat u voldoet aan de [vereisten](#prerequisites) en geïnstalleerde SQL Server Express LocalDB, die deel uitmaakt van de *.net desktop Development* -werk belasting die is geïnstalleerd met Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -250,7 +250,7 @@ U hebt het clientbibliotheekpakket *StackExchange.Redis* al geïnstalleerd in de
 
     ![TeamsController](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Voeg de `using` volgende twee instructies toe aan **TeamsController.cs:**
+1. Voeg de volgende twee `using` instructies toe aan **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -634,7 +634,7 @@ In deze test worden de toepassing en de database beide lokaal uitgevoerd. De Azu
 
 De app lokaal uitvoeren:
 
-1. Druk op **Ctrl+F5** om de toepassing uit te voeren.
+1. Druk op **CTRL + F5** om de toepassing uit te voeren.
 
     ![App die lokaal wordt uitgevoerd](./media/cache-web-app-cache-aside-leaderboard/cache-local-application.png)
 
@@ -654,7 +654,7 @@ In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet wor
 
    | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Databasenaam** | *ContosoTeamsDatabase* | Zie [Database-id's voor](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)geldige databasenamen . |
+   | **Database naam** | *ContosoTeamsDatabase* | Zie [Data Base-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)voor geldige database namen. |
    | **Abonnement** | *Uw abonnement*  | Selecteer hetzelfde abonnement dat u gebruikt om de cache te maken en de App Service te hosten. |
    | **Resourcegroep**  | *TestResourceGroup* | Klik op **Bestaande gebruiken** en gebruik dezelfde resourcegroep als waarin u de cache en App Service hebt geplaatst. |
    | **Bron selecteren** | **Lege database** | Begin met een lege database. |
@@ -663,8 +663,8 @@ In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet wor
 
    | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
-   | **Inloggen voor serverbeheerder** | Een geldige naam | Zie [Database-id's voor](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)geldige aanmeldingsnamen . |
+   | **Server naam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
+   | **Aanmelding bij de server beheerder** | Een geldige naam | Zie [Data Base-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)voor geldige aanmeldings namen. |
    | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit ten minste 8 tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
    | **Locatie** | *VS - oost* | Selecteer dezelfde regio als waarin u de cache en de App Service hebt gemaakt. |
 
@@ -701,7 +701,7 @@ In deze stap van de zelfstudie publiceert u de toepassingsupdate in Azure om dez
 
     De volgende tabel beschrijft elke actiekoppeling in de voorbeeldtoepassing:
 
-    | Actie | Beschrijving |
+    | Bewerking | Beschrijving |
     | --- | --- |
     | Nieuwe maken |Een nieuw team maken |
     | Play Season |Speel een seizoen wedstrijden, werk de teamstatistieken bij en wis eventuele verouderde teamgegevens uit de cache. |

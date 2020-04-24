@@ -1,28 +1,21 @@
 ---
-title: Azure Batch-groep wijzigt het formaat van de volledige gebeurtenis
-description: Referentie voor batchgroep wijzigt de volledige gebeurtenis van de groep. Zie een voorbeeld van een groep die groter is geworden en met succes is voltooid.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Gebeurtenis voor het wijzigen van de grootte van de groep Azure Batch
+description: Verwijzing voor de voltooiings gebeurtenis voor het wijzigen van de batch pool. Bekijk een voor beeld van een pool die groter is gemaakt en is voltooid.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: e2c66471ad9fe8d917d1ffddceb6e01c339d62dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4268c9d840aa9dfadd785d74811e9d12ac32ec31
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022219"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115887"
 ---
 # <a name="pool-resize-complete-event"></a>Gebeurtenis formaat pool wijzigen voltooid
 
- Deze gebeurtenis wordt uitgezonden wanneer het formaat van een groep is voltooid of is mislukt.
+ Deze gebeurtenis wordt verzonden als het wijzigen van de grootte van een groep is voltooid of mislukt.
 
- In het volgende voorbeeld ziet u de hoofdtekst van een volledige gebeurtenis voor het vergroten van het formaat van een groep voor een groep die groter is geworden en voltooid.
+ In het volgende voor beeld ziet u de hoofd tekst van een gebeurtenis voor het wijzigen van de grootte van een pool voor een groep die groter is gemaakt en is voltooid.
 
 ```
 {
@@ -43,15 +36,15 @@ ms.locfileid: "77022219"
 
 |Element|Type|Opmerkingen|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van het zwembad.|
-|`nodeDeallocationOption`|Tekenreeks|Hiermee geeft u op wanneer knooppunten uit de groep kunnen worden verwijderd als de grootte van de groep afneemt.<br /><br /> Mogelijke waarden zijn:<br /><br /> **opnieuw in de wachtrij** : Beëindig lopende taken en zet ze opnieuw in de wachtrij. De taken worden opnieuw uitgevoerd wanneer de taak is ingeschakeld. Verwijder knooppunten zodra taken zijn beëindigd.<br /><br /> **beëindigen** – Lopende taken beëindigen. De taken worden niet opnieuw uitgevoerd. Verwijder knooppunten zodra taken zijn beëindigd.<br /><br /> **taakvoltooiing** : Laat momenteel uitvoeren van taken uitvoeren toe. Plan geen nieuwe taken tijdens het wachten. Verwijder knooppunten wanneer alle taken zijn voltooid.<br /><br /> **Bewaarde gegevens** - Laat momenteel taken uitvoeren om te voltooien en wacht vervolgens tot alle bewaartermijnen voor taakgegevens zijn verlopen. Plan geen nieuwe taken tijdens het wachten. Verwijder knooppunten wanneer alle taakbewaartermijnen zijn verstreken.<br /><br /> De standaardwaarde is opnieuw in de wachtrij.<br /><br /> Als de grootte van de groep toeneemt, wordt de waarde ingesteld op **ongeldig**.|
-|`currentDedicatedNodes`|Int32|Het aantal toegewezen basisknooppunten dat momenteel aan de groep is toegewezen.|
-|`targetDedicatedNodes`|Int32|Het aantal speciale compute nodes dat wordt aangevraagd voor de groep.|
-|`currentLowPriorityNodes`|Int32|Het aantal compute nodes met lage prioriteit dat momenteel aan de groep is toegewezen.|
-|`targetLowPriorityNodes`|Int32|Het aantal computenodes met lage prioriteit dat wordt aangevraagd voor de groep.|
-|`enableAutoScale`|Booleaanse waarde|Hiermee geeft u op of de grootte van de groep zich na verloop van tijd automatisch aanpast.|
-|`isAutoPool`|Booleaanse waarde|Hiermee geeft u op of de groep is gemaakt via het AutoPool-mechanisme van een taak.|
-|`startTime`|DateTime|Het tijdstip dat het zwembad het formaat wijzigt.|
-|`endTime`|DateTime|Het formaat van het zwembad is voltooid.|
-|`resultCode`|Tekenreeks|Het resultaat van het formaat.|
-|`resultMessage`|Tekenreeks| Een gedetailleerd bericht over het resultaat.<br /><br /> Als het formaat van het formaat is voltooid, wordt vermeld dat de bewerking is geslaagd.|
+|`id`|Tekenreeks|De ID van de pool.|
+|`nodeDeallocationOption`|Tekenreeks|Hiermee geeft u op wanneer knoop punten uit de pool kunnen worden verwijderd als de pool grootte afneemt.<br /><br /> Mogelijke waarden zijn:<br /><br /> opnieuw **in wachtrij plaatsen** : lopende taken worden beëindigd en opnieuw in de wachtrij worden geplaatst. De taken worden opnieuw uitgevoerd wanneer de taak is ingeschakeld. Knoop punten verwijderen zodra de taken zijn beëindigd.<br /><br /> **beëindigen** : actieve taken worden beëindigd. De taken worden niet opnieuw uitgevoerd. Knoop punten verwijderen zodra de taken zijn beëindigd.<br /><br /> **taskcompletion** : Hiermee staat u toe dat taken die momenteel worden uitgevoerd, worden voltooid. Geen nieuwe taken plannen tijdens het wachten. Knoop punten verwijderen wanneer alle taken zijn voltooid.<br /><br /> **Retaineddata** : Hiermee staat u toe dat actieve taken worden voltooid en wacht u totdat alle Bewaar perioden voor de taak gegevens verlopen. Geen nieuwe taken plannen tijdens het wachten. Knoop punten verwijderen wanneer alle Bewaar perioden van taken zijn verlopen.<br /><br /> De standaard waarde is opnieuw in de wachtrij.<br /><br /> Als de pool grootte wordt verhoogd, wordt de waarde ingesteld op **ongeldig**.|
+|`currentDedicatedNodes`|Int32|Het aantal toegewezen reken knooppunten dat momenteel aan de pool is toegewezen.|
+|`targetDedicatedNodes`|Int32|Het aantal toegewezen reken knooppunten dat voor de pool wordt aangevraagd.|
+|`currentLowPriorityNodes`|Int32|Het aantal reken knooppunten met lage prioriteit dat momenteel aan de pool is toegewezen.|
+|`targetLowPriorityNodes`|Int32|Het aantal reken knooppunten met lage prioriteit dat voor de groep wordt aangevraagd.|
+|`enableAutoScale`|Booleaanse waarde|Hiermee geeft u op of de pool grootte automatisch in de loop van de tijd wordt aangepast.|
+|`isAutoPool`|Booleaanse waarde|Hiermee geeft u op of de groep is gemaakt via het mechanisme voor de groep van een taak.|
+|`startTime`|DateTime|Het tijdstip waarop de grootte van de pool wordt gestart.|
+|`endTime`|DateTime|Het tijdstip waarop de groep is voltooid.|
+|`resultCode`|Tekenreeks|Het resultaat van de grootte.|
+|`resultMessage`|Tekenreeks| Een gedetailleerd bericht over het resultaat.<br /><br /> Als de grootte is voltooid, wordt aangegeven dat de bewerking is geslaagd.|

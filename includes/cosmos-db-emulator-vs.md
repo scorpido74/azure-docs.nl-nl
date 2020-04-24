@@ -11,4 +11,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "71326904"
 ---
-Download en gebruik de gratis [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Zorg dat u de workload **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+Down load en gebruik de gratis [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/). Zorg dat u de workload **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.

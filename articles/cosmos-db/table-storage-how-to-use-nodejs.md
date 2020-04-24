@@ -1,5 +1,5 @@
 ---
-title: Azure Table-opslag of Azure Cosmos DB Table API gebruiken vanuit Node.js
+title: Azure-tabel opslag of Azure Cosmos DB Table-API van node. js gebruiken
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -68,7 +68,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Een Azure Cosmos DB-verbinding toevoegen
-Als u een Azure Cosmos DB-verbinding wilt toevoegen, maakt u een **TableService**-object en geeft u uw accountnaam, primaire sleutel en eindpunt op. U deze waarden kopiëren vanuit De**verbindingstekenreeks** **instellingen** > in de Azure-portal voor uw Cosmos DB-account. Bijvoorbeeld:
+Als u een Azure Cosmos DB-verbinding wilt toevoegen, maakt u een **TableService**-object en geeft u uw accountnaam, primaire sleutel en eindpunt op. U kunt deze waarden kopiëren uit de**verbindings reeks** **instellingen** > in de Azure portal voor uw Cosmos DB-account. Bijvoorbeeld:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` is `true` als een nieuwe tabel wordt gemaakt, en `false` als de tabel al bestaat. De `response` bevat informatie over de aanvraag.
 
 ### <a name="filters"></a>Filters
-U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filterbewerkingen kunnen logging, automatische nieuwe pogingen, enz. Filters zijn objecten die een methode met de handtekening implementeren:
+U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filter bewerkingen kunnen logboek registratie, automatische nieuwe pogingen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de hand tekening:
 
 ```javascript
 function handle (requestOptions, next)
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Als u het `continuationToken`-object inspecteert, vindt u eigenschappen zoals `nextPartitionKey`, `nextRowKey` en `targetLocation`, die kunnen worden gebruikt om door alle resultaten te lopen.
 
-U `top` ook `continuationToken` samen met gebruiken om het paginaformaat in te stellen. 
+U kunt ook samen `top` gebruiken `continuationToken` om de pagina grootte in te stellen. 
 
 ## <a name="work-with-shared-access-signatures"></a>Werken met handtekeningen voor gedeelde toegang
 Shared Access Signatures (SAS) zijn een veilige manier om op detailniveau toegang te bieden tot tabellen zonder dat u de naam of sleutels van uw opslagaccount hoeft te geven. SAS wordt vaak gebruikt voor beperkte toegang tot uw gegevens, bijvoorbeeld om een mobiele app toe te staan om een query uit te voeren op records.
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Houd er rekening mee dat u ook de informatie over de host moet opgeven, aangezien dit is vereist wanneer de SAS-houder toegang probeert te krijgen tot de tabel.
 
-De clienttoepassing maakt dan gebruik van de SAS met **TableServiceWithSAS** om bewerkingen op de tabel uit te voeren. In het volgende voorbeeld wordt verbinding gemaakt met de tabel en een query uitgevoerd. Zie [Beperkte toegang tot Azure Storage-bronnen verlenen met behulp van het SAS-artikel (Shared Access Signatures)](../storage/common/storage-sas-overview.md) voor de indeling van tableSAS. 
+De clienttoepassing maakt dan gebruik van de SAS met **TableServiceWithSAS** om bewerkingen op de tabel uit te voeren. In het volgende voorbeeld wordt verbinding gemaakt met de tabel en een query uitgevoerd. Zie [beperkte toegang verlenen tot Azure storage resources met behulp van het artikel voor Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md) voor de indeling van tableSAS. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

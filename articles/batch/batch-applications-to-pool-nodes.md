@@ -1,55 +1,47 @@
 ---
-title: Toepassingen en gegevens kopiëren naar knooppunten
-description: Meer informatie over het kopiëren van toepassingen en gegevens naar het bundelen van knooppunten.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Toepassingen en gegevens kopiëren naar groepsknooppunten
+description: Meer informatie over het kopiëren van toepassingen en gegevens naar pool knooppunten.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/17/2020
-ms.author: labrenne
-ms.openlocfilehash: 226a0d69ac387142ecf580537e35f8754ac848a6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385582"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115581"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Toepassingen en gegevens kopiëren naar knooppunten
+# <a name="copying-applications-and-data-to-pool-nodes"></a>Toepassingen en gegevens kopiëren naar groepsknooppunten
 
-Azure Batch ondersteunt verschillende manieren om gegevens en toepassingen op compute nodes te krijgen, zodat de gegevens en toepassingen beschikbaar zijn voor gebruik door taken. Gegevens en toepassingen kunnen nodig zijn om de hele taak uit te voeren en moeten dus op elk knooppunt worden geïnstalleerd. Sommige kunnen alleen nodig zijn voor een specifieke taak, of moeten worden geïnstalleerd voor de taak, maar hoeven niet op elk knooppunt te zijn. Batch heeft tools voor elk van deze scenario's.
+Azure Batch ondersteunt verschillende manieren voor het ophalen van gegevens en toepassingen op reken knooppunten, zodat de gegevens en toepassingen beschikbaar zijn voor gebruik door taken. Gegevens en toepassingen zijn mogelijk vereist voor het uitvoeren van de volledige taak en moeten dus op elk knoop punt worden geïnstalleerd. Sommige zijn mogelijk alleen vereist voor een specifieke taak of moeten worden geïnstalleerd voor de taak, maar moeten niet op elk knoop punt aanwezig zijn. Batch bevat hulpprogram ma's voor elk van deze scenario's.
 
-- **Bronbestanden voor het starten van taken**groep: voor toepassingen of gegevens die op elk knooppunt in de groep moeten worden geïnstalleerd. Gebruik deze methode samen met een toepassingspakket of de verzameling van het bronbestand van de starttaak om een installatieopdracht uit te voeren.  
+- **Resource bestanden**voor het starten van de groep: voor toepassingen of gegevens die moeten worden geïnstalleerd op elk knoop punt in de pool. Gebruik deze methode samen met een toepassings pakket of de bron bestands verzameling van de begin taak om een installatie opdracht uit te voeren.  
 
 Voorbeelden: 
-- De opdrachtregel voor taak starten gebruiken om toepassingen te verplaatsen of te installeren
+- De opdracht regel voor het starten van de taak gebruiken om toepassingen te verplaatsen of te installeren
 
-- Geef een lijst op met specifieke bestanden of containers in een Azure-opslagaccount. Zie [add#resourcefile voor](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile) meer informatie in REST-documentatie
+- Geef een lijst met specifieke bestanden of containers op in een Azure-opslag account. Zie [# resource file toevoegen in rest-documentatie](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile) voor meer informatie
 
-- Elke taak die op het zwembad wordt uitgevoerd, wordt uitgevoerd op MyApplication.exe die eerst moet worden geïnstalleerd met MyApplication.msi. Als u dit mechanisme gebruikt, moet u de wacht van de starttaak **op de** eigenschap Succes instellen op **true.** Zie de taak [toevoegen#starttaak in REST-documentatie](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)voor meer informatie.
+- Elke taak die wordt uitgevoerd op de pool, voert mijn toepassing. exe uit die eerst met mijn toepassing. msi moet worden geïnstalleerd. Als u dit mechanisme gebruikt, moet u de eigenschap **wachten op geslaagd** van de begin taak instellen op **True**. Zie de [documentatie # starttask in rest toevoegen](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)voor meer informatie.
 
-- **Verwijzingen naar het toepassingspakket** op de groep: voor toepassingen of gegevens die op elk knooppunt in de groep moeten worden geïnstalleerd. Er is geen installatieopdracht gekoppeld aan een toepassingspakket, maar u een starttaak gebruiken om een installatieopdracht uit te voeren. Als uw toepassing geen installatie vereist of uit een groot aantal bestanden bestaat, u deze methode gebruiken. Applicatiepakketten zijn zeer geschikt voor grote aantallen bestanden omdat ze een groot aantal bestandsverwijzingen combineren tot een kleine payload. Als u meer dan 100 afzonderlijke bronbestanden in één taak probeert op te nemen, stuit de batchservice mogelijk op interne systeembeperkingen voor één taak. Gebruik ook toepassingspakketten als u strenge versievereisten hebt waarbij u mogelijk veel verschillende versies van dezelfde toepassing hebt en er tussen moet kiezen. Lees Voor meer informatie [Toepassingen implementeren om knooppunten te berekenen met batchtoepassingspakketten](https://docs.microsoft.com/azure/batch/batch-application-packages).
+- **Toepassings pakket verwijzingen** in de groep: voor toepassingen of gegevens die moeten worden geïnstalleerd op elk knoop punt in de groep. Er is geen installatie opdracht gekoppeld aan een toepassings pakket, maar u kunt een begin taak gebruiken om elke installatie opdracht uit te voeren. Als voor uw toepassing geen installatie of een groot aantal bestanden is vereist, kunt u deze methode gebruiken. Toepassings pakketten zijn goed geschikt voor grote aantallen bestanden omdat ze een groot aantal bestands verwijzingen combi neren in een kleine nettolading. Als u meer dan 100 afzonderlijke bron bestanden wilt toevoegen aan één taak, kan de batch-service worden uitgevoerd op basis van interne systeem beperkingen voor één taak. Gebruik toepassings pakketten ook als u strenge vereisten voor versie beheer hebt waarbij u veel verschillende versies van dezelfde toepassing kunt gebruiken en er een moet kiezen. Lees voor meer informatie [Deploy Applications to compute nodes with batch Application packages](https://docs.microsoft.com/azure/batch/batch-application-packages).
 
-- **Taakvoorbereidingstaakbronbestanden:** voor toepassingen of gegevens die moeten worden geïnstalleerd om de taak uit te voeren, maar die niet op de hele groep hoeven te worden geïnstalleerd. Als uw pool bijvoorbeeld veel verschillende soorten taken heeft en slechts één taaktype MyApplication.msi nodig heeft om uit te voeren, is het zinvol om de installatiestap in een taakvoorbereidingstaak te plaatsen. Zie [Taakvoorbereidings- en taakreleasetaken uitvoeren op batchcomputenodes](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/)voor meer informatie over taken voor het voorbereiden van taken voor taken voor taakvoorbereiding.
+- **Resource bestanden voor taak voorbereidings taak**: voor toepassingen of gegevens die moeten worden geïnstalleerd om de taak uit te voeren, maar die niet moeten worden geïnstalleerd op de hele groep. Bijvoorbeeld: als uw pool veel verschillende typen taken heeft, en slechts één taak type vereist dat mijn toepassing. msi wordt uitgevoerd, is het zinvol om de installatie Step Into een taak voorbereidings taak te plaatsen. Zie voor meer informatie over taken voor taak voorbereiding taken [uitvoeren voor taak voorbereiding en taak release op batch Compute-knoop punten](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
 
-- **Taakbronbestanden:** voor wanneer een toepassing of gegevens alleen relevant is voor een afzonderlijke taak. Bijvoorbeeld: U hebt vijf taken, elk verwerkt een ander bestand en schrijft vervolgens de uitvoer naar blobopslag.  In dit geval moet het invoerbestand worden opgegeven op de verzameling **takenbronbestanden** omdat elke taak een eigen invoerbestand heeft.
+- **Taak bron bestanden**: voor wanneer een toepassing of gegevens alleen relevant zijn voor een afzonderlijke taak. Bijvoorbeeld: u hebt vijf taken, elk een ander bestand verwerkt en vervolgens de uitvoer naar Blob-opslag schrijft.  In dit geval moet het invoer bestand worden opgegeven in de verzameling **taken bron bestanden** , omdat elke taak een eigen invoer bestand heeft.
 
-## <a name="determine-the-scope-required-of-a-file"></a>Het vereiste bereik van een bestand bepalen
+## <a name="determine-the-scope-required-of-a-file"></a>Het bereik bepalen dat vereist is voor een bestand
 
-U moet de reikwijdte van een bestand bepalen - is het bestand dat nodig is voor een groep, een taak of een taak. Bestanden die zijn samengevoegd tot de groep, moeten pooltoepassingspakketten of een starttaak gebruiken. Bestanden die zijn opgeslagen in de taak, moeten een taakvoorbereidingstaak gebruiken. Een goed voorbeeld van bestanden die op pool- of taakniveau worden verdeeld, zijn sollicitaties. Bestanden die zijn opgeslagen in de taak, moeten taakbronbestanden gebruiken.
+U moet het bereik van een bestand bepalen: het vereiste bestand voor een groep, een taak of een taak. Bestanden die aan de groep zijn toegewezen, moeten groeps toepassings pakketten of een begin taak gebruiken. Bestanden die aan de taak zijn toegewezen, moeten een taak voorbereidings taak gebruiken. Een goed voor beeld van bestanden binnen het bereik van de groep of het taak niveau zijn toepassingen. Bestanden die aan de taak zijn toegewezen, moeten taak bron bestanden gebruiken.
 
-### <a name="other-ways-to-get-data-onto-batch-compute-nodes"></a>Andere manieren om gegevens op batchcomputeknooppunten te krijgen
+### <a name="other-ways-to-get-data-onto-batch-compute-nodes"></a>Andere manieren om gegevens op te halen voor batch Compute-knoop punten
 
-Er zijn andere manieren om gegevens op Batch compute nodes te krijgen die niet officieel zijn geïntegreerd in de Batch REST API. Omdat u controle hebt over Azure Batch-knooppunten en aangepaste uitvoerbare bestanden uitvoeren, u gegevens uit een willekeurig aantal aangepaste bronnen ophalen zolang het batchknooppunt verbinding heeft met het doel en u de referenties naar die bron op het Azure Batch-knooppunt hebt. Een paar veelvoorkomende voorbeelden zijn:
+Er zijn andere manieren om gegevens op te halen voor batch Compute-knoop punten die niet officieel zijn geïntegreerd in de batch-REST API. Omdat u controle hebt over Azure Batch knoop punten en aangepaste uitvoer bare bestanden kunt uitvoeren, is het mogelijk om gegevens uit een wille keurig aantal aangepaste bronnen op te halen, zolang het batch-knoop punt verbinding met het doel heeft en u de referenties voor die bron op het Azure Batch knoop punt hebt. Enkele algemene voor beelden zijn:
 
-- Gegevens downloaden uit SQL
+- Gegevens downloaden van SQL
 - Gegevens downloaden van andere webservices/aangepaste locaties
-- Een netwerkshare in kaart brengen
+- Een netwerk share toewijzen
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Blob-opslag heeft schaalbaarheidsdoelen voor downloaden. De schaalbaarheidsdoelen voor azure-opslagbestanden zijn hetzelfde als voor één blob. De grootte heeft invloed op het aantal knooppunten en groepen dat u nodig hebt.
+Blob-opslag heeft schaal baarheids doelen voor down loads. De schaalbaarheids doelen van de bestands share van Azure Storage zijn hetzelfde als voor één blob. De grootte is van invloed op het aantal knoop punten en groepen dat u nodig hebt.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een server maken - Azure-portal - Azure-database voor MariaDB'
+title: 'Snelstartgids: een Azure Portal-Azure Database for MariaDB maken'
 description: In dit artikel wordt beschreven hoe u met de Azure-portal snel, in ongeveer vijf minuten, een voorbeeld van een Azure Database for MariaDB-server kunt maken.
 author: ajlam
 ms.author: andrela
@@ -18,7 +18,7 @@ ms.locfileid: "80063841"
 
 Azure Database for MariaDB is een beheerde service waarmee u MariaDB-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze snelstart ontdekt u hoe u in ongeveer vijf minuten een Azure Database for MariaDB-server maakt in de Azure-portal.  
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -32,7 +32,7 @@ Een Azure Database for MariaDB-server maken:
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-2. Selecteer**Azure-database** **databases** > voor MariaDB . U **MariaDB** ook typen in het zoekvak om de service te vinden.
+2. **Data bases** > **Azure database for MariaDB**selecteren. U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
 
    ![Optie Azure Database for MariaDB](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
@@ -42,23 +42,23 @@ Een Azure Database for MariaDB-server maken:
 
     Instelling | Voorgestelde waarde | Beschrijving
     ---|---|---
-    Servernaam | *een unieke servernaam* | Kies een unieke naam ter identificatie van de Azure Database for MariaDB-server. Bijvoorbeeld, **mydemoserver**. De domeinnaam *.mariadb.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
+    Servernaam | *een unieke servernaam* | Kies een unieke naam ter identificatie van de Azure Database for MariaDB-server. Bijvoorbeeld **mydemoserver**. De domeinnaam *.mariadb.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
     Abonnement | *uw abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep | **myresourcegroep** | Voer een nieuwe resourcegroepnaam in of selecteer een bestaande resourcegroep. 
+    Resourcegroep | **myresourcegroup** | Voer een nieuwe resourcegroepnaam in of selecteer een bestaande resourcegroep. 
     Bron selecteren | **Leeg** | Selecteer **Leeg** om een nieuwe server te maken. (Selecteer **Back-up** als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for MariaDB-server.)
-    Aanmeldgegevens van serverbeheerder | **myadmin** | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam voor beheerders kan niet **worden azure_superuser,** **beheerder**, **beheerder**, **root,** **gast**of **openbaar**.
+    Aanmeldgegevens van serverbeheerder | **myadmin** | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldings naam van de beheerder kan niet **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**of **Public**zijn.
     Wachtwoord | *uw keuze* | Voer een nieuw wachtwoord in voor het beheerdersaccount voor de server. Dit wachtwoord moet tussen 8 en 128 tekens bevatten. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0-9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).
     Wachtwoord bevestigen | *uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
     Locatie | *de regio het dichtst bij uw gebruikers*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
     Versie | *de nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt voor het gebruik van een andere versie).
-    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** > **Algemeen Doel**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer de **prijs categorie** > **Algemeen**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
   
    > [!NOTE]
    > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/mariadb/) voor meer informatie.
 
    ![Server maken - het venster Prijscategorie](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. Selecteer **Controleren + maken** om de server in te richten. Dit kan maximaal 20 minuten duren.
+4. Selecteer **controleren + maken** om de server in te richten. Dit kan maximaal 20 minuten duren.
 
 5. Selecteer **Meldingen** op de werkbalk (pictogram van een klok) om het implementatieproces te bewaken.
 
@@ -91,7 +91,7 @@ Voor verbinding met uw databaseserver moet u beschikken over de volledige server
 
 2. Als u de waarden wilt kopiëren, plaats de cursor over het veld dat u wilt kopiëren. Het kopieerpictogram wordt rechts van de tekst weergegeven. Selecteer het kopieerpictogram indien nodig om de waarden te kopiëren.
 
-In ons voorbeeld wordt de servernaam **mydemoserver.mariadb.database.azure.com** en is de naam van de serverbeheerder **myadmin\@mydemoserver.**
+In ons voor beeld is de server naam **mydemoserver.mariadb.database.Azure.com** en de aanmeldings naam van de server beheerder is **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>Verbinding maken met Azure Database for MariaDB met behulp van de mysql-opdrachtregel
 
@@ -122,8 +122,8 @@ We gebruiken eerst het opdrachtregelprogramma [mysql](https://dev.mysql.com/doc/
 
     mysql-parameter |Voorgestelde waarde|Beschrijving
     ---|---|---
-    --host | *servernaam* | De servernaamwaarde die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de volledig gekwalificeerde domeinnaam**\*(.mariadb.database.azure.com)** zoals in het voorbeeld wordt weergegeven. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen.
-    --user | *inlognaam van serverbeheerder* |De gebruikersnaam van de serverbeheerder die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *\@gebruikersnaam servernaam*.
+    --host | *servernaam* | De servernaamwaarde die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de Fully Qualified Domain Name (**\*. mariadb.database.Azure.com**) zoals weer gegeven in het voor beeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen.
+    --user | *aanmeldings naam van de server beheerder* |De gebruikersnaam van de serverbeheerder die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
     -p | *Uw wachtwoord*<br>(wacht totdat u hierom wordt gevraagd) |Voer desgevraagd het wachtwoord in dat u hebt gebruikt voor het maken van de server. De ingevoerde wachtwoordtekens worden niet weergegeven bij de bash-prompt terwijl u de tekens typt. Nadat u het wachtwoord hebt ingevoerd, drukt u op Enter.
 
    Wanneer het hulpprogramma mysql is verbonden, wordt de prompt `mysql>` weergegeven. U kunt opdrachten bij de prompt invoeren.
@@ -187,7 +187,7 @@ Verbinding maken met de server met MySQL Workbench:
 
 1. Open MySQL Workbench op uw clientcomputer. Als u MySQL Workbench wilt downloaden en installeren, gaat u naar [deze website](https://dev.mysql.com/downloads/workbench/).
 
-2. Als u een nieuwe verbinding wilt**+** maken, selecteert u het pluspictogram ( ) naast de kop **MySQL-verbindingen.**
+2. Als u een nieuwe verbinding wilt maken, selecteert u het**+** plus pictogram () naast de kop **MySQL-verbindingen** .
 
 3. Voer in het dialoogvenster **Nieuwe verbinding instellen**, op het tabblad **Parameters**, de verbindingsgegevens voor uw server in. Als voorbeeld worden tijdelijke waarden weergegeven. Vervang de **hostnaam**, de **gebruikersnaam** en het **wachtwoord** door uw eigen waarden.
 
@@ -195,11 +195,11 @@ Verbinding maken met de server met MySQL Workbench:
 
     |Instelling |Voorgestelde waarde|Beschrijving van veld|
     |---|---|---|
-     Verbindingsnaam | **Demoverbinding** | Een label voor deze verbinding. |
+     Verbindingsnaam | **Demo verbinding** | Een label voor deze verbinding. |
     Verbindingsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) is voldoende. |
-    Hostnaam | *servernaam* | De servernaamwaarde die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de volledig gekwalificeerde domeinnaam**\*(.mariadb.database.azure.com)** zoals in het voorbeeld wordt weergegeven. Als u de servernaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen.|
+    Hostnaam | *servernaam* | De servernaamwaarde die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de Fully Qualified Domain Name (**\*. mariadb.database.Azure.com**) zoals weer gegeven in het voor beeld. Als u de servernaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen.|
      Poort | 3306 | De poort die u gebruikt om verbinding te maken met uw Azure Database for MariaDB-server. |
-    Gebruikersnaam |  *inlognaam van serverbeheerder* | De aanmeldingsgegevens van de serverbeheerder die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. Onze voorbeeld gebruikersnaam is **myadmin\@mydemoserver**. Als u de gebruikersnaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen. De indeling is *\@gebruikersnaam servernaam*.
+    Gebruikersnaam |  *aanmeldings naam van de server beheerder* | De aanmeldingsgegevens van de serverbeheerder die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De gebruikers naam van ons voor beeld is **myadmin\@mydemoserver**. Als u de gebruikersnaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
     Wachtwoord | *Uw wachtwoord* | Selecteer **Opslaan in de kluis** om het wachtwoord op te slaan. |
 
 4. Selecteer **Verbinding testen** om te controleren of alle parameters juist zijn geconfigureerd. Selecteer ten slotte **OK** om de verbinding op te slaan. 
@@ -218,7 +218,7 @@ De hele resourcegroep verwijderen, met inbegrip van de nieuwe server:
 
 1. Zoek de resourcegroep in de Azure-portal. Selecteer **Resourcegroepen** in het menu aan de linkerkant en selecteer vervolgens de naam van uw resourcegroep (zoals **myresourcegroup** in ons voorbeeld).
 
-2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens de naam van de resourcegroep in (zoals **myresourcegroup** in ons voorbeeld) in het tekstvak om het verwijderen te bevestigen. Selecteer **Verwijderen**.
+2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens de naam van de resourcegroep in (zoals **myresourcegroup** in ons voorbeeld) in het tekstvak om het verwijderen te bevestigen. Selecteer **verwijderen**.
 
 Alleen de zojuist gemaakte server verwijderen:
 
@@ -228,7 +228,7 @@ Alleen de zojuist gemaakte server verwijderen:
 
    ![Azure Database for MariaDB - server verwijderen](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3. Controleer de naam van de server die u wilt verwijderen. Bekijk de databases op de server die worden beïnvloed door het verwijderen. Voer de naam van de server in (in ons voorbeeld **mydemoserver**) om het verwijderen te bevestigen. Selecteer **Verwijderen**.
+3. Controleer de naam van de server die u wilt verwijderen. Bekijk de databases op de server die worden beïnvloed door het verwijderen. Voer de naam van de server in (in ons voorbeeld **mydemoserver**) om het verwijderen te bevestigen. Selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

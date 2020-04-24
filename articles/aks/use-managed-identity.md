@@ -1,31 +1,31 @@
 ---
-title: Beheerde identiteiten gebruiken in Azure Kubernetes Service
-description: Meer informatie over het gebruik van beheerde identiteiten in Azure Kubernetes Service (AKS)
+title: Beheerde identiteiten gebruiken in azure Kubernetes service
+description: Meer informatie over het gebruik van beheerde identiteiten in azure Kubernetes service (AKS)
 services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024401"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112963"
 ---
-# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in Azure Kubernetes Service
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
-Op dit moment vereist een AKS-cluster (Azure Kubernetes Service) (met name de Kubernetes-cloudprovider) een identiteit om extra bronnen te maken, zoals load balancers en beheerde schijven in Azure, deze identiteit kan een *beheerde identiteit* of een *serviceprincipal*zijn. Als u een [serviceprincipal](kubernetes-service-principal.md)gebruikt, moet u er een opgeven of maakt AKS er een namens u. Als u beheerde identiteit gebruikt, wordt dit automatisch voor u gemaakt door AKS. Clusters met serviceprincipals bereiken uiteindelijk een status waarin de serviceprincipal moet worden vernieuwd om het cluster te laten werken. Het beheren van serviceprincipals voegt complexiteit toe, daarom is het eenvoudiger om beheerde identiteiten te gebruiken. Voor zowel serviceprincipals als beheerde identiteiten gelden dezelfde machtigingsvereisten.
+Op dit moment vereist een Azure Kubernetes service (AKS)-cluster (met name de Kubernetes-Cloud provider) een identiteit voor het maken van extra resources, zoals load balancers en beheerde schijven in azure, deze identiteit kan een *beheerde identiteit* of een *Service-Principal*zijn. Als u een [Service-Principal](kubernetes-service-principal.md)gebruikt, moet u één of AKS in uw naam maken. Als u een beheerde identiteit gebruikt, wordt deze automatisch voor u gemaakt door AKS. Clusters die service-principals gebruiken, bereiken uiteindelijk een status waarin de Service-Principal moet worden vernieuwd om het cluster te laten functioneren. Het beheren van service-principals voegt complexiteit toe. Daarom is het eenvoudiger om beheerde identiteiten te gebruiken. Dezelfde machtigings vereisten gelden voor service-principals en beheerde identiteiten.
 
-*Beheerde identiteiten* zijn in wezen een wrapper rond service principals, en maken hun beheer eenvoudiger. Lees voor meer informatie over [beheerde identiteiten voor Azure-bronnen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+*Beheerde identiteiten* zijn in feite een wrapper rond service-principals en maken hun beheer eenvoudiger. Meer informatie over [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)vindt u hier.
 
-AKS creëert twee beheerde identiteiten:
+AKS maakt twee beheerde identiteiten:
 
-- **Beheerde identiteit met systeemtoegewezen :** de identiteit die de Kubernetes-cloudprovider gebruikt om Azure-bronnen namens de gebruiker te maken. De levenscyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
-- **Door de gebruiker toegewezen beheerde identiteit:** de identiteit die wordt gebruikt voor autorisatie in het cluster. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren om Azure Container Registries (ADR's) te gebruiken of om de kubelet te autoriseren om metagegevens van Azure te krijgen.
+- Door het **systeem toegewezen beheerde identiteit**: de identiteit die de Kubernetes-Cloud provider gebruikt om Azure-resources namens de gebruiker te maken. De levens cyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
+- Door de **gebruiker toegewezen beheerde identiteit**: de identiteit die wordt gebruikt voor autorisatie in het cluster. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren voor het gebruik van Azure-container registers (ACRs), of om de kubelet te autoriseren om meta gegevens op te halen uit Azure.
 
-Invoegtoepassingen verifiëren ook met een beheerde identiteit. Voor elke add-on wordt een beheerde identiteit gecreëerd door AKS en duurt het de levensduur van de add-on. 
+Invoeg toepassingen verifiëren ook met behulp van een beheerde identiteit. Voor elke invoeg toepassing wordt een beheerde identiteit gemaakt door AKS en de laatste tijd voor de levens duur van de invoeg toepassing. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -35,9 +35,9 @@ U moet de volgende bron hebben geïnstalleerd:
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Een AKS-cluster maken met beheerde identiteiten
 
-U nu een AKS-cluster met beheerde identiteiten maken met behulp van de volgende CLI-opdrachten.
+U kunt nu een AKS-cluster met beheerde identiteiten maken met behulp van de volgende CLI-opdrachten.
 
-Maak eerst een Azure-brongroep:
+Maak eerst een Azure-resource groep:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -50,7 +50,7 @@ Maak vervolgens een AKS-cluster:
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-Een succesvol clustermaken met beheerde identiteiten bevat de belangrijkste profielinformatie van de service:
+Een succes volle cluster maken met behulp van beheerde identiteiten bevat deze service-principal-profiel informatie:
 
 ```json
 "servicePrincipalProfile": {
@@ -60,17 +60,19 @@ Een succesvol clustermaken met beheerde identiteiten bevat de belangrijkste prof
 ```
 
 > [!NOTE]
-> Voor het maken en gebruiken van uw eigen VNet, statisch IP-adres of gekoppelde Azure-schijf waarbij de resources zich buiten de resourcegroep MC_* bevinden, gebruikt u de PrincipalID van de beheerde identiteit van het clustersysteem toegewezen om een roltoewijzing uit te voeren. Zie Toegang tot andere [Azure-bronnen delegeren voor](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)meer informatie over roltoewijzing.
+> Voor het maken en gebruiken van uw eigen VNet, een statisch IP-adres of een gekoppelde Azure-schijf waar de resources zich buiten de resource groep MC_ * bevinden, gebruikt u de PrincipalID van het cluster systeem toegewezen beheerde identiteit voor het uitvoeren van een roltoewijzing. Zie [toegang tot andere Azure-resources delegeren](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)voor meer informatie over het toewijzen van rollen.
+>
+> Machtigings verlening voor door de cluster beheerde identiteit die wordt gebruikt door de Azure-Cloud provider, kan 60 minuten duren om in te vullen.
 
-Tot slot u referenties opdoen om toegang te krijgen tot het cluster:
+Haal tot slot referenties op voor toegang tot het cluster:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 
-Het cluster wordt binnen enkele minuten gemaakt. U vervolgens uw toepassingsworkloads implementeren in het nieuwe cluster en ermee communiceren, net zoals u hebt gedaan met AKS-clusters op basis van serviceprincipal.
+Het cluster wordt in een paar minuten gemaakt. U kunt vervolgens de werk belasting van uw toepassing implementeren naar het nieuwe cluster en ermee werken, net zoals u dat hebt gedaan met AKS-clusters op basis van de Service-Principal.
 
 > [!IMPORTANT]
 >
 > - AKS-clusters met beheerde identiteiten kunnen alleen worden ingeschakeld tijdens het maken van het cluster.
-> - Bestaande AKS-clusters kunnen niet worden bijgewerkt of geüpgraded om beheerde identiteiten in te schakelen.
+> - Bestaande AKS-clusters kunnen niet worden bijgewerkt of bijgewerkt om beheerde identiteiten in te scha kelen.

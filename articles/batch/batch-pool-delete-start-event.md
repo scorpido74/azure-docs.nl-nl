@@ -1,28 +1,21 @@
 ---
-title: Startgebeurtenis azure batchgroep verwijderen
-description: Referentie voor batchgroep verwijderen startgebeurtenis. Deze gebeurtenis wordt uitgezonden wanneer een bewerking voor het verwijderen van een groep is gestart.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Gebeurtenis Azure Batch groep verwijderen
+description: Verwijzing voor de gebeurtenis voor het verwijderen van een batch-pool. Deze gebeurtenis wordt verzonden als het verwijderen van een groep is gestart.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: 24a68c6656bd13f0c353d53870a51cdc940fd141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38e419e549006d3fde2f1694e0d40e620cd438e5
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022202"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115921"
 ---
 # <a name="pool-delete-start-event"></a>Gebeurtenis pool verwijderen starten
 
- Deze gebeurtenis wordt uitgezonden wanneer een bewerking voor het verwijderen van een groep is gestart. Aangezien de groep verwijderen een asynchrone gebeurtenis is, u verwachten dat een volledige gebeurtenis voor het verwijderen van een groep wordt verwijderd zodra de verwijderingsbewerking is voltooid.
+ Deze gebeurtenis wordt verzonden als het verwijderen van een groep is gestart. Omdat het verwijderen van de groep een asynchrone gebeurtenis is, kunt u verwachten dat de groep verwijderen voltooid moet worden verzonden zodra de bewerking delete is voltooid.
 
- In het volgende voorbeeld ziet u de hoofdtekst van een begingebeurtenis voor het verwijderen van een groep verwijderen.
+ In het volgende voor beeld ziet u de hoofd tekst van de gebeurtenis groep verwijderen (start).
 
 ```
 {
@@ -32,4 +25,4 @@ ms.locfileid: "77022202"
 
 |Element|Type|Opmerkingen|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van het zwembad.|
+|`id`|Tekenreeks|De ID van de pool.|

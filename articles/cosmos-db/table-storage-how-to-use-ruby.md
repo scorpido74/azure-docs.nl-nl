@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Table API en Azure Table Storage gebruiken met Ruby
+title: Azure Cosmos DB Table-API en Azure Table Storage gebruiken met ruby
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -56,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 U verkrijgt deze waarden als volgt van een klassiek of Resource Manager-opslagaccount op Azure Portal:
 
-1. Log in bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Ga naar het opslagaccount dat u wilt gebruiken.
 3. Klik in de blade Instellingen aan de rechterkant op **Toegangssleutels**.
 4. In de blade Toegang die wordt weergegeven, ziet u toegangssleutel 1 en toegangssleutel 2. U kunt een van beide gebruiken.

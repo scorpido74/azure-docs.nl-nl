@@ -1,20 +1,15 @@
 ---
 title: Azure-snelstartgids - Batch-taak uitvoeren - Portal
-description: Meer informatie over het gebruik van de Azure-portal om een Batch-account, een pool van compute nodes en een taak te maken die basistaken in de groep uitvoert.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+description: Meer informatie over het gebruik van de Azure Portal voor het maken van een batch-account, een pool van reken knooppunten en een taak waarmee basis taken worden uitgevoerd op de groep.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240434"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114136"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren in Azure Portal
 
@@ -24,14 +19,14 @@ In deze snelstartgids leert u hoe u Azure Portal gebruikt voor het maken van een
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure 
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-batch-account"></a>Batch-account maken
 
 Volg deze stappen om een Batch-voorbeeldaccount te maken voor testdoeleinden. U hebt een Batch-account nodig om pools en taken te maken. Zoals hier wordt getoond, kunt u een Azure-opslagaccount aan het Batch-account koppelen. Hoewel dit niet is vereist voor deze snelstartgids, is een opslagaccount handig voor het implementeren van toepassingen, en voor het opslaan van invoer- en uitvoergegevens voor de meeste workloads uit de praktijk.
 
 
-1. Selecteer **Een resource** > **Compute** > Batch**Service**maken . 
+1. Selecteer een**batch service**voor het > **berekenen** > van **een resource maken**. 
 
    ![Batch in de Marketplace][marketplace_portal]
 
@@ -50,7 +45,7 @@ Wanneer het bericht **Implementatie is voltooid** wordt weergegeven, gaat u naar
 Nu u beschikt over een Batch-account, maakt u een voorbeeldpool met Windows-rekenknooppunten voor testdoeleinden. De pool in dit snelle voorbeeld bestaat uit 2 knooppunten waarop een Windows Server 2012 R2-installatiekopie wordt uitgevoerd vanuit Azure Marketplace.
 
 
-1. Selecteer **Pools** > **toevoegen**in het batchaccount.
+1. Selecteer in het batch-account de optie **Pools** > **toevoegen**.
 
 2. Voer een **Pool-id** in met de naam *mypool*. 
 
@@ -59,9 +54,9 @@ Nu u beschikt over een Batch-account, maakt u een voorbeeldpool met Windows-reke
    |Instelling  |Waarde  |
    |---------|---------|
    |**Type installatiekopie**|Marketplace (Linux/Windows)|
-   |**Publisher**     |MicrosoftWindowsServer|
-   |**Bieden**     |WindowsServer|
-   |**Sku**     |2012-R2-Datacenter-smalldisk|
+   |**Uitgever**     |MicrosoftWindowsServer|
+   |**Aanbieding**     |WindowsServer|
+   |**SKU**     |2012-R2-Datacenter-smalldisk|
 
    ![Selecteer een besturingssysteem voor de pool][pool_os] 
 
@@ -86,7 +81,7 @@ Na enkele minuten is de status van de pool **Onveranderlijk** en worden de knoop
 
 Nu u beschikt over een pool, kunt u een taak maken om uit te voeren op deze pool. Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De Batch-taak heeft in eerste instantie geen taken. 
 
-1. Selecteer **In** > de weergave Batch-account de optie**Taken toevoegen**. 
+1. Selecteer in de weer gave batch-account de optie **taken** > **toevoegen**. 
 
 2. Voer een **taak-id** in met naam *myjob*. Selecteer *mypool* bij **Pool**. Behoud de standaardwaarden voor de overige instellingen en selecteer **OK**.
 

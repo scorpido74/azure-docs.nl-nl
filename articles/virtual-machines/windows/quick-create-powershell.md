@@ -1,37 +1,31 @@
 ---
-title: Snelstart - Een Windows-vm maken met Azure PowerShell
+title: 'Quick Start: een Windows-VM maken met Azure PowerShell'
 description: In deze snelstart leert u hoe u Azure PowerShell gebruikt om een virtuele Windows-machine te maken
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b927105d2fd74051c7449f52a886d71e6ad0ad7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45160e8bc406318f3b3924142899e33640ee6b73
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458127"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097945"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Snelstart: Een virtuele Windows-machine maken in Azure met PowerShell
 
 De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure PowerShell-module gebruikt voor het implementeren van een virtuele machine (VM) in Azure waarop Windows Server 2016 wordt uitgevoerd. U opent tevens een externe bureaubladsessie voor de VM en installeert de IIS-webserver om de VM in werking te zien.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
@@ -76,9 +70,9 @@ Gebruik de volgende opdracht om een sessie met een extern bureaublad te starten 
 mstsc /v:publicIpAddress
 ```
 
-Selecteer in het venster **Windows-beveiliging** achtereenvolgens **Meer opties** en **Een ander account gebruiken**. Typ de gebruikersnaam als\\*localhost-gebruikersnaam,* voer het wachtwoord in dat u voor de virtuele machine hebt gemaakt en klik op **OK**. **localhost**
+Selecteer in het venster **Windows-beveiliging** achtereenvolgens **Meer opties** en **Een ander account gebruiken**. Typ de gebruikers naam als **localhost**\\*gebruikers naam*, voer het wacht woord in dat u hebt gemaakt voor de virtuele machine en klik vervolgens op **OK**.
 
-Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Klik **op Ja** of **Doorgaan** om de verbinding te maken
+Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Klik op **Ja** of **door gaan** om de verbinding te maken
 
 ## <a name="install-web-server"></a>Webserver installeren
 

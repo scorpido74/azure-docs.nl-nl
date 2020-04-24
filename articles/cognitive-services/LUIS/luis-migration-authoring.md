@@ -1,7 +1,7 @@
 ---
-title: Migreren naar Azure-bron voor het ontwerpen
+title: Migreren naar Azure-resource voor ontwerpen
 titleSuffix: Azure Cognitive Services
-description: Migreren naar een Azure-bronsleutel voor het ontwerpen.
+description: Migreer naar een Azure authoring-bron sleutel.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,114 +11,114 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194506"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096619"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-bronontwerpsleutel
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
-Taalbegrip (LUIS) die verificatie maakt, is gewijzigd van een e-mailaccount naar een Azure-bron. Hoewel deze momenteel niet vereist is, wordt de overstap naar een Azure-bron in de toekomst afgedwongen.
+Language Understanding-ontwerp verificatie (LUIS) is gewijzigd van een e-mail account in een Azure-resource. Als dat nog niet is vereist, wordt het overschakelen naar een Azure-resource in de toekomst afgedwongen.
 
 ## <a name="why-migrate"></a>Voordelen van migratie
 
-Met behulp van een Azure-bron voor het ontwerpen u als eigenaar van de bron de toegang tot het ontwerpen beheren. U bronnen maken en naam maken om verschillende groepen auteurs te beheren.
+Met een Azure-resource voor het ontwerpen kunt u, als eigenaar van de resource, de toegang tot ontwerpen beheren. U kunt het maken en benoemen van resources voor het beheren van verschillende groepen auteurs.
 
-U bent bijvoorbeeld de eigenaar van 2 LUIS-apps en u hebt verschillende leden die bijdragers zijn in elke app. U twee verschillende ontwerpbronnen maken en elke app aan elke afzonderlijke bron toewijzen. Wijs elk lid vervolgens toe als bijdrager aan de juiste ontwerpbron, afhankelijk van aan welke app ze samenwerken. De Azure-ontwerpbron beheert de autorisatie.
+Stel dat u de eigenaar bent van twee LUIS-apps en dat u verschillende leden hebt die deel uitmaken van elke app. U kunt twee verschillende ontwerp resources maken en elke app toewijzen aan elke afzonderlijke resource. Wijs elk lid vervolgens als Inzender toe aan de juiste ontwerp bron, afhankelijk van de app waarmee ze samen werken. De Azure-ontwerp bron bepaalt de autorisatie.
 
 > [!Note]
-> Vóór migratie staan co-auteurs bekend als _bijdragers_ op LUIS-app-niveau. Na migratie wordt de Azure-rol van _contribuant_ gebruikt voor dezelfde functionaliteit, maar op het Azure-bronniveau.
+> Vóór de migratie worden mede-auteurs deel _nemers_ genoemd op het niveau van de Luis-app. Na de migratie wordt de Azure-rol van _Inzender_ gebruikt voor dezelfde functionaliteit, maar op het Azure-resource niveau.
 
-## <a name="what-is-migrating"></a>Wat is migreren?
+## <a name="what-is-migrating"></a>Wat is migratie?
 
 Migratie omvat:
 
-* Alle gebruikers van LUIS, eigenaren en bijdragers.
+* Alle gebruikers van LUIS, owners en inzenders.
 * **Alle** apps.
-* Een **eenrichtingsmigratie.**
+* Een **eenrichtings migratie.**
 
-De eigenaar kan geen subset van apps kiezen om te migreren en het proces is niet omkeerbaar.
+De eigenaar kan geen subset van te migreren apps kiezen en het proces kan niet onomkeerbaar zijn.
 
 De migratie is niet:
 
-* Een proces dat bijdragers verzamelt en automatisch wordt verplaatst of toevoegt aan de Azure-ontwerpbron. U, als eigenaar van de app, moet deze stap voltooien. Voor deze stap zijn machtigingen voor de juiste resource vereist.
-* Een proces voor het maken en toewijzen van een voorspellingruntimebron. Als u een voorspelling runtime bron, dat is [een apart proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) en is ongewijzigd.
+* Een proces waarmee samen werkers worden verzameld en automatisch worden verplaatst of toegevoegd aan de Azure-ontwerp bron. Als eigenaar van de app moet u deze stap volt ooien. Voor deze stap zijn machtigingen vereist voor de juiste resource.
+* Een proces voor het maken en toewijzen van een Voorspellings runtime-resource. Als u een Voorspellings runtime-resource nodig hebt, is dat [een afzonderlijk proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) en is deze ongewijzigd.
 
-## <a name="how-are-the-apps-migrating"></a>Hoe migreren de apps?
+## <a name="how-are-the-apps-migrating"></a>Hoe worden de apps gemigreerd?
 
-De [LUIS-portal](https://www.luis.ai) biedt het migratieproces.
+De [Luis-Portal](https://www.luis.ai) biedt het migratie proces.
 
-U wordt gevraagd te migreren als:
+U wordt gevraagd om te migreren als:
 
-* U hebt apps op het e-mailverificatiesysteem voor het ontwerpen.
-* En u bent de app-eigenaar.
+* U hebt apps in het e-mail verificatie systeem voor het ontwerpen.
+* En u bent de eigenaar van de app.
 
-U het migratieproces uitstellen door het venster te annuleren. U wordt regelmatig gevraagd om te migreren totdat u migreert of de migratiedeadline is verstreken. U het migratieproces starten vanaf het vergrendelingspictogram van de bovenste navigatiebalk.
+U kunt het migratie proces vertragen door het venster af te sluiten. U wordt regel matig gemigreerd voordat u migreert of de deadline voor migratie wordt door gegeven. U kunt het migratie proces starten vanuit het vergrendelings pictogram van de bovenste navigatie balk.
 
 ## <a name="migration-for-the-app-owner"></a>Migratie voor de eigenaar van de app
 
 ### <a name="before-you-migrate"></a>Voordat u migreert
 
-* **Vereist,** u moet een [Azure-abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnementsproces is wel factureringsgegevens vereist. U echter de`F0`prijscategorie Gratis ( ) gebruiken wanneer u LUIS gebruikt.
-* **Optioneel**maak je een back-up van de apps uit de lijst met apps van de LUIS-portal door elke app te exporteren of de [export-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
-* **Sla eventueel**de lijst van elke medewerker van elke app op. Deze e-maillijst wordt verstrekt als onderdeel van het migratieproces.
+* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis (`F0`) gebruiken wanneer u Luis gebruikt.
+* U **kunt ook**een back-up maken van de apps uit de lijst met apps van de Luis-portal door elke app te exporteren of de export- [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
+* U **kunt desgewenst**de collaborator's-lijst van elke app opslaan. Deze e-mail lijst wordt aangeboden als onderdeel van het migratie proces.
 
 
-**Het ontwerpen van uw LUIS-app is gratis,** aangegeven door de `F0` laag. Meer informatie [over prijsniveaus](luis-boundaries.md#key-limits).
+Het **ontwerpen van uw Luis-app is gratis**, wat `F0` wordt aangegeven door de laag. Meer informatie [over prijs categorieën](luis-limits.md#key-limits).
 
-Als u geen Azure-abonnement hebt, [meldt u zich aan](https://azure.microsoft.com/free/).
+Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/free/)aan.
 
 ### <a name="migration-steps"></a>Migratiestappen
 
-Volg [deze migratiestappen](luis-migration-authoring-steps.md).
+Volg [deze migratie stappen](luis-migration-authoring-steps.md).
 
-### <a name="after-you-migrate"></a>Nadat u bent gemigreerd
+### <a name="after-you-migrate"></a>Nadat u hebt gemigreerd
 
-Na het migratieproces zijn al uw LUIS-apps nu toegewezen aan één LUIS-ontwerpbron.
+Na het migratie proces zijn al uw LUIS-apps nu toegewezen aan één LUIS-ontwerp bron.
 
-U meer ontwerpbronnen maken en toewijzen vanaf de pagina **Azure-bronnen beheren >** in de _LUIS-portal_.
+U kunt meer ontwerp resources maken en toewijzen via de pagina **Manage-> Azure-resources** in de _Luis-Portal_.
 
-U bijdragers toevoegen aan de ontwerpbron vanuit de _Azure-portal_op de pagina **Toegangsbeheer (IAM)** voor die bron. Zie [Toegang tot bijdragen toevoegen voor](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)meer informatie .
+U kunt mede werkers toevoegen aan de ontwerp bron vanuit het _Azure Portal_op de pagina **Access Control (IAM)** voor die resource. Zie [toegang tot Inzender toevoegen](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)voor meer informatie.
 
 |Portal|Doel|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Maak voorspelling en authoring middelen.<br>* Wijs bijdragers toe.|
-|[LUIS](https://www.luis.ai)|* Migreren naar nieuwe bronnen voor het ontwerpen.<br>* Voorspellings- en ontwerpbronnen toewijzen of ongedaan maken aan apps van **> Azure-bronnenpagina beheren.**|
+|[Azure](https://azure.microsoft.com/free/)|* Voor spelling-en ontwerp resources maken.<br>* Mede werkers toewijzen.|
+|[LUIS](https://www.luis.ai)|* Migreren naar nieuwe ontwerp resources.<br>* Het toewijzen of opheffen van voor spelling-en ontwerp resources voor apps op de pagina **beheer van > Azure-resources** .|
 
 ## <a name="migration-for-the-app-contributor"></a>Migratie voor de app-bijdrager
 
-Elke gebruiker van LUIS moet migreren, inclusief bijdragers/bijdragers. Een medewerker moet migreren om toegang te hebben tot de app.
+Elke gebruiker van LUIS moet worden gemigreerd, met inbegrip van deel nemers/mede werkers. Een samen werker moet migreren om toegang te hebben tot de app.
 
 > [!Note]
-> Als de eigenaar van de LUIS-app is gemigreerd en de medewerker als bijdrager aan de Azure-bron heeft toegevoegd, heeft de medewerker nog steeds geen toegang tot de app, tenzij hij ook migreert.
+> Als de eigenaar van de LUIS-app is gemigreerd en de samen werker als bijdrager is toegevoegd aan de Azure-resource, heeft de mede werker nog steeds geen toegang tot de app, tenzij deze ook worden gemigreerd.
 
 ### <a name="before-the-app-is-migrated"></a>Voordat de app wordt gemigreerd
 
-U ervoor kiezen een app waarop u een medewerker bent te exporteren en de app vervolgens terug te importeren in LUIS. Met het importproces wordt een nieuwe app gemaakt met een nieuwe app-id, waarvoor u de eigenaar bent.
+U kunt ervoor kiezen om een app waarvoor u een samen werker bent te exporteren, en vervolgens de app weer in LUIS te importeren. Het import proces maakt een nieuwe app met een nieuwe app-ID waarvoor u de eigenaar bent.
 
 ### <a name="after-the-app-is-migrated"></a>Nadat de app is gemigreerd
 
-De eigenaar van de app moet [uw e-mail toevoegen aan de Azure-ontwerpbron als medewerker.](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)
+De eigenaar van de app moet [uw e-mail adres toevoegen aan de Azure-ontwerp bron als samen werker](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource).
 
-Na het migratieproces zijn alle apps die u bezit beschikbaar op de pagina **Mijn apps** van de LUIS-portal.
+Na het migratie proces zijn de apps die u hebt aangeschaft, beschikbaar op de pagina **mijn apps** van de Luis-Portal.
 
-## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Problemen oplossen met het migratieproces voor LUIS-authoring
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Problemen met het migratie proces voor LUIS ontwerpen oplossen
 
-* LUIS-ontwerpsleutels zijn alleen zichtbaar in de LUIS-portal nadat het migratieproces is voltooid. Als u de ontwerpsleutels maakt, zoals met de LUIS CLI, moet de gebruiker het migratieproces nog steeds voltooien in de LUIS-portal.
-* Als een gemigreerde gebruiker een niet-gemigreerde gebruiker toevoegt als bijdrager aan zijn azure-bron, heeft de niet-gemigreerde gebruiker geen toegang tot de apps, tenzij deze migreert.
-* Als een niet-gemigreerde gebruiker geen eigenaar is van apps, maar een medewerker is van andere apps die eigendom zijn van anderen en de eigenaren het migratieproces hebben ondergaan, moet deze gebruiker migreren om toegang te hebben tot de apps.
-* Als een niet-gemigreerde gebruiker een andere gemigreerde gebruiker als medewerker aan zijn app heeft toegevoegd, treedt er een fout op omdat u een gemigreerde gebruiker als medewerker niet aan een app toevoegen. De niet-gemigreerde gebruiker moet dan het migratieproces doorlopen en een azure-bron maken en de gemigreerde gebruiker toevoegen als bijdrager aan die bron.
+* LUIS-ontwerp sleutels zijn alleen zichtbaar in de LUIS-Portal nadat het migratie proces is voltooid. Als u de ontwerp sleutels maakt, zoals met de LUIS CLI, moet de gebruiker nog steeds het migratie proces in de LUIS-Portal volt ooien.
+* Als een gemigreerde gebruiker een niet-gemigreerde gebruiker toevoegt als Inzender voor hun Azure-resource, heeft de niet-gemigreerde gebruiker geen toegang tot de apps tenzij ze worden gemigreerd.
+* Als een niet-gemigreerde gebruiker geen eigenaar is van een app, maar een samen werker is van andere apps die eigendom zijn van anderen en de eigen aren het migratie proces hebben ondergaan, moet deze gebruiker migreren voor toegang tot de apps.
+* Als een niet-gemigreerde gebruiker een andere gemigreerde gebruiker aan de app heeft toegevoegd, treedt er een fout op wanneer u een gemigreerde gebruiker niet als een samen werker aan een app kunt toevoegen. De niet-gemigreerde gebruiker moet dan het migratie proces door lopen en een Azure-resource maken en de gemigreerde gebruiker als bijdrager aan die resource toevoegen.
 
-U ontvangt een foutmelding tijdens het migratieproces als:
-* Uw abonnement geeft u geen toestemming om resources voor Cognitieve Services te maken
-* Uw migratie heeft een negatieve invloed op de runtime van toepassingen. Bij het migreren worden alle bijdragers uit uw apps verwijderd en wordt u als medewerker uit andere apps verwijderd. Dit proces betekent dat de sleutels die u hebt toegewezen ook worden verwijderd. De migratie wordt geblokkeerd als u sleutels in andere apps hebt toegewezen. Verwijder de sleutel die u veilig hebt toegewezen voordat u migreert. Als u weet dat de sleutel die u hebt toegewezen niet wordt gebruikt in de runtime, moet u deze verwijderen om vooruitgang te kunnen boeken in de migratie.
+Er wordt een fout bericht weer gegeven tijdens het migratie proces als:
+* Uw abonnement geeft u geen toestemming om Cognitive Services-resources te maken
+* Uw migratie heeft een negatieve invloed op elke runtime van de toepassing. Bij de migratie worden alle deel nemers uit uw apps verwijderd en wordt u verwijderd als samen werker van andere apps. Dit proces geeft aan dat de sleutels die u hebt toegewezen, ook worden verwijderd. De migratie wordt geblokkeerd als u sleutels hebt toegewezen in andere apps. Verwijder de sleutel die u veilig hebt toegewezen voordat u de migratie uitvoert. Als u weet dat de sleutel die u hebt toegewezen, niet in de runtime wordt gebruikt, moet u deze verwijderen om te kunnen door gaan in de migratie.
 
-Toegang tot de Azure-bronlijst van uw app met de volgende URL-indeling:
+Open de Azure-Resource lijst van uw app met behulp van de volgende URL-indeling:
 
 `https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw app migreren naar een auteursrechtbron](luis-migration-authoring-steps.md)
+* [Uw app migreren naar een ontwerp bron](luis-migration-authoring-steps.md)

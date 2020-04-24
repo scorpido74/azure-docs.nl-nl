@@ -1,49 +1,49 @@
 ---
-title: Azure Web Application Firewall-controle en -logboekregistratie
-description: Lees Web Application Firewall (WAF) met FrontDoor-monitoring en logboekregistratie
+title: Bewaking en logboek registratie van de firewall van Azure Web Application
+description: WAF (Web Application firewall) leren met-ingang controle en logboek registratie
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 4488fadf5db3b32049b5dce4bbee1fa76c320e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4f666415a96307b89022c6caf6af90581f294f3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284140"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115360"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web Application Firewall-controle en -logboekregistratie 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Bewaking en logboek registratie van de firewall van Azure Web Application 
 
-De bewaking en logboekregistratie van Azure Web Application Firewall (WAF) wordt geleverd door middel van logboekregistratie en integratie met Azure Monitor- en Azure Monitor-logboeken.
+Azure Web Application firewall (WAF) bewaking en logboek registratie worden verschaft via logboek registratie en integratie met Azure Monitor-en Azure Monitor-Logboeken.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-WAF met FrontDoor-logboek is geïntegreerd met [Azure Monitor.](../../azure-monitor/overview.md) Met Azure Monitor u diagnostische gegevens bijhouden, waaronder WAF-waarschuwingen en -logboeken. U WAF-bewaking configureren binnen de Front Door-bron in de portal onder het tabblad **Diagnostische gegevens** of via de Azure Monitor-service.
+WAF met-ingang-logboek is geïntegreerd met [Azure monitor](../../azure-monitor/overview.md). Met Azure Monitor kunt u Diagnostische gegevens bijhouden, waaronder WAF-waarschuwingen en-Logboeken. U kunt WAF-bewaking configureren binnen de voor deur van de portal op het tabblad **Diagnostische gegevens** of via de Azure Monitor-service rechtstreeks.
 
-Ga vanuit Azure-portal naar Het brontype Voorde door. Op het tabblad/**Controlestatistieken** aan de linkerkant u **WebApplicationFirewallRequestCount** toevoegen om het aantal aanvragen bij te houden dat overeenkomt met de WAF-regels. **Monitoring** Aangepaste filters kunnen worden gemaakt op basis van actietypen en regelnamen.
+Ga vanuit Azure Portal naar het resource type voor deur. Op het tabblad **bewakings**/**gegevens** aan de linkerkant kunt u **WebApplicationFirewallRequestCount** toevoegen om het aantal aanvragen bij te houden dat overeenkomt met WAF-regels. Aangepaste filters kunnen worden gemaakt op basis van actie typen en regel namen.
 
 ![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
 
-## <a name="logs-and-diagnostics"></a>Logboeken en diagnostiek
+## <a name="logs-and-diagnostics"></a>Logboeken en diagnostische gegevens
 
-WAF met Voordeur biedt gedetailleerde rapportage over elke bedreiging die het detecteert. Logboekregistratie is geïntegreerd met de logboeken van Azure Diagnostics en waarschuwingen worden vastgelegd in de JSON-indeling. Deze logboeken kunnen worden geïntegreerd met [Azure Monitor-logboeken.](../../azure-monitor/insights/azure-networking-analytics.md)
+WAF met de voor deur biedt gedetailleerde rapportage over elke bedreiging die wordt gedetecteerd. Logboekregistratie is geïntegreerd met de logboeken van Azure Diagnostics en waarschuwingen worden vastgelegd in de JSON-indeling. Deze logboeken kunnen worden geïntegreerd met [Azure monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md).
 
-![WAFDiag WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
+![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-FrontdoorAccessLog registreert alle aanvragen die worden doorgestuurd naar back-ends van klanten. FrontdoorWebApplicationFirewallLog registreert elk verzoek dat overeenkomt met een WAF-regel.
+FrontdoorAccessLog registreert alle aanvragen die worden doorgestuurd naar de back-ends van de klant. FrontdoorWebApplicationFirewallLog registreert alle aanvragen die overeenkomen met een WAF-regel.
 
-In de volgende voorbeeldquery worden WAF-logboeken op geblokkeerde aanvragen verkregen:
+Met de volgende voorbeeld query worden WAF-logboeken op geblokkeerde aanvragen opgehaald:
 
 ``` WAFlogQuery
 AzureDiagnostics
 | where ResourceType == "FRONTDOORS" and Category == "FrontdoorWebApplicationFirewallLog"
-| where action_name_s == "Block"
+| where action_s == "Block"
 
 ```
 
-Hier is een voorbeeld van een aangemeld verzoek in WAF log:
+Hier volgt een voor beeld van een geregistreerde aanvraag in WAF-logboek:
 
 ``` WAFlogQuerySample
 {
@@ -66,7 +66,7 @@ Hier is een voorbeeld van een aangemeld verzoek in WAF log:
 
 ``` 
 
-In de volgende voorbeeldquery worden AccessLogs-vermeldingen verkregen:
+Met de volgende voorbeeld query worden AccessLogs-vermeldingen opgehaald:
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -74,7 +74,7 @@ AzureDiagnostics
 
 ```
 
-Hier is een voorbeeld van een aangemeld verzoek in Access log:
+Hier volgt een voor beeld van een vastgelegde aanvraag in het Access-logboek:
 
 ``` AccessLogSample
 {
@@ -105,4 +105,4 @@ Hier is een voorbeeld van een aangemeld verzoek in Access log:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Voordeur.](../../frontdoor/front-door-overview.md)
+- Meer informatie over de [voor deur](../../frontdoor/front-door-overview.md).

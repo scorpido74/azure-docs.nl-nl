@@ -23,16 +23,16 @@ U moet een Azure-containerregister in uw Azure-abonnement hebben om deze zelfstu
 
 ## <a name="create-a-github-personal-access-token"></a>Een persoonlijk toegangstoken van GitHub maken
 
-Om een taak te activeren op een commit naar een Git-repository, heeft ACR Tasks een persoonlijk toegangstoken (PAT) nodig om toegang te krijgen tot de repository. Als u nog geen PAT hebt, voert u de volgende stappen uit om er een te genereren in GitHub:
+Voor het activeren van een taak voor een door voering naar een Git-opslag plaats, hebben ACR-taken een persoonlijk toegangs token (PAT) nodig om toegang te krijgen tot de opslag plaats. Als u nog geen PAT hebt, voert u de volgende stappen uit om er een te genereren in GitHub:
 
 1. Navigeer naar de pagina PAT maken op GitHub op https://github.com/settings/tokens/new
 1. Geef een korte **beschrijving** voor het token op, bijvoorbeeld 'Demo ACR Tasks'
-1. Selecteer scopes voor ACR om toegang te krijgen tot de repo. Als u toegang wilt krijgen tot een openbare repo zoals in deze zelfstudie, schakelt **u** **repo:status in** en **public_repo**
+1. Selecteer bereiken voor ACR om toegang te krijgen tot de opslag plaats. Als u toegang wilt krijgen tot een open bare opslag plaats zoals in deze zelf studie, onder **opslag plaats**, schakelt u **opslag plaats: status** en **public_repo**
 
    ![Schermafbeelding van de pagina Persoonlijk toegangstoken genereren in GitHub][build-task-01-new-token]
 
    > [!NOTE]
-   > Als u een PAT wilt genereren om toegang te krijgen tot een *privérepo,* selecteert u het bereik voor volledige **repo-controle.**
+   > Als u een PAT wilt genereren om toegang te krijgen tot een *persoonlijke* opslag plaats, selecteert u het bereik voor het volledige **opslag plaats** -besturings element.
 
 1. Selecteer de knop **Token genereren** (u wordt mogelijk gevraagd om uw wachtwoord te bevestigen)
 1. Kopieer en bewaar het gegenereerde token in een **beveiligde locatie** (u gebruikt dit token bij het definiëren van een taak in de volgende sectie)

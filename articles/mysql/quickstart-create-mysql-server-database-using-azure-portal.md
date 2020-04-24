@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een server maken - Azure-portal - Azure-database voor MySQL'
+title: 'Snelstartgids: een Azure Portal-Azure Database for MySQL maken'
 description: Dit artikel leidt u stapsgewijs door de Azure Portal zodat u snel, in ongeveer vijf minuten, een voorbeeld van een Azure-database voor MySQL-server kunt maken.
 author: ajlam
 ms.author: andrela
@@ -18,7 +18,7 @@ ms.locfileid: "80067806"
 
 Azure Database voor MySQL is een beheerde service waarmee u MySQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze snelstart ontdekt u hoe u in ongeveer vijf minuten een Azure Database for MySQL-server maakt in Azure Portal.  
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 Open uw webbrowser en ga naar [Azure Portal](https://portal.azure.com/). Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
@@ -28,9 +28,9 @@ U maakt een Azure Database voor MySQL-server met een gedefinieerde set [reken- e
 
 Volg deze stappen voor het maken van een Azure Database voor MySQL-server:
 
-1. Selecteer **Een resource** (+) maken in de linkerbovenhoek van de portal.
+1. Selecteer **een resource maken** (+) in de linkerbovenhoek van de portal.
 
-2. Selecteer **Azure** > **Database databases voor MySQL**. U **MySQL** ook invoeren in het zoekvak om de service te vinden.
+2. **Data bases** > **Azure database for MySQL**selecteren. U kunt ook **MySQL** in het zoekvak invoeren om de service te vinden.
 
    ![De optie Azure Database voor MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
@@ -38,18 +38,18 @@ Volg deze stappen voor het maken van een Azure Database voor MySQL-server:
    
    ![Formulier voor het maken van een server](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
 
-    **Instelling** | **Voorgestelde waarde** | **Veldbeschrijving** 
+    **Instelling** | **Voorgestelde waarde** | **Veld Beschrijving** 
     ---|---|---
-    Servernaam | Unieke servernaam | Voer een unieke naam in die uw Azure Database voor MySQL-server identificeert. Bijvoorbeeld: mydemoserver. De domeinnaam *mysql.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. en moet 3 tot 63 tekens lang zijn.
+    Servernaam | Unieke servernaam | Voer een unieke naam in die uw Azure Database for MySQL server aanduidt. Bijvoorbeeld: mydemoserver. De domeinnaam *mysql.database.azure.com* wordt toegevoegd aan de servernaam die u opgeeft. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. en moet 3 tot 63 tekens lang zijn.
     Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep | *myresourcegroep* | Geef een nieuwe of bestaande resourcegroepnaam op.
+    Resourcegroep | *myresourcegroup* | Geef een nieuwe of bestaande resourcegroepnaam op.
     Bron selecteren | *Leeg* | Selecteer *Leeg* om een nieuwe server te maken. (Selecteer *Back-up* als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for MySQL-server).
-    Aanmeldgegevens van serverbeheerder | myadmin | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam voor beheerders kan niet **worden azure_superuser,** **beheerder**, **beheerder**, **root,** **gast**of **openbaar**.
+    Aanmeldgegevens van serverbeheerder | myadmin | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldings naam van de beheerder kan niet **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**of **Public**zijn.
     Wachtwoord | *Uw keuze* | Geef een nieuw wachtwoord op voor het beheerdersaccount voor de server. Het wachtwoord moet tussen 8 en 128 tekens lang zijn. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0-9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).
     Wachtwoord bevestigen | *Uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
-    Locatie | *De regio die het dichtst bij uw gebruikers staat*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
+    Locatie | *De regio die het dichtst bij uw gebruikers ligt*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
     Versie | *De meest recente primaire versie*| De meest recente primaire versie (tenzij u specifieke vereisten hebt en een andere versie moet gebruiken).
-    Prijscategorie | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijsniveau**. Selecteer vervolgens het tabblad *Gen 5* **Algemeen doel,** *4 vCores*, *100 GB*en *7 dagen* zijn de standaardwaarden voor **Compute Generation**, **vCore**, **Storage**en Backup **Retention Period**. U kunt deze schuifregelaars laten zoals ze zijn. Als u uw serverback-ups wilt inschakelen in georedundante opslag, selecteert u **Geografisch redundant** in de **redundantieopties voor back-up .** Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Prijscategorie | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer de **prijs categorie**. Selecteer vervolgens het tabblad **Algemeen** . *gen 5*, *4 vCores*, *100 GB*en *7 dagen* zijn de standaard waarden voor generatie van **Compute**, **vCore**, **Storage**en **retentie van back-ups**. U kunt deze schuifregelaars laten zoals ze zijn. Als u uw server back-ups in geografisch redundante opslag wilt inschakelen, selecteert u **geografisch redundant** met de **Opties voor redundantie van back-ups**. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
   
    > [!NOTE]
    > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/mysql/) voor meer informatie.
@@ -57,7 +57,7 @@ Volg deze stappen voor het maken van een Azure Database voor MySQL-server:
 
    ![Server maken - het venster Prijscategorie](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. Selecteer **Controleren + maken** om de server in te richten. Dit kan maximaal 20 minuten duren.
+4. Selecteer **controleren + maken** om de server in te richten. Dit kan maximaal 20 minuten duren.
    
 5. Selecteer **Meldingen** op de werkbalk (pictogram van een klok) om het implementatieproces te bewaken.
    
@@ -67,9 +67,9 @@ Volg deze stappen voor het maken van een Azure Database voor MySQL-server:
 
 De service Azure Database voor MySQL maakt een firewall op serverniveau. De firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server, tenzij er een firewallregel wordt gemaakt om de firewall te openen voor specifieke IP-adressen. 
 
-1. Ga naar de server nadat de implementatie is voltooid. U kunt indien nodig naar de server zoeken. Selecteer bijvoorbeeld **Alle resources** in het menu aan de linkerkant. Voer vervolgens de servernaam in, zoals het voorbeeld **mydemoserver,** om te zoeken naar uw nieuw gemaakte server. Selecteer de naam van de server in de lijst met zoekresultaten. De pagina **Overzicht** wordt geopend voor uw server en biedt opties voor verdere configuratie.
+1. Ga naar de server nadat de implementatie is voltooid. U kunt indien nodig naar de server zoeken. Selecteer bijvoorbeeld **Alle resources** in het menu aan de linkerkant. Voer vervolgens de naam van de server in, zoals het voor beeld **mydemoserver**, om te zoeken naar de zojuist gemaakte server. Selecteer de naam van de server in de lijst met zoekresultaten. De pagina **Overzicht** wordt geopend voor uw server en biedt opties voor verdere configuratie.
 
-2. Selecteer **verbindingsbeveiliging**op de serverpagina .
+2. Selecteer **verbindings beveiliging**op de server pagina.
 
 3. Selecteer onder de kop **Firewallregels** het lege tekstvak in de kolom **Regelnaam** om te beginnen met het maken van de firewallregel. Voer het exacte bereik van IP-adressen in van de clients die toegang moeten hebben tot deze server.
    
@@ -92,7 +92,7 @@ Ga hiervoor als volgt te werk:
 
 2. Beweeg de muisaanwijzer de cursor over elk veld. Het kopieerpictogram wordt rechts van de tekst weergegeven. Selecteer het kopieerpictogram indien nodig om de waarden te kopiëren.
 
-In dit voorbeeld wordt de servernaam **mydemoserver.mysql.database.azure.com**en is de aanmelding voor serverbeheerders **myadmin\@mydemoserver.**
+In dit voor beeld is de server naam **mydemoserver.mysql.database.Azure.com**en de aanmelding van de server beheerder is **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Verbinding maken met MySQL via het opdrachtregelprogramma mysql
 Maak verbinding met de server met behulp van het opdrachtregelprogramma **mysql.exe**. U kunt MySQL [hier](https://dev.mysql.com/downloads/) downloaden en vervolgens op uw computer installeren. 
@@ -111,9 +111,9 @@ Maak verbinding met de server met behulp van het opdrachtregelprogramma **mysql.
 
     mysql-parameter |Voorgestelde waarde|Beschrijving
     ---|---|---
-    --host | *Servernaam* | De servernaam die u eerder hebt gebruikt toen u de Azure Database voor MySQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.mysql.database.azure.com**. Gebruik de volledig gekwalificeerde domeinnaam**\*(.mysql.database.azure.com)** zoals in het voorbeeld wordt weergegeven. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. 
-    --user | *Aanmeldingsnaam van serverbeheerder* |De gebruikersnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *\@gebruikersnaam servernaam*.
-    -p | *Wacht tot er om wordt gevraagd* |Geef het wachtwoord op dat u hebt opgegeven tijdens het maken van de server als u hierom wordt gevraagd. Houd er rekening mee dat de ingevoerde wachtwoordtekens niet worden weergegeven bij de bash-prompt terwijl u de tekens typt. Nadat u het wachtwoord hebt ingevoerd, selecteert u **Enter**.
+    --host | *Server naam* | De servernaam die u eerder hebt gebruikt toen u de Azure Database voor MySQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.mysql.database.azure.com**. Gebruik de Fully Qualified Domain Name (**\*. mysql.database.Azure.com**) zoals weer gegeven in het voor beeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. 
+    --user | *Aanmeldingsnaam van serverbeheerder* |De gebruikersnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
+    -p | *Wacht totdat u hierom wordt gevraagd* |Geef het wachtwoord op dat u hebt opgegeven tijdens het maken van de server als u hierom wordt gevraagd. Houd er rekening mee dat de ingevoerde wachtwoordtekens niet worden weergegeven bij de bash-prompt terwijl u de tekens typt. Nadat u het wachtwoord hebt ingevoerd, selecteert u **Enter**.
 
    Als de verbinding tot stand is gebracht, geeft het hulpprogramma mysql de prompt `mysql>` weer voor het typen van opdrachten. 
 
@@ -173,9 +173,9 @@ Als u verbinding met de server wilt maken met behulp van het GUI-hulpprogramma M
 
 1.    Open de toepassing MySQL Workbench op uw clientcomputer. U kunt MySQL Workbench downloaden en installeren vanaf [deze website](https://dev.mysql.com/downloads/workbench/).
 
-2. Maak een nieuwe verbinding. Selecteer het pluspictogram (+) naast de kop **MySQL-verbindingen.**
+2. Maak een nieuwe verbinding. Selecteer het plus teken (+) naast de kop **MySQL-verbindingen** .
 
-3. Voer in het dialoogvenster **Nieuwe verbinding instellen** de gegevens van de serververbinding in op het tabblad **Parameters.** Vervang de hostnaam, de gebruikersnaam en het wachtwoord door uw eigen waarden.
+3. Voer in het dialoog venster **nieuwe verbinding instellen** de gegevens van uw server verbinding in op het tabblad **para meters** . waarden van tijdelijke aanduidingen worden als voor beeld weer gegeven. Vervang de hostnaam, de gebruikersnaam en het wachtwoord door uw eigen waarden.
 
    ![Nieuwe verbinding instellen](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
@@ -183,12 +183,12 @@ Als u verbinding met de server wilt maken met behulp van het GUI-hulpprogramma M
     |---|---|---|
      Verbindingsnaam | Demo connection | Een label voor deze verbinding. |
     Verbindingsmethode | Standard (TCP/IP) | Standard (TCP/IP) is voldoende. |
-    Hostnaam | *Servernaam* | De servernaam die u hebt gebruikt toen u eerder de Azure Database voor MySQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.mysql.database.azure.com**. Gebruik de volledig gekwalificeerde domeinnaam**\*(.mysql.database.azure.com)** zoals in het voorbeeld wordt weergegeven. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen.|
+    Hostnaam | *Server naam* | De servernaam die u hebt gebruikt toen u eerder de Azure Database voor MySQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.mysql.database.azure.com**. Gebruik de Fully Qualified Domain Name (**\*. mysql.database.Azure.com**) zoals weer gegeven in het voor beeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen.|
      Poort | 3306 | De poort om verbinding te maken met uw Azure Database voor MySQL-server. |
-    Gebruikersnaam |  *Aanmeldingsnaam van serverbeheerder* | De aanmeldingsgegevens van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. Onze voorbeeld gebruikersnaam is **myadmin\@mydemoserver**. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *\@gebruikersnaam servernaam*.
-    Wachtwoord | *Uw wachtwoord* | Selecteer **Store in Vault** om het wachtwoord op te slaan. |
+    Gebruikersnaam |  *Aanmeldingsnaam van serverbeheerder* | De aanmeldingsgegevens van de serverbeheerder die u hebt opgegeven toen u de Azure Database voor MySQL-server eerder hebt gemaakt. Onze voor beeld-gebruikers naam is **myadmin\@mydemoserver**. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
+    Wachtwoord | *Uw wacht woord* | Selecteer **in kluis opslaan** om het wacht woord op te slaan. |
 
-4. Selecteer **Verbinding testen** om te controleren of alle parameters juist zijn geconfigureerd. Selecteer vervolgens **OK** om de verbinding op te slaan. 
+4. Selecteer **Verbinding testen** om te controleren of alle parameters juist zijn geconfigureerd. Selecteer **OK** om de verbinding op te slaan. 
 
     > [!NOTE]
     > SSL wordt standaard afgedwongen op uw server. Om verbinding te kunnen maken, is hiervoor aanvullende configuratie nodig. Zie [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](./howto-configure-ssl.md) (SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure-database voor MySQL) voor meer informatie. Als u SSL wilt uitschakelen voor deze Quick Start, gaat u naar Azure Portal. Ga vervolgens naar de pagina Verbindingsbeveiliging om de wisselknop **SSL afdwingen** op Uit te zetten.
@@ -204,17 +204,17 @@ Ga als volgt te werk om de hele resourcegroep te verwijderen, inclusief de nieuw
 
 1.    Zoek de resourcegroep in Azure Portal. Selecteer **Resourcegroepen** in het menu aan de linkerkant en selecteer vervolgens de naam van uw resourcegroep (zoals **myresourcegroup** in ons voorbeeld).
 
-2.    Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens de naam van uw resourcegroep (zoals onze **voorbeeldgroep myresourcegroep)** in het vak in om verwijdering te bevestigen en selecteer **Verwijderen**.
+2.    Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer vervolgens de naam van uw resource groep (bijvoorbeeld **myresourcegroup**) in het vak in om het verwijderen te bevestigen en selecteer **verwijderen**.
 
 Ga als volgt te werk om alleen de zojuist gemaakte server te verwijderen:
 
-1. Zoek de server in Azure Portal als de server nog niet is geopend. Selecteer **Alle bronnen**in het menu aan de linkerkant in de Azure-portal . Zoek vervolgens naar de server die u hebt gemaakt.
+1. Zoek de server in Azure Portal als de server nog niet is geopend. Selecteer **alle resources**in het menu aan de linkerkant van het Azure Portal. Zoek vervolgens naar de server die u hebt gemaakt.
 
 2. Selecteer **Verwijderen** op de pagina **Overzicht**. 
 
    ![Azure Database voor MySQL-server - server verwijderen](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
-3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Voer uw servernaam in het vak in (zoals onze **voorbeeldmydemoserver).** Selecteer **Verwijderen**.
+3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Voer de naam van uw server in het vak in (zoals onze voorbeeld **mydemoserver**). Selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

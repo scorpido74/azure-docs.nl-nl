@@ -1,25 +1,20 @@
 ---
-title: Zelfstudie - Een back-up maken van virtuele Windows-machines in de Azure-portal
+title: 'Zelf studie: een back-up maken van virtuele Windows-machines in de Azure Portal'
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Windows-machines te beschermen met Azure Backup.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456104"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100427"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Windows-machines in Azure
 
@@ -44,12 +39,12 @@ U plant als volgt een eenvoudige dagelijkse back-up naar een Recovery Services-k
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 1. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
-1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. Het **back-upblad inschakelen** wordt geopend.
-1. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Er wordt een nieuwe kluis gemaakt in dezelfde resourcegroep en -locatie als de virtuele machine.
-1. Houd **onder Back-upbeleid kiezen**het **standaardbeleid (Nieuw) Dagelijks beleid**en klik vervolgens op **Back-up inschakelen**.
+1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. De Blade **back-up inschakelen** wordt geopend.
+1. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Er wordt een nieuwe kluis gemaakt in dezelfde resource groep en locatie als de virtuele machine.
+1. Behoud onder **back-upbeleid kiezen**de standaard **(nieuwe) DailyPolicy**en klik vervolgens op **back-up inschakelen**.
 1. Klik op de blade **Back-up** op **Nu een back-up maken** om een initieel herstelpunt te maken.
-1. Klik in het blad **Nu back-up** op het agendapictogram, gebruik het agendabesturingselement om te kiezen hoe lang het herstelpunt wordt bewaard en klik op **OK**.
-1. In het **back-upblad** voor uw vm ziet u het aantal herstelpunten dat is voltooid.
+1. Klik op de Blade **nu een back-up maken** op het kalender pictogram, gebruik het kalender besturings element om te kiezen hoe lang het herstel punt moet worden bewaard en klik op **OK**.
+1. Op de Blade **back-up** voor uw virtuele machine ziet u het aantal herstel punten dat is voltooid.
 
 
     ![Herstelpunten](./media/tutorial-backup-vms/backup-complete.png)
@@ -77,14 +72,14 @@ In dit voorbeeld laten we zien hoe u het installatiekopiebestand dat voor de sta
 1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. De blade **Back-up** wordt geopend. 
 1. Selecteer in het menu boven aan de blade de optie **Bestandsherstel**. De blade **Bestandsherstel** wordt geopend.
 1. Selecteer in **Stap 1: Herstelpunt selecteren** een herstelpunt in de vervolgkeuzelijst.
-1. Klik in **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** op de knop **Uitvoerbaar bestand downloaden**. Kopieer het wachtwoord voor het bestand en sla het ergens veilig op.
+1. Klik in **Stap 2: Script downloaden om naar bestanden te zoeken en ze te herstellen** op de knop **Uitvoerbaar bestand downloaden**. Kopieer het wacht woord voor het bestand en sla het op een veilige plek op.
 1. Open **Verkenner** op uw lokale computer, navigeer naar uw map **Downloads** en kopieer het gedownloade .exe-bestand. De bestandsnaam wordt voorafgegaan door de naam van uw virtuele machine. 
-1. Plak op uw VM (met de RDP-verbinding) het .exe-bestand op het bureaublad van uw vm. 
-1. Navigeer naar het bureaublad van uw VM en dubbelklik op het .exe-bestand. Er wordt een opdrachtprompt gestart. Het programma monteert het herstelpunt als een bestandsshare waartoe u toegang hebt. Wanneer de share is gemaakt, typt u **q** om de opdrachtprompt te sluiten.
+1. Plak op uw virtuele machine (via de RDP-verbinding) het exe-bestand naar het bureau blad van de virtuele machine. 
+1. Navigeer naar het bureaublad van uw VM en dubbelklik op het .exe-bestand. Er wordt een opdracht prompt gestart. Het-programma koppelt het herstel punt als een bestands share waartoe u toegang hebt. Wanneer de share is gemaakt, typt u **q** om de opdrachtprompt te sluiten.
 1. Open **Verkenner** op uw VM en navigeer naar de stationsletter die voor de bestandsshare is gebruikt.
 1. Navigeer naar \inetpub\wwwroot, kopieer **iisstart.png** uit de bestandsshare en plak het in \inetpub\wwwroot. U kopieert bijvoorbeeld F:\inetpub\wwwroot\iisstart.png en plakt het in c:\inetpub\wwwroot om het bestand te herstellen.
 1. Open op de lokale computer het browsertabblad waardoor u verbonden bent met het IP-adres van de VM waarop de standaard IIS-webpagina wordt weergegeven. Druk op Ctrl+F5 om de browserpagina te vernieuwen. Nu ziet u dat de installatiekopie is hersteld.
-1. Ga op de lokale computer terug naar het browsertabblad voor Azure Portal en klik in **Stap 3: De schijven ontkoppelen na het herstel** op de knop **Schijven ontkoppelen**. Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na die 12 uur moet je een nieuw script downloaden om een nieuw bevestigingspunt te maken.
+1. Ga op de lokale computer terug naar het browsertabblad voor Azure Portal en klik in **Stap 3: De schijven ontkoppelen na het herstel** op de knop **Schijven ontkoppelen**. Als u deze stap vergeet uit te voeren, wordt de verbinding met het koppelpunt na 12 uur automatisch verbroken. Na deze 12 uur moet u een nieuw script downloaden om een nieuw koppel punt te maken.
 
 
 

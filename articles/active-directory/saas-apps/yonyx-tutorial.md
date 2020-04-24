@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Yonyx-interactieve handleidingen | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Yonyx-interactieve hulplijnen.
+title: 'Zelf studie: integratie met Yonyx Interactive-hand leidingen Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en interactieve hand leidingen van Yonyx.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,38 +22,38 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086448"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Zelfstudie: Azure Active Directory-integratie met yonyx-interactieve handleidingen
+# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Zelf studie: integratie Azure Active Directory met Yonyx Interactive-hand leidingen
 
-In deze zelfstudie leert u hoe u Yonyx-interactieve hulplijnen integreren met Azure Active Directory (Azure AD).
-De integratie van Yonyx-interactieve gidsen met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Yonyx Interactive-hand leidingen integreert met Azure Active Directory (Azure AD).
+Het integreren van Yonyx Interactive-hand leidingen met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot yonyx-interactieve gidsen.
-* U uw gebruikers automatisch laten aanmelden bij Yonyx Interactive Guides (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Yonyx Interactive-hand leidingen.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor Yonyx interactieve hand leidingen (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie wilt configureren met Yonyx-interactieve hulplijnen, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Yonyx Interactive-hand leidingen wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Yonyx Interactive Guides single sign-on enabled subscription Yonyx Interactive Guides single sign-on enabled subscription Yonyx Interactive Guides single sign-on enabled subscription Yon
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding voor Yonyx Interactive Guides
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Yonyx Interactive Guides ondersteunt **SP** geïnitieerde SSO
+* Yonyx Interactive-gidsen ondersteunt door **SP** GEÏNITIEERDe SSO
 
-* Yonyx Interactive Guides ondersteunt **Just In Time** gebruikersinrichting
+* Yonyx Interactive-gidsen ondersteunen **just-in-time** -gebruikers inrichting
 
-## <a name="adding-yonyx-interactive-guides-from-the-gallery"></a>Yonyx-interactieve gidsen toevoegen vanuit de galerie
+## <a name="adding-yonyx-interactive-guides-from-the-gallery"></a>Interactieve hand leidingen voor Yonyx toevoegen vanuit de galerie
 
-Als u de integratie van Yonyx-interactieve hulplijnen in Azure AD wilt configureren, moet u Yonyx-interactieve hulplijnen uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Yonyx Interactive-hand leidingen wilt configureren in azure AD, moet u Yonyx interactieve hand leidingen toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om yonyx-interactieve hulplijnen uit de galerie toe te voegen:**
+**Voer de volgende stappen uit om interactieve hand leidingen voor Yonyx toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van Yonyx-interactieve hulplijnen in Azure AD wilt configure
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer yonyx-interactieve hulplijnen in het zoekvak en selecteer **Yonyx-interactieve hulplijnen** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen. **Yonyx Interactive Guides**
+4. Typ **Yonyx Interactive Guides**in het zoekvak, selecteer **interactieve hulp lijnen van Yonyx** in het deel venster resultaten en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Yonyx Interactieve Gidsen in de resultatenlijst](common/search-new-app.png)
+     ![Interactieve hand leidingen voor Yonyx in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Yonyx Interactive Guides op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Yonyx Interactive Guides.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Yonyx Interactive-hand leidingen op basis van een test gebruiker met de naam **Julia Simon**.
+Als u eenmalige aanmelding wilt gebruiken, moet u een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Yonyx Interactive-gidsen tot stand brengen.
 
-Als u Azure AD-singlesign-aan wilt configureren en testen met Yonyx-interactieve hulplijnen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Yonyx Interactive-hand leidingen, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Yonyx Interactive Guides Single Sign-On](#configure-yonyx-interactive-guides-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding van Yonyx Interactive Guides configureren](#configure-yonyx-interactive-guides-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Yonyx Interactive Guides test gebruiker](#create-yonyx-interactive-guides-test-user)** - om een tegenhanger van Britta Simon in Yonyx Interactive Guides te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Yonyx Interactive Guides-test gebruiker maken](#create-yonyx-interactive-guides-test-user)** : als u een equivalent van Julia Simon wilt hebben in Yonyx interactieve hulp lijnen die zijn gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de interne aanmelding van Azure AD te configureren met Yonyx-interactieve hulplijnen:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Yonyx Interactive-hand leidingen:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina De integratie van de toepassing **Yonyx Interactive Guides** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Yonyx Interactive gidsen** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,20 +105,20 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de interne 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Yonyx Interactive Guides Domain and URLLs single sign-on information Yonyx Interactive Guides Domain and URLLs single sign-on information Yonyx Interactive Guides Domain and URLLs single sign-on information Yon](common/sp-identifier.png)
+    ![Yonyx Interactive-hand leidingen domein en Url's gegevens voor eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<company name>.yonyx.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Yonyx Interactive Guides Client support team](mailto:support@yonyx.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Yonyx Interactive Guides](mailto:support@yonyx.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Yonyx-interactieve hulplijnen instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer op de sectie **Yonyx Interactive Guides instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -128,9 +128,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de interne 
 
     c. Afmeldings-URL
 
-### <a name="configure-yonyx-interactive-guides-single-sign-on"></a>Yonyx Interactive Guides Single Sign-On configureren
+### <a name="configure-yonyx-interactive-guides-single-sign-on"></a>Eenmalige aanmelding voor Yonyx Interactive Guides configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant van **de Interactieve Gidsen van Yonyx,** moet u het gedownloade certificaat **(Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam voor interactieve gidsen van Yonyx](mailto:support@yonyx.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Yonyx Interactive-hand leidingen** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar het [ondersteunings team van Yonyx Interactive Guides](mailto:support@yonyx.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -140,7 +140,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -150,23 +150,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Yonyx Interactive Guides.
+In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door toegang te verlenen tot interactieve hand leidingen voor Yonyx.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer vervolgens **Interactieve Hulplijnen van Yonyx**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Yonyx Interactive-hand leidingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **yonyx-interactieve hulplijnen**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Yonyx Interactive-hand leidingen**.
 
-    ![De koppeling Interactieve Gidsen van Yonyx in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling interactieve gidsen voor Yonyx in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -176,30 +176,30 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-yonyx-interactive-guides-test-user"></a>Testgebruiker voor Yonyx-hulplijnen maken
+### <a name="create-yonyx-interactive-guides-test-user"></a>Test gebruiker voor Yonyx Interactive-gidsen maken
 
-In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Yonyx Interactive Guides. Yonyx Interactive Guides ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Yonyx Interactive Guides, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Yonyx Interactive Guides. Yonyx Interactive-hand leidingen bieden ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker zich nog niet in Yonyx Interactive-hand leidingen bevindt, wordt er na verificatie een nieuwe gemaakt.
 
 > [!NOTE]
-> Als u handmatig een gebruiker wilt maken, moet u contact opnemen met het [ondersteuningsteam voor interactieve gidsen van Yonyx.](mailto:support@yonyx.com)
+> Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team voor Yonyx Interactive-gidsen](mailto:support@yonyx.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Interactieve Gidsen van Yonyx klikt in het toegangspaneel, moet u automatisch worden aangemeld bij de Interactieve Gidsen van Yonyx waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel interactieve gidsen Yonyx in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Yonyx-interactieve gidsen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
