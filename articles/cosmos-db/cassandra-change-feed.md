@@ -1,26 +1,26 @@
 ---
-title: Feed wijzigen in de Azure Cosmos DB API voor Cassandra
-description: Meer informatie over het gebruik van de wijzigingsfeed in de Azure Cosmos DB API voor Cassandra om de wijzigingen in uw gegevens op te halen.
+title: Feed wijzigen in de Azure Cosmos DB-API voor Cassandra
+description: Meer informatie over het gebruik van Change feed in de Azure Cosmos DB-API voor Cassandra om de wijzigingen op te halen die zijn aangebracht in uw gegevens.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: c2c695608653130b97bf29cc9ce48e2fbb429209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74694621"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137413"
 ---
-# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Feed wijzigen in de Azure Cosmos DB API voor Cassandra
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Feed wijzigen in de Azure Cosmos DB-API voor Cassandra
 
-[Feed-ondersteuning wijzigen](change-feed.md) in de Azure Cosmos DB API voor Cassandra is beschikbaar via de querypredicaten in de Cassandra Query Language (CQL). Met behulp van deze predicaatvoorwaarden u de API voor wijzigingsfeed opvragen. Toepassingen kunnen de wijzigingen in een tabel krijgen met behulp van de primaire sleutel (ook wel de partitiesleutel genoemd) zoals vereist in CQL. U dan verdere acties ondernemen op basis van de resultaten. Wijzigingen in de rijen in de tabel worden vastgelegd in de volgorde van hun wijzigingstijd en de sorteervolgorde is gegarandeerd per partitiesleutel.
+De ondersteuning voor het [wijzigen van feeds](change-feed.md) in de Azure Cosmos DB-API voor Cassandra is beschikbaar via de query predikaten in de Cassandra query language (CQL). Met behulp van deze predikaten kunt u een query uitvoeren op de feed-API voor wijzigingen. Toepassingen kunnen de wijzigingen die in een tabel zijn aangebracht, ophalen met behulp van de primaire sleutel (ook wel bekend als de partitie sleutel) als vereist in CQL. Vervolgens kunt u verdere acties uitvoeren op basis van de resultaten. Wijzigingen in de rijen in de tabel worden vastgelegd in de volg orde van hun wijzigings tijd en de sorteer volgorde wordt gegarandeerd per partitie sleutel.
 
-In het volgende voorbeeld ziet u hoe u een wijzigingsfeed krijgen voor alle rijen in een Cassandra API Keyspace-tabel met behulp van .NET. Het predicaat COSMOS_CHANGEFEED_START_TIME() wordt direct binnen CQL gebruikt om items in de wijzigingsfeed op te vragen vanaf een bepaalde begintijd (in dit geval huidige datum). U het volledige voorbeeld [hier](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)downloaden.
+In het volgende voor beeld ziet u hoe u een wijzigings feed kunt ophalen voor alle rijen in een Cassandra-API tabel met behulp van .NET. Het predicaat COSMOS_CHANGEFEED_START_TIME () wordt direct in CQL gebruikt om een query uit te voeren op items in de feed van een opgegeven begin tijd (in dit geval de huidige datum/tijd). U kunt hier het volledige voor beeld downloaden, voor C# [hier](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) en [voor Java.](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)
 
-In elke iteratie worden de queryhervat op het laatste punt wijzigingen gelezen, met behulp van paging status. We zien een continue stroom van nieuwe wijzigingen in de tabel in de Keyspace. We zien wijzigingen in rijen die worden ingevoegd of bijgewerkt. Het bekijken van verwijderingsbewerkingen met behulp van wijzigingsfeed in de Cassandra-API wordt momenteel niet ondersteund. 
+Bij elke iteratie wordt de query hervat op het laatste punt dat wijzigingen zijn gelezen, met behulp van de wissel status. We kunnen een doorlopende stroom van nieuwe wijzigingen in de tabel in de spatie weer geven. Er worden wijzigingen in rijen weer geven die zijn ingevoegd of bijgewerkt. Het is niet mogelijk om bewerkingen voor verwijderen te volgen met behulp van Change feed in Cassandra-API.
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,8 +70,41 @@ In elke iteratie worden de queryhervat op het laatste punt wijzigingen gelezen, 
     }
 
 ```
+```java
+        Session cassandraSession = utils.getSession();
 
-Als u de wijzigingen in één rij per primaire sleutel wilt krijgen, u de primaire sleutel in de query toevoegen. In het volgende voorbeeld ziet u hoe u wijzigingen bijhoudt voor de rij waarin "user_id = 1"
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
+U kunt de primaire sleutel in de query toevoegen om de wijzigingen in één rij op primaire sleutel op te halen. In het volgende voor beeld ziet u hoe u wijzigingen bijhoudt voor de rij met ' user_id = 1 '
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -79,21 +112,25 @@ Als u de wijzigingen in één rij per primaire sleutel wilt krijgen, u de primai
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
-
+```java
+    String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+    SimpleStatement st=new  SimpleStatement(query);
+```
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-De volgende beperkingen zijn van toepassing bij het gebruik van change feed met Cassandra API:
+De volgende beperkingen zijn van toepassing wanneer u Change feed gebruikt met Cassandra-API:
 
-* Inserts en updates worden momenteel ondersteund. De bewerking verwijderen wordt nog niet ondersteund. Als tijdelijke oplossing u een zachte markering toevoegen aan rijen die worden verwijderd. Voeg bijvoorbeeld een veld toe in de rij met de naam 'verwijderd' en stel het in op 'waar'.
-* De laatste update wordt gehandhaafd omdat in de CORE SQL API en tussentijdse updates voor de entiteit niet beschikbaar zijn.
+* Toevoegingen en updates worden momenteel ondersteund. De Verwijder bewerking wordt nog niet ondersteund. Als tijdelijke oplossing kunt u een zachte markering toevoegen aan rijen die worden verwijderd. Voeg bijvoorbeeld een veld toe aan de rij ' verwijderd ' en stel deze in op ' True '.
+* De laatste update is persistent als in de kern-SQL-API en tussenliggende updates voor de entiteit zijn niet beschikbaar.
 
 
 ## <a name="error-handling"></a>Foutafhandeling
 
-De volgende foutcodes en berichten worden ondersteund bij het gebruik van change feed in Cassandra API:
+De volgende fout codes en-berichten worden ondersteund bij het gebruik van Change feed in Cassandra-API:
 
-* **HTTP-foutcode 429** - Wanneer de wijzigingsfeed beperkt is, wordt een lege pagina geretourneerd.
+* **HTTP-fout code 429** : wanneer de wijzigings feed de frequentie beperkt is, wordt er een lege pagina geretourneerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Cosmos DB Cassandra API-resources beheren met Azure Resource Manager-sjablonen](manage-cassandra-with-resource-manager.md)
+* [Azure Cosmos DB Cassandra-API resources beheren met behulp van Azure Resource Manager sjablonen](manage-cassandra-with-resource-manager.md)

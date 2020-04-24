@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van de systeem statu
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294011"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "82128166"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Back-up van Windows-systeem status maken in Resource Manager-implementatie
 
@@ -21,11 +21,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Als u een back-up wilt maken van de systeem status van Windows Server, moet u een Recovery Services kluis in de regio waar u de gegevens wilt opslaan. U moet ook bepalen op welke manier u uw opslag wilt repliceren.
+Als u een back-up wilt maken van de systeem status van Windows Server, moet u een Recovery Services kluis in de regio waar u de gegevens wilt opslaan. U moet ook bepalen op welke manier u uw opslag wilt repliceren. 
 
 ### <a name="to-create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-1. Meld u met uw Azure-abonnement aan bij [Azure Portal](https://portal.azure.com/) als u dit nog niet hebt gedaan.
+1. Als u dit nog niet hebt gedaan, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-abonnement.
 2. Klik in het menu Hub op **Alle services**, typ in de lijst met resources **Recovery Services** en klik vervolgens op **Recovery Services-kluizen**.
 
     ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-system-state/open-rs-vault-list.png)
@@ -46,7 +46,7 @@ Als u een back-up wilt maken van de systeem status van Windows Server, moet u ee
 6. In het gedeelte **Resourcegroep**:
 
     * selecteert u **Nieuw** als u een resourcegroep wilt maken,
-    Of
+    of
     * selecteert u **Bestaande gebruiken** en klikt u op de vervolgkeuzelijst om de lijst met beschikbare resourcegroepen te zien.
 
    Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
@@ -95,7 +95,7 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
 
     ![Open de blade back-updoelstelling](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
-2. Selecteer **On-premises** in het menu **Waar wordt uw workload uitgevoerd?** .
+2. Selecteer **On-premises** in het menu **Waar wordt uw workload uitgevoerd?**.
 
     U kiest **On-premises** omdat uw Windows Server of Windows-computer een fysieke machine is die zich niet in Azure bevindt.
 
@@ -224,10 +224,10 @@ Nadat de eerste back-up is voltooid, wordt de status **Taak voltooid** weergegev
 
 ## <a name="questions"></a>Vragen?
 
-Als u vragen hebt of als er een functie is die u graag opgenomen ziet worden, [stuur ons dan uw feedback](https://aka.ms/azurebackup_feedback).
+Als u vragen hebt of als er een functie is die u graag opgenomen ziet worden, [stuur ons dan uw feedback](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [back-ups maken van Windows-machines](backup-configure-vault.md).
+* Meer informatie over [back-ups maken van Windows-machines](backup-windows-with-mars-agent.md).
 * Nu u een back-up hebt gemaakt van uw Windows Server-systeem status, kunt u [uw kluizen en servers beheren](backup-azure-manage-windows-server.md).
 * Als u een back-up moet herstellen, [zet de bestanden dan terug naar een Windows-machine](backup-azure-restore-windows-server.md) aan de hand van dit artikel.

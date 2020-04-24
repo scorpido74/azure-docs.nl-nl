@@ -1,64 +1,66 @@
 ---
-title: Azure Service Fabric-sondes
-description: Liveness Probe modelleren in Azure Service Fabric met behulp van toepassings- en servicemanifestbestanden.
+title: Tests voor Azure Service Fabric
+description: Een beproefde test voor de liveiteit in azure Service Fabric model leren met behulp van de manifest bestanden van de toepassing en service.
 ms.topic: conceptual
+author: tugup
+ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 38f3888a29bf505b723d40bc7cd08fb0c7e29eff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431213"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137583"
 ---
-# <a name="liveness-probe"></a>Levendigheid Sonde
-Beginnend met 7.1 Service Fabric ondersteunt Liveness Probe mechanisme voor [gecontaineriseerde][containers-introduction-link] toepassingen. Liveness Probe helpen kondigen de levendigheid van de containerized applicatie en wanneer ze niet tijdig reageren, zal dit resulteren in een herstart.
-Dit artikel geeft een overzicht van hoe u een Liveness Probe definiëren via manifestbestanden.
+# <a name="liveness-probe"></a>Test voor de duur van de liveiteit
+Vanaf versie 7,1 ondersteunt Azure Service Fabric een mechanisme voor het testen van de levens duur van toepassingen in [containers][containers-introduction-link] . Met een onlineresponder-test kunt u de levens duur van een container toepassing rapporteren. deze wordt opnieuw opgestart als deze niet snel reageert.
+Dit artikel bevat een overzicht van hoe u een bewerkings sonde kunt definiëren met behulp van manifest bestanden.
 
-Voordat we verder gaan met dit artikel, raden we aan om vertrouwd te raken met het [Service Fabric-toepassingsmodel][application-model-link] en het [Service Fabric-hostingmodel.][hosting-model-link]
+Voordat u verder gaat met dit artikel, kunt u vertrouwd raken met het [service Fabric-toepassings model][application-model-link] en het [model van service Fabric hosting][hosting-model-link].
 
 > [!NOTE]
-> Liveness Probe wordt alleen ondersteund voor containers in nat-netwerkmodus.
+> De duur van de live-test wordt alleen ondersteund voor containers in de NAT-netwerk modus.
 
 ## <a name="semantics"></a>Semantiek
-U slechts 1 Liveness Probe per container opgeven en het gedrag ervan met deze velden beheren:
+U kunt slechts één duur van de eerste maal per container opgeven en het gedrag ervan bepalen door gebruik te maken van de volgende velden:
 
-* `initialDelaySeconds`: De eerste vertraging in seconden om te beginnen met het uitvoeren van sonde zodra de container is gestart. Ondersteunde waarde is int. Standaard is 0. Minimum is 0.
+* `initialDelaySeconds`: De eerste vertraging in seconden voor het uitvoeren van de test na het starten van de container. De ondersteunde waarde is **int**. De standaard waarde is 0 en het minimum is 0.
 
-* `timeoutSeconds`: Periode in seconden waarna we sonde als mislukt beschouwen als deze niet is voltooid. Ondersteunde waarde is int. Standaard is 1. Minimum is 1.
+* `timeoutSeconds`: De periode in seconden waarna de test is mislukt, als deze nog niet is voltooid. De ondersteunde waarde is **int**. De standaard waarde is 1 en het minimum is 1.
 
-* `periodSeconds`: Punt in seconden om aan te geven hoe vaak we sonde. Ondersteunde waarde is int. Standaard is 10. Minimum is 1.
+* `periodSeconds`: De periode in seconden om de frequentie van de test op te geven. De ondersteunde waarde is **int**. De standaard waarde is 10 en het minimum is 1.
 
-* `failureThreshold`: Zodra we FailureThreshold hebben bereikt, wordt de container opnieuw opgestart. Ondersteunde waarde is int. Standaard is 3. Minimum is 1.
+* `failureThreshold`: Als we deze waarde hebben bereikt, wordt de container opnieuw opgestart. De ondersteunde waarde is **int**. De standaard waarde is 3 en het minimum is 1.
 
-* `successThreshold`: Bij mislukking, voor sonde om als succes worden beschouwd moet het met succes voor SuccessThreshold uitvoeren. Ondersteunde waarde is int. Standaard is 1. Minimum is 1.
+* `successThreshold`: Bij een fout kan de test als geslaagd worden beschouwd, dan moet deze met succes worden uitgevoerd voor deze waarde. De ondersteunde waarde is **int**. De standaard waarde is 1 en het minimum is 1.
 
-Er zal maximaal 1 sonde zijn om op een gegeven moment te containeren. Als de sonde niet volledig in **time-outSeconden** blijven we wachten en tellen naar de **failureThreshold**. 
+Er kan Maxi maal één test op één wille keurig moment zijn. Als de test niet wordt voltooid in de tijd die is ingesteld in **timeoutSeconds**, wacht u en telt u de tijd op naar de **failureThreshold**. 
 
-Daarnaast zal ServiceFabric verhogen na sonde [gezondheidsrapporten][health-introduction-link] over geïmplementeerdServicepakket:
+Daarnaast genereren Service Fabric de volgende test [status rapporten][health-introduction-link] op **DeployedServicePackage**:
 
-* `Ok`: Als de sonde slaagt voor **succesDrempel** dan melden we gezondheid als Ok.
+* `OK`: De test slaagt voor de waarde die is ingesteld in **successThreshold**.
 
-* `Error`: Als de sonde misluktCount == **failureThreshold**, voordat u de container opnieuw start, melden we Fout.
+* `Error`: De test **failureCount** ==  **failureThreshold**voordat de container opnieuw wordt opgestart.
 
 * `Warning`: 
-    1. Als de sonde uitvalt en de storingAantal < **failureThreshold** melden we Waarschuwing. Dit statusrapport blijft totdat failcount **bereikt mislukkingDrempel** of **succesDrempel**.
-    2. Over succes na mislukking, rapporteren we nog steeds Waarschuwing, maar met bijgewerkte opeenvolgende succes.
+    * De test is mislukt en **failureCount** < **failureThreshold**. Dit status rapport blijft totdat **failureCount** de waarde die is ingesteld in **failureThreshold** of **successThreshold**bereikt.
+    * Als de fout is opgetreden, blijft de waarschuwing aanwezig, maar worden opeenvolgende geslaagde successen bijgewerkt.
 
-## <a name="specifying-liveness-probe"></a>Liveness Probe opgeven
+## <a name="specifying-a-liveness-probe"></a>Een test voor een liveiteit opgeven
 
-U de sonde opgeven in het ApplicationManifest.xml onder ServiceManifestImport:
+U kunt een test opgeven in het bestand ApplicationManifest. XML onder **ServiceManifestImport**.
 
-Probe kan een van:
+De test kan een van de volgende zijn:
 
-1. HTTP
-2. TCP
-3. Exec 
+* HTTP
+* TCP
+* Exec 
 
-## <a name="http-probe"></a>HTTP-sonde
+### <a name="http-probe"></a>HTTP-test
 
-Voor HTTP-sonde stuurt Service Fabric een HTTP-aanvraag naar de opgegeven poort en pad. Retourcode groter dan of gelijk aan 200 en minder dan 400 geeft succes aan.
+Voor een HTTP-test stuurt Service Fabric een HTTP-aanvraag naar de poort en het pad dat u opgeeft. Een retour code die groter is dan of gelijk is aan 200, en kleiner is dan 400, geeft aan dat de bewerking is geslaagd.
 
-Hier volgt een voorbeeld van het opgeven van httpGet-sonde:
+Hier volgt een voor beeld van hoe u een HTTP-test opgeeft:
 
 ```xml
   <ServiceManifestImport>
@@ -79,21 +81,21 @@ Hier volgt een voorbeeld van het opgeven van httpGet-sonde:
   </ServiceManifestImport>
 ```
 
-HttpGet-sonde heeft extra eigenschappen die u instellen:
+De HTTP-test heeft aanvullende eigenschappen die u kunt instellen:
 
-* `path`: Pad naar toegang op het HTTP-verzoek.
+* `path`: Het pad dat in de HTTP-aanvraag moet worden gebruikt.
 
-* `port`: Poort voor toegang voor sondes. Bereik is 1 tot 65535. Verplicht.
+* `port`: De poort die moet worden gebruikt voor tests. Deze eigenschap is verplicht. Het bereik is 1 tot en met 65535.
 
-* `scheme`: Schema te gebruiken voor het aansluiten op code pakket. Als u bent ingesteld op HTTPS, wordt de certificaatverificatie overgeslagen. Standaardwaarden voor HTTP
+* `scheme`: Het schema dat moet worden gebruikt om verbinding te maken met het code pakket. Als deze eigenschap is ingesteld op HTTPS, wordt de verificatie van het certificaat overgeslagen. De standaard instelling is HTTP.
 
-* `httpHeader`: Kopteksten die u in de aanvraag wilt instellen. U er meerdere opgeven.
+* `httpHeader`: De headers die in de aanvraag moeten worden ingesteld. U kunt meerdere headers opgeven.
 
-* `host`: Host IP om verbinding mee te maken.
+* `host`: Het IP-adres van de host waarmee verbinding moet worden gemaakt.
 
-## <a name="tcp-probe"></a>TCP-sonde
+### <a name="tcp-probe"></a>TPC-test
 
-Voor TCP-sonde probeert Service Fabric een socket op de container met de opgegeven poort te openen. Als het een verbinding kan vestigen, wordt de sonde beschouwd als succes. Hier volgt een voorbeeld van het opgeven van de sonde die TCP-socket gebruikt:
+Voor een TCP-test probeert Service Fabric een socket in de container te openen met behulp van de opgegeven poort. Als er een verbinding tot stand kan worden gebracht, wordt de test als geslaagd beschouwd. Hier volgt een voor beeld van hoe u een test kunt opgeven die gebruikmaakt van een TCP-socket:
 
 ```xml
   <ServiceManifestImport>
@@ -111,13 +113,13 @@ Voor TCP-sonde probeert Service Fabric een socket op de container met de opgegev
   </ServiceManifestImport>
 ```
 
-## <a name="exec-probe"></a>Exec Probe
+### <a name="exec-probe"></a>Exec-test
 
-Deze sonde geeft een exec in de container en wacht tot de opdracht is voltooid.
+Met deze test wordt een **exec** -opdracht in de container uitgegeven en wordt gewacht tot de opdracht is voltooid.
 
 > [!NOTE]
-> Exec commando neemt een komma gescheiden string. De volgende opdracht in het voorbeeld werkt voor Linux-container.
-> Als u windows container probeert, gebruik <Command>cmd</Command>
+> De **exec** -opdracht gebruikt een door komma's gescheiden teken reeks. De opdracht in het volgende voor beeld werkt voor een Linux-container.
+> Als u een Windows-container wilt testen, gebruikt u **cmd**.
 
 ```xml
   <ServiceManifestImport>
@@ -138,8 +140,8 @@ Deze sonde geeft een exec in de container en wacht tot de opdracht is voltooid.
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor gerelateerde informatie.
-* [Service Fabric en containers.][containers-introduction-link]
+Zie het volgende artikel voor verwante informatie:
+* [Service Fabric en containers][containers-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md
