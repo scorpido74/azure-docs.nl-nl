@@ -39,6 +39,8 @@
       items:
         - name: Apache Hadoop-onderdelen in HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Opmerkingen bij de release van Hortonworks
+          href: ./hortonworks-release-notes.md
         - name: Onderdelen met hoge beschikbaarheid
           href: ./hdinsight-high-availability-components.md
         - name: Apache Ambari in Azure HDInsight
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: Beschikbaarheid en betrouwbaarheid
           href: ./hdinsight-high-availability-linux.md
-        - name: Opslagopties vergelijken
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: Inzicht in beheerde identiteiten
           href: ./hdinsight-managed-identities.md
+        - name: Opslagopties vergelijken
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Azure Storage-overzicht
+              href: overview-azure-storage.md
+            - name: Azure Data Lake Storage Gen1-overzicht
+              href: overview-data-lake-storage-gen1.md
+            - name: Azure Data Lake Storage Gen2-overzicht
+              href: overview-data-lake-storage-gen2.md
     - name: Procedures
       items:
         - name: Clusters maken
@@ -122,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: SSH-tunneling gebruiken
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: SCP gebruiken met HDInsight
+              href: ./use-scp.md
             - name: Toegang tot gegevens beperken
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: Gebruikers machtigen voor Apache Ambari-weergaven
@@ -216,6 +227,8 @@
           items:
             - name: Problemen met scriptacties oplossen
               href: ./troubleshoot-script-action.md
+            - name: Fouten bij het maken van resources
+              href: ./troubleshoot-resource-creation-fails.md
     - name: Naslaginformatie
       items:
         - name: Azure PowerShell
