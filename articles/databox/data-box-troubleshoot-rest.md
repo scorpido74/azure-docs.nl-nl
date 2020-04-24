@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box oplossen van problemen voor het gebruik van de REST-interface | Microsoft Docs
-description: Beschrijft hoe u problemen in Azure Data Box worden gezien bij het kopiëren van gegevens is via de REST-interface.
+title: Azure Data Box probleem oplossing voor het gebruik van de REST-interface | Microsoft Docs
+description: Hierin wordt beschreven hoe u problemen kunt oplossen die worden weer gegeven in Azure Data Box wanneer het kopiëren van gegevens via de REST-interface is.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,64 +8,64 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204224"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297129"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Oplossen van problemen met betrekking tot Azure Data Box-Blob-opslag
+# <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Problemen oplossen die verband houden met Azure Data Box Blob-opslag
 
-Deze artikelinformatie meer informatie over het oplossen van problemen mogelijk ziet u bij het gebruik van de gegevens in Blob-opslag via de REST-interface op uw Data Box om gegevens te kopiëren. Deze problemen surface wanneer u gegevens in Blob-opslag met andere toepassingen of -clientbibliotheken zoals Azure Storage Explorer, AzCopy of Azure Storage-bibliotheek voor Python.
+In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden wanneer u de Data Box Blob-opslag gebruikt via de REST-interface op uw Data Box om gegevens te kopiëren. Deze problemen doen zich voor wanneer u Data Box Blob-opslag gebruikt met andere toepassingen of client Bibliotheken, zoals Azure Storage Explorer, AzCopy of Azure Storage bibliotheek voor python.
 
-## <a name="errors-seen-in-azure-storage-explorer"></a>Fouten bekijken in Azure Storage Explorer
+## <a name="errors-seen-in-azure-storage-explorer"></a>Fouten die worden weer gegeven in Azure Storage Explorer
 
-In deze sectie worden enkele van de problemen bij het gebruik van Azure Storage Explorer met de gegevens in Blob-opslag.
-
-|Foutbericht  |Aanbevolen actie |
-|---------|---------|
-|Kan geen onderliggende resources ophalen. De waarde voor een van de HTTP-headers is niet de juiste indeling.|Uit de **bewerken** in het menu **doel Azure Stack-API's**. <br>Start opnieuw op Azure Storage Explorer.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam van het eindpunt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` wordt toegevoegd aan het hosts-bestand in dit pad: <li>`C:\Windows\System32\drivers\etc\hosts` op Windows, of </li><li> `/etc/hosts` op Linux.</li>|
-|Kan geen onderliggende resources ophalen. <br>Details: zelf-ondertekend certificaat |Importeer het SSL-certificaat voor uw apparaat in Azure Storage Explorer: <li>Download het certificaat van de Azure-portal. Ga voor meer informatie naar [downloaden van het certificaat](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>Uit de **bewerken** in het menu **SSL-certificaten** en selecteer vervolgens **certificaten importeren**.</li>|
-
-## <a name="errors-seen-in-azcopy-for-windows"></a>Fouten bekijken in de AzCopy voor Windows
-
-In deze sectie worden enkele van de problemen bij het gebruik van AzCopy voor Windows met gegevens in Blob-opslag.
+In deze sectie vindt u een aantal problemen met het gebruik van Azure Storage Explorer met Data Box Blob Storage.
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|AzCopy-opdracht weergegeven vastlopen gedurende één minuut voordat deze fout wordt weergegeven: <br>Fout bij het inventariseren van directory https://... De externe naam kan niet worden omgezet. `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eindpunt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` wordt toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts`.|
-|AzCopy-opdracht weergegeven vastlopen gedurende één minuut voordat deze fout wordt weergegeven: <br>Fout bij het parseren van de bronlocatie. De onderliggende verbinding is gesloten: Kan geen vertrouwensrelatie voor het beveiligde SSL/TLS-kanaal.|Importeer het SSL-certificaat voor uw apparaat in het certificaatarchief van het systeem. Ga voor meer informatie naar [downloaden van het certificaat](data-box-deploy-copy-data-via-rest.md#download-certificate).|
+|Kan geen onderliggende resources ophalen. De waarde voor een van de HTTP-headers heeft niet de juiste indeling.|Selecteer in het menu **bewerken** de optie **doel-Azure stack-api's**. <br>Start Azure Storage Explorer opnieuw.|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts-bestand op dit pad: <li>`C:\Windows\System32\drivers\etc\hosts`in Windows of </li><li> `/etc/hosts`op Linux.</li>|
+|Kan geen onderliggende resources ophalen. <br>Details: zelfondertekend certificaat |Importeer het TLS/SSL-certificaat voor uw apparaat in Azure Storage Explorer: <li>Down load het certificaat van de Azure Portal. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.</li><li>Selecteer in het menu **bewerken** de optie **SSL-certificaten** en selecteer vervolgens **certificaten importeren**.</li>|
 
+## <a name="errors-seen-in-azcopy-for-windows"></a>Fouten die worden weer gegeven in AzCopy voor Windows
 
-## <a name="errors-seen-in-azcopy-for-linux"></a>Fouten bekijken in de AzCopy voor Linux
-
-In deze sectie worden enkele van de problemen bij het gebruik van AzCopy voor Linux met gegevens in Blob-opslag.
-
-|Foutbericht  |Aanbevolen actie |
-|---------|---------|
-|AzCopy-opdracht weergegeven vastlopen voor 20 minuten voordat deze fout wordt weergegeven: <br>Fout bij het parseren van de locatie van `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. Onbekend apparaat of -adres|Controleer of de naam van het eindpunt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` wordt toegevoegd aan het hosts-bestand op: `/etc/hosts`.|
-|AzCopy-opdracht weergegeven vastlopen voor 20 minuten voordat deze fout wordt weergegeven: <br>Fout bij het parseren van de bronlocatie... De SSL-verbinding kan niet worden gemaakt.|Importeer het SSL-certificaat voor uw apparaat in het certificaatarchief van het systeem. Ga voor meer informatie naar [downloaden van het certificaat](data-box-deploy-copy-data-via-rest.md#download-certificate).|
-
-## <a name="errors-seen-in-azure-storage-library-for-python"></a>Fouten bekijken in Azure Storage-bibliotheek voor Python
-
-In deze sectie worden enkele van de meest voorkomende problemen tijdens de implementatie van de Data Box-schijf met het gebruik van een Linux-client voor het kopiëren van gegevens.
+In deze sectie vindt u een aantal problemen met het gebruik van AzCopy voor Windows met Data Box Blob-opslag.
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|De waarde voor een van de HTTP-headers is niet de juiste indeling. |De geïnstalleerde versie van de Microsoft Azure Storage-bibliotheek voor Python wordt niet ondersteund door Data Box. Zie vereisten voor Azure Data Box-Blob-opslag voor ondersteunde versies.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Voordat u Python uitvoert, stelt u de omgevingsvariabele requests_ca_bundle naar het pad van de met Base64 gecodeerde SSL-certificaatbestand (Zie hoe u [downloaden van het certificaat](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Bijvoorbeeld:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>U kunt ook het certificaat toevoegen aan het certificaatarchief van het systeem en vervolgens deze omgevingsvariabele instellen op het pad van dat archief. <br> Bijvoorbeeld op Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven: <br>Kan de map https://niet inventariseren... De externe naam kan niet worden omgezet`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts `C:\Windows\System32\drivers\etc\hosts`-bestand op:.|
+|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie. De onderliggende verbinding is gesloten: er kan geen vertrouwens relatie tot stand worden gebracht voor het beveiligde SSL/TLS-kanaal.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
+
+
+## <a name="errors-seen-in-azcopy-for-linux"></a>Fouten die worden weer gegeven in AzCopy voor Linux
+
+In deze sectie vindt u een aantal problemen met het gebruik van AzCopy voor Linux met Data Box Blob-opslag.
+
+|Foutbericht  |Aanbevolen actie |
+|---------|---------|
+|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. Apparaat of adres is niet beschikbaar|Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts `/etc/hosts`-bestand op:.|
+|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie... De SSL-verbinding kan niet tot stand worden gebracht.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
+
+## <a name="errors-seen-in-azure-storage-library-for-python"></a>Fouten die worden weer gegeven in Azure Storage bibliotheek voor python
+
+In deze sectie vindt u een aantal veelvoorkomende problemen tijdens de implementatie van Data Box Disk wanneer u een Linux-client gebruikt voor het kopiëren van gegevens.
+
+|Foutbericht  |Aanbevolen actie |
+|---------|---------|
+|De waarde voor een van de HTTP-headers heeft niet de juiste indeling. |De geïnstalleerde versie van de Microsoft Azure Storage-bibliotheek voor python wordt niet ondersteund door Data Box. Zie Azure Data Box vereisten voor Blob Storage voor ondersteunde versies.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Voordat u python uitvoert, stelt u de omgevings variabele REQUESTS_CA_BUNDLE in op het pad van het met base64 gecodeerde TLS-certificaat bestand (Zie How to [down load the Certificate](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Bijvoorbeeld:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>U kunt het certificaat ook toevoegen aan het certificaat archief van het systeem en deze omgevings variabele vervolgens instellen op het pad van dat archief. <br> Bijvoorbeeld op Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Algemene fouten
 
-Deze fouten zijn niet specifiek zijn voor elke toepassing.
+Deze fouten zijn niet specifiek voor elke toepassing.
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|Er is een time-out opgetreden voor de verbinding. |Meld u aan bij de Data Box-apparaat en controleer of deze ontgrendeld is. Telkens wanneer u het apparaat opnieuw is opgestart en blijft het vergrendeld totdat iemand zich aanmeldt.|
+|Er is een time-out opgestaan. |Meld u aan bij het Data Box apparaat en controleer of het is ontgrendeld. Telkens wanneer het apparaat opnieuw wordt opgestart, blijft het vergrendeld totdat iemand zich aanmeldt.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [gegevens in Blob storage-systeemvereisten](data-box-system-requirements-rest.md).
+- Meer informatie over de [vereisten voor het data Box Blob-opslag systeem](data-box-system-requirements-rest.md).
