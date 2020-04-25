@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a38bb12577fd646b2e7abf773dbb2a3f138f58fe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: HT
+ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127546"
+ms.locfileid: "82146555"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL één server
 
@@ -130,7 +130,7 @@ Meer informatie over het gebruik van service tags voor Azure Database for Postgr
 
 - DDoS Protection standaard moet zijn ingeschakeld
 
-- SSL-verbinding afdwingen moet zijn ingeschakeld voor PostgreSQL-database servers
+- Het afdwingen van een TLS-verbinding moet zijn ingeschakeld voor PostgreSQL-database servers
 
 Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -525,7 +525,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-**Hulp**: Azure database for PostgreSQL biedt ondersteuning voor het verbinden van uw postgresql-server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld. Zorg ervoor dat in de Azure Portal standaard de instelling SSL-verbinding afdwingen is ingeschakeld voor al uw Azure Database for PostgreSQL exemplaren.
+**Hulp**: Azure database for PostgreSQL biedt ondersteuning voor het koppelen van uw postgresql-server aan client toepassingen met behulp van Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL). Het afdwingen van TLS-verbindingen tussen uw database server en uw client toepassingen helpt bij het beveiligen van ' man in het midden ' aanvallen door de gegevens stroom tussen de server en uw toepassing te versleutelen. Zorg ervoor dat in de Azure Portal standaard de instelling SSL-verbinding afdwingen is ingeschakeld voor al uw Azure Database for PostgreSQL exemplaren.
 
 Op dit moment wordt de TLS-versie die wordt ondersteund voor Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
@@ -794,7 +794,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 **Richt lijnen**: standaard beveiligings configuraties voor uw Azure database for PostgreSQL-instanties definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforPostgreSQL ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for PostgreSQL instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw Azure Database for PostgreSQL-instanties, zoals:
 
-- SSL-verbinding afdwingen moet zijn ingeschakeld voor PostgreSQL-database servers
+- Het afdwingen van een TLS-verbinding moet zijn ingeschakeld voor PostgreSQL-database servers
 
 - Logboek verbindingen moeten zijn ingeschakeld voor PostgreSQL-database servers
 

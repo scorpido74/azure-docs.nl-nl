@@ -1,45 +1,45 @@
 ---
-title: Een gebruikers-vm-afbeelding maken voor de Azure Marketplace
-description: Hier worden de stappen en verwijzingen weergegeven die nodig zijn om een vm-afbeelding van de gebruiker te maken.
+title: Een VM-installatie kopie van een gebruiker maken voor Azure Marketplace
+description: Hierin worden de stappen en verwijzingen vermeld die zijn vereist voor het maken van een VM-installatie kopie van een gebruiker.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9d82d50769925480d461c122096c3919d7e8940d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273950"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146574"
 ---
 # <a name="create-a-user-vm-image"></a>Een VM-installatiekopie voor gebruikers maken
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uw technische assets van Azure Virtual Machine maken](https://aka.ms/AzureVMTechAsset) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 begint het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in de [technische assets van uw virtuele Azure-machines maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) om uw gemigreerde aanbiedingen te beheren.
 
-In dit artikel worden de twee algemene stappen uitgelegd die nodig zijn om een onbeheerde afbeelding te maken van een gegeneraliseerde VHD.  Referenties worden verstrekt om u te begeleiden door elke stap: het vastleggen van de afbeelding en generaliseren van de afbeelding.
-
-
-## <a name="capture-the-vm-image"></a>De VM-afbeelding vastleggen
-
-Gebruik de instructies in het volgende artikel over het vastleggen van de VM die overeenkomt met uw toegangsbenadering:
-
--  PowerShell: [een onbeheerde VM-afbeelding maken van een Azure VM](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI: [een afbeelding van een virtuele machine of VHD maken](../../../virtual-machines/linux/capture-image.md)
--  API: [Virtuele machines - Vastleggen](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+In dit artikel worden de twee algemene stappen beschreven die nodig zijn voor het maken van een onbeheerde installatie kopie van een gegeneraliseerde VHD.  U vindt de volgende informatie om u te helpen bij elke stap: de installatie kopie vastleggen en de installatie kopie generalize.
 
 
-## <a name="generalize-the-vm-image"></a>De VM-afbeelding generaliseren
+## <a name="capture-the-vm-image"></a>De VM-installatie kopie vastleggen
 
-Omdat u de gebruikersafbeelding hebt gegenereerd van een eerder gegeneraliseerde VHD, moet deze ook worden gegeneraliseerd.  Selecteer nogmaals het volgende artikel dat overeenkomt met uw toegangsmechanisme.  (Mogelijk hebt u uw schijf al gegeneraliseerd toen u deze hebt vastgelegd.)
+Volg de instructies in het volgende artikel over het vastleggen van de virtuele machine die overeenkomt met uw toegangs benadering:
 
--  PowerShell: [Generaleer de VM](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI: [Stap 2: VM-afbeelding maken](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API: [Virtuele machines - Generaliseren](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  Power shell: [een niet-beheerde VM-installatie kopie maken op basis van een virtuele Azure-machine](../../../virtual-machines/windows/capture-image-resource.md)
+-  Azure CLI: [een installatie kopie van een virtuele machine of VHD maken](../../../virtual-machines/linux/capture-image.md)
+-  API: [virtual machines-vastleggen](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+
+
+## <a name="generalize-the-vm-image"></a>De VM-installatie kopie generaliseren
+
+Omdat u de gebruikers installatie kopie van een eerder gegeneraliseerde VHD hebt gegenereerd, moet deze ook worden gegeneraliseerd.  Selecteer opnieuw het volgende artikel dat overeenkomt met uw toegangs mechanisme.  (Mogelijk hebt u uw schijf al gegeneraliseerd toen u deze hebt vastgelegd.)
+
+-  Power shell: [de virtuele machine generaliseren](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
+-  Azure CLI: [stap 2: VM-installatie kopie maken](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  API: [virtual machines-generalize](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens maakt u [een certificaat](cpp-create-key-vault-cert.md) en slaat u het op in een nieuwe Azure Key Vault.  Dit certificaat is vereist voor het tot stand brengen van een veilige WinRM-verbinding met de VM.
+Vervolgens gaat u [een certificaat maken](cpp-create-key-vault-cert.md) en opslaan in een nieuwe Azure Key Vault.  Dit certificaat is vereist voor het tot stand brengen van een beveiligde WinRM-verbinding met de virtuele machine.

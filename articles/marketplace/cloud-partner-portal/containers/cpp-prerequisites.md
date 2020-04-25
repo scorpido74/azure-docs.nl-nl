@@ -1,41 +1,41 @@
 ---
-title: Azure Containers bieden vereisten | Azure Marketplace
-description: Voorwaarden voor het publiceren van een Azure-container.
+title: Azure-containers bieden vereisten | Azure Marketplace
+description: Vereisten voor het publiceren van een Azure-container.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2a5d82af609ab5eafbbc29dc95b8b6e4c8aa32df
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270125"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146239"
 ---
 # <a name="container-publishing-prerequisites"></a>Vereisten voor het publiceren van containers
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure-container aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een Azure-container aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) om uw gemigreerde aanbiedingen te beheren.
 
-In dit artikel worden de voorwaarden beschreven voor het publiceren van een containeraanbieding op de Azure Marketplace.  Als u dit nog niet hebt gedaan, moet u de [Publicatiegids voor aanbiedingen voor containers](../../marketplace-containers.md)bekijken.
+In dit artikel worden de vereisten beschreven voor het publiceren van een container aanbod op de Azure Marketplace.  Als u dit nog niet hebt gedaan, raadpleegt u de [hand leiding](../../marketplace-containers.md)voor het maken van containers.
 
-## <a name="publishing-prerequisites"></a>Publicatievereisten
+## <a name="publishing-prerequisites"></a>Vereisten voor publicatie
 
-Als u een nieuwe containerafbeelding wilt publiceren, moet u aan de volgende voorwaarden voldoen:
+Als u een nieuwe container installatie kopie wilt publiceren, moet u aan de volgende vereisten voldoen:
 
-- Toegang tot de Cloud Partner Portal. Zie publicatiegids voor Azure Marketplace en AppSource voor meer informatie.
-- Overeenkomst met de Azure Marketplace-voorwaarden
-- Host uw containertechnische asset in een Azure Container Registry.
-- Laat uw containermetadata klaar staan voor gebruik. Bijvoorbeeld de volgende niet-limitatieve lijst:
+- Toegang tot de Cloud Partner-portal. Zie de publicatie handleiding voor Azure Marketplace en AppSource voor meer informatie.
+- Overeenkomst met de Azure Marketplace-voor waarden
+- Host uw technische Asset voor containers in een Azure Container Registry.
+- Laat de meta gegevens van de container klaar voor gebruik. Bijvoorbeeld de volgende niet-limitatieve lijst:
   - Een titel
   - Een beschrijving (in HTML-indeling)
-  - Een logoafbeelding (in PNG-formaat) en in deze vaste afbeeldingsformaten: 40x40 px, 90x90 px, 115x 115 px en 255x115 px.
-- Een *gebruiksvoorwaarden* en een *verklaring van het privacybeleid*
-- Documentatie van containeroplossingen
+  - Een logo afbeelding (in PNG-indeling) en in de volgende vaste afbeeldings grootten: 40x40 px, 90x90 px, 115x 115 PX en 255x115 px.
+- *Gebruiks voorwaarden* en *privacyverklaringen*
+- Documentatie voor container oplossingen
 - Contactpersonen voor ondersteuning
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, moet u [uw technische activa voor de container voorbereiden](./cpp-create-technical-assets.md) voordat u uw [containeraanbieding maakt.](./cpp-create-offer.md)  
+Als u dit nog niet hebt gedaan, moet u [de technische activa van de container voorbereiden](./cpp-create-technical-assets.md) voordat u [uw container aanbod maakt](./cpp-create-offer.md).  

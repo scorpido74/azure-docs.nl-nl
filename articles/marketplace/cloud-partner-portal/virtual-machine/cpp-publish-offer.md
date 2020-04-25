@@ -1,43 +1,43 @@
 ---
-title: Een virtuele machineaanbieding publiceren in de Azure Marketplace
-description: Bevat de stappen die nodig zijn om een bestaande virtuele machineaanbieding op de Azure Marketplace te publiceren.
+title: Een aanbieding voor een virtuele machine in azure Marketplace publiceren
+description: Een lijst met de stappen die nodig zijn voor het publiceren van een bestaande virtuele-machine aanbieding op de Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
-ms.openlocfilehash: bb875a5c4ab1b898b64fe22140414e5d5b7830b8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f66ce0c15e976898d5022bf5705a82fe0969ec07
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273780"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147658"
 ---
-# <a name="publish-a-virtual-machine-offer"></a>Een virtuele machineaanbieding publiceren
+# <a name="publish-a-virtual-machine-offer"></a>Een aanbieding voor een virtuele machine publiceren
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Virtual Machine-aanbieding maken](https://aka.ms/CreateAzureVMoffer) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een Azure virtual machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) om uw gemigreerde aanbiedingen te beheren.
 
- De laatste stap, nadat u de aanbieding in de portal hebt gedefinieerd en de bijbehorende technische activa hebt gemaakt, is het indienen van de aanbieding voor publicatie. In het volgende diagram worden de belangrijkste stappen in het publicatieproces weergegeven om "live te gaan":
+ De laatste stap, nadat u de aanbieding in de portal hebt gedefinieerd en de gekoppelde technische activa hebt gemaakt, is het aanbieden van de aanbieding voor publicatie. In het volgende diagram ziet u de belangrijkste stappen in het publicatie proces voor ' Live go ':
 
-![Publicatiestappen voor virtuele machineaanbieding](./media/publishvm_013.png)
+![Publicatie stappen voor de aanbieding van de virtuele machine](./media/publishvm_013.png)
 
-In de volgende tabel worden deze stappen beschreven en wordt een maximale tijdschatting gegeven voor de voltooiing ervan:
+In de volgende tabel worden deze stappen beschreven en wordt een maximale tijd schatting voor het volt ooien van het probleem geboden:
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Publicatiestap**           | **Tijd**    | **Beschrijving**                                                            |
+|  **Publicatie stap**           | **Tegelijk**    | **Beschrijving**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Vereisten valideren         | 15 min   | Aanbiedingsinformatie en aanbiedingsinstellingen worden gevalideerd.                        |
-| Validatie van teststations (optioneel) | 2 uur | Als u hebt geselecteerd om Testdrive in te schakelen, valideert Microsoft de configuratie, de implementatie ervan en de replicatie ervan via de geselecteerde regio's. |
-| Certificering                  | 3 dagen | De aanbieding wordt geanalyseerd door het Azure Certification Team. Met deze stap worden scans uitgevoerd op virussen, malware, naleving van de veiligheid en beveiligingsproblemen. Er wordt feedback gegeven als er een probleem wordt gevonden. |
-| Inrichten                   | 4 dagen   | VM-aanbod wordt gerepliceerd in marktproductiesystemen.               |
-| Registratie van verpakkingen en leadgeneratie | \<1 uur  | De technische assets van de aanbieding zijn verpakt voor gebruik door de klant en de leadsystemen zijn geconfigureerd en ingesteld. |
-|  Afmelding van uitgever             |  -        | Definitieve beoordeling en bevestiging van uitgevers voordat de aanbieding live gaat. U uw aanbieding implementeren in de geselecteerde abonnementen (in de stappen voor aanbiedingsinformatie) om te controleren of deze aan al uw vereisten voldoet.  |
-| Inrichten                   | 4 dagen | Het afgeronde VM-aanbod wordt gerepliceerd in marktproductiesystemen en -regio's. | 
-| Live                           | 4 dagen | VM-aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld aan het publiek. |
+| Vereisten valideren         | 15 minuten   | De aanbiedings gegevens en aanbiedings instellingen worden gevalideerd.                        |
+| Validatie van test station (optioneel) | 2 uur | Als u ervoor hebt gekozen om test station in te scha kelen, valideert micro soft de configuratie van het test station, de implementatie ervan en de replicatie via de geselecteerde regio's. |
+| Certificering                  | 3 dagen | De aanbieding wordt geanalyseerd door het Azure-certificerings team. Met deze stap worden er scans uitgevoerd op virussen, malware, veiligheid en beveiligings problemen. Feedback wordt gegeven als er een probleem is gevonden. |
+| Inrichten                   | vier dagen   | De aanbieding van de virtuele machine wordt gerepliceerd in Marketplace-productie systemen.               |
+| Registratie van verpakkingen en leads genereren | \<1 uur  | De technische activa van de aanbieding zijn verpakt voor het gebruik van klanten en de lead systemen worden geconfigureerd en ingesteld. |
+|  Publisher-aftekening             |  -        | De uiteindelijke controle en bevestiging van de uitgever voordat de aanbieding live gaat. U kunt uw aanbieding in de geselecteerde abonnementen implementeren (in de stappen voor de aanbiedings informatie) om te controleren of deze voldoet aan uw vereisten.  |
+| Inrichten                   | vier dagen | De voltooide VM-aanbieding wordt gerepliceerd in Marketplace-productie systemen en-regio's. | 
+| Live                           | vier dagen | De VM-aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld voor het publiek. |
 |  |  |
 
-Geef maximaal 16 dagen de tijd om dit proces te voltooien.  Nadat u deze publicatiestappen hebt doorlopen, wordt uw VM-aanbieding weergegeven in de [Microsoft Azure Marketplace.](https://azuremarketplace.microsoft.com/marketplace/) 
+Maxi maal 16 dagen toestaan dat dit proces is voltooid.  Nadat u deze publicatie stappen hebt door lopen, wordt uw VM-aanbieding weer gegeven in de [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
 

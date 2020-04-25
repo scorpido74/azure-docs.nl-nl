@@ -1,7 +1,7 @@
 ---
-title: Gegevens in Azure Machine Learning
+title: Toegang tot gegevens in de Cloud beveiligen
 titleSuffix: Azure Machine Learning
-description: Ontdek hoe Azure Machine Learning veilig verbinding maakt met uw gegevens en die gegevens gebruikt voor machine learning-taken.
+description: Meer informatie over hoe u veilig verbinding maakt met uw gegevens vanaf Azure Machine Learning en hoe u gegevens sets en data stores gebruikt voor ML-taken. Data stores kunnen gegevens van een Azure-Blob opslaan, Azure Data Lake gen 1 & 2, SQL DB, Databricks,...
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/20/2020
-ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128496"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144471"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Toegang tot gegevens in Azure Machine Learning
+# <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
-Azure Machine Learning maakt het eenvoudig om verbinding te maken met uw gegevens in de cloud.  Het biedt een abstractielaag over de onderliggende opslagservice, zodat u veilig toegang hebt tot uw gegevens en deze gebruiken zonder dat u code hoeft te schrijven die specifiek is voor uw opslagtype. Azure Machine Learning biedt ook de volgende gegevensmogelijkheden:
+Met Azure Machine Learning kunt u eenvoudig verbinding maken met uw gegevens in de Cloud.  Het biedt een abstracte laag voor de onderliggende opslag service, zodat u veilig toegang hebt tot uw gegevens en deze kunt gebruiken zonder dat u code hoeft te schrijven die specifiek zijn voor uw opslag type. Azure Machine Learning biedt ook de volgende gegevens mogelijkheden:
 
-*    Versiebeheer en tracking van gegevensafstamming
-*    Gegevensetikettering 
+*    Versie beheer en het bijhouden van gegevens afkomst
+*    Gegevens labelen 
 *    Bewaking van gegevensafwijking
-*    Interoperabiliteit met panda's en Spark DataFrames
+*    Interoperabiliteit met Panda-en Spark-DataFrames
 
-## <a name="data-workflow"></a>Gegevenswerkstroom
+## <a name="data-workflow"></a>Gegevens werk stroom
 
-Wanneer u klaar bent om de gegevens te gebruiken in uw cloudgebaseerde opslagoplossing, raden we u de volgende workflow voor gegevenslevering aan. In deze werkstroom wordt ervan uitgegaan dat u een [Azure-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) en -gegevens hebt in een cloudgebaseerde opslagservice in Azure. 
+Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag oplossing op basis van de Cloud, raden we u aan de volgende werk stroom voor het leveren van gegevens te gebruiken. In deze werk stroom wordt ervan uitgegaan dat u een [Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) en gegevens hebt in een cloud-gebaseerde opslag service in Azure. 
 
-1. Maak een [Azure Machine Learning-gegevensarchief](#datastores) om verbindingsgegevens op te slaan in uw Azure-opslag.
+1. Maak een [Azure machine learning gegevens opslag](#datastores) om verbindings gegevens op te slaan in uw Azure-opslag.
 
-2. Maak vanuit dat gegevensarchief een [Azure Machine Learning-gegevensset](#datasets) om een specifiek bestand(en) in uw onderliggende opslag aan te wijzen. 
+2. Maak vanuit dat gegevens archief een [Azure machine learning-gegevensset](#datasets) om te verwijzen naar een of meer specifieke bestanden in uw onderliggende opslag. 
 
-3. Als u die gegevensset wilt gebruiken in uw machine learning-experiment, u
-    1. Monteer het aan het rekendoel van uw experiment voor modeltraining.
+3. U kunt deze gegevensset in uw machine learning-experiment gebruiken door
+    1. Koppel deze aan het reken doel van het experiment voor model training.
 
-        **Of** 
+        **OF** 
 
-    1. Gebruik het rechtstreeks in Azure Machine Learning-oplossingen zoals geautomatiseerde ML-experimentuitvoeringen (automated machine learning), machine learning-pijplijnen of de [Azure Machine Learning-ontwerper.](concept-designer.md)
+    1. Gebruik dit rechtstreeks in Azure Machine Learning oplossingen zoals automatische machine learning (geautomatiseerd ML) experiment, machine learning pijp lijnen of de [Azure machine learning Designer](concept-designer.md).
 
-4. Maak [gegevenssetmonitors](#data-drift) voor de gegevensset van uw modeluitvoer om te detecteren op gegevensdrift. 
+4. Maak [gegevensset-monitors](#data-drift) voor uw model-uitvoer gegevensset om te detecteren voor gegevens drift. 
 
-5. Als gegevensdrift wordt gedetecteerd, werkt u de invoergegevensset bij en stelt u uw model dienovereenkomstig opnieuw in.
+5. Als er gegevens drift wordt gedetecteerd, werkt u uw invoer gegevensset bij en traint u uw model dienovereenkomstig opnieuw.
 
-Het volgende diagram geeft een visuele weergave van deze aanbevolen werkstroom.
+Het volgende diagram biedt een visuele demonstratie van deze aanbevolen werk stroom.
 
-![Data-concept-diagram](./media/concept-data/data-concept-diagram.svg)
+![Gegevens-concept diagram](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Gegevenswinkels
+## <a name="datastores"></a>Gegevens opslag
 
-Azure Machine Learning-gegevenswinkels bewaren de verbindingsgegevens veilig met uw Azure-opslag, zodat u deze niet hoeft te coderen in uw scripts. [Registreer en maak een datastore](how-to-access-data.md) om eenvoudig verbinding te maken met uw opslagaccount en toegang te krijgen tot de gegevens in uw onderliggende Azure-opslagservice. 
+Azure Machine Learning gegevens opslag Bewaar de verbindings gegevens veilig naar uw Azure-opslag, zodat u deze niet in uw scripts hoeft te coderen. [Registreer en maak een gegevens opslag](how-to-access-data.md) om eenvoudig verbinding te maken met uw opslag account en om toegang te krijgen tot de gegevens in uw onderliggende Azure Storage-service. 
 
-Ondersteunde cloudgebaseerde opslagservices in Azure die kunnen worden geregistreerd als datastores:
+Ondersteunde cloud-gebaseerde opslag Services in azure die als gegevens opslag kunnen worden geregistreerd:
 
 + Azure Blob-container
 + Azure-bestandsshare
@@ -66,53 +66,53 @@ Ondersteunde cloudgebaseerde opslagservices in Azure die kunnen worden geregistr
 
 ## <a name="datasets"></a>Gegevenssets
 
-Azure Machine Learning-gegevenssets zijn verwijzingen die verwijzen naar de gegevens in uw opslagservice. Het zijn geen kopieën van uw gegevens, dus er worden geen extra opslagkosten gemaakt. Als u wilt communiceren met uw gegevens in de opslag, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruiksobject voor machine learning-taken. Registreer de gegevensset in uw werkruimte om deze te delen en te hergebruiken in verschillende experimenten zonder complexiteit van gegevensopname.
+Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze zijn geen kopieën van uw gegevens, dus er worden geen extra opslag kosten in rekening gebracht. Als u met uw gegevens in de opslag wilt werken, [maakt u een gegevensset](how-to-create-register-datasets.md) om uw gegevens te verpakken in een verbruikt object voor machine learning taken. Registreer de gegevensset voor uw werk ruimte om deze te delen en opnieuw te gebruiken in verschillende experimenten zonder complexiteit van gegevens opname.
 
-Gegevenssets kunnen worden gemaakt op lokale bestanden, openbare url's, [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/)of Azure-opslagservices via datastores. Als u een gegevensset wilt maken uit een in-memory pandas-gegevensframe, schrijft u de gegevens naar een lokaal bestand, zoals een parket, en maakt u uw gegevensset uit dat bestand.  
+Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url's, [Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/)of Azure Storage-services via data stores. Als u een gegevensset wilt maken op basis van een in geheugen-Panda data frame, schrijft u de gegevens naar een lokaal bestand, zoals een Parquet, en maakt u uw gegevensset vanuit dat bestand.  
 
-We ondersteunen 2 soorten gegevenssets: 
-+ Een [Tabeltabeldataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in een tabelindeling door het opgegeven bestand of de lijst met bestanden te ontleden. U een TabularDataset laden in een Panda's of Spark DataFrame voor verdere manipulatie en reiniging. Zie de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference)voor een volledige lijst met gegevensindelingen waaruit u tabelsetssets maken.
+We ondersteunen twee typen gegevens sets: 
++ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
-+ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar enkele of meerdere bestanden in uw gegevensopslag of openbare URL's. U bestanden waarop FileDatasets [verwijst, downloaden of monteren](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) naar uw compute-doel.
++ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. U kunt bestanden waarnaar wordt verwezen door FileDatasets, [downloaden of koppelen](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) aan uw Compute-doel.
 
-Aanvullende gegevenssets mogelijkheden zijn te vinden in de volgende documentatie:
+Aanvullende gegevens sets kunnen worden gevonden in de volgende documentatie:
 
-+ Regellijn van de versie en de gegevensset [bijhouden.](how-to-version-track-datasets.md)
-+ [Controleer uw gegevensset](how-to-monitor-datasets.md) om te helpen bij het detecteren van gegevensdrift.    
++ [Versie en track](how-to-version-track-datasets.md) gegevensset afkomst.
++ [Bewaak uw gegevensset](how-to-monitor-datasets.md) om te helpen bij het detecteren van gegevens drift.    
 
-## <a name="work-with-your-data"></a>Werken met uw gegevens
+## <a name="work-with-your-data"></a>Werk met uw gegevens
 
-Met gegevenssets u een aantal machine learning-taken uitvoeren door naadloze integratie met Azure Machine Learning-functies. 
+Met gegevens sets kunt u een aantal machine learning taken uitvoeren via een naadloze integratie met Azure Machine Learning-functies. 
 
-+ Een [project voor het labelen van gegevens maken](#label).
-+ Train machine learning-modellen:
-     + [geautomatiseerde ML-experimenten](how-to-use-automated-ml-for-ml-models.md)
++ Een project voor het [labelen van gegevens](#label)maken.
++ Machine learning modellen trainen:
+     + [automatische ML experimenten](how-to-use-automated-ml-for-ml-models.md)
      + de [ontwerper](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [Notebooks](how-to-train-with-datasets.md)
-     + [Azure Machine Learning-pijplijnen](how-to-create-your-first-pipeline.md)
-+ Toegang tot gegevenssets voor het scoren met [batch-gevolgtrekking](how-to-use-parallel-run-step.md) in [machine learning-pijplijnen](how-to-create-your-first-pipeline.md).
-+ Stel een gegevenssetmonitor in voor [detectie van gegevensdrift.](#drift)
+     + [-](how-to-train-with-datasets.md)
+     + [Azure Machine Learning pijp lijnen](how-to-create-your-first-pipeline.md)
++ Toegang tot gegevens sets voor het afgeven van een [batch-deinterferentie](how-to-use-parallel-run-step.md) in [machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
++ Stel een monitor voor gegevensset in voor de detectie van [gegevens drift](#drift) .
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Gegevensetikettering
+## <a name="data-labeling"></a>Gegevens labelen
 
-Het labelen van grote hoeveelheden gegevens is vaak een hoofdpijn in machine learning projecten. Personen met een computervisiecomponent, zoals beeldclassificatie of objectdetectie, vereisen over het algemeen duizenden afbeeldingen en bijbehorende labels.
+Het labelen van grote hoeveel heden gegevens is vaak een hoofd in machine learning projecten. Voor degenen met een computer vision-onderdeel, zoals een afbeeldings classificatie of object detectie, zijn in het algemeen duizenden afbeeldingen en de bijbehorende labels vereist.
 
-Azure Machine Learning biedt u een centrale locatie voor het maken, beheren en bewaken van etiketteringsprojecten. Labelingprojecten helpen bij het coördineren van de gegevens, labels en teamleden, zodat u de labeltaken efficiënter beheren. Momenteel ondersteunde taken zijn beeldclassificatie, meerdere of meerdere klassen, en objectidentificatie met behulp van begrensde vakken.
+Azure Machine Learning biedt u een centrale locatie voor het maken, beheren en bewaken van label projecten. Het labelen van projecten helpt bij het coördineren van de gegevens, labels en team leden, zodat u de taken voor het label efficiënter kunt beheren. Momenteel ondersteunde taken zijn afbeeldings classificatie, ofwel meerdere labels, meerdere klassen en object-id's die gebruikmaken van begrensde vakken.
 
-Maak een [project voor het labelen van gegevens](how-to-create-labeling-projects.md)en uitvoer een gegevensset uit voor gebruik in machine learning-experimenten.
+Maak een [gegevens label project](how-to-create-labeling-projects.md)en uitvoer een gegevensset voor gebruik in machine learning experimenten.
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Gegevensdrift
+## <a name="data-drift"></a>Gegevens drift
 
-In de context van machine learning is datadrift de verandering in modelinvoergegevens die leidt tot prestatiedegradatie van het model. Het is een van de belangrijkste redenen model nauwkeurigheid degradeert na verloop van tijd, dus monitoring van gegevens drift helpt detecteren model prestaties problemen.
+In de context van machine learning is gegevens drift de wijziging in model invoer gegevens die leidt tot het model leren van prestaties. Het is een van de belangrijkste redenen om de nauw keurigheid van het model te verslechteren, waardoor gegevens drift helpt bij het detecteren van prestatie problemen van modellen.
 
-Zie het artikel [Een gegevenssetmonitor maken](how-to-monitor-datasets.md) voor meer informatie over het detecteren en waarschuwen voor gegevensdrift op nieuwe gegevens in een gegevensset.
+Zie het artikel [een gegevensset maken](how-to-monitor-datasets.md) voor meer informatie over het detecteren en waarschuwen van gegevens drift op nieuwe gegevens in een gegevensset.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-+ Maak met deze stappen een gegevensset in Azure Machine Learning-studio of met de Python [SDK.](how-to-create-register-datasets.md)
-+ Probeer voorbeelden van gegevenssetstraining uit met onze [voorbeeldnotitieblokken.](https://aka.ms/dataset-tutorial)
-+ Zie deze [zelfstudie voor gegevensdrift](https://aka.ms/datadrift-notebook)voor voorbeelden van gegevensdrift.
++ Maak een gegevensset in Azure Machine Learning Studio of met de python-SDK [met behulp van deze stappen.](how-to-create-register-datasets.md)
++ Probeer gegevensset-trainings voorbeelden uit met onze [voorbeeld notitieblokken](https://aka.ms/dataset-tutorial).
++ Zie de [zelf studie over data](https://aka.ms/datadrift-notebook)-drift voor voor beelden van gegevens opslag.

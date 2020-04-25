@@ -1,110 +1,110 @@
 ---
-title: Azure-beveiligingsbeheer - Netwerkbeveiliging
-description: Azure Security Control Network Security
+title: Beveiligings beheer van Azure-netwerk beveiliging
+description: Azure Security Control-netwerk beveiliging
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f508de35470043cc71bfc8607367f28c04440b57
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dd8ff7d6e86f8534fcb14812d4ddd6dc0b3d7039
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408302"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146953"
 ---
-# <a name="security-control-network-security"></a>Beveiligingscontrole: netwerkbeveiliging
+# <a name="security-control-network-security"></a>Beveiligings beheer: netwerk beveiliging
 
-De aanbevelingen voor netwerkbeveiliging zijn gericht op het specificeren van welke netwerkprotocollen, TCP/UDP-poorten en netwerkverbonden services toegang tot Azure-services zijn toegestaan of geweigerd.
+De aanbevelingen voor netwerk beveiliging richten zich op het opgeven van de netwerk protocollen, TCP/UDP-poorten en verbonden netwerk services zijn toegestaan of geweigerd toegang tot Azure-Services.
 
-## <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Azure-bronnen binnen virtuele netwerken beveiligen
+## <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.1 | 9.2, 9.4, 14.1, 14.2, 14.3 | Klant |
+| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Klant |
 
-Controleer of bij alle subnetimplementaties van het virtuele netwerk een netwerkbeveiligingsgroep is toegepast met netwerktoegangsbesturingselementen die specifiek zijn voor de vertrouwde poorten en bronnen van uw toepassing. Gebruik, indien beschikbaar, Private Endpoints with Private Link om uw Azure-servicebronnen te beveiligen voor uw virtuele netwerk door vnet-identiteit uit te breiden naar de service. Wanneer Privéeindpunten en Privékoppeling niet beschikbaar zijn, gebruikt u Service-eindpunten. Raadpleeg voor servicespecifieke vereisten de beveiligingsaanbeveling voor die specifieke service. 
+Zorg ervoor dat alle implementaties van Virtual Network subnet een netwerk beveiligings groep hebben die is toegepast op de vertrouwde poorten en bronnen van uw toepassing. Gebruik, indien beschikbaar, persoonlijke eind punten met persoonlijke koppeling om uw Azure-service resources te beveiligen met uw virtuele netwerk door de VNet-identiteit voor de service uit te breiden. Wanneer persoonlijke eind punten en persoonlijke koppeling niet beschikbaar zijn, gebruikt u service-eind punten. Raadpleeg voor specifieke vereisten voor de service de beveiligings aanbeveling voor die specifieke service. 
 
-Als u een specifieke use case hebt, kan ook aan de vereiste worden voldaan door Azure Firewall te implementeren.
+Als u een specifieke gebruiks voorbeeld hebt, kan aan de vereiste worden voldaan door de implementatie van Azure Firewall.
 
-- [Informatie over eindpunten van virtual network service](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Informatie over Virtual Network Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
-- [Informatie over Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Persoonlijke Azure-koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
-- [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [Een NSG maken met een beveiligingsconfiguratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 - [Azure Firewall implementeren en configureren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: De configuratie en het verkeer van virtuele netwerken, subnetten en NIC's controleren en registreren
+## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: de configuratie en het verkeer van virtuele netwerken, subnetten en Nic's bewaken en vastleggen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.2 | 9.3, 12.2, 12.8 | Klant |
+| 1.2 | 9,3, 12,2, 12,8 | Klant |
 
-Gebruik Azure Security Center en volg aanbevelingen voor netwerkbeveiliging om uw netwerkbronnen in Azure te beveiligen. Schakel NSG-stroomlogboeken in en stuur logboeken naar een opslagaccount voor verkeerscontrole. U ook NSG-stroomlogboeken naar een Log Analytics Workspace verzenden en Traffic Analytics gebruiken om inzicht te geven in de verkeersstroom in uw Azure-cloud. Enkele voordelen van Traffic Analytics zijn de mogelijkheid om netwerkactiviteiten te visualiseren en hotspots te identificeren, beveiligingsbedreigingen te identificeren, verkeersstroompatronen te begrijpen en netwerkverkeerde configuraties te lokaliseren.
+Gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om uw netwerk bronnen in azure te beveiligen. Schakel logboeken voor NSG-stroom in en verzend logboeken naar een opslag account voor verkeers controle. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-- [NSG-stroomlogboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
 - [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
 
-- [Netwerkbeveiliging van Azure Security Center begrijpen](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
 
-## <a name="13-protect-critical-web-applications"></a>1.3: Kritieke webapplicaties beschermen
+## <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.3 | 9.5 | Klant |
+| 1.3 | 9,5 | Klant |
 
-Implementeer Azure Web Application Firewall (WAF) voor kritieke webtoepassingen voor extra inspectie van binnenkomend verkeer. Diagnostische instelling voor WAF inschakelen en logboeken opnemen in een opslagaccount, gebeurtenishub of logboekanalysewerkruimte.
+Implementeer Azure Web Application firewall (WAF) voor essentiële webtoepassingen voor extra inspectie van inkomend verkeer. Schakel de diagnostische instelling voor WAF-en opname Logboeken in een opslag account, Event hub of Log Analytics werk ruimte in.
 
 - [Azure WAF implementeren](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
-## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Communicatie met bekende kwaadaardige IP-adressen weigeren
+## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.4 | 12.3 | Klant |
+| 1.4 | 12,3 | Klant |
 
-DDoS-standaardbeveiliging inschakelen op uw Azure Virtual Networks om te beschermen tegen DDoS-aanvallen. Gebruik Azure Security Center Integrated Threat Intelligence om communicatie met bekende kwaadaardige IP-adressen te weigeren.
+Schakel DDoS Standard Protection in op uw virtuele Azure-netwerken om tegen DDoS-aanvallen te beschermen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende schadelijke IP-adressen te weigeren.
 
-Implementeer Azure Firewall op elk van de netwerkgrenzen van de organisatie met Threat Intelligence ingeschakeld en geconfigureerd om te 'Waarschuwen en weigeren' voor kwaadaardig netwerkverkeer.
+Implementeer Azure Firewall op elke netwerk grenzen van de organisatie met behulp van bedreigings informatie en geconfigureerd voor ' waarschuwen en weigeren ' voor schadelijk netwerk verkeer.
 
-Gebruik Azure Security Center Just In Time Network-toegang om NSG's te configureren om de blootstelling van eindpunten tot goedgekeurde IP-adressen gedurende een beperkte periode te beperken.
+Gebruik Azure Security Center just-in-time-netwerk toegang om Nsg's te configureren om de bloot stelling van eind punten te beperken tot goedgekeurde IP-adressen gedurende een beperkte periode.
 
-Gebruik Azure Security Center Adaptive Network Hardening om NSG-configuraties aan te bevelen die poorten en bron-IP's beperken op basis van werkelijke verkeers- en bedreigingsinformatie.
+Gebruik Azure Security Center adaptieve netwerk beveiliging om NSG-configuraties aan te bevelen die poorten en bron-Ip's beperken op basis van daad werkelijk verkeer en bedreigings informatie.
 
 - [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-- [Informatie over azure security center integrated threat intelligence](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
 
-- [Inzicht in Azure Security Center Adaptive Network Hardening](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
-- [Informatie over Azure Security Center Just In Time Network Access Control](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 
-## <a name="15-record-network-packets"></a>1.5: Netwerkpakketten opnemen
+## <a name="15-record-network-packets"></a>1,5: netwerk pakketten opnemen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.5 | 12.5 | Klant |
+| 1.5 | 12,5 | Klant |
 
-Schakel Network Watcher packet capture in om afwijkende activiteiten te onderzoeken.
+Schakel Network Watcher pakket opname in om afwijkende activiteiten te onderzoeken.
 
-- [Zo schakel je Network Watcher in](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
-## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Netwerkgebaseerde inbraakdetectie-/inbraakpreventiesystemen (IDS/IPS) implementeren
+## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.6 | 12.6, 12.7 | Klant |
+| 1.6 | 12,6, 12,7 | Klant |
 
-Selecteer een aanbieding uit de Azure Marketplace die IDS/IPS-functionaliteit ondersteunt met payload-inspectiemogelijkheden.  Als inbraakdetectie en/of preventie op basis van payload-inspectie geen vereiste is, kan Azure Firewall met Threat Intelligence worden gebruikt. Azure Firewall Threat intelligence-gebaseerde filtering kan verkeer van en naar bekende kwaadaardige IP-adressen en domeinen waarschuwen en weigeren. De IP-adressen en domeinen zijn afkomstig uit de Microsoft Threat Intelligence-feed.
+Selecteer een aanbieding op de Azure Marketplace die ondersteuning biedt voor ID'S/IP-adressen met Payload-inspectie mogelijkheden.  Als inbraak detectie en/of preventie op basis van Payload-inspectie geen vereiste is, kan Azure Firewall met bedreigings informatie worden gebruikt. Azure Firewall op bedreigingen gebaseerd filteren kan verkeer van en naar bekende schadelijke IP-adressen en domeinen Signa lering en weigeren. De IP-adressen en domeinen zijn afkomstig van de micro soft Threat Intelligence-feed.
 
-Implementeer de firewalloplossing van uw keuze op elk van de netwerkgrenzen van uw organisatie om kwaadaardig verkeer te detecteren en/of te ontkennen.
+Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen van uw organisatie om schadelijk verkeer te detecteren en/of te weigeren.
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -112,80 +112,80 @@ Implementeer de firewalloplossing van uw keuze op elk van de netwerkgrenzen van 
 
 - [Waarschuwingen configureren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
 
-## <a name="17-manage-traffic-to-web-applications"></a>1.7: Verkeer naar webtoepassingen beheren
+## <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.7 | 12.9, 12.10 | Klant |
+| 1.7 | 12,9, 12,10 | Klant |
 
-Azure Application Gateway voor webtoepassingen implementeren met HTTPS/SSL ingeschakeld voor vertrouwde certificaten.
+Implementeer Azure-toepassing gateway voor webtoepassingen met HTTPS/TLS ingeschakeld voor vertrouwde certificaten.
 
 - [Application Gateway implementeren](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 
-- [Toepassingsgateway configureren om HTTPS te gebruiken](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [Application Gateway configureren voor het gebruik van HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
 
-- [Inzicht in layer 7 load balancing met Azure webapplication gateways](https://docs.microsoft.com/azure/application-gateway/overview)
+- [De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen](https://docs.microsoft.com/azure/application-gateway/overview)
 
-## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimaliseer de complexiteit en administratieve overhead van netwerkbeveiligingsregels
+## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 1.8 | 1.5 | Klant |
 
-Gebruik Virtual Network Service Tags om netwerktoegangsbesturingselementen te definiëren in netwerkbeveiligingsgroepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld ApiManagement) op te geven in het juiste bron- of bestemmingsveld van een regel, u het verkeer voor de desbetreffende service toestaan of weigeren. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd.
+Gebruik Virtual Network Service Tags om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-U ook toepassingsbeveiligingsgroepen gebruiken om complexe beveiligingsconfiguratie te vereenvoudigen. Met behulp van toepassingsbeveiligingsgroepen kunt u netwerkbeveiliging configureren als een natuurlijk verlengstuk van de structuur van een toepassing, waarbij u virtuele machines kunt groeperen en netwerkbeveiligingsbeleid kunt definiëren op basis van die groepen.
+U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings configuratie te vereenvoudigen. Met behulp van toepassingsbeveiligingsgroepen kunt u netwerkbeveiliging configureren als een natuurlijk verlengstuk van de structuur van een toepassing, waarbij u virtuele machines kunt groeperen en netwerkbeveiligingsbeleid kunt definiëren op basis van die groepen.
 
-- [Servicetags begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Service Tags begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
-- [Toepassingsbeveiligingsgroepen begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [Toepassings beveiligings groepen begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
 
-## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Standaardbeveiligingsconfiguraties voor netwerkapparaten onderhouden
+## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.9 | 11.1 | Klant |
+| 1.9 | 11,1 | Klant |
 
-Standaardbeveiligingsconfiguraties voor netwerkresources definiëren en implementeren met Azure Policy.
+Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen met Azure Policy.
 
-U Azure Blueprints ook gebruiken om azure-implementaties op grote schaal te vereenvoudigen door belangrijke omgevingsartefacten te verpakken, zoals Azure Resources Manager-sjablonen, RBAC-besturingselementen en beleidsregels, in één blauwdrukdefinitie. U de blauwdruk toepassen op nieuwe abonnementen en besturingselement en beheer verfijnen via versiebeheer.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door belang rijke omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
 
-- [Azure-beleid configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure-beleidsvoorbeelden voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Voor beelden Azure Policy voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 
 - [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
 
-## <a name="110-document-traffic-configuration-rules"></a>1.10: Regels voor documentconfiguratie
+## <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1,10 | 11.2 | Klant |
+| 1,10 | 11,2 | Klant |
 
-Tags gebruiken voor NSGs en andere bronnen met betrekking tot netwerkbeveiliging en verkeersstroom. Voor afzonderlijke NSG-regels gebruikt u het veld 'Beschrijving' om de bedrijfsbehoefte en/of -duur (enz.) op te geven voor regels die verkeer van/naar een netwerk toestaan.
+Gebruik labels voor Nsg's en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan.
 
-Gebruik een van de ingebouwde Azure-beleidsdefinities met betrekking tot tags, zoals 'Tag en de waarde ervan vereisen' om ervoor te zorgen dat alle resources met tags worden gemaakt en om u op de hoogte te stellen van bestaande niet-gelabelde bronnen.
+Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op labelen, zoals ' vereist label en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources.
 
-U Azure PowerShell of Azure CLI gebruiken om acties op te zoeken of uit te voeren op basis van resources op basis van hun tags.
+U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [Een NSG maken met een Security Config](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Gebruik geautomatiseerde hulpprogramma's om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren
+## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.11 | 11.3 | Klant |
+| 1,11 | 11,3 | Klant |
 
-Gebruik Azure Activity Log om bronconfiguraties te bewaken en wijzigingen in uw Azure-bronnen te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
+Gebruik Azure-activiteiten logboek om resource configuraties te bewaken en wijzigingen in uw Azure-resources te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
 
-- [Azure Activity Log-gebeurtenissen weergeven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
 - [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de volgende beveiligingscontrole: [logboekregistratie en -controle](security-control-logging-monitoring.md)
+- Zie het volgende beveiligings beheer: [logboek registratie en controle](security-control-logging-monitoring.md)

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661274"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148222"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen
 
@@ -32,14 +32,14 @@ ms.locfileid: "77661274"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -101,35 +101,34 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 
 * Front-end configuratie
   * IP-adres 192.168.14.9
-* Back-end-configuratie
-  * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
 * Test poort
   * Poort 620<strong>&lt;nr&gt;</strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 36<strong>&lt;nr&gt; </strong> TCP
+  * 39<strong>&lt;nr&gt; </strong> TCP
+  * 81<strong>&lt;nr&gt; </strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>. 13 TCP
+  * 5<strong>&lt;nr&gt;</strong>. 14 TCP
+  * 5<strong>&lt;nr&gt;</strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Front-end configuratie
   * IP-adres 192.168.14.10
-* Back-end-configuratie
-  * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
 * Test poort
   * Poort 621<strong>&lt;nr&gt;</strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 33<strong>&lt;nr&gt; </strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>. 13 TCP
+  * 5<strong>&lt;nr&gt;</strong>. 14 TCP
+  * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+
+* Back-end-configuratie
+  * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
 
@@ -147,7 +146,7 @@ Bij de stappen wordt ervan uitgegaan dat u [Azure Virtual Network](https://docs.
 De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebruik van een enkele Azure NetApp Files capaciteits groep, een Premium-SKU. U kunt het beste Azure NetApp Files Premium SKU voor de werk belasting van de SAP net-Weaver op Azure.  
 4. Delegeer een subnet naar Azure NetApp-bestanden zoals beschreven in de [instructies een subnet overdragen aan Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Implementeer Azure NetApp Files volumes, gevolgd door de instructies voor het [maken van een volume voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Implementeer de volumes in het aangewezen Azure NetApp Files [subnet](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Houd er rekening mee dat de Azure NetApp Files resources en de virtuele Azure-machines zich in dezelfde Azure-Virtual Network moeten bevinden of in een Peerd Azure Virtual Network. In dit voor beeld gebruiken we twee Azure NetApp Files volumes: SAP<b>QAS</b> en transSAP. De bestands paden die zijn gekoppeld aan de bijbehorende koppel punten, zijn/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys, enzovoort.  
+5. Implementeer Azure NetApp Files volumes, gevolgd door de instructies voor het [maken van een volume voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Implementeer de volumes in het aangewezen Azure NetApp Files [subnet](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). De IP-adressen van de Azure NetApp-volumes worden automatisch toegewezen. Houd er rekening mee dat de Azure NetApp Files resources en de virtuele Azure-machines zich in dezelfde Azure-Virtual Network moeten bevinden of in een Peerd Azure Virtual Network. In dit voor beeld gebruiken we twee Azure NetApp Files volumes: SAP<b>QAS</b> en transSAP. De bestands paden die zijn gekoppeld aan de bijbehorende koppel punten, zijn/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys, enzovoort.  
 
    1. volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
    2. volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs)
@@ -159,7 +158,7 @@ De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebr
   
 In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver op SUSE-architectuur met hoge Beschik baarheid:
 
@@ -167,7 +166,7 @@ Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Az
 - Het minimale volume is 100 GiB
 - Azure NetApp Files en alle virtuele machines, waarbij Azure NetApp Files volumes worden gekoppeld, moeten zich in dezelfde Azure-Virtual Network of in gekoppelde [virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio bevinden. Azure NetApp Files toegang via VNET-peering in dezelfde regio wordt nu ondersteund. Toegang tot Azure NetApp via wereld wijde peering wordt nog niet ondersteund.
 - Het geselecteerde virtuele netwerk moet een subnet hebben, gedelegeerd aan Azure NetApp Files.
-- Azure NetApp Files biedt [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): u kunt de toegestane clients, het toegangs type (lezen & schrijven, alleen-lezen, enz.) beheren. 
+- Azure NetApp Files biedt [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): u kunt de toegestane clients, het toegangs type (lezen&schrijven, alleen-lezen, enz.) beheren. 
 - Er is nog geen zone bewust van Azure NetApp Files-functie. Momenteel wordt Azure NetApp Files-functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's. 
 - Azure NetApp Files volumes kunnen worden geïmplementeerd als NFSv3-of NFSv 4.1-volumes. Beide protocollen worden ondersteund voor de SAP Application Layer (ASCS/ERS, SAP-toepassings servers). 
 
@@ -177,7 +176,7 @@ In dit voor beeld zijn de resources hand matig geïmplementeerd via de [Azure Po
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
-Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
+Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-end-pool.
 
 1. Load balancer maken (intern, standaard):  
    1. De frontend-IP-adressen maken
@@ -188,14 +187,13 @@ Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna m
          1. Klik op OK
       1. IP-adres 192.168.14.10 voor de ASCS ERS
          * Herhaal de bovenstaande stappen onder a om een IP-adres voor de ERS te maken (bijvoorbeeld **192.168.14.10** en front- **End. QAS. ERS**)
-   1. De back-end-Pools maken
-      1. Een back-end-pool maken voor de ASCS
-         1. Open de load balancer, selecteer back-endservers en klik op toevoegen
-         1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **back-end. QAS**)
-         1. Klik op een virtuele machine toevoegen.
-         1. Selecteer een virtuele machine. 
-         1. Selecteer de virtuele machines van het (A) SCS-cluster en de bijbehorende IP-adressen.
-         1. Klik op Add.
+   1. Back-endpool maken
+      1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+      1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **back-end. QAS**)
+      1. Klik op een virtuele machine toevoegen.
+      1. Virtuele machine selecteren. 
+      1. Selecteer de virtuele machines van het (A) SCS-cluster en de bijbehorende IP-adressen.
+      1. Klik op Add.
    1. De status tests maken
       1. Poort 620**00** voor ASCS
          1. Open de load balancer, selecteer status controles en klik op toevoegen
@@ -223,14 +221,13 @@ Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna m
          1. Klik op OK
       1. IP-adres 192.168.14.10 voor de ASCS ERS
          * Herhaal de bovenstaande stappen onder a om een IP-adres voor de ERS te maken (bijvoorbeeld **192.168.14.10** en front- **End. QAS. ERS**)
-   1. De back-end-Pools maken
-      1. Een back-end-pool maken voor de ASCS
-         1. Open de load balancer, selecteer back-endservers en klik op toevoegen
-         1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **back-end. QAS**)
-         1. Klik op een virtuele machine toevoegen.
-         1. Selecteer de Beschikbaarheidsset die u eerder hebt gemaakt voor ASCS 
-         1. De virtuele machines van het (A) SCS-cluster selecteren
-         1. Klik op OK
+   1. Back-endpool maken
+      1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+      1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **back-end. QAS**)
+      1. Klik op een virtuele machine toevoegen.
+      1. Selecteer de Beschikbaarheidsset die u eerder hebt gemaakt voor ASCS 
+      1. De virtuele machines van het (A) SCS-cluster selecteren
+      1. Klik op OK
    1. De status tests maken
       1. Poort 620**00** voor ASCS
          1. Open de load balancer, selecteer status controles en klik op toevoegen
@@ -266,7 +263,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
 1. Controleer de instelling van het NFS-domein. Zorg ervoor dat het domein is geconfigureerd als standaard Azure NetApp Files domein, dat wil zeggen **`defaultv4iddomain.com`** en dat de toewijzing is ingesteld op **niemand**.  
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u het NFS-domein in `/etc/idmapd.conf` op de virtuele machine zo instelt dat deze overeenkomt met de standaard domein configuratie op Azure NetApp Files: **`defaultv4iddomain.com`** . Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de virtuele machines zijn gekoppeld, weer gegeven als `nobody`.  
+    > Zorg ervoor dat u het NFS-domein `/etc/idmapd.conf` in op de VM instelt op de standaard domein configuratie op Azure NetApp files **`defaultv4iddomain.com`**:. Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die zijn gekoppeld op de Vm's `nobody`weer gegeven als.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -278,7 +275,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A] Controleer de** `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de opdracht Mount uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
+4. **[A]** controleren `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken `nfs4_disable_idmapping` waar zich bevindt, voert u de koppeling-opdracht uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -292,7 +289,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Zie https://access.redhat.com/solutions/1749883voor meer informatie over het wijzigen van `nfs4_disable_idmapping` para meters.
+   Zie https://access.redhat.com/solutions/1749883voor meer informatie over het wijzigen `nfs4_disable_idmapping` van para meters.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
@@ -304,14 +301,14 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[A]** omzetting van hostnaam van installatie
 
-   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
+   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
+   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
 
     ```
     # IP address of cluster node 1
@@ -759,14 +756,14 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
    De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de voor-en aas, **[P]** -alleen van toepassing op pas of **[S]** -alleen van toepassing op aas.  
 
-1. **[A]** voor het instellen van de naam omzetting van de host kunt u een DNS-server gebruiken of de bestand/etc/hosts op alle knoop punten wijzigen. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
+1. **[A]** voor het instellen van de naam omzetting van de host kunt u een DNS-server gebruiken of de bestand/etc/hosts op alle knoop punten wijzigen. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:  
 
    ```
    sudo vi /etc/hosts
    ```
 
-   Voeg de volgende regels/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving.
+   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving.
 
    ```
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
@@ -892,9 +889,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo service waagent restart
    ```
 
-## <a name="install-database"></a>Data base installeren
+## <a name="install-database"></a>Database installeren
 
-In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op Azure-vm's op Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op virtuele Azure-machines in Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. De installatie van het SAP-data base-exemplaar uitvoeren
 
@@ -928,7 +925,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
 
    Werk het beveiligde archief van SAP HANA bij zodat dit verwijst naar de virtuele naam van de installatie van de SAP HANA systeem replicatie.
 
-   Voer de volgende opdracht uit om de vermeldingen weer te geven als \<sapsid > adm
+   Voer de volgende opdracht uit om de vermeldingen weer \<te geven als sapsid>adm
 
    ```
    hdbuserstore List
@@ -1092,7 +1089,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart door `sapstart`. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
+   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart `sapstart`door. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1186,7 +1183,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Als u de opdracht slechts één keer uitvoert, wordt het proces door `sapstart` opnieuw gestart. Als u deze regel matig uitvoert, wordt het proces niet opnieuw opgestart met `sapstart` en wordt de bron gestopt. Voer de volgende opdrachten uit als root om de resource status van het ERS-exemplaar na de test op te schonen.
+   Als u de opdracht slechts eenmaal uitvoert, `sapstart` wordt het proces opnieuw gestart. Als u dit vaak genoeg uitvoert, `sapstart` wordt het proces niet opnieuw gestart en wordt de bron gestopt. Voer de volgende opdrachten uit als root om de resource status van het ERS-exemplaar na de test op te schonen.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

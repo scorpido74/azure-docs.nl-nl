@@ -1,171 +1,191 @@
 ---
-title: Informatie over Azure Edge Zones - Voorbeeld
-description: Meer informatie over edge computing-aanbiedingen van Microsoft.
+title: Voor beeld van Azure Edge zone
+description: 'Meer informatie over Edge computing-aanbiedingen van micro soft: Azure Edge-zone.'
 services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410842"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146947"
 ---
-# <a name="about-azure-edge-zones---preview"></a>Informatie over Azure Edge Zones - Voorbeeld
+# <a name="about-azure-edge-zone-preview"></a>Voor beeld van Azure Edge zone
 
-Azure Edge Zones is een reeks aanbiedingen van Microsoft Azure die gegevensverwerking dicht bij de gebruiker mogelijk maakt. U VM's, containers en andere geselecteerde Azure-services implementeren in Randzones om te voldoen aan de lage latentie en hoge doorvoervereisten van toepassingen.
+Azure Edge-zone is een familie van Microsoft Azure waarmee gegevens verwerking kan worden gesloten voor de gebruiker. U kunt Vm's, containers en andere geselecteerde Azure-Services implementeren in Edge-zones om de vereisten voor de lage latentie en hoge door Voer voor de toepassingen te verhelpen.
 
-Typische use case scenario's voor Edge Zones zijn:
+Typische gebruiks scenario's voor rand zones zijn onder andere:
 
-- Real-time commando en controle in robotica
-- Real-time analytics en inferencing met Kunstmatige Intelligentie en Machine Learning
-- Machine Vision
-- Remote rendering voor mixed reality en VDI scenario's
-- Meeslepende multi-player gaming
-- Mediastreaming en contentlevering
-- Toezicht en beveiliging
+- Real-time opdracht en controle in Robotics.
+- Real-time analyse en demijnen via kunst matige intelligentie en machine learning.
+- Machine Vision.
+- Externe rendering voor Mixed Reality-en VDI-scenario's.
+- Overweldigende games voor meerdere spelers.
+- Mediastreaming en levering van inhoud.
+- Bewaking en beveiliging.
 
-Azure Edge-zones zijn er in drie afzonderlijke aanbiedingen:
+Er zijn drie typen Azure Edge-zones:
 
 - Azure Edge-zones
-- Azure Edge-zones met provider
-- Azure Private Edge-zones
+- Azure Edge-zones met een transporteur
+- Azure-zones met persoonlijke randen
 
 ## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge-zones
 
-![Randzones](./media/edge-zones-overview/edge-zones.png "Randzones")
+![Azure Edge-zones](./media/edge-zones-overview/edge-zones.png "Azure Edge-zones")
 
-Azure Edge-zones zijn kleine footprint-extensies van Azure die zijn geplaatst in populatiecentra die ver weg zijn van Azure-regio's. Azure Edge Zones ondersteunen VM's, containers en een geselecteerde set Azure-services waarmee u latentiegevoelige en doorvoerintensieve toepassingen in de buurt van eindgebruikers uitvoeren. Azure Edge-zones maken deel uit van het wereldwijde netwerk van Microsoft en bieden veilige, betrouwbare en hoge bandbreedteconnectiviteit tussen toepassingen die worden uitgevoerd in de Edge-zone dicht bij de gebruiker en de volledige set Azure-services die binnen Azure-regio's worden uitgevoerd. Azure Edge Zones zijn eigendom van en worden beheerd door Microsoft en laten u dezelfde set Azure-hulpprogramma's en portal gebruiken om services te beheren en te implementeren in de Edge-zones.
+Azure Edge-zones zijn kleinschalige uitbrei dingen van Azure in populatie Centers die ver weg zijn in azure-regio's. Azure Edge-zones ondersteunen Vm's, containers en een geselecteerde set Azure-Services die u in staat stellen om latentie gevoelige en door Voer intensieve toepassingen dicht bij eind gebruikers te laten lopen. Azure Edge-zones maken deel uit van het wereld wijde netwerk van micro soft. Ze bieden een veilige, betrouw bare verbinding met hoge band breedte tussen toepassingen die worden uitgevoerd in de zone met de rand, dicht bij de gebruiker. En ze bieden de volledige set Azure-Services die worden uitgevoerd in azure-regio's. Azure Edge-zones zijn eigendom van en worden beheerd door micro soft. U kunt dezelfde set Azure-hulpprogram ma's en dezelfde portal gebruiken voor het beheren en implementeren van services in Edge-zones.
 
-Typische use cases zijn:
+Typische gebruiks voorbeelden zijn onder andere:
 
-- Gaming en gamestreaming
-- Mediastreaming en contentlevering
-- Real-time analytics en inferencing met behulp van kunstmatige intelligentie en machine learning
-- Rendering voor mixed reality
+- Gaming en Game streaming.
+- Mediastreaming en levering van inhoud.
+- Real-time analyse en demijnen via kunst matige intelligentie en machine learning.
+- Rendering voor gemengde realiteit.
 
-Azure Edge-zones zijn beschikbaar in de volgende metro's:
+Azure Edge-zones zullen beschikbaar zijn op de volgende metro gebieden:
 
-- New York
-- Los Angeles
+- Utrecht, NY
+- Los Angeles, CA
 - Miami, FL
 
-[Neem contact op met het Edge Zones-team](https://aka.ms/EdgeZones) voor meer informatie.
+[Neem contact op met het team van de rand zone](https://aka.ms/EdgeZones) voor meer informatie.
 
-## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>Azure Edge-zones met provider
+## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>Azure Edge-zones met een transporteur
 
-![Randzones met drager](./media/edge-zones-overview/edge-carrier.png "Randzones met drager")
+![Edge-zones met transporteur](./media/edge-zones-overview/edge-carrier.png "Edge-zones met transporteur")
 
-Azure Edge-zones met provider zijn kleine footprint-extensies van Azure die in datacenters van mobiele operators in bevolkingscentra worden geplaatst. Azure Edge Zones met carrier-infrastructuur wordt één stap verwijderd van het 5G-netwerk van de mobiele provider geplaatst en biedt latentie van sub 10 milliseconde aan toepassingen van mobiele apparaten. Azure Edge Zones met carrier wordt geïmplementeerd in datacenters van mobiele operators en zijn verbonden met het wereldwijde Netwerk van Microsoft. Ze bieden veilige, betrouwbare en hoge bandbreedte connectiviteit tussen toepassingen die dicht bij de gebruiker worden uitgevoerd en de volledige set Azure-services die binnen Azure-regio's worden uitgevoerd. Ontwikkelaars kunnen dezelfde set vertrouwde tools gebruiken om services in de Edge Zones te bouwen en te implementeren.
+Azure Edge-zones met een transporteur zijn kleinschalige uitbrei dingen van Azure die in de data centers van mobiele Opera tors in de populaties centra worden geplaatst. De Azure Edge-zone met een draaggolf infrastructuur wordt één hop van het 5G-netwerk van de mobiele provider geplaatst. Deze plaatsing biedt een latentie van minder dan 10 milliseconden voor toepassingen van mobiele apparaten.
 
-Typische use cases zijn:
+Azure Edge-zones met een transporteur worden geïmplementeerd in de data centers van mobiele Opera tors en verbonden met het wereld wijde netwerk van micro soft. Ze bieden een veilige, betrouw bare verbinding met hoge band breedte tussen toepassingen die dicht bij de gebruiker worden uitgevoerd. En ze bieden de volledige set Azure-Services die worden uitgevoerd in azure-regio's. Ontwikkel aars kunnen gebruikmaken van dezelfde set bekende hulpprogram ma's voor het bouwen en implementeren van services in de Edge-zones.
 
-- Gaming en gamestreaming
-- Mediastreaming en contentlevering
-- Real-time analytics en inferencing met behulp van kunstmatige intelligentie en machine learning
-- Rendering voor mixed reality
-- Verbonden auto's
-- Telegeneeskunde
+Typische gebruiks voorbeelden zijn onder andere:
 
-Edge Zones worden aangeboden in samenwerking met de volgende operatoren:
+- Gaming en Game streaming.
+- Mediastreaming en levering van inhoud.
+- Real-time analyse en demijnen via kunst matige intelligentie en machine learning.
+- Rendering voor gemengde realiteit.
+- Verbonden auto-mobiel.
+- Tele-medicijnen.
 
-- AT&T (Atlanta, Dallas en Los Angeles)
+Rand zones worden aangeboden in samen werking met de volgende Opera tors:
 
-## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure Private Edge-zones
+- OP&T (Atlanta, Amsterdam en Los Angeles)
 
-![Private Edge-zones](./media/edge-zones-overview/private-edge.png "Private Edge-zones")
+## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure-zones met persoonlijke randen
 
-Azure Private Edge Zones zijn kleine footprint-extensies van Azure die on-premises worden geplaatst. Azure Private Edge Zones is gebaseerd op het [Azure Stack Edge-platform](https://azure.microsoft.com/products/azure-stack/edge/) en biedt toegang tot lage latentie tot computer- en opslagservices die on-premises worden geïmplementeerd. Met Private Edge Zones u ook gevirtualiseerde netwerkfuncties (VNF's) implementeren, zoals mobiele pakketkernen, routers, firewalls en SD-WAN-apparaten en toepassingen van ISVS als [door Azure beheerde toepassingen,](https://azure.microsoft.com/services/managed-applications/) samen met virtuele machines en on-premises containers. Azure Private Edge Zones wordt geleverd met een cloud-native orchestration-oplossing waarmee u de levenscyclus van Virtualized Network Functions (VNF) en toepassingen vanuit de Azure-portal beheren.
+![Zones met persoonlijke randen](./media/edge-zones-overview/private-edge.png "Zones met persoonlijke randen")
 
-Met Azure Private Edge Zones u on-premises toepassingen ontwikkelen en implementeren met dezelfde vertrouwde hulpprogramma's die worden gebruikt voor het bouwen en implementeren van toepassingen in Azure. U ook particuliere mobiele netwerken (privé-LTE, privé 5G), beveiligingsfuncties zoals firewalls uitvoeren en uw on-premises netwerken uitbreiden via meerdere branches en Azure met SD-WAN-apparaten op dezelfde Private Edge Zone-apparaten en deze beheren vanuit Azure.
+Azure-zones met persoonlijke randen zijn kleinschalige uitbrei dingen van Azure die on-premises worden geplaatst. Zone voor persoonlijke Azure-Edge is gebaseerd op het [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) -platform. Hiermee wordt toegang met lage latentie mogelijk voor computer-en opslag services die on-premises zijn geïmplementeerd. Met de zone persoonlijke ruimte kunt u ook toepassingen implementeren van Isv's en gevirtualiseerde netwerk functies (VNFs) als door [Azure beheerde toepassingen](https://azure.microsoft.com/services/managed-applications/) , samen met virtuele machines en containers on-premises. Deze VNFs kunnen mobiele pakket-kernen, routers, firewalls en SD-WAN-apparaten bevatten. De Azure-zone voor persoonlijke randen wordt geleverd met een Cloud-systeem eigen Orchestration-oplossing waarmee u de levens cyclus van VNFs en toepassingen kunt beheren vanuit de Azure Portal.
 
-Typische use cases zijn:
+Met de Azure-zone voor persoonlijke randen kunt u toepassingen op locatie ontwikkelen en implementeren met behulp van dezelfde vertrouwde hulpprogram ma's die u gebruikt voor het bouwen en implementeren van toepassingen in Azure. 
 
-- Real-time commando en controle in robotica
-- Real-time analytics en inferencing met Kunstmatige Intelligentie en Machine Learning
-- Machine Vision
-- Remote rendering voor mixed reality en VDI scenario's
-- Toezicht en beveiliging
+U kunt ook het volgende doen: 
 
-We hebben een rijk ecosysteem van VNF-leveranciers, ISV's en MSP-partners om end-to-end-oplossingen mogelijk te maken met private edge-zones. [Neem contact op met het Private Edge Zones-team](https://aka.ms/EdgeZonesPartner) voor meer informatie.
+- Voer particuliere mobiele netwerken uit (persoonlijke LTE, persoonlijke 5G).
+- Implementeer beveiligings functies, zoals firewalls.
+- Breid uw on-premises netwerken uit op meerdere vertakkingen en Azure door gebruik te maken van SD-WAN-apparaten in dezelfde zone voor persoonlijke edge-apparaten en deze te beheren vanuit Azure.
 
-## <a name="private-edge-zones---partners"></a><a name="private-edge-partners"></a>Private Edge Zones - Partners
+Typische gebruiks voorbeelden zijn onder andere:
 
-![Private Edge Zone-partners](./media/edge-zones-overview/partners.png "Private Edge Zone-partners")
+- Real-time opdracht en controle in Robotics.
+- Real-time analyse en afwijzen met kunst matige intelligentie en machine learning.
+- Machine Vision.
+- Externe rendering voor Mixed Reality-en VDI-scenario's.
+- Bewaking en beveiliging.
 
-### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>Gevirtualiseerde netwerkfuncties (VNF's)
+We hebben een uitgebreid ecosysteem van VNF leveranciers, Isv's en MSP-partners om end-to-end-oplossingen in te scha kelen die gebruikmaken van zones met persoonlijke Edge. [Neem contact op met het zone team voor persoonlijke randen](https://aka.ms/EdgeZonesPartner) voor meer informatie.
 
-#### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Gevirtualiseerde Evolved Packet Core (vEPC) voor mobiele netwerken
+### <a name="private-edge-zone-partners"></a><a name="private-edge-partners"></a>Zone partners voor persoonlijke randen
+
+![Zone partners voor persoonlijke randen](./media/edge-zones-overview/partners.png "Partners van de persoonlijke rand zones")
+
+#### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>Gevirtualiseerde netwerk functies (VNFs)
+
+##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Gevirtualiseerde vEPC (packet core) voor mobiele netwerken
 
 - [Bevestigde netwerken](https://www.affirmednetworks.com/)
-- [Druïde Software](https://www.druidsoftware.com/)
-- [Expeto Expeto](https://www.expeto.io/)
-- [Mavenir Mavenir](https://mavenir.com/)
-- [Metaswitch](https://www.metaswitch.com/)
-- [Nokia Digital Automation Cloud](https://www.dac.nokia.com/)
+- [Druid-software](https://www.druidsoftware.com/)
+- [Expeto](https://www.expeto.io/)
+- [Mavenir](https://mavenir.com/)
+- [De schakel optie](https://www.metaswitch.com/)
+- [Nokia Digital Automation-Cloud](https://www.dac.nokia.com/)
 
-#### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobiele radiopartners
+##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobiele radio partners
 
 - [Commscope Ruckus](https://support.ruckuswireless.com/)
 
-#### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN-leveranciers
+##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN-leveranciers
 
-- [NetFoundry (NetFoundry)](https://netfoundry.io/)
-- [NuageNetworks van Nokia](https://www.nuagenetworks.net/)
-- [VMware SD-WAN door Velocloud](https://www.velocloud.com/)
+- [Netgevonden](https://netfoundry.io/)
+- [Nuage netwerken van Nokia](https://www.nuagenetworks.net/)
+- [VMware SD-WAN by Velocloud](https://www.velocloud.com/)
 
-#### <a name="router-vendors"></a><a name="router-vendors"></a>Routerleveranciers
+##### <a name="router-vendors"></a><a name="router-vendors"></a>Router leveranciers
 
 - [Arista](https://www.arista.com/)
 
-[Neem contact op met het Private Edge Zones-team](https://aka.ms/EdgeZonesPartner) voor meer informatie over hoe je partner worden.
+##### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>Firewall leveranciers
 
-#### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>Firewallleveranciers
+- [Palo Alto Networks](https://www.paloaltonetworks.com/)
 
-- Palo Alto Networks
+##### <a name="managed-solutions-providers-mobile-operators-and-global-system-integrators-gsis"></a><a name="msp-mobile"></a>Providers van beheerde oplossingen: mobiele Opera tors en wereld wijde systeem integrators (GSIs)
 
-### <a name="managed-solutions-providers---mobile-operators-and-global-system-integrators"></a><a name="msp-mobile"></a>Managed Solutions Providers - Mobile Operators en Global System Integrators
-
-| Wereldwijde SI's en operators | Mobiele operatoren |
+| GSIs en Opera tors | Mobiele Opera tors |
 | --- | --- |
-| Amdocs Amdocs                       | Etisalat Etisalat             |
-| Amerikaanse Toren               | NTT Communications   |
-| De Verbinding van de eeuw                 | Proximus             |
-| Expeto Expeto                       | Rogers               |
+| Amdocs                       | Etisalat             |
+| Amerikaanse Tower               | NTT Communications   |
+| CenturyLink                  | Proximus             |
+| Expeto                       | Rogers               |
 | Federatief draadloos           | SK Telecom           |
 | Infosys                      | Telefonica           |
 | Tech Mahindra                | Telstra              |
-|        *                     | Vodafone             |
+|                              | Vodafone             |
 
-[Neem contact op met het Private Edge Zones-team](https://aka.ms/EdgeZonesPartner) voor meer informatie over hoe je partner worden.
+[Neem contact op met het zone team voor persoonlijke randen](https://aka.ms/EdgeZonesPartner) voor informatie over hoe u een partner kunt worden.
 
-## <a name="private-edge-zones---solutions"></a><a name="solutions-private-edge"></a>Private Edge Zones - Oplossingen
+### <a name="private-edge-zone-solutions"></a><a name="solutions-private-edge"></a>Zone oplossingen voor persoonlijke randen
 
-### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>Privé mobiel netwerk op privé-randzones
+#### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>Privé-netwerk in zones met persoonlijke randen
 
-![Privé mobiel netwerk op privé-randzones](./media/edge-zones-overview/mobile-networks.png "Privé mobiel netwerk op privé-randzones")
+![Privé-netwerk in zones met persoonlijke randen](./media/edge-zones-overview/mobile-networks.png "Privé-netwerk in zones met persoonlijke randen")
 
-U nu een privé mobiel netwerk implementeren in private edge-zones. Particuliere mobiele netwerken maken ultralage latentie, hoge capaciteit en een betrouwbaar en veilig draadloos netwerk mogelijk dat nodig is voor bedrijfskritieke toepassingen. Particuliere mobiele netwerken kunnen scenario's mogelijk maken, zoals command and control van geautomatiseerde geleide voertuigen (AGV) in een magazijn, real-time communicatie tussen robots in een slimme fabriek en verbeterde realty, en virtual reality edge-toepassingen.
+U kunt nu een privé mobiel netwerk implementeren in zones met persoonlijke randen. Particuliere mobiele netwerken bieden een zeer lage latentie, hoge capaciteit en het betrouw bare en veilige draadloze netwerk dat vereist is voor bedrijfskritische toepassingen. 
 
-De gevirtualiseerde evolved packet core (vEPC) netwerkfunctie vormt de hersenen van een particulier mobiel netwerk. U nu een vEPC implementeren op Private Edge Zones. Zie [vEPC ISV's](#vEPC)voor een lijst met vEPC-partners die beschikbaar zijn op private edge-zones.
+Particuliere mobiele netwerken kunnen scenario's zoals: 
+- Opdracht en controle van automatische begeleide Voer tuigen (AGVs) in de opslag plaatsen. 
+- Realtime communicatie tussen robots in Smart-fabrieken.
+- Uitgebreide realiteit-en Virtual Reality-Edge-toepassingen.
 
-Voor het implementeren van een privémobiele netwerkoplossing op Private Edge Zones zijn andere componenten nodig, zoals mobiele toegangspunten, simkaarten en andere VNF's zoals routers. Toegang tot gelicentieerd of zonder licentie spectrum is van cruciaal belang voor het opzetten van een privé mobiel netwerk. Daarnaast hebt u mogelijk hulp nodig bij RF-planning, fysieke lay-out, installatie en ondersteuning. Zie [Mobiele radiopartners](#mobile-radio)voor een lijst met partners .
+De gevirtualiseerde vEPC-netwerk functie (packet core) is het brein van een privé-mobiel netwerk. U kunt nu een vEPC implementeren in zones met persoonlijke randen. Zie [VEPC isv's](#vEPC)voor een lijst met vEPC-partners die beschikbaar zijn in zones met persoonlijke randen.
 
-Microsoft biedt een partnerecosysteem dat kan helpen bij alle aspecten van dit proces, van het plannen van het netwerk, het aanschaffen van de vereiste apparaten, het instellen van hardware tot het beheren van de configuratie vanuit Azure. Met een set gevalideerde partners die nauw geïntegreerd zijn met Microsoft, u er zeker van zijn dat de oplossing betrouwbaar en gebruiksvriendelijk zal zijn. U zich concentreren op uw kernscenario's, terwijl u vertrouwt op Microsoft en haar partners om te helpen met de rest.
+Voor het implementeren van een particuliere oplossing voor mobiele netwerken in zones met persoonlijke randen zijn andere onderdelen, zoals mobiele toegangs punten, SIM-kaarten en andere VNFs, zoals routers, vereist. Toegang tot een gelicentieerd of niet-gelicentieerd spectrum is essentieel voor het instellen van een privé mobiel netwerk. Daarnaast hebt u hulp nodig bij het RF-planning, de fysieke indeling, de installatie en ondersteuning. Zie [partners voor mobiele radio](#mobile-radio)voor een lijst met partners.
 
-### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN op private edge-zones
+Micro soft biedt een partner ecosysteem dat kan helpen bij alle aspecten van dit proces. Partners kunnen helpen bij het plannen van het netwerk, het aanschaffen van de vereiste apparaten, het instellen van hardware en het beheren van de configuratie van Azure. Een set gevalideerde partners die nauw samen met micro soft zijn geïntegreerd, ervoor te zorgen dat uw oplossing betrouwbaar en gebruiks vriendelijk is. U kunt zich richten op uw kern scenario's en micro soft en zijn partners vertrouwen om met de rest te helpen.
 
-![SD-WAN op private edge-zones](./media/edge-zones-overview/sd-wan.png "SD-WAN op private edge-zones")
+#### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN in zones met persoonlijke rand
+
+![SD-WAN in zones met persoonlijke rand](./media/edge-zones-overview/sd-wan.png "SD-WAN in zones met persoonlijke rand")
  
-Met SD-WAN as a-technologie u enterprise-grade Wide Area Networks (WAN) maken met een verhoogde bandbreedte, krachtige toegang tot cloud, serviceinserting, betrouwbaarheid, beleidsbeheer en uitgebreide zichtbaarheid van het netwerk. SD-WAN biedt naadloze branch office-connectiviteit georkestreerd van redundante centrale controllers, tegen lagere eigendomskosten.
-Met SD-WAN op Private Edge Zones u overstappen van capex-centrisch model naar een SaaS-model (Software-as-a-Service) om het IT-budget te verlagen. U uw keuze van SD-WAN-partners orchestrator of controller gebruiken om nieuwe services in te schakelen en deze onmiddellijk over het hele netwerk te verspreiden.
+Met SD-WAN kunt u Wan's (Wide Area Network) op ondernemings niveau maken met de volgende voor delen:
+
+- Grotere band breedte
+- Snelle toegang tot de Cloud
+- Service-invoeging
+- Betrouwbaarheid
+- Beleidsbeheer
+- Uitgebreide zicht baarheid van netwerken
+    
+SD-WAN biedt naadloze filiaal connectiviteit die is ingedeeld van redundante centrale controllers tegen lagere kosten voor eigendom.
+Met de zones SD-WAN in private Edge kunt u van een CAPEX model naar een SaaS-model (Software-as-a-Service) gaan om de budgetten te reduceren. U kunt uw keuze van de SD-WAN-partners, Orchestrator of controller, gebruiken om nieuwe services in te scha kelen en deze direct in het hele netwerk door te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Neem voor meer informatie contact op met de volgende teams:
 
-* [Edge Zones-team](https://aka.ms/EdgeZones)
-* [Private Edge Zones team - om partner te worden](https://aka.ms/EdgeZonesPartner)
+* [Team voor rand zone](https://aka.ms/EdgeZones)
+* [Het zone team van een persoonlijke rand om een partner te worden](https://aka.ms/EdgeZonesPartner)

@@ -1,36 +1,36 @@
 ---
 title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | Microsoft Docs
-description: Configureer hulpprogramma's voor analyse van prestaties, beschikbaarheid en gebruikersgedrag voor uw ASP.NET website, die on-premises of in Azure wordt gehost.
+description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor analyse van gebruikers gedrag voor uw ASP.NET-website, die on-premises of in azure wordt gehost.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536893"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145286"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
 Met deze procedure wordt uw ASP.NET web-app zo geconfigureerd dat telemetrie wordt verzonden naar de [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)-service. Dit werkt voor ASP.NET-apps die worden gehost op uw eigen on-premises IIS-server of in de cloud. U beschikt over grafieken en een krachtige querytaal waarmee u meer inzicht krijgt in de prestaties van uw app en hoe mensen deze gebruiken. Daarnaast ontvangt u meldingen over fouten of prestatieproblemen. Veel ontwikkelaars gebruiken deze functies graag, maar u kunt de telemetrie desgewenst uitbreiden en aanpassen.
 
-Voor de Setup zijn maar een paar klikken nodig in Visual Studio. U kunt kosten besparen door de hoeveelheid telemetrie te beperken. Met deze functionaliteit u experimenteren en debuggen, of een site met niet veel gebruikers controleren. Wanneer u besluit dat u de productiesite wilt bewaken, kunt u de limiet later eenvoudig verhogen.
+Voor de Setup zijn maar een paar klikken nodig in Visual Studio. U kunt kosten besparen door de hoeveelheid telemetrie te beperken. Met deze functie kunt u experimenteren en fouten opsporen, of een site met niet veel gebruikers bewaken. Wanneer u besluit dat u de productiesite wilt bewaken, kunt u de limiet later eenvoudig verhogen.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u Application Insights wilt toevoegen aan uw ASP.NET-website, moet u het volgende doen:
 
-- Installeer [Visual Studio 2019 voor Windows](https://www.visualstudio.com/downloads/) met de volgende workloads:
-    - ASP.NET en webontwikkeling (Schakel de optionele onderdelen niet uit)
+- Installeer [Visual Studio 2019 voor Windows](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+    - ASP.NET en Web Development (de optionele onderdelen niet uitschakelen)
     - Azure-ontwikkeling
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> Stap 1: de Application Insights-SDK toevoegen
 
 > [!IMPORTANT]
-> De screenshots in dit voorbeeld zijn gebaseerd op Visual Studio 2017 versie 15.9.9 en hoger. De ervaring om Application Insights toe te voegen varieert per versie van Visual Studio en per ASP.NET sjabloontype. Oudere versies kunnen alternatieve tekst hebben, zoals 'Application Insights configureren'.
+> De scherm afbeeldingen in dit voor beeld zijn gebaseerd op Visual Studio 2017 versie 15.9.9 en hoger. De ervaring om Application Insights toe te voegen, is afhankelijk van zowel de versie van Visual Studio als het sjabloon type ASP.NET. Oudere versies kunnen alternatieve tekst bevatten, zoals "Configure Application Insights".
 
-Klik met de rechtermuisknop op de naam van uw web-app in de Solution Explorer en kies**Telemetrie van toepassingsinzichten** **toevoegen** > 
+Klik met de rechter muisknop op de naam van uw web-app in het Solution Explorer en kies **toevoegen** > **Application Insights Telemetry**
 
 ![Schermopname van Solution Explorer waarin Application Insights is gemarkeerd](./media/asp-net/add-telemetry-new.png)
 
@@ -40,7 +40,7 @@ Klik met de rechtermuisknop op de naam van uw web-app in de Solution Explorer en
 
 Application Insights-configuratiescherm:
 
-Selecteer **Aan de slag**.
+Selecteer **aan de slag**.
 
 ![Schermopname van de pagina Uw app registreren bij Application Insights](./media/asp-net/00004-start-free.png)
 
@@ -50,7 +50,7 @@ Als u een resourcegroep of locatie wilt instellen voor het opslaan van uw gegeve
 
 ![Schermopname van de pagina Uw app registreren bij Application Insights](./media/asp-net/00005-register-ed.png)
 
- Selecteer **de** > bron van**Project Manage NuGet-pakkettenpakket:** > **nuget.org** > bevestigen dat u de nieuwste stabiele versie van de Application Insights SDK hebt.
+ Selecteer **project** > **Manage NuGet** > **packages Bron: nuget.org** > Controleer of u de laatste stabiele versie van de Application Insights SDK hebt.
 
  Er wordt telemetrie verzonden naar [Azure Portal](https://portal.azure.com), zowel tijdens de foutopsporing als na het publiceren van de app.
 > [!NOTE]
@@ -68,7 +68,7 @@ U ziet uw telemetrie in Visual Studio of in de Application Insights-webportal. Z
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>De telemetrie bekijken in Visual Studio
 
-In Visual Studio om de Application Insights-gegevens te bekijken.  Selecteer **Solution Explorer** > **Connected Services** > klik met de rechtermuisknop op **Toepassingsinzichten**en klik vervolgens op **Live telemetrie zoeken**.
+In Visual Studio om de Application Insights-gegevens te bekijken.  Selecteer **Solution Explorer** > **verbonden services** > Klik met de rechter muisknop op **Application Insights**en klik vervolgens op **Live telemetrie zoeken**.
 
 In het zoekvenster van Visual Studio Application Insights ziet u de telemetriegegevens van de toepassing die zijn gegenereerd aan de serverzijde van de app. Experimenteer met de filters en klik op een gebeurtenis voor meer details.
 
@@ -95,9 +95,9 @@ Klik in de portal op een tegel of grafiek om meer details te bekijken.
 ## <a name="step-4-publish-your-app"></a>Stap 4: uw app publiceren
 Publiceer uw app op de IIS-server of op Azure. Bekijk de livestream met metrische gegevens in [Live Metrics Stream](../../azure-monitor/app/live-stream.md) om te controleren of alles goed werkt.
 
-Uw telemetrie wordt opgebouwd in de Portal Application Insights, waar u statistieken controleren en uw telemetrie doorzoeken. U ook de krachtige [Kusto-querytaal](/azure/kusto/query/) gebruiken om het gebruik en de prestaties te analyseren of om specifieke gebeurtenissen te vinden.
+Uw telemetrie bouwt op in de Application Insights Portal, waar u metrische gegevens kunt controleren, uw telemetrie doorzoekt. U kunt ook de krachtige [Kusto-query taal](/azure/kusto/query/) gebruiken om het gebruik en de prestaties te analyseren of om specifieke gebeurtenissen te zoeken.
 
-U uw telemetrie ook blijven analyseren in [Visual Studio,](../../azure-monitor/app/visual-studio.md)met hulpmiddelen zoals diagnostisch zoeken en [trends.](../../azure-monitor/app/visual-studio-trends.md)
+U kunt ook door gaan met het analyseren van uw telemetrie in [Visual Studio](../../azure-monitor/app/visual-studio.md), met hulpprogram ma's als diagnostische zoek acties en [trends](../../azure-monitor/app/visual-studio-trends.md).
 
 > [!NOTE]
 > Als uw app zoveel telemetrie verzendt dat de[beperkingslimieten](../../azure-monitor/app/pricing.md#limits-summary) worden benaderd, worden automatisch [steekproeven](../../azure-monitor/app/sampling.md) ingeschakeld. Met steekproeven vermindert u de hoeveelheid telemetrie die vanuit uw app wordt verzonden, maar behoudt u gecorreleerde gegevens voor diagnostische doeleinden.
@@ -112,13 +112,9 @@ De Azure-resource die de telemetrie van uw app ontvangt, wordt aangeduid met een
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Upgraden naar toekomstige SDK-versies
-Als u wilt upgraden naar een [nieuwe release van de SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), opent u **NuGet-pakketbeheer** opnieuw en filtert u op geïnstalleerde pakketten. Selecteer **Microsoft.ApplicationInsights.Web**en kies **Upgrade**.
+Als u wilt upgraden naar een [nieuwe release van de SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), opent u **NuGet-pakketbeheer** opnieuw en filtert u op geïnstalleerde pakketten. Selecteer **micro soft. ApplicationInsights. Web**en kies **upgraden**.
 
 Als u aanpassingen in ApplicationInsights.config hebt aangebracht, slaat u hiervan een kopie op voordat u de upgrade uitvoert. Voeg de wijzigingen vervolgens samen in de nieuwe versie.
-
-## <a name="video"></a>Video
-
-* Externe stapsgewijze video over [het configureren van application insights met een .NET-toepassing vanaf nul.](https://www.youtube.com/watch?v=blnGAVgMAfA)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -131,7 +127,7 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 
 * **[Laadgegevens voor browser en pagina](../../azure-monitor/app/javascript.md)**: voeg een codefragment in uw webpagina's in.
 * **[Gedetailleerde bewaking van afhankelijkheid en uitzonderingen](../../azure-monitor/app/monitor-performance-live-website-now.md)**: installeer Status Monitor op uw server.
-* **[Codeer aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md)** om acties van gebruikers te tellen, te timen of te meten.
+* **[Aangepaste code gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md)** om gebruikers acties te tellen, tijd te bepalen of te meten.
 * **[Haal logboekgegevens op](../../azure-monitor/app/asp-net-trace-logs.md)**: koppel logboekgegevens aan uw telemetrie.
 
 ### <a name="analysis"></a>Analyse
@@ -143,7 +139,7 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 
 * [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md): maak tests om ervoor te zorgen dat uw site zichtbaar is op internet.
 * [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
-* [Metrische waarschuwingen:](../../azure-monitor/app/alerts.md)stel waarschuwingen in om u te waarschuwen als een statistiek een drempelwaarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
+* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
 
 ### <a name="automation"></a>Automation
 

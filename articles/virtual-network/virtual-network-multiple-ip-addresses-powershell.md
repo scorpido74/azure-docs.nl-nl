@@ -1,45 +1,42 @@
 ---
-title: Meerdere IP-adressen voor virtuele Azure-machines - PowerShell | Microsoft Documenten
-description: Meer informatie over het toewijzen van meerdere IP-adressen aan een virtuele machine met PowerShell. | Resourcebeheer
+title: Meerdere IP-adressen voor Azure virtual machines-Power shell | Microsoft Docs
+description: Meer informatie over het toewijzen van meerdere IP-adressen aan een virtuele machine met behulp van Power shell. | Resource Manager
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud
-ms.reviewer: annahar
-ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279570"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147802"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Meerdere IP-adressen toewijzen aan virtuele machines met PowerShell
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azure Resource Manager-implementatiemodel met PowerShell. Meerdere IP-adressen kunnen niet worden toegewezen aan resources die zijn gemaakt via het klassieke implementatiemodel. Lees het artikel [Implementatiemodellen begrijpen](../resource-manager-deployment-model.md) voor meer informatie over Azure-implementatiemodellen.
+In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azure Resource Manager-implementatie model met behulp van Power shell. Er kunnen geen meerdere IP-adressen worden toegewezen aan resources die zijn gemaakt via het klassieke implementatie model. Lees het artikel over [implementatie modellen begrijpen](../resource-manager-deployment-model.md) voor meer informatie over Azure-implementatie modellen.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Een virtuele machine met meerdere IP-adressen maken
 
-In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere IP-adressen, zoals beschreven in het scenario. Wijzig variabele waarden zoals vereist voor uw implementatie.
+In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele machine met meerdere IP-adressen maakt, zoals beschreven in het scenario. Wijzig de variabelen waarden zoals vereist voor uw implementatie.
 
-1. Open een PowerShell-opdrachtprompt en voltooi de resterende stappen in deze sectie binnen één PowerShell-sessie. Als PowerShell nog niet is geïnstalleerd en geconfigureerd, voert u de stappen uit in het artikel [Azure PowerShell installeren en configureren.](/powershell/azure/overview)
-2. Log in op `Connect-AzAccount` uw account met de opdracht.
-3. Vervang *myResourceGroup* en *westus* door een naam en locatie naar keuze. Maak een resourcegroep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/overview) .
+2. Meld u aan bij uw account `Connect-AzAccount` met de opdracht.
+3. Vervang *myResourceGroup* en *westus* door de naam en locatie van uw keuze. Maak een resourcegroep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
    ```powershell
    $RgName   = "MyResourceGroup"
@@ -50,7 +47,7 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
    -Location $Location
    ```
 
-4. Maak een virtueel netwerk (VNet) en subnet op dezelfde locatie als de resourcegroep:
+4. Maak een virtueel netwerk (VNet) en subnet op dezelfde locatie als de resource groep:
 
    ```powershell
 
@@ -71,7 +68,7 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-5. Maak een netwerkbeveiligingsgroep (NSG) en een regel. De NSG beveiligt de VM met inkomende en uitgaande regels. In dit geval is er een binnenkomende regel gemaakt voor poort 3389, waarmee binnenkomende verbindingen met een extern bureaublad worden toegestaan.
+5. Maak een netwerk beveiligings groep (NSG) en een regel. De NSG beveiligt de virtuele machine met behulp van binnenkomende en uitgaande regels. In dit geval is er een binnenkomende regel gemaakt voor poort 3389, waarmee binnenkomende verbindingen met een extern bureaublad worden toegestaan.
 
     ```powershell
     
@@ -95,9 +92,9 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
     -SecurityRules $NSGRule
     ```
 
-6. Definieer de primaire IP-configuratie voor de NIC. Wijzig 10.0.0.4 in een geldig adres in het subnet dat u hebt gemaakt, als u de eerder gedefinieerde waarde niet hebt gebruikt. Voordat u een statisch IP-adres toekent, wordt aanbevolen dat u eerst bevestigt dat het nog niet in gebruik is. Voer de `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`opdracht in . Als het adres beschikbaar is, retourneert de uitvoer *True*. Als deze niet beschikbaar is, *retourneert* de uitvoer False en een lijst met adressen die beschikbaar zijn. 
+6. Definieer de primaire IP-configuratie voor de NIC. Wijzig 10.0.0.4 in een geldig adres in het subnet dat u hebt gemaakt, als u de eerder gedefinieerde waarde niet hebt gebruikt. Voordat u een statisch IP-adres toewijst, is het raadzaam om eerst te bevestigen dat het nog niet in gebruik is. Voer de opdracht `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`in. Als het adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False* en een lijst met beschik bare adressen. 
 
-    Vervang in de volgende opdrachten ** \<replace-to-your-unique-name> door de unieke DNS-naam die u wilt gebruiken.** De naam moet uniek zijn voor alle openbare IP-adressen binnen een Azure-gebied. Dit is een optionele parameter. Het kan worden verwijderd als u alleen verbinding wilt maken met de VM met behulp van het openbare IP-adres.
+    **Vervang \<vervangen-door-your-unique-name> door de unieke DNS-naam die u wilt gebruiken** in de volgende opdrachten. De naam moet uniek zijn voor alle open bare IP-adressen binnen een Azure-regio. Dit is een optionele para meter. U kunt het verwijderen als u alleen verbinding wilt maken met de virtuele machine met behulp van het open bare IP-adres.
 
     ```powershell
     
@@ -119,12 +116,12 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
     -Primary
     ```
 
-    Wanneer u meerdere IP-configuraties aan een NIC toewijst, moet één configuratie worden toegewezen als *de primaire .*
+    Wanneer u meerdere IP-configuraties toewijst aan een NIC, moet één configuratie worden toegewezen als de *-Primary*.
 
     > [!NOTE]
-    > Openbare IP-adressen hebben een nominale vergoeding. Lees de pagina IP-adresprijzen voor meer informatie over de prijzen van [IP-adres.](https://azure.microsoft.com/pricing/details/ip-addresses) Er is een limiet aan het aantal openbare IP-adressen dat in een abonnement kan worden gebruikt. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
+    > Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-7. Definieer de secundaire IP-configuraties voor de NIC. U indien nodig configuraties toevoegen of verwijderen. Bij elke IP-configuratie moet een privé-IP-adres zijn toegewezen. Elke configuratie kan optioneel één openbaar IP-adres toegewezen hebben.
+7. Definieer de secundaire IP-configuraties voor de NIC. U kunt indien nodig configuraties toevoegen of verwijderen. Aan elke IP-configuratie moet een privé-IP-adres zijn toegewezen. Aan elke configuratie kan eventueel één openbaar IP-adres worden toegewezen.
 
     ```powershell
     
@@ -150,7 +147,7 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
     -PrivateIpAddress 10.0.0.6
     ```
 
-8. Maak de NIC en koppel de drie IP-configuraties eraan:
+8. Maak de NIC en koppel de drie IP-configuraties hieraan:
 
    ```powershell
    $NIC = New-AzNetworkInterface `
@@ -162,9 +159,9 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
    ```
 
    >[!NOTE]
-   >Hoewel alle configuraties in dit artikel aan één NIC zijn toegewezen, u meerdere IP-configuraties toewijzen aan elke NIC die aan de VM is gekoppeld. Lees het artikel Een vm maken met meerdere NIC's voor meer informatie over het maken van een vm [met meerdere NIC's.](../virtual-machines/windows/multiple-nics.md)
+   >Alle configuraties worden toegewezen aan één NIC in dit artikel, maar u kunt meerdere IP-configuraties toewijzen aan elke NIC die is gekoppeld aan de virtuele machine. Lees het artikel [een VM met meerdere Nic's maken](../virtual-machines/windows/multiple-nics.md) voor meer informatie over het maken van een virtuele machine met meerdere nic's.
 
-9. Maak de VM door de volgende opdrachten in te voeren:
+9. Voer de volgende opdrachten in om de virtuele machine te maken:
 
     ```powershell
     
@@ -193,14 +190,14 @@ In de volgende stappen wordt uitgelegd hoe u een voorbeeld-vm maakt met meerdere
     -VM $VmConfig
     ```
 
-10. Voeg de privé-IP-adressen toe aan het VM-besturingssysteem door de stappen voor uw besturingssysteem in het [gedeelte IP-adressen toevoegen aan een vm-besturingssysteemgedeelte](#os-config) van dit artikel in te vullen. Voeg de openbare IP-adressen niet toe aan het besturingssysteem.
+10. Voeg de privé-IP-adressen toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren. Voeg de open bare IP-adressen niet toe aan het besturings systeem.
 
-## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-adressen toevoegen aan een virtuele machine
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-adressen toevoegen aan een VM
 
-U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door de volgende stappen uit te voeren. De voorbeelden in de volgende secties gaan ervan uit dat u al een VM hebt met de drie IP-configuraties die in het [scenario](#scenario) in dit artikel zijn beschreven, maar het is niet vereist dat u dat doet.
+U kunt persoonlijke en open bare IP-adressen toevoegen aan de Azure-netwerk interface door de volgende stappen uit te voeren. In de voor beelden in de volgende secties wordt ervan uitgegaan dat u al een virtuele machine hebt met de drie IP-configuraties die zijn beschreven in het [scenario](#scenario) in dit artikel, maar dit is niet vereist.
 
-1. Open een PowerShell-opdrachtprompt en voltooi de resterende stappen in deze sectie binnen één PowerShell-sessie. Als PowerShell nog niet is geïnstalleerd en geconfigureerd, voert u de stappen uit in het artikel [Azure PowerShell installeren en configureren.](/powershell/azure/overview)
-2. Wijzig de 'waarden' van de volgende $Variables in de naam van de NIC waaraan u IP-adres wilt toevoegen en de resourcegroep en locatie waarin de NIC bestaat:
+1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/overview) .
+2. Wijzig de "waarden" van de volgende $Variables in de naam van de NIC waaraan u het IP-adres wilt toevoegen en de resource groep en de locatie waar de NIC zich bevindt:
 
    ```powershell
    $NicName  = "MyNIC"
@@ -208,7 +205,7 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    $Location = "westus"
    ```
 
-   Als u de naam van de NIC die u wilt wijzigen niet weet, voert u de volgende opdrachten in en wijzigt u vervolgens de waarden van de vorige variabelen:
+   Als u de naam van de NIC die u wilt wijzigen niet weet, voert u de volgende opdrachten in en wijzigt u de waarden van de vorige variabelen:
 
    ```powershell
    Get-AzNetworkInterface | Format-Table Name, ResourceGroupName, Location
@@ -220,53 +217,53 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. Wijzig in de volgende opdrachten *MyVNet* en *MySubnet* in de namen van het VNet en subnet waaraan de NIC is verbonden. Voer de opdrachten in om de VNet- en subnetobjecten op te halen met wie de NIC is verbonden:
+4. Wijzig in de volgende opdrachten *MyVNet* en *MySubnet* in de namen van het VNet en het subnet waarmee de NIC is verbonden. Voer de opdrachten in voor het ophalen van de VNet-en subnet-objecten waarmee de NIC is verbonden:
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
    $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
    ```
 
-   Als u de VNet- of subnetnaam niet kent waar de NIC mee is verbonden, voert u de volgende opdracht in:
+   Als u de VNet-of subnetnaam waarmee de NIC is verbonden, niet weet, voert u de volgende opdracht in:
 
    ```powershell
    $MyNIC.IpConfigurations
    ```
 
-   Zoek in de uitvoer naar tekst die lijkt op de volgende voorbeelduitvoer:
+   Zoek in de uitvoer naar tekst die vergelijkbaar is met de volgende voorbeeld uitvoer:
 
    ```
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    In deze output is *MyVnet* het VNet en *MySubnet* is het subnet waar de NIC mee verbonden is.
+    In deze uitvoer is *MyVnet* het VNet en *MySubnet* is het subnet waarmee de NIC is verbonden.
 
-5. Voer de stappen uit in een van de volgende secties, op basis van uw vereisten:
+5. Voer de stappen in een van de volgende secties uit, afhankelijk van uw vereisten:
 
    **Een privé-IP-adres toevoegen**
 
-   Als u een privé-IP-adres aan een NIC wilt toevoegen, moet u een IP-configuratie maken. Met de volgende opdracht wordt een configuratie met een statisch IP-adres van 10.0.0.7 ges. Bij het opgeven van een statisch IP-adres moet het een ongebruikt adres voor het subnet zijn. Het wordt aanbevolen dat u eerst het adres test om `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` ervoor te zorgen dat het beschikbaar is door de opdracht in te voeren. Als het IP-adres beschikbaar is, retourneert de uitvoer *True*. Als deze niet beschikbaar is, *retourneert*de uitvoer False en een lijst met adressen die beschikbaar zijn.
+   Als u een privé-IP-adres aan een NIC wilt toevoegen, moet u een IP-configuratie maken. Met de volgende opdracht maakt u een configuratie met een statisch IP-adres van 10.0.0.7. Wanneer u een statisch IP-adres opgeeft, moet dit een ongebruikt adres voor het subnet zijn. Het is raadzaam om het adres eerst te testen om er zeker van te zijn dat het `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` beschikbaar is door de opdracht in te voeren. Als het IP-adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False*en een lijst met beschik bare adressen.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
    $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
    ```
 
-   Maak zoveel configuraties als u wilt, met behulp van unieke configuratienamen en privé-IP-adressen (voor configuraties met statische IP-adressen).
+   Maak zoveel configuraties als u nodig hebt, met behulp van unieke configuratie namen en privé-IP-adressen (voor configuraties met vaste IP-adressen).
 
-   Voeg het privé-IP-adres toe aan het VM-besturingssysteem door de stappen voor uw besturingssysteem in het [gedeelte IP-adressen toevoegen aan een vm-besturingssysteemgedeelte](#os-config) van dit artikel in te vullen.
+   Voeg het privé-IP-adres toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren.
 
    **Een openbaar IP-adres toevoegen**
 
-   Een openbaar IP-adres wordt toegevoegd door een openbare IP-adresbron te koppelen aan een nieuwe IP-configuratie of een bestaande IP-configuratie. Voer de stappen uit in een van de volgende secties, zoals u dat wilt.
+   Een openbaar IP-adres wordt toegevoegd door een open bare IP-adres resource te koppelen aan een nieuwe IP-configuratie of een bestaande IP-configuratie. Voer de stappen in een van de volgende secties uit, zoals u dat nodig hebt.
 
    > [!NOTE]
-   > Openbare IP-adressen hebben een nominale vergoeding. Lees de pagina IP-adresprijzen voor meer informatie over de prijzen van [IP-adres.](https://azure.microsoft.com/pricing/details/ip-addresses) Er is een limiet aan het aantal openbare IP-adressen dat in een abonnement kan worden gebruikt. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
+   > Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
    >
 
-   **De bron voor openbare IP-adres koppelen aan een nieuwe IP-configuratie**
+   **De resource van het open bare IP-adres koppelen aan een nieuwe IP-configuratie**
 
-   Wanneer u een openbaar IP-adres toevoegt in een nieuwe IP-configuratie, moet u ook een privé-IP-adres toevoegen, omdat alle IP-configuraties een privé-IP-adres moeten hebben. U een bestaande openbare IP-adresbron toevoegen of een nieuwe bron maken. Als u een nieuwe wilt maken, voert u de volgende opdracht in:
+   Wanneer u een openbaar IP-adres toevoegt aan een nieuwe IP-configuratie, moet u ook een persoonlijk IP-adres toevoegen, omdat alle IP-configuraties een privé-IP-adres moeten hebben. U kunt een bestaande resource met een openbaar IP-adres toevoegen of een nieuwe maken. Als u een nieuw account wilt maken, voert u de volgende opdracht in:
 
    ```powershell
    $myPublicIp3 = New-AzPublicIpAddress `
@@ -276,7 +273,7 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    -AllocationMethod Static
    ```
 
-   Als u een nieuwe IP-configuratie wilt maken met een statisch privé-IP-adres en de bijbehorende ip-adresbron *myPublicIp3,* voert u de volgende opdracht in:
+   Voer de volgende opdracht in om een nieuwe IP-configuratie met een statisch privé-IP-adres en de bijbehorende open bare IP-adres bron *myPublicIp3* te maken:
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -287,9 +284,9 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    -PublicIpAddress $myPublicIp3
    ```
 
-   **De bron voor openbare IP-adres koppelen aan een bestaande IP-configuratie**
+   **De resource van het open bare IP-adres koppelen aan een bestaande IP-configuratie**
 
-   Een openbare IP-adresbron kan alleen worden gekoppeld aan een IP-configuratie die nog niet is gekoppeld. U bepalen of een IP-configuratie een gekoppeld openbaar IP-adres heeft door de volgende opdracht in te voeren:
+   Een resource met een openbaar IP-adres kan alleen worden gekoppeld aan een IP-configuratie waaraan nog geen is gekoppeld. U kunt bepalen of een IP-configuratie een bijbehorend openbaar IP-adres heeft door de volgende opdracht in te voeren:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
@@ -305,7 +302,7 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   Aangezien de kolom **PublicIpAddress** voor *IpConfig-3* leeg is, is er momenteel geen openbare IP-adresbron aan gekoppeld. U een bestaande openbare IP-adresbron toevoegen aan IpConfig-3 of de volgende opdracht invoeren om er een te maken:
+   Omdat de kolom **PublicIpAddress** voor *IpConfig-3* leeg is, is er momenteel geen open bare IP-adres resource aan gekoppeld. U kunt een bestaand openbaar IP-adres toevoegen aan IpConfig-3 of de volgende opdracht invoeren om een resource te maken:
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `
@@ -314,7 +311,7 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    -Location $Location -AllocationMethod Static
    ```
 
-   Voer de volgende opdracht in om de openbare IP-adresbron te koppelen aan de bestaande IP-configuratie met de naam *IpConfig-3:*
+   Voer de volgende opdracht in om de open bare IP-adres resource aan de bestaande IP-configuratie met de naam *IpConfig-3*te koppelen:
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `
@@ -330,12 +327,12 @@ U privé- en openbare IP-adressen toevoegen aan de Azure-netwerkinterface door d
    Set-AzNetworkInterface -NetworkInterface $MyNIC
    ```
 
-7. Bekijk de privé-IP-adressen en de openbare IP-adresbronnen die aan de NIC zijn toegewezen door de volgende opdracht in te voeren:
+7. Bekijk de privé-IP-adressen en de open bare IP-adres resources die zijn toegewezen aan de NIC door de volgende opdracht in te voeren:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-8. Voeg het privé-IP-adres toe aan het VM-besturingssysteem door de stappen voor uw besturingssysteem in het [gedeelte IP-adressen toevoegen aan een vm-besturingssysteemgedeelte](#os-config) van dit artikel in te vullen. Voeg het openbare IP-adres niet toe aan het besturingssysteem.
+8. Voeg het privé-IP-adres toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren. Voeg het open bare IP-adres niet toe aan het besturings systeem.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

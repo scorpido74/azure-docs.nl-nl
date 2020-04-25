@@ -3,15 +3,16 @@ title: Verplaats Azure open bare IP naar een andere Azure-regio met behulp van d
 description: Gebruik Azure Resource Manager sjabloon om de open bare Azure-IP van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
 author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641395"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147831"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verplaats Azure open bare IP naar een andere regio met behulp van de Azure Portal
 

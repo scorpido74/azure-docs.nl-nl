@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: a407461e20eefe29dd410ac6ed547b33287a5be8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097690"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145417"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Problemen met runbook oplossen
 
@@ -180,11 +180,11 @@ At line:16 char:1
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout wordt veroorzaakt door het gebruik van zowel de AzureRM-als AZ-module-cmdlets in een runbook. Deze gebeurtenis treedt op wanneer u de AZ-module importeert voordat u de AzureRM-module importeert.
+Deze fout wordt waarschijnlijk veroorzaakt door het gebruik van een onvolledige migratie van AzureRM naar AZ-modules in uw runbook. Dit kan ertoe leiden dat Azure Automation een runbook-taak start met alleen AzureRM modules en vervolgens een andere taak start met alleen AZ-modules, waardoor een sandbox vastloopt. 
 
 ### <a name="resolution"></a>Oplossing
 
-AZ en AzureRM-cmdlets kunnen niet worden geïmporteerd en gebruikt in hetzelfde runbook. Zie [modules in azure Automation beheren](../shared-resources/modules.md)voor meer informatie over AZ-cmdlets in azure Automation.
+Het gebruik van AZ en AzureRM-cmdlets in hetzelfde runbook wordt niet aanbevolen. Zie [Migrating to AZ modules](../shared-resources/modules.md#migrating-to-az-modules)(Engelstalig) voor meer informatie over het juiste gebruik van deze modules.
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Scenario: het runbook is mislukt met de fout: een taak is geannuleerd
 
@@ -581,7 +581,7 @@ Er zijn twee manieren om deze fout op te lossen.
 * Gebruik start [-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) in plaats van de [Start-taak](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)te gebruiken om het runbook te starten.
 * Probeer het runbook uit te voeren op een Hybrid Runbook Worker.
 
-Voor meer informatie over dit gedrag en ander gedrag van Azure Automation runbooks raadpleegt u [Runbook Behavior](../automation-runbook-execution.md#runbook-behavior).
+Zie voor meer informatie over dit gedrag en ander gedrag van Azure Automation runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Scenario: Linux Hybrid Runbook Worker ontvangt een vraag om een wacht woord bij het ondertekenen van een Runbook
 
@@ -645,11 +645,11 @@ Mogelijke oorzaken voor dit probleem:
 
 #### <a name="not-using-run-as-account"></a>Geen uitvoeren als-account gebruiken
 
-Volg de stappen bij [stap 5: Voeg verificatie toe om Azure-resources te beheren](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault. 
+Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault. 
 
 #### <a name="insufficient-permissions"></a>Onvoldoende machtigingen
 
-Volg de stappen in [Key Vault machtigingen toevoegen](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) om ervoor te zorgen dat uw uitvoeren als-account voldoende machtigingen heeft voor toegang tot Key Vault. 
+[Voeg machtigingen toe aan Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) om ervoor te zorgen dat uw uitvoeren als-account voldoende machtigingen heeft voor toegang tot Key Vault. 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>Mijn probleem komt niet hierboven voor in de lijst
 
@@ -669,7 +669,7 @@ Zie [een Runbook starten vanuit een webhook](../automation-webhooks.md#parameter
 
 ### <a name="issues-using-az-modules"></a>Problemen met AZ-modules
 
-Het gebruik van AZ-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules) voor meer informatie.
+Het gebruik van een onvolledige migratie van uw runbook-modules van AzureRM naar AZ kan leiden tot storingen in de sandbox en in het runbook. Zie [modules gebruiken in uw runbooks](../automation-runbook-execution.md#using-modules-in-your-runbooks).
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Inconsistent gedrag in runbooks
 
@@ -688,10 +688,6 @@ Run as-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources 
 
 Zie [een Runbook starten vanuit een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook)voor hulp bij het door geven van para meters in webhooks.
 
-### <a name="using-az-modules"></a>Az-modules gebruiken
-
-Het gebruik van AZ-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules).
-
 ### <a name="using-self-signed-certificates"></a>Zelfondertekende certificaten gebruiken
 
 Zie [een nieuw certificaat maken](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)voor het gebruik van zelfondertekende certificaten.
@@ -702,6 +698,7 @@ De Azure-sandbox voor komt toegang tot alle out-of-process COM-servers. Zo kan e
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
+* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
 * [Een runbook starten in Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Uitvoering van runbooks in Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 

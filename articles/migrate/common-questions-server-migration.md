@@ -1,109 +1,109 @@
 ---
-title: Veelgestelde vragen over migratie van Azure Migrate Server
-description: Antwoorden op veelgestelde vragen over het gebruik van Azure Migrate Server Migration om machines te migreren.
+title: Veelgestelde vragen over de migratie van Azure Migrate server
+description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: bf33c276c721f3be16d75b964c2b223e90c2a560
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529792"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146036"
 ---
-# <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate Server: veelgestelde vragen
+# <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
-In dit artikel worden veelgestelde vragen beantwoord over het hulpprogramma Azure Migreren: Servermigratie. Als u andere vragen hebt, controleert u de volgende bronnen:
+In dit artikel vindt u antwoorden op veelgestelde vragen over de Azure Migrate: hulp programma voor server migratie. Als u andere vragen hebt, raadpleegt u deze bronnen:
 
-- [Algemene vragen](resources-faq.md) over Azure Migreren
-- Vragen over het [Azure Migrate-toestel](common-questions-appliance.md)
-- Vragen over [detectie-, beoordelings- en afhankelijkheidsvisualisatie](common-questions-discovery-assessment.md)
-- Vragen beantwoorden in het [Azure Migrate-forum](https://aka.ms/AzureMigrateForum)
+- [Algemene vragen](resources-faq.md) over Azure migrate
+- Vragen over het [Azure migrate apparaat](common-questions-appliance.md)
+- Vragen over de [visualisatie van detectie, beoordeling en afhankelijkheid](common-questions-discovery-assessment.md)
+- Beantwoorde vragen in het [Azure migrate-forum](https://aka.ms/AzureMigrateForum) ontvangen
 
-## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Welke regio's worden ondersteund voor migratie met Azure Migrate?
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Welke geografische gebieden worden ondersteund voor migratie met Azure Migrate?
 
-Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
+Bekijk de ondersteunde geographs voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
-## <a name="how-does-agentless-vmware-replication-work"></a>Hoe werkt agentless VMware-replicatie?
+## <a name="how-does-agentless-vmware-replication-work"></a>Hoe werkt VMware-replicatie zonder agent?
 
-De agentless replicatiemethode voor VMware maakt gebruik van VMware-snapshots en VMware Changed Block Tracking (CBT).
+De replicatie methode zonder agent voor VMware maakt gebruik van VMware-moment opnamen en VMware changed Block tracking (CBT).
 
 Dit is het proces:
 
-1. Wanneer u de replicatie start, wordt een eerste replicatiecyclus gepland. In de eerste cyclus wordt een momentopname van de VM gemaakt. De momentopname wordt gebruikt om de VMVM's (schijven) te repliceren. 
-2. Nadat de eerste replicatiecyclus is voltooid, worden deltareplicatiecycli periodiek gepland.
-    - Tijdens deltareplicatie wordt een momentopname gemaakt en gegevensblokken die zijn gewijzigd sinds de vorige replicatiecyclus zijn gerepliceerd.
-    - VMware CBT wordt gebruikt om blokken te bepalen die sinds de laatste cyclus zijn gewijzigd.
-    - De frequentie van de periodieke replicatiecycli wordt automatisch beheerd door Azure Migrate en is afhankelijk van het aantal andere VM's en schijven dat gelijktijdig wordt gerepliceerd vanuit hetzelfde gegevensarchief. In ideale omstandigheden komt replicatie uiteindelijk samen tot één cyclus per uur voor elke VM.
+1. Wanneer u de replicatie start, wordt een initiële replicatie cyclus gepland. In de eerste cyclus wordt een moment opname van de virtuele machine gemaakt. De moment opname wordt gebruikt om de Vm's Vmdk's (schijven) te repliceren. 
+2. Nadat de eerste replicatie cyclus is voltooid, worden de Delta replicatie cycli periodiek gepland.
+    - Tijdens de replicatie van verschillen wordt een moment opname gemaakt en gegevens blokken die zijn gewijzigd sinds de vorige replicatie cyclus worden gerepliceerd.
+    - VMware CBT wordt gebruikt om te bepalen welke blokken zijn gewijzigd sinds de laatste cyclus.
+    - De frequentie van de periodieke replicatie cycli wordt automatisch beheerd door Azure Migrate en is afhankelijk van het aantal andere Vm's en schijven die gelijktijdig worden gerepliceerd vanuit dezelfde gegevens opslag. In de ideale omstandigheden convergeert replicatie uiteindelijk tot één cyclus per uur voor elke virtuele machine.
 
-Wanneer u migreert, wordt een on-demand replicatiecyclus gepland voor de machine om de resterende gegevens vast te leggen. Als u wilt zorgen voor nul gegevensverlies en consistentie van de toepassing, u ervoor kiezen om de machine tijdens de migratie uit te schakelen.
+Wanneer u migreert, wordt een replicatie cyclus op aanvraag gepland voor de machine om eventuele resterende gegevens vast te leggen. Om ervoor te zorgen dat er geen gegevens verloren gaan en de consistentie van de toepassing is, kunt u ervoor kiezen de machine af te sluiten tijdens de migratie.
 
-## <a name="why-isnt-resynchronization-exposed"></a>Waarom wordt resynchronisatie niet blootgesteld?
+## <a name="why-isnt-resynchronization-exposed"></a>Waarom wordt de weer gegeven niet opnieuw gesynchroniseerd?
 
-Tijdens agentloze migratie wordt in elke deltacyclus het verschil tussen de huidige momentopname en de eerder gemaakte momentopname geschreven. Het is altijd het verschil tussen snapshots, het invouwen van gegevens. Als een specifieke sector *N-tijden* tussen momentopnamen wordt geschreven, hoeft alleen de laatste schrijftekst te worden overgedragen omdat we alleen geïnteresseerd zijn in de laatste synchronisatie. Het proces is anders dan op agent gebaseerde replicatie, waarbij we elke schrijfperiode bijhouden en toepassen. In dit proces is elke deltacyclus een resynchronisatie. Dus, geen resynchronisatie optie blootgesteld. Als de schijven ooit niet worden gesynchroniseerd vanwege een storing, wordt deze in de volgende cyclus opgelost. 
+Tijdens migratie zonder agents wordt in elke Delta cyclus het verschil tussen de huidige moment opname en de eerder gebruikte moment opname geschreven. Het is altijd het verschil tussen moment opnamen, het vouwen van gegevens in. Als een specifieke sector *N* keer wordt geschreven tussen moment opnamen, moet alleen de laatste schrijf bewerking worden overgedragen omdat we alleen geïnteresseerd zijn in de laatste synchronisatie. Het proces wijkt af van de replicatie op basis van een agent, waarbij we elke schrijf bijhouden en Toep assen. In dit proces is elke Delta cyclus een hersynchronisatie. De optie voor opnieuw synchroniseren wordt dus niet weer gegeven. Als de schijven ooit niet worden gesynchroniseerd vanwege een fout, wordt deze in de volgende cyclus opgelost. 
 
-## <a name="how-does-churn-rate-affect-agentless-replication"></a>Welke invloed heeft churn rate op agentless replicatie?
+## <a name="how-does-churn-rate-affect-agentless-replication"></a>Wat is de invloed van het verloop tempo op replicatie zonder agent?
 
-Omdat agentless replicatie in gegevens wordt gevouwen, is het *verlooppatroon* belangrijker dan de *churn rate*. Wanneer een bestand steeds opnieuw wordt geschreven, heeft de snelheid niet veel impact. Echter, een patroon waarin elke andere sector is geschreven veroorzaakt hoge churn in de volgende cyclus. Omdat we de hoeveelheid gegevens die we overdragen minimaliseren, laten we de gegevens zoveel mogelijk vouwen voordat we de volgende cyclus plannen.  
+Het *verloop patroon* is belang rijker dan het *verloop tempo*, omdat replicatie van zonder agents in gegevens wordt gevouwen. Wanneer een bestand opnieuw wordt geschreven, heeft de frequentie geen veel invloed meer. Een patroon waarbij elke andere sector wordt geschreven, veroorzaakt echter een hoog verloop in de volgende cyclus. Omdat we de hoeveelheid gegevens die we overdragen minimaliseert, kunnen we de gegevens zo veel mogelijk vouwen voordat we de volgende cyclus plannen.  
 
-## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Hoe vaak is een replicatiecyclus gepland?
+## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Hoe vaak is een replicatie cyclus gepland?
 
-De formule voor het plannen van de volgende replicatiecyclus is (vorige cyclustijd / 2) of een uur, welke hoger is.
+De formule voor het plannen van de volgende replicatie cyclus is (vorige cyclus tijd/2) of één uur, afhankelijk van wat hoger is.
 
-Als een VM bijvoorbeeld vier uur duurt voor een deltacyclus, wordt de volgende cyclus binnen twee uur gepland en niet in het volgende uur. Het proces is onmiddellijk na de eerste replicatie anders, wanneer de eerste deltacyclus onmiddellijk is gepland.
+Als een virtuele machine bijvoorbeeld vier uur duurt voor een Delta cyclus, wordt de volgende cyclus gepland in twee uur en niet in het volgende uur. Het proces wijkt direct na de initiële replicatie af wanneer de eerste Delta cyclus onmiddellijk wordt gepland.
 
-## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Hoe beïnvloedt agentless replicatie VMware-servers?
+## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Hoe heeft replicatie zonder agent invloed op VMware-servers?
 
-Agentless replicatie resulteert in enige prestatie-impact op VMware vCenter Server en VMware ESXi hosts. Omdat agentless replicatie snapshots gebruikt, verbruikt het IOPS op opslag, dus sommige IOPS-opslagbandbreedte is vereist. We raden u af om agentless replicatie te gebruiken als u beperkingen hebt op opslag of IPP's in uw omgeving.
+Replicatie zonder agent resulteert in een invloed op de prestaties van VMware vCenter Server en VMware ESXi hosts. Omdat replicatie zonder agent gebruik maakt van moment opnamen, verbruikt de service IOPS op opslag, zodat er een aantal IOPS-opslag bandbreedte vereist is. Het wordt niet aangeraden replicatie zonder agent te gebruiken als u beperkingen hebt voor opslag of IOPs in uw omgeving.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Kan ik gebruikmaken van agentless migratie van UEFI VM's naar Azure Gen 2?
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Kan ik zonder agent migratie van UEFI-Vm's naar Azure gen 2?
 
-Nee. Gebruik Azure Site Recovery om deze VM's te migreren naar Gen 2 Azure VM's. 
+Nee. Gebruik Azure Site Recovery om deze Vm's te migreren naar Gen 2 Azure Vm's. 
 
-## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Kan ik VM's vastmaken aan Azure Availability Zones wanneer ik migreer?
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Kan ik virtuele machines vastmaken aan Azure-beschikbaarheidszones wanneer ik migreer?
 
-Nee. Azure Availability Zones worden niet ondersteund voor Azure Migrate-migratie.
+Nee. Azure-beschikbaarheidszones worden niet ondersteund voor Azure Migrate migratie.
 
-## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Welk transportprotocol gebruikt Azure Migrate tijdens de replicatie?
+## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Welk transport protocol gebruikt Azure Migrate tijdens de replicatie?
 
-Azure Migrate maakt gebruik van het NBD-protocol (Network Block Device) met SSL-versleuteling.
+Azure Migrate maakt gebruik van het protocol voor netwerk blok apparaten (NBD) met TLS-code ring.
 
-## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Wat is de minimale vCenter Server-versie die nodig is voor migratie?
+## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Wat is de minimale vCenter Server versie die vereist is voor de migratie?
 
-U moet ten minste vCenter Server 5.5 en vSphere ESXi-hostversie 5.5 hebben.
+U moet ten minste beschikken over vCenter Server 5,5 en vSphere ESXi host versie 5,5.
 
-## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Kunnen klanten hun VM's migreren naar onbeheerde schijven?
+## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Kunnen klanten hun Vm's migreren naar niet-beheerde schijven?
 
-Nee. Azure Migrate ondersteunt migratie alleen naar beheerde schijven (Standard HDD, Premium SSD).
+Nee. Azure Migrate ondersteunt alleen migratie naar Managed disks (Standard-HDD Premium-SSD).
 
-## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hoeveel VM's kan ik in één keer repliceren met behulp van agentloze migratie?
+## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hoeveel Vm's kan ik op één keer repliceren met behulp van migratie zonder agent?
 
-Momenteel u tegelijkertijd 100 VM's per exemplaar van vCenter Server migreren. Migreren in batches van 10 VM's.
+Op dit moment kunt u 100 Vm's per exemplaar van vCenter Server tegelijk migreren. Migreer in batches van tien Vm's.
 
-## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hoe kan ik de replicatie beperken bij het gebruik van Azure Migrate appliance voor agentless VMware-replicatie?  
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hoe kan ik beperking van de replicatie in het gebruik van Azure Migrate apparaat voor VMware-replicatie zonder agent?  
 
-U gas geven met NetQosPolicy. Bijvoorbeeld:
+U kunt dit beperken met behulp van NetQosPolicy. Bijvoorbeeld:
 
-Het AppNamePrefix dat u in het NetQosPolicy wilt gebruiken, is "GatewayWindowsService.exe". U een beleid maken voor het Azure Migrate-toestel om het replicatieverkeer van het toestel te beperken door een beleid als dit te maken:
+De AppNamePrefix die in de NetQosPolicy moet worden gebruikt, is "GatewayWindowsService. exe". U kunt een beleid maken op het Azure Migrate apparaat om het replicatie verkeer van het apparaat te beperken door een beleid te maken, bijvoorbeeld:
  
-Nieuw-NetQosPolicy -Naam "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottlerateActionBitsPerSeconde 1 MB
+New-NetQosPolicy-name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1MB
 
-## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wanneer migreer ik machines als fysieke servers?
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wanneer kan ik machines migreren als fysieke servers?
 
-Het migreren van machines door ze als fysieke servers te behandelen is nuttig in een aantal scenario's:
+Computers migreren door ze te behandelen als fysieke servers is handig in een aantal scenario's:
 
 - Wanneer u on-premises fysieke servers migreert.
-- Als u VM's migreert die worden gevirtualiseerd door platforms zoals Xen, KVM.
-- Als u Hyper-V- of VMware-VM's wilt migreren, u het standaardmigratieproces niet gebruiken voor [Hyper-V-](tutorial-migrate-hyper-v.md)of [VMware-migratie.](server-migrate-overview.md) Als u bijvoorbeeld geen VMware vCenter uitvoert en alleen ESXi-hosts gebruikt.
-- VM's migreren die momenteel in privéclouds worden uitgevoerd naar Azure
-- Als u VM's die worden uitgevoerd in openbare clouds zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP), wilt migreren naar Azure.
+- Als u virtuele machines migreert die zijn gevirtualiseerd door platforms zoals xen, KVM.
+- Als u Hyper-V-of VMware-Vm's wilt migreren, als u om een of andere reden het standaard migratie proces voor [hyper-v](tutorial-migrate-hyper-v.md)of [VMware](server-migrate-overview.md) -migratie niet kunt gebruiken. Als u bijvoorbeeld niet met VMware vCenter werkt en alleen ESXi-hosts gebruikt.
+- Vm's die momenteel worden uitgevoerd in persoonlijke Clouds migreren naar Azure
+- Als u Vm's wilt migreren die worden uitgevoerd in open bare Clouds, zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP), naar Azure.
 
-## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ik heb twee (of meer) apparaten geïmplementeerd om VM's in mijn vCenter Server te ontdekken. Wanneer ik echter de VM's probeer te migreren, zie ik alleen VM's die overeenkomen met een van de apparaten.
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ik heb twee (of meer) apparaten geïmplementeerd om Vm's in mijn vCenter Server te detecteren. Als ik de Vm's echter probeer te migreren, zie ik alleen Vm's die overeenkomen met een van de apparaten.
 
-Hoewel dit een goede use case kan zijn, ondersteunen we het momenteel niet. Het implementeren van twee (of meer) apparaten om dezelfde set VM's te ontdekken, veroorzaakt een serviceprobleem waarbij vm-eigendom tussen de twee apparaten blijft schakelen. Dit is de reden waarom u VM's ziet verschijnen en verdwijnen. In dergelijke gevallen moet u één toestel verwijderen en een harde vernieuwing doen om het probleem op te lossen.
+Dit kan een goed gebruiks voorbeeld zijn, maar dit wordt momenteel niet ondersteund. Het implementeren van twee (of meer) apparaten om dezelfde set virtuele machines te detecteren, veroorzaakt een service probleem waarbij het eigendom van de virtuele machine tussen de twee apparaten kan scha kelen. Dit is de reden waarom er Vm's worden weer gegeven en weer gegeven. In dergelijke gevallen moet u één apparaat verwijderen en een harde vernieuwing doen om het probleem op te lossen.
 
-## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Heb ik VMware vCenter nodig om VMware VM's te migreren?
-Als [u VMware VM's wilt migreren](server-migrate-overview.md) met VMware-agentgebaseerde of agentloze migratie, moeten ESXi-hosts waarop VM's zich bevinden, worden beheerd door vCenter Server. Als u geen vCenterServer hebt, u VMware VM's migreren door ze te migreren als fysieke servers. [Meer informatie](migrate-support-matrix-physical-migration.md).
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Heb ik VMware vCenter nodig voor het migreren van virtuele VMware-machines?
+Als u [virtuele VMware-machines wilt migreren](server-migrate-overview.md) met behulp van een VMware-agent of een agentloze migratie, moeten ESXi-hosts waarop vm's zich bevinden, worden beheerd door vCenter Server. Als u niet beschikt over vCenter Server, kunt u virtuele VMware-machines migreren door ze te migreren als fysieke servers. [Meer informatie](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het [overzicht Azure Migreren](migrate-services-overview.md).
+Lees het [Azure migrate overzicht](migrate-services-overview.md).

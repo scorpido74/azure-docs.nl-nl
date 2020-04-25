@@ -1,34 +1,34 @@
 ---
-title: Azure Monitor-logboeken gebruiken om Azure HDInsight-clusters te controleren
-description: Meer informatie over het gebruik van Azure Monitor-logboeken om taken te controleren die in een HDInsight-cluster worden uitgevoerd.
+title: Azure Monitor Logboeken gebruiken voor het bewaken van Azure HDInsight-clusters
+description: Meer informatie over het gebruik van Azure Monitor-logboeken voor het bewaken van taken die worden uitgevoerd in een HDInsight-cluster.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 4007d18291e91ae2a72d7a99dac2cb3a8bc2877a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162783"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143855"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-logboeken gebruiken om HDInsight-clusters te bewaken
 
-Meer informatie over het inschakelen van Azure Monitor-logboeken om hadoop-clusterbewerkingen in HDInsight te controleren en hoe u een HDInsight-bewakingsoplossing toevoegt.
+Meer informatie over het inschakelen van Azure Monitor logboeken voor het bewaken van Hadoop-cluster bewerkingen in HDInsight. En het toevoegen van een HDInsight-bewakings oplossing.
 
-[Azure Monitor-logboeken](../log-analytics/log-analytics-overview.md) is een service in Azure Monitor die uw cloud- en on-premises omgevingen bewaakt om hun beschikbaarheid en prestaties te behouden. De service verzamelt gegevens afkomstig van resources in uw cloud- en on-premises omgevingen en van andere bewakingsprogramma's om analyse over meerdere resources aan te bieden.
+[Azure monitor-logboeken](../log-analytics/log-analytics-overview.md) is een Azure Monitor service die uw Cloud-en on-premises omgevingen bewaakt. De bewaking is om hun Beschik baarheid en prestaties te behouden. Hiermee worden gegevens verzameld die zijn gegenereerd door resources in uw Cloud, on-premises omgevingen en andere controle Programma's. De gegevens worden gebruikt om analyses uit te voeren in meerdere bronnen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Log Analytics-werkruimte. U deze werkruimte zien als een unieke Azure Monitor-logboekomgeving met een eigen gegevensopslagplaats, gegevensbronnen en oplossingen. Zie [Een werkruimte logboekanalyse maken](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)voor de instructies.
+* Een Log Analytics-werkruimte. U kunt deze werk ruimte zien als een unieke Azure Monitor-logboek omgeving met een eigen gegevensopslag plaats, gegevens bronnen en oplossingen. Zie [een log Analytics-werk ruimte maken](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)voor instructies.
 
-* Een Azure HDInsight-cluster. Momenteel u Azure Monitor-logboeken gebruiken met de volgende HDInsight-clustertypen:
+* Een Azure HDInsight-cluster. Op dit moment kunt u Azure Monitor-Logboeken gebruiken met de volgende HDInsight-cluster typen:
 
   * Hadoop
   * HBase
@@ -37,32 +37,32 @@ Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.mic
   * Spark
   * Storm
 
-  Zie [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor de instructies voor het maken van een HDInsight-cluster.  
+  Zie [aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor instructies over het maken van een HDInsight-cluster.  
 
-* Azure PowerShell Az-module.  Zie [Introductie van de nieuwe Azure PowerShell Az-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Zorg ervoor dat u de nieuwste versie hebt. Indien nodig, `Update-Module -Name Az`lopen .
+* Azure PowerShell AZ-module.  Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Zorg ervoor dat u de meest recente versie hebt. Voer indien nodig uit `Update-Module -Name Az`.
 
 > [!NOTE]  
-> Het wordt aanbevolen om zowel het HDInsight-cluster als de loganalytics-werkruimte in dezelfde regio te plaatsen voor betere prestaties. Azure Monitor-logboeken zijn niet in alle Azure-regio's beschikbaar.
+> Het is raadzaam om zowel het HDInsight-cluster als de Log Analytics-werk ruimte in dezelfde regio te plaatsen voor betere prestaties. Azure Monitor-logboeken zijn niet beschikbaar in alle Azure-regio's.
 
-## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Azure Monitor-logboeken inschakelen met behulp van de portal
+## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Azure Monitor logboeken inschakelen met behulp van de portal
 
-In deze sectie configureert u een bestaand HDInsight Hadoop-cluster om een Azure Log Analytics-werkruimte te gebruiken om taken, foutopsporingslogboeken, enz.
+In deze sectie configureert u een bestaand HDInsight Hadoop-cluster voor het bewaken van taken, logboeken voor fout opsporing enzovoort, het gebruik van een Azure Log Analytics-werk ruimte.
 
-1. Selecteer uw cluster in de [Azure-portal.](https://portal.azure.com/)  Zie [Clusters weergeven en weergeven](./hdinsight-administer-use-portal-linux.md#showClusters) voor de instructies. Het cluster wordt geopend in een nieuwe portalpagina.
+1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/). Het cluster wordt geopend op een nieuwe portal-pagina.
 
-1. Selecteer Azure **Monitor**onder Controle aan de linkerkant . **Monitoring**
+1. Selecteer aan de linkerkant, onder **bewaking**, de optie **Azure monitor**.
 
-1. Selecteer in de hoofdweergave onder **Azure Monitor Integration**de optie **Inschakelen**.
+1. Selecteer in de hoofd weergave onder **Azure monitor-integratie**de optie **inschakelen**.
 
-1. Selecteer **in** de vervolgkeuzelijst Een werkruimte selecteren een bestaande werkruimte Log Analytics.
+1. Selecteer een bestaande Log Analytics-werk ruimte in de vervolg keuzelijst **Selecteer een werk ruimte** .
 
-1. Selecteer **Opslaan**.  Het duurt een paar momenten om de instelling op te slaan.
+1. Selecteer **Opslaan**.  Het duurt enkele minuten om de instelling op te slaan.
 
-    ![Monitoring inschakelen voor HDInsight-clusters](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Monitoring inschakelen voor HDInsight-clusters")
+    ![Bewaking voor HDInsight-clusters inschakelen](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Bewaking voor HDInsight-clusters inschakelen")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure Monitor-logboeken inschakelen met Azure PowerShell
+## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure Monitor logboeken inschakelen met behulp van Azure PowerShell
 
-U Azure Monitor-logboeken inschakelen met de cmdlet van de Azure PowerShell [Az-module Enable-AzHDInsightMonitoring.](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring)
+U kunt Azure Monitor logboeken inschakelen met behulp van de Azure PowerShell AZ module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet.
 
 ```powershell
 # Enter user information
@@ -94,44 +94,45 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-Als u het cmdlet [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) wilt uitschakelen:
+Als u wilt uitschakelen, gebruikt u de cmdlet [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) :
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 ```
 
-## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight-clusterbeheeroplossingen installeren
+## <a name="install-hdinsight-cluster-management-solutions"></a>Beheer oplossingen voor HDInsight-clusters installeren
 
-HDInsight biedt clusterspecifieke beheeroplossingen die u toevoegen voor Azure Monitor-logboeken. [Beheeroplossingen](../log-analytics/log-analytics-add-solutions.md) voegen functionaliteit toe aan Azure Monitor-logboeken en bieden extra gegevens- en analysetools. Deze oplossingen verzamelen belangrijke prestatiestatistieken uit uw HDInsight-clusters en bieden de tools om de statistieken te doorzoeken. Deze oplossingen bieden ook visualisaties en dashboards voor de meeste clustertypen die worden ondersteund in HDInsight. Door de statistieken te gebruiken die u met de oplossing verzamelt, u aangepaste controleregels en waarschuwingen maken.
+HDInsight biedt platformspecifieke beheer oplossingen die u kunt toevoegen voor Azure Monitor-Logboeken. [Beheer oplossingen](../log-analytics/log-analytics-add-solutions.md) voegen functionaliteit toe aan Azure monitor logboeken, waardoor er aanvullende gegevens-en analyse Programma's worden geleverd. Deze oplossingen verzamelen belang rijke metrische gegevens over prestaties van uw HDInsight-clusters. En bieden de hulp middelen om de metrische gegevens te zoeken. Deze oplossingen bieden ook visualisaties en dash boards voor de meeste cluster typen die in HDInsight worden ondersteund. Door de metrische gegevens te gebruiken die u bij de oplossing verzamelt, kunt u aangepaste bewakings regels en waarschuwingen maken.
 
-Dit zijn de beschikbare HDInsight-oplossingen:
+Beschik bare HDInsight-oplossingen:
 
-* HDInsight Hadoop Monitoring
-* HDInsight HBase-monitoring
-* HDInsight Interactive Query Monitoring
-* HDInsight Kafka-monitoring
-* HDInsight Spark-monitoring
-* HDInsight Storm Monitoring
+* HDInsight Hadoop-bewaking
+* HDInsight HBase-bewaking
+* Interactieve query bewaking van HDInsight
+* HDInsight Kafka-bewaking
+* HDInsight Spark-bewaking
+* HDInsight Storm-bewaking
 
-Zie [Beheeroplossingen in Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)voor de instructies voor het installeren van een beheeroplossing. Installeer een HDInsight Hadoop Monitoring-oplossing om te experimenteren. Wanneer dit is gedaan, ziet u een **HDInsightHadoop-tegel** die wordt weergegeven onder **Samenvatting**. Selecteer de tegel **HDInsightHadoop.** De HDInsightHadoop oplossing ziet eruit als:
+Zie [beheer oplossingen in azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)voor instructies voor beheer oplossingen. Als u wilt experimenteren, installeert u een HDInsight Hadoop-bewakings oplossing. Wanneer u klaar bent, ziet u een **HDInsightHadoop** -tegel die wordt weer gegeven onder **samen vatting**. Selecteer de tegel **HDInsightHadoop** . De HDInsightHadoop-oplossing ziet er als volgt uit:
 
-![HDInsight monitoring oplossingsweergave](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+![Weer gave HDInsight-bewakings oplossing](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
-Omdat het cluster een gloednieuw cluster is, worden er geen activiteiten weergegeven in het rapport.
+Omdat het cluster een gloed nieuw cluster is, worden in het rapport geen activiteiten weer gegeven.
 
-## <a name="configuring-performance-counters"></a>Prestatiemeteritems configureren
+## <a name="configuring-performance-counters"></a>Prestatie meter items configureren
 
-Azure-monitor ondersteunt ook het verzamelen en analyseren van prestatiestatistieken voor de knooppunten in uw cluster. Zie [Linux-prestatiegegevensbronnen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)voor meer informatie over het inschakelen en configureren van deze functie.
+Azure monitor biedt ondersteuning voor het verzamelen en analyseren van prestatie gegevens voor de knoop punten in uw cluster. Zie [Linux-prestatie gegevens bronnen in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)voor meer informatie.
 
-## <a name="cluster-auditing"></a>Clustercontrole
+## <a name="cluster-auditing"></a>Cluster controle
 
-HDInsight ondersteunt clustercontrole met Azure Monitor-logboeken door de volgende typen logboeken te importeren:
+HDInsight ondersteunt cluster controle met Azure Monitor-logboeken door de volgende typen logboeken te importeren:
 
-* `log_gateway_audit_CL`- deze tabel biedt controlelogboeken van clustergatewayknooppunten die geslaagde en mislukte inlogpogingen weergeven.
-* `log_auth_CL`- deze tabel biedt SSH-logboeken met geslaagde en mislukte inlogpogingen.
-* `log_ambari_audit_CL`- deze tabel bevat controlelogboeken van Ambari.
-* `log_ranger_audti_CL`- deze tabel bevat auditlogs van Apache Ranger op ESP-clusters.
+* `log_gateway_audit_CL`-deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
+* `log_auth_CL`-deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
+* `log_ambari_audit_CL`-deze tabel bevat audit logboeken van Ambari.
+* `log_ranger_audti_CL`-deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure-monitorlogboeken voor query's om HDInsight-clusters te controleren](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Azure Monitor logboeken voor het controleren van HDInsight-clusters doorzoeken](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [De beschik baarheid van clusters bewaken met Apache Ambari en Azure Monitor logs](./hdinsight-cluster-availability.md)

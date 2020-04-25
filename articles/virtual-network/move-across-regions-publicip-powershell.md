@@ -1,73 +1,74 @@
 ---
-title: Azure Public IP verplaatsen naar een andere Azure-regio met Azure PowerShell
-description: Gebruik azure resource beheersjabloon om Azure Public IP van de ene Azure-regio naar de andere te verplaatsen met Azure PowerShell.
+title: Verplaats Azure open bare IP naar een andere Azure-regio met behulp van Azure PowerShell
+description: Gebruik Azure Resource Manager sjabloon om het open bare Azure-IP-adres van een Azure-regio naar een andere te verplaatsen met behulp van Azure PowerShell.
 author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: c55b6011381d385fed7c7b8175ff02ec9be66fdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76924705ff801ce3be6a5c76f7ae276bdbf93def
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641550"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147885"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>Azure Public IP verplaatsen naar een andere regio met Azure PowerShell
+# <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>De open bare Azure-IP naar een andere regio verplaatsen met behulp van Azure PowerShell
 
-Er zijn verschillende scenario's waarin u uw bestaande Azure Public IP's van de ene regio naar de andere wilt verplaatsen. U bijvoorbeeld een openbaar IP maken met dezelfde configuratie en sku voor het testen. U ook een openbaar IP-adres verplaatsen naar een andere regio als onderdeel van de planning voor noodherstel.
+Er zijn verschillende scenario's waarin u uw bestaande open bare Azure-Ip's wilt verplaatsen van de ene regio naar een andere. U kunt bijvoorbeeld een openbaar IP-adres maken met dezelfde configuratie en SKU voor testen. Het is ook mogelijk dat u een openbaar IP-adres naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
 
-Azure Public IP's zijn regiospecifiek en kunnen niet van de ene regio naar de andere worden verplaatst. U echter wel een Azure Resource Manager-sjabloon gebruiken om de bestaande configuratie van een openbaar IP-adres te exporteren.  U de resource vervolgens in een andere regio faseren door het openbare IP-adres naar een sjabloon te exporteren, de parameters te wijzigen die overeenkomen met het doelgebied en de sjabloon vervolgens te implementeren in de nieuwe regio.  Zie [Brongroepen exporteren naar sjablonen voor](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates) meer informatie over ResourceManager en sjablonen
+Open bare Azure-Ip's zijn regio specifiek en kunnen niet worden verplaatst van de ene regio naar de andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van een openbaar IP-adres te exporteren.  U kunt de resource vervolgens in een andere regio zetten door het open bare IP-adres naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio.  Zie [resource groepen exporteren naar sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates) voor meer informatie over Resource Manager en sjablonen
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat het Azure Public IP zich in de Azure-regio bevindt van waaruit u wilt verplaatsen.
+- Zorg ervoor dat het open bare IP-adres van Azure zich bevindt in de Azure-regio van waaruit u wilt verplaatsen.
 
-- Azure Public IP's kunnen niet tussen regio's worden verplaatst.  U moet het nieuwe openbare ip koppelen aan resources in de doelregio.
+- Open bare Azure-Ip's kunnen niet tussen regio's worden verplaatst.  U moet het nieuwe open bare IP-adres koppelen aan resources in de doel regio.
 
-- Als u een openbare IP-configuratie wilt exporteren en een sjabloon wilt implementeren om een openbaar IP-adres in een andere regio te maken, hebt u de rol Netwerkinzender of hoger nodig.
+- Als u een open bare IP-configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een openbaar IP-adres in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
    
-- Identificeer de indeling van de bronnetwerkindeling en alle bronnen die u momenteel gebruikt. Deze lay-out omvat, maar is niet beperkt tot load balancers, network security groups (NSGs) en virtuele netwerken.
+- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en virtuele netwerken.
 
-- Controleer of u met uw Azure-abonnement openbare IP's maken in het doelgebied dat wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
+- Controleer of u met uw Azure-abonnement open bare Ip's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende middelen heeft om de toevoeging van openbare IP's voor dit proces te ondersteunen.  Zie [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van open bare IP-adressen voor dit proces.  Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
-In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden op de configuratieverplaatsing met behulp van een Resource Manager-sjabloon en de openbare IP-configuratie naar het doelgebied verplaatsen met Azure PowerShell.
+De volgende stappen laten zien hoe u de open bare IP voorbereidt voor de configuratie verplaatsing met behulp van een resource manager-sjabloon en de open bare IP-configuratie verplaatst naar de doel regio met behulp van Azure PowerShell.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>De sjabloon exporteren en implementeren vanuit een script
 
-1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de aanwijzingen op het scherm:
+1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de instructies op het scherm:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Verkrijg de resource-ID van het openbare IP dat u naar het doelgebied wilt verplaatsen en plaats deze in een variabele met [Get-AzPublicIPAddress:](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)
+2. Haal de resource-ID op van het open bare IP-adres dat u wilt verplaatsen naar de doel regio en plaats deze in een variabele met [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exporteer het virtuele bronnetwerk naar een .json-bestand naar de map waar u de opdracht [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)uitvoert:
+3. Exporteer het virtuele bron netwerk naar een. JSON-bestand naar de map waar u de opdracht [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)uitvoert:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Het gedownloade bestand wordt vernoemd naar de resourcegroep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd vanuit de opdracht met ** \<de naam resourcegroep>.json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name>. json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
    ```
 
-5. Als u de parameter van de openbare IP-naam wilt bewerken, wijzigt u de standaardwaarde van de **eigenschapstandaardWaarde** van de bronnaam openbare IP-naam in de naam van uw doel-openbaar IP-adres, moet u ervoor zorgen dat de naam tussen aanhalingstekens staat:
+5. Als u de para meter van de naam van het open bare IP-adres wilt bewerken, wijzigt u de eigenschap **DefaultValue** van de bron-open bare IP-naam in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
     
     ```json
         {
@@ -82,7 +83,7 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
 
     ```
 
-6. Als u het doelgebied wilt bewerken waar het openbare IP-adres wordt verplaatst, wijzigt u de **locatieeigenschap** onder resources:
+6. Als u de doel regio wilt bewerken waar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder resources:
 
     ```json
             "resources": [
@@ -108,16 +109,16 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
              ]             
     ```
   
-7. Als u regiolocatiegegevens wilt verkrijgen, u de Azure PowerShell-cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) gebruiken door de volgende opdracht uit te voeren:
+7. Als u regio codes wilt ophalen, kunt u de Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) gebruiken door de volgende opdracht uit te voeren:
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8. U desgevraagd ook andere parameters in de sjabloon wijzigen en zijn optioneel, afhankelijk van uw vereisten:
+8. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Sku** - U de sku van het openbare IP-adres in de configuratie wijzigen van standaard naar basis- of basisstandaard door de eigenschap **sku-naam** > **name** in het ** \<bestand resourcegroep->.json** te wijzigen:
+    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > **name** te wijzigen in het ** \<bestand resource-group-name>. json** :
 
          ```json
             "resources": [
@@ -132,9 +133,9 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
                     },
          ```
 
-         Zie [Een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de verschillen tussen basis- en standaardsku public ips.
+         Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de verschillen tussen open bare ip's van de Basic-en Standard-SKU.
 
-    * **Openbare IP-toewijzingsmethode** en **niet-actieve time-out** - U beide opties in de sjabloon wijzigen door de eigenschap **publicIPAllocationMethod** te wijzigen van **Dynamisch** naar **Statisch** of **Statisch** naar **Dynamisch**. De niet-actieve time-out kan worden gewijzigd door de eigenschap **idleTimeoutInMinutes** te wijzigen in het gewenste bedrag.  De standaardinstelling is **4**:
+    * **Toewijzings methode voor openbaar IP-adres** en **time-out voor inactiviteit** : u kunt beide opties in de sjabloon wijzigen door de eigenschap **publicIPAllocationMethod** van **dynamisch** naar **statisch** of **statisch** naar **dynamisch**te veranderen. U kunt de time-out voor inactiviteit wijzigen door de eigenschap **idleTimeoutInMinutes** te wijzigen in de gewenste hoeveelheid.  De standaard waarde is **4**:
 
          ```json
          "resources": [
@@ -159,17 +160,17 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
                 }            
          ```
 
-        Zie [Een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzingsmethoden en de inactieve time-outwaarden.
+        Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzings methoden en de time-outwaarden voor inactiviteit.
 
 
-9. Sla het ** \<brongroepnaam>.json-bestand** op.
+9. Sla het bestand ** \<met de resource-group-name>. json** op.
 
-10. Maak een resourcegroep in de doelregio voor het doel-ip dat moet worden geïmplementeerd met [Nieuwe-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0).
+10. Maak een resource groep in de doel regio voor het open bare doel-IP-adres dat moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0).
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Het gebewerkte ** \<brongroepnaam>.json-bestand** implementeren in de resourcegroep die in de vorige stap is gemaakt met [Nieuwe AzResourceGroupDeployment:](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)
+11. Implementeer het bewerkte ** \<resource-group-name>. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -177,7 +178,7 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
     
     ```
 
-12. Gebruik [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) en [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)om te controleren of de resources in de doelregio zijn gemaakt:
+12. Als u wilt controleren of de resources zijn gemaakt in de doel regio, gebruikt u [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) en [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
     
     ```azurepowershell-interactive
 
@@ -192,7 +193,7 @@ In de volgende stappen wordt uitgelegd hoe u het openbare IP-adres voorbereiden 
     ```
 ## <a name="discard"></a>Verwijderen 
 
-Als u na de implementatie opnieuw wilt beginnen of het openbare ip-adres in het doel wilt verwijderen, verwijdert u de brongroep die in het doel is gemaakt en wordt het verplaatste openbare IP verwijderd.  Als u de brongroep wilt verwijderen, gebruikt u [Remove-AzResourceGroup:](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)
+Als u na de implementatie wilt beginnen of het open bare IP-adres wilt negeren in het doel, verwijdert u de resource groep die is gemaakt in het doel en wordt het verplaatste open bare IP-adres verwijderd.  Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)om de resource groep te verwijderen:
 
 ```azurepowershell-interactive
 
@@ -202,7 +203,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt doorvoeren en de verplaatsing van het virtuele netwerk wilt voltooien, verwijdert u het virtuele netwerk of de brongroep, gebruikt [u Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) of [Remove-AzPublicIPAddress:](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0)
+Als u de wijzigingen wilt door voeren en de verplaatsing van het virtuele netwerk wilt volt ooien, verwijdert u het virtuele bron netwerk of de resource groep, gebruikt u [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) of [Remove-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0):
 
 ```azurepowershell-interactive
 
@@ -218,7 +219,7 @@ Remove-AzPublicIpAddress -Name <source-publicip-name> -ResourceGroupName <resour
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een Azure Public IP verplaatst van de ene regio naar de andere en de bronbronnen opgeschoond.  Zie voor meer informatie over het verplaatsen van resources tussen regio's en disaster recovery in Azure:
+In deze zelf studie hebt u een open bare Azure-IP van de ene regio naar de andere verplaatst en worden de bron bronnen opgeruimd.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

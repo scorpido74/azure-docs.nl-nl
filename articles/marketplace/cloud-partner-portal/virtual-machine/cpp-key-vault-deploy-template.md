@@ -1,25 +1,25 @@
 ---
-title: Azure Key Vault-implementatiesjabloon | Azure Marketplace
-description: Hiermee wordt de Azure Resource Manager-sjabloon weergegeven die nodig is om een nieuw Azure Key Vault-exemplaar te implementeren.
+title: Implementatie sjabloon Azure Key Vault | Azure Marketplace
+description: Hier wordt een lijst weer gegeven met de Azure Resource Manager sjabloon die is vereist voor het implementeren van een nieuw Azure Key Vault exemplaar
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273831"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147029"
 ---
 # <a name="key-vault-deployment-template"></a>Implementatiesjabloon voor sleutelkluis
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [certificering van Azure VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) om uw gemigreerde aanbiedingen te beheren.
 
-Met de volgende sjabloon Azure Resource Manager wordt een nieuwe Azure Key Vault-instantie gedefinieerd.  Het wordt gebruikt in het artikel [Sleutelkluiscertificaat maken](cpp-create-key-vault-cert.md). 
+Met de volgende Azure Resource Manager sjabloon wordt een nieuw Azure Key Vault exemplaar gedefinieerd.  Het wordt gebruikt in het artikel [sleutel kluis certificaat maken](cpp-create-key-vault-cert.md).
 
 ```json
 {

@@ -1,22 +1,22 @@
 ---
-title: Gedeelde schijven inschakelen voor beheerde schijven met Azure
-description: Een azure-beheerde schijf configureren met gedeelde schijven (voorbeeld) zodat u deze delen over meerdere VM's
+title: Gedeelde schijven voor Azure Managed disks inschakelen
+description: Configureer een Azure Managed disk met gedeelde schijven (preview) zodat u deze kunt delen op meerdere Vm's
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0dbb1844d4c670abfdc5562580b0ee8b4549b6bd
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 0dc7cf6e3f72ff9fa7ef5d7cbd85c1fb93f76f9a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008329"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146776"
 ---
 # <a name="enable-shared-disk"></a>Gedeelde schijf inschakelen
 
-In dit artikel wordt uitgelegd hoe u de functie gedeelde schijven (voorbeeld) inschakelt voor door Azure beheerde schijven. Azure shared disks (preview) is een nieuwe functie voor Azure managed disks waarmee u een beheerde schijf tegelijkertijd aan meerdere virtuele machines (VM's) koppelen. Als u een beheerde schijf aan meerdere VM's koppelt, u nieuwe nieuwe toepassingen implementeren of bestaande geclusterde toepassingen migreren naar Azure. 
+In dit artikel wordt beschreven hoe u de functie gedeelde schijven (preview) inschakelt voor Azure Managed disks. Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee u gelijktijdig een beheerde schijf kunt koppelen aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure. 
 
-Als u op zoek bent naar conceptuele informatie over beheerde schijven die gedeelde schijven hebben ingeschakeld, raadpleegt u [gedeelde Azure-schijven](disks-shared.md).
+Als u op zoek bent naar algemene informatie over beheerde schijven waarop gedeelde schijven zijn ingeschakeld, raadpleegt u [gedeelde Azure-schijven](disks-shared.md).
 [!INCLUDE [virtual-machines-enable-shared-disk](../../../includes/virtual-machines-enable-shared-disk.md)]

@@ -1,51 +1,51 @@
 ---
-title: Ondersteuningsinstellingen voor een Azure Containers-afbeelding | Azure Marketplace
-description: Ondersteuningsinstellingen configureren voor een Azure-container.
+title: Ondersteunings instellingen voor een installatie kopie van Azure containers | Azure Marketplace
+description: Ondersteunings instellingen configureren voor een Azure-container.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 8369c99c5bc44a7281c9e2072c20c723974ec83a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269921"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146382"
 ---
-# <a name="container-support-tab"></a>Tabblad Containerondersteuning
+# <a name="container-support-tab"></a>Tabblad ondersteuning voor container
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure-container aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een Azure-container aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) om uw gemigreerde aanbiedingen te beheren.
 
-Gebruik het tabblad **Ondersteuning** van de pagina **Nieuwe aanbieding** om technische en gebruikersondersteuningsbronnen voor uw aanbieding te bieden.  De volgende invoergebieden worden weergegeven op het ondersteuningsformulier: **Engineering Contact,** **Customer Support**en **Support Urls**. Een sterretje (*) dat aan de veldnaam is toegevoegd, geeft aan dat dit vereist is.
-
-
-## <a name="support-form-fields"></a>Ondersteuningsformuliervelden
-
-Geef de vereiste informatie voor de velden Engineering Contact en Customer Support.
+Gebruik het tabblad **ondersteuning** van de **nieuwe aanbiedings** pagina om technische en gebruikers ondersteunings bronnen voor uw aanbieding te bieden.  In het formulier ondersteuning vindt u de volgende invoer gebieden: **technische contact persoon**, **klant ondersteuning**en **ondersteunings-url's**. Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is.
 
 
-### <a name="engineering-contact"></a>Contactpersoon voor engineering
+## <a name="support-form-fields"></a>Formulier velden ondersteunen
 
-De contactpersoon Engineering is het technische contact tussen uw organisatie en Microsoft. Vereiste velden worden aangeklaagd door een sterretje (*).
-
-- **Naam\* ** - Naam van de persoon of groep die fungeert als technische / technische ondersteuning.
-- **E-mail\* ** - E-mailadres van deze technische contactpersoon.
-- **Telefoon\* ** - Telefoonnummer voor technische ondersteuning.
+Geef de vereiste informatie op voor de velden technische contact persoon en klant ondersteuning.
 
 
-### <a name="customer-support"></a>Klantenondersteuning
+### <a name="engineering-contact"></a>Technische contact persoon
 
-De contactpersoon voor klantenondersteuning ontvangt ondersteuningstickets die zijn geopend door klanten in Azure.  Vereiste velden worden aangeklaagd door een sterretje (*).
+De technische contact persoon is het technisch contact tussen uw organisatie en micro soft. Vereiste velden worden gedicteerd door een asterisk (*).
 
-- **Naam\* ** - Naam van de persoon of groep die fungeert als klantenservice.
-- **E-mail\* ** - E-mailadres van deze ondersteuningscontactpersoon.
-- **Telefoon\* ** - Telefoonnummer voor klantenondersteuning.
+- **Naam\* ** : naam van de persoon of groep die fungeert als technische/technische ondersteuning.
+- **E\* ** -mail adres van deze technische contact persoon.
+- **Telefoon\* ** nummer voor technische ondersteuning.
+
+
+### <a name="customer-support"></a>Klant ondersteuning
+
+De contact persoon klant ondersteuning ontvangt ondersteunings tickets die zijn geopend door klanten in Azure.  Vereiste velden worden gedicteerd door een asterisk (*).
+
+- **Naam\* ** : de naam van de persoon of groep die fungeert als klant ondersteuning.
+- **E\* ** -mail adres van deze contact persoon voor ondersteuning.
+- **Telefoon\* ** nummer voor klant ondersteuning.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u ondersteuningsinformatie hebt verstrekt, bent u klaar om uw aanbieding te [publiceren.](./cpp-publish-offer.md) 
+Nadat u de ondersteunings informatie hebt opgegeven, bent u klaar om [uw aanbieding te publiceren](./cpp-publish-offer.md). 
 

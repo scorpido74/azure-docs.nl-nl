@@ -1,41 +1,41 @@
 ---
-title: Een adviesaanbieding maken | Azure Marketplace
-description: Maak een Azure- of Dynamics 365-adviesserviceaanbieding in de Cloud Partner Portal voor de Azure Marketplace.
+title: Een advies aanbieding maken | Azure Marketplace
+description: Maak een Azure-of Dynamics 365 consulting-service aanbieding in het Cloud Partner-portal voor Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a9fbf402bb8de11ae0353ef05d2a526d686c5884
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985130"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148161"
 ---
-# <a name="create-a-consulting-offer"></a>Een adviesaanbod maken
+# <a name="create-a-consulting-offer"></a>Een advies aanbieding maken
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw aanbiedingen van uw advies service naar partner Center verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in het overzicht van het [maken van Consulting Services](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) voor het beheren van uw gemigreerde aanbiedingen.
 
-In dit artikel wordt beschreven hoe u een adviesserviceaanbieding maken en publiceren.
+In dit artikel wordt beschreven hoe u een advies service-aanbod maakt en publiceert.
 
-## <a name="define-your-offer"></a>Definieer uw aanbod
+## <a name="define-your-offer"></a>Uw aanbieding definiëren
 
-Definieer uw pakketadviesserviceaanbod. Focus op vaste scope, vaste duur, geschatte vaste prijs (of gratis), en voornamelijk presales-georiënteerde aanbiedingen voor een enkele klant. Selecteer herhaalbare verpakte afspraken die populair en effectief zijn in het stimuleren van nieuwe business voor u.
+Definieer uw ingepakte advies service-aanbieding. Richt u op vaste Scope, vaste duur, geschatte vaste prijs (of gratis), en voornamelijk preverkoop gerichte aanbiedingen voor één klant. Selecteer Herhaal bare verpakte afspraken die populair en effectief zijn bij het aansturen van nieuwe zaken voor u.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Als u een nieuwe aanbieding wilt maken, voert u deze stappen uit.
-1. Selecteer in het hoofdmenu van de Cloud Partner Portal de optie **Nieuwe aanbieding**.
-1. Selecteer **consultingservice**in het menu **Nieuwe aanbieding** .
+Volg deze stappen om een nieuwe aanbieding te maken.
+1. Selecteer in het hoofd menu van de Cloud Partner-portal **nieuwe aanbieding**.
+1. Selecteer in het menu **nieuwe aanbieding** de optie **Consulting Service**.
 
-    ![Een nieuwe consultingserviceaanbieding maken](media/cppselectnewconsultingoffer.png)
+    ![Een nieuwe advies service-aanbieding maken](media/cppselectnewconsultingoffer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De pagina **Nieuwe aanbieding** voor het type adviesserviceaanbieding biedt een reeks tabbladen en formuliervelden die u gebruikt om een nieuwe aanbieding te maken. In de volgende artikelen wordt uitgelegd hoe u het tabblad gebruikt om de aanbiedingsinstellingen te definiëren en de gegevens voor het nieuwe aanbod op te slaan:
+De **nieuwe aanbiedings** pagina voor het type advies service-aanbod bevat een reeks tabbladen en formulier velden die u gebruikt om een nieuwe aanbieding te maken. In de volgende artikelen wordt uitgelegd hoe u het tabblad gebruiken om de instellingen voor de aanbieding en de details van de winkel voor uw nieuwe aanbieding te definiëren:
 
--    [Aanbiedingsinstellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
--    [Storefront-gegevens invoeren en publiceren in de Azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md)
+-    [Aanbiedings instellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
+-    [Voer Details van de winkel in en geef aan of u wilt publiceren in azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md)

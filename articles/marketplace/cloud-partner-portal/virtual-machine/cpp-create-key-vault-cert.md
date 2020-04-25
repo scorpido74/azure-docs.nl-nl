@@ -1,31 +1,31 @@
 ---
-title: Een Azure Key Vault-certificaat maken | Azure Marketplace
-description: Hier wordt uitgelegd hoe u een VM registreert vanaf een VHD die door Azure is geïmplementeerd.
+title: Een Azure Key Vault certificaat maken | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u een virtuele machine registreert vanuit een door Azure geïmplementeerde VHD.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9981f8eda174bbe04b54933528d20d270d360824
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274001"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148258"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Certificaten maken voor Azure Key Vault
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [certificering van Azure VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) om uw gemigreerde aanbiedingen te beheren.
 
-In dit artikel wordt uitgelegd hoe u de zelfondertekende certificaten indient die nodig zijn om een WinRM-verbinding (Windows Remote Management) tot stand te brengen met een door Azure gehoste virtuele machine (VM). Dit proces bestaat uit drie stappen:
+In dit artikel wordt uitgelegd hoe u de zelfondertekende certificaten kunt inrichten die vereist zijn om een WinRM-verbinding (Windows Remote Management) tot stand te brengen met een door Azure gehoste virtuele machine (VM). Dit proces bestaat uit drie stappen:
 
-1.    Maak het beveiligingscertificaat. 
+1.    Maak het beveiligings certificaat. 
 2.    Maak de Azure Key Vault om dit certificaat op te slaan. 
-3.    Bewaar de certificaten in deze sleutelkluis. 
+3.    Sla de certificaten op in deze sleutel kluis. 
 
-U hiervoor een nieuwe of een bestaande Azure-brongroep gebruiken.  De eerste benadering wordt gebruikt in de volgende verklaring.
+U kunt een nieuwe of een bestaande Azure-resource groep gebruiken voor dit werk.  De eerste benadering wordt in de volgende uitleg gebruikt.
 
 
 
@@ -33,15 +33,15 @@ U hiervoor een nieuwe of een bestaande Azure-brongroep gebruiken.  De eerste ben
 
 ## <a name="create-the-certificate"></a>Het certificaat maken
 
-Bewerk en voer het volgende Azure Powershell-script uit om het certificaatbestand (.pfx) in een lokale map te maken.  U moet de waarden voor de volgende parameters vervangen:
+Bewerk en voer het volgende Azure Power shell-script uit om het certificaat bestand (. pfx) in een lokale map te maken.  U moet de waarden vervangen voor de volgende para meters:
 
-|  **Parameter**        |   **Beschrijving**                                                               |
+|  **Bepaalde**        |   **Beschrijving**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$certroopath` | Lokale map om het PFX-bestand op te slaan  |
-| `$location`    | Een van de Azure-standaardgeografische locaties  |
-| `$vmName`      | Naam van de geplande virtuele Azure-machine   |
-| `$certname`    | Naam van het certificaat; moet overeenkomen met de volledig gekwalificeerde domeinnaam van de geplande VM  |
-| `$certpassword` | Wachtwoord voor de certificaten moet overeenkomen met het wachtwoord dat wordt gebruikt voor de geplande VM  |
+| `$certroopath` | Lokale map waarin het. pfx-bestand moet worden opgeslagen  |
+| `$location`    | Een van de standaard geografische locaties van Azure  |
+| `$vmName`      | Naam van de geplande virtuele machine van Azure   |
+| `$certname`    | De naam van het certificaat; moet overeenkomen met de Fully Qualified Domain Name van de geplande virtuele machine  |
+| `$certpassword` | Het wacht woord voor de certificaten moet overeenkomen met het wacht woord dat wordt gebruikt voor de geplande VM  |
 |  |  |
 
 ```powershell
@@ -71,23 +71,23 @@ Bewerk en voer het volgende Azure Powershell-script uit om het certificaatbestan
 
 ```
 > [!TIP]
-> Houd dezelfde PowerShell-consolesessie actief tijdens deze stappen, zodat de waarden van de verschillende parameters behouden blijven.
+> Bewaar dezelfde Power shell-console sessie actief tijdens deze stappen zodat de waarden van de verschillende para meters behouden blijven.
 
 > [!WARNING]
-> Als u dit script opslaat, slaat u het alleen op een veilige locatie op omdat het beveiligingsgegevens (een wachtwoord) bevat.
+> Als u dit script opslaat, slaat u het alleen op een veilige locatie op omdat het beveiligings gegevens bevat (een wacht woord).
 
 
-## <a name="create-the-key-vault"></a>De sleutelkluis maken
+## <a name="create-the-key-vault"></a>De sleutel kluis maken
 
-Kopieer de inhoud van de sjabloon voor het implementeren van [de sleutelkluis](./cpp-key-vault-deploy-template.md) naar een bestand op uw lokale machine. (in het onderstaande voorbeeldscript `C:\certLocation\keyvault.json`is deze bron .)  Bewerk en voer het volgende Azure Powershell-script uit om een Azure Key Vault-exemplaar en de bijbehorende brongroep te maken.  U moet de waarden voor de volgende parameters vervangen:
+Kopieer de inhoud van de [sjabloon voor de sleutel kluis implementatie](./cpp-key-vault-deploy-template.md) naar een bestand op uw lokale computer. (in het onderstaande voorbeeld script is `C:\certLocation\keyvault.json`deze resource.)  Bewerk en voer het volgende Azure Power shell-script uit om een Azure Key Vault-exemplaar en de gekoppelde resource groep te maken.  U moet de waarden vervangen voor de volgende para meters:
 
-|  **Parameter**        |   **Beschrijving**                                                               |
+|  **Bepaalde**        |   **Beschrijving**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$postfix`            | Willekeurige numerieke tekenreeks die is toegevoegd aan implementatie-id's                     |
-| `$rgName`             | RG-naam (Azure Resource Group) om te maken                                        |
-|  `$location`          | Een van de Azure-standaardgeografische locaties                                  |
-| `$kvTemplateJson`     | Pad van bestand (keyvault.json) met resourcebeheersjabloon voor sleutelkluis |
-| `$kvname`             | Naam van de nieuwe sleutelkluis                                                       |
+| `$postfix`            | Wille keurige numerieke teken reeks toegevoegd aan implementatie-id's                     |
+| `$rgName`             | Te maken naam van de Azure-resource groep (RG)                                        |
+|  `$location`          | Een van de standaard geografische locaties van Azure                                  |
+| `$kvTemplateJson`     | Het pad naar het bestand (de code van de hoofd kluis. json) dat een resource manager-sjabloon bevat voor sleutel kluis |
+| `$kvname`             | De naam van de nieuwe sleutel kluis                                                       |
 |  |  |
 
 ```powershell
@@ -188,7 +188,7 @@ Kopieer de inhoud van de sjabloon voor het implementeren van [de sleutelkluis](.
 
 ## <a name="store-the-certificate"></a>Het certificaat opslaan
 
-U de certificaten, die in het PFX-bestand staan, nu opslaan in de nieuwe sleutelkluis door het volgende script uit te voeren. 
+U kunt de certificaten in het pfx-bestand nu opslaan in de nieuwe sleutel kluis door het volgende script uit te voeren. 
 
 ```powershell
     #push certificate to key vault secret
@@ -217,4 +217,4 @@ U de certificaten, die in het PFX-bestand staan, nu opslaan in de nieuwe sleutel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens implementeert u [een VM van uw VM-afbeelding voor gebruikers.](./cpp-deploy-vm-user-image.md)
+Vervolgens [implementeert u een VM op basis van uw VM-installatie kopie van uw gebruiker](./cpp-deploy-vm-user-image.md).

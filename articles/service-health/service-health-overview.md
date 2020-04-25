@@ -3,12 +3,12 @@ title: Overzicht van Service Health | Microsoft Docs
 description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097248"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146924"
 ---
 # <a name="service-health-overview"></a>Overzicht van Service Health
 
@@ -41,6 +41,12 @@ In de weer gave **Service problemen** ziet u lopende problemen in Azure-Services
 Kies het tabblad **mogelijke impact** om de specifieke lijst met resources te bekijken waarvan u de eigenaar bent die mogelijk van invloed is op het probleem. U kunt een CSV-lijst van deze resources downloaden om te delen met uw team.
 
 ![Service probleem beheren-impact](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>Bekijk opkomende problemen die van invloed kunnen zijn op uw services
+
+Er zijn situaties waarin uitgebreide service problemen kunnen worden geplaatst op de [Azure-status pagina](https://status.azure.com) voordat de beoogde communicatie kan worden verzonden naar klanten met een impact. Om ervoor te zorgen dat Azure Service Health een uitgebreid overzicht geeft van de problemen die van invloed kunnen zijn op de problemen met de actieve Azure-status pagina, worden deze Service Health als *opkomende problemen*. Wanneer een gebeurtenis actief is op de Azure-status pagina, wordt er een banner voor opkomende problemen weer gegeven in Service Health. Klik op de banner om de volledige details van het probleem weer te geven.
+
+![Opkomende service probleem](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Koppelingen en download bare uitleg ophalen 
 

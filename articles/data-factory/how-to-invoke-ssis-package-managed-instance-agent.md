@@ -1,6 +1,6 @@
 ---
-title: SSIS-pakketten uitvoeren door Azure SQL Managed Instance Agent
-description: Meer informatie over het uitvoeren van SSIS-pakketten door Azure SQL Managed Instance Agent.
+title: SSIS-pakketten uitvoeren met behulp van Azure SQL Database Managed instance agent
+description: Meer informatie over het uitvoeren van SSIS-pakketten met behulp van Azure SQL Database Managed instance agent.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,92 +9,108 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: b3b7a25149a9d075c81b30307ade2beb71907637
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394720"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144803"
 ---
-# <a name="execute-ssis-packages-by-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren door Azure SQL Managed Instance Agent
-In dit artikel wordt beschreven hoe u een SQL Server Integration Services-pakket (SSIS) uitvoert met Azure SQL Managed Instance Agent. Deze functie biedt vergelijkbare gedragingen, net als wanneer u SSIS-pakketten plant door SQL Server Agent in uw on-prem-omgeving.
+# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>SSIS-pakketten uitvoeren met behulp van Azure SQL Database Managed instance agent
+In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert met behulp van Azure SQL Database Managed instance agent. Deze functie biedt problemen die vergelijkbaar zijn met het plannen van SSIS-pakketten door gebruik te maken van SQL Server Agent in uw on-premises omgeving.
 
-Met deze functie u SSIS-pakketten uitvoeren die zijn opgeslagen in SSISDB van Azure SQL Managed Instance of File System zoals Azure Files.
+Met deze functie kunt u SSIS-pakketten uitvoeren die zijn opgeslagen in SSISDB in een Azure SQL Database beheerde instantie of een bestands systeem zoals Azure Files.
 
 ## <a name="prerequisites"></a>Vereisten
-Download en installeer de nieuwste versie van SSMS, versie 18.5 of hoger, om deze functie te gebruiken. Download het van [deze website.](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)
+Als u deze functie wilt gebruiken, [downloadt](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) en installeert u de nieuwste versie van SQL Server Management Studio (SSMS). Dit is versie 18,5.
 
-En u moet een Azure-SSIS-integratieruntime inrichten in Azure Data Factory, waarin Azure SQL Managed Instance als eindpuntserver wordt gebruikt. Als u het nog niet hebt ingericht, indient u deze door instructies in de zelfstudie te [volgen.](tutorial-create-azure-ssis-runtime-portal.md) 
+U moet ook [een Azure SSIS Integration runtime inrichten](tutorial-create-azure-ssis-runtime-portal.md) in azure Data Factory. Er wordt een Azure SQL Database beheerd exemplaar als een eindpunt server gebruikt. 
 
-## <a name="run-ssis-packages-in-ssisdb-by-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren in SSISDB door Azure SQL Managed Instance Agent
-In deze stap gebruikt u Azure SQL Managed Instance Agent om SSIS-pakketten aan te roepen die zijn opgeslagen in SSISDB in Azure SQL Managed Instance.
-1. Maak in de nieuwste versie van SSMS verbinding met Azure SQL Managed Instance.
-2. Maak een nieuwe agentjob en een nieuwe jobstap.
+## <a name="run-an-ssis-package-in-ssisdb"></a>Een SSIS-pakket uitvoeren in SSISDB
+In deze procedure gebruikt u Azure SQL Database Managed instance agent voor het aanroepen van een SSIS-pakket dat is opgeslagen in SSISDB.
 
-![Nieuwe agent Job](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+1. In de meest recente versie van SSMS maakt u verbinding met een Azure SQL Database beheerd exemplaar.
+1. Maak een nieuwe agent taak en een nieuwe taak stap. Klik onder **SQL Server Agent**met de rechter muisknop op de map **Jobs** en selecteer vervolgens **nieuwe taak**.
 
-3. Kies **sql server-integratieservicespakkettype** op de pagina **Nieuwe taakstap.**
+   ![Selecties voor het maken van een nieuwe agent taak](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
-![Nieuwe SSIS-taakstap](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+1. Selecteer op de pagina **nieuwe taak stap** **SQL Server Integration services pakket** als type.
 
-4. Kies op het tabblad **Pakket** de optie **SSIS-catalogus** als pakketbrontype.
-5. Omdat de SSISDB zich in dezelfde Azure SQL Managed Instance bevindt, hoeft u geen verificatie op te geven.
-6. Geef een SSIS-pakket op van uw SSISDB.
+   ![Selecties voor het maken van een nieuwe SSIS-taak stap](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
-![Type packagebron - SSIS-catalogus](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+1. Op het tabblad **pakket** selecteert u **SSIS Catalog** als het bron type van het pakket.
+1. Omdat SSISDB zich in een Azure SQL Database beheerd exemplaar bevindt, hoeft u geen verificatie op te geven.
+1. Geef een SSIS-pakket op van SSISDB.
 
-7. Op het tabblad **Configuraties** u **parameterwaarden** opgeven, waarden overschrijven in **Verbindingsbeheer,** **Eigenschap** overschrijven en **Logboekregistratieniveau kiezen.**
+   ![Tabblad pakket met selecties voor het pakket bron type](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
 
-![Pakketbrontype - Configuratie van ssis-catalogus](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+1. Op het tabblad **configuratie** kunt u het volgende doen:
+  
+   - Geef parameter waarden op onder **para meters**.
+   - Vervang waarden onder **verbindings beheer**.
+   - Overschrijf de eigenschap en kies het logboek registratie niveau onder **Geavanceerd**.
 
-8. Nadat u alle bovenstaande configuratie hebt voltooid, klikt u op **OK** om de configuratie van de agenttaak op te slaan.
-9. Start de agenttaak om het SSIS-pakket uit te voeren.
+   ![Tabblad Configuratie met selecties voor het pakket bron type](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
-
-## <a name="run-ssis-packages-in-file-system-by-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren in bestandssysteem door Azure SQL managed instance agent
-In deze stap gebruikt u Azure SQL Managed Instance Agent om SSIS-pakketten aan te roepen die zijn opgeslagen in bestandssysteem om uit te voeren.
-1. Maak in de nieuwste versie van SSMS verbinding met Azure SQL Managed Instance.
-2. Maak een nieuwe agentjob en een nieuwe jobstap.
-
-   ![Nieuwe agent Job](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
-
-3. Kies **sql server-integratieservicespakkettype** op de pagina **Nieuwe taakstap.**
-
-   ![Nieuwe SSIS-taakstap](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
-
-4. Kies op het tabblad **Pakket** **het bestandssysteem** als pakketbrontype.
-
-   ![Type packagebron - bestandssysteem](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
-
-   1. Als uw pakket is geüpload naar Azure File, kiest u **Azure-bestandsshare** als bestandsbrontype.
-      - Het pakketpad is ** \\ <storage account name>.file.core.windows.net\< \<bestandssharenaam>pakketnaam>.dtsx**
-      - Typ de naam en accountsleutel van Azure-bestandsaccount in **de toegangsreferenties voor pakketbestanden** om toegang te krijgen tot het Azure-bestand. Het domein is ingesteld als **Azure**.
-   2. Als uw pakket wordt geüpload naar een netwerkshare, kiest u **Netwerkdelen** als bestandsbrontype.
-      - Het pakketpad is het **UNC-pad** van uw pakketbestand met de dtsx-extensie.
-      - Typ het bijbehorende **domein,** **gebruikersnaam**en **wachtwoord** om toegang te krijgen tot het netwerksharepakketbestand.
-   3. Als uw pakketbestand is versleuteld met een wachtwoord, selecteert u **Versleutelingswachtwoord** en typt u het wachtwoord in.
-
- 5. Typ **op** het tabblad Configuraties het **pad met configuratiebestanden** als u een configuratiebestand nodig hebt om het SSIS-pakket uit te voeren.
- 6. Op het tabblad **Uitvoeringsopties** u kiezen of u **windows-verificatie** of **32-bits runtime** wilt gebruiken om het SSIS-pakket uit te voeren.
- 7. Op het tabblad **Logboekregistratie** u het **logboekregistratiepad** en de bijbehorende registratietoegangsreferenties kiezen om de logboekbestanden op te slaan. Standaard is het logboekpad hetzelfde als het pad met de pakketmap en is de toegangsreferentie voor logboekregistratie hetzelfde als de referentie voor pakkettoegangs.
- 8. Op het tabblad **Waarden instellen** u het **eigenschappenpad** en de **waarde** intypen om de eigenschappen van het pakket te overschrijven.
- Als u bijvoorbeeld de waarde van uw gebruikersvariabele wilt overschrijven, voert u het pad in de volgende indeling in: **<variable name>\Package.Variables[User:: ]. Waarde**.
- 9. Nadat u alle bovenstaande configuratie hebt voltooid, klikt u op **OK** om de configuratie van de agenttaak op te slaan.
- 10. Start de agenttaak om het SSIS-pakket uit te voeren.
+1. Selecteer **OK** om de taak configuratie van de agent op te slaan.
+1. Start de agent taak om het SSIS-pakket uit te voeren.
 
 
- ## <a name="cancel-ssis-package-execution"></a>Uitvoering ssis-pakket annuleren
- Als u pakketuitvoering wilt annuleren van een Azure SQL Managed Agent-taak, moet u onderstaande stappen volgen in plaats van de agenttaak rechtstreeks te stoppen.
- 1. Vind uw SQL agent **jobId** van **msdb.dbo.sysjobs**.
- 2. Zoek de bijbehorende **SSIS-executionId** op basis van de taak-id op onderstaande query:
-    ```sql
-    select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
-    ```
- 3. Selecteer **Actieve bewerkingen** onder De SSIS-catalogus.
+## <a name="run-an-ssis-package-in-the-file-system"></a>Een SSIS-pakket uitvoeren in het bestands systeem
+In deze procedure gebruikt u Azure SQL Database Managed instance agent om een SSIS-pakket uit te voeren dat is opgeslagen in het bestands systeem.
 
-    ![Type packagebron - bestandssysteem](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+1. In de meest recente versie van SSMS maakt u verbinding met een Azure SQL Database beheerd exemplaar.
+1. Maak een nieuwe agent taak en een nieuwe taak stap. Klik onder **SQL Server Agent**met de rechter muisknop op de map **Jobs** en selecteer vervolgens **nieuwe taak**.
 
- 4. De overeenkomstige bewerking stoppen op basis **van executionId**.
+   ![Selecties voor het maken van een nieuwe agent taak](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+
+1. Selecteer op de pagina **nieuwe taak stap** **SQL Server Integration services pakket** als type.
+
+   ![Selecties voor het maken van een nieuwe SSIS-taak stap](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+
+1. Op het tabblad **pakket** :
+
+   1. Selecteer voor **pakket bron** **Bestands systeem**.
+   
+   1. Voor **Bestands bron type**:   
+
+      - Als uw pakket wordt geüpload naar Azure Files, selecteert u **Azure-bestands share**.
+
+        ![Opties voor bestands bron type](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+      
+        Het pad van het pakket is ** \\ <storage account name>.\<file.core.Windows.net naam van \<de bestands share>pakket naam>. dtsx**.
+      
+        Voer onder **toegangs referenties voor pakket bestanden**de naam van het Azure-bestands account en de account sleutel in voor toegang tot het Azure-bestand. Het domein is ingesteld als **Azure**.
+
+      - Als uw pakket wordt geüpload naar een netwerk share, selecteert u **netwerk share**.
+      
+        Het pad naar het pakket is het UNC-pad van het pakket bestand met de extensie. dtsx.
+      
+        Geef het domein, de gebruikers naam en het bijbehorende wacht woord op om toegang te krijgen tot het pakket bestand van de netwerk share.
+   1. Als uw pakket bestand is versleuteld met een wacht woord, selecteert u **versleutelings wachtwoord** en voert u het wacht woord in.
+1. Voer op het tabblad **configuraties** het pad naar het configuratie bestand in als u een configuratie bestand nodig hebt om het SSIS-pakket uit te voeren.
+1. Op het tabblad **uitvoerings opties** kunt u kiezen of u Windows- **verificatie** of **32-bits runtime** wilt gebruiken om het SSIS-pakket uit te voeren.
+1. Op het tabblad **logboek registratie** kunt u het pad voor logboek registratie en bijbehorende toegangs referenties voor logboek registratie kiezen om de logboek bestanden op te slaan. Het pad voor logboek registratie is standaard hetzelfde als het pad naar de map van het pakket en de toegangs referenties voor logboek registratie is hetzelfde als de toegangs referentie voor het pakket.
+1. Op het tabblad **waarden instellen** kunt u het pad en de waarde van de eigenschap opgeven om de pakket eigenschappen te overschrijven.
+ 
+   Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: **\Package.Variables [gebruiker<variable name>::]. Waarde**.
+1. Selecteer **OK** om de taak configuratie van de agent op te slaan.
+1. Start de agent taak om het SSIS-pakket uit te voeren.
+
+
+## <a name="cancel-ssis-package-execution"></a>Uitvoering van SSIS-pakket annuleren
+Als u de uitvoering van het pakket wilt annuleren vanuit een agent taak voor een Azure SQL Database beheerde instantie, voert u de volgende stappen uit in plaats van de agent taak direct te stoppen:
+
+1. Zoek uw SQL Agent- **jobId** vanuit **msdb. dbo. sysjobs**.
+1. Zoek de overeenkomende SSIS- **executionid is vereist** op basis van de taak-id met behulp van deze query:
+   ```sql
+   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   ```
+1. Klik met de rechter muisknop op de catalogus SSISDB en selecteer vervolgens **actieve bewerkingen**.
+
+   ![Actieve bewerkingen in het snelmenu van de SSISDB-catalogus](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+
+1. Stop de bijbehorende bewerking op basis van **executionid is vereist**.
 
 ## <a name="next-steps"></a>Volgende stappen
- U ook SSIS-pakketten plannen met Azure Data Factory. Zie [Azure Data Factory Event Trigger](how-to-create-event-trigger.md)voor stapsgewijze instructies. 
+U kunt SSIS-pakketten ook plannen met behulp van Azure Data Factory. Zie [Azure Data Factory Event trigger](how-to-create-event-trigger.md)voor stapsgewijze instructies. 

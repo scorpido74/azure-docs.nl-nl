@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106471"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148207"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Event Hubs integreren met een persoonlijke Azure-koppeling (preview)
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -29,7 +29,7 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 >[!WARNING]
 > Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
 >
-> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
+> Vertrouwde micro soft-services worden niet ondersteund bij het gebruik van virtuele netwerken.
 >
 > Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
 > - Azure Monitor (diagnostische instelling)
@@ -72,7 +72,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
     1. Selecteer het **Azure-abonnement** waarin u het persoonlijke eind punt wilt maken. 
     2. Selecteer de **resource groep** voor de persoonlijke eindpunt resource.
     3. Voer een **naam** in voor het persoonlijke eind punt. 
-    5. Selecteer een **regio** voor het persoonlijke eind punt. Uw persoonlijke eind punt moet zich in dezelfde regio bevinden als uw virtuele netwerk, maar kan zich in een andere regio bevinden, van de persoonlijke koppelings resource waarmee u verbinding maakt. 
+    5. Selecteer een **regio** voor het persoonlijke eind punt. Uw persoonlijke eind punt moet zich in dezelfde regio bevinden als uw virtuele netwerk, maar kan zich in een andere regio bevinden dan de resource van de persoonlijke koppeling waarmee u verbinding maakt. 
     6. Selecteer **volgende: Resource >** knop onder aan de pagina.
 
         ![Privé-eind punt maken-pagina basis beginselen](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -86,7 +86,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias**, voert u de volgende stappen uit:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die door een deel met u is gedeeld.
+        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Event Hubs naam ruimte in de Azure Portal en het `/subscriptions/`gedeelte van de URI te kopiëren vanaf. Zie de volgende afbeelding voor een voor beeld. 
         2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft.
         3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt.
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina.

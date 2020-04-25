@@ -1,96 +1,100 @@
 ---
-title: Migreren van de bulkexecutorbibliotheek naar de bulkondersteuning in Azure Cosmos DB .NET V3 SDK
-description: Meer informatie over het migreren van uw toepassing van het gebruik van de bulkexecutorbibliotheek naar de bulkondersteuning in Azure Cosmos DB SDK V3
+title: Migreren van de bibliotheek voor bulk-uitvoering naar de bulk ondersteuning in Azure Cosmos DB .NET v3 SDK
+description: Meer informatie over hoe u uw toepassing migreert van met behulp van de bulk-uitvoerder bibliotheek naar de bulk ondersteuning in Azure Cosmos DB SDK v3
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755969"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146292"
 ---
-# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bulkexecutorbibliotheek naar de bulkondersteuning in Azure Cosmos DB .NET V3 SDK
+# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor bulk-uitvoering naar de bulk ondersteuning in Azure Cosmos DB .NET v3 SDK
 
-In dit artikel worden de vereiste stappen beschreven om de code van een bestaande toepassing te migreren die de [.NET-bulkexecutorbibliotheek](bulk-executor-dot-net.md) gebruikt naar de [bulkondersteuningsfunctie](tutorial-sql-api-dotnet-bulk-import.md) in de nieuwste versie van de .NET SDK.
+In dit artikel worden de vereiste stappen beschreven voor het migreren van de code van een bestaande toepassing die gebruikmaakt van de [.net-bibliotheek voor bulksgewijs](bulk-executor-dot-net.md) uitvoeren naar de functie voor [bulk ondersteuning](tutorial-sql-api-dotnet-bulk-import.md) in de nieuwste versie van de .NET SDK.
 
-## <a name="enable-bulk-support"></a>Bulkondersteuning inschakelen
+## <a name="enable-bulk-support"></a>Bulk ondersteuning inschakelen
 
-Bulkondersteuning voor `CosmosClient` de instantie inschakelen via de [configuratie AllowBulkExecution:](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution)
+Schakel bulksgewijs ondersteuning in voor `CosmosClient` het exemplaar via de [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) -configuratie:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
-## <a name="create-tasks-for-each-operation"></a>Taken maken voor elke bewerking
+## <a name="create-tasks-for-each-operation"></a>Taken voor elke bewerking maken
 
-Bulkondersteuning in de .NET SDK werkt door gebruik te maken van de [taakparallelbibliotheek](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) en groepsbewerkingen die gelijktijdig plaatsvinden. 
+Bulk ondersteuning in de .NET SDK werkt door gebruik te maken van de [parallelle tape wisselaar](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) en groeperings bewerkingen die gelijktijdig optreden. 
 
-Er is geen enkele methode die uw lijst met documenten of bewerkingen als invoerparameter neemt, maar u moet een taak maken voor elke bewerking die u in bulk wilt uitvoeren.
+De SDK bevat geen enkele methode waarmee u een lijst met documenten of bewerkingen als invoer parameter kunt gebruiken, maar in plaats daarvan moet u een taak maken voor elke bewerking die u in bulk wilt uitvoeren en vervolgens gewoon wachten totdat deze is voltooid.
 
-Als uw eerste invoer bijvoorbeeld een lijst is met items waarbij elk item het volgende schema heeft:
+Als uw eerste invoer bijvoorbeeld een lijst met items is waarbij elk item het volgende schema heeft:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Als u bulkimport wilt uitvoeren (vergelijkbaar met het gebruik van BulkExecutor.BulkImportAsync), moet u gelijktijdige aanroepen naar `CreateItemAsync` met elke artikelwaarde hebben. Bijvoorbeeld:
+Als u Bulk Import wilt uitvoeren (vergelijkbaar met het gebruik van BulkExecutor. BulkImportAsync), moet u gelijktijdige aanroepen naar `CreateItemAsync`hebben. Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Als u *bulkupdate* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor.BulkUpdateAsync),](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)moet u na het bijwerken van de objectwaarde gelijktijdige aanroepen naar `ReplaceItemAsync` methode hebben. Bijvoorbeeld:
+Als u bulk *Update* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), moet u na het bijwerken van `ReplaceItemAsync` de waarde van het item gelijktijdige aanroepen naar de methode hebben. Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-En als u *bulkverwijderen* wilt doen (vergelijkbaar met het gebruik van [BulkExecutor.BulkDeleteAsync),](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)moet u gelijktijdige aanroepen naar `DeleteItemAsync`, met de `id` en partitiesleutel van elk item hebben. Bijvoorbeeld:
+En als u bulksgewijs *verwijderen* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), moet u gelijktijdig aanroepen naar `DeleteItemAsync`, met de `id` -en-partitie sleutel van elk item. Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
-## <a name="capture-task-result-state"></a>Status taakresultaat vastleggen
+## <a name="capture-task-result-state"></a>Resultaat status van de opname taak
 
-In de vorige codevoorbeelden hebt u een gelijktijdige lijst `CaptureOperationResponse` met taken gemaakt en de methode voor elk van deze taken aangeroepen. Deze methode is een extensie waarmee we een *vergelijkbaar antwoordschema* kunnen behouden als BulkExecutor, door fouten vast te leggen en het [gebruik van de aanvraageenheden](request-units.md)bij te houden.
+In de vorige code voorbeelden hebben we een gelijktijdige lijst met taken gemaakt en de `CaptureOperationResponse` methode voor elk van deze taken genoemd. Deze methode is een uitbrei ding waarmee we een *soortgelijk antwoord schema* kunnen onderhouden als BulkExecutor, door eventuele fouten vast te leggen en het gebruik van de [aanvraag eenheden](request-units.md)bij te houden.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
-Wanneer `OperationResponse` de wordt aangegeven als:
+Waar de `OperationResponse` is gedeclareerd als:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="OperationResult":::
 
-## <a name="execute-operations-concurrently"></a>Bewerkingen gelijktijdig uitvoeren
+## <a name="execute-operations-concurrently"></a>Gelijktijdig bewerkingen uitvoeren
 
-Nadat de lijst met taken is gedefinieerd, wacht u tot ze allemaal zijn voltooid. U de voltooiing van de taken bijhouden door het bereik van uw bulkbewerking te definiëren zoals weergegeven in het volgende codefragment:
+Als u het bereik van de volledige lijst met taken wilt bijhouden, gebruiken we deze helperklasse:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkOperationsHelper":::
+
+De `ExecuteAsync` methode wacht totdat alle bewerkingen zijn voltooid en u kunt deze als volgt gebruiken:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="WhenAll":::
 
 ## <a name="capture-statistics"></a>Statistieken vastleggen
 
-De vorige code wacht tot alle bewerkingen zijn voltooid en berekent de vereiste statistieken. Deze statistieken zijn vergelijkbaar met die van bulk executor library [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse).
+De vorige code wacht totdat alle bewerkingen zijn voltooid en de vereiste statistieken worden berekend. Deze statistieken zijn vergelijkbaar met die van de [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)van de bulk-uitvoerder bibliotheek.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
 De `BulkOperationResponse` bevat:
 
-1. De totale tijd die nodig is om de lijst met bewerkingen te verwerken via bulkondersteuning.
-1. Het aantal succesvolle operaties.
-1. Het totaal van de gevraagde eenheden verbruikt.
-1. Als er fouten zijn, wordt een lijst met tuples weergegeven die de uitzondering en het bijbehorende item voor logboekregistratie en identificatiedoel bevatten.
+1. De totale tijd die nodig is om de lijst met bewerkingen te verwerken via bulksgewijze ondersteuning.
+1. Het aantal geslaagde bewerkingen.
+1. Het totaal van verbruikte aanvraag eenheden.
+1. Als er fouten zijn, wordt er een lijst met Tuples weer gegeven die de uitzonde ring en het bijbehorende item voor logboek registratie en identificatie doeleinden bevatten.
 
 ## <a name="retry-configuration"></a>Configuratie opnieuw proberen
 
-Bulk executor bibliotheek had [begeleiding](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds` die `MaxRetryAttemptsOnThrottledRequests` vermeld om de en van [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) in te `0` stellen om het beheer te delegeren aan de bibliotheek.
+De bibliotheek voor bulksgewijs uitvoerder bevat [richt lijnen](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) voor `MaxRetryAttemptsOnThrottledRequests` het instellen van `0` de `MaxRetryWaitTimeInSeconds` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) en om het beheer te delegeren aan de bibliotheek.
 
-Voor bulkondersteuning in de .NET SDK is er geen verborgen gedrag. U de opties voor opnieuw proberen rechtstreeks configureren via de [CosmosClientOptions.MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) en [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
+Voor bulk ondersteuning in de .NET SDK is er geen verborgen gedrag. U kunt de opties voor opnieuw proberen rechtstreeks configureren via [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) en [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
 
 > [!NOTE]
-> In gevallen waarin de ingerichte aanvraageenheden veel lager zijn dan de verwachte op basis van de hoeveelheid gegevens, u overwegen deze in te stellen op hoge waarden. De bulk operatie zal langer duren, maar het heeft een hogere kans van volledig slagen als gevolg van de hogere pogingen.
+> In gevallen waarin de ingerichte aanvraag eenheden veel lager zijn dan verwacht op basis van de hoeveelheid gegevens, kunt u overwegen deze in te stellen op hoge waarden. De bulk bewerking duurt langer, maar heeft een hogere kans om volledig te slagen als gevolg van de hogere nieuwe pogingen.
 
 ## <a name="performance-improvements"></a>Prestatieverbeteringen
 
-Net als bij andere bewerkingen met de .NET SDK resulteert het gebruik van de stream-API's in betere prestaties en voorkomt onnodige serialisatie. 
+Net als bij andere bewerkingen met de .NET SDK resulteert het gebruik van de stream-Api's in betere prestaties en vermijdt overbodige serialisatie. 
 
-Het gebruik van stream-API's is alleen mogelijk als de aard van de gegevens die u gebruikt overeenkomt met die van een stroom bytes (bijvoorbeeld bestandsstromen). In dergelijke gevallen `CreateItemStreamAsync`verhoogt `ReplaceItemStreamAsync`het `DeleteItemStreamAsync` gebruik van `ResponseMessage` de , `ItemResponse`- of methoden en het werken met (in plaats van ) de doorvoer die kan worden bereikt.
+Het gebruik van stream-Api's is alleen mogelijk als de aard van de gegevens die u gebruikt, overeenkomt met die van een byte stroom (bijvoorbeeld bestands stromen). In dergelijke gevallen kunt u met `CreateItemStreamAsync`behulp van de `ReplaceItemStreamAsync`-,-of `DeleteItemStreamAsync` -methoden en werken met `ResponseMessage` (in plaats van `ItemResponse`) de door Voer verhogen die kan worden bereikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het azure [cosmos DB SDK-artikel](sql-api-sdk-dotnet.md) voor meer informatie over de .NET SDK-releases.
-* Download de volledige [migratiebroncode](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) van GitHub.
-* [Extra bulkmonsters op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)
+* Zie het artikel over de [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) voor meer informatie over de versies van .NET SDK.
+* De volledige [bron code](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) voor de migratie ophalen van github.
+* [Bijkomende bulk voorbeelden op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)

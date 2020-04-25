@@ -1,25 +1,25 @@
 ---
-title: Azure VHD-implementatiesjabloon | Azure Marketplace
-description: Hiermee wordt de Azure Resource Manager-sjabloon weergegeven die nodig is om een nieuwe virtuele Azure-machine te implementeren vanaf een virtuele harde schijf van een gebruiker.
+title: Azure VHD-implementatie sjabloon | Azure Marketplace
+description: Hier wordt een lijst weer gegeven met de Azure Resource Manager sjabloon die is vereist om een nieuwe virtuele Azure-machine te implementeren vanaf een virtuele harde schijf van een gebruiker.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273916"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148052"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Sjabloon voor implementatie van virtuele harde schijf
+# <a name="virtual-hard-disk-deployment-template"></a>Implementatie sjabloon voor virtuele harde schijf
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [certificering van Azure VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) om uw gemigreerde aanbiedingen te beheren.
 
-Met de volgende sjabloon Azure Resource Manager wordt een nieuwe VM-instantie (Azure Virtual Machine) gedefinieerd, gemaakt van lokale virtuele harde schijf (VHD).  Deze sjabloon wordt gebruikt in het artikel [Een Azure VM implementeren van een vhd-gebruiker.](./cpp-deploy-vm-user-image.md) 
+Met de volgende Azure Resource Manager sjabloon wordt een nieuw exemplaar van de Azure virtual machine (VM) gedefinieerd, gemaakt op basis van een lokale virtuele harde schijf (VHD).  Deze sjabloon wordt in het artikel gebruikt om [een Azure VM te implementeren vanaf een gebruikers-VHD](./cpp-deploy-vm-user-image.md).
 
 ```json
 {

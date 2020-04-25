@@ -1,78 +1,83 @@
 ---
 title: Serviceproviders weergeven en beheren
-description: Klanten kunnen de pagina Serviceproviders in de Azure-portal gebruiken om informatie over serviceproviders, serviceprovideraanbiedingen en gedelegeerde resources weer te geven.
-ms.date: 02/25/2020
+description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e0522d1cd13ab1a4be589bc0c22c4ebfcf24d3f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270626"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144318"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
-Klanten kunnen de pagina **Serviceproviders** in de [Azure-portal](https://portal.azure.com) gebruiken om informatie over serviceproviders en serviceprovideraanbiedingen weer te geven, specifieke bronnen te [delegeren](../concepts/azure-delegated-resource-management.md)via azure gedelegeerd resourcebeheer en te winkelen voor nieuwe serviceprovideraanbiedingen. Hoewel we hier verwijzen naar serviceproviders en klanten, kunnen bedrijven die meerdere tenants beheren hetzelfde proces gebruiken om hun beheerervaring te consolideren.
+Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om informatie over service providers en service providers te bekijken, specifieke resources te delegeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)en naar nieuwe aanbiedingen voor service providers te kijken. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
-Als u toegang wilt krijgen tot de pagina **Serviceproviders** in de Azure-portal, kan de klant **Alle services**selecteren, vervolgens naar **serviceproviders** zoeken en deze selecteren. Ze kunnen het ook vinden door 'Serviceproviders' in te voeren in het zoekvak boven aan de Azure-portal.
-
-Houd er rekening mee dat op de pagina **Serviceproviders** alleen informatie wordt weergegeven over de serviceproviders die toegang hebben tot de abonnementen of resourcegroepen van de klant via Azure-gedelegeerd bronbeheer. Als een klant werkt met extra serviceproviders die geen gebruik maken van Azure delegated resource management om toegang te krijgen tot de bronnen van de klant, wordt hier geen informatie over die serviceproviders weergegeven.
+Om toegang te krijgen tot de pagina **service providers** in de Azure Portal, kan de klant **alle services**selecteren en vervolgens zoeken naar **service providers** en selecteren. Ze kunnen het ook vinden door ' service providers ' of ' Azure Lighthouse ' in te voeren in het zoekvak boven aan de Azure Portal.
 
 > [!NOTE]
-> Serviceproviders kunnen informatie over hun klanten bekijken door naar **Mijn klanten** te navigeren in de Azure-portal. Zie [Klanten en gedelegeerde bronnen weergeven en beheren voor](view-manage-customers.md)meer informatie.
+> Als u de pagina **service providers** wilt weer geven, moet een gebruiker in de Tenant van de klant beschikken over de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#reader) van de lezer (of een andere ingebouwde rol die lees toegang heeft).
+>
+> Om aanbiedingen toe te voegen, resources te delegeren en aanbiedingen te verwijderen, moet de gebruiker beschikken over de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) van de eigenaar voor het abonnement.
 
-## <a name="view-service-provider-details"></a>Gegevens van serviceproviderweeren
+Houd er wel op dat op de pagina **service providers** alleen informatie wordt weer gegeven over de service providers die toegang hebben tot de abonnementen of resource groepen van de klant via het beheer van gedelegeerde resources van Azure. Als een klant werkt met aanvullende service providers die geen Azure delegated Resource Management gebruiken om toegang te krijgen tot de resources van de klant, wordt hier geen informatie over die service providers weer gegeven.
 
-Als u informatie over serviceproviders wilt bekijken, kan de klant **aanbiedingen provider** selecteren aan de linkerkant van de pagina **Serviceproviders.**
+> [!TIP]
+> Service providers kunnen informatie over hun klanten weer geven door te navigeren naar **mijn klanten** in de Azure Portal. Zie [klanten en gedelegeerde resources weer geven en beheren](view-manage-customers.md)voor meer informatie.
 
-Voor elke serviceprovideraanbieding ziet de klant de naam van de serviceprovider en de bijbehorende aanbieding, samen met de naam die de klant tijdens het onboardingproces heeft ingevoerd.
+## <a name="view-service-provider-details"></a>Details van service provider weer geven
 
-In de kolom **Delegaties** ziet de klant hoeveel abonnementen en/of resourcegroepen zijn gedelegeerd aan de serviceprovider voor die aanbieding. De serviceprovider kan toegang krijgen tot deze abonnementen en/of resourcegroepen en deze beheren op basis van de toegangsniveaus die in de aanbieding zijn opgegeven.
+Om informatie over service providers weer te geven, kan de klant aanbiedingen van de **service provider** selecteren aan de linkerkant van de pagina **service providers** .
+
+Voor elke service provider-aanbieding ziet de klant de naam van de service provider en de bijbehorende aanbieding, samen met de naam die de klant tijdens het voorbereidings proces heeft ingevoerd.
+
+In de kolom **delegaties** ziet de klant hoeveel abonnementen en/of resource groepen zijn overgedragen aan de service provider voor die aanbieding. De service provider kan deze abonnementen en/of resource groepen openen en beheren op basis van de toegangs niveaus die zijn opgegeven in de aanbieding.
+
+## <a name="add-or-remove-service-provider-offers"></a>Aanbiedingen voor service providers toevoegen of verwijderen
+
+Een klant kan een nieuwe aanbieding voor service providers toevoegen via de pagina aanbiedingen van de **service provider** door **aanbieding toevoegen**te selecteren. De service provider moet een aanbieding hebben gepubliceerd voor deze klant. De klant kan vervolgens die aanbieding selecteren in het scherm **persoonlijke aanbiedingen** en vervolgens **maken**selecteren.
+
+Als de klant een service provider-aanbieding wil verwijderen, kunnen ze het prullenbak pictogram in de rij voor die aanbieding selecteren. Nadat de verwijdering is bevestigd, heeft die service provider geen toegang meer tot de resources van de klant die voorheen zijn gedelegeerd voor die aanbieding.
 
 ## <a name="delegate-resources"></a>Resources delegeren
 
-Voordat een serviceprovider toegang heeft tot de resources van een klant en deze beheert, moeten deze worden gedelegeerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen bronnen heeft gedelegeerd, ziet hij een notitie boven aan de sectie Aanbiedingen van de **provider.** Dit laat de klant weten dat ze actie moeten ondernemen voordat de serviceprovider toegang heeft tot de bronnen van de klant.
+Voordat een service provider de resources van een klant kan openen en beheren, moeten ze worden gedelegeerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft overgedragen, ziet u boven aan de sectie aanbiedingen van de **service provider** een opmerking. Zo kan de klant weten dat hij actie moet ondernemen voordat de service provider toegang kan krijgen tot de resources van de klant.
 
-Ga als u abonnementen of resourcegroepen delegeren:
+Abonnementen of resource groepen delegeren:
 
-1. Schakel het selectievakje in voor de rij met de serviceprovider, aanbieding en naam. Selecteer vervolgens **Resources delegeren** boven aan het scherm.
-1. Bekijk in het gedeelte **Details van de aanbieding** van de pagina Bronnen **de** details over de serviceprovider en de aanbieding. Als u roltoewijzingen voor de aanbieding wilt bekijken, selecteert **u Klik hier om de details van de geselecteerde aanbieding te bekijken.**
-1. Selecteer **in** de sectie Gemachtigde **abonnementen of** **Resourcegroepen delegeren**.
-1. Kies de abonnementen en/of resourcegroepen die u wilt delegeren voor deze aanbieding en selecteer **Vervolgens Toevoegen**.
-1. Schakel het selectievakje onder aan de pagina in om te bevestigen dat u deze serviceprovider toegang wilt verlenen tot de bronnen die u hebt geselecteerd en selecteer **Vervolgens Gemachtigde**.
+1. Schakel het selectie vakje in voor de rij met de service provider, de aanbieding en de naam. Selecteer vervolgens **resources delegeren** boven aan het scherm.
+1. Bekijk de details over de service provider en aanbieding in het gedeelte Details van de **aanbieding** van de pagina **gemachtigde resources** . Als u roltoewijzingen voor de aanbieding wilt controleren, selecteert u **hier Klik hier om de details van de geselecteerde aanbieding te bekijken**.
+1. Selecteer in de sectie **gemachtigde** de optie **abonnementen overdragen** of **resource groepen delegeren**.
+1. Kies de abonnementen en/of resource groepen die u wilt delegeren voor deze aanbieding en selecteer vervolgens **toevoegen**.
+1. Schakel het selectie vakje onder aan de pagina in om te bevestigen dat u deze service provider toegang wilt geven tot de resources die u hebt geselecteerd, en selecteer vervolgens **delegeren**.
 
-## <a name="add-or-remove-service-provider-offers"></a>Aanbiedingen van serviceproviders toevoegen of verwijderen
+## <a name="update-service-provider-offers"></a>Aanbiedingen van service providers bijwerken
 
-Een klant kan een nieuwe serviceprovideraanbieding toevoegen op de pagina **Aanbiedingen van** de provider door Aanbieding **toevoegen te**selecteren. De dienstverlener moet een aanbieding voor deze klant hebben gepubliceerd. De klant kan die aanbieding vervolgens selecteren in het scherm **Privé-aanbiedingen** en vervolgens **Maken**selecteren.
+Nadat een klant een aanbieding heeft toegevoegd, kan een service provider een bijgewerkte versie van dezelfde aanbieding publiceren op Azure Marketplace. Het is bijvoorbeeld mogelijk dat een nieuwe roldefinitie moet worden toegevoegd. Als een nieuwe versie van de aanbieding is gepubliceerd, wordt op de pagina aanbiedingen van de **service provider** het pictogram ' update ' weer gegeven in de rij voor die aanbieding. De klant kan dit pictogram selecteren voor een overzicht van de verschillen tussen de huidige versie van de aanbieding en de nieuwe.
 
-Als de klant een serviceprovideraanbieding wil verwijderen, kan hij het pictogram prullenbak in de rij voor die aanbieding selecteren. Na het bevestigen van de verwijdering heeft die serviceprovider geen toegang meer tot de klantbronnen die voorheen voor die aanbieding zijn gedelegeerd.
+ ![Pictogram aanbieding bijwerken](../media/update-offer.jpg)
 
-## <a name="update-service-provider-offers"></a>Serviceprovider bijwerken biedt
+Nadat u de wijzigingen hebt bekeken, kan de klant ervoor kiezen om bij te werken naar de nieuwe versie. Als dit het geval is, worden de autorisaties en andere instellingen die zijn opgegeven in de nieuwe versie toegepast op alle abonnementen en/of resource groepen die zijn gedelegeerd voor die aanbieding.
 
-Nadat een klant een aanbieding heeft toegevoegd, kan een serviceprovider een bijgewerkte versie van dezelfde aanbieding publiceren naar Azure Marketplace. Ze willen bijvoorbeeld een nieuwe roldefinitie toevoegen. Als er een nieuwe versie van de aanbieding is gepubliceerd, wordt op de pagina **'update'** een pictogram voor bijwerken weergegeven in de rij voor die aanbieding. De klant kan dit pictogram selecteren om de verschillen te zien tussen de huidige versie van de aanbieding en de nieuwe.
+## <a name="view-delegations"></a>Delegaties weer geven
 
- ![Pictogram Aanbieding bijwerken](../media/update-offer.jpg)
+Delegaties vertegenwoordigen de roltoewijzingen die machtigingen verlenen aan de service provider voor de resources die een klant heeft gedelegeerd. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **service providers** .
 
-Na het bekijken van de wijzigingen kan de klant ervoor kiezen om te updaten naar de nieuwe versie. Zodra deze zijn uitgevoerd, zijn de autorisaties en andere instellingen die in de nieuwe versie zijn opgegeven, van toepassing op abonnementen en/of resourcegroepen die voor die aanbieding zijn gedelegeerd.
-
-## <a name="view-delegations"></a>Delegaties bekijken
-
-Delegaties vertegenwoordigen de roltoewijzingen die machtigingen verlenen aan de serviceprovider voor de resources die een klant heeft gedelegeerd. Als u deze informatie wilt weergeven, selecteert u **Delegaties** aan de linkerkant van de pagina **Serviceproviders.**
-
-Met filters boven aan de pagina u uw delegatiegegevens sorteren en groeperen. U ook filteren op specifieke klanten, aanbiedingen of zoekwoorden.
+Met filters boven aan de pagina kunt u uw delegatie gegevens sorteren en groeperen. U kunt ook filteren op specifieke klanten, aanbiedingen of tref woorden.
 
 > [!NOTE]
-> Klanten zien deze roltoewijzingen of gebruikers van de serviceprovidertenant die deze rollen hebben gekregen, niet wanneer ze [de toewijzingsgegevens van rollen bekijken voor het gedelegeerde bereik in de Azure-portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) of via API's.
+> Klanten krijgen deze roltoewijzingen niet te zien of gebruikers van de Tenant van de service provider die deze rollen hebben gekregen bij het [weer geven van roltoewijzings gegevens voor het overgedragen bereik in de Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) of via api's.
 
-## <a name="audit-delegations-in-your-environment"></a>Auditdelegaties in uw omgeving
+## <a name="audit-delegations-in-your-environment"></a>Audit overdrachten in uw omgeving
 
-Klanten willen mogelijk inzicht krijgen in de abonnementen en/of resourcegroepen die zijn gedelegeerd aan serviceproviders voor [azure-gedelegeerd resourcebeheer.](../concepts/azure-delegated-resource-management.md) Dit is vooral handig voor klanten met een groot aantal abonnementen, of die veel gebruikers hebben die beheertaken uitvoeren.
+Klanten willen mogelijk inzicht krijgen in de abonnementen en/of resource groepen die zijn gedelegeerd aan service providers voor het beheer van [gedelegeerde resources van Azure](../concepts/azure-delegated-resource-management.md). Dit is met name handig voor klanten met een groot aantal abonnementen of met veel gebruikers die beheer taken uitvoeren.
 
-We bieden een [ingebouwde beleidsdefinitie voor Azure Policy](../../governance/policy/samples/built-in-policies.md#lighthouse) om delegatie van scopes te controleren naar een beheertenant. U dit beleid toewijzen aan een beheergroep die alle abonnementen bevat die u wilt controleren. Wanneer u controleert of dit beleid wordt nageleefd, worden gedelegeerde abonnementen en/of resourcegroepen (binnen de beheergroep waaraan het beleid is toegewezen) in een niet-conforme status weergegeven. U vervolgens de resultaten bekijken en bevestigen dat er geen onverwachte delegaties zijn.
+We bieden een [Azure Policy ingebouwde beleids definitie](../../governance/policy/samples/built-in-policies.md#lighthouse) voor het controleren van de overdracht van scopes naar een beheer Tenant. U kunt dit beleid toewijzen aan een beheer groep die alle abonnementen bevat die u wilt controleren. Wanneer u controleert op naleving van dit beleid, worden alle gedelegeerde abonnementen en/of resource groepen (binnen de beheer groep waaraan het beleid is toegewezen) weer gegeven in een niet-compatibele status. U kunt vervolgens de resultaten bekijken en controleren of er geen onverwachte delegaties zijn.
 
-Zie [Snelstart: Een beleidstoewijzing maken voor](../../governance/policy/assign-policy-portal.md)meer informatie over het toewijzen van een beleid en het weergeven van nalevingsstatusresultaten.
+Zie [Quick Start: een beleids toewijzing maken](../../governance/policy/assign-policy-portal.md)voor meer informatie over het toewijzen van een beleid en het weer geven van de resultaten van de nalevings status.
 
 ## <a name="next-steps"></a>Volgende stappen
- 
+
 - Meer informatie over [Azure Lighthouse](../overview.md).
-- Ontdek hoe serviceproviders klanten kunnen [bekijken en beheren](view-manage-customers.md) door naar Mijn **klanten** te gaan in de Azure-portal.
+- Meer informatie over hoe service providers [klanten kunnen bekijken en beheren](view-manage-customers.md) op de pagina **mijn klanten** in de Azure Portal.

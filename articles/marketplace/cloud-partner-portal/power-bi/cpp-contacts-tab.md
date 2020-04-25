@@ -1,45 +1,45 @@
 ---
-title: Contactgegevens voor een Power BI-app-aanbieding | Azure Marketplace
-description: Velden contactpersonen configureren voor een Power BI-app-aanbieding voor de Microsoft AppSource Marketplace.
+title: Contact gegevens voor een Power BI-app-aanbieding | Azure Marketplace
+description: Velden voor contact personen configureren voor een Power BI app-aanbieding voor de Microsoft AppSource Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f3c6f3b07f878bac6e67be90947fb7109b840a3c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984824"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146749"
 ---
-# <a name="power-bi-app-contacts-tab"></a>Tabblad Contactpersonen van Power BI-app
+# <a name="power-bi-app-contacts-tab"></a>Tabblad Power BI app-contact personen
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw Power BI app-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [Power bi overzicht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) van het maken van apps voor het beheren van uw gemigreerde aanbiedingen.
 
-Gebruik het tabblad **Contactpersonen** van de pagina **Nieuwe aanbieding** om technische en gebruikersondersteuningsbronnen voor uw aanbieding te bieden. Het is verdeeld in twee secties: **Engineering** en **Customer Support**.
+Gebruik het tabblad **contact personen** van de pagina **nieuw aanbod** om technische en gebruikers ondersteunings bronnen voor uw aanbieding te bieden. Het is onderverdeeld in twee secties: **technische** en **klant ondersteuning**.
 
 ![Tabblad Contactpersonen](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Velden contactpersonen 
+## <a name="contacts-fields"></a>Velden voor contact personen 
 
-In de volgende tabel wordt het doel van elk veld beschreven.  Vereiste velden worden aangeklaagd door een sterretje (*). 
+In de volgende tabel wordt het doel van elk veld beschreven.  Vereiste velden worden gedicteerd door een asterisk (*). 
 
 |   Veld               |   Beschrijving                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Contactpersoon voor engineering* | Dient als technisch contact tussen AppSource en uw organisatie.    |
-| **Naam\***              | De naam van de persoon of groep die fungeert als technische of technische ondersteuning. |
-| **Email\***             | Het e-mailadres van dit technische contact.                                  |
-| **Telefoon\***             | Het telefoonnummer van de technische ondersteuning.                                       |
-| *Contactpersoon voor ondersteuning*     | Ontvangt ondersteuningstickets die door klanten binnen AppSource zijn geopend.            |
-| **Naam\***              | De naam van de persoon of groep die fungeert als klantenservice.              |
-| **Email\***             | Het e-mailadres van de klantenservice.                                        |
+| *Technische contact persoon* | Fungeert als technische contact persoon tussen AppSource en uw organisatie.    |
+| **Naam\***              | De naam van de persoon of groep die als technische of technisch ondersteuning fungeert. |
+| **E-mail\***             | Het e-mail adres van deze technische contact persoon.                                  |
+| **Telefoons\***             | Het telefoon nummer van de technische ondersteuning.                                       |
+| *Contact opnemen met ondersteuning*     | Ontvangt ondersteunings tickets die zijn geopend door klanten in AppSource.            |
+| **Naam\***              | De naam van de persoon of groep die fungeert als klant ondersteuning.              |
+| **E-mail\***             | Het e-mail adres van de klant ondersteuning.                                        |
 |   |   |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw Power BI-app-aanbieding hebt voltooid, bevestigt u dat u alle bijbehorende [technische elementen](./cpp-create-technical-assets.md) voor de aanbieding hebt gemaakt.
+Nadat u uw Power BI app-aanbieding hebt voltooid, bevestigt u dat u alle bijbehorende [technische activa](./cpp-create-technical-assets.md) voor de aanbieding hebt gemaakt.

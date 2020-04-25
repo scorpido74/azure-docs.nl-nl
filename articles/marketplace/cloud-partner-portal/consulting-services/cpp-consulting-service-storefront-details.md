@@ -1,111 +1,111 @@
 ---
-title: Storefront details voor advies aanbieding | Azure Marketplace
-description: Definieer storefront-details in een Azure- of Dynamics 365-consultingserviceaanbieding in de Cloud Partner Portal.
+title: Voer de details van de winkel voor de Consulting-aanbieding in | Azure Marketplace
+description: Definieer de details van de winkel in een Azure-of Dynamics 365 consulting-service aanbieding in de Cloud Partner-portal.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 65713eaf1651a6c02084751471504b5d022dfe14
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9fd1330e0ca0a49556e79044570173adaf458e13
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985045"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148151"
 ---
 # <a name="storefront-details-tab"></a>Tabblad Details van webwinkel
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw aanbiedingen van uw advies service naar partner Center verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in het overzicht van het [maken van Consulting Services](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) voor het beheren van uw gemigreerde aanbiedingen.
 
-In dit artikel wordt uitgelegd hoe u de gegevens voor uw etalage invoert. Het tabblad **Storefront Details** bestaat uit de volgende secties:
+In dit artikel wordt uitgelegd hoe u de details van uw winkel opgeeft. Het tabblad Details van de **winkel** bestaat uit de volgende secties:
 
--   **Aanbiedingsgegevens**
--   **Uitgeversgegevens**
--   **Aanbiedingsgegevens**
--   **Marketingartefacten**
+-   **Details van aanbieding**
+-   **Informatie over Uitgever**
+-   **Details van vermelding**
+-   **Marketing artefacten**
 
-![Een nieuwe adviesserviceaanbieding maken - tabblad Storefront Details](media/consultingoffer-storefront-details.png)
-
-
-## <a name="offer-details"></a>Details van de aanbieding
-
-De sectie **Aanbiedingsdetails** bevat de volgende vakken:
-
--   **Overzicht van de aanbieding\***
--   **Aanbiedingsbeschrijving\***
+![Een nieuwe consulting service-aanbieding maken-tabblad Details van de winkel](media/consultingoffer-storefront-details.png)
 
 
-### <a name="offer-summary"></a>Overzicht van de aanbieding\*
+## <a name="offer-details"></a>Details van aanbieding
 
-Het aanbiedingsoverzicht is een korte beschrijving van uw aanbieding die net onder de aanbiedingsnaam wordt weergegeven. Gebruik platte tekst om het aanbiedingsoverzicht in te voeren, zonder regeleinden. De volgende voorbeelden zijn goede aanbiedingssamenvattingen samen met hun overeenkomstige aanbiedingsnamen.
+De sectie Details van de **aanbieding** bevat de volgende vakken:
 
-*Voorbeeld 1*
+-   **Overzicht van aanbieding\***
+-   **Beschrijving van aanbieding\***
 
--   **Naam aanbieding**: Cloud Analytics: 3-daagse workshop
--   **Overzicht van de**aanbieding : Overzicht van Microsoft Azure en Power BI, beoordeling van de huidige omgeving en mini-POC.
 
-*Voorbeeld 2*
+### <a name="offer-summary"></a>Overzicht van aanbieding\*
 
--   **Aanbiedingsnaam**: Industrial Azure IoT: 30-daagse proof of concept
--   **Aanbiedingsoverzicht:** Maak een productpilot met industrieel verband om apparatuur in het veld veilig te verbinden met een Azure IoT Hub-oplossing met dashboards, rapporten en meldingen.
+De samen vatting van de aanbieding is een korte beschrijving van uw aanbieding die precies onder de naam van de aanbieding wordt weer gegeven. Gebruik tekst zonder opmaak om de samen vatting van de aanbieding in te voeren zonder regel einden. De volgende voor beelden zijn goede samen vattingen samen met de bijbehorende aanbiedings namen.
 
-*Voorbeeld 3*
+*Voor beeld 1*
 
--   **Aanbiedingsnaam**: Professional Services: 1-Hr Briefing
--   **Overzicht van aanbiedingen**: Overzicht en demo van vooraf geconfigureerde, uitgebreide Dynamics 365 for Operations-oplossing die een verbeterd beheer van projecten, facturering en resources voor professionele services biedt.
+-   **Aanbiedings naam**: Cloud Analytics: 3-daags workshop
+-   **Overzicht**van de aanbieding: overzicht van Microsoft Azure en Power bi, de evaluatie van de huidige omgeving en de mini-haalbaarheids test.
 
-*Voorbeeld 4*
+*Voor beeld 2*
 
--   **Aanbiedingsnaam**: Power BI in Your World: 4-Hr Workshop
--   **Aanbiedingsoverzicht**: Ga aan de slag met je eerste dashboard en leer de beste procedures. Voor maximaal 12 studenten, uitgevoerd op het terrein.
+-   **Aanbiedings naam**: industrieel Azure IOT: concept van 30 dagen
+-   **Overzicht**van de aanbieding: Maak een product leider met een industrieel verbinding om apparaten in het veld veilig te verbinden met een Azure IOT hub-oplossing met Dash boards, rapporten en meldingen.
+
+*Voor beeld 3*
+
+-   **Aanbiedings naam**: Professional Services: 1-HR-informatie
+-   **Overzicht**van de aanbieding: overzicht en demo van vooraf geconfigureerde, uitgebreide Dynamics 365 voor Operations-oplossing die verbeterd beheer van projecten, facturering en resources voor professionele services biedt.
+
+*Voor beeld 4*
+
+-   **Aanbiedings naam**: Power bi in uw wereld: 4-HR workshop
+-   **Overzicht**van de aanbieding: Ga aan de slag met uw eerste dash board en lees de aanbevolen procedures. Voor Maxi maal 12 studenten die on-site worden uitgevoerd.
 
 *Voorbeeld 5*
 
--   **Aanbiedingsnaam**: Dynamics and Projects: 3-Day Assessment
--   **Aanbiedingsoverzicht**: Vereisten verzamelen en beoordelen voor een ERP-oplossing ontworpen voor professionele dienstverleners en projectgedreven bedrijven.
+-   **Aanbiedings naam**: dynamiek en projecten: evaluatie van 3 dagen
+-   **Overzicht**van de aanbieding: vereisten voor het verzamelen en evalueren van een ERP-oplossing die is ontworpen voor professionele dienst verleners en op het project gestuurde bedrijven.
 
 
-### <a name="offer-description"></a>Aanbiedingsbeschrijving\*
+### <a name="offer-description"></a>Beschrijving van aanbieding\*
 
-Voer de beschrijving van de adviesserviceaanbieding in het vak **Beschrijving van** de aanbieding in. Een goede aanbiedingsbeschrijving omvat exacte details van hoe de betrokkenheid eruit ziet en het eind dat aan de klant kan worden geleverd. Het moet duidelijk helpen de klant te begrijpen wat ze krijgen. Vermeld hoe uw aanbod zich verhoudt tot het Microsoft-product waarvoor u adviesservices aanbiedt.
+Voer in het vak **Beschrijving van aanbieding** de beschrijving in van het advies service-aanbod. Een beschrijving van een goede aanbieding is van toepassing op de exacte details van de betrokkenheid en het eind product van de klant. Zo zou de klant duidelijk kunnen begrijpen wat ze krijgen. Geef aan hoe uw aanbieding betrekking heeft op het micro soft-product waarvoor u advies services aanbiedt.
 
-Vermeld uw e-mailadres of telefoonnummer niet in uw aanbiedingsbeschrijving. Een **knop Contact mij** is inbegrepen bij uw aanbieding om leads te uploaden naar het leadmanagementdoel dat u identificeert voor uw aanbieding.
+Neem uw e-mail adres of telefoon nummer niet op in de beschrijving van uw aanbieding. Er is een knop **contact** opnemen met uw aanbieding om leads te uploaden naar het doel voor het beheer van doelen dat u voor uw aanbieding identificeert.
 
-Voer de aanbiedingsbeschrijving in markdown-indeling in. Zie [Markdown gebruiken voor het schrijven](/contribute/markdown-reference)van documenten als u niet bekend bent met Markdown of opmaak voor HTML.
+Voer de beschrijving van de aanbieding in met de indeling prijs verlaging. Zie [prijs verlaging gebruiken voor het schrijven van documenten](/contribute/markdown-reference)als u niet bekend bent met de prijs verlaging of het opmaken van een HTML-bestand.
 
-Gebruik deze indelingen om ervoor te zorgen dat uw aanbieding gemakkelijk te lezen is voor uw klanten.
+Gebruik deze indelingen om ervoor te zorgen dat uw klanten gemakkelijk te lezen zijn.
 
-Houd de beschrijving van uw aanbieding kort en houd u aan de tekenlimiet omdat gebruikers geen lange tekst willen lezen. U ook marketingbrochures, factsheets en andere documenten uploaden die uw aanbieding in dieper detail beschrijven.
+Houd de korte beschrijving van uw aanbieding en beperk de teken limiet, want gebruikers hoeven geen lange tekst te lezen. U kunt ook marketing brochures, feiten bladen en andere documenten uploaden waarin uw aanbieding uitgebreid wordt beschreven.
 
-In het volgende voorbeeld wordt een goed samengestelde aanbiedingsbeschrijving en de bijbehorende naam en samenvatting aangetoond:
+In het volgende voor beeld ziet u een goed opgebouwde beschrijving van het aanbod en de bijbehorende naam en samen vatting:
 
-**Naam aanbieding**: Cloud Analytics: 3-daagse workshop
+**Aanbiedings naam**: Cloud Analytics: 3-daags workshop
 
-**Overzicht van de**aanbieding : Overzicht van Microsoft Azure en Power BI, beoordeling van de huidige omgeving en mini-POC.
+**Overzicht**van de aanbieding: overzicht van Microsoft Azure en Power bi, de evaluatie van de huidige omgeving en de mini-haalbaarheids test.
 
-**Aanbiedingsbeschrijving**: Deze 3-daagse workshop is voor technische en zakelijke leiders en wordt ter plaatse gehouden in de faciliteit van de klant.
+**Beschrijving**van de aanbieding: deze 3-daags workshop is voor technische en zakelijke leiders en wordt op locatie op de site van de client bewaard.
 
-Agenda
+Vergaderingen
 
 Dag 1
 
--   Richt zich op het beveiligen, schalen en ordenen van gegevens binnen de Microsoft-cloud met Azure Data Lake, Azure HDInsight of Azure SQL Data Warehouse.
+-   Richt zich op hoe u gegevens in de micro soft-Cloud kunt beveiligen, schalen en indelen met behulp van Azure Data Lake, Azure HDInsight of Azure SQL Data Warehouse.
 
 Dag 2
 
--   Voorziet in het configureren en implementeren van geavanceerde analyseoplossingen met Microsoft R en Azure Machine Learning.
+-   In dit artikel wordt beschreven hoe u geavanceerde analyse oplossingen kunt configureren en implementeren met micro soft R en Azure Machine Learning.
 
 Dag 3
 
--   Omvat hoe u bruikbare inzichten verzamelen en analyses operationaliseren met Power BI en bevat een samenwerkingssessie om samen een Power BI-dashboard te bouwen.
+-   Hierin wordt beschreven hoe u actie bare inzichten en operationeel maken Analytics kunt tekenen met Power BI en een samenwerkings sessie bevat om een Power BI dash board samen te stellen.
 
 Producten
 
-Tegen het einde van de workshop kan de klant een plan op hoog niveau en een implementatieroadmap voor data- en analyseoplossingen in de Microsoft-cloud definiëren.
+Aan het einde van de workshop kan de client een abonnement op hoog niveau en een implementatie schema voor gegevens-en analyse oplossingen in de micro soft-Cloud definiëren.
 
-Het volgende voorbeeldmarkdownbestand is voor de vorige aanbieding:
+Het volgende voor beeld van een kortings bestand is voor de vorige aanbieding:
 
     This 3-day workshop is for technical and business leaders and is held on-site at the client's facility.
 
@@ -132,83 +132,83 @@ Het volgende voorbeeldmarkdownbestand is voor de vorige aanbieding:
 
 **MPN-id**
 
-Voer uw MPN-id (9-cijferige Microsoft Partner Network) in. Als u geen MPN-id hebt, u er een krijgen in het Microsoft Partner Center.
+Voer uw Microsoft Partner Network-ID (MPN) van negen cijfers in. Als u nog geen MPN-ID hebt, kunt u er een aanschaffen bij het micro soft Partner Center.
 
-**Partnercentrum-id**
+**Partner centrum-ID**
 
-Voer uw nieuwe Partner Center ID in, als u er een hebt.
+Voer uw nieuwe partner centrum-ID in, als u er een hebt.
 
 **MPN-id**
 
-Voer een geheime sleutel in om een voorbeeld van uw aanbieding op AppSource te bekijken voordat deze live gaat.
-Deze id is geen wachtwoord.
+Voer een geheime sleutel in om uw aanbieding op AppSource te bekijken voordat deze live gaat.
+Deze id is geen wacht woord.
 
 
-## <a name="listing-details"></a>Aanbiedingsgegevens
+## <a name="listing-details"></a>Details van vermelding
 
-**Consulting servicetype**
+**Type advies service**
 
-Microsoft richt zich uitsluitend op vaste scope, vaste duur, geschatte of vaste prijs (of gratis), en voornamelijk presales-georiënteerde consulting service aanbod voor een enkele klant. Soorten diensten zijn beoordeling, briefing, implementatie, proof of concept, en workshop aanbiedingen uitgevoerd, hetzij on-site of virtueel. De Marktplaats voor consultingservices van AppSource biedt geen ondersteuning voor vermeldingen voor beheerde of abonnementsservices.
-
->[!Note]
->AppSource consulting services zijn niet de juiste marktplaats voor abonnement of on-demand trainingen.
-
-De volgende vijf soorten aanbiedingen zijn inbegrepen:
-
--   **Beoordeling**: Een evaluatie van de omgeving van een klant om de toepasbaarheid van een oplossing te bepalen en een schatting te geven van kosten en timing.
--   **Briefing**: Een inleiding tot een oplossing of een consulting service om de interesse van de klant te trekken met behulp van frameworks, demo's en voorbeelden van klanten. Briefings moeten ter plaatse worden gehouden.
--   **Implementatie**: Een complete installatie die resulteert in een volledig werkende oplossing. Voor deze pilot raadt Microsoft aan om oplossingen te beperken die binnen een week of minder kunnen worden geïmplementeerd.
--   **Proof of concept**: Een implementatie met beperkte scope om te bepalen of een oplossing voldoet aan de eisen van een klant.
--   **Workshop**: Een interactieve betrokkenheid bij een klant die trainingen, briefings, assessments of demo's kan omvatten die zijn gebaseerd op de gegevens of omgeving van de klant.
-
-**Beschikbaarheid land/regio**
-
-Selecteer het land en de regio waar deze adviesserviceaanbieding beschikbaar is. Eén aanbieding kan niet in meerdere landen of regio's worden gepubliceerd. Er moet een nieuw aanbod worden gemaakt voor elk land of regio.
+Micro soft richt zich uitsluitend op vaste omvang, vaste duur, geschatte of vaste prijs (of gratis), en voornamelijk preverkoop gerichte consulting service aanbiedingen voor één klant. Typen services zijn evaluatie, informatie, implementatie, testen van concepten en workshop-aanbiedingen die on-site of bijna worden uitgevoerd. De AppSource Consulting Services Marketplace biedt geen ondersteuning voor aanbiedingen voor beheerde of abonnements Services.
 
 >[!Note]
->AppSource consulting diensten zijn momenteel live in de Verenigde Staten, het Verenigd Koninkrijk en Canada. U een aanbieding indienen voor een land/regio die nog niet live is, en het wordt beoordeeld en voorbereid om live te gaan. Een minimum aantal aanbiedingen klaar om live te gaan zijn nodig om een nieuw land / regio te openen, dus aanbiedingen voor landen / regio's die niet live zijn aangemoedigd.
+>AppSource Consulting Services is niet de juiste Marketplace voor training over abonnementen of op aanvraag.
+
+De volgende vijf typen aanbiedingen zijn opgenomen:
+
+-   **Beoordeling**: een evaluatie van de omgeving van een klant om de toepasselijkheid van een oplossing te bepalen en een schatting te maken van de kosten en timing.
+-   Meer **informatie**: een inleiding tot een oplossing of een advies service om de interesse van klanten te tekenen met behulp van frameworks, demo's en klant voorbeelden. De informatie moet on-site worden uitgevoerd.
+-   **Implementatie**: een volledige installatie die resulteert in een volledig werkende oplossing. Voor deze pilot raadt micro soft aan oplossingen te beperken die in een week of minder kunnen worden geïmplementeerd.
+-   **Testen van concept**: een implementatie met een beperkt bereik om te bepalen of een oplossing voldoet aan de vereisten van een klant.
+-   **Workshop**: een interactieve betrokkenheid die wordt uitgevoerd op de lokale locatie van een klant, zoals trainings sessies, bevestigingen, evaluaties of demo's die zijn gebaseerd op de gegevens of omgeving van de klant.
+
+**Beschik baarheid land/regio**
+
+Selecteer het land en de regio waar deze advies service beschikbaar is. Een enkele aanbieding kan niet worden gepubliceerd in meerdere landen of regio's. Voor elk land of elke regio moet een nieuwe aanbieding worden gemaakt.
+
+>[!Note]
+>AppSource Consulting Services zijn momenteel Live in de Verenigde Staten, het Verenigd Konink rijk en Canada. U kunt een aanbieding voor een land/regio verzenden die nog niet live is en deze wordt beoordeeld en voor bereid om live te gaan. Voor het openen van een nieuw land/nieuwe regio is een mini maal aantal aanbiedingen gereed voor gebruik nodig, dus aanbiedingen voor landen/regio's die niet live zijn, worden aangemoedigd.
 
 **Bedrijfstakken**
 
-Selecteer de sectoren waarop uw adviesservice het meest van toepassing is.
+Selecteer de branches waarvoor uw Consulting Service-aanbod het meest van toepassing is.
 
 **Duur**
 
-Selecteer een getal (bijvoorbeeld 3 of 4) onder **Duur**en selecteer **vervolgens Uur,** **Dag**of **Week**.
+Selecteer een nummer (bijvoorbeeld 3 of 4) onder **duur**en selecteer vervolgens **uur**, **dag**of **week**.
 
 **Primaire producten**
 
-Als u wilt publiceren naar de Azure Marketplace, selecteert u **Azure** als het primaire product. Selecteer vervolgens de relevante **oplossingsgebieden.**
+Als u wilt publiceren naar Azure Marketplace, selecteert u **Azure** als het primaire product. Selecteer vervolgens de relevante **oplossings gebieden**.
 
-Als u wilt publiceren naar AppSource, selecteert u **Dynamics 365,** **Power BI**of **PowerApps** als uw primaire product. U ook andere relevante **toepasselijke producten**selecteren. Vervolgens wordt uw adviesserviceaanbieding weergegeven in vermeldingen die zijn gekoppeld aan elk van deze producten op AppSource.
+Als u wilt publiceren op AppSource, selecteert u **Dynamics 365**, **Power bi**of **PowerApps** als uw primaire product. U kunt ook andere relevante **producten**selecteren. Vervolgens bevat uw advies service aanbieding in aanbiedingen die zijn gekoppeld aan elk van deze producten op AppSource.
 
 **Relevante competenties**
 
-Selecteer competenties die relevant zijn voor deze aanbieding om ze te laten weergeven, samen met de aanbiedingsgegevens.
+Selecteer de competenties die relevant zijn voor deze aanbieding om ze samen met de details van de aanbieding weer te geven.
 
-## <a name="marketing-artifacts"></a>Marketingartefacten
+## <a name="marketing-artifacts"></a>Marketing artefacten
 
-**Bedrijfslogo (.png-indeling, 48 x 48 pixels)**
+**Bedrijfs logo (PNG-indeling, 48 x 48 pixels)**
 
-Upload een afbeelding die wordt weergegeven op de tegel van uw aanbieding op de pagina aanbiedingsgalerieweergave. De afbeelding moet een .png-afbeelding zijn met een resolutie van 48 x 48 pixels.
+Upload een afbeelding die wordt weer gegeven op de tegel van uw aanbieding op de weergave pagina voor de aanbiedings galerie. De afbeelding moet een PNG-afbeelding zijn met een resolutie van 48 x 48 pixels.
 
-**Bedrijfslogo (.png-indeling, 216 x 216 pixels)**
+**Bedrijfs logo (PNG-indeling, 216 x 216 pixels)**
 
-Upload een afbeelding die wordt weergegeven op de detailpagina van uw aanbieding. De afbeelding moet een .png-afbeelding zijn met een resolutie van 216 x 216 pixels.
+Upload een afbeelding die wordt weer gegeven op de pagina Details van uw aanbieding. De afbeelding moet een PNG-afbeelding zijn met een resolutie van 216 x 216 pixels.
 
 **Video's (beperkt tot vier)**
 
-Upload maximaal vier casestudyvideo's voor klanten of referentievideo's voor klanten. Als je geen video hebt, upload je een video waarin de expertise van je bedrijf met betrekking tot het aanbod wordt uitgelegd. Als u een Power BI- of PowerApps-oplossingsshowcase hebt, uploadt u de showcasevideo hier. Videolinks moeten voor YouTube of Vimeo zijn.
+Upload Maxi maal vier Video's over de casestudy's van klanten of Video's van klanten. Als u er geen hebt, kunt u een video uploaden met uitleg over de expertise van uw bedrijf met betrekking tot de aanbieding. Als u een show case voor Power BI of PowerApps hebt, kunt u hier de video met show cases uploaden. Video koppelingen moeten voor YouTube of Vimeo zijn.
 
 **Documenten (beperkt tot drie)**
 
-Upload de marketingbrochure waarin uw adviesaanbod in detail wordt beschreven. U ook een bedrijfsoverzicht, factsheets of casestudies uploaden. Zorg ervoor dat uw documenten de huidige namen van aanbevolen producten gebruiken en niet over concurrerende microsoft-producten beschikken.
+Upload de marketing brochure met een beschrijving van uw advies service-aanbieding. U kunt ook een overzicht van het bedrijf, feiten overzichten of casestudy's uploaden. Zorg ervoor dat uw documenten de huidige namen van aanbevolen producten gebruiken en geen gebruik maken van micro soft concurrerende producten.
 
-**Screenshots (beperkt tot vijf)**
+**Scherm afbeeldingen (beperkt tot vijf)**
 
-Upload maximaal vijf afbeeldingen met meer informatie over uw aanbieding, de resultaten of uw bedrijf. Een fragment van uw marketingbrochure, een relevante dia van een presentatie of een afbeelding die het momentum of de expertise van het bedrijf laat zien, zijn enkele voorbeelden.
+Upload Maxi maal vijf installatie kopieën die meer informatie bieden over uw aanbieding, het bijbehorende product of uw bedrijf. Een fragment van uw marketing brochure, een relevante dia van een presentatie of een afbeelding waarin de momentum of deskundigheid van uw bedrijf wordt weer gegeven, zijn enkele voor beelden.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U bent nu klaar om [uw adviesaanbod](./cpp-consulting-service-publish-offer.md) te publiceren.
+U bent nu klaar om [uw aanbod voor advies services te publiceren](./cpp-consulting-service-publish-offer.md) .

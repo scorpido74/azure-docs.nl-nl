@@ -1,50 +1,51 @@
 ---
-title: Veelgestelde vragen over Azure Cosmos DB API voor Cassandra.
-description: Krijg antwoorden op veelgestelde vragen over Azure Cosmos DB API voor Cassandra.
+title: Veelgestelde vragen over de Cassandra-API voor Azure Cosmos DB
+description: Krijg antwoorden op veelgestelde vragen over de Cassandra-API voor Azure Cosmos DB.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 416f0c5f995a101298e84c81317c7d39fb5d43f8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727383"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148329"
 ---
-# <a name="frequently-asked-questions-about-the-azure-cosmos-db-api-for-cassandra"></a>Veelgestelde vragen over de Azure Cosmos DB API voor Cassandra
+# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API voor Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-cassandra-api"></a>Wat zijn enkele belangrijke verschillen tussen Apache Cassandra en Cassandra API?
+## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Wat zijn enkele belang rijke verschillen tussen Apache Cassandra en de Cassandra-API?
 
-- Apache Cassandra beveelt een limiet van 100 MB aan voor de grootte van een partitiesleutel. Cassandra API maakt maximaal 10 GB per partitie mogelijk.
-- Apache Cassandra u duurzame commits uitschakelen - dat wil zeggen het schrijven overslaan naar de commit log en ga direct naar de Memtable (s). Dit kan leiden tot verlies van gegevens als het knooppunt naar beneden gaat voordat Memtables wordt doorgespoeld naar SStables op schijf. Cosmos DB doet altijd duurzame commits, zodat je nooit gegevensverlies zult hebben.
-- Apache Cassandra kan verminderde prestaties zien als de werkbelasting veel vervangingen en/of verwijderingen met zich meebrengt. De reden hiervoor is tombstones dat de leeswerkbelasting moet overslaan om de nieuwste gegevens op te halen. Cassandra API ziet geen verminderde leesprestaties wanneer de werkbelasting veel vervangingen en/of verwijderingen heeft.
-- Tijdens scenario's voor hoge vervangingsworkloads moet verdichting worden uitgevoerd om SSTables op schijf samen te voegen (samenvoegen is nodig omdat de schrijfbewerkingen van Apache Cassandra alleen worden toegevoegd, dus meerdere updates worden opgeslagen als afzonderlijke SSTable-vermeldingen die periodiek moeten worden samengevoegd). Dit kan ook leiden tot verminderde leesprestaties tijdens verdichting. Dit gebeurt niet in Cassandra API omdat het geen verdichting implementeert.
-- Het instellen van een replicatiefactor van 1 is mogelijk met Apache Cassandra. Het leidt echter tot een lage beschikbaarheid als het enige knooppunt met de gegevens naar beneden gaat. Dit is geen probleem met Azure Cosmos DB Cassandra API omdat er altijd een replicatiefactor van 4 (quorum van 3) is.
-- Het toevoegen/verwijderen van knooppunten in Apache Cassandra vereist veel handmatige interventie, maar ook een hoge CPU op het nieuwe knooppunt, terwijl bestaande knooppunten een aantal van hun tokenbereiken verplaatsen naar het nieuwe knooppunt. Dit is hetzelfde bij het ontmantelen van een bestaand knooppunt. Het uitschalen gebeurt echter naadloos onder de motorkap in Azure Cosmos DB Cassandra API, zonder problemen die worden waargenomen in de service/toepassing.
-- Het is niet nodig om num_tokens in te stellen op elk knooppunt in het cluster zoals in Apache Cassandra. Knooppunten en tokenbereiken worden volledig beheerd door Cosmos DB.
-- Azure Cosmos DB Cassandra API is volledig beheerd, zodat u niet de nodetool commando's zoals reparatie, ontmanteling etc. die worden gebruikt in Apache Cassandra.
+- Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een partitie sleutel. De Cassandra-API voor Azure Cosmos DB biedt Maxi maal 10 GB per partitie.
+- Met Apache Cassandra kunt u duurzame door voeringen uitschakelen. U kunt de schrijf bewerkingen naar het commit-logboek overs Laan en direct naar de memtables gaan. Dit kan leiden tot verlies van gegevens als het knoop punt uitvalt voordat memtables naar SSTables op schijf worden leeg gemaakt. Azure Cosmos DB bevat altijd duurzame door voeringen om gegevens verlies te voor komen.
+- Apache Cassandra kan afnemende prestaties zien als de werk belasting veel vervangingen of verwijderingen omvat. De reden is tombstones dat de leeswerk belasting moet overs Laan om de meest recente gegevens op te halen. Het Cassandra-API ziet geen afnemende Lees prestaties wanneer de werk belasting veel vervangingen of verwijderingen heeft.
+- Tijdens scenario's met hoge vervangen werk belastingen moet compressie worden uitgevoerd om SSTables op schijf samen te voegen. (Een samen voeging is vereist omdat de schrijf bewerkingen van Apache Cassandra alleen worden toegevoegd. Meerdere updates worden opgeslagen als afzonderlijke SSTable-vermeldingen die periodiek moeten worden samengevoegd. Deze situatie kan ook leiden tot minder Lees prestaties tijdens het comprimeren. Deze prestatie-impact treedt niet op in de Cassandra-API omdat de API geen compressie implementeert.
+- Het instellen van een replicatie factor van 1 is mogelijk met Apache Cassandra. Het leidt echter tot een geringe Beschik baarheid als het enige knoop punt met de gegevens uitvalt. Dit is geen probleem met de Cassandra-API voor Azure Cosmos DB omdat er altijd een replicatie factor van 4 (quorum van 3) is.
+- Het toevoegen of verwijderen van knoop punten in Apache Cassandra vereist hand matige interventie, samen met een hoog CPU-gebruik op het nieuwe knoop punt, terwijl bestaande knoop punten een aantal van hun token bereik naar het nieuwe knoop punt verplaatsen. Deze situatie is hetzelfde wanneer u een bestaand knoop punt buiten gebruik stelt. De Cassandra-API kan echter worden geschaald zonder problemen die in de service of toepassing zijn waargenomen.
+- Het is niet nodig om **num_tokens** in te stellen op elk knoop punt in het cluster als Apache Cassandra. Met Azure Cosmos DB worden knoop punten en Token reeksen volledig beheerd.
+- De Cassandra-API wordt volledig beheerd. U hebt de **nodetool** -opdrachten, zoals herstellen en buiten gebruik, niet nodig die worden gebruikt in Apache Cassandra.
 
 ## <a name="other-frequently-asked-questions"></a>Andere veelgestelde vragen
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Wat wordt de protocolversie ondersteund door Azure Cosmos DB Cassandra API? Is er een plan om andere protocollen te ondersteunen?
+### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Welke Protocol versie ondersteunt de Cassandra-API?
 
-Azure Cosmos DB Cassandra API ondersteunt CQL versie 3.x. Het is CQL compatibiliteit is gebaseerd op de openbare [Apache Cassandra GitHub repository](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Als u feedback hebt over het ondersteunen van andere protocollen, laat [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)het ons dan weten via [spraakfeedback van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db) of stuur een e-mail naar .
+De Cassandra-API voor Azure Cosmos DB ondersteunt CQL versie 3. x. De compatibiliteit van het CQL is gebaseerd op de open bare [Apache Cassandra github-opslag plaats](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Als u feedback hebt over de ondersteuning van andere protocollen, laat u ons weten via [feedback van gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db) of het verzenden van e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
 
-### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Waarom is het kiezen van een doorvoer voor een tabel een vereiste?
+### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Waarom wordt de door Voer voor een vereiste voor een tabel gekozen?
 
-Azure Cosmos DB stelt de standaarddoorvoer voor uw container in op basis van waar u de tabel maakt van - portal of CQL.
-Azure Cosmos DB biedt garanties voor prestaties en latentie, met bovengrenzen bij gebruik. Deze garantie is mogelijk wanneer de motor governance kan afdwingen op de activiteiten van de huurder. Het instellen van doorvoer zorgt ervoor dat u de gegarandeerde doorvoer en latentie krijgt, omdat het platform deze capaciteit reserveert en het succes van de werking garandeert.
-U [de doorvoer elastisch wijzigen](manage-scale-cassandra.md) om te profiteren van de seizoensgebondenheid van uw toepassing en kosten te besparen.
+Azure Cosmos DB stelt de standaard doorvoer voor uw container in op basis van waar u de tabel maakt vanuit: Azure Portal of CQL.
 
-Het doorvoerconcept wordt uitgelegd in het artikel [Aanvraageenheden in Azure Cosmos DB.](request-units.md) De doorvoer voor een tabel wordt gelijkmatig verdeeld over de onderliggende fysieke partities.
+Azure Cosmos DB biedt garanties voor prestaties en latentie, met een bovengrens voor bewerkingen. Deze garanties zijn mogelijk wanneer de engine governance kan afdwingen voor de bewerkingen van de Tenant. Door de door Voer in te stellen, zorgt u ervoor dat u de gegarandeerde door Voer en latentie krijgt, omdat het platform deze capaciteit reserveert en de bewerking is geslaagd.
+U kunt de [door Voer elastisch wijzigen](manage-scale-cassandra.md) om te profiteren van de seizoensgebondenheid van uw toepassing en kosten besparingen.
 
-### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wat is de standaard RU/s van de tabel wanneer deze is gemaakt via CQL? Wat als ik het moet veranderen?
+Het concept van de door Voer wordt uitgelegd in de [aanvraag eenheden in azure Cosmos DB](request-units.md) artikel. De door Voer voor een tabel wordt gelijkmatig verdeeld over de onderliggende fysieke partities.
 
-Azure Cosmos DB gebruikt aanvraageenheden per seconde (RU/s) als valuta voor het leveren van doorvoer. Tabellen gemaakt via CQL hebben 400 RU. U de RU van het portaal wijzigen.
+### <a name="what-is-the-throughput-of-a-table-thats-created-through-cql"></a>Wat is de door Voer van een tabel die is gemaakt via CQL?
 
-CQL (CQL)
+Azure Cosmos DB gebruikt aanvraag eenheden per seconde (RU/s) als een valuta voor het leveren van door voer. Tabellen die zijn gemaakt via CQL hebben standaard 400 RU. U kunt de RU van de Azure Portal wijzigen.
+
+CQL
 
 ```shell
 CREATE TABLE keyspaceName.tablename (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=1200
@@ -60,125 +61,132 @@ outgoingPayload["cosmosdb_provisioned_throughput"] = Encoding.UTF8.GetBytes(prov
 simpleStatement.SetOutgoingPayload(outgoingPayload);
 ```
 
-### <a name="what-happens-when-throughput-is-used-up"></a>Wat gebeurt er als de doorvoer is opgebruikt?
+### <a name="what-happens-when-throughput-is-used-up"></a>Wat gebeurt er wanneer de door Voer wordt gebruikt?
 
-Azure Cosmos DB biedt garanties voor prestaties en latentie, met bovengrenzen bij gebruik. Deze garantie is mogelijk wanneer de motor governance kan afdwingen op de activiteiten van de huurder. Dit is mogelijk op basis van het instellen van de doorvoer, wat ervoor zorgt dat u de gegarandeerde doorvoer en latentie krijgt, omdat platform deze capaciteit reserveert en het succes van de werking garandeert.
-Wanneer u deze capaciteit overneemt, krijgt u een overbelast foutbericht dat aangeeft dat uw capaciteit is opgebruikt.
-0x1001 Overbelast: de aanvraag kan niet worden verwerkt omdat "Aanvraagpercentage groot is". Op dit moment is het essentieel om te zien welke bewerkingen en hun volume dit probleem veroorzaakt. U een idee krijgen over verbruikte capaciteit die over de ingerichte capaciteit gaat met statistieken op de portal. Dan moet u ervoor zorgen dat de capaciteit bijna even veel wordt verbruikt over alle onderliggende partities. Als u ziet dat het grootste deel van de doorvoer wordt verbruikt door één partitie, hebt u scheefgroei van de werkbelasting.
+Azure Cosmos DB biedt garanties voor prestaties en latentie, met een bovengrens voor bewerkingen. Deze garanties zijn mogelijk wanneer de engine governance kan afdwingen voor de bewerkingen van de Tenant. Door de door Voer in te stellen, zorgt u ervoor dat u de gegarandeerde door Voer en latentie krijgt, omdat het platform deze capaciteit reserveert en de bewerking is geslaagd.
 
-Er zijn statistieken beschikbaar die u laten zien hoe doorvoer wordt gebruikt gedurende uren, dagen en per zeven dagen, over partities of in totaal. Zie [Controleren en debuggen met statistieken in Azure Cosmos DB](use-metrics.md)voor meer informatie.
+Wanneer u deze capaciteit overschrijdt, wordt het volgende fout bericht weer gegeven dat aangeeft dat uw capaciteit is gebruikt:
 
-Diagnostische logboeken worden uitgelegd in het [diagnoslogartikel Azure Cosmos DB.](logging.md)
+**0x1001 overbelast: de aanvraag kan niet worden verwerkt omdat de aanvraag frequentie groot is** 
 
-### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Is de primaire sleutelkaart voor het partitiesleutelconcept van Azure Cosmos DB?
+Het is essentieel om te zien welke bewerkingen (en welk volume) dit probleem veroorzaken. U kunt een idee krijgen over verbruikte capaciteit over de ingerichte capaciteit met metrische gegevens op de Azure Portal. U moet er vervolgens voor zorgen dat de capaciteit bijna gelijkmatig over alle onderliggende partities wordt verbruikt. Als u ziet dat de ene partitie de meeste door Voer gebruikt, hebt u de werk belasting scheef.
 
-Ja, de partitiesleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt het gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het partitioneringsconcept wordt goed uitgelegd in het [artikel Partitie en schaal in Azure Cosmos DB.](partition-data.md) De essentiële take away hier is dat een logische partitie niet moet gaan over de 10-GB limiet vandaag.
+Er zijn metrische gegevens beschikbaar die laten zien hoe de door Voer wordt gebruikt in plaats van uren, meer dan dagen en per zeven dagen, verdeeld over partities of aggregatie. Zie voor meer informatie [bewaking en fout opsporing met metrische gegevens in azure Cosmos DB](use-metrics.md).
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Wat gebeurt er als ik een volledige quotummelding krijg die aangeeft dat een partitie vol is?
+Diagnostische logboeken worden beschreven in het artikel [Azure Cosmos DB diagnostische logboek registratie](logging.md) .
 
-Azure Cosmos DB is een SLA-gebaseerd systeem dat onbeperkte schaal biedt, met garanties voor latentie, doorvoer, beschikbaarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal uit gegevens met behulp van partitionering als het belangrijkste concept. Het partitioneringsconcept wordt goed uitgelegd in het [artikel Partitie en schaal in Azure Cosmos DB.](partition-data.md)
+### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Is de primaire sleutel toegewezen aan het partitie sleutel concept van Azure Cosmos DB?
 
-De limiet van 10 GB voor het aantal entiteiten of items per logische partitie waaraan u zich moet houden. Om ervoor te zorgen dat uw toepassing goed schaalt, raden we u aan *geen* hot partitie te maken door alle informatie in één partitie op te slaan en op te vragen. Deze fout kan alleen komen als uw gegevens scheef zijn: dat wil zeggen,&nbsp;je hebt veel gegevens voor een partitiesleutel (meer dan 10 GB). U de distributie van gegevens vinden via de opslagportal. Manier om deze fout op te lossen is door de tabel opnieuw te maken en een gedetailleerde primaire (partitiesleutel) te kiezen, waardoor gegevens beter kunnen worden verdeeld.
+Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt dit gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel. De essentiële maakt hier is dat een logische partitie niet de limiet van 10 GB mag overschrijden.
 
-### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>Is het mogelijk om Cassandra API te gebruiken als key value store met miljoenen of miljarden individuele partitiesleutels?
+### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Wat gebeurt er wanneer ik een melding ontvang dat een partitie vol is?
 
-Azure Cosmos DB kan onbeperkte gegevens opslaan door de opslag uit te schalen. Dit staat los van de doorvoer. Ja, u cassandra API altijd gebruiken om sleutel/waarden op te slaan en op te halen door de juiste primaire/partitiesleutel op te geven. Deze afzonderlijke sleutels krijgen hun eigen logische partitie en zitten bovenop fysieke partitie zonder problemen.
+Azure Cosmos DB is een systeem op basis van de Service Level Agreement (SLA). Het biedt onbeperkte schaal mogelijkheden, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal bare gegevens, met behulp van partitionering als het belangrijkste concept. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel.
 
-### <a name="is-it-possible-to-create-more-than-one-table-with-apache-cassandra-api-of-azure-cosmos-db"></a>Is het mogelijk om meer dan één tabel te maken met Apache Cassandra API van Azure Cosmos DB?
+U moet rekening houden met de limiet van 10 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen, u hebt veel gegevens voor één partitie sleutel (meer dan 10&nbsp;GB). U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
 
-Ja, het is mogelijk om meer dan één tabel te maken met Apache Cassandra API. Elk van deze tabellen wordt behandeld als eenheid voor doorvoer en opslag.
+### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Kan ik de Cassandra-API gebruiken als sleutel waarde Store met miljoenen of miljarden partitie sleutels?
 
-### <a name="is-it-possible-to-create-more-than-one-table-in-succession"></a>Is het mogelijk om meer dan één tabel achter elkaar te maken?
+Azure Cosmos DB kunnen onbeperkte gegevens opslaan door de opslag te schalen. Deze opslag is onafhankelijk van de door voer. Ja, u kunt altijd de Cassandra-API gebruiken om sleutels en waarden op te slaan en op te halen door de juiste primaire/partitie sleutel op te geven. Deze afzonderlijke sleutels krijgen hun eigen logische partitie en hierop een fysieke partitie zonder problemen.
 
-Azure Cosmos DB is resource-beheerd systeem voor zowel gegevens- als besturingsvlakactiviteiten. Containers zoals verzamelingen, tabellen zijn runtime-entiteiten die zijn ingericht voor een bepaalde doorvoercapaciteit. Het snel achter elkaar maken van deze containers wordt niet verwacht en wordt beperkt. Als u tests hebt die tabellen onmiddellijk laten vallen/maken, probeert u ze te plaatsen.
+### <a name="can-i-create-more-than-one-table-with-the-cassandra-api"></a>Kan ik meer dan een tabel maken met de Cassandra-API?
 
-### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Wat is het maximum aantal tabellen dat kan worden gemaakt?
+Ja, u kunt meer dan één tabel maken met de Cassandra-API. Elk van deze tabellen wordt behandeld als eenheid voor door Voer en opslag.
 
-Er is geen fysieke limiet op het aantal [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) tabellen, stuur een e-mail op als je een groot aantal tabellen (waar de totale constante grootte gaat meer dan 10 TB aan gegevens) die moeten worden gemaakt van de gebruikelijke 10s of 100s.
+### <a name="can-i-create-more-than-one-table-in-succession"></a>Kan ik meer dan een tabel achter elkaar maken?
 
-### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Wat is het maximale aantal keyspace dat we kunnen creëren?
+Azure Cosmos DB is bron gerichte systeem voor activiteiten op het vlak van gegevens en besturings elementen. Containers, zoals verzamelingen en tabellen, zijn runtime-entiteiten die zijn ingericht voor een bepaalde doorvoer capaciteit. Het maken van deze containers is in voorkomend geval geen verwachte activiteit en wordt mogelijk beperkt. Als u tests hebt die onmiddellijk neerzetten of maken van tabellen, kunt u proberen deze uit te voeren.
 
-Er is geen fysieke limiet op het aantal keyspaces omdat het [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) metagegevenscontainers zijn, stuur een e-mail op als je om de een of andere reden een groot aantal keyspaces hebt.
+### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Wat is het maximum aantal tabellen dat ik kan maken?
 
-### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Is het mogelijk om veel gegevens in te brengen nadat u van de normale tabel bent begonnen?
+Er is geen fysieke limiet voor het aantal tabellen. Als u een groot aantal tabellen hebt (waarbij de totale stabiele grootte meer dan 10 TB aan gegevens gaat) die moeten worden gemaakt, niet de gebruikelijke tien tallen of honderden, moet [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)u een e-mail verzenden naar.
 
-Ja, uitgaande van uniform gedistribueerde partities, wordt de opslagcapaciteit automatisch beheerd en neemt toe naarmate u meer gegevens invoert. U dus met vertrouwen zoveel gegevens importeren als u nodig hebt zonder knooppunten te beheren en in te richten, en meer. Als u echter veel directe gegevensgroei verwacht, is het logischer om direct in te [voorzien in de verwachte doorvoer](set-throughput.md) in plaats van lager te beginnen en deze onmiddellijk te verhogen.
+### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Wat is het maximum aantal benodigde code ruimte dat ik kan maken?
 
-### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Is het mogelijk om yaml-bestandsinstellingen te leveren om Apache Casssandra API van Azure Cosmos DB-gedrag te configureren?
+Er is geen fysieke limiet voor het aantal Keys, omdat het meta gegevens containers zijn. Als u een groot aantal spaties hebt, verzendt u een e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
 
-Apache Cassandra API van Azure Cosmos DB is een platformservice. Het biedt compatibiliteit op protocolniveau voor het uitvoeren van bewerkingen. Het verbergt de complexiteit van beheer, monitoring en configuratie. Als ontwikkelaar/gebruiker hoeft u zich geen zorgen te maken over beschikbaarheid, grafstenen, sleutelcache, rijcache, bloeifilter en tal van andere instellingen. De Apache Cassandra API van Azure Cosmos DB richt zich op het leveren van lees- en schrijfprestaties die u nodig hebt zonder de overhead van configuratie en beheer.
+### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Kan ik veel gegevens maken nadat ik vanuit een normale tabel heb gestart?
 
-### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Ondersteunt Apache Cassandra API voor Azure Cosmos DB de statusopdrachten knooppunttoevoeging/clusterstatus/knooppunt?
+Ja. Uitgaande van gelijkmatig gedistribueerde partities, wordt de opslag capaciteit automatisch beheerd en verhoogd naarmate er meer gegevens worden gepusht. Zo kunt u met vertrouwen zoveel gegevens importeren als u nodig hebt zonder dat u knoop punten hoeft te beheren en inrichten en nog veel meer. Maar als u een groot aantal onmiddellijke groei van gegevens verwacht, is het beter om rechtstreeks te [voorzien in de verwachte door Voer](set-throughput.md) , in plaats van deze te verlagen en direct te verhogen.
 
-Apache Cassandra API is een platformservice die capaciteitsplanning maakt en inspeelt op de elasticiteitseisen voor doorvoer & opslag een fluitje van een cent. Met Azure Cosmos DB voorziet u in doorvoer, die u nodig hebt. Vervolgens u het op en neer een aantal keren door de dag zonder zorgen te maken over het toevoegen / verwijderen van knooppunten of het beheer ervan. Dit houdt in dat u het knooppunt, clusterbeheertool ook niet hoeft te gebruiken.
+### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>Kan ik YAML-Bestands instellingen gebruiken om het API-gedrag te configureren?
 
-### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Wat gebeurt er met betrekking tot verschillende config-instellingen voor keyspace-creatie zoals eenvoudig/netwerk?
+De Cassandra-API voor Azure Cosmos DB biedt compatibiliteit op protocol niveau voor het uitvoeren van bewerkingen. Het verbergt de complexiteit van beheer, bewaking en configuratie. Als ontwikkelaar/gebruiker hoeft u zich geen zorgen te maken over beschik baarheid, tombstones, sleutel cache, rij-cache, bloei filter en een groot aantal andere instellingen. De Cassandra-API is gericht op het bieden van de lees-en schrijf prestaties die u nodig hebt zonder de overhead van configuratie en beheer.
 
-Azure Cosmos DB biedt wereldwijde distributie out-of-the-box voor beschikbaarheid en lage latentie redenen. U hoeft geen replica's of andere dingen in te stellen. Alle schrijfbewerkingen zijn altijd blijvend vastgelegd in elke regio waar u schrijft en tegelijkertijd prestatiegaranties biedt.
+### <a name="will-the-cassandra-api-support-node-addition-cluster-status-and-node-status-commands"></a>Worden de opdrachten voor het toevoegen van knoop punten, cluster status en knooppunt status ondersteund door de Cassandra-API?
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Wat gebeurt er met betrekking tot verschillende instellingen voor tabelmetadata zoals bloomfilter, caching, read repair change, gc_grace, compressie memtable_flush_period en meer?
+De Cassandra-API vereenvoudigt de capaciteits planning en reageert op de elasticiteits vereisten voor door Voer en opslag. Met Azure Cosmos DB kunt u de door Voer die u nodig hebt inrichten. Vervolgens kunt u de schaal van de app omhoog en omlaag schalen, zonder dat u zich zorgen hoeft te maken over het toevoegen, verwijderen of beheren van knoop punten. U hoeft geen hulpprogram ma's voor het beheer van knoop punten en clusters te gebruiken.
 
-Azure Cosmos DB biedt prestaties voor lees-/schrijf- en doorvoerzonder dat u een van de configuratie-instellingen hoeft aan te raken en deze per ongeluk hoeft te manipuleren.
+### <a name="what-happens-with-various-configuration-settings-for-keyspace-creation-like-simplenetwork"></a>Wat gebeurt er met verschillende configuratie-instellingen voor het maken van de opslag ruimte, zoals eenvoudig/netwerk?
 
-### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Wordt time-to-live (TTL) ondersteund voor Cassandra tafels?
+Azure Cosmos DB biedt wereld wijde distributie van het vak voor Beschik baarheid en redenen voor lage latentie. U hoeft geen replica's of andere zaken in te stellen. Schrijf bewerkingen zijn altijd blijvend quorum die in elke regio waar u schrijft, en tegelijkertijd prestatie garanties bieden.
+
+### <a name="what-happens-with-various-settings-for-table-metadata"></a>Wat gebeurt er met verschillende instellingen voor de meta gegevens van de tabel?
+
+Azure Cosmos DB biedt prestatie garanties voor lees bewerkingen, schrijf bewerkingen en door voer. U hoeft zich geen zorgen te maken over het aanraken van de configuratie-instellingen en deze per ongeluk te manipuleren. Deze instellingen zijn onder andere het bloeien van het filter, de caching, de kans op Lees reparaties, gc_grace en compressie memtable_flush_period.
+
+### <a name="is-time-to-live-supported-for-cassandra-tables"></a>Wordt time-to-Live ondersteund voor Cassandra-tabellen?
 
 Ja, TTL wordt ondersteund.
 
-### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Is het mogelijk om de status van het knooppunt, de replicastatus, de gc en de OS-parameters eerder te controleren met verschillende hulpprogramma's? Wat moet er nu in de gaten worden gehouden?
+### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Hoe kan ik de infra structuur naast de door Voer controleren?
 
-Azure Cosmos DB is een platformservice die u helpt de productiviteit te verhogen en u geen zorgen te maken over het beheren en bewaken van infrastructuur. U hoeft alleen maar te zorgen voor doorvoer die beschikbaar is op portal statistieken om te vinden of je krijgt gewurgd en verhogen of verlagen van die doorvoer.
-Monitor [SLA's](monitor-accounts.md).
-Gebruik [Metrische gegevens](use-metrics.md) Diagnostische [logboeken gebruiken](logging.md).
+Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt het volgende doen:
 
-### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Welke client SDKs kan werken met Apache Cassandra API van Azure Cosmos DB?
+- [Sla's](monitor-accounts.md) controleren
+- [Metrische gegevens](use-metrics.md) gebruiken
+- [Diagnostische logboeken](logging.md) gebruiken
 
-Apache Cassandra SDK's client drivers die CQLv3 gebruiken werden gebruikt voor clientprogramma's. Als u andere stuurprogramma's hebt die u gebruikt of [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)als u problemen ondervindt, stuurt u e-mail naar .
+### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Welke client-Sdk's kunnen samen werken met de Cassandra-API?
 
-### <a name="is-composite-partition-key-supported"></a>Wordt de samengestelde partitiesleutel ondersteund?
+De client Stuur Programma's van Apache Cassandra SDK die gebruikmaken van CQLv3, zijn gebruikt voor client Programma's. Als u andere Stuur Programma's hebt die u gebruikt of als u problemen ondervindt, stuurt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)u een e-mail naar.
 
-Ja, u de normale syntaxis gebruiken om samengestelde partitiesleutel te maken.
+### <a name="are-composite-partition-keys-supported"></a>Worden samengestelde partitie sleutels ondersteund?
+
+Ja, u kunt reguliere syntaxis gebruiken voor het maken van samengestelde partitie sleutels.
 
 ### <a name="can-i-use-sstableloader-for-data-loading"></a>Kan ik sstableloader gebruiken voor het laden van gegevens?
 
 Nee, sstableloader wordt niet ondersteund.
 
-### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Kan een on-premises Apache Cassandra-cluster worden gekoppeld aan de Cassandra API van Azure Cosmos DB?
+### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Kan ik een on-premises Apache Cassandra-cluster koppelen met de Cassandra-API?
 
-Op dit moment heeft Azure Cosmos DB een geoptimaliseerde ervaring voor cloudomgevingen zonder overhead van bewerkingen. Als u koppeling nodig [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) hebt, stuurt u e-mail naar met een beschrijving van uw scenario. We werken aan het aanbieden om het on-premises/andere cloud Cassandra-cluster te koppelen aan de Cassandra API van Cosomos DB.
+Momenteel heeft Azure Cosmos DB een geoptimaliseerde ervaring voor een cloud omgeving zonder de overhead van bewerkingen. Als u wilt koppelen, moet u een e-mail [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) verzenden naar met een beschrijving van uw scenario. We werken aan een aanbieding om het on-premises of Cloud Cassandra-cluster te koppelen aan de Cassandra-API voor Azure Cosmos DB.
 
-### <a name="does-cassandra-api-provide-full-backups"></a>Biedt Cassandra API volledige back-ups?
+### <a name="does-the-cassandra-api-provide-full-backups"></a>Biedt de Cassandra-API volledige back-ups?
 
-Azure Cosmos DB biedt twee gratis volledige back-ups die vandaag met een interval van vier uur zijn gemaakt voor alle API's. Dit zorgt ervoor dat u geen back-upschema en andere dingen hoeft in te stellen.
-Als u de retentie en frequentie wilt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) wijzigen, stuurt u een e-mail naar of verhoogt u een ondersteuningsaanvraag. U vindt informatie over back-upmogelijkheden in het artikel [Automatische online back-up en herstel met het](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) azure cosmos DB-artikel.
+Azure Cosmos DB biedt twee gratis volledige back-ups die zijn gemaakt met een interval van vier uur voor alle Api's. U hoeft dus geen back-upschema in te stellen. 
 
-### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hoe verwerkt de Cassandra API-account failover als een regio uitvalt?
+Als u de retentie en frequentie wilt wijzigen, verzendt u een [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) e-mail naar of verhoogt u een ondersteunings aanvraag. Informatie over de back-upfunctie vindt u in het artikel [Automatische online back-up en herstellen met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) .
 
-De Azure Cosmos DB Cassandra API leent van het wereldwijd gedistribueerde platform van Azure Cosmos DB. Als u ervoor wilt zorgen dat uw toepassing downtime voor datacenters kan tolereren, schakelt u ten minste één regio in voor het account in de Azure Cosmos [DB-portal Ontwikkelen met Azure Cosmos DB-accounts met meerdere regio's.](high-availability.md) U de prioriteit van de regio instellen met behulp van de portal [Ontwikkelen met Azure Cosmos DB-accounts met meerdere regio's.](high-availability.md)
+### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hoe verwerkt het Cassandra-API-account failover als een regio uitvalt?
 
-U zoveel regio's toevoegen als u wilt voor het account en bepalen waar het niet kan mislukken door een failoverprioriteit te geven. Om de database te gebruiken, moet u daar ook een toepassing verstrekken. Wanneer u dit doet, zullen uw klanten geen downtime ervaren.
+Het Cassandra-API leent zich van het wereld wijd gedistribueerde platform van Azure Cosmos DB. Om ervoor te zorgen dat uw toepassing downtime van data centers kan verdragen, moet u ten minste één regio voor het account inschakelen in de Azure Portal. Zie [hoge Beschik baarheid met Azure Cosmos DB](high-availability.md)voor meer informatie.
 
-### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Indexeert de Apache Cassandra API standaard alle kenmerken van een entiteit?
+U kunt zoveel regio's toevoegen als u wilt voor het account en het beheer waar de failover kan worden uitgevoerd door een failover-prioriteit op te geven. Als u de Data Base wilt gebruiken, moet u ook een toepassing opgeven. Als u dit doet, zijn uw klanten geen last van uitval.
 
-Nee. Cassandra API ondersteunt [secundaire indexen](cassandra-secondary-index.md), die zich gedraagt op een zeer vergelijkbare manier als Apache Cassandra. Het indexeert niet standaard elk kenmerk.  
+### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Indexeert de Cassandra-API standaard alle kenmerken van een entiteit?
 
-
-### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Kan ik de nieuwe Cassandra API SDK lokaal gebruiken met de emulator?
-
-Ja, dit wordt ondersteund. U vindt hier meer informatie over hoe [u](local-emulator.md#cassandra-api) dit inschakelen
+Nee. De Cassandra-API ondersteunt [secundaire indexen](cassandra-secondary-index.md), die op een vergelijk bare manier werken als Apache Cassandra. De API indexeert niet elk kenmerk standaard.  
 
 
-### <a name="how-can-i-migrate-data-from-their-apache-cassandra-clusters-to-cosmos-db"></a>Hoe kan ik gegevens van hun Apache Cassandra clusters migreren naar Cosmos DB?
+### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Kan ik de nieuwe Cassandra-API SDK lokaal met de emulator gebruiken?
 
-U [hier](cassandra-import-data.md)lezen over migratieopties.
+Ja, dit wordt ondersteund. Meer informatie over het inschakelen van deze optie vindt u in het artikel [de Azure Cosmos-emulator gebruiken voor lokale ontwikkel-en test doeleinden](local-emulator.md#cassandra-api) .
 
 
-### <a name="feature-x-of-regular-cassandra-api-isnt-working-as-today-where-can-the-feedback-be-provided"></a>Feature x van de reguliere Cassandra API werkt niet zoals vandaag, waar kan de feedback worden verstrekt?
+### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Hoe kan ik gegevens van Apache Cassandra-clusters migreren naar Azure Cosmos DB?
 
-Feedback geven via [feedback van gebruikers.](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+U vindt meer informatie over migratie opties in het [account uw gegevens migreren naar Cassandra-API in azure Cosmos DB](cassandra-import-data.md) zelf studie.
+
+
+### <a name="where-can-i-give-feedback-on-cassandra-api-features"></a>Waar kan ik feedback geven over Cassandra-API-functies?
+
+Feedback geven via [feedback van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ga aan de slag met [het elastisch schalen van een Azure Cosmos DB Cassandra API-account.](manage-scale-cassandra.md)
+- Ga aan de slag met [het elastisch schalen van een Azure Cosmos DB Cassandra-API-account](manage-scale-cassandra.md).
