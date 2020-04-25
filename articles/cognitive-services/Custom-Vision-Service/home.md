@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: bdb2b31ee3abb30e6e7339f641b778ff5dc522b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403798"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129875"
 ---
 # <a name="what-is-custom-vision"></a>Wat is Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die _klassen_ vertegenwoordigen) op afbeeldingen toepast. In tegenstelling tot de [Computer Vision-service](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) u met Custom Vision de labels opgeven die u wilt toepassen.
+Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die _klassen_ vertegenwoordigen) op afbeeldingen toepast. In tegens telling tot de [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) -service kunt u met Custom Vision de labels opgeven die moeten worden toegepast.
 
 ## <a name="what-it-does"></a>Wat het doet
 
@@ -33,9 +33,9 @@ Custom Vision-functionaliteit kan worden onderverdeeld in twee functies. Met **a
 
 ### <a name="optimization"></a>Optimalisatie
 
-De Custom Vision-service is geoptimaliseerd om snel grote verschillen tussen afbeeldingen te herkennen, zodat u beginnen met het prototypen van uw model met een kleine hoeveelheid gegevens. 50 afbeeldingen per label is meestal al een goed begin. De service is echter niet optimaal voor het detecteren van subtiele verschillen in afbeeldingen (bijvoorbeeld het detecteren van kleine scheuren of deuken in kwaliteitsborgingsscenario's).
+De Custom Vision-service is geoptimaliseerd voor het snel herkennen van belang rijke verschillen tussen installatie kopieën, zodat u met een kleine hoeveelheid gegevens kunt beginnen met het prototypen van uw model. 50 afbeeldingen per label is meestal al een goed begin. De service is echter niet optimaal voor het detecteren van subtiele verschillen in afbeeldingen (bijvoorbeeld het detecteren van kleine barsten of inspringing in scenario's met kwaliteits bewaking).
 
-Daarnaast kunt u kiezen uit verschillende Custom Vision-algoritmen die zijn geoptimaliseerd voor afbeeldingen met bepaalde onderwerpen&mdash;bijvoorbeeld oriëntatiepunten of detailhandelsartikelen. Zie de gids [Een classificatie](getting-started-build-a-classifier.md) bouwen voor meer informatie.
+Daarnaast kunt u kiezen uit verschillende Custom Vision-algoritmen die zijn geoptimaliseerd voor afbeeldingen met bepaalde onderwerpen&mdash;bijvoorbeeld oriëntatiepunten of detailhandelsartikelen. Zie voor meer informatie de hand leiding [een classificatie bouwen](getting-started-build-a-classifier.md) .
 
 ## <a name="what-it-includes"></a>Samenstelling van Content Moderator
 
@@ -49,4 +49,4 @@ Zoals geldt voor alle Cognitive Services, dienen ontwikkelaars die de Custom Vis
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de handleiding [Een classificatie bouwen](getting-started-build-a-classifier.md) om aan de slag te gaan met Custom Vision op het web, of voltooi een [zelfstudie voor afbeeldingsclassificatie](csharp-tutorial.md) om een basisscenario in code te implementeren.
+Volg de handleiding [Een classificatie bouwen](getting-started-build-a-classifier.md) om aan de slag te gaan met Custom Vision op het web, of voltooi een [zelfstudie voor afbeeldingsclassificatie](quickstarts/image-classification.md) om een basisscenario in code te implementeren.

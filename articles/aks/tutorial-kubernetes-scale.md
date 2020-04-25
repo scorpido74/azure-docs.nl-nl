@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 5c1cbebd671568d200321615ad34f52cb636c6c8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129004"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassingen schalen in AKS (Azure Kubernetes Service)
 
@@ -74,14 +74,14 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Als uw AKS-cluster minder dan *1,10*is, wordt de Metrics Server niet automatisch geïnstalleerd. Om deze te installeren, kloont u de GitHub-opslagplaats `metrics-server` en installeert u de voorbeelden van resourcedefinities. Zie [Metrics Server voor Kuberenetes 1.8+][metrics-server-github] als u de inhoud van deze YAML-definities wilt zien.
+> Als uw AKS-cluster kleiner is dan *1,10*, wordt de metrische server niet automatisch geïnstalleerd. De `components.yaml` metrische server installatie manifesten zijn beschikbaar als Asset op metrische server releases, wat betekent dat u ze via een URL kunt installeren. Zie de sectie [implementatie][metrics-server-github] van het Leesmij-bestand voor meer informatie over deze yaml definities.
 > 
+> Voor beeld van installatie:
 > ```console
-> git clone https://github.com/kubernetes-incubator/metrics-server.git
-> kubectl create -f metrics-server/deploy/1.8+/
+> kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
-Als u de autoscaler wilt gebruiken, moeten alle containers in uw pods en uw pods CPU-aanvragen en -limieten hebben gedefinieerd. In de `azure-vote-front`-implementatie vraagt de front-end container al om 0,25 CPU, met een limiet van 0,5 CPU. Deze resourceaanvragen en -limieten worden gedefinieerd zoals weergegeven in het volgende voorbeeldfragment:
+Als u de automatische schaal functie wilt gebruiken, moeten voor alle containers in uw peul en uw peul CPU-aanvragen en-limieten zijn gedefinieerd. In de `azure-vote-front`-implementatie vraagt de front-end container al om 0,25 CPU, met een limiet van 0,5 CPU. Deze resourceaanvragen en -limieten worden gedefinieerd zoals weergegeven in het volgende voorbeeldfragment:
 
 ```yaml
 resources:
@@ -91,13 +91,13 @@ resources:
      cpu: 500m
 ```
 
-In het volgende voorbeeld wordt de opdracht [kubectl autoscale][kubectl-autoscale] gebruikt om het aantal pods in de implementatie *azure-vote-front* automatisch te schalen. Als het gemiddelde CPU-gebruik in alle pods meer dan 50% van hun gevraagde gebruik bedraagt, verhoogt de autoscaler de pods tot maximaal *10* exemplaren. Minimaal *3* exemplaren worden dan gedefinieerd voor de implementatie:
+In het volgende voorbeeld wordt de opdracht [kubectl autoscale][kubectl-autoscale] gebruikt om het aantal pods in de implementatie *azure-vote-front* automatisch te schalen. Als gemiddeld CPU-gebruik voor alle doel einden 50% van het aangevraagde gebruik overschrijdt, verhoogt de automatische schaalr het aantal tot Maxi maal *10* exemplaren. Minimaal *3* exemplaren worden dan gedefinieerd voor de implementatie:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-U ook een manifestbestand maken om het gedrag en de resourcelimieten voor autoscaler te definiëren. Het volgende is een voorbeeld `azure-vote-hpa.yaml`van een manifestbestand met de naam .
+U kunt ook een manifest bestand maken om het gedrag van automatisch schalen en resource limieten te definiëren. Hier volgt een voor beeld van een manifest bestand met `azure-vote-hpa.yaml`de naam.
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -128,7 +128,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Deze `kubectl apply` optie gebruiken om de autoscaler toe te passen die is gedefinieerd in het `azure-vote-hpa.yaml` manifestbestand.
+Gebruiken `kubectl apply` voor het Toep assen van de automatisch schalen die `azure-vote-hpa.yaml` is gedefinieerd in het manifest bestand.
 
 ```
 kubectl apply -f azure-vote-hpa.yaml
@@ -147,7 +147,7 @@ Bij een minimale belasting van de Azure Vote-app neemt het aantal pod-replica's 
 
 ## <a name="manually-scale-aks-nodes"></a>AKS-knooppunten handmatig schalen
 
-Als u uw Kubernetes-cluster hebt gemaakt met behulp van de opdrachten in de vorige zelfstudie, heeft het twee knooppunten. U kunt het aantal knooppunten handmatig aanpassen als u meer of minder containerwerkbelastingen in uw cluster plant.
+Als u uw Kubernetes-cluster hebt gemaakt met behulp van de opdrachten in de vorige zelf studie, zijn er twee knoop punten. U kunt het aantal knooppunten handmatig aanpassen als u meer of minder containerwerkbelastingen in uw cluster plant.
 
 In het volgende voorbeeld wordt het aantal knooppunten in het Kubernetes-cluster *myAKSCluster* verhoogd tot drie. Het uitvoeren van deze opdracht duurt enkele minuten.
 
@@ -192,7 +192,7 @@ Ga verder met de volgende zelfstudie om te leren hoe u toepassingen bijwerkt in 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
+[metrics-server-github]: https://github.com/kubernetes-sigs/metrics-server/blob/master/README.md#deployment
 [metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server
 
 <!-- LINKS - internal -->

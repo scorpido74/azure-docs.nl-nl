@@ -4,28 +4,28 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: b11194640c4d049c90f85974022908dce6b4fd79
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2d6e53f8a69a3e214d7d4621e899fd2e5394c7f2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399804"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132206"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account- en spraakserviceabonnement hebt. Als u geen account en abonnement hebt, [probeert u de spraakservice gratis.](../../../get-started.md)
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
-Voordat u iets doen, moet u de <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>installeren. Gebruik afhankelijk van uw platform de volgende instructies:
+Voordat u iets kunt doen, moet u de <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Java script Speech SDK <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>installeren. Gebruik de volgende instructies, afhankelijk van uw platform:
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Knooppunt.js<span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node. js<span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webbrowser<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Bovendien, afhankelijk van de doelomgeving gebruik maken van een van de volgende:
+Afhankelijk van de doel omgeving gebruikt u bovendien een van de volgende opties:
 
-# <a name="import"></a>[Importeren](#tab/import)
+# <a name="import"></a>[wederinvoer](#tab/import)
 
 ```javascript
 import {
@@ -39,92 +39,92 @@ import {
 } from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-Zie export `import`en import voor meer informatie over , zie <a href="https://javascript.info/import-export" target="_blank">export en import <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+Zie <a href="https://javascript.info/import-export" target="_blank">exporteren en importeren <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie. `import`
 
-# <a name="require"></a>[Vereisen](#tab/require)
+# <a name="require"></a>[vergen](#tab/require)
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Voor meer `require`informatie over , zie <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">wat nodig is? <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Zie `require` <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Wat is er vereist? voor meer informatie. <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 
 # <a name="script"></a>[uit](#tab/script)
 
-Download en win het <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.bundle.js-bestand* en plaats deze in een map die toegankelijk is voor uw HTML-bestand.
+Down load en pak het bestand <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">Java <span class="docon docon-navigate-external x-hidden-focus"></span> script Speech SDK</a> *micro soft. cognitiveservices. speech. bundel. js* uit en plaats het in een map die toegankelijk is voor uw HTML-bestand.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Als u een webbrowser target en `<script>` de tag gebruikt. het `sdk` voorvoegsel is niet nodig. Het `sdk` voorvoegsel is een `require` alias die wordt gebruikt om de module een naam te geven.
+> Als u op een webbrowser bent gericht en de `<script>` tag gebruikt; het `sdk` voor voegsel is niet nodig. Het `sdk` voor voegsel is een alias die wordt gebruikt `require` om de module een naam te krijgen.
 
 ---
 
-## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
+## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Als u de spraakservice wilt aanroepen met [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)de Spraak-SDK, moet u een . . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en bijbehorende regio, eindpunt, host of autorisatietoken.
+Als u de spraak service wilt aanroepen met behulp van de Speech SDK [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest), moet u een maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
 
 > [!NOTE]
-> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
+> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
 
-Er zijn een paar manieren waarop [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)u een initialiseren:
+Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)kunt initialiseren:
 
-* Met een abonnement: pas in een sleutel en de bijbehorende regio.
-* Met een eindpunt: geef een eindpunt van de spraakservice door. Een sleutel- of autorisatietoken is optioneel.
-* Met een host: geef een hostadres door. Een sleutel- of autorisatietoken is optioneel.
-* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
+* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
+* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
+* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
+* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
 
-Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) hoe een wordt gemaakt met behulp van een sleutel en regio. Zie de [pagina regioondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
 
 ```javascript
 const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-## <a name="initialize-a-recognizer"></a>Initialiseren van een herkenningspunt
+## <a name="initialize-a-recognizer"></a>Een herkenner initialiseren
 
-Nadat u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest), de volgende stap is [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)het initialiseren van een . Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)initialiseren, moet je het `speechConfig`doorgeven van uw . Dit biedt de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
+Nadat u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)hebt gemaakt, is de volgende stap het initialiseren van [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)een. Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)initialiseert, moet u het door geven aan uw `speechConfig`. Dit biedt de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
 
-Als u spraak herkent met de standaardmicrofoon van uw apparaat, ziet deze [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) er als volgt uit:
+Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) volgende:
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-Als u het audio-invoerapparaat wilt opgeven, moet [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) u een `audioConfig` parameter maken [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)en de parameter opgeven bij het initialiseren van uw .
+Als u het audio-invoer apparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) maken en de `audioConfig` para meter opgeven bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest).
 
 > [!TIP]
-> [Meer informatie over het krijgen van de apparaat-id voor uw audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
 
-Als `AudioConfig` volgt naar het object verwijzen:
+Als volgt `AudioConfig` verwijzen naar het object:
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-Als u een audiobestand wilt verstrekken in plaats van een microfoon `audioConfig`te gebruiken, moet u nog steeds een . Dit kan echter alleen bij het targeten van **Node.js** en wanneer u [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)een - in plaats van aanteroepen `fromDefaultMicrophoneInput`- maakt, belt `fromWavFileOutput` u en geeft u de `filename` parameter door.
+Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig`opgeven. Dit kan echter alleen worden gedaan bij het richten van **node. js** en bij het maken van [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)een, in plaats `fromDefaultMicrophoneInput`van aan te roepen `fromWavFileOutput` , roept u `filename` de para meter op en geeft u deze door.
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 ## <a name="recognize-speech"></a>Spraak herkennen
 
-De [klasse Recognizeer](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) voor de SpraakSDK voor C# legt een aantal methoden bloot die u gebruiken voor spraakherkenning.
+De [klasse Recognizer](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) voor de Speech SDK voor C# bevat enkele methoden die u voor spraak herkenning kunt gebruiken.
 
-* Single-shot herkenning (async) - Voert herkenning uit in een niet-blokkerende (asynchrone) modus. Dit herkent één utterance. Het einde van een enkele utterance wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt.
-* Continue herkenning (async) - Asynchroon initieert continue herkenningsbewerking. De gebruiker registreert zich bij gebeurtenissen en verwerkt verschillende toepassingsstatus. Als u asynchrone [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)continue herkenning wilt stoppen, roept u .
+* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één utterance herkend. Het einde van één utterance wordt bepaald door te Luis teren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt.
+* Continue herkenning (asynchroon): initieert asynchrone herkennings bewerking. De gebruiker meldt zich aan bij gebeurtenissen en verwerkt verschillende toepassings status. Om asynchrone doorlopende herkenning te [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)stoppen, roept u aan.
 
 > [!NOTE]
-> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../how-to-choose-recognition-mode.md).
+> Meer informatie over het [kiezen van een modus voor spraak herkenning](../../../how-to-choose-recognition-mode.md).
 
-### <a name="single-shot-recognition"></a>Single-shot herkenning
+### <a name="single-shot-recognition"></a>Eenmalige herkenning
 
-Hier is een voorbeeld van asynchrone [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync)single-shot herkenning met behulp van:
+Hier volgt een voor beeld van asynchrone eenmalige herkenning met [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync):
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -132,11 +132,11 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-Je moet wat code schrijven om het resultaat te verwerken. In dit voorbeeld [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest#reason)wordt de volgende beoordeling beoordeeld:
+U moet een code schrijven om het resultaat te kunnen afhandelen. In dit voor beeld wordt [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest#reason)het volgende geëvalueerd:
 
-* Hiermee drukt u het herkenningsresultaat af:`ResultReason.RecognizedSpeech`
-* Als er geen herkenningsovereenkomst is, informeer de gebruiker:`ResultReason.NoMatch`
-* Als er een fout is opgetreden, drukt u het foutbericht af:`ResultReason.Canceled`
+* Het herkennings resultaat afdrukken:`ResultReason.RecognizedSpeech`
+* Als er geen overeenkomst wordt gevonden, stelt u de gebruiker hiervan op de hoogte:`ResultReason.NoMatch`
+* Als er een fout is opgetreden, drukt u het fout bericht af:`ResultReason.Canceled`
 
 ```javascript
 switch (result.reason) {
@@ -161,22 +161,22 @@ switch (result.reason) {
 }
 ```
 
-### <a name="continuous-recognition"></a>Continue herkenning
+### <a name="continuous-recognition"></a>Doorlopende herkenning
 
-Continue herkenning is een beetje meer betrokken dan single-shot erkenning. U moet zich abonneren `Recognizing` `Recognized`op `Canceled` de , , en gebeurtenissen om de erkenning resultaten te krijgen. Om de herkenning te [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)stoppen, moet u bellen. Hier is een voorbeeld van hoe continue herkenning wordt uitgevoerd op een audio-invoerbestand.
+Doorlopende herkenning is een beetje meer betrokken dan eenmalige herkenning. U moet zich abonneren op de `Recognizing`-, `Recognized`-en `Canceled` -gebeurtenissen om de herkennings resultaten op te halen. Als u de herkenning wilt stoppen, [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)moet u bellen. Hier volgt een voor beeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoer bestand.
 
-Laten we beginnen met het definiëren van [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)de input en het initialiseren van een:
+Laten we beginnen met het definiëren van de invoer en het [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)initialiseren van een:
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-We abonneren ons op de [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)evenementen die vanuit de .
+We nemen een abonnement op de gebeurtenissen die worden [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)verzonden vanuit de.
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizing): Signaal voor gebeurtenissen die tussentijdse herkenningsresultaten bevatten.
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognized): Signaal voor gebeurtenissen met definitieve herkenningsresultaten (met vermelding van een geslaagde herkenningspoging).
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#sessionstopped): Signaal voor gebeurtenissen die het einde van een herkenningssessie (bewerking) aangeven.
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): Signaal voor gebeurtenissen die geannuleerde herkenningsresultaten bevatten (met vermelding van een herkenningspoging die als gevolg is geannuleerd of een directe annuleringsaanvraag of, als alternatief, een transport- of protocolfout).
+* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizing): Signaal voor gebeurtenissen met tussenliggende herkennings resultaten.
+* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognized): Signaal voor gebeurtenissen met definitieve herkennings resultaten (wat een geslaagde herkennings poging aangeeft).
+* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#sessionstopped): Signaal voor gebeurtenissen die het einde van een herkennings sessie (bewerking) aangeven.
+* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): Signaal voor gebeurtenissen met Geannuleerde herkennings resultaten (waarmee een herkennings poging wordt aangegeven die is geannuleerd als gevolg van een aanvraag of een rechtstreekse annulering of een Trans Port-of protocol fout).
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -210,7 +210,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-Met alles opgezet, kunnen [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)we bellen.
+Als alles is ingesteld, kunnen we bellen [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync).
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -220,51 +220,51 @@ recognizer.startContinuousRecognitionAsync();
 // recognizer.StopContinuousRecognitionAsync();
 ```
 
-### <a name="dictation-mode"></a>Dicteermodus
+### <a name="dictation-mode"></a>Dicteer modus
 
-Bij het gebruik van continue herkenning u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. Deze modus zorgt ervoor dat de instantie spraakconfig woordbeschrijvingen van zinsstructuren zoals interpunctie interpreteert. Bijvoorbeeld, de uiting "Woont u in de stad vraagteken" zou worden geïnterpreteerd als de tekst "Woont u in de stad?".
+Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herkenning inschakelen met behulp van de bijbehorende functie ' dicteren inschakelen '. Deze modus zorgt ervoor dat het spraak configuratie-exemplaar Word-beschrijvingen interpreteert, zoals Lees tekens. Bijvoorbeeld: het utterance ' hebt u Live in het stads vraag teken ' zou worden geïnterpreteerd als de tekst ' wilt u in de stad wonen? '.
 
-Als u de dicteermodus [`enableDictation`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--) wilt inschakelen, gebruikt u de methode op uw [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest).
+Als u de dicteer modus wilt inschakelen, [`enableDictation`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--) gebruikt u de [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)-methode op uw.
 
 ```javascript
 speechConfig.enableDictation();
 ```
 
-## <a name="change-source-language"></a>Brontaal wijzigen
+## <a name="change-source-language"></a>Bron taal wijzigen
 
-Een veelvoorkomende taak voor spraakherkenning is het opgeven van de invoer -taal (of bron). Laten we eens kijken hoe je de invoertaal in het Italiaans zou veranderen. In uw code, [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)vind je , voeg dan deze regel direct eronder.
+Een veelvoorkomende taak voor spraak herkenning is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. Zoek in uw code uw [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)en voeg deze regel vervolgens direct onder de lijn toe.
 
 ```javascript
 speechConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-De [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#speechrecognitionlanguage) accommodatie verwacht een tekenreeks voor taal-landformaat. U elke waarde in de kolom **Locale** vermelden in de lijst met ondersteunde [landlocaties/talen.](../../../language-support.md)
+De [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#speechrecognitionlanguage) eigenschap verwacht een indelings teken reeks voor taal-land instellingen. U kunt elke waarde in de kolom **land instelling** opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
 
-## <a name="improve-recognition-accuracy"></a>De herkenningsnauwkeurigheid verbeteren
+## <a name="improve-recognition-accuracy"></a>Nauw keurigheid van herkenning verbeteren
 
-Er zijn een paar manieren om de herkenningsnauwkeurigheid te verbeteren met de spraaklijsten Laten we eens kijken naar Woordlijsten. Woordgroeplijsten worden gebruikt om bekende zinnen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woordgroepen kunnen worden toegevoegd aan een woordgroeplijst. Tijdens de herkenning wordt een vermelding in een woordenlijst gebruikt als een exacte overeenkomst voor de hele woordgroep in de audio is opgenomen. Als er geen exacte overeenkomst wordt gevonden met de woordgroep, wordt de herkenning niet ondersteund.
+Er zijn een aantal manieren om de nauw keurigheid van de herkenning te verbeteren met behulp van de spraak om de woordgroepen lijsten te bekijken. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als er een exacte overeenkomst voor de volledige woord groep wordt opgenomen in de audio. Als een exacte overeenkomst met de zin niet wordt gevonden, wordt de herkenning niet ondersteund.
 
 > [!IMPORTANT]
-> De functie Lijst met zinnen is alleen beschikbaar in het Engels.
+> De functie woordgroepen lijst is alleen beschikbaar in het Engels.
 
-Als u een woordgroeplijst [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) wilt gebruiken, maakt u [`addPhrase`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest#addphrase-string-)eerst een object en voegt u vervolgens specifieke woorden en zinnen toe met .
+Als u een woordgroepen lijst wilt gebruiken, [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) maakt u eerst een-object en voegt u [`addPhrase`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest#addphrase-string-)vervolgens specifieke woorden en zinsdelen toe met.
 
-Wijzigingen die [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) van kracht worden op de volgende herkenning of na een heraansluiting met de spraakservice.
+Wijzigingen die [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) van kracht worden bij de volgende herkenning of na het opnieuw verbinden met de spraak service.
 
 ```javascript
 const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 
-Als u uw woordenlijst moet wissen:
+Als u uw woordgroepen lijst wilt wissen:
 
 ```javascript
 phraseList.clear();
 ```
 
-### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties om de herkenningsnauwkeurigheid te verbeteren
+### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties om de nauw keurigheid van de herkenning te verbeteren
 
-Woordlijsten zijn slechts één optie om de herkenningsnauwkeurigheid te verbeteren. U kunt ook het volgende doen: 
+Woordgroepen lijsten zijn slechts één optie om de nauw keurigheid van de herkenning te verbeteren. U kunt ook het volgende doen: 
 
 * [Nauwkeurigheid verbeteren met Custom Speech](../../../how-to-custom-speech.md)
 * [Nauwkeurigheid verbeteren met tenantmodellen](../../../tutorial-tenant-model.md)

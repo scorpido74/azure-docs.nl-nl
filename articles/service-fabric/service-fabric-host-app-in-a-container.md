@@ -1,14 +1,14 @@
 ---
-title: Een .NET-app in een container implementeren voor Azure Service Fabric
+title: Een .NET-app in een container implementeren in azure Service Fabric
 description: Informatie over hoe u een bestaande .NET-toepassing in een container plaatst met behulp van Visual Studio en lokaal fouten opspoort in containers in Service Fabric. De in een container geplaatste toepassing wordt naar een Azure-containerregister gepusht en geïmplementeerd in een Service Fabric-cluster. Wanneer de toepassing is geïmplementeerd in Azure, gebruikt deze Azure SQL DB voor het persistent maken van gegevens.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: d1602d292af24d8c0bc9139debb3967aa7183a06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 08bbab2d92e9631f75c46be2e3f822532b62718a
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75463060"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136635"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Zelfstudie: Een .NET-toepassing in een Windows-container implementeren in Azure Service Fabric
 
@@ -27,10 +27,10 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+1. Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
 2. Installeer [Docker CE voor Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) zodat u containers op Windows 10 kunt uitvoeren.
 3. Installeer [Service Fabric-runtime versie 6.2 of hoger](service-fabric-get-started.md) en de [Service Fabric SDK versie 3.1](service-fabric-get-started.md) of hoger.
-4. Installeer [Visual Studio 2019 Versie 16.1](https://www.visualstudio.com/) of hoger met de **Azure-hulpprogramma's voor ontwikkeling** en ASP.NET en **webontwikkeling.**
+4. Installeer [Visual Studio 2019 versie 16,1](https://www.visualstudio.com/) of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
 5. [Azure PowerShell][link-azure-powershell-install] installeren
  
 
@@ -93,7 +93,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -FirewallRuleName "AllowClient" -StartIpAddress $clientIP -EndIpAddress $clientIP
 
-# Creeate the database in the server.
+# Create the database in the server.
 New-AzSqlDatabase  -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -DatabaseName $databasename `
@@ -136,7 +136,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>Een Service Fabric-cluster maken in Azure
 Service Fabric-toepassingen worden uitgevoerd op een cluster, een set virtuele of fysieke machines die verbonden zijn over een netwerk.  Voordat u de toepassing in Azure kunt implementeren, moet u een Service Fabric-cluster maken in Azure.
 
-U kunt:
+U kunt het volgende doen:
 - Een testcluster maken vanuit Visual Studio. Met deze optie kunt u een beveiligd cluster rechtstreeks vanuit Visual Studio met de configuraties van uw voorkeur maken. 
 - [Een beveiligd cluster maken op basis van een sjabloon](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
@@ -158,9 +158,9 @@ Als u het cluster maakt, gaat u als volgt te werk:
 
     b. Optioneel: u kunt het aantal knooppunten wijzigen. Standaard beschikt u over drie knooppunten, het minimale aantal dat is vereist om Service Fabric-scenario's te kunnen testen.
 
-    c. Selecteer het tabblad **Certificaat.** Typ op dit tabblad een wachtwoord dat u wilt gebruiken om het certificaat van uw cluster te beveiligen. Met dit certificaat is uw cluster beter beveiligd. U kunt ook het pad wijzigen waar u het certificaat wilt opslaan. Visual Studio kan het certificaat voor u importeren, aangezien dit een vereiste stap is om de toepassing naar het cluster te kunnen publiceren.
+    c. Selecteer het tabblad **certificaat** . Typ op dit tabblad een wacht woord dat u wilt gebruiken voor het beveiligen van het certificaat van uw cluster. Met dit certificaat is uw cluster beter beveiligd. U kunt ook het pad wijzigen waar u het certificaat wilt opslaan. Visual Studio kan het certificaat voor u importeren, aangezien dit een vereiste stap is om de toepassing naar het cluster te kunnen publiceren.
 
-    d. Selecteer het tabblad **VM-detail.** Geef het wachtwoord op dat u wilt gebruiken voor de virtuele machines (VM) die deel uitmaken van het cluster. De gebruikersnaam en het wachtwoord kunnen worden gebruikt om een externe verbinding met de virtuele machines tot stand te brengen. U moet ook een VM-machinegrootte selecteren, en u kunt indien nodig de VM-installatiekopie wijzigen. 
+    d. Selecteer het tabblad **VM-Details** . Geef het wacht woord op dat u wilt gebruiken voor de virtual machines (VM) die deel uitmaken van het cluster. De gebruikersnaam en het wachtwoord kunnen worden gebruikt om een externe verbinding met de virtuele machines tot stand te brengen. U moet ook een VM-machinegrootte selecteren, en u kunt indien nodig de VM-installatiekopie wijzigen. 
 
     > [!IMPORTANT]
     >Kies een SKU die ondersteuning biedt voor actieve containers. Het besturingssysteem Windows Server op de clusterknooppunten moet compatibel zijn met het Windows Server-besturingssysteem van de container. Zie [Compatibiliteit tussen besturingssysteem van Windows Server-container en host-besturingssysteem](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility) voor meer informatie. In deze zelfstudie wordt standaard een Docker-installatiekopie op basis van Windows Server 2016 LTSC gebruikt. Containers op basis van deze installatiekopie kunnen worden uitgevoerd op clusters die zijn gemaakt met Windows Server 2016 Datacenter with Containers. Als u echter een cluster maakt of een bestaand cluster gebruikt op basis van Windows Server Datacenter Core 1709 with Containers, moet u de installatiekopie van het besturingssysteem van Windows Server waarop de container is gebaseerd wijzigen. Open het **Dockerfile** in het project **FabrikamFiber.Web**, maak een commentaar van de bestaande `FROM`-instructie (gebaseerd op `windowsservercore-ltsc`) en verwijder het commentaarteken voor de `FROM`-instructie die is gebaseerd op `windowsservercore-1709`. 
@@ -224,7 +224,7 @@ Nu de toepassing klaar is, kunt u deze rechtstreeks vanuit Visual Studio impleme
 
 ![Uw toepassing publiceren][publish-app]
 
-Volg de voortgang van de implementatie in het uitvoervenster.  Wanneer de toepassing is geïmplementeerd, opent u een browser en typt u het clusteradres en de toepassingspoort. Bijvoorbeeld http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Volg de voortgang van de implementatie in het uitvoervenster.  Wanneer de toepassing is geïmplementeerd, opent u een browser en typt u het clusteradres en de toepassingspoort. Bijvoorbeeld http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
 
 ![Fabrikam-webvoorbeeld][fabrikam-web-page-deployed]
 
@@ -250,7 +250,7 @@ Remove-AzResourceGroup -Name $clusterresourcegroupname
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een bestaande toepassing in een container plaatsen met behulp van Visual Studio

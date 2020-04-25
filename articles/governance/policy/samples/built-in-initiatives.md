@@ -1,22 +1,37 @@
 ---
-title: Lijst van ingebouwde beleidsinitiatieven
-description: Lijst van ingebouwde beleidsinitiatieven voor Azure Policy. Categorieën zijn naleving van de regelgeving, gastconfiguratie en meer.
-ms.date: 01/31/2020
+title: Lijst met ingebouwde beleids initiatieven
+description: Lijst met ingebouwde beleids initiatieven voor Azure Policy. Categorieën bevatten naleving van regelgeving, gast configuratie en meer.
+ms.date: 04/24/2020
 ms.topic: sample
-ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: generated
+ms.openlocfilehash: 119a016431e399a94fbaffa527172005b9355f42
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239747"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146464"
 ---
-# <a name="azure-policy-built-in-initiative-definitions"></a>Ingebouwde initiatiefdefinities voor Azure-beleid
+# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy ingebouwde initiatief definities
 
-Deze pagina is een index van ingebouwde initiatiefdefinities voor Azure Policy.
+Deze pagina is een index van Azure Policy ingebouwde initiatief definities.
 
-De naam op elke ingebouwde links naar de bron voor de definitie van het initiatief op de [Azure Policy GitHub-repo](https://github.com/Azure/azure-policy). De ingebouwde ins worden gegroepeerd op de **categorieeigenschap** in **metagegevens.** Als u naar een specifieke **categorie**wilt gaan, gebruikt u het menu aan de rechterkant van de pagina. Gebruik <kbd>anders Ctrl</kbd>-<kbd>F</kbd> om de zoekfunctie van uw browser te gebruiken.
+De naam van elke ingebouwde koppeling naar de bron van de initiatief definitie op de [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy). De ingebouwde invoeg toepassingen worden gegroepeerd op basis van de eigenschap **Category** in **meta data**. Als u naar een specifieke **categorie**wilt gaan, gebruikt u het menu aan de rechter kant van de pagina. Gebruik anders <kbd>CTRL</kbd>-<kbd>F</kbd> om de zoek functie van uw browser te gebruiken.
 
-[!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
+## <a name="guest-configuration"></a>Gastconfiguratie
+
+[!INCLUDE [azure-policy-samples-policysets-guest-configuration](../../../../includes/policy/samples/bycat/policysets-guest-configuration.md)]
+
+## <a name="monitoring"></a>Bewaking
+
+[!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
+
+## <a name="regulatory-compliance"></a>Naleving van regelgeving
+
+[!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)]
+
+## <a name="security-center"></a>Security Center
+
+[!INCLUDE [azure-policy-samples-policysets-security-center](../../../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

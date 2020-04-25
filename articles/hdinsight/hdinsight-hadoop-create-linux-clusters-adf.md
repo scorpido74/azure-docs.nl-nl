@@ -1,62 +1,62 @@
 ---
-title: 'Zelfstudie: On-demand clusters in Azure HDInsight met Data Factory'
-description: Zelfstudie - Meer informatie over het maken van on-demand Apache Hadoop-clusters in HDInsight met Azure Data Factory.
+title: 'Zelf studie: clusters op aanvraag in azure HDInsight met Data Factory'
+description: Zelf studie-informatie over het maken van on-demand Apache Hadoop clusters in HDInsight met behulp van Azure Data Factory.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: b184a42c52384440445181ac44c616c3139e064f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: 7112c3cb1555d3b34e52301e92e21c1bf3601c86
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130694"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148356"
 ---
-# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelfstudie: On-demand Apache Hadoop-clusters maken in HDInsight met Azure Data Factory
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelf studie: Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-In deze zelfstudie leert u hoe u een [Apache Hadoop-cluster](./hadoop/apache-hadoop-introduction.md) op aanvraag maakt in Azure HDInsight met Azure Data Factory. Vervolgens gebruikt u gegevenspijplijnen in Azure Data Factory om Hive-taken uit te voeren en het cluster te verwijderen. Tegen het einde van deze zelfstudie leert u hoe u een big data-taakkunt operationaliseren waarbij clustercreatie, taakbeheer en clusterverwijdering volgens een planning worden uitgevoerd.
+In deze zelf studie leert u hoe u op aanvraag een [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) cluster maakt in azure HDInsight met behulp van Azure Data Factory. Vervolgens gebruikt u gegevens pijplijnen in Azure Data Factory om Hive-taken uit te voeren en het cluster te verwijderen. Aan het einde van deze zelf studie leert u hoe u `operationalize` een Big Data taak uitvoert waarbij het maken van een cluster, het uitvoeren van een taak en het verwijderen van een cluster plaatsvindt volgens een schema.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
 > * Een Azure-opslagaccount maken
-> * Informatie over Azure Data Factory-activiteit
-> * Een gegevensfabriek maken met Azure-portal
+> * Azure Data Factory activiteiten begrijpen
+> * Een data factory maken met behulp van Azure Portal
 > * Gekoppelde services maken
 > * Een pijplijn maken
 > * Een pijplijn activeren
 > * Een pijplijn bewaken
 > * De uitvoer controleren
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De PowerShell [Az Module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
 
-* Een Azure Active Directory-serviceprincipal. Zodra u de serviceprincipal hebt gemaakt, moet u de **toepassings-id** en **verificatiesleutel** ophalen met behulp van de instructies in het gekoppelde artikel. U moet deze waarden later in deze zelfstudie. Zorg er ook voor dat de serviceprincipal lid is van de *rol inzender* van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-serviceprincipal maken](../active-directory/develop/howto-create-service-principal-portal.md)voor instructies om de vereiste waarden op te halen en de juiste rollen toe te wijzen.
+* Een Azure Active Directory Service-Principal. Wanneer u de Service-Principal hebt gemaakt, moet u de **toepassings-id** en **verificatie sleutel** ophalen met behulp van de instructies in het gekoppelde artikel. U hebt deze waarden later in deze zelf studie nodig. Zorg er ook voor dat de service-principal lid is van de rol *Inzender* van het abonnement of de resource groep waarin het cluster is gemaakt. Zie [Create a Azure Active Directory Service Principal](../active-directory/develop/howto-create-service-principal-portal.md)(Engelstalig) voor instructies voor het ophalen van de vereiste waarden en het toewijzen van de juiste rollen.
 
 ## <a name="create-preliminary-azure-objects"></a>Voorlopige Azure-objecten maken
 
-In deze sectie maakt u verschillende objecten die worden gebruikt voor het HDInsight-cluster dat u on-demand maakt. Het gemaakte opslagaccount bevat het voorbeeld `partitionweblogs.hql` [van HiveQL-script,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) dat u gebruikt om een voorbeeld van Apache Hive-taak te simuleren die op het cluster wordt uitgevoerd.
+In deze sectie maakt u verschillende objecten die worden gebruikt voor het HDInsight-cluster dat u op aanvraag maakt. Het gemaakte opslag account bevat het voor beeld-HiveQL- `partitionweblogs.hql`script dat u gebruikt om een voor beeld te simuleren Apache Hive-taak die wordt uitgevoerd op het cluster.
 
-In deze sectie wordt een Azure PowerShell-script gebruikt om het opslagaccount te maken en de vereiste bestanden binnen het opslagaccount te kopiëren. In het voorbeeldscript azure PowerShell in deze sectie worden de volgende taken uitgevoerd:
+In deze sectie wordt gebruikgemaakt van een Azure PowerShell script voor het maken van het opslag account en het kopiëren van de vereiste bestanden in het opslag account. Het Azure PowerShell voorbeeld script in deze sectie voert de volgende taken uit:
 
-1. Log in bij Azure.
+1. Meldt zich aan bij Azure.
 2. Hiermee maakt u een Azure-resourcegroep.
 3. Hiermee wordt een Azure Storage-account gemaakt.
-4. Hiermee maakt u een Blob-container in het opslagaccount
-5. Kopieert het voorbeeld HiveQL script **(partitionweblogs.hql)** de Blob container. Het script is [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)beschikbaar op . Het voorbeeldscript is al beschikbaar in een andere openbare Blob-container. Het PowerShell-script hieronder maakt een kopie van deze bestanden naar het Azure Storage-account dat het maakt.
+4. Hiermee maakt u een BLOB-container in het opslag account
+5. Hiermee kopieert u het voor beeld-HiveQL-script (**partitionweblogs. HQL**) naar de BLOB-container. Het script is beschikbaar op [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). Het voorbeeld script is al beschikbaar in een andere open bare BLOB-container. Het onderstaande Power shell-script maakt een kopie van deze bestanden in het Azure Storage-account dat wordt gemaakt.
 
-### <a name="create-storage-account-and-copy-files"></a>Opslagaccount maken en bestanden kopiëren
+### <a name="create-storage-account-and-copy-files"></a>Opslag account maken en bestanden kopiëren
 
 > [!IMPORTANT]  
-> Geef namen op voor de Azure-brongroep en het Azure-opslagaccount dat door het script wordt gemaakt.
-> Schrijf **de naam van de brongroep,** **de naam van het opslagaccount**en de **opslagaccountsleutel** op die door het script zijn uitgevoerd. Je hebt ze nodig in het volgende gedeelte.
+> Geef namen op voor de Azure-resource groep en het Azure Storage-account dat door het script wordt gemaakt.
+> Noteer de **naam van de resource groep**, de naam van het **opslag account**en de sleutel van het **opslag account** die door het script wordt gegenereerd. U hebt deze nodig in de volgende sectie.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -151,220 +151,220 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-### <a name="verify-storage-account"></a>Opslagaccount verifiëren
+### <a name="verify-storage-account"></a>Opslag account verifiëren
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Navigeer vanaf de linkerkant naar **Alle services** > **Algemene** > **resourcegroepen**.
-1. Selecteer de naam van de resourcegroep die u in uw PowerShell-script hebt gemaakt. Gebruik het filter als er te veel resourcegroepen worden weergegeven.
-1. In de **overzichtsweergave** ziet u één resource die wordt weergegeven, tenzij u de resourcegroep deelt met andere projecten. Die bron is het opslagaccount met de naam die u eerder hebt opgegeven. Selecteer de naam van het opslagaccount.
-1. Selecteer de tegel **Containers.**
-1. Selecteer de **adfgetstarted** container. U ziet een map genaamd **hivescripts**.
-1. Open de map en zorg ervoor dat deze het voorbeeldscriptbestand bevat, **partitionweblogs.hql**.
+1. Ga vanaf links naar **alle services** > **algemene** > **resource groepen**.
+1. Selecteer de naam van de resource groep die u in uw Power shell-script hebt gemaakt. Gebruik het filter als er te veel resource groepen worden weer gegeven.
+1. In de **overzichts** weergave ziet u een resource die wordt weer gegeven, tenzij u de resource groep deelt met andere projecten. Deze resource is het opslag account met de naam die u eerder hebt opgegeven. Selecteer de naam van het opslag account.
+1. Selecteer de tegel **containers** .
+1. Selecteer de **adfgetstarted** -container. U ziet een map met **`hivescripts`** de naam.
+1. Open de map en zorg ervoor dat deze het voorbeeld script bestand, **partitionweblogs. HQL**bevat.
 
-## <a name="understand-the-azure-data-factory-activity"></a>Inzicht in de activiteit Azure Data Factory
+## <a name="understand-the-azure-data-factory-activity"></a>Inzicht in de Azure Data Factory-activiteit
 
-[Azure Data Factory](../data-factory/introduction.md) orkestreert en automatiseert de beweging en transformatie van gegevens. Azure Data Factory kan just-in-time een HDInsight Hadoop-cluster maken om een invoergegevenssegment te verwerken en het cluster te verwijderen wanneer de verwerking is voltooid.
+[Azure Data Factory](../data-factory/introduction.md) organiseert en automatiseert de verplaatsing en trans formatie van gegevens. Azure Data Factory kunt een HDInsight Hadoop-cluster just-in-time maken om een invoer gegevens segment te verwerken en het cluster te verwijderen wanneer de verwerking is voltooid.
 
-In Azure Data Factory kan een gegevensfabriek een of meer gegevenspijplijnen hebben. Een gegevenspijplijn heeft een of meer activiteiten. Er zijn twee soorten activiteiten:
+In Azure Data Factory kan een data factory een of meer gegevens pijplijnen hebben. Een gegevens pijplijn heeft een of meer activiteiten. Er zijn twee soorten activiteiten:
 
-* [Activiteiten voor gegevensverkeer](../data-factory/copy-activity-overview.md). U gebruikt activiteiten voor gegevensverplaatsing om gegevens van een brongegevensarchief naar een doelgegevensarchief te verplaatsen.
-* [Activiteiten voor gegevenstransformatie](../data-factory/transform-data.md). U gebruikt gegevenstransformatieactiviteiten om gegevens te transformeren/verwerken. HDInsight Hive Activity is een van de transformatieactiviteiten die worden ondersteund door Data Factory. U gebruikt de activiteit Hive-transformatie in deze zelfstudie.
+* [Activiteiten voor gegevens verplaatsing](../data-factory/copy-activity-overview.md). U gebruikt gegevens verplaatsings activiteiten om gegevens te verplaatsen van een brongegevens archief naar een doel gegevens archief.
+* [Activiteiten voor gegevens transformatie](../data-factory/transform-data.md). U gebruikt gegevens transformatie activiteiten om gegevens te transformeren/verwerken. HDInsight Hive-activiteit is een van de transformatie activiteiten die door Data Factory worden ondersteund. In deze zelf studie gebruikt u de Hive-transformatie activiteit.
 
-In dit artikel configureert u de Hive-activiteit om een on-demand HDInsight Hadoop-cluster te maken. Wanneer de activiteit wordt uitgevoerd om gegevens te verwerken, gebeurt er als het gevolg:
+In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-cluster op aanvraag. Wanneer de activiteit wordt uitgevoerd om gegevens te verwerken, gebeurt hier het volgende:
 
-1. Er wordt automatisch een HDInsight Hadoop-cluster gemaakt om het segment te verwerken.
+1. An HDInsight Hadoop-cluster wordt automatisch gemaakt voor een just-in-time-out voor het verwerken van het segment.
 
-2. De invoergegevens worden verwerkt door een HiveQL-script op het cluster uit te voeren. In deze zelfstudie voert het HiveQL-script dat is gekoppeld aan de hive-activiteit de volgende acties uit:
+2. De invoer gegevens worden verwerkt door een HiveQL-script uit te voeren op het cluster. In deze zelf studie voert het HiveQL-script dat is gekoppeld aan de Hive-activiteit de volgende acties uit:
 
-    * Gebruikt de bestaande tabel *(hivesampletable)* om een andere tabel **HiveSampleOut**te maken.
-    * Hiermee wordt de **tabel HiveSampleOut** gevuld met alleen specifieke kolommen uit de oorspronkelijke *hivesampletabel*.
+    * Maakt gebruik van de bestaande tabel (*hivesampletable*) om een andere tabel **HiveSampleOut**te maken.
+    * Vult de **HiveSampleOut** -tabel met alleen specifieke kolommen van de oorspronkelijke *hivesampletable*.
 
-3. Het HDInsight Hadoop-cluster wordt verwijderd nadat de verwerking is voltooid en het cluster is niet actief voor de geconfigureerde tijd (timeToLive-instelling). Als het volgende gegevenssegment beschikbaar is voor verwerking met in deze timeToLive-inactieve tijd, wordt hetzelfde cluster gebruikt om het segment te verwerken.  
+3. Het HDInsight Hadoop-cluster wordt verwijderd nadat de verwerking is voltooid en het cluster gedurende de ingestelde tijd (timeToLive-instelling) niet actief is. Als het volgende gegevens segment beschikbaar is voor verwerking met in deze timeToLive niet-actieve tijd, wordt hetzelfde cluster gebruikt voor het verwerken van het segment.  
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Navigeer in het linkermenu naar **+ Een resource** > **Analytics** > **Data Factory maken**.
+2. Ga in het menu links naar **`+ Create a resource`**  >  **Analytics** > **Data Factory**.
 
     ![Azure Data Factory op de portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory op de portal")
 
-3. Voer de volgende waarden in of selecteer voor de tegel **Nieuwe gegevensfabriek:**
+3. Typ of selecteer de volgende waarden voor de tegel **nieuw Data Factory** :
 
     |Eigenschap  |Waarde  |
     |---------|---------|
-    |Name | Voer een naam in voor de gegevensfabriek. Deze naam moet wereldwijd uniek zijn.|
-    |Versie | Vertrek bij **V2**. |
+    |Naam | Voer een naam in voor de data factory. Deze naam moet wereldwijd uniek zijn.|
+    |Versie | Verlaat **v2**. |
     |Abonnement | Selecteer uw Azure-abonnement. |
-    |Resourcegroep | Selecteer de resourcegroep die u hebt gemaakt met het PowerShell-script. |
-    |Locatie | De locatie wordt automatisch ingesteld op de locatie die u hebt opgegeven terwijl u de resourcegroep eerder maakt. Voor deze zelfstudie is de locatie ingesteld op **Oost-VS.** |
-    |GIT inschakelen|Schakel dit selectievakje uit.|
+    |Resourcegroep | Selecteer de resource groep die u hebt gemaakt met behulp van het Power shell-script. |
+    |Locatie | De locatie wordt automatisch ingesteld op de locatie die u hebt opgegeven tijdens het maken van de resource groep. Voor deze zelf studie is de locatie ingesteld op **VS-Oost**. |
+    |GIT inschakelen|Schakel dit selectie vakje uit.|
 
-    ![Azure Data Factory maken met Azure-portal](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Azure Data Factory maken met Azure-portal")
+    ![Azure Data Factory maken met behulp van Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Azure Data Factory maken met behulp van Azure Portal")
 
-4. Selecteer **Maken**. Het maken van een gegevensfabriek kan tussen de 2 en 4 minuten duren.
+4. Selecteer **Maken**. Het maken van een data factory kan twee tot vier minuten duren.
 
-5. Zodra de gegevensfabriek is gemaakt, ontvangt u een **door Implementatie geslaagde** melding met de knop **Ga naar bron.**  Selecteer **Ga naar resource om** de standaardweergave Gegevensfabriek te openen.
+5. Zodra de data factory is gemaakt, ontvangt u een melding over **implementatie geslaagd** met de knop **naar resource** .  Selecteer **naar resource gaan** om de Data Factory standaard weergave te openen.
 
-6. Selecteer **Auteur &-monitor** om de ontwerp- en bewakingsportal van Azure Data Factory te starten.
+6. Selecteer **auteur & monitor** om de portal voor het maken van Azure Data Factory ontwerpen en controleren te starten.
 
-    ![Overzicht van Azure Data Factory-portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Overzicht van Azure Data Factory")
+    ![Overzicht van Azure Data Factory Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Overzicht van Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
-In deze sectie maakt u twee gekoppelde services in uw gegevensfabriek.
+In deze sectie maakt u twee gekoppelde services in uw data factory.
 
-* Een **azure storage-gekoppelde service** die een Azure-opslagaccount koppelt aan de gegevensfabriek. Deze opslag wordt gebruikt voor het HDInsight-cluster op aanvraag. Het bevat ook het Hive-script dat op het cluster wordt uitgevoerd.
-* Een **on-demand HDInsight gekoppelde service.** Azure Data Factory maakt automatisch een HDInsight-cluster en voert het Hive-script uit. Het HDInsight-cluster wordt vervolgens verwijderd als het cluster gedurende een vooraf geconfigureerde tijd inactief is geweest.
+* Een **Azure Storage gekoppelde service** waarmee een Azure Storage-account wordt gekoppeld aan de Data Factory. Deze opslag wordt gebruikt voor het HDInsight-cluster op aanvraag. Het bevat ook het Hive-script dat wordt uitgevoerd op het cluster.
+* Een **gekoppelde HDInsight-service op aanvraag**. Azure Data Factory maakt automatisch een HDInsight-cluster en voert het Hive-script uit. Het HDInsight-cluster wordt vervolgens verwijderd als het cluster gedurende een vooraf geconfigureerde tijd inactief is geweest.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 
-1. Selecteer in het linkerdeelvenster van de pagina **Laten we aan de slag** het pictogram **Auteur.**
+1. Selecteer het pictogram **Auteur** in het linkerdeel venster van de pagina **aan de slag** .
 
-    ![Een gekoppelde Azure Data Factory-service maken](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Een gekoppelde Azure Data Factory-service maken")
+    ![Een Azure Data Factory gekoppelde service maken](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Een Azure Data Factory gekoppelde service maken")
 
-2. Selecteer **Verbindingen** in de linkerbenedenhoek van het venster en selecteer **+Nieuw**.
+2. Selecteer **verbindingen** in de linkerbenedenhoek van het venster en selecteer **+ Nieuw**.
 
     ![Verbindingen maken in Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Verbindingen maken in Azure Data Factory")
 
-3. Selecteer azure **blob-opslag** in het dialoogvenster **Nieuwe gekoppelde service** en selecteer **Doorgaan**.
+3. Selecteer in het dialoog venster **nieuwe gekoppelde service** de optie **Azure Blob Storage** en selecteer vervolgens **door gaan**.
 
-    ![Gekoppelde Azure Storage-service voor gegevensfabriek maken](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Gekoppelde Azure Storage-service voor gegevensfabriek maken")
+    ![Azure Storage gekoppelde service maken voor Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Azure Storage gekoppelde service maken voor Data Factory")
 
-4. Geef de volgende waarden op voor de gekoppelde opslagservice:
+4. Geef de volgende waarden op voor de gekoppelde opslag service:
 
     |Eigenschap |Waarde |
     |---|---|
-    |Name |Voer `HDIStorageLinkedService` in.|
-    |Azure-abonnement |Selecteer uw abonnement in de vervolgkeuzelijst.|
-    |Naam van opslagaccount |Selecteer het Azure Storage-account dat u hebt gemaakt als onderdeel van het PowerShell-script.|
+    |Naam |Voer `HDIStorageLinkedService` in.|
+    |Azure-abonnement |Selecteer uw abonnement in de vervolg keuzelijst.|
+    |Naam van opslagaccount |Selecteer het Azure Storage-account dat u hebt gemaakt als onderdeel van het Power shell-script.|
 
-    Selecteer **Verbinding testen** en selecteer vervolgens **Maken**als deze is geslaagd .
+    Selecteer **verbinding testen** en als dit is gelukt en selecteer vervolgens **maken**.
 
-    ![Naam opgeven voor gekoppelde Azure Storage-service](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Naam opgeven voor gekoppelde Azure Storage-service")
+    ![Geef een naam op voor de Azure Storage gekoppelde service](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Geef een naam op voor de Azure Storage gekoppelde service")
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Een gekoppelde HDInsight-service op aanvraag maken
 
 1. Selecteer nogmaals de knop **+ Nieuw** om een andere gekoppelde service te maken.
 
-2. Selecteer in het venster **Nieuwe gekoppelde service** het tabblad **Gegevensberekenen.**
+2. Selecteer in het venster **nieuwe gekoppelde service** het tabblad **Compute** .
 
-3. Selecteer **Azure HDInsight**en selecteer **Doorgaan**.
+3. Selecteer **Azure HDInsight**en selecteer **door gaan**.
 
-    ![HDInsight-gekoppelde service maken voor Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight-gekoppelde service maken voor Azure Data Factory")
+    ![Een gekoppelde HDInsight-service maken voor Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Een gekoppelde HDInsight-service maken voor Azure Data Factory")
 
-4. Voer in het venster **Nieuwe gekoppelde service** de volgende waarden in en laat de rest als standaard:
+4. Voer in het venster **nieuwe gekoppelde service** de volgende waarden in en laat de rest als standaard waarde:
 
     | Eigenschap | Waarde |
     | --- | --- |
-    | Name | Voer `HDInsightLinkedService` in.|
-    | Type | Selecteer **On-demand HDInsight**. |
+    | Naam | Voer `HDInsightLinkedService` in.|
+    | Type | Selecteer **HDInsight op aanvraag**. |
     | Een gekoppelde Azure Storage-service | Selecteer `HDIStorageLinkedService`. |
-    | Clustertype | **Hadoop selecteren** |
-    | Time To Live | Geef de duur op waarvoor u het HDInsight-cluster beschikbaar wilt hebben voordat het automatisch wordt verwijderd.|
-    | Servicehoofd-id | Geef de toepassings-id op van de Azure Active Directory-serviceprincipal die u hebt gemaakt als onderdeel van de vereisten. |
-    | Serviceprincipal-sleutel | Geef de verificatiesleutel op voor de azure Active Directory-serviceprincipal. |
-    | Voorvoegsel clusternaam | Geef een waarde op die vooraf wordt bevestigd aan alle clustertypen die door de gegevensfabriek zijn gemaakt. |
-    |Abonnement |Selecteer uw abonnement in de vervolgkeuzelijst.|
-    | Resourcegroep selecteren | Selecteer de resourcegroep die u hebt gemaakt als onderdeel van het PowerShell-script dat u eerder hebt gebruikt.|
-    | OOS-type/Cluster SSH-gebruikersnaam | Voer vaak een SSH-gebruikersnaam in. `sshuser` |
-    | Besturingssysteemtype/Cluster SSH-wachtwoord | Geef een wachtwoord op voor de SSH-gebruiker |
-    | Besturingssysteemtype/clustergebruikersnaam | Voer een clustergebruikersnaam `admin`in, meestal . |
-    | Besturingssysteemtype/clusterwachtwoord | Geef een wachtwoord op voor de clustergebruiker. |
+    | Cluster type | **Hadoop** selecteren |
+    | Time To Live | Geef de duur op waarvoor het HDInsight-cluster beschikbaar moet zijn voordat het automatisch wordt verwijderd.|
+    | Service-Principal-ID | Geef de toepassings-ID op van de Azure Active Directory service-principal die u hebt gemaakt als onderdeel van de vereisten. |
+    | Sleutel van de Service-Principal | Geef de verificatie sleutel voor de service-principal van Azure Active Directory op. |
+    | Voor voegsel van cluster naam | Geef een waarde op die wordt voorafgegaan door alle cluster typen die zijn gemaakt door de data factory. |
+    |Abonnement |Selecteer uw abonnement in de vervolg keuzelijst.|
+    | Resourcegroep selecteren | Selecteer de resource groep die u hebt gemaakt als onderdeel van het Power shell-script dat u eerder hebt gebruikt.|
+    | Type besturings systeem/SSH-gebruikers naam van het cluster | Voer doorgaans `sshuser`een SSH-gebruikers naam in. |
+    | Type besturings systeem/SSH-wacht woord voor het cluster | Geef een wacht woord op voor de SSH-gebruiker |
+    | Type besturings systeem/cluster gebruikers naam | Voer meestal `admin`een gebruikers naam voor het cluster in. |
+    | Type besturings systeem/cluster wachtwoord | Geef een wacht woord op voor de cluster gebruiker. |
 
-    Selecteer vervolgens **Maken**.
+    Selecteer vervolgens **maken**.
 
-    ![Waarden bieden voor hdinsight-gekoppelde service](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Waarden bieden voor hdinsight-gekoppelde service")
+    ![Geef waarden op voor de gekoppelde HDInsight-service](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Geef waarden op voor de gekoppelde HDInsight-service")
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1. Selecteer **+** de knop (plus) en selecteer **Vervolgens Pijplijn**.
+1. Selecteer de **+** knop (plus) en selecteer vervolgens **pijp lijn**.
 
-    ![Een pijplijn maken in Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Een pijplijn maken in Azure Data Factory")
+    ![Een pijp lijn maken in Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Een pijp lijn maken in Azure Data Factory")
 
-1. Vouw hdinsight uit en sleep in de **gereedschapsset Activiteiten** **HDInsight**en sleep de **Hive-activiteit** naar het oppervlak van de pijplijnontwerper. Geef op het tabblad **Algemeen** een naam voor de activiteit op.
+1. Vouw in de werkset **activiteiten** het knoop punt **HDInsight**uit en sleep de **Hive** -activiteit naar het ontwerp oppervlak voor pijp lijnen. Geef op het tabblad **Algemeen** een naam op voor de activiteit.
 
-    ![Activiteiten toevoegen aan de pijplijn Gegevensfabriek](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Activiteiten toevoegen aan de pijplijn Gegevensfabriek")
+    ![Activiteiten toevoegen aan Data Factory pijp lijn](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Activiteiten toevoegen aan Data Factory pijp lijn")
 
-1. Zorg ervoor dat u de Hive-activiteit hebt geselecteerd, selecteer het tabblad **HDI-cluster** en selecteer in de vervolgkeuzelijst **HDInsight Linked Service** de gekoppelde service die u eerder hebt gemaakt, **HDInsightLinkedService**, voor HDInsight.
+1. Zorg ervoor dat u de Hive-activiteit hebt geselecteerd, selecteer het tabblad **HDI-cluster** . En in de vervolg keuzelijst **gekoppelde HDInsight-service** selecteert u de gekoppelde service die u eerder hebt gemaakt, **HDInsightLinkedService**, voor HDInsight.
 
-    ![HDInsight-clusterdetails voor de pijplijn bieden](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "HDInsight-clusterdetails voor de pijplijn bieden")
+    ![Details van HDInsight-cluster voor de pijp lijn opgeven](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "Details van HDInsight-cluster voor de pijp lijn opgeven")
 
-1. Selecteer het tabblad **Script** en voer de volgende stappen uit:
+1. Selecteer het tabblad **script** en voer de volgende stappen uit:
 
-    1. Selecteer **HDIStorageLinkedService** voor **Script Linked Service**in de vervolgkeuzelijst. Deze waarde is de opslaggekoppelde service die u eerder hebt gemaakt.
+    1. Voor **gekoppelde script service**selecteert u **HDIStorageLinkedService** in de vervolg keuzelijst. Deze waarde is de gekoppelde opslag service die u eerder hebt gemaakt.
 
-    1. Selecteer bij **Bestandspad**de optie **Opslag bladeren** en navigeer naar de locatie waar het voorbeeldvan hive-script beschikbaar is. Als u het PowerShell-script eerder hebt `adfgetstarted/hivescripts/partitionweblogs.hql`uitgevoerd, moet deze locatie .
+    1. Selecteer **voor bestandspad**bladeren in **opslag** en navigeer naar de locatie waar het script van de voorbeeld Hive beschikbaar is. Als u het Power shell-script eerder hebt uitgevoerd, is `adfgetstarted/hivescripts/partitionweblogs.hql`deze locatie.
 
-        ![Hive-scriptgegevens opgeven voor de pijplijn](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive-scriptgegevens opgeven voor de pijplijn")
+        ![Details van Hive-script voor de pijp lijn opgeven](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Details van Hive-script voor de pijp lijn opgeven")
 
-    1. Selecteer **onder Geavanceerde** > **parameters**de optie Automatisch aanvullen **uit script**. Met deze optie wordt gezocht naar parameters in het Hive-script waarvoor waarden nodig zijn tijdens runtime.
+    1. **`Auto-fill from script`** Selecteer onder **Geavanceerde** > **para meters**. Met deze optie zoekt u naar para meters in het Hive-script waarvoor waarden moeten worden opgegeven tijdens runtime.
 
-    1. Voeg in het **tekstvak waarde** de `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/`bestaande map toe in de indeling . Het pad is hoofdlettergevoelig. Dit is het pad waar de uitvoer van het script wordt opgeslagen. Het `wasbs` schema is nodig omdat opslagaccounts nu standaard beveiligde overdracht hebben ingeschakeld.
+    1. Voeg in het tekstvak **waarde** de bestaande map in de indeling `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/`toe. Het pad is hoofdlettergevoelig. Dit pad is de locatie waar de uitvoer van het script wordt opgeslagen. Het `wasbs` schema is nood zakelijk omdat voor opslag accounts nu beveiligde overdracht is vereist, standaard is ingeschakeld.
 
-        ![Parameters opgeven voor het Hive-script](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Parameters opgeven voor het Hive-script")
+        ![Para meters opgeven voor het Hive-script](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Para meters opgeven voor het Hive-script")
 
-1. Selecteer **Valideren** om de pijplijn te valideren. Selecteer **>>** de knop (pijl-rechts) om het validatievenster te sluiten.
+1. Selecteer **valideren** om de pijp lijn te valideren. Selecteer de **>>** (pijl-rechts) om het validatie venster te sluiten.
 
-    ![De Azure Data Factory-pijplijn valideren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "De Azure Data Factory-pijplijn valideren")
+    ![De Azure Data Factory-pijp lijn valideren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "De Azure Data Factory-pijp lijn valideren")
 
-1. Selecteer Ten slotte **Alles publiceren** om de artefacten te publiceren naar Azure Data Factory.
+1. Selecteer tot slot **Alles publiceren** om de artefacten te publiceren naar Azure Data Factory.
 
-    ![De Azure Data Factory-pijplijn publiceren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "De Azure Data Factory-pijplijn publiceren")
+    ![De Azure Data Factory-pijp lijn publiceren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "De Azure Data Factory-pijp lijn publiceren")
 
 ## <a name="trigger-a-pipeline"></a>Een pijplijn activeren
 
-1. Selecteer**Trigger nu** **toevoegen** > op de werkbalk op het ontwerpoppervlak .
+1. Selecteer **trigger** > **trigger**toevoegen op de werk balk van het ontwerp oppervlak.
 
-    ![De Azure Data Factory-pijplijn activeren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "De Azure Data Factory-pijplijn activeren")
+    ![De Azure Data Factory pijp lijn activeren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "De Azure Data Factory pijp lijn activeren")
 
-2. Selecteer **OK** in de pop-upzijbalk.
+2. Selecteer **OK** op de pop-upbalk.
 
 ## <a name="monitor-a-pipeline"></a>Een pijplijn bewaken
 
-1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet een pijplijn die worden uitgevoerd in de lijst **Pipeline Runs**. Let op de status van de run onder de kolom **Status.**
+1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet een pijplijn die worden uitgevoerd in de lijst **Pipeline Runs**. U ziet de status van de uitvoering onder de kolom **status** .
 
-    ![De Azure Data Factory-pijplijn controleren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "De Azure Data Factory-pijplijn controleren")
+    ![De Azure Data Factory pijp lijn bewaken](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "De Azure Data Factory pijp lijn bewaken")
 
 1. Selecteer **Vernieuwen** om de status te vernieuwen.
 
-1. U ook het pictogram **Activiteitsruns weergeven** selecteren om de activiteitsrun te zien die aan de pijplijn is gekoppeld. In de onderstaande schermafbeelding ziet u slechts één activiteit worden uitgevoerd, omdat er slechts één activiteit in de pijplijn zit die u hebt gemaakt. Als u wilt teruggaan naar de vorige weergave, selecteert u **Pijplijnen** naar de bovenkant van de pagina.
+1. U kunt ook het pictogram **uitvoeringen van activiteit** selecteren om de uitvoering van de activiteit weer te geven die is gekoppeld aan de pijp lijn. In de onderstaande scherm afbeelding ziet u dat er slechts één activiteit wordt uitgevoerd, omdat er slechts één activiteit is in de pijp lijn die u hebt gemaakt. Als u wilt terugkeren naar de vorige weer gave, selecteert u **pijp lijnen** in de richting van de bovenkant van de pagina.
 
-    ![De pijplijnactiviteit Azure Data Factory bewaken](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "De pijplijnactiviteit Azure Data Factory bewaken")
+    ![De activiteit van de Azure Data Factory-pijp lijn bewaken](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "De activiteit van de Azure Data Factory-pijp lijn bewaken")
 
 ## <a name="verify-the-output"></a>De uitvoer controleren
 
-1. Als u de uitvoer wilt verifiëren, navigeert u in de Azure-portal naar het opslagaccount dat u voor deze zelfstudie hebt gebruikt. U ziet de volgende mappen of containers:
+1. Als u de uitvoer wilt controleren, gaat u in het Azure Portal naar het opslag account dat u voor deze zelf studie hebt gebruikt. De volgende mappen of containers moeten worden weer geven:
 
-    * U ziet een **adfgerstarted/outputmap** die de uitvoer bevat van het Hive-script dat is uitgevoerd als onderdeel van de pijplijn.
+    * U ziet een **adfgerstarted/outputfolder** die de uitvoer van het Hive-script bevat dat is uitgevoerd als onderdeel van de pijp lijn.
 
-    * U ziet een **adfhdidatafactory-linked-service-naam\<>-\<tijdstempel>** container. Deze container is de standaardopslaglocatie van het HDInsight-cluster dat is gemaakt als onderdeel van de pijplijnuitvoering.
+    * U ziet een **adfhdidatafactory-\<\<time stamp>** -container met de naam van de gekoppelde service>. Deze container is de standaard opslag locatie van het HDInsight-cluster dat is gemaakt als onderdeel van de pijplijn uitvoering.
 
-    * U ziet een **adfjobs-container** met de taaklogboeken van Azure Data Factory.  
+    * U ziet een **adfjobs** -container met de Azure Data Factory-taak Logboeken.  
 
-        ![De pijplijnuitvoer van Azure Data Factory controleren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "De pijplijnuitvoer van Azure Data Factory controleren")
+        ![De Azure Data Factory pijplijn uitvoer controleren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "De Azure Data Factory pijplijn uitvoer controleren")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Met het on-demand HDInsight-cluster maken, hoeft u het HDInsight-cluster niet expliciet te verwijderen. Het cluster wordt verwijderd op basis van de configuratie die u hebt opgegeven tijdens het maken van de pijplijn. Zelfs nadat het cluster is verwijderd, blijven de opslagaccounts die aan het cluster zijn gekoppeld, bestaan. Dit gedrag is door het ontwerp, zodat u uw gegevens intact houden. Als u de gegevens echter niet wilt blijven gebruiken, u het opslagaccount dat u hebt gemaakt verwijderen.
+Wanneer u het HDInsight-cluster op aanvraag hebt gemaakt, hoeft u het HDInsight-cluster niet expliciet te verwijderen. Het cluster wordt verwijderd op basis van de configuratie die u hebt gegeven tijdens het maken van de pijp lijn. Zelfs nadat het cluster is verwijderd, blijven de opslag accounts die zijn gekoppeld aan het cluster bestaan. Dit gedrag is inherent aan het ontwerp, zodat u uw gegevens intact kunt houden. Als u de gegevens echter niet wilt behouden, kunt u het opslag account dat u hebt gemaakt, verwijderen.
 
-U ook de hele brongroep verwijderen die u voor deze zelfstudie hebt gemaakt. Hiermee worden het opslagaccount en de Azure Data Factory die u hebt gemaakt, verwijderd.
+U kunt ook de volledige resource groep verwijderen die u voor deze zelf studie hebt gemaakt. Dit proces verwijdert het opslag account en de Azure Data Factory die u hebt gemaakt.
 
 ### <a name="delete-the-resource-group"></a>De resourcegroep verwijderen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Resourcegroepen** in het linkerdeelvenster.
-1. Selecteer de naam van de resourcegroep die u in uw PowerShell-script hebt gemaakt. Gebruik het filter als er te veel resourcegroepen worden weergegeven. Hiermee wordt de resourcegroep geopend.
-1. Op de tegel **Resources** hebt u het standaardopslagaccount en de gegevensfabriek vermeld, tenzij u de brongroep deelt met andere projecten.
-1. Selecteer **Resourcegroep verwijderen**. Hiermee worden het opslagaccount en de gegevens die zijn opgeslagen in het opslagaccount verwijderd.
+1. Selecteer **resource groepen** in het linkerdeel venster.
+1. Selecteer de naam van de resource groep die u in uw Power shell-script hebt gemaakt. Gebruik het filter als er te veel resource groepen worden weer gegeven. De resource groep wordt geopend.
+1. Op de tegel **resources** hebt u het standaard opslag account en de Data Factory vermeld, tenzij u de resource groep met andere projecten deelt.
+1. Selecteer **Resourcegroep verwijderen**. Hiermee verwijdert u het opslag account en de gegevens die zijn opgeslagen in het opslag account.
 
-    ![Brongroep Azure-portal verwijderen](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Resourcegroep verwijderen")
+    ![' Azure Portal resource groep verwijderen '](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Resourcegroep verwijderen")
 
-1. Voer de naam van de brongroep in om verwijdering te bevestigen en selecteer **Verwijderen**.
+1. Voer de naam van de resource groep in om het verwijderen te bevestigen en selecteer vervolgens **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Azure Data Factory gebruiken om on-demand HDInsight-cluster te maken en [Apache Hive-taken](https://hive.apache.org/) uit te voeren. Ga naar het volgende artikel voor meer informatie over het maken van HDInsight-clusters met aangepaste configuratie.
+In dit artikel hebt u geleerd hoe u Azure Data Factory kunt gebruiken om een HDInsight-cluster op aanvraag te maken en Apache Hive-taken uit te voeren. Ga naar het volgende artikel voor meer informatie over het maken van HDInsight-clusters met aangepaste configuratie.
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight-clusters maken met aangepaste configuratie](hdinsight-hadoop-provision-linux-clusters.md)

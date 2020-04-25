@@ -1,20 +1,20 @@
 ---
-title: Taken automatiseren met meerdere Azure-services
-description: Zelfstudie - Geautomatiseerde werkstromen maken om e-mails te verwerken met Azure Logic Apps, Azure Storage en Azure-functies
+title: Taken automatiseren met meerdere Azure-Services
+description: 'Zelf studie: automatische werk stromen maken voor het verwerken van e-mail berichten met Azure Logic Apps, Azure Storage en Azure Functions'
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332be9cb0f31119e7d2f2d9fe2d3dc1f73e6d3ab
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77662753"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146731"
 ---
-# <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Zelfstudie: Taken automatiseren om e-mails te verwerken met Azure Logic Apps, Azure-functies en Azure Storage
+# <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Zelf studie: taken automatiseren voor het verwerken van e-mail berichten met behulp van Azure Logic Apps, Azure Functions en Azure Storage
 
 Azure Logic Apps helpt u om uw werkstromen te automatiseren en om gegevens te integreren in Azure-services, Microsoft-services, andere SaaS-apps (software als een service) en on-premises systemen. In deze zelfstudie leert u hoe u een [logische app](../logic-apps/logic-apps-overview.md) bouwt die binnenkomende e-mails en eventuele bijlagen verwerkt. Deze logische app analyseert de inhoud van de e-mails, bewaart de inhoud in een Azure-opslag en verzendt een melding om die inhoud te bekijken.
 
@@ -42,6 +42,9 @@ Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niv
 
   Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mailaccount gebruikt, blijven de algemene stappen gelijk, maar uw gebruikersinterface kan er iets anders uitzien.
 
+  > [!IMPORTANT]
+  > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
 * Download en installeer de [gratis Microsoft Azure Storage Explorer](https://storageexplorer.com/). Dit hulpprogramma help u om te controleren of uw opslagcontainer correct is ingesteld.
 
 ## <a name="sign-in-to-azure-portal"></a>Meld u aan bij Azure Portal
@@ -52,21 +55,21 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 U kunt binnenkomende e-mails en bijlagen als blobs opslaan in een [Azure-opslagcontainer](../storage/common/storage-introduction.md).
 
-1. Voordat u een opslagcontainer maken, [maakt u een opslagaccount](../storage/common/storage-account-create.md) met deze instellingen op het tabblad **Basisbeginselen** in de Azure-portal:
+1. Voordat u een opslag container kunt maken, [maakt u een opslag account](../storage/common/storage-account-create.md) met deze instellingen op het tabblad **basis beginselen** in de Azure portal:
 
    | Instelling | Waarde | Beschrijving |
    |---------|-------|-------------|
-   | **Abonnement** | <*Azure-abonnementsnaam*> | De naam van uw Azure-abonnement |  
-   | **Resourcegroep** | <*Azure-resourcegroep*> | De naam van de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) die wordt gebruikt om verwante resources te organiseren en te beheren. In dit voorbeeld wordt "LA-Tutorial-RG" gebruikt. <p>**Opmerking:** resourcegroepen bestaan binnen een bepaalde regio. Hoewel de items in deze zelfstudie mogelijk niet in alle regio's beschikbaar zijn, dient u, wanneer mogelijk, dezelfde regio te gebruiken. |
-   | **Naam van het opslagaccount** | <*Azure-storage-account-naam*> | Uw naam van uw opslagaccount, die 3-24 tekens moet hebben en alleen kleine letters en cijfers kan bevatten. In dit voorbeeld wordt gebruik gemaakt van "attachmentstorageacct". |
-   | **Locatie** | <*Azure-regio*> | De regio waar u informatie over uw opslagaccount opslaan. In dit voorbeeld wordt "West US" gebruikt. |
+   | **Abonnement** | <*Azure-abonnement-naam*> | De naam van uw Azure-abonnement |  
+   | **Resourcegroep** | <*Azure-Resource-Group*> | De naam van de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) die wordt gebruikt om verwante resources te organiseren en te beheren. In dit voor beeld wordt ' LA-zelf studie-RG ' gebruikt. <p>**Opmerking:** resourcegroepen bestaan binnen een bepaalde regio. Hoewel de items in deze zelfstudie mogelijk niet in alle regio's beschikbaar zijn, dient u, wanneer mogelijk, dezelfde regio te gebruiken. |
+   | **Naam van opslag account** | <*Azure-Storage-account-name*> | De naam van uw opslag account, die 3-24 tekens moet hebben en alleen kleine letters en cijfers kan bevatten. In dit voor beeld wordt ' attachmentstorageacct ' gebruikt. |
+   | **Locatie** | <*Azure-regio*> | De regio waar informatie over uw opslag account moet worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Prestaties** | Standard | Deze instelling bepaalt de gegevenstypen die worden ondersteund en de media die moeten worden opgeslagen. Zie [Typen opslagaccounts](../storage/common/storage-introduction.md#types-of-storage-accounts). |
-   | **Accountsoort** | Algemeen doel | Het [type opslagaccount](../storage/common/storage-introduction.md#types-of-storage-accounts) |
-   | **Replicatie** | Lokaal redundante opslag (LRS) | Deze instelling bepaalt hoe uw gegevens worden gekopieerd, opgeslagen, beheerd en gesynchroniseerd. Zie [LRS (Locally redundante opslag) zien: redundantie van bedrijfsgegevens voor Azure Storage](../storage/common/storage-redundancy-lrs.md). |
-   | **Toegangslaag (standaard)** | Houd de huidige instelling. |
+   | **Soort account** | Algemeen doel | Het [type opslagaccount](../storage/common/storage-introduction.md#types-of-storage-accounts) |
+   | **Replicatie** | Lokaal redundante opslag (LRS) | Deze instelling bepaalt hoe uw gegevens worden gekopieerd, opgeslagen, beheerd en gesynchroniseerd. Zie [lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](../storage/common/storage-redundancy-lrs.md). |
+   | **Access-laag (standaard)** | Behoud de huidige instelling. |
    ||||
 
-   Selecteer op het tabblad **Geavanceerd** de optie:
+   Op het tabblad **Geavanceerd** selecteert u deze instelling:
 
    | Instelling | Waarde | Beschrijving |
    |---------|-------|-------------|
@@ -75,13 +78,13 @@ U kunt binnenkomende e-mails en bijlagen als blobs opslaan in een [Azure-opslagc
 
    U kunt ook [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) of [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) gebruiken om uw opslagaccount te maken.
 
-1. Wanneer u klaar bent, selecteert u **Controleren + maken**.
+1. Wanneer u klaar bent, selecteert u **controleren + maken**.
 
-1. Nadat Azure uw opslagaccount implementeert, zoekt u uw opslagaccount en krijgt u de toegangssleutel van het opslagaccount:
+1. Nadat Azure uw opslag account heeft geïmplementeerd, gaat u naar uw opslag account en haalt u de toegangs sleutel voor het opslag account op:
 
    1. In het menu van uw opslagaccount selecteert u onder het kopje **Instellingen****Toegangssleutels**.
 
-   1. Kopieer de naam en sleutel van uw **opslagaccount 1**en sla deze waarden ergens veilig op.
+   1. Kopieer de naam van uw opslag account en **key1**, en sla deze waarden op een veilige plek op.
 
       ![Kopieer de naam en de sleutel van de opslagaccount en sla deze op](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
@@ -89,19 +92,19 @@ U kunt binnenkomende e-mails en bijlagen als blobs opslaan in een [Azure-opslagc
 
 1. Maak een Blob Storage-container voor uw e-mailbijlagen.
 
-   1. Selecteer **Overzicht** in uw opslagaccountmenu. Selecteer **Containers**in het deelvenster Overzicht .
+   1. Selecteer **Overzicht** in uw opslagaccountmenu. Selecteer in het deel venster Overzicht de optie **containers**.
 
       ![Blob Storage-container toevoegen](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
    1. Nadat de pagina **Containers** opent in de werkbalk, selecteert u **Container**.
 
-   1. Voer onder Nieuwe `attachments` **container**in als containernaam. Selecteer **Onder Openbaar toegangsniveau**de optie **Container (anonieme leestoegang voor containers en blobs)** > **OK**.
+   1. Onder **nieuwe container**voert `attachments` u als container naam in. Selecteer onder **openbaar toegangs niveau** **container (anonieme lees toegang voor containers en blobs)** > **OK**.
 
       Wanneer u klaar bent, vindt u uw opslagcontainer in uw opslagaccount hier in Azure Portal:
 
       ![Voltooide opslagcontainer](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Als u een opslagcontainer wilt maken, u ook [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) of [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)gebruiken.
+   Als u een opslag container wilt maken, kunt u ook [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) of [Azure cli](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)gebruiken.
 
 Koppel vervolgens Storage Explorer aan uw opslagaccount.
 
@@ -109,24 +112,24 @@ Koppel vervolgens Storage Explorer aan uw opslagaccount.
 
 Koppel nu Storage Explorer aan uw opslagaccount, zodat u kunt bevestigen dat uw logische app bijlagen correct als blobs kan opslaan in uw opslagcontainer.
 
-1. Microsoft Azure Storage Explorer starten.
+1. Start Microsoft Azure Storage Explorer.
 
    Storage Explorer vraagt u om een verbinding met uw opslagaccount.
 
-1. Selecteer **in** het deelvenster Verbinding maken met Azure Storage de optie Een **opslagaccountnaam en sleutel Volgende gebruiken.** > **Next**
+1. Selecteer in het deel venster **verbinding maken met Azure Storage** de optie **een opslag accountnaam en-sleutel** > gebruiken**volgende**.
 
    ![Storage Explorer - verbinding maken met opslagaccount](./media/tutorial-process-email-attachments-workflow/storage-explorer-choose-storage-account.png)
 
    > [!TIP]
-   > Als er geen prompt wordt weergegeven, selecteert u op de werkbalk Opslagverkenner de optie **Een account toevoegen**.
+   > Als er geen prompt wordt weer gegeven, selecteert u op de Storage Explorer-werk balk **een account toevoegen**.
 
-1. Geef **onder Weergavenaam**een vriendelijke naam voor uw verbinding op. Onder **Accountnaam** geeft u de naam op van uw opslagaccount. Geef **onder Accountsleutel**de toegangssleutel op die u eerder hebt opgeslagen en selecteer **Volgende**.
+1. Geef onder **weergave naam**een beschrijvende naam op voor de verbinding. Onder **Accountnaam** geeft u de naam op van uw opslagaccount. Geef onder **account sleutel**de toegangs sleutel op die u eerder hebt opgeslagen en selecteer **volgende**.
 
-1. Bevestig uw verbindingsgegevens en selecteer **Verbinding maken**.
+1. Bevestig de verbindings gegevens en selecteer vervolgens **verbinding maken**.
 
-   Storage Explorer maakt de verbinding en toont uw opslagaccount in het Explorer-venster onder **Lokale & gekoppelde** > **opslagaccounts**.
+   Storage Explorer maakt de verbinding en toont uw opslag account in het venster Verkenner onder **lokale & gekoppelde** > **opslag accounts**.
 
-1. Als u uw blobopslagcontainer wilt vinden, vouwt u onder **Opslagaccounts**uw opslagaccount uit, dat hier **attachmentsist** is, en **vouwt u Blob-containers** uit waar u de **bijlagencontainer** vindt, bijvoorbeeld:
+1. Als u uw Blob Storage-container wilt vinden, vouwt u onder **opslag accounts**uw opslag account, dat hier **attachmentstorageacct** is, uit en vouwt u **BLOB-containers** uit waar u de **bijlagen** container vindt, bijvoorbeeld:
 
    ![Storage Explorer - opslagcontainer zoeken](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
 
@@ -140,18 +143,18 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
 
    | Instelling | Waarde | Beschrijving |
    | ------- | ----- | ----------- |
-   | **App-naam** | <*functie-app-naam*> | De naam van uw functie-app, die wereldwijd uniek moet zijn in Azure. In dit voorbeeld wordt al gebruik gemaakt van "CleanTextFunctionApp", dus geef een andere naam op, zoals "MyCleanTextFunctionApp-<*uw naam*>" |
-   | **Abonnement** | <*naam van uw Azure-abonnement*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
-   | **Resourcegroep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
-   | **Besturingssysteem** | <*uw besturingssysteem*> | Selecteer het besturingssysteem dat uw favoriete functieprogrammeertaal ondersteunt. Selecteer in dit voorbeeld **Windows**. |
+   | **App-naam** | <*functie-app-naam*> | De naam van de functie-app, die wereld wijd uniek moet zijn in Azure. In dit voor beeld wordt CleanTextFunctionApp al gebruikt. Geef dus een andere naam op, bijvoorbeeld ' MyCleanTextFunctionApp-<*your-name*> ' |
+   | **Abonnement** | <*de naam van uw Azure-abonnement*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
+   | **Resource groep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
+   | **Besturingssysteem** | <*uw besturings systeem*> | Selecteer het besturings systeem dat de programmeer taal van uw favoriete functie ondersteunt. Voor dit voor beeld selecteert u **Windows**. |
    | **Hostingabonnement** | Verbruiksabonnement | Deze instelling bepaalt hoe de resources worden toegewezen en geschaald, bijvoorbeeld de rekenkracht, om uw functie-app uit te voeren. Bekijk [Vergelijking van hostingabonnementen](../azure-functions/functions-scale.md). |
    | **Locatie** | VS - west | Dezelfde regio die u eerder hebt gebruikt |
-   | **Runtime Stack** | Voorkeurstaal | Selecteer een runtime die uw favoriete functieprogrammeertaal ondersteunt. Selecteer **.NET** voor C# en F#-functies. |
-   | **Opslag** | cleantextfunctionstorageacct | Maak een opslagaccount voor uw functie-app. Gebruik alleen kleine letters en cijfers. <p>**Let op:** Dit opslagaccount bevat uw functie-apps en verschilt van uw eerder gemaakte opslagaccount voor e-mailbijlagen. |
-   | **Application Insights** | Uitschakelen | Hiermee schakelt u toepassingsbewaking in met [Application Insights,](../azure-monitor/app/app-insights-overview.md)maar selecteer voor deze zelfstudie **Toepassen** > **Apply**. |
+   | **Runtime stack** | Voorkeurstaal | Selecteer een runtime die de programmeer taal van uw favoriete functie ondersteunt. Selecteer **.net** voor C#-en F #-functies. |
+   | **Storage** | cleantextfunctionstorageacct | Maak een opslagaccount voor uw functie-app. Gebruik alleen kleine letters en cijfers. <p>**Opmerking:** Dit opslag account bevat uw functie-apps en wijkt af van het eerder gemaakte opslag account voor e-mail bijlagen. |
+   | **Application Insights** | Uitschakelen | Hiermee schakelt u toepassings bewaking in met [Application Insights](../azure-monitor/app/app-insights-overview.md), maar voor deze zelf studie selecteert u**Toep assen** **uitschakelen** > . |
    ||||
 
-   Als uw functie-app niet automatisch wordt geopend na implementatie, zoekt en selecteert u in het zoekvak [Azure portal](https://portal.azure.com) **functie-app**. Selecteer **onder Functie-app**de functie-app.
+   Als uw functie-app niet automatisch wordt geopend na de implementatie, zoekt en selecteert u in het zoekvak van [Azure Portal](https://portal.azure.com) **functie-app**. Selecteer onder **functie-app**de functie-app.
 
    ![Functie-app selecteren](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -159,19 +162,19 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
 
    ![Gemaakte functie-app](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Als u een functie-app wilt maken, u ook [Azure CLI-](../azure-functions/functions-create-first-azure-function-azure-cli.md)of [PowerShell- en Resource Manager-sjablonen](../azure-resource-manager/templates/deploy-powershell.md)gebruiken.
+   U kunt ook [Azure cli](../azure-functions/functions-create-first-azure-function-azure-cli.md)-of [Power shell-en Resource Manager-sjablonen](../azure-resource-manager/templates/deploy-powershell.md)gebruiken om een functie-app te maken.
 
-1. Vouw in de lijst **Functie-apps** de functie-app uit, als deze nog niet is uitgebreid. Selecteer **Functies**onder de functie-app . Selecteer op de functiewerkbalk **Nieuwe functie**.
+1. Vouw in de lijst **functie-apps** de functie-app uit, als deze nog niet is uitgevouwen. Selecteer **functies**onder uw functie-app. Selecteer op de functiewerkbalk **Nieuwe functie**.
 
    ![Nieuwe functie maken](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
-1. Selecteer **onder Een sjabloon hieronder kiezen of ga naar de snelstart,** selecteer de **HTTP-triggersjabloon.**
+1. Onder **Kies hieronder een sjabloon of ga naar de Snelstartgids**, selecteert u de sjabloon **http-trigger** .
 
-   ![HTTP-triggersjabloon selecteren](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
+   ![HTTP-trigger sjabloon selecteren](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
 
-   Azure maakt een functie met behulp van een taalspecifieke sjabloon voor een HTTP-geactiveerde functie.
+   Azure maakt een functie met een taalspecifieke sjabloon voor een HTTP-geactiveerde functie.
 
-1. In het deelvenster **Nieuwe functie** voert u `RemoveHTMLFunction` in onder **Naam**. Houd **autorisatieniveau** ingesteld op **functie**en selecteer **Maken**.
+1. In het deelvenster **Nieuwe functie** voert u `RemoveHTMLFunction` in onder **Naam**. Laat het **autorisatie niveau** ingesteld op **functie**en selecteer **maken**.
 
    ![Een naam voor de functie opgeven](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
@@ -203,11 +206,11 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
    }
    ```
 
-1. Selecteer **Opslaan** als u klaar bent. Als u uw functie wilt testen, selecteert u**<** onder het pictogram Pijl () onder het pictogram Pijl ( ) onder de rechterrand van de editor de optie **Testen**.
+1. Selecteer **Opslaan** als u klaar bent. Als u de functie wilt testen, selecteert u op de rechter rand van de editor**<**, onder het pijl ()-pictogram, de optie **testen**.
 
    ![Open het testpaneel](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
-1. Voer deze regel in het **deelvenster Testen** onder **De hoofdtekst Van toepassing**en selecteer **Uitvoeren**.
+1. Voer in het deel venster **test** onder **hoofd tekst van aanvraag**deze regel in en selecteer **uitvoeren**.
 
    `{"name": "<p><p>Testing my function</br></p></p>"}`
 
@@ -223,40 +226,40 @@ Nadat u hebt gecontroleerd of uw functie werkt, maakt u uw logische app. In deze
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 
-1. Voer in het zoekvak op `logic apps`het hoogste niveau van Azure Logic Apps in en selecteer **deze optie Logic Apps**.
+1. Voer `logic apps`in het zoekvak op het hoogste niveau van Azure de optie **Logic apps**in.
 
-   ![Zoeken en selecteren "Logische apps"](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
+   ![Zoek en selecteer ' Logic Apps '](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. Selecteer Toevoegen in het deelvenster **Logische apps** **.**
+1. Selecteer **toevoegen**in het deel venster **Logic apps** .
 
    ![Nieuwe logische app toevoegen](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. Geef in het deelvenster **Logic App** details over uw logische app zoals hier wordt weergegeven. Nadat u klaar bent, selecteert u **Controleren + maken**.
+1. Geef in het deel venster **logische app** Details op over uw logische app, zoals hier wordt weer gegeven. Wanneer u klaar bent, selecteert u **controleren + maken**.
 
    ![Informatie over logische app opgeven](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | Instelling | Waarde | Beschrijving |
    | ------- | ----- | ----------- |
-   | **Abonnement** | <*naam van uw Azure-abonnement*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
+   | **Abonnement** | <*de naam van uw Azure-abonnement*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
    | **Resourcegroep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
-   | **Logische app-naam** | LA-ProcessAttachment | De naam voor uw logische app |
+   | **Naam van logische app** | LA-ProcessAttachment | De naam voor uw logische app |
    | **De locatie selecteren** | VS - west | Dezelfde regio die u eerder hebt gebruikt |
-   | **Logboekanalyse** | Uit | Selecteer voor deze zelfstudie de instelling **Uit.** |
+   | **Log Analytics** | Uit | Voor deze zelf studie selecteert u de instelling **uit** . |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de azure-werkbalk het pictogram meldingen en selecteert u **Ga naar resource**.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u in de Azure-werk balk het pictogram meldingen en selecteert **u Ga naar resource**.
 
-   ![Selecteer in de lijst met Azure-meldingen de optie 'Ga naar resource'](./media/tutorial-process-email-attachments-workflow/go-to-new-logic-app-resource.png)
+   ![Selecteer in de lijst met meldingen van Azure de optie Ga naar resource](./media/tutorial-process-email-attachments-workflow/go-to-new-logic-app-resource.png)
 
-1. Nadat de Logic Apps Designer is geopend en een pagina met een introductievideo en sjablonen voor algemene logische app-patronen hebt weergegeven. Kies onder **Sjablonen** de optie **Lege logische app**.
+1. Nadat de Logic Apps Designer wordt geopend, ziet u een pagina met een introductie video en sjablonen voor veelgebruikte logische app-patronen. Kies onder **Sjablonen** de optie **Lege logische app**.
 
-   ![Sjabloon voor lege logica-apps selecteren](./media/tutorial-process-email-attachments-workflow/choose-logic-app-template.png)
+   ![Sjabloon voor lege logische app selecteren](./media/tutorial-process-email-attachments-workflow/choose-logic-app-template.png)
 
 Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe die binnenkomende e-mails met bijlagen afwacht. Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer nieuwe gegevens voldoen aan een bepaalde voorwaarde. Bekijk [Uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md) voor meer informatie.
 
 ## <a name="monitor-incoming-email"></a>Binnenkomende e-mail controleren
 
-1. Voer in het zoekvak `when new email arrives` in als filter in het zoekvak. Selecteer deze trigger voor uw e-mailprovider: **Wanneer er nieuwe e-mail binnenkomt - <*uw e-mailprovider*>**
+1. Typ `when new email arrives` als filter op de ontwerper in het zoekvak. Selecteer deze trigger voor uw e-mailprovider: **Wanneer er nieuwe e-mail binnenkomt - <*uw e-mailprovider*>**
 
    Bijvoorbeeld:
 
@@ -270,7 +273,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. Geef nu de criteria op die de trigger gebruikt om nieuwe e-mails te filteren.
 
-   1. Geef de onderstaande instellingen op voor het controleren van e-mails.
+   1. Geef de instellingen op die hieronder worden beschreven voor het controleren van e-mail berichten.
 
       ![Geef map, interval en frequentie voor het controleren van e-mails op](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
@@ -279,13 +282,13 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
       | **Map** | Postvak IN | De te controleren e-mailmap |
       | **Heeft bijlage** | Ja | Ontvang alleen e-mails met bijlagen. <p>**Opmerking:** de trigger verwijdert geen e-mails van uw account, maar controleert alleen op nieuwe berichten en verwerkt alleen e-mails die overeenkomen met het onderwerpfilter. |
       | **Bijlagen opnemen** | Ja | Haalt de bijlagen op als invoer voor uw werkstroom, in plaats van dat er alleen wordt gecontroleerd op bijlagen. |
-      | **Interval** | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
+      | **Bereik** | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
       | **Frequentie** | Minuut | De tijdseenheid voor elk interval tussen controles |
       ||||
 
-   1. Selecteer **Onderwerpfilter**in de lijst **Nieuwe parameter toevoegen** .
+   1. Selecteer in de lijst **nieuwe para meter toevoegen** de optie **onderwerps filter**.
 
-   1. Nadat het vak **Onderwerpfilter** in de actie is weergegeven, geeft u het onderwerp op zoals hier wordt vermeld:
+   1. Nadat het vak **onderwerps filter** in de actie wordt weer gegeven, geeft u het onderwerp op zoals hier wordt weer gegeven:
 
       | Instelling | Waarde | Beschrijving |
       | ------- | ----- | ----------- |
@@ -296,7 +299,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Shape samenvouwen om details te verbergen](./media/tutorial-process-email-attachments-workflow/collapse-trigger-shape.png)
 
-1. Sla uw logische app op. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    Uw logische app is nu live, maar kan niets anders doen dan uw e-mails controleren. Voeg vervolgens een voorwaarde toe waarmee criteria worden opgegeven, zodat de werkstroom door blijft gaan.
 
@@ -304,15 +307,15 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
 Voeg nu een voorwaarde toe waarmee er alleen e-mails met bijlagen worden geselecteerd.
 
-1. Selecteer Onder de trigger de optie **Nieuwe stap**.
+1. Selecteer **nieuwe stap**onder de trigger.
 
    !["Nieuwe stap"](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-1. Voer **onder Een actie kiezen**in `condition`het zoekvak in . Deze actie selecteren: **Voorwaarde**
+1. Onder **Kies een actie**, typt `condition`u in het zoekvak. Selecteer deze actie: **voor waarde**
 
-   ![Selecteer 'Voorwaarde'](./media/tutorial-process-email-attachments-workflow/select-condition.png)
+   ![Selecteer ' voor waarde '](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
-   1. Geef de voorwaarde een naam met een betere beschrijving. Selecteer op de titelbalk van de voorwaarde de knop ellips (**... )**> **Naam wijzigen**.
+   1. Geef de voorwaarde een naam met een betere beschrijving. Selecteer op de titel balk van de voor waarde de knop met weglatings tekens (**...**) > **naam wijzigen**.
 
       ![Naam voorwaarde wijzigen](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
@@ -350,25 +353,25 @@ Voeg nu een voorwaarde toe waarmee er alleen e-mails met bijlagen worden geselec
    }
    ```
 
-1. Sla uw logische app op. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
 ### <a name="test-your-condition"></a>Uw verbinding testen
 
 Test nu of de voorwaarde correct werkt:
 
-1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **Uitvoeren** op de werkbalk van de ontwerper.
+1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **uitvoeren** op de werk balk van de ontwerp functie.
 
    Met deze stap wordt u logische app handmatig gestart zonder dat u hoeft te wachten tot de door u opgegeven interval is verstreken. Er gebeurt echter niets totdat het test-e-mailbericht in uw postvak binnenkomt.
 
 1. Verstuur een e-mail naar uzelf die aan de volgende criteria voldoet:
 
-   * Het onderwerp van uw e-mail heeft de tekst die u hebt opgegeven in het **filter Onderwerp van**de trigger:`Business Analyst 2 #423501`
+   * Het onderwerp van uw e-mail bericht bevat de tekst die u hebt opgegeven in het **onderwerps filter**van de trigger:`Business Analyst 2 #423501`
 
    * Uw e-mailbericht heeft één bijlage. Maak voor nu een leeg tekstbestand en voeg dat als bijlage toe aan uw e-mail.
 
    Wanneer de e-mail binnenkomt, controleert uw logische app op bijlagen en op de opgegeven onderwerptekst. Als er aan de voorwaarde wordt voldaan, wordt de trigger geactiveerd en maakt de Logic Apps-engine een exemplaar van een logische app en wordt de werkstroom in gang gezet.
 
-1. Als u wilt controleren of de geactiveerde trigger en de logische app zijn uitgevoerd, **selecteert**u overzicht in het menu van de logische app .
+1. Als u wilt controleren of de trigger is geactiveerd en de logische app met succes is uitgevoerd, selecteert u **overzicht**in het menu van de logische app.
 
    ![Controleer trigger en uitvoergeschiedenis](./media/tutorial-process-email-attachments-workflow/checkpoint-run-history.png)
 
@@ -384,7 +387,7 @@ Bepaal vervolgens de te nemen acties voor de vertakking **Indien waar**. Als u u
 
 Met deze stap wordt uw eerder gemaakte Azure-functie toegevoegd aan uw logische app en wordt de tekstinhoud van de e-mail overgezet van de trigger naar uw functie.
 
-1. Selecteer in het menu van de logische app **Logic App Designer**. Selecteer in de **vertakking Als als** de optie **Een actie toevoegen**.
+1. Selecteer in het menu van de logische app **Logic App Designer**. Selecteer **een actie toevoegen**in de vertakking **Indien waar** .
 
    ![In vertakking 'indien waar', actie toevoegen](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
@@ -392,7 +395,7 @@ Met deze stap wordt uw eerder gemaakte Azure-functie toegevoegd aan uw logische 
 
    ![Selecteer actie voor 'Een Azure-functie kiezen'](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-1. Selecteer de eerder gemaakte functie-app, die in dit voorbeeld staat: `CleanTextFunctionApp`
+1. Selecteer uw eerder gemaakte functie-app, `CleanTextFunctionApp` in dit voor beeld:
 
    ![Selecteer uw Azure-functie-app](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
@@ -426,9 +429,9 @@ Voeg vervolgens een actie toe waarmee er een blob wordt gemaakt in uw opslagcont
 
 ## <a name="create-blob-for-email-body"></a>Een blob maken voor de hoofdtekst van de e-mail
 
-1. Selecteer in het blok **Als waar** en onder uw Azure-functie de optie Een **actie toevoegen**.
+1. Selecteer **een actie toevoegen**in het blok **Indien waar** en onder uw Azure-functie.
 
-1. Voer in het `create blob` zoekvak in als filter en selecteer deze actie: **Blob maken**
+1. Typ `create blob` als filter in het zoekvak en selecteer deze actie: **Blob maken**
 
    ![Voeg de actie toe om een blob voor de hoofdtekst van een e-mail te maken](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -438,8 +441,8 @@ Voeg vervolgens een actie toe waarmee er een blob wordt gemaakt in uw opslagcont
 
    | Instelling | Waarde | Beschrijving |
    | ------- | ----- | ----------- |
-   | **Verbindingsnaam** | AttachmentStorageConnection | Een beschrijvende naam voor de verbinding |
-   | **Opslagaccount** | attachmentstorageacct | De naam voor de opslagaccount die u eerder hebt gemaakt om bijlagen op te slaan |
+   | **Verbindings naam** | AttachmentStorageConnection | Een beschrijvende naam voor de verbinding |
+   | **Opslag account** | attachmentstorageacct | De naam voor de opslagaccount die u eerder hebt gemaakt om bijlagen op te slaan |
    ||||
 
 1. Verander de naam van de actie **Blob maken** in deze beschrijving: `Create blob for email body`
@@ -465,21 +468,21 @@ Voeg vervolgens een actie toe waarmee er een blob wordt gemaakt in uw opslagcont
 
 Test nu of uw logische app e-mails verwerkt zoals u hebt opgegeven:
 
-1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **Uitvoeren** op de werkbalk van de ontwerper.
+1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **uitvoeren** op de werk balk van de ontwerp functie.
 
 1. Verstuur een e-mail naar uzelf die aan de volgende criteria voldoet:
 
-   * Het onderwerp van uw e-mail heeft de tekst die u hebt opgegeven in het **filter Onderwerp van**de trigger:`Business Analyst 2 #423501`
+   * Het onderwerp van uw e-mail bericht bevat de tekst die u hebt opgegeven in het **onderwerps filter**van de trigger:`Business Analyst 2 #423501`
 
-   * Uw e-mailbericht heeft ten minste één bijlage. Maak voor alsnog één leeg tekstbestand aan en voeg dat bestand toe aan uw e-mail.
+   * Uw e-mailbericht heeft ten minste één bijlage. U kunt nu slechts één leeg tekst bestand maken en dat bestand koppelen aan uw e-mail adres.
 
-   * Uw e-mail heeft een aantal testinhoud in de body, bijvoorbeeld:`Testing my logic app`
+   * Uw e-mail heeft een aantal test inhoud in de hoofd tekst, bijvoorbeeld:`Testing my logic app`
 
    Bekijk [Troubleshoot your logic app](../logic-apps/logic-apps-diagnosing-failures.md) (Problemen met uw logische app oplossen) als uw logische app niet is geactiveerd of uitgevoerd, hoewel de trigger wel succesvol is geactiveerd.
 
 1. Controleer of uw logische app het e-mailbericht in de juiste opslagcontainer heeft opgeslagen.
 
-   1. Vouw in Storage Explorer **bijlagen bij lokale & gekoppelde** > **opslagaccounts** > **(Key)** > **Blob Containers** > **uit.**
+   1. Vouw in Storage Explorer **lokale & gekoppelde** > **opslag accounts** > **attachmentstorageacct (Key)** > **BLOB containers** > -**bijlagen**.
 
    1. Controleer de container **bijlagen** op het e-mailbericht.
 
@@ -497,13 +500,13 @@ Voeg vervolgens een lus toe om alle e-mailbijlagen te verwerken.
 
 Voeg de lus **Voor elke** toe aan de werkstroom van uw logische app om elke bijlage in de e-mail te verwerken.
 
-1. Selecteer onder de **blob maken voor e-mailhoofdvorm** de optie **Een actie toevoegen**.
+1. Selecteer **een actie toevoegen**onder de vorm **Blob maken voor de hoofd tekst van de e-mail** .
 
    ![Lus 'voor elke' toevoegen](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-1. Voer **onder Een actie kiezen**in `for each` het zoekvak in als filter en selecteer deze actie: **Voor elk**
+1. Onder **Kies een actie**, typt `for each` u als filter in het zoekvak en selecteert u deze actie: **voor elke**
 
-   ![Selecteer 'Voor elk'](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
+   ![Selecteer voor elke](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
 
 1. Verander de naam van uw lus in deze beschrijving: `For each email attachment`
 
@@ -519,11 +522,11 @@ Vervolgens voegt u de actie toe waarmee elke bijlage als blob in uw opslagcontai
 
 ## <a name="create-blob-for-each-attachment"></a>Een blob maken voor elke bijlage
 
-1. Selecteer in de lus **Voor elke e-mailbijlage** de optie **Een actie toevoegen,** zodat u de taak opgeven die moet worden uitgevoerd op elke gevonden bijlage.
+1. Selecteer **een actie toevoegen** in de lus **voor elke e-mail bijlage** zodat u de taak die u wilt uitvoeren op elke gevonden bijlage kunt opgeven.
 
    ![Actie aan lus toevoegen](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-1. Voer in het `create blob` zoekvak in als filter en selecteer deze actie: **Blob maken**
+1. Typ `create blob` als filter in het zoekvak en selecteer deze actie: **Blob maken**
 
    ![Actie toevoegen om blob te maken](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
@@ -550,11 +553,11 @@ Vervolgens voegt u de actie toe waarmee elke bijlage als blob in uw opslagcontai
 
 Test vervolgens of uw logische app de bijlagen verwerkt zoals u hebt opgegeven:
 
-1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **Uitvoeren** op de werkbalk van de ontwerper.
+1. Als uw logische app nog niet wordt uitgevoerd, selecteert u **uitvoeren** op de werk balk van de ontwerp functie.
 
 1. Verstuur een e-mail naar uzelf die aan de volgende criteria voldoet:
 
-   * Het onderwerp van uw e-mail heeft de tekst die u hebt opgegeven in de eigenschap **Onderwerpfilter van** de trigger:`Business Analyst 2 #423501`
+   * Het onderwerp van uw e-mail bericht bevat de tekst die u hebt opgegeven in de eigenschap **subject filter** van de trigger:`Business Analyst 2 #423501`
 
    * Uw e-mailbericht heeft ten minste twee bijlagen. Maak voor nu twee lege tekstbestanden en voeg die als bijlagen toe aan uw e-mail.
 
@@ -562,7 +565,7 @@ Test vervolgens of uw logische app de bijlagen verwerkt zoals u hebt opgegeven:
 
 1. Controleer of uw logische app het e-mailbericht en de bijlagen in de juiste opslagcontainer heeft opgeslagen.
 
-   1. Vouw in Storage Explorer **bijlagen bij lokale & gekoppelde** > **opslagaccounts** > **(Key)** > **Blob Containers** > **uit.**
+   1. Vouw in Storage Explorer **lokale & gekoppelde** > **opslag accounts** > **attachmentstorageacct (Key)** > **BLOB containers** > -**bijlagen**.
 
    1. Controleer de container **bijlagen** op zowel de e-mail als op de bijlagen.
 
@@ -574,11 +577,11 @@ Voeg vervolgens een actie toe, zodat uw logische app een e-mail verzendt om meld
 
 ## <a name="send-email-notifications"></a>E-mailmeldingen verzenden
 
-1. Selecteer in de **vertakking Als** onder de lus **Voor elke e-mailbijlage** de optie **Een actie toevoegen**.
+1. In de vertakking **Indien waar** , onder de lus **voor elke e-mail bijlage** , selecteert u **een actie toevoegen**.
 
    ![Actie toevoegen onder lus 'voor elke'](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 
-1. Voer in het `send email` zoekvak in als filter en selecteer vervolgens de actie 'E-mail verzenden' voor uw e-mailprovider.
+1. Voer `send email` in het zoekvak in als uw filter en selecteer vervolgens de actie ' e-mail verzenden ' voor uw e-mail provider.
 
    Als u de lijst met acties wilt filteren op een bepaalde service, kunt u eerst de connector selecteren.
 
@@ -596,11 +599,11 @@ Voeg vervolgens een actie toe, zodat uw logische app een e-mail verzendt om meld
 
    ![E-mailmelding verzenden](./media/tutorial-process-email-attachments-workflow/send-email-notification.png)
 
-   Als u een verwacht veld niet vinden in de lijst met dynamische inhoud, selecteert u **Meer weergeven** naast **Wanneer een nieuwe e-mail wordt binnenkomt.**
+   Als u een verwacht veld niet kunt vinden in de lijst met dynamische inhoud, selecteert u **meer weer geven** naast **wanneer er een nieuwe e-mail binnenkomt**.
 
    | Instelling | Waarde | Opmerkingen |
    | ------- | ----- | ----- |
-   | **Aan** | <*geadresseerde-e-mailadres*> | Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
+   | **Aan** | <*ontvanger-e-mail adres*> | Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
    | **Onderwerp**  | ```ASAP - Review applicant for position:``` **Onderwerp** | Het e-mailonderwerp dat u wilt opnemen. Klik in dit venster, voer de voorbeeldtekst in en selecteer vanuit de lijst met dynamische inhoud het veld **Onderwerp** onder **Wanneer er een nieuwe e-mail binnenkomt**. |
    | **Hoofdtekst** | ```Please review new applicant:``` <p>```Applicant name:```**Van** <p>```Application file location:```**Pad** <p>```Application email content:``` **Hoofdtekst** | De hoofdtekst van het e-mailbericht. Klik in dit venster, voer de voorbeeldtekst in en selecteer de volgende velden uit de lijst met dynamische inhoud: <p>- Het veld **Van** onder het kopje **Wanneer er een nieuwe e-mail binnenkomt** </br>- Het veld **Pad** onder het kopje **Blob maken voor de hoofdtekst van de e-mail** </br>- Het veld **Hoofdtekst** onder het kopje **RemoveHTMLFunction aanroepen om de hoofdtekst van de e-mail op te schonen** |
    ||||
@@ -608,7 +611,7 @@ Voeg vervolgens een actie toe, zodat uw logische app een e-mail verzendt om meld
    > [!NOTE]
    > Als u een veld selecteert waarin een matrix is opgeslagen, zoals het veld **Inhoud**, wat een matrix is die bijlagen bevat, wordt in de ontwerpfunctie automatisch een lus 'Voor elke' toegevoegd rond de actie die naar het veld verwijst.
    > Op die manier kan de actie voor elk matrixitem worden uitgevoerd.
-   > Als u de lus wilt verwijderen, verwijdert u het veld voor de array, verplaatst u de verwijzingsactie naar buiten de lus, selecteert u de ellipsen (**...**) op de titelbalk van de lus en selecteert **u Verwijderen**.
+   > Als u de lus wilt verwijderen, verwijdert u het veld voor de matrix, verplaatst u de verwijzende actie naar buiten de lus, selecteert u de weglatings tekens (**...**) op de titel balk van de lus en selecteert u **verwijderen**.
 
 1. Sla uw logische app op.
 
@@ -620,9 +623,9 @@ Test nu uw logische app, die er nu uitziet als in dit voorbeeld:
 
 1. Verstuur een e-mail naar uzelf die aan de volgende criteria voldoet:
 
-   * Het onderwerp van uw e-mail heeft de tekst die u hebt opgegeven in de eigenschap **Onderwerpfilter van** de trigger:`Business Analyst 2 #423501`
+   * Het onderwerp van uw e-mail bericht bevat de tekst die u hebt opgegeven in de eigenschap **subject filter** van de trigger:`Business Analyst 2 #423501`
 
-   * Uw e-mail bevat een of meer bijlagen. U kunt een leeg tekstbestand uit uw vorige tests opnieuw gebruiken. Voeg een cv toe voor een realistischer scenario.
+   * Uw e-mail heeft een of meer bijlagen. U kunt een leeg tekstbestand uit uw vorige tests opnieuw gebruiken. Voeg een cv toe voor een realistischer scenario.
 
    * De hoofdtekst van de e-mail bevat deze tekst, die u kunt kopiëren en plakken:
 
@@ -667,19 +670,19 @@ Gefeliciteerd, u hebt nu een logische app gemaakt en uitgevoerd die taken in ver
 
 Als u dit voorbeeld niet meer nodig hebt, verwijdert u de resourcegroep die uw logische app en alle gerelateerde resources bevat.
 
-1. Voer in het azure-zoekvak `resources groups`op het hoogste niveau **Resourcegroepen**in en selecteer deze .
+1. Voer `resources groups`in het zoekvak op het hoogste niveau Azure-zoek opdracht in en selecteer **resource groepen**.
 
-   ![Zoeken en selecteren "Resourcegroepen"](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+   ![Zoek en selecteer ' resource groepen '](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
 
-1. Selecteer in de lijst **Resourcegroepen** de brongroep voor deze zelfstudie. 
+1. Selecteer in de lijst **resource groepen** de resource groep voor deze zelf studie. 
 
-   ![De brongroep zoeken voor zelfstudie](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+   ![De resource groep voor de zelf studie zoeken](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
 
-1. Selecteer **resourcegroep** **verwijderen**in het deelvenster Overzicht .
+1. Selecteer in het deel venster **overzicht** de optie **resource groep verwijderen**.
 
    ![Resourcegroep van logische app verwijderen](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 
-1. Wanneer het bevestigingsvenster wordt weergegeven, voert u de naam van de brongroep in en selecteert u **Verwijderen**.
+1. Wanneer het bevestigings venster wordt weer gegeven, voert u de naam van de resource groep in en selecteert u **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
