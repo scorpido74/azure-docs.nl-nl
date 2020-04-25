@@ -1,176 +1,176 @@
 ---
-title: Een bestaande VM-aanbieding bijwerken in de Azure Marketplace
-description: Hier wordt uitgelegd hoe u een bestaande VM-aanbieding op Azure Marketplace bijwerkt.
+title: Een bestaande VM-aanbieding bijwerken in azure Marketplace
+description: Hierin wordt uitgelegd hoe u een bestaande VM-aanbieding op Azure Marketplace bijwerkt.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273049"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142921"
 ---
-# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Een bestaande VM-aanbieding bijwerken op Azure Marketplace
+# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Een bestaande VM-aanbieding op Azure Marketplace bijwerken
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Virtual Machine-aanbieding maken](https://aka.ms/CreateAzureVMoffer) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een Azure virtual machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) om uw gemigreerde aanbiedingen te beheren.
 
-In dit artikel vindt u de verschillende aspecten van het bijwerken van uw virtuele machine (VM) in de [Cloud Partner Portal](https://cloudpartner.azure.com/) en publiceert u het aanbod opnieuw. 
+Dit artikel begeleidt u door de verschillende aspecten van het bijwerken van de aanbieding van uw virtuele machine (VM) in de [Cloud Partner-Portal](https://cloudpartner.azure.com/) en vervolgens de aanbieding opnieuw te publiceren.
 
-Er zijn een aantal redenen waarom u uw aanbieding bijwerken, waaronder:
+Er zijn een aantal gebruikelijke-redenen waarom u uw aanbieding kunt bijwerken, met inbegrip van:
 
--  Een nieuwe VM-afbeeldingsversie toevoegen aan bestaande SKU's
--  Regio's wijzigen Een SKU is beschikbaar
--  Nieuwe SKU's toevoegen
--  De metagegevens van de marktplaats voor de aanbieding of individuele SKU's bijwerken
--  Beprijzing voor betalen per gebruik-aanbiedingen bijwerken
+-  Een nieuwe VM-installatie kopie versie toevoegen aan bestaande Sku's
+-  Regio's wijzigen waarvoor een SKU beschikbaar is
+-  Nieuwe Sku's toevoegen
+-  De meta gegevens van de Marketplace voor de aanbieding of afzonderlijke Sku's bijwerken
+-  Prijs bijwerken voor aanbiedingen met betalen naar gebruik
 
-Om u te helpen bij deze wijzigingen, biedt de portal de functies **Vergelijken** en **Geschiedenis.**  
+Om u te helpen bij deze wijzigingen, biedt de Portal de functies **compare** en **history** .  
 
 >[!Note]
->Cloud Solution Providers (CSP) partnerkanaal opt-in is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het op de markt brengen van uw aanbieding via de Microsoft CSP-partnerkanalen.
+>Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het marketing gebruik van uw aanbieding via de micro soft CSP-partner kanalen.
 
-## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Niet-toegestane wijzigingen in vm-aanbieding of SKU
+## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Niet-toegestane wijzigingen in de VM-aanbieding of SKU
 
-Er zijn enkele kenmerken van een VM-aanbieding of SKU die niet kunnen worden gewijzigd zodra de aanbieding live is in de Azure Marketplace, voornamelijk:
+Er zijn enkele kenmerken van een VM-aanbieding of-SKU die niet meer kan worden gewijzigd nadat de aanbieding in azure Marketplace is opgenomen, voornamelijk:
 
--  **Id van aanbieding** en **publisher ID** van de aanbieding
--  **SKU-id** van bestaande SKU's
--  Aantal gegevensschijf van bestaande SKU's
--  Wijzigingen in facturering/licentiemodel in bestaande SKU's
--  Prijsverhogingen naar een gepubliceerde SKU
+-  **Aanbiedings-id** en **uitgevers-id** van de aanbieding
+-  **SKU-id** van bestaande sku's
+-  Aantal gegevens schijven van bestaande Sku's
+-  Wijzigingen in het facturerings-en licentie model voor bestaande Sku's
+-  Prijs verhogingen naar een gepubliceerde SKU
 
 
-## <a name="common-update-operations"></a>Algemene updatebewerkingen
+## <a name="common-update-operations"></a>Algemene update bewerkingen
 
-Hoewel er een breed scala aan kenmerken is die u wijzigen op een VM-aanbieding, zijn de volgende bewerkingen gebruikelijk.
+Hoewel er een breed scala aan kenmerken is die u op een VM-aanbieding kunt wijzigen, zijn de volgende bewerkingen gebruikelijk.
 
-### <a name="update-the-vm-image-version-for-a-sku"></a>De VM-afbeeldingsversie voor een SKU bijwerken
+### <a name="update-the-vm-image-version-for-a-sku"></a>De versie van de VM-installatie kopie bijwerken voor een SKU
 
-Het is gebruikelijk dat een VM-afbeelding periodiek wordt bijgewerkt met beveiligingspatches, extra functies, enzovoort.  Onder dergelijke scenario's wilt u de VM-afbeelding bijwerken waarnaar uw SKU verwijst met de volgende stappen:
+Het is gebruikelijk dat een VM-installatie kopie regel matig wordt bijgewerkt met beveiligings patches, extra functies, enzovoort.  Onder dergelijke scenario's wilt u de VM-installatie kopie die uw SKU verwijst, bijwerken met behulp van de volgende stappen:
 
-1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 
-2.  Onder **Alle aanbiedingen**vindt u de aanbieding om bij te werken.
+2.  Zoek onder **alle aanbiedingen**de aanbieding die u wilt bijwerken.
 
-3.  Klik op het tabblad **SKU's** op de SKU die is gekoppeld aan de VM-afbeelding om bij te werken.
+3.  Klik op het tabblad **sku's** op de SKU die is gekoppeld aan de VM-installatie kopie die moet worden bijgewerkt.
 
-4.  Klik **onder Schijfversie**op **+Nieuwe schijfversie** om een nieuwe VM-afbeelding toe te voegen.
+4.  Klik onder **schijf versie**op **+ nieuwe schijf versie** om een nieuwe VM-installatie kopie toe te voegen.
 
-5.  Geef de nieuwe versie van de VM Images **Disk**op . De schijfversie moet de [semantische versieindeling](https://semver.org/) volgen. Versies moeten van het formulier X.Y.Z zijn, waarbij X, Y en Z gehele getallen zijn. Controleer of de nieuwe versie die u aanbiedt groter is dan alle vorige versies. anders wordt de nieuwe versie na het opnieuw publiceren niet weergegeven in de portal of de Azure Marketplace.
+5.  Geef de **schijf versie**van de nieuwe VM-installatie kopieën op. De schijf versie moet de indeling van de [semantische versie](https://semver.org/) volgen. Versies moeten de indeling X. Y. Z hebben, waarbij X, Y en Z gehele getallen zijn. Controleer of de nieuwe versie die u opgeeft, groter is dan alle vorige versies. Als u de nieuwe versie opnieuw publiceert, worden deze niet weer gegeven in de portal of in de Azure Marketplace.
 
-6.  Voer voor **OS VHD URL**de [sas-uri (shared access signature) in](./cpp-get-sas-uri.md) die is gemaakt voor het besturingssysteem VHD. 
+6.  Voor de **VHD-URL**van het besturings systeem voert u de [SAS-URI (Shared Access Signature)](./cpp-get-sas-uri.md) in die is gemaakt voor de virtuele harde schijf. 
 
     > [!WARNING] 
-    > Het aantal gegevensschijven kan niet veranderen tussen verschillende versies van de SKU. Als in eerdere versies gegevensschijven zijn geconfigureerd, moet deze nieuwe versie ook hetzelfde aantal gegevensschijven bevatten.
+    > Het aantal gegevens schijven kan niet worden gewijzigd tussen verschillende versies van de SKU. Als voor eerdere versies gegevens schijven waren geconfigureerd, moet deze nieuwe versie ook hetzelfde aantal gegevens schijven hebben.
 
-7.  Klik op **Publiceren** om de werkstroom te starten om uw nieuwe VM-versie te publiceren in de Azure Marketplace.
+7.  Klik op **publiceren** om de werk stroom te starten om uw nieuwe VM-versie te publiceren op de Azure Marketplace.
 
 
-### <a name="change-region-availability-of-a-sku"></a>De beschikbaarheid van een SKU in regio's wijzigen
+### <a name="change-region-availability-of-a-sku"></a>Beschik baarheid van regio's van een SKU wijzigen
 
-Na verloop van tijd u uw aanbieding/SKU beschikbaar maken in meer regio's.  U ook stoppen met het ondersteunen van de aanbieding/SKU in een bepaalde regio.
-Als u de beschikbaarheid wilt wijzigen, gebruikt u de volgende stappen:
+In de loop van de tijd wilt u uw aanbieding/SKU mogelijk beschikbaar maken in meer regio's.  U kunt er ook voor zorgen dat u de ondersteuning van de aanbieding/SKU in een bepaalde regio wilt beëindigen.
+Gebruik de volgende stappen om de beschik baarheid te wijzigen:
 
-1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 
-2.  Onder **Alle aanbiedingen** vind je de aanbieding die je wilt updaten.
+2.  Zoek onder **alle aanbiedingen** de aanbieding die u wilt bijwerken.
 
-3.  Klik op het tabblad **SKU's** op de SKU die u de beschikbaarheid ervan wilt wijzigen.
+3.  Klik op het tabblad **sku's** op de SKU waarvan u de beschik baarheid wilt wijzigen.
 
-4.  Klik op de knop **Landen selecteren** onder het veld **Beschikbaarheid land/regio.**
+4.  Klik op de knop **landen selecteren** onder het veld **Beschik baarheid land/regio** .
 
-5.  Voeg in de pop-up regiobeschikbaarheid de regio's voor deze SKU toe of verwijder deze.
+5.  Voeg in de pop-up Beschik baarheid regio de regio's voor deze SKU toe of verwijder deze.
 
-6.  Klik op **Publiceren** om de publicatieworkflow te starten om de beschikbaarheid van uw SKU's-regio bij te werken.
+6.  Klik op **publiceren** om de werk stroom publiceren te starten om de beschik baarheid van uw sku's-regio bij te werken.
 
-Als een SKU beschikbaar wordt gesteld in een nieuwe regio, u prijzen voor die specifieke regio opgeven via de functionaliteit **Exportpricing Data.** Als u een regio toevoegt die ooit beschikbaar was, u de prijzen niet bijwerken omdat prijswijzigingen niet zijn toegestaan.
+Als een SKU beschikbaar wordt gemaakt in een nieuwe regio, hebt u de mogelijkheid om prijzen voor deze regio op te geven via de functionaliteit voor het **exporteren van prijs gegevens** . Als u een regio opnieuw toevoegt die eenmaal beschikbaar was, kunt u de prijzen niet bijwerken omdat de prijs wijzigingen niet zijn toegestaan.
 
 
 ### <a name="add-a-new-sku"></a>Een nieuwe SKU toevoegen
 
 Gebruik de volgende stappen om een nieuwe SKU beschikbaar te maken voor uw bestaande aanbieding: 
 
-1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 
-2.  Onder **Alle aanbiedingen** vind je de aanbieding die je wilt updaten.
+2.  Zoek onder **alle aanbiedingen** de aanbieding die u wilt bijwerken.
 
-3.  Klik onder het tabblad **SKU's** op **Nieuwe SKU toevoegen** en geef een **SKU-id** op in de pop-up.
+3.  Klik op het tabblad **sku's** op **nieuwe SKU toevoegen** en geef in het pop-upvenster een **SKU-id** op.
 
-4.  Publiceer de VM opnieuw zoals beschreven in het artikel [Een virtuele machine publiceren naar Azure Marketplace](./cpp-publish-offer.md).
+4.  Publiceer de VM opnieuw zoals beschreven in het artikel [een virtuele machine naar Azure Marketplace publiceren](./cpp-publish-offer.md).
 
-5.  Klik op **Publiceren** om de werkstroom te starten om uw nieuwe SKU te publiceren.
-
-
-### <a name="update-offer-marketplace-metadata"></a>Update bieden marktplaats metadata
-
-Gebruik de volgende stappen om de metagegevens van de marktplaats bij te werken— bedrijfsnaam, logo's, enz.— die aan uw aanbieding zijn gekoppeld: 
-
-1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
-
-2.  Onder **Alle aanbiedingen** vind je de aanbieding die je wilt updaten.
-
-3.  Ga naar het tabblad **Marketplace** en volg de instructies in het artikel [Een virtuele machine publiceren naar Azure Marketplace](./cpp-publish-offer.md) om metagegevens wijzigingen aan te brengen.
-
-4.  Klik op **Publiceren** om de werkstroom te starten om uw wijzigingen te publiceren.
+5.  Klik op **publiceren** om de werk stroom te starten om uw nieuwe SKU te publiceren.
 
 
-### <a name="update-pricing-on-published-offers"></a>Prijzen bijwerken op gepubliceerde aanbiedingen
+### <a name="update-offer-marketplace-metadata"></a>Update aanbieding Marketplace-meta gegevens
 
-Zodra uw pay-as-you-go-aanbieding is gepubliceerd, u de SKU-prijzen niet rechtstreeks verhogen.  (U echter een nieuwe SKU maken onder dezelfde aanbieding, de oude SKU verwijderen en vervolgens uw aanbieding voor nieuwe klanten opnieuw publiceren.)  U de prijs van een gepubliceerde aanbieding daarentegen verlagen met de volgende stappen:
+Voer de volgende stappen uit om de meta gegevens van de Marketplace bij te werken: Bedrijfs naam, logo's, enzovoort, die zijn gekoppeld aan uw aanbieding. 
 
-1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 
-2.  Onder **Alle aanbiedingen**vindt u de aanbieding om bij te werken.
+2.  Zoek onder **alle aanbiedingen** de aanbieding die u wilt bijwerken.
+
+3.  Ga naar het tabblad **Marketplace** en volg de instructies in het artikel [een virtuele machine naar Azure Marketplace publiceren](./cpp-publish-offer.md) om meta gegevens wijzigingen aan te brengen.
+
+4.  Klik op **publiceren** om de werk stroom te starten om uw wijzigingen te publiceren.
+
+
+### <a name="update-pricing-on-published-offers"></a>Prijzen voor gepubliceerde aanbiedingen bijwerken
+
+Zodra uw aanbieding voor betalen per gebruik is gepubliceerd, kunt u de prijzen voor de SKU niet direct verhogen.  (U kunt echter een nieuwe SKU maken onder dezelfde aanbieding, de oude SKU verwijderen en vervolgens uw aanbieding opnieuw publiceren voor nieuwe klanten.)  U kunt de prijs van een gepubliceerde aanbieding daarentegen verlagen door de volgende stappen uit te voeren:
+
+1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+
+2.  Zoek onder **alle aanbiedingen**de aanbieding die u wilt bijwerken.
 
 3.  Klik op de SKU waarvoor u de prijzen wilt verlagen.
 
-4.  Als u de prijzen in de 1x1 GUI hebt ingesteld, u de prijs rechtstreeks wijzigen in de gebruikersinterface. Als u prijzen instelt via import/export spreadsheet, u de prijzen alleen verlagen via de import/export functie.
+4.  Als u de prijzen hebt ingesteld in de 1x1-gebruikers interface, kunt u de prijs rechtstreeks wijzigen in de gebruikers interface. Als u prijzen hebt ingesteld via het werk blad importeren/exporteren, kunt u de prijzen alleen verlagen via de functie importeren/exporteren.
 
 3.  Klik op **Opslaan**.
 
-4.  Klik op **Publiceren** om de werkstroom te starten om uw wijzigingen te publiceren.
+4.  Klik op **publiceren** om de werk stroom te starten om uw wijzigingen te publiceren.
 
-De nieuwe verlaagde prijzen zullen zichtbaar zijn voor nieuwe klanten zodra deze live is op de website.  Deze nieuwe prijs heeft invloed op uw klanten op de volgende manieren:
+De nieuwe klanten die de prijs afnemen, worden weer gegeven als ze live op de website zijn.  Deze nieuwe prijs is van invloed op uw klanten op de volgende manieren:
 
-- Nieuwe klanten betalen dit nieuwe tarief. 
-- Voor bestaande klanten wordt de prijsdaling met terugwerkende kracht weerspiegeld tot het begin van de factureringscyclus waarin de prijsdaling van kracht werd.
-Als ze al zijn gefactureerd voor de cyclus waarin een prijsdaling heeft plaatsgevonden, ontvangen ze een terugbetaling tijdens hun volgende factureringscyclus om de verlaagde prijs te dekken.
+- Nieuwe klanten worden dit nieuwe tarief in rekening gebracht. 
+- Voor bestaande klanten wordt de prijs verlaging terugwerkt naar het begin van de facturerings cyclus, waardoor de prijs verlaging effectief werd.
+Als ze al zijn gefactureerd voor de cyclus gedurende welke een prijs verlaging zich voordeed, ontvangt hij een terugbetaling tijdens de volgende facturerings cyclus om de verlaagde prijs te dekken.
 
 
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
-### <a name="simplified-currency-pricing"></a>Vereenvoudigde valutaprijzen
+### <a name="simplified-currency-pricing"></a>Prijzen voor vereenvoudigd valuta
 
-Vanaf 1 september 2018 wordt een nieuwe sectie met de naam **Simplified Currency Pricing** toegevoegd aan het portaal. Microsoft stroomlijnt het Azure Marketplace-bedrijf door meer voorspelbare prijzen en verzamelingen van uw klanten over de hele wereld mogelijk te maken. Deze stroomlijning omvat het verminderen van het aantal valuta's waarin we uw klanten factureren.
+Vanaf september 1 2018 wordt een nieuwe sectie met de naam **vereenvoudigde valuta prijs** toegevoegd aan de portal. Micro soft stroomt de Azure Marketplace-onderneming door meer voorspel bare prijzen en verzamelingen van uw klanten in de hele wereld in te scha kelen. Deze stroom lijn omvat het verminderen van het aantal valuta's waarin we uw klanten factureren.
 
-De nieuwe sectie zal prijzen in deze nieuwe valuta's.Zodra alle klanten zijn gemigreerd naar deze nieuwe afwikkelingsvaluta's, wordt het oorspronkelijke prijsgedeelte buiten gebruik gesteld en blijft alleen de sectie Vereenvoudigde valutaprijzen over.
+In de nieuwe sectie worden de prijzen in deze nieuwe valuta's in rekening gehouden.Zodra alle klanten zijn gemigreerd naar deze nieuwe vereffenings valuta's, wordt de oorspronkelijke prijs sectie buiten gebruik gesteld en wordt alleen de prijs categorie voor vereenvoudigde prijzen bewaard.
 
-U hebt tot 1 november 2018 de tijd om een nieuwe prijs vast te stellen voor de regio's waarin de afwikkelingsvaluta verandert. U zult niet in staat zijn om de prijs te verhogen voor regio's waarin de afwikkeling valuta niet verandert.
+U moet tot 1 november 2018 een nieuwe prijs voor de regio's instellen waarbij de vereffenings valuta wordt gewijzigd. Het is niet mogelijk om de prijs voor regio's te verhogen, waarbij de vereffenings valuta niet verandert.
 
 > [!NOTE] 
-> Als u API's gebruikt om uw aanbieding te publiceren, ziet u mogelijk een nieuwe sectie in de JSON Aanbieding. Dit zou worden geannoteerd als `virtualMachinePricingV2` of `monthlyPricingV2`, afhankelijk van het type aanbod. 
+> Als u Api's gebruikt om uw aanbieding te publiceren, ziet u mogelijk een nieuwe sectie in de JSON van de aanbieding. Dit zou worden aangelegd als `virtualMachinePricingV2` of `monthlyPricingV2`, afhankelijk van het type aanbieding. 
 
-Als u vragen hebt over deze wijziging, neemt u contact op met [Azure Marketplace Support](../../support-azure-marketplace.md).
+Als u vragen hebt over deze wijziging, neemt u contact op met de [ondersteuning voor Azure Marketplace](../../support-azure-marketplace.md).
 
 
 ## <a name="compare-feature"></a>Functie vergelijken
 
-Wanneer u wijzigingen aanbrengt in een reeds gepubliceerde aanbieding, u de functie **Vergelijken** gebruiken om de wijzigingen die zijn aangebracht te controleren. Om deze functie te gebruiken, moet u ook het volgende doen:
+Wanneer u wijzigingen aanbrengt in een al gepubliceerde aanbieding, kunt u gebruikmaken van de functie **compare** om de wijzigingen te controleren die zijn aangebracht. Om deze functie te gebruiken, moet u ook het volgende doen:
 
-1.  Klik op elk moment in het bewerkingsproces op de knop **Vergelijken** voor uw aanbieding.
+1.  Op elk moment in het bewerkings proces, klikt u op de knop **vergelijken** voor uw aanbieding.
 
-    ![Knop Functie vergelijken](./media/publishvm_037.png)
-
-
-2.  Bekijk side-by-side versies van marketingassets en metadata.
+    ![Functie knop vergelijken](./media/publishvm_037.png)
 
 
-## <a name="history-of-publishing-actions"></a>Geschiedenis van publicatieacties
+2.  Side-by-side versies van marketing assets en meta gegevens weer geven.
 
-Als u een historische publicatieactiviteit wilt weergeven, klikt u op het item **Geschiedenis** in de linkernavigatiemenubalk van Cloud Partner Portal. Hier u de acties met tijdgestempeldbekijken die zijn uitgevoerd tijdens de levensduur van uw Azure Marketplace-aanbiedingen.  
+
+## <a name="history-of-publishing-actions"></a>Geschiedenis van publicatie acties
+
+Als u een historische publicatie activiteit wilt weer geven, klikt u op het **geschiedenis** item in de linker navigatie balk van Cloud Partner-Portal. Hier kunt u de tijds tempels weer geven die zijn gemaakt tijdens de levens duur van uw aanbiedingen in azure Marketplace.  
 <!-- TD: Add after section authored: For more information, see [History page](../portal-tour/cpp-history-page.md). -->
 

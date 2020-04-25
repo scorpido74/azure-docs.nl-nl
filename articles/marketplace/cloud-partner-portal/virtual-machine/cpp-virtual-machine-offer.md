@@ -1,5 +1,5 @@
 ---
-title: Aanbod van virtuele machines in de Azure Marketplace
+title: Aanbieding van virtuele machines in de Azure Marketplace
 description: Overzicht van het proces voor het publiceren van een VM-aanbieding op de Azure Marketplace.
 author: dsindona
 ms.service: marketplace
@@ -7,44 +7,44 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273066"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142804"
 ---
 # <a name="virtual-machine-offer"></a>Virtuele-machineaanbieding
 
 > [!IMPORTANT]
-> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Virtual Machine-aanbieding maken](https://aka.ms/CreateAzureVMoffer) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 gaan we het beheer van uw Azure Virtual Machine-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een Azure virtual machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) om uw gemigreerde aanbiedingen te beheren.
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| In deze sectie wordt uitgelegd hoe u een nieuwe virtuele machineaanbieding publiceert naar de [Azure Marketplace.](https://azuremarketplace.microsoft.com) Er wordt ondersteuning geboden voor zowel op Windows gebaseerde als op Linux gebaseerde virtuele machines, met een virtuele harde schijf (VHD) en nul of meer data-VHD's. | ![pictogram virtuele machine](./media/virtual-machine-icon.png)  |
+| In deze sectie wordt uitgelegd hoe u een nieuwe aanbieding voor de virtuele machine publiceert naar de [Azure Marketplace](https://azuremarketplace.microsoft.com). Er wordt ondersteuning geboden voor virtuele Windows-en Linux-machines met een virtuele harde schijf (VHD) van het besturings systeem en nul of meer gegevens-Vhd's. | ![pictogram van virtuele machine](./media/virtual-machine-icon.png)  |
 
 
-## <a name="publishing-overview"></a>Publicatieoverzicht
+## <a name="publishing-overview"></a>Overzicht van publiceren
 
-De volgende video, [Optimaliseer uw Azure Marketplace-aanbieding,](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)biedt een breed overzicht van de Azure Marketplace, inclusief hoe u op deze marktplaats publiceren (met behulp van een oplossing voor virtuele machines), hoe u de gebruikerservaring optimaliseren met uw productpagina en optionele Test Drive-ervaring, hoe gebruikersleads worden gegenereerd en hoe u deze gebruiken en hoe u deze optimaliseren en hoe u de betrokkenheid van klanten optimaliseren.
+De volgende video, [Optimaliseer uw Azure Marketplace-aanbieding](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), geeft een breed overzicht van de Azure Marketplace, zoals hoe u publiceert op deze Marketplace (met behulp van een oplossing voor virtuele machines), hoe u de gebruikers ervaring optimaliseert met uw product pagina en de optionele test drive-ervaring, hoe gebruikers leads worden gegenereerd en hoe u deze kunt gebruiken, en hoe u de klant gaat optimaliseren.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>VM Publishing-processtroom
+## <a name="vm-publishing-process-flow"></a>Proces stroom voor het publiceren van VM'S
 
-Het volgende diagram illustreert de stappen op hoog niveau bij het publiceren van een VM-aanbieding. 
+In het volgende diagram ziet u de stappen op hoog niveau bij het publiceren van een VM-aanbieding. 
 
-![VM-publicatieproces](./media/publishvm_001.png)
+![VM-publicatie proces](./media/publishvm_001.png)
 
-1. Maak de aanbieding - Alle details en informatie over de aanbieding is geconfigureerd, inclusief de aanbiedingsbeschrijving, marketingmateriaal, juridische, ondersteuningsinformatie en assetspecificaties.
+1. De aanbieding maken: alle details en informatie over de aanbieding zijn geconfigureerd, met inbegrip van de beschrijving van het aanbod, het marketing materiaal, de juridische, ondersteunings informatie en de Asset-specificaties.
 
-2. Maak de zakelijke en technische activa - Maak de bedrijfsmiddelen (juridische documenten en marketingmaterialen) en technische activa voor de bijbehorende oplossing (hier, de VM's en bijgevoegde schijven). 
+2. De zakelijke en technische activa maken: Maak de bedrijfs middelen (juridische documenten en marketing materialen) en technische activa voor de bijbehorende oplossing (hier, de Vm's en gekoppelde schijven). 
 
-3. Maak de SKU - Maak de bijbehorende SKU(s) die aan het aanbod zijn gekoppeld en verzend ze.  Een unieke SKU is vereist voor elke afbeelding die u van plan bent te publiceren. 
+3. De SKU maken: Maak de gekoppelde SKU ('s) die zijn gekoppeld aan de aanbieding en verzend deze.  Er is een unieke SKU vereist voor elke installatie kopie die u wilt publiceren. 
  
-4. Certificeren en publiceren van de aanbieding - Zodra de aanbieding en de technische activa zijn voltooid, u de aanbieding indienen. Deze indiening start het publicatieproces, waarin de oplossing wordt getest, gevalideerd, gecertificeerd en vervolgens "live" gaat op de markt.  
+4. Certificeren en publiceren van de aanbieding: zodra de aanbieding en de technische middelen zijn voltooid, kunt u de aanbieding indienen. Met deze inzending wordt het publicatie proces gestart, waarbij de oplossing is getest, gevalideerd, gecertificeerd en vervolgens ' live ' gaat op de Marketplace.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voordat u deze stappen overweegt, moet u voldoen aan de [technische en zakelijke vereisten](./cpp-prerequisites.md) voor het publiceren van een vm naar de Microsoft Azure Marketplace. 
+Voordat u deze stappen volgt, moet u voldoen aan de [technische en zakelijke vereisten](./cpp-prerequisites.md) voor het publiceren van een virtuele machine naar de Microsoft Azure Marketplace. 

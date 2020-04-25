@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099866"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143784"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Power shell-scripts uitvoeren in uw Windows-VM met behulp van de opdracht uitvoeren
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|Hiermee wordt gecontroleerd of het lokale Administrator-account is uitgeschakeld en zo ja, als dit het geval is.|
 |**IP**| Geeft gedetailleerde informatie weer voor het IP-adres, subnetmasker en de standaard gateway voor elke adapter die is gebonden aan TCP/IP.|
 |**RDPSettings**|Controleert register instellingen en domein beleids instellingen. Stelt beleids acties voor als de computer deel uitmaakt van een domein of de instellingen wijzigt in de standaard waarden.|
-|**ResetRDPCert**|Hiermee verwijdert u het SSL-certificaat dat is gekoppeld aan de RDP-listener en herstelt u de standaard instellingen voor de RDP-listener. Gebruik dit script als u problemen met het certificaat ziet.|
+|**ResetRDPCert**|Hiermee verwijdert u het TLS/SSL-certificaat dat is gekoppeld aan de RDP-listener en herstelt u de standaard beveiliging van RDP-listener. Gebruik dit script als u problemen met het certificaat ziet.|
 |**SetRDPPort**|Hiermee stelt u het standaard of door de gebruiker opgegeven poort nummer in voor Extern bureaublad verbindingen. Hiermee schakelt u firewall regels in voor inkomende toegang tot de poort.|
 
 ## <a name="azure-cli"></a>Azure CLI

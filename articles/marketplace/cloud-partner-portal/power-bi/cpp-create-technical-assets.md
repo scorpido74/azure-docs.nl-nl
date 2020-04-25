@@ -1,32 +1,32 @@
 ---
-title: Technische assets maken voor een Power BI App-aanbieding | Azure Marketplace
-description: Vermeld de technische elementen die nodig zijn om een Power BI-app-aanbieding te publiceren op de Microsoft AppSource Marketplace.
+title: Technische activa maken voor een Power BI app-aanbieding | Azure Marketplace
+description: Vermeld de technische middelen die vereist zijn voor het publiceren van een Power BI app-aanbieding op de Microsoft AppSource Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 90317591b2666f48363c2ee636e36822e2083ed3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1d67bd46cfc961e14ec1e1eb95fbc2d748b8a629
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984807"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143086"
 ---
-# <a name="create-power-bi-app-offer-technical-assets"></a>Power BI-app maken bieden technische elementen
+# <a name="create-power-bi-app-offer-technical-assets"></a>Power BI-app maken technische assets aanbieden
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw Power BI app-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [Power bi overzicht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) van het maken van apps voor het beheren van uw gemigreerde aanbiedingen.
 
-Het primaire technische element dat u nodig hebt voor dit aanbiedingstype is een Power BI-app. Een Power BI-app is een verzameling primaire gegevenssets, rapporten of dashboards en optionele verbonden services en ingesloten gegevenssets. Het is geëvolueerd van een assettype dat voorheen bekend stond als een [contentpack.](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction) Zie [Wat zijn Power BI-sjabloon-apps voor](https://go.microsoft.com/fwlink/?linkid=2028636)meer informatie over het ontwikkelen van dit type app?
+Het primaire technische activum dat u nodig hebt voor dit aanbiedings type is een Power BI-app. Een Power BI-app is een verzameling primaire gegevens sets, rapporten of Dash boards, en optionele verbonden services en Inge sloten gegevens sets. Het is ontwikkeld van een Asset type voorheen bekend als een [inhouds pakket](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Zie [Wat zijn Power bi-sjabloon apps?](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over het ontwikkelen van dit type app.
 
 
 ## <a name="obtain-an-installation-url"></a>Een installatie-URL verkrijgen
 
-U een Power BI-app alleen bouwen binnen de [Power BI-service.](https://powerbi.microsoft.com/) Om te beginnen meldt u zich aan met een [Power BI Pro-licentie.](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro) Nadat u uw servicetoepassing hebt gemaakt en getest in Power BI, slaat u de URL van de installatie van de app op die Power BI genereert. Tot slot moet u de URL opgeven op het tabblad [Technische informatie](./cpp-technical-info-tab.md) van het inzendingsformulier voor cloudpartnersportal.
+U kunt een app voor Power BI alleen bouwen in de [Power bi-service](https://powerbi.microsoft.com/). Als u wilt beginnen, meldt u zich aan met een [Power bi Pro-licentie](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro). Nadat u uw service toepassing in Power BI hebt gemaakt en getest, slaat u de app-installatie-URL op die Power BI genereert. Ten slotte moet u de URL opgeven op het tabblad [technische gegevens](./cpp-technical-info-tab.md) van het formulier voor het indienen van Cloud Partner-Portal.
  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw Power BI-app hebt gemaakt en getest en u de bijbehorende aanbieding hebt gemaakt, u [de Power BI-app-aanbieding publiceren.](./cpp-publish-offer.md) 
+Nadat u uw Power BI-app hebt gemaakt en getest en u het bijbehorende aanbod hebt gemaakt, kunt u [de Power bi app-aanbieding publiceren](./cpp-publish-offer.md). 

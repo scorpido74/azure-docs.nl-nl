@@ -1,6 +1,6 @@
 ---
 title: Logboekregistratie van Azure Opslaganalyse
-description: Meer informatie over het registreren van gegevens over aanvragen die zijn gedaan tegen Azure Storage.
+description: Meer informatie over het vastleggen van gegevens over aanvragen voor Azure Storage.
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 45224625cfc828227708247d082a1aab1aef8469
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637185"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142646"
 ---
 # <a name="azure-storage-analytics-logging"></a>Logboekregistratie van Azure Opslaganalyse
 
-Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op een best-effort basis geregistreerd.
+Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
- Logboekregistratie van Opslaganalyse is niet standaard ingeschakeld voor uw opslagaccount. U het inschakelen in de [Azure-portal;](https://portal.azure.com/) Zie Een [opslagaccount controleren in de Azure-portal](/azure/storage/storage-monitor-storage-account)voor meer informatie. U Storage Analytics ook programmatisch inschakelen via de REST API of de clientbibliotheek. Gebruik de [eigenschappen van Blob-service,](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API) [Service-eigenschappen voor wachtrijservice](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)en [Uitvoeren van tabelservice-eigenschappen](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) om Storage Analytics voor elke service in te schakelen.
+ Logboekregistratie van Opslaganalyse is niet standaard ingeschakeld voor uw opslagaccount. U kunt deze inschakelen in de [Azure Portal](https://portal.azure.com/); Zie [een opslag account bewaken in de Azure Portal](/azure/storage/storage-monitor-storage-account)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de bewerkingen eigenschappen van [BLOB-service ophalen](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Eigenschappen van wachtrij service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)en [Eigenschappen van Table service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) om Opslaganalyse in te scha kelen voor elke service.
 
- Logboekvermeldingen worden alleen gemaakt als er aanvragen zijn ingediend tegen het eindpunt van de service. Als een opslagaccount bijvoorbeeld activiteit heeft in het Blob-eindpunt, maar niet in de eindpunten tabel of wachtrij, worden alleen logboeken met betrekking tot de Blob-service gemaakt.
+ Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het BLOB-eind punt, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op het Blob service.
 
 > [!NOTE]
 >  Logboekregistratie voor opslaganalyse is momenteel alleen beschikbaar voor de blob-, wachtrij- en tabelservices. Premium-opslagaccounts worden echter niet ondersteund.
 
-## <a name="requests-logged-in-logging"></a>Aanvragen die zijn aangemeld bij het aanmelden
-### <a name="logging-authenticated-requests"></a>Geverifieerde aanvragen vastleggen
+## <a name="requests-logged-in-logging"></a>Aanvragen vastgelegd in logboek registratie
+### <a name="logging-authenticated-requests"></a>Geverifieerde aanvragen registreren
 
  De volgende typen geverifieerde aanvragen worden geregistreerd:
 
@@ -36,31 +36,31 @@ Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte a
 - Aanvragen waarvoor een SAS (Shared Access Signature) of OAuth is gebruikt, inclusief geslaagde en mislukte aanvragen
 - Aanvragen voor analysegegevens
 
-  Verzoeken van Storage Analytics zelf, zoals het maken of verwijderen van logboeken, worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Storage Analytics Logged Operations en Status Messages](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en Storage Analytics Log [Format.](/rest/api/storageservices/storage-analytics-log-format)
+  Aanvragen die worden gedaan door Opslaganalyse zichzelf, zoals het maken of verwijderen van een logboek, worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](/rest/api/storageservices/storage-analytics-log-format) .
 
 ### <a name="logging-anonymous-requests"></a>Anonieme aanvragen registreren
 
- De volgende typen anonieme verzoeken worden geregistreerd:
+ De volgende typen anonieme aanvragen worden geregistreerd:
 
 - Geslaagde aanvragen
 - Serverfouten
-- Time-outfouten voor zowel client als server
+- Time-outfouten voor client en server
 - Mislukte GET-aanvragen met foutcode 304 (Niet gewijzigd)
 
-  Alle andere mislukte anonieme verzoeken worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Storage Analytics Logged Operations en Status Messages](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en Storage Analytics Log [Format.](/rest/api/storageservices/storage-analytics-log-format)
+  Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Een volledige lijst met de geregistreerde gegevens wordt gedocumenteerd in de onderwerpen [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [Opslaganalyse logboek indeling](/rest/api/storageservices/storage-analytics-log-format) .
 
 ## <a name="how-logs-are-stored"></a>Hoe logboeken worden opgeslagen
 
-Alle logboeken worden opgeslagen in blokblobs in een container met de naam `$logs`, die automatisch wordt gemaakt wanneer Storage Analytics is ingeschakeld voor een opslagaccount. De `$logs` container bevindt zich in de naamruimte blob `http://<accountname>.blob.core.windows.net/$logs`van het opslagaccount, bijvoorbeeld: . Deze container kan niet worden verwijderd nadat Storage Analytics is ingeschakeld, hoewel de inhoud ervan kan worden verwijderd. Als u uw gereedschap voor het browsen op opslag gebruikt om rechtstreeks naar de container te navigeren, ziet u alle blobs die uw logboekregistratiegegevens bevatten.
+Alle logboeken worden opgeslagen in blok-blobs in een `$logs`container met de naam, die automatisch wordt gemaakt wanneer Opslaganalyse is ingeschakeld voor een opslag account. De `$logs` container bevindt zich in de BLOB-naam ruimte van het opslag account `http://<accountname>.blob.core.windows.net/$logs`, bijvoorbeeld:. Deze container kan niet worden verwijderd als Opslaganalyse is ingeschakeld, maar de inhoud ervan kan worden verwijderd. Als u het hulp programma voor het bladeren door opslag gebruikt om rechtstreeks naar de container te navigeren, worden alle blobs weer gegeven die uw logboek gegevens bevatten.
 
 > [!NOTE]
->  De `$logs` container wordt niet weergegeven wanneer een containervermeldingwordt uitgevoerd, zoals de bewerking Containers lijst. Het moet direct toegankelijk zijn. U bijvoorbeeld de bewerking Lijstblobs gebruiken om `$logs` toegang te krijgen tot de blobs in de container.
+>  De `$logs` container wordt niet weer gegeven wanneer een container vermelding wordt uitgevoerd, zoals de bewerking lijst containers. Deze moet rechtstreeks worden geopend. U kunt bijvoorbeeld de bewerking lijst-blobs gebruiken om toegang te krijgen tot de blobs `$logs` in de container.
 
-Als aanvragen worden geregistreerd, uploadt Storage Analytics tussentijdse resultaten als blokken. Periodiek zal Storage Analytics deze blokken vastleggen en beschikbaar maken als een blob. Het kan tot een uur duren voordat logboekgegevens in de blobs in de **$logs** container worden weergegeven, omdat de frequentie waarmee de opslagservice de logschrijvers doorspoelt. Dubbele records kunnen bestaan voor logboeken die in hetzelfde uur zijn gemaakt. U bepalen of een record een duplicaat is door het **requestId-** en **operationeelnummer te** controleren.
+Wanneer aanvragen worden geregistreerd, worden de tussenliggende resultaten door Opslaganalyse geüpload als blokken. Deze blokken worden regel matig door Opslaganalyse doorgevoerd en beschikbaar gemaakt als een blob. Het kan tot een uur duren voordat de logboek gegevens worden weer gegeven in de blobs in de container **$logs** , omdat de frequentie waarmee de logboek schrijvers worden leeg gemaakt door de opslag service. Er kunnen dubbele records bestaan voor logboeken die in hetzelfde uur zijn gemaakt. U kunt bepalen of een record een duplicaat is door de **aanvraag** -en **bewerkings** nummer te controleren.
 
-Als u een groot aantal logboekgegevens met meerdere bestanden per uur hebt, u de blobmetagegevens gebruiken om te bepalen welke gegevens het logboek bevat door de blobmetagegevensvelden te onderzoeken. Dit is ook handig omdat er soms een vertraging kan optreden terwijl gegevens naar de logboekbestanden worden geschreven: de blob-metagegevens geven een nauwkeurigere indicatie van de blob-inhoud dan de blobnaam.
+Als u een groot aantal logboek gegevens met meerdere bestanden per uur hebt, kunt u de BLOB-meta gegevens gebruiken om te bepalen welke gegevens het logboek bevat door de BLOB-meta gegevens velden te controleren. Dit is ook handig omdat er soms vertraging kan optreden terwijl er gegevens naar de logboek bestanden worden geschreven: de BLOB-meta gegevens geven een nauw keurigere indicatie van de blob-inhoud dan de naam van de blob.
 
-Met de meeste tools voor het browsen op opslag u de metagegevens van blobs bekijken. u deze informatie ook lezen met PowerShell of programmatisch. Het volgende PowerShell-fragment is een voorbeeld van het filteren van de lijst met logboekblobs op naam om een tijd op te geven, en door metagegevens om alleen die logboeken te identificeren die **schrijfbewerkingen** bevatten.  
+Met de meeste hulpprogram ma's voor opslag navigatie kunt u de meta gegevens van blobs weer geven. u kunt deze informatie ook lezen met behulp van Power shell of via een programma. Het volgende Power shell-fragment is een voor beeld van het filteren van de lijst met logboek-blobs op naam om een tijd op te geven en door meta gegevens om alleen die logboeken te identificeren die **Schrijf** bewerkingen bevatten.  
 
  ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
@@ -76,89 +76,93 @@ Met de meeste tools voor het browsen op opslag u de metagegevens van blobs bekij
  }  
  ```  
 
-Zie [Blobresources](https://msdn.microsoft.com/library/azure/hh452233.aspx) en [Eigenschappen en metagegevens voor blobbronnen](https://msdn.microsoft.com/library/azure/dd179404.aspx)instellen en ophalen voor blobbronnen programmatisch opsommen voor informatie over blobs.  
+Zie het [inventariseren van BLOB-resources](https://msdn.microsoft.com/library/azure/hh452233.aspx) en [het instellen en ophalen van eigenschappen en meta gegevens voor BLOB-resources](https://msdn.microsoft.com/library/azure/dd179404.aspx)voor meer informatie over het programmatisch weer geven van blobs.  
 
-### <a name="log-naming-conventions"></a>Log naamgevingconventies
+### <a name="log-naming-conventions"></a>Naamgevings regels vastleggen
 
  Elk logboek wordt in de volgende indeling geschreven:
 
  `<service-name>/YYYY/MM/DD/hhmm/<counter>.log`
 
- In de volgende tabel wordt elk kenmerk in de logboeknaam beschreven:
+ In de volgende tabel wordt elk kenmerk in de logboek naam beschreven:
 
 |Kenmerk|Beschrijving|
 |---------------|-----------------|
-|`<service-name>`|De naam van de opslagservice. Bijvoorbeeld: `blob`, `table`, of`queue`|
-|`YYYY`|Het viercijferige jaar voor het logboek. Bijvoorbeeld: `2011`|
-|`MM`|De tweecijferige maand voor het logboek. Bijvoorbeeld: `07`|
-|`DD`|De tweecijferige dag voor het logboek. Bijvoorbeeld: `31`|
-|`hh`|Het tweecijferige uur dat het beginuur voor de logboeken aangeeft, in de 24-uurs UTC-indeling. Bijvoorbeeld: `18`|
-|`mm`|Het tweecijferige getal dat de beginminuut voor de logboeken aangeeft. **Let op:**  Deze waarde wordt niet ondersteund in de huidige versie van `00`Storage Analytics en de waarde ervan zal altijd zijn.|
-|`<counter>`|Een nulteller met zes cijfers die het aantal logboekblobs aangeeft dat in een uur tijd voor de opslagservice is gegenereerd. Deze teller `000000`begint bij . Bijvoorbeeld: `000001`|
+|`<service-name>`|De naam van de opslag service. Bijvoorbeeld: `blob`, `table`, of`queue`|
+|`YYYY`|Het jaar van vier cijfers voor het logboek. Bijvoorbeeld: `2011`|
+|`MM`|De maand met twee cijfers voor het logboek. Bijvoorbeeld: `07`|
+|`DD`|De twee cijfer dagen voor het logboek. Bijvoorbeeld: `31`|
+|`hh`|Het twee cijferige uur waarmee het begin uur voor de logboeken wordt aangegeven, in UTC-notatie van 24 uur. Bijvoorbeeld: `18`|
+|`mm`|Het nummer van twee cijfers dat de begin minuut voor de logboeken aangeeft. **Opmerking:**  Deze waarde wordt niet ondersteund in de huidige versie van Opslaganalyse en de waarde ervan is altijd `00`.|
+|`<counter>`|Een teller op basis van nul met zes cijfers waarmee het aantal logboek-blobs wordt aangegeven dat is gegenereerd voor de opslag service in een uur tijds periode. Deze teller begint bij `000000`. Bijvoorbeeld: `000001`|
 
- Het volgende is een volledige voorbeeldlogboeknaam die de bovenstaande voorbeelden combineert:
+ Hier volgt een volledige naam voor een voor beeld van een logboek waarin de bovenstaande voor beelden worden gecombineerd:
 
  `blob/2011/07/31/1800/000001.log`
 
- Het volgende is een voorbeeld URI die kan worden gebruikt om toegang te krijgen tot de bovenstaande log:
+ Hier volgt een voor beeld-URI die kan worden gebruikt om toegang te krijgen tot het bovenstaande logboek:
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Wanneer een opslagaanvraag wordt geregistreerd, correleert de resulterende logboeknaam met het uur waarop de gevraagde bewerking is voltooid. Als een GetBlob-aanvraag bijvoorbeeld is voltooid om 18:30 uur op 7/31/2011, wordt het logboek geschreven met het volgende voorvoegsel:`blob/2011/07/31/1800/`
+ Wanneer een opslag aanvraag wordt geregistreerd, komt de resulterende logboek naam overeen met het uur wanneer de aangevraagde bewerking is voltooid. Als een GetBlob-aanvraag bijvoorbeeld is voltooid op 6:17.30 op 7/31/2011, wordt het logboek met het volgende voor voegsel geschreven:`blob/2011/07/31/1800/`
 
-### <a name="log-metadata"></a>Metagegevens van logboeken
+### <a name="log-metadata"></a>Meta gegevens van logboek
 
- Alle logboekblobs worden opgeslagen met metagegevens die kunnen worden gebruikt om te bepalen welke logboekgegevens de blob bevat. In de volgende tabel wordt elk kenmerk met metagegevens beschreven:
+ Alle logboek-blobs worden opgeslagen met meta gegevens die kunnen worden gebruikt om te identificeren welke logboek registratie gegevens de BLOB bevat. In de volgende tabel wordt elk meta gegevens kenmerk beschreven:
 
 |Kenmerk|Beschrijving|
 |---------------|-----------------|
-|`LogType`|Beschrijft of het logboek informatie bevat met betrekking tot het lezen, schrijven of verwijderen van bewerkingen. Deze waarde kan één type of een combinatie van alle drie bevatten, gescheiden door komma's.<br /><br /> Voorbeeld 1:`write`<br /><br /> Voorbeeld 2:`read,write`<br /><br /> Voorbeeld 3:`read,write,delete`|
-|`StartTime`|De vroegste tijd van een vermelding in `YYYY-MM-DDThh:mm:ssZ`het logboek, in de vorm van . Bijvoorbeeld: `2011-07-31T18:21:46Z`|
-|`EndTime`|De laatste tijd van een vermelding in `YYYY-MM-DDThh:mm:ssZ`het logboek, in de vorm van . Bijvoorbeeld: `2011-07-31T18:22:09Z`|
-|`LogVersion`|De versie van de logboekindeling.|
+|`LogType`|Hierin wordt beschreven of het logboek informatie bevat die betrekking heeft op lees-, schrijf-of verwijder bewerkingen. Deze waarde kan één type of een combi natie van alle drie zijn, gescheiden door komma's.<br /><br /> Voor beeld 1:`write`<br /><br /> Voor beeld 2:`read,write`<br /><br /> Voor beeld 3:`read,write,delete`|
+|`StartTime`|De vroegste tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:21:46Z`|
+|`EndTime`|De meest recente tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:22:09Z`|
+|`LogVersion`|De versie van de logboek indeling.|
 
- In de volgende lijst worden met volledige voorbeeldmetagegevens weergegeven met behulp van de bovenstaande voorbeelden:
+ De volgende lijst geeft een overzicht van de volledige voor beelden van meta gegevens aan de hand
 
 -   `LogType=write`
 -   `StartTime=2011-07-31T18:21:46Z`
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>Opslaglogboekregistratie inschakelen
+## <a name="enable-storage-logging"></a>Opslag logboek registratie inschakelen
 
-U Opslaglogboekregistratie inschakelen met Azure-portal, PowerShell en SDK's voor opslag.
+U kunt logboek registratie van opslag inschakelen met Azure Portal-, Power shell-en opslag-Sdk's.
 
-### <a name="enable-storage-logging-using-the-azure-portal"></a>Opslaglogboekregistratie inschakelen met de Azure-portal  
+### <a name="enable-storage-logging-using-the-azure-portal"></a>Opslag logboek registratie inschakelen met behulp van de Azure Portal  
 
-Gebruik in de Azure-portal het hoofd van de **diagnostische instellingen (klassiek)** om storagelogging te beheren, toegankelijk vanuit het gedeelte **Monitoring (klassiek)** van het menublad van een **opslagaccount.**
+Gebruik in de Azure Portal de Blade **Diagnostische instellingen (klassiek)** om de logboek registratie van opslag te beheren, toegankelijk via het gedeelte **bewaking (klassiek)** van de **menu Blade**van een opslag account.
 
-U de opslagservices opgeven die u wilt registreren en de bewaartermijn (in dagen) voor de aangemelde gegevens.  
+U kunt de opslag services opgeven die u wilt registreren en de retentie periode (in dagen) voor de geregistreerde gegevens.  
 
-### <a name="enable-storage-logging-using-powershell"></a>Opslaglogboekregistratie inschakelen met PowerShell  
+### <a name="enable-storage-logging-using-powershell"></a>Logboek registratie van opslag inschakelen met Power shell  
 
- U PowerShell op uw lokale machine gebruiken om opslaglogboekregistratie in uw opslagaccount te configureren met behulp van de Azure PowerShell-cmdlet **Get-AzureStorageServiceLoggingProperty** om de huidige instellingen op te halen en de eigenschap cmdlet **Set-AzureStorageServiceLoggingOm** de huidige instellingen te wijzigen.  
+ U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de cmdlet **Get-AzureStorageServiceLoggingProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzureStorageServiceLoggingProperty** om de huidige instellingen te wijzigen.  
 
- De cmdlets die Storage Logging beheren, gebruiken een parameter **LoggingOperations** die een tekenreeks is die een door komma's gescheiden lijst met aanvraagtypen bevat om in te loggen. De drie mogelijke aanvraagtypen worden **gelezen,** **geschreven**en **verwijderd**. Als u logboekregistratie wilt uitschakelen, gebruikt u de waarde **geen** voor de parameter **LoggingOperations.**  
+ De cmdlets die de logboek registratie van opslag regelen, gebruiken een **LoggingOperations** -para meter die een teken reeks is met een door komma's gescheiden lijst met aanvraag typen die moeten worden geregistreerd. De drie mogelijke aanvraag typen zijn **lezen**, **schrijven**en **verwijderen**. Als u logboek registratie wilt uitschakelen, gebruikt u de waarde **geen** voor de para meter **LoggingOperations** .  
 
- De volgende opdracht schakelt over bij het aanmelden voor het lezen, schrijven en verwijderen van aanvragen in de wachtrijservice in uw standaardopslagaccount met bewaarinstellingen ingesteld op vijf dagen:  
+ Met de volgende opdracht wordt de logboek registratie voor lees-, schrijf-en verwijder aanvragen in het Queue-service in uw standaard-opslag account met Bewaar termijn ingesteld op vijf dagen:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
- Met de volgende opdracht wordt logboekregistratie voor de tabelservice in uw standaardopslagaccount uitgeschakeld:  
+ Met de volgende opdracht schakelt u de logboek registratie voor de tabel service in uw standaard-opslag account uit:  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- Zie: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)voor informatie over het configureren van de Azure PowerShell-cmdlets om met uw Azure-abonnement te werken en hoe u het standaardopslagaccount selecteren dat moet worden gebruikt.  
+ Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
-### <a name="enable-storage-logging-programmatically"></a>Logboekregistratie van opslag programmatisch inschakelen  
+### <a name="enable-storage-logging-programmatically"></a>Opslag logboek registratie via een programma inschakelen  
 
- Naast het gebruik van de Azure-portal of de Azure PowerShell-cmdlets om opslaglogboekregistratie te beheren, u ook een van de Azure Storage API's gebruiken. Als u bijvoorbeeld een .NET-taal gebruikt, u de opslagclientbibliotheek gebruiken.  
+ Naast het gebruik van de Azure Portal of de Azure PowerShell-cmdlets voor het beheren van de opslag logboek registratie, kunt u ook een van de Azure Storage-Api's gebruiken. Als u bijvoorbeeld een .NET-taal gebruikt, kunt u de Storage-client bibliotheek gebruiken.  
 
- De klassen **CloudBlobClient,** **CloudQueueClient**en **CloudTableClient** hebben allemaal methoden zoals **SetServiceProperties** en **SetServicePropertiesAsync** waarmee een object **ServiceProperties** als parameter wordt gebruikt. U het object **ServiceProperties** gebruiken om Opslaglogboekregistratie te configureren. In het volgende C#-fragment ziet u bijvoorbeeld hoe u wijzigen wat er is geregistreerd en hoe de bewaarperiode voor wachtrijlogboekregistratie wordt gewijzigd:  
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/diagnostic-logs-classic.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.NET V11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -171,37 +175,40 @@ serviceProperties.Logging.RetentionDays = 2;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
- Zie [Naslaginformatie](https://msdn.microsoft.com/library/azure/dn261237.aspx)over opslagclientbibliotheek voor meer informatie over het gebruik van een .NET-taal voor het configureren van opslaglogboekregistratie.  
+---
 
- Zie [Storage Analytics inschakelen en configureren](https://msdn.microsoft.com/library/azure/hh360996.aspx)voor algemene informatie over het configureren van storagelogging met de REST API.  
 
-## <a name="download-storage-logging-log-data"></a>Logboekgegevens voor logboekregistratie voor opslag downloaden
+ Zie voor meer informatie over het gebruik van een .NET-taal voor het configureren van opslag logboek registratie de [referentie opslag-client bibliotheek](https://msdn.microsoft.com/library/azure/dn261237.aspx).  
 
- Als u uw logboekgegevens wilt bekijken en analyseren, moet u de blobs met de logboekgegevens waarin u geïnteresseerd bent, downloaden naar een lokale machine. Met veel tools voor het browsen op opslag u blobs downloaden van uw opslagaccount. U het Azure Storage-team ook gebruik maken van de command-line Azure Copy Tool [AzCopy](storage-use-azcopy-v10.md) om uw logboekgegevens te downloaden.  
+ Zie [Opslaganalyse inschakelen en configureren](https://msdn.microsoft.com/library/azure/hh360996.aspx)voor algemene informatie over het configureren van opslag logboek registratie met behulp van de rest API.  
+
+## <a name="download-storage-logging-log-data"></a>Logboek gegevens van opslag logboeken downloaden
+
+ Als u uw logboek gegevens wilt bekijken en analyseren, moet u de blobs downloaden die de logboek gegevens bevatten die u wilt raadplegen op een lokale computer. Veel hulpprogram ma's voor opslag bladeren maken het mogelijk om blobs te downloaden vanuit uw opslag account. u kunt ook het Azure Storage team dat is voorzien van het opdracht regel programma Azure copy tool [AzCopy](storage-use-azcopy-v10.md) gebruiken om uw logboek gegevens te downloaden.  
  
 >[!NOTE]
-> De `$logs` container is niet geïntegreerd met Event Grid, dus u ontvangt geen meldingen wanneer logboekbestanden worden geschreven. 
+> De `$logs` container is niet geïntegreerd met Event grid, dus u ontvangt geen meldingen wanneer er logboek bestanden worden geschreven. 
 
- Om ervoor te zorgen dat u de loggegevens downloadt waarin u geïnteresseerd bent en om te voorkomen dat u meer dan eens dezelfde loggegevens downloadt:  
+ Om ervoor te zorgen dat u de logboek gegevens downloadt die u interesseert en om te voor komen dat dezelfde logboek gegevens meermaals worden gedownload:  
 
--   Gebruik de datum- en tijdnaamgevingsconventie voor blobs met logboekgegevens om bij te houden welke blobs u al hebt gedownload voor analyse om te voorkomen dat dezelfde gegevens meer dan één keer opnieuw worden gedownload.  
+-   Gebruik de naam Conventie voor datum en tijd voor blobs die logboek gegevens bevatten om bij te houden welke blobs u al hebt gedownload voor analyse om te voor komen dat dezelfde gegevens meerdere keren opnieuw worden gedownload.  
 
--   Gebruik de metagegevens op de blobs met logboekgegevens om de specifieke periode te identificeren waarvoor de blob loggegevens bevat om de exacte blob te identificeren die u moet downloaden.  
+-   Gebruik de meta gegevens op de blobs met logboek gegevens om de specifieke periode te identificeren waarvoor de BLOB logboek gegevens bevat om de exacte BLOB te identificeren die u moet downloaden.  
 
-Zie Aan de slag [met AzCopy](storage-use-azcopy-v10.md) om aan de slag te gaan met AzCopy 
+Om aan de slag te gaan met AzCopy raadpleegt u aan de [slag met AzCopy](storage-use-azcopy-v10.md) 
 
-In het volgende voorbeeld ziet u hoe u de logboekgegevens voor de wachtrijservice downloaden voor de uren die op 20 mei 2014 om 09:00 uur, 10 uur en 11 uur 's 11 uur 's nachts beginnen.
+In het volgende voor beeld ziet u hoe u de logboek gegevens voor de wachtrij service kunt downloaden voor de uren, te beginnen bij 09 uur, 10 uur en 11 uur op twintig mei 2014.
 
 ```
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Zie [Specifieke bestanden downloaden](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
+Zie [specifieke bestanden downloaden](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
 
-Wanneer u uw logboekgegevens hebt gedownload, u de logboekvermeldingen in de bestanden bekijken. Deze logboekbestanden maken gebruik van een afgebakende tekstindeling die veel hulpprogramma's voor logboeklezen kunnen ontleden, waaronder Microsoft Message Analyzer (zie voor meer informatie de handleiding [Monitoring, Diagnosing en Troubleshooting Microsoft Azure Storage).](storage-monitoring-diagnosing-troubleshooting.md) Verschillende tools hebben verschillende faciliteiten voor het opmaken, filteren, sorteren, advertentie zoeken naar de inhoud van uw logbestanden. Zie De bestandsindeling en -inhoud van [storage analytics log](/rest/api/storageservices/storage-analytics-log-format) en opgeslagen analyses voor meer informatie over de bestandsindeling en -inhoud van het logboek voor opslaglogboeken . [Storage Analytics Logged Operations and Status Messages](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die veel hulpprogram ma's voor logboek registratie kunnen parseren, waaronder micro soft Message Analyzer (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Opslaganalyselogboekindeling](/rest/api/storageservices/storage-analytics-log-format)
-* [Opgeslagen analyses geregistreerde bewerkingen en statusberichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [Storage Analytics Metrics (klassiek)](storage-analytics-metrics.md)
+* [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format)
+* [Geregistreerde bewerkingen en status berichten Opslaganalyse](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+* [Opslaganalyse metrische gegevens (klassiek)](storage-analytics-metrics.md)
