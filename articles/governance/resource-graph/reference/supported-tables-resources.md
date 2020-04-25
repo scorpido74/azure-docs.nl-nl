@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 04/23/2020
+ms.date: 04/24/2020
 ms.topic: reference
-ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116635"
+ms.locfileid: "82141902"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -65,6 +65,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Automation/automationaccounts
 - micro soft. Automation/automationaccounts/-configuraties
 - micro soft. Automation/automationaccounts/runbooks
+- micro soft. autonomoussystems/werk ruimten
 - micro soft. azconfig/configurationstores
 - micro soft. azureactivedirectory/b2cdirectories
 - micro soft. azureworden/datacontrollers
@@ -104,6 +105,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. cognition/syntheticsaccounts
 - micro soft. cognitiveservices/accounts
 - micro soft. Compute/Availability sets
+- micro soft. Compute/diskaccesses
 - micro soft. Compute/diskencryptionsets
 - micro soft. Compute/schijven
 - micro soft. Compute/galerieën

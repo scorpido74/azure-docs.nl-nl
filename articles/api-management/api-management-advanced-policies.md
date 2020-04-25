@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde beleidsregels voor Azure API Management | Microsoft Documenten
-description: Meer informatie over het geavanceerde beleid dat beschikbaar is voor gebruik in Azure API Management.
+title: Geavanceerde beleids regels voor Azure API Management | Microsoft Docs
+description: Meer informatie over het geavanceerde beleid dat beschikbaar is voor gebruik in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 388f05c2af1516a0477392f37763a0480c7ad413
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266167"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128818"
 ---
 # <a name="api-management-advanced-policies"></a>API Management advanced policies (Geavanceerde beleidsregels API Management)
 
-In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
 
-## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>Geavanceerd beleid
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>Geavanceerde beleids regels
 
--   [Controlestroom](api-management-advanced-policies.md#choose) - Past beleidsoverzichten voorwaardelijk toe op basis van de resultaten van de evaluatie van Booleaanse [expressies](api-management-policy-expressions.md).
--   [Aanvraag doorsturen](#ForwardRequest) : doorstuurt het verzoek naar de backendservice.
--   [Gelijktijdigheid beperken](#LimitConcurrency) : voorkomt dat gesloten beleid wordt uitgevoerd met meer dan het opgegeven aantal aanvragen tegelijk.
--   [Log uit naar gebeurtenishub](#log-to-eventhub) - Verzendt berichten in de opgegeven indeling naar een gebeurtenishub die is gedefinieerd door een loggerentiteit.
--   [Mock response](#mock-response) - Hiermee wordt de uitvoering van de pijplijn afgebroken en wordt een bespot antwoord rechtstreeks naar de beller geretourneerd.
--   [Opnieuw proberen](#Retry) - Herprobeert de uitvoering van de bijgevoegde beleidsoverzichten opnieuw, als en totdat aan de voorwaarde is voldaan. De uitvoering wordt herhaald met de opgegeven tijdsintervallen en tot het opgegeven aantal opnieuw proberen.
--   [Retourrespons](#ReturnResponse) - Hiermee wordt de uitvoering van de pijplijn afgebroken en wordt het opgegeven antwoord rechtstreeks naar de beller geretourneerd.
--   [Eenenkele reisaanvraag verzenden](#SendOneWayRequest) - Stuurt een aanvraag naar de opgegeven URL zonder te wachten op een antwoord.
--   [Aanvraag verzenden](#SendRequest) - Stuurt een aanvraag naar de opgegeven URL.
--   [HTTP-proxy instellen](#SetHttpProxy) - Hiermee u doorgestuurde aanvragen doorsturen via een HTTP-proxy.
--   [Aanvraagmethode instellen](#SetRequestMethod) - Hiermee u de HTTP-methode voor een aanvraag wijzigen.
--   [Statuscode instellen](#SetStatus) : hiermee wijzigt u de HTTP-statuscode in de opgegeven waarde.
--   [Variabele instellen](api-management-advanced-policies.md#set-variable) : houdt een waarde in een benoemde [contextvariabele](api-management-policy-expressions.md#ContextVariables) voor latere toegang aan.
--   [Trace](#Trace) - Voegt aangepaste traces toe aan de [API Inspector-uitvoer,](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) Application Insights-telemetrieën en diagnostische logboeken.
--   [Wacht](#Wait) - Wacht op ingesloten [aanvraag verzenden](api-management-advanced-policies.md#SendRequest), Waarde ophalen [uit cache](api-management-caching-policies.md#GetFromCacheByKey)of [Voerbeleid beheren](api-management-advanced-policies.md#choose) voordat u verdergaat.
+-   [Controle stroom](api-management-advanced-policies.md#choose) -voorwaardelijk past beleids instructies toe op basis van de resultaten van de evaluatie van Boole- [expressies](api-management-policy-expressions.md).
+-   [Aanvraag door sturen](#ForwardRequest) : stuurt de aanvraag door naar de back-end-service.
+-   [Gelijktijdigheid beperken](#LimitConcurrency) : hiermee voor komt u dat beleid wordt uitgevoerd door meer dan het opgegeven aantal aanvragen per keer.
+-   [Aanmelden bij Event hub](#log-to-eventhub) : verzendt berichten in de opgegeven indeling naar een event hub die is gedefinieerd door een logboek registratie-entiteit.
+-   Verwaak [antwoord](#mock-response) : Hiermee wordt de uitvoering van de pijp lijn afgebroken en wordt een gesimuleerde respons rechtstreeks naar de oproepende functie geretourneerd.
+-   [Nieuwe](#Retry) pogingen: de uitvoering van de Inge sloten beleids instructies opnieuw proberen, indien en tot aan de voor waarde wordt voldaan. De uitvoering wordt herhaald op de opgegeven tijds intervallen en tot het opgegeven aantal nieuwe pogingen.
+-   [Retour antwoord](#ReturnResponse) : Hiermee wordt de uitvoering van de pijp lijn afgebroken en wordt het opgegeven antwoord rechtstreeks naar de aanroeper geretourneerd.
+-   Eenrichtings [aanvraag verzenden](#SendOneWayRequest) : Hiermee verzendt u een aanvraag naar de opgegeven URL zonder te wachten op een reactie.
+-   [Aanvraag verzenden](#SendRequest) : Hiermee verzendt u een aanvraag naar de opgegeven URL.
+-   [Http-proxy instellen](#SetHttpProxy) : Hiermee kunt u doorgestuurde aanvragen via een http-proxy routeren.
+-   [Set-aanvraag methode](#SetRequestMethod) : Hiermee kunt u de HTTP-methode voor een aanvraag wijzigen.
+-   [Status code instellen](#SetStatus) : Hiermee wijzigt u de HTTP-status code in de opgegeven waarde.
+-   [Set variable](api-management-advanced-policies.md#set-variable) : persistent een waarde in een benoemde [context](api-management-policy-expressions.md#ContextVariables) variabele voor later toegang.
+-   [Trace](#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer, Application Insights-Telerichtingen en resource Logboeken.
+-   [Wacht](#Wait) op een Inge sloten [verzend aanvraag](api-management-advanced-policies.md#SendRequest), haal de [waarde uit het cache geheugen](api-management-caching-policies.md#GetFromCacheByKey)of Controleer of [controle stroom](api-management-advanced-policies.md#choose) beleid is voltooid voordat u doorgaat.
 
-## <a name="control-flow"></a><a name="choose"></a>Regelstroom
+## <a name="control-flow"></a><a name="choose"></a>Controle stroom
 
-Het `choose` beleid past bijgevoegde beleidsverklaringen toe op basis van de evaluatie van Booleaanse expressies, vergelijkbaar met een als-dan-anders of een switchconstructie in een programmeertaal.
+Het `choose` beleid is van toepassing op Inge sloten beleids overzichten op basis van het resultaat van de evaluatie van Boole-expressies, vergelijkbaar met een if-then-else-of een switch-constructie in een programmeer taal.
 
-### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>Beleidsverklaring
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>Beleids verklaring
 
 ```xml
 <choose>
@@ -61,19 +61,19 @@ Het `choose` beleid past bijgevoegde beleidsverklaringen toe op basis van de eva
 </choose>
 ```
 
-Het controlestroombeleid moet ten `<when/>` minste één element bevatten. Het `<otherwise/>` element is optioneel. Voorwaarden `<when/>` in elementen worden geëvalueerd in volgorde van hun verschijning binnen het beleid. Beleidsverklaring(en) die is `<when/>` bijgesloten in `true` het eerste element met voorwaardekenmerk is gelijk. Beleid dat `<otherwise/>` in het element is ingesloten, `<when/>` indien aanwezig, `false`wordt toegepast als alle elementvoorwaardekenmerken .
+Het controle stroom beleid moet ten minste één `<when/>` element bevatten. Het `<otherwise/>` element is optioneel. Voor waarden `<when/>` in elementen worden geëvalueerd in de volg orde waarin ze in het beleid worden weer gegeven. Beleids verklaring (en) die zijn Inge sloten in `<when/>` het eerste element met een voorwaarde `true` kenmerk dat gelijk is aan wordt toegepast. Beleids regels die zijn Inge `<otherwise/>` sloten binnen het element, indien aanwezig, worden toegepast als alle `<when/>` kenmerken van de element `false`voorwaarde zijn.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="example"></a><a name="ChooseExample"></a>Voorbeeld
+#### <a name="example"></a><a name="ChooseExample"></a>Hierbij
 
-In het volgende voorbeeld wordt een [vast variabel](api-management-advanced-policies.md#set-variable) beleid en twee controlestroombeleid's getoond.
+In het volgende voor beeld ziet u een [set-variabele](api-management-advanced-policies.md#set-variable) beleid en twee controle stroom beleidsregels.
 
-Het ingestelde variabelebeleid bevindt zich in `isMobile` de inkomende sectie en maakt een Booleaanse `iPhone` [contextvariabele](api-management-policy-expressions.md#ContextVariables) die is ingesteld op true als de `User-Agent` aangezochtkop de tekst `iPad` bevat of .
+Het set-variabele beleid bevindt zich in de sectie `isMobile` binnenkomend en maakt een Boole- [context](api-management-policy-expressions.md#ContextVariables) variabele `User-Agent` die is ingesteld op True `iPad` als `iPhone`de aanvraag header de tekst bevat of.
 
-Het eerste besturingselementstroombeleid bevindt zich ook in de inkomende sectie en past voorwaardelijk een `isMobile` van de twee parameterbeleidsregels voor [querytekenreeksen in,](api-management-transformation-policies.md#SetQueryStringParameter) afhankelijk van de waarde van de contextvariabele.
+Het eerste controle stroom beleid bevindt zich ook in de sectie binnenkomend en past voorwaardelijk een van de twee set-parameter beleidsregels voor de [query reeks](api-management-transformation-policies.md#SetQueryStringParameter) toe, afhankelijk van de waarde van de `isMobile` context variabele.
 
-Het tweede besturingselementstroombeleid bevindt zich in de afdeling uitgaande en `isMobile` past `true`het XML converteren voorwaardelijk toe [op JSON-beleid](api-management-transformation-policies.md#ConvertXMLtoJSON) wanneer is ingesteld op .
+Het tweede controle stroom beleid bevindt zich in de sectie voor uitgaand verkeer en past op voor `isMobile` waarde het [conversie bestand XML naar JSON-beleid toe](api-management-transformation-policies.md#ConvertXMLtoJSON) wanneer is ingesteld op. `true`
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ Het tweede besturingselementstroombeleid bevindt zich in de afdeling uitgaande e
 
 #### <a name="example"></a>Voorbeeld
 
-In dit voorbeeld ziet u hoe u inhoudsfiltering uitvoert door gegevenselementen `Starter` uit het antwoord te verwijderen dat van de backendservice wordt ontvangen wanneer u het product gebruikt. Zie [Cloud Cover Episode 177: Meer API-beheerfuncties met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en fast-forward naar 34:30 voor een demonstratie van het configureren en gebruiken van dit beleid. Begin om 31:50 uur om een overzicht te zien van [de Dark Sky Forecast API](https://developer.forecast.io/) die voor deze demo wordt gebruikt.
+In dit voor beeld ziet u hoe u het filteren van inhoud uitvoert door gegevens elementen te verwijderen uit het antwoord dat is `Starter` ontvangen van de back-end-service wanneer u het product gebruikt. Zie voor een demonstratie van het configureren en gebruiken van dit beleid [Cloud cover aflevering 177: meer API management functies met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en Fast-forward to 34:30. Begin om 31:50 om een overzicht te zien van [de donkerly Forecast API](https://developer.forecast.io/) die wordt gebruikt voor deze demo.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -128,32 +128,32 @@ In dit voorbeeld ziet u hoe u inhoudsfiltering uitvoert door gegevenselementen `
 
 | Element   | Beschrijving                                                                                                                                                                                                                                                               | Vereist |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Kies    | Hoofdelement.                                                                                                                                                                                                                                                             | Ja      |
-| Wanneer      | De voorwaarde voor `if` gebruik `ifelse` voor `choose` de of delen van het beleid. Als `choose` het beleid `when` meerdere secties heeft, worden ze achtereenvolgens geëvalueerd. Zodra `condition` het van een wanneer `true`element `when` evalueert aan, worden geen verdere voorwaarden geëvalueerd. | Ja      |
-| Anders | Bevat het beleidsfragment dat moet `when` worden gebruikt `true`als geen van de voorwaarden wordt geëvalueerd op .                                                                                                                                                                               | Nee       |
+| desgewenst    | Hoofd element.                                                                                                                                                                                                                                                             | Ja      |
+| Als      | De voor waarde die moet worden `if` gebruikt `ifelse` voor de of `choose` delen van het beleid. Als het `choose` beleid meerdere `when` secties heeft, worden ze opeenvolgend geëvalueerd. Zodra de `condition` van een wanneer `true`-element wordt geëvalueerd, worden er `when` geen verdere voor waarden geëvalueerd. | Ja      |
+| tenzij | Bevat het beleids fragment dat moet worden gebruikt als aan `when` `true`geen van de voor waarden wordt voldaan.                                                                                                                                                                               | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk                                              | Beschrijving                                                                                               | Vereist |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| voorwaarde="Booleaanse expressie &#124; Booleaanse constante" | De Booleaanse expressie of constant `when` om te evalueren wanneer de beleidsinstructie wordt geëvalueerd. | Ja      |
+| condition = "Boole-expressie &#124; Booleaanse constante" | De booleaanse expressie of-constante die moet worden geëvalueerd `when` wanneer de insluitende beleids instructie wordt geëvalueerd. | Ja      |
 
-### <a name="usage"></a><a name="ChooseUsage"></a>Gebruik
+### <a name="usage"></a><a name="ChooseUsage"></a>Belasting
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="forward-request"></a><a name="ForwardRequest"></a>Verzoek doorsturen
+## <a name="forward-request"></a><a name="ForwardRequest"></a>Aanvraag door sturen
 
-Het `forward-request` beleid stuurt de binnenkomende aanvraag door naar de backendservice die is opgegeven in de [context](api-management-policy-expressions.md#ContextVariables)van de aanvraag . De URL van de backendservice is opgegeven in de [API-instellingen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) en kan worden gewijzigd met behulp van het [beleid voor de backendservice.](api-management-transformation-policies.md)
+Het `forward-request` beleid stuurt de inkomende aanvraag door naar de back-end-service die is opgegeven in de [context](api-management-policy-expressions.md#ContextVariables)van de aanvraag. De URL van de back-end-service is opgegeven in de API- [instellingen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) en kan worden gewijzigd met het beleid voor het [instellen van back-upservices](api-management-transformation-policies.md) .
 
 > [!NOTE]
-> Als u dit beleid verwijdert, wordt het verzoek niet doorgestuurd naar de backendservice en worden het beleid in de uitgaande sectie onmiddellijk geëvalueerd na de succesvolle voltooiing van het beleid in de inkomende sectie.
+> Als u dit beleid verwijdert, worden de aanvragen die niet worden doorgestuurd naar de back-end-service en het beleid in de sectie voor uitgaande verbindingen onmiddellijk geëvalueerd wanneer het beleid is voltooid in de sectie binnenkomend.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <forward-request timeout="time in seconds" follow-redirects="false | true" buffer-request-body="false | true" fail-on-error-status-code="false | true"/>
@@ -163,7 +163,7 @@ Het `forward-request` beleid stuurt de binnenkomende aanvraag door naar de backe
 
 #### <a name="example"></a>Voorbeeld
 
-Met het volgende beleid op API-niveau worden alle API-aanvragen doorgestuurd naar de backendservice met een time-outinterval van 60 seconden.
+Het volgende API-niveau beleid stuurt alle API-aanvragen door naar de back-end-service met een time-outinterval van 60 seconden.
 
 ```xml
 <!-- api level -->
@@ -183,7 +183,7 @@ Met het volgende beleid op API-niveau worden alle API-aanvragen doorgestuurd naa
 
 #### <a name="example"></a>Voorbeeld
 
-Met dit beleid `base` op bewerkingsniveau wordt het element gebruikt om het backendbeleid over te nemen van het bovenliggende API-niveaubereik.
+Dit beleid op bewerking niveau gebruikt `base` het-element om het back-end-beleid over te nemen van het bereik van het bovenliggende API-niveau.
 
 ```xml
 <!-- operation level -->
@@ -203,7 +203,7 @@ Met dit beleid `base` op bewerkingsniveau wordt het element gebruikt om het back
 
 #### <a name="example"></a>Voorbeeld
 
-Met dit beleid op bewerkingsniveau worden alle aanvragen expliciet doorgestuurd naar de backendservice met een time-out van 120 en wordt het backend-beleid op bovenliggende API-niveau niet overgenomen. Als de backendservice reageert met een foutstatuscode van 400 tot 599, wordt de sectie [on-error](api-management-error-handling-policies.md) geactiveerd.
+Dit beleid op bewerking niveau stuurt expliciet alle aanvragen door naar de back-end-service met een time-out van 120 en neemt het back-upbeleid van het bovenliggende API-niveau niet over. Als de back-end-service reageert met een fout status code van 400 naar 599 inclusief, wordt de sectie [On-Error](api-management-error-handling-policies.md) geactiveerd.
 
 ```xml
 <!-- operation level -->
@@ -224,7 +224,7 @@ Met dit beleid op bewerkingsniveau worden alle aanvragen expliciet doorgestuurd 
 
 #### <a name="example"></a>Voorbeeld
 
-Dit beleid op operationeel niveau stuurt geen aanvragen door naar de backendservice.
+Dit beleid op bewerking niveau stuurt geen aanvragen door naar de back-end-service.
 
 ```xml
 <!-- operation level -->
@@ -246,29 +246,29 @@ Dit beleid op operationeel niveau stuurt geen aanvragen door naar de backendserv
 
 | Element         | Beschrijving   | Vereist |
 | --------------- | ------------- | -------- |
-| termijnaanvraag | Hoofdelement. | Ja      |
+| door sturen-aanvraag | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk                                     | Beschrijving                                                                                                                                                                                                                                                                                                    | Vereist | Standaard |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| time-out="geheel getal"                             | De hoeveelheid tijd in seconden om te wachten tot de HTTP-antwoordkoppen worden geretourneerd door de backendservice voordat een time-outfout wordt verhoogd. De minimumwaarde is 0 seconden. Waarden van meer dan 240 seconden worden mogelijk niet gehonoreerd omdat de onderliggende netwerkinfrastructuur na deze periode inactieve verbindingen kan laten vallen. | Nee       | Geen    |
-| follow-redirects="false &#124; true"          | Hiermee geeft u op of omleidingen van de backendservice worden gevolgd door de gateway of worden teruggestuurd naar de beller.                                                                                                                                                                                                    | Nee       | false   |
-| buffer-request-body="false &#124; true"       | Wanneer ingesteld op "true" aanvraag wordt gebufferd en zal worden hergebruikt bij [het opnieuw proberen](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | Nee       | false   |
-| fail-on-error-status-code="false &#124; true" | Wanneer ingesteld op true triggers [on-error](api-management-error-handling-policies.md) sectie voor responscodes in het bereik van 400 tot 599 inclusief.                                                                                                                                                                      | Nee       | false   |
+| timeout = "geheel getal"                             | De hoeveelheid tijd in seconden die moet worden gewacht voordat de HTTP-antwoord headers worden geretourneerd door de back-end-service voordat een time-outfout optreedt. De minimum waarde is 0 seconden. Waarden die groter zijn dan 240 seconden, worden mogelijk niet geaccepteerd omdat de onderliggende netwerk infrastructuur na deze tijd niet-actieve verbindingen kan verwijderen. | Nee       | Geen    |
+| follow-redirects = "False &#124; True"          | Hiermee geeft u op of omleidingen van de back-end-service worden gevolgd door de gateway of worden geretourneerd naar de aanroeper.                                                                                                                                                                                                    | Nee       | false   |
+| buffer-Request-Body = "False &#124; True"       | Wanneer de aanvraag is ingesteld op ' True ', wordt de buffer opgeslagen en wordt deze opnieuw gebruikt bij [opnieuw proberen](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | Nee       | false   |
+| failover-on-error-status-code = "False &#124; True" | Als deze para graaf is ingesteld op ' True ' [, wordt er een fout melding](api-management-error-handling-policies.md) weer voor antwoord codes in het bereik van 400 tot 599.                                                                                                                                                                      | Nee       | false   |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** backend
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** back-end
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>Gelijktijdigheid beperken
 
-Het `limit-concurrency` beleid voorkomt dat gesloten beleid op elk gewenst moment wordt uitgevoerd met meer dan het opgegeven aantal aanvragen. Na het overschrijden van dat aantal, zullen nieuwe aanvragen onmiddellijk mislukken met de statuscode van 429 te veel aanvragen.
+Het `limit-concurrency` beleid voor komt dat het Inge sloten beleid wordt uitgevoerd door meer dan het opgegeven aantal aanvragen op elk gewenst moment. Bij overschrijding van dat aantal, zullen nieuwe aanvragen niet onmiddellijk worden uitgevoerd met een status code van 429 te veel aanvragen.
 
-### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>Beleidsverklaring
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>Beleids verklaring
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -280,7 +280,7 @@ Het `limit-concurrency` beleid voorkomt dat gesloten beleid op elk gewenst momen
 
 #### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt uitgelegd hoe u het aantal aanvragen dat wordt doorgestuurd naar een backend beperken op basis van de waarde van een contextvariabele.
+In het volgende voor beeld ziet u hoe u het aantal aanvragen dat wordt doorgestuurd naar een back-end kunt beperken op basis van de waarde van een context variabele.
 
 ```xml
 <policies>
@@ -298,31 +298,31 @@ In het volgende voorbeeld wordt uitgelegd hoe u het aantal aanvragen dat wordt d
 
 | Element           | Beschrijving   | Vereist |
 | ----------------- | ------------- | -------- |
-| limietgelijktijdigheid | Hoofdelement. | Ja      |
+| limiet-gelijktijdigheid | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk | Beschrijving                                                                                        | Vereist | Standaard |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| sleutel       | Een touwtje. Expressie toegestaan. Hiermee geeft u het gelijktijdigheidsbereik op. Kan worden gedeeld door meerdere beleidsregels. | Ja      | N.v.t.     |
-| max-count | Een geheel getal. Hiermee geeft u een maximum aantal aanvragen op dat het beleid mag invoeren.           | Ja      | N.v.t.     |
+| sleutel       | Een teken reeks. Expressie toegestaan. Hiermee geeft u het gelijktijdigheids bereik op. Kan worden gedeeld door meerdere beleids regels. | Ja      | N.v.t.     |
+| maximum aantal | Een geheel getal. Hiermee geeft u een maximum aantal aanvragen op dat het beleid mag invoeren.           | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>Aanmelden bij gebeurtenishub
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>Aanmelden bij Event hub
 
-Het `log-to-eventhub` beleid verzendt berichten in de opgegeven indeling naar een gebeurtenishub die is gedefinieerd door een loggerentiteit. Zoals de naam al aangeeft, wordt het beleid gebruikt voor het opslaan van geselecteerde informatie over de aanvraag- of antwoordcontext voor online of offline analyse.
+Het `log-to-eventhub` beleid verzendt berichten in de opgegeven indeling naar een event hub die is gedefinieerd door een logboek registratie-entiteit. Zoals de naam al aangeeft, wordt het beleid gebruikt voor het opslaan van de geselecteerde aanvraag-of antwoord context gegevens voor online-of offline analyse.
 
 > [!NOTE]
-> Zie [Api-beheergebeurtenissen met Azure Event Hubs](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)voor een stapsgewijze handleiding voor het configureren van een gebeurtenishub en logboekgebeurtenissen.
+> Zie [API Management gebeurtenissen registreren met Azure Event hubs](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)voor een stapsgewijze hand leiding voor het configureren van een event hub en logboek registratie van gebeurtenissen.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <log-to-eventhub logger-id="id of the logger entity" partition-id="index of the partition where messages are sent" partition-key="value used for partition assignment">
@@ -333,7 +333,7 @@ Het `log-to-eventhub` beleid verzendt berichten in de opgegeven indeling naar ee
 
 ### <a name="example"></a>Voorbeeld
 
-Elke tekenreeks kan worden gebruikt als de waarde die moet worden geregistreerd in gebeurtenishubs. In dit voorbeeld worden de datum en tijd, de naam van de implementatieservice, de aanvraag-id, `contoso-logger` het IP-adres en de bedrijfsnaam voor alle binnenkomende oproepen geregistreerd bij de gebeurtenishub Logger die is geregistreerd met de ID
+Een wille keurige teken reeks kan worden gebruikt als de waarde die moet worden aangemeld Event Hubs. In dit voor beeld worden de datum en tijd, de naam van de implementatie service, de aanvraag-ID, het IP-adres en de bewerkings naam voor alle `contoso-logger` inkomende oproepen geregistreerd in de Event hub logboek registratie met de id
 
 ```xml
 <policies>
@@ -351,29 +351,29 @@ Elke tekenreeks kan worden gebruikt als de waarde die moet worden geregistreerd 
 
 | Element         | Beschrijving                                                                     | Vereist |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
-| log-to-eventhub | Hoofdelement. De waarde van dit element is de tekenreeks die u moet aanmelden bij uw gebeurtenishub. | Ja      |
+| aanmelden bij eventhub | Hoofd element. De waarde van dit element is de teken reeks die moet worden aangemeld bij uw Event Hub. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk     | Beschrijving                                                               | Vereist                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| logger-id     | De ID van de Logger geregistreerd bij uw API Management service.         | Ja                                                                  |
-| partitie-id  | Hiermee geeft u de index op van de partitie waar berichten worden verzonden.             | Optioneel. Dit kenmerk mag niet `partition-key` worden gebruikt als het wordt gebruikt. |
-| partitiesleutel | Hiermee geeft u de waarde op die wordt gebruikt voor partitietoewijzing wanneer berichten worden verzonden. | Optioneel. Dit kenmerk mag niet `partition-id` worden gebruikt als het wordt gebruikt.  |
+| logger-id     | De ID van de logboek registratie die is geregistreerd bij uw API Management service.         | Ja                                                                  |
+| partitie-id  | Hiermee geeft u de index op van de partitie waarnaar berichten worden verzonden.             | Optioneel. Dit kenmerk mag niet worden gebruikt als `partition-key` het wordt gebruikt. |
+| partitie sleutel | Hiermee geeft u de waarde op die wordt gebruikt voor partitie toewijzing wanneer berichten worden verzonden. | Optioneel. Dit kenmerk mag niet worden gebruikt als `partition-id` het wordt gebruikt.  |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="mock-response"></a><a name="mock-response"></a>Mock-reactie
+## <a name="mock-response"></a><a name="mock-response"></a>Reactie van model
 
-De `mock-response`, zoals de naam al aangeeft, wordt gebruikt om API's en bewerkingen te bespotten. Het wordt afgebroken normale pijplijn uitvoering en retourneert een bespot antwoord op de beller. Het beleid probeert altijd antwoorden van de hoogste getrouwheid terug te sturen. Het geeft de voorkeur aan voorbeelden van antwoord-inhoud, indien beschikbaar. Het genereert voorbeeldreacties van schema's, wanneer schema's worden verstrekt en voorbeelden niet. Als er geen voorbeelden of schema's worden gevonden, worden antwoorden zonder inhoud geretourneerd.
+De `mock-response`, zoals de naam al aangeeft, wordt gebruikt voor het aftrekken van api's en bewerkingen. De normale uitvoering van de pijp lijn wordt afgebroken en er wordt een gesimuleerde reactie op de oproepende functie geretourneerd. Het beleid probeert altijd antwoorden te retour neren van de hoogste betrouw baarheid. De voor beelden van antwoord inhoud, indien beschikbaar, worden weer gegeven. Er worden voorbeeld reacties van schema's gegenereerd, wanneer schema's worden gegeven en voor beelden niet. Als er geen voor beelden of schema's worden gevonden, worden antwoorden zonder inhoud geretourneerd.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <mock-response status-code="code" content-type="media type"/>
@@ -396,28 +396,28 @@ status code and media type. If no example or schema found, the content is empty.
 
 | Element       | Beschrijving   | Vereist |
 | ------------- | ------------- | -------- |
-| mock-response | Hoofdelement. | Ja      |
+| model-reactie | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk    | Beschrijving                                                                                           | Vereist | Standaard |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| statuscode  | Hiermee geeft u de status van de responsopscode op en wordt deze gebruikt om een overeenkomstig voorbeeld of schema te selecteren.                 | Nee       | 200     |
-| inhoudstype | Hiermee `Content-Type` geeft u de waarde van de antwoordkopwaarde op en wordt deze gebruikt om een overeenkomstig voorbeeld of schema te selecteren. | Nee       | Geen    |
+| status-code  | Hiermee geeft u de antwoord status code op en wordt gebruikt om het bijbehorende voor beeld of schema te selecteren.                 | Nee       | 200     |
+| inhouds type | Geeft `Content-Type` de waarde van de antwoord header aan en wordt gebruikt om een overeenkomend voor beeld of schema te selecteren. | Nee       | Geen    |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, op-fout
+-   **Beleids secties:** inkomend, uitgaand, op fouten
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="retry"></a><a name="Retry"></a>Opnieuw
+## <a name="retry"></a><a name="Retry"></a>Voeren
 
-Het `retry` beleid voert het onderliggende beleid één keer uit `condition` `false` en probeert `count` de uitvoering ervan opnieuw totdat de nieuwe poging wordt of opnieuw wordt geprobeerd.
+Het `retry` beleid voert het onderliggende beleid eenmaal uit en probeert vervolgens de uitvoering ervan totdat de nieuwe `condition` poging `false` of nieuwe `count` poging is uitgeput.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 
@@ -435,7 +435,7 @@ Het `retry` beleid voert het onderliggende beleid één keer uit `condition` `fa
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt het doorschakelen van aanvragen tot tien keer opnieuw geprobeerd met behulp van een exponentieel algoritme voor het opnieuw proberen. Aangezien `first-fast-retry` is ingesteld op false, alle pogingen opnieuw proberen zijn onderworpen aan de exponentiële retry algoritme.
+In het volgende voor beeld wordt het door sturen van aanvragen tot tien keer opnieuw geprobeerd met behulp van een exponentieel nieuwe algoritme. Omdat `first-fast-retry` is ingesteld op ONWAAR, zijn alle nieuwe pogingen onderhevig aan het exponentieel nieuwe algoritme.
 
 ```xml
 
@@ -455,37 +455,37 @@ In het volgende voorbeeld wordt het doorschakelen van aanvragen tot tien keer op
 
 | Element | Beschrijving                                                         | Vereist |
 | ------- | ------------------------------------------------------------------- | -------- |
-| retry   | Hoofdelement. Kan elk ander beleid als onderliggende elementen bevatten. | Ja      |
+| retry   | Hoofd element. Kan elk ander beleid als onderliggende elementen bevatten. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk        | Beschrijving                                                                                                                                           | Vereist | Standaard |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Voorwaarde        | Een booleaanse letterlijke of [expressie](api-management-policy-expressions.md) die`false`aangeeft of`true`nieuwe pogingen moeten worden gestopt ( ) of voortgezet ( ).      | Ja      | N.v.t.     |
-| count            | Een positief getal dat het maximum aantal pogingen om te proberen opgeeft.                                                                                | Ja      | N.v.t.     |
-| interval         | Een positief getal in seconden dat het wachtinterval tussen de pogingen opnieuw probeert.                                                                 | Ja      | N.v.t.     |
-| max-interval     | Een positief getal in seconden dat het maximale wachtinterval tussen de pogingen opnieuw probeert. Het wordt gebruikt om een exponentieel retry algoritme te implementeren. | Nee       | N.v.t.     |
-| Delta            | Een positief getal in seconden dat de toename van het wachtinterval opgeeft. Het wordt gebruikt om de lineaire en exponentiële retry algoritmen te implementeren.             | Nee       | N.v.t.     |
-| first-fast-retry | Als ingesteld `true` op , wordt de eerste poging opnieuw geprobeerd onmiddellijk uitgevoerd.                                                                                  | Nee       | `false` |
+| regeling        | Een letterlijke Booleaanse waarde of [expressie](api-management-policy-expressions.md) die aangeeft of nieuwe pogingen moeten`false`worden gestopt ()`true`of blijven ().      | Ja      | N.v.t.     |
+| count            | Een positief getal dat het maximum aantal pogingen aangeeft dat moet worden geprobeerd.                                                                                | Ja      | N.v.t.     |
+| interval         | Een positief getal in seconden dat het wacht interval tussen nieuwe pogingen aangeeft.                                                                 | Ja      | N.v.t.     |
+| Max-interval     | Een positief getal in seconden voor het maximale wacht interval tussen nieuwe pogingen. Het wordt gebruikt voor het implementeren van een exponentieel nieuwe algoritme. | Nee       | N.v.t.     |
+| Delta            | Een positief getal in seconden voor de toename van het wacht interval. Het wordt gebruikt om de algoritmen voor lineaire en exponentiële pogingen te implementeren.             | Nee       | N.v.t.     |
+| eerste snelle poging | Als deze is `true` ingesteld op, wordt de eerste nieuwe poging onmiddellijk uitgevoerd.                                                                                  | Nee       | `false` |
 
 > [!NOTE]
-> Wanneer alleen `interval` het opgegeven interval is opgegeven, worden **er vaste** intervalpogingen uitgevoerd.
-> Wanneer alleen `interval` `delta` het en het opgegeven, wordt een algoritme voor **lineaire** intervalopnieuw proberen gebruikt, waarbij de wachttijd tussen nieuwe pogingen wordt berekend volgens de volgende formule - `interval + (count - 1)*delta`.
-> Wanneer `interval`het `max-interval` `delta` **exponentiële** intervalretry-algoritme wordt toegepast, waarbij de wachttijd tussen de nieuwe pogingen `interval` exponentieel `max-interval` groeit van de `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`waarde van de waarde volgens de volgende formule - .
+> Wanneer alleen de `interval` is opgegeven, worden er nieuwe pogingen tot een **vast** interval uitgevoerd.
+> Wanneer alleen de `interval` en `delta` zijn opgegeven, wordt een algoritme voor een nieuwe poging voor een **lineair** interval gebruikt, waarbij de wacht tijd tussen nieuwe pogingen wordt `interval + (count - 1)*delta`berekend op basis van de volgende formule:.
+> Wanneer de `interval`, `max-interval` en `delta` zijn opgegeven, wordt het algoritme voor het opnieuw proberen van het **exponentieel** -interval toegepast, waarbij de wacht tijd tussen de pogingen exponentieel toeneemt van de waarde van `interval` tot de waarde `max-interval` volgens de volgende formule `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Houd er rekening mee dat beperkingen voor het gebruik van onderliggendbeleid worden overgenomen door dit beleid.
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Houd er rekening mee dat de beperkingen voor het onderliggende beleid worden overgenomen door dit beleid.
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="return-response"></a><a name="ReturnResponse"></a>Retourreactie
+## <a name="return-response"></a><a name="ReturnResponse"></a>Antwoord retour neren
 
-Het `return-response` beleid wordt afgebroken pijplijnuitvoering en retourneert een standaard- of aangepast antwoord op de beller. Standaardrespons `200 OK` is zonder lichaam. Aangepaste respons kan worden opgegeven via een contextvariabele of beleidsoverzichten. Wanneer beide worden verstrekt, wordt het antwoord binnen de contextvariabele gewijzigd door de beleidsoverzichten voordat het wordt teruggestuurd naar de beller.
+Het `return-response` beleid breekt de uitvoering van de pijp lijn af en retourneert een standaard-of aangepast antwoord naar de aanroeper. Standaard antwoord is `200 OK` zonder hoofd tekst. Aangepaste antwoorden kunnen worden opgegeven via een context variabele of beleids instructies. Wanneer beide zijn opgegeven, wordt het antwoord dat is opgenomen in de context variabele, gewijzigd door de beleids verklaringen voordat ze worden geretourneerd naar de aanroeper.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <return-response response-variable-name="existing context variable">
@@ -512,30 +512,30 @@ Het `return-response` beleid wordt afgebroken pijplijnuitvoering en retourneert 
 
 | Element         | Beschrijving                                                                               | Vereist |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
-| return-response | Hoofdelement.                                                                             | Ja      |
-| set-header      | Een beleidsinstructie [met set-header.](api-management-transformation-policies.md#SetHTTPheader) | Nee       |
-| set-body        | Een [set-body](api-management-transformation-policies.md#SetBody) beleidsverklaring.         | Nee       |
-| setstatus      | Een [beleidsverklaring met een vaste status.](api-management-advanced-policies.md#SetStatus)           | Nee       |
+| retour-antwoord | Hoofd element.                                                                             | Ja      |
+| set-header      | Een [ingestelde header-](api-management-transformation-policies.md#SetHTTPheader) beleids instructie. | Nee       |
+| set-Body        | Een instructie [set-Body-](api-management-transformation-policies.md#SetBody) beleid.         | Nee       |
+| set-status      | Een instructie van een [set-status](api-management-advanced-policies.md#SetStatus) beleid.           | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk              | Beschrijving                                                                                                                                                                          | Vereist  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
-| naam van antwoordvariabele | De naam van de contextvariabele waarnaar wordt verwezen uit bijvoorbeeld een `Response` [upstream-verzendaanvraagbeleid](api-management-advanced-policies.md#SendRequest) en met een object | Optioneel. |
+| reactie-variabele-naam | De naam van de context variabele waarnaar wordt verwezen, bijvoorbeeld een upstream [-aanvraag](api-management-advanced-policies.md#SendRequest) beleid voor verzenden en bevattende een `Response` object | Optioneel. |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>Eenenkele manier verzenden
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>Een eenrichtings aanvraag verzenden
 
-Het `send-one-way-request` beleid stuurt het opgegeven verzoek naar de opgegeven URL zonder te wachten op een antwoord.
+Het `send-one-way-request` beleid verzendt de opgegeven aanvraag naar de opgegeven URL zonder te wachten op een reactie.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <send-one-way-request mode="new | copy">
@@ -550,7 +550,7 @@ Het `send-one-way-request` beleid stuurt het opgegeven verzoek naar de opgegeven
 
 ### <a name="example"></a>Voorbeeld
 
-In dit voorbeeldbeleid wordt `send-one-way-request` een voorbeeld weergegeven van het gebruik van het beleid om een bericht naar een Slack-chatruimte te verzenden als de HTTP-antwoordcode groter is dan of gelijk is aan 500. Zie Externe services gebruiken [van de Azure API Management-service](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voorbeeld.
+In dit voorbeeld beleid ziet u een voor beeld `send-one-way-request` van het gebruik van het beleid om een bericht te verzenden naar een toegestane vertragings ruimte als de HTTP-antwoord code groter is dan of gelijk is aan 500. Zie [externe services van de Azure API Management-service gebruiken](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voor beeld.
 
 ```xml
 <choose>
@@ -582,34 +582,34 @@ In dit voorbeeldbeleid wordt `send-one-way-request` een voorbeeld weergegeven va
 
 | Element                    | Beschrijving                                                                                                 | Vereist                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| verzenden-one-way-request       | Hoofdelement.                                                                                               | Ja                             |
-| url                        | De URL van het verzoek.                                                                                     | Geen als mode=kopiëren; anders ja. |
-| method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen als mode=kopiëren; anders ja. |
-| koptekst                     | Koptekst aanvragen. Gebruik meerdere kopelementen voor meerdere aanvraagkoppen.                                  | Nee                              |
-| body                       | Het verzoekorgaan.                                                                                           | Nee                              |
-| verificatie-certificaat | [Certificaat dat moet worden gebruikt voor clientverificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
+| Send-eenrichtings aanvraag       | Hoofd element.                                                                                               | Ja                             |
+| url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
+| method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
+| koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | Nee                              |
+| body                       | De aanvraag tekst.                                                                                           | Nee                              |
+| verificatie-certificaat | [Certificaat dat moet worden gebruikt voor client verificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk     | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="tekenreeks" | Hiermee bepaalt u of dit een nieuw verzoek is of een kopie van de huidige aanvraag. In de uitgaande modus initialiseert mode=copy de aanvraaginstantie niet.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
+| mode = "teken reeks" | Hiermee wordt bepaald of dit een nieuwe aanvraag of een kopie van de huidige aanvraag is. In de modus uitgaand, wordt in modus = kopiëren de hoofd tekst van de aanvraag niet geïnitialiseerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
 | name          | Hiermee geeft u de naam van de in te stellen header op.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N.v.t.      |
-| bestaande-actie | Hiermee geeft u op welke actie u moet uitvoeren wanneer de koptekst al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> - overschrijven - vervangt de waarde van de bestaande header.<br />- overslaan - vervangt niet de bestaande header waarde.<br />- toevoegen - de waarde toevoegen aan de bestaande kopwaarde.<br />- verwijderen - verwijdert de koptekst uit de aanvraag.<br /><br /> Wanneer u `override` meerdere items met dezelfde naam intrekt, resulteert dit erin dat de koptekst wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weergegeven); alleen vermelde waarden worden in het resultaat ingesteld. | Nee       | overschrijven |
+| exists-actie | Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Wanneer deze instelling `override` is ingesteld op het aanmelden van meerdere vermeldingen met dezelfde naam, wordt de header ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat. | Nee       | overschrijven |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="send-request"></a><a name="SendRequest"></a>Verzoek verzenden
+## <a name="send-request"></a><a name="SendRequest"></a>Aanvraag verzenden
 
-Het `send-request` beleid stuurt het opgegeven verzoek naar de opgegeven URL, wachtend niet langer dan de ingestelde time-outwaarde.
+Het `send-request` beleid verzendt de opgegeven aanvraag naar de opgegeven URL, die niet langer is dan de ingestelde time-outwaarde.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <send-request mode="new|copy" response-variable-name="" timeout="60 sec" ignore-error
@@ -625,7 +625,7 @@ Het `send-request` beleid stuurt het opgegeven verzoek naar de opgegeven URL, wa
 
 ### <a name="example"></a>Voorbeeld
 
-In dit voorbeeld wordt een manier weergegeven om een referentietoken met een autorisatieserver te verifiëren. Zie Externe services gebruiken [van de Azure API Management-service](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voorbeeld.
+In dit voor beeld ziet u één manier om een referentie token te verifiëren met een autorisatie server. Zie [externe services van de Azure API Management-service gebruiken](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voor beeld.
 
 ```xml
 <inbound>
@@ -666,37 +666,37 @@ In dit voorbeeld wordt een manier weergegeven om een referentietoken met een aut
 
 | Element                    | Beschrijving                                                                                                 | Vereist                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| verzendverzoek               | Hoofdelement.                                                                                               | Ja                             |
-| url                        | De URL van het verzoek.                                                                                     | Geen als mode=kopiëren; anders ja. |
-| method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen als mode=kopiëren; anders ja. |
-| koptekst                     | Koptekst aanvragen. Gebruik meerdere kopelementen voor meerdere aanvraagkoppen.                                  | Nee                              |
-| body                       | Het verzoekorgaan.                                                                                           | Nee                              |
-| verificatie-certificaat | [Certificaat dat moet worden gebruikt voor clientverificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
+| verzenden/aanvragen               | Hoofd element.                                                                                               | Ja                             |
+| url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
+| method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
+| koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | Nee                              |
+| body                       | De aanvraag tekst.                                                                                           | Nee                              |
+| verificatie-certificaat | [Certificaat dat moet worden gebruikt voor client verificatie](api-management-authentication-policies.md#ClientCertificate) | Nee                              |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk                       | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="tekenreeks"                   | Hiermee bepaalt u of dit een nieuw verzoek is of een kopie van de huidige aanvraag. In de uitgaande modus initialiseert mode=copy de aanvraaginstantie niet.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
-| respons-variabele-naam="tekenreeks" | De naam van de contextvariabele die een antwoordobject ontvangt. Als de variabele niet bestaat, wordt deze gemaakt bij een succesvolle [`context.Variable`](api-management-policy-expressions.md#ContextVariables) uitvoering van het beleid en wordt deze toegankelijk via verzameling.                                                                                                                                                                                                                                                                                                                          | Ja      | N.v.t.      |
-| time-out="geheel getal"               | Het time-outinterval in seconden voordat de aanroep naar de URL mislukt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nee       | 60       |
-| negeren-fout                    | Als true en de aanvraag resulteert in een fout:<br /><br /> - Als de naam van de responsvariabele is opgegeven, bevat deze een null-waarde.<br />- Als de naam van de responsvariabele niet is opgegeven, context. De aanvraag wordt niet bijgewerkt.                                                                                                                                                                                                                                                                                                                                                                                   | Nee       | false    |
+| mode = "teken reeks"                   | Hiermee wordt bepaald of dit een nieuwe aanvraag of een kopie van de huidige aanvraag is. In de modus uitgaand, wordt in modus = kopiëren de hoofd tekst van de aanvraag niet geïnitialiseerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
+| Response-variabele-name = "string" | De naam van de context variabele waarmee een antwoord object wordt ontvangen. Als de variabele niet bestaat, wordt deze gemaakt na een geslaagde uitvoering van het beleid en wordt deze toegankelijk [`context.Variable`](api-management-policy-expressions.md#ContextVariables) via de verzameling.                                                                                                                                                                                                                                                                                                                          | Ja      | N.v.t.      |
+| timeout = "geheel getal"               | Het time-outinterval in seconden voordat de aanroep van de URL mislukt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nee       | 60       |
+| negeren-fout                    | Indien waar en de aanvraag resulteert in een fout:<br /><br /> -Als de reactie variabele-name is opgegeven, bevat deze een null-waarde.<br />-Als Response-variabele-name niet is opgegeven, context. De aanvraag wordt niet bijgewerkt.                                                                                                                                                                                                                                                                                                                                                                                   | Nee       | false    |
 | name                            | Hiermee geeft u de naam van de in te stellen header op.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N.v.t.      |
-| bestaande-actie                   | Hiermee geeft u op welke actie u moet uitvoeren wanneer de koptekst al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> - overschrijven - vervangt de waarde van de bestaande header.<br />- overslaan - vervangt niet de bestaande header waarde.<br />- toevoegen - de waarde toevoegen aan de bestaande kopwaarde.<br />- verwijderen - verwijdert de koptekst uit de aanvraag.<br /><br /> Wanneer u `override` meerdere items met dezelfde naam intrekt, resulteert dit erin dat de koptekst wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weergegeven); alleen vermelde waarden worden in het resultaat ingesteld. | Nee       | overschrijven |
+| exists-actie                   | Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Wanneer deze instelling `override` is ingesteld op het aanmelden van meerdere vermeldingen met dezelfde naam, wordt de header ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat. | Nee       | overschrijven |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a>HTTP-proxy instellen
 
-Met `proxy` het beleid u aanvragen die zijn doorgestuurd naar backends doorsturen via een HTTP-proxy routeren. Alleen HTTP (niet HTTPS) wordt ondersteund tussen de gateway en de proxy. Alleen basis- en NTLM-verificatie.
+Met `proxy` het beleid kunt u aanvragen die via een http-proxy worden doorgestuurd naar back-endservers routeren. Alleen HTTP (niet HTTPS) wordt ondersteund tussen de gateway en de proxy. Alleen basis-en NTLM-verificatie.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <proxy url="http://hostname-or-ip:port" username="username" password="password" />
@@ -705,7 +705,7 @@ Met `proxy` het beleid u aanvragen die zijn doorgestuurd naar backends doorsture
 
 ### <a name="example"></a>Voorbeeld
 
-Let op het gebruik van [eigenschappen](api-management-howto-properties.md) als waarden van de gebruikersnaam en het wachtwoord om te voorkomen dat gevoelige informatie in het beleidsdocument wordt opgeslagen.
+Let op het gebruik van [Eigenschappen](api-management-howto-properties.md) als waarden van de gebruikers naam en het wacht woord om te voor komen dat gevoelige informatie wordt opgeslagen in het beleids document.
 
 ```xml
 <proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
@@ -716,29 +716,29 @@ Let op het gebruik van [eigenschappen](api-management-howto-properties.md) als w
 
 | Element | Beschrijving  | Vereist |
 | ------- | ------------ | -------- |
-| proxy   | Hoofdelement | Ja      |
+| proxy   | Hoofd element | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk         | Beschrijving                                            | Vereist | Standaard |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| url="tekenreeks"      | Proxy-URL in http://host:portde vorm van .             | Ja      | N.v.t.     |
-| gebruikersnaam="tekenreeks" | Gebruikersnaam die moet worden gebruikt voor verificatie met de proxy. | Nee       | N.v.t.     |
-| password="string" | Wachtwoord dat moet worden gebruikt voor verificatie met de proxy. | Nee       | N.v.t.     |
+| URL = "teken reeks"      | Proxy-URL in de vorm http://host:portvan.             | Ja      | N.v.t.     |
+| username = "teken reeks" | De gebruikers naam die moet worden gebruikt voor verificatie met de proxy. | Nee       | N.v.t.     |
+| Password = "teken reeks" | Het wacht woord dat moet worden gebruikt voor verificatie met de proxy. | Nee       | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
+-   **Beleids secties:** binnenkomend
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="set-request-method"></a><a name="SetRequestMethod"></a>Aanvraagmethode instellen
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a>Set-aanvraag methode
 
-Met `set-method` het beleid u de HTTP-aanvraagmethode voor een aanvraag wijzigen.
+Met `set-method` het beleid kunt u de HTTP-aanvraag methode voor een aanvraag wijzigen.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <set-method>METHOD</set-method>
@@ -747,7 +747,7 @@ Met `set-method` het beleid u de HTTP-aanvraagmethode voor een aanvraag wijzigen
 
 ### <a name="example"></a>Voorbeeld
 
-In dit voorbeeldbeleid `set-method` dat het beleid gebruikt, wordt een voorbeeld weergegeven van het verzenden van een bericht naar een Slack-chatruimte als de HTTP-antwoordcode groter is dan of gelijk is aan 500. Zie Externe services gebruiken [van de Azure API Management-service](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voorbeeld.
+In dit voorbeeld beleid dat het `set-method` beleid gebruikt, ziet u een voor beeld van het verzenden van een bericht naar een room met een toegestane vertraging als de HTTP-antwoord code groter is dan of gelijk is aan 500. Zie [externe services van de Azure API Management-service gebruiken](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)voor meer informatie over dit voor beeld.
 
 ```xml
 <choose>
@@ -779,21 +779,21 @@ In dit voorbeeldbeleid `set-method` dat het beleid gebruikt, wordt een voorbeeld
 
 | Element    | Beschrijving                                                       | Vereist |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| setmethode | Hoofdelement. De waarde van het element geeft de HTTP-methode aan. | Ja      |
+| set-methode | Hoofd element. De waarde van het element specificeert de HTTP-methode. | Ja      |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend, op-fout
+-   **Beleids secties:** inkomend, op fouten
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="set-status-code"></a><a name="SetStatus"></a>Statuscode instellen
+## <a name="set-status-code"></a><a name="SetStatus"></a>Status code instellen
 
-In `set-status` het beleid wordt de HTTP-statuscode ingesteld op de opgegeven waarde.
+Met `set-status` het beleid wordt de HTTP-status code ingesteld op de opgegeven waarde.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <set-status code="" reason=""/>
@@ -802,7 +802,7 @@ In `set-status` het beleid wordt de HTTP-statuscode ingesteld op de opgegeven wa
 
 ### <a name="example"></a>Voorbeeld
 
-In dit voorbeeld ziet u hoe u een 401-antwoord retourneert als het autorisatietoken ongeldig is. Zie [Externe services gebruiken vanuit de Azure API Management-service](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/) voor meer informatie
+In dit voor beeld ziet u hoe u een respons van 401 retourneert als het autorisatie token ongeldig is. Zie [externe services gebruiken vanuit de Azure API Management-service](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/) voor meer informatie.
 
 ```xml
 <choose>
@@ -822,35 +822,35 @@ In dit voorbeeld ziet u hoe u een 401-antwoord retourneert als het autorisatieto
 
 | Element    | Beschrijving   | Vereist |
 | ---------- | ------------- | -------- |
-| setstatus | Hoofdelement. | Ja      |
+| set-status | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk       | Beschrijving                                                | Vereist | Standaard |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| code="geheel"  | De HTTP-statuscode om terug te keren.                            | Ja      | N.v.t.     |
-| reden="tekenreeks" | Een beschrijving van de reden voor het retourneren van de statuscode. | Ja      | N.v.t.     |
+| code = "geheel getal"  | De HTTP-status code die moet worden geretourneerd.                            | Ja      | N.v.t.     |
+| reden = "teken reeks" | Een beschrijving van de reden voor het retour neren van de status code. | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** uitgaand, backend, on-error
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** uitgaand, back-end, op fout
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="set-variable"></a><a name="set-variable"></a>Variabele instellen
 
-Het `set-variable` beleid verklaart een [contextvariabele](api-management-policy-expressions.md#ContextVariables) en wijst deze een waarde toe die is opgegeven via een [expressie](api-management-policy-expressions.md) of een tekenreeks letterlijk. als de expressie een letterlijke tekst bevat, wordt deze omgezet `System.String`in een tekenreeks en wordt het type waarde .
+Het `set-variable` beleid declareert een [context](api-management-policy-expressions.md#ContextVariables) variabele en wijst deze toe aan een waarde die is opgegeven via een [expressie](api-management-policy-expressions.md) of een letterlijke teken reeks. Als de expressie een letterlijke waarde bevat, wordt deze geconverteerd naar een teken reeks en wordt het type van `System.String`de waarden.
 
-### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>Beleidsverklaring
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>Beleids verklaring
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="example"></a><a name="set-variableExample"></a>Voorbeeld
+### <a name="example"></a><a name="set-variableExample"></a>Hierbij
 
-In het volgende voorbeeld wordt een ingesteld variabel beleid in de inkomende sectie getoond. Met dit ingestelde `isMobile` variabelebeleid wordt een Booleaanse `User-Agent` [contextvariabele](api-management-policy-expressions.md#ContextVariables) gemaakt die is ingesteld op true als de aanknopingskop de tekst `iPad` bevat of `iPhone`.
+In het volgende voor beeld ziet u een ingesteld variabelen beleid in de sectie binnenkomend. Met dit set-variabele beleid `isMobile` maakt u een Boole- [context](api-management-policy-expressions.md#ContextVariables) variabele die wordt ingesteld `User-Agent` op True als de aanvraag `iPad` header `iPhone`de tekst bevat of.
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -860,67 +860,67 @@ In het volgende voorbeeld wordt een ingesteld variabel beleid in de inkomende se
 
 | Element      | Beschrijving   | Vereist |
 | ------------ | ------------- | -------- |
-| setvariabele | Hoofdelement. | Ja      |
+| set-variabele | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk | Beschrijving                                                              | Vereist |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | De naam van de variabele.                                                | Ja      |
-| waarde     | De waarde van de variabele. Dit kan een uitdrukking of een letterlijke waarde zijn. | Ja      |
+| waarde     | De waarde van de variabele. Dit kan een expressie of een letterlijke waarde zijn. | Ja      |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
+-   **Beleids bereik:** alle bereiken
 
 ### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>Toegestane typen
 
-Expressies die `set-variable` in het beleid worden gebruikt, moeten een van de volgende basistypen retourneren.
+Expressies die in het `set-variable` beleid worden gebruikt, moeten een van de volgende basis typen retour neren.
 
--   System.Boolean System.Boolean System.Boolean System.
--   System.SByte System.SByte
--   System.Byte System.Byte
--   System.UInt16
--   System.UInt32
--   System.UInt64
--   System.Int16
--   System.Int32
--   System.Int64
--   Systeem.Decimal
--   System.Single
--   System.Double
--   System.Guid System.Guid
--   System.String
--   System.Char System.Char
--   System.DateTime
--   System.TimeSpan
--   System.Byte?
--   System.UInt16?
--   System.UInt32?
--   System.UInt64?
--   System.Int16?
--   System.Int32?
--   System.Int64?
--   Systeem.Decimal?
--   System.Single?
--   System.Double?
--   System.Guid?
--   System.String?
--   System.Char?
--   System.DateTime?
+-   System. Boolean
+-   Systeem. SByte
+-   System. byte
+-   System. UInt16
+-   System. UInt32
+-   System. UInt64
+-   System. Int16
+-   System. Int32
+-   System. Int64
+-   Systeem. decimaal
+-   System. single
+-   Systeem. Double
+-   System. GUID
+-   System. String
+-   System. char
+-   System. DateTime
+-   System. time span
+-   System. byte?
+-   System. UInt16?
+-   System. UInt32?
+-   System. UInt64?
+-   System. Int16?
+-   System. Int32?
+-   Systeem. Int64?
+-   Systeem. decimaal?
+-   System. single?
+-   Systeem. Double?
+-   System. GUID?
+-   System. String?
+-   System. char?
+-   System. DateTime?
 
-## <a name="trace"></a><a name="Trace"></a>Trace
+## <a name="trace"></a><a name="Trace"></a>Tracerings
 
-Het `trace` beleid voegt een aangepaste tracering toe aan de API Inspector-uitvoer, Application Insights-telemetrieën en/of diagnostische logboeken.
+Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvoer, Application Insights-teleelementen en/of bron Logboeken.
 
--   Het beleid voegt een aangepaste tracering toe aan de [API Inspector-uitvoer](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) wanneer tracering wordt geactiveerd, d.w.z. `Ocp-Apim-Trace` de aanvraagheader is aanwezig en ingesteld op true- en `Ocp-Apim-Subscription-Key` requestheader is aanwezig en bevat een geldige sleutel waarmee tracering mogelijk is.
--   Het beleid maakt een [Trace](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrie in Application Insights, wanneer [Application Insights-integratie](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) is ingeschakeld en het `severity` niveau dat in het beleid is opgegeven, op of hoger is dan het `verbosity` niveau dat is opgegeven in de diagnostische instelling.
--   Het beleid voegt een eigenschap toe in de logboekvermelding wanneer [diagnostische logboeken](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) zijn ingeschakeld en het in het beleid opgegeven ernstniveau op of hoger is dan het verbositeitsniveau dat is opgegeven in de diagnostische instelling.
+-   Het beleid voegt een aangepaste tracering toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer wanneer tracering wordt geactiveerd `Ocp-Apim-Trace` , d.w.z. aanvraag header is aanwezig en ingesteld op `Ocp-Apim-Subscription-Key` True en request header is aanwezig en bevat een geldige sleutel die tracering mogelijk maakt.
+-   Het beleid maakt een telemetrie [traceren](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) in Application Insights, wanneer [Application Insights integratie](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) is ingeschakeld `severity` en het niveau dat is opgegeven in het beleid, hoger `verbosity` is dan het niveau dat is opgegeven in de diagnostische instelling.
+-   Het beleid voegt een eigenschap in de logboek vermelding toe wanneer [bron logboeken](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) is ingeschakeld en het Ernst niveau dat is opgegeven in het beleid, hoger is dan het niveau dat is opgegeven in de diagnostische instelling.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 
@@ -931,7 +931,7 @@ Het `trace` beleid voegt een aangepaste tracering toe aan de API Inspector-uitvo
 
 ```
 
-### <a name="example"></a><a name="traceExample"></a>Voorbeeld
+### <a name="example"></a><a name="traceExample"></a>Hierbij
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -944,32 +944,32 @@ Het `trace` beleid voegt een aangepaste tracering toe aan de API Inspector-uitvo
 
 | Element  | Beschrijving                                                                                                                                          | Vereist |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| tracering    | Hoofdelement.                                                                                                                                        | Ja      |
-| message  | Een tekenreeks of expressie die moet worden geregistreerd.                                                                                                                 | Ja      |
-| metagegevens | Hiermee voegt u een aangepaste eigenschap toe aan de telemetrie van Application Insights [Trace.](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) | Nee       |
+| tracering    | Hoofd element.                                                                                                                                        | Ja      |
+| message  | Een teken reeks of expressie die moet worden vastgelegd.                                                                                                                 | Ja      |
+| metagegevens | Hiermee voegt u een aangepaste eigenschap toe aan de Application Insights [Trace](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrie. | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk | Beschrijving                                                                                                               | Vereist | Standaard |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | Tekenreeks letterlijk zinvol voor de trace viewer en het opgeven van de bron van het bericht.                                   | Ja      | N.v.t.     |
-| ernst  | Hiermee geeft u het ernstniveau van het spoor op. Toegestane waarden `verbose`zijn `information` `error` , (van laag naar hoog). | Nee       | Verbose |
-| name      | Naam van het pand.                                                                                                     | Ja      | N.v.t.     |
-| waarde     | Waarde van het pand.                                                                                                    | Ja      | N.v.t.     |
+| source    | Letterlijke teken reeks die betekenisvol is voor de traceer viewer en het opgeven van de bron van het bericht.                                   | Ja      | N.v.t.     |
+| ernst  | Hiermee geeft u het Ernst niveau van de tracering. Toegestane waarden zijn `verbose`, `information`, `error` (van laagste naar hoogste). | Nee       | Verbose |
+| name      | De naam van de eigenschap.                                                                                                     | Ja      | N.v.t.     |
+| waarde     | Waarde van de eigenschap.                                                                                                    | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
+-   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="wait"></a><a name="Wait"></a>Wachten
+## <a name="wait"></a><a name="Wait"></a>Bewerking
 
-Het `wait` beleid voert het beleid voor onmiddellijke onderliggende problemen parallel uit en wacht tot het beleid voor het directe kind of het beleid voor onmiddellijke kinderen is voltooid voordat het is voltooid. Het wachtbeleid kan hebben als het beleid voor onmiddellijk kind [Verzendaanvraag](api-management-advanced-policies.md#SendRequest), [Waarde ophalen uit cache](api-management-caching-policies.md#GetFromCacheByKey)en [Stroombeleid beheren.](api-management-advanced-policies.md#choose)
+Het `wait` beleid voert de direct onderliggende beleids regels parallel uit en wacht totdat alle of een van de direct onderliggende beleids regels is voltooid voordat deze is voltooid. Het wacht beleid kan net zo lang zijn als het directe onderliggende beleid [verzend aanvraag](api-management-advanced-policies.md#SendRequest), [waarde ophalen uit cache](api-management-caching-policies.md#GetFromCacheByKey)en beleid voor [controle stromen](api-management-advanced-policies.md#choose) .
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <wait for="all|any">
@@ -981,7 +981,7 @@ Het `wait` beleid voert het beleid voor onmiddellijke onderliggende problemen pa
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld `choose` zijn er twee `wait` beleidsregels als direct kindbeleid van het beleid. Elk van `choose` deze beleidsregels wordt parallel uitgevoerd. Elk `choose` beleid probeert een in de cache opgeslagen waarde op te halen. Als er een cache-misser is, wordt een backendservice ingeschakeld om de waarde te bieden. In dit `wait` voorbeeld wordt het beleid pas voltooid nadat al `for` het beleid `all`voor onmiddellijke onderliggende kenmerken is voltooid, omdat het kenmerk is ingesteld op . In dit voorbeeld worden`execute-branch-one`de `value-one` `execute-branch-two`contextvariabelen `value-two`( , , en ) buiten het toepassingsgebied van dit voorbeeldbeleid gedeclareerd.
+In het volgende voor beeld zijn er `choose` twee beleids regels als direct onderliggend beleid van het `wait` beleid. Elk van deze `choose` beleids regels wordt parallel uitgevoerd. Elk `choose` beleid probeert een in cache opgeslagen waarde op te halen. Als er een cache ontbreekt, wordt een back-end-service aangeroepen om de waarde op te geven. In dit voor beeld `wait` wordt het beleid niet voltooid totdat alle direct onderliggende beleids regels zijn voltooid, omdat `for` het kenmerk is ingesteld `all`op. In dit voor beeld worden de context`execute-branch-one`variabelen `value-one`( `execute-branch-two`,, `value-two`en) binnen het bereik van dit voorbeeld beleid gedeclareerd.
 
 ```xml
 <wait for="all">
@@ -1019,26 +1019,26 @@ In het volgende voorbeeld `choose` zijn er twee `wait` beleidsregels als direct 
 
 | Element | Beschrijving                                                                                                   | Vereist |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| Wacht    | Hoofdelement. Kan alleen `send-request`als onderliggende `choose` elementen en `cache-lookup-value`beleid bevatten. | Ja      |
+| Wacht    | Hoofd element. Mag alleen `send-request`onderliggende elementen, `cache-lookup-value`en `choose` beleid bevatten. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                            | Vereist | Standaard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| voor       | Hiermee bepaalt `wait` u of het beleid wacht tot alle directe onderliggende beleidsregels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all`- wachten tot alle onmiddellijke kinderbeleid is voltooid<br />- elke - wachten op een onmiddellijke kinderbeleid te voltooien. Zodra het eerste directe onderliggende `wait` beleid is voltooid, wordt het beleid voltooid en uitgevoerd met andere beleid voor onmiddellijke onderliggende gegevens. | Nee       | all     |
+| voor       | Hiermee wordt bepaald `wait` of het beleid wacht totdat alle direct onderliggende beleids regels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all`-wacht totdat alle direct onderliggende beleids regels zijn voltooid<br />-wille keurig-wacht tot het direct onderliggende beleid is voltooid. Zodra het eerste directe onderliggende beleid is voltooid, wordt `wait` het beleid voltooid en wordt de uitvoering van elk ander direct onderliggend beleid beëindigd. | Nee       | all     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidssecties:** binnenkomend, uitgaand, backend
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** inkomend, uitgaand, back-end
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over beleid:
+Zie voor meer informatie over het gebruik van beleid:
 
--   [Beleid in API-beheer](api-management-howto-policies.md)
+-   [Beleid in API Management](api-management-howto-policies.md)
 -   [Beleidsexpressies](api-management-policy-expressions.md)
--   [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
--   [Beleidsvoorbeelden](policy-samples.md)
+-   [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
+-   [Voor beelden van beleid](policy-samples.md)

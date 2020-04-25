@@ -1,100 +1,100 @@
 ---
-title: Controlelogboekregistratie - Azure Database voor PostgreSQL - Single Server
-description: Concepten voor pgAudit-controlelogboekregistratie in Azure Database voor PostgreSQL - Single Server.
+title: Controle logboek registratie-Azure Database for PostgreSQL-één server
+description: Concepten voor pgAudit-controle logboek registratie in Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842466"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131243"
 ---
-# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controlelogboekregistratie in Azure Database voor PostgreSQL - Single Server
+# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
-Controlelogboekregistratie van databaseactiviteiten in Azure Database voor PostgreSQL - Single Server is beschikbaar via de PostgreSQL Audit Extension: [pgAudit](https://www.pgaudit.org/). pgAudit biedt gedetailleerde sessie- en/of objectauditlogboekregistratie.
+Audit logboek registratie van database activiteiten in Azure Database for PostgreSQL-één server is beschikbaar via de PostgreSQL-controle extensie: [pgAudit](https://www.pgaudit.org/). pgAudit biedt gedetailleerde sessie-en/of object controle logboek registratie.
 
 > [!NOTE]
-> pgAudit is in preview op Azure Database voor PostgreSQL.
-> De extensie kan alleen worden ingeschakeld op servers met algemeen gebruik en geheugengeoptimaliseerd.
+> pgAudit is beschikbaar in de preview-versie van Azure Database for PostgreSQL.
+> De uitbrei ding kan alleen worden ingeschakeld op servers met Algemeen en geoptimaliseerd voor geheugen.
 
-Zie het [Azure Activity Log](../azure-monitor/platform/platform-logs-overview.md)als u logboeken op Azure-resourceniveau wilt voor bewerkingen zoals compute en storage scaling.
+Als u Azure-logboeken op resource niveau wilt voor bewerkingen als Compute en opslag schalen, raadpleegt u het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="usage-considerations"></a>Gebruiksoverwegingen
-Standaard worden pgAudit-logboekinstructies samen met uw reguliere logboeken verzonden met behulp van de standaardfunctie voor logboekregistratie van Postgres. In Azure Database for PostgreSQL kunnen deze .log-bestanden worden gedownload via de Azure-portal of de CLI. De maximale opslag voor het verzamelen van bestanden is 1 GB en elk bestand is maximaal zeven dagen beschikbaar (de standaardinstelling is drie dagen). Deze service is een opslagoptie voor korte termijn.
+## <a name="usage-considerations"></a>Gebruiks overwegingen
+Standaard worden pgAudit-logboekinstructies samen met uw reguliere logboeken verzonden met behulp van de standaardfunctie voor logboekregistratie van Postgres. In Azure Database for PostgreSQL kunnen deze .log-bestanden worden gedownload via de Azure-portal of de CLI. De maximale opslag voor het verzamelen van bestanden is 1 GB en elk bestand is Maxi maal zeven dagen beschikbaar (de standaard waarde is drie dagen). Deze service is een korte-termijn opslag optie.
 
-U ook alle logboeken configureren die worden uitgezonden naar de diagnostische logboekservice van Azure Monitor. Als u diagnostische logboekregistratie van Azure Monitor inschakelt, worden uw logboeken automatisch verzonden (in JSON-indeling) naar Azure Storage, Event Hubs en/of Azure Monitor-logboeken, afhankelijk van uw keuze.
+U kunt ook alle logboeken zo configureren dat deze naar Azure Monitor logboek archief worden verzonden voor latere analyses in Log Analytics. Als u Azure Monitor bron logboek registratie inschakelt, worden uw logboeken automatisch verzonden (in JSON-indeling) naar Azure Storage, Event Hubs en/of Azure Monitor logboeken, afhankelijk van uw keuze.
 
-Als pgAudit wordt ingeschakeld, wordt er een groot aantal logboekregistraties op een server gegenereerd. Dit heeft gevolgen voor de prestaties en de logboekopslag. U wordt aangeraden de Azure Diagnostic Log-service te gebruiken. Deze biedt opties voor opslag op de langere termijn, evenals analyse- en waarschuwingsfuncties. U wordt aangeraden de standaard logboekregistratie uit te schakelen om de impact van prestaties van extra logboekregistratie te verminderen:
+Als pgAudit wordt ingeschakeld, wordt er een groot aantal logboekregistraties op een server gegenereerd. Dit heeft gevolgen voor de prestaties en de logboekopslag. U wordt aangeraden Azure Monitor-logboeken te gebruiken, die opslag opties voor langere termijn bieden, evenals analyse-en waarschuwings functies. U wordt aangeraden de standaard logboekregistratie uit te schakelen om de impact van prestaties van extra logboekregistratie te verminderen:
 
-   1. Stel de `logging_collector` parameter in op UIT. 
-   2. Start de server opnieuw om deze wijziging toe te passen.
+   1. Stel de para `logging_collector` meter in op uit. 
+   2. Start de server opnieuw op om deze wijziging toe te passen.
 
-Ga naar het gedeelte diagnostische logboeken van het [artikel serverlogboeken](concepts-server-logs.md)voor het instellen van logboekregistratie voor Azure Storage, Event Hubs of Azure Monitor-logboeken.
+Ga naar de sectie resource logs van het [artikel server logboeken](concepts-server-logs.md)voor meer informatie over het instellen van logboek registratie voor Azure Storage, Event Hubs of Azure monitor Logboeken.
 
 ## <a name="installing-pgaudit"></a>PgAudit installeren
 
-Als u pgAudit wilt installeren, moet u deze opnemen in de gedeelde preload-bibliotheken van de server. Voor een wijziging in `shared_preload_libraries` de parameter van Postgres moet een serveropnieuw opstarten van kracht worden. U parameters wijzigen met behulp van de [Azure-portal,](howto-configure-server-parameters-using-portal.md) [Azure CLI](howto-configure-server-parameters-using-cli.md)of [REST API.](/rest/api/postgresql/configurations/createorupdate)
+Als u pgAudit wilt installeren, moet u deze toevoegen aan de gedeelde vooraf geladen bibliotheken van de server. Voor een wijziging van de `shared_preload_libraries` para meter post gres moet de server opnieuw worden opgestart. U kunt para meters wijzigen met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure cli](howto-configure-server-parameters-using-cli.md)of [rest API](/rest/api/postgresql/configurations/createorupdate).
 
-De [Azure-portal gebruiken:](https://portal.azure.com)
+Met behulp van de [Azure Portal](https://portal.azure.com):
 
    1. Selecteer uw Azure Database for PostgreSQL-server.
-   2. Selecteer **serverparameters**op de zijbalk .
-   3. Zoek naar `shared_preload_libraries` de parameter.
+   2. Selecteer op de zijbalk **server parameters**.
+   3. Zoek de `shared_preload_libraries` para meter.
    4. Selecteer **pgaudit**.
-   5. Start de server opnieuw om de wijziging toe te passen.
+   5. Start de server opnieuw op om de wijziging toe te passen.
 
-   6. Maak verbinding met uw server via een client (zoals psql) en schakel de pgAudit-extensie in
+   6. Verbinding maken met uw server met behulp van een-client (zoals psql) en de pgAudit-uitbrei ding inschakelen
       ```SQL
       CREATE EXTENSION pgaudit;
       ```
 
 > [!TIP]
-> Als er een fout wordt weergegeven, bevestigt `shared_preload_libraries`u dat u de server opnieuw hebt opgestart na het opslaan van .
+> Als er een fout optreedt, controleert u of u de server opnieuw hebt `shared_preload_libraries`opgestart na het opslaan.
 
 ## <a name="pgaudit-settings"></a>pgAudit-instellingen
 
-met pgAudit u sessie- of objectauditlogboekregistratie configureren. [Sessiecontrolelogboekregistratie](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) zendt gedetailleerde logboeken van uitgevoerde instructies uit. [Object audit logging](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) is audit scoped to specific relations. U ervoor kiezen om een of beide typen logboekregistratie in te stellen. 
+met pgAudit kunt u de sessie of object controle logboek registratie configureren. Met de [sessie controle logboek registratie](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) worden gedetailleerde logboeken van de uitgevoerde instructies opgenomen. De [object controle logboek registratie](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) is een controle bereik voor specifieke relaties. U kunt ervoor kiezen om een of beide typen logboek registratie in te stellen. 
 
 > [!NOTE]
-> pgAudit-instellingen zijn somber opgegeven en kunnen niet worden opgegeven op database- of rolniveau.
+> pgAudit-instellingen zijn opgegeven gloabally en kunnen niet worden opgegeven op een Data Base-of Role niveau.
 
-Zodra u pgAudit hebt [geïnstalleerd,](#installing-pgaudit)u de parameters configureren om te beginnen met loggen. De [pgAudit documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) bevat de definitie van elke parameter. Test eerst de parameters en bevestig dat u het verwachte gedrag krijgt.
-
-> [!NOTE]
-> Als `pgaudit.log_client` u instelt op ON, worden logboeken omgeleid naar een clientproces (zoals psql) in plaats van naar bestand te worden geschreven. Deze instelling moet over het algemeen uitgeschakeld blijven. <br> <br>
-> `pgaudit.log_level`is alleen ingeschakeld `pgaudit.log_client` wanneer deze is ingeschakeld.
+Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meters configureren om de logboek registratie te starten. De [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) bevat de definitie van elke para meter. Test eerst de para meters en controleer of u het verwachte gedrag krijgt.
 
 > [!NOTE]
-> In Azure Database voor `pgaudit.log` PostgreSQL kan `-` niet worden ingesteld met een (min)tekensnelkoppeling zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
+> Als `pgaudit.log_client` wordt ingesteld op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven. <br> <br>
+> `pgaudit.log_level`is alleen ingeschakeld wanneer `pgaudit.log_client` zich op bevindt.
 
-### <a name="audit-log-format"></a>Auditlogindeling
-Elke controle-item `AUDIT:` wordt aangegeven door in de buurt van het begin van de logregel. Het formaat van de rest van de vermelding is beschreven in de [pgAudit documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
+> [!NOTE]
+> In Azure Database for PostgreSQL `pgaudit.log` kan niet worden ingesteld met behulp van een `-` (minteken) snelkoppeling-teken zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
 
-Als u andere velden nodig hebt om aan uw `log_line_prefix`controlevereisten te voldoen, gebruikt u de parameter Postgres. `log_line_prefix`is een tekenreeks die wordt uitgevoerd aan het begin van elke Postgres-logboekregel. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijdstempel, gebruikersnaam, databasenaam en proces-ID:
+### <a name="audit-log-format"></a>Indeling van auditlogboek
+Elke controle vermelding wordt aan `AUDIT:` het begin van de logboek regel aangeduid. De indeling van de rest van de vermelding wordt beschreven in de [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
+
+Als u andere velden nodig hebt om te voldoen aan uw audit vereisten, gebruikt u `log_line_prefix`de para meter post gres. `log_line_prefix`is een teken reeks die aan het begin van elke post gres-logboek regel wordt uitgevoerd. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijds tempel, gebruikers naam, database naam en proces-id:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Ga voor `log_line_prefix`meer informatie over de [PostgreSQL-documentatie](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Ga voor meer informatie `log_line_prefix`naar de [postgresql-documentatie](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Aan de slag
-Als u snel `pgaudit.log` aan `WRITE`de slag wilt, u instellen op, en uw logboeken openen om de uitvoer te bekijken. 
+Als u snel aan de slag `pgaudit.log` wilt `WRITE`gaan, stelt u in en opent u de logboeken om de uitvoer te controleren. 
 
-## <a name="viewing-audit-logs"></a>Controlelogboeken weergeven
-Als u .log-bestanden gebruikt, worden uw controlelogboeken opgenomen in hetzelfde bestand als uw PostgreSQL-foutlogboeken. U logboekbestanden downloaden van de [Azure-portal](howto-configure-server-logs-in-portal.md) of [CLI.](howto-configure-server-logs-using-cli.md) 
+## <a name="viewing-audit-logs"></a>Audit logboeken weer geven
+Als u. log-bestanden gebruikt, worden uw audit Logboeken in hetzelfde bestand opgenomen als uw PostgreSQL-fout Logboeken. U kunt logboek bestanden downloaden via de Azure- [Portal](howto-configure-server-logs-in-portal.md) of [cli](howto-configure-server-logs-using-cli.md). 
 
-Als u Azure-diagnostische logboekregistratie gebruikt, is de manier waarop u toegang krijgt tot de logboeken afhankelijk van welk eindpunt u kiest. Zie het artikel [over logboekenopslagaccount](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [voor azure-logboeken voor logboeken voor gebeurtenissen.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+Als u Azure resource logging gebruikt, is de manier waarop u toegang hebt tot de logboeken afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
 
-Voor Azure Monitor Logs worden logboeken verzonden naar de werkruimte die u hebt geselecteerd. De Postgres-logboeken gebruiken de **azurediagnostics-verzamelingsmodus,** zodat ze kunnen worden opgevraagd in de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over query's en waarschuwingen vindt u in het overzicht van de [query's Azure Monitor Logs.](../azure-monitor/log-query/log-query-overview.md)
+Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) .
 
-U deze query gebruiken om aan de slag te gaan. U waarschuwingen configureren op basis van query's.
+U kunt deze query gebruiken om aan de slag te gaan. U kunt waarschuwingen configureren op basis van query's.
 
-Zoeken naar alle Postgres logs voor een bepaalde server in de laatste dag
+Zoeken naar alle post gres-logboeken voor een bepaalde server in de afgelopen dag
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
@@ -103,5 +103,5 @@ AzureDiagnostics
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Meer informatie over inloggen in Azure Database voor PostgreSQL](concepts-server-logs.md)
-- Meer informatie over het instellen van parameters met behulp van de [Azure-portal,](howto-configure-server-parameters-using-portal.md) [Azure CLI](howto-configure-server-parameters-using-cli.md)of [REST API](/rest/api/postgresql/configurations/createorupdate).
+- [Meer informatie over het registreren van Azure Database for PostgreSQL](concepts-server-logs.md)
+- Meer informatie over het instellen van para meters met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure cli](howto-configure-server-parameters-using-cli.md)of [rest API](/rest/api/postgresql/configurations/createorupdate).

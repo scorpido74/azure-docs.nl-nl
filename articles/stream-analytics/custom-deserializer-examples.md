@@ -1,28 +1,28 @@
 ---
-title: Invoer in elke indeling lezen met behulp van .NET custom deserializers in Azure Stream Analytics
-description: In dit artikel worden de serialisatieindeling en de interfaces uitgelegd die aangepaste .NET-deserializers definiëren voor Azure Stream Analytics-cloud- en edge-taken.
+title: Invoer in elke indeling lezen met behulp van aangepaste .net-deserialisatie in azure stream Analytics
+description: In dit artikel worden de serialisatie-indeling en de interfaces beschreven die aangepaste .NET-deserialers definiëren voor Azure Stream Analytics Cloud-en Edge-taken.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f4cc5cefe8090e9e95f80b8b74bf15591cb7887
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845256"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133077"
 ---
-# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met behulp van .NET custom deserializers
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
-Met aangepaste deserializers kan uw Azure Stream Analytics-taak gegevens lezen van indelingen buiten de drie [ingebouwde gegevensindelingen.](stream-analytics-parsing-json.md) In dit artikel worden de serialisatieindeling en de interfaces uitgelegd die aangepaste deserializers voor Azure Stream Analytics-cloud- en edge-taken definiëren. Er zijn ook voorbeelddeserializers voor Protocol buffer en CSV-indeling.
+Aangepaste deserializers van .NET bieden uw Azure Stream Analytics-taak de mogelijkheid om gegevens te lezen uit indelingen buiten de drie [ingebouwde gegevens indelingen](stream-analytics-parsing-json.md). In dit artikel worden de serialisatie-indeling en de interfaces beschreven die aangepaste .net-deserialisatie definiëren voor Azure stream Analytics Cloud-en Edge-taken. Er zijn ook voor beelden van deserializers voor protocol buffer en CSV-indeling.
 
-## <a name="net-custom-deserializer"></a>.NET custom deserializer
+## <a name="net-custom-deserializer"></a>Aangepaste .NET-deserialisatie
 
-Volgende codevoorbeelden zijn de interfaces die de `StreamDeserializer<T>`aangepaste deserializer definiëren en implementeren.
+De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer definiëren en `StreamDeserializer<T>`implementeren.
 
-`UserDefinedOperator`is de basisklasse voor alle aangepaste streaming operators. Het initialiseert `StreamingContext`, die context biedt die mechanisme voor het publiceren van diagnostiek waarvoor u nodig hebt om eventuele problemen met uw deserializer debuggen omvat.
+`UserDefinedOperator`is de basis klasse voor alle aangepaste streaming-Opera tors. Het wordt geïnitialiseerd `StreamingContext`, wat een context biedt met het mechanisme voor het publiceren van diagnostische gegevens waarvoor u fouten wilt opsporen in problemen met uw deserializer.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -31,21 +31,21 @@ Volgende codevoorbeelden zijn de interfaces die de `StreamDeserializer<T>`aangep
     }
 ```
 
-Het volgende codefragment is de deserialisatie voor streaminggegevens. 
+Het volgende code fragment is de deserialisatie voor het streamen van gegevens. 
 
-Skippable fouten moeten worden `IStreamingDiagnostics` uitgezonden `UserDefinedOperator`met behulp van doorgegeven via 's Initialiseren methode. Alle uitzonderingen worden als fouten behandeld en de deserializer wordt opnieuw gemaakt. Na een bepaald aantal fouten wordt de taak mislukt.
+Skippable-fouten moeten worden verzonden met `IStreamingDiagnostics` door gegeven `UserDefinedOperator`via de initialisatie methode. Alle uitzonde ringen worden beschouwd als fouten en de deserializer wordt opnieuw gemaakt. Na een bepaald aantal fouten wordt de taak naar de status mislukt.
 
-`StreamDeserializer<T>`deserialiseert een stroom in `T`object van type . Aan de volgende voorwaarden moet worden voldaan:
+`StreamDeserializer<T>`deserialeert een stroom naar een object van `T`het type. Aan de volgende voor waarden moet worden voldaan:
 
-1. T is een klasse of een truc.
-1. Alle openbare velden in T zijn ofwel
-    1. Een van [sbyte, byte, kort, ushort, int, uint, lang, DateTime, string, float, double] of hun niet te doen equivalenten.
+1. T is een klasse of een struct.
+1. Alle open bare velden in T zijn
+    1. Een van [sbyte, byte, short, USHORT, int, uint, Long, DateTime, String, float, Double] of hun null-equivalenten.
     1. Een andere struct of klasse volgens dezelfde regels.
-    1. Array van `T2` het type dat dezelfde regels volgt.
-    1. IList`T2` waar T2 dezelfde regels volgt.
-    1. Heeft geen recursieve types.
+    1. Matrix van het `T2` type dat dezelfde regels volgt.
+    1. IList`T2` waarbij T2 dezelfde regels volgt.
+    1. Heeft geen recursieve typen.
 
-De `stream` parameter is de stroom die het geserialiseerde object bevat. `Deserialize`retourneert `T` een verzameling exemplaren.
+De para `stream` meter is de stroom die het geserialiseerde object bevat. `Deserialize`retourneert een verzameling `T` exemplaren.
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +54,7 @@ De `stream` parameter is de stroom die het geserialiseerde object bevat. `Deseri
     }
 ```
 
-`StreamingContext`biedt context die mechanisme voor het publiceren van diagnostiek voor de gebruiker operator omvat.
+`StreamingContext`biedt context met het mechanisme voor het publiceren van diagnostische gegevens voor de gebruikers operator.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +63,13 @@ De `stream` parameter is de stroom die het geserialiseerde object bevat. `Deseri
     }
 ```
 
-`StreamingDiagnostics`is de diagnose voor door de gebruiker gedefinieerde operatoren, waaronder serialisator, deserializer en door de gebruiker gedefinieerde functies.
+`StreamingDiagnostics`is de diagnostische gegevens voor door de gebruiker gedefinieerde Opera Tors, zoals serialisatiefunctie, deserializer en door de gebruiker gedefinieerde functies.
 
-`WriteError`hiermee wordt een foutbericht naar diagnostische logboeken verzonden en wordt de fout naar diagnostische gegevens verzonden.
+`WriteError`schrijft een fout bericht naar bron logboeken en stuurt de fout naar diagnostische gegevens.
 
-`briefMessage`is een korte foutmelding. Dit bericht wordt weergegeven in diagnostische gegevens en wordt door het productteam gebruikt voor foutopsporingsdoeleinden. Neem geen gevoelige informatie op en bewaar het bericht minder dan 200 tekens
+`briefMessage`is een kort fout bericht. Dit bericht wordt weer gegeven in diagnostische gegevens en wordt door het product team gebruikt voor fout opsporing. Neem geen gevoelige informatie op en behoud het bericht van minder dan 200 tekens
 
-`detailedMessage`is een gedetailleerd foutbericht dat alleen wordt toegevoegd aan uw diagnostische logboeken in uw opslag. Dit bericht moet minder dan 2000 tekens bevatten.
+`detailedMessage`is een gedetailleerd fout bericht dat alleen wordt toegevoegd aan de bron Logboeken in uw opslag. Dit bericht moet kleiner zijn dan 2000 tekens.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -78,15 +78,15 @@ De `stream` parameter is de stroom die het geserialiseerde object bevat. `Deseri
     }
 ```
 
-## <a name="deserializer-examples"></a>Voorbeelden van deserializer
+## <a name="deserializer-examples"></a>Voor beelden van deserialiseren
 
-In deze sectie ziet u hoe u aangepaste deserializers voor Protobuf en CSV schrijven. Ga voor aanvullende voorbeelden, zoals AVRO-indeling voor Event Hub Capture, naar [Azure Stream Analytics op GitHub.](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)
+In deze sectie wordt beschreven hoe u aangepaste deserializers schrijft voor protobuf en CSV. Ga voor meer voor beelden, zoals de AVRO-indeling voor Event hub Capture, naar [Azure stream Analytics op github](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
-### <a name="protocol-buffer-protobuf-format"></a>Protocolbuffer (Protobuf) indeling
+### <a name="protocol-buffer-protobuf-format"></a>De protobuf-indeling (protocol buffer)
 
-Dit is een voorbeeld met de protocolbufferindeling.
+Dit is een voor beeld van protocol buffer indeling.
 
-Ga uit van de volgende protocolbufferdefinitie.
+Neem de volgende protocol buffer definitie op.
 
 ```proto
 syntax = "proto3";
@@ -112,9 +112,9 @@ message MessageBodyProto {
 }
 ```
 
-Hardlopen `protoc.exe` vanaf de **Google.Protobuf.Tools** NuGet genereert een .cs-bestand met de definitie. Het gegenereerde bestand wordt hier niet weergegeven.
+Vanuit `protoc.exe` de **Google. protobuf. tools** NuGet wordt een. CS-bestand met de definitie gegenereerd. Het gegenereerde bestand wordt hier niet weer gegeven.
 
-Het volgende codefragment is de implementatie van deserializer, ervan uitgaande dat het gegenereerde bestand in het project is opgenomen. Deze implementatie is slechts een dunne wrapper over het gegenereerde bestand.
+Het volgende code fragment is de implementatie van de deserializer, ervan uitgaande dat het gegenereerde bestand is opgenomen in het project. Deze implementatie is een smalle wrapper op het gegenereerde bestand.
 
 ```csharp
     public class MessageBodyDeserializer : StreamDeserializer<SimulatedTemperatureSensor.MessageBodyProto>
@@ -135,7 +135,7 @@ Het volgende codefragment is de implementatie van deserializer, ervan uitgaande 
 
 ### <a name="csv"></a>CSV
 
-Het volgende codefragment is een eenvoudige CSV-deserializer die ook voortplantende fouten aantoont.
+Het volgende code fragment is een eenvoudige CSV-deserializer die ook het door geven van fouten illustreert.
 
 ```csharp
 using System.Collections.Generic;
@@ -198,11 +198,11 @@ namespace ExampleCustomCode.Serialization
 
 ```
 
-## <a name="serialization-format-for-rest-apis"></a>Serialisatie-indeling voor REST API's
+## <a name="serialization-format-for-rest-apis"></a>Serialisatie-indeling voor REST-Api's
 
-Elke Stream Analytics-invoer heeft een **serialisatie-indeling.** Zie de [input REST API-documentatie](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) voor meer informatie over invoeropties.
+Elke Stream Analytics invoer heeft een **serialisatie-indeling**. Zie de documentatie over [invoer rest API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) voor meer informatie over invoer opties.
 
-De volgende Javascript-code is een voorbeeld van de serialisatie-indeling .NET-deserialisator bij het gebruik van de REST API:
+De volgende Java script-code is een voor beeld van de serialisatie-indeling voor .NET-deserialisatie bij gebruik van de REST API:
 
 ```javascript
 {    
@@ -219,9 +219,9 @@ De volgende Javascript-code is een voorbeeld van de serialisatie-indeling .NET-d
 }  
 ```
 
-`serializationClassName`moet een klasse die `StreamDeserializer<T>`implementeert . Dit wordt beschreven in de volgende sectie.
+`serializationClassName`moet een klasse zijn die wordt geïmplementeerd `StreamDeserializer<T>`. Dit wordt beschreven in de volgende sectie.
 
-## <a name="region-support"></a>Ondersteuning voor regio's
+## <a name="region-support"></a>Ondersteuning voor regio
 
 Deze functie is beschikbaar in de volgende regio's:
 
@@ -232,22 +232,22 @@ Deze functie is beschikbaar in de volgende regio's:
 * VS - oost 2
 * Europa -west
 
-U [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio's.
+U kunt [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio's.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Wanneer is deze functie beschikbaar in alle Azure-regio's?
 
-Deze functie is beschikbaar in [6 regio's.](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support) Als u geïnteresseerd bent in het gebruik van deze functionaliteit in een andere regio, u [een aanvraag indienen.](https://aka.ms/ccodereqregion) Ondersteuning voor alle Azure-regio's staat op de roadmap.
+Deze functie is beschikbaar in [6 regio's](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Als u deze functionaliteit in een andere regio wilt gebruiken, kunt u [een aanvraag indienen](https://aka.ms/ccodereqregion). Ondersteuning voor alle Azure-regio's bevindt zich op het schema.
 
-### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kan ik metadatapropertyvalue openen vanuit mijn ingangen vergelijkbaar met de functie GetMetadataPropertyValue?
+### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kan ik toegang krijgen tot MetadataPropertyValue van mijn invoer vergelijkbaar met de functie GetMetadataPropertyValue?
 
-Deze functionaliteit wordt niet ondersteund. Als je deze mogelijkheid nodig hebt, kun je stemmen voor dit verzoek op [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
+Deze functionaliteit wordt niet ondersteund. Als u deze mogelijkheid nodig hebt, kunt u voor deze aanvraag stemmen op [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
 
-### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Kan ik mijn implementatie van deserializer delen met de community, zodat anderen hiervan kunnen profiteren?
+### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Kan ik mijn implementatie voor deserialisatie delen met de community zodat anderen kunnen profiteren?
 
-Zodra u uw deserializer hebt geïmplementeerd, u anderen helpen door deze te delen met de community. Stuur uw code naar de [GitHub-repo van Azure Stream Analytics.](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)
+Wanneer u uw deserializer hebt geïmplementeerd, kunt u anderen helpen door deze te delen met de community. Verzend uw code naar het [Azure stream Analytics github opslag plaats](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [.NET custom deserializers for Azure Stream Analytics cloud jobs .NET custom deserializers for Azure Stream Analytics cloud jobs .NET custom deserializers for Azure Stream Analytics cloud jobs .NET](custom-deserializer.md)
+* [Aangepaste .NET-deserialisatie voor Azure Stream Analytics Cloud taken](custom-deserializer.md)

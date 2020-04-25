@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5992726893b722b0aa46c976a0167793f5ee6bb4
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76845959"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132246"
 ---
-De volgende limieten zijn van toepassing op onderwerpen van het Azure Event Grid-systeem en aangepaste onderwerpen, *niet* op gebeurtenisdomeinen.
+De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepaste onderwerpen, *niet* voor gebeurtenis domeinen.
 
 | Resource | Limiet |
 | --- | --- |
 | Aangepaste onderwerpen per Azure-abonnement | 100 |
-| Gebeurtenisabonnementen per onderwerp | 500 |
-| Publicatiesnelheid voor een aangepast onderwerp (binnenvallen) | 5.000 evenementen per seconde per onderwerp |
+| Gebeurtenis abonnementen per onderwerp | 500 |
+| Publicatie frequentie voor een aangepast onderwerp (ingangs) | 5.000 gebeurtenissen per seconde per onderwerp |
 | Aanvragen publiceren | 250 per seconde |
-| Gebeurtenisgrootte | 1 MB (in rekening gebracht als meerdere 64-KB-gebeurtenissen) |
+| Grootte van gebeurtenis | 1 MB. Bewerkingen worden in rekening gebracht in stappen van 64 KB. Dit betekent dat gebeurtenissen van meer dan 64 KB bewerkingen in rekening brengen, alsof ze meerdere gebeurtenissen waren. Bijvoorbeeld, een gebeurtenis die 130 KB zou moeten doen, alsof het drie afzonderlijke gebeurtenissen waren.  |
 
-De volgende limieten zijn alleen van toepassing op gebeurtenisdomeinen.
+De volgende limieten gelden alleen voor gebeurtenis domeinen.
 
 | Resource | Limiet |
 | --- | --- |
-| Onderwerpen per gebeurtenisdomein | 100.000 |
-| Gebeurtenisabonnementen per onderwerp binnen een domein | 500 |
-| Abonnementen voor gebeurtenisdomeinbereik | 50 |
-| Publicatiesnelheid voor een gebeurtenisdomein (binnenvallen) | 5.000 evenementen per seconde |
+| Onderwerpen per gebeurtenis domein | 100.000 |
+| Gebeurtenis abonnementen per onderwerp binnen een domein | 500 |
+| Gebeurtenis abonnementen voor domein bereik | 50 |
+| Publicatie frequentie voor een gebeurtenis domein (ingangs punt) | 5.000 gebeurtenissen per seconde |
 | Aanvragen publiceren | 250 per seconde |
-| Gebeurtenisdomeinen per Azure-abonnement | 100 |
+| Gebeurtenis domeinen per Azure-abonnement | 100 |

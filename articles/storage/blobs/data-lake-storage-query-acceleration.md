@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage-queryversnelling (voorbeeld)
-description: Queryversnelling (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyseframeworks de gegevensverwerking drastisch kunnen optimaliseren door alleen de gegevens op te halen die nodig zijn voor een verwerkingsbewerking.
+title: Azure Data Lake Storage-query versnelling (preview-versie)
+description: Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyse raamwerken gegevens verwerking aanzienlijk kunnen optimaliseren door alleen de gegevens op te halen die nodig zijn voor een verwerkings bewerking.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,79 +8,77 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 191a3280075403c8c5b57c5ffca1c7707d1ddb11
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771818"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137532"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage-queryversnelling (voorbeeld)
+# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage-query versnelling (preview-versie)
 
-Queryversnelling (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyseframeworks de gegevensverwerking drastisch kunnen optimaliseren door alleen de gegevens op te halen die ze nodig hebben om een bepaalde bewerking uit te voeren. Dit vermindert de tijd en verwerkingskracht die nodig is om kritisch inzicht te krijgen in opgeslagen gegevens.
+Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyse raamwerken de gegevens verwerking aanzienlijk kunnen optimaliseren door alleen de gegevens op te halen die nodig zijn voor het uitvoeren van een bepaalde bewerking. Dit vermindert de tijd en verwerkings kracht die nodig is om essentiële inzichten in opgeslagen gegevens te krijgen.
 
 > [!NOTE]
-> De functie queryversnelling bevindt zich in een openbare preview en is beschikbaar in de regio's Canada Centraal en France Central. Zie het artikel [Bekende problemen](data-lake-storage-known-issues.md) om beperkingen te bekijken. Zie [dit formulier](https://aka.ms/adls/qa-preview-signup)om u in te schrijven voor het voorbeeld.  
+> De functie voor het versnellen van query's bevindt zich in de open bare preview en is beschikbaar in de regio's Canada-centraal en Frankrijk-centraal. Zie het artikel [bekende problemen](data-lake-storage-known-issues.md) voor een overzicht van de beperkingen. Zie [dit formulier](https://aka.ms/adls/qa-preview-signup)als u zich wilt inschrijven voor de preview-versie.  
 
 ## <a name="overview"></a>Overzicht
 
-Queryversnelling accepteert *filteringspredicaten* en *kolomprojecties* waarmee toepassingen rijen en kolommen kunnen filteren op het moment dat gegevens van de schijf worden gelezen. Alleen de gegevens die voldoen aan de voorwaarden van een predicaat worden via het netwerk naar de toepassing overgebracht. Dit vermindert de netwerklatentie en rekenkosten.  
+Query versnelling accepteert filter *predikaten* en *kolom projecties* waarmee toepassingen rijen en kolommen kunnen filteren op het moment dat gegevens van de schijf worden gelezen. Alleen de gegevens die aan de voor waarden van een predikaat voldoen, worden via het netwerk overgezet naar de toepassing. Hierdoor worden de netwerk latentie en de reken kosten verminderd.  
 
-U SQL gebruiken om de rijfilterpredicaten en kolomprojecties op te geven in een queryversnellingsaanvraag. Een aanvraag verwerkt slechts één bestand. Geavanceerde relationele functies van SQL, zoals joins en groeperen op aggregaten, worden daarom niet ondersteund. Queryversnelling ondersteunt CSV- en JSON-opgemaakte gegevens als invoer voor elke aanvraag.
+U kunt SQL gebruiken om de rij filter predikaten en kolom projectie op te geven in een aanvraag voor query versnelling. Met een aanvraag wordt slechts één bestand verwerkt. Daarom worden geavanceerde relationele functies van SQL, zoals samen voegingen en groeperen op aggregaties, niet ondersteund. Query versnelling ondersteunt gegevens in CSV-en JSON-indeling als invoer voor elke aanvraag.
 
-De functie queryversnelling is niet beperkt tot Data Lake Storage (opslagaccounts waarop de hiërarchische naamruimte is ingeschakeld). Queryversnelling is volledig compatibel met de blobs in opslagaccounts waarop **geen** hiërarchische naamruimte is ingeschakeld. Dit betekent dat u dezelfde vermindering van de netwerklatentie- en rekenkosten bereiken wanneer u gegevens verwerkt die u al als blobs in opslagaccounts hebt opgeslagen.
+De functie voor het versnellen van query's is niet beperkt tot Data Lake Storage (opslag accounts waarvoor de hiërarchische naam ruimte is ingeschakeld). De query versnelling is volledig compatibel met de blobs in opslag accounts **waarvoor geen** hiërarchische naam ruimte is ingeschakeld. Dit betekent dat u dezelfde verlaging van de netwerk latentie en de reken kosten kunt krijgen wanneer u gegevens verwerkt die u al hebt opgeslagen als blobs in opslag accounts.
 
-Zie [Gegevens filteren met Azure Data Lake Storage-queryversnelling](data-lake-storage-query-acceleration-how-to.md)voor een voorbeeld van het gebruik van queryversnelling in een clienttoepassing.
+Zie voor een voor beeld van het gebruik van de query versnelling in een client toepassing [gegevens filteren met behulp van Azure data Lake Storage-query versnelling](data-lake-storage-query-acceleration-how-to.md).
 
 ## <a name="data-flow"></a>Gegevensstroom
 
-In het volgende diagram ziet u hoe een typische toepassing queryversnelling gebruikt om gegevens te verwerken.
+In het volgende diagram ziet u hoe een typische toepassing query versnelling gebruikt voor het verwerken van gegevens.
 
 > [!div class="mx-imgBorder"]
-> ![Overzicht van queryversnelling](./media/data-lake-storage-query-acceleration/query-acceleration.png)
+> ![Overzicht van query versnelling](./media/data-lake-storage-query-acceleration/query-acceleration.png)
 
-1. De clienttoepassing vraagt bestandsgegevens aan door predicaten en kolomprojecties op te geven.
+1. De client toepassing vraagt bestands gegevens aan door predikaten en kolom projecties op te geven.
 
-2. Queryversnelling onteert de opgegeven SQL-query en distribueert werk naar ontwende- en filtergegevens.
+2. Met de query versnelling wordt de opgegeven SQL-query geparseerd en wordt het werk gedistribueerd om gegevens te parseren en te filteren.
 
-3. Processors lezen de gegevens van de schijf, ontleden de gegevens met behulp van de juiste indeling en filteren vervolgens gegevens door de opgegeven predicaten en kolomprojecties toe te passen.
+3. Processors lezen de gegevens van de schijf, parseert de gegevens met behulp van de juiste indeling en filtert vervolgens gegevens door de opgegeven predikaten en kolom projecties toe te passen.
 
-4. Queryversnelling combineert de antwoordshards om terug te streamen naar clienttoepassing.
+4. Met de query versnelling wordt de reactie Shards gecombineerd om weer naar de client toepassing te streamen.
 
-5. De clienttoepassing ontvangt en ontneemt de gestreamde reactie. De toepassing hoeft geen extra gegevens te filteren en kan de gewenste berekening of transformatie direct toepassen.
+5. De client toepassing ontvangt en parseert het gestreamde antwoord. De toepassing hoeft geen extra gegevens te filteren en kan de gewenste berekening of trans formatie direct Toep assen.
 
 ## <a name="better-performance-at-a-lower-cost"></a>Betere prestaties tegen lagere kosten
 
-Queryversnelling optimaliseert de prestaties door de hoeveelheid gegevens die door uw toepassing wordt overgedragen en verwerkt, te verminderen.
+De snelheid van query's optimaliseert de prestaties door de hoeveelheid gegevens die wordt overgedragen en verwerkt door uw toepassing te verminderen.
 
-Als u een geaggregeerde waarde wilt berekenen, halen toepassingen vaak **alle** gegevens uit een bestand op en verwerken en filteren ze de gegevens lokaal. Uit een analyse van de invoer-/uitvoerpatronen voor analytics-workloads blijkt dat toepassingen doorgaans slechts 20% van de gegevens die ze lezen nodig hebben om een bepaalde berekening uit te voeren. Deze statistiek geldt zelfs na het toepassen van technieken zoals [partitie snoeien](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning). Dit betekent dat 80% van die gegevens onnodig wordt overgedragen over het netwerk, ontleed en gefilterd door toepassingen. Dit patroon, in wezen ontworpen om onnodige gegevens te verwijderen, brengt aanzienlijke rekenkosten met zich mee.  
+Als u een geaggregeerde waarde wilt berekenen **, haalt de** toepassing de gegevens meestal op uit een bestand en worden de gegevens vervolgens lokaal verwerkt en gefilterd. Een analyse van de invoer/uitvoer patronen voor analyse-workloads laat zien dat toepassingen doorgaans slechts 20% van de gegevens nodig hebben die ze hebben gelezen om een bepaalde berekening uit te voeren. Deze statistische waarde is waar, zelfs na het Toep assen van technieken zoals het [weghalen van partities](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning). Dit betekent dat 80% van die gegevens onnodig over het netwerk worden overgedragen, geparseerd en gefilterd op toepassingen. Dit patroon, dat in feite is ontworpen voor het verwijderen van overbodige gegevens, leidt tot een aanzienlijke reken kosten.  
 
-Hoewel Azure beschikt over een toonaangevend netwerk, in termen van zowel doorvoer als latentie, is het onnodig overdragen van gegevens over dat netwerk nog steeds kostbaar voor de prestaties van toepassingen. Door de ongewenste gegevens tijdens de opslagaanvraag uit te filteren, elimineert queryversnelling deze kosten.
+Hoewel Azure een toonaangevende netwerk bevat, zowel door Voer als latentie, is het onnodig van gegevens over dat netwerk nog steeds kostbaar voor de prestaties van toepassingen. Door de ongewenste gegevens tijdens de opslag aanvraag uit te filteren, elimineert de query versnelling deze kosten.
 
-Bovendien vereist de CPU-belasting die nodig is om onnodige gegevens te ontleden en te filteren, dat uw toepassing een groter aantal en grotere VM's indient om zijn werk te kunnen doen. Door deze rekenbelasting over te zetten naar queryversnelling, kunnen toepassingen aanzienlijke kostenbesparingen realiseren.
+Daarnaast moet voor de CPU die nodig is voor het parseren en filteren van overbodige gegevens, een groter aantal en grotere Vm's worden ingericht om het werk te kunnen doen. Door deze Compute-belasting over te dragen aan de query versnelling kunnen toepassingen aanzienlijke kosten besparingen realiseren.
 
-## <a name="applications-that-can-benefit-from-query-acceleration"></a>Toepassingen die kunnen profiteren van queryversnelling
+## <a name="applications-that-can-benefit-from-query-acceleration"></a>Toepassingen die kunnen profiteren van de versnelling van query's
 
-Queryversnelling is ontworpen voor gedistribueerde analyseframeworks en gegevensverwerkingstoepassingen. 
+Query versnelling is ontworpen voor gedistribueerde analyse frameworks en toepassingen voor gegevens verwerking. 
 
-Gedistribueerde analyseframeworks zoals Apache Spark en Apache Hive bevatten een opslagabstractielaag binnen het framework. Deze engines bevatten ook queryoptimizers die kennis kunnen opnemen van de mogelijkheden van de onderliggende I/O-service bij het bepalen van een optimaal queryplan voor gebruikersquery's. Deze frameworks beginnen queryversnelling te integreren. Als gevolg hiervan krijgen gebruikers van deze frameworks een verbeterde latentie van query's en lagere totale eigendomskosten zonder dat ze wijzigingen in de query's hoeven aan te brengen. 
+Gedistribueerde analyse frameworks, zoals Apache Spark en Apache Hive, bevatten een opslag abstractie-laag binnen het Framework. Deze engines bevatten ook zoek optimalisatie Programma's die kennis kunnen bevatten van de onderliggende I/O-service mogelijkheden bij het bepalen van een optimaal query plan voor gebruikers query's. Deze frameworks worden gestart om de query versnelling te integreren. Als gevolg hiervan zien gebruikers van deze frameworks betere latentie van query's en een lagere total cost of ownership zonder dat ze wijzigingen hoeven aan te brengen in de query's. 
 
-Queryversnelling is ook ontworpen voor gegevensverwerkingstoepassingen. Dit soort toepassingen voert doorgaans grootschalige gegevenstransformaties uit die mogelijk niet direct leiden tot analyse-inzichten, zodat ze niet altijd gevestigde gedistribueerde analyseframeworks gebruiken. Deze toepassingen hebben vaak een directere relatie met de onderliggende opslagservice, zodat ze direct kunnen profiteren van functies zoals queryversnelling. 
+Query versnelling is ook ontworpen voor toepassingen voor gegevens verwerking. Deze typen toepassingen voeren doorgaans grootschalige gegevens transformaties uit die mogelijk niet rechtstreeks leiden tot Analytics Insights, zodat ze niet altijd vastgelegde gedistribueerde analyse raamwerken gebruiken. Deze toepassingen hebben vaak een meer rechtstreekse relatie met de onderliggende opslag service zodat ze rechtstreeks kunnen profiteren van functies als query versnelling. 
 
-Zie [Gegevens filteren met Azure Data Lake Storage-queryversnelling](data-lake-storage-query-acceleration-how-to.md)voor een voorbeeld van hoe een toepassing queryversnelling kan integreren.
+Zie voor een voor beeld van hoe een toepassing query versnelling kan integreren, [gegevens filteren met behulp van Azure data Lake Storage-query versnelling](data-lake-storage-query-acceleration-how-to.md).
 
 ## <a name="pricing"></a>Prijzen
 
-Vanwege de verhoogde rekenbelasting binnen de Azure Data Lake Storage-service verschilt het prijsmodel voor het gebruik van queryversnelling van het normale Azure Data Lake Storage-transactiemodel. Queryversnelling brengt kosten met zich mee voor de hoeveelheid gescande gegevens en kosten voor de hoeveelheid gegevens die aan de beller wordt geretourneerd.
+Als gevolg van de toegenomen reken belasting in de Azure Data Lake Storage-service verschilt het prijs model voor het gebruik van de query versnelling van het normale Azure Data Lake Storage transactie model. Met de query versnelling worden kosten in rekening gebracht voor de hoeveelheid gescande gegevens en de kosten voor de hoeveelheid gegevens die naar de oproepende functie wordt geretourneerd.
 
-Ondanks de wijziging in het factureringsmodel is het prijsmodel van Query versnelling ontworpen om de totale eigendomskosten voor een werkbelasting te verlagen, gezien de vermindering van de veel duurdere VM-kosten.
+Ondanks de wijziging van het facturerings model is het prijs model van de query versnelling ontworpen om de total cost of ownership voor een werk belasting te verlagen, gezien de minder dure VM-kosten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Inschrijvingsformulier voor queryversnelling](https://aka.ms/adls/qa-preview-signup)    
-- [Gegevens filteren met azure data lake storage-queryversnelling](data-lake-storage-query-acceleration-how-to.md)
-- [SQL-taalverwijzing voor queryversnelling (voorbeeld)](query-acceleration-sql-reference.md)
-- QueryversnellingRESTAPI-verwijzing
-
+- [Inschrijvings formulier voor query versnelling](https://aka.ms/adls/qa-preview-signup)    
+- [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration-how-to.md)
+- [Naslag informatie over SQL-taal voor query versnelling (preview-versie)](query-acceleration-sql-reference.md)
 
 

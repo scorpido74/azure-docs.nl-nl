@@ -4,42 +4,42 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4234acb2ce32980a268e389cb31de9a57ed18e6
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71129695"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132212"
 ---
-Wanneer u de configuratie vanuit een andere implementatiesleuf kloont, is de gekloonde configuratie bewerkbaar. Sommige configuratie-elementen volgen de inhoud in een swap (niet specifiek voor sleuf), terwijl andere configuratie-elementen na een swap (sleufspecifiek) in dezelfde sleuf blijven. In de volgende lijsten worden de instellingen weergegeven die veranderen wanneer u van sleuven wisselt.
+Wanneer u de configuratie kloont vanuit een andere implementatie site, kan de gekloonde configuratie bewerkbaar zijn. Sommige configuratie-elementen volgen de inhoud in een wissel (niet sleuf specifiek), terwijl andere configuratie-elementen zich in dezelfde sleuf bevinden na een wissel (sleuf specifiek). In de volgende lijsten ziet u de instellingen die veranderen wanneer u sleuven verwisselt.
 
-**Instellingen die worden verwisseld:**
+**Instellingen die worden omgewisseld**:
 
-* Algemene instellingen, zoals framework-versie, 32/64-bits, websockets
-* App-instellingen (kan worden geconfigureerd om aan een sleuf te blijven)
-* Verbindingstekenreeksen (kan worden geconfigureerd om aan een sleuf te blijven plakken)
-* Handlertoewijzingen
+* Algemene instellingen, zoals Framework versie, 32/64 bits, Web Sockets
+* App-instellingen (kan worden geconfigureerd om naar een sleuf te worden gestickt)
+* Verbindings reeksen (kan zodanig worden geconfigureerd dat ze naar een sleuf worden gestickt)
+* Handlertoewijzing
 * Openbare certificaten
-* WebJobs-inhoud
+* Inhoud van webjobs
 * Hybride verbindingen *
-* Virtuele netwerkintegratie *
-* Serviceeindpunten *
+* Integratie van virtueel netwerk *
+* Service-eind punten *
 * Azure Content Delivery Network *
 
-Functies die zijn gemarkeerd met een sterretje (*) zijn gepland om niet te worden geruild. 
+Functies die zijn gemarkeerd met een sterretje (*) zijn gepland om ongewisseld te worden. 
 
-**Instellingen die niet worden verwisseld:**
+**Instellingen die niet zijn gewisseld**:
 
-* Eindpunten publiceren
+* Eind punten publiceren
 * Aangepaste domeinnamen
-* Niet-openbare certificaten en TLS/SSL-instellingen
-* Schaalinstellingen
-* WebJobs-planners
+* Niet-open bare certificaten en TLS/SSL-instellingen
+* Schaal instellingen
+* Webjobs-planners
 * IP-beperkingen
 * AlwaysOn
-* Instellingen voor diagnostisch logboek
-* Cross-origin resource sharing (CORS)
+* Diagnostische instellingen
+* Cross-Origin-resource delen (CORS)
 
 > [!NOTE]
-> Bepaalde app-instellingen die van toepassing zijn op niet-geruilde instellingen worden ook niet verwisseld. Omdat diagnostische logboekinstellingen bijvoorbeeld niet worden verwisseld, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` worden gerelateerde app-instellingen zoals en ook niet verwisseld, zelfs als ze niet worden weergegeven als sleufinstellingen.
+> Bepaalde app-instellingen die van toepassing zijn op niet-Verwissel bare instellingen, worden ook niet omgewisseld. Omdat de diagnostische instellingen bijvoorbeeld niet worden gewisseld, worden gerelateerde app-instellingen `WEBSITE_HTTPLOGGING_RETENTION_DAYS` , `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` zoals en ook niet omgewisseld, zelfs niet weer gegeven als sleuf instellingen.
 >

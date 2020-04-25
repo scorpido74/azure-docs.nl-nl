@@ -1,126 +1,129 @@
 ---
-title: Logboeken - Azure Database voor PostgreSQL - Single Server
-description: Beschrijft logboekconfiguratie, -opslag en -analyse in Azure Database voor PostgreSQL - Single Server
+title: Logboeken-Azure Database for PostgreSQL-één server
+description: Beschrijft configuratie van logboek registratie, opslag en analyse in Azure Database for PostgreSQL-één server
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280493"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131224"
 ---
-# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Logboeken in Azure-database voor PostgreSQL - Enkele server
-Met Azure Database voor PostgreSQL u de standaardlogboeken van Postgres configureren en openen. De logboeken kunnen worden gebruikt om configuratiefouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboekregistratiegegevens die u configureren en openen, omvatten fouten, querygegevens, automatisch vacuümrecords, verbindingen en controlepunten. (Toegang tot transactielogboeken is niet beschikbaar).
+# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 
-Audit logging wordt beschikbaar gesteld via een Postgres extensie, pgaudit. Ga voor meer informatie naar het artikel [over controleconcepten.](concepts-audit.md)
+Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
+
+Controle logboek registratie wordt beschikbaar gesteld via een post gres-extensie, pgaudit. Ga naar het artikel over [controle concepten](concepts-audit.md) voor meer informatie.
 
 
-## <a name="configure-logging"></a>Logboekregistratie configureren 
-U de standaardlogboekregistratie van Postgres op uw server configureren met behulp van de parameters van de logboekregistratieserver. Op elke Azure Database voor `log_checkpoints` PostgreSQL-server en `log_connections` standaard ingeschakeld. Er zijn aanvullende parameters die u aanpassen aan uw logboekbehoeften: 
+## <a name="configure-logging"></a>Logboek registratie configureren 
+U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. Op elke Azure Database for PostgreSQL- `log_checkpoints` server en `log_connections` zijn standaard ingeschakeld. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
 
-![Azure Database voor PostgreSQL - Logboekregistratieparameters](./media/concepts-server-logs/log-parameters.png)
+![Azure Database for PostgreSQL-registratie parameters](./media/concepts-server-logs/log-parameters.png)
 
-Ga voor meer informatie over de parameters van het Postgres-logboek naar de secties [Wanneer aanmelden](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) en wat moet [u registreren](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) van de Documentatie Postgres. De meeste, maar niet alle, Postgres-logboekparameters zijn beschikbaar om te configureren in Azure Database voor PostgreSQL.
+Ga voor meer informatie over post gres-logboek parameters naar de secties [Wanneer u zich wilt registreren](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) en [wat u wilt registreren in](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) de post gres-documentatie. De meeste, maar niet alle, post gres registratie parameters zijn beschikbaar voor configuratie in Azure Database for PostgreSQL.
 
-Zie de [portaldocumentatie](howto-configure-server-parameters-using-portal.md) of de [CLI-documentatie](howto-configure-server-parameters-using-cli.md)voor meer informatie over het configureren van parameters in Azure Database voor PostgreSQL. 
+Raadpleeg de documentatie van de [Portal](howto-configure-server-parameters-using-portal.md) of de [cli-documentatie](howto-configure-server-parameters-using-cli.md)voor meer informatie over het configureren van para meters in azure database for PostgreSQL. 
 
 > [!NOTE]
-> Het configureren van een groot aantal logboeken, bijvoorbeeld logboekregistratie, kan aanzienlijke prestatieoverhead toevoegen. 
+> Als u een groot aantal logboeken configureert, bijvoorbeeld logboek registratie, kunt u aanzienlijke prestatie overhead toevoegen. 
 
-## <a name="access-log-files"></a>Access .log-bestanden
-De standaardlogboekindeling in Azure Database voor PostgreSQL is .log. Een voorbeeldregel uit dit logboek ziet eruit als volgt:
+## <a name="access-log-files"></a>Access. log-bestanden
+De standaard indeling voor logboeken in Azure Database for PostgreSQL is. log. Een voor beeld van een regel uit dit logboek ziet er als volgt uit:
 
 ```
 2019-10-14 17:00:03 UTC-5d773cc3.3c-LOG: connection received: host=101.0.0.6 port=34331 pid=16216
 ```
 
-Azure Database voor PostgreSQL biedt een opslaglocatie op korte termijn voor de .log-bestanden. Een nieuw bestand begint elke 1 uur of 100 MB, wat het eerst komt. Logboeken worden toegevoegd aan het huidige bestand als ze worden uitgezonden door Postgres.  
+Azure Database for PostgreSQL biedt een opslag locatie voor de korte termijn voor de. log-bestanden. Een nieuw bestand begint elke 1 uur of 100 MB, afhankelijk van wat het eerste komt. Logboeken worden toegevoegd aan het huidige bestand wanneer ze worden verzonden vanuit post gres.  
 
-U de bewaartermijn voor deze korte `log_retention_period` termijn logboekopslag instellen met behulp van de parameter. De standaardwaarde is drie dagen, de maximumwaarde is zeven dagen. De opslaglocatie op korte termijn kan maximaal 1 GB aan logboekbestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de bewaartermijn, verwijderd om ruimte te maken voor nieuwe logboeken. 
+U kunt de Bewaar periode voor deze logboek opslag voor de korte termijn instellen met behulp `log_retention_period` van de para meter. De standaardwaarde is drie dagen, de maximumwaarde is zeven dagen. De opslag locatie voor de korte termijn kan Maxi maal 1 GB aan logboek bestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de Bewaar periode, verwijderd om ruimte te maken voor nieuwe logboeken. 
 
-Voor het bewaren op langere termijn van logboeken en logboekanalyse u de .log-bestanden downloaden en verplaatsen naar een service van derden. U de bestanden downloaden via de [Azure-portal](howto-configure-server-logs-in-portal.md)Azure [CLI](howto-configure-server-logs-using-cli.md). U ook diagnostische instellingen voor Azure Monitor configureren die uw logboeken (in JSON-indeling) automatisch uitzendt naar locaties op langere termijn. Meer informatie over deze optie vind je in het onderstaande gedeelte. 
+Voor een langere periode voor het bewaren van Logboeken en logboek analyse kunt u de. log-bestanden downloaden en verplaatsen naar een service van derden. U kunt de bestanden downloaden met behulp van de [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure cli](howto-configure-server-logs-using-cli.md). U kunt ook Azure Monitor Diagnostische instellingen configureren waarmee uw logboeken (in JSON-indeling) automatisch worden meegestuurd naar locaties met langere termijn. Meer informatie over deze optie vindt u in de sectie hieronder. 
 
-U stoppen met het genereren `logging_collector` van .log-bestanden door de parameter in te stellen op UIT. Het uitschakelen van .log-bestand wordt aanbevolen als u diagnostische instellingen van Azure Monitor gebruikt. Deze configuratie vermindert de impact op de prestaties van extra logboekregistratie.
+U kunt geen logboek bestanden meer genereren door de para meter `logging_collector` in te stellen op uit. Het wordt uitgeschakeld. het genereren van het logboek bestand wordt aanbevolen als u Azure Monitor Diagnostische instellingen gebruikt. Deze configuratie vermindert de invloed van de prestaties van aanvullende logboek registratie.
 
-## <a name="diagnostic-logs"></a>Diagnostische logboeken
-Azure Database voor PostgreSQL is geïntegreerd met diagnostische instellingen voor Azure Monitor. Met diagnostische instellingen u uw Postgres-logboeken in JSON-indeling naar Azure Monitor-logboeken verzenden voor analyses en waarschuwingen, gebeurtenishubs voor streaming en Azure Storage voor archivering. 
+## <a name="resource-logs"></a>Resourcelogboeken
+
+Azure Database for PostgreSQL is geïntegreerd met Azure Monitor Diagnostische instellingen. Met Diagnostische instellingen kunt u uw post gres-Logboeken in JSON-indeling verzenden naar Azure Monitor logboeken voor analyse-en waarschuwings doeleinden, Event Hubs voor streaming en Azure Storage voor archivering. 
 
 > [!IMPORTANT]
-> Deze diagnostische functie voor serverlogboeken is alleen beschikbaar in de [prijzenlagen](concepts-pricing-tiers.md)Algemeen Doel en Geheugengeoptimaliseerd.
+> Deze diagnostische functie voor Server Logboeken is alleen beschikbaar in de [prijs categorie](concepts-pricing-tiers.md)algemeen en geoptimaliseerd voor geheugen.
 
 
 ### <a name="configure-diagnostic-settings"></a>Diagnostische instellingen configureren
-U diagnostische instellingen voor uw Postgres-server inschakelen met behulp van de Azure-portal, CLI, REST API en Powershell. De logboekcategorie die u wilt selecteren, is **PostgreSQLLogs**. (Er zijn andere logboeken die u configureren als u [Query Store](concepts-query-store.md)gebruikt .)
 
-Diagnostische logboeken inschakelen met de Azure-portal:
+U kunt Diagnostische instellingen inschakelen voor uw post gres-server met behulp van de Azure Portal, CLI, REST API en Power shell. De logboek categorie die moet worden geselecteerd, is **PostgreSQLLogs**. (Er zijn andere logboeken die u kunt configureren als u [query Store](concepts-query-store.md)gebruikt.)
 
-   1. Ga in de portal naar *Diagnostische instellingen* in het navigatiemenu van uw Postgres-server.
+Resource logboeken inschakelen met behulp van de Azure Portal:
+
+   1. Ga in de portal naar *Diagnostische instellingen* in het navigatie menu van uw post gres-server.
    2. Selecteer *Diagnostische instelling toevoegen*.
    3. Geef deze instelling een naam. 
-   4. Selecteer het gewenste eindpunt (opslagaccount, gebeurtenishub, logboekanalyse). 
-   5. Selecteer het logboektype **PostgreSQLLogs**.
-   7. Sla uw instelling op.
+   4. Selecteer uw gewenste eind punt (opslag account, Event Hub, log Analytics). 
+   5. Selecteer het logboek type **PostgreSQLLogs**.
+   7. Sla de instelling op.
 
-Als u Diagnostische logboeken wilt inschakelen met Powershell, CLI of REST API, gaat u naar het artikel [diagnostische instellingen.](../azure-monitor/platform/diagnostic-settings.md)
+Ga naar het artikel [Diagnostische instellingen](../azure-monitor/platform/diagnostic-settings.md) om bron Logboeken in te scha kelen met behulp van Power shell, CLI of rest API.
 
-### <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
+### <a name="access-resource-logs"></a>Toegang tot resource logboeken
 
-De manier waarop u toegang krijgt tot de logboeken is afhankelijk van welk eindpunt u kiest. Zie het artikel [over logboekenopslagaccount](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [voor azure-logboeken voor logboeken voor gebeurtenissen.](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+De manier waarop u de logboeken opent, is afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
 
-Voor Azure Monitor Logs worden logboeken verzonden naar de werkruimte die u hebt geselecteerd. De Postgres-logboeken gebruiken de **azurediagnostics-verzamelingsmodus,** zodat ze kunnen worden opgevraagd in de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over query's en waarschuwingen vindt u in het overzicht van de [query's Azure Monitor Logs.](../azure-monitor/log-query/log-query-overview.md)
+Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) .
 
-De volgende zijn query's die u proberen te proberen aan de slag te gaan. U waarschuwingen configureren op basis van query's.
+Hier volgen enkele query's die u kunt proberen om aan de slag te gaan. U kunt waarschuwingen configureren op basis van query's.
 
-Zoeken naar alle Postgres logs voor een bepaalde server in de laatste dag
+Zoeken naar alle post gres-logboeken voor een bepaalde server in de afgelopen dag
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 
-Zoeken naar alle pogingen voor niet-localhostverbindingen
+Zoeken naar alle niet-localhost Verbindings pogingen
 ```
 AzureDiagnostics
 | where Message contains "connection received" and Message !contains "host=127.0.0.1"
 | where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
-De bovenstaande query toont de resultaten van de afgelopen 6 uur voor elke Postgres-serverdie in deze werkruimte wordt inloggen.
+In de bovenstaande query worden de resultaten weer gegeven in de afgelopen 6 uur voor alle logboek registratie van post gres-servers in deze werk ruimte.
 
-### <a name="log-format"></a>Logboekindeling
+### <a name="log-format"></a>Logboek indeling
 
-In de volgende tabel worden de velden voor het type **PostgreSQLLogs** beschreven. Afhankelijk van het uitvoereindpunt dat u kiest, kunnen de opgenomen velden en de volgorde waarin ze worden weergegeven, variëren. 
+De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhankelijk van het uitvoer eindpunt dat u kiest, worden de opgenomen velden en de volg orde waarin ze worden weer gegeven. 
 
 |**Veld** | **Beschrijving** |
 |---|---|
-| TenantId | Uw tenant-id |
+| TenantId | Uw Tenant-ID |
 | SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Tijdstempel toen het logboek werd opgenomen in UTC |
-| Type | Type van het logboek. Altijd`AzureDiagnostics` |
+| TimeGenerated [UTC] | Tijds tempel voor het vastleggen van het logboek in UTC |
+| Type | Het type van het logboek. Altijd`AzureDiagnostics` |
 | SubscriptionId | GUID voor het abonnement waartoe de server behoort |
-| ResourceGroup | Naam van de brongroep waartoe de server behoort |
-| ResourceProvider | Naam van de resourceprovider. Altijd`MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceGroup | Naam van de resource groep waartoe de server behoort |
+| ResourceProvider | De naam van de resource provider. Altijd`MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| ResourceId | Resource URI |
+| ResourceId | Resource-URI |
 | Resource | Naam van de server |
 | Categorie | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| Errorlevel | Logging niveau, voorbeeld: LOG, FOUT, KENNISGEVING |
-| Bericht | Primaire logboekbericht | 
-| Domain | Serverversie, voorbeeld: postgres-10 |
-| Detail | Secundair logboekbericht (indien van toepassing) |
-| ColumnName | Naam van de kolom (indien van toepassing) |
-| SchemaName | Naam van het schema (indien van toepassing) |
-| DatatypeName | Naam van het gegevenstype (indien van toepassing) |
-| LogischeServernaam | Naam van de server | 
-| _ResourceId | Resource URI |
-| Voorvoegsel | Het voorvoegsel van de logboekregel |
+| Gelijk | Logboek registratie niveau, voor beeld: logboek, fout, kennisgeving |
+| Bericht | Primair logboek bericht | 
+| Domain | Server versie, voor beeld: post gres-10 |
+| Detail | Secundair logboek bericht (indien van toepassing) |
+| ColumnName | De naam van de kolom (indien van toepassing) |
+| SchemaName | De naam van het schema (indien van toepassing) |
+| Gegevens type | Naam van het gegevens type (indien van toepassing) |
+| LogicalServerName | Naam van de server | 
+| _ResourceId | Resource-URI |
+| Voorvoegsel | Voor voegsel van logboek regel |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het openen van logboeken via de [Azure-portal](howto-configure-server-logs-in-portal.md) of [Azure CLI](howto-configure-server-logs-using-cli.md).
-- Meer informatie over [azure monitor-prijzen](https://azure.microsoft.com/pricing/details/monitor/).
-- Meer informatie over [controlelogboeken](concepts-audit.md)
+- Meer informatie over het openen van Logboeken vanuit de [Azure Portal](howto-configure-server-logs-in-portal.md) of [Azure cli](howto-configure-server-logs-using-cli.md).
+- Meer informatie over [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
+- Meer informatie over [audit logboeken](concepts-audit.md)

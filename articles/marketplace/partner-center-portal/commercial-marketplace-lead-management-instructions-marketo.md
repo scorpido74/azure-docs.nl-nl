@@ -1,91 +1,91 @@
 ---
-title: Leadmanagement configureren in Marketo | Azure Marketplace
-description: Configureer leadbeheer voor Marketo voor Azure-marktplaatsklanten.
+title: Beheer van leads in de Market configureren | Azure Marketplace
+description: Configureer het beheer van leads voor de klanten van Azure Marketplace.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731104"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133654"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Leadmanagement configureren in Marketo
+# <a name="configure-lead-management-in-marketo"></a>Beheer van leads in de Market configureren
 
-In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem instelt om verkoopleads te verwerken vanuit uw marktplaatsaanbieding.
+In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verkoop leads van uw aanbieding voor commerciële Marketplace kunnen worden verwerkt.
 
 ## <a name="set-up-your-marketo-crm-system"></a>Uw Marketo CRM-systeem instellen
 
-1. Log hier in
+1. Meld u aan bij Marketo.
 
-2. Selecteer **Ontwerpstudio**.
+1. Selecteer **Design Studio**.
 
-    ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+    ![Marketo-ontwerp studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  Selecteer **Nieuw formulier**.
+1.  Selecteer **nieuw formulier**.
 
-    ![Marketo nieuwe vorm](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    ![Nieuw formulier voor marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
-4.  Vul de vereiste velden in het nieuwe formulier en selecteer **Vervolgens Maken**.
+1.  Vul de vereiste velden in het dialoog venster **nieuw formulier** in en selecteer vervolgens **maken**.
 
-    ![Marketo maakt nieuwe vorm](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+    ![Marketo-nieuw formulier maken](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  Selecteer **Voltooien**in Velddetails .
+1.  Selecteer op de pagina **veld Details** de optie **volt ooien**.
 
-    ![Marketo finishformulier](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+    ![Formulier marketo-afwerking](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  Goedkeuren en sluiten.
+1.  Goed keuren en sluiten.
 
-7. Selecteer op het tabblad *MarketplaceLeadBacked* de optie **Code insluiten**. 
+1. Selecteer **code insluiten**op het tabblad **MarketplaceLeadBackend** . 
 
-    ![Insluitcode](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Marketo-invoeg code](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Marketo Embed Code geeft code weer die vergelijkbaar is met het volgende voorbeeld.
+1. Met marketo-insluit code wordt code weer gegeven die vergelijkbaar is met het volgende voor beeld.
 
     ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. Kopieer de waarden voor de onderstaande velden in het formulier Code insluiten. U gebruikt deze waarden om uw aanbieding te configureren om leads te ontvangen in de volgende stap. Gebruik het volgende voorbeeld als een handleiding voor het verkrijgen van de id's die u nodig hebt in het voorbeeld Marketo Embed Code.
+1. Kopieer de waarden voor de volgende velden die worden weer gegeven in het formulier voor de insluit code. U gebruikt deze waarden om uw aanbieding te configureren voor het ontvangen van leads in de volgende stap. Gebruik het volgende voor beeld als richt lijn voor het ophalen van de Id's die u nodig hebt via het code voorbeeld van de Marketo-invoeg toepassing.
 
-    - Server-id = **ys12**
-    - Munchkin ID = **123-PQR-789**
+    - Server-ID = **ys12**
+    - Munchkin-ID = **123-PQR-789**
     - Formulier-ID = **1179**
 
-    **Een andere manier om erachter te komen deze waarden**
+    Een andere manier om deze waarden te berekenen:
 
-    - Server-id is te vinden in de URL van`serverID.marketo.com`uw Marketo-exemplaar, bijvoorbeeld " ".
-    - Ontvang de Munching ID van uw abonnement door naar uw>Munchkin-menu te gaan in het veld "Munchkin `https://{Munchkin ID}.mktorest.com`Account ID" of vanaf het eerste deel van uw Subdomein van de Marketo REST API-host: .
-    - Formulier-ID is de id van het formulier Embed Code dat u in stap 7 hebt gemaakt om leads van onze marktplaats te routeren.
+    - De server-ID bevindt zich in de URL van uw Marketo- `serverID.marketo.com`exemplaar, bijvoorbeeld.
+    - Als u de Munchkin-id van uw abonnement wilt **Admin** > ophalen, gaat u naar het**Munchkin** menu van de **Munchkin-account-id** of vanuit het eerste deel van uw Market- `https://{Munchkin ID}.mktorest.com`rest API host-subdomein:.
+    - De formulier-ID is de ID van het insluit code formulier dat u in stap 7 hebt gemaakt om leads van de Marketplace te routeren.
 
-## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Uw aanbieding configureren om leads naar Marketo te verzenden
+## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Uw aanbieding configureren voor het verzenden van leads naar Marketo
 
-Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publicatieportal te configureren, voert u de volgende stappen uit: 
+Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit. 
 
-1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
+1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
 
-1. Selecteer **Verbinding maken** onder de sectie Leadbeheer. 
+1. Selecteer **verbinding maken** in het gedeelte **lead beheer** . 
 
-    ![Leadmanagement - Connect](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
-1. Selecteer **Marketo** voor de hoofdbestemming in het pop-upvenster Verbindingsdetails.
+1. Selecteer in het pop-upvenster **verbindings Details** de optie **marketo** voor de **doel locatie**van de lead.
 
-    ![Een hoofdbestemming kiezen](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
+    ![Kies een doel voor een potentiële klant](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. Geef de **server-id,** **de munching-account-id**en **formulier-id op**.
+1. Geef de **Server-id**, de **Munchkin-account-id**en de **formulier-id**op.
 
-    > [!Note]
-    > U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen. 
+    > [!NOTE]
+    > U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen. 
 
-5. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met een puntkomma.
+1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail adressen opgeven door deze te scheiden met een punt komma.
 
-6. Selecteer **OK**.
+1. Selecteer **OK**.
 
-   Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
+   Selecteer de knop **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
-   ![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![Pop-upvenster voor verbindings Details](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

@@ -1,48 +1,48 @@
 ---
-title: HTTPS-eindpunt | Azure Marketplace
-description: Leadbeheer configureren voor een HTTPS-eindpunt.
+title: Micro soft Commercial Marketplace lead management met HTTPS
+description: Micro soft Commercial Marketplace Lead Management configureren voor een HTTPS-eind punt.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262547"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133742"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>Leadbeheer configureren met behulp van een HTTPS-eindpunt
+# <a name="configure-lead-management-by-using-an-https-endpoint"></a>Beheer van leads configureren met behulp van een HTTPS-eind punt
 
->[!Note]
->De Power Automate-connector die in deze instructies wordt gebruikt, vereist een betaald abonnement op Power Automate. Houd hier rekening mee voordat u de instructies in dit document volgt.
+>[!NOTE]
+>Voor de stroom voor het automatisch uitvoeren van connectors die in deze instructies worden gebruikt, is een betaald abonnement vereist om te automatiseren. Zorg ervoor dat u dit account voordat u de instructies in dit artikel volgt.
 
-Als uw CRM-systeem (Customer Relationship Management) niet expliciet wordt ondersteund in het Partnercentrum voor het ontvangen van Azure Marketplace- en AppSource-leads, u een HTTPS-eindpunt in Power Automate gebruiken om deze leads te verwerken. Met een HTTPS-eindpunt kunnen deze leads worden verzonden als een e-mailmelding of kunnen ze worden geschreven naar een CRM-systeem (Customer Relationship Management) dat wordt ondersteund door Power Automate. De instructies in dit artikel leiden u door het basisproces om een nieuwe stroom te maken met Behulp van Power Automate, die de HTTP POST-URL genereert die u invoert in de publicatieportal voor het **>-url-veld voor eindpunthttps.** Ook inbegrepen zijn instructies over hoe u uw stroom testen met behulp van een tool genaamd [Postman](https://www.getpostman.com/downloads/) die online kan worden gevonden.
+Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum om Microsoft AppSource en Azure Marketplace-leads te ontvangen, kunt u een HTTPS-eind punt in automatische energie automatisering gebruiken om deze leads af te handelen. Met een HTTPS-eind punt kunnen deze leads worden verzonden als een e-mail melding of kunnen ze worden geschreven naar een CRM-systeem dat wordt ondersteund door het automatiseren van de stroom. De instructies in dit artikel begeleiden u bij het basis proces voor het maken van een nieuwe stroom met behulp van energie automatisering, waarmee de http post-URL wordt gegenereerd die u in de portal publiceert voor het**https-eind punt URL** veld voor **lead beheer** > . Ook vindt u hier instructies voor het testen van uw stroom met behulp van een hulp programma dat wordt weer gegeven als ' [postman](https://www.getpostman.com/downloads/)', dat online beschikbaar is.
 
-## <a name="create-a-flow-using-power-automate"></a>Een stroom maken met Power Automate
+## <a name="create-a-flow-by-using-power-automate"></a>Een stroom maken met behulp van energie automatisering
 
-1. Open de webpagina [Flow.](https://flow.microsoft.com/) Selecteer **Aanmelden**of als u nog geen account hebt, selecteert **u Aanmelden gratis** om een gratis Flow-account aan te maken.
+1. Open de webpagina voor [automatische energie automatisering](https://flow.microsoft.com/) . Selecteer **Aanmelden**. Als u nog geen account hebt, selecteert u **Aanmelden gratis registreren** om een gratis energiebeheer account te maken.
 
-2. Log in en selecteer **Mijn flows** op de menubalk.
+1. Meld u aan en selecteer **mijn stromen** in het menu.
 
-3. Selecteer **+Geautomatiseerd - van leeg**.
+1. Selecteer **+ automatisch--van leeg**.
 
-    ![Mijn flows + Automated - van blanco](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    ![Mijn stromen + geautomatiseerd--leeg](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-4. Selecteer **Overslaan**in *het venster Een automatische stroom* maken . 
+1. Selecteer in het venster **een automatische stroom maken** de optie **overs Laan**. 
 
-    ![Geautomatiseerde stroom bouwen - Overslaan](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+    ![Een automatische stroom venster knop overs Laan maken](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
 
-5. Typ 'verzoek' in het veld **Zoeken en activeert** om de connector Verzoek te zoeken.
-6. Selecteer *onder Triggers*de optie Wanneer een **HTTP-aanvraag wordt ontvangen**. 
+1. Voer in het veld **connectors en triggers zoeken** de **aanvraag** in om de aanvraag connector te vinden.
+1. Onder **Triggers**selecteert u **Wanneer een HTTP-aanvraag wordt ontvangen**. 
 
-    ![aanvraagconnector - Triggers](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+    ![Menu triggers](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
 
-7. Klik op het tekstvak *Wanneer een HTTP-aanvraag wordt ontvangen,* en plak het onderstaande JSON-schema in het tekstvak **Json-schema van aanvraag.** Dit schema wordt door Microsoft gebruikt om uw leadgegevens te bevatten.
+1. In het venster **Wanneer een HTTP-aanvraag wordt ontvangen** , kopieert en plakt u het volgende JSON-schema in het tekstvak **aanvraag tekst JSON schema** . Dit schema wordt door micro soft gebruikt voor het opnemen van uw lead gegevens.
 
-    ![aanvraagconnector - Triggers](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+    ![Tekstvak voor JSON-schema van aanvraag tekst](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
 
     **JSON-schema**
 
@@ -103,121 +103,120 @@ Als uw CRM-systeem (Customer Relationship Management) niet expliciet wordt onder
     }
     ```
 
->[!Note]
->Op dit punt in de configuratie u ervoor kiezen om verbinding te maken met een CRM-systeem of een e-mailmelding te configureren. Volg de overige instructies op basis van uw keuze.
+>[!NOTE]
+>U kunt op dit punt in de configuratie selecteren om verbinding te maken met een CRM-systeem of een e-mail melding te configureren. Volg de overige instructies op basis van uw keuze.
 
-### <a name="to-connect-to-a-crm-system"></a>Verbinding maken met een CRM-systeem
+### <a name="connect-to-a-crm-system"></a>Verbinding maken met een CRM-systeem
 
 1. Selecteer **+ Nieuwe stap**.
-2. Kies het CRM-systeem van uw keuze door ernaar te zoeken waar het *zoekconnectors en -acties*opstaat en selecteer het onder de sectie *Acties* met de actie om een nieuwe record te maken. De volgende schermopname toont **Dynamics 365 - Maak** een nieuwe record als voorbeeld.
+1. Kies het CRM-systeem van uw keuze door ernaar te zoeken waar **Zoek connectors en acties**worden vermeld. Selecteer deze op het tabblad **acties** met de actie om een nieuwe record te maken. In het volgende scherm ziet u **een nieuwe record (Dynamics 365)** als voor beeld.
 
     ![Een nieuwe record maken](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-3. Geef de **organisatienaam** op die is gekoppeld aan het CRM-systeem. Selecteer **Leads** in de vervolgkeuzelijst **Entiteitsnaam.**
+1. Geef de **naam** van de organisatie op die aan het CRM-systeem is gekoppeld. Selecteer **leads** in de vervolg keuzelijst **entiteits naam** .
 
     ![Leads selecteren](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 
-4. Flow toont een formulier voor het verstrekken van leadinformatie. U items uit het invoerverzoek toewijzen door te kiezen voor het toevoegen van dynamische inhoud. In de volgende schermopname ziet **U's OfferTitle** als voorbeeld.
+1. Bij het automatiseren van de stroom wordt een formulier weer gegeven voor het leveren van lead gegevens. U kunt items van de invoer aanvraag toewijzen door dynamische inhoud toe te voegen. In het volgende scherm ziet u **OfferTitle** als voor beeld.
 
     ![Dynamische inhoud toevoegen](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. Breng de gewenste velden in kaart en selecteer **Opslaan** om uw stroom op te slaan. Er wordt een HTTP-POST-URL gemaakt en is toegankelijk in het venster *Wanneer een HTTP-aanvraag wordt ontvangen.* Kopieer deze URL met behulp van het kopieerbesturingselement dat zich aan de rechterkant van de HTTP POST URL bevindt - dit is belangrijk zodat u niet per ongeluk een deel van de gehele URL mist. Sla deze URL op zoals u deze nodig hebt wanneer u leadbeheer configureert in de publicatieportal.
+1. Wijs de gewenste velden toe en selecteer **Opslaan** om uw stroom op te slaan. Er wordt een HTTP POST-URL gemaakt en deze is toegankelijk in het venster **Wanneer een HTTP-aanvraag wordt ontvangen** . Kopieer deze URL met behulp van het Kopieer besturings element, dat zich rechts van de URL voor HTTP POST bevindt. Het is belang rijk dat u het Kopieer besturings element gebruikt, zodat u geen deel van de volledige URL mist. Sla deze URL op omdat u deze nodig hebt bij het configureren van het beheer van leads in de portal voor publiceren.
 
-    ![Wanneer een HTTP-aanvraag is ontvangen.](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    ![Wanneer een HTTP-aanvraag wordt ontvangen](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
-### <a name="to-set-up-email-notification"></a>E-mailmelding instellen
+### <a name="set-up-email-notification"></a>E-mail melding instellen
 
-1. Nu u het JSON-schema hebt voltooid, selecteert u **+ Nieuwe stap**.
-2. Selecteer **Acties** **onder Een actie kiezen**.
-3. Selecteer **onder Acties**de optie Een **e-mail verzenden (Office 365 Outlook)** selecteren.
+1. Nu u het JSON-schema hebt voltooid, selecteert u **+ nieuwe stap**.
+1. Onder **Kies een actie**selecteert u **acties**.
+1. Selecteer **een E-mail verzenden (Office 365 Outlook)** op het tabblad **acties** .
 
-    >[!Note]
-    >Als u een andere e-mailprovider wilt gebruiken en *een e-mailmelding (E-mail)* wilt verzenden als actie.
+    >[!NOTE]
+    >Als u een andere e-mail provider wilt gebruiken, zoekt en selecteert u in plaats daarvan **een e-mail melding (e-mail) verzenden** als actie.
 
-    ![Een e-mailactie toevoegen](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
+    ![Een e-mail actie toevoegen](./media/commercial-marketplace-lead-management-instructions-https/https-request-received-send-email.png)
 
-4. Configureer in **Een e-mailvenster verzenden** de volgende vereiste velden:
+1. Configureer in het venster **een E-mail verzenden** de volgende vereiste velden:
 
-   - **Om** - Voer ten minste één geldig e-mailadres in, waar de leads worden verzonden.
-   - **Onderwerp** - Flow geeft je de mogelijkheid om Dynamische inhoud toe te voegen, zoals **LeadSource** in de volgende schermopname. Begin met het typen van een veldnaam, gevolgd door te klikken op de lijst met dynamische inhoud in het pop-upvenster. 
+   - **Aan**: Voer ten minste één geldig e-mail adres in waarnaar de leads worden verzonden.
+   - **Onderwerp**: energie automatisering biedt u de mogelijkheid om dynamische inhoud toe te voegen, zoals **LeadSource** weer gegeven in het volgende scherm. Begin door een veld naam in te voeren. Selecteer vervolgens de lijst met dynamische inhoud in het pop-upvenster. 
 
-        >[!Note] 
-        > Wanneer u veldnamen toevoegt, u elk met een : volgen en vervolgens invoeren om een nieuwe rij te maken. Zodra u uw veldnamen hebt toegevoegd, u vervolgens elke bijbehorende parameter toevoegen aan de dynamische keuzelijst.
+        >[!NOTE] 
+        > Wanneer u veld namen toevoegt, kunt u elke naam volgen met een dubbele punt (:) en selecteer vervolgens **Enter** om een nieuwe rij te maken. Nadat u de veld namen hebt toegevoegd, kunt u elke gekoppelde para meter toevoegen uit de dynamische keuze lijst.
 
-        ![Een e-mailactie toevoegen met dynamische inhoud](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
+        ![Een e-mail actie toevoegen met behulp van dynamische inhoud](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Hoofdtekst** - Voeg in de lijst Met de lijst Dynamische inhoud de gewenste informatie toe in de hoofdtekst van de e-mail. Bijvoorbeeld Achternaam, Voornaam, E-mail en Bedrijf. <br> <br> Wanneer u klaar bent met het instellen van de e-mailmelding, ziet deze eruit als het voorbeeld in de volgende schermopname.
+   - **Hoofd tekst**: Voeg de gewenste informatie toe aan de hoofd tekst van het e-mail bericht in de lijst met dynamische inhoud. Gebruik bijvoorbeeld LastName, FirstName, email en Company. Wanneer u klaar bent met het instellen van de e-mail melding, ziet u in het voor beeld in het volgende scherm.
 
 
-       ![Een e-mailactie toevoegen](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Voor beeld van e-mail melding](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. Selecteer **Opslaan** om de stroom te voltooien. Er wordt een HTTP-post-URL gemaakt die toegankelijk is in het venster *Wanneer een HTTP-aanvraag wordt ontvangen.* Kopieer deze URL met behulp van het kopieerbesturingselement dat zich aan de rechterkant van de HTTP POST URL bevindt - dit is belangrijk zodat u niet per ongeluk een deel van de gehele URL mist. Sla deze URL op zoals u deze nodig hebt wanneer u leadbeheer configureert in de publicatieportal.
+1. Selecteer **Opslaan** om de stroom te volt ooien. Er wordt een HTTP POST-URL gemaakt en deze is toegankelijk in het venster **Wanneer een HTTP-aanvraag wordt ontvangen** . Kopieer deze URL met behulp van het Kopieer besturings element, dat zich rechts van de URL voor HTTP POST bevindt. Het is belang rijk dat u dit besturings element gebruikt, zodat u geen deel van de volledige URL hoeft te missen. Sla deze URL op omdat u deze nodig hebt bij het configureren van het beheer van leads in de portal voor publiceren.
 
-   ![HTTP-BERICHT-URL ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![HTTP POST-URL](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testen
 
-U testen of alles werkt zoals verwacht met behulp van de volgende stappen met behulp van een tool genaamd [Postman](https://app.getpostman.com/app/download/win64), die online kan worden gedownload. Dit is beschikbaar voor Windows. 
+U kunt testen of alles werkt zoals verwacht door gebruik te maken van een hulp programma ' [postman](https://app.getpostman.com/app/download/win64)', dat online kan worden gedownload. Dit hulp programma is beschikbaar voor Windows. 
 
-1. Start Postman en selecteer **Nieuw** > **verzoek** om uw testtool in te stellen. 
+1. Start postman en selecteer **nieuwe** > **aanvraag** om uw test programma in te stellen. 
 
-   ![Verzoek om het instellen van uw testtool](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
+   ![Aanvraag voor het instellen van uw test programma](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
-2. Vul het formulier *Aanvraagformulier opslaan* in en **sla vervolgens op in** de map die u hebt gemaakt.
+1. Vul het formulier **aanvraag opslaan** in en sla het bestand op in de map die u hebt gemaakt.
 
-   ![Aanvraag opslaan](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
+   ![Aanvraag formulier opslaan](./media/commercial-marketplace-lead-management-instructions-https/postman-save-to-test.png)
 
-3. Selecteer **POST** in de vervolgkeuzelijst. 
+1. Selecteer **bericht** in de vervolg keuzelijst. 
 
-   ![Mijn flow testen](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
+   ![Mijn stroom testen](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Plak de HTTP-POST-URL uit de stroom die u hebt gemaakt in Power Automatiseer waar de *url van aanvraag invoeren*staat .
+1. Plak de URL van de HTTP-POST uit de stroom die u hebt gemaakt in energie automatisering, waar de **aanvraag-URL wordt ingevoerd**.
 
-   ![De HTTP-POST-URL plakken](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
+   ![De HTTP POST-URL plakken](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-5. Ga terug naar [Flow](https://flow.microsoft.com/) en zoek de stroom die u hebt gemaakt om leads te verzenden, door naar **Mijn stromen** te gaan via de menubalk Flow.  Selecteer de 3 puntjes naast de stroomnaam en selecteer **Bewerken**.
+1. Ga terug naar [Automatische stroom](https://flow.microsoft.com/). Zoek de stroom die u hebt gemaakt voor het verzenden van leads door naar **mijn stromen** te gaan via de menu balk voor het automatisch uitvoeren van de stroom. Selecteer het beletsel teken naast de naam van de stroom om meer opties weer te geven en selecteer **bewerken**.
 
-   ![Mijn stromen - Bewerken](./media/commercial-marketplace-lead-management-instructions-https/my-flows-edit.png)
 
-6. Selecteer **Testen** in de rechterbovenhoek en selecteer 'Ik voer de triggeractie uit' en selecteer **Testen.** U ziet een indicatie in de bovenkant van het scherm die aangeeft dat de test is begonnen
+1. Selecteer in de rechter bovenhoek de optie **testen** , selecteer **Ik voer de trigger actie uit**en selecteer vervolgens **testen**. Boven aan het scherm ziet u een indicatie dat de test is gestart.
 
-   ![Teststroom - trigger](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
+   ![Ik voer de trigger actie optie uit](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
-7. Ga terug naar je Postman-app en selecteer **Verzenden** naast de plaats waar je de HTTPS-URL hebt geplakt.
+1. Ga terug naar uw postman-app en selecteer **verzenden**.
 
-   ![Test mijn flow - Verzenden](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
+   ![Knop verzenden](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
 
-8. Ga terug naar je flow en controleer het resultaat. Als alles werkt zoals verwacht ziet u een bericht dat aangeeft dat het gelukt is.
+1. Ga terug naar uw stroom en controleer het resultaat. Als alles werkt zoals verwacht, ziet u een bericht dat aangeeft dat de stroom is geslaagd.
 
-   ![Flow - Resultaten controleren](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
+   ![Resultaten controleren](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-9. Je had ook een e-mail moeten ontvangen. Controleer uw e-mailinbox. 
+1. U hebt ook een e-mail bericht ontvangen. Controleer uw postvak in. 
 
-    >[!Note] 
-    >Als u geen e-mail van de test ziet, controleer dan uw spam- en ongewenste mappen. Hieronder ziet u alleen de veldlabels die u hebt toegevoegd bij het configureren van de e-mailmelding. Als dit een werkelijke lead was die uit uw aanbieding wordt gegenereerd, ziet u ook de werkelijke informatie van het contactpersooncontact in het lichaam en in de onderwerpregel.
+    >[!NOTE] 
+    >Als u geen e-mail bericht van de test ziet, controleert u uw spam en ongewenste e-mail. In het volgende scherm ziet u alleen de veldlabels die u hebt toegevoegd tijdens het configureren van de e-mail melding. Als dit een daad werkelijke lead is die is gegenereerd op basis van uw aanbieding, ziet u ook de werkelijke gegevens van de contact persoon van de lead in de hoofd tekst en op de regel onderwerp.
 
-   ![Ontvangen e-mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
+   ![E-mail ontvangen](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Uw aanbieding configureren om leads naar het HTTPS-eindpunt te verzenden
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Uw aanbieding configureren om leads naar het HTTPS-eind punt te verzenden
 
-Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publicatieportal te configureren, volgt u de volgende stappen:
+Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit.
 
-1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
-2. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
-3. Selecteer in het pop-upvenster **Verbindingsdetails https-eindpunt** voor de **leadbestemming** en plak in de HTTP-POST-URL van de stroom die u hebt gemaakt door eerdere stappen in het **URL-veld HTTPS-eindpunt te** volgen.
-4. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met een puntkomma.
-5. Selecteer **OK**.
+1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
+1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
+1. Selecteer in het pop-upvenster **verbindings Details** het **https-eind punt** voor de **doel locatie**van de lead. Plak de URL van de HTTP POST uit de stroom die u hebt gemaakt door eerdere stappen in het veld **https-eind punt URL** te volgen.
+1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
+1. Selecteer **OK**.
 
-Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
+Selecteer de knop **valideren** om te controleren of u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
->[!Note] 
->U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
+>[!NOTE] 
+>U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
 
-Wanneer leads worden gegenereerd, stuurt Microsoft leads naar de stroom, die worden doorgestuurd naar het CRM-systeem of e-mailadres dat u hebt geconfigureerd.
+Wanneer leads worden gegenereerd, stuurt micro soft leads naar de stroom. De leads worden doorgestuurd naar het CRM-systeem of het e-mail adres dat u hebt geconfigureerd.
 
-![Leadmanagement - verbinding maken](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+![Knop verbinding maken met lead beheer](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
 
-![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
+![Verbindings Details doel van potentiële klant](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+![Verbindings gegevens contact opnemen met e-mail](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

@@ -1,97 +1,107 @@
 ---
-title: 'Decision Forest Regression: Module Referentie'
+title: 'Regressie van beslissings bos: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de Decision Forest Regression-module in Azure Machine Learning om een regressiemodel te maken op basis van een ensemble van beslissingsbomen.
+description: Meer informatie over het gebruik van de module herregressies voor het besluitvormings forest in Azure Machine Learning om een regressie model te maken op basis van een ensemble van beslissings structuren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 63d90a5239e6bf350d8a6b66f35157e4c7d15aee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456536"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137022"
 ---
-# <a name="decision-forest-regression-module"></a>De module Decision Forest Regression
+# <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
-In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om een regressiemodel te maken op basis van een ensemble van beslissingsbomen.
+Gebruik deze module om een regressie model te maken op basis van een ensemble van beslissings structuren.
 
-Nadat u het model hebt geconfigureerd, moet u het model trainen met behulp van een gelabelde gegevensset en de [module Treinmodel.](./train-model.md) Het getrainde model kan vervolgens worden gebruikt om voorspellingen te doen. 
+Nadat u het model hebt geconfigureerd, moet u het model trainen met een gegevensset met een label en de module [Train model](./train-model.md) . Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen. 
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
-Beslissingsbomen zijn niet-parametrische modellen die voor elk exemplaar een reeks eenvoudige tests uitvoeren, waarbij een binaire structuur voor boomgegevens wordt doorgenomen totdat een bladknooppunt (beslissing) is bereikt.
+Beslissings structuren zijn niet-parametrische modellen die een reeks eenvoudige tests voor elk exemplaar uitvoeren, waarbij een gegevens structuur van een binaire structuur wordt doorzocht totdat een Leaf-knoop punt (beslissing) is bereikt.
 
-Beslissingsbomen hebben deze voordelen:
+Beslissings structuren hebben de volgende voor delen:
 
-- Ze zijn efficiënt in zowel berekening en geheugengebruik tijdens de training en voorspelling.
+- Ze zijn efficiënt in berekeningen en geheugen gebruik tijdens de training en voor spellingen.
 
-- Ze kunnen niet-lineaire beslissingsgrenzen vertegenwoordigen.
+- Ze kunnen niet-lineaire beslissings grenzen vertegenwoordigen.
 
-- Ze voeren geïntegreerde functieselectie en classificatie uit en zijn veerkrachtig in aanwezigheid van lawaaierige functies.
+- Ze hebben de mogelijkheid om geïntegreerde functies te selecteren en te classificeren.
 
-Dit regressiemodel bestaat uit een ensemble van beslisbomen. Elke boom in een regressiebeslissing forest outputs een Gaussische verdeling als een voorspelling. Een aggregatie wordt uitgevoerd over het ensemble van bomen om een Gaussische verdeling te vinden die het dichtst bij de gecombineerde verdeling voor alle bomen in het model ligt.
+Dit regressie model bestaat uit een ensemble van beslissings structuren. Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit als een voor spelling. Er wordt een aggregatie uitgevoerd over de ensemble van structuren om een Gaussiaanse distributie te vinden die het dichtst bij de gecombineerde distributie ligt voor alle structuren in het model.
 
-Zie dit artikel: [Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning en Semi-Supervised Learning](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) voor meer informatie over het theoretische kader voor dit algoritme en de implementatie ervan.
+Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
-## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressiemodel van Decision Forest configureren
+## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 
-1. Voeg de **module Decision Forest Regression** toe aan de pijplijn. U de module vinden in de ontwerper onder **Machine Learning,** **Initialiseren Model**en **Regressie**.
+1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de ontwerp functie onder **machine learning**, **model initialiseren**en **regressie**.
 
-2. Open de module-eigenschappen en kies voor **de methode Resampling**de methode die wordt gebruikt om de afzonderlijke bomen te maken.  U kiezen uit **Zakken** of **Repliceren.**
+2. Open de module-eigenschappen en kies voor **resampling methode**de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt **kiezen uit een** of meer van de **replicatie**.
 
-    - **Zakken**: Zakken wordt ook wel *bootstrap aggregeren*. Elke boom in een regressie beslissing bos outputs een Gaussische verdeling door middel van voorspelling. De aggregatie is het vinden van een Gaussian waarvan de eerste twee momenten overeenkomen met de momenten van de mix van Gaussische distributies gegeven door het combineren van alle distributies geretourneerd door individuele bomen.
+    - **Overbaggen**: de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans distributies die worden gegeven door het combi neren van alle distributies die door afzonderlijke bomen worden geretourneerd.
 
-         Zie voor meer informatie de Wikipedia-vermelding voor [Bootstrap die aggregeren.](https://wikipedia.org/wiki/Bootstrap_aggregating)
+         Zie de Wikipedia-vermelding voor [Boots trap aggregatie](https://wikipedia.org/wiki/Bootstrap_aggregating)voor meer informatie.
 
-    - **Repliceren:** Bij replicatie wordt elke structuur getraind op exact dezelfde invoergegevens. De bepaling van welke split predicaat wordt gebruikt voor elke boom knooppunt blijft willekeurig en de bomen zullen divers zijn.
+    - **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.
 
-         Zie Decision Forests for Computer **Replicate** Vision en Medical Image Analysis voor meer informatie over het trainingsproces met de optie [Repliceren. Criminisi en J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
+         Voor meer informatie over het trainings proces met de optie **repliceren** raadpleegt u [besluitvormings forests voor computer vision en medische afbeeldings analyse. Criminisi en J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
 
-3. Geef op hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.
+3. Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
-    - **Eén parameter**
+    - **Eén para meter**
 
-      Als u weet hoe u het model wilt configureren, u een specifieke set waarden als argumenten opgeven. U hebt deze waarden misschien geleerd door te experimenteren of ze als leidraad ontvangen.
+      Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven. U hebt deze waarden mogelijk geleerd door te experimenteren of ze als richt lijn te ontvangen.
 
-    - **Parameterbereik:** Selecteer deze optie als u niet zeker bent van de beste parameters en een parametersweep wilt uitvoeren. Selecteer een reeks waarden om over te herhalen en de [Tune Model Hyperparameters](tune-model-hyperparameters.md) herhalen over alle mogelijke combinaties van de instellingen die u hebt opgegeven om de hyperparameters te bepalen die de optimale resultaten opleveren. 
+    - **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren. 
 
 
 
-4. Voor **Aantal beslissingsbomen,** geef het totale aantal beslissingsbomen aan om in het ensemble te creëren. Door het creëren van meer beslissingbomen, u mogelijk een betere dekking te krijgen, maar de opleiding tijd zal toenemen.
+4. Geef voor **aantal beslissings structuren**het totale aantal beslissings structuren op dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
 
     > [!TIP]
-    > Deze waarde bepaalt ook het aantal bomen dat wordt weergegeven bij het visualiseren van het getrainde model. Als u één boom wilt zien of afdrukken, u de waarde instellen op 1; dit betekent echter dat er slechts één boom wordt geproduceerd (de boom met de eerste set parameters) en dat er geen verdere iteraties worden uitgevoerd.
+    > Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u één boom structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Dit betekent echter dat er slechts één structuur wordt geproduceerd (de structuur met de initiële set para meters) en er geen verdere herhalingen worden uitgevoerd.
 
-5. Voor **maximale diepte van de beslissingsbomen,** typt u een getal om de maximale diepte van een beslissingsboom te beperken. Het verhogen van de diepte van de boom kan de precisie verhogen, met het risico van enige overfitting en verhoogde trainingstijd.
+5. Voor **de maximale diepte van de beslissings structuren**typt u een getal om de maximale diepte van een beslissings structuur te beperken. Het verg Roten van de diepte van de structuur kan nauw keuriger zijn, met het risico van een aantal verdeelde en verhoogde opleidings tijd.
 
-6. Typ **voor aantal willekeurige splitsingen per knooppunt**het aantal splitsingen dat moet worden gebruikt bij het bouwen van elk knooppunt van de boom. Een *splitsing* betekent dat functies in elk niveau van de boom (knooppunt) willekeurig worden verdeeld.
+6. Voor het **aantal wille keurige splitsingen per knoop punt**typt u het aantal splitsingen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
 
-7. Voor **minimumaantal monsters per bladknooppunt**geeft u het minimumaantal gevallen aan dat nodig is om een eindknooppunt (blad) in een boom te maken.
+7. Geef voor het **minimum aantal steek proeven per blad knooppunt**het minimale aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
 
-     Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaardwaarde van 1 kan bijvoorbeeld zelfs één aanvraag ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde verhoogt tot 5, moeten de trainingsgegevens ten minste vijf gevallen bevatten die aan dezelfde voorwaarden voldoen.
+     Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
 
 
-9. Verbind een gelabelde gegevensset, selecteer één labelkolom met niet meer dan twee uitkomsten en maak verbinding met [Train Model](./train-model.md).
+9. Het model trainen:
 
-    - Als u de optie **De trainermodus maken** instelt op **Enkele parameter,** traint u het model met de module [Treinmodel.](./train-model.md)
+    + Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
+  
+    + Als u de **modus trainer maken** instelt op het **parameter bereik**, verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Als u een parameter bereik doorgeeft aan een [Train-model](train-model.md), wordt alleen de standaard waarde in de lijst met enkelvoudige para meters gebruikt.  
+    > 
+    > Als u één set parameter waarden doorgeeft aan de Hyper parameters-module van het model voor het [afstemmen](tune-model-hyperparameters.md) van een reeks instellingen voor elke para meter, worden de waarden genegeerd en worden de standaard waarden gebruikt voor de kenniser.  
+    > 
+    > Als u de optie voor het **parameter bereik** selecteert en één waarde voor een para meter opgeeft, wordt die enkele waarde die u hebt opgegeven overal in de sweep gebruikt, zelfs als andere para meters worden gewijzigd in een reeks waarden.
 
    
 
-10. Verzend de pijplijn.
+10. Verzend de pijp lijn.
 
 ### <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Als u een momentopname van het getrainde model wilt opslaan, selecteert u de trainingsmodule en schakelt u vervolgens over naar het tabblad **Uitvoer** in het rechterdeelvenster. Klik op het pictogram **Register model**.  U het opgeslagen model vinden als module in de modulestructuur. 
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u de module training en gaat u naar het tabblad **uitvoer** in het rechterdeel venster. Klik op het pictogram **model registreren**.  U kunt het opgeslagen model vinden als een module in de boom structuur van de module. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

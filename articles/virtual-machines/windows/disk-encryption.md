@@ -1,66 +1,66 @@
 ---
-title: Server-side encryptie van Azure Managed Disks - PowerShell
-description: Azure Storage beschermt uw gegevens door deze in rust te versleutelen voordat deze worden weergegeven in opslagclusters. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u door de klant beheerde sleutels gebruiken om versleuteling met uw eigen sleutels te beheren.
+title: Versleuteling aan de server zijde van Azure Managed Disks-Power shell
+description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels.
 author: roygara
 ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 930fcb4c023dc58fe0eeea65aa3fa5f78569e628
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085668"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137787"
 ---
-# <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
+# <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan de server zijde van Azure Managed disks
 
-Azure-beheerde schijven versleutelen uw gegevens standaard automatisch wanneer deze in de cloud blijven staan. Server-side encryptie beschermt uw gegevens en helpt u om te voldoen aan uw organisatorische beveiligings- en nalevingsverplichtingen. Gegevens in azure beheerde schijven worden transparant versleuteld met behulp van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de sterkste blokcijfers die beschikbaar zijn, en is FIPS 140-2-compatibel.
+Met Azure Managed disks worden uw gegevens standaard automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling aan de server zijde beveiligt uw gegevens en helpt u te voldoen aan de verplichtingen voor beveiliging en naleving van uw organisatie. Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2.
 
-Versleuteling heeft geen invloed op de prestaties van beheerde schijven. Er zijn geen extra kosten voor de encryptie.
+Versleuteling heeft geen invloed op de prestaties van Managed disks. Er zijn geen extra kosten voor het versleutelen van de versleuteling.
 
-Zie [Cryptografie API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) voor meer informatie over de cryptografische modules die ten grondslag liggen aan Azure managed disks
+Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
 
-## <a name="about-encryption-key-management"></a>Over beheer van versleutelingssleutels
+## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-U vertrouwen op door het platform beheerde sleutels voor de versleuteling van uw beheerde schijf, of u versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, u een *door de klant beheerde sleutel* opgeven die u moet gebruiken voor het versleutelen en decoderen van alle gegevens in beheerde schijven. 
+U kunt vertrouwen op door het platform beheerde sleutels voor de versleuteling van uw beheerde schijf of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de *klant beheerde sleutel* opgeven die moet worden gebruikt voor het versleutelen en ontsleutelen van alle gegevens in Managed disks. 
 
-In de volgende secties worden elk van de opties voor sleutelbeheer nader beschreven.
+In de volgende secties worden de opties voor sleutel beheer in meer detail beschreven.
 
-## <a name="platform-managed-keys"></a>Door platforms beheerde toetsen
+## <a name="platform-managed-keys"></a>Door het platform beheerde sleutels
 
-Managed Disks maken standaard gebruik van door het platform beheerde versleutelingssleutels. Vanaf 10 juni 2017 worden alle nieuwe beheerde schijven, snapshots, afbeeldingen en nieuwe gegevens die naar bestaande beheerde schijven zijn geschreven, automatisch versleuteld-at-rest met door het platform beheerde sleutels.
+Beheerde schijven gebruiken standaard versleutelings sleutels die door het platform worden beheerd. Vanaf 10 juni 2017 worden alle nieuwe beheerde schijven, moment opnamen, installatie kopieën en nieuwe gegevens die worden geschreven naar bestaande beheerde schijven automatisch versleuteld met door het platform beheerde sleutels.
 
 ## <a name="customer-managed-keys"></a>Door klant beheerde sleutels
 
-U ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Server-side encryptie voor beheerde schijven met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U [uw RSA-sleutels](../../key-vault/keys/hsm-protected-keys.md) importeren in uw Key Vault of nieuwe RSA-sleutels genereren in Azure Key Vault. 
+U kunt ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Versleuteling aan de server zijde voor Managed disks met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U kunt [uw RSA-sleutels](../../key-vault/keys/hsm-protected-keys.md) importeren naar uw Key Vault of nieuwe RSA-sleutels in azure Key Vault genereren. 
 
-Azure beheerde schijven verwerkt de versleuteling en decryptie op een volledig transparante manier met behulp van [envelopversleuteling.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Het versleutelt gegevens met behulp van een [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 gebaseerde data encryptie sleutel (DEK), die op zijn beurt, is beveiligd met behulp van uw sleutels. De opslagservice genereert gegevensversleutelingssleutels en versleutelt deze met door de klant beheerde sleutels met RSA-versleuteling. Met de envelopversleuteling u uw sleutels periodiek roteren (wijzigen) volgens uw nalevingsbeleid zonder dat dit gevolgen heeft voor uw VM's. Wanneer u uw sleutels draait, versleutelt de opslagservice de gegevensversleutelingssleutels opnieuw met de nieuwe door de klant beheerde sleutels. 
+Met Azure Managed disks wordt de versleuteling en ontsleuteling op een volledig transparante manier verwerkt met behulp van [envelop versleuteling](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Hiermee worden gegevens versleuteld met behulp van een [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256-gegevens versleutelings sleutel (dek), die op zijn beurt wordt beveiligd met uw sleutels. De opslag service genereert gegevens versleutelings sleutels en versleutelt deze met door de klant beheerde sleutels met behulp van RSA-versleuteling. Met de envelop versleuteling kunt u uw sleutels regel matig draaien (wijzigen) volgens uw nalevings beleid zonder dat dit van invloed is op uw Vm's. Wanneer u uw sleutels roteert, versleutelt de opslag service de versleutelings sleutels opnieuw met de nieuwe door de klant beheerde sleutels. 
 
-U moet toegang verlenen tot beheerde schijven in uw Key Vault om uw sleutels te gebruiken voor het versleutelen en decoderen van de DEK. Hierdoor u volledige controle over uw gegevens en sleutels. U uw sleutels op elk gewenst moment uitschakelen of de toegang tot beheerde schijven intrekken. U ook het gebruik van de versleutelingssleutel controleren met Azure Key Vault-bewaking om ervoor te zorgen dat alleen beheerde schijven of andere vertrouwde Azure-services toegang hebben tot uw sleutels.
+U moet toegang verlenen tot beheerde schijven in uw Key Vault om uw sleutels te gebruiken voor het versleutelen en ontsleutelen van de DEK. Op die manier kunt u uw gegevens en sleutels volledig beheren. U kunt uw sleutels uitschakelen of de toegang tot beheerde schijven op elk gewenst moment intrekken. U kunt ook het gebruik van de versleutelings sleutel met Azure Key Vault bewaking controleren om ervoor te zorgen dat alleen beheerde schijven of andere vertrouwde Azure-Services toegang krijgen tot uw sleutels.
 
-Voor premium SSD's, standaard SSD's en standaard HDD's: Wanneer u uw sleutel uitschakelt of verwijdert, worden alle VM's met schijven met die sleutel automatisch afgesloten. Hierna zijn de VM's niet meer bruikbaar, tenzij de sleutel opnieuw is ingeschakeld of u een nieuwe sleutel toewijst.
+Voor Premium Ssd's, Standard Ssd's en Standard Hdd's: wanneer u uw sleutel uitschakelt of verwijdert, worden alle Vm's met schijven die gebruikmaken van die sleutel automatisch afgesloten. Daarna kan de virtuele machines niet worden gebruikt, tenzij de sleutel opnieuw wordt ingeschakeld of u een nieuwe sleutel toewijst.
 
-Voor ultraschijven wordt bij het uitschakelen of verwijderen van een sleutel geen VM's met ultraschijven met de sleutel automatisch afgesloten. Zodra u de vm's deallocate en opnieuw start, worden de schijven gestopt met het gebruik van de sleutel en dan komen VM's niet meer online. Als u de VM's weer online wilt brengen, moet u een nieuwe sleutel toewijzen of de bestaande sleutel inschakelen.
+Wanneer u een sleutel uitschakelt of verwijdert, worden virtuele machines met ultra schijven die de sleutel gebruiken niet automatisch afgesloten voor Ultra schijven. Zodra u de toewijzing van de Vm's ongedaan maakt en opnieuw start, worden de schijven niet meer gebruikt en worden de Vm's niet weer online gezet. Als u de virtuele machines weer online wilt zetten, moet u een nieuwe sleutel toewijzen of de bestaande sleutel inschakelen.
 
-In het volgende diagram ziet u hoe beheerde schijven Azure Active Directory en Azure Key Vault gebruiken om aanvragen in te dienen met behulp van de door de klant beheerde sleutel:
+In het volgende diagram ziet u hoe beheerde schijven gebruikmaken van Azure Active Directory en Azure Key Vault om aanvragen te maken met de door de klant beheerde sleutel:
 
-![Werkstroom voor beheerde schijf- en klantbeheersleutels. Een beheerder maakt een Azure Key Vault, maakt vervolgens een schijfversleutelingsset en stelt de schijfversleutelingsset in. De set is gekoppeld aan een VM, waarmee de schijf gebruik kan maken van Azure AD om te verifiëren](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Werk stroom voor beheerde schijven en door de klant beheerde sleutels. Een beheerder maakt een Azure Key Vault, maakt vervolgens een set schijf versleuteling en stelt de schijf versleuteling in. De set is gekoppeld aan een virtuele machine, waardoor de schijf gebruik kan maken van Azure AD voor verificatie](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
-In de volgende lijst wordt het diagram nader uitgelegd:
+In de volgende lijst wordt het diagram gedetailleerd beschreven:
 
-1. Een Azure Key Vault-beheerder maakt belangrijke vaultresources.
-1. De key vault admin importeert zijn RSA-sleutels naar Key Vault of genereert nieuwe RSA-sleutels in Key Vault.
-1. Die beheerder maakt een instantie van schijfversleutelingssetbron, waarbij een Azure Key Vault ID en een belangrijke URL worden opgegeven. Disk Encryption Set is een nieuwe bron geïntroduceerd voor het vereenvoudigen van het sleutelbeheer voor beheerde schijven. 
-1. Wanneer een schijfversleutelingsset wordt gemaakt, wordt een [door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) gemaakt in Azure Active Directory (AD) en gekoppeld aan de schijfversleutelingsset. 
-1. De azure key vault administrator verleent vervolgens de beheerde identiteitstoestemming om bewerkingen uit te voeren in de sleutelkluis.
-1. Een VM-gebruiker maakt schijven door ze te koppelen aan de schijfversleutelingsset. De VM-gebruiker kan ook server-side encryptie inschakelen met door de klant beheerde sleutels voor bestaande bronnen door ze te koppelen aan de schijfversleutelingsset. 
-1. Beheerde schijven gebruiken de beheerde identiteit om aanvragen naar de Azure Key Vault te verzenden.
-1. Voor het lezen of schrijven van gegevens stuurt beheerde schijven aanvragen naar Azure Key Vault om de gegevensversleutelingssleutel te versleutelen (wrap) te versleutelen en uit te pakken om versleuteling en decryptie van de gegevens uit te voeren. 
+1. Een Azure Key Vault beheerder maakt essentiële bronnen voor de kluis.
+1. Met de sleutel kluis beheerder worden de RSA-sleutels geïmporteerd in Key Vault of nieuwe RSA-sleutels in Key Vault gegenereerd.
+1. Die beheerder maakt een exemplaar van de bron voor de schijf versleutelings en geeft een Azure Key Vault-id en een sleutel-URL op. Schijf Encryption set is een nieuwe bron die is geïntroduceerd voor het vereenvoudigen van het sleutel beheer voor beheerde schijven. 
+1. Wanneer een schijf versleutelings set wordt gemaakt, wordt een door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) gemaakt in azure Active Directory (AD) en gekoppeld aan de schijf versleuteling. 
+1. De beheerder van de Azure-sleutel kluis verleent vervolgens de beheerde identiteits machtiging voor het uitvoeren van bewerkingen in de sleutel kluis.
+1. Een VM-gebruiker maakt schijven door deze te koppelen aan de schijf versleutelings. De VM-gebruiker kan ook versleuteling aan de server zijde inschakelen met door de klant beheerde sleutels voor bestaande resources door ze te koppelen aan de schijf versleutelings. 
+1. Beheerde schijven gebruiken de beheerde identiteit voor het verzenden van aanvragen naar de Azure Key Vault.
+1. Voor het lezen of schrijven van gegevens, worden met beheerde schijven aanvragen verzonden naar Azure Key Vault om de gegevens versleutelings sleutel te versleutelen en ontsleutelen (uitpakken), zodat de gegevens kunnen worden versleuteld en ontsleuteld. 
 
-Zie [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) en [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)om de toegang tot door de klant beheerde sleutels in te trekken. Als u de toegang intrekt, wordt de toegang tot alle gegevens in het opslagaccount effectief verbroken, omdat de versleutelingssleutel niet toegankelijk is voor Azure Storage.
+Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) en [Azure Key Vault cli](https://docs.microsoft.com/cli/azure/keyvault)voor meer informatie over het intrekken van de toegang tot door de klant beheerde sleutels. Als u toegang intrekt, wordt de toegang tot alle gegevens in het opslag account effectief geblokkeerd, omdat de versleutelings sleutel niet toegankelijk is voor Azure Storage.
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
@@ -68,31 +68,31 @@ Zie [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az
 
 ### <a name="restrictions"></a>Beperkingen
 
-Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
+De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 
-- Als deze functie is ingeschakeld voor uw schijf, u deze niet uitschakelen.
-    Als u dit moet omzeilen, moet u [alle gegevens kopiëren](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) naar een geheel andere beheerde schijf die geen door de klant beheerde sleutels gebruikt.
-- Alleen ["zachte" en "harde" RSA-toetsen](../../key-vault/keys/about-keys.md) van grootte 2080 worden ondersteund, geen andere toetsen of maten.
-- Schijven die zijn gemaakt met aangepaste afbeeldingen die zijn versleuteld met behulp van server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten in hetzelfde abonnement zijn.
-- Momentopnamen die zijn gemaakt van schijven die zijn versleuteld met server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
-- Aangepaste afbeeldingen die zijn versleuteld met serverversleuteling en door de klant beheerde sleutels, kunnen niet worden gebruikt in de gedeelde afbeeldingsgalerie.
-- Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key Vaults, disk encryption sets, VM's, schijven en snapshots) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
-- Schijven, momentopnamen en afbeeldingen die zijn versleuteld met door de klant beheerde sleutels, kunnen niet naar een ander abonnement worden verplaatst.
-- Als u de Azure-portal gebruikt om uw schijfversleutelingsset te maken, u voorlopig geen momentopnamen gebruiken.
-- Beheerde schijven die zijn versleuteld met door de klant beheerde sleutels, kunnen ook niet worden versleuteld met Azure Disk Encryption.
+- Als deze functie is ingeschakeld voor uw schijf, kunt u deze niet uitschakelen.
+    Als u dit wilt omzeilen, moet u [alle gegevens](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) naar een volledig andere beheerde schijf kopiëren die geen door de klant beheerde sleutels gebruikt.
+- Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/keys/about-keys.md) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
+- Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
+- Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
+- Aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels kunnen niet worden gebruikt in de galerie met gedeelde afbeeldingen.
+- Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
+- Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
+- Als u de Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
+- Beheerde schijven die zijn versleuteld met door de klant beheerde sleutels, kunnen niet ook worden versleuteld met Azure Disk Encryption.
 
 ### <a name="powershell"></a>PowerShell
 
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Uw Azure Key Vault en DiskEncryptionSet instellen
 
-1. Zorg ervoor dat u de nieuwste [Azure PowerShell-versie](/powershell/azure/install-az-ps)hebt geïnstalleerd en dat u bent aangemeld bij een Azure-account met Connect-AzAccount
+1. Zorg ervoor dat u de nieuwste [versie van Azure PowerShell](/powershell/azure/install-az-ps)hebt geïnstalleerd en dat u bent aangemeld bij een Azure-account in met Connect-AzAccount
 
-1. Maak een exemplaar van Azure Key Vault en versleutelingssleutel.
+1. Maak een instantie van Azure Key Vault en versleutelings sleutel.
 
-    Bij het maken van de Key Vault-instantie moet u bescherming voor zachte verwijdering en zuivering inschakelen. Soft delete zorgt ervoor dat de Key Vault een verwijderde sleutel bevat voor een bepaalde bewaarperiode (standaard 90 dagen). Verwijderingsbeveiliging zorgt ervoor dat een verwijderde sleutel niet permanent kan worden verwijderd totdat de bewaartermijn is verstreken. Deze instellingen beschermen u tegen het verlies van gegevens als gevolg van onbedoelde verwijdering. Deze instellingen zijn verplicht bij het gebruik van een Key Vault voor het versleutelen van beheerde schijven.
+    Wanneer u het Key Vault-exemplaar maakt, moet u de beveiliging voor voorlopig verwijderen en leegmaken inschakelen. Met zacht verwijderen zorgt u ervoor dat de Key Vault een verwijderde sleutel bevat voor een bepaalde Bewaar periode (standaard 90 dagen). Bij het opschonen van de beveiliging wordt ervoor gezorgd dat een verwijderde sleutel pas definitief kan worden verwijderd als de retentie periode is verstreken. Met deze instellingen wordt voor komen dat gegevens verloren gaan als gevolg van onbedoeld verwijderen. Deze instellingen zijn verplicht wanneer u een Key Vault gebruikt voor het versleutelen van Managed disks.
 
     > [!IMPORTANT]
-    > Niet kameel geval de regio, als je dat doet u problemen ondervinden bij het toewijzen van extra schijven aan de bron in de Azure-portal.
+    > Zorg dat u niet Camel de regio, als u dit doet, er problemen kunnen optreden bij het toewijzen van extra schijven aan de resource in de Azure Portal.
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -115,10 +115,10 @@ Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
         $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
         ```
 
-1.    Geef de DiskEncryptionSet-bron toegang tot de sleutelkluis.
+1.    Verleen de DiskEncryptionSet-resource toegang tot de sleutel kluis.
 
         > [!NOTE]
-        > Het kan enkele minuten duren voordat Azure de identiteit van uw DiskEncryptionSet maakt in uw Azure Active Directory. Als u een foutmelding krijgt zoals 'Het Active Directory-object niet kunnen vinden' bij het uitvoeren van de volgende opdracht, wacht u een paar minuten en probeert u het opnieuw.
+        > Het kan enkele minuten duren voordat Azure de identiteit van uw DiskEncryptionSet in uw Azure Active Directory heeft gemaakt. Als er een fout optreedt, zoals ' kan het Active Directory-object niet vinden ' tijdens het uitvoeren van de volgende opdracht, wacht u enkele minuten en probeert u het opnieuw.
         
         ```powershell
         $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
@@ -128,7 +128,7 @@ Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
         New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
         ```
 
-#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een VM maken met behulp van een Marketplace-afbeelding, waarbij het besturingssysteem en gegevensschijven worden versleuteld met door de klant beheerde sleutels
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een virtuele machine maken met behulp van een Marketplace-installatie kopie, het besturings systeem en de gegevens schijven versleutelen met door de klant beheerde sleutels
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -166,7 +166,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Een lege schijf maken die is versleuteld met serverversleuteling met door de klant beheerde sleutels en deze aan een vm koppelen
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Een lege schijf maken die is versleuteld met versleuteling aan de server zijde met door de klant beheerde sleutels en deze koppelen aan een VM
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -189,9 +189,9 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 
-#### <a name="encrypt-existing-unattached-managed-disks"></a>Bestaande niet-gekoppelde beheerde schijven versleutelen 
+#### <a name="encrypt-existing-managed-disks"></a>Bestaande beheerde schijven versleutelen 
 
-Uw bestaande schijven mogen niet aan een draaiende VM worden gekoppeld, zodat u ze versleutelen met behulp van het volgende script:
+Uw bestaande schijven mogen niet worden gekoppeld aan een actieve virtuele machine, zodat u ze kunt versleutelen met het volgende script:
 
 ```PowerShell
 $rgName = "yourResourceGroupName"
@@ -203,7 +203,7 @@ $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $d
 New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
 ```
 
-#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een virtuele machineschaalset maken met behulp van een Marketplace-afbeelding, waarbij het besturingssysteem en gegevensschijven worden versleuteld met door de klant beheerde sleutels
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een schaalset voor virtuele machines maken met behulp van een Marketplace-installatie kopie, het besturings systeem en de gegevens schijven versleutelen met door de klant beheerde sleutels
 
 ```PowerShell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -247,7 +247,7 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
-#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>De sleutel van een DiskEncryptionSet wijzigen om de sleutel te roteren voor alle bronnen die verwijzen naar de DiskEncryptionSet
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>Wijzig de sleutel van een DiskEncryptionSet om de sleutel te roteren voor alle resources die verwijzen naar de DiskEncryptionSet
 
 ```PowerShell
 $ResourceGroupName="yourResourceGroupName"
@@ -262,7 +262,7 @@ $keyVaultKey = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName
 Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -SourceVaultId $keyVault.ResourceId -KeyUrl $keyVaultKey.Id
 ```
 
-#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>De status van serverversleuteling van een schijf zoeken
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>De status van een schijf met versleuteling aan de server zijde zoeken
 
 ```PowerShell
 $ResourceGroupName="yourResourceGroupName"
@@ -274,21 +274,21 @@ $disk.Encryption.Type
 ```
 
 > [!IMPORTANT]
-> Door de klant beheerde sleutels zijn afhankelijk van beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt een beheerde identiteit automatisch toegewezen aan uw resources onder de covers. Als u vervolgens het abonnement, de resourcegroep of de beheerde schijf van de ene Azure AD-map naar de andere verplaatst, wordt de beheerde identiteit die aan beheerde schijven is gekoppeld, niet overgedragen naar de nieuwe tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [Een abonnement overbrengen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
+> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
 
 [!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
-> Door de klant beheerde sleutels zijn afhankelijk van beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt een beheerde identiteit automatisch toegewezen aan uw resources onder de covers. Als u vervolgens het abonnement, de resourcegroep of de beheerde schijf van de ene Azure AD-map naar de andere verplaatst, wordt de beheerde identiteit die aan beheerde schijven is gekoppeld, niet overgedragen naar de nieuwe tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [Een abonnement overbrengen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
+> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
 
-## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Server-side encryptie versus Azure-schijfversleuteling
+## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Versleuteling aan de server zijde versus Azure Disk Encryption
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker-functie](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) van Windows en de [DM-Crypt-functie](https://en.wikipedia.org/wiki/Dm-crypt) van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels binnen de gast-VM.  Server-side encryptie met door de klant beheerde sleutels verbetert op ADE doordat u alle besturingssysteemtypen en afbeeldingen voor uw VM's gebruiken door gegevens te versleutelen in de opslagservice.
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM.  Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De Azure Resource Manager-sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels verkennen](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Wat is Azure Sleutelkluis?](../../key-vault/general/overview.md)
-- [Machines repliceren met schijven met klantbeheerde sleutels](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [Noodherstel van VMware VM's instellen op Azure met PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Disaster recovery instellen voor Azure voor Hyper V VM's met PowerShell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [Computers repliceren met door de klant beheerde sleutels ingeschakelde schijven](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
+- [Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

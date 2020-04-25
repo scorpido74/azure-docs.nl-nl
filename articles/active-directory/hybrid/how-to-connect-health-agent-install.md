@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47fede0726ff1a540a71b9c42ca0c07117865d9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331626"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136699"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -33,25 +33,25 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 
 | Vereiste | Beschrijving |
 | --- | --- |
-| Azure AD Premium |Azure AD Connect Health is een Azure AD Premium-functie waarvoor Azure AD Premium is vereist. <br /><br />Zie [Aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) voor meer informatie <br />Als u gebruik wilt maken van een gratis proefversie van 30 dagen, raadpleegt u [Gratis proberen](https://azure.microsoft.com/trial/get-started-active-directory/). |
-| U moet hoofdbeheerder van uw Azure AD zijn om aan de slag te gaan met Azure AD Connect Health |Standaard kunnen alleen hoofdbeheerders de Health-agents installeren en configureren om aan de slag te gaan, de Portal openen en bewerkingen uitvoeren in Azure AD Connect Health. Voor meer informatie raadpleegt u [Uw Azure AD-directory beheren](../fundamentals/active-directory-administer.md). <br /><br /> Met behulp van op rollen gebaseerd toegangsbeheer kunt u toegang tot Azure AD Connect Health verlenen aan andere gebruikers binnen uw organisatie. Zie [Op rollen gebaseerd toegangsbeheer voor Azure AD Connect-status voor](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) meer informatie. <br /><br />**Belangrijk:** het account dat u gebruikt tijdens het installeren van agents, moet een werk- of schoolaccount zijn. Het mag geen Microsoft-account zijn. Zie [Aanmelden voor Azure als organisatie voor](../fundamentals/sign-up-organization.md) meer informatie |
+| Azure AD Premium |Azure AD Connect Health is een Azure AD Premium-functie waarvoor Azure AD Premium is vereist. <br /><br />Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) voor meer informatie. <br />Als u gebruik wilt maken van een gratis proefversie van 30 dagen, raadpleegt u [Gratis proberen](https://azure.microsoft.com/trial/get-started-active-directory/). |
+| U moet hoofdbeheerder van uw Azure AD zijn om aan de slag te gaan met Azure AD Connect Health |Standaard kunnen alleen hoofdbeheerders de Health-agents installeren en configureren om aan de slag te gaan, de Portal openen en bewerkingen uitvoeren in Azure AD Connect Health. Voor meer informatie raadpleegt u [Uw Azure AD-directory beheren](../fundamentals/active-directory-administer.md). <br /><br /> Met behulp van op rollen gebaseerd toegangsbeheer kunt u toegang tot Azure AD Connect Health verlenen aan andere gebruikers binnen uw organisatie. Zie voor meer informatie [op rollen gebaseerd Access Control voor Azure AD Connect Health.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Belangrijk:** het account dat u gebruikt tijdens het installeren van agents, moet een werk- of schoolaccount zijn. Het mag geen Microsoft-account zijn. Zie [registreren voor Azure als organisatie](../fundamentals/sign-up-organization.md) voor meer informatie. |
 | De Azure AD Connect Health-agent wordt geïnstalleerd op elke doelserver | Voor Azure AD Connect Health moeten de Health-agents worden geïnstalleerd en geconfigureerd op de doelservers om gegevens te kunnen ontvangen en om mogelijkheden voor bewaking en analyse te kunnen bieden. <br /><br />Als u bijvoorbeeld gegevens uit uw AD FS-infrastructuur wilt ophalen, moet de agent worden geïnstalleerd op de AD FS-servers en de webtoepassingsproxyservers. Evenzo moet de agent op de domeincontrollers worden geïnstalleerd om gegevens in uw on-premises AD DS-infrastructuur te krijgen. <br /><br /> |
 | Uitgaande verbinding met de Azure-service-eindpunten | Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als de uitgaande connectiviteit is geblokkeerd met firewalls, moet u ervoor zorgen dat de volgende eindpunten wel zijn toegestaan. Meer informatie over [uitgaande connectiviteitseindpunten](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |Uitgaande verbindingen op basis van IP-adressen | Als u meer wilt weten over het filteren op IP-adressen in firewalls, ziet u [Azure IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653).|
-| TLS-inspectie voor uitgaand verkeer wordt gefilterd of uitgeschakeld | De stap voor de registratie van agenten of gegevensuploadbewerkingen kan mislukken als er TLS-inspectie of beëindiging is voor uitgaand verkeer op de netwerklaag. Lees meer over [het instellen van TLS-inspectie](https://technet.microsoft.com/library/ee796230.aspx) |
-| Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer nodig is voor de nieuwste versie van de agent. Upgrade naar de nieuwste versie, dus alleen poort 443 is vereist. Lees meer over [firewallpoorten inschakelen](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Lees meer over [het configureren van IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). In het geval dat u een proxy binnen uw netwerk, zie noot hieronder.|
+| TLS-inspectie voor uitgaand verkeer wordt gefilterd of uitgeschakeld | De agent registratie stap of bewerkingen voor het uploaden van gegevens kunnen mislukken als er TLS-inspectie of-beëindiging voor uitgaand verkeer op de netwerklaag is. Meer informatie over [het instellen van TLS-inspectie](https://technet.microsoft.com/library/ee796230.aspx) |
+| Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer vereist is voor de nieuwste versie van de agent. Voer een upgrade uit naar de nieuwste versie zodat alleen poort 443 is vereist. Lees meer over [firewallpoorten inschakelen](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Meer informatie over [het configureren van Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Als u een proxy in uw netwerk hebt, raadpleegt u de onderstaande opmerking.|
 | Zorg ervoor dat PowerShell v4.0 of later is geïnstalleerd | <li>Windows Server 2008 R2 wordt geleverd met PowerShell versie 2.0, wat onvoldoende is voor de agent. Werk PowerShell bij zoals wordt uitgelegd in [Agent-installatie op Windows Server 2008 R2-servers](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 wordt geleverd met PowerShell v3.0, wat onvoldoende is voor de agent.  [Update](https://www.microsoft.com/download/details.aspx?id=40855) het Windows Management Framework.</li><li>Windows Server 2012 R2 en later wordt geleverd met een voldoende recente versie van PowerShell.</li>|
 |FIPS uitschakelen|FIPS wordt niet ondersteund door Azure AD Connect Health-agents.|
 
 
 > [!NOTE]
-> Als u een zeer vergrendelde en uiterst beperkte omgeving hebt, moet u de URL's die in de onderstaande serviceeindpuntlijsten worden vermeld, op de wittelijst plaatsen, naast de onderstaande url's in de hierboven vermelde url's in de bovenstaande serviceeindpuntlijsten. 
+> Als u een zeer vergrendelde en zeer beperkte omgeving hebt, moet u de Url's die worden vermeld in de service-eindpunt lijsten hieronder, naast de white list die worden vermeld in de hierboven toegestane verbeterde beveiligings configuratie van Internet Explorer. 
 >
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Uitgaande verbinding met de Azure-service-eindpunten
 
- Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als uitgaande connectiviteit wordt geblokkeerd met firewalls, moet u ervoor zorgen dat de volgende URL's niet standaard worden geblokkeerd. Schakel de beveiligingscontrole of inspectie van deze URL's niet uit, maar laat ze zoals u dat zou doen met ander internetverkeer. Ze maken communicatie mogelijk met azure AD Connect Health-serviceeindpunten. Meer informatie over het [controleren van uitgaande connectiviteit met Test-AzureADConnectHealthConnectivity](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
+ Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als uitgaande connectiviteit is geblokkeerd met behulp van firewalls, moet u ervoor zorgen dat de volgende Url's niet standaard worden geblokkeerd. Schakel de beveiligings controle of inspectie van deze Url's niet uit, maar sta toe als andere Internet verkeer. Ze staan communicatie toe met Azure AD Connect Health Service-eind punten. Meer informatie over het [controleren van de uitgaande connectiviteit met test-AzureADConnectHealthConnectivity](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
 
 | Domeinomgeving | Vereiste Azure-service-eindpunten |
 | --- | --- |
@@ -69,7 +69,7 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 * Aan de slag met Azure AD Connect Health for Sync
     * [Download en installeer de nieuwste versie van Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771). De Health for Sync-agent wordt geïnstalleerd als onderdeel van de Azure AD Connect-installatie (versie 1.0.9125.0 of hoger).
 * Aan de slag met Azure AD Connect Health voor AD DS
-    * [Azure AD Connect-statusagent voor AD DS downloaden](https://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Down load Azure AD Connect Health Agent voor AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Zie de installatie-instructies](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>De Azure AD Connect Health-agent voor AD FS installeren
@@ -138,7 +138,7 @@ Als u de functie Gebruiksanalyse wilt gebruiken om gegevens te verzamelen en te 
 <br />   -- **De volgende stappen zijn alleen vereist voor primaire AD FS-servers.** -- <br />
 6. Open de module **AD FS-beheer**. Klik op **Start**, wijs naar **Programma's**, wijs naar **Systeembeheer** en klik vervolgens op **AD FS 2.0-beheer** om de module AD FS-beheer te openen.
 7. Klik in het deelvenster **Acties** op **Federation Service-eigenschappen** bewerken.
-8. Klik in het dialoogvenster **Eigenschappen van Federatieservice** op het tabblad **Gebeurtenissen.**
+8. Klik in het dialoog venster **Eigenschappen van Federation service** op het tabblad **gebeurtenissen** .
 9. Schakel de selectievakjes bij **Succesvolle controles** en **Mislukte controles** in.
 10. Klik op **OK**.
 
@@ -152,7 +152,7 @@ Als u de functie Gebruiksanalyse wilt gebruiken om gegevens te verzamelen en te 
 <br />   -- **De volgende stappen zijn alleen vereist voor primaire AD FS-servers.** -- <br />
 6. Open de module **AD FS-beheer** (klik in Serverbeheer op Extra en selecteer vervolgens AD FS-beheer).
 7. Klik in het deelvenster **Acties** op **Federation Service-eigenschappen** bewerken.
-8. Klik in het dialoogvenster **Eigenschappen van Federatieservice** op het tabblad **Gebeurtenissen.**
+8. Klik in het dialoog venster **Eigenschappen van Federation service** op het tabblad **gebeurtenissen** .
 9. Schakel de selectievakjes bij **Succesvolle controles en Mislukte controles** in en klik op **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Controle inschakelen voor AD FS in Windows Server 2016
@@ -165,7 +165,7 @@ Als u de functie Gebruiksanalyse wilt gebruiken om gegevens te verzamelen en te 
 <br />   -- **De volgende stappen zijn alleen vereist voor primaire AD FS-servers.** -- <br />
 6. Open de module **AD FS-beheer** (klik in Serverbeheer op Extra en selecteer vervolgens AD FS-beheer).
 7. Klik in het deelvenster **Acties** op **Federation Service-eigenschappen** bewerken.
-8. Klik in het dialoogvenster **Eigenschappen van Federatieservice** op het tabblad **Gebeurtenissen.**
+8. Klik in het dialoog venster **Eigenschappen van Federation service** op het tabblad **gebeurtenissen** .
 9. Schakel de selectievakjes bij **Succesvolle controles en Mislukte controles** in en klik op **OK**. Deze moeten standaard zijn ingeschakeld.
 10. Open een PowerShell-venster en voer de volgende opdracht uit: ```Set-AdfsProperties -AuditLevel Verbose```.
 
@@ -255,12 +255,12 @@ Als de configuratie is voltooid, worden deze services als het goed is al uitgevo
 
 ![Azure AD Connect Health verifiëren](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
-### <a name="quick-agent-installation-in-multiple-servers"></a>Snelle agentinstallatie in meerdere servers
+### <a name="quick-agent-installation-in-multiple-servers"></a>Snelle agent installatie op meerdere servers
 
-1. Maak een gebruikersaccount in Azure AD met een wachtwoord.
-2. Wijs de rol **Eigenaar** toe voor dit lokale AAD-account in Azure AD Connect-status via de portal. Volg de stappen [hier](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). Wijs de rol toe aan alle service-instanties. 
-3. Download het .exe MSI-bestand in de lokale domeincontroller voor installatie.
-4. Voer het volgende script uit naar registratie. Vervang de parameters door het nieuwe gebruikersaccount dat is gemaakt en het wachtwoord ervan. 
+1. Maak een gebruikers account in azure AD met een wacht woord.
+2. Wijs de rol van **eigenaar** voor dit lokale Aad-account toe aan Azure AD Connect Health via de portal. Volg de stappen die [hier](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)worden beschreven. Wijs de rol toe aan alle service-exemplaren. 
+3. Down load het exe MSI-bestand in de lokale domein controller voor installatie.
+4. Voer het volgende script uit om de registratie uit te voeren. Vervang de para meters door het nieuwe gebruikers account en het bijbehorende wacht woord. 
 
 ```powershell
 AdHealthAddsAgentSetup.exe /quiet
@@ -270,13 +270,13 @@ $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
 import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
  
-Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $myCreds
+Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 ```
 
-1. Zodra u klaar bent, u de toegang voor het lokale account verwijderen door een of meer van de volgende handelingen uit te voeren: 
+1. Wanneer u klaar bent, kunt u de toegang tot het lokale account verwijderen door een of meer van de volgende handelingen uit te voeren: 
     * De roltoewijzing voor het lokale account voor AAD Connect Health verwijderen
-    * Draai het wachtwoord voor het lokale account. 
+    * Het wacht woord voor het lokale account draaien. 
     * Het lokale AAD-account uitschakelen
     * Het lokale AAD-account verwijderen  
 
@@ -319,7 +319,7 @@ U hebt de volgende opties voor het configureren van de Azure AD Connect Health-a
 
 > [!NOTE]
 > U moet alle Azure AD Connect Health-agentservices opnieuw opstarten om de proxyinstellingen bij te werken. Voer de volgende opdracht uit:<br />
-> Opnieuw opstarten-Service AzureADConnectHealth*
+> Restart-service AzureADConnectHealth *
 >
 >
 
@@ -384,9 +384,9 @@ De rolparameter heeft momenteel de volgende waarden:
 ## <a name="related-links"></a>Verwante koppelingen
 
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
-* [Azure AD Connect-statusbewerkingen](how-to-connect-health-operations.md)
+* [Azure AD Connect Health Operations (Engelstalig)](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)
-* [Azure AD Connect-status gebruiken voor synchronisatie](how-to-connect-health-sync.md)
+* [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md)
 * [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)
 * [Veelgestelde vragen over Azure AD Connect Health](reference-connect-health-faq.md)
-* [Versiegeschiedenis van Azure AD Connect-status](reference-connect-health-version-history.md)
+* [Geschiedenis van Azure AD Connect Health-versie](reference-connect-health-version-history.md)

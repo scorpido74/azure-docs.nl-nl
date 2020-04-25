@@ -1,129 +1,129 @@
 ---
-title: Storefront-gegevens voor een Power BI-app-aanbieding | Azure Marketplace
-description: Velden Storefront-gegevens configureren voor een Power BI-app-aanbieding voor de Microsoft AppSource Marketplace.
+title: Details van de winkel voor een Power BI app-aanbieding | Azure Marketplace
+description: De gegevens velden van de winkel voor een Power BI app-aanbieding configureren voor de Microsoft AppSource Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9db01941c21dbd26d149f3623319557e4c625350
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981287"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141797"
 ---
-# <a name="power-bi-app-storefront-details-tab"></a>Tabblad Gegevens van De Power BI-app Storefront
+# <a name="power-bi-app-storefront-details-tab"></a>Power BI tabblad Details van de app-winkel
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw Power BI app-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [Power bi overzicht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) van het maken van apps voor het beheren van uw gemigreerde aanbiedingen.
 
-Gebruik op de pagina **Nieuwe aanbieding** het tabblad **Storefront Details** om marketing-, verkoop- en juridische informatie te verstrekken aan uw potentiële klanten. Op dit tabblad u ook beheer instellen voor leads die de Azure Marketplace genereert. Deze lange vorm is onderverdeeld in zes secties: **Aanbiedingsdetails**, **Aanbiedingsdetails,** **Marketingartefacten**, **Juridische**, **Klantenondersteuning**en **Leadmanagement**.  Een sterretje (*) aan het einde van een veldlabel betekent dat het veld vereist is.
+Op de pagina **nieuw aanbod** kunt u het tabblad Details van de **winkel** gebruiken om marketing-, verkoop-en juridische informatie te bieden voor uw potentiële klanten. Op dit tabblad kunt u ook het beheer instellen voor leads die door Azure Marketplace worden gegenereerd. Deze lange vorm is onderverdeeld in zes secties: **Details**van aanbieding, **Details**van de aanbieding, **marketing artefacten**, **juridisch**, **klant ondersteuning**en **lead beheer**.  Een asterisk (*) aan het einde van een veld label geeft aan dat het veld vereist is.
 
 
-## <a name="offer-details-section"></a>Sectie Aanbiedingsdetails
+## <a name="offer-details-section"></a>Sectie Details van aanbieding
 
-Voer in de sectie **Aanbiedingsdetails** algemene informatie over uw AppSource-aanbieding in.
+Voer in de sectie **Details van aanbieding** algemene informatie in over uw AppSource-aanbieding.
 
-![Sectie Aanbiedingsdetails op het tabblad StorefrontDetails](./media/offer-details-section.png)
+![De sectie Details van de aanbieding van het tabblad Details van de winkel](./media/offer-details-section.png)
 
-In de volgende tabel vindt u meer informatie over deze velden. Vereiste velden worden aangeklaagd door een sterretje (*).  
+De volgende tabel bevat meer informatie over deze velden. Vereiste velden worden gedicteerd door een asterisk (*).  
 
 |   Veld               |   Beschrijving                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Overzicht van de aanbieding\***     | Een kort doel van de app, met maximaal 100 tekens.                             |
-| **Aanbiedingsbeschrijving\*** | Een beschrijving van de app met maximaal 3.000 tekens. Dit veld ondersteunt eenvoudige HTML-opmaak. |
+| **Overzicht van aanbieding\***     | Een kort doel van de app, met Maxi maal 100 tekens.                             |
+| **Beschrijving van aanbieding\*** | Een beschrijving van de app, met Maxi maal 3.000 tekens. Dit veld biedt ondersteuning voor eenvoudige HTML-opmaak. |
 |   |    |
 
 
-## <a name="listing-details-section"></a>Sectie Aanbiedingsdetails
+## <a name="listing-details-section"></a>Sectie Details van vermelding
 
-In de sectie **Aanbiedingsdetails** verzamelt u informatie over de context van uw app: bedrijfstakken waar deze doorgaans wordt gebruikt, de app-categorie, compatibele producten en bijbehorende zoektermen.
+In de sectie **Details van vermelding** vindt u informatie over de context van uw app: branches waar deze doorgaans wordt gebruikt, de app-categorie, compatibele producten en bijbehorende zoek termen.
 
-![Sectie Aanbiedingsdetails op het tabblad Storefront Details](./media/listing-details-section.png)
+![Sectie vermeldings gegevens van het tabblad Details van de winkel](./media/listing-details-section.png)
 
-Als u de velden in deze sectie wilt voltooien, gebruikt u de volgende tabel.  Vereiste velden worden aangeklaagd door een sterretje (*).
+Gebruik de volgende tabel om de velden in deze sectie te volt ooien.  Vereiste velden worden gedicteerd door een asterisk (*).
  
 |   Veld                                  |   Beschrijving                                                        |
 | --------------                           | ---------------------                                                |
-| **Bedrijfstakken**                           | Selecteer de branche waar uw app het beste past. Als uw app betrekking heeft op meerdere bedrijfstakken, laat u dit veld leeg.      |
-| **Categorieën\***                           | Selecteer maximaal drie categorieën die betrekking hebben op uw app.     |
-| **Help-koppeling voor uw app\***               | Geef een URL op aan een pagina die online hulp biedt voor uw app.           |
-| **Producten waarmee uw app werkt (Max 3)** | Selecteer het teken **Nieuw** plus om een tekstveld te maken. Voer in het veld de naam in van een product waarmee uw app werkt. Vermeld maximaal drie producten.       |
-| **Zoekzoekwoorden (Max 3)**              | Voer maximaal drie zoekwoorden in die gebruikers waarschijnlijk zullen gebruiken om naar uw toepassing te zoeken in AppSource. Als de toepassing bijvoorbeeld 'Mijn e-mailapp' wordt genoemd, kunnen uw zoekwoorden **e-mails,** **mailingen**en **e-mailapp**zijn. |
+| **Bedrijfstakken**                           | Selecteer de branche waarin uw app het beste past. Als uw app is gekoppeld aan meerdere branches, laat u dit veld leeg.      |
+| **Categorieën\***                           | Selecteer Maxi maal drie categorieën die betrekking hebben op uw app.     |
+| **Help-koppeling voor uw app\***               | Geef een URL op naar een pagina die online-Help voor uw app biedt.           |
+| **Producten waarmee uw app werkt (Maxi maal 3)** | Selecteer het **nieuwe** plus teken om een tekst veld te maken. Voer in het veld de naam in van een product waarmee uw app werkt. Lijst met Maxi maal drie producten.       |
+| **Tref woorden zoeken (Maxi maal 3)**              | Voer Maxi maal drie tref woorden in die gebruikers waarschijnlijk gebruiken om te zoeken naar uw toepassing in AppSource. Als de toepassing bijvoorbeeld ' mijn e-mailing-app ' wordt genoemd, zijn uw tref woorden mogelijk **e-mails**, **mailing**en **e-mail-app**. |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Sectie Marketingartefacten
+## <a name="marketing-artifacts-section"></a>Sectie Marketing artefacten
 
-Upload in de sectie **Marketingartefacten** branding- en marketingmateriaal om weer te geven op AppSource.  Deze sectie is verdeeld in vier subsecties: **Logos**, **Video's,** **Documenten**en **Screenshots**. Logo's en screenshots zijn de enige vereiste marketingartefacten. Maar voor de beste aantrekkingskracht van de klant raden we u aan ook video's en documenten toe te voegen.
+Upload huisstijl-en marketing materiaal in het gedeelte **marketing artefacten** om weer te geven op AppSource.  Deze sectie is onderverdeeld in vier subsecties: **logo's**, **Video's**, **documenten**en **scherm afbeeldingen**. Logo's en scherm afbeeldingen zijn de enige vereiste marketing artefacten. Maar voor de beste klant bezwaar is het raadzaam om ook Video's en documenten toe te voegen.
 
-![Sectie Marketingartefacten van het tabblad Storefront Details](./media/marketing-artifacts-section.png)
+![Het gedeelte Marketing artefacten van het tabblad Details van de winkel](./media/marketing-artifacts-section.png)
 
-Als u de velden in deze sectie wilt voltooien, gebruikt u de volgende tabel. Vereiste velden worden aangeklaagd door een sterretje (*).
+Gebruik de volgende tabel om de velden in deze sectie te volt ooien. Vereiste velden worden gedicteerd door een asterisk (*).
  
 |    Veld                             |    Beschrijving                                                    |
 |   -----------                        |    -------------                                                  |
-| *Logos*                              |                                                                   |
-| **Aanbiedingslogo (png-indeling, 48x48)\***   | Upload een logo om weer te geven in het overzicht van de app of in de zoekresultaten van apps. AppSource ondersteunt alleen PNG-indeling, met een resolutie van 48 x 48 px.  |
-| **Aanbiedingslogo (png-indeling, 216x216)\*** | Upload een logo om weer te geven op de detailpagina van uw app.  AppSource ondersteunt alleen PNG-indeling, met een resolutie van 216 x 216 px.  |
+| *Logo's*                              |                                                                   |
+| **Logo van aanbieding (PNG-indeling, 48x48)\***   | Upload een logo om weer te geven in het overzicht van de app of in Zoek resultaten van de app. AppSource ondersteunt alleen PNG-indelingen, met een resolutie van 48 x 48 px.  |
+| **Logo van aanbieding (PNG-indeling, 216x216)\*** | Upload een logo om weer te geven op de detail pagina van uw app.  AppSource ondersteunt alleen PNG-indelingen, met een resolutie van 216 x 216 px.  |
 | *Video's*                             |                                                                   |
 | **Naam**                             | Voer de naam of titel van uw app in.                                          |
-| **Url**                              | Voer de URL in van een video die wordt gehost op YouTube of Vimeo.                              |
-| **Miniatuur**                        | Voeg een miniatuurafbeelding van de app toe.  AppSource ondersteunt alleen PNG-indeling, met een resolutie van 1280 x 720 px.   |
-| *Documenten*                          | Voeg maximaal drie documenten toe om weer te geven op AppSource, onder de kop **Meer informatie.**  |
-| **Naam**                             | Voer de naam of titel van een ondersteunend document in.                              |
-| **Bestand**                             | Een PDF-bestand uploaden.                             |
-| *Schermopnamen\**                      | Voeg maximaal vijf screenshots toe.                        |
-| **Naam**                             | Voer een naam of titel van een schermafbeelding in.                                       |
-| **Installatiekopie**                            | Upload een PNG-screenshot. De resolutie moet 1280 x 720 px zijn.  | 
+| **URL**                              | Voer de URL in van een video die wordt gehost op YouTube of Vimeo.                              |
+| **Voorbeeld**                        | Voeg een miniatuur afbeelding van de app toe.  AppSource ondersteunt alleen PNG-indelingen, met een resolutie van 1280 x 720 px.   |
+| *Documenten*                          | Voeg Maxi maal drie documenten toe om weer te geven op AppSource, onder de kop **meer informatie** .  |
+| **Naam**                             | Voer de naam of titel in van een ondersteunings document.                              |
+| **Bestand**                             | Upload een PDF-bestand.                             |
+| *Schermopnamen\**                      | Voeg Maxi maal vijf scherm afbeeldingen toe.                        |
+| **Naam**                             | Voer een naam of titel in voor een scherm opname.                                       |
+| **Installatiekopie**                            | Upload een PNG-scherm afbeelding. De resolutie moet 1280 x 720 PX zijn.  | 
 |   |   |
 
-De logo's die u uploadt naar [Cloud Partner Portal](https://cloudpartner.azure.com) mogen *niet:*
+De logo's die u uploadt naar [Cloud Partner-Portal](https://cloudpartner.azure.com) mogen *niet*:
 
-- Gebruik een verloop. De look en feel van uw logo moet plat zijn.
-- Vermeld uw bedrijfsnaam, merknaam of andere tekst. 
-- Kijk uitgerekt.
+- Gebruik een kleur overgang. Het uiterlijk van uw logo moet plat zijn.
+- Neem uw bedrijfs naam, merk naam of andere tekst op. 
+- Kijk naar uitgerekt.
 
-## <a name="legal-section"></a>Juridische sectie
+## <a name="legal-section"></a>Juridisch gedeelte
 
-Geef in de sectie **Juridische** tekst de twee wettelijke documenten op die nodig zijn voor elke aanbieding: uw privacybeleid en uw gebruiksvoorwaarden.
+Geef in het gedeelte **juridisch** de twee juridische documenten op die zijn vereist voor elke aanbieding: uw privacybeleid en de gebruiks voorwaarden.
 
-![Juridische sectie van het tabblad Storefront Details](./media/legal-section.png)
+![Juridisch gedeelte van het tabblad Details van de winkel](./media/legal-section.png)
 
-Als u de velden in deze sectie wilt voltooien, gebruikt u de volgende tabel:
+Gebruik de volgende tabel om de velden in deze sectie te volt ooien:
 
 |   Veld                |   Beschrijving                           |
 |------------------------|--------------------------------------   |
-| **URL van het privacybeleid\*** | URL voor uw geboekte privacybeleid       |
-| **Gebruiksvoorwaarden\***       | Uw gebruiksbeleid, opgemaakt als platte tekst of eenvoudige HTML     |
+| **URL van privacybeleid\*** | URL voor uw geposte privacybeleid       |
+| **Gebruiksvoorwaarden\***       | Uw gebruiks beleid, opgemaakt als tekst zonder opmaak of eenvoudige HTML     |
 |  |  |
 
 
-## <a name="customer-support-section"></a>Afdeling Klantenondersteuning
+## <a name="customer-support-section"></a>Sectie klant ondersteuning
 
-Geef in de sectie **Klantenondersteuning** de **URL voor ondersteuning** op voor uw online pagina met klantenondersteuning.  Deze pagina moet meerdere contactopties bieden, zoals telefoon, e-mail en live chat. 
+Geef in de sectie **klant ondersteuning** de **ondersteunings-URL** op voor de pagina voor online klant ondersteuning.  Deze pagina moet meerdere contact opties bieden, zoals telefoon, e-mail en live chat. 
 
 
-## <a name="lead-management-section"></a>Sectie Leadbeheer
+## <a name="lead-management-section"></a>Sectie Lead beheer
 
-Stel in de sectie **Leadmanagement** uw systeem in om de klantleads te verzamelen die uw AppSource biedt. Als u uw opslagopties voor de leads wilt kiezen, gebruikt u de volgende tabel:
+Stel in het gedeelte **lead beheer** uw systeem in voor het verzamelen van de klant leads die uw AppSource biedt. Gebruik de volgende tabel om uw opslag opties voor de leads te kiezen:
 
-|    Veld               |   Hoofdbestemming                               |
+|    Veld               |   Doel van de lead                               |
 |------------------------|--------------------------------------            |
-|  **Geen**              | Verzamel geen aanwijzingen. Dit is de standaardoptie.  |
-| **Azure Blob (afgeschaft)** | Azure [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) opgeven met behulp van een containernaam en een verbindingstekenreeks.  Deze keuze is afgeschaft. Gebruik in plaats daarvan **Azure Table.**  |
-| **Azure Table**        | Azure [Table-opslag opgeven](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) met behulp van een verbindingstekenreeks.  |
-| **Dynamics CRM Online** | Dynamics [365](https://dynamics.microsoft.com/) opgeven met behulp van een URL en verificatiereferenties. |
-| **HTTPS-eindpunt**     | Geef het HTTPS-eindpunt op met een JSON-payload.   |
-| **Marketo**            | Geef een [Marketo-instantie](https://www.marketo.com/) op met behulp van een server-id, munchkin-id en formulier-ID.   |
-| **SalesForce**         | Salesforce [Salesforce](https://www.salesforce.com/) opgeven met behulp van een object-id. |
+|  **Geen**              | Geen leads verzamelen. Dit is de standaard optie.  |
+| **Azure-Blob (afgeschaft)** | Geef [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) op met behulp van een container naam en een Connection String.  Deze keuze is afgeschaft. Gebruik in plaats daarvan **Azure Table** .  |
+| **Azure Table**        | Geef [Azure-tabel opslag](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) op met behulp van een Connection String.  |
+| **Dynamics CRM Online** | Geef [Dynamics 365](https://dynamics.microsoft.com/) op met behulp van een URL en verificatie referenties. |
+| **HTTPS-eind punt**     | Geef het HTTPS-eind punt op met behulp van een JSON-nettolading.   |
+| **Marketo**            | Geef een [marketo](https://www.marketo.com/) -exemplaar op met behulp van een server-id, Munchkin-id en formulier-id.   |
+| **SalesForce**         | Geef [Sales Force](https://www.salesforce.com/) op met behulp van een object-id. |
 |  |  |
 
-Nadat u uw aanbieding hebt gepubliceerd, wordt de leadverbinding gevalideerd en wordt een testlead automatisch naar de opgegeven bestemming verzonden. Beheer continu leadinformatie en werk uw instellingen onmiddellijk bij om uw huidige architectuur voor klantbeheer weer te geven.
+Nadat u uw aanbieding hebt gepubliceerd, wordt de verbinding van de lead gevalideerd en wordt er automatisch een test lead verzonden naar de opgegeven bestemming. U kunt doorlopend informatie over leads beheren en uw instellingen direct bijwerken zodat deze overeenkomen met uw huidige beheer architectuur voor klanten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Geef op het tabblad [Contactpersonen](./cpp-contacts-tab.md) technische en gebruikersondersteuningsbronnen voor uw aanbieding.
+Geef op het tabblad [contact personen](./cpp-contacts-tab.md) technische en gebruikers ondersteuning voor uw aanbieding.

@@ -1,6 +1,6 @@
 ---
-title: Aanmeldingslogboekschema in Azure Monitor | Microsoft Documenten
-description: Het azure AD-aanmeldingsschema beschrijven voor gebruik in Azure Monitor
+title: Schema voor aanmeldings logboek in Azure Monitor | Microsoft Docs
+description: Beschrijf het schema voor logboek registratie van Azure AD voor gebruik in Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,16 +17,16 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75748659"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129202"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het azure AD-aanmeldingslogboekenschema interpreteren in Azure Monitor
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het schema voor logboek registraties van Azure AD interpreteren in Azure Monitor
 
-In dit artikel wordt het azure active directory-aanmeldingslogboekschema (Azure AD) in Azure Monitor beschreven. De meeste informatie die betrekking heeft op aanmeldingen, *Properties* wordt weergegeven `records` onder het kenmerk Eigenschappen van het object.
+In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek schema in Azure Monitor beschreven. De meeste informatie die betrekking heeft op aanmeldingen, vindt u in het kenmerk *Eigenschappen* van het `records` object.
 
 
 ```json
@@ -146,28 +146,28 @@ In dit artikel wordt het azure active directory-aanmeldingslogboekschema (Azure 
 | Veldnaam | Beschrijving |
 |------------|-------------|
 | Time | De datum en tijd, in UTC. |
-| ResourceId | Deze waarde is niet in kaart gebracht en u dit veld veilig negeren.  |
-| OperationName | Voor aanmeldingen is deze waarde altijd *aanmeldingsactiviteit*. |
-| OperationVersion (OperationVersion) | De REST API-versie die door de client wordt aangevraagd. |
-| Categorie | Voor aanmeldingen is deze waarde altijd *SignIn*. | 
-| TenantId | De tenant-GUID die is gekoppeld aan de logboeken. |
-| ResultType | Het resultaat van de aanmeldingsbewerking kan *succes* of *falen*zijn. | 
-| ResultSignature | Bevat de eventuele foutcode voor de aanmeldingsbewerking. |
-| ResultaatBeschrijving | Geeft de foutbeschrijving voor de aanmeldingsbewerking. |
-| risicoDetail | risicoDetail | Geeft de 'reden' achter een specifieke status van een riskante gebruiker, aanmelding of een risicodetectie. De mogelijke waarden `none` `adminGeneratedTemporaryPassword`zijn: `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser` `userPerformedSecuredPasswordChange` `adminConfirmedSigninCompromised`, `unknownFutureValue`, , , , , . De `none` waarde betekent dat er tot nu toe geen actie is uitgevoerd op de gebruiker of aanmelding. <br>**Let op:** Voor details voor deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties geven `hidden`de waarde terug. |
-| riskEventTypes | riskEventTypes | Risicodetectietypen die zijn gekoppeld aan de aanmelding. De mogelijke waarden `unlikelyTravel` `anonymizedIPAddress`zijn: `unfamiliarFeatures` `malwareInfectedIPAddress`, `suspiciousIPAddress` `leakedCredentials`, `investigationsThreatIntelligence` `generic`, `maliciousIPAddress` `unknownFutureValue`, , , , en . |
-| risico'sGeaggregateerd | risicoNiveau | Geaggregeerd risiconiveau. De mogelijke waarden `none` `low`zijn: `high` `hidden`, `unknownFutureValue`, `medium`, , en . De `hidden` waarde betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD-identiteitsbeveiliging. **Let op:** Details voor deze eigenschap zijn alleen beschikbaar voor Azure AD Premium P2-klanten. Alle andere klanten `hidden`worden teruggestuurd. |
-| riskLevelDuringSignIn | risicoNiveau | Risiconiveau tijdens het aanmelden. De mogelijke waarden `none` `low`zijn: `high` `hidden`, `unknownFutureValue`, `medium`, , en . De `hidden` waarde betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD-identiteitsbeveiliging. **Let op:** Details voor deze eigenschap zijn alleen beschikbaar voor Azure AD Premium P2-klanten. Alle andere klanten `hidden`worden teruggestuurd. |
-| risicoStaat | risicoStaat | Rapporteert de status van de riskante gebruiker, aanmelding of een risicodetectie. De mogelijke waarden `none`zijn: `dismissed` `atRisk`, `confirmedCompromised` `unknownFutureValue`, `confirmedSafe` `remediated`, , , , . |
-| DurationMs |  Deze waarde is niet in kaart gebracht en u dit veld veilig negeren. |
-| CallerIpAddress | Het IP-adres van de klant die het verzoek heeft ingediend. | 
-| CorrelationId | De optionele GUID die door de client wordt doorgegeven. Deze waarde kan helpen bij het correleren van client-side operations met server-side operations, en het is handig wanneer u logboeken bijhoudt die services overspannen. |
-| Identiteit | De identiteit van het token dat werd gepresenteerd toen u het verzoek indiende. Het kan een gebruikersaccount, systeemaccount of serviceprincipal zijn. |
-| Niveau | Geeft het type bericht. Voor audit is het altijd *informatief.* |
-| Locatie | Geeft de locatie van de aanmeldingsactiviteit weer. |
-| Eigenschappen | Hier worden alle eigenschappen weergegeven die zijn gekoppeld aan aanmeldingen. Zie [Microsoft Graph API Reference voor](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)meer informatie. Dit schema gebruikt dezelfde kenmerkenals de aanmeldingsbron voor leesbaarheid.
+| ResourceId | Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren.  |
+| OperationName | Voor aanmeldingen is deze waarde altijd *aanmeldings activiteit*. |
+| OperationVersion | De REST API versie die door de client is aangevraagd. |
+| Categorie | Voor aanmeldingen is deze waarde altijd *Aanmelden*. | 
+| TenantId | De Tenant-GUID die is gekoppeld aan de logboeken. |
+| ResultType | Het resultaat van de aanmeldings bewerking kan *slagen* of *mislukken*. | 
+| ResultSignature | Bevat de fout code, indien aanwezig, voor de aanmeldings bewerking. |
+| ResultDescription | Bevat de fout beschrijving voor de aanmeldings bewerking. |
+| riskDetail | riskDetail | Biedt de ' reason ' achter een specifieke status van een Risk ante gebruiker, aanmelding of een risico detectie. De mogelijke waarden zijn: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. De waarde `none` betekent dat er geen actie is uitgevoerd voor de gebruiker of zich tot nu toe heeft aangemeld. <br>**Opmerking:** Voor de details van deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties retour neren de `hidden`waarde. |
+| riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`en `unknownFutureValue`. |
+| riskLevelAggregated | riskLevel | Samengevoegd risico niveau. De mogelijke waarden zijn: `none`, `low`, `medium`, `high` `hidden`, en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden`. |
+| riskLevelDuringSignIn | riskLevel | Risico niveau tijdens het aanmelden. De mogelijke waarden zijn: `none`, `low`, `medium`, `high` `hidden`, en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden`. |
+| riskState | riskState | Hiermee wordt de status van de Risk ante gebruiker, het aanmelden of een risico detectie gerapporteerd. De mogelijke waarden zijn: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
+| DurationMs |  Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren. |
+| CallerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
+| CorrelationId | De optionele GUID die door de client wordt door gegeven. Deze waarde kan bijdragen aan de activiteiten aan de client zijde met bewerkingen aan de server zijde en is handig wanneer u Logboeken traceert die services omvatten. |
+| Identiteit | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
+| Niveau | Geeft het type bericht. Voor audit is het altijd *informatief*. |
+| Locatie | Hiermee wordt de locatie van de aanmeldings activiteit verstrekt. |
+| Eigenschappen | Een lijst met alle eigenschappen die aan aanmeldingen zijn gekoppeld. Zie [Microsoft Graph API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)voor meer informatie. In dit schema worden dezelfde kenmerk namen gebruikt als voor de aanmeldings resource, voor de Lees baarheid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Controlelogboekenschema interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
-* [Lees meer over Diagnostische logboeken voor Azure](../../azure-monitor/platform/platform-logs-overview.md)
+* [Schema van audit logboeken interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Meer informatie over Azure platform-logboeken](../../azure-monitor/platform/platform-logs-overview.md)

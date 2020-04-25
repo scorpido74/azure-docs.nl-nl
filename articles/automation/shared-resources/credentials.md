@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114289"
+ms.locfileid: "82136682"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Referenties beheren in Azure Automation
 
@@ -41,7 +41,7 @@ Als onderdeel van de Azure PowerShell AZ-module worden de cmdlets in de volgende
 
 ## <a name="activities-used-to-access-credentials"></a>Activiteiten die worden gebruikt voor toegang tot referenties
 
-De activiteiten in de volgende tabel worden gebruikt voor toegang tot referenties in runbooks en DSC-configuraties.
+De activiteiten in de volgende tabel worden gebruikt voor toegang tot referenties in grafische runbooks en DSC-configuraties. Zie voor beelden van het gebruik van activiteiten [grafisch ontwerpen in azure Automation](../automation-graphical-authoring-intro.md#activities).
 
 | Activiteit | Beschrijving |
 |:--- |:--- |

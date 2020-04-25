@@ -1,44 +1,44 @@
 ---
-title: Gegevens overdragen van of naar Azure Files met AzCopy v10 | Microsoft Documenten
-description: Gegevens overbrengen met AzCopy en bestandsopslag.
+title: Gegevens overdragen van of naar Azure Files met behulp van AzCopy V10 toevoegen | Microsoft Docs
+description: Gegevens overdragen met AzCopy en file storage.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 59f5733009424c60f2b9c48e68d70bbc29ad7095
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7f47dd05035772744fb212ef8914b25979af61e2
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263366"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137158"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overbrengen met AzCopy en bestandsopslag 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en File Storage 
 
-AzCopy is een command-line hulpprogramma dat u gebruiken om blobs of bestanden te kopiëren van of naar een opslagaccount. Dit artikel bevat voorbeeldopdrachten die werken met Azure Files.
+AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren van blobs of bestanden naar of van een opslag account. Dit artikel bevat voorbeeld opdrachten die samen werken met Azure Files.
 
-Voordat u begint, raadpleegt u het artikel Aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy te downloaden en vertrouwd te raken met de tool.
+Voordat u begint, raadpleegt u het artikel aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy te downloaden en vertrouwd te raken met het hulp programma.
 
 > [!TIP]
-> De voorbeelden in dit artikel omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
+> In de voor beelden in dit artikel worden Path-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
-## <a name="create-file-shares"></a>Bestandsshares maken
+## <a name="create-file-shares"></a>Bestands shares maken
 
-U de [opdracht azcopy make](storage-ref-azcopy-make.md) gebruiken om een bestandsshare te maken. In het voorbeeld in deze `myfileshare`sectie wordt een bestandsshare met de naam .
+U kunt de [azcopy](storage-ref-azcopy-make.md) maken om een bestands share te maken. In het voor beeld in deze sectie wordt een bestands `myfileshare`share met de naam gemaakt.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>'` |
-| **Voorbeeld** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Hierbij** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
-Zie [azcopy maken](storage-ref-azcopy-make.md)voor gedetailleerde referentiedocumenten.
+Zie [azcopy maken](storage-ref-azcopy-make.md)voor gedetailleerde naslag documentatie.
 
 ## <a name="upload-files"></a>Bestanden uploaden
 
-U de [azcopy-opdracht](storage-ref-azcopy-copy.md) gebruiken om bestanden en mappen te uploaden vanaf uw lokale computer.
+U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om bestanden en mappen te uploaden van uw lokale computer.
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
 > * Bestand uploaden
@@ -47,285 +47,285 @@ Deze sectie bevat de volgende voorbeelden:
 > * Een specifiek bestand uploaden
 
 > [!TIP]
-> U uw uploadbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+> U kunt de upload bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
 > |Scenario|Markering|
 > |---|---|
-> |Kopieer toegangscontrolelijsten (ACL's) samen met de bestanden.|**--behouden-smb-machtigingen**=\[waar\|vals\]|
-> |Kopieer smb-eigendomsinformatie samen met de bestanden.|**--preserve-smb-info true false --preserve-smb-info true false --preserve-smb-info**=\[true\|false --\]|
-> |Upload bestanden als Blobs toevoegen of Paginablobs.|**--blob-type**=\[BlockBlob\|\|PageBlob AppendBlob\]|
-> |Upload naar een specifieke toegangslaag (zoals de archieflaag).|**--block-blob-tier**=\[\|Geen\|\|Hot Cool Archive\]|
+> |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--Pres Erve-SMB-machtigingen**=\[True\|False\]|
+> |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--Pres Erve-SMB-info**=\[True\|False\]|
+> |Upload bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Upload naar een specifieke Access-laag (zoals de laag archief).|**--blok-BLOB-laag**=\[geen\|Hot\|-\|koud archief\]|
 > 
-> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
+> Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
 > [!NOTE]
-> AzCopy berekent en bewaart de md5-hashcode van het bestand niet automatisch. Als u wilt dat AzCopy dat `--put-md5` doet, voeg dan de vlag toe aan elke kopieeropdracht. Op die manier berekent AzCopy, wanneer het bestand wordt gedownload, een MD5-hash voor gedownloade gegevens `Content-md5` en controleert of de MD5-hash die is opgeslagen in de eigenschap van het bestand overeenkomt met de berekende hash.
+> De MD5-hash-code van het bestand wordt niet automatisch door AzCopy berekend en opgeslagen. Als u dit wilt doen, voegt u de `--put-md5` markering toe aan elke Kopieer opdracht. Op die manier wordt, wanneer het bestand wordt gedownload, AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5- `Content-md5` hash die is opgeslagen in de eigenschap van het bestand overeenkomt met de berekende hash.
 
 ### <a name="upload-a-file"></a>Bestand uploaden
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name><SAS-token>'` |
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
-U een bestand ook uploaden met een wildcardsymbool (*) overal in het bestandspad of de bestandsnaam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`, `C:\my*\*.txt`of .
+U kunt ook een bestand uploaden met behulp van een Joker teken (*) ergens in het bestandspad of de bestands naam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`, of `C:\my*\*.txt`.
 
 ### <a name="upload-a-directory"></a>Een map uploaden
 
-In dit voorbeeld wordt een map (en alle bestanden in die map) gekopieerd naar een bestandsshare. Het resultaat is een map in het bestandsaandeel met dezelfde naam.
+In dit voor beeld wordt een map (en alle bestanden in die map) naar een bestands share gekopieerd. Het resultaat is een map in de bestands share met dezelfde naam.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
 
-Als u wilt kopiëren naar een map in de bestandsshare, geeft u de naam van die map op in uw opdrachttekenreeks.
+Als u wilt kopiëren naar een map in de bestands share, geeft u alleen de naam van die map op in de opdracht teken reeks.
 
 |    |     |
 |--------|-----------|
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
 
-Als u de naam opgeeft van een map die niet in de bestandsshare bestaat, maakt AzCopy een nieuwe map met die naam.
+Als u de naam opgeeft van een map die niet voor komt in de bestands share, maakt AzCopy een nieuwe map met die naam.
 
 ### <a name="upload-the-contents-of-a-directory"></a>De inhoud van een map uploaden
 
-U de inhoud van een map uploaden zonder de inhoudsmap zelf te kopiëren met behulp van het wildcardsymbool (*).
+U kunt de inhoud van een map uploaden zonder de bovenliggende map zelf te kopiëren met behulp van het Joker teken (*).
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy '<local-directory-path>/*' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>` |
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> Voeg de `--recursive` vlag toe om bestanden in alle submappen te uploaden.
+> Voeg de `--recursive` vlag toe om bestanden te uploaden in alle submappen.
 
 ### <a name="upload-specific-files"></a>Specifieke bestanden uploaden
 
-U volledige bestandsnamen opgeven of gedeeltelijke namen met jokertekens (*) gebruiken.
+U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestandsnamen opgeven
+#### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
-Gebruik de opdracht [azcopy-kopie](storage-ref-azcopy-copy.md) met de `--include-path` optie. Afzonderlijke bestandsnamen scheiden met behulp`;`van een puntkomma ( ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met `--include-path` de optie. Scheid afzonderlijke bestands namen met een punt komma (`;`).
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-path <semicolon-separated-file-list>` |
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
 
-In dit voorbeeld draagt `C:\myDirectory\photos` AzCopy `C:\myDirectory\documents\myFile.txt` de directory en het bestand over. U moet de `--recursive` optie opnemen om `C:\myDirectory\photos` alle bestanden in de map over te zetten.
+In dit voor beeld worden de `C:\myDirectory\photos` map en het `C:\myDirectory\documents\myFile.txt` bestand door AzCopy overgedragen. U moet de optie voor `--recursive` het overdragen van alle bestanden in de `C:\myDirectory\photos` map toevoegen.
 
-U bestanden ook `--exclude-path` uitsluiten met behulp van de optie. Zie [naslagdocumenten voor kopiëren](storage-ref-azcopy-copy.md) kopiëren voor meer informatie.
+U kunt ook bestanden uitsluiten met behulp `--exclude-path` van de optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-#### <a name="use-wildcard-characters"></a>Jokertekens gebruiken
+#### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
-Gebruik de opdracht [azcopy-kopie](storage-ref-azcopy-copy.md) met de `--include-pattern` optie. Geef gedeeltelijke namen op die de jokertekens bevatten. Aparte namen met behulp`;`van een semicolin ( ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met `--include-pattern` de optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met behulp van een`;`semicolin ().
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Hierbij** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-U bestanden ook `--exclude-pattern` uitsluiten met behulp van de optie. Zie [naslagdocumenten voor kopiëren](storage-ref-azcopy-copy.md) kopiëren voor meer informatie.
+U kunt ook bestanden uitsluiten met behulp `--exclude-pattern` van de optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-De `--include-pattern` `--exclude-pattern` opties en opties zijn alleen van toepassing op bestandsnamen en niet op het pad.  Als u alle tekstbestanden wilt kopiëren die in een `–recursive` mapstructuur bestaan, gebruikt u de `–include-pattern` optie `*.txt` om de hele mapstructuur op te halen en vervolgens de tekstbestanden en opgeven te gebruiken en op te geven om alle tekstbestanden op te halen.
+De `--include-pattern` opties `--exclude-pattern` en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
 
 ## <a name="download-files"></a>Bestanden downloaden
 
-U de [azcopy-opdracht](storage-ref-azcopy-copy.md) gebruiken om bestanden, mappen en bestandsshares te downloaden naar uw lokale computer.
+U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om bestanden, mappen en bestands shares te downloaden naar uw lokale computer.
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
 > * Bestand downloaden
-> * Een map downloaden
+> * Een directory downloaden
 > * De inhoud van een map downloaden
 > * Specifieke bestanden downloaden
 
 > [!TIP]
-> U uw downloadbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+> U kunt uw download bewerking aanpassen door optionele vlaggen te gebruiken. Hier volgen enkele voor beelden.
 >
 > |Scenario|Markering|
 > |---|---|
-> |Kopieer toegangscontrolelijsten (ACL's) samen met de bestanden.|**--behouden-smb-machtigingen**=\[waar\|vals\]|
-> |Kopieer smb-eigendomsinformatie samen met de bestanden.|**--preserve-smb-info true false --preserve-smb-info true false --preserve-smb-info**=\[true\|false --\]|
-> |Bestanden automatisch decomprimeeren.|**--decomprimeren**=\[gzip\|leeglopen\]|
+> |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--Pres Erve-SMB-machtigingen**=\[True\|False\]|
+> |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--Pres Erve-SMB-info**=\[True\|False\]|
+> |Bestanden automatisch decomprimeren.|**--decomprimeren**|
 > 
-> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
+> Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
 > [!NOTE]
-> Als `Content-md5` de eigenschapswaarde van een bestand een hash bevat, berekent AzCopy een MD5-hash voor gedownloade `Content-md5` gegevens en controleert of de MD5-hash die is opgeslagen in de eigenschap van het bestand overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de download, tenzij `--check-md5=NoCheck` `--check-md5=LogOnly` u dit gedrag overschrijft door een append of de kopieeropdracht toe te passen.
+> Als de `Content-md5` eigenschaps waarde van een bestand een hash bevat, wordt in AZCOPY een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5 `Content-md5` -hash die is opgeslagen in de eigenschap van het bestand overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load tenzij u dit gedrag overschrijft `--check-md5=NoCheck` door `--check-md5=LogOnly` toe te voegen of aan de Kopieer opdracht.
 
 ### <a name="download-a-file"></a>Bestand downloaden
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' '<local-file-path>'` |
-| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory\myTextFile.txt'` |
+| **Hierbij** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory\myTextFile.txt'` |
 
-### <a name="download-a-directory"></a>Een map downloaden
+### <a name="download-a-directory"></a>Een directory downloaden
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' '<local-directory-path>' --recursive` |
-| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'  --recursive` |
+| **Hierbij** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'  --recursive` |
 
-Dit voorbeeld resulteert in `C:\myDirectory\myFileShareDirectory` een map met de naam met de naam van alle gedownloade bestanden.
+Dit voor beeld resulteert in een map `C:\myDirectory\myFileShareDirectory` met de naam die alle gedownloade bestanden bevat.
 
 ### <a name="download-the-contents-of-a-directory"></a>De inhoud van een map downloaden
 
-U de inhoud van een map downloaden zonder de inhoudvan de map zelf te kopiëren met behulp van het wildcardsymbool (*).
+U kunt de inhoud van een map downloaden zonder de bovenliggende map zelf te kopiëren met behulp van het Joker teken (*).
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/*<SAS-token>' '<local-directory-path>/'` |
-| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'` |
+| **Hierbij** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'` |
 
 > [!NOTE]
-> Sluit de `--recursive` vlag toe om bestanden in alle submappen te downloaden.
+> Voeg de `--recursive` vlag toe om bestanden in alle submappen te downloaden.
 
 ### <a name="download-specific-files"></a>Specifieke bestanden downloaden
 
-U volledige bestandsnamen opgeven of gedeeltelijke namen met jokertekens (*) gebruiken.
+U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Joker tekens (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestandsnamen opgeven
+#### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
-Gebruik de opdracht [azcopy-kopie](storage-ref-azcopy-copy.md) met de `--include-path` optie. Afzonderlijke bestandsnamen scheiden met behulp`;`van een semicolin ( ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met `--include-path` de optie. Scheid afzonderlijke bestands namen met behulp van een`;`semicolin ().
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
-| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
+| **Hierbij** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-In dit voorbeeld draagt `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` AzCopy `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` de directory en het bestand over. U moet de `--recursive` optie opnemen om `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` alle bestanden in de map over te zetten.
+In dit voor beeld worden de `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` map en het `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` bestand door AzCopy overgedragen. U moet de optie voor `--recursive` het overdragen van alle bestanden in de `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` map toevoegen.
 
-U bestanden ook `--exclude-path` uitsluiten met behulp van de optie. Zie [naslagdocumenten voor kopiëren](storage-ref-azcopy-copy.md) kopiëren voor meer informatie.
+U kunt ook bestanden uitsluiten met behulp `--exclude-path` van de optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-#### <a name="use-wildcard-characters"></a>Jokertekens gebruiken
+#### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
-Gebruik de opdracht [azcopy-kopie](storage-ref-azcopy-copy.md) met de `--include-pattern` optie. Geef gedeeltelijke namen op die de jokertekens bevatten. Aparte namen met behulp`;`van een semicolin ( ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met `--include-pattern` de optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met behulp van een`;`semicolin ().
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Voorbeeld** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Hierbij** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-U bestanden ook `--exclude-pattern` uitsluiten met behulp van de optie. Zie [naslagdocumenten voor kopiëren](storage-ref-azcopy-copy.md) kopiëren voor meer informatie.
+U kunt ook bestanden uitsluiten met behulp `--exclude-pattern` van de optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-De `--include-pattern` `--exclude-pattern` opties en opties zijn alleen van toepassing op bestandsnamen en niet op het pad.  Als u alle tekstbestanden wilt kopiëren die in een `–recursive` mapstructuur bestaan, gebruikt u de `–include-pattern` optie `*.txt` om de hele mapstructuur op te halen en vervolgens de tekstbestanden en opgeven te gebruiken en op te geven om alle tekstbestanden op te halen.
+De `--include-pattern` opties `--exclude-pattern` en zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de `–recursive` optie om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft `*.txt` u op om alle tekst bestanden op te halen.
 
 ## <a name="copy-files-between-storage-accounts"></a>Bestanden kopiëren tussen opslagaccounts
 
-U AzCopy gebruiken om bestanden naar andere opslagaccounts te kopiëren. De kopieerbewerking is synchroon, dus wanneer de opdracht wordt geretourneerd, geeft dit aan dat alle bestanden zijn gekopieerd.
+U kunt AzCopy gebruiken om bestanden naar andere opslag accounts te kopiëren. De Kopieer bewerking is synchroon, dus wanneer de opdracht wordt geretourneerd. Dit geeft aan dat alle bestanden zijn gekopieerd.
 
-AzCopy maakt gebruik van [server-naar-server](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API's,](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)zodat gegevens rechtstreeks tussen opslagservers worden gekopieerd. Deze kopieerbewerkingen maken geen gebruik van de netwerkbandbreedte van uw computer. U de doorvoer van deze bewerkingen `AZCOPY_CONCURRENCY_VALUE` verhogen door de waarde van de omgevingsvariabele in te stellen. Zie [Doorvoer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
+AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Een bestand naar een ander opslagaccount kopiëren
-> * Een map naar een ander opslagaccount kopiëren
-> * Een bestandsshare naar een ander opslagaccount kopiëren
-> * Alle bestandsshares, mappen en bestanden naar een ander opslagaccount kopiëren
+> * Een bestand kopiëren naar een ander opslag account
+> * Een map kopiëren naar een ander opslag account
+> * Een bestands share kopiëren naar een ander opslag account
+> * Alle bestands shares, directory's en bestanden kopiëren naar een ander opslag account
 
 > [!TIP]
-> U uw kopieerbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+> U kunt uw Kopieer bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
 > |Scenario|Markering|
 > |---|---|
-> |Kopieer toegangscontrolelijsten (ACL's) samen met de bestanden.|**--behouden-smb-machtigingen**=\[waar\|vals\]|
-> |Kopieer smb-eigendomsinformatie samen met de bestanden.|**--preserve-smb-info true false --preserve-smb-info true false --preserve-smb-info**=\[true\|false --\]|
-> |Bestanden kopiëren als Blobs toevoegen of Paginablobs.|**--blob-type**=\[BlockBlob\|\|PageBlob AppendBlob\]|
-> |Kopiëren naar een specifieke toegangslaag (zoals de archieflaag).|**--block-blob-tier**=\[\|Geen\|\|Hot Cool Archive\]|
+> |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--Pres Erve-SMB-machtigingen**=\[True\|False\]|
+> |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--Pres Erve-SMB-info**=\[True\|False\]|
+> |Kopieer bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Kopiëren naar een specifieke toegangs laag (zoals de laag archief).|**--blok-BLOB-laag**=\[geen\|Hot\|-\|koud archief\]|
 > 
-> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
+> Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
-### <a name="copy-a-file-to-another-storage-account"></a>Een bestand naar een ander opslagaccount kopiëren
+### <a name="copy-a-file-to-another-storage-account"></a>Een bestand kopiëren naar een ander opslag account
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
-| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
+| **Hierbij** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
-### <a name="copy-a-directory-to-another-storage-account"></a>Een map naar een ander opslagaccount kopiëren
+### <a name="copy-a-directory-to-another-storage-account"></a>Een map kopiëren naar een ander opslag account
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="copy-a-file-share-to-another-storage-account"></a>Een bestandsshare naar een ander opslagaccount kopiëren
+### <a name="copy-a-file-share-to-another-storage-account"></a>Een bestands share kopiëren naar een ander opslag account
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Alle bestandsshares, mappen en bestanden naar een ander opslagaccount kopiëren
+### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Alle bestands shares, directory's en bestanden kopiëren naar een ander opslag account
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
-| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ## <a name="synchronize-files"></a>Bestanden synchroniseren
 
-U de inhoud van een bestandsshare synchroniseren met een andere bestandsshare. U de inhoud van een map in een bestandsshare ook synchroniseren met de inhoud van een map die zich in een andere bestandsshare bevindt. Synchronisatie is eenrichtingsverkeer. Met andere woorden, u kiest welke van deze twee eindpunten de bron is en welke de bestemming is. Synchronisatie maakt ook gebruik van server naar server API's.
+U kunt de inhoud van een bestands share synchroniseren met een andere bestands share. U kunt ook de inhoud van een map in een bestands share synchroniseren met de inhoud van een map die zich in een andere bestands share bevindt. Synchronisatie is in één richting. Met andere woorden, u kunt kiezen welke van deze twee eind punten de bron is en welke het doel is. Synchronisatie gebruikt ook server-naar-server-Api's.
 
 > [!NOTE]
-> Momenteel wordt dit scenario alleen ondersteund voor accounts die geen hiërarchische naamruimte hebben. De huidige versie van AzCopy synchroniseert niet tussen Azure Files en Blob Storage.
+> Dit scenario wordt momenteel alleen ondersteund voor accounts die geen hiërarchische naam ruimte hebben. De huidige release van AzCopy synchroniseert niet tussen Azure Files en Blob Storage.
 
-Met [de opdracht Synchronisatie](storage-ref-azcopy-sync.md) worden bestandsnamen en laatst gewijzigde tijdstempels vergeleken. Stel `--delete-destination` de optionele vlag `true` in `prompt` op een waarde van of om bestanden in de doelmap te verwijderen als deze bestanden niet meer bestaan in de bronmap.
+Met de opdracht [Sync](storage-ref-azcopy-sync.md) worden bestands namen en tijds tempels met de laatste wijziging vergeleken. Stel de `--delete-destination` optionele vlag in op een waarde `true` van `prompt` of om bestanden in de doelmap te verwijderen als deze bestanden niet meer in de bron directory aanwezig zijn.
 
-Als u `--delete-destination` de `true` vlag instelt op AzCopy, worden bestanden verwijderd zonder een prompt te geven. Als u een prompt wilt weergeven voordat AzCopy `--delete-destination` een `prompt`bestand verwijdert, stelt u de vlag in op .
+Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden verwijderd zonder dat u een prompt hoeft op te geven. Als u wilt dat er een prompt wordt weer gegeven voordat AzCopy een bestand verwijdert `--delete-destination` , stelt `prompt`u de vlag in op.
 
 > [!TIP]
-> U uw synchronisatiebewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+> U kunt de synchronisatie bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
 > |Scenario|Markering|
 > |---|---|
-> |Geef aan hoe strikt MD5 hashes moeten worden gevalideerd bij het downloaden.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
+> |Opgeven hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden.|**--check-MD5**=\[-controle\|op de\|aanmeldings\|FailIfDifferent FailIfDifferentOrMissing\]|
 > |Bestanden uitsluiten op basis van een patroon.|**--exclude-pad**|
-> |Geef op hoe gedetailleerd u wilt dat uw logboekvermeldingen met betrekking tot synchronisatie worden.|**--log-level**=\[\|WARNING\|\|ERROR INFO NONE --log-level WARNING\]|
+> |Geef op hoe gedetailleerd u de logboek vermeldingen voor synchronisatie wilt maken.|**--**=\[waarschuwings\|fout\|info\|op logboek niveau geen\]|
 > 
-> Zie [opties](storage-ref-azcopy-sync.md#options)voor een volledige lijst.
+> Zie [Opties](storage-ref-azcopy-sync.md#options)voor een volledige lijst.
 
-### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Een bestandsshare bijwerken met wijzigingen in een ander bestandsshare
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Een bestands share bijwerken met wijzigingen in een andere bestands share
 
-De eerste bestandsshare die in deze opdracht wordt weergegeven, is de bron. De tweede is de bestemming.
+De eerste bestands share die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Een map bijwerken met wijzigingen in een map in een ander bestandsaandeel
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Een Directory bijwerken met wijzigingen in een map in een andere bestands share
 
-De eerste map die in deze opdracht wordt weergegeven, is de bron. De tweede is de bestemming.
+De eerste map die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>Een bestandsshare bijwerken naar de inhoud van een momentopname van een share
+### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>Een bestands share bijwerken zodat deze overeenkomt met de inhoud van een moment opname van een share
 
-De eerste bestandsshare die in deze opdracht wordt weergegeven, is de bron. Aan het einde van de URI `&sharesnapshot=` wordt de tekenreeks toegevoegd, gevolgd door de **datumtijdwaarde** van de momentopname. 
+De eerste bestands share die wordt weer gegeven in deze opdracht is de bron. Voeg aan het einde van de URI de teken reeks `&sharesnapshot=` toe gevolgd door de **datum/tijd** -waarde van de moment opname. 
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Hierbij** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-Zie [Overzicht van momentopnamen voor delen voor Azure-bestanden voor](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)meer informatie over momentopnamen voor delen.
+Zie [overzicht van moment opnamen van shares voor Azure files voor](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)meer informatie over moment opnamen van shares.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer voorbeelden vindt u in een van deze artikelen:
+Meer voor beelden vindt u in een van deze artikelen:
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 
-- [Gegevens overbrengen met AzCopy- en blob-opslag](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
 
-- [Gegevens overbrengen met AzCopy- en Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
 
-- [AzCopy configureren, optimaliseren en oplossen](storage-use-azcopy-configure.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)

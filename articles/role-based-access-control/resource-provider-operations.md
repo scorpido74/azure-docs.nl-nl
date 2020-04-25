@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117604"
+ms.locfileid: "82133158"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -4284,7 +4284,7 @@ Azure-service: [Event grid](../event-grid/index.yml)
 > |  | **domeinen/privateLinkResources** |  |
 > | Bewerking | Micro soft. EventGrid/domains/privateLinkResources/lezen | PrivateLinkResources voor domeinen ophalen of weer geven |
 > |  | **domeinen/providers/micro soft. Insights/logDefinitions** |  |
-> | Bewerking | Micro soft. EventGrid/domains/providers/micro soft. Insights/logDefinitions/lezen | Toegang tot Diagnostische logboeken toestaan |
+> | Bewerking | Micro soft. EventGrid/domains/providers/micro soft. Insights/logDefinitions/lezen | Hiermee staat u toegang tot bron Logboeken toe |
 > |  | **domeinen/providers/micro soft. Insights/metricDefinitions** |  |
 > | Bewerking | Micro soft. EventGrid/domains/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de beschik bare metrische gegevens voor domeinen opgehaald |
 > |  | **domeinen/onderwerpen** |  |
@@ -4352,7 +4352,7 @@ Azure-service: [Event grid](../event-grid/index.yml)
 > | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/diagnosticSettings/lezen | Hiermee wordt de diagnostische instelling voor systeem onderwerpen opgehaald |
 > | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/diagnosticSettings/schrijven | Hiermee wordt de diagnostische instelling voor systeem onderwerpen gemaakt of bijgewerkt |
 > |  | **systemTopics/providers/micro soft. Insights/logDefinitions** |  |
-> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/logDefinitions/lezen | Toegang tot Diagnostische logboeken toestaan |
+> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/logDefinitions/lezen | Hiermee staat u toegang tot bron Logboeken toe |
 > |  | **systemTopics/providers/micro soft. Insights/metricDefinitions** |  |
 > | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de beschik bare metrische gegevens opgehaald voor systeem onderwerpen |
 > |  | **onderwerp** |  |
@@ -4376,7 +4376,7 @@ Azure-service: [Event grid](../event-grid/index.yml)
 > | Bewerking | Micro soft. EventGrid/topics/providers/micro soft. Insights/diagnosticSettings/lezen | Hiermee wordt de diagnostische instelling voor onderwerpen opgehaald |
 > | Bewerking | Micro soft. EventGrid/topics/providers/micro soft. Insights/diagnosticSettings/schrijven | Hiermee wordt de diagnostische instelling voor onderwerpen gemaakt of bijgewerkt |
 > |  | **onderwerpen/providers/micro soft. Insights/logDefinitions** |  |
-> | Bewerking | Micro soft. EventGrid/topics/providers/micro soft. Insights/logDefinitions/lezen | Toegang tot Diagnostische logboeken toestaan |
+> | Bewerking | Micro soft. EventGrid/topics/providers/micro soft. Insights/logDefinitions/lezen | Hiermee staat u toegang tot bron Logboeken toe |
 > |  | **onderwerpen/providers/micro soft. Insights/metricDefinitions** |  |
 > | Bewerking | Micro soft. EventGrid/topics/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de beschik bare metrische gegevens opgehaald voor onderwerpen |
 > |  | **topictypes** |  |

@@ -1,78 +1,81 @@
 ---
-title: Verzamel aangepaste statistieken voor Linux VM met de InfluxData Telegraf-agent
-description: Instructies voor het implementeren van de InfluxData Telegraf-agent op een Linux-vm in Azure en configureren van de agent om statistieken te publiceren naar Azure Monitor.
+title: Aangepaste metrische gegevens voor Linux-VM verzamelen met de InfluxData-Telegraf-agent
+description: Instructies voor het implementeren van de InfluxData-telegrafie-agent op een virtuele Linux-machine in Azure en het configureren van de agent voor het publiceren van metrische gegevens naar Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5ea32fb198a61391e1be3648d1d2d2e829a7214
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655460"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137260"
 ---
-# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Verzamel aangepaste statistieken voor een Linux-VM met de InfluxData Telegraf-agent
+# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
 
-Met Azure Monitor u aangepaste statistieken verzamelen via uw toepassingstelemetrie, een agent die wordt uitgevoerd op uw Azure-resources of zelfs externe bewakingssystemen. Vervolgens u ze rechtstreeks indienen bij Azure Monitor. In dit artikel vindt u instructies over het implementeren van de [InfluxData](https://www.influxdata.com/) Telegraf-agent op een Linux-vm in Azure en configureert u de agent om statistieken te publiceren naar Azure Monitor. 
+U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via de telemetrie van uw toepassing, een agent die wordt uitgevoerd op uw Azure-resources of zelfs buiten-de bewakings systemen. Vervolgens kunt u ze rechtstreeks naar Azure Monitor verzenden. In dit artikel vindt u instructies voor het implementeren van de [InfluxData](https://www.influxdata.com/) -telegrafie-agent op een virtuele Linux-machine in Azure en het configureren van de agent voor het publiceren van metrische gegevens naar Azure monitor. 
 
-## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf agent 
+## <a name="influxdata-telegraf-agent"></a>InfluxData-Telegraf-agent 
 
-[Telegraf](https://docs.influxdata.com/telegraf/) is een plug-in-gedreven agent die het verzamelen van statistieken uit meer dan 150 verschillende bronnen mogelijk maakt. Afhankelijk van welke workloads op uw VM worden uitgevoerd, u de agent configureren om gebruik te maken van gespecialiseerde invoerplug-ins om statistieken te verzamelen. Voorbeelden zijn MySQL, NGINX en Apache. Door uitvoerplug-ins te gebruiken, kan de agent vervolgens schrijven naar bestemmingen die u kiest. De Telegraf-agent is rechtstreeks geïntegreerd met de Azure Monitor custom metrics REST API. Het ondersteunt een Azure Monitor-uitvoerplug-in. Door deze plug-in te gebruiken, kan de agent workload-specifieke statistieken verzamelen op uw Linux-vm en deze als aangepaste statistieken indienen bij Azure Monitor. 
+[Telegrafie](https://docs.influxdata.com/telegraf/) is een door de toepassing aangedreven agent die het verzamelen van metrische gegevens van meer dan 150 verschillende bronnen mogelijk maakt. Afhankelijk van de werk belastingen die op uw virtuele machine worden uitgevoerd, kunt u de agent configureren voor het gebruik van gespecialiseerde invoer invoeg toepassingen voor het verzamelen van metrische gegevens. Voor beelden zijn MySQL, NGINX en Apache. Met behulp van uitvoer invoeg toepassingen kan de agent vervolgens naar bestemmingen schrijven die u kiest. De telegrafie agent heeft rechtstreeks geïntegreerd met de Azure Monitor aangepaste metrische gegevens REST API. Het ondersteunt een Azure Monitor-uitvoer-invoeg toepassing. Door deze invoeg toepassing te gebruiken, kan de agent specifieke metrische gegevens van uw Linux-machine verzamelen en als aangepaste metrische gegevens naar Azure Monitor verzenden. 
 
- ![Overzicht van telegraafagenten](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
+ ![Overzicht van de Telegraaf agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
-## <a name="send-custom-metrics"></a>Aangepaste statistieken verzenden 
+> [!NOTE]  
+> Aangepaste metrische gegevens worden niet ondersteund in alle regio's. [Hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) worden ondersteunde regio's vermeld
 
-Voor deze zelfstudie implementeren we een Linux VM die het Ubuntu 16.04 LTS-besturingssysteem draait. De Telegraf-agent wordt ondersteund voor de meeste Linux-besturingssystemen. Zowel Debian en RPM pakketten zijn beschikbaar samen met onverpakte Linux binaries op de [InfluxData download portal](https://portal.influxdata.com/downloads). Zie deze [Telegraf installatiegids](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor extra installatie-instructies en opties. 
+## <a name="send-custom-metrics"></a>Aangepaste metrische gegevens verzenden 
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Maak een nieuwe Linux VM: 
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer de optie **Een resource maken** in het navigatiedeelvenster aan de linkerkant. 
-1. Zoeken naar **virtuele machine**.  
-1. Selecteer **Ubuntu 16.04 LTS** en selecteer **Maken**. 
-1. Geef een VM-naam op zoals **MyTelegrafVM**.  
-1. Laat het schijftype als **SSD .** Geef vervolgens een **gebruikersnaam**op, zoals **azureuser.** 
-1. Selecteer **Wachtwoord**voor **verificatietype**. Voer vervolgens een wachtwoord in dat u later gebruikt om SSH in deze VM te gebruiken. 
-1. Kies om **nieuwe resourcegroep te maken**. Geef vervolgens een naam op, zoals **myResourceGroup**. Kies uw **locatie.** Selecteer vervolgens **OK**. 
+Een nieuwe virtuele Linux-machine maken: 
+
+1. Selecteer de optie **een resource maken** in het navigatie deel venster aan de linkerkant. 
+1. Zoek naar de **virtuele machine**.  
+1. Selecteer **Ubuntu 16,04 LTS** en selecteer **maken**. 
+1. Geef een VM-naam op, bijvoorbeeld **MyTelegrafVM**.  
+1. Zorg ervoor dat het schijf type is ingesteld op **SSD**. Geef vervolgens een **gebruikers naam**op, bijvoorbeeld **azureuser**. 
+1. Selecteer **wacht woord**bij **verificatie type**. Voer vervolgens een wacht woord in dat u later wilt gebruiken voor SSH in deze VM. 
+1. Kies voor het maken van een **nieuwe resource groep**. Geef vervolgens een naam op, bijvoorbeeld **myResourceGroup**. Kies uw **locatie**. Selecteer vervolgens **OK**. 
 
     ![Maken van een Ubuntu-VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
 1. Selecteer een grootte voor de VM. U kunt bijvoorbeeld filteren op **Rekentype** of **Schijftype**. 
 
-    ![Virtuele machine grootte Telegraph agent overzicht](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
+    ![Overzicht van de televirtual machine-grootte Telegraaf agent](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Selecteer **HTTP** en **SSH (22)** op de pagina **Instellingen** in**netwerkbeveiligingsgroep** >  **Network** > **Selecteer openbare binnenkomende poorten.** Laat de overige standaardwaarden staan en selecteer **OK**. 
+1. Selecteer op de pagina **instellingen** in de**beveiligings groep** >  **netwerk** > netwerk**open bare binnenkomende poorten**, selecteer **http** en **SSH (22)**. Laat de overige standaardwaarden staan en selecteer **OK**. 
 
 1. Selecteer **Maken** op de overzichtspagina om de implementatie van de VM te starten. 
 
-1. De VM wordt aan het dashboard van de Azure Portal vastgemaakt. Nadat de implementatie is voltooid, wordt het VM-overzicht automatisch geopend. 
+1. De VM wordt aan het dashboard van de Azure Portal vastgemaakt. Nadat de implementatie is voltooid, wordt de samen vatting van de VM automatisch geopend. 
 
-1. Navigeer in het vm-deelvenster naar het tabblad **Identiteit.** Controleer of uw vm een door het systeem toegewezen identiteit heeft ingesteld op **Aan**. 
+1. Ga in het deel venster VM naar het tabblad **identiteit** . Controleer of er een door het systeem toegewezen identiteit is ingesteld op **aan op**de VM. 
  
-    ![Telegraf VM-identiteitsvoorbeeld](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
+    ![Voor beeld van telegrafie VM-identiteit](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine 
 
 Maak een SSH-verbinding met de VM. Selecteer de knop **Verbinden** op de overzichtspagina van uw VM. 
 
-![Overzichtspagina telegraf VM](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
+![Overzichts pagina telegrafi VM](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-Laat op de pagina **Verbinding maken met virtuele machine** de standaardopties staan om verbinding te maken met de DNS-naam via poort 22. In **Login met het lokale VM-account**wordt een verbindingsopdracht weergegeven. Selecteer de knop om de opdracht te kopiëren. Het volgende voorbeeld laat zien hoe de SSH-verbindingsopdracht eruitziet: 
+Laat op de pagina **Verbinding maken met virtuele machine** de standaardopties staan om verbinding te maken met de DNS-naam via poort 22. Bij **Aanmelden met een lokaal VM-account**wordt een verbindings opdracht weer gegeven. Selecteer de knop om de opdracht te kopiëren. Het volgende voorbeeld laat zien hoe de SSH-verbindingsopdracht eruitziet: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
 ```
 
-Plak de opdracht SSH-verbinding in een shell, zoals Azure Cloud Shell of Bash op Ubuntu op Windows, of gebruik een SSH-client van uw keuze om de verbinding te maken. 
+Plak de opdracht SSH-verbinding in een shell, zoals Azure Cloud Shell of bash op Ubuntu in Windows, of gebruik een SSH-client van uw keuze om de verbinding te maken. 
 
 ## <a name="install-and-configure-telegraf"></a>Telegraf installeren en configureren 
 
-Als u het Telegraf Debian-pakket op de VM wilt installeren, voert u de volgende opdrachten uit van uw SSH-sessie: 
+Als u het telegrafe Debian-pakket wilt installeren op de VM, voert u de volgende opdrachten uit vanuit uw SSH-sessie: 
 
 ```cmd
 # download the package to the VM 
@@ -80,7 +83,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Het configuratiebestand van Telegraf definieert de activiteiten van Telegraf. Standaard wordt een voorbeeldconfiguratiebestand geïnstalleerd op het pad **/etc/telegraf/telegraf.conf.** Het voorbeeldconfiguratiebestand bevat alle mogelijke invoer- en uitvoerplug-ins. We maken echter een aangepast configuratiebestand en laten de agent het gebruiken door de volgende opdrachten uit te voeren: 
+Met het configuratie bestand van de telegrafie worden de bewerkingen van telegrafie gedefinieerd. Standaard wordt een voorbeeld configuratie bestand geïnstalleerd op het pad **/etc/Telegraf/Telegraf.conf**. In het voorbeeld configuratie bestand worden alle mogelijke invoeg toepassingen voor invoer en uitvoer weer gegeven. We gaan echter een aangepast configuratie bestand maken en de agent gebruiken door de volgende opdrachten uit te voeren: 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 
@@ -91,9 +94,9 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 ```
 
 > [!NOTE]  
-> De voorgaande code maakt slechts twee invoerplug-ins mogelijk: **cpu** en **mem**. U meer invoerplug-ins toevoegen, afhankelijk van de werkbelasting die op uw machine wordt uitgevoerd. Voorbeelden zijn Docker, MySQL en NGINX. Zie de sectie **Extra configuratie** voor een volledige lijst met invoerplug-ins. 
+> Met de voor gaande code worden slechts twee invoer invoeg toepassingen ingeschakeld: **CPU** en **mem**. U kunt meer invoer invoeg toepassingen toevoegen, afhankelijk van de werk belasting die op uw computer wordt uitgevoerd. Voor beelden zijn docker, MySQL en NGINX. Zie de sectie **aanvullende configuratie** voor een volledige lijst met invoer-invoeg toepassingen. 
 
-Ten slotte, om de agent te laten beginnen met het gebruik van de nieuwe configuratie, dwingen we de agent te stoppen en te beginnen met het uitvoeren van de volgende opdrachten: 
+Ten slotte zorgen we ervoor dat de agent wordt gestopt en gestart door de volgende opdrachten uit te voeren, zodat de agent met de nieuwe configuratie kan beginnen: 
 
 ```cmd
 # stop the telegraf agent on the VM 
@@ -101,36 +104,36 @@ sudo systemctl stop telegraf
 # start the telegraf agent on the VM to ensure it picks up the latest configuration 
 sudo systemctl start telegraf 
 ```
-Nu verzamelt de agent statistieken van elk van de opgegeven invoerplug-ins en zendt deze uit naar Azure Monitor. 
+De agent verzamelt nu metrische gegevens uit elk van de opgegeven invoer-invoeg toepassingen en stuurt deze naar Azure Monitor. 
 
-## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Uw Telegraf-statistieken uitzetten in de Azure-portal 
+## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Uw telegrafeer metrische gegevens in de Azure Portal afzetten 
 
 1. Open de [Azure Portal](https://portal.azure.com). 
 
-1. Navigeer naar het nieuwe **tabblad Monitor.** Selecteer vervolgens **Statistieken**.  
+1. Ga naar het tabblad nieuwe **monitor** . Selecteer vervolgens **metrische gegevens**.  
 
-     ![Monitor - Statistieken (voorbeeld)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
+     ![Monitor-metrische gegevens (preview-versie)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
-1. Selecteer uw VM in de bronkiezer.
+1. Selecteer uw virtuele machine in de resource kiezer.
 
-     ![Metrische grafiek](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
+     ![Grafiek met metrische gegevens](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
 
-1. Selecteer de **naamruimte Telegraf/CPU** en selecteer de **usage_system** statistiek. U ervoor kiezen om te filteren op de afmetingen op deze statistiek of splitsen op hen.  
+1. Selecteer de **Telegraf/CPU-** naam ruimte en selecteer de **usage_system** metrische gegevens. U kunt kiezen of u wilt filteren op de dimensies op deze metrische gegevens of ze wilt splitsen.  
 
-     ![Naamruimte en statistiek selecteren](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
+     ![Naam ruimte en metriek selecteren](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
 
 ## <a name="additional-configuration"></a>Aanvullende configuratie 
 
-De voorafgaande walkthrough geeft informatie over het configureren van de Telegraf-agent om statistieken te verzamelen van een paar basisinvoerplug-ins. De Telegraf-agent heeft ondersteuning voor meer dan 150 invoerplug-ins, met een aantal ondersteunende extra configuratieopties. InfluxData heeft een lijst met [ondersteunde plug-ins](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) en instructies gepubliceerd over [het configureren ervan.](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)  
+De voor gaande procedure bevat informatie over het configureren van de telegrafie-agent voor het verzamelen van metrische gegevens van een aantal elementaire invoer-invoeg toepassingen. De Telegraf-agent biedt ondersteuning voor meer dan 150 invoer invoeg toepassingen, met een aantal aanvullende configuratie opties. InfluxData heeft een [lijst met ondersteunde invoeg toepassingen](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) gepubliceerd en instructies voor [het configureren ervan](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
 
-Bovendien hebt u in deze walkthrough de Telegraf-agent gebruikt om statistieken uit te zenden over de VM waarop de agent is geïmplementeerd. De Telegraf-agent kan ook worden gebruikt als verzamelaar en expediteur van statistieken voor andere bronnen. Zie Azure Monitor Custom Metric Output voor Telegraf voor meer informatie over het configureren van de agent om statistieken voor andere [Azure-bronnen](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)uit te zenden.  
+Daarnaast hebt u in dit overzicht de telegrafa-agent gebruikt voor het verzenden van metrische gegevens over de virtuele machine waarop de agent is geïmplementeerd. De telegrafie-agent kan ook worden gebruikt als Collector en doorstuur server van metrische gegevens voor andere resources. Zie [Azure monitor aangepaste metrische uitvoer voor telegrafie voor](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)meer informatie over het configureren van de agent voor het verzenden van metrische gegevens voor andere Azure-resources.  
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 
-Als ze niet meer nodig zijn, u de brongroep, virtuele machine en alle gerelateerde resources verwijderen. Selecteer hiervoor de brongroep voor de virtuele machine en selecteer **Verwijderen**. Bevestig vervolgens de naam van de resourcegroep die u wilt verwijderen. 
+Wanneer u deze niet meer nodig hebt, kunt u de resource groep, de virtuele machine en alle gerelateerde resources verwijderen. Als u dit wilt doen, selecteert u de resource groep voor de virtuele machine en selecteert u **verwijderen**. Bevestig vervolgens de naam van de resource groep die u wilt verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [aangepaste statistieken](metrics-custom-overview.md).
+- Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
 
 
 

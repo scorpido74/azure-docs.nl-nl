@@ -1,128 +1,128 @@
 ---
-title: Query's controleren
+title: Query's bewaken
 titleSuffix: Azure Cognitive Search
-description: Monitor querystatistieken voor prestaties en doorvoer. Verzamel en analyseer querytekenreeksen in diagnostische logboeken.
+description: Bewaak de metrische gegevens van query's voor prestaties en door voer. Verzamel en analyseer invoer van query reeksen in resource Logboeken.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462515"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127682"
 ---
-# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Queryaanvragen controleren in Azure Cognitive Search
+# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Query aanvragen bewaken in azure Cognitive Search
 
-In dit artikel wordt uitgelegd hoe u queryprestaties en -volume meten aan de hand van statistieken en diagnostische logboekregistratie. Het legt ook uit hoe u de invoertermen verzamelt die in query's worden gebruikt - noodzakelijke informatie wanneer u het nut en de effectiviteit van uw zoekcorpus moet beoordelen.
+In dit artikel wordt uitgelegd hoe u de prestaties en het volume van query's meet met metrische gegevens en bron logboek registratie. Ook wordt uitgelegd hoe u de invoer termen kunt verzamelen die worden gebruikt in query's-benodigde informatie wanneer u het hulp programma en de effectiviteit van uw zoek verzameling moet beoordelen.
 
-Historische gegevens die worden verwerkt in statistieken, worden 30 dagen bewaard. Voor langere bewaring of voor het rapporteren over operationele gegevens en querytekenreeksen moet u een [diagnostische instelling](search-monitor-logs.md) inschakelen die een opslagoptie opgeeft voor het aanhouden van geregistreerde gebeurtenissen en metrische gegevens.
+Historische gegevens die feeds in metrieken, worden 30 dagen bewaard. Voor een langere retentie of voor het rapporteren van operationele gegevens en query reeksen moet u een [Diagnostische instelling](search-monitor-logs.md) inschakelen waarmee een opslag optie wordt opgegeven voor het persistent maken van vastgelegde logboeken en metrieken.
 
-Voorwaarden die de integriteit van gegevensmeting maximaliseren, zijn onder andere:
+Voor waarden die de integriteit van gegevens meting maximaliseren zijn:
 
-+ Gebruik een factureerbare service (een service die is gemaakt op de basis- of standaardlaag). De gratis service wordt gedeeld door meerdere abonnees, die een zekere mate van volatiliteit introduceert als ladingen verschuiven.
++ Gebruik een factureer bare service (een service die is gemaakt op basis van de Basic-of Standard-laag). De gratis service wordt gedeeld door meerdere abonnees, waarmee een bepaalde hoeveelheid volatiliteit wordt geïntroduceerd naarmate de werk belasting wordt geschoven.
 
-+ Gebruik één replica en partitie, indien mogelijk, om een opgenomen en geïsoleerde omgeving te maken. Als u meerdere replica's gebruikt, worden querymetrische gegevens gemiddeld over meerdere knooppunten geplaatst, waardoor de nauwkeurigheid van de resultaten kan worden verlaagd. Op dezelfde manier betekenen meerdere partities dat gegevens worden verdeeld, met het potentieel dat sommige partities verschillende gegevens kunnen hebben als indexering ook aan de gang is. Bij het afstemmen van queryprestaties biedt één knooppunt en partitie een stabielere omgeving voor het testen.
++ Gebruik één replica en partitie, indien mogelijk, om een opgenomen en geïsoleerde omgeving te maken. Als u meerdere replica's gebruikt, worden de metrische gegevens van de query gemiddeld verdeeld over meerdere knoop punten, wat de nauw keurigheid van de resultaten kan verlagen. Op dezelfde manier betekenen meerdere partities dat gegevens worden gedeeld, met het potentieel dat sommige partities andere gegevens kunnen hebben als de indexering ook wordt uitgevoerd. Bij het afstemmen van query prestaties biedt één knoop punt en partitie een stabielere omgeving voor het testen.
 
 > [!Tip]
-> Met extra client-side code en Application Insights u ook klikdata vastleggen voor een dieper inzicht in wat de interesse van uw applicatiegebruikers aantrekt. Zie [Verkeersanalyse zoeken](search-traffic-analytics.md)voor meer informatie .
+> Met aanvullende client-side code en Application Insights, kunt u ook doorgestuurde gegevens vastleggen voor een dieper inzicht in wat het belang van uw toepassings gebruikers trekt. Zie voor meer informatie [Search Traffic Analytics](search-traffic-analytics.md)(Engelstalig).
 
-## <a name="query-volume-qps"></a>Queryvolume (QPS)
+## <a name="query-volume-qps"></a>Query volume (QPS)
 
-Het volume wordt gemeten als **Zoekopdrachten per seconde** (QPS), een ingebouwde statistiek die kan worden gerapporteerd als een gemiddelde, telling, minimum of maximale waarden van query's die binnen een venster van één minuut worden uitgevoerd. Intervallen van één minuut (TimeGrain = "PT1M") voor metrische gegevens worden binnen het systeem vastgesteld.
+Volume wordt gemeten als **Zoek Query's per seconde** (qps), een ingebouwde metriek die kan worden gerapporteerd als gemiddeld, aantal, minimum of maximum waarden van query's die in een venster van één minuut worden uitgevoerd. Een interval van één minuut (TimeGrain = "PT1M") voor metrische gegevens is in het systeem opgelost.
 
-Het is gebruikelijk dat query's in milliseconden worden uitgevoerd, dus alleen query's die als seconde worden gemeten, worden weergegeven in metrische gegevens.
+Het is gebruikelijk om query's uit te voeren in milliseconden, zodat alleen query's die als seconden worden gemeten, worden weer gegeven in metrische gegevens.
 
 | Aggregatietype | Beschrijving |
 |------------------|-------------|
-| Average | Het gemiddelde aantal seconden binnen een minuut waarin query-uitvoering heeft plaatsgevonden.|
-| Count | Het aantal statistieken dat binnen het interval van één minuut naar het logboek wordt uitgestraald. |
-| Maximum | Het hoogste aantal zoekopdrachten per seconde geregistreerd gedurende een minuut. |
-| Minimum | Het laagste aantal zoekopdrachten per seconde geregistreerd gedurende een minuut.  |
-| Sum | De som van alle query's die binnen de minuut zijn uitgevoerd.  |
+| Average | Het gemiddelde aantal seconden binnen een minuut gedurende welke de uitvoering van de query heeft plaatsgevonden.|
+| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Maximum | Het hoogste aantal Zoek query's per seconde dat is geregistreerd tijdens een minuut. |
+| Minimum | Het laagste aantal Zoek query's per seconde dat is geregistreerd tijdens een minuut.  |
+| Sum | De som van alle query's die in de minuut worden uitgevoerd.  |
 
-Binnen een minuut hebt u bijvoorbeeld een patroon als dit: een seconde hoge belasting die het maximum is voor SearchQueriesPerSeconde, gevolgd door 58 seconden gemiddelde belasting en ten slotte één seconde met slechts één query, wat het minimum is.
+U kunt bijvoorbeeld binnen één minuut een patroon hebben dat er ongeveer als volgt uitziet: één seconde van een hoge belasting die het maximum voor SearchQueriesPerSecond is, gevolgd door 58 seconden gemiddelde belasting, en ten slotte één seconde met slechts één query, wat het minimum is.
 
-Een ander voorbeeld: als een knooppunt 100 metrische gegevens uitzendt, waarbij de waarde van elke statistiek 40 is, is 'Aantal' 100, 'Som' is 4000, 'Gemiddeld' is 40 en 'Max' 40.
+Een ander voor beeld: als een knoop punt 100 metrische gegevens verzendt, waarbij de waarde van elke metriek 40 is, is ' count ' 100, ' sum ' is 4000, ' Average ' is 40 en ' Max ' is 40.
 
 ## <a name="query-performance"></a>Queryprestaties
 
-Servicebrede queryprestaties worden gemeten als zoeklatentie (hoe lang een query duurt om te voltooien) en beperkte query's die zijn verwijderd als gevolg van resource-twist.
+Voor de gehele service worden de query prestaties gemeten als Zoek latentie (hoelang een query moet worden voltooid) en vertraagde query's die zijn verwijderd als gevolg van bron conflicten.
 
-### <a name="search-latency"></a>Zoeklatentie
+### <a name="search-latency"></a>Zoek latentie
 
 | Aggregatietype | Latentie | 
 |------------------|---------|
-| Average | Gemiddelde queryduur in milliseconden. | 
-| Count | Het aantal statistieken dat binnen het interval van één minuut naar het logboek wordt uitgestraald. |
-| Maximum | Langstlopende query in het voorbeeld. | 
-| Minimum | Kortste lopende query in het voorbeeld.  | 
-| Totaal | Totale uitvoeringstijd van alle query's in het voorbeeld, uitvoeren binnen het interval (één minuut).  |
+| Average | Gemiddelde query duur in milliseconden. | 
+| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Maximum | De langste uitvoering van een query in het voor beeld. | 
+| Minimum | De kortste uitvoering van een query in het voor beeld.  | 
+| Totaal | Totale uitvoerings tijd van alle query's in het voor beeld, uitgevoerd binnen het interval (een minuut).  |
 
-Overweeg het volgende voorbeeld van **zoeklatentiestatistieken:** er zijn 86 query's bemonsterd, met een gemiddelde duur van 23,26 milliseconden. Een minimum van 0 geeft aan dat sommige query's zijn verwijderd. De langstlopende query heeft 1000 milliseconden geduurd. De totale uitvoeringstijd was 2 seconden.
+Bekijk het volgende voor beeld van metrische gegevens over **Zoek latentie** : 86-query's werden voor bereid met een gemiddelde duur van 23,26 milliseconden. Een minimum van 0 geeft aan dat sommige query's zijn verwijderd. De langste uitvoering van de query duurde 1000 milliseconden te volt ooien. Totale uitvoerings tijd is 2 seconden.
 
-![Latentieaggregaties](./media/search-monitor-usage/metrics-latency.png "Latentieaggregaties")
+![Latentie aggregaties](./media/search-monitor-usage/metrics-latency.png "Latentie aggregaties")
 
-### <a name="throttled-queries"></a>Gewurgde query's
+### <a name="throttled-queries"></a>Vertraagde query's
 
-Throttled queries verwijst naar query's die worden verwijderd in plaats van proces. In de meeste gevallen is beperking een normaal onderdeel van het uitvoeren van de service.  Het is niet per se een indicatie dat er iets mis is.
+Vertraagde query's verwijzen naar query's die in plaats van proces worden verwijderd. In de meeste gevallen is beperking een normaal onderdeel van het uitvoeren van de service.  Het is niet noodzakelijkerwijs een indicatie dat er iets mis is.
 
-Beperking treedt op wanneer het aantal aanvragen dat momenteel wordt verwerkt de beschikbare resources overschrijdt. Mogelijk ziet u een toename van het aantal aanvragen met een beperking wanneer een replica uit de rotatie of tijdens het indexeren wordt gehaald. Zowel query- als indexeringsaanvragen worden behandeld door dezelfde set resources.
+Beperking wordt weer gegeven wanneer het aantal aanvragen dat momenteel wordt verwerkt, de beschik bare resources overschrijdt. U ziet mogelijk een verhoging van de vertraagde aanvragen wanneer een replica uit de rotatie of tijdens het indexeren wordt gehaald. Aanvragen voor query's en indexering worden verwerkt door dezelfde set resources.
 
-De service bepaalt of aanvragen moeten worden neergestoofd op basis van resourceverbruik. Het percentage resources dat wordt verbruikt in geheugen, CPU en schijf-IO wordt gemiddeld over een bepaalde periode. Als dit percentage een drempelwaarde overschrijdt, worden alle aanvragen voor de index beperkt totdat het aantal aanvragen is verminderd. 
+De service bepaalt of aanvragen worden verwijderd op basis van Resource verbruik. Het percentage resources verbruikt over het geheugen, de CPU en de schijf-i/o worden gemiddeld gedurende een bepaalde periode geconsumeerd. Als dit percentage een drempel waarde overschrijdt, worden alle aanvragen voor de index beperkt tot het aantal aanvragen wordt verminderd. 
 
-Afhankelijk van uw klant kan op deze manier een aangezochte aanvraag worden aangegeven:
+Afhankelijk van uw client kan een beperkt verzoek op de volgende manieren worden aangegeven:
 
-+ Een service retourneert een foutmelding "U verzendt te veel aanvragen. Probeer het later opnieuw. 
-+ Een service retourneert een foutcode van 503 die aangeeft dat de service momenteel niet beschikbaar is. 
-+ Als u de portal gebruikt (bijvoorbeeld Search Explorer), wordt de query in stilte verwijderd en moet u opnieuw op Zoeken klikken.
++ Een service retourneert een fout bericht dat u te veel aanvragen verzendt. Probeer het later opnieuw. 
++ Een service retourneert een fout code van 503 die aangeeft dat de service momenteel niet beschikbaar is. 
++ Als u de portal gebruikt (bijvoorbeeld Search Explorer), wordt de query op de achtergrond verwijderd en moet u opnieuw op zoeken klikken.
 
-Als u aanbeperkende query's wilt bevestigen, gebruikt u de statistiek **Metriek ethrottled-zoekopdrachten.** U statistieken in de portal verkennen of een waarschuwingsstatistiek maken zoals beschreven in dit artikel. Voor query's die binnen het bemonsteringsinterval zijn verwijderd, gebruikt u *Total* om het percentage query's op te halen dat niet is uitgevoerd.
+Gebruik de metrische gegevens over vertraagde **Zoek query's** om beperkte query's te bevestigen. U kunt metrische gegevens in de portal verkennen of een metrische gegevens van een waarschuwing maken, zoals beschreven in dit artikel. Voor query's die in het steekproef interval zijn verwijderd, gebruikt u *totaal* om het percentage query's te verkrijgen dat niet is uitgevoerd.
 
 | Aggregatietype | Beperking |
 |------------------|-----------|
-| Average | Percentage query's dat binnen het interval is gedaald. |
-| Count | Het aantal statistieken dat binnen het interval van één minuut naar het logboek wordt uitgestraald. |
-| Maximum | Percentage query's dat binnen het interval is gedaald.|
-| Minimum | Percentage query's dat binnen het interval is gedaald. |
-| Totaal | Percentage query's dat binnen het interval is gedaald. |
+| Average | Het percentage query's dat binnen het interval is verwijderd. |
+| Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
+| Maximum | Het percentage query's dat binnen het interval is verwijderd.|
+| Minimum | Het percentage query's dat binnen het interval is verwijderd. |
+| Totaal | Het percentage query's dat binnen het interval is verwijderd. |
 
-Voor **percentage zoekopdrachten met throttled**, minimum, maximum, gemiddelde en totaal, hebben allemaal dezelfde waarde: het percentage zoekopdrachten dat is beperkt, van het totale aantal zoekopdrachten gedurende één minuut.
+Voor het **beperkende Zoek Query's percentage**, minimum, maximum, gemiddelde en totaal heeft dezelfde waarde: het percentage Zoek query's dat is beperkt tot het totale aantal Zoek query's gedurende één minuut.
 
-In de volgende schermafbeelding is het eerste getal het aantal (of het aantal statistieken dat naar het logboek wordt verzonden). Extra aggregaties, die bovenaan worden weergegeven of wanneer u boven de statistiek zweeft, omvatten gemiddeld, maximum en totaal. In dit voorbeeld zijn geen aanvragen verwijderd.
+In de volgende scherm afbeelding is het eerste getal het aantal (of het aantal metrische gegevens dat naar het logboek wordt verzonden). Extra aggregaties, die bovenaan worden weer gegeven of bij het aanwijzen van de metriek, zijn gemiddelde, maximum en totaal. In dit voor beeld zijn er geen aanvragen verloren gegaan.
 
-![Gewurgde aggregaties](./media/search-monitor-usage/metrics-throttle.png "Gewurgde aggregaties")
+![Beperkte aggregaties](./media/search-monitor-usage/metrics-throttle.png "Beperkte aggregaties")
 
-## <a name="explore-metrics-in-the-portal"></a>Statistieken verkennen in de portal
+## <a name="explore-metrics-in-the-portal"></a>Metrische gegevens in de portal verkennen
 
-Voor een snelle blik op de huidige getallen, bevat het tabblad **Controle** op de pagina Serviceoverzicht drie statistieken **(zoeklatentie**, **zoekopdrachten per seconde (per zoekeenheid)**, **Percentage zoekquery's**met throttled over vaste intervallen gemeten in uren, dagen en weken, met de optie om het aggregatietype te wijzigen.
+Voor een beknopt overzicht van de huidige nummers ziet u op het tabblad **bewaking** op de pagina overzicht van de service drie metrische gegevens (**Zoek latentie**, **Zoek query's per seconde (per Zoek eenheid)**, **beperkt aantal Zoek query's in procenten**) over vaste intervallen gemeten in uren, dagen en weken, met de optie om het aggregatie type te wijzigen.
 
-Voor een diepere verkenning u de verkenner met statistieken openen in het menu **Monitoring,** zodat u gegevens laaggeven, inzoomen en visualiseren om trends of afwijkingen te verkennen. Meer informatie over metrics explorer door deze [zelfstudie over het maken van een statistiekengrafiek te](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)voltooien.
+Open Metrics Explorer in het menu **bewaking** , zodat u de gegevens kunt inzoomen en visualiseren om trends of afwijkingen te verkennen. Meer informatie over metrische gegevens Verkenner vindt u in deze [zelf studie over het maken van een metrieke grafiek](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
 
-1. Selecteer in de sectie Controle **de optie Statistieken** om de verkenner met het bereik te openen dat is ingesteld op uw zoekservice.
+1. Selecteer in de sectie bewaking **metrische gegevens** om de metrics Explorer te openen met de scope die is ingesteld op uw zoek service.
 
-1. Kies onder Metric een in de vervolgkeuzelijst en bekijk de lijst met beschikbare aggregaties voor een voorkeurstype. De aggregatie definieert hoe de verzamelde waarden worden bemonsterd over elk tijdsinterval.
+1. Onder metrische waarde, kiest u een in de vervolg keuzelijst en bekijkt u de lijst met beschik bare aggregaties voor een voorkeurs type. De aggregatie definieert hoe de verzamelde waarden voor elk tijds interval worden gesampled.
 
-   ![Verkenner voor QPS-statistiek](./media/search-monitor-usage/metrics-explorer-qps.png "Verkenner voor QPS-statistiek")
+   ![Metrics Explorer voor QPS metric](./media/search-monitor-usage/metrics-explorer-qps.png "Metrics Explorer voor QPS metric")
 
-1. Stel in de rechterbovenhoek het tijdsinterval in.
+1. Stel in de rechter bovenhoek het tijds interval in.
 
-1. Kies een visualisatie. De standaardinstelling is een lijndiagram.
+1. Kies een visualisatie. De standaard waarde is een lijn diagram.
 
-1. Extra aggregaties laagdoor **metrische gegevens toevoegen** te kiezen en verschillende aggregaties te selecteren.
+1. Laag extra aggregaties door **metrische gegevens toevoegen** te kiezen en verschillende aggregaties te selecteren.
 
-1. Zoom in op een interessegebied in het lijndiagram. Plaats de muisaanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd deze ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek zoomt in op dat tijdsbereik.
+1. Zoom in op een interesse gebied in het lijn diagram. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek wordt in dat tijds bereik ingezoomd.
 
-## <a name="identify-strings-used-in-queries"></a>Tekenreeksen identificeren die in query's worden gebruikt
+## <a name="identify-strings-used-in-queries"></a>Teken reeksen identificeren die worden gebruikt in query's
 
-Wanneer u diagnostische logboekregistratie inschakelt, legt het systeem queryaanvragen vast in de tabel **AzureDiagnostics.** Als voorwaarde moet u diagnostische [logboekregistratie](search-monitor-logs.md)al hebben ingeschakeld, een werkruimte voor logboekanalyse of een andere opslagoptie opgeven.
+Wanneer u bron logboek registratie inschakelt, worden query aanvragen in de tabel **AzureDiagnostics** vastgelegd. Als vereiste moet u [resource registratie](search-monitor-logs.md)al hebben ingeschakeld, een log Analytics-werk ruimte of een andere opslag optie opgeven.
 
-1. Selecteer **logboeken** in logopeeren in Loganalytics onder de sectie Controle om een leeg queryvenster te openen.
+1. Selecteer in de sectie bewaking **Logboeken** om een leeg query venster te openen in log Analytics.
 
-1. Voer de volgende expressie uit om query.search-bewerkingen uit te voeren en een tabelresulterenset terug te sturen die bestaat uit de bewerkingsnaam, de querytekenreeks, de opgevraagde index en het aantal gevonden documenten. De laatste twee instructies sluiten querytekenreeksen uit die bestaan uit een lege of niet-gespecificeerde zoekopdracht, boven een voorbeeldindex, waardoor de ruis in uw resultaten wordt verkort.
+1. Voer de volgende expressie uit om Query's te zoeken. Zoek opdrachten, een tabellaire resultaatset retour neren die bestaat uit de bewerkings naam, de query reeks, de opgevraagde index en het aantal documenten dat is gevonden. De laatste twee instructies bevatten query reeksen die bestaan uit een lege of niet-opgegeven zoek opdracht, via een voor beeld-index, waardoor de ruis in uw resultaten wordt uitgesplitst.
 
    ```
    AzureDiagnostics
@@ -132,19 +132,19 @@ Wanneer u diagnostische logboekregistratie inschakelt, legt het systeem queryaan
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. Stel destijds een kolomfilter in op *Query_s* om te zoeken naar een specifieke syntaxis of tekenreeks. U bijvoorbeeld filteren *is gelijk aan* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+1. U kunt eventueel een kolom filter op *Query_s* instellen om te zoeken naar een specifieke syntaxis of teken reeks. U kunt bijvoorbeeld filteren op *is gelijk aan* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
 
-   ![Aangemelde querytekenreeksen](./media/search-monitor-usage/log-query-strings.png "Aangemelde querytekenreeksen")
+   ![Teken reeksen van vastgelegde query's](./media/search-monitor-usage/log-query-strings.png "Teken reeksen van vastgelegde query's")
 
-Hoewel deze techniek werkt voor ad hoc onderzoek, u met het bouwen van een rapport de querytekenreeksen consolideren en presenteren in een lay-out die bevorderlijker is voor analyse.
+Hoewel deze methode werkt voor ad-hoc onderzoek, kunt u met het maken van een rapport de query reeksen samen voegen en presen teren in een lay-out die bevorderlijk is voor analyse.
 
 ## <a name="identify-long-running-queries"></a>Langlopende query's identificeren
 
-Voeg de duurkolom toe om de getallen voor alle query's te krijgen, niet alleen de kolommen die als statistiek worden opgehaald. Het sorteren van deze gegevens laat zien welke query's het langst duren om te voltooien.
+Voeg de kolom duur toe om de getallen voor alle query's op te halen, niet alleen de waarden die worden opgehaald als metriek. Als u deze gegevens sorteert, ziet u welke query's het langst duren om te volt ooien.
 
-1. Selecteer in de sectie Controle de optie **Logboeken** die u wilt opvragen voor logboekgegevens.
+1. Selecteer in de sectie bewaking **Logboeken** om te zoeken naar logboek gegevens.
 
-1. Voer de volgende query uit om query's terug te sturen, gesorteerd op duur in milliseconden. De langstlopende query's staan bovenaan.
+1. Voer de volgende query uit om query's te retour neren, gesorteerd op duur in milliseconden. De query's die het langst lopen, zijn bovenaan.
 
    ```
    AzureDiagnostics
@@ -155,33 +155,33 @@ Voeg de duurkolom toe om de getallen voor alle query's te krijgen, niet alleen d
 
    ![Query's sorteren op duur](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Query's sorteren op duur")
 
-## <a name="create-a-metric-alert"></a>Een metrische waarschuwing maken
+## <a name="create-a-metric-alert"></a>Een waarschuwing voor metrische gegevens maken
 
-Een metrische waarschuwing stelt een drempel waarde waarde op waarop u ofwel een melding ontvangt of een corrigerende actie die u vooraf definieert. 
+Een metrische waarschuwing brengt een drempel waarde aan waarbij u een melding ontvangt of een corrigerende actie triggert die u vooraf definieert. 
 
-Voor een zoekservice is het gebruikelijk om een metrische waarschuwing te maken voor zoeklatentie en gethrottled query's. Als u weet wanneer query's worden verwijderd, u zoeken naar oplossingen die de belasting verminderen of de capaciteit vergroten. Als er bijvoorbeeld query's met throttled toenemen tijdens het indexeren, u deze uitstellen totdat de queryactiviteit afneemt.
+Voor een zoek service is het gebruikelijk om een metrische waarschuwing te maken voor zoek latentie en vertraagde query's. Als u weet wanneer query's worden verwijderd, kunt u zoeken naar oplossingen die de belasting verminderen of de capaciteit verg Roten. Als er bijvoorbeeld vertraagde query's toenemen tijdens het indexeren, kunt u deze uitstellen tot de query activiteit subkanten heeft.
 
-Bij het verleggen van de limieten van een bepaalde replica-partitieconfiguratie is het ook handig om waarschuwingen in te stellen voor queryvolumedrempels (QPS).
+Bij het pushen van de limieten van een bepaalde replica partitie, is het instellen van waarschuwingen voor query volume drempels (QPS) ook nuttig.
 
-1. Selecteer onder de sectie Controle de optie **Waarschuwingen** en klik op **+ Nieuwe waarschuwingsregel**. Controleer of uw zoekservice is geselecteerd als bron.
+1. Selecteer in de sectie controle de optie **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**. Zorg ervoor dat uw zoek service is geselecteerd als de resource.
 
-1. Klik onder Voorwaarde op **Toevoegen**.
+1. Klik onder voor waarde op **toevoegen**.
 
-1. Signaallogica configureren. Kies voor signaaltype **metrische gegevens** en selecteer vervolgens het signaal.
+1. Signaal logica configureren. Voor signaal type kiest u **metrische gegevens** en selecteert u vervolgens het signaal.
 
-1. Na het selecteren van het signaal, u een grafiek gebruiken om historische gegevens te visualiseren voor een weloverwogen beslissing over hoe verder te gaan met het instellen van voorwaarden.
+1. Nadat u het signaal hebt geselecteerd, kunt u een grafiek gebruiken om historische gegevens te visualiseren voor een weloverwogen beslissing over hoe u kunt door gaan met het instellen van voor waarden.
 
-1. Schuif vervolgens omlaag naar De logica Waarschuwen. Voor proof-of-concept u een kunstmatig lage waarde opgeven voor testdoeleinden.
+1. Schuif vervolgens omlaag naar waarschuwings logica. Voor het testen van het concept kunt u een kunst matige lage waarde voor test doeleinden opgeven.
 
-   ![Waarschuwingslogica](./media/search-monitor-usage/alert-logic-qps.png "Waarschuwingslogica")
+   ![Waarschuwings logica](./media/search-monitor-usage/alert-logic-qps.png "Waarschuwings logica")
 
-1. Geef vervolgens een actiegroep op of maak deze samen. Dit is het antwoord om zich aan te roepen wanneer de drempel wordt bereikt. Het kan een pushmelding of een geautomatiseerd antwoord zijn.
+1. Vervolgens geeft u een actie groep op of maakt u deze. Dit is het antwoord dat moet worden aangeroepen wanneer aan de drempel wordt voldaan. Dit kan een push melding of een geautomatiseerd antwoord zijn.
 
-1. Geef als laatste waarschuwingsgegevens op. Geef de waarschuwing een naam en beschrijf de waarschuwing, wijs een ernstwaarde toe en geef op of u de regel wilt maken in een ingeschakelde of uitgeschakelde status.
+1. Geef als laatste de waarschuwings Details op. Geef een naam en beschrijving van de waarschuwing, wijs een Ernst waarde toe en specificeer of u de regel in de status ingeschakeld of uitgeschakeld wilt maken.
 
-   ![Waarschuwingsgegevens](./media/search-monitor-usage/alert-details.png "Meldingsdetails")
+   ![Waarschuwings Details](./media/search-monitor-usage/alert-details.png "Meldingsdetails")
 
-Als u een e-mailmelding hebt opgegeven, ontvangt u een e-mail van Microsoft Azure `<your rule name>`met een onderwerpregel van 'Azure: Geactiveerde ernst: 3'.
+Als u een e-mail melding hebt opgegeven, ontvangt u een e-mail bericht van ' Microsoft Azure ' met een onderwerpregel van ' Azure: geactiveerde Ernst: ' 3 `<your rule name>`'.
 
 <!-- ## Report query data
 
@@ -189,7 +189,7 @@ Power BI is an analytical reporting tool useful for visualizing data, including 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, bekijkt u de basisprincipes van het controleren van de zoekservice om meer te weten te komen over het volledige scala aan toezichtsmogelijkheden.
+Als u dit nog niet hebt gedaan, raadpleegt u de grond beginselen van de controle van de zoek service voor meer informatie over het volledige aanbod van de mogelijkheden voor toezicht.
 
 > [!div class="nextstepaction"]
-> [Bewerkingen en activiteiten in Azure Cognitive Search controleren](search-monitor-usage.md)
+> [Bewerkingen en activiteiten bewaken in azure Cognitive Search](search-monitor-usage.md)

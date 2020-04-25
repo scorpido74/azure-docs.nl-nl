@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: f1dd33425a57689974fc98a28724adf7b130ab40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536340"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82130975"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
 
@@ -33,7 +33,7 @@ Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerp
 |Automatische aanvals oplossingen                    |Ja                                   |Ja                                           |
 |Beschikbaarheids garantie                          |Azure-regio                          |Toepassing                                   |
 |Risico beperkings beleid                             |Afgestemd op volume van Azure Traffic Region |Afgestemd op volume van toepassings verkeer          |
-|Metrische gegevens & waarschuwingen                                |Nee                                    |Realtime aanvals metrieken & Diagnostische logboeken via Azure monitor                                 |
+|Metrische gegevens & waarschuwingen                                |Nee                                    |Realtime-aanvals metrieken & bron logboeken via Azure Monitor                                 |
 |Risico beperkings rapporten                              |Nee                                    |Rapporten voor risico beperking na aanvallen                |
 |Stroom logboeken voor risico beperking                            |Nee                                    |NRT-logboek stroom voor SIEM-integratie           |
 |Aanpassing van het risico beleid                 |Nee                                    |DDoS-experts benaderen                           |

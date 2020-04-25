@@ -1,36 +1,36 @@
 ---
 title: Historische telemetriegegevens opnemen
-description: In dit artikel wordt beschreven hoe u historische telemetriegegevens innemen.
+description: In dit artikel wordt beschreven hoe u historische telemetriegegevens opneemt.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437692"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136903"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
-In dit artikel wordt beschreven hoe u historische sensorgegevens inneemt in Azure FarmBeats.
+In dit artikel wordt beschreven hoe u historische sensor gegevens opneemt in azure FarmBeats.
 
-Het innemen van historische gegevens uit IoT-bronnen (Internet of Things), zoals apparaten en sensoren, is een veelvoorkomend scenario in FarmBeats. U maakt metadata voor apparaten en sensoren en neemt vervolgens de historische gegevens in farmbeats in een canonieke indeling in.
+Het opnemen van historische gegevens uit Internet of Things IoT-resources zoals apparaten en Sens oren is een veelvoorkomend scenario in FarmBeats. U maakt meta gegevens voor apparaten en Sens oren en vervolgens neemt u de historische data op in een canonieke notatie van FarmBeats.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens van uw IoT-apparaten hebt verzameld. U moet ook toegang tot partners inschakelen zoals vermeld in de volgende stappen.
+Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens hebt verzameld van uw IoT-apparaten. U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stappen.
 
-## <a name="enable-partner-access"></a>Partnertoegang inschakelen
+## <a name="enable-partner-access"></a>Partner toegang inschakelen
 
-U moet partnerintegratie inschakelen voor uw Azure FarmBeats-exemplaar. Met deze stap wordt een client gemaakt die toegang heeft tot uw Azure FarmBeats-exemplaar als uw apparaatpartner en krijgt u de volgende waarden die in de volgende stappen vereist zijn:
+U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met deze stap maakt u een client die toegang heeft tot uw Azure FarmBeats-exemplaar als uw apparaat-partner en biedt u de volgende waarden die vereist zijn in de volgende stappen:
 
-- API-eindpunt: dit is de URL van\<Datahub, bijvoorbeeld https:// datahub>.azurewebsites.net
+- API-eind punt: dit is de Datahub-URL, bijvoorbeeld\<https://Datahub>. azurewebsites.net
 - Tenant-id
 - Client-id
 - Clientgeheim
-- EventHub-verbindingstekenreeks
+- EventHub connection string
 
 Volg deze stappen:
 
@@ -39,29 +39,29 @@ Volg deze stappen:
 
 1. Meld u aan bij https://portal.azure.com/.
 
-2. **Als u op FarmBeats versie 1.2.7 of hoger bent, slaat u de stappen a, b en c over en gaat u naar stap 3.** U de FarmBeats-versie controleren door het pictogram **Instellingen** in de rechterbovenhoek van de FarmBeats-gebruikersinterface te selecteren.
+2. **Als u FarmBeats-versie 1.2.7 of hoger hebt, slaat u stap a, b en c over en gaat u naar stap 3.** U kunt de FarmBeats-versie controleren door het pictogram **instellingen** te selecteren in de rechter bovenhoek van de FarmBeats-gebruikers interface.
 
-      a.  Ga naar **Azure Active Directory** > **App-registraties**
+      a.  Ga naar **Azure Active Directory** > **app-registraties** voor Azure Active Directory
 
-      b. Selecteer de **appregistratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Het heeft dezelfde naam als uw FarmBeats datahub.
+      b. Selecteer de **app-registratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-datahub.
 
-      c. Selecteer **Een API blootmaken** > selecteer **Een clienttoepassing toevoegen** en voer **04b07795-8ddb-461a-bbee-02f9e1bf7b46** in en controleer **Scope toestaan**. Dit geeft toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren:
+      c. Selecteer **een API beschikbaar** maken > Selecteer **een client toepassing toevoegen** en voer **04B07795-8ddb-461A-bbee-02f9e1bf7b46** in en controleer de **Scope voor autoriseren**. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren:
 
-3. Open Cloud Shell. Deze optie is beschikbaar op de werkbalk in de rechterbovenhoek van de Azure-portal.
+3. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
-    ![Werkbalk Azure-portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Azure Portal werk balk](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Zorg ervoor dat de omgeving is ingesteld op **PowerShell**. Standaard is het ingesteld op Bash.
+4. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
 
-    ![PowerShell-werkbalkinstelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![Power shell-werkbalk instelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-5. Ga naar je thuisgids.
+5. Ga naar de basismap.
 
     ```azurepowershell-interactive 
     cd  
     ```
 
-6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw thuismap.
+6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
 
     ```azurepowershell-interactive 
 
@@ -69,7 +69,7 @@ Volg deze stappen:
 
     ```
 
-7. Voer het volgende script uit. Het script vraagt om de tenant-id, die kan worden verkregen op de pagina **Azure Active Directory** > **Overview.**
+7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory** > **overzichts** pagina.
 
     ```azurepowershell-interactive 
 
@@ -77,114 +77,119 @@ Volg deze stappen:
 
     ```
 
-8. Volg de instructies op het scherm om de waarden vast te leggen voor **API-eindpunt,** **tenant-id,** **client-id,** **clientgeheim**en **EventHub-verbindingstekenreeks**.
+8. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 
 
-## <a name="create-device-or-sensor-metadata"></a>Apparaat- of sensormetagegevens maken
+## <a name="create-device-or-sensor-metadata"></a>Meta gegevens van het apparaat of de sensor maken
 
- Nu u over de vereiste referenties beschikt, u het apparaat en de sensoren definiëren. Maak hiervoor de metagegevens door FarmBeats API's aan te roepen. Zorg ervoor dat u de API's belt als de client-app die u in het bovenstaande gedeelte hebt gemaakt.
+ Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. Als u dit wilt doen, maakt u de meta gegevens door FarmBeats-Api's aan te roepen. Zorg ervoor dat u de Api's aanroept als de client-app die u in de bovenstaande sectie hebt gemaakt.
 
- FarmBeats Datahub heeft de volgende API's die het maken en beheren van apparaat- of sensormetadata mogelijk maken.
+ FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld.
 
  > [!NOTE]
- > Als partner heb je alleen toegang om de metadata te lezen, te maken en bij te werken; **verwijderen, is beperkt tot de partner.**
+ > Als partner hebt u alleen toegang om de meta gegevens te lezen, te maken en bij te werken. **de optie voor verwijderen is beperkt tot de partner.**
 
-- /**DeviceModel**: DeviceModel komt overeen met de metadata van het apparaat, zoals de fabrikant en het type apparaat, dat een gateway of een knooppunt is.
-- /**Apparaat**: Apparaat komt overeen met een fysiek apparaat dat op de boerderij aanwezig is.
-- /**SensorModel**: SensorModel komt overeen met de metadata van de sensor, zoals de fabrikant, het type sensor, dat analoog of digitaal is, en de sensormeting, zoals omgevingstemperatuur en druk.
-- /**Sensor**: Sensor komt overeen met een fysieke sensor die waarden registreert. Een sensor is meestal verbonden met een apparaat met een apparaat-id.  
+- /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway of een knoop punt.
+- /**Apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
+- /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
+- /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.  
 
 
 |        DeviceModel   |  Suggesties   |
 | ------- | -------             |
-|     Tekst (knooppunt, gateway)        |          Type apparaat - Knooppunt of gateway      |
-|          Fabrikant            |         Naam van de fabrikant    |
-|  Productcode                    |  Apparaatproductcode of modelnaam of -nummer. Bijvoorbeeld EnviroMonitor#6800.  |
-|            Poorten          |     Poortnaam en type, die digitaal of analoog is.
-|     Name                 |  Naam om de bron te identificeren. Bijvoorbeeld de modelnaam of productnaam.
-      Beschrijving     | Geef een zinvolle beschrijving van het model.
-|    Eigenschappen          |    Extra eigenschappen van de fabrikant.   |
+|     Type (knoop punt, gateway)        |          Type van het apparaat of de gateway      |
+|          Fabrikant            |         De naam van de fabrikant    |
+|  Code                    |  Product code of model naam of-nummer van het apparaat. Bijvoorbeeld EnviroMonitor # 6800.  |
+|            Poorten          |     Poort naam en-type, digitaal of analoog.
+|     Naam                 |  Naam om de resource te identificeren. Bijvoorbeeld de naam van het model of de product naam.
+      Beschrijving     | Geef een zinvolle beschrijving van het model op.
+|    Eigenschappen          |    Aanvullende eigenschappen van de fabrikant.   |
 |    **Apparaat**             |                      |
-|   DeviceModelId     |     ID van het bijbehorende apparaatmodel.  |
-|  HardwareId (HardwareId)          | Unieke ID voor het apparaat, zoals het MAC-adres.
-|  RapportageInterval        |   Rapportage-interval in seconden.
-|  Locatie            |  Apparaatbreedte (-90 tot +90), lengtegraad (-180 tot 180) en hoogte (in meters).   
-|ParentDeviceId       |    ID van het bovenliggende apparaat waarop dit apparaat is verbonden. Bijvoorbeeld een knooppunt dat is verbonden met een gateway. Een knooppunt heeft parentDeviceId als gateway.  |
-|    Name            | Een naam om de bron te identificeren. Apparaatpartners moeten een naam verzenden die overeenkomt met de apparaatnaam aan de partnerkant. Als de naam van het partnerapparaat door de gebruiker is gedefinieerd, moet dezelfde door de gebruiker gedefinieerde naam worden doorgegeven aan FarmBeats.|
-|     Beschrijving       |      Geef een zinvolle beschrijving. |
-|     Eigenschappen    |  Extra eigenschappen van de fabrikant.
+|   DeviceModelId     |     ID van het gekoppelde model.  |
+|  HardwareId          | De unieke ID voor het apparaat, zoals het MAC-adres.
+|  ReportingInterval        |   Rapportage-interval in seconden.
+|  Locatie            |  Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).   
+|ParentDeviceId       |    De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Bijvoorbeeld een knoop punt dat is verbonden met een gateway. Een knoop punt heeft parentDeviceId als de gateway.  |
+|    Naam            | Een naam om de resource te identificeren. Apparaat-partners moeten een naam verzenden die consistent is met de apparaatnaam aan de partner zijde. Als de naam van de partner apparaat door de gebruiker is gedefinieerd, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.|
+|     Beschrijving       |      Geef een zinvolle beschrijving op. |
+|     Eigenschappen    |  Aanvullende eigenschappen van de fabrikant.
 |     **SensorModel**        |          |
-|       Type (analoog, digitaal)          |      Het type sensor, of het nu analoog of digitaal is.       |
+|       Type (analoog, digitaal)          |      Het type sensor, of het analoog of digitaal is.       |
 |          Fabrikant            |       De fabrikant van de sensor.     |
-|     Productcode| Productcode of modelnaam of -nummer. Bijvoorbeeld RS-CO2-N01. |
-|       SensorMaatregelen > naam       | Naam van de sensormeting. Alleen kleine letters worden ondersteund. Voor metingen uit verschillende dieptes moet u de diepte opgeven. Bijvoorbeeld soil_moisture_15cm. Deze naam moet overeenkomen met de telemetriegegevens.  |
-|          Sensormaatregelen > DataType       |Telemetriegegevenstype. Momenteel wordt dubbel ondersteund.|
-|    Sensormaatregelen > type    |Meettype van de telemetriegegevens van de sensor. De systeemgedefinieerde types zijn AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitraat, O2, PH, Fosfaat, PointInTime, Kalium, Druk, Regenmeter, RelatieveVochtigheid, Zoutgehalte, BodemVocht, BodemTemperatuur, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.|
-|        SensorMaatregelen >-eenheid              | Eenheid van sensor telemetriegegevens. De systeemgedefinieerde eenheden zijn NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, Kilometer, MilesPerHour, MilesPerSeconde, KMPerhour, KMPerseconde, MeterPeruur, MeterperSeconde, Graad, WattperSquareMeter, KiloPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, Milliliter, Seconden, UnixTimestamp, MicroMolPerMeterSquaredPerSeconde, InchesPerHour Om meer toe te voegen, verwijzen naar de /ExtendTypeed API.|
-|    Sensormaatregelen > AggregationType    |  Waarden kunnen geen, gemiddeld, maximum, minimum of StandaardAfwijking zijn.  |
-|          Name            | Naam om een resource te identificeren. Bijvoorbeeld de modelnaam of productnaam.  |
-|    Beschrijving        | Geef een zinvolle beschrijving van het model.|
-|   Eigenschappen       |  Extra eigenschappen van de fabrikant.|
-|    **Sensor**      |          |
-| HardwareId (HardwareId)          |   Unieke ID voor de sensor ingesteld door de fabrikant.|
-|  SensorModelId     |    ID van het bijbehorende sensormodel.|
-| Locatie          |  Sensorbreedte (-90 tot +90), lengtegraad (-180 tot 180) en hoogte (in meters).|
-|   Naam poort>        |  Naam en type poort waarmee de sensor op het apparaat is verbonden. Dit moet dezelfde naam hebben als gedefinieerd in het apparaatmodel.|
+|     Code| Product code of model naam of-nummer. Bijvoorbeeld RS-CO2-N01. |
+|       > naam SensorMeasures       | De naam van de sensor meting. Alleen kleine letters worden ondersteund. Geef voor metingen uit verschillende diepten de diepte op. Bijvoorbeeld soil_moisture_15cm. Deze naam moet consistent zijn met de telemetriegegevens.  |
+|          SensorMeasures > data type       |Het gegevens type telemetrie. Op dit moment wordt dubbele wordt ondersteund.|
+|    SensorMeasures > type    |Meet type van de telemetrie van de sensor. De door het systeem gedefinieerde typen zijn AmbientTemperature, CO2, depth, ElectricalConductivity, LeafWetness, length, LiquidLevel, nitraat, O2, PH, fosfaat, PointInTime, kalium, druk, RainGauge, RelativeHumidity, zout, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Raadpleeg de/ExtendedType-API om meer toe te voegen.|
+|        SensorMeasures >-eenheid              | De gegevens eenheid van de sensor-telemetrie. De door het systeem gedefinieerde eenheden zijn geen eenheid, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, kwik, PSI, MilliMeter, CentiMeter, meter, inch, meter, mijl, kilo meter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, het PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar,,,, DeciSiemensPerMeter en KiloPascal. Als u meer wilt toevoegen, raadpleegt u de VolumetricIonContent-API.|
+|    SensorMeasures > AggregationType    |  De waarden kunnen none, Average, maximum, minimum of StandardDeviation zijn.  |
+|          Naam            | Naam voor het identificeren van een resource. Bijvoorbeeld de naam van het model of de product naam.  |
+|    Beschrijving        | Geef een zinvolle beschrijving van het model op.|
+|   Eigenschappen       |  Aanvullende eigenschappen van de fabrikant.|
+|    **Sensoren**      |          |
+| HardwareId          |   De unieke ID voor de sensor die door de fabrikant is ingesteld.|
+|  SensorModelId     |    ID van het gekoppelde sensor model.|
+| Locatie          |  Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).|
+|   Naam van poort >        |  Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet overeenkomen met de naam die is gedefinieerd in het model apparaat.|
 |    DeviceID  |    ID van het apparaat waarmee de sensor is verbonden. |
-| Name            |   Naam om bron te identificeren. Bijvoorbeeld sensornaam of productnaam en modelnummer of productcode.|
-|    Beschrijving      | Geef een zinvolle beschrijving.|
-|    Eigenschappen        |Extra eigenschappen van de fabrikant.|
+| Naam            |   Naam voor het identificeren van de resource. Bijvoorbeeld de naam van de sensor of de product naam en het model nummer of de product code.|
+|    Beschrijving      | Geef een zinvolle beschrijving op.|
+|    Eigenschappen        |Aanvullende eigenschappen van de fabrikant.|
 
 Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over objecten.
 
-### <a name="api-request-to-create-metadata"></a>API-aanvraag om metagegevens te maken
+### <a name="api-request-to-create-metadata"></a>API-aanvraag voor het maken van meta gegevens
 
-Als u een API-aanvraag wilt indienen, combineert u de methode HTTP (POST), de URL naar de API-service en de URI naar een bron om gegevens op te vragen, te maken of een aanvraag te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraagkoppen toe. De URL naar de API-service is het API-eindpunt,\<dat wil zeggen de URL van Datahub (https:// yourdatahub>.azurewebsites.net).  
+Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de\<DATAHUB-url (https://yourdatahub>. azurewebsites.net).  
 
 ### <a name="authentication"></a>Verificatie
 
-FarmBeats Datahub maakt gebruik van verificatie aan toonder, waarvoor de volgende referenties nodig zijn die in de vorige sectie zijn gegenereerd:
+FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die zijn gegenereerd in de vorige sectie:
 
 - Client-id
 - Clientgeheim
 - Tenant-id
 
-Met behulp van deze referenties kan de beller een toegangstoken aanvragen. Het token moet als volgt worden verzonden in de volgende API-aanvragen in de sectie koptekst:
+Met deze referenties kan de aanroeper een toegangs token aanvragen. Het token moet worden verzonden in de volgende API-aanvragen, in de koptekst sectie, als volgt:
 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-De volgende voorbeeldpythoncode geeft het toegangstoken, dat kan worden gebruikt voor volgende API-aanroepen naar FarmBeats: 
+De volgende voor beeld-python-code geeft het toegangs token, dat kan worden gebruikt voor volgende API-aanroepen naar FarmBeats: 
 
 ```python
-import azure 
+import requests
+import json
+import msal
 
-from azure.common.credentials import ServicePrincipalCredentials 
-import adal 
-#FarmBeats API Endpoint 
-ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
-CLIENT_ID = "<Your Client ID>"   
-CLIENT_SECRET = "<Your Client Secret>"   
-TENANT_ID = "<Your Tenant ID>" 
-AUTHORITY_HOST = 'https://login.microsoftonline.com' 
-AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
-#Authenticating with the credentials 
-context = adal.AuthenticationContext(AUTHORITY) 
-token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
-#Should get an access token here 
-access_token = token_response.get('accessToken') 
+# Your service principal App ID
+CLIENT_ID = "<CLIENT_ID>"
+# Your service principal password
+CLIENT_SECRET = "<CLIENT_SECRET>"
+# Tenant ID for your Azure subscription
+TENANT_ID = "<TENANT_ID>"
+
+AUTHORITY_HOST = 'https://login.microsoftonline.com'
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID
+
+ENDPOINT = "https://<yourfarmbeatswebsitename-api>.azurewebsites.net"
+SCOPE = ENDPOINT + "/.default"
+
+context = msal.ConfidentialClientApplication(CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET)
+token_response = context.acquire_token_for_client(SCOPE)
+# We should get an access token here
+access_token = token_response.get('access_token')
 ```
 
-**HTTP-aanvraagkoppen**
+**HTTP-aanvraag headers**
 
-Dit zijn de meest voorkomende aanvraagkoppen die moeten worden opgegeven wanneer u een API-aanroep naar FarmBeats Datahub maakt:
+Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep maakt naar FarmBeats Datahub:
 
-- **Content-Type**: toepassing/json
-- **Autorisatie**:> voor toegang <
-- **Accepteren**: aanvraag/json
+- **Content-type**: Application/JSON
+- **Autorisatie**: bearer <Access-token>
+- **Accepteren**: toepassing/JSON
 
-### <a name="input-payload-to-create-metadata"></a>Payload invoeren om metagegevens te maken
+### <a name="input-payload-to-create-metadata"></a>Invoer lading voor het maken van meta gegevens
 
 DeviceModel
 
@@ -262,7 +267,7 @@ SensorModel
 }
 
 ```
-Sensor
+Sensoren
 
 ```json
 {
@@ -289,7 +294,7 @@ Sensor
 }
 ```
 
-Met de volgende voorbeeldaanvraag wordt een apparaat gemaakt. Dit verzoek heeft input JSON als payload met de aanvraag instantie.
+Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat de invoer JSON als Payload met de aanvraag tekst.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -299,7 +304,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
-Hieronder is een voorbeeldcode in Python. Het toegangstoken dat in dit voorbeeld wordt gebruikt, is hetzelfde als tijdens de verificatie.
+Hieronder volgt een voorbeeld code in python. Het toegangs token dat in dit voor beeld wordt gebruikt, is hetzelfde als tijdens de verificatie.
 
 ```python
 import requests
@@ -316,21 +321,21 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 ```
 
 > [!NOTE]
-> De API's retourneren unieke id's voor elke gemaakte instantie. U moet de id's behouden om de bijbehorende telemetrieberichten te verzenden.
+> De Api's retour neren unieke Id's voor elk gemaakt exemplaar. U moet de Id's bewaren om de bijbehorende telemetrie-berichten te verzenden.
 
 ### <a name="send-telemetry"></a>Telemetrie verzenden
 
-Nu u de apparaten en sensoren in FarmBeats hebt gemaakt, u de bijbehorende telemetrieberichten verzenden.
+Nu u de apparaten en Sens oren in FarmBeats hebt gemaakt, kunt u de bijbehorende telemetrie-berichten verzenden.
 
-### <a name="create-a-telemetry-client"></a>Een telemetrieclient maken
+### <a name="create-a-telemetry-client"></a>Een telemetrie-client maken
 
-U moet de telemetrie naar Azure Event Hubs verzenden voor verwerking. Azure Event Hubs is een service die realtime gegevens (telemetrie) inopname van verbonden apparaten en toepassingen mogelijk maakt. Als u telemetriegegevens naar FarmBeats wilt verzenden, maakt u een client die berichten verzendt naar een gebeurtenishub in FarmBeats. Zie [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)voor meer informatie over het verzenden van telemetrie.
+U moet de telemetrie naar Azure Event Hubs verzenden voor verwerking. Azure Event Hubs is een service waarmee realtime gegevens (telemetrie) kunnen worden opgenomen vanuit verbonden apparaten en toepassingen. Als u telemetriegegevens wilt verzenden naar FarmBeats, maakt u een client die berichten verzendt naar een Event Hub in FarmBeats. Zie [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)voor meer informatie over het verzenden van telemetrie.
 
-### <a name="send-a-telemetry-message-as-the-client"></a>Een telemetriebericht verzenden als de client
+### <a name="send-a-telemetry-message-as-the-client"></a>Een telemetrie-bericht verzenden als de client
 
-Nadat u een verbinding hebt gemaakt als een Gebeurtenishubs-client, u berichten als JSON naar de gebeurtenishub verzenden.
+Nadat u verbinding hebt gemaakt met een Event Hubs-client, kunt u berichten verzenden naar de Event Hub als JSON-bestand.
 
-Hier vindt u voorbeeld-Python-code die telemetrie als client naar een opgegeven gebeurtenishub verzendt:
+Hier volgt een voor beeld van een python-code die telemetrie verzendt als een client naar een opgegeven Event Hub:
 
 ```python
 import azure
@@ -349,7 +354,7 @@ write_client.stop()
 
 ```
 
-Converteer de historische sensorgegevensindeling naar een canonieke indeling die Azure FarmBeats begrijpt. De canonieke berichtindeling ziet er als volgt uit:
+Converteer de historische sensor gegevens indeling naar een canonieke indeling die door Azure FarmBeats wordt begrepen. De canonieke bericht indeling is als volgt:
 
 ```json
 {
@@ -374,9 +379,9 @@ Converteer de historische sensorgegevensindeling naar een canonieke indeling die
 }
 ```
 
-Nadat u de bijbehorende apparaten en sensoren hebt toegevoegd, u de apparaat-id en de sensor-ID in het telemetriebericht verkrijgen, zoals beschreven in de vorige sectie.
+Nadat u de overeenkomende apparaten en Sens oren hebt toegevoegd, moet u de apparaat-ID en de sensor-ID in het telemetrie-bericht ophalen, zoals beschreven in de vorige sectie.
 
-Hier is een voorbeeld van een telemetriebericht:
+Hier volgt een voor beeld van een telemetrie-bericht:
 
 
  ```json
@@ -417,17 +422,17 @@ Hier is een voorbeeld van een telemetriebericht:
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Kan telemetriegegevens niet bekijken na het innemen van historische/streaminggegevens van uw sensoren
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
 
-**Symptoom:** Apparaten of sensoren worden geïmplementeerd en u hebt de apparaten/sensoren op FarmBeats gemaakt en telemetrie ingenomen naar de EventHub, maar u geen telemetriegegevens op FarmBeats krijgen of bekijken.
+**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
 
-**Corrigerende maatregelen**:
+**Corrigerende actie**:
 
-1. Zorg ervoor dat u de juiste partnerregistratie hebt gedaan - u dit controleren door naar uw datahub-branie te gaan, naar /Partner API te navigeren, een get te doen en te controleren of de partner is geregistreerd. Zo niet, volg [dan de stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om partner toe te voegen.
+1. Zorg ervoor dat u de juiste partner registratie hebt uitgevoerd. u kunt dit controleren door naar de datahub Swagger te gaan, naar/partner API te gaan en te controleren of de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
 
-2. Controleer of u de metagegevens (DeviceModel, Device, SensorModel, Sensor) hebt gemaakt met behulp van de clientreferenties van de partner.
+2. Zorg ervoor dat u de meta gegevens (DeviceModel, Device, SensorModel, sensor) hebt gemaakt met behulp van de referenties van de partner-client.
 
-3. Controleer of u de juiste telemetrieberichtindeling hebt gebruikt (zoals hieronder is aangegeven):
+3. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt (zoals hieronder is opgegeven):
 
 ```json
 {
@@ -454,4 +459,4 @@ Hier is een voorbeeld van een telemetriebericht:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [REST API](rest-api-in-azure-farmbeats.md)voor meer informatie over rest api-gebaseerde integratiegegevens.
+Zie voor meer informatie over op REST API gebaseerde integratie Details [rest API](rest-api-in-azure-farmbeats.md).

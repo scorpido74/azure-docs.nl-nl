@@ -1,57 +1,26 @@
 ---
-title: Onderhoudsbeheer
-description: Meer informatie over hoe u bepalen wanneer onderhoud wordt toegepast op uw Azure VM's met behulp van onderhoudsbeheer.
+title: Onderhouds beheer voor virtuele Azure-machines met CLI
+description: Meer informatie over hoe u kunt bepalen wanneer onderhoud wordt toegepast op uw Azure-Vm's met behulp van onderhouds beheer en CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250177"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137498"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Preview: Updates beheren met onderhoudsbeheer en azure cli
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Updates beheren met onderhouds beheer en de Azure CLI
 
-Beheer platformupdates, waarvoor geen herstart nodig is, met behulp van onderhoudscontrole. Azure werkt zijn infrastructuur regelmatig bij om de betrouwbaarheid, prestaties, beveiliging of lancering van nieuwe functies te verbeteren. De meeste updates zijn transparant voor gebruikers. Sommige gevoelige workloads, zoals gaming, mediastreaming en financiële transacties, kunnen zelfs enkele seconden van een VM-bevriezing of loskoppeling voor onderhoud niet verdragen. Onderhoudscontrole geeft u de mogelijkheid om te wachten op platformupdates en deze toe te passen binnen een rollend venster van 35 dagen. 
+Met de onderhouds controle kunt u bepalen wanneer u updates wilt Toep assen op uw geïsoleerde Vm's en voor Azure toegewezen hosts. In dit onderwerp worden de Azure CLI-opties voor onderhouds beheer beschreven. Zie [platform updates beheren met onderhouds beheer](maintenance-control.md)voor meer informatie over de voor delen van het gebruik van onderhouds beheer, de beperkingen en andere beheer opties.
 
-Met onderhoudsbeheer u bepalen wanneer u updates wilt toepassen op uw geïsoleerde VM's en Azure Dedicated Hosts.
+## <a name="create-a-maintenance-configuration"></a>Een onderhouds configuratie maken
 
-Met onderhoudscontrole u:
-- Batch-updates in één updatepakket.
-- Wacht tot 35 dagen om updates toe te passen. 
-- Automatiseer platformupdates voor uw onderhoudsvenster met Azure Functions.
-- Onderhoudsconfiguraties werken voor abonnementen en resourcegroepen. 
-
-> [!IMPORTANT]
-> Maintenance Control is momenteel in openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
->
-
-## <a name="limitations"></a>Beperkingen
-
-- VM's moeten zich op een [speciale host](./linux/dedicated-hosts.md)bevindt of worden gemaakt met behulp van een [geïsoleerde VM-grootte](./linux/isolation.md).
-- Na 35 dagen wordt automatisch een update toegepast.
-- De gebruiker moet toegang tot **resourceinzender** hebben.
-
-
-## <a name="install-the-maintenance-extension"></a>De onderhoudsextensie installeren
-
-Als u ervoor kiest de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) lokaal te installeren, hebt u versie 2.0.76 of hoger nodig.
-
-Installeer `maintenance` de preview-CLI-extensie lokaal of in Cloud Shell. 
-
-```azurecli-interactive
-az extension add -n maintenance
-```
-
-
-## <a name="create-a-maintenance-configuration"></a>Een onderhoudsconfiguratie maken
-
-Gebruiken `az maintenance configuration create` om een onderhoudsconfiguratie te maken. In dit voorbeeld wordt een onderhoudsconfiguratie met de naam *myConfig* gemaakt die is uitgevoerd op de host. 
+Gebruiken `az maintenance configuration create` om een onderhouds configuratie te maken. In dit voor beeld wordt een onderhouds configuratie gemaakt met de naam *myConfig* scoped to the host. 
 
 ```azurecli-interactive
 az group create \
@@ -61,16 +30,16 @@ az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location  eastus
+   --location eastus
 ```
 
-Kopieer de configuratie-id van de uitvoer naar later te gebruiken.
+Kopieer de configuratie-ID uit de uitvoer, zodat u deze later kunt gebruiken.
 
-Met `--maintenanceScope host` behulp van zorgt ervoor dat het onderhoud config wordt gebruikt voor het regelen van updates voor de host.
+Met `--maintenanceScope host` kunt u ervoor zorgen dat de onderhouds configuratie wordt gebruikt om updates voor de host te beheren.
 
-Als u een configuratie met dezelfde naam probeert te maken, maar op een andere locatie, krijgt u een foutmelding. Configuratienamen moeten uniek zijn voor uw abonnement.
+Als u probeert een configuratie met dezelfde naam te maken, maar op een andere locatie, krijgt u een fout melding. Configuratie namen moeten uniek zijn voor uw abonnement.
 
-U vragen stellen voor `az maintenance configuration list`beschikbare onderhoudsconfiguraties met behulp van.
+U kunt een query uitvoeren voor beschik `az maintenance configuration list`bare onderhouds configuraties met.
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -78,11 +47,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>De configuratie toewijzen
 
-Gebruik `az maintenance assignment create` om de configuratie toe te wijzen aan uw geïsoleerde VM of Azure Dedicated Host.
+Gebruiken `az maintenance assignment create` om de configuratie toe te wijzen aan uw geïsoleerde virtuele machine of de toegewezen Azure-host.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
-Pas de configuratie toe op een vm met de id van de configuratie. Geef `--resource-type virtualMachines` de naam van de `--resource-name`VM voor en de resourcegroep voor op aan de VM in `--resource-group`en de locatie van de VM voor `--location`. 
+Pas de configuratie toe op een virtuele machine met behulp van de ID van de configuratie. Geef `--resource-type virtualMachines` de naam van de virtuele machine voor `--resource-name`en de resource groep voor voor de virtuele machine in `--resource-group`, en de locatie van de virtuele machine voor `--location`. 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -97,9 +66,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Als u een configuratie wilt toepassen op `--resource-type hosts` `--resource-parent-name` een speciale host, moet `--resource-parent-type hostGroups`u de naam van de hostgroep opnemen en . 
+Als u een configuratie wilt Toep assen op een specifieke host, moet `--resource-type hosts`u `--resource-parent-name` de naam van de hostgroep en `--resource-parent-type hostGroups`gebruiken. 
 
-De `--resource-id` parameter is de ID van de host. U [de az vm-host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) gebruiken om de ID van uw toegewijde host te krijgen.
+De para `--resource-id` meter is de id van de host. U kunt [AZ VM host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) gebruiken om de id van uw specifieke host op te halen.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -116,7 +85,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>Configuratie controleren
 
-U controleren of de configuratie correct is toegepast of controleren `az maintenance assignment list`welke configuratie momenteel wordt toegepast met behulp van.
+U kunt controleren of de configuratie correct is toegepast, of controleren welke configuratie momenteel wordt toegepast met `az maintenance assignment list`.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -145,11 +114,11 @@ az maintenance assignment list \
 ```
 
 
-## <a name="check-for-pending-updates"></a>Controleren op updates in behandeling
+## <a name="check-for-pending-updates"></a>Controleren op updates die nog niet zijn uitgevoerd
 
-Gebruiken `az maintenance update list` om te zien of er updates in behandeling zijn. Update --abonnement als de ID voor het abonnement dat de VM bevat.
+Gebruiken `az maintenance update list` om te zien of er updates in behandeling zijn. Update--abonnement als ID voor het abonnement dat de virtuele machine bevat.
 
-Als er geen updates zijn, retourneert de opdracht een `Resource not found...StatusCode: 404`foutbericht, dat de tekst bevat: .
+Als er geen updates zijn, wordt er een fout bericht weer gegeven met de volgende tekst: `Resource not found...StatusCode: 404`.
 
 Als er updates zijn, wordt er slechts één geretourneerd, zelfs als er meerdere updates in behandeling zijn. De gegevens voor deze update worden geretourneerd in een object:
 
@@ -168,7 +137,7 @@ Als er updates zijn, wordt er slechts één geretourneerd, zelfs als er meerdere
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
-Controleer op updates in behandeling voor een geïsoleerde virtuele machine. In dit voorbeeld wordt de uitvoer opgemaakt als een tabel voor leesbaarheid.
+Controleren op updates die in behandeling zijn voor een geïsoleerde virtuele machine. In dit voor beeld wordt de uitvoer opgemaakt als een tabel voor de Lees baarheid.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -181,7 +150,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Controleren op updates in behandeling voor een speciale host. In dit voorbeeld wordt de uitvoer opgemaakt als een tabel voor leesbaarheid. Vervang de waarden voor de resources door die van u.
+Controleren op updates die in behandeling zijn voor een specifieke host. In dit voor beeld wordt de uitvoer opgemaakt als een tabel voor de Lees baarheid. Vervang de waarden voor de resources door uw eigen gegevens.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -197,11 +166,11 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Updates toepassen
 
-Hiermee `az maintenance apply update` u updates in behandeling toepassen. Na succes, zal deze opdracht JSON met de details van de update retourneren.
+Gebruik `az maintenance apply update` om in behandeling zijnde updates toe te passen. Als de opdracht is voltooid, wordt JSON geretourneerd met de details van de update.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
-Maak een verzoek om updates toe te passen op een geïsoleerde virtuele machine.
+Een aanvraag maken om updates op een geïsoleerde virtuele machine toe te passen.
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -215,7 +184,7 @@ az maintenance applyupdate create \
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Pas updates toe op een speciale host.
+Updates Toep assen op een specifieke host.
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -228,11 +197,11 @@ az maintenance applyupdate create \
    --resource-parent-type hostGroups
 ```
 
-## <a name="check-the-status-of-applying-updates"></a>De status van het toepassen van updates controleren 
+## <a name="check-the-status-of-applying-updates"></a>De status van het Toep assen van updates controleren 
 
-U de voortgang van `az maintenance applyupdate get`de updates controleren met behulp van. 
+U kunt de voortgang van de updates controleren met behulp `az maintenance applyupdate get`van. 
 
-U kunt `default` als updatenaam de resultaten voor de `myUpdateName` laatste update bekijken of vervangen door `az maintenance applyupdate create`de naam van de update die is geretourneerd toen u deze uitvoert.
+U kunt als `default` Update naam gebruiken om de resultaten voor de laatste update te bekijken of door `myUpdateName` de naam te vervangen van de update die is geretourneerd tijdens het `az maintenance applyupdate create`uitvoeren van.
 
 ```text
 Status         : Completed
@@ -244,7 +213,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime is het moment waarop de update is voltooid, ofwel geïnitieerd door u of door het platform in het geval het zelfonderhoudsvenster niet werd gebruikt. Als er nog nooit een update is toegepast via onderhoudsbeheer, wordt de standaardwaarde weergegeven.
+LastUpdateTime is de tijd waarop de update is voltooid, ofwel door u of door het platform is gestart in het geval dat het zelf onderhoud niet is gebruikt. Als er nog nooit een update is toegepast via de onderhouds controle, wordt de standaard waarde weer gegeven.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -274,9 +243,9 @@ az maintenance applyupdate get \
 ```
 
 
-## <a name="delete-a-maintenance-configuration"></a>Een onderhoudsconfiguratie verwijderen
+## <a name="delete-a-maintenance-configuration"></a>Een onderhouds configuratie verwijderen
 
-Een `az maintenance configuration delete` onderhoudsconfiguratie verwijderen. Als u de configuratie verwijdert, wordt het onderhoudsbeheer verwijderd uit de bijbehorende resources.
+Gebruik `az maintenance configuration delete` om een onderhouds configuratie te verwijderen. Als u de configuratie verwijdert, wordt de onderhouds controle van de bijbehorende resources verwijderd.
 
 ```azurecli-interactive
 az maintenance configuration delete \
@@ -286,4 +255,4 @@ az maintenance configuration delete \
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Onderhoud en updates](maintenance-and-updates.md)voor meer informatie.
+Zie [onderhoud en updates](maintenance-and-updates.md)voor meer informatie.

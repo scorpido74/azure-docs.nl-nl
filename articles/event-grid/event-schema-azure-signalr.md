@@ -1,37 +1,37 @@
 ---
-title: Azure SingnalR als gebeurtenisrasterbron
-description: Beschrijft de eigenschappen die worden geleverd voor Azure SignalR-gebeurtenissen met Azure Event Grid
+title: Azure-Signa lering als Event Grid bron
+description: Hierin worden de eigenschappen beschreven die worden gegeven voor Azure-seingevings gebeurtenissen met Azure Event Grid
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393395"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133724"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-gebeurtenisschema voor SignalR-service
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-gebeurtenis schema voor de signaal service
 
-In dit artikel worden de eigenschappen en het schema voor gebeurtenissen van de SignalR-service weergegeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md) Het geeft u ook een lijst met snelle starts en zelfstudies om Azure SignalR als gebeurtenisbron te gebruiken.
+Dit artikel bevat de eigenschappen en het schema voor de seingevings service-gebeurtenissen.Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's. Het biedt ook een lijst met snel starten en zelf studies voor het gebruik van Azure signalering als een gebeurtenis bron.
 
-## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+## <a name="event-grid-event-schema"></a>Event Grid-gebeurtenisschema
 
-### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschik bare gebeurtenis typen
 
-SignalR Service zendt de volgende gebeurtenistypen uit:
+De seingevings service verzendt de volgende gebeurtenis typen:
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.signalrService.ClientConnectionConnected | Verhoogd wanneer een clientverbinding is verbonden. |
-| Microsoft.signalrservice.clientConnectionDisconnected | Verhoogd wanneer een clientverbinding is verbroken. |
+| Micro soft. SignalRService. ClientConnectionConnected | Deze gebeurtenis treedt op wanneer een verbinding met een client is gemaakt. |
+| Micro soft. SignalRService. ClientConnectionDisconnected | Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding is verbroken. |
 
-### <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeld gebeurtenis
 
-In het volgende voorbeeld wordt het schema van een clientverbinding weergegeven die is verbonden: 
+In het volgende voor beeld ziet u het schema van een gebeurtenis verbonden met een client verbinding: 
 
 ```json
 [{
@@ -51,7 +51,7 @@ In het volgende voorbeeld wordt het schema van een clientverbinding weergegeven 
 }]
 ```
 
-Het schema voor een verbroken gebeurtenis met de clientverbinding is vergelijkbaar: 
+Het schema voor een gebeurtenis waarmee een client verbinding is verbroken, is vergelijkbaar met het volgende: 
 
 ```json
 [{
@@ -72,38 +72,38 @@ Het schema voor een verbroken gebeurtenis met de clientverbinding is vergelijkba
 }]
 ```
 
-### <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Unieke id voor de gebeurtenis. |
-| data | object | Gegevens over de gebeurtenis signalr service. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenis gegevens van de signaal/service. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| tijdstempel | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| hubNaam | tekenreeks | De hub waartoe de clientverbinding behoort. |
-| verbindingId | tekenreeks | De unieke id voor de clientverbinding. |
-| userId | tekenreeks | De gebruikers-id gedefinieerd in claim. |
-| Errormessage | tekenreeks | De fout die ervoor zorgt dat de verbinding wordt verbroken. |
+| tijdstempel | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| hubName | tekenreeks | De hub waartoe de client verbinding behoort. |
+| connectionId | tekenreeks | De unieke id voor de client verbinding. |
+| userId | tekenreeks | De gebruikers-id die is gedefinieerd in claim. |
+| errorMessage | tekenreeks | De fout die ervoor zorgt dat de verbinding is verbroken. |
 
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 |Titel | Beschrijving |
 |---------|---------|
-| [Reageren op Azure SignalR Service-gebeurtenissen met gebeurtenisraster](../azure-signalr/signalr-concept-event-grid-integration.md) | Overzicht van de integratie van Azure SignalR Service met Event Grid. |
-| [Azure SignalR Service-gebeurtenissen verzenden naar gebeurtenisraster](../azure-signalr/signalr-howto-event-grid-integration.md) | Hier ziet u hoe u Azure SignalR Service-gebeurtenissen naar een toepassing verzendt via gebeurtenisraster. |
+| [Reageren op gebeurtenissen van de Azure signalerings service met behulp van Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Overzicht van het integreren van de Azure signalerings service met Event Grid. |
+| [Service gebeurtenissen van Azure signalering verzenden naar Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Laat zien hoe u Azure signalerings service-gebeurtenissen verzendt naar een toepassing via Event Grid. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?
-* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
+* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

@@ -9,27 +9,27 @@ ms.topic: include
 ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: ee6ee600160349548a0e886131f1a29b90de8746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275880"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131105"
 ---
-Tijdens het publiceren van uw aanbieding op de marktplaats via Partner Center, moet u uw aanbieding koppelen aan uw CRM-systeem (Customer Relationship Management), zodat u klantcontactgegevens direct ontvangen nadat een klant interesse heeft getoond of implementeert uw product.
+Wanneer u uw aanbieding naar Marketplace publiceert via partner centrum, moet u uw aanbieding koppelen aan uw CRM-systeem. Op deze manier kunt u contact gegevens van klanten direct ontvangen nadat een klant rente heeft ingedrukt of uw product implementeert.
 
-1. **Selecteer een leadbestemming waar u wilt dat we klantleads verzenden.** De volgende CRM-systemen worden ondersteund:
+1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. De volgende CRM-systemen worden ondersteund:
 
-    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) voor customer engagement
+    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
-    * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
+    * [SalesForce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 
-    Als uw CRM-systeem niet expliciet wordt ondersteund in de bovenstaande lijst, hebt u de volgende opties waarmee u de klantgegevens opslaan en vervolgens u deze gegevens exporteren of importeren in uw CRM-systeem.
+    Als uw CRM-systeem niet expliciet wordt ondersteund in deze lijst, kunt u de gegevens van de klant lead opslaan met behulp van de volgende opties. Vervolgens kunt u deze gegevens exporteren of importeren in uw CRM-systeem.
 
     * [Azure-tabel](../commercial-marketplace-lead-management-instructions-azure-table.md)
-    * [HTTPS-eindpunt](../commercial-marketplace-lead-management-instructions-https.md)
+    * [HTTPS-eind punt](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Lees de documentatie die hierboven wordt vermeld om te bekijken hoe u de leadbestemming instelt om leads te ontvangen van uw marketplace-aanbieding. 
-3. Koppel uw aanbieding aan de leadbestemming wanneer u de aanbieding publiceert op de marketplace in het Partnercentrum Zie de bovenstaande documentatie voor hoe u dit doen.
-4. Bevestig dat de verbinding met de leadbestemming correct is ingesteld. Zodra u uw leadbestemming goed hebt geconfigureerd en op Publicatie in uw aanbieding in partnercentrum hebt geraken, valideren we de verbinding en sturen we u een testlead. Wanneer u het aanbod bekijkt voordat u live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te verkrijgen in de preview-omgeving. 
-5. Zorg ervoor dat de verbinding met de hoofdbestemming up-to-date blijft, zodat u geen leads verliest, dus zorg ervoor dat u deze verbindingen bijwerkt wanneer er iets is veranderd aan uw kant.
+2. Lees deze gekoppelde documentatie voor het geselecteerde doel van de potentiële klant om te zien hoe u de doel locatie van de lead kunt instellen om leads van uw Marketplace-aanbieding te ontvangen.
+3. Verbind uw aanbieding met de doel locatie van de lead wanneer u de aanbieding publiceert naar de Marketplace in Partner Center. Raadpleeg de gekoppelde documentatie voor meer informatie over hoe u dit doet.
+4. Controleer of de verbinding met de doel locatie van de lead juist is ingesteld. Nadat u uw lead bestemming op de juiste wijze hebt geconfigureerd, selecteert u **publiceren** op uw aanbieding in partner centrum. Vervolgens valideren we de verbinding en sturen we u een test lead. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding in de voorbeeld omgeving te verkrijgen.
+5. Zorg ervoor dat de verbinding met de doel locatie up-to-date blijft, zodat er geen leads verloren gaan. Zorg ervoor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.

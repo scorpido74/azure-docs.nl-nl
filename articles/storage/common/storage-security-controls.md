@@ -1,68 +1,68 @@
 ---
 title: Beveiligingsmaatregelen
 titleSuffix: Azure Storage
-description: Een checklist met beveiligingsbesturingselementen voor de evaluatie van Azure Storage.
+description: Een controle lijst met beveiligings controles voor het evalueren van Azure Storage.
 services: storage
 author: msmbaldwin
+ms.author: mbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: mbaldwin
-ms.openlocfilehash: f03f497051367d36bd229a3f358d28a1130ec620
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082353"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128024"
 ---
-# <a name="security-controls-for-azure-storage"></a>Beveiligingsbesturingselementen voor Azure Storage
+# <a name="security-controls-for-azure-storage"></a>Beveiligings controles voor Azure Storage
 
-In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in Azure Storage, opgeslagen.
+In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure Storage.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja |  |
-| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Ja | Zie [Opslagserviceversleuteling met door de klant beheerde sleutels in Azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Versleuteling op kolomniveau (Azure Data Services)| N.v.t. |  |
-| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | Ondersteuning voor standaard HTTPS/TLS-mechanismen.  Gebruikers kunnen ook gegevens versleutelen voordat deze naar de service worden verzonden. |
-| API-aanroepen versleuteld| Ja |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja |  |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Zie [Storage service Encryption door de klant beheerde sleutels gebruiken in azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
+| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. |  |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Ondersteuning voor standaard HTTPS/TLS-mechanismen.  Gebruikers kunnen ook gegevens versleutelen voordat deze naar de service worden verzonden. |
+| Versleutelde API-aanroepen| Ja |  |
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor serviceeindpunten| Ja |  |
-| Ondersteuning voor servicetags| Ja | Zie [overzicht van Azure-servicetags](../../virtual-network/service-tags-overview.md) voor meer informatie over servicetags die worden ondersteund door Azure Storage. |
+| Ondersteuning voor service-eind punten| Ja |  |
+| Ondersteuning voor service Tags| Ja | Zie [overzicht van Azure-service Tags](../../virtual-network/service-tags-overview.md) voor meer informatie over service tags die door Azure Storage worden ondersteund. |
 | Ondersteuning voor VNet-injectie| N.v.t. |  |
-| Ondersteuning voor netwerkisolatie en firewall| Ja | |
-| Ondersteuning voor gedwongen tunneling| N.v.t. |  |
+| Netwerk isolatie en firewall ondersteuning| Ja | |
+| Ondersteuning voor geforceerde tunneling| N.v.t. |  |
 
-## <a name="monitoring--logging"></a>Controle & logboekregistratie
+## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | Azure-monitorstatistieken|
-| Logboekregistratie en audit van het controle- en beheervlak | Ja | Activiteitenlogboek Azure Resource Manager |
-| Logboekregistratie en -audit van gegevensvliegtuigen| Ja | Diagnostische logboeken voor service.|
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Azure Monitor metrische gegevens|
+| Logboek registratie en controle op het vlak van controle en beheer | Ja | Azure-activiteitenlogboek |
+| Logboek registratie en controle van het gegevens vlak| Ja | Azure Monitor bron logboeken |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja | Azure Active Directory, Gedeelde sleutel, Gemeenschappelijke toegangstoken. |
-| Autorisatie| Ja | Ondersteuningsautorisatie via RBAC-, POSIX-ACL's en SAS-tokens |
+| Verificatie| Ja | Azure Active Directory, gedeelde sleutel, gedeeld toegangs token. |
+| Autorisatie| Ja | Ondersteuning voor autorisatie via RBAC, POSIX Acl's en SAS-tokens |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor configuratiebeheer (versiebeheer van configuratie, enz.)| Ja | Versiebeheer van ondersteuningsbronnen via Azure Resource Manager-API's |
+| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | Ondersteuning van resource provider versie beheer via Azure Resource Manager-Api's |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../../security/fundamentals/security-controls.md).

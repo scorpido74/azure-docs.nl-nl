@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116312"
+ms.locfileid: "82127572"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -40,6 +40,23 @@ Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt teg
 
 ## <a name="installation-and-import"></a>Installatie en import
 
+* **PIP-installatie: afhankelijkheden zijn niet gegarandeerd consistent met de installatie van één regel**: 
+
+   Dit is een bekende beperking van PIP, omdat er geen werkende afhankelijkheids conflict Oplosser is wanneer u als één regel installeert. De eerste unieke afhankelijkheid is de enige die er wordt weer gegeven. 
+
+   In de volgende code `azure-ml-datadrift` en `azureml-train-automl` worden beide geïnstalleerd met behulp van één regel PIP-installatie. 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   Voor dit voor beeld `azure-ml-datadrift` is versie > 1,0 vereist en `azureml-train-automl` is versie < 1,2 vereist. Als de meest recente versie `azure-ml-datadrift` van is 1,3, worden beide pakketten bijgewerkt naar 1,3, ongeacht de vereiste van `azureml-train-automl` het pakket voor een oudere versie. 
+
+   Als u ervoor wilt zorgen dat de juiste versies voor uw pakketten zijn geïnstalleerd, installeert u met meerdere regels, zoals in de volgende code. Volg orde is hier geen probleem, omdat PIP expliciet downgradet als onderdeel van de volgende regel aanroep. Dit betekent dat de juiste versie afhankelijkheden worden toegepast.
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **Fout bericht: kan PyYAML niet verwijderen**
 
     Azure Machine Learning SDK voor python: PyYAML is een `distutils` geïnstalleerd project. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK en het negeren van deze fout:
@@ -83,20 +100,6 @@ Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt teg
     * Voeg `azureml-dataprep` versie 1.1.8 of hoger toe.
     * Voeg `pyarrow` versie 0,11 of hoger toe.
     
-* **PIP-installatie: Dependecies zijn niet gegarandeerd consistent met de installatie van een enkele regel**: dit is een bekende beperking van PIP omdat er geen werkende afhankelijkheids conflict is wanneer u als één regel installeert. De eerste unieke afhankelijkheid is de enige die er wordt weer gegeven. Als u bijvoorbeeld Azure-ml-datadrift installeert waarvoor versie > 1,0 en azureml-Train-automl vereist is die versie < 1,2 vereist en als de meest recente versie 1,3 is, wanneer de gebruiker de pakketten op één regel installeert, zoals hieronder wordt weer gegeven, wordt alles bijgewerkt naar 1,3, ook al wordt een oudere versie van het pakket voor azureml-Train-automl vereist. 
-
-    * Er wordt inconsistente dependecies weer geven met de installatie van één regel.
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * Als u ervoor wilt zorgen dat de juiste versies voor uw pakketten zijn geïnstalleerd, installeert u met meerdere regels, zoals in de volgende code. Volg orde is hier niet van belang.
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>Werk ruimten maken en beheren
 
 > [!WARNING]

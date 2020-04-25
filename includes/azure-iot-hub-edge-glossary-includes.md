@@ -4,60 +4,60 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67176154"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131965"
 ---
-## <a name="automatic-device-management"></a>Automatisch apparaatbeheer
-Automatic Device Management in Azure IoT Hub automatiseert veel van de repetitieve en complexe taken van het beheer van grote apparaatvloten gedurende het gehele levenscyclus. Met Automatisch apparaatbeheer u een set apparaten targeten op basis van hun eigenschappen, een gewenste configuratie definiëren en IoT Hub-apparaten laten bijwerken wanneer ze in het bereik komen.  Bestaat uit [automatische apparaatconfiguraties](../articles/iot-hub/iot-hub-auto-device-config.md) en automatische implementaties van [IoT Edge.](../articles/iot-edge/how-to-deploy-monitor.md)
+## <a name="automatic-device-management"></a>Automatisch Apparaatbeheer
+Automatische Apparaatbeheer in azure IoT Hub automatiseert veel van de herhaalde en complexe taken van het beheer van grote apparaat vloots in de hele levens cyclus. Met automatisch Apparaatbeheer kunt u een set apparaten op basis van hun eigenschappen richten, een gewenste configuratie definiëren en apparaten IoT Hub bijwerken wanneer deze binnen het bereik vallen.  Bestaat uit [automatische configuraties van apparaten](../articles/iot-hub/iot-hub-auto-device-config.md) en [IOT Edge automatische implementaties](../articles/iot-edge/how-to-deploy-at-scale.md).
 
 ## <a name="iot-edge"></a>IoT Edge
-Azure IoT Edge maakt cloudgestuurde implementatie van Azure-services en oplossingsspecifieke code naar on-premises apparaten mogelijk. IoT Edge-apparaten kunnen gegevens van andere apparaten samenvoegen om computers en analyses uit te voeren voordat de gegevens naar de cloud worden verzonden. Zie [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)voor meer informatie.
+Azure IoT Edge maakt cloud-gebaseerde implementatie van Azure-Services en oplossingen-specifieke code op on-premises apparaten mogelijk. IoT Edge-apparaten kunnen gegevens van andere apparaten samen voegen om computers en analyses uit te voeren voordat de gegevens naar de cloud worden verzonden. Zie [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/)voor meer informatie.
 
 ## <a name="iot-edge-agent"></a>IoT Edge-agent
-Het deel van de IoT Edge runtime dat verantwoordelijk is voor het implementeren en monitoren van modules.
+Het deel van de IoT Edge runtime dat verantwoordelijk is voor het implementeren en bewaken van modules.
 
 ## <a name="iot-edge-device"></a>IoT Edge-apparaat
-IoT Edge-apparaten hebben de 3T Edge-runtime geïnstalleerd en worden gemarkeerd als **IoT Edge-apparaat** in de apparaatgegevens. Meer informatie over het [implementeren van Azure IoT Edge op een gesimuleerd apparaat in Linux - preview](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
+IoT Edge-apparaten hebben de IoT Edge-runtime geïnstalleerd en als **IOT edge apparaat** in de details van het apparaat gemarkeerd. Meer informatie over het [implementeren van Azure IOT Edge op een gesimuleerd apparaat in Linux-preview](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
-## <a name="iot-edge-automatic-deployment"></a>Automatische implementatie van IoT Edge
-Een automatische implementatie van IoT Edge configureert een doelset IoT Edge-apparaten om een set IoT Edge-modules uit te voeren. Elke implementatie zorgt er continu voor dat alle apparaten die overeenkomen met de doelconditie de opgegeven set modules uitvoeren, zelfs wanneer nieuwe apparaten worden gemaakt of worden aangepast aan de doelvoorwaarde. Elk IoT Edge-apparaat ontvangt alleen de implementatie met de hoogste prioriteit aan de doelvoorwaarde. Meer informatie over [automatische implementatie van IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+## <a name="iot-edge-automatic-deployment"></a>Automatische implementatie IoT Edge
+Een IoT Edge automatische implementatie configureert een doelset van IoT Edge apparaten om een set IoT Edge modules uit te voeren. Elke implementatie zorgt er continu voor dat alle apparaten die overeenkomen met de doel voorwaarde, de opgegeven set modules uitvoeren, zelfs wanneer er nieuwe apparaten worden gemaakt of gewijzigd in overeenstemming met de doel voorwaarde. Elk IoT Edge apparaat krijgt alleen de implementatie met de hoogste prioriteit waarvan de doel voorwaarde voldoet. Meer informatie over [IOT Edge automatische implementatie](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
-## <a name="iot-edge-deployment-manifest"></a>IoT Edge-implementatiemanifest
-Een Json-document met de informatie die moet worden gekopieerd in de moduletwin(s) van een of meer IoT Edge-apparaten om een reeks modules, routes en bijbehorende gewenste eigenschappen van de module te implementeren.
+## <a name="iot-edge-deployment-manifest"></a>IoT Edge implementatie manifest
+Een JSON-document met de gegevens die moeten worden gekopieerd in een of meer IoT Edge apparaten module dubbele (s) voor het implementeren van een set modules, routes en de gewenste eigenschappen van de module.
 
-## <a name="iot-edge-gateway-device"></a>IoT Edge-gatewayapparaat
-Een IoT Edge-apparaat met downstream-apparaat. Het downstream-apparaat kan een IoT Edge zijn of niet het IoT Edge-apparaat.
+## <a name="iot-edge-gateway-device"></a>IoT Edge gateway-apparaat
+Een IoT Edge apparaat met het downstream-apparaat. Het downstream-apparaat kan IoT Edge of niet IoT Edge apparaat zijn.
 
-## <a name="iot-edge-hub"></a>IoT Edge-hub
-Het deel van de IoT Edge runtime dat verantwoordelijk is voor module-communicatie naar modulecommunicatie, upstream (richting IoT Hub) en downstream (weg van IoT Hub) communicatie. 
+## <a name="iot-edge-hub"></a>IoT Edge hub
+Het deel van de IoT Edge runtime dat verantwoordelijk is voor de module communicatie, upstream (naar IoT Hub) en downstream (weg van IoT Hub)-communicatie. 
 
-## <a name="iot-edge-leaf-device"></a>IoT Edge leaf-apparaat
-Een IoT Edge-apparaat zonder downstream-apparaat. 
+## <a name="iot-edge-leaf-device"></a>IoT Edge blad apparaat
+Een IoT Edge apparaat zonder downstream-apparaat. 
 
-## <a name="iot-edge-module"></a>IoT Edge-module
-Een IoT Edge-module is een Docker-container die u implementeren op IoT Edge-apparaten. Het voert een specifieke taak uit, zoals het innemen van een bericht vanaf een apparaat, het transformeren van een bericht of het verzenden van een bericht naar een IoT-hub. Het communiceert met andere modules en stuurt gegevens naar de IoT Edge runtime. [Begrijp de vereisten en tools voor het ontwikkelen van IoT Edge-modules.](https://docs.microsoft.com/azure/iot-edge/module-development)
+## <a name="iot-edge-module"></a>Module IoT Edge
+Een IoT Edge module is een docker-container die u op IoT Edge apparaten kunt implementeren. Hiermee wordt een specifieke taak uitgevoerd, zoals het opnemen van een bericht van een apparaat, het transformeren van een bericht of het verzenden van een bericht naar een IoT-hub. De service communiceert met andere modules en verzendt gegevens naar de IoT Edge runtime. Meer [informatie over de vereisten en hulpprogram ma's voor het ontwikkelen van IOT Edge modules](https://docs.microsoft.com/azure/iot-edge/module-development).
 
 ## <a name="iot-edge-module-identity"></a>Identiteit van IoT Edge-module
-Een record in het identiteitsregister van de IoT Hub-module waarin het bestaan en de beveiligingsreferenties worden beschreven die door een module moeten worden gebruikt om te verifiëren met een edge hub of IoT Hub.
+Een record in het IoT Hub module-id-REGI ster met gedetailleerde informatie over het bestaan en de beveiligings referenties die door een module moeten worden gebruikt om te verifiëren met een Edge hub of IoT Hub.
 
-## <a name="iot-edge-module-image"></a>Afbeelding van de IoT Edge-module
-De dockerafbeelding die wordt gebruikt door de runtime van IoT Edge om module-exemplaren te instantiëren.
+## <a name="iot-edge-module-image"></a>Afbeelding van de module IoT Edge
+De docker-installatie kopie die door de IoT Edge-runtime wordt gebruikt om module-exemplaren te instantiëren.
 
-## <a name="iot-edge-module-twin"></a>IoT Edge module twin
-Er is een Json-document blijven staan in de IoT-hub waarmee de statusgegevens voor een module-exemplaar worden opgeslagen.
+## <a name="iot-edge-module-twin"></a>IoT Edge-module dubbele
+Een JSON-document is persistent gemaakt in de IoT Hub waarin de status informatie voor een module-exemplaar wordt opgeslagen.
 
-## <a name="iot-edge-priority"></a>IoT Edge-prioriteit
-Wanneer twee IoT Edge-implementaties zich op hetzelfde apparaat richten, wordt de implementatie met hogere prioriteit toegepast. Als twee implementaties dezelfde prioriteit hebben, wordt de implementatie met de latere aanmaakdatum toegepast. Meer informatie over [prioriteit](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
+## <a name="iot-edge-priority"></a>IoT Edge prioriteit
+Wanneer twee IoT Edge implementaties gericht zijn op hetzelfde apparaat, wordt de implementatie met een hogere prioriteit toegepast. Als twee implementaties dezelfde prioriteit hebben, wordt de implementatie met de latere aanmaak datum toegepast. Meer informatie over [prioriteit](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="iot-edge-runtime"></a>IoT Edge-runtime
-IoT Edge-runtime bevat alles wat Microsoft distribueert om te worden geïnstalleerd op een IoT Edge-apparaat. Het bevat Edge-agent, Edge-hub en de IoT Edge-beveiligingsdaemon.
+IoT Edge runtime bevat alles wat micro soft distribueert om te worden geïnstalleerd op een IoT Edge apparaat. Het bevat Edge-agent, Edge hub en de IoT Edge Security daemon.
 
-## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT Edge-setmodules op één apparaat
-Een bewerking die de inhoud van een IoT Edge-manifest kopieert op de modulekoppeling van één apparaat. De onderliggende API is een generieke 'apply configuration', die gewoon een IoT Edge manifest als input neemt.
+## <a name="iot-edge-set-modules-to-a-single-device"></a>Modules IoT Edge op één apparaat instellen
+Een bewerking waarmee de inhoud van een IoT Edge-manifest wordt gekopieerd op één apparaat ' module dubbele. De onderliggende API is een algemene ' toepassings configuratie ', waarbij simpelweg een IoT Edge-manifest als invoer wordt gebruikt.
 
-## <a name="iot-edge-target-condition"></a>IoT Edge-doelconditie
-In een IoT Edge-implementatie is doelvoorwaarde een Booleaanse voorwaarde op de tags van apparaattweelingen om de doelapparaten van de implementatie te selecteren, bijvoorbeeld **tag.environment = prod**. De doelvoorwaarde wordt voortdurend geëvalueerd om nieuwe apparaten op te nemen die aan de vereisten voldoen of apparaten te verwijderen die dit niet meer doen. Meer informatie over [doelconditie](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+## <a name="iot-edge-target-condition"></a>IoT Edge doel voorwaarde
+In een IoT Edge-implementatie is doel voorwaarde elke Booleaanse voor waarde op apparaatdubbels van het apparaat om de doel apparaten van de implementatie te selecteren, bijvoorbeeld **tag. Environment = Prod**. De doel voorwaarde wordt continu geëvalueerd om nieuwe apparaten op te halen die voldoen aan de vereisten of om apparaten te verwijderen die niet meer beschikbaar zijn. Meer informatie over [doel voorwaarde](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)

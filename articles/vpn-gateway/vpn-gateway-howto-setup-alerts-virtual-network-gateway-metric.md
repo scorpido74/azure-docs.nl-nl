@@ -1,74 +1,74 @@
 ---
-title: Waarschuwingen instellen voor Azure VPN Gateway-statistieken
-description: Stappen om waarschuwingen te configureren op VPN Gateway-statistieken
+title: Waarschuwingen instellen voor metrische gegevens van Azure VPN Gateway
+description: Stappen voor het configureren van waarschuwingen voor VPN Gateway metrische gegevens
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01704030ee3142cac9a328e1a3edc024651919a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67605235"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127911"
 ---
-# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Waarschuwingen instellen voor VPN Gateway-statistieken
+# <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Waarschuwingen instellen voor VPN Gateway metrische gegevens
 
-Met dit artikel u waarschuwingen instellen voor Azure VPN Gateway-statistieken. Azure Monitor biedt de mogelijkheid om waarschuwingen voor Azure-resources in te stellen. U waarschuwingen instellen voor virtuele netwerkgateways van het type VPN.
+Dit artikel helpt u bij het instellen van waarschuwingen op Azure VPN Gateway metrische gegevens. Azure Monitor biedt de mogelijkheid om waarschuwingen in te stellen voor Azure-resources. U kunt waarschuwingen instellen voor virtuele netwerk gateways van het type VPN.
 
 
-|**Gegevens**   | **Eenheid** | **Granulariteit** | **Beschrijving** | 
+|**Gegevens**   | **Teleenheid** | **Granulariteit** | **Beschrijving** | 
 |---       | ---        | ---       | ---            | ---       |
-|**Gemiddelde bandbreedte**| Bytes/s  | 5 minuten| Gemiddeld gecombineerd bandbreedtegebruik van alle site-to-site verbindingen op de gateway.     |
-|**P2SBandbreedte**| Bytes/s  | 1 minuut  | Gemiddelde gecombineerde bandbreedtegebruik van alle point-to-site verbindingen op de gateway.    |
-|**Aantal P2SConnection-verbindingen**| Count  | 1 minuut  | Aantal point-to-site verbindingen op de gateway.   |
-|**TunnelGemiddeldebandbreedte** | Bytes/s    | 5 minuten  | Gemiddeld bandbreedtegebruik van tunnels die op de gateway zijn gemaakt. |
-|**TunnelEgressBytes** | Bytes | 5 minuten | Uitgaand verkeer op tunnels gemaakt op de gateway.   |
-|**TunnelEgressPackets** | Count | 5 minuten | Aantal uitgaande pakketten op tunnels die op de gateway zijn gemaakt.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minuten | Aantal uitgaande pakketten die zijn gedropt op tunnels die worden veroorzaakt door een mismatch tussen verkeerskiezer. |
-|**TunnelIngressBytes** | Bytes | 5 minuten | Binnenkomend verkeer op tunnels gemaakt op de gateway.   |
-|**TunnelIngressPackets** | Count | 5 minuten | Aantal binnenkomende pakketten op tunnels die op de gateway zijn gemaakt.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minuten | Aantal binnenkomende pakketten die zijn gedropt op tunnels die worden veroorzaakt door een mismatch tussen verkeerskiezer. |
+|**AverageBandwidth**| Bytes/s  | 5 minuten| Gemiddelde gecombineerde bandbreedte gebruik van alle site-naar-site-verbindingen op de gateway.     |
+|**P2SBandwidth**| Bytes/s  | 1 minuut  | Gemiddelde gecombineerde bandbreedte gebruik van alle punt-naar-site-verbindingen op de gateway.    |
+|**P2SConnectionCount**| Count  | 1 minuut  | Aantal Point-to-site-verbindingen op de gateway.   |
+|**TunnelAverageBandwidth** | Bytes/s    | 5 minuten  | Gemiddeld bandbreedte gebruik van tunnels die zijn gemaakt op de gateway. |
+|**TunnelEgressBytes** | Bytes | 5 minuten | Uitgaand verkeer op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelEgressPackets** | Count | 5 minuten | Aantal uitgaande pakketten op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelEgressPacketDropTSMismatch** | Count | 5 minuten | Aantal uitgaande pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend verkeers selectie. |
+|**TunnelIngressBytes** | Bytes | 5 minuten | Binnenkomend verkeer op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelIngressPackets** | Count | 5 minuten | Aantal inkomende pakketten op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelIngressPacketDropTSMismatch** | Count | 5 minuten | Aantal binnenkomende pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend Traffic-selector. |
 
 
-## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure Monitor-waarschuwingen instellen op basis van metrische gegevens met behulp van de Azure-portal
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure Monitor waarschuwingen instellen op basis van metrische gegevens met behulp van de Azure Portal
 
-In de volgende voorbeeldstappen wordt een waarschuwing op een gateway gemaakt voor:
+In de volgende voorbeeld stappen wordt een waarschuwing voor een gateway gemaakt voor:
 
-- **Metrische:** TunnelGemiddeldebandbreedte
-- **Voorwaarde:** Bandbreedte > 10 bytes per seconde
+- **Metriek:** TunnelAverageBandwidth
+- **Voor waarde:** Band breedte > tien bytes/seconde
 - **Venster:** 5 minuten
-- **Waarschuwingsactie:** E-mail
+- **Waarschuwings actie:** E-mail
 
 
 
-1. Ga naar de bron van de virtuele netwerkgateway en selecteer **Waarschuwingen** op het tabblad **Controle.** Maak vervolgens een nieuwe waarschuwingsregel of bewerk een bestaande waarschuwingsregel.
+1. Ga naar de gateway resource van het virtuele netwerk en selecteer **waarschuwingen** op het tabblad **bewaking** . Maak vervolgens een nieuwe waarschuwings regel of bewerk een bestaande waarschuwings regel.
 
-   ![Selecties voor het maken van een waarschuwingsregel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Maken")
+   ![Selecties voor het maken van een waarschuwings regel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "Maken")
 
-2. Selecteer uw VPN-gateway als bron.
+2. Selecteer uw VPN-gateway als de resource.
 
-   ![De knop Selecteren en de VPN-gateway in de lijst met bronnen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Selecteer")
+   ![De knop selecteren en de VPN-gateway in de lijst met resources](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Selecteer")
 
-3. Selecteer een statistiek die u wilt configureren voor de waarschuwing.
+3. Selecteer een metrische waarde die voor de waarschuwing moet worden geconfigureerd.
 
-   ![Geselecteerde statistiek in de lijst met statistieken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Selecteer")
-4. Configureer de signaallogica. Er zijn drie componenten aan:
+   ![Geselecteerde metrische gegevens in de lijst met metrische gegevens](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Selecteer")
+4. De signaal logica configureren. Er zijn er drie onderdelen:
 
-    a. **Afmetingen:** Als de statistiek afmetingen heeft, u specifieke dimensiewaarden selecteren, zodat de waarschuwing alleen gegevens van die dimensie evalueert. Deze zijn optioneel.
+    a. **Dimensies**: als de metriek dimensies heeft, kunt u specifieke dimensie waarden selecteren zodat de waarschuwing alleen gegevens van die dimensie evalueert. Dit zijn optioneel.
 
-    b. **Voorwaarde**: Dit is de bewerking om de metrische waarde te evalueren.
+    b. **Voor waarde**: dit is de bewerking om de metrische waarde te evalueren.
 
-    c. **Tijd:** Geef de granulariteit van metrische gegevens op en de periode om de waarschuwing te evalueren.
+    c. **Tijd**: Geef de granulatie op van metrische gegevens en de tijds periode om de waarschuwing te evalueren.
 
-   ![Details voor het configureren van signaallogica](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Selecteer")
+   ![Details voor het configureren van de signaal logica](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Selecteer")
 
-5. Als u de geconfigureerde regels wilt weergeven, selecteert u **Waarschuwingsregels beheren**.
+5. Als u de geconfigureerde regels wilt weer geven, selecteert u **waarschuwings regels beheren**.
 
-   ![Knop voor het beheren van waarschuwingsregels](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Selecteer")
+   ![Knop voor het beheren van waarschuwings regels](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Selecteer")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Waarschuwingen instellen voor diagnostische logboeken van VPN-gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)als u waarschuwingen voor diagnostische logboeken voor tunneldiagnoses wilt configureren.
+Zie [waarschuwingen instellen op VPN gateway bron logboeken](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)voor informatie over het configureren van waarschuwingen voor tunnel bron Logboeken.

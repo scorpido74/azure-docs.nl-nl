@@ -1,151 +1,130 @@
 ---
-title: 'Model evalueren: modulereferentie'
+title: 'Model evalueren: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Model evalueren in Azure Machine Learning om de nauwkeurigheid van een getraind model te meten.
+description: Meer informatie over het gebruik van de module evaluate model in Azure Machine Learning om de nauw keurigheid van een getraind model te meten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/24/2020
-ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456401"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129854"
 ---
-# <a name="evaluate-model-module"></a>Modelmodule evalueren
+# <a name="evaluate-model-module"></a>Model module evalueren
 
-In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om de nauwkeurigheid van een getraind model te meten. U geeft een gegevensset met scores die uit een model zijn gegenereerd en de module **Model evalueren** berekent een reeks industriestandaardevaluatiestatistieken.
+Gebruik deze module om de nauw keurigheid van een getraind model te meten. U geeft een gegevensset op die uit een model gegenereerde scores bevat en de module **Evaluate model** berekent een aantal metrische gegevens over de evaluatie van de industrie standaard.
   
- De statistieken die worden geretourneerd per **model evalueren,** zijn afhankelijk van het type model dat u evalueert:  
+ De metrische gegevens die door het **Evalueer model** worden geretourneerd, zijn afhankelijk van het type model dat u evalueert:  
   
--   **Classificatiemodellen**    
--   **Regressiemodellen**  
--   **Clustermodellen**  
+-   **Classificatie modellen**    
+-   **Regressie modellen**  
+-   **Cluster modellen**  
 
 
 > [!TIP]
-> Als je nieuw bent in modelevaluatie, raden we de videoserie van Dr. Stephen Elston aan, als onderdeel van de [machine learning-cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
+> Als u geen ervaring hebt met het model, kunt u het beste de video serie door Dr. Stephen Elston als onderdeel van de [machine learning cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
 
 
-Er zijn drie manieren om de module **Model evalueren** te gebruiken:
+## <a name="how-to-use-evaluate-model"></a>Het gebruik van een evalueren model
+1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) naar de links invoer poort van het **Evalueer model**. 
 
-+ Scores genereren over uw trainingsgegevens en het model evalueren op basis van deze scores
-+ Scores genereren op het model, maar vergelijk deze scores met scores op een gereserveerde testset
-+ Vergelijk scores voor twee verschillende, maar verwante modellen met dezelfde set gegevens
+2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) voor het tweede model met de **rechter** invoer van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
 
-## <a name="use-the-training-data"></a>De trainingsgegevens gebruiken
+    > [!NOTE]
+    > Algoritme type verwijst naar ' Two-class classificatie ', ' multi-class classificatie ', ' regressie ', ' clustering ' onder ' Machine Learning-algoritmen '. 
 
-Als u een model wilt evalueren, moet u een gegevensset met een set invoerkolommen en -scores verbinden.  Als er geen andere gegevens beschikbaar zijn, u uw oorspronkelijke gegevensset gebruiken.
-
-1. Verbind de uitvoer van de **scoreset van** het [scoremodel](./score-model.md) met de invoer van **Het evalueren van model**. 
-2. Klik **op Module Model evalueren** en voer de pijplijn uit om de evaluatiescores te genereren.
-
-## <a name="use-testing-data"></a>Testgegevens gebruiken
-
-Een veelvoorkomend scenario in machine learning is het scheiden van uw oorspronkelijke gegevensset in trainings- en testgegevenssets, met behulp van de [module Splitsen](./split-data.md) of de module Partitie [en Voorbeeld.](./partition-and-sample.md) 
-
-1. Verbind de uitvoer van de **scoreset van** het [scoremodel](score-model.md) met de invoer van **Het evalueren van model**. 
-2. Sluit de uitvoer van de module Gesplitste gegevens die de testgegevens bevat, aan op de rechterinvoer van **Evaluate Model**.
-2. Klik **op Module Model evalueren** en selecteer Geselecteerd **uitvoeren** om de evaluatiescores te genereren.
-
-## <a name="compare-scores-from-two-models"></a>Vergelijk scores van twee modellen
-
-U ook een tweede set scores koppelen aan **Model evalueren.**  De scores kunnen een gedeelde evaluatieset zijn die resultaten heeft gekend, of een reeks resultaten van een ander model voor dezelfde gegevens.
-
-Deze functie is handig omdat u eenvoudig resultaten van twee verschillende modellen op dezelfde gegevens vergelijken. U scores van twee verschillende runs vergelijken met dezelfde parameters met verschillende parameters.
-
-1. Verbind de uitvoer van de **scoreset van** het [scoremodel](score-model.md) met de invoer van **Het evalueren van model**. 
-2. Sluit de uitvoer van de module Scoremodel voor het tweede model aan op de rechterinvoer van **Evaluate Model.**
-3. Verzend de pijplijn.
+3. Verzend de pijp lijn om de evaluatie scores te genereren.
 
 ## <a name="results"></a>Resultaten
 
-Nadat u **Het model evalueren**hebt uitgevoerd, klikt u met de rechtermuisknop op de module en selecteert u **Evaluatieresultaten visualiseren** om de resultaten te bekijken.
+Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten visualiseren** om de resultaten te bekijken.
 
-Als u gegevenssets koppelt aan beide ingangen van **Evaluate Model,** bevatten de resultaten statistieken voor beide gegevenssets of beide modellen.
-Het model of de gegevens die aan de linkerpoort zijn gekoppeld, worden eerst in het rapport weergegeven, gevolgd door de statistieken voor de gegevensset of het model dat aan de rechterpoort is gekoppeld.  
+Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
+Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  
 
-De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee clustermodellen die op dezelfde gegevens zijn gebouwd, maar met verschillende parameters.  
+De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee cluster modellen die zijn gebouwd op dezelfde gegevens, maar met verschillende para meters.  
 
-![Vergelijken2Modellen](media/module/evaluate-2-models.png)  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
-Omdat dit een clusteringmodel is, zijn de evaluatieresultaten anders dan wanneer u scores van twee regressiemodellen vergeleek of twee classificatiemodellen vergeleek. De algehele presentatie is echter hetzelfde. 
+Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer u scores van twee regressie modellen of twee classificatie modellen hebt vergeleken. De gehele presentatie is echter hetzelfde. 
 
 ## <a name="metrics"></a>Metrische gegevens
 
-In deze sectie worden de statistieken beschreven die zijn geretourneerd voor de specifieke typen modellen die worden ondersteund voor gebruik met **Evaluatiemodel:**
+In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model**:
 
-+ [classificatiemodellen](#metrics-for-classification-models)
-+ [regressiemodellen](#metrics-for-regression-models)
-+ [clustermodellen](#metrics-for-clustering-models)
++ [classificatie modellen](#metrics-for-classification-models)
++ [regressie modellen](#metrics-for-regression-models)
++ [cluster modellen](#metrics-for-clustering-models)
 
-### <a name="metrics-for-classification-models"></a>Statistieken voor classificatiemodellen
+### <a name="metrics-for-classification-models"></a>Metrische gegevens voor classificatie modellen
 
-De volgende statistieken worden gerapporteerd bij het evalueren van classificatiemodellen.
+De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen.
   
--   **Nauwkeurigheid** meet de goedheid van een classificatiemodel als het aandeel van de werkelijke resultaten tot de totale gevallen.  
+-   **Nauw keurigheid** meet de goed keuring van een classificatie model als het aandeel van de werkelijke resultaten tot het totale aantal cases.  
   
--   **Precisie** is het aandeel van de werkelijke resultaten over alle positieve resultaten.  
+-   **Nauw keurigheid** is het aandeel van de werkelijke resultaten ten opzichte van alle positieve resultaten.  
   
--   **Recall** is de fractie van alle juiste resultaten die door het model worden geretourneerd.  
+-   **Intrekken** is de Fractie van alle juiste resultaten die door het model worden geretourneerd.  
   
--   **F-score** wordt berekend als het gewogen gemiddelde van precisie en terugroepen tussen 0 en 1, waar de ideale F-score waarde 1 is.  
+-   **F-Score** wordt berekend als het gewogen gemiddelde van de precisie en intrekken tussen 0 en 1, waarbij de ideale waarde voor de F-score 1 is.  
   
--   **AUC** meet het gebied onder de curve uitgezet met echte positieven op de y-as en false positives op de x-as. Deze statistiek is handig omdat het een enkel getal biedt waarmee u modellen van verschillende typen vergelijken.  
+-   **AUC** meet het gebied onder de curve die is getekend met echte positieven op de y-as en fout-positieven op de x-as. Deze meet waarde is nuttig omdat deze een enkel getal bevat waarmee u modellen van verschillende typen kunt vergelijken.  
   
-- **Gemiddeld logverlies** is een enkele score die wordt gebruikt om de straf uit te drukken voor verkeerde resultaten. Het wordt berekend als het verschil tussen twee waarschijnlijkheidsverdelingen - de ware, en de ene in het model.  
+- **Gemiddeld logboek verlies** is een enkele score die wordt gebruikt om de sanctie voor verkeerde resultaten te drukken. Het wordt berekend als het verschil tussen de twee waarschijnlijke verdelingen: de werkelijke waarde en de naam van het model.  
   
-- **Training log verlies** is een enkele score die het voordeel van de classificatie ten opzichte van een willekeurige voorspelling vertegenwoordigt. Het logverlies meet de onzekerheid van uw model door de waarschijnlijkheden die het uitproduceert te vergelijken met de bekende waarden (grondwaarheid) in de labels. U wilt logboekverlies voor het model als geheel minimaliseren.
+- **Verlies van trainings logboeken** is een enkele score die het voor deel van de classificatie op een wille keurige voor spelling weergeeft. Het logboek verlies meet de onzekerheid van uw model door de waarschijnlijkheid dat het wordt uitgevoerd, te vergelijken met de bekende waarden van de labels. U wilt het logboek verlies voor het model als geheel minimaliseren.
 
-### <a name="metrics-for-regression-models"></a>Statistieken voor regressiemodellen
+### <a name="metrics-for-regression-models"></a>Metrische gegevens voor regressie modellen
  
-De statistieken die zijn geretourneerd voor regressiemodellen zijn ontworpen om de hoeveelheid fouten te schatten.  Een model wordt geacht goed bij de gegevens te passen als het verschil tussen waargenomen en voorspelde waarden klein is. Echter, kijkend naar het patroon van de resten (het verschil tussen een voorspeld punt en de bijbehorende werkelijke waarde) kan u veel vertellen over potentiële bias in het model.  
+De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontworpen om de hoeveelheid fout te schatten.  Een model wordt gezien als een goede grootte van de gegevens als het verschil tussen de waargenomen en voorspelde waarden klein is. Gezien het patroon van de verschillen (het verschil tussen een voorspeld punt en de bijbehorende werkelijke waarde), kan u echter een heleboel informatie over mogelijke afwijking in het model vertellen.  
   
- De volgende statistieken worden gerapporteerd voor het evalueren van regressiemodellen.
+ De volgende metrische gegevens worden gerapporteerd voor het evalueren van regressie modellen.
   
-- **Gemiddelde absolute fout (MAE)** meet hoe dicht de voorspellingen zijn bij de werkelijke resultaten; dus, een lagere score is beter.  
+- **Gemiddelde absolute fout (Mae)** meet hoe dicht de voor spellingen zijn voor de werkelijke resultaten. een lagere score is dus beter.  
   
-- **Als hoofdgemiddelde kwadraatfout (RMSE)** wordt één waarde gemaakt die de fout in het model samenvat. Door het verschil te kwadrateren, negeert de statistiek het verschil tussen overvoorspelling en onder-voorspelling.  
+- **Root mean error (RMSE)** maakt een enkele waarde die de fout in het model samenvat. Door het verschil te squaringen, wordt het verschil tussen de voor spelling en de onderdictie van de metriek genegeerd.  
   
-- **Relatieve absolute fout (RAE)** is het relatieve absolute verschil tussen verwachte en werkelijke waarden; relatief omdat het gemiddelde verschil wordt gedeeld door het rekenkundig gemiddelde.  
+- **Relatieve absolute fout (Rae)** is het relatieve absolute verschil tussen de verwachte en werkelijke waarden; relatief omdat het gemiddelde verschil wordt gedeeld door het reken kundige gemiddelde.  
   
-- **Relatieve kwadraatfout (RSE)** normaliseert op dezelfde manier de totale kwadraatfout van de voorspelde waarden door te delen door de totale kwadraatfout van de werkelijke waarden.  
+- Met **relatieve kwadratische fout (RSE)** wordt het totale kwadraat van de voorspelde waarden op dezelfde manier genormaliseerd door te delen door de totale kwadraat fout van de werkelijke waarden.  
   
 
   
-- **De bepalingscoëfficiënt**, ook wel R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als waarde tussen 0 en 1. Nul betekent dat het model willekeurig is (verklaart niets); 1 betekent dat er een perfecte pasvorm is. Voorzichtigheid is echter geboden bij<sup>2</sup> het interpreteren van R 2-waarden, omdat lage waarden volkomen normaal kunnen zijn en hoge waarden verdacht kunnen zijn.
+- De **determinatie coëfficiënt**, vaak R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
 
-###  <a name="metrics-for-clustering-models"></a>Statistieken voor clustermodellen
+###  <a name="metrics-for-clustering-models"></a>Metrische gegevens voor cluster modellen
 
-Omdat clustermodellen in veel opzichten aanzienlijk verschillen van classificatie- en regressiemodellen, [retourneert Evaluate Model](evaluate-model.md) ook een andere set statistieken voor clustermodellen.  
+Omdat de cluster modellen in veel opzichten aanzienlijk verschillen van classificatie-en regressie modellen, wordt met het evalueren van het [model](evaluate-model.md) ook een andere set statistieken voor cluster modellen geretourneerd.  
   
- De statistieken die worden geretourneerd voor een clusteringmodel beschrijven hoeveel gegevenspunten aan elk cluster zijn toegewezen, de hoeveelheid scheiding tussen clusters en hoe strak de gegevenspunten binnen elk cluster zijn gebundeld.  
+ De statistieken die worden geretourneerd voor een cluster model beschrijven het aantal gegevens punten dat aan elk cluster is toegewezen, de hoeveelheid schei ding tussen clusters en de nauw keurigheid van de gegevens punten binnen elk cluster.  
   
- De statistieken voor het clustermodel worden gemiddeld over de gehele gegevensset, met extra rijen met de statistieken per cluster.  
+ De statistieken voor het cluster model worden gemiddeld over de hele gegevensset, met extra rijen met de statistieken per cluster.  
   
-De volgende statistieken worden gerapporteerd voor het evalueren van clusteringmodellen.
+De volgende metrische gegevens worden gerapporteerd voor het evalueren van cluster modellen.
     
--   De scores in de kolom, **Gemiddelde afstand tot ander centrum,** geven aan hoe dicht, gemiddeld, elk punt in het cluster is bij de centroids van alle andere clusters.   
+-   De scores in de kolom, **gemiddelde afstand tot ander midden**, geven aan hoe dicht, op gemiddeld elk punt in het cluster naar de centroids van alle andere clusters gaat.   
 
--   De scores in de **kolom, Gemiddelde afstand tot clustercentrum,** vertegenwoordigen de nabijheid van alle punten in een cluster met de centroid van dat cluster.  
+-   De scores in de kolom, **gemiddelde afstand tot cluster centrum**, vertegenwoordigen de dichtheid van alle punten in een cluster naar de massa middelpunt van dat cluster.  
   
--   De kolom **Aantal punten** geeft aan hoeveel gegevenspunten aan elk cluster zijn toegewezen, samen met het totale totale aantal gegevenspunten in een cluster.  
+-   In de kolom **aantal punten** ziet u hoeveel gegevens punten zijn toegewezen aan elk cluster, samen met het totale aantal gegevens punten in een cluster.  
   
-     Als het aantal gegevenspunten dat aan clusters is toegewezen kleiner is dan het totale aantal beschikbare gegevenspunten, betekent dit dat de gegevenspunten niet aan een cluster kunnen worden toegewezen.  
+     Als het aantal gegevens punten dat aan clusters is toegewezen kleiner is dan het totale aantal beschik bare gegevens punten, betekent dit dat de gegevens punten niet aan een cluster kunnen worden toegewezen.  
   
--   De scores in de kolom, **Maximale afstand tot clustercentrum,** vertegenwoordigen de som van de afstanden tussen elk punt en de centroid van het cluster van dat punt.  
+-   De scores in de kolom, de **maximale afstand tot het cluster Center**vertegenwoordigen de som van de afstanden tussen elk punt en de massa middelpunt van het cluster van dat punt.  
   
-     Als dit aantal hoog is, kan dit betekenen dat het cluster op grote schaal wordt verspreid. U moet deze statistiek samen met het **gemiddelde afstand tot clustercentrum** bekijken om de spreiding van het cluster te bepalen.   
+     Als dit aantal hoog is, kan dit betekenen dat het cluster veel wordt verspreid. U moet deze statistiek samen met de **gemiddelde afstand tot cluster centrum** door nemen om de verspreiding van het cluster te bepalen.   
 
--   De **gecombineerde evaluatiescore** onder aan elke sectie resultaten geeft de gemiddelde scores weer voor de clusters die in dat specifieke model zijn gemaakt.  
+-   De **gecombineerde evaluatie** score onder aan elk gedeelte van de resultaten bevat een lijst met de gemiddelde scores voor de clusters die in dat specifieke model zijn gemaakt.  
   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -1,201 +1,202 @@
 ---
-title: Lead management voor Dynamics 365 voor Customer Engagement | Azure Marketplace
-description: Configureer leadmanagement voor Dynamics 365 voor customer engagement.
+title: Lead beheer voor Dynamics 365 Customer engagement | Azure Marketplace
+description: Configureer het beheer van leads voor Dynamics 365 Customer engagement.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252778"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131056"
 ---
-# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Leadmanagement configureren voor Dynamics 365 voor klantbetrokkenheid
+# <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Lead beheer configureren voor Dynamics 365-klant betrokkenheid
 
-In dit artikel wordt beschreven hoe u Dynamics 365 instelt voor klantbetrokkenheid (voorheen Dynamics CRM Online), lees hier meer over de [wijziging](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) om verkoopleads van uw marktplaatsaanbieding te verwerken. 
+In dit artikel wordt beschreven hoe u Dynamics 365-klant betrokkenheid instelt (voorheen Dynamics CRM Online genoemd). Lees meer over de wijziging in [configureren server-gebaseerde verificatie met klant engagement en share point online](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) om verkoop leads van uw aanbieding voor commerciële Marketplace te verwerken.
 
->[!Note]
->Deze instructies zijn specifiek voor de door Microsoft gehoste cloud Dynamics 365 voor customer engagement-omgeving. Rechtstreeks verbinding maken met een Dynamics on-prem-omgeving wordt momenteel niet ondersteund, er zijn andere opties voor u om leads te ontvangen, zoals het configureren van een [https-eindpunt](./commercial-marketplace-lead-management-instructions-https.md) of een [Azure-tabel](./commercial-marketplace-lead-management-instructions-azure-table.md) om leads te ontvangen.
+>[!NOTE]
+>Deze instructies zijn specifiek voor de micro soft-hostende cloud omgeving voor Dynamics 365-klant betrokkenheid. Het is momenteel niet mogelijk om rechtstreeks verbinding te maken met een on-premises Dynamics-omgeving. Er zijn andere opties voor het ontvangen van leads, zoals het configureren van een [https-eind punt](./commercial-marketplace-lead-management-instructions-https.md) of een [Azure-tabel](./commercial-marketplace-lead-management-instructions-azure-table.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende gebruikersmachtigingen zijn nodig voor het voltooien van de stappen in dit artikel:
+De volgende gebruikers machtigingen zijn nodig om de stappen in dit artikel uit te voeren. U moet het volgende doen:
 
-* U moet een beheerder zijn van uw Dynamics 365 voor customer engagement-instantie om een oplossing te kunnen installeren en deze instructies te volgen.
-* U moet een tenantbeheerder zijn om een nieuw serviceaccount te maken voor de leadservice die wordt gebruikt om leads te verzenden vanuit marktplaatsaanbiedingen.
-* U moet toegang hebben tot de Office 365-beheerportal.
-* U moet toegang hebben tot de Azure-portal.
+* Zorg dat u een beheerder bent van uw Dynamics 365-exemplaar voor klant afspraken om een oplossing te kunnen installeren en volg deze instructies.
+* Een Tenant beheerder zijn voor het maken van een nieuw service account voor de lead service dat wordt gebruikt voor het verzenden van leads van commerciële Marketplace-aanbiedingen.
+* Toegang hebben tot de Office 365-beheer Portal.
+* Toegang hebben tot de Azure Portal.
 
 ## <a name="install-the-solution"></a>De oplossing installeren
 
-1.  Download de [Microsoft Marketplace Lead Writer-oplossing](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) en sla deze lokaal op uw computer op.
+1. Down load de [Microsoft Marketplace lead Writer-oplossing](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)en sla deze lokaal op uw computer op.
 
-2.  Open Dynamics 365 voor klantbetrokkenheid door naar de URL `https://tenant.crm.dynamics.com`voor uw instantie Dynamics te navigeren (zoals ).
+1. Open Dynamics 365-klant betrokkenheid door naar de URL voor uw Dynamics-exemplaar te gaan `https://tenant.crm.dynamics.com`, zoals.
 
-3.  Toegangsinstellingen door het tandwielpictogram en **geavanceerde instellingen** op de bovenste navigatiebalk te selecteren.
+1. Selecteer het tandwiel pictogram op de bovenste balk en selecteer vervolgens **Geavanceerde instellingen**.
  
-    ![Dynamica - Geavanceerde instellingen](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+    ![Menu-item Dynamics 365 Advanced Settings](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
-4.  Zodra u op de pagina Instellingen staat, opent u het menu Instellen via de bovenste navigatiebalk en selecteert u **Oplossingen**.
+1. Open op de pagina **instellingen** het menu **instellingen** op de bovenste balk en selecteer **oplossingen**.
 
-    >[!Note]
-    >Als u de opties in de volgende schermopname niet ziet, hebt u niet de machtigingen die u nodig hebt om verder te gaan. Neem contact op met een beheerder op uw Dynamics 365 voor bijvoorbeeld Klantbetrokkenheid.
+    >[!NOTE]
+    >Als de opties in het volgende scherm niet worden weer gegeven, hebt u niet de benodigde machtigingen om door te gaan. Neem contact op met een beheerder in uw Dynamics 365-exemplaar voor klant afspraken.
 
-    ![Dynamics 365 - Oplossingen](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Dynamics 365-oplossingen optie](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-5. Selecteer eenmaal op de pagina Oplossingen de optie **Importeren** en navigeer naar de plaats waar u de *Microsoft Marketplace Lead Writer-oplossing* hebt opgeslagen die u in stap 1 hebt gedownload.
+1. Selecteer op de pagina **oplossingen** de optie **importeren** en ga naar de locatie waar u de **Microsoft Marketplace lead Writer** -oplossing hebt opgeslagen die u in stap 1 hebt gedownload.
 
-    ![Dynamics 365 voor klantbetrokkenheid - Importeren](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![Knop importeren](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
-6. Voltooi het importeren van de oplossing door de wizard Oplossing importeren te volgen.
+1. Voer de wizard oplossing importeren uit om de oplossing te volt ooien.
 
-## <a name="configure-user-permissions"></a>Gebruikersmachtigingen configureren
+## <a name="configure-user-permissions"></a>Gebruikers machtigingen configureren
 
-Als u leads wilt schrijven naar uw Dynamics 365 voor bijvoorbeeld Klantbetrokkenheid, moet u een serviceaccount met ons delen en machtigingen voor het account configureren.
+Als u leads naar uw Dynamics 365-exemplaar voor klant afspraken wilt schrijven, moet u een service account met micro soft delen en machtigingen voor het account configureren.
 
-Gebruik de volgende stappen om het serviceaccount te maken en machtigingen toe te wijzen. U **Azure Active Directory** of Office **365**gebruiken.
+Gebruik de volgende stappen om het service account te maken en machtigingen toe te wijzen. U kunt Azure Active Directory of Office 365 gebruiken.
 
->[!Note]
->Op basis van de verificatieoptie die u selecteert, u naar de bijbehorende instructies gaan op basis van uw keuze. Zie [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) of Office [365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>[!NOTE]
+>Ga door naar de overeenkomende instructies op basis van de verificatie optie die u selecteert. Zie [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) of [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-We raden deze optie aan omdat je het extra voordeel krijgt dat je je gebruikersnaam/wachtwoord nooit hoeft bij te werken om leads te blijven krijgen. Als u de optie Azure Active Directory wilt gebruiken, geeft u de app-id, toepassingssleutel en map-id op van uw Active Directory-toepassing.
+We raden u aan deze optie te gebruiken omdat u nooit uw gebruikers naam of wacht woord hoeft bij te werken om leads te blijven ontvangen. Als u de Azure Active Directory optie wilt gebruiken, geeft u de App-ID, toepassings sleutel en map-ID van uw Active Directory toepassing op.
 
-Gebruik de volgende stappen om Azure Active Directory voor Dynamics 365 voor klantbetrokkenheid te configureren.
+Azure Active Directory voor Dynamics 365-klant betrokkenheid configureren:
 
-1. Meld u aan bij [azure portal](https://portal.azure.com/)en selecteer vervolgens de Azure Active Directory-service vanaf de linkernavigatie.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
-2. Selecteer **Eigenschappen** in de Azure Active Directory linker navigatie en kopieer de **waarde directory-id** op die pagina. Sla deze waarde op, omdat het de *directory-id-waarde* is die u in de publicatieportal moet verstrekken om leads voor uw marktplaatsaanbieding te ontvangen.
+1. Selecteer **Eigenschappen**en kopieer de waarde van de **Directory-id** op de pagina **Directory-eigenschappen** . Sla deze waarde op omdat u deze moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 
-    ![Azure Active Directory - Eigenschappen](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Menu-item Azure Active Directory eigenschappen](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
-3. Selecteer **App-registraties** in de azure Active Directory links navigatie en selecteer **Vervolgens Nieuwe registratie** op die pagina.
-4. Voer een naam in voor de toepassingsnaam. Geef een zinvolle toepassingsnaam op.
-5. Selecteer **accounts in een organisatiemap**onder Ondersteunde accounttypen .
-6. Selecteer onder URI omleiden **en** geef `https://contosoapp1/auth`een URI (zoals ). 
-7. Selecteer **Registreren**.
+1. Selecteer **app-registraties** in het linkerdeel venster Azure Active Directory en selecteer vervolgens **nieuwe registratie** op die pagina.
+1. Voer een beschrijvende naam in voor de naam van de toepassing.
+1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory**.
+1. Onder **omleidings-URI (optioneel)** selecteert u **Web** en voert u een `https://contosoapp1/auth`URI in, zoals. 
+1. Selecteer **Registreren**.
 
-    ![Een toepassing registreren](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
+    ![Een toepassings pagina registreren](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
-8. Nu uw aanvraag is geregistreerd, u de overzichtspagina van de toepassing openen en de waarde van de **toepassingswaarde (client)** op die pagina kopiëren. Sla deze waarde op, want het is de waarde van de *toepassings-id (client)* die u moet leveren in de publicatieportal en in Dynamics om leads voor uw marktplaatsaanbieding te ontvangen.
+1. Nu uw toepassing is geregistreerd, opent u de overzichts pagina van de toepassing. Kopieer de waarde van de **toepassings-id (client)** op die pagina. Sla deze waarde op omdat u deze moet opgeven in de portal voor publiceren en in Dynamics 365 om leads voor uw Marketplace-aanbieding te ontvangen.
 
-    ![(Client-)id van de app](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![Vak toepassing (client)-ID](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
-9. Selecteer **Certificaten en geheimen** uit de linkernavigatie van de app en selecteer Nieuw **clientgeheim** op die pagina. Voer een zinvolle beschrijving in voor het clientgeheim en selecteer de optie **Nooit** onder Verloopt. Selecteer **Toevoegen** om het clientgeheim te maken.
+1. Selecteer **certificaten & geheimen** in het linkerdeel venster van de app en selecteer de knop **Nieuw client geheim** . Voer een duidelijke beschrijving in voor het client geheim en selecteer de optie **nooit** onder **Expires**. Selecteer **toevoegen** om het client geheim te maken.
 
-    ![Toepassing - Certificering en Geheimen](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![Menu-item certificaten & geheimen](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
-10. Zodra het clientgeheim met succes is gemaakt, **kopieert u de geheime waarde van de client.** U de waarde niet ophalen nadat u van de pagina bent weggenavigeerd. Sla deze waarde op, omdat het de geheime waarde van de *klant* is die u in de publicatieportal moet verstrekken om leads voor uw marktplaatsaanbieding te ontvangen. 
-11. Selecteer **API-machtigingen** in de linkernavigatie van de apps en selecteer **vervolgens Een machtiging toevoegen**.
-12. Selecteer Microsoft API's en selecteer **Dynamics CRM** als API.
-13. Controleer *onder Welk type machtigingen uw toepassing vereist,* of **gedelegeerde machtigingen** zijn geselecteerd. Controleer de machtiging voor **user_impersonation** *Access Common Data Service als organisatiegebruikers*. Selecteer **Machtigingen toevoegen**.
+1. Zodra het client geheim is gemaakt, kopieert u de waarde van het **client geheim** . U kunt de waarde niet ophalen nadat u de pagina verlaat. Sla deze waarde op omdat u deze moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen. 
+1. Selecteer **API-machtigingen** in het linkerdeel venster van de app en selecteer vervolgens **+ een machtiging toevoegen**.
+1. Selecteer **micro soft-api's**en selecteer vervolgens **Dynamics CRM** als de API.
+1. Zorg ervoor dat bij **het type machtigingen dat uw toepassing vereist?**, **gedelegeerde machtigingen** is geselecteerd. 
+1. Schakel onder **machtiging**het selectie vakje **User_impersonation** in voor **toegangs common data service als organisatie gebruikers**. Selecteer vervolgens **machtigingen toevoegen**.
 
-    ![Machtigingen toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
+    ![Knop machtigingen toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Nadat u stappen 1-13 op de Azure-portal hebt voltooid, navigeert u naar uw `https://tenant.crm.dynamics.com`instantie Dynamics 365 voor klantbetrokkenheid door naar de URL te navigeren (zoals ).
-15. Toegangsinstellingen door het tandwielpictogram en **geavanceerde instellingen** op de bovenste navigatiebalk te selecteren.
-16. Zodra u op de pagina Instellingen staat, opent u het menu Instellen op de bovenste navigatiebalk en selecteert u **Beveiliging**.
-17. Selecteer **Gebruikers**eenmaal op de pagina Beveiliging .  Selecteer op de pagina Gebruikers de vervolgkeuzelijst 'Ingeschakelde gebruikers' om over te schakelen naar **gebruikers van toepassingen.**
-18. Selecteer **Nieuw** om een nieuwe gebruiker te maken. 
+1. Nadat u de stappen 1 tot en met 14 in de Azure Portal hebt voltooid, gaat u naar uw Dynamics 365 Customer engagement-exemplaar door naar `https://tenant.crm.dynamics.com`de URL te gaan, zoals.
+1. Selecteer het tandwiel pictogram op de bovenste balk en selecteer vervolgens **Geavanceerde instellingen**.
+1. Open op de pagina **instellingen** het menu **instellingen** op de bovenste balk en selecteer **beveiliging**.
+1. Selecteer op de pagina **beveiliging** de optie **gebruikers**. Selecteer op de pagina **gebruikers** de vervolg keuzelijst **ingeschakelde gebruikers** en selecteer vervolgens **toepassings gebruikers**.
+1. Selecteer **Nieuw** om een nieuwe gebruiker te maken. 
 
     ![Een nieuwe gebruiker maken](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. Controleer **in Nieuwe gebruiker**of de GEBRUIKER: GEBRUIKER van toepassing is geselecteerd. Geef een gebruikersnaam, volledige naam en e-mailadres op voor de gebruiker die u met deze verbinding wilt gebruiken. Plak ook de **toepassings-id** voor de app die u hebt gemaakt in de Azure-portal vanaf stap 8. Selecteer **Opslaan en Sluiten** om de gebruiker toe te voegen.
+1. Controleer in het deel venster **nieuwe gebruiker** of **gebruiker: toepassings gebruiker** is geselecteerd. Geef een gebruikers naam, de volledige naam en het e-mail adres op voor de gebruiker die u met deze verbinding wilt gebruiken. Plak ook de **toepassings-id** voor de app die u hebt gemaakt in de Azure Portal uit stap 8. Selecteer **opslaan & sluiten** om het toevoegen van de gebruiker te volt ooien.
 
-    ![Nieuwe gebruiker](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![Deel venster nieuwe gebruiker](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
-20. Ga naar 'Beveiligingsinstellingen' in dit artikel om de configuratie van de verbinding voor deze gebruiker te voltooien.
+1. Ga naar de sectie beveiligings instellingen in dit artikel om de configuratie van de verbinding voor deze gebruiker te volt ooien.
 
 ### <a name="office-365"></a>Office 365
 
-Als u Azure Active Directory niet wilt gebruiken, u een nieuwe gebruiker registreren in het *Microsoft 365-beheercentrum.* Je moet je gebruikersnaam/wachtwoord elke 90 dagen bijwerken om leads te blijven krijgen.
+Als u Azure Active Directory niet wilt gebruiken, kunt u een nieuwe gebruiker registreren op het Microsoft 365 beheer centrum. U moet uw gebruikers naam en wacht woord elke 90 dagen bijwerken om leads te kunnen blijven ontvangen.
 
-Gebruik de volgende stappen om Office 365 voor Dynamics 365 voor klantbetrokkenheid te configureren.
+Office 365 voor Dynamics 365 klant betrokkenheid configureren:
 
 1. Meld u aan bij het [Microsoft 365-beheercentrum](https://admin.microsoft.com).
 
-2. Selecteer **Een gebruiker toevoegen**.
+1. Selecteer **een gebruiker toevoegen**.
 
-    ![Microsoft 365-beheercentrum - een gebruiker toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365-beheer centrum een gebruikers optie toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-4. Maak een nieuwe gebruiker voor de leadwriter-service. Configureer de volgende instellingen:
+1. Maak een nieuwe gebruiker voor de lead Writer-service. Configureer de volgende instellingen:
 
-    * Geef een gebruikersnaam op
-    * Geef een wachtwoord op en schakel de optie 'Deze gebruiker zijn wachtwoord wijzigen wanneer hij zich voor het eerst aanmeldt' uit.
-    * Selecteer 'Gebruiker (geen beheerderstoegang)' als rol voor de gebruiker.
-    * Selecteer 'Dynamics 365 Customer Engagement plan' als productlicentie die wordt weergegeven in de volgende schermopname. Er worden kosten in rekening gebracht voor de licentie die u kiest. 
+    * Voer een gebruikers naam in.
+    * Voer een wacht woord in en schakel de optie **deze gebruiker moet hun wacht woord wijzigen wanneer ze zich voor het eerst aanmelden** .
+    * Selecteer **gebruiker (geen beheerders toegang)** als rol voor de gebruiker.
+    * Selecteer **Dynamics 365 Customer engagement plan** als de product licentie, zoals wordt weer gegeven in het volgende scherm. Er worden kosten in rekening gebracht voor de licentie die u kiest. 
 
-Sla deze waarden op omdat dit de *gebruikersnaam- en wachtwoordwaarden* zijn die u in de publicatieportal moet opgeven om leads voor uw marktplaatsaanbieding te ontvangen.
+Sla deze waarden op omdat u de **gebruikers naam** en het **wacht woord** moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 
-![Microsoft 365-beheercentrum - nieuwe gebruiker](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Het deel venster Nieuw gebruikers Microsoft 365-beheer centrum](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>Beveiligingsinstellingen
 
-De laatste stap is om de gebruiker die u hebt gemaakt in staat te stellen de leads te schrijven.
+De laatste stap bestaat uit het inschakelen van de gebruiker die u hebt gemaakt voor het schrijven van de leads.
 
-1. Open Dynamics 365 voor klantbetrokkenheid door naar de URL `https://tenant.crm.dynamics.com`voor uw instantie Dynamics te navigeren (zoals ).
-2. Toegangsinstellingen door het tandwielpictogram en **geavanceerde instellingen** op de bovenste navigatiebalk te selecteren.
-3. Zodra u op de pagina Instellingen staat, opent u het menu Instellen op de bovenste navigatiebalk en selecteert u **Beveiliging**.
-4. Selecteer eenmaal op de pagina Beveiliging de optie **Gebruikers** en selecteer de gebruiker die u hebt gemaakt in de sectie Gebruikersmachtigingen configureren van dit document en selecteer **Rollen beheren**. 
+1. Open Dynamics 365-klant betrokkenheid door naar de URL voor uw Dynamics-exemplaar te gaan `https://tenant.crm.dynamics.com`, zoals.
+1. Selecteer het tandwiel pictogram op de bovenste balk en selecteer vervolgens **Geavanceerde instellingen**.
+1. Open op de pagina **instellingen** het menu **instellingen** op de bovenste balk en selecteer **beveiliging**.
+1. Selecteer op de pagina **beveiliging** de optie **gebruikers** en selecteer de gebruiker die u hebt gemaakt in de sectie gebruikers machtigingen configureren van dit document. Selecteer vervolgens **rollen beheren**. 
 
-    ![Rollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
+    ![Tabblad rollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-5. Zoek naar de rolnaam 'Microsoft Marketplace Lead Writer' en selecteer deze om de gebruiker de rol toe te wijzen.
+1. Zoek naar de rolnaam **Microsoft Marketplace lead schrijver**en selecteer deze om de gebruiker de rol toe te wijzen.
 
-    ![Gebruikersrollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![Deel venster gebruikers rollen beheren](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
-    >[!Note]
-    >Deze rol wordt gemaakt door de oplossing die u hebt geïmporteerd en heeft alleen machtigingen om de leads te schrijven en om de oplossingsversie bij te houden om compatibiliteit te garanderen.
+    >[!NOTE]
+    >Deze rol wordt gemaakt door de oplossing die u hebt geïmporteerd en heeft alleen machtigingen voor het schrijven van de leads en het bijhouden van de oplossings versie om compatibiliteit te garanderen.
 
-6. Navigeer terug naar de beveiligingspagina en selecteer **Beveiligingsrollen**. Zoek naar de rol 'Microsoft Marketplace Lead Writer' en selecteer deze.
+1. Ga terug naar de pagina **beveiliging** en selecteer **beveiligings rollen**. Zoek naar de rol **Microsoft Marketplace lead schrijver**en selecteer deze.
 
-    ![Beveiligingsrollen](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
+    ![Deel venster beveiligings rollen](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. Eenmaal in de beveiligingsrol selecteert u het tabblad **Kernrecords.** Zoek naar de entiteit 'Gebruikersentiteit-gebruikersinterface-instellingen' en schakel de machtigingen voor maken, lezen en schrijven aan de gebruiker (1/4 gele cirkel) in voor die entiteit door eenmaal in elk van de overeenkomstige cirkels te klikken.
+1. Selecteer in de beveiligingsrol het tabblad **kern records** . Zoek naar het item **gebruikers interface-instellingen van gebruiker** . Schakel de machtigingen maken, lezen en schrijven in voor de gebruiker (1/4 Yellow cirkel) voor die entiteit door te klikken op elk van de bijbehorende cirkels.
 
-    ![Microsoft Marketplace-leadwriter - Kernrecords](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Microsoft Marketplace tabblad hoofd records van lead Writer](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. Navigeer nu naar het tabblad **Aanpassen.** Zoek de entiteit 'Systeemtaak' en hiermee u de machtigingen Lezen, Schrijven en AppendTo voor organisatie (effen groen) voor die entiteit door vier keer in elk van de overeenkomstige cirkels te klikken.
+1. Zoek op het tabblad **aanpassingen** naar het item **systeem taak** . Schakel de machtigingen lezen, schrijven en AppendTo in voor de organisatie (effen groene cirkels) voor die entiteit door vier keer in elk van de corresponderende cirkels te klikken.
 
-    ![Microsoft Marketplace Lead Writer - aanpassing](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Tabblad aanpassing van Microsoft Marketplace lead](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
-9. **Opslaan en sluiten**.
+1. Selecteer **opslaan en sluiten**.
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>Configureer uw aanbieding om leads naar Dynamics 365 For Customer Engagement te verzenden
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>Uw aanbieding configureren voor het verzenden van leads naar de klant betrokkenheid van Dynamics 365 
 
-Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publicatieportal te configureren, volgt u de volgende stappen:
+De Lead beheer gegevens voor uw aanbieding configureren in de portal voor publiceren:
 
-1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
-2. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
+1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
+1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
 
-    ![Verbinding maken met Leadmanagement](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
 
-3. Selecteer **Dynamics 365 voor klantbetrokkenheid** voor de hoofdbestemming in het pop-upvenster Verbindingsdetails
+1. Selecteer in het pop-upvenster verbindings Details de optie **Dynamics 365-klant engagement** voor de doel locatie van de lead.
 
-    ![Verbindingsgegevens - hoofdbestemming](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![Vak lead bestemming](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. Geef de **URL van dynamics 365 Instance** op, zoals `https://contoso.crm4.dynamics.com`.
+1. Voer de **URL** voor het Dynamics 365-exemplaar in `https://contoso.crm4.dynamics.com`, bijvoorbeeld.
 
-5. Selecteer de **verificatiemethode**, Azure Active Directory of Office 365. 
-6. Als u Azure Active Directory hebt geselecteerd, moet `23456052-aaaa-bbbb-8662-1234df56788f`u de **toepassings-id (client) (voorbeeld:** ), **Directory-id** (voorbeeld: `12345678-8af1-4asf-1234-12234d01db47`) en **Clientgeheim** (voorbeeld: ) opvragen. `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`
+1. Selecteer de **verificatie**methode, een Azure Active Directory of Office 365. 
+1. Als u **Azure Active Directory**hebt geselecteerd, voert u de **toepassings-id (client)** in `23456052-aaaa-bbbb-8662-1234df56788f`(bijvoorbeeld), **map-id** ( `12345678-8af1-4asf-1234-12234d01db47`bijvoorbeeld) en **client geheim** (bijvoorbeeld `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
 
-    ![Verbindingsgegevens - Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![Verificatie met Azure Active Directory geselecteerd](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Als u Office 365 hebt geselecteerd, `contoso@contoso.onmicrosoft.com`geeft u de `P@ssw0rd` **gebruikersnaam** op (voorbeeld: ) en Wachtwoord (voorbeeld: ).
+1. Als u **Office 365**hebt geselecteerd, voert u de **gebruikers naam** (bijvoorbeeld `contoso@contoso.onmicrosoft.com`) en het **wacht woord** in ( `P@ssw0rd`bijvoorbeeld).
 
-    ![Verbindingsgegevens - Gebruikersnaam](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Vak Office 365-gebruikers naam](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
-8. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met puntkomma.
-9. Selecteer **OK**.
+1. Voor **contact opnemen met e-mail**voert u e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail adressen opgeven door deze te scheiden met een punt komma.
+1. Selecteer **OK**.
 
-Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
+Selecteer de knop **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
-![Leadbeheer - opslagaccount voor verbindingsgegevens](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
+![Vak e-mail adres van contact persoon](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
->[!Note]
->U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
+>[!NOTE]
+>U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.

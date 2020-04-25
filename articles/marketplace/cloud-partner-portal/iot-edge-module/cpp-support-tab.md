@@ -1,47 +1,47 @@
 ---
-title: Ondersteuning voor een Azure IoT Edge-module | Azure Marketplace
-description: Ondersteuningsopties voor een IoT Edge-module.
+title: Ondersteuning voor een Azure IoT Edge module | Azure Marketplace
+description: Ondersteunings opties voor een IoT Edge module.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981865"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142296"
 ---
-# <a name="iot-edge-module-support-tab"></a>Tabblad Ondersteuning voor IoT Edge-modules
+# <a name="iot-edge-module-support-tab"></a>Tabblad ondersteuning van IoT Edge module
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw IoT Edge module-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een IOT Edge-module maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) voor het beheren van uw gemigreerde aanbiedingen.
 
-Gebruik het tabblad **Ondersteuning** van de pagina **Nieuwe aanbieding** om technische en gebruikersondersteuningsbronnen voor uw aanbieding te bieden.  De volgende invoergebieden worden weergegeven op het ondersteuningsformulier: **Engineering Contact,** **Customer Support**en **Support Urls**. Een sterretje (*) dat aan de veldnaam is toegevoegd, geeft aan dat dit vereist is.
+Gebruik het tabblad **ondersteuning** van de **nieuwe aanbiedings** pagina om technische en gebruikers ondersteunings bronnen voor uw aanbieding te bieden.  In het formulier ondersteuning vindt u de volgende invoer gebieden: **technische contact persoon**, **klant ondersteuning**en **ondersteunings-url's**. Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is.
 
-![Tabblad Ondersteuning op het formulier Nieuwe aanbieding voor IoT Edge-modules](./media/iot-edge-module-support-tab.png)
+![Tabblad ondersteuning van het formulier nieuwe aanbieding voor IoT Edge modules](./media/iot-edge-module-support-tab.png)
 
-## <a name="support-form-fields"></a>Ondersteuningsformuliervelden
+## <a name="support-form-fields"></a>Formulier velden ondersteunen
 
-In de volgende tabel worden de formuliervelden en de invoer beschreven die voor elk veld vereist zijn. Vereiste velden worden aangeklaagd door een sterretje (*).
+In de volgende tabel worden de formulier velden en de vereiste invoer voor elk veld beschreven. Vereiste velden worden gedicteerd door een asterisk (*).
 
 |  **Veld**                |     **Beschrijving**                                                          |
 |  ---------                |     ---------------                                                          |
-| ***Contactpersoon voor engineering***  |  *Fungeert als een technisch contact tussen Microsoft en uw organisatie* | 
-| **Naam\***                  | Naam van de persoon of groep die fungeert als technische/technische ondersteuning     |
-| **Email\***                 | E-mailadres van deze technische contactpersoon                                      |
-| **Telefoon\***                 | Telefoonnummer voor technische ondersteuning                                           |
-| ***Klantenondersteuning***  | *Ontvangt ondersteuningstickets die zijn geopend door klanten in Azure* |
-| **Naam\***                  | Naam van de persoon of groep die fungeert als klantenservice                  |
-| **Email\***                 | E-mailadres van de klantenservice                                            |
-| **Telefoon\***                 | Telefoonnummer voor klantenondersteuning                                            |
-| ***Urls ondersteunen***  | *Ondersteuningssites die Microsoft zal gebruiken wanneer uw klanten ondersteuningstickets openen* |
-| **Openbaar Azure**          | URL voor openbare internetondersteuningssite                                         |
-| **Azure Government Cloud**| URL voor de ondersteuningssite voor overheidscloud                                        |
+| ***Technische contact persoon***  |  *Fungeert als technische contact persoon tussen micro soft en uw organisatie* | 
+| **Naam\***                  | De naam van de persoon of groep die fungeert als technische/technische ondersteuning     |
+| **E-mail\***                 | E-mail adres van deze technische contact persoon                                      |
+| **Telefoons\***                 | Telefoon nummer voor technische ondersteuning                                           |
+| ***Klant ondersteuning***  | *Ontvangt ondersteunings tickets die zijn geopend door klanten in azure* |
+| **Naam\***                  | De naam van de persoon of groep die fungeert als klant ondersteuning                  |
+| **E-mail\***                 | E-mail adres van de klant ondersteuning                                            |
+| **Telefoons\***                 | Telefoon nummer voor klant ondersteuning                                            |
+| ***Url's voor ondersteuning***  | *Ondersteunings sites die door micro soft worden gebruikt wanneer uw klanten ondersteunings tickets openen* |
+| **Open bare Azure**          | URL voor de site voor open bare Internet ondersteuning                                         |
+| **Azure Government Cloud**| URL voor de Cloud-ondersteunings site van de overheid                                        |
 |   |   |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u ondersteuningsinformatie hebt verstrekt, bent u klaar om uw aanbieding te [publiceren.](./cpp-publish-offer.md)
+Nadat u de ondersteunings informatie hebt opgegeven, bent u klaar om [uw aanbieding te publiceren](./cpp-publish-offer.md).

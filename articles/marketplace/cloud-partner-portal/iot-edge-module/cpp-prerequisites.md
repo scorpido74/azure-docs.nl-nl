@@ -1,45 +1,45 @@
 ---
-title: Vereisten voor Azure IoT Edge-module | Azure Marketplace
-description: Voorwaarden voor het publiceren van een IoT Edge-module.
+title: Azure IoT Edge module vereisten | Azure Marketplace
+description: Vereisten voor het publiceren van een IoT Edge module.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d1bfc29a0cb031421b4017454bc8a2cdd8be09f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983174"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142374"
 ---
-# <a name="iot-edge-module-publishing-prerequisites"></a>Vereisten voor het publiceren van IoT Edge-modules
+# <a name="iot-edge-module-publishing-prerequisites"></a>Vereisten voor het publiceren van IoT Edge-module
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw IoT Edge module-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een IOT Edge-module maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) voor het beheren van uw gemigreerde aanbiedingen.
 
-In dit artikel worden de vereisten beschreven voor het publiceren van een IoT Edge-moduleaanbieding.  Als u dit nog niet hebt gedaan, bekijkt u de [publicatiehandleiding voor IoT Edge-modules.](../..//iot-edge-module.md)
+In dit artikel worden de vereisten beschreven voor het publiceren van een IoT Edge module-aanbieding.  Als u dit nog niet hebt gedaan, raadpleegt u de [publicatie handleiding voor IOT Edge modules](../..//iot-edge-module.md).
 
 
-## <a name="publishing-prerequisites"></a>Publicatievereisten
+## <a name="publishing-prerequisites"></a>Vereisten voor publicatie
 
-Als u een IoT Edge-module wilt publiceren in de Azure Marketplace, moet u aan de volgende voorwaarden voldoen:
+Als u een IoT Edge module naar Azure Marketplace wilt publiceren, moet u aan de volgende vereisten voldoen:
 
 <!-- P2: It would be great to point to the terms of use of CPP here. This can often be a blocker for big companies and these terms of use are not anonymously visible yet.-->
-- Toegang tot de [Cloud Partner Portal](https://cloudpartner.azure.com/). Zie [publicatiegids azure marketplace en appsource voor](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)meer informatie.
-- Overeenkomst met de [Azure Marketplace-voorwaarden](https://azure.microsoft.com/support/legal/marketplace-terms/)
-- Host uw technische asset van de IoT Edge-module in een Azure Container Registry.  Zie voor meer informatie [hoe u uw technische asset van de IoT Edge-module voorbereiden](./cpp-create-technical-assets.md)
-- Maak uw IoT Edge-modulemetagegevens klaar voor gebruik. Bereid bijvoorbeeld de volgende activa voor:
+- Toegang tot de [Cloud Partner-Portal](https://cloudpartner.azure.com/). Zie de [publicatie handleiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)voor meer informatie.
+- Overeenkomst met de [Azure Marketplace-voor waarden](https://azure.microsoft.com/support/legal/marketplace-terms/)
+- De technische activa van uw IoT Edge-module hosten in een Azure Container Registry.  Zie [de technische Asset van uw IOT Edge-module voorbereiden](./cpp-create-technical-assets.md) voor meer informatie.
+- Laat de meta gegevens van uw IoT Edge module gereed voor gebruik. U kunt bijvoorbeeld de volgende assets voorbereiden:
     - Een titel
     - Een beschrijving (in HTML-indeling)
-    - Een logoafbeelding (PNG-indeling en vaste afbeeldingsformaten, waaronder 40x40px, 90x90px, 115x115px, 255x115px)
-    - Een gebruiksduur en privacybeleid
-    - Een standaardmoduleconfiguratie die omvat: routes, dubbele gewenste eigenschappen, createOptions en omgevingsvariabelen.
-    - Moduledocumentatie
+    - Een logo afbeelding (PNG-indeling en vaste afbeeldings grootten, waaronder 40x40px, 90x90px, 115x115px, 255x115px)
+    - Een gebruiks voorwaarden en privacybeleid
+    - Een standaard module configuratie met onder andere: routes, dubbele gewenste eigenschappen, createOptions en omgevings variabelen.
+    - Documentatie over modules
     - Contactpersonen voor ondersteuning
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra u [uw technische asset van de IoT Edge-module](./cpp-create-technical-assets.md)hebt voorbereid, bent u klaar om uw [IoT Edge-moduleaanbieding](./cpp-create-offer.md)te maken. 
+Als u [uw IOT Edge-module technische activa hebt voor bereid](./cpp-create-technical-assets.md), kunt u [uw IOT Edge module-aanbod maken](./cpp-create-offer.md). 

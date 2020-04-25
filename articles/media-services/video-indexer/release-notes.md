@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115513"
+ms.locfileid: "82131214"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
@@ -65,7 +65,7 @@ In de komende weken wordt dit gewijzigd en wordt de URL van de [video indexer we
     * Door de URL te vervangen door een URL die verwijst naar de Video Indexer-widget-Api's (bijvoorbeeld de [widget Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * De Video Indexer-website gebruiken om een nieuwe Inge sloten URL te genereren:
          
-         Druk op **Play** om naar de pagina van de video te gaan > Klik op ** &lt;insluiten&gt; ** -> de URL naar uw toepassing kopiëren:
+         Druk op **Play** om naar de pagina van de video te gaan > Klik op de ** &lt; / &gt; knop insluiten** -> de URL naar uw toepassing kopiëren:
    
     De regionale Url's worden niet ondersteund en worden in de komende weken geblokkeerd.
 

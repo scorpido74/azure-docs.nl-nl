@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75608377"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129233"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-logboeken integreren met ArcSight met behulp van Azure Monitor
 
@@ -53,7 +53,7 @@ Down load en open de [configuratie handleiding voor ArcSight SmartConnector voor
     * De toepassings instellingen van uw implementatie worden opgeslagen in de toepassings instellingen in azure function-apps. 
     * Er wordt een nieuwe resource groep voor ArcSight gemaakt in azure, met een Azure AD-toepassing voor de ArcSight-connector en opslag accounts met de toegewezen bestanden in CEF-indeling.
 
-4. Voltooi ten slotte de stappen na de implementatie in de configuratie handleiding **na de implementatie** . In deze sectie wordt uitgelegd hoe u aanvullende configuratie kunt uitvoeren als u een App Service plan bent om te voor komen dat de functie-apps na een time-outperiode niet meer actief zijn, streaming van Diagnostische logboeken vanuit de Event Hub te configureren en het SysLog NG-daemon SmartConnector te updaten en te koppelen aan het zojuist gemaakte opslag account.
+4. Voltooi ten slotte de stappen na de implementatie in de configuratie handleiding **na de implementatie** . In deze sectie wordt uitgelegd hoe u aanvullende configuratie kunt uitvoeren als u een App Service plan bent om te voor komen dat de functie-apps na een time-outperiode niet meer actief zijn, streaming van bron logboeken van de Event Hub te configureren en het SysLog NG-daemon SmartConnector te updaten om het te koppelen aan het zojuist gemaakte opslag account.
 
 5. De configuratie handleiding legt ook uit hoe u de connector eigenschappen in azure kunt aanpassen en hoe u de connector kunt bijwerken en verwijderen. Er is ook een sectie over prestatie verbeteringen, waaronder het upgraden naar een [Azure-verbruiks plan](https://azure.microsoft.com/pricing/details/functions) en het configureren van een ArcSight Load Balancer als de gebeurtenis belasting groter is dan een enkele syslog-daemon-SmartConnector kunnen verwerken.
 

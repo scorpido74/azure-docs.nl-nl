@@ -1,47 +1,47 @@
 ---
-title: Azure IoT Edge-moduleaanbieding publiceren | Azure Marketplace
-description: Hoe u een IoT Edge-moduleaanbieding publiceert.
+title: Azure IoT Edge module-aanbieding publiceren | Azure Marketplace
+description: Een IoT Edge module-aanbod publiceren.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 9d78ff53fb520dcfc80a812d53ae188e340722af
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ef73956b1b0d3e7bed6e91cde0b92bcc3e432795
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983191"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141844"
 ---
 # <a name="publish-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module publiceren
 
 >[!Important]
->Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 gaan we het beheer van uw IoT Edge module-aanbiedingen naar het partner centrum verplaatsen. Na de migratie maakt en beheert u uw aanbiedingen in partner centrum. Volg de instructies in [een IOT Edge-module maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) voor het beheren van uw gemigreerde aanbiedingen.
 
- Nadat u een nieuwe aanbieding hebt gemaakt door de informatie op de pagina **Nieuwe aanbieding te** verstrekken, u de aanbieding publiceren. Selecteer **Publiceren** om het publicatieproces te starten.
+ Nadat u een nieuwe aanbieding hebt gemaakt door de informatie op de pagina **nieuw aanbod** op te geven, kunt u de aanbieding publiceren. Selecteer **publiceren** om het publicatie proces te starten.
 
-In het volgende diagram ziet u de belangrijkste stappen in het publicatieproces voor een aanbieding om "live te gaan".
+In het volgende diagram ziet u de belangrijkste stappen in het publicatie proces voor een aanbieding naar ' go live '.
 
-![Publicatiestappen voor IoT Edge-moduleaanbieding](./media/iot-edge-module-publishing-steps.png)
+![Publicatie stappen voor de aanbieding van IoT Edge module](./media/iot-edge-module-publishing-steps.png)
 
-## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van publicatiestappen
+## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van de publicatie stappen
 
-In de volgende tabel wordt elke publicatiestap beschreven, waarbij elke stap een tijdsschatting (maximaal) moet worden voltooid.
+De volgende tabel beschrijft elke publicatie stap, met een tijd schatting (maximum) voor het volt ooien van elke stap.
 <!-- P2: we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Publicatiestap**           | **Tijd**    | **Beschrijving**                                                            |
+|  **Publicatie stap**           | **Tegelijk**    | **Beschrijving**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Vereisten valideren         | 15 min   | Aanbiedingsinformatie en aanbiedingsinstellingen worden gevalideerd.                        |
-| Certificering                  | 2 weken | De aanbieding wordt geanalyseerd door het Azure Certification Team. Met deze stap worden scans uitgevoerd op virussen, malware, naleving van de veiligheid en beveiligingsproblemen. Het zal ook controleren of deze IoT Edge module aanbieding voldoet aan alle [geschiktheidscriteria](./cpp-prerequisites.md) (zie voorwaarden en [het voorbereiden van uw technische activa).](./cpp-create-technical-assets.md) Er wordt feedback gegeven als er een probleem wordt gevonden. |
-| Verpakking | 1 uur  | De technische assets van de aanbieding zijn verpakt voor gebruik door de klant en de leadsystemen zijn geconfigureerd en ingesteld. |
-|  Publisher afmelden             |  -        | Definitieve beoordeling en bevestiging van uitgevers voordat de aanbieding live gaat. U uw aanbieding implementeren in de geselecteerde abonnementen (in de stappen voor aanbiedingsinformatie) om te controleren of deze aan al uw vereisten voldoet.  Selecteer **Live gaan** zodat uw aanbieding naar de volgende stap kan gaan. |
-| Verpakking                 | 1 uur | Het afgeronde aanbod wordt gerepliceerd in marktproductiesystemen en -regio's. | 
-| Live                           | 4 dagen |Aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld aan het publiek. |
+| Vereisten valideren         | 15 minuten   | De aanbiedings gegevens en aanbiedings instellingen worden gevalideerd.                        |
+| Certificering                  | 2 weken | De aanbieding wordt geanalyseerd door het Azure-certificerings team. Met deze stap worden er scans uitgevoerd op virussen, malware, veiligheid en beveiligings problemen. Er wordt ook gecontroleerd of deze IoT Edge module aan alle criteria voldoet (Zie de [vereisten](./cpp-prerequisites.md) en [uw technische activa voorbereiden](./cpp-create-technical-assets.md)). Feedback wordt gegeven als er een probleem is gevonden. |
+| Verpakking | 1 uur  | De technische activa van de aanbieding zijn verpakt voor het gebruik van klanten en de lead systemen worden geconfigureerd en ingesteld. |
+|  Uitgever afmelden             |  -        | De uiteindelijke controle en bevestiging van de uitgever voordat de aanbieding live gaat. U kunt uw aanbieding in de geselecteerde abonnementen implementeren (in de stappen voor de aanbiedings informatie) om te controleren of deze voldoet aan uw vereisten.  Selecteer **Live gaan** zodat uw aanbieding kan worden verplaatst naar de volgende stap. |
+| Verpakking                 | 1 uur | De voltooide aanbieding wordt gerepliceerd in de Marketplace-productie systemen en-regio's. | 
+| Live                           | vier dagen |De aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld voor het publiek. |
 
-Geef maximaal 10 werkdagen de tijd om het publicatieproces te voltooien en de aanbieding wordt vrijgegeven. Nadat u het publicatieproces hebt voltooid, wordt uw IoT Edge-moduleaanbieding weergegeven in de [Microsoft Azure Marketplace.](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)
+Sta Maxi maal 10 werk dagen toe om het publicatie proces te volt ooien en de aanbieding wordt vrijgegeven. Nadat u klaar bent met het publicatie proces, wordt uw IoT Edge-module aanbod weer gegeven in de [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een bestaande IoT Edge-moduleaanbieding bijwerken op Azure Marketplace](./cpp-update-existing-offer.md)
+- [Een bestaand IoT Edge module-aanbod bijwerken op Azure Marketplace](./cpp-update-existing-offer.md)

@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: f456137b61a96f555b2604e7871516fd1d38ab42
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116703"
+ms.locfileid: "82141951"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling (preview-versie)
 
@@ -25,7 +25,7 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 >[!WARNING]
 > Het implementeren van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Service Bus.
 >
-> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
+> Vertrouwde micro soft-services worden niet ondersteund bij het gebruik van virtuele netwerken.
 >
 > Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
 > - Integratie met Azure Event Grid
@@ -71,7 +71,7 @@ Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken 
     1. Selecteer het **Azure-abonnement** waarin u het persoonlijke eind punt wilt maken. 
     2. Selecteer de **resource groep** voor de persoonlijke eindpunt resource.
     3. Voer een **naam** in voor het persoonlijke eind punt. 
-    5. Selecteer een **regio** voor het persoonlijke eind punt. Uw persoonlijke eind punt moet zich in dezelfde regio bevinden als uw virtuele netwerk, maar kan zich in een andere regio bevinden, van de persoonlijke koppelings resource waarmee u verbinding maakt. 
+    5. Selecteer een **regio** voor het persoonlijke eind punt. Uw persoonlijke eind punt moet zich in dezelfde regio bevinden als uw virtuele netwerk, maar kan zich in een andere regio bevinden dan de resource van de persoonlijke koppeling waarmee u verbinding maakt. 
     6. Selecteer **volgende: Resource >** knop onder aan de pagina.
 
         ![Privé-eind punt maken-pagina basis beginselen](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -85,7 +85,7 @@ Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken 
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias**, voert u de volgende stappen uit:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die door een deel met u is gedeeld.
+        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Service Bus naam ruimte in de Azure Portal en het `/subscriptions/`gedeelte van de URI te kopiëren vanaf. Zie de volgende afbeelding voor een voor beeld. 
         2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft. 
         3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt. 
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina. 
