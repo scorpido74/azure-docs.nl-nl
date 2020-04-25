@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: Een beleid koppelen aan een bestaande Application Gateway
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: Diagnostische logboeken
+        - name: Resourcelogboeken
           href: ./ag/web-application-firewall-logs.md
         - name: WAF-problemen oplossen
           href: ./ag/web-application-firewall-troubleshoot.md

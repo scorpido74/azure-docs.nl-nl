@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: Server maken - Azure CLI - Azure Database voor PostgreSQL - Single Server'
-description: Quickstart-handleiding voor het maken van een Azure Database voor PostgreSQL - Single Server met Azure CLI (command line interface).
+title: 'Snelstartgids: server maken-Azure CLI-Azure Database for PostgreSQL-één server'
+description: Snelstartgids om een Azure Database for PostgreSQL-één-server te maken met behulp van Azure CLI (opdracht regel Interface).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,32 +8,32 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: de46eeb20f3c99eb7a459965d17e2dd55728a9db
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75358037"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146648"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Snelstart: een Azure-database maken voor PostgreSQL - Eén server met de Azure CLI
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Snelstartgids: een Azure Database for PostgreSQL-één-server maken met behulp van de Azure CLI
 
 > [!TIP]
-> Overweeg de eenvoudigere [az-postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-opdracht te gebruiken (momenteel in preview). Probeer de [quickstart.](./quickstart-create-server-up-azure-cli.md)
+> Overweeg het gebruik van de eenvoudiger [AZ post gres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure cli-opdracht (momenteel als preview-versie). Probeer de [Snelstartgids](./quickstart-create-server-up-azure-cli.md)uit.
 
 Azure Database voor PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. Deze Quick Start laat zien hoe u een Azure-database voor PostgreSQL-server kunt maken in een [Azure resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de Azure CLI.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
-Als je de CLI lokaal uitvoert, moet je je aanmelden bij je account met de opdracht [AZ login.](/cli/azure/authenticate-azure-cli?view=interactive-log-in) Let op de eigenschap **ID** in de opdrachtuitvoer voor de bijbehorende abonnementsnaam.
+Als u de CLI lokaal uitvoert, moet u zich aanmelden bij uw account met de opdracht [AZ login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Noteer de **id-** eigenschap van de uitvoer van de opdracht voor de bijbehorende abonnements naam.
 ```azurecli-interactive
 az login
 ```
 
-Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account). Vervang de **id-eigenschap** van de **az-inloguitvoer** voor uw abonnement in de tijdelijke aanduiding voor de gebruikersnaam.
+Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account). Vervang de **id-** eigenschap van de **AZ-aanmeld** uitvoer voor uw abonnement in de tijdelijke aanduiding voor de abonnements-id.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
@@ -58,7 +58,7 @@ sku-name | GP_Gen5_2 | De naam van de SKU. Volgt de verkorte notatie voor conven
 backup-retention | 7 | Hoe lang een back-up moet worden bewaard. De eenheid is dagen. Het bereik is 7-35. 
 geo-redundant-backup | Uitgeschakeld | Of geografisch redundante back-ups moeten worden ingeschakeld voor deze server. Toegestane waarden: Ingeschakeld, Uitgeschakeld.
 location | westus | De Azure-locatie voor de server.
-ssl-enforcement | Ingeschakeld | Of ssl moet worden ingeschakeld voor deze server. Toegestane waarden: Ingeschakeld, Uitgeschakeld.
+ssl-enforcement | Ingeschakeld | Hiermee wordt aangegeven of TLS/SSL moet worden ingeschakeld of niet voor deze server. Toegestane waarden: Ingeschakeld, Uitgeschakeld.
 storage-size | 51.200 | De opslagcapaciteit van de server (eenheid is MB). De minimale opslaggrootte is 5120 MB en deze kunt u ophogen in stappen van 1024 MB. Raadpleeg het document [Prijscategorieën](./concepts-pricing-tiers.md) voor meer informatie over opslaglimieten. 
 versie | 9.6 | De primaire versie van PostgreSQL.
 admin-user | myadmin | De gebruikersnaam voor aanmelding als beheerder. De aanmeldingsnaam van de beheerder mag niet **azure_superuser**, **admin**, **administrator**, **root**, **guest** of **public** zijn.
@@ -146,7 +146,7 @@ Als op uw clientcomputer PostgreSQL is geïnstalleerd, kunt u een lokale instant
    ```
 
    > [!TIP]
-   > Als u liever een URL-pad gebruikt om verbinding te maken met Postgres, codeert URL het @ teken in de gebruikersnaam met `%40`. Bijvoorbeeld de verbindingstekenreeks voor psql zou zijn,
+   > Als u liever een URL-pad gebruikt om verbinding te maken met post gres, URL codeert u het @- `%40`teken in de gebruikers naam met. Bijvoorbeeld: de connection string voor psql zou zijn,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -180,13 +180,13 @@ pgAdmin is een open-source hulpprogramma voor PostgreSQL. U kunt pgAdmin install
 
     Parameter pgAdmin |Waarde|Beschrijving
     ---|---|---
-    Host name/address | Servernaam | De servernaam die u hebt gebruikt toen u eerder de Azure Database for PostgreSQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.postgres.database.azure.com**. Gebruik de volledig gekwalificeerde domeinnaam**\*(.postgres.database.azure.com)** zoals in het voorbeeld wordt weergegeven. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. 
+    Host name/address | Servernaam | De servernaam die u hebt gebruikt toen u eerder de Azure Database for PostgreSQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.postgres.database.azure.com**. Gebruik de Fully Qualified Domain Name (**\*. postgres.database.Azure.com**) zoals weer gegeven in het voor beeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. 
     Poort | 5432 | De poort die moet worden gebruikt wanneer u verbinding maakt met de Azure Database for PostgreSQL-server. 
     Onderhoudsdatabase | *postgres* | De door het systeem gegenereerde standaarddatabasenaam.
-    Gebruikersnaam | Aanmeldingsnaam van serverbeheerder | De aanmeldingsnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database for PostgreSQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *\@gebruikersnaam servernaam*.
+    Gebruikersnaam | Aanmeldingsnaam van serverbeheerder | De aanmeldingsnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database for PostgreSQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
     Wachtwoord | Uw beheerderswachtwoord | Het wachtwoord dat u hebt gekozen toen u eerder in deze Quick Start de server maakte.
     Rol | Leeg laten | U hoeft op dit moment geen rolnaam op te geven. Laat het veld leeg.
-    SSL-modus | *Require* | U de SSL-modus instellen op het SSL-tabblad van pgAdmin. Standaard worden alle Azure Database voor PostgreSQL-servers gemaakt waarbij SSL-handhaving is ingeschakeld. Raadpleeg [SSL afdwingen](./concepts-ssl-connection-security.md) als u geforceerd SSL wilt uitschakelen.
+    SSL-modus | *Require* | U kunt de TLS/SSL-modus instellen op het tabblad SSL van pgAdmin. Standaard worden alle Azure Database for PostgreSQL-servers gemaakt met TLS-afdwinging ingeschakeld. Zie het [afdwingen van TLS configureren](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)om het afdwingen van TLS uit te scha kelen.
     
 5. Selecteer **Opslaan**.
 

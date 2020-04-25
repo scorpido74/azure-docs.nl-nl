@@ -7,6 +7,9 @@
 - name: Snelstartgidsen
   expanded: true
   items:
+    - name: ARM-sjabloon
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: Een .NET-toepassing maken
       href: service-fabric-quickstart-dotnet.md
     - name: Een Linux-containertoepassing implementeren

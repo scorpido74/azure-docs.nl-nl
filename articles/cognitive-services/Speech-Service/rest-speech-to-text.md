@@ -1,89 +1,122 @@
 ---
-title: Spraak-naar-tekst API-verwijzing (REST) - Spraakservice
+title: Naslag informatie over spraak naar tekst-API (REST)-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de REST-API voor spraak naar tekst. In dit artikel leert u over autorisatieopties, queryopties, hoe u een aanvraag structureert en een antwoord ontvangt.
+description: Meer informatie over het gebruik van de spraak-naar-tekst REST API. In dit artikel vindt u meer informatie over autorisatie opties, query opties, het structureren van een aanvraag en het ontvangen van een reactie.
 services: cognitive-services
-author: trevorbye
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: trbye
-ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/23/2020
+ms.author: yinhew
+ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400186"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131286"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
-Als alternatief voor de [Speech SDK](speech-sdk.md)u met de Spraakservice spraak naar tekst converteren met behulp van een REST API. Elk toegankelijk eindpunt is gekoppeld aan een regio. Voor uw toepassing is een abonnementssleutel vereist voor het eindpunt dat u wilt gebruiken. De REST API is zeer beperkt, en het mag alleen worden gebruikt in gevallen waar de [Speech SDK](speech-sdk.md) niet kan.
+Als alternatief voor de [Speech-SDK](speech-sdk.md)kunt u met de speech-service spraak-naar-tekst converteren met behulp van een rest API. Elk toegankelijk eind punt is gekoppeld aan een regio. Voor uw toepassing is een abonnements sleutel vereist voor het eind punt dat u wilt gebruiken. De REST API is zeer beperkt en mag alleen worden gebruikt in gevallen van de spraak- [SDK](speech-sdk.md) .
 
-Voordat u de REST-API voor spraak naar tekst gebruikt, begrijpt u:
+Voordat u de REST API voor spraak naar tekst gebruikt, moet u het volgende weten:
 
-* Verzoeken die gebruik maken van de REST API en rechtstreeks audio verzenden, kunnen slechts tot 60 seconden audio bevatten.
-* De spraak-naar-tekst REST API retourneert alleen de uiteindelijke resultaten. Gedeeltelijke resultaten worden niet verstrekt.
+* Aanvragen die de REST API gebruiken en audio rechtstreeks verzenden, kunnen Maxi maal 60 seconden aan audio bevatten.
+* De REST API voor spraak naar tekst retourneert alleen eind resultaten. Er zijn geen gedeeltelijke resultaten gegeven.
 
-Als het verzenden van langere audio een vereiste is voor uw toepassing, u overwegen de [Speech SDK](speech-sdk.md) of een op bestanden gebaseerde REST-API te gebruiken, zoals [batchtranscriptie.](batch-transcription.md)
+Als het verzenden van meer audio een vereiste is voor uw toepassing, kunt u overwegen om de [spraak-SDK](speech-sdk.md) of een rest API op basis van een bestand te gebruiken, zoals [batch transcriptie](batch-transcription.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Regio's en eindpunten
+## <a name="regions-and-endpoints"></a>Regio's en eind punten
 
-Het eindpunt voor de REST API heeft deze indeling:
+Het eind punt voor de REST API heeft de volgende indeling:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Vervang `<REGION_IDENTIFIER>` in deze tabel de id die overeenkomt met de regio van uw abonnement:
+Vervang `<REGION_IDENTIFIER>` door de id die overeenkomt met de regio van uw abonnement uit deze tabel:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> De taalparameter moet aan de URL worden toegevoegd om te voorkomen dat u een HTTP-fout van 4xx ontvangt. De taal die is ingesteld op Amerikaans Engels met `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`behulp van het Eindpunt van west-VS is bijvoorbeeld: .
+> De para meter language moet worden toegevoegd aan de URL om te voor komen dat er een 4xx HTTP-fout wordt ontvangen. Bijvoorbeeld, de taal die is ingesteld op Amerikaans-Engels met het eind punt VS `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`West is:.
 
 ## <a name="query-parameters"></a>Queryparameters
 
-Deze parameters kunnen worden opgenomen in de queryreeks van het REST-verzoek.
+Deze para meters kunnen worden opgenomen in de query reeks van de REST-aanvraag.
 
-| Parameter | Beschrijving | Vereist / Optioneel |
+| Parameter | Beschrijving | Vereist/optioneel |
 |-----------|-------------|---------------------|
-| `language` | Identificeert de gesproken taal die wordt herkend. Zie [Ondersteunde talen](language-support.md#speech-to-text). | Vereist |
-| `format` | Hiermee geeft u de resultaatnotatie op. Geaccepteerde `simple` waarden `detailed`zijn en . Eenvoudige resultaten `RecognitionStatus` `DisplayText`zijn `Offset`, `Duration`, en . Gedetailleerde antwoorden bevatten meerdere resultaten met betrouwbaarheidswaarden en vier verschillende weergaven. De standaardinstelling is `simple`. | Optioneel |
-| `profanity` | Hiermee geeft u op hoe met godslastering in herkenningsresultaten moet worden omgaat. Geaccepteerde `masked`waarden zijn , die godslastering vervangt `removed`door sterretjes, , die alle `raw`godslastering uit het resultaat verwijdert, of , waaronder de godslastering in het resultaat. De standaardinstelling is `masked`. | Optioneel |
-| `cid` | Wanneer u de [portal Aangepaste spraak](how-to-custom-speech.md) gebruikt om aangepaste modellen te maken, u aangepaste modellen gebruiken via hun **Endpoint ID** op de pagina **Implementatie.** Gebruik de **eindpunt-id** als `cid` argument voor de parameter querytekenreeks. | Optioneel |
+| `language` | Hiermee wordt de gesp roken taal aangegeven die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Vereist |
+| `format` | Geeft de resultaat indeling aan. Geaccepteerde waarden `simple` zijn `detailed`en. Eenvoudige resultaten zijn `RecognitionStatus`onder `DisplayText`andere `Offset`,, `Duration`en. Gedetailleerde antwoorden omvatten meerdere resultaten met betrouw bare waarden en vier verschillende representaties. De standaardinstelling is `simple`. | Optioneel |
+| `profanity` | Hiermee geeft u op hoe scheld woorden in de herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden `masked`zijn, waarbij de woorden met sterretjes `removed`worden vervangen, waardoor alle woorden van het resultaat worden verwijderd of `raw`, waarbij de scheld woorden in het resultaat wordt opgenomen. De standaardinstelling is `masked`. | Optioneel |
+| `pronunciationScoreParams` | Hiermee geeft u de para meters op voor het weer geven van uitspraak cijfers in de herkennings resultaten, waarmee de uitspraak kwaliteit van spraak invoer wordt beoordeeld, met indica toren van nauw keurigheid, Fluency, volledigheid, enzovoort. Deze para meter is een base64-gecodeerde JSON met meerdere gedetailleerde para meters. Zie [para meters voor uitspraak beoordeling](#pronunciation-assessment-parameters) voor het maken van deze para meter. | Optioneel |
+| `cid` | Wanneer u de [Custom speech Portal](how-to-custom-speech.md) gebruikt om aangepaste modellen te maken, kunt u aangepaste modellen gebruiken via hun **eind punt-id** op de pagina **implementatie** . Gebruik de **eind punt-id** als argument voor `cid` de query teken reeks parameter. | Optioneel |
 
 ## <a name="request-headers"></a>Aanvraagheaders
 
-In deze tabel worden vereiste en optionele kopteksten weergegeven voor spraak-naar-tekstaanvragen.
+Deze tabel bevat de vereiste en optionele kopteksten voor aanvragen voor spraak naar tekst.
 
-|Header| Beschrijving | Vereist / Optioneel |
+|Header| Beschrijving | Vereist/optioneel |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Uw abonnementssleutel voor spraakservice. | Deze koptekst `Authorization` of is vereist. |
-| `Authorization` | Een autorisatietoken voorafgegaan door `Bearer`het woord . Zie [Verificatie](#authentication) voor meer informatie. | Deze koptekst `Ocp-Apim-Subscription-Key` of is vereist. |
-| `Content-type` | Beschrijft de indeling en codec van de meegeleverde audiogegevens. Geaccepteerde `audio/wav; codecs=audio/pcm; samplerate=16000` waarden `audio/ogg; codecs=opus`zijn en . | Vereist |
-| `Transfer-Encoding` | Hiermee geeft u op dat er geblokte audiogegevens worden verzonden in plaats van één bestand. Gebruik deze koptekst alleen als audiogegevens worden vermorzegeld. | Optioneel |
-| `Expect` | Als u chunked `Expect: 100-continue`transfer gebruikt, verzendt u . De Spraakservice erkent het oorspronkelijke verzoek en wacht op aanvullende gegevens.| Vereist bij het verzenden van geblokte audiogegevens. |
-| `Accept` | Indien verstrekt, moet `application/json`het . De Spraakservice levert resultaten in JSON. Sommige aanvraagframeworks bieden een onverenigbare standaardwaarde. Het is een goede `Accept`gewoonte om altijd . | Optioneel, maar aanbevolen. |
+| `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Deze header of `Authorization` is vereist. |
+| `Authorization` | Een autorisatie token dat wordt voorafgegaan door `Bearer`het woord. Zie [Verificatie](#authentication) voor meer informatie. | Deze header of `Ocp-Apim-Subscription-Key` is vereist. |
+| `Content-type` | Hierin worden de indeling en codec van de gegeven audio gegevens beschreven. Geaccepteerde waarden `audio/wav; codecs=audio/pcm; samplerate=16000` zijn `audio/ogg; codecs=opus`en. | Vereist |
+| `Transfer-Encoding` | Hiermee geeft u op dat gesegmenteerde audio gegevens worden verzonden in plaats van één bestand. Gebruik deze header alleen als de audio gegevens worden gesegmenteerd. | Optioneel |
+| `Expect` | Als u gesegmenteerde overdracht gebruikt `Expect: 100-continue`, verzendt u deze. De speech-service erkent de eerste aanvraag en wacht op aanvullende gegevens.| Vereist als gesegmenteerde audio gegevens worden verzonden. |
+| `Accept` | Indien aanwezig, moet dit zijn `application/json`. De speech-service biedt resultaten in JSON. Sommige aanvraag raamwerken bieden een incompatibele standaard waarde. Het is raadzaam altijd in te voegen `Accept`. | Optioneel, maar aanbevolen. |
 
 ## <a name="audio-formats"></a>Audio-indelingen
 
-Audio wordt verzonden in `POST` de hoofdtekst van het HTTP-verzoek. Het moet in een van de formaten in deze tabel:
+Audio wordt verzonden in de hoofd tekst van de `POST` HTTP-aanvraag. Deze moet een van de volgende indelingen hebben:
 
-| Indeling | Codec | Bitrate | Voorbeeldsnelheid  |
+| Indeling | Videocodec | Bitsnelheid | Sample frequentie  |
 |--------|-------|---------|--------------|
 | WAV    | PCM   | 16-bits  | 16 kHz, mono |
-| Ogg    | Opus  | 16-bits  | 16 kHz, mono |
+| OGG    | OPUS  | 16-bits  | 16 kHz, mono |
 
 >[!NOTE]
->De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de spraakservice. De [SpraakSDK](speech-sdk.md) ondersteunt momenteel de WAV-indeling met PCM-codec en [andere indelingen.](how-to-use-codec-compressed-audio-input-streams.md)
+>De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de speech-service. De [Speech SDK](speech-sdk.md) ondersteunt momenteel de WAV-indeling met PCM-codec en [andere indelingen](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="sample-request"></a>Voorbeeldaanvraag
+## <a name="pronunciation-assessment-parameters"></a>Beoordelings parameters voor uitspraak
 
-Het voorbeeld hieronder bevat de hostnaam en vereiste headers. Het is belangrijk op te merken dat de dienst ook audiogegevens verwacht, die niet in dit voorbeeld zijn opgenomen. Zoals eerder vermeld, wordt chunking aanbevolen, echter niet vereist.
+In deze tabel worden de vereiste en optionele para meters voor de uitspraak beoordeling weer gegeven.
+
+| Parameter | Beschrijving | Vereist/optioneel |
+|-----------|-------------|---------------------|
+| ReferenceText | De tekst waarmee de uitspraak wordt geëvalueerd. | Vereist |
+| GradingSystem | Het punt systeem voor de Score kalibratie. Geaccepteerde waarden `FivePoint` zijn `HundredMark`en. De standaardinstelling is `FivePoint`. | Optioneel |
+| Granulariteit | De granulatie van de evaluatie. Geaccepteerde waarden `Phoneme`zijn, waarmee de score wordt weer gegeven op de volledige tekst, het woord `Word`-en foneem-niveau, waarin de Score van het volledige tekst `FullText`-en woord niveau wordt weer gegeven, waarin de score op het volledige tekst niveau wordt weer geven. De standaardinstelling is `Phoneme`. | Optioneel |
+| Dimensie | Hiermee worden de uitvoer criteria gedefinieerd. Geaccepteerde waarden `Basic`zijn, waarbij alleen de nauw keurigheid `Comprehensive` wordt weer gegeven. hier worden de scores voor meer dimensies weer gegeven (bijvoorbeeld fluency Score en volledige score op het volledige tekst niveau, fout type op woord niveau). Controleer de [antwoord parameters](#response-parameters) om de definities van verschillende Score dimensies en Word-fout typen weer te geven. De standaardinstelling is `Basic`. | Optioneel |
+| EnableMiscue | Hiermee wordt de miscue-berekening ingeschakeld. Als deze functie is ingeschakeld, worden de uitgesp roken woorden vergeleken met de verwijzings tekst en worden deze gemarkeerd met weglating/invoegen op basis van de vergelijking. Geaccepteerde waarden `False` zijn `True`en. De standaardinstelling is `False`. | Optioneel |
+| ScenarioId | Een GUID die een aangepast punt systeem aangeeft. | Optioneel |
+
+Hieronder ziet u een voor beeld van een JSON met de para meters voor uitspraak beoordeling:
+
+```json
+{
+  "ReferenceText": "Good morning.",
+  "GradingSystem": "HundredMark",
+  "Granularity": "FullText",
+  "Dimension": "Comprehensive"
+}
+```
+
+De volgende voorbeeld code laat zien hoe u de para meters voor de uitspraak beoordeling opbouwt in de URL-query parameter:
+
+```csharp
+var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
+var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+```
+
+## <a name="sample-request"></a>Voorbeeld aanvraag
+
+In het onderstaande voor beeld zijn de hostname en de vereiste headers opgenomen. Het is belang rijk te weten dat de service ook audio gegevens verwacht, die niet is opgenomen in dit voor beeld. Zoals eerder vermeld, wordt Chunking aanbevolen, maar dit is niet vereist.
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -97,21 +130,21 @@ Expect: 100-continue
 
 ## <a name="http-status-codes"></a>HTTP-statuscode
 
-De HTTP-statuscode voor elk antwoord geeft succes of veelvoorkomende fouten aan.
+De HTTP-status code voor elke reactie wijst op geslaagde of veelvoorkomende fouten.
 
 | HTTP-statuscode | Beschrijving | Mogelijke reden |
 |------------------|-------------|-----------------|
-| `100` | Doorgaan | Het oorspronkelijke verzoek is ingewilligd. Ga verder met het verzenden van de rest van de gegevens. (Gebruikt bij geblokte overdracht) |
-| `200` | OK | Het verzoek was succesvol; de reactiebody is een JSON-object. |
-| `400` | Slecht verzoek | Taalcode niet verstrekt, geen ondersteunde taal, ongeldig audiobestand, enz. |
-| `401` | Niet geautoriseerd | Abonnementssleutel of autorisatietoken is ongeldig in het opgegeven gebied of ongeldig eindpunt. |
-| `403` | Verboden | Ontbrekende abonnementssleutel of autorisatietoken. |
+| `100` | Doorgaan | De eerste aanvraag is geaccepteerd. Ga door met het verzenden van de rest van de gegevens. (Gebruikt met gesegmenteerde overdracht) |
+| `200` | OK | De aanvraag is voltooid. de antwoord tekst is een JSON-object. |
+| `400` | Ongeldige aanvraag | Er is geen taal code gegeven, geen ondersteunde taal, ongeldig audio bestand, enzovoort. |
+| `401` | Niet geautoriseerd | De abonnements sleutel of het autorisatie token is ongeldig in de opgegeven regio of het ongeldige eind punt. |
+| `403` | Verboden | De abonnements sleutel of het autorisatie token ontbreekt. |
 
-## <a name="chunked-transfer"></a>Chunked transfer
+## <a name="chunked-transfer"></a>Gesegmenteerde overdracht
 
-Chunked transfer`Transfer-Encoding: chunked`( ) kan helpen verminderen herkenning latentie. Hiermee kan de spraakservice beginnen met het verwerken van het audiobestand terwijl het wordt verzonden. De REST API geeft geen gedeeltelijke of tussentijdse resultaten.
+Gesegmenteerde overdracht`Transfer-Encoding: chunked`() kan helpen de latentie van herkenning te verminderen. Hiermee kan de spraak service de verwerking van het audio bestand starten tijdens de verzen ding. De REST API biedt geen gedeeltelijke of tussentijdse resultaten.
 
-In dit codevoorbeeld ziet u hoe u audio in brokken verzendt. Alleen de eerste brok mag de koptekst van het audiobestand bevatten. `request`is `HttpWebRequest` een object dat is verbonden met het juiste REST-eindpunt. `audioFile`is het pad naar een audiobestand op schijf.
+Dit code voorbeeld laat zien hoe u audio kunt verzenden in segmenten. Alleen de eerste chunk moet de header van het audio bestand bevatten. `request`is een `HttpWebRequest` object dat is verbonden met het juiste rest-eind punt. `audioFile`het pad is naar een audio bestand op schijf.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
@@ -143,45 +176,50 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Responsparameters
+## <a name="response-parameters"></a>Antwoord parameters
 
-De resultaten worden verstrekt als JSON. De `simple` indeling bevat deze velden op het hoogste niveau.
+De resultaten worden als JSON geleverd. De `simple` notatie bevat deze velden op het hoogste niveau.
 
 | Parameter | Beschrijving  |
 |-----------|--------------|
-|`RecognitionStatus`|Status, bijvoorbeeld `Success` voor succesvolle erkenning. Zie volgende tabel.|
-|`DisplayText`|De erkende tekst na hoofdletters, interpunctie, omgekeerde tekstnormalisatie (omzetting van gesproken tekst in kortere vormen, zoals 200 voor "tweehonderd" of "Dr. Smith" voor "doctor smith"), en godslastering maskeren. Aanwezig alleen op succes.|
-|`Offset`|De tijd (in 100-nanoseconde eenheden) waarop de erkende spraak begint in de audiostream.|
-|`Duration`|De duur (in 100-nanoseconde eenheden) van de erkende spraak in de audiostream.|
+|`RecognitionStatus`|Status, zoals `Success` voor geslaagde herkenning. Zie de volgende tabel.|
+|`DisplayText`|De herkende tekst na hoofdletter gebruik, interpunctie, inverse tekst normalisatie (conversie van gesp roken tekst naar kortere formulieren, zoals 200 voor "200" of "Dr. Smit" voor "Doctor Smith") en grove maskers. Alleen aanwezig op geslaagd.|
+|`Offset`|De tijd (in 100 eenheden) waarbij de herkende spraak wordt gestart in de audio stroom.|
+|`Duration`|De duur (in 100-nano seconden eenheden) van de herkende spraak in de audio stroom.|
 
-Het `RecognitionStatus` veld kan de volgende waarden bevatten:
+Het `RecognitionStatus` veld kan deze waarden bevatten:
 
 | Status | Beschrijving |
 |--------|-------------|
-| `Success` | De erkenning was `DisplayText` succesvol en het veld is aanwezig. |
-| `NoMatch` | Spraak werd gedetecteerd in de audiostream, maar er werden geen woorden uit de doeltaal gematcht. Meestal betekent dit dat de herkenningstaal een andere taal is dan de taal die de gebruiker spreekt. |
-| `InitialSilenceTimeout` | Het begin van de audiostream bevatte alleen stilte en de service time-out te wachten op spraak. |
-| `BabbleTimeout` | Het begin van de audiostream bevatte alleen ruis en de service time-out te wachten op spraak. |
-| `Error` | De herkenningsservice heeft een interne fout opgelopen en kon niet worden voortgezet. Probeer het opnieuw indien mogelijk. |
+| `Success` | De herkenning is gelukt en `DisplayText` het veld is aanwezig. |
+| `NoMatch` | Er is een spraak gedetecteerd in de audio stroom, maar er zijn geen woorden van de doel taal gevonden. Dit betekent meestal dat de herkennings taal een andere taal is dan die waarmee de gebruiker spreekt. |
+| `InitialSilenceTimeout` | Het begin van de audio stroom bevat alleen stilte en er is een time-out opgetreden voor de service tijdens het wachten op spraak. |
+| `BabbleTimeout` | Het begin van de audio stroom bevat alleen ruis en er is een time-out opgetreden voor de service tijdens het wachten op spraak. |
+| `Error` | De herkennings service heeft een interne fout aangetroffen en kan niet worden voortgezet. Probeer het opnieuw als dat mogelijk is. |
 
 > [!NOTE]
-> Als de audio alleen uit godslastering `profanity` bestaat en de `remove`queryparameter is ingesteld op , geeft de service geen spraakresultaat terug.
+> Als de audio alleen uit scheld woorden bestaat en de `profanity` query parameter is ingesteld op `remove`, wordt door de service geen gesp roken resultaat geretourneerd.
 
-Het `detailed` formaat bevat dezelfde `simple` gegevens als `NBest`het formaat, samen met een lijst van alternatieve interpretaties van hetzelfde herkenningsresultaat. Deze resultaten zijn gerangschikt van de meeste waarschijnlijk tot minst waarschijnlijk. De eerste vermelding is hetzelfde als het hoofdherkenningsresultaat.  Bij het `detailed` gebruik `DisplayText` van `Display` de indeling, `NBest` wordt verstrekt als voor elk resultaat in de lijst.
+De `detailed` indeling bevat dezelfde gegevens als de `simple` indeling, samen met `NBest`een lijst met alternatieve interpretaties van hetzelfde herkennings resultaat. Deze resultaten worden geclassificeerd op basis van de meest waarschijnlijke kans op minst. De eerste vermelding is hetzelfde als het belangrijkste herkennings resultaat.  Wanneer u de `detailed` indeling gebruikt `DisplayText` , wordt de `Display` voor elk resultaat in de `NBest` lijst weer gegeven.
 
-Elk object `NBest` in de lijst bevat:
+Elk object in de `NBest` lijst bevat:
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| `Confidence` | De betrouwbaarheidsscore van de inzending van 0,0 (geen vertrouwen) tot 1,0 (volledig vertrouwen) |
-| `Lexical` | De lexicale vorm van de erkende tekst: de daadwerkelijke erkende woorden. |
-| `ITN` | De omgekeerde-tekst-genormaliseerde ("canonieke") vorm van de erkende tekst, met telefoonnummers, nummers, afkortingen ("dokter smith" naar "dr smith"), en andere transformaties toegepast. |
-| `MaskedITN` | De ITN-vorm met godslastering maskeren toegepast, indien gevraagd. |
-| `Display` | De weergavevorm van de herkende tekst, met leestekens en hoofdletters toegevoegd. Deze parameter is `DisplayText` hetzelfde als wanneer `simple`de indeling is ingesteld op . |
+| `Confidence` | De betrouwbaarheids Score van de vermelding van 0,0 (geen betrouw baarheid) tot 1,0 (volledig vertrouwen) |
+| `Lexical` | De lexicale vorm van de herkende tekst: de werkelijke woorden die worden herkend. |
+| `ITN` | De inverse-text-genormaliseerde ("canonieke") vorm van de herkende tekst, met telefoon nummers, cijfers, afkortingen ("Doctor Smith" naar "Dr Smith") en andere toegepaste trans formaties. |
+| `MaskedITN` | Het ITN-formulier waarbij de maskering voor scheld woorden is toegepast, indien aangevraagd. |
+| `Display` | De weergave vorm van de herkende tekst, met lees tekens en hoofdletter gebruik. Deze para meter is hetzelfde als `DisplayText` de waarde die is opgegeven als `simple`de notatie is ingesteld op. |
+| `AccuracyScore` | De score die de nauw keurigheid van de uitspraak van de opgegeven spraak aangeeft. |
+| `FluencyScore` | De Score waarmee de fluency van de opgegeven spraak wordt aangegeven. |
+| `CompletenessScore` | De Score waarmee de volledigheid van de opgegeven spraak wordt aangegeven door de verhouding van uitgesp roken woorden naar de volledige invoer te berekenen. |
+| `PronScore` | De totale score die de uitspraak kwaliteit van de opgegeven spraak aangeeft. Dit wordt berekend op `AccuracyScore`basis `FluencyScore` van `CompletenessScore` en met gewicht. |
+| `ErrorType` | Deze waarde geeft aan of een woord wordt wegge laten, wordt ingevoegd of verkeerd is uitgesp `ReferenceText`roken, vergeleken met. Mogelijke waarden zijn `None` (wat betekent dat er geen fout is in `Omission`dit `Insertion` woord `Mispronunciation`), en. |
 
-## <a name="sample-responses"></a>Voorbeeldreacties
+## <a name="sample-responses"></a>Voorbeeld reacties
 
-Een typisch `simple` antwoord voor herkenning:
+Een typisch antwoord voor `simple` herkenning:
 
 ```json
 {
@@ -192,7 +230,7 @@ Een typisch `simple` antwoord voor herkenning:
 }
 ```
 
-Een typisch `detailed` antwoord voor herkenning:
+Een typisch antwoord voor `detailed` herkenning:
 
 ```json
 {
@@ -213,6 +251,45 @@ Een typisch `detailed` antwoord voor herkenning:
         "ITN" : "rewind me to buy 5 pencils",
         "MaskedITN" : "rewind me to buy 5 pencils",
         "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
+Een typische reactie op erkenning met beoordeling van de uitspraak:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronScore" : 84.4,
+        "AccuracyScore" : 100.0,
+        "FluencyScore" : 74.0,
+        "CompletenessScore" : 100.0,
+        "Words": [
+            {
+              "Word" : "Good",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 500000,
+              "Duration" : 2700000
+            },
+            {
+              "Word" : "morning",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 5300000,
+              "Duration" : 900000
+            }
+        ]
       }
   ]
 }

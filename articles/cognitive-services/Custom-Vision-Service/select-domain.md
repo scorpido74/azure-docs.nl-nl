@@ -1,7 +1,7 @@
 ---
-title: Selecteer een domein voor een Custom Vision-project - Computer Vision
+title: Selecteer een domein voor een Custom Vision project-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: In dit artikel ziet u hoe u een domein voor uw project selecteren in de Aangepaste Vision-service.
+description: In dit artikel wordt uitgelegd hoe u in de Custom Vision Service een domein selecteert voor uw project.
 services: cognitive-services
 author: shonohs
 manager: nitinme
@@ -10,64 +10,64 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1569b6081adad4cae0855f9adfb4e14e910bf819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899449"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127780"
 ---
-# <a name="select-a-domain-for-a-custom-vision-project"></a>Een domein selecteren voor een Custom Vision-project
+# <a name="select-a-domain-for-a-custom-vision-project"></a>Een domein voor een Custom Vision project selecteren
 
-In het instellingenblad voor uw Custom Vision-project u een domein voor uw project selecteren. Kies het domein dat het dichtst bij uw scenario ligt.
+Op de Blade instellingen voor uw Custom Vision project kunt u een domein voor uw project selecteren. Kies het domein dat zich het dichtst bij uw scenario bevindt.
 
 ## <a name="image-classification"></a>Classificatie van afbeeldingen
 
 |Domain|Doel|
 |---|---|
-|__Generieke__| Geoptimaliseerd voor een breed scala aan taken voor beeldclassificatie. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u moet kiezen, selecteert u het algemene domein.|
-|__Voedsel__|Geoptimaliseerd voor foto's van gerechten zoals je ze zou zien op een restaurant menu. Als u foto's van individuele groenten of fruit wilt classificeren, gebruikt u het domein Voedsel.|
-|__Bezienswaardigheden__|Geoptimaliseerd voor herkenbare oriëntatiepunten, zowel natuurlijk als kunstmatig. Dit domein werkt het beste wanneer het oriëntatiepunt duidelijk zichtbaar is op de foto. Dit domein werkt zelfs als het oriëntatiepunt lichtjes door mensen voor het wordt belemmerd.|
-|__Retail__|Geoptimaliseerd voor afbeeldingen die worden gevonden in een winkelcatalogus of winkelwebsite. Als u wilt hoge precisie classificeren tussen jurken, broeken en shirts, gebruik dan dit domein.|
+|__Encarta__| Geoptimaliseerd voor een breed scala aan afbeeldings classificatie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein.|
+|__Middel__|Geoptimaliseerd voor foto's van vaat werk zoals u zou zien in een restaurant menu. Als u foto's van afzonderlijke vruchten of groenten wilt classificeren, gebruikt u het voedsel domein.|
+|__Oriëntatie punten__|Geoptimaliseerd voor herken bare bezienswaardigheden, zowel natuurlijke als kunst matig. Dit domein werkt het beste wanneer het oriëntatie punt duidelijk zichtbaar is in de foto. Dit domein werkt ook als het oriëntatie punt enigszins wordt belemmerd door mensen die er een voor hebben.|
+|__Retail__|Geoptimaliseerd voor installatie kopieën die worden gevonden in een winkel catalogus of een winkel website. Gebruik dit domein als u een hoge precisie wilt indelen tussen de handelingen, Pants en shirts.|
 |__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time classificatie op edge-apparaten.|
 
 ## <a name="object-detection"></a>Objectdetectie
 
 |Domain|Doel|
 |---|---|
-|__Algemeen__| Geoptimaliseerd voor een breed scala aan objectdetectietaken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u moet kiezen, selecteert u het algemene domein.|
-|__Logo__|Geoptimaliseerd voor het vinden van merklogo's in afbeeldingen.|
-|__Producten in de schappen__|Geoptimaliseerd voor het detecteren en classificeren van producten in de schappen.|
-|__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time objectdetectie op randapparaten.|
+|__Algemeen__| Geoptimaliseerd voor een breed scala aan object detectie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein.|
+|__Logo__|Geoptimaliseerd voor het vinden van merk logo's in afbeeldingen.|
+|__Producten op planken__|Geoptimaliseerd voor het detecteren en classificeren van producten in planken.|
+|__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time object detectie op edge-apparaten.|
 
 ## <a name="compact-domains"></a>Compacte domeinen
 
-De modellen die worden gegenereerd door compacte domeinen kunnen worden geëxporteerd om lokaal te worden uitgevoerd. De prestaties van het model variëren per geselecteerd domein. In de onderstaande tabel rapporteren we de modelgrootte en de gevolgtrekkingstijd op Intel Desktop CPU en NVidia GPU \[1\]. 
+De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal uit te voeren. Model prestaties verschillen per geselecteerd domein. In de onderstaande tabel rapporteren we de model grootte en de tijd voor het afnemen van de Intel-Desktop- \[CPU\]en NVIDIA GPU 1. 
 
 > [!NOTE]
-> Deze nummers bevatten geen voorbewerkings- en nabewerkingstijd.
+> Deze getallen bevatten geen voorverwerkende en postprocessing tijd.
 
-|Taak|Domain|Modelgrootte|CPU-gevolgtrekkingstijd|GPU-gevolgtrekkingstijd|
+|Taak|Domain|Model grootte|Time-outtijd van CPU|Time-outtijd GPU|
 |---|---|---|---|---|
-|Classificatie|Algemeen (compact)|5 MB|13 ms|5 ms|
-|Objectdetectie|Algemeen (compact)|45 MB|35 ms|5 ms|
-|Objectdetectie|Algemeen (compact) [S1]|14 MB|27 ms|7 ms|
+|Classificatie|Algemeen (compact)|5 MB|13 MS|5 MS|
+|Objectdetectie|Algemeen (compact)|45 MB|35 MS|5 MS|
+|Objectdetectie|Algemeen (compact) [S1]|14 MB|27 MS|7 MS|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI Dev Kit)
+## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI dev kit)
 
-Wanneer een compact domein wordt geselecteerd, wordt een extra optie "Exportmogelijkheden" geboden, zodat onderscheid kan worden gemaakt tussen "Basisplatforms" en "Vision AI Dev Kit".
+Wanneer een compact domein is geselecteerd, wordt er een extra optie export mogelijkheden geboden, waardoor onderscheid kan worden gemaakt tussen ' Basic platforms ' en ' Vision AI dev kit '.
 
-Onder _Exportmogelijkheden_ zijn de twee opties:
+Onder _export mogelijkheden_ zijn de volgende twee opties:
 
-- Basisplatforms (Tensorflow, CoreML, ONNX, enz.)
-- Visie AI Dev Kit.
+- Basis platforms (tensor flow, CoreML, ONNX, etc.)
+- Vision AI dev kit.
 
-Wanneer _Vision AI Dev Kit_ is geselecteerd, zijn de _algemene_, _oriëntatiepunten_en _detailhandelsdomeinen,_ maar niet de _compacte domeinen van Levensmiddelen_ beschikbaar voor beeldclassificatie, terwijl zowel algemene _(compacte)_ als _algemene (compacte) [S1]_ beschikbaar zijn voor objectdetectie.
+Als _Vision AI dev kit_ is geselecteerd, zijn de _algemene_, _bezienswaardigheden_en _detail handel_ , maar niet de _voedsel_ -compacte domeinen beschikbaar voor de classificatie van installatie kopieën, terwijl zowel _Algemeen (compact)_ als _Algemeen (compact) [S1]_ beschikbaar zijn voor object detectie.
 
 >[!NOTE]
->__Algemeen (compact)__ domein voor Objectdetectie vereist speciale nabewerkingslogica. Zie voor de details een voorbeeldscript in het geëxporteerde zip-pakket. Als u een model zonder de nabewerkingslogica nodig hebt, gebruikt u __Algemeen (compact) [S1]__.
+>__Algemeen (compact)__ domein voor object detectie vereist speciale postprocessing-logica. Raadpleeg voor meer informatie een voorbeeld script in het geëxporteerde zip-pakket. Als u een model nodig hebt zonder de postprocessing Logic, gebruikt u __Algemeen (compact) [S1]__.
 
 >[!IMPORTANT]
->Er is geen garantie dat de geëxporteerde modellen precies hetzelfde resultaat geven als de voorspellings-API in de cloud. Een klein verschil in het loopplatform of de voorbewerkingsimplementatie kan leiden tot een groter verschil in de modeluitvoer. Zie [dit document](python-tutorial.md)voor de details van de voorbewerkingslogica.
+>Er is geen garantie dat de geëxporteerde modellen precies hetzelfde resultaat hebben als de Voorspellings-API in de Cloud. Een enigszins verschil in het actieve platform of de voor verwerking van de implementatie kan een groter verschil veroorzaken in de model uitvoer. Zie [dit document](quickstarts/image-classification.md)voor meer informatie over de logica voor voor verwerking.
 
-\[1\] Intel Xeon E5-2690 CPU en NVIDIA Tesla M60
+\[1\] Intel Xeon E5-2690 CPU en Nvidia Tesla M60

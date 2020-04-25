@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: e7e500f0459c0f5fd4039acf316d9469e1567a09
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116931"
+ms.locfileid: "82133449"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Snelstart: een Front Door maken voor een webtoepassing met hoge beschikbaarheid
 
@@ -42,7 +42,7 @@ Als u nog geen web-app hebt, gebruikt u de volgende stappen voor het instellen v
 
 1. **Web** > -**Web-app**selecteren.
 
-   ![Een web-app maken in Azure Portal](media/quickstart-create-front-door/create-web-app-for-front-door.png)
+   ![Een web-app maken in Azure Portal](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
 
 1. In **Web-app**selecteert u het **abonnement** dat u wilt gebruiken.
 
@@ -60,7 +60,7 @@ Als u nog geen web-app hebt, gebruikt u de volgende stappen voor het instellen v
 
 1. Selecteer **controleren + maken**, Bekijk de **samen vatting**en selecteer vervolgens **maken**. Het kan enkele minuten duren voordat de implementatie is voltooid.
 
-   ![Overzicht van de web-app controleren](media/quickstart-create-front-door/summary-for-web-app-for-front-door.png)
+   ![Overzicht van de web-app controleren](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
 
 Nadat de implementatie is voltooid, maakt u een tweede web-app. Gebruik dezelfde procedure met dezelfde waarden, met uitzonde ring van de volgende waarden:
 
@@ -87,7 +87,7 @@ Configureer Azure front-deur om gebruikers verkeer te leiden op basis van de laa
 
 1. Voer bij **hostnaam**een wereld wijd unieke hostnaam in. In dit voor beeld wordt *Contoso-front-end*gebruikt. Selecteer **Toevoegen**.
 
-   ![Een frontend-host toevoegen voor Azure front deur](media/quickstart-create-front-door/add-frontend-host-for-front-door.png)
+   ![Een frontend-host toevoegen voor Azure front deur](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
 Maak vervolgens een back-end-groep die uw twee web-apps bevat.
 
@@ -103,7 +103,7 @@ Maak vervolgens een back-end-groep die uw twee web-apps bevat.
 
 1. Selecteer uw abonnement, en kies de tweede web-app die u hebt gemaakt op basis van de **back-end-hostnaam**. Selecteer **Toevoegen**.
 
-   ![Een backend-host toevoegen aan de voor deur](media/quickstart-create-front-door/add-backend-host-to-pool-for-front-door.png)
+   ![Een backend-host toevoegen aan de voor deur](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
 Voeg ten slotte een routerings regel toe. Met een regel voor door sturen wordt uw frontend-host toegewezen aan de back-end-groep. De regel stuurt een aanvraag door `contoso-frontend.azurefd.net` naar **myBackendPool**.
 
@@ -116,7 +116,7 @@ Voeg ten slotte een routerings regel toe. Met een regel voor door sturen wordt u
 
 1. Selecteer **controleren + maken**en vervolgens **maken**.
 
-   ![Geconfigureerde Azure-voor deur](media/quickstart-create-front-door/configuration-of-front-door.png)
+   ![Geconfigureerde Azure-voor deur](media/quickstart-create-front-door/configuration-azure-front-door.png)
 
 ## <a name="view-azure-front-door-in-action"></a>De voor deur van Azure in actie weer geven
 
@@ -141,7 +141,7 @@ Voer de volgende stappen uit om direct globale failover in actie te testen:
 
 1. Vernieuw de browser. Deze keer wordt een fout bericht weer gegeven.
 
-   ![Beide exemplaren van de web-app zijn gestopt](media/quickstart-create-front-door/service-has-been-stopped.png)
+   ![Beide exemplaren van de web-app zijn gestopt](media/quickstart-create-front-door/web-app-stopped-message.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
