@@ -356,14 +356,14 @@
           href: backup-azure-vms-troubleshoot.md
         - name: Time-out opgetreden bij agent voor Azure Backup of VM-extensie
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
+        - name: Azure Backup-agent
+          href: backup-azure-mars-troubleshoot.md
         - name: Back-up maken van bestanden en mappen is langzaam
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Azure Backup-server
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup-agent
-          href: backup-azure-mars-troubleshoot.md
         - name: Azure-bestandsshare
           href: troubleshoot-azure-files.md
         - name: SQL Server

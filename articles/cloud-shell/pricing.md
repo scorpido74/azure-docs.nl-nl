@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell-prijzen | Microsoft Documenten
+title: Prijzen voor Azure Cloud Shell | Microsoft Docs
 description: Overzicht van de prijzen van Azure Cloud Shell
 services: ''
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60199411"
 ---
 # <a name="pricing"></a>Prijzen
-Bash in Cloud Shell en PowerShell in Cloud Shell zijn onderworpen aan onderstaande informatie.
+Bash in Cloud Shell en Power shell in Cloud Shell zijn onderhevig aan de onderstaande informatie.
 
-## <a name="compute-cost"></a>Rekenkosten
-Azure Cloud Shell draait op een machine die gratis wordt geleverd door Azure, maar vereist een Azure-bestandsshare om te gebruiken. 
+## <a name="compute-cost"></a>Reken kosten
+Azure Cloud Shell wordt uitgevoerd op een machine die gratis is door Azure, maar moet een Azure-bestands share gebruiken. 
 
-## <a name="storage-cost"></a>Opslagkosten
-Cloud Shell vereist dat een nieuw of bestaand Azure-bestandenaandeel wordt gemonteerd om bestanden voor verschillende sessies voort te houden. Opslag brengt regelmatig kosten met zich mee.
+## <a name="storage-cost"></a>Opslag kosten
+Cloud Shell moet een nieuwe of bestaande Azure Files share worden gekoppeld om bestanden te kunnen behouden in verschillende sessies. Opslag maakt normale kosten.
 
-Kijk [hier voor meer informatie over azure-bestandenkosten.](https://azure.microsoft.com/pricing/details/storage/files/) 
+Lees [hier meer informatie over Azure files kosten](https://azure.microsoft.com/pricing/details/storage/files/). 

@@ -320,8 +320,6 @@
           href: troubleshoot/troubleshoot-synapse-studio.md
         - name: Problemen met Synapse Analytics Studio oplossen met PowerShell
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-        - name: Integreren met Power BI
-          items: null
 - name: Procedures
   items:
     - name: Beveiligen
