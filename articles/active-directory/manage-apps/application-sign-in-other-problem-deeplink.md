@@ -1,6 +1,6 @@
 ---
-title: Problemen bij het aanmelden bij een toepassing met behulp van een deeplink | Microsoft Documenten
-description: Problemen oplossen met toegang tot een toepassing vanuit een deeplink-URL met Azure AD
+title: Problemen bij het aanmelden bij een toepassing met behulp van een deeplink | Microsoft Docs
+description: Problemen oplossen met toegang tot een toepassing vanuit een deeplink-URL met behulp van Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,265 +17,265 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65825417"
 ---
-# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Problemen met het aanmelden bij een toepassing met behulp van een deeplink
+# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Problemen bij het aanmelden bij een toepassing met behulp van een deeplink
 
-Het Access-paneel is een webportal waarmee een gebruiker met een werk- of schoolaccount in Azure Active Directory (Azure AD) cloudtoepassingen kan weergeven en starten waartoe de Azure AD-beheerder hem toegang heeft verleend. 
+Het toegangs venster is een portal op Internet waarmee een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) Cloud toepassingen kan weer geven en starten waartoe de Azure AD-beheerder hen toegang heeft verleend. 
 
-Deze toepassingen zijn geconfigureerd namens de gebruiker in de Azure AD-portal. De toepassing moet correct zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing in het toegangspaneel te zien.
+Deze toepassingen worden geconfigureerd namens de gebruiker in de Azure AD-Portal. De toepassing moet op de juiste wijze zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing te zien in het toegangs venster.
 
-Deep links of URL's voor gebruikerstoegang zijn koppelingen die uw gebruikers kunnen gebruiken om rechtstreeks vanuit hun URL-balken van hun browsers toegang te krijgen tot hun wachtwoord-SSO-toepassingen. Door naar deze koppeling te navigeren, worden gebruikers automatisch aangemeld bij de toepassing zonder eerst naar het toegangspaneel te hoeven gaan. Dit is dezelfde koppeling die gebruikers gebruiken om toegang te krijgen tot deze toepassingen via het startprogramma voor Office 365-toepassingen.
+Diep gaande koppelingen of Url's voor gebruikers toegang zijn koppelingen die uw gebruikers kunnen gebruiken om rechtstreeks vanuit hun browser-URL-balken toegang te krijgen tot hun wacht woord-SSO-toepassingen. Als u naar deze koppeling navigeert, worden gebruikers automatisch aangemeld bij de toepassing zonder eerst naar het toegangs paneel te hoeven gaan. Dit is dezelfde koppeling die gebruikers gebruiken om toegang te krijgen tot deze toepassingen vanuit het start programma voor Office 365-toepassingen.
 
 ## <a name="general-issues-to-check-first"></a>Algemene problemen om eerst te controleren
 
--   Zorg ervoor dat u een **browser** gebruikt die voldoet aan de minimumvereisten voor het Toegangspaneel.
+-   Zorg ervoor dat u een **browser** gebruikt die voldoet aan de minimale vereisten voor het toegangs venster.
 
--   Zorg ervoor dat de browser van de gebruiker de URL van de toepassing heeft toegevoegd aan zijn **vertrouwde sites.**
+-   Zorg ervoor dat de browser van de gebruiker de URL van de toepassing heeft toegevoegd aan de **vertrouwde sites**.
 
--   Controleer of de toepassing correct is **geconfigureerd.**
+-   Controleer of de toepassing correct is **geconfigureerd** .
 
--   Controleer of het account van de gebruiker is **ingeschakeld** voor aanmeldingen.
+-   Zorg ervoor dat het gebruikers account is **ingeschakeld** voor aanmeldingen.
 
--   Zorg ervoor dat het account van de gebruiker niet is **vergrendeld.**
+-   Controleer of het account van de gebruiker **niet is vergrendeld.**
 
--   Zorg ervoor dat het wachtwoord van de gebruiker **niet is verlopen of vergeten.**
+-   Zorg ervoor dat het wacht woord van de gebruiker **niet is verlopen of is verg eten.**
 
--   Controleer of **multi-factorauthenticatie** de toegang van gebruikers niet blokkeert.
+-   Zorg ervoor dat **multi-factor Authentication** de gebruikers toegang niet blokkeert.
 
--   Zorg ervoor dat een **beleid voor voorwaardelijke toegang** of beleid voor **identiteitsbescherming** de toegang van gebruikers niet blokkeert.
+-   Zorg ervoor dat het beleid voor **voorwaardelijke toegang** of het beleid voor **identiteits beveiliging** de gebruikers toegang niet blokkeert.
 
--   Zorg ervoor dat de contactgegevens van een gebruiker op de hoogte zijn van de gegevens over de **verificatie,** zodat het beleid voor meervoudige verificatie of voorwaardelijke toegang kan worden afgedwongen.
+-   Zorg ervoor dat de **contact gegevens** van de verificatie van een gebruiker up-to-date zijn om multi-factor Authentication of beleid voor voorwaardelijke toegang te kunnen afdwingen.
 
--   Zorg ervoor dat u ook probeert de cookies van uw browser te wissen en opnieuw te proberen in te loggen.
+-   Probeer ook de cookies van uw browser te wissen en opnieuw aan te melden.
 
-## <a name="checking-the-deeplink"></a>Het controleren van de deeplink
+## <a name="checking-the-deeplink"></a>De Deeplink controleren
 
-Voer de volgende stappen uit om te controleren of u de juiste deeplink hebt:
+Voer de volgende stappen uit om te controleren of u de juiste Deeplink hebt:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+6. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-7. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+7. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-8. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+8. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-9. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+9. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-10. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+10. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-    * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+    * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-11. Selecteer de toepassing waarvoor u de deeplink wilt controleren.
+11. Selecteer de toepassing waarvoor u de Deeplink wilt controleren.
 
-12. Zoek de **URL voor gebruikerstoegang van**het label . Uw deeplink moet overeenkomen met deze URL.
+12. Zoek het label **gebruikers toegangs-URL**. Uw Deeplink moet overeenkomen met deze URL.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>De extensie Access Panel Browser installeren
+## <a name="how-to-install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
 
-Voer de volgende stappen uit om de extensie Access Panel Browser te installeren:
+Voer de volgende stappen uit om de browser uitbreiding van het toegangs venster te installeren:
 
-1.  Open het [Access-paneel](https://myapps.microsoft.com) in een van de ondersteunde browsers en meld u aan als **gebruiker** in uw Azure AD.
+1.  Open het [toegangs venster](https://myapps.microsoft.com) in een van de ondersteunde browsers en meld u aan als een **gebruiker** in uw Azure AD.
 
-2.  klik op een **Wachtwoord-SSO-toepassing** in het Access-paneel.
+2.  Klik op een **wacht woord-SSO-toepassing** in het toegangs venster.
 
-3.  Selecteer **Nu installeren**in de prompt waarin u vraagt de software te installeren .
+3.  Selecteer **nu installeren**bij de vraag of u de software wilt installeren.
 
-4.  Op basis van uw browser wordt u doorverwezen naar de downloadlink. **Voeg** de extensie toe aan uw browser.
+4.  Op basis van uw browser wordt u omgeleid naar de download koppeling. **Voeg** de uitbrei ding toe aan uw browser.
 
-5.  Als uw browser daarom vraagt, selecteert u de extensie **inschakelen** of **toestaan.**
+5.  Als uw browser vraagt, selecteert u de extensie **inschakelen** of **toestaan** .
 
-6.  Zodra u deze **browserhebt geïnstalleerd, start u** de browsersessie opnieuw.
+6.  Nadat de installatie is voltooid, start u de browser sessie **opnieuw** .
 
-7.  Meld u aan bij het Toegangspaneel en kijk of u uw wachtwoord-SSO-toepassingen **starten**
+7.  Meld u aan bij het toegangs venster en controleer of u uw wacht woord-SSO-toepassingen kunt **starten** .
 
-U de extensie voor Chrome en Firefox ook downloaden van deze directe links:
+U kunt de uitbrei ding voor Chrome en Firefox ook downloaden via deze rechtstreekse koppelingen:
 
--   [Chrome Access Panel Extension](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Uitbrei ding Chrome toegangs paneel](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox Access Panel Extension](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Extensie voor het toegangs paneel van Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Eenmalige aanmelding voor een Azure AD-galeriestoepassing configureren
+## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Eenmalige aanmelding met een wacht woord configureren voor een toepassing in de Azure AD-galerie
 
-Als u een toepassing wilt configureren vanuit de Azure AD-galerie, moet u het als:
+Als u een toepassing wilt configureren vanuit de Azure AD-galerie, moet u het volgende doen:
 
 -   [Een toepassing toevoegen vanuit de Azure AD-galerie](#add-an-application-from-the-azure-ad-gallery)
 
--   [De toepassing voor eenmalige aanmelding voor wachtwoorden configureren](#configure-the-application-for-password-single-sign-on)
+-   [De toepassing configureren voor eenmalige aanmelding met een wacht woord](#configure-the-application-for-password-single-sign-on)
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Een toepassing toevoegen vanuit de Azure AD-galerie
 
 Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
 
-1.  Open de [Azure-portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **medebeheerder.**
+1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder.
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  klik op de knop **Toevoegen** in de rechterbovenhoek in het deelvenster **Ondernemingstoepassingen.**
+5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
 
-6.  Typ in het tekstvak **Een naam invoeren** in de sectie Toevoegen vanuit de **galeriede** de naam van de toepassing.
+6.  Typ de naam van de toepassing in het tekstvak **Geef een naam** op in de sectie **toevoegen vanuit de galerie** .
 
 7.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
 
-8.  Voordat u de toepassing toevoegt, u de naam wijzigen in het tekstvak **Naam.**
+8.  Voordat u de toepassing toevoegt, kunt u de naam ervan wijzigen in het tekstvak **naam** .
 
-9.  Als u de toepassing wilt toevoegen, klikt u op **Toevoegen**.
+9.  Klik op **toevoegen**om de toepassing toe te voegen.
 
-Na een korte periode u het configuratievenster van de toepassing zien.
+Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing voor eenmalige aanmelding voor wachtwoorden configureren
+### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing configureren voor eenmalige aanmelding met een wacht woord
 
 Voer de volgende stappen uit om eenmalige aanmelding voor een toepassing te configureren:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing die u wilt configureren als u zich wilt aanmelden.
+6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
 
-7. Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Selecteer de modus **Aanmelding op basis van wachtwoord.**
+8. Selecteer de **aanmeldings modus op basis van wacht woord.**
 
 9. [Gebruikers toewijzen aan de toepassing](#how-to-assign-a-user-to-an-application-directly).
 
-10. Bovendien u namens de gebruiker ook referenties opgeven door de rijen van de gebruikers te selecteren en op **Referenties bijwerken** te klikken en namens de gebruikers de gebruikersnaam en het wachtwoord in te voeren. Anders worden gebruikers gevraagd om de referenties zelf in te voeren bij de lancering.
+10. Daarnaast kunt u ook referenties namens de gebruiker opgeven door de rijen van de gebruikers te selecteren en op **referenties bijwerken** te klikken en de gebruikers naam en het wacht woord namens de gebruikers in te voeren. Anders wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Eenmalige aanmelding voor een niet-galerietoepassing configureren voor een aanvraag voor een niet-galerie
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Eenmalige aanmelding met een wacht woord configureren voor een toepassing buiten de galerie
 
-Als u een toepassing wilt configureren vanuit de Azure AD-galerie, moet u het als:
+Als u een toepassing wilt configureren vanuit de Azure AD-galerie, moet u het volgende doen:
 
--   [Een niet-galerietoepassing toevoegen](#add-a-non-gallery-application)
+-   [Een niet-galerie toepassing toevoegen](#add-a-non-gallery-application)
 
--   [De toepassing voor eenmalige aanmelding voor wachtwoorden configureren](#configure-the-application-for-password-single-sign-on)
+-   [De toepassing configureren voor eenmalige aanmelding met een wacht woord](#configure-the-application-for-password-single-sign-on)
 
-### <a name="add-a-non-gallery-application"></a>Een niet-galerietoepassing toevoegen
+### <a name="add-a-non-gallery-application"></a>Een niet-galerie toepassing toevoegen
 
 Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
 
-1.  Open de [Azure-portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **medebeheerder.**
+1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder.
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  klik op de knop **Toevoegen** in de rechterbovenhoek in het deelvenster **Ondernemingstoepassingen.**
+5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
 
-6.  klik **op Niet-galerietoepassing.**
+6.  Klik op **toepassing voor niet-galerie.**
 
-7.  Voer de naam van uw toepassing in het tekstvak **Naam** in. Selecteer **Toevoegen.**
+7.  Voer de naam van uw toepassing in het tekstvak **naam** in. Selecteer **toevoegen.**
 
-Na een korte periode u het configuratievenster van de toepassing zien.
+Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing voor eenmalige aanmelding voor wachtwoorden configureren
+### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing configureren voor eenmalige aanmelding met een wacht woord
 
 Voer de volgende stappen uit om eenmalige aanmelding voor een toepassing te configureren:
 
-1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5.  Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-    1.  Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+    1.  Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6.  Selecteer de toepassing die u wilt configureren als u zich wilt aanmelden.
+6.  Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
 
-7.  Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7.  Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8.  Selecteer de modus **Aanmelding op basis van wachtwoord.**
+8.  Selecteer de **aanmeldings modus op basis van wacht woord.**
 
-9.  Voer de **AANmeldings-URL**in, de URL waar gebruikers hun gebruikersnaam en wachtwoord invoeren om zich aan te melden. Zorg ervoor dat de aanmeldingsvelden zichtbaar zijn op de URL.
+9.  Voer de **aanmeldings-URL**in, de URL waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. Zorg ervoor dat de aanmeldings velden zichtbaar zijn op de URL.
 
 10. Gebruikers toewijzen aan de toepassing.
 
-11. Bovendien u namens de gebruiker ook referenties opgeven door de rijen van de gebruikers te selecteren en op **Referenties bijwerken** te klikken en namens de gebruikers de gebruikersnaam en het wachtwoord in te voeren. Anders worden gebruikers gevraagd om de referenties zelf in te voeren bij de lancering.
+11. Daarnaast kunt u ook referenties namens de gebruiker opgeven door de rijen van de gebruikers te selecteren en op **referenties bijwerken** te klikken en de gebruikers naam en het wacht woord namens de gebruikers in te voeren. Anders wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
 
-## <a name="how-to-assign-a-user-to-an-application-directly"></a>Een gebruiker rechtstreeks aan een toepassing toewijzen
+## <a name="how-to-assign-a-user-to-an-application-directly"></a>Direct toewijzen van een gebruiker aan een toepassing
 
-Voer de volgende stappen uit om een of meer gebruikers rechtstreeks aan een toepassing toe te wijzen:
+Voer de volgende stappen uit om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing waaraan u een gebruiker wilt toewijzen uit de lijst.
+6. Selecteer in de lijst de toepassing waaraan u een gebruiker wilt toewijzen.
 
-7. Zodra de toepassing wordt geladen, klikt u op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Klik **op** de knop Toevoegen boven aan de lijst **Gebruikers en groepen** om het deelvenster Toewijzing **toevoegen** te openen.
+8. Klik op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** om het deel venster **toewijzing toevoegen** te openen.
 
-9. klik op de selectie **voor gebruikers en groepen** in het deelvenster Toewijzing **toevoegen.**
+9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-10. Typ de **volledige naam** of het volledige **e-mailadres** van de gebruiker die u wilt toewijzen aan het zoekvak Zoeken op naam of **e-mailadres.**
+10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
 
-11. Plaats de **plaats van** de gebruiker in de lijst om een **selectievakje**te onthullen. Als u uw gebruiker wilt toevoegen aan de **lijst Geselecteerd,** klikt u op het selectievakje naast de profielfoto of het logo van de gebruiker.
+11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Als u uw gebruiker aan de **geselecteerde** lijst wilt toevoegen, klikt u op het selectie vakje naast het profiel foto of logo van de gebruiker.
 
-12. **Optioneel:** Als u meer dan één gebruiker wilt **toevoegen,** typt u een andere **volledige naam** of **e-mailadres** in het zoekvak **Zoeken op naam of e-mailadres** en klikt u op het selectievakje om deze gebruiker toe te voegen aan de **lijst Geselecteerde.**
+12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
 
-13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **Selecteren** om deze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
+13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** klik op de rolkiezer **selecteren** in het deelvenster **Toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
+14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
 
-15. Klik **op** de knop Toewijzen om de toepassing toe te wijzen aan de geselecteerde gebruikers.
+15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
 
-Na een korte periode kunnen de geselecteerde gebruikers deze toepassingen starten in het Access Panel.
+Na een korte periode kunnen de gebruikers die u hebt geselecteerd deze toepassingen in het toegangs venster starten.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor het oplossen van problemen het probleem niet oplossen. 
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor probleem oplossing niet het probleem oplossen. 
 
-open een support ticket met de volgende informatie indien beschikbaar:
+Open een ondersteunings ticket met de volgende informatie, indien beschikbaar:
 
--   Correlatiefout-id
+-   ID correlatie fout
 
--   UPN (e-mailadres van de gebruiker)
+-   UPN (e-mail adres van gebruiker)
 
 -   TenantID
 
 -   Browsertype
 
--   Tijdzone en tijd/tijdsbestek tijdens fout treedt op
+-   Tijd zone en tijd/tijds duur tijdens fout
 
--   Fiddler sporen
+-   Fiddler traceringen
 
 ## <a name="next-steps"></a>Volgende stappen
-[Eén aanmelding bij uw apps bieden met Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)
+[Eenmalige aanmelding bieden voor uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)

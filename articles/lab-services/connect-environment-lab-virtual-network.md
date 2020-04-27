@@ -1,6 +1,6 @@
 ---
-title: Omgevingen verbinden met het vnet van een lab in Azure DevTest Labs | Microsoft Documenten
-description: Meer informatie over het verbinden van een omgeving (zoals het cluster Service Fabric) met het virtuele netwerk van uw lab in Azure DevTest Labs
+title: Omgevingen verbinden met het vnet van een lab in Azure DevTest Labs | Microsoft Docs
+description: Informatie over het verbinden van een omgeving (zoals Service Fabric cluster) in het virtuele netwerk van uw Lab in Azure DevTest Labs
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60777165"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Een omgeving verbinden met het virtuele netwerk van uw lab in Azure DevTest Labs
-Azure DevTest Labs maakt het eenvoudig om VM's te maken in een lab met [ingebouwde netwerken.](devtest-lab-configure-vnet.md) Het heeft veel flexibiliteit met de mogelijkheid om [multi-VM-omgevingen](devtest-lab-test-env.md)te creëren. In dit artikel ziet u hoe u VM's in een omgeving verbinden met het virtuele labnetwerk. Een scenario waarin u deze functie gebruikt, is het instellen van een N-tier-app met een SQL Server-gegevenslaag die is verbonden met het lab VNet, waardoor testVM's in het lab toegang krijgen tot deze technologie.  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Een omgeving verbinden met het virtuele netwerk van uw Lab in Azure DevTest Labs
+Met Azure DevTest Labs kunt u eenvoudig Vm's maken in een Lab met [ingebouwde netwerken](devtest-lab-configure-vnet.md). Het biedt veel flexibiliteit met de mogelijkheid om [multi-VM-omgevingen te maken](devtest-lab-test-env.md). In dit artikel wordt beschreven hoe u Vm's in een omgeving verbindt met het virtuele lab-netwerk. Een scenario waarin u deze functie gebruikt, is het instellen van een N-tier-app met een SQL Server-gegevenslaag die is verbonden met de Lab-VNet, zodat de virtuele machines in de test omgeving kunnen worden geopend.  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>Voorbeeldomgeving die gebruik maakt van lab VNet
-Hier is een eenvoudige omgevingssjabloon die het subnet van het lab verbindt. In dit voorbeeld `DTLSubnetId` vertegenwoordigt de parameter de id van het subnet waarin het lab bestaat. Het is toegewezen `$(LabSubnetId)`aan: , die automatisch wordt opgelost door DevTest Labs om de ID van het subnet van het lab. De **subneteigenschap** van de **netwerkinterface** van de `DTLSubnetId` VM in deze definitie is zo ingesteld dat deze zich bij hetzelfde subnet aansluit. 
+## <a name="sample-environment-that-uses-lab-vnet"></a>Voorbeeld omgeving die gebruikmaakt van Lab VNet
+Hier volgt een eenvoudige omgevings sjabloon die het subnet van het lab verbindt. In dit voor beeld vertegenwoordigt `DTLSubnetId` de para meter de id van het subnet waarin het lab zich bevindt. Deze is toegewezen aan: `$(LabSubnetId)`, die automatisch door DevTest Labs wordt omgezet naar de id van het subnet van de Lab. De eigenschap **subnet** van de **netwerk interface** van de virtuele machine in deze definitie is `DTLSubnetId` zodanig ingesteld dat deze lid wordt van hetzelfde subnet. 
 
 ```json
 {
@@ -161,4 +161,4 @@ Hier is een eenvoudige omgevingssjabloon die het subnet van het lab verbindt. In
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor het gebruik van de Azure-portal om deze bewerkingen uit te voeren: [Start een VM opnieuw](devtest-lab-restart-vm.md)op.
+Raadpleeg het volgende artikel voor het gebruik van de Azure Portal om deze bewerkingen uit te voeren: [Start een virtuele machine opnieuw](devtest-lab-restart-vm.md)op.

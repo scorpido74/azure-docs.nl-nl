@@ -1,6 +1,6 @@
 ---
-title: Een gelicentieerde afbeelding inschakelen in uw lab in Azure DevTest Labs | Microsoft Documenten
-description: Meer informatie over het inschakelen van een gelicentieerde afbeelding in Azure DevTest Labs met behulp van de Azure-portal
+title: Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het inschakelen van een gelicentieerde installatie kopie in Azure DevTest Labs met behulp van de Azure Portal
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61294252"
 ---
-# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Een gelicentieerde afbeelding in uw lab inschakelen in Azure DevTest Labs
+# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTest Labs
 
-In Azure DevTest Labs is een gelicentieerde afbeelding een afbeelding die algemene voorwaarden bevat - meestal van een derde partij - die moeten worden geaccepteerd voordat de afbeelding toegankelijk is voor gebruikers in het lab. In de volgende secties wordt beschreven hoe u met gelicentieerde afbeeldingen werken, zodat ze beschikbaar zijn voor het maken van virtuele machines.
+In Azure DevTest Labs is een gelicentieerde installatie kopie die voor waarden bevat, doorgaans van een derde partij, die moet worden geaccepteerd voordat de installatie kopie toegankelijk is voor gebruikers in het lab. In de volgende secties wordt beschreven hoe u met gelicentieerde installatie kopieën werkt zodat ze beschikbaar zijn voor het maken van virtuele machines.
 
-## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Bepalen of een gelicentieerde afbeelding beschikbaar is voor gebruikers
-De eerste stap om gebruikers toe te staan VM's te maken op basis van een gelicentieerde afbeelding, is ervoor te zorgen dat de algemene voorwaarden zijn geaccepteerd voor de gelicentieerde afbeelding. In de volgende stappen ziet u hoe u de aanbiedingsstatus van een gelicentieerde afbeelding bekijken en, indien nodig, de algemene voorwaarden accepteren.
+## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Bepalen of een gelicentieerde installatie kopie beschikbaar is voor gebruikers
+De eerste stap om gebruikers toe te staan Vm's te maken op basis van een gelicentieerde installatie kopie, is ervoor te zorgen dat de voor waarden zijn geaccepteerd voor de gelicentieerde installatie kopie. De volgende stappen laten zien hoe u de status van een gelicentieerde installatie kopie kunt bekijken en, indien nodig, de voor waarden van de aanbieding accepteert.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
-1. Selecteer in de lijst met laboratoria het gewenste lab.  
+1. Selecteer in de lijst met Labs het gewenste Lab.  
 
-1. Selecteer **Configuratie en beleid**in het linkerdeelvenster onder **INSTELLINGEN**.
+1. Selecteer in het linkerdeel venster onder **instellingen**de optie **configuratie en beleid**.
 
-1. Selecteer **Marketplace-afbeeldingen**in het linkerpaneel onder **VIRTUELE MACHINEBASES**. 
+1. Selecteer in het linkerdeel venster onder basis van **virtuele machine**de optie **Marketplace-installatie kopieën**. 
 
-    ![Menu-item Marketplace-afbeeldingen](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
+    ![Menu-item Marketplace-installatie kopieën](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
-    Er wordt een lijst weergegeven met alle beschikbare marketplace-afbeeldingen, inclusief de **AANBIEDINGsstatus** voor elke afbeelding.
+    Er wordt een lijst weer gegeven met alle beschik bare Marketplace-installatie kopieën, inclusief de STATUS van de **aanbieding** voor elke installatie kopie.
 
-    ![Lijst met marktplaatsafbeeldingen met aanbiedingsstatus voor elke afbeelding](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
+    ![Lijst met Marketplace-installatie kopieën met de status van de aanbieding voor elke installatie kopie](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
 
-    Een gelicentieerde afbeelding toont een aanbiedingsstatus van 
+    Een afbeelding met een licentie toont een aanbiedings status van 
     
-    - **Geaccepteerde voorwaarden:** de gelicentieerde afbeelding is beschikbaar voor gebruikers om VM's te maken. 
-    - **Voorwaarden beoordeling nodig:** de gelicentieerde afbeelding is momenteel niet beschikbaar voor gebruikers. De algemene voorwaarden van de licentie moeten worden geaccepteerd voordat labgebruikers deze kunnen gebruiken om VM's te maken. 
+    - **Voor waarden geaccepteerd:** de gelicentieerde installatie kopie is beschikbaar voor gebruikers om vm's te maken. 
+    - **Voor waarden voor beoordeling vereist:** de gelicentieerde installatie kopie is momenteel niet beschikbaar voor gebruikers. De voor waarden van de licentie moeten worden geaccepteerd voordat Lab-gebruikers ze kunnen gebruiken om virtuele machines te maken. 
 
-## <a name="making-a-licensed-image-available-to-lab-users"></a>Een gelicentieerde afbeelding beschikbaar maken voor labgebruikers
-Om ervoor te zorgen dat een gelicentieerde afbeelding beschikbaar is voor labgebruikers, moet een labeigenaar met beheerdersmachtigingen eerst de algemene voorwaarden voor die gelicentieerde afbeelding accepteren. Door programmatische implementatie in te schakelen voor het abonnement dat is gekoppeld aan een gelicentieerde afbeelding, worden automatisch de wettelijke voorwaarden en privacyverklaringen voor die afbeelding geaccepteerd. [Werken met Marketplace Images in Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) biedt aanvullende informatie over de programmatische implementatie van marketplace-afbeeldingen.
+## <a name="making-a-licensed-image-available-to-lab-users"></a>Een gelicentieerde installatie kopie beschikbaar maken voor gebruikers met een Lab
+Om ervoor te zorgen dat een gelicentieerde installatie kopie beschikbaar is voor gebruikers met een lab, moet een Lab-eigenaar met beheerders machtigingen eerst de voor waarden voor die gelicentieerde afbeelding accepteren. Als u programmatische implementatie inschakelt voor het abonnement dat is gekoppeld aan een gelicentieerde installatie kopie, worden automatisch de juridische voor waarden en privacyverklaringen voor die installatie kopie geaccepteerd. [Werken met Marketplace-installatie kopieën op Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) biedt aanvullende informatie over het programmatisch implementeren van installatie kopieën van Marketplace.
 
-U programmatische implementatie voor een gelicentieerde afbeelding inschakelen door de volgende stappen te volgen:
+U kunt de programmatische implementatie voor een gelicentieerde installatie kopie inschakelen door de volgende stappen uit te voeren:
 
-1. Ga in de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)naar de lijst met **Marketplace-afbeeldingen**.
+1. Ga in het [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)naar de lijst met **installatie kopieën voor Marketplace**.
 
-1. Identificeer een gelicentieerde afbeelding waarvoor u wilt dat gebruikers toegang hebben, maar waarvan de voorwaarden niet zijn geaccepteerd. U ziet bijvoorbeeld een virtuele machine voor Data Science met een status van **geaccepteerde voorwaarden** of **beoordeling van termen die nodig zijn.**
+1. Identificeer een gelicentieerde installatie kopie waarvoor gebruikers toegang mogen hebben, maar waarvan de voor waarden niet zijn geaccepteerd. U ziet bijvoorbeeld een Data Science Virtual Machine waarin de status van de **geaccepteerde voor waarden** of de **vereiste voor waarden**worden weer gegeven.
 
-    ![Venster Programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Het venster programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Data Science VM's zijn Azure Virtual Machine-afbeeldingen, vooraf geïnstalleerd, geconfigureerd en getest met verschillende populaire hulpprogramma's die vaak worden gebruikt voor gegevensanalyse, machine learning en AI-training. [Inleiding tot Azure Data Science Virtual Machine voor Linux en Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) biedt veel informatie over DSVMs.
+   > Data Science Vm's zijn installatie kopieën van virtuele machines van Azure, vooraf geïnstalleerd, geconfigureerd en getest met verschillende populaire hulpprogram ma's die veel worden gebruikt voor gegevens analyse, machine learning-en AI-training. [Inleiding tot Azure data Science virtual machine voor Linux en Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) biedt veel informatie over dsvm.
    >
    >
 
-1. Selecteer in de kolom **AANBIEDINGSSTATUS** voor de afbeelding **de optie Termencontrole nodig**.
+1. Selecteer in de kolom **aanbiedings status** voor de installatie kopie de optie voor het controleren van de **voor waarden**.
 
-1. Selecteer in het venster Programmatische implementatie configureren de optie **Inschakelen**.
+1. Selecteer **inschakelen**in het venster programmatische implementatie configureren.
 
-    ![Venster Programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
+    ![Het venster programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
 
    > [!IMPORTANT]
-   > Mogelijk worden er meerdere abonnementen weergegeven in het venster Programmatische implementatie configureren. Zorg ervoor dat u programmatische implementatie alleen inschakelt voor het beoogde abonnement.
+   > U ziet mogelijk meerdere abonnementen die worden weer gegeven in het venster programmatische implementatie configureren. Zorg ervoor dat u alleen programmatische implementatie inschakelt voor het beoogde abonnement.
    >
    >
 
 
 1. Selecteer **Opslaan**. 
 
-    In de lijst met marktplaatsafbeeldingen toont die afbeelding nu **Geaccepteerde voorwaarden** en is beschikbaar voor gebruikers om virtuele machines te maken.
+    In de lijst met installatie kopieën van Marketplace worden nu de **voor waarden geaccepteerd** en beschikbaar gesteld voor gebruikers om virtuele machines te maken.
 
 > [!NOTE]
-> Gebruikers kunnen een aangepaste afbeelding maken op basis van een gelicentieerde afbeelding. Zie [Een aangepaste afbeelding maken uit een VHD-bestand](devtest-lab-create-template.md) voor meer informatie.
+> Gebruikers kunnen een aangepaste installatie kopie maken op basis van een gelicentieerde installatie kopie. Zie [een aangepaste installatie kopie maken op basis van een VHD-bestand](devtest-lab-create-template.md) voor meer informatie.
 >
 >
 
 
-## <a name="related-blog-posts"></a>Gerelateerde blogberichten
+## <a name="related-blog-posts"></a>Gerelateerde blog berichten
 
 - [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Aangepaste afbeeldingen kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Aangepaste installatie kopieën kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een aangepaste installatiekopie maken vanaf een virtuele machine](devtest-lab-create-custom-image-from-vm-using-portal.md)
-- [Een aangepaste afbeelding maken op basis van een VHD-bestand](devtest-lab-create-template.md)
-- [Een vm toevoegen aan uw lab](devtest-lab-add-vm.md)
+- [Een aangepaste installatie kopie maken van een VHD-bestand](devtest-lab-create-template.md)
+- [Een virtuele machine toevoegen aan uw Lab](devtest-lab-add-vm.md)

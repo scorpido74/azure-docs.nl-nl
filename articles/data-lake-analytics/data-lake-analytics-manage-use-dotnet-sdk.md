@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure .NET SDK
-description: In dit artikel wordt beschreven hoe u de Azure .NET SDK gebruiken om apps te schrijven die gegevenslake analytics-taken, gegevensbronnen en & gebruikers beheren.
+description: In dit artikel wordt beschreven hoe u de Azure .NET SDK gebruikt om apps te schrijven die Data Lake Analytics taken, gegevens bronnen & gebruikers beheren.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,17 +10,17 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60617704"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics beheren met behulp van een .NET-app
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-In dit artikel wordt beschreven hoe u Azure Data Lake Analytics-accounts, gegevensbronnen, gebruikers en taken beheert met behulp van een app die is geschreven met de Azure .NET SDK. 
+In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken beheert met behulp van een app die is geschreven met behulp van de Azure .NET SDK. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,10 +35,10 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics-accounts, gegeve
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
 |[Microsoft.Azure.Management.DataLake.Store](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Store)|2.2.0|
-|[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-preview|
-|[Microsoft.Azure.Graph.RBAC](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|3.4.0-preview|
+|[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-Preview|
+|[Microsoft.Azure.Graph.RBAC](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|3.4.0-Preview|
 
-U deze pakketten installeren via de NuGet-opdrachtregel met de volgende opdrachten:
+U kunt deze pakketten installeren via de NuGet-opdracht regel met de volgende opdrachten:
 
 ```powershell
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
@@ -48,7 +48,7 @@ Install-Package -Id Microsoft.Azure.Management.ResourceManager  -Version 1.6.0-p
 Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 ```
 
-## <a name="common-variables"></a>Veelvoorkomende variabelen
+## <a name="common-variables"></a>Algemene variabelen
 
 ```csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
@@ -57,9 +57,9 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
-U hebt meerdere opties om u aan te melden bij Azure Data Lake Analytics. In het volgende fragment wordt een voorbeeld van verificatie met interactieve gebruikersverificatie met een pop-up weergegeven.
+U hebt meerdere opties om u aan te melden bij Azure Data Lake Analytics. Het volgende code fragment toont een voor beeld van verificatie met interactieve gebruikers verificatie met een pop-up.
 
 ``` csharp
 using System;
@@ -97,10 +97,10 @@ public static Program
 }
 ```
 
-De broncode voor **GetCreds_User_Popup** en de code voor andere verificatieopties worden behandeld in verificatieopties voor [Data Lake Analytics .NET](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options)
+De bron code voor **GetCreds_User_Popup** en de code voor andere verificatie opties worden in [Data Lake Analytics .NET-verificatie opties](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options) besproken.
 
 
-## <a name="create-the-client-management-objects"></a>De clientbeheerobjecten maken
+## <a name="create-the-client-management-objects"></a>De client beheer objecten maken
 
 ``` csharp
 var resourceManagementClient = new ResourceManagementClient(armCreds) { SubscriptionId = subid };
@@ -125,18 +125,18 @@ graphClient.TenantID = domain;
 
 ### <a name="create-an-azure-resource-group"></a>Een Azure-resourcegroep maken
 
-Als u er nog geen hebt gemaakt, moet u een Azure Resource Group hebben om uw Data Lake Analytics-componenten te maken. U hebt uw verificatiereferenties, abonnements-ID en een locatie nodig. In de volgende code ziet u hoe u een resourcegroep maakt:
+Als u er nog geen hebt gemaakt, moet u een Azure-resource groep hebben om uw Data Lake Analytics-onderdelen te maken. U hebt uw verificatie referenties, abonnements-ID en locatie nodig. De volgende code laat zien hoe u een resource groep maakt:
 
 ``` csharp
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
 
-Zie Azure Resource Groups en Data Lake Analytics voor meer informatie.
+Zie Azure-resource groepen en-Data Lake Analytics voor meer informatie.
 
 ### <a name="create-a-data-lake-store-account"></a>Een Data Lake Store-account maken
 
-Ooit ADLA-account vereist een ADLS-account. Als u er nog geen hebt om te gebruiken, u er een maken met de volgende code:
+Voor het ADLA-account is een ADLS-account vereist. Als u er nog geen moet gebruiken, kunt u er een maken met de volgende code:
 
 ``` csharp
 var new_adls_params = new DataLakeStoreAccount(location: _location);
@@ -157,7 +157,7 @@ var new_adla_params = new DataLakeAnalyticsAccount()
 adlaClient.Account.Create(rg, adla, new_adla_params);
 ```
 
-### <a name="list-data-lake-store-accounts"></a>Gegevens lake store-accounts weergeven
+### <a name="list-data-lake-store-accounts"></a>Data Lake Store accounts weer geven
 
 ``` csharp
 var adlsAccounts = adlsAccountClient.Account.List().ToList();
@@ -167,7 +167,7 @@ foreach (var adls in adlsAccounts)
 }
 ```
 
-### <a name="list-data-lake-analytics-accounts"></a>GegevensLake Analytics-accounts weergeven
+### <a name="list-data-lake-analytics-accounts"></a>Data Lake Analytics accounts weer geven
 
 ``` csharp
 var adlaAccounts = adlaClient.Account.List().ToList();
@@ -184,7 +184,7 @@ for (var adla in AdlaAccounts)
 bool exists = adlaClient.Account.Exists(rg, adla));
 ```
 
-### <a name="get-information-about-an-account"></a>Informatie over een account
+### <a name="get-information-about-an-account"></a>Informatie over een account ophalen
 
 ``` csharp
 bool exists = adlaClient.Account.Exists(rg, adla));
@@ -203,9 +203,9 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-### <a name="get-the-default-data-lake-store-account"></a>Het standaard Data Lake Store-account openen
+### <a name="get-the-default-data-lake-store-account"></a>Het standaard Data Lake Store-account ophalen
 
-Voor elk Data Lake Analytics-account is een standaard Data Lake Store-account vereist. Gebruik deze code om het standaard Store-account voor een Analytics-account te bepalen.
+Voor elk Data Lake Analytics account is een standaard Data Lake Store-account vereist. Gebruik deze code om het standaard opslag account voor een Analytics-account te bepalen.
 
 ``` csharp
 if (adlaClient.Account.Exists(rg, adla))
@@ -217,14 +217,14 @@ if (adlaClient.Account.Exists(rg, adla))
 
 ## <a name="manage-data-sources"></a>Gegevensbronnen beheren
 
-Data Lake Analytics ondersteunt momenteel de volgende gegevensbronnen:
+Data Lake Analytics ondersteunt momenteel de volgende gegevens bronnen:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure-opslagaccount](../storage/common/storage-introduction.md)
+* [Azure Storage-account](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Koppeling naar een Azure Storage-account
 
-U koppelingen maken naar Azure Storage-accounts.
+U kunt koppelingen maken naar Azure Storage-accounts.
 
 ``` csharp
 string storage_key = "xxxxxxxxxxxxxxxxxxxx";
@@ -233,7 +233,7 @@ var addParams = new AddStorageAccountParameters(storage_key);
 adlaClient.StorageAccounts.Add(rg, adla, storage_account, addParams);
 ```
 
-### <a name="list-azure-storage-data-sources"></a>Azure-opslaggegevensbronnen weergeven
+### <a name="list-azure-storage-data-sources"></a>Azure Storage gegevens bronnen weer geven
 
 ``` csharp
 var stg_accounts = adlaAccountClient.StorageAccounts.ListByAccount(rg, adla);
@@ -247,7 +247,7 @@ if (stg_accounts != null)
 }
 ```
 
-### <a name="list-data-lake-store-data-sources"></a>Gegevensbronnen voor Gegevens Lake Store weergeven
+### <a name="list-data-lake-store-data-sources"></a>Data Lake Store gegevens bronnen weer geven
 
 ``` csharp
 var adls_accounts = adlsClient.Account.List();
@@ -263,16 +263,16 @@ if (adls_accounts != null)
 
 ### <a name="upload-and-download-folders-and-files"></a>Mappen en bestanden uploaden en downloaden
 
-U het clientbeheerobject Data Lake Store-bestandssysteem gebruiken om afzonderlijke bestanden of mappen van Azure naar uw lokale computer te uploaden en te downloaden, met behulp van de volgende methoden:
+U kunt het Data Lake Store bestandssysteem client beheer object gebruiken voor het uploaden en downloaden van afzonderlijke bestanden of mappen van Azure naar uw lokale computer, met behulp van de volgende methoden:
 
-- Uploadmap
-- UploadFile
-- DownloadMap
-- DownloadBestand
+- UploadFolder
+- Upload File
+- DownloadFolder
+- DownloadFile
 
-De eerste parameter voor deze methoden is de naam van het Data Lake Store-account, gevolgd door parameters voor het bronpad en het doelpad.
+De eerste para meter voor deze methoden is de naam van het Data Lake Store account, gevolgd door para meters voor het bronpad en het doelpad.
 
-In het volgende voorbeeld ziet u hoe u een map downloadt in de Data Lake Store.
+In het volgende voor beeld ziet u hoe u een map in de Data Lake Store kunt downloaden.
 
 ``` csharp
 adlsFileSystemClient.FileSystem.DownloadFolder(adls, sourcePath, destinationPath);
@@ -295,9 +295,9 @@ using (var memstream = new MemoryStream())
 }
 ```
 
-### <a name="verify-azure-storage-account-paths"></a>Accountpaden voor Azure Storage verifiëren
+### <a name="verify-azure-storage-account-paths"></a>Paden van Azure Storage-account controleren
 
-De volgende code controleert of er een Azure Storage-account (storageAccntName) bestaat in een Data Lake Analytics-account (analyticsAccountName) en of er een container (containerName) bestaat in het Azure Storage-account.
+Met de volgende code wordt gecontroleerd of een Azure Storage-account (storageAccntName) bestaat in een Data Lake Analytics-account (analyticsAccountName) en of een container (containerName) bestaat in het Azure Storage-account.
 
 ``` csharp
 string storage_account = "mystorageaccount";
@@ -308,11 +308,11 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 
 ## <a name="manage-catalog-and-jobs"></a>Catalogus en taken beheren
 
-Het object DataLakeAnalyticsCatalogManagementClient biedt methoden voor het beheer van de SQL-database die wordt verstrekt voor elk Azure Data Lake Analytics-account. De DataLakeAnalyticsJobManagementClient biedt methoden voor het indienen en beheren van taken die worden uitgevoerd op de database met U-SQL-scripts.
+Het DataLakeAnalyticsCatalogManagementClient-object biedt methoden voor het beheren van de SQL database voor elk Azure Data Lake Analytics-account. De DataLakeAnalyticsJobManagementClient biedt methoden om taken te verzenden en te beheren die worden uitgevoerd op de data base met U-SQL-scripts.
 
-### <a name="list-databases-and-schemas"></a>Databases en schema's weergeven
+### <a name="list-databases-and-schemas"></a>Data bases en schema's weer geven
 
-Onder de verschillende dingen die je aanbieden, de meest voorkomende zijn databases en hun schema. De volgende code verkrijgt een verzameling databases en somt vervolgens het schema voor elke database op.
+In de verschillende dingen die u kunt vermelden, zijn de meest voorkomende data bases en hun schema. Met de volgende code wordt een verzameling data bases opgehaald en wordt vervolgens het schema voor elke Data Base opgesomd.
 
 ``` csharp
 var databases = adlaCatalogClient.Catalog.ListDatabases(adla);
@@ -328,9 +328,9 @@ foreach (var db in databases)
 }
 ```
 
-### <a name="list-table-columns"></a>Lijsttabelkolommen
+### <a name="list-table-columns"></a>Tabel kolommen weer geven
 
-In de volgende code ziet u hoe u toegang krijgt tot de database met een gegevenslake analytics-catalogusbeheerclient om de kolommen in een opgegeven tabel weer te geven.
+De volgende code laat zien hoe u toegang krijgt tot de data base met een Data Lake Analytics Catalog Management-client om de kolommen in een opgegeven tabel weer te geven.
 
 ```csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
@@ -344,7 +344,7 @@ foreach (USqlTableColumn utc in columns)
 
 ### <a name="submit-a-u-sql-job"></a>Een U-SQL-taak verzenden
 
-In de volgende code ziet u hoe u een Data Lake Analytics Job management client gebruikt om een taak in te dienen.
+De volgende code laat zien hoe u een Data Lake Analytics Job Management-client kunt gebruiken om een taak te verzenden.
 
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
@@ -363,9 +363,9 @@ var jobInfo = adlaJobClient.Job.Create(adla, jobId, parameters);
 Console.WriteLine($"Job {jobName} submitted.");
 ```
 
-### <a name="list-failed-jobs"></a>Mislukte taken weergeven
+### <a name="list-failed-jobs"></a>Mislukte taken weer geven
 
-In de volgende code vindt u informatie over taken die zijn mislukt.
+De volgende code bevat informatie over taken die zijn mislukt.
 
 ```csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
@@ -376,9 +376,9 @@ foreach (var j in jobs)
 }
 ```
 
-### <a name="list-pipelines"></a>Pijplijnen weergeven
+### <a name="list-pipelines"></a>Pijp lijnen weer geven
 
-In de volgende code vindt u informatie over elke pijplijn van taken die bij het account worden ingediend.
+De volgende code bevat informatie over elke pijp lijn van taken die naar het account worden verzonden.
 
 ``` csharp
 var pipelines = adlaJobClient.Pipeline.List(adla);
@@ -388,9 +388,9 @@ foreach (var p in pipelines)
 }
 ```
 
-### <a name="list-recurrences"></a>Recidieven weergeven
+### <a name="list-recurrences"></a>Terugkeer patronen weer geven
 
-De volgende code bevat informatie over elke herhaling van taken die op het account worden ingediend.
+De volgende code bevat informatie over elk herhaling van taken die naar het account worden verzonden.
 
 ``` csharp
 var recurrences = adlaJobClient.Recurrence.List(adla);
@@ -400,28 +400,28 @@ foreach (var r in recurrences)
 }
 ```
 
-## <a name="common-graph-scenarios"></a>Veelvoorkomende grafiekscenario's
+## <a name="common-graph-scenarios"></a>Algemene grafiek scenario's
 
-### <a name="look-up-user-in-the-aad-directory"></a>Gebruiker opzoeken in de AAD-map
+### <a name="look-up-user-in-the-aad-directory"></a>Gebruiker opzoeken in de AAD-Directory
 
 ``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
 ```
 
-### <a name="get-the-objectid-of-a-user-in-the-aad-directory"></a>De objectid van een gebruiker in de AAD-map ophalen
+### <a name="get-the-objectid-of-a-user-in-the-aad-directory"></a>De ObjectId ophalen van een gebruiker in de AAD-Directory
 
 ``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
 Console.WriteLine( userinfo.ObjectId )
 ```
 
-## <a name="manage-compute-policies"></a>Rekenbeleid beheren
+## <a name="manage-compute-policies"></a>Reken beleid beheren
 
-Het object DataLakeAnalyticsAccountManagementClient biedt methoden voor het beheren van het rekenbeleid voor een Data Lake Analytics-account.
+Het DataLakeAnalyticsAccountManagementClient-object biedt methoden voor het beheren van het reken beleid voor een Data Lake Analytics-account.
 
-### <a name="list-compute-policies"></a>Rekenbeleid weergeven
+### <a name="list-compute-policies"></a>Reken beleid weer geven
 
-Met de volgende code wordt een lijst met rekenbeleid opgehaald voor een Data Lake Analytics-account.
+Met de volgende code wordt een lijst van reken beleid voor een Data Lake Analytics-account opgehaald.
 
 ``` csharp
 var policies = adlaAccountClient.ComputePolicies.ListByAccount(rg, adla);
@@ -431,9 +431,9 @@ foreach (var p in policies)
 }
 ```
 
-### <a name="create-a-new-compute-policy"></a>Een nieuw rekenbeleid maken
+### <a name="create-a-new-compute-policy"></a>Een nieuw reken beleid maken
 
-Met de volgende code wordt een nieuw rekenbeleid gemaakt voor een Data Lake Analytics-account, waarbij de maximale AU's die beschikbaar zijn voor de opgegeven gebruiker worden ingesteld op 50 en de minimale taakprioriteit op 250.
+Met de volgende code wordt een nieuw reken beleid gemaakt voor een Data Lake Analytics-account, waarbij het maximum aantal van AUs wordt ingesteld op de opgegeven gebruiker tot 50 en de minimale taak prioriteit op 250.
 
 ``` csharp
 var userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde";
@@ -444,5 +444,5 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Azure Data Lake Analytics beheren met Azure-portal](data-lake-analytics-manage-use-portal.md)
+* [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)
 * [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

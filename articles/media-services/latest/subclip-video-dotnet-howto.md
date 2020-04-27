@@ -1,6 +1,6 @@
 ---
-title: Een video onderknippen wanneer u codeert met Azure Media Services
-description: In dit onderwerp wordt beschreven hoe u een video subclipt wanneer u codeert met Azure Media Services met .NET SDK
+title: Een video bijsnijden bij het coderen met Azure Media Services
+description: In dit onderwerp wordt beschreven hoe u een video bijsnijden bij het coderen met Azure Media Services met behulp van .NET SDK
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67305096"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Een video onderknippen bij het coderen met Media Services - .NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Een video afspelen tijdens het coderen met Media Services-.NET
 
-U een video bijsnijden of subclipen wanneer u deze codeert met een [taak.](https://docs.microsoft.com/rest/api/media/jobs) Deze functionaliteit werkt met elke [transformatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) presets of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) presets.
+U kunt een video knippen of subfragmenteren wanneer u deze codeert met behulp van een [taak](https://docs.microsoft.com/rest/api/media/jobs). Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden.
 
-In het volgende c#-voorbeeld wordt een taak gemaakt waarmee een video in een item wordt bijgesneden terwijl deze een coderingstaak verzendt. 
+In het volgende C#-voor beeld wordt een taak gemaakt die een video in een activum bijsnijdt bij het verzenden van een coderings taak. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de in dit onderwerp beschreven stappen wilt voltooien, moet u het volgende doen:
+Voor het uitvoeren van de stappen die in dit onderwerp worden beschreven, moet u het volgende doen:
 
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md)
-- Maak een transformatie en een invoer- en uitvoerelementen. U zien hoe u een transformatie- en invoer- en uitvoerelementen maken in de [zelfstudie Uploaden, coderen en streamen.](stream-files-tutorial-with-api.md)
-- Bekijk het [concepttopic codering.](encoding-concept.md)
+- Maak een trans formatie en een invoer-en uitvoer activa. U kunt zien hoe u een trans formatie-en invoer-en uitvoer assets maakt in de zelf studie [video uploaden, coderen en streamen met behulp van .net](stream-files-tutorial-with-api.md) .
+- Bekijk het [Codeer concept](encoding-concept.md) onderwerp.
 
 ## <a name="example"></a>Voorbeeld
 
@@ -91,4 +91,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Coderen met een aangepaste transformatie](customize-encoder-presets-how-to.md) 
+[Coderen met een aangepaste trans formatie](customize-encoder-presets-how-to.md) 

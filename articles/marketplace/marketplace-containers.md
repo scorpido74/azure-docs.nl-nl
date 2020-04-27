@@ -1,6 +1,6 @@
 ---
-title: Publicatiegids voor containers voor Azure Marketplace
-description: In dit artikel worden de vereisten beschreven om containers op de Marketplace te publiceren
+title: Publicatie handleiding voor container aanbiedingen in azure Marketplace
+description: In dit artikel worden de vereisten beschreven voor het publiceren van container aanbiedingen in azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,42 +8,40 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684329"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160457"
 ---
-# <a name="containers-offer-publishing-guide"></a>Publicatiegids voor containers
+# <a name="publishing-guide-for-container-offers"></a>Publicatie handleiding voor container aanbiedingen
 
-Containeraanbiedingen helpen u uw containerafbeelding te publiceren naar de Azure Marketplace. Gebruik deze handleiding om inzicht te krijgen in de vereisten voor deze aanbieding. 
+Met container aanbiedingen kunt u uw container installatie kopie naar Azure Marketplace publiceren. Gebruik deze hand leiding om inzicht te krijgen in de vereisten voor deze aanbieding. 
 
-Dit zijn transactieaanbiedingen die worden geïmplementeerd en gefactureerd via de Marketplace. De call-to-action die een gebruiker ziet is 'Nu halen'.
+Container aanbiedingen zijn transactie aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. De aanroep van een actie die een gebruiker ziet is ' nu ophalen '.
 
-Gebruik het type containeraanbieding wanneer uw oplossing een Docker-containerafbeelding is die is ingericht als een Op Kubernetes gebaseerde Azure-containerservice.
+Gebruik het type *container* aanbod wanneer uw oplossing een docker-container installatie kopie is die is ingesteld als een Kubernetes Azure container service-exemplaar. 
 
->[!NOTE]
->Bijvoorbeeld een Op Kubernetes gebaseerde Azure-containerservice zoals Azure Kubernetes Service of Azure Container Instances, de keuze van Azure-klanten voor een op Kubernetes gebaseerde containerruntime.  
+> [!NOTE]
+> Voor beelden van Azure container service-exemplaren op basis van Kubernetes zijn Azure Kubernetes service of Azure Container Instances, de keuze van Azure-klanten voor een op Kubernetes gebaseerde container-runtime.  
 
-Microsoft ondersteunt momenteel gratis byol-licentiemodellen (bring-your-own-license).
+Micro soft biedt momenteel ondersteuning voor de BYOL-licentie modellen (gratis en meebrengen van eigen licentie).
 
-## <a name="containers-offer"></a>Containers Aangeboden
+## <a name="container-offer-requirements"></a>Vereisten voor container aanbod
 
 | Vereiste | Details |  
 |:--- |:--- |  
-| Facturering en meting | Ondersteuning voor het gratis of BYOL-factureringsmodel. |  
-| Afbeelding die is gebouwd met Dockerfile | Containerafbeeldingen moeten gebaseerd zijn op de docker-afbeeldingsspecificatie en moeten zijn opgebouwd uit een Dockerfile.<ul> <li>Ga voor meer informatie over het maken van dockerafbeeldingen naar de sectie Gebruik op [docs.docker.com/engine/reference/builder/#usage.](https://docs.docker.com/engine/reference/builder/#usage)</li> </ul> |  
-| Hosting in ACR | Containerafbeeldingen moeten worden gehost in een ACR-opslagplaats (Azure Container Registry).<ul> <li>Ga voor meer informatie over het werken met ACR naar de Quickstart: Een containerregister maken met de Azure-portalpagina op [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
-| Afbeeldingen taggen | Containerafbeeldingen moeten ten minste 1 tag bevatten (maximale tags: 16).<ul> <li>Ga voor meer informatie over het taggen van een afbeelding naar de tagpagina van de docker op [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
+| Facturering en meting | Ondersteuning voor het gratis of BYOL facturerings model.<br><br> |  
+| Installatie kopie die is gebouwd op basis van een Dockerfile | Container installatie kopieën moeten zijn gebaseerd op de specificatie van de docker-installatie kopie en zijn gebouwd op basis van een Dockerfile.<br> <br>Voor meer informatie over het bouwen van docker-installatie kopieën raadpleegt u de sectie ' gebruik ' van [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/#usage).<br><br> |  
+| Hosting in een Azure Container Registry opslagplaats | Container installatie kopieën moeten worden gehost in een Azure Container Registry opslag plaats.<br> <br>Voor meer informatie over het werken met Azure Container Registry raadpleegt [u Quick Start: een persoonlijk container register maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).<br><br> |  
+| Afbeeldingen taggen | Container installatie kopieën moeten ten minste één tag bevatten (maximum aantal Tags: 16).<br><br>Zie de pagina op de documentatie site van `docker tag` [docker](https://docs.docker.com/engine/reference/commandline/tag) voor meer informatie over het coderen van een afbeelding.<br><br> |  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je dat nog niet gedaan hebt, 
+Als u dit nog niet hebt gedaan, leert u hoe u [uw Cloud activiteiten kunt verg Roten met Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
+Registreren voor en werken in het partner centrum:
 
-Als u zich wilt registreren in partnercentrum, begint u met het maken van een nieuwe aanbieding of werkt u aan een bestaand aanbieding:
-
-- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
-- Zie [een Azure-containeraanbieding maken](./partner-center-portal/create-azure-container-offer.md) voor meer informatie.
+- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
+- Zie [een Azure-container aanbieding maken](./partner-center-portal/create-azure-container-offer.md) voor meer informatie.

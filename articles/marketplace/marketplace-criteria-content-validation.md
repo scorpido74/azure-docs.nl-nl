@@ -1,98 +1,111 @@
 ---
-title: Marktplaatscriteria contentvalidatie | Azure Marketplace
-description: In dit artikel wordt beschreven hoe u een uitgever op de marktplaats worden.
+title: Criteria voor het publiceren van Marketplace en services | Azure Marketplace
+description: In dit artikel wordt beschreven hoe u een Publisher kunt worden op Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c98fd9b9146a0c6784d482ed61b32df1ef23d03
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ca40e8e00cb72d6ecc3246ad7aef3b3bac4fbedd
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082387"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160474"
 ---
-# <a name="azure-marketplace-listing-guidelines"></a>Richtlijnen voor Azure Marketplace-vermeldingen
+# <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
-Dit document bevat vereistenrichtlijnen en een checklist voor revisoren voor nieuwe aanbiedingen en services die worden vermeld in Azure Marketplace.
+Dit document bevat vereisten en richt lijnen voor nieuwe aanbiedingen en services die worden vermeld op Azure Marketplace.
 
-Alle aanbiedingen moeten voldoen aan alle onderstaande [aanbiedingsvereisten.](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) Aanvullende vereisten en checklists zijn beschikbaar voor specifieke lijsttypen, waaronder: aanbiedingen met bijgevoegde [proefversies,](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements) [SaaS-apps,](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements) [containers](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)en [adviesaanbiedingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Alle aanbiedingen moeten voldoen aan de vereisten die worden vermeld in de sectie ' vereisten voor alle aanbiedingen ' vermelden '.
 
+Aanvullende vereisten en controle lijsten worden opgegeven voor specifieke vermeldings typen, waaronder: 
+* [Vereisten voor de proef versie](#trial-offer-requirements)
+* [SaaS-app-vereisten](#saas-app-requirements)
+* [Vereisten voor container aanbod](#container-offer-requirements)
+* [Vereisten voor advies aanbod](#consulting-offer-requirements)
 
-## <a name="all-listing-requirements"></a>Alle aanbiedingsvereisten
+## <a name="listing-requirements-for-all-offers"></a>Aanbiedings vereisten voor alle aanbiedingen
 
-|  | Aanbiedingselement | Basisvereisten | Optimale eisen |
+|  | Element van vermelding | Basis vereiste | Optimale vereisten |
 |:--- |:--- |:--- |:--- |
-| 1 | Hoofdbestemming | Een leadbestemming laten configureren| OCP Catalog heeft de CRM-gegevens voor hoofdbestemmingen die ook worden vermeld op het tabblad partneroplossing | 
-| 2 | Aanbiedingstitel | Beschrijvend van oplossingsaanbieding. Matcht online promotie van oplossing op de website van de partner | Bevat trefwoorden |
-| 3 | Logo | Logo wordt correct weergegeven | Het logo wordt correct weergegeven en bevat [hero image that is the large-format image in the Azure portal |
-| 4 |  Aanbiedingsbeschrijving | <br>* 2-3 paragrafen <br>* Oplossingsaanbod is in één oogopslag te begrijpen <br>* Aanbieding beschrijving is vrij van spelling en grammatica fouten <br>* Aanbieding beschrijving is uitgebreid en vangt: doelgroep, type gebruiker, waarom het waardevol is (waarde prop) <br>* Aanbieding beschrijving is in paragraaf narratieve vorm met korte zinnen die gemakkelijk te begrijpen | <br>* Doel industrie wordt geschetst (indien relevant) <br>* Goede stijl opmaak met elke paragraaf header met een een zin of zin een samenvatting van de inhoud die volgt en inclusief bullet points (indien van toepassing) om de belangrijkste voordelen te benadrukken. Het doel hier is voor de lezer om het aanbod te begrijpen in een oogopslag in een gemakkelijk te bekijken formaat en niet te hebben om paragrafen te lezen. <br>* Er is ruimte tussen elke paragraaf en leest als een auto brochure. Betekenis niet technische kenmerken of code lingo, maar beschrijvend van het aanbod in eenvoudige termen en is uitgebreid. | 
-| 5 | Categorieën & Industries | <br>* Categorieën matchen oplossingsmogelijkheden <br>* Niet uitbreiden tot categorieën die oplossing niet past <br>* Optimale industrie, of alle geselecteerde industrieën (zo niet optimale industrieën) | <br>* Max. 3 categorieën <br>* Max. 3 industrieën |
-| 6 | Installatiekopieën | <br>* Geen afbeelding vereist, maar indien aanwezig moet worden weergegeven en een hoge resolutie afbeelding. <br>* Image vereisten worden vermeld in Partner Center en ook hier <br>* Tekst opgenomen in de screenshot is leesbaar met duidelijke afbeelding | Het aanbod van oplossingen is in één oogopslag te begrijpen |
-| 7 | Video's | <br>* Geen video's nodig, maar indien aanwezig moet afspelen zonder fouten. <br>* Indien verstrekt, mag niet verwijzen naar concurrerende bedrijven, tenzij het aantonen van een migratie-oplossing |<br>* Idealiter 3 minuten of meer <br>* Oplossing biedt gemakkelijk te begrijpen door middel van video-inhoud <br>* Demo van oplossingsmogelijkheden |
-| 8 | Lijststatus (oproep tot actie) | <br>Het moet een van de volgende typen zijn: <ul>o Neem contact met mij op</ul><ul>o Trial /Get Trial Now/Start Trial/Test Drive</ul><ul>o Nu kopen/Nu kopen</ul> | De klant kan gemakkelijk begrijpen welke volgende stappen beschikbaar zijn: <ul>1. Probeer het proces</ul> <ul>2. Nu kopen</ul><ul>3. Neem contact op via e-mail of telefoonnummer om poc, beoordeling of briefing te regelen.</ul> | 
-| 9 | Oplossingsprijzen | Moet oplossing prijzen tabblad / details en in de lokale valuta van de partner oplossing aanbod | Meerdere factureringsopties beschikbaar met tier-pricing voor de klant om opties te hebben |    
-| 10 | Meer informatie | Links aan de onderkant (onder de beschrijving, niet de marktplaats links aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar beschikbaar en correct weergegeven |    Links naar specifieke items (bijvoorbeeld spec-pagina's op de partnersite) en niet alleen de startpaginasite van partners | 
-| 11 | Oplossingsondersteuning & Help | Koppeling naar ten minste één van de volgende opties: <br>o Telefoonnummers <br>o Ondersteuning voor e-mail <br>o Chatagenten <br>o Communityforums |<br>* Alle ondersteuningsmethoden vermeld: telefonische & e-mailondersteuning. <br>* Betaalde ondersteuning gratis aangeboden tijdens proef- of testritperiode | 
-| 12 | Juridisch | Beleid of voorwaarden beschikbaar via een openbare URL |  | 
+| 1 | Doel van de lead | Er is een doel voor de lead geconfigureerd.| De ene commerciële partner (OCP)-catalogus heeft de doel-CRM-gegevens van de lead die ook worden vermeld op het tabblad partner oplossing. | 
+| 2 | Titel van aanbieding | Een korte beschrijving van de oplossings aanbieding. Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
+| 3 | Logo | Het logo wordt correct weer gegeven. | Het logo wordt correct weer gegeven en bevat een ' held afbeelding '. Dit is de grote afbeelding in de Azure Portal. |
+| 4 |  Beschrijving van aanbieding | <ul><li> Bevat 2-3 alinea's.</li><li>De aanbieding van oplossingen kan in één oogopslag worden begrepen.</li><li>Is geen spel-en grammatica fouten.</li><li>Is uitgebreid en legt doel publiek, type gebruiker en waarom het waardevol is (toegevoegde waarde).</li><li>Bevindt zich in een oplopende alinea met korte zinnen die eenvoudig te begrijpen zijn.</li></ul> | <ul><li> De doel branche wordt beschreven (indien van toepassing).</li><li>Een goede stijl opmaak, waarbij elke kop van een alinea een enkele zin of woord groep bevat waarmee de inhoud wordt samenvatten die volgt, en waar nodig, indien van toepassing, voor het benadrukken van belang rijke voor delen. Het doel is voor de lezer om inzicht te krijgen in de aanbieding in één oogopslag in een gemakkelijk te bekijken indeling en hoeft geen lange alinea's te lezen.</li><li>Er is ruimte tussen elke alinea. Het wordt als een auto brochure gelezen. Dat wil zeggen dat het uitgebreid is en beschrijft de aanbieding gewoon, zonder technisch jargon. | 
+| 5 | Categorieën en industrieën | <ul><li>Categorieën komen overeen met de mogelijkheden van de oplossings aanbieding.</li><li>Ga niet verder met categorieën die niet geschikt zijn voor de oplossing.</li><li>Optimale industrie of alle geselecteerde branches (als dit niet de beste branches zijn). | <ul><li>Met maximaal 3 categorieën.</li><li>Met maximaal 3 branches. |
+| 6 | Installatiekopieën | <ul><li>Er is geen afbeelding vereist, maar indien opgegeven, moet deze worden weer gegeven als een afbeelding met een hoge resolutie.</li><li>De vereisten voor de installatie kopie worden weer gegeven in de Cloud Partner-portal (CPP) en hier.</li><li>De tekst die in de scherm opname is opgenomen, is leesbaar en de afbeelding is duidelijk. | De oplossings aanbieding kan in één oogopslag worden begrepen. |
+| 7 | Video's | <ul><li>Er is geen video vereist, maar indien opgegeven, moet deze zonder fouten worden afgespeeld.</li><li>Indien dit niet het geval is, kan deze niet verwijzen naar leveranciers van de concurrent, *tenzij* er een migratie oplossing wordt gedemonstreerd. |<ul><li>In het ideale geval is de lengte 3 min. of meer.</li><li>De aanbieding van de oplossing is eenvoudig te begrijpen via video-inhoud.</li><li>Biedt een demo van oplossings mogelijkheden. |
+| 8 | Status weer geven (aanroepen naar actie) | <ul><li>Moet worden aangeduid als een van de volgende typen: <ul><li>*Contact opnemen*</li><li>*Proef versie*/*test station* *nu*/*starten*/</li><li>*Buy Now*/*Nu* kopen</li></ul></ul> | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om te bepalen of het concept (haalbaarheids test), de evaluatie of de informatie moet worden genoteerd.</li></ol> | 
+| 9 | Prijzen van oplossingen | Moet het tabblad met prijs stellingen voor de oplossing of details hebben en de prijzen moeten zich in de lokale valuta van de aanbieding van de partner oplossing bezoeken. | Er moeten meerdere facturerings opties beschikbaar zijn met prijs categorieën om klant opties te bieden. |    
+| 10 | Meer informatie | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
+| 11 | Ondersteuning en Help voor oplossingen | Een koppeling maken naar ten minste één van de volgende: <ul><li>Telefoon nummers</li><li>E-mail ondersteuning</li><li>Chat-agents</li><li>Communautaire forums |<ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. | 
+| 12 | Juridisch | Beleids regels of voor waarden zijn beschikbaar via een open bare URL. |  |
 
----
-## <a name="trial-offer-requirements"></a>Vereisten voor proefaanbiedingen
+--- 
 
-|  | Aanbiedingselement | Basisvereisten | Optimale eisen | 
+## <a name="trial-offer-requirements"></a>Vereisten voor de proef versie
+
+|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-|  | Lijststatus | Link moet leiden tot door klanten geleide proefervaring | Andere CTA's (bijvoorbeeld nu kopen) ook beschikbaar | 
-
----
-## <a name="saas-app-requirements"></a>Vereisten voor SaaS-apps
-
-|  | Aanbiedingselement | Basisvereisten | Optimale eisen | 
-|:--- |:--- |:--- |:--- |
-| 1 | Aanbiedingstitel |<br>* Mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of underscores. Kan niet worden gewijzigd zodra gepubliceerd. <br>* Beschrijvend van oplossingsaanbod.<br>* Wedstrijden online promotie van de oplossing in de website van de partner. | Bevat trefwoorden |
-| 2 | Technische informatie: configuratie |<br>* Kies voor de SaaS-app of u uw app alleen wilt aanbieden of dat u klanten in staat wilt stellen uw app via Azure te kopen.<br>* Selecteer de juiste tekst die u wilt op de acquisitieknop van uw aanbieding: Gratis, Gratis proefversie of Neem contact met mij op<br>* Selecteer alleen (pop-upvak)- een van deze toepasselijke producten als uw app de technologie gebruikt: Cortana Intelligence, Power BI Solution Templates, Power Apps |  |
-| 3 | Test Drive | Selecteren: Ja of Nee | De klant kan gemakkelijk begrijpen welke volgende stappen beschikbaar zijn: <br>1. Probeer het proces <br>2. Nu kopen <br>3. Neem contact op via e-mail of telefoonnummer om poc, beoordeling of briefing te regelen. |
-| 4 | Storefront details: Overzicht van aanbiedingen | Dit verschijnt op de zoekpagina van uw app met een maximum van 100 tekens | |
-| 5 | Storefront details: Industries | Industrieën (Max 2): Selecteer de industrieën waarop uw app het best is uitgelijnd en op toepassing is. | |
-| 6 | Aanbiedingsbeschrijving | <br>* Eenvoudige HTML is toegestaan, waaronder p, em, ul, li, ol en header tags. Maximaal 3000 tekens. <br>* 2-3 paragrafen <br>* Oplossingsaanbod is in één oogopslag te begrijpen <br>* Beschrijving is uitgebreid en vangt:*doelgroep, type gebruiker, waarom <br> het waardevol is (value prop)* Aanbieding beschrijving is in paragraaf narratieve vorm met korte zinnen die gemakkelijk te begrijpen. | <br>* Doel industrie wordt geschetst (indien relevant) <br>* Goede stijl opmaak met elke paragraaf header met een een zin of zin een samenvatting van de inhoud die volgt en inclusief bullet points (indien van toepassing) om de belangrijkste voordelen te benadrukken. Het doel hier is voor de lezer om het aanbod te begrijpen in een oogopslag in een gemakkelijk te bekijken formaat en niet te hebben om paragrafen te lezen. <br>* Er is ruimte tussen elke paragraaf en leest als een auto brochure. Betekenis niet technische kenmerken of code lingo, maar beschrijvend van het aanbod in eenvoudige termen en is uitgebreid. | 
-| 7 | Marketingartefacten | Logo's correct weergegeven | <br>* Logo bevat 'hero image' in de Azure-portal. Moet 815 x 290 pixels zijn. <br>* Logo's: Klein (48x48) & Large (216x216) zijn vereisten <br> * Screenshot (Max 5): Vereist een .png afbeelding (1280 x 720 pixels). |
-| 8 | Categorieën & Industries | <br>* Categorieën matchen oplossingsmogelijkheden <br>* Ten minste 1 item(s) moet worden gekozen uit pop-up box <br>* Niet uitbreiden tot categorieën die oplossing niet past <br>* Optimale industrie, of alle geselecteerde industrieën (zo niet optimale industrieën <br>* Niet uitbreiden tot categorieën die oplossing niet past <br>* Optimale industrie, of alle geselecteerde industrieën (zo niet optimale industrieën) | Met maximaal 3 categorieën geselecteerd indien van toepassing. |
-| 9 | Leadmanagement | Selecteer het systeem waar uw leads worden opgeslagen. Bekijk [klantleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om uw CRM-systeem met elkaar te verbinden. |  |
-| 10 | Contactpersonen: Help voor oplossingsondersteuning & | <br>* Naam van technische contactpersoon: voer de naam van de technische contactpersoon voor uw app in. Deze contactpersoon ontvangt technische communicatie van Microsoft.<br>* Technische contact-e-mail: Voer het e-mailadres van de technische contactpersoon voor uw app in.<br>* Engineering contacten Telefoon: Voer het telefoonnummer van de engineering contact. ISO-telefoonnummernotaties worden ondersteund; voor meer https://en.wikipedia.org/wiki/E.123informatie, zie .<br>* Naam van ondersteuningscontactpersoon: voer de naam in van de ondersteuningscontactpersoon voor uw app. Deze contactpersoon ontvangt ondersteuningsgerelateerde communicatie van Microsoft.<br>* E-mail met ondersteuningscontactpersoon: voer het e-mailadres van de ondersteuningscontactpersoon voor uw app in. <br>* Ondersteuning contact telefoon: Voer het telefoonnummer van de ondersteuning contact. ISO-telefoonnummernotaties worden ondersteund; voor meer https://en.wikipedia.org/wiki/E.123informatie, zie . <br>* URL van ondersteuning: voer de URL in op uw ondersteuningspagina. | <br>* Alle ondersteuningsmethoden vermeld: telefonische & e-mailondersteuning. <br>* Betaalde ondersteuning gratis aangeboden tijdens proef- of testritperiode |
-| 11 | Juridisch |<br>* URL van het privacybeleid: voer de URL in van het privacybeleid van uw app in het veld URL van het privacybeleid in partnercentrum. <br>* Gebruiksvoorwaarden: voer de gebruiksvoorwaarden van uw app in. Klanten moeten deze voorwaarden accepteren voordat ze uw app kunnen proberen. |    Beleid of voorwaarden beschikbaar via een openbare URL-site |
+|  | Status weer geven (aanroepen naar actie) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanroepen naar actie (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
 
 ---
 
-## <a name="container-offer-requirements"></a>Vereisten voor containeraanbiedingen
+## <a name="saas-app-requirements"></a>SaaS-app-vereisten
 
-|  | Aanbiedingselement | Basisvereisten | Optimale eisen | 
+|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-|1 |Aanbiedingsinstellingen | <br>* Aanbieding-ID: Max 50-teken <br>* Publisher ID: Selecteer uit vervolgkeuzelijst <br>* Naam: Max 50 tekens | Spiegelt de titelstijl die al beschikbaar is in de beschrijving- wil geen lange titels. | 
-| 2 | SKU's | Partner klikt op nieuwe SKU's| Spiegelt de titelstijl die al beschikbaar is in de beschrijving- wil geen lange titels.  |
-| 3 | Marktplaatsartefacten | Logo's correct weergegeven |<br>* Logo bevat 'hero image', de afbeelding op groot formaat in de Azure-portal <br>* Logo's: Klein (48x48) & Large (216x216) zijn vereisten <br>* Hero-afbeeldingsvereisten: 815 x 290 pixels <br>* Screenshot (Max 5): Vereist een .png-afbeelding met een resolutie van 1280 x 720.|
-| 4 | Leadmanagement |<br>* Lead management: Selecteer het systeem waar uw leads worden opgeslagen. <br>* Bekijk [klantenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om uw CRM-systeem met elkaar te verbinden. | |
+| 1 | Titel van aanbieding |<ul><li>Mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. De titel kan niet worden gewijzigd nadat deze is gepubliceerd.</li><li>Hierin wordt een beschrijving van de oplossing beschreven.</li><li>Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
+| 2 | Technische informatie: Configuratie |<ul><li>Voor software as a Service (SaaS)-apps kiest u of u alleen uw app wilt vermelden of dat klanten uw app kunnen kopen via Azure.</li><li>Selecteer de gewenste tekst op de knop aanschaf van uw aanbieding: *gratis*, *gratis proef versie*of *Neem contact met mij*op.</li><li>Selecteer in het pop-upvenster slechts één toepasselijk product als uw app gebruikmaakt van de technologie: Cortana Intelligence, Power BI oplossings sjablonen of Power apps. |  |
+| 3 | Station testen | Selecteer *Ja* of *Nee* | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om de HAALBAARHEIDs-, evaluatie-of-informatie te rangschikken.</li></ol> |
+| 4 | Details van de winkel: overzicht van aanbieding | Wordt op de zoek pagina van de app weer gegeven en heeft een maximum van 100 tekens. | |
+| 5 | Details van de winkel: industrieën | Industries (max. 2): Selecteer de branches die uw app het beste is uitgelijnd en van toepassing is op. | |
+| 6 | Beschrijving van aanbieding | <ul><li>Eenvoudige HTML is toegestaan, zoals \<p>, \<em>, \<ul>, \<Li>, \<OL> en header tags. Met maximaal 3000 tekens.</li><li>Bevat 2-3 alinea's.</li><li>De aanbieding van oplossingen kan in één oogopslag worden begrepen.</li><li>Beschrijving is uitgebreid en legt doel publiek, type gebruiker en waarom het waardevol is (toegevoegde waarde).</li><li>Bevindt zich in de vorm van een alinea, met korte zinnen die eenvoudig te begrijpen zijn. | <ul><li>De doel branche wordt beschreven (indien van toepassing).</li><li>Een goede stijl opmaak, waarbij elke kop van een alinea een enkele zin of woord groep bevat waarmee de inhoud wordt samenvatten die volgt, en waar nodig, indien van toepassing, voor het benadrukken van belang rijke voor delen. Het doel is dat de lezer de aanbieding in één oogopslag in een overzichtelijke indeling kan zien en dat u geen alinea's hoeft te lezen.</li><li>Er is ruimte tussen elke alinea. Het wordt als een auto brochure gelezen. Dat wil zeggen dat het uitgebreid is en beschrijft de aanbieding gewoon, zonder technisch jargon. | 
+| 7 | Marketing artefacten | Logo's worden correct weer gegeven. | <ul><li>Logo bevat een ' held afbeelding '. Dit is de grote afbeelding in het Azure Portal.</li><li>Logo's: klein (48 &#215; 48 pixels) en groot (216 &#215; 216 pixels) zijn vereist.</li><li>[Held afbeeldings vereisten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).</li><li>Scherm afbeelding (max. 5): voor CPP is een PNG-afbeelding vereist met een resolutie van 1280 &#215; 720 pixels. |
+| 8 | Categorieën en industrieën | <ul><li>Categorieën komen overeen met de mogelijkheden van oplossingen.</li><li>Selecteer ten minste één item in het pop-upvenster.</li><li>Ga niet verder met categorieën die niet geschikt zijn voor de oplossing.</li><li>Optimale industrie of alle geselecteerde branches (als dit niet de beste branches zijn). | Met maximaal 3 categorieën geselecteerd, indien van toepassing. |
+| 9 | Leadbeheer | Selecteer het systeem waarin uw leads worden opgeslagen. Zie [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om verbinding te maken met uw CRM-systeem. |  |
+| 10 | Contacts: oplossings ondersteuning en Help | <ul><li>Naam technische contact persoon: de naam van de technische contact persoon voor uw app. Deze contact persoon ontvangt technische communicatie van micro soft.</li><li>Technische contact persoon: het e-mail adres van de technische contact persoon voor uw app.</li><li>Technisch contact persoons nummer: het telefoon nummer van de IT-afdeling. De [notaties voor ISO-telefoon nummers](https://en.wikipedia.org/wiki/E.123) worden ondersteund.</li><li>Ondersteunings naam contact persoon: de naam van het ondersteunings contact voor uw app. Deze contact persoon ontvangt berichten over ondersteuning van micro soft.</li><li>Contact opnemen met e-mail: het e-mail adres van de contact persoon voor ondersteuning voor uw app.</li><li>Telefoon nummer voor ondersteuning van contact persoon De [notaties voor ISO-telefoon nummers](https://en.wikipedia.org/wiki/E.123) worden ondersteund.</li><li>Ondersteunings-URL: de URL van uw ondersteunings pagina. | <ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. |
+| 11 | Juridisch |<ul><li>URL van privacybeleid: de URL voor het privacybeleid van uw app in het veld URL van privacybeleid in het CPP.</li><li>Gebruiksvoorwaarden: de voor waarden voor het gebruik van uw app. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen. |    Beleids regels of voor waarden zijn beschikbaar via een open bare URL-site. |
 
 ---
 
-## <a name="consulting-offer-requirements"></a>Advies aanbod eisen
+## <a name="container-offer-requirements"></a>Vereisten voor container aanbod
 
-|  | Aanbiedingselement | Basisvereisten | Optimale eisen |
+|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-| 1 | Titel aanbieden  |  <br>* Moet het servicetype en de duur duidelijk vermelden in de volgende indeling: NAAM: DUURTYPE. (dat wil zeggen, "Offer Engagement: 1-Week Proof-of-Concept")  | <br>* Herhaalt de naam van de uitgever niet <br>* Spiegels van de titel stijl al beschikbaar in de beschrijving- wil geen lange titels. | 
-| 2 | Aanbiedingsbeschrijving  |<br>* Zorg voor een goed gebruik van [Microsoft-productnamen](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) <br>* Aanbiedingen gemarkeerd als prijs: Geschat moet een notitie hebben, hetzij aan de boven- of onderkant van het aanbod om de variabiliteit uit te leggen (reizen naar de klant, aantal servers worden gemigreerd, enz.) <br>* Elk aanbiedingstype heeft als volgt de volgende beschrijvingsvereisten: <ul><br>o Briefings moeten ten minste 4 tot 5 kogels met informatie over onderwerpen die in briefing </ul> <ul><br>o Alle workshops hebben agenda nodig </ul><ul><br>o Alle agenda's moeten per dag of per week worden uitgesplitst, afhankelijk van de duur van de workshop </ul><ul><br>o Assessment, POC, non-training workshops, Implementation offers need deliverables </ul><ul><br>o Training workshops hebben geen deliverables nodig, maar ze hebben een meer gedetailleerde agenda nodig met onderwerpen die aan bod komen. | <br>* Elk aanbod heeft agenda en deliverables <br>* Aanbieding bevat een paragraaf met context over het bedrijf dat de dienst in de bovenste sectie <br>* Aanbieding bevat een paragraaf over de waarde van de dienst zelf als een bovenste sectie |
-| 3 | Opmaak opmaak  | Alle aanbiedingen moeten markdown-opmaak gebruiken, zodat de aanbieding correct wordt weergegeven wanneer deze wordt geconverteerd naar HTML  |  |
-| 4 | Categorieën & Industries | Categorieën niet relevant |  | 
-| 5 | Lijststatus (CTA) | Automatisch vermeld als Contact opnemen |  | 
-| 6 | Oplossingsondersteuning & Help  | Ondersteuning & Help niet vereist  | | 
-| 7 | Privacybeleid & gebruiksvoorwaarden beschikbaar  |  Beleid of voorwaarden niet vereist  | | 
-| 8 | Servicetypen | Servicetype komt overeen met titel | |
-| 9 | Competenties |<br>* Moet ten minste een van de volgende:<br>* Applicatieontwikkeling <br>* Applicatie-integratie <br>* Application Lifecycle Management <br>* Cloud platform <br>* Data Analytics <br>* Datacenter <br>* Dataplatform <br>* DevOps |
-| 10 | Producten | Moet Azure zijn | |
-| 11 | Land/regio | Zorgen dat land en regio overeenkomen met de gekozen valuta | |
-| 12 | Meer informatie  | <br>* Links aan de onderkant (onder de beschrijving, niet de marktplaats links aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar beschikbaar en correct weergegeven. <br>* Links moeten een "vriendelijke naam" hebben en mogen niet worden weergegeven als de bestandsnaam van downloads | |
+|1 |Aanbiedingsinstellingen | <ul><li>Aanbiedings-ID: max. 50 tekens.</li><li>Uitgevers-ID: Selecteer deze in de vervolg keuzelijst.</li><li>Naam: max. 50 tekens. | Komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels. | 
+| 2 | SKU's | De partner selecteert nieuwe Sku's.| De titel komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels.  |
+| 3 | Marketplace-artefacten | Logo's worden correct weer gegeven. |<ul><li>Logo bevat een ' held afbeelding '. Dit is de grote afbeelding in het Azure Portal.</li><li>Logo's: klein (48 &#215; 48 pixels) en groot (216 &#215; 216 pixels) zijn vereist.</li><li>[Held afbeeldings vereisten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).</li><li>Scherm afbeelding (max. 5): voor CPP is een PNG-afbeelding vereist met een resolutie van 1280 &#215; 720 pixels.|
+| 4 | Leadbeheer |<ul><li>Beheer van leads: Selecteer het systeem waarin uw leads worden opgeslagen.</li><li>Zie [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om verbinding te maken met uw CRM-systeem. | |
 
+---
+
+## <a name="consulting-offer-requirements"></a>Vereisten voor advies aanbod
+
+|  | Element van vermelding | Basis vereiste | Optimale vereisten |
+|:--- |:--- |:--- |:--- |
+| 1 | Titel van aanbieding  |  Moet het Service type en de duur duidelijk vermelden in de indelings *naam: duur type* (bijvoorbeeld ' aanbiedings afspraak: 1 week proef van concept ').  | <ul><li>De naam van de uitgever wordt niet herhaald.</li><li>De titel komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels. | 
+| 2 | Beschrijving van aanbieding  |<ul><li>Zorg voor een correct gebruik van [product namen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Aanbiedingen die zijn gemarkeerd als *prijs: schatting* moeten een opmerking aan de bovenkant of de onderkant hebben om de variabiliteit te verklaren (reis naar client, aantal servers die worden gemigreerd, enzovoort).</li><li>Elk aanbiedings type heeft de volgende beschrijvings vereisten: <ul><li>Er zijn ten minste vier of vijf opsommings tekens nodig, met informatie over de onderwerpen die moeten worden behandeld.</li><li>Alle workshops hebben een agenda nodig.</li><li>Alle agenda's moeten per dag of per week worden opgesplitst, afhankelijk van de duur van de workshop.</li><li>Voor evaluatie, haalbaarheids test, niet-trainings workshops en implementatie aanbiedingen is een product vereist.</li><li>Trainings workshops hebben geen producten nodig, maar ze hebben een gedetailleerdere agenda nodig met onderwerpen die worden behandeld.</li></ul></ul> | <ul><li>Elk aanbod heeft een agenda en een klant.</li><li>De aanbieding bevat een alinea met context over het bedrijf dat de service in de bovenste sectie levert.</li><li>De aanbieding bevat een alinea over de waarde van de service zelf als een bovenste sectie. |
+| 3 | Indeling voor prijs verlaging  | Alle aanbiedingen moeten gebruikmaken van de indeling voor prijs verlaging zodat de aanbieding correct wordt weer gegeven wanneer deze naar HTML wordt geconverteerd.  |  |
+| 4 | Categorieën en industrieën | Categorieën zijn niet relevant. |  | 
+| 5 | Status weer geven (aanroepen naar actie) | Automatisch vermeld als *contact persoon*. |  | 
+| 6 | Ondersteuning en Help voor oplossingen  | Ondersteuning en Help zijn niet vereist.  | | 
+| 7 | Het privacybeleid en de gebruiks voorwaarden zijn beschikbaar  |  Er zijn geen beleids regels of voor waarden vereist.  | | 
+| 8 | Service typen | Zorg ervoor dat het Service type overeenkomt met de titel. | |
+| 9 | Competenties | Moet competentie hebben in ten minste één van de volgende:<ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassings levenscyclus</li><li>Cloud platform<li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps |
+| 10 | Producten | Azure-producten moeten zijn. | |
+| 11 | Land/regio | Zorg ervoor dat het land/de regio overeenkomt met de geselecteerde valuta. | |
+| 12 | Meer informatie  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over verschillende aanbiedingstypen in de markt. <br>[SaaS-apps](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Adviesservices](https://docs.microsoft.com/azure/marketplace/consulting-services)
-*    [Bepaal het aanbiedingstype voor uw oplossing.](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* Meer informatie over de verschillende soorten aanbiedingen in azure Marketplace:
+  * [SaaS-apps](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
+  * [Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers)
+  * [Adviesservices](https://docs.microsoft.com/azure/marketplace/consulting-services)
+
+* [Uw publicatieoptie bepalen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+

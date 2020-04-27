@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Java Async SDK diagnosticeren en oplossen
-description: Gebruik functies zoals logboekregistratie aan de clientzijde en andere hulpprogramma's van derden om Azure Cosmos DB-problemen te identificeren, diagnosticeren en oplossen.
+title: Problemen vaststellen en oplossen Azure Cosmos DB Java async SDK
+description: Gebruik functies als logboek registratie aan client zijde en andere hulpprogram ma's van derden voor het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB.
 author: moderakh
 ms.service: cosmos-db
 ms.date: 04/30/2019
@@ -10,76 +10,76 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65519983"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Problemen oplossen bij het gebruik van de Java Async SDK met Azure Cosmos DB SQL API-accounts
-In dit artikel worden veelvoorkomende problemen, tijdelijke oplossingen, diagnostische stappen en hulpprogramma's behandeld wanneer u de [Java Async SDK](sql-api-sdk-async-java.md) met Azure Cosmos DB SQL API-accounts gebruikt.
+Dit artikel heeft betrekking op veelvoorkomende problemen, tijdelijke oplossingen, diagnostische stappen en hulpprogram ma's voor het gebruik van de [Java ASYNC SDK](sql-api-sdk-async-java.md) met Azure Cosmos DB SQL API-accounts.
 De Java Async SDK biedt logische representatie aan de clientzijde om toegang te krijgen tot de SQL-API van Azure Cosmos DB. In dit artikel worden tools en benaderingen beschreven om u te helpen bij eventuele problemen.
 
 Begin met deze lijst:
 
-* Neem een kijkje op de [algemene problemen en oplossingen] sectie in dit artikel.
-* Kijk naar de SDK, die beschikbaar is [open source op GitHub](https://github.com/Azure/azure-cosmosdb-java). Het heeft een [afdeling problemen](https://github.com/Azure/azure-cosmosdb-java/issues) die actief wordt gecontroleerd. Controleer of een soortgelijk probleem met een tijdelijke oplossing al is ingediend.
-* Bekijk de [prestatietips](performance-tips-async-java.md)en volg de voorgestelde praktijken.
-* Lees de rest van dit artikel, als je geen oplossing hebt gevonden. Dien vervolgens een [GitHub-probleem in.](https://github.com/Azure/azure-cosmosdb-java/issues)
+* Bekijk de sectie [veelvoorkomende problemen en tijdelijke oplossingen] in dit artikel.
+* Bekijk de SDK, de beschik bare [open source op github](https://github.com/Azure/azure-cosmosdb-java). Er is een [sectie met problemen](https://github.com/Azure/azure-cosmosdb-java/issues) die actief worden bewaakt. Controleer of er een soortgelijk probleem met een tijdelijke oplossing al is ingediend.
+* Bekijk de [Tips voor prestaties](performance-tips-async-java.md)en volg de aanbevolen procedures.
+* Lees de rest van dit artikel als u geen oplossing hebt gevonden. Bestand vervolgens een [github-probleem](https://github.com/Azure/azure-cosmosdb-java/issues).
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Veelvoorkomende problemen en tijdelijke oplossingen
 
-### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Netwerkproblemen, Netty-uitleestime-out, lage doorvoer, hoge latentie
+### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Netwerk problemen, time-out bij lezen van Netty, lage door Voer, hoge latentie
 
 #### <a name="general-suggestions"></a>Algemene suggesties
-* Controleer of de app wordt uitgevoerd in dezelfde regio als uw Azure Cosmos DB-account. 
-* Controleer het CPU-gebruik op de host waar de app wordt uitgevoerd. Als het CPU-gebruik 90 procent of meer is, voert u uw app uit op een host met een hogere configuratie. Of u de belasting op meer machines verdelen.
+* Zorg ervoor dat de app wordt uitgevoerd in dezelfde regio als uw Azure Cosmos DB-account. 
+* Controleer het CPU-gebruik op de host waarop de app wordt uitgevoerd. Als het CPU-gebruik 90 procent of meer is, voert u uw app uit op een host met een hogere configuratie. U kunt ook de belasting op meer machines distribueren.
 
-#### <a name="connection-throttling"></a>Verbindingsbeperking
-Verbindingsbeperking kan plaatsvinden vanwege een [verbindingslimiet op een hostmachine] of uitputting van [de Azure SNAT-poort .]
+#### <a name="connection-throttling"></a>Verbindings beperking
+De verbindings beperking kan worden veroorzaakt door een [verbindings limiet op een hostcomputer of een overschrijding] van een [Azure SNAT-poort].
 
-##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Verbindingslimiet voor een hostmachine
-Sommige Linux-systemen, zoals Red Hat, hebben een bovengrens voor het totale aantal geopende bestanden. Sockets in Linux worden geïmplementeerd als bestanden, dus dit aantal beperkt ook het totale aantal verbindingen.
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Verbindings limiet op een hostcomputer
+Sommige Linux-systemen, zoals Red Hat, hebben een bovenlimiet van het totale aantal geopende bestanden. Sockets in Linux worden geïmplementeerd als bestanden, zodat dit aantal ook het totale aantal verbindingen beperkt.
 Voer de volgende opdracht uit.
 
 ```bash
 ulimit -a
 ```
-Het aantal maximaal toegestane geopende bestanden, die worden geïdentificeerd als 'nofile', moet ten minste het dubbele zijn van de grootte van uw verbindingspool. Zie [Prestatietips voor](performance-tips-async-java.md)meer informatie.
+Het maximum aantal geopende bestanden dat wordt aangeduid als ' geen bestand ' moet mini maal gelijk zijn aan de grootte van de verbindings groep. Zie voor meer informatie [prestatie tips](performance-tips-async-java.md).
 
-##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) poort uitputting
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Uitputting van de poort van Azure SNAT (PAT)
 
-Als uw app is geïmplementeerd op Azure Virtual Machines zonder openbaar IP-adres, worden standaard [Azure SNAT-poorten](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) verbindingen gemaakt met een eindpunt buiten uw vm. Het aantal verbindingen dat van de VM naar het Azure Cosmos DB-eindpunt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Als uw app is geïmplementeerd op Azure Virtual Machines zonder een openbaar IP-adres, worden de standaard [Azure SNAT-poorten](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
 
- Azure SNAT-poorten worden alleen gebruikt wanneer uw VM een privé-IP-adres heeft en een proces van de VM probeert verbinding te maken met een openbaar IP-adres. Er zijn twee tijdelijke oplossingen om Azure SNAT-beperking te voorkomen:
+ Azure SNAT-poorten worden alleen gebruikt als uw virtuele machine een privé-IP-adres heeft en een proces van de virtuele machine probeert verbinding te maken met een openbaar IP-adres. Er zijn twee oplossingen om Azure SNAT-beperking te voor komen:
 
-* Voeg uw Azure Cosmos DB-serviceeindpunt toe aan het subnet van uw virtuele Azure-machines-netwerk. Zie [Eindpunten voor Azure Virtual Network-service voor](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)meer informatie. 
+* Voeg uw Azure Cosmos DB Service-eind punt toe aan het subnet van uw virtuele Azure Virtual Machines-netwerk. Zie [Azure Virtual Network Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)voor meer informatie. 
 
-    Wanneer het serviceeindpunt is ingeschakeld, worden de aanvragen niet langer verzonden van een openbaar IP naar Azure Cosmos DB. In plaats daarvan worden het virtuele netwerk en subnetidentiteit verzonden. Deze wijziging kan leiden tot firewall drops als alleen openbare IP's zijn toegestaan. Als u een firewall gebruikt, voegt u bij het inschakelen van het serviceeindpunt een subnet toe aan de firewall met behulp van [Virtuele Netwerk ACL's](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
-* Wijs een openbaar IP toe aan uw Azure VM.
+    Wanneer het service-eind punt is ingeschakeld, worden de aanvragen niet langer verzonden vanuit een openbaar IP-adres naar Azure Cosmos DB. In plaats daarvan worden de identiteit van het virtuele netwerk en het subnet verzonden. Deze wijziging kan ertoe leiden dat de firewall wordt neergezet als alleen open bare IP-adressen zijn toegestaan. Als u een firewall gebruikt en u het service-eind punt inschakelt, voegt u een subnet toe aan de firewall door gebruik te maken van [Virtual Network acl's](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
+* Wijs een openbaar IP-adres toe aan uw Azure-VM.
 
-##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Kan de Service niet bereiken - firewall
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Kan de service niet bereiken-firewall
 ``ConnectTimeoutException``geeft aan dat de SDK de service niet kan bereiken.
-Mogelijk krijgt u een storing die vergelijkbaar is met de volgende als bij het gebruik van de directe modus:
+Wanneer u de directe modus gebruikt, treedt er een fout op die vergelijkbaar is met de volgende:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-Als u een firewall hebt die op uw app-machine wordt uitgevoerd, opent u het poortbereik van 10.000 tot 20.000 die door de directe modus worden gebruikt.
-Volg ook de [verbindingslimiet op een hostmachine.](#connection-limit-on-host)
+Als u een firewall hebt die wordt uitgevoerd op uw app-computer, opent u poort bereik 10.000 tot 20.000 die worden gebruikt door de directe modus.
+Volg ook de [verbindings limiet op een hostmachine](#connection-limit-on-host).
 
 #### <a name="http-proxy"></a>HTTP-proxy
 
-Als u een HTTP-proxy gebruikt, controleert u of deze `ConnectionPolicy`het aantal verbindingen kan ondersteunen dat is geconfigureerd in de SDK.
-Anders heb je te maken met verbindingsproblemen.
+Als u een HTTP-proxy gebruikt, moet u ervoor zorgen dat het het aantal verbindingen dat in de `ConnectionPolicy`SDK is geconfigureerd kan ondersteunen.
+Anders worden er verbindings problemen beschreven.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ongeldig coderingspatroon: Netty IO-thread blokkeren
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ongeldig coderings patroon: Netty IO-thread blok keren
 
-De SDK gebruikt de [Netty](https://netty.io/) IO-bibliotheek om te communiceren met Azure Cosmos DB. De SDK heeft Async API's en maakt gebruik van niet-blokkerende IO API's van Netty. Het IO-werk van de SDK wordt uitgevoerd op IO Netty-threads. Het aantal IO Netty-threads is geconfigureerd als het aantal CPU-cores van de app-machine. 
+De SDK gebruikt de [Netty](https://netty.io/) io-bibliotheek om te communiceren met Azure Cosmos db. De SDK heeft async-Api's en maakt gebruik van niet-blokkerende IO-Api's van Netty. Het IO-werk van de SDK wordt uitgevoerd op IO Netty-threads. Het aantal i/o-Netty-threads is geconfigureerd om hetzelfde te zijn als het aantal CPU-kernen van de app-computer. 
 
-De Netty IO threads zijn bedoeld om alleen te worden gebruikt voor niet-blokkerende Netty IO werk. De SDK retourneert het API-aanroepresultaat op een van de Netty IO-threads naar de code van de app. Als de app een langdurige bewerking uitvoert nadat deze resultaten op de Netty-thread heeft ontvangen, heeft de SDK mogelijk niet genoeg IO-threads om zijn interne IO-werk uit te voeren. Een dergelijke app-codering kan leiden tot `io.netty.handler.timeout.ReadTimeoutException` een lage doorvoer, hoge latentie en fouten. De tijdelijke oplossing is om de draad te schakelen wanneer u weet dat de bewerking tijd kost.
+De Netty-IO-threads zijn alleen bedoeld voor gebruik voor niet-blokkerende Netty IO-werk. De SDK retourneert het aanroep resultaat van de API op een van de Netty IO-threads naar de code van de app. Als de app een langdurige bewerking uitvoert nadat deze resultaten heeft ontvangen op de Netty-thread, heeft de SDK mogelijk onvoldoende IO-threads om het interne IO-werk te kunnen uitvoeren. Deze app-code ring kan leiden tot een lage door Voer, `io.netty.handler.timeout.ReadTimeoutException` hoge latentie en fouten. De tijdelijke oplossing is om de thread over te scha kelen wanneer u weet dat de bewerking tijd kost.
 
-Kijk bijvoorbeeld eens naar het volgende codefragment. U langdurig werk uitvoeren dat meer dan een paar milliseconden duurt op de Netty-thread. Als dat zo is, u uiteindelijk in een toestand waar geen Netty IO-thread aanwezig is om IO-werk te verwerken. Als gevolg hiervan krijgt u een Fout readtimeoutuitzondering.
+Bekijk bijvoorbeeld het volgende code fragment. U kunt langdurige werkzaamheden uitvoeren die meer dan een paar milliseconden in de Netty-thread duren. Als dat het geval is, kunt u uiteindelijk een status krijgen waarin geen Netty IO-thread aanwezig is om IO-werk te verwerken. Als gevolg hiervan krijgt u een ReadTimeoutException-fout.
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +131,13 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   De tijdelijke oplossing is het wijzigen van de thread waarop u werk uitvoert dat tijd kost. Definieer een singleton-exemplaar van de planner voor uw app.
+   De tijdelijke oplossing is om de thread te wijzigen waarop u werk uitvoert die tijd kost. Definieer een singleton-exemplaar van de Scheduler voor uw app.
    ```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   Mogelijk moet u werk doen dat tijd kost, bijvoorbeeld rekenkundig zwaar werk of het blokkeren van IO. Schakel in dit geval de thread over `customScheduler` naar `.observeOn(customScheduler)` een werknemer die door u wordt geleverd met behulp van de API.
+   Mogelijk moet u werk doen die tijd kost, bijvoorbeeld reken kundige, zware werk of het blok keren van IO. In dit geval kunt u de thread overschakelen naar een werk nemer die `customScheduler` is voorzien van `.observeOn(customScheduler)` de API.
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -148,36 +148,36 @@ createObservable
             // ...
         );
 ```
-Door `observeOn(customScheduler)`gebruik te maken, laat u de Netty IO-thread los en schakelt u over naar uw eigen aangepaste thread die door de aangepaste planner wordt geleverd. Deze wijziging lost het probleem op. Je krijgt geen `io.netty.handler.timeout.ReadTimeoutException` mislukking meer.
+Met `observeOn(customScheduler)`kunt u de Netty io-thread vrijgeven en overschakelen naar uw eigen aangepaste thread van de aangepaste planner. Met deze wijziging wordt het probleem opgelost. Er wordt geen `io.netty.handler.timeout.ReadTimeoutException` fout meer weer geven.
 
-### <a name="connection-pool-exhausted-issue"></a>Verbindingspool uitgeput probleem
+### <a name="connection-pool-exhausted-issue"></a>Uitputtend probleem in verbindings groep
 
-`PoolExhaustedException`is een client-side mislukking. Deze fout geeft aan dat de werkbelasting van uw app hoger is dan wat de SDK-verbindingsgroep kan weergeven. Verhoog de grootte van de verbindingsgroep of verdeel de belasting over meerdere apps.
+`PoolExhaustedException`is een fout aan de client zijde. Deze fout geeft aan dat uw app-werk belasting hoger is dan waarmee de SDK-verbindings groep kan dienen. Verhoog de grootte van de verbindings groep of distribueer de belasting op meerdere apps.
 
-### <a name="request-rate-too-large"></a>Aanvraagtarief te groot
-Deze fout is een server-side storing. Dit geeft aan dat u uw ingerichte doorvoer hebt verbruikt. Probeer het later opnieuw. Als u deze fout vaak krijgt, moet u rekening houden met een verhoging van de doorvoer van verzamelingen.
+### <a name="request-rate-too-large"></a>Aanvraag frequentie te groot
+Deze fout wordt veroorzaakt door storingen aan de server zijde. Dit geeft aan dat u uw ingerichte door Voer hebt verbruikt. Probeer het later opnieuw. Als deze fout vaak optreedt, kunt u een toename van de door Voer van de verzameling overwegen.
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Geen verbinding maken met Azure Cosmos DB-emulator
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Kan geen verbinding maken met de Azure Cosmos DB-emulator
 
-Het HTTPS-certificaat azure cosmos DB-emulator is zelf ondertekend. Als de SDK met de emulator wil werken, importeert u het emulatorcertificaat naar een Java TrustStore. Zie [Azure Cosmos DB-emulatorcertificaten exporteren](local-emulator-export-ssl-certificates.md)voor meer informatie .
+Het HTTPS-certificaat van de Azure Cosmos DB emulator is zelfondertekend. Als u de SDK wilt gebruiken met de emulator, importeert u het Emulator-certificaat naar een Java-TrustStore. Zie [Azure Cosmos DB-emulator certificaten exporteren](local-emulator-export-ssl-certificates.md)voor meer informatie.
 
-### <a name="dependency-conflict-issues"></a>Conflictproblemen met afhankelijkheid
+### <a name="dependency-conflict-issues"></a>Problemen met afhankelijkheids conflicten
 
 ```console
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-De bovenstaande uitzondering suggereert dat u afhankelijk bent van een oudere versie van RxJava lib (bijvoorbeeld 1.2.2). Onze SDK is gebaseerd op RxJava 1.3.8 die API's niet beschikbaar in eerdere versie van RxJava heeft. 
+De bovenstaande uitzonde ring wordt voorgesteld door een afhankelijkheid van een oudere versie van RxJava lib (bijvoorbeeld 1.2.2). Onze SDK is afhankelijk van RxJava 1.3.8 met Api's die niet beschikbaar zijn in een eerdere versie van RxJava. 
 
-De tijdelijke oplossing voor dergelijke issuses is om te bepalen welke andere afhankelijkheid brengt in RxJava-1.2.2 en de transitieve afhankelijkheid van RxJava-1.2.2 uit te sluiten, en laat CosmosDB SDK brengen de nieuwere versie.
+De tijdelijke oplossing voor dergelijke issuses is het identificeren van de andere afhankelijkheid in RxJava-1.2.2 en de transitieve afhankelijkheid uit te sluiten op RxJava-1.2.2 en CosmosDB SDK de nieuwere versie te laten halen.
 
-Als u wilt bepalen welke bibliotheek RxJava-1.2.2 invoert, voert u de volgende opdracht uit naast uw projectpom.xml-bestand:
+Als u wilt weten welke bibliotheek in RxJava-1.2.2 wordt geplaatst, voert u de volgende opdracht uit naast uw project pom. XML-bestand:
 ```bash
 mvn dependency:tree
 ```
-Zie voor meer informatie de [maven afhankelijkheidsboomgids](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
+Zie de hand leiding voor de [maven-afhankelijkheids structuur](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)voor meer informatie.
 
-Zodra u rxJava-1.2.2 identificeert, is er een transitieve afhankelijkheid van welke andere afhankelijkheid van uw project, u de afhankelijkheid van die lib in uw pom-bestand wijzigen en rxJava-transitieve afhankelijkheid uitsluiten:
+Zodra u hebt vastgesteld dat RxJava-1.2.2 de transitieve afhankelijkheid is van de andere afhankelijkheid van uw project, kunt u de afhankelijkheid van die lib in uw pom-bestand wijzigen en RxJava transitieve afhankelijkheid uitsluiten:
 
 ```xml
 <dependency>
@@ -193,14 +193,14 @@ Zodra u rxJava-1.2.2 identificeert, is er een transitieve afhankelijkheid van we
 </dependency>
 ```
 
-Zie voor meer informatie de [gids voor tijdelijke afhankelijkheid uitsluiten](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
+Zie de [hand leiding voor transitieve afhankelijkheden uitsluiten](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)voor meer informatie.
 
 
-## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>SDK-logboekregistratie voor client inschakelen
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Logboek registratie van client-SDK inschakelen
 
-De Java Async SDK gebruikt SLF4j als de logging gevel die het inloggen op populaire logging frameworks zoals log4j en logback ondersteunt.
+De Java async SDK maakt gebruik van SLF4j als de logboek registratie-gevel die logboek registratie ondersteunt in populaire logboek registratie raamwerken, zoals Log4J en logback.
 
-Als u bijvoorbeeld log4j als logboekframework wilt gebruiken, voegt u de volgende libs toe in uw Java-klassepad.
+Als u bijvoorbeeld log4j als het Framework voor logboek registratie wilt gebruiken, voegt u de volgende bibliotheken in uw Java-klassenpad toe.
 
 ```xml
 <dependency>
@@ -215,7 +215,7 @@ Als u bijvoorbeeld log4j als logboekframework wilt gebruiken, voegt u de volgend
 </dependency>
 ```
 
-Voeg ook een log4j config toe.
+Voeg ook een log4j-configuratie toe.
 ```
 # this is a sample log4j configuration
 
@@ -233,25 +233,25 @@ log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 ```
 
-Zie voor meer informatie de [registratiehandleiding voor sfl4j.](https://www.slf4j.org/manual.html)
+Zie de [hand leiding voor sfl4j-logboek registratie](https://www.slf4j.org/manual.html)voor meer informatie.
 
-## <a name="os-network-statistics"></a><a name="netstats"></a>OS-netwerkstatistieken
-Voer de opdracht netstat uit om een idee te `ESTABLISHED` `CLOSE_WAIT`krijgen van het aantal verbindingen in staten zoals en .
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS-netwerk statistieken
+Voer de opdracht netstat uit om een beeld te krijgen van het aantal verbindingen in Staten, `ESTABLISHED` zoals `CLOSE_WAIT`en.
 
-Op Linux kun je de volgende opdracht uitvoeren.
+Op Linux kunt u de volgende opdracht uitvoeren.
 ```bash
 netstat -nap
 ```
-Filter het resultaat alleen op verbindingen met het Azure Cosmos DB-eindpunt.
+Filter het resultaat tot alleen verbindingen met het Azure Cosmos DB-eind punt.
 
-Het aantal verbindingen met het Azure Cosmos `ESTABLISHED` DB-eindpunt in de status mag niet groter zijn dan de grootte van de geconfigureerde verbindingsgroep.
+Het aantal verbindingen met het Azure Cosmos DB-eind punt in `ESTABLISHED` de status kan niet groter zijn dan de geconfigureerde grootte van de verbindings groep.
 
-Veel verbindingen met het Azure Cosmos DB-eindpunt zijn mogelijk in de `CLOSE_WAIT` status. Er zijn er misschien meer dan 1000. Een getal dat hoog is, geeft aan dat verbindingen snel worden hersteld en afgebroken. Deze situatie kan problemen veroorzaken. Zie de sectie [Veelvoorkomende problemen en oplossingen] voor meer informatie.
+Veel verbindingen met het Azure Cosmos DB-eind punt hebben mogelijk `CLOSE_WAIT` de status. Er kan meer dan 1.000 zijn. Een getal dat hoog betekent dat de verbindingen tot stand zijn gebracht en snel worden afgebroken. Dit kan problemen veroorzaken. Zie de sectie [veelvoorkomende problemen en tijdelijke oplossingen] voor meer informatie.
 
  <!--Anchors-->
 [Veelvoorkomende problemen en tijdelijke oplossingen]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[Verbindingslimiet voor een hostmachine]: #connection-limit-on-host
-[Azure SNAT (PAT) poort uitputting]: #snat
+[Verbindings limiet op een hostcomputer]: #connection-limit-on-host
+[Uitputting van de poort van Azure SNAT (PAT)]: #snat
 
 

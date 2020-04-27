@@ -1,6 +1,6 @@
 ---
-title: Op rollen gebaseerd toegangscontrole voor Media Services-accounts - Azure | Microsoft Documenten
-description: In dit artikel wordt gesproken over rbac (role-based access control) voor Azure Media Services-accounts.
+title: Op rollen gebaseerd toegangs beheer voor Media Services accounts-Azure | Microsoft Docs
+description: In dit artikel vindt u informatie over op rollen gebaseerd toegangs beheer (RBAC) voor Azure Media Services accounts.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66236919"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>RBAC (Role-based access control) voor Media Services-accounts
+# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts
 
-Op dit moment definieert Azure Media Services geen aangepaste rollen die specifiek zijn voor de service. Om volledige toegang te krijgen tot het Media Services-account, kunnen klanten de ingebouwde rollen van **eigenaar** of **bijdrager**gebruiken. Het belangrijkste verschil tussen deze rollen is: de **eigenaar** kan bepalen wie toegang heeft tot een resource en de **inzender** niet. De ingebouwde **Reader-rol** kan ook worden gebruikt, maar de gebruiker of toepassing heeft alleen leestoegang tot de API's van Media Services. 
+Op dit moment worden door Azure Media Services geen aangepaste rollen gedefinieerd die specifiek zijn voor de service. Klanten kunnen de ingebouwde rollen van **eigenaar** of **Inzender**gebruiken om volledige toegang te krijgen tot het Media Services-account. Het belangrijkste verschil tussen deze rollen is: de **eigenaar** kan bepalen wie toegang heeft tot een resource en de **mede werker** niet kan. De ingebouwde rol **lezer** kan ook worden gebruikt, maar de gebruiker of toepassing heeft alleen lees toegang tot de Media Services-api's. 
 
 ## <a name="design-principles"></a>Ontwerpprincipes
 
-Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. v3 API's geven geen geheimen of referenties terug op **bewerkingen op get** of **list.** De sleutels zijn altijd null, leeg of opgeschoond uit het antwoord. De gebruiker moet een aparte actiemethode aanroepen om geheimen of referenties te krijgen. De **readerrol** kan bewerkingen zoals Asset.ListContainerSas, StreamingLocator.ListContentKeys, ContentKeyPolicies.GetPolicyPropertiesWithSecrets niet aanroepen. Met afzonderlijke acties u desgewenst meer gedetailleerde RBAC-beveiligingsmachtigingen instellen in een aangepaste rol.
+Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. V3-Api's retour neren geen geheimen of referenties voor **Get** -of **List** -bewerkingen. De sleutels zijn altijd null, leeg of opgeschoond uit het antwoord. De gebruiker moet een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. De rol van **lezer** kan geen bewerkingen aanroepen zoals Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Door afzonderlijke acties te ondernemen kunt u, indien gewenst, meer gedetailleerde RBAC-beveiligings machtigingen instellen in een aangepaste rol.
 
-Ga als eerste naar de ondersteuning van de bewerkingen die Media Services ondersteunt:
+Ga als volgt te werk om de bewerkingen weer te geven Media Services ondersteunt:
 
 ```csharp
 foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operations.List())
@@ -36,16 +36,16 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-Het [ingebouwde roldefinitiesartikel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) vertelt u precies wat de rol toekent. 
+In het artikel [ingebouwde roldefinities](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) wordt duidelijk aangegeven wat de rol verleent. 
 
-Zie de volgende artikelen voor meer informatie:
+Raadpleeg de volgende artikelen voor meer informatie:
 
 - [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [Wat is RBAC voor Azure-bronnen?](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [RBAC gebruiken om toegang te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Media Services resource provider operations](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [Bewerkingen voor de resource provider Media Services](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md)
-- [Beleid voor inhoudssleutel gebruiken met Media Services .NET](get-content-key-policy-dotnet-howto.md)
+- [Ontwikkelen met Media Services v3-Api's](media-services-apis-overview.md)
+- [Beleid voor inhouds sleutels ophalen met behulp van Media Services .NET](get-content-key-policy-dotnet-howto.md)

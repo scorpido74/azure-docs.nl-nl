@@ -1,6 +1,6 @@
 ---
-title: Problemen bij het aanmelden bij een op maat ontwikkelde toepassing | Microsoft Documenten
-description: Veelvoorkomende fouten waardoor u zich niet aanmelden bij een toepassing die u met Azure AD hebt ontwikkeld
+title: Problemen bij het aanmelden bij een aangepaste toepassing | Microsoft Docs
+description: Veelvoorkomende fouten die ertoe kunnen leiden dat u zich niet kunt aanmelden bij een toepassing die u hebt ontwikkeld met Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,30 +17,30 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ad2499aea8bf4e41ca00d6c78d76e112f0493e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65825241"
 ---
-# <a name="problems-signing-in-to-a-custom-developed-application"></a>Problemen bij het aanmelden bij een op maat ontwikkelde toepassing
+# <a name="problems-signing-in-to-a-custom-developed-application"></a>Problemen bij het aanmelden bij een aangepaste toepassing
 
-Er zijn verschillende fouten waardoor u zich niet aanmelden bij een app. De grootste reden waarom mensen dit probleem tegenkomen, zijn verkeerd geconfigureerde apps.
+Er zijn verschillende fouten die ertoe kunnen leiden dat u zich niet kunt aanmelden bij een app. De grootste reden dat mensen dit probleem tegen komen, zijn niet-geconfigureerde apps.
 
-## <a name="errors-related-to--misconfigured-apps"></a>Fouten in verband met verkeerd geconfigureerde apps
+## <a name="errors-related-to--misconfigured-apps"></a>Fouten met betrekking tot onjuist geconfigureerde apps
 
-* Controleer of beide configuraties in de portal overeenkomen met wat u in uw app hebt. Vergelijk specifiek client-/toepassings-id, antwoord-URL's, clientgeheimen/sleutels en URI voor app-id's.
+* Controleer of beide configuraties in de portal overeenkomen met wat u in uw app hebt. Vergelijk met name de client/toepassings-ID, antwoord-Url's, client geheimen/sleutels en de URI van de App-ID.
 
-* Vergelijk de resource waartoe u toegang in code aanvraagt met de geconfigureerde machtigingen op het tabblad **Vereiste resources** om ervoor te zorgen dat u alleen resources opvraagt die u hebt geconfigureerd.
+* Vergelijk de resource waarmee u toegang vraagt in code met de geconfigureerde machtigingen op het tabblad **vereiste resources** om ervoor te zorgen dat u alleen de resources opvraagt die u hebt geconfigureerd.
 
-* Zie [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) voor vergelijkbare fouten of problemen.
+* Zie [Azure AD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory) voor vergelijk bare fouten of problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure AD-ontwikkelaarshandleiding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
+[Ontwikkelaars handleiding voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 
-[Apps in- en integreren van apps in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Apps goed keuren en integreren in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Toestemming en machtigingen voor geconvergeerde apps voor Azure AD v2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Toestemming en machtiging voor Azure AD v 2.0 geconvergeerde apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)
+[Azure AD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

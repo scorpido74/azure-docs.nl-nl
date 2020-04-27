@@ -1,6 +1,6 @@
 ---
-title: De Azure PowerShell gebruiken om het uploaden van bestanden te configureren | Microsoft Documenten
-description: De Azure PowerShell-cmdlets gebruiken om uw IoT-hub te configureren om bestandsuploads vanaf verbonden apparaten in te schakelen. Bevat informatie over het configureren van het Azure-opslagaccount voor bestemming.
+title: Gebruik de Azure PowerShell voor het configureren van bestand uploaden | Microsoft Docs
+description: De Azure PowerShell-cmdlets gebruiken om uw IoT-hub te configureren om het uploaden van bestanden vanaf verbonden apparaten mogelijk te maken. Bevat informatie over het configureren van het Azure Storage-doel account.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60318438"
 ---
-# <a name="configure-iot-hub-file-uploads-using-powershell"></a>Uploaden van IoT-hubbestanden configureren met PowerShell
+# <a name="configure-iot-hub-file-uploads-using-powershell"></a>Uploads van IoT Hub-bestanden configureren met Power shell
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Als u de functionaliteit voor het uploaden van bestanden wilt gebruiken [in IoT Hub,](iot-hub-devguide-file-upload.md)moet u eerst een Azure-opslagaccount koppelen aan uw IoT-hub. U een bestaand opslagaccount gebruiken of een nieuw account maken.
+Als u de [functie voor het uploaden van bestanden in IOT hub](iot-hub-devguide-file-upload.md)wilt gebruiken, moet u eerst een Azure Storage-account koppelen aan uw IOT-hub. U kunt een bestaand opslag account gebruiken of een nieuwe maken.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Een actief Azure-account. Als je nog geen account hebt, kun je binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aanmaken.
+* Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
 * [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Een Azure IoT-hub. Als u geen IoT-hub hebt, u de [cmdlet Nieuw-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) gebruiken om er een te maken of de portal gebruiken om [een IoT-hub](iot-hub-create-through-portal.md)te maken.
+* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [cmdlet New-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) gebruiken om er een te maken of de portal te gebruiken om [een IOT-hub te maken](iot-hub-create-through-portal.md).
 
-* Een Azure Storage-account. Als u geen Azure-opslagaccount hebt, u de [PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.storage/) van Azure Storage gebruiken om er een te maken of de portal te gebruiken om [een opslagaccount te maken](../storage/common/storage-create-storage-account.md)
+* Een Azure Storage-account. Als u geen Azure Storage-account hebt, kunt u de [Azure Storage Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.storage/) gebruiken om er een te maken of de portal te gebruiken voor het [maken van een opslag account](../storage/common/storage-create-storage-account.md)
 
-## <a name="sign-in-and-set-your-azure-account"></a>Aanmelden en uw Azure-account instellen
+## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account in
 
 Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
-1. Voer bij de PowerShell-prompt de cmdlet **Connect-AzAccount** uit:
+1. Voer bij de Power shell-prompt de cmdlet **Connect-AzAccount** uit:
 
     ```powershell
     Connect-AzAccount
     ```
 
-2. Als u meerdere Azure-abonnementen hebt, geeft aanmelden bij Azure u toegang tot alle Azure-abonnementen die zijn gekoppeld aan uw referenties. Gebruik de volgende opdracht om de Azure-abonnementen weer te geven die beschikbaar zijn voor gebruik:
+2. Als u meerdere Azure-abonnementen hebt en u zich aanmeldt bij Azure, hebt u toegang tot alle Azure-abonnementen die zijn gekoppeld aan uw referenties. Gebruik de volgende opdracht om de Azure-abonnementen weer te geven die beschikbaar zijn voor gebruik:
 
     ```powershell
     Get-AzSubscription
     ```
 
-    Gebruik de volgende opdracht om het abonnement te selecteren dat u wilt gebruiken om de opdrachten uit te voeren om uw IoT-hub te beheren. U kunt de naam van het abonnement of de id van de uitvoer van de vorige opdracht gebruiken:
+    Gebruik de volgende opdracht om het abonnement te selecteren dat u wilt gebruiken voor het uitvoeren van de opdrachten voor het beheren van uw IoT-hub. U kunt de naam van het abonnement of de id van de uitvoer van de vorige opdracht gebruiken:
 
     ```powershell
     Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>Uw opslagaccountgegevens ophalen
+## <a name="retrieve-your-storage-account-details"></a>Details van uw opslag account ophalen
 
-In de volgende stappen wordt ervan uitgegaan dat u uw opslagaccount hebt gemaakt met behulp van het **implementatiemodel Resource Manager** en niet het **klassieke** implementatiemodel.
+Bij de volgende stappen wordt ervan uitgegaan dat u uw opslag account hebt gemaakt met behulp van het **Resource Manager** -implementatie model en niet het **klassieke** implementatie model.
 
-Als u bestandsuploads vanaf uw apparaten wilt configureren, hebt u de verbindingstekenreeks voor een Azure-opslagaccount nodig. Het opslagaccount moet in hetzelfde abonnement zitten als uw IoT-hub. U hebt ook de naam van een blobcontainer in het opslagaccount nodig. Gebruik de volgende opdracht om uw opslagaccountsleutels op te halen:
+Als u het uploaden van bestanden vanaf uw apparaten wilt configureren, hebt u de connection string voor een Azure-opslag account nodig. Het opslag account moet zich in hetzelfde abonnement benemen als uw IoT-hub. U hebt ook de naam van een BLOB-container in het opslag account nodig. Gebruik de volgende opdracht om de sleutels van uw opslag account op te halen:
 
 ```powershell
 Get-AzStorageAccountKey `
@@ -68,11 +68,11 @@ Get-AzStorageAccountKey `
   -ResourceGroupName {your storage account resource group}
 ```
 
-Noteer de **sleutelwaarde** van de opslagaccount waarde. Je hebt het nodig in de volgende stappen.
+Noteer de sleutel waarde voor **key1** -opslag account. U hebt deze nodig in de volgende stappen.
 
-U een bestaande blobcontainer gebruiken voor het uploaden van bestanden of een nieuwe uploadn:
+U kunt een bestaande BLOB-container voor het uploaden van bestanden gebruiken of een nieuwe maken:
 
-* Als u de bestaande blobcontainers in uw opslagaccount wilt weergeven, gebruikt u de volgende opdrachten:
+* Als u de bestaande BLOB-containers in uw opslag account wilt weer geven, gebruikt u de volgende opdrachten:
 
     ```powershell
     $ctx = New-AzStorageContext `
@@ -81,7 +81,7 @@ U een bestaande blobcontainer gebruiken voor het uploaden van bestanden of een n
     Get-AzStorageContainer -Context $ctx
     ```
 
-* Als u een blobcontainer in uw opslagaccount wilt maken, gebruikt u de volgende opdrachten:
+* Als u een BLOB-container in uw opslag account wilt maken, gebruikt u de volgende opdrachten:
 
     ```powershell
     $ctx = New-AzStorageContext `
@@ -95,21 +95,21 @@ U een bestaande blobcontainer gebruiken voor het uploaden van bestanden of een n
 
 ## <a name="configure-your-iot-hub"></a>Uw IoT-hub configureren
 
-U nu uw IoT-hub configureren om [bestanden naar de IoT-hub te uploaden](iot-hub-devguide-file-upload.md) met uw opslagaccountgegevens.
+U kunt nu uw IoT-hub configureren voor [het uploaden van bestanden naar de IOT-hub](iot-hub-devguide-file-upload.md) met behulp van de gegevens van uw opslag account.
 
-De configuratie vereist de volgende waarden:
+Voor de configuratie zijn de volgende waarden vereist:
 
-* **Opslagcontainer:** een blobcontainer in een Azure-opslagaccount in uw huidige Azure-abonnement om te koppelen aan uw IoT-hub. U hebt de benodigde opslagaccountgegevens in de vorige sectie opgehaald. IoT Hub genereert automatisch SAS-URI's met schrijfmachtigingen voor deze blobcontainer voor apparaten die kunnen worden gebruikt wanneer ze bestanden uploaden.
+* **Opslag container**: een BLOB-container in een Azure-opslag account in uw huidige Azure-abonnement dat u wilt koppelen aan uw IOT-hub. U hebt de benodigde gegevens voor het opslag account opgehaald in de voor gaande sectie. IoT Hub genereert automatisch SAS-Uri's met schrijf machtigingen voor deze BLOB-container zodat apparaten kunnen worden gebruikt bij het uploaden van bestanden.
 
-* **Meldingen ontvangen voor geüploade bestanden:** Meldingen voor het uploaden van bestanden inschakelen of uitschakelen.
+* **Meldingen ontvangen voor geüploade bestanden**: meldingen voor het uploaden van bestanden in-of uitschakelen.
 
-* **SAS TTL**: Deze instelling is de time-to-live van de SAS URI's die door IoT Hub naar het apparaat worden teruggestuurd. Standaard ingesteld op een uur.
+* **SAS TTL**: deze instelling is de time-to-Live van de SAS-uri's die op het apparaat worden geretourneerd door IOT hub. Standaard ingesteld op één uur.
 
-* **Standaardttl-instellingen voor bestandsmeldingen:** de time-to-live van een melding voor het uploaden van bestanden voordat deze is verlopen. Standaard ingesteld op één dag.
+* **Instellingen voor bestands meldingen standaard-TTL**: de time-to-Live van een melding bij het uploaden van een bestand voordat deze is verlopen. Standaard ingesteld op één dag.
 
-* **Maximale leveringshoeveelheid bestandsmeldingen:** het aantal keren dat de IoT Hub een melding voor het uploaden van bestanden probeert te leveren. Standaard ingesteld op 10.
+* **Aantal bestands meldingen maximale leverings**duur: het aantal keren dat de IOT hub een melding over het uploaden van een bestand probeert te leveren. Standaard ingesteld op 10.
 
-Gebruik de volgende PowerShell-cmdlet om de instellingen voor het uploaden van bestanden op uw IoT-hub te configureren:
+Gebruik de volgende Power shell-cmdlet om de instellingen voor het uploaden van bestanden te configureren op uw IoT-hub:
 
 ```powershell
 Set-AzIotHub `
@@ -125,16 +125,16 @@ Set-AzIotHub `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Bestanden uploaden vanaf een apparaat voor](iot-hub-devguide-file-upload.md)meer informatie over de mogelijkheden voor het uploaden van bestanden van IoT Hub.
+Zie [bestanden uploaden van een apparaat](iot-hub-devguide-file-upload.md)voor meer informatie over de mogelijkheden voor het uploaden van bestanden van IOT hub.
 
-Volg deze koppelingen voor meer informatie over het beheer van Azure IoT Hub:
+Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 
 * [IoT-apparaten bulksgewijs beheren](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub-statistieken](iot-hub-metrics.md)
+* [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [Controle van bewerkingen](iot-hub-operations-monitoring.md)
 
-Zie:
+Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
-* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)
+* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 * [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
-* [Beveilig uw IoT-oplossing van de grond af aan](../iot-fundamentals/iot-security-ground-up.md)
+* [Beveilig uw IoT-oplossing vanaf de grond](../iot-fundamentals/iot-security-ground-up.md)

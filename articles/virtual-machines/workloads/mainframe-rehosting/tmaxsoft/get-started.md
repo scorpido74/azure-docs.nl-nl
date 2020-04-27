@@ -1,45 +1,45 @@
 ---
-title: Aan de slag met TmaxSoft OpenFrame op Azure Virtual Machines
-description: Host uw IBM z/OS mainframeworkloads opnieuw met de TmaxSoft OpenFrame-omgeving op Azure Virtual Machines (VM's).
+title: Aan de slag met TmaxSoft open frame op Azure Virtual Machines
+description: Host uw IBM z/OS mainframe-workloads met behulp van de open-frame omgeving van TmaxSoft op Azure Virtual Machines (Vm's).
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61485383"
 ---
-# <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Aan de slag met TmaxSoft OpenFrame op Azure
+# <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Aan de slag met TmaxSoft open frame op Azure
 
-Neem uw bestaande mainframe-elementen en verplaats ze naar Microsoft Azure met Behulp van TmaxSoft OpenFrame. Deze populaire rehostingoplossing creëert een emulatieomgeving op Azure, zodat u snel toepassingen migreren. Er is geen heropmaak vereist.
+Neem uw bestaande mainframe-assets mee en verplaats ze naar Microsoft Azure met openTmaxSofte OpenFrame. Deze populaire oplossing voor opnieuw hosten maakt een emulatie omgeving in azure, zodat u snel toepassingen kunt migreren. Opnieuw Format teren is niet vereist.
 
-## <a name="openframe-rehosting-environment"></a>OpenFrame rehosting-omgeving
+## <a name="openframe-rehosting-environment"></a>Opnieuw hosting omgeving van OpenFrame
 
-Stel een OpenFrame-omgeving in op Azure voor ontwikkelings-, demo-, test- of productieworkloads. Zoals uit de volgende afbeelding blijkt, bevat OpenFrame meerdere componenten die de mainframe-emulatieomgeving op Azure maken. OpenFrame online services vervangen bijvoorbeeld de mainframe middleware zoals IBM Customer Information Control System (CICS). OpenFrame Batch, met zijn TJES-component, vervangt het IBM mainframe's Job Entry Subsystem (JES). 
+Stel een open-frame omgeving in op Azure voor ontwikkelings-, demonstratie-, test-of productie werkbelastingen. Zoals in de volgende afbeelding wordt weer gegeven, bevat OpenFrame meerdere onderdelen die de mainframe-emulatie omgeving maken in Azure. OpenFrame onlineservices bijvoorbeeld de mainframe-middleware vervangen zoals het IBM-klant Information Control System (CICS). OpenFrame batch, met het TJES-onderdeel, vervangt het subsysteem voor taak invoer van IBM mainframe (JES). 
 
-![OpenFrame rehostingproces](media/openframe-01.png)
+![Proces voor opnieuw hosten van OpenFrame](media/openframe-01.png)
 
 > [!NOTE]
-> Als u de OpenFrame-omgeving op Azure wilt uitvoeren, moet u over een geldige productlicentie of proeflicentie van TmaxSoft beschikken.
+> Als u de open frame-omgeving in azure wilt uitvoeren, moet u een geldige product licentie of een licentie voor een proef versie van TmaxSoft hebben.
 
-## <a name="openframe-components"></a>OpenFrame-componenten
+## <a name="openframe-components"></a>OpenFrame-onderdelen
 
-De volgende componenten maken deel uit van de OpenFrame-omgeving op Azure:
+De volgende onderdelen maken deel uit van de open frame-omgeving in Azure:
 
-- **Migratietools,** waaronder OFMiner, een oplossing die de mainframes-assets analyseert en vervolgens migreert naar Azure.
-- **Compilers**, waaronder OFCOBOL, een compiler die de COBOL-programma's van het mainframe interpreteert; OFPLI, dat de PL/I-programma's van het mainframe interpreteert; en OFASM, een compiler die de assembleerprogramma's van het mainframe interpreteert.
-- **Front-end** componenten, waaronder Java Enterprise User Solution (JEUS), een webapplicatieserver die is gecertificeerd voor Java Enterprise Edition 6.OFGW, en de OpenFrame-gatewaycomponent die een 3270-listener biedt.
-- **Toepassingsomgeving.** OpenFrame Base is de middleware die het hele systeem beheert. OpenFrame Server Type C (OSC) vervangt de middleware van het mainframe en IBM CICS.
-- **Relationele database**, zoals Tibero (getoond), Oracle Database, Microsoft SQL Server, IBM Db2 of MySQL. De OpenFrame-toepassingen gebruiken ODBC-protocol (Open Database Connectivity) om met de database te communiceren.
-- **Beveiliging** via TACF, een servicemodule die de toegang van gebruikers tot systemen en bronnen regelt. 
-- **OFManager** is een oplossing die de werkings- en beheerfuncties van OpenFrame biedt in de webomgeving.
+- **Migratie hulpprogramma's** , waaronder OFMiner, een oplossing voor het analyseren van de mainframe-assets en vervolgens naar Azure worden gemigreerd.
+- **Compilers**, waaronder OFCOBOL, een compiler die de COBOL-Program ma's van het mainframe interpreteert; OFPLI, die de PL/I-Program ma's van het mainframe interpreteert; en OFASM: een compiler waarmee de assembler-program ma's van het mainframe worden geïnterpreteerd.
+- **Front-end** onderdelen, waaronder Java Enter prise User Solution (JEUS), een webtoepassingsserver die is gecertificeerd voor Java Enter prise Edition 6. OFGW en het onderdeel OpenFrame gateway dat een 3270-listener biedt.
+- **Toepassings** omgeving. OpenFrame Base is de middleware die het hele systeem beheert. De OpenFrame-server type C (OSC) vervangt de middleware van het mainframe en IBM CICS.
+- **Relationele data base**, zoals Tibero (weer gegeven), Oracle Database, Microsoft SQL Server, IBM Db2 of MySQL. Het Open Database Connectivity-protocol (OpenFrame-toepassingen) gebruiken om te communiceren met de data base.
+- **Beveiliging** via TACF, een service module waarmee gebruikers toegang tot systemen en bronnen wordt beheerd. 
+- **OFManager** is een oplossing voor het bewerkings-en beheer functies van OpenFrame in de webomgeving.
 
-![OpenFrame-architectuur](media/openframe-02.png)
+![Architectuur van OpenFrame](media/openframe-02.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [TmaxSoft OpenFrame installeren op Azure](./install-openframe-azure.md)
+- [TmaxSoft open frame installeren op Azure](./install-openframe-azure.md)

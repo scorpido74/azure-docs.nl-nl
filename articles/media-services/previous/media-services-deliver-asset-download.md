@@ -1,6 +1,6 @@
 ---
-title: Media Services-elementen downloaden naar uw computer - Azure | Microsoft Documenten
-description: Meer informatie over het downloaden van assets naar uw computer. Codevoorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
+title: Media Services assets downloaden naar uw computer-Azure | Microsoft Docs
+description: Meer informatie over het downloaden van assets naar uw computer. Code voorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61465657"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>How to: Een asset leveren door te downloaden  
-In dit artikel worden opties besproken voor het leveren van mediaassets die zijn geüpload naar Media Services. U Media Services-inhoud leveren in tal van toepassingsscenario's. Download na het coderen de gegenereerde media-assets of krijg toegang tot deze met behulp van een streaminglocator. Voor betere prestaties en schaalbaarheid u ook inhoud leveren met behulp van een Content Delivery Network (CDN).
+# <a name="how-to-deliver-an-asset-by-download"></a>Procedure: een Asset leveren door te downloaden  
+In dit artikel worden opties beschreven voor het leveren van media-assets die zijn geüpload naar Media Services. U kunt Media Services-inhoud leveren in verschillende toepassings scenario's. Down load na het coderen de gegenereerde media-assets of open ze met behulp van een streaming-Locator. Voor betere prestaties en schaal baarheid kunt u ook inhoud leveren met behulp van een Content Delivery Network (CDN).
 
-In dit voorbeeld ziet u hoe u mediaassets van Media Services naar uw lokale computer downloaden. De code vraagt de taken op die zijn gekoppeld aan het Media Services-account op taak-ID en toegang tot de **outputMediaAssets-verzameling** (de set van een of meer uitvoermedia-elementen die het resultaat zijn van het uitvoeren van een taak). In dit voorbeeld ziet u hoe u uitvoermediaassets van een taak downloadt, maar u dezelfde benadering toepassen om andere elementen te downloaden.
+In dit voor beeld ziet u hoe u media-assets van Media Services naar uw lokale computer kunt downloaden. De code voert een query uit op de taken die zijn gekoppeld aan het Media Services-account op taak-ID en opent de **OutputMediaAssets** -verzameling (dat wil zeggen de set van een of meer uitvoer media-assets die het resultaat zijn van het uitvoeren van een taak). In dit voor beeld ziet u hoe uitvoer media-assets van een taak kunnen worden gedownload, maar u kunt dezelfde benadering Toep assen om andere assets te downloaden.
 
 >[!NOTE]
->Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen / toegangsmachtigingen gebruikt, bijvoorbeeld beleid voor locators die bedoeld zijn om lang te blijven bestaan (niet-uploadbeleid). Zie voor meer informatie [dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel.
+>Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen/toegangs machtigingen gebruikt, bijvoorbeeld beleids regels voor Locators die zijn bedoeld om gedurende een lange periode te blijven (niet-upload beleid). Zie [Dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel voor meer informatie.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -88,5 +88,5 @@ In dit voorbeeld ziet u hoe u mediaassets van Media Services naar uw lokale comp
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zie ook
-[Streamingcontent leveren](media-services-deliver-streaming-content.md)
+[Streaming-inhoud leveren](media-services-deliver-streaming-content.md)
 

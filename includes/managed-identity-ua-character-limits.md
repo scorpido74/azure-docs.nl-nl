@@ -9,11 +9,11 @@ ms.date: 05/29/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: a013c52d900f4882752d878d26c45069ba0879a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67176201"
 ---
 > [!IMPORTANT]
-> Bij het maken van door de gebruiker toegewezen identiteiten worden alleen alfanumerieke tekens\_(0-9, a-z, A-Z), de ondersteun ( ) en het koppelteken (-) ondersteund. Bovendien moet de naam ten minste 3 tekens en maximaal 128 tekens in lengte zijn voor de toewijzing aan VM/VMSS om goed te werken. Controleer later op updates. Zie [Veelgestelde vragen en bekende problemen](/azure/active-directory/managed-service-identity/known-issues) voor meer informatie.
+> Bij het maken van door de gebruiker toegewezen identiteiten, alleen alfanumerieke tekens (0-9, a-z, A-\_z), het onderstrepings teken () en het koppel teken (-) worden ondersteund. Daarnaast moet de naam uit Mini maal drie tekens bestaan en tot 128 tekens lang zijn, zodat de toewijzing aan VM-VMSS goed werkt. Controleer later op updates. Zie [Veelgestelde vragen en bekende problemen](/azure/active-directory/managed-service-identity/known-issues) voor meer informatie.

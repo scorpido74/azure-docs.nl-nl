@@ -1,6 +1,6 @@
 ---
-title: Azure Queue-opslag gebruiken om meldingen van mediaservices te controleren met .NET | Microsoft Documenten
-description: Meer informatie over het gebruik van Azure Queue-opslag om meldingen van mediaservices te controleren. Het codevoorbeeld is geschreven in C# en gebruikt de Media Services SDK voor .NET.
+title: Gebruik Azure Queue Storage om Media Services taak meldingen te bewaken met .NET | Microsoft Docs
+description: Meer informatie over het gebruik van Azure Queue-opslag om Media Services taak meldingen te bewaken. Het code voorbeeld is geschreven in C# en maakt gebruik van de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64868106"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure Queue-opslag gebruiken om meldingen van mediaservices te controleren met .NET 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure Queue Storage om Media Services taak meldingen te bewaken met .NET 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u coderingstaken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U Media Services configureren om meldingen te leveren aan [Azure Queue-opslag.](../../storage/storage-dotnet-how-to-use-queues.md) U de voortgang van de taak controleren door meldingen te ontvangen van de wachtrijopslag. 
+Wanneer u coderings taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt Media Services configureren voor het leveren van meldingen aan [Azure Queue-opslag](../../storage/storage-dotnet-how-to-use-queues.md). U kunt de voortgang van de taak controleren door meldingen van de wachtrij opslag te ontvangen. 
 
-Berichten die worden bezorgd in wachtrijopslag, zijn overal ter wereld toegankelijk. De queue storage messaging-architectuur is betrouwbaar en zeer schaalbaar. Polling Queue opslag voor berichten wordt aanbevolen over het gebruik van andere methoden.
+Berichten die aan de wachtrij opslag worden geleverd, kunnen overal ter wereld worden geopend. De Messa ging-architectuur voor wachtrij opslag is betrouwbaar en zeer schaalbaar. Het navragen van de wachtrij opslag voor berichten wordt aanbevolen om andere methoden te gebruiken.
 
-Een veelvoorkomend scenario voor het beluisteren van Media Services-meldingen is als u een contentmanagementsysteem ontwikkelt dat een extra taak moet uitvoeren nadat een coderingstaak is voltooid (bijvoorbeeld om de volgende stap in een werkstroom te activeren of om te publiceren inhoud).
+Een veelvoorkomend scenario voor het Luis teren naar Media Services meldingen is als u een inhouds beheersysteem ontwikkelt dat een extra taak moet uitvoeren nadat een coderings taak is voltooid (bijvoorbeeld om de volgende stap in een werk stroom te activeren of om inhoud te publiceren).
 
-In dit artikel ziet u hoe u meldingsberichten ontvangt uit wachtrijopslag.  
+In dit artikel wordt beschreven hoe u meldings berichten kunt ophalen uit de wachtrij opslag.  
 
 ## <a name="considerations"></a>Overwegingen
-Houd rekening met het volgende bij het ontwikkelen van Media Services-toepassingen die wachtrijopslag gebruiken:
+Houd rekening met het volgende bij het ontwikkelen van Media Services toepassingen die gebruikmaken van Queue Storage:
 
-* Wachtrijopslag biedt geen garantie voor first-in-first-out (FIFO) bestelde levering. Zie [Azure Queues en Azure Service Bus Queues Compared and Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx)voor meer informatie.
-* Wachtrijopslag is geen pushservice. Je moet de wachtrij peilen.
-* U een willekeurig aantal wachtrijen hebben. Zie [Queue Service REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)voor meer informatie.
-* Wachtrijopslag heeft een aantal beperkingen en details om rekening mee te houden. Deze worden beschreven in [Azure Queues en Azure Service Bus Queues Compared and Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Queue Storage biedt geen garantie voor de bestelde levering van First-in-first-out (FIFO). Zie [Azure queues and Azure service bus queues vergeleken en daarentegen](https://msdn.microsoft.com/library/azure/hh767287.aspx)voor meer informatie.
+* Queue Storage is geen push service. U moet de wachtrij navragen.
+* U kunt een onbeperkt aantal wacht rijen hebben. Zie [Queue Service rest API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)voor meer informatie.
+* Voor de wachtrij opslag gelden enkele beperkingen en specifieke informatie. Deze worden beschreven in [Azure queues en Azure service bus-wacht rijen vergeleken en daarentegen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-## <a name="net-code-example"></a>Voorbeeld van .NET-code
+## <a name="net-code-example"></a>Voor beeld van .NET-code
 
-Het codevoorbeeld in deze sectie doet het volgende:
+Het code voorbeeld in deze sectie doet het volgende:
 
-1. Hiermee definieert u de klasse **EncodingJobMessage** die wordt toegewezen aan de notificatieberichtindeling. De code deserialiseert berichten die vanuit de wachtrij zijn ontvangen in objecten van het type **EncodingJobMessage.**
-2. Hiermee worden de accountgegevens van Media Services en Opslag opgehaald vanuit het app.config-bestand. Het codevoorbeeld gebruikt deze informatie om de objecten **CloudMediaContext** en **CloudQueue** te maken.
-3. Hiermee maakt u de wachtrij die meldingsberichten ontvangt over de coderingstaak.
-4. Hiermee maakt u het eindpunt van de melding dat aan de wachtrij is toegewezen.
-5. Hiermee wordt het eindpunt van de melding aan de taak gekoppeld en wordt de coderingstaak ingediend. U meerdere meldingseindpunten aan een taak koppelen.
-6. Doorgeeft **NotificationJobState.FinalStatesOnly** aan de **methode AddNew.** (In dit voorbeeld zijn we alleen geïnteresseerd in de definitieve staten van de taakverwerking.)
+1. Hiermee wordt de klasse **EncodingJobMessage** gedefinieerd die wordt toegewezen aan de indeling van het meldings bericht. De code deserialeert berichten die zijn ontvangen van de wachtrij in objecten van het type **EncodingJobMessage** .
+2. Hiermee worden de Media Services-en de gegevens van het opslag account uit het bestand app. config geladen. In het code voorbeeld wordt deze informatie gebruikt voor het maken van de **cloudmediacontext maakt** -en **CloudQueue** -objecten.
+3. Hiermee maakt u de wachtrij die meldings berichten over de coderings taak ontvangt.
+4. Hiermee maakt u het meldings eindpunt dat is toegewezen aan de wachtrij.
+5. Het eind punt van de melding wordt gekoppeld aan de taak en de coderings taak wordt verzonden. Er kunnen meerdere eind punten aan een melding aan een taak zijn gekoppeld.
+6. Hiermee wordt **NotificationJobState. FinalStatesOnly** door gegeven aan de methode **AddNew** . (In dit voor beeld zijn we alleen geïnteresseerd in de definitieve statussen van de taak verwerking.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Als u **notificationJobState.All**passeert, ontvangt u alle volgende meldingen voor statuswijziging: in de wachtrij, gepland, verwerkt en voltooid. Echter, zoals eerder opgemerkt, Wachtrij opslag garandeert geen bestelde levering. Als u berichten wilt bestellen, gebruikt u de eigenschap **Timestamp** (gedefinieerd op het type **EncodingJobMessage** in het onderstaande voorbeeld). Dubbele berichten zijn mogelijk. Als u wilt controleren op duplicaten, gebruikt u de **eigenschap ETag** (gedefinieerd op het type **EncodingJobMessage).** Het is ook mogelijk dat sommige meldingen voor statuswijzigingen worden overgeslagen.
-8. Wacht tot de taak is voltooid door de wachtrij elke 10 seconden te controleren. Hiermee verwijdert u berichten nadat ze zijn verwerkt.
-9. Hiermee verwijdert u de wachtrij en het eindpunt van de melding.
+7. Als u **NotificationJobState. alle**hebt, worden alle volgende status wijzigings meldingen weer gegeven: in de wachtrij geplaatst, gepland, verwerkt en voltooid. Zoals eerder vermeld, garandeert de wachtrij opslag echter geen bestelde levering. Voor het best Ellen van berichten gebruikt u de eigenschap **Time Stamp** (gedefinieerd in het type **EncodingJobMessage** in het onderstaande voor beeld). Dubbele berichten zijn mogelijk. Als u wilt controleren op dubbele waarden, gebruikt u de **ETAG-eigenschap** (gedefinieerd in het type **EncodingJobMessage** ). Het is ook mogelijk dat sommige meldingen over status wijziging worden overgeslagen.
+8. Wacht tot de taak is voltooid, door de wachtrij elke 10 seconden te controleren. Verwijdert berichten nadat ze zijn verwerkt.
+9. De wachtrij en het eind punt van de melding worden verwijderd.
 
 > [!NOTE]
-> De aanbevolen manier om de status van een taak te controleren is door naar meldingsberichten te luisteren, zoals in het volgende voorbeeld wordt weergegeven:
+> De aanbevolen manier om de status van een taak te controleren, is door te Luis teren naar meldings berichten, zoals wordt weer gegeven in het volgende voor beeld:
 >
-> U ook de status van een taak controleren met behulp van de eigenschap **IJob.State.**  Er kan een melding komen over de voltooiing van een taak voordat de status op **IJob** is ingesteld op **Voltooid**. De **iJob.State** eigenschap weerspiegelt de nauwkeurige toestand met een lichte vertraging.
+> U kunt ook de status van een taak controleren met behulp van de eigenschap **IJob. State** .  Een meldings bericht over de voltooiing van een taak kan worden ontvangen voordat de status op **IJob** is ingesteld op **voltooid**. De eigenschap **IJob. State** weerspiegelt de nauw keurige status met een lichte vertraging.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
-2. Maak een nieuwe map (map kan overal op uw lokale station staan) en kopieer een .mp4-bestand dat u wilt coderen en streamen of geleidelijk downloaden. In dit voorbeeld wordt het pad 'C:\Media' gebruikt.
-3. Voeg een verwijzing toe naar de **system.runtime.serialisatiebibliotheek.**
+1. Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+2. Maak een nieuwe map (de map kan zich overal op uw lokale station bevinden) en kopieer een MP4-bestand dat u wilt coderen en streamen of progressief wilt downloaden. In dit voor beeld wordt het pad ' C:\Media ' gebruikt.
+3. Voeg een verwijzing naar de bibliotheek **System. runtime. serialization** toe.
 
 ### <a name="code"></a>Code
 
@@ -342,7 +342,7 @@ namespace JobNotification
 }
 ```
 
-Het voorgaande voorbeeld heeft de volgende uitvoer opgeleverd: uw waarden variëren.
+In het voor gaande voor beeld is de volgende uitvoer gegenereerd: de waarden variëren.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

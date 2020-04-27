@@ -1,6 +1,6 @@
 ---
-title: Voortgang van de taak controleren met .NET
-description: Meer informatie over het gebruik van gebeurtenishandlercode om de voortgang van de taak bij te houden en statusupdates te verzenden. Het codevoorbeeld is geschreven in C# en gebruikt de Media Services SDK voor .NET.
+title: Taak voortgang bewaken met .NET
+description: Meer informatie over het gebruik van de code voor gebeurtenis-handler voor het bijhouden van de voortgang van taken en het verzenden van status updates. Het code voorbeeld is geschreven in C# en maakt gebruik van de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64867106"
 ---
-# <a name="monitor-job-progress-using-net"></a>Voortgang van de taak controleren met .NET 
+# <a name="monitor-job-progress-using-net"></a>Taak voortgang bewaken met .NET 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U de voortgang controleren door een StateChanged-gebeurtenishandler te definiëren (zoals beschreven in dit onderwerp) of Azure Queue-opslag te gebruiken om functiemeldingen van Media Services te controleren (zoals beschreven in [dit](media-services-dotnet-check-job-progress-with-queues.md) onderwerp).
+Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt de voortgang controleren door een gebeurtenis-handler voor StateChanged te definiëren (zoals beschreven in dit onderwerp) of door Azure Queue Storage te gebruiken om Media Services taak meldingen te bewaken (zoals beschreven in [Dit](media-services-dotnet-check-job-progress-with-queues.md) onderwerp).
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Statuschanged-gebeurtenishandler definiëren om de voortgang van de taak te controleren
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>StateChanged-gebeurtenis registratie definiëren voor het bewaken van de taak voortgang
 
-In het volgende codevoorbeeld wordt de gebeurtenishandler StateChanged gedefinieerd. Deze gebeurtenishandler houdt de voortgang van de taak bij en biedt bijgewerkte status, afhankelijk van de status. De code definieert ook de LogJobStop-methode. Deze helpermethode registreert foutgegevens.
+In het volgende code voorbeeld wordt de gebeurtenis-handler StateChanged gedefinieerd. Deze gebeurtenis-handler houdt de voortgang van de taak bij en biedt bijgewerkte status, afhankelijk van de status. De code definieert ook de methode LogJobStop. Met deze Help-methode worden fout Details vastgelegd.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

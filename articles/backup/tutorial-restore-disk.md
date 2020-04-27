@@ -4,12 +4,12 @@ description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 31e2645a4a627793f13c37c543d9e08240e06930
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82113694"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160935"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Een schijf herstellen en een herstelde VM maken in Azure
 
@@ -87,19 +87,20 @@ Als de virtuele machine waarvoor een back-up is gemaakt, beheerde schijven heeft
         --target-resource-group targetRG
     ```
 
-> [!WARNING]
-> Als de doel bron-groep niet is opgegeven, worden de beheerde schijven teruggezet als onbeheerde schijven naar het opgegeven opslag account. Dit heeft belang rijke gevolgen voor de herstel tijd sinds de tijd die nodig is om de schijven volledig te herstellen, is afhankelijk van het opgegeven opslag account. Klanten krijgen het voor deel van direct terugzetten alleen wanneer de doel-Resource-Group-para meter is opgegeven. Als de bedoeling is om beheerde schijven te herstellen als niet-beheerd, geeft u de para meter doel-resource-groep niet op en geeft u in plaats daarvan de para meter Restore-as-unmanaged-disk op zoals hieronder wordt weer gegeven. Deze para meter is beschikbaar vanaf AZ 3.4.0.
+    > [!WARNING]
+    > Als de doel bron-groep niet is opgegeven, worden de beheerde schijven teruggezet als onbeheerde schijven naar het opgegeven opslag account. Dit heeft belang rijke gevolgen voor de herstel tijd sinds de tijd die nodig is om de schijven volledig te herstellen, is afhankelijk van het opgegeven opslag account. Klanten krijgen het voor deel van direct terugzetten alleen wanneer de doel-Resource-Group-para meter is opgegeven. Als de bedoeling is om beheerde schijven te herstellen als niet-beheerd, geeft u de para meter doel-resource-groep niet op en geeft u in plaats daarvan de para meter Restore-as-unmanaged-disk op zoals hieronder wordt weer gegeven. Deze para meter is beschikbaar vanaf AZ 3.4.0.
 
     ```azurecli-interactive
     az backup restore restore-disks \
-        --resource-group myResourceGroup \
-        --vault-name myRecoveryServicesVault \
-        --container-name myVM \
-        --item-name myVM \
-        --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
-        --restore-as-unmanaged-disk
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --container-name myVM \
+    --item-name myVM \
+    --storage-account mystorageaccount \
+    --rp-name myRecoveryPointName
+    --restore-as-unmanaged-disk
     ```
+
 Hiermee worden beheerde schijven als niet-beheerde schijven teruggezet naar het opgegeven opslag account en wordt de herstel functionaliteit ' direct ' niet meer in beslag genomen. In toekomstige versies van CLI is het verplicht om de para meter doel-Resource-Group of ' herstellen-als onbeheerd-disk ' op te geven.
 
 ### <a name="unmanaged-disks-restore"></a>Onbeheerde schijven herstellen

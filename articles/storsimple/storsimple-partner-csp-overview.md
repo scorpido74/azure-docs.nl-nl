@@ -1,6 +1,6 @@
 ---
-title: Overzicht van microsoft Azure StorSimple- en Cloud Solutions Program | Microsoft Documenten
-description: Een overzicht over de StorSimple en CSP voor StorSimple partners.
+title: Overzicht van het programma Microsoft Azure StorSimple-en Cloud oplossingen | Microsoft Docs
+description: Een overzicht van de StorSimple en CSP voor StorSimple-partners.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,32 +15,32 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60628656"
 ---
-# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Wat is StorSimple for Cloud Solutions Providers Program?
+# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Wat is StorSimple voor het programma Cloud Solutions providers?
 
 
 ## <a name="overview"></a>Overzicht
 
-Microsoft Azure StorSimple is een unieke benadering van bedrijfsopslag met echte hybride cloudopslagmogelijkheden. Het stelt de klanten in staat om te profiteren van economische cloudopslag voor de inactieve gegevens, terwijl hun bedrijfskritieke gegevens on-premises blijven voor de hoogste prestatieniveaus. 
+Microsoft Azure StorSimple is een unieke benadering van bedrijfs opslag met echte Hybrid Cloud Storage mogelijkheden. Het biedt klanten de mogelijkheid om te profiteren van rendabele Cloud opslag voor de inactieve gegevens, terwijl hun bedrijfs kritieke gegevens on-premises behouden blijven voor de hoogste prestatie niveaus. 
 
-StorSimple Virtual Array for Cloud Solutions Provider (CSP) stelt partners in staat om op deze kans te profiteren. De partners zijn eigenaar van de end-to-end levenscyclus van klanten met directe inrichting, facturering en ondersteuning van de cloudservices van Microsoft. Kortom, de partners kunnen nu de StorSimple samen met hun diensten aan klanten afhandelen.
+Met StorSimple Virtual array voor Cloud solutions provider (CSP) kunnen partners op deze manier hun verkoop kansen gebruiken. De partners zijn eigenaar van de end-to-end klant levenscyclus met directe inrichting, facturering en ondersteuning van de Cloud Services van micro soft. Kortom, de partners kunnen nu de StorSimple samen met hun services aan klanten afhandelen.
 
-Ga voor meer informatie over StorSimple voor CSP naar de [overzichtspagina van Azure CSP.](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
+Ga naar de [overzichts pagina van Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) voor meer informatie over STORSIMPLE voor CSP.
 
-Ga voor meer informatie over facturering, prijzen, incentives en ondersteuning in CSP naar [StorSimple in CSP: FAQ](storsimple-partner-csp-faq.md). 
+Ga naar [StorSimple in CSP: veelgestelde vragen](storsimple-partner-csp-faq.md)voor meer informatie over facturering, prijzen, prikkels en het verkrijgen van ondersteuning in CSP. 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>StorSimple voor CSP implementeren en beheren
 
-StorSimple voor CSP is beschikbaar als een gebruik-gebaseerde dienst in alle markten waar de StorSimple is vandaag beschikbaar. StorSimple voor CSP maakt gebruik van de Azure-portal en de StorSimple Device Manager-service. Een CSP-partner kan een StorSimple Device Manager maken voor het beheren van StorSimple Virtual Arrays, shares, volumes en back-ups. U alle virtuele arrays beheren die zijn geregistreerd bij uw StorSimple Device Manager-service via de Azure-portal.
+StorSimple voor CSP is beschikbaar als een op gebruik gebaseerde service in alle markten waar de StorSimple vandaag verkrijgbaar is. StorSimple voor CSP maakt gebruik van de Azure Portal en de StorSimple Apparaatbeheer-service. Een CSP-partner kan een StorSimple-Apparaatbeheer maken voor het beheren van StorSimple virtuele matrices, shares, volumes en back-ups. U kunt alle virtuele matrices die zijn geregistreerd bij uw StorSimple Apparaatbeheer-service beheren via de Azure Portal.
 
-Ga voor meer informatie naar [Implementeren en beheren van uw StorSimple Virtual Array voor CSP.](storsimple-partner-csp-deploy.md)
+Ga voor meer informatie naar [implementeren en beheren van uw StorSimple Virtual array voor CSP](storsimple-partner-csp-deploy.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u meer vragen over de StorSimple in CSP, ga dan naar [StorSimple voor CSP: Veelgestelde vragen](storsimple-partner-csp-faq.md).
-- Als u klaar bent om uw StorSimple te implementeren, gaat u naar [Implementeren van uw StorSimple voor CSP.](storsimple-partner-csp-deploy.md)
+- Als u meer vragen hebt over de StorSimple in CSP, gaat u naar [StorSimple voor CSP: veelgestelde vragen](storsimple-partner-csp-faq.md).
+- Als u klaar bent om uw StorSimple te implementeren, gaat u naar [uw StorSimple implementeren voor CSP](storsimple-partner-csp-deploy.md).

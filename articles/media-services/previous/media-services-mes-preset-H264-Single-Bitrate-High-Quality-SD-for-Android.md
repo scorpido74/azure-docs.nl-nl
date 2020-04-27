@@ -1,6 +1,6 @@
 ---
-title: H264 Single Bitrate High Quality SD voor Android | Microsoft Documenten
-description: Het onderwerp geeft een overzicht van de **H264 Single Bitrate High Quality SD voor Android** taak preset.
+title: H264 single bitrate SD van hoge kwaliteit voor Android | Microsoft Docs
+description: In dit onderwerp wordt een overzicht gegeven van de **H264 single-bitrate van de SD voor** de taak vooraf van een hoge kwaliteit.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 217c4874f0375aeb4d80162af1b8453a3f7f625f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61463511"
 ---
 # <a name="h264-single-bitrate-high-quality-sd-for-android"></a>H264 Single Bitrate High Quality SD for Android
-`Media Encoder Standard`definieert een set coderingsvoorinstellingen die u gebruiken bij het maken van coderingstaken. U een `preset name` a gebruiken om aan te geven in welke indeling u uw mediabestand wilt coderen. U ook uw eigen JSON- of XML-gebaseerde voorinstellingen maken (met UTF-8- of UTF-16-codering. U zou dan de aangepaste voorinstelling doorgeven aan de encoder. Zie `Media Encoder Standard` [Taakvoorinstellingen voor Media Encoder Standard voor](media-services-mes-presets-overview.md)de lijst met alle vooraf ingestelde namen die door deze encoder worden ondersteund.  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit `H264 Single Bitrate High Quality SD for Android` onderwerp wordt de voorinstelling in XML- en JSON-indeling weergegeven.  
+ In dit onderwerp worden `H264 Single Bitrate High Quality SD for Android` de voor instellingen in de XML-en JSON-indeling weer gegeven.  
   
- Deze voorinstelling produceert een enkel MP4-bestand met een bitrate van 500 kbps en stereo OC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling rate, etc. van deze preset, onderzoekt u de XML of JSON die hieronder is gedefinieerd. Zie het [schemaonderwerp Media Encoder Standard](media-services-mes-schema.md) voor uitleg over wat elk element in deze voorinstellingen betekent en de geldige waarden voor elk element.  
+ Deze vooraf ingestelde produceert een enkel MP4-bestand met een bitrate van 500 Kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
  XML  
   

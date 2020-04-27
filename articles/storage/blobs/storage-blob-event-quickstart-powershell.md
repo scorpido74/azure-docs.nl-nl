@@ -1,5 +1,5 @@
 ---
-title: Azure Blob-opslaggebeurtenissen naar webeindpunt verzenden - Powershell | Microsoft Documenten
+title: Azure Blob Storage-gebeurtenissen naar web endpoint verzenden-Power shell | Microsoft Docs
 description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van Blob Storage.
 author: normesta
 ms.author: normesta
@@ -9,15 +9,15 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68847167"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Snelstart: opslaggebeurtenissen routeren naar webeindpunt met PowerShell
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Snelstartgids: opslag gebeurtenissen naar een webeindpunt door sturen met Power shell
 
-Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure PowerShell om u te abonneren op Blob-opslaggebeurtenissen, een gebeurtenis te activeren en het resultaat weer te geven. 
+Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure PowerShell om u te abonneren op Blob Storage-gebeurtenissen, een gebeurtenis te activeren en het resultaat weer te geven. 
 
 Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
@@ -29,17 +29,17 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In dit artikel moet u de nieuwste versie van Azure PowerShell uitvoeren. Zie [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps)als u Azure PowerShell moet installeren of upgraden.
+Voor dit artikel moet u de nieuwste versie van Azure PowerShell uitvoeren. Als u wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u met de `Connect-AzAccount` opdracht aan bij uw Azure-abonnement en volg de aanwijzingen op het scherm om te verifiëren.
+Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
 
 ```powershell
 Connect-AzAccount
 ```
 
-In dit voorbeeld wordt **westus2** gebruikt en wordt de selectie opgeslagen in een variabele voor gebruik in de hele taal.
+In dit voor beeld wordt **westus2** gebruikt en wordt de selectie in een variabele opgeslagen voor gebruik in.
 
 ```powershell
 $location = "westus2"
@@ -58,14 +58,14 @@ $resourceGroup = "gridResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
-Blob-opslaggebeurtenissen zijn beschikbaar in v2-opslagaccounts en Blob-opslagaccounts. **Algemeen gebruik v2**-accounts ondersteunen alle functies voor alle opslagservices, waaronder Blobs, bestanden, wachtrijen en tabellen. Een **Blob-opslagaccount** is een gespecialiseerd opslagaccount voor het opslaan van uw ongestructureerde gegevens als blobs (objecten) in Azure Storage. Blob-opslagaccounts zijn vergelijkbaar met de opslagaccounts voor algemeen gebruik en bieden dezelfde hoogwaardige kenmerken op het gebied van duurzaamheid, beschikbaarheid, schaalbaarheid en prestaties waarover u nu al beschikt, inclusief 100 procent API-consistentie voor blok-blobs en toevoeg-blobs. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
+Blob-opslaggebeurtenissen zijn beschikbaar in v2-opslagaccounts en Blob-opslagaccounts. **Algemeen gebruik v2**-accounts ondersteunen alle functies voor alle opslagservices, waaronder Blobs, bestanden, wachtrijen en tabellen. Een **Blob Storage-account** is een gespecialiseerd opslag account voor het opslaan van ongestructureerde gegevens als blobs (objecten) in azure Storage. Blob-opslagaccounts zijn vergelijkbaar met de opslagaccounts voor algemeen gebruik en bieden dezelfde hoogwaardige kenmerken op het gebied van duurzaamheid, beschikbaarheid, schaalbaarheid en prestaties waarover u nu al beschikt, inclusief 100 procent API-consistentie voor blok-blobs en toevoeg-blobs. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
 
-Maak een Blob-opslagaccount met LRS-replicatie met [Nieuw-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)en haal vervolgens de opslagaccountcontext op die het opslagaccount definieert dat moet worden gebruikt. Als u werkt met een opslagaccount, verwijst u naar de context in plaats van herhaaldelijk de referenties op te geven. In dit voorbeeld wordt een opslagaccount gemaakt met de naam **gridstorage** met lokaal redundante opslag (LRS). 
+Maak een Blob Storage-account met LRS-replicatie met behulp van [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)en haal vervolgens de context van het opslag account op waarmee het opslag account wordt gedefinieerd dat moet worden gebruikt. Als u werkt met een opslagaccount, verwijst u naar de context in plaats van herhaaldelijk de referenties op te geven. In dit voor beeld wordt een opslag account gemaakt met de naam **gridstorage** met lokaal redundante opslag (LRS). 
 
 > [!NOTE]
-> Namen van opslagaccounten bevinden zich in een globale naamruimte, dus u moet een aantal willekeurige tekens toevoegen aan de naam in dit script.
+> Namen van opslag accounts bevinden zich in een globale naam ruimte, zodat u wille keurige tekens moet toevoegen aan de naam die in dit script is opgenomen.
 
 ```powershell
 $storageName = "gridstorage"
@@ -103,7 +103,7 @@ Op de site zouden momenteel geen berichten moeten wijn weergeven.
 
 ## <a name="subscribe-to-your-storage-account"></a>Abonneren op uw opslagaccount
 
-U abonneert u op een onderwerp om Event Grid te vertellen welke gebeurtenissen u wilt bijhouden. In het volgende voorbeeld wordt u geabonneerd op het opslagaccount dat u hebt gemaakt en wordt de URL van uw web-app doorgegeven als eindpunt voor gebeurtenismeldingen. Het eindpunt voor uw web-app moet het achtervoegsel `/api/updates/` bevatten.
+U abonneert u op een onderwerp om Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het opslag account dat u hebt gemaakt en wordt de URL van uw web-app door gegeven als het eind punt voor gebeurtenis meldingen. Het eindpunt voor uw web-app moet het achtervoegsel `/api/updates/` bevatten.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -121,7 +121,7 @@ Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor ee
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Een gebeurtenis van Blob Storage activeren
 
-Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Laten we eerst een container en een object maken. Vervolgens uploaden we het object in de container.
+Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Eerst gaan we een container en een-object maken. Vervolgens uploaden we het object naar de container.
 
 ```powershell
 $containerName = "gridcontainer"
@@ -162,7 +162,7 @@ U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent door te werken met dit opslagaccount en een gebeurtenisabonnement, moet u de bronnen die in dit artikel zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende opdracht om de bronnen die u in dit artikel hebt gemaakt, te verwijderen.
+Als u van plan bent om met dit opslag account en gebeurtenis abonnement te blijven werken, moet u de resources die in dit artikel zijn gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende opdracht om de resources te verwijderen die u in dit artikel hebt gemaakt.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup

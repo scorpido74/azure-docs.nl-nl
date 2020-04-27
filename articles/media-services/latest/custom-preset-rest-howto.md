@@ -1,6 +1,6 @@
 ---
-title: Aangepaste transformatie coderen met Media Services v3 REST - Azure | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services v3 gebruiken om een aangepaste transformatie te coderen met REST.
+title: Aangepaste trans formatie coderen met behulp van Media Services v3 REST-Azure | Microsoft Docs
+description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services V3 gebruikt voor het coderen van een aangepaste trans formatie met behulp van REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,33 +13,33 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65761798"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>Hoe te coderen met een aangepaste transformatie - REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Coderen met een aangepaste transform-REST
 
-Wanneer u codeert met Azure Media Services, u snel aan de slag met een van de aanbevolen ingebouwde voorinstellingen, op basis van aanbevolen procedures in de branche, zoals aangetoond in de zelfstudie [voor streamingbestanden.](stream-files-tutorial-with-rest.md#create-a-transform) U ook een aangepaste voorinstelling maken om uw specifieke scenario of apparaatvereisten te targeten.
+Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen ingebouwde voor instellingen, op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-rest.md#create-a-transform) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 
 ## <a name="considerations"></a>Overwegingen
 
-Bij het maken van aangepaste voorinstellingen zijn de volgende overwegingen van toepassing:
+Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
-* Alle waarden voor hoogte en breedte op AVC-inhoud moeten een veelvoud van 4 zijn.
-* In Azure Media Services v3 zijn alle coderingsbitrates in bits per seconde. Dit is anders dan de presets met onze v2 API's, die kilobits per seconde als eenheid gebruikten. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
+* Alle waarden voor de hoogte en breedte van AVC-inhoud moeten een meervoud van 4 zijn.
+* In Azure Media Services v3 bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de voor instellingen met onze v2 Api's, die kilobits/seconde als eenheid hebben gebruikt. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
 
 ## <a name="prerequisites"></a>Vereisten 
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). <br/>Zorg ervoor dat u de naam van de brongroep en de naam van het Media Services-account onthoudt. 
-- [Postman configureren voor API-aanroepen van Azure Media Services REST](media-rest-apis-with-postman.md).<br/>Volg de laatste stap in het onderwerp [Azure AD-token opvragen](media-rest-apis-with-postman.md#get-azure-ad-token). 
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). <br/>Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- [Postman configureren voor Azure Media Services rest API-aanroepen](media-rest-apis-with-postman.md).<br/>Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
 
-## <a name="define-a-custom-preset"></a>Een aangepaste voorinstelling definiëren
+## <a name="define-a-custom-preset"></a>Een aangepaste voor instelling definiëren
 
-In het volgende voorbeeld wordt de aanvraagtekst van een nieuwe transformatie gedefinieerd. We definiëren een reeks uitvoerdie we willen genereren wanneer deze transformatie wordt gebruikt. 
+In het volgende voor beeld wordt de hoofd tekst van de aanvraag van een nieuwe trans formatie gedefinieerd. We definiëren een set uitvoer die we willen genereren wanneer deze trans formatie wordt gebruikt. 
 
-In dit voorbeeld voegen we eerst een AacAudio-laag toe voor de audiocodering en twee H264Video-lagen voor de videocodering. In de videolagen wijzen we labels toe, zodat ze kunnen worden gebruikt in de namen van uitvoerbestanden. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voorbeeld geven we afbeeldingen op in PNG-indeling, gegenereerd bij 50% van de resolutie van de invoervideo, en bij drie tijdstempels - {25%, 50%, 75} van de lengte van de invoervideo. Ten slotte specificeren we het formaat voor de uitvoerbestanden - een voor video + audio en een andere voor de miniaturen. Aangezien we meerdere H264Layers hebben, moeten we macro's gebruiken die unieke namen per laag produceren. We kunnen een `{Label}` `{Bitrate}` of macro gebruiken, het voorbeeld toont het eerste.
+In dit voor beeld voegen we eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we installatie kopieën op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
 
 ```json
 {
@@ -131,24 +131,24 @@ In dit voorbeeld voegen we eerst een AacAudio-laag toe voor de audiocodering en 
 
 ```
 
-## <a name="create-a-new-transform"></a>Een nieuwe transformatie maken  
+## <a name="create-a-new-transform"></a>Een nieuwe trans formatie maken  
 
-In dit voorbeeld maken we een **transformatie** die is gebaseerd op de aangepaste voorinstelling die we eerder hebben gedefinieerd. Wanneer u een transformatie maakt, moet u [eerst Get](https://docs.microsoft.com/rest/api/media/transforms/get) gebruiken om te controleren of er al een bestaat. Als de transformatie bestaat, u deze opnieuw gebruiken. 
+In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst [Get](https://docs.microsoft.com/rest/api/media/transforms/get) gebruiken om te controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. 
 
-Selecteer **transformeren en transformeren**->in de verzameling van de postbode die u hebt**gedownload.**
+Selecteer in de verzameling die u hebt gedownload, trans **formaties en taken**->**transform maken of bijwerken**.
 
-De **METHODE VOOR HET PUT** HTTP-verzoek is vergelijkbaar met:
+De methode voor het **opnemen** van HTTP-aanvragen is vergelijkbaar met:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-Selecteer het tabblad **Hoofdlichaam** en vervang de hoofdtekst door de eerder [gedefinieerde](#define-a-custom-preset)JSON-code. Als Media Services de transformatie wilt toepassen op de opgegeven video of audio, moet u een taak indienen onder die transformatie.
+Selecteer het tabblad **hoofd tekst** en vervang de hoofd tekst door de JSON-code die u [eerder hebt gedefinieerd](#define-a-custom-preset). Als Media Services de trans formatie op de opgegeven video of audio wilt Toep assen, moet u een taak onder die trans formatie indienen.
 
 Selecteer **Verzenden**. 
 
-Als Media Services de transformatie wilt toepassen op de opgegeven video of audio, moet u een taak indienen onder die transformatie. Zie [Zelfstudie: Videobestanden streamen - REST](stream-files-tutorial-with-rest.md)voor een compleet voorbeeld waarin wordt uitgelegd hoe u een taak onder een transformatie indient.
+Als Media Services de trans formatie op de opgegeven video of audio wilt Toep assen, moet u een taak onder die trans formatie indienen. Zie [zelf studie: video bestanden streamen-rest](stream-files-tutorial-with-rest.md)voor een volledig voor beeld waarin wordt getoond hoe u een taak onder een trans formatie verzendt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [andere REST-bewerkingen](https://docs.microsoft.com/rest/api/media/)
+[Andere rest-bewerkingen](https://docs.microsoft.com/rest/api/media/) weer geven

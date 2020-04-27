@@ -1,6 +1,6 @@
 ---
-title: Integriteit van Azure-infrastructuur
-description: In dit artikel wordt ingegaan op de integriteit van de Azure-infrastructuur.
+title: Integriteit van Azure-infra structuur
+description: Dit artikel heeft betrekking op de integriteit van de Azure-infra structuur.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,54 +16,54 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68727193"
 ---
-# <a name="azure-infrastructure-integrity"></a>Integriteit van Azure-infrastructuur
+# <a name="azure-infrastructure-integrity"></a>Integriteit van Azure-infra structuur
 
 ## <a name="software-installation"></a>Software-installatie
-Alle componenten in de softwarestack die in de Azure-omgeving zijn geïnstalleerd, zijn op maat gemaakt volgens het SDL-proces (Microsoft Security Development Lifecycle). Alle softwarecomponenten, inclusief besturingssysteemafbeeldingen en SQL Database, worden geïmplementeerd als onderdeel van het change management- en releasemanagementproces. Het besturingssysteem dat op alle knooppunten wordt uitgevoerd, is een aangepaste versie van Windows Server 2008 of Windows Server 2012. De exacte versie wordt gekozen door de stof controller (FC) op basis van de rol die het van plan is voor het OS te spelen. Bovendien staat het host-besturingssysteem de installatie van ongeautoriseerde softwarecomponenten niet toe.
+Alle onderdelen in de software stack die in de Azure-omgeving zijn geïnstalleerd, worden aangepast op basis van het proces micro soft Security Development Lifecycle (SDL). Alle software onderdelen, waaronder installatie kopieën van besturings systemen en SQL Database, worden geïmplementeerd als onderdeel van het proces voor wijzigings beheer en release beheer. Het besturings systeem dat op alle knoop punten wordt uitgevoerd, is een aangepaste versie van Windows Server 2008 of Windows Server 2012. De exacte versie wordt gekozen door de infrastructuur controller (FC) op basis van de rol die het besturings systeem wil afspelen. Daarnaast staat het besturings systeem van de host niet toe dat er onbevoegde software onderdelen worden geïnstalleerd.
 
-Sommige Azure-componenten worden geïmplementeerd als Azure-clients op een gast-VM die op een gastbesturingssysteem wordt uitgevoerd.
+Sommige Azure-onderdelen worden als Azure-klanten geïmplementeerd op een gast-VM die wordt uitgevoerd op een gast besturingssysteem.
 
 ## <a name="virus-scans-on-builds"></a>Virus scans op builds
-Azure-softwarecomponent (inclusief OS) builds moeten een virusscan ondergaan die gebruik maakt van het anti-virushulpprogramma Endpoint Protection. Elke virusscan maakt een logboek in de bijbehorende build directory, waarin wordt beschreven wat er is gescand en de resultaten van de scan. De virusscan maakt deel uit van de buildbroncode voor elk onderdeel binnen Azure. Code wordt niet verplaatst naar productie zonder een schone en succesvolle virusscan. Als er problemen worden opgemerkt, wordt de build bevroren en gaat vervolgens naar de beveiligingsteams binnen Microsoft Security om te bepalen waar de 'rogue'-code de build is binnengegaan.
+De builds van het Azure-software onderdeel (inclusief OS) moeten een virus scan ondergaan die gebruikmaakt van het Endpoint Protection Antivirus programma. Met elke virus scan wordt een logboek gemaakt in de bijbehorende build-map, waarin wordt beschreven wat er is gescand en wat de resultaten van de scan zijn. De virus scan maakt deel uit van de bron code van de build voor elk onderdeel in Azure. Code wordt niet verplaatst naar productie zonder een schone en geslaagde virus scan. Als er problemen worden opgemerkt, wordt de build bevroren en gaat u vervolgens naar de beveiligings teams in micro soft-beveiliging om te bepalen waar de "Rogue" code van de build is ingevoerd.
 
 ## <a name="closed-and-locked-environment"></a>Gesloten en vergrendelde omgeving
-Azure-infrastructuurknooppunten en gast-VM's hebben standaard geen gebruikersaccounts die erop zijn gemaakt. Daarnaast zijn standaard Windows-beheerdersaccounts ook uitgeschakeld. Beheerders van Azure live-ondersteuning kunnen zich met de juiste verificatie aanmelden bij deze machines en het Azure-productienetwerk beheren voor noodreparaties.
+Standaard hebben er geen gebruikers accounts voor Azure-infrastructuur knooppunten en gast-Vm's gemaakt. Daarnaast worden standaard Windows-beheerders accounts ook uitgeschakeld. Beheerders van Azure Live-ondersteuning kunnen, met de juiste verificatie, zich aanmelden bij deze machines en het Azure-productie netwerk beheren voor nood herstel.
 
 ## <a name="azure-sql-database-authentication"></a>Azure SQL Database-verificatie
-Zoals bij elke implementatie van SQL Server moet het beheer van gebruikersaccounts streng worden gecontroleerd. Azure SQL Database ondersteunt alleen SQL Server-verificatie. Als aanvulling op het gegevensbeveiligingsmodel van een klant moeten ook gebruikersaccounts met sterke wachtwoorden en geconfigureerd met specifieke rechten worden gebruikt.
+Net als bij elke implementatie van SQL Server moet het beheer van gebruikers accounts nauw keurig worden beheerd. Azure SQL Database ondersteunt alleen SQL Server-verificatie. Om het gegevens beveiligings model van een klant aan te vullen, moeten gebruikers accounts met sterke wacht woorden worden gebruikt en moeten ze ook worden geconfigureerd met specifieke rechten.
 
-## <a name="acls-and-firewalls-between-the-microsoft-corporate-network-and-an-azure-cluster"></a>ACL's en firewalls tussen het Microsoft-bedrijfsnetwerk en een Azure-cluster
-Toegangscontrolelijsten (ACL's) en firewalls tussen het serviceplatform en het Microsoft-bedrijfsnetwerk beschermen SQL Database-exemplaren tegen ongeautoriseerde toegang met voorkennis. Verder hebben alleen gebruikers van IP-adresuithet Microsoft-bedrijfsnetwerk toegang tot het eindpunt voor het beheervan het Windows Fabric-platformbeheer.
+## <a name="acls-and-firewalls-between-the-microsoft-corporate-network-and-an-azure-cluster"></a>Acl's en firewalls tussen het bedrijfs netwerk van micro soft en een Azure-cluster
+Toegangs beheer lijsten (Acl's) en firewalls tussen het service platform en het micro soft Corporate Network beveiligen SQL Database exemplaren van toegang voor niet-geautoriseerde Insider. Verder hebben alleen gebruikers van IP-adresbereiken van het micro soft-bedrijfs netwerk toegang tot het eind punt van het Windows Fabric platform-beheer.
 
-## <a name="acls-and-firewalls-between-nodes-in-a-sql-database-cluster"></a>ACL's en firewalls tussen knooppunten in een SQL-databasecluster
-Als extra bescherming zijn acl. als onderdeel van de defensie-in-dieptestrategie acl. en een firewall geïmplementeerd tussen knooppunten in een SQL Database-cluster. Alle communicatie binnen het Windows Fabric-platformcluster en alle hardloopcode wordt vertrouwd.
+## <a name="acls-and-firewalls-between-nodes-in-a-sql-database-cluster"></a>Acl's en firewalls tussen knoop punten in een SQL Database cluster
+Als extra beveiliging, als onderdeel van de ingrijpende diep gaande strategie, Acl's en een firewall zijn geïmplementeerd tussen knoop punten in een SQL Database cluster. Alle communicatie binnen het Windows Fabric platform cluster en alle actieve code wordt vertrouwd.
 
-## <a name="custom-monitoring-agents"></a>Aangepaste bewakingsagenten
-SQL Database maakt gebruik van aangepaste monitoring agents (MA's), ook wel waakhonden genoemd, om de status van het SQL Database-cluster te controleren.
+## <a name="custom-monitoring-agents"></a>Aangepaste bewakings agenten
+SQL Database maakt gebruik van aangepaste bewakings agenten (MAs), ook wel watchdog genoemd, om de status van het SQL Database cluster te controleren.
 
-## <a name="web-protocols"></a>Webprotocollen
+## <a name="web-protocols"></a>Webprotocols
 
-### <a name="role-instance-monitoring-and-restart"></a>Rolinstantiebewaking en opnieuw opstarten
-Azure zorgt ervoor dat alle geïmplementeerde, lopende rollen (webgericht internet of back-end processing worker rollen) onderworpen zijn aan langdurige statusbewaking om ervoor te zorgen dat ze effectief en efficiënt de services leveren waarvoor ze zijn ingericht. Als een rol niet in orde wordt, door een kritieke fout in de toepassing die wordt gehost of een onderliggend configuratieprobleem binnen de rolinstantie zelf, detecteert de FC het probleem binnen de rolinstantie en initieert een correctiestatus.
+### <a name="role-instance-monitoring-and-restart"></a>Bewaking van rolinstantie en opnieuw starten
+Azure zorgt ervoor dat alle geïmplementeerde, uitgevoerde rollen (Internet gerichte web-of back-end-werk rollen) onderhevig zijn aan de status controle, om ervoor te zorgen dat ze effectief en efficiënt de services leveren waarvoor ze zijn ingericht. Als een rol een slechte status krijgt, wordt door een kritieke fout in de toepassing die wordt gehost of een onderliggend configuratie probleem binnen de rolinstantie zelf, de FC het probleem in de rolinstantie gedetecteerd en wordt een herstel status geïnitieerd.
 
-### <a name="compute-connectivity"></a>Compute-connectiviteit
-Azure zorgt ervoor dat de geïmplementeerde toepassing of service bereikbaar is via standaard webgebaseerde protocollen. Virtuele exemplaren van internetgerichte webrollen hebben een externe internetverbinding en zijn rechtstreeks bereikbaar voor webgebruikers. Om de gevoeligheid en integriteit te beschermen van de bewerkingen die werknemersrollen uitvoeren ten behoeve van de openbaar toegankelijke virtuele exemplaren van de webrol, hebben virtuele exemplaren van back-end processing worker-rollen externe internetverbinding, maar kunnen ze niet worden rechtstreeks toegankelijk voor externe webgebruikers.
+### <a name="compute-connectivity"></a>Verbinding voor compute
+Azure zorgt ervoor dat de geïmplementeerde toepassing of service bereikbaar is via standaard protocollen op het web. Virtuele exemplaren van Internet gerichte webrollen hebben een externe Internet verbinding en zijn rechtstreeks bereikbaar voor webgebruikers. Voor het beveiligen van de gevoeligheid en integriteit van de bewerkingen die werk rollen uitvoeren namens de op openbaar toegankelijke webrollen gebaseerde virtuele instanties, hebben virtuele exemplaren van werk rollen van de back-upverwerking externe Internet verbinding, maar ze kunnen niet rechtstreeks worden geopend door externe webgebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
+Zie voor meer informatie over de mogelijkheden van micro soft voor het beveiligen van de Azure-infra structuur:
 
-- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
-- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
-- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
-- [Azure-netwerkarchitectuur](infrastructure-network.md)
-- [Azure-productienetwerk](production-network.md)
-- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
-- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
-- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
-- [Azure-klantgegevensbeveiliging](protection-customer-data.md)
+- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
+- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
+- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
+- [Azure-netwerk architectuur](infrastructure-network.md)
+- [Productie netwerk van Azure](production-network.md)
+- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
+- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
+- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
+- [Azure-klant gegevens beveiliging](protection-customer-data.md)

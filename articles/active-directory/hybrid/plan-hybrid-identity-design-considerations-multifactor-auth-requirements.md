@@ -1,6 +1,6 @@
 ---
-title: Hybride identiteitsontwerp - vereisten voor meervoudige verificatie Azure | Microsoft Documenten
-description: Met Conditional Access-beheer controleert Azure Active Directory de specifieke voorwaarden die u kiest bij het verifiëren van de gebruiker en voordat u toegang tot de toepassing toestaat. Zodra aan deze voorwaarden is voldaan, wordt de gebruiker geverifieerd en toegang tot de toepassing toegestaan.
+title: Hybride identiteits ontwerp-vereisten voor multi-factor Authentication Azure | Microsoft Docs
+description: Met voorwaardelijk toegangs beheer controleert Azure Active Directory de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan. Zodra aan deze voor waarden wordt voldaan, wordt de gebruiker geverifieerd en krijgt deze toegang tot de toepassing.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,46 +18,46 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67109297"
 ---
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Bepaal vereisten voor meervoudige verificatie voor uw hybride identiteitsoplossing
-In deze wereld van mobiliteit, met gebruikers toegang tot gegevens en toepassingen in de cloud en vanaf elk apparaat, is het beveiligen van deze informatie van het grootste belang geworden.  Elke dag is er een nieuwe kop over een inbreuk op de beveiliging.  Hoewel er geen garantie is tegen dergelijke inbreuken, biedt multi-factor authenticatie een extra beveiligingslaag om deze inbreuken te voorkomen.
-Begin met het evalueren van de vereisten van organisaties voor multi-factor authenticatie. Dat wil zeggen, wat is de organisatie probeert te beveiligen.  Deze evaluatie is belangrijk om de technische vereisten voor het opzetten en inschakelen van de organisaties gebruikers voor multi-factor authenticatie te definiëren.
+# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Multi-factor Authentication-vereisten voor uw hybride identiteits oplossing bepalen
+In deze wereld van mobiliteit, met gebruikers die toegang hebben tot gegevens en toepassingen in de Cloud en vanaf elk apparaat, is het beveiligen van deze gegevens het grootste geworden.  Elke dag is een nieuwe kop over een inbreuk op de beveiliging.  Hoewel er geen garantie is tegen dergelijke inbreuken, biedt multi-factor Authentication een extra beveiligingslaag om deze inbreuken te voor komen.
+Begin met het evalueren van de vereisten van organisaties voor multi-factor Authentication. Dat wil zeggen dat de organisatie probeert te beveiligen.  Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor het instellen en inschakelen van de organisaties gebruikers voor multi-factor Authentication.
 
-Zorg ervoor dat u het volgende antwoord geeft:
+Zorg ervoor dat u het volgende beantwoordt:
 
-* Probeert uw bedrijf Microsoft-apps te beveiligen? 
+* Probeert uw bedrijf micro soft-apps te beveiligen? 
 * Hoe worden deze apps gepubliceerd?
-* Biedt uw bedrijf op afstand toegang om werknemers toegang te geven tot on-premises apps?
+* Biedt uw bedrijf externe toegang zodat werk nemers toegang kunnen krijgen tot on-premises apps?
 
-Zo ja, wat voor soort toegang op afstand? U moet ook evalueren waar de gebruikers die toegang hebben tot deze toepassingen zich zullen bevinden. Deze evaluatie is een andere belangrijke stap om de juiste multi-factor authenticatie strategie te definiëren. Zorg ervoor dat u de volgende vragen beantwoordt:
+Zo ja, welk type externe toegang? U moet ook evalueren waar de gebruikers die toegang tot deze toepassingen hebben, zich bevinden. Deze evaluatie is een andere belang rijke stap om de juiste multi-factor Authentication-strategie te definiëren. Zorg ervoor dat u de volgende vragen beantwoordt:
 
 * Waar bevinden de gebruikers zich?
-* Kunnen ze ergens worden gevestigd?
+* Kunnen ze overal worden gevonden?
 * Wil uw bedrijf beperkingen instellen op basis van de locatie van de gebruiker?
 
-Zodra u deze vereisten begrijpt, is het belangrijk om ook de vereisten van de gebruiker voor multi-factor authenticatie te evalueren. Deze evaluatie is belangrijk omdat het de vereisten voor het uitrollen van multi-factor authenticatie zal definiëren. Zorg ervoor dat u de volgende vragen beantwoordt:
+Wanneer u deze vereisten begrijpt, is het belang rijk dat u ook de vereisten van de gebruiker voor multi-factor Authentication evalueert. Deze evaluatie is belang rijk omdat hiermee de vereisten voor het implementeren van multi-factor Authentication worden gedefinieerd. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Zijn de gebruikers bekend met multi-factor authenticatie?
-* Zijn sommige toepassingen vereist om extra verificatie te bieden?  
-  * Zo ja, de hele tijd, wanneer afkomstig van externe netwerken, of toegang tot specifieke toepassingen, of onder andere omstandigheden?
-* Hebben de gebruikers training nodig over het instellen en implementeren van multi-factor authenticatie?
-* Wat zijn de belangrijkste scenario's die uw bedrijf wil multi-factor authenticatie in te schakelen voor hun gebruikers?
+* Zijn de gebruikers bekend met multi-factor Authentication?
+* Moeten sommige toepassingen worden gebruikt om aanvullende verificatie te bieden?  
+  * Zo ja, altijd, wanneer ze afkomstig zijn uit externe netwerken of toegang krijgen tot specifieke toepassingen, of onder andere omstandigheden?
+* Moeten de gebruikers training hebben over het instellen en implementeren van multi-factor Authentication?
+* Wat zijn de belangrijkste scenario's waarin uw bedrijf multi-factor Authentication voor hun gebruikers wil inschakelen?
 
-Na het beantwoorden van de vorige vragen, u begrijpen of er multi-factor authenticatie al on-premises geïmplementeerd. Deze evaluatie is belangrijk om de technische vereisten voor het opzetten en inschakelen van de organisaties gebruikers voor multi-factor authenticatie te definiëren. Zorg ervoor dat u de volgende vragen beantwoordt:
+Nadat u de voor gaande vragen hebt beantwoord, kunt u nagaan of er lokaal multi-factor Authentication is geïmplementeerd. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor het instellen en inschakelen van de organisaties gebruikers voor multi-factor Authentication. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Moet uw bedrijf bevoorrechte accounts beschermen met MFA?
-* Moet uw bedrijf MFA inschakelen voor bepaalde toepassingen om nalevingsredenen?
-* Moet uw bedrijf MFA inschakelen voor alle in aanmerking komende gebruikers van deze toepassing of alleen beheerders?
-* Heeft u MFA altijd ingeschakeld of alleen wanneer de gebruikers buiten uw bedrijfsnetwerk zijn aangemeld?
+* Moet uw bedrijf bevoorrechte accounts beveiligen met MFA?
+* Moet uw bedrijf MFA inschakelen voor bepaalde toepassingen voor nalevings redenen?
+* Moet uw bedrijf MFA inschakelen voor alle in aanmerking komende gebruikers van deze toepassing of alleen voor beheerders?
+* Moet MFA altijd zijn ingeschakeld of alleen als de gebruikers worden geregistreerd buiten uw bedrijfs netwerk?
 
 ## <a name="next-steps"></a>Volgende stappen
-[Een strategie voor hybride identiteitsacceptatie definiëren](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+[Een strategie voor het implementeren van een hybride identiteit definiëren](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)
+[Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

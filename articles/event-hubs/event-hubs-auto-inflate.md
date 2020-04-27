@@ -1,6 +1,6 @@
 ---
-title: Doorvoereenheden automatisch opschalen - Azure Event Hubs | Microsoft Documenten
-description: Schakel Automatisch opblazen in op een naamruimte om de doorvoereenheden automatisch op te schalen.
+title: Doorvoer eenheden automatisch opschalen-Azure Event Hubs | Microsoft Docs
+description: Schakel automatisch verg Roten in een naam ruimte in om doorvoer eenheden automatisch te schalen.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,67 +16,67 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72264467"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Doorvoereenheden voor Azure Event Hubs automatisch opschalen
-Azure Event Hubs is een zeer schaalbaar datastreamingplatform. Als zodanig neemt het gebruik van Gebeurtenishubs vaak toe nadat de service is begonnen met het gebruik van de service. Een dergelijk gebruik vereist het verhogen van de vooraf bepaalde [doorvoereenheden](event-hubs-scalability.md#throughput-units) om gebeurtenishubs te schalen en grotere overdrachtssnelheden te verwerken. De **functie Automatisch opblazen** van gebeurtenishubs wordt automatisch opschalen door het aantal doorvoereenheden te verhogen om aan de gebruiksbehoeften te voldoen. Het verhogen van doorvoereenheden voorkomt beperkingsscenario's, waarbij:
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisch schalen van Azure Event Hubs doorvoer eenheden
+Azure Event Hubs is een uiterst schaalbaar platform voor het streamen van gegevens. Als zodanig neemt Event Hubs gebruik vaak toe na het starten van de service. Voor dit gebruik moet u de vooraf vastgestelde [doorvoer eenheden](event-hubs-scalability.md#throughput-units) verg Roten om event hubs te schalen en grotere overdrachts snelheden af te handelen. De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Het verhogen van doorvoer eenheden voor komt het beperken van scenario's, waarbij:
 
-* Gegevensinvallen overschrijden de ingestelde doorvoereenheden.
-* Gegevensuitgangsaanvraagsnelheden overschrijden de ingestelde doorvoereenheden.
+* Tarieven voor gegevens ingang overschrijden de ingestelde doorvoer eenheden.
+* De tarieven voor gegevens uitwissel aanvragen overschrijden de ingestelde doorvoer eenheden.
 
-De service Gebeurtenishubs verhoogt de doorvoer wanneer de belasting toeneemt boven de minimumdrempel, zonder dat aanvragen mislukken met serverdrukkefouten.
+De Event Hubs-service verhoogt de door Voer wanneer de belasting groter wordt dan de minimale drempel waarde, zonder dat er aanvragen worden uitgevoerd met ServerBusy-fouten.
 
-## <a name="how-auto-inflate-works"></a>Hoe auto-inflate werkt
+## <a name="how-auto-inflate-works"></a>Hoe automatisch verg Roten werkt
 
-Het verkeer van gebeurtenishubs wordt beheerd door [doorvoereenheden](event-hubs-scalability.md#throughput-units). Een enkele doorvoereenheid maakt 1 MB per seconde binnendringen en twee maal die hoeveelheid uitgang mogelijk. Standaard gebeurtenishubs kunnen worden geconfigureerd met 1-20 doorvoereenheden. Met automatisch opblazen u klein beginnen met de minimaal vereiste doorvoereenheden die u kiest. De functie schaalt vervolgens automatisch naar de maximale limiet van doorvoereenheden die u nodig hebt, afhankelijk van de toename van uw verkeer. Automatisch opblazen biedt de volgende voordelen:
+Event Hubs verkeer wordt bepaald door [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Eén doorvoer eenheid maakt 1 MB per seconde van binnenkomend en twee keer zo hoog mogelijk. Standaard Event hubs kunnen worden geconfigureerd met 1-20-doorvoer eenheden. Als u automatisch verg Roten, kunt u klein beginnen met de mini maal vereiste doorvoer eenheden die u kiest. De functie schaalt vervolgens automatisch naar de maximum limiet van de doorvoer eenheden die u nodig hebt, afhankelijk van de toename van uw verkeer. Automatisch verg Roten biedt de volgende voor delen:
 
-- Een efficiënt schaalmechanisme om klein te starten en op te schalen naarmate je groeit.
-- Schaal automatisch naar de opgegeven bovengrens zonder beperking.
-- Meer controle over schalen, omdat u bepaalt wanneer en hoeveel u moet schalen.
+- Een efficiënt schaal mechanisme om kleine te beginnen en omhoog te schalen naarmate u groeit.
+- Automatisch schalen naar de opgegeven bovengrens zonder beperking van problemen.
+- Meer controle over schalen, omdat u bepaalt wanneer en hoeveel u wilt schalen.
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Automatisch opblazen inschakelen op een naamruimte
+## <a name="enable-auto-inflate-on-a-namespace"></a>Automatisch verg Roten inschakelen voor een naam ruimte
 
-U de naamruimte voor gebeurtenishubs in een standaardlaag in- of uitschakelen met behulp van een van de volgende methoden:
+U kunt automatisch verg Roten op een standaardlaag Event Hubs naam ruimte in-of uitschakelen met behulp van een van de volgende methoden:
 
-- De [Azure-portal](https://portal.azure.com).
-- Een [Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
+- Het [Azure Portal](https://portal.azure.com).
+- Een [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
 
 > [!NOTE]
-> Naamruimten voor gebeurtenishubs op basisniveau bieden geen ondersteuning voor Automatisch opblazen.
+> De Basic-laag Event Hubs naam ruimten bieden geen ondersteuning voor automatisch verg Roten.
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Automatisch opblazen inschakelen via de portal
+### <a name="enable-auto-inflate-through-the-portal"></a>Automatisch verg Roten inschakelen via de portal
 
 
 #### <a name="enable-at-the-time-of-creation"></a>Inschakelen op het moment van maken 
-U de functie Automatisch opblazen inschakelen **bij het maken van een naamruimte voor gebeurtenishubs:**
+U kunt de functie voor automatisch verg Roten inschakelen **bij het maken van een event hubs naam ruimte**:
  
-![Automatisch opblazen inschakelen op het moment dat gebeurtenishub wordt gemaakt](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Automatisch verg Roten inschakelen op het moment Event Hub maken](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Als deze optie is ingeschakeld, u klein beginnen met uw doorvoereenheden en opschalen naarmate uw gebruiksbehoeften toenemen. De bovengrens voor inflatie heeft niet onmiddellijk invloed op de prijsstelling, wat afhankelijk is van het aantal doorvoereenheden dat per uur wordt gebruikt.
+Als deze optie is ingeschakeld, kunt u kleine met uw doorvoer eenheden starten en omhoog schalen naarmate uw gebruiks behoefte toeneemt. De bovengrens voor de inflatie is niet direct van invloed op de prijzen, wat afhankelijk is van het aantal gebruikte doorvoer eenheden per uur.
 
-#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Automatisch opblazen inschakelen voor een bestaande gebeurtenishub
-U ook de functie Automatisch opblazen inschakelen en de instellingen wijzigen met behulp van de volgende instructies: 
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Automatisch verg Roten inschakelen voor een bestaande Event Hub
+U kunt ook de functie voor automatisch verg Roten inschakelen en de instellingen wijzigen met behulp van de volgende instructies: 
  
-1. Selecteer op de pagina **Naamruimte van gebeurtenishubs** de optie **Uitgeschakeld** onder **doorvoereenheden automatisch opblazen**.  
+1. Selecteer op de pagina **Event hubs naam ruimte** de optie **uitgeschakeld** onder **doorvoer eenheden automatisch verg Roten**.  
 
-    ![Doorvoereenheden selecteren op de pagina Naamruimte van gebeurtenishubs](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. Schakel op de pagina **Schaalinstellingen** het selectievakje **inschakelen** in (als de functie automatisch schalen niet is ingeschakeld).
+    ![Doorvoer eenheden selecteren op de pagina met de Event Hubs naam ruimte](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. Schakel op de pagina **schaal instellingen** het selectie vakje voor **inschakelen** in (als de functie voor automatisch schalen niet is ingeschakeld).
 
-    ![Selecteer Inschakelen](./media/event-hubs-auto-inflate/scale-settings.png)
-3. Voer het **maximum** aantal doorvoereenheden in of gebruik de schuifbalk om de waarde in te stellen. 
-4. (facultatief) Werk het **minimumaantal** doorvoereenheden boven aan deze pagina bij. 
+    ![Selecteer inschakelen](./media/event-hubs-auto-inflate/scale-settings.png)
+3. Voer het **maximum** aantal doorvoer eenheden in of gebruik de schuif balk om de waarde in te stellen. 
+4. Beschrijving Werk het **minimum** aantal doorvoer eenheden toe boven aan deze pagina. 
 
 
 > [!NOTE]
-> Wanneer u de configuratie automatisch opblazen toepast om doorvoereenheden te verhogen, zendt de service Gebeurtenishubs diagnostische logboeken uit die u informatie geven over waarom en wanneer de doorvoer is toegenomen. Als u diagnostische logboekregistratie voor een gebeurtenishub wilt inschakelen, selecteert u **Diagnostische instellingen** in het linkermenu op de pagina Gebeurtenishub in de Azure-portal. Zie [Diagnostische logboeken instellen voor een Azure-gebeurtenishub voor](event-hubs-diagnostic-logs.md)meer informatie. 
+> Wanneer u de automatische vergren configuratie toepast om doorvoer eenheden te verhogen, verzendt de Event Hubs-service Diagnostische logboeken die u informatie geven over waarom en wanneer de door Voer is verhoogd. Als u diagnostische logboek registratie wilt inschakelen voor een Event Hub, selecteert u **Diagnostische instellingen** in het menu links op de pagina Event hub in de Azure Portal. Zie [Diagnostische logboeken instellen voor een Azure-Event hub](event-hubs-diagnostic-logs.md)voor meer informatie. 
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatisch opblazen inschakelen met een sjabloon Azure Resource Manager
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatisch verg Roten inschakelen met behulp van een Azure Resource Manager sjabloon
 
-U Automatisch opblazen inschakelen tijdens een azure resource manager-sjabloonimplementatie. Stel de `isAutoInflateEnabled` eigenschap bijvoorbeeld in op **true** en stel in op `maximumThroughputUnits` 10. Bijvoorbeeld:
+U kunt automatisch verg Roten inschakelen tijdens de implementatie van een Azure Resource Manager sjabloon. Stel de eigenschap bijvoorbeeld in `isAutoInflateEnabled` op **True** en stel `maximumThroughputUnits` deze in op 10. Bijvoorbeeld:
 
 ```json
 "resources": [
@@ -119,12 +119,12 @@ U Automatisch opblazen inschakelen tijdens een azure resource manager-sjabloonim
     ]
 ```
 
-Zie voor de volledige sjabloon de [naamruimte Gebeurtenishubs maken en inflatetemplate inschakelen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) op GitHub.
+Voor de volledige sjabloon, zie de [Event hubs naam ruimte maken en sjabloon verg Roten inschakelen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) op github.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van gebeurtenishubs](event-hubs-what-is-event-hubs.md)
+* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
 

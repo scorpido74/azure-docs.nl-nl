@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie microsoft Azure StorSimple Virtual Array-back-up | Microsoft Documenten
-description: Beschrijft hoe u een back-up storSimple Virtual Array aandelen en volumes.
+title: Microsoft Azure StorSimple zelf studie over het maken van een virtuele matrix | Microsoft Docs
+description: Hierin wordt beschreven hoe u een back-up maakt van StorSimple virtuele-matrix shares en-volumes.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,103 +16,103 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60581296"
 ---
-# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Back-ups maken van aandelen of volumes op uw StorSimple Virtual Array
+# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Maak een back-up van shares of volumes op uw virtuele StorSimple-matrix
 
 ## <a name="overview"></a>Overzicht
 
-De StorSimple Virtual Array is een on-premises virtueel apparaat voor hybride cloudopslag dat kan worden geconfigureerd als bestandsserver of iSCSI-server. Met de virtuele array kan de gebruiker geplande en handmatige back-ups maken van alle shares of volumes op het apparaat. Wanneer geconfigureerd als een bestandsserver, staat het ook item-level recovery toe. In deze zelfstudie wordt beschreven hoe u geplande en handmatige back-ups maakt en herstel op itemniveau uitvoert om een verwijderd bestand op uw virtuele array te herstellen.
+De virtuele StorSimple-matrix is een Hybrid Cloud Storage on-premises virtueel apparaat dat kan worden geconfigureerd als een bestands server of een iSCSI-server. Met de virtuele matrix kan de gebruiker geplande en hand matige back-ups maken van alle shares of volumes op het apparaat. Wanneer het is geconfigureerd als een bestands server, kan er ook herstel op item niveau worden ingesteld. In deze zelf studie wordt beschreven hoe u geplande en hand matige back-ups maakt en herstel op item niveau uitvoert om een verwijderd bestand in uw virtuele matrix te herstellen.
 
-Deze zelfstudie is alleen van toepassing op de StorSimple Virtual Arrays. Ga voor informatie over 8000-serie naar [Een back-up maken voor het apparaat uit de 8000-serie](storsimple-manage-backup-policies-u2.md)
+Deze zelf studie is alleen van toepassing op de virtuele StorSimple-matrices. Ga voor meer informatie over de 8000-serie naar [een back-up maken voor een 8000-serie apparaat](storsimple-manage-backup-policies-u2.md)
 
-## <a name="back-up-shares-and-volumes"></a>Back-up van aandelen en volumes
+## <a name="back-up-shares-and-volumes"></a>Back-ups maken van shares en volumes
 
-Back-ups bieden point-in-time bescherming, verbeteren de herstelbaarheid en minimaliseren de hersteltijden voor aandelen en volumes. U op twee manieren een back-up maken van een aandeel of volume op uw StorSimple-apparaat: **Gepland** of **handmatig**. Elk van de methoden wordt besproken in de volgende secties.
+Back-ups bieden tijdgebonden beveiliging, het verbeteren van herstel baarheid en het minimaliseren van de terugzet tijden voor shares en volumes. U kunt op twee manieren een back-up maken van een share of een volume op uw StorSimple-apparaat: **gepland** of **hand matig**. Elk van de methoden wordt in de volgende secties besproken.
 
-## <a name="change-the-backup-start-time"></a>De begintijd van de back-up wijzigen
+## <a name="change-the-backup-start-time"></a>De begin tijd van de back-up wijzigen
 
 > [!NOTE]
-> In deze release worden geplande back-ups gemaakt door een standaardbeleid dat dagelijks op een bepaald tijdstip wordt uitgevoerd en een back-up maakt van alle aandelen of volumes op het apparaat. Het is op dit moment niet mogelijk om aangepaste beleidsregels voor geplande back-ups te maken.
+> In deze release worden geplande back-ups gemaakt met een standaard beleid dat dagelijks op een opgegeven tijd wordt uitgevoerd en een back-up maakt van alle shares of volumes op het apparaat. Het is momenteel niet mogelijk om op dit moment aangepaste beleids regels te maken voor geplande back-ups.
 
 
-Uw StorSimple Virtual Array heeft een standaard back-upbeleid dat begint op een bepaald tijdstip van de dag (22:30) en één keer per dag een back-up maakt van alle aandelen of volumes op het apparaat. U het tijdstip waarop de back-up wordt gestart wijzigen, maar de frequentie en de retentie (die het aantal back-ups aangeeft dat moet worden behouden) kunnen niet worden gewijzigd. Tijdens deze back-ups wordt een back-up van het hele virtuele apparaat gemaakt. Dit kan van invloed zijn op de prestaties van het apparaat en de workloads die op het apparaat worden geïmplementeerd. Daarom raden we u aan deze back-ups te plannen voor daluren.
+De virtuele StorSimple-matrix bevat een standaard back-upbeleid dat begint op een opgegeven tijdstip (22:30) en een back-up maakt van alle shares of volumes op het apparaat één keer per dag. U kunt de tijd wijzigen waarop de back-up wordt gestart, maar de frequentie en de retentie (waarmee het aantal te bewaren back-ups wordt opgegeven) kan niet worden gewijzigd. Tijdens deze back-ups wordt er een back-up van het hele virtuele apparaat gemaakt. Dit kan mogelijk invloed hebben op de prestaties van het apparaat en van invloed zijn op de werk belastingen die op het apparaat zijn geïmplementeerd. Daarom wordt u aangeraden deze back-ups te plannen voor daluren.
 
- Als u de standaardbegintijd van de back-up wilt wijzigen, voert u de volgende stappen uit in de [Azure-portal.](https://portal.azure.com/)
+ Als u de standaard start tijd van de back-up wilt wijzigen, voert u de volgende stappen uit in de [Azure Portal](https://portal.azure.com/).
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>De begintijd voor het standaardback-upbeleid wijzigen
+#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>De start tijd voor het standaard back-upbeleid wijzigen
 
-1. Ga naar **Apparaten**. De lijst met apparaten die zijn geregistreerd bij uw StorSimple Device Manager-service wordt weergegeven. 
+1. Ga naar **apparaten**. De lijst met apparaten die zijn geregistreerd bij uw StorSimple Apparaatbeheer service worden weer gegeven. 
    
     ![naar apparaten navigeren](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Selecteer en klik op uw apparaat. Het **ondersmes instellingen** wordt weergegeven. Ga naar **Beleid voor > back-up beheren**.
+2. Selecteer en klik op uw apparaat. De Blade **instellingen** wordt weer gegeven. Ga naar **> back-upbeleid beheren**.
    
     ![uw apparaat selecteren](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. In het blade **Back-upbeleid** is de standaardbegintijd 22:30 uur. U de nieuwe begintijd voor de dagelijkse planning in de apparaattijdzone opgeven.
+3. Op de Blade **back-upbeleid** is de standaard start tijd 22:30. U kunt de nieuwe begin tijd voor de dagelijkse planning in de tijd zone van het apparaat opgeven.
    
     ![navigeren naar back-upbeleid](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
 4. Klik op **Opslaan**.
 
-### <a name="take-a-manual-backup"></a>Neem een handmatige back-up
+### <a name="take-a-manual-backup"></a>Een hand matige back-up maken
 
-Naast geplande back-ups u op elk gewenst moment een handmatige (on-demand) back-up van apparaatgegevens maken.
+Naast geplande back-ups kunt u op elk gewenst moment een hand matige back-up (op aanvraag) maken van apparaatgegevens.
 
 #### <a name="to-create-a-manual-backup"></a>Een handmatige back-up maken
 
-1. Ga naar **Apparaten**. Selecteer uw apparaat en klik met de rechtermuisknop **...** helemaal rechts in de geselecteerde rij. Selecteer **Back-up maken**in het contextmenu.
+1. Ga naar **apparaten**. Selecteer uw apparaat en klik met de rechter **muisknop helemaal rechts** in de geselecteerde rij. Selecteer **back-up maken**in het context menu.
    
-    ![navigeren om een back-up te maken](./media/storsimple-virtual-array-backup/takebackup1m.png)
+    ![navigeren om back-up te maken](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. Klik in het **back-upblad Nemen** op **Back-up maken.** Hiermee wordt een back-up gemaakt van alle shares op de bestandsserver of alle volumes op uw iSCSI-server. 
+2. Klik in de Blade **back-up** maken op **back-up**maken. Hiermee maakt u een back-up van alle shares op de bestands server of alle volumes op uw iSCSI-server. 
    
-    ![back-up vanaf](./media/storsimple-virtual-array-backup/takebackup2m.png)
+    ![back-up starten](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
-    Er wordt een on-demand back-up gestart en u ziet dat er een back-uptaak is gestart.
+    Er wordt een back-up op aanvraag gestart en u ziet dat er een back-uptaak is gestart.
    
-    ![back-up vanaf](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![back-up starten](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    Zodra de taak is voltooid, wordt u opnieuw op de hoogte gebracht. Het back-upproces begint dan.
+    Zodra de taak is voltooid, wordt u opnieuw op de hoogte gebracht. Het back-upproces wordt vervolgens gestart.
    
     ![back-uptaak gemaakt](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Als u de voortgang van de back-ups wilt bijhouden en de taakgegevens wilt bekijken, klikt u op de melding. Dit brengt u naar **Job details**.
+3. Als u de voortgang van de back-ups wilt bijhouden en de taak details wilt bekijken, klikt u op de melding. Hiermee gaat u naar **taak Details**.
    
-     ![back-uptaakgegevens](./media/storsimple-virtual-array-backup/takebackup5m.png)
+     ![Details van back-uptaak](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. Nadat de back-up is voltooid, gaat u naar **de catalogus beheer > back-up**. U ziet een cloudmomentopname van alle aandelen (of volumes) op uw apparaat.
+4. Nadat de back-up is voltooid, gaat u naar **beheer > backup Catalog**. Er wordt een Cloud momentopname van alle shares (of volumes) op het apparaat weer geven.
    
-    ![Voltooide back-up](./media/storsimple-virtual-array-backup/takebackup19m.png) 
+    ![Volledige back-up](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
-## <a name="view-existing-backups"></a>Bestaande back-ups weergeven
-Als u de bestaande back-ups wilt weergeven, voert u de volgende stappen uit in de Azure-portal.
+## <a name="view-existing-backups"></a>Bestaande back-ups weer geven
+Als u de bestaande back-ups wilt weer geven, voert u de volgende stappen uit in de Azure Portal.
 
-#### <a name="to-view-existing-backups"></a>Bestaande back-ups weergeven
+#### <a name="to-view-existing-backups"></a>Bestaande back-ups weer geven
 
-1. Ga naar **Devices** blade. Selecteer en klik op uw apparaat. Ga **in** het blad Instellingen naar **Management > Back-upcatalogus**.
+1. Ga naar de Blade **apparaten** . Selecteer en klik op uw apparaat. Ga op de Blade **instellingen** naar **beheer > backup Catalog**.
    
-    ![Navigeren naar een back-upcatalogus](./media/storsimple-virtual-array-backup/viewbackups1.png)
+    ![Navigeren naar back-upcatalogus](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. Geef de volgende criteria op die moeten worden gebruikt voor het filteren:
    
-   - **Tijdsbereik** – kan **afgelopen 1 uur**zijn, afgelopen **24 uur**, afgelopen 7 **dagen**, **afgelopen 30 dagen**, afgelopen **jaar**en **aangepaste datum**.
+   - **Tijds bereik** : kan **na 1 uur**, **afgelopen 24 uur**, **afgelopen 7 dagen**, **afgelopen 30 dagen**, **afgelopen jaar**en **aangepaste datum**zijn.
     
-   - **Apparaten** – kies uit de lijst met bestandsservers of iSCSI-servers die zijn geregistreerd bij uw StorSimple Device Manager-service.
+   - **Apparaten** : Selecteer in de lijst met bestands servers of iSCSI-servers die zijn geregistreerd bij uw StorSimple-Apparaatbeheer service.
    
-   - **Gestart** – kan automatisch worden **gepland** (door een back-upbeleid) of **handmatig** worden gestart (door u).
+   - **Gestart** : kan automatisch worden **gepland** (door middel van een back-upbeleid) of **hand matig** worden geïnitieerd (door u).
    
      ![Back-ups filteren](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Klik op **Toepassen**. De gefilterde lijst met back-ups wordt weergegeven in het blade van de **back-upcatalogus.** Opmerking er zijn slechts 100 back-upelementen die op een bepaald moment kunnen worden weergegeven.
+3. Klik op **Toepassen**. De gefilterde lijst met back-ups wordt weer gegeven op de Blade **back-upcatalogus** . Opmerking alleen 100 back-upelementen kunnen op een bepaald moment worden weer gegeven.
    
     ![Bijgewerkte back-upcatalogus](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het beheren van uw StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Meer informatie over [het beheren van uw StorSimple Virtual array](storsimple-ova-web-ui-admin.md).
 

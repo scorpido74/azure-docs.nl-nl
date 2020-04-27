@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen verzenden of ontvangen vanuit Azure Event Hubs met Python (laatste)
-description: Dit artikel biedt een walkthrough voor het maken van een Python-toepassing die gebeurtenissen verzendt/ontvangt van/naar Azure Event Hubs met behulp van het nieuwste azure-eventhub versie 5-pakket.
+title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met python (recentste)
+description: Dit artikel bevat een overzicht van het maken van een python-toepassing die gebeurtenissen naar/van Azure Event Hubs verzendt/ontvangt met behulp van het meest recente pakket met Azure-eventhub versie 5.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,47 +8,47 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 352ff91bf26c7ff4f6945431fe6e1357f030e1db
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 6b16398c7c1fd53562df7e4ac8e801a8c97162f6
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477529"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159434"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Gebeurtenissen verzenden naar of ontvangen van gebeurtenishubs met Python (azure-eventhub versie 5)
-Deze quickstart laat zien hoe u gebeurtenissen verzendt naar en ontvangt vanuit een gebeurtenishub met het **Azure-Eventhub-versie 5 Python-pakket.**
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Gebeurtenissen verzenden naar of ontvangen gebeurtenissen van Event hubs met behulp van python (Azure-eventhub versie 5)
+In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het python-pakket van **Azure-eventhub versie 5** .
 
 > [!IMPORTANT]
-> Deze quickstart maakt gebruik van het nieuwste azure-eventhub versie 5-pakket. Zie [Gebeurtenissen verzenden en ontvangen met Azure-Eventhub versie 1](event-hubs-python-get-started-send.md)voor een snelle start waarbij gebruik wordt gemaakt van het oude azure-eventhub-versie 1. 
+> Deze Snelstartgids maakt gebruik van het meest recente pakket voor Azure-eventhub versie 5. Zie [gebeurtenissen verzenden en ontvangen met Azure-eventhub versie 1](event-hubs-python-get-started-send.md)voor een snelle start die gebruikmaakt van het oude pakket met Azure-eventhub versie 1. 
 
 ## <a name="prerequisites"></a>Vereisten
-Als u nieuw bent in Azure Event Hubs, raadpleegt u [het overzicht van gebeurtenishubs](event-hubs-about.md) voordat u dit snel doet. 
+Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u [Event hubs Overview](event-hubs-about.md) voordat u deze Snelstartgids uitvoert. 
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, waaronder Azure Event Hubs, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen voor MSDN-abonnees gebruiken wanneer u een [account maakt.](https://azure.microsoft.com)
-- Python 2.7 of 3.5 of hoger, met PIP geïnstalleerd en bijgewerkt.
-- Het Python-pakket voor gebeurtenishubs. 
+- **Microsoft Azure abonnement**. Als u Azure-Services, met inbegrip van Azure Event Hubs, wilt gebruiken, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/free/) of de voor delen van uw MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
+- Python 2,7 of 3,5 of hoger, waarbij PIP is geïnstalleerd en bijgewerkt.
+- Het python-pakket voor Event Hubs. 
 
-    Als u het pakket wilt installeren, voert u deze opdracht uit in een opdrachtprompt met Python op zijn pad:
+    Als u het pakket wilt installeren, voert u deze opdracht uit in een opdracht prompt met python in het pad:
 
     ```cmd
     pip install azure-eventhub
     ```
 
-    Installeer het volgende pakket voor het ontvangen van de gebeurtenissen met Azure Blob-opslag als controlepuntarchief:
+    Installeer het volgende pakket om de gebeurtenissen te ontvangen met behulp van Azure Blob-opslag als controlepunt archief:
 
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
-- **Maak een naamruimte voor gebeurtenishubs en een gebeurtenishub**. De eerste stap is om de [Azure-portal](https://portal.azure.com) te gebruiken om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die uw toepassing nodig heeft om te communiceren met de gebeurtenishub. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Download vervolgens de **verbindingstekenreeks voor de naamruimte van gebeurtenishubs** door instructies uit het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingstekenreeks later in deze snelstart.
+- **Een event hubs naam ruimte en een event hub maken**. De eerste stap is het gebruik van de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Vervolgens haalt u de **Connection String voor de Event hubs naam ruimte** door de volgende instructies uit het artikel: [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de connection string verderop in deze Quick Start.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
-In deze sectie maakt u een Python-script om gebeurtenissen naar de gebeurtenishub te verzenden die u eerder hebt gemaakt.
+In deze sectie maakt u een python-script voor het verzenden van gebeurtenissen naar de Event Hub die u eerder hebt gemaakt.
 
-1. Open uw favoriete Python-editor, zoals [Visual Studio Code](https://code.visualstudio.com/).
-2. Maak een script *met*de send.py . Dit script stuurt een batch gebeurtenissen naar de gebeurtenishub die u eerder hebt gemaakt.
-3. Plak de volgende code in *send.py:*
+1. Open uw favoriete python-editor, zoals [Visual Studio code](https://code.visualstudio.com/).
+2. Maak een script met de naam *Send.py*. Met dit script wordt een batch gebeurtenissen verzonden naar de Event Hub die u eerder hebt gemaakt.
+3. Plak de volgende code in *Send.py*:
 
     ```python
     import asyncio
@@ -78,33 +78,33 @@ In deze sectie maakt u een Python-script om gebeurtenissen naar de gebeurtenishu
     ```
 
     > [!NOTE]
-    > Ga voor de volledige broncode, inclusief informatieve opmerkingen, naar de [pagina GitHub send_async.py.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)
+    > Ga voor de volledige bron code, inclusief informatieve opmerkingen, naar de [pagina GitHub send_async. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py).
     
 
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
-Deze quickstart gebruikt Azure Blob-opslag als controlepuntopslag. Het controlepuntarchief wordt gebruikt om controlepunten (dat wil zeggen de laatst gelezen posities) voort te houden.  
+Deze Snelstartgids maakt gebruik van Azure Blob Storage als een controlepunt opslag. De controlepunt opslag wordt gebruikt voor het persistent maken van controle punten (dat wil zeggen, de laatste lees posities).  
 
 > [!NOTE]
-> Als u op Azure Stack Hub werkt, kan dat platform een andere versie van Storage Blob SDK ondersteunen dan die welke doorgaans beschikbaar zijn op Azure. Als u bijvoorbeeld op [Azure Stack Hub-versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)draait, is de hoogst beschikbare versie voor de opslagservice versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie 2017-11-09 van de opslagservice te targeten. Zie de [synchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) en [asynchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) voorbeelden op GitHub voor een voorbeeld over het targeten van een specifieke Storage API-versie. Voor meer informatie over de Azure Storage-serviceversies die worden ondersteund op Azure Stack Hub, raadpleegt u [Azure Stack Hub-opslag: verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Als u gebruikmaakt van Azure Stack hub, ondersteunt dat platform mogelijk een andere versie van de opslag-BLOB-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld werkt met [Azure stack hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u, naast de volgende stappen in deze sectie, ook code toevoegen om de API-versie 2017-11-09 van de Storage-service te richten. Zie [synchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) en [asynchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) voor beelden op github voor een voor beeld van het richten op een specifieke opslag-API-versie. Raadpleeg [Azure stack hub Storage: verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)voor meer informatie over de versies van de Azure Storage-service die op Azure stack hub worden ondersteund.
 
 
-### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslagaccount en een blobcontainer maken
-Maak een Azure-opslagaccount en een blobcontainer in het account door de volgende stappen uit te voeren:
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslag account en een BLOB-container maken
+Maak een Azure Storage-account en een BLOB-container door de volgende stappen uit te voeren:
 
 1. [Een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Een blob-container maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [De verbindingstekenreeks naar het opslagaccount weerleggen](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [De connection string ophalen voor het opslag account](../storage/common/storage-configure-connection-string.md)
 
-Zorg ervoor dat u de verbindingstekenreeks en de containernaam registreert voor later gebruik in de ontvangstcode.
+Zorg ervoor dat u de connection string en de container naam vastlegt voor later gebruik in de receive-code.
 
 
-### <a name="create-a-python-script-to-receive-events"></a>Een Python-script maken om gebeurtenissen te ontvangen
+### <a name="create-a-python-script-to-receive-events"></a>Een python-script maken om gebeurtenissen te ontvangen
 
-In deze sectie maakt u een Python-script om gebeurtenissen van uw gebeurtenishub te ontvangen:
+In deze sectie maakt u een python-script om gebeurtenissen van uw Event Hub te ontvangen:
 
-1. Open uw favoriete Python-editor, zoals [Visual Studio Code](https://code.visualstudio.com/).
-2. Een script maken dat *recv.py*wordt genoemd .
-3. Plak de volgende code in *recv.py:*
+1. Open uw favoriete python-editor, zoals [Visual Studio code](https://code.visualstudio.com/).
+2. Maak een script met de naam *recv.py*.
+3. Plak de volgende code in *recv.py*:
 
     ```python
     import asyncio
@@ -137,29 +137,29 @@ In deze sectie maakt u een Python-script om gebeurtenissen van uw gebeurtenishub
     ```
 
     > [!NOTE]
-    > Ga voor de volledige broncode, inclusief aanvullende informatieve opmerkingen, naar de [pagina GitHub recv_with_checkpoint_store_async.py.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py)
+    > Ga voor de volledige bron code, met inbegrip van aanvullende informatieve opmerkingen, naar de [pagina GitHub recv_with_checkpoint_store_async. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py).
 
 
 ### <a name="run-the-receiver-app"></a>De ontvanger-app uitvoeren
 
-Als u het script wilt uitvoeren, opent u een opdrachtprompt met Python op het pad en voert u deze opdracht uit:
+Als u het script wilt uitvoeren, opent u een opdracht prompt met python in het pad en voert u de volgende opdracht uit:
 
 ```bash
 python recv.py
 ```
 
-### <a name="run-the-sender-app"></a>De afzender-app uitvoeren
+### <a name="run-the-sender-app"></a>De Sender-app uitvoeren
 
-Als u het script wilt uitvoeren, opent u een opdrachtprompt met Python op het pad en voert u deze opdracht uit:
+Als u het script wilt uitvoeren, opent u een opdracht prompt met python in het pad en voert u de volgende opdracht uit:
 
 ```bash
 python send.py
 ```
 
-In het venster van de ontvanger moeten de berichten worden weergegeven die naar de gebeurtenishub zijn verzonden.
+In het venster ontvanger moeten de berichten worden weer gegeven die naar het Event Hub zijn verzonden.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze snelstart hebt u gebeurtenissen asynchroon verzonden en ontvangen. Ga naar de [pagina GitHub sync_samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples)voor meer informatie over het synchroon verzenden en ontvangen van gebeurtenissen.
+In deze Quick Start hebt u gebeurtenissen asynchroon verzonden en ontvangen. Als u wilt weten hoe u gebeurtenissen synchroon kunt verzenden en ontvangen, gaat u naar de [pagina GitHub sync_samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples).
 
-Ga voor alle voorbeelden (zowel synchroon als asynchroon) op GitHub naar [azure event hubs-clientbibliotheek voor Python-voorbeelden.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+Voor alle voor beelden (zowel synchroon als asynchroon) op GitHub gaat u naar de [client bibliotheek van Azure Event hubs voor python-voor beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples).

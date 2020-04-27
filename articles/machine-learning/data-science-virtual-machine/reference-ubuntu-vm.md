@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631373"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161278"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -52,7 +52,7 @@ Enkele voor beelden van notebooks zijn beschikbaar in JupyterHub.
 
 H2O is een snelle, in-Memory, gedistribueerde machine learning en predictive analytics platform. Er wordt een python-pakket geïnstalleerd in de hoofd-en py35-Anaconda-omgeving. Er is ook een R-pakket geïnstalleerd. 
 
-Als u H2O vanaf de opdracht regel wilt openen `java -jar /dsvm/tools/h2o/current/h2o.jar`, voert u uit. Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt toegang krijgen tot de flow-webgebruikersinterface http://localhost:54321 door te bladeren naar om aan de slag te gaan. Voor beelden van notebooks zijn ook beschikbaar in JupyterHub.
+Als u H2O vanaf de opdracht regel wilt openen `java -jar /dsvm/tools/h2o/current/h2o.jar`, voert u uit. Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt toegang krijgen tot de flow-webgebruikersinterface `http://localhost:54321` door te bladeren naar om aan de slag te gaan. Voor beelden van notebooks zijn ook beschikbaar in JupyterHub.
 
 ### <a name="keras"></a>Keras
 
@@ -66,7 +66,7 @@ MXNet is een diep leer raamwerk dat is ontworpen voor zowel efficiency als flexi
 
 Het trainings systeem van de NVIDIA-Learning GPU, ook wel cijfers genoemd, is een systeem om veelvoorkomende, uitgebreide leer taken te vereenvoudigen. Deze taken omvatten het beheren van gegevens, het ontwerpen en trainen van Neural netwerken op GPU-systemen en het bewaken van prestaties in realtime met geavanceerde visualisatie.
 
-CIJFERS zijn beschikbaar als een service met de naam *cijfers*. Start de service en blader naar http://localhost:5000 om aan de slag te gaan.
+CIJFERS zijn beschikbaar als een service met de naam *cijfers*. Start de service en blader naar `http://localhost:5000` om aan de slag te gaan.
 
 CIJFERS worden ook geïnstalleerd als een python-module in de Conda-hoofd omgeving.
 
@@ -137,7 +137,7 @@ Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u
 
 De Anaconda-distributie wordt ook geleverd met een Jupyter-notebook, een omgeving om code en analyse te delen. De Jupyter-notebook wordt geopend via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord.
 
-De Jupyter-notebook server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de [https://localhost:8000/](https://localhost:8000/)Jupyter-notebook server op.
+De Jupyter-notebook server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de `https://localhost:8000/`Jupyter-notebook server op.
 
 > [!NOTE]
 > Ga door als u certificaat waarschuwingen ontvangt.

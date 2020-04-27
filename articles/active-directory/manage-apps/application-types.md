@@ -1,6 +1,6 @@
 ---
-title: Onverwachte aanvraag in mijn lijst met aanvragen | Microsoft Documenten
-description: Alle toepassingen in uw tenant bekijken en begrijpen hoe toepassingen worden weergegeven in uw lijst met alle toepassingen onder Enterprise-toepassingen
+title: Onverwachte toepassing in de lijst met toepassingen | Microsoft Docs
+description: Alle toepassingen in uw Tenant weer geven en begrijpen hoe toepassingen worden weer gegeven in de lijst alle toepassingen onder bedrijfs toepassingen
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,113 +16,113 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65781098"
 ---
-# <a name="unexpected-application-in-my-applications-list"></a>Onverwachte toepassing in mijn lijst met toepassingen
+# <a name="unexpected-application-in-my-applications-list"></a>Onverwachte toepassing in de lijst met toepassingen
 
-In dit artikel u begrijpen hoe toepassingen worden weergegeven in uw lijst **Met alle toepassingen** onder **Ondernemingstoepassingen**. 
+Dit artikel helpt u te begrijpen hoe toepassingen worden weer gegeven in de lijst **alle toepassingen** onder **bedrijfs toepassingen**. 
 
-## <a name="how-to-see-all-applications-in-your-tenant"></a>Hoe u alle toepassingen in uw tenant bekijken
+## <a name="how-to-see-all-applications-in-your-tenant"></a>Alle toepassingen in uw Tenant weer geven
 
-Als u alle toepassingen in uw tenant wilt bekijken, moet u het **besturingselement Filter** gebruiken om **Alle toepassingen** weer te geven onder de lijst **Alle toepassingen.** Volg deze stappen:
+Als u alle toepassingen in uw Tenant wilt zien, moet u het **filter** besturings element gebruiken om **alle toepassingen** in de lijst **alle toepassingen** weer te geven. Volg deze stappen:
 
-1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5.  Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-6.  klik op het besturingselement **Filter gebruiken** boven aan de lijst **Alle toepassingen**.
+6.  Klik op het **filter** besturings element gebruiken boven aan de **lijst alle toepassingen**.
 
-7.  Stel in het deelvenster **Filter** de optie **Weergeven** in **op Alle toepassingen.**
+7.  Stel in het deel venster **filter** de optie voor het **weer geven** van **alle toepassingen in.**
 
-## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Waarom wordt een specifieke toepassing weergegeven in mijn lijst met alle toepassingen?
+## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Waarom wordt een specifieke toepassing weer gegeven in mijn lijst met alle toepassingen?
 
-Wanneer deze wordt gefilterd naar **Alle toepassingen,** wordt in de **lijst** **Alle toepassingen** elk serviceprincipal-object in uw tenant weergegeven. Serviceprincipal-objecten kunnen op verschillende manieren in deze lijst worden weergegeven:
+Bij het filteren op **alle toepassingen**wordt in de **lijst** **alle toepassingen** elke service-principal-object in uw Tenant weer gegeven. Service-Principal-objecten kunnen op verschillende manieren in deze lijst worden weer gegeven:
 
-1. Wanneer u een toepassing toevoegt vanuit de toepassingsgalerie, waaronder:
+1. Wanneer u een toepassing toevoegt vanuit de toepassings galerie, waaronder:
 
-   1. **Azure AD-galerietoepassingen** – een toepassing die vooraf is geïntegreerd voor eenmalige aanmelding met Azure AD
+   1. **Azure AD Gallery-toepassingen** : een toepassing die vooraf is geïntegreerd voor eenmalige aanmelding met Azure AD
 
-   2. **Application Proxy Applications** – Een toepassing die wordt uitgevoerd in uw on-premises omgeving waarop u externe toepassingen veilig wilt aanmelden
+   2. **Toepassings proxy toepassingen** : een toepassing die in uw on-premises omgeving wordt uitgevoerd en die u wilt voorzien van een beveiligde eenmalige aanmelding op een externe locatie
 
-   3. **Op maat ontwikkelde toepassingen** – Een toepassing die uw organisatie wil ontwikkelen op het Azure AD Application Development Platform, maar die mogelijk nog niet bestaat
+   3. **Aangepaste, ontwikkelde toepassingen** : een toepassing die uw organisatie wil ontwikkelen op het Azure ad-platform voor toepassings ontwikkeling, maar die mogelijk nog niet bestaat
 
-   4. **Niet-Gallery Toepassingen** – Breng uw eigen toepassingen! Elke gewenste weblink of elke toepassing die een gebruikersnaam en wachtwoordveld weergeeft, SAML- of OpenID Connect-protocollen ondersteunt of SCIM ondersteunt die u wilt integreren voor eenmalige aanmelding met Azure AD.
+   4. **Niet-galerie toepassingen** : Breng uw eigen toepassingen. Een wille keurige webkoppeling of een toepassing die een gebruikers naam-en wachtwoord veld weergeeft, ondersteunt SAML-of OpenID Connect Connect-protocollen of ondersteunt SCIM die u wilt integreren voor eenmalige aanmelding met Azure AD.
 
-2. Wanneer u zich aanmeldt voor of zich aanmeldt bij een toepassing<sup>van derden</sup> die is geïntegreerd met Azure Active Directory. Een voorbeeld is [Smartsheet](https://app.smartsheet.com/b/home) of [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Wanneer u zich aanmeldt voor of zich aanmeldt bij, een toepassing met<sup>een 3-</sup> Party-partij die is geïntegreerd met Azure Active Directory. Een voor beeld is [Smart Sheet](https://app.smartsheet.com/b/home) of [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3. Wanneer u zich aanmeldt voor of een licentie toevoegt aan een gebruiker of een groep aan een first party-toepassing, zoals [Microsoft Office 365](https://products.office.com/)
+3. Als u zich aanmeldt voor of een licentie aan een gebruiker of een groep toevoegt aan een toepassing van de eerste partij, zoals [Microsoft Office 365](https://products.office.com/)
 
-4. Wanneer u een nieuwe toepassingsregistratie toevoegt door een op maat ontwikkelde toepassing te maken met behulp van het [toepassingsregister](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. Wanneer u een nieuwe toepassings registratie toevoegt door een aangepaste toepassing te maken met behulp van het [toepassings register](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5. Wanneer u een nieuwe toepassingsregistratie toevoegt door een op maat ontwikkelde toepassing te maken met behulp van de [V2.0 Application Registration portal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. Wanneer u een nieuwe toepassings registratie toevoegt door een aangepaste toepassing te maken met behulp van de [Portal voor toepassings registratie van de v 2.0-toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Wanneer u een toepassing toevoegt die u ontwikkelt met behulp van de [ASP.net-verificatiemethoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) van Visual Studio
+6. Wanneer u een toepassing die u ontwikkelt, toevoegt met behulp van de [ASP.NET-verificatie methoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) van Visual Studio
 
-7. Wanneer u een hoofdobject voor service maakt met de [Azure AD PowerShell-module](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Wanneer u een Service-Principal-object maakt met behulp van de [Azure AD Power shell-module](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8. Wanneer u [instemt met een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) als beheerder om gegevens in uw tenant te gebruiken
+8. Wanneer u [een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) als beheerder hebt om gegevens in uw Tenant te gebruiken
 
-9. Wanneer een [gebruiker instemt met een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) om gegevens in uw tenant te gebruiken
+9. Wanneer een [gebruiker een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) gebruikt om gegevens in uw Tenant te gebruiken
 
-10. Wanneer u bepaalde services inschakelt die gegevens opslaan in uw tenant. Een voorbeeld is Password Reset, dat is gemodelleerd als een serviceprincipal om uw wachtwoordresetbeleid veilig op te slaan.
+10. Wanneer u bepaalde services voor het opslaan van gegevens in uw Tenant inschakelt. Een voor beeld is het opnieuw instellen van een wacht woord, dat wordt gemodelleerd als Service-Principal om het beleid voor wachtwoord herstel veilig op te slaan.
 
-Lees Hoe en waarom toepassingen worden toegevoegd [aan Azure AD voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)meer informatie over de manier waarop apps aan uw map worden toegevoegd.
+Lees [hoe en waarom toepassingen worden toegevoegd aan Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)voor meer informatie over hoe apps worden toegevoegd aan uw Directory.
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Ik wil de toewijzing van een specifieke gebruiker of groep naar een toepassing verwijderen
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Ik wil de toewijzing van een specifieke gebruiker of groep aan een toepassing verwijderen
 
-Als u een gebruiker of groepstoewijzing wilt verwijderen naar een toepassing, voert u de stappen uit die worden vermeld in de [taak van een gebruiker of groep verwijderen uit een bedrijfsapp in het](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) Azure Active Directory-artikel.
+Als u een gebruiker of groeps toewijzing wilt verwijderen uit een toepassing, volgt u de stappen in de [toewijzing een gebruiker of groep verwijderen uit een bedrijfs-app in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) -artikel.
 
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Ik wil alle toegang tot een toepassing voor elke gebruiker uitschakelen
+## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Ik wil alle toegang tot een toepassing uitschakelen voor elke gebruiker
 
-Als u alle aanmeldingen van gebruikers bij een toepassing wilt uitschakelen, voert u de stappen uit die worden vermeld in de [aanmeldingen van gebruikers voor een bedrijfsapp uitschakelen in het](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) Azure Active Directory-artikel.
+Als u alle aanmeldingen van gebruikers voor een toepassing wilt uitschakelen, volgt u de stappen in het artikel [Gebruikers aanmeldingen voor een bedrijfs-app uitschakelen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) .
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Ik wil een toepassing volledig verwijderen
 
-Voer de volgende stappen uit om een toepassing te **verwijderen:**
+Voer de volgende stappen uit om **een toepassing te verwijderen**:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
 6. Selecteer de toepassing die u wilt verwijderen.
 
-7. Zodra de toepassing is geladen, klikt u op Pictogram **Verwijderen** in het **deelvenster Overzicht** van de bovenste toepassing.
+7. Zodra de toepassing is geladen, klikt u op pictogram **verwijderen** in het **overzichts** venster van de bovenste toepassing.
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ik wil alle toekomstige bewerkingen voor gebruikerstoestemming voor elke toepassing uitschakelen
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ik wil alle toekomstige bewerkingen voor gebruikers toestemming voor elke toepassing uitschakelen
 
-Het uitschakelen van de toestemming van de gebruiker voor uw hele map voorkomt dat eindgebruikers toestemming geven voor een toepassing. Beheerders kunnen nog steeds toestemming geven namens de gebruiker. Lees Toestemming voor gebruiker en beheerder begrijpen voor meer informatie over toestemming voor toepassingen en waarom u al dan niet toestemming wilt [geven.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
+Door de toestemming van de gebruiker voor uw hele map uit te scha kelen, voor komt u dat eind gebruikers aan elke toepassing worden doorgestuurd. Beheerders kunnen namens de gebruiker nog steeds toestemming geven. Meer informatie over de toestemming van de toepassing en waarom u dit mogelijk niet wilt doen, kunt u lezen [over de toestemming van gebruikers en beheerders](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
-Voer de volgende stappen uit om **alle toekomstige bewerkingen voor toestemming van gebruikers in uw hele map uit**te schakelen:
+Voer de volgende stappen uit om **alle toekomstige bewerkingen voor gebruikers toestemming in uw hele directory uit te scha kelen**:
 
-1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Gebruikers en groepen** in het navigatiemenu.
+4.  Klik op **gebruikers en groepen** in het navigatie menu.
 
-5.  klik op **Gebruikersinstellingen**.
+5.  Klik op **gebruikers instellingen**.
 
-6.  Schakel alle toekomstige bewerkingen voor toestemming van gebruikers uit door de instellingen in te stellen **dat gebruikers toegang kunnen geven tot hun gegevensschakeling** op **Nee** en op de knop **Opslaan** klikken.
+6.  Schakel alle toekomstige acties voor gebruikers toestemming uit door de gebruikers in staat te stellen **apps toegang te geven tot hun gegevens** in-of uit te scha **kelen en op** de knop **Opslaan** te klikken.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Toepassingen beheren met Azure Active Directory](what-is-application-management.md)

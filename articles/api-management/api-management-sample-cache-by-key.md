@@ -1,6 +1,6 @@
 ---
 title: Custom caching in Azure API Management (Aangepast opslaan in Azure API Management)
-description: Meer informatie over het cacheen van items per sleutel in Azure API Management
+description: Meer informatie over het opslaan van items op sleutel in azure API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60780817"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Custom caching in Azure API Management (Aangepast opslaan in Azure API Management)
-Azure API Management-service heeft ingebouwde ondersteuning voor [HTTP-responscaching](api-management-howto-cache.md) met behulp van de bron-URL als de sleutel. De sleutel kan worden gewijzigd door `vary-by` het aanvragen van headers met behulp van de eigenschappen. Dit is handig voor het incachen van hele HTTP-antwoorden (ook bekend als representaties), maar soms is het handig om gewoon een deel van een representatie in de cache te plaatsen. Het nieuwe beleid [met cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) en [cache-store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) biedt de mogelijkheid om willekeurige gegevens op te slaan en op te halen binnen beleidsdefinities. Deze mogelijkheid voegt ook waarde toe aan het eerder ingevoerde [beleid voor het aanvragen van verzenden,](/azure/api-management/api-management-advanced-policies#SendRequest) omdat u nu reacties van externe services cachen.
+De Azure API Management-service heeft ingebouwde ondersteuning voor [http-antwoord cache](api-management-howto-cache.md) met behulp van de resource-URL als sleutel. De sleutel kan worden gewijzigd met aanvraag headers met behulp van de `vary-by` eigenschappen. Dit is handig voor het in de cache opslaan van volledige HTTP-antwoorden (ook wel-voors tellingen), maar soms is het handig om alleen een gedeelte van een weer gave in de cache op te slaan. De nieuwe beleids regels voor [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) en [cache-Store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) bieden de mogelijkheid om wille keurige stukjes gegevens op te slaan en op te halen uit de beleids definities. Deze mogelijkheid voegt ook waarde toe aan het eerder geïntroduceerde beleid voor het [verzenden van aanvragen](/azure/api-management/api-management-advanced-policies#SendRequest) omdat u nu reacties van externe services kunt opslaan in de cache.
 
 ## <a name="architecture"></a>Architectuur
-API Management-service maakt gebruik van een gedeelde gegevenscache per tenant, zodat u, wanneer u opschaalt naar meerdere eenheden, nog steeds toegang krijgt tot dezelfde gegevens in de cache. Echter, bij het werken met een multi-regio implementatie zijn er onafhankelijke caches binnen elk van de regio's. Het is belangrijk om de cache niet te behandelen als een gegevensarchief, waar het de enige bron van een stukje informatie is. Als u dat wel deed, en later besloten om te profiteren van de multi-regio implementatie, dan kunnen klanten met gebruikers die reizen toegang verliezen tot die gegevens in de cache.
+API Management-service maakt gebruik van een gedeelde gegevens cache per Tenant, zodat u, wanneer u omhoog schaalt naar meerdere eenheden, u nog steeds toegang krijgt tot dezelfde gegevens in de cache. Wanneer u werkt met een implementatie met meerdere regio's, zijn er echter onafhankelijke caches in elk van de regio's. Het is belang rijk dat u de cache niet als een gegevens archief behandelt, waarbij het de enige bron is van een deel van de gegevens. Als u dit hebt gedaan en later besluit om te profiteren van de implementatie met meerdere regio's, kunnen klanten met gebruikers die onderweg geen toegang meer hebben tot de gegevens in de cache.
 
 ## <a name="fragment-caching"></a>Fragment caching
-Er zijn bepaalde gevallen waarin antwoorden worden geretourneerd een deel van de gegevens bevatten dat duur is om te bepalen en toch voor een redelijke hoeveelheid tijd vers blijft. Denk bijvoorbeeld aan een service die is gebouwd door een luchtvaartmaatschappij die informatie verstrekt over vluchtreserveringen, vluchtstatus, enz. Als de gebruiker lid is van het puntenprogramma van de luchtvaartmaatschappijen, heeft hij of zij ook informatie over hun huidige status en geaccumuleerde kilometers. Deze gebruikersgerelateerde informatie kan worden opgeslagen in een ander systeem, maar het kan wenselijk zijn om deze op te nemen in reacties die zijn geretourneerd over de vluchtstatus en reserveringen. Dit kan worden gedaan met behulp van een proces genaamd fragment caching. De primaire weergave kan worden geretourneerd van de oorsprongsserver met behulp van een soort token om aan te geven waar de gebruikersgerelateerde informatie moet worden ingevoegd. 
+Er zijn bepaalde gevallen waarin het retour neren van antwoorden een deel van de gegevens bevat die kostbaar zijn om te bepalen en die gedurende een redelijke hoeveelheid tijd vernieuwd blijven. Een voor beeld hiervan is een service die is gebouwd door een luchtvaart maatschappij die informatie bevat over vlucht reserveringen, vlucht status, enzovoort. Als de gebruiker lid is van het programma Airlines Points, hebben ze ook informatie over de huidige status en de gecumuleerde kilometer vergoeding. Deze aan de gebruiker gerelateerde informatie kan worden opgeslagen in een ander systeem, maar het kan wenselijk zijn om deze op te vragen in antwoorden die zijn geretourneerd over de status en reserve ringen van de vlucht. Dit kan worden gedaan met behulp van een proces met de naam fragment-caching. De primaire weer gave kan worden geretourneerd vanaf de oorspronkelijke server met een bepaald type token om aan te geven waar de gebruikers gegevens moeten worden ingevoegd. 
 
-Overweeg de volgende JSON-reactie van een backend-API.
+Bekijk de volgende JSON-reactie van een back-end-API.
 
 ```json
 {
@@ -43,13 +43,13 @@ Overweeg de volgende JSON-reactie van een backend-API.
 }  
 ```
 
-En secundaire `/userprofile/{userid}` bron op dat lijkt op,
+En de secundaire resource `/userprofile/{userid}` op dat lijkt,
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Om de juiste gebruikersinformatie te bepalen, moet API Management identificeren wie de eindgebruiker is. Dit mechanisme is uitvoeringsafhankelijk. Als voorbeeld gebruik ik `Subject` de claim `JWT` van een token. 
+API Management moet identificeren wie de eind gebruiker is om te bepalen welke gebruikers gegevens moeten worden toegevoegd. Dit mechanisme is implementatie afhankelijk. Een voor beeld: Ik gebruik de `Subject` claim van een `JWT` token. 
 
 ```xml
 <set-variable
@@ -57,7 +57,7 @@ Om de juiste gebruikersinformatie te bepalen, moet API Management identificeren 
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-API Management `enduserid` slaat de waarde op in een contextvariabele voor later gebruik. De volgende stap is om te bepalen of een eerdere aanvraag de gebruikersgegevens al heeft opgehaald en opgeslagen in de cache. Hiervoor maakt API Management `cache-lookup-value` gebruik van het beleid.
+API Management slaat de `enduserid` waarde in een context variabele op voor later gebruik. De volgende stap is om te bepalen of een eerdere aanvraag de gebruikers gegevens al heeft opgehaald en opgeslagen in de cache. Hiervoor gebruikt API Management het `cache-lookup-value` beleid.
 
 ```xml
 <cache-lookup-value
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Als er geen invoer in de cache is die `userprofile` overeenkomt met de sleutelwaarde, wordt er geen contextvariabele gemaakt. API Management controleert het succes van `choose` de opzoeking met behulp van het controlestroombeleid.
+Als er geen vermelding is in de cache die overeenkomt met de sleutel waarde, wordt `userprofile` er geen context variabele gemaakt. API Management controleert of de zoek actie is geslaagd met `choose` behulp van het controle beleid.
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ Als er geen invoer in de cache is die `userprofile` overeenkomt met de sleutelwa
 </choose>
 ```
 
-Als `userprofile` de contextvariabele niet bestaat, moet API-beheer een HTTP-verzoek indienen om deze op te halen.
+Als de `userprofile` context variabele niet bestaat, moet API management een HTTP-aanvraag indienen om deze op te halen.
 
 ```xml
 <send-request
@@ -92,7 +92,7 @@ Als `userprofile` de contextvariabele niet bestaat, moet API-beheer een HTTP-ver
 </send-request>
 ```
 
-API Management `enduserid` gebruikt de URL om de URL te construeren naar de bron van het gebruikersprofiel. Zodra API Management de respons heeft, haalt het de hoofdtekst uit de respons en slaat deze weer op in een contextvariabele.
+API Management gebruikt de `enduserid` om de URL voor de gebruikers profiel bron te maken. Zodra API Management de reactie heeft, wordt de hoofd tekst uit het antwoord opgehaald en wordt deze weer opgeslagen in een context variabele.
 
 ```xml
 <set-variable
@@ -100,7 +100,7 @@ API Management `enduserid` gebruikt de URL om de URL te construeren naar de bron
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-Om te voorkomen dat API Management dit HTTP-verzoek opnieuw indient, u, wanneer dezelfde gebruiker een ander verzoek doet, opgeven om het gebruikersprofiel in de cache op te slaan.
+Als u wilt voor komen API Management deze HTTP-aanvraag opnieuw te maken wanneer dezelfde gebruiker een andere aanvraag doet, kunt u opgeven om het gebruikers profiel op te slaan in de cache.
 
 ```xml
 <cache-store-value
@@ -108,11 +108,11 @@ Om te voorkomen dat API Management dit HTTP-verzoek opnieuw indient, u, wanneer 
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-API Management slaat de waarde in de cache op met exact dezelfde sleutel waarmee API Management deze oorspronkelijk probeerde op te halen. De duur die API Management kiest om de waarde op te slaan, moet worden gebaseerd op hoe vaak de informatie verandert en hoe tolerant gebruikers zijn ten opzichte van verouderde informatie. 
+API Management slaat de waarde in de cache op met de exacte sleutel die API Management oorspronkelijk heeft geprobeerd deze op te halen. De duur die API Management kiest om de waarde op te slaan, moet gebaseerd zijn op hoe vaak de gegevens veranderen en hoe tolerante gebruikers verouderde informatie hebben. 
 
-Het is belangrijk om te beseffen dat ophalen uit de cache is nog steeds een out-of-process, netwerk aanvraag en potentieel kan nog tientallen milliseconden toe te voegen aan de aanvraag. De voordelen komen bij het bepalen van de gebruikersprofielinformatie duurt langer dan die als gevolg van de noodzaak om database query's of geaggregeerde informatie uit meerdere back-ends te doen.
+Het is belang rijk om te realiseren dat het ophalen uit de cache nog steeds een out-of-process-netwerk aanvraag is en mogelijk nog steeds tien tallen milliseconden kan worden toegevoegd aan de aanvraag. De voor delen zijn van belang wanneer het bepalen van de gebruikers profiel gegevens langer duurt dan die omdat u database query's of statistische gegevens van meerdere back-ends nodig hebt.
 
-De laatste stap in het proces is het bijwerken van de geretourneerde reactie met de gebruikersprofielinformatie.
+De laatste stap in het proces is het bijwerken van het geretourneerde antwoord met de gebruikers profiel gegevens.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -121,9 +121,9 @@ De laatste stap in het proces is het bijwerken van de geretourneerde reactie met
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-U ervoor kiezen om de aanhalingstekens op te nemen als onderdeel van het token, zodat zelfs wanneer de vervanging niet plaatsvindt, het antwoord nog steeds een geldige JSON is.  
+U kunt ervoor kiezen om de aanhalings tekens als onderdeel van het token toe te voegen, zodat zelfs wanneer de vervangen niet plaatsvindt, het antwoord nog steeds een geldige JSON is.  
 
-Zodra u al deze stappen samencombineert, is het eindresultaat een beleid dat eruitziet als het volgende beleid.
+Wanneer u al deze stappen samen combineert, is het eind resultaat een beleid dat lijkt op het volgende.
 
 ```xml
 <policies>
@@ -177,22 +177,22 @@ Zodra u al deze stappen samencombineert, is het eindresultaat een beleid dat eru
 </policies>
 ```
 
-Deze caching-benadering wordt voornamelijk gebruikt op websites waar HTML is samengesteld aan de serverzijde, zodat deze als één pagina kan worden weergegeven. Het kan ook nuttig zijn in API's waar clients http-caching aan clientzijde niet kunnen doen of het wenselijk is om die verantwoordelijkheid niet op de klant te leggen.
+Deze cache benadering wordt voornamelijk gebruikt in websites waarbij HTML is samengesteld op de server, zodat deze kan worden weer gegeven als één pagina. Het kan ook nuttig zijn in Api's waarbij clients geen HTTP-caching aan client zijde kunnen uitvoeren of dat het wenselijk is dat deze verantwoordelijkheid niet op de client wordt geplaatst.
 
-Ditzelfde soort fragment caching kan ook worden gedaan op de backend webservers met behulp van een Redis caching server, echter, met behulp van de API Management service om dit werk uit te voeren is handig wanneer de cache fragmenten afkomstig zijn van verschillende back-ends dan de primaire Reacties.
+Hetzelfde soort fragment cache kan ook worden uitgevoerd op de back-end-webservers met behulp van een redis-cache server, maar het gebruik van de API Management-service voor het uitvoeren van dit werk is handig als de in cache gefragmenteerde fragmenten afkomstig zijn van verschillende back-ends dan de primaire reacties.
 
-## <a name="transparent-versioning"></a>Transparante versiebeheer
-Het is gebruikelijk dat meerdere verschillende implementatieversies van een API op een bepaald moment worden ondersteund. Bijvoorbeeld om verschillende omgevingen te ondersteunen (dev, test, productie, enz.) of om oudere versies van de API te ondersteunen om API-consumenten de tijd te geven om te migreren naar nieuwere versies. 
+## <a name="transparent-versioning"></a>Transparante versie beheer
+Het is gebruikelijk dat meerdere verschillende implementatie versies van een API tegelijk worden ondersteund. Ter ondersteuning van verschillende omgevingen (dev, test, productie, enz.) of ter ondersteuning van oudere versies van de API om tijd te bieden aan API-gebruikers om te migreren naar nieuwere versies. 
 
-Een benadering van de behandeling van dit, in plaats `/v1/customers` `/v2/customers` van te eisen dat clientontwikkelaars de URL's van naar zijn gewijzigd, is het opslaan in de profielgegevens van de consument welke versie van de API ze momenteel willen gebruiken en de juiste backend-URL aanroepen. Om de juiste backend-URL te bepalen om een bepaalde client te bellen, is het noodzakelijk om bepaalde configuratiegegevens op te vragen. Door deze configuratiegegevens in cache te plaatsen, kan API Management de prestatiestraf voor het uitvoeren van deze opzoeking minimaliseren.
+Een manier om dit af te handelen, in plaats van client ontwikkelaars in te stellen `/v1/customers` om `/v2/customers` de url's te wijzigen van in, is om op te slaan in de profiel gegevens van de gebruiker welke versie van de API ze momenteel willen gebruiken en de juiste back-end-URL aan te roepen. Als u wilt bepalen welke back-end-URL moet worden aangeroepen voor een bepaalde client, moet u een query uitvoeren op sommige configuratie gegevens. Als u deze configuratie gegevens in de cache opslaat, kan API Management de prestaties van deze zoek actie tot een minimum beperken.
 
-De eerste stap is het bepalen van de id die wordt gebruikt om de gewenste versie te configureren. In dit voorbeeld heb ik ervoor gekozen om de versie te koppelen aan de productabonnementscode. 
+De eerste stap is het bepalen van de id die wordt gebruikt voor het configureren van de gewenste versie. In dit voor beeld koos ik ervoor om de versie te koppelen aan de sleutel voor het product abonnement. 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-API Management doet vervolgens een cache lookup om te zien of het al de gewenste clientversie heeft opgehaald.
+API Management vervolgens een cache zoekopdracht om te zien of deze al de gewenste client versie heeft opgehaald.
 
 ```xml
 <cache-lookup-value
@@ -200,14 +200,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Vervolgens controleert API Management of het niet in de cache is gevonden.
+API Management controleert vervolgens of deze niet in de cache is gevonden.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-Als API Management het niet heeft gevonden, haalt API Management het op.
+Als API Management het niet vindt, wordt het door API Management opgehaald.
 
 ```xml
 <send-request
@@ -220,7 +220,7 @@ Als API Management het niet heeft gevonden, haalt API Management het op.
 </send-request>
 ```
 
-Haal de tekst van de antwoordtekst uit het antwoord.
+Haal de tekst van het antwoord op uit het antwoord.
 
 ```xml
 <set-variable
@@ -228,7 +228,7 @@ Haal de tekst van de antwoordtekst uit het antwoord.
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-Bewaar het terug in de cache voor toekomstig gebruik.
+Sla het opnieuw op in de cache voor toekomstig gebruik.
 
 ```xml
 <cache-store-value
@@ -237,7 +237,7 @@ Bewaar het terug in de cache voor toekomstig gebruik.
       duration="100000" />
 ```
 
-En ten slotte de back-end URL bijwerken om de versie van de service gewenst door de client te selecteren.
+En werk vervolgens de back-end-URL bij om de versie te selecteren van de service die door de client wordt gewenst.
 
 ```xml
 <set-backend-service
@@ -269,12 +269,12 @@ Het volledige beleid is als volgt:
 </inbound>
 ```
 
-Api-consumenten in staat stellen om op transparante wijze te bepalen welke backendversie door clients wordt benaderd zonder clients bij te werken en opnieuw te implementeren, is een elegante oplossing die veel API-versieproblemen aanpakt.
+Het inschakelen van API-gebruikers om op transparante wijze te bepalen welke back-end-versie wordt gebruikt door clients, zonder dat clients hoeven te worden bijgewerkt en opnieuw te implementeren is een elegante oplossing die veel API-versie problemen behandelt.
 
-## <a name="tenant-isolation"></a>Huurder Isolatie
-In grotere implementaties met meerdere tenants maken sommige bedrijven afzonderlijke groepen tenants op afzonderlijke implementaties van backend-hardware. Dit minimaliseert het aantal klanten dat wordt beïnvloed door een hardwareprobleem op de backend. Het maakt het ook mogelijk om nieuwe softwareversies gefaseerd uit te rollen. Idealiter moet deze backend-architectuur transparant zijn voor API-consumenten. Dit kan worden bereikt op een vergelijkbare manier als transparante versiebeheer, omdat het is gebaseerd op dezelfde techniek van het manipuleren van de backend URL met behulp van configuratiestatus per API-sleutel.  
+## <a name="tenant-isolation"></a>Tenant isolatie
+In grotere implementaties met meerdere tenants maken sommige bedrijven afzonderlijke groepen tenants op verschillende implementaties van back-end-hardware. Dit beperkt het aantal klanten dat wordt beïnvloed door een hardwareprobleem op de back-end. Daarnaast kunnen nieuwe software versies in fasen worden geïmplementeerd. In het ideale geval is deze back-end-architectuur transparant voor gebruikers van de API. Dit kan op een vergelijk bare manier worden gerealiseerd als transparante versie beheer, omdat deze is gebaseerd op dezelfde techniek van het bewerken van de back-end-URL met configuratie status per API-sleutel.  
 
-In plaats van een voorkeursversie van de API voor elke abonnementssleutel terug te sturen, retourneert u een id die een tenant heeft, terug naar de toegewezen hardwaregroep. Die id kan worden gebruikt om de juiste backend-URL te construeren.
+In plaats van een voorkeurs versie van de API te retour neren voor elke abonnements sleutel, zou u een id retour neren die een Tenant verbindt met de toegewezen hardwaregroep. Deze id kan worden gebruikt om de juiste back-end-URL te maken.
 
 ## <a name="summary"></a>Samenvatting
-De vrijheid om de Azure API-beheercache te gebruiken voor het opslaan van elke vorm van gegevens maakt efficiënte toegang tot configuratiegegevens mogelijk die van invloed kunnen zijn op de manier waarop een binnenkomende aanvraag wordt verwerkt. Het kan ook worden gebruikt om gegevensfragmenten op te slaan die reacties kunnen vergroten, geretourneerd uit een backend-API.
+De vrijheid van het gebruik van de cache van Azure API Management voor het opslaan van elk soort gegevens maakt efficiënte toegang mogelijk tot configuratie gegevens die van invloed kunnen zijn op de manier waarop een inkomende aanvraag wordt verwerkt. Het kan ook worden gebruikt voor het opslaan van gegevens fragmenten die reacties kunnen uitbreiden, geretourneerd door een back-end-API.

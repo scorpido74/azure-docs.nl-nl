@@ -1,6 +1,6 @@
 ---
-title: Blobs kopiëren van een opslagaccount naar een Azure Media Services-asset | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u een bestaande blob kopieert naar een Media Services-asset. In het voorbeeld wordt gebruik gebruikt voor Azure Media Services .NET SDK-extensies.
+title: Blobs kopiëren van een opslag account naar een Azure Media Services-Asset | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u een bestaande BLOB kopieert naar een Media Services-activum. In het voor beeld worden Azure Media Services .NET SDK-extensies gebruikt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67068897"
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Bestaande blobs kopiëren naar een Media Services-asset
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Bestaande blobs kopiëren naar een Media Services-Asset
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-In dit artikel ziet u hoe u blobs van een opslagaccount kopieert naar een nieuw AMS-asset (Azure Media Services) met [Azure Media Services .NET SDK-extensies](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+In dit artikel wordt beschreven hoe u blobs van een opslag account kopieert naar een nieuwe Azure Media Services-asset (AMS) met behulp van [Azure Media Services .NET SDK-extensies](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
 
-U moet niet proberen de inhoud van blobcontainers te wijzigen die door Media Services zijn gegenereerd zonder API's van mediaservice te gebruiken.
+U moet niet proberen om de inhoud te wijzigen van BLOB-containers die zijn gegenereerd door Media Services zonder gebruik te maken van media service-Api's.
 
-De uitbreidingsmethoden werken met:
+De extensie methoden werken met:
 
-- Regelmatige activa.
-- Live archiefelementen (FragBlob-indeling).
-- Bron- en bestemmingsactiva die behoren tot verschillende Media Services-accounts (zelfs in verschillende datacenters). Er kunnen echter kosten worden gemaakt door dit te doen. Zie [Gegevensoverdrachten](https://azure.microsoft.com/pricing/#header-11)voor meer informatie over prijzen.
+- Normale activa.
+- Live-Archief assets (FragBlob-indeling).
+- Bron-en doel assets die deel uitmaken van verschillende Media Services accounts (zelfs via verschillende data centers). Er kunnen echter kosten in rekening worden gebracht. Zie [gegevens overdracht](https://azure.microsoft.com/pricing/#header-11)voor meer informatie over prijzen.
 
-Het artikel toont twee code voorbeelden:
+Het artikel bevat twee code voorbeelden:
 
-1. Blobs van een asset in een AMS-account kopiëren naar een nieuw item in een andere AMS-account.
-2. Blobs van een opslagaccount kopiëren naar een nieuw item in een AMS-account.
+1. Kopieer blobs van een asset in één AMS-account naar een nieuwe asset in een ander AMS-account.
+2. Kopieer blobs van een opslag account naar een nieuwe asset in een AMS-account.
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>Blobs kopiëren tussen twee AMS-accounts  
 
 ### <a name="prerequisites"></a>Vereisten
 
-Twee Media Services-accounts. Zie het artikel [Hoe maak je een Media Services-account](media-services-portal-create-account.md)aan .
+Twee Media Services accounts. Zie het artikel [een Media Services-account maken voor meer informatie](media-services-portal-create-account.md).
 
 ### <a name="download-sample"></a>Voorbeeld downloaden
-U de stappen in dit artikel volgen of u een voorbeeld downloaden dat de code bevat die in dit artikel [wordt](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)beschreven.
+U kunt de stappen in dit artikel volgen of u kunt een voor beeld downloaden dat de code bevat [die in dit](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)artikel wordt beschreven.
 
 ### <a name="set-up-your-project"></a>Uw project instellen
 
-1. Stel uw ontwikkelomgeving in zoals beschreven in [mediaservices ontwikkeling met .NET](media-services-dotnet-how-to-use.md). 
-2. Voeg de sectie appInstellingen toe aan het .config-bestand en werk de waarden bij op basis van uw Media Services-accounts, het doelopslagaccount en de bronasset-id.  
+1. Stel uw ontwikkel omgeving in zoals beschreven in [Media Services Development met .net](media-services-dotnet-how-to-use.md). 
+2. Voeg de sectie appSettings toe aan het. config-bestand en werk de waarden bij op basis van uw Media Services accounts, het doel-opslag account en de ID van de bron Asset.  
 
 ```xml
 <appSettings>
@@ -76,9 +76,9 @@ U de stappen in dit artikel volgen of u een voorbeeld downloaden dat de code bev
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Blobs van een asset in een AMS-account kopiëren naar een asset in een ander AMS-account
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Blobs kopiëren van een asset in één AMS-account naar een asset in een ander AMS-account
 
-De volgende code maakt gebruik van extensie **IAsset.Copy** methode om alle bestanden in het bronitem te kopiëren naar de bestemming asset met behulp van een enkele extensie.
+De volgende code maakt gebruik van de methode extension **IAsset. Copy** om alle bestanden in de bron-Asset naar het doel activum te kopiëren met één extensie.
 
 ```csharp
 using System;
@@ -158,17 +158,17 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blobs van een opslagaccount kopiëren naar een AMS-account 
+## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blobs kopiëren van een opslag account naar een AMS-account 
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Eén opslagaccount waarvan u blobs wilt kopiëren.
-- Eén AMS-account waarop u blobs wilt kopiëren.
+- Een opslag account waarvan u de blobs wilt kopiëren.
+- Een AMS-account waarnaar u blobs wilt kopiëren.
 
 ### <a name="set-up-your-project"></a>Uw project instellen
 
-1. Stel uw ontwikkelomgeving in zoals beschreven in [mediaservices ontwikkeling met .NET](media-services-dotnet-how-to-use.md). 
-2. Voeg de sectie appInstellingen toe aan het .config-bestand en werk de waarden bij op basis van uw bronopslag en bestemmings-AMS-accounts.
+1. Stel uw ontwikkel omgeving in zoals beschreven in [Media Services Development met .net](media-services-dotnet-how-to-use.md). 
+2. Voeg de sectie appSettings toe aan het. config-bestand en werk de waarden bij op basis van de bron-en doel-AMS accounts.
 
 ```xml
 <appSettings>
@@ -185,12 +185,12 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Blobs van een opslagaccount kopiëren naar een nieuw item in een AMS-account
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Blobs kopiëren van een opslag account naar een nieuwe asset in een AMS-account
 
-Met de volgende code worden blobs van een opslagaccount kopieën gemaakt van een Media Services-item. 
+Met de volgende code worden blobs van een opslag account naar een Media Services-Asset gekopieerd. 
 
 >[!NOTE]
->Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Zie voor meer informatie [dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel.
+>Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Zie [Dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel voor meer informatie.
 
 ```csharp
 using System;

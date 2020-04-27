@@ -1,6 +1,6 @@
 ---
-title: Het wachtwoord voor apparaatbeheerders van StorSimple Virtual Array wijzigen | Microsoft Documenten
-description: Beschrijft hoe u de Azure-portal of de StorSimple Virtual Array-webgebruikersinterface gebruikt om het wachtwoord van de apparaatbeheerder te wijzigen.
+title: Beheerders wachtwoord voor StorSimple virtuele matrix wijzigen | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Web-UI van de Azure Portal-of StorSimple virtuele matrix kunt gebruiken om het beheerders wachtwoord van het apparaat te wijzigen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,67 +16,67 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60580365"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Het wachtwoord voor de beheerder van het StorSimple-apparaat apparaat wijzigen via StorSimple Device Manager
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Wijzig de StorSimple van de virtuele matrix van het apparaat met StorSimple Apparaatbeheer
 
 ## <a name="overview"></a>Overzicht
 
-Wanneer u de Windows PowerShell-interface gebruikt om toegang te krijgen tot de StorSimple Virtual Array, moet u een wachtwoord voor apparaatbeheerder invoeren. Wanneer het StorSimple-apparaat voor het eerst is ingericht en gestart, is het standaardwachtwoord *Password1*. Voor de beveiliging van uw gegevens verloopt het standaardwachtwoord de eerste keer dat u zich aanmeldt en moet u dit wachtwoord wijzigen.
+Wanneer u de Windows Power shell-interface gebruikt voor toegang tot de virtuele StorSimple-matrix, moet u een beheerders wachtwoord voor het apparaat opgeven. Wanneer het StorSimple-apparaat voor het eerst wordt ingericht en gestart, is het standaard wachtwoord *Wachtwoord1*. Voor de beveiliging van uw gegevens verloopt het standaard wachtwoord de eerste keer dat u zich aanmeldt en moet u dit wacht woord wijzigen.
 
-U ook de lokale webgebruikersinterface of de Azure-portal gebruiken om het wachtwoord van de apparaatbeheerder te wijzigen op elk gewenst moment nadat het apparaat in uw productieomgeving is geïmplementeerd. Elk van deze procedures wordt beschreven in dit artikel.
+U kunt ook de lokale webgebruikersinterface of de Azure Portal gebruiken om het beheerders wachtwoord van het apparaat op elk gewenst moment te wijzigen nadat het apparaat in uw productie omgeving is geïmplementeerd. Elk van deze procedures wordt beschreven in dit artikel.
 
- ![apparaten blad](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
+ ![Blade apparaten](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>De Azure-portal gebruiken om het wachtwoord te wijzigen
+## <a name="use-the-azure-portal-to-change-the-password"></a>Het Azure Portal gebruiken om het wacht woord te wijzigen
 
-Voer de volgende stappen uit om het wachtwoord van de apparaatbeheerder te wijzigen via de Azure-portal.
+Voer de volgende stappen uit om het beheerders wachtwoord van het apparaat te wijzigen via de Azure Portal.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Het wachtwoord van de apparaatbeheerder wijzigen via de Azure-portal
+#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Het beheerders wachtwoord voor het apparaat wijzigen via de Azure Portal
 
-1. Selecteer op de bestemmingspagina van de service uw service, dubbelklik op de servicenaam en klik vervolgens in de sectie **Beheer** op **Apparaten**. Hiermee wordt het **apparaatblad** geopend met al uw StorSimple Virtual Array-apparaten.
+1. Selecteer uw service op de pagina landings aanvoer, dubbel klik op de service naam en klik vervolgens in de sectie **beheer** op **apparaten**. Hiermee opent u de Blade **apparaten** met een lijst met alle virtuele StorSimple-apparaten.
 
-2. Dubbelklik in het blade **apparaten** op het apparaat waarvoor een wachtwoordwijziging vereist is.
+2. Op de Blade **apparaten** dubbelklikt u op het apparaat waarvoor het wacht woord moet worden gewijzigd.
 
-3. Klik in het **pagina-pagina-instellingen** voor uw apparaat op **Beveiliging**.
+3. Klik op de Blade **instellingen** voor uw apparaat op **beveiliging**.
 
-4. Ga als volgt te werk in het blad **Beveiligingsinstellingen:**
+4. Ga als volgt te werk op de Blade **beveiligings instellingen** :
    
-   1. Schuif omlaag naar de sectie **Wachtwoord apparaatbeheerder.** Geef een beheerderswachtwoord op dat 8 tot 15 tekens bevat.
+   1. Schuif omlaag naar de sectie **wacht woord** van het apparaat. Geef een beheerders wachtwoord op dat uit 8 tot 15 tekens bestaat.
    2. Bevestig het wachtwoord.
    3. Klik op **Opslaan** boven aan de blade.
 
-Het wachtwoord van de apparaatbeheerder is nu bijgewerkt. U dit gewijzigde wachtwoord gebruiken om lokaal toegang te krijgen tot het apparaat.
+Het beheerders wachtwoord voor het apparaat wordt nu bijgewerkt. U kunt dit gewijzigde wacht woord gebruiken om lokaal toegang te krijgen tot het apparaat.
 
-![Blad van beveiligingsinstellingen](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
+![Blade beveiligings instellingen](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>De lokale webgebruikersinterface gebruiken om het wachtwoord te wijzigen
+## <a name="use-the-local-web-ui-to-change-the-password"></a>De lokale web-UI gebruiken om het wacht woord te wijzigen
 
-Voer de volgende stappen uit om het wachtwoord van de apparaatbeheerder te wijzigen via de lokale webgebruikersinterface.
+Voer de volgende stappen uit om het beheerders wachtwoord van het apparaat te wijzigen via de lokale web-UI.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Het wachtwoord van de apparaatbeheerder wijzigen via de lokale webgebruikersinterface
+#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Het beheerders wachtwoord voor het apparaat wijzigen via de lokale webgebruikersinterface
 
-1. Klik in de lokale webgebruikersinterface op **Wijziging onderhoudswachtwoord** > **Password change** voor uw apparaat.
+1. Klik in de lokale web-UI op **onderhoud** > **wachtwoord wijziging** voor uw apparaat.
    
-    ![wachtwoord wijzigen1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. Voer het **huidige wachtwoord in**.
-3. Geef een **nieuw wachtwoord op.** Het wachtwoord moet ten minste 8 tekens lang zijn. Het moet 3 van de 4 van de volgende bevatten: hoofdletters, kleine letters, numerieke en speciale tekens.
+    ![Wachtwoord1 wijzigen](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
+2. Voer het **huidige wacht woord**in.
+3. Geef een **Nieuw wacht woord**op. Het wacht woord moet ten minste acht tekens lang zijn. De naam moet 3 van 4 van de volgende tekens bevatten: hoofd letters, kleine letters, cijfers en speciale letters.
    
-    Houd er rekening mee dat uw wachtwoord niet hetzelfde kan zijn als de laatste 24 wachtwoorden.
+    Uw wacht woord mag niet gelijk zijn aan de laatste 24 wacht woorden.
 4. Voer het wachtwoord opnieuw in ter bevestiging.
    
-    ![wachtwoord wijzigen2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. Klik onder aan de pagina op **Toepassen.** Het nieuwe wachtwoord wordt nu toegepast. Als de wachtwoordwijziging niet is gelukt, ziet u de volgende fout:
+    ![password2 wijzigen](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
+5. Klik onder aan de pagina op **Toep assen**. Het nieuwe wacht woord wordt nu toegepast. Als het wacht woord niet kan worden gewijzigd, ziet u de volgende fout:
    
-    ![wachtwoordfout](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
+    ![wachtwoord fout](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Nadat het wachtwoord is bijgewerkt, wordt u hiervan op de hoogte gesteld. U dit gewijzigde wachtwoord vervolgens gebruiken om lokaal toegang te krijgen tot het apparaat.
+    Nadat het wacht woord is bijgewerkt, wordt u hiervan op de hoogte gebracht. U kunt dit gewijzigde wacht woord vervolgens gebruiken om lokaal toegang te krijgen tot het apparaat.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [beheren van uw StorSimple Virtual Array.](storsimple-ova-web-ui-admin.md)
+Meer informatie over het [beheren van uw StorSimple Virtual array](storsimple-ova-web-ui-admin.md).
 

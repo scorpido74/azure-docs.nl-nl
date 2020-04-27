@@ -1,6 +1,6 @@
 ---
-title: Hybride identiteitsontwerp - adoptiestrategie Azure | Microsoft Documenten
-description: Met Conditional Access-beheer controleert Azure Active Directory de specifieke voorwaarden die u kiest bij het verifiëren van de gebruiker en voordat u toegang tot de toepassing toestaat. Zodra aan deze voorwaarden is voldaan, wordt de gebruiker geverifieerd en toegang tot de toepassing toegestaan.
+title: Ontwerp-strategie voor hybride identiteiten Azure | Microsoft Docs
+description: Met voorwaardelijk toegangs beheer controleert Azure Active Directory de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan. Zodra aan deze voor waarden wordt voldaan, wordt de gebruiker geverifieerd en krijgt deze toegang tot de toepassing.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,201 +18,201 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67109336"
 ---
-# <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor hybride identiteitsacceptatie definiëren
-In deze taak definieert u de hybride identiteitsacceptatiestrategie voor uw hybride identiteitsoplossing om te voldoen aan de bedrijfsvereisten die zijn besproken in:
+# <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor het implementeren van een hybride identiteit definiëren
+In deze taak definieert u de strategie voor het implementeren van de hybride identiteit voor uw hybride identiteits oplossing om te voldoen aan de bedrijfs vereisten die worden beschreven in:
 
-* [Bepalen van de zakelijke behoeften](plan-hybrid-identity-design-considerations-business-needs.md)
-* [Adreslijstsynchronisatievereisten bepalen](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
-* [Vereisten voor meervoudige verificatie bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+* [Bedrijfs behoeften bepalen](plan-hybrid-identity-design-considerations-business-needs.md)
+* [Vereisten voor adreslijst synchronisatie bepalen](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+* [Vereisten voor multi-factor Authentication bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="define-business-needs-strategy"></a>Definieer de strategie voor bedrijfsbehoeften
-De eerste taak is gericht op het bepalen van de behoeften van organisaties die bedrijven.  Dit kan zeer breed zijn en scope creep kan optreden als je niet voorzichtig bent.  In het begin, houd het eenvoudig, maar altijd onthouden om te plannen voor een ontwerp dat geschikt is voor en verandering te vergemakkelijken in de toekomst.  Of het nu gaat om een eenvoudig ontwerp of een uiterst complex ontwerp, Azure Active Directory is het Microsoft Identity-platform dat Office 365, Microsoft Online Services en cloudbewuste toepassingen ondersteunt.
+## <a name="define-business-needs-strategy"></a>Strategie voor bedrijfs behoeften definiëren
+De eerste taak is een oplossing voor het bepalen van de bedrijfs behoeften van de organisatie.  Dit kan zeer breed zijn en bereik kneep kan zich voordoen als u niet voorzichtig bent.  Zorg er in het begin voor dat u het eenvoudig kunt plannen voor een ontwerp dat in de toekomst kan worden aangepast en eenvoudiger kan worden gewijzigd.  Of het nu gaat om een eenvoudig ontwerp of een extreem complex, Azure Active Directory is het micro soft Identity-platform dat ondersteuning biedt voor Office 365, micro soft Online Services en Cloud bewuste toepassingen.
 
-## <a name="define-an-integration-strategy"></a>Een integratiestrategie definiëren
-Microsoft heeft drie belangrijke integratiescenario's die cloudidentiteiten, gesynchroniseerde identiteiten en federatieve identiteiten zijn.  U moet van plan zijn een van deze integratiestrategieën aan te nemen.  De strategie die u kiest kan variëren en de beslissingen bij het kiezen van een kan omvatten, wat voor soort gebruikerservaring u wilt bieden, heeft u een bestaande infrastructuur, en wat is de meest kosteneffectieve.  
+## <a name="define-an-integration-strategy"></a>Een integratie strategie definiëren
+Micro soft heeft drie belangrijkste integratie scenario's die Cloud-identiteiten, gesynchroniseerde identiteiten en federatieve identiteiten zijn.  U moet een van deze integratie strategieën plannen.  De strategie die u kiest, kan variëren en de beslissingen bij het kiezen van een van de mogelijkheden zijn, welk type gebruikers ervaring u wilt bieden, hebt u een bestaande infra structuur en wat is de meeste kosten effectief.  
 
-![integratiescenario's](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![integratie scenario's](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
-De scenario's die in het bovenstaande figuur zijn gedefinieerd zijn:
+De scenario's die in de bovenstaande afbeelding zijn gedefinieerd, zijn:
 
-* **Cloudidentiteiten**: dit zijn identiteiten die uitsluitend in de cloud bestaan.  In het geval van Azure AD bevinden ze zich specifiek in uw Azure AD-map.
-* **Gesynchroniseerd**: dit zijn identiteiten die on-premises en in de cloud bestaan.  Met Azure AD Connect worden deze gebruikers gemaakt of samengevoegd met bestaande Azure AD-accounts.  De wachtwoordhash van de gebruiker wordt gesynchroniseerd van de on-premises omgeving naar de cloud in wat een wachtwoordhash wordt genoemd.  Bij het gebruik van gesynchroniseerd is het enige voorbehoud dat als een gebruiker is uitgeschakeld in de on-premises omgeving, het tot drie uur kan duren voordat die accountstatus wordt weergegeven in Azure AD.  Dit is te wijten aan het synchronisatietijdinterval.
-* **Federated**: deze identiteiten bestaan zowel on-premises als in de cloud.  Met Azure AD Connect worden deze gebruikers gemaakt of samengevoegd met bestaande Azure AD-accounts.  
+* **Cloud-identiteiten**: Dit zijn identiteiten die uitsluitend bestaan in de Cloud.  In het geval van Azure AD zouden ze in de Active Directory van Azure AD zijn opgeslagen.
+* **Gesynchroniseerd**: Dit zijn identiteiten die on-premises en in de Cloud aanwezig zijn.  Met Azure AD Connect worden deze gebruikers gemaakt of gekoppeld aan bestaande Azure AD-accounts.  De wacht woord-hash van de gebruiker wordt gesynchroniseerd van de on-premises omgeving naar de cloud in wat wordt een wacht woord-hash genoemd.  Bij het gebruik van gesynchroniseerd het ene voor behoud is dat als een gebruiker is uitgeschakeld in de on-premises omgeving, het kan tot drie uur duren voordat de account status wordt weer gegeven in azure AD.  Dit wordt veroorzaakt door het tijds interval voor synchronisatie.
+* **Federatief**: deze identiteiten bestaan zowel on-premises als in de Cloud.  Met Azure AD Connect worden deze gebruikers gemaakt of gekoppeld aan bestaande Azure AD-accounts.  
 
 > [!NOTE]
-> Lees Uw [on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)voor meer informatie over de synchronisatieopties.
+> Lees [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)voor meer informatie over de synchronisatie opties.
 > 
 > 
 
-De volgende tabel helpt bij het bepalen van de voor- en nadelen van elk van de volgende strategieën:
+De volgende tabel helpt bij het bepalen van de voor-en nadelen van elk van de volgende strategieën:
 
 | Strategie | Voordelen | Nadelen |
 | --- | --- | --- |
-| **Cloudidentiteiten** |Eenvoudiger te beheren voor kleine organisaties. <br> Niets om on-premises te installeren. Geen extra hardware nodig<br>Gemakkelijk uitgeschakeld als de gebruiker het bedrijf verlaat |Gebruikers moeten zich aanmelden wanneer ze toegang krijgen tot workloads in de cloud <br> Wachtwoorden kunnen al dan niet hetzelfde zijn voor cloud- en on-premises identiteiten |
-| **Gesynchroniseerd** |On-premises wachtwoord verifieert zowel on-premises als cloudmappen <br>Eenvoudiger te beheren voor kleine, middelgrote of grote organisaties <br>Gebruikers kunnen eenmalige aanmelding (SSO) hebben voor sommige bronnen <br> Microsoft-voorkeursmethode voor synchronisatie <br> Eenvoudiger te beheren |Sommige klanten zijn mogelijk terughoudend om hun mappen te synchroniseren met de cloud vanwege de politie van het specifieke bedrijf |
-| **Federatief** |Gebruikers kunnen eenmalige aanmelding (SSO) <br>Als een gebruiker wordt beëindigd of vertrekt, kan het account onmiddellijk worden uitgeschakeld en kan de toegang worden ingetrokken,<br> Ondersteunt geavanceerde scenario's die niet kunnen worden uitgevoerd met gesynchroniseerd |Meer stappen voor het instellen en configureren <br> Hoger onderhoud <br> Mogelijk extra hardware nodig voor de STS-infrastructuur <br> Mogelijk is extra hardware nodig om de federatieserver te installeren. Aanvullende software is vereist als AD FS wordt gebruikt <br> Vereisen uitgebreide setup voor SSO <br> Kritiek punt van storing als de federatieserver is uitgeschakeld, kunnen gebruikers zich niet verifiëren |
+| **Cloud-identiteiten** |Eenvoudiger te beheren voor kleine organisaties. <br> Niets om on-premises te installeren. Er is geen extra hardware nodig<br>Eenvoudig uitschakelen als de gebruiker het bedrijf verlaat |Gebruikers moeten zich aanmelden bij het openen van werk belastingen in de Cloud <br> Wacht woorden mogen al dan niet hetzelfde zijn voor Cloud-en on-premises identiteiten |
+| **Aanvankelijk** |On-premises wacht woord verifieert on-premises en Cloud directory's <br>Eenvoudiger te beheren voor kleine, middel grote of grootschalige organisaties <br>Gebruikers kunnen eenmalige aanmelding (SSO) voor sommige resources hebben <br> Voorkeurs methode van micro soft voor synchronisatie <br> Eenvoudiger te beheren |Sommige klanten kunnen niet langer hun directory's synchroniseren met de cloud die het beleid van de specifieke bedrijfs politie heeft |
+| **Federatief** |Gebruikers kunnen eenmalige aanmelding (SSO) hebben <br>Als een gebruiker wordt beëindigd of verlaat, kan het account direct worden uitgeschakeld en kan de toegang worden ingetrokken.<br> Ondersteunt geavanceerde scenario's die niet kunnen worden uitgevoerd met gesynchroniseerd |Meer stappen voor het instellen en configureren <br> Hoger onderhoud <br> Hiervoor is mogelijk extra hardware vereist voor de STS-infra structuur <br> Mogelijk is extra hardware vereist voor de installatie van de Federatie server. Aanvullende software is vereist als AD FS wordt gebruikt <br> Uitgebreide installatie vereisen voor SSO <br> Kritiek risico punt als de Federatie server niet beschikbaar is, kunnen gebruikers geen verificatie uitvoeren |
 
 ### <a name="client-experience"></a>Clientervaring
-De strategie die u gebruikt, bepaalt de aanmeldingservaring van de gebruiker.  In de volgende tabellen vindt u informatie over wat de gebruikers moeten verwachten van hun aanmeldingservaring.  Niet alle federatieve identiteitsproviders ondersteunen SSO in alle scenario's.
+De strategie die u gebruikt, bepaalt de aanmeldings ervaring van de gebruiker.  In de volgende tabellen vindt u informatie over de gebruikers die hun aanmeld ervaring moeten verwachten.  Niet alle federatieve id-providers ondersteunen SSO in alle scenario's.
 
-**Doman-joined en private netwerk applicaties:**
+**Domain-en privé-netwerk toepassingen**:
 
 |  | Gesynchroniseerde identiteit | Federatieve identiteit |
 | --- | --- | --- |
-| Webbrowsers |Verificatie op basis van formulieren |eenmalige aanmelding, soms vereist om organisatie-ID te leveren |
+| Webbrowsers |Verificatie op basis van formulieren |eenmalige aanmelding, soms vereist voor het leveren van organisatie-ID |
 | Outlook |Vragen om referenties |Vragen om referenties |
-| Skype voor Bedrijven (Lync) |Vragen om referenties |eenmalige aanmelding voor Lync, gevraagde referenties voor Exchange |
+| Skype voor bedrijven (Lync) |Vragen om referenties |eenmalige aanmelding voor Lync, aanmeldings gegevens voor Exchange |
 | OneDrive voor Bedrijven |Vragen om referenties |eenmalige aanmelding |
 | Office Pro Plus-abonnement |Vragen om referenties |eenmalige aanmelding |
 
-**Externe of niet-vertrouwde bronnen:**
+**Externe of niet-vertrouwde bronnen**:
 
 |  | Gesynchroniseerde identiteit | Federatieve identiteit |
 | --- | --- | --- |
 | Webbrowsers |Verificatie op basis van formulieren |Verificatie op basis van formulieren |
-| Outlook, Skype voor Bedrijven (Lync), OneDrive voor Bedrijven, Office-abonnement |Vragen om referenties |Vragen om referenties |
-| Exchange ActiveSync |Vragen om referenties |eenmalige aanmelding voor Lync, gevraagde referenties voor Exchange |
+| Outlook, Skype voor bedrijven (Lync), OneDrive voor bedrijven, Office-abonnement |Vragen om referenties |Vragen om referenties |
+| Exchange ActiveSync |Vragen om referenties |eenmalige aanmelding voor Lync, aanmeldings gegevens voor Exchange |
 | Mobiele apps |Vragen om referenties |Vragen om referenties |
 
-Als u uit taak 1 hebt vastgesteld dat u een idp van derden hebt of er een gaat gebruiken om federatie te voorzien van Azure AD, moet u op de hoogte zijn van de volgende ondersteunde mogelijkheden:
+Als u hebt vastgesteld van taak 1 dat u een IdP van derden hebt of als u een Federatie met Azure AD wilt gebruiken, moet u rekening houden met de volgende ondersteunde mogelijkheden:
 
-* Elke SAML 2.0-provider die compatibel is met het SP-Lite-profiel, kan verificatie naar Azure AD en bijbehorende toepassingen ondersteunen
-* Ondersteunt passieve authenticatie, die authenticatie naar OWA, SPO, enz.
-* Exchange Online-klanten kunnen worden ondersteund via het SAML 2.0 Enhanced Client Profile (ECP)
+* Een SAML 2,0-provider die compatibel is met het SP-Lite-profiel, kan authenticatie ondersteunen voor Azure AD en de bijbehorende toepassingen
+* Biedt ondersteuning voor passieve verificatie, waarmee de verificatie wordt vereenvoudigd voor OWA, SPO, enzovoort.
+* Exchange Online-clients kunnen worden ondersteund via het SAML 2,0 Enhanced client profile (ECP)
 
-U moet zich ook bewust zijn van welke mogelijkheden niet beschikbaar zijn:
+U moet er ook van op de hoogte zijn van de mogelijkheden die niet beschikbaar zijn:
 
-* Zonder WS-Trust/Federation-ondersteuning breken alle andere actieve klanten
-  * Dat betekent geen Lync-client, OneDrive-client, Office-abonnement, Office Mobile vóór Office 2016
-* De overgang van Office naar passieve verificatie stelt hen in staat om pure SAML 2.0 IdPs te ondersteunen, maar ondersteuning is nog steeds client-by-client basis
+* Zonder WS-Trust/Federation-ondersteuning worden alle andere actieve clients verbroken
+  * Dit betekent dat er geen Lync-client, OneDrive-client, Office-abonnement, Office Mobile vóór Office 2016
+* Door overgang van Office naar passieve verificatie kunnen ze zuivere SAML 2,0 ID ondersteunen, maar is de ondersteuning nog steeds op client basis
 
 > [!NOTE]
-> Lees voor de meest recente lijst de [compatibiliteitslijst van de Azure AD-federatie](how-to-connect-fed-compatibility.md).
+> Lees voor de meest recente lijst het artikel [Azure AD Federation Compatibility List](how-to-connect-fed-compatibility.md).
 > 
 > 
 
-## <a name="define-synchronization-strategy"></a>Synchronisatiestrategie definiëren
-In deze taak definieert u de hulpprogramma's die worden gebruikt om de on-premises gegevens van de organisatie te synchroniseren met de cloud en welke topologie u moet gebruiken.  Omdat de meeste organisaties Active Directory gebruiken, wordt informatie over het gebruik van Azure AD Connect om de bovenstaande vragen te beantwoorden, tot in detail weergegeven.  Voor omgevingen die geen Active Directory hebben, is er informatie over het gebruik van FIM 2010 R2 of MIM 2016 om deze strategie te helpen plannen.  Toekomstige versies van Azure AD Connect ondersteunen echter LDAP-mappen, dus afhankelijk van uw tijdlijn kan deze informatie mogelijk worden ondersteund.
+## <a name="define-synchronization-strategy"></a>Synchronisatie strategie definiëren
+In deze taak definieert u de hulpprogram ma's die worden gebruikt om de on-premises gegevens van de organisatie te synchroniseren met de Cloud en welke topologie u moet gebruiken.  Omdat de meeste organisaties gebruikmaken van Active Directory, is informatie over het gebruik van Azure AD Connect om de bovenstaande vragen te beantwoorden, in sommige details opgenomen.  Voor omgevingen zonder Active Directory is er informatie over het gebruik van FIM 2010 R2 of MIM 2016 om deze strategie te plannen.  Toekomstige releases van Azure AD Connect zullen echter LDAP-directory's ondersteunen, dus afhankelijk van uw tijd lijn, kan deze informatie mogelijk wel worden geholpen.
 
-### <a name="synchronization-tools"></a>Synchronisatiegereedschappen
-In de loop der jaren hebben verschillende synchronisatietools bestaan en gebruikt voor verschillende scenario's.  Momenteel is Azure AD Connect het programma ga naar keuze voor alle ondersteunde scenario's.  AAD Sync en DirSync zijn ook nog steeds rond en kunnen zelfs aanwezig zijn in uw omgeving nu. 
+### <a name="synchronization-tools"></a>Synchronisatie hulpprogramma's
+Over de jaren zijn er verschillende synchronisatie hulpprogramma's bevonden en gebruikt voor verschillende scenario's.  Op Azure AD Connect dit moment kunt u kiezen voor alle ondersteunde scenario's.  AAD Sync en DirSync zijn ook nog steeds beschikbaar en kunnen zelfs in uw omgeving aanwezig zijn. 
 
 > [!NOTE]
-> Lees het [vergelijkingsartikel directory-integratietools](plan-hybrid-identity-design-considerations-tools-comparison.md) voor de meest recente informatie over de ondersteunde mogelijkheden van elk hulpprogramma.  
+> Raadpleeg het artikel over het [vergelijken van hulpprogram ma's voor Directory-integratie](plan-hybrid-identity-design-considerations-tools-comparison.md) voor de meest recente informatie over de ondersteunde mogelijkheden van elk hulp programma.  
 > 
 > 
 
 ### <a name="supported-topologies"></a>Ondersteunde topologieën
-Bij het definiëren van een synchronisatiestrategie moet de gebruikte topologie worden bepaald. Afhankelijk van de informatie die in stap 2 is bepaald, u bepalen welke topologie de juiste is om te gebruiken. De enkele forest- en azure AD-topologie is de meest voorkomende en bestaat uit één Active Directory-forest en één exemplaar van Azure AD.  Dit zal worden gebruikt in een meerderheid van de scenario's en is de verwachte topologie bij het gebruik van Azure AD Connect Express-installatie, zoals weergegeven in de onderstaande afbeelding.
+Bij het definiëren van een synchronisatie strategie moet de gebruikte topologie worden bepaald. Afhankelijk van de informatie die u in stap 2 hebt vastgesteld, kunt u bepalen welke topologie het meest geschikte is voor gebruik. De enkelvoudige forest, één Azure AD-topologie is het meest gebruikelijk en bestaat uit één Active Directory-forest en één exemplaar van Azure AD.  Dit wordt gebruikt in een meerderheid van de scenario's en is de verwachte topologie bij gebruik van Azure AD Connect snelle installatie, zoals wordt weer gegeven in de afbeelding hieronder.
 
-![Ondersteunde topologieën](./media/plan-hybrid-identity-design-considerations/single-forest.png) Single Forest Scenario Het is gebruikelijk dat grote en zelfs kleine organisaties meerdere forests hebben, zoals te zien is in figuur 5.
+![Ondersteund topologieën](./media/plan-hybrid-identity-design-considerations/single-forest.png) met één forest het is gebruikelijk voor grote en zelfs kleine organisaties om meerdere forests te hebben, zoals wordt weer gegeven in afbeelding 5.
 
 > [!NOTE]
-> Lees het artikel [Topologieën voor Azure AD Connect voor](plan-connect-topologies.md)meer informatie over de verschillende on-premises en Azure AD-topologieën met Azure AD Connect-synchronisatie.
+> Lees de artikel [topologieën voor Azure AD Connect](plan-connect-topologies.md)voor meer informatie over de verschillende on-premises en Azure AD-topologieën met Azure AD Connect Sync.
 > 
 > 
 
-![multi-forest topologie](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![topologie met meerdere forests](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
-Scenario voor meerdere bossen
+Scenario met meerdere forests
 
-Als dit het geval is, moet de multi-forest single Azure AD-topologie worden overwogen als de volgende items waar zijn:
+Als dit het geval is, moet de enkelvoudige Azure AD-topologie met meerdere forests worden beschouwd als de volgende items waar zijn:
 
-* Gebruikers hebben slechts 1 identiteit in alle forests - de unieke gebruikers sectie hieronder beschrijft dit in meer detail.
-* De gebruiker verifieert naar het forest waarin zijn identiteit zich bevindt
-* UPN en Bronanker (onveranderlijke id) komen uit dit bos
-* Alle forests zijn toegankelijk via Azure AD Connect - dit betekent dat het niet hoeft te worden samengevoegd en kan worden geplaatst in een DMZ als dit dit vergemakkelijkt.
+* Gebruikers hebben slechts één identiteit voor alle forests: in het gedeelte unieke identificatie van gebruikers hieronder wordt dit gedetailleerd beschreven.
+* De gebruiker wordt geverifieerd bij het forest waarin hun identiteit zich bevindt
+* Het UPN-en bron anker (onveranderbare id) komt van dit forest
+* Alle forests zijn toegankelijk via Azure AD Connect. Dit betekent dat het niet nodig is om lid te zijn van een domein en kan worden geplaatst in een DMZ als dit dit vereenvoudigt.
 * Gebruikers hebben slechts één postvak
-* Het forest dat het postvak van een gebruiker host, heeft de beste gegevenskwaliteit voor kenmerken die zichtbaar zijn in de Exchange Global Address List (GAL)
-* Als er geen postvak op de gebruiker, dan is een bos kan worden gebruikt om deze waarden bij te dragen
+* Het forest dat als host fungeert voor het postvak van een gebruiker heeft de beste gegevens kwaliteit voor kenmerken die zichtbaar zijn in de algemene adres lijst van Exchange (GAL)
+* Als er geen postvak is op de gebruiker, kan een van de forests worden gebruikt om deze waarden bij te dragen
 * Als u een gekoppeld postvak hebt, is er ook een ander account in een ander forest dat wordt gebruikt om u aan te melden.
 
 > [!NOTE]
-> Objecten die zowel on-premises als in de cloud bestaan, worden "verbonden" via een unieke id. In het kader van Directory Synchronisatie wordt deze unieke id aangeduid als sourceanchor. In het kader van Single Sign-On wordt dit aangeduid als de ImmutableId. [Ontwerp concepten voor Azure AD Connect](plan-connect-design-concepts.md#sourceanchor) voor meer overwegingen met betrekking tot het gebruik van SourceAnchor.
+> Objecten die voor komen in zowel on-premises als in de Cloud, zijn verbonden via een unieke id. In de context van Directory synchronisatie wordt deze unieke id aangeduid als de source Anchor. In de context van eenmalige aanmelding wordt dit de ImmutableId genoemd. [Ontwerp concepten voor Azure AD Connect](plan-connect-design-concepts.md#sourceanchor) voor meer overwegingen met betrekking tot het gebruik van source Anchor.
 > 
 > 
 
-Als het bovenstaande niet waar is en u meer dan één actief account of meer dan één postvak hebt, kiest Azure AD Connect het ene en negeert het andere.  Als u gekoppelde postvakken hebt, maar geen ander account, worden deze accounts niet geëxporteerd naar Azure AD en is die gebruiker geen lid van groepen.  Dit is anders dan hoe het was in het verleden met DirSync en is opzettelijk om beter te ondersteunen deze multi-forest scenario's. Een scenario met meerdere bossen wordt weergegeven in de onderstaande afbeelding.
+Als het bovenstaande niet waar is en u meer dan één actief account of meer dan één postvak hebt, kiest Azure AD Connect er een en wordt het andere abonnement genegeerd.  Als u gekoppelde post vakken hebt, maar geen ander account, worden deze accounts niet geëxporteerd naar Azure AD en is de gebruiker geen lid van een groep.  Dit wijkt af van de manier waarop deze zich in het verleden bevond met DirSync en is van opzet dat deze scenario's met meerdere forests beter worden ondersteund. In de afbeelding hieronder ziet u een scenario met meerdere forests.
 
 ![meerdere Azure AD-tenants](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
-**Meerdere Azure AD-scenario's voor meerdere forest's**
+**Multi-forest multiple Azure AD-scenario**
 
-Het wordt aanbevolen om slechts één map in Azure AD voor een organisatie te hebben, maar er wordt een 1:1-relatie tussen een Azure AD Connect-synchronisatieserver en een Azure AD-map onderhouden.  Voor elk exemplaar van Azure AD hebt u een installatie van Azure AD Connect nodig.  Ook Azure AD, door het ontwerp is geïsoleerd en gebruikers in een exemplaar van Azure AD niet in staat zijn om gebruikers te zien in een ander geval.
+Het is raadzaam om slechts één map in azure AD voor een organisatie te hebben, maar dit wordt wel ondersteund. er wordt een 1:1-relatie tussen een Azure AD Connect synchronisatie server en een Azure AD-adres lijst bewaard.  Voor elk exemplaar van Azure AD hebt u een installatie van Azure AD Connect nodig.  Bovendien is Azure AD per ontwerp geïsoleerd en kunnen gebruikers in één exemplaar van Azure AD geen gebruikers in een ander exemplaar zien.
 
-Het is mogelijk en ondersteund om één on-premises instantie van Active Directory te verbinden met meerdere Azure AD-mappen, zoals in de onderstaande afbeelding wordt weergegeven:
+Het is mogelijk en wordt ondersteund voor het verbinden van een on-premises exemplaar van Active Directory naar meerdere Azure AD-mappen, zoals wordt weer gegeven in de onderstaande afbeelding:
 
-![filteren op één forest](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![filteren met één forest](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
-**Filterscenario voor één forest**
+**Filter scenario met één forest**
 
-Om dit te doen, moet het volgende waar zijn:
+Hiervoor moet het volgende waar zijn:
 
-* Azure AD Connect-synchronisatieservers moeten zijn geconfigureerd voor filtering, zodat ze elk een wederzijds exclusieve set objecten hebben.  Dit bijvoorbeeld door elke server naar een bepaald domein of ou te scoping.
-* Een DNS-domein kan alleen worden geregistreerd in één Azure AD-map, zodat de UPN's van de gebruikers in het on-premises AD afzonderlijke naamruimten moeten gebruiken
-* Gebruikers in één exemplaar van Azure AD kunnen alleen gebruikers zien vanuit hun instantie.  Ze kunnen gebruikers niet zien in de andere exemplaren
-* Slechts één van de Azure AD-mappen kan Exchange-hybride inschakelen met het on-premises AD
-* Wederzijdse exclusiviteit geldt ook voor terugschrijven.  Dit maakt een aantal terugschrijffuncties die niet worden ondersteund met deze topologie, omdat deze uitgaan van een enkele on-premises configuratie.  Dit omvat:
-  * Terugschrijven groeperen met standaardconfiguratie
+* Azure AD Connect-synchronisatie servers moeten worden geconfigureerd voor filteren, zodat ze elk een verzameling objecten hebben die elkaar uitsluiten.  Dit is bijvoorbeeld het geval door elke server in te richten op een bepaald domein of een organisatie-eenheid.
+* Een DNS-domein kan alleen worden geregistreerd in één Azure AD-Directory, zodat de Upn's van de gebruikers in de on-premises AD afzonderlijke naam ruimten moeten gebruiken
+* Gebruikers in één exemplaar van Azure AD kunnen alleen gebruikers van hun exemplaar zien.  Ze kunnen geen gebruikers zien in de andere exemplaren
+* Alleen een van de Azure AD-directory's kan Exchange hybride inschakelen met de on-premises AD
+* Wederzijdse exclusiviteit is ook van toepassing op write-back.  Dit maakt het mogelijk dat sommige write-back-functies niet worden ondersteund met deze topologie, aangezien deze een afzonderlijke on-premises configuratie aannemen.  Dit omvat:
+  * Groep write-back met de standaard configuratie
   * Apparaat terugschrijven
 
-Het volgende wordt niet ondersteund en mag niet worden gekozen als een uitvoering:
+Het volgende wordt niet ondersteund en moet niet worden gekozen als implementatie:
 
-* Er wordt niet ondersteund voor het feit dat meerdere Azure AD Connect-synchronisatieservers verbinding maken met dezelfde Azure AD-map, zelfs als ze zijn geconfigureerd om wederzijds exclusieve set objecten te synchroniseren
-* Het wordt niet ondersteund om dezelfde gebruiker te synchroniseren met meerdere Azure AD-mappen. 
-* Het wordt ook niet ondersteund om een configuratiewijziging aan te brengen om ervoor te zorgen dat gebruikers in een Azure AD worden weergegeven als contactpersonen in een andere Azure AD-map. 
-* Het wordt ook niet ondersteund om azure AD Connect-synchronisatie te wijzigen om verbinding te maken met meerdere Azure AD-mappen.
-* Azure AD-mappen zijn door ontwerp geïsoleerd. Het wordt niet ondersteund om de configuratie van Azure AD Connect-synchronisatie te wijzigen om gegevens uit een andere Azure AD-map te lezen in een poging om een gemeenschappelijke en uniforme GAL tussen de mappen te bouwen. Het wordt ook niet ondersteund voor het exporteren van gebruikers als contactpersonen naar een ander on-premises AD met Azure AD Connect-synchronisatie.
+* Het is niet mogelijk om meerdere Azure AD Connect synchronisatie servers te verbinden met dezelfde Azure AD-Directory, zelfs als ze zijn geconfigureerd voor het synchroniseren van elkaar wederzijds exclusieve set-objecten
+* Het wordt niet ondersteund om dezelfde gebruiker te synchroniseren met meerdere Azure AD-directory's. 
+* Het wordt ook niet ondersteund om een configuratie wijziging aan te brengen zodat gebruikers in één Azure AD worden weer gegeven als contact personen in een andere Azure AD-adres lijst. 
+* Het wordt ook niet ondersteund om Azure AD Connect synchronisatie te wijzigen om verbinding te maken met meerdere Azure AD-mappen.
+* Azure AD-directory's zijn op ontwerp geïsoleerd. Het wordt niet ondersteund om de configuratie van Azure AD Connect Sync te wijzigen voor het lezen van gegevens uit een andere Azure AD-Directory in een poging om een gemeen schappelijke en Unified GAL te maken tussen de directory's. Het wordt ook niet ondersteund voor het exporteren van gebruikers als contact personen naar een andere on-premises AD-server met behulp van Azure AD Connect-synchronisatie.
 
 > [!NOTE]
-> Als uw organisatie computers in uw netwerk beperkt om verbinding te maken met internet, worden in dit artikel de eindpunten (FQDN's, IPv4- en IPv6-adresbereiken) weergegeven die u moet opnemen in uw uitgaande stalijsten en de Internet Explorer Trusted Sites Zone van de client computers om ervoor te zorgen dat uw computers Office 365 kunnen gebruiken. Lees voor meer informatie [Office 365-URL's en IP-adresbereiken](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Als uw organisatie toestaat dat computers in uw netwerk verbinding maken met internet, worden in dit artikel de eind punten (FQDN-namen, IPv4-en IPv6-adresbereiken) vermeld die u moet opnemen in uw lijst met uitgaande en Internet Explorer-vertrouwde websites van client computers om ervoor te zorgen dat uw computers Office 365 kunnen gebruiken. Lees voor meer informatie [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)adresbereiken.
 > 
 > 
 
-## <a name="define-multi-factor-authentication-strategy"></a>Definieer multi-factor authenticatie strategie
-In deze taak definieert u de multi-factor authenticatie strategie te gebruiken.  Azure Multi-Factor Authentication wordt geleverd in twee verschillende versies.  De ene is een cloud-based en de andere is on-premises gebaseerd met behulp van de Azure MFA Server.  Op basis van de evaluatie die u hierboven hebt uitgevoerd, u bepalen welke oplossing de juiste is voor uw strategie.  Gebruik de onderstaande tabel om te bepalen welke ontwerpoptie het beste voldoet aan de beveiligingsvereisten van uw bedrijf:
+## <a name="define-multi-factor-authentication-strategy"></a>Strategie voor multi-factor Authentication definiëren
+In deze taak definieert u de multi-factor Authentication-strategie die moet worden gebruikt.  Azure Multi-Factor Authentication is verkrijgbaar in twee verschillende versies.  Een op de cloud gebaseerde en de andere is on-premises gebaseerd op de Azure MFA-server.  Op basis van de evaluatie die u hierboven hebt gedaan, kunt u bepalen welke oplossing het juiste is voor uw strategie.  Gebruik de onderstaande tabel om te bepalen welke ontwerp optie het beste voldoet aan de beveiligings vereisten van uw bedrijf:
 
-Multi-factor ontwerpopties:
+Multi-factor design-opties:
 
-| Asset om te beveiligen | MFA in de cloud | MFA on-premises |
+| Te beveiligen Asset | MFA in de cloud | MFA on-premises |
 | --- | --- | --- |
 | Microsoft-apps |ja |ja |
 | SaaS-apps in de app-galerie |ja |ja |
 | IIS-toepassingen die zijn gepubliceerd via toepassingsproxy van Azure AD |ja |ja |
-| IIS-toepassingen die niet zijn gepubliceerd via de Azure AD App-proxy |nee |ja |
-| Remote access als VPN, RDG |nee |ja |
+| IIS-toepassingen die niet zijn gepubliceerd via de Azure AD-app proxy |nee |ja |
+| Externe toegang als VPN, RDG |nee |ja |
 
-Hoewel u misschien een oplossing voor uw strategie hebt opgelost, moet u de evaluatie nog steeds van bovenaf gebruiken waar uw gebruikers zich bevinden.  Dit kan ertoe leiden dat de oplossing verandert.  Gebruik de onderstaande tabel om u te helpen dit te bepalen:
+Hoewel u mogelijk hebt verrekend met een oplossing voor uw strategie, moet u de evaluatie nog steeds gebruiken op de locatie waar uw gebruikers zich bevinden.  Dit kan ertoe leiden dat de oplossing wordt gewijzigd.  Gebruik de onderstaande tabel om u te helpen bij het bepalen van dit:
 
-| Gebruikerslocatie | Voorkeursontwerpoptie |
+| Gebruikerslocatie | Voorkeurs ontwerp optie |
 | --- | --- |
-| Azure Active Directory |Multi-FactorAuthentication in de cloud |
+| Azure Active Directory |Multi-FactorAuthentication in de Cloud |
 | Azure AD en on-premises AD dat gebruikmaakt van federatie met AD FS |Beide |
-| Azure AD en on-premises AD met Azure AD Connect geen wachtwoordsynchronisatie |Beide |
-| Azure AD en on-premises met Azure AD Connect met wachtwoordsynchronisatie |Beide |
+| Azure AD en on-premises AD met Azure AD Connect geen wachtwoord synchronisatie |Beide |
+| Azure AD en on-premises met Azure AD Connect met wachtwoord synchronisatie |Beide |
 | On-premises AD |Multi-Factor Authentication-server |
 
 > [!NOTE]
-> U moet er ook voor zorgen dat de multi-factor authenticatie ontwerpoptie die u hebt geselecteerd, de functies ondersteunt die nodig zijn voor uw ontwerp.  Voor meer informatie [lees Kies de multi-factor beveiligingsoplossing voor u.](../authentication/concept-mfa-howitworks.md)
+> U moet er ook voor zorgen dat de multi-factor Authentication-ontwerp optie die u hebt geselecteerd, ondersteuning biedt voor de functies die nodig zijn voor uw ontwerp.  Voor meer informatie raadpleegt [u de multi-factor security-oplossing voor u](../authentication/concept-mfa-howitworks.md).
 > 
 
-## <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
-Meervoudige verificatie is standaard beschikbaar voor globale beheerders die een Azure Active Directory-tenant hebben. Als u echter multi-factor authenticatie wilt uitbreiden naar al uw gebruikers en/of wilt u uw globale beheerders om te kunnen profiteren van functies zoals de beheerportal, aangepaste begroetingen en rapporten, dan moet u multi-factor authentication provider kopen en configureren.
+## <a name="multi-factor-auth-provider"></a>Multi-factor Authentication-provider
+Multi-factor Authentication is standaard beschikbaar voor globale beheerders die een Azure Active Directory Tenant hebben. Als u echter multi-factor Authentication wilt uitbreiden naar al uw gebruikers en/of als u wilt dat uw globale beheerders functies kunnen gebruiken zoals de beheer Portal, aangepaste begroetingen en rapporten, moet u Multi-Factor Authentication provider kopen en configureren.
 
 > [!NOTE]
-> U moet er ook voor zorgen dat de multi-factor authenticatie ontwerpoptie die u hebt geselecteerd, de functies ondersteunt die nodig zijn voor uw ontwerp. 
+> U moet er ook voor zorgen dat de multi-factor Authentication-ontwerp optie die u hebt geselecteerd, ondersteuning biedt voor de functies die nodig zijn voor uw ontwerp. 
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Vereisten voor gegevensbescherming bepalen](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+[Vereisten voor gegevens beveiliging bepalen](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)
+[Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

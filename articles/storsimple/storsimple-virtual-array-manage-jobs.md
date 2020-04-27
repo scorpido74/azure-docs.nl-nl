@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array-taken weergeven en beheren | Microsoft Documenten
-description: Beschrijft de pagina Taken van StorSimple Device Manager-service en hoe u deze gebruiken om recente en huidige taken voor de Virtuele Array van StorSimple bij te houden.
+title: StorSimple virtuele-matrix taken weer geven en beheren | Microsoft Docs
+description: Hierin wordt de pagina StorSimple Apparaatbeheer service Jobs beschreven en wordt uitgelegd hoe u deze kunt gebruiken om recente en huidige taken bij te houden voor de virtuele StorSimple-matrix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60302477"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>De StorSimple Device Manager-service gebruiken om taken voor de Virtuele Array van StorSimple weer te geven
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service gebruiken om taken voor de virtuele StorSimple-matrix weer te geven
 ## <a name="overview"></a>Overzicht
-Het **blade Jobs** biedt één centrale portal voor het bekijken en beheren van taken die zijn gestart op virtuele arrays die zijn verbonden met uw StorSimple Device Manager-service. U uitvoeren, voltooid en mislukte taken voor meerdere virtuele apparaten weergeven. De resultaten worden in een tabelvormige indeling weergegeven.
+De Blade **taken** biedt één centrale portal voor het weer geven en beheren van taken die zijn gestart op virtuele matrices die zijn verbonden met uw StorSimple-Apparaatbeheer service. U kunt actieve, voltooide en mislukte taken weer geven voor meerdere virtuele apparaten. De resultaten worden weer gegeven in een tabel indeling.
 
-![Het blad van de Banen](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+![Blade taken](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-U snel de vacatures vinden waarin u geïnteresseerd bent door te filteren op velden zoals:
+U kunt snel de taken vinden waarin u geïnteresseerd bent door te filteren op velden zoals:
 
-* **Tijdbereik** : taken kunnen worden gefilterd op basis van de datum en het tijdsbereik.
-* **Apparaten** : er worden taken gestart op een specifiek apparaat dat is aangesloten op uw service. De gefilterde taken worden vervolgens in tabelvorm weergegeven op basis van de volgende kenmerken:
+* **Tijds bereik** : taken kunnen worden gefilterd op basis van het datum-en tijds bereik.
+* **Apparaten** : taken worden gestart op een specifiek apparaat dat is verbonden met uw service. De gefilterde taken worden vervolgens getabeld op basis van de volgende kenmerken:
   
-  * **Naam** - De naam van de taak kan **alle**, **back-up**, **Kloon**, **Fail over**, **Download updates,** of **Updates installeren**.
-  * **Status** : Taken kunnen **alles**zijn, **in uitvoering,** **geslaagd**of **mislukt**of **geannuleerd**.
-  * **Entiteit** : de taken kunnen worden gekoppeld aan een volume, aandeel of apparaat.
+  * **Naam** : de naam van de taak kan **alle**, **Backup**, **Clone**, **failover**, **updates downloaden**of **updates installeren**.
+  * **Status** : taken kunnen **allemaal**, **in uitvoering**, **geslaagd**of **mislukt**zijn of zijn **geannuleerd**.
+  * **Entiteit** : de taken kunnen worden gekoppeld aan een volume, share of apparaat.
   * **Apparaat** : de naam van het apparaat waarop de taak is gestart.
-  * **Begonnen op** – De tijd dat de taak werd gestart.
+  * **Gestart op** : de tijd waarop de taak is gestart.
   * **Duur** : de duur waarvoor de taak is uitgevoerd.
-* **Status** : u zoeken naar alle taken, het uitvoeren, voltooien of mislukte taken.
-* **Taaktype** : het taaktype kan alles zijn, een back-up maken, herstellen, mislukken, updates downloaden of updates installeren.
+* **Status** : u kunt zoeken naar alle, actieve, voltooide of mislukte taken.
+* **Taak type** : het taak type kan alle, back-up, herstel, failover, updates downloaden of updates installeren.
 
 De lijst met taken wordt elke 30 seconden vernieuwd.
 
 ## <a name="view-job-details"></a>Taakdetails weergeven
 Voer de volgende stappen uit om de details van een taak weer te geven.
 
-#### <a name="to-view-job-details"></a>Taakgegevens bekijken
-1. Geef in het blad **Vacatures** de taak(en) weer waarin u geïnteresseerd bent door een query met de juiste filters uit te voeren. U zoeken naar voltooide of lopende taken.
-2. Selecteer een taak in de tabellijst met taken.
+#### <a name="to-view-job-details"></a>Taak details weer geven
+1. Geef op de Blade **taken** de taken weer die u wilt uitvoeren door een query uit te voeren met de juiste filters. U kunt zoeken naar voltooide of actieve taken.
+2. Selecteer een taak in de lijst in tabel vorm van taken.
    
-    ![Het blad van de baan](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+    ![Taak blad](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 3. Klik onder aan de pagina op **Details**.
-4. In het dialoogvenster **Details** u status- en details- en tijdstatistieken weergeven. In de volgende afbeelding ziet u een voorbeeld van het dialoogvenster **Back-uptaakgegevens.**
+4. In het dialoog venster **Details** kunt u de status, Details en tijd statistieken weer geven. In de volgende afbeelding ziet u een voor beeld van het dialoog venster Details van de **back-uptaak** .
    
     ![Taakdetails](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Taakfouten wanneer de virtuele machine wordt onderbroken in de hypervisor
-Wanneer een taak aan de gang is op uw StorSimple Virtual Array en het apparaat (virtuele machine ingericht in hypervisor) wordt onderbroken voor meer dan 15 minuten, de taak mislukt. Dit is te wijten aan uw StorSimple Virtual Array tijd wordt niet synchroon met de Microsoft Azure tijd. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Taak fouten wanneer de virtuele machine wordt onderbroken in de Hyper Visor
+Wanneer een taak wordt uitgevoerd op uw virtuele StorSimple-matrix en het apparaat (virtuele machine dat is ingericht in Hyper Visor) langer dan 15 minuten wordt onderbroken, mislukt de taak. Dit komt doordat uw virtuele StorSimple-matrix tijd niet synchroon is met de Microsoft Azure tijd. 
 
-U ziet de volgende fout: "De tijd van uw apparaat is niet meer dan 15 minuten gesynchroniseerd met de Microsoft Azure-tijd. Zorg ervoor dat de hypervisor en de apparaattijden worden gesynchroniseerd met een NTP-server. Controleer of er geen verbindingsproblemen zijn. Als u verbindingsproblemen wilt oplossen, voert u diagnostische tests uit vanaf de lokale webgebruikersinterface van uw virtuele apparaat."
+U ziet de volgende fout: ' de tijd van uw apparaat is niet gesynchroniseerd met de Microsoft Azure tijd van meer dan 15 minuten. Zorg ervoor dat de Hyper Visor en de tijden van het apparaat worden gesynchroniseerd met een NTP-server. Controleer of er verbindings problemen zijn. Voer diagnostische tests uit via de lokale webgebruikersinterface van uw virtueel apparaat om verbindings problemen op te lossen.
 
-Deze fouten zijn van toepassing op back-up-, herstel-, update- en failovertaken. Als uw virtuele machine is ingericht in Hyper-V, synchroniseert de machine uiteindelijk de tijd met uw hypervisor. Zodra dat gebeurt, u uw baan opnieuw opstarten.
+Deze fouten zijn van toepassing op back-up-, herstel-, update-en failover-taken. Als uw virtuele machine in Hyper-V is ingericht, synchroniseert de computer uiteindelijk tijd met uw Hyper Visor. Als dat het geval is, kunt u de taak opnieuw starten.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het gebruik van de lokale web-gebruikersinterface om uw StorSimple Virtual Array te beheren.](storsimple-ova-web-ui-admin.md)
+[Meer informatie over het gebruik van de lokale web-UI voor het beheren van uw StorSimple-virtuele matrix](storsimple-ova-web-ui-admin.md).
 

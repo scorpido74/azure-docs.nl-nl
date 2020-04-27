@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: pass-through-verificatie oplossen | Microsoft Documenten'
-description: In dit artikel wordt beschreven hoe u problemen oplossen met Azure Active Directory (Azure AD) Pass-through-verificatie.
+title: 'Azure AD Connect: problemen met Pass Through-verificatie oplossen | Microsoft Docs'
+description: In dit artikel wordt beschreven hoe u Pass-Through-verificatie Azure Active Directory (Azure AD) kunt oplossen.
 services: active-directory
-keywords: Problemen met Azure AD Connect Pass-Through Authentication oplossen, Active Directory installeren, vereiste onderdelen voor Azure AD, SSO, Single Sign-on
+keywords: Problemen met Azure AD Connect Pass-Through-verificatie oplossen, Active Directory installeren, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,123 +17,123 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60456124"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
-In dit artikel vindt u informatie over het oplossen van problemen met veelvoorkomende problemen met azure AD-pass-through-verificatie.
+Dit artikel helpt u bij het vinden van probleemoplossings informatie over veelvoorkomende problemen met Azure AD Pass-Through-verificatie.
 
 >[!IMPORTANT]
->Als u problemen ondervindt met aanmeldingsproblemen van gebruikers met Pass-through Authentication, schakelt u de functie niet uit of verwijdert u Pass-through Authentication Agents niet zonder dat u een global administrator-account in de cloud hebt om op terug te vallen. Meer informatie over [het toevoegen van een global administrator-account met alleen cloud](../active-directory-users-create-azure-portal.md). Het doen van deze stap is van cruciaal belang en zorgt ervoor dat u niet buitengesloten van uw huurder.
+>Als u problemen ondervindt bij het aanmelden van gebruikers met Pass-Through-verificatie, schakelt u de functie niet uit of verwijdert u Pass-Through-verificatie agenten zonder alleen een globale beheerders account voor de cloud om terug te vallen. Meer informatie over [het toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Deze stap is kritiek en zorgt ervoor dat u uw Tenant niet hebt vergrendeld.
 
 ## <a name="general-issues"></a>Algemene problemen
 
-### <a name="check-status-of-the-feature-and-authentication-agents"></a>Status van de functie en verificatieagents controleren
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>De status van de functie en verificatie agenten controleren
 
-Controleer of de functie Verificatie vooraf nog steeds is **ingeschakeld** op uw tenant en dat de status van verificatieagents **Actief**en niet **Inactief wordt weergegeven.** U de status controleren door naar het **Azure AD Connect-blad** te gaan in het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com/).
+Zorg ervoor dat de functie Pass-Through-verificatie nog steeds is **ingeschakeld** voor uw Tenant en de status van verificatie agenten **actief**is en niet **inactief**. U kunt de status controleren door naar de Blade **Azure AD Connect** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)te gaan.
 
-![Azure Active Directory-beheercentrum - Azure AD Connect-blad](./media/tshoot-connect-pass-through-authentication/pta7.png)
+![Azure Active Directory-beheer centrum-Azure AD Connect Blade](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
-![Azure Active Directory-beheercentrum - Verificatieblad voor doorgeefverificatie](./media/tshoot-connect-pass-through-authentication/pta11.png)
+![Azure Active Directory beheer centrum: Pass Through-verificatie Blade](./media/tshoot-connect-pass-through-authentication/pta11.png)
 
-### <a name="user-facing-sign-in-error-messages"></a>Aanmeldingsfoutberichten op basis van gebruikers
+### <a name="user-facing-sign-in-error-messages"></a>Fout berichten voor gebruikers gerichte aanmelding
 
-Als de gebruiker zich niet kan aanmelden bij pass-through-verificatie, ziet hij mogelijk een van de volgende gebruikersgerichte fouten op het aanmeldingsscherm van Azure AD: 
+Als de gebruiker zich niet kan aanmelden met behulp van Pass-Through-verificatie, zien ze mogelijk een van de volgende gebruikers fouten in het aanmeldings scherm van Azure AD: 
 
 |Fout|Beschrijving|Oplossing
 | --- | --- | ---
-|AADSTS80001|Kan geen verbinding maken met Active Directory|Controleer of agentservers lid zijn van hetzelfde AD-forest als de gebruikers van wie de wachtwoorden moeten worden gevalideerd en dat ze verbinding kunnen maken met Active Directory.  
-|AADSTS8002|Er is een time-out opgetreden bij het maken van verbinding met Active Directory|Controleer of Active Directory beschikbaar is en reageert op verzoeken van de agents.
-|AADSTS80004|De gebruikersnaam die aan de agent is doorgegeven, was niet geldig|Zorg ervoor dat de gebruiker probeert in te loggen met de juiste gebruikersnaam.
-|AADSTS80005|Validatie ondervonden onvoorspelbare WebException|Een tijdelijke fout. Probeer het verzoek opnieuw. Als dit mislukt, neemt u contact op met microsoft-ondersteuning.
-|AADSTS80007|Er is een fout opgetreden bij het communiceren met Active Directory|Controleer de agentlogboeken voor meer informatie en controleer of Active Directory werkt zoals verwacht.
+|AADSTS80001|Kan geen verbinding maken met Active Directory|Zorg ervoor dat de agent servers lid zijn van hetzelfde AD-forest als de gebruikers waarvan de wacht woorden moeten worden gevalideerd en dat ze verbinding kunnen maken met Active Directory.  
+|AADSTS8002|Er is een time-out opgetreden tijdens het verbinden met Active Directory|Controleer of Active Directory beschikbaar is en reageert op aanvragen van de agents.
+|AADSTS80004|De gebruikers naam die aan de agent is door gegeven, is niet geldig|Zorg ervoor dat de gebruiker zich probeert aan te melden met de juiste gebruikers naam.
+|AADSTS80005|Validatie heeft onvoorspelbare Web-except aangetroffen|Een tijdelijke fout. Voer de aanvraag opnieuw uit. Neem contact op met micro soft ondersteuning als dit probleem blijft optreden.
+|AADSTS80007|Er is een fout opgetreden tijdens het communiceren met Active Directory|Raadpleeg de logboeken van de agent voor meer informatie en controleer of Active Directory werkt zoals verwacht.
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Redenen voor aanmeldingsfout in het Azure Active Directory-beheercentrum (heeft Premium-licentie nodig)
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Redenen voor aanmeldings fout op het Azure Active Directory-beheer centrum (vereiste Premium-licentie)
 
-Als aan uw tenant een Azure AD Premium-licentie is gekoppeld, u ook het [aanmeldingsactiviteitsrapport](../reports-monitoring/concept-sign-ins.md) bekijken in het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com/).
+Als aan uw Tenant een Azure AD Premium-licentie is gekoppeld, kunt u ook het rapport voor de [aanmeldings activiteit](../reports-monitoring/concept-sign-ins.md) in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)bekijken.
 
-![Azure Active Directory-beheercentrum - Rapport Aanmeldingen](./media/tshoot-connect-pass-through-authentication/pta4.png)
+![Azure Active Directory beheer centrum-aanmeld rapport](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-Navigeer naar Azure Active -> **Directory-aanmeldingen in** het Azure Active [Directory-beheercentrum](https://aad.portal.azure.com/) en klik op de aanmeldingsactiviteit van een specifieke gebruiker. **Azure Active Directory** Zoek naar het veld **AANMELDINGsFOUTCODE.** De waarde van dat veld toewijzen aan een foutreden en -oplossing met behulp van de volgende tabel:
+Navigeer naar **Azure Active Directory** -> **-aanmeldingen** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/) en klik op de aanmeldings activiteit van een specifieke gebruiker. Zoek het veld **met de fout code** voor de aanmelding. Wijs de waarde van dat veld toe aan een fout reden en oplossing met behulp van de volgende tabel:
 
-|Aanmeldingsfoutcode|Reden voor aanmeldingsfout|Oplossing
+|Fout code voor aanmelden|Reden voor aanmeldings fout|Oplossing
 | --- | --- | ---
-| 50144 | Het Active Directory-wachtwoord van de gebruiker is verlopen. | Het wachtwoord van de gebruiker opnieuw instellen in uw on-premises Active Directory.
-| 80001 | Er is geen verificatieagent beschikbaar. | Een verificatieagent installeren en registreren.
-| 80002 | Er is een time-out opgetreden bij de wachtwoordvalidatie voor de verificatieagent. | Controleer of uw Active Directory bereikbaar is via de verificatieagent.
-| 80003 | Ongeldig antwoord ontvangen door de verificatieagent. | Als het probleem consistent reproduceerbaar is voor meerdere gebruikers, controleert u de Active Directory-configuratie.
-| 80004 | Onjuiste UPN (user principal name) gebruikt voor aanmeldingsaanvraag. | Vraag de gebruiker om in te loggen met de juiste gebruikersnaam.
+| 50144 | Het Active Directory-wachtwoord van de gebruiker is verlopen. | Het wacht woord van de gebruiker opnieuw instellen in uw on-premises Active Directory.
+| 80001 | Er is geen verificatieagent beschikbaar. | Installeer en Registreer een verificatie agent.
+| 80002 | Er is een time-out opgetreden bij de wachtwoordvalidatie voor de verificatieagent. | Controleer of uw Active Directory bereikbaar is vanaf de verificatie agent.
+| 80003 | Ongeldig antwoord ontvangen door de verificatieagent. | Als het probleem voortdurend kan worden gereproduceerd voor meerdere gebruikers, controleert u de configuratie van Active Directory.
+| 80004 | Onjuiste UPN (user principal name) gebruikt voor aanmeldingsaanvraag. | Vraag de gebruiker zich aan te melden met de juiste gebruikers naam.
 | 80005 | Verificatieagent: er is een fout opgetreden. | Tijdelijke fout. Probeer het later opnieuw.
-| 80007 | Verificatieagent kan geen verbinding maken met Active Directory. | Controleer of uw Active Directory bereikbaar is via de verificatieagent.
-| 80010 | Verificatieagent kan wachtwoord niet ontsleutelen. | Als het probleem consistent reproduceerbaar is, installeert en registreert u een nieuwe verificatieagent. En verwijder de huidige. 
-| 80011 | Verificatieagent kan ontsleutelingssleutel hier ophalen. | Als het probleem consistent reproduceerbaar is, installeert en registreert u een nieuwe verificatieagent. En verwijder de huidige.
+| 80007 | Verificatieagent kan geen verbinding maken met Active Directory. | Controleer of uw Active Directory bereikbaar is vanaf de verificatie agent.
+| 80010 | Verificatieagent kan wachtwoord niet ontsleutelen. | Als het probleem zich voortdurend reproduceert, installeert en registreert u een nieuwe verificatie agent. En verwijder de huidige versie. 
+| 80011 | Verificatieagent kan ontsleutelingssleutel hier ophalen. | Als het probleem zich voortdurend reproduceert, installeert en registreert u een nieuwe verificatie agent. En verwijder de huidige versie.
 
 >[!IMPORTANT]
->Doorgeefverificatie-agenten verifiëren Azure AD-gebruikers door hun gebruikersnamen en wachtwoorden te valideren van Active Directory door de [Win32 LogonUser API aan](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)te roepen. Als u de instelling 'Aanmelden bij' in Active Directory hebt ingesteld om de aanmeldingstoegang voor werkstations te beperken, moet u ook servers die pass-through-verificatieagents hosten, toevoegen aan de lijst met 'Aanmeldingsservers'. Als u dit niet doet, wordt uw gebruikers geblokkeerd om zich aan te melden bij Azure AD.
+>Pass-Through-verificatie agenten verifiëren Azure AD-gebruikers door hun gebruikers namen en wacht woorden te valideren op Active Directory door de [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)aan te roepen. Als u dus de instelling aanmelden op in Active Directory hebt ingesteld om de toegang tot het werk station te beperken, moet u servers die fungeren als host voor Pass-Through-verificatie agenten ook toevoegen aan de lijst met servers waarop zich moet aanmelden. Als u dit niet doet, worden uw gebruikers geblokkeerd om zich aan te melden bij Azure AD.
 
-## <a name="authentication-agent-installation-issues"></a>Installatieproblemen met verificatieagent
-
-### <a name="an-unexpected-error-occurred"></a>Er is een onverwachte fout opgetreden
-
-[Verzamel agentlogboeken](#collecting-pass-through-authentication-agent-logs) van de server en neem contact op met Microsoft Support met uw probleem.
-
-## <a name="authentication-agent-registration-issues"></a>Registratieproblemen van verificatieagent
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>Registratie van de verificatieagent is mislukt vanwege geblokkeerde poorten
-
-Controleer of de server waarop de verificatieagent is geïnstalleerd, kan communiceren met onze service-URL's en -poorten die [hier](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)worden vermeld.
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>Registratie van de verificatieagent is mislukt vanwege token- of accountautorisatiefouten
-
-Controleer of u een global administrator-account in de cloud gebruikt voor alle installatie- en registratiebewerkingen van Azure AD Connect of zelfstandige verificatieagent. Er is een bekend probleem met global administrator-accounts met MFA-ingeschakeld; MFA tijdelijk uitschakelen (alleen om de bewerkingen te voltooien) als tijdelijke oplossing.
+## <a name="authentication-agent-installation-issues"></a>Installatie problemen met verificatie agent
 
 ### <a name="an-unexpected-error-occurred"></a>Er is een onverwachte fout opgetreden
 
-[Verzamel agentlogboeken](#collecting-pass-through-authentication-agent-logs) van de server en neem contact op met Microsoft Support met uw probleem.
+[Verzamel Agent logboeken](#collecting-pass-through-authentication-agent-logs) van de server en neem contact op met Microsoft ondersteuning met uw probleem.
 
-## <a name="authentication-agent-uninstallation-issues"></a>Problemen met de installatie van verificatieagent verwijderen
+## <a name="authentication-agent-registration-issues"></a>Registratie problemen met verificatie agent
 
-### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Waarschuwingsbericht bij het verwijderen van Azure AD Connect
+### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>Registratie van de verificatie agent is mislukt vanwege geblokkeerde poorten
 
-Als u Verificatie vooraf hebt ingeschakeld op uw tenant en u Azure AD Connect probeert te verwijderen, ziet u het volgende waarschuwingsbericht: "Gebruikers kunnen zich niet aanmelden bij Azure AD, tenzij u andere pass-through-verificatiemedewerkers hebt geïnstalleerd op andere servers."
+Zorg ervoor dat de server waarop de verificatie agent is geïnstalleerd, kan communiceren met onze service-Url's en-poorten die [hier](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)worden vermeld.
 
-Controleer of uw installatie [zeer beschikbaar](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) is voordat u Azure AD Connect verwijdert om te voorkomen dat gebruikersaanmelden wordt afgebroken.
+### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>De registratie van de verificatie agent is mislukt vanwege token-of account autorisatie fouten
+
+Zorg ervoor dat u een globale beheerders account voor de Cloud gebruikt voor alle Azure AD Connect of installatie van de zelfstandige verificatie agent en registratie bewerkingen. Er is een bekend probleem met accounts voor globale beheerders met MFA. Schakel MFA tijdelijk uit (alleen om de bewerkingen te volt ooien) als tijdelijke oplossing.
+
+### <a name="an-unexpected-error-occurred"></a>Er is een onverwachte fout opgetreden
+
+[Verzamel Agent logboeken](#collecting-pass-through-authentication-agent-logs) van de server en neem contact op met Microsoft ondersteuning met uw probleem.
+
+## <a name="authentication-agent-uninstallation-issues"></a>Problemen met de installatie van verificatie-agent
+
+### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Waarschuwings bericht bij het verwijderen van Azure AD Connect
+
+Als u Pass-Through-verificatie hebt ingeschakeld in uw Tenant en u probeert Azure AD Connect te verwijderen, wordt het volgende waarschuwings bericht weer gegeven: ' gebruikers kunnen zich niet aanmelden bij Azure AD, tenzij u andere Pass-Through-verificatie agenten op andere servers hebt geïnstalleerd. '
+
+Zorg ervoor dat uw installatie [Maxi maal beschikbaar](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) is voordat u Azure AD Connect verwijdert om te voor komen dat gebruikers zich aanmelden.
 
 ## <a name="issues-with-enabling-the-feature"></a>Problemen met het inschakelen van de functie
 
-### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>De functie inschakelen is mislukt omdat er geen verificatieagents beschikbaar waren
+### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>Het inschakelen van de functie is mislukt omdat er geen verificatie agenten beschikbaar zijn
 
-U moet ten minste één actieve verificatieagent hebben om verificatie vooraf te kunnen doorschakelen op uw tenant. U een verificatieagent installeren door Azure AD Connect of een zelfstandige verificatieagent te installeren.
+U moet ten minste één actieve verificatie agent hebben om Pass-Through-verificatie in te scha kelen voor uw Tenant. U kunt een verificatie agent installeren door Azure AD Connect of een zelfstandige verificatie agent te installeren.
 
-### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>De functie inschakelen is mislukt vanwege geblokkeerde poorten
+### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>Het inschakelen van de functie is mislukt vanwege geblokkeerde poorten
 
-Controleer of de server waarop Azure AD Connect is geïnstalleerd, kan communiceren met onze service-URL's en -poorten die [hier](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)worden vermeld.
+Zorg ervoor dat de server waarop Azure AD Connect is geïnstalleerd, kan communiceren met de service-Url's en-poorten die [hier](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)worden vermeld.
 
-### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>De functie inschakelen is mislukt vanwege token- of accountautorisatiefouten
+### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Het inschakelen van de functie is mislukt vanwege token-of account autorisatie fouten
 
-Zorg ervoor dat u een global administrator-account in de cloud gebruikt wanneer u de functie inschakelt. Er is een bekend probleem met multi-factor authenticatie (MFA)-enabled Global Administrator accounts; MFA tijdelijk uitschakelen (alleen om de bewerking te voltooien) als tijdelijke oplossing.
+Zorg ervoor dat u een globale beheerders account voor de Cloud gebruikt wanneer u de functie inschakelt. Er is een bekend probleem met globale beheerders accounts voor multi-factor Authentication (MFA). Schakel MFA tijdelijk uit (alleen om de bewerking te volt ooien) als tijdelijke oplossing.
 
-## <a name="collecting-pass-through-authentication-agent-logs"></a>Logboeken van doorgeefverificaties verzamelen
+## <a name="collecting-pass-through-authentication-agent-logs"></a>Logboeken voor Pass Through-verificatie agent verzamelen
 
-Afhankelijk van het type probleem dat u hebt, moet u op verschillende plaatsen zoeken naar logboeken van de doorpasverificatieagent.
+Afhankelijk van het type probleem dat u mogelijk hebt, moet u de logboeken van de Pass-Through-verificatie agent zoeken op verschillende locaties.
 
-### <a name="azure-ad-connect-logs"></a>Azure AD Connect-logboeken
+### <a name="azure-ad-connect-logs"></a>Azure AD Connect logboeken
 
-Controleer de Azure AD Connect-logboeken bij **%ProgramData%\AADConnect\trace-\*.log**.
+Raadpleeg de Azure AD Connect-Logboeken in **\*%ProgramData%\AADConnect\trace-. log**voor fouten met betrekking tot de installatie.
 
-### <a name="authentication-agent-event-logs"></a>Gebeurtenislogboeken van verificatieagent
+### <a name="authentication-agent-event-logs"></a>Gebeurtenis logboeken voor verificatie agent
 
-Open de toepassing Logboeken op de server en controleer onder **Toepassings- en servicelogboeken\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**voor fouten met betrekking tot de verificatieagent.
+Voor fouten met betrekking tot de verificatie agent opent u de Logboeken-toepassing op de server en controleert u onder **toepassings-en service-Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-Schakel voor gedetailleerde analyses het logboek 'Sessie' in (klik met de rechtermuisknop in de toepassing Logboeken om deze optie te vinden). Voer de verificatieagent niet uit met dit logboek ingeschakeld tijdens normale bewerkingen. alleen gebruiken voor het oplossen van problemen. De inhoud van de logboekis pas zichtbaar nadat het logboek opnieuw is uitgeschakeld.
+Schakel voor gedetailleerde analyse het logboek van de sessie in (Klik met de rechter muisknop in de Logboeken toepassing om deze optie te vinden). De verificatie agent niet uitvoeren wanneer dit logboek is ingeschakeld tijdens normale bewerkingen; alleen gebruiken voor probleem oplossing. De inhoud van het logboek is alleen zichtbaar nadat het logboek is uitgeschakeld.
 
-### <a name="detailed-trace-logs"></a>Gedetailleerde traceerlogboeken
+### <a name="detailed-trace-logs"></a>Gedetailleerde traceer logboeken
 
-Als u aanmeldingsfouten van gebruikers wilt oplossen, zoekt u naar traceerlogboeken bij **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\**. Deze logboeken bevatten redenen waarom een specifieke aanmelding van gebruikers is mislukt met de functie Doorgeefverificatie. Deze fouten worden ook toegewezen aan de aanmeldingsfoutredenen die worden weergegeven in de vorige tabel met aanmeldingsfoutredenen. Hieronder volgt een voorbeeld logboekvermelding:
+Zoek naar traceer logboeken op **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect-\\verificatie Agent\Trace**om problemen met de gebruikers aanmelding op te lossen. In deze logboeken worden de redenen vermeld waarom een specifieke gebruiker zich aanmeldt met de functie Pass-Through-verificatie. Deze fouten worden ook toegewezen aan de oorzaken van de aanmeldings fout die worden weer gegeven in de voor gaande tabel met mislukte aanmeldings redenen. Hier volgt een voor beeld van een logboek vermelding:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -141,15 +141,15 @@ Als u aanmeldingsfouten van gebruikers wilt oplossen, zoekt u naar traceerlogboe
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-U beschrijvende details van de fout ('1328' in het voorgaande voorbeeld) krijgen door de opdrachtprompt te openen en de volgende opdracht uit te voeren (Opmerking: Vervang '1328' door het werkelijke foutnummer dat u in uw logboeken ziet):
+U kunt een beschrijving van de fout (' 1328 ' in het voor gaande voor beeld) verkrijgen door de opdracht prompt te openen en de volgende opdracht uit te voeren (Opmerking: Vervang ' 1328 ' door het werkelijke fout nummer dat u in uw logboeken ziet):
 
 `Net helpmsg 1328`
 
 ![Pass-through-verificatie](./media/tshoot-connect-pass-through-authentication/pta3.png)
 
-### <a name="domain-controller-logs"></a>Logboeken domeincontroller
+### <a name="domain-controller-logs"></a>Domein controller logboeken
 
-Als controlelogboekregistratie is ingeschakeld, kan aanvullende informatie worden gevonden in de beveiligingslogboeken van uw domeincontrollers. Een eenvoudige manier om aanmeldingsverzoeken op te vragen die door Pass-through Authentication Agents worden verzonden, is als volgt:
+Als controle logboek registratie is ingeschakeld, kunt u aanvullende informatie vinden in de beveiligings logboeken van uw domein controllers. Een eenvoudige manier om aanmeldings aanvragen te doorzoeken die door Pass Through-verificatie agenten worden verzonden, is als volgt:
 
 ```
     <QueryList>
@@ -159,11 +159,11 @@ Als controlelogboekregistratie is ingeschakeld, kan aanvullende informatie worde
     </QueryList>
 ```
 
-## <a name="performance-monitor-counters"></a>Prestatiemetertellers
+## <a name="performance-monitor-counters"></a>Prestatie meter items
 
-Een andere manier om verificatieagents te controleren, is door specifieke prestatiemetertellers bij te houden op elke server waar de verificatieagent is geïnstalleerd. Gebruik de volgende globale tellers (**# PTA-verificaties,** **#PTA mislukte verificaties** en **#PTA geslaagde verificaties**) en fouttellers (**# PTA-verificatiefouten):**
+Een andere manier om verificatie agenten te controleren is het bijhouden van specifieke prestatie meter items op elke server waarop de verificatie agent is geïnstalleerd. Gebruik de volgende globale tellers (**# PTA-verificaties**, **#PTA mislukte verificaties** en **#PTA geslaagde authenticaties**) en fout tellers (**# PTA-verificatie fouten**):
 
-![Frequentiemetertellers voor verificatieverificatie doorgeven](./media/tshoot-connect-pass-through-authentication/pta12.png)
+![Prestatie meter items Pass-Through-verificatie](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
 >[!IMPORTANT]
->Pass-through Authentication biedt hoge beschikbaarheid met behulp van meerdere verificatieagents en _niet_ met taakverdeling. Afhankelijk van uw configuratie ontvangen _niet_ al uw verificatiemedewerkers ongeveer _hetzelfde_ aantal aanvragen. Het is mogelijk dat een specifieke verificatieagent helemaal geen verkeer ontvangt.
+>Pass-Through-verificatie biedt hoge Beschik baarheid met meerdere verificatie agenten en _geen_ taak verdeling. Afhankelijk van uw configuratie worden _niet_ alle verificatie agenten ongeveer _gelijk aan_ het aantal aanvragen ontvangen. Het is mogelijk dat een specifieke verificatie agent helemaal geen verkeer ontvangt.

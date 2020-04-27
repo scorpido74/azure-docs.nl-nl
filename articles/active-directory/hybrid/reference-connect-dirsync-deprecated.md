@@ -1,6 +1,6 @@
 ---
-title: Upgraden van DirSync en Azure AD Sync | Microsoft Documenten
-description: Beschrijft hoe u upgraden van DirSync en Azure AD Sync naar Azure AD Connect.
+title: Upgrade van DirSync en Azure AD Sync | Microsoft Docs
+description: Hierin wordt beschreven hoe u een upgrade uitvoert van DirSync en Azure AD Sync naar Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381175"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory-synchronisatie en Azure Active Directory-synchronisatie upgraden
-Azure AD Connect is de beste manier om verbinding te maken met uw on-premises directory met Azure AD en Office 365. Dit is een goed moment om te upgraden naar Azure AD Connect vanuit Windows Azure Active Directory Sync (DirSync) of Azure AD Sync, omdat deze hulpprogramma's nu worden afgeschaft en vanaf 13 april 2017 niet meer worden ondersteund.
+Azure AD Connect is de beste manier om verbinding te maken met uw on-premises directory met Azure AD en Office 365. Dit is een uitstekende tijd om bij te werken naar Azure AD Connect van Windows Azure Active Directory Sync (DirSync) of Azure AD Sync omdat deze hulpprogram ma's nu zijn afgeschaft en niet langer worden ondersteund vanaf 13 april 2017.
 
-De twee hulpprogramma's voor identiteitssynchronisatie die zijn afgeschaft, zijn aangeboden voor single forest-klanten (DirSync) en voor multi-forest en andere geavanceerde klanten (Azure AD Sync). Deze oudere hulpprogramma's zijn vervangen door één oplossing die beschikbaar is voor alle scenario's: Azure AD Connect. Het biedt nieuwe functionaliteit, functieverbeteringen en ondersteuning voor nieuwe scenario's. Om uw on-premises identiteitsgegevens te kunnen blijven synchroniseren met Azure AD en Office 365, raden we u ten zeerste aan om te upgraden naar Azure AD Connect. Microsoft garandeert niet dat deze oudere versies na 31 december 2017 werken.
+De twee hulpprogram ma's voor het synchroniseren van identiteiten die zijn afgeschaft, worden aangeboden voor klanten met één forest (DirSync) en voor meerdere forests en andere geavanceerde klanten (Azure AD Sync). Deze oudere hulpprogram ma's zijn vervangen door één oplossing die beschikbaar is voor alle scenario's: Azure AD Connect. Het biedt nieuwe functionaliteit, verbeteringen van functies en ondersteuning voor nieuwe scenario's. We raden u ten zeerste aan om een upgrade uit te voeren naar Azure AD Connect om uw on-premises identiteits gegevens te kunnen blijven synchroniseren met Azure AD en Office 365. Micro soft garandeert niet dat deze oudere versies na 31 december 2017 kunnen worden uitgevoerd.
 
-De laatste release van DirSync werd uitgebracht in juli 2014 en de laatste release van Azure AD Sync werd uitgebracht in mei 2015.
+De laatste versie van DirSync is uitgebracht in juli 2014 en de laatste release van Azure AD Sync is uitgebracht in mei 2015.
 
 ## <a name="what-is-azure-ad-connect"></a>Wat is Azure AD Connect?
-Azure AD Connect is de opvolger van DirSync en Azure AD Sync. Het combineert alle scenario's deze twee ondersteund. U er meer over lezen in [het integreren van uw on-premises identiteiten met Azure Active Directory.](whatis-hybrid-identity.md)
+Azure AD Connect is de opvolgende taak van DirSync en Azure AD Sync. Alle scenario's die deze twee ondersteunen worden gecombineerd. Meer informatie hierover vindt u in [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).
 
-## <a name="deprecation-schedule"></a>Afschaffingsschema
+## <a name="deprecation-schedule"></a>Schema voor afschaffing
 | Date | Opmerking |
 | --- | --- |
-| 13 april 2016 |Windows Azure Active Directory Sync ('DirSync') en Microsoft Azure Active Directory Sync ('Azure AD Sync') worden aangekondigd als afgeschaft. |
-| 13 april 2017 |Ondersteuning eindigt. Klanten kunnen geen ondersteuningsaanvraag meer openen zonder eerst te upgraden naar Azure AD Connect. |
-|31 december 2017|Azure AD accepteert mogelijk geen communicatie meer van Windows Azure Active Directory Sync ('DirSync') en Microsoft Azure Active Directory Sync ('Azure AD Sync').
+| 13 april 2016 |Windows Azure Active Directory Sync (' DirSync ') en Microsoft Azure Active Directory Sync (' Azure AD Sync ') worden aangekondigd als afgeschaft. |
+| 13 april 2017 |Ondersteuning wordt beëindigd. Klanten kunnen niet langer een ondersteunings aanvraag openen zonder eerst een upgrade naar Azure AD Connect te hoeven uitvoeren. |
+|31 december 2017|Azure AD accepteert mogelijk geen communicaties meer van Windows Azure Active Directory Sync (' DirSync ') en Microsoft Azure Active Directory Sync (' Azure AD Sync ').
 
-## <a name="how-to-transition-to-azure-ad-connect"></a>Overstappen op Azure AD Connect
-Als u DirSync uitvoert, zijn er twee manieren waarop u upgraden: In-place upgrade en parallelle implementatie. Een in-place upgrade wordt aanbevolen voor de meeste klanten en als u een recent besturingssysteem en minder dan 50.000 objecten. In andere gevallen wordt aanbevolen om een parallelle implementatie uit te voeren waarbij uw DirSync-configuratie wordt verplaatst naar een nieuwe server met Azure AD Connect.
+## <a name="how-to-transition-to-azure-ad-connect"></a>Overstappen naar Azure AD Connect
+Als u DirSync uitvoert, kunt u op twee manieren een upgrade uitvoeren: in-place upgrade en parallelle implementatie. Een in-place upgrade wordt aanbevolen voor de meeste klanten en als u een recent besturings systeem en minder dan 50.000 objecten hebt. In andere gevallen wordt u aangeraden een parallelle implementatie uit te voeren, waarbij uw DirSync-configuratie wordt verplaatst naar een nieuwe server met Azure AD Connect.
 
 | Oplossing | Scenario |
 | --- | --- |
-| [Upgraden van DirSync](how-to-dirsync-upgrade-get-started.md) |<li>Als u al een bestaande DirSync-server hebt.</li> |
-| [Upgraden van Azure AD Sync](how-to-upgrade-previous-version.md) |<li>Als u overstapt van Azure AD Sync.</li> |
+| [Upgraden van DirSync](how-to-dirsync-upgrade-get-started.md) |<li>Als er al een DirSync-server wordt uitgevoerd.</li> |
+| [Upgrade van Azure AD Sync](how-to-upgrade-previous-version.md) |<li>Als u overstapt van Azure AD Sync.</li> |
 
-Als u wilt zien hoe u een in-place upgrade van DirSync naar Azure AD Connect uitvoeren, raadpleegt u deze kanaal 9-video:
+Als u wilt zien hoe u een in-place upgrade van DirSync naar Azure AD Connect kunt doen, raadpleegt u deze kanaal 9-video:
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools/player]
 >
 >
 
 ## <a name="faq"></a>Veelgestelde vragen
-**V: Ik heb een e-mailmelding ontvangen van het Azure-team en/of een bericht van het Office 365-berichtencentrum, maar ik gebruik Connect.**  
-De melding is ook verzonden naar klanten die Azure AD Connect gebruiken met een buildnummer 1.0. \*.0 (met behulp van een pre-1.1 release). Microsoft raadt klanten aan om op de hoogte te blijven van Azure AD Connect-releases. De [automatische upgradefunctie](how-to-connect-install-automatic-upgrade.md) die in 1.1 is geïntroduceerd, maakt het eenvoudig om altijd een recente versie van Azure AD Connect te installeren.
+**V: Ik heb een e-mail melding ontvangen van het Azure-team en/of een bericht van het Office 365-berichten centrum, maar ik gebruik Connect.**  
+De melding werd ook naar klanten verzonden met behulp van Azure AD Connect met een buildnummer 1,0. \*dpm\dpm\protectionagents\ra\3.0. (met een bèta versie van 1,1). Micro soft raadt klanten aan om actueel te blijven met Azure AD Connect releases. Met de functie voor [automatische upgrades](how-to-connect-install-automatic-upgrade.md) die in 1,1 is geïntroduceerd, kunt u op eenvoudige wijze altijd een recente versie van Azure AD Connect installeren.
 
-**V: Werkt DirSync/Azure AD Sync niet meer op 13 april 2017?**  
-DirSync/Azure AD Sync blijft werken op 13 april 2017.  Azure AD accepteert echter geen communicatie meer van DirSync/Azure AD Sync na 31 december 2017.
+**V: zal DirSync/Azure AD Sync niet meer werken op 13 april 2017?**  
+DirSync/Azure AD Sync blijft werken op 13 april 2017.  Azure AD aanvaardt echter mogelijk niet langer communicatie van DirSync/Azure AD Sync na 31 december 2017.
 
-**V: Van welke DirSync-versies kan ik upgraden?**  
-Het wordt ondersteund om te upgraden van een DirSync-release die momenteel wordt gebruikt. 
+**V: voor welke DirSync-versies kan ik een upgrade uitvoeren?**  
+Het wordt ondersteund voor een upgrade vanaf elke versie van DirSync die momenteel wordt gebruikt. 
 
-**V: Hoe zit het met de Azure AD Connector voor FIM/MIM?**  
-De Azure AD Connector voor FIM/MIM is **niet** aangekondigd als afgeschaft. Het is op **functie bevriezen**; er wordt geen nieuwe functionaliteit toegevoegd en het ontvangt geen bugfixes. Microsoft raadt klanten aan deze te gebruiken om van het abonnement naar Azure AD Connect te gaan. Het wordt ten zeerste aanbevolen om geen nieuwe implementaties te starten. Deze Connector zal in de toekomst worden aangekondigd.
+**V: wat gebeurt er met de Azure AD-connector voor FIM/MIM?**  
+De Azure AD-connector voor FIM/MIM is **niet** aangekondigd als afgeschaft. Het is bij **functie bevriezen**; Er wordt geen nieuwe functionaliteit toegevoegd en er worden geen oplossingen voor oplossingen ontvangen. Micro soft raadt klanten aan om te plannen om van IT naar Azure AD Connect te gaan. Het wordt ten zeerste aangeraden geen nieuwe implementaties te starten met het. Deze connector wordt in de toekomst afgeschaft.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

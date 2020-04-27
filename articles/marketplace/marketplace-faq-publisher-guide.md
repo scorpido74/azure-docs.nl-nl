@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106675"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160508"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over de commerciële marketplace van Microsoft
 
@@ -57,8 +57,9 @@ Met Azure Marketplace kunnen klanten technische toepassingen detecteren die zijn
 Azure Marketplace-aanbiedingen kunnen worden aangeschaft via:
 
 * [De webgebaseerde webwinkel](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure Portal](https://portal.azure.com) <br>
-[!Note] Vereist een Azure-account. Als u er geen hebt, wordt u omgeleid naar de pagina **Welkom bij Azure** om er een te maken.  
+* [Azure Portal](https://portal.azure.com) <br> 
+>[!Note]
+>Vereist een Azure-account. Als u er geen hebt, wordt u omgeleid naar de pagina **Welkom bij Azure** om er een te maken.  
 * [De Azure-opdracht regel interface (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -336,7 +337,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
 
-Meer informatie vindt u in [Partner Center: klanten leads-documentatie ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) of een ondersteunings ticket indienen via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Meer informatie vindt u in [Partner Center: klanten leads-documentatie ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) of een ondersteunings ticket verzenden via [Help en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1) door uw aanbiedings type en Lead beheer te selecteren.
 
 **Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
 

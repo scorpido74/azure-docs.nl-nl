@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect - LargeObject-fouten veroorzaakt door kenmerk UserCertificate | Microsoft Documenten
-description: In dit onderwerp worden de herstelstappen weergegeven voor LargeObject-fouten die zijn veroorzaakt door het kenmerk UserCertificate.
+title: Azure AD Connect-LargeObject-fouten veroorzaakt door het kenmerk userCertificate | Microsoft Docs
+description: Dit onderwerp bevat de herstels tappen voor LargeObject-fouten die worden veroorzaakt door het kenmerk userCertificate.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,168 +18,168 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62095486"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronisatie van Azure AD Connect: verwerking van LargeObject-fouten die worden veroorzaakt door het kenmerk UserCertificate
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: afhandelings LargeObject-fouten veroorzaakt door userCertificate-kenmerk
 
-Azure AD handhaaft een maximumlimiet van **15** certificaatwaarden op het kenmerk **userCertificate.** Als Azure AD Connect een object met meer dan 15 waarden exporteert naar Azure AD, retourneert Azure AD een **LargeObject-fout** met bericht:
+Azure AD dwingt een maximum limiet van **15** certificaat waarden af voor het kenmerk **userCertificate** . Als Azure AD Connect een object met meer dan 15 waarden exporteert naar Azure AD, retourneert Azure AD een **LargeObject** -fout met het bericht:
 
->*"Het ingerichte object is te groot. Het aantal kenmerkwaarden op dit object bijsnijden. De bewerking wordt opnieuw geprobeerd in de volgende synchronisatiecyclus..."*
+>*' Het ingerichte object is te groot. Snijd het aantal kenmerk waarden voor dit object bij. De bewerking wordt opnieuw uitgevoerd tijdens de volgende synchronisatie cyclus... "*
 
-De fout LargeObject kan worden veroorzaakt door andere AD-kenmerken. Als u wilt bevestigen dat het inderdaad wordt veroorzaakt door het kenmerk userCertificate, moet u controleren tegen het object in on-premises AD of in de [Metaverse Search voor synchronisatieservicebeheer.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)
+De LargeObject-fout kan worden veroorzaakt door andere AD-kenmerken. Om te bevestigen dat dit inderdaad wordt veroorzaakt door het kenmerk userCertificate, moet u controleren of het object zich in een on-premises AD bevindt of in de [Synchronization Service Manager omgekeerde zoek opdracht](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
 
-Als u de lijst met objecten in uw tenant met LargeObject-fouten wilt verkrijgen, gebruikt u een van de volgende methoden:
+Gebruik een van de volgende methoden om de lijst met objecten in uw Tenant te verkrijgen met LargeObject-fouten:
 
- * Als uw tenant is ingeschakeld voor Azure AD Connect-status voor synchronisatie, u verwijzen naar het [opgegeven melding van synchronisatiefouten.](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync)
+ * Als uw Tenant is ingeschakeld voor Azure AD Connect Health synchronisatie, kunt u het [rapport synchronisatie fout](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) raadplegen.
  
- * De meldingse-mail voor adreslijstsynchronisatiefouten die aan het einde van elke synchronisatiecyclus wordt verzonden, bevat de lijst met objecten met LargeObject-fouten. 
- * Op [het tabblad Operations voor synchronisatieservicebeheer](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) worden de lijst met objecten met largeobjectfouten weergegeven als u op de nieuwste BEWERKING Exporteren naar Azure AD klikt.
+ * De e-mail melding voor Directory synchronisatie fouten die aan het einde van elke synchronisatie cyclus wordt verzonden, bevat de lijst met objecten met LargeObject-fouten. 
+ * Op het [tabblad Synchronization Service Manager bewerkingen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) wordt de lijst met objecten met LargeObject-fouten weer gegeven als u op de laatste export naar Azure AD-bewerking klikt.
  
-## <a name="mitigation-options"></a>Mitigatieopties
-Totdat de fout LargeObject is opgelost, kunnen andere kenmerkwijzigingen in hetzelfde object niet worden geëxporteerd naar Azure AD. Als u de fout wilt oplossen, u de volgende opties overwegen:
+## <a name="mitigation-options"></a>Opties voor risico beperking
+Totdat de LargeObject-fout is opgelost, kunnen andere kenmerk wijzigingen naar hetzelfde object niet worden geëxporteerd naar Azure AD. U kunt de volgende opties overwegen om de fout op te lossen:
 
- * Upgrade Azure AD Connect naar build 1.1.524.0 of daarna. In Azure AD Connect build 1.1.524.0 zijn de out-of-box synchronisatieregels bijgewerkt om geen gebruikerscertificaat en userSMIMECertificate van gebruikers te exporteren als de kenmerken meer dan 15 waarden hebben. Raadpleeg het artikel [Azure AD Connect: Upgrade van een vorige versie naar de laatste versie voor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)meer informatie over het upgraden van Azure AD Connect.
+ * Upgrade Azure AD Connect om 1.1.524.0 of After te bouwen. In Azure AD Connect build 1.1.524.0 zijn de out-of-Box-synchronisatie regels bijgewerkt om geen kenmerken userCertificate en userSMIMECertificate te exporteren als de kenmerken meer dan 15 waarden hebben. Raadpleeg voor meer informatie over het upgraden van Azure AD Connect artikel [Azure AD Connect: een upgrade van een eerdere versie naar de laatste](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
- * Implementeer een **uitgaande synchronisatieregel** in Azure AD Connect die een null-waarde exporteert **in plaats van de werkelijke waarden voor objecten met meer dan 15 certificaatwaarden.** Deze optie is geschikt als u niet vereist dat een van de certificaatwaarden wordt geëxporteerd naar Azure AD voor objecten met meer dan 15 waarden. Raadpleeg de volgende sectie [Synchronisatieregel implementeren om de export van het kenmerk userCertificate te beperken](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)voor meer informatie over het implementeren van deze synchronisatieregel.
+ * Implementeer een **uitgaande synchronisatie regel** in azure AD Connect die een **Null-waarde exporteert in plaats van de werkelijke waarden voor objecten met meer dan 15 certificaat waarden**. Deze optie is geschikt als u geen van de certificaat waarden nodig hebt om te exporteren naar Azure AD voor objecten met meer dan 15 waarden. Voor meer informatie over het implementeren van deze synchronisatie regel raadpleegt u de volgende sectie [implementeren van de synchronisatie regel voor het beperken van het exporteren van het kenmerk userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
- * Verminder het aantal certificaatwaarden op het on-premises AD-object (15 of minder) door waarden te verwijderen die niet meer door uw organisatie worden gebruikt. Dit is geschikt als de bloat van het kenmerk wordt veroorzaakt door verlopen of ongebruikte certificaten. U het [PowerShell-script dat hier beschikbaar is,](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) gebruiken om verlopen certificaten te vinden, te back-ups maken en verwijderen in uw on-premises AD. Voordat u de certificaten verwijderde, wordt aanbevolen om te verifiëren met de beheerders van de openbare sleutel-infrastructuur in uw organisatie.
+ * Verminder het aantal certificaat waarden voor het on-premises AD-object (15 of minder) door waarden te verwijderen die niet meer in gebruik zijn door uw organisatie. Dit is geschikt als de kenmerken aanzienlijk worden veroorzaakt door verlopen of ongebruikte certificaten. U kunt het [Power shell-script dat hier beschikbaar is](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) , gebruiken om verlopen certificaten in uw on-PREMISes ad te vinden, te maken en te verwijderen. Voordat u de certificaten verwijdert, is het raadzaam om te controleren of de Administrators van de open bare-sleutel infrastructuur in uw organisatie.
 
- * Configureer Azure AD Connect om uit te sluiten dat het kenmerk userCertificate wordt geëxporteerd naar Azure AD. In het algemeen raden we deze optie niet aan, omdat het kenmerk door Microsoft Online Services kan worden gebruikt om specifieke scenario's in te schakelen. Met name:
-    * Het kenmerk userCertificate op het object Gebruiker wordt gebruikt door Exchange Online- en Outlook-clients voor het ondertekenen en versleutelen van berichten. Voor meer informatie over deze functie verwijzen we je naar artikel [S/MIME voor het ondertekenen en versleutelen van berichten.](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)
+ * Configureer Azure AD Connect om het kenmerk userCertificate uit te sluiten van export naar Azure AD. Over het algemeen wordt deze optie niet aanbevolen omdat het kenmerk door micro soft Online Services kan worden gebruikt om specifieke scenario's mogelijk te maken. Met name:
+    * Het kenmerk userCertificate voor het gebruikers object wordt gebruikt door Exchange Online-en Outlook-clients voor het ondertekenen van berichten en versleuteling. Raadpleeg artikel [S/MIME voor bericht ondertekening en versleuteling voor](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)meer informatie over deze functie.
 
-    * Het kenmerk userCertificate op het computerobject wordt door Azure AD gebruikt om apparaten die met een on-premises domein zijn verbonden met Windows 10 verbinding te maken met Azure AD. Raadpleeg artikel [Connect-apparaten met domeinverbinding verbinden met Azure AD voor Windows 10-ervaringen](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)voor meer informatie over deze functie.
+    * Het kenmerk userCertificate van het computer object wordt door Azure AD gebruikt om Windows 10 on-premises domein apparaten toe te staan om verbinding te maken met Azure AD. Voor meer informatie over deze functie raadpleegt u het artikel [verbinding maken tussen domein apparaten en Azure AD voor Windows 10-ervaringen](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
 
-## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Synchronisatieregel implementeren om het exporteren van het kenmerk UserCertificate te beperken
-Als u de largeobjectfout als gevolg van het kenmerk userCertificate wilt oplossen, u een uitgaande synchronisatieregel implementeren in Azure AD Connect die een null-waarde exporteert **in plaats van de werkelijke waarden voor objecten met meer dan 15 certificaatwaarden.** In deze sectie worden de stappen beschreven die nodig zijn om de synchronisatieregel voor **gebruikersobjecten** te implementeren. De stappen kunnen worden aangepast voor **contact-** en **computerobjecten.**
+## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>De implementatie regel voor het beperken van het exporteren van het kenmerk userCertificate wordt geïmplementeerd
+Als u de LargeObject-fout wilt oplossen die wordt veroorzaakt door het kenmerk userCertificate, kunt u een uitgaande synchronisatie regel implementeren in Azure AD Connect die een null-waarde exporteert in **plaats van de werkelijke waarden voor objecten met meer dan 15 certificaat waarden**. In deze sectie worden de stappen beschreven die nodig zijn voor het implementeren van de synchronisatie regel voor **gebruikers** objecten. De stappen kunnen worden aangepast voor **contact** -en **computer** objecten.
 
 > [!IMPORTANT]
-> Als u null-waarde exporteert, worden certificaatwaarden verwijderd die eerder naar Azure AD zijn geëxporteerd.
+> Als u een null-waarde exporteert, worden de certificaat waarden die eerder zijn geëxporteerd naar Azure AD verwijderd.
 
-De stappen kunnen worden samengevat als:
+De stappen kunnen als volgt worden samenvatten:
 
-1. Schakel de synchronisatieplanner uit en controleer of er geen synchronisatie wordt uitgevoerd.
-3. Zoek de bestaande uitgaande synchronisatieregel voor het kenmerk UserCertificate.
-4. Maak de vereiste uitgaande synchronisatieregel.
-5. Controleer de nieuwe synchronisatieregel op een bestaand object met de fout LargeObject.
-6. Pas de nieuwe synchronisatieregel toe op resterende objecten met de fout LargeObject.
-7. Controleer of er geen onverwachte wijzigingen wachten om te worden geëxporteerd naar Azure AD.
+1. Schakel de synchronisatie planner uit en controleer of er geen synchronisatie wordt uitgevoerd.
+3. Zoek de bestaande regel voor uitgaande synchronisatie voor het kenmerk userCertificate.
+4. Maak een vereiste voor de uitgaande synchronisatie regel.
+5. Controleer de nieuwe synchronisatie regel op een bestaand object met LargeObject-fout.
+6. De nieuwe synchronisatie regel Toep assen op de resterende objecten met LargeObject-fout.
+7. Controleer of er geen onverwachte wijzigingen zijn die nog moeten worden geëxporteerd naar Azure AD.
 8. Exporteer de wijzigingen naar Azure AD.
-9. Synchronisatieplanner opnieuw inschakelen.
+9. Synchronisatie planner opnieuw inschakelen.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Step 1. Synchronisatieplanner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
-Zorg ervoor dat er geen synchronisatie plaatsvindt terwijl u bezig bent met het implementeren van een nieuwe synchronisatieregel om te voorkomen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD. Ga als bedoeld als u de ingebouwde synchronisatieplanner uitschakelt:
-1. PowerShell-sessie starten op de Azure AD Connect-server.
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Step 1. Synchronisatie planner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
+Zorg ervoor dat er geen synchronisatie plaatsvindt terwijl u zich in het midden van de implementatie van een nieuwe synchronisatie regel bevindt om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD. De ingebouwde synchronisatie planner uitschakelen:
+1. Start Power shell-sessie op de Azure AD Connect-server.
 
 2. Geplande synchronisatie uitschakelen door cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
-> De voorgaande stappen zijn alleen van toepassing op nieuwere versies (1.1.xxx.x) van Azure AD Connect met de ingebouwde planner. Als u oudere versies (1.0.xxx.x) van Azure AD Connect gebruikt die Windows Taakplanner gebruiken, of als u uw eigen aangepaste planner (niet gebruikelijk) gebruikt om periodieke synchronisatie te activeren, moet u deze dienovereenkomstig uitschakelen.
+> De bovenstaande stappen zijn alleen van toepassing op nieuwere versies (1.1. xxx. x) van Azure AD Connect met de ingebouwde scheduler. Als u oudere versies (1.0. xxx. x) gebruikt van Azure AD Connect die gebruikmaken van Windows taak planner, of als u uw eigen aangepaste scheduler (niet common) gebruikt om periodieke synchronisatie te activeren, moet u ze dienovereenkomstig uitschakelen.
 
-1. Start de **Synchronisatieservicebeheer** door naar STARTEN → Synchronisatieservice te gaan.
+1. Start de **Synchronization Service Manager** door naar Start → synchronisatie service te gaan.
 
-1. Ga naar het tabblad **Bewerkingen** en bevestig dat er geen bewerking is waarvan de status *'aan de gang' is.*
+1. Ga naar het tabblad **bewerkingen** en controleer of er geen bewerking is waarvan de status wordt *uitgevoerd.*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Stap 2. De bestaande regel voor uitgaande synchronisatie voor het kenmerk UserCertificate zoeken
-Er moet een bestaande synchronisatieregel zijn die is ingeschakeld en geconfigureerd om het kenmerk userCertificate voor gebruikersobjecten te exporteren naar Azure AD. Zoek deze synchronisatieregel om de **voorrangs-** en **scopingfilterconfiguratie** te achterhalen:
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Stap 2. De bestaande regel voor uitgaande synchronisatie voor het kenmerk userCertificate zoeken
+Er moet een bestaande synchronisatie regel zijn ingeschakeld en geconfigureerd voor het exporteren van het kenmerk userCertificate voor gebruikers objecten naar Azure AD. Zoek deze synchronisatie regel om de **prioriteit** op te sporen en **filter** configuratie te bepalen:
 
-1. Start de **editor synchronisatieregels** door naar TE GAAN → Synchronisatieregels editor.
+1. Start de **Editor voor synchronisatie regels** door naar Start → synchronisatie regels editor te gaan.
 
-2. Configureer de zoekfilters met de volgende waarden:
+2. Configureer de zoek filters met de volgende waarden:
 
     | Kenmerk | Waarde |
     | --- | --- |
     | Richting |**Uitgaand** |
-    | MV-objecttype |**Person** |
-    | Connector |*naam van uw Azure AD-connector* |
-    | Objecttype connector |**Gebruiker** |
-    | MV-kenmerk MV |**userCertificate** |
+    | MV-object type |**Person** |
+    | Connector |*de naam van uw Azure AD-connector* |
+    | Type connector-object |**gebruiker** |
+    | MV-kenmerk |**userCertificate** |
 
-3. Als u OOB-synchronisatieregels (out-of-box) gebruikt naar Azure AD-connector om het kenmerk UserCertficiate voor gebruikersobjecten te exporteren, moet u de regel *'Uit naar AAD – ExchangeOnline voor gebruikers'* terugkrijgen.
-4. Noteer de **prioriteitswaarde** van deze synchronisatieregel.
-5. Selecteer de synchronisatieregel en klik op **Bewerken**.
-6. Klik in het pop-updialoogvenster *Bevestiging van gereserveerde regels bewerken* op **Nee**. (Maak je geen zorgen, we gaan geen wijzigingen aanbrengen in deze synchronisatieregel).
-7. Selecteer in het bewerkingsscherm het **filtertabblad Scoping.**
-8. Noteer de configuratie van het scopingfilter. Als u de OOB-synchronisatieregel gebruikt, moet er precies **één scopingfiltergroep zijn die twee clausules bevat,** waaronder:
+3. Als u gebruikmaakt van OOB (out-of-box) synchronisatie regels naar Azure AD connector als u het kenmerk userCertficiate voor gebruikers objecten wilt exporteren, moet u de regel *' out to Aad – User ExchangeOnline '* terughalen.
+4. Noteer de **prioriteits** waarde van deze synchronisatie regel.
+5. Selecteer de synchronisatie regel en klik op **bewerken**.
+6. Klik in het pop-upvenster *"gereserveerde regel bewerken"* op **Nee**. (U hoeft geen wijzigingen aan te brengen in deze synchronisatie regel).
+7. Selecteer in het scherm bewerken het tabblad **filter bereik** .
+8. Noteer de filter configuratie voor bereik. Als u de OOB-synchronisatie regel gebruikt, moet er precies **één bereik filter groep zijn met twee componenten**, waaronder:
 
     | Kenmerk | Operator | Waarde |
     | --- | --- | --- |
-    | sourceObjectType | Gelijke | Gebruiker |
-    | cloudMastered | NOTEQUAL NOTEQUAL | True |
+    | sourceObjectType | WAARD | Gebruiker |
+    | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Stap 3. De vereiste uitgaande synchronisatieregel maken
-De nieuwe synchronisatieregel moet dezelfde **scopingfilter** en **hogere prioriteit** hebben dan de bestaande synchronisatieregel. Dit zorgt ervoor dat de nieuwe synchronisatieregel van toepassing is op dezelfde set objecten als de bestaande synchronisatieregel en overschrijft de bestaande synchronisatieregel voor het kenmerk userCertificate. Ga als u de synchronisatieregel maken:
-1. Klik in de editor voor synchronisatieregels op de knop **Nieuwe regels toevoegen.**
-2. Geef **onder het tabblad Beschrijving**de volgende configuratie op:
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>Stap 3. De uitgaande synchronisatie regel vereist maken
+De nieuwe synchronisatie regel moet hetzelfde **bereik filter** hebben en een **hogere prioriteit** hebben dan de bestaande synchronisatie regel. Dit zorgt ervoor dat de nieuwe synchronisatie regel van toepassing is op dezelfde set objecten als de bestaande synchronisatie regel en overschrijft de bestaande synchronisatie regel voor het kenmerk userCertificate. De synchronisatie regel maken:
+1. Klik in de editor voor synchronisatie regels op de knop **nieuwe regel toevoegen** .
+2. Geef onder het **tabblad Beschrijving**de volgende configuratie op:
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Name | *Een naam opgeven* | *Bijvoorbeeld:: "Out to AAD – Custom override for userCertificate"* |
-    | Beschrijving | *Een beschrijving geven* | *Bijvoorbeeld:"Als het kenmerk UserCertificate meer dan 15 waarden heeft, exporteert u NULL."* |
+    | Naam | *Geef een naam op* | Bijvoorbeeld *' uit tot Aad – Custom override voor userCertificate '* |
+    | Beschrijving | *Geef een beschrijving op* | Bijvoorbeeld, *als het kenmerk userCertificate meer dan 15 waarden heeft, wordt Null geëxporteerd. "* |
     | Verbonden systeem | *De Azure AD-connector selecteren* |
-    | Verbonden systeemobjecttype | **Gebruiker** | |
-    | Metaverse objecttype | **Persoon** | |
-    | Koppelingstype | **Toevoegen** | |
-    | Prioriteit | *Kies een getal tussen 1 - 99* | Het gekozen getal mag niet worden gebruikt door een bestaande synchronisatieregel en heeft een lagere waarde (en dus een hogere prioriteit) dan de bestaande synchronisatieregel. |
+    | Type verbonden systeem object | **gebruiker** | |
+    | Omgekeerd object type | **gelaedeerde** | |
+    | Koppelings type | **Toevoegen** | |
+    | Prioriteit | *Kies een getal tussen 1-99* | Het gekozen nummer mag niet worden gebruikt door een bestaande synchronisatie regel en heeft een lagere waarde (en dus hogere prioriteit) dan de bestaande synchronisatie regel. |
 
-3. Ga naar het **filtertabblad Scoping** en implementeer hetzelfde scopingfilter dat de bestaande synchronisatieregel gebruikt.
-4. Sla het tabblad **Joinregels** over.
-5. Ga naar het tabblad **Transformaties** om een nieuwe transformatie toe te voegen met de volgende configuratie:
+3. Ga naar het tabblad **bereik filteren** en implementeer hetzelfde bereik filter de bestaande synchronisatie regel gebruikt.
+4. Sla het tabblad **regels voor samen voegen** over.
+5. Ga naar het tabblad **transforms** om een nieuwe trans formatie toe te voegen met behulp van de volgende configuratie:
 
     | Kenmerk | Waarde |
     | --- | --- |
     | Stroomtype |**Expressie** |
-    | Kenmerk Target |**userCertificate** |
-    | Bronkenmerk |*Gebruik de volgende expressie:*`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Doel kenmerk |**userCertificate** |
+    | Bronkenmerk |*Gebruik de volgende expressie*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
-6. Klik **op** de knop Toevoegen om de synchronisatieregel te maken.
+6. Klik op de knop **toevoegen** om de synchronisatie regel te maken.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Stap 4. De nieuwe synchronisatieregel voor een bestaand object met largeobjectfout verifiëren
-Dit is om te controleren of de synchronisatieregel die is gemaakt correct werkt op een bestaand AD-object met largeobjectfout voordat u het toepast op andere objecten:
-1. Ga naar het tabblad **Bewerkingen** in de synchronisatieservicemanager.
-2. Selecteer de meest recente bewerking Exporteren naar Azure AD en klik op een van de objecten met LargeObject-fouten.
-3.  Klik in het pop-upscherm Eigenschappen van verbindingsruimteobject op de knop **Voorbeeld.**
-4. Selecteer in het pop-upscherm Voorbeeld de optie **Volledige synchronisatie** en klik op **Voorbeeld vastleggen**.
-5. Sluit het scherm Voorbeeld en het scherm Eigenschappen van objecteigenschappen voor verbindingsruimte.
-6. Ga naar het tabblad **Connectors** in de synchronisatieservicebeheer.
-7. Klik met de rechtermuisknop op de **Azure AD** Connector en selecteer **Uitvoeren...**
-8. Selecteer in de pop-up Connector uitvoeren de optie **Stap exporteren** en klik op **OK**.
-9. Wacht tot exporteren naar Azure AD is voltooid en bevestig dat er geen LargeObject-fout meer is op dit specifieke object.
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Stap 4. De nieuwe synchronisatie regel voor een bestaand object controleren met LargeObject-fout
+Dit is om te controleren of de gemaakte synchronisatie regel correct werkt op een bestaand AD-object met LargeObject-fout voordat u het toepast op andere objecten:
+1. Ga naar het tabblad **bewerkingen** in het Synchronization Service Manager.
+2. Selecteer de meest recente bewerking voor het exporteren naar Azure AD en klik op een van de objecten met LargeObject-fouten.
+3.  Klik in het pop-upvenster eigenschappen van connector Space-object op de knop **Preview** .
+4. Selecteer in het pop-upvenster voor beeld de optie **volledige synchronisatie** en klik op **Doorvoervoorbeeld**.
+5. Sluit het scherm preview en het scherm Eigenschappen van connector ruimte-object.
+6. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
+7. Klik met de rechter muisknop op de **Azure AD** -connector en selecteer **uitvoeren...**
+8. Selecteer in het pop-upvenster run connector stap **exporteren** en klik op **OK**.
+9. Wacht totdat de export naar Azure AD is voltooid en controleer of er geen LargeObject-fout meer is op dit specifieke object.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Stap 5. De nieuwe synchronisatieregel toepassen op resterende objecten met de fout LargeObject
-Zodra de synchronisatieregel is toegevoegd, moet u een volledige synchronisatiestap uitvoeren op de AD-connector:
-1. Ga naar het tabblad **Connectors** in de synchronisatieservicebeheer.
-2. Klik met de rechtermuisknop op de **AD-connector** en selecteer **Uitvoeren...**
-3. Selecteer in de pop-up Connector uitvoeren de optie **Volledige synchronisatiestap** en klik op **OK**.
-4. Wacht tot de stap Volledige synchronisatie is voltooid.
-5. Herhaal de bovenstaande stappen voor de resterende AD-connectors als u meer dan één AD-connectors hebt. Meestal zijn meerdere connectors vereist als u meerdere on-premises mappen hebt.
+### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Stap 5. De nieuwe synchronisatie regel Toep assen op de resterende objecten met de fout LargeObject
+Zodra de synchronisatie regel is toegevoegd, moet u een volledige synchronisatie stap uitvoeren op de AD-connector:
+1. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
+2. Klik met de rechter muisknop op de **ad** -connector en selecteer **uitvoeren...**
+3. Selecteer in het pop-upvenster run connector de stap **volledige synchronisatie** en klik op **OK**.
+4. Wacht totdat de volledige synchronisatie stap is voltooid.
+5. Herhaal de bovenstaande stappen voor de resterende AD-connectors als u meer dan één AD-connector hebt. Normaal gesp roken zijn meerdere connectors vereist als u meerdere on-premises directory's hebt.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Stap 6. Controleren of er geen onverwachte wijzigingen moeten worden uitgevoerd naar Azure AD
-1. Ga naar het tabblad **Connectors** in de synchronisatieservicebeheer.
-2. Klik met de rechtermuisknop op de **Azure AD** Connector en selecteer **Zoekconnectorruimte**.
-3. Ga als bedoeld in de pop-up Zoekconnectorruimte:
-    1. Bereik instellen **op In behandeling zijnde export**.
-    2. Schakel alle drie de selectievakjes in, inclusief **Toevoegen,** **Wijzigen** en **Verwijderen**.
-    3. Klik op de knop **Zoeken** om alle objecten met wijzigingen die wachten om te worden geëxporteerd naar Azure AD, terug te sturen.
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Stap 6. Controleren of er geen onverwachte wijzigingen zijn die nog moeten worden geëxporteerd naar Azure AD
+1. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
+2. Klik met de rechter muisknop op de **Azure AD** -connector en selecteer **ruimte voor Zoek connector**.
+3. In het pop-upvenster Space zoeken in Zoek connector:
+    1. Stel het bereik in op **in behandeling zijnde export**.
+    2. Schakel alle drie de selectie vakjes in, waaronder **toevoegen**, **wijzigen** en **verwijderen**.
+    3. Klik op de knop **zoeken** om alle objecten te retour neren die wachten op exporteren naar Azure AD.
     4. Controleer of er geen onverwachte wijzigingen zijn. Als u de wijzigingen voor een bepaald object wilt onderzoeken, dubbelklikt u op het object.
 
 ### <a name="step-7-export-the-changes-to-azure-ad"></a>Stap 7. De wijzigingen exporteren naar Azure AD
-Ga als een andere toepassing op de wijzigingen naar Azure AD:
-1. Ga naar het tabblad **Connectors** in de synchronisatieservicebeheer.
-2. Klik met de rechtermuisknop op de **Azure AD** Connector en selecteer **Uitvoeren...**
-4. Selecteer in de pop-up Connector uitvoeren de optie **Stap exporteren** en klik op **OK**.
-5. Wacht tot exporteren naar Azure AD is voltooid en bevestig dat er geen LargeObject-fouten meer zijn.
+De wijzigingen exporteren naar Azure AD:
+1. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
+2. Klik met de rechter muisknop op de **Azure AD** -connector en selecteer **uitvoeren...**
+4. Selecteer in het pop-upvenster run connector stap **exporteren** en klik op **OK**.
+5. Wacht totdat de export naar Azure AD is voltooid en controleer of er geen LargeObject-fouten meer zijn.
 
-### <a name="step-8-re-enable-sync-scheduler"></a>Stap 8. Synchronisatieplanner opnieuw inschakelen
-Nu het probleem is opgelost, schakelt u de ingebouwde synchronisatieplanner opnieuw in:
-1. PowerShell-sessie starten.
+### <a name="step-8-re-enable-sync-scheduler"></a>Stap 8. Synchronisatie planner opnieuw inschakelen
+Nu het probleem is opgelost, moet u de ingebouwde synchronisatie planner opnieuw inschakelen:
+1. Power shell-sessie starten.
 2. Geplande synchronisatie opnieuw inschakelen door cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
-> De voorgaande stappen zijn alleen van toepassing op nieuwere versies (1.1.xxx.x) van Azure AD Connect met de ingebouwde planner. Als u oudere versies (1.0.xxx.x) van Azure AD Connect gebruikt die Windows Taakplanner gebruiken, of als u uw eigen aangepaste planner (niet gebruikelijk) gebruikt om periodieke synchronisatie te activeren, moet u deze dienovereenkomstig uitschakelen.
+> De bovenstaande stappen zijn alleen van toepassing op nieuwere versies (1.1. xxx. x) van Azure AD Connect met de ingebouwde scheduler. Als u oudere versies (1.0. xxx. x) gebruikt van Azure AD Connect die gebruikmaken van Windows taak planner, of als u uw eigen aangepaste scheduler (niet common) gebruikt om periodieke synchronisatie te activeren, moet u ze dienovereenkomstig uitschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

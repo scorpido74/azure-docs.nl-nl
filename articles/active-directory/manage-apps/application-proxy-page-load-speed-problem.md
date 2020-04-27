@@ -1,5 +1,5 @@
 ---
-title: Een toepassing van toepassingsproxy duurt te lang om te laden | Microsoft Documenten
+title: Het laden van een toepassings proxy toepassing duurt te lang Microsoft Docs
 description: Problemen met de prestaties van pagina's oplossen met de Azure AD-toepassingsproxy
 services: active-directory
 documentationcenter: ''
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65782649"
 ---
-# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Een toepassing van toepassingsproxy duurt te lang om te laden
+# <a name="an-application-proxy-application-takes-too-long-to-load"></a>Het laden van een toepassings proxy toepassing duurt te lang
 
-In dit artikel u begrijpen waarom het laden van een Azure AD Application Proxy-toepassing lang kan duren. Het legt ook uit wat u doen om dit probleem op te lossen.
+Dit artikel helpt u te begrijpen waarom het laden van een Azure AD-toepassingsproxy-toepassing veel tijd in beslag kan nemen. Er wordt ook uitgelegd wat u kunt doen om dit probleem op te lossen.
 
 ## <a name="overview"></a>Overzicht
-Hoewel uw toepassingen werken, kunnen ze een lange latentie ervaren. Er kunnen netwerktopologie tweaks die u maken om de snelheid te verbeteren. Zie het [netwerkoverwegingsdocument](application-proxy-network-topology.md)voor een evaluatie van verschillende topologieën.
+Hoewel uw toepassingen werken, kunnen ze een lange latentie ondervinden. Er zijn mogelijk aanpassingen aan de netwerk topologie die u kunt aanbrengen om de snelheid te verbeteren. Raadpleeg het [document over netwerk overwegingen](application-proxy-network-topology.md)voor een evaluatie van verschillende topologieën.
 
-Naast netwerktopologie zijn er momenteel geen verdere aanbevelingen voor performance tuning. Als de Application Proxy-service wordt uitgebreid, kan deze komen tot een datacenter dat fysiek dichterbij is. De nabijheid kan helpen bij latentie. Zie de [latentietestpagina](http://www.azurespeed.com/Azure/Latency)voor een lijst met Azure-datacenters. 
+Naast de netwerk topologie zijn er momenteel geen verdere aanbevelingen voor het afstemmen van de prestaties. Wanneer de Application proxy-service uitbreidt, kan deze worden geleverd aan een Data Center dat zich fysiek dichter bevindt. De nauwere nabijheid kan helpen met latentie. Zie de [pagina latentie test](http://www.azurespeed.com/Azure/Latency)voor een lijst met Azure-data centers. 
 
-De datacenters met de Application Proxy-service zijn te vinden met het [Connector Ports Test Tool.](https://aadap-portcheck.connectorporttest.msappproxy.net/) 
+De data centers met de Application proxy-service kunnen worden gevonden met het [test programma voor connector poorten](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
-## <a name="feedback-on-application-proxy-data-center-locations"></a>Feedback op locatie van het datacenter van Application Proxy 
-Er kunnen Azure-datacenters zijn die application proxy nog niet bevatten, maar die zouden leiden tot een grote latentieverbetering voor u. Stuur de locatie aadapfeedback@microsoft.comvan het datacenter naar . Microsoft gebruikt uw feedback voor uitbreidingsplannen.
+## <a name="feedback-on-application-proxy-data-center-locations"></a>Feedback over de locaties van het Data Center van de toepassings proxy 
+Er kunnen Azure-data centers zijn die nog geen toepassings proxy bevatten, maar dit kan leiden tot een geweldige latentie verbetering voor u. De locatie van het Data Center aadapfeedback@microsoft.comverzenden naar. Micro soft gebruikt uw feedback voor uitbreidings abonnementen.
 
-Microsoft werkt aan extra mogelijkheden om de latentie te verbeteren. Zodra deze verbeteringen beschikbaar zijn, wordt de documentatie bijgewerkt.
+Micro soft werkt aan aanvullende mogelijkheden om de latentie te verbeteren. Zodra deze verbeteringen beschikbaar zijn, wordt de documentatie bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Werken met bestaande on-premises proxyservers](application-proxy-configure-connectors-with-proxy-servers.md)

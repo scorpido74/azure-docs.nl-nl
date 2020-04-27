@@ -1,6 +1,6 @@
 ---
-title: Vergelijking van Azure on demand media encoders | Microsoft Documenten
-description: In dit onderwerp worden de coderingsmogelijkheden van **Media Encoder Standard** en **Media Encoder Premium Workflow vergeleken.**
+title: Vergelijking van media encoders op aanvraag van Azure Microsoft Docs
+description: In dit onderwerp worden de coderings mogelijkheden van **Media Encoder Standard** en **Media Encoder Premium workflow**vergeleken.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,64 +16,64 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016658"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Vergelijking van Azure on demand media encoders  
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Vergelijking van media encoders op aanvraag van Azure  
 
-In dit onderwerp worden de coderingsmogelijkheden van **Media Encoder Standard** en **Media Encoder Premium Workflow vergeleken.**
+In dit onderwerp worden de coderings mogelijkheden van **Media Encoder Standard** en **Media Encoder Premium workflow**vergeleken.
 
-## <a name="video-and-audio-processing-capabilities"></a>Mogelijkheden voor video- en audioverwerking
+## <a name="video-and-audio-processing-capabilities"></a>Mogelijkheden voor video-en audio verwerking
 
-In de volgende tabel wordt de functionaliteit tussen Media Encoder Standard (MES) en Media Encoder Premium Workflow (MEPW) vergeleken. 
+De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES) en Media Encoder Premium Workflow (MEPW). 
 
 |Mogelijkheid|Media Encoder Standard|Media Encoder Premium Workflow|
 |---|---|---|
-|Voorwaardelijke logica toepassen tijdens het coderen<br/>(als de invoer bijvoorbeeld HD is, codeer dan 5.1-audio)|Nee|Ja|
+|Voorwaardelijke logica Toep assen tijdens het coderen<br/>(als de invoer bijvoorbeeld HD is, codeer dan 5,1 audio)|Nee|Ja|
 |Ondertiteling|Nee|[Ja](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® professionele luidheidcorrectie](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> met Dialogue Intelligence™|Nee|Ja|
-|De-interlacing, omgekeerde telecine|Basic|Uitzendkwaliteit|
-|Zwarte randen detecteren en verwijderen <br/>(pillarboxes, brievenbussen)|Nee|Ja|
-|Miniatuurgeneratie|[Ja](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ja](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
-|Knippen/knippen en naaien van video's|[Ja](media-services-advanced-encoding-with-mes.md#trim_video)|Ja|
+|[Loudness correctie voor Dolby® Professional](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> met dialoog Intelligence™|Nee|Ja|
+|Interliniëring, inverse telecine|Basic|Broadcast kwaliteit|
+|Zwarte randen detecteren en verwijderen <br/>(pillarboxes, letterboxes)|Nee|Ja|
+|Miniatuur genereren|[Ja](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ja](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
+|Video's knippen/bijsnijden en samen voegen|[Ja](media-services-advanced-encoding-with-mes.md#trim_video)|Ja|
 |Overlays van audio of video|[Ja](media-services-advanced-encoding-with-mes.md#overlay)|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
-|Overlays van afbeeldingen|Van afbeeldingsbronnen|Van afbeeldings- en tekstbronnen|
-|Meerdere audiotaaltracks|Beperkt|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
+|Overlays van afbeeldingen|Uit afbeeldings bronnen|Van afbeeldings-en tekst bronnen|
+|Meerdere audio taal sporen|Beperkt|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
-## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>Factureringsmeter die door elke encoder wordt gebruikt
-| Naam mediaprocessor | Toepasselijke prijzen | Opmerkingen |
+## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>Facturerings meter die wordt gebruikt door elk coderings programma
+| Naam van media processor | Toepasselijke prijzen | Opmerkingen |
 | --- | --- | --- |
-| **Media Encoder Standard** |Encoder |Coderingstaken worden in rekening gebracht op basis van de totale duur, in minuten, van alle mediabestanden die als uitvoer worden geproduceerd, tegen de [hier][1]opgegeven snelheid, onder de kolom ENCODER. |
-| **Media Encoder Premium Workflow** |PREMIUM ENCODER |Coderingstaken worden in rekening gebracht op basis van de totale duur, in minuten, van alle mediabestanden die als uitvoer worden geproduceerd, tegen de [hier][1]opgegeven snelheid , onder de kolom PREMIUM ENCODER. |
+| **Media Encoder Standard** |RING |De kosten voor het coderen van taken worden berekend op basis van de totale duur, in minuten, van alle media bestanden die worden geproduceerd als uitvoer, tegen de snelheid die u [hier][1]opgeeft, onder de kolom encoder. |
+| **Media Encoder Premium Workflow** |PREMIUM ENCODER |De kosten voor het coderen van taken worden berekend op basis van de totale duur, in minuten, van alle media bestanden die worden geproduceerd als uitvoer, tegen de snelheid die u [hier][1]opgeeft, onder de kolom Premium encoder. |
 
-## <a name="input-containerfile-formats"></a>Invoercontainer/bestandsindelingen
+## <a name="input-containerfile-formats"></a>Invoer van container/bestands indelingen
 | Invoercontainer/bestandsindelingen | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Ja |Ja |
+| F4V van Adobe® Flash® |Ja |Ja |
 | MXF/SMPTE 377M |Ja |Ja |
-| GXF GXF |Ja |Ja |
-| MPEG-2 transportstromen |Ja |Ja |
-| MPEG-2-programmastreams |Ja |Ja |
+| GXF |Ja |Ja |
+| MPEG-2-transport stromen |Ja |Ja |
+| MPEG-2-programma-streams |Ja |Ja |
 | MPEG-4/MP4 |Ja |Ja |
 | Windows Media/ASF |Ja |Ja |
-| AVI (Niet gecomprimeerde 8bit/10bit) |Ja |Ja |
+| AVI (niet-gecomprimeerd 8bit/10bit) |Ja |Ja |
 | 3GPP/3GPP2 |Ja |Nee |
-| Vloeiende streamingbestandsindeling (PIFF 1.3) |Ja |Nee |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Ja |Nee |
+| Smooth Streaming bestands indeling (PIFF 1,3) |Ja |Nee |
+| [Digitale video-opname van micro soft (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Ja |Nee |
 | Matroska/WebM |Ja |Nee |
 | QuickTime (.mov) |Ja |Nee |
 
-## <a name="input-video-codecs"></a>Videocodecs invoeren
+## <a name="input-video-codecs"></a>Video-codecs invoeren
 | Codecs invoervideo | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AVC 8-bits/10-bits, maximaal 4:2:2, inclusief AVCIntra |8-bits 4:2:0 en 4:2:2 |Ja |
 | Avid DNxHD (in MXF) |Ja |Ja |
 | DVCPro/DVCProHD (in MXF) |Ja |Ja |
 | JPEG2000 |Ja |Ja |
-| MPEG-2 (tot 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Maximaal 422-profiel |Ja |
+| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Maximaal 422-profiel |Ja |
 | MPEG-1 |Ja |Ja |
 | Windows Media Video/VC-1 |Ja |Ja |
 | Canopus HQ/HQX |Nee |Nee |
@@ -85,9 +85,9 @@ In de volgende tabel wordt de functionaliteit tussen Media Encoder Standard (MES
 | Apple ProRes Proxy |Ja |Nee |
 | Apple ProRes 4444 |Ja |Nee |
 | Apple ProRes 4444 XQ |Ja |Nee |
-| HEVC/H.265|Hoofdprofiel|Hoofd- en hoofdprofiel 10|
+| HEVC/H. 265|Hoofd profiel|Hoofd-en hoofd-10-profiel|
 
-## <a name="input-audio-codecs"></a>Audiocodecs invoeren
+## <a name="input-audio-codecs"></a>Audio-codecs invoeren
 | Codecs audio-invoer | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M en 302M, AES3-2003) |Nee |Ja |
@@ -99,38 +99,38 @@ In de volgende tabel wordt de functionaliteit tussen Media Encoder Standard (MES
 | MP3 (MPEG-1 Audio Layer 3) |Ja |Ja |
 | Windows Media Audio |Ja |Ja |
 | WAV/PCM |Ja |Ja |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Ja |Nee |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ja |Nee |
 | [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Ja |Nee |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ja |Nee |
 
-## <a name="output-containerfile-formats"></a>Uitvoercontainer/bestandsindelingen
-| Uitvoercontainer/bestandsindelingen | Media Encoder Standard | Media Encoder Premium Workflow |
+## <a name="output-containerfile-formats"></a>Uitvoer container/bestands indelingen
+| Uitvoer container/bestands indelingen | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Nee |Ja |
+| F4V van Adobe® Flash® |Nee |Ja |
 | MXF (OP1a, XDCAM en AS02) |Nee |Ja |
 | DPP (inclusief AS11) |Nee |Ja |
-| GXF GXF |Nee |Ja |
+| GXF |Nee |Ja |
 | MPEG-4/MP4 |Ja |Ja |
 | MPEG-TS |Ja |Ja |
 | Windows Media/ASF |Nee |Ja |
-| AVI (Niet gecomprimeerde 8bit/10bit) |Nee |Ja |
-| Vloeiende streamingbestandsindeling (PIFF 1.3) |Nee |Ja |
+| AVI (niet-gecomprimeerd 8bit/10bit) |Nee |Ja |
+| Smooth Streaming bestands indeling (PIFF 1,3) |Nee |Ja |
 
-## <a name="output-video-codecs"></a>Videocodecs uitvoeren
-| Videocodecs uitvoeren | Media Encoder Standard | Media Encoder Premium Workflow |
+## <a name="output-video-codecs"></a>Video-codecs voor uitvoer
+| Video-codecs voor uitvoer | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| AVC (H.264; 8-bit; tot High Profile, Level 5.2; 4K Ultra HD; AVC Intra) |Slechts 8 bit 4:2:0 |Ja |
-| HEVC (H.265; 8-bit en 10-bit;)  |Nee |Ja |
+| AVC (H. 264; 8-bits; tot hoog profiel, niveau 5,2; 4 KB Ultra HD; AVC-Intra) |Alleen 8-bits 4:2:0 |Ja |
+| HEVC (H. 265; 8-bits en 10-bits;)  |Nee |Ja |
 | Avid DNxHD (in MXF) |Nee |Ja |
-| MPEG-2 (tot 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Nee |Ja |
+| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Nee |Ja |
 | MPEG-1 |Nee |Ja |
 | Windows Media Video/VC-1 |Nee |Ja |
-| JPEG-miniatuurmaken |Ja |Ja |
-| PNG-miniatuurmaken |Ja |Ja |
-| BMP-miniatuurmaken |Ja |Nee |
+| JPEG-miniatuur maken |Ja |Ja |
+| Miniatuur maken voor PNG |Ja |Ja |
+| Miniatuur maken van BMP |Ja |Nee |
 
-## <a name="output-audio-codecs"></a>Audiocodecs uitvoeren
-| Audiocodecs uitvoeren | Media Encoder Standard | Media Encoder Premium Workflow |
+## <a name="output-audio-codecs"></a>Audio-codecs voor uitvoer
+| Audio-codecs voor uitvoer | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M en 302M, AES3-2003) |Nee |Ja |
 | Dolby® Digital (AC3) |Nee |Ja |
@@ -141,7 +141,7 @@ In de volgende tabel wordt de functionaliteit tussen Media Encoder Standard (MES
 | Windows Media Audio |Nee |Ja |
 
 >[!NOTE]
->Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen in een ISO MP4-bestand worden geschreven.
+>Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -150,7 +150,7 @@ In de volgende tabel wordt de functionaliteit tussen Media Encoder Standard (MES
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Geavanceerde coderingstaken uitvoeren door voorinstellingen van Media Encoder Standard aan te werken](media-services-custom-mes-presets-with-dotnet.md)
+* [Geavanceerde coderings taken uitvoeren door Media Encoder Standard voor instellingen aan te passen](media-services-custom-mes-presets-with-dotnet.md)
 * [Quota en beperkingen](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

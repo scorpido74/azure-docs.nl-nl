@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259862"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159980"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
 
@@ -46,7 +46,7 @@ U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te on
 
 De gebeurtenis logboeken van uw web-app weer geven:
 
-1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
+1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
 2. Selecteer in het menu **fout opsporing console** > -**cmd**.
 3. Selecteer de map **logfiles** .
 4. Als u gebeurtenis logboeken wilt weer geven, selecteert u het potlood pictogram naast **eventlog. XML**.
@@ -56,7 +56,7 @@ De gebeurtenis logboeken van uw web-app weer geven:
 
 Een gebruikers modus geheugen dump van uw web-app vastleggen:
 
-1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
+1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
 2. Selecteer het menu van het **proces Verkenner** .
 3. Klik met de rechter muisknop op het proces **W3wp. exe** of uw webtaakproces.
 4. Selecteer **Download Memory Dump** > **volledige dump**voor het downloaden van geheugen.
@@ -69,7 +69,7 @@ U hebt twee opties voor het weer geven van informatie op proces niveau voor uw w
     1. Open de **proces Verkenner** voor de web-app.
     2. Als u de details wilt weer geven, selecteert u het proces **W3wp. exe** .
 *   In de kudu-console:
-    1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
+    1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
     2. Selecteer het menu van het **proces Verkenner** .
     3. Voor het proces **W3wp. exe** selecteert u **Eigenschappen**.
 

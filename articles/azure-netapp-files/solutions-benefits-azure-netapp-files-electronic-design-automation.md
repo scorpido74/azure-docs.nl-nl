@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134167"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160150"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Voor delen van het gebruik van Azure NetApp Files voor elektronische ontwerp automatisering
 
@@ -77,9 +77,9 @@ De volledige werk belasting is een combi natie van de gelijktijdig uitgevoerde f
 
 De functionele fase bestaat uit de eerste specificaties en een logisch ontwerp. De fysieke fase vindt plaats wanneer het logische ontwerp wordt geconverteerd naar een fysieke chip. Tijdens de afmeldings-en tape-runtime worden eind controles voltooid en wordt het ontwerp bezorgd bij een gieterij voor productie.  
 
-De functionele fasen bevatten een combi natie van sequentiële en wille keurige I/O-lees-en schrijf bewerkingen. De functionele fasen zijn intensieve meta gegevens, zoals bestands statistieken en toegangs aanroepen. Hoewel meta gegevens bewerkingen effectief zijn zonder grootte, wordt het Lees-en schrijf bewerkingen bereik kleiner dan 1 K en 16 K. De meeste Lees bewerkingen tussen 4 en 16 K.  De meeste schrijf bewerkingen zijn 4 K of minder.  De fysieke fasen bestaan volledig uit sequentiële Lees-en schrijf bewerkingen, met een combi natie van 32 K en 64 K OP grootten.  
+De functionele fase bevat een combi natie van sequentiële en wille keurige I/O-lees-en schrijf bewerkingen. De functionele fase is intensieve meta gegevens, zoals bestands statistieken en toegangs aanroepen. Hoewel meta gegevens bewerkingen effectief zijn zonder grootte, wordt het Lees-en schrijf bewerkingen bereik kleiner dan 1 K en 16 K. De meeste Lees bewerkingen tussen 4 en 16 K.  De meeste schrijf bewerkingen zijn 4 K of minder. De fysieke fase bestaat volledig uit sequentiële Lees-en schrijf bewerkingen, met een combi natie van 32 K en 64 K OP grootten.  
 
-In de bovenstaande grafieken komt de meeste door Voer uit de sequentiële fysieke fasen van de werk belasting. De I/O is afkomstig uit de kleine functionele fasen wille keurig en op basis van meta gegevens. Beide fasen gebeuren parallel. 
+In de bovenstaande grafieken is de meeste door Voer van de sequentiële fysieke fase van de werk belasting. De I/O is afkomstig uit de kleine functionele fase wille keurig en op basis van meta gegevens. Beide fasen gebeuren parallel. 
 
 In de conclusie kunt u Azure Compute koppelen met Azure NetApp Files voor EDA-ontwerp om schaal bare band breedte te verkrijgen. 
 

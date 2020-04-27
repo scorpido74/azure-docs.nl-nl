@@ -1,6 +1,6 @@
 ---
-title: Hybride identiteitsontwerp - vereisten voor het synchroniseren van directory's Azure | Microsoft Documenten
-description: Bepaal welke vereisten nodig zijn voor het synchroniseren van alle gebruikers tussen on=premises en cloud voor de onderneming.
+title: Hybride identiteits ontwerp-vereisten voor adreslijst synchronisatie Azure | Microsoft Docs
+description: Bepaal welke vereisten nodig zijn om alle gebruikers te synchroniseren tussen on = premises en de Cloud voor de onderneming.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,63 +18,63 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381158"
 ---
-# <a name="determine-directory-synchronization-requirements"></a>Adreslijstsynchronisatievereisten bepalen
-Synchronisatie is alles over het verstrekken van gebruikers een identiteit in de cloud op basis van hun on-premises identiteit. Of ze nu wel of niet gesynchroniseerde account gebruiken voor authenticatie of federatieve verificatie, de gebruikers moeten nog steeds een identiteit in de cloud hebben.  Deze identiteit moet periodiek worden gehandhaafd en bijgewerkt.  De updates kunnen vele vormen aannemen, van titelwijzigingen tot wachtwoordwijzigingen.  
+# <a name="determine-directory-synchronization-requirements"></a>Vereisten voor adreslijst synchronisatie bepalen
+Synchronisatie is alles over het bieden van gebruikers een identiteit in de Cloud op basis van hun on-premises identiteit. Ongeacht of ze een gesynchroniseerd account voor verificatie of Federated Authentication gebruiken, moeten de gebruikers nog steeds een identiteit in de Cloud hebben.  Deze identiteit moet regel matig worden onderhouden en bijgewerkt.  De updates kunnen veel formulieren aannemen, van wijzigingen in de naam van het wacht woord.  
 
-Begin met het evalueren van de on-premises identiteitsoplossing en gebruikersvereisten van organisaties. Deze evaluatie is belangrijk om de technische vereisten te definiëren voor de manier waarop gebruikersidentiteiten worden gemaakt en onderhouden in de cloud.  Voor een meerderheid van de organisaties is Active Directory on-premises en is het de on-premises directory waargebruikers vanaf worden gesynchroniseerd, maar in sommige gevallen zal dit niet het geval zijn.  
+Begin met het evalueren van de on-premises identiteits oplossing en gebruikers vereisten van de organisatie. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor het maken en onderhouden van gebruikers identiteiten in de Cloud.  Voor een meerderheid van organisaties is Active Directory on-premises en de on-premises Directory waarmee gebruikers worden gesynchroniseerd, maar in sommige gevallen is dit niet het geval.  
 
 Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Heeft u een AD-forest, meerdere of geen?
+* Hebt u één AD-forest, meerdere of geen?
   
-  * Naar hoeveel Azure AD-mappen wordt u gesynchroniseerd?
+  * Hoeveel Azure AD-directory's wilt u synchroniseren?
     
-    1. Gebruik je filteren?
-    2. Zijn er meerdere Azure AD Connect-servers gepland?
-* Heeft u momenteel een synchronisatietool on-premises?
+    1. Gebruikt u filteren?
+    2. Hebt u meerdere Azure AD Connect-servers gepland?
+* Hebt u momenteel een hulp programma voor synchronisatie op locatie?
   
-  * Zo ja, doen uw gebruikers als gebruikers een virtuele directory / integratie van identiteiten?
-* Heeft u een andere directory on-premises die u wilt synchroniseren (bijvoorbeeld LDAP Directory, HR-database, enz.)?
-  * Ga je galsync doen?
-  * Wat is de huidige status van UPN's in uw organisatie? 
-  * Heeft u een andere directory die gebruikers verifiëren tegen?
-  * Gebruikt uw bedrijf Microsoft Exchange?
-    * Zijn ze van plan om een hybride uitwisseling inzet?
+  * Zo ja, worden uw gebruikers als ze een virtuele map/integratie van identiteiten hebben?
+* Hebt u een andere directory on-premises die u wilt synchroniseren (bijvoorbeeld LDAP-adres lijst, HR-data base, enzovoort)?
+  * Gaat u een GALSync uitvoeren?
+  * Wat is de huidige status van Upn's in uw organisatie? 
+  * Hebt u een andere Directory waarmee gebruikers worden geverifieerd?
+  * Maakt uw bedrijf gebruik van micro soft Exchange?
+    * Bent u van plan een hybride Exchange-implementatie uit te voeren?
 
-Nu u een idee hebt over uw synchronisatievereisten, moet u bepalen welk gereedschap de juiste is om aan deze vereisten te voldoen.  Microsoft biedt verschillende tools om directory-integratie en synchronisatie te bereiken.  Zie de [vergelijkingstabel voor integratietools](plan-hybrid-identity-design-considerations-tools-comparison.md) voor hybride identiteit voor directory-integratie voor meer informatie. 
+Nu u een idee hebt over uw synchronisatie vereisten, moet u bepalen welk hulp programma het juist is om aan deze vereisten te voldoen.  Micro soft biedt verschillende hulp middelen voor het uitvoeren van adreslijst integratie en synchronisatie.  Zie de [vergelijkings tabel integratie Hulpprogramma's hybride identiteit Directory](plan-hybrid-identity-design-considerations-tools-comparison.md) voor meer informatie. 
 
-Nu u uw synchronisatievereisten en de tool hebt die dit voor uw bedrijf zal bereiken, moet u de toepassingen evalueren die deze directoryservices gebruiken. Deze evaluatie is belangrijk om de technische vereisten te definiëren om deze toepassingen in de cloud te integreren. Zorg ervoor dat u de volgende vragen beantwoordt:
+Nu u de synchronisatie vereisten hebt en het hulp programma dat dit voor uw bedrijf gaat uitvoeren, moet u de toepassingen evalueren die gebruikmaken van deze adreslijst Services. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor het integreren van deze toepassingen in de Cloud. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Worden deze toepassingen verplaatst naar de cloud en wordt de directory gebruikt?
-* Zijn er speciale kenmerken die moeten worden gesynchroniseerd met de cloud, zodat deze toepassingen ze met succes kunnen gebruiken?
-* Moeten deze applicaties opnieuw worden geschreven om te profiteren van cloud auth?
-* Blijven deze toepassingen on-premises leven terwijl gebruikers er toegang toe hebben via de cloudidentiteit?
+* Worden deze toepassingen naar de Cloud verplaatst en wordt de map gebruikt?
+* Zijn er speciale kenmerken die moeten worden gesynchroniseerd met de Cloud, zodat deze toepassingen ze kunnen gebruiken?
+* Moeten deze toepassingen opnieuw worden geschreven om gebruik te kunnen maken van Cloud authenticatie?
+* Blijven deze toepassingen on-premises actief terwijl gebruikers er toegang tot hebben met de Cloud identiteit?
 
-U moet ook de beveiligingsvereisten en beperkingen van de adreslijstsynchronisatie bepalen. Deze evaluatie is belangrijk om een lijst te krijgen van de vereisten die nodig zijn om de identiteit van de gebruiker in de cloud te creëren en te behouden. Zorg ervoor dat u de volgende vragen beantwoordt:
+U moet ook de Directory synchronisatie van de beveiligings vereisten en beperkingen bepalen. Deze evaluatie is belang rijk voor het verkrijgen van een lijst met de vereisten die nodig zijn om de gebruikers identiteiten in de cloud te maken en te onderhouden. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Waar bevindt zich de synchronisatieserver?
-* Zal het domein worden samengevoegd?
+* Waar wordt de synchronisatie server gevonden?
+* Is het lid van een domein?
 * Bevindt de server zich op een beperkt netwerk achter een firewall, zoals een DMZ?
-  * u de vereiste firewallpoorten openen om synchronisatie te ondersteunen?
-* Heeft u een noodherstelplan voor de synchronisatieserver?
-* Heeft u een account met de juiste machtigingen voor alle forests waarmee u wilt synchroniseren?
-  * Als uw bedrijf het antwoord op deze vraag niet weet, bekijkt u de sectie 'Machtigingen voor wachtwoordsynchronisatie' in het artikel [Installeer de Azure Active Directory Sync Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) en bepaalt u of u al een account met deze machtigingen hebt of dat u er een moet maken.
-* Als u mutli-forest sync is de sync server in staat om naar elk bos?
+  * Kunt u de vereiste firewall poorten openen ter ondersteuning van synchronisatie?
+* Hebt u een plan voor nood herstel voor de synchronisatie server?
+* Hebt u een account met de juiste machtigingen voor alle forests waarmee u wilt synchroniseren?
+  * Als uw bedrijf niet het antwoord op deze vraag kent, raadpleegt u de sectie Machtigingen voor wachtwoord synchronisatie in het artikel [Installeer de Azure Active Directory Sync-Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) en bepaalt u of u al een account met deze machtigingen hebt of dat u er een hebt gemaakt.
+* Als u Multi-forest Sync is, kan de synchronisatie server elk forest ophalen?
 
 > [!NOTE]
-> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Bepaal incident response eisen](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zal gaan over de beschikbare opties. Door deze vragen te hebben beantwoord, selecteert u welke optie het beste bij uw bedrijfsbehoeften past.
+> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. De [vereisten voor de reactie op incidenten bepalen](plan-hybrid-identity-design-considerations-incident-response-requirements.md) de beschik bare opties. Als u deze vragen hebt beantwoord, selecteert u welke optie het beste past bij uw bedrijfs behoeften.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Vereisten voor meervoudige verificatie bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+[Vereisten voor multi-factor Authentication bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)
+[Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67875300"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
@@ -73,7 +73,7 @@ StorSimple maakt gebruik van automatische lagen tussen het on-premises apparaat,
 StorSimple biedt de volgende voor delen:
 
 -   Unieke ontdubbeling-en compressie algoritmen die gebruikmaken van de cloud om ongekende ontdubbelings niveaus te creëren
--   Maximale beschikbaarheid
+-   Hoge beschikbaarheid
 -   Geo-replicatie door gebruik te maken van geo-replicatie van Azure
 -   Azure-integratie
 -   Gegevens versleuteling in de Cloud
