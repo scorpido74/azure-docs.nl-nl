@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 3765c70b27fb98518f71a55f00acfe5b831044ec
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146676"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188392"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -78,7 +78,7 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen worden alleen ondersteund voor bewerkingen in de werk ruimte en Machine Learning Compute. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de werk ruimte en op de reken resource in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
 
 > [!WARNING]
-> Azure Machine Learning wordt momenteel niet ondersteund met Azure Active Directory Business-to-Business-samen werking.
+> Azure Machine Learning wordt ondersteund met Azure Active Directory Business-to-Business-samen werking, maar wordt momenteel niet ondersteund met Azure Active Directory Business-to-Consuming-samen werking.
 
 ### <a name="securing-compute-targets-and-data"></a>Reken doelen en gegevens beveiligen
 
@@ -385,10 +385,7 @@ Dit zijn de details:
 
 * [Azure Machine Learning webservices beveiligen met TLS](how-to-secure-web-service.md)
 * [Een Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Batch voorspellingen uitvoeren](how-to-use-parallel-run-step.md)
-* [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
-* [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
-* [Azure Machine Learning-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Azure Machine Learning gebruiken met Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Azure Machine Learning gebruiken met Azure Virtual Network](how-to-enable-virtual-network.md)
 * [Aanbevolen procedures voor het bouwen van aanbevelings systemen](https://github.com/Microsoft/Recommenders)
 * [Een real-time aanbevelings-API bouwen op Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: b52af8f41f32c224fd7c4fa0f5c539b23d231f49
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149303"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192260"
 ---
 # <a name="confidential-computing-on-azure"></a>Vertrouwelijk Computing op Azure
 
@@ -28,7 +28,8 @@ Met Azure vertrouwelijk computing kunt u uw gevoelige gegevens isoleren terwijl 
 ## <a name="overview"></a>Overzicht
 <p><p>
 
-> [!VIDEO https://www.youtube.com/embed/Qu6sP0XDMU8]
+
+> [!VIDEO https://www.youtube.com/embed/rT6zMOoLEqI]
 
 We weten dat het beveiligen van uw Cloud gegevens belang rijk is. We horen graag van u. Dit zijn slechts enkele vragen die onze klanten kunnen hebben wanneer ze gevoelige werk belastingen naar de Cloud verplaatsen: 
 
@@ -76,7 +77,7 @@ In azure-machines met vertrouwelijke Computing wordt een deel van de hardware va
 
 ![VM-model](media/overview/hardware-backed-enclave.png)
 
-Azure vertrouwelijk computing-infra structuur bestaat momenteel uit een speciale SKU van virtuele machines (Vm's). Deze Vm's worden uitgevoerd op Intel-processors met software extension Guard (Intel SGX). [Intel SGX](https://intel.com/sgx) is het onderdeel dat de verhoogde beveiliging mogelijk maakt die we met vertrouwelijke computing kunnen belichten. 
+Azure vertrouwelijk computing-infra structuur bestaat momenteel uit een speciale SKU van virtuele machines (Vm's). Deze Vm's worden uitgevoerd op Intel-processors met software Guard extension (Intel SGX). [Intel SGX](https://intel.com/sgx) is het onderdeel dat de verhoogde beveiliging mogelijk maakt die we met vertrouwelijke computing kunnen belichten. 
 
 Nu biedt Azure de [DCsv2-serie](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) gebaseerd op Intel SGX-technologie voor het maken van op hardware gebaseerde enclave. U kunt veilige enclave toepassingen bouwen om uit te voeren in de DCsv2-serie Vm's om uw toepassings gegevens en code in gebruik te beveiligen. 
 

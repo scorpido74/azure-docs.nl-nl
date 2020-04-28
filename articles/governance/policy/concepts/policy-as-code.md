@@ -1,35 +1,35 @@
 ---
 title: Beleid ontwerpen als codewerkstromen
-description: Leer werkstromen ontwerpen om uw Azure-beleidsdefinities als code te implementeren en resources automatisch te valideren.
+description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74267269"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187729"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
-Naarmate u verder komt op uw reis met Cloud Governance, wilt u overstappen van het handmatig beheren van elke beleidsdefinitie in de Azure-portal of via de verschillende SDK's naar iets dat beter beheersbaar en herhaalbaar is op bedrijfsschaal. Twee van de belangrijkste benaderingen voor het beheren van systemen op schaal in de cloud zijn:
+Als u de voortgang van uw reis met Cloud governance wilt, kunt u de beleids definitie hand matig beheren in de Azure Portal of via de diverse Sdk's, zodat u ze beter kunt beheren en herhalen op ondernemings schaal. Twee van de meest voorkomende benaderingen voor het beheer van systemen op schaal in de Cloud zijn:
 
-- Infrastructuur als code: de praktijk van het behandelen van de inhoud die uw omgevingen definieert, van Resource Manager-sjablonen tot Azure Policy-definities tot Azure Blueprints, als broncode.
-- DevOps: De vereniging van mensen, processen en producten om continue levering van waarde aan onze eindgebruikers mogelijk te maken.
+- Infra structuur als code: de manier waarop de inhoud wordt behandeld waarmee uw omgevingen worden gedefinieerd, met alles uit Resource Manager-sjablonen voor het Azure Policy van definities aan Azure-blauw drukken, als bron code.
+- DevOps: de samen voeging van personen, processen en producten om een continue levering van de waarde aan onze eind gebruikers mogelijk te maken.
 
-Beleid als Code is de combinatie van deze ideeën. In wezen, houd uw beleidsdefinities in bronbeheer en wanneer een wijziging wordt aangebracht, test en valideer die wijziging. Dat mag echter niet de omvang zijn van beleidsbetrokkenheid bij Infrastructuur als Code of DevOps.
+Beleid als code is een combi natie van deze ideeën. Behoud in wezen uw beleids definities in broncode beheer en telkens wanneer er een wijziging wordt aangebracht, test en valideer deze wijziging. Dit geldt echter niet voor de mate van beleids betrokkenheid bij de infra structuur als code of DevOps.
 
-De validatiestap moet ook een onderdeel zijn van andere continue integratie- of continue implementatieworkflows. Voorbeelden hiervan zijn het implementeren van een toepassingsomgeving of virtuele infrastructuur. Door azure policy validation een vroeg onderdeel van het build- en implementatieproces te maken, ontdekken de toepassings- en bedrijfsteams of hun wijzigingen niet-klacht zijn, lang voordat het te laat is en ze proberen te implementeren in productie.
+De validatie stap moet ook een onderdeel zijn van andere workflows voor continue integratie of continue implementatie. Voor beelden hiervan zijn het implementeren van een toepassings omgeving of virtuele infra structuur. Door Azure Policy een vroegtijdige component van het build-en implementatie proces te valideren, ontdekken de toepassings-en Operations-teams of hun wijzigingen niet-klacht zijn, lang voordat deze te laat zijn en er wordt geprobeerd om te implementeren in de productie omgeving.
 
-## <a name="workflow-overview"></a>Overzicht van werkstroom
+## <a name="workflow-overview"></a>Overzicht werk stroom
 
-De aanbevolen algemene werkstroom van Beleid als Code ziet er als volgt uit:
+De aanbevolen werk stroom van het beleid als code ziet er als volgt uit:
 
-![Overzicht van de werkstroom beleid als code](../media/policy-as-code/policy-as-code-workflow.png)
+:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Overzicht van beleid voor code werk stroom" border="false":::
 
-### <a name="create-and-update-policy-definitions"></a>Beleidsdefinities maken en bijwerken
+### <a name="create-and-update-policy-definitions"></a>Beleids definities maken en bijwerken
 
-De beleidsdefinities worden gemaakt met JSON en opgeslagen in bronbeheer. Elk beleid heeft zijn eigen set bestanden, zoals de parameters, regels en omgevingsparameters, die in dezelfde map moeten worden opgeslagen. De volgende structuur is een aanbevolen manier om uw beleidsdefinities in bronbeheer te houden.
+De beleids definities worden gemaakt met JSON en opgeslagen in broncode beheer. Elk beleid heeft een eigen set bestanden, zoals de para meters, regels en omgevings parameters, die moeten worden opgeslagen in dezelfde map. De volgende structuur is een aanbevolen manier om uw beleids definities in broncode beheer te houden.
 
 ```text
 .
@@ -53,11 +53,11 @@ De beleidsdefinities worden gemaakt met JSON en opgeslagen in bronbeheer. Elk be
 |
 ```
 
-Wanneer een nieuw beleid wordt toegevoegd of een bestaand beleid wordt bijgewerkt, moet de werkstroom de beleidsdefinitie in Azure automatisch bijwerken. Het testen van de nieuwe of bijgewerkte beleidsdefinitie komt in een latere stap.
+Wanneer een nieuw beleid wordt toegevoegd of een bestaande beleids regel is bijgewerkt, moet de werk stroom de beleids definitie automatisch bijwerken in Azure. Het testen van de nieuwe of bijgewerkte beleids definitie wordt in een latere stap geleverd.
 
-### <a name="create-and-update-initiative-definitions"></a>Initiatiefdefinities maken en bijwerken
+### <a name="create-and-update-initiative-definitions"></a>Initiatief definities maken en bijwerken
 
-Ook initiatieven hebben hun eigen JSON-bestand en gerelateerde bestanden die moeten worden opgeslagen in dezelfde map. De initiatiefdefinitie vereist dat de beleidsdefinitie al bestaat, dus kan niet worden gemaakt of bijgewerkt totdat de bron voor het beleid is bijgewerkt in bronbeheer en vervolgens is bijgewerkt in Azure. De volgende structuur is een aanbevolen manier om uw initiatiefdefinities in bronbeheer te houden:
+Evenzo hebben initiatieven een eigen JSON-bestand en gerelateerde bestanden die moeten worden opgeslagen in dezelfde map. Voor de initiatief definitie moet de beleids definitie al bestaan, dus kan daarom niet worden gemaakt of bijgewerkt totdat de bron voor het beleid is bijgewerkt in broncode beheer en vervolgens wordt bijgewerkt in Azure. De volgende structuur is een aanbevolen manier om uw initiatief definities in broncode beheer te houden:
 
 ```text
 .
@@ -81,53 +81,53 @@ Ook initiatieven hebben hun eigen JSON-bestand en gerelateerde bestanden die moe
 |
 ```
 
-Net als beleidsdefinities moet de werkstroom bij het toevoegen of bijwerken van een bestaand initiatief de initiatiefdefinitie in Azure automatisch bijwerken. Het testen van de nieuwe of bijgewerkte initiatiefdefinitie komt in een latere stap.
+Net als bij het toevoegen of bijwerken van een bestaand initiatief, moet de werk stroom, zoals beleids definities, de initiatief definitie in azure automatisch bijwerken. Het testen van de nieuwe of bijgewerkte initiatief definitie wordt in een latere stap geleverd.
 
 ### <a name="test-and-validate-the-updated-definition"></a>De bijgewerkte definitie testen en valideren
 
-Zodra automatisering uw nieuw gemaakte of bijgewerkte beleids- of initiatiefdefinities heeft gemaakt en de update naar het object in Azure heeft uitgevoerd, is het tijd om de wijzigingen te testen die zijn aangebracht. Ofwel het beleid of het initiatief (s) het is een deel van moet dan worden toegewezen aan middelen in het milieu het verst van de productie. Deze omgeving is meestal _Dev_.
+Zodra Automation uw nieuw gemaakte of bijgewerkte beleids-of initiatief definities heeft uitgevoerd en de update heeft aangebracht in het object in azure, is het tijd om de wijzigingen te testen die zijn aangebracht. Het beleid of het initiatief (en) waarvan het deel uitmaakt, moet vervolgens worden toegewezen aan resources in de omgeving die het verst van de productie. Deze omgeving is doorgaans _ontwikkel aars_.
 
-De toewijzing moet gebruik maken van [enforcementMode](./assignment-structure.md#enforcement-mode) van _uitgeschakeld,_ zodat het maken van resources en updates niet worden geblokkeerd, maar dat bestaande resources nog steeds worden gecontroleerd op naleving van de bijgewerkte beleidsdefinitie. Zelfs met enforcementMode wordt aanbevolen dat het toewijzingsbereik een resourcegroep of een abonnement is dat specifiek wordt gebruikt voor het valideren van beleid.
+De toewijzing moet [enforcementMode](./assignment-structure.md#enforcement-mode) van _uitgeschakeld_ gebruiken zodat het maken en bijwerken van resources niet wordt geblokkeerd, maar dat bestaande resources nog steeds worden gecontroleerd op naleving van de bijgewerkte beleids definitie. Zelfs met enforcementMode is het raadzaam dat het toewijzings bereik een resource groep is of een abonnement dat specifiek wordt gebruikt voor het valideren van beleid.
 
 > [!NOTE]
-> Hoewel de handhavingsmodus nuttig is, is het geen vervanging voor het grondig testen van een beleidsdefinitie onder verschillende voorwaarden. De beleidsdefinitie moet `PUT` worden `PATCH` getest met en REST API-aanroepen, compatibele en niet-conforme resources en randaanvragen zoals een eigenschap die ontbreekt in de bron.
+> Hoewel de afdwingings modus nuttig is, is het geen vervanging voor het grondig testen van een beleids definitie onder verschillende omstandigheden. De beleids definitie moet worden getest met `PUT` en `PATCH` rest API-aanroepen, compatibele en niet-compatibele resources en rand cases, zoals een eigenschap die van de resource ontbreekt.
 
-Nadat de toewijzing is geïmplementeerd, gebruikt u de Policy SDK om [nalevingsgegevens](../how-to/get-compliance-data.md) voor de nieuwe toewijzing te krijgen. De omgeving die wordt gebruikt om het beleid en de toewijzingen te testen, moet zowel compatibele als niet-conforme resources hebben. Net als een goede eenheid test voor code, wilt u testen dat de middelen zijn zoals verwacht en dat je ook geen false-positives of false-negatives. Als u alleen test en valideert voor wat u verwacht, kunnen er onverwachte en niet-geïdentificeerde gevolgen van het beleid zijn. Zie [De impact van een nieuw Azure-beleid evalueren](./evaluate-impact.md)voor meer informatie.
+Nadat de toewijzing is geïmplementeerd, gebruikt u de SDK van het beleid om de [compatibiliteits gegevens](../how-to/get-compliance-data.md) voor de nieuwe toewijzing op te halen. De omgeving die wordt gebruikt om het beleid en de toewijzingen te testen, moet zowel compatibele als niet-compatibele resources hebben. Net als bij een goede eenheids test voor code, wilt u testen of de resources naar verwachting zijn en dat u ook geen valse positieven of onwaar-negatieven hebt. Als u alleen test en valideert voor wat u verwacht, is er mogelijk een onverwachte en niet-geïdentificeerde impact van het beleid. Zie [de impact van een nieuwe Azure Policy definitie evalueren](./evaluate-impact.md)voor meer informatie.
 
-### <a name="enable-remediation-tasks"></a>Hersteltaken inschakelen
+### <a name="enable-remediation-tasks"></a>Herstel taken inschakelen
 
-Als validatie van de toewijzing aan de verwachtingen voldoet, is de volgende stap het valideren van herstel.
-Beleidsregels die [deployIfNotExists](./effects.md#deployifnotexists) gebruiken of [wijzigen,](./effects.md#modify) kunnen worden omgezet in een hersteltaak en juiste resources van een niet-conforme status.
+Als de validatie van de toewijzing voldoet aan verwachtingen, is de volgende stap het valideren van herstel.
+Beleids regels die gebruikmaken van [deployIfNotExists](./effects.md#deployifnotexists) of [Modify](./effects.md#modify) , kunnen worden omgezet in een herstel taak en resources van een niet-compatibele status.
 
-De eerste stap om dit te doen is het verlenen van de beleidstoewijzing de roltoewijzing gedefinieerd in de beleidsdefinitie. Deze roltoewijzing geeft de beheerde identiteit van de beleidstoewijzing voldoende rechten om de benodigde wijzigingen aan te brengen om de resource compliant te maken.
+De eerste stap hiervoor is het toewijzen van de toewijzing van het beleid aan de roltoewijzing die is gedefinieerd in de beleids definitie. Met deze roltoewijzing krijgt de beheerde identiteit van de beleids toewijzing voldoende rechten om de benodigde wijzigingen door te voeren om de resource compatibel te maken.
 
-Zodra de beleidstoewijzing de juiste rechten heeft, gebruikt u de BeleidsSDK om een hersteltaak te activeren tegen een reeks resources waarvan bekend is dat deze niet-compatibel is. Tegen deze gesaneerde taken moeten drie tests worden uitgevoerd voordat:
+Zodra de beleids toewijzing de juiste rechten heeft, gebruikt u de SDK van het beleid om een herstel taak te activeren op basis van een set resources waarvan bekend is dat deze niet compatibel is. Er moeten drie tests worden uitgevoerd voor deze herstelde taken voordat u doorgaat:
 
-- Valideren of de hersteltaak is voltooid
-- Voer beleidsevaluatie uit om te zien of de resultaten van de naleving van het beleid worden bijgewerkt zoals verwacht
-- Een milieu-eenheidstest uitvoeren op basis van de resources die rechtstreeks zijn gevalideerd om hun eigenschappen te valideren, zijn gewijzigd
+- Controleren of de herstel taak is voltooid
+- Beleids evaluatie uitvoeren om te zien dat de resultaten van beleids naleving worden bijgewerkt zoals verwacht
+- Een omgevings eenheid testen op basis van de resources om de eigenschappen ervan direct te valideren
 
-Het testen van zowel de bijgewerkte beleidsevaluatieresultaten als de omgeving geeft direct een bevestiging dat de hersteltaken veranderden wat werd verwacht en dat de beleidsdefinitie de naleving heeft zien veranderen zoals verwacht.
+Het testen van de resultaten van de bijgewerkte beleids evaluatie en de omgeving bieden direct een bevestiging dat de herstel taken hebben gewijzigd wat er werd verwacht en dat de beleids definitie de wijziging van de naleving had gezien als verwacht.
 
-### <a name="update-to-enforced-assignments"></a>Bijwerken naar afgedwongen opdrachten
+### <a name="update-to-enforced-assignments"></a>Bijwerken naar afgedwongen toewijzingen
 
-Nadat alle validatiepoorten zijn voltooid, werkt u de toewijzing bij om **enforcementMode** van _ingeschakeld_te gebruiken. Deze wijziging moet in eerste instantie worden aangebracht in dezelfde omgeving ver van de productie. Zodra die omgeving is gevalideerd zoals verwacht, moet de wijziging worden beperkt tot de volgende omgeving en ga zo maar door totdat het beleid wordt geïmplementeerd in productiebronnen.
+Nadat alle validatie-Gates zijn voltooid, werkt u de toewijzing bij om **enforcementMode** van _ingeschakeld_te gebruiken. Deze wijziging moet eerst worden aangebracht in dezelfde omgeving als de productie. Zodra deze omgeving is gevalideerd terwijl deze werkt zoals verwacht, moet de wijziging de scope hebben om de volgende omgeving op te nemen, zodat het beleid wordt geïmplementeerd op productie resources.
 
-## <a name="process-integrated-evaluations"></a>Geïntegreerde evaluaties van het proces
+## <a name="process-integrated-evaluations"></a>Geïntegreerde evaluaties verwerken
 
-De algemene workflow voor Beleid als Code is voor het ontwikkelen en implementeren van beleid en initiatieven in een omgeving op schaal. Beleidsevaluatie moet echter deel uitmaken van het implementatieproces voor elke werkstroom die resources implementeert of maakt in Azure, zoals het implementeren van toepassingen of het uitvoeren van Resource Manager-sjablonen om infrastructuur te maken.
+De algemene werk stroom voor beleid als code is voor het ontwikkelen en implementeren van beleid en initiatieven voor een omgeving op schaal. Beleids evaluatie moet echter deel uitmaken van het implementatie proces voor elke werk stroom die resources implementeert of maakt in azure, zoals het implementeren van toepassingen of het uitvoeren van Resource Manager-sjablonen voor het maken van een infra structuur.
 
-In deze gevallen moet, nadat de implementatie van de toepassing of infrastructuur is uitgevoerd naar een testabonnement of resourcegroep, beleidsevaluatie worden uitgevoerd voor die scope die de validatie van alle bestaande beleidsregels en initiatieven controleert. Hoewel ze kunnen worden geconfigureerd als **enforcementMode** _uitgeschakeld_ in een dergelijke omgeving, is het handig om vroeg te weten of een toepassing of infrastructuur implementatie in strijd is met beleidsdefinities vroeg. Deze beleidsevaluatie moet daarom een stap zijn in deze werkstromen en implementaties mislukken die niet-conforme resources maken.
+In deze gevallen moet er na de implementatie van de toepassing of infra structuur een test abonnement of resource groep worden uitgevoerd om de validatie van alle bestaande beleids regels en initiatieven te controleren. Hoewel ze kunnen worden geconfigureerd als **enforcementMode** die in een dergelijke omgeving worden _uitgeschakeld_ , is het nuttig om te weten te komen als een toepassing of infrastructuur implementatie in een vroeg stadium wordt geschonden door beleids definities. Deze beleids evaluatie moet daarom een stap zijn in deze werk stromen en er kunnen geen implementaties worden uitgevoerd die niet-compatibele resources maken.
 
 ## <a name="review"></a>Beoordelen
 
-Dit artikel behandelt de algemene werkstroom voor Beleid als Code en ook waar beleidsevaluatie deel moet uitmaken van andere implementatiewerkstromen. Deze werkstroom kan worden gebruikt in elke omgeving die gescripte stappen en automatisering ondersteunt op basis van triggers.
+In dit artikel wordt de algemene werk stroom voor het beleid behandeld als code en ook de beleids evaluatie moet deel uitmaken van andere implementatie werk stromen. Deze werk stroom kan worden gebruikt in elke omgeving die script stappen en automatisering ondersteunt op basis van triggers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [beleidsdefinitiestructuur](./definition-structure.md).
-- Meer informatie over de [beleidstoewijzingsstructuur](./assignment-structure.md).
-- Begrijpen hoe [u programmatisch beleid maken.](../how-to/programmatically-create.md)
-- Meer informatie over het [verzamelen van nalevingsgegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [herstellen van niet-conforme resources.](../how-to/remediate-resources.md)
-- Bekijk wat een beheergroep is met [Uw resources organiseren met Azure-beheergroepen.](../../management-groups/overview.md)
+- Meer informatie over de structuur van de [beleids definitie](./definition-structure.md).
+- Meer informatie over de structuur van de [beleids toewijzing](./assignment-structure.md).
+- Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

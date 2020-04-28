@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: a03ace1553bd845d8a221e458fd47f3d8aa3d611
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: de680e7cb542e7606b80ad46934f4ad7256bfb92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146540"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186064"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -118,4 +118,4 @@ Als u taken wilt uitvoeren op open bare IP-adressen, moet uw account worden toeg
 ## <a name="next-steps"></a>Volgende stappen
 
 - Een openbaar IP-adres maken met behulp van [Power shell](powershell-samples.md) of [Azure cli](cli-samples.md) -voorbeeld scripts of met behulp van Azure [Resource Manager-sjablonen](template-samples.md)
-- [Azure-beleid](policy-samples.md) maken en Toep assen voor open bare IP-adressen
+- [Azure Policy definities](policy-samples.md) voor open bare IP-adressen maken en toewijzen

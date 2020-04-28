@@ -1,163 +1,163 @@
 ---
 title: Opslag toevoegen aan een Azure HPC-cache
-description: Opslagdoelen definiëren zodat uw Azure HPC-cache uw on-premises NFS-systeem of Azure Blob-containers kan gebruiken voor bestandsopslag op lange termijn
+description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premises NFS-systeem of Azure Blob-containers voor lange termijn bestands opslag kan gebruiken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.date: 04/23/2020
+ms.author: v-erkel
+ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537998"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195040"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
-*Opslagdoelen* zijn back-endopslag voor bestanden die toegankelijk zijn via een Azure HPC-cache. U NFS-opslag toevoegen (zoals een on-premises hardwaresysteem) of gegevens opslaan in Azure Blob.
+*Opslag doelen* zijn back-end opslag voor bestanden die worden geopend via een Azure HPC-cache. U kunt NFS-opslag (zoals een on-premises hardware-systeem) toevoegen of gegevens opslaan in Azure Blob.
 
-U maximaal tien verschillende opslagdoelen voor één cache definiëren. De cache presenteert alle opslagdoelen in één geaggregeerde naamruimte.
+U kunt Maxi maal tien verschillende opslag doelen definiëren voor één cache. De cache geeft alle opslag doelen weer in één geaggregeerde naam ruimte.
 
-Houd er rekening mee dat de opslagexport toegankelijk moet zijn vanuit het virtuele netwerk van uw cache. Voor on-premises hardwareopslag moet u mogelijk een DNS-server instellen die hostnamen voor NFS-opslagtoegang kan oplossen. Lees meer in [DNS access](hpc-cache-prereqs.md#dns-access).
+Houd er rekening mee dat de export van de opslag toegankelijk moet zijn vanuit het virtuele netwerk van uw cache. Voor on-premises hardwarematige opslag moet u mogelijk een DNS-server instellen die hostnamen voor NFS-opslag toegang kan omzetten. Meer informatie vindt u in [DNS-toegang](hpc-cache-prereqs.md#dns-access).
 
-Voeg opslagdoelen toe na het maken van uw cache. De procedure is iets anders, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Details voor elk zijn hieronder.
+Voeg opslag doelen toe nadat u de cache hebt gemaakt. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
 
-## <a name="open-the-storage-targets-page"></a>De pagina opslagdoelen openen
+## <a name="open-the-storage-targets-page"></a>De pagina opslag doelen openen
 
-Open in de Azure-portal uw cache-exemplaar en klik op **Opslagdoelen** op de linkerzijbalk. De pagina opslagdoelen bevat alle bestaande doelen en geeft een koppeling om een nieuwe toe te voegen.
+Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zijbalk aan de linkerkant. De pagina opslag doelen bevat een lijst met alle bestaande doelen en bevat een koppeling om een nieuwe toe te voegen.
 
-![schermafbeelding van de koppeling opslagdoelen op de zijbalk, onder het kopje Configureren, tussen de categoriekoppen Instellingen en Controle](media/hpc-cache-storage-targets-sidebar.png)
+![scherm afbeelding van de koppeling opslag doelen op de zijbalk, onder de kop configureren, tussen de instellingen en controle van categorie koppen](media/hpc-cache-storage-targets-sidebar.png)
 
-## <a name="add-a-new-azure-blob-storage-target"></a>Een nieuw Azure Blob-opslagdoel toevoegen
+## <a name="add-a-new-azure-blob-storage-target"></a>Een nieuw Azure Blob-opslag doel toevoegen
 
-Een nieuw Blob-opslagdoel heeft een lege Blob-container of een container nodig die wordt gevuld met gegevens in de cloudbestandssysteemindeling azure HPC-cache. Lees meer over het vooraf laden van een Blob-container in [Move-gegevens naar Azure Blob-opslag](hpc-cache-ingest.md).
+Een nieuw Blob-opslag doel vereist een lege BLOB-container of een container die is gevuld met gegevens in de bestandssysteem indeling van de Azure HPC-cache. Lees meer over het vooraf laden van een BLOB-container in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
 
-U een nieuwe container vanaf deze pagina maken voordat u deze toevoegt.
+U kunt op deze pagina een nieuwe container maken voordat u deze toevoegt.
 
-![schermafbeelding van de pagina Opslagdoel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslagdoel](media/hpc-cache-add-blob.png)
+![scherm afbeelding van de pagina opslag doel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslag doel](media/hpc-cache-add-blob.png)
 
-Voer deze gegevens in om een Azure Blob-container te definiëren.
+Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
-* **Naam opslagdoel** : stel een naam in die dit opslagdoel identificeert in de Azure HPC-cache.
-* **Doeltype** - **Blob**kiezen .
-* **Opslagaccount** - Selecteer het account dat u wilt gebruiken.
+* **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
+* **Doel type** : Kies **BLOB**.
+* **Opslag account** : Selecteer het account dat u wilt gebruiken.
 
-  U moet de cache-instantie autoriseren om toegang te krijgen tot het opslagaccount zoals beschreven in [De toegangsrollen toevoegen.](#add-the-access-control-roles-to-your-account)
+  U moet het cache-exemplaar toestemming geven om toegang te krijgen tot het opslag account zoals beschreven in [de toegangs functies toevoegen](#add-the-access-control-roles-to-your-account).
 
-  Lees [blob-opslagvereisten](hpc-cache-prereqs.md#blob-storage-requirements)voor informatie over het soort opslagaccount dat u gebruiken.
+  Lees [vereisten voor Blob Storage](hpc-cache-prereqs.md#blob-storage-requirements)voor meer informatie over het type opslag account dat u kunt gebruiken.
 
-* **Opslagcontainer** : selecteer de Blob-container voor dit doel of klik op **Nieuw maken**.
+* **Opslag container** : Selecteer de BLOB-container voor dit doel of klik op **nieuwe maken**.
 
-  ![schermafbeelding van het dialoogvenster om naam en toegangsniveau (privé) voor nieuwe container op te geven](media/add-blob-new-container.png)
+  ![scherm afbeelding van het dialoog venster voor het opgeven van naam en toegangs niveau (privé) voor een nieuwe container](media/add-blob-new-container.png)
 
-* **Pad voor virtuele naamruimte** - Stel het clientgerichte bestandspad in voor dit opslagdoel. Lees [Geaggregeerde naamruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naamruimte.
+* **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-Klik op **OK** om het opslagdoel toe te voegen als u klaar bent.
+Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 > [!NOTE]
-> Als de firewall van uw opslagaccount is ingesteld om de toegang tot alleen 'geselecteerde netwerken' te beperken, gebruikt u de tijdelijke tijdelijke oplossing die is gedocumenteerd in [Firewall-instellingen voor blob-opslagaccount .](hpc-cache-blob-firewall-fix.md)
+> Als de firewall van uw opslag account is ingesteld op het beperken van de toegang tot alleen geselecteerde netwerken, gebruikt u de tijdelijke oplossing die is beschreven in de firewall-instellingen voor het [werk account voor Blob Storage](hpc-cache-blob-firewall-fix.md).
 
-### <a name="add-the-access-control-roles-to-your-account"></a>De rollen voor toegangsbeheer toevoegen aan uw account
+### <a name="add-the-access-control-roles-to-your-account"></a>De toegangs beheer rollen toevoegen aan uw account
 
-Azure HPC Cache maakt gebruik [van rbac (role-based access control)](https://docs.microsoft.com/azure/role-based-access-control/index) om de cacheservice te autoriseren om toegang te krijgen tot uw opslagaccount voor Azure Blob-opslagdoelen.
+Azure HPC cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) voor het machtigen van de cache service voor toegang tot uw opslag account voor Azure Blob Storage-doelen.
 
-De eigenaar van het opslagaccount moet expliciet de rollen [Opslagaccountinzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en [opslagblobgegevensbijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) toevoegen voor de gebruiker 'HPC-cachebronprovider'.
+De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker ' HPC-cache resource provider ' toevoegen.
 
-U dit van tevoren doen of door op een koppeling op de pagina te klikken waar u een Blob-opslagdoel toevoegt. Houd er rekening mee dat het tot vijf minuten kan duren voordat de rolinstellingen zich verspreiden via de Azure-omgeving, dus u moet een paar minuten wachten nadat u de rollen hebt toegevoegd voordat u een opslagdoel maakt.
+U kunt dit vooraf doen, of door te klikken op een koppeling op de pagina waar u een Blob-opslag doel toevoegt. Houd er rekening mee dat het Maxi maal vijf minuten kan duren voordat de rolinstellingen zijn door gegeven via de Azure-omgeving. u moet dus een paar minuten wachten nadat u de rollen hebt toegevoegd voordat u een opslag doel maakt.
 
-Stappen om de RBAC-rollen toe te voegen:
+Stappen voor het toevoegen van de RBAC-rollen:
 
-1. Open de pagina **IAM (Access control)** voor het opslagaccount. (De koppeling op de pagina **Opslagdoel toevoegen** opent deze pagina automatisch voor het geselecteerde account.)
+1. Open de pagina **toegangs beheer (IAM)** voor het opslag account. (De koppeling op de pagina **opslag doel toevoegen** opent deze pagina automatisch voor het geselecteerde account.)
 
-1. Klik **+** boven aan de pagina en kies **Een roltoewijzing toevoegen**.
+1. **+** Klik boven aan de pagina en kies **een roltoewijzing toevoegen**.
 
-1. Selecteer de rol 'Opslagaccountbijdrager' in de lijst.
+1. Selecteer de rol ' Inzender voor opslag accounts ' in de lijst.
 
-1. Laat in het veld **Toegang tot** toewijzen de standaardwaarde geselecteerd ('Azure AD-gebruiker, -groep of serviceprincipal').  
+1. In het veld **toegang toewijzen aan kunt u** de geselecteerde standaard waarde (' Azure AD-gebruiker,-groep of Service-Principal ') laten staan.  
 
-1. Zoek **in het** veld Selecteren naar 'hpc'.  Deze tekenreeks moet overeenkomen met één serviceprincipal, genaamd "HPC Cache Resource Provider". Klik op die principal om het te selecteren.
+1. In het veld **selecteren zoekt u** naar ' HPC '.  Deze teken reeks moet overeenkomen met een service-principal met de naam ' HPC-cache resource provider '. Klik op die principal om deze te selecteren.
 
    > [!NOTE]
-   > Als een zoekopdracht naar "hpc" niet werkt, probeert u in plaats daarvan de tekenreeks "storagecache" te gebruiken. Gebruikers die hebben deelgenomen aan previews (vóór GA) moeten mogelijk de oudere naam voor de serviceprincipal gebruiken.
+   > Als een zoek opdracht voor "HPC" niet werkt, kunt u de teken reeks "storagecache" gebruiken. Gebruikers die hebben deel genomen aan de previews (vóór GA), moeten mogelijk de oudere naam voor de Service-Principal gebruiken.
 
-1. Klik onderin op de knop **Opslaan.**
+1. Klik onderaan op de knop **Opslaan** .
 
-1. Herhaal dit proces om de rol 'Opslagblobgegevensbijdrager' toe te wijzen.  
+1. Herhaal dit proces om de rol ' Storage BLOB data contributor ' toe te wijzen.  
 
-![schermafbeelding van GUI voor roltoewijzing toevoegen](media/hpc-cache-add-role.png)
+![scherm opname van de gebruikers interface voor roltoewijzing toevoegen](media/hpc-cache-add-role.png)
 
-## <a name="add-a-new-nfs-storage-target"></a>Een nieuw NFS-opslagdoel toevoegen
+## <a name="add-a-new-nfs-storage-target"></a>Een nieuw NFS-opslag doel toevoegen
 
-Een NFS-opslagdoel heeft meer velden dan het blob-opslagdoel. In deze velden wordt aangegeven hoe u de opslagexport bereiken en hoe u de gegevens efficiënt in de cache opslaan. Met een NFS-opslagdoel u ook meerdere naamruimtepaden maken als de NFS-host meer dan één exportbeschikbaar heeft.
+Een NFS-opslag doel heeft meer velden dan het Blob-opslag doel. In deze velden wordt aangegeven hoe u de opslag exporteert en hoe u de gegevens efficiënt in de cache opslaat. Daarnaast kunt u met een NFS-opslag doel meerdere naam ruimte paden maken als de NFS-host meer dan één export beschikbaar heeft.
 
-![Schermafbeelding van de pagina Opslagdoel toevoegen met NFS-doel gedefinieerd](media/add-nfs-target.png)
+![Scherm afbeelding van de pagina opslag doel toevoegen met NFS-doel gedefinieerd](media/add-nfs-target.png)
 
 > [!NOTE]
-> Voordat u een NFS-opslagdoel maakt, moet u ervoor zorgen dat uw opslagsysteem toegankelijk is vanuit de Azure HPC-cache en voldoet aan de machtigingsvereisten. Het maken van opslagdoelmislukt als de cache geen toegang heeft tot het opslagsysteem. Lees [NFS-opslagvereisten](hpc-cache-prereqs.md#nfs-storage-requirements) [en los problemen met NAS-configuratie en NFS-opslagdoelproblemen](troubleshoot-nas.md) op voor details.
+> Voordat u een NFS-opslag doel maakt, moet u controleren of uw opslag systeem toegankelijk is vanuit de Azure HPC-cache en voldoet aan de machtigings vereisten. Het maken van een opslag doel mislukt als de cache geen toegang kan krijgen tot het opslag systeem. Lees de [NFS-opslag vereisten](hpc-cache-prereqs.md#nfs-storage-requirements) en [los problemen met de NAS-configuratie en NFS-opslag doel](troubleshoot-nas.md) op voor meer informatie.
 
-Geef deze informatie op voor een door NFS backed storage-doel:
+Geef deze informatie op voor een opslag doel met NFS-back-ups:
 
-* **Naam opslagdoel** : stel een naam in die dit opslagdoel identificeert in de Azure HPC-cache.
+* **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
 
-* **Doeltype** - Kies **NFS**.
+* **Doel type** : Kies voor **NFS**.
 
-* **Hostname** - Voer het IP-adres of de volledig gekwalificeerde domeinnaam voor uw NFS-opslagsysteem in. (Gebruik een domeinnaam alleen als uw cache toegang heeft tot een DNS-server die de naam kan oplossen.)
+* **Hostnaam** : Voer het IP-adres of de Fully Qualified Domain name voor uw NFS-opslag systeem in. (Gebruik alleen een domein naam als uw cache toegang heeft tot een DNS-server die de naam kan omzetten.)
 
-* **Gebruiksmodel** - Kies hieronder een van de gegevenscachingprofielen op basis van uw werkstroom, beschreven in [Een gebruiksmodel kiezen.](#choose-a-usage-model)
+* **Gebruiks model** : Kies een van de gegevens cache profielen op basis van uw werk stroom, zoals wordt beschreven in [een gebruiks model kiezen](#choose-a-usage-model).
 
-### <a name="nfs-namespace-paths"></a>NFS-naamruimtepaden
+### <a name="nfs-namespace-paths"></a>NFS-naam ruimte paden
 
-Een NFS-opslagdoel kan meerdere virtuele paden hebben, zolang elk pad een andere export- of submap op hetzelfde opslagsysteem vertegenwoordigt.
+Een NFS-opslag doel kan meerdere virtuele paden hebben, zolang elk pad een andere export of submap op hetzelfde opslag systeem vertegenwoordigt.
 
-Maak alle paden van één opslagdoel.
+Alle paden van het ene opslag doel maken.
 
-U op elk gewenst moment [naamruimtepaden toevoegen en bewerken](hpc-cache-edit-storage.md) op een opslagdoel.
+U kunt op elk gewenst moment naam ruimte paden op een opslag doel [toevoegen en bewerken](hpc-cache-edit-storage.md) .
 
-Vul deze waarden in voor elk naamruimtepad:
+Vul deze waarden in voor elk pad naar de naam ruimte:
 
-* **Pad voor virtuele naamruimte** - Stel het clientgerichte bestandspad in voor dit opslagdoel. Lees [Geaggregeerde naamruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naamruimte.
+* **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-* **NFS-exportpad** - Voer het pad naar de NFS-export in.
+* **Pad naar NFS-export** -Geef het pad op naar de NFS-export.
 
-* **Submappad** - Als u een specifieke submap van de export wilt monteren, voert u deze hier in. Zo niet, laat dit veld leeg.
+* **Pad naar de submap** : als u een specifieke submap van de export wilt koppelen, voert u deze hier in. Als dat niet het geval is, laat u dit veld leeg.
 
-Klik op **OK** om het opslagdoel toe te voegen als u klaar bent.
+Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
-### <a name="choose-a-usage-model"></a>Een gebruiksmodel kiezen
+### <a name="choose-a-usage-model"></a>Kies een gebruiks model
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Wanneer u een opslagdoel maakt dat verwijst naar een NFS-opslagsysteem, moet u het gebruiksmodel voor dat doel kiezen. Dit model bepaalt hoe uw gegevens in de cache worden opgeslagen.
+Wanneer u een opslag doel maakt dat verwijst naar een NFS-opslag systeem, moet u het gebruiks model voor dat doel kiezen. Dit model bepaalt hoe de gegevens in de cache worden opgeslagen.
 
 Er zijn drie opties:
 
-* **Lees zware, zeldzame schrijft -** Gebruik deze optie als u wilt versnellen leestoegang tot bestanden die statisch zijn of zelden veranderd.
+* **Lees zware, incidentele schrijf bewerkingen** : gebruik deze optie als u lees toegang tot bestanden wilt versnellen die statisch zijn of zelden worden gewijzigd.
 
-  Met deze optie worden bestanden opgeslagen die clients lezen, maar wordt er onmiddellijk doorgeschreven naar de back-endopslag. Bestanden die in de cache zijn opgeslagen, worden nooit vergeleken met de bestanden op het NFS-opslagvolume.
+  Met deze optie worden bestanden die door clients worden gelezen, in de cache opgeslagen, maar worden direct naar de back-end-opslag door gegeven. Bestanden die in de cache zijn opgeslagen, worden nooit vergeleken met de bestanden op het NFS-opslag volume.
 
-  Gebruik deze optie niet als er een risico bestaat dat een bestand rechtstreeks op het opslagsysteem wordt gewijzigd zonder het eerst naar de cache te schrijven. Als dat gebeurt, wordt de in de cache opgeslagen versie van het bestand nooit bijgewerkt met wijzigingen van de back-end en kan de gegevensset inconsistent worden.
+  Gebruik deze optie niet als er een risico bestaat dat een bestand rechtstreeks op het opslag systeem kan worden gewijzigd zonder het eerst naar de cache te schrijven. Als dat gebeurt, wordt de versie van het bestand in de cache nooit bijgewerkt met de wijzigingen van de back-end en kan de gegevensset inconsistent worden.
 
-* **Meer dan 15% schrijft** - Deze optie versnelt zowel lees- als schrijfprestaties. Wanneer u deze optie gebruikt, moeten alle clients toegang krijgen tot bestanden via de Azure HPC-cache in plaats van de back-endopslag rechtstreeks te monteren. De bestanden in de cache hebben recente wijzigingen die niet op de back-end zijn opgeslagen.
+* **Meer dan 15% schrijf bewerkingen** : deze optie versnelt de lees-en schrijf prestaties. Wanneer u deze optie gebruikt, moeten alle clients toegang hebben tot bestanden via de Azure HPC-cache in plaats van de back-end-opslag rechtstreeks te koppelen. De bestanden in de cache hebben recente wijzigingen die niet worden opgeslagen op de back-end.
 
-  In dit gebruiksmodel worden bestanden in de cache niet gecontroleerd op de bestanden op back-endopslag. De in de cache opgeslagen versie van het bestand wordt verondersteld actueler te zijn. Een gewijzigd bestand in de cache wordt naar het back-endopslagsysteem geschreven nadat het een uur in de cache heeft gestaan zonder extra wijzigingen.
+  In dit gebruiks model worden bestanden in de cache niet gecontroleerd op basis van de bestanden in de back-end-opslag. Er wordt ervan uitgegaan dat de cache versie van het bestand meer actueel is. Een gewijzigd bestand in de cache wordt naar het back-end-opslag systeem geschreven nadat het een uur in de cache heeft bevinden zonder extra wijzigingen.
 
-* **Clients schrijven naar het NFS-doel en omzeilen de cache** - Kies deze optie als clients in uw werkstroom gegevens rechtstreeks naar het opslagsysteem schrijven zonder eerst naar de cache te schrijven. Bestanden die clients aanvragen, worden in de cache opgeslagen, maar eventuele wijzigingen in die bestanden van de client worden onmiddellijk teruggestuurd naar het back-endopslagsysteem.
+* **Clients schrijven naar het NFS-doel, waarbij de cache wordt omzeild** : Kies deze optie als clients in uw werk stroom gegevens rechtstreeks naar het opslag systeem schrijven zonder eerst naar de cache te schrijven. Bestanden die door clients worden aangevraagd, worden in de cache opgeslagen, maar eventuele wijzigingen aan deze bestanden van de client worden onmiddellijk door gegeven aan het back-end-opslag systeem.
 
-  Met dit gebruiksmodel worden de bestanden in de cache vaak gecontroleerd op de back-endversies voor updates. Met deze verificatie kunnen bestanden buiten de cache worden gewijzigd met behoud van de consistentie van de gegevens.
+  Met dit gebruiks model worden de bestanden in de cache vaak gecontroleerd op basis van de back-end-versies voor updates. Met deze verificatie kunnen bestanden buiten de cache worden gewijzigd terwijl de consistentie van gegevens wordt behouden.
 
-In deze tabel worden de verschillen in gebruiksmodel samengevat:
+Deze tabel bevat een overzicht van de verschillen in het gebruiks model:
 
-| Gebruiksmodel | Cachemodus | Back-endverificatie | Maximale terugschrijfvertraging |
+| Gebruiks model | Cache modus | Back-end-verificatie | Maximale vertraging voor terugschrijven |
 | ---- | ---- | ---- | ---- |
-| Lees zware, zeldzame schrijft | Lezen | Nooit | Geen |
-| Meer dan 15% schrijft | Lezen/schrijven | Nooit | 1 uur |
-| Clients omzeilen de cache | Lezen | 30 seconden | Geen |
+| Zware, incidentele schrijf bewerkingen lezen | Lezen | Nooit | Geen |
+| Meer dan 15% schrijf bewerkingen | Lezen/schrijven | Nooit | 1 uur |
+| Clients slaan de cache over | Lezen | 30 seconden | Geen |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het maken van opslagdoelen moet u rekening houden met een van de volgende taken:
+Nadat u opslag doelen hebt gemaakt, kunt u een van de volgende taken uitvoeren:
 
-* [De Azure HPC-cache monteren](hpc-cache-mount.md)
+* [De Azure HPC-cache koppelen](hpc-cache-mount.md)
 * [Gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md)
 
-Als u instellingen wilt bijwerken, u [een opslagdoel bewerken.](hpc-cache-edit-storage.md)
+Als u instellingen moet bijwerken, kunt u [een opslag doel bewerken](hpc-cache-edit-storage.md).

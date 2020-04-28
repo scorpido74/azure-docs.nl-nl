@@ -1,14 +1,14 @@
 ---
-title: Stel uw ontwikkelomgeving in op Linux
+title: Uw ontwikkel omgeving instellen in Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682626"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193408"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -92,7 +92,7 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Voeg Azul JDK Key toe aan uw APT-sleutelhanger en stel de repository in.
+7. Voeg Azul JDK-sleutel toe aan uw APT sleutel hanger en stel de opslag plaats in.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -167,7 +167,7 @@ De Service Fabric-runtime die wordt geleverd met de installatie omvat de pakkett
 
  | | DotNetCore | Java | Python | Node.js | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit van npm | meest recente |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicit van npm | meest recente |
 RHEL | - | OpenJDK 1.8 | Implicit van npm | meest recente |
 
 ## <a name="set-up-a-local-cluster"></a>Een lokaal cluster instellen
@@ -179,7 +179,7 @@ Start een lokaal cluster nadat de installatie is voltooid.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Open een webbrowser en ga naar`http://localhost:19080/Explorer`Service Fabric [Explorer](http://localhost:19080/Explorer) ( ). Wanneer het cluster is gestart, ziet u het Service Fabric Explorer-dashboard. Het kan enkele minuten duren voordat het cluster volledig is ingesteld. Als het openen van de browser is mislukt of als in Service Fabric Explorer niet wordt aangegeven dat het systeem gereed is, wacht u enkele minuten en probeert u het opnieuw.
+2. Open een webbrowser en ga naar **service Fabric Explorer** (`http://localhost:19080/Explorer`). Wanneer het cluster is gestart, ziet u het Service Fabric Explorer-dashboard. Het kan enkele minuten duren voordat het cluster volledig is ingesteld. Als het openen van de browser is mislukt of als in Service Fabric Explorer niet wordt aangegeven dat het systeem gereed is, wacht u enkele minuten en probeert u het opnieuw.
 
     ![Service Fabric Explorer in Linux][sfx-linux]
 
@@ -228,7 +228,7 @@ Installeer de [.NET Core 2.0 SDK voor Ubuntu](https://www.microsoft.com/net/core
 
 ## <a name="set-up-java-development"></a>Java-ontwikkeling instellen
 
-Als u Service Fabric-services wilt bouwen met Java, installeert u Gradle om buildtaken uit te voeren. Voer de onderstaande opdracht uit om Gradle te installeren. De Service Fabric-Java-bibliotheken worden opgehaald uit Maven.
+Als u Service Fabric Services wilt maken met behulp van Java, installeert u Gradle om bouw taken uit te voeren. Voer de onderstaande opdracht uit om Gradle te installeren. De Service Fabric-Java-bibliotheken worden opgehaald uit Maven.
 
 
 * Ubuntu
@@ -261,11 +261,11 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 > 
 > Voor Ubuntu wordt u aangeraden de installatie rechtstreeks vanaf de site van Eclipse uit te voeren en niet door middel van een installatieprogramma voor pakketten (`apt` of `apt-get`). Daardoor weet u zeker dat u de meest recente versie van Eclipse hebt. U kunt de Eclipse IDE installeren voor Java-ontwikkelaars of voor Java EE-ontwikkelaars.
 
-1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help** > **over informatieinstallatiedetails** > **te**selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
+1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help** > **over** > de**installatie Details**van de eclips te selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
 
-2. Als u de servicefabric-plug-in wilt installeren, selecteert u **Help** > **nieuwe software installeren**.
+2. Als u de service Fabric-invoeg toepassing wilt installeren, selecteert u **Help** > **nieuwe software installeren**.
 
-3. Voer in het vak **Werken met** **https in:\//dl.microsoft.com/eclipse**.
+3. Voer in het vak **werken met** **https\/:/dl.Microsoft.com/Eclipse**in.
 
 4. Selecteer **Toevoegen**.
 
@@ -275,7 +275,7 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 
 6. Voer de installatiestappen uit. Ga vervolgens akkoord met de gebruiksrechtovereenkomst.
 
-Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer deze tijd door details van **de installatievan Help** > **over eclips** > **te selecteren.** Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde plug-ins. Selecteer **Bijwerken** als er een nieuwere versie beschikbaar is.
+Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help** > **over** > de**installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **Update** als er een nieuwere versie beschikbaar is.
 
 Zie [Service Fabric-invoegtoepassing voor de ontwikkeling van Eclipse Java-toepassingen](service-fabric-get-started-eclipse.md) voor meer informatie.
 

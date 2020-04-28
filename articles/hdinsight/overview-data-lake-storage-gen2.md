@@ -6,63 +6,64 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 677d8348cc230e4f64915ac5fc1e86b9b50ab5c3
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873340"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195125"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>Azure Data Lake Storage Gen2 overzicht in HDInsight
 
-Azure Data Lake Storage Gen2 neemt kernfuncties over van Azure Data Lake Storage Gen1 en integreert deze in Azure Blob-opslag. Deze functies omvatten een bestandssysteem dat compatibel is met Hadoop, Azure Active Directory (Azure AD) en POSIX-gebaseerde toegangscontrolelijsten (ACL's). Met deze combinatie u profiteren van de prestaties van Azure Data Lake Storage Gen1. Terwijl u ook gebruik maakt van het tiering- en datalife-cyclebeheer van Blob-opslag.
+Azure Data Lake Storage Gen2 maakt kern functies van Azure Data Lake Storage Gen1 en integreert deze in Azure Blob-opslag. Deze functies omvatten een bestands systeem dat compatibel is met Hadoop, Azure Active Directory (Azure AD) en Acl's (toegangs beheer lijsten) op basis van POSIX. Met deze combi natie kunt u profiteren van de prestaties van Azure Data Lake Storage Gen1. Hoewel het beheer van de levens cyclus voor lagen en gegevens van Blob Storage ook gebruikt.
 
-Zie Inleiding tot Azure Data Lake Storage Gen2 voor meer informatie over Azure Data Lake Storage [Gen2.](../storage/blobs/data-lake-storage-introduction.md)
+Zie [Inleiding tot Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)voor meer informatie over Azure data Lake Storage Gen2.
 
-## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Kernfunctionaliteit van Azure Data Lake Storage Gen2
+## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Kern functionaliteit van Azure Data Lake Storage Gen2
 
-* **Toegang die compatibel is met Hadoop:** In Azure Data Lake Storage Gen2 u gegevens beheren en openen, net zoals u dat zou doen met een Hadoop Distributed File System (HDFS). Het ABFS-stuurprogramma (Azure Blob File System) is beschikbaar binnen alle Apache Hadoop-omgevingen, inclusief Azure HDInsight en Azure Databricks. Gebruik ABFS om toegang te krijgen tot gegevens die zijn opgeslagen in Data Lake Storage Gen2.
+* **Toegang die compatibel is met Hadoop:** In Azure Data Lake Storage Gen2 kunt u gegevens beheren en benaderen net zoals u dat zou doen met een Hadoop Distributed File System (HDFS). Het ABFS-stuur programma (Azure Blob File System) is beschikbaar in alle Apache Hadoop omgevingen, waaronder Azure HDInsight en Azure Databricks. Gebruik ABFS om toegang te krijgen tot gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
-* **Een superset van POSIX-machtigingen:** Het beveiligingsmodel voor Data Lake Gen2 ondersteunt ACL- en POSIX-machtigingen, samen met een extra granulariteit die specifiek is voor Data Lake Storage Gen2. Instellingen kunnen worden geconfigureerd via beheertools of frameworks zoals Apache Hive en Apache Spark.
+* **Een superset van POSIX-machtigingen:** Het beveiligings model voor Data Lake Gen2 ondersteunt ACL-en POSIX-machtigingen, samen met een extra granulariteit die specifiek is voor Data Lake Storage Gen2. Instellingen kunnen worden geconfigureerd via beheer hulpprogramma's of Frameworks als Apache Hive en Apache Spark.
 
-* **Kosteneffectiviteit:** Data Lake Storage Gen2 biedt goedkope opslagcapaciteit en transacties. De levenscyclus van Azure Blob-opslaghelpt de kosten te verlagen door de factureringspercentages aan te passen naarmate gegevens door de levenscyclus van de gegevens worden verplaatst.
+* **Kosten effectiviteit:** Data Lake Storage Gen2 biedt goedkope opslag capaciteit en-trans acties. De levens cyclus van Azure Blob-opslag helpt de kosten te verlagen door de facturerings tarieven aan te passen naarmate de levens cyclus van gegevens verloopt.
 
-* **Compatibiliteit met blob-opslaghulpprogramma's, frameworks en apps:** Data Lake Storage Gen2 blijft werken met een breed scala aan tools, frameworks en toepassingen voor Blob-opslag.
+* **Compatibiliteit met hulpprogram ma's, frameworks en apps voor Blob-opslag:** Data Lake Storage Gen2 blijft werken met een breed scala aan hulpprogram ma's, frameworks en toepassingen voor Blob Storage.
 
-* **Geoptimaliseerde driver:** De ABFS driver is speciaal geoptimaliseerd voor big data analytics. De bijbehorende REST API's worden opgedoken via het DFS-eindpunt (distributed file system), dfs.core.windows.net.
+* **Geoptimaliseerd stuur programma:** Het ABFS-stuur programma is specifiek geoptimaliseerd voor big data Analytics. De bijbehorende REST-Api's worden opgehaald via het DFS-eind punt (Distributed File System), dfs.core.windows.net.
 
-## <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Nieuwe informatie voor Azure Data Lake Storage Gen 2
+## <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Wat is er nieuw voor Azure Data Lake Storage gen 2
 
-### <a name="managed-identities-for-secure-file-access"></a>Beheerde identiteiten voor beveiligde bestandstoegang
+### <a name="managed-identities-for-secure-file-access"></a>Beheerde identiteiten voor beveiligde bestands toegang
 
-Azure HDInsight gebruikt beheerde identiteiten om clustertoegang tot bestanden in Azure Data Lake Storage Gen2 te beveiligen. Beheerde identiteiten zijn een functie van Azure Active Directory die Azure-services voorziet van een set automatisch beheerde referenties. Deze referenties kunnen worden gebruikt om te verifiëren voor elke service die Active Directory-verificatie ondersteunt. Als u beheerde identiteiten gebruikt, hoeft u referenties niet op te slaan in code- of configuratiebestanden.
+Azure HDInsight maakt gebruik van beheerde identiteiten voor het beveiligen van de cluster toegang tot bestanden in Azure Data Lake Storage Gen2. Beheerde identiteiten zijn een functie van Azure Active Directory die Azure-Services biedt met een set automatisch beheerde referenties. Deze referenties kunnen worden gebruikt om te verifiëren bij elke service die ondersteuning biedt voor Active Directory-verificatie. Voor het gebruik van beheerde identiteiten is het niet nodig om referenties op te slaan in code of configuratie bestanden.
 
-Zie [Beheerde identiteiten voor Azure-bronnen voor](../active-directory/managed-identities-azure-resources/overview.md)meer informatie.
+Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
 
-### <a name="azure-blob-file-system-driver"></a>Azure Blob-bestandssysteemstuurprogramma
+### <a name="azure-blob-file-system-driver"></a>Azure Blob File System-stuur programma
 
-Apache Hadoop-toepassingen verwachten native gegevens uit lokale schijfopslag te lezen en te schrijven. Met een Hadoop-bestandssysteemstuurprogramma zoals ABFS kunnen Hadoop-toepassingen werken met cloudopslag. Werkt door het emuleren van reguliere Hadoop bestandssysteem bewerkingen. Het stuurprogramma zet de opdrachten die van de toepassing zijn ontvangen om in bewerkingen die het werkelijke cloudopslagplatform begrijpt.
+Apache Hadoop toepassingen verwachten een systeem eigen gegevens te lezen uit en te schrijven naar de lokale schijf opslag. Met een Hadoop File System-stuur programma zoals ABFS kunnen Hadoop-toepassingen werken met Cloud opslag. Werkt door regel matige Hadoop-bestandssysteem bewerkingen te emuleren. Het stuur programma converteert die opdrachten die zijn ontvangen van de toepassing, naar bewerkingen die het daad werkelijke platform voor Cloud opslag begrijpt.
 
-Voorheen heeft het hadoop-bestandssysteemstuurprogramma alle bestandssysteembewerkingen geconverteerd naar Azure Storage REST API-aanroepen aan de clientzijde. En vervolgens een beroep gedaan op de REST API. Deze client-side conversie resulteerde echter in meerdere REST API-oproepen voor één bestandssysteembewerking, zoals de naamswijziging van een bestand. ABFS heeft de hadoop-bestandssysteemlogica verplaatst van de clientkant naar de serverzijde. De Azure Data Lake Storage Gen2 API wordt nu parallel uitgevoerd met de Blob API. Deze migratie verbetert de prestaties omdat nu veelvoorkomende Hadoop-bestandssysteembewerkingen kunnen worden uitgevoerd met één REST API-aanroep.
+Voorheen heeft het Hadoop File System-stuur programma alle bestandssysteem bewerkingen geconverteerd naar Azure Storage REST API-aanroepen aan de client zijde. En vervolgens de REST API aangeroepen. Deze conversie aan de client zijde heeft echter geresulteerd in meerdere REST API-aanroepen voor één bestandssysteem bewerking, zoals het wijzigen van de naam van een bestand. ABFS heeft de Hadoop-bestandssysteem logica verplaatst van de client aan de server zijde. De Azure Data Lake Storage Gen2-API wordt nu parallel uitgevoerd met de BLOB API. Deze migratie verbetert de prestaties omdat u nu algemene Hadoop-bestandssysteem bewerkingen kunt uitvoeren met één REST API aanroep.
 
-Zie [Het Azure Blob Filesystem-stuurprogramma (ABFS): een speciaal Azure Storage-stuurprogramma voor Hadoop voor](../storage/blobs/data-lake-storage-abfs-driver.md)meer informatie.
+Zie voor meer informatie [het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop](../storage/blobs/data-lake-storage-abfs-driver.md).
 
-### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>URI-schema voor Azure Data Lake Storage Gen 2
+### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>URI-schema voor Azure Data Lake Storage gen 2
 
-Azure Data Lake Storage Gen2 maakt gebruik van een nieuw URI-schema om toegang te krijgen tot bestanden in Azure Storage vanuit HDInsight:
+Azure Data Lake Storage Gen2 gebruikt een nieuw URI-schema voor toegang tot bestanden in Azure Storage van HDInsight:
 
 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Het URI-schema biedt SSL-versleutelde toegang.
+Het URI-schema biedt met SSL versleutelde toegang.
 
-`<FILE_SYSTEM_NAME>`identificeert het pad van het bestandssysteem Data Lake Storage Gen2.
+`<FILE_SYSTEM_NAME>`Hiermee wordt het pad van het bestands systeem Data Lake Storage Gen2 geïdentificeerd.
 
-`<ACCOUNT_NAME>`hiermee wordt de naam van het Azure Storage-account geïdentificeerd. Een FQDN (Fully Qualified Domain Name) is vereist.
+`<ACCOUNT_NAME>`Hiermee wordt de naam van het Azure Storage-account aangeduid. Een FQDN (Fully Qualified Domain Name) is vereist.
 
 `<PATH>`is de naam van het bestand of de map HDFS-pad.
 
-Als waarden `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` voor en niet zijn opgegeven, wordt het standaardbestandssysteem gebruikt. Gebruik voor de bestanden op het standaardbestandssysteem een relatief pad of een absoluut pad. Het `hadoop-mapreduce-examples.jar` bestand dat wordt geleverd met HDInsight-clusters kan bijvoorbeeld worden verwezen met behulp van een van de volgende paden:
+Als waarden voor `<FILE_SYSTEM_NAME>` en `<ACCOUNT_NAME>` niet worden opgegeven, wordt het standaard bestandssysteem gebruikt. Voor de bestanden in het standaard bestandssysteem gebruikt u een relatief pad of een absoluut pad. U kunt bijvoorbeeld een `hadoop-mapreduce-examples.jar` van de volgende paden naar het bestand met HDInsight-clusters verwijzen:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -70,12 +71,12 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> De bestandsnaam `hadoop-examples.jar` bevindt zich in HDInsight-versies 2.1 en 1.6 clusters. Wanneer u werkt met bestanden buiten HDInsight, zult u merken dat de meeste hulpprogramma's het ABFS-formaat `example/jars/hadoop-mapreduce-examples.jar`niet herkennen, maar in plaats daarvan een basispadindeling verwachten, zoals .
+> De bestands naam bevindt zich `hadoop-examples.jar` in de HDInsight-versies 2,1 en 1,6. Wanneer u werkt met bestanden buiten HDInsight, zult u zien dat de meeste hulpprogram ma's de ABFS-indeling niet herkennen, maar verwacht u in plaats daarvan een elementaire `example/jars/hadoop-mapreduce-examples.jar`pad-indeling, zoals.
 
-Zie [De Azure Data Lake Storage Gen2 URI gebruiken](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)voor meer informatie.
+Zie [de Azure data Lake Storage GEN2 URI gebruiken](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
-* [Overzicht van Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
+* [Azure Data Lake Storage Gen1-overzicht](./overview-data-lake-storage-gen1.md)

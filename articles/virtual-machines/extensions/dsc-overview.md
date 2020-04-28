@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115309"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188532"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Inleiding tot de uitbreiding van de Desired State Configuration-handler
 
@@ -188,7 +188,7 @@ De portal verzamelt de volgende invoer:
 
 - **Configuratie argumenten**: als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
 
-- **PSD1-bestand voor configuratie gegevens**: dit veld is optioneel. Als voor uw configuratie een bestand met configuratie gegevens is vereist in. psd1, gebruikt u dit veld om het gegevens veld te selecteren en dit te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
+- **PSD1-bestand voor configuratie gegevens**: voor uw configuratie is een bestand met configuratie gegevens vereist in. PSD1, gebruikt u dit veld om het gegevens bestand te selecteren en te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
 
 - **WMF-versie**: Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op laatst, wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap 4,0, 5,0, 5,1 en meest recent. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**.
 

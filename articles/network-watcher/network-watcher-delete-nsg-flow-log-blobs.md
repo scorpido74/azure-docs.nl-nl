@@ -1,6 +1,6 @@
 ---
-title: Opslagblobs verwijderen voor netwerkbeveiligingsgroepstroomlogboeken in Azure Network Watcher | Microsoft Documenten
-description: In dit artikel wordt uitgelegd hoe u de logboekopslagblobs voor netwerkbeveiligingen die buiten hun bewaarbeleidsperiode vallen, verwijderen in Azure Network Watcher.
+title: Opslag-blobs verwijderen voor stroom logboeken voor netwerk beveiligings groepen in azure Network Watcher | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u de opslag-blobs van de netwerk beveiligings groep verwijdert die zich buiten het Bewaar beleid van de Azure-Network Watcher bevinden.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587206"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187967"
 ---
-# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Blobs voor netwerkbeveiliginggroepstroomlogboekopslag verwijderen in Network Watcher
+# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Netwerk beveiligings groep verwijderen opslag-blobs in Network Watcher
 
-Momenteel is er een probleem waarbij [netwerkbeveiligingsgroep (NSG)-stroomlogboeken](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob-opslag op basis van bewaarbeleidsinstellingen. U moet nu een PowerShell-script uitvoeren om de stroomlogboeken handmatig uit uw opslagaccount te verwijderen, zoals beschreven in dit artikel.
+Als u de stroom logboeken ooit hand matig moet verwijderen uit uw opslag account, kunt u het onderstaande Power shell-script gebruiken.
+Met dit script worden alleen opslag-blobs verwijderd die ouder zijn dan het bestaande Bewaar beleid dat door de gebruiker is opgegeven.
 
-## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>PowerShell-script uitvoeren om NSG-stroomlogboeken te verwijderen
+## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>Power shell-script uitvoeren om NSG-stroom logboeken te verwijderen
  
-Kopieer en sla het volgende script op naar een locatie zoals uw huidige werkmap. 
+Kopieer het volgende script en sla het op in een locatie zoals uw huidige werkmap. 
 
 ```powershell
 # This powershell script deletes all NSG flow log blobs that should not be retained anymore as per configured retention policy.
@@ -124,17 +125,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. Voer destijds de volgende parameters in het script in:
-   - **SubscriptionId** [Verplicht]: de abonnements-ID van waaruit u NSG Flow Log blobs wilt verwijderen.
-   - **Locatie** [Verplicht]: de _locatiereeks_ van het gebied van de NSG's waarvoor u NSG Flow Log-blobs wilt verwijderen. U deze informatie bekijken op de Azure-portal of op [GitHub.](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)
-   - **Bevestigen** [Optioneel]: Geef de bevestigende vlag door als u de verwijdering van elke opslagblob handmatig wilt bevestigen.
+1. Voer indien nodig de volgende para meters in het script in:
+   - **SubscriptionId** [verplicht]: de abonnements-id van waaruit u de NSG-flow logboek-blobs wilt verwijderen.
+   - **Locatie** [verplicht]: de _locatie reeks_ van de regio van de Nsg's waarvoor u NSG stroom logboek-blobs wilt verwijderen. U kunt deze informatie weer geven op de Azure Portal of op [github](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
+   - **Bevestigen** [Optioneel]: Geef de bevestigings vlag door als u hand matig wilt bevestigen dat elke opslag-BLOB wordt verwijderd.
 
-1. Voer het opgeslagen script uit zoals in het volgende voorbeeld, waarbij het scriptbestand is opgeslagen als **Delete-NsgFlowLogsBlobs.ps1:**
+1. Voer het opgeslagen script uit, zoals wordt weer gegeven in het volgende voor beeld, waarbij het script bestand is opgeslagen als **Delete-NsgFlowLogsBlobs. ps1**:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>Volgende stappen
-- Klanten kunnen het uitvoeren van het script automatiseren met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) of Azure [Automation](https://azure.microsoft.com/services/automation/)
-- Zie [Azure Monitor-logboeken voor netwerkbeveiligingsgroepen (NSG's) voor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)meer informatie over NSG-logboekregistratie.
+- Klanten kunnen het uitvoeren van het script automatiseren door gebruik te maken van [Azure Logic apps](../logic-apps/logic-apps-overview.md) of [Azure Automation](https://azure.microsoft.com/services/automation/)
+- Zie [Azure monitor-logboeken voor netwerk beveiligings groepen (nsg's) voor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)meer informatie over NSG-logboek registratie.
 

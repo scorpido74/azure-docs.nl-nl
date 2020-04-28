@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 04/26/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b4b1a24c358f4d98b42a4b7f6bfe889ebd2ae95c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 1c04c54a76dfad00c6c0bfde37629c8f1233c973
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82147518"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191089"
 ---
 |Naam |Beschrijving |Effect (s) |Versie |GitHub |
 |---|---|---|---|---|
-|[Delegering van scopes naar een beheer Tenant controleren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76bed37b-484f-430f-a009-fd7592dff818) |De overdracht van scopes controleren naar een Tenant beheren via Azure Lighthouse. |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)
+|[Delegering van scopes naar een beheer Tenant controleren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76bed37b-484f-430f-a009-fd7592dff818) |De overdracht van scopes controleren naar een Tenant beheren via Azure Lighthouse. |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json) |

@@ -1,6 +1,6 @@
 ---
-title: Een flyout toevoegen aan de gebruikersinterface van de externe bewakingsoplossing - Azure | Microsoft Documenten
-description: In dit artikel ziet u hoe u een nieuwe flyout toevoegt op een pagina in de webgebruikersinterface voor het versnellersweb op afstand.
+title: Een flyout toevoegen aan de gebruikers interface van de oplossing voor externe bewaking-Azure | Microsoft Docs
+description: Dit artikel laat u zien hoe u een nieuw vervolg-flyout kunt toevoegen op een pagina in de Web-UI van de oplossing voor externe bewaking.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,60 +8,60 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447111"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193170"
 ---
-# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste flyout toevoegen aan de webgebruikers interface voor de webserver van de oplossing voor externe bewaking
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste flyout toevoegen aan de Web-UI van de externe bewakings oplossing
 
-In dit artikel ziet u hoe u een nieuwe flyout toevoegt aan een pagina in de webgebruikersinterface voor het versnellersweb op afstand. Het artikel beschrijft:
+Dit artikel laat u zien hoe u een nieuwe flyout kunt toevoegen aan een pagina in de Web-UI van de oplossing voor externe bewaking. In het artikel worden de volgende informatie beschreven:
 
-- Hoe maak je een lokale ontwikkelingsomgeving voor te bereiden.
-- Een nieuwe flyout toevoegen aan een pagina in de webgebruikersinterface.
+- Het voorbereiden van een lokale ontwikkel omgeving.
+- Een nieuwe flyout toevoegen aan een pagina in de gebruikers interface van het web.
 
-In het voorbeeld flyout in dit artikel wordt op de pagina met het raster weergegeven dat het [aangepaste raster toevoegen aan het artikel over de web-aan-gebruikersinterface van de rasoplossing op afstand,](iot-accelerators-remote-monitoring-customize-grid.md) u laat zien hoe u deze toevoegen.
+In het volgende voor beeld in dit artikel wordt op de pagina weer gegeven met het raster dat u [een aangepast raster aan het hulp programma voor WEBui voor externe controle oplossing toevoegen kunt](iot-accelerators-remote-monitoring-customize-grid.md) zien hoe u dit kunt toevoegen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze handleiding wilt uitvoeren, hebt u de volgende software nodig die op uw lokale ontwikkelingsmachine is geïnstalleerd:
+Als u de stappen in deze hand leiding wilt uitvoeren, moet u de volgende software op uw lokale ontwikkel computer installeren:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Voer de stappen in de volgende artikelen uit voordat u verdergaat:
+U moet de stappen in de volgende artikelen volt ooien voordat u doorgaat:
 
-- [Voeg een aangepaste pagina toe aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking.](iot-accelerators-remote-monitoring-customize-page.md)
-- [Een aangepaste service toevoegen aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-service.md)
-- [Een aangepast raster toevoegen aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-grid.md)
+- [Een aangepaste pagina toevoegen aan de WEBgebruikersinterface van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-page.md).
+- [Een aangepaste service toevoegen aan de webgebruikersinterface voor externe bewaking oplossings versneller](iot-accelerators-remote-monitoring-customize-service.md)
+- [Een aangepast raster toevoegen aan de webgebruikersinterface van de oplossings versneller voor externe controle](iot-accelerators-remote-monitoring-customize-grid.md)
 
 ## <a name="add-a-flyout"></a>Een flyout toevoegen
 
-Als u een flyout wilt toevoegen aan de webgebruikersinterface, moet u de bronbestanden toevoegen die de flyout definiëren en een aantal bestaande bestanden wijzigen om de webgebruikersinterface bewust te maken van de nieuwe component.
+Als u een flyout wilt toevoegen aan de webgebruikersinterface, moet u de bron bestanden toevoegen die de flyout definiëren en enkele bestaande bestanden wijzigen om de webinterface van het nieuwe onderdeel op de hoogte te stellen.
 
 ### <a name="add-the-new-files-that-define-the-flyout"></a>De nieuwe bestanden toevoegen die de flyout definiëren
 
-Om u op weg te helpen, bevat de **src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout** map de bestanden die een flyout definiëren:
+Om aan de slag te gaan, bevat de map **src/walkthrough/onderdelen/pages/pageWithFlyout/vervolg menu's/exampleFlyout** de bestanden die een flyout definiëren:
 
-**voorbeeldFlyout.container.js**
+**exampleFlyout. container. js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**voorbeeldFlyout.js**
+**exampleFlyout. js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
-Kopieer de **src/walkthrough/components/pages/pageWithFlyout/flyouts** map naar de **src/components/pages/example** folder.
+Kopieer de map **src/walkthrough/onderdelen/pages/pageWithFlyout/flyouts** naar de map **src/Components/pages/example** .
 
 ### <a name="add-the-flyout-to-the-page"></a>De flyout toevoegen aan de pagina
 
-Wijzig de **src/componenten/pagina's/example/basicPage.js** om de flyout toe te voegen.
+Wijzig de **elementen src/Components, pages, example/basicPage. js** om de flyout toe te voegen.
 
-**Btn** toevoegen aan de invoer uit **componenten/gedeelde componenten** en import toevoegen voor **svgs** en **ExampleFlyoutContainer:**
+Voeg **btn** toe aan de import bewerkingen uit **componenten/gedeeld** en voeg import bewerkingen toe voor **svgs** en **ExampleFlyoutContainer**:
 
 ```js
 import {
@@ -76,7 +76,7 @@ import { svgs } from 'utilities';
 import { ExampleFlyoutContainer } from './flyouts/exampleFlyout';
 ```
 
-Voeg een **const** definitie voor **closedFlyoutState** en voeg deze toe aan de status in de constructor:
+Voeg een **Const** -definitie voor **closedFlyoutState** toe en voeg deze toe aan de status in de constructor:
 
 ```js
 const closedFlyoutState = { openFlyoutName: undefined };
@@ -88,7 +88,7 @@ export class BasicPage extends Component {
   }
 ```
 
-Voeg de volgende functies toe aan de klasse **BasicPage:**
+Voeg de volgende functies toe aan de klasse **BasicPage** :
 
 ```js
   closeFlyout = () => this.setState(closedFlyoutState);
@@ -96,7 +96,7 @@ Voeg de volgende functies toe aan de klasse **BasicPage:**
   openFlyout = (name) => () => this.setState({ openFlyoutName: name });
 ```
 
-Voeg de volgende **const definities** toe aan de **renderfunctie:**
+Voeg de volgende **Const** -definities toe aan de functie **render** :
 
 ```js
     const { openFlyoutName } = this.state;
@@ -104,7 +104,7 @@ Voeg de volgende **const definities** toe aan de **renderfunctie:**
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Voeg een knop toe om de flyout te openen in het contextmenu:
+Voeg een knop toe om de vervolg keuzelijst in het context menu te openen:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Voeg een knop toe om de flyout te openen in het contextmenu:
       </ContextMenu>,
 ```
 
-Voeg wat tekst en de flyout-container toe aan de pagina-inhoud:
+Voeg tekst en de vervolgmenuanker toe aan de pagina-inhoud:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,20 +125,20 @@ Voeg wat tekst en de flyout-container toe aan de pagina-inhoud:
       </PageContent>
 ```
 
-## <a name="test-the-flyout"></a>Test de flyout
+## <a name="test-the-flyout"></a>De flyout testen
 
-Als de webgebruikersinterface nog niet lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdtekst van uw lokale kopie van de opslagplaats:
+Als de Web-UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdmap van uw lokale kopie van de opslag plaats:
 
 ```cmd/sh
 npm start
 ```
 
-Met de vorige opdracht wordt [http://localhost:3000/dashboard](http://localhost:3000/dashboard)de gebruikersinterface lokaal uitgevoerd op . Navigeer naar de **voorbeeldpagina** en klik op **Flyout openen**.
+Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op. Ga naar de **voorbeeld** pagina en klik op **flyout openen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u over de beschikbare bronnen om u te helpen pagina's toe te voegen of aan te passen in de webgebruikersinterface in de versneller van de oplossing voor externe bewaking.
+In dit artikel hebt u geleerd over de resources die beschikbaar zijn om u te helpen bij het toevoegen of aanpassen van pagina's in de webgebruikersinterface in de oplossings versneller voor externe controle.
 
-Nu u een flyout op een pagina hebt gedefinieerd, is de volgende stap het [toevoegen van een paneel aan het dashboard in de webgebruikersinterface voor het versnellerweb van de afstandsbedieningsoplossing.](iot-accelerators-remote-monitoring-customize-panel.md)
+Nu u een flyout hebt gedefinieerd op een pagina, is de volgende stap het [toevoegen van een deel venster aan het dash board in de webgebruikersinterface van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-panel.md).
 
-Zie [Remote Monitoring architecture](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de remote monitoring oplossingsversneller.
+Zie [architectuur voor externe bewaking](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de oplossings versneller voor externe controle.

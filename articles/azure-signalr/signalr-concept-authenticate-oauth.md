@@ -1,17 +1,17 @@
 ---
-title: Handleiding voor het verifiëren van Azure SignalR Service-clients
-description: Lees hoe u uw eigen verificatie implementeert en integreert met Azure SignalR Service door het voorbeeld van e2e te volgen.
+title: Hand leiding voor het verifiëren van Azure signalerings service-clients
+description: Meer informatie over hoe u uw eigen verificatie implementeert en integreert met de Azure signalerings service door het E2E-voor beeld te volgen.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158283"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194598"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
 
@@ -54,7 +54,7 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 1. Open een webbrowser, ga naar `https://github.com` en meld u aan bij uw account.
 
-2. Ga voor uw account naar **Instellingen** > **voor ontwikkelaars instellingen** en klik op Een nieuwe **toepassing**registreren of Nieuwe **OAuth-app** onder *OAuth-apps*.
+2. Voor uw account gaat u naar **instellingen** > **ontwikkelaars instellingen** en klikt u op **een nieuwe toepassing registreren**of **nieuwe OAuth-app** onder *OAuth-apps*.
 
 3. Gebruik de volgende instellingen voor de nieuwe OAuth-app en klik vervolgens op **Register application**:
 
@@ -377,7 +377,7 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
 ## <a name="deploy-the-app-to-azure"></a>De app implementeren in Azure
 
-In deze sectie gebruikt u de Azure command-line interface (CLI) van de Azure Cloud Shell om een nieuwe web-app in [Azure App Service](https://docs.microsoft.com/azure/app-service/) te maken om uw ASP.NET toepassing in Azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
+In deze sectie gebruikt u de Azure-opdracht regel interface (CLI) van de Azure Cloud Shell om een nieuwe web-app te maken in [Azure app service](https://docs.microsoft.com/azure/app-service/) om uw ASP.NET-toepassing in azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
 
 In de stappen in dit gedeelte wordt de extensie *signalr* voor de Azure CLI gebruikt. Voer de volgende opdracht uit om de extensie *signalr* voor Azure CLI te installeren:
 
@@ -539,14 +539,14 @@ Voer de volgende opdrachten uit in een Git-shell om uw code te implementeren.
 
 Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback URL** van de GitHub OAuth-app bijwerken, zodat deze verwijzen naar de nieuwe gehoste app.
 
-1. Open [https://github.com](https://github.com) in een browser en navigeer naar de**instellingen** >  **voor instellingen** > van uw account Voor ontwikkelaars**Oauth Apps**.
+1. Open [https://github.com](https://github.com) in een browser en navigeer naar de **instellingen** > van uw account**OAuth-apps**voor**ontwikkel aars** > .
 
 2. Klik op de verificatie-app en werk de waarden voor **Homepage URL** en **Authorization callback URL** bij zoals hieronder wordt weergegeven:
 
     | Instelling | Voorbeeld |
     | ------- | ------- |
-    | Homepage URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | Authorization callback URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | Homepage URL | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | Authorization callback URL | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. Navigeer naar de URL van de web-app en test de toepassing.
 

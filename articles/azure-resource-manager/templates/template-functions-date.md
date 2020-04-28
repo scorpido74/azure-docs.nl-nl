@@ -1,43 +1,43 @@
 ---
-title: Sjabloonfuncties - datum
-description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om met datums te werken.
+title: Sjabloon functies-datum
+description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om met datums te werken.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084784"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192294"
 ---
-# <a name="date-functions-for-arm-templates"></a>Datumfuncties voor ARM-sjablonen
+# <a name="date-functions-for-arm-templates"></a>Datum functies voor ARM-sjablonen
 
-Resourcebeheer biedt de volgende functies voor het werken met datums in uw Azure Resource Manager-sjablonen (ARM):Resource Manager provides the following functions for working with dates in your Azure Resource Manager (ARM) templates:
+Resource Manager biedt de volgende functies voor het werken met datums in uw Azure Resource Manager ARM-sjablonen:
 
-* [dateTimeAdd dateTimeAdd dateTimeAdd dateTime](#datetimeadd)
-* [utcNu](#utcnow)
+* [dateTimeAdd](#datetimeadd)
+* [utcNow](#utcnow)
 
-## <a name="datetimeadd"></a>dateTimeAdd dateTimeAdd dateTimeAdd dateTime
+## <a name="datetimeadd"></a>dateTimeAdd
 
 `dateTimeAdd(base, duration, [format])`
 
-Hiermee voegt u een tijdsduur toe aan een basiswaarde. ISO 8601 formaat wordt verwacht.
+Voegt een tijds duur toe aan een basis waarde. ISO 8601-indeling wordt verwacht.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| base | Ja | tekenreeks | De begindatumwaarde voor de toevoeging. Gebruik [de tijdstempelindeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| duur | Ja | tekenreeks | De tijdswaarde die aan de basis moet worden toegevoegd. Het kan een negatieve waarde zijn. Gebruik [de duurnotatie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formaat | Nee | tekenreeks | De uitvoernotatie voor het datumresultaat. Indien dit niet is voorzien, wordt de notatie van de basiswaarde gebruikt. Gebruik [tekenreeksen voor standaardindelingen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [tekenreeksen voor aangepaste indelingen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Ja | tekenreeks | De begin datum/tijd-waarde voor de toevoeging. [ISO 8601-time stamp notatie](https://en.wikipedia.org/wiki/ISO_8601)gebruiken. |
+| duur | Ja | tekenreeks | De tijd waarde die aan de basis moet worden toegevoegd. Dit kan een negatieve waarde zijn. Gebruik de [ISO 8601-duur notatie](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formaat | Nee | tekenreeks | De uitvoer indeling voor het resultaat van de datum en tijd. Als u dit niet opgeeft, wordt de indeling van de basis waarde gebruikt. Gebruik [standaard notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Retourwaarde
 
-De datumtijdwaarde die voortvloeit uit het toevoegen van de duurwaarde aan de basiswaarde.
+De waarde voor datum/tijd die het resultaat is van het toevoegen van de waarde duration aan de basis waarde.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende voorbeeldsjabloon worden verschillende manieren weergegeven om tijdwaarden toe te voegen.
+In de volgende voorbeeld sjabloon ziet u verschillende manieren om tijd waarden toe te voegen.
 
 ```json
 {
@@ -72,15 +72,15 @@ In de volgende voorbeeldsjabloon worden verschillende manieren weergegeven om ti
 }
 ```
 
-Wanneer de voorgaande sjabloon wordt geïmplementeerd `2020-04-07 14:53:14Z`met een basistijd van , is de uitvoer:
+Wanneer de voor gaande sjabloon wordt geïmplementeerd met een basis tijd `2020-04-07 14:53:14Z`van, is de uitvoer:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| add3Years | Tekenreeks | 4/7/2023 14:53:14 |
-| subtract9Days | Tekenreeks | 3/29/2020 14:53:14 |
-| toevoegen1Uur | Tekenreeks | 4/7/2020 15:53:14 |
+| add3Years | Tekenreeks | 4/7/2023 2:53:14 UUR |
+| subtract9Days | Tekenreeks | 3/29/2020 2:53:14 UUR |
+| add1Hour | Tekenreeks | 4/7/2020 3:53:14 UUR |
 
-In de volgende voorbeeldsjabloon ziet u hoe u de begintijd voor een automatiseringsschema instelt.
+In de volgende voorbeeld sjabloon ziet u hoe u de start tijd voor een Automation-schema kunt instellen.
 
 ```json
 {
@@ -134,33 +134,33 @@ In de volgende voorbeeldsjabloon ziet u hoe u de begintijd voor een automatiseri
 }
 ```
 
-## <a name="utcnow"></a>utcNu
+## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
-Geeft als resultaat de huidige datumtijdwaarde (UTC) in de opgegeven notatie. Als er geen formaat wordt geleverd, wordt het ISO 8601 -formaat (yyyyMddTHHmmssZ) gebruikt. **Deze functie kan alleen worden gebruikt in de standaardwaarde voor een parameter.**
+Retourneert de huidige (UTC) datum/tijd-waarde in de opgegeven notatie. Als er geen indeling wordt gegeven, wordt de ISO 8601-indeling (yyyyMMddTHHmmssZ) gebruikt. **Deze functie kan alleen worden gebruikt in de standaard waarde voor een para meter.**
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| formaat |Nee |tekenreeks |De URI-gecodeerde waarde om te converteren naar een tekenreeks. Gebruik [tekenreeksen voor standaardindelingen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [tekenreeksen voor aangepaste indelingen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formaat |Nee |tekenreeks |De gecodeerde URI-waarde die moet worden geconverteerd naar een teken reeks. Gebruik [standaard notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Opmerkingen
 
-U deze functie alleen gebruiken in een expressie voor de standaardwaarde van een parameter. Als u deze functie ergens anders in een sjabloon gebruikt, wordt een fout geretourneerd. De functie is niet toegestaan in andere delen van de sjabloon omdat deze elke keer dat deze wordt aangeroepen een andere waarde retourneert. Het implementeren van dezelfde sjabloon met dezelfde parameters zou niet betrouwbaar dezelfde resultaten opleveren.
+U kunt deze functie alleen gebruiken in een expressie voor de standaard waarde van een para meter. Als u deze functie ergens anders in een sjabloon gebruikt, wordt er een fout geretourneerd. De functie is niet toegestaan in andere onderdelen van de sjabloon omdat deze een andere waarde retourneert telkens wanneer deze wordt aangeroepen. Het implementeren van dezelfde sjabloon met dezelfde para meters zou geen betrouw bare resultaten opleveren.
 
-Als u de optie gebruikt [om een eerdere succesvolle implementatie opnieuw te implementeren](rollback-on-error.md)en de eerdere implementatie een parameter bevat die utcNow gebruikt, wordt de parameter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameterwaarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
+Als u de optie gebruikt voor het opnieuw [implementeren van een eerdere geslaagde implementatie](rollback-on-error.md), en de eerdere implementatie bevat een para meter die gebruikmaakt van utcNow, wordt de para meter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameter waarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
 
-Zorg ervoor dat u een sjabloon opnieuw implementeert die is gebaseerd op de utcNow-functie voor een standaardwaarde. Wanneer u de parameter opnieuw implementeert en geen waarde voor de parameter geeft, wordt de functie opnieuw geëvalueerd. Als u een bestaande resource wilt bijwerken in plaats van een nieuwe resource wilt maken, geeft u de parameterwaarde door van de eerdere implementatie.
+Wees voorzichtig met het opnieuw implementeren van een sjabloon die afhankelijk is van de functie utcNow voor een standaard waarde. Wanneer u opnieuw implementeert en geen waarde opgeeft voor de para meter, wordt de functie opnieuw geëvalueerd. Als u een bestaande resource wilt bijwerken in plaats van een nieuwe te maken, geeft u de parameter waarde van de eerdere implementatie door.
 
 ### <a name="return-value"></a>Retourwaarde
 
-De huidige UTC-datumwaarde.
+De huidige UTC-waarde voor datum/tijd.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende voorbeeldsjabloon worden verschillende indelingen voor de datumtijdwaarde weergegeven.
+In de volgende voorbeeld sjabloon ziet u verschillende notaties voor de datum/tijd-waarde.
 
 ```json
 {
@@ -199,7 +199,7 @@ In de volgende voorbeeldsjabloon worden verschillende indelingen voor de datumti
 }
 ```
 
-De uitvoer van het voorgaande voorbeeld varieert voor elke implementatie, maar is vergelijkbaar met:
+De uitvoer van het voor gaande voor beeld varieert per implementatie, maar lijkt op:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
@@ -207,7 +207,7 @@ De uitvoer van het voorgaande voorbeeld varieert voor elke implementatie, maar i
 | utcShortOutput | tekenreeks | 03/05/2019 |
 | utcCustomOutput | tekenreeks | 3 5 |
 
-In het volgende voorbeeld ziet u hoe u een waarde van de functie gebruikt bij het instellen van een tagwaarde.
+In het volgende voor beeld ziet u hoe u een waarde uit de functie gebruikt wanneer u een tag-waarde instelt.
 
 ```json
 {
@@ -242,3 +242,7 @@ In het volgende voorbeeld ziet u hoe u een waarde van de functie gebruikt bij he
     }
 }
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Zie [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.

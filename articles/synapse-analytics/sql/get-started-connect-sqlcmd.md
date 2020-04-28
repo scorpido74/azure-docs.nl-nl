@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Synapse SQL met sqlcmd
-description: Gebruik het sqlcmd-command-line-hulpprogramma om verbinding te maken met SQL on-demand (preview) en SQL-pool.
+title: Verbinding maken met Synapse SQL met Sqlcmd
+description: Gebruik het opdracht regel hulpprogramma Sqlcmd om verbinding te maken met SQL op aanvraag (preview) en SQL-groep.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,38 +9,38 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ff9034e6c31c8d95e862570e3962990dfec8442
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7ccb30cdd77e511572147a0b0f7287f931a45df2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423752"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186835"
 ---
-# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Verbinding maken met Synapse SQL met sqlcmd
+# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Verbinding maken met Synapse SQL met Sqlcmd
 
 > [!div class="op_single_selector"]
 >
-> * [Azure Data Studio (voorbeeld)](get-started-azure-data-studio.md)
+> * [Azure Data Studio (preview-versie)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-U het sqlcmd-command-line-hulpprogramma gebruiken om verbinding te maken met SQL on-demand (preview) en SQL-pool binnen Synapse SQL. [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)  
+U kunt het opdracht regel hulpprogramma [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om verbinding te maken met SQL op aanvraag (preview) en SQL-groep in Synapse SQL.  
 
-## <a name="1-connect"></a>1.
-Open de opdrachtprompt om aan de slag te gaan met [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)en voer **sqlcmd** in, gevolgd door de verbindingstekenreeks voor uw Synapse SQL-database. De verbindingstekenreeks moet de volgende parameters bevatten:
+## <a name="1-connect"></a>1. verbinding maken
+Open de opdracht prompt en voer **Sqlcmd** in, gevolgd door de Connection String voor uw Synapse-SQL database om aan de slag te gaan met [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). De verbindingstekenreeks moet de volgende parameters bevatten:
 
 * **Server (-S):** server in de notatie `<`servernaam`>`.database.windows.net
-* **Database (-d):** Databasenaam
-* **Geciteerde id's inschakelen (-I):** Genoteerde id's moeten zijn ingeschakeld om verbinding te maken met een Synapse SQL-exemplaar
+* **Data Base (-d):** Database naam
+* **Id's van aanhalings tekens inschakelen (-I):** Id's tussen aanhalings tekens moeten zijn ingeschakeld om verbinding te maken met een Synapse SQL-exemplaar
 
-Als u SQL Server Authentication wilt gebruiken, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
+Als u SQL Server-verificatie wilt gebruiken, moet u de gebruikers naam-en wachtwoord parameters toevoegen:
 
 * **Gebruiker (-U):** servergebruiker in de notatie `<`gebruiker`>`
-* **Wachtwoord (-P):** Wachtwoord dat is gekoppeld aan de gebruiker
+* **Wacht woord (-P):** Wacht woord dat is gekoppeld aan de gebruiker
 
-Uw verbindingstekenreeks lijkt mogelijk op het volgende voorbeeld:
+Uw connection string kan er als volgt uitzien:
 
 **SQL on-demand**
 
@@ -58,7 +58,7 @@ Als u geïntegreerde verificatie van Azure Active Directory wilt gebruiken, moet
 
 * **Azure Active Directory Authentication (-G):** Azure Active Directory gebruiken voor verificatie
 
-Uw verbindingstekenreeks kan er in de volgende voorbeelden uitzien:
+Uw connection string kan er als volgt uitzien:
 
 **SQL on-demand**
 
@@ -75,11 +75,11 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > U moet [Azure Active Directory Authentication inschakelen](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om te verifiëren met Active Directory.
 
-## <a name="2-query"></a>2. Query
+## <a name="2-query"></a>2. query
 
-### <a name="use-sql-pool"></a>SQL-pool gebruiken
+### <a name="use-sql-pool"></a>SQL-groep gebruiken
 
-Wanneer verbinding is gemaakt, kunt u elke ondersteunde Transact-SQL-instructie voor het exemplaar uitvoeren.  In dit voorbeeld worden query's in de interactieve modus ingediend:
+Na de verbinding kunt u alle ondersteunde [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -instructies (T-SQL) voor het exemplaar uitgeven. In dit voor beeld worden query's verzonden in de interactieve modus:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -88,7 +88,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-Voor SQL-pool ziet u in de volgende voorbeelden hoe u query's uitvoert in batchmodus met de optie -Q of uw SQL in leidingen naar sqlcmd:
+In de volgende voor beelden voor SQL-groep ziet u hoe u query's in batch-modus kunt uitvoeren met de optie-Q of door uw SQL to Sqlcmd:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -100,7 +100,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-sql-on-demand"></a>SQL on-demand gebruiken
 
-Na het verbinden u alle ondersteunde [Transact-SQL -instructies](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) tegen de instantie uitgeven.  In het volgende voorbeeld worden query's in de interactieve modus ingediend:
+Nadat u verbinding hebt gemaakt, kunt u alle ondersteunde [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL)-instructies voor het exemplaar uitgeven.  In het volgende voor beeld worden query's verzonden in de interactieve modus:
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -109,7 +109,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-Voor SQL on-demand laten de volgende voorbeelden zien hoe u query's in batchmodus uitvoert met de optie -Q of uw SQL naar sqlcmd piping:
+De volgende voor beelden laten zien hoe u query's in batch modus kunt uitvoeren met de optie-Q of door uw SQL to Sqlcmd:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"
@@ -121,4 +121,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [sqlcmd-documentatie voor](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie over sqlcmd-opties.
+Zie de [Sqlcmd-documentatie](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de Sqlcmd-opties.

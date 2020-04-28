@@ -4,14 +4,14 @@ description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106488"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195006"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
@@ -29,7 +29,7 @@ Stel in **service Details**de naam van de cache en de andere kenmerken in:
 
 * Locatie: Selecteer een van de [ondersteunde regio's](hpc-cache-overview.md#region-availability).
 * Virtueel netwerk: u kunt een bestaande selecteren of een nieuw virtueel netwerk maken.
-* Subnet: Kies of maak een subnet met ten minste 64 IP-adressen (/24) die alleen worden gebruikt voor deze Azure HPC-cache-instantie.
+* Subnet: Kies of maak een subnet met ten minste 64 IP-adressen (/24). Dit subnet moet alleen worden gebruikt voor deze Azure HPC-cache-instantie.
 
 ## <a name="set-cache-capacity"></a>Cache capaciteit instellen
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
@@ -45,15 +45,15 @@ Kies de capaciteit door deze twee waarden in te stellen:
 
 Kies een van de beschik bare doorvoer waarden en cache opslag grootten.
 
-Houd er wel voor dat de werkelijke gegevens overdrachts snelheid afhankelijk is van de werk belasting, de netwerk snelheid en het type opslag doelen. Met de waarden die u kiest, stelt u de maximale door Voer voor het hele cache systeem in, maar een aantal dat wordt gebruikt voor overhead taken. Als een client bijvoorbeeld een bestand aanvraagt dat niet al in de cache is opgeslagen, of als het bestand is gemarkeerd als verouderd, gebruikt de cache een deel van de door Voer om het op te halen van back-end-opslag.
+Houd er wel voor dat de werkelijke gegevens overdrachts snelheid afhankelijk is van de werk belasting, de netwerk snelheid en het type opslag doelen. Met de waarden die u kiest, stelt u de maximale door Voer voor het hele cache systeem in, maar een aantal dat wordt gebruikt voor overhead taken. Als een client bijvoorbeeld een bestand aanvraagt dat niet al in de cache is opgeslagen, of als het bestand is gemarkeerd als verouderd, gebruikt de cache een deel van de door Voer om het op te halen uit de back-end-opslag.
 
-Met Azure HPC cache kunt u beheren welke bestanden in de cache worden opgeslagen en vooraf worden geladen om het aantal cache treffers te maximaliseren. De cache-inhoud wordt voortdurend beoordeeld en bestanden worden verplaatst naar lange termijn opslag wanneer ze minder vaak worden gebruikt. Kies een cache opslag grootte die kan worden ingesteld op de actieve set met werk bestanden, met extra ruimte voor meta gegevens en andere overhead.
+Met Azure HPC cache kunt u beheren welke bestanden in de cache worden opgeslagen en vooraf worden geladen om het aantal cache treffers te maximaliseren. De cache-inhoud wordt voortdurend beoordeeld en bestanden worden verplaatst naar lange termijn opslag wanneer ze minder vaak worden gebruikt. Kies een cache opslag grootte die de actieve set van werk bestanden kan bevatten, plus extra ruimte voor meta gegevens en andere overhead.
 
 ![scherm afbeelding van de pagina cache grootte](media/hpc-cache-create-capacity.png)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Versleuteling van Azure Key Vault inschakelen (optioneel)
 
-Als uw cache deel uitmaakt van een regio die door de klant beheerde versleutelings sleutels ondersteunt, wordt de pagina **schijf versleutelings sleutels** weer gegeven tussen de tabbladen **cache** en **Tags** . Vanaf publicatie tijd wordt deze optie ondersteund in VS-Oost, Zuid-Centraal en VS-West 2.
+Als uw cache deel uitmaakt van een regio die door de klant beheerde versleutelings sleutels ondersteunt, wordt de pagina **schijf versleutelings sleutels** weer gegeven tussen de tabbladen **cache** en **Tags** . Op het moment van publicatie wordt deze optie ondersteund in VS-Oost, Zuid-Centraal en VS-West 2.
 
 Als u de versleutelings sleutels wilt beheren die bij uw cache opslag worden gebruikt, geeft u uw Azure Key Vault informatie op de pagina **schijf versleutelings sleutels** . De sleutel kluis moet zich in dezelfde regio en in hetzelfde abonnement bevinden als de cache.
 

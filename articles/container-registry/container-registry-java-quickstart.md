@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: fbb6f4633ef6e984746a4fb4516380f4b2e3a9da
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116771"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195278"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Snelstartgids: Java-container installatie kopieën bouwen en pushen naar Azure Container Registry
 
@@ -108,13 +108,13 @@ Ten slotte werkt u de project configuratie bij en gebruikt u de opdracht prompt 
 
 1. Navigeer naar de voltooide projectmap voor uw SpringBoot-app (bijvoorbeeld *C:\SpringBoot\gs-spring-boot-docker\complete* of */users/robert/SpringBoot/gs-spring-boot-docker/complete*) en open het bestand *pom.xml* met een teksteditor.
 
-1. Werk de `<properties>` verzameling in het bestand *pom. XML* bij met de volgende XML-code. Vervang de tijdelijke aanduiding door de naam van uw REGI ster `<jib-maven-plugin.version>` en voeg een `2.1.0`eigenschap met de waarde of een nieuwere versie van de [maven-invoeg toepassing](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)toe.
+1. Werk de `<properties>` verzameling in het bestand *pom. XML* bij met de volgende XML-code. Vervang de tijdelijke aanduiding door de naam van uw REGI ster `<jib-maven-plugin.version>` en voeg een `2.2.0`eigenschap met de waarde of een nieuwere versie van de [maven-invoeg toepassing](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)toe.
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
       <java.version>1.8</java.version>
-      <jib-maven-plugin.version>2.1.0</jib-maven-plugin.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -139,7 +139,7 @@ Ten slotte werkt u de project configuratie bij en gebruikt u de opdracht prompt 
 1. Ga naar de map met het voltooide project voor uw Spring Boot-toepassing en voer de volgende opdracht uit om de installatiekopie te bouwen en deze naar het register te pushen:
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]

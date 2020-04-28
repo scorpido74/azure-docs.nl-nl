@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Meerdere bronnen voor meeslepende lezers integreren'
+title: 'Zelf studie: meerdere bronnen voor insluitende lezer integreren'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie maakt u een Node.js-toepassing die de immersive reader start met meerdere bronnen voor meeslepende lezers.
+description: In deze zelf studie maakt u een node. js-toepassing waarmee de insluitende lezer wordt gestart met meerdere bronnen voor insluitende lezer.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,32 +9,32 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046273"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195618"
 ---
-# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Zelfstudie: Meerdere bronnen voor meeslepende lezers integreren
+# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Zelf studie: meerdere bronnen voor insluitende lezer integreren
 
-In het [overzicht](./overview.md)leerde je over wat de Immersive Reader is en hoe het bewezen technieken implementeert om het begrijpend lezen te verbeteren voor taalstudenten, opkomende lezers en studenten met leerverschillen. In de [Quickstart van Node.js](./quickstart-nodejs.md)heb je geleerd hoe je Immersive Reader met één resource gebruiken. Deze zelfstudie gaat over het integreren van meerdere bronnen voor meeslepende lezers in dezelfde toepassing. In deze zelfstudie leert u het volgende:
+In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In de [Snelstartgids voor node. js](./quickstart-nodejs.md)hebt u geleerd hoe u insluitende lezer met één resource kunt gebruiken. In deze zelf studie wordt uitgelegd hoe u meerdere insluitende lezers bronnen in dezelfde toepassing kunt integreren. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Meerdere immersive reader-bronnen maken onder een bestaande resourcegroep
-> * De immersive reader starten met meerdere bronnen
+> * Meerdere resources van de insluitende lezer maken onder een bestaande resource groep
+> * De insluitende lezer starten met meerdere resources
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volg de [quickstart](./quickstart-nodejs.md) om een web-app te maken die de Immersive Reader met NodeJS lanceert. In die quickstart configureert u één bron voor meeslepende lezers. We zullen bouwen op de top van dat in deze tutorial.
+* Volg de [Quick](./quickstart-nodejs.md) start om een web-app te maken waarmee de insluitende lezer met NodeJS wordt gestart. In die Snelstartgids configureert u één insluitende lezer-resource. In deze zelf studie gaan we hier op bouwen.
 
-## <a name="create-the-immersive-reader-resources"></a>De bronnen voor meeslepende lezers maken
+## <a name="create-the-immersive-reader-resources"></a>De resources voor insluitende lezer maken
 
-Volg [deze instructies](./how-to-create-immersive-reader.md) om elke immersive reader-bron te maken. Het script **Create-ImmersiveReaderResource** heeft `ResourceName`, `ResourceSubdomain`en `ResourceLocation` als parameters. Deze moeten uniek zijn voor elke resource die wordt gemaakt. De overige parameters moeten hetzelfde zijn als wat u hebt gebruikt bij het instellen van uw eerste meeslepende lezerbron. Op deze manier kan elke resource worden gekoppeld aan dezelfde Azure-brongroep en Azure AD-toepassing.
+Volg [deze instructies](./how-to-create-immersive-reader.md) voor het maken van elke insluitende lezer-resource. Het script **Create-ImmersiveReaderResource** heeft `ResourceName`, `ResourceSubdomain`en `ResourceLocation` als para meters. Deze moeten uniek zijn voor elke resource die wordt gemaakt. De overige para meters moeten hetzelfde zijn als de waarde die u hebt gebruikt bij het instellen van uw eerste insluitende lezer-resource. Op deze manier kan elke resource worden gekoppeld aan dezelfde Azure-resource groep en Azure AD-toepassing.
 
-In het onderstaande voorbeeld ziet u hoe u twee resources maakt, een in WestUS en een in EastUS. Let op de `ResourceName` `ResourceSubdomain`unieke `ResourceLocation`waarden voor , en .
+In het onderstaande voor beeld ziet u hoe u twee resources maakt, een in Westus en een andere in Oost-Timor. Let op de unieke waarden `ResourceName`voor `ResourceSubdomain`, en `ResourceLocation`.
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -62,11 +62,11 @@ Create-ImmersiveReaderResource
   -AADAppClientSecret <AAD_APP_CLIENT_SECRET>
 ```
 
-## <a name="add-resources-to-environment-configuration"></a>Resources toevoegen aan omgevingsconfiguratie
+## <a name="add-resources-to-environment-configuration"></a>Resources toevoegen aan de omgevings configuratie
 
-In de quickstart hebt u een omgevingsconfiguratiebestand `ClientSecret`gemaakt `Subdomain` dat de `TenantId`, , `ClientId`en parameters bevat. Aangezien al uw resources dezelfde Azure AD-toepassing gebruiken, kunnen `TenantId` `ClientId`we `ClientSecret`dezelfde waarden gebruiken voor de , en . De enige wijziging die moet worden aangebracht, is om elk subdomein voor elke resource weer te geven.
+In de Quick Start hebt u een omgevings configuratie bestand gemaakt dat `TenantId`de `ClientId`para `ClientSecret`meters `Subdomain` ,, en bevat. Omdat al uw resources dezelfde Azure AD-toepassing gebruiken, kunnen we dezelfde waarden gebruiken voor de `TenantId`, `ClientId`en. `ClientSecret` De enige wijziging die moet worden aangebracht, is om een lijst te maken van elk subdomein voor elke resource.
 
-Uw nieuwe __.env-bestand__ moet er nu als volgt uitzien:
+Het nieuwe __. env__ -bestand ziet er nu ongeveer als volgt uit:
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -76,11 +76,11 @@ SUBDOMAIN_WUS={YOUR_WESTUS_SUBDOMAIN}
 SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 ```
 
-Zorg ervoor dat u dit bestand niet in bronbeheer verbindt, omdat het geheimen bevat die niet openbaar mogen worden gemaakt.
+Zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt.
 
-Vervolgens wijzigen we het _bestand routes\index.js_ dat we hebben gemaakt om onze meerdere bronnen te ondersteunen. Vervang de inhoud ervan door de volgende code.
+We gaan nu het _routes\index.js_ -bestand wijzigen dat we hebben gemaakt ter ondersteuning van onze meerdere resources. Vervang de inhoud door de volgende code.
 
-Net als voorheen maakt deze code een API-eindpunt dat een Azure AD-verificatietoken verwerft met behulp van uw serviceprincipal-wachtwoord. Deze keer kan de gebruiker een resourcelocatie opgeven en deze doorgeven als queryparameter. Vervolgens retourneert het object dat het token en het bijbehorende subdomein bevat.
+Net als voorheen maakt deze code een API-eind punt waarmee een Azure AD-verificatie token wordt verkregen met behulp van het wacht woord voor de Service-Principal. Op deze manier kan de gebruiker een resource locatie opgeven en deze door geven als een query parameter. Vervolgens wordt een-object met het token en het bijbehorende subdomein geretourneerd.
 
 ```javascript
 var express = require('express');
@@ -143,11 +143,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-Het **getimmersivereaderlaunchparams** API-eindpunt moet worden beveiligd achter een of andere vorm van authenticatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voorkomen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken tegen uw Immersive Reader-service en facturering; dat werk valt buiten het bereik van deze tutorial.
+Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering; Dit werk valt buiten het bereik van deze zelf studie.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Start de meeslepende lezer met voorbeeldinhoud
+## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-1. Open _views\index.pug_en vervang de inhoud ervan door de volgende code. Deze code vult de pagina met een aantal voorbeeldinhoud en voegt twee knoppen toe die de meeslepende lezer start. Een voor de lancering van Immersive Reader voor de EastUS bron, en een andere voor de WestUS bron.
+1. Open _views\index.Pug_en vervang de inhoud door de volgende code. Met deze code wordt de pagina met enkele voorbeeld inhoud gevuld en worden twee knoppen toegevoegd waarmee de insluitende lezer wordt gestart. Een voor het starten van insluitende lezer voor de Oost-bron en een andere voor de Westus-resource.
 
     ```pug
     doctype html
@@ -252,15 +252,15 @@ Het **getimmersivereaderlaunchparams** API-eindpunt moet worden beveiligd achter
         }
     ```
 
-3. Onze web-app is nu klaar. Start de app door het uitvoeren van:
+3. Onze web-app is nu klaar. Start de app door uit te voeren:
 
     ```bash
     npm start
     ```
 
-4. Open uw browser [http://localhost:3000](http://localhost:3000)en navigeer naar . U ziet de bovenstaande inhoud op de pagina. Klik op de **Knop EastUS Immersive Reader** of de **WestUS Immersive Reader-knop** om de Immersive Reader te starten met behulp van deze respectievelijke bronnen.
+4. Open uw browser en ga naar `http://localhost:3000`. De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop **Oost-US insluitende lezer** of de knop **Westus insluitende lezer** om de insluitende lezer te starten met behulp van die respectieve bronnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) en de [Immersive Reader SDK Reference](./reference.md)
-* Codevoorbeelden weergeven op [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)
+* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
+* Code voorbeelden weer geven op [github](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

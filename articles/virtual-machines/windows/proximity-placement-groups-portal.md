@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: aaecfbd14289840e795c6323737877e267586e16
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82098642"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190398"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Een proximity-plaatsings groep maken met behulp van de portal
 
@@ -20,6 +20,11 @@ Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementere
 
 Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
 
+> [!NOTE]
+> Proximity-plaatsings groepen kunnen niet worden gebruikt met gereserveerde hosts.
+>
+> Als u beschikbaarheids zones samen met plaatsings groepen wilt gebruiken, moet u ervoor zorgen dat de virtuele machines in de plaatsings groep ook in dezelfde beschikbaarheids zone zijn opgenomen.
+>
 
 ## <a name="create-the-proximity-placement-group"></a>De plaatsings groep voor proximity maken
 
@@ -27,7 +32,7 @@ Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om 
 1. Selecteer onder **Services** in de zoek resultaten **proximity placement groups**.
 1. Selecteer op de pagina **proximity placement groups** de optie **toevoegen**.
 1. Controleer op het tabblad **basis beginselen** onder **Project Details**of het juiste abonnement is geselecteerd.
-1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe groep te maken of selecteer een bestaande resource groep in de vervolg keuzelijst.
+1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe groep te maken of selecteer een lege resource groep die al bestaat uit de vervolg keuzelijst. 
 1. Selecteer in **regio** de locatie waar u de Proximity-plaatsings groep wilt maken.
 1. Typ in **proximity-naam voor plaatsings groep** een naam en selecteer vervolgens **controleren + maken**.
 1. Nadat de validatie is geslaagd, selecteert u **maken** om de Proximity-plaatsings groep te maken.
@@ -46,7 +51,28 @@ Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om 
 1. Nadat de validatie is door gegeven, selecteert u **maken** om de virtuele machine in de plaatsings groep te implementeren.
 
 
+## <a name="add-vms-in-an-availability-set-to-a-proximity-placement-group"></a>Vm's in een beschikbaarheidsset toevoegen aan een proximity-plaatsings groep
 
+Als de virtuele machine deel uitmaakt van de Beschikbaarheidsset, moet u de beschikbaarheidsset toevoegen aan de plaatsings groep voordat u de virtuele machines toevoegt.
+
+1. In de [Portal](https://portal.azure.com) zoekt u naar *beschikbaarheids sets* en selecteert u de beschikbaarheidsset in de resultaten.
+1. Stop\deallocate elke virtuele machine in de beschikbaarheidsset door de virtuele machine te selecteren, vervolgens op de pagina voor de virtuele machine **stoppen** te selecteren en vervolgens **OK** te selecteren om de virtuele machine te stoppen.
+1. Controleer op de pagina voor uw beschikbaarheidsset of alle virtuele machines de **status** **gestopt hebben (toewijzing opgeheven)**.
+1. Selecteer in het linkermenu **configuratie**.
+1. Selecteer in de vervolg keuzelijst **proximity-plaatsings**groep een plaatsings groep en selecteer vervolgens **Opslaan**.
+1. Selecteer **overzicht** in het menu links om de lijst met vm's opnieuw weer te geven. 
+1. Selecteer elke virtuele machine in de beschikbaarheidsset en selecteer vervolgens **Start** op de pagina voor elke virtuele machine. 
+
+
+## <a name="add-existing-vm-to-placement-group"></a>Bestaande VM toevoegen aan plaatsings groep 
+
+
+1. Selecteer op de pagina voor de virtuele machine **stoppen**.
+1. Zodra de status van de virtuele machine is **gestopt (toewijzing**ongedaan gemaakt), selecteert u **configuratie** in het menu links.
+1. Selecteer in de vervolg keuzelijst **proximity-plaatsings**groep een plaatsings groep en selecteer vervolgens **Opslaan**.
+1. Selecteer **overzicht** in het linkermenu en selecteer vervolgens **Start** om de virtuele machine opnieuw op te starten.
+
+ 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 50752dfefae1aab28e0b7e51d8c94cf5f04a5099
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 90e8aa4da88542648bec612553282ffe11b09eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149310"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192277"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Snelstartgids: een Azure vertrouwelijk computing-VM implementeren in Marketplace
 
@@ -21,7 +21,7 @@ Ga aan de slag met Azure vertrouwelijk computing door Azure Marketplace te gebru
 
 Deze zelf studie wordt aanbevolen als u snel een virtuele machine voor vertrouwelijke computing wilt implementeren. De virtuele machines worden uitgevoerd op speciale hardware en vereisen dat specifieke configuratie-ingangen worden uitgevoerd zoals bedoeld. De Marketplace-aanbieding die in deze Quick Start wordt beschreven, maakt het gemakkelijker om te implementeren door gebruikers invoer te beperken.
 
-Als u geïnteresseerd bent in de implementatie van een computer met een vertrouwelijke Compute-machine met een meer aangepaste configuratie, volgt u de stappen voor de implementatie van de [Azure Portal vertrouwelijk Compute virtual machine.](quick-create-portal.md).
+Als u geïnteresseerd bent in de implementatie van een computer met een vertrouwelijke Compute-machine met een meer aangepaste configuratie, volgt u de stappen voor de implementatie van de [Azure Portal vertrouwelijk Compute virtual machine](quick-create-portal.md).
 
 ## <a name="prerequisites"></a>Vereisten
 

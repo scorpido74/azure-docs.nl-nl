@@ -8,32 +8,43 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 012800806aeff81939baa2cee88e78191e4fb6c5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195261"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit maken
 
-Maak een identiteit met de naam *myACRTasksId* in uw abonnement met behulp van de opdracht [AZ-identiteit maken.][az-identity-create] U dezelfde resourcegroep gebruiken die u eerder hebt gebruikt om een containerregister of een ander register te maken.
+Maak een identiteit met de naam *myACRTasksId* in uw abonnement met behulp van de opdracht [AZ Identity Create][az-identity-create] . U kunt dezelfde resource groep gebruiken die u eerder hebt gebruikt voor het maken van een container register of een andere.
 
-```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myACRTasksId
+```azurecli
+az identity create \
+  --resource-group myResourceGroup \
+  --name myACRTasksId
 ```
 
-Als u de door de gebruiker toegewezen identiteit wilt configureren in de volgende stappen, gebruikt u de opdracht [AZ-identiteitweergeven][az-identity-show] om de bron-id, de hoofd-id en de client-id van de identiteit in variabelen op te slaan.
+Als u de door de gebruiker toegewezen identiteit in de volgende stappen wilt configureren, gebruikt u de opdracht [AZ Identity show][az-identity-show] om de resource-id, de principal-id en de client-id van de identiteit op te slaan in variabelen.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query id --output tsv)
+resourceID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query id --output tsv)
 
 # Get principal ID of the task's user-assigned identity
-principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
+principalID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query principalId --output tsv)
 
 # Get client ID of the user-assigned identity
-clientID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query clientId --output tsv)
+clientID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query clientId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148329"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192830"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API voor Azure Cosmos DB
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Wat zijn enkele belang rijke verschillen tussen Apache Cassandra en de Cassandra-API?
 
-- Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een partitie sleutel. De Cassandra-API voor Azure Cosmos DB biedt Maxi maal 10 GB per partitie.
+- Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een partitie sleutel. De Cassandra-API voor Azure Cosmos DB mag Maxi maal 20 GB per partitie bevatten.
 - Met Apache Cassandra kunt u duurzame door voeringen uitschakelen. U kunt de schrijf bewerkingen naar het commit-logboek overs Laan en direct naar de memtables gaan. Dit kan leiden tot verlies van gegevens als het knoop punt uitvalt voordat memtables naar SSTables op schijf worden leeg gemaakt. Azure Cosmos DB bevat altijd duurzame door voeringen om gegevens verlies te voor komen.
 - Apache Cassandra kan afnemende prestaties zien als de werk belasting veel vervangingen of verwijderingen omvat. De reden is tombstones dat de leeswerk belasting moet overs Laan om de meest recente gegevens op te halen. Het Cassandra-API ziet geen afnemende Lees prestaties wanneer de werk belasting veel vervangingen of verwijderingen heeft.
 - Tijdens scenario's met hoge vervangen werk belastingen moet compressie worden uitgevoerd om SSTables op schijf samen te voegen. (Een samen voeging is vereist omdat de schrijf bewerkingen van Apache Cassandra alleen worden toegevoegd. Meerdere updates worden opgeslagen als afzonderlijke SSTable-vermeldingen die periodiek moeten worden samengevoegd. Deze situatie kan ook leiden tot minder Lees prestaties tijdens het comprimeren. Deze prestatie-impact treedt niet op in de Cassandra-API omdat de API geen compressie implementeert.

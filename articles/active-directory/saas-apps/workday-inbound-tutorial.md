@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298c99d44328dc79db1722b450ad74c3929d0c12
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114418"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190313"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -562,7 +562,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
 | **PreferredNameData**    |  genoemd    |   |   Geschreven bij alleen maken |
 | **SelectUniqueValue (toevoegen ("\@", samen voegen (". \["\], \[voor\]naam, achternaam), "contoso.com")\@, samen voegen ("", samen voegen\](".", Mid \[(\]\[FirstName, 1, 1), LastName),\@"contoso.com"), deel nemen (""\[,\]lid (".", \[mid\](FirstName, 1, 2), LastName), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
-| **Replace (Mid (vervangen (\[GebruikersID\],, "(\[\\\\/\\\\\\\\\\\\\\:;\\ \\\[\\\\\]\\\\ \\\|\\\\=\\\\,\\\\+\\\\\*\\\\? \\\\\\) ",," ",,), 1, 20),," ([.) \\ &lt; \\ \\ &gt; \] \*File:///\\ \$.) *$)", , "", , )**      |    sAMAccountName            |     |         Geschreven bij alleen maken |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch (\[actief\],, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
 | **Voor**   | givenName       |     |    + Update maken |
 | **Naam**   |   sn   |     |  + Update maken |

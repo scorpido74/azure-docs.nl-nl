@@ -1,51 +1,51 @@
 ---
-title: Upgrade van servicefabric-app met PowerShell
-description: In dit artikel wordt de ervaring doorgenomen van het implementeren van een Service Fabric-toepassing, het wijzigen van de code en het uitrollen van een upgrade met PowerShell.
+title: Upgrade van de app Service Fabric met behulp van Power shell
+description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing implementeert, hoe u de code wijzigt en een upgrade uitvoert met behulp van Power shell.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: b113b5a1042518e3b0d86e53796c5fe49afed418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426781"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195881"
 ---
-# <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van servicefabric-toepassingen met PowerShell
+# <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van toepassing Service Fabric met behulp van Power shell
 > [!div class="op_single_selector"]
-> * [Powershell](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
 
 <br/>
 
-De meest gebruikte en aanbevolen upgrade-benadering is de bewaakte rolling upgrade.  Azure Service Fabric bewaakt de status van de toepassing die wordt bijgewerkt op basis van een set statusbeleid. Zodra een updatedomein (UD) is bijgewerkt, evalueert Service Fabric de status van de toepassing en gaat naar het volgende updatedomein of mislukt de upgrade, afhankelijk van het gezondheidsbeleid.
+De meestgebruikte en aanbevolen upgrade aanpak is de bewaakte rolling upgrade.  Azure Service Fabric bewaakt de status van de toepassing die wordt bijgewerkt op basis van een set status beleid. Zodra een update domein (UD) is bijgewerkt, evalueert Service Fabric de status van de toepassing en gaat het naar het volgende update domein of mislukt de upgrade afhankelijk van het status beleid.
 
-Een bewaakte toepassingsupgrade kan worden uitgevoerd met behulp van de beheerde of native API's, PowerShell, Azure CLI, Java of REST. Zie Uw toepassing upgraden met Visual Studio voor instructies voor het uitvoeren van een upgrade met [Visual Studio.](service-fabric-application-upgrade-tutorial.md)
+Een bewaakte toepassings upgrade kan worden uitgevoerd met behulp van de beheerde of systeem eigen Api's, Power shell, Azure CLI, Java of REST. Zie [uw toepassing upgraden met Visual Studio](service-fabric-application-upgrade-tutorial.md)voor instructies over het uitvoeren van een upgrade met Visual Studio.
 
-Met servicestructuur bewaakte rolling upgrades kan de toepassingsbeheerder het statusevaluatiebeleid configureren dat Service Fabric gebruikt om te bepalen of de toepassing in orde is. Bovendien kan de beheerder de actie configureren die moet worden uitgevoerd wanneer de statusevaluatie mislukt (bijvoorbeeld het uitvoeren van een automatische terugdraaiing.) In deze sectie wordt een bewaakte upgrade uitgevoerd voor een van de SDK-voorbeelden die PowerShell gebruikt. 
+Met Service Fabric bewaakte rolling upgrades kan de toepassings beheerder het status evaluatie beleid configureren dat Service Fabric gebruikt om te bepalen of de toepassing in orde is. Daarnaast kan de beheerder de actie configureren die moet worden uitgevoerd wanneer de status evaluatie mislukt (bijvoorbeeld door een automatische terugdraai bewerking uit te voeren). In deze sectie wordt een bewaakte upgrade door lopen voor een van de SDK-voor beelden die gebruikmaken van Power shell. 
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Stap 1: Het voorbeeld visuele objecten bouwen en implementeren
-Bouw en publiceer de toepassing door met de rechtermuisknop te klikken op het toepassingsproject, **VisualObjectsApplication** en de opdracht **Publiceren te** selecteren.  Zie zelfstudie voor upgrade [servicefabric-toepassingen](service-fabric-application-upgrade-tutorial.md)voor meer informatie .  U powershell ook gebruiken om uw toepassing te implementeren.
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Stap 1: het voor beeld van Visual objecten bouwen en implementeren
+Bouw en publiceer de toepassing door met de rechter muisknop te klikken op het toepassings project **VisualObjectsApplication** en de opdracht **Publish** te selecteren.  Zie [service Fabric-zelf studie](service-fabric-application-upgrade-tutorial.md)over de upgrade van toepassingen voor meer informatie.  U kunt ook Power shell gebruiken om uw toepassing te implementeren.
 
 > [!NOTE]
-> Voordat een van de opdrachten Service Fabric in PowerShell kan worden gebruikt, `Connect-ServiceFabricCluster` moet u eerst verbinding maken met het cluster met behulp van de cmdlet. Op dezelfde manier wordt ervan uitgegaan dat het cluster al is ingesteld op uw lokale machine. Zie het artikel over [het instellen van uw Service Fabric-ontwikkelomgeving.](service-fabric-get-started.md)
+> Voordat een van de Service Fabric-opdrachten in Power shell kan worden gebruikt, moet u eerst verbinding maken met het cluster met `Connect-ServiceFabricCluster` behulp van de-cmdlet. Ook wordt ervan uitgegaan dat het cluster al is ingesteld op uw lokale machine. Zie het artikel over het [instellen van uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md).
 > 
 > 
 
-Nadat u het project in Visual Studio hebt gebouwd, u de [PowerShell-opdracht Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) gebruiken om het toepassingspakket naar de ImageStore te kopiëren. Als u het app-pakket lokaal wilt verifiëren, gebruikt u de cmdlet [Test-ServiceFabricApplicationPackage.](/powershell/module/servicefabric/test-servicefabricapplicationpackage) De volgende stap is het registreren van de toepassing bij de Runtime van De Service Fabric met behulp van de [cmdlet Register-ServiceFabricApplicationType.](/powershell/module/servicefabric/register-servicefabricapplicationtype) De volgende stap is het starten van een instantie van de toepassing met behulp van de cmdlet [Nieuw-ServiceFabricApplication.](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)  Deze drie stappen zijn analoog aan het gebruik van het **menu-item Implementeren** in Visual Studio.  Zodra de inrichting is voltooid, moet u het gekopieerde toepassingspakket uit het afbeeldingsarchief opschonen om de verbruikte resources te verminderen.  Als een toepassingstype niet meer nodig is, moet het om dezelfde reden worden niet geregistreerd. Zie [Toepassingen implementeren en verwijderen met PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) voor meer informatie.
+Na het maken van het project in Visual Studio kunt u de Power shell [-opdracht copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) gebruiken om het toepassings pakket te kopiëren naar de installatie kopie opslag. Als u het app-pakket lokaal wilt controleren, gebruikt u de cmdlet [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) . De volgende stap bestaat uit het registreren van de toepassing bij de Service Fabric-runtime met de cmdlet [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . De volgende stap is het starten van een exemplaar van de toepassing met behulp van de cmdlet [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) .  Deze drie stappen zijn vergelijkbaar met het menu-item **implementeren** in Visual Studio.  Zodra de inrichting is voltooid, moet u het gekopieerde toepassings pakket opschonen in de archief kopie om de verbruikte resources te verminderen.  Als een toepassings type niet meer vereist is, moet het worden verwijderd om dezelfde reden. Zie [toepassingen implementeren en verwijderen met behulp van Power shell](service-fabric-application-upgrade-tutorial-powershell.md) voor meer informatie.
 
-U nu Service Fabric Explorer gebruiken [om het cluster en de toepassing weer te geven.](service-fabric-visualizing-your-cluster.md) De toepassing heeft een webservice die kan worden [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) genavigeerd in Internet Explorer door te typen in de adresbalk.  U ziet een aantal zwevende visuele objecten bewegen in het scherm.  Daarnaast u [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) gebruiken om de status van de toepassing te controleren.
+Nu kunt u Service Fabric Explorer gebruiken [om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De toepassing heeft een webservice waarmee kan worden genavigeerd naar Internet Explorer door in de `http://localhost:8081/visualobjects` adres balk te typen.  In het scherm moeten enkele zwevende visuele objecten worden weer gegeven.  Daarnaast kunt u [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) gebruiken om de status van de toepassing te controleren.
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: Voorbeeld van visuele objecten bijwerken
-U zult merken dat bij de versie die in stap 1 is geïmplementeerd, de visuele objecten niet worden gedraaid. Laten we deze toepassing upgraden naar een toepassing waar de visuele objecten ook draaien.
+## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: het voor beeld van Visual Objects bijwerken
+U zult kunnen merken dat met de versie die is geïmplementeerd in stap 1, de visuele objecten niet draaien. We gaan deze toepassing upgraden naar een waar ook de visuele objecten draaien.
 
-Selecteer het project VisualObjects.ActorService in de oplossing VisualObjects en open het StatefulVisualObjectActor.cs bestand. Navigeer in dat bestand `MoveObject`naar de `this.State.Move()`methode , `this.State.Move(true)`reageer uit en geef geen commentaar . Met deze wijziging worden de objecten gedraaid nadat de service is bijgewerkt.
+Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het StatefulVisualObjectActor.cs-bestand. Ga in dat bestand naar de methode `MoveObject`, commentaar uit `this.State.Move()`en verwijder de opmerking. `this.State.Move(true)` Deze wijziging roteert de objecten nadat de service is bijgewerkt.
 
-We moeten ook het *bestand ServiceManifest.xml* (onder PackageRoot) van het project **VisualObjects.ActorService bijwerken.** Werk het *CodePackage* en de serviceversie bij naar 2.0 en de bijbehorende regels in het bestand *ServiceManifest.xml.*
-U de optie *Manifestbestanden van* Visual Studio bewerken gebruiken nadat u met de rechtermuisknop op de oplossing hebt geklikt om het manifestbestand te gewijzigd.
+We moeten ook het bestand *ServiceManifest. XML* (onder PackageRoot) van het project **VisualObjects. ActorService**bijwerken. Werk de *code package* en de service versie bij naar 2,0 en de bijbehorende regels in het bestand *ServiceManifest. XML* .
+U kunt de optie *manifest bestanden* Visual Studio bewerken gebruiken nadat u met de rechter muisknop op de oplossing hebt geklikt om het manifest bestand te wijzigen.
 
-Nadat de wijzigingen zijn aangebracht, moet het manifest er als volgt uitzien (gemarkeerde gedeelten tonen de wijzigingen):
+Nadat de wijzigingen zijn aangebracht, moet het Manifest er als volgt uitzien (gemarkeerde gedeelten worden de wijzigingen weer gegeven):
 
 ```xml
 <ServiceManifestName="VisualObjects.ActorService" Version="2.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
@@ -53,7 +53,7 @@ Nadat de wijzigingen zijn aangebracht, moet het manifest er als volgt uitzien (g
 <CodePackageName="Code" Version="2.0">
 ```
 
-Nu wordt het bestand *ApplicationManifest.xml* (gevonden onder het **visualobjects-project** onder de oplossing **VisualObjects)** bijgewerkt naar versie 2.0 van het **visualobjects.ActorService-project.** Bovendien wordt de toepassingsversie bijgewerkt naar 2.0.0.0 van 1.0.0.0. Het *toepassingsmanifest.xml* moet er als volgt uitzien:
+Nu wordt het bestand *ApplicationManifest. XML* (gevonden onder het **VisualObjects** -project onder de **VisualObjects** -oplossing) bijgewerkt naar versie 2,0 van het project **VisualObjects. ActorService** . Daarnaast wordt de versie van de toepassing bijgewerkt naar 2.0.0.0 van 1.0.0.0. *ApplicationManifest. XML* moet eruitzien als in het volgende code fragment:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -61,16 +61,16 @@ Nu wordt het bestand *ApplicationManifest.xml* (gevonden onder het **visualobjec
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-Bouw nu het project op door alleen het **ActorService-project** te selecteren en vervolgens met de rechtermuisknop te klikken en de optie **Bouwen** in Visual Studio te selecteren. Als u **Alle opnieuw opbouwen**selecteert, moet u de versies voor alle projecten bijwerken, omdat de code zou zijn gewijzigd. Laten we vervolgens de bijgewerkte toepassing verpakken door met de rechtermuisknop op ***VisualObjectsApplication***te klikken, het menu Servicefabric te selecteren en **Pakket**te kiezen. Met deze actie wordt een toepassingspakket dat kan worden geïmplementeerd.  Uw bijgewerkte toepassing is klaar om te worden geïmplementeerd.
+Bouw nu het project door alleen het **ActorService** -project te selecteren en vervolgens met de rechter muisknop te klikken en de optie **Build** te selecteren in Visual Studio. Als u **alles opnieuw samen stellen**selecteert, moet u de versies voor alle projecten bijwerken omdat de code is gewijzigd. Vervolgens kunt u de bijgewerkte toepassing inpakken door met de rechter muisknop op ***VisualObjectsApplication***te klikken, het menu Service Fabric te selecteren en **pakket**te kiezen. Met deze actie wordt een toepassings pakket gemaakt dat kan worden geïmplementeerd.  Uw bijgewerkte toepassing is gereed om te worden geïmplementeerd.
 
-## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Stap 3: Beslissen over gezondheidsbeleid en upgradeparameters
-Maak uzelf vertrouwd met de [upgradeparameters van](service-fabric-application-upgrade-parameters.md) de toepassing en het [upgradeproces](service-fabric-application-upgrade.md) om een goed inzicht te krijgen in de verschillende upgradeparameters, time-outs en het toegepaste gezondheidscriterium. Voor deze walkthrough is het beoordelingscriterium voor servicestatus ingesteld op de standaardwaarden (en aanbevolen) waarden, wat betekent dat alle services en instanties na de upgrade *in orde* moeten zijn.  
+## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Stap 3: beslissen over status beleid en upgrade parameters
+Raadpleeg de [para meters](service-fabric-application-upgrade-parameters.md) voor de upgrade van de toepassing en het [upgrade proces](service-fabric-application-upgrade.md) om een goed beeld te krijgen van de verschillende para meters voor upgrades, time-outs en het toegepaste status criterium. Voor dit scenario wordt het criterium voor service status evaluatie ingesteld op de standaard waarden (en aanbevolen). Dit betekent dat alle services en instanties *in orde* moeten zijn na de upgrade.  
 
-Laten we echter de *HealthCheckStableDuration* verhogen tot 180 seconden (zodat de services ten minste 120 seconden gezond zijn voordat de upgrade doorgaat naar het volgende updatedomein).  Laten we ook instellen dat de *UpgradeDomainTimeout* 1200 seconden is en de *UpgradeTimeout* 3000 seconden.
+We verg Roten echter de *HealthCheckStableDuration* tot 180 seconden (zodat de services gedurende ten minste 120 seconden in orde zijn voordat de upgrade naar het volgende update domein wordt uitgevoerd).  We stellen de *UpgradeDomainTimeout* ook in op 1200 seconden en de *UpgradeTimeout* 3000 seconden.
 
-Tot slot, laten we ook de *UpgradeFailureAction* intestellen op terugdraaien. Voor deze optie moet Service Fabric de toepassing terugdraaien naar de vorige versie als deze problemen ondervindt tijdens de upgrade. Bij het starten van de upgrade (in stap 4) worden dus de volgende parameters opgegeven:
+Tot slot gaan we ook de *UpgradeFailureAction* instellen om terug te draaien. Voor deze optie moet Service Fabric de toepassing herstellen naar de vorige versie als er problemen tijdens de upgrade optreden. Daarom worden de volgende para meters opgegeven bij het starten van de upgrade (in stap 4):
 
-FailureAction = Terugdraaien
+FailureAction = terugdraaien
 
 HealthCheckStableDurationSec = 180
 
@@ -78,59 +78,59 @@ UpgradeDomainTimeoutSec = 1200
 
 UpgradeTimeout = 3000
 
-## <a name="step-4-prepare-application-for-upgrade"></a>Stap 4: Toepassing voorbereiden op upgrade
-Nu is de applicatie is gebouwd en klaar om te worden opgewaardeerd. Als u een PowerShell-venster opent als beheerder en [Get-ServiceFabricApplication typt,](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)moet dit u laten weten dat het toepassingstype 1.0.0.0 van **VisualObjects** is dat is geïmplementeerd.  
+## <a name="step-4-prepare-application-for-upgrade"></a>Stap 4: de toepassing voorbereiden voor de upgrade
+De toepassing is nu gebouwd en klaar om te worden bijgewerkt. Als u een Power shell-venster opent als beheerder en typ [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), moet u weten dat het toepassings type 1.0.0.0 van **VisualObjects** is dat is geïmplementeerd.  
 
-Het toepassingspakket wordt opgeslagen onder het volgende relatieve pad waar u de Service Fabric SDK - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug hebt ongecomprimeerd.* U moet een map "Pakket" vinden in die map, waar het toepassingspakket is opgeslagen. Controleer de tijdstempels om ervoor te zorgen dat het de nieuwste build is (het kan nodig zijn om de paden ook op de juiste manier te wijzigen).
+Het toepassings pakket wordt opgeslagen in het volgende relatieve pad waar u de Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*hebt gedecomprimeerd. U moet een map "package" in die map vinden waarin het toepassings pakket wordt opgeslagen. Controleer de tijds tempels om er zeker van te zijn dat het de meest recente build is (mogelijk moet u ook de juiste paden aanpassen).
 
-Laten we nu het bijgewerkte toepassingspakket kopiëren naar de Service Fabric ImageStore (waar de toepassingspakketten worden opgeslagen door Service Fabric). De parameter *ApplicationPackagePathInImageStore* informeert Service Fabric waar het toepassingspakket kan worden gevonden. We hebben de bijgewerkte toepassing\_in 'VisualObjects V2' met de volgende opdracht geplaatst (mogelijk moet u paden opnieuw op de juiste manier wijzigen).
+Nu gaan we het bijgewerkte toepassings pakket kopiëren naar de Service Fabric installatie kopie opslag (waar de toepassings pakketten worden opgeslagen door Service Fabric). De para meter *ApplicationPackagePathInImageStore* informeert service Fabric waar het toepassings pakket kan worden gevonden. We hebben de bijgewerkte toepassing in ' VisualObjects\_v2 ' geplaatst met de volgende opdracht (mogelijk moet u de paden op de juiste manier aanpassen).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-De volgende stap is het registreren van deze toepassing bij Service Fabric, die kan worden uitgevoerd met de opdracht [Register-ServiceFabricApplicationType:](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)
+De volgende stap bestaat uit het registreren van deze toepassing met Service Fabric, die kan worden uitgevoerd met behulp van de opdracht [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) :
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
 ```
 
-Als de vorige opdracht niet slaagt, is het waarschijnlijk dat u een heropbouw van alle services nodig hebt. Zoals vermeld in stap 2, moet u mogelijk ook uw WebService-versie bijwerken.
+Als de voor gaande opdracht niet kan worden uitgevoerd, is het waarschijnlijk dat u een heropbouw van alle services nodig hebt. Zoals vermeld in stap 2, moet u mogelijk ook uw WebService-versie bijwerken.
 
-Het wordt aanbevolen om het aanvraagpakket te verwijderen nadat de toepassing is geregistreerd.  Als u toepassingspakketten uit de afbeeldingswinkel verwijderde, worden systeembronnen vrijgemaakt.  Het bijhouden van ongebruikte toepassingspakketten verbruikt schijfopslag en leidt tot problemen met de prestaties van toepassingen.
+Het is raadzaam het toepassings pakket te verwijderen nadat de toepassing is geregistreerd.  Als u toepassings pakketten uit de installatie kopie opslag verwijdert, worden de systeem bronnen vrijgemaakt.  Het houden van ongebruikte toepassings pakketten verbruikt schijf opslag en leidt tot prestatie problemen van toepassingen.
 
 ```powershell
 Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "VisualObjects\_V2" -ImageStoreConnectionString fabric:ImageStore
 ```
 
-## <a name="step-5-start-the-application-upgrade"></a>Stap 5: De upgrade van de toepassing starten
-Nu zijn we helemaal klaar om de upgrade van de toepassing te starten met de opdracht [Start-ServiceFabricApplicationUpgrade:](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps)
+## <a name="step-5-start-the-application-upgrade"></a>Stap 5: de upgrade van de toepassing starten
+We zijn nu klaar om de upgrade van de toepassing te starten met behulp van de opdracht [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) :
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
 ```
 
 
-De naam van de toepassing is hetzelfde als in het bestand *ApplicationManifest.xml.* Service Fabric gebruikt deze naam om te bepalen welke toepassing wordt bijgewerkt. Als u de time-outs te kort instelt, u een foutbericht tegenkomen waarin het probleem wordt vermeld. Raadpleeg de sectie probleemoplossing of verhoog de time-outs.
+De naam van de toepassing is hetzelfde als beschreven in het bestand *ApplicationManifest. XML* . Service Fabric gebruikt deze naam om te bepalen welke toepassing wordt bijgewerkt. Als u instelt dat de time-outs te kort zijn, wordt er mogelijk een fout bericht met de melding dat het probleem zich voordoet. Raadpleeg de sectie probleem oplossing of verg root de time-outs.
 
-Nu, naarmate de upgrade van de toepassing vordert, u deze controleren met Behulp van Service Fabric Explorer of met de opdracht [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell: 
+Als de upgrade van de toepassing wordt uitgevoerd, kunt u deze controleren met behulp van Service Fabric Explorer of met behulp van de Power shell [-opdracht Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) : 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 ```
 
-In een paar minuten moet de status die u hebt gekregen met de vorige PowerShell-opdracht, aangeven dat alle updatedomeinen zijn bijgewerkt (voltooid). En je moet vinden dat de visuele objecten in uw browser venster zijn begonnen met draaien!
+In een paar minuten moet de status die u hebt verkregen met behulp van de voor gaande Power shell-opdracht, aangeven dat alle update domeinen zijn bijgewerkt (voltooid). Het is raadzaam om te zien of de visuele objecten in uw browser venster zijn gedraaid.
 
-U proberen te upgraden van versie 2 naar versie 3, of van versie 2 naar versie 1 als een oefening. De overgang van versie 2 naar versie 1 wordt ook beschouwd als een upgrade. Speel met time-outs en gezondheidsbeleid om jezelf ermee vertrouwd te maken. Wanneer u wordt geïmplementeerd in een Azure-cluster, moeten de parameters op de juiste manier worden ingesteld. Het is goed om de time-outs conservatief in te stellen.
+U kunt een upgrade uitvoeren van versie 2 naar versie 3 of van versie 2 naar versie 1 als oefening. Het verplaatsen van versie 2 naar versie 1 wordt ook beschouwd als een upgrade. Speel met time-outs en status beleidsregels om u vertrouwd te maken met hen. Wanneer u implementeert naar een Azure-cluster, moeten de para meters op de juiste wijze worden ingesteld. Het is handig om de time-outs op te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Het upgraden van uw toepassing met Visual Studio](service-fabric-application-upgrade-tutorial.md) leidt u door een applicatie-upgrade met Visual Studio.
+Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
 
-Bepaal hoe uw toepassing wordt bijgewerkt met behulp van [upgradeparameters.](service-fabric-application-upgrade-parameters.md)
+Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
 
-Maak uw toepassingsupgrades compatibel door te leren hoe [u gegevensserialisatie kunt](service-fabric-application-upgrade-data-serialization.md)gebruiken.
+Maak uw toepassings upgrades compatibel door te leren hoe u [gegevens serialisatie](service-fabric-application-upgrade-data-serialization.md)gebruikt.
 
-Meer informatie over het gebruik van geavanceerde functionaliteit tijdens het upgraden van uw toepassing door te verwijzen naar [geavanceerde onderwerpen.](service-fabric-application-upgrade-advanced.md)
+Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
-Los veelvoorkomende problemen op in toepassingsupgrades door te verwijzen naar de stappen in [het oplossen van toepassingsupgrades.](service-fabric-application-upgrade-troubleshooting.md)
+Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
 

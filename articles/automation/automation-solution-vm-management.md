@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106029"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187327"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen buiten kantoor uren in Azure Automation
 
@@ -148,7 +148,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 >[!NOTE]
 >De standaard waarde `External_WaitTimeForVMRetryInSeconds`voor de variabele is bijgewerkt van 600 naar 2100. 
 
-In alle scenario's, de variabelen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`en `External_ExcludeVMNames` zijn nodig voor het richten op vm's, met uitzonde ring van de lijsten met door komma's gescheiden vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw Vm's deel moeten uitmaken van de doel resource groepen voor het starten en stoppen van de acties. De logica werkt op vergelijk bare wijze als het Azure-beleid. in dat doel kunt u het abonnement of de resource groep richten en acties laten overnemen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
+In alle scenario's, de variabelen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`en `External_ExcludeVMNames` zijn nodig voor het richten op vm's, met uitzonde ring van de lijsten met door komma's gescheiden vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw Vm's deel moeten uitmaken van de doel resource groepen voor het starten en stoppen van de acties. De logica werkt op soort gelijke wijze als Azure Policy, in dat u het abonnement of de resource groep kunt bereiken en acties moet hebben overgenomen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
 
 ### <a name="schedules"></a>Planningen
 

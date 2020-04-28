@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149500"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189442"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Veelgestelde vragen over Azure vertrouwelijk computing
 
@@ -47,7 +47,7 @@ Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-
 
 1. **Wat is het verschil tussen Vm's uit de DCsv2-serie en DC-serie?**
 
-   Vm's uit de DC-serie worden uitgevoerd op oudere 6-core Intel-processors met SGX. Deze hebben minder totaal geheugen, minder EPC-geheugen (enclave pagina container) en zijn beschikbaar in minder regio's. Deze Vm's zijn alleen beschikbaar in VS Oost en Europa-West zijn verkrijgbaar in twee grootten: Standard_DC2s en Standard_DC4s. Ze gaan niet verder en kunnen alleen worden geïmplementeerd in het Marketplace-exemplaar van de [vertrouwelijk Compute DC-serie [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview)
+   Vm's uit de DC-serie worden uitgevoerd op oudere 6-core Intel-processors met Intel SGX. Deze hebben minder totaal geheugen, minder EPC-geheugen (enclave pagina container) en zijn beschikbaar in minder regio's. Deze Vm's zijn alleen beschikbaar in VS Oost en Europa-West zijn verkrijgbaar in twee grootten: Standard_DC2s en Standard_DC4s. Ze gaan niet verder en kunnen alleen worden geïmplementeerd in het Marketplace-exemplaar van de [vertrouwelijk Compute DC-serie [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview)
 
 1. **Zijn virtuele DCsv2-machines wereld wijd beschikbaar?**
 

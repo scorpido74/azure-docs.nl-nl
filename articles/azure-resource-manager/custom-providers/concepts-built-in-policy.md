@@ -1,53 +1,53 @@
 ---
-title: Koppelingen implementeren met beleid
-description: Meer informatie over het implementeren van koppelingen voor een aangepaste provider met Azure Policy-service.
+title: Koppelingen implementeren met behulp van beleid
+description: Meer informatie over het implementeren van koppelingen voor een aangepaste provider met behulp van Azure Policy-service.
 author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
-ms.openlocfilehash: 536b95eb07619d0ce2d02ec01e1f51ed52c1b5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190126"
 ---
-# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Koppelingen voor een aangepaste provider implementeren met Azure-beleid
+# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Koppelingen voor een aangepaste provider implementeren met behulp van Azure Policy
 
-Azure-beleid kan worden gebruikt om koppelingen te implementeren om resources te koppelen aan een aangepaste provider. In dit artikel beschrijven we een ingebouwd beleid dat koppelingen implementeert en hoe u dat beleid gebruiken.
+Azure-beleid kan worden gebruikt voor het implementeren van koppelingen om resources te koppelen aan een aangepaste provider. In dit artikel wordt een ingebouwd beleid beschreven waarmee koppelingen worden geïmplementeerd en hoe u dit beleid kunt gebruiken.
 
-## <a name="built-in-policy-to-deploy-associations"></a>Ingebouwd beleid voor het inzetten van koppelingen
+## <a name="built-in-policy-to-deploy-associations"></a>Ingebouwd beleid voor het implementeren van koppelingen
 
-Koppelingen voor een aangepaste provider implementeren is een ingebouwd beleid dat kan worden gebruikt om koppeling te implementeren om een resource te koppelen aan een aangepaste provider. Het beleid accepteert drie parameters:
+Het implementeren van koppelingen voor een aangepaste provider is een ingebouwd beleid dat kan worden gebruikt voor het implementeren van een koppeling om een resource te koppelen aan een aangepaste provider. Het beleid accepteert drie para meters:
 
-- Aangepaste provider-id - Deze id is de resource-id van de aangepaste provider waaraan de resources moeten worden gekoppeld.
-- Resourcetypen die moeten worden gekoppeld: deze resourcetypen zijn de lijst met resourcetypen die aan de aangepaste provider moeten worden gekoppeld. U meerdere resourcetypen koppelen aan een aangepaste provider met hetzelfde beleid.
-- Voorvoegsel voor koppelingsnaam - Deze tekenreeks is het voorvoegsel dat moet worden toegevoegd aan de naam van de koppelingsbron die wordt gemaakt. De standaardwaarde is 'GeïmplementeerdBeleid'.
+- Aangepaste provider-id: deze ID is de resource-ID van de aangepaste provider waaraan de resources moeten worden gekoppeld.
+- Resource typen die u wilt koppelen: deze resource typen zijn de lijst met resource typen die aan de aangepaste provider moeten worden gekoppeld. U kunt meerdere resource typen aan een aangepaste provider koppelen met hetzelfde beleid.
+- Voor voegsel van koppelings naam: deze teken reeks is het voor voegsel dat moet worden toegevoegd aan de naam van de koppelings bron die wordt gemaakt. De standaard waarde is ' DeployedByPolicy '.
 
-Het beleid maakt gebruik van Evaluatie DeployIfNotExists. Het wordt uitgevoerd nadat een resourceprovider een resourceaanvraag voor maken of bijwerken heeft verwerkt en de evaluatie een successtatuscode heeft geretourneerd. Daarna wordt de koppelingsbron geïmplementeerd met behulp van een sjabloonimplementatie.
-Zie Onboarding van [Azure Custom Providers-bron onboarding](./concepts-resource-onboarding.md) voor meer informatie over koppelingen
+Het beleid maakt gebruik van DeployIfNotExists-evaluatie. Het wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft afgehandeld en de evaluatie de status code geslaagd heeft geretourneerd. Daarna wordt de koppelings bron geïmplementeerd met een sjabloon implementatie.
+Zie voor meer informatie over koppelingen [Azure Custom providers resource onboarding](./concepts-resource-onboarding.md)
 
-## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Het ingebouwde beleid voor implementeren van koppelingen gebruiken 
+## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Het ingebouwde beleid voor het implementeren van koppelingen gebruiken 
 
 ### <a name="prerequisites"></a>Vereisten
-Als de aangepaste provider machtigingen nodig heeft voor het bereik van het beleid om een actie uit te voeren, werkt de beleidsimplementatie van koppelingsresources niet zonder de machtigingen te verlenen.
+Als de aangepaste provider machtigingen nodig heeft voor het bereik van het beleid om een actie uit te voeren, werkt de beleids implementatie van koppelings bron niet zonder de machtigingen toe te kennen.
 
 ### <a name="policy-assignment"></a>Beleidstoewijzing
-Als u het ingebouwde beleid wilt gebruiken, maakt u een beleidstoewijzing en wijst u de koppelingen implementeren toe voor een aangepast providerbeleid. Het beleid identificeert vervolgens niet-conforme resources en implementeert associatie voor die resources.
+Als u het ingebouwde beleid wilt gebruiken, maakt u een beleids toewijzing en wijst u de Deploy-koppelingen voor een aangepast provider beleid toe. Het beleid identificeert vervolgens niet-compatibele resources en implementeert de koppeling voor deze resources.
 
 ![Ingebouwd beleid toewijzen](media/concepts-built-in-policy/assign-builtin-policy-customprovider.png)
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Als u vragen hebt over de ontwikkeling van Azure Custom Resource Providers, probeert u deze te vragen op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Een soortgelijke vraag kan al zijn beantwoord, dus controleer eerst voor het posten. Voeg de ```azure-custom-providers``` tag toe om snel te reageren!
+Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag ```azure-custom-providers``` toe om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over het gebruik van ingebouwd beleid om koppelingen te implementeren. Zie deze artikelen voor meer informatie:
+In dit artikel vindt u informatie over het gebruik van ingebouwd beleid voor het implementeren van koppelingen. Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Concepten: Azure Custom Providers resource onboarding](./concepts-resource-onboarding.md)
-- [Zelfstudie: Resource onboarding met aangepaste providers](./tutorial-resource-onboarding.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [Snelstart: een aangepaste resourceprovider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [How to: Aangepaste acties toevoegen aan een Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [How to: Aangepaste resources toevoegen aan een Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Concepten: voor bereiding van resources in azure Custom providers](./concepts-resource-onboarding.md)
+- [Zelf studie: onboarding van resources met aangepaste providers](./tutorial-resource-onboarding.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Snelstartgids: een aangepaste resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Procedure: aangepaste acties toevoegen aan een Azure-REST API](./custom-providers-action-endpoint-how-to.md)
+- [Procedure: aangepaste resources toevoegen aan een Azure-REST API](./custom-providers-resources-endpoint-how-to.md)

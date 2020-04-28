@@ -1,60 +1,61 @@
 ---
-title: Ondersteuning voor opensourcesoftware in Azure HDInsight
-description: Microsoft Azure biedt een algemeen ondersteuningsniveau voor open-sourcetechnologieën.
+title: Open-source software ondersteuning in azure HDInsight
+description: Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f93be73af4bbbd159ffc01804617892251d96347
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772169"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195159"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Ondersteuning voor opensourcesoftware in Azure HDInsight
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Open-source software ondersteuning in azure HDInsight
 
-De Microsoft Azure HDInsight-service maakt gebruik van een omgeving van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteuningsniveau voor open-sourcetechnologieën. Zie het gedeelte **Ondersteuningsbereik** van [veelgestelde vragen](https://azure.microsoft.com/support/faq/)over het bereik van Azure Support voor meer informatie. De HDInsight-service biedt een extra ondersteuningsniveau voor ingebouwde componenten.
+De Microsoft Azure HDInsight-service gebruikt een omgeving van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën. Zie de sectie **support Scope** van [Veelgestelde vragen over ondersteuning van Azure](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteunings niveau voor ingebouwde componenten.
 
 ## <a name="components"></a>Onderdelen
 
-Er zijn twee soorten opensourcecomponenten beschikbaar in de HDInsight-service:
+Er zijn twee typen open source-onderdelen beschikbaar in de HDInsight-service:
 
-### <a name="built-in-components"></a>Ingebouwde componenten
+### <a name="built-in-components"></a>Ingebouwde onderdelen
 
-Deze componenten zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kernfunctionaliteit van het cluster. De volgende onderdelen behoren tot deze categorie:
+Deze onderdelen zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kern functionaliteit van het cluster. De volgende onderdelen maken deel uit van deze categorie:
 
-* [Apache Hadoop GAREN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Resource Manager.
-* De Hive-querytaal [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
-* [Apache Mahout.](https://mahout.apache.org/)
+* [Apache HADOOP garens](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Resource Manager.
+* De [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)van de Hive-query taal.
+* [Apache mahout](https://mahout.apache.org/).
 
-Een volledige lijst van clustercomponenten is beschikbaar in [Wat zijn de Apache Hadoop componenten en versies beschikbaar met HDInsight?](hdinsight-component-versioning.md)
+Er is een volledige lijst met cluster onderdelen beschikbaar in [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](hdinsight-component-versioning.md)
 
-### <a name="custom-components"></a>Aangepaste componenten
+### <a name="custom-components"></a>Aangepaste onderdelen
 
-Als gebruiker van het cluster u elk onderdeel dat beschikbaar is in de community of door u is gemaakt, in uw werkbelasting installeren of gebruiken.
+Als gebruiker van het cluster kunt u in uw workload elk onderdeel dat beschikbaar is in de Community installeren of gebruiken, of door u gemaakt.
 
 > [!WARNING]  
-> Onderdelen die bij het HDInsight-cluster worden geleverd, worden volledig ondersteund. Microsoft Support helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
+> Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste componenten ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Support kan het probleem mogelijk oplossen. Of ze kunnen u vragen om beschikbare kanalen in te schakelen voor de open-source technologieën waar diepgaande expertise voor die technologie wordt gevonden. Veel community sites kunnen worden gebruikt. Voorbeelden zijn [MSDN forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) en [Stack Overflow](https://stackoverflow.com).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Ondersteuning kunt het probleem mogelijk oplossen. Het kan ook zijn dat u beschik bare kanalen moet betrekken voor de open source technologieën waar diep gaande expertise voor die technologie wordt gevonden. Veel community-sites kunnen worden gebruikt. Voor beelden zijn [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) en [stack overflow](https://stackoverflow.com).
 >
-> Apache projecten hebben ook project sites op de [Apache website](https://apache.org). Een voorbeeld is [Hadoop.](https://hadoop.apache.org/)
+> Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org). Een voor beeld is [Hadoop](https://hadoop.apache.org/).
 
-## <a name="component-usage"></a>Componentgebruik
+## <a name="component-usage"></a>Onderdeel gebruik
 
-De HDInsight-service biedt verschillende manieren om aangepaste componenten te gebruiken. Hetzelfde ondersteuningsniveau is van toepassing, ongeacht hoe een component wordt gebruikt of geïnstalleerd op het cluster. In de volgende tabel worden de meest voorkomende manieren beschreven waarop aangepaste componenten worden gebruikt op HDInsight-clusters:
+De HDInsight-service biedt verschillende manieren om aangepaste onderdelen te gebruiken. Hetzelfde ondersteunings niveau geldt, ongeacht hoe een onderdeel wordt gebruikt of geïnstalleerd op het cluster. In de volgende tabel worden de meest voorkomende manieren beschreven waarop aangepaste onderdelen worden gebruikt in HDInsight-clusters:
 
 |Gebruik |Beschrijving |
 |---|---|
-|Vacature|Hadoop of andere typen taken die aangepaste componenten uitvoeren of gebruiken, kunnen in het cluster worden ingediend.|
-|Clusteraanpassing|Tijdens het maken van het cluster u aanvullende instellingen en aangepaste componenten opgeven die op de clusterknooppunten zijn geïnstalleerd.|
-|Voorbeelden|Voor populaire aangepaste componenten kunnen Microsoft en anderen voorbeelden geven van hoe deze componenten kunnen worden gebruikt op HDInsight-clusters. Deze monsters worden geleverd zonder ondersteuning.|
+|Verzen ding van taken|Hadoop of andere typen taken die aangepaste onderdelen uitvoeren of gebruiken, kunnen worden verzonden naar het cluster.|
+|Cluster aanpassing|Tijdens het maken van het cluster kunt u aanvullende instellingen en aangepaste onderdelen opgeven die op de cluster knooppunten zijn geïnstalleerd.|
+|Voorbeelden|Voor populaire aangepaste onderdelen kunnen micro soft en andere voor beelden bieden van hoe deze onderdelen kunnen worden gebruikt in HDInsight-clusters. Deze voor beelden worden zonder ondersteuning geboden.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure HDInsight-clusters aanpassen met behulp van scriptacties](./hdinsight-hadoop-customize-cluster-linux.md)
-* [Scriptactiescripts ontwikkelen voor HDInsight](hdinsight-hadoop-script-actions-linux.md)
+* [Azure HDInsight-clusters aanpassen met behulp van script acties](./hdinsight-hadoop-customize-cluster-linux.md)
+* [Script actie scripts voor HDInsight ontwikkelen](hdinsight-hadoop-script-actions-linux.md)
 * [Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie](./spark/apache-spark-python-package-installation.md)

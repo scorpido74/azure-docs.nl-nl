@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: a1674f51d5b877a1296e9a457c6acf61a507c82e
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82131389"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189800"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -51,7 +51,7 @@ Stroom logboeken zijn de bron van waarheid voor alle netwerk activiteiten in uw 
 - Logboeken worden verzameld via het Azure-platform en zijn niet van invloed op de resources van klanten of netwerk prestaties.
 - Logboeken worden geschreven in de JSON-indeling en tonen uitgaand en binnenkomend verkeer per NSG regel.
 - Elke logboek record bevat de netwerk interface (NIC) de stroom is van toepassing op 5-tuple-informatie, de verkeers beslissing & (alleen versie 2) doorvoer gegevens. Zie de _logboek indeling_ hieronder voor meer informatie.
-- Stroom logboeken hebben een Bewaar functie waarmee de logboeken automatisch kunnen worden verwijderd tot een jaar nadat ze zijn gemaakt
+- Stroom logboeken hebben een Bewaar functie waarmee de logboeken automatisch kunnen worden verwijderd tot een jaar nadat ze zijn gemaakt. **Opmerking**: bewaren is alleen beschikbaar als u gebruikmaakt van [v2-opslag accounts voor algemeen gebruik (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
 
 **Basisconcepten**
 
@@ -365,13 +365,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="troubleshooting-common-issues"></a>Algemene problemen oplossen
 
-### <a name="i-could-not-enable-nsg-flow-logs"></a>**Ik kan de NSG-stroomlogboeken niet inschakelen**
+**Ik kan de NSG-stroomlogboeken niet inschakelen**
 
 - De resource provider van **micro soft. Insights** is niet geregistreerd
 
 Als u een fout _AuthorizationFailed_ of _GatewayAuthenticationFailed_ hebt ontvangen, hebt u mogelijk de resourceprovider Microsoft Insights niet ingeschakeld in uw abonnement. [Volg de instructies](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider) om de micro soft Insights-provider in te scha kelen.
 
-### <a name="i-have-enabled-nsg-flow-logs-but-do-not-see-data-in-my-storage-account"></a>**Ik heb NSG-stroomlogboeken ingeschakeld maar ik zie de gegevens niet in mijn opslagaccount**
+**Ik heb NSG-stroomlogboeken ingeschakeld maar ik zie de gegevens niet in mijn opslagaccount**
 
 - **Configuratietijd**
 
@@ -381,21 +381,21 @@ Het kan tot vijf minuten duren voordat NSG-stroomlogboeken worden weergegeven in
 
 Soms worden er geen logboeken weergegeven omdat uw VM's niet actief zijn of dat er upstreamfilters aanwezig zijn op een App Gateway of andere apparaten die verkeer naar uw NSG's blokkeren.
 
-### <a name="i-want-to-automate-nsg-flow-logs"></a>**Ik wil NSG-stroomlogboeken automatiseren**
+**Ik wil NSG-stroomlogboeken automatiseren**
 
 Ondersteuning voor automatisering via ARM-sjablonen is momenteel niet beschikbaar voor NSG-stroomlogboeken. Lees de [aankondiging](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) van de functie voor meer informatie.
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-### <a name="what-does-nsg-flow-logs-do"></a>**Wat gebeurt er met NSG-stroom logboeken?**
+**Wat gebeurt er met NSG-stroom logboeken?**
 
 Azure-netwerk bronnen kunnen worden gecombineerd en beheerd via [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview). Met NSG-stroom Logboeken kunt u 5-tuple-stroom gegevens registreren over al het verkeer via uw Nsg's. De onbewerkte stroom logboeken worden naar een Azure Storage-account geschreven, waar ze verder kunnen worden verwerkt, geanalyseerd, opgevraagd of geëxporteerd als dat nodig is.
 
-### <a name="does-using-flow-logs-impact-my-network-latency-or-performance"></a>**Heeft stroom logboeken invloed op mijn netwerk latentie of prestaties?**
+**Heeft stroom logboeken invloed op mijn netwerk latentie of prestaties?**
 
 Gegevens van stroom logboeken worden verzameld buiten het pad van het netwerk verkeer en zijn daarom niet van invloed op de netwerk doorvoer of-latentie. U kunt stroom logboeken maken of verwijderen zonder risico van invloed op de netwerk prestaties.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>**Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een firewall?**
+**Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een firewall?**
 
 Als u een opslag account achter een firewall wilt gebruiken, moet u een uitzonde ring voor vertrouwde micro soft-Services voor toegang tot uw opslag account opgeven:
 
@@ -407,11 +407,11 @@ Als u een opslag account achter een firewall wilt gebruiken, moet u een uitzonde
 
 U kunt de Storage-logboeken na enkele minuten controleren. U ziet dan een bijgewerkte tijdstempel of een nieuw JSON-bestand.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>**Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een service-eind punt?**
+**Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een service-eind punt?**
 
 NSG-stroom logboeken zijn compatibel met Service-eind punten zonder extra configuratie. Raadpleeg de [zelf studie over het inschakelen van service-eind punten](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) in uw virtuele netwerk.
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>**Wat is het verschil tussen stroom logboeken versie 1 & 2?**
+**Wat is het verschil tussen stroom logboeken versie 1 & 2?**
 
 Stroom logboeken versie 2 introduceert het concept van de _stroom status_ & slaat informatie op over verzonden bytes en pakketten. [Meer informatie](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 

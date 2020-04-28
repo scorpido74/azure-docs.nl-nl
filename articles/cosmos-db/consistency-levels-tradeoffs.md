@@ -1,89 +1,89 @@
 ---
-title: Azure Cosmos DB-consistentie, beschikbaarheid en prestatieafwegingen
-description: Beschikbaarheid en prestatie-trade-offs voor verschillende consistentieniveaus in Azure Cosmos DB.
+title: Azure Cosmos DB consistentie, Beschik baarheid en prestatie afweging
+description: Beschik baarheid en prestaties voor diverse consistentie niveaus in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7cdaa9699b15000359c438bcc410e300415b759a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379961"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191733"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Compromissen tussen consistentie, beschikbaarheid en prestaties
 
 Gedistribueerde databases die afhankelijk zijn van replicatie voor hoge beschikbaarheid, lage latentie of beide moeten afwegingen maken. Er moet een afweging worden gemaakt tussen leesconsistentie versus beschikbaarheid, latentie en doorvoer.
 
-Azure Cosmos DB benadert gegevensconsistentie als een spectrum van keuzes. Deze aanpak omvat meer opties dan de twee uitersten van sterke en uiteindelijke consistentie. U kiezen uit vijf goed gedefinieerde niveaus op het consistentiespectrum. Van sterkste tot zwakste, de niveaus zijn:
+Azure Cosmos DB consistentie van gegevens als een breed scala aan mogelijkheden. Deze aanpak bevat meer opties dan de twee extreme, sterke en uiteindelijke consistentie. U kunt kiezen uit vijf goed gedefinieerde niveaus op het consistentie spectrum. Van het sterkst tot het zwakst zijn de niveaus:
 
 - *Sterk*
-- *Begrensde staleness*
+- *Gebonden veroudering*
 - *Sessie*
-- *Consistent voorvoegsel*
+- *Consistent voor voegsel*
 - *Mogelijk*
 
-Elk niveau biedt beschikbaarheid en prestaties afwegingen en wordt ondersteund door uitgebreide SLA's.
+Elk niveau biedt Beschik baarheid en prestatie afwegingen en wordt ondersteund door de uitgebreide Sla's.
 
-## <a name="consistency-levels-and-latency"></a>Consistentieniveaus en latentie
+## <a name="consistency-levels-and-latency"></a>Consistentie niveaus en latentie
 
-De leeslatentie voor alle consistentieniveaus is altijd gegarandeerd minder dan 10 milliseconden op het 99e percentiel. Deze leeslatentie wordt ondersteund door de SLA. De gemiddelde leeslatentie, op het 50e percentiel, is meestal 4 milliseconden of minder.
+De lees latentie voor alle consistentie niveaus is altijd gegarandeerd minder dan 10 milliseconden bij het 99e percentiel. Deze lees latentie wordt ondersteund door de SLA. De gemiddelde lees latentie, op het 50e percentiel, is doorgaans 4 milliseconden of minder.
 
-De schrijflatentie voor alle consistentieniveaus is altijd gegarandeerd minder dan 10 milliseconden op het 99e percentiel. Deze schrijflatentie wordt ondersteund door de SLA. De gemiddelde schrijflatentie, op het 50e percentiel, is meestal 5 milliseconden of minder. Azure Cosmos-accounts die meerdere regio's omvatten en met een sterke consistentie zijn geconfigureerd, vormen een uitzondering op deze garantie.
+De schrijf latentie voor alle consistentie niveaus is altijd gegarandeerd minder dan 10 milliseconden bij het 99e percentiel. Deze schrijf latentie wordt ondersteund door de SLA. De gemiddelde schrijf latentie, op het 50e percentiel, is meestal 5 milliseconden of minder. Azure Cosmos-accounts die verschillende regio's omvatten en die zijn geconfigureerd met sterke consistentie vormen een uitzonde ring op deze garantie.
 
-### <a name="write-latency-and-strong-consistency"></a>Schrijflatentie en sterke consistentie
+### <a name="write-latency-and-strong-consistency"></a>Schrijf latentie en sterke consistentie
 
-Voor Azure Cosmos-accounts die met een sterke consistentie met meer dan één regio zijn geconfigureerd, is de schrijflatentie gelijk aan twee keer de rtt (retourtijd) tussen een van de twee verste regio's, plus 10 milliseconden op het 99e percentiel. High network RTT tussen de regio's zal zich vertalen in een hogere latentie voor Cosmos DB-aanvragen, omdat een sterke consistentie een bewerking pas voltooit nadat deze is vastgelegd voor alle regio's binnen een account.
+Voor Azure Cosmos-accounts die zijn geconfigureerd met een sterke consistentie van meer dan één regio, is de schrijf latentie gelijk aan twee maal een round-trip tijd (RTT) tussen de twee versste regio's, plus 10 milliseconden in het 99e percentiel. Een hoge netwerk-RTT tussen de regio's wordt omgezet naar een hogere latentie voor Cosmos DB aanvragen omdat de sterke consistentie pas een bewerking heeft voltooid nadat u hebt gecontroleerd of deze is doorgevoerd voor alle regio's binnen een account.
 
-De exacte RTT-latentie is een functie van de afstand van de snelheid van het licht en de Azure-netwerktopologie. Azure-netwerken bieden geen latentieSLA's voor de RTT tussen twee Azure-regio's. Voor uw Azure Cosmos-account worden replicatielatencies weergegeven in de Azure-portal. U de Azure-portal gebruiken (ga naar het blade met statistieken, selecteer tabblad Consistentie) om de replicatielatencies tussen verschillende regio's die zijn gekoppeld aan uw Azure Cosmos-account te controleren.
+De exacte RTT-latentie is een functie van de snelheid van de afstand en de Azure-netwerk topologie. Azure Networking biedt geen latentie-Sla's voor de RTT tussen twee Azure-regio's. Voor uw Azure Cosmos-account worden replicatie latenties weer gegeven in de Azure Portal. U kunt de Azure Portal (Ga naar de Blade metrische gegevens, het tabblad consistentie selecteren) gebruiken om de replicatie latentie te controleren tussen verschillende regio's die zijn gekoppeld aan uw Azure Cosmos-account.
 
 > [!IMPORTANT]
-> Sterke consistentie voor accounts met regio's die meer dan 8000 mijl (8000 kilometer) beslaat, wordt standaard geblokkeerd vanwege de hoge schrijflatentie. Neem contact op met de ondersteuning om deze mogelijkheid in te schakelen.
+> Sterke consistentie voor accounts met regio's van meer dan 5000 mijl (8000 kilo meters) wordt standaard geblokkeerd als gevolg van een hoge schrijf latentie. Neem contact op met de ondersteuning om deze functie in te scha kelen.
 
-## <a name="consistency-levels-and-throughput"></a>Consistentieniveaus en doorvoer
+## <a name="consistency-levels-and-throughput"></a>Consistentie niveaus en door Voer
 
-- Voor sterke en begrensde staleness, leest worden gedaan tegen twee replica's in een vier replica set (minderheidsquorum) om consistentie garanties te bieden. Sessie, consistent voorvoegsel en uiteindelijk doen enkele replica leest. Het resultaat is dat, voor hetzelfde aantal aanvraageenheden, lees doorvoer voor sterke en begrensde staleness is de helft van de andere consistentie niveaus.
+- Voor sterke en gebonden veroudering worden Lees bewerkingen uitgevoerd voor twee replica's in een vier replicaset (minderheids quorum) om consistentie garanties te bieden. Sessie, consistent voor voegsel en uiteindelijk mogelijke lees bewerkingen met één replica. Het resultaat is dat, voor hetzelfde aantal aanvraag eenheden, de Lees doorvoer voor sterke en gebonden veroudering de helft van de andere consistentie niveaus is.
 
-- Voor een bepaald type schrijfbewerking, zoals invoegen, vervangen, upsert en verwijderen, is de schrijfdoorvoer voor aanvraageenheden identiek voor alle consistentieniveaus.
+- Voor een bepaald type schrijf bewerking, zoals invoegen, vervangen, upsert en verwijderen, is de schrijf doorvoer voor aanvraag eenheden identiek voor alle consistentie niveaus.
 
-|**Consistentieniveau**|**Quorum leest**|**Quorumschrijft**|
+|**Consistentieniveau**|**Quorum Lees bewerkingen**|**Quorum schrijf bewerkingen**|
 |--|--|--|
-|**Sterk**|Lokale minderheid|Globale meerderheid|
+|**Sterk**|Lokale minderheid|Wereld wijde meerderheid|
 |**Gebonden veroudering**|Lokale minderheid|Lokale meerderheid|
-|**Sessie**|Enkele replica (met sessietoken)|Lokale meerderheid|
+|**Sessie**|Enkele replica (met sessie token)|Lokale meerderheid|
 |**Consistent prefix**|Enkele replica|Lokale meerderheid|
 |**Mogelijk**|Enkele replica|Lokale meerderheid|
 
-## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Consistentieniveaus en gegevensduurzaamheid
+## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Consistentie niveaus en gegevens duurzaamheid
 
-Binnen een wereldwijd gedistribueerde databaseomgeving is er een direct verband tussen het consistentieniveau en de duurzaamheid van gegevens in aanwezigheid van een regio-brede uitval. Terwijl u uw bedrijfscontinuïteitsplan ontwikkelt, moet u de maximaal aanvaardbare tijd begrijpen voordat de toepassing volledig herstelt na een storende gebeurtenis. De tijd die nodig is voor een aanvraag om volledig te herstellen staat bekend als **hersteltijddoelstelling** **(RTO).** U moet ook de maximale periode van recente gegevensupdates begrijpen die de toepassing kan tolereren wanneer deze herstelt na een storende gebeurtenis. De periode van updates die u zich zou kunnen veroorloven om te verliezen staat bekend als **herstelpunt doelstelling** **(RPO).**
+Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de **beoogde herstel tijd** (**RTO**) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. De tijds periode van updates die u mogelijk wilt verliezen, is **Recovery Point Objective** (**RPO**) genoemd.
 
-In de onderstaande tabel wordt de relatie tussen consistentiemodel en gegevensduurzaamheid gedefinieerd in aanwezigheid van een regiobrede uitval. Het is belangrijk op te merken dat in een gedistribueerd systeem, zelfs met een sterke consistentie, is het onmogelijk om een gedistribueerde database met een RPO en RTO van nul als gevolg van de STELLING van het GLB. Zie [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)voor meer informatie over waarom.
+In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens duurzaamheid gedefinieerd in aanwezigheid van een regionale storing. Het is belang rijk te weten dat u in een gedistribueerd systeem, zelfs met een sterke consistentie, geen gedistribueerde data base met een RPO en RTO van nul hebt als gevolg van de CAP theorema. Zie voor meer informatie over waarom de [consistentie niveaus in azure Cosmos DB](consistency-levels.md).
 
-|**Regio(s)**|**Replicatiemodus**|**Consistentieniveau**|**RPO**|**Rto**|
+|**Regio (s)**|**Replicatie modus**|**Consistentie niveau**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Single of Multi-Master|Elk consistentieniveau|< 240 minuten|<1 week|
-|>1.|Eén master|Sessie, Consistent Voorvoegsel, Eventueel|< 15 minuten|< 15 minuten|
-|>1.|Eén master|Gebonden veroudering|*K* & *T*|< 15 minuten|
-|>1.|Eén master|Sterk|0|< 15 minuten|
-|>1.|Multi-Master|Sessie, Consistent Voorvoegsel, Eventueel|< 15 minuten|0|
-|>1.|Multi-Master|Gebonden veroudering|*K* & *T*|0|
+|1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|<1 week|
+|>1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
+|>1|Eén Master|Gebonden veroudering|*K* & *T*|< 15 minuten|
+|>1|Eén Master|Sterk|0|< 15 minuten|
+|>1|Multi-Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
+|>1|Multi-Master|Gebonden veroudering|*K* & *T*|0|
 
-*K* = Het aantal *"K"-versies* (d.w.z. updates) van een item.
+*K* = het aantal *"K"* versies (bijvoorbeeld updates) van een item.
 
-*T* = Het tijdsinterval *"T"* sinds de laatste update.
+*T* = het tijds interval *' t '* sinds de laatste update.
 
 ## <a name="strong-consistency-and-multi-master"></a>Sterke consistentie en multi-master
 
-Cosmos-accounts die zijn geconfigureerd voor multimaster kunnen niet worden geconfigureerd voor een sterke consistentie, omdat het niet mogelijk is dat een gedistribueerd systeem een RPO van nul en een RTO van nul biedt. Bovendien zijn er geen voordelen voor schrijflatentie voor het gebruik van sterke consistentie met multi-master, omdat elke schrijfervaring in een regio moet worden gerepliceerd en vastgelegd op alle geconfigureerde regio's binnen het account. Dit resulteert in dezelfde schrijflatentie als een enkel masteraccount.
+Cosmos-accounts die zijn geconfigureerd voor multi-master, kunnen niet worden geconfigureerd voor sterke consistentie omdat het niet mogelijk is dat een gedistribueerd systeem een RPO van nul en een RTO van nul levert. Daarnaast zijn er geen schrijf latentie voordelen voor het gebruik van sterke consistentie met multi-master, omdat elke schrijf bewerking in een regio moet worden gerepliceerd en doorgevoerd voor alle geconfigureerde regio's binnen het account. Dit resulteert in dezelfde schrijf latentie als één hoofd account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over wereldwijde distributie en algemene consistentieafwegingen in gedistribueerde systemen. Zie de volgende artikelen:
+Meer informatie over globale distributie en algemene consistentie-afwegingen in gedistribueerde systemen. Zie de volgende artikelen:
 
-- [Consistentie afwegingen in moderne gedistribueerde database systemen ontwerp](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [Consistentie-afwegingen in het moderne ontwerp van gedistribueerde database systemen](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Hoge beschikbaarheid](high-availability.md)
-- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [SLA voor Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

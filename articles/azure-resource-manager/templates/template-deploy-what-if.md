@@ -1,70 +1,72 @@
 ---
-title: Sjabloonimplementatie wat-als (voorbeeld)
-description: Bepaal welke wijzigingen er met uw resources gebeuren voordat u een Azure Resource Manager-sjabloon implementeert.
+title: Sjabloonimlementatie wat-als (preview)
+description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: jgao
-ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b5b19bf9d630230fbdb8cec41cc77718bbbb4585
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010185"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192379"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sjabloonimplementatie what-if-bewerking (Voorbeeld)
+# <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
-Voordat u een ARM-sjabloon (Azure Resource Manager) implementeert, u een voorbeeld bekijken van de wijzigingen die zullen plaatsvinden. Azure Resource Manager biedt de wat-als-bewerking waarmee u zien hoe resources worden gewijzigd als u de sjabloon implementeert. De wat-als-bewerking brengt geen wijzigingen aan in bestaande resources. In plaats daarvan voorspelt het de wijzigingen als de opgegeven sjabloon wordt geïmplementeerd.
+Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, wilt u mogelijk een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
 
 > [!NOTE]
-> De wat-als-bewerking is momenteel in preview. Als preview-release kunnen de resultaten soms aantonen dat een resource verandert wanneer er daadwerkelijk geen verandering plaatsvindt. We werken eraan om deze problemen te verminderen, maar we hebben uw hulp nodig. Meld deze problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)op .
+> De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
-U de wat-als-bewerking gebruiken met de PowerShell-opdrachten of REST API-bewerkingen.
+U kunt de What-if-bewerking gebruiken met de Power shell-opdrachten of de REST API bewerkingen.
 
-## <a name="install-powershell-module"></a>PowerShell-module installeren
+## <a name="install-powershell-module"></a>Power shell-module installeren
 
-Als u wat-als wilt gebruiken in PowerShell, installeert u een voorbeeldversie van de az.resources-module in de PowerShell-galerie.
+Als u wilt gebruiken wat-als in Power shell, moet u Power shell core hebben (6. x of 7. x). Als u Power shell 5. x of eerder hebt, moet u [uw versie van Power shell bijwerken](/powershell/scripting/install/installing-powershell).
+
+Nadat u hebt gecontroleerd of u de juiste versie van Power shell hebt, installeert u een preview-versie van de module AZ. resources in de Power shell Gallery.
 
 ### <a name="install-preview-version"></a>Preview-versie installeren
 
-Gebruik het als u de voorbeeldmodule wilt installeren:
+Als u de preview-module wilt installeren, gebruikt u:
 
 ```powershell
 Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
 ```
 
-### <a name="uninstall-alpha-version"></a>Alfaversie verwijderen
+### <a name="uninstall-alpha-version"></a>Alfa versie verwijderen
 
-Als u eerder een alfaversie van de wat-als-module hebt geïnstalleerd, verwijdert u de module. De alpha-versie was alleen beschikbaar voor gebruikers die zich hebben aangemeld voor een vroege preview. Als u dat voorbeeld niet hebt geïnstalleerd, u deze sectie overslaan.
+Als u eerder een alpha-versie van de What-if-module hebt geïnstalleerd, verwijdert u die module. De versie van alpha is alleen beschikbaar voor gebruikers die zich hebben geregistreerd voor een vroege preview. Als u deze preview niet hebt geïnstalleerd, kunt u deze sectie overs Laan.
 
 1. Voer PowerShell uit als Administrator
-1. Controleer uw geïnstalleerde versies van de az.resources-module.
+1. Controleer de geïnstalleerde versies van de module AZ. resources.
 
    ```powershell
    Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
    ```
 
-1. Als u een geïnstalleerde versie hebt met een versienummer in de indeling **2.x.x-alpha,** verwijdert u die versie.
+1. Als u een geïnstalleerde versie hebt met een versie nummer in de indeling **2. x. x-alfa**, verwijdert u die versie.
 
    ```powershell
    Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
    ```
 
-1. Het registreren van de wat-als-opslagplaats die u hebt gebruikt om de preview te installeren.
+1. Hef de registratie van de What-if-opslag plaats op die u hebt gebruikt om de preview-versie te installeren.
 
    ```powershell
    Unregister-PSRepository -Name WhatIfRepository
    ```
 
-Je bent klaar om wat-als te gebruiken.
+U kunt nu wat als gebruiken.
 
-## <a name="see-results"></a>Bekijk de resultaten
+## <a name="see-results"></a>Resultaten weer geven
 
-In PowerShell bevat de uitvoer kleurgecodeerde resultaten waarmee u de verschillende soorten wijzigingen zien.
+In Power shell bevat de uitvoer kleur codes die u helpen de verschillende soorten wijzigingen te zien.
 
-![Resource Manager-sjabloonimplementatie what-if-bewerking fullresourcepayload- en wijzigingstypen](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Implementatie van Resource Manager-sjabloon wat-als-bewerking fullresourcepayload en type wijziging](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-De tekstuitvoer is:
+De tekst uitvoer is:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -95,57 +97,57 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>Wat-als-opdrachten
 
-U Azure PowerShell of Azure REST API gebruiken voor de wat-als-bewerking.
+U kunt Azure PowerShell of Azure REST API gebruiken voor de What-if-bewerking.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Als u een voorbeeld van de wijzigingen wilt `-Whatif` bekijken voordat u een sjabloon implementeert, voegt u de parameter switch toe aan de opdracht implementatie.
+Als u een voor beeld van de wijzigingen wilt bekijken voordat u een sjabloon `-Whatif` implementeert, voegt u de para meter switch toe aan de implementatie opdracht.
 
-* `New-AzResourceGroupDeployment -Whatif`voor implementaties van resourcegroepen
-* `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnementsniveau
+* `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
+* `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
 
-U de `-Confirm` parameter Switch ook gebruiken om een voorbeeld van de wijzigingen te bekijken en wordt gevraagd om door te gaan met de implementatie.
+U kunt ook de `-Confirm` para meter switch gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
 
-* `New-AzResourceGroupDeployment -Confirm`voor implementaties van resourcegroepen
-* `New-AzSubscriptionDeployment -Confirm`en `New-AzDeployment -Confirm` voor implementaties op abonnementsniveau
+* `New-AzResourceGroupDeployment -Confirm`voor implementaties van resource groepen
+* `New-AzSubscriptionDeployment -Confirm`en `New-AzDeployment -Confirm` voor implementaties op abonnements niveau
 
-De voorgaande opdrachten retourneren een tekstoverzicht dat u handmatig inspecteren. Gebruik het als u een object wilt krijgen dat u programmatisch inspecteren op wijzigingen:
+De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resourcegroepen
-* `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnementsniveau
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resource groepen
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnements niveau
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
-Gebruik voor REST API:
+Voor REST API gebruikt u:
 
-* [Implementaties - Wat als](/rest/api/resources/deployments/whatif) voor implementaties van resourcegroepen
-* [Implementaties - Wat als bij abonnementsbereik](/rest/api/resources/deployments/whatifatsubscriptionscope) voor implementaties op abonnementsniveau
+* [Implementaties-What if](/rest/api/resources/deployments/whatif) voor implementaties van resource groepen
+* [Implementaties-What if op abonnements bereik](/rest/api/resources/deployments/whatifatsubscriptionscope) voor implementaties op abonnements niveau
 
-## <a name="change-types"></a>Typen wijzigen
+## <a name="change-types"></a>Wijzigings typen
 
-De wat-als-bewerking bevat zes verschillende soorten wijzigingen:
+Met de bewerking What-if wordt zes verschillende soorten wijzigingen vermeld:
 
-- **Maken:** de resource bestaat momenteel niet, maar wordt gedefinieerd in de sjabloon. De bron wordt gemaakt.
+- **Maken**: de resource bestaat momenteel niet, maar is in de sjabloon gedefinieerd. De resource wordt gemaakt.
 
-- **Verwijderen:** dit wijzigingstype is alleen van toepassing wanneer u de [volledige modus](deployment-modes.md) gebruikt voor implementatie. De resource bestaat, maar is niet gedefinieerd in de sjabloon. Met de volledige modus wordt de bron verwijderd. Alleen resources die [verwijdering in de volledige modus ondersteunen,](complete-mode-deletion.md) zijn opgenomen in dit wijzigingstype.
+- **Verwijderen**: dit wijzigings type is alleen van toepassing wanneer u de [modus volledig](deployment-modes.md) gebruikt voor de implementatie. De resource bestaat wel, maar is niet gedefinieerd in de sjabloon. In de modus volledig wordt de resource verwijderd. Alleen resources die de verwijdering van de [volledige modus ondersteunen](complete-mode-deletion.md) , zijn opgenomen in dit wijzigings type.
 
-- **Negeren:** de bron bestaat, maar is niet gedefinieerd in de sjabloon. De resource wordt niet geïmplementeerd of gewijzigd.
+- **Negeren**: de resource bestaat wel, maar is niet gedefinieerd in de sjabloon. De resource wordt niet geïmplementeerd of gewijzigd.
 
-- **NoChange:** de resource bestaat en wordt gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd, maar de eigenschappen van de resource worden niet gewijzigd. Dit wijzigingstype wordt geretourneerd wanneer `FullResourcePayloads` [ResultFormat](#result-format) is ingesteld op , wat de standaardwaarde is.
+- **Ongewijzigd**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd, maar de eigenschappen van de resource worden niet gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads`. Dit is de standaard waarde.
 
-- **Wijzigen:** de bron bestaat en wordt gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd en de eigenschappen van de resource worden gewijzigd. Dit wijzigingstype wordt geretourneerd wanneer `FullResourcePayloads` [ResultFormat](#result-format) is ingesteld op , wat de standaardwaarde is.
+- **Wijzigen**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd en de eigenschappen van de resource worden gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads`. Dit is de standaard waarde.
 
-- **Implementeren:** de resource bestaat en wordt gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd. De eigenschappen van de resource kunnen al dan niet veranderen. De bewerking retourneert dit wijzigingstype wanneer deze niet voldoende informatie heeft om te bepalen of eigenschappen worden gewijzigd. U ziet deze voorwaarde alleen wanneer `ResourceIdOnly` [ResultFormat](#result-format) is ingesteld op .
+- **Implementeren**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd. De eigenschappen van de resource kunnen of mogen niet worden gewijzigd. De bewerking retourneert dit wijzigings type wanneer het niet genoeg informatie heeft om te bepalen of eigenschappen worden gewijzigd. U ziet deze voor waarde alleen wanneer [ResultFormat](#result-format) is ingesteld `ResourceIdOnly`op.
 
-## <a name="result-format"></a>Resultaatnotatie
+## <a name="result-format"></a>Resultaat indeling
 
-U het detailniveau bepalen dat wordt geretourneerd over de voorspelde wijzigingen. Gebruik in de`New-Az*Deployment`implementatieopdrachten ( ) de parameter **-WhatIfResultFormat.** Gebruik in de programmatische`Get-Az*DeploymentWhatIf`objectopdrachten ( ) de parameter **ResultFormat.**
+U kunt het detail niveau bepalen dat wordt geretourneerd over de voorspelde wijzigingen. Gebruik in de implementatie opdrachten`New-Az*Deployment`() de para meter **-WhatIfResultFormat** . Gebruik in de programmatische object`Get-Az*DeploymentWhatIf`opdrachten () de para meter **ResultFormat** .
 
-Stel de opmaakparameter in op **FullResourcePayloads** om een lijst met bronnen te krijgen die worden gewijzigd en details over de eigenschappen die zullen worden gewijzigd. Stel de opmaakparameter in op **ResourceIdOnly** om een lijst met bronnen te krijgen die worden gewijzigd. De standaardwaarde is **FullResourcePayloads.**  
+Stel de indelings parameter in op **FullResourcePayloads** om een lijst met resources op te halen die worden gewijzigd en Details over de eigenschappen die worden gewijzigd. Stel de indelings parameter in op **ResourceIdOnly** om een lijst met resources op te halen die worden gewijzigd. De standaard waarde is **FullResourcePayloads**.  
 
-De volgende resultaten tonen de twee verschillende uitvoernotaties:
+In de volgende resultaten ziet u de twee verschillende uitvoer indelingen:
 
-- Volledige resource payloads
+- Volledige nettoladingen van resources
 
   ```powershell
   Resource and property changes are indicated with these symbols:
@@ -174,7 +176,7 @@ De volgende resultaten tonen de twee verschillende uitvoernotaties:
   Resource changes: 1 to modify.
   ```
 
-- Alleen resource-id
+- Alleen Resource-ID
 
   ```powershell
   Resource and property changes are indicated with this symbol:
@@ -193,7 +195,7 @@ De volgende resultaten tonen de twee verschillende uitvoernotaties:
 
 ### <a name="set-up-environment"></a>Omgeving instellen
 
-Om te zien hoe wat-als werkt, laten we een aantal tests uitvoeren. Implementeer eerst een [sjabloon waarmee een virtueel netwerk wordt gemaakt.](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json) U gebruikt dit virtuele netwerk om te testen hoe wijzigingen worden gerapporteerd door wat-als.
+Laten we een aantal tests uitvoeren om te zien hoe-als werkt. Implementeer eerst een [sjabloon waarmee een virtueel netwerk wordt gemaakt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). U gebruikt dit virtuele netwerk om te testen hoe wijzigingen worden gerapporteerd met wat-als.
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -204,9 +206,9 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
-### <a name="test-modification"></a>Testwijziging
+### <a name="test-modification"></a>Wijziging testen
 
-Nadat de implementatie is voltooid, u de wat-als-bewerking testen. Implementeer deze keer een [sjabloon die het virtuele netwerk wijzigt.](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) Het mist een van de originele tags, een subnet is verwijderd, en het adres voorvoegsel is veranderd.
+Nadat de implementatie is voltooid, bent u klaar om de bewerking wat als' te testen. Met deze tijd implementeert u een [sjabloon waarmee het virtuele netwerk wordt gewijzigd](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Er ontbreken een of meer originele Tags, een subnet is verwijderd en het adres voorvoegsel is gewijzigd.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -215,11 +217,11 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
 
-De wat-als-uitvoer lijkt op:
+De What-if-uitvoer ziet er ongeveer als volgt uit:
 
-![Wat-als-bewerkingsuitvoer van ResourceManager-sjabloon](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Implementatie van Resource Manager-sjabloon wat-als uitvoer bewerking](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-De tekstuitvoer is:
+De tekst uitvoer is:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -248,15 +250,15 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ```
 
-Let bovenaan de uitvoer op dat kleuren zijn gedefinieerd om het type wijzigingen aan te geven.
+Boven aan de uitvoer wordt aangegeven dat kleuren worden gedefinieerd om het type wijzigingen aan te geven.
 
-Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adresvoorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Vergeet niet dat deze wijzigingen niet daadwerkelijk zijn geïmplementeerd. U ziet een voorbeeld van de wijzigingen die plaatsvinden als u de sjabloon implementeert.
+Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adres voorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Houd er rekening mee dat deze wijzigingen niet daad werkelijk zijn geïmplementeerd. U ziet een voor beeld van de wijzigingen die zich voordoen als u de sjabloon implementeert.
 
-Sommige eigenschappen die worden vermeld als verwijderd, worden niet echt gewijzigd. Eigenschappen kunnen onjuist worden gerapporteerd als verwijderd wanneer ze niet in de sjabloon staan, maar worden tijdens de implementatie automatisch ingesteld als standaardwaarden. Dit resultaat wordt beschouwd als "ruis" in de wat-als-respons. De uiteindelijke geïmplementeerde resource heeft de waarden die zijn ingesteld voor de eigenschappen. Naarmate de wat-als-bewerking afloopt, worden deze eigenschappen uit het resultaat gefilterd.
+Sommige van de eigenschappen die worden weer gegeven als verwijderd, worden niet daad werkelijk gewijzigd. Eigenschappen kunnen niet worden gerapporteerd als verwijderd als ze niet in de sjabloon staan, maar worden tijdens de implementatie automatisch ingesteld als standaard waarden. Dit resultaat wordt als ' ruis ' beschouwd in het wat-als-antwoord. Voor de uiteindelijke geïmplementeerde resource zijn de waarden ingesteld voor de eigenschappen. Als de ' wat als'-bewerking is verouderd, worden deze eigenschappen uit het resultaat gefilterd.
 
-## <a name="programmatically-evaluate-what-if-results"></a>Programmatisch evalueren wat-als-resultaten
+## <a name="programmatically-evaluate-what-if-results"></a>Wat-als-resultaten programmatisch evalueren
 
-Laten we nu de wat-als-resultaten programmatisch evalueren door de opdracht in te stellen op een variabele.
+Nu kunnen we de What-if-resultaten programmatisch evalueren door de opdracht in te stellen op een variabele.
 
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
@@ -264,7 +266,7 @@ $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
 
-U een samenvatting van elke wijziging zien.
+U kunt een samen vatting van elke wijziging bekijken.
 
 ```azurepowershell
 foreach ($change in $results.Changes)
@@ -275,9 +277,9 @@ foreach ($change in $results.Changes)
 
 ## <a name="confirm-deletion"></a>Verwijdering bevestigen
 
-De wat-als-bewerking ondersteunt het gebruik van [de implementatiemodus](deployment-modes.md). Wanneer de modus volledig is ingesteld, worden resources die niet in de sjabloon staan, verwijderd. In het volgende voorbeeld wordt een sjabloon geïmplementeerd die geen resources heeft die in de volledige modus [zijn gedefinieerd.](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)
+De bewerking What-if ondersteunt het gebruik van de [implementatie modus](deployment-modes.md). Als deze modus is ingesteld op volt ooien, worden de resources die niet in de sjabloon staan, verwijderd. In het volgende voor beeld wordt een [sjabloon geïmplementeerd waarvoor geen resources zijn gedefinieerd](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) in de volledige modus.
 
-Als u een voorbeeld wilt bekijken `-Confirm` van wijzigingen voordat u een sjabloon implementeert, gebruikt u de parameter switch met de opdracht implementatie. Als de wijzigingen zijn zoals u had verwacht, bevestigt u dat u de implementatie wilt voltooien.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Confirm` implementeert, gebruikt u de para meter switch met de implementatie opdracht. Als de wijzigingen naar verwachting zijn, moet u bevestigen dat u de implementatie wilt volt ooien.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -287,11 +289,11 @@ New-AzResourceGroupDeployment `
   -Mode Complete
 ```
 
-Omdat er geen resources zijn gedefinieerd in de sjabloon en de implementatiemodus is ingesteld om te voltooien, wordt het virtuele netwerk verwijderd.
+Omdat er geen resources zijn gedefinieerd in de sjabloon en de implementatie modus is ingesteld op voltooid, wordt het virtuele netwerk verwijderd.
 
-![De implementatie van de wat-als-uitvoerimplementatiemodus van ResourceManager is voltooid](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
+![Implementatie van de implementatie modus voor het uitvoeren van een resource manager-sjabloon](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
 
-De tekstuitvoer is:
+De tekst uitvoer is:
 
 ```powershell
 Resource and property changes are indicated with this symbol:
@@ -318,10 +320,10 @@ Are you sure you want to execute the deployment?
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
 ```
 
-U ziet de verwachte wijzigingen en bevestigen dat u de implementatie wilt uitvoeren.
+U ziet de verwachte wijzigingen en u kunt bevestigen dat u de implementatie wilt uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u onjuiste resultaten opmerkt van de preview-release [https://aka.ms/whatifissues](https://aka.ms/whatifissues)van wat-als, meldt u de problemen op .
-- Zie [Resources implementeren met ARM-sjablonen en Azure PowerShell](deploy-powershell.md)voor het implementeren van sjablonen met Azure PowerShell.
-- Zie [Resources met ARM-sjablonen en Resource Manager REST API](deploy-rest.md)implementeren als u sjablonen met REST wilt implementeren.
+- Als u onjuiste resultaten van de preview-versie van What-if ziet, kunt u de problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)melden op.
+- Zie [resources implementeren met arm-sjablonen en Azure PowerShell](deploy-powershell.md)voor meer informatie over het implementeren van sjablonen met Azure PowerShell.
+- Zie [resources implementeren met arm-sjablonen en Resource Manager rest API](deploy-rest.md)als u sjablonen wilt implementeren met rest.

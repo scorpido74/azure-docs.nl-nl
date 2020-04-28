@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159895"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188324"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Een beveiligde App ontwikkelen voor een Azure AD-app
 ## <a name="overview"></a>Overzicht
@@ -35,7 +35,7 @@ Bij het ontwikkelen en implementeren van deze app leert u hoe u
 - Implementeer de Azure-web-app, die speciaal is geïsoleerd met toegang tot de front-end-firewall. 
 - Een Azure-toepassing gateway-exemplaar maken en configureren met een firewall die gebruikmaakt van de Rule OWASP Top 10. 
 - Versleuteling van gegevens in door Voer en op rest inschakelen met behulp van Azure-Services. 
-- Stel het Azure-beleid en Security Center in om de compliancies te evalueren. 
+- Stel Azure Policy en Security Center in om de compatibiliteit te evalueren. 
 
 Nadat u deze app hebt ontwikkeld en geïmplementeerd, hebt u de volgende voor beeld-web-app ingesteld, samen met de configuratie-en beveiligings maatregelen die worden beschreven.
 

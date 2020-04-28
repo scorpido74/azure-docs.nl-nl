@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8db477f87f344b28e8941e185c70c81d9b860a72
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149474"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187882"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
 
-Dit artikel bevat informatie over het implementeren van Azure vertrouwelijk computing virtual machines (Vm's) met Intel-processors die worden ondersteund door [Intel software extension Guard](https://software.intel.com/sgx) (Intel SGX). 
+Dit artikel bevat informatie over het implementeren van Azure vertrouwelijk computing virtual machines (Vm's) met Intel-processors die worden ondersteund door de [Intel software Guard extension](https://software.intel.com/sgx) (Intel SGX). 
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>VM-grootten van Azure vertrouwelijk computing
 
@@ -148,5 +148,5 @@ Onder **Eigenschappen**moet u ook verwijzen naar een installatie kopie onder **s
 
 In dit artikel hebt u geleerd over de kwalificaties en configuraties die nodig zijn bij het maken van een virtuele machine met vertrouwelijke computing. U kunt nu de Azure Marketplace gebruiken om een virtuele machine uit de DCsv2-serie te implementeren.
 
-[!div class=”nextstepaction”]
-[Een virtuele machine uit de DCsv2-serie implementeren in azure Marketplace](quick-create-marketplace.md)
+> [!div class="nextstepaction"]
+> [Een virtuele machine uit de DCsv2-serie implementeren in azure Marketplace](quick-create-marketplace.md)

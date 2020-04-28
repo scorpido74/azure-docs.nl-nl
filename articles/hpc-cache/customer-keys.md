@@ -1,24 +1,24 @@
 ---
-title: Door de klant manged sleutels gebruiken om gegevens te versleutelen in Azure HPC-cache
-description: Azure Key Vault gebruiken met Azure HPC-cache om toegang tot versleutelingssleutels te beheren in plaats van de standaard door Microsoft beheerde versleutelingssleutels te gebruiken
+title: Klant-beheerd-sleutels gebruiken voor het versleutelen van gegevens in de Azure HPC-cache
+description: Azure Key Vault met behulp van HPC cache van Azure gebruiken om de toegang tot de versleutelings sleutel te beheren in plaats van de standaard door micro soft beheerde versleutelings sleutels te gebruiken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: a31979763dd1ab5d8f289deef0e30cce27bb0df4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538867"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195074"
 ---
-# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Door de klant beheerde versleutelingssleutels gebruiken voor Azure HPC-cache
+# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Door de klant beheerde versleutelings sleutels gebruiken voor Azure HPC-cache
 
-U Azure Key Vault gebruiken om het eigendom van de sleutels te beheren die worden gebruikt om uw gegevens in Azure HPC-cache te versleutelen. In dit artikel wordt uitgelegd hoe u door de klant beheerde sleutels gebruiken voor versleuteling van cachegegevens.
+U kunt Azure Key Vault gebruiken om de eigendom te bepalen van de sleutels die worden gebruikt voor het versleutelen van uw gegevens in de Azure HPC-cache. In dit artikel wordt uitgelegd hoe u door de klant beheerde sleutels gebruikt voor het versleutelen van cache gegevens.
 
 > [!NOTE]
-> Alle gegevens die in Azure zijn opgeslagen, ook op de cacheschijven, worden standaard versleuteld met door Microsoft beheerde sleutels. U hoeft alleen de stappen in dit artikel te volgen als u de sleutels wilt beheren die worden gebruikt om uw gegevens te versleutelen.
+> Alle gegevens die zijn opgeslagen in azure, met inbegrip van de cache schijven, worden standaard versleuteld met behulp van door micro soft beheerde sleutels. U hoeft alleen de stappen in dit artikel uit te voeren als u de sleutels wilt beheren die worden gebruikt voor het versleutelen van uw gegevens.
 
 Deze functie is alleen beschikbaar in deze Azure-regio's:
 
@@ -26,125 +26,130 @@ Deze functie is alleen beschikbaar in deze Azure-regio's:
 * VS - zuid-centraal
 * VS - west 2
 
-Er zijn drie stappen om door de klant beheerde sleutelversleuteling voor Azure HPC-cache in te schakelen:
+Er zijn drie stappen om door de klant beheerde sleutel versleuteling in te scha kelen voor Azure HPC-cache:
 
 1. Stel een Azure Key Vault in om de sleutels op te slaan.
-1. Kies bij het maken van de Azure HPC-cache de sleutelversleuteling met de klant en geeft de sleutelkluis en -sleutelop.
-1. Nadat de cache is gemaakt, moet u deze autoriseren om toegang te krijgen tot de sleutelkluis.
+1. Wanneer u de Azure HPC-cache maakt, kiest u door de klant beheerde sleutel versleuteling en geeft u de sleutel kluis en de sleutel op die u wilt gebruiken.
+1. Nadat de cache is gemaakt, machtigt u deze voor toegang tot de sleutel kluis.
 
-Versleuteling is pas volledig ingesteld nadat u deze hebt geautoriseerd vanuit de nieuw gemaakte cache (stap 3). Dit komt omdat u de identiteit van de cache moet doorgeven aan de sleutelkluis om deze een geautoriseerde gebruiker te maken. U dit niet doen voordat u de cache maakt, omdat de identiteit pas bestaat nadat de cache is gemaakt.
+Versleuteling is pas volledig ingesteld nadat u dit hebt geautoriseerd vanuit de zojuist gemaakte cache (stap 3). Dit komt doordat de identiteit van de cache moet worden door gegeven aan de sleutel kluis om deze een geautoriseerde gebruiker te maken. U kunt dit niet doen voordat u de cache maakt, omdat de identiteit niet bestaat totdat de cache is gemaakt.
 
-Nadat u de cache hebt gemaakt, u niet meer wijzigen tussen door de klant beheerde sleutels en door Microsoft beheerde sleutels. Als uw cache echter door de klant beheerde sleutels gebruikt, u de versleutelingssleutel, de sleutelversie en de sleutelkluis indien nodig [wijzigen.](#update-key-settings)
+Nadat u de cache hebt gemaakt, kunt u niet meer wisselen tussen door de klant beheerde sleutels en door micro soft beheerde sleutels. Als uw cache echter gebruikmaakt van door de klant beheerde sleutels, kunt u de versleutelings sleutel, de sleutel versie en de sleutel kluis zo nodig [wijzigen](#update-key-settings) .
 
-## <a name="understand-key-vault-and-key-requirements"></a>Inzicht in belangrijke kluis- en belangrijke vereisten
+## <a name="understand-key-vault-and-key-requirements"></a>Informatie over sleutel kluizen en belangrijkste vereisten
 
-De sleutelkluis en -sleutel moeten aan deze vereisten voldoen om met Azure HPC-cache te kunnen werken.
+De sleutel kluis en-sleutel moeten voldoen aan deze vereisten voor gebruik met de Azure HPC-cache.
 
-Eigenschappen van sleutelkluis:
+Eigenschappen van sleutel kluis:
 
-* **Abonnement** - Gebruik hetzelfde abonnement dat wordt gebruikt voor de cache.
-* **Regio** - De sleutelkluis moet zich in dezelfde regio bevinden als de Azure HPC-cache.
-* **Prijscategorie** - Standaardlaag is voldoende voor gebruik met Azure HPC-cache.
-* **Soft delete** - Azure HPC Cache maakt soft delete mogelijk als deze nog niet is geconfigureerd op de sleutelkluis.
-* **Zuiveringsbescherming** - Zuiveringsbeveiliging moet ingeschakeld zijn.
-* **Toegangsbeleid** - Standaardinstellingen zijn voldoende.
-* **Netwerkconnectiviteit** - Azure HPC-cache moet toegang hebben tot de sleutelkluis, ongeacht de eindpuntinstellingen die u kiest.
+* **Abonnement** : gebruik hetzelfde abonnement dat wordt gebruikt voor de cache.
+* **Regio** -de sleutel kluis moet zich in dezelfde regio bevinden als de Azure HPC-cache.
+* **Prijs categorie** -de Standard-laag is voldoende voor gebruik met de Azure HPC-cache.
+* **Voorlopig verwijderen** : in azure HPC-cache is het mogelijk om de optie zacht verwijderen in te scha kelen als deze nog niet is geconfigureerd op de sleutel kluis.
+* **Beveiliging opschonen** -beveiliging opschonen moet zijn ingeschakeld.
+* **Toegangs beleid** : de standaard instellingen zijn voldoende.
+* **Netwerk connectiviteit** : Azure HPC-cache moet toegang kunnen hebben tot de sleutel kluis, ongeacht de eindpunt instellingen die u kiest.
 
-Belangrijkste eigenschappen:
+Sleutel eigenschappen:
 
-* **Sleuteltype** - RSA
-* **RSA-sleutelgrootte** - 2048
-* **Ingeschakeld** - Ja
+* **Sleutel type** -RSA
+* **RSA-sleutel grootte** -2048
+* **Ingeschakeld** : Ja
 
-Toegangsmachtigingen voor sleutelkluizen:
+Toegangs machtigingen voor de sleutel kluis:
 
-* De gebruiker die de Azure HPC-cache maakt, moet machtigingen hebben die gelijkwaardig zijn aan de [rol Key Vault-bijdrager.](../role-based-access-control/built-in-roles.md#key-vault-contributor) Dezelfde machtigingen zijn nodig voor het instellen en beheren van Azure Key Vault.
+* De gebruiker die de Azure HPC-cache maakt, moet machtigingen hebben die gelijk zijn aan de [rol van Key Vault Inzender](../role-based-access-control/built-in-roles.md#key-vault-contributor). U hebt dezelfde machtigingen nodig om Azure Key Vault in te stellen en te beheren.
 
-  Lees [Beveiligde toegang tot een sleutelkluis](../key-vault/key-vault-secure-your-key-vault.md) voor meer informatie.
+  Lees [beveiligde toegang tot een sleutel kluis](../key-vault/key-vault-secure-your-key-vault.md) voor meer informatie.
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Azure Key Vault instellen
 
-U een sleutelkluis en -sleutel instellen voordat u de cache maakt, of dit doen als onderdeel van het maken van cache. Zorg ervoor dat deze resources voldoen aan de [hierboven](#understand-key-vault-and-key-requirements)beschreven vereisten .
+U kunt een sleutel kluis en sleutel instellen voordat u de cache maakt, of als onderdeel van het maken van de cache. Zorg ervoor dat deze resources voldoen aan de [bovenstaande](#understand-key-vault-and-key-requirements)vereisten.
 
-Bij het maken van cache moet u een kluis, sleutel en sleutelversie opgeven die u wilt gebruiken voor de versleuteling van de cache.
+Bij het maken van de cache moet u een kluis, sleutel en sleutel versie opgeven die moeten worden gebruikt voor de versleuteling van de cache.
 
 Lees de [Azure Key Vault-documentatie](../key-vault/key-vault-overview.md) voor meer informatie.
 
 > [!NOTE]
-> De Azure Key Vault moet hetzelfde abonnement gebruiken en zich in dezelfde regio bevinden als de Azure HPC-cache. Gebruik een van de ondersteunde regio's die aan het begin van dit artikel worden vermeld.
+> De Azure Key Vault moeten hetzelfde abonnement gebruiken en moeten zich in dezelfde regio bevinden als de Azure HPC-cache. Gebruik een van de ondersteunde regio's die aan het begin van dit artikel worden vermeld.
 
-## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. De cache maken met door de klant beheerde sleutels ingeschakeld
+## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. de cache maken met door de klant beheerde sleutels ingeschakeld
 
-U moet de bron van de versleutelingssleutel opgeven wanneer u uw Azure HPC-cache maakt. Volg de instructies in [Een Azure HPC-cache maken](hpc-cache-create.md)en geef de sleutelkluis en -sleutel op op de pagina **Schijfversleutelingssleutels.** U een nieuwe sleutelkluis en sleutel maken tijdens het maken van cache.
+U moet de bron van de versleutelings sleutel opgeven wanneer u uw Azure HPC-cache maakt. Volg de instructies in [Create a Azure HPC cache](hpc-cache-create.md)en geef de sleutel kluis en de sleutel op op de pagina **schijf versleutelings sleutels** . U kunt een nieuwe sleutel kluis en sleutel maken tijdens het maken van de cache.
 
 > [!TIP]
-> Als de pagina **Schijfversleutelingssleutels** niet wordt weergegeven, controleert u of uw cache zich in een van de ondersteunde regio's bevindt.
+> Als de pagina **schijf versleutelings sleutels** niet wordt weer gegeven, controleert u of de cache zich in een van de ondersteunde regio's bevindt.
 
-De gebruiker die de cache maakt, moet bevoegdheden hebben die gelijk zijn aan de rol van de [sleutelkluisbijdrage](../role-based-access-control/built-in-roles.md#key-vault-contributor) of hoger.
+De gebruiker die de cache maakt, moet bevoegdheden hebben die gelijk zijn aan de [rol van Key Vault Inzender](../role-based-access-control/built-in-roles.md#key-vault-contributor) of hoger.
 
-1. Klik op de knop om privébeheersleutels in te schakelen. Nadat u deze instelling hebt gewijzigd, worden de instellingen voor de sleutelkluis weergegeven.
+1. Klik op de knop om privé beheerde sleutels in te scha kelen. Nadat u deze instelling hebt gewijzigd, worden de instellingen voor de sleutel kluis weer gegeven.
 
-1. Klik **op Een sleutelkluis selecteren** om de pagina sleutelselectie te openen. Kies of maak de sleutelkluis en sleutel voor het versleutelen van gegevens op de schijven van deze cache.
+1. Klik op **Selecteer een sleutel kluis** om de pagina sleutel selectie te openen. Kies of maak de sleutel kluis en de sleutel voor het versleutelen van gegevens op de schijven van deze cache.
 
-   Als uw Azure Key Vault niet in de lijst wordt weergegeven, controleert u de volgende vereisten:
+   Als uw Azure Key Vault niet in de lijst wordt weer gegeven, raadpleegt u deze vereisten:
 
-   * Zit de cache in hetzelfde abonnement als de sleutelkluis?
-   * Is de cache in dezelfde regio als de sleutelkluis?
-   * Is er netwerkconnectiviteit tussen de Azure-portal en de sleutelkluis?
+   * Bevindt de cache zich in hetzelfde abonnement als de sleutel kluis?
+   * Bevindt de cache zich in dezelfde regio als de sleutel kluis?
+   * Is er netwerk verbinding tussen de Azure Portal en de sleutel kluis?
 
-1. Nadat u een kluis hebt geselecteerd, selecteert u de afzonderlijke sleutel in de beschikbare opties of maakt u een nieuwe sleutel. De sleutel moet een 2048-bit RSA-toets zijn.
+1. Nadat u een kluis hebt geselecteerd, selecteert u de individuele sleutel in de beschik bare opties of maakt u een nieuwe sleutel. De sleutel moet een 2048-bits RSA-sleutel zijn.
 
-1. Geef de versie op voor de geselecteerde sleutel. Meer informatie over versiebeheer in de [Azure Key Vault-documentatie](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
+1. Geef de versie voor de geselecteerde sleutel op. Meer informatie over versie beheer vindt u in de [documentatie van Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
 
-Ga verder met de rest van de specificaties en maak de cache zoals beschreven in [Een Azure HPC-cache maken.](hpc-cache-create.md)
+Ga verder met de rest van de specificaties en maak de cache zoals beschreven in [een Azure HPC-cache maken](hpc-cache-create.md).
 
-## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Azure Key Vault-versleuteling autoriseren vanuit de cache
+## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Azure Key Vault versleuteling machtigen vanuit de cache
 <!-- header is linked from create article, update if changed -->
 
-Na enkele minuten wordt de nieuwe Azure HPC-cache weergegeven in uw Azure-portal. Ga naar de **overzichtspagina** om deze te autoriseren om toegang te krijgen tot uw Azure Key Vault en sleutelversleuteling van klanten in te schakelen. (De cache kan worden weergegeven in de lijst met resources voordat de berichten 'implementatie onderweg' worden gewist.)
+Na een paar minuten wordt de nieuwe Azure HPC-cache weer gegeven in uw Azure Portal. Ga naar de **overzichts** pagina om deze te machtigen om toegang te krijgen tot uw Azure Key Vault en door de klant beheerde sleutel versleuteling in te scha kelen.
 
-Dit proces in twee stappen is nodig omdat het exemplaar Azure HPC-cache een identiteit nodig heeft om door te geven aan de Azure Key Vault voor autorisatie. De cache-identiteit bestaat pas nadat de eerste creatiestappen zijn voltooid.
+> [!TIP]
+> De cache kan worden weer gegeven in de lijst met resources voordat de berichten over de implementatie worden gewist. Controleer de lijst met resources na een minuut of twee in plaats van te wachten op een geslaagde melding.
+
+Dit proces in twee stappen is nood zakelijk omdat de identiteit van het Azure HPC-cache-exemplaar moet worden door gegeven aan de Azure Key Vault voor autorisatie. De cache-identiteit bestaat pas nadat de eerste stappen voor het maken zijn voltooid.
 
 > [!NOTE]
-> U moet versleuteling binnen 90 minuten na het maken van de cache autoriseren. Als u deze stap niet voltooit, wordt er een time-out en fail-out van de cache. Een mislukte cache moet opnieuw worden gemaakt, deze kan niet worden opgelost.
+> U moet de versleuteling binnen 90 minuten machtigen nadat u de cache hebt gemaakt. Als u deze stap niet uitvoert, treedt er een time-out op in de cache. Een mislukte cache moet opnieuw worden gemaakt. deze kan niet worden hersteld.
 
-De cache toont de status **Wachten op sleutel**. Klik op de knop **Versleuteling inschakelen** boven aan de pagina om de cache te autoriseren om toegang te krijgen tot de opgegeven sleutelkluis.
+De cache toont de status die **op de sleutel wacht**. Klik boven aan de pagina op de knop **versleuteling inschakelen** om de cache te autoriseren voor toegang tot de opgegeven sleutel kluis.
 
-![schermafbeelding van de overzichtspagina voor cache in portal, met markeringen op de knop Versleuteling inschakelen (bovenste rij) en Status: Wachten op sleutel](media/waiting-for-key.png)
+![scherm afbeelding van de pagina met de cache-overzicht in de portal, met markeren op de knop versleuteling inschakelen (bovenste rij) en status: wachten op sleutel](media/waiting-for-key.png)
 
-Klik **op Versleuteling inschakelen** en klik vervolgens op de knop **Ja** om de cache te autoriseren om de versleutelingssleutel te gebruiken. Deze actie maakt ook soft-delete en purge bescherming (indien niet al ingeschakeld) op de sleutel kluis.
+Klik op **versleuteling inschakelen** en klik vervolgens op de knop **Ja** om de cache te autoriseren voor het gebruik van de versleutelings sleutel. Deze actie maakt ook de beveiliging van zacht verwijderen en leegmaken (als deze nog niet is ingeschakeld) op de sleutel kluis.
 
-![schermafbeelding van de overzichtspagina van de cache in portal, met een bannerbericht bovenaan dat de gebruiker vraagt om versleuteling in te schakelen door op ja te klikken](media/enable-keyvault.png)
+![scherm afbeelding van de pagina met cache-overzicht in de portal, met een banner bericht aan de bovenkant waarin de gebruiker wordt gevraagd om versleuteling in te scha kelen door op Ja te klikken](media/enable-keyvault.png)
 
-Nadat de cache toegang tot de sleutelkluis heeft gevraagd, kan deze de schijven maken en versleutelen die gegevens in de cache opslaan.
+Nadat de cache toegang tot de sleutel kluis heeft aangevraagd, kan de schijf die in de cache opgeslagen gegevens opslaat, worden gemaakt en versleuteld.
 
-Nadat u versleuteling autorisert, gaat Azure HPC Cache nog enkele minuten door om de versleutelde schijven en gerelateerde infrastructuur te maken.
+Nadat u versleuteling hebt geautoriseerd, wordt door Azure HPC cache enkele minuten van Setup uitgevoerd om de versleutelde schijven en gerelateerde infra structuur te maken.
 
-## <a name="update-key-settings"></a>Toetsinstellingen bijwerken
+## <a name="update-key-settings"></a>Sleutel instellingen bijwerken
 
-U de sleutelkluis, sleutel of sleutelversie voor uw cache wijzigen vanuit de Azure-portal. Klik op de koppeling **Versleutelingsinstellingen** in de cache om de pagina **Instellingen voor klanttoetsen** te openen. (U een cache tussen door de klant beheerde sleutels en door het systeem beheerde sleutels niet wijzigen.)
+U kunt de sleutel kluis, de sleutel of de sleutel versie voor uw cache wijzigen via de Azure Portal. Klik op de koppeling naar de **versleutelings** instellingen van de cache om de pagina **instellingen voor klant sleutels** te openen.
 
-![schermafbeelding van de pagina 'Instellingen voor klantgegevens' bereikt door te klikken op Instellingen > Versleuteling vanaf de cachepagina in de Azure-portal](media/change-key-click.png)
+U kunt geen cache wijzigen tussen door de klant beheerde sleutels en sleutels die door het systeem worden beheerd.
 
-Klik **op** de koppeling Sleutel wijzigen en klik vervolgens op **De sleutelkluis, -sleutel of -versie wijzigen** om de sleutelkiezer te openen.
+![scherm opname van de pagina instellingen voor klant sleutels, bereikt door te klikken op instellingen > versleuteling van de pagina cache in de Azure Portal](media/change-key-click.png)
 
-![schermafbeelding van de pagina 'Sleutelkluis selecteren uit Azure Key Vault' met drie vervolgkeuzepunten om sleutelkluis, sleutel en versie te kiezen](media/select-new-key.png)
+Klik op de koppeling **sleutel wijzigen** en klik vervolgens op **Wijzig de sleutel kluis, de sleutel of de versie** om de sleutel kiezer te openen.
 
-Sleutelkluizen in hetzelfde abonnement en dezelfde regio als deze cache worden weergegeven in de lijst.
+![scherm opname van de pagina ' Selecteer de sleutel op de Azure Key Vault ' met drie vervolg keuzelijsten om de sleutel kluis, sleutel en versie te kiezen](media/select-new-key.png)
 
-Nadat u de nieuwe versleutelingssleutelwaarden hebt gekozen, klikt u op **Selecteren**. Er verschijnt een bevestigingspagina met de nieuwe waarden. Klik **op Opslaan** om de selectie af te ronden.
+Sleutel kluizen in hetzelfde abonnement en dezelfde regio als deze cache worden weer gegeven in de lijst.
 
-![schermafbeelding van bevestigingspagina met knop Opslaan linksboven](media/save-key-settings.png)
+Nadat u de nieuwe waarden voor de versleutelings sleutel hebt gekozen, klikt u op **selecteren**. Er wordt een bevestigings pagina met de nieuwe waarden weer gegeven. Klik op **Opslaan** om de selectie te volt ooien.
 
-## <a name="read-more-about-customer-managed-keys-in-azure"></a>Lees meer over door klanten beheerde sleutels in Azure
+![scherm afbeelding van de bevestigings pagina met de knop Opslaan linksboven](media/save-key-settings.png)
 
-In deze artikelen wordt meer uitgelegd over het gebruik van Azure Key Vault en door de klant beheerde sleutels om gegevens in Azure te versleutelen:
+## <a name="read-more-about-customer-managed-keys-in-azure"></a>Meer informatie over door de klant beheerde sleutels in azure
 
-* [Overzicht van Azure-opslagversleuteling](../storage/common/storage-service-encryption.md)
-* [Schijfversleuteling met door de klant beheerde sleutels](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) - Documentatie voor het gebruik van Azure Key Vault en beheerde schijven, wat vergelijkbaar is met het proces dat wordt gebruikt met Azure HPC-cache
+In deze artikelen wordt uitgelegd hoe u Azure Key Vault en door de klant beheerde sleutels gebruikt voor het versleutelen van gegevens in Azure:
+
+* [Overzicht van Azure Storage-versleuteling](../storage/common/storage-service-encryption.md)
+* [Schijf versleuteling met door de klant beheerde sleutels](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) : Documentatie voor het gebruik van Azure Key Vault met Managed disks, een soortgelijk scenario voor de HPC-cache van Azure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de Azure HPC-cache en geautoriseerde Key Vault-gebaseerde versleuteling hebt gemaakt, u uw cache blijven instellen door deze toegang te geven tot uw gegevensbronnen.
+Nadat u de Azure HPC-cache en geautoriseerde versleuteling op basis van Key Vault hebt gemaakt, kunt u door gaan met het instellen van uw cache door deze toegang te geven tot uw gegevens bronnen.
 
 * [Opslagdoelen toevoegen](hpc-cache-add-storage.md)
