@@ -1,6 +1,6 @@
 ---
-title: Een web-API aanroepen vanuit een daemon-app - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het bouwen van een daemon-app die web-API's aanroept
+title: Een web-API aanroepen vanuit een daemon-app-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885443"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-app die web-API's aanroept - een web-API oproepen vanuit de app
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-app die web-Api's aanroept-een web-API van de app aanroepen
 
-.NET daemon-apps kunnen een web-API aanroepen. .NET daemon apps kunnen ook verschillende vooraf goedgekeurde web API's aanroepen.
+.NET daemon-apps kunnen een web-API aanroepen. .NET daemon-apps kunnen ook verschillende vooraf goedgekeurde Web-Api's aanroepen.
 
 ## <a name="calling-a-web-api-from-a-daemon-application"></a>Een web-API aanroepen vanuit een daemon-toepassing
 
-U het token als u het token gebruiken om een API aan te roepen:
+Hier volgt een beschrijving van het gebruik van het token voor het aanroepen van een API:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -61,25 +61,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>Meerdere API's bellen
+## <a name="calling-several-apis"></a>Meerdere Api's aanroepen
 
-Voor daemon-apps moeten de web-API's die u aanroept vooraf zijn goedgekeurd. Er is geen incrementele toestemming met daemon apps. (Er is geen interactie met de gebruiker.) De tenantbeheerder moet vooraf toestemming geven voor de toepassing en alle API-machtigingen. Als u meerdere API's wilt aanroepen, moet u voor `AcquireTokenForClient`elke resource een token aanschaffen, telkens wanneer u aanroept. MSAL gebruikt de cache van het toepassingstoken om onnodige serviceoproepen te voorkomen.
+Voor daemon-apps moet u de Web-Api's die u aanroept vooraf moeten worden goedgekeurd. Er is geen incrementele toestemming met daemon-apps. (Er is geen tussen komst van de gebruiker.) De Tenant beheerder moet vooraf toestemming geven voor de toepassing en alle API-machtigingen. Als u verschillende Api's wilt aanroepen, moet u voor elke resource een token verkrijgen, elke keer dat u `AcquireTokenForClient`aanroept. MSAL maakt gebruik van de toepassings token cache om onnodige service aanroepen te voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon app - overgaan naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Daemon-app-verplaatsen naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon app - overgaan naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Daemon-app-verplaatsen naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon app - overgaan naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Daemon-app-verplaatsen naar productie](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

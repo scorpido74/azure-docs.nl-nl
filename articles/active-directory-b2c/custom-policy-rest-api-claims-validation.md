@@ -1,7 +1,7 @@
 ---
-title: REST API-claims worden uitgewisseld als validatie
+title: Claim uitwisseling REST API als validatie
 titleSuffix: Azure AD B2C
-description: Een walkthrough voor het maken van een Azure AD B2C-gebruikersreis die samenwerkt met RESTful-services.
+description: Een overzicht van het maken van een Azure AD B2C gebruikers traject dat communiceert met de REST-services.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80330826"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Walkthrough: Integratie van REST API-claims uitwisselingen in uw Azure AD B2C-gebruikersreis om gebruikersinvoer te valideren
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Walkthrough: Integreer REST API claims in uw Azure AD B2C gebruikers traject om gebruikers invoer te valideren
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Met het Identity Experience Framework (IEF) dat ten grondslag ligt aan Azure Active Directory B2C (Azure AD B2C), kunnen identiteitsontwikkelaars een interactie met een RESTful API integreren in een gebruikersreis.  Aan het einde van deze walkthrough u een Azure AD B2C-gebruikersreis maken die samenwerkt met [RESTful-services](custom-policy-rest-api-intro.md) om gebruikersinvoer te valideren.
+Met het Identity experience Framework (IEF) dat is onderpinnen Azure Active Directory B2C (Azure AD B2C) kunnen ontwikkel aars van identiteiten een interactie met een REST-API in een gebruikers traject integreren.  Aan het einde van dit overzicht kunt u een Azure AD B2C gebruikers traject maken dat communiceert met de [rest-Services](custom-policy-rest-api-intro.md) om gebruikers invoer te valideren.
 
-In dit scenario voegen we gebruikers de mogelijkheid toe om een loyaliteitsnummer in te voeren in de aanmeldingspagina van Azure AD B2C. We valideren of deze combinatie van e-mail en loyaliteitsnummer is toegewezen aan een promotiecode door deze gegevens naar een REST API te sturen. Als de REST API een promotiecode voor deze gebruiker vindt, wordt deze teruggestuurd naar Azure AD B2C. Ten slotte wordt de promotiecode ingevoegd in de tokenclaims voor de toepassing om te consumeren.
+In dit scenario voegen we de mogelijkheid toe om een loyaliteits nummer in te voeren op de registratie pagina van Azure AD B2C. We valideren of deze combi natie van e-mail en loyaliteits nummer is toegewezen aan een promotie code door deze gegevens naar een REST API te verzenden. Als de REST API een promotie code voor deze gebruiker vindt, wordt deze teruggestuurd naar Azure AD B2C. Ten slotte wordt de promotie code ingevoegd in de token claims die de toepassing moet gebruiken.
 
-U de interactie ook ontwerpen als een orkestratiestap. Dit is geschikt wanneer de REST API geen gegevens op het scherm validert en altijd claims retourneert. Zie [Walkthrough: Rest API-claims uitwisselingen integreren in uw Azure AD B2C-gebruikersreis als een orchestration-stap.](custom-policy-rest-api-claims-exchange.md)
+U kunt de interactie ook als een Orchestration-stap ontwerpen. Dit is geschikt wanneer de REST API geen gegevens op het scherm valideert en altijd claims retourneert. Zie voor meer informatie [Walkthrough: integreer rest API claim uitwisselingen in uw Azure AD B2C gebruikers traject als een](custom-policy-rest-api-claims-exchange.md)indelings stap.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de stappen uit in [Aan de slag met aangepast beleid](custom-policy-get-started.md). U moet een werkend aangepast beleid hebben voor aanmelden en aanmelden met lokale accounts.
-- Meer informatie over het [integreren van REST API-claimsuitwisselingen in uw aangepaste Azure AD B2C-beleid](custom-policy-rest-api-intro.md).
+- Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.md). U moet beschikken over een werkend aangepast beleid voor het aanmelden en aanmelden met lokale accounts.
+- Meer informatie over het [integreren van rest API claim uitwisselingen in uw aangepaste beleid voor Azure AD B2C](custom-policy-rest-api-intro.md).
 
-## <a name="prepare-a-rest-api-endpoint"></a>Een REST API-eindpunt voorbereiden
+## <a name="prepare-a-rest-api-endpoint"></a>Een REST API-eind punt voorbereiden
 
-Voor deze walkthrough moet u een REST-API hebben die valideert of een e-mailadres is geregistreerd in uw back-endsysteem met een loyaliteits-ID. Indien geregistreerd, moet de REST API een registratiepromotiecode retourneren, die de klant kan gebruiken om goederen binnen uw toepassing te kopen. Anders moet de REST-API een HTTP 409-foutbericht retourneren: 'Loyalty ID '{loyalty ID}' is niet gekoppeld aan '{email}' e-mailadres".
+Voor dit scenario moet u een REST API hebben dat valideert of een e-mail adres in uw back-end-systeem is geregistreerd met een loyaliteits-ID. Als deze is geregistreerd, moet de REST API een code voor de registratie promotie retour neren die de klant kan gebruiken voor het kopen van goederen in uw toepassing. Anders moet de REST API een HTTP 409-fout bericht retour neren: de loyale ID {getrouwheids-ID} is niet gekoppeld aan het e-mail adres {email}.
 
-De volgende JSON-code illustreert de gegevens die Azure AD B2C naar uw REST API-eindpunt verzendt. 
+De volgende JSON-code illustreert de gegevens Azure AD B2C naar uw REST API-eind punt worden verzonden. 
 
 ```json
 {
@@ -47,7 +47,7 @@ De volgende JSON-code illustreert de gegevens die Azure AD B2C naar uw REST API-
 }
 ```
 
-Zodra uw REST API de gegevens valideert, moet deze een HTTP 200 (Ok) retourneren met de volgende JSON-gegevens:
+Zodra uw REST API de gegevens valideert, moet deze een HTTP 200 (OK) retour neren met de volgende JSON-gegevens:
 
 ```json
 {
@@ -55,7 +55,7 @@ Zodra uw REST API de gegevens valideert, moet deze een HTTP 200 (Ok) retourneren
 }
 ```
 
-Als de validatie is mislukt, moet de REST-API een `userMessage` HTTP 409 (Conflict) retourneren met het JSON-element. Het IEF `userMessage` verwacht de claim dat de REST API terugkeert. Deze claim wordt als een tekenreeks aan de gebruiker gepresenteerd als de validatie mislukt.
+Als de validatie is mislukt, moet de REST API een HTTP 409 (conflict) retour neren met `userMessage` het JSON-element. De IEF verwacht de `userMessage` claim dat de rest API retourneert. Deze claim wordt weer gegeven als een teken reeks voor de gebruiker als de validatie mislukt.
 
 ```json
 {
@@ -65,16 +65,16 @@ Als de validatie is mislukt, moet de REST-API een `userMessage` HTTP 409 (Confli
 }
 ```
 
-De instelling van het REST API-eindpunt valt buiten het bereik van dit artikel. We hebben een voorbeeld van [Azure-functies](https://docs.microsoft.com/azure/azure-functions/functions-reference) gemaakt. U hebt toegang tot de volledige Azure-functiecode op [GitHub.](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)
+De installatie van het REST API-eind punt valt buiten het bereik van dit artikel. Er is een [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) -voor beeld gemaakt. U hebt toegang tot de volledige Azure-functie code op [github](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
 
 ## <a name="define-claims"></a>Claims definiëren
 
-Een claim biedt tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsuitvoering. U claims declareren binnen de sectie [claimschema.](claimsschema.md) 
+Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. U kunt claims declareren binnen de sectie [claim schema](claimsschema.md) . 
 
-1. Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccounts/` </em>
-1. Zoek naar het element [Bouwstenen.](buildingblocks.md) Als het element niet bestaat, voeg je het toe.
-1. Zoek het element [ClaimSchema.](claimsschema.md) Als het element niet bestaat, voeg je het toe.
-1. Voeg de volgende claims toe aan het element **ClaimsSchema.**  
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
+1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
+1. Voeg de volgende claims toe aan het **ClaimsSchema** -element.  
 
 ```xml
 <ClaimType Id="loyaltyId">
@@ -93,9 +93,9 @@ Een claim biedt tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsu
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Het technische profiel van de RESTful API configureren 
+## <a name="configure-the-restful-api-technical-profile"></a>Het technische profiel van de REST API configureren 
 
-Een [rustgevend technisch profiel](restful-technical-profile.md) biedt ondersteuning voor interfacing met uw eigen RESTful service. Azure AD B2C verzendt gegevens naar de `InputClaims` RESTful-service `OutputClaims` in een verzameling en ontvangt gegevens terug in een verzameling. Zoek het element **ClaimsProviders** en voeg als volgt een nieuwe claimprovider toe:
+Een onderliggend [technisch profiel](restful-technical-profile.md) biedt ondersteuning voor uw eigen rest-service. Azure AD B2C verzendt gegevens naar de REST-service in een `InputClaims` verzameling en ontvangt gegevens terug in een `OutputClaims` verzameling. Zoek het element **ClaimsProviders** en voeg als volgt een nieuwe claim provider toe:
 
 ```xml
 <ClaimsProvider>
@@ -128,17 +128,17 @@ Een [rustgevend technisch profiel](restful-technical-profile.md) biedt ondersteu
 </ClaimsProvider>
 ```
 
-In dit voorbeeld `userLanguage` wordt deze naar de `lang` REST-service gestuurd zoals binnen de JSON-payload. De waarde `userLanguage` van de claim bevat de huidige gebruikersnaam. Zie [claimresolver](claim-resolver-overview.md)voor meer informatie .
+In dit voor beeld wordt `userLanguage` de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
 
-De bovenstaande `AuthenticationType` `AllowInsecureAuthInProduction` opmerkingen en geef wijzigingen op die u moet aanbrengen wanneer u naar een productieomgeving gaat. Zie [Secure RESTful API](secure-rest-api.md)voor meer informatie over het beveiligen van uw RESTful API's voor productie.
+De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Zie [Secure rest API](secure-rest-api.md)(Engelstalig) voor meer informatie over het beveiligen van uw rest-api's voor productie.
 
-## <a name="validate-the-user-input"></a>De gebruikersinvoer valideren
+## <a name="validate-the-user-input"></a>De gebruikers invoer valideren
 
-Om het loyaliteitsnummer van de gebruiker te verkrijgen tijdens het aanmelden, moet u de gebruiker toestaan deze gegevens op het scherm in te voeren. Voeg de **loyaliteitsclaim** toe aan de aanmeldingspagina door deze toe te `OutputClaims` voegen aan het element van de bestaande aanmeldingssectie voor technische profielen. Geef de volledige lijst met uitvoerclaims op om de volgorde te bepalen waarin de claims op het scherm worden weergegeven.  
+Als u het loyaliteits nummer van de gebruiker tijdens het aanmelden wilt ophalen, moet u de gebruiker in staat stellen deze gegevens in te voeren op het scherm. Voeg de **loyaltyId** -uitvoer claim toe aan de registratie pagina door deze toe te voegen aan het element van `OutputClaims` de bestaande technische profiel registratie sectie. Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm.  
 
-Voeg de referentie van het validatietechnische profiel toe `REST-ValidateProfile`aan het technische profiel van de aanmelding, dat de aanroep de . Het nieuwe validatietechnische profiel wordt toegevoegd `<ValidationTechnicalProfiles>` aan de bovenkant van de verzameling die is gedefinieerd in het basisbeleid. Dit gedrag betekent dat Azure AD B2C pas na succesvolle validatie verder gaat met het maken van het account in de map.   
+Voeg de validatie technische profiel verwijzing toe aan het technische profiel voor aanmelden, waarmee de `REST-ValidateProfile`wordt aangeroepen. Het nieuwe technische profiel voor validatie wordt toegevoegd aan de bovenkant van de `<ValidationTechnicalProfiles>` verzameling die in het basis beleid is gedefinieerd. Dit gedrag houdt in dat u na een geslaagde validatie de Azure AD B2C verplaatst om het account in de Directory te maken.   
 
-1. Zoek het element **Claimproviders.** Voeg als volgt een nieuwe claimprovider toe:
+1. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe claim provider toe:
 
     ```xml
     <ClaimsProvider>
@@ -190,9 +190,9 @@ Voeg de referentie van het validatietechnische profiel toe `REST-ValidateProfile
     </ClaimsProvider>
     ```
 
-## <a name="include-a-claim-in-the-token"></a>Een claim opnemen in het token 
+## <a name="include-a-claim-in-the-token"></a>Een claim in het token toevoegen 
 
-Als u de claim van de promotiecode wilt terugsturen <em> `SocialAndLocalAccounts/` </em> naar de toepassing van de relying party, voegt u een uitvoerclaim toe aan het bestand. Met de uitvoerclaim kan de claim na een succesvolle gebruikersreis aan het token worden toegevoegd en wordt deze naar de toepassing verzonden. Wijzig het technische profielelement binnen de sectie `promoCode` relying party om de claim als uitvoer claim toe te voegen.
+Voeg een uitvoer claim toe aan het <em> `SocialAndLocalAccounts/` </em> bestand om de claim code terug te sturen naar de Relying Party-toepassing. Met de uitvoer claim kan de claim worden toegevoegd aan het token na een geslaagde gebruikers reis, waarna deze wordt verzonden naar de toepassing. Wijzig het technische profiel element in het gedeelte Relying Party om de `promoCode` als uitvoer claim toe te voegen.
  
 ```xml
 <RelyingParty>
@@ -217,17 +217,17 @@ Als u de claim van de promotiecode wilt terugsturen <em> `SocialAndLocalAccounts
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw Azure AD-tenant bevat.
-1. Kies **Alle services** in de linkerbovenhoek van de Azure-portal en zoek en selecteer **app-registraties**.
-1. Selecteer **Identity Experience Framework**.
-1. Selecteer **Aangepast beleid uploaden**en upload vervolgens de beleidsbestanden die u hebt gewijzigd: *TrustFrameworkExtensions.xml*en *SignUpOrSignin.xml*. 
-1. Selecteer het aanmeldings- of aanmeldingsbeleid dat u hebt geüpload en klik op **nu uitvoeren.**
-1. Je moet je kunnen aanmelden met een e-mailadres.
-1. Klik op de link **Aanmelden nu.**
-1. Typ 1234 in **de uw loyaliteits-id**en klik op **Doorgaan**. Op dit punt moet u een validatiefoutbericht ontvangen.
-1. Wijzig in een andere waarde en klik op **Doorgaan**.
-1. Het token dat naar uw `promoCode` aanvraag wordt teruggestuurd, bevat de claim.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
+1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+1. Selecteer een **Framework voor identiteits ervaring**.
+1. Selecteer **aangepast beleid uploaden**en upload vervolgens de beleids bestanden die u hebt gewijzigd: *TrustFrameworkExtensions. XML*en *SignUpOrSignin. XML*. 
+1. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
+1. U moet zich kunnen aanmelden met een e-mail adres.
+1. Klik op de koppeling **nu registreren** .
+1. Typ 1234 in de **loyaliteits-id**en klik op **door gaan**. Op dit moment moet u een validatie fout bericht ontvangen.
+1. Wijzig naar een andere waarde en klik op **door gaan**.
+1. Het token dat teruggestuurd naar uw toepassing bevat `promoCode` de claim.
 
 ```json
 {
@@ -255,8 +255,8 @@ Als u de claim van de promotiecode wilt terugsturen <em> `SocialAndLocalAccounts
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over het beveiligen van uw API's:
+Raadpleeg de volgende artikelen voor meer informatie over het beveiligen van uw Api's:
 
-- [Walkthrough: Integratie van REST API-claims uitwisselingen in uw Azure AD B2C-gebruikersreis als een orchestration-stap](custom-policy-rest-api-claims-exchange.md)
-- [Beveilig uw RESTful API](secure-rest-api.md)
-- [Referentie: RESTful technisch profiel](restful-technical-profile.md)
+- [Walkthrough: Integreer REST API claim uitwisselingen in uw Azure AD B2C gebruikers traject als een indelings stap](custom-policy-rest-api-claims-exchange.md)
+- [De REST-API beveiligen](secure-rest-api.md)
+- [Referentie: technisch profiel (REST)](restful-technical-profile.md)

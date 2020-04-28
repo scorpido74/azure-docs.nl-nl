@@ -1,6 +1,6 @@
 ---
 title: Releaseopmerkingen voor Data Management Gateway
-description: Data Management Gateway tory release notes
+description: Opmerkingen bij de release van Data Management Gateway Tory
 services: data-factory
 author: nabhishek
 manager: anandsub
@@ -12,125 +12,125 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80065001"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Releaseopmerkingen voor Data Management Gateway
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [zelf gehoste runtime voor integratie in V2.](../create-self-hosted-integration-runtime.md)
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [zelf-hostende Integration runtime in v2](../create-self-hosted-integration-runtime.md).
 
-Een van de uitdagingen voor moderne data-integratie is het verplaatsen van data van en naar on-premises naar cloud. Data Factory maakt deze integratie met Data Management Gateway, een agent die u on-premises installeren om hybride gegevensverkeer mogelijk te maken.
+Een van de uitdagingen voor moderne gegevens integratie is het verplaatsen van gegevens naar en van on-premises naar de Cloud. Data Factory maakt deze integratie met Data Management Gateway, een agent die u on-premises kunt installeren om hybride gegevens verplaatsing in te scha kelen.
 
-Zie de volgende artikelen voor gedetailleerde informatie over Data Management Gateway en hoe u deze gebruiken:
+Raadpleeg de volgende artikelen voor gedetailleerde informatie over Data Management Gateway en hoe u deze kunt gebruiken:
 
 *  [Gegevensbeheergateway](data-factory-data-management-gateway.md)
-*  [Gegevens verplaatsen tussen on-premises en cloud met Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
+*  [Gegevens verplaatsen tussen on-premises en de Cloud met behulp van Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## <a name="current-version"></a>HUIDIGE VERSIE 
-We houden de Release notes hier niet meer bij. Ontvang [hier](https://go.microsoft.com/fwlink/?linkid=853077) de laatste releasenotes
+De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go.microsoft.com/fwlink/?linkid=853077) de nieuwste opmerkingen bij de release
 
 
 
 
 ## <a name="earlier-versions"></a>Eerdere versies
 ## <a name="21063477"></a>2.10.6347.7
-### <a name="enhancements-"></a>Verbeteringen-
-- U DNS-vermeldingen toevoegen aan de servicebus op de witte lijst in plaats van alle Azure IP-adressen van uw firewall op de witte lijst te krijgen (indien nodig). U vindt de betreffende DNS-vermelding op Azure-portal (Data Factory -> 'Author and Deploy' -> 'Gateways' -> 'serviceUrls' (in JSON)
-- HDFS-connector ondersteunt nu zelfondertekende openbare certificaten door tls-validatie over te slaan.
-- Opgelost: Probleem met gateway offline tijdens de update (vanwege klokscheefheid)
+### <a name="enhancements-"></a>Opties
+- U kunt DNS-vermeldingen toevoegen aan white list service bus in plaats van alle Azure IP-adressen van uw firewall te white list (indien nodig). U kunt de betreffende DNS-vermelding vinden op Azure Portal (Data Factory-> ' Author and Deploy '-> gateways '-> ' serviceUrls ' (in JSON)
+- HDFS connector ondersteunt nu een zelfondertekend openbaar certificaat door u te laten TLS-validatie overs Laan.
+- Opgelost: probleem met de gateway offline tijdens het bijwerken (vanwege een klok scheefheid)
 
 
 ## <a name="2963132"></a>2.9.6313.2
-### <a name="enhancements-"></a>Verbeteringen-
--   U DNS-vermeldingen toevoegen aan servicebus op de witte lijst in plaats van alle Azure IP-adressen van uw firewall op de witte lijst te krijgen (indien nodig). Hier vindt u meer informatie.
--   U nu gegevens kopiëren naar/van een enkele blokblob tot 4,75 TB, wat de maximaal ondersteunde grootte van blokblob is. (eerdere limiet was 195 GB).
--   Opgelost: probleem met het geheugen tijdens het uitpakken van verschillende kleine bestanden tijdens kopieeractiviteit.
--   Opgelost: Indexeer het probleem buiten bereik tijdens het kopiëren van Document DB naar een on-premises SQL Server met idempotentiefunctie.
--   Opgelost: SQL-cleanup script werkt niet met on-premises SQL Server van Wizard Kopiëren.
--   Opgelost: Kolomnaam met spatie aan het einde werkt niet in kopieeractiviteit.
+### <a name="enhancements-"></a>Opties
+-   U kunt DNS-vermeldingen toevoegen aan white list Service Bus in plaats van alle IP-adressen van Azure uit uw firewall te white list (indien nodig). Hier vindt u meer informatie.
+-   U kunt nu gegevens kopiëren van/naar een enkele blok-BLOB tot 4,75 TB. Dit is de Maxi maal ondersteunde grootte van een blok-blob. (eerdere limiet is 195 GB).
+-   Opgelost: onvoldoende geheugen bij het uitgepakt van verschillende kleine bestanden tijdens de Kopieer activiteit.
+-   Opgelost: probleem bij het kopiëren van het bereik van de document database naar een on-premises SQL Server met de functie idempotentie.
+-   Opgelost: SQL Cleanup script werkt niet met on-premises SQL Server van de wizard kopiëren.
+-   Fixed: de naam van de kolom met de ruimte aan het einde werkt niet in de Kopieer activiteit.
 
 ## <a name="28662833"></a>2.8.66283.3
-### <a name="enhancements-"></a>Verbeteringen-
-- Opgelost: Probleem met ontbrekende referenties bij opnieuw opstarten gatewaymachine.
-- Opgelost: probleem met registratie tijdens gatewayherstel met behulp van een back-upbestand.
+### <a name="enhancements-"></a>Opties
+- Opgelost: probleem met ontbrekende referenties op de gateway computer opnieuw opstarten.
+- Opgelost: probleem met registratie tijdens het herstellen van de gateway met behulp van een back-upbestand.
 
 
 ## <a name="2762401"></a>2.7.6240.1
-### <a name="enhancements-"></a>Verbeteringen-
-- Opgelost: Onjuist lezen van decimale null-waarde van Oracle als bron.
+### <a name="enhancements-"></a>Opties
+- Fixed: onjuiste Lees van de decimale waarde van Oracle als bron.
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>Nieuwe functies
-- Klanten kunnen feedback geven over de registratieervaring van gateways.
-- Een nieuwe compressieindeling ondersteunen: ZIP (Leeglopen)
+- Klanten kunnen feedback geven over de registratie van de gateway.
+- Een nieuwe compressie-indeling ondersteunen: ZIP (effenen)
 
-### <a name="enhancements-"></a>Verbeteringen-
-- Prestatieverbetering voor Oracle Sink, HDFS-bron.
-- Bug fix voor gateway automatische update, gateway parallelle verwerkingscapaciteit.
+### <a name="enhancements-"></a>Opties
+- Prestatie verbetering voor Oracle-sink, HDFS-bron.
+- Fout oplossing voor automatische gateway-updates, gateway parallelle verwerkings capaciteit.
 
 
 ## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>Verbeteringen 
-- Verbeterde en robuustere gatewayregistratie-ervaring- Nu u de voortgangsstatus bijhouden tijdens het gatewayregistratieproces, waardoor de registratie-ervaring responsiever wordt.
-- Verbetering in gatewayherstelproces- U de gateway nog steeds herstellen, zelfs als u het gatewayback-upbestand met deze update niet hebt. Hiervoor moet u de gekoppelde servicereferenties opnieuw instellen in Portal.
-- Bug fix.
+- Verbeterde en robuuste ervaring voor het registreren van de gateway: u kunt nu de voortgangs status bijhouden tijdens het registratie proces van de gateway, waardoor de registratie-ervaring sneller reageert.
+- Verbetering van het herstel proces van de gateway: u kunt nog steeds een gateway herstellen, zelfs als u niet over het back-upbestand van de gateway met deze update beschikt. Hiervoor moet u de referenties van de gekoppelde service opnieuw instellen in de portal.
+- Fout oplossing.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Nieuwe functies
 
-- U nu gegevensbronreferenties lokaal opslaan. De referenties zijn versleuteld. De gegevensbronreferenties kunnen worden hersteld en hersteld met behulp van het back-upbestand dat kan worden geëxporteerd vanuit de bestaande gateway, allemaal on-premises.
+- U kunt de referenties van de gegevens bron nu lokaal opslaan. De referenties zijn versleuteld. De referenties van de gegevens bron kunnen worden hersteld en hersteld met behulp van het back-upbestand dat vanaf de bestaande gateway, al op locatie, kan worden geëxporteerd.
 
-### <a name="enhancements-"></a>Verbeteringen-
+### <a name="enhancements-"></a>Opties
 
-- Verbeterde en robuustere gatewayregistratie-ervaring.
-- Ondersteuning voor automatische detectie van QuoteChar-configuratie voor tekstindeling in de wizard Kopiëren en verbeter de nauwkeurigheid van de algehele formaatdetectie.
+- Verbeterde en krachtigere gateway registratie-ervaring.
+- Ondersteuning voor automatische detectie van QuoteChar-configuratie voor tekst opmaak in de wizard kopiëren en verbeteren de nauw keurigheid van de detectie van de indeling.
 
 ## <a name="2361002"></a>2.3.6100.2
 
-- Ondersteuning firstRowAsHeader en SkipLineCount automatische detectie in copy wizard voor tekstbestanden in on-premises Bestandssysteem en HDFS.
-- De stabiliteit van de netwerkverbinding tussen gateway en servicebus verbeteren
-- Een paar bug fixes
+- Ondersteuning voor firstRowAsHeader en SkipLineCount automatische detectie in de wizard kopiëren voor tekst bestanden in het on-premises bestands systeem en HDFS.
+- Verbeter de stabiliteit van de netwerk verbinding tussen gateway en Service Bus
+- Enkele fouten opgelost
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Ondersteunt het instellen van HTTP-proxy voor de gateway met behulp van Gateway Configuration Manager. Indien geconfigureerd, zijn Azure Blob, Azure Table, Azure Data Lake en Document DB toegankelijk via HTTP-proxy.
-*  Ondersteunt headerhandling voor TextFormat bij het kopiëren van gegevens van/naar Azure Blob, Azure Data Lake Store, on-premises bestandssysteem en on-premises HDFS.
-*  Ondersteunt het kopiëren van gegevens uit Append Blob en Page Blob samen met de reeds ondersteunde Block Blob.
-*  Introduceert een nieuwe gateway status **Online (Limited),** wat aangeeft dat de belangrijkste functionaliteit van de gateway werkt, behalve de interactieve bewerkingsondersteuning voor Wizard Kopiëren.
-*  Verbetert de robuustheid van gatewayregistratie met behulp van registratiesleutel.
+*  Biedt ondersteuning voor het instellen van de HTTP-proxy voor de gateway met behulp van de gateway Configuration Manager. Als deze zijn geconfigureerd, worden Azure Blob, Azure Table, Azure Data Lake en document database geopend via de HTTP-proxy.
+*  Ondersteunt het verwerken van kopteksten voor tekst opmaak bij het kopiëren van gegevens van/naar Azure Blob, Azure Data Lake Store, on-premises bestands systeem en on-premises HDFS.
+*  Ondersteunt het kopiëren van gegevens uit een toevoeg-Blob en pagina-BLOB samen met de al ondersteunde blok-blob.
+*  Introduceert een nieuwe gateway status **online (beperkt)**, wat aangeeft dat de belangrijkste functionaliteit van de gateway werkt, met uitzonde ring van de ondersteuning van interactieve bewerkingen voor de wizard kopiëren.
+*  Verbetert de robuustheid van Gateway registratie met behulp van registratie sleutel.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  DB2 driver is nu opgenomen in het gateway installatiepakket. U hoeft dit niet afzonderlijk te installeren.
-*  DB2 driver ondersteunt nu z/OS en DB2 voor i (AS/400) samen met de reeds ondersteunde platforms (Linux, Unix en Windows).
-*  Ondersteunt het gebruik van Azure Cosmos DB als bron of bestemming voor on-premises gegevensarchieven
-*  Ondersteunt het kopiëren van gegevens van/naar koude/warme blobopslag samen met het reeds ondersteunde opslagaccount voor algemene doeleinden.
-*  Hiermee u verbinding maken met on-premises SQL Server via gateway met externe inlogrechten.  
+*  Het DB2-stuur programma is nu opgenomen in het installatie pakket van de gateway. U hoeft dit niet afzonderlijk te installeren.
+*  Het DB2-stuur programma ondersteunt nu z/OS en DB2 voor i (als/400) samen met de platforms die al worden ondersteund (Linux, UNIX en Windows).
+*  Ondersteunt het gebruik van Azure Cosmos DB als bron of doel voor on-premises gegevens opslag
+*  Ondersteunt het kopiëren van gegevens van/naar koude/Hot Blob Storage samen met het al ondersteunde opslag account voor algemeen gebruik.
+*  Met kunt u verbinding maken met on-premises SQL Server via een gateway met externe aanmeldings bevoegdheden.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  U de taal/cultuur selecteren die door een gateway moet worden gebruikt tijdens handmatige installatie.
+*  U kunt de taal/cultuur selecteren die door een gateway moet worden gebruikt tijdens hand matige installatie.
 
-*  Wanneer gateway niet werkt zoals verwacht, u ervoor kiezen om gatewaylogboeken van de afgelopen zeven dagen naar Microsoft te sturen om het oplossen van het probleem te vergemakkelijken. Als gateway niet is verbonden met de cloudservice, u ervoor kiezen gatewaylogboeken op te slaan en te archiveren.  
+*  Wanneer de gateway niet werkt zoals verwacht, kunt u ervoor kiezen om de gateway logboeken van de afgelopen zeven dagen naar micro soft te verzenden om de probleem oplossing van het probleem te vergemakkelijken. Als de gateway geen verbinding heeft met de Cloud service, kunt u ervoor kiezen om Gateway logboeken op te slaan en te archiveren.  
 
-*  Verbeteringen in de gebruikersinterface voor gatewayconfiguratiebeheer:
+*  Verbeteringen in de gebruikers interface voor gateway Configuration Manager:
 
-    *  De status van de gateway zichtbaarder maken op het tabblad Start.
+    *  Zorg ervoor dat de status van de gateway zichtbaar is op het tabblad Start.
 
-    *  Gereorganiseerde en vereenvoudigde besturingselementen.
+    *  De besturings elementen zijn ingedeeld en vereenvoudigd.
 
-    *  U gegevens uit een opslag kopiëren met behulp van het [codevrije kopieergereedschap.](data-factory-copy-data-wizard-tutorial.md) Zie [Gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over deze functie in het algemeen.
-*  U Data Management Gateway gebruiken om gegevens rechtstreeks vanuit een on-premises SQL Server-database naar Azure Machine Learning te brengen.
+    *  U kunt gegevens uit een opslag kopiëren met behulp van het programma voor het [gratis kopiëren van code](data-factory-copy-data-wizard-tutorial.md). Zie [gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over deze functie in het algemeen.
+*  U kunt Data Management Gateway gebruiken om gegevens rechtstreeks vanuit een on-premises SQL Server data base in Azure Machine Learning uit te brengen.
 
 *  Prestatieverbeteringen
 
-    * Verbeter de prestaties bij het weergeven van Schema/Preview tegen SQL Server in codevrije kopieertool.
+    * Verbeter de prestaties voor het weer geven van schema/preview op basis van SQL Server in het programma code-Free Copy.
 
 ## <a name="11259531"></a>1.12.5953.1
 
@@ -138,15 +138,15 @@ We houden de Release notes hier niet meer bij. Ontvang [hier](https://go.microso
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  De maximale grootte van het gebeurtenislogboek van de gateway is verhoogd van 1 MB naar 40 MB.
+*  De maximale grootte van het gebeurtenis logboek van de gateway is verhoogd van 1 MB tot 40 MB.
 
-*  Er wordt een waarschuwingsdialoogvenster weergegeven voor het geval een herstart nodig is tijdens de automatische update van de gateway. U ervoor kiezen om direct opnieuw op te starten dan of later.
+*  Er wordt een waarschuwings venster weer gegeven wanneer opnieuw opstarten nodig is tijdens het automatisch bijwerken van de gateway. U kunt ervoor kiezen om direct opnieuw op te starten of op een later tijdstip.
 
-*  In het geval dat automatische update mislukt, probeert gateway installer automatisch bijwerken drie keer op maximum.
+*  Als het bijwerken van de automatische update mislukt, probeert het installatie programma voor de gateway het automatisch bijwerken drie maal op het maximum.
 
 *  Prestatieverbeteringen
 
-    * Verbeter de prestaties voor het laden van grote tabellen vanaf de on-premises server in codevrije kopieerscenario.
+    * Verbeter de prestaties voor het laden van grote tabellen vanaf de on-premises server in scenario met code-Free Copy.
 
 *  Opgeloste fouten
 
@@ -158,18 +158,18 @@ We houden de Release notes hier niet meer bij. Ontvang [hier](https://go.microso
 
 ## <a name="1958652"></a>1.9.5865.2
 
-*  Zero touch auto update mogelijkheden
-*  Nieuw ladepictogram met statusindicatoren gateway
-*  Mogelijkheid om "Nu bijwerken" van de client
-*  Mogelijkheid om de updateplanningstijd in te stellen
-*  PowerShell-script voor het in-/uitschakelen van automatische updates
+*  Mogelijkheid om de auto-update op nul te zetten
+*  Nieuw tray-pictogram met Gateway status indicatoren
+*  De mogelijkheid om nu bij te werken vanaf de client
+*  Mogelijkheid om de tijd van de update planning in te stellen
+*  Power shell-script voor het in-/uitschakelen van automatische updates
 *  Ondersteuning voor JSON-indeling  
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
 ## <a name="1858221"></a>1.8.5822.1
 
-*  Problemen met probleemoplossing verbeteren
+*  Probleemoplossings ervaring verbeteren
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
@@ -185,7 +185,7 @@ We houden de Release notes hier niet meer bij. Ontvang [hier](https://go.microso
 
 ### <a name="1657351"></a>1.6.5735.1
 
-*  Ondersteuning van on-premises HDFS Source/Sink
+*  Ondersteuning voor on-premises HDFS-bron/Sink
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
@@ -196,62 +196,62 @@ We houden de Release notes hier niet meer bij. Ontvang [hier](https://go.microso
 
 ### <a name="1656761"></a>1.6.5676.1
 
-*  Diagnostische hulpprogramma's ondersteunen in Configuratiebeheer
-*  Kolommen in de ondersteuningstabel voor tabelgegevensbronnen voor Azure Data Factory
-*  SQL DW ondersteunen voor Azure Data Factory
-*  Ondersteuning voor teruggetrokken in BlobSource en FileSource voor Azure Data Factory
-*  Ondersteuningskopieergedrag : voeg Bestanden, Hiërarchie behouden en Hiërarchie af in BlobSink en FileSink met binaire kopie voor Azure-gegevensfabriek
-*  Voortgang van de rapportage van ondersteuningsactiviteiten voor Azure Data Factory
-*  Validatie van gegevensbronconnectiviteit voor Azure-gegevensfabriek
+*  Diagnostische hulpprogram ma's voor Configuration Manager ondersteunen
+*  Ondersteuning voor tabel kolommen voor gegevens bronnen in tabel vorm voor Azure Data Factory
+*  SQL DW voor Azure Data Factory ondersteunen
+*  Ondersteuning voor reclusive in BlobSource en FileSource voor Azure Data Factory
+*  Ondersteuning voor CopyBehavior: MergeFiles, PreserveHierarchy en FlattenHierarchy in BlobSink en FileSink met een binaire kopie voor Azure Data Factory
+*  Voortgang van het rapporteren van de ondersteuning voor het kopiëren van activiteiten voor Azure Data Factory
+*  Verbindings validatie van gegevens bron voor Azure Data Factory ondersteunen
 *  Opgeloste fouten
 
 ### <a name="1656721"></a>1.6.5672.1
 
-*  Naam van de ondersteuningstabel voor ODBC-gegevensbron voor Azure Data Factory
+*  Naam van de ondersteunings tabel voor de ODBC-gegevens bron voor Azure Data Factory
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
 ### <a name="1656581"></a>1.6.5658.1
 
-*  Bestandssink voor Azure-gegevensfabriek ondersteunen
-*  Ondersteuning voor het behouden van hiërarchie in binaire kopie voor Azure Data Factory
-*  Idempotentie voor ondersteuningsactiviteit voor Azure-gegevensfabriek
+*  Bestands Sink voor Azure Data Factory ondersteunen
+*  Ondersteuning voor het behouden van een hiërarchie in een binaire kopie voor Azure Data Factory
+*  Idempotentie voor de ondersteuning van Kopieer activiteiten voor Azure Data Factory
 *  Opgeloste fouten
 
 ### <a name="1656401"></a>1.6.5640.1
 
-*  Ondersteuning voor nog 3 gegevensbronnen voor Azure Data Factory (ODBC, OData, HDFS)
-*  Teken van offerte ondersteunen in csv-parser voor Azure Data Factory
-*  Compressieondersteuning (BZip2)
+*  Ondersteuning voor drie gegevens bronnen voor Azure Data Factory (ODBC, OData, HDFS)
+*  Ondersteunings aanhalings teken in CSV-parser voor Azure Data Factory
+*  Compressie-ondersteuning (BZip2)
 *  Opgeloste fouten
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  Ondersteuning bieden voor vijf relationele databases voor Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata en Sybase)
-*  Compressieondersteuning (Gzip en Leeglopen)
+*  Ondersteuning voor vijf relationele data bases voor Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata en Sybase)
+*  Compressie-ondersteuning (gzip en deflate)
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
 ### <a name="1455491"></a>1.4.5549.1
 
-*  Ondersteuning voor Oracle-gegevensbronnen toevoegen voor Azure Data Factory
+*  Ondersteuning voor Oracle-gegevens bronnen voor Azure Data Factory toevoegen
 *  Prestatieverbeteringen
 *  Opgeloste fouten
 
 ### <a name="1454921"></a>1.4.5492.1
 
-*  Unified binary that supports both Microsoft Azure Data Factory and Office 365 Power BI services
-*  De configuratie-gebruikersinterface en het registratieproces verfijnen
-*  Azure Data Factory – Azure Ingress- en Egress-ondersteuning voor SQL Server-gegevensbron
+*  Unified binary die ondersteuning biedt voor zowel Microsoft Azure Data Factory als Office 365 Power BI Services
+*  De configuratie-UI en het registratie proces verfijnen
+*  Azure Data Factory: ondersteuning voor Azure inkomend en uitgaand verkeer voor SQL Server gegevens bron
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Los een time-outprobleem op om meer tijdrovende gegevensbronverbindingen te ondersteunen.
+*  Los een time-outprobleem op ter ondersteuning van meer tijdrovende gegevens bron verbindingen.
 
 ### <a name="1155268"></a>1.1.5526.8
 
-*  Vereist .NET Framework 4.5.1 als voorwaarde tijdens de installatie.
+*  Vereist .NET Framework 4.5.1 als een vereiste tijdens de installatie.
 
 ### <a name="1051442"></a>1.0.5144.2
 
-*  Geen wijzigingen die van invloed zijn op Azure Data Factory-scenario's.
+*  Er zijn geen wijzigingen die van invloed zijn op Azure Data Factory scenario's.

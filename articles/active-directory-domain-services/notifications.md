@@ -1,6 +1,6 @@
 ---
-title: E-mailmeldingen voor Azure AD Domain Services | Microsoft Docs'
-description: Informatie over het configureren van e-mailmeldingen om u te waarschuwen voor problemen in een beheerd Azure Active Directory Domain Services-domein
+title: E-mail meldingen voor Azure AD Domain Services | Microsoft Docs '
+description: Meer informatie over het configureren van e-mail meldingen om u te waarschuwen over problemen in een Azure Active Directory Domain Services beheerd domein
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 8c6d59889e572893877f2178cade57e07aa91413
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654789"
 ---
-# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mailmeldingen configureren voor problemen in Azure Active Directory Domain Services
+# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail meldingen configureren voor problemen in Azure Active Directory Domain Services
 
-De status van een azure active directory domain services (Azure AD DS) beheerd domein wordt bewaakt door het Azure-platform. De statuspagina in de Azure-portal toont eventuele waarschuwingen voor het beheerde domein. Om ervoor te zorgen dat problemen tijdig worden beantwoord, kunnen e-mailmeldingen worden geconfigureerd om te rapporteren over statuswaarschuwingen zodra ze worden gedetecteerd in het beheerde Azure AD DS-domein.
+De status van een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) wordt bewaakt door het Azure-platform. Op de status pagina van de Azure Portal worden waarschuwingen voor het beheerde domein weer gegeven. Om ervoor te zorgen dat problemen tijdig worden beantwoord, kunnen e-mail meldingen worden geconfigureerd om te rapporteren over status waarschuwingen zodra ze worden gedetecteerd in het beheerde domein van Azure AD DS.
 
-In dit artikel ziet u hoe u geadresseerden voor e-mailmeldingen configureert voor een door Azure AD DS beheerd domein.
+Dit artikel laat u zien hoe u e-mail meldingen kunt configureren voor een beheerd domein van Azure AD DS.
 
-## <a name="email-notification-overview"></a>Overzicht van e-mailmeldingen
+## <a name="email-notification-overview"></a>Overzicht van e-mail meldingen
 
-Als u wilt waarschuwen voor problemen met een door Azure AD DS beheerd domein, u e-mailmeldingen configureren. Met deze e-mailmeldingen wordt het door Azure AD DS beheerde domein opgegeven waarop de waarschuwing aanwezig is, evenals de tijd van detectie en een koppeling naar de statuspagina in de Azure-portal. U vervolgens het advies voor het oplossen van problemen volgen om de problemen op te lossen.
+U kunt e-mail meldingen configureren om u te waarschuwen over problemen met een door Azure AD DS beheerd domein. Deze e-mail meldingen geven de Azure AD DS beheerde domein op waarop de waarschuwing aanwezig is, evenals de tijd van de detectie en een koppeling naar de status pagina in het Azure Portal. U kunt de problemen vervolgens oplossen door het probleem op te lossen.
 
-In het volgende voorbeeld geeft e-mailmelding aan dat er een kritieke waarschuwing of waarschuwing is gegenereerd op het beheerde Azure AD DS-domein:
+In het volgende voor beeld van een e-mail melding wordt aangegeven dat er een kritieke waarschuwing of waarschuwing is gegenereerd op het beheerde domein van Azure AD DS:
 
-![Voorbeeld e-mailmelding](./media/active-directory-domain-services-alerts/email-alert.png)
+![Voor beeld van e-mail melding](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Zorg er altijd voor dat de e-mail afkomstig is van een geverifieerde Microsoft-afzender voordat u op de koppelingen in het bericht klikt. De e-mailmeldingen `azure-noreply@microsoft.com` komen altijd van het adres.
+> Zorg er altijd voor dat het e-mail bericht afkomstig is van een geverifieerde afzender van micro soft voordat u op de koppelingen in het bericht klikt. De e-mail meldingen zijn altijd `azure-noreply@microsoft.com` afkomstig van het adres.
 
-### <a name="why-would-i-receive-email-notifications"></a>Waarom zou ik e-mailmeldingen ontvangen?
+### <a name="why-would-i-receive-email-notifications"></a>Waarom ontvang ik e-mail meldingen?
 
-Azure AD DS verzendt e-mailmeldingen voor belangrijke updates over het beheerde domein. Deze meldingen zijn alleen voor dringende problemen die van invloed zijn op de service en moeten onmiddellijk worden aangepakt. Elke e-mailmelding wordt geactiveerd door een waarschuwing op het door Azure AD DS beheerde domein. De waarschuwingen worden ook weergegeven in de Azure-portal en kunnen worden weergegeven op de [statuspagina van Azure AD DS.][check-health]
+Azure AD DS verzendt e-mail meldingen voor belang rijke updates over het beheerde domein. Deze meldingen zijn alleen bedoeld voor dringende problemen die van invloed zijn op de service en direct moeten worden opgelost. Elke e-mail melding wordt geactiveerd door een waarschuwing op het door Azure AD DS beheerde domein. De waarschuwingen worden ook weer gegeven in de Azure Portal en kunnen worden weer gegeven op de [status pagina van Azure AD DS][check-health].
 
-Azure AD DS verzendt geen e-mails voor advertentie-, updates- of verkoopdoeleinden.
+Azure AD DS stuurt geen e-mail berichten voor advertenties, updates of verkoop doeleinden.
 
-### <a name="when-will-i-receive-email-notifications"></a>Wanneer ontvang ik e-mailmeldingen?
+### <a name="when-will-i-receive-email-notifications"></a>Wanneer ontvang ik e-mail meldingen?
 
-Er wordt onmiddellijk een melding verzonden wanneer een [nieuwe waarschuwing][troubleshoot-alerts] wordt gevonden op een door Azure AD DS beheerd domein. Als de waarschuwing niet is opgelost, worden elke vier dagen extra e-mailmeldingen verzonden als herinnering.
+Er wordt direct een melding verzonden wanneer een [nieuwe waarschuwing][troubleshoot-alerts] wordt gevonden in een door Azure AD DS beheerd domein. Als de waarschuwing niet wordt opgelost, worden er om de vier dagen extra e-mail meldingen verzonden als een herinnering.
 
-### <a name="who-should-receive-the-email-notifications"></a>Wie moet de e-mailmeldingen ontvangen?
+### <a name="who-should-receive-the-email-notifications"></a>Wie moet de e-mail meldingen ontvangen?
 
-De lijst met e-mailontvangers voor Azure AD DS moet bestaan uit mensen die het beheerde domein kunnen beheren en wijzigingen kunnen aanbrengen. Deze e-maillijst moet worden gezien als uw "first responders" voor eventuele waarschuwingen en problemen.
+De lijst met e-mail ontvangers voor Azure AD DS moet bestaan uit personen die het beheerde domein kunnen beheren en wijzigen. Deze e-mail lijst moet worden beschouwd als uw ' eerste responders ' op waarschuwingen en problemen.
 
-U maximaal vijf extra e-mails toevoegen voor e-mailmeldingen. Als u meer dan vijf ontvangers voor e-mailmeldingen wilt, maakt u een distributielijst en voegt u die toe aan de meldingslijst.
+U kunt Maxi maal vijf geadresseerden voor e-mail meldingen toevoegen. Als u meer dan vijf ontvangers voor e-mail meldingen wilt, maakt u een distributie lijst en voegt u deze toe aan de lijst met meldingen.
 
-U er ook voor kiezen om alle *globale beheerders* van de Azure AD-map te laten ontvangen en elk lid van de *aad dc-beheerdersgroep* e-mailmeldingen te ontvangen. Azure AD DS verzendt alleen meldingen naar maximaal 100 e-mailadressen, waaronder de lijst met globale beheerders en AAD DC-beheerders.
+U kunt er ook voor kiezen alle *globale beheerders* van de Azure AD-Directory en elk lid van de groep *Aad DC-Administrators* e-mail meldingen te ontvangen. Azure AD DS verzendt alleen een melding naar Maxi maal 100 e-mail adressen, met inbegrip van de lijst met globale beheerders en AAD DC-beheerders.
 
 ## <a name="configure-email-notifications"></a>E-mailmeldingen configureren
 
-Voer de volgende stappen uit om de bestaande ontvangers van e-mailmeldingen te controleren of extra geadresseerden toe te voegen:
+Voer de volgende stappen uit om de bestaande ontvangers van e-mail meldingen te controleren of extra ontvangers toe te voegen:
 
-1. Zoek en selecteer Azure AD Domain Services in de **Azure-portal.**
+1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
 1. Selecteer uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*.
-1. Selecteer aan de linkerkant van het Azure AD DS-bronvenster de optie **Meldingsinstellingen**. De bestaande ontvangers voor e-mailmeldingen worden weergegeven.
-1. Als u een e-mailontvanger wilt toevoegen, voert u het e-mailadres in de tabel met extra geadresseerden in.
-1. Als u klaar bent, selecteert **u Opslaan** op de navigatie met de bovenste hand.
+1. Selecteer aan de linkerkant van het Azure AD DS-resource venster **instellingen voor meldingen**. De bestaande ontvangers voor e-mail meldingen worden weer gegeven.
+1. Als u een e-mail ontvanger wilt toevoegen, voert u het e-mail adres in in de tabel extra geadresseerden.
+1. Wanneer u klaar bent, selecteert u **Opslaan** in de bovenste navigatie balk.
 
 > [!WARNING]
-> Wanneer u de meldingsinstellingen wijzigt, worden de meldingsinstellingen voor het gehele door Azure AD DS beheerde domein bijgewerkt, niet alleen uzelf.
+> Wanneer u de instellingen voor meldingen wijzigt, worden de instellingen voor meldingen voor het hele Azure AD DS Managed Domain bijgewerkt, niet alleen uzelf.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Ik heb een e-mailmelding ontvangen voor een waarschuwing, maar toen ik inlogde op de Azure-portal was er geen waarschuwing. Wat is er gebeurd?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Ik heb een e-mail melding ontvangen voor een waarschuwing, maar wanneer ik ben aangemeld bij de Azure Portal is er geen waarschuwing. Wat is er gebeurd?
 
-Als een waarschuwing is opgelost, wordt de waarschuwing gewist uit de Azure-portal. De meest waarschijnlijke reden is dat iemand anders die e-mailmeldingen ontvangt, de waarschuwing heeft opgelost op het door Azure AD DS beheerde domein of dat deze automatisch is opgelost door het Azure-platform.
+Als een waarschuwing is opgelost, wordt de waarschuwing uit het Azure Portal verwijderd. De meest waarschijnlijke reden is dat iemand die e-mail meldingen ontvangt, de waarschuwing heeft omgezet in het beheerde domein van Azure AD DS, of dat het automatisch wordt omgezet door het Azure-platform.
 
-### <a name="why-can-i-not-edit-the-notification-settings"></a>Waarom kan ik de meldingsinstellingen niet bewerken?
+### <a name="why-can-i-not-edit-the-notification-settings"></a>Waarom kan ik de instellingen voor meldingen niet bewerken?
 
-Als u geen toegang hebt tot de pagina met meldingsinstellingen in de Azure-portal, hebt u niet de machtigingen om het beheerde Azure AD DS-beheerde domein te bewerken. U moet contact opnemen met een globale beheerder om machtigingen te krijgen voor het bewerken van Azure AD DS-bron of uit de lijst met geadresseerden te worden verwijderd.
+Als u geen toegang hebt tot de pagina met instellingen voor meldingen in de Azure Portal, hebt u geen machtigingen om het door Azure AD DS beheerde domein te bewerken. U moet contact opnemen met een globale beheerder om machtigingen te krijgen voor het bewerken van Azure AD DS resource of uit de lijst met ontvangers verwijderd.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik lijk geen e-mailmeldingen te ontvangen, ook al heb ik mijn e-mailadres opgegeven. Hoe komt dat?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Hoe komt dat?
 
-Controleer uw spam of ongewenste map in uw e-mail `azure-noreply@microsoft.com`voor de melding en zorg ervoor dat de afzender van .
+Controleer uw e-mail adres of map in uw e-mail op de melding en zorg ervoor dat de afzender `azure-noreply@microsoft.com`van wordt toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Waarschuwingen oplossen op een door Azure AD DS beheerd domein voor][troubleshoot-alerts]meer informatie over het oplossen van problemen.
+Voor meer informatie over het oplossen van enkele van de problemen die kunnen worden gerapporteerd, raadpleegt u [waarschuwingen op een door Azure AD DS beheerd domein oplossen][troubleshoot-alerts].
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md

@@ -1,7 +1,7 @@
 ---
-title: Notities voor ontwikkelaars voor aangepast beleid
+title: Opmerkingen voor ontwikkel aars voor aangepast beleid
 titleSuffix: Azure AD B2C
-description: Opmerkingen voor ontwikkelaars over het configureren en onderhouden van Azure AD B2C met aangepast beleid.
+description: Opmerkingen voor ontwikkel aars over het configureren en onderhouden van Azure AD B2C met aangepast beleid.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,99 +12,99 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80408705"
 ---
-# <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Ontwikkelaarsnotities voor aangepast beleid in Azure Active Directory B2C
+# <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
-Aangepaste beleidsconfiguratie in Azure Active Directory B2C is nu algemeen beschikbaar. Deze manier van configureren is gericht op geavanceerde identiteitsontwikkelaars die complexe identiteitsoplossingen bouwen. Aangepaste beleidsregels maken de kracht van het Identity Experience Framework beschikbaar in Azure AD B2C-tenants.
-Geavanceerde identiteitsontwikkelaars die aangepaste beleidsregels gebruiken, moeten van plan zijn om enige tijd te investeren in het voltooien van doorloopwerken en het lezen van referentiedocumenten.
+Aangepaste beleids configuratie in Azure Active Directory B2C is nu algemeen beschikbaar. Deze configuratie methode is gericht op geavanceerde identiteits ontwikkelaars die complexe identiteits oplossingen bouwen. Aangepaste beleids regels maken de kracht van het Framework voor identiteits ervaring beschikbaar in Azure AD B2C tenants.
+Ontwikkel aars van geavanceerde identiteiten die aangepaste beleids regels gebruiken, moeten plannen dat ze enige tijd investeren bij het volt ooien van instructies en het lezen van referentie documenten.
 
-Hoewel de meeste beschikbare aangepaste beleidsopties nu algemeen beschikbaar zijn, zijn er onderliggende mogelijkheden, zoals technische profieltypen en API's voor inhoudsdefinitie die zich in verschillende stadia van de levenscyclus van de software bevinden. Er komen er nog veel meer aan. De onderstaande tabel geeft het beschikbaarheidsniveau op een gedetailleerder niveau aan.
+Hoewel de meeste aangepaste beleids opties beschikbaar zijn nu algemeen beschikbaar zijn, zijn er onderliggende mogelijkheden, zoals technische profiel typen en inhouds definitie-Api's die in verschillende fasen van de levens cyclus van de software voor komen. Er zijn nog veel meer. In de volgende tabel wordt het niveau van de beschik baarheid op een gedetailleerder niveau opgegeven.
 
 ## <a name="features-that-are-generally-available"></a>Functies die algemeen beschikbaar zijn
 
-- Ontwerp en upload aangepaste gebruikersreizen voor verificatie met behulp van aangepast beleid.
-    - Beschrijf gebruikersreizen stap voor stap als uitwisselingen tussen claimproviders.
-    - Definieer voorwaardelijke vertakking in gebruikersreizen.
-- Samenwerken met REST API-services in uw aangepaste verificatiegebruikerstrajecten.
-- Federatie met identiteitsproviders die voldoen aan het OpenIDConnect-protocol.
-- Federatie met identiteitsproviders die zich houden aan het SAML 2.0-protocol.
+- Gebruik aangepaste beleids regels om gebruikers met aangepaste verificatie te schrijven en te uploaden.
+    - Beschrijf de door de gebruiker geplaatste stapsgewijze stap-voor-stap als uitwisseling tussen claim providers.
+    - Definieer voorwaardelijke vertakking in de reis van de gebruiker.
+- Werk met REST API-services in uw aangepaste gebruikers Reiss voor verificatie.
+- Communiceren met id-providers die compatibel zijn met het OpenIDConnect-protocol.
+- Communiceren met id-providers die voldoen aan het SAML 2,0-protocol.
 
-## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Verantwoordelijkheden van aangepaste beleidsfunctie-set ontwikkelaars
+## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Verantwoordelijkheden van de aangepaste beleids functie-ontwikkel aars instellen
 
-Handmatige beleidsconfiguratie biedt toegang op een lager niveau tot het onderliggende platform van Azure AD B2C en resulteert in het creëren van een uniek vertrouwenskader. De vele mogelijke permutaties van aangepaste identiteitsproviders, vertrouwensrelaties, integraties met externe services en stapsgewijze workflows vereisen een methodische benadering van ontwerp en configuratie.
+Hand matige beleids configuratie verleent toegang op lager niveau tot het onderliggende platform van Azure AD B2C en resulteert in het maken van een uniek vertrouwens raamwerk. De vele mogelijke permutaties van aangepaste ID-providers, vertrouwens relaties, integraties met externe services en stap-voor-stap-werk stromen vereisen een methode om te ontwerpen en te configureren.
 
-Ontwikkelaars die de aangepaste beleidsfunctieset gebruiken, moeten zich houden aan de volgende richtlijnen:
+Ontwikkel aars die de aangepaste beleids functie set gebruiken, moeten voldoen aan de volgende richt lijnen:
 
-- Maak kennis met de configuratietaal van het aangepaste beleid en het sleutel-/geheimenbeheer. Zie [TrustFrameworkPolicy](trustframeworkpolicy.md)voor meer informatie.
-- Neem eigenaarschap van scenario's en aangepaste integraties. Documenteer uw werk en informeer uw live siteorganisatie.
-- Methodische scenariotests uitvoeren.
-- Volg softwareontwikkeling en best practices met minimaal één ontwikkel- en testomgeving en één productieomgeving.
-- Blijf op de hoogte van nieuwe ontwikkelingen van de identiteitsaanbieders en diensten waarmee u integreert. Houd bijvoorbeeld wijzigingen in geheimen en geplande en ongeplande wijzigingen in de service bij.
-- Stel actieve bewaking in en monitor de responsiviteit van productieomgevingen. Zie [Azure Active Directory B2C: Logboeken verzamelen voor](analytics-with-application-insights.md)meer informatie over integratie met Application Insights.
-- Houd contacte-mailadressen actueel in het Azure-abonnement en blijf reageren op de e-mails van het Microsoft Live-site-team.
-- Neem tijdig actie wanneer u dit wordt geadviseerd door het Microsoft live-site team.
+- Vertrouwd raken met de configuratie taal van het aangepaste beleid en het beheer van sleutel/geheimen. Zie [TrustFrameworkPolicy](trustframeworkpolicy.md)voor meer informatie.
+- Eigenaar worden van scenario's en aangepaste integraties. Documenteer uw werk en laat uw organisatie van uw live site op de hoogte.
+- Voer methode testen uit.
+- Volg de aanbevolen procedures voor software ontwikkeling en fase ring met mini maal één ontwikkel-en test omgeving en één productie omgeving.
+- Blijf op de hoogte van nieuwe ontwikkelingen van de id-providers en services die u integreert met. U kunt bijvoorbeeld wijzigingen bijhouden in geheimen en de geplande en ongeplande wijzigingen in de service.
+- Stel actieve bewaking in en bewaak de reactie snelheid van productie omgevingen. Zie [Azure Active Directory B2C: Logboeken verzamelen](analytics-with-application-insights.md)voor meer informatie over de integratie met Application Insights.
+- Houd contact-e-mail adressen actueel in het Azure-abonnement en blijf op de hoogte van de e-mail van micro soft live site-team.
+- Onderneem tijdige actie wanneer u dit door het team van micro soft live site hebt door gesteld.
 
-## <a name="terms-for-features-in-public-preview"></a>Voorwaarden voor functies in openbare preview
+## <a name="terms-for-features-in-public-preview"></a>Voor waarden voor functies in open bare preview
 
-- We raden u aan om de openbare preview-functies alleen voor evaluatiedoeleinden te gebruiken.
-- Servicelevel agreements (SLA's) zijn niet van toepassing op de openbare preview-functies.
-- Ondersteuningsverzoeken voor openbare preview-functies kunnen worden ingediend via reguliere ondersteuningskanalen.
+- We raden u aan de open bare preview-functies alleen te gebruiken voor evaluatie doeleinden.
+- Service Level Agreements (Sla's) gelden niet voor de open bare preview-functies.
+- Ondersteunings aanvragen voor open bare preview-functies kunnen worden ingediend via reguliere ondersteunings kanalen.
 
 ## <a name="features-by-stage-and-known-issues"></a>Functies per fase en bekende problemen
 
-De mogelijkheden van het Aangepaste beleids-/Identity Experience Framework worden voortdurend en snel ontwikkeld. De volgende tabel is een index van functies en beschikbaarheid van onderdelen.
+Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en snelle ontwikkeling. De volgende tabel bevat een index van functies en beschik baarheid van onderdelen.
 
 
-### <a name="protocols-and-authorization-flows"></a>Protocollen en autorisatiestromen
+### <a name="protocols-and-authorization-flows"></a>Protocollen en autorisatie stromen
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [OAuth2-autorisatiecode](authorization-code-flow.md) |  |  | X |  |
-| OAuth2-autorisatiecode met PKCE |  |  | X | Alleen mobiele toepassingen  |
-| [Impliciete stroom oAuth2](implicit-flow-single-page-application.md) |  |  | X |  |
-| [Wachtwoordreferenties voor oAuth2-bronnen](ropc-custom.md) |  | X |  |  |
-| [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2 SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST en Redirect bindingen. |
+| [OAuth2-autorisatie code](authorization-code-flow.md) |  |  | X |  |
+| OAuth2-verificatie code met PKCE |  |  | X | Alleen mobiele toepassingen  |
+| [OAuth2 impliciete stroom](implicit-flow-single-page-application.md) |  |  | X |  |
+| [Referenties voor wacht woord van OAuth2-resource-eigenaar](ropc-custom.md) |  | X |  |  |
+| [OIDC verbinding maken](openid-connect.md) |  |  | X |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | Bindingen na plaatsen en omleiden. |
 | OAuth1 |  |  |  | Wordt niet ondersteund. |
 | WSFED | X |  |  |  |
 
-### <a name="identify-providers-federation"></a>Providers federatie identificeren 
+### <a name="identify-providers-federation"></a>Providers Federatie identificeren 
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Bijvoorbeeld Google+.  |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Bijvoorbeeld Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Bijvoorbeeld Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | Bijvoorbeeld Twitter. |
-| [SAML2 SAML2](saml-technical-profile.md) |  |   | X | Bijvoorbeeld Salesforce, ADFS. |
+| [SAML2](saml-technical-profile.md) |  |   | X | Bijvoorbeeld Sales Force, ADFS. |
 | WSFED| X |  |  |  |
 
 
-### <a name="rest-api-integration"></a>REST API-integratie
+### <a name="rest-api-integration"></a>Integratie van REST API
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| [REST API met basisauth](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
-| [REST API met clientcertificaat auth](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
-| [REST API met OAuth2 drager auth](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
+| [REST API met basis verificatie](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [REST API met verificatie van client certificaat](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [REST API met OAuth2 Bearer-verificatie](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
 
-### <a name="component-support"></a>Componentondersteuning
+### <a name="component-support"></a>Onderdeel ondersteuning
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [Verificatie van telefoonfactor](phone-factor-technical-profile.md) |  |  | X |  |
+| [Verificatie op de telefoon factor](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA-verificatie](multi-factor-auth-technical-profile.md) |  | X |  |  |
 | [Eenmalig wachtwoord](one-time-password-technical-profile.md) |  | X |  |  |
 | [Azure Active Directory](active-directory-technical-profile.md) als lokale map |  |  | X |  |
-| Azure-e-mailsubsysteem voor e-mailverificatie |  |  | X |  |
-| [Externe e-mailserviceproviders](custom-email.md) |  |X  |  |  |
+| Azure-e-mail subsysteem voor verificatie via e-mail |  |  | X |  |
+| [Aanbieders van e-mail services van derden](custom-email.md) |  |X  |  |  |
 | [Ondersteuning voor meerdere talen](localization.md)|  |  | X |  |
-| [Predicaatvalidaties](predicates.md) |  |  | X | Bijvoorbeeld wachtwoordcomplexiteit. |
-| [Besturingselementen weergeven](display-controls.md) |  |X  |  |  |
+| [Validatie van predikaten](predicates.md) |  |  | X | Bijvoorbeeld wachtwoord complexiteit. |
+| [Besturings elementen weer geven](display-controls.md) |  |X  |  |  |
 
 
 ### <a name="page-layout-versions"></a>Versie van pagina-indeling
@@ -115,46 +115,46 @@ De mogelijkheden van het Aangepaste beleids-/Identity Experience Framework worde
 | [1.2.0](page-layout.md#120) |  | X |  |  |
 | [1.1.0](page-layout.md#110) |  |  | X |  |
 | [1.0.0](page-layout.md#100) |  |  | X |  |
-| [JavaScript-ondersteuning](javascript-samples.md) |  | X |  |  |
+| [Java script-ondersteuning](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF-integratie
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Querytekenreeks, parameter`domain_hint` |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
-| Querytekenreeks, parameter`login_hint` |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
-| Json invoegen in gebruikersreis via`client_assertion` | X |  |  | Zal worden afgeschaft. |
-| JSON invoegen in gebruikersreis als`id_token_hint` |  | X |  | Voorwaartse benadering om JSON te passeren. |
-| [Token van identiteitsprovider doorgeven aan de toepassing](idp-pass-through-custom.md) |  | X |  | Bijvoorbeeld van Facebook naar app. |
+| Query teken reeks parameter`domain_hint` |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
+| Query teken reeks parameter`login_hint` |  |  | X | Beschikbaar als claim kan worden door gegeven aan IDP. |
+| JSON invoegen in gebruikers traject via`client_assertion` | X |  |  | Wordt afgeschaft. |
+| JSON invoegen in de gebruikers reis als`id_token_hint` |  | X |  | Go-Forward-benadering voor het door geven van JSON. |
+| [ID-provider token door geven aan de toepassing](idp-pass-through-custom.md) |  | X |  | Bijvoorbeeld van Facebook naar app. |
 
-### <a name="session-management"></a>Sessiebeheer
+### <a name="session-management"></a>Sessie beheer
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [Standaard SSO-sessieprovider](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
-| [Externe inlogsessieprovider](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
-| [SAML SSO-sessieprovider](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+| [Standaard-SSO-sessie provider](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [Externe aanmeldings sessie provider](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO-sessie provider](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
 
 
 ### <a name="security"></a>Beveiliging
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| Beleidssleutels- Genereren, handmatig, uploaden |  |  | X |  |
-| Beleidssleutels- RSA/Cert, Geheimen |  |  | X |  |
+| Beleids sleutels: genereren, hand matig, uploaden |  |  | X |  |
+| Beleids sleutels-RSA/cert, geheimen |  |  | X |  |
 
 
-### <a name="developer-interface"></a>Ontwikkelaarsinterface
+### <a name="developer-interface"></a>Ontwikkelaars interface
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
-| Beleidsupload |  |  | X |  |
-| [Gebruikersreislogboeken van Application Insights](troubleshoot-with-application-insights.md) |  | X |  | Wordt gebruikt voor het oplossen van problemen tijdens de ontwikkeling.  |
-| [Gebeurtenislogboeken voor Application Insights](application-insights-technical-profile.md) |  | X |  | Wordt gebruikt om gebruikersstromen in productie te controleren. |
+| Beleid uploaden |  |  | X |  |
+| [Gebruikers reis logboeken Application Insights](troubleshoot-with-application-insights.md) |  | X |  | Wordt gebruikt voor het oplossen van problemen tijdens de ontwikkeling.  |
+| [Application Insights gebeurtenis logboeken](application-insights-technical-profile.md) |  | X |  | Wordt gebruikt voor het bewaken van de gebruikers stromen in de productie omgeving. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- De [Microsoft Graph-bewerkingen controleren die beschikbaar zijn voor Azure AD B2C](microsoft-graph-operations.md)
-- Meer informatie over [aangepast beleid en de verschillen met gebruikersstromen](custom-policy-overview.md).
+- Controleer de [Microsoft Graph bewerkingen die beschikbaar zijn voor Azure AD B2C](microsoft-graph-operations.md)
+- Meer informatie over [aangepaste beleids regels en de verschillen met gebruikers stromen](custom-policy-overview.md).

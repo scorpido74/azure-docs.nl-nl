@@ -1,6 +1,6 @@
 ---
-title: Toepassingsmelding configureren
-description: Eenmalige aanmelding configureren voor een aangepaste toepassing die u ontwikkelt en registreert bij Azure AD.
+title: Eenmalige aanmelding voor de toepassing configureren
+description: Eenmalige aanmelding configureren voor een aangepaste toepassing die u ontwikkelt en registreert met Azure AD.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 630be1676d73410f1b0d376b163a8599299ddbe2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883148"
 ---
-# <a name="how-to-configure-single-sign-on-for-an-application"></a>Eenmalige aanmelding configureren voor een toepassing
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>Eenmalige aanmelding voor een toepassing configureren
 
-Het inschakelen van fedderated single sign-on (SSO) in uw app wordt automatisch ingeschakeld wanneer u via Azure AD voor OpenID Connect, SAML 2.0 of WS-Fed wordt gefedereerd. Als uw eindgebruikers zich moeten aanmelden ondanks dat er al een bestaande sessie met Azure AD is, is het waarschijnlijk dat uw app verkeerd is geconfigureerd.
+Het inschakelen van federatieve eenmalige aanmelding (SSO) in uw app wordt automatisch ingeschakeld wanneer federeren via Azure AD voor OpenID Connect Connect, SAML 2,0 of WS-inschakelt. Als uw eind gebruikers zich moeten aanmelden ondanks al een bestaande sessie met Azure AD, is het waarschijnlijk dat uw app onjuist is geconfigureerd.
 
-* Als u ADAL/MSAL gebruikt, controleert u of **PromptBehavior** is ingesteld op **Automatisch** in plaats van **Altijd.**
+* Als u ADAL/MSAL gebruikt, zorg er dan voor dat u **PromptBehavior** hebt ingesteld op **auto** in plaats van **altijd**.
 
-* Als u een mobiele app bouwt, hebt u mogelijk extra configuraties nodig om brokered of niet-brokered SSO in te schakelen.
+* Als u een mobiele app bouwt, hebt u mogelijk aanvullende configuraties nodig om brokered of niet-brokered SSO in te scha kelen.
 
-Zie Cross [App SSO inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)voor Android .<br>
+Zie [SSO van meerdere apps inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)voor Android.<br>
 
-Zie [Cross App SSO inschakelen in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)voor iOS .
+Zie [SSO van meerdere apps inschakelen in Ios](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)voor IOS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 
-[Cross App SSO inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[SSO van meerdere apps inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
 
-[Cross App SSO inschakelen in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[SSO van meerdere apps inschakelen in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
 
 [Apps integreren in AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Toestemming en machtigingen voor geconvergeerde apps voor AzureAD v2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

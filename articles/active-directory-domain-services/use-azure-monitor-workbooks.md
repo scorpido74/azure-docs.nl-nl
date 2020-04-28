@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-werkmappen gebruiken met Azure AD Domain Services | Microsoft Documenten
-description: Meer informatie over het gebruik van Azure Monitor Werkmappen om beveiligingsaudits te controleren en problemen in een beheerd Azure Directory Domain Services-domein te begrijpen.
+title: Azure Monitor werkmappen gebruiken met Azure AD Domain Services | Microsoft Docs
+description: Informatie over het gebruik van Azure Monitor werkmappen om beveiligings controles te controleren en problemen in een Azure Active Directory Domain Services beheerd domein te begrijpen.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,103 +10,103 @@ ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
 ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654457"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Beveiligingscontrolegebeurtenissen in Azure AD Domain Services controleren met Azure Monitor-werkmappen
+# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Beveiligings controle gebeurtenissen in Azure AD Domain Services controleren met behulp van Azure Monitor werkmappen
 
-U beveiligingscontrolegebeurtenissen inschakelen om inzicht te krijgen in de status van uw azure active directory domain services (Azure AD DS)-domein. Deze beveiligingscontrolegebeurtenissen kunnen vervolgens worden beoordeeld met Azure Monitor-werkmappen die tekst, analysequery's en parameters combineren tot uitgebreide interactieve rapporten. Azure AD DS bevat werkmapsjablonen voor beveiligingsoverzicht en accountactiviteit waarmee u zich verdiepen in controlegebeurtenissen en uw omgeving beheren.
+Als u de status van uw Azure Active Directory Domain Services (Azure AD DS) beheerde domein wilt begrijpen, kunt u beveiligings controle gebeurtenissen inschakelen. Deze beveiligings controle gebeurtenissen kunnen vervolgens worden gecontroleerd met behulp van Azure Monitor werkmappen die tekst, analyse query's en para meters in uitgebreide interactieve rapporten combi neren. Azure AD DS bevat werkmap sjablonen voor beveiligings overzicht en account activiteit waarmee u controle gebeurtenissen kunt bewaken en uw omgeving beheert.
 
-In dit artikel ziet u hoe u Azure Monitor Workbooks gebruiken om beveiligingscontrolegebeurtenissen in Azure AD DS te controleren.
+In dit artikel leest u hoe u Azure Monitor werkmappen kunt gebruiken om beveiligings controle gebeurtenissen in azure AD DS te controleren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u dit artikel wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
-    * Vul indien nodig de zelfstudie in om [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance]te maken en te configureren.
-* Beveiligingscontrolegebeurtenissen die zijn ingeschakeld voor uw beheerde domein van Azure Active Directory Domain Services dat gegevens streamt naar een Log Analytics-werkruimte.
-    * Schakel indien nodig [beveiligingsaudits in voor Azure Active Directory Domain Services.][enable-security-audits]
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Beveiligings controle gebeurtenissen ingeschakeld voor uw Azure Active Directory Domain Services beheerde domein waarmee gegevens worden gestreamd naar een Log Analytics-werk ruimte.
+    * Schakel, indien nodig, [beveiligings controles in voor Azure Active Directory Domain Services][enable-security-audits].
 
-## <a name="azure-monitor-workbooks-overview"></a>Overzicht van Azure Monitor-werkmappen
+## <a name="azure-monitor-workbooks-overview"></a>Overzicht van Azure Monitor werkmappen
 
-Wanneer beveiligingscontrolegebeurtenissen zijn ingeschakeld in Azure AD DS, kan het moeilijk zijn om problemen in het beheerde domein te analyseren en te identificeren. Met Azure Monitor u deze beveiligingscontrolegebeurtenissen samenvoegen en de gegevens opvragen. Met Azure Monitor Workbooks u deze gegevens visualiseren om problemen sneller en gemakkelijker te kunnen identificeren.
+Wanneer beveiligings controle gebeurtenissen zijn ingeschakeld in azure AD DS, kan het lastig zijn om problemen in het beheerde domein te analyseren en te identificeren. Met Azure Monitor kunt u deze gebeurtenissen voor beveiligings controle samen stellen en query's uitvoeren op de gegevens. Met Azure Monitor werkmappen kunt u deze gegevens visualiseren om sneller en gemakkelijker problemen te identificeren.
 
-Werkmapsjablonen zijn samengestelde rapporten die zijn ontworpen voor flexibel hergebruik door meerdere gebruikers en teams. Wanneer u een werkmapsjabloon opent, worden de gegevens uit uw Azure Monitor-omgeving geladen. U sjablonen gebruiken zonder dat dit gevolgen heeft voor andere gebruikers in uw organisatie en u uw eigen werkmappen opslaan op basis van de sjabloon.
+Werkmap sjablonen zijn bedrijfsspecifieke rapporten die zijn ontworpen voor flexibel hergebruik door meerdere gebruikers en teams. Wanneer u een werkmap sjabloon opent, worden de gegevens uit uw Azure Monitor omgeving geladen. U kunt sjablonen gebruiken zonder dat dit invloed heeft op andere gebruikers in uw organisatie en kunnen uw eigen werkmappen opslaan op basis van de sjabloon.
 
-Azure AD DS bevat de volgende twee werkmapsjablonen:
+Azure AD DS bevat de volgende twee werkmap sjablonen:
 
-* Rapport over beveiligingsoverzicht
-* Rapport Accountactiviteit
+* Rapport beveiligings overzicht
+* Rapport account activiteit
 
-Zie Overzicht van [Azure Monitor Werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het bewerken en beheren van werkmappen.
+Zie [Azure monitor Workbooks Overview](../azure-monitor/platform/workbooks-overview.md)(Engelstalig) voor meer informatie over het bewerken en beheren van werkmappen.
 
-## <a name="use-the-security-overview-report-workbook"></a>De werkmap voor het rapport voor het beveiligingsoverzicht gebruiken
+## <a name="use-the-security-overview-report-workbook"></a>De werkmap voor het beveiligings overzicht rapport gebruiken
 
-Om u te helpen het gebruik beter te begrijpen en potentiële beveiligingsbedreigingen te identificeren, worden in het rapport beveiligingsoverzicht aanmeldingsgegevens samengevat en worden accounts geïdentificeerd waarop u mogelijk wilt controleren. U gebeurtenissen in een bepaald datumbereik bekijken en inzoomen op specifieke aanmeldingsgebeurtenissen, zoals pogingen voor slecht wachtwoord of waarbij het account is uitgeschakeld.
+Om u te helpen beter inzicht te krijgen in het gebruik en mogelijke beveiligings Risico's te identificeren, wordt in het overzichts rapport van de beveiliging een overzicht gegeven van de aanmeldings gegevens en worden accounts geïdentificeerd die u mogelijk wilt controleren. U kunt gebeurtenissen in een bepaald datum bereik weer geven en inzoomen op specifieke aanmeldings gebeurtenissen, zoals een onjuist wacht woord of de locatie waar het account is uitgeschakeld.
 
-Voer de volgende stappen uit om toegang te krijgen tot de werkmapsjabloon voor het rapport beveiligingsoverzicht:
+Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor het rapport beveiligings overzicht:
 
-1. Zoeken naar en selecteer **Azure Active Directory Domain Services** in de Azure-portal.
+1. Zoek en selecteer **Azure Active Directory Domain Services** in het Azure Portal.
 1. Selecteer uw beheerde domein, zoals *aaddscontoso.com*
-1. Kies in het menu aan de linkerkant de optie **Controle > Werkmappen**
+1. Kies in het menu aan de linkerkant de optie **bewaking > werkmappen**
 
-    ![De menuoptie Werkmappen selecteren in de Azure-portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Selecteer de menu optie werkmappen in de Azure Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
-1. Kies het **rapport Beveiligingsoverzicht**.
-1. Selecteer in de vervolgkeuzemenu's boven aan de werkmap uw Azure-abonnement en vervolgens de werkruimte Azure Monitor. Kies een **tijdsbereik,** zoals *Laatste 7 dagen*.
+1. Kies het **rapport beveiligings overzicht**.
+1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en klik vervolgens Azure Monitor werk ruimte. Kies een **tijds bereik**, zoals de *laatste 7 dagen*.
 
-    ![De menuoptie Werkmappen selecteren in de Azure-portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
+    ![Selecteer de menu optie werkmappen in de Azure Portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    De opties **voor de tegelweergave** en **de grafiekweergave** kunnen ook worden gewijzigd om de gegevens naar wens te analyseren en te visualiseren
+    De opties **tegel weergave** en **grafiek weergave** kunnen ook worden gewijzigd om de gegevens naar wens te analyseren en te visualiseren
 
-1. Als u wilt inzoomen op een specifiek gebeurtenistype, selecteert u het een van de **aanmeldingsresultatenkaarten,** zoals *Account vergrendeld,* zoals weergegeven in het volgende voorbeeld:
+1. Als u wilt inzoomen op een specifiek gebeurtenis type, selecteert u de kaarten voor het **aanmeldings resultaat** zoals *account vergrendeld*, zoals wordt weer gegeven in het volgende voor beeld:
 
-    ![Voorbeeld rapportrapportrapportrapportrapportdat is gevisualiseerd in Azure Monitor-werkmappen](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
+    ![Voor beeld van een rapport met overzichts gegevens over beveiliging in Azure Monitor werkmappen](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
 
-1. In het onderste gedeelte van het rapport over het beveiligingsoverzicht onder de grafiek wordt vervolgens het geselecteerde activiteitstype afgebroken. U filteren op gebruikersnamen die aan de rechterkant betrokken zijn, zoals in het volgende voorbeeldrapport wordt weergegeven:
+1. Het onderste gedeelte van het beveiligings overzicht rapport onder de grafiek wordt vervolgens het geselecteerde type activiteit gesplitst. U kunt filteren op gebruikers namen die aan de rechter kant zijn betrokken, zoals wordt weer gegeven in het volgende voorbeeld rapport:
 
     [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
-## <a name="use-the-account-activity-report-workbook"></a>De werkmap voor het rapport Accountactiviteitsrapport gebruiken
+## <a name="use-the-account-activity-report-workbook"></a>De werkmap van het rapport account activiteit gebruiken
 
-Om problemen voor een specifiek gebruikersaccount op te lossen, worden in het rapport accountactiviteit gedetailleerde informatie over het logboek van de controlegebeurtenis opsplitst. U controleren wanneer een slechte gebruikersnaam of wachtwoord is opgegeven tijdens het aanmelden en de bron van de aanmeldingspoging.
+Om u te helpen problemen voor een specifiek gebruikers account op te lossen, onderbreekt het rapport account activiteit gedetailleerde informatie over het controle gebeurtenis logboek. U kunt controleren wanneer een onjuiste gebruikers naam of wacht woord is opgegeven tijdens het aanmelden en de bron van de aanmeldings poging.
 
-Voer de volgende stappen uit om toegang te krijgen tot de werkmapsjabloon voor het accountactiviteitenrapport:
+Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor het rapport account activiteit:
 
-1. Zoeken naar en selecteer **Azure Active Directory Domain Services** in de Azure-portal.
+1. Zoek en selecteer **Azure Active Directory Domain Services** in het Azure Portal.
 1. Selecteer uw beheerde domein, zoals *aaddscontoso.com*
-1. Kies in het menu aan de linkerkant de optie **Controle > Werkmappen**
-1. Kies het **rapport Accountactiviteit**.
-1. Selecteer in de vervolgkeuzemenu's boven aan de werkmap uw Azure-abonnement en vervolgens de werkruimte Azure Monitor. Kies een **tijdsbereik,** zoals *Laatste 30 dagen,* en hoe u de **tegelweergave** wilt weergeven. U filteren **op gebruikersnaam van het account**, zoals *felix*, zoals weergegeven in het volgende voorbeeldrapport:
+1. Kies in het menu aan de linkerkant de optie **bewaking > werkmappen**
+1. Kies het **rapport account activiteit**.
+1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en klik vervolgens Azure Monitor werk ruimte. Kies een **tijds bereik**, bijvoorbeeld de *laatste 30 dagen*, en hoe de **tegel weergave** de gegevens moet vertegenwoordigen. U kunt filteren op de **gebruikers naam**van het account, zoals *Felix*, zoals wordt weer gegeven in het volgende voorbeeld rapport:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
-    Het gebied onder de grafiek toont afzonderlijke aanmeldingsgebeurtenissen, samen met informatie zoals het activiteitsresultaat en het bronwerkstation. Deze informatie kan helpen bij het bepalen van herhaalde bronnen van aanmeldingsgebeurtenissen die accountuitsluitingen kunnen veroorzaken of een potentiële aanval kunnen aangeven.
+    In het gebied onder de grafiek worden afzonderlijke aanmeldings gebeurtenissen weer gegeven, samen met informatie zoals het resultaat van de activiteit en het bron werkstation. Deze informatie kan u helpen bij het bepalen van herhaalde bronnen van aanmeldings gebeurtenissen die kunnen leiden tot het vergren delen van accounts of het aanduiden van een mogelijke aanval.
 
-Net als bij het rapport over het beveiligingsoverzicht u inzoomen op de verschillende tegels boven aan het rapport om de gegevens te visualiseren en te analyseren als dat nodig is.
+Net als bij het rapport beveiligings overzicht kunt u inzoomen op de verschillende tegels boven aan het rapport om de gegevens naar behoefte te visualiseren en te analyseren.
 
 ## <a name="save-and-edit-workbooks"></a>Werkmappen opslaan en bewerken
 
-De twee sjabloonwerkmappen van Azure AD DS zijn een goede plek om te beginnen met uw eigen gegevensanalyse. Als u meer gedetailleerd wilt worden in de gegevensquery's en onderzoeken, u uw eigen werkmappen opslaan en de query's bewerken.
+De twee sjabloon-werkmappen die door Azure AD DS worden verschaft, zijn een goede plaats om te beginnen met uw eigen gegevens analyse. Als u meer gedetailleerde informatie over de gegevens query's en onderzoeken nodig hebt, kunt u uw eigen werkmappen opslaan en de query's bewerken.
 
-1. Als u een kopie van een van de werkmapsjablonen wilt opslaan, selecteert u **Bewerken > opslaan als > gedeelde rapporten,** geeft u vervolgens een naam op en slaat u deze op.
-1. Selecteer **Bewerken** om de bewerkingsmodus in te voeren in uw eigen exemplaar van de sjabloon. U de blauwe knop **Bewerken** naast een deel van het rapport kiezen en deze wijzigen.
+1. Als u een kopie van een van de werkmap sjablonen wilt opslaan, selecteert u **bewerken > opslaan als > gedeelde rapporten**. vervolgens geeft u een naam op en slaat u deze op.
+1. Selecteer in uw eigen kopie van de sjabloon **bewerken** om de bewerkings modus in te voeren. U kunt de knop voor blauw **bewerken** kiezen naast een deel van het rapport en deze wijzigen.
 
-Alle grafieken en tabellen in Azure Monitor-werkmappen worden gegenereerd met Kusto-query's. Zie [Azure Monitor-logboekquery's][azure-monitor-queries] en [de zelfstudie met Kusto-query's voor][kusto-queries]meer informatie over het maken van uw eigen query's.
+Alle grafieken en tabellen in Azure Monitor werkmappen worden gegenereerd met behulp van Kusto-query's. Zie [Azure monitor-logboek query's][azure-monitor-queries] en [Kusto query's][kusto-queries]voor meer informatie over het maken van uw eigen query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Beleid voor wachtwoord- en accountuitsluiting op beheerde domeinen][password-policy]als u het beleid voor wachtwoord- en uitsluitingsbeleid moet aanpassen.
+Als u het wacht woord en het vergrendelings beleid wilt aanpassen, raadpleegt u [wacht woord-en account vergrendelings beleid in beheerde domeinen][password-policy].
 
-Voor problemen met gebruikers leest u hoe u [aanmeldingsproblemen][troubleshoot-sign-in] met uw account of problemen met [de vergrendeling van uw account][troubleshoot-account-lockout]oplossen.
+Voor problemen met gebruikers leert u hoe u problemen met [account aanmelding][troubleshoot-sign-in] of [account vergrendelings][troubleshoot-account-lockout]problemen oplost.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

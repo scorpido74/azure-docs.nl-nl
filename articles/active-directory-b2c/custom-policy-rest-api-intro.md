@@ -1,7 +1,7 @@
 ---
-title: REST API claimt uitwisselingen in B2C-beleid op maat
+title: REST API claim uitwisselingen in B2C aangepast beleid
 titleSuffix: Azure AD B2C
-description: Een inleiding tot het maken van een Azure AD B2C-gebruikersreis die samenwerkt met RESTful-services.
+description: Een inleiding tot het maken van een Azure AD B2C gebruikers traject dat communiceert met de REST-services.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,71 +12,71 @@ ms.date: 03/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337413"
 ---
-# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Rest API-claims uitwisselingen integreren in uw Azure AD B2C-aangepaste beleid
+# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API claim uitwisselingen integreren in uw aangepaste beleid voor Azure AD B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Het Identity Experience Framework, dat ten grondslag ligt aan Azure Active Directory B2C (Azure AD B2C), kan worden geïntegreerd met RESTful API's binnen een gebruikersreis. In dit artikel ziet u hoe u een gebruikersreis maakt die samenwerkt met een RESTful-service met behulp van een [RESTful technisch profiel.](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster)
+Het Framework voor identiteits ervaring, dat Azure Active Directory B2C (Azure AD B2C), kan worden geïntegreerd met behulp van de REST Api's binnen een gebruikers traject. In dit artikel wordt beschreven hoe u een gebruikers traject maakt die samenwerkt met een REST-service met behulp van een aanstaand [technisch profiel](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster).
 
-Met Azure AD B2C u uw eigen bedrijfslogica toevoegen aan een gebruikersreis door uw eigen RESTful-service te bellen. Het Identity Experience Framework kan gegevens van uw RESTful-service verzenden en ontvangen om claims uit te wisselen. U kunt bijvoorbeeld:
+Met Azure AD B2C kunt u uw eigen bedrijfs logica toevoegen aan een gebruikers reis door uw eigen REST-service aan te roepen. Het Framework voor identiteits ervaring kan gegevens verzenden naar en ontvangen van uw REST-service om claims uit te wisselen. U kunt bijvoorbeeld:
 
-- **Gebruikersinvoergegevens valideren**. U bijvoorbeeld controleren of het e-mailadres dat door de gebruiker wordt opgegeven in de database van uw klant bestaat en zo niet, een fout bevatten.
-- **Procesclaims**. Als een gebruiker zijn voornaam in alle kleine letters of alle hoofdletters invoert, kan uw REST API de naam opmaken met alleen de eerste letter met als hoofdletter en deze retourneren naar Azure AD B2C.
-- **Verrijk gebruikersgegevens door verder te integreren met bedrijfsapplicaties.** Uw RESTful-service kan het e-mailadres van de gebruiker ontvangen, de database van de klant opvragen en het loyaliteitsnummer van de gebruiker terugsturen naar Azure AD B2C. Vervolgens kunnen retourclaims worden opgeslagen in het Azure AD-account van de gebruiker, geëvalueerd in de volgende orkestratiestappen of worden opgenomen in het toegangstoken.
-- **Aangepaste bedrijfslogica uitvoeren**. U pushmeldingen verzenden, bedrijfsdatabases bijwerken, een gebruikersmigratieproces uitvoeren, machtigingen beheren, databases controleren en andere werkstromen uitvoeren.
+- **Gebruikers invoer gegevens valideren**. U kunt bijvoorbeeld controleren of het e-mail adres dat is opgegeven door de gebruiker bestaat in de data base van uw klant en als dat niet het geval is, een fout melding geven.
+- **Claims verwerken**. Als een gebruiker zijn of haar voor naam in alle kleine letters of in alle letters typt, kan de REST API de naam met alleen de eerste letter indelen en retour neren naar Azure AD B2C.
+- **Verrijkende gebruikers gegevens door verder te integreren met zakelijke line-of-business-toepassingen**. De REST-service kan het e-mail adres van de gebruiker ontvangen, query's uitvoeren op de data base van de klant en het loyaliteits nummer van de gebruiker voor Azure AD B2C retour neren. Vervolgens kunnen retour claims worden opgeslagen in het Azure AD-account van de gebruiker, geëvalueerd in de volgende Orchestration-stappen of opgenomen in het toegangs token.
+- **Aangepaste bedrijfs logica uitvoeren**. U kunt push meldingen verzenden, zakelijke data bases bijwerken, een gebruikers migratie proces uitvoeren, machtigingen beheren, data bases controleren en andere werk stromen uitvoeren.
 
-![Diagram van een RESTful service claims exchange](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+![Diagram van een REST service claim uitwisseling](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
 
-## <a name="calling-a-restful-service"></a>Een RESTful-service bellen
+## <a name="calling-a-restful-service"></a>Een REST-service aanroepen
 
-De interactie omvat een informatie-uitwisseling van claims tussen de REST API-claims en Azure AD B2C. U de integratie met de RESTful-services op de volgende manieren ontwerpen:
+De interactie bevat een claim uitwisseling van informatie tussen de REST API claims en Azure AD B2C. U kunt op de volgende manieren de integratie met de REST-services ontwerpen:
 
-- **Technisch profiel validatie**. De oproep naar de RESTful-service vindt plaats binnen een [validatietechnisch profiel](validation-technical-profile.md) van het opgegeven [zelfverklaarde technische profiel](self-asserted-technical-profile.md)of een [verificatieweergavecontrole](display-control-verification.md) van een [weergavebesturingselement](display-controls.md). Het validatietechnische profiel valideert de door de gebruiker verstrekte gegevens voordat de gebruikersreis verder gaat. Met het validatietechnische profiel u:
+- **Validatie technische profiel**. Het aanroepen van de REST-service vindt plaats binnen een [validatie technische profiel](validation-technical-profile.md) van het opgegeven [zelfondertekende technische profiel](self-asserted-technical-profile.md)of een [besturings element voor controle weergave](display-control-verification.md) van een [Weergave besturings element](display-controls.md). Het validatie-technische profiel valideert de door de gebruiker verschafte gegevens voordat de reis van de gebruiker vooruit gaat. Met het technische profiel voor validatie kunt u het volgende doen:
 
-  - Stuur claims naar uw REST API.
-  - Claimen valideren en aangepaste foutberichten plaatsen die aan de gebruiker worden weergegeven.
-  - Stuur claims van de REST API terug naar de volgende orkestratiestappen.
+  - Claims naar uw REST API verzenden.
+  - Claims valideren en aangepaste fout berichten genereren die worden weer gegeven aan de gebruiker.
+  - Teruggestuurde claims van de REST API naar volgende Orchestration-stappen.
 
-- **Claims uitwisseling**. Een directe claimuitwisseling kan worden geconfigureerd door rechtstreeks vanuit een orchestration-stap van een [gebruikersreis](userjourneys.md)een technische REST API-profiel aan te roepen. Deze definitie is beperkt tot:
+- **Claim uitwisseling**. Een directe claim uitwisseling kan worden geconfigureerd door rechtstreeks vanuit een Orchestration-stap van een [gebruikers traject](userjourneys.md)een rest API technisch profiel aan te roepen. Deze definitie is beperkt tot:
 
-  - Stuur claims naar uw REST API.
-  - Claimen en aangepaste foutberichten plaatsen die naar de toepassing worden teruggestuurd.
-  - Stuur claims van de REST API terug naar de volgende orkestratiestappen.
+  - Claims naar uw REST API verzenden.
+  - Claims valideren en aangepaste fout berichten genereren die worden teruggestuurd naar de toepassing.
+  - Teruggestuurde claims van de REST API naar volgende Orchestration-stappen.
 
-U een REST API-aanroep toevoegen bij elke stap in het gebruikerstraject dat wordt gedefinieerd door een aangepast beleid. U bijvoorbeeld een REST API aanroepen:
+U kunt een REST API-aanroep toevoegen aan elke stap in de gebruikers reis die is gedefinieerd door een aangepast beleid. U kunt bijvoorbeeld een REST API aanroepen:
 
 - Tijdens het aanmelden, net voordat Azure AD B2C de referenties valideert.
 - Direct na het aanmelden.
-- Voordat Azure AD B2C een nieuw account in de map maakt.
-- Na Azure maakt AD B2C een nieuw account in de map.
-- Voordat Azure AD B2C een toegangstoken uitgeeft.
+- Voordat Azure AD B2C een nieuw account in de Directory maakt.
+- Nadat Azure AD B2C een nieuw account in de map hebt gemaakt.
+- Voordat Azure AD B2C een toegangs token uitgeeft.
 
-![Technische profielverzameling valideren](media/custom-policy-rest-api-intro/validation-technical-profile.png)
+![Validatie van technische profiel verzameling](media/custom-policy-rest-api-intro/validation-technical-profile.png)
 
 ## <a name="sending-data"></a>Gegevens verzenden
 
-In het [technische profiel RESTful](restful-technical-profile.md)bevat het `InputClaims` element een lijst met claims die naar uw RESTful-service moeten worden verzonden. U de naam van uw claim toewijzen aan de naam die is gedefinieerd in de RESTful-service, een standaardwaarde instellen en [claimresolvers](claim-resolver-overview.md)gebruiken.
+In het [vervolg technische profiel](restful-technical-profile.md)bevat het `InputClaims` element een lijst met claims die naar uw rest-service moeten worden verzonden. U kunt de naam van uw claim toewijzen aan de naam die is gedefinieerd in de REST-service, een standaard waarde instellen en [claim resolvers](claim-resolver-overview.md)gebruiken.
 
-U configureren hoe de invoerclaims naar de RESTful-claimprovider worden verzonden met behulp van het kenmerk SendClaimsIn. De mogelijke waarden zijn:
+U kunt configureren hoe de invoer claims worden verzonden naar de claim provider voor de REST met behulp van het kenmerk SendClaimsIn. De mogelijke waarden zijn:
 
-- **Body**, verzonden in de HTTP POST-aanvraaginstantie in JSON-indeling.
-- **Formulier**, verzonden in de HTTP POST-aanvraaginstantie in een meteen '&' gescheiden sleutelwaardeformaat.
-- **Koptekst**, verzonden in de koptekst van de HTTP GET-aanvraag.
-- **QueryString**, verzonden in de querytekenreeks HTTP GET-aanvraag.
+- **Hoofd tekst**, verzonden in de tekst van de HTTP POST-aanvraag in JSON-indeling.
+- **Formulier**, verzonden in de hoofd tekst van de HTTP POST-aanvraag in een ampersand ' & ' gescheiden sleutel waarde-indeling.
+- **Header**, verzonden in de header HTTP GET-aanvraag.
+- **Query string, verzonden**in de HTTP GET-aanvraag teken reeks.
 
-Wanneer de **optie Body** is geconfigureerd, u met het technische profiel VAN de REST API een complex JSON-laadvermogen naar een eindpunt verzenden. Zie [Een JSON-payload verzenden voor](restful-technical-profile.md#send-a-json-payload)meer informatie.
+Wanneer de optie voor de **hoofd tekst** is geconfigureerd, kunt u met het technische profiel van rest API een complexe JSON-nettolading verzenden naar een eind punt. Zie [een JSON-Payload verzenden](restful-technical-profile.md#send-a-json-payload)voor meer informatie.
 
 ## <a name="receiving-data"></a>Gegevens ontvangen
 
-Het `OutputClaims` element van het [technische profiel RESTful](restful-technical-profile.md) bevat een lijst met claims die zijn geretourneerd door de REST API. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de REST-API. U ook claims opnemen die niet worden geretourneerd door de REST API-identiteitsprovider, zolang u het kenmerk DefaultValue instelt.
+Het `OutputClaims` element van het [onderhouds technische profiel](restful-technical-profile.md) bevat een lijst met claims die zijn geretourneerd door de rest API. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de REST API. U kunt ook claims toevoegen die niet worden geretourneerd door de REST API ID-provider, zolang u het kenmerk DefaultValue hebt ingesteld.
 
-De output claims ontleed door de RESTful claims provider altijd verwachten dat een platte JSON Body reactie ontleden, zoals:
+De uitvoer claims die worden geparseerd door de claim provider voor de REST, verwachten altijd een platte JSON-hoofd tekst te parseren, zoals:
 
 ```json
 {
@@ -86,7 +86,7 @@ De output claims ontleed door de RESTful claims provider altijd verwachten dat e
 }
 ```
 
-De uitvoerclaims moeten er als volgt uitzien:
+De uitvoer claims moeten er als volgt uitzien:
 
 ```xml
 <OutputClaims>
@@ -96,7 +96,7 @@ De uitvoerclaims moeten er als volgt uitzien:
 </OutputClaims>
 ```
 
-Als u een geneste JSON-bodyrespons wilt ontleden, stelt u de metagegevens van ResolveJsonPathsInJsonTokens in op true. Stel in de uitvoerclaim het PartnerClaimType in op het JSON-padelement dat u wilt uitvoeren.
+Als u een geneste JSON-hoofd tekst wilt parseren, stelt u de ResolveJsonPathsInJsonTokens-meta gegevens in op True. Stel in de uitvoer claim de PartnerClaimType in op het JSON-padcomponent-element dat u wilt uitvoeren.
 
 ```json
 "contacts": [
@@ -118,7 +118,7 @@ Als u een geneste JSON-bodyrespons wilt ontleden, stelt u de metagegevens van Re
 ```
 
 
-De uitvoerclaims moeten er als volgt uitzien:
+De uitvoer claims moeten er als volgt uitzien:
 
 ```xml
 <OutputClaims>
@@ -130,17 +130,17 @@ De uitvoerclaims moeten er als volgt uitzien:
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
-U moet uw REST API-eindpunt beschermen, zodat alleen geverifieerde clients ermee kunnen communiceren. De REST API moet een HTTPS-eindpunt gebruiken. Stel de metagegevens van AuthenticationType in op een van de volgende verificatiemethoden:
+U moet uw REST API-eind punt beveiligen zodat alleen geverifieerde clients ermee kunnen communiceren. Het REST API moet een HTTPS-eind punt gebruiken. Stel de AuthenticationType-meta gegevens in op een van de volgende verificatie methoden:
 
-- **Clientcertificaat** beperkt de toegang met behulp van clientcertificaatverificatie. Alleen services met de juiste certificaten hebben toegang tot uw API. U slaat het clientcertificaat op in een Azure AD B2C-beleidssleutel. Meer informatie over het [beveiligen van uw RESTful-service met clientcertificaten.](secure-rest-api.md#https-client-certificate-authentication)
-- **Basic** beveiligt de REST API met HTTP basic authentication. Alleen geverifieerde gebruikers, waaronder Azure AD B2C, hebben toegang tot uw API. De gebruikersnaam en het wachtwoord worden opgeslagen in Azure AD B2C-beleidssleutels. Meer informatie over het [beveiligen van uw RESTful-services met http-basisverificatie.](secure-rest-api.md#http-basic-authentication)
-- **Drager** beperkt de toegang met behulp van een client OAuth2 access token. Het toegangstoken wordt opgeslagen in een Azure AD B2C-beleidssleutel. Meer informatie over het [beveiligen van uw RESTful-service met behulp van Bearer-token.](secure-rest-api.md#oauth2-bearer-authentication)
+- **Client certificaat** beperkt de toegang door gebruik te maken van verificatie op basis van client certificaten. Alleen services die over de juiste certificaten beschikken, hebben toegang tot uw API. U slaat het client certificaat op in een Azure AD B2C-beleids sleutel. Meer informatie over hoe u [uw rest-service kunt beveiligen met behulp van client certificaten](secure-rest-api.md#https-client-certificate-authentication).
+- **Basic** beveiligt de rest API met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De gebruikers naam en het wacht woord worden opgeslagen in Azure AD B2C-beleids sleutels. Meer informatie over het [beveiligen van uw rest-Services met behulp van HTTP-basis verificatie](secure-rest-api.md#http-basic-authentication).
+- **Bearer** beperkt de toegang met behulp van een OAuth2-toegangs token van de client. Het toegangs token wordt opgeslagen in een Azure AD B2C-beleids sleutel. Meer informatie over hoe u [uw rest-service kunt beveiligen met behulp van Bearer-tokens](secure-rest-api.md#oauth2-bearer-authentication).
 
-## <a name="rest-api-platform"></a>REST API-platform
-Uw REST API kan worden gebaseerd op elk platform en geschreven in elke programmeertaal, zolang deze veilig is en claims kan verzenden en ontvangen zoals gespecificeerd in [restful technisch profiel.](restful-technical-profile.md)
+## <a name="rest-api-platform"></a>REST API platform
+Uw REST API kan worden gebaseerd op elk platform en worden geschreven in elke programmeer taal, zolang deze veilig is en claims kan verzenden en ontvangen zoals is opgegeven in een onderliggend [technisch profiel](restful-technical-profile.md).
 
-## <a name="localize-the-rest-api"></a>De REST-API lokaliseren
-In een RESTful technisch profiel u de taal/landing van de huidige sessie verzenden en indien nodig een gelokaliseerd foutbericht insturen. Met behulp van de [claimresolver](claim-resolver-overview.md)u een contextuele claim verzenden, zoals de gebruikerstaal. In het volgende voorbeeld wordt een RESTful technisch profiel weergegeven dat dit scenario aantoont.
+## <a name="localize-the-rest-api"></a>De REST API lokaliseren
+In een onderliggend technisch profiel wilt u mogelijk de taal/land instelling van de huidige sessie verzenden en zo nodig een gelokaliseerd fout bericht genereren. Met de [claim resolver](claim-resolver-overview.md)kunt u een contextuele claim verzenden, zoals de gebruikers taal. In het volgende voor beeld ziet u een onderliggend technisch profiel met een demonstratie van dit scenario.
 
 ```XML
 <TechnicalProfile Id="REST-ValidateUserData">
@@ -160,27 +160,27 @@ In een RESTful technisch profiel u de taal/landing van de huidige sessie verzend
 </TechnicalProfile>
 ```
 
-## <a name="handling-error-messages"></a>Foutberichten verwerken
+## <a name="handling-error-messages"></a>Fout berichten verwerken
 
-Uw REST-API moet mogelijk een foutbericht retourneren, zoals 'De gebruiker is niet in het CRM-systeem gevonden'. Als er een fout optreedt, moet de REST API een HTTP 409-foutbericht (Statuscode conflictrespons) retourneren. Zie voor meer informatie het [technische profiel van RESTful](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
+Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie). Zie het [rest technische profiel](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message)voor meer informatie.
 
-Dit kan alleen worden bereikt door een REST API technisch profiel aan te roepen vanuit een validatietechnisch profiel. Hierdoor kan de gebruiker de gegevens op de pagina corrigeren en de validatie opnieuw uitvoeren bij het indienen van de pagina.
+Dit kan alleen worden bereikt door een REST API technisch profiel aan te roepen vanuit een validatie technische profiel. Hiermee kan de gebruiker de gegevens op de pagina corrigeren en de validatie opnieuw uitvoeren bij het verzenden van de pagina.
 
-Een HTTP 409-antwoord is vereist om te voorkomen dat eventuele latere validatietechnische profielen binnen deze orkestratiestap worden verwerkt.
+Een HTTP 409-antwoord is vereist om te voor komen dat volgende validatie technische profielen binnen deze Orchestration-stap worden verwerkt.
 
-Als u rechtstreeks vanuit een gebruikersreis naar een REST API-technisch profiel verwijst, wordt de gebruiker met het desbetreffende foutbericht teruggestuurd naar de toepassing van de relying party.
+Als u rechtstreeks naar een REST API technisch profiel verwijst vanuit een gebruikers traject, wordt de gebruiker omgeleid naar de Relying Party toepassing met het relevante fout bericht.
 
-## <a name="publishing-your-rest-api"></a>Uw REST-API publiceren
+## <a name="publishing-your-rest-api"></a>Uw REST API publiceren
 
-De aanvraag voor uw REST API-service is afkomstig van Azure AD B2C-servers. De REST API-service moet worden gepubliceerd naar een openbaar toegankelijk HTTPS-eindpunt. De REST API-aanroepen komen van een IP-adres van een Azure-datacenter.
+De aanvraag voor uw REST API-service is afkomstig van Azure AD B2C-servers. De REST API-service moet worden gepubliceerd op een openbaar toegankelijk HTTPS-eind punt. De REST API-aanroepen worden ontvangen van een Azure Data Center-IP-adres.
 
-Ontwerp uw REST API-service en de onderliggende componenten (zoals de database en het bestandssysteem) om zeer beschikbaar te zijn.
+Ontwerp uw REST API-service en de onderliggende onderdelen (zoals de data base en het bestands systeem) die Maxi maal beschikbaar zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor voorbeelden van het gebruik van een RESTful technisch profiel:
+Raadpleeg de volgende artikelen voor voor beelden van het gebruik van een reactief technisch profiel:
 
-- [Walkthrough: Integratie van REST API-claims uitwisselingen in uw Azure AD B2C-gebruikersreis als validatie van gebruikersinvoer](custom-policy-rest-api-claims-validation.md)
-- [Walkthrough: Rest API-claims uitwisselingen toevoegen aan aangepast beleid in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
-- [Uw REST API-services beveiligen](secure-rest-api.md)
-- [Referentie: RESTful technisch profiel](restful-technical-profile.md)
+- [Walkthrough: REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers door voeren als validatie van gebruikers invoer](custom-policy-rest-api-claims-validation.md)
+- [Walkthrough: REST API claims-uitwisselingen toevoegen aan aangepaste beleids regels in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
+- [Uw REST API Services beveiligen](secure-rest-api.md)
+- [Referentie: technisch profiel (REST)](restful-technical-profile.md)

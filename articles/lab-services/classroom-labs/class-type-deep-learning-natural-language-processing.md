@@ -1,6 +1,6 @@
 ---
-title: Een lab opzetten dat is gericht op deep learning met Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het opzetten van een lab om shell scripting op Linux te leren.
+title: Stel een lab in dat is gericht op diep leren met behulp van Azure Lab Services | Microsoft Docs
+description: Meer informatie over het instellen van een Lab voor het leren van shell scripting op Linux.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257756"
 ---
-# <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Een lab opzetten dat zich richt op deep learning in natuurlijke taalverwerking met Azure Lab Services
-In dit artikel ziet u hoe u een lab instelt dat is gericht op deep learning in natural language processing (NLP) met Azure Lab Services. Natural language processing (NLP) is een vorm van kunstmatige intelligentie (AI) waarmee computers met vertaal-, spraakherkennings- en andere mogelijkheden voor taalbegrip kunnen worden gebruikt.  
+# <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
+In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  
 
-Studenten die een NLP-klas volgen, krijgen een Linux virtuele machine (VM) om te leren hoe ze neurale netwerkalgoritmen kunnen toepassen om deep learning-modellen te ontwikkelen die worden gebruikt voor het analyseren van geschreven menselijke taal. 
+Studenten die een NLP-klasse gebruiken, halen een virtuele Linux-machine (VM) op voor meer informatie over het Toep assen van Neural-netwerk algoritmen voor het ontwikkelen van diepe leer modellen die worden gebruikt voor het analyseren van geschreven menselijke talen. 
 
-## <a name="lab-configuration"></a>Labconfiguratie
-Om dit lab in te stellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt, u een nieuw labaccount maken in Azure Lab Services of een bestaand labaccount gebruiken. Zie de volgende zelfstudie voor het maken van een nieuw labaccount: [Zelfstudie om een Lab-account op te zetten](tutorial-setup-lab-account.md).
+## <a name="lab-configuration"></a>Lab-configuratie
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt, kunt u een nieuw Lab-account maken in Azure Lab Services of een bestaand Lab-account gebruiken. Raadpleeg de volgende zelf studie voor het maken van een nieuw Lab-account: [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md).
  
-Nadat u het labaccount hebt gemaakt, schakelt u de volgende instellingen in het labaccount in: 
+Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het lab-account in: 
 
-| Lab-accountinstelling | Instructies |
+| Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-afbeeldingen | Schakel de Data Science Virtual Machine for Linux (Ubuntu) afbeelding in voor gebruik binnen uw labaccount.  Zie het volgende artikel voor instructies: [Geef marktplaatsafbeeldingen op die beschikbaar zijn voor makers van het lab.](specify-marketplace-images.md) | 
+| Marketplace-installatie kopieën | De Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu) inschakelen voor gebruik binnen uw Lab-account.  Zie het volgende artikel voor instructies: [Geef Marketplace-installatie kopieën op die beschikbaar zijn voor Lab-makers](specify-marketplace-images.md). | 
 
-Volg [deze zelfstudie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
+Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
-| Virtuele machine (VM) grootte | Kleine GPU (Compute). Deze grootte is het meest geschikt voor rekenintensieve en netwerkintensieve toepassingen zoals Artificial Intelligence en Deep Learning. |
-| VM-afbeelding | [Data Science Virtual Machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Dit beeld biedt deep learning frameworks en tools voor machine learning en data science. Zie het volgende artikel: Wat staat er op [de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
-| Verbinding met extern bureaublad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines (VM) via Extern bureaublad (RDP).</p><p>**Belangrijk:** RDP is al geïnstalleerd en geconfigureerd op de Data Science Virtual Machine voor Linux image. Hierdoor kunnen docenten/studenten zonder extra stappen verbinding maken met VM's via RDP. Als u verbinding wilt maken met het grafische bureaublad, heeft deze afbeelding [x2Go-server](https://wiki.x2go.org/doku.php/doc:newtox2go) al geïnstalleerd op de virtuele machine. Studenten moeten X2Go-client installeren op hun lokale machines en de client gebruiken voor verbinding. Zie de volgende hulplijnen voor meer informatie: <ul><li>[Toegang krijgen tot de Data Science Virtual Machine voor Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Verbinding maken met de sjabloon-VM om RDP- en GUI-pakketten te installeren](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Grootte van virtuele machine (VM) | Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
+| VM-installatie kopie | [Data Science virtual machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Deze afbeelding biedt diep gaande frameworks en hulp middelen voor machine learning en gegevens wetenschap. Als u de volledige lijst met geïnstalleerde hulpprogram ma's op deze installatie kopie wilt weer geven, raadpleegt u het volgende artikel: [Wat is opgenomen in de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
+| Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun Virtual Machines (VM) met behulp van Extern bureaublad (RDP).</p><p>**Belang rijk**: RDP is al geïnstalleerd en geconfigureerd op de installatie kopie van data Science virtual machine voor Linux. Als gevolg hiervan kunnen docenten/studenten zonder extra stappen verbinding maken met Vm's via RDP. Als u verbinding moet maken met het grafische bureau blad, heeft deze installatie kopie al een [X2Go-server](https://wiki.x2go.org/doku.php/doc:newtox2go) geïnstalleerd op de virtuele machine. Studenten moeten de X2Go-client installeren op hun lokale computers en de client gebruiken om verbinding te maken. Zie de volgende hand leidingen voor meer informatie: <ul><li>[Toegang tot de Data Science Virtual Machine voor Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Verbinding maken met de VM van de sjabloon voor het installeren van RDP-en GUI-pakketten](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
-De Data Science Virtual Machine voor Linux-afbeelding biedt de nodige deep learning frameworks en tools die nodig zijn voor dit type klasse. Als gevolg hiervan hoeft u deze na het maken van de sjabloonmachine niet verder aan te passen. Het kan worden gepubliceerd voor studenten om te gebruiken. Selecteer de knop **Publiceren** op de sjabloonpagina om de sjabloon naar het lab te publiceren.  
+De installatie kopie van Data Science Virtual Machine voor Linux biedt de nodige diepe leer raamwerken en hulp middelen die vereist zijn voor dit type klasse. Als gevolg hiervan hoeft u de computer niet verder aan te passen nadat u de sjabloon hebt gemaakt. Het kan worden gepubliceerd voor studenten om te gebruiken. Selecteer de knop **publiceren** op de sjabloon pagina om de sjabloon te publiceren naar het lab.  
 
 ## <a name="cost"></a>Kosten
-Als u de kosten van dit lab wilt schatten, u het volgende voorbeeld gebruiken: 
+Als u de kosten van dit Lab wilt schatten, kunt u het volgende voor beeld gebruiken: 
 
-Voor een klas van 25 studenten met 20 uur geplande lestijd en 10 uur quotum voor huiswerk of opdrachten, zou de prijs voor het lab zijn - 25 studenten * (20 + 10) uur * 139 Lab Units * 0,01 USD per uur = 1042,5 USD
+Voor een klasse van 25 studenten met 20 uur geplande en tien uur quota voor huis werk of-toewijzingen, is de prijs voor het lab-25 studenten * (20 + 10) uur * 139 Lab-eenheden * 0,01 USD per uur = 1042,5 USD
 
-Meer informatie over prijzen, zie [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
 
 ## <a name="conclusion"></a>Conclusie
-Dit artikel liep u door de stappen om een lab voor natuurlijke taal verwerking klasse te creëren. U een vergelijkbare instelling gebruiken voor andere deep learning-klassen.
+In dit artikel werd uitgelegd hoe u stapsgewijs door de stappen voor het maken van een Lab voor de natuurlijke taal verwerkings klasse. U kunt een vergelijk bare installatie gebruiken voor andere diep gaande lessen.
 
 ## <a name="next-steps"></a>Volgende stappen
-De volgende stappen zijn gebruikelijk voor het instellen van een lab:
+De volgende stappen zijn gebruikelijk voor het instellen van elk lab:
 
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Quotum instellen](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Een schema instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Links naar registratie via e-mail naar studenten](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users). 
 

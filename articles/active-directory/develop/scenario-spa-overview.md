@@ -1,6 +1,6 @@
 ---
-title: JavaScript-scenario voor apps met één pagina - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een toepassing van één pagina (scenariooverzicht) met behulp van het Microsoft-identiteitsplatform.
+title: 'Java script: app-scenario met één pagina-micro soft Identity-platform | Azure'
+description: Meer informatie over het maken van een toepassing met één pagina (scenario-overzicht) met behulp van het micro soft Identity-platform.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885171"
 ---
 # <a name="scenario-single-page-application"></a>Scenario: toepassing met één pagina
 
-Leer alles wat je nodig hebt om een applicatie van één pagina (SPA) te bouwen.
+Meer informatie over wat u nodig hebt om een toepassing met één pagina (SPA) te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,28 +28,28 @@ Leer alles wat je nodig hebt om een applicatie van één pagina (SPA) te bouwen.
 
 ## <a name="getting-started"></a>Aan de slag
 
-U uw eerste toepassing maken door de JavaScript SPA quickstart te volgen:
+U kunt uw eerste toepassing maken met behulp van de Java script SPA Quick Start:
 
 > [!div class="nextstepaction"]
-> [Snelstart: toepassing met één pagina](./quickstart-v2-javascript.md)
+> [Snelstartgids: toepassing met één pagina](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Overzicht
 
-Veel moderne webapplicaties zijn gebouwd als client-side single-page applicaties. Ontwikkelaars schrijven ze met Behulp van JavaScript of een SPA-framework zoals Angular, Vue.js en React.js. Deze toepassingen draaien op een webbrowser en hebben andere verificatiekenmerken dan traditionele webtoepassingen aan de serverzijde. 
+Veel moderne webtoepassingen zijn gebouwd als toepassingen met één pagina aan de client zijde. Ontwikkel aars schrijven ze met Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, vue. js en reageren. js. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. 
 
-Het Microsoft-identiteitsplatform maakt toepassingen met één pagina in staat om gebruikers aan te melden en tokens toegang te krijgen tot back-endservices of web-API's met behulp van de [impliciete stroom van OAuth 2.0.](./v2-oauth2-implicit-grant-flow.md) De impliciete stroom stelt de toepassing in staat om ID-tokens te krijgen om de geverifieerde gebruiker te vertegenwoordigen en ook toegang te krijgen tot tokens die nodig zijn om beveiligde API's te bellen.
+Met het micro soft Identity-platform kunnen toepassingen met één pagina worden aangemeld en tokens worden opgehaald voor toegang tot back-end-services of Web-Api's met behulp van de [impliciete OAuth 2,0-stroom](./v2-oauth2-implicit-grant-flow.md). Met de impliciete stroom kan de toepassing ID-tokens ophalen die de geverifieerde gebruiker vertegenwoordigen en ook toegangs tokens hebben die nodig zijn om beveiligde Api's aan te roepen.
 
 ![Toepassingen met één pagina](./media/scenarios/spa-app.svg)
 
-Deze verificatiestroom bevat geen toepassingsscenario's die gebruikmaken van JavaScript-frameworks met meerdere platforms, zoals Electron en React-Native. Ze vereisen verdere mogelijkheden voor interactie met de native platforms.
+In deze verificatie stroom zijn geen toepassings scenario's opgenomen die gebruikmaken van platformoverschrijdende java script frameworks zoals elektroden en reageren op systeem eigen. Ze vereisen verdere mogelijkheden voor interactie met de systeem eigen platformen.
 
-## <a name="specifics"></a>Details
+## <a name="specifics"></a>Opsporingsgegevens
 
-Als u dit scenario voor uw toepassing wilt inschakelen, moet u het:
+U hebt het volgende nodig om dit scenario voor uw toepassing in te scha kelen:
 
-* Toepassingsregistratie met Azure Active Directory (Azure AD). Deze registratie omvat het inschakelen van de impliciete stroom en het instellen van een omleiding URI naar welke tokens worden geretourneerd.
-* Toepassingsconfiguratie met de geregistreerde toepassingseigenschappen, zoals toepassings-id.
-* Met behulp van Microsoft Authentication Library (MSAL) om de verificatiestroom uit te brengen om in te loggen en tokens te verwerven.
+* Registratie van toepassingen met Azure Active Directory (Azure AD). Deze registratie omvat het inschakelen van de impliciete stroom en het instellen van een omleidings-URI waarmee tokens worden geretourneerd.
+* Toepassings configuratie met de geregistreerde toepassings eigenschappen, zoals de toepassings-ID.
+* Micro soft Authentication Library (MSAL) gebruiken om de verificatie stroom uit te voeren en tokens te verkrijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

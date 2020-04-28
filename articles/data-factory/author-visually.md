@@ -1,5 +1,5 @@
 ---
-title: Visueel ontwerpen
+title: Visuele ontwerpen
 description: Meer informatie over het gebruik van visuele ontwerpen in Azure Data Factory
 services: data-factory
 ms.service: data-factory
@@ -11,50 +11,50 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418487"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visueel ontwerpen in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Met de gebruikersinterface-ervaring (Azure Data Factory) u resources voor uw gegevensfabriek visueel maken en implementeren zonder dat u code hoeft te schrijven. U activiteiten naar een pijplijncanvas slepen, testuitvoeringen uitvoeren, iteratief debuggen en uw pijplijnuitvoeringen implementeren en controleren.
+Met de Azure Data Factory gebruikers interface-ervaring (UX) kunt u resources visueel ontwerpen en implementeren voor uw data factory zonder dat u code hoeft te schrijven. U kunt activiteiten naar een pijplijn doek slepen, test uitvoeringen uitvoeren, iteratief fouten opsporen en uw pijplijn uitvoeringen implementeren en bewaken.
 
-Momenteel wordt de UX azure datafactory alleen ondersteund in Microsoft Edge en Google Chrome.
+Op dit moment wordt de Azure Data Factory UX alleen ondersteund in micro soft Edge en Google Chrome.
 
-## <a name="authoring-canvas"></a>Ontwerpcanvas
+## <a name="authoring-canvas"></a>Canvas ontwerpen
 
-Als u het **ontwerpcanvas wilt**openen, klikt u op het potloodpictogram. 
+Klik op het potlood pictogram om het **ontwerp canvas**te openen. 
 
-![Ontwerpcanvas](media/author-visually/authoring-canvas.png)
+![Canvas ontwerpen](media/author-visually/authoring-canvas.png)
 
-Hier maakt u de pijplijnen, activiteiten, gegevenssets, gekoppelde services, gegevensstromen, triggers en integratie-looptijden die uw fabriek omvatten. Zie [Gegevens kopiëren met de kopieeractiviteit](tutorial-copy-data-portal.md)als u aan de slag wilt gaan met het maken van een pijplijn met het ontwerpcanvas. 
+Hier maakt u een ontwerp van de pijp lijnen, activiteiten, gegevens sets, gekoppelde services, gegevens stromen, triggers en Integration Runtimes waaruit uw fabriek bestaat. Zie [gegevens kopiëren met behulp van de Kopieer activiteit](tutorial-copy-data-portal.md)om aan de slag te gaan met het maken van een pijp lijn met behulp van het ontwerp doek. 
 
-De standaardervaring voor visuele ontwerpbewerking werkt rechtstreeks met de Data Factory-service. Azure Repos Git- of GitHub-integratie wordt ook ondersteund om bronbeheer en samenwerking mogelijk te maken voor het werken aan uw pijplijnen in de gegevensfabriek. Zie [Bronbeheer in Azure Data Factory](source-control.md)voor meer informatie over de verschillen tussen deze ontwerpervaringen.
+De standaard ervaring voor het ontwerpen van visuele elementen werkt rechtstreeks met de Data Factory-service. De integratie van Azure opslag plaatsen git of GitHub wordt ook ondersteund om broncode beheer en samen werking mogelijk te maken voor werk op uw data factory-pijp lijnen. Zie [broncode beheer in azure Data Factory](source-control.md)voor meer informatie over de verschillen tussen deze ontwerp ervaring.
 
 ## <a name="expressions-and-functions"></a>Expressies en functies
 
-Expressies en functies kunnen worden gebruikt in plaats van statische waarden om veel eigenschappen op te geven in Azure Data Factory.
+Expressies en functies kunnen worden gebruikt in plaats van statische waarden om veel eigenschappen in Azure Data Factory op te geven.
 
-Als u een expressie voor een eigenschapswaarde wilt opgeven, selecteert u **Dynamische inhoud toevoegen** of klikt u op Alt + **P** terwijl u zich op het veld concentreert.
+Als u een expressie voor een eigenschaps waarde wilt opgeven, selecteert u **dynamische inhoud toevoegen** of klikt u op **Alt + P** bij focus op het veld.
 
 ![Dynamische inhoud toevoegen](media/author-visually/dynamic-content-1.png)
 
-Hiermee wordt de **Opbouwfunctie voor gegevensfabrieksexpressies geopend,** waar u expressies bouwen op basis van ondersteunde systeemvariabelen, activiteitsuitvoer, functies en door de gebruiker opgegeven variabelen of parameters. 
+Hiermee opent u de **opbouw functie voor Data Factory Expression** , waar u expressies kunt bouwen op basis van ondersteunde systeem variabelen, uitvoer van activiteiten, functies en door de gebruiker opgegeven variabelen of para meters. 
 
 ![Opbouwfunctie voor expressies](media/author-visually/dynamic-content-2.png)
 
-Zie [Expressies en functies in Azure Data Factory](control-flow-expression-language-functions.md)voor informatie over de expressietaal.
+Zie [expressies en functies in azure Data Factory](control-flow-expression-language-functions.md)voor meer informatie over de taal van de expressie.
 
 ## <a name="provide-feedback"></a>Feedback geven
 
-Selecteer **Feedback** om opmerkingen te maken over functies of om Microsoft op de hoogte te stellen van problemen met het hulpprogramma:
+Selecteer **feedback** om commentaar te geven over functies of om micro soft op de hoogte te stellen over problemen met het hulp programma:
 
 ![Feedback](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Pijplijnen programmatisch controleren en beheren](monitor-programmatically.md)voor meer informatie over het bewaken en beheren van pijplijnen.
+Zie [pijp lijnen bewaken en beheren via een programma](monitor-programmatically.md)voor meer informatie over het controleren en beheren van pijp lijnen.

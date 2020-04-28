@@ -1,6 +1,6 @@
 ---
-title: Werken met bestaande on-premises proxyservers en Azure AD | Microsoft Documenten
-description: Dekt hoe u werken met bestaande on-premises proxyservers.
+title: Werken met bestaande on-premises proxy servers en Azure AD | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u kunt werken met bestaande on-premises proxy servers.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,21 +13,21 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877385"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
-In dit artikel wordt uitgelegd hoe u Azure Active Directory -toepassingsproxyconnectors (Azure AD) configureert om te werken met uitgaande proxyservers. Het is bedoeld voor klanten met netwerkomgevingen met bestaande proxy's.
+In dit artikel wordt uitgelegd hoe u de connectors van de toepassings proxy van Azure Active Directory (Azure AD) kunt configureren voor gebruik met uitgaande proxy servers. Het is bedoeld voor klanten met netwerkomgevingen met bestaande proxy's.
 
-We beginnen met het bekijken van deze belangrijkste implementatiescenario's:
+We gaan nu naar deze belangrijkste implementatie scenario's kijken:
 
-* Configureer connectors om uw on-premises uitgaande proxy's te omzeilen.
-* Configureer connectors om een uitgaande proxy te gebruiken om toegang te krijgen tot Azure AD Application Proxy.
-* Configureren met behulp van een proxy tussen de connector en backend-toepassing.
+* Connectors configureren om uw on-premises uitgaande proxy's over te slaan.
+* Connectors configureren voor het gebruik van een uitgaande proxy om toegang te krijgen tot Azure AD-toepassingsproxy.
+* Configureer het gebruik van een proxy tussen de connector en de back-end-toepassing.
 
 Zie [Meer informatie over Azure AD-toepassingsproxyconnectoren](application-proxy-connectors.md) voor meer informatie over de werking van connectoren.
 
@@ -39,7 +39,7 @@ De besturingssysteemonderdelen zoeken een proxyserver door een DNS-zoekactie voo
 
 U kunt de connector configureren om uw on-premises proxy over te slaan, zodat u zeker weet dat de connector rechtstreeks is verbonden met de Azure-services. Dit is de aanbevolen methode zolang deze mogelijk is volgens uw netwerkbeleid, omdat u in dit geval één configuratie minder hoeft te onderhouden.
 
-Als u uitgaand proxygebruik voor de connector wilt uitschakelen, bewerkt u het C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config bestand en voegt u de *system.net* sectie toe die in dit codevoorbeeld wordt weergegeven:
+Als u het uitgaande proxy gebruik voor de connector wilt uitschakelen, bewerkt u het Connector\ApplicationProxyConnectorService.exe.config-bestand voor de C:\Program Files\Microsoft AAD-app-proxy en voegt u de sectie *System.net* toe, zoals weer gegeven in dit code voorbeeld:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -56,28 +56,28 @@ Als u uitgaand proxygebruik voor de connector wilt uitschakelen, bewerkt u het C
 </configuration>
 ```
 
-Als u ervoor wilt zorgen dat de connectorupdater-service ook de proxy omzeilt, voert u een vergelijkbare wijziging aan in het bestand ApplicationProxyConnectorUpdaterService.exe.config. Dit bestand bevindt zich op C:\Program Files\Microsoft AAD App Proxy Connector Updater.
+Om ervoor te zorgen dat de Connector Updater-service ook de proxy omzeilt, maakt u een vergelijk bare wijziging in het bestand ApplicationProxyConnectorUpdaterService. exe. config. Dit bestand bevindt zich in C:\Program Files\Microsoft AAD app proxy Connector Updater.
 
 Vergeet niet om kopieën van de oorspronkelijke bestanden te maken, in het geval u de .config-bestanden naar de standaardinstellingen moet terugzetten.
 
-## <a name="use-the-outbound-proxy-server"></a>De uitgaande proxyserver gebruiken
+## <a name="use-the-outbound-proxy-server"></a>De uitgaande proxy server gebruiken
 
-Voor sommige omgevingen is al het uitgaande verkeer vereist dat deze zonder uitzondering door een uitgaande proxy gaat. Als gevolg hiervan is het omzeilen van de proxy geen optie.
+In sommige omgevingen moet al het uitgaande verkeer via een uitgaande proxy zonder uitzonde ring worden door lopen. Als gevolg hiervan is het overs laan van de proxy geen optie.
 
-U het verbindingsverkeer zo configureren dat deze door de uitgaande proxy gaat, zoals in het volgende diagram wordt weergegeven:
+U kunt het connector verkeer configureren om via de uitgaande proxy door te gaan, zoals wordt weer gegeven in het volgende diagram:
 
- ![Connectorverkeer configureren om via een uitgaande proxy naar Azure AD-toepassingsproxy te gaan](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
+ ![Connector verkeer configureren om door te gaan met een uitgaande proxy naar Azure AD-toepassingsproxy](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
 
-Als gevolg van alleen uitgaand verkeer, is het niet nodig om binnenkomende toegang via uw firewalls te configureren.
+Als gevolg van alleen uitgaand verkeer, hoeft u geen inkomende toegang via uw firewalls te configureren.
 
 > [!NOTE]
-> Application Proxy ondersteunt geen verificatie naar andere proxy's. De netwerkserviceaccounts van de connector/updater moeten verbinding kunnen maken met de proxy zonder te worden uitgedaagd voor verificatie.
+> Toepassings proxy biedt geen ondersteuning voor verificatie voor andere proxy's. De connector-en Updater netwerk service accounts moeten verbinding kunnen maken met de proxy zonder te worden bevraagd voor authenticatie.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Stap 1: De connector en gerelateerde services configureren om door de uitgaande proxy te gaan
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Stap 1: de connector en gerelateerde services configureren om via de uitgaande proxy door te gaan
 
-Als WPAD is ingeschakeld in de omgeving en op de juiste manier is geconfigureerd, detecteert de connector automatisch de uitgaande proxyserver en probeert deze te gebruiken. U de connector echter expliciet configureren om via een uitgaande proxy te gaan.
+Als WPAD is ingeschakeld in de omgeving en op de juiste wijze is geconfigureerd, detecteert de connector automatisch de uitgaande proxy server en probeert deze te gebruiken. U kunt de connector echter expliciet configureren om door te gaan met een uitgaande proxy.
 
-Bewerk hiervoor het C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config bestand en voeg de *system.net* sectie toe die in dit codevoorbeeld wordt weergegeven. Wijzig *proxyserver:8080* om de naam of het IP-adres van uw lokale proxyserver weer te geven en de poort waarop deze luistert. De waarde moet het voorvoegsel hebben http://, zelfs als u een IP-adres gebruikt.
+U doet dit door het Connector\ApplicationProxyConnectorService.exe.config-bestand van de C:\Program Files\Microsoft AAD-app te bewerken en de sectie *System.net* toe te voegen die wordt weer gegeven in dit code voorbeeld. Wijzig *proxy server: 8080* zodat deze overeenkomt met de naam van uw lokale proxy server of IP-adres en de poort waarop deze luistert. De waarde moet het voor voegsel http://bevatten, zelfs als u een IP-adres gebruikt.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -96,112 +96,112 @@ Bewerk hiervoor het C:\Program Files\Microsoft AAD App Proxy Connector\Applicati
 </configuration>
 ```
 
-Configureer vervolgens de connectorupdater-service om de proxy te gebruiken door een vergelijkbare wijziging aan te brengen in het c:\Program Files\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config bestand.
+Configureer vervolgens de Connector Updater-Service voor het gebruik van de proxy door een vergelijk bare wijziging aan te brengen in het bestand met de Updater\ApplicationProxyConnectorUpdaterService.exe.config voor de C:\Program Files\Microsoft AAD-app-connector.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Stap 2: De proxy configureren zodat verkeer van de connector en gerelateerde services door kan stromen
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Stap 2: Configureer de proxy zodanig dat verkeer van de connector en gerelateerde services wordt door lopen
 
-Er zijn vier aspecten te overwegen op de uitgaande proxy:
+Er zijn vier aspecten waarmee u rekening moet houden bij de uitgaande proxy:
 
-* Uitgaande proxyregels
-* Proxyverificatie
-* Proxypoorten
+* Regels voor uitgaande proxy
+* Proxy verificatie
+* Proxy poorten
 * TLS-inspectie
 
-#### <a name="proxy-outbound-rules"></a>Uitgaande proxyregels
+#### <a name="proxy-outbound-rules"></a>Regels voor uitgaande proxy
 
 Sta toegang tot de volgende URL's toe:
 
 | URL | Hoe dat wordt gebruikt |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze URL's om certificaten te verifiëren |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>*.microsoftonline-p.com<br>*.msauth.net<br>*.msauthimages.net<br>*.msecnd.net<br>*.msftauth.net<br>*.msftauthimages.net<br>*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze Url's om certificaten te verifiëren |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.net<br>*. msauthimages.net<br>*. msecnd.net<br>*. msftauth.net<br>*. msftauthimages.net<br>*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
 
-Als u met uw firewall of proxy DNS-lijst \*kunt configureren, u verbindingen toestaan om .msappproxy.net en \*.servicebus.windows.net. Als dat niet het geval is, moet u toegang toestaan tot de [IP-bereiken van Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653), die overigens elke week worden bijgewerkt.
+Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen \*met. msappproxy.net \*en. servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang toestaan tot de [IP-bereiken van Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653), die overigens elke week worden bijgewerkt.
 
-Als u geen connectiviteit per FQDN toestaan en in plaats daarvan IP-bereiken moet opgeven, gebruikt u de volgende opties:
+Als u geen verbinding kunt maken met FQDN en u in plaats daarvan IP-bereiken moet opgeven, gebruikt u de volgende opties:
 
-* Geef de connector uitgaande toegang tot alle bestemmingen.
-* Geef de connector uitgaande toegang tot alle [IP-bereiken van Azure-datacenters.](https://www.microsoft.com//download/details.aspx?id=41653) De uitdaging met het gebruik van de lijst met AZURE datacenter IP-bereiken is dat het wekelijks wordt bijgewerkt. U moet een proces invoeren om ervoor te zorgen dat uw toegangsregels dienovereenkomstig worden bijgewerkt. Alleen het gebruik van een subset van de IP-adressen kan ertoe leiden dat uw configuratie wordt afgebroken.
+* Hiermee staat u de uitgaande toegang van de connector tot alle doelen toe.
+* Hiermee wordt de uitgaande toegang van de connector tot alle [IP-bereiken van het Azure-Data Center](https://www.microsoft.com//download/details.aspx?id=41653)toegestaan. De uitdaging bij het gebruik van de lijst met IP-bereiken van Azure Data Center is dat deze wekelijks wordt bijgewerkt. U moet een proces plaatsen om ervoor te zorgen dat uw toegangs regels dienovereenkomstig worden bijgewerkt. Alleen het gebruik van een subset van de IP-adressen kan ertoe leiden dat uw configuratie wordt verbroken.
 
-#### <a name="proxy-authentication"></a>Proxyverificatie
+#### <a name="proxy-authentication"></a>Proxy verificatie
 
-Proxyverificatie wordt momenteel niet ondersteund. Onze huidige aanbeveling is om de connector anonieme toegang tot de internetbestemmingen.
+Proxy authenticatie wordt momenteel niet ondersteund. Onze huidige aanbeveling is de connector anonieme toegang tot de Internet bestemmingen te geven.
 
-#### <a name="proxy-ports"></a>Proxypoorten
+#### <a name="proxy-ports"></a>Proxy poorten
 
-De connector maakt uitgaande TLS-verbindingen met behulp van de CONNECT-methode. Deze methode stelt in wezen een tunnel in via de uitgaande proxy. Configureer de proxyserver om tunneling naar poorten 443 en 80 mogelijk te maken.
+De connector maakt uitgaande op TLS gebaseerde verbindingen met behulp van de methode CONNECT. Met deze methode wordt in feite een tunnel ingesteld via de uitgaande proxy. Configureer de proxy server voor het toestaan van tunneling naar poorten 443 en 80.
 
 > [!NOTE]
-> Wanneer Service Bus over HTTPS rijdt, gebruikt deze poort 443. Service Bus probeert echter standaard directe TCP-verbindingen en valt alleen terug naar HTTPS als de directe verbinding mislukt.
+> Als Service Bus over HTTPS wordt uitgevoerd, wordt poort 443 gebruikt. Service Bus probeert echter standaard TCP-verbindingen te sturen en terug te vallen op HTTPS als de directe verbinding mislukt.
 
 #### <a name="tls-inspection"></a>TLS-inspectie
 
-Gebruik geen TLS-inspectie voor het verbindingsverkeer, omdat dit problemen veroorzaakt voor het verbindingsverkeer. De connector gebruikt een certificaat om te verifiëren aan de Application Proxy-service en dat certificaat kan verloren gaan tijdens tls-inspectie.
+Gebruik geen TLS-inspectie voor het connector verkeer, omdat dit problemen veroorzaakt voor het verkeer van de connector. De connector gebruikt een certificaat om te verifiëren bij de toepassings proxy service, en dat certificaat kan verloren gaan tijdens TLS-inspectie.
 
-## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Configureren met behulp van een proxy tussen de connector en backend-toepassing
-Het gebruik van een voorwaartse proxy voor de communicatie naar de backend-toepassing kan in sommige omgevingen een speciale vereiste zijn.
-Volg de volgende stappen om dit in te schakelen:
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Configureren met behulp van een proxy tussen de connector en de back-end-toepassing
+Het gebruik van een doorstuur proxy voor de communicatie naar de back-end-toepassing kan in sommige omgevingen een speciale vereiste zijn.
+Voer de volgende stappen uit om dit in te scha kelen:
 
-### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Stap 1: De vereiste registerwaarde toevoegen aan de server
-1. Als u de standaardproxy wilt inschakelen, voegt `UseDefaultProxyForBackendRequests = 1` u de volgende registerwaarde (DWORD) toe aan de registersleutel connectorconfiguratie in "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector".
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Stap 1: de vereiste register waarde toevoegen aan de server
+1. Als u het gebruik van de standaard proxy wilt inschakelen, voegt u de `UseDefaultProxyForBackendRequests = 1` volgende register waarde (DWORD) toe aan de register sleutel connector configuratie in ' HKEY_LOCAL_MACHINE \software\microsoft\microsoft Aad-app-connector.
 
-### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Stap 2: De proxyserver handmatig configureren met de opdracht NetSh
-1.  Schakel het groepsbeleid In Maak proxy-instellingen per machine. Dit is te vinden in: Computerconfiguratie\Beleid\Beheersjablonen\Windows Components\Internet Explorer. Dit moet worden ingesteld in plaats van dat dit beleid is ingesteld op per gebruiker.
-2.  Voer `gpupdate /force` uit op de server of start de server opnieuw op om ervoor te zorgen dat deze de bijgewerkte groepsbeleidsinstellingen gebruikt.
-3.  Start een opdrachtprompt met verhoogde `control inetcpl.cpl`bevoegdheid met beheerdersrechten en voer .
-4.  Configureer de vereiste proxy-instellingen. 
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Stap 2: Configureer de proxy server hand matig met de opdracht netsh
+1.  Schakel het groeps beleid proxy-instellingen per computer in. Dit vindt u in: Computerconfiguratie\beleid\beheersjablonen\windows-onderdelen\Extern Explorer. Deze moet worden ingesteld in plaats van dat dit beleid moet worden ingesteld op per gebruiker.
+2.  Voer `gpupdate /force` uit op de-server of start de server opnieuw op om ervoor te zorgen dat de bijgewerkte groeps beleids instellingen worden gebruikt.
+3.  Start een opdracht prompt met verhoogde bevoegdheid met beheerders rechten en `control inetcpl.cpl`Voer in.
+4.  Configureer de vereiste proxy instellingen. 
 
-Met deze instellingen wordt de connector dezelfde forward proxy gebruikt voor de communicatie naar Azure en naar de backend-toepassing. Als de connector voor Azure-communicatie geen forward proxy of een andere forward proxy vereist, u dit instellen met het wijzigen van het bestand ApplicationProxyConnectorService.exe.config zoals beschreven in de secties Bypass uitgaande proxy's of Gebruik de uitgaande proxyserver.
+Deze instellingen zorgen ervoor dat de connector dezelfde doorstuur proxy gebruikt voor de communicatie met Azure en de back-end-toepassing. Als voor de communicatie tussen de connector en Azure geen doorstuur proxy of een andere doorstuur proxy nodig is, kunt u dit instellen met het wijzigen van het bestand ApplicationProxyConnectorService. exe. config zoals beschreven in de secties uitgaande proxy's overs Laan of de uitgaande proxy server gebruiken.
 
-De connector updater service zal gebruik maken van de machine proxy ook. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService.exe.config te wijzigen.
+De connector Updater-Service gebruikt ook de computer proxy. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService. exe. config te wijzigen.
 
-## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problemen met de proxy van de connector oplossen en problemen met de serviceconnectiviteit oplossen
+## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problemen met Connector proxy en problemen met de service connectiviteit oplossen
 
-Nu moet je zien al het verkeer stroomt door de proxy. Als u problemen hebt, moet de volgende informatie over het oplossen van problemen helpen.
+Nu ziet u al het verkeer dat via de proxy stroom loopt. Als u problemen ondervindt, kunt u de volgende informatie over het oplossen van problemen ondervinden.
 
-De beste manier om verbindingsproblemen te identificeren en op te lossen, is door een netwerkopname te maken tijdens het starten van de connectorservice. Hier volgen enkele snelle tips over het vastleggen en filteren van netwerksporen.
+De beste manier om verbindings problemen met connectors op te sporen en op te lossen is het maken van een netwerk vastleggen tijdens het starten van de connector service. Hier volgen enkele tips voor het vastleggen en filteren van netwerk traceringen.
 
-U de monitoringtool van uw keuze gebruiken. Voor de toepassing van dit artikel hebben we Microsoft Message Analyzer gebruikt. U [het downloaden van Microsoft](https://www.microsoft.com/download/details.aspx?id=44226).
+U kunt het controle programma van uw keuze gebruiken. Voor de doel einden van dit artikel hebben we micro soft Message Analyzer gebruikt. U kunt [het downloaden van micro soft](https://www.microsoft.com/download/details.aspx?id=44226).
 
-De volgende voorbeelden zijn specifiek voor Message Analyzer, maar de principes kunnen worden toegepast op elke analysetool.
+De volgende voor beelden zijn specifiek voor Message Analyzer, maar de principes kunnen worden toegepast op elk analyse programma.
 
-### <a name="take-a-capture-of-connector-traffic"></a>Neem een opname van verbindingsverkeer
+### <a name="take-a-capture-of-connector-traffic"></a>Neem een opname van connector verkeer
 
-Voer de volgende stappen uit voor de eerste probleemoplossing:
+Voer de volgende stappen uit voor eerste probleem oplossing:
 
-1. Stop vanuit services.msc de Azure AD Application Proxy Connector-service.
+1. Stop de Azure AD-toepassingsproxy-connector service vanuit Services. msc.
 
-   ![Azure AD Application Proxy Connector-service in services.msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
+   ![Azure AD-toepassingsproxy-connector service in Services. msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
-1. Voer Message Analyzer uit als beheerder.
-1. Selecteer **Lokaal traceren starten**.
-1. Start de Azure AD Application Proxy Connector-service.
-1. Stop de netwerkopname.
+1. Voer Message Analyzer uit als Administrator.
+1. Selecteer **lokale tracering starten**.
+1. Start de service Azure AD-toepassingsproxy-connector.
+1. Stop de netwerk opname.
 
-   ![Schermafbeelding van de knop Netwerkvastleggen stoppen](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![Scherm afbeelding toont de knop netwerk opname stoppen](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
-### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Controleren of het verbindingsverkeer uitgaande proxy's omzeilt
+### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Controleren of het connector verkeer uitgaande proxy's omzeilt
 
-Als u de toepassingsproxyconnector hebt geconfigureerd om de proxyservers te omzeilen en rechtstreeks verbinding te maken met de application proxy-service, wilt u in de netwerkopname kijken naar mislukte TCP-verbindingspogingen.
+Als u de connector voor de toepassings proxy hebt geconfigureerd om de proxy servers te omzeilen en rechtstreeks verbinding te maken met de toepassings proxy service, wilt u zoeken in het netwerk vastleggen voor mislukte TCP-verbindings pogingen.
 
-Gebruik het filter Message Analyzer om deze pogingen te identificeren. Voer `property.TCPSynRetransmit` het filtervak in en selecteer **Toepassen**.
+Gebruik het filter Message Analyzer om deze pogingen te identificeren. Voer `property.TCPSynRetransmit` in het vak Filter in en selecteer **Toep assen**.
 
-Een SYN-pakket is het eerste pakket dat wordt verzonden om een TCP-verbinding tot stand te brengen. Als dit pakket geen antwoord retourneert, wordt de SYN opnieuw geprobeerd. U het vorige filter gebruiken om opnieuw verzonden SYN's te bekijken. Vervolgens u controleren of deze SYN's overeenkomen met verbindingsverkeer.
+Een SYN-pakket is het eerste pakket dat wordt verzonden om een TCP-verbinding tot stand te brengen. Als dit pakket geen antwoord retourneert, wordt de SYN opnieuw geprobeerd. U kunt het voor gaande filter gebruiken om alle opnieuw verzonden SYNs te bekijken. Vervolgens kunt u controleren of deze SYNs overeenkomen met elk verkeer dat betrekking heeft op de connector.
 
-Als u verwacht dat de connector directe verbindingen maakt met de Azure-services, zijn SynRetransmit-antwoorden op poort 443 een indicatie dat u een netwerk- of firewallprobleem hebt.
+Als u verwacht dat de connector directe verbindingen met de Azure-Services maakt, geven SynRetransmit-antwoorden op poort 443 een indicatie dat er een probleem is met het netwerk of de firewall.
 
-### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Controleren of het verbindingsverkeer uitgaande proxy's gebruikt
+### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Controleren of het connector verkeer uitgaande proxy's gebruikt
 
-Als u het netwerkverkeer van de toepassingsproxy hebt geconfigureerd om via de proxyservers te gaan, wilt u zoeken naar mislukte https-verbindingen met uw proxy.
+Als u het verkeer van de toepassings proxy connector hebt geconfigureerd om de proxy servers te passeren, wilt u controleren of er mislukte HTTPS-verbindingen met uw proxy zijn.
 
-Als u de netwerkopname voor `(https.Request or https.Response) and tcp.port==8080` deze verbindingspogingen wilt filteren, voert u het filter Message Analyzer in en vervangt u 8080 door uw proxyservicepoort. Selecteer **Toepassen** om de filterresultaten te bekijken.
+Als u de netwerk opname voor deze verbindings pogingen wilt filteren `(https.Request or https.Response) and tcp.port==8080` , typt u in het filter Message Analyzer, waarbij u 8080 vervangt door uw proxy service-poort. Selecteer **Toep assen** om de filter resultaten weer te geven.
 
-Het vorige filter toont alleen de HTTPs-aanvragen en antwoorden naar/van de proxypoort. U bent op zoek naar de CONNECT-aanvragen die communicatie met de proxyserver weergeven. Bij succes krijg je een HTTP OK (200) reactie.
+In het voor gaande filter worden alleen de HTTPs-aanvragen en reacties van/naar de Proxy poort weer gegeven. U zoekt naar de VERBINDINGS aanvragen die communicatie met de proxy server weer geven. Wanneer dit is gelukt, krijgt u een HTTP OK (200)-antwoord.
 
-Als u andere antwoordcodes ziet, zoals 407 of 502, betekent dit dat de proxy verificatie vereist of het verkeer om een andere reden niet toestaat. Op dit moment schakel je je proxy server support team in.
+Als u andere antwoord codes ziet, zoals 407 of 502, betekent dit dat de proxy verificatie vereist of het verkeer om een andere reden niet toestaat. Op dit moment kunt u uw ondersteunings team voor de proxy server benaderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)
-* Als u problemen hebt met verbindingsproblemen met de connector, stelt u uw vraag in het [Azure Active Directory-forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) of maakt u een ticket met ons ondersteuningsteam.
+* [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
+* Als u problemen ondervindt met connector verbindings problemen, vraagt u uw vraag in het [Azure Active Directory Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) of maakt u een ticket met het ondersteunings team.

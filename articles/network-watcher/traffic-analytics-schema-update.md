@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Analytics-schema-update - maart 2020 | Microsoft Documenten
-description: Voorbeeldquery's met nieuwe velden in het Traffic Analytics-schema.
+title: Update van Azure Traffic Analytics-schema-maart 2020 | Microsoft Docs
+description: Voorbeeld query's met nieuwe velden in het Traffic Analytics schema.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396611"
 ---
-# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Voorbeeldquery's met nieuwe velden in het Traffic Analytics-schema (schema-update van augustus 2019)
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Voorbeeld query's met nieuwe velden in het Traffic Analytics schema (augustus 2019-schema-update)
 
-Het [logboekschema van Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) bevat de volgende nieuwe velden: **SrcPublicIPs_s,** **DestPublicIPs_s,** **NSGRule_s**. De nieuwe velden bieden informatie over ip-adressen van bron en bestemming en vereenvoudigen query's.
+Het [Traffic Analytics-logboek schema](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) bevat de volgende nieuwe velden: **SrcPublicIPs_s**, **DestPublicIPs_s** **NSGRule_s**. De nieuwe velden bevatten informatie over de bron-en doel-Ip's en vereenvoudigen query's.
 
-In de komende maanden zullen de volgende oudere velden worden afgeschaft: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
+In de komende maanden worden de volgende oudere velden afgeschaft: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**FlowCount_d. **FlowCount_d**
 
-In de volgende drie voorbeelden ziet u hoe u de oude velden vervangen door de nieuwe velden.
+In de volgende drie voor beelden ziet u hoe u de oude velden vervangt door de nieuwe.
 
-## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>Voorbeeld 1: VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s en PublicIPs_s
+## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>Voor beeld 1: VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s en PublicIPs_s velden
 
-We hoeven bron- en doelaanvragen niet af te leiden uit het **FlowDirection_s** veld voor AzurePublic- en ExternalPublic-stromen. Het kan ook ongepast zijn om het **FlowDirection_s** veld te gebruiken voor een virtueel netwerktoestel.
+We hoeven geen bron-en doel cases af te leiden van het **FlowDirection_s** veld voor AzurePublic-en ExternalPublic-stromen. Het kan ook ongeschikt zijn voor het gebruik van het **FlowDirection_s** veld voor een virtueel netwerk apparaat.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -72,13 +72,13 @@ SourcePublicIPsAggregated = iif(isnotempty(SrcPublicIPs_s), SrcPublicIPs_s, "N/A
 DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A")
 ```
 
-## <a name="example-2-nsgrules_s-field"></a>Voorbeeld 2: NSGRules_s veld
+## <a name="example-2-nsgrules_s-field"></a>Voor beeld 2: NSGRules_s veld
 
-Het oude veld gebruikte het formaat:
+Het oude veld heeft de volgende indeling gebruikt:
 
-<Indexwaarde 0)>|<NSG_>van regelnaam |<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+<index waarde 0) >|<NSG_ van regel>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-We verzamelen geen gegevens meer in een netwerkbeveiligingsgroep (NSG). In het bijgewerkte schema bevat **NSGList_s** slechts één NSG. Ook **NSGRules** bevat slechts één regel. We hebben de ingewikkelde opmaak hier en in andere velden verwijderd, zoals in het voorbeeld wordt weergegeven.
+Er worden geen gegevens meer verzameld over een netwerk beveiligings groep (NSG). In het bijgewerkte schema bevat **NSGList_s** slechts één NSG. Ook **NSGRules** bevat slechts één regel. De gecompliceerde opmaak is hier en in andere velden verwijderd, zoals in het voor beeld wordt weer gegeven.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -103,24 +103,24 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3-flowcount_d-field"></a>Voorbeeld 3: FlowCount_d veld
+## <a name="example-3-flowcount_d-field"></a>Voor beeld 3: FlowCount_d veld
 
-Omdat we geen gegevens over de NSG club, de **FlowCount_d** is gewoon:
+Omdat we geen gegevens meer over de NSG, is de **FlowCount_d** gewoon:
 
-**AllowedInFlows_d** + DeniedInFlows_d**AllowedOutFlows_d DeniedOutFlows_d** + **DeniedOutFlows_d** **AllowedInFlows_d** + 
+**AllowedInFlows_d** + **DeniedInFlows_d**DeniedInFlows_d + **AllowedOutFlows_d**AllowedOutFlows_d + **DeniedOutFlows_d**
 
-Slechts één van de vier velden is niet nul. De andere drie velden zijn nul. De velden worden gevuld om de status aan te geven en te tellen in de NIC waar de stroom is vastgelegd.
+Slechts een van de vier velden is niet nul. De andere drie velden zijn nul. De velden vullen de status en het aantal aan in de NIC waar de stroom is vastgelegd.
 
-Ter illustratie van deze voorwaarden:
+Om deze voor waarden te illustreren:
 
-- Als de stroom is toegestaan, wordt een van de vooraf vastgestelde velden 'Toegestaan' ingevuld.
-- Als de stroom is geweigerd, wordt een van de vooraf vastgestelde velden 'Geweigerd' ingevuld.
-- Als de stroom binnenstroom is ingevoerd, wordt een van de achterblijvers met InFlows_d ingevuld.
-- Als de stroom buiten uitgaan was, wordt een van de achtergewantfixed velden 'OutFlows_d' ingevuld.
+- Als de stroom is toegestaan, wordt een van de "toegestane" velden gevuld.
+- Als de stroom is geweigerd, wordt een van de vooraf ingestelde velden ' geweigerd ' ingevuld.
+- Als de stroom inkomend is, wordt een van de velden met het achtervoegsel InFlows_d ingevuld.
+- Als de stroom is uitgaand, wordt een van de velden met het achtervoegsel OutFlows_d ingevuld.
 
-Afhankelijk van de omstandigheden weten we welke van de vier velden zal worden bevolkt.
+Afhankelijk van de voor waarden weten we dat een van de vier velden wordt ingevuld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Veelgestelde vragen](traffic-analytics-faq.md)over Traffic Analytics voor antwoorden op veelgestelde vragen.
-- Zie [Traffic Analytics-documentatie](traffic-analytics.md)voor meer informatie over functionaliteit.
+- Zie [Traffic Analytics Veelgestelde vragen](traffic-analytics-faq.md)voor antwoorden op veelgestelde vragen.
+- Zie [Traffic Analytics-documentatie](traffic-analytics.md)voor meer informatie over de functionaliteit.

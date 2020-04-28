@@ -1,6 +1,6 @@
 ---
-title: Cross-app SSO inschakelen op iOS met ADAL | Microsoft Documenten
-description: De functies van de ADAL SDK gebruiken om Single Sign On in al uw toepassingen in te schakelen.
+title: SSO van meerdere apps inschakelen op iOS met behulp van ADAL | Microsoft Docs
+description: De functies van de ADAL SDK gebruiken om eenmalige aanmelding in te scha kelen voor uw toepassingen.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -16,23 +16,23 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154777"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>How to: Cross-app SSO inschakelen op iOS met ADAL
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Procedure: cross-app SSO inschakelen op iOS met ADAL
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Met eenmalige aanmelding (SSO) kunnen gebruikers hun referenties slechts één keer invoeren en deze referenties automatisch laten werken op verschillende toepassingen en op verschillende platforms die andere toepassingen kunnen gebruiken (zoals Microsoft-accounts of een werkaccount van Microsoft 365) geen zaak de uitgever.
+Eenmalige aanmelding (SSO) stelt gebruikers in staat om hun referenties één keer in te voeren en deze referenties automatisch te laten werken in toepassingen en op verschillende platforms die andere toepassingen mogelijk gebruiken (zoals micro soft-accounts of een werk account van Microsoft 365), ongeacht de uitgever.
 
-Het identiteitsplatform van Microsoft, samen met de SDK's, maakt het eenvoudig om SSO in te schakelen binnen uw eigen suite van apps, of met de broker-mogelijkheden en Authenticator-toepassingen, op het hele apparaat.
+Het identiteits platform van micro soft, samen met de Sdk's, maakt het eenvoudig om eenmalige aanmelding in te scha kelen in uw eigen suite van apps of met de Broker-en verificator-toepassingen, op het hele apparaat.
 
-In deze how-to leert u hoe u de SDK binnen uw toepassing configureert om SSO aan uw klanten te leveren.
+In deze procedure leert u hoe u de SDK in uw toepassing kunt configureren om eenmalige aanmelding te bieden voor uw klanten.
 
-Deze how-to is van toepassing op:
+Deze procedure is van toepassing op:
 
 * Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
@@ -41,43 +41,43 @@ Deze how-to is van toepassing op:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze how-to gaat ervan uit dat je weet hoe je:
+In deze procedure wordt ervan uitgegaan dat u weet hoe u:
 
-* Uw app inrichten met de legacy-portal voor Azure AD. Zie [Een app registreren](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor meer informatie
-* Integreer uw toepassing met de [Azure AD iOS SDK.](https://github.com/AzureAD/azure-activedirectory-library-for-objc)
+* Richt uw app in met behulp van de verouderde portal voor Azure AD. Zie [een app registreren](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor meer informatie
+* Integreer uw toepassing met de [Azure AD IOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
-## <a name="single-sign-on-concepts"></a>Concepten met één aanmelding
+## <a name="single-sign-on-concepts"></a>Concepten voor eenmalige aanmelding
 
-### <a name="identity-brokers"></a>Identiteitsmakelaars
+### <a name="identity-brokers"></a>Identiteits Brokers
 
-Microsoft biedt toepassingen voor elk mobiel platform waarmee referenties kunnen worden overbrugd tussen toepassingen van verschillende leveranciers en voor verbeterde functies die één veilige plaats vereisen van waaruit referenties kunnen worden gevalideerd. Dit worden **makelaars**genoemd.
+Micro soft biedt toepassingen voor elk mobiel platform dat de bridging van referenties voor toepassingen van verschillende leveranciers mogelijk maakt, en voor verbeterde functies waarvoor een enkele veilige locatie is vereist voor het valideren van referenties. Deze worden **makelaars**genoemd.
 
-Op iOS en Android worden brokers geleverd via downloadbare applicaties die klanten onafhankelijk installeren of naar het apparaat worden geduwd door een bedrijf dat sommige of alle apparaten voor hun werknemers beheert. Makelaars ondersteunen het beheer van de beveiliging alleen voor sommige toepassingen of het hele apparaat op basis van de configuratie van it-beheerders. In Windows wordt deze functionaliteit geleverd door een accountkiezer die is ingebouwd in het besturingssysteem, technisch bekend als de Web Authentication Broker.
+Op iOS en Android worden makelaars geleverd via download bare toepassingen die door klanten afzonderlijk of naar het apparaat worden gepusht door een bedrijf dat sommige of alle apparaten beheert voor hun werk nemers. Makelaars ondersteunen het beheer van beveiliging alleen voor sommige toepassingen of het hele apparaat op basis van de IT-beheerders configuratie. In Windows wordt deze functionaliteit geleverd door een account kiezer die is ingebouwd in het besturings systeem, technisch aangeduid als de Web authentication Broker.
 
-### <a name="patterns-for-logging-in-on-mobile-devices"></a>Patronen voor inloggen op mobiele apparaten
+### <a name="patterns-for-logging-in-on-mobile-devices"></a>Patronen voor het aanmelden op mobiele apparaten
 
-Toegang tot referenties op apparaten volgt twee basispatronen:
+Toegang tot referenties op apparaten volgen twee basis patronen:
 
-* Niet-broker assisted logins
-* Broker assisted logins
+* Niet-Broker ondersteunde aanmeldingen
+* Door Broker gesteunde aanmeldingen
 
-#### <a name="non-broker-assisted-logins"></a>Niet-broker assisted logins
+#### <a name="non-broker-assisted-logins"></a>Niet-Broker ondersteunde aanmeldingen
 
-Niet-broker assisted logins zijn login ervaringen die gebeuren in lijn met de toepassing en gebruik maken van de lokale opslag op het apparaat voor die toepassing. Deze opslag kan worden gedeeld tussen toepassingen, maar de referenties zijn nauw gebonden aan de app of suite van apps met behulp van die referentie. U hebt dit waarschijnlijk in veel mobiele toepassingen ervaren wanneer u een gebruikersnaam en wachtwoord invoert in de toepassing zelf.
+Aanmeldingen die niet worden ondersteund door Broker, zijn aanmeldings ervaringen die worden inline met de toepassing en de lokale opslag op het apparaat gebruiken voor die toepassing. Deze opslag kan worden gedeeld door toepassingen, maar de referenties zijn nauw verbonden met de app of suite van apps met behulp van deze referentie. U hebt dit waarschijnlijk in veel mobiele toepassingen ondervonden wanneer u een gebruikers naam en wacht woord in de toepassing zelf opgeeft.
 
-Deze aanmeldingen hebben de volgende voordelen:
+Deze aanmeldingen hebben de volgende voor delen:
 
-* Gebruikerservaring bestaat volledig binnen de toepassing.
-* Referenties kunnen worden gedeeld voor toepassingen die zijn ondertekend door hetzelfde certificaat, waardoor een enkele aanmeldingservaring wordt geboden aan uw reeks toepassingen.
-* Controle over de ervaring van het inloggen wordt verstrekt aan de toepassing voor en na het aanmelden.
+* Gebruikers ervaring bestaat volledig in de toepassing.
+* Referenties kunnen worden gedeeld tussen toepassingen die zijn ondertekend door hetzelfde certificaat, waardoor eenmalige aanmelding mogelijk is voor uw pakket toepassingen.
+* Controle over de ervaring van het aanmelden van de toepassing wordt vóór en na het aanmelden aan de app gegeven.
 
 Deze aanmeldingen hebben de volgende nadelen:
 
-* Gebruikers kunnen geen single-sign-aan ervaren in alle apps die een Microsoft-identiteit gebruiken, alleen voor de Microsoft-identiteiten die uw toepassing heeft geconfigureerd.
-* Uw toepassing kan niet worden gebruikt met meer geavanceerde zakelijke functies, zoals voorwaardelijke toegang of het gebruik van de Intune-suite van producten.
-* Uw toepassing kan verificatie op basis van certificaten voor zakelijke gebruikers niet ondersteunen.
+* Gebruikers kunnen zich niet aanmelden met eenmalige aanmelding voor alle apps die gebruikmaken van een micro soft-identiteit, alleen voor de micro soft-identiteiten die uw toepassing heeft geconfigureerd.
+* Uw toepassing kan niet worden gebruikt met meer geavanceerde zakelijke functies, zoals voorwaardelijke toegang of het gebruik van de intune-product suite.
+* Uw toepassing biedt geen ondersteuning voor verificatie op basis van certificaten voor zakelijke gebruikers.
 
-Hier vindt u een weergave van hoe de SDK's werken met de gedeelde opslag van uw toepassingen om SSO in te schakelen:
+Hier volgt een weer gave van de manier waarop de Sdk's samen werken met de gedeelde opslag van uw toepassingen om SSO in te scha kelen:
 
 ```
 +------------+ +------------+  +-------------+
@@ -93,39 +93,39 @@ Hier vindt u een weergave van hoe de SDK's werken met de gedeelde opslag van uw 
 +--------------------------------------------+
 ```
 
-#### <a name="broker-assisted-logins"></a>Broker assisted logins
+#### <a name="broker-assisted-logins"></a>Door Broker gesteunde aanmeldingen
 
-Broker-ondersteunde logins zijn login-ervaringen die zich voordoen binnen de broker applicatie en gebruik maken van de opslag en beveiliging van de makelaar om referenties te delen over alle toepassingen op het apparaat dat het identiteitsplatform toe te passen. Dit betekent dat uw toepassingen vertrouwen op de makelaar om gebruikers aan te melden. Op iOS en Android worden deze brokers geleverd via downloadbare applicaties die klanten onafhankelijk installeren of naar het apparaat worden geduwd door een bedrijf dat het apparaat voor hun gebruiker beheert. Een voorbeeld van dit type toepassing is de Microsoft Authenticator-toepassing op iOS. In Windows wordt deze functionaliteit geleverd door een accountkiezer die is ingebouwd in het besturingssysteem, technisch bekend als de Web Authentication Broker.
+Aanmeldingen met Broker ondersteuning zijn aanmeldings ervaringen die zich binnen de Broker-toepassing voordoen en gebruiken de opslag en beveiliging van de Broker om referenties te delen in alle toepassingen op het apparaat waarop het identiteits platform wordt toegepast. Dit betekent dat uw toepassingen afhankelijk zijn van de Broker voor het ondertekenen van gebruikers in. Op iOS en Android worden deze makelaars geleverd via download bare toepassingen die klanten onafhankelijk van elkaar installeren of naar het apparaat worden gepusht door een bedrijf dat het apparaat beheert voor hun gebruiker. Een voor beeld van dit type toepassing is de Microsoft Authenticator toepassing op iOS. In Windows wordt deze functionaliteit geleverd door een account kiezer die is ingebouwd in het besturings systeem, wat technisch bekend is als de Web authentication Broker.
 
-De ervaring verschilt per platform en kan soms storend zijn voor gebruikers als ze niet correct worden beheerd. Je bent waarschijnlijk het meest bekend met dit patroon als je de Facebook-applicatie hebt geïnstalleerd en Facebook Connect gebruikt vanuit een andere toepassing. Het identiteitsplatform gebruikt hetzelfde patroon.
+De ervaring is afhankelijk van het platform en kan soms storend zijn voor gebruikers als ze niet correct worden beheerd. U bent waarschijnlijk het meest vertrouwd met dit patroon als u de Facebook-toepassing hebt geïnstalleerd en Facebook Connect van een andere toepassing gebruikt. Het identiteits platform gebruikt hetzelfde patroon.
 
-Voor iOS leidt dit tot een "overgangsanimatie" waarbij uw toepassing naar de achtergrond wordt verzonden terwijl de Microsoft Authenticator-toepassingen op de voorgrond komen voor de gebruiker om te selecteren bij welk account hij zich wilt aanmelden.
+Voor iOS leidt dit tot een overgangs animatie waarbij uw toepassing naar de achtergrond wordt verzonden terwijl de Microsoft Authenticator-toepassingen de voor grond vormen van de gebruiker om te selecteren met welk account ze zich willen aanmelden.
 
-Voor Android en Windows wordt de accountkiezer boven op uw toepassing weergegeven, wat minder storend is voor de gebruiker.
+Voor Android en Windows wordt de account kiezer weer gegeven boven op de toepassing, die minder storend is voor de gebruiker.
 
-#### <a name="how-the-broker-gets-invoked"></a>Hoe de makelaar wordt aangeroepen
+#### <a name="how-the-broker-gets-invoked"></a>Hoe de Broker wordt aangeroepen
 
-Als een compatibele broker op het apparaat is geïnstalleerd, zoals de Microsoft Authenticator-toepassing, zullen de SDK's automatisch het werk doen om de makelaar voor u in te roepen wanneer een gebruiker aangeeft dat hij zich wil aanmelden met een account van het identiteitsplatform. Dit account kan een persoonlijk Microsoft-account, een werk- of schoolaccount zijn of een account dat u in Azure verstrekt en host met onze B2C- en B2B-producten.
+Als er een compatibele Broker op het apparaat is geïnstalleerd, zoals de toepassing Microsoft Authenticator, wordt het werk van de Broker automatisch door de Sdk's gestart wanneer een gebruiker aangeeft dat hij of zij zich wil aanmelden met een account van het identiteits platform. Dit account kan een persoonlijk micro soft-account, een werk-of school account of een account dat u biedt en hosten in azure met behulp van onze B2C-en B2B-producten.
 
-#### <a name="how-we-ensure-the-application-is-valid"></a>Hoe wij ervoor zorgen dat de aanvraag geldig is
+#### <a name="how-we-ensure-the-application-is-valid"></a>Hoe we ervoor zorgen dat de toepassing geldig is
 
-De noodzaak om de identiteit van een applicatie die de makelaar roept is cruciaal voor de veiligheid die wij bieden in broker assisted logins te waarborgen. Noch iOS, noch Android dwingt unieke id's af die alleen geldig zijn voor een bepaalde toepassing, dus kwaadaardige toepassingen kunnen de id van een legitieme toepassing "spoofen" en de tokens ontvangen die bedoeld zijn voor de legitieme toepassing. Om ervoor te zorgen dat we altijd communiceren met de juiste toepassing tijdens runtime, vragen we de ontwikkelaar om een aangepaste redirectURI te bieden bij het registreren van hun toepassing bij Microsoft. Hoe ontwikkelaars moeten ambachtelijke deze redirect URI wordt besproken in detail hieronder. Deze aangepaste redirectURI bevat de bundel-ID van de applicatie en is verzekerd van uniek zijn voor de toepassing door de Apple App Store. Wanneer een toepassing de makelaar aanroept, vraagt de makelaar het iOS-besturingssysteem om het te voorzien van de bundel-id die de makelaar heeft gebeld. De makelaar verstrekt deze bundel-id aan Microsoft in de oproep naar ons identiteitssysteem. Als de bundel-id van de toepassing niet overeenkomt met de bundel-id die de ontwikkelaar ons tijdens de registratie heeft verstrekt, weigeren we de toegang tot de tokens voor de bron die de toepassing aanvraagt. Deze controle zorgt ervoor dat alleen de applicatie die door de ontwikkelaar is geregistreerd tokens ontvangt.
+De nood zaak om ervoor te zorgen dat de identiteit van een toepassing die de Broker aanroept, cruciaal is voor de beveiliging die wij bieden in door Broker geassisteerde aanmeldingen. IOS en Android afdwingt geen unieke id's die alleen geldig zijn voor een bepaalde toepassing, waardoor kwaadwillende toepassingen een geldige toepassings-id kunnen ' spoofen ' en de tokens ontvangen die voor de legitieme toepassing bedoeld zijn. Om ervoor te zorgen dat we altijd communiceren met de juiste toepassing tijdens runtime, vragen we de ontwikkelaar om een aangepaste redirectURI te bieden wanneer ze hun toepassing registreren bij micro soft. Hoe ontwikkel aars deze omleidings-URI moeten bebouwen, worden hieronder gedetailleerd beschreven. Deze aangepaste redirectURI bevat de bundel-ID van de toepassing en wordt gegarandeerd uniek voor de toepassing door de Apple App Store. Wanneer een toepassing de Broker aanroept, vraagt de Broker het iOS-besturings systeem aan de bundel-ID die de Broker heeft genoemd. De Broker levert deze bundel-ID aan micro soft in de aanroep van ons identiteits systeem. Als de bundel-ID van de toepassing niet overeenkomt met de bundel-ID die door de ontwikkelaar tijdens de registratie is opgegeven, wordt de toegang geweigerd tot de tokens voor de resource die de toepassing aanvraagt. Met deze controle wordt gegarandeerd dat alleen de toepassing die door de ontwikkelaar is geregistreerd, tokens ontvangt.
 
-**De ontwikkelaar heeft de keuze of de SDK de makelaar belt of gebruik maakt van de niet-broker assisted flow.** Maar als de ontwikkelaar ervoor kiest om de broker-ondersteunde stroom niet te gebruiken, verliezen ze het voordeel van het gebruik van SSO-referenties die de gebruiker mogelijk al op het apparaat heeft toegevoegd en voorkomt dat de toepassing ervan wordt gebruikt met zakelijke functies Microsoft biedt zijn klanten zoals Voorwaardelijke toegang, Intune-beheermogelijkheden en verificatie op basis van certificaten.
+**De ontwikkelaar heeft de keuze of de SDK de Broker aanroept of gebruikmaakt van de niet-Broker ondersteunde stroom.** Als de ontwikkelaar ervoor kiest geen gebruik te maken van de stroom die door de Broker wordt ondersteund, verliezen ze het voor deel van het gebruik van SSO-referenties die de gebruiker mogelijk al heeft toegevoegd op het apparaat en voor komt dat hun toepassing kan worden gebruikt met zakelijke functies micro soft biedt zijn klanten, zoals voorwaardelijke toegang, intune-beheer mogelijkheden en verificatie op basis van certificaten.
 
-Deze aanmeldingen hebben de volgende voordelen:
+Deze aanmeldingen hebben de volgende voor delen:
 
-* Gebruikers ervaringen SSO in al hun toepassingen, ongeacht de leverancier.
-* Uw toepassing kan geavanceerdere zakelijke functies gebruiken, zoals Voorwaardelijke toegang of het Intune-productpakket gebruiken.
+* Gebruikers ervaringen SSO voor al hun toepassingen, ongeacht de leverancier.
+* Uw toepassing kan meer geavanceerde zakelijke functies gebruiken, zoals voorwaardelijke toegang of het gebruik van de intune-product suite.
 * Uw toepassing kan verificatie op basis van certificaten ondersteunen voor zakelijke gebruikers.
-* Veel veiliger aanmeldingservaring als de identiteit van de toepassing en de gebruiker worden geverifieerd door de broker-toepassing met extra beveiligingsalgoritmen en versleuteling.
+* Veel veiligere aanmeldings ervaring als de identiteit van de toepassing en de gebruiker worden door de Broker toepassing gecontroleerd met aanvullende beveiligings algoritmen en versleuteling.
 
 Deze aanmeldingen hebben de volgende nadelen:
 
-* In iOS wordt de gebruiker overgestapt van de ervaring van uw toepassing terwijl referenties worden gekozen.
-* Verlies van de mogelijkheid om de inlogervaring voor uw klanten binnen uw applicatie te beheren.
+* In iOS wordt de gebruiker door de gebruikers ervaring overgezet terwijl er referenties worden gekozen.
+* Verlies van de mogelijkheid om de aanmeldings ervaring voor uw klanten binnen uw toepassing te beheren.
 
-Hier is een weergave van hoe de SDKs werken met de makelaar toepassingen om SSO in te schakelen:
+Hier volgt een weer gave van de manier waarop de Sdk's samen werken met de Broker-toepassingen om SSO in te scha kelen:
 
 ```
 +------------+ +------------+   +-------------+
@@ -151,39 +151,39 @@ Hier is een weergave van hoe de SDKs werken met de makelaar toepassingen om SSO 
               +-------------+
 ```
 
-## <a name="enabling-cross-app-sso-using-adal"></a>Cross-app SSO inschakelen met ADAL
+## <a name="enabling-cross-app-sso-using-adal"></a>SSO van meerdere apps inschakelen met behulp van ADAL
 
-Hier gebruiken we de ADAL iOS SDK om:
+Hier gebruiken we de ADAL iOS SDK voor het volgende:
 
-* SSO met niet-broker-ondersteuning inschakelen voor uw reeks apps
-* Ondersteuning inschakelen voor sso met een assistentie bij een broker
+* Niet-Broker-ondersteunings-SSO inschakelen voor uw app-pakket
+* Ondersteuning voor eenmalige aanmelding via Broker inschakelen
 
-### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Het inschakelen van SSO voor niet-broker assisted SSO
+### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>EENMALIGe aanmelding inschakelen voor SSO met niet-Broker-ondersteuning
 
-Voor niet-broker assisted SSO in verschillende toepassingen beheren de SDK's een groot deel van de complexiteit van SSO voor u. Dit omvat het vinden van de juiste gebruiker in de cache en het bijhouden van een lijst met ingelogde gebruikers die u opvragen.
+Voor niet-Broker-ondersteunings-SSO tussen toepassingen beheert de Sdk's veel van de complexiteit van SSO voor u. Dit omvat het vinden van de juiste gebruiker in de cache en het onderhouden van een lijst met aangemelde gebruikers die u wilt doorzoeken.
 
-Om SSO in te schakelen voor toepassingen die u bezit, moet u het volgende doen:
+Ga als volgt te werk om SSO in te scha kelen voor alle toepassingen die u nodig hebt:
 
-1. Zorg ervoor dat al uw toepassingen dezelfde client-id of toepassings-id gebruiken.
-2. Zorg ervoor dat al uw toepassingen hetzelfde ondertekeningscertificaat van Apple delen, zodat u sleutelhangers delen.
-3. Vraag voor elk van uw toepassingen hetzelfde sleutelketenrecht aan.
-4. Vertel de SDKs over de gedeelde sleutelhanger die u wilt dat we gebruiken.
+1. Zorg ervoor dat al uw toepassingen dezelfde client-ID of toepassings-ID gebruiken.
+2. Zorg ervoor dat alle toepassingen hetzelfde handtekening certificaat van Apple delen, zodat u de sleutel ketens kunt delen.
+3. Vraag hetzelfde sleutel hanger aan voor elk van uw toepassingen.
+4. Vertel de Sdk's over de gedeelde sleutel hanger die u door ons wilt laten gebruiken.
 
-#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Dezelfde client-id / toepassings-id gebruiken voor alle toepassingen in uw reeks apps
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Dezelfde client-ID/toepassings-ID gebruiken voor alle toepassingen in uw suite van apps
 
-Om ervoor te zorgen dat het identiteitsplatform weet dat het toegestaan is om tokens te delen in uw toepassingen, moet elk van uw toepassingen dezelfde client-id of toepassings-id delen. Dit is de unieke id die u werd verstrekt toen u uw eerste toepassing in de portal registreerde.
+Om het identiteits platform te laten weten dat het is toegestaan om tokens in uw toepassingen te delen, moeten al uw toepassingen dezelfde client-ID of toepassings-ID delen. Dit is de unieke id die aan u is gegeven tijdens het registreren van uw eerste toepassing in de portal.
 
-Met URI's u verschillende apps identificeren naar de Microsoft-identiteitsservice als deze dezelfde toepassings-id gebruikt. Elke toepassing kan meerdere Omleidings-URI's hebben die zijn geregistreerd in de onboarding-portal. Elke app in uw suite heeft een andere omleiding URI. Een voorbeeld van hoe dit eruit ziet is hieronder:
+Met omleidings-Uri's kunt u verschillende apps identificeren voor de micro soft Identity-service als deze dezelfde toepassings-ID gebruikt. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Hieronder ziet u een voor beeld van hoe dit wordt weer gegeven:
 
-App1 Redirect URI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 Redirect URI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 Redirect URI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
-Deze zijn genest onder dezelfde client-ID / applicatie-ID en opgezocht op basis van de omleiding URI u terug naar ons in uw SDK-configuratie.
+Deze zijn genest onder dezelfde client-ID/toepassings-ID en worden opgezocht op basis van de omleidings-URI die u naar ons terugstuurt in uw SDK-configuratie.
 
 ```
 +-------------------+
@@ -208,13 +208,13 @@ Deze zijn genest onder dezelfde client-ID / applicatie-ID en opgezocht op basis 
 
 ```
 
-Het formaat van deze omleiding URI's wordt hieronder uitgelegd. U een Redirect URI gebruiken, tenzij u de makelaar wilt ondersteunen, in welk geval ze er ongeveer hetzelfde uit moeten zien als het bovenstaande*
+De indeling van deze omleidings-Uri's wordt hieronder uitgelegd. U kunt een omleidings-URI gebruiken tenzij u de Broker wilt ondersteunen. in dat geval moeten ze er ongeveer als volgt uitzien:
 
-#### <a name="create-keychain-sharing-between-applications"></a>Sleutelhangerdelen tussen toepassingen maken
+#### <a name="create-keychain-sharing-between-applications"></a>Sleutel hanger delen tussen toepassingen maken
 
-Het inschakelen van het delen van sleutelhangers valt buiten het bereik van dit document en wordt door Apple behandeld in hun mogelijkheden [voor het toevoegen van documenten](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). Wat belangrijk is, is dat u beslist hoe u uw sleutelhanger wilt noemen en die mogelijkheid voor al uw toepassingen toevoegt.
+Het inschakelen van sleutel hanger delen valt buiten het bereik van dit document en wordt gedekt door Apple in hun document waarin de [mogelijkheden worden toegevoegd](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). Het is belang rijk dat u bepaalt wat u wilt dat uw sleutel keten wordt aangeroepen en voeg die mogelijkheid toe aan al uw toepassingen.
 
-Wanneer u rechten correct hebt ingesteld, ziet u een bestand `entitlements.plist` in uw projectmap met de titel dat iets bevat dat er als volgt uitziet:
+Wanneer u de rechten hebt ingesteld op de juiste wijze, ziet u een bestand in de projectmap die `entitlements.plist` het recht bevat op het volgende:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,46 +230,46 @@ Wanneer u rechten correct hebt ingesteld, ziet u een bestand `entitlements.plist
 </plist>
 ```
 
-Zodra u het keychain-recht hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te `ADAuthenticationSettings` gebruiken, vertelt u de identiteit SDK over uw sleutelhanger door de volgende instelling in uw met de volgende instelling te gebruiken:
+Zodra u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te gebruiken, geeft u de identiteits-SDK over uw sleutel hanger door `ADAuthenticationSettings` de volgende instelling te gebruiken in uw met de volgende instelling:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [!WARNING]
-> Wanneer u een sleutelhanger deelt in uw toepassingen, kan elke toepassing gebruikers verwijderen of slechter alle tokens in uw toepassing verwijderen. Dit is vooral rampzalig als u toepassingen hebt die afhankelijk zijn van de tokens om achtergrondwerk te doen. Het delen van een sleutelhanger betekent dat u zeer voorzichtig moet zijn in alle bewerkingen verwijderen via de identiteit SDKs.
+> Wanneer u een sleutel hanger in uw toepassingen deelt, kan elke toepassing gebruikers verwijderen of erger alle tokens in uw toepassing te verwijderen. Dit is met name disastrous als u toepassingen hebt die afhankelijk zijn van de tokens om achtergrond taken uit te voeren. Het delen van een sleutel hanger houdt in dat u zorgvuldig moet zijn in alle en alle Verwijder bewerkingen via de identiteits-Sdk's.
 
-Dat is alles. De SDK deelt nu referenties voor al uw toepassingen. De gebruikerslijst wordt ook gedeeld tussen toepassingsinstanties.
+Dat is alles. De SDK zal nu referenties delen in al uw toepassingen. De gebruikers lijst wordt ook gedeeld tussen toepassings exemplaren.
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Het inschakelen van SSO voor broker assisted SSO
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>EENMALIGe aanmelding inschakelen voor SSO met Broker-ondersteuning
 
-De mogelijkheid voor een toepassing om een broker te gebruiken die op het apparaat is geïnstalleerd, is **standaard uitgeschakeld.** Om uw toepassing te gebruiken bij de makelaar moet u wat extra configuratie doen en wat code toevoegen aan uw toepassing.
+De mogelijkheid voor een toepassing voor het gebruik van elke Broker die op het apparaat is geïnstalleerd, is **standaard**uitgeschakeld. Als u uw toepassing met de Broker wilt gebruiken, moet u aanvullende configuratie stappen uitvoeren en code toevoegen aan uw toepassing.
 
-De volgende stappen zijn:
+De stappen die u moet volgen:
 
-1. Schakel de broker-modus in in de oproep van uw toepassingscode naar de MS SDK.
-2. Stel een nieuwe omleiding URI en bieden dat aan zowel de app en uw app registratie.
+1. Schakel de Broker modus in de aanroep van de toepassings code naar de MS SDK in.
+2. Stel een nieuwe omleidings-URI in en geef aan de app en de registratie van uw app aan.
 3. Een URL-schema registreren.
-4. Voeg een machtiging toe aan uw info.plist-bestand.
+4. Voeg een machtiging toe aan het bestand info. plist.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Stap 1: Broker-modus inschakelen in uw toepassing
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Stap 1: de Broker modus inschakelen in uw toepassing
 
-De mogelijkheid voor uw toepassing om de broker te gebruiken is ingeschakeld wanneer u de 'context' of de eerste instelling van uw verificatieobject maakt. U doet dit door het type referenties in uw code in te stellen:
+De mogelijkheid om uw toepassing te gebruiken voor het gebruik van de Broker is ingeschakeld wanneer u de ' context ' of de eerste installatie van uw verificatie object maakt. U doet dit door het type referenties in uw code in te stellen:
 
 ```
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-De `AD_CREDENTIALS_AUTO` instelling zal de SDK in staat stellen `AD_CREDENTIALS_EMBEDDED` om te proberen te roepen naar de makelaar, zal voorkomen dat de SDK van het bellen naar de makelaar.
+Met `AD_CREDENTIALS_AUTO` deze instelling kan de SDK de Broker proberen aan te roepen, `AD_CREDENTIALS_EMBEDDED` waardoor de SDK niet aan de broker kan worden aangeroepen.
 
-#### <a name="step-2-registering-a-url-scheme"></a>Stap 2: Een URL-schema registreren
+#### <a name="step-2-registering-a-url-scheme"></a>Stap 2: een URL-schema registreren
 
-Het identiteitsplatform gebruikt URL's om de broker aan te roepen en vervolgens het controlebeheer terug te sturen naar uw toepassing. Om die rondreis af te maken heb je een URL-schema nodig dat is geregistreerd voor je applicatie waarvan het identiteitsplatform op de hoogte is. Dit kan in aanvulling op alle andere app regelingen die u eerder hebt geregistreerd bij uw aanvraag.
+Het identiteits platform gebruikt Url's om de Broker aan te roepen en vervolgens terug te keren naar uw toepassing. Als u wilt volt ooien, hebt u een URL-schema voor uw toepassing nodig dat het identiteits platform kent. Dit kan naast alle andere app-schema's die u eerder hebt geregistreerd bij uw toepassing.
 
 > [!WARNING]
-> We raden u aan het URL-schema vrij uniek te maken om de kans te minimaliseren dat een andere app hetzelfde URL-schema gebruikt. Apple handhaaft niet de uniciteit van URL-schema's die zijn geregistreerd in de app store.
+> We raden u aan het URL-schema tamelijk uniek te maken om de kans op een andere app te minimaliseren met behulp van hetzelfde URL-schema. Apple dwingt de uniekheid van URL-schema's die in de App Store zijn geregistreerd, niet af.
 
-Hieronder vindt u een voorbeeld van hoe dit wordt weergegeven in uw projectconfiguratie. U dit ook doen in XCode:
+Hieronder ziet u een voor beeld van hoe dit in uw project configuratie wordt weer gegeven. U kunt dit ook doen in XCode:
 
 ```
 <key>CFBundleURLTypes</key>
@@ -287,29 +287,29 @@ Hieronder vindt u een voorbeeld van hoe dit wordt weergegeven in uw projectconfi
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Stap 3: Een nieuwe omleiding uri instellen met uw URL-schema
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Stap 3: een nieuwe omleidings-URI tot stand brengen met uw URL-schema
 
-Om ervoor te zorgen dat we de referentietokens altijd terugsturen naar de juiste toepassing, moeten we ervoor zorgen dat we terugbellen naar uw toepassing op een manier die het iOS-besturingssysteem kan verifiëren. Het iOS-besturingssysteem rapporteert aan de Microsoft broker-toepassingen de bundel-id van de toepassing die het aanroept. Dit kan niet worden vervalst door een malafide toepassing. Daarom maken we gebruik van dit samen met de URI van onze broker-applicatie om ervoor te zorgen dat de tokens worden teruggestuurd naar de juiste toepassing. We vereisen dat u deze unieke omleiding URI zowel in uw toepassing en ingesteld als een Redirect URI in onze ontwikkelaar portal vast te stellen.
+Om ervoor te zorgen dat we de referentie tokens altijd retour neren naar de juiste toepassing, moeten we ervoor zorgen dat we terugbellen naar uw toepassing op een manier die het iOS-besturings systeem kan controleren. Het iOS-besturings systeem rapporteert aan de micro soft Broker-toepassingen de bundel-ID van de toepassing die deze aanroept. Dit kan niet worden vervalst met een Rogue-toepassing. Daarom gebruiken we dit samen met de URI van onze Broker-toepassing om ervoor te zorgen dat de tokens naar de juiste toepassing worden geretourneerd. U moet deze unieke omleidings-URI in uw toepassing tot stand brengen en instellen als omleidings-URI in onze ontwikkelaars Portal.
 
-Uw omleiding URI moet in de juiste vorm van:
+De omleidings-URI moet de volgende vorm hebben:
 
 `<app-scheme>://<your.bundle.id>`
 
-ex: *x-msauth-mytestiosapp://com.myapp.mytestapp*
+bijvoorbeeld: *x-msauth-mytestiosapp://com.MyApp.mytestapp*
 
-Deze omleiding URI moet worden opgegeven in uw app-registratie met behulp van de [Azure-portal.](https://portal.azure.com/) Zie Integratie met Azure Active [Directory](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over de registratie van Azure AD-apps.
+Deze omleidings-URI moet worden opgegeven in de registratie van uw app met behulp van de [Azure Portal](https://portal.azure.com/). Zie [integreren met Azure Active Directory](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over Azure AD-App-registratie.
 
-##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Stap 3a: Een omleidingsURI toevoegen in uw app en dev-portal om verificatie op basis van certificaten te ondersteunen
+##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Stap 3a: een omleidings-URI toevoegen in uw app en ontwikkelaars Portal ter ondersteuning van verificatie op basis van certificaten
 
-Om verificatie op basis van certificaten te ondersteunen, moet een tweede "msauth" worden geregistreerd in uw toepassing en de [Azure-portal](https://portal.azure.com/) om certificaatverificatie te verwerken als u die ondersteuning in uw toepassing wilt toevoegen.
+Ter ondersteuning van verificatie op basis van certificaten moet u een tweede ' msauth ' registreren in uw toepassing en de [Azure Portal](https://portal.azure.com/) voor het afhandelen van certificaat verificatie als u die ondersteuning wilt toevoegen in uw toepassing.
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+bijvoorbeeld: *msauth://code/x-msauth-mytestiosapp%3a%2F%2Fcom.MyApp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Stap 4: Een configuratieparameter toevoegen aan uw app
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Stap 4: een configuratie parameter toevoegen aan uw app
 
-ADAL gebruikt -canOpenURL: om te controleren of de broker op het apparaat is geïnstalleerd. In iOS 9 aan heeft Apple vergrendeld welke schema's een toepassing kan bevragen. U moet "msauth" toevoegen aan de sectie LSApplicationQueriesSchemes van uw `info.plist file`.
+ADAL maakt gebruik van – canOpenURL: om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 op heeft Apple vergrendeld welke schema's een toepassing kan opvragen. U moet ' msauth ' toevoegen aan de sectie LSApplicationQueriesSchemes van uw `info.plist file`.
 
 ```
     <key>LSApplicationQueriesSchemes</key>
@@ -319,10 +319,10 @@ ADAL gebruikt -canOpenURL: om te controleren of de broker op het apparaat is ge�
 
 ```
 
-### <a name="youve-configured-sso"></a>Je hebt SSO geconfigureerd!
+### <a name="youve-configured-sso"></a>U hebt SSO geconfigureerd.
 
-Nu zal de identiteit SDK automatisch zowel referenties delen in uw toepassingen en beroep doen op de makelaar als het aanwezig is op hun apparaat.
+Nu zal de identiteits-SDK automatisch referenties delen in uw toepassingen en de Broker aanroepen als deze aanwezig is op het apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [saml-protocol voor eenmalig aanmelden](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* Meer informatie over het [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

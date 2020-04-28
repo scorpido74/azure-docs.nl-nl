@@ -1,6 +1,6 @@
 ---
-title: Begrijpen hoe Azure AD-inrichting werkt | Microsoft Documenten
-description: Begrijpen hoe Azure AD-inrichting werkt
+title: Meer informatie over de werking van Azure AD Provisioning | Microsoft Docs
+description: Meer informatie over de werking van Azure AD-inrichting
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,179 +16,179 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884882"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
-Automatische inrichting verwijst naar het maken van gebruikersidentiteiten en rollen in de cloudtoepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikersidentiteiten, omvat automatische inrichting het onderhoud en verwijderen van gebruikersidentiteiten als status of rollen veranderen. Voordat u een implementatie start, u dit artikel bekijken om te leren hoe Azure AD-voorziening werkt en configuratieaanbevelingen te krijgen. 
+Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Voordat u begint met het implementeren van een implementatie, kunt u dit artikel raadplegen voor meer informatie over de werking van Azure AD en over het verkrijgen van configuratie aanbevelingen. 
 
-De **Azure AD Provisioning Service** voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met een Systeem voor Cross-Domain Identity Management (SCIM) 2.0-api-eindpunt voor gebruikersbeheer dat wordt geleverd door de leverancier van de toepassing. Met dit SCIM-eindpunt kan Azure AD gebruikers programmatisch maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtingsservice ook extra identiteitsgerelateerde objecten maken, bijwerken en verwijderen, zoals groepen en rollen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met HTTPS TLS-versleuteling.
+De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met behulp van HTTPS TLS-versleuteling.
 
 
-![Azure](./media/how-provisioning-works/provisioning0.PNG)
-AD-servicevoorzieningsservice*figuur 1: de Azure AD-inrichtingsservice*
+![Azure AD Provisioning](./media/how-provisioning-works/provisioning0.PNG)
+service-*afbeelding 1: de Azure AD-inrichtings service*
 
-![Uitgaande](./media/how-provisioning-works/provisioning1.PNG)
-gebruikersinrichtingswerkstroom*Figuur 2: 'Uitgaande' gebruikersinrichtingswerkstroom van Azure AD naar populaire SaaS-toepassingen*
+![Werk stroom](./media/how-provisioning-works/provisioning1.PNG)
+afbeelding van uitgaand gebruikers inrichten*2: ' uitgaand ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
 
-![Binnenkomende](./media/how-provisioning-works/provisioning2.PNG)
-gebruikersinrichtingswerkstroom*Figuur 3: 'Binnenkomende' gebruikersinrichtingsworkflow van populaire HCM-toepassingen (Human Capital Management) naar Azure Active Directory en Active Directory van Windows Server*
+![Werk stroom](./media/how-provisioning-works/provisioning2.PNG)
+*afbeelding voor inrichting van binnenkomende gebruiker 3: ' Inkomend ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
 
-## <a name="provisioning-using-scim-20"></a>Inrichting met SCIM 2.0
+## <a name="provisioning-using-scim-20"></a>Inrichten met behulp van SCIM 2,0
 
-De Azure AD-inrichtingsservice gebruikt het [SCIM 2.0-protocol](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) voor automatische inrichting. De service maakt verbinding met het SCIM-eindpunt voor de toepassing en maakt gebruik van SCIM-gebruikersobjectschema en REST API's om de inrichting en devoorziening van gebruikers en groepen te automatiseren. Voor de meeste toepassingen in de Azure AD-galerie is een scim-gebaseerde inrichtingsconnector beschikbaar. Bij het bouwen van apps voor Azure AD kunnen ontwikkelaars de SCIM 2.0-gebruikersbeheer-API gebruiken om een SCIM-eindpunt te bouwen dat Azure AD integreert voor inrichting. Zie Een [SCIM-eindpunt bouwen en gebruikersinrichting configureren](../app-provisioning/use-scim-to-provision-users-and-groups.md)voor meer informatie.
+De Azure AD-inrichtings service maakt gebruik van het [SCIM 2,0-protocol](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) voor automatische inrichting. De service maakt verbinding met het SCIM-eind punt voor de toepassing en maakt gebruik van SCIM User object schema en REST Api's om het inrichten en het ongedaan maken van de inrichting van gebruikers en groepen te automatiseren. Voor de meeste toepassingen in de Azure AD-galerie wordt een SCIM-inrichtings connector verstrekt. Bij het bouwen van apps voor Azure AD kunnen ontwikkel aars de SCIM 2,0-gebruikers beheer-API gebruiken om een SCIM-eind punt te bouwen dat Azure AD integreert voor inrichting. Zie [een scim-eind punt bouwen en gebruikers inrichten configureren](../app-provisioning/use-scim-to-provision-users-and-groups.md)voor meer informatie.
 
-Als u een automatische Azure AD-inrichtingsconnector wilt aanvragen voor een app die er momenteel geen heeft, vult u een [Azure Active Directory-toepassingsaanvraag](https://aka.ms/aadapprequest)in.
+Als u een automatische Azure AD-inrichtings connector wilt aanvragen voor een app die momenteel niet actief is, vult u een [Azure Active Directory toepassings aanvraag](https://aka.ms/aadapprequest)in.
 
 ## <a name="authorization"></a>Autorisatie
 
-Referenties zijn vereist voor Azure AD om verbinding te maken met de gebruikersbeheer-API van de toepassing. Terwijl u automatische gebruikersinrichting voor een toepassing configureert, moet u geldige referenties invoeren. U referentietypen en vereisten voor de toepassing vinden door te verwijzen naar de zelfstudie van de app. In de Azure-portal u de referenties testen door Azure AD te laten proberen verbinding te maken met de inrichtingsapp van de app met behulp van de meegeleverde referenties.
+Er zijn referenties vereist voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. Tijdens het configureren van het automatisch inrichten van gebruikers voor een toepassing, moet u geldige referenties invoeren. U kunt referentie typen en vereisten voor de toepassing vinden door te verwijzen naar de zelf studie over apps. In de Azure Portal kunt u de referenties testen door Azure AD te proberen verbinding te maken met de inrichtings-app van de app met behulp van de opgegeven referenties.
 
-Als saml-gebaseerde enkele aanmelding ook is geconfigureerd voor de toepassing, is de interne opslaglimiet per toepassing per toepassing 1024 bytes. Deze limiet omvat alle certificaten, geheime tokens, referenties en gerelateerde configuratiegegevens die zijn gekoppeld aan één exemplaar van een toepassing (ook wel serviceprincipalrecord in Azure AD genoemd). Wanneer SAML-gebaseerde enkele aanmelding is geconfigureerd, verbruikt het certificaat dat wordt gebruikt om de SAML-tokens te ondertekenen vaak meer dan 50% procent van de ruimte. Eventuele extra items (geheime tokens, URI's, e-mailadressen van meldingen, gebruikersnamen en wachtwoorden) die u invoert tijdens de installatie van de gebruikersinrichting, kunnen de opslaglimiet overschrijden. Zie [Beheerdersreferenties probleem opslaan tijdens het configureren van gebruikersinrichting](../manage-apps/application-provisioning-config-problem-storage-limit.md)voor meer informatie.
+Als op SAML gebaseerde eenmalige aanmelding ook voor de toepassing is geconfigureerd, is de interne opslag limiet voor Azure AD per toepassing 1024 bytes. Deze limiet omvat alle certificaten, geheime tokens, referenties en gerelateerde configuratie gegevens die zijn gekoppeld aan één exemplaar van een toepassing (ook wel een Service-Principal record genoemd in azure AD). Wanneer op SAML gebaseerde eenmalige aanmelding is geconfigureerd, verbruikt het certificaat dat wordt gebruikt voor het ondertekenen van de SAML-tokens vaak meer dan 50% van de ruimte. Eventuele aanvullende items (geheime tokens, Uri's, e-mail adressen, gebruikers namen en wacht woorden) die u tijdens het instellen van de gebruikers inrichting invoert, kunnen de opslag limiet overschrijden. Zie voor meer informatie [probleem bij het opslaan van beheerders referenties tijdens het configureren van gebruikers inrichting](../manage-apps/application-provisioning-config-problem-storage-limit.md).
 
-## <a name="mapping-attributes"></a>Toewijzingskenmerken
+## <a name="mapping-attributes"></a>Kenmerken toewijzen
 
-Wanneer u gebruikersvoorzieningen inschakelt voor een SaaS-toepassing van derden, bepaalt de Azure-portal de kenmerkenswaarden via kenmerktoewijzingen. Toewijzingen bepalen de gebruikerskenmerken die tussen Azure AD en de doeltoepassing stromen wanneer gebruikersaccounts worden ingericht of bijgewerkt.
+Wanneer u het inrichten van gebruikers inschakelt voor een SaaS-toepassing van derden, bepaalt de Azure Portal de kenmerk waarden via kenmerk toewijzingen. Toewijzingen bepalen de gebruikers kenmerken die stroomt tussen Azure AD en de doel toepassing wanneer gebruikers accounts worden ingericht of bijgewerkt.
 
-Er is een vooraf geconfigureerde set kenmerken en kenmerktoewijzingen tussen Azure AD-gebruikersobjecten en de gebruikersobjecten van elke SaaS-app. Sommige apps beheren andere typen objecten samen met gebruikers, zoals Groepen.
+Er is een vooraf geconfigureerde set met kenmerken en kenmerk toewijzingen tussen Azure AD-gebruikers objecten en de gebruikers objecten van de SaaS-app. Sommige apps beheren andere typen objecten samen met gebruikers, zoals groepen.
 
-Bij het instellen van inrichting is het belangrijk om de kenmerktoewijzingen en -werkstromen te controleren en te configureren die bepalen welke gebruikerseigenschappen (of groep) van Azure AD naar de toepassing stromen. De overeenkomende eigenschap **(Objecten overeenkomen met dit kenmerk)** controleren en configureren die wordt gebruikt om gebruikers/groepen tussen de twee systemen op unieke wijze te identificeren en matchen.
+Bij het instellen van de inrichting is het belang rijk om de kenmerk toewijzingen en werk stromen te controleren en te configureren waarmee wordt gedefinieerd welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Bekijk en configureer de overeenkomende eigenschap (**objecten matchen met dit kenmerk**) die worden gebruikt om gebruikers/groepen op unieke wijze te identificeren en te vergelijken tussen de twee systemen.
 
-U de standaardtoewijzingen voor kenmerken aanpassen aan uw bedrijfsbehoeften. U dus bestaande kenmerktoewijzingen wijzigen of verwijderen of nieuwe kenmerktoewijzingen maken. Zie Voor meer informatie [het aanpassen van kenmerktoewijzingen voor saas-toepassingen aanpassen.](../manage-apps/customize-application-attributes.md)
+U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van uw bedrijf. U kunt dus bestaande kenmerk toewijzingen wijzigen of verwijderen, of nieuwe kenmerk toewijzingen maken. Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen aanpassen](../manage-apps/customize-application-attributes.md).
 
-Wanneer u de inrichting configureert voor een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u opgeven een expressietoewijzing. Voor deze toewijzingen moet u een scriptachtige expressie schrijven waarmee u de gegevens van uw gebruikers omzetten in indelingen die acceptabeler zijn voor de SaaS-toepassing. Zie [Expressies schrijven voor kenmerktoewijzingen voor](functions-for-customizing-application-data.md)meer informatie.
+Wanneer u inrichting voor een SaaS-toepassing configureert, is een van de typen kenmerk toewijzingen die u kunt opgeven een expressie toewijzing. Voor deze toewijzingen moet u een script achtige expressie schrijven waarmee u de gegevens van uw gebruikers kunt transformeren naar indelingen die acceptabel zijn voor de SaaS-toepassing. Zie [expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)voor meer informatie.
 
-## <a name="scoping"></a>Scoping 
-### <a name="assignment-based-scoping"></a>Op opdracht gebaseerde scoping
+## <a name="scoping"></a>Bereik 
+### <a name="assignment-based-scoping"></a>Op toewijzing gebaseerde Scope
 
-Voor uitgaande provisioning van Azure AD naar een SaaS-toepassing is vertrouwen op [gebruikers- of groepstoewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende manier om te bepalen welke gebruikers in het bereik van inrichting zijn. Omdat gebruikerstoewijzingen ook worden gebruikt voor het inschakelen van één aanmelding, kan dezelfde methode worden gebruikt voor het beheren van zowel toegang als inrichting. Op opdrachten gebaseerde scoping is niet van toepassing op binnenkomende provisioningscenario's zoals Workday en Successfactors.
+Voor uitgaande levering vanuit Azure AD naar een SaaS-toepassing is afhankelijkheid van [gebruikers-of groeps toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende manier om te bepalen welke gebruikers binnen het bereik van de inrichting vallen. Omdat gebruikers toewijzingen ook worden gebruikt voor het inschakelen van eenmalige aanmelding, kan dezelfde methode worden gebruikt voor het beheren van toegang en inrichting. Op toewijzing gebaseerde scopes zijn niet van toepassing op binnenkomende inrichtings scenario's zoals workday en Successfactors.
 
-* **Groepen.** Met een Azure AD Premium-licentieplan u groepen gebruiken om toegang toe te wijzen aan een SaaS-toepassing. Wanneer het inrichtingsbereik is ingesteld op **Alleen toegewezen gebruikers en groepen synchroniseren,** wordt de Azure AD-inrichtingsservice vervolgens gebruikers voorzien of de-provisioneren op basis van de vraag of ze lid zijn van een groep die aan de toepassing is toegewezen. Het groepsobject zelf is niet ingericht, tenzij de toepassing groepsobjecten ondersteunt. Controleer of groepen die aan uw toepassing zijn toegewezen, de eigenschap 'SecurityEnabled' hebben ingesteld op False.
+* **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren**, wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "false" voor groepen die zijn toegewezen aan uw toepassing.
 
-* **Dynamische groepen.** De Azure AD-service voor het inrichten van gebruikers kan gebruikers in [dynamische groepen](../users-groups-roles/groups-create-rule.md)lezen en inrichten. Houd deze kanttekeningen en aanbevelingen in gedachten:
+* **Dynamische groepen.** De Azure AD User Provisioning-Service kan gebruikers in [dynamische groepen](../users-groups-roles/groups-create-rule.md)lezen en inrichten. Houd deze aanvullende opmerkingen en aanbevelingen in acht:
 
-  * Dynamische groepen kunnen van invloed zijn op de prestaties van end-to-end provisioning van Azure AD naar SaaS-toepassingen.
+  * Dynamische groepen kunnen invloed hebben op de prestaties van end-to-end-inrichting van Azure AD naar SaaS-toepassingen.
 
-  * Hoe snel een gebruiker in een dynamische groep is ingericht of gede-provisioned in een SaaS-toepassing, hangt af van hoe snel de dynamische groep lidmaatschapswijzigingen kan evalueren. Zie [Verwerkingsstatus controleren voor een lidmaatschapsregel voor](../users-groups-roles/groups-create-rule.md)informatie over het controleren van de verwerkingsstatus van een dynamische groep.
+  * Hoe snel een gebruiker in een dynamische groep wordt ingericht of ongedaan gemaakt in een SaaS-toepassing, is afhankelijk van de snelheid waarmee de dynamische groep lidmaatschaps wijzigingen kan evalueren. Zie [verwerkings status controleren voor een lidmaatschaps regel](../users-groups-roles/groups-create-rule.md)voor meer informatie over het controleren van de verwerkings status van een dynamische groep.
 
-  * Wanneer een gebruiker het lidmaatschap van de dynamische groep verliest, wordt dit beschouwd als een de-provisioning-gebeurtenis. Houd rekening met dit scenario bij het maken van regels voor dynamische groepen.
+  * Wanneer een gebruiker het lidmaatschap van de dynamische groep kwijtraakt, wordt dit beschouwd als een niet-ingerichte gebeurtenis. Houd rekening met dit scenario bij het maken van regels voor dynamische groepen.
 
-* **Geneste groepen.** De Azure AD-service voor het inrichten van gebruikers kan gebruikers niet lezen of inrichten in geneste groepen. De service kan alleen gebruikers lezen en inrichten die direct lid zijn van een expliciet toegewezen groep. Deze beperking van "groepsgebaseerde toewijzingen aan toepassingen" heeft ook gevolgen voor eenmalige aanmelding (zie [Een groep gebruiken om de toegang tot SaaS-toepassingen te beheren).](../users-groups-roles/groups-saasapps.md) Wijs in plaats daarvan rechtstreeks bereik toe of [anderszins in](define-conditional-rules-for-provisioning-user-accounts.md) de groepen die de gebruikers bevatten die moeten worden ingericht.
+* **Geneste groepen.** De Azure AD User Provisioning-Service kan geen gebruikers in geneste groepen lezen of inrichten. De service kan alleen gebruikers lezen en inrichten die onmiddellijk lid zijn van een expliciet toegewezen groep. Deze beperking van ' groeps toewijzingen voor toepassingen ' is ook van invloed op eenmalige aanmelding (Zie [een groep gebruiken voor het beheren van toegang tot SaaS-toepassingen](../users-groups-roles/groups-saasapps.md)). In plaats daarvan moet u de groepen die de gebruikers moeten inrichten, rechtstreeks toewijzen of een ander [bereik](define-conditional-rules-for-provisioning-user-accounts.md) geven.
 
-### <a name="attribute-based-scoping"></a>Scoping op basis van kenmerken 
+### <a name="attribute-based-scoping"></a>Op kenmerken gebaseerde Scope 
 
-U scopingfilters gebruiken om op kenmerken gebaseerde regels te definiëren die bepalen welke gebruikers zijn ingericht voor een toepassing. Deze methode wordt vaak gebruikt voor inkomende inrichting van HCM-toepassingen naar Azure AD en Active Directory. Scopingfilters zijn geconfigureerd als onderdeel van de kenmerktoewijzingen voor elke Azure AD-gebruikersinrichtingsconnector. Zie [Op kenmerken gebaseerde toepassingsinrichting](define-conditional-rules-for-provisioning-user-accounts.md)op basis van kenmerken voor meer informatie over het configureren van op kenmerken gebaseerde scopingfilters.
+U kunt bereik filters gebruiken om op kenmerken gebaseerde regels te definiëren die bepalen welke gebruikers worden ingericht voor een toepassing. Deze methode wordt doorgaans gebruikt voor binnenkomende Provisioning van HCM-toepassingen naar Azure AD en Active Directory. Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen voor elke Azure AD-gebruikers inrichtings connector. Zie voor meer informatie over het configureren van op kenmerken gebaseerde bereik filters op [basis van kenmerken met bereik filters](define-conditional-rules-for-provisioning-user-accounts.md).
 
-### <a name="b2b-guest-users"></a>B2B (gast)gebruikers
+### <a name="b2b-guest-users"></a>B2B-gebruikers (gast)
 
-Het is mogelijk om de Azure AD-gebruikersinrichtingsservice te gebruiken voor het inrichten van B2B-gebruikers (of gastgebruikers) in Azure AD naar SaaS-toepassingen. Als B2B-gebruikers zich echter aanmelden bij de SaaS-toepassing met Azure AD, moet de SaaS-toepassing zijn SAML-gebaseerde single sign-on-mogelijkheid op een specifieke manier hebben geconfigureerd. Zie [SaaS-apps configureren voor B2B-samenwerking voor](../b2b/configure-saas-apps.md)meer informatie over het configureren van SaaS-toepassingen om aanmeldingen van B2B-gebruikers te ondersteunen.
+Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../b2b/configure-saas-apps.md).
 
-Houd er rekening mee dat de userPrincipalName voor een@domain.comgastgebruiker vaak wordt opgeslagen als 'alias#EXT# '. wanneer de userPrincipalName is opgenomen in uw kenmerktoewijzingen als bronkenmerk, wordt de #EXT# verwijderd van de userPrincipalName. Als u wilt dat de #EXT# aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bronkenmerk. 
+Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt opgeslagen als ' alias@domain.com# ext # '. Wanneer de userPrincipalName is opgenomen in uw kenmerk toewijzingen als bron kenmerk, wordt het #EXT # verwijderd uit de userPrincipalName. Als u wilt dat de #EXT # aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bron kenmerk. 
 
-## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtingscycli: Initiële en incrementele
+## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 
-Wanneer Azure AD het bronsysteem is, gebruikt de inrichtingsservice de [deltaquery gebruiken om wijzigingen in Microsoft Graph-gegevens bij te houden](https://docs.microsoft.com/graph/delta-query-overview) om gebruikers en groepen te controleren. De inrichtingsservice voert een eerste cyclus uit ten opzichte van het bronsysteem en het doelsysteem, gevolgd door periodieke incrementele cycli.
+Wanneer Azure AD het bron systeem is, gebruikt de inrichtings service de [query voor het bijhouden van wijzigingen in Microsoft Graph gegevens](https://docs.microsoft.com/graph/delta-query-overview) voor het bewaken van gebruikers en groepen. De inrichtings service voert een eerste cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli.
 
-### <a name="initial-cycle"></a>Initiële cyclus
+### <a name="initial-cycle"></a>Eerste cyclus
 
-Wanneer de inrichtingsservice wordt gestart, zal de eerste cyclus:
+Wanneer de inrichtings service wordt gestart, wordt de eerste cyclus:
 
-1. Vraag alle gebruikers en groepen uit het bronsysteem op en haal alle kenmerken op die zijn gedefinieerd in de [kenmerktoewijzingen.](customize-application-attributes.md)
+1. Query's uitvoeren voor alle gebruikers en groepen van het bron systeem en alle kenmerken ophalen die zijn gedefinieerd in de [kenmerk toewijzingen](customize-application-attributes.md).
 
-2. Filter de geretourneerde gebruikers en groepen met behulp van geconfigureerde [toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) of [op kenmerken gebaseerde scopingfilters](define-conditional-rules-for-provisioning-user-accounts.md).
+2. Filter de gebruikers en groepen die zijn geretourneerd met behulp van de geconfigureerde [toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) of [bereik filters op basis van kenmerken](define-conditional-rules-for-provisioning-user-accounts.md).
 
-3. Wanneer een gebruiker is toegewezen of in het bereik van de inrichting is, vraagt de service het doelsysteem voor een overeenkomende gebruiker op met behulp van de opgegeven [overeenkomende kenmerken.](customize-application-attributes.md#understanding-attribute-mapping-properties) Voorbeeld: Als de naam userPrincipal in het bronsysteem het overeenkomende kenmerk en de kaarten aan userName in het doelsysteem is, stelt de inrichtingsservice het doelsysteem op voor gebruikersNamen die overeenkomen met de naamwaarden van userPrincipal in het bronsysteem.
+3. Wanneer een gebruiker is toegewezen of in het bereik van het inrichten is, vraagt de service het doel systeem om een overeenkomende gebruiker met behulp van de opgegeven [overeenkomende kenmerken](customize-application-attributes.md#understanding-attribute-mapping-properties). Voor beeld: als de naam van de userPrincipal in het bron systeem het overeenkomende kenmerk is en toewijst aan de gebruikers naam in het doel systeem, voert de inrichtings service een query uit op het doel systeem voor gebruikers namen die overeenkomen met de userPrincipal naam waarden in het bron systeem.
 
-4. Als een overeenkomende gebruiker niet wordt gevonden in het doelsysteem, wordt deze gemaakt met behulp van de kenmerken die zijn geretourneerd uit het bronsysteem. Nadat het gebruikersaccount is gemaakt, detecteert en cachet de inrichtingsservice de id van het doelsysteem voor de nieuwe gebruiker. Deze id wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
+4. Als er geen overeenkomende gebruiker wordt gevonden in het doel systeem, wordt deze gemaakt met behulp van de kenmerken die worden geretourneerd door het bron systeem. Nadat het gebruikers account is gemaakt, detecteert en de inrichtings service wordt de ID van het doel systeem voor de nieuwe gebruiker gedetecteerd en opgeslagen in de cache. Deze ID wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 
-5. Als een overeenkomende gebruiker wordt gevonden, wordt deze bijgewerkt met behulp van de kenmerken die door het bronsysteem worden geleverd. Nadat het gebruikersaccount is gekoppeld, detecteert en cachet de inrichtingsservice de id van het doelsysteem voor de nieuwe gebruiker. Deze id wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
+5. Als er een overeenkomende gebruiker wordt gevonden, wordt deze bijgewerkt met behulp van de kenmerken van het bron systeem. Nadat het gebruikers account is gevonden, detecteert de inrichtings service de ID van het doel systeem voor de nieuwe gebruiker en slaat deze in de cache op. Deze ID wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 
-6. Als de kenmerktoewijzingen 'referentiekenmerken' bevatten, werkt de service extra updates uit op het doelsysteem om de objecten waarnaar wordt verwezen te maken en te koppelen. Een gebruiker kan bijvoorbeeld een kenmerk 'Manager' in het doelsysteem hebben, dat is gekoppeld aan een andere gebruiker die in het doelsysteem is gemaakt.
+6. Als de kenmerk toewijzingen ' verwijzings kenmerken ' bevatten, biedt de service extra updates op het doel systeem om de objecten waarnaar wordt verwezen, te maken en te koppelen. Een gebruiker kan bijvoorbeeld een kenmerk ' Manager ' hebben in het doel systeem, dat is gekoppeld aan een andere gebruiker die is gemaakt in het doel systeem.
 
-7. Ga door tot een watermerk aan het einde van de eerste cyclus, wat het uitgangspunt is voor de latere incrementele cycli.
+7. Een water merk aan het einde van de eerste cyclus persistent maken, waarmee het start punt voor de latere incrementele cycli wordt geleverd.
 
-Sommige toepassingen zoals ServiceNow, G Suite en Box ondersteunen niet alleen het inrichten van gebruikers, maar ook het inrichten van groepen en hun leden. In die gevallen, als groepsinrichting is ingeschakeld in de [toewijzingen,](customize-application-attributes.md)synchroniseert de inrichtingsservice de gebruikers en de groepen en synchroniseert de groeplidmaatschappen later.
+Sommige toepassingen, zoals ServiceNow, G suite en Box ondersteunen niet alleen het inrichten van gebruikers, maar ook voor het inrichten van groepen en hun leden. Als groeps inrichting is ingeschakeld in de [toewijzingen](customize-application-attributes.md), synchroniseert de inrichtings service de gebruikers en de groepen en worden de groepslid maatschappen vervolgens op een later tijdstip gesynchroniseerd.
 
 ### <a name="incremental-cycles"></a>Incrementele cycli
 
 Na de eerste cyclus zullen alle andere cycli:
 
-1. Vraag het bronsysteem op voor alle gebruikers en groepen die zijn bijgewerkt sinds het laatste watermerk is opgeslagen.
+1. Zoek het bron systeem op voor alle gebruikers en groepen die zijn bijgewerkt sinds het laatste water merk is opgeslagen.
 
-2. Filter de geretourneerde gebruikers en groepen met behulp van geconfigureerde [toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) of [op kenmerken gebaseerde scopingfilters](define-conditional-rules-for-provisioning-user-accounts.md).
+2. Filter de gebruikers en groepen die zijn geretourneerd met behulp van de geconfigureerde [toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) of [bereik filters op basis van kenmerken](define-conditional-rules-for-provisioning-user-accounts.md).
 
-3. Wanneer een gebruiker is toegewezen of in het bereik van de inrichting is, vraagt de service het doelsysteem voor een overeenkomende gebruiker op met behulp van de opgegeven [overeenkomende kenmerken.](customize-application-attributes.md#understanding-attribute-mapping-properties)
+3. Wanneer een gebruiker is toegewezen of in het bereik van het inrichten is, vraagt de service het doel systeem om een overeenkomende gebruiker met behulp van de opgegeven [overeenkomende kenmerken](customize-application-attributes.md#understanding-attribute-mapping-properties).
 
-4. Als een overeenkomende gebruiker niet wordt gevonden in het doelsysteem, wordt deze gemaakt met behulp van de kenmerken die zijn geretourneerd uit het bronsysteem. Nadat het gebruikersaccount is gemaakt, detecteert en cachet de inrichtingsservice de id van het doelsysteem voor de nieuwe gebruiker. Deze id wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
+4. Als er geen overeenkomende gebruiker wordt gevonden in het doel systeem, wordt deze gemaakt met behulp van de kenmerken die worden geretourneerd door het bron systeem. Nadat het gebruikers account is gemaakt, detecteert en de inrichtings service wordt de ID van het doel systeem voor de nieuwe gebruiker gedetecteerd en opgeslagen in de cache. Deze ID wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 
-5. Als een overeenkomende gebruiker wordt gevonden, wordt deze bijgewerkt met behulp van de kenmerken die door het bronsysteem worden geleverd. Als het een nieuw toegewezen account is dat is gekoppeld, detecteert en cachet de inrichtingsservice de id van het doelsysteem voor de nieuwe gebruiker. Deze id wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
+5. Als er een overeenkomende gebruiker wordt gevonden, wordt deze bijgewerkt met behulp van de kenmerken van het bron systeem. Als het een nieuw toegewezen account is dat overeenkomt, detecteert de inrichtings service de ID van het doel systeem voor de nieuwe gebruiker en slaat deze in de cache op. Deze ID wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 
-6. Als de kenmerktoewijzingen 'referentiekenmerken' bevatten, werkt de service extra updates uit op het doelsysteem om de objecten waarnaar wordt verwezen te maken en te koppelen. Een gebruiker kan bijvoorbeeld een kenmerk 'Manager' in het doelsysteem hebben, dat is gekoppeld aan een andere gebruiker die in het doelsysteem is gemaakt.
+6. Als de kenmerk toewijzingen ' verwijzings kenmerken ' bevatten, biedt de service extra updates op het doel systeem om de objecten waarnaar wordt verwezen, te maken en te koppelen. Een gebruiker kan bijvoorbeeld een kenmerk ' Manager ' hebben in het doel systeem, dat is gekoppeld aan een andere gebruiker die is gemaakt in het doel systeem.
 
-7. Als een gebruiker die voorheen in het bereik van de inrichting stond, uit het bereik wordt verwijderd, inclusief niet-toegewezen, schakelt de service de gebruiker in het doelsysteem uit via een update.
+7. Als een gebruiker die eerder in het bereik is ingericht, uit het bereik is verwijderd, inclusief het ongedaan maken van de toewijzing, schakelt de service de gebruiker in het doel systeem uit via een update.
 
-8. Als een gebruiker die voorheen in het bereik van de inrichting was uitgeschakeld of soft-verwijderd in het bronsysteem, schakelt de service de gebruiker in het doelsysteem uit via een update.
+8. Als een gebruiker die voorheen in het bereik van de inrichting stond, is uitgeschakeld of zacht verwijderd in het bron systeem, wordt de gebruiker door de service in het doel systeem uitschakel via een update.
 
-9. Als een gebruiker die voorheen in het bereik van de inrichting was, hard wordt verwijderd in het bronsysteem, verwijdert de service de gebruiker in het doelsysteem. In Azure AD worden gebruikers 30 dagen nadat ze zacht zijn verwijderd, verwijderd.
+9. Als een gebruiker die voorheen bij het inrichten was, permanent wordt verwijderd in het bron systeem, wordt de gebruiker door de service in het doel systeem verwijderd. In azure AD worden gebruikers permanent verwijderd 30 dagen nadat ze zacht zijn verwijderd.
 
-10. Ga door tot een nieuw watermerk aan het einde van de incrementele cyclus, die het uitgangspunt vormt voor de latere incrementele cycli.
+10. Een nieuw water merk aan het einde van de incrementele cyclus persistent maken, dat het start punt voor de latere incrementele cycli levert.
 
 > [!NOTE]
-> U de **bewerkingen Maken,** **Bijwerken**of **Verwijderen** optioneel uitschakelen met de selectievakjes **Doelobjectacties** in de sectie [Toewijzingen.](customize-application-attributes.md) De logica om een gebruiker uit te schakelen tijdens een update wordt ook beheerd via een kenmerktoewijzing vanuit een veld zoals 'accountEnabled'.
+> U kunt de bewerkingen **maken**, **bijwerken**of **verwijderen** eventueel uitschakelen met behulp van de selectie vakjes voor de acties van het **doel object** in de sectie [toewijzingen](customize-application-attributes.md) . De logica voor het uitschakelen van een gebruiker tijdens een update wordt ook bepaald via een kenmerk toewijzing van een veld zoals ' accountEnabled '.
 
-De inrichtingsservice blijft back-to-back incrementele cycli voor onbepaalde tijd uitvoeren, met intervallen die zijn gedefinieerd in de [zelfstudie die specifiek is voor elke toepassing](../saas-apps/tutorial-list.md). Incrementele cycli gaan door totdat een van de volgende gebeurtenissen optreedt:
+De inrichtings service blijft een incrementele cyclus van back-to-back uitvoeren, op intervallen die zijn gedefinieerd in de [zelf studie specifiek voor elke toepassing](../saas-apps/tutorial-list.md). Incrementele cycli worden voortgezet totdat een van de volgende gebeurtenissen zich voordoet:
 
-- De service wordt handmatig gestopt met het gebruik van de Azure-portal of met de juiste Microsoft Graph API-opdracht.
-- Een nieuwe eerste cyclus wordt geactiveerd met de optie **Status wissen en opnieuw starten** in de Azure-portal of met de juiste Microsoft Graph API-opdracht. Met deze actie wordt elk opgeslagen watermerk gewist en worden alle bronobjecten opnieuw geëvalueerd.
-- Een nieuwe eerste cyclus wordt geactiveerd vanwege een wijziging in kenmerktoewijzingen of scopingfilters. Met deze actie wordt ook elk opgeslagen watermerk gewist en worden alle bronobjecten opnieuw geëvalueerd.
-- Het inrichtingsproces gaat in quarantaine (zie hieronder) vanwege een hoog foutenpercentage en blijft langer dan vier weken in quarantaine. In dit geval wordt de service automatisch uitgeschakeld.
+- De service wordt hand matig gestopt met de Azure Portal of met de juiste Microsoft Graph API-opdracht.
+- Er wordt een nieuwe eerste cyclus geactiveerd met de optie **wissen en opnieuw starten** in het Azure Portal, of met behulp van de juiste Microsoft Graph API-opdracht. Met deze actie wordt een opgeslagen water merk gewist en worden alle bron objecten opnieuw geëvalueerd.
+- Er wordt een nieuwe eerste cyclus geactiveerd als gevolg van een wijziging in kenmerk toewijzingen of filter bereik. Met deze actie wordt ook een opgeslagen water merk gewist en worden alle bron objecten opnieuw geëvalueerd.
+- Het inrichtings proces gaat in quarantaine (zie hieronder) als gevolg van een hoge fout frequentie en blijft meer dan vier weken in quarantaine. In dit geval wordt de service automatisch uitgeschakeld.
 
-### <a name="errors-and-retries"></a>Fouten en nieuwe pogingen
+### <a name="errors-and-retries"></a>Fouten en pogingen
 
-Als een fout in het doelsysteem voorkomt dat een individuele gebruiker wordt toegevoegd, bijgewerkt of verwijderd in het doelsysteem, wordt de bewerking opnieuw geprobeerd in de volgende synchronisatiecyclus. Als de gebruiker blijft falen, beginnen de nieuwe pogingen op een verminderde frequentie te gebeuren en worden ze geleidelijk teruggeschroefd naar slechts één poging per dag. Om de fout op te lossen, moeten beheerders de [inrichtingslogboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) controleren om de hoofdoorzaak te bepalen en de juiste actie te ondernemen. Veelvoorkomende fouten kunnen zijn:
+Als een fout in het doel systeem verhindert dat een afzonderlijke gebruiker wordt toegevoegd, bijgewerkt of verwijderd in het doel systeem, wordt de bewerking tijdens de volgende synchronisatie cyclus opnieuw geprobeerd. Als de gebruiker niet meer kan worden uitgevoerd, worden de nieuwe pogingen op een lagere frequentie uitgevoerd en wordt de schaal geleidelijk teruggezet op slechts één poging per dag. Om het probleem op te lossen, moeten beheerders de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) controleren om de hoofd oorzaak te bepalen en de juiste actie ondernemen. Veelvoorkomende fouten kunnen het volgende omvatten:
 
-- Gebruikers die geen kenmerk hebben dat is ingevuld in het bronsysteem dat vereist is in het doelsysteem
-- Gebruikers met een kenmerkwaarde in het bronsysteem waarvoor een unieke beperking in het doelsysteem is en dezelfde waarde aanwezig is in een andere gebruikersrecord
+- Gebruikers die geen kenmerk hebben dat is ingevuld in het bron systeem dat vereist is in het doel systeem
+- Gebruikers met een kenmerk waarde in het bron systeem waarvoor zich een unieke beperking in het doel systeem bevindt, en dezelfde waarde is aanwezig in een andere gebruikers record
 
-Los deze fouten op door de kenmerkwaarden voor de betrokken gebruiker in het bronsysteem aan te passen of door de kenmerktoewijzingen aan te passen zodat ze geen conflicten veroorzaken.
+Los deze fouten op door de kenmerk waarden voor de betrokken gebruiker in het bron systeem aan te passen of door de kenmerk toewijzingen zo aan te passen dat er geen conflicten ontstaan.
 
 ### <a name="quarantine"></a>Quarantaine
 
-Als de meeste of alle oproepen die tegen het doelsysteem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerdersreferenties), gaat de inrichtingstaak in een quarantainestatus. Deze status wordt aangegeven in [het rapportagerapport](../manage-apps/check-status-user-account-provisioning.md) en via e-mail als e-mailmeldingen zijn geconfigureerd in de Azure-portal.
+Als de meeste of alle aanroepen die op het doel systeem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](../manage-apps/check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
 
-Wanneer in quarantaine, de frequentie van incrementele cycli wordt geleidelijk teruggebracht tot eenmaal per dag.
+In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag gereduceerd.
 
-De inrichtingstaak verlaat quarantaine nadat alle aanstootgevende fouten zijn opgelost en de volgende synchronisatiecyclus wordt gestart. Als de inrichtingstaak langer dan vier weken in quarantaine blijft, is de inrichtingstaak uitgeschakeld. Lees hier meer over de [quarantainestatus.](../manage-apps/application-provisioning-quarantine-status.md)
+De inrichtings taak verlaat quarantaine nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](../manage-apps/application-provisioning-quarantine-status.md)
 
 ### <a name="how-long-provisioning-takes"></a>Hoelang inrichten duurt
 
-De prestaties zijn afhankelijk van de vraag of uw inrichtingstaak een eerste inrichtingscyclus of een incrementele cyclus uitvoert. Zie [De status van de invoorzieningen van](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)de gebruiker controleren voor meer informatie over hoe de inrichtingsservice duurt en hoe u de status van de inrichting van de inrichting controleren.
+De prestaties zijn afhankelijk van of uw inrichtings taak een initiële inrichtings cyclus of een incrementele cyclus uitvoert. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie over hoe lang het inrichten duurt en het controleren van de status van de inrichtings service.
 
-### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hoe weet u of gebruikers goed worden ingericht
+### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hoe weet ik of gebruikers correct worden ingericht?
 
-Alle bewerkingen die door de gebruikersinrichtingsservice worden uitgevoerd, worden geregistreerd in de Azure AD [Provisioning-logboeken (voorbeeld).](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) De logboeken bevatten alle lees- en schrijfbewerkingen die zijn uitgevoerd naar de bron- en doelsystemen en de gebruikersgegevens die tijdens elke bewerking zijn gelezen of geschreven. Zie de [rapportagehandleiding voor het inrichten](../manage-apps/check-status-user-account-provisioning.md)van de inloglogboeken in de Azure-portal voor informatie over het lezen van de inrichtingslogboeken in de Azure-portal.
+Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD [-inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). De logboeken bevatten alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven. Voor informatie over het lezen van de inrichtings Logboeken in de Azure Portal, raadpleegt u de [hand leiding](../manage-apps/check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
 
-## <a name="de-provisioning"></a>De-provisioning
+## <a name="de-provisioning"></a>De inrichting ongedaan maken
 
-De Azure AD-inrichtingsservice houdt bron- en doelsystemen gesynchroniseerd door accounts te de-provisioneren wanneer gebruikers geen toegang meer zouden moeten hebben. 
+De Azure AD-inrichtings service zorgt ervoor dat de bron-en doel systemen synchroon blijven door het inrichtings account te verwijderen wanneer gebruikers niet meer toegang mogen hebben. 
 
-De Azure AD-inrichtingsservice verwijdert een gebruiker in een toepassing wanneer de toepassing zachte verwijderingen suupports (updateaanvraag met actief = false) en een van de volgende gebeurtenissen optreedt:
+De Azure AD-inrichtings service verwijdert een gebruiker in een toepassing zacht wanneer de suupports wordt verwijderd (update aanvraag met Active = false) en een van de volgende gebeurtenissen zich voordoet:
 
-* Het gebruikersaccount wordt verwijderd in Azure AD
+* Het gebruikers account wordt verwijderd in azure AD
 *   De gebruiker is niet toegewezen aan de toepassing
-*   De gebruiker voldoet niet meer aan een scopingfilter en valt buiten het bereik
-    * Standaard verwijdert of schakelt de Azure AD-inrichtingsservice gebruikers die buiten het bereik vallen, uit. Als u dit standaardgedrag wilt overschrijven, u instellen dat een vlag [verwijderingen buiten het bereik overslaat.](../app-provisioning/skip-out-of-scope-deletions.md)
-*   De eigenschap AccountEnabled is ingesteld op Onwaar
+*   De gebruiker voldoet niet meer aan een bereik filter en valt buiten het bereik
+    * De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan](../app-provisioning/skip-out-of-scope-deletions.md).
+*   De eigenschap AccountEnabled is ingesteld op False
 
-Als een van de bovenstaande vier gebeurtenissen optreedt en de doeltoepassing geen zachte verwijderingen ondersteunt, stuurt de provisioning-service een delete-verzoek om de gebruiker permanent uit de app te verwijderen. 
+Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen. 
 
-30 dagen nadat een gebruiker is verwijderd in Azure AD, worden deze definitief uit de tenant verwijderd. Op dit moment stuurt de provisioning service een DELETE-verzoek om de gebruiker in de toepassing permanent te verwijderen. Op elk moment tijdens het 30-dagenvenster u [een gebruiker handmatig permanent verwijderen,](../fundamentals/active-directory-users-restore.md)waardoor een verwijderverzoek naar de toepassing wordt verstuurt.
+30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
 
-Als u een kenmerk IsSoftDeleted ziet in uw kenmerktoewijzingen, wordt het gebruikt om de status van de gebruiker te bepalen en of u een updateverzoek met actief = false wilt verzenden om de gebruiker te verwijderen. 
+Als u een kenmerk IsSoftDeleted in uw kenmerk toewijzingen ziet, wordt dit gebruikt om de status van de gebruiker te bepalen en of een update aanvraag met actief = False moet worden verzonden om de gebruiker te verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -196,6 +196,6 @@ Als u een kenmerk IsSoftDeleted ziet in uw kenmerktoewijzingen, wordt het gebrui
 
 [Inrichting configureren voor een galerie-app](../manage-apps/configure-automatic-user-provisioning-portal.md)
 
-[Een SCIM-eindpunt bouwen en provisioning configureren bij het maken van uw eigen app](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+[Een SCIM-eind punt bouwen en inrichten configureren bij het maken van uw eigen app](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Problemen met het configureren en inrichten van gebruikers oplossen voor een toepassing](../manage-apps/application-provisioning-config-problem.md).
+[Problemen oplossen met het configureren en inrichten van gebruikers voor een toepassing](../manage-apps/application-provisioning-config-problem.md).

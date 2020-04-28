@@ -1,7 +1,7 @@
 ---
-title: Overzicht van de modus Gedeeld apparaat
+title: Overzicht van de modus gedeelde apparaten
 titleSuffix: Microsoft identity platform | Azure
-description: Meer informatie over gedeelde apparaatmodus om het delen van apparaten voor uw Firstline Workers in te schakelen.
+description: Meer informatie over de modus gedeeld apparaat om het delen van apparaten in te scha kelen voor uw Firstline-werk nemers.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,72 +14,72 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550238"
 ---
 # <a name="overview-of-shared-device-mode"></a>Overzicht van de modus gedeeld apparaat
 
-De modus Gedeeld apparaat is een functie van Azure Active Directory waarmee u toepassingen bouwen die Firstline Workers ondersteunen en de modus gedeeld apparaat inschakelen op de apparaten die naar hen zijn geïmplementeerd.
+De modus gedeeld apparaat is een functie van Azure Active Directory waarmee u toepassingen kunt bouwen die Firstline-werk nemers ondersteunen en de modus gedeeld apparaat inschakelen op de apparaten die hierop zijn geïmplementeerd.
 
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-are-firstline-workers"></a>Wat zijn Firstline Workers?
+## <a name="what-are-firstline-workers"></a>Wat zijn Firstline-werk rollen?
 
-Firstline Workers zijn retailmedewerkers, onderhouds- en veldagenten, medisch personeel en andere gebruikers die niet voor een computer zitten of bedrijfse-mail gebruiken voor samenwerking. In de volgende secties worden de aspecten en uitdagingen van het ondersteunen van Firstline Workers geïntroduceerd, gevolgd door een inleiding tot de functies die door Microsoft worden geleverd en waarmee uw toepassing kan worden gebruikt door de Firstline Workers van een organisatie.
+Firstline-werk nemers zijn Retail werk nemers, onderhouds-en veld agenten, medische personeel en andere gebruikers die zich niet vóór een computer bevinden of die zakelijke e-mail gebruiken voor samen werking. In de volgende secties worden de aspecten en uitdagingen van de ondersteuning van Firstline-werk rollen geïntroduceerd, gevolgd door een inleiding tot de functies van micro soft waarmee uw toepassing kan worden gebruikt door de Firstline-werk nemers van een organisatie.
 
-### <a name="challenges-of-supporting-firstline-workers"></a>Uitdagingen bij het ondersteunen van Firstline Workers
+### <a name="challenges-of-supporting-firstline-workers"></a>Uitdagingen voor de ondersteuning van Firstline-werk nemers
 
-Het inschakelen van Firstline Worker-werkstromen omvat uitdagingen die doorgaans niet worden gepresenteerd door typische informatiewerkers. Dergelijke uitdagingen kunnen bestaan uit een hoge omloopsnelheid en minder vertrouwdheid met de belangrijkste productiviteitstools van een organisatie. Om hun Firstline Workers te versterken, nemen organisaties verschillende strategieën aan. Sommige zijn de vaststelling van een bring-your-own-device (BYOD) strategie waarin hun werknemers zakelijke apps gebruiken op hun persoonlijke telefoon, terwijl anderen hun werknemers te voorzien van gedeelde apparaten zoals iPads of Android-tablets.
+Het inschakelen van Firstline werk stromen bevat uitdagingen die doorgaans niet worden gepresenteerd door typische informatie medewerkers. Dergelijke uitdagingen kunnen een hoge omzet snelheid en minder vertrouwd zijn met de belangrijkste productiviteits tools van een organisatie. Om hun Firstline-werk nemers te stimuleren, nemen organisaties verschillende strategieën. Sommige vormen een BYOD-strategie (pres-your-own-Device) waarbij hun mede werkers zakelijke apps op hun persoonlijke telefoon gebruiken, terwijl anderen hun werk nemers voorzien van gedeelde apparaten als iPads of Android-tablets.
 
-### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>Ondersteuning van meerdere gebruikers op apparaten die zijn ontworpen voor één gebruiker
+### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>Ondersteuning voor meerdere gebruikers op apparaten die zijn ontworpen voor één gebruiker
 
-Omdat mobiele apparaten met iOS of Android zijn ontworpen voor afzonderlijke gebruikers, optimaliseren de meeste toepassingen hun ervaring voor gebruik door één gebruiker. Een deel van deze geoptimaliseerde ervaring betekent het inschakelen van eenmalige aanmelding tussen toepassingen en het laten inloggen van gebruikers op hun apparaat. Wanneer een gebruiker zijn account uit een toepassing verwijdert, beschouwt de app het doorgaans niet als een beveiligingsgerelateerde gebeurtenis. Veel apps houden zelfs de referenties van een gebruiker bij voor snelle aanmelding. Mogelijk hebt u dit zelfs zelf ervaren wanneer u een toepassing van uw mobiele apparaat hebt verwijderd en vervolgens opnieuw hebt geïnstalleerd, om vervolgens te ontdekken dat u nog steeds bent aangemeld.
+Omdat mobiele apparaten met iOS of Android zijn ontworpen voor individuele gebruikers, kunnen de meeste toepassingen hun ervaring optimaliseren voor gebruik door één gebruiker. Onderdeel van deze geoptimaliseerde ervaring houdt in het inschakelen van eenmalige aanmelding voor toepassingen en het bijhouden van gebruikers op hun apparaat. Wanneer een gebruiker het account uit een toepassing verwijdert, beschouwt de app deze doorgaans niet als een gebeurtenis die betrekking heeft op beveiliging. Veel apps houden zelfs de referenties van een gebruiker bij om u snel aan te melden. Mogelijk hebt u zelfs zelf een probleem ondervonden wanneer u een toepassing van uw mobiele apparaat hebt verwijderd en deze vervolgens opnieuw hebt geïnstalleerd, zodat u nog steeds bent aangemeld.
 
-### <a name="global-sign-in-and-sign-out-sso"></a>Wereldwijde aanmelding en afmelding (SSO)
+### <a name="global-sign-in-and-sign-out-sso"></a>Global Sign-in en Sign-out (SSO)
 
-Om de werknemers van een organisatie in staat te stellen de apps te gebruiken in een groep apparaten die door die werknemers worden gedeeld, moeten ontwikkelaars de tegenovergestelde ervaring inschakelen. Werknemers moeten in staat zijn om een apparaat uit het zwembad te halen en een enkel gebaar uit te voeren om "het van hen te maken" voor de duur van hun shift. Aan het einde van hun dienst moeten ze een ander gebaar kunnen uitvoeren om zich wereldwijd af te melden op het apparaat, met al hun persoonlijke en bedrijfsinformatie verwijderd, zodat ze deze kunnen retourneren naar de apparaatgroep. Bovendien, als een werknemer vergeet af te melden, moet het apparaat automatisch worden afgemeld aan het einde van zijn dienst en/of na een periode van inactiviteit.
+Ontwikkel aars moeten de tegenovergestelde ervaring inschakelen om de werk nemers van een organisatie in staat te stellen hun apps te gebruiken voor een groep apparaten die door deze werk nemers worden gedeeld. Werk nemers moeten een apparaat uit de pool kunnen kiezen en één penbeweging kunnen uitvoeren om de duur van hun verschuiving te maken. Aan het einde van de ploeg moeten ze een andere beweging kunnen uitvoeren om zich wereld wijd aan te melden op het apparaat, waarbij al hun persoonlijke en bedrijfs gegevens worden verwijderd, zodat ze deze kunnen terugsturen naar de groep apparaten. Als een werk nemer zich vervolgens vergeet af te melden, moet het apparaat automatisch worden afgemeld aan het einde van hun verschuiving en/of na een periode van inactiviteit.
 
-Azure Active Directory maakt deze scenario's mogelijk met een functie die **de modus gedeeld apparaat**wordt genoemd.
+Azure Active Directory maakt deze scenario's mogelijk met een functie die de **modus gedeeld apparaat**heet.
 
-## <a name="introducing-shared-device-mode"></a>Introductie van gedeelde apparaatmodus
+## <a name="introducing-shared-device-mode"></a>De modus gedeeld apparaat introduceren
 
-Zoals gezegd is de modus voor gedeeld apparaat een functie van Azure Active Directory waarmee u:
+Zoals vermeld, is de modus gedeeld apparaat een functie van Azure Active Directory waarmee u het volgende kunt doen:
 
-* Toepassingen bouwen die Firstline Workers ondersteunen
-* Apparaten implementeren voor Firstline Workers en de modus Gedeeld apparaat inschakelen
+* Bouw toepassingen die Firstline-werk nemers ondersteunen
+* Apparaten implementeren voor Firstline-werk rollen en de modus gedeeld apparaat inschakelen
 
-### <a name="build-applications-that-support-firstline-workers"></a>Toepassingen bouwen die Firstline Workers ondersteunen
+### <a name="build-applications-that-support-firstline-workers"></a>Bouw toepassingen die Firstline-werk nemers ondersteunen
 
-U Firstline Workers in uw toepassingen ondersteunen met behulp van de Microsoft Authentication Library (MSAL) en [de Microsoft Authenticator-app](../user-help/user-help-auth-app-overview.md) om de apparaatstatus *genaamd shared device mode*in te schakelen. Wanneer een apparaat zich in de modus gedeeld apparaat bevindt, verstrekt Microsoft uw toepassing informatie om het gedrag ervan te laten wijzigen op basis van de status van de gebruiker op het apparaat, waardoor gebruikersgegevens worden beschermd.
+U kunt Firstline-werk nemers in uw toepassingen ondersteunen met behulp van de micro soft Authentication Library (MSAL) en [Microsoft Authenticator app](../user-help/user-help-auth-app-overview.md) om een Apparaatstatus in te scha kelen, de *modus gedeeld apparaat*. Wanneer een apparaat in de modus gedeeld apparaat is, biedt micro soft uw toepassing informatie waarmee het gedrag kan worden gewijzigd op basis van de status van de gebruiker op het apparaat, en de gebruikers gegevens worden beveiligd.
 
 Ondersteunde functies zijn:
 
-* **Meld u aan bij een gebruikersapparaat breed** via een ondersteunde toepassing.
-* **Meld u af voor een apparaat breed** van een gebruiker via een ondersteunde toepassing.
-* **Vraag de status van het apparaat** op om te bepalen of uw toepassing zich op een apparaat bevindt dat zich in de modus gedeeld apparaat bevindt.
-* **Vraag de apparaatstatus van de gebruiker** op het apparaat op om te bepalen of er iets is veranderd sinds de laatste keer dat uw toepassing is gebruikt.
+* **Meld u aan voor een gebruikers apparaat breed** via elke ondersteunde toepassing.
+* **Een gebruikers apparaat bedekken** met alle ondersteunde toepassingen.
+* **Query's uitvoeren op de status van het apparaat** om te bepalen of uw toepassing zich op een apparaat bevindt dat in de modus gedeeld apparaat is.
+* **Zoek de apparaatstatus van de gebruiker** op het apparaat om te bepalen of er iets is gewijzigd sinds de laatste keer dat de toepassing is gebruikt.
 
-Ondersteuning van de modus voor gedeelde apparaten moet worden beschouwd als zowel een beveiligingsverbetering als een upgrade van functies voor uw toepassing en kan helpen de acceptatie ervan te vergroten in sterk gereguleerde omgevingen zoals gezondheidszorg en financiën.
+De ondersteunende modus voor gedeelde apparaten moet worden beschouwd als zowel een beveiligings verbetering als een functie-upgrade voor uw toepassing, en kan bijdragen aan een betere acceptatie in zeer gereglementeerde omgevingen als gezondheids zorg en financiering.
 
-Uw gebruikers zijn afhankelijk van u om ervoor te zorgen dat hun gegevens niet worden gelekt naar een andere gebruiker. De apparaatmodus delen biedt nuttige signalen om uw toepassing aan te geven dat er een wijziging is opgetreden die u moet beheren. Uw toepassing is verantwoordelijk voor het controleren van de status van de gebruiker op het apparaat elke keer dat de app wordt gebruikt, het wissen van de gegevens van de vorige gebruiker. Dit geldt ook als het wordt herladen vanaf de achtergrond in multi-tasking. Bij een gebruikerswijziging moet u ervoor zorgen dat zowel de gegevens van de vorige gebruiker worden gewist als dat alle gegevens in de cache die in uw toepassing worden weergegeven, worden verwijderd. We raden u aan altijd een grondig beveiligingscontroleproces uit te voeren nadat u de mogelijkheid voor gedeelde apparaatmodus aan uw app hebt toegevoegd.
+Uw gebruikers zijn afhankelijk van u om ervoor te zorgen dat hun gegevens niet naar een andere gebruiker worden gelekt. De modus apparaat delen biedt nuttige signalen om aan te geven dat de toepassing een wijziging heeft ondertreden die door u moet worden beheerd. Uw toepassing is verantwoordelijk voor het controleren van de status van de gebruiker op het apparaat telkens wanneer de app wordt gebruikt, waarbij de gegevens van de vorige gebruiker worden gewist. Dit geldt ook als het opnieuw wordt geladen vanaf de achtergrond in meerdere taken. Bij wijziging van een gebruiker moet u ervoor zorgen dat de gegevens van de vorige gebruiker worden gewist en dat alle in de cache opgeslagen gegevens die in uw toepassing worden weer gegeven, worden verwijderd. U wordt aangeraden altijd een grondig beveiligings controle proces uit te voeren nadat u de functionaliteit van de modus gedeelde apparaten hebt toegevoegd aan uw app.
 
-Zie de sectie [Volgende stappen](#next-steps) aan het einde van dit artikel voor meer informatie over het wijzigen van uw toepassingen om de modus gedeeld apparaat te ondersteunen.
+Zie de sectie [volgende stappen](#next-steps) aan het einde van dit artikel voor meer informatie over het aanpassen van uw toepassingen ter ondersteuning van de modus voor gedeelde apparaten.
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>Apparaten implementeren voor Firstline Workers en de modus Gedeeld apparaat inschakelen
+### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>Apparaten implementeren voor Firstline-werk rollen en de modus gedeeld apparaat inschakelen
 
-Zodra uw toepassingen de gedeelde apparaatmodus ondersteunen en de vereiste gegevens en beveiligingswijzigingen bevatten, u deze adverteren als bruikbaar voor Firstline Workers.
+Zodra uw toepassingen de modus gedeeld apparaat ondersteunen en de vereiste gegevens-en beveiligings wijzigingen bevatten, kunt u ze adverteren als bruikbaar voor Firstline-werk nemers.
 
-De apparaatbeheerders van een organisatie kunnen hun apparaten en toepassingen implementeren in hun winkels en werkplekken via een MDM-oplossing (Mobile Device Management), zoals Microsoft Intune. Een deel van het inrichtingsproces markeert het apparaat als een *gedeeld apparaat.* Beheerders configureren de modus voor gedeelde apparaten door de [Microsoft Authenticator-app te](../user-help/user-help-auth-app-overview.md) implementeren en de modus gedeeld apparaat in te stellen via configuratieparameters. Na het uitvoeren van deze stappen gebruiken alle toepassingen die de modus gedeeld apparaat ondersteunen, de Microsoft Authenticator-toepassing om de gebruikersstatus te beheren en beveiligingsfuncties voor het apparaat en de organisatie te bieden.
+De beheerders van een organisatie kunnen hun apparaten en uw toepassingen implementeren in hun winkels en werk plek via een oplossing voor Mobile Device Management (MDM) zoals Microsoft Intune. Onderdeel van het inrichtings proces markeert het apparaat als een *gedeeld apparaat*. Beheerders configureren de modus gedeeld apparaat door de [Microsoft Authenticator-app](../user-help/user-help-auth-app-overview.md) te implementeren en de modus gedeeld apparaat in te stellen via configuratie parameters. Nadat u deze stappen hebt uitgevoerd, zullen alle toepassingen die ondersteuning bieden voor de modus gedeeld apparaat de Microsoft Authenticator toepassing gebruiken om de gebruikers status te beheren en beveiligings functies bieden voor het apparaat en de organisatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-We ondersteunen iOS- en Android-platforms voor de modus voor gedeelde apparaten. Bekijk de onderstaande documentatie voor uw platform om Firstline Workers te ondersteunen in uw toepassingen.
+We ondersteunen iOS-en Android-platforms voor de modus gedeeld apparaat. Raadpleeg de onderstaande documentatie voor uw platform om te beginnen met de ondersteuning van Firstline-werk nemers in uw toepassingen.
 
-* [Ondersteuning voor gedeelde apparaatmodus voor iOS](msal-ios-shared-devices.md)
-* [Ondersteuning voor gedeelde apparaatmodus voor Android](msal-android-shared-devices.md)
+* [Ondersteuning voor de modus gedeeld apparaat voor iOS](msal-ios-shared-devices.md)
+* [Ondersteuning voor de modus gedeeld apparaat voor Android](msal-android-shared-devices.md)

@@ -1,6 +1,6 @@
 ---
-title: Verificatieprotocollen voor Microsoft-identiteitsplatform
-description: Een overzicht van de verificatieprotocollen die worden ondersteund door het identiteitsplatform van Microsoft
+title: Verificatie protocollen voor micro soft-identiteits platform
+description: Een overzicht van de verificatie protocollen die worden ondersteund door het micro soft Identity-platform
 author: rwike77
 services: active-directory
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884678"
 ---
-# <a name="microsoft-identity-platform-authentication-protocols"></a>Verificatieprotocollen voor Microsoft-identiteitsplatform
+# <a name="microsoft-identity-platform-authentication-protocols"></a>Verificatie protocollen voor micro soft-identiteits platform
 
-Microsoft identity platform ondersteunt een aantal van de meest gebruikte authenticatie- en autorisatieprotocollen. De onderwerpen in deze sectie beschrijven de ondersteunde protocollen en de implementatie ervan in het Microsoft-identiteitsplatform. De onderwerpen omvatten een herziening van ondersteunde claimtypen, een inleiding tot het gebruik van federatiemetadata, gedetailleerde OAuth 2.0. en SAML 2.0-protocolreferentiedocumentatie en een sectie voor probleemoplossing.
+Micro soft Identity platform ondersteunt verschillende van de meest gebruikte verificatie-en autorisatie protocollen. De onderwerpen in deze sectie beschrijven de ondersteunde protocollen en de implementatie ervan in het micro soft Identity-platform. De onderwerpen bevatten een overzicht van de ondersteunde claim typen, een inleiding tot het gebruik van federatieve meta gegevens, gedetailleerde OAuth 2,0. en de informatie over het SAML 2,0-protocol en een sectie voor probleem oplossing.
 
-## <a name="authentication-protocols-articles-and-reference"></a>Verificatieprotocollen artikelen en referentie
+## <a name="authentication-protocols-articles-and-reference"></a>Verificatie protocollen artikelen en naslag informatie
 
-* [Belangrijke informatie over het ondertekenen van sleutelrollover in het Microsoft-identiteitsplatform](active-directory-signing-key-rollover.md) : Lees meer over de ondertekeningssleutelcadans van het Microsoft-identiteitsplatform, wijzigingen die u aanbrengen om de sleutel automatisch bij te werken en discussie over hoe u de meest voorkomende toepassingsscenario's bijwerken.
-* [Ondersteunde token- en claimtypen](id-tokens.md) - Meer informatie over de claims in de tokens die microsoft-identiteitsplatform uitgeeft.
-* [OAuth 2.0 in Microsoft-identiteitsplatform](v2-oauth2-auth-code-flow.md) - Meer informatie over de implementatie van OAuth 2.0 in het identiteitsplatform van Microsoft.
-* [OpenID Connect 1.0](v2-protocols-oidc.md) - Meer informatie over het gebruik van OAuth 2.0, een autorisatieprotocol, voor verificatie.
-* [Service to Service Calls with Client Credentials](v2-oauth2-client-creds-grant-flow.md) - Lees hoe u de verleningsstroom van OAuth 2.0-clientreferenties gebruiken voor service aan serviceoproepen.
-* [Service to Service Calls met On-Behalf-Of Flow](v2-oauth2-on-behalf-of-flow.md) - Meer informatie over het gebruik van OAuth 2.0 On-Behalf-Of flow voor service-to-servicegesprekken.
-* [SAML Protocol Reference](active-directory-saml-protocol-reference.md) - Meer informatie over de SAML-profielen voor één aanmelding en één aanmelding van het Microsoft-identiteitsplatform.
+* Belang rijke informatie over het aanwijzen van de [handtekening sleutel in het micro soft Identity platform](active-directory-signing-key-rollover.md) -meer informatie over de uitgebracht van de micro soft Identity platform-rollover, wijzigingen die u kunt aanbrengen om de sleutel automatisch bij te werken en om te zien hoe u de meest voorkomende toepassings scenario's bijwerkt.
+* [Ondersteunde token-en claim typen](id-tokens.md) : meer informatie over de claims in de tokens die door micro soft Identity platform worden uitgegeven.
+* [OAuth 2,0 in micro soft Identity platform](v2-oauth2-auth-code-flow.md) : meer informatie over de implementatie van OAuth 2,0 in het micro soft Identity-platform.
+* [OpenID Connect Connect 1,0](v2-protocols-oidc.md) -meer informatie over het gebruik van OAuth 2,0, een autorisatie protocol, voor authenticatie.
+* [Service-to-service aanroepen met client referenties](v2-oauth2-client-creds-grant-flow.md) : informatie over het gebruik van OAuth 2,0-client referenties toekenning stroom voor service-to-service aanroepen.
+* [Service-to-service-aanroepen met](v2-oauth2-on-behalf-of-flow.md) namens een stroom-meer informatie over het gebruik van OAuth 2,0-stroom voor service-naar-service-aanroepen.
+* [SAML-protocol referentie](active-directory-saml-protocol-reference.md) -meer informatie over de SAML-profielen eenmalige aanmelding en eenmalige afmelding van micro soft Identity platform.
 
 ## <a name="see-also"></a>Zie ook
 
-* [Overzicht van microsoft-identiteitsplatform](v2-overview.md)
-* [Voorbeelden van Active Directory-code](sample-v2-code.md)
+* [Overzicht van micro soft Identity platform](v2-overview.md)
+* [Voor beelden van Active Directory code](sample-v2-code.md)

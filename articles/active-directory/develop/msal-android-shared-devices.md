@@ -1,7 +1,7 @@
 ---
 title: Modus voor gedeeld apparaat voor Android-apparaten
 titleSuffix: Microsoft identity platform | Azure
-description: Meer informatie over het inschakelen van de modus gedeeld apparaat zodat Firstline Workers een Android-apparaat kan delen
+description: Meer informatie over het inschakelen van de modus gedeeld apparaat zodat Firstline werk rollen een Android-apparaat kunnen delen
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550264"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus voor gedeeld apparaat voor Android-apparaten
@@ -25,45 +25,45 @@ ms.locfileid: "80550264"
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Firstline Workers zoals retailmedewerkers, cockpitmedewerkers en veldhulpverleners gebruiken vaak een gedeeld mobiel apparaat om hun werk te doen. Dat wordt problematisch wanneer ze wachtwoorden of pincodes gaan delen om toegang te krijgen tot klant- en bedrijfsgegevens op het gedeelde apparaat.
+Firstline-werk rollen, zoals Retail Associates, leden van de vliegtuig bemanning en mede werkers van de Field service gebruiken vaak een gedeeld mobiel apparaat om hun werk uit te voeren. Dit wordt problematisch wanneer ze beginnen met het delen van wacht woorden of pincodes om toegang te krijgen tot klant-en bedrijfs gegevens op het gedeelde apparaat.
 
-Met de modus Gedeeld apparaat u een Android-apparaat configureren, zodat het eenvoudig door meerdere werknemers kan worden gedeeld. Medewerkers kunnen zich aanmelden en snel toegang krijgen tot klantgegevens. Wanneer ze klaar zijn met hun shift of taak, kunnen ze zich afmelden bij het apparaat en is het onmiddellijk klaar voor de volgende werknemer om te gebruiken.
+In de modus gedeeld apparaat kunt u een Android-apparaat configureren zodat het eenvoudig kan worden gedeeld door meerdere werk nemers. Werk nemers kunnen zich snel aanmelden en klant gegevens benaderen. Wanneer de taken zijn voltooid met hun verschuiving of taak, kunnen ze zich afmelden bij het apparaat en zal het direct klaar zijn voor de volgende werk nemer.
 
-De modus Voor gedeelde apparaten biedt ook door Microsoft door de identiteit ondersteund beheer van het apparaat.
+De modus gedeeld apparaat biedt ook micro soft-identiteits beheer van het apparaat.
 
-Ontwikkelaars en cloudapparaatbeheerders werken samen om een app voor gedeelde apparaatmodus te maken:
+Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en beheerders van Cloud apparaten samen:
 
-- Ontwikkelaars schrijven een app met één account (apps met meerdere accountworden `"shared_device_mode_supported": true` niet ondersteund in de modus voor gedeeld apparaat), voegen toe aan de configuratie van de app en schrijven code om zaken als afmelding van gedeelde apparaten af te handelen.
-- Apparaatbeheerders bereiden het apparaat voor om te worden gedeeld door de authenticator-app te installeren en het apparaat in te stellen op de gedeelde modus met de authenticator-app. Alleen gebruikers die zich in de rol [Cloud Device Administrator bevinden,](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [Authenticator-app.](../user-help/user-help-auth-app-overview.md) U het lidmaatschap van uw organisatierollen in de Azure-portal configureren via: **Azure Active Directory** > **Roles and Administrators** > **Cloud Device Administrator**.
+- Ontwikkel aars schrijven een app met één account (apps met meerdere accounts worden niet ondersteund in de modus gedeeld apparaat) `"shared_device_mode_supported": true` , toevoegen aan de configuratie van de app en code schrijven voor het afhandelen van dingen zoals het afmelden van gedeelde apparaten.
+- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](../user-help/user-help-auth-app-overview.md). U kunt het lidmaatschap van uw organisatie rollen in de Azure Portal configureren via: **Azure Active Directory** > -**rollen en-Administrators** > van de**Cloud apparaat-beheerder**.
 
- Dit artikel richt zich vooral op wat ontwikkelaars moeten denken.
+ In dit artikel wordt voornamelijk aandacht besteed aan ontwikkel aars.
 
-## <a name="single-vs-multiple-account-applications"></a>Toepassingen met één versus meerdere account
+## <a name="single-vs-multiple-account-applications"></a>Enkele versus toepassingen met meerdere accounts
 
-Toepassingen die zijn geschreven met de Microsoft Authentication Library SDK (MSAL) kunnen één account of meerdere accounts beheren. Zie de [modus met één account of de modus met meerdere accounten](single-multi-account.md)voor meer informatie. De functies van het Microsoft-identiteitsplatform die beschikbaar zijn voor uw app, zijn afhankelijk van of de toepassing wordt uitgevoerd in de modus met één account of in de modus met meerdere accounten.
+Toepassingen die zijn geschreven met behulp van de micro soft Authentication Library SDK (MSAL) kunnen één of meerdere accounts beheren. Zie de modus voor [één account of meerdere accounts](single-multi-account.md)voor meer informatie. Micro soft Identity platform-functies die beschikbaar zijn voor uw app variëren, afhankelijk van het feit of de toepassing wordt uitgevoerd in de modus voor één account of in de modus voor meerdere accounts.
 
-**Apps in de modus Voor gedeelde apparaten werken alleen in de modus met één account.**
+**Modus voor gedeelde apparaten-apps werken alleen in de modus voor één account**.
 
 > [!IMPORTANT]
-> Toepassingen die alleen de modus met meerdere accountondersteunen, kunnen niet worden uitgevoerd op een gedeeld apparaat. Als een werknemer een app laadt die de modus met één account niet ondersteunt, wordt deze niet uitgevoerd op het gedeelde apparaat.
+> Toepassingen die alleen de modus meerdere accounts ondersteunen, kunnen niet worden uitgevoerd op een gedeeld apparaat. Als een werk nemer een app laadt die geen ondersteuning biedt voor de modus met één account, wordt deze niet uitgevoerd op het gedeelde apparaat.
 >
-> Apps die zijn geschreven voordat de MSAL SDK werd uitgebracht, worden uitgevoerd in de modus met meerdere accounten en moeten worden bijgewerkt om de modus met één account te ondersteunen voordat ze kunnen worden uitgevoerd op een apparaat met een gedeelde modus.
+> Apps die zijn geschreven voordat de MSAL SDK werd uitgebracht, worden uitgevoerd in de modus voor meerdere accounts en moeten worden bijgewerkt om de modus voor één account te ondersteunen voordat ze kunnen worden uitgevoerd op een apparaat in de gedeelde modus.
 
-**Ondersteuning voor zowel single-account als meerdere accounts**
+**Ondersteuning voor zowel één account als meerdere accounts**
 
-Uw app kan worden gemaakt om ondersteuning te bieden voor het uitvoeren van zowel persoonlijke apparaten als gedeelde apparaten. Als uw app momenteel meerdere accounts ondersteunt en u de modus gedeeld apparaat wilt ondersteunen, voegt u ondersteuning toe voor de modus voor één account.
+Uw app kan worden gebouwd om te ondersteunen die wordt uitgevoerd op zowel persoonlijke apparaten als gedeelde apparaten. Als uw app momenteel meerdere accounts ondersteunt en u de modus gedeeld apparaat wilt ondersteunen, voegt u ondersteuning toe voor de modus voor één account.
 
-U wilt mogelijk ook dat uw app zijn gedrag wijzigt, afhankelijk van het type apparaat waarop deze wordt uitgevoerd. Gebruiken `ISingleAccountPublicClientApplication.isSharedDevice()` om te bepalen wanneer u moet worden uitgevoerd in de modus met één account.
+Mogelijk wilt u ook dat uw app het gedrag ervan wijzigt, afhankelijk van het type apparaat waarop het wordt uitgevoerd. Gebruiken `ISingleAccountPublicClientApplication.isSharedDevice()` om te bepalen wanneer moet worden uitgevoerd in de modus voor één account.
 
-Er zijn twee verschillende interfaces die het type apparaat weergeven waarop uw toepassing zich bevindt. Wanneer u een toepassingsinstantie aanvraagt bij de toepassingsfabriek van MSAL, wordt het juiste toepassingsobject automatisch geleverd.
+Er zijn twee verschillende interfaces die het type apparaat vertegenwoordigen waarop uw toepassing zich bevindt. Wanneer u een instantie van een toepassing aanvraagt vanuit de Application Factory van MSAL, wordt automatisch het juiste toepassings object gegeven.
 
-Het volgende objectmodel illustreert het type object dat u ontvangen en wat het betekent in de context van een gedeeld apparaat:
+Het volgende object model illustreert het type object dat u kunt ontvangen en wat het betekent in de context van een gedeeld apparaat:
 
-![overervingsmodel voor openbare clienttoepassingen](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
+![overname model voor open bare client toepassing](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-U moet een typecontrole doen en naar de juiste `PublicClientApplication` interface werpen wanneer u uw object krijgt. De volgende code controleert op de modus meerdere account of de modus met één account en werpt het toepassingsobject op de juiste manier:
+Als u uw `PublicClientApplication` object ontvangt, moet u een type controle uitvoeren en naar de juiste interface casten. Met de volgende code wordt gecontroleerd op de modus voor meerdere accounts of één account en wordt het toepassings object op de juiste wijze geconverteerd:
 
 ```java
 private IPublicClientApplication mApplication;
@@ -79,33 +79,33 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-De volgende verschillen zijn van toepassing, afhankelijk van of uw app wordt uitgevoerd op een gedeeld of persoonlijk apparaat:
+De volgende verschillen zijn van toepassing, afhankelijk van het feit of uw app wordt uitgevoerd op een gedeeld of persoonlijk apparaat:
 
-|  | Apparaat in gedeelde modus  | Persoonlijk apparaat |
+|  | Apparaat voor gedeelde modus  | Persoonlijk apparaat |
 |---------|---------|---------|
 | **Accounts**     | Eén account | Meerdere accounts |
 | **Aanmelden** | Wereldwijd | Wereldwijd |
-| **Afmelden** | Wereldwijd | Elke toepassing kan bepalen of de afmelding lokaal is voor de app of voor de familie van toepassingen. |
-| **Ondersteunde accounttypen** | Alleen werkaccounts | Ondersteunde persoonlijke en werkaccounts  |
+| **Afmelden** | Wereldwijd | Elke toepassing kan bepalen of de afmelding lokaal is voor de app of voor de reeks toepassingen. |
+| **Ondersteunde accounttypen** | Alleen werk accounts | Persoonlijke en werk accounts worden ondersteund  |
 
-## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Waarom u misschien alleen de modus met één account wilt ondersteunen
+## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Waarom u alleen één-account modus wilt ondersteunen
 
-Als u een app schrijft die alleen wordt gebruikt voor eerstelijnswerknemers die een gedeeld apparaat gebruiken, raden we u aan uw toepassing te schrijven om alleen de modus met één account te ondersteunen. Dit omvat de meeste toepassingen die taakgericht zijn, zoals apps voor medische dossiers, factuur-apps en de meeste zakelijke apps. Alleen het ondersteunen van de modus met één account vereenvoudigt de ontwikkeling omdat u de extra functies die deel uitmaken van apps met meerdere accounts niet hoeft te implementeren.
+Als u een app schrijft die alleen wordt gebruikt voor firstline-werk nemers met behulp van een gedeeld apparaat, wordt u aangeraden uw toepassing te schrijven zodat deze alleen ondersteuning biedt voor de modus met één account. Dit omvat de meeste toepassingen die op de taak zijn gericht, zoals medische record-apps, factuur-apps en de meeste line-of-Business-Apps. De ondersteuning voor de modus voor één account vereenvoudigt de ontwikkeling omdat u de aanvullende functies die deel uitmaken van apps met meerdere accounts niet hoeft te implementeren.
 
-## <a name="what-happens-when-the-device-mode-changes"></a>Wat gebeurt er als de apparaatmodus verandert
+## <a name="what-happens-when-the-device-mode-changes"></a>Wat er gebeurt wanneer de modus van het apparaat wordt gewijzigd
 
-Als uw toepassing wordt uitgevoerd in de modus met meerdere accounts en een beheerder het apparaat in de modus gedeeld apparaat plaatst, worden alle accounts op het apparaat gewist uit de toepassing en worden de toepassingsovergangen naar de modus met één account ingeschakeld.
+Als uw toepassing wordt uitgevoerd in de modus voor meerdere accounts en een beheerder het apparaat in de modus gedeeld apparaat plaatst, worden alle accounts op het apparaat uit de toepassing gewist en wordt de toepassing overgezet naar de modus met één account.
 
-## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Afmelding van gedeelde apparaten en de algemene levenscyclus van de app
+## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Afmelding van gedeeld apparaat en de levens cyclus van de hele app
 
-Wanneer een gebruiker zich afmeldt, moet u actie ondernemen om de privacy en gegevens van de gebruiker te beschermen. Als u bijvoorbeeld een app voor medische dossiers bouwt, wilt u ervoor zorgen dat wanneer de gebruiker zich afmeldt voor eerder weergegeven patiëntendossiers, wordt gewist. Uw aanvraag moet hiervoor worden voorbereid en elke keer dat deze op de voorgrond komt controleren.
+Wanneer een gebruiker zich afmeldt, moet u actie ondernemen om de privacy en de gegevens van de gebruiker te beveiligen. Als u bijvoorbeeld een medische record toepassing bouwt, wilt u er zeker van zijn dat wanneer de gebruiker eerder weer gegeven patiënten-records wist, wordt gewist. Uw toepassing moet hiervoor worden voor bereid en elke keer dat deze wordt geactiveerd, wordt gecontroleerd.
 
-Wanneer uw app MSAL gebruikt om de gebruiker af te melden in een app die wordt uitgevoerd op een apparaat dat in de gedeelde modus is uitgevoerd, worden het aangemelde account en de tokens in de cache verwijderd uit zowel de app als het apparaat.
+Als uw app MSAL gebruikt voor het afmelden van de gebruiker in een app die wordt uitgevoerd op een apparaat in de gedeelde modus, worden het aangemelde account en de in de cache opgeslagen tokens verwijderd uit de app en het apparaat.
 
-In het volgende diagram ziet u de algemene levenscyclus van de app en de algemene gebeurtenissen die kunnen optreden tijdens het uitvoeren van uw app. Het diagram gaat over het moment dat een activiteit wordt gestart, het aanmelden en afmelden van een account en hoe gebeurtenissen zoals pauzeren, hervatten en stoppen van de activiteit passen.
+In het volgende diagram ziet u de algemene levens cyclus van de app en algemene gebeurtenissen die kunnen optreden tijdens de uitvoering van uw app. Het diagram gaat uit van het tijdstip waarop een activiteit wordt gestart, het aanmelden en afmelden van een account en hoe gebeurtenissen zoals het onderbreken, hervatten en stoppen van de activiteit in passen.
 
-![Levenscyclus van gedeelde apparaat-apps](media/v2-shared-device-mode/lifecycle.png)
+![Levens cyclus van gedeelde apparaat-app](media/v2-shared-device-mode/lifecycle.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de modus Gedeeld apparaat gebruiken in de zelfstudie van [je Android-applicatie](tutorial-v2-shared-device-mode.md) die laat zien hoe je een eerstelijns werknemer-app uitvoert op een Android-apparaat in gedeelde modus.
+Probeer de [modus gedeeld apparaat gebruiken in de zelf studie voor Android-toepassingen](tutorial-v2-shared-device-mode.md) om te zien hoe u een firstline worker-app uitvoert op een Android-apparaat in de gedeelde modus.

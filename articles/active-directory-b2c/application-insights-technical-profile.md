@@ -1,7 +1,7 @@
 ---
-title: Een technisch profiel van Application Insights definiëren in een aangepast beleid
+title: Een Application Insights technisch profiel definiëren in een aangepast beleid
 titleSuffix: Azure AD B2C
-description: Definieer een technisch profiel van Application Insights in een aangepast beleid in Azure Active Directory B2C.
+description: Definieer een Application Insights technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80108573"
 ---
-# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een technisch profiel van Application Insights definiëren in een aangepast Azure AD B2C-beleid
+# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een Application Insights technisch profiel definiëren in een Azure AD B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) ondersteunt het rechtstreeks verzenden van gebeurtenisgegevens naar [Application Insights](../azure-monitor/app/app-insights-overview.md) met behulp van de instrumentatiesleutel die wordt verstrekt aan Azure AD B2C.  Met een technisch profiel van Application Insights u gedetailleerde en aangepaste gebeurtenislogboeken voor uw gebruikersreizen krijgen om:
+Azure Active Directory B2C (Azure AD B2C) ondersteunt het rechtstreeks verzenden van gebeurtenis gegevens naar [Application Insights](../azure-monitor/app/app-insights-overview.md) door gebruik te maken van de instrumentatie sleutel die aan Azure AD B2C is gegeven.  Met een Application Insights technisch profiel kunt u gedetailleerde en aangepaste gebeurtenis logboeken ophalen voor uw gebruikers trajecten:
 
-* Krijg inzicht in het gedrag van gebruikers.
-* Problemen met uw eigen beleid in ontwikkeling of productie oplossen.
-* Meet de prestaties.
-* Meldingen maken vanuit Application Insights.
+* Krijg inzichten op het gedrag van gebruikers.
+* Los uw eigen beleid in ontwikkeling of productie op.
+* Prestaties meten.
+* Meldingen van Application Insights maken.
 
 
 ## <a name="protocol"></a>Protocol
 
-Het kenmerk **Naam** van het element `Proprietary` **Protocol** moet worden ingesteld op . Het **handlerkenmerk** moet de volledig gekwalificeerde naam bevatten van de protocolhandlerassemblage die wordt gebruikt door Azure AD B2C voor toepassingsinzichten:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C voor Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-In het volgende voorbeeld wordt het algemene technische profiel van Application Insights weergegeven. Andere technische profielen van Application Insights omvatten de AzureInsights-Common om gebruik te maken van de configuratie.  
+In het volgende voor beeld wordt het algemene Application Insights technische profiel weer gegeven. Andere Application Insights technische profielen bevatten de AzureInsights-common om de configuratie ervan te benutten.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">
@@ -43,9 +43,9 @@ In het volgende voorbeeld wordt het algemene technische profiel van Application 
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Invoerclaims
+## <a name="input-claims"></a>Invoer claims
 
-Het element **InputClaims** bevat een lijst met claims die naar Application Insights moeten worden verzonden. U de naam van uw claim ook toewijzen aan een naam die u liever wilt weergeven in Application Insights. In het volgende voorbeeld ziet u hoe u telemetrieën naar Application Insights verzendt. Eigenschappen van een gebeurtenis worden `{property:NAME}`toegevoegd via de syntaxis , waarbij de eigenschap NAAM aan de gebeurtenis wordt toegevoegd. DefaultValue kan een statische waarde zijn of een waarde die is opgelost door een van de ondersteunde [claimresolvers](claim-resolver-overview.md).
+Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar Application Insights. U kunt de naam van uw claim ook toewijzen aan een naam die u wilt weer geven in Application Insights. In het volgende voor beeld ziet u hoe u teleelementen naar Application Insights verzendt. De eigenschappen van een gebeurtenis worden toegevoegd via de `{property:NAME}`syntaxis, waarbij de naam van de eigenschap wordt toegevoegd aan de gebeurtenis. DefaultValue kan een statische waarde zijn of een waarde die wordt opgelost door een van de ondersteunde [claim-resolvers](claim-resolver-overview.md).
 
 ```XML
 <InputClaims>
@@ -56,17 +56,17 @@ Het element **InputClaims** bevat een lijst met claims die naar Application Insi
 </InputClaims>
 ```
 
-Het element **InputClaimsTransformations** kan een verzameling **inputclaimstransformatie-elementen** bevatten die worden gebruikt om de invoerclaims te wijzigen of nieuwe claims te genereren voordat ze naar Application Insights worden verzonden.
+Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar Application Insights worden verzonden.
 
-## <a name="persist-claims"></a>Aanhoudende claims
+## <a name="persist-claims"></a>Claims persistent maken
 
 Het element PersistedClaims wordt niet gebruikt.
 
-## <a name="output-claims"></a>Outputclaims
+## <a name="output-claims"></a>Uitvoer claims
 
-De elementen OutputClaims en OutputClaimsTransformations worden niet gebruikt.
+De OutputClaims-en OutputClaimsTransformations-elementen worden niet gebruikt.
 
-## <a name="cryptographic-keys"></a>Cryptografische toetsen
+## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
 Het element CryptographicKeys wordt niet gebruikt.
 
@@ -75,12 +75,12 @@ Het element CryptographicKeys wordt niet gebruikt.
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Instrumentatiesleutel| Ja | De [instrumentatiesleutel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)Application Insights , die wordt gebruikt voor het registreren van de gebeurtenissen. | 
-| DeveloperMode| Nee | Een Booleaan die aangeeft of de ontwikkelaarsmodus is ingeschakeld. Mogelijke `true` waarden: `false` of (standaard). Met deze metagegevens bepaalt hoe gebeurtenissen worden gebufferd. In een ontwikkelomgeving met minimaal gebeurtenisvolume, waardoor de ontwikkelaarsmodus resulteert in gebeurtenissen die onmiddellijk naar Application Insights worden verzonden.|  
-|Telemetrie uitschakelen |Nee |Een Booleaan die aangeeft of telemetrie moet worden ingeschakeld of niet. Mogelijke `true` waarden: `false` of (standaard).| 
+| InstrumentationKey| Ja | De Application Insights [instrumentatie sleutel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), die wordt gebruikt voor het registreren van de gebeurtenissen. | 
+| DeveloperMode| Nee | Een Booleaanse waarde die aangeeft of de ontwikkelaars modus is ingeschakeld. Mogelijke waarden: `true` of `false` (standaard). Deze meta gegevens bepalen hoe gebeurtenissen worden gebufferd. In een ontwikkel omgeving met mini maal gebeurtenis volume is het inschakelen van de ontwikkelaars modus tot gevolg dat gebeurtenissen direct naar Application Insights worden verzonden.|  
+|DisableTelemetry |Nee |Een Booleaanse waarde die aangeeft of telemetrie moet worden ingeschakeld of niet. Mogelijke waarden: `true` of `false` (standaard).| 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een Application Insights-resource maken](../azure-monitor/app/create-new-resource.md)
-- Meer informatie over het [bijhouden van gebruikersgedrag in Azure Active Directory B2C met Behulp van Application Insights](analytics-with-application-insights.md)
+- Meer informatie over het [bijhouden van gebruikers gedrag in azure Active Directory B2C met behulp van Application Insights](analytics-with-application-insights.md)

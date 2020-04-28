@@ -1,7 +1,7 @@
 ---
-title: Referentieportaal voor app's | Azure
+title: Naslag informatie voor app-registratie Portal | Azure
 titleSuffix: Microsoft identity platform
-description: Een beschrijving van de functies in de microsoft-app-registratieportal.
+description: Een beschrijving van de functies in de micro soft app registratie-Portal.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885630"
 ---
 # <a name="app-registration-reference"></a>Naslaginformatie over app-registratie
 
-Dit document bevat context en beschrijvingen van verschillende functies in de ervaring [met app-registraties](https://aka.ms/appregistrations) in de Azure-portal.
+In dit document vindt u context en beschrijvingen van diverse functies die in de Azure Portal [app-registraties](https://aka.ms/appregistrations) -ervaring worden aangetroffen.
 
 ## <a name="my-applications-or-converged-applications"></a>Mijn toepassingen of geconvergeerde toepassingen
 
-Deze lijst bevat al uw toepassingen die zijn geregistreerd voor gebruik met het Microsoft-identiteitsplatform (v2.0) eindpunt. Deze toepassingen hebben de mogelijkheid om gebruikers aan te melden met zowel persoonlijke Microsoft-accounts als werk-/schoolaccounts van Azure Active Directory. Zie het [v2.0-overzicht](active-directory-appmodel-v2-overview.md)voor meer informatie over het eindpunt van het identiteitsplatform. Deze toepassingen kunnen ook worden gebruikt om te `https://login.live.com`integreren met het eindpunt voor microsoft-accountverificatie.
+Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met het micro soft Identity platform (v 2.0)-eind punt. Met deze toepassingen kunnen gebruikers zich aanmelden met persoonlijke micro soft-accounts en werk-of school accounts van Azure Active Directory. Zie het [overzicht van v 2.0](active-directory-appmodel-v2-overview.md)voor meer informatie over het identiteits platform-eind punt. Deze toepassingen kunnen ook worden gebruikt om te integreren met het Microsoft-account verificatie- `https://login.live.com`eind punt.
 
 ## <a name="azure-ad-only-applications"></a>Alleen Azure AD-toepassingen
 
-Deze lijst bevat al uw toepassingen die zijn geregistreerd voor gebruik met het Azure AD v1.0-eindpunt. Deze toepassingen hebben alleen de mogelijkheid om gebruikers aan te melden met werk-/schoolaccounts van Azure Active Directory. Deze lijst bevat toepassingen die zijn geregistreerd met de ervaring **met app-registraties** in de [Azure-portal.](https://portal.azure.com)
+Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met het Azure AD v 1.0-eind punt. Met deze toepassingen kunnen gebruikers zich niet aanmelden met werk-of school accounts van Azure Active Directory. Deze lijst bevat toepassingen die zijn geregistreerd met behulp van de **app-registraties** -ervaring in de [Azure Portal](https://portal.azure.com).
 
 ## <a name="live-sdk-applications"></a>Live SDK-toepassingen
 
-Deze lijst bevat al uw toepassingen die zijn geregistreerd voor gebruik uitsluitend met Een Microsoft-account. Ze zijn niet ingeschakeld voor gebruik met Azure Active Directory. Hier vindt u alle toepassingen die eerder zijn geregistreerd `https://account.live.com/developers/applications`bij de MSA developer portal op . Alle functies die u `https://account.live.com/developers/applications` eerder hebt uitgevoerd, kunnen nu worden uitgevoerd in [app-registraties.](https://aka.ms/appregistrations)
+Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met Microsoft-account. Deze zijn niet ingeschakeld voor gebruik met Azure Active Directory. Hier vindt u alle toepassingen die eerder zijn geregistreerd bij de MSA-ontwikkelaars Portal op `https://account.live.com/developers/applications`. Alle functies die u eerder hebt uitgevoerd `https://account.live.com/developers/applications` , kunnen nu worden uitgevoerd in [app-registraties](https://aka.ms/appregistrations).
 
-## <a name="application-secrets"></a>Toepassingsgeheimen
+## <a name="application-secrets"></a>Toepassings geheimen
 
-Toepassingsgeheimen zijn referenties waarmee uw toepassing betrouwbare [clientverificatie](https://tools.ietf.org/html/rfc6749#section-2.3) kan uitvoeren met Azure AD. In OAuth & OpenID Connect wordt een toepassingsgeheim gewoonlijk aangeduid als een `client_secret`. In het v2.0-protocol moet elke toepassing die een beveiligingstoken `https` ontvangt op een adresseerbare locatie op het web (met behulp van een schema) een toepassingsgeheim gebruiken om zich te identificeren met Azure AD bij het inwisselen van dat beveiligingstoken. Bovendien wordt het elke native client die tokens op een apparaat ontvangt, verboden om een toepassingsgeheim te gebruiken om clientverificatie uit te voeren. Dit ontmoedigt de opslag van geheimen in onveilige omgevingen.
+Toepassings geheimen zijn referenties waarmee uw toepassing betrouw bare [client verificatie](https://tools.ietf.org/html/rfc6749#section-2.3) kan uitvoeren met Azure AD. In OAuth & OpenID Connect Connect wordt een toepassings geheim doorgaans aangeduid als een `client_secret`. In het v 2.0-protocol moet elke toepassing die een beveiligings token ontvangt op een webadresseer bare locatie (met `https` behulp van een schema) een toepassings geheim gebruiken om zichzelf te identificeren bij Azure AD na terugbetaling van dat beveiligings token. Daarnaast mag elke native client die tokens ontvangt op een apparaat, geen toepassings geheim gebruiken om client verificatie uit te voeren. Hiermee wordt de opslag van geheimen in onbeveiligde omgevingen geraden.
 
-Elke app kan op elk moment twee geldige toepassingsgeheimen bevatten. Door twee geheimen te behouden, hebt u de mogelijkheid om periodieke sleutelrollover uit te voeren in de hele omgeving van uw toepassing. Zodra u het geheel van uw toepassing naar een nieuw geheim hebt gemigreerd, u het oude geheim verwijderen en een nieuw geheim inrichten.
+Elke app kan op elk gewenst moment twee geldige toepassings geheimen bevatten. Door twee geheimen te bewaren, hebt u de mogelijkheid om periodieke sleutel rollover uit te voeren in de gehele omgeving van uw toepassing. Wanneer u de volledige versie van uw toepassing naar een nieuw geheim hebt gemigreerd, kunt u het oude geheim verwijderen en een nieuw item inrichten.
 
-Op dit moment zijn slechts twee soorten toepassingsgeheimen toegestaan in het app-registratieportaal. Als u **Nieuw wachtwoord genereren kiest,** wordt een gedeeld geheim gegenereerd en opgeslagen in het desbetreffende gegevensarchief, dat u in uw toepassing gebruiken. Als u **Nieuw sleutelpaar genereren kiest,** wordt een nieuw publiek/privésleutelpaar gemaakt dat kan worden gedownload en gebruikt voor clientverificatie naar Azure AD. Als u **de openbare sleutel uploadt,** u uw eigen openbare/private sleutelpaar gebruiken.
-U moet een certificaat uploaden dat een openbare sleutel bevat.
+Op dit moment zijn er slechts twee typen toepassings geheimen toegestaan in de app-registratie Portal. Als u **Nieuw wacht woord genereren** kiest, wordt een gedeeld geheim gegenereerd en opgeslagen in het respectieve gegevens archief, dat u in uw toepassing kunt gebruiken. Als u **Nieuw sleutel paar genereren** kiest, wordt er een nieuw openbaar/persoonlijk sleutel paar gemaakt dat kan worden gedownload en gebruikt voor client verificatie voor Azure AD. Als u de **open bare sleutel uploadt** , kunt u uw eigen open bare/persoonlijke sleutel paar gebruiken.
+U moet een certificaat uploaden dat een open bare sleutel bevat.
 
 ## <a name="profile"></a>Profiel
 
-Het profielgedeelte van de app-registratieportal kan worden gebruikt om de aanmeldingspagina voor uw toepassing aan te passen. Op dit moment u het toepassingslogo van de aanmeldingspagina, de URL van de servicevoorwaarden en de URL van de privacyverklaring wijzigen. Het logo moet een transparante afbeelding van 48 x 48 of 50 x 50 pixels hebben in een GIF-, PNG- of JPEG-bestand dat 15 KB of kleiner is. Probeer de waarden te wijzigen en de resulterende aanmeldingspagina te bekijken!
+De profiel sectie van de portal voor app-registratie kan worden gebruikt om de aanmeldings pagina voor uw toepassing aan te passen. Op dit moment kunt u het toepassings logo van de aanmeldings pagina, de voor waarden van de service-URL en de URL van de Privacyverklaring wijzigen. Het logo moet een transparante afbeelding van 48 x 48 of 50 x 50 pixels zijn in een GIF-, PNG-of JPEG-bestand met een grootte van 15 KB of kleiner. Wijzig de waarden en Bekijk de resulterende aanmeldings pagina.
 
-## <a name="live-sdk-support"></a>Ondersteuning voor live SDK
+## <a name="live-sdk-support"></a>Ondersteuning voor Live SDK
 
-Wanneer u 'Live SDK Support' inschakelt, worden alle toepassingsgeheimen die u maakt, ingericht in zowel de gegevensarchieven van Azure AD als Microsoft Account. Hierdoor kan uw toepassing rechtstreeks integreren met de Microsoft Account-service (login.live.com). Als u een app rechtstreeks wilt bouwen met Microsoft-account (in tegenstelling tot het gebruik van het v2.0-eindpunt), moet u ervoor zorgen dat Live SDK-ondersteuning is ingeschakeld.
+Wanneer u ' Live SDK-ondersteuning ' inschakelt, worden de door u gemaakte toepassings geheimen ingericht in de gegevens archieven van Azure AD en micro soft-account. Hierdoor kan uw toepassing rechtstreeks worden geïntegreerd met de micro soft-account service (login.live.com). Als u een app rechtstreeks wilt bouwen met behulp van micro soft-account (in plaats van het eind punt van de v 2.0), moet u ervoor zorgen dat de ondersteuning van Live SDK is ingeschakeld.
 
-Het uitschakelen van Live SDK-ondersteuning zorgt ervoor dat het toepassingsgeheim alleen wordt geschreven in het Azure AD-gegevensarchief. Het Azure AD-gegevensarchief bevat bedrijfsvoorschriften waarmee het aan bepaalde normen kan voldoen, zoals FISMA-naleving. Als u Live SDK-ondersteuning inschakelt, voldoet uw toepassing mogelijk niet aan een aantal van deze standaarden.
+Als u live SDK-ondersteuning uitschakelt, wordt het toepassings geheim alleen geschreven in het Azure AD-gegevens archief. Het Azure AD-gegevens archief bevat bedrijfs kwaliteiten die aan bepaalde normen voldoen, zoals FISMA-naleving. Als u ondersteuning voor Live SDK inschakelt, kan het zijn dat uw toepassing niet voldoet aan enkele van deze standaarden.
 
-Als u alleen van plan bent het v2.0-eindpunt te gebruiken, u live SDK-ondersteuning veilig uitschakelen.
+Als u alleen van plan bent het v 2.0-eind punt te gebruiken, kunt u live SDK-ondersteuning veilig uitschakelen.

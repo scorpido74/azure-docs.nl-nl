@@ -1,6 +1,6 @@
 ---
 title: Gekoppelde services in Azure Data Factory
-description: Meer informatie over gekoppelde services in Data Factory. Gekoppelde services koppelen compute/data stores aan datafabriek.
+description: Meer informatie over gekoppelde services in Data Factory. Gekoppelde services koppelen reken-en gegevens archieven aan data factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,39 +12,39 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: a6002ed173ca5358df4257f4c8b41c88bcf60ad8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418368"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-create-datasets.md)
 > * [Huidige versie](concepts-linked-services.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven wat gekoppelde services zijn, hoe ze zijn gedefinieerd in JSON-indeling en hoe ze worden gebruikt in Azure Data Factory-pijplijnen.
+In dit artikel wordt beschreven wat gekoppelde services zijn, hoe ze worden gedefinieerd in JSON-indeling en hoe ze worden gebruikt in Azure Data Factory pijp lijnen.
 
-Zie [Inleiding tot Azure Data Factory](introduction.md) voor een overzicht als u nieuw bent in Data Factory.
+Als u geen ervaring hebt met Data Factory, raadpleegt u [Introduction to Azure Data Factory](introduction.md) voor een overzicht.
 
 ## <a name="overview"></a>Overzicht
 
-Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijplijn** is een logische groepering van **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van een on-premises SQL Server naar Azure Blob-opslag te kopiëren. Vervolgens u een Hive-activiteit gebruiken waarop een Hive-script wordt uitgevoerd op een Azure HDInsight-cluster om gegevens uit Blob-opslag te verwerken om uitvoergegevens te produceren. Ten slotte u een tweede kopieeractiviteit gebruiken om de uitvoergegevens naar Azure SQL Data Warehouse te kopiëren, waarop bi-rapportageoplossingen (business intelligence) worden gebouwd. Zie [Pijplijnen en activiteiten](concepts-pipelines-activities.md) in Azure Data Factory voor meer informatie over pijplijnen en activiteiten.
+Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijp lijn** is een logische groep **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens van een on-premises SQL Server naar Azure Blob-opslag te kopiëren. Vervolgens kunt u een Hive-activiteit gebruiken waarmee een Hive-script op een Azure HDInsight-cluster wordt uitgevoerd om gegevens uit de Blob-opslag te verwerken om uitvoer gegevens te produceren. Ten slotte kunt u een tweede Kopieer activiteit gebruiken om de uitvoer gegevens te kopiëren naar Azure SQL Data Warehouse, op welke business intelligence (BI) Reporting-oplossingen zijn gebouwd. Voor meer informatie over pijp lijnen en activiteiten raadpleegt u [pijp lijnen en activiteiten](concepts-pipelines-activities.md) in azure Data Factory.
 
-Nu is een **gegevensset** een benoemde weergave van gegevens die eenvoudig verwijst of verwijst naar de gegevens die u in uw **activiteiten** wilt gebruiken als invoer en uitvoer.
+Nu is een **gegevensset** een benoemde weer gave van gegevens waarmee u de gegevens die u in uw **activiteiten** wilt gebruiken als invoer en uitvoer, eenvoudigweg wijst of ernaar verwijst.
 
-Voordat u een gegevensset maakt, moet u een **gekoppelde service** maken om uw gegevensarchief te koppelen aan de gegevensfabriek. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. Bekijk het zo; de gegevensset vertegenwoordigt de structuur van de gegevens binnen de gekoppelde gegevensopslag en de gekoppelde service definieert de verbinding met de gegevensbron. Een azure storage-gekoppelde service koppelt bijvoorbeeld een opslagaccount aan de gegevensfabriek. Een Azure Blob-gegevensset vertegenwoordigt de blobcontainer en de map in dat Azure Storage-account met de invoerblobs die moeten worden verwerkt.
+Voordat u een gegevensset maakt, moet u een **gekoppelde service** maken om uw gegevens archief te koppelen aan de Data Factory. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken. de gegevensset vertegenwoordigt de structuur van de gegevens in de gekoppelde gegevens archieven en de gekoppelde service definieert de verbinding met de gegevens bron. Een Azure Storage gekoppelde service koppelt bijvoorbeeld een opslag account aan de data factory. Een Azure Blob-gegevensset vertegenwoordigt de BLOB-container en de map binnen die Azure Storage account dat de invoer-blobs bevat die moeten worden verwerkt.
 
-Hier is een voorbeeldscenario. Als u gegevens uit Blob-opslag wilt kopiëren naar een SQL-database, maakt u twee gekoppelde services: Azure Storage en Azure SQL Database. Maak vervolgens twee gegevenssets: Azure Blob-gegevensset (die verwijst naar de gekoppelde azure-opslagservice) en Azure SQL Table-gegevensset (die verwijst naar de gekoppelde azure-databaseservice). De gekoppelde Azure Storage- en Azure SQL Database-services bevatten verbindingstekenreeksen die Data Factory tijdens runtime gebruikt om verbinding te maken met respectievelijk uw Azure Storage en Azure SQL Database. De Azure Blob-gegevensset geeft de blobcontainer en blobmap op die de invoerblobs in uw Blob-opslag bevat. De Azure SQL Table-gegevensset geeft de SQL-tabel in uw SQL-database op waarnaar de gegevens moeten worden gekopieerd.
+Hier volgt een voorbeeld scenario. Als u gegevens wilt kopiëren van Blob-opslag naar een SQL Database, maakt u twee gekoppelde services: Azure Storage en Azure SQL Database. Maak vervolgens twee gegevens sets: Azure Blob-gegevensset (die verwijst naar de Azure Storage gekoppelde service) en de gegevensset van de Azure SQL-tabel (die verwijst naar de Azure SQL Database gekoppelde service). De Azure Storage-en Azure SQL Database gekoppelde services bevatten verbindings reeksen die Data Factory in runtime gebruiken om respectievelijk verbinding te maken met uw Azure Storage en Azure SQL Database. De Azure Blob-gegevensset bevat de BLOB en BLOB-map die de invoer-blobs in uw Blob-opslag bevat. De gegevensset van de Azure SQL-tabel geeft de SQL-tabel in de SQL Database aan waarnaar de gegevens moeten worden gekopieerd.
 
-In het volgende diagram worden de relaties tussen pijplijn, activiteit, gegevensset en gekoppelde service in Gegevensfabriek weergegeven:
+In het volgende diagram ziet u de relaties tussen pijp lijn, activiteit, gegevensset en gekoppelde service in Data Factory:
 
-![Relatie tussen pijplijn, activiteit, gegevensset, gekoppelde services](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+![Relatie tussen pijp lijn, activiteit, gegevensset, gekoppelde services](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
 
-## <a name="linked-service-json"></a>Gekoppelde service JSON
+## <a name="linked-service-json"></a>JSON van gekoppelde service
 
 Een gekoppelde service in Data Factory wordt als volgt gedefinieerd in JSON-indeling:
 
@@ -68,14 +68,14 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 Eigenschap | Beschrijving | Vereist |
 -------- | ----------- | -------- |
-name | Naam van de gekoppelde service. Zie [Azure Data Factory - Naamgevingsregels](naming-rules.md). |  Ja |
-type | Type van de gekoppelde service. Bijvoorbeeld: Azure Storage (data store) of AzureBatch (compute). Zie de beschrijving voor typeEigenschappen. | Ja |
-typeProperties | De typeeigenschappen zijn verschillend voor elk gegevensarchief of gegevensbestand. <br/><br/> Zie de [tabel met gegevenssets](concepts-datasets-linked-services.md#dataset-type) in dit artikel voor de ondersteunde gegevensarchieftypen en de teksteigenschappen daarvan. Navigeer naar het artikel voor de connector voor gegevensopslag om meer te weten te komen over teksteigenschappen die specifiek zijn voor een gegevensarchief. <br/><br/> Zie [Gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde rekentypen en hun typeeigenschappen. | Ja |
-connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. U Azure Integration Runtime of Self-hosted Integration Runtime gebruiken (als uw gegevensarchief zich in een privénetwerk bevindt). Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. | Nee
+name | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
+type | Het type van de gekoppelde service. Bijvoorbeeld: Azure Storage (gegevens archief) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Ja |
+typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie de tabel [type gegevensset](concepts-datasets-linked-services.md#dataset-type) in dit artikel voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Ja |
+connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee
 
-## <a name="linked-service-example"></a>Voorbeeld van gekoppelde service
+## <a name="linked-service-example"></a>Voor beeld van gekoppelde service
 
-De volgende gekoppelde service is een gekoppelde Azure Storage-service. Het type is ingesteld op Azure Storage. De teksteigenschappen voor de gekoppelde Azure Storage-service bevatten een verbindingstekenreeks. De service Data Factory gebruikt deze verbindingstekenreeks om verbinding te maken met het gegevensarchief tijdens runtime.
+De volgende gekoppelde service is een Azure Storage gekoppelde service. U ziet dat het type is ingesteld op Azure Storage. De type-eigenschappen voor de Azure Storage gekoppelde service omvatten een connection string. De Data Factory-service gebruikt deze connection string om tijdens de uitvoering verbinding te maken met het gegevens archief.
 
 ```json
 {
@@ -95,21 +95,21 @@ De volgende gekoppelde service is een gekoppelde Azure Storage-service. Het type
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
-U gekoppelde services maken met behulp van een van deze hulpprogramma's of SDK's: [.NET API,](quickstart-create-data-factory-dot-net.md) [PowerShell,](quickstart-create-data-factory-powershell.md) [REST API,](quickstart-create-data-factory-rest-api.md)Azure Resource Manager Template en Azure portal
+U kunt gekoppelde services maken met behulp van een van deze hulpprogram ma's of Sdk's: [.net API](quickstart-create-data-factory-dot-net.md), [power shell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sjabloon en Azure Portal
 
-## <a name="data-store-linked-services"></a>Gekoppelde diensten voor gegevensopslag
+## <a name="data-store-linked-services"></a>Gekoppelde services voor gegevens opslag
 
-U vindt de lijst met gegevensopslag die wordt ondersteund door Data Factory in het artikel [over het connectoroverzicht.](copy-activity-overview.md#supported-data-stores-and-formats) Klik op een gegevensarchief om de ondersteunde verbindingseigenschappen te leren.
+De lijst met gegevens archieven die worden ondersteund door Data Factory, vindt u in het [overzichts artikel van connectors](copy-activity-overview.md#supported-data-stores-and-formats) . Klik op een gegevens Archief voor meer informatie over de ondersteunde verbindings eigenschappen.
 
 ## <a name="compute-linked-services"></a>Gekoppelde services berekenen
 
-[Referentiecompute-omgevingen die worden ondersteund](compute-linked-services.md) voor details over verschillende compute-omgevingen waarmee u verbinding maken vanuit uw gegevensfabriek en de verschillende configuraties.
+Referentie [berekenings omgevingen](compute-linked-services.md) die worden ondersteund voor meer informatie over de verschillende reken omgevingen waarmee u verbinding kunt maken vanuit uw Data Factory en van de verschillende configuraties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende zelfstudie voor stapsgewijze instructies voor het maken van pijplijnen en gegevenssets met behulp van een van deze hulpprogramma's of SDK's.
+Raadpleeg de volgende zelf studie voor stapsgewijze instructies voor het maken van pijp lijnen en gegevens sets met behulp van een van deze hulpprogram ma's of Sdk's.
 
 - [Snelstartgids: een gegevensfactory maken met .NET](quickstart-create-data-factory-dot-net.md)
-- [Snelstart: een gegevensfabriek maken met PowerShell](quickstart-create-data-factory-powershell.md)
-- [Snelstart: een gegevensfabriek maken met REST API](quickstart-create-data-factory-rest-api.md)
-- [Snelstart: een gegevensfabriek maken met Azure-portal](quickstart-create-data-factory-portal.md)
+- [Snelstartgids: een data factory maken met Power shell](quickstart-create-data-factory-powershell.md)
+- [Snelstartgids: een data factory maken met behulp van REST API](quickstart-create-data-factory-rest-api.md)
+- [Snelstartgids: een data factory maken met behulp van Azure Portal](quickstart-create-data-factory-portal.md)

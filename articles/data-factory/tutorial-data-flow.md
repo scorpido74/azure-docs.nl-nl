@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met behulp van een toewijzingsgegevensstroom
-description: Deze zelfstudie bevat stapsgewijze instructies voor het gebruik van Azure Data Factory om gegevens te transformeren met de gegevensstroom van toewijzingen
+title: Gegevens transformeren met behulp van een toewijzings gegevens stroom
+description: Deze zelf studie bevat stapsgewijze instructies voor het gebruik van Azure Data Factory om gegevens te transformeren met toewijzings gegevens stroom
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -9,200 +9,200 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418674"
 ---
-# <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met behulp van toewijzingsgegevensstromen
+# <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Zie [Inleiding tot Azure Data Factory](introduction.md) als u niet bekend bent met Azure Data Factory.
 
-In deze zelfstudie gebruikt u de gebruikersinterface van Azure Data Factory (UX) om een pijplijn te maken die gegevens kopieert en transformeert van een ADLS-bron (Azure Data Lake Storage) naar een ADLS Gen2-sink met behulp van toewijzingsgegevensstroom. Het configuratiepatroon in deze zelfstudie kan worden uitgebreid bij het transformeren van gegevens met behulp van kaartgegevensstroom
+In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) om een pijp lijn te maken waarmee gegevens worden gekopieerd en getransformeerd van een Azure Data Lake Storage (ADLS) Gen2-bron naar een ADLS Gen2-Sink met toewijzings gegevens stroom. Het configuratie patroon in deze zelf studie kan worden uitgebreid bij het transformeren van gegevens met behulp van de toewijzings gegevens stroom
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Een gegevensfactory maken.
-> * Maak een pijplijn met een activiteit Gegevensstroom.
-> * Bouw een kaartgegevensstroom met vier transformaties.
+> * Maak een pijp lijn met een gegevens stroom activiteit.
+> * Bouw een toewijzings gegevens stroom met vier trans formaties.
 > * De uitvoering van de pijplijn testen.
-> * Een gegevensstroomactiviteit controleren
+> * Een gegevens stroom activiteit bewaken
 
 ## <a name="prerequisites"></a>Vereisten
-* **Azure-abonnement**. Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
-* **Azure-opslagaccount**. U gebruikt ADLS-opslag als *bron-* en *sinkgegevensopslag.* Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
+* **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-opslag account**. U gebruikt ADLS-opslag als *bron* -en *sink* -gegevens opslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
 
-Het bestand dat we transformeren in deze tutorial is MoviesDB.csv, die [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kan worden gevonden. Als u het bestand wilt ophalen bij GitHub, kopieert u de inhoud naar een teksteditor van uw keuze om lokaal op te slaan als CSV-bestand. Zie [Blobs uploaden met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)als u het bestand wilt uploaden naar uw opslagaccount. De voorbeelden verwijzen naar een container met de naam 'sample-data'.
+Het bestand dat u in deze zelf studie transformeert, is MoviesDB. CSV, dat [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kan worden gevonden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-In deze stap maakt u een gegevensfabriek en opent u de UX van Data Factory om een pijplijn in de gegevensfabriek te maken.
+In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory.
 
-1. Open **Microsoft Edge** of **Google Chrome**. Momenteel wordt de gebruikersinterface van Data Factory alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-2. Selecteer links in het menu Een resource > **Analytics** > **Data Factory maken:** **Create a resource**
+1. Open **Microsoft Edge** of **Google Chrome**. Momenteel wordt Data Factory gebruikers interface alleen ondersteund in de micro soft Edge-en Google Chrome-webbrowsers.
+2. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken:
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Voer op de pagina **Nieuwe data factory****ADFTutorialDataFactory** in bij **Naam**.
 
-   De naam van de Azure-gegevensfabriek moet *wereldwijd uniek*zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld yournameADFTutorialDataFactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-data factory moet *wereld wijd uniek*zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
      ![Nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 4. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
 5. Voer een van de volgende stappen uit voor **Resourcegroep**:
 
-    a. Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
+    a. Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst.
 
-    b. Selecteer **Nieuw maken**en voer de naam van een resourcegroep in. 
+    b. Selecteer **nieuwe maken**en voer de naam van een resource groep in. 
          
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie. 
 6. Selecteer **V2** onder **Versie**.
-7. Selecteer onder **Locatie** een locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. Gegevensopslag (bijvoorbeeld Azure Storage en SQL Database) en computes (bijvoorbeeld Azure HDInsight) die door de gegevensfabriek worden gebruikt, kunnen zich in andere regio's bevinden.
+7. Selecteer onder **Locatie** een locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. Gegevens archieven (bijvoorbeeld Azure Storage en SQL Database) en berekeningen (zoals Azure HDInsight) die door de data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 8. Selecteer **Maken**.
-9. Nadat de creatie is voltooid, ziet u de melding in het berichtencentrum. Selecteer **Ga naar resource om** naar de fabriekspagina Gegevens te navigeren.
+9. Nadat het maken is voltooid, ziet u de melding in meldingen centrum. Selecteer **naar resource gaan** om naar de pagina Data Factory te gaan.
 10. Selecteer de tegel **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
 
-## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Een pijplijn maken met een activiteit gegevensstroom
+## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Een pijp lijn maken met een activiteit voor gegevens stromen
 
-In deze stap maakt u een pijplijn die een activiteit Gegevensstroom bevat.
+In deze stap maakt u een pijp lijn die een gegevens stroom activiteit bevat.
 
 1. Selecteer op de pagina **Aan de slag** de optie **Pijplijn maken**.
 
    ![Pijplijn maken](./media/doc-common-process/get-started-page.png)
 
-1. Voer op het tabblad **Algemeen** voor de pijplijn **TransformMovies** in voor **Naam** van de pijplijn.
-1. Schuif in de bovenste balk van de fabriek de schuifregelaar **Foutopsporingsgegevens van gegevensstroom** in. De foutopsporingsmodus maakt het mogelijk om transformatielogica interactief te testen op een live Spark-cluster. Data Flow clusters nemen 5-7 minuten om op te warmen en gebruikers wordt aangeraden om foutopsporing eerst in te schakelen als ze van plan zijn om data flow ontwikkeling te doen. Zie [Foutopsporingsmodus](concepts-data-flow-debug-mode.md)voor meer informatie .
+1. Voer op het tabblad **Algemeen** voor de pijp lijn **TransformMovies** in als **naam** van de pijp lijn.
+1. Schuif in de bovenste balk van de fabriek de schuif regelaar voor **fout opsporing van gegevens stromen** aan. In de modus voor fout opsporing kunt u de transformatie logica interactief testen op een live Spark-cluster. Gegevens stroom clusters nemen 5-7 minuten in beslag en gebruikers worden aanbevolen om debug eerst in te scha kelen als de ontwikkeling van gegevens stromen wordt gepland. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
 
-    ![Activiteit gegevensstroom](media/tutorial-data-flow/dataflow1.png)
-1. Vouw in het deelvenster **Activiteiten** de accordeon **Verplaatsen en Transformeren uit.** Sleep en drop de **activiteit Gegevensstroom** van het deelvenster naar het pijplijncanvas.
+    ![Activiteit gegevens stroom](media/tutorial-data-flow/dataflow1.png)
+1. Vouw in het deel venster **activiteiten** de accordeon **verplaatsen en transformeren** uit. Sleep de activiteit **gegevens stroom** van het deel venster naar het pijp lijn-canvas.
 
-    ![Activiteit gegevensstroom](media/tutorial-data-flow/activity1.png)
-1. Selecteer in de pop-up **Gegevensstroom toevoegen** de optie **Nieuwe gegevensstroom maken** en geef vervolgens de naam van uw gegevensstroom **TransformMovies**. Klik op Voltooien wanneer u klaar bent.
+    ![Activiteit gegevens stroom](media/tutorial-data-flow/activity1.png)
+1. Selecteer in het pop-upvenster **gegevens stroom toevoegen** de optie **nieuwe gegevens stroom maken** en geef vervolgens een naam op voor de gegevens stroom **TransformMovies**. Klik op volt ooien wanneer u klaar bent.
 
-    ![Activiteit gegevensstroom](media/tutorial-data-flow/activity2.png)
+    ![Activiteit gegevens stroom](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Transformatielogica bouwen in het canvas voor gegevensstromen
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Transformatie logica bouwen in het canvas voor gegevens stromen
 
-Zodra u uw gegevensstroom hebt gemaakt, wordt u automatisch naar het canvas van de gegevensstroom verzonden. In deze stap bouwt u een gegevensstroom die de moviesDB.csv in ADLS-opslag neemt en de gemiddelde beoordeling van komedies van 1910 tot 2000 verzamelt. U schrijft dit bestand vervolgens terug naar de ADLS-opslag.
+Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas voor gegevens stromen verzonden. In deze stap bouwt u een gegevens stroom op die de moviesDB. csv in ADLS-opslag neemt en de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt. Vervolgens schrijft u dit bestand terug naar de ADLS-opslag.
 
-1. Voeg in het canvas van de gegevensstroom een bron toe door op het vak **Bron toevoegen** te klikken.
+1. Voeg in het canvas gegevens stroom een bron toe door te klikken op het vak **bron toevoegen** .
 
-    ![Gegevensstroomcanvas](media/tutorial-data-flow/dataflow2.png)
-1. Noem uw bron **MoviesDB**. Klik op **Nieuw** om een nieuwe brongegevensset te maken.
+    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow2.png)
+1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
 
-    ![Gegevensstroomcanvas](media/tutorial-data-flow/dataflow3.png)
-1. Kies **Azure Data Lake Storage Gen2**. Klik op Doorgaan.
+    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow3.png)
+1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op Doorgaan.
+1. Kies **DelimitedText**. Klik op door gaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
-1. Geef uw gegevensset **MoviesDB een**naam . **Kies**nieuw in de vervolgkeuzelijst gekoppelde service .
+1. Geef uw gegevensset een naam **MoviesDB**. Kies in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
 
     ![Gegevensset](media/tutorial-data-flow/dataset3.png)
-1. Geef in het scherm voor het maken van gekoppelde service van de gekoppelde service **ADLSGen2** de naam en geef uw verificatiemethode op. Voer vervolgens uw verbindingsreferenties in. In deze zelfstudie gebruiken we accountsleutel om verbinding te maken met ons opslagaccount. U op **Verbinding testen** klikken om te controleren of uw referenties correct zijn ingevoerd. Klik op Maken als u klaar bent.
+1. Typ in het scherm gekoppelde service maken de naam van uw ADLS Gen2-gekoppelde service **ADLSGen2** en geef uw verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de account sleutel om verbinding te maken met het opslag account. U kunt klikken op **verbinding testen** om te controleren of uw referenties correct zijn ingevoerd. Klik op maken wanneer u klaar bent.
 
     ![Gekoppelde service](media/tutorial-data-flow/ls1.png)
-1. Als u weer in het scherm voor het maken van gegevenssets bent, voert u in waar uw bestand zich bevindt onder het veld **Bestandspad.** In deze zelfstudie bevindt het bestand moviesDB.csv zich in containersamplegegevens. Aangezien het bestand kopteksten heeft, controleert u **Eerste rij als koptekst**. Selecteer **Uit verbinding/winkel** om het headerschema rechtstreeks uit het opslagbestand te importeren. Klik op OK als u klaar bent.
+1. Wanneer u weer op het scherm gegevensset maken hebt geklikt, voert u in waar het bestand zich bevindt in het veld **bestandspad** . In deze zelf studie bevindt het bestand moviesDB. CSV zich in container-voorbeeld gegevens. Controleer de **eerste rij als koptekst**, terwijl het bestand kopteksten bevat. Selecteer **in verbinding/archief** om het header-schema rechtstreeks te importeren uit het bestand in de opslag. Klik op OK wanneer u klaar bent.
 
     ![Gegevenssets](media/tutorial-data-flow/dataset4.png)
-1. Als uw foutopsporingscluster is gestart, gaat u naar het tabblad **Gegevensvoorbeeld** van de brontransformatie en klikt u op **Vernieuwen** om een momentopname van de gegevens te krijgen. U gegevensvoorbeeld gebruiken om te controleren of uw transformatie correct is geconfigureerd.
+1. Als het cluster voor fout opsporing is gestart, gaat u naar het tabblad **voor beeld van gegevens** van de bron transformatie en klikt u op **vernieuwen** om een moment opname van de gegevens op te halen. U kunt gegevens voorbeeld gebruiken om te controleren of uw trans formatie correct is geconfigureerd.
 
-    ![Gegevensstroomcanvas](media/tutorial-data-flow/dataflow4.png)
-1. Klik naast het bronknooppunt op het canvas van de gegevensstroom op het pluspictogram om een nieuwe transformatie toe te voegen. De eerste transformatie die u toevoegt, is een **filter.**
+    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow4.png)
+1. Klik naast het bron knooppunt op het canvas voor gegevens stromen op het plus pictogram om een nieuwe trans formatie toe te voegen. De eerste trans formatie die u toevoegt, is een **filter**.
 
-    ![Gegevensstroomcanvas](media/tutorial-data-flow/dataflow5.png)
-1. Geef uw filtertransformatie **FilterJaren een**naam . Klik op het expressievak naast **Filter op** om de expressiebouwer te openen. Hier geeft u de filterconditie op.
+    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow5.png)
+1. Geef een naam op voor de filter transformatie **FilterYears**. Klik op het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op.
 
     ![Filteren](media/tutorial-data-flow/filter1.png)
-1. Met de opbouw van gegevensstromenexpressie u interactief expressies bouwen om te gebruiken in verschillende transformaties. Expressies kunnen ingebouwde functies, kolommen uit het invoerschema en door de gebruiker gedefinieerde parameters bevatten. Zie Opbouwvan expressies gegevensstroom voor meer informatie over het maken van [expressies.](concepts-data-flow-expression-builder.md)
+1. Met de opbouw functie voor de data flow-expressie kunt u interactief expressies bouwen voor gebruik in verschillende trans formaties. Expressies kunnen ingebouwde functies, kolommen uit het invoer schema en door de gebruiker gedefinieerde para meters bevatten. Zie de [opbouw functie voor data flow](concepts-data-flow-expression-builder.md)-expressies voor meer informatie over het maken van expressies.
 
-    In deze tutorial wilt u films filteren van genrekomedie die uitkwam tussen de jaren 1910 en 2000. Aangezien het jaar momenteel een tekenreeks is, moet ```toInteger()``` u deze converteren naar een geheel getal met behulp van de functie. Gebruik de groter dan of gelijken aan (>=) en minder dan of gelijk aan (<=) operators om te vergelijken met letterlijke jaarwaarden 1910 en 200-. Union deze uitdrukkingen samen met de en (&&) operator. De uitdrukking komt uit als:
+    In deze zelf studie wilt u de films van genre Comedy filteren die zijn uitgekomen tussen de jaren 1910 en 2000. Als jaar momenteel een teken reeks is, moet u deze converteren naar een geheel getal met ```toInteger()``` behulp van de functie. Gebruik de Opera tors groter dan of gelijk aan (>=) en kleiner dan of gelijk aan (<=) om te vergelijken met de letterlijke jaar waarden 1910 en 200-. Voeg deze expressies samen met de operator and (&&). De expressie wordt als volgt opgehaald:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Om te vinden welke films komedies ```rlike()``` zijn, u de functie gebruiken om patroon 'Comedy' te vinden in de kolomgenres. Unie de rlike uitdrukking met de jaarvergelijking om te krijgen:
+    Als u wilt weten welke films comedies zijn, kunt u ```rlike()``` de functie gebruiken om het patroon ' comedy ' te vinden in de kolom genres. De rlike-expressie samen voegen met de jaar vergelijking om het volgende te krijgen:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
-    Als u een foutopsporingscluster actief hebt, u uw logica verifiëren door op **Vernieuwen** te klikken om de expressieuitvoer te zien in vergelijking met de gebruikte ingangen. Er is meer dan één juist antwoord op hoe u deze logica verwezenlijken met behulp van de taal van de gegevensstroomexpressie.
+    Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door op **vernieuwen** te klikken om de expressie-uitvoer te bekijken in vergelijking met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
 
     ![Filteren](media/tutorial-data-flow/filter2.png)
 
-    Klik **op Opslaan en voltooien** zodra u klaar bent met uw expressie.
+    Klik op **opslaan en volt ooien** zodra u klaar bent met de expressie.
 
-1. Haal een **gegevensvoorbeeld op** om te controleren of het filter correct werkt.
+1. Een **voor beeld** van een gegevens ophalen om te controleren of het filter goed werkt.
 
     ![Filteren](media/tutorial-data-flow/filter3.png)
-1. De volgende transformatie die u toevoegt, is een **totale** transformatie onder **Schemamodifier**.
+1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
 
     ![Samenvoegen](media/tutorial-data-flow/agg1.png)
-1. Geef een naam aan uw geaggregeerde transformatie **AggregateComedyRatings**. Selecteer **in het** tabblad Groeperen **op jaar** uit de vervolgkeuzelijst om de aggregaties te groeperen op het jaar dat de film uitkwam.
+1. Geef uw aggregatie transformatie **AggregateComedyRatings**een naam. Selecteer in het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is uitkwam.
 
     ![Samenvoegen](media/tutorial-data-flow/agg2.png)
-1. Ga naar het tabblad **Aggregaten.** Geef in het linkertekstvak de naam van de aggregaatkolom **AverageComedyRating**. Klik op het juiste expressievak om de samengevoegde expressie in te voeren via de expressiebouwer.
+1. Ga naar het tabblad **aggregaties** . Geef in het vak links de cumulatieve kolom **AverageComedyRating**. Klik op het vak rechter expressie om de statistische expressie op te geven via de opbouw functie voor expressies.
 
     ![Samenvoegen](media/tutorial-data-flow/agg3.png)
-1. Als u het gemiddelde van ```avg()``` **kolomclassificatie**wilt krijgen, gebruikt u de samengevoegde functie. Aangezien **Rating** een ```avg()``` tekenreeks is en een numerieke invoer in zich ```toInteger()``` opneemt, moeten we de waarde via de functie converteren naar een getal. Dit is expressie ziet eruit als:
+1. Gebruik de ```avg()``` functie aggregate om het gemiddelde van de kolom **classificatie**te berekenen. Als **classificatie** is een teken reeks ```avg()``` die in een numerieke invoer neemt, moeten we de waarde converteren naar een getal via ```toInteger()``` de functie. De expressie ziet er als volgt uit:
 
     ```avg(toInteger(Rating))```
 
-    Klik **op Opslaan en voltooien** wanneer u klaar bent.
+    Klik op **opslaan en volt ooien** wanneer u klaar bent.
 
     ![Samenvoegen](media/tutorial-data-flow/agg4.png)
-1. Ga naar het tabblad **Gegevensvoorbeeld** om de transformatie-uitvoer weer te geven. Let op slechts twee kolommen zijn er, **jaar** en **AverageComedyRating**.
+1. Ga naar het tabblad voor **beeld van gegevens** om de trans formatie-uitvoer weer te geven. U ziet slechts twee kolommen, **jaar** en **AverageComedyRating**.
 
     ![Samenvoegen](media/tutorial-data-flow/agg3.png)
-1. Vervolgens wilt u een **sinktransformatie** toevoegen onder **Bestemming**.
+1. Vervolgens wilt u een **sink** -trans formatie toevoegen onder **bestemming**.
 
     ![Sink](media/tutorial-data-flow/sink1.png)
-1. Noem je gootsteen **gootsteen**. Klik **op Nieuw** om de sink-gegevensset te maken.
+1. Geef **uw Sink een naam.** Klik op **Nieuw** om uw Sink-gegevensset te maken.
 
     ![Sink](media/tutorial-data-flow/sink2.png)
-1. Kies **Azure Data Lake Storage Gen2**. Klik op Doorgaan.
+1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op Doorgaan.
+1. Kies **DelimitedText**. Klik op door gaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
-1. Geef uw sinkdataset **MoviesSink een**naam. Kies voor gekoppelde service de ADLS gen2-gekoppelde service die u in stap 6 hebt gemaakt. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelfstudie schrijven we naar map 'output' in container 'sample-data'. De map hoeft niet van tevoren te bestaan en kan dynamisch worden gemaakt. Eerste **rij als koptekst instellen** als true en selecteer **Geen** voor **schema importeren**. Klik op Voltooien.
+1. Geef uw Sink-gegevensset een naam **MoviesSink**. Voor gekoppelde service kiest u de gekoppelde ADLS Gen2-service die u in stap 6 hebt gemaakt. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelf studie schrijven we naar map ' uitvoer ' in container ' voor beeld-gegevens '. De map hoeft niet vooraf te bestaan en kan dynamisch worden gemaakt. Stel de **eerste rij als koptekst** in op True en selecteer **geen** voor het **import schema**. Klik op Voltooien.
 
     ![Sink](media/tutorial-data-flow/sink3.png)
 
-Nu bent u klaar met het bouwen van uw gegevensstroom. Je bent klaar om het in je pijplijn te laten lopen.
+Nu bent u klaar met het bouwen van uw gegevens stroom. U kunt deze nu uitvoeren in de pijp lijn.
 
-## <a name="running-and-monitoring-the-data-flow"></a>De gegevensstroom uitvoeren en bewaken
+## <a name="running-and-monitoring-the-data-flow"></a>De gegevens stroom wordt uitgevoerd en bewaakt
 
-U een pijplijn debuggen voordat u deze publiceert. In deze stap activeert u een foutopsporingsrun van de pijplijn voor gegevensstromen. Terwijl data preview geen gegevens schrijft, wordt er een foutopsporing uitgevoerd, die gegevens naar uw gootsteenbestemming schrijft.
+U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap gaat u een debug-uitvoering van de gegevensstroom pijplijn activeren. Terwijl voor beeld van de gegevens geen gegevens worden geschreven, worden gegevens naar de Sink-bestemming geschreven.
 
-1. Ga naar het pijplijncanvas. Klik op **Foutopsporing** om een foutopsporingsrun te activeren.
+1. Ga naar het pijp lijn-canvas. Klik op **fout opsporing** om een uitvoering van de fout opsporing te activeren.
 
     ![Pijplijn](media/tutorial-data-flow/pipeline1.png)
-1. Pipeline debug of Data Flow activities uses the active debug cluster but still take at least a minute to initialize. U de voortgang volgen via het tabblad **Uitvoer.** Zodra de run succesvol is, klikt u op het pictogram van de bril om het controlevenster te openen.
+1. Bij het opsporen van pijp lijn voor gegevens stroom activiteiten wordt het actieve debug-cluster gebruikt, maar het kan wel ten minste een minuut duren om te initialiseren. U kunt de voortgang volgen via het tabblad **uitvoer** . Zodra de uitvoering is geslaagd, klikt u op het pictogram bril om het deel venster bewaking te openen.
 
     ![Pijplijn](media/tutorial-data-flow/pipeline2.png)
-1. In het bewakingsvenster ziet u het aantal rijen en de tijd die in elke transformatiestap is doorgebracht.
+1. In het deel venster bewaking ziet u het aantal rijen en tijd dat aan elke transformatie stap is besteed.
 
     ![Bewaking](media/tutorial-data-flow/pipeline3.png)
-1. Klik op een transformatie voor gedetailleerde informatie over de kolommen en het partitioneren van de gegevens.
+1. Klik op een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
 
     ![Bewaking](media/tutorial-data-flow/pipeline4.png)
 
-Als u deze zelfstudie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw gootsteenmap hebben geschreven. U controleren of de gegevens correct zijn door de blobopslag te controleren.
+Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw map Sink hebben geschreven. U kunt controleren of de gegevens correct zijn door uw Blob-opslag te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De pijplijn in deze zelfstudie voert een gegevensstroom uit die de gemiddelde beoordeling van komedies van 1910 tot 2000 samenvoegt en de gegevens naar ADLS schrijft. U hebt geleerd hoe u:
+De pijp lijn in deze zelf studie voert een gegevens stroom uit die de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt en schrijft de gegevens naar ADLS. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een gegevensfactory maken.
-> * Maak een pijplijn met een activiteit Gegevensstroom.
-> * Bouw een kaartgegevensstroom met vier transformaties.
+> * Maak een pijp lijn met een gegevens stroom activiteit.
+> * Bouw een toewijzings gegevens stroom met vier trans formaties.
 > * De uitvoering van de pijplijn testen.
-> * Een gegevensstroomactiviteit controleren
+> * Een gegevens stroom activiteit bewaken
 
-Meer informatie over de taal van de [gegevensstroomexpressie](data-flow-expression-functions.md).
+Meer informatie over de [taal van de data flow-expressie](data-flow-expression-functions.md).

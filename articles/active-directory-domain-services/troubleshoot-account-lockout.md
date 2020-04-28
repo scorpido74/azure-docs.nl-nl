@@ -1,6 +1,6 @@
 ---
-title: Problemen met accountuitsluiting in Azure AD Domain Services oplossen | Microsoft Documenten
-description: Meer informatie over het oplossen van veelvoorkomende problemen waardoor gebruikersaccounts worden vergrendeld in Azure Active Directory Domain Services.
+title: Problemen met account vergrendeling in Azure AD Domain Services oplossen | Microsoft Docs
+description: Meer informatie over het oplossen van veelvoorkomende problemen die ertoe leiden dat gebruikers accounts worden vergrendeld in Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,54 +11,54 @@ ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743446"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met accountvergrendeling oplossen met een beheerd Azure AD Domain Services-domein
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met account vergrendeling oplossen met een door Azure AD Domain Services beheerd domein
 
-Azure AD DS vergrendelt accounts na een gedefinieerde drempelwaarde om herhaalde kwaadaardige aanmeldingspogingen te voorkomen. Deze account lockout kan ook per ongeluk gebeuren zonder een aanmeldingsaanvalincident. Als een gebruiker bijvoorbeeld herhaaldelijk het verkeerde wachtwoord invoert of een service probeert een oud wachtwoord te gebruiken, wordt het account vergrendeld.
+Azure AD DS blokkeert accounts na een gedefinieerde drempel waarde om herhaalde aanmeldings pogingen te voor komen. Deze account vergrendeling kan ook plaatsvinden per ongeluk zonder dat er zich een aanval heeft voordoen. Als een gebruiker bijvoorbeeld herhaaldelijk het verkeerde wacht woord invoert of een service probeert een oud wacht woord te gebruiken, wordt het account vergrendeld.
 
-In dit artikel over het oplossen van problemen wordt beschreven waarom accountuitsluitingen plaatsvinden en hoe u het gedrag configureren en hoe u beveiligingsaudits controleren om vergrendelingsgebeurtenissen op te lossen.
+Dit artikel bevat informatie over het oplossen van problemen met account vergrendelingen en over hoe u het gedrag kunt configureren en hoe beveiligings controles moeten worden gecontroleerd om vergrendelings gebeurtenissen op te lossen.
 
-## <a name="what-is-an-account-lockout"></a>Wat is een accountuitsluiting?
+## <a name="what-is-an-account-lockout"></a>Wat is een account vergrendeling?
 
-Een gebruikersaccount in Azure AD DS is vergrendeld wanneer is voldaan aan een gedefinieerde drempelwaarde voor mislukte aanmeldingspogingen. Dit accountlock-outgedrag is ontworpen om u te beschermen tegen herhaalde aanmeldingspogingen met brute kracht die kunnen duiden op een geautomatiseerde digitale aanval.
+Een gebruikers account in azure AD DS is vergrendeld wanneer aan een gedefinieerde drempel voor mislukte aanmeldings pogingen is voldaan. Dit account vergrendelings gedrag is ontworpen om u te beschermen tegen herhaalde pogingen om te voor komen dat u zich kunt aanmelden met een geautomatiseerde digitale aanval.
 
-**Als er standaard 5 slechte wachtwoordpogingen in 2 minuten zijn, wordt het account gedurende 30 minuten vergrendeld.**
+**Als er gedurende twee minuten vijf mislukte wachtwoord pogingen zijn, wordt het account 30 minuten vergrendeld.**
 
-De standaarddrempelwaarden voor accountvergrendeling worden geconfigureerd met behulp van fijnmazige wachtwoordbeleid. Als u een specifieke set vereisten hebt, u deze standaarddrempelwaarden voor accountvergrendeling overschrijven. Het is echter niet aan te raden om de drempelwaarden te verhogen om te proberen de nummeraccountuitsluitingen te verminderen. Problemen met de bron van het vergrendelingsgedrag van het account eerst oplossen.
+De standaard drempel waarden voor account vergrendeling worden geconfigureerd met een nauw keurig wachtwoord beleid. Als u een specifieke set vereisten hebt, kunt u deze standaard drempel waarden voor account vergrendeling onderdrukken. Het is echter niet raadzaam de drempel limieten te verhogen om de vergren deling van het aantal accounts te verminderen. Los de bron van het account vergrendelings gedrag eerst op.
 
-### <a name="fine-grained-password-policy"></a>Fijnkorrelig wachtwoordbeleid
+### <a name="fine-grained-password-policy"></a>Nauw keurig wachtwoord beleid
 
-Met fijnmazig wachtwoordbeleid (FGPP's) u specifieke beperkingen toepassen voor het beleid voor wachtwoord- en accountvergrendeling op verschillende gebruikers in een domein. FGPP heeft alleen gevolgen voor gebruikers binnen een door Azure AD DS beheerd domein. Cloudgebruikers en domeingebruikers die vanuit Azure AD zijn gesynchroniseerd met het beheerde Azure AD-domein, worden alleen beïnvloed door het wachtwoordbeleid binnen Azure AD DS. Hun accounts in Azure AD of een on-premises directory worden niet beïnvloed.
+Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wacht woord-en account vergrendelings beleid Toep assen op verschillende gebruikers in een domein. FGPP is alleen van invloed op gebruikers binnen een door Azure AD DS beheerd domein. Cloud gebruikers en domein gebruikers die zijn gesynchroniseerd met het door Azure AD DS beheerde domein vanuit Azure AD worden alleen beïnvloed door het wachtwoord beleid in azure AD DS. Hun accounts in azure AD of een on-premises Directory worden niet beïnvloed.
 
-Beleidsregels worden gedistribueerd via groepskoppeling in het door Azure AD DS beheerde domein en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikersaccount dat al is vergrendeld, niet ontgrendeld.
+Beleids regels worden gedistribueerd via een groeps koppeling in het Azure AD DS Managed Domain en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikers account dat al is vergrendeld, niet ontgrendeld.
 
-Zie [Wachtwoord- en accountuitsluitingsbeleid configureren][configure-fgpp]voor meer informatie over fijnmazige wachtwoordbeleidsregels en de verschillen tussen gebruikers die rechtstreeks zijn gemaakt in Azure AD DS versus gesynchroniseerd vanuit Azure AD.
+Zie [wacht woord-en account vergrendelings beleid configureren][configure-fgpp]voor meer informatie over verfijnd wachtwoord beleid en de verschillen tussen gebruikers die rechtstreeks in azure AD DS zijn gemaakt en die zijn gesynchroniseerd vanuit Azure AD.
 
-## <a name="common-account-lockout-reasons"></a>Algemene redenen voor het vergrendelen van een account
+## <a name="common-account-lockout-reasons"></a>Veelvoorkomende redenen voor account vergrendeling
 
-De meest voorkomende redenen waarom een account moet worden vergrendeld, zonder kwade opzet of factoren, zijn de volgende scenario's:
+De meest voorkomende redenen voor het vergren delen van een account, zonder schadelijke intentie of factoren, zijn de volgende scenario's:
 
-* **De gebruiker sloot zichzelf buiten.**
-    * Is de gebruiker na een recente wachtwoordwijziging een vorig wachtwoord blijven gebruiken? Het standaard accountuitsluitingsbeleid van 5 mislukte pogingen in 2 minuten kan worden veroorzaakt doordat de gebruiker per ongeluk een oud wachtwoord opnieuw probeert.
-* **Er is een toepassing of service die een oud wachtwoord heeft.**
-    * Als een account wordt gebruikt door toepassingen of services, kunnen deze bronnen herhaaldelijk proberen in te loggen met een oud wachtwoord. Dit gedrag zorgt ervoor dat het account wordt vergrendeld.
-    * Probeer het accountgebruik voor meerdere verschillende toepassingen of services te minimaliseren en registreren waar referenties worden gebruikt. Als een accountwachtwoord wordt gewijzigd, werkt u de bijbehorende toepassingen of services dienovereenkomstig bij.
-* **Wachtwoord is gewijzigd in een andere omgeving en het nieuwe wachtwoord is nog niet gesynchroniseerd.**
-    * Als een accountwachtwoord wordt gewijzigd buiten Azure AD DS, zoals in een on-prem AD DS-omgeving, kan het enkele minuten duren voordat de wachtwoordwijziging wordt gesynchroniseerd via Azure AD en in Azure AD DS.
-    * Een gebruiker die zich via Azure AD DS bij een resource probeert aan te melden voordat dat wachtwoordsynchronisatieproces is voltooid, zorgt ervoor dat zijn account wordt vergrendeld.
+* **De gebruiker heeft zichzelf vergrendeld.**
+    * Heeft de gebruiker na een recente wachtwoord wijziging een vorig wacht woord blijven gebruiken? Het standaard account vergrendelings beleid van vijf mislukte pogingen binnen twee minuten kan worden veroorzaakt door de gebruiker per ongeluk opnieuw proberen een oud wacht woord.
+* **Er is een toepassing of service met een oud wacht woord.**
+    * Als een account wordt gebruikt door toepassingen of services, proberen deze resources zich herhaaldelijk aan te melden met een oud wacht woord. Dit gedrag zorgt ervoor dat het account wordt vergrendeld.
+    * Probeer het account gebruik voor meerdere toepassingen of services te minimaliseren en leg vast waar referenties worden gebruikt. Als een account wachtwoord is gewijzigd, werkt u de bijbehorende toepassingen of services dienovereenkomstig bij.
+* **Het wacht woord is gewijzigd in een andere omgeving en het nieuwe wacht woord is nog niet gesynchroniseerd.**
+    * Als een account wachtwoord wordt gewijzigd buiten Azure AD DS, zoals in een on-premises AD DS omgeving, kan het enkele minuten duren voordat het wacht woord wordt gewijzigd in azure AD en in azure AD DS.
+    * Een gebruiker die zich probeert aan te melden bij een bron via Azure AD DS voordat het wachtwoord synchronisatie proces is voltooid, wordt het account vergrendeld.
 
-## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Problemen met accountuitsluitingen oplossen met beveiligingsaudits
+## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Problemen met account vergrendelingen oplossen met beveiligings controles
 
-Als u problemen wilt oplossen wanneer gebeurtenissen voor accountuitsluiting optreden en waar ze vandaan komen, [schakelt u beveiligingsaudits in voor Azure AD DS.][security-audit-events] Controlegebeurtenissen worden alleen vastgelegd vanaf het moment dat u de functie inschakelt. Idealiter moet u beveiligingsaudits inschakelen *voordat* er een probleem is met de vergrendeling van een account om problemen op te lossen. Als een gebruikersaccount herhaaldelijk vergrendelingsproblemen heeft, u beveiligingsaudits klaarmaken voor de volgende keer dat de situatie zich voordoet.
+Als u problemen wilt oplossen wanneer account vergrendelings gebeurtenissen optreden en waar ze vandaan komen, [schakelt u beveiligings controles in voor Azure AD DS][security-audit-events]. Controle gebeurtenissen worden alleen vastgelegd vanaf het moment dat u de functie inschakelt. In het ideale geval moet u beveiligings controles inschakelen *voordat* er een probleem is met account vergrendeling. Als een gebruikers account herhaaldelijk problemen vergrendelt, kunt u beveiligings controles voor de volgende keer dat de situatie zich voordoet, inschakelen.
 
-Nadat u beveiligingsaudits hebt ingeschakeld, u in de volgende voorbeeldquery's zien hoe u *Account Lockout-gebeurtenissen*, code *4740*, controleren.
+Wanneer u beveiligings controles hebt ingeschakeld, laten de volgende voorbeeld query's zien hoe u *account vergrendelings gebeurtenissen*kunt controleren, code *4740*.
 
-Bekijk alle gebeurtenis op het vergrendelen van een account van de afgelopen zeven dagen:
+Bekijk alle account vergrendelings gebeurtenissen voor de afgelopen zeven dagen:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-Bekijk alle account lockout gebeurtenissen voor de afgelopen zeven dagen voor het account met de naam *driley*.
+Bekijk alle account vergrendelings gebeurtenissen voor de afgelopen zeven dagen voor het account met de naam *driley*.
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -75,7 +75,7 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-Bekijk alle account lockout-evenementen tussen 26 juni 2019 en 09:00 uur. en 1 juli 2019 middernacht, gesorteerd op basis van datum en tijd:
+Bekijk alle account vergrendelings gebeurtenissen tussen 26 juni 2019 om 9:00 uur en 1 juli 2019 middernacht, oplopend gesorteerd op de datum en tijd:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -86,9 +86,9 @@ AADDomainServicesAccountManagement
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Wachtwoord- [en accountuitsluitingsbeleid configureren][configure-fgpp]voor meer informatie over fijnmazige wachtwoordbeleid om drempelwaarden voor accountvergrendeling aan te passen.
+Zie [beleid voor wacht woord-en account vergrendeling configureren][configure-fgpp]voor meer informatie over verfijnd wachtwoord beleid voor het aanpassen van de drempel waarden voor account vergrendeling.
 
-Als u nog steeds problemen hebt met het samenvoegen van uw VM met het beheerde Azure AD DS-domein, [zoekt u hulp en opent u een ondersteuningsticket voor Azure Active Directory.][azure-ad-support]
+Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheerde domein van Azure AD DS, [zoekt u hulp en opent u een ondersteunings ticket voor Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

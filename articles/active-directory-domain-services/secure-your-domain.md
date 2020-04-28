@@ -1,6 +1,6 @@
 ---
-title: Beveiligde Azure AD-domeinservices | Microsoft Documenten
-description: Meer informatie over het uitschakelen van zwakke cijfers, oude protocollen en NTLM-wachtwoordhashsynchronisatie voor een beheerd Azure Active Directory Domain Services-domein.
+title: Azure AD Domain Services beveiligen | Microsoft Docs
+description: Meer informatie over het uitschakelen van zwakke code ringen, oude protocollen en NTLM-wachtwoord synchronisatie voor een Azure Active Directory Domain Services beheerd domein.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,41 +12,41 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654724"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Zwakke cijfers en wachtwoordhashsynchronisatie uitschakelen om een beheerd Azure AD Domain Services-domein te beveiligen
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Zwakke versleuteling en wachtwoord-hash-synchronisatie uitschakelen om een Azure AD Domain Services beheerd domein te beveiligen
 
-Azure Active Directory Domain Services (Azure AD DS) maakt standaard het gebruik van cijfers zoals NTLM v1 en TLS v1 mogelijk. Deze cijfers kunnen nodig zijn voor sommige oudere toepassingen, maar worden beschouwd als zwak en kunnen worden uitgeschakeld als u ze niet nodig hebt. Als u on-premises hybride connectiviteit hebt met Azure AD Connect, u ook de synchronisatie van NTLM-wachtwoordhashes uitschakelen.
+Azure Active Directory Domain Services (Azure AD DS) maakt standaard gebruik van code ringen, zoals NTLM v1 en TLS v1. Deze code ringen zijn mogelijk vereist voor sommige oudere toepassingen, maar worden beschouwd als zwak en kunnen worden uitgeschakeld als u deze niet nodig hebt. Als u een on-premises hybride verbinding hebt met Azure AD Connect, kunt u de synchronisatie van NTLM-wachtwoord hashes ook uitschakelen.
 
-In dit artikel ziet u hoe u NTLM v1- en TLS v1-ciphers uitschakelt en ntlm-wachtwoordhashsynchronisatie uitschakelt.
+In dit artikel leest u hoe u NTLM v1-en TLS v1-code ringen kunt uitschakelen en NTLM-wachtwoord synchronisatie kunt uitschakelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om dit artikel te voltooien, hebt u de volgende bronnen nodig:
+U hebt de volgende resources nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
-    * Maak en configureer indien nodig [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
 * Installeer en configureer Azure PowerShell.
-    * Volg indien nodig de instructies om [de Azure PowerShell-module te installeren en verbinding te maken met uw Azure-abonnement.](/powershell/azure/install-az-ps)
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure-abonnement met de [cmdlet Connect-AzAccount.][Connect-AzAccount]
-* Azure AD PowerShell installeren en configureren.
-    * Volg indien nodig de instructies om [de Azure AD PowerShell-module](/powershell/azure/active-directory/install-adv2)te installeren en verbinding te maken met Azure AD.
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure AD-tenant met de cmdlet [Connect-AzureAD.][Connect-AzureAD]
+    * Als dat nodig is, volgt u de instructies om [de Azure PowerShell-module te installeren en verbinding te maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
+    * Zorg ervoor dat u zich aanmeldt bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount][Connect-AzAccount] .
+* Azure AD Power Shell installeren en configureren.
+    * Als dat nodig is, volgt u de instructies voor [het installeren van de Azure AD Power shell-module en verbinding maken met Azure AD](/powershell/azure/active-directory/install-adv2).
+    * Zorg ervoor dat u zich aanmeldt bij uw Azure AD-Tenant met de cmdlet [Connect-AzureAD][Connect-AzureAD] .
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zwakke cijfers en NTLM-wachtwoordhashsynchronisatie uitschakelen
+## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zwakke code ringen en NTLM-wachtwoord-hash-synchronisatie uitschakelen
 
-Als u zwakke versleutelingssuites en NTLM-hashsynchronisatie wilt uitschakelen, meldt u zich aan bij uw Azure-account en krijgt u de Azure AD DS-bron met behulp van de cmdlet [Get-AzResource:][Get-AzResource]
+Als u zwakke coderings suites en hash-synchronisatie van NTLM-referenties wilt uitschakelen, meldt u zich aan bij uw Azure-account en haalt u de Azure AD DS-resource op met behulp van de cmdlet [Get-AzResource][Get-AzResource] :
 
 > [!TIP]
-> Als er een fout optreedt met de opdracht [Get-AzResource][Get-AzResource] dat de *Microsoft.AAD/DomainServices-bron* niet bestaat, [verhoogt u uw toegang om alle Azure-abonnementen en beheergroepen te beheren.][global-admin]
+> Als er een fout bericht wordt weer gegeven met de opdracht [Get-AzResource][Get-AzResource] dat de *micro soft. Aad/DomainServices-* resource niet bestaat, [moet u uw toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren][global-admin].
 
 ```powershell
 Login-AzAccount
@@ -54,30 +54,30 @@ Login-AzAccount
 $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 ```
 
-Definieer vervolgens *DomainSecuritySettings* om de volgende beveiligingsopties te configureren:
+Definieer vervolgens *DomainSecuritySettings* voor het configureren van de volgende beveiligings opties:
 
-1. NTLM v1-ondersteuning uitschakelen.
-2. Schakel de synchronisatie van NTLM-wachtwoordhashes uit van uw on-premises AD.
+1. Schakel NTLM v1-ondersteuning uit.
+2. Schakel de synchronisatie van NTLM-wachtwoord-hashes uit vanuit uw on-premises AD.
 3. Schakel TLS v1 uit.
 
 > [!IMPORTANT]
-> Gebruikers en serviceaccounts kunnen geen eenvoudige LDAP-bindingen uitvoeren als u ntlm-wachtwoordhashsynchronisatie uitschakelt in het beheerde Azure AD DS-domein. Als u ldap-eenvoudige bindingen moet uitvoeren, stelt u de optie *'SyncNtlmPasswords'='Uitgeschakeld'* niet in; beveiligingsconfiguratieoptie in de volgende opdracht.
+> Gebruikers en service accounts kunnen geen LDAP-eenvoudige bindingen uitvoeren als u NTLM-wachtwoord synchronisatie uitschakelen in het beheerde domein van Azure AD DS. Als u eenvoudige LDAP-bindingen wilt uitvoeren, stelt u de optie *"SyncNtlmPasswords" = "disabled";* in de volgende opdracht niet in.
 
 ```powershell
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Pas ten slotte de gedefinieerde beveiligingsinstellingen toe op het door Azure AD DS beheerde domein met de cmdlet [Set-AzResource.][Set-AzResource] Geef de Azure AD DS-bron op vanaf de eerste stap en de beveiligingsinstellingen van de vorige stap.
+Pas ten slotte de gedefinieerde beveiligings instellingen toe op de Azure AD DS beheerde domein met de cmdlet [set-AzResource][Set-AzResource] . Geef de Azure AD DS-resource op uit de eerste stap en de beveiligings instellingen van de vorige stap.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Het duurt even voordat de beveiligingsinstellingen worden toegepast op het beheerde Azure AD DS-domein.
+Het duurt enkele ogen blikken voordat de beveiligings instellingen worden toegepast op het beheerde domein van Azure AD DS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Hoe objecten en referenties worden gesynchroniseerd in een door Azure AD DS beheerd domein][synchronization]voor meer informatie over het synchronisatieproces.
+Zie [How to Synchronizing object and credentials in an Azure AD DS Managed Domain][synchronization](Engelstalig) voor meer informatie over het synchronisatie proces.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

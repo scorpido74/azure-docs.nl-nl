@@ -1,6 +1,6 @@
 ---
-title: Wijzigingen in een MVC-project wanneer u verbinding maakt met Azure AD
-description: Beschrijft wat er met uw MVC-project gebeurt wanneer u verbinding maakt met Azure AD met behulp van Visual Studio connected services
+title: Wijzigingen die zijn aangebracht in een MVC-project wanneer u verbinding maakt met Azure AD
+description: Beschrijft wat er gebeurt met uw MVC-project wanneer u verbinding maakt met Azure AD met behulp van Visual Studio Connected Services
 author: ghogen
 manager: jillfra
 ms.prod: visual-studio-windows
@@ -11,70 +11,70 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886106"
 ---
-# <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory connected service)?
+# <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory Connected service)?
 
 > [!div class="op_single_selector"]
 > - [Aan de slag](vs-active-directory-dotnet-getting-started.md)
 > - [Wat is er gebeurd](vs-active-directory-dotnet-what-happened.md)
 
-In dit artikel worden de exacte wijzigingen in een ASP.NET MVC-project aangebracht bij het toevoegen van de [Azure Active Directory connected service met Visual Studio.](vs-active-directory-add-connected-service.md)
+In dit artikel worden de exacte wijzigingen voor een ASP.NET MVC-project geïdentificeerd wanneer u de [Azure Active Directory verbonden service toevoegt met behulp van Visual Studio](vs-active-directory-add-connected-service.md).
 
-Zie Aan de [slag gaan](vs-active-directory-dotnet-getting-started.md)voor informatie over het werken met de verbonden service.
+Zie [aan](vs-active-directory-dotnet-getting-started.md)de slag voor meer informatie over het werken met de verbonden service.
 
-## <a name="added-references"></a>Toegevoegde referenties
+## <a name="added-references"></a>Verwijzingen toegevoegd
 
-Beïnvloedt het projectbestand (*.NET-verwijzingen) en `packages.config` (NuGet-verwijzingen).
+Is van invloed op het project bestand (*. NET `packages.config` references) en (NuGet references).
 
 | Type | Naslaginformatie |
 | --- | --- |
-| .net; NuGet (NuGet) | Microsoft.IdentityModel.Protocol.Extensions |
-| .net; NuGet (NuGet) | Microsoft.Owin (Microsoft.Owin) |
-| .net; NuGet (NuGet) | Microsoft.Owin.Host.SystemWeb |
-| .net; NuGet (NuGet) | Microsoft.Owin.Beveiliging |
-| .net; NuGet (NuGet) | Microsoft.Owin.Security.Cookies |
-| .net; NuGet (NuGet) | Microsoft.Owin.Security.OpenIdConnect |
-| .net; NuGet (NuGet) | Owin (Owin) |
-| .NET        | System.IdentityModel |
-| .net; NuGet (NuGet) | System.IdentityModel.Tokens.Jwt |
+| NET NuGet | Micro soft. Identity model. Protocol. Extensions |
+| NET NuGet | Micro soft. Owin |
+| NET NuGet | Microsoft.Owin.Host.SystemWeb |
+| NET NuGet | Micro soft. Owin. Security |
+| NET NuGet | Microsoft.Owin.Security.Cookies |
+| NET NuGet | Microsoft.Owin.Security.OpenIdConnect |
+| NET NuGet | Owin |
+| .NET        | System. Identity model |
+| NET NuGet | System. Identity model. tokens. JWT |
 | .NET        | System.Runtime.Serialization |
 
-Aanvullende verwijzingen als u de optie **Mapgegevens lezen** hebt geselecteerd:
+Aanvullende verwijzingen als u de optie **Directory gegevens lezen** hebt geselecteerd:
 
 | Type | Naslaginformatie |
 | --- | --- |
-| .net; NuGet (NuGet) | EntiteitKader |
-| .NET        | EntityFramework.SqlServer (alleen Visual Studio 2015) |
-| .net; NuGet (NuGet) | Microsoft.Azure.ActiveDirectory.GraphClient |
-| .net; NuGet (NuGet) | Microsoft.Data.Edm |
-| .net; NuGet (NuGet) | Microsoft.Data.OData |
-| .net; NuGet (NuGet) | Microsoft.Data.Services.Client |
-| .net; NuGet (NuGet) | Microsoft.IdentityModel.Clients.ActiveDirectory |
-| .NET        | Microsoft.IdentityModel.Clients.activedirectory.WindowsForms (alleen Visual Studio 2015) |
-| .net; NuGet (NuGet) | System.Spatial System.Spatial System.Spatial System. |
+| NET NuGet | EntityFramework |
+| .NET        | EntityFramework. SqlServer (alleen Visual Studio 2015) |
+| NET NuGet | Micro soft. Azure. ActiveDirectory. GraphClient |
+| NET NuGet | Micro soft. data. EDM |
+| NET NuGet | Micro soft. data. OData |
+| NET NuGet | Micro soft. data. Services. client |
+| NET NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| .NET        | Micro soft. Identity model. clients. ActiveDirectory. WindowsForms (alleen Visual Studio 2015) |
+| NET NuGet | Systeem. ruimtelijk |
 
-De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, zoals in Visual Studio 2015):
+De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visual Studio 2015):
 
 | Type | Naslaginformatie |
 | --- | --- |
-| .net; NuGet (NuGet) | Microsoft.AspNet.Identity.Core |
-| .net; NuGet (NuGet) | Microsoft.AspNet.Identity.EntityFramework |
-| .net; NuGet (NuGet) | Microsoft.AspNet.Identity.Owin |
+| NET NuGet | Micro soft. AspNet. Identity. core |
+| NET NuGet | Micro soft. AspNet. Identity. EntityFramework |
+| NET NuGet | Micro soft. AspNet. Identity. Owin |
 
-## <a name="project-file-changes"></a>Wijzigingen in projectbestanden
+## <a name="project-file-changes"></a>Wijzigingen in het project bestand
 
-- Stel de `IISExpressSSLPort` eigenschap in op een duidelijk getal.
-- Stel de `WebProject_DirectoryAccessLevelKey` eigenschap in op 0 of 1 als u de optie **Mapgegevens lezen** hebt geselecteerd.
-- Stel de `IISUrl` `https://localhost:<port>/` eigenschap `<port>` in `IISExpressSSLPort` op de plaats waar de waarde overeenkomt.
+- Stel de eigenschap `IISExpressSSLPort` in op een specifiek getal.
+- Stel de eigenschap `WebProject_DirectoryAccessLevelKey` in op 0 of 1 als u de optie **Directory gegevens lezen** hebt geselecteerd.
+- Stel de eigenschap `IISUrl` in `https://localhost:<port>/` op `<port>` waar de `IISExpressSSLPort` waarde overeenkomt.
 
-## <a name="webconfig-or-appconfig-changes"></a>web.config of app.config wijzigingen
+## <a name="webconfig-or-appconfig-changes"></a>wijzigingen in web. config of app. config
 
-- De volgende configuratievermeldingen toegevoegd:
+- De volgende configuratie vermeldingen zijn toegevoegd:
 
     ```xml
     <appSettings>
@@ -86,17 +86,17 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, zoals in Visual
     </appSettings>
     ```
 
-- Elementen `<dependentAssembly>` toegevoegd `<runtime><assemblyBinding>` onder het `System.IdentityModel.Tokens.Jwt` `Microsoft.IdentityModel.Protocol.Extensions`knooppunt voor en .
+- Elementen `<dependentAssembly>` toegevoegd onder het `<runtime><assemblyBinding>` knoop punt `System.IdentityModel.Tokens.Jwt` voor `Microsoft.IdentityModel.Protocol.Extensions`en.
 
-Aanvullende wijzigingen als u de optie **Mapgegevens lezen** hebt geselecteerd:
+Aanvullende wijzigingen als u de optie **Directory gegevens lezen** hebt geselecteerd:
 
-- Toegevoegd de volgende `<appSettings>`configuratie-vermelding onder :
+- De volgende configuratie vermelding is toegevoegd `<appSettings>`onder:
 
     ```xml
     <add key="ida:ClientSecret" value="<Azure AD app's new client secret>" />
     ```
 
-- Toegevoegd de volgende `<configuration>`elementen onder ; waarden voor het project-mdf-bestand en projectcatalogus-id variëren:
+- De volgende elementen zijn toegevoegd `<configuration>`onder; de waarden voor het project-MDF-bestand en project-catalogus-ID variëren:
 
     ```xml
     <configSections>
@@ -120,29 +120,29 @@ Aanvullende wijzigingen als u de optie **Mapgegevens lezen** hebt geselecteerd:
     </entityFramework>
     ```
 
-- Elementen `<dependentAssembly>` onder `<runtime><assemblyBinding>` het knooppunt `Microsoft.Data.Services.Client` `Microsoft.Data.Edm`toegevoegd `Microsoft.Data.OData`voor , en .
+- Elementen `<dependentAssembly>` toegevoegd onder het `<runtime><assemblyBinding>` knoop punt `Microsoft.Data.Services.Client`voor `Microsoft.Data.Edm`, en `Microsoft.Data.OData`.
 
-## <a name="code-changes-and-additions"></a>Codewijzigingen en toevoegingen
+## <a name="code-changes-and-additions"></a>Code wijzigingen en toevoegingen
 
-- Het `[Authorize]` kenmerk `Controllers/HomeController.cs` toegevoegd aan en alle andere bestaande controllers.
+- Het `[Authorize]` kenmerk is toegevoegd `Controllers/HomeController.cs` aan en andere bestaande controllers.
 
-- Added an authentication `App_Start/Startup.Auth.cs`startup class, , containing startup logic for Azure AD authentication. Als u de optie **Mapgegevens lezen** hebt geselecteerd, bevat dit bestand ook code om een OAuth-code te ontvangen en deze in te ruilen voor een toegangstoken.
+- Er is een opstart klasse voor `App_Start/Startup.Auth.cs`verificatie toegevoegd, met een opstart logica voor Azure AD-verificatie. Als u de optie **Directory gegevens lezen** hebt geselecteerd, bevat dit bestand ook code voor het ontvangen van een OAuth-code en het uitwisselen van een toegangs token.
 
-- Toegevoegd een controller `Controllers/AccountController.cs`klasse, `SignIn` `SignOut` , met en methoden.
+- Er is een controller klasse `Controllers/AccountController.cs`,, `SignIn` met `SignOut` en-methoden, toegevoegd.
 
-- Een gedeeltelijke weergave `Views/Shared/_LoginPartial.cshtml`toegevoegd, een actiekoppeling voor `SignIn` en `SignOut`.
+- Er is een gedeeltelijke weer `Views/Shared/_LoginPartial.cshtml`gave toegevoegd, die een actie `SignIn` koppeling `SignOut`voor en bevat.
 
-- Een gedeeltelijke weergave `Views/Account/SignoutCallback.cshtml`toegevoegd, met HTML voor de gebruikersinterface voor afmelden.
+- Er is een gedeeltelijke weer `Views/Account/SignoutCallback.cshtml`gave toegevoegd, met HTML voor de gebruikers interface voor afmelden.
 
-- De `Startup.Configuration` methode bijgewerkt om `ConfigureAuth(app)` een aanroep op te nemen als de klasse al bestond; anders een `Startup` klasse toegevoegd die aanroepen van de methode bevat.
+- De `Startup.Configuration` methode is bijgewerkt om een aanroep op `ConfigureAuth(app)` te nemen als de klasse al bestaat. anders voegt u `Startup` een klasse toe die de-methode aanroept.
 
-- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) of `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015), met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service te volgen.
+- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
 
-- Als u de optie **Mapgegevens lezen** hebt geselecteerd, hebt u tokencaching toegevoegd `Models/ADALTokenCache.cs` en `Models/ApplicationDbContext.cs` ondersteund. Ook een extra controller en weergave toegevoegd om de toegang `Controllers/UserProfileController.cs`tot `Views/UserProfile/Index.cshtml`gebruikersprofielgegevens te illustreren met behulp van Azure-grafiek-API's: , en`Views/UserProfile/Relogin.cshtml`
+- Als u de optie **Directory gegevens lezen** hebt geselecteerd, `Models/ADALTokenCache.cs` toegevoegd `Models/ApplicationDbContext.cs` en voor het ondersteunen van het opslaan van tokens. Daarnaast hebt u een extra controller en weer gave toegevoegd om toegang te krijgen tot gebruikers profiel gegevens met `Controllers/UserProfileController.cs`behulp van Azure Graph api's:, `Views/UserProfile/Index.cshtml`en`Views/UserProfile/Relogin.cshtml`
 
-### <a name="file-backup-visual-studio-2015"></a>Bestandsback-up (Visual Studio 2015)
+### <a name="file-backup-visual-studio-2015"></a>Back-up van bestanden (Visual Studio 2015)
 
-Bij het toevoegen van de verbonden service maakt Een back-up van Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle getroffen bestanden worden `Backup/AzureAD`opgeslagen in de map. Visual Studio 2017 en hoger maakt geen back-ups.
+Wanneer u de verbonden service toevoegt, maakt Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle betrokken bestanden worden opgeslagen in de map `Backup/AzureAD`. Visual Studio 2017 en hoger maakt geen back-ups.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`
@@ -153,14 +153,14 @@ Bij het toevoegen van de verbonden service maakt Een back-up van Visual Studio 2
 - `Models\ManageViewModels.cs`
 - `Views\Shared\_LoginPartial.cshtml`
 
-## <a name="changes-on-azure"></a>Wijzigingen op Azure
+## <a name="changes-on-azure"></a>Wijzigingen in azure
 
-- Een Azure AD-toepassing gemaakt in het domein dat u hebt geselecteerd bij het toevoegen van de verbonden service.
-- De app bijgewerkt om de machtiging **Mapgegevens lezen** op te nemen als die optie is geselecteerd.
+- Er is een Azure AD-toepassing gemaakt in het domein dat u hebt geselecteerd bij het toevoegen van de verbonden service.
+- De app is bijgewerkt met de machtiging voor het **lezen van Directory gegevens** als deze optie is geselecteerd.
 
-[Meer informatie over Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+Meer [informatie over Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verificatiescenario's voor Azure Active Directory](authentication-scenarios.md)
+- [Verificatie scenario's voor Azure Active Directory](authentication-scenarios.md)
 - [Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app](quickstart-v2-aspnet-webapp.md)

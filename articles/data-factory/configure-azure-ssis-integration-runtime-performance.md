@@ -1,6 +1,6 @@
 ---
-title: Prestaties configureren voor de runtime azure-SSIS-integratie
-description: Meer informatie over het configureren van de eigenschappen van de runtime Azure-SSIS-integratie voor hoge prestaties
+title: De prestaties van de Azure-SSIS Integration Runtime configureren
+description: Meer informatie over het configureren van de eigenschappen van de Azure-SSIS Integration Runtime voor hoge prestaties
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -11,25 +11,25 @@ ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
 ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418283"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De runtime azure-SSIS-integratie configureren voor hoge prestaties
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 
-In dit artikel wordt beschreven hoe u een Azure-SSIS Integration Runtime (IR) configureert voor hoge prestaties. Met Azure-SSIS IR u SQL Server Integration Services-pakketten (SSIS) implementeren en uitvoeren in Azure. Zie [Artikel Runtime-runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) van Integratie voor meer informatie over Azure-SSIS IR. Zie [Sql Server Integration Services-workloads naar de cloud tillen en verschuiven voor](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)informatie over het implementeren en uitvoeren van SSIS-pakketten op Azure.
+In dit artikel wordt beschreven hoe u een Azure-SSIS Integration Runtime (IR) configureert voor hoge prestaties. Met de Azure-SSIS IR kunt u SQL Server Integration Services (SSIS)-pakketten implementeren en uitvoeren in Azure. Zie [Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) article (Engelstalig) voor meer informatie over Azure-SSIS IR. Voor informatie over het implementeren en uitvoeren van SSIS-pakketten in azure, Zie [lift-en Shift-SQL Server Integration Services workloads naar de Cloud](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Dit artikel bevat prestatieresultaten en observaties van interne tests uitgevoerd door leden van het SSIS-ontwikkelingsteam. Uw resultaten kunnen variëren. Doe uw eigen tests voordat u uw configuratie-instellingen afrondt, die zowel de kosten als de prestaties beïnvloeden.
+> Dit artikel bevat prestatie resultaten en opmerkingen van interne tests die worden uitgevoerd door leden van het SSIS-ontwikkel team. De resultaten kunnen variëren. Voer uw eigen tests uit voordat u de configuratie-instellingen voltooit, wat van invloed is op de kosten en prestaties.
 
-## <a name="properties-to-configure"></a>Eigenschappen om te configureren
+## <a name="properties-to-configure"></a>Te configureren eigenschappen
 
-In het volgende gedeelte van een configuratiescript worden de eigenschappen weergegeven die u configureren wanneer u een runtime voor Azure-SSIS-integratie maakt. Zie [SQL Server Integration Services-pakketten implementeren naar Azure voor](tutorial-deploy-ssis-packages-azure-powershell.md)het volledige PowerShell-script en de volledige Beschrijving van PowerShell.
+In het volgende gedeelte van een configuratie script worden de eigenschappen weer gegeven die u kunt configureren wanneer u een Azure-SSIS Integration Runtime maakt. Zie [SQL Server Integration Services-pakketten implementeren in azure](tutorial-deploy-ssis-packages-azure-powershell.md)voor het volledige Power shell-script en de beschrijving.
 
 ```powershell
 # If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$"
@@ -68,100 +68,100 @@ $SSISDBServerAdminPassword = "[your server admin password for SQL authentication
 $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
 ```
 
-## <a name="azuressislocation"></a>AzureSSIS-locatie
-**AzureSSISLocatie** is de locatie voor het werkknooppunt voor de inwerkingsruntime van de integratie. Het werkknooppunt onderhoudt een constante verbinding met de SSIS-catalogusdatabase (SSISDB) in een Azure SQL-database. Stel de **AzureSSISLocation** in op dezelfde locatie als de SQL Database-server die SSISDB host, waardoor de runtime van de integratie zo efficiënt mogelijk kan werken.
+## <a name="azuressislocation"></a>AzureSSISLocation
+**AzureSSISLocation** is de locatie voor het worker-knoop punt voor Integration runtime. Het worker-knoop punt houdt een constante verbinding met de SSIS-catalogus database (SSISDB) bij een Azure-SQL database. Stel de **AzureSSISLocation** in op dezelfde locatie als de SQL database-server die als host FUNGEERT voor SSISDB, waardoor de Integration runtime zo efficiënt mogelijk kan werken.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Data Factory, inclusief azure-ssis IR, ondersteunt de volgende opties:
--   Standaard\_A4\_v2
--   Standaard\_A8\_v2
--   Standaard\_D1\_v2
--   Standaard\_D2\_v2
--   Standaard\_D3\_v2
--   Standaard\_D4\_v2
--   Standaard\_D2\_v3
--   Standaard\_D4\_v3
--   Standaard\_D8\_v3
--   Standaard\_D16\_v3
--   Standaard\_D32\_v3
--   Standaard\_D64\_v3
+Data Factory, met inbegrip van de Azure-SSIS IR, ondersteunt de volgende opties:
+-   Standard\_a4\_versie 2
+-   Standard\_a8\_versie 2
+-   Standard\_D1\_v2
+-   Standard\_D2\_v2
+-   Standard\_D3\_v2
+-   Standard\_D4\_versie 2
+-   Standard\_D2\_v3
+-   Standard\_D4\_v3
+-   Standard\_D8\_v3
+-   Standard\_D16\_v3
+-   Standard\_D32\_v3
+-   Standard\_D64\_v3
 -   Standaard\_E2\_v3
--   Standaard\_E4\_v3
--   Standaard\_E8\_v3
--   Standaard\_E16\_v3
--   Standaard\_E32\_v3
--   Standaard\_E64\_v3
+-   Standard\_E4\_v3
+-   Standard\_E8\_v3
+-   Standard\_e16\_v3
+-   Standard\_E32\_v3
+-   Standard\_E64\_v3
 
-In de officieuze interne tests door het SSIS engineering team blijkt de D-serie meer geschikt voor SSIS-pakketuitvoering dan de A-serie.
+In de niet-officiële interne test door het SSIS engineering-team lijkt de D-serie beter te zijn voor de uitvoering van SSIS-pakketten dan die van de A-serie.
 
--   De prestatie-/prijsverhouding van de D-serie is hoger dan de A-serie en de prestatie-/prijsverhouding van de v3-serie is hoger dan de v2-serie.
--   De doorvoer voor de D-serie is hoger dan de A-serie tegen dezelfde prijs en de doorvoer voor de v3-serie is hoger dan de v2-serie tegen dezelfde prijs.
--   De v2-serie knooppunten van Azure-SSIS IR zijn niet geschikt voor aangepaste installatie, dus gebruik in plaats daarvan de v3-serie knooppunten. Als u de knooppunten uit de V2-serie al gebruikt, schakelt u zo snel mogelijk over naar de nodes uit de V3-serie.
--   De E-serie is geheugengeoptimaliseerde VM-formaten die een hogere geheugen-cpu-verhouding bieden dan andere machines. Als uw pakket veel geheugen vereist, u overwegen om VM uit de E-serie te kiezen.
+-   De verhouding van de prestaties/prijs van de D-serie is hoger dan de A-serie en de prestatie-en prijs verhouding van de V3-serie is hoger dan de v2-serie.
+-   De door Voer voor de D-serie is hoger dan de reeks met dezelfde prijs en de door Voer voor de V3-serie is hoger dan de v2-reeks met dezelfde prijs.
+-   De v2-serie knooppunten van Azure-SSIS IR zijn niet geschikt voor aangepaste installatie. gebruik in plaats daarvan de V3-reeks knooppunten. Als u de v2-reeks knooppunten al gebruikt, kunt u zo snel mogelijk overschakelen naar het gebruik van de V3-serie knooppunten.
+-   De E-serie is geoptimaliseerd voor geheugen die een hogere geheugen-naar-CPU-verhouding biedt dan andere computers. Als uw pakket veel geheugen vereist, kunt u overwegen om de E-Series-VM te kiezen.
 
-### <a name="configure-for-execution-speed"></a>Configureren voor uitvoeringssnelheid
-Als u niet veel pakketten hebt om uit te voeren en u wilt dat pakketten snel worden uitgevoerd, gebruikt u de informatie in de volgende grafiek om een virtueel machinetype te kiezen dat geschikt is voor uw scenario.
+### <a name="configure-for-execution-speed"></a>Configureren voor uitvoerings snelheid
+Als er niet veel pakketten kunnen worden uitgevoerd en u wilt dat pakketten snel worden uitgevoerd, gebruikt u de informatie in de volgende tabel om een type virtuele machine te kiezen dat geschikt is voor uw scenario.
 
-Deze gegevens vertegenwoordigen één pakketuitvoering op één werknemersknooppunt. Het pakket laadt 3 miljoen records met voor- en achternaamkolommen uit Azure Blob Storage, genereert een volledige naamkolom en schrijft de records met de volledige naam langer dan 20 tekens naar Azure Blob Storage.
+Deze gegevens vertegenwoordigen één pakket uitvoering op één worker-knoop punt. Het pakket laadt 3.000.000 records met de voor-en achternaam kolommen van Azure Blob Storage, genereert een volledige naam kolom en schrijft de records met de volledige naam van meer dan 20 tekens naar Azure Blob Storage.
 
-![Uitvoeringssnelheid runtime-pakket voor SSIS-integratie](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+![Uitvoerings snelheid van SSIS Integration Runtime-pakket](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
-### <a name="configure-for-overall-throughput"></a>Configureren voor algehele doorvoer
+### <a name="configure-for-overall-throughput"></a>Configureren voor algemene door Voer
 
-Als u veel pakketten hebt om uit te voeren en u het meest om de totale doorvoer geeft, gebruikt u de informatie in de volgende grafiek om een virtueel machinetype te kiezen dat geschikt is voor uw scenario.
+Als u veel pakketten wilt uitvoeren, en u de meeste algemene door Voer hebt, gebruikt u de informatie in de volgende tabel om een type virtuele machine te kiezen dat geschikt is voor uw scenario.
 
-![Runtime van SSIS-integratie maximale totale doorvoer](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+![SSIS Integration Runtime maximale totale door Voer](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** past de schaalbaarheid van de runtime van de integratie aan. De doorvoer van de runtime van de integratie is evenredig met het **AzureSSISNodeNumber.** Stel het **AzureSSISNodeNumber** eerst in op een kleine waarde, controleer eerst de doorvoer van de runtime van de integratie en pas vervolgens de waarde voor uw scenario aan. Zie Een [runtime voor Azure-SSIS-integratie beheren](manage-azure-ssis-integration-runtime.md)als u het aantal werknemersknooppunten opnieuw wilt configureren.
+**AzureSSISNodeNumber** past de schaal baarheid van de Integration runtime aan. De door Voer van de Integration runtime is evenredig met de **AzureSSISNodeNumber**. Stel eerst de **AzureSSISNodeNumber** in op een kleine waarde, Controleer de door Voer van de Integration runtime en pas vervolgens de waarde voor uw scenario aan. Als u het aantal worker-knoop punten opnieuw wilt configureren, raadpleegt u [een Azure SSIS Integration runtime beheren](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Wanneer u al een krachtig werknemersknooppunt gebruikt om pakketten uit te voeren, kan het verhogen van **AzureSSISMaxParallelExecutionsPerNode** de algehele doorvoer van de uitvoeringstijd van de integratie verhogen. Voor Standard_D1_v2 knooppunten worden 1-4 parallelle uitvoeringen per knooppunt ondersteund. Voor alle andere typen knooppunten worden 1-max(2 x aantal cores, 8) parallelle uitvoeringen per knooppunt ondersteund. Als u **AzureSSISMaxParallelExecutionsPerNode** wilt buiten de maximale waarde die we hebben ondersteund, u een ondersteuningsticket openen en kunnen we de maximale waarde voor u verhogen en daarna moet u Azure Powershell gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken.
-U de juiste waarde schatten op basis van de kosten van uw pakket en de volgende configuraties voor de werknemersknooppunten. Zie voor meer informatie [de grootte van virtuele machineformaten voor algemene doeleinden](../virtual-machines/windows/sizes-general.md).
+Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Voor Standard_D1_v2 knooppunten worden 1-4 parallelle uitvoeringen per knoop punt ondersteund. Voor alle andere typen knoop punten, Maxi maal 1 (2 x aantal kernen, 8) parallelle uitvoeringen per knoop punt worden ondersteund. Als u **AzureSSISMaxParallelExecutionsPerNode** meer wilt dan de Maxi maal ondersteunde waarde, kunt u een ondersteunings ticket openen en kunnen we de maximale waarde voor u en nadat u Azure Power shell nodig hebt, gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken.
+U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/windows/sizes-general.md).
 
 | Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal NIC's/verwachte netwerkprestaties (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standaard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
-| Standaard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
-| Standaard\_D3\_v2 | 4    | 14          | 200                    | 12.000 / 187 / 93                                           | 8 / 8 x 500                         | 4 / 3000                                       |
-| Standaard\_D4\_v2 | 8    | 28          | 400                    | 24.000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
-| Standaard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
-| Standaard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
-| Standaard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4 / 6x500                         | 2 / 1000                                       |
-| Standaard\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| Standaard\_D8\_v3 | 8    | 32          | 200                    | 12.000 / 187 / 93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| Standaard\_D16\_v3| 16   | 64          | 400                    | 24.000 / 375 / 187                                          | 32/ 48x500                        | 8 / 8000                                       |
-| Standaard\_D32\_v3| 32   | 128         | 800                    | 48.000 / 750 / 375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| Standaard\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
-| Standaard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4 / 6x500                         | 2 / 1000                                       |
-| Standaard\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| Standaard\_E8\_v3 | 8    | 64          | 200                    | 12.000 / 187 / 93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| Standaard\_E16\_v3| 16   | 128         | 400                    | 24.000 / 375 / 187                                          | 32 / 48x500                       | 8 / 8000                                       |
-| Standaard\_E32\_v3| 32   | 256         | 800                    | 48.000 / 750 / 375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| Standaard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
+| Standard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
+| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
+| Standard\_D3\_v2 | 4    | 14          | 200                    | 12.000 / 187 / 93                                           | 8 / 8 x 500                         | 4 / 3000                                       |
+| Standard\_D4\_versie 2 | 8    | 28          | 400                    | 24.000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
+| Standard\_a4\_versie 2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
+| Standard\_a8\_versie 2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
+| Standard\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
+| Standard\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8-12x500                        | 2 / 2000                                       |
+| Standard\_D8\_v3 | 8    | 32          | 200                    | 12.000 / 187 / 93                                           | 16-24x500                       | 4 / 4000                                       |
+| Standard\_D16\_v3| 16   | 64          | 400                    | 24.000 / 375 / 187                                          | 32-48x500                        | 8 / 8000                                       |
+| Standard\_D32\_v3| 32   | 128         | 800                    | 48.000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| Standard\_D64\_v3| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| Standaard\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4-6x500                         | 2 / 1000                                       |
+| Standard\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8-12x500                        | 2 / 2000                                       |
+| Standard\_E8\_v3 | 8    | 64          | 200                    | 12.000 / 187 / 93                                           | 16-24x500                       | 4 / 4000                                       |
+| Standard\_e16\_v3| 16   | 128         | 400                    | 24.000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| Standard\_E32\_v3| 32   | 256         | 800                    | 48.000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| Standard\_E64\_v3| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 
-Hier volgen de richtlijnen voor het instellen van de juiste waarde voor de eigenschap **AzureSSSISMaxParallelExecutionsPerNode:** 
+Hier volgen de richt lijnen voor het instellen van de juiste waarde voor de eigenschap **AzureSSISMaxParallelExecutionsPerNode** : 
 
-1. Stel het in eerste instantie in op een kleine waarde.
-2. Verhoog het met een kleine hoeveelheid om te controleren of de totale doorvoer is verbeterd.
-3. Stop met het verhogen van de waarde wanneer de totale doorvoer de maximale waarde bereikt.
+1. Stel de waarde eerst in op een klein.
+2. Verhoog het met een kleine hoeveelheid om te controleren of de algehele door Voer is verbeterd.
+3. Stop de verhoging van de waarde wanneer de totale door Voer de maximum waarde bereikt.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** is de prijscategorie voor de SSIS Catalog-database (SSISDB) in een Azure SQL-database. Deze instelling is van invloed op het maximum aantal werknemers in de IR-instantie, de snelheid om een pakketuitvoering in de wachtrij te plaatsen en de snelheid om het uitvoeringslogboek te laden.
+**SSISDBPricingTier** is de prijs categorie voor de SSIS-catalogus database (SSISDB) op een Azure-SQL database. Deze instelling is van invloed op het maximum aantal werk rollen in het IR-exemplaar, de snelheid waarmee een pakket kan worden uitgevoerd en de snelheid waarmee het uitvoerings logboek kan worden geladen.
 
--   Als u niet de snelheid geeft om de uitvoering van het pakket in de wachtrij te plaatsen en het uitvoeringslogboek te laden, u de laagste databaseprijslaag kiezen. Azure SQL Database with Basic pricing ondersteunt 8 workers in een instantie voor runtime voor integratie.
+-   Als u geen zorgen hebt over de snelheid waarmee de uitvoering van het wachtrij pakket wordt uitgevoerd en het uitvoerings logboek kan worden geladen, kunt u de laagste prijs categorie voor de data base kiezen. Azure SQL Database met Basic-prijzen ondersteunt 8 werk nemers in een Integration runtime-exemplaar.
 
--   Kies een krachtigere database dan Basic als het aantal werknemers meer dan 8 is of als het aantal kernen meer dan 50 is. Anders wordt de database het knelpunt van de instantie voor de uitvoering van de integratie en wordt de algehele prestaties negatief beïnvloed.
+-   Kies een krachtigere data base dan Basic als het aantal werk nemers meer is dan 8, of het aantal kernen groter is dan 50. Anders wordt de data base het knel punt van het Integration runtime-exemplaar en de algehele prestaties negatief beïnvloed.
 
--   Kies een krachtigere database zoals s3 als het logboekniveau is ingesteld op verbose. Volgens onze onofficiële interne tests kan de S3-prijscategorie de uitvoering van SSIS-pakketten ondersteunen met 2 knooppunten, 128 parallelle tellingen en een verbose-registratieniveau.
+-   Kies een krachtigere data base, zoals S3 als het logboek registratie niveau is ingesteld op uitgebreid. Volgens onze onofficieel testen kan de prijs categorie S3 de uitvoering van SSIS-pakketten ondersteunen met 2 knoop punten, 128 parallelle aantallen en het niveau van uitgebreide logboek registratie.
 
-U ook de databaseprijslaag aanpassen op basis van dtu-gebruiksgegevens [(databasetransactie-eenheid)](../sql-database/sql-database-what-is-a-dtu.md) die beschikbaar zijn op de Azure-portal.
+U kunt ook de prijs categorie van de data base aanpassen op basis van de gebruiks gegevens van de [Data Base Trans Action unit](../sql-database/sql-database-what-is-a-dtu.md) (DTU) die beschikbaar zijn op de Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Ontwerp voor hoge prestaties
-Het ontwerpen van een SSIS-pakket dat op Azure wordt uitgevoerd, is anders dan het ontwerpen van een pakket voor on-premises uitvoering. In plaats van meerdere onafhankelijke taken in hetzelfde pakket te combineren, scheidt u deze in verschillende pakketten voor een efficiëntere uitvoering in de Azure-SSIS IR. Maak een pakketuitvoering voor elk pakket, zodat ze niet hoeven te wachten tot ze klaar zijn. Deze aanpak profiteert van de schaalbaarheid van de runtime van Azure-SSIS-integratie en verbetert de algehele doorvoer.
+Het ontwerpen van een SSIS-pakket om uit te voeren op Azure wijkt af van het ontwerpen van een pakket voor on-premises uitvoering. In plaats van het combi neren van meerdere onafhankelijke taken in hetzelfde pakket, kunt u ze in meerdere pakketten scheiden voor een efficiëntere uitvoering in de Azure-SSIS IR. Maak een pakket uitvoering voor elk pakket, zodat ze niet hoeven te wachten tot elkaar zijn voltooid. Deze aanpak heeft voor delen ten opzichte van de schaal baarheid van de Azure-SSIS Integration runtime en verbetert de algehele door voer.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de runtime azure-SSIS-integratie. Zie [Runtime Azure-SSIS-integratie](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+Meer informatie over de Azure-SSIS Integration Runtime. Zie [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

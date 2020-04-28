@@ -1,6 +1,6 @@
 ---
-title: Licenties toewijzen of verwijderen - Azure Active Directory | Microsoft Documenten
-description: Instructies voor het toewijzen of verwijderen van Azure Active Directory-licenties van uw gebruikers of groepen.
+title: Licenties toewijzen of verwijderen-Azure Active Directory | Microsoft Docs
+description: Instructies voor het toewijzen of verwijderen van Azure Active Directory licenties van uw gebruikers of groepen.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -15,19 +15,19 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128826"
 ---
-# <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory-portal
+# <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory Portal
 
-Voor veel Azure Active Directory-services (Azure AD) moet u elk van uw gebruikers of groepen (en geassocieerde leden) een licentie geven voor die service. Alleen gebruikers met actieve licenties hebben toegang tot de gelicentieerde Azure AD-services waarvoor dit waar is. Licenties worden per tenant toegepast en worden niet overgedragen aan andere tenants. 
+Voor veel Azure Active Directory-Services (Azure AD) moet u een licentie voor elk van uw gebruikers of groepen (en de bijbehorende leden) voor die service. Alleen gebruikers met actieve licenties kunnen de gelicentieerde Azure AD-Services openen en gebruiken waarvoor dat wel het geval is. Licenties worden per Tenant toegepast en worden niet overgedragen aan andere tenants. 
 
-## <a name="available-license-plans"></a>Beschikbare licentieplannen
+## <a name="available-license-plans"></a>Beschik bare licentie plannen
 
-Er zijn verschillende licentieplannen beschikbaar voor de Azure AD-service, waaronder:
+Er zijn verschillende licentie abonnementen beschikbaar voor de Azure AD-service, waaronder:
 
 - Azure AD Free
 
@@ -35,119 +35,119 @@ Er zijn verschillende licentieplannen beschikbaar voor de Azure AD-service, waar
 
 - Azure AD Premium P2
 
-Zie [Welke licentie heb ik nodig](https://azure.microsoft.com/pricing/details/active-directory/)voor specifieke informatie over elk licentieplan en de bijbehorende licentiegegevens?
+Zie [welke licentie heb ik nodig](https://azure.microsoft.com/pricing/details/active-directory/)voor specifieke informatie over elk licentie plan en de bijbehorende licentie gegevens?.
 
-Niet alle Microsoft-services zijn beschikbaar op alle locaties. Voordat een licentie aan een groep kan worden toegewezen, moet u de **gebruikslocatie** voor alle leden opgeven. U deze waarde instellen in het gebied **Azure Active Directory &gt; Users &gt; Profile &gt; Settings** in Azure AD. Elke gebruiker waarvan de gebruikslocatie niet is opgegeven, neemt de locatie van de Azure AD-organisatie over.
+Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie kan worden toegewezen aan een groep, moet u de **gebruiks locatie** opgeven voor alle leden. U kunt deze waarde instellen in het **gebied &gt; instellingen &gt; van &gt; Azure Active Directory gebruikers profiel** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
 
-## <a name="view-license-plans-and-plan-details"></a>Licentieplannen en plandetails weergeven
+## <a name="view-license-plans-and-plan-details"></a>Licentie plannen en plan gegevens weer geven
 
-U uw beschikbare serviceplannen bekijken, inclusief de afzonderlijke licenties, de vervaldatums controleren en het aantal beschikbare toewijzingen bekijken.
+U kunt uw beschik bare service abonnementen, inclusief de afzonderlijke licenties, bekijken, verval datums in behandeling controleren en het aantal beschik bare toewijzingen weer geven.
 
-### <a name="to-find-your-service-plan-and-plan-details"></a>Uw serviceplan en plandetails vinden
+### <a name="to-find-your-service-plan-and-plan-details"></a>Uw service plan en plan details vinden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een licentiebeheerdersaccount in uw Azure AD-organisatie.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een licentie beheerders account in uw Azure AD-organisatie.
 
-1. Selecteer **Azure Active Directory**en selecteer Vervolgens **Licenties**.
+1. Selecteer **Azure Active Directory**en selecteer vervolgens **licenties**.
 
-    ![Pagina Licenties, met aantal aangeschafte services en toegewezen licenties](media/license-users-groups/license-details-blade.png)
+    ![De pagina licenties, met het aantal aangeschafte Services en toegewezen licenties](media/license-users-groups/license-details-blade.png)
 
-1. Selecteer de koppeling **Gekocht** om de pagina **Producten** te bekijken en de nummers **Toegewezen,** **Beschikbaar**en **Verlopen binnenkort** voor uw licentieplannen te bekijken.
+1. Selecteer de **aangeschafte** koppeling om de pagina **producten** weer te geven en om de **toegewezen**, **beschik bare**en **verlopende binnenkort** cijfers voor uw licentie plannen te bekijken.
 
-    ![servicespagina, met servicelicentieplannen en bijbehorende licentiegegevens](media/license-users-groups/license-products-blade-with-products.png)
+    ![Services-pagina, met Service licentie plannen en bijbehorende licentie gegevens](media/license-users-groups/license-products-blade-with-products.png)
 
-1. Selecteer een abonnementsnaam om de gelicentieerde gebruikers en groepen te zien.
+1. Selecteer een naam voor het abonnement om de gelicentieerde gebruikers en groepen weer te geven.
 
 ## <a name="assign-licenses-to-users-or-groups"></a>Licenties toewijzen aan gebruikers of groepen
 
-Zorg ervoor dat iedereen die een gelicentieerde Azure AD-service moet gebruiken, de juiste licentie heeft. U de licentierechten toevoegen aan gebruikers of aan een hele groep.
+Zorg ervoor dat iedereen die een gelicentieerde Azure AD-service moet gebruiken, de juiste licentie heeft. U kunt de licentie rechten toevoegen aan gebruikers of aan een volledige groep.
 
 ### <a name="to-assign-a-license-to-a-user"></a>Een licentie toewijzen aan een gebruiker
 
-1. Selecteer **op** de pagina Producten de naam van het licentieplan dat u aan de gebruiker wilt toewijzen.
+1. Selecteer op de pagina **producten** de naam van het licentie plan dat u wilt toewijzen aan de gebruiker.
 
-    ![servicespagina, met gemarkeerd servicelicentieplan](media/license-users-groups/license-products-blade-with-product-highlight.png)
+    ![pagina Services, met gemarkeerd service licentie plan](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. Selecteer op de overzichtspagina licentieplan de optie **Toewijzen**.
+1. Selecteer op de pagina overzicht licentie plan de optie **toewijzen**.
 
-    ![servicespagina, met gemarkeerde optie Toewijzen](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![pagina Services, met gemarkeerde toewijzings optie](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Selecteer **op** de pagina Toewijzen de optie **Gebruikers en groepen**en zoek en selecteer vervolgens de gebruiker die u de licentie toewijst.
+1. Selecteer op de pagina toewijzen de optie **gebruikers en groepen**, en zoek vervolgens naar de gebruiker aan **wie** u de licentie wilt toewijzen en selecteer deze.
 
-    ![Licentiepagina toewijzen, met gemarkeerde zoek- en selectieopties](media/license-users-groups/assign-license-blade-with-highlight.png)
+    ![Pagina licentie toewijzen, met gemarkeerde zoek opdracht en opties selecteren](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. Selecteer **Toewijzingsopties,** zorg ervoor dat u de juiste licentieopties hebt ingeschakeld en selecteer **OK**.
+1. Selecteer **toewijzings opties**, Controleer of u de juiste licentie opties hebt ingeschakeld en selecteer vervolgens **OK**.
 
-    ![Pagina licentieoptie, met alle opties beschikbaar in het licentieplan](media/license-users-groups/license-option-blade-assignments.png)
+    ![Pagina licentie opties, met alle beschik bare opties in het licentie plan](media/license-users-groups/license-option-blade-assignments.png)
 
-    De licentiepagina-updates **toewijzen** om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
+    De pagina **licentie toewijzen** wordt bijgewerkt om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
 
     > [!NOTE]
-    > Niet alle Microsoft-services zijn beschikbaar op alle locaties. Voordat een licentie aan een gebruiker kan worden toegewezen, moet u de **gebruikslocatie**opgeven. U deze waarde instellen in het gebied **Azure Active Directory &gt; Users &gt; Profile &gt; Settings** in Azure AD. Elke gebruiker waarvan de gebruikslocatie niet is opgegeven, neemt de locatie van de Azure AD-organisatie over.
+    > Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie aan een gebruiker kan worden toegewezen, moet u de **gebruiks locatie**opgeven. U kunt deze waarde instellen in het **gebied &gt; instellingen &gt; van &gt; Azure Active Directory gebruikers profiel** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
 
 1. Selecteer **Toewijzen**.
 
-    De gebruiker wordt toegevoegd aan de lijst met gelicentieerde gebruikers en heeft toegang tot de meegeleverde Azure AD-services.
+    De gebruiker wordt toegevoegd aan de lijst met gelicentieerde gebruikers en heeft toegang tot de opgenomen Azure AD-Services.
     > [!NOTE]
-    > Licenties kunnen ook rechtstreeks aan een gebruiker worden toegewezen vanaf de **pagina Licenties van** de gebruiker. Als een gebruiker een licentie heeft toegewezen via een groepslidmaatschap en u dezelfde licentie rechtstreeks aan de gebruiker wilt toewijzen, kan dit alleen worden gedaan vanaf de pagina **Producten** die alleen in stap 1 wordt vermeld.
+    > Licenties kunnen ook rechtstreeks aan een gebruiker worden toegewezen op de pagina **licenties** van de gebruiker. Als een gebruiker een licentie heeft die is toegewezen via een groepslid maatschap en u dezelfde licentie rechtstreeks aan de gebruiker wilt toewijzen, kunt u deze alleen uitvoeren vanaf de pagina **producten** die worden vermeld in stap 1.
 
 ### <a name="to-assign-a-license-to-a-group"></a>Een licentie toewijzen aan een groep
 
-1. Selecteer **op** de pagina Producten de naam van het licentieplan dat u aan de gebruiker wilt toewijzen.
+1. Selecteer op de pagina **producten** de naam van het licentie plan dat u wilt toewijzen aan de gebruiker.
 
-    ![Producten blad, met gemarkeerde product licentie plan](media/license-users-groups/license-products-blade-with-product-highlight.png)
+    ![Blade producten, met gemarkeerd product licentie plan](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. Selecteer op de pagina **Azure Active Directory Premium Plan 2** de optie **Toewijzen**.
+1. Selecteer op de pagina **Azure Active Directory Premium abonnement 2** de optie **toewijzen**.
 
-    ![Pagina Producten, met gemarkeerde optie Toewijzen](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![Pagina producten, met gemarkeerde toewijzings optie](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Selecteer **op** de pagina Toewijzen de optie **Gebruikers en groepen**en zoek en selecteer vervolgens de groep die u de licentie toewijst.
+1. Selecteer op de pagina **toewijzen** de optie **gebruikers en groepen**en zoek vervolgens naar de groep waaraan u de licentie wilt toewijzen en selecteer deze.
 
-    ![Licentiepagina toewijzen, met gemarkeerde zoek- en selectieopties](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Pagina licentie toewijzen, met gemarkeerde zoek opdracht en opties selecteren](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. Selecteer **Toewijzingsopties,** zorg ervoor dat u de juiste licentieopties hebt ingeschakeld en selecteer **OK**.
+1. Selecteer **toewijzings opties**, Controleer of u de juiste licentie opties hebt ingeschakeld en selecteer vervolgens **OK**.
 
-    ![Pagina licentieoptie, met alle opties beschikbaar in het licentieplan](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Pagina licentie opties, met alle beschik bare opties in het licentie plan](media/license-users-groups/license-option-blade-group-assignments.png)
 
-    De licentiepagina-updates **toewijzen** om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
+    De pagina **licentie toewijzen** wordt bijgewerkt om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
 
 1. Selecteer **Toewijzen**.
 
-    De groep wordt toegevoegd aan de lijst met gelicentieerde groepen en alle leden hebben toegang tot de meegeleverde Azure AD-services.
+    De groep wordt toegevoegd aan de lijst met gelicentieerde groepen en alle leden hebben toegang tot de opgenomen Azure AD-Services.
 
 ## <a name="remove-a-license"></a>Een licentie verwijderen
 
-U een licentie verwijderen van de Azure AD-gebruikerspagina van een gebruiker, van de pagina groepsoverzicht voor een groepstoewijzing of vanaf de pagina Azure **AD-licenties** om de gebruikers en groepen voor een licentie te bekijken.
+U kunt een licentie verwijderen van de Azure AD-gebruikers pagina van een gebruiker, via de groeps overzichts pagina voor een groeps toewijzing, of vanaf de Azure AD- **licenties** pagina om de gebruikers en groepen voor een licentie weer te geven.
 
 ### <a name="to-remove-a-license-from-a-user"></a>Een licentie van een gebruiker verwijderen
 
-1. Selecteer op de pagina **Gelicentieerde gebruikers** voor het serviceplan de gebruiker die de licentie niet meer moet hebben. Bijvoorbeeld, _Alain Charon_.
+1. Selecteer op de pagina **gelicentieerde gebruikers** voor het service abonnement de gebruiker die de licentie niet meer mag hebben. Bijvoorbeeld _Alain Charon_.
 
-1. Selecteer **Licentie verwijderen**.
+1. Selecteer **licentie verwijderen**.
 
-    ![Pagina gelicentieerde gebruikers met licentieoptie verwijderen gemarkeerd](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
+    ![De pagina gelicentieerde gebruikers met de optie voor het verwijderen van een licentie gemarkeerd](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
 > [!IMPORTANT]
-> Licenties die een gebruiker overneemt van een groep, kunnen niet rechtstreeks worden verwijderd. In plaats daarvan moet u de gebruiker verwijderen uit de groep waaruit hij de licentie erft.
+> Licenties die een gebruiker heeft overgenomen van een groep, kunnen niet rechtstreeks worden verwijderd. In plaats daarvan moet u de gebruiker uit de groep verwijderen waarvan u de licentie wilt overnemen.
 
 ### <a name="to-remove-a-license-from-a-group"></a>Een licentie uit een groep verwijderen
 
-1. Selecteer op de pagina **Licentiegroepen** voor het licentieplan de groep die de licentie niet meer zou moeten hebben.
+1. Selecteer op de pagina **gelicentieerde groepen** voor het licentie plan de groep die niet langer de licentie mag hebben.
 
-1. Selecteer **Licentie verwijderen**.
+1. Selecteer **licentie verwijderen**.
 
-    ![Pagina Gelicentieerde groepen met de optie Licentie verwijderen gemarkeerd](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![De pagina gelicentieerde groepen met de optie voor het verwijderen van een licentie gemarkeerd](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > Wanneer een on-premises gebruikersaccount dat is gesynchroniseerd met Azure AD buiten het bereik voor de synchronisatie valt of wanneer de synchronisatie wordt verwijderd, wordt de gebruiker zacht verwijderd in Azure AD. Wanneer dit gebeurt, worden licenties die rechtstreeks of via groepslicenties aan de gebruiker zijn toegewezen, gemarkeerd als **opgeschort** in plaats van **verwijderd.**
+    > Wanneer een on-premises gebruikers account dat is gesynchroniseerd met Azure AD buiten het bereik valt voor de synchronisatie of wanneer de synchronisatie wordt verwijderd, wordt de gebruiker zacht verwijderd in azure AD. Als dit gebeurt, worden licenties die zijn toegewezen aan de gebruiker rechtstreeks of via groeps licenties, gemarkeerd als **opgeschort** in plaats van **verwijderd**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw licenties hebt toegewezen, u de volgende processen uitvoeren:
+Nadat u uw licenties hebt toegewezen, kunt u de volgende processen uitvoeren:
 
-- [Problemen met licentietoewijzing identificeren en oplossen](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [Problemen met licentie toewijzing identificeren en oplossen](../users-groups-roles/licensing-groups-resolve-problems.md)
 
-- [Gelicentieerde gebruikers toevoegen aan een groep voor licenties](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Gebruikers met een licentie aan een groep toevoegen voor licentie verlening](../users-groups-roles/licensing-groups-migrate-users.md)
 
-- [Scenario's, beperkingen en bekende problemen met groepen om licenties te beheren in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+- [Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
 
-- [Profielgegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)
+- [Profiel gegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)

@@ -1,7 +1,7 @@
 ---
-title: Beweringen van de cliënt (MSAL.NET) | Azure
+title: Client verklaringen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over de ondersteuning van ondertekende clientbeweringen voor vertrouwelijke clienttoepassingen in de Microsoft-verificatiebibliotheek voor .NET (MSAL.NET).
+description: Meer informatie over ondertekende client verklaringen ondersteuning voor vertrouwelijke client toepassingen in micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050292"
 ---
-# <a name="confidential-client-assertions"></a>Vertrouwelijke beweringen van klanten
+# <a name="confidential-client-assertions"></a>Verklaringen van vertrouwelijke client
 
-Om hun identiteit te bewijzen, wisselen vertrouwelijke clienttoepassingen een geheim uit met Azure AD. Het geheim kan zijn:
-- Een clientgeheim (toepassingswachtwoord).
-- Een certificaat, dat wordt gebruikt om een ondertekende bewering met standaardclaims op te bouwen.
+Om hun identiteit te bewijzen, wisselen vertrouwelijke client toepassingen een geheim uit met Azure AD. Het geheim kan het volgende zijn:
+- Een client geheim (toepassings wachtwoord).
+- Een certificaat dat wordt gebruikt voor het bouwen van een ondertekende bevestiging met standaard claims.
 
-Dit geheim kan ook direct een ondertekende bewering zijn.
+Dit geheim kan ook rechtstreeks een ondertekende bevestiging zijn.
 
 MSAL.NET heeft vier methoden om referenties of beweringen te verstrekken aan de vertrouwelijke client-app:
 - `.WithClientSecret()`
@@ -35,11 +35,11 @@ MSAL.NET heeft vier methoden om referenties of beweringen te verstrekken aan de 
 - `.WithClientClaims()`
 
 > [!NOTE]
-> Hoewel het mogelijk is `WithClientAssertion()` om de API te gebruiken om tokens voor de vertrouwelijke client te verkrijgen, raden we het niet aan om deze standaard te gebruiken omdat het geavanceerder is en is ontworpen om zeer specifieke scenario's te verwerken die niet gebruikelijk zijn. Met `.WithCertificate()` behulp van de API kunnen MSAL.NET dit voor u afhandelen. Deze api biedt u de mogelijkheid om uw verificatieverzoek `.WithCertificate()` aan te passen indien nodig, maar de standaardbewering die is gemaakt door volstaat voor de meeste verificatiescenario's. Deze API kan ook worden gebruikt als tijdelijke oplossing in sommige scenario's waarin MSAL.NET de ondertekeningsbewerking intern niet uitvoert.
+> Hoewel het mogelijk is om de `WithClientAssertion()` API te gebruiken voor het verkrijgen van tokens voor de vertrouwelijke client, raden we u aan deze niet standaard te gebruiken, omdat het geavanceerder is en is ontworpen voor het afhandelen van zeer specifieke scenario's die niet gebruikelijk zijn. Met behulp van de `.WithCertificate()` API kan MSAL.net dit voor u afhandelen. Deze API biedt u de mogelijkheid om uw verificatie aanvraag zo nodig aan te passen, maar de standaard bevestiging `.WithCertificate()` die is gemaakt door, is voldoende voor de meeste verificatie scenario's. Deze API kan ook worden gebruikt als tijdelijke oplossing in sommige scenario's waarbij MSAL.NET de ondertekening bewerking niet intern kan uitvoeren.
 
-### <a name="signed-assertions"></a>Ondertekende beweringen
+### <a name="signed-assertions"></a>Ondertekende verklaringen
 
-Een ondertekende clientbewering vindt de vorm aan van een ondertekende JWT met de payload met de vereiste verificatieclaims in opdracht van Azure AD, Base64 gecodeerd. U gebruikt deze als volgt:
+Een ondertekende client bevestiging gaat in de vorm van een ondertekende JWT met de nettolading die de vereiste verificatie claims bevat die zijn voorgeschreven door Azure AD, base64-gecodeerd. U gebruikt deze als volgt:
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -52,14 +52,14 @@ De claims die worden verwacht door Azure AD zijn:
 
 Claimtype | Waarde | Beschrijving
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | De claim 'aud' (doelgroep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
-Exp | Do 27 juni 2019 15:04:17 GMT+0200 (Romance Daylight Time) | De "exp" (vervaldatum) claim identificeert de vervaldatum op of waarna de JWT NIET mag worden geaccepteerd voor verwerking. Zie [RFC 7519, punt 4.1.4]
-Iss | {ClientID} | De claim "iss" (emittent) identificeert het hoofdsom dat de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De waarde "iss" is een hoofdlettergevoelige tekenreeks met een StringOrURI-waarde. [RFC 7519, punt 4.1.1]
-Gti | (a Guid) | De "jti" (JWT ID) claim biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een verwaarloosbare kans is dat dezelfde waarde per ongeluk aan een ander gegevensobject wordt toegewezen; als de toepassing meerdere emittenten gebruikt, moeten botsingen worden voorkomen tussen waarden die door verschillende emittenten worden geproduceerd. De "jti" claim kan worden gebruikt om te voorkomen dat de JWT wordt overspeeld. De "jti"-waarde is een hoofdlettergevoelige tekenreeks. [RFC 7519, punt 4.1.7]
-nbf (nbf) | Do 27 juni 2019 14:54:17 GMT+0200 (Romance Daylight Time) | De "nbf" (niet eerder) claim identificeert de tijd vóór welke de JWT niet mag worden aanvaard voor verwerking. [RFC 7519, punt 4.1.5]
-sub | {ClientID} | De "sub" (onderwerp) claim identificeert het onderwerp van de JWT. De vorderingen in een JWT zijn normaal gesproken verklaringen over het onderwerp. De onderwerpwaarde moet lokaal uniek zijn in de context van de emittent of wereldwijd uniek zijn. De See [RFC 7519, punt 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
+geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
+ISS | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De "ISS"-waarde is een hoofdletter gevoelige teken reeks met een StringOrURI-waarde. [RFC 7519, sectie 4.1.1]
+jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De claim ' JTI ' kan worden gebruikt om te voor komen dat de JWT opnieuw wordt afgespeeld. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7]
+NBF | Do jun 27 2019 14:54:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5]
+sub | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT. De claims in een JWT hebben doorgaans instructies over het onderwerp. De onderwerpwaarde moet worden ingesteld op lokaal uniek in de context van de verlener of wereld wijd uniek zijn. De Zie [RFC 7519, rubriek 4.1.2]
 
-Hier is een voorbeeld van hoe deze claims ambachtelijke:
+Hier volgt een voor beeld van het aanwijzen van deze claims:
 
 ```csharp
 private static IDictionary<string, string> GetClaims()
@@ -85,7 +85,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-Hier is hoe maak je een ondertekende client bewering ambachtelijke:
+U gaat als volgt te werk om een ondertekende client bevestiging te bevestigen:
 
 ```csharp
 string Encode(byte[] arg)
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatieve methode
 
-U hebt ook de mogelijkheid om [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) te gebruiken om de bewering voor u te maken. De code zal een meer elegante zoals weergegeven in het onderstaande voorbeeld:
+U kunt ook [micro soft. Identity model. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) gebruiken om de bevestigingen voor u te maken. De code wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -168,7 +168,7 @@ U hebt ook de mogelijkheid om [Microsoft.IdentityModel.JsonWebTokens](https://ww
         }
 ```
 
-Zodra u uw ondertekende client bewering, u deze gebruiken met de MSAL apis zoals hieronder weergegeven.
+Zodra u de ondertekende client bevestiging hebt, kunt u deze gebruiken met de MSAL-api's zoals hieronder wordt weer gegeven.
 
 ```csharp
             string signedClientAssertion = GetSignedClientAssertion();
@@ -181,7 +181,7 @@ Zodra u uw ondertekende client bewering, u deze gebruiken met de MSAL apis zoals
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`standaard wordt een ondertekende bewering weergegeven met de claims die worden verwacht door Azure AD plus aanvullende clientclaims die u wilt verzenden. Hier is een code fragment over hoe dat te doen.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Er wordt standaard een ondertekende bevestiging geproduceerd met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden. Hier volgt een code fragment waarmee u dit kunt doen.
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -194,6 +194,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-Als een van de claims in het woordenboek die u invoert hetzelfde is als een van de verplichte claims, wordt rekening gehouden met de waarde van de aanvullende claim. Het zal de claims die door MSAL.NET worden berekend, overschrijven.
+Als een van de claims in de door u opgegeven woorden lijst hetzelfde is als een van de verplichte claims, wordt de waarde van de extra claim in rekening gebracht. Hiermee worden de claims overschreven die worden berekend door MSAL.NET.
 
-Als u uw eigen claims wilt indienen, inclusief de verplichte `false` claims `mergeWithDefaultClaims` die door Azure AD worden verwacht, wordt de parameter ingediend.
+Als u uw eigen claims wilt opgeven, met inbegrip `false` van de verplichte claims die door Azure AD worden verwacht, `mergeWithDefaultClaims` geeft u de para meter door.

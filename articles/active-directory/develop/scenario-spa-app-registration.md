@@ -1,6 +1,6 @@
 ---
-title: Apps voor één pagina registreren - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een toepassing met één pagina (app-registratie)
+title: Apps met één pagina registreren-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een toepassing met één pagina (app-registratie)
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,37 +12,37 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 6f690a8b3436a45d434ccad2bbaa7d2a1b0b76aa
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882145"
 ---
 # <a name="single-page-application-app-registration"></a>Toepassing met één pagina: app-registratie
 
-Op deze pagina worden de specificaties van de app-registratie voor een enkele pagina-toepassing (SPA) uitgelegd.
+Op deze pagina worden de specifieke app-registraties voor een toepassing met één pagina (SPA) uitgelegd.
 
-Volg de stappen om [een nieuwe toepassing te registreren bij het Microsoft-identiteitsplatform](quickstart-register-app.md)en selecteer de ondersteunde accounts voor uw toepassing. Het SPA-scenario kan verificatie ondersteunen met accounts in uw organisatie of een organisatie en persoonlijke Microsoft-accounts.
+Volg de stappen om [een nieuwe toepassing te registreren bij het micro soft-identiteits platform](quickstart-register-app.md)en selecteer de ondersteunde accounts voor uw toepassing. Het beveiligd-wachtwoord verificatie scenario kan authenticatie ondersteunen met accounts in uw organisatie of organisatie-en persoonlijke micro soft-accounts.
 
-Leer vervolgens de specifieke aspecten van toepassingsregistratie die van toepassing zijn op toepassingen met één pagina.
+Vervolgens leert u de specifieke aspecten van de registratie van toepassingen die van toepassing zijn op toepassingen met één pagina.
 
-## <a name="register-a-redirect-uri"></a>Een omleidingsURI registreren
+## <a name="register-a-redirect-uri"></a>Een omleidings-URI registreren
 
-De impliciete stroom stuurt de tokens in een omleiding naar de toepassing met één pagina die op een webbrowser wordt uitgevoerd. Het is dus belangrijk om een omleiding URI te registreren waar uw toepassing de tokens kan ontvangen. Zorg ervoor dat de omleiding URI precies overeenkomt met de URI voor uw toepassing.
+De impliciete stroom verzendt de tokens in een omleiding naar de toepassing met één pagina die wordt uitgevoerd op een webbrowser. Het is dus belang rijk om een omleidings-URI te registreren waarbij uw toepassing de tokens kan ontvangen. Zorg ervoor dat de omleidings-URI exact overeenkomt met de URI voor uw toepassing.
 
-Ga in de [Azure-portal](https://go.microsoft.com/fwlink/?linkid=2083908)naar uw geregistreerde toepassing. Selecteer **op** de pagina Verificatie van de toepassing het **webplatform.** Voer de waarde in van de omleidingsURI voor uw toepassing in het veld **URI omleiden.**
+Ga in het [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)naar de geregistreerde toepassing. Selecteer op de pagina **verificatie** van de toepassing het **webplatform.** Voer de waarde van de omleidings-URI voor uw toepassing in het veld **omleidings-URI** in.
 
 ## <a name="enable-the-implicit-flow"></a>De impliciete stroom inschakelen
 
-Op dezelfde **verificatiepagina,** onder **Geavanceerde instellingen,** moet u ook **Impliciete subsidie**inschakelen. Als uw toepassing alleen gebruikers aanmeldt en ID-tokens krijgt, is het voldoende om het selectievakje **ID-tokens** in te schakelen.
+Op dezelfde **verificatie** pagina, onder **Geavanceerde instellingen**, moet u ook **impliciete toekenning**inschakelen. Als uw toepassing alleen gebruikers aanmeldt en ID-tokens ophaalt, is het voldoende om het selectie vakje **id-tokens** te selecteren.
 
-Als uw toepassing ook toegangstokens nodig heeft om API's te bellen, moet u ook het selectievakje **Toegangstokens** inschakelen. Zie [ID-tokens](./id-tokens.md) en [Access-tokens voor](./access-tokens.md)meer informatie.
+Als uw toepassing ook toegangs tokens moet ophalen om Api's aan te roepen, moet u ervoor zorgen dat u ook het selectie vakje **toegangs tokens** inschakelt. Zie [id-tokens](./id-tokens.md) en [toegangs tokens](./access-tokens.md)voor meer informatie.
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Toepassingen op één pagina kunnen API's bellen namens de aangemelde gebruiker. Ze moeten gedelegeerde machtigingen aanvragen. Zie Machtigingen [toevoegen om toegang te krijgen tot web-API's](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
+Toepassingen met één pagina kunnen Api's aanroepen namens de aangemelde gebruiker. Ze moeten gedelegeerde machtigingen aanvragen. Zie [machtigingen voor toegang tot Web-Api's toevoegen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [De codeconfiguratie van de app](scenario-spa-app-configuration.md)
+> [Configuratie van de app-code](scenario-spa-app-configuration.md)

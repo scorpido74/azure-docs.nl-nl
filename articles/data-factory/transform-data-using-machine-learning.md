@@ -1,6 +1,6 @@
 ---
-title: Voorspellende gegevenspijplijnen maken
-description: Meer informatie over het maken van een voorspellende pijplijn met Azure Machine Learning - Batch Execution Activity in Azure Data Factory.
+title: Voorspellende gegevens pijplijnen maken
+description: Meer informatie over het maken van een voorspellende pijp lijn met behulp van Azure Machine Learning-batch uitvoering-activiteit in Azure Data Factory.
 author: nabhishek
 ms.author: abnarain
 manager: shwang
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418861"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Voorspellende pijplijnen maken met Azure Machine Learning en Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Huidige versie](transform-data-using-machine-learning.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) stelt u in staat om voorspellende analyseoplossingen te bouwen, te testen en te implementeren. Vanuit het oogpunt van hoog niveau gebeurt dit in drie stappen:
+Met [Azure machine learning](https://azure.microsoft.com/documentation/services/machine-learning/) kunt u Predictive Analytics oplossingen bouwen, testen en implementeren. Vanuit een weergave punt op hoog niveau, wordt deze in drie stappen uitgevoerd:
 
-1. **Maak een trainingsexperiment**. Dit doe je stap met de Azure Machine Learning Studio (klassiek). Azure Machine Learning Studio (klassiek) is een collaboratieve visuele ontwikkelomgeving die u gebruikt om een voorspellend analysemodel te trainen en te testen met behulp van trainingsgegevens.
-2. **Converteer het naar een voorspellend experiment.** Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken om nieuwe gegevens te scoren, bereidt u uw experiment voor op het scoren.
-3. **Implementeer het als een webservice.** U uw scoreexperiment publiceren als een Azure-webservice. U gegevens naar uw model verzenden via dit eindpunt van de webservice en resultaatvoorspellingen van het model ontvangen.
+1. **Een trainings experiment maken**. U voert deze stap uit met behulp van de Azure Machine Learning Studio (klassiek). Azure Machine Learning Studio (klassiek) is een samen werkende ontwikkel omgeving die u gebruikt om een predictive analytics model te trainen en te testen met behulp van trainings gegevens.
+2. **Converteer deze naar een voorspellend experiment**. Zodra uw model is getraind met bestaande gegevens en u klaar bent om het te gebruiken voor het beoordelen van nieuwe gegevens, kunt u uw experiment voorbereiden en stroom lijnen.
+3. **Implementeer de service als een webservice**. U kunt uw score experiment publiceren als een Azure-webservice. U kunt gegevens naar uw model verzenden via dit eind punt van de webservice en resultaat voorspellingen van het model ontvangen.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory en Machine Learning samen
-Met Azure Data Factory u eenvoudig pijplijnen maken die gebruikmaken van een gepubliceerde [Azure Machine Learning-webservice](https://azure.microsoft.com/documentation/services/machine-learning) voor voorspellende analyses. Met behulp van de **batchuitvoeringsactiviteit** in een Azure Data Factory-pijplijn u een Azure Machine Learning Studio -webservice (klassieke) webservice aanroepen om voorspellingen te doen over de gegevens in batch.
+Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde [Azure machine learning](https://azure.microsoft.com/documentation/services/machine-learning) -webservice voor Predictive Analytics. Met de **activiteit voor batch uitvoering** in een Azure Data Factory-pijp lijn kunt u een Azure machine learning Studio (klassieke) webservice aanroepen om voor spellingen te maken voor de gegevens in batch.
 
-Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learning Studio (klassieke) scoringsexperimenten worden omgeschoold met behulp van nieuwe invoergegevenssets. U een model opnieuw trainen vanuit een datafabriekpijplijn door de volgende stappen uit te voeren:
+Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learning Studio (klassieke) Score experimenten opnieuw worden getraind met nieuwe invoer gegevens sets. U kunt een model opnieuw trainen vanuit een Data Factory pijp lijn door de volgende stappen uit te voeren:
 
-1. Publiceer het trainingsexperiment (geen voorspellend experiment) als een webservice. U doet deze stap in de Azure Machine Learning Studio (klassiek) zoals u deed om voorspellend experiment als webservice in het vorige scenario bloot te leggen.
-2. Gebruik de Azure Machine Learning Studio (klassieke) batchuitvoeringsactiviteit om de webservice voor het trainingsexperiment aan te roepen. In principe u de activiteit Azure Machine Learning Studio (klassieke) batchuitvoeringsactiviteit gebruiken om zowel de webservice voor training als de webservice voor het scoren aan te roepen.
+1. Publiceer het trainings experiment (niet voorspellend experiment) als een webservice. U voert deze stap uit in de Azure Machine Learning Studio (klassiek), net zoals u het voorspellende experiment als een webservice in het vorige scenario beschikbaar had kunnen maken.
+2. Gebruik de batch uitvoerings activiteit Azure Machine Learning Studio (klassiek) om de webservice voor het trainings experiment aan te roepen. In principe kunt u de activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek) gebruiken voor het aanroepen van zowel de webservice voor training als de Score van het web service.
 
-Nadat u klaar bent met omscholing, werkt u de scoringswebservice (voorspellend experiment dat als webservice wordt weergegeven) bij met het nieuw getrainde model met behulp van de **Azure Machine Learning Studio (klassieke) Update Resource Activity**. Zie Modellen bijwerken met het artikel [Resourceactiviteit bijwerken](update-machine-learning-models.md) voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
 
-## <a name="azure-machine-learning-linked-service"></a>Gekoppelde Azure Machine Learning-service
+## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning gekoppelde service
 
-U maakt een **Azure Machine Learning-gekoppelde** service om een Azure Machine Learning Web Service te koppelen aan een Azure-gegevensfabriek. De gekoppelde service wordt gebruikt door Azure Machine Learning Batch Execution Activity en [Update Resource Activity](update-machine-learning-models.md).
+U maakt een **Azure machine learning** gekoppelde service om een Azure machine learning-webservice te koppelen aan een Azure-Data Factory. De gekoppelde service wordt gebruikt door Azure Machine Learning activiteit voor batch uitvoering en het [bijwerken van resource activiteit](update-machine-learning-models.md).
 
 ```JSON
 {
@@ -65,15 +65,15 @@ U maakt een **Azure Machine Learning-gekoppelde** service om een Azure Machine L
 }
 ```
 
-Zie [artikel Gekoppelde services berekenen](compute-linked-services.md) voor beschrijvingen over eigenschappen in de JSON-definitie.
+Zie het artikel [Compute linked Services](compute-linked-services.md) voor beschrijvingen van eigenschappen in de JSON-definitie.
 
-Azure Machine Learning ondersteunt zowel Classic Web Services als New Web Services voor uw voorspellende experiment. U de juiste kiezen om te gebruiken in Data Factory. Als u de informatie wilt krijgen die nodig https://services.azureml.netis om de Gekoppelde Azure Machine Learning-service te maken, gaat u naar , waar al uw (nieuwe) WebServices en Classic Web Services worden vermeld. Klik op de webservice die u wilt openen en klik op **Pagina Consumeren.** Primaire **sleutel kopiëren** voor de eigenschap **apiKey** en **Batchaanvragen** voor de eigenschap **MLEndpoint.**
+Azure Machine Learning ondersteunen zowel klassieke webservices als nieuwe webservices voor uw voorspellende experiment. U kunt kiezen welk recht er moet worden gebruikt in Data Factory. Als u de vereiste informatie voor het maken van de gekoppelde Azure Machine Learning-service https://services.azureml.netwilt ophalen, gaat u naar, waar al uw (nieuwe) webservices en klassieke webservices worden weer gegeven. Klik op de webservice die u wilt openen en klik op pagina **verbruikt** . Kopieer de **primaire sleutel** voor de eigenschap **apiKey** en **batch-aanvragen** voor de eigenschap **mlEndpoint** .
 
-![Azure Machine Learning Web Services](./media/transform-data-using-machine-learning/web-services.png)
+![Azure Machine Learning-webservices](./media/transform-data-using-machine-learning/web-services.png)
 
-## <a name="azure-machine-learning-batch-execution-activity"></a>Azure Machine Learning Batch Uitvoeringsactiviteit
+## <a name="azure-machine-learning-batch-execution-activity"></a>Activiteit voor batch uitvoering Azure Machine Learning
 
-In het volgende JSON-fragment wordt een Azure Machine Learning Batch Execution-activiteit gedefinieerd. De activiteitsdefinitie heeft een verwijzing naar de azure Machine Learning-gekoppelde service die u eerder hebt gemaakt.
+In het volgende JSON-code fragment wordt een Azure Machine Learning batch uitvoerings activiteit gedefinieerd. De definitie van de activiteit bevat een verwijzing naar de Azure Machine Learning gekoppelde service die u eerder hebt gemaakt.
 
 ```JSON
 {
@@ -127,20 +127,20 @@ In het volgende JSON-fragment wordt een Azure Machine Learning Batch Execution-a
 
 | Eigenschap          | Beschrijving                              | Vereist |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | Naam van de activiteit in de pijplijn     | Ja      |
-| description       | Tekst waarin wordt beschreven wat de activiteit doet.  | Nee       |
-| type              | Voor Data Lake Analytics U-SQL-activiteit is het activiteitstype **AzureMLBatchExecution**. | Ja      |
-| linkedServiceName | Gekoppelde services aan de Azure Machine Learning Linked Service. Zie Artikel [Gekoppelde services](compute-linked-services.md) berekenen voor meer informatie over deze gekoppelde service. | Ja      |
-| webServiceInputs  | Sleutel- en waardeparen, de namen van Azure Machine Learning Web Service-ingangen in kaart brengen. De sleutel moet overeenkomen met de invoerparameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Web Service. Waarde is een Azure Storage Linked Services en FilePath-eigenschappenpaar waarin de invoerbloblocaties worden opgegeven. | Nee       |
-| webServiceOutputs | Sleutel- en waardeparen, de namen van Azure Machine Learning Web Service-uitvoer in kaart brengen. De sleutel moet overeenkomen met de uitvoerparameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Web Service. Waarde is een Azure Storage Linked Services en FilePath-eigenschappenpaar waarin de uitvoerbloblocaties worden opgegeven. | Nee       |
-| globalParameters  | Sleutel, Waardeparen die moeten worden doorgegeven aan het eindpunt van de Azure Machine Learning Studio (klassieke) Batch Execution Service. Toetsen moeten overeenkomen met de namen van de parameters van de webservice die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Studio (klassieke) webservice. Waarden worden doorgegeven in de eigenschap GlobalParameters van de azure machine learning studio (klassieke) batchuitvoeringsaanvraag | Nee       |
+| name              | Naam van de activiteit in de pijp lijn     | Ja      |
+| description       | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| type              | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **AzureMLBatchExecution**. | Ja      |
+| linkedServiceName | Gekoppelde services aan de Azure Machine Learning gekoppelde service. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
+| webServiceInputs  | Sleutel-, waardeparen, toewijzing van de namen van Azure Machine Learning-webservice-invoer. De sleutel moet overeenkomen met de invoer parameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning-webservice. Waarde is een Azure Storage gekoppelde services en eigenschappen paar voor het opgeven van de invoer-BLOB-locaties. | Nee       |
+| webServiceOutputs | Sleutel-, waardeparen, toewijzing van de namen van Azure Machine Learning-webservice-uitvoer. De sleutel moet overeenkomen met de uitvoer parameters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning-webservice. Waarde is een Azure Storage gekoppelde services en eigenschappen paar van het bestandspad die de uitvoer BLOB-locaties opgeven. | Nee       |
+| globalParameters  | Sleutel-, waardeparen die moeten worden door gegeven aan het Azure Machine Learning Studio (klassiek) batch-uitvoerings service-eind punt. Sleutels moeten overeenkomen met de namen van de webservice-para meters die zijn gedefinieerd in de gepubliceerde Azure Machine Learning Studio (klassieke) webservice. De waarden worden door gegeven in de eigenschap GlobalParameters van de batch-uitvoerings aanvraag van Azure Machine Learning Studio (klassiek) | Nee       |
 
-### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenario 1: Experimenten met webservice-ingangen/uitvoer die verwijzen naar gegevens in Azure Blob Storage
+### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenario 1: experimenten met behulp van invoer/uitvoer van web service die verwijst naar gegevens in Azure Blob Storage
 
-In dit scenario voert de Webservice Azure Machine Learning voorspellingen uit met behulp van gegevens uit een bestand in een Azure blob-opslag en slaat de voorspellingsresultaten op in de blob-opslag. De volgende JSON definieert een Data Factory-pijplijn met een AzureMLBatchExecution-activiteit. De invoer- en uitvoergegevens in Azure Blog Storage worden verwezen met behulp van een LinkedName- en FilePath-paar. In het voorbeeld dat Linked Service van ingangen en uitvoer verschillend is, u verschillende Linked Services gebruiken voor elk van uw ingangen/uitvoer voor Data Factory om de juiste bestanden op te halen en naar Azure Machine Learning Studio (klassieke) webservice te verzenden.
+In dit scenario maakt de Azure Machine Learning-webservice voor spellingen met behulp van gegevens uit een bestand in een Azure Blob-opslag en slaat de Voorspellings resultaten op in de Blob-opslag. De volgende JSON definieert een Data Factory pijp lijn met een AzureMLBatchExecution-activiteit. Er wordt verwezen naar de invoer-en uitvoer gegevens in Azure blog Storage met behulp van een koppelen en een bestandspad. In de voor beeld-gekoppelde service van invoer en uitvoer verschillen, kunt u verschillende gekoppelde services gebruiken voor elk van uw invoer/uitvoer voor Data Factory om de juiste bestanden op te halen en te verzenden naar Azure Machine Learning Studio (klassieke) webservice.
 
 > [!IMPORTANT]
-> In uw Azure Machine Learning Studio (klassiek) experiment hebben invoer- en uitvoerpoorten van webservice en globale parameters standaardnamen ('input1', 'input2') die u aanpassen. De namen die u gebruikt voor webServiceInputs, webServiceOutputs en globalParameters-instellingen moeten exact overeenkomen met de namen in de experimenten. U de payload van de voorbeeldaanvraag bekijken op de help-pagina batchuitvoering voor uw Azure Machine Learning Studio -eindpunt (klassiek) om de verwachte toewijzing te verifiëren.
+> In uw Azure Machine Learning Studio (klassiek) experiment, worden de invoer-en uitvoer poorten voor de web-service en de algemene para meters standaard namen ("input1", "input2"), die u kunt aanpassen. De namen die u gebruikt voor de instellingen webServiceInputs, webServiceOutputs en globalParameters moeten exact overeenkomen met de namen in de experimenten. U kunt de nettolading van de voorbeeld aanvraag bekijken op de Help-pagina voor het uitvoeren van de batch-uitvoering voor uw Azure Machine Learning Studio (klassiek)-eind punt om de verwachte toewijzing te controleren.
 >
 >
 
@@ -189,17 +189,17 @@ In dit scenario voert de Webservice Azure Machine Learning voorspellingen uit me
     }
 }
 ```
-### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario 2: Experimenten met reader/writer modules om te verwijzen naar gegevens in verschillende opslagen
-Een ander veelvoorkomend scenario bij het maken van Azure Machine Learning Studio (klassieke) experimenten is het gebruik van importgegevens en uitvoergegevensmodules. De module Gegevens importeren wordt gebruikt om gegevens in een experiment te laden en de module Uitvoergegevens is om gegevens uit uw experimenten op te slaan. Zie [Onderwerpen Gegevens importeren](https://msdn.microsoft.com/library/azure/dn905997.aspx) en uitvoergegevens importeren op MSDN-bibliotheek voor meer informatie over modules voor gegevens importeren en [uitvoergegevens.](https://msdn.microsoft.com/library/azure/dn905984.aspx)
+### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario 2: experimenten met behulp van Reader/Writer-modules om te verwijzen naar gegevens in verschillende opslag ruimten
+Een ander algemeen scenario bij het maken van Azure Machine Learning Studio (klassieke) experimenten is het gebruik van import gegevens-en uitvoer gegevens modules. De module gegevens importeren wordt gebruikt om gegevens te laden in een experiment en de module output data is om gegevens van uw experimenten op te slaan. Zie voor meer informatie over het importeren van gegevens en uitvoer gegevens modules de onderwerpen [gegevens importeren](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [uitvoer gegevens](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek.
 
-Bij het gebruik van de modules Gegevens importeren en uitvoergegevens is het een goede gewoonte om voor elke eigenschap van deze modules een parameter voor webservice te gebruiken. Met deze webparameters u de waarden tijdens runtime configureren. U bijvoorbeeld een experiment maken met een module Gegevens importeren die een Azure SQL-database gebruikt: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de consumenten van de webservice `YYY.database.windows.net`inschakelen om een andere Azure SQL Server met de naam . U een parameter Webservice gebruiken om deze waarde te configureren.
+Wanneer u de modules gegevens importeren en uitvoer gegevens gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een module voor gegevens import die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen om een andere Azure-SQL Server in te `YYY.database.windows.net`stellen. U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
 
 > [!NOTE]
-> De invoer en uitvoer van webserviceverschillen van de parameters van webservice. In het eerste scenario hebt u gezien hoe een invoer en uitvoer kan worden opgegeven voor een Azure Machine Learning Studio (klassieke) webservice. In dit scenario geeft u parameters door voor een webservice die overeenkomen met eigenschappen van modules Gegevens importeren/uitvoergegevens.
+> De invoer en uitvoer van webservices verschillen van de para meters van de webservice. In het eerste scenario hebt u gezien hoe u een invoer-en uitvoer kunt opgeven voor een webservice Azure Machine Learning Studio (klassiek). In dit scenario geeft u para meters door voor een webservice die overeenkomt met de eigenschappen van de modules import data/output data.
 >
 >
 
-Laten we eens kijken naar een scenario voor het gebruik van webserviceparameters. U hebt een geïmplementeerde Azure Machine Learning-webservice die een leesmodule gebruikt om gegevens te lezen uit een van de gegevensbronnen die worden ondersteund door Azure Machine Learning (bijvoorbeeld: Azure SQL Database). Nadat de batch-uitvoering is uitgevoerd, worden de resultaten geschreven met behulp van een Writer-module (Azure SQL Database).  Er worden geen webservice-ingangen en uitvoer gedefinieerd in de experimenten. In dit geval raden we u aan relevante webserviceparameters voor de lezer- en schrijvermodules te configureren. Met deze configuratie kunnen de lees-/writer-modules worden geconfigureerd wanneer u de AzureMLBatchExecution-activiteit gebruikt. U geeft als volgt webserviceparameters op in de sectie **globaal Parameters** in de activiteit JSON.
+Laten we eens kijken naar een scenario voor het gebruik van web service-para meters. U hebt een geïmplementeerde Azure Machine Learning-webservice die gebruikmaakt van een lees module om gegevens te lezen uit een van de gegevens bronnen die worden ondersteund door Azure Machine Learning (bijvoorbeeld: Azure SQL Database). Nadat de batch uitvoering is uitgevoerd, worden de resultaten geschreven met behulp van een schrijf module (Azure SQL Database).  Er zijn geen ingangen en uitvoer van de webservice gedefinieerd in de experimenten. In dit geval kunt u het beste relevante webservice-para meters configureren voor de modules lezer en Writer. Met deze configuratie kunnen de modules van lezer/Writer worden geconfigureerd wanneer de AzureMLBatchExecution-activiteit wordt gebruikt. U geeft de webservice-para meters op in de sectie **globalParameters** van de JSON van de activiteit als volgt.
 
 ```JSON
 "typeProperties": {
@@ -213,19 +213,19 @@ Laten we eens kijken naar een scenario voor het gebruik van webserviceparameters
 ```
 
 > [!NOTE]
-> De parameters van de webservice zijn hoofdlettergevoelig, dus zorg ervoor dat de namen die u opgeeft in de activiteit JSON overeenkomen met de namen die door de webservice worden weergegeven.
+> De para meters van de webservice zijn hoofdletter gevoelig, dus zorg ervoor dat de namen die u opgeeft in de JSON van de activiteit overeenkomen met die van de webservice.
 >
 
-Nadat u klaar bent met omscholing, werkt u de scoringswebservice (voorspellend experiment dat als webservice wordt weergegeven) bij met het nieuw getrainde model met behulp van de **Azure Machine Learning Studio (klassieke) Update Resource Activity**. Zie Modellen bijwerken met het artikel [Resourceactiviteit bijwerken](update-machine-learning-models.md) voor meer informatie.
+Wanneer u klaar bent met het opnieuw trainen, werkt u de Score-webservice (voorspellende experiment die als een webservice wordt weer gegeven) bij met het nieuwe getrainde model met behulp van de activiteit voor het bijwerken van de **resource van Azure machine learning Studio (klassiek)**. Zie [modellen bijwerken met update resource activiteit](update-machine-learning-models.md) artikel voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeren:
+Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert:
 
 * [U-SQL-activiteit](transform-data-using-data-lake-analytics.md)
-* [Hive activiteit](transform-data-using-hadoop-hive.md)
-* [Varkensactiviteit](transform-data-using-hadoop-pig.md)
-* [Activiteit verkleinen](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop Streaming activiteit](transform-data-using-hadoop-streaming.md)
-* [Vonkactiviteit](transform-data-using-spark.md)
+* [Hive-activiteit](transform-data-using-hadoop-hive.md)
+* [Pig-activiteit](transform-data-using-hadoop-pig.md)
+* [MapReduce-activiteit](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
+* [Spark-activiteit](transform-data-using-spark.md)
 * [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Opgeslagen procedureactiviteit](transform-data-using-stored-procedure.md)
+* [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

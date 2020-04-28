@@ -1,6 +1,6 @@
 ---
 title: Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
-description: Introduceert de nieuwe Azure portal App-registratie-ervaring
+description: Introduceert de nieuwe app registratie-ervaring van Azure Portal
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,118 +13,118 @@ ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154573"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
 
-U veel verbeteringen vinden in de nieuwe [ervaring met app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) in de Azure-portal. Als u bekend bent met de ervaring van app-registraties (legacy) in de Azure-portal, gebruikt u deze trainingshandleiding om aan de slag te gaan met de nieuwe ervaring.
+U kunt een groot aantal verbeteringen vinden in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring in de Azure Portal. Als u bekend bent met de App-registraties (verouderde) ervaring in de Azure Portal, gebruikt u deze hand leiding om aan de slag te gaan met de nieuwe ervaring.
 
-In Azure Active Directory is de nieuwe ervaring met toepassingsregistratie die hier wordt beschreven, algemeen beschikbaar (GA). In Azure Active Directory B2C (Azure AD B2C) bevindt deze ervaring zich in een voorbeeld.
+In Azure Active Directory is de nieuwe ervaring voor registratie van toepassingen die hier wordt beschreven, algemeen beschikbaar (GA). In Azure Active Directory B2C (Azure AD B2C) is deze ervaring een preview-versie.
 
-## <a name="key-changes"></a>Belangrijkste wijzigingen
+## <a name="key-changes"></a>Sleutel wijzigingen
 
-- App-registraties zijn niet beperkt tot een *web-app/API* of een *native* app. U dezelfde app-registratie voor al deze apps gebruiken door de respectievelijke omleidings-URI's te registreren.
+- App-registraties zijn niet beperkt tot een *Web-app/API* of een *systeem eigen* app. U kunt dezelfde app-registratie voor al deze apps gebruiken door de respectieve omleidings-Uri's te registreren.
 
-- De verouderde ervaring ondersteunde apps die zich aanmelden met alleen Azure AD-accounts (Organizational AD). Apps zijn geregistreerd als single-tenant. Apps ondersteunden alleen organisatorische accounts uit de map waarin de app is geregistreerd. Apps kunnen worden gewijzigd om meerdere tenant te zijn en alle organisatieaccounts te ondersteunen. Met de nieuwe ervaring u apps registreren die zowel deze opties als een derde optie kunnen ondersteunen: alle organisatieaccounts en persoonlijke Microsoft-accounts.
+- De oudere ervaring ondersteunt apps die zich alleen aanmelden met behulp van organisatorische (Azure AD)-accounts. Apps zijn geregistreerd als één Tenant. Apps worden alleen ondersteund voor organisatie-accounts uit de map waarin de app is geregistreerd. Apps kunnen worden gewijzigd in multi tenant en ondersteunen alle organisatie accounts. Met de nieuwe ervaring kunt u apps registreren die beide opties kunnen ondersteunen, evenals een derde optie: alle organisatie accounts en persoonlijke micro soft-accounts.
 
-- De verouderde ervaring was alleen beschikbaar wanneer deze is aangemeld bij de Azure-portal met behulp van een organisatieaccount. Met de nieuwe ervaring u persoonlijke Microsoft-accounts gebruiken die niet aan een map zijn gekoppeld.
+- De verouderde ervaring is alleen beschikbaar wanneer u bent aangemeld bij de Azure Portal met een organisatie account. Met de nieuwe ervaring kunt u persoonlijke micro soft-accounts gebruiken die niet zijn gekoppeld aan een map.
 
-## <a name="list-of-applications"></a>Lijst van aanvragen
+## <a name="list-of-applications"></a>Lijst met toepassingen
 
-De lijst met nieuwe apps toont toepassingen die zijn geregistreerd via de ervaring met oudere app-registraties in de Azure-portal. Deze apps loggen in met Azure AD-accounts. De nieuwe app-lijst toont ook apps geregistreerd via de Application Registration Portal. Deze apps loggen in met Azure AD en persoonlijke Microsoft-accounts.
+In de lijst met nieuwe apps worden de toepassingen weer gegeven die zijn geregistreerd via de ervaring voor de verouderde app-registraties in de Azure Portal. Met deze apps meldt u zich aan met Azure AD-accounts. In de nieuwe app-lijst worden ook de apps weer gegeven die zijn geregistreerd bij de portal voor toepassings registratie. Met deze apps meldt u zich aan met Azure AD en persoonlijke micro soft-accounts.
 
 >[!NOTE]
->Het Aanvraagregistratieportaal is afgeschaft.
+>De portal voor toepassings registratie is afgeschaft.
 
-De nieuwe app-lijst heeft geen kolom **toepassingstype** omdat één app-registratie meerdere typen kan zijn. De lijst bevat twee extra kolommen: **Gemaakt op** en Certificaten **& secrets**. **Certificaten & geheimen** toont de status van referenties die zijn geregistreerd in de app. Statussen omvatten **Huidige**, **Verlopen binnenkort**, en **verlopen**.
+De nieuwe app-lijst heeft geen kolom **toepassings type** omdat een registratie van één app verschillende typen kan zijn. De lijst bevat twee extra kolommen: **gemaakt op** en **certificaten & geheimen**. **Certificaten & geheimen** toont de status van de referenties die zijn geregistreerd op de app. Statussen zijn **actueel**, **binnenkort verlopen**en **verlopen**.
 
 ## <a name="new-app-registration"></a>Nieuwe app-registratie
 
-In de legacy-ervaring moet u een app registreren die u moest opgeven: **Naam,** **Toepassingstype**en **Aanmeldings-URL/Redirect URI**. De apps die zijn gemaakt, zijn alleen Azure AD-toepassingen met één tenant. Ze ondersteunden alleen organisatorische accounts uit de directory waarin de app is geregistreerd.
+In de verouderde ervaring moet u een app registreren die u moet opgeven: **naam**, **toepassings type**en **URL/omleidings-URI voor aanmelden**. De apps die zijn gemaakt, zijn alleen Azure AD-toepassingen met één Tenant. Er worden alleen organisatie accounts ondersteund uit de map waarin de app is geregistreerd.
 
-In de nieuwe ervaring moet u een **naam** voor de app opgeven en de **typen ondersteunde accountkiezen.** U optioneel een **OmleidingsURI**verstrekken. Als u een omleidingsURI opgeeft, moet u opgeven of het web/openbaar is (mobiel en desktop). Zie [Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform](quickstart-register-app.md)voor meer informatie. Zie Een toepassing registreren [in Azure Active Directory B2C](../../active-directory-b2c/tutorial-register-applications.md)voor Azure AD B2C .
+In de nieuwe ervaring moet u een **naam** opgeven voor de app en de **ondersteunde account typen**kiezen. U kunt desgewenst een **omleidings-URI**opgeven. Als u een omleidings-URI opgeeft, moet u opgeven of deze Web/public (mobiel en desktop) is. Zie [Quick Start: een toepassing registreren bij het micro soft Identity-platform](quickstart-register-app.md)voor meer informatie. Zie [een toepassing registreren in azure Active Directory B2C](../../active-directory-b2c/tutorial-register-applications.md)voor Azure AD B2C.
 
-## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Verschillen tussen de pagina Toepassingsregistratieportal en app-registraties
+## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Verschillen tussen de portal voor toepassings registratie en de App-registraties pagina
 
-### <a name="the-legacy-properties-page"></a>De pagina Verouderde eigenschappen
+### <a name="the-legacy-properties-page"></a>De pagina verouderde eigenschappen
 
-De legacy-ervaring had een **eigenschappenpagina.** **Eigenschappen** hadden de volgende velden:
+De verouderde ervaring had een **Eigenschappen** pagina. **Eigenschappen** hebben de volgende velden:
 
 - **Naam**
 - **Object-id**
-- **Toepassings-id**
+- **Toepassings-ID**
 - **App-id-URI**
 - **Logo**
-- **URL van startpagina**
+- **URL van start pagina**
 - **Afmeldings-URL**
-- **Url van servicevoorwaarden**
+- **URL voor de service voorwaarden**
 - **URL voor de privacyverklaring**
 - **Toepassingstype**
-- **Multi-tenant**
+- **Multi tenant**
 
-De nieuwe ervaring heeft die pagina niet. Hier vindt u de gelijkwaardige functionaliteit:
+Deze pagina is niet in de nieuwe ervaring. Hier kunt u de equivalente functionaliteit vinden:
 
-- **Naam**, **Logo**, **URL van de startpagina**, URL van **servicevoorwaarden**en de **URL van de privacyverklaring** staan nu op de **pagina Branding** van de app.
-- **Object-ID** en **toepassings-id (client)** staan op de pagina **Overzicht.**
-- De functionaliteit die wordt beheerd door de **functie multitenant** in de verouderde ervaring is vervangen door **ondersteunde accounttypen** op de **pagina Verificatie.** Zie [Snelstart: De accounts wijzigen die door een toepassing worden ondersteund](quickstart-modify-supported-accounts.md)voor meer informatie.
-- **De URL van afmelden** bevindt zich nu op de **pagina Verificatie.**
-- **Toepassingstype** is niet langer een geldig veld. In plaats daarvan u URI's omleiden, die u op de **pagina Verificatie** vinden, bepalen welke apptypen worden ondersteund.
-- **App ID URI** heet nu **Application ID URI** en je het vinden op Expose an **API**. In de legacy-ervaring is deze eigenschap automatisch `https://{tenantdomain}/{appID}`geregistreerd met `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`de volgende indeling: , bijvoorbeeld . In de nieuwe ervaring wordt het `api://{appID}`automatisch gegenereerd als , maar het moet expliciet worden opgeslagen. In Azure AD B2C-tenants wordt de `https://{tenantdomain}/{appID}` indeling nog steeds gebruikt.
+- De **naam**, het **logo**, de URL van de **Start pagina**, de URL **van de service voorwaarden**en de URL van de **privacyverklaring** van de app bevinden zich nu op de **huisstijl** pagina.
+- De **object-id** en **toepassings-id (client)** bevinden zich op de pagina **overzicht** .
+- De functionaliteit die wordt beheerd door de **multi-tenant** wissel knop in de verouderde ervaring is vervangen door de **ondersteunde account typen** op de **verificatie** pagina. Zie [Quick Start: de accounts wijzigen die door een toepassing worden ondersteund](quickstart-modify-supported-accounts.md)voor meer informatie.
+- De **Afmeldings-URL** is nu op de **verificatie** pagina.
+- Het **toepassings type** is niet langer een geldig veld. In plaats daarvan omleidings-Uri's, die u op de pagina **verificatie** kunt vinden, bepaalt u welke typen apps worden ondersteund.
+- De URI van de **App-ID** heet nu URI voor de **toepassings-id** en u kunt deze vinden op **een API beschikbaar**maken. In de verouderde ervaring is deze eigenschap auto geregistreerd met de volgende indeling `https://{tenantdomain}/{appID}`:, bijvoorbeeld `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. De nieuwe ervaring wordt automatisch gegenereerd als `api://{appID}`, maar moet expliciet worden opgeslagen. In Azure AD B2C tenants wordt de `https://{tenantdomain}/{appID}` indeling nog steeds gebruikt.
 
-### <a name="reply-urlsredirect-urls"></a>Url's beantwoorden/uheen verwijzen
+### <a name="reply-urlsredirect-urls"></a>Antwoord Url's/omleidings-Url's
 
-In de legacy-ervaring had een app een **pagina met antwoord-URL's.** In de nieuwe ervaring zijn antwoord-URL's te vinden op **de verificatiepagina van** een app. Ze worden nu aangeduid als **Redirect URI's**.
+In de verouderde ervaring had een app een pagina **antwoord-url's** . In de nieuwe ervaring kunnen antwoord-Url's worden gevonden op de **verificatie** pagina van de app. Ze worden nu **omleidings-uri's**genoemd.
 
-De indeling voor omleidings-URI's is gewijzigd. Ze moeten worden gekoppeld aan een app-type, web of openbaar. Om veiligheidsredenen worden `http://` wildcards en schema's niet *http://localhost*ondersteund, behalve voor .
+De indeling voor omleidings-Uri's is gewijzigd. Ze moeten worden gekoppeld aan een app-type, hetzij web of openbaar. Uit veiligheids overwegingen worden joker tekens en `http://` schema's niet ondersteund, met uitzonde ring van *http://localhost*.
 
 ### <a name="keyscertificates--secrets"></a>Sleutels/certificaten & geheimen
 
-In de legacy-ervaring had een app **keys-pagina.** In de nieuwe ervaring is het omgedoopt tot **Certificaten & geheimen.**
+Een app bevat een pagina met **sleutels** voor de oude ervaring. In de nieuwe ervaring is de naam gewijzigd in **certificaten & geheimen**.
 
-**Openbare sleutels** worden nu aangeduid als **Certificaten**. **Wachtwoorden** worden nu aangeduid als **Client geheimen**.
+**Open bare sleutels** worden nu **certificaten**genoemd. **Wacht woorden** worden nu **client geheimen**genoemd.
 
 ### <a name="required-permissionsapi-permissions"></a>Vereiste machtigingen/API-machtigingen
 
-In de oudere ervaring had een app een pagina **vereiste machtigingen.** In de nieuwe ervaring is deze omgedoopt tot **API-machtigingen.**
+In de verouderde ervaring beschikt een app over een **vereiste machtigingen** pagina. In de nieuwe ervaring is de naam gewijzigd in **API-machtigingen**.
 
-Wanneer u een API in de legacy-ervaring hebt geselecteerd, u kiezen uit een kleine lijst met Microsoft-API's. U ook zoeken via serviceprincipals in de tenant. In de nieuwe ervaring u kiezen uit meerdere tabbladen: **Microsoft API's,** **API's die mijn organisatie gebruikt**of Mijn **API's**. De zoekbalk op **API's die mijn organisatie** gebruikt, zoekt op tabbladen via serviceprincipals in de tenant.
+Wanneer u in de verouderde ervaring een API hebt geselecteerd, kunt u kiezen uit een kleine lijst met micro soft-Api's. U kunt ook zoeken in service-principals in de Tenant. In de nieuwe ervaring kunt u kiezen uit meerdere tabbladen: **micro soft api's**, **api's mijn organisatie gebruikt**of **mijn api's**. De zoek balk op **api's mijn organisatie** gebruikt tabbladen zoeken via service-principals in de Tenant.
 
 > [!NOTE]
-> U ziet dit tabblad niet als uw toepassing niet is gekoppeld aan een tenant. Zie [Snelstart: Een clienttoepassing configureren om toegang te krijgen tot web-API's](quickstart-configure-app-access-web-apis.md)voor meer informatie over het aanvragen van machtigingen.
+> Dit tabblad wordt niet weer geven als uw toepassing niet is gekoppeld aan een Tenant. Voor meer informatie over het aanvragen van machtigingen raadpleegt u [Quick Start: een client toepassing configureren voor toegang tot Web-api's](quickstart-configure-app-access-web-apis.md).
 
-De verouderde ervaring had een knop **Machtigingen verlenen** boven aan de pagina **Aangevraagde machtigingen.** In de nieuwe ervaring heeft de **toestemmingspagina grant** toestemming een **toestemmingsknop voor beheerders van** een app in de sectie **API-machtigingen** van een app. Er zijn ook enkele verschillen in de manieren waarop de knoppen functioneren.
+Boven aan de pagina **aangevraagde machtigingen** heeft de verouderde ervaring de knop **machtigingen verlenen** . In de nieuwe ervaring is de pagina **granting toestemming** verleend aan de sectie **toestemming geven** voor het verlenen van machtigingen voor de **API** van een app. Er zijn ook enkele verschillen in de manier waarop de knoppen werken.
 
-In de legacy-ervaring varieerde de logica afhankelijk van de aangemelde gebruiker en de machtigingen die worden aangevraagd. De logica was:
+In de verouderde ervaring varieerden de logica, afhankelijk van de aangemelde gebruiker en de aangevraagde machtigingen. De logica is:
 
-- Als alleen toestemmingsmachtigingen voor gebruikers werden aangevraagd en de aangemelde gebruiker geen beheerder was, kan de gebruiker toestemming van de gebruiker verlenen voor de gevraagde machtigingen.
-- Als er ten minste één toestemming is aangevraagd waarvoor toestemming van de beheerder is aangevraagd en de aangemelde gebruiker geen beheerder was, heeft de gebruiker een foutmelding gekregen bij een poging om toestemming te verlenen.
-- Als de aangemelde gebruiker een beheerder was, is er toestemming van de beheerder verleend voor alle gevraagde machtigingen.
+- Als er alleen toestemming van de gebruiker is aangevraagd en de aangemelde gebruiker geen beheerder is, kan de gebruiker toestemming geven voor de aangevraagde machtigingen.
+- Als ten minste één machtiging is aangevraagd en de aangemelde gebruiker geen beheerder is, is er een fout opgetreden bij het verlenen van toestemming door de gebruiker.
+- Als de aangemelde gebruiker een beheerder was, is de beheerder toestemming verleend voor alle aangevraagde machtigingen.
 
-In de nieuwe ervaring kan alleen een beheerder toestemming verlenen. Wanneer een beheerder **toestemming voor de beheerder**verleent, wordt beheerderstoestemming verleend voor alle gevraagde machtigingen.
+In de nieuwe ervaring kan alleen een beheerder toestemming verlenen. Wanneer een beheerder **toestemming geven**voor het verlenen van beheerders, wordt toestemming van de beheerder verleend aan alle aangevraagde machtigingen.
 
 ## <a name="deleting-an-app-registration"></a>Een app-registratie verwijderen
 
-In de legacy-ervaring u alleen apps met één tenant verwijderen. De knop verwijderen is uitgeschakeld voor apps met meerdere tenants. In de nieuwe ervaring u apps in elke staat verwijderen, maar u moet de actie bevestigen. Zie [Snelstart: Een toepassing verwijderen die is geregistreerd bij het Microsoft-identiteitsplatform](quickstart-remove-app.md)voor meer informatie.
+In de verouderde ervaring kunt u alleen apps met één Tenant verwijderen. De knop verwijderen is uitgeschakeld voor apps met meerdere tenants. In de nieuwe ervaring kunt u apps in elke status verwijderen, maar u moet de actie bevestigen. Zie [Quick Start: een toepassing verwijderen die is geregistreerd bij het micro soft Identity-platform](quickstart-remove-app.md)voor meer informatie.
 
 ## <a name="application-manifest"></a>Manifest van de toepassing
 
-De legacy en nieuwe ervaringen gebruiken verschillende versies voor het formaat van de JSON in de manifesteditor. Zie [Azure Active Directory-app manifest](reference-app-manifest.md)voor meer informatie .
+De oude en nieuwe ervaringen gebruiken verschillende versies voor de indeling van de JSON in de manifest editor. Zie [Azure Active Directory app-manifest](reference-app-manifest.md)voor meer informatie.
 
-## <a name="new-ui"></a>Nieuwe gebruikersinterface
+## <a name="new-ui"></a>Nieuwe gebruikers interface
 
-De nieuwe ervaring voegt ui-besturingselementen toe voor de volgende eigenschappen:
+De nieuwe ervaring voegt UI-besturings elementen toe voor de volgende eigenschappen:
 
-- Op **de pagina Verificatie** heeft impliciete **subsidiestroom** (`oauth2AllowImplicitFlow`). In tegenstelling tot de legacy-ervaring kun je **Access-tokens** of **ID-tokens**of beide inschakelen.
-- De **pagina Een API blootleggen** bevat **scopes die zijn gedefinieerd door deze API** (`oauth2Permissions`) en Geautoriseerde **clienttoepassingen** (`preAuthorizedApplications`). Zie [Quickstart: Een toepassing configureren om web-API's bloot te leggen](quickstart-configure-app-expose-web-apis.md)voor meer informatie over het configureren van een app als web-API en het blootleggen van machtigingen/scopes.
-- De pagina **Branding** bevat het **publisher-domein**. Het uitgeversdomein wordt weergegeven aan gebruikers op de [toestemmingsprompt van](application-consent-experience.md)de toepassing. Zie [Hoe: Het uitgeversdomein van een toepassing configureren](howto-configure-publisher-domain.md)voor meer informatie.
+- De **verificatie** pagina heeft **impliciete granting flow** (`oauth2AllowImplicitFlow`). In tegens telling tot in de verouderde ervaring kunt u **toegangs tokens** of **id-tokens**inschakelen, of beide.
+- De pagina **een API beschikbaar** maken bevat **scopes die zijn gedefinieerd door deze API** (`oauth2Permissions`) en **geautoriseerde client toepassingen** (`preAuthorizedApplications`). Voor meer informatie over het configureren van een app voor een web-API en het beschikbaar maken van machtigingen/bereiken raadpleegt [u Quick Start: een toepassing configureren om Web-api's weer te](quickstart-configure-app-expose-web-apis.md)geven.
+- De pagina **huisstijl** bevat het **domein**van de uitgever. Het domein van de uitgever wordt weer gegeven voor gebruikers op de [toestemming prompt van de toepassing](application-consent-experience.md). Zie [How to: configure a Application Publisher Domain](howto-configure-publisher-domain.md)(Engelstalig) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
 De nieuwe ervaring heeft de volgende beperkingen:
 
-- Het formaat van klantgeheimen (app-wachtwoorden) is anders dan die van de legacy-ervaring en kan CLI breken.
-- Het wijzigen van de waarde voor ondersteunde accounts wordt niet ondersteund in de gebruikersinterface. U moet het app-manifest gebruiken, tenzij u schakelt tussen Azure AD single-tenant en multi-tenant.
+- De indeling van client geheimen (app-wacht woorden) verschilt van die van de verouderde ervaring en kan de CLI verstoren.
+- Het wijzigen van de waarde voor ondersteunde accounts wordt niet ondersteund in de gebruikers interface. U moet het app-manifest gebruiken tenzij u overschakelt tussen Azure AD en multi tenant.

@@ -1,5 +1,5 @@
 ---
-title: RDG en Azure MFA Server met RADIUS - Azure Active Directory
+title: RDG en Azure MFA-server met RADIUS-Azure Active Directory
 description: Dit is de pagina Azure Multi-Factor Authentication die u helpt bij het implementeren van RD-gateway (Extern bureaublad) en Azure Multi-Factor Authentication-server met RADIUS.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,31 +12,31 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23e2f7424464860b647883be2441e903900cb266
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652889"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Extern bureaublad-gateway en Azure Multi-Factor Authentication-server met behulp van RADIUS
 
-Extern bureaublad -gateway (Extern bureaublad) gebruikt vaak de lokale [Network Policy Services (NPS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) om gebruikers te verifiëren. In dit artikel wordt beschreven hoe u RADIUS-aanvragen van de Extern bureaublad-gateway (via de lokale NPS) omleidt naar de Multi-Factor Authentication-server. De combinatie van Azure MFA en RD-gateway zorgt ervoor dat uw gebruikers overal toegang hebben tot hun werkomgevingen terwijl sterke verificatie wordt uitgevoerd.
+Extern bureaublad-gateway (RD) gebruikt de lokale [Network Policy Services (NPS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) vaak om gebruikers te verifiëren. In dit artikel wordt beschreven hoe u RADIUS-aanvragen van de Extern bureaublad-gateway (via de lokale NPS) omleidt naar de Multi-Factor Authentication-server. De combinatie van Azure MFA en RD-gateway zorgt ervoor dat uw gebruikers overal toegang hebben tot hun werkomgevingen terwijl sterke verificatie wordt uitgevoerd.
 
 Omdat Windows-verificatie voor Terminal Services niet wordt ondersteund voor Server 2012 R2, dient u RD-gateway en RADIUS te gebruiken voor integratie met de MFA-server.
 
 Installeer de Azure Multi-Factor Authentication-server op een afzonderlijke server. Deze stuurt de RADIUS-aanvraag vervolgens terug naar de NPS op de Extern bureaublad-gatewayserver. Nadat NPS de gebruikersnaam en het wachtwoord heeft gevalideerd, wordt een antwoord naar de Multi-Factor Authentication-server gestuurd. Vervolgens voert de MFA-server de tweede factor van de verificatie uit en retourneert een resultaat naar de gateway.
 
 > [!IMPORTANT]
-> Vanaf 1 juli 2019 biedt Microsoft geen MFA Server meer aan voor nieuwe implementaties. Nieuwe klanten die multi-factor authenticatie van hun gebruikers willen vereisen, moeten azure multi-factor authenticatie in de cloud gebruiken. Bestaande klanten die MFA Server vóór 1 juli hebben geactiveerd, kunnen de nieuwste versie, toekomstige updates downloaden en activeringsreferenties genereren zoals gewoonlijk.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een in een domein opgenomen Azure MFA-server. Als u er nog niet een hebt geïnstalleerd, volgt u de stappen in [Aan de slag met de Azure Multi-Factor Authentication-server](howto-mfaserver-deploy.md).
-- Een bestaande geconfigureerde NPS-server.
+- Een bestaande NPS-server die is geconfigureerd.
 - Een Extern bureaublad-gateway die verifieert met behulp van Network Policy Services.
 
 > [!NOTE]
-> Dit artikel moet alleen worden gebruikt met MFA Server-implementaties, niet met Azure MFA (Cloud-based).
+> Dit artikel moet alleen worden gebruikt met MFA-server implementaties, niet voor Azure MFA (op basis van de Cloud).
 
 ## <a name="configure-the-remote-desktop-gateway"></a>De Extern bureaublad-gateway configureren
 
@@ -82,7 +82,7 @@ De Azure Multi-Factor Authentication-server is geconfigureerd als een RADIUS-pro
 3. Ga naar het tabblad **Doel** en selecteer het keuzerondje **RADIUS-server(s)**.
 4. Selecteer **Toevoegen** en voer het IP-adres, het gedeeld geheim en de poorten van de NPS-server in. De RADIUS-client en het RADIUS-doel zijn hetzelfde, tenzij u een centrale NPS gebruikt. Het gedeeld geheim moet overeenkomen met het gedeeld geheim dat is ingesteld in de sectie RADIUS-client van de NPS-server.
 
-![Radiusverificatie in MFA-server](./media/howto-mfaserver-nps-rdg/radius.png)
+![RADIUS-verificatie in MFA-server](./media/howto-mfaserver-nps-rdg/radius.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

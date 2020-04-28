@@ -1,7 +1,7 @@
 ---
-title: Microsoft-certificaatreferenties voor identiteitsplatform
+title: Certificaat referenties voor micro soft-identiteits platform
 titleSuffix: Microsoft identity platform
-description: In dit artikel wordt de registratie en het gebruik van certificaatreferenties voor toepassingsverificatie besproken.
+description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d834d37f686279facf0052e3c8f4da3c8d259e0b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309679"
 ---
-# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties van microsoft-identiteitsplatformverificatiecertificaat
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
 
-Met het Microsoft-identiteitsplatform kan een toepassing zijn eigen referenties gebruiken voor verificatie, bijvoorbeeld in de [OAuth 2.0 Client Credentials Grant flowv2.0](v2-oauth2-client-creds-grant-flow.md) en de [on-behalf-of-flow).](v2-oauth2-on-behalf-of-flow.md)
+Met micro soft Identity platform kan een toepassing eigen referenties voor authenticatie gebruiken, bijvoorbeeld in de [OAuth 2,0-client referenties Grant flowv 2.0](v2-oauth2-client-creds-grant-flow.md) en de namens [-stroom](v2-oauth2-on-behalf-of-flow.md).
 
-Een vorm van referenties die een toepassing kan gebruiken voor verificatie is een JSON Web Token (JWT) bewering ondertekend met een certificaat dat de toepassing bezit.
+Een van de referenties die een toepassing voor verificatie kan gebruiken is een JSON Web Token (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
-## <a name="assertion-format"></a>Beweringsindeling
-Microsoft-identiteitsplatform Om de bewering te berekenen, u een van de vele [JSON-webtokenbibliotheken](https://jwt.ms/) gebruiken in de taal van uw keuze. De informatie die door het token wordt overgedragen, is als volgt:
+## <a name="assertion-format"></a>Bevestigings indeling
+Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
 
 ### <a name="header"></a>Header
 
-| Parameter |  Opmerking |
+| Parameter |  Opmerkingen |
 | --- | --- |
-| `alg` | Moet **RS256** |
-| `typ` | Moet **JWT** |
-| `x5t` | Moet de X.509 Certificate SHA-1 duimafdruk zijn |
+| `alg` | Moet **RS256** zijn |
+| `typ` | Moet **JWT** zijn |
+| `x5t` | Moet de X. 509-certificaat-SHA-1-vinger afdruk zijn |
 
-### <a name="claims-payload"></a>Claims (payload)
+### <a name="claims-payload"></a>Claims (Payload)
 
 | Parameter |  Opmerkingen |
 | --- | --- |
-| `aud` | Publiek: Moet ** https://login.microsoftonline.com/ *worden tenant_Id*/oauth2/token** |
-| `exp` | Vervaldatum: de datum waarop het token verloopt. De tijd wordt weergegeven als het aantal seconden vanaf 1 januari 1970 (1970-01-01T0:0:0Z) UTC tot het moment dat de tokengeldigheid verloopt.|
-| `iss` | Uitgever: moet de client_id zijn (application ID van de clientservice) |
-| `jti` | GUID: de JWT ID |
-| `nbf` | Niet eerder: de datum waarvoor het token niet kan worden gebruikt. De tijd wordt weergegeven als het aantal seconden vanaf 1 januari 1970 (1970-01-01T0:0:0Z) UTC tot het moment dat het token werd uitgegeven. |
-| `sub` | Betreft: Wat `iss`betreft , moet de client_id zijn (Application ID van de client service) |
+| `aud` | Doel groep: moet ** https://login.microsoftonline.com/ *tenant_Id*/oauth2/token** |
+| `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt.|
+| `iss` | Verlener: moet de client_id (toepassings-ID van de client service) |
+| `jti` | GUID: de JWT-ID |
+| `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat het token is uitgegeven. |
+| `sub` | Onderwerp: als voor `iss`, moet de Client_id (toepassings-id van de client service) |
 
 ### <a name="signature"></a>Handtekening
 
-De handtekening wordt berekend bij het toepassen van het certificaat zoals beschreven in de [JSON Web Token RFC7519-specificatie](https://tools.ietf.org/html/rfc7519)
+De hand tekening wordt berekend met het Toep assen van het certificaat, zoals beschreven in de [JSON Web token RFC7519-specificatie](https://tools.ietf.org/html/rfc7519)
 
-## <a name="example-of-a-decoded-jwt-assertion"></a>Voorbeeld van een gedecodeerde JWT-bewering
+## <a name="example-of-a-decoded-jwt-assertion"></a>Voor beeld van een gedecodeerde JWT-bevestiging
 
 ```JSON
 {
@@ -73,42 +73,42 @@ De handtekening wordt berekend bij het toepassen van het certificaat zoals besch
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="example-of-an-encoded-jwt-assertion"></a>Voorbeeld van een gecodeerde JWT-bewering
+## <a name="example-of-an-encoded-jwt-assertion"></a>Voor beeld van een gecodeerde JWT-bevestiging
 
-De volgende tekenreeks is een voorbeeld van gecodeerde bewering. Als je goed kijkt, zie je drie secties gescheiden door stippen (.):
-* Het eerste deel codeert de koptekst
-* Het tweede deel codeert het laadvermogen
-* De laatste sectie is de handtekening berekend met de certificaten van de inhoud van de eerste twee secties
+De volgende teken reeks is een voor beeld van een gecodeerde bevestiging. Als u er voorzichtig van gaat, ziet u drie secties, gescheiden door punten (.):
+* De eerste sectie codeert de header
+* In het tweede gedeelte wordt de payload gecodeerd
+* De laatste sectie is de hand tekening die wordt berekend met de certificaten uit de inhoud van de eerste twee secties
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Uw certificaat registreren bij microsoft-identiteitsplatform
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Uw certificaat registreren bij micro soft Identity platform
 
-U de certificaatreferenties koppelen aan de clienttoepassing in het Microsoft-identiteitsplatform via de Azure-portal met behulp van een van de volgende methoden:
+U kunt de certificaat referentie koppelen aan de client toepassing in het micro soft Identity-platform via de Azure Portal een van de volgende methoden gebruiken:
 
-### <a name="uploading-the-certificate-file"></a>Het certificaatbestand uploaden
+### <a name="uploading-the-certificate-file"></a>Het certificaat bestand uploaden
 
-In de Azure-appregistratie voor de clienttoepassing:
-1. Selecteer **Certificaten & geheimen**.
-2. Klik op **Certificaat uploaden** en selecteer het certificaatbestand dat u wilt uploaden.
-3. Klik op**toevoegen**.
-  Zodra het certificaat is geüpload, worden de duimafdruk, begindatum en vervaldatumwaarden weergegeven.
+In de registratie van de Azure-app voor de client toepassing:
+1. Selecteer **certificaten & geheimen**.
+2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
+3. Klik op **Add**.
+  Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
 
-### <a name="updating-the-application-manifest"></a>Het toepassingsmanifest bijwerken
+### <a name="updating-the-application-manifest"></a>Het toepassings manifest bijwerken
 
-Nadat u een certificaat in handen hebt, moet u berekenen:
+Als u een certificaat hebt, moet u het volgende berekenen:
 
-- `$base64Thumbprint`, dat is de base64 codering van het certificaat hash
-- `$base64Value`, dat is de base64 codering van het certificaat ruwe gegevens
+- `$base64Thumbprint`, dit is de base64-code ring van de certificaat-hash
+- `$base64Value`, dit is de base64-code ring van de onbewerkte gegevens van het certificaat
 
-U moet ook een GUID verstrekken om de`$keyId`sleutel in het toepassingsmanifest te identificeren ( ).
+U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de`$keyId`toepassing ().
 
-In de Azure-appregistratie voor de clienttoepassing:
-1. Selecteer **Manifest** om het toepassingsmanifest te openen.
-2. Vervang de eigenschap *keyCredentials* door uw nieuwe certificaatgegevens met behulp van het volgende schema.
+In de registratie van de Azure-app voor de client toepassing:
+1. Selecteer **manifest** om het toepassings manifest te openen.
+2. Vervang de eigenschap voor kenmerk *referenties* door uw nieuwe certificaat gegevens met behulp van het volgende schema.
 
    ```JSON
    "keyCredentials": [
@@ -121,13 +121,13 @@ In de Azure-appregistratie voor de clienttoepassing:
        }
    ]
    ```
-3. Sla de bewerkingen op in het toepassingsmanifest en upload het manifest vervolgens naar het identiteitsplatform van Microsoft.
+3. Sla de wijzigingen op in het manifest van de toepassing en upload het manifest naar het micro soft Identity-platform.
 
-   De `keyCredentials` eigenschap is multi-gewaardeerd, dus u meerdere certificaten uploaden voor rijker sleutelbeheer.
+   De `keyCredentials` eigenschap is meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
 > [!NOTE]
-> U moet de X5T-header berekenen door deze om te zetten naar een basis64-tekenreeks met behulp van de hash van het certificaat. De code om dit in `System.Convert.ToBase64String(cert.GetCertHash());`C# uit te voeren is .
+> U moet de X5T-header berekenen door deze te converteren naar een basis teken reeks van 64 met de hash van het certificaat. De code die u wilt uitvoeren in C# `System.Convert.ToBase64String(cert.GetCertHash());`is.
 
-In het codevoorbeeld [.NET Core daemon-consoletoepassing met Microsoft-identiteitsplatform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) ziet u hoe een toepassing zijn eigen referenties gebruikt voor verificatie. Het laat ook zien hoe u een `New-SelfSignedCertificate` zelfondertekend certificaat maken met de powershell-opdracht. [create a self-signed certificate](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) U ook profiteren en de [scripts voor het maken van apps](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) gebruiken om de certificaten te maken, de duimafdruk te berekenen, enzovoort.
+De voorbeeld code van een [.net core daemon-console toepassing met behulp van micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van `New-SelfSignedCertificate` de Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.

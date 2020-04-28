@@ -1,7 +1,7 @@
 ---
-title: Ontvang een token voor een web-API die web-API's aanroept | Azure
+title: Een Token ophalen voor een web-API die web-Api's aanroept | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het maken van een web-API die web-API's aanroept waarvoor een token voor de app moet worden verkreeg.
+description: Meer informatie over het bouwen van een web-API voor het aanroepen van web-Api's die een token moeten verkrijgen voor de app.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,21 +13,21 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885137"
 ---
-# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-API's aanroept: een token voor de app aanschaffen
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-Api's aanroept: een Token ophalen voor de app
 
-Nadat u een clienttoepassingsobject hebt gebouwd, gebruikt u het om een token te verkrijgen waarmee u een web-API aanroepen.
+Nadat u een client toepassings object hebt gemaakt, gebruikt u dit om een token op te halen dat u kunt gebruiken om een web-API aan te roepen.
 
 ## <a name="code-in-the-controller"></a>Code in de controller
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier is een voorbeeld van code die wordt aangeroepen in de acties van de API-controllers. Het roept een downstream API genaamd *todolist*.
+Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -48,9 +48,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`is vergelijkbaar met het scenario in [een web-API die web-API's aanroept: app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`meteen `IConfidentialClientApplication` met een cache die informatie bevat voor slechts één account. De rekening wordt `GetAccountIdentifier` verstrekt door de methode.
+`BuildConfidentialClient()`is vergelijkbaar met het scenario in [een web-API die web-api's aanroept: app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`instantiëren `IConfidentialClientApplication` met een cache die informatie voor slechts één account bevat. Het account wordt door de `GetAccountIdentifier` -methode verschaft.
 
-De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker voor wie de web-API het JSON-webtoken (JWT) heeft ontvangen:
+De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker voor wie de Web-API de JSON Web token (JWT) heeft ontvangen:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -69,7 +69,7 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ```
 
 # <a name="java"></a>[Java](#tab/java)
-Hier is een voorbeeld van code die wordt aangeroepen in de acties van de API-controllers. Het noemt de downstream API - Microsoft Graph.
+Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Het roept de downstream API-Microsoft Graph aan.
 
 ```java
 @RestController
@@ -91,11 +91,11 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Een Python-web-API moet een aantal middleware gebruiken om het token aan toonder dat van de client is ontvangen, te valideren. De web-API kan vervolgens het toegangstoken voor downstream-API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) verkrijgen met behulp van MSAL Python-bibliotheek door de methode aan te roepen. Een voorbeeld dat deze stroom met MSAL Python aantoont, is nog niet beschikbaar.
+Een python-Web-API moet een middleware gebruiken om het Bearer-token te valideren dat van de client is ontvangen. De Web-API kan vervolgens het toegangs token voor downstream API verkrijgen met behulp van de MSAL [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) python-bibliotheek door de methode aan te roepen. Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet beschikbaar.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-API die web-API's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md)
+> [Een web-API die web-Api's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md)

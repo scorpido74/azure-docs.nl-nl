@@ -1,6 +1,6 @@
 ---
-title: Aanvraag- en goedkeuringsinstellingen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer - Azure Active Directory
-description: Meer informatie over het wijzigen van aanvraag- en goedkeuringsinstellingen voor een toegangspakket in Azure Active Directory-rechtenbeheer.
+title: Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in azure AD-recht beheer-Azure Active Directory
+description: Meer informatie over het wijzigen van de aanvraag-en goedkeurings instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,84 +17,84 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0eae4f53283c33f3d7372a606f8c0a3ac27d079
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655928"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Aanvraag- en goedkeuringsinstellingen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
-Als toegangspakketbeheerder u de gebruikers wijzigen die op elk gewenst moment een toegangspakket kunnen aanvragen door het beleid te bewerken of een nieuw beleid toe te voegen. U ook de goedkeuringsinstellingen wijzigen.
+Als Access Package Manager kunt u de gebruikers die op elk gewenst moment een toegangs pakket aanvragen, wijzigen door het beleid te bewerken of een nieuw beleid toe te voegen. U kunt ook de goedkeurings instellingen wijzigen.
 
-In dit artikel wordt beschreven hoe u de aanvraag- en goedkeuringsinstellingen voor een bestaand toegangspakket wijzigen.
+In dit artikel wordt beschreven hoe u de aanvraag-en goedkeurings instellingen voor een bestaand toegangs pakket wijzigt.
 
-## <a name="choose-between-one-or-multiple-polices"></a>Kies tussen één of meerdere politiekorpsen
+## <a name="choose-between-one-or-multiple-polices"></a>Kiezen tussen een of meer beleids regels
 
-De manier waarop u aangeeft wie een toegangspakket kan aanvragen, is met een beleid. Wanneer u een toegangspakket maakt, geeft u de aanvraag- en goedkeuringsinstelling op waarmee een beleid wordt gemaakt. De meeste toegangspakketten hebben één beleid, maar één toegangspakket kan meerdere beleidsregels hebben. U maakt meerdere beleidsregels voor een toegangspakket als u wilt toestaan dat verschillende sets gebruikers toewijzingen met verschillende aanvraag- en goedkeuringsinstellingen krijgen. Eén beleid kan bijvoorbeeld niet worden gebruikt om interne en externe gebruikers aan hetzelfde toegangspakket toe te wijzen. U echter twee beleidsregels maken in hetzelfde toegangspakket: een voor interne gebruikers en een voor externe gebruikers. Als er meerdere beleidsregels zijn die van toepassing zijn op een gebruiker, wordt deze gevraagd op het moment van hun verzoek om het beleid te selecteren waaraan hij of zij zou willen worden toegewezen. In het volgende diagram ziet u een toegangspakket met twee beleidsregels.
+De manier waarop u opgeeft wie een toegangs pakket kan aanvragen, is met een beleid. Wanneer u een toegangs pakket maakt, geeft u de aanvraag en goedkeurings instelling op waarmee een beleid wordt gemaakt. Voor de meeste toegangs pakketten geldt één beleid, maar één toegangs pakket kan meerdere beleids regels bevatten. U maakt meerdere beleids regels voor een toegangs pakket als u wilt toestaan dat verschillende sets gebruikers toewijzingen krijgen met verschillende aanvraag-en goedkeurings instellingen. Eén beleid kan bijvoorbeeld niet worden gebruikt om interne en externe gebruikers toe te wijzen aan hetzelfde toegangs pakket. U kunt echter twee beleids regels maken in hetzelfde toegangs pakket: een voor interne gebruikers en één voor externe gebruikers. Als er meerdere beleids regels zijn die van toepassing zijn op een gebruiker, wordt deze gevraagd op het tijdstip van de aanvraag om het beleid te selecteren waaraan ze zijn toegewezen. In het volgende diagram ziet u een toegangs pakket met twee beleids regels.
 
-![Meerdere beleidsregels in een toegangspakket](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
+![Meerdere beleids regels in een toegangs pakket](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| Scenario | Aantal polissen |
+| Scenario | Aantal beleids regels |
 | --- | --- |
-| Ik wil dat alle gebruikers in mijn directory dezelfde aanvraag- en goedkeuringsinstellingen hebben voor een toegangspakket | Eén |
-| Ik wil dat alle gebruikers in bepaalde verbonden organisaties een toegangspakket kunnen aanvragen | Eén |
-| Ik wil gebruikers in mijn directory en ook gebruikers buiten mijn directory toestaan om een toegangspakket aan te vragen | Meerdere |
-| Ik wil verschillende goedkeuringsinstellingen opgeven voor sommige gebruikers | Meerdere |
-| Ik wil dat sommige gebruikers toegang krijgen tot pakkettoewijzingen, terwijl andere gebruikers hun toegang kunnen verlengen | Meerdere |
+| Ik wil dat alle gebruikers in mijn Directory dezelfde aanvraag-en goedkeurings instellingen voor een toegangs pakket hebben | Eén |
+| Ik wil dat alle gebruikers in bepaalde verbonden organisaties een toegangs pakket kunnen aanvragen | Eén |
+| Ik wil gebruikers in mijn Directory en gebruikers buiten mijn Directory toestaan om een toegangs pakket aan te vragen | Meerdere |
+| Ik wil andere goedkeurings instellingen opgeven voor sommige gebruikers | Meerdere |
+| Ik wil dat sommige gebruikers pakket toewijzingen gebruiken om te verlopen terwijl andere gebruikers hun toegang kunnen uitbreiden | Meerdere |
 
-Zie [Meerdere beleidsregels](entitlement-management-troubleshoot.md#multiple-policies
-)voor informatie over de prioriteitlogica die wordt gebruikt wanneer meerdere beleidsregels van toepassing zijn.
+Zie [meerdere beleids regels](entitlement-management-troubleshoot.md#multiple-policies
+)voor informatie over de prioriteits logica die wordt gebruikt wanneer er meerdere beleids regels van toepassing zijn.
 
-### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Een bestaand beleid van aanvraag- en goedkeuringsinstellingen openen
+### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen
 
-Als u de aanvraag- en goedkeuringsinstellingen voor een toegangspakket wilt wijzigen, moet u het bijbehorende beleid openen. Volg deze stappen om de aanvraag- en goedkeuringsinstellingen voor een toegangspakket te openen.
+Als u de aanvraag-en goedkeurings instellingen voor een toegangs pakket wilt wijzigen, moet u het bijbehorende beleid openen. Volg deze stappen om de aanvraag-en goedkeurings instellingen voor een toegangs pakket te openen.
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik **op Beleid** en klik vervolgens op het beleid dat u wilt bewerken.
+1. Klik op **beleids regels** en klik vervolgens op het beleid dat u wilt bewerken.
 
-    Het deelvenster Details van het beleid wordt onder aan de pagina geopend.
+    Het deel venster beleids Details wordt geopend onder aan de pagina.
 
-    ![Toegangspakket - deelvenster Beleidsdetails](./media/entitlement-management-shared/policy-details.png)
+    ![Toegangs venster pakket-Details van beleid](./media/entitlement-management-shared/policy-details.png)
 
-1. Klik **op Bewerken** om het beleid te bewerken.
+1. Klik op **bewerken** om het beleid te bewerken.
 
-    ![Toegangspakket - Beleid bewerken](./media/entitlement-management-shared/policy-edit.png)
+    ![Toegangs beleid voor pakket bewerken](./media/entitlement-management-shared/policy-edit.png)
 
-1. Klik op het tabblad **Aanvragen** om de aanvraag- en goedkeuringsinstellingen te openen.
+1. Klik op het tabblad **aanvragen** om de instellingen voor aanvraag en goed keuring te openen.
 
-1. Voer de stappen uit in een van de volgende aanvraagsecties.
+1. Voer de stappen in een van de volgende aanvraag secties uit.
 
-### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Een nieuw beleid van aanvraag- en goedkeuringsinstellingen toevoegen
+### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Een nieuw beleid voor aanvraag-en goedkeurings instellingen toevoegen
 
-Als u een set gebruikers hebt die verschillende aanvraag- en goedkeuringsinstellingen moeten hebben, moet u waarschijnlijk een nieuw beleid maken. Volg deze stappen om een nieuw beleid toe te voegen aan een bestaand toegangspakket.
+Als u een set gebruikers hebt met verschillende aanvraag-en goedkeurings instellingen, moet u waarschijnlijk een nieuw beleid maken. Volg deze stappen om een nieuw beleid toe te voegen aan een bestaand toegangs pakket.
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik **op Beleid** en voeg vervolgens beleid **toe**.
+1. Klik op **beleid** en vervolgens op **beleid toevoegen**.
 
-1. Typ een naam en een beschrijving voor het beleid.
+1. Voer een naam en beschrijving voor het beleid in.
 
-    ![Beleid maken met naam en beschrijving](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+    ![Beleid maken met de naam en beschrijving](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. Klik **op Volgende** om het tabblad Aanvragen te **openen.**
+1. Klik op **volgende** om het tabblad **aanvragen** te openen.
 
-1. Voer de stappen uit in een van de volgende aanvraagsecties.
+1. Voer de stappen in een van de volgende aanvraag secties uit.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-Als u een beleidsbewerking bewerkt, klikt u op **Bijwerken**. Als u een nieuw beleid toevoegt, klikt u op **Maken**.
+Als u een beleid bewerkt, klikt u op **bijwerken**. Als u een nieuw beleid toevoegt, klikt u op **maken**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Levenscyclusinstellingen voor een toegangspakket wijzigen](entitlement-management-access-package-lifecycle-policy.md)
-- [Aanvragen voor een toegangspakket weergeven](entitlement-management-access-package-requests.md)
+- [Levenscyclus instellingen voor een toegangs pakket wijzigen](entitlement-management-access-package-lifecycle-policy.md)
+- [Aanvragen voor een toegangs pakket weer geven](entitlement-management-access-package-requests.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect - AD FS-vertrouwensrelatie beheren met Azure AD met Azure AD Connect | Microsoft Documenten
-description: Operationele details van Azure AD-vertrouwensafhandeling door Azure AD-verbinding.
-keywords: AD FS, ADFS, AD FS-beheer, AAD Connect, Connect, Azure AD, vertrouwen, AAD, claim, claimregels, uitgifte, transformatie, regels, back-up, herstel
+title: Azure AD Connect-AD FS vertrouwen met Azure AD beheren met behulp van Azure AD Connect | Microsoft Docs
+description: Operationele details van de verwerking van Azure AD-vertrouwens relaties door Azure AD Connect.
+keywords: AD FS, ADFS, AD FS beheer, AAD Connect, Connect, Azure AD, Trust, AAD, claim, claim, claim regels, uitgifte, trans formatie, regels, back-up, herstel
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
@@ -19,105 +19,105 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331725"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-vertrouwensrelatie met Azure AD beheren met behulp van Azure AD Connect
 
 ## <a name="overview"></a>Overzicht
 
-Azure AD Connect kan federatie tussen on-premises Active Directory Federation Service (AD FS) en Azure AD beheren. Dit artikel geeft een overzicht van:
+Azure AD Connect kunt Federatie beheren tussen on-premises Active Directory Federation Service (AD FS) en Azure AD. Dit artikel bevat een overzicht van:
 
-* De verschillende instellingen die zijn geconfigureerd op de vertrouwensrelatie door Azure AD Connect
-* De regels voor uitgiftetransformatie (claimregels) die zijn ingesteld door Azure AD Connect
-* Een back-up maken en uw claimregels herstellen tussen upgrades en configuratie-updates. 
+* De verschillende instellingen die zijn geconfigureerd op de vertrouwens relatie door Azure AD Connect
+* De regels voor uitgifte transformatie (claim regels) die zijn ingesteld door Azure AD Connect
+* Het maken van back-ups en herstellen van uw claim regels tussen upgrades en configuratie-updates. 
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Instellingen die worden beheerd door Azure AD Connect
 
-Azure AD Connect beheert **alleen** instellingen met betrekking tot Azure AD-vertrouwensrelatie. Azure AD Connect wijzigt geen instellingen voor andere vertrouwensrelaties van relying party in AD FS. In de volgende tabel worden instellingen weergegeven die worden beheerd door Azure AD Connect.
+Azure AD Connect beheert **alleen** instellingen met betrekking tot de vertrouwens relatie van Azure AD. Azure AD Connect wijzigt geen instellingen op andere Relying Party vertrouwens relaties in AD FS. De volgende tabel geeft de instellingen aan die worden beheerd door Azure AD Connect.
 
 | Instelling | Beschrijving |
 | :--- | :--- |
-| Certificaatondertekeningscertificaat | Azure AD Connect kan worden gebruikt om de vertrouwensrelatie opnieuw in te stellen en opnieuw te maken met Azure AD. Azure AD Connect maakt een eenmalige onmiddellijke rollover van tokenondertekeningscertificaten voor AD FS en werkt de instellingen van de Azure AD-domeinfederatie bij.|
-| Tokenondertekeningsalgoritme | Microsoft raadt aan om SHA-256 te gebruiken als het algoritme voor tokenondertekening. Azure AD Connect kan detecteren of het tokenondertekeningsalgoritme is ingesteld op een waarde die minder veilig is dan SHA-256. Het zal de instelling bijwerken naar SHA-256 in de volgende mogelijke configuratiebewerking. Andere vertrouwensrelatie van relying party moet worden bijgewerkt om het nieuwe tokenondertekeningscertificaat te gebruiken. |
-| Azure AD-vertrouwensid | Azure AD Connect stelt de juiste id-waarde in voor de Azure AD-vertrouwensrelatie. AD FS identificeert op unieke wijze de Azure AD-vertrouwensrelatie met behulp van de id-waarde. |
-| Azure AD-eindpunten | Azure AD Connect zorgt ervoor dat de eindpunten die zijn geconfigureerd voor de AD-vertrouwensrelatie in Azure altijd volgens de meest recente aanbevolen waarden voor tolerantie en prestaties. |
-| Regels voor uitgiftetransformatie | Er zijn verschillende claimregels die nodig zijn voor een optimale prestaties van functies van Azure AD in een federatieve instelling. Azure AD Connect zorgt ervoor dat de AD-vertrouwensrelatie van Azure altijd is geconfigureerd met de juiste set aanbevolen claimregels. |
-| Alternatieve id | Als synchronisatie is geconfigureerd om alternatieve id te gebruiken, configureert Azure AD Connect AD FS om verificatie uit te voeren met behulp van alternatieve-id. |
-| Automatische metagegevens-update | Vertrouwen in Azure AD is geconfigureerd voor automatische metagegevensbijwerken. AD FS controleert periodiek de metagegevens van Azure AD-vertrouwensrelaties en houdt deze up-to-date voor het geval deze aan de Azure AD-kant wordt gewijzigd. |
-| Geïntegreerde Windows-verificatie (IWA) | Tijdens de hybride Azure AD-joinbewerking is IWA ingeschakeld voor apparaatregistratie om hybride Azure AD-join voor downlevel-apparaten te vergemakkelijken |
+| Certificaat voor token-ondertekening | Azure AD Connect kunnen worden gebruikt om de vertrouwens relatie met Azure AD opnieuw in te stellen en opnieuw te maken. Azure AD Connect voert een eenmalige onmiddellijke rollover van certificaten voor token-ondertekening voor AD FS en werkt de Federatie-instellingen van het Azure AD-domein bij.|
+| Algoritme voor token ondertekening | Micro soft raadt aan om SHA-256 te gebruiken als het token handtekening algoritme. Azure AD Connect kunt detecteren of het token handtekening algoritme is ingesteld op een waarde die minder veilig is dan SHA-256. De instelling wordt bij de volgende mogelijke configuratie bewerking bijgewerkt naar SHA-256. Andere Relying Party-vertrouwens relatie moet worden bijgewerkt om het nieuwe certificaat voor token-ondertekening te gebruiken. |
+| Azure AD-vertrouwens-id | Azure AD Connect stelt de juiste id-waarde voor de Azure AD-vertrouwens relatie in. AD FS unieke identificatie van de Azure AD-vertrouwens relatie met de id-waarde. |
+| Azure AD-eind punten | Azure AD Connect zorgt ervoor dat de eind punten die zijn geconfigureerd voor de Azure AD-vertrouwens relatie altijd volgens de meest recente aanbevolen waarden voor tolerantie en prestaties. |
+| Transformatie regels voor uitgifte | Er zijn een aantal claim regels die nodig zijn voor optimale prestaties van de functies van Azure AD in een federatieve instelling. Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is geconfigureerd met de juiste set aanbevolen claim regels. |
+| Alternatief-id | Als synchronisatie is geconfigureerd voor het gebruik van alternatieve-id, Azure AD Connect configureert AD FS om verificatie met behulp van alternatieve-id uit te voeren. |
+| Automatische meta gegevens bijwerken | Trust with Azure AD is geconfigureerd voor automatische updates van meta gegevens. AD FS controleert regel matig de meta gegevens van de Azure AD-vertrouwens relatie en houdt deze up-to-date als de wijzigingen aan de Azure AD-kant worden aangebracht. |
+| Geïntegreerde Windows-verificatie (IWA) | Tijdens de hybride Azure AD-deelname bewerking is IWA ingeschakeld voor apparaatregistratie om hybride Azure AD-deelname te vergemakkelijken voor down level-apparaten |
 
-## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Uitvoeringsstromen en federatie-instellingen geconfigureerd door Azure AD Connect
+## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Uitvoerings stromen en Federatie-instellingen die zijn geconfigureerd door Azure AD Connect
 
-Azure AD Connect werkt niet alle instellingen voor Azure AD-vertrouwensrelatie bij tijdens configuratiestromen. De gewijzigde instellingen zijn afhankelijk van welke taak of uitvoeringsstroom wordt uitgevoerd. In de volgende tabel worden de instellingen weergegeven die van invloed zijn op verschillende uitvoeringsstromen.
+Bij Azure AD Connect worden niet alle instellingen voor Azure AD-vertrouwens relatie bijgewerkt tijdens configuratie stromen. De instellingen die zijn gewijzigd, zijn afhankelijk van welke taak of uitvoerings stroom wordt uitgevoerd. De volgende tabel bevat de instellingen die van invloed zijn op de verschillende uitvoerings stromen.
 
-| Uitvoeringsstroom | Getroffen instellingen |
+| Uitvoerings stroom | Beïnvloede instellingen |
 | :--- | :--- |
-| Eerste pas installatie (express) | Geen |
-| First pass installatie (nieuwe AD FS boerderij) | Er wordt een nieuwe AD FS-farm gemaakt en er wordt een vertrouwensrelatie met Azure AD gemaakt. |
-| Installatie van eerste pas (bestaande AD FS-farm, bestaande Azure AD-vertrouwensrelatie) | Azure AD-vertrouwensid, regels voor uitgiftetransformatie, Azure AD-eindpunten, Alternatieve-id (indien nodig), automatische metagegevensupdate |
-| Azure AD-vertrouwensrelatie opnieuw instellen | Tokenondertekeningscertificaat, Tokenondertekeningsalgoritme, Azure AD-vertrouwensid, Uitgiftetransformatieregels, Azure AD-eindpunten, Alternatieve-id (indien nodig), automatische metagegevensupdate |
-| Federatieserver toevoegen | Geen |
+| Eerste geslaagde installatie (Express) | Geen |
+| Eerste fase van de installatie (nieuwe AD FS Farm) | Er wordt een nieuwe AD FS-farm gemaakt en een vertrouwens relatie met Azure AD is volledig gemaakt. |
+| Eerste geslaagde installatie (bestaande AD FS Farm, bestaande Azure AD-vertrouwens relatie) | Azure AD-vertrouwens-id, uitgifte transformatie regels, Azure AD-eind punten, alternatieve-id (indien nodig), automatische update van meta gegevens |
+| Azure AD-vertrouwens relatie opnieuw instellen | Certificaat voor token-ondertekening, algoritme voor token-ondertekening, Azure AD-vertrouwens-id, uitgifte transformatie regels, Azure AD-eind punten, alternatieve-id (indien nodig), automatische update van meta gegevens |
+| Federatie server toevoegen | Geen |
 | WAP-server toevoegen | Geen |
-| Apparaatopties | Uitgifte transformatie regels, IWA voor apparaatregistratie |
-| Federatief domein toevoegen | Als het domein voor de eerste keer wordt toegevoegd, dat wil zeggen dat de instelling verandert van één domeinfederatie naar multidomeinfederatie : Azure AD Connect maakt de vertrouwensrelatie opnieuw helemaal opnieuw. Als de vertrouwensrelatie met Azure AD al is geconfigureerd voor meerdere domeinen, worden alleen uitgiftetransformatieregels gewijzigd |
+| Apparaatopties | Regels voor uitgifte transformatie, IWA voor apparaatregistratie |
+| Federatief domein toevoegen | Als het domein voor het eerst wordt toegevoegd, dat wil zeggen, wordt de installatie van één domein Federatie gewijzigd in een Federatie met meerdere domeinen. Azure AD Connect wordt de vertrouwens relatie opnieuw gemaakt. Als de vertrouwens relatie met Azure AD al is geconfigureerd voor meerdere domeinen, worden alleen transformatie regels voor uitgifte gewijzigd |
 | TLS bijwerken | Geen |
 
-Tijdens alle bewerkingen, waarin elke instelling wordt gewijzigd, maakt Azure AD Connect een back-up van de huidige vertrouwensinstellingen bij **%ProgramData%\AADConnect\ADFS**
+Bij alle bewerkingen, waarbij elke instelling wordt gewijzigd, maakt Azure AD Connect een back-up van de huidige vertrouwens instellingen op **%ProgramData%\AADConnect\ADFS**
 
-![Azure AD Connect-pagina met bericht over bestaande Azure AD-vertrouwensback-up](./media/how-to-connect-azure-ad-trust/backup2.png)
+![Azure AD Connect pagina met bericht over bestaande Azure AD-vertrouwens relatie](./media/how-to-connect-azure-ad-trust/backup2.png)
 
 > [!NOTE]
-> Voorafgaand aan versie 1.1.873.0 bestond de back-up alleen uit regels voor uitgiftetransformatie en er werd een back-up gemaakt in het logboekbestand wizard trace.
+> Vóór versie 1.1.873.0 is de back-up alleen uit regels voor uitgifte transformatie en zijn er back-ups gemaakt in het tracerings logboek bestand van de wizard.
 
-## <a name="issuance-transform-rules-set-by-azure-ad-connect"></a>Regels voor uitgiftetransformatie die zijn ingesteld door Azure AD Connect
+## <a name="issuance-transform-rules-set-by-azure-ad-connect"></a>Regels voor uitgifte transformatie die zijn ingesteld door Azure AD Connect
 
-Azure AD Connect zorgt ervoor dat de AD-vertrouwensrelatie van Azure altijd is geconfigureerd met de juiste set aanbevolen claimregels. Microsoft raadt aan Azure AD Connect te gebruiken voor het beheren van uw Azure AD-vertrouwensrelatie. In deze sectie worden de ingestelde regels voor uitgiftetransformatie en de beschrijving ervan weergegeven.
+Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is geconfigureerd met de juiste set aanbevolen claim regels. Micro soft raadt u aan Azure AD Connect te gebruiken voor het beheren van uw Azure AD-vertrouwens relatie. In deze sectie vindt u de set met regels voor uitgifte transformatie en de bijbehorende beschrijvingen.
 
 | Regelnaam | Beschrijving |
 | --- | --- |
-| Probleem UPN | Met deze regel wordt de waarde van de gebruikersnaam opgevraagd vanaf het kenmerk dat is geconfigureerd in synchronisatie-instellingen voor gebruikersprincipalname.|
-| Queryobjectguid en msdsconsistencyguid voor aangepaste ImmutableId-claim | Deze regel voegt een tijdelijke waarde toe in de pijplijn voor objectguid- en msdsconsistencyd-waarde als deze bestaat |
-| Controleer op het bestaan van msdsconsistencyguid | Op basis van de vraag of de waarde voor msdsconsistencyguid bestaat of niet, stellen we een tijdelijke vlag in om te sturen wat te gebruiken als Onveranderlijke Id |
-| Msdsconsistencyguid als onveranderlijke id uitgeven als deze bestaat | Msdsconsistencyguid als Onveranderlijke id uitgeven als de waarde bestaat |
-| ProbleemobjectGuidRule als de msdsConsistencyGuid-regel niet bestaat | Als de waarde voor msdsconsistencyguid niet bestaat, wordt de waarde van objectguid uitgegeven als ImmutableId |
-| Naamid van uitgifte | Met deze regel wordt waarde voor de claim voor naam-id's gegeven.|
-| Accounttype uitgeven voor computers die zijn verbonden met een domein | Als de entiteit die wordt geverifieerd een domeinlid apparaat is, geeft deze regel het accounttype af als DJ die een domein aanduidt dat is samengevoegd |
-| AccountType met de waarde GEBRUIKER uitgeven wanneer het geen computeraccount is | Als de entiteit die wordt geverifieerd een gebruiker is, geeft deze regel het accounttype af als Gebruiker |
-| Issue issuerid wanneer het geen computeraccount is | Met deze regel wordt de waarde van de issuerId verwijs wanneer de authenticerende entiteit geen apparaat is. De waarde wordt gemaakt via een regex, die is geconfigureerd door Azure AD Connect. De regex wordt gemaakt nadat rekening wordt gehouden met alle domeinen die worden gefedereerd met Azure AD Connect. |
-| Probleem probleem voor DJ-computer auth | Deze regel geeft de waarde van de issuerId af wanneer de authenticerende entiteit een apparaat is |
-| Probleem onpremobjectguid voor computers die zijn verbonden met een domein | Als de entiteit die wordt geverifieerd een domein-samengevoegd apparaat is, geeft deze regel de on-premises objectguid voor het apparaat af |
-| Ga door de primaire SID | Deze regel geeft de primaire SID van de authenticerende entiteit |
-| Pass through claim - insideCorporateNetwork | Met deze regel wordt een claim weergegeven waarmee Azure AD weet of de verificatie afkomstig is van het bedrijfsnetwerk of extern |
-| Pass Through Claim – Psso |   |
-| Aanvragen voor het verlopen van wachtwoorden afgeven | Met deze regel worden drie claims voor de vervaldatum van het wachtwoord, het aantal dagen waarop het wachtwoord verloopt en de entiteit die wordt geverifieerd en URL waar moet worden gerouteerd voor het wijzigen van het wachtwoord, wordt uitgevoerd.|
-| Pass through claim – authnmethodsreferences | De waarde in de claim die onder deze regel is uitgegeven, geeft aan welk type verificatie voor de entiteit is uitgevoerd |
-| Pass through claim - multifactorauthenticationinstant | De waarde van deze claim geeft de tijd op, in UTC, wanneer de gebruiker voor het laatst meervoudige factorverificatie heeft uitgevoerd. |
-| Pass through claim - AlternateLoginID | Met deze regel wordt de AlternateLoginID-claim uitgevoerd als de verificatie is uitgevoerd met alternatieve inlog-id. |
+| UPN uitgeven | Deze regel voert een query uit op de waarde van userPrincipalName vanaf het kenmerk dat is geconfigureerd in synchronisatie-instellingen voor userPrincipalName.|
+| Query ObjectGUID en msdsconsistencyguid voor aangepaste ImmutableId-claim | Deze regel voegt een tijdelijke waarde toe aan de pijp lijn voor de waarde ObjectGUID en msdsconsistencyguid als deze bestaat. |
+| Controleren op de aanwezigheid van msdsconsistencyguid | Op basis van het feit of de waarde voor msdsconsistencyguid bestaat, stellen we een tijdelijke vlag in om te bepalen wat moet worden gebruikt als ImmutableId |
+| Msdsconsistencyguid uitgeven als onveranderbare ID als deze bestaat | Msdsconsistencyguid als ImmutableId geven als de waarde bestaat |
+| ObjectGuidRule uitgeven als de msdsConsistencyGuid-regel niet bestaat | Als de waarde voor msdsconsistencyguid niet bestaat, wordt de waarde van ObjectGUID uitgegeven als ImmutableId |
+| Nameidentifier uitgeven | Deze regel geeft een waarde voor de claim nameidentifier.|
+| Account type uitgeven voor computers die lid zijn van een domein | Als de entiteit die wordt geverifieerd een apparaat is dat is gekoppeld aan een domein, wordt met deze regel het account type uitgegeven als DJ dat een aan een domein gekoppeld apparaat aanduidt |
+| Account type uitgeven met de waarde gebruiker wanneer dit geen computer account is | Als de entiteit die wordt geverifieerd een gebruiker is, wordt met deze regel het account type als gebruiker uitgegeven |
+| IssuerID uitgeven wanneer het geen computer account is | Met deze regel wordt de issuerId-waarde uitgegeven wanneer de verificatie-entiteit geen apparaat is. De waarde wordt gemaakt via een reguliere expressie, die wordt geconfigureerd door Azure AD Connect. De regex wordt gemaakt na het nemen van alle domeinen die worden gebruikt Azure AD Connect. |
+| IssuerID uitgeven voor DJ computer auth | Met deze regel wordt de issuerId-waarde uitgegeven wanneer de verificatie-entiteit een apparaat is |
+| Onpremobjectguid uitgeven voor computers die lid zijn van een domein | Als de entiteit die wordt geverifieerd een aan het domein gekoppelde apparaat is, wordt met deze regel de lokale ObjectGUID voor het apparaat uitgegeven |
+| Primaire SID door geven | Met deze regel wordt de primaire SID van de verificatie-entiteit uitgegeven |
+| Door geven via claim-insideCorporateNetwork | Deze regel geeft een claim waarmee Azure AD weet of de verificatie afkomstig is van binnen het bedrijfs netwerk of extern |
+| Pass Through-claim – Psso |   |
+| Claims voor verlopen van wacht woorden uitgeven | Met deze regel worden drie claims voor wachtwoord verloop tijd, het aantal dagen voor het verlopen van het wacht woord en de URL waarnaar wordt geauthenticeerd voor het wijzigen van het wacht woord uitgegeven.|
+| Pass Through-claim – authnmethodsreferences | De waarde in de claim die is uitgegeven onder deze regel geeft aan welk type verificatie is uitgevoerd voor de entiteit |
+| Door geven via claim-multifactorauthenticationinstant | De waarde van deze claim specificeert de tijd, in UTC, wanneer de gebruiker voor het laatst meerdere Factor Authentication heeft uitgevoerd. |
+| Door geven via claim-AlternateLoginID | Met deze regel wordt de AlternateLoginID-claim uitgegeven als de verificatie is uitgevoerd met een alternatieve aanmeldings-ID. |
 
 > [!NOTE]
-> De claimregels voor Issue UPN en ImmutableId verschillen als u niet-standaardkeuze gebruikt tijdens de Configuratie van Azure AD Connect
+> De claim regels voor de uitgifte-UPN en ImmutableId verschillen als u een niet-standaard keuze gebruikt tijdens Azure AD Connect configuratie
 
-## <a name="restore-issuance-transform-rules"></a>Regels voor uitgiftetransformatie herstellen
+## <a name="restore-issuance-transform-rules"></a>Regels voor uitgifte transformatie herstellen
 
-Azure AD Connect-versie 1.1.873.0 of hoger maakt een back-up van de Azure AD-vertrouwensinstellingen wanneer er een update wordt uitgevoerd naar de aamservice-vertrouwensinstellingen van Azure. Er wordt een back-up gemaakt van de au-to-trainingsvertrouwensrelaties **op %ProgramData%\AADConnect\ADFS**. De bestandsnaam is in de&lt;volgende&gt;-&lt;&gt;indeling AadTrust- datumtijd .txt, bijvoorbeeld - AadTrust-20180710-150216.txt
+Azure AD Connect versie 1.1.873.0 of hoger maakt een back-up van de vertrouwens instellingen van Azure AD wanneer een update wordt uitgevoerd naar de vertrouwens instellingen van Azure AD. Er wordt een back-up van de Azure AD-vertrouwens instellingen gemaakt op **%ProgramData%\AADConnect\ADFS**. De&lt;bestands naam heeft de volgende indeling AadTrust: date&gt;-&lt;time&gt;. txt, bijvoorbeeld-AadTrust-20180710-150216. txt
 
-![Een schermafbeelding van voorbeeld een back-up van Azure AD-vertrouwensrelatie](./media/how-to-connect-azure-ad-trust/backup.png)
+![Een scherm afbeelding van een voor beeld van een back-up van Azure AD-vertrouwens relatie](./media/how-to-connect-azure-ad-trust/backup.png)
 
-U de regels voor uitgiftetransformatie herstellen met de voorgestelde stappen hieronder
+U kunt de transformatie regels voor uitgifte herstellen met behulp van de onderstaande voorgestelde stappen
 
-1. De gebruikersinterface van AD FS-beheer openen in Serverbeheer
-2. Open de azure AD-vertrouwenseigenschappen door **AD FS &gt; Relying Party Trusts &gt; Microsoft Office 365 Identity Platform &gt; Te gaan bewerken van claimuitgiftebeleid**
-3. Klik op **Regel toevoegen**
-4. Selecteer in de sjabloon claimregel de optie Claims verzenden met een aangepaste regel en klik op **Volgende**
-5. De naam van de claimregel kopiëren uit back-upbestand en deze plakken in de naam van de **regel claim**
-6. Kopieer de claimregel van back-upbestand naar het tekstveld voor **aangepaste regel** en klik op **Voltooien**
+1. Open de gebruikers interface van AD FS beheer in Serverbeheer
+2. Open de eigenschappen van de Azure AD-vertrouwens relatie door te gaan **AD FS &gt; Relying Party-vertrouwens &gt; relaties Microsoft Office 365-identiteits platform &gt; claim uitgifte beleid bewerken**
+3. Klik op **regel toevoegen**
+4. Selecteer claims verzenden met een aangepaste regel in de claim regel sjabloon en klik op **volgende**
+5. Kopieer de naam van de claim regel uit het back-upbestand en plak deze in de naam van het veld **claim regel**
+6. Kopieer de claim regel van het back-upbestand naar het tekst veld voor **aangepaste regel** en klik op **volt ooien**
 
 > [!NOTE]
-> Zorg ervoor dat uw aanvullende regels niet in strijd zijn met de regels die zijn geconfigureerd door Azure AD Connect.
+> Zorg ervoor dat de extra regels niet conflicteren met de regels die zijn geconfigureerd door Azure AD Connect.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Active Directory Federation Services beheren en aanpassen met Azure AD Connect](how-to-connect-fed-management.md)
+* [Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect](how-to-connect-fed-management.md)

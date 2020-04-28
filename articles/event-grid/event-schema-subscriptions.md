@@ -1,6 +1,6 @@
 ---
-title: Azure-abonnement als gebeurtenisrasterbron
-description: Beschrijft de eigenschappen die worden geleverd voor abonnementsgebeurtenissen met Azure Event Grid
+title: Azure-abonnement als Event Grid bron
+description: Hierin worden de eigenschappen beschreven die worden verschaft voor abonnements gebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,48 +8,48 @@ ms.topic: reference
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393231"
 ---
-# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-abonnement als gebeurtenisrasterbron
+# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-abonnement als een Event Grid bron
 
-In dit artikel worden de eigenschappen en het schema voor Azure-abonnementsgebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
+In dit artikel vindt u de eigenschappen en het schema voor Azure-abonnements gebeurtenissen.Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
 
-Azure-abonnementen en resourcegroepen zenden dezelfde gebeurtenistypen uit. De gebeurtenistypen zijn gerelateerd aan resourcewijzigingen of acties. Het belangrijkste verschil is dat resourcegroepen gebeurtenissen uitzenden voor resources binnen de resourcegroep en Azure-abonnementen gebeurtenissen uitzenden voor bronnen in het hele abonnement.
+Azure-abonnementen en-resource groepen verzenden dezelfde gebeurtenis typen. De gebeurtenis typen zijn gerelateerd aan wijzigingen of acties van resources. Het belangrijkste verschil is dat resource groepen gebeurtenissen verzenden voor resources binnen de resource groep en Azure-abonnementen die gebeurtenissen verzenden voor bronnen in het abonnement.
 
-Resourcegebeurtenissen worden gemaakt voor put-, PATCH-, POST- en VERWIJDERbewerkingen die worden verzonden naar `management.azure.com`. GET-bewerkingen maken geen gebeurtenissen. Bewerkingen die naar het `myaccount.blob.core.windows.net`gegevensvlak worden verzonden (zoals ) maken geen gebeurtenissen. De actiegebeurtenissen bieden gebeurtenisgegevens voor bewerkingen, zoals het weergeven van de sleutels voor een resource.
+Resource gebeurtenissen worden gemaakt voor PUT-, PATCH-, POST-en DELETE-bewerkingen die `management.azure.com`worden verzonden naar. Bij GET-bewerkingen worden geen gebeurtenissen gemaakt. Bewerkingen die worden verzonden naar het gegevens vlak `myaccount.blob.core.windows.net`(zoals), maken geen gebeurtenissen. De actie gebeurtenissen bieden gebeurtenis gegevens voor bewerkingen, zoals het weer geven van de sleutels voor een resource.
 
-Wanneer u zich abonneert op gebeurtenissen voor een Azure-abonnement, ontvangt uw eindpunt alle gebeurtenissen voor dat abonnement. De gebeurtenissen kunnen gebeurtenissen bevatten die u wilt zien, zoals het bijwerken van een virtuele machine, maar ook gebeurtenissen die misschien niet belangrijk voor u zijn, zoals het schrijven van een nieuw item in de implementatiegeschiedenis. U alle gebeurtenissen op uw eindpunt ontvangen en code schrijven die de gebeurtenissen verwerkt die u wilt verwerken. U ook een filter instellen bij het maken van het gebeurtenisabonnement.
+Wanneer u zich abonneert op gebeurtenissen voor een Azure-abonnement, ontvangt uw eind punt alle gebeurtenissen voor dat abonnement. De gebeurtenissen kunnen gebeurtenissen bevatten die u wilt zien, zoals het bijwerken van een virtuele machine, maar ook gebeurtenissen die mogelijk niet belang rijk voor u zijn, zoals het schrijven van een nieuwe vermelding in de implementatie geschiedenis. U kunt alle gebeurtenissen op uw eind punt ontvangen en code schrijven waarmee de gebeurtenissen worden verwerkt die u wilt verwerken. U kunt ook een filter instellen bij het maken van het gebeurtenis abonnement.
 
-Als u gebeurtenissen programmatisch wilt afhandelen, `operationName` kunt u gebeurtenissen sorteren door naar de waarde te kijken. Uw gebeurteniseindpunt verwerkt bijvoorbeeld alleen gebeurtenissen voor bewerkingen `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write`die gelijk zijn aan of .
+Als u gebeurtenissen op een programmatische manier wilt afhandelen, kunt `operationName` u gebeurtenissen sorteren door de waarde te bekijken. Uw gebeurtenis eindpunt kan bijvoorbeeld alleen gebeurtenissen verwerken voor bewerkingen die gelijk zijn aan `Microsoft.Compute/virtualMachines/write` of. `Microsoft.Storage/storageAccounts/write`
 
-Het gebeurtenisonderwerp is de resource-id van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u die resource-id op bij het maken van het gebeurtenisabonnement. Als u wilt filteren op een resourcetype, gebruikt u een waarde in de volgende indeling:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u deze resource-ID op bij het maken van het gebeurtenis abonnement. Als u wilt filteren op een resource type, gebruikt u een waarde in de volgende notatie:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
-## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+## <a name="event-grid-event-schema"></a>Event Grid-gebeurtenisschema
 
-### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschik bare gebeurtenis typen
 
-Azure-abonnementen zenden beheergebeurtenissen uit vanuit Azure Resource Manager, zoals wanneer een VM wordt gemaakt of een opslagaccount wordt verwijderd.
+Azure-abonnementen die beheer gebeurtenissen van Azure Resource Manager verzenden, zoals wanneer een virtuele machine wordt gemaakt of een opslag account wordt verwijderd.
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceActionGeannuleerd | Verhoogd wanneer actie op resource wordt geannuleerd. |
-| Microsoft.Resources.ResourceActionFailure | Verhoogd wanneer actie op resource mislukt. |
-| Microsoft.Resources.ResourceActionSucces | Verhoogd wanneer actie op resource slaagt. |
-| Microsoft.Resources.ResourceDeleteAnnuleren | Verhoogd wanneer de bewerking wordt geannuleerd. Deze gebeurtenis vindt plaats wanneer een sjabloonimplementatie wordt geannuleerd. |
-| Microsoft.Resources.ResourceDeleteFailure | Verhoogd wanneer de bewerking wordt verwijderd. |
-| Microsoft.Resources.ResourceDeleteSuccess | Verhoogd wanneer de bewerking wordt verwijderd. |
-| Microsoft.Resources.ResourceWriteAnnuleren | Verhoogd wanneer de bewerking voor maken of bijwerken wordt geannuleerd. |
-| Microsoft.Resources.ResourceWriteFailure | Verhoogd wanneer de bewerking voor maken of bijwerken mislukt. |
-| Microsoft.Resources.ResourceWriteSuccess | Verhoogd wanneer de bewerking voor maken of bijwerken slaagt. |
+| Micro soft. resources. ResourceActionCancel | Deze gebeurtenis treedt op wanneer de actie voor de resource wordt geannuleerd. |
+| Micro soft. resources. ResourceActionFailure | Deze gebeurtenis treedt op wanneer de actie voor de resource mislukt. |
+| Micro soft. resources. ResourceActionSuccess | Deze gebeurtenis treedt op wanneer de actie voor de resource slaagt. |
+| Micro soft. resources. ResourceDeleteCancel | Deze gebeurtenis treedt op wanneer de verwijderings bewerking is geannuleerd. Deze gebeurtenis treedt op wanneer een sjabloon implementatie wordt geannuleerd. |
+| Micro soft. resources. ResourceDeleteFailure | Deze gebeurtenis treedt op wanneer de verwijderings bewerking is mislukt. |
+| Micro soft. resources. ResourceDeleteSuccess | Deze gebeurtenis treedt op wanneer delete is voltooid. |
+| Micro soft. resources. ResourceWriteCancel | Deze gebeurtenis treedt op wanneer Create-of update-bewerking is geannuleerd. |
+| Micro soft. resources. ResourceWriteFailure | Deze gebeurtenis treedt op wanneer Create-of update-bewerking mislukt. |
+| Micro soft. resources. ResourceWriteSuccess | Deze gebeurtenis treedt op wanneer Create of update is voltooid. |
 
-### <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeld gebeurtenis
 
-In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceWriteSuccess** weergegeven. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** en **ResourceWriteCancel** gebeurtenissen met verschillende waarden voor `eventType`.
+In het volgende voor beeld ziet u het schema voor een **ResourceWriteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** -en **ResourceWriteCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
 
 ```json
 [{
@@ -109,7 +109,7 @@ In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceWriteS
 }]
 ```
 
-In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceDeleteSuccess** weergegeven. Hetzelfde schema wordt gebruikt voor **ResourceDeleteFailure** en **ResourceDeleteAnnuleren gebeurtenissen** met verschillende waarden voor `eventType`.
+In het volgende voor beeld ziet u het schema voor een **ResourceDeleteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceDeleteFailure** -en **ResourceDeleteCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
 
 ```json
 [{
@@ -175,7 +175,7 @@ In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceDelete
 }]
 ```
 
-In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceActionSuccess** weergegeven. Hetzelfde schema wordt gebruikt voor **ResourceActionFailure** en **ResourceActionAnnuleren** gebeurtenissen met verschillende waarden voor `eventType`.
+In het volgende voor beeld ziet u het schema voor een **ResourceActionSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceActionFailure** -en **ResourceActionCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
 
 ```json
 [{   
@@ -231,45 +231,45 @@ In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceAction
 }]
 ```
 
-### <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Unieke id voor de gebeurtenis. |
-| data | object | Gegevens over abonnementsgebeurtenissen. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenis gegevens van abonnement. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| autorisatie | object | De gevraagde vergunning voor de bewerking. |
+| autorisatie | object | De aangevraagde autorisatie voor de bewerking. |
 | claims | object | De eigenschappen van de claims. Zie [JWT-specificatie](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)voor meer informatie. |
-| correlationId | tekenreeks | Een bedrijfs-ID voor het oplossen van problemen. |
-| httpRequest httpRequest httpRequest httpRequest | object | De details van de operatie. Dit object wordt alleen opgenomen bij het bijwerken van een bestaande bron of het verwijderen van een resource. |
-| resourceProvider | tekenreeks | De resourceprovider voor de bewerking. |
+| correlationId | tekenreeks | Een bewerkings-ID voor het oplossen van problemen. |
+| httpRequest | object | De details van de bewerking. Dit object is alleen opgenomen bij het bijwerken van een bestaande resource of het verwijderen van een resource. |
+| Resource provider | tekenreeks | De resource provider voor de bewerking. |
 | resourceUri | tekenreeks | De URI van de resource in de bewerking. |
-| operationName | tekenreeks | De operatie die werd genomen. |
+| operationName | tekenreeks | De bewerking die is uitgevoerd. |
 | status | tekenreeks | De status van de bewerking. |
 | subscriptionId | tekenreeks | De abonnements-ID van de resource. |
-| tenantId | tekenreeks | De tenant-id van de resource. |
+| tenantId | tekenreeks | De Tenant-ID van de resource. |
 
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 |Titel |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: Azure Automation with Event Grid en Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Maak een virtuele machine, die een gebeurtenis verzendt. De gebeurtenis activeert een automation-runbook die de virtuele machine tagt en activeert een bericht dat naar een Microsoft Teams-kanaal wordt verzonden. |
-| [How to: abonneren op evenementen via portal](subscribe-through-portal.md) | Gebruik de portal om u te abonneren op gebeurtenissen voor een Azure-abonnement. |
-| [Azure CLI: u abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-cli-azure-subscription.md) |Voorbeeldscript waarmee een Event Grid-abonnement op een Azure-abonnement wordt gemaakt en gebeurtenissen naar een WebHook worden verzendt. |
-| [PowerShell: u abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Voorbeeldscript waarmee een Event Grid-abonnement op een Azure-abonnement wordt gemaakt en gebeurtenissen naar een WebHook worden verzendt. |
+| [Zelf studie: Azure Automation met Event Grid en micro soft teams](ensure-tags-exists-on-new-virtual-machines.md) |Maak een virtuele machine die een gebeurtenis verzendt. De gebeurtenis activeert een Automation-runbook waarmee de virtuele machine wordt gecodeerd en een bericht wordt geactiveerd dat naar een micro soft teams-kanaal wordt verzonden. |
+| [Procedure: abonneren op gebeurtenissen via de portal](subscribe-through-portal.md) | Gebruik de portal om u te abonneren op gebeurtenissen voor een Azure-abonnement. |
+| [Azure CLI: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-cli-azure-subscription.md) |Voorbeeld script voor het maken van een Event Grid-abonnement op een Azure-abonnement en het verzenden van gebeurtenissen naar een webhook. |
+| [Power shell: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Voorbeeld script voor het maken van een Event Grid-abonnement op een Azure-abonnement en het verzenden van gebeurtenissen naar een webhook. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is gebeurtenisraster?](overview.md)
-* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
+* Zie [Wat is Event grid?](overview.md)voor een inleiding tot Azure Event grid.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

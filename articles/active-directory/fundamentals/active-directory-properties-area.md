@@ -1,6 +1,6 @@
 ---
-title: De privacygegevens van uw organisatie toevoegen - Azure Active Directory | Microsoft Documenten
-description: Instructies voor het toevoegen van de privacygegevens van uw organisatie aan het gebied Azure Active Directory Properties.
+title: De privacygegevens van uw organisatie toevoegen-Azure Active Directory | Microsoft Docs
+description: Instructies voor het toevoegen van de privacygegevens van uw organisatie aan het gedeelte met Azure Active Directory eigenschappen.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80876181"
 ---
-# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>De privacygegevens van uw organisatie toevoegen met Azure Active Directory
-In dit artikel wordt uitgelegd hoe een tenantbeheerder privacygerelateerde informatie kan toevoegen aan de Azure AD-tenant (Azure Directory) van een organisatie via de Azure-portal.
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>De privacygegevens van uw organisatie toevoegen met behulp van Azure Active Directory
+In dit artikel wordt uitgelegd hoe een Tenant beheerder via de Azure Portal aan privacy gerelateerde informatie kan toevoegen aan de Azure Active Directory van een organisatie (Azure AD).
 
-We raden u ten zeerste aan om zowel uw wereldwijde privacycontactpersoon als de privacyverklaring van uw organisatie toe te voegen, zodat uw interne medewerkers en externe gasten uw beleid kunnen bekijken. Omdat privacyverklaringen uniek zijn gemaakt en op maat zijn gemaakt voor elk bedrijf, raden we u ten zeerste aan contact op te nemen met een advocaat voor hulp.
+We raden u ten zeerste aan om zowel uw wereld wijde privacy-contact persoon als de privacyverklaring van uw organisatie toe te voegen, zodat uw interne mede werkers en externe gasten uw beleid kunnen controleren. Omdat privacyverklaringen uniek zijn gemaakt en aangepast voor elk bedrijf, raden we u ten zeerste aan om contact op te nemen met een advocaat voor hulp.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="add-your-privacy-info-on-azure-ad"></a>Uw privacygegevens toevoegen aan Azure AD
-U voegt de privacygegevens van uw organisatie toe in het gebied **Eigenschappen** van Azure AD.
+## <a name="add-your-privacy-info-on-azure-ad"></a>Uw privacy-informatie toevoegen aan Azure AD
+U kunt de privacygegevens van uw organisatie toevoegen in het gedeelte **Eigenschappen** van Azure AD.
 
-### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Toegang krijgen tot het gebied Eigenschappen en uw privacygegevens toevoegen
+### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Voor toegang tot het gedeelte Eigenschappen en uw privacy-informatie toevoegen
 
-1.    Meld u aan bij de Azure-portal als tenantbeheerder.
+1.    Meld u aan bij de Azure Portal als een Tenant beheerder.
 
-2.    Selecteer op de linker navigatiebalk **Azure Active Directory**en selecteer **Eigenschappen**.
+2.    Selecteer **Azure Active Directory**op de navigatie balk aan de linkerkant en selecteer vervolgens **Eigenschappen**.
 
-    Het gebied **Eigenschappen** wordt weergegeven.
+    Het gebied **Eigenschappen** wordt weer gegeven.
 
-    ![Azure AD Properties-gebied met het gebied privacyinfo](media/active-directory-properties-area/properties-area.png)
+    ![Azure AD-eigenschappen gebied met markeren van het gebied met privacy-informatie](media/active-directory-properties-area/properties-area.png)
 
-3.    Voeg uw privacygegevens toe voor uw medewerkers:
+3.    Uw privacy-informatie voor uw werk nemers toevoegen:
 
-    - **Technisch contact.** Typ het e-mailadres waar de persoon contact mee moet opnemen voor technische ondersteuning binnen uw organisatie.
+    - **Technische contact persoon.** Typ het e-mail adres van de persoon die contact moet opnemen voor technische ondersteuning binnen uw organisatie.
     
-    - **Wereldwijd contact op het contact met de privacy.** Typ het e-mailadres waar de persoon contact mee kan opnemen voor vragen over de privacy van persoonsgegevens. Deze persoon is ook degene die Microsoft contacten als er een datalek. Als hier geen persoon wordt vermeld, neemt Microsoft contact op met uw globale beheerders.
+    - **Wereld wijde privacy-contact persoon.** Typ het e-mail adres van de contact persoon voor informatie over privacy van persoonlijke gegevens. Deze persoon is ook wie micro soft contact maakt als er een inbreuk op de gegevens is. Als hier geen persoon wordt vermeld, neemt micro soft contact op met uw globale beheerders.
 
-    - **URL van de privacyverklaring.** Typ de koppeling naar het document van uw organisatie waarin wordt beschreven hoe uw organisatie omgaat met de gegevensprivacy van zowel interne als externe gasten.
+    - **URL van privacyverklaring.** Typ de koppeling naar het document van uw organisatie waarin wordt beschreven hoe uw organisatie de privacy van de interne en externe gegevens verhandelt.
 
         >[!Important]
-        >Als u uw eigen privacyverklaring of uw privacycontactpersoon niet opneemt, zien uw externe gasten tekst in het vak **Machtigingen voor beoordeling** met de tekst, ** <uw oorspronkelijke _naam_> geen links naar hun voorwaarden heeft verstrekt om te bekijken.** Een gastgebruiker ziet dit bericht bijvoorbeeld wanneer hij of zij een uitnodiging ontvangt om toegang te krijgen tot een organisatie via B2B-samenwerking.
+        >Als u geen van uw eigen privacyverklaring of uw privacy-contact persoon opneemt, wordt in uw externe gasten **Review Permissions** tekst weer gegeven in het vak ** <machtigingen controleren. _de naam van uw organisatie_> geen koppelingen naar de voor waarden die u kunt door geven**. Een gast gebruiker krijgt bijvoorbeeld dit bericht te zien wanneer ze een uitnodiging ontvangen om toegang te krijgen tot een organisatie via B2B-samen werking.
 
-        ![Het vak Machtigingen voor B2B-samenwerkingcontroleren met bericht](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
+        ![Het vak Machtigingen voor B2B-samen werking controleren met een bericht](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
 4.    Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Inwisseling van Azure Active Directory B2B-uitnodigingvoor samenwerkingsuitnodiging](../b2b/redemption-experience.md)
-- [Profielgegevens voor een gebruiker toevoegen of wijzigen in Azure Active Directory](active-directory-users-profile-azure-portal.md)
+- [Inwisseling uitnodiging Azure Active Directory B2B-samen werking](../b2b/redemption-experience.md)
+- [Profiel gegevens voor een gebruiker toevoegen of wijzigen in Azure Active Directory](active-directory-users-profile-azure-portal.md)

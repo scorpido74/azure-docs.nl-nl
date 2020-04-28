@@ -1,6 +1,6 @@
 ---
-title: Gebruikersprofielkenmerken in Azure Active Directory B2C
-description: Meer informatie over de kenmerken van het type gebruikersbron die worden ondersteund door het gebruikersprofiel van de Azure AD B2C-map. Meer informatie over ingebouwde kenmerken, extensies en hoe kenmerken worden toegewezen aan Microsoft Graph.
+title: Kenmerken van gebruikers profielen in Azure Active Directory B2C
+description: Meer informatie over de kenmerken van het gebruikers bron type die worden ondersteund door de Azure AD B2C Directory-gebruikers profiel. Meer informatie over ingebouwde kenmerken, uitbrei dingen en hoe kenmerken worden toegewezen aan Microsoft Graph.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,108 +11,108 @@ ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80057297"
 ---
-# <a name="user-profile-attributes"></a>Kenmerken van gebruikersprofielen
+# <a name="user-profile-attributes"></a>Kenmerken van gebruikersprofiel
 
-Uw Azure Active Directory (Azure AD) B2C-mapgebruikersprofiel wordt geleverd met een ingebouwde set kenmerken, zoals voornaam, achternaam, plaats, postcode en telefoonnummer. U het gebruikersprofiel uitbreiden met uw eigen toepassingsgegevens zonder dat u een extern gegevensarchief nodig hebt. De meeste kenmerken die kunnen worden gebruikt met Azure AD B2C-gebruikersprofielen worden ook ondersteund door Microsoft Graph. In dit artikel worden ondersteunde Azure AD B2C-gebruikersprofielkenmerken beschreven. Het merkt ook de kenmerken op die niet worden ondersteund door Microsoft Graph, evenals Microsoft Graph-kenmerken die niet mogen worden gebruikt met Azure AD B2C.
+Uw Azure Active Directory (Azure AD) B2C Directory-gebruikers profiel wordt geleverd met een ingebouwde set kenmerken, zoals de naam, de voor waarde, de plaats, de post code en het telefoon nummer. U kunt het gebruikers profiel uitbreiden met uw eigen toepassings gegevens zonder dat hiervoor een extern gegevens archief nodig is. De meeste kenmerken die kunnen worden gebruikt met Azure AD B2C gebruikers profielen worden ook ondersteund door Microsoft Graph. In dit artikel worden ondersteunde Azure AD B2C kenmerken voor gebruikers profielen beschreven. Ook worden de kenmerken aangegeven die niet worden ondersteund door Microsoft Graph, evenals Microsoft Graph kenmerken die niet met Azure AD B2C mogen worden gebruikt.
 
 > [!IMPORTANT]
-> U mag geen ingebouwde of extensiekenmerken gebruiken om gevoelige persoonlijke gegevens op te slaan, zoals accountgegevens, identificatienummers van de overheid, kaarthoudergegevens, financiële rekeninggegevens, gezondheidsinformatie of gevoelige achtergrondinformatie.
+> U moet geen ingebouwde of extensie kenmerken gebruiken om gevoelige persoonlijke gegevens op te slaan, zoals account referenties, sofi-identificatie nummers, kaart gegevens, financiële account gegevens, informatie over gezondheids zorg of gevoelige achtergrond informatie.
 
-U ook integreren met externe systemen. U bijvoorbeeld Azure AD B2C gebruiken voor verificatie, maar delegeren aan een externe crm-database (customer relationship management) of klantenloyaliteit als de gezaghebbende bron van klantgegevens. Zie voor meer informatie de [externe profieloplossing.](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile)
+U kunt ook integreren met externe systemen. U kunt bijvoorbeeld Azure AD B2C gebruiken voor verificatie, maar deze delegeren aan een externe klant Relationship Management (CRM) of klant loyale Data Base als de gezaghebbende bron van klant gegevens. Zie de oplossing voor [externe profielen](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) voor meer informatie.
 
-In de onderstaande tabel worden de kenmerken van het [type gebruikersbron](https://docs.microsoft.com/graph/api/resources/user) weergegeven die worden ondersteund door het gebruikersprofiel van de Azure AD B2C-map. Het geeft de volgende informatie over elk kenmerk:
+In de volgende tabel worden de kenmerken van het [bron type](https://docs.microsoft.com/graph/api/resources/user) van de gebruiker weer gegeven die worden ondersteund door de Azure AD B2C Directory-gebruikers profiel. Het geeft de volgende informatie over elk kenmerk:
 
-- Kenmerknaam die wordt gebruikt door Azure AD B2C (gevolgd door de naam Microsoft Graph tussen haakjes, als deze verschilt)
-- Gegevenstype Kenmerk
-- Kenmerkbeschrijving
-- Als het kenmerk beschikbaar is in de Azure-portal
-- Als het kenmerk kan worden gebruikt in een gebruikersstroom
-- Als het kenmerk kan worden gebruikt in een aangepast [azure AD-technisch profiel](active-directory-technical-profile.md) &lt;en in welke sectie (InputClaims&gt;&lt;&gt;, &lt;OutputClaims&gt;of PersistedClaims)
+- De kenmerk naam die wordt gebruikt door Azure AD B2C (gevolgd door de naam van de Microsoft Graph tussen haakjes, indien anders)
+- Gegevens type van kenmerk
+- Kenmerk Beschrijving
+- Als het kenmerk beschikbaar is in de Azure Portal
+- Als het kenmerk kan worden gebruikt in een gebruikers stroom
+- Als het kenmerk kan worden gebruikt in een aangepast beleid [voor Azure AD technische profielen](active-directory-technical-profile.md) en in welke sectie&lt;(&gt;InputClaims &lt;,&gt;OutputClaims of &lt;PersistedClaims&gt;)
 
-|Name     |Type     |Beschrijving|Azure Portal|Gebruikersstromen|Aangepast beleid|
+|Naam     |Type     |Beschrijving|Azure Portal|Gebruikersstromen|Aangepast beleid|
 |---------|---------|----------|------------|----------|-------------|
-|accountIngeschakeld  |Booleaans|Of het gebruikersaccount is ingeschakeld of uitgeschakeld: **true** als het account is ingeschakeld, anders **false**.|Ja|Nee|Persistented, Output|
-|ageGroup        |Tekenreeks|De leeftijdsgroep van de gebruiker. Mogelijke waarden: null, Ongedefinieerd, Minderjarig, Volwassen, NotAdult.|Ja|Nee|Persistented, Output|
-|alternativeSecurityId ([Identiteiten](manage-user-accounts-graph-api.md#identities-property))|Tekenreeks|Eén gebruikersidentiteit van de externe identiteitsprovider.|Nee|Nee|Invoer, Persistent, Output|
-|alternativeSecurityIds ([Identiteiten](manage-user-accounts-graph-api.md#identities-property))|alternatieve securityId-verzameling|Een verzameling gebruikersidentiteiten van externe identiteitsproviders.|Nee|Nee|Persistented, Output|
-|city            |Tekenreeks|De stad waarin de gebruiker zich bevindt. Maximale lengte 128.|Ja|Ja|Persistented, Output|
-|toestemmingProvidedForMinor|Tekenreeks|Of de toestemming is verleend voor een minderjarige. Toegestane waarden: null, verleend, geweigerd of nietVereist.|Ja|Nee|Persistented, Output|
-|land         |Tekenreeks|Het land/de regio waarin de gebruiker zich bevindt. Voorbeeld: "VS" of "UK". Maximale lengte 128.|Ja|Ja|Persistented, Output|
-|createdDateTime|DateTime|De datum waarop het gebruikersobject is gemaakt. Alleen lezen.|Nee|Nee|Persistented, Output|
-|creationType    |Tekenreeks|Als het gebruikersaccount is gemaakt als een lokaal account voor een Azure Active Directory B2C-tenant, is de waarde LocalAccount of nameCoexistence. Alleen lezen.|Nee|Nee|Persistented, Output|
-|datumOfBirth     |Date|Geboortedatum.|Nee|Nee|Persistented, Output|
-|department      |Tekenreeks|De naam voor de afdeling waarin de gebruiker werkt. Maximale lengte 64.|Ja|Nee|Persistented, Output|
-|displayName     |Tekenreeks|De weergavenaam voor de gebruiker. Maximale lengte 256.|Ja|Ja|Persistented, Output|
-|facsimileTelefoonNummer<sup>1</sup>|Tekenreeks|Het telefoonnummer van de zakelijke faxvan de gebruiker.|Ja|Nee|Persistented, Output|
-|givenName       |Tekenreeks|De voornaam (voornaam) van de gebruiker. Maximale lengte 64.|Ja|Ja|Persistented, Output|
-|jobTitel        |Tekenreeks|De functietitel van de gebruiker. Maximale lengte 128.|Ja|Ja|Persistented, Output|
-|onveranderlijkE id     |Tekenreeks|Een id die doorgaans wordt gebruikt voor gebruikers die zijn gemigreerd vanuit on-premises Active Directory.|Nee|Nee|Persistented, Output|
-|legalAgeGroupClassificatie|Tekenreeks|Wettelijke leeftijdscategorieclassificatie. Alleen-lezen en berekend op basis van ageGroup en consentProvidedForMinor eigenschappen. Toegestane waarden: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult en adult.|Ja|Nee|Persistented, Output|
-|legaalLand<sup>1</sup>  |Tekenreeks|Land voor juridische doeleinden.|Nee|Nee|Persistented, Output|
-|mail            |Tekenreeks|Het SMTP-adres voor de gebruiker, bijvoorbeeld "bob@contoso.com". Alleen-lezen.|Nee|Nee|Persistented, Output|
-|mailNickName    |Tekenreeks|De e-mailalias voor de gebruiker. Maximale lengte 64.|Nee|Nee|Persistented, Output|
-|mobiel (mobiel) |Tekenreeks|Het primaire mobiele telefoonnummer voor de gebruiker. Maximale lengte 64.|Ja|Nee|Persistented, Output|
-|Netid           |Tekenreeks|Netto-ID.|Nee|Nee|Persistented, Output|
-|objectId        |Tekenreeks|Een wereldwijd unieke id (GUID) die de unieke id voor de gebruiker is. Voorbeeld: 12345678-9abc-def0-1234-56789abcde. Alleen lezen, onveranderlijk.|Alleen-lezen|Ja|Invoer, Persistent, Output|
-|andereMails      |Tekenreeksverzameling|Een lijst met extra e-mailadressen voor de gebruiker. Voorbeeld: ["bob@contoso.comRobert@fabrikam.com", " "].|Ja (Alternatieve e-mail)|Nee|Persistented, Output|
-|wachtwoord        |Tekenreeks|Het wachtwoord voor het lokale account tijdens het maken van de gebruiker.|Nee|Nee|Volhard|
-|wachtwoordBeleid     |Tekenreeks|Beleid van het wachtwoord. Het is een tekenreeks die bestaat uit verschillende beleidsnaam gescheiden door komma' s. d.w.z. "DisablePasswordExpiration, DisableStrongPassword".|Nee|Nee|Persistented, Output|
-|physicalDeliveryOfficeName (officeLocatie)|Tekenreeks|De kantoorlocatie in de plaats van de gebruiker. Maximale lengte 128.|Ja|Nee|Persistented, Output|
-|Postcode      |Tekenreeks|De postcode voor het postadres van de gebruiker. De postcode is specifiek voor het land/de regio van de gebruiker. In de Verenigde Staten van Amerika bevat dit kenmerk de postcode. Maximale lengte 40.|Ja|Nee|Persistented, Output|
-|voorkeurTaal    |Tekenreeks|De voorkeurstaal voor de gebruiker. Moet volgen ISO 639-1 Code. Voorbeeld: "en-US".|Nee|Nee|Persistented, Output|
-|refreshTokensValidFromDateTime|DateTime|Alle vernieuwingstokens die vóór deze tijd zijn uitgegeven, zijn ongeldig en toepassingen krijgen een foutmelding wanneer u een ongeldig vernieuwingstoken gebruikt om een nieuw toegangstoken te verkrijgen. Als dit gebeurt, moet de toepassing een nieuw vernieuwingstoken aanschaffen door een aanvraag in te dienen bij het geautoriseerde eindpunt. Alleen-lezen.|Nee|Nee|Uitvoer|
-|signInNames ([Identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|De unieke aanmeldingsnaam van de lokale accountgebruiker van elk type in de map. Gebruik dit om een gebruiker met aanmeldingswaarde te krijgen zonder het lokale accounttype op te geven.|Nee|Nee|Invoer|
-|signInNames.userName[(Identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|De unieke gebruikersnaam van de lokale accountgebruiker in de directory. Gebruik dit om een gebruiker met een specifieke aanmeldingsgebruikersnaam te maken of te krijgen. Als u dit alleen in PersistedClaims opgeeft tijdens de bewerking Patch, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames blijven ondertekenen.|Nee|Nee|Invoer, Persistent, Output|
-|signInNames.phoneNumber ([Identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|Het unieke telefoonnummer van de lokale accountgebruiker in de directory. Gebruik dit om een gebruiker te maken of te krijgen met een specifiek aanmeldingstelefoonnummer. Als u dit alleen in PersistedClaims opgeeft tijdens de bewerking Patch, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames blijven ondertekenen.|Nee|Nee|Invoer, Persistent, Output|
-|signInNames.emailAddress[(Identiteiten](manage-user-accounts-graph-api.md#identities-property))|Tekenreeks|Het unieke e-mailadres van de lokale accountgebruiker in de directory. Gebruik dit om een gebruiker met een specifiek e-mailadres aan te melden of te krijgen. Als u dit alleen in PersistedClaims opgeeft tijdens de bewerking Patch, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames blijven ondertekenen.|Nee|Nee|Invoer, Persistent, Output|
-|state           |Tekenreeks|De staat of provincie op het adres van de gebruiker. Maximale lengte 128.|Ja|Ja|Persistented, Output|
-|streetAddress   |Tekenreeks|Het adres van de plaats van de gebruiker van het bedrijfsleven. Maximale lengte 1024.|Ja|Ja|Persistented, Output|
-|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Tekenreeks|Het secundaire telefoonnummer van de gebruiker, gebruikt voor multi-factor authenticatie.|Ja|Nee|Persistented, Output|
-|strongAuthenticationEmailAddress<sup>1</sup>|Tekenreeks|Het SMTP-adres voor de gebruiker. Voorbeeld:bob@contoso.com" " Dit kenmerk wordt gebruikt voor aanmelding met gebruikersnaambeleid om het e-mailadres van de gebruiker op te slaan. Het e-mailadres dat vervolgens wordt gebruikt in een wachtwoordresetstroom.|Ja|Nee|Persistented, Output|
-|strongAuthenticationPhoneNummer<sup>1</sup>|Tekenreeks|Het primaire telefoonnummer van de gebruiker, gebruikt voor multi-factor authenticatie.|Ja|Nee|Persistented, Output|
-|surname         |Tekenreeks|De achternaam van de gebruiker (familienaam of achternaam). Maximale lengte 64.|Ja|Ja|Persistented, Output|
-|telefoonNummer (eerste vermelding van businessPhones)|Tekenreeks|Het primaire telefoonnummer van de plaats van de gebruiker.|Ja|Nee|Persistented, Output|
-|userPrincipalName    |Tekenreeks|De UPN (user Principal name) van de gebruiker. De UPN is een internet-stijl login naam voor de gebruiker op basis van de internet standaard RFC 822. Het domein moet aanwezig zijn in de verzameling geverifieerde domeinen van de tenant. Deze eigenschap is vereist wanneer een account wordt gemaakt. Onveranderlijke.|Nee|Nee|Invoer, Persistent, Output|
-|gebruikLocatie   |Tekenreeks|Vereist voor gebruikers die licenties krijgen toegewezen vanwege de wettelijke verplichting om te controleren op beschikbaarheid van services in landen. Niet te niet te doen. Een landcode met twee letters (ISO-norm 3166). Voorbeelden: "VS", "JP" en "GB".|Ja|Nee|Persistented, Output|
-|userType        |Tekenreeks|Een tekenreekswaarde die kan worden gebruikt om gebruikerstypen in uw map te classificeren. Waarde moet lid zijn. Alleen-lezen.|Alleen-lezen|Nee|Persistented, Output|
-|userState (externalUserState)<sup>2</sup>|Tekenreeks|Geeft alleen voor Azure AD B2B-account aan of de uitnodiging in behandeling is Geaccepteerd of geaccepteerd.|Nee|Nee|Persistented, Output|
-|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Toont de tijdstempel voor de laatste wijziging in de eigenschap UserState.|Nee|Nee|Persistented, Output|
-|<sup>1.</sup> Niet ondersteund door Microsoft Graph<br><sup>2.</sup> Mag niet worden gebruikt met Azure AD B2C||||||
+|accountEnabled  |Booleaans|Hiermee wordt aangegeven of het gebruikers account is in-of uitgeschakeld: **True** als het account is ingeschakeld, anders **False**.|Ja|Nee|Persistent gemaakt, uitvoer|
+|ageGroup        |Tekenreeks|De leeftijds groep van de gebruiker. Mogelijke waarden: null, undefined, Minor, volwassene, NotAdult.|Ja|Nee|Persistent gemaakt, uitvoer|
+|alternativeSecurityId ([identiteiten](manage-user-accounts-graph-api.md#identities-property))|Tekenreeks|Eén gebruikers identiteit van de externe ID-provider.|Nee|Nee|Invoer, persistent, uitvoer|
+|alternativeSecurityIds ([identiteiten](manage-user-accounts-graph-api.md#identities-property))|alternatieve securityId-verzameling|Een verzameling gebruikers identiteiten van externe ID-providers.|Nee|Nee|Persistent gemaakt, uitvoer|
+|city            |Tekenreeks|De plaats waarin de gebruiker zich bevindt. Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
+|consentProvidedForMinor|Tekenreeks|Hiermee wordt aangegeven of de toestemming voor een secundaire is toegestaan. Toegestane waarden: null, verleend, geweigerd of notRequired.|Ja|Nee|Persistent gemaakt, uitvoer|
+|land         |Tekenreeks|Het land/de regio waarin de gebruiker zich bevindt. Voor beeld: "US" of "UK". Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
+|createdDateTime|DateTime|De datum waarop het gebruikers object is gemaakt. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
+|creationType    |Tekenreeks|Als het gebruikers account is gemaakt als een lokaal account voor een Azure Active Directory B2C Tenant, is de waarde LocalAccount of nameCoexistence. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
+|dateOfBirth     |Date|Geboortedatum.|Nee|Nee|Persistent gemaakt, uitvoer|
+|department      |Tekenreeks|De naam van de afdeling waarin de gebruiker werkt. Maximale lengte van 64.|Ja|Nee|Persistent gemaakt, uitvoer|
+|displayName     |Tekenreeks|De weergave naam voor de gebruiker. Maximale lengte van 256.|Ja|Ja|Persistent gemaakt, uitvoer|
+|facsimileTelephoneNumber<sup>1</sup>|Tekenreeks|Het telefoon nummer van de zakelijke faxmachine van de gebruiker.|Ja|Nee|Persistent gemaakt, uitvoer|
+|givenName       |Tekenreeks|De opgegeven naam (voor naam) van de gebruiker. Maximale lengte van 64.|Ja|Ja|Persistent gemaakt, uitvoer|
+|jobTitle        |Tekenreeks|De functie van de gebruiker. Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
+|immutableId     |Tekenreeks|Een id die meestal wordt gebruikt voor gebruikers die zijn gemigreerd vanuit een on-premises Active Directory.|Nee|Nee|Persistent gemaakt, uitvoer|
+|legalAgeGroupClassification|Tekenreeks|Groeps classificatie juridische leeftijd. Alleen-lezen en berekend op basis van de eigenschappen ageGroup en consentProvidedForMinor. Toegestane waarden: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult en volwassene.|Ja|Nee|Persistent gemaakt, uitvoer|
+|legalCountry<sup>1</sup>  |Tekenreeks|Land voor juridische doel einden.|Nee|Nee|Persistent gemaakt, uitvoer|
+|mail            |Tekenreeks|Het SMTP-adres voor de gebruiker, bijvoorbeeldbob@contoso.com. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
+|mailNickName    |Tekenreeks|De e-mail alias voor de gebruiker. Maximale lengte van 64.|Nee|Nee|Persistent gemaakt, uitvoer|
+|mobiel (mobilePhone) |Tekenreeks|Het primaire mobiele telefoon nummer voor de gebruiker. Maximale lengte van 64.|Ja|Nee|Persistent gemaakt, uitvoer|
+|netId           |Tekenreeks|Net-ID.|Nee|Nee|Persistent gemaakt, uitvoer|
+|Id        |Tekenreeks|Een Globally Unique Identifier (GUID) die de unieke id voor de gebruiker is. Voor beeld: 12345678-9abc-def0-1234-56789abcde. Alleen-lezen, onveranderbaar.|Alleen-lezen|Ja|Invoer, persistent, uitvoer|
+|otherMails      |Teken reeks verzameling|Een lijst met aanvullende e-mail adressen voor de gebruiker. Voor beeld: [bob@contoso.com"",Robert@fabrikam.com""].|Ja (alternatief e-mail adres)|Nee|Persistent gemaakt, uitvoer|
+|wachtwoord        |Tekenreeks|Het wacht woord voor het lokale account tijdens het maken van de gebruiker.|Nee|Nee|Persistente|
+|passwordPolicies     |Tekenreeks|Het beleid van het wacht woord. Het is een teken reeks die bestaat uit een andere beleids naam, gescheiden door komma's. dat wil zeggen "DisablePasswordExpiration, DisableStrongPassword".|Nee|Nee|Persistent gemaakt, uitvoer|
+|physicalDeliveryOfficeName (officeLocation)|Tekenreeks|De kantoor locatie in de bedrijfs plaats van de gebruiker. Maximale lengte van 128.|Ja|Nee|Persistent gemaakt, uitvoer|
+|Code      |Tekenreeks|De post code voor het post adres van de gebruiker. De post code is specifiek voor het land/de regio van de gebruiker. In de Verenigde Staten van America bevat dit kenmerk de post code. Maximale lengte van 40.|Ja|Nee|Persistent gemaakt, uitvoer|
+|preferredLanguage    |Tekenreeks|De voorkeurs taal voor de gebruiker. De ISO 639-1-code moet volgen. Voor beeld: nl-nl.|Nee|Nee|Persistent gemaakt, uitvoer|
+|refreshTokensValidFromDateTime|DateTime|Vernieuwings tokens die vóór deze tijd zijn uitgegeven, zijn ongeldig en er wordt een fout melding weer gegeven wanneer toepassingen een ongeldig vernieuwings token gebruiken om een nieuw toegangs token op te halen. Als dit het geval is, moet de toepassing een nieuw vernieuwings token verkrijgen door een aanvraag naar het toestemming eind punt te maken. Alleen-lezen.|Nee|Nee|Uitvoer|
+|signInNames ([identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|De unieke aanmeldings naam van de gebruiker van het lokale account van een wille keurig type in de Directory. Gebruik deze om een gebruiker op te halen met een aanmeldings waarde zonder het lokale account type op te geven.|Nee|Nee|Invoer|
+|signInNames. userName ([identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|De unieke gebruikers naam van de lokale account gebruiker in de Directory. Gebruik deze om een gebruiker te maken of op te halen met een specifieke gebruikers naam voor aanmelden. Als u deze para meter in PersistedClaims opgeeft, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames persistent maken.|Nee|Nee|Invoer, persistent, uitvoer|
+|signInNames. phoneNumber ([identiteiten](manage-user-accounts-graph-api.md#identities-property)) |Tekenreeks|Het unieke telefoon nummer van de lokale account gebruiker in de Directory. Gebruik deze om een gebruiker met een specifiek aanmeldings nummer te maken of op te halen. Als u deze para meter in PersistedClaims opgeeft, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames persistent maken.|Nee|Nee|Invoer, persistent, uitvoer|
+|signInNames. emailAddress ([identiteiten](manage-user-accounts-graph-api.md#identities-property))|Tekenreeks|Het unieke e-mail adres van de lokale account gebruiker in de Directory. Gebruik deze om een gebruiker met een specifiek e-mail adres voor aanmelden te maken of op te halen. Als u deze para meter in PersistedClaims opgeeft, worden andere typen signInNames verwijderd. Als u een nieuw type signInNames wilt toevoegen, moet u ook bestaande signInNames persistent maken.|Nee|Nee|Invoer, persistent, uitvoer|
+|state           |Tekenreeks|De staat of provincie in het adres van de gebruiker. Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
+|streetAddress   |Tekenreeks|Het adres van de bedrijfs locatie van de gebruiker. Maximale lengte van 1024.|Ja|Ja|Persistent gemaakt, uitvoer|
+|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Tekenreeks|Het secundaire telefoon nummer van de gebruiker die wordt gebruikt voor multi-factor Authentication.|Ja|Nee|Persistent gemaakt, uitvoer|
+|strongAuthenticationEmailAddress<sup>1</sup>|Tekenreeks|Het SMTP-adres voor de gebruiker. Voor beeld:bob@contoso.com"" dit kenmerk wordt gebruikt voor aanmelding met gebruikers naam beleid, om het e-mail adres van de gebruiker op te slaan. Het e-mail adres wordt vervolgens gebruikt in een stroom voor het opnieuw instellen van een wacht woord.|Ja|Nee|Persistent gemaakt, uitvoer|
+|strongAuthenticationPhoneNumber<sup>1</sup>|Tekenreeks|Het primaire telefoon nummer van de gebruiker die wordt gebruikt voor multi-factor Authentication.|Ja|Nee|Persistent gemaakt, uitvoer|
+|surname         |Tekenreeks|De voor naam van de gebruiker (familie naam of achternaam). Maximale lengte van 64.|Ja|Ja|Persistent gemaakt, uitvoer|
+|telephoneNumber (eerste vermelding van businessPhones)|Tekenreeks|Het primaire telefoon nummer van de bedrijfs plaats van de gebruiker.|Ja|Nee|Persistent gemaakt, uitvoer|
+|userPrincipalName    |Tekenreeks|De UPN (user Principal name) van de gebruiker. De UPN is een aanmeldings naam voor Internet-stijl voor de gebruiker op basis van Internet Standard RFC 822. Het domein moet aanwezig zijn in de verzameling van geverifieerde domeinen van de Tenant. Deze eigenschap is vereist wanneer een account wordt gemaakt. Onveranderbare.|Nee|Nee|Invoer, persistent, uitvoer|
+|usageLocation   |Tekenreeks|Vereist voor gebruikers aan wie licenties moeten worden toegewezen vanwege wettelijke vereisten om te controleren of er services beschikbaar zijn in landen. Geen Null-waarden. Een land code van twee letters (ISO-standaard 3166). Voor beelden: "US", "JP" en "GB".|Ja|Nee|Persistent gemaakt, uitvoer|
+|User type        |Tekenreeks|Een teken reeks waarde die kan worden gebruikt voor het classificeren van gebruikers typen in uw Directory. Waarde moet lid zijn. Alleen-lezen.|Alleen-lezen|Nee|Persistent gemaakt, uitvoer|
+|userState (externalUserState)<sup>2</sup>|Tekenreeks|Alleen voor Azure AD B2B-account geeft aan of de uitnodiging wordt PendingAcceptance of geaccepteerd.|Nee|Nee|Persistent gemaakt, uitvoer|
+|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Toont de tijds tempel voor de laatste wijziging van de eigenschap UserState.|Nee|Nee|Persistent gemaakt, uitvoer|
+|<sup>1</sup> Niet ondersteund door Microsoft Graph<br><sup>2</sup> Mag niet worden gebruikt met Azure AD B2C||||||
 
 
-## <a name="extension-attributes"></a>Extensiekenmerken
+## <a name="extension-attributes"></a>Extensie kenmerken
 
 U moet vaak uw eigen kenmerken maken, zoals in de volgende gevallen:
 
-- Een klantgerichte toepassing moet blijven bestaan voor een kenmerk als **LoyaltyNumber.**
-- Een identiteitsprovider heeft een unieke gebruikers-id zoals **uniekeUserGUID** die moet worden opgeslagen.
-- Een aangepaste gebruikersreis moet blijven bestaan voor een status van een gebruiker, zoals **migratieStatus**.
+- Een klant gerichte toepassing moet persistent blijven voor een kenmerk zoals **LoyaltyNumber**.
+- Een id-provider heeft een unieke gebruikers-id, zoals **uniqueUserGUID** , die moeten worden opgeslagen.
+- Een aangepaste gebruikers traject moet persistent worden gemaakt voor een status van een gebruiker, zoals **migrationStatus**.
 
-Azure AD B2C breidt de set kenmerken die zijn opgeslagen op elk gebruikersaccount uit. Extensiekenmerken [breiden het schema](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions) van de gebruikersobjecten in de map uit. De extensiekenmerken kunnen alleen worden geregistreerd op een toepassingsobject, ook al kunnen ze gegevens voor een gebruiker bevatten. Het extensiekenmerk is gekoppeld aan de toepassing b2c-extensions-app. Wijzig deze toepassing niet, omdat deze wordt gebruikt door Azure AD B2C voor het opslaan van gebruikersgegevens. U deze toepassing vinden onder Azure Active Directory App-registraties.
+Azure AD B2C breidt de set kenmerken uit die zijn opgeslagen op elk gebruikers account. Extensie kenmerken [breiden het schema](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions) van de gebruikers objecten in de map uit. De extensie kenmerken kunnen alleen worden geregistreerd voor een toepassings object, hoewel ze mogelijk gegevens voor een gebruiker bevatten. Het kenmerk extension is gekoppeld aan de toepassing met de naam B2C-Extensions-app. Wijzig deze toepassing niet, omdat deze wordt gebruikt door Azure AD B2C om gebruikers gegevens op te slaan. U kunt deze toepassing vinden onder Azure Active Directory App-registraties.
 
 > [!NOTE]
-> - Er kunnen maximaal 100 extensiekenmerken naar elk gebruikersaccount worden geschreven.
-> - Als de b2c-extensies-app-toepassing wordt verwijderd, worden deze extensiekenmerken verwijderd van alle gebruikers, samen met alle gegevens die ze bevatten.
-> - Als een extensiekenmerk door de toepassing wordt verwijderd, wordt het verwijderd uit alle gebruikersaccounts en worden de waarden verwijderd.
-> - De onderliggende naam van het extensiekenmerk wordt gegenereerd in de indeling "Extension_" + Toepassings-id + "_" + Kenmerknaam. Als u bijvoorbeeld een extensiekenmerk LoyaltyNumber maakt en de toepassing-id van b2c-extensies-app 831374b3-bd50-41bf-aa54-263ec9e050fc is, is de onderliggende naam van het extensiekenmerk: extension_831374b3bd5041bfaa54263ec9e050fc_ extension_831374b3bd5041bfaa54263ec9e050fc_ Loyaliteitsnummer. U gebruikt de onderliggende naam wanneer u API-query's in Grafiek uitvoert om gebruikersaccounts te maken of bij te werken.
+> - Er kunnen Maxi maal 100 extensie kenmerken naar elk gebruikers account worden geschreven.
+> - Als de B2C-Extensions-App-toepassing wordt verwijderd, worden deze extensie kenmerken verwijderd uit alle gebruikers samen met alle gegevens die ze bevatten.
+> - Als een extensie kenmerk wordt verwijderd door de toepassing, wordt het verwijderd uit alle gebruikers accounts en worden de waarden verwijderd.
+> - De onderliggende naam van het uitbreidings kenmerk wordt gegenereerd met de notatie ' Extension_ ' + toepassings-ID + ' _ ' en kenmerk naam. Als u bijvoorbeeld een extensie kenmerk LoyaltyNumber maakt en de B2C-uitbrei dingen-app-toepassings-ID 831374b3-bd50-41bf-aa54-263ec9e050fc is, wordt de naam van het onderliggende extensie kenmerk: extension_831374b3bd5041bfaa54263ec9e050fc_LoyaltyNumber. U gebruikt de onderliggende naam wanneer u Graph API query's uitvoert om gebruikers accounts te maken of bij te werken.
 
-De volgende gegevenstypen worden ondersteund bij het definiëren van een eigenschap in een schema-extensie:
+De volgende gegevens typen worden ondersteund bij het definiëren van een eigenschap in een schema-uitbrei ding:
 
-|Eigenschappentype |Opmerkingen  |
+|Type eigenschap |Opmerkingen  |
 |--------------|---------|
-|Booleaans    | Mogelijke waarden: **waar** of **onwaar**. |
-|DateTime   | Moet worden opgegeven in iso 8601-indeling. Wordt opgeslagen in UTC.   |
+|Booleaans    | Mogelijke waarden: **True** of **False**. |
+|DateTime   | Moet worden opgegeven in ISO 8601-indeling. Worden opgeslagen in UTC.   |
 |Geheel getal    | 32-bits waarde.               |
-|Tekenreeks     | Maximaal 256 tekens.     |
+|Tekenreeks     | Maxi maal 256 tekens.     |
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over extensiekenmerken:
+Meer informatie over extensie kenmerken:
 - [Schema-uitbreidingen](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
-- [Aangepaste kenmerken definiëren met gebruikersstroom](user-flow-custom-attributes.md)
+- [Aangepaste kenmerken definiëren met gebruikers stroom](user-flow-custom-attributes.md)
 - [Aangepaste kenmerken definiëren met aangepast beleid](custom-policy-custom-attributes.md)

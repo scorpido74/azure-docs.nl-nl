@@ -1,6 +1,6 @@
 ---
-title: Web API die web API's aanroept - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een web-API die web-API's aanroept.
+title: Web-API voor het aanroepen van web-Api's-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een web-API voor het aanroepen van web-Api's.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6bbd24978891efd147b0c317c1746d13961ce5e9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885086"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-API's aanroept: een API aanroepen
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
 
-Nadat u een token hebt, u een beveiligde web-API aanroepen. Dit doe je vanuit de controller van je web-API.
+Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. U kunt dit doen vanuit de controller van uw web-API.
 
-## <a name="controller-code"></a>Controllercode
+## <a name="controller-code"></a>Controller code
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-De volgende code blijft de voorbeeldcode die wordt weergegeven in [een web-API die web-API's aanroept: Een token voor de app aanschaffen.](scenario-web-api-call-api-acquire-token.md) De code wordt aangeroepen in de acties van de API-controllers. Het roept een downstream API genaamd *todolist*.
+Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
 
-Nadat u het token hebt aangeschaft, gebruikt u het als een token voor dragers om de downstream-API aan te roepen.
+Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -58,9 +58,9 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 
 # <a name="java"></a>[Java](#tab/java)
 
-De volgende code blijft de voorbeeldcode die wordt weergegeven in [een web-API die web-API's aanroept: Een token voor de app aanschaffen.](scenario-web-api-call-api-acquire-token.md) De code wordt aangeroepen in de acties van de API-controllers. Het noemt de downstream API MS Graph.
+Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Het roept de downstream API MS Graph aan.
 
-Nadat u het token hebt aangeschaft, gebruikt u het als een token voor dragers om de downstream-API aan te roepen.
+Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -81,11 +81,11 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Een voorbeeld dat deze stroom met MSAL Python aantoont, is nog niet beschikbaar.
+Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet beschikbaar.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-API die web-API's aanroept: naar productie gaan](scenario-web-api-call-api-production.md)
+> [Een web-API die web-Api's aanroept: verplaatsen naar productie](scenario-web-api-call-api-production.md)

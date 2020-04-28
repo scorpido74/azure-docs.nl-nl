@@ -1,6 +1,6 @@
 ---
-title: Toewijzingen voor een toegangspakket in Azure AD-rechtenbeheer - Azure Active Directory weergeven, toevoegen en verwijderen
-description: Meer informatie over het weergeven, toevoegen en verwijderen van toewijzingen voor een toegangspakket in Azure Active Directory-rechtenbeheer.
+title: Toewijzingen voor een toegangs pakket in azure AD-rechten beheer weer geven, toevoegen en verwijderen-Azure Active Directory
+description: Meer informatie over het weer geven, toevoegen en verwijderen van toewijzingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,100 +17,100 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631747"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangspakket in Azure AD-rechtenbeheer weergeven, toevoegen en verwijderen
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangs pakket in azure AD-rechts beheer weer geven, toevoegen en verwijderen
 
-In Azure AD-rechtenbeheer u zien wie is toegewezen aan toegang tot pakketten, hun beleid en status. Als een toegangspakket een passend beleid heeft, u de gebruiker ook rechtstreeks toewijzen aan een toegangspakket. In dit artikel wordt beschreven hoe u toewijzingen voor toegangspakketten weergeven, toevoegen en verwijderen.
+In het beheer van rechten van Azure AD kunt u zien wie er toegang tot pakketten, hun beleid en status heeft gekregen. Als een toegangs pakket het juiste beleid heeft, kunt u ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket. In dit artikel wordt beschreven hoe u toewijzingen voor toegangs pakketten kunt weer geven, toevoegen en verwijderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-rechtenbeheer wilt gebruiken en gebruikers toegang wilt geven tot pakketten, moet u over een van de volgende licenties beschikken:
+Als u het rechten beheer van Azure AD wilt gebruiken en gebruikers wilt toewijzen voor toegang tot pakketten, hebt u een van de volgende licenties nodig:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-licentie
 
-## <a name="view-who-has-an-assignment"></a>Zien wie een opdracht heeft
+## <a name="view-who-has-an-assignment"></a>Weer geven wie een toewijzing heeft
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik **op Toewijzingen** om een lijst met actieve opdrachten te bekijken.
+1. Klik op **toewijzingen** voor een overzicht van actieve toewijzingen.
 
-    ![Lijst met toewijzingen aan een toegangspakket](./media/entitlement-management-access-package-assignments/assignments-list.png)
+    ![Lijst met toewijzingen aan een toegangs pakket](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
-1. Klik op een specifieke opdracht om meer details te bekijken.
+1. Klik op een specifieke toewijzing om meer details weer te geven.
 
-1. Als u een lijst met toewijzingen wilt zien die niet alle resourcerollen correct hebben ingericht, klikt u op de filterstatus en selecteert u **Leveren**.
+1. Als u een lijst wilt weer geven met toewijzingen waarvoor niet alle resource rollen op de juiste wijze zijn ingericht, klikt u op de filter status en selecteert u **leveren**.
 
-    U aanvullende details over leveringsfouten bekijken door de bijbehorende aanvraag van de gebruiker te vinden op de pagina **Verzoeken.**
+    U kunt aanvullende informatie over bezorgings fouten zien door de overeenkomende aanvraag van de gebruiker op de pagina **aanvragen** te vinden.
 
-1. Als u verlopen toewijzingen wilt bekijken, klikt u op de filterstatus en selecteert u **Verlopen**.
+1. Als u verlopen toewijzingen wilt zien, klikt u op de filter status en selecteert u **verlopen**.
 
-1. Als u een CSV-bestand van de gefilterde lijst wilt downloaden, klikt u op **Downloaden**.
+1. Als u een CSV-bestand van de gefilterde lijst wilt downloaden, klikt u op **downloaden**.
 
-### <a name="viewing-assignments-programmatically"></a>Opdrachten programmatisch weergeven
+### <a name="viewing-assignments-programmatically"></a>Toewijzingen weer geven via een programma
 
-U ook toewijzingen ophalen in een toegangspakket met Microsoft Graph.  Een gebruiker in een geschikte rol met `EntitlementManagement.ReadWrite.All` een toepassing met de gedelegeerde machtiging kan de API aanroepen om [accessPackageAssignments weer](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)te geven.
+U kunt ook toewijzingen in een toegangs pakket ophalen met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om de [lijst accessPackageAssignments te vermelden](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Een gebruiker rechtstreeks toewijzen
 
-In sommige gevallen wilt u mogelijk specifieke gebruikers rechtstreeks toewijzen aan een toegangspakket, zodat gebruikers het proces van het aanvragen van het toegangspakket niet hoeven te doorlopen. Als u gebruikers rechtstreeks wilt toewijzen, moet het toegangspakket een beleid hebben waarmee beheerders directe toewijzingen mogelijk zijn.
+In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen aan een toegangs pakket, zodat gebruikers niet hoeven door te gaan met het proces van het aanvragen van het toegangs pakket. Om gebruikers rechtstreeks toe te wijzen, moet het toegangs pakket beschikken over een beleid waarmee beheerders direct toewijzingen kunnen toestaan.
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik in het linkermenu op **Toewijzingen**.
+1. Klik in het menu links op **toewijzingen**.
 
-1. Klik **op Nieuwe toewijzing** om Gebruiker toevoegen aan pakket toe te voegen.
+1. Klik op **nieuwe toewijzing** om het pakket gebruiker toevoegen voor toegang te openen.
 
-    ![Toewijzingen - Gebruiker toevoegen aan toegangspakket](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
+    ![Toewijzingen-gebruiker toevoegen aan toegangs pakket](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Klik **op Gebruikers toevoegen** om de gebruikers te selecteren waaraan u dit toegangspakket wilt toewijzen.
+1. Klik op **gebruikers toevoegen** om de gebruikers te selecteren aan wie u dit toegangs pakket wilt toewijzen.
 
-1. Selecteer **in** de lijst Beleid selecteren een beleid waarin de toekomstige aanvragen en levenscyclus van de gebruikers worden geregeld en bijgehouden. Als u wilt dat de geselecteerde gebruikers verschillende beleidsinstellingen hebben, u op **Nieuw beleid maken** klikken om een nieuw beleid toe te voegen.
+1. Selecteer in de lijst **beleid selecteren** een beleid dat de toekomstige aanvragen en levens cyclus van de gebruikers worden onderhevig en gevolgd door. Als u wilt dat de geselecteerde gebruikers verschillende beleids instellingen hebben, kunt u op **Nieuw beleid maken** klikken om een nieuw beleid toe te voegen.
 
-1. Stel de datum en tijd in waarop de toewijzing van de geselecteerde gebruikers moet beginnen en eindigen. Als er geen einddatum is opgegeven, worden de levenscyclusinstellingen van het beleid gebruikt.
+1. Stel de datum en tijd in waarop u de toewijzing van de geselecteerde gebruikers wilt starten en beëindigen. Als er geen eind datum wordt gegeven, worden de levens cyclus instellingen van het beleid gebruikt.
 
-1. Optioneel een rechtvaardiging voor uw directe opdracht voor het bijhouden van gegevens.
+1. Geef eventueel een reden op voor uw directe toewijzing voor het bijhouden van de record.
 
-1. Klik **op Toevoegen** om de geselecteerde gebruikers rechtstreeks aan het toegangspakket toe te wijzen.
+1. Klik op **toevoegen** om de geselecteerde gebruikers rechtstreeks toe te wijzen aan het toegangs pakket.
 
-    Klik na enkele ogenblikken op **Vernieuwen** om de gebruikers in de lijst Toewijzingen te zien.
+    Na enkele ogen blikken klikt u op **vernieuwen** om de gebruikers in de lijst toewijzingen weer te geven.
 
-### <a name="directly-assigning-users-programmatically"></a>Gebruikers programmatisch toewijzen
+### <a name="directly-assigning-users-programmatically"></a>Gebruikers rechtstreeks via een programma toewijzen
 
-U een gebruiker ook rechtstreeks toewijzen aan een toegangspakket met Microsoft Graph.  Een gebruiker in een geschikte rol met `EntitlementManagement.ReadWrite.All` een toepassing met de gedelegeerde machtiging kan de API aanroepen om [een accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)te maken.
+U kunt ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [een accessPackageAssignmentRequest te maken](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Een toewijzing verwijderen
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik in het linkermenu op **Toewijzingen**.
+1. Klik in het menu links op **toewijzingen**.
  
-1. Klik op het selectievakje naast de gebruiker wiens toewijzing u uit het toegangspakket wilt verwijderen. 
+1. Klik op het selectie vakje naast de gebruiker van wie u de toewijzing wilt verwijderen uit het toegangs pakket. 
 
-1. Klik **op** de knop Verwijderen boven aan het linkerdeelvenster. 
+1. Klik op de knop **verwijderen** boven aan het linkerdeel venster. 
  
-    ![Toewijzingen - Gebruiker verwijderen uit toegangspakket](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+    ![Toewijzingen-gebruiker uit toegangs pakket verwijderen](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 
-    Er verschijnt een melding waarin wordt gemeld dat de toewijzing is verwijderd. 
+    Er wordt een melding weer gegeven waarin wordt gemeld dat de toewijzing is verwijderd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanvraag en instellingen voor een toegangspakket wijzigen](entitlement-management-access-package-request-policy.md)
+- [Aanvraag en instellingen voor een toegangs pakket wijzigen](entitlement-management-access-package-request-policy.md)
 - [Rapporten en logboeken weergeven](entitlement-management-reports.md)

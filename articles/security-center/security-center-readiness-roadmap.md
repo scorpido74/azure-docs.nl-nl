@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879459"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
@@ -43,7 +43,7 @@ Als u optimaal wilt profiteren van Security Center, is het belangrijk te begrijp
 Gebruik de volgende bronnen als hulpmiddel tijdens de plannings- en bewerkingsprocessen.
 
 Artikel
-* [Handleiding voor planning en bewerkingvan Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center plannings-en bedienings handleiding](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Computers voorbereiden voor Security Center
@@ -73,7 +73,7 @@ Video
 * [Beperkende beveiligingsproblemen met Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center voor reactie op incidenten
-Om kosten en schade te verminderen, is het belangrijk om een incident response plan op zijn plaats voordat een aanval plaatsvindt. U kunt Azure Security Center gebruiken in verschillende fasen tijdens een reactie op een incident.
+Om de kosten en schade te verminderen, is het belang rijk dat u een reactie plan voor incidenten hebt voordat een aanval plaatsvindt. U kunt Azure Security Center gebruiken in verschillende fasen tijdens een reactie op een incident.
 
 Gebruik de volgende bronnen als u wilt weten hoe Security Center kan worden opgenomen in het incidentreactieproces.
 
@@ -83,20 +83,20 @@ Video's
 
 Artikelen    
 * [Azure Security Center gebruiken voor reacties op incidenten](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Respons automatiseren met workflowautomatisering](workflow-automation.md)
+* [Reactie automatiseren met werk stroom automatisering](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Geavanceerde cloudbeveiliging
 
-Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdedigingsmogelijkheden in Security Center. Deze mogelijkheden omvatten just-in-time virtuele machine (VM) toegang, en adaptieve applicatie besturingselementen.
+Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdedigingsmogelijkheden in Security Center. Deze mogelijkheden omvatten just-in-time-toegang voor virtuele machines (VM'S) en adaptieve toepassings besturings elementen.
 
 Gebruik de volgende bronnen voor meer informatie over het gebruik van deze mogelijkheden in Security Center.
 
 Video's    
-* [Azure Security Center – Just-in-time VM Access](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center: Just-in-time-VM-toegang](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptieve besturingselementen voor toepassingen](https://youtu.be/wWWekI1Y9ck)
 
 Artikelen    
-* [Toegang tot virtuele machines beheren met just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Toegang tot virtuele machines beheren met Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Adaptieve toepassingsbesturingselementen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Praktijksessies
@@ -105,7 +105,7 @@ Artikelen
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (ASC-playbook: Servers beschermen met Web Application Firewall)
 * [Azure Security Center Playbook: Beveiligingswaarschuwingen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 * [Documentatiepagina van Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Documentatiepagina van Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Veelgestelde vragen over Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)
@@ -114,7 +114,7 @@ Artikelen
 * [Aanbevolen procedures voor netwerkbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS-aanbevelingen](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Naleving](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Klanten van loganalytics kunnen azure security center nu gebruiken om hun hybride cloudworkloads te beschermen](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics-klanten kunnen nu Azure Security Center gebruiken om hun hybride Cloud werkbelastingen te beschermen](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Communitybronnen
 

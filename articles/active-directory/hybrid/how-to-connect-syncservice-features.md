@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect-synchronisatieservicefuncties en -configuratie | Microsoft Documenten
-description: Beschrijft servicefuncties voor Azure AD Connect-synchronisatieservice.
+title: Functies en configuratie van Azure AD Connect-service voor synchronisatie | Microsoft Docs
+description: Hierin worden de functies van de service zijde voor Azure AD Connect synchronisatie service beschreven.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,104 +17,104 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80983072"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Functies van de Azure AD Connect-synchronisatieservice
 
-De synchronisatiefunctie van Azure AD Connect heeft twee componenten:
+De synchronisatie functie van Azure AD Connect heeft twee onderdelen:
 
-* De on-premises component met de naam **Azure AD Connect sync**, ook wel **synchronisatieengine**genoemd .
-* De service die zich in Azure AD begeeft, ook wel **Azure AD Connect-synchronisatieservice genoemd**
+* Het on-premises onderdeel met de naam **Azure AD Connect Sync**, ook wel **Sync Engine**genoemd.
+* De service die zich bevindt in azure AD, ook wel bekend als **Azure AD Connect-synchronisatie service**
 
-In dit onderwerp wordt uitgelegd hoe de volgende functies van de **Azure AD Connect-synchronisatieservice** werken en hoe u deze configureren met Windows PowerShell.
+In dit onderwerp wordt uitgelegd hoe de volgende functies van de **Azure AD Connect Sync-Service** werken en hoe u deze kunt configureren met Windows Power shell.
 
-Deze instellingen zijn geconfigureerd door de [Azure Active Directory Module voor Windows PowerShell.](https://aka.ms/aadposh) Download en installeer het apart van Azure AD Connect. De cmdlets gedocumenteerd in dit onderwerp werden geïntroduceerd in de [2016 maart release (build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Als u niet beschikt over de cmdlets gedocumenteerd in dit onderwerp of ze produceren niet hetzelfde resultaat, zorg er dan voor dat u de nieuwste versie.
+Deze instellingen worden geconfigureerd door de [Azure Active Directory-module voor Windows Power shell](https://aka.ms/aadposh). Down load en installeer deze afzonderlijk van Azure AD Connect. De cmdlets die in dit onderwerp worden beschreven, zijn geïntroduceerd in de [release van 2016 maart (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Als u niet beschikt over de cmdlets die in dit onderwerp worden beschreven, of als u niet hetzelfde resultaat hebt, moet u ervoor zorgen dat u de meest recente versie uitvoert.
 
-Voer de configuratie in uw Azure `Get-MsolDirSyncFeatures`AD-map uit om de configuratie in uw Azure AD-map uit te voeren.  
-![Get-MsolDirSyncFeatures-resultaat](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
+Voer `Get-MsolDirSyncFeatures`uit om de configuratie in uw Azure AD-Directory te bekijken.  
+![Resultaat van Get-MsolDirSyncFeatures](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
 Veel van deze instellingen kunnen alleen worden gewijzigd door Azure AD Connect.
 
-De volgende instellingen kunnen `Set-MsolDirSyncFeature`worden geconfigureerd door:
+De volgende instellingen kunnen worden geconfigureerd door `Set-MsolDirSyncFeature`:
 
-| DirSyncFunctie | Opmerking |
+| DirSyncFeature | Opmerking |
 | --- | --- |
-| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Hiermee kunnen objecten deelnemen aan userPrincipalName, naast het primaire SMTP-adres. |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Hiermee kan de synchronisatieengine het kenmerk userPrincipalName bijwerken voor beheerde/gelicentieerde (niet-federatieve) gebruikers. |
+| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Toestaan dat objecten naast het primaire SMTP-adres aan userPrincipalName worden toegevoegd. |
+| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Hiermee kan de synchronisatie-engine het kenmerk userPrincipalName voor beheerde/gelicentieerde gebruikers (niet-gefedereerde) bijwerken. |
 
-Nadat u een functie hebt ingeschakeld, kan deze niet opnieuw worden uitgeschakeld.
+Nadat u een functie hebt ingeschakeld, kan deze niet meer worden uitgeschakeld.
 
 > [!NOTE]
-> Vanaf 24 augustus 2016 is de functie *Dubbele kenmerktolerantie* standaard ingeschakeld voor nieuwe Azure AD-mappen. Deze functie wordt ook uitgerold en ingeschakeld op mappen die vóór deze datum zijn gemaakt. U ontvangt een e-mailmelding wanneer uw directory op het punt staat deze functie in te schakelen.
+> Vanaf 24 augustus 2016 is de functie *tolerantie voor dubbel kenmerk* voor nieuwe Azure AD-mappen standaard ingeschakeld. Deze functie wordt ook geïmplementeerd en ingeschakeld voor mappen die zijn gemaakt voor deze datum. U ontvangt een e-mail melding wanneer uw adres lijst op het punt staat om deze functie in te scha kelen.
 > 
 > 
 
-De volgende instellingen zijn geconfigureerd door Azure AD `Set-MsolDirSyncFeature`Connect en kunnen niet worden gewijzigd door:
+De volgende instellingen worden geconfigureerd door Azure AD Connect en kunnen niet worden gewijzigd `Set-MsolDirSyncFeature`door:
 
-| DirSyncFunctie | Opmerking |
+| DirSyncFeature | Opmerking |
 | --- | --- |
-| DeviceWriteback |[Azure AD Connect: terugschrijven van apparaten inschakelen](how-to-connect-device-writeback.md) |
-| DirectoryExtensies |[Synchronisatie van Azure AD Connect: Directory-extensies](how-to-connect-sync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Hiermee kan een kenmerk in quarantaine worden geplaatst wanneer het een duplicaat van een ander object is in plaats van het hele object tijdens het exporteren te laten mislukken. |
-| Wachtwoordhashsynchronisatie |[Synchronisatie van wachtwoordhash implementeren met Azure AD Connect-synchronisatie](how-to-connect-password-hash-synchronization.md) |
+| DeviceWriteback |[Azure AD Connect: write-back van apparaat inschakelen](how-to-connect-device-writeback.md) |
+| DirectoryExtensions |[Azure AD Connect synchronisatie: Directory-extensies](how-to-connect-sync-feature-directory-extensions.md) |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Hiermee kan een kenmerk in quarantaine worden geplaatst wanneer het een duplicaat is van een ander object in plaats van dat het hele object tijdens het exporteren mislukt. |
+| Wachtwoordhashsynchronisatie |[Wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](how-to-connect-password-hash-synchronization.md) |
 |Pass-through-verificatie|[Gebruikersaanmelding met Pass Through-verificatie in Azure Active Directory](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Voorbeeld: Terugschrijven van groepen](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |[Voor beeld: terugschrijven van groep](how-to-connect-preview.md#group-writeback) |
 | UserWriteback |Momenteel niet ondersteund. |
 
-## <a name="duplicate-attribute-resiliency"></a>Tolerantie voor het dupliceren van kenmerkentie
+## <a name="duplicate-attribute-resiliency"></a>Tolerantie voor dubbel kenmerk
 
-In plaats van objecten met dubbele UPN's/ proxyAdressen niet in te richten, wordt het gedupliceerde kenmerk "in quarantaine geplaatst" en wordt een tijdelijke waarde toegewezen. Wanneer het conflict is opgelost, wordt de tijdelijke UPN automatisch gewijzigd in de juiste waarde. Zie [Identiteitssynchronisatie en tolerantie voor het dupliceren van kenmerken](how-to-connect-syncservice-duplicate-attribute-resiliency.md)voor meer informatie.
+In plaats van het inrichten van objecten met dubbele Upn's/proxyAddresses is het dubbele kenmerk ' in quarantaine ' en wordt er een tijdelijke waarde toegewezen. Wanneer het conflict is opgelost, wordt de tijdelijke UPN automatisch gewijzigd in de juiste waarde. Zie [Identiteitssynchronisatie en dubbel kenmerk tolerantie](how-to-connect-syncservice-duplicate-attribute-resiliency.md)voor meer informatie.
 
-## <a name="userprincipalname-soft-match"></a>Soft Match userPrincipalName
+## <a name="userprincipalname-soft-match"></a>Dynamische UserPrincipalName-overeenkomst
 
-Wanneer deze functie is ingeschakeld, is soft-match ingeschakeld voor UPN naast het [primaire SMTP-adres](https://support.microsoft.com/kb/2641663), dat altijd is ingeschakeld. Soft-match wordt gebruikt om bestaande cloudgebruikers in Azure AD te matchen met on-premises gebruikers.
+Als deze functie is ingeschakeld, wordt voor de UPN naast het [primaire SMTP-adres](https://support.microsoft.com/kb/2641663)dat wordt gebruikt altijd de optie soft-overeenkomst ingeschakeld. Soft-overeenkomst wordt gebruikt om bestaande Cloud gebruikers in azure AD te vergelijken met on-premises gebruikers.
 
-Als u on-premises AD-accounts moet koppelen aan bestaande accounts die in de cloud zijn gemaakt en u Exchange Online niet gebruikt, is deze functie handig. In dit scenario hebt u over het algemeen geen reden om het SMTP-kenmerk in de cloud in te stellen.
+Als u on-premises AD-accounts moet overeenkomen met bestaande accounts die in de Cloud zijn gemaakt en u geen gebruikmaakt van Exchange Online, is deze functie nuttig. In dit scenario hebt u over het algemeen geen reden om het SMTP-kenmerk in de cloud in te stellen.
 
-Deze functie is standaard ingeschakeld voor nieuw gemaakte Azure AD-mappen. U zien of deze functie voor u is ingeschakeld door het uitvoeren van:  
+Deze functie is standaard ingeschakeld voor nieuwe Azure AD-mappen. U kunt zien of deze functie is ingeschakeld voor u door het volgende uit te voeren:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
-Als deze functie niet is ingeschakeld voor uw Azure AD-map, u deze inschakelen door het uitvoeren van:  
+Als deze functie niet is ingeschakeld voor uw Azure AD-adres lijst, kunt u deze inschakelen door het volgende uit te voeren:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
-## <a name="synchronize-userprincipalname-updates"></a>UserPrincipalName-updates synchroniseren
+## <a name="synchronize-userprincipalname-updates"></a>Updates van userPrincipalName synchroniseren
 
-In het verleden zijn updates van het kenmerk UserPrincipalName met behulp van de synchronisatieservice van on-premises geblokkeerd, tenzij beide voorwaarden waar waren:
+In het verleden zijn updates van het kenmerk UserPrincipalName met behulp van de synchronisatie service van on-premises geblokkeerd, tenzij beide voor waarden waar zijn:
 
-* De gebruiker wordt beheerd (niet-gefedereerd).
-* Aan de gebruiker is geen licentie toegewezen.
+* De gebruiker wordt beheerd (niet-gefedereerde).
+* Er is geen licentie toegewezen aan de gebruiker.
 
 > [!NOTE]
-> Vanaf maart 2019 is het synchroniseren van UPN-wijzigingen voor federatieve gebruikersaccounts toegestaan.
+> Van 2019 maart is het synchroniseren van UPN-wijzigingen voor federatieve gebruikers accounts toegestaan.
 > 
 
-Als u deze functie inschakelt, kan de synchronisatieengine de userPrincipalName bijwerken wanneer deze on-premises wordt gewijzigd en u wachtwoordhashsynchronisatie of pass-through-verificatie gebruikt.
+Als u deze functie inschakelt, kan de synchronisatie-engine de userPrincipalName bijwerken wanneer deze on-premises wordt gewijzigd en u gebruikmaakt van hash-synchronisatie van wacht woord of Pass-Through-verificatie.
 
-Deze functie is standaard ingeschakeld voor nieuw gemaakte Azure AD-mappen. U zien of deze functie voor u is ingeschakeld door het uitvoeren van:  
+Deze functie is standaard ingeschakeld voor nieuwe Azure AD-mappen. U kunt zien of deze functie is ingeschakeld voor u door het volgende uit te voeren:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature SynchronizeUpnForManagedUsers
 ```
 
-Als deze functie niet is ingeschakeld voor uw Azure AD-map, u deze inschakelen door het uitvoeren van:  
+Als deze functie niet is ingeschakeld voor uw Azure AD-adres lijst, kunt u deze inschakelen door het volgende uit te voeren:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
-Nadat u deze functie hebt ingesloten, blijven de bestaande userPrincipalName-waarden zoals het is. Bij de volgende on-premises wijziging van het kenmerk userPrincipalName wordt de normale deltasynchronisatie voor gebruikers bijgewerkt.  
+Nadat deze functie is ingeschakeld, blijven de bestaande userPrincipalName-waarden ongewijzigd. Bij de volgende wijziging van het kenmerk userPrincipalName on-premises wordt de UPN door de normale Delta synchronisatie op de gebruikers bijgewerkt.  
 
 ## <a name="see-also"></a>Zie ook
 
-* [Synchronisatie van Azure AD Connect](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory.](whatis-hybrid-identity.md)
+* [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)
+* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).

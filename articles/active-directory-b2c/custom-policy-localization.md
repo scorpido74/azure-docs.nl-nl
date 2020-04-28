@@ -1,6 +1,6 @@
 ---
-title: De gebruikersinterface van uw app lokaliseren met een aangepast beleid
-description: Meer informatie over het lokaliseren van een gebruikersinterface met een aangepast beleid in Azure Active Directory B2C.
+title: De gebruikers interface van uw app lokaliseren met een aangepast beleid
+description: Meer informatie over lokalisatie van een gebruikers interface met behulp van een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,26 +11,26 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545872"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>De gebruikersinterface van uw toepassing lokaliseren met een aangepast beleid in Azure Active Directory B2C
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalisatie van de gebruikers interface van uw toepassing met behulp van een aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Met taalaanpassing in Azure Active Directory B2C (Azure AD B2C) u verschillende talen aanpassen aan de behoeften van uw klant. Microsoft biedt de vertalingen voor [36 talen,](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)maar u ook uw eigen vertalingen voor elke taal. Zelfs als uw ervaring slechts voor één taal is bedoeld, u elke tekst op de pagina's aanpassen. 
+Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kunt u verschillende talen aanpassen aan de behoeften van uw klant. Micro soft biedt de vertalingen voor [36 talen](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages), maar u kunt ook uw eigen vertalingen voor elke taal opgeven. Zelfs als uw ervaring slechts voor één taal wordt gegeven, kunt u tekst op de pagina's aanpassen. 
 
-In dit artikel ziet u hoe u meerdere landzetten of talen ondersteunen in het beleid voor gebruikersreizen. Lokalisatie vereist drie stappen: de expliciete lijst met ondersteunde talen instellen, taalspecifieke tekenreeksen en verzamelingen bieden en de [inhoudsdefinitie](contentdefinitions.md) voor de pagina bewerken. 
+In dit artikel wordt beschreven hoe u meerdere land instellingen of talen in het beleid voor gebruikers ritten ondersteunt. Lokalisatie vereist drie stappen: Stel de expliciete lijst met ondersteunde talen in, geef taalspecifieke teken reeksen en verzamelingen op en bewerk de [inhouds definitie](contentdefinitions.md) voor de pagina. 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>De lijst met ondersteunde talen instellen
 
-Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccounts/` </em>
+Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
 
-1. Zoek naar het element [Bouwstenen.](buildingblocks.md) Als het element niet bestaat, voeg je het toe.
-1. Voeg `Localization` het element toe met de ondersteunde talen: Engels (standaard) en Spaans.  
+1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
+1. Voeg het `Localization` -element toe met de ondersteunde talen: Engels (standaard) en Spaans.  
 
 
 ```XML
@@ -44,12 +44,12 @@ Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccou
 
 ## <a name="provide-language-specific-labels"></a>Taalspecifieke labels opgeven
 
-De [gelokaliseerde](localization.md#localizedresources) resources `Localization` van het element bevat de lijst met gelokaliseerde tekenreeksen. Het element gelokaliseerde resources heeft een id die wordt gebruikt om op unieke wijze gelokaliseerde resources te identificeren. Deze identifer wordt later gebruikt in het [element inhoudsdefinitie.](contentdefinitions.md)
+De [LocalizedResources](localization.md#localizedresources) van het `Localization` element bevat de lijst met gelokaliseerde teken reeksen. Het gelokaliseerde resources-element heeft een id die wordt gebruikt om gelokaliseerde bronnen uniek te identificeren. Deze id wordt later in het [inhouds definitie](contentdefinitions.md) -element gebruikt.
 
-U configureert gelokaliseerde resources-elementen voor de inhoudsdefinitie en elke taal die u wilt ondersteunen. Als u de uniforme aanmeldings- of aanmeldingspagina's `LocalizedResources` voor Engels en `</SupportedLanguages>` Spaans wilt aanpassen, voegt u de volgende elementen toe na het sluiten van het element.
+U configureert gelokaliseerde bronnen elementen voor de inhouds definitie en alle talen die u wilt ondersteunen. Als u de Unified Sign-up-en aanmeldings pagina's voor Engels en Spaans wilt aanpassen, voegt u de `LocalizedResources` volgende elementen toe na het sluiten `</SupportedLanguages>` van het element.
 
 > [!NOTE]
-> In het volgende voorbeeld `#` hebben we het pondsymbool toegevoegd aan het bedelen van elke regel, zodat u de gelokaliseerde labels op het scherm eenvoudig vinden.
+> In het volgende voor beeld is het hekje `#` -symbool toegevoegd aan het Begging van elke regel, zodat u de gelokaliseerde labels op het scherm kunt easly vinden.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -212,11 +212,11 @@ U configureert gelokaliseerde resources-elementen voor de inhoudsdefinitie en el
 </LocalizedResources>
 ```
 
-## <a name="edit-the-content-definition-with-the-localization"></a>De inhoudsdefinitie bewerken met de lokalisatie
+## <a name="edit-the-content-definition-with-the-localization"></a>De inhouds definitie met de lokalisatie bewerken
 
-Plak de volledige inhoud van het element ContentDefinities dat u als onderliggend element van het element Bouwstenen hebt gekopieerd.
+Plak de volledige inhoud van het ContentDefinitions-element dat u hebt gekopieerd als onderliggend element van het Building Blocks-object.
 
-In het volgende voorbeeld worden aangepaste tekenreeksen voor Engels (en) en Spaans (es) toegevoegd aan de aanmeldings- of aanmeldingspagina en aan de aanmeldingspagina voor het lokale account. De **LocalizedResourcesReferenceId** voor elke **LocalizedResourcesReference** is hetzelfde als hun landaanduiding, maar u elke tekenreeks als id gebruiken. Voor elke taal- en paginacombinatie wijst u naar de bijbehorende **gelokaliseerde resources die** u eerder hebt gemaakt.
+In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spaans (ES) toegevoegd aan de registratie pagina voor aanmelden of aanmelden en op de registratie pagina van het lokale account. De **LocalizedResourcesReferenceId** voor elke **LocalizedResourcesReference** is hetzelfde als de land instelling, maar u kunt elke wille keurige teken reeks als de id gebruiken. Voor elke combi natie van taal en pagina wijst u de overeenkomende **LocalizedResources** aan die u eerder hebt gemaakt.
 
 ```XML
 <ContentDefinitions>
@@ -240,19 +240,19 @@ In het volgende voorbeeld worden aangepaste tekenreeksen voor Engels (en) en Spa
 
 ### <a name="upload-the-custom-policy"></a>Het aangepaste beleid uploaden
 
-1. Sla het extensiesbestand op.
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw tenant bevat.
-1. Zoeken naar en selecteer **Azure AD B2C**.
-1. Selecteer **onder Beleid**het Framework Voor **identiteitservaring**.
-1. Selecteer **Aangepast beleid uploaden**.
-1. Upload het extensiesbestand dat u eerder hebt gewijzigd.
+1. Sla het bestand met extensies op.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zoek en selecteer **Azure AD B2C**.
+1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
+1. Selecteer **aangepast beleid uploaden**.
+1. Upload het extensie bestand dat u eerder hebt gewijzigd.
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>Het aangepaste beleid testen met **Nu uitvoeren**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Het aangepaste beleid testen met behulp van **nu uitvoeren**
 
-1. Selecteer het beleid dat u hebt geüpload en selecteer **Nu uitvoeren**.
-1. U moet de gelokaliseerde aanmeldings- of aanmeldingspagina kunnen zien.
-1. Klik op de aanmeldingslink en u moet de gelokaliseerde aanmeldingspagina kunnen zien.
-1. Schakel de standaardtaal van uw browser over op Spaans. U de parameter querytekenreeks toevoegen `ui_locales` aan de autorisatieaanvraag. Bijvoorbeeld: 
+1. Selecteer het beleid dat u hebt geüpload en selecteer **nu uitvoeren**.
+1. U moet de gelokaliseerde registratie-of aanmeldings pagina kunnen zien.
+1. Klik op de registratie koppeling en u zou de gelokaliseerde registratie pagina moeten kunnen zien.
+1. Schakel de standaard taal van uw browser in op Spaans. U kunt ook de query teken reeks parameter toevoegen `ui_locales` aan de autorisatie aanvraag. Bijvoorbeeld: 
 
 ```http
 https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
@@ -260,6 +260,6 @@ https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [lokalisatieelement](localization.md) vindt u in de IEF-verwijzing.
-- Bekijk de lijst met [lokalisatietekenreeks-id's](localization-string-ids.md) die beschikbaar zijn in Azure AD B2C.
+- Meer informatie over het [lokalisatie](localization.md) -element vindt u in de IEF-verwijzing.
+- Zie de lijst met beschik bare [lokalisatie teken reeks-id's](localization-string-ids.md) in azure AD B2C.
 

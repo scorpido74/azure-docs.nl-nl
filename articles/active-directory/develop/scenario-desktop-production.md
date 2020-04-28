@@ -1,6 +1,6 @@
 ---
-title: Web-API's voor bureaublad-apps verplaatsen naar productie - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het verplaatsen van een bureaublad-app die web-API's naar productie roept
+title: Bureau blad-app die web-Api's aanroept, verplaatsen naar productie-micro soft Identity-platform | Azure
+description: Meer informatie over het verplaatsen van een bureau blad-app die web-Api's aanroept voor productie
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,33 +12,33 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882876"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Bureaublad-app die web-API's aanroept: naar productie gaan
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's: verplaatsen naar productie
 
-In dit artikel leert u hoe u uw bureaublad-app verplaatst die web-API's naar productie roept.
+In dit artikel leert u hoe u uw bureau blad-app kunt verplaatsen die web-Api's aanroept voor productie.
 
-## <a name="handle-errors-in-desktop-applications"></a>Fouten in bureaubladtoepassingen verwerken
+## <a name="handle-errors-in-desktop-applications"></a>Fouten in bureaublad toepassingen afhandelen
 
-In de verschillende stromen hebt u geleerd hoe u de fouten voor de stille stromen moet verwerken, zoals weergegeven in de codefragmenten. Je hebt ook gezien dat er gevallen zijn waarin interactie nodig is, zoals in incrementele toestemming en voorwaardelijke toegang.
+In de verschillende stromen hebt u geleerd hoe u de fouten voor de Stille stromen kunt afhandelen, zoals wordt weer gegeven in de code fragmenten. U hebt ook gezien dat er sprake is van gevallen waarin interactie nodig is, zoals in incrementele toestemming en voorwaardelijke toegang.
 
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>De gebruiker vooraf toestemming geven voor verschillende bronnen
 
 > [!NOTE]
-> Het verkrijgen van toestemming voor verschillende bronnen werkt voor microsoft-identiteitsplatform, maar niet voor Azure Active Directory (Azure AD) B2C. Azure AD B2C ondersteunt alleen toestemming van beheerders, niet toestemming van de gebruiker.
+> Het verkrijgen van toestemming voor verschillende bronnen werkt voor micro soft Identity platform, maar niet voor Azure Active Directory (Azure AD) B2C. Azure AD B2C ondersteunt alleen beheerders toestemming en geen toestemming van de gebruiker.
 
-U geen token voor meerdere bronnen tegelijk krijgen met het Microsoft-identiteitsplatform (v2.0) eindpunt. De `scopes` parameter kan scopes bevatten voor slechts één resource. U ervoor zorgen dat de gebruiker vooraf `extraScopesToConsent` toestemming geeft voor verschillende bronnen met behulp van de parameter.
+U kunt geen token voor meerdere resources tegelijk ophalen met het micro soft Identity platform (v 2.0)-eind punt. De `scopes` para meter kan alleen bereiken voor één resource bevatten. U kunt ervoor zorgen dat de gebruiker vooraf toestuurt naar verschillende bronnen met behulp `extraScopesToConsent` van de para meter.
 
-U hebt bijvoorbeeld twee resources met elk twee scopes:
+U kunt bijvoorbeeld twee resources hebben met twee bereiken:
 
-- `https://mytenant.onmicrosoft.com/customerapi`met de `customer.read` scopes en`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`met de `vendor.read` scopes en`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`met de scopes `customer.read` en`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`met de scopes `vendor.read` en`vendor.write`
 
-Gebruik in dit `.WithAdditionalPromptToConsent` voorbeeld de modifier die de `extraScopesToConsent` parameter heeft.
+In dit voor beeld gebruikt u `.WithAdditionalPromptToConsent` de modificator met de `extraScopesToConsent` para meter.
 
 Bijvoorbeeld:
 
@@ -65,7 +65,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL voor iOS en macOS
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -79,7 +79,7 @@ interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-Swift:
+Swift
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -93,17 +93,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-Met deze oproep krijgt u een toegangstoken voor de eerste web-API.
+Met deze aanroep krijgt u een toegangs token voor de eerste web-API.
 
-Wanneer u de tweede web-API `AcquireTokenSilent` moet aanroepen, roept u de API aan.
+Wanneer u de tweede Web-API moet aanroepen, roept `AcquireTokenSilent` u de API aan.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Microsoft persoonlijk account vereist hertoestemming elke keer dat de app wordt uitgevoerd
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Voor een persoonlijk micro soft-account moet u elke keer dat de app wordt uitgevoerd, toestemming geven
 
-Voor gebruikers van persoonlijke gebruikers van microsoft-gebruikers is het verzoek om toestemming voor elke native client (desktop of mobiele app) om te autoriseren het beoogde gedrag. Native client identiteit is inherent onzeker, wat in strijd is met vertrouwelijke client applicatie identiteit. Vertrouwelijke clienttoepassingen wisselen een geheim uit met het Microsoft Identity-platform om hun identiteit te bewijzen. Het Microsoft-identiteitsplatform heeft ervoor gekozen deze onzekerheid voor consumentenservices te beperken door de gebruiker om toestemming te vragen telkens wanneer de toepassing is geautoriseerd.
+Voor gebruikers van een persoonlijk micro soft-account vraagt de vraag om toestemming op elke systeem eigen client (desktop of mobiele app) om toestemming te verlenen is het beoogde gedrag. De systeem eigen client identiteit is inherent onveilig, wat in strijd is met de id van de vertrouwelijke client toepassing. Vertrouwelijke client toepassingen wisselen een geheim uit met het micro soft-identiteits platform om hun identiteit te bewijzen. Het micro soft Identity-platform heeft ervoor gekozen om deze inbeveiliging te beperken voor consumenten Services door de gebruiker te vragen om toestemming telkens wanneer de toepassing wordt geautoriseerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

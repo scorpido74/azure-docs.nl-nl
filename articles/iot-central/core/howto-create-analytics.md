@@ -1,6 +1,6 @@
 ---
-title: Apparaatgegevens analyseren in uw Azure IoT Central-toepassing | Microsoft Documenten
-description: Analyseer apparaatgegevens in uw Azure IoT Central-toepassing.
+title: Apparaatgegevens analyseren in uw Azure IoT Central-toepassing | Microsoft Docs
+description: Analyseer gegevens van apparaten in uw Azure IoT Central-toepassing.
 author: ankitscribbles
 ms.author: ankitgup
 ms.date: 11/27/2019
@@ -9,87 +9,87 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158279"
 ---
-# <a name="how-to-use-analytics-to-analyze-device-data"></a>Analytics gebruiken om apparaatgegevens te analyseren
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Informatie over het gebruik van Analytics voor het analyseren van apparaatgegevens
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
 
 
-Azure IoT Central biedt uitgebreide analysemogelijkheden om historische trends te analyseren en verschillende telemetrieën van uw apparaten te correleren. Ga om aan de slag te gaan naar **Analytics** in het linkerdeelvenster.
+Azure IoT Central biedt uitgebreide analyse mogelijkheden voor het analyseren van historische trends en het correleren van verschillende teleelementen van uw apparaten. Ga naar **Analytics** in het linkerdeel venster om aan de slag te gaan.
 
-## <a name="understanding-the-analytics-ui"></a>Inzicht in de gebruikersinterface van Analytics
-Analytics-gebruikersinterface bestaat uit drie hoofdcomponenten:
-- **Deelvenster Gegevensconfiguratie:** Selecteer in het configuratiepaneel de apparaatgroep waarvoor u de gegevens wilt analyseren. Selecteer vervolgens de telemetrie die u wilt analyseren en selecteer de aggregatiemethode voor elke telemetrie. **Split** by-besturingselement helpt bij het groeperen van de gegevens door de eigenschappen van het apparaat als afmetingen te gebruiken.
+## <a name="understanding-the-analytics-ui"></a>Uitleg over de gebruikers interface van Analytics
+De gebruikers interface van Analytics bestaat uit drie hoofd onderdelen:
+- **Paneel voor gegevens configuratie:** Begin met het configuratie venster en selecteer de apparaatgroep waarvoor u de gegevens wilt analyseren. Selecteer vervolgens de telemetrie die u wilt analyseren en selecteer de aggregatie methode voor elke telemetrie. **Splitsen op** besturings element helpt bij het groeperen van de gegevens met behulp van de eigenschappen van het apparaat als dimensies.
 
-- **Tijdscontrole:** Tijdsbesturingselement wordt gebruikt om de duur te selecteren waarvoor u de gegevens wilt analyseren. U een van beide eindpunten van de tijdschuifregelaar slepen om de tijdspanne te selecteren. Tijdbeheer heeft ook een schuifregelaar **voor intervalgrootte** die de bucket of de intervalgrootte regelt die wordt gebruikt om de gegevens samen te voegen. 
+- **Besturings element tijd:** Tijd besturings element wordt gebruikt om de duur te selecteren waarvoor u de gegevens wilt analyseren. U kunt een van de uiteinden van de schuif regelaar tijd slepen om de tijds Panne te selecteren. Tijd beheer heeft ook een schuif regelaar voor de **interval grootte** waarmee de Bucket of de interval grootte wordt bepaald waarmee de gegevens worden samengevoegd. 
 
-- **Grafiekbesturingselement:** Grafiekbesturingselement visualiseert de gegevens als een lijndiagram. U de zichtbaarheid van specifieke lijnen inschakelen door interactie met de grafieklegenda. 
-
-
-  ![Overzicht van de gebruikersinterface van Analytics](media/howto-create-analytics/analyticsui.png)
+- **Besturings element voor grafieken:** Met het besturings element grafiek worden de gegevens gevisualiseerd als een lijn diagram. U kunt de zicht baarheid van specifieke regels in-of uitschakelen door interactie met de grafiek legenda. 
 
 
-## <a name="querying-your-data"></a>Uw gegevens opvragen
+  ![Overzicht van Analytics-gebruikers interface](media/howto-create-analytics/analyticsui.png)
 
-U moet beginnen met het kiezen van een **apparaatgroep**en de telemetrie die u wilt analyseren. Zodra u klaar bent, selecteert u **Analyseren** om te beginnen met het visualiseren van uw gegevens.
 
-- **Apparaatgroep:** Een [apparaatgroep](tutorial-use-device-groups.md) is een door de gebruiker gedefinieerde groep van uw apparaten. Bijvoorbeeld, alle koelkasten in Oakland, of Alle versie 2.0 windturbines.
+## <a name="querying-your-data"></a>Query's uitvoeren op uw gegevens
 
-- **Telemetrie:** Selecteer de telemetrie die u wilt analyseren en verkennen. U meerdere telemetrieën selecteren om samen te analyseren. Standaardaggregatiemethode is ingesteld op Gemiddeld voor respectievelijk numeriek en Aantal voor tekenreeksgegevenstype. Ondersteunde aggregatiemethoden voor numerieke gegevenstypen zijn Gemiddeld, Maximaal, Minimum, Aantal en Som.  Ondersteunde aggregatiemethoden voor tekenreeksgegevenstype zijn geteld.
+U moet beginnen met het kiezen van een **apparaatgroep**en de telemetrie die u wilt analyseren. Wanneer u klaar bent, selecteert u **analyseren** om uw gegevens te visualiseren.
 
-- **Gesplitst door:** 'Split by'-besturingselement helpt bij het groeperen van de gegevens door de eigenschappen van het apparaat als afmetingen te gebruiken. Waarden van het apparaat en de cloudeigenschappen worden samengevoegd met de telemetrie zodra het apparaat wordt verzonden. Als de eigenschap cloud of apparaat is bijgewerkt, ziet u de telemetrie gegroepeerd op verschillende waarden in de grafiek.
+- **Apparaatgroep:** Een [apparaatgroep](tutorial-use-device-groups.md) is een door de gebruiker gedefinieerde groep van uw apparaten. Bijvoorbeeld alle koel kasten in Oakland of alle versie 2,0-wind turbines.
+
+- **Telemetrie:** Selecteer de telemetrie die u wilt analyseren en verkennen. U kunt meerdere webelementen selecteren om samen te analyseren. De standaard aggregatie methode is ingesteld op gemiddeld voor numeriek en aantal voor het gegevens type teken reeks. Ondersteunde aggregatie methoden voor numerieke gegevens typen zijn gemiddelde, maximum, minimum, aantal en, sum.  Ondersteunde aggregatie methoden voor het gegevens type teken reeks zijn aantal.
+
+- **Splitsen op:** Met het besturings element splitsen op kunt u de gegevens groeperen met behulp van de eigenschappen van het apparaat als dimensies. De waarden van de eigenschappen apparaat en Cloud worden samen met de telemetrie gecombineerd als en wanneer deze door het apparaat worden verzonden. Als de eigenschap van de Cloud of het apparaat is bijgewerkt, wordt de telemetrie gegroepeerd op verschillende waarden in de grafiek weer te geven.
 
     > [!TIP]
-    > Als u gegevens voor elk apparaat afzonderlijk wilt weergeven, selecteert u Apparaat-id in het besturingselement 'Splitsen door'.
+    > Als u de gegevens voor elk apparaat afzonderlijk wilt weer geven, selecteert u apparaat-id in het besturings element ' splitsen op '.
 
 ## <a name="interacting-with-your-data"></a>Interactie met uw gegevens
 
-Zodra u uw gegevens hebt opgevraagd, u beginnen met het visualiseren ervan in het lijndiagram. U telemetrie weergeven/verbergen, de tijdsduur wijzigen, telemetrie in een gegevensraster weergeven.
+Zodra u een query op uw gegevens hebt uitgevoerd, kunt u beginnen met visualiseren in het lijn diagram. U kunt telemetrie weer geven/verbergen, de tijds duur wijzigen, telemetrie weer geven in een gegevens raster.
 
-- **Deelvenster Tijdeditor:** Standaard halen we gegevens op van de afgelopen dag. U een van beide eindpunten van de schuifregelaar slepen om de tijdsduur te wijzigen. U het agendabesturingselement ook gebruiken om een van de vooraf gedefinieerde tijdbuckets te selecteren of een aangepast tijdbereik te selecteren. Tijdbeheer heeft ook een schuifregelaar **voor intervalgrootte** die de bucket of de intervalgrootte regelt die wordt gebruikt om de gegevens samen te voegen.
+- **Tijds editor paneel:** Standaard worden gegevens van de afgelopen dag opgehaald. U kunt een van de uiteinden van de tijd schuifregelaar slepen om de tijds duur te wijzigen. U kunt ook het besturings element kalender gebruiken om een van de vooraf gedefinieerde tijds verzamelingen te selecteren of een aangepast tijds bereik te selecteren. Tijd beheer heeft ook een schuif regelaar voor de **interval grootte** waarmee de Bucket of de interval grootte wordt bepaald waarmee de gegevens worden samengevoegd.
 
-    ![Tijdeditor](media/howto-create-analytics/timeeditorpanel.png)
+    ![Tijd editor](media/howto-create-analytics/timeeditorpanel.png)
 
-    - **Schuifregelaar Binnendatumbereik:** gebruik de twee eindpuntbesturingselementen door ze over de gewenste tijdspanne te slepen. Dit bereik van de binnendatum wordt beperkt door het schuifregelaarbesturingselement voor de buitenste datumbereik.
+    - **Schuif regelaar voor het binnenste datum bereik**: gebruik de twee eindpunt besturings elementen door ze over de gewenste periode te slepen. Dit binnenste datum bereik wordt beperkt door de schuif regelaar voor het buitenste datum bereik.
     
    
-    - **Schuifregelaars voor het buitenste datumbereik**: Gebruik de eindpuntbesturingselementen om het buitenste datumbereik te selecteren, dat beschikbaar is voor uw besturingselement voor het binnenste datumbereik.
+    - **Besturings element voor schuif regelaar voor datum bereik**: gebruik de besturings elementen voor het eind punt om het buitenste datum bereik te selecteren. Dit is beschikbaar voor het besturings element binnen het bereik van datums.
 
-    - **Knoppen voor datumbereik vergroten en verkleinen:** verhoog of verlaag uw tijdspanne door een van beide knoppen te selecteren voor het gewenste interval.
+    - **Knoppen voor het datum bereik verg Roten**of verkleinen: u kunt uw tijds periode verg Roten of verkleinen door een van de knoppen voor het gewenste interval te selecteren.
 
-    - **Schuifregelaar tussen intervalgrootte:** gebruik deze om in en uit intervallen in dezelfde tijdspanne in en uit te zoomen. Deze actie zorgt voor een nauwkeurigere controle van de beweging tussen grote plakjes tijd. U het gebruiken om gedetailleerde weergaven met hoge resolutie van uw gegevens te bekijken, zelfs tot milliseconden. Het standaardbeginpunt van de schuifregelaar is ingesteld als de meest optimale weergave van de gegevens uit uw selectie, die resolutie, querysnelheid en granulariteit in evenwicht brengt.
+    - **Schuif regelaar voor interval grootte**: met deze knop kunt u op dezelfde tijds Panne in-en uitzoomen. Deze actie biedt meer nauw keurige controle over de verplaatsing tussen grote segmenten. U kunt deze gebruiken om gedetailleerde, weer gaven van uw gegevens met hoge resolutie weer te geven, zelfs omlaag tot milliseconden. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie, waarmee de resolutie, de query snelheid en de granulatie worden gebalanceerd.
     
-    - **Datumbereikkiezer:** Met dit webbesturingselement u eenvoudig de gewenste datum en tijdsbereiken selecteren. U het besturingselement ook gebruiken om te schakelen tussen verschillende tijdzones. Nadat u de wijzigingen hebt aangebracht die u wilt toepassen op uw huidige werkruimte, selecteert u Opslaan.
+    - **Datum bereik kiezer**: met dit Webbe sturings element kunt u eenvoudig de gewenste datum en tijd selecteren. U kunt ook het besturings element gebruiken om over te scha kelen tussen verschillende tijd zones. Nadat u de wijzigingen hebt aangebracht die u wilt Toep assen op uw huidige werk ruimte, selecteert u opslaan.
 
     > [!TIP]
-    > De intervalgrootte wordt dynamisch bepaald op basis van de geselecteerde tijdspanne. Kleinere tijdspannes maken het mogelijk om de gegevens in zeer gedetailleerde intervallen van maximaal enkele seconden te verzamelen.
+    > De interval grootte wordt dynamisch bepaald op basis van de geselecteerde tijds periode. Dankzij kleinere tijds duren kunt u de gegevens samen voegen tot zeer nauw keurige intervallen van Maxi maal een paar seconden.
 
 
-- **Grafieklegenda:** Grafieklegenda toont de geselecteerde telemetrie in de grafiek. U over elk item op de legenda zweven om het in focus op de grafiek te brengen. Bij gebruik van 'Split By' wordt de telemetrie gegroepeerd op de respectievelijke waarden van de geselecteerde dimensie. U de zichtbaarheid van elke specifieke telemetrie of de hele groep inschakelen door op de groepsnaam te klikken.  
+- **Grafiek legenda:** Diagram legenda toont de geselecteerde telemetrie in de grafiek. U kunt de muis aanwijzer op elk item in de legenda aanwijzen om de focus te verplaatsen naar de grafiek. Wanneer u ' splitsen op ' gebruikt, wordt de telemetrie gegroepeerd op basis van de respectieve waarden van de geselecteerde dimensie. U kunt de zicht baarheid van elke specifieke telemetrie of de hele groep in-of uitschakelen door te klikken op de naam van de groep.  
 
 
-- **Y-as formaat besturingselement:** y-as modus cycli door de beschikbare y-as weergave opties. Dit besturingselement is alleen beschikbaar wanneer verschillende telemetries worden gevisualiseerd. U de y-as instellen door uit een van de drie modi te kiezen:
+- **Besturings element voor de indeling van de y-as:** de modus y-as doorloopt de beschik bare opties voor de y-as. Dit besturings element is alleen beschikbaar wanneer verschillende teleelementen worden gevisualiseerd. U kunt de y-as instellen door een van de drie modi te kiezen:
 
-    - **Gestapeld:** Een grafiek voor elke telemetrie wordt gestapeld en elk van de grafieken hebben hun eigen y-as. Deze modus is standaard ingesteld.
-    - **Gedeeld:** Een grafiek voor elke telemetrie wordt uitgezet tegen dezelfde y-as.
-    - **Overlapping:** Gebruik deze om meerdere lijnen op dezelfde y-as te stapelen, waarbij de y-asgegevens veranderen op basis van de geselecteerde regel.
+    - **Gestapeld:** Een grafiek voor elke telemetrie wordt gestapeld en elk van de grafieken heeft hun eigen y-as. Deze modus is ingesteld als standaard.
+    - **Gedeeld:** Een grafiek voor elke telemetrie wordt op dezelfde y-as getekend.
+    - **Overlap ping:** Gebruik deze om meerdere lijnen op dezelfde y-as te stapelen, waarbij de y-as wordt gewijzigd op basis van de geselecteerde regel.
 
-  ![Gegevens over een y-as rangschikken met verschillende visualisatiemodi](media/howto-create-analytics/yaxiscontrol.png)
+  ![Gegevens rangschikken op de y-as met verschillende visualisatie modi](media/howto-create-analytics/yaxiscontrol.png)
 
-- **Zoombesturingselement:** Met Zoom u verder inzoomen op uw gegevens. Als u een periode vindt waarop u zich wilt concentreren binnen de resultaatset, gebruikt u de muisaanwijzer om het gebied te grijpen en sleept u het vervolgens naar het eindpunt van uw keuze. Klik vervolgens met de rechtermuisknop op het geselecteerde gebied en klik op Zoomen.
+- **Zoom besturings element:** Als u inzoomt, kunt u verder inzoomen op uw gegevens. Als u een periode vindt waarop u zich wilt richten in de resultatenset, gebruikt u de muis aanwijzer om het gebied te halen en sleept u het naar het gewenste eind punt. Klik vervolgens met de rechter muisknop op het geselecteerde gebied en klik op inzoomen.
 
   ![Inzoomen op de gegevens](media/howto-create-analytics/zoom.png)
 
-Onder de ellips zijn er meer grafiekbesturingselementen om met de gegevens te communiceren.
+Onder het beletsel teken staan er meer grafiek besturings elementen om te communiceren met de gegevens.
 
-- **Weergaveraster:** Uw resultaten zijn beschikbaar in een tabelindeling, zodat u de specifieke waarde voor elk gegevenspunt weergeven.
+- **Raster weer geven:** De resultaten zijn beschikbaar in een tabel indeling, zodat u de specifieke waarde voor elk gegevens punt kunt weer geven.
 
-- **Een markering laten vallen:** Het besturingselement 'Drop Marker' biedt een manier om bepaalde gegevenspunten in de grafiek te verankeren. Het is handig wanneer u gegevens voor meerdere regels over verschillende perioden probeert te vergelijken.
+- **Een markering verwijderen:** Het besturings element drop markering biedt een manier om bepaalde gegevens punten in de grafiek te verankeren. Het is handig wanneer u gegevens wilt vergelijken voor meerdere regels in verschillende Peri Oden.
 
-  ![De rasterweergave voor uw analyses weergeven](media/howto-create-analytics/additionalchartcontrols.png)
+  ![De raster weergave voor uw analyse weer geven](media/howto-create-analytics/additionalchartcontrols.png)

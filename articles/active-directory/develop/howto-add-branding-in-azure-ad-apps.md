@@ -1,5 +1,5 @@
 ---
-title: Richtlijnen voor app-branding | Azure
+title: Richt lijnen voor app-branding | Azure
 titleSuffix: Microsoft identity platform
 description: Een uitgebreide handleiding voor bronnen voor ontwikkelaars voor Azure Active Directory
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884423"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
@@ -63,19 +63,19 @@ Uw app heeft misschien aparte paden voor registratie en aanmelding, en de volgen
 
 Uw koppeling ‘Download de app’ moet de gebruiker naar de Azure AD-pagina voor toegangsverlening (autorisatie) leiden, zodat de beheerder van een organisatie kan autoriseren dat uw app toegang heeft tot de gegevens van die organisatie, die worden gehost door Microsoft. In het artikel [Toepassingen integreren met Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) staat meer informatie over hoe u toegang kunt aanvragen.
 
-Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze ervoor kiezen deze toe te voegen [https://portal.office.com/myapps](https://portal.office.com/myapps)aan de Startprogramma-ervaring van hun gebruikers in de Office 365-app (toegankelijk vanaf de wafel en vanaf ). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
+Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Office 365 App Launcher-ervaring voor gebruikers (toegankelijk via wafel en van [https://portal.office.com/myapps](https://portal.office.com/myapps)). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
 
-![Knop met de tekst 'Toevoegen aan mijn organisatie'](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![Knop met het logo van micro soft en de tekst toevoegen aan mijn organisatie](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 We raden u echter aan verklarende tekst te schrijven in plaats van op knoppen te vertrouwen. Bijvoorbeeld:
 
-> *Als u al Office 365 of andere zakelijke service van Microsoft gebruikt, u <your_app_name verlenen> toegang tot de gegevens van uw organisatie. Hierdoor hebben uw gebruikers toegang tot <your_app_name> met hun bestaande werkaccounts.*
+> *Als u Office 365 of een andere bedrijfs service van micro soft al gebruikt, kunt u <your_app_name> toegang tot de gegevens van uw organisatie verlenen. Hiermee kunnen uw gebruikers toegang krijgen tot <your_app_name> met hun bestaande werk accounts.*
 
 Als u het officiële Microsoft-logo wilt downloaden voor gebruik in uw app, klikt u met de rechtermuisknop op het logo dat u wilt gebruiken en slaat u het op naar uw computer.
 
 | Asset                                | PNG-indeling | SVG-indeling |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft-logo  | ![Downloadbaar Microsoft-logo in PNG-indeling](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Downloadbaar Microsoft-logo in SVG-indeling](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft-logo  | ![Downloadbaar micro soft-logo in PNG-indeling](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Downloadbaar micro soft-logo in SVG-indeling](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Visuele begeleiding voor aanmelding
 
@@ -87,16 +87,16 @@ Het is de associatie van het Microsoft-logo en de term ‘Aanmelden met Microsof
 
 Het volgende diagram toont de door Microsoft aanbevolen rode lijnen wanneer u de assets met uw app gebruikt. De rode lijnen zijn van toepassing op ‘Aanmelden met Microsoft’ en de kortere versie ‘Aanmelden’.
 
-![Toont de roodlijnen 'Aanmelden bij Microsoft'](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![Hiermee worden de Aanmelden met Microsoft redlines](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Als u de officiële afbeelding wilt downloaden voor gebruik in uw app, klikt u met de rechtermuisknop op de afbeelding die u wilt gebruiken en slaat u deze op naar uw computer.
 
 | Asset                                | PNG-indeling | SVG-indeling |
 | ------------------------------------ | ---------- | ---------- |
-| Aanmelden met Microsoft (donker thema)  | ![Downloadbare "Aanmelden met Microsoft" knop donker thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Downloadbare "Aanmelden met Microsoft" knop donker thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Aanmelden met Microsoft (licht thema) | ![Downloadbare knop Aanmelden bij Microsoft met lichtthema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Downloadbare "Aanmelden met Microsoft" knop licht thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Aanmelden (donker thema)                 | ![Downloadbare "Sign in" korte knop donker thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Downloadbare "Sign in" korte knop donker thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Aanmelden (licht thema)                | ![Downloadbare "Sign in" korte knop licht thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Downloadbare "Sign in" korte knop licht thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Aanmelden met Microsoft (donker thema)  | ![Download bare knop Aanmelden met Microsoft, donker thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Download bare knop Aanmelden met Microsoft, donker thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Aanmelden met Microsoft (licht thema) | ![Down loadable Aanmelden met Microsoft-knop licht thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Down loadable Aanmelden met Microsoft-knop Light thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Aanmelden (donker thema)                 | ![Down loadable ' Sign in ' Short button donker Theme PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Down loadable ' Aanmelden ' korte knop voor het donkere thema SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Aanmelden (licht thema)                | ![Down loadable "aanmelden" korte knop licht thema PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Down loadable ' Aanmelden ' SVG-laag thema voor korte knoppen](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Huisstijl: wel en niet doen
 

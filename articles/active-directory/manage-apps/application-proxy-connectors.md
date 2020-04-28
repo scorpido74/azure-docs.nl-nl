@@ -1,6 +1,6 @@
 ---
-title: Informatie over Azure AD-toepassingsproxyconnectors | Microsoft Documenten
-description: Dekt de basisprincipes van Azure AD Application Proxy-connectors.
+title: Meer informatie over Azure AD-toepassingsproxy-connectors | Microsoft Docs
+description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,28 +13,28 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406834"
 ---
-# <a name="understand-azure-ad-application-proxy-connectors"></a>Informatie over Azure AD-toepassingsproxyconnectors
+# <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD-toepassingsproxy-connectors begrijpen
 
-Connectors maken Azure AD Application Proxy mogelijk. Ze zijn eenvoudig, eenvoudig te implementeren en te onderhouden, en super krachtig. In dit artikel wordt besproken wat connectors zijn, hoe ze werken en enkele suggesties voor het optimaliseren van uw implementatie.
+Connectors zijn wat Azure AD-toepassingsproxy mogelijk maakt. Ze zijn eenvoudig, eenvoudig te implementeren en te onderhouden, en zeer krachtig. In dit artikel wordt beschreven welke connectors zijn, hoe ze werken en enkele suggesties voor het optimaliseren van uw implementatie.
 
-## <a name="what-is-an-application-proxy-connector"></a>Wat is een Application Proxy-connector?
+## <a name="what-is-an-application-proxy-connector"></a>Wat is een Application proxy-connector?
 
-Connectors zijn lichtgewicht agents die on-premises zitten en de uitgaande verbinding met de Application Proxy-service vergemakkelijken. Connectors moeten worden geïnstalleerd op een Windows Server die toegang heeft tot de backend-toepassing. U connectoren ordenen in verbindingsgroepen, waarbij elke groep verkeer naar specifieke toepassingen verwerkt.
+Connectors zijn lichte agents die on-premises zijn en de uitgaande verbinding met de Application proxy-service vergemakkelijken. Connectors moeten worden geïnstalleerd op een Windows-Server die toegang heeft tot de back-end-toepassing. U kunt connectors in connector groepen indelen, waarbij elke groep verkeer naar specifieke toepassingen verwerkt.
 
 ## <a name="requirements-and-deployment"></a>Vereisten en implementatie
 
-Als u Application Proxy met succes wilt implementeren, hebt u ten minste één connector nodig, maar we raden twee of meer aan voor meer tolerantie. Installeer de connector op een machine met Windows Server 2012 R2 of hoger. De connector moet communiceren met de Application Proxy-service en de on-premises toepassingen die u publiceert.
+Als u de toepassings proxy wilt implementeren, hebt u ten minste één connector nodig, maar we raden u aan twee of meer te gebruiken voor meer flexibiliteit. Installeer de connector op een computer met Windows Server 2012 R2 of hoger. De connector moet communiceren met de service toepassings proxy en de on-premises toepassingen die u publiceert.
 
 ### <a name="windows-server"></a>Windows-server
-U hebt een server met Windows Server 2012 R2 of hoger nodig waarop u de application proxy-connector installeren. De server moet verbinding maken met de application proxy-services in Azure en de on-premises toepassingen die u publiceert.
+U hebt een server met Windows Server 2012 R2 of later nodig waarop u de Application proxy-connector kunt installeren. De server moet verbinding maken met de toepassings proxy services in Azure en de on-premises toepassingen die u publiceert.
 
-De windows-server moet TLS 1.2 hebben ingeschakeld voordat u de Application Proxy-connector installeert. Ga als u TLS 1.2 op de server in:
+Voor de installatie van de toepassings proxy connector moet TLS 1,2 zijn ingeschakeld op de Windows-Server. TLS 1,2 inschakelen op de server:
 
 1. Stel de volgende registersleutels in:
     
@@ -47,145 +47,145 @@ De windows-server moet TLS 1.2 hebben ingeschakeld voordat u de Application Prox
 
 1. Start de server opnieuw
 
-Zie [Aan de slag met Application Proxy en installeer een connector](application-proxy-add-on-premises-application.md)voor meer informatie over de netwerkvereisten voor de connectorserver.
+Zie [aan de slag met toepassings proxy en een connector installeren](application-proxy-add-on-premises-application.md)voor meer informatie over de netwerk vereisten voor de connector server.
 
 ## <a name="maintenance"></a>Onderhoud
 
-De connectoren en de service zorgen voor alle taken met hoge beschikbaarheid. Ze kunnen dynamisch worden toegevoegd of verwijderd. Elke keer dat een nieuwe aanvraag binnenkomt, wordt deze doorgestuurd naar een van de connectors die momenteel beschikbaar is. Als een connector tijdelijk niet beschikbaar is, reageert deze niet op dit verkeer.
+De connectors en de service zorgen voor alle taken met hoge Beschik baarheid. Ze kunnen dynamisch worden toegevoegd of verwijderd. Telkens wanneer een nieuwe aanvraag arriveert, wordt deze doorgestuurd naar een van de connectors die op dit moment beschikbaar zijn. Als een connector tijdelijk niet beschikbaar is, reageert deze niet op dit verkeer.
 
-De connectors zijn stateloos en hebben geen configuratiegegevens op de machine. De enige gegevens die ze opslaan zijn de instellingen voor het aansluiten van de service en het verificatiecertificaat. Wanneer ze verbinding maken met de service, halen ze alle vereiste configuratiegegevens op en vernieuwen ze deze om de paar minuten.
+De connectors zijn stateless en hebben geen configuratie gegevens op de computer. De enige gegevens die worden opgeslagen, zijn de instellingen voor het verbinden van de service en het verificatie certificaat. Wanneer ze verbinding maken met de service, worden alle vereiste configuratie gegevens opgehaald en worden ze elke paar minuten vernieuwd.
 
-Connectors peilen ook de server om erachter te komen of er een nieuwere versie van de connector is. Als er een wordt gevonden, worden de connectors zelf bijgewerkt.
+Connectors vragen de server ook om te bepalen of er een nieuwere versie van de connector is. Als er een wordt gevonden, worden de connectors zelf bijgewerkt.
 
-U uw connectors controleren vanaf de machine waarop ze draaien, met behulp van het gebeurtenislogboek en de prestatiemeteritems. U hun status ook bekijken op de pagina Application Proxy van de Azure-portal:
+U kunt uw connectors bewaken vanaf de computer waarop ze worden uitgevoerd, met behulp van het gebeurtenis logboek en de prestatie meter items. U kunt ook hun status weer geven op de pagina Toepassings proxy van de Azure Portal:
 
-![Voorbeeld: Azure AD Application Proxy connectors](./media/application-proxy-connectors/app-proxy-connectors.png)
+![Voor beeld: Azure AD-toepassingsproxy-connectors](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-U hoeft niet handmatig connectoren te verwijderen die ongebruikt zijn. Wanneer een connector wordt uitgevoerd, blijft deze actief wanneer deze verbinding maakt met de service. Ongebruikte connectors worden getagd als _inactief_ en worden verwijderd na 10 dagen inactiviteit. Als u echter een connector wilt verwijderen, verwijdert u zowel de Connector-service als de Updater-service van de server. Start de computer opnieuw op om de service volledig te verwijderen.
+U hoeft geen connectors hand matig te verwijderen die niet worden gebruikt. Wanneer een connector wordt uitgevoerd, blijft deze actief wanneer deze verbinding maakt met de service. Ongebruikte connectors zijn gelabeld als _inactief_ en worden verwijderd na 10 dagen van inactiviteit. Als u een connector wilt verwijderen, verwijdert u de connector service en de updater-service van de-server. Start de computer opnieuw op om de service volledig te verwijderen.
 
 ## <a name="automatic-updates"></a>Automatische updates
 
-Azure AD biedt automatische updates voor alle connectors die u implementeert. Zolang de Application Proxy Connector Updater-service wordt uitgevoerd, worden uw connectors automatisch bijgewerkt. Als u de Connector Updater-service niet op uw server ziet, moet u [uw connector opnieuw installeren](application-proxy-add-on-premises-application.md) om updates te ontvangen.
+Azure AD biedt automatische updates voor alle connectors die u implementeert. Zolang de toepassings proxy Connector Updater-service wordt uitgevoerd, worden uw connectors automatisch bijgewerkt. Als de Connector Updater-Service niet wordt weer geven op uw server, moet u [de connector opnieuw installeren](application-proxy-add-on-premises-application.md) om eventuele updates op te halen.
 
-Als u niet wilt wachten tot er een automatische update naar uw connector komt, u een handmatige upgrade uitvoeren. Ga naar de [pagina voor het downloaden van connectoren](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) op de server waar uw connector zich bevindt en selecteer **Downloaden.** Dit proces start een upgrade voor de lokale connector.
+Als u niet wilt wachten totdat een automatische update naar uw connector komt, kunt u een hand matige upgrade uitvoeren. Ga naar de [Download pagina](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) voor de connector op de server waarop de connector zich bevindt en selecteer **downloaden**. Dit proces start een upgrade voor de lokale connector.
 
-Voor tenants met meerdere connectors is de automatische update gericht op één connector tegelijk in elke groep om downtime in uw omgeving te voorkomen.
+Voor tenants met meerdere connectors bedoelt de automatische updates één connector per keer in elke groep om uitval tijd in uw omgeving te voor komen.
 
-U downtime ervaren wanneer uw connector wordt bijgewerkt als:
+U kunt uitval tijd ondervinden wanneer de connector wordt bijgewerkt als:
   
-- U hebt slechts één connector, we raden u aan een tweede connector te installeren en [een verbindingsgroep te maken.](application-proxy-connector-groups.md) Dit voorkomt downtime en zorgt voor een hogere beschikbaarheid.  
-- Er zat een connector in het midden van een transactie toen de update begon. Hoewel de eerste transactie verloren gaat, moet uw browser de bewerking automatisch opnieuw proberen of u uw pagina vernieuwen. Wanneer het verzoek wordt verweten, wordt het verkeer doorgestuurd naar een back-upconnector.
+- U hebt slechts één connector aanbevolen om een tweede connector te installeren en [een connector groep te maken](application-proxy-connector-groups.md). Hierdoor wordt uitval tijd voor komen en wordt er een hogere Beschik baarheid geboden.  
+- Een connector bevindt zich in het midden van een trans actie toen de update begon. Hoewel de eerste trans actie verloren gaat, moet de browser de bewerking automatisch opnieuw uitvoeren of u kunt uw pagina vernieuwen. Wanneer de aanvraag opnieuw wordt verzonden, wordt het verkeer doorgestuurd naar een back-upconnector.
 
-Zie Releasegeschiedenis van [de toepassingsproxy](application-proxy-release-version-history.md)voor eerder uitgebrachte versies en welke wijzigingen deze bevatten.
+Zie [toepassings proxy-versie geschiedenis](application-proxy-release-version-history.md)van de release voor meer informatie over eerder uitgebrachte versies en de wijzigingen die ze bevatten.
 
-## <a name="creating-connector-groups"></a>Verbindingsgroepen maken
+## <a name="creating-connector-groups"></a>Connector groepen maken
 
-Met verbindingsgroepen u specifieke connectors toewijzen om specifieke toepassingen te serveren. U een aantal connectors groeperen en vervolgens elke toepassing aan een groep toewijzen.
+Met connector groepen kunt u specifieke connectors toewijzen voor het leveren van specifieke toepassingen. U kunt een aantal connectors samen groeperen en vervolgens elke toepassing aan een groep toewijzen.
 
-Connectorgroepen maken het eenvoudiger om grote implementaties te beheren. Ze verbeteren ook de latentie voor tenants met toepassingen die in verschillende regio's worden gehost, omdat u op locatie gebaseerde connectorgroepen maken om alleen lokale toepassingen te bieden.
+Met connector groepen kunt u eenvoudig grote implementaties beheren. Ze verbeteren ook de latentie voor tenants met toepassingen die worden gehost in verschillende regio's, omdat u op locatie gebaseerde connector groepen kunt maken voor alleen lokale toepassingen.
 
-Zie Toepassingen publiceren op [afzonderlijke netwerken en locaties met behulp van verbindingsgroepen](application-proxy-connector-groups.md)voor meer informatie over verbindingsgroepen.
+Zie [toepassingen op verschillende netwerken en locaties publiceren met connector groepen](application-proxy-connector-groups.md)voor meer informatie over connector groepen.
 
 ## <a name="capacity-planning"></a>Capaciteitsplanning
 
-Het is belangrijk om ervoor te zorgen dat u voldoende capaciteit tussen connectoren hebt gepland om het verwachte verkeersvolume te verwerken. We raden aan dat elke connectorgroep ten minste twee connectoren heeft om hoge beschikbaarheid en schaal te bieden. Het hebben van drie connectoren is optimaal voor het geval u een machine op elk gewenst moment moet bedienen.
+Het is belang rijk om ervoor te zorgen dat u voldoende capaciteit hebt gepland tussen connectors om het verwachte verkeers volume af te handelen. U wordt aangeraden elke connector groep ten minste twee connectors te bieden voor hoge Beschik baarheid en schaal. Wanneer u drie connectors hebt, is het mogelijk dat u op elk gewenst moment een machine moet onderhouden.
 
-Over het algemeen, hoe meer gebruikers je hebt, hoe groter een machine die je nodig hebt. Hieronder vindt u een tabel met een overzicht van het volume en de verwachte latentie die verschillende machines aankunnen. Let op: het is allemaal gebaseerd op verwachte Transacties per seconde (TPS) in plaats van per gebruiker, omdat gebruikspatronen variëren en niet kunnen worden gebruikt om belasting te voorspellen. Er zullen ook enkele verschillen zijn op basis van de grootte van de antwoorden en de responstijd van de backend-toepassing - grotere responsformaten en tragere responstijden zullen resulteren in een lagere Max TPS. We raden ook aan om extra machines te hebben, zodat de gedistribueerde belasting over de machines altijd voldoende buffer biedt. De extra capaciteit zorgt ervoor dat u een hoge beschikbaarheid en veerkracht heeft.
+Over het algemeen, hoe meer gebruikers u hebt, hoe groter de computer die u nodig hebt. Hieronder volgt een tabel met een overzicht van het volume en de verwachte latentie die verschillende computers kunnen verwerken. Houd er rekening mee dat deze allemaal is gebaseerd op de verwachte trans acties per seconde (TPS) in plaats van door de gebruiker omdat de gebruiks patronen variëren en niet kunnen worden gebruikt om de belasting te voors pellen. Er zijn ook enkele verschillen op basis van de grootte van de reacties en de reactie tijd van de back-end-toepassing-grotere antwoord groottes en tragere reactie tijden, waardoor de maximale TPS wordt berekend. We raden u ook aan extra machines te plaatsen, zodat de gedistribueerde belasting over de machines altijd een ruimere buffer biedt. De extra capaciteit zorgt ervoor dat u beschikt over hoge Beschik baarheid en tolerantie.
 
-|Kernen|RAM|Verwachte latentie (MS)-P99|Max.|
+|Kernen|RAM|Verwachte latentie (MS)-P99|Maximum aantal TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
 |8|32|270|1190|
-|16|64|245|1200*|
+|16|64|245|1200 *|
 
-\*Deze machine heeft een aangepaste instelling gebruikt om een aantal van de standaardverbindingslimieten te verhogen die verder gaan dan de aanbevolen .NET-instellingen. We raden u aan een test uit te voeren met de standaardinstellingen voordat u contact opneemt met de ondersteuning om deze limiet voor uw tenant te wijzigen.
+\*Op deze computer is een aangepaste instelling gebruikt om een aantal van de standaard verbindings limieten van meer dan .NET aanbevolen instellingen te verhogen. Het is raadzaam om een test uit te voeren met de standaard instellingen voordat u contact opneemt met ondersteuning om deze limiet voor uw Tenant te wijzigen.
 
 > [!NOTE]
-> Er is niet veel verschil in de maximale TPS tussen 4, 8 en 16 kernmachines. Het belangrijkste verschil tussen deze is in de verwachte latentie.
+> Er is niet veel verschil in de maximale TPS tussen computers met 4, 8 en 16 kernen. Het belangrijkste verschil tussen deze bevindt zich in de verwachte latentie.
 >
-> Deze tabel richt zich ook op de verwachte prestaties van een connector op basis van het type machine waarop deze is geïnstalleerd. Dit staat los van de beperkingslimieten van de application proxy-service, zie [Servicelimieten en -beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+> Deze tabel is ook gericht op de verwachte prestaties van een connector op basis van het type computer waarop het is geïnstalleerd. Dit is gescheiden van de beperkings limieten voor de toepassings proxy service, Zie [service limieten en beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
 
 ## <a name="security-and-networking"></a>Beveiliging en netwerken
 
-Connectors kunnen overal in het netwerk worden geïnstalleerd waarmee ze aanvragen kunnen verzenden naar de Application Proxy-service. Wat belangrijk is, is dat de computer waarop de connector wordt uitgevoerd, ook toegang heeft tot uw apps. U connectoren installeren in uw bedrijfsnetwerk of op een virtuele machine die in de cloud wordt uitgevoerd. Connectors kunnen worden uitgevoerd binnen een perimeternetwerk, ook wel een gedemilitariseerde zone (DMZ) genoemd, maar dit is niet nodig omdat al het verkeer uitgaand is, zodat uw netwerk veilig blijft.
+Connectors kunnen overal in het netwerk worden geïnstalleerd waarmee ze aanvragen kunnen verzenden naar de service Application proxy. Belang rijk is dat de computer waarop de connector wordt uitgevoerd ook toegang heeft tot uw apps. U kunt connectors installeren in uw bedrijfs netwerk of op een virtuele machine die wordt uitgevoerd in de Cloud. Connectors kunnen worden uitgevoerd binnen een perimeter netwerk, ook wel bekend als een gedemilitariseerde zone (DMZ), maar dit is niet nodig omdat al het verkeer uitgaand is, zodat uw netwerk beveiligd blijft.
 
-Connectors verzenden alleen uitgaande verzoeken. Het uitgaande verkeer wordt verzonden naar de Application Proxy-service en naar de gepubliceerde toepassingen. U hoeft geen binnenkomende poorten te openen omdat het verkeer beide kanten op stroomt zodra een sessie is ingesteld. U hoeft ook geen binnenkomende toegang te configureren via uw firewalls.
+Connectors verzenden alleen uitgaande aanvragen. Het uitgaande verkeer wordt verzonden naar de service toepassings proxy en naar de gepubliceerde toepassingen. U hoeft geen binnenkomende poorten te openen omdat verkeer op beide manieren verloopt zodra een sessie tot stand is gebracht. U hoeft ook geen inkomende toegang via uw firewalls te configureren.
 
-Zie [Werken met bestaande on-premises proxyservers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie over het configureren van uitgaande firewallregels.
+Zie [werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie over het configureren van uitgaande firewall regels.
 
 ## <a name="performance-and-scalability"></a>Prestaties en schaalbaarheid
 
-Schalen voor de Application Proxy-service is transparant, maar schaal is een factor voor connectors. Je moet genoeg connectoren hebben om piekverkeer te verwerken. Aangezien connectors stateloos zijn, worden ze niet beïnvloed door het aantal gebruikers of sessies. In plaats daarvan reageren ze op het aantal aanvragen en hun laadvermogengrootte. Met standaard webverkeer kan een gemiddelde machine een paar duizend aanvragen per seconde verwerken. De specifieke capaciteit is afhankelijk van de exacte machinekenmerken.
+De schaal voor de toepassings proxy service is transparant, maar schalen is een factor voor connectors. U moet over voldoende connectors beschikken om het piek verkeer te kunnen afhandelen. Omdat connectors stateless zijn, worden ze niet beïnvloed door het aantal gebruikers of sessies. In plaats daarvan reageren ze op het aantal aanvragen en de grootte van de payload. Met het standaard webverkeer kan een gemiddelde computer een aantal duizenden aanvragen per seconde verwerken. De specifieke capaciteit is afhankelijk van de exacte computer kenmerken.
 
-De prestaties van de connector zijn gebonden aan CPU en netwerken. CPU-prestaties zijn nodig voor TLS-versleuteling en decryptie, terwijl netwerken belangrijk is om snelle connectiviteit met de toepassingen en de online service in Azure te krijgen.
+De prestaties van de connector zijn afhankelijk van de CPU en het netwerk. CPU-prestaties zijn vereist voor TLS-versleuteling en-ontsleuteling, terwijl netwerken belang rijk zijn om snelle connectiviteit met de toepassingen en de online service in azure te krijgen.
 
-Geheugen is daarentegen minder een probleem voor connectors. De online service zorgt voor een groot deel van de verwerking en alle niet-geverifieerde verkeer. Alles wat in de cloud gedaan kan worden, gebeurt in de cloud.
+Het geheugen is daarentegen minder van een probleem voor connectors. De online service zorgt voor een groot deel van de verwerking en alle niet-geverifieerde verkeer. Alles wat u kunt doen in de Cloud wordt uitgevoerd in de Cloud.
 
-Als deze connector of machine om welke reden dan ook niet meer beschikbaar is, gaat het verkeer naar een andere connector in de groep. Deze veerkracht is ook de reden waarom we raden het hebben van meerdere connectoren.
+Als een connector of machine niet beschikbaar is, gaat het verkeer naar een andere connector in de groep. Deze tolerantie is ook een aanbeveling voor het gebruik van meerdere connectors.
 
-Een andere factor die de prestaties beïnvloedt, is de kwaliteit van het netwerken tussen de connectors, waaronder:
+Een andere factor die van invloed is op de prestaties is de kwaliteit van het netwerk tussen de connectors, waaronder:
 
-- **De onlineservice**: Langzame of hoge latentieverbindingen met de application proxy-service in Azure beïnvloeden de prestaties van de connector. Voor de beste prestaties verbindt u uw organisatie met Azure met Express Route. Laat uw netwerkteam er anders voor zorgen dat verbindingen met Azure zo efficiënt mogelijk worden afgehandeld.
-- **De backend-toepassingen**: In sommige gevallen zijn er extra proxy's tussen de connector en de backend-toepassingen die verbindingen kunnen vertragen of voorkomen. Als u dit scenario wilt oplossen, opent u een browser vanaf de connectorserver en probeert u toegang te krijgen tot de toepassing. Als u de connectors in Azure uitvoert, maar de toepassingen on-premises zijn, is de ervaring mogelijk niet wat uw gebruikers verwachten.
-- **De domeincontrollers:** Als de connectors eenmalige aanmelding (SSO) uitvoeren met Kerberos Constrained Delegation, nemen ze contact op met de domeincontrollers voordat ze het verzoek naar de backend verzenden. De connectors hebben een cache van Kerberos-tickets, maar in een drukke omgeving kan de responsiviteit van de domeincontrollers de prestaties beïnvloeden. Dit probleem komt vaker voor voor connectors die in Azure worden uitgevoerd, maar die communiceren met domeincontrollers die on-premises zijn.
+- **De online service**: trage of hoge latentie verbindingen met de Application proxy-service in azure beïnvloeden de prestaties van de connector. Verbind uw organisatie met Azure met Express route voor de beste prestaties. Als dat niet het geval is, moet u ervoor zorgen dat het netwerk team zo efficiënt mogelijk verbindingen met Azure verwerkt.
+- **De back-end-toepassingen**: in sommige gevallen zijn er extra proxy's tussen de connector en de back-end-toepassingen die verbindingen kunnen vertragen of verhinderen. Als u dit scenario wilt oplossen, opent u een browser van de connector server en probeert u toegang tot de toepassing te krijgen. Als u de connectors in azure uitvoert, maar de toepassingen on-premises zijn, is de ervaring mogelijk niet wat uw gebruikers verwachten.
+- **De domein controllers**: als de connectors eenmalige aanmelding (SSO) uitvoeren met beperkte Kerberos-delegering, nemen ze contact op met de domein controllers voordat ze de aanvraag verzenden naar de back-end. De connectors hebben een cache van Kerberos-tickets, maar in een omgeving die bezet is, kan de reactie snelheid van de domein controllers invloed hebben op de prestaties. Dit probleem komt vaker voor bij connectors die worden uitgevoerd in azure, maar communiceren met domein controllers die on-premises zijn.
 
-Zie [Overwegingen voor netwerktopologie bij het gebruik van Azure Active Directory Application Proxy](application-proxy-network-topology.md)voor meer informatie over het optimaliseren van uw netwerk.
+Zie [overwegingen voor netwerk topologie bij het gebruik van Azure Active Directory-toepassingsproxy](application-proxy-network-topology.md)voor meer informatie over het optimaliseren van uw netwerk.
 
-## <a name="domain-joining"></a>Domeinsamenvoegen
+## <a name="domain-joining"></a>Domein toevoegen
 
-Connectors kunnen worden uitgevoerd op een machine die niet is aangesloten op het domein. Als u echter eenmalige aanmelding (SSO) wilt voor toepassingen die geïntegreerde Windows-verificatie (IWA) gebruiken, hebt u een machine met domeinverbonden machine nodig. In dit geval moeten de verbindingsmachines worden samengevoegd met een domein dat [Kerberos](https://web.mit.edu/kerberos) Constrained Delegation namens de gebruikers voor de gepubliceerde toepassingen kan uitvoeren.
+Connectors kunnen worden uitgevoerd op een computer die geen lid is van een domein. Als u echter eenmalige aanmelding (SSO) wilt gebruiken voor toepassingen die gebruikmaken van geïntegreerde Windows-authenticatie (IWA), hebt u een computer die lid is van een domein. In dit geval moeten de connector computers lid zijn van een domein dat beperkte [Kerberos](https://web.mit.edu/kerberos) -delegering kan uitvoeren namens de gebruikers voor de gepubliceerde toepassingen.
 
-Connectors kunnen ook worden samengevoegd met domeinen of forests die een gedeeltelijke vertrouwensrelatie hebben, of met alleen-lezen domeincontrollers.
+Connectors kunnen ook worden gekoppeld aan domeinen of forests met een gedeeltelijk vertrouwen of op alleen-lezen domein controllers.
 
-## <a name="connector-deployments-on-hardened-environments"></a>Connectorimplementaties op geharde omgevingen
+## <a name="connector-deployments-on-hardened-environments"></a>Connector implementaties in beveiligde omgevingen
 
-Meestal is de implementatie van de connector eenvoudig en vereist u geen speciale configuratie. Er zijn echter een aantal unieke voorwaarden die moeten worden overwogen:
+Normaal gesp roken is de implementatie van een connector eenvoudig en is er geen speciale configuratie vereist. Er zijn echter enkele unieke voor waarden die moeten worden overwogen:
 
-- Organisaties die het uitgaande verkeer beperken, moeten [vereiste poorten openen.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)
-- Fips-compatibele machines moeten mogelijk hun configuratie wijzigen, zodat de connectorprocessen een certificaat kunnen genereren en opslaan.
-- Organisaties die hun omgeving vergrendelen op basis van de processen die de netwerkaanvragen uitgeven, moeten ervoor zorgen dat beide verbindingsservices toegang hebben tot alle vereiste poorten en IP's.
-- In sommige gevallen kunnen uitgaande voorwaartse proxy's de tweerichtingscertificaatverificatie verbreken en ervoor zorgen dat de communicatie mislukt.
+- Organisaties die het uitgaande verkeer beperken, moeten de [vereiste poorten openen](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
+- FIPS-compatibele computers kunnen verplicht zijn om hun configuratie te wijzigen zodat de connector-processen een certificaat kunnen genereren en opslaan.
+- Organisaties die hun omgeving vergren delen op basis van de processen die de netwerk aanvragen uitgeven, moeten ervoor zorgen dat beide connector Services zijn ingeschakeld voor toegang tot alle vereiste poorten en IP-adressen.
+- In sommige gevallen kunnen uitgaande doorstuur servers de verificatie met twee richtings certificaten opheffen, waardoor de communicatie mislukt.
 
-## <a name="connector-authentication"></a>Verificatie voor connector
+## <a name="connector-authentication"></a>Connector verificatie
 
-Om een veilige service te bieden, moeten connectors zich verifiëren in de richting van de service en moet de service zich verifiëren in de richting van de connector. Deze verificatie gebeurt met behulp van client- en servercertificaten wanneer de connectors de verbinding starten. Op deze manier worden de gebruikersnaam en het wachtwoord van de beheerder niet opgeslagen op de connectormachine.
+Om een beveiligde service te bieden, moeten connectors zich bij de service verifiëren en moet de service zich bij de connector verifiëren. Deze verificatie wordt uitgevoerd met behulp van client-en server certificaten wanneer de connectors de verbinding starten. Op deze manier worden de gebruikers naam en het wacht woord van de beheerder niet opgeslagen op de computer van de connector.
 
-De gebruikte certificaten zijn specifiek voor de application proxy-service. Ze worden gemaakt tijdens de eerste registratie en worden automatisch vernieuwd door de connectoren om de paar maanden.
+De gebruikte certificaten zijn specifiek voor de Application proxy-service. Ze worden tijdens de eerste registratie gemaakt en worden elke paar maanden automatisch vernieuwd door de connectors.
 
-Na de eerste succesvolle certificaatvernieuwing heeft de Azure AD Application Proxy Connector-service (Network Service) geen toestemming om het oude certificaat uit het lokale machinearchief te verwijderen. Als het certificaat is verlopen of als het niet meer door de service wordt gebruikt, u het veilig verwijderen.
+Na het eerste geslaagde certificaat is het vernieuwen van de Azure AD-toepassingsproxy connector-service (netwerk service) niet gemachtigd om het oude certificaat uit het archief van de lokale computer te verwijderen. Als het certificaat is verlopen of niet meer door de service wordt gebruikt, kunt u het veilig verwijderen.
 
-Om problemen met de certificaatvernieuwing te voorkomen, moet u ervoor zorgen dat de netwerkcommunicatie van de connector naar de [gedocumenteerde bestemmingen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) is ingeschakeld.
+Als u problemen met het vernieuwen van het certificaat wilt voor komen, moet u ervoor zorgen dat de netwerk communicatie van de connector op de [gedocumenteerde locaties](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) is ingeschakeld.
 
-Als een connector gedurende enkele maanden niet op de service is aangesloten, zijn de certificaten mogelijk verouderd. Verwijder in dit geval de connector en installeer deze opnieuw om de registratie te activeren. U de volgende PowerShell-opdrachten uitvoeren:
+Als een connector gedurende enkele maanden niet is verbonden met de service, zijn de certificaten mogelijk verouderd. In dit geval moet u de connector verwijderen en opnieuw installeren om de registratie te activeren. U kunt de volgende Power shell-opdrachten uitvoeren:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
-Zie [Ondersteuning voor machine- en backendcomponenten verifiëren voor het vertrouwenscertificaat voor toepassingsproxy voor](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)meer informatie over het verifiëren van het certificaat en het oplossen van problemen.
+Voor meer informatie over het controleren van het certificaat en het oplossen van problemen raadpleegt u de [ondersteuning van machine-en back-endservers voor het vertrouwens certificaat van de toepassings proxy](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate).
 
 ## <a name="under-the-hood"></a>Onderhuids
 
-Connectors zijn gebaseerd op Windows Server Web Application Proxy, dus ze hebben de meeste van dezelfde beheertools, waaronder Windows Event Logs
+Connectors zijn gebaseerd op Windows Server Web Application proxy, zodat ze de meeste beheer hulpprogramma's, waaronder Windows-gebeurtenis logboeken, hebben.
 
-![Gebeurtenislogboeken beheren met de logboeken](./media/application-proxy-connectors/event-view-window.png)
+![Gebeurtenis logboeken beheren met de Logboeken](./media/application-proxy-connectors/event-view-window.png)
 
-en Windows-prestatiemeteritems.
+en Windows-prestatie meter items.
 
-![Tellers toevoegen aan de connector met de prestatiemonitor](./media/application-proxy-connectors/performance-monitor.png)
+![Tellers toevoegen aan de connector met de prestatie meter](./media/application-proxy-connectors/performance-monitor.png)
 
-De connectors hebben zowel admin- als sessielogboeken. De beheerderslogboeken bevatten belangrijke gebeurtenissen en hun fouten. De sessielogboeken bevatten alle transacties en hun verwerkingsgegevens.
+De connectors hebben zowel beheer-als sessie Logboeken. De beheerder logboeken bevatten belang rijke gebeurtenissen en fouten. De sessie logboeken bevatten alle trans acties en de bijbehorende verwerkings gegevens.
 
-Als u de logboeken wilt zien, gaat u naar de logboeken, opent u het menu **Weergave** en schakelt **u Analytische en foutopsporingslogboeken**weergeven in. Stel ze vervolgens in staat om evenementen te verzamelen. Deze logboeken worden niet weergegeven in Web Application Proxy in Windows Server 2012 R2, omdat de connectors zijn gebaseerd op een recentere versie.
+Als u de logboeken wilt weer geven, gaat u naar de Logboeken, opent u het menu **weer gave** en schakelt u **analyse en logboeken voor fout opsporing weer geven**in. Schakel deze vervolgens in om het verzamelen van gebeurtenissen te starten. Deze logboeken worden niet weer gegeven in Web Application proxy in Windows Server 2012 R2, omdat de connectors zijn gebaseerd op een recentere versie.
 
-U de status van de service bekijken in het venster Services. De connector bestaat uit twee Windows Services: de werkelijke connector en de updater. Ze moeten allebei de hele tijd rennen.
+U kunt de status van de service controleren in het venster Services. De connector bestaat uit twee Windows-Services: de daad werkelijke connector en de Updater. Beide moeten beide tijd worden uitgevoerd.
 
- ![Voorbeeld: venster Services met azure AD-services lokaal](./media/application-proxy-connectors/aad-connector-services.png)
+ ![Voor beeld: het venster Services met de lokale Azure AD-Services](./media/application-proxy-connectors/aad-connector-services.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassingen publiceren op afzonderlijke netwerken en locaties met behulp van verbindingsgroepen](application-proxy-connector-groups.md)
+- [Toepassingen publiceren op afzonderlijke netwerken en locaties met connector groepen](application-proxy-connector-groups.md)
 - [Werken met bestaande on-premises proxyservers](application-proxy-configure-connectors-with-proxy-servers.md)
-- [Problemen met toepassingsproxy- en connectorfouten oplossen](application-proxy-troubleshoot.md)
-- [De Azure AD Application Proxy Connector in stilte installeren](application-proxy-register-connector-powershell.md)
+- [Problemen met toepassings proxy en connector fouten oplossen](application-proxy-troubleshoot.md)
+- [De Azure AD-toepassingsproxy-connector op de achtergrond installeren](application-proxy-register-connector-powershell.md)

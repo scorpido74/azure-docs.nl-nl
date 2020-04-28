@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Pass-through Authentication: Releasegeschiedenis versie | Microsoft Documenten'
-description: In dit artikel worden alle releases van de Azure AD Pass-through Authentication-agent weergegeven
+title: 'Pass-Through-verificatie van Azure AD: release geschiedenis van versie | Microsoft Docs'
+description: In dit artikel vindt u een overzicht van alle versies van de Azure AD Pass-Through-verificatie agent
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,76 +13,76 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75b127f8429650d46af9f171ed7ff03692f1499e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81379905"
 ---
-# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD Pass-through Authentication-agent: releasegeschiedenis versie 
+# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD Pass-Through-verificatie agent: release geschiedenis van versie 
  
-De agents die on-premises zijn geïnstalleerd en pass-through-verificatie inschakelen, worden regelmatig bijgewerkt om nieuwe mogelijkheden te bieden. In dit artikel worden de versies en functies weergegeven die worden toegevoegd wanneer nieuwe functionaliteit wordt geïntroduceerd. Doorgeefverificatiemedewerkers worden automatisch bijgewerkt wanneer een nieuwe versie wordt uitgebracht. 
+De agents die on-premises zijn geïnstalleerd en die Pass Through-verificatie inschakelen, worden regel matig bijgewerkt om nieuwe mogelijkheden te bieden. In dit artikel worden de versies en functies vermeld die worden toegevoegd wanneer er nieuwe functionaliteit wordt geïntroduceerd. Pass Through-verificatie agenten worden automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. 
 
-Hier zijn gerelateerde onderwerpen: 
+Hier vindt u verwante onderwerpen: 
 
-- [Aanmelden door gebruikers met Azure AD Pass-through-verificatie](how-to-connect-pta.md) 
-- [Installatie van Azure AD Pass-through Authentication-agent](how-to-connect-pta-quick-start.md) 
+- [Aanmelding van gebruikers met Azure AD Pass-Through-verificatie](how-to-connect-pta.md) 
+- [Installatie van Azure AD Pass-Through-verificatie agent](how-to-connect-pta-quick-start.md) 
 
 ## <a name="1517420"></a>1.5.1742.0
-### <a name="release-status"></a>Releasestatus: 
-04/09/2020: Vrijgegeven voor download
+### <a name="release-status"></a>Release status: 
+04/09/2020: uitgebracht voor downloaden
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-- Added support for targeting cloud environments upon installation. De bundel kan worden vastgemaakt aan een bepaalde cloudomgeving.
+- Er is ondersteuning toegevoegd voor het richten op Cloud omgevingen tijdens de installatie. De bundel kan worden vastgemaakt aan een bepaalde cloud omgeving.
 
 
 
 ## <a name="1510070"></a>1.5.1007.0 
 ### <a name="release-status"></a>Status van de release 
-1/22/2019: Vrij gegeven om te downloaden  
+1/22/2019: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- Ondersteuning toegevoegd voor betrouwbare kanalen van Service Bus om een extra laag verbindingstolerantie toe te voegen voor uitgaande verbindingen 
-- TLS 1.2 afdwingen tijdens de registratie van agenten 
+- Er is ondersteuning toegevoegd voor Service Bus betrouw bare kanalen om een extra laag met verbindings tolerantie voor uitgaande verbindingen toe te voegen 
+- TLS 1,2 afdwingen tijdens de registratie van de agent 
 
 ## <a name="156430"></a>1.5.643.0 
 ### <a name="release-status"></a>Status van de release 
-4/10/2018: Vrijgegeven om te downloaden  
+4/10/2018: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- Ondersteuning voor websocketverbindingen 
-- TLS 1.2 instellen als het standaardprotocol voor de agent 
+- Ondersteuning voor WebSocket-verbinding 
+- TLS 1,2 instellen als het standaard protocol voor de agent 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Status van de release 
-1/31/2018: Vrijgegeven om te downloaden  
+1/31/2018: uitgebracht voor downloaden  
 ### <a name="fixed-issues"></a>Problemen opgelost 
 
-- Fixed a bug that caused some memory leaks in the agent. 
-- De Azure Service Bus-versie bijgewerkt, die een bugoplossing bevat voor problemen met de time-out van de connector. 
+- Er is een fout opgelost waardoor sommige geheugen lekken in de agent zijn veroorzaakt. 
+- De Azure Service Bus versie is bijgewerkt, die een fout oplossing bevat voor problemen met de time-out van de connector. 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Status van de release 
-11/26/2017: Vrijgegeven om te downloaden  
+11/26/2017: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- Ondersteuning toegevoegd voor websocket-gebaseerde verbindingen tussen de agent en Azure AD-services om de tolerantie voor de verbinding te verbeteren 
+- Er is ondersteuning toegevoegd voor verbindingen op basis van websockets tussen de agent en Azure AD-Services om de verbindings tolerantie te verbeteren 
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Status van de release 
-11/25/2017: Vrijgegeven om te downloaden  
+11/25/2017: uitgebracht voor downloaden  
 ### <a name="fixed-issues"></a>Problemen opgelost 
-- Fixed bugs related to the DNS cache for default proxy scenarios Fixed bugs related to the DNS cache for default proxy scenarios Fixed bugs related to the DNS cache for default proxy scenarios Fixed bugs 
+- Opgeloste fouten met betrekking tot de DNS-cache voor standaard proxy scenario's 
  
 ## <a name="153890"></a>1.5.389.0 
 ### <a name="release-status"></a>Status van de release 
-10/17/2017: Vrijgegeven om te downloaden  
+10/17/2017: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- Dns-cachefunctionaliteit toegevoegd voor uitgaande verbindingen om tolerantie toe te voegen voor DNS-fouten 
+- De functionaliteit van de DNS-cache voor uitgaande verbindingen is toegevoegd om tolerantie van DNS-fouten toe te voegen 
  
 ## <a name="152610"></a>1.5.261.0 
 ### <a name="release-status"></a>Status van de release 
-08/31/2017: Vrijgegeven om te downloaden  
+08/31/2017: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- GA-versie van de Azure AD Pass-through-verificatieagent 
+- GA-versie van de Pass-Through-verificatie agent van Azure AD 
 
 ## <a name="next-steps"></a>Volgende stappen
 

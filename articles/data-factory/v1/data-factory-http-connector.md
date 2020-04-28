@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen van een HTTP-bron - Azure
-description: Meer informatie over het verplaatsen van gegevens uit een on-premises of cloud HTTP-bron met Azure Data Factory.
+title: Gegevens verplaatsen van een HTTP-bron-Azure
+description: Meer informatie over het verplaatsen van gegevens van een on-premises of Cloud-HTTP-bron met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,65 +12,65 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991566"
 ---
-# <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Gegevens uit een HTTP-bron verplaatsen met Azure Data Factory
+# <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Gegevens verplaatsen van een HTTP-bron met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](data-factory-http-connector.md)
 > * [Versie 2 (huidige versie)](../connector-http.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [HTTP-connector in V2](../connector-http.md)als u de huidige versie van de Azure Data Factory-service gebruikt.
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Azure Data Factory-service gebruikt, raadpleegt u [http-connector in v2](../connector-http.md).
 
 
-In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruiken om gegevens van een on-premises of cloud HTTP-eindpunt naar een ondersteund sink-gegevensarchief te verplaatsen. Dit artikel bouwt voort op [Move-gegevens met behulp van Kopieeractiviteit](data-factory-data-movement-activities.md), die een algemeen overzicht van gegevensverkeer weergeeft met behulp van Kopieeractiviteit. Het artikel bevat ook de gegevensarchieven die Kopieeractiviteit ondersteunt als bronnen en putten.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te verplaatsen van een on-premises of een HTTP-eind punt in de Cloud naar een ondersteund Sink-gegevens archief. In dit artikel vindt [u informatie over het verplaatsen van gegevens met behulp van de Kopieer activiteit](data-factory-data-movement-activities.md). Dit geeft een algemeen overzicht van de verplaatsing van gegevens met behulp van Kopieer activiteit. Het artikel bevat ook een lijst met de gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
-Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een HTTP-bron naar andere gegevensopslag. Het ondersteunt geen verplaatsing van gegevens van andere gegevensarchieven naar een HTTP-bestemming.
+Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een HTTP-bron naar andere gegevens archieven. Het verplaatsen van gegevens van andere gegevens archieven naar een HTTP-bestemming wordt niet ondersteund.
 
-## <a name="supported-scenarios-and-authentication-types"></a>Ondersteunde scenario's en verificatietypen
+## <a name="supported-scenarios-and-authentication-types"></a>Ondersteunde scenario's en verificatie typen
 
-U deze HTTP-connector gebruiken om gegevens uit *zowel een cloud als een on-premises HTTP/S-eindpunt* op te halen met behulp van de HTTP **GET-** of **POST-methoden.** De volgende verificatietypen worden ondersteund: **Anoniem,** **Basic**, **Digest,** **Windows**en **ClientCertificate**. Let op het verschil tussen deze connector en de [webtafelconnector](data-factory-web-table-connector.md). Met de connector voor de webtabel wordt tabelinhoud uit een HTML-webpagina geëxtraheerd.
+U kunt deze HTTP-connector gebruiken om gegevens op te halen uit *een Cloud en een on-premises http/S-eind punt* met behulp van de HTTP **Get** -of **post** -methoden. De volgende verificatie typen worden ondersteund: **Anonymous**, **Basic**, **Digest**, **Windows**en **ClientCertificate**. Let op het verschil tussen deze connector en de [Web Table-connector](data-factory-web-table-connector.md). De Web Table-connector extraheert tabel inhoud van een HTML-webpagina.
 
-Wanneer u gegevens kopieert van een on-premises HTTP-eindpunt, moet u Data Management Gateway installeren in de on-premises omgeving of in een Azure VM. Zie [Gegevens verplaatsen tussen on-premises locaties en de cloud](data-factory-move-data-between-onprem-and-cloud.md)voor meer informatie over de gateway en stapsgewijze instructies voor het instellen van de gateway.
+Wanneer u gegevens van een on-premises HTTP-eind punt kopieert, moet u Data Management Gateway installeren in de on-premises omgeving of in een Azure VM. Zie [gegevens verplaatsen tussen on-premises locaties en de Cloud](data-factory-move-data-between-onprem-and-cloud.md)voor meer informatie over Data Management Gateway en voor stapsgewijze instructies voor het instellen van de gateway.
 
 ## <a name="get-started"></a>Aan de slag
 
-U een pijplijn maken met een kopieeractiviteit om gegevens uit een HTTP-bron te verplaatsen met behulp van verschillende hulpprogramma's of API's:
+U kunt een pijp lijn met een Kopieer activiteit maken om gegevens te verplaatsen van een HTTP-bron met behulp van verschillende hulpprogram ma's of Api's:
 
-- De eenvoudigste manier om een pijplijn te maken, is door de wizard Gegevens kopiëren te gebruiken. Zie [Zelfstudie: Een pijplijn maken met de wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle doorloop van het maken van een pijplijn met de wizard Gegevens kopiëren .
+- De eenvoudigste manier om een pijp lijn te maken, is door de Gegevens kopiëren wizard te gebruiken. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle walkthrough bij het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-- U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: de **Visual Studio,** **Azure PowerShell,** een **Azure Resource Manager-sjabloon,** de **.NET-API**of de **REST-API**. Zie de [zelfstudie Activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. Zie [JSON-voorbeelden](#json-examples)voor JSON-voorbeelden die gegevens uit een HTTP-bron naar Azure Blob-opslag kopiëren.
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager sjabloon**, de **.net API**of de **rest API**. Zie de [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. Zie [JSON-voor beelden](#json-examples)voor json-voor beelden waarmee gegevens worden gekopieerd van een HTTP-bron naar Azure Blob-opslag.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-In de volgende tabel worden JSON-elementen beschreven die specifiek zijn voor de gekoppelde HTTP-service:
+De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de HTTP-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type | De eigenschap **type** moet zijn ingesteld op **Http**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **http**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
-| authenticationType | Hiermee geeft u het verificatietype op. Toegestane waarden zijn **Anoniem,** **Basis,** **Samenvatting,** **Windows**en **ClientCertificate**. <br><br> Raadpleeg latere secties in dit artikel voor meer eigenschappen en JSON-voorbeelden voor deze verificatietypen. | Ja |
-| enableServerCertificateValidation | Hiermee geeft u op of serverTLS/SSL-certificaatvalidatie moet worden ingeschakeld als de bron een HTTPS-webserver is. Wanneer uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u dit in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
-| gatewayNaam | De naam van de instantie Data Management Gateway die moet worden gebruikt om verbinding te maken met een on-premises HTTP-bron. | Ja, als u gegevens kopieert van een on-premises HTTP-bron |
-| versleuteldCredential | De versleutelde referenties voor toegang tot het HTTP-eindpunt. De waarde wordt automatisch gegenereerd wanneer u de verificatiegegevens configureert in de wizard Kopiëren of met het dialoogvenster **ClickOnce.** | Nee<br /> (alleen van toepassing wanneer u gegevens kopieert van een on-premises HTTP-server) |
+| authenticationType | Hiermee geeft u het verificatie type op. Toegestane waarden zijn **anoniem**, **basis**, **Digest**, **Windows**en **ClientCertificate**. <br><br> Raadpleeg latere secties in dit artikel voor meer informatie over de eigenschappen en JSON-voor beelden voor deze verificatie typen. | Ja |
+| enableServerCertificateValidation | Hiermee geeft u op of de TLS/SSL-certificaat validatie van de server moet worden ingeschakeld als de bron een HTTPS-webserver is. Stel dit in op **False**als uw HTTPS-server een zelfondertekend certificaat gebruikt. | Nee<br /> (de standaard waarde is **True**) |
+| gatewayName | De naam van het Data Management Gateway exemplaar dat moet worden gebruikt om verbinding te maken met een on-premises HTTP-bron. | Ja, als u gegevens kopieert van een on-premises HTTP-bron |
+| encryptedCredential | De versleutelde referentie voor toegang tot het HTTP-eind punt. De waarde wordt automatisch gegenereerd wanneer u de verificatie gegevens configureert in de wizard kopiëren of via het dialoog venster **ClickOnce** . | Nee<br /> (alleen Toep assen wanneer u gegevens kopieert van een on-premises HTTP-server) |
 
-Zie [Gegevens verplaatsen tussen on-premises bronnen en de cloud met Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md)voor meer informatie over het instellen van referenties voor een on-premises HTTP-connectorgegevensbron.
+Zie [gegevens verplaatsen tussen on-premises bronnen en de Cloud met behulp van Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md)voor meer informatie over het instellen van referenties voor een on-premises gegevens bron voor http-connectors.
 
-### <a name="using-basic-digest-or-windows-authentication"></a>Basis-, Digest- of Windows-verificatie gebruiken
+### <a name="using-basic-digest-or-windows-authentication"></a>Basis verificatie, verificatie samenvatting of Windows-authenticatie gebruiken
 
-**Verificatietype** instellen op **Basic,** **Digest**of **Windows**. Stel naast de algemene HTTP-connectoreigenschappen die in de voorgaande secties zijn beschreven, de volgende eigenschappen in:
+Stel **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| userName | De gebruikersnaam die u wilt gebruiken om toegang te krijgen tot het HTTP-eindpunt. | Ja |
-| wachtwoord | Het wachtwoord voor de gebruiker **(gebruikersnaam).** | Ja |
+| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het HTTP-eind punt. | Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (**gebruikers naam**). | Ja |
 
-**Voorbeeld: Basis-, Digest- of Windows-verificatie gebruiken**
+**Voor beeld: Basic, Digest of Windows-verificatie gebruiken**
 
 ```json
 {
@@ -89,26 +89,26 @@ Zie [Gegevens verplaatsen tussen on-premises bronnen en de cloud met Data Manage
 }
 ```
 
-### <a name="using-clientcertificate-authentication"></a>ClientCertificate-verificatie gebruiken
+### <a name="using-clientcertificate-authentication"></a>Gebruik van ClientCertificate-verificatie
 
-Als u basisverificatie wilt gebruiken, stelt u **verificatieType** in **op ClientCertificate**. Stel naast de algemene HTTP-connectoreigenschappen die in de voorgaande secties zijn beschreven, de volgende eigenschappen in:
+Als u basis verificatie wilt gebruiken, stelt u **authenticationType** in op **ClientCertificate**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| embeddedCertData | De Base64-gecodeerde inhoud van binaire gegevens van het PFX-bestand. | Ingesloten **CertData** of **certThumbprint opgeven** |
-| certThumbprint | De duimafdruk van het certificaat dat is geïnstalleerd in de cert-winkel van uw gatewaymachine. Pas alleen toe wanneer u gegevens kopieert van een on-premises HTTP-bron. | Ingesloten **CertData** of **certThumbprint opgeven** |
-| wachtwoord | Het wachtwoord dat aan het certificaat is gekoppeld. | Nee |
+| embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand. | Geef **embeddedCertData** of **certThumbprint** op |
+| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Pas toe wanneer u gegevens van een on-premises HTTP-bron kopieert. | Geef **embeddedCertData** of **certThumbprint** op |
+| wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. | Nee |
 
-Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in de persoonlijke winkel van de lokale computer, verleent u leesmachtigingen aan de gatewayservice:
+Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, verleent u lees machtigingen voor de Gateway Service:
 
-1. Open de Microsoft Management Console (MMC). Voeg de module **Certificaten** toe die is gericht op **lokale computer**.
-2. **Certificaten** > **persoonlijk**uitvouwen en selecteer **certificaten**.
-3. Klik met de rechtermuisknop op het certificaat in de persoonlijke winkel en selecteer **Alle taken** >**Privésleutels beheren**.
-3. Voeg op het tabblad **Beveiliging** het gebruikersaccount toe waaronder de Data Management Gateway Host Service wordt uitgevoerd, met leestoegang tot het certificaat.  
+1. Open de micro soft Management Console (MMC). Voeg de module **certificaten** toe die gericht is op de **lokale computer**.
+2. Vouw **certificaten** > **persoonlijk**uit en selecteer vervolgens **certificaten**.
+3. Klik met de rechter muisknop op het certificaat in het persoonlijke archief en selecteer vervolgens **alle taken** >**persoonlijke sleutels beheren**.
+3. Voeg op het tabblad **beveiliging** het gebruikers account toe waaronder de Data Management gateway host-service wordt uitgevoerd, met lees toegang tot het certificaat.  
 
-**Voorbeeld: een clientcertificaat gebruiken**
+**Voor beeld: een client certificaat gebruiken**
 
-Deze gekoppelde service koppelt uw gegevensfabriek aan een on-premises HTTP-webserver. Het maakt gebruik van een clientcertificaat dat is geïnstalleerd op de machine waarop Data Management Gateway is geïnstalleerd.
+Deze gekoppelde service koppelt uw data factory aan een on-premises HTTP-webserver. Er wordt gebruikgemaakt van een client certificaat dat is geïnstalleerd op de computer waarop Data Management Gateway is geïnstalleerd.
 
 ```json
 {
@@ -128,9 +128,9 @@ Deze gekoppelde service koppelt uw gegevensfabriek aan een on-premises HTTP-webs
 }
 ```
 
-**Voorbeeld: een clientcertificaat gebruiken in een bestand**
+**Voor beeld: een client certificaat gebruiken in een bestand**
 
-Deze gekoppelde service koppelt uw gegevensfabriek aan een on-premises HTTP-webserver. Het maakt gebruik van een clientcertificaatbestand op de machine waarop Data Management Gateway is geïnstalleerd.
+Deze gekoppelde service koppelt uw data factory aan een on-premises HTTP-webserver. Er wordt een client certificaat bestand gebruikt op de computer waarop Data Management Gateway is geïnstalleerd.
 
 ```json
 {
@@ -151,23 +151,23 @@ Deze gekoppelde service koppelt uw gegevensfabriek aan een on-premises HTTP-webs
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Sommige secties van een JSON-bestand met gegevensset, zoals structuur, beschikbaarheid en beleid, zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL Database, Azure Blob-opslag, Azure Table-opslag).
+Sommige secties van een JSON-bestand van een gegevensset, zoals de structuur, Beschik baarheid en het beleid, zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL Database, Azure Blob Storage, Azure-tabel opslag).
 
-Zie [Gegevenssets maken](data-factory-create-datasets.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets.
+Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets.
 
-De sectie **typeEigenschappen** is verschillend voor elk type gegevensset. De sectie **typeEigenschappen** geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie **typeEigenschappen** voor een gegevensset van het **http-type** heeft de volgende eigenschappen:
+De sectie **typeProperties** verschilt voor elk type gegevensset. De sectie **typeProperties** bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het **http-** type heeft de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | Het **type** gegevensset moet worden ingesteld op **Http**. | Ja |
-| relativenurl | Een relatieve URL naar de bron die de gegevens bevat. Wanneer het pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de gekoppelde servicedefinitie. <br><br> Als u een dynamische URL wilt samenstellen, u [de functies Data Factory en systeemvariabelen](data-factory-functions-variables.md)gebruiken. Voorbeeld: **relativeurl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**. | Nee |
-| requestMethode | De HTTP-methode. Toegestane waarden zijn **GET** en **POST**. | Nee <br />(standaard is **GET)** |
-| extra Kopteksten | Aanvullende HTTP-aanvraagkoppen. | Nee |
-| requestBody | De instantie voor het HTTP-verzoek. | Nee |
-| formaat | Als u *de gegevens wilt ophalen uit een HTTP-eindpunt zonder* deze te ontleed, slaat u de **indelingsinstelling** over. <br><br> Als u de HTTP-antwoordinhoud tijdens de kopie wilt ontleden, worden de volgende opmaaktypen ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**en **ParquetFormat**. Zie [Tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-formaat](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-formaat](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-formaat](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parketformaat](data-factory-supported-file-and-compression-formats.md#parquet-format)voor meer informatie . |Nee |
-| compressie | Geef het type en het compressieniveau voor de gegevens op. Ondersteunde typen: **GZip,** **Deflate,** **BZip2**en **ZipDeflate**. Ondersteunde niveaus: **optimaal** en **snelst.** Zie [Bestands- en compressieindelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| type | Het **type** van de gegevensset moet worden ingesteld op **http**. | Ja |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer het pad niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory functies en systeem variabelen](data-factory-functions-variables.md)gebruiken. Voor beeld: **relativeUrl**: **$ $Text. Format ('/My/Report? month = {0: jjjj}-{0: mm} &fmt = CSV ', slice start)**. | Nee |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** en **post**. | Nee <br />(de standaard waarde is **Get**) |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| formaat | Als u *de gegevens wilt ophalen van een HTTP-eind punt alsof-is* zonder te parseren, slaat u de instelling van de **indeling** over. <br><br> Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende indelings typen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Zie [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, Orc- [indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format)voor meer informatie. |Nee |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
-**Voorbeeld: de methode GET (standaard) gebruiken**
+**Voor beeld: de methode GET (standaard) gebruiken**
 
 ```json
 {
@@ -188,7 +188,7 @@ De sectie **typeEigenschappen** is verschillend voor elk type gegevensset. De se
 }
 ```
 
-**Voorbeeld: De methode POST gebruiken**
+**Voor beeld: de methode POST gebruiken**
 
 ```json
 {
@@ -210,43 +210,43 @@ De sectie **typeEigenschappen** is verschillend voor elk type gegevensset. De se
 }
 ```
 
-## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
-Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleid zijn beschikbaar voor alle soorten activiteiten.
+Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
-Zie [Pijplijnen maken](data-factory-create-pipelines.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
+Zie [pijp lijnen maken](data-factory-create-pipelines.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
 
-Eigenschappen die beschikbaar zijn in de sectie **typeEigenschappen** van de activiteit, verschillen per activiteitstype. Voor een kopieeractiviteit zijn de eigenschappen afhankelijk van de typen bronnen en putten.
+Eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit, variëren per type activiteit. Voor een Kopieer activiteit kunnen eigenschappen variëren, afhankelijk van de typen bronnen en Sinks.
 
-Op dit moment worden de volgende eigenschappen ondersteund wanneer de bron in Kopieeractiviteit van het **type HttpSource** is:
+Op dit moment worden de volgende eigenschappen ondersteund wanneer de bron in de Kopieer activiteit van het type **http** is:
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| httpRequestTime-out | De time-out (de **TimeSpan-waarde)** voor het HTTP-verzoek om een antwoord te krijgen. Het is de time-out om een antwoord te krijgen, niet de time-out om reactiegegevens te lezen. | Nee<br />(standaardwaarde: **00:01:40**) |
+| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Het is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. | Nee<br />(standaard waarde: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Ondersteunde indelingen voor bestanden en compressie
 
-Zie [Bestands- en compressie-indelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md) voor meer informatie.
+Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md) voor meer informatie.
 
-## <a name="json-examples"></a>VOORBEELDEN VAN JSON
+## <a name="json-examples"></a>JSON-voor beelden
 
-In de volgende voorbeelden worden voorbeeld-JSON-definities gegeven die u gebruiken om een pijplijn te maken met [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) In de voorbeelden wordt uitgelegd hoe u gegevens van een HTTP-bron kopiëren naar Azure Blob-opslag. Gegevens kunnen echter *rechtstreeks* worden gekopieerd van een van de bronnen naar een van de sinks [die worden ondersteund](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met kopieeractiviteit in Azure Data Factory.
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De voor beelden laten zien hoe u gegevens van een HTTP-bron naar Azure Blob-opslag kopieert. Gegevens kunnen echter *rechtstreeks* vanuit een van de bronnen worden gekopieerd naar een van de sinks [die worden ondersteund](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in azure Data Factory.
 
-**Voorbeeld: Gegevens uit een HTTP-bron kopiëren naar Azure Blob-opslag**
+**Voor beeld: gegevens kopiëren van een HTTP-bron naar Azure Blob-opslag**
 
-De oplossing Gegevensfabriek voor dit voorbeeld bevat de volgende entiteiten in gegevensfabrieken:
+De Data Factory oplossing voor dit voor beeld bevat de volgende Data Factory entiteiten:
 
-*   Een gekoppelde service van het type [HTTP](#linked-service-properties).
-*   Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-*   Een [invoergegevensset](data-factory-create-datasets.md) van het type [Http](#dataset-properties).
-*   Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-*   Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die [httpsource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
+*   Een gekoppelde service van het type [http](#linked-service-properties).
+*   Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+*   Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [http](#dataset-properties).
+*   Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+*   Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [http](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld kopieert elk uur gegevens uit een HTTP-bron naar een Azure-blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
+In het voor beeld worden elk uur gegevens van een HTTP-bron naar een Azure-Blob gekopieerd. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die de voor beelden volgen.
 
-### <a name="http-linked-service"></a>HTTP-gekoppelde service
+### <a name="http-linked-service"></a>Gekoppelde HTTP-service
 
-In dit voorbeeld wordt de http-gekoppelde service gebruikt met anonieme verificatie. Zie [HTTP-gekoppelde service](#linked-service-properties) voor verschillende soorten verificatie die u gebruiken.
+In dit voor beeld wordt de HTTP-gekoppelde service gebruikt met anonieme verificatie. Zie [http-gekoppelde service](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
 
 ```json
 {
@@ -263,7 +263,7 @@ In dit voorbeeld wordt de http-gekoppelde service gebruikt met anonieme verifica
 }
 ```
 
-### <a name="azure-storage-linked-service"></a>Gekoppelde Azure-opslagservice
+### <a name="azure-storage-linked-service"></a>Gekoppelde Azure Storage-service
 
 ```json
 {
@@ -277,9 +277,9 @@ In dit voorbeeld wordt de http-gekoppelde service gebruikt met anonieme verifica
 }
 ```
 
-### <a name="http-input-dataset"></a>HTTP-invoergegevensset
+### <a name="http-input-dataset"></a>HTTP-invoer gegevensset
 
-Als **u extern** naar true **instelt,** wordt de service Gegevensfabriek geïnformeerd dat de gegevensset zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
+Als u **extern** instelt op **True** , informeert de Data Factory-service dat de gegevensset zich buiten de Data Factory bevindt en wordt deze niet geproduceerd door een activiteit in de Data Factory.
 
 ```json
 {
@@ -303,7 +303,7 @@ Als **u extern** naar true **instelt,** wordt de service Gegevensfabriek geïnfo
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob-uitvoergegevensset
 
-Gegevens worden elk uur naar een nieuwe blob geschreven **(frequentie**: **uur**, **interval**: **1**).
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (**frequentie**: **uur**, **interval**: **1**).
 
 ```json
 {
@@ -325,11 +325,11 @@ Gegevens worden elk uur naar een nieuwe blob geschreven **(frequentie**: **uur**
 }
 ```
 
-### <a name="pipeline-that-uses-a-copy-activity"></a>Pijplijn die een kopieeractiviteit gebruikt
+### <a name="pipeline-that-uses-a-copy-activity"></a>Pijp lijn die gebruikmaakt van een Kopieer activiteit
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken. De kopieeractiviteit wordt elk uur uitgevoerd. In de JSON-definitie van pijplijn wordt het **brontype** ingesteld op **HttpSource** en wordt het **gootsteentype** ingesteld op **BlobSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **http** en het **sink** -type is ingesteld op **BlobSink**.
 
-Zie [HttpSource](#copy-activity-properties)voor de lijst met eigenschappen die **HttpSource** ondersteunt.
+Zie [http](#copy-activity-properties)voor de lijst met eigenschappen die door **http** worden ondersteund.
 
 ```json
 {  
@@ -378,8 +378,8 @@ Zie [HttpSource](#copy-activity-properties)voor de lijst met eigenschappen die *
 ```
 
 > [!NOTE]
-> Zie Kolommen van [gegevensset toewijzing in Azure Data Factory](data-factory-map-columns.md)als u kolommen van een brongegevensset wilt toewijzen aan kolommen uit een sink-set.
+> Als u kolommen uit een bron-gegevensset wilt toewijzen aan kolommen uit een Sink-gegevensset, raadpleegt u [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
 
-Zie de [handleiding activiteits- en afstemmingshandleiding kopiëren](data-factory-copy-activity-performance.md)voor meer informatie over de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en verschillende manieren om deze te optimaliseren.
+Voor meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in Azure Data Factory en verschillende manieren om deze te optimaliseren, raadpleegt u de [hand leiding Copy activity Performance and Tuning](data-factory-copy-activity-performance.md)(Kopieer activiteit).

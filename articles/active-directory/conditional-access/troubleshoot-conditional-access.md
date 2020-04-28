@@ -1,6 +1,6 @@
 ---
-title: Aanmeldingsproblemen oplossen met voorwaardelijke toegang - Azure Active Directory
-description: In dit artikel wordt beschreven wat u moet doen als uw beleid voor voorwaardelijke toegang tot onverwachte resultaten leidt
+title: Problemen met aanmelden oplossen met voorwaardelijke toegang-Azure Active Directory
+description: In dit artikel wordt beschreven wat u moet doen wanneer uw beleid voor voorwaardelijke toegang resulteert in onverwachte resultaten
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,70 +12,70 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337439"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Aanmeldingsproblemen oplossen met voorwaardelijke toegang
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden oplossen met voorwaardelijke toegang
 
-De informatie in dit artikel kan worden gebruikt om onverwachte aanmeldingsresultaten met betrekking tot voorwaardelijke toegang op te lossen met behulp van foutberichten en Azure AD-aanmeldingslogboeken.
+De informatie in dit artikel kan worden gebruikt om problemen met onverwachte aanmeldings resultaten te verhelpen die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
 
-## <a name="conditional-access-sign-in-interrupt"></a>Aanmeldingsonderbreking voorwaardelijke toegang
+## <a name="conditional-access-sign-in-interrupt"></a>Aanmeldings interrupt voor voorwaardelijke toegang
 
-De eerste manier is om de foutmelding te bekijken die wordt weergegeven. Voor problemen met het aanmelden bij het gebruik van een webbrowser bevat de foutpagina zelf gedetailleerde informatie. Deze informatie alleen al kan beschrijven wat het probleem is en dat kan een oplossing suggereren.
+De eerste manier is om het fout bericht te bekijken dat wordt weer gegeven. Voor problemen bij het aanmelden bij het gebruik van een webbrowser heeft de fout pagina zelf gedetailleerde informatie. In deze informatie wordt alleen beschreven wat het probleem is en wordt er een oplossing voorgesteld.
 
-![Aanmeldingsfout - apparaat dat compatibel is](./media/troubleshoot-conditional-access/image1.png)
+![Fout: compatibel apparaat vereist](./media/troubleshoot-conditional-access/image1.png)
 
-In de bovenstaande fout wordt in het bericht vermeld dat de toepassing alleen toegankelijk is vanaf apparaten of clienttoepassingen die voldoen aan het beleid voor het beheer van mobiele apparaten van het bedrijf. In dit geval voldoen de toepassing en het apparaat niet aan dat beleid.
+In de bovenstaande fout geeft het bericht aan dat de toepassing alleen toegankelijk is vanaf apparaten of client toepassingen die voldoen aan het Mobile Device Management-beleid van het bedrijf. In dit geval voldoen de toepassing en het apparaat niet aan dat beleid.
 
-## <a name="azure-ad-sign-in-events"></a>Aanmeldingsgebeurtenissen voor Azure AD
+## <a name="azure-ad-sign-in-events"></a>Aanmeldings gebeurtenissen voor Azure AD
 
-De tweede methode om gedetailleerde informatie over de aanmeldingsonderbreking te krijgen, is om de aanmeldingsgebeurtenissen van Azure AD te controleren om te zien welk beleid of beleid voor voorwaardelijke toegang is toegepast en waarom.
+De tweede methode om gedetailleerde informatie over de onderbreking van de aanmelding op te halen, is door de aanmeldings gebeurtenissen van Azure AD te controleren om te zien welk beleid of beleid voor voorwaardelijke toegang is toegepast en waarom.
 
-Meer informatie is te vinden over het probleem door te klikken op **Meer details** in de eerste foutpagina. Als u op **Meer details** klikt, worden informatie over probleemoplossing weergegeven die nuttig is bij het zoeken in de aanmeldingsgebeurtenissen van Azure AD voor de specifieke foutgebeurtenis die de gebruiker heeft gezien of bij het openen van een ondersteuningsincident met Microsoft.
+Meer informatie over het probleem vindt u door in de eerste fout pagina op **meer details** te klikken. Als u op **meer details** klikt, krijgt u informatie over het oplossen van problemen die handig zijn bij het zoeken in de aanmeldings gebeurtenissen van Azure AD voor de specifieke fout gebeurtenis die de gebruiker zag of bij het openen van een ondersteunings incident bij micro soft.
 
-![Meer details van een aangemeld van een voorwaardelijke toegang onderbroken webbrowser.](./media/troubleshoot-conditional-access/image2.png)
+![Meer informatie over een onderbroken webbrowser aanmelding met voorwaardelijke toegang.](./media/troubleshoot-conditional-access/image2.png)
 
-Om erachter te komen welk beleid of beleid voor voorwaardelijke toegang is toegepast en waarom doe je het volgende.
+Ga als volgt te werk om te ontdekken welk beleid of beleid voor voorwaardelijke toegang wordt toegepast en waarom het volgende geldt.
 
-1. Meld u aan bij de **Azure-portal** als globale beheerder, beveiligingsbeheerder of wereldwijde lezer.
-1. Blader naar Azure Active > **Directory-aanmeldingen**. **Azure Active Directory**
-1. Zoek de gebeurtenis voor de aanmelding om te bekijken. Filters en kolommen toevoegen of verwijderen om onnodige informatie eruit te filteren.
-   1. Filters toevoegen om het bereik te verkleinen:
-      1. **Correlatie-ID** wanneer u een specifieke gebeurtenis moet onderzoeken.
-      1. **Voorwaardelijke toegang** tot beleidsfouten en succes. Bereik uw filter om alleen fouten weer te geven om resultaten te beperken.
-      1. **Gebruikersnaam** om informatie te zien met betrekking tot specifieke gebruikers.
-      1. **Datum** die is beperkt tot het betrokken tijdsbestek.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of globale lezer.
+1. Blader naar **Azure Active Directory** > **aanmeldingen**.
+1. Zoek de gebeurtenis voor de aanmelding om te controleren. Filters en kolommen toevoegen of verwijderen om overbodige gegevens te filteren.
+   1. Filters toevoegen om het bereik te beperken:
+      1. **Correlatie-id** wanneer u een specifieke gebeurtenis hebt die moet worden onderzocht.
+      1. **Voorwaardelijke toegang** om beleids storingen en geslaagde pogingen te bekijken. Bereik uw filter zodanig dat er alleen fouten worden weer gegeven om de resultaten te beperken.
+      1. **Gebruikers naam** om informatie weer te geven die betrekking heeft op specifieke gebruikers.
+      1. De **datum** ligt binnen het bereik van het desbetreffende tijds bestek.
 
-   ![Het filter Voorwaardelijke toegang selecteren in het aanmeldingslogboek](./media/troubleshoot-conditional-access/image3.png)
+   ![Het filter voor voorwaardelijke toegang in het aanmeldings logboek selecteren](./media/troubleshoot-conditional-access/image3.png)
 
-1. Zodra de aanmeldingsgebeurtenis die overeenkomt met de aanmeldingsfout van de gebruiker is gevonden, selecteert u het tabblad **Voorwaardelijke toegang.** Op het tabblad Voorwaardelijke toegang wordt het specifieke beleid of beleid weergegeven dat heeft geleid tot de onderbreking van de aanmelding.
-   1. Informatie op het tabblad **Probleemoplossing en ondersteuning** kan een duidelijke reden geven waarom een aanmelding is mislukt, zoals een apparaat dat niet aan de nalevingsvereisten voldoet.
-   1. Als u het verder wilt onderzoeken, gaat u dieper in op de configuratie van het beleid door op de **beleidsnaam**te klikken. Als u op de **beleidsnaam** klikt, wordt de gebruikersinterface van de beleidsconfiguratie weergegeven voor het geselecteerde beleid voor controle en bewerking.
-   1. De **clientgebruikers-** en **apparaatgegevens** die zijn gebruikt voor de beoordeling van het beleid voorwaardelijke toegang, zijn ook beschikbaar in de tabbladen **Basisgegevens**, **Locatie,** **Apparaatgegevens,** **Verificatiegegevens**en **Aanvullende details** van de aanmeldingsgebeurtenis.
+1. Als de aanmeld gebeurtenis die overeenkomt met de aanmeldings fout van de gebruiker is gevonden, selecteert u het tabblad **voorwaardelijke toegang** . Op het tabblad voorwaardelijke toegang worden het specifieke beleid of beleid weer gegeven dat heeft geresulteerd in de onderbreking van de aanmelding.
+   1. Informatie op het tabblad **probleem oplossing en ondersteuning** kan een duidelijke reden geven voor het mislukken van een aanmelding, zoals een apparaat dat niet aan de nalevings vereisten voldoet.
+   1. Als u verder wilt onderzoeken, zoomt u in op de configuratie van het beleid door te klikken op de naam van het **beleid**. Als u op de **beleids naam** klikt, wordt de gebruikers interface van de beleids configuratie voor het geselecteerde beleid weer gegeven voor controle en bewerking.
+   1. De gegevens van de **client gebruiker** en het **apparaat** die zijn gebruikt voor de evaluatie van het voorwaardelijke toegangs beleid zijn ook beschikbaar in de **basis informatie**, **locatie**, **apparaatgegevens**, **verificatie gegevens**en **aanvullende details** tabbladen van de aanmeldings gebeurtenis.
 
-   ![Tabblad Voorwaardelijke toegang aanmelden](./media/troubleshoot-conditional-access/image5.png)
+   ![Tabblad voorwaardelijke toegang voor gebeurtenis aanmelden](./media/troubleshoot-conditional-access/image5.png)
 
-Als de informatie in de gebeurtenis niet voldoende is om de aanmeldingsresultaten te begrijpen of het beleid aan te passen om de gewenste resultaten te krijgen, kan een ondersteuningsincident worden geopend. Navigeer naar het **tabblad Probleemoplossing en ondersteuning** van die aanmeldingsgebeurtenis en selecteer **Een nieuw ondersteuningsverzoek maken**.
+Als de informatie in de gebeurtenis niet voldoende is om inzicht te krijgen in de aanmeldings resultaten of het beleid aan te passen om de gewenste resultaten te krijgen, kan een ondersteunings incident worden geopend. Navigeer naar het tabblad **probleem oplossing en ondersteuning** van het aanmeldings gebeurtenis en selecteer **een nieuwe ondersteunings aanvraag maken**.
 
-![Het tabblad Probleemoplossing en ondersteuning van de aanmeldingsgebeurtenis](./media/troubleshoot-conditional-access/image6.png)
+![Het tabblad probleem oplossing en ondersteuning van de aanmeld gebeurtenis](./media/troubleshoot-conditional-access/image6.png)
 
-Geef bij het indienen van het incident de aanvraag-id en tijd en datum van de aanmeldingsgebeurtenis op in de details van het incident. Met deze informatie kan Microsoft-ondersteuning de gebeurtenis vinden waarover u zich zorgen maakt.
+Wanneer u het incident verzendt, geeft u de aanvraag-ID en het tijdstip en de datum van de aanmeldings gebeurtenis op in de details van de indiening van het incident. Met deze informatie kan micro soft ondersteuning het evenement vinden waarmee u zich bezig houdt.
 
-### <a name="conditional-access-error-codes"></a>Foutcodes voor voorwaardelijke toegang
+### <a name="conditional-access-error-codes"></a>Fout codes voor voorwaardelijke toegang
 
-| Aanmeldingsfoutcode | Fouttekenreeks |
+| Fout code voor aanmelden | Fout reeks |
 | --- | --- |
 | 53000 | DeviceNotCompliant |
-| 53001 | DeviceNotDomainJoined DeviceNotDomainJoined DeviceNotDomainJoined DeviceNot |
+| 53001 | DeviceNotDomainJoined |
 | 53002 | ApplicationUsedIsNotAnApprovedApp |
-| 53003 | Geblokkeerdevoorwaardelijke toegang |
+| 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aanmeldactiviteitenrapporten in Azure Active Directory Portal](../reports-monitoring/concept-sign-ins.md)
-- [Probleemoplossing voorwaardelijke toegang met het gereedschap Wat als](troubleshoot-conditional-access-what-if.md)
-- Aanbevolen procedures voor [voorwaardelijke toegang in Azure Active Directory](best-practices.md)
+- [Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma](troubleshoot-conditional-access-what-if.md)
+- Aanbevolen procedures voor [voorwaardelijke toegang in azure Active Directory](best-practices.md)

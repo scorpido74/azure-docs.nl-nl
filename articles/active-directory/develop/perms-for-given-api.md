@@ -1,6 +1,6 @@
 ---
 title: Machtigingen voor een bepaalde API selecteren
-description: Meer informatie over hoe machtigingenaanvragen werken voor client- en resourcetoepassingen voor toepassingen die u ontwikkelt
+description: Meer informatie over hoe machtigingen aanvragen werken voor client-en resource toepassingen voor toepassingen die u ontwikkelt
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883887"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Machtigingen voor een bepaalde API selecteren 
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
-- Meer informatie over hoe clienttoepassingen [gedelegeerde en toepassingsmachtigingenaanvragen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) gebruiken om toegang te krijgen tot bronnen.
-- Stapsgewijze instructies bekijken voor het [configureren van de machtigingsaanvragen van een clienttoepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- Lees voor meer diepte hoe resourcetoepassingen [scopes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) en [toepassingsrollen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) blootstellen aan clienttoepassingen, die zich respectievelijk manifesteren als gedelegeerde en toepassingsmachtigingen in de Azure-portal. 
+- Meer informatie over hoe client toepassingen [gedelegeerde en toepassings machtigings aanvragen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) gebruiken om toegang te krijgen tot bronnen.
+- Zie stap-voor-stap instructies voor het [configureren van de machtigings aanvragen van een client toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+- Meer informatie over hoe resource toepassingen [scopes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) en [toepassings rollen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) beschikbaar maken voor client toepassingen, die respectievelijk als gedelegeerde en toepassings machtigingen in de Azure Portal worden weer gegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: problemen met objectsynchronisatie oplossen | Microsoft Documenten'
-description: In dit onderwerp worden stappen gegeven voor het oplossen van problemen met objectsynchronisatie met behulp van de probleemoplossingstaak.
+title: 'Azure AD Connect: problemen met object synchronisatie oplossen | Microsoft Docs'
+description: Dit onderwerp bevat stappen voor het oplossen van problemen met object synchronisatie met de taak voor probleem oplossing.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,83 +16,83 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407023"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Problemen met objectsynchronisatie oplossen met Azure AD Connect-synchronisatie
-In dit artikel worden stappen gezet voor het oplossen van problemen met objectsynchronisatie door de taak voor het oplossen van problemen te gebruiken. Bekijk [deze korte video](https://aka.ms/AADCTSVideo)om te zien hoe probleemoplossing werkt in Azure Active Directory (Azure AD) Connect.
+Dit artikel bevat stappen voor het oplossen van problemen met object synchronisatie met behulp van de taak voor het oplossen van problemen. Bekijk [deze korte video](https://aka.ms/AADCTSVideo)voor informatie over het oplossen van problemen met de werking van Azure Active Directory (Azure AD).
 
-## <a name="troubleshooting-task"></a>Probleemoplossingvoor taak
-Voor implementatie van Azure AD Connect met versie 1.1.749.0 of hoger, gebruikt u de probleemoplossingstaak in de wizard  om problemen met objectsynchronisatie op te lossen. Voor eerdere versies u problemen handmatig oplossen zoals [hier](tshoot-connect-object-not-syncing.md)beschreven.
+## <a name="troubleshooting-task"></a>Probleemoplossings taak
+Voor implementatie van Azure AD Connect met versie 1.1.749.0 of hoger, gebruikt u de probleemoplossingstaak in de wizard  om problemen met objectsynchronisatie op te lossen. Voor eerdere versies kunt u het probleem hand matig oplossen zoals [hier](tshoot-connect-object-not-syncing.md)wordt beschreven.
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Taak voor probleemoplossing uitvoeren in de wizard
 Voer de volgende stappen uit om de taak voor het oplossen van problemen in de wizard uit te voeren:
 
-1.  Open een nieuwe Windows PowerShell-sessie op uw Azure AD Connect-server met de optie Uitvoeren als administrator.
-2.  Uitvoeren `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`of .
+1.  Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie als administrator uitvoeren.
+2.  Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
 3.  Start de wizard Azure AD Connect.
-4.  Navigeer naar de pagina Extra taken, selecteer Problemen oplossen en klik op Volgende.
-5.  Klik op de pagina Probleemoplossing op Starten om het menu probleemoplossing in PowerShell te starten.
-6.  Selecteer Objectsynchronisatie oplossen in het hoofdmenu.
-![Problemen met objectsynchronisatie oplossen](media/tshoot-connect-objectsync/objsynch11.png)
+4.  Ga naar de pagina extra taken, selecteer problemen oplossen en klik op volgende.
+5.  Klik op de pagina probleem oplossing op starten om het menu probleem oplossing in Power shell te starten.
+6.  Selecteer in het hoofd menu de optie problemen met object synchronisatie oplossen.
+![Problemen met object synchronisatie oplossen](media/tshoot-connect-objectsync/objsynch11.png)
 
-### <a name="troubleshooting-input-parameters"></a>Problemen met invoerparameters oplossen
-De volgende invoerparameters zijn nodig voor de taak voor het oplossen van problemen:
-1.  **Objectdistinguished Name** : dit is de voorname naam van het object dat probleemoplossing nodig heeft
-2.  **NAAM AD-connector** – Dit is de naam van het AD-forest waar het bovenstaande object zich bevindt.
-3.  Globale beheerdersreferenties ![voor Azure AD-tenant](media/tshoot-connect-objectsync/objsynch1.png)
+### <a name="troubleshooting-input-parameters"></a>Problemen met invoer parameters oplossen
+De volgende invoer parameters zijn nodig voor de taak voor het oplossen van problemen:
+1.  **DN-naam van object** : dit is de DN-naam van het object waarvoor problemen moeten worden oplossen
+2.  **Naam** van de AD-connector: dit is de naam van het AD-forest waarin het bovenstaande object zich bevindt.
+3.  Globale beheerders referenties van de Azure ![AD-Tenant globale beheerder referenties](media/tshoot-connect-objectsync/objsynch1.png)
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>De resultaten van de probleemoplossingstaak begrijpen
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Inzicht in de resultaten van de taak voor het oplossen van problemen
 De taak voor het oplossen van problemen voert de volgende controles uit:
 
-1.  UPN-mismatch detecteren als het object is gesynchroniseerd met Azure Active Directory
-2.  Controleren of object is gefilterd vanwege domeinfiltering
-3.  Controleren of object is gefilterd vanwege het filteren van de o.a.-problemen
-4.  Controleren of objectsynchronisatie is geblokkeerd vanwege een gekoppeld postvak
-5. Controleren of object een dynamische distributiegroep is die niet moet worden gesynchroniseerd
+1.  Niet-overeenkomende UPN detecteren als het object is gesynchroniseerd met Azure Active Directory
+2.  Controleren of het object is gefilterd als gevolg van domein filtering
+3.  Controleren of het object is gefilterd vanwege OE-filtering
+4.  Controleren of object synchronisatie is geblokkeerd vanwege een gekoppeld Postvak
+5. Controleren of object een dynamische distributie groep is die niet zou moeten worden gesynchroniseerd
 
-De rest van deze sectie beschrijft specifieke resultaten die door de taak worden geretourneerd. In elk geval biedt de taak een analyse, gevolgd door aanbevolen acties om het probleem op te lossen.
+In de rest van deze sectie worden de specifieke resultaten beschreven die door de taak worden geretourneerd. In elk geval bevat de taak een analyse, gevolgd door aanbevolen acties om het probleem op te lossen.
 
-## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>UPN-mismatch detecteren als object wordt gesynchroniseerd met Azure Active Directory
-### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>UPN-achtervoegsel is NIET geverifieerd met Azure AD-tenant
-Wanneer het upn-achtervoegsel (UserPrincipalName)/Alternate Login ID niet is geverifieerd met de Azure AD-tenant, vervangt Azure Active Directory de UPN-achtervoegsels door de standaarddomeinnaam 'onmicrosoft.com'.
+## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Niet-overeenkomende UPN detecteren als object is gesynchroniseerd met Azure Active Directory
+### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>UPN-achtervoegsel wordt niet geverifieerd met Azure AD-Tenant
+Wanneer het achtervoegsel voor de aanmeldings-ID van UserPrincipalName (UPN)/Alternate niet wordt geverifieerd met de Azure AD-Tenant, worden de UPN-achtervoegsels door Azure Active Directory vervangen door de standaard domein naam ' onmicrosoft.com '.
 
-![Azure AD vervangt UPN](media/tshoot-connect-objectsync/objsynch2.png)
+![De UPN wordt vervangen door Azure AD](media/tshoot-connect-objectsync/objsynch2.png)
 
-### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD-tenant DirSync-functie 'SynchronizeUpnForManagedUsers' is uitgeschakeld
-Wanneer de Azure AD-tenant DirSync-functie 'SynchronizeUpnForManagedUsers' is uitgeschakeld, staat Azure Active Directory synchronisatie-updates voor UserPrincipalName/Alternate Login ID voor gelicentieerde gebruikersaccounts met beheerde verificatie niet toe.
+### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>De Azure AD-Tenant DirSync-functie SynchronizeUpnForManagedUsers is uitgeschakeld
+Wanneer de functie SynchronizeUpnForManagedUsers van Azure AD-Tenant is uitgeschakeld, staat Azure Active Directory geen synchronisatie-updates toe op UserPrincipalName/alternatieve aanmeldings-ID voor gelicentieerde gebruikers accounts met beheerde authenticatie.
 
 ![SynchronizeUpnForManagedUsers](media/tshoot-connect-objectsync/objsynch4.png)
 
-## <a name="object-is-filtered-due-to-domain-filtering"></a>Object wordt gefilterd vanwege domeinfiltering
-### <a name="domain-is-not-configured-to-sync"></a>Domein is niet geconfigureerd om te synchroniseren
-Object is buiten bereik omdat het domein niet is geconfigureerd. In het onderstaande voorbeeld is het object buiten het synchronisatiebereik omdat het domein waartoe het behoort, wordt gefilterd op synchronisatie.
+## <a name="object-is-filtered-due-to-domain-filtering"></a>Het object is gefilterd vanwege een domein filtering
+### <a name="domain-is-not-configured-to-sync"></a>Het domein is niet geconfigureerd om te synchroniseren
+Het object valt buiten het bereik omdat het domein niet is geconfigureerd. In het onderstaande voor beeld ligt het object niet binnen het synchronisatie bereik als het domein waarvan het deel uitmaakt, wordt gefilterd op basis van de synchronisatie.
 
-![Domein is niet geconfigureerd om te synchroniseren](media/tshoot-connect-objectsync/objsynch5.png)
+![Het domein is niet geconfigureerd om te synchroniseren](media/tshoot-connect-objectsync/objsynch5.png)
 
-### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Domein is geconfigureerd om te synchroniseren, maar ontbreekt run profielen / uitvoeren stappen
-Object is buiten bereik omdat het domein ontbreekt, voer profielen/uitvoerenstappen uit. In het onderstaande voorbeeld is het object buiten het bereik van de synchronisatie omdat het domein waartoe het behoort, uitvoerenstappen mist voor het runprofiel Volledig importeren.
-![ontbrekende runprofielen](media/tshoot-connect-objectsync/objsynch6.png)
+### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Het domein is geconfigureerd om te synchroniseren, maar er ontbreken profielen voor uitvoeren/uitvoeren
+Object valt buiten het bereik omdat voor het domein geen uitvoerings profielen worden uitgevoerd/stappen moeten worden uitgevoerd. In het onderstaande voor beeld bevindt het object zich niet in het synchronisatie bereik als in het domein waar het deel van uitmaakt, de stappen voor het volledige import profiel worden uitgevoerd.
+![ontbrekende uitvoerings profielen](media/tshoot-connect-objectsync/objsynch6.png)
 
-## <a name="object-is-filtered-due-to-ou-filtering"></a>Object wordt gefilterd vanwege het filteren van de organisatie van de organisatie van de organisatie van de
-Het object is buiten het synchronisatiebereik als gevolg van de configuratie van de ORGANISATIE-filtering. In het onderstaande voorbeeld behoort het object tot OU=NoSync,DC=bvtadwbackdc,DC=com.  Deze organisatie-eenheid is niet opgenomen in het synchronisatiebereik.</br>
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Het object is gefilterd vanwege een organisatie-eenheids filter
+Het object bevindt zich buiten het synchronisatie bereik vanwege de configuratie van de OE-filtering. In het onderstaande voor beeld behoort het object bij OE = NoSync, DC = bvtadwbackdc, DC = com.  Deze organisatie-eenheid is niet opgenomen in het synchronisatie bereik.</br>
 
 ![ORGANISATIE-EENHEID](./media/tshoot-connect-objectsync/objsynch7.png)
 
-## <a name="linked-mailbox-issue"></a>Probleem met gekoppeld postvak
-Een gekoppeld postvak wordt verondersteld te zijn gekoppeld aan een extern hoofdaccount in een ander vertrouwd accountforest. Als er geen extern hoofdaccount is, synchroniseert Azure AD Connect het gebruikersaccount niet met het gekoppelde postvak in het Exchange-forest met de Azure AD-tenant.</br>
-![Gekoppeld postvak](./media/tshoot-connect-objectsync/objsynch12.png)
+## <a name="linked-mailbox-issue"></a>Probleem met gekoppeld Postvak
+Een gekoppeld postvak moet worden gekoppeld aan een extern hoofd account dat zich in een ander vertrouwd-account forest bevindt. Als er geen dergelijk extern hoofd account is, wordt het gebruikers account niet door Azure AD Connect gesynchroniseerd met het gekoppelde postvak in het Exchange-forest aan de Azure AD-Tenant.</br>
+![Gekoppeld Postvak](./media/tshoot-connect-objectsync/objsynch12.png)
 
-## <a name="dynamic-distribution-group-issue"></a>Probleem met dynamische distributiegroep
-Vanwege verschillende verschillen tussen on-premises Active Directory en Azure Active Directory synchroniseert Azure AD Connect geen dynamische distributiegroepen met de Azure AD-tenant.
+## <a name="dynamic-distribution-group-issue"></a>Probleem met dynamische distributie groep
+Als gevolg van verschillende verschillen tussen on-premises Active Directory en Azure Active Directory, worden dynamische distributie groepen door Azure AD Connect niet gesynchroniseerd met de Azure AD-Tenant.
 
-![Dynamische distributiegroep](./media/tshoot-connect-objectsync/objsynch13.png)
+![Dynamische distributie groep](./media/tshoot-connect-objectsync/objsynch13.png)
 
 ## <a name="html-report"></a>HTML-rapport
-Naast het analyseren van het object, genereert de probleemoplossingstaak ook een HTML-rapport met alles over het object. Dit HTML-rapport kan worden gedeeld met het ondersteuningsteam om indien nodig verdere probleemoplossing te kunnen doen.
+Naast het analyseren van het-object genereert de taak voor het oplossen van problemen ook een HTML-rapport met alles wat bekend is over het object. Dit HTML-rapport kan worden gedeeld met het ondersteunings team, indien nodig om verdere problemen op te lossen.
 
 ![HTML-rapport](media/tshoot-connect-objectsync/objsynch8.png)
 

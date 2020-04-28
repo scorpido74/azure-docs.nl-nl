@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services als gebeurtenisrasterbron
-description: Beschrijft de eigenschappen die worden geleverd voor Media Services-gebeurtenissen met Azure Event Grid
+title: Azure Media Services als Event Grid bron
+description: Hierin worden de eigenschappen beschreven die worden gegeven voor Media Services gebeurtenissen met Azure Event Grid
 services: media-services
 documentationcenter: ''
 author: spelluru
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: spelluru
 ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394330"
 ---
-# <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als gebeurtenisrasterbron
+# <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid bron
 
-In dit artikel vindt u de schema's en eigenschappen van gebeurtenissen in Media Services.
+Dit artikel bevat de schema's en eigenschappen voor Media Services gebeurtenissen.
 
-## <a name="job-related-event-types"></a>Functiegerelateerde gebeurtenistypen
+## <a name="job-related-event-types"></a>Aan taken gerelateerde gebeurtenis typen
 
-Media Services zendt de onderstaande **functiegerelateerde** gebeurtenistypen uit. Er zijn twee categorieën voor de **taakgerelateerde** gebeurtenissen: 'Wijzigingen in taakstatussen controleren' en 'Wijzigingen in de functiestatus controleren'. 
+Media Services worden de aan de **taak** gerelateerde gebeurtenis typen die hieronder worden beschreven. Er zijn twee categorieën voor de **taak** gerelateerde gebeurtenissen: "bewaking van de taak status wijzigingen" en "bewaking van de taak uitvoer status wijzigingen". 
 
-U zich inschrijven voor alle evenementen door u te abonneren op het JobStateChange evenement. U zich ook abonneren op specifieke gebeurtenissen (bijvoorbeeld definitieve statussen zoals JobErrored, JobFinished en JobCanceled).   
+U kunt zich registreren voor alle gebeurtenissen door u te abonneren op de JobStateChange-gebeurtenis. U kunt ook alleen een abonnement nemen voor specifieke gebeurtenissen (bijvoorbeeld de laatste statussen zoals JobErrored, JobFinished en JobCanceled).   
 
-### <a name="monitoring-job-state-changes"></a>Wijzigingen in taakstatus controleren
-
-| Gebeurtenistype | Beschrijving |
-| ---------- | ----------- |
-| Microsoft.Media.JobStateChange| Ontvang een evenement voor alle wijzigingen in de functiestatus. |
-| Microsoft.Media.JobGepland| Ontvang een gebeurtenis wanneer taak overgaat naar de geplande status. |
-| Microsoft.Media.JobProcessing| Ontvang een gebeurtenis wanneer taak overgaat naar verwerkingsstatus. |
-| Microsoft.Media.JobAnnuleren| Ontvang een gebeurtenis wanneer taak overschakelt naar de status annuleren. |
-| Microsoft.Media.JobFinished| Ontvang een gebeurtenis wanneer taak wordt overgezet naar de status voltooid. Dit is een laatste status die taakuitvoer bevat.|
-| Microsoft.Media.JobGeannuleerd| Ontvang een gebeurtenis wanneer taak overgaat naar geannuleerde status. Dit is een laatste status die taakuitvoer bevat.|
-| Microsoft.Media.JobErrored| Ontvang een gebeurtenis wanneer taak overgaat in de foutstatus. Dit is een laatste status die taakuitvoer bevat.|
-
-Zie [Schema voorbeelden](#event-schema-examples) die volgen.
-
-### <a name="monitoring-job-output-state-changes"></a>Wijzigingen in de uitvoerstatus van de taak controleren
-
-Een taak kan meerdere taakuitvoerbevatten (als u de transformatie hebt geconfigureerd om meerdere taakuitvoertehebben.) Als u de details van de afzonderlijke taakuitvoer wilt bijhouden, luistert u naar een gebeurtenis voor het wijzigen van de taakuitvoer.
-
-Elke **taak** zal op een hoger niveau dan **JobOutput,** dus job output gebeurtenissen worden ontslagen binnenkant van een overeenkomstige baan. 
-
-De foutberichten `JobFinished`in `JobCanceled` `JobError` , , output van de geaggregeerde resultaten voor elke taak uitvoer - wanneer ze allemaal klaar zijn. Terwijl, de taak output gebeurtenissen brand als elke taak eindigt. Als u bijvoorbeeld een coderingsuitvoer hebt, gevolgd door een Video Analytics-uitvoer, worden twee gebeurtenissen geactiveerd als taakuitvoergebeurtenissen voordat de laatste Gebeurtenis JobFinished wordt geactiveerd met de samengevoegde gegevens.
+### <a name="monitoring-job-state-changes"></a>Taak status wijzigingen bewaken
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.Media.JobOutputStateChange| Ontvang een gebeurtenis voor alle wijzigingen in de taakuitvoerstatus. |
-| Microsoft.Media.JobOutputGepland| Ontvang een gebeurtenis wanneer taakuitvoer overgaat naar de geplande status. |
-| Microsoft.Media.JobOutputProcessing| Ontvang een gebeurtenis wanneer taakuitvoer overgaat naar verwerkingsstatus. |
-| Microsoft.Media.JobOutputAnnuleren| Ontvang een gebeurtenis wanneer de taakuitvoer overgaat op de status annuleren.|
-| Microsoft.Media.JobOutputFinished| Ontvang een gebeurtenis wanneer de taakuitvoer overgaat naar de status voltooid.|
-| Microsoft.Media.JobOutputgeannuleerd| Ontvang een gebeurtenis wanneer de taakuitvoer overgaat naar de geannuleerde status.|
-| Microsoft.Media.JobOutputErrored| Ontvang een gebeurtenis wanneer taakuitvoer overgaat naar foutstatus.|
+| Micro soft. media. JobStateChange| Een gebeurtenis ophalen voor alle taak status wijzigingen. |
+| Micro soft. media. JobScheduled| Een gebeurtenis ophalen wanneer taak overgang naar een geplande status heeft. |
+| Micro soft. media. JobProcessing| Een gebeurtenis ophalen wanneer de taak wordt overgezet naar de verwerkings status. |
+| Micro soft. media. JobCanceling| Een gebeurtenis ophalen wanneer de taak wordt overgezet om de status te annuleren. |
+| Micro soft. media. JobFinished| Een gebeurtenis ophalen wanneer de status van de taak verandert in voltooid. Dit is een eind status die taak uitvoer bevat.|
+| Micro soft. media. JobCanceled| Een gebeurtenis ophalen wanneer taak overgang naar geannuleerde status heeft. Dit is een eind status die taak uitvoer bevat.|
+| Micro soft. media. JobErrored| Een gebeurtenis ophalen wanneer de taak overschakelt naar een fout status. Dit is een eind status die taak uitvoer bevat.|
 
-Zie [Schema voorbeelden](#event-schema-examples) die volgen.
+Zie [schema voorbeelden](#event-schema-examples) die volgen.
 
-### <a name="monitoring-job-output-progress"></a>Voortgang van de taakuitvoer controleren
+### <a name="monitoring-job-output-state-changes"></a>Taak uitvoer status wijzigingen bewaken
 
-| Gebeurtenistype | Beschrijving |
-| ---------- | ----------- |
-| Microsoft.Media.JobOutputProgress| Deze gebeurtenis weerspiegelt de voortgang van de taakverwerking, van 0% tot 100%. De service probeert een gebeurtenis te verzenden als de voortgangswaarde met 5% of meer is verhoogd of als de laatste gebeurtenis (heartbeat) meer dan 30 seconden is gestegen. De voortgangswaarde begint gegarandeerd niet bij 0%, of 100%, noch zal deze in de loop van de tijd met een constant tempo stijgen. Deze gebeurtenis mag niet worden gebruikt om te bepalen of de verwerking is voltooid , u moet in plaats daarvan de statuswijzigingsgebeurtenissen gebruiken.|
+Een taak kan meerdere taak uitvoer bevatten (als u de trans formatie hebt geconfigureerd om meerdere taak uitvoer te hebben.) Als u de details van de afzonderlijke taak uitvoer wilt bijhouden, moet u Luis teren naar een gebeurtenis voor het wijzigen van de taak uitvoer.
 
-Zie [Schema voorbeelden](#event-schema-examples) die volgen.
+Elke **taak** gaat op een hoger niveau dan **JobOutput**. Daarom worden taak uitvoer gebeurtenissen binnen een bijbehorende taak geactiveerd. 
 
-## <a name="live-event-types"></a>Typen live gebeurtenissen
-
-Media Services zendt **Live** ook de hieronder beschreven Live-gebeurtenistypen uit. Er zijn twee **Live** categorieën voor de Live-evenementen: evenementen op streamniveau en evenementen op trackniveau. 
-
-### <a name="stream-level-events"></a>Gebeurtenissen op streamniveau
-
-Gebeurtenissen op streamniveau worden verhoogd per stream of verbinding. Elke gebeurtenis `StreamId` heeft een parameter die de verbinding of stream identificeert. Elke stream of verbinding heeft een of meer tracks van verschillende typen. Eén verbinding van een encoder kan bijvoorbeeld één audiotrack en vier videotracks hebben. De typen streamgebeurtenissen zijn:
+De fout berichten in `JobFinished`, `JobCanceled`, `JobError` uitvoer de cumulatieve resultaten voor elke taak uitvoer, wanneer deze allemaal zijn voltooid. Overwegende dat de uitvoer gebeurtenissen van de taak worden gestart terwijl elke taak is voltooid. Als u bijvoorbeeld een uitvoer code ring hebt, gevolgd door een video Analytics-uitvoer, worden er twee gebeurtenissen weer gegeven die worden gestart als taak uitvoer gebeurtenissen voordat de laatste JobFinished-gebeurtenis wordt geactiveerd met de geaggregeerde gegevens.
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.Media.LiveEventConnectionafgewezen | Encoder's verbindingspoging wordt afgewezen. |
-| Microsoft.Media.LiveEventEncoderConnected | Encoder legt verbinding met live event. |
-| Microsoft.Media.LiveEventEncoderLosgekoppeld | Encoder verbreekt de verbinding. |
+| Micro soft. media. JobOutputStateChange| Een gebeurtenis ophalen voor alle wijzigingen in de status van de taak uitvoer. |
+| Micro soft. media. JobOutputScheduled| Een gebeurtenis ophalen wanneer de taak uitvoer overschakelt naar de geplande status. |
+| Micro soft. media. JobOutputProcessing| Een gebeurtenis ophalen wanneer de taak uitvoer overschakelt naar de verwerkings status. |
+| Micro soft. media. JobOutputCanceling| Een gebeurtenis ophalen wanneer de taak uitvoer overgangen heeft om de status te annuleren.|
+| Micro soft. media. JobOutputFinished| Een gebeurtenis ophalen wanneer de taak uitvoer overschakelt naar de status voltooid.|
+| Micro soft. media. JobOutputCanceled| Een gebeurtenis ophalen wanneer taak uitvoer overgaat naar geannuleerde status.|
+| Micro soft. media. JobOutputErrored| Een gebeurtenis ophalen wanneer de taak uitvoer overschakelt naar de fout status.|
 
-Zie [Schema voorbeelden](#event-schema-examples) die volgen.
+Zie [schema voorbeelden](#event-schema-examples) die volgen.
 
-### <a name="track-level-events"></a>Gebeurtenissen op trackniveau
+### <a name="monitoring-job-output-progress"></a>Voortgang van taak uitvoer bewaken
 
-Gebeurtenissen op trackniveau worden per track verhoogd. 
+| Gebeurtenistype | Beschrijving |
+| ---------- | ----------- |
+| Micro soft. media. JobOutputProgress| Deze gebeurtenis weerspiegelt de voortgang van de taak verwerking, van 0% tot 100%. De service probeert een gebeurtenis te verzenden als er 5% of hoger een toename van de voortgangs waarde heeft of meer dan 30 seconden sinds de laatste gebeurtenis (heartbeat). De voortgangs waarde is niet gegarandeerd om 0% te beginnen, of om 100% te bereiken, noch is het gegarandeerd om een constant percentage te verhogen gedurende een bepaalde periode. Deze gebeurtenis mag niet worden gebruikt om te bepalen dat de verwerking is voltooid: gebruik in plaats daarvan de status wijzigings gebeurtenissen.|
+
+Zie [schema voorbeelden](#event-schema-examples) die volgen.
+
+## <a name="live-event-types"></a>Live gebeurtenis typen
+
+Media Services ook de **Live** gebeurtenis typen die hieronder worden beschreven. Er zijn twee categorieën voor **Live** Events: gebeurtenissen op stroom niveau en gebeurtenissen op traceer niveau. 
+
+### <a name="stream-level-events"></a>Gebeurtenissen op stroom niveau
+
+Gebeurtenissen op stroom niveau worden gegenereerd per stroom of verbinding. Elke gebeurtenis heeft een `StreamId` para meter waarmee de verbinding of stroom wordt geïdentificeerd. Elke stroom of verbinding heeft een of meer sporen van verschillende typen. Eén verbinding van een coderings programma kan bijvoorbeeld één audio track en vier video sporen hebben. De stroom gebeurtenis typen zijn:
+
+| Gebeurtenistype | Beschrijving |
+| ---------- | ----------- |
+| Micro soft. media. LiveEventConnectionRejected | De verbindings poging van het coderings programma wordt geweigerd. |
+| Micro soft. media. LiveEventEncoderConnected | Encoder maakt verbinding met live event. |
+| Micro soft. media. LiveEventEncoderDisconnected | Encoder verbreekt de verbinding. |
+
+Zie [schema voorbeelden](#event-schema-examples) die volgen.
+
+### <a name="track-level-events"></a>Gebeurtenissen op spoor niveau
+
+Gebeurtenissen op spoor niveau worden verhoogd per spoor. 
 
 > [!NOTE]
-> Alle gebeurtenissen op trackniveau worden verhoogd nadat een live encoder is aangesloten.
+> Alle gebeurtenissen op traceer niveau worden gegenereerd nadat een live coderings programma is verbonden.
 
-De gebeurtenistypen op trackniveau zijn:
+De gebeurtenis typen op spoor niveau zijn:
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Mediaserver laat gegevenssegment vallen omdat het te laat is of een overlappende tijdstempel heeft (timestamp van nieuwe gegevensbrok is minder dan de eindtijd van de vorige gegevensbrok). |
-| Microsoft.Media.LiveEventIncomingStreamOntvangen | Mediaserver ontvangt de eerste gegevensbrok voor elk nummer in de stream of verbinding. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Mediaserver detecteert dat audio- en videostreams niet synchroon lopen. Als waarschuwing gebruiken omdat de gebruikerservaring mogelijk niet wordt beïnvloed. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Mediaserver detecteert dat een van de twee videostreams afkomstig van externe encoder niet synchroon loopt. Als waarschuwing gebruiken omdat de gebruikerservaring mogelijk niet wordt beïnvloed. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Elke 20 seconden gepubliceerd voor elk nummer wanneer het live-evenement wordt uitgevoerd. Biedt een samenvatting van de inname van de gezondheid.<br/><br/>Nadat de encoder in eerste instantie was aangesloten, blijft de heartbeat-gebeurtenis elke 20 sec uitzenden of de encoder nog steeds verbonden is of niet. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Mediaserver detecteert discontinuïteit in het binnenkomende nummer. |
+| Micro soft. media. LiveEventIncomingDataChunkDropped | Media server daalt gegevens segment omdat het te laat is of een overlappende tijds tempel heeft (tijds tempel van nieuw gegevens segment is kleiner dan de eind tijd van het vorige gegevens segment). |
+| Micro soft. media. LiveEventIncomingStreamReceived | Media server ontvangt eerste gegevens segment voor elk spoor in de stroom of verbinding. |
+| Micro soft. media. LiveEventIncomingStreamsOutOfSync | Media server detecteert audio-en video-streams die niet zijn gesynchroniseerd. Gebruik als een waarschuwing omdat de gebruikers ervaring mogelijk niet van invloed is op de gebruiker. |
+| Micro soft. media. LiveEventIncomingVideoStreamsOutOfSync | Media server detecteert een van de twee video stromen die afkomstig zijn van externe Encoder, zijn niet synchroon. Gebruik als een waarschuwing omdat de gebruikers ervaring mogelijk niet van invloed is op de gebruiker. |
+| Micro soft. media. LiveEventIngestHeartbeat | Gepubliceerd om de 20 seconden voor elk spoor wanneer Live Event wordt uitgevoerd. Biedt een samen vatting van status opname.<br/><br/>Nadat het coderings programma voor het eerst is verbonden, blijft de heartbeat-gebeurtenis elke 20 sec verzenden, of het coderings programma nog steeds is verbonden of niet. |
+| Micro soft. media. LiveEventTrackDiscontinuityDetected | Media server detecteert de onderbreking in de inkomende track. |
 
-Zie [Schema voorbeelden](#event-schema-examples) die volgen.
+Zie [schema voorbeelden](#event-schema-examples) die volgen.
 
-## <a name="event-schema-examples"></a>Voorbeelden van gebeurtenisschema's
+## <a name="event-schema-examples"></a>Voor beelden van gebeurtenis schema's
 
-### <a name="jobstatechange"></a>JobStateChange JobStateChange
+### <a name="jobstatechange"></a>JobStateChange
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **JobStateChange** weergegeven: 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **JobStateChange** : 
 
 ```json
 [
@@ -129,21 +129,21 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **JobStateChange**
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| vorigeStaat | tekenreeks | De stand van zaken vóór het evenement. |
-| state | tekenreeks | De nieuwe status van de taak die in dit geval wordt aangemeld. Bijvoorbeeld 'Gepland: de taak is klaar om te starten' of 'Voltooid: de taak is voltooid'.|
+| previousState | tekenreeks | De status van de taak vóór de gebeurtenis. |
+| state | tekenreeks | De nieuwe status van de taak die wordt gewaarschuwd bij deze gebeurtenis. Bijvoorbeeld ' gepland: de taak is gereed om te beginnen ' of ' voltooid: de taak is voltooid '.|
 
-Waar de taakstatus een van de waarden kan zijn: *Wachtrijen*, *Gepland*, *Verwerking*, *Voltooid*, *Fout*, *Geannuleerd*, *Annuleren*
+Waarbij de taak status kan een van de volgende waarden zijn *: in de wachtrij geplaatst*, *gepland*, *verwerkt*, *voltooid*, *fout*, *geannuleerd*, *Annuleren*
 
 > [!NOTE]
-> *In de wachtrij* zal alleen aanwezig zijn in de **vorigeState-eigenschap,** maar niet in het **staatseigendom.**
+> De *wachtrij* is alleen aanwezig in de eigenschap **previousState** , maar niet in de eigenschap **State** .
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled, JobProcessing, JobCanceling
 
-Voor elke niet-definitieve taakstatuswijziging (zoals JobScheduled, JobProcessing, JobCanceling) ziet het voorbeeldschema er als volgt uit:
+Voor elke niet-definitieve taak Status wijziging (zoals JobScheduled, JobProcessing, JobCanceling) ziet het voorbeeld schema er ongeveer als volgt uit:
 
 ```json
 [{
@@ -167,7 +167,7 @@ Voor elke niet-definitieve taakstatuswijziging (zoals JobScheduled, JobProcessin
 
 ### <a name="jobfinished-jobcanceled-joberrored"></a>JobFinished, JobCanceled, JobErrored
 
-Voor elke laatste wijziging van de taakstatus (zoals JobFinished, JobCanceled, JobErrored) ziet het voorbeeldschema er als volgt uit:
+Voor elke definitieve wijziging van de taak status (zoals JobFinished, JobCanceled, JobErrored) ziet het voorbeeld schema er ongeveer als volgt uit:
 
 ```json
 [{
@@ -199,15 +199,15 @@ Voor elke laatste wijziging van de taakstatus (zoals JobFinished, JobCanceled, J
 }]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| Uitgangen | Matrix | Krijgt de taakuitgangen.|
+| uitvoer | Matrix | Hiermee haalt u de taak uitvoer op.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **JobOutputStateChange** weergegeven:
+In het volgende voor beeld ziet u het schema van de gebeurtenis **JobOutputStateChange** :
 
 ```json
 [{
@@ -238,7 +238,7 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **JobOutputStateCh
 
 ### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
-Voor elke statuswijziging van JobOutput ziet het voorbeeldschema er als volgt uit:
+Voor elke wijziging van de JobOutput-status ziet het voorbeeld schema er ongeveer als volgt uit:
 
 ```json
 [{
@@ -268,7 +268,7 @@ Voor elke statuswijziging van JobOutput ziet het voorbeeldschema er als volgt ui
 ```
 ### <a name="joboutputprogress"></a>JobOutputProgress
 
-Het voorbeeldschema lijkt op het volgende:
+Het voorbeeld schema ziet er ongeveer als volgt uit:
 
  ```json
 [{
@@ -290,9 +290,9 @@ Het voorbeeldschema lijkt op het volgende:
 }]
 ```
 
-### <a name="liveeventconnectionrejected"></a>LiveEventConnectionafgewezen
+### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventConnectionRejected weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventConnectionRejected** : 
 
 ```json
 [
@@ -315,21 +315,21 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventConnect
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| streamId (streamId) | tekenreeks | Id van de stream of verbinding. Encoder of klant is verantwoordelijk om deze ID toe te voegen in de inname URL. |  
-| innameUrl | tekenreeks | Inname URL die door het live evenement. |  
-| encoderIp | tekenreeks | IP van de encoder. |
-| encoderPort | tekenreeks | Haven van de encoder van waar deze stroom vandaan komt. |
-| resultaatCode | tekenreeks | De reden waarom de verbinding werd afgewezen. De resultaatcodes worden vermeld in de volgende tabel. |
+| streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het toevoegen van deze ID in de opname-URL. |  
+| ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |  
+| encoderIp | tekenreeks | IP-adres van het coderings programma. |
+| encoderPort | tekenreeks | Poort van het coderings programma waaruit deze stroom afkomstig is. |
+| resultCode | tekenreeks | De reden waarom de verbinding is geweigerd. De resultaat codes worden in de volgende tabel weer gegeven. |
 
-U de foutresultaatcodes vinden in [foutcodes voor live gebeurtenissen](../media-services/latest/live-event-error-codes.md).
+U kunt de fout codes vinden in [fouten met fout codes voor Live-gebeurtenissen](../media-services/latest/live-event-error-codes.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventEncoderConnected weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventEncoderConnected** : 
 
 ```json
 [
@@ -351,18 +351,18 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventEncoder
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| streamId (streamId) | tekenreeks | Id van de stream of verbinding. Encoder of klant is verantwoordelijk voor het verstrekken van deze ID in de inname URL. |
-| innameUrl | tekenreeks | Inname URL die door het live evenement. |
-| encoderIp | tekenreeks | IP van de encoder. |
-| encoderPort | tekenreeks | Haven van de encoder van waar deze stroom vandaan komt. |
+| streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het opgeven van deze ID in de opname-URL. |
+| ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |
+| encoderIp | tekenreeks | IP-adres van het coderings programma. |
+| encoderPort | tekenreeks | Poort van het coderings programma waaruit deze stroom afkomstig is. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventEncoderDisconnected weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventEncoderDisconnected** : 
 
 ```json
 [
@@ -385,33 +385,33 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventEncoder
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| streamId (streamId) | tekenreeks | Id van de stream of verbinding. Encoder of klant is verantwoordelijk om deze ID toe te voegen in de inname URL. |  
-| innameUrl | tekenreeks | Inname URL die door het live evenement. |  
-| encoderIp | tekenreeks | IP van de encoder. |
-| encoderPort | tekenreeks | Haven van de encoder van waar deze stroom vandaan komt. |
-| resultaatCode | tekenreeks | De reden voor de encoder loskoppelen. Het kan sierlijk loskoppelen of van een fout. De resultaatcodes worden vermeld in de volgende tabel. |
+| streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het toevoegen van deze ID in de opname-URL. |  
+| ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |  
+| encoderIp | tekenreeks | IP-adres van het coderings programma. |
+| encoderPort | tekenreeks | Poort van het coderings programma waaruit deze stroom afkomstig is. |
+| resultCode | tekenreeks | De reden voor het verbreken van de verbinding met het coderings programma. Het kan zijn dat de verbinding wordt verbroken of dat er een fout optreedt. De resultaat codes worden in de volgende tabel weer gegeven. |
 
-U de foutresultaatcodes vinden in [foutcodes voor live gebeurtenissen](../media-services/latest/live-event-error-codes.md).
+U kunt de fout codes vinden in [fouten met fout codes voor Live-gebeurtenissen](../media-services/latest/live-event-error-codes.md).
 
-De sierlijke loskoppelen resultaatcodes zijn:
+De resultaten van de gevolgde verbrekings verbinding zijn:
 
 | Resultaatcode | Beschrijving |
 | ----------- | ----------- |
-| S_ok | Encoder is met succes losgekoppeld. |
-| MPE_CLIENT_TERMINATED_SESSION | Encoder losgekoppeld (RTMP). |
-| MPE_CLIENT_DISCONNECTED | Encoder losgekoppeld (FMP4). |
-| MPI_REST_API_CHANNEL_RESET | Kanaalreset opdracht is ontvangen. |
-| MPI_REST_API_CHANNEL_STOP | Kanaalstopopdracht ontvangen. |
-| MPI_REST_API_CHANNEL_STOP | Kanaal dat onderhoud ondergaat. |
-| MPI_STREAM_HIT_EOF | EOF stream wordt verzonden door de encoder. |
+| S_OK | Het coderings programma is verbroken. |
+| MPE_CLIENT_TERMINATED_SESSION | Het coderings programma is verbroken (RTMP). |
+| MPE_CLIENT_DISCONNECTED | Het coderings programma is verbroken (FMP4). |
+| MPI_REST_API_CHANNEL_RESET | Opdracht voor kanaal opnieuw instellen is ontvangen. |
+| MPI_REST_API_CHANNEL_STOP | Opdracht voor stoppen van kanaal ontvangen. |
+| MPI_REST_API_CHANNEL_STOP | Het kanaal ondergaat onderhoud. |
+| MPI_STREAM_HIT_EOF | EOF-stroom wordt verzonden door het coderings programma. |
 
 ### <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomingDataChunkDropped weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncomingDataChunkDropped** : 
 
 ```json
 [
@@ -435,20 +435,20 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomin
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| trackType | tekenreeks | Type van de track (Audio / Video). |
-| trackName | tekenreeks | Naam van het spoor. |
-| Bitrate | geheel getal | Bitrate van het spoor. |
-| tijdstempel | tekenreeks | Tijdstempel van de gegevens brok gedaald. |
-| Tijdschaal | tekenreeks | Tijdschaal van de tijdstempel. |
-| resultaatCode | tekenreeks | Reden van de daling van de gegevensbrok. **FragmentDrop_OverlapTimestamp** of **FragmentDrop_NonIncreasingTimestamp**. |
+| trackType | tekenreeks | Het type van het spoor (audio/video). |
+| nummer bijhouden | tekenreeks | De naam van het spoor. |
+| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| tijdstempel | tekenreeks | Tijds tempel van het gegevens segment is verwijderd. |
+| lijnen | tekenreeks | Tijd schaal van de tijds tempel. |
+| resultCode | tekenreeks | De reden van de drop van het gegevens segment. **FragmentDrop_OverlapTimestamp** of **FragmentDrop_NonIncreasingTimestamp**. |
 
-### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamOntvangen
+### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomingStreamReceived weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncomingStreamReceived** : 
 
 ```json
 [
@@ -475,22 +475,22 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomin
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| trackType | tekenreeks | Type van de track (Audio / Video). |
-| trackName | tekenreeks | Naam van de track (ofwel verstrekt door de encoder of, in het geval van RTMP, server genereert in *TrackType_Bitrate* formaat). |
-| Bitrate | geheel getal | Bitrate van het spoor. |
-| innameUrl | tekenreeks | Inname URL die door het live evenement. |
-| encoderIp | tekenreeks  | IP van de encoder. |
-| encoderPort | tekenreeks | Haven van de encoder van waar deze stroom vandaan komt. |
-| tijdstempel | tekenreeks | Eerste timestamp van de ontvangen gegevensbrok. |
-| Tijdschaal | tekenreeks | Tijdschaal waarin tijdstempel is weergegeven. |
+| trackType | tekenreeks | Het type van het spoor (audio/video). |
+| nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
+| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |
+| encoderIp | tekenreeks  | IP-adres van het coderings programma. |
+| encoderPort | tekenreeks | Poort van het coderings programma waaruit deze stroom afkomstig is. |
+| tijdstempel | tekenreeks | Eerste tijds tempel van het ontvangen gegevens segment. |
+| lijnen | tekenreeks | De tijd schaal waarin tijds tempel wordt weer gegeven. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomingStreamsOutOutSync** weergegeven: 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncomingStreamsOutOfSync** : 
 
 ```json
 [
@@ -514,20 +514,20 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomin
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| minLastTimestamp | tekenreeks | Minimum van de laatste tijdstempels tussen alle tracks (audio of video). |
-| typeOfTrackWithMinLastTimestamp | tekenreeks | Type van de track (audio of video) met minimale laatste tijdstempel. |
-| maxLastTimestamp | tekenreeks | Maximaal alle tijdstempels tussen alle tracks (audio of video). |
-| typeOfTrackWithMaxLastTimestamp | tekenreeks | Type van de track (audio of video) met maximale laatste tijdstempel. |
-| tijdschaalOfMinLastTimestamp| tekenreeks | Krijgt de tijdschaal waarin "MinLastTimestamp" is vertegenwoordigd.|
-| tijdschaalOfMaxLastTimestamp| tekenreeks | Krijgt de tijdschaal waarin "MaxLastTimestamp" is vertegenwoordigd.|
+| minLastTimestamp | tekenreeks | Mini maal aantal laatste tijds tempels tussen alle sporen (audio of video). |
+| typeOfTrackWithMinLastTimestamp | tekenreeks | Het type van het spoor (audio of video) met de minimale laatste tijds tempel. |
+| maxLastTimestamp | tekenreeks | Het maximum van alle tijds tempels van alle sporen (audio of video). |
+| typeOfTrackWithMaxLastTimestamp | tekenreeks | Het type van het spoor (audio of video) met de maximale laatste tijds tempel. |
+| timescaleOfMinLastTimestamp| tekenreeks | Hiermee wordt de tijd schaal opgehaald waarin ' MinLastTimestamp ' wordt weer gegeven.|
+| timescaleOfMaxLastTimestamp| tekenreeks | Hiermee wordt de tijd schaal opgehaald waarin ' MaxLastTimestamp ' wordt weer gegeven.|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomingVideoStreamsOutOutSync** weergegeven: 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncomingVideoStreamsOutOfSync** : 
 
 ```json
 [
@@ -550,19 +550,19 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIncomin
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| firstTimestamp | tekenreeks | Timestamp ontvangen voor een van de tracks / kwaliteit niveaus van het type video. |
-| firstDuur | tekenreeks | Duur van de gegevensbrok met de eerste tijdstempel. |
-| secondTimestamp | tekenreeks  | Timestamp ontvangen voor een aantal andere track / kwaliteit niveau van het type video. |
-| tweedeDuur | tekenreeks | Duur van de gegevensbrok met tweede tijdstempel. |
-| Tijdschaal | tekenreeks | Tijdschaal van tijdstempels en duur.|
+| firstTimestamp | tekenreeks | Er is een tijds tempel ontvangen voor een van de typen video tracks/kwaliteit. |
+| firstDuration | tekenreeks | De duur van het gegevens segment met de eerste time stamp. |
+| secondTimestamp | tekenreeks  | Er is een tijds tempel ontvangen voor een ander spoor/kwaliteits niveau van het type video. |
+| secondDuration | tekenreeks | De duur van het gegevens segment met de tweede tijds tempel. |
+| lijnen | tekenreeks | Tijd schaal van tijds tempels en duur.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIngestHeartbeat** weergegeven: 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIngestHeartbeat** : 
 
 ```json
 [
@@ -592,26 +592,26 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventIngestH
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| trackType | tekenreeks | Type van de track (Audio / Video). |
-| trackName | tekenreeks | Naam van de track (ofwel verstrekt door de encoder of, in het geval van RTMP, server genereert in *TrackType_Bitrate* formaat). |
-| Bitrate | geheel getal | Bitrate van het spoor. |
-| inkomendeBitrate | geheel getal | Berekende bitrate op basis van gegevensbrokken afkomstig van encoder. |
-| laatsteTimestamp | tekenreeks | Laatste tijdstempel ontvangen voor een track in de laatste 20 seconden. |
-| Tijdschaal | tekenreeks | Tijdschaal waarin tijdstempels worden uitgedrukt. |
-| overlappingTelling | geheel getal | Het aantal gegevensbrokken had in de afgelopen 20 seconden tijdstempels overlapt. |
-| discontinuïteitTelling | geheel getal | Aantal discontinuïteiten waargenomen in de laatste 20 seconden. |
-| niet Toenemend aantal | geheel getal | Het aantal gegevensbrokken met tijdstempels in het verleden werd ontvangen in de laatste 20 seconden. |
-| onverwachtBitrate | Booleaanse waarde | Als verwachte en werkelijke bitrates verschillen met meer dan toegestaan limiet in de laatste 20 seconden. Het is waar als en alleen als, inkomendeBitrate >= 2 * bitrate OF inkomendeBitrate <= bitrate/2 OF IncomingBitrate = 0. |
-| state | tekenreeks | Staat van het live-evenement. |
-| Gezonde | Booleaanse waarde | Geeft aan of inname gezond is op basis van de tellingen en vlaggen. Gezond is waar als overlapCount = 0 && discontinuïteitTelling = 0 && niet-toenameaantal = 0 && onverwachte Bitrate = false. |
+| trackType | tekenreeks | Het type van het spoor (audio/video). |
+| nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
+| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| incomingBitrate | geheel getal | Berekende bitrate op basis van gegevens segmenten die afkomstig zijn van encoder. |
+| lastTimestamp | tekenreeks | Laatste ontvangen tijds tempel voor een track in de afgelopen 20 seconden. |
+| lijnen | tekenreeks | De tijd schaal waarin tijds tempels worden weer gegeven. |
+| overlapCount | geheel getal | Het aantal gegevens segmenten heeft de afgelopen 20 seconden overlappende tijds tempels. |
+| discontinuityCount | geheel getal | Aantal in de afgelopen 20 seconden waargenomen handelingen. |
+| nonIncreasingCount | geheel getal | Het aantal gegevens segmenten met tijds tempels in het verleden zijn in de afgelopen 20 seconden ontvangen. |
+| unexpectedBitrate | booleaans | Als de verwachte en werkelijke bitsnelheid per seconde in de afgelopen 20 seconden verschillen van de toegestane limiet. Het is waar en alleen als, incomingBitrate >= 2 * bitrate of incomingBitrate <= bitrate/2 of IncomingBitrate = 0. |
+| state | tekenreeks | De status van de live-gebeurtenis. |
+| blijft | booleaans | Hiermee wordt aangegeven of opname in orde is op basis van de aantallen en vlaggen. In orde is waar als overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
-In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventTrackDiscontinuityDetected weergegeven:** 
+In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventTrackDiscontinuityDetected** : 
 
 ```json
 [
@@ -636,39 +636,39 @@ In het volgende voorbeeld wordt het schema van de gebeurtenis **LiveEventTrackDi
 ]
 ```
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| trackType | tekenreeks | Type van de track (Audio / Video). |
-| trackName | tekenreeks | Naam van de track (ofwel verstrekt door de encoder of, in het geval van RTMP, server genereert in *TrackType_Bitrate* formaat). |
-| Bitrate | geheel getal | Bitrate van het spoor. |
-| vorige Timestamp | tekenreeks | Tijdstempel van het vorige fragment. |
-| newTimestamp | tekenreeks | Tijdstempel van het huidige fragment. |
-| discontinuïteitGap | tekenreeks | Kloof tussen de twee tijdstempels. |
-| Tijdschaal | tekenreeks | Tijdschaal waarin zowel tijdstempel als discontinuïteitskloof worden weergegeven. |
+| trackType | tekenreeks | Het type van het spoor (audio/video). |
+| nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
+| bitsnelheid | geheel getal | De bitrate van het spoor. |
+| previousTimestamp | tekenreeks | Tijds tempel van het vorige fragment. |
+| newTimestamp | tekenreeks | Tijds tempel van het huidige fragment. |
+| discontinuityGap | tekenreeks | Tussen ruimte tussen twee tijds tempels. |
+| lijnen | tekenreeks | De tijd schaal waarin zowel de tijds tempel als de schei ding tussen ruimte worden weer gegeven. |
 
-### <a name="common-event-properties"></a>Algemene gebeurteniseigenschappen
+### <a name="common-event-properties"></a>Algemene gebeurtenis eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Het EventGrid-onderwerp. Deze eigenschap heeft de resource-id voor het Media Services-account. |
-| Onderwerp | tekenreeks | Het resourcepad voor het kanaal MediaServices onder het Media Services-account. Het toevoegen van het onderwerp en onderwerp geven u de resource-ID voor de taak. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld "Microsoft.Media.JobStateChange". |
-| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Unieke id voor de gebeurtenis. |
-| data | object | Gegevens over mediaservices-gebeurtenissen. |
+| onderwerp | tekenreeks | Het onderwerp EventGrid. Deze eigenschap heeft de resource-ID voor het Media Services-account. |
+| Onderwerp | tekenreeks | Het bronpad voor het Media Services kanaal onder het Media Services-account. Als u het onderwerp en onderwerp samenvoegt, geeft u de resource-ID voor de taak. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld ' micro soft. media. JobStateChange '. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| data | object | Media Services gebeurtenis gegevens. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Registreren voor gebeurtenisvan taakstatuswijziging](../media-services/latest/job-state-events-cli-how-to.md)
+[Registreren voor taak status wijzigings gebeurtenissen](../media-services/latest/job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>Zie ook
 
-- [EventGrid .NET SDK met gebeurtenissen in Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
-- [Definities van gebeurtenissen in Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [EventGrid .NET SDK die media service-gebeurtenissen bevat](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Definities van Media Services gebeurtenissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 - [Foutcodes voor Live-gebeurtenissen](../media-services/latest/live-event-error-codes.md)

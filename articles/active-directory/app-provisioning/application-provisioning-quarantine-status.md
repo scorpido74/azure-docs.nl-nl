@@ -1,6 +1,6 @@
 ---
-title: Toepassingsvoorzieningsstatus quarantaine | Microsoft Documenten
-description: Wanneer u een toepassing voor automatische gebruikersinrichting hebt geconfigureerd, leest u wat een inrichtingsstatus van Quarantaine betekent en hoe u deze wissen.
+title: Toepassings inrichtings status van quarantaine | Microsoft Docs
+description: Wanneer u een toepassing voor het automatisch inrichten van gebruikers hebt geconfigureerd, leest u wat een inrichtings status in quarantaine betekent en hoe u deze wist.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,60 +17,60 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154624"
 ---
-# <a name="application-provisioning-in-quarantine-status"></a>Toepassingsinrichting in quarantainestatus
+# <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
-De Azure AD-inrichtingsservice bewaakt de status van uw configuratie en plaatst ongezonde apps in een quarantainestatus. Als de meeste of alle oproepen tegen het doelsysteem consistent mislukken vanwege een fout, bijvoorbeeld ongeldige beheerdersreferenties, wordt de inrichtingstaak gemarkeerd als in quarantaine.
+De Azure AD-inrichtings service bewaakt de status van uw configuratie en plaatst de beschadigde apps in de status ' quarantaine '. Als de meeste of alle aanroepen voor het doel systeem consistent mislukken vanwege een fout, bijvoorbeeld ongeldige beheerders referenties, wordt de inrichtings taak gemarkeerd als in quarantaine.
 
-Terwijl in quarantaine, de frequentie van incrementele cycli wordt geleidelijk teruggebracht tot eenmaal per dag. De inrichtingstaak wordt uit quarantaine verwijderd nadat alle fouten zijn opgelost en de volgende synchronisatiecyclus wordt gestart. Als de inrichtingstaak langer dan vier weken in quarantaine blijft, is de inrichtingstaak uitgeschakeld (stopt met draaien).
+In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag gereduceerd. De inrichtings taak wordt uit quarantaine gehaald nadat alle fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld (stopt met uitvoeren).
 
-## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>Hoe weet ik of mijn aanvraag in quarantaine staat?
+## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>Hoe kan ik weet of mijn toepassing in quarantaine is?
 
-Er zijn drie manieren om te controleren of een toepassing in quarantaine is:
+Er zijn drie manieren om te controleren of een toepassing in quarantaine is geplaatst:
   
-- Navigeer in de Azure-portal naar **Azure Active Directory** > **Enterprise-toepassingsnaam** > &lt;*application name*&gt; > **Provisioning** en blader naar de voortgangsbalk onderaan.  
+- Ga in het Azure Portal naar **Azure Active Directory** > **bedrijfs toepassingen** > &lt;*toepassings naam*&gt; > **inrichten** en schuif naar de voortgangs balk onderaan.  
 
-  ![Statusbalk voor inrichten met quarantainestatus](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
+  ![Status balk van de inrichting met de status van de quarantaine](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- Navigeer in de Azure Portal naar **Azure Active Directory** > **Audit Logs** > filter op **Activiteit: quarantaine** en controleer de quarantainegeschiedenis. Terwijl de weergave in de voortgangsbalk zoals hierboven is beschreven, aangeeft of de inrichting momenteel in quarantaine is, u in de controlelogboeken de quarantainegeschiedenis voor een toepassing bekijken. 
+- Ga in het Azure Portal naar **Azure Active Directory** > **controle logboeken** > filter op **activiteit: quarantaine** en controleer de quarantaine geschiedenis. In de weer gave in de voortgangs balk zoals hierboven wordt aangegeven of het inrichten momenteel in quarantaine is geplaatst, kunt u in de audit Logboeken de quarantaine geschiedenis voor een toepassing weer geven. 
 
-- Gebruik de Microsoft Graph-aanvraag [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) om programmatisch de status van de inrichtingstaak te krijgen:
+- Gebruik de Microsoft Graph aanvraag [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) om programmatisch de status van de inrichtings taak op te halen:
 
         `GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/`
 
-- Controleer uw e-mail. Wanneer een toepassing in quarantaine wordt geplaatst, wordt een eenmalige meldingsmail verzonden. Als de quarantainereden verandert, wordt een bijgewerkte e-mail verzonden met de nieuwe reden voor quarantaine. Als u geen e-mail ziet:
+- Controleer uw e-mail adres. Wanneer een toepassing in quarantaine wordt geplaatst, wordt er een eenmalige e-mail melding verzonden. Als de quarantaine reden wordt gewijzigd, wordt een bijgewerkt e-mail bericht verzonden met de nieuwe reden voor quarantaine. Als u geen e-mail bericht ziet:
 
-  - Zorg ervoor dat u een geldige **meldingse-mail** hebt opgegeven in de inrichtingsconfiguratie voor de toepassing.
-  - Zorg ervoor dat er geen spamfilter t.m.v. de inbox van de meldingse-mail is.
-  - Zorg ervoor dat je je niet hebt afgemeld voor e-mails.
+  - Zorg ervoor dat u een geldig **e-mail adres voor meldingen** hebt opgegeven in de inrichtings configuratie voor de toepassing.
+  - Zorg ervoor dat er geen spam filtering is in het postvak in van de meldings-e-mail.
+  - Zorg ervoor dat u zich niet afmeldt bij e-mail berichten.
 
-## <a name="why-is-my-application-in-quarantine"></a>Waarom is mijn aanvraag in quarantaine?
+## <a name="why-is-my-application-in-quarantine"></a>Waarom wordt mijn toepassing in quarantaine geplaatst?
 
-In een Microsoft Graph-verzoek om de status van de inrichtingstaak te krijgen, wordt de volgende reden voor quarantaine weergegeven:
+Een Microsoft Graph aanvraag voor het ophalen van de status van de inrichtings taak bevat de volgende reden voor quarantaine:
 
-- `EncounteredQuarantineException`geeft aan dat ongeldige referenties zijn verstrekt. De inleveringsdienst kan geen verbinding tot stand brengen tussen het bronsysteem en het doelsysteem.
+- `EncounteredQuarantineException`geeft aan dat er ongeldige referenties zijn geleverd. De inrichtings service kan geen verbinding tot stand brengen tussen het bron systeem en het doel systeem.
 
-- `EncounteredEscrowProportionThreshold`geeft aan dat de voorziening de borgdrempel heeft overschreden. Deze voorwaarde treedt op wanneer meer dan 60% van de provisioning-gebeurtenissen zijn mislukt.
+- `EncounteredEscrowProportionThreshold`geeft aan dat het inrichten de borg drempel heeft overschreden. Dit probleem treedt op wanneer meer dan 60% van de inrichtings gebeurtenissen mislukt.
 
-- `QuarantineOnDemand`betekent dat we een probleem met uw toepassing hebben ontdekt en handmatig in quarantaine hebben geplaatst.
+- `QuarantineOnDemand`betekent dat we een probleem met uw toepassing hebben gedetecteerd en hand matig hebben ingesteld op quarantaine.
 
-## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Hoe haal ik mijn aanvraag uit quarantaine?
+## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Hoe kan ik mijn toepassing uit quarantaine halen?
 
-Los eerst het probleem op waardoor de toepassing in quarantaine is geplaatst.
+Los eerst het probleem op dat ertoe heeft geleid dat de toepassing in quarantaine is geplaatst.
 
-- Controleer de inrichtingsinstellingen van de toepassing om te controleren of u [geldige beheerdersreferenties](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)hebt ingevoerd. Azure AD moet een vertrouwensrelatie met de doeltoepassing kunnen instellen. Zorg ervoor dat u geldige referenties hebt ingevoerd en dat uw account over de vereiste machtigingen beschikt.
+- Controleer de inrichtings instellingen van de toepassing om er zeker van te zijn dat u [geldige beheerders referenties hebt ingevoerd](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Azure AD moet in staat zijn om een vertrouwens relatie met de doel toepassing tot stand te brengen. Zorg ervoor dat u geldige referenties hebt ingevoerd en dat uw account over de benodigde machtigingen beschikt.
 
-- Controleer de [inrichtingslogboeken](../reports-monitoring/concept-provisioning-logs.md) om verder te onderzoeken welke fouten quarantaine veroorzaken en de fout te verpakken. Toegang tot de inrichtingslogboeken in de Azure-portal door naar **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Provisioning logs (preview)** te gaan in de sectie **Activiteit.**
+- Controleer de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md) om te onderzoeken welke fouten in quarantaine worden veroorzaakt en los de fout op. Toegang tot de inrichtings Logboeken in de Azure portal door te gaan naar **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning-Logboeken (preview)** in het gedeelte **activiteit** .
 
-Nadat u het probleem hebt opgelost, start u de inrichtingstaak opnieuw. Bepaalde wijzigingen in de inrichtingsinstellingen van de toepassing, zoals toewijzingstoewijzingen of scopingfilters, worden automatisch opnieuw inrichten voor u. De voortgangsbalk op de **inrichtingspagina van** de toepassing geeft aan wanneer de inrichting voor het laatst is gestart. Als u de inrichtingstaak handmatig opnieuw wilt starten, gebruikt u een van de volgende methoden:  
+Nadat u het probleem hebt opgelost, start u de inrichtings taak opnieuw. Bepaalde wijzigingen in de inrichtings instellingen van de toepassing, zoals kenmerk toewijzingen of bereik filters, worden automatisch opnieuw opgestart. De voortgangs balk op de **inrichtings** pagina van de toepassing geeft aan wanneer het inrichten voor het laatst is gestart. Als u de inrichtings taak hand matig opnieuw moet starten, gebruikt u een van de volgende methoden:  
 
-- Gebruik de Azure-portal om de inrichtingstaak opnieuw te starten. Selecteer op de **inrichtingspagina van** de toepassing onder **Instellingen**de optie Status wissen en synchronisatie **opnieuw starten** en stel De **inrichtingsstatus** in **op Aan**. Met deze actie wordt de inprovisioningservice volledig opnieuw opgestart, wat enige tijd kan duren. Een volledige eerste cyclus wordt opnieuw uitgevoerd, waardoor borgs wordt gewist, de app uit quarantaine wordt verwijderd en eventuele watermerken worden gewist.
+- Gebruik de Azure Portal om de inrichtings taak opnieuw te starten. Op de **inrichtings** pagina van de toepassing onder **instellingen**selecteert u **status wissen en start u de synchronisatie opnieuw** en stelt u de **inrichtings status** **in op aan**. Met deze actie wordt de inrichtings service volledig opnieuw gestart. Dit kan enige tijd duren. Er wordt opnieuw een volledige eerste cyclus uitgevoerd. Hiermee wist u de toepassing, worden de apps uit quarantaine verwijderd en worden eventuele water merken gewist.
 
-- Gebruik Microsoft Graph om [de inrichtingstaak opnieuw te starten.](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) Je hebt volledige controle over wat je opnieuw start. U ervoor kiezen om borgsen te wissen (om de borgteller die naar de quarantainestatus wordt gegenereerd opnieuw op te starten), quarantaine vrij te maken (om de toepassing uit quarantaine te verwijderen) of watermerken wissen. Gebruik de volgende aanvraag:
+- Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). U hebt volledige controle over wat u opnieuw opstart. U kunt ervoor kiezen om de borg te wissen (om de borg teller voor de quarantaine status opnieuw te starten), de quarantaine te wissen (de toepassing uit quarantaine te verwijderen) of door water merken te wissen. Gebruik de volgende aanvraag:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

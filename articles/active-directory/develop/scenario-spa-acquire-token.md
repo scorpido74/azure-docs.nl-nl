@@ -1,6 +1,6 @@
 ---
-title: Een token aanschaffen om een web-API aan te roepen (apps met één pagina) - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een toepassing met één pagina (een token aanschaffen om een API aan te roepen)
+title: Een token verkrijgen voor het aanroepen van een web-API (apps met één pagina)-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een toepassing met één pagina (een Token ophalen om een API aan te roepen)
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,36 +12,36 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882315"
 ---
-# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een token aanschaffen om een API aan te roepen
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
 
-Het patroon voor het verkrijgen van tokens voor API's met MSAL.js is om eerst een stille tokenaanvraag te proberen met behulp van de `acquireTokenSilent` methode. Wanneer deze methode wordt aangeroepen, controleert de bibliotheek eerst de cache in browseropslag om te zien of er een geldig token bestaat en retourneert deze. Wanneer er geen geldig token in de cache is, wordt een stil tokenverzoek naar Azure Active Directory (Azure AD) verstuurt vanuit een verborgen iframe. Met deze methode kan de bibliotheek ook tokens vernieuwen. Zie Tokenlevensduur voor meer informatie over de waarden van eenmalige [aanmeldingssessie](active-directory-configurable-token-lifetimes.md)en tokenlevensduur in Azure AD.
+Het patroon voor het verkrijgen van tokens voor Api's met MSAL. js is om eerst een Silent token aanvraag te proberen met `acquireTokenSilent` behulp van de-methode. Wanneer deze methode wordt aangeroepen, controleert de bibliotheek eerst de cache in browser opslag om te zien of er een geldig token bestaat en retourneert het. Als er geen geldig token in de cache staat, verzendt het een Silent-token aanvraag naar Azure Active Directory (Azure AD) van een verborgen iframe. Met deze methode kan de bibliotheek ook tokens vernieuwen. Zie [levens duur van tokens](active-directory-configurable-token-lifetimes.md)voor meer informatie over de waarden van de sessie voor eenmalige aanmelding en levens duur van tokens in azure AD.
 
-De stille tokenaanvragen voor Azure AD mislukken mogelijk om redenen zoals een verlopen Azure AD-sessie of een wachtwoordwijziging. In dat geval u een beroep doen op een van de interactieve methoden (die de gebruiker zal vragen) om tokens te verwerven:
+De aanvragen voor het Silent-token voor Azure AD kunnen mislukken vanwege een verlopen Azure AD-sessie of een wijziging in een wacht woord. In dat geval kunt u een van de interactieve methoden (waarmee de gebruiker wordt gevraagd) aanroepen om tokens te verkrijgen:
 
 * [Pop-upvenster](#acquire-a-token-with-a-pop-up-window), met behulp van`acquireTokenPopup`
-* [Redirect](#acquire-a-token-with-a-redirect), door gebruik te maken van`acquireTokenRedirect`
+* [Omleiden](#acquire-a-token-with-a-redirect)met`acquireTokenRedirect`
 
-## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Kies tussen een pop-up- of omleidingservaring
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Kiezen tussen een pop-up-of omleidings ervaring
 
- U niet zowel de pop-up- als omleidingsmethoden in uw toepassing gebruiken. De keuze tussen een pop-up- of omleidingservaring is afhankelijk van uw toepassingsstroom:
+ U kunt niet zowel de pop-up-als omleidings methoden in uw toepassing gebruiken. De keuze tussen een pop-up-of omleidings ervaring is afhankelijk van uw toepassings stroom:
 
-* Als u niet wilt dat gebruikers tijdens de verificatie van uw hoofdtoepassingspagina afstappen, raden we de pop-upmethode aan. Omdat de omleiding van de verificatie plaatsvindt in een pop-upvenster, blijft de status van de hoofdtoepassing behouden.
+* Als u niet wilt dat gebruikers tijdens de verificatie naar de hoofd pagina van de toepassing gaan, wordt de pop-upmethode aanbevolen. Omdat de verificatie omleiding plaatsvindt in een pop-upvenster, blijft de status van de hoofd toepassing behouden.
 
-* Als gebruikers browserbeperkingen of -beleidsregels hebben waarbij pop-ups zijn uitgeschakeld, u de omleidingsmethode gebruiken. Gebruik de omleidingsmethode met de Internet Explorer-browser, omdat er bekende problemen zijn [met pop-upvensters in Internet Explorer.](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)
+* Als gebruikers browser beperkingen of-beleid hebben waarin pop-ups Windows zijn uitgeschakeld, kunt u de omleidings methode gebruiken. Gebruik de omleidings methode met de Internet Explorer-browser, omdat er [bekende problemen zijn met pop-upvensters in Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-U instellen dat de API-scopes die het toegangstoken moet bevatten, worden opgenomen wanneer het de aanvraag voor toegangstoken wordt opgebouwd. Houd er rekening mee dat niet alle gevraagde scopes worden toegekend in het toegangstoken. Dat hangt af van de toestemming van de gebruiker.
+U kunt de API-bereiken instellen waarvan u wilt dat het toegangs token moet worden opgenomen wanneer het de toegangs token aanvraag bouwt. Houd er rekening mee dat alle aangevraagde bereiken mogelijk niet worden verleend in het toegangs token. Dat is afhankelijk van de toestemming van de gebruiker.
 
-## <a name="acquire-a-token-with-a-pop-up-window"></a>Een token aanschaffen met een pop-upvenster
+## <a name="acquire-a-token-with-a-pop-up-window"></a>Een token verkrijgen met een pop-upvenster
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-De volgende code combineert het eerder beschreven patroon met de methoden voor een pop-upervaring:
+In de volgende code wordt het eerder beschreven patroon gecombineerd met de methoden voor een pop-upervaring:
 
 ```javascript
 const accessTokenRequest = {
@@ -68,9 +68,9 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-De MSAL Angular wrapper biedt de HTTP interceptor, die automatisch toegang tokens in stilte te verwerven en hechten aan de HTTP-verzoeken aan API's.
+De MSAL-hoek wrapper biedt de HTTP-Interceptor, waarmee automatisch toegangs tokens op de achtergrond worden opgehaald en worden gekoppeld aan de HTTP-aanvragen voor Api's.
 
-U de scopes voor `protectedResourceMap` API's opgeven in de configuratieoptie. `MsalInterceptor`zal deze scopes aanvragen bij het automatisch verwerven van tokens.
+U kunt de scopes voor Api's opgeven in de `protectedResourceMap` configuratie optie. `MsalInterceptor`vraagt deze bereiken bij het automatisch ophalen van tokens.
 
 ```javascript
 // app.module.ts
@@ -109,7 +109,7 @@ U de scopes voor `protectedResourceMap` API's opgeven in de configuratieoptie. `
 export class AppModule { }
 ```
 
-Voor het succes en het mislukken van de stille token-acquisitie biedt MSAL Angular callbacks waarop u zich abonneren. Het is ook belangrijk om te onthouden om je af te melden.
+Voor het slagen en mislukken van de aanschaf van de Silent-tokens, MSAL hoek biedt retour aanroepen waarop u zich kunt abonneren. Het is ook belang rijk om te onthouden dat u zich wilt afmelden.
 
 ```javascript
 // In app.component.ts
@@ -126,15 +126,15 @@ ngOnDestroy() {
  }
 ```
 
-U ook expliciet tokens aanschaffen met behulp van de acquire-token-methoden zoals beschreven in de kern-MSAL.js-bibliotheek.
+U kunt ook expliciet tokens verkrijgen met behulp van de methoden Acquire-token, zoals beschreven in de core MSAL. JS-bibliotheek.
 
 ---
 
-## <a name="acquire-a-token-with-a-redirect"></a>Een token met een omleiding aanschaffen
+## <a name="acquire-a-token-with-a-redirect"></a>Een token verkrijgen met een omleiding
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Het volgende patroon is zoals eerder beschreven, maar wordt weergegeven met een omleidingsmethode om tokens interactief te verkrijgen. U moet de omleidingscallback registreren zoals eerder vermeld.
+Het volgende patroon is eerder beschreven, maar wordt weer gegeven met een omleidings methode om tokens interactief te verkrijgen. U moet de retour aanroep van de omleiding registreren zoals eerder is beschreven.
 
 ```javascript
 function authCallback(error, response) {
@@ -162,13 +162,13 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 ## <a name="request-optional-claims"></a>Optionele claims aanvragen
 
-U optionele claims gebruiken voor de volgende doeleinden:
+U kunt optionele claims gebruiken voor de volgende doel einden:
 
-- Voeg aanvullende claims toe aan tokens voor uw aanvraag.
+- Neem aanvullende claims op in tokens voor uw toepassing.
 - Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
-- Aangepaste claims voor uw toepassing toevoegen en openen.
+- Aangepaste claims toevoegen en openen voor uw toepassing.
 
-Als u optionele `IdToken`claims wilt aanvragen in , `claimsRequest` kunt u `AuthenticationParameters.ts` een tekenreeksclaimobject naar het veld van de klasse verzenden.
+Als u optionele claims in `IdToken`wilt aanvragen, kunt u een stringified-claim object `claimsRequest` verzenden naar het `AuthenticationParameters.ts` veld van de klasse.
 
 ```javascript
 "optionalClaims":
@@ -188,7 +188,7 @@ var request = {
 myMSALObj.acquireTokenPopup(request);
 ```
 
-Zie [Optionele claims](active-directory-optional-claims.md)voor meer informatie.
+Zie voor meer informatie [optionele claims](active-directory-optional-claims.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 

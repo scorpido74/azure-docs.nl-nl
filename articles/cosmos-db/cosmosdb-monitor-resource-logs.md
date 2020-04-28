@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB-gegevens bewaken met Azure Diagnostic-instellingen
-description: Meer informatie over het gebruik van Azure Diagnostic-instellingen om de prestaties en beschikbaarheid te controleren van gegevens die zijn opgeslagen in Azure Cosmos DB
+title: Azure Cosmos DB gegevens bewaken met behulp van de diagnostische instellingen van Azure
+description: Meer informatie over het gebruik van diagnostische instellingen van Azure voor het bewaken van de prestaties en beschik baarheid van gegevens die zijn opgeslagen in Azure Cosmos DB
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
 ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521053"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB-gegevens bewaken met diagnostische instellingen in Azure
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB gegevens bewaken met behulp van diagnostische instellingen in azure
 
-Diagnostische instellingen in Azure worden gebruikt om bronlogboeken te verzamelen. Azure-bronlogboeken worden uitgestoten door een resource en bieden uitgebreide, frequente gegevens over de werking van die bron. Deze logboeken worden vastgelegd per aanvraag en ze worden ook wel aangeduid als "data plane logs". Enkele voorbeelden van de bewerkingen van het gegevensvlak zijn delete, insert en readFeed. De inhoud van deze logboeken verschilt per resourcetype.
+Diagnostische instellingen in Azure worden gebruikt om bron logboeken te verzamelen. Azure-resource logboeken worden verzonden door een resource en bieden uitgebreide, frequente gegevens over de werking van die resource. Deze logboeken worden vastgelegd per aanvraag en ze worden ook wel ' gegevens vlak logboeken ' genoemd. Enkele voor beelden van gegevens vlak bewerkingen zijn Delete, INSERT en readFeed. De inhoud van deze logboeken is afhankelijk van het bron type.
 
-Platformstatistieken en de activiteitslogboeken worden automatisch verzameld, terwijl u een diagnostische instelling moet maken om bronlogboeken te verzamelen of door te sturen buiten Azure Monitor. U diagnostische instellingen voor Azure Cosmos-accounts inschakelen met de volgende stappen:
+Metrische platform gegevens en de activiteiten logboeken worden automatisch verzameld, terwijl u een diagnostische instelling moet maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. U kunt de diagnostische instelling voor Azure Cosmos-accounts inschakelen met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Navigeer naar uw Azure Cosmos-account. Open het deelvenster **Diagnostische instellingen** en selecteer vervolgens de optie Diagnostische **instelling toevoegen.**
+1. Navigeer naar uw Azure Cosmos-account. Open het deel venster **Diagnostische instellingen** en selecteer optie **Diagnostische instelling toevoegen** .
 
-1. Vul in het deelvenster **Diagnostische instellingen** het formulier in met de volgende details: 
+1. In het deel venster **Diagnostische instellingen** vult u het formulier in met de volgende details: 
 
-    * **Naam:** Voer een naam in voor de logboeken die u wilt maken.
+    * **Naam**: Voer een naam in voor de logboeken die u wilt maken.
 
-    * U de logboeken opslaan in **Archiveren naar een opslagaccount,** **Streamen naar een gebeurtenishub** of **Verzenden naar logboekanalyse**
+    * U kunt de logboeken opslaan om te **archiveren naar een opslag account**, **naar een event hub streamen** of **verzenden naar log Analytics**
 
-1. Wanneer u een diagnostische instelling maakt, geeft u op welke categorie logboeken u wilt verzamelen. De categorieën logboeken die worden ondersteund door Azure Cosmos DB worden hieronder weergegeven, samen met voorbeeldlogboek dat door hen wordt verzameld:
+1. Wanneer u een diagnostische instelling maakt, geeft u op welke logboek categorie u wilt verzamelen. De categorieën logboeken die door Azure Cosmos DB worden ondersteund, worden hieronder weer gegeven, samen met het voorbeeld logboek dat door hen wordt verzameld:
 
- * **DataPlaneRequests**: Selecteer deze optie om back-endaanvragen in te loggen op alle API's, waaronder SQL-, Grafiek-, MongoDB-, Cassandra- en TabelAPI-accounts in Azure Cosmos DB. Belangrijke eigenschappen die `Requestcharge`moeten `statusCode` `clientIPaddress`worden `partitionID`opgemerkt zijn: , , en .
+ * **DataPlaneRequests**: Selecteer deze optie om back-end-aanvragen te registreren voor alle api's, waaronder SQL-, Graph-, MongoDb-, Cassandra-en Table-API-accounts in azure Cosmos db. De belangrijkste eigenschappen die u moet `Requestcharge`weten `statusCode`, `clientIPaddress`zijn: `partitionID`,, en.
 
     ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**: Selecteer deze optie om door gebruikers geïnitieerde aanvragen van de voorkant te registreren om aanvragen voor de API van Azure Cosmos DB voor MongoDB weer te geven. Dit logboektype is niet beschikbaar voor andere API-accounts. Belangrijke eigenschappen om `Requestcharge`op `opCode`te merken zijn: , . Wanneer u MongoRequests inschakelt in diagnostische logboeken, moet u de DataPlaneRequests uitschakelen. U ziet één logboek voor elk verzoek op de API.
+* **MongoRequests**: Selecteer deze optie om door de gebruiker geïnitieerde aanvragen van de front-end te registreren om aanvragen voor de Azure Cosmos DB-API voor MongoDb te leveren. Dit logboek type is niet beschikbaar voor andere API-accounts. De belangrijkste eigenschappen die u moet `Requestcharge`weten `opCode`, zijn:,. Wanneer u MongoRequests in Diagnostische logboeken inschakelt, moet u ervoor zorgen dat u de DataPlaneRequests uitschakelt. U ziet één logboek voor elke aanvraag die wordt gedaan via de API.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* **CassandraRequests**: Selecteer deze optie om door gebruikers geïnitieerde aanvragen van de front-end te registreren om aanvragen voor de API van Azure Cosmos DB voor Cassandra weer te geven. Dit logboektype is niet beschikbaar voor andere API-accounts. De belangrijkste eigenschappen `operationName`om `requestCharge` `piiCommandText`op te merken zijn , . . Wanneer u CassandraRequests inschakelt in diagnostische logboeken, moet u de DataPlaneRequests uitschakelen. U ziet één logboek voor elk verzoek op de API.
+* **CassandraRequests**: Selecteer deze optie om door de gebruiker geïnitieerde aanvragen van de front-end te registreren om aanvragen voor de Azure Cosmos DB-API voor Cassandra te leveren. Dit logboek type is niet beschikbaar voor andere API-accounts. De sleutel eigenschappen die u moet `operationName`weten `requestCharge`, `piiCommandText`,,. Wanneer u CassandraRequests in Diagnostische logboeken inschakelt, moet u ervoor zorgen dat u de DataPlaneRequests uitschakelt. U ziet één logboek voor elke aanvraag die wordt gedaan via de API.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
 
-* **QueryRuntimeStatistics**: Selecteer deze optie om de querytekst te registreren die is uitgevoerd. Dit logboektype is alleen beschikbaar voor SQL API-accounts.
+* **QueryRuntimeStatistics**: Selecteer deze optie om de uitgevoerde query tekst te registreren. Dit logboek type is alleen beschikbaar voor SQL-API-accounts.
 
     ```json
     { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
     ```
 
-* **PartitionKeyStatistics**: Selecteer deze optie om de statistieken van de partitiesleutels te registreren. Dit wordt momenteel weergegeven met de opslaggrootte (KB) van de partitiesleutels. Zie de problemen oplossen met de sectie [Diagnostische query's](#diagnostic-queries) van Azure in dit artikel. Bijvoorbeeld query's met 'PartitionKeyStatistics'. Het logboek wordt uitgezonden tegen de eerste drie partitiesleutels die de meeste gegevensopslag innemen. Dit logboek bevat gegevens zoals abonnements-ID, regionaam, databasenaam, verzamelingsnaam, partitiesleutel en opslaggrootte in KB.
+* **PartitionKeyStatistics**: Selecteer deze optie om de statistieken van de partitie sleutels te registreren. Dit wordt momenteel weer gegeven met de opslag grootte (KB) van de partitie sleutels. Zie de sectie [problemen oplossen met behulp van Azure diagnostische query's](#diagnostic-queries) in dit artikel. Bijvoorbeeld query's die gebruikmaken van ' PartitionKeyStatistics '. Het logboek wordt verzonden op basis van de eerste drie partitie sleutels die de meeste gegevens opslag in beslag nemen. Dit logboek bevat gegevens, zoals de abonnements-ID, de naam van de regio, de database naam, de naam van de verzameling, de partitie sleutel en de opslag grootte in KB.
 
     ```json
     { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
     ```
 
-* **PartitionKeyRUConsumption**: Dit logboek rapporteert het geaggregeerde RU/s-verbruik per seconde van partitiesleutels. Momenteel rapporteert Azure Cosmos DB alleen partitiesleutels voor SQL API-accounts en voor puntlees-/schrijf- en opgeslagen procedurebewerkingen. andere API's en bewerkingstypen worden niet ondersteund. Voor andere API's is de kolom partitiesleutel in de diagnostische logboektabel leeg. Dit logboek bevat gegevens zoals abonnements-ID, regionaam, databasenaam, verzamelingsnaam, partitiesleutel, bewerkingstype en aanvraagkosten. Zie de problemen oplossen met de sectie [Diagnostische query's](#diagnostic-queries) van Azure in dit artikel. Bijvoorbeeld query's met 'PartitionKeyRUConsumption'. 
+* **PartitionKeyRUConsumption**: in dit logboek wordt het geaggregeerde aantal exemplaren per seconde van partitie sleutels gerapporteerd. Op dit moment rapporteert Azure Cosmos DB alleen partitie sleutels voor SQL API-accounts en voor bewerkingen voor lezen/schrijven en opgeslagen procedures. andere Api's en bewerkings typen worden niet ondersteund. Voor andere Api's is de partitie sleutel kolom in de tabel met Diagnostische logboeken leeg. Dit logboek bevat gegevens zoals de abonnements-ID, de regio naam, de database naam, de naam van de verzameling, de partitie sleutel, het bewerkings type en de kosten voor aanvragen. Zie de sectie [problemen oplossen met behulp van Azure diagnostische query's](#diagnostic-queries) in dit artikel. Bijvoorbeeld query's die gebruikmaken van ' PartitionKeyRUConsumption '. 
 
-* **ControlPlaneRequests:** Dit logboek bevat details over besturingsvlakbewerkingen zoals het maken van een account, het toevoegen of verwijderen van een regio, het bijwerken van accountreplicatie-instellingen enz. Dit logboektype is beschikbaar voor alle API-typen die SQL (Core), MongoDB, Gremlin, Cassandra, Table API bevatten.
+* **ControlPlaneRequests**: dit logboek bevat details over besturings vlak bewerkingen zoals het maken van een account, het toevoegen of verwijderen van een regio, het bijwerken van de replicatie-instellingen voor het account, enzovoort. Dit logboek type is beschikbaar voor alle API-typen die SQL (core), MongoDB, Gremlin, Cassandra, Table-API, bevatten.
 
-* **Aanvragen:** Selecteer deze optie om metrische gegevens van Azure Cosmos DB te verzamelen naar de bestemmingen in de diagnostische instelling. Dit zijn dezelfde gegevens die automatisch worden verzameld in Azure Metrics. Verzamel metrische gegevens met bronlogboeken om beide soorten gegevens samen te analyseren en metrische gegevens buiten Azure Monitor te verzenden.
+* **Aanvragen**: Selecteer deze optie als u metrische gegevens wilt verzamelen van Azure Cosmos DB op de doelen in de diagnostische instelling. Dit zijn dezelfde gegevens die automatisch worden verzameld in azure Metrics. Verzamelen van metrische gegevens met resource logboeken voor het analyseren van beide soorten gegevens en het verzenden van metrische gegevens buiten Azure Monitor.
 
-Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azure-artikel te verzamelen](../azure-monitor/platform/diagnostic-settings.md) voor gedetailleerde informatie over het maken van een diagnostische instelling met behulp van de Azure-portal, CLI of PowerShell.
+Zie voor gedetailleerde informatie over het maken van een diagnostische instelling met behulp van de Azure Portal, CLI of Power shell de [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../azure-monitor/platform/diagnostic-settings.md) article.
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Problemen met diagnostische query's oplossen
 
-1. Hoe krijg je de aanvraagkosten voor dure query's?
+1. Hoe kunt u de aanvraag kosten voor dure query's ophalen?
 
    ```Kusto
    AzureDiagnostics
@@ -88,7 +88,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | limit 100
    ```
 
-1. Hoe te vinden welke operaties nemen de meeste van RU / s?
+1. Hoe kunt u vinden welke bewerkingen het meren deel zijn van RU/s?
 
     ```Kusto
    AzureDiagnostics
@@ -96,7 +96,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | where TimeGenerated >= ago(2h) 
    | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
-1. Hoe krijg je de distributie voor verschillende bewerkingen?
+1. Hoe kan ik de distributie voor verschillende bewerkingen verkrijgen?
 
    ```Kusto
    AzureDiagnostics
@@ -105,7 +105,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Wat is de maximale doorvoer die een partitie heeft verbruikt?
+1. Wat is de maximale door Voer die een partitie heeft verbruikt?
 
    ```Kusto
    AzureDiagnostics
@@ -114,7 +114,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | summarize max(requestCharge_s) by bin(TimeGenerated, 1h), partitionId_g
    ```
 
-1. Hoe krijg je de informatie over de partitiesleutels RU/s-verbruik per seconde?
+1. Informatie over het gebruik van de partitie sleutels RU/s per seconde ophalen?
 
    ```Kusto
    AzureDiagnostics 
@@ -123,7 +123,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | order by TimeGenerated asc 
    ```
 
-1. Hoe krijg je de aanvraagkosten voor een specifieke partitiesleutel
+1. De aanvraag kosten voor een specifieke partitie sleutel ophalen
 
    ```Kusto
    AzureDiagnostics 
@@ -131,7 +131,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | where parse_json(partitionKey_s)[0] == "2" 
    ```
 
-1. Hoe krijg je de bovenste partitiesleutels met de meeste RU/s verbruikt in een bepaalde periode? 
+1. De belangrijkste partitie sleutels met de meeste RU/s ophalen in een specifieke periode 
 
    ```Kusto
    AzureDiagnostics 
@@ -141,7 +141,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | order by total desc
     ```
 
-1. Hoe krijg je de logboeken voor de partitiesleutels waarvan de opslaggrootte groter is dan 8 GB?
+1. Hoe kan ik de logboeken ophalen voor de partitie sleutels waarvan de opslag ruimte groter is dan 8 GB?
 
    ```Kusto
    AzureDiagnostics
@@ -149,7 +149,7 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Hoe krijg je partitieSleutelstatistieken om scheeftrekking en drie partities voor databaseaccount te evalueren?
+1. Hoe kan ik de statistieken van een partitie sleutel ophalen om het hellen van de drie partities voor het database account te evalueren?
 
     ```Kusto
     AzureDiagnostics 
@@ -159,5 +159,5 @@ Zie [Diagnostische instelling maken om platformlogboeken en statistieken in Azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure-monitor voor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
-* [Controleren en debuggen met statistieken in Azure Cosmos DB](use-metrics.md)
+* [Azure Monitor voor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
+* [Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB](use-metrics.md)

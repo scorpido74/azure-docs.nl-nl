@@ -1,6 +1,6 @@
 ---
-title: Web-API's bellen vanuit een desktop-app - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het bouwen van een bureaublad-app die web-API's aanroept
+title: Web-Api's aanroepen vanuit een desktop-app-micro soft Identity platform | Azure
+description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882961"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureaublad-app die web-API's aanroept: een web-API aanroepen
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureau blad-app die web-Api's aanroept: een web-API aanroepen
 
-Nu u een token hebt, u een beveiligde web-API aanroepen.
+Nu u een token hebt, kunt u een beveiligde web-API aanroepen.
 
 ## <a name="call-a-web-api"></a>Een web-API aanroepen
 
@@ -60,13 +60,13 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API in MSAL bellen voor iOS en macOS
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API aanroepen in MSAL voor iOS en macOS
 
-De methoden om tokens `MSALResult` te verkrijgen geven een object terug. `MSALResult`onthult `accessToken` een eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangstoken toe aan de HTTP-autorisatiekop voordat u aanbelt om toegang te krijgen tot de beveiligde web-API.
+De methoden voor het verkrijgen van tokens `MSALResult` retour neren een object. `MSALResult`beschrijft een `accessToken` eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -80,7 +80,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Swift:
+Swift
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -92,9 +92,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Meerdere API's oproepen: incrementele toestemming en voorwaardelijke toegang
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen: stapsgewijze toestemming en voorwaardelijke toegang
 
-Als u meerdere API's voor dezelfde gebruiker wilt aanroepen, `AcquireTokenSilent`u een aanroep aanroepen nadat u een token voor de eerste API hebt gekregen. Je krijgt meestal een token voor de andere API's.
+Als u meerdere Api's voor dezelfde gebruiker wilt aanroepen, moet u na het ophalen van een token voor `AcquireTokenSilent`de eerste API bellen. U ontvangt een token voor de andere Api's de meeste tijd op de achtergrond.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -106,8 +106,8 @@ result = await app.AcquireTokenSilent("scopeApi2")
 
 Interactie is vereist wanneer:
 
-- De gebruiker heeft ingestemd met de eerste API, maar moet nu toestemming geven voor meer scopes. Dit soort toestemming staat bekend als incrementele toestemming.
-- De eerste API vereist geen multifactorauthenticatie, maar de volgende wel.
+- De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden gestemd op meer bereiken. Dit soort toestemming wordt incrementele toestemming genoemd.
+- De eerste API heeft geen multi-factor Authentication nodig, maar de volgende.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

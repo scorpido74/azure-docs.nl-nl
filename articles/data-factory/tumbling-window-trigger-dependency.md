@@ -1,6 +1,6 @@
 ---
-title: Tumbling window trigger dependencies maken
-description: Meer informatie over het maken van afhankelijkheid van een tuimelende venstertrigger in Azure Data Factory.
+title: Afhankelijkheden voor tumblingvenstertriggers-venster maken
+description: Meer informatie over het maken van afhankelijkheden voor een tumblingvenstertriggers-venster trigger in Azure Data Factory.
 services: data-factory
 ms.author: daperlov
 author: djpmsft
@@ -12,28 +12,28 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
 ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418793"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel vindt u stappen om een afhankelijkheid van een tuimelende venstertrigger te maken. Zie [Hoe u de overtuimingvan het venster activeert](how-to-create-tumbling-window-trigger.md)voor algemene informatie over de triggers voor het tumblingwindow.
+In dit artikel worden de stappen beschreven voor het maken van een afhankelijkheid van een tumblingvenstertriggers-venster trigger. Zie [How to Create tumblingvenstertriggers Window trigger](how-to-create-tumbling-window-trigger.md)(Engelstalig) voor algemene informatie over Tumblingvenstertriggers-venster triggers.
 
-Gebruik deze geavanceerde functie om een afhankelijkheidsketen te bouwen en ervoor te zorgen dat een trigger pas wordt uitgevoerd na de succesvolle uitvoering van een andere trigger in de gegevensfabriek, deze geavanceerde functie om een tuimelende vensterafhankelijkheid te creëren.
+Als u een afhankelijkheids keten wilt maken en ervoor wilt zorgen dat een trigger pas wordt uitgevoerd nadat een andere trigger in de data factory is uitgevoerd, gebruikt u deze geavanceerde functie om een tumblingvenstertriggers-venster afhankelijkheid te maken.
 
-## <a name="create-a-dependency-in-the-data-factory-ui"></a>Een afhankelijkheid maken in de gebruikersinterface van de gegevensfabriek
+## <a name="create-a-dependency-in-the-data-factory-ui"></a>Een afhankelijkheid maken in de Data Factory-gebruikers interface
 
-Als u afhankelijkheid van een trigger wilt maken, selecteert u **Trigger > Geavanceerd > Nieuw**en kiest u vervolgens de trigger waarop u afhankelijk bent van de juiste verschuiving en grootte. Selecteer **Voltooien** en publiceer de wijzigingen in de gegevensfabriek om de afhankelijkheden van kracht te laten worden.
+Als u afhankelijkheid wilt maken voor een trigger, selecteert u **trigger > geavanceerd > nieuw**en kiest u vervolgens de trigger die afhankelijk is van de juiste offset en grootte. Selecteer **volt ooien** en publiceer de Data Factory wijzigingen voordat de afhankelijkheden van kracht worden.
 
-![Afhankelijkheidscreatie](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Afhankelijkheidscreatie")
+![Afhankelijkheid maken](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Afhankelijkheid maken")
 
-## <a name="tumbling-window-dependency-properties"></a>Tumbling venster afhankelijkheid eigenschappen
+## <a name="tumbling-window-dependency-properties"></a>Eigenschappen van afhankelijkheids venster tumblingvenstertriggers
 
-Een tuimelende venstertrigger met een afhankelijkheid heeft de volgende eigenschappen:
+Een tumblingvenstertriggers-venster trigger met een afhankelijkheid heeft de volgende eigenschappen:
 
 ```json
 {
@@ -73,20 +73,20 @@ Een tuimelende venstertrigger met een afhankelijkheid heeft de volgende eigensch
 }
 ```
 
-In de volgende tabel vindt u de lijst met kenmerken die nodig zijn om een tumbling window-afhankelijkheid te definiëren.
+De volgende tabel bevat de lijst met kenmerken die nodig zijn voor het definiëren van een Tumblingvenstertriggers-venster afhankelijkheid.
 
 | **Naam van eigenschap** | **Beschrijving**  | **Type** | **Vereist** |
 |---|---|---|---|
-| type  | Alle bestaande tuimelvenstertriggers worden weergegeven in deze vervolgkeuzelijst. Kies de trigger om afhankelijk te worden.  | TumblingWindowTriggerDependencyReference of SelfDependencyTumblingWindowTriggerReference TumblingWindowTrigger | Ja |
-| offset | Verschuiving van de afhankelijkheidstrigger. Geef een waarde in tijdspanneformaat op en zowel negatieve als positieve verschuivingen zijn toegestaan. Deze eigenschap is verplicht als de trigger afhankelijk is van zichzelf en in alle andere gevallen optioneel. Zelfafhankelijkheid moet altijd een negatieve compensatie zijn. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger zelf. | Periode<br/>(hh:mm:ss) | Zelfafhankelijkheid: Ja<br/>Overig: Nee |
-| grootte | Grootte van het tumbling venster van de afhankelijkheid. Zorg voor een positieve tijdswaarde. Deze eigenschap is optioneel. | Periode<br/>(hh:mm:ss) | Nee  |
+| type  | Alle bestaande tumblingvenstertriggers-venster triggers worden weer gegeven in deze vervolg keuzelijst. Kies de trigger voor het maken van afhankelijkheden.  | TumblingWindowTriggerDependencyReference of SelfDependencyTumblingWindowTriggerReference | Ja |
+| offset | Verschuiving van de afhankelijkheids trigger. Geef een waarde op in de indeling van de tijd en zowel negatieve als positieve verschuivingen zijn toegestaan. Deze eigenschap is verplicht als de trigger afhankelijk is van zichzelf en in alle andere gevallen optioneel is. De Self-afhankelijkheid moet altijd een negatieve verschuiving zijn. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Periode<br/>(UU: mm: SS) | Zelf afhankelijkheid: Ja<br/>Overige: Nee |
+| grootte | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Periode<br/>(UU: mm: SS) | Nee  |
 
 > [!NOTE]
-> Een tuimelende venster trigger kan afhangen van een maximum van twee andere triggers.
+> Een trigger voor een tumblingvenstertriggers-venster kan afhankelijk zijn van een maximum van twee andere triggers.
 
-## <a name="tumbling-window-self-dependency-properties"></a>Zelfafhankelijkheidseigenschappen van tumbling window
+## <a name="tumbling-window-self-dependency-properties"></a>Eigenschappen van tumblingvenstertriggers-venster met eigen afhankelijkheid
 
-In scenario's waarin de trigger niet naar het volgende venster moet gaan totdat het vorige venster is voltooid, bouwt u een zelfafhankelijkheid. Een zelfafhankelijkheidstrigger die afhankelijk is van het succes van eerdere runs van zichzelf binnen de vorige hr, heeft de onderstaande eigenschappen:
+In scenario's waarin de trigger niet moet door gaan naar het volgende venster totdat het vorige venster is voltooid, bouwt u een self-afhankelijkheid. Een trigger voor zelf afhankelijkheid die afhankelijk is van het succes van eerdere versies van zichzelf in de vorige werk plaats, heeft de volgende eigenschappen:
 
 ```json
 {
@@ -120,52 +120,52 @@ In scenario's waarin de trigger niet naar het volgende venster moet gaan totdat 
     }
 }
 ```
-## <a name="usage-scenarios-and-examples"></a>Gebruiksscenario's en voorbeelden
+## <a name="usage-scenarios-and-examples"></a>Gebruiks scenario's en voor beelden
 
-Hieronder vindt u illustraties van scenario's en het gebruik van tumbling window dependency properties.
+Hieronder ziet u een aantal voor beelden van scenario's en het gebruik van eigenschappen van tumblingvenstertriggers-venster afhankelijkheid.
 
-### <a name="dependency-offset"></a>Afhankelijkheidsverschuiving
+### <a name="dependency-offset"></a>Offset van afhankelijkheid
 
-![Voorbeeld van verschuiving](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Voorbeeld van verschuiving")
+![Offset-voor beeld](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "Offset-voor beeld")
 
-### <a name="dependency-size"></a>Afhankelijkheidsgrootte
+### <a name="dependency-size"></a>Grootte van afhankelijkheid
 
-![Voorbeeld van grootte](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Voorbeeld van grootte")
+![Voor beeld van grootte](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Voor beeld van grootte")
 
-### <a name="self-dependency"></a>Zelfafhankelijkheid
+### <a name="self-dependency"></a>Zelf afhankelijkheid
 
-![Zelfafhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Zelfafhankelijkheid")
+![Zelf afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "Zelf afhankelijkheid")
 
-### <a name="dependency-on-another-tumbling-window-trigger"></a>Afhankelijkheid van een andere tuimelende venstertrigger
+### <a name="dependency-on-another-tumbling-window-trigger"></a>Afhankelijkheid van een andere tumblingvenstertriggers-venster trigger
 
-Een dagelijkse telemetrieverwerkingstaak, afhankelijk van een andere dagelijkse taak die de afgelopen zeven dagen uitvoer aggregeren en zeven dagen rollende vensterstromen genereert:
+Een dagelijkse telemetrie-verwerkings taak, afhankelijk van een andere dagelijkse taak waarmee de uitvoer van de laatste zeven dagen wordt geaggregeerd en die zeven dagen worden gegenereerd:
 
-![Voorbeeld van afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Voorbeeld van afhankelijkheid")
+![Voor beeld van afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Voor beeld van afhankelijkheid")
 
-### <a name="dependency-on-itself"></a>Afhankelijkheid van zichzelf
+### <a name="dependency-on-itself"></a>Afhankelijkheid op zichzelf
 
-Een dagelijkse taak zonder hiaten in de uitvoerstromen van de taak:
+Een dagelijkse taak zonder hiaten in de uitvoer stromen van de taak:
 
-![Voorbeeld van zelfafhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Voorbeeld van zelfafhankelijkheid")
+![Voor beeld van Self-afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Voor beeld van Self-afhankelijkheid")
 
-Bekijk de volgende video voor een demonstratie voor het maken van afhankelijke pijplijnen in uw Azure Data Factory met behulp van een tuimelvenstertrigger:
+Bekijk de volgende video voor een demonstratie van het maken van afhankelijke pijp lijnen in uw Azure Data Factory met behulp van de venster trigger voor tumblingvenstertriggers:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Afhankelijkheden controleren
 
-U de afhankelijkheidsketen en de bijbehorende vensters vanaf de monitorpagina triggerrun controleren. Navigeer naar **monitoring > triggerruns**. Onder de kolom Acties u de trigger opnieuw uitvoeren of de afhankelijkheden ervan weergeven.
+U kunt de afhankelijkheids keten en de bijbehorende Vensters bewaken vanaf de controle pagina voor het uitvoeren van triggers. Navigeer naar **bewaking > trigger uitvoeringen**. In de kolom acties kunt u de trigger opnieuw uitvoeren of de afhankelijkheden ervan weer geven.
 
 ![Triggeruitvoeringen controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Triggeruitvoeringen controleren")
 
-Als u op 'Afhankelijkheid van triggermaken weergeven' klikt, u de status van de afhankelijkheden zien. Als een van de afhankelijkheidstriggers mislukt, moet u deze opnieuw uitvoeren om de afhankelijke trigger uit te voeren. Een tuimelende venster trigger zal wachten op afhankelijkheden voor zeven dagen voordat de timing uit.
+Als u op trigger afhankelijkheden weer geven klikt, ziet u de status van de afhankelijkheden. Als een van de afhankelijkheids triggers mislukt, moet u deze opnieuw uitvoeren om de afhankelijke trigger uit te voeren. Een trigger voor een tumblingvenstertriggers-venster wacht op afhankelijkheden voor zeven dagen voordat een time-out optreedt.
 
 ![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Afhankelijkheden controleren")
 
-Selecteer de Gantt-weergave voor een meer visual om de gebruiksschema voor de trigger weer te geven.
+Als u een visueel element wilt weer geven, selecteert u de Gantt-weer gave.
 
 ![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Afhankelijkheden controleren")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijken [Hoe maak je een tuimelende venstertrigger](how-to-create-tumbling-window-trigger.md)
+* Lees [hoe u een tumblingvenstertriggers-venster trigger maakt](how-to-create-tumbling-window-trigger.md)

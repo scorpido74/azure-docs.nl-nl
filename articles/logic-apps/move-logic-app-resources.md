@@ -1,113 +1,113 @@
 ---
-title: Logische apps migreren tussen abonnementen, resourcegroepen of regio's
-description: Logische apps of integratieaccounts migreren naar andere Azure-abonnementen, resourcegroepen of locaties (regio's)
+title: Logische apps migreren tussen abonnementen, resource groepen of regio's
+description: Logische apps of integratie accounts migreren naar andere Azure-abonnementen, resource groepen of locaties (regio's)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878728"
 ---
-# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logische app-bronnen verplaatsen naar andere Azure-brongroepen, -regio's of -abonnementen
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logische app-resources verplaatsen naar andere Azure-resource groepen,-regio's of-abonnementen
 
-Als u uw logische app of gerelateerde resources wilt migreren naar een andere Azure-brongroep, -regio of -abonnement, u deze taken uitvoeren, zoals de Azure-portal, Azure PowerShell, Azure CLI en REST API. Voordat u resources verplaatst, controleert u de volgende overwegingen: 
+Als u uw logische app of gerelateerde resources wilt migreren naar een andere Azure-resource groep,-regio of-abonnement, hebt u verschillende manieren om deze taken uit te voeren, zoals de Azure Portal, Azure PowerShell, Azure CLI en REST API. Lees de volgende overwegingen voordat u resources verplaatst: 
 
-* U alleen [specifieke logische app-brontypen](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) verplaatsen tussen Azure-brongroepen of -abonnementen.
+* U kunt alleen [specifieke logische app-resource typen](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) verplaatsen tussen Azure-resource groepen of-abonnementen.
 
-* Controleer de [limieten](../logic-apps/logic-apps-limits-and-config.md) voor het aantal logische app-resources dat u hebben in uw Azure-abonnement en in elke Azure-regio. Deze limieten zijn van invloed op de vraag of u specifieke resourcetypen verplaatsen wanneer de regio hetzelfde blijft voor abonnementen of resourcegroepen. U bijvoorbeeld slechts één gratis laagintegratieaccount hebben voor elke Azure-regio in elk Azure-abonnement.
+* Controleer de [limieten](../logic-apps/logic-apps-limits-and-config.md) voor het aantal logische app-resources dat u kunt hebben in uw Azure-abonnement en in elke Azure-regio. Deze beperkingen bepalen of u specifieke resource typen kunt verplaatsen wanneer de regio hetzelfde blijft in abonnementen of resource groepen. U kunt bijvoorbeeld slechts één integratie account voor de gratis laag hebben voor elke Azure-regio in elk Azure-abonnement.
 
-* Wanneer u resources verplaatst, maakt Azure nieuwe bron-id's. Zorg er dus voor dat u de nieuwe id's gebruikt en werk alle scripts of hulpprogramma's bij die zijn gekoppeld aan de verplaatste resources.
+* Wanneer u resources verplaatst, worden er nieuwe resource-Id's gemaakt door Azure. Zorg er daarom voor dat u de nieuwe Id's gebruikt en eventuele scripts of hulpprogram ma's die aan de verplaatste resources zijn gekoppeld, bijwerkt.
 
-* Nadat u logische apps hebt gemigreerd tussen abonnementen, resourcegroepen of regio's, moet u alle verbindingen die Open Authentication (OAuth) vereisen opnieuw maken of opnieuw autoriseren.
+* Nadat u logische apps hebt gemigreerd tussen abonnementen, resource groepen of regio's, moet u alle verbindingen waarvoor open verificatie (OAuth) vereist is, opnieuw maken of autoriseren.
 
-* U een [ise -integratieserviceomgeving](connect-virtual-network-vnet-isolated-environment-overview.md) alleen verplaatsen naar een andere resourcegroep die in dezelfde Azure-regio of Azure-abonnement bestaat. U een ISE niet verplaatsen naar een resourcegroep die bestaat in een andere Azure-regio of Azure-abonnement. Ook moet u na een dergelijke verplaatsing alle verwijzingen naar de ISE bijwerken in uw logica-app-werkstromen, integratieaccounts, verbindingen, enzovoort.
+* U kunt een [Integration service-omgeving (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) alleen verplaatsen naar een andere resource groep die bestaat in dezelfde Azure-regio of Azure-abonnement. U kunt een ISE niet verplaatsen naar een resource groep die bestaat in een andere Azure-regio of een Azure-abonnement. Na een dergelijke verplaatsing moet u ook alle verwijzingen naar de ISE bijwerken in uw logische app-werk stromen, integratie accounts, verbindingen, enzovoort.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Hetzelfde Azure-abonnement dat is gebruikt om de logische app of het integratieaccount te maken dat u wilt verplaatsen
+* Hetzelfde Azure-abonnement dat is gebruikt voor het maken van de logische app of het integratie account dat u wilt verplaatsen
 
-* Machtigingen voor resource-eigenaren om de gewenste resources te verplaatsen en in te stellen. Meer informatie over [op rollen gebaseerd toegangscontrole (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Resource-eigenaar machtigingen om de gewenste resources te verplaatsen en in te stellen. Meer informatie over [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 
 ## <a name="move-resources-between-subscriptions"></a>Resources verplaatsen van het ene naar het andere abonnement
 
-Als u een bron, zoals een logische app of integratieaccount, wilt verplaatsen naar een ander Azure-abonnement, u de Azure-portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen hebben betrekking op de Azure-portal, die u gebruiken wanneer de regio van de resource hetzelfde blijft. Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement voor](../azure-resource-manager/management/move-resource-group-and-subscription.md)andere stappen en algemene voorbereiding.
+Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een ander Azure-abonnement, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor andere stappen en algemene voor bereiding.
 
-1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com)de logische app-bron die u wilt verplaatsen.
+1. Zoek in het [Azure Portal](https://portal.azure.com)de logische app-resource die u wilt verplaatsen en selecteer deze.
 
-1. Selecteer op de pagina **Overzicht** van de bron naast **Abonnement**de koppeling **Wijzigen.**
+1. Op de **overzichts** pagina van de resource, naast **abonnement**, selecteert u de **wijzigings** koppeling.
 
-1. Selecteer op de pagina **Resources verplaatsen** de bron van de logische app en de bijbehorende bronnen die u wilt verplaatsen.
+1. Selecteer op de pagina **resources verplaatsen** de logische app-resource en eventuele gerelateerde resources die u wilt verplaatsen.
 
-1. Selecteer **in** de lijst Abonnement het bestemmingsabonnement.
+1. Selecteer in de lijst **abonnement** het doel abonnement.
 
-1. Selecteer in de lijst **Resourcegroep** de groep doelbron. Als u een andere resourcegroep wilt maken, selecteert u **Een nieuwe groep maken**.
+1. Selecteer de doel resource groep in de lijst **resource groep** . Als u een andere resource groep wilt maken, selecteert u **een nieuwe groep maken**.
 
-1. Als u wilt bevestigen dat scripts of hulpprogramma's die zijn gekoppeld aan de verplaatste resources niet werken totdat u ze hebt bijgewerkt met de nieuwe bron-id's, selecteert u het bevestigingsvak en selecteert u **OK**.
+1. Als u wilt weten dat scripts of hulpprogram ma's die zijn gekoppeld aan de verplaatste resources, niet werken totdat u ze bijwerkt met de nieuwe resource-Id's, selecteert u het bevestigings venster en selecteert u **OK**.
 
 <a name="move-resource-group"></a>
 
-## <a name="move-resources-between-resource-groups"></a>Resources verplaatsen tussen resourcegroepen
+## <a name="move-resources-between-resource-groups"></a>Resources verplaatsen tussen resource groepen
 
-Als u een bron, zoals een logic-app, integratieaccount of [integratieserviceomgeving (ISE),](connect-virtual-network-vnet-isolated-environment-overview.md)wilt verplaatsen naar een andere Azure-brongroep, u de Azure-portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen hebben betrekking op de Azure-portal, die u gebruiken wanneer de regio van de resource hetzelfde blijft. Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement voor](../azure-resource-manager/management/move-resource-group-and-subscription.md)andere stappen en algemene voorbereiding.
+Als u een resource, zoals een logische app, een integratie account of een [integratie service omgeving (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md), wilt verplaatsen naar een andere Azure-resource groep, kunt u de Azure Portal, Azure PowerShell, Azure CLI of rest API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor andere stappen en algemene voor bereiding.
 
-Voordat u resources daadwerkelijk tussen groepen verplaatst, u testen of u uw resource naar een andere groep verplaatsen. Zie [Uw verhuizing valideren](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)voor meer informatie .
+Voordat u resources tussen groepen verplaatst, kunt u testen of u uw resource kunt verplaatsen naar een andere groep. Zie [uw verhuizing valideren](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)voor meer informatie.
 
-1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com)de logische app-bron die u wilt verplaatsen.
+1. Zoek in het [Azure Portal](https://portal.azure.com)de logische app-resource die u wilt verplaatsen en selecteer deze.
 
-1. Selecteer op de pagina **Overzicht** van de resource naast **de groep Resource**de koppeling **Wijzigen.**
+1. Selecteer op de **overzichts** pagina van de resource naast **resource groep**de **wijzigings** koppeling.
 
-1. Selecteer op de pagina **Resources verplaatsen** de bron van de logische app en de bijbehorende bronnen die u wilt verplaatsen.
+1. Selecteer op de pagina **resources verplaatsen** de logische app-resource en eventuele gerelateerde resources die u wilt verplaatsen.
 
-1. Selecteer in de lijst **Resourcegroep** de groep doelbron. Als u een andere resourcegroep wilt maken, selecteert u **Een nieuwe groep maken**.
+1. Selecteer de doel resource groep in de lijst **resource groep** . Als u een andere resource groep wilt maken, selecteert u **een nieuwe groep maken**.
 
-1. Als u wilt bevestigen dat scripts of hulpprogramma's die zijn gekoppeld aan de verplaatste resources niet werken totdat u ze hebt bijgewerkt met de nieuwe bron-id's, selecteert u het bevestigingsvak en selecteert u **OK**.
+1. Als u wilt weten dat scripts of hulpprogram ma's die zijn gekoppeld aan de verplaatste resources, niet werken totdat u ze bijwerkt met de nieuwe resource-Id's, selecteert u het bevestigings venster en selecteert u **OK**.
 
 <a name="move-location"></a>
 
 ## <a name="move-resources-between-regions"></a>Resources verplaatsen tussen regio's
 
-Wanneer u een logische app naar een andere regio wilt verplaatsen, zijn uw opties afhankelijk van de manier waarop u uw logische app hebt gemaakt. Op basis van de optie die u kiest, moet u de verbindingen in uw logische app opnieuw maken of opnieuw autoriseren.
+Wanneer u een logische app naar een andere regio wilt verplaatsen, zijn uw opties afhankelijk van de manier waarop u uw logische app hebt gemaakt. Op basis van de optie die u kiest, moet u de verbindingen in uw logische app opnieuw maken of autoriseren.
 
-* Maak in de Azure-portal de logische app opnieuw in het nieuwe gebied en configureer de werkstroominstellingen opnieuw. Om tijd te besparen, u de onderliggende werkstroomdefinitie en -verbindingen kopiëren van de bron-app naar de doel-app. Als u de 'code' achter een logische app wilt weergeven, selecteert u op de werkbalk Logic App Designer de **codeweergave**.
+* In de Azure Portal maakt u de logische app opnieuw in de nieuwe regio en configureert u de werk stroom instellingen opnieuw. Om tijd te besparen, kunt u de onderliggende werk stroom definitie en verbindingen van de bron-app kopiëren naar de doel-app. Als u de ' code ' achter een logische app wilt weer geven, selecteert u in de werk balk van de Logic app-ontwerp functie de **code weergave**.
 
-* Door Visual Studio en de Azure Logic Apps Tools for Visual Studio te gebruiken, u [uw logische app openen en downloaden](../logic-apps/manage-logic-apps-with-visual-studio.md) vanuit de Azure-portal als azure resource [manager-sjabloon.](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) Deze sjabloon is grotendeels klaar voor implementatie en bevat de brondefinities voor uw logische app, inclusief de werkstroom zelf en verbindingen. De sjabloon declareert ook parameters voor de waarden die moeten worden gebruikt bij implementatie. Op die manier u gemakkelijker wijzigen waar en hoe u de logische app implementeert, op basis van uw behoeften. Als u de locatie en andere benodigde informatie voor implementatie wilt opgeven, u een afzonderlijk parametersbestand gebruiken.
+* Met Visual Studio en de Azure Logic Apps-Hulpprogram Ma's voor Visual Studio kunt u [uw logische app openen en downloaden](../logic-apps/manage-logic-apps-with-visual-studio.md) vanuit de Azure portal als een [Azure Resource Manager-sjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md). Deze sjabloon is voornamelijk gereed voor implementatie en bevat de resource definities voor uw logische app, inclusief de werk stroom zelf en verbindingen. De sjabloon declareert ook para meters voor de waarden die tijdens de implementatie moeten worden gebruikt. Op die manier kunt u gemakkelijker wijzigen waar en hoe u de logische app implementeert, op basis van uw behoeften. Als u de locatie en andere benodigde informatie voor de implementatie wilt opgeven, kunt u een afzonderlijk parameter bestand gebruiken.
 
-* Als u uw logische app hebt gemaakt en geïmplementeerd met behulp van hulpprogramma's voor continue integratie (CI) en cd's voor continue levering, zoals Azure Pipelines in Azure DevOps, u uw app met behulp van deze hulpprogramma's naar een andere regio implementeren.
+* Als u uw logische app hebt gemaakt en geïmplementeerd met behulp van doorlopende integratie (CI) en continue levering (CD)-hulpprogram ma's, zoals Azure-pijp lijnen in azure DevOps, kunt u uw app implementeren in een andere regio met behulp van deze hulpprogram ma's.
 
-Zie de volgende onderwerpen voor meer informatie over implementatiesjablonen voor logische apps:
+Zie de volgende onderwerpen voor meer informatie over implementatie sjablonen voor Logic apps:
 
-* [Overzicht: Implementatie voor Azure Logic Apps automatiseren met Azure Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [Uw logische app zoeken, openen en downloaden vanuit de Azure-portal naar Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
-* [Azure Resource Manager-sjablonen maken voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Resource Manager-sjablonen implementeren voor Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Uw logische app zoeken, openen en downloaden van de Azure Portal in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+* [Azure Resource Manager sjablonen maken voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Azure Resource Manager sjablonen voor Azure Logic Apps implementeren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
 ### <a name="related-resources"></a>Gerelateerde resources
 
-Sommige Azure-bronnen, zoals on-premises gegevensgatewaybronnen in Azure, kunnen bestaan in een regio die verschilt van de logische apps die deze bronnen gebruiken. Andere Azure-bronnen, zoals gekoppelde integratieaccounts, moeten echter in dezelfde regio bestaan als uw logische apps. Zorg er op basis van uw scenario voor dat uw logische apps toegang hebben tot de bronnen waarvan uw apps verwachten dat ze in dezelfde regio bestaan.
+Sommige Azure-resources, zoals on-premises gegevens gateway resources in azure, kunnen bestaan in een regio die verschilt van de Logic apps die gebruikmaken van deze resources. Andere Azure-resources, zoals gekoppelde integratie accounts, moeten zich echter in dezelfde regio bevinden als uw logische apps. Zorg er op basis van uw scenario voor dat uw Logic apps toegang hebben tot de resources die door uw apps in dezelfde regio worden verwacht.
 
-Als u bijvoorbeeld een logische app wilt koppelen aan een integratieaccount, moeten beide bronnen in dezelfde regio bestaan. In scenario's zoals disaster recovery wilt u meestal integratieaccounts met dezelfde configuratie en artefacten. In andere scenario's hebt u mogelijk integratieaccounts nodig met verschillende configuraties en artefacten.
+Als u bijvoorbeeld een logische app wilt koppelen aan een integratie account, moeten beide resources zich in dezelfde regio bevinden. In scenario's als herstel na nood gevallen wilt u doorgaans integratie accounts met dezelfde configuratie en artefacten. In andere scenario's hebt u mogelijk integratie accounts met verschillende configuraties en artefacten nodig.
 
-Aangepaste connectors in Azure Logic Apps zijn zichtbaar voor de auteurs en gebruikers van de connectors die hetzelfde Azure-abonnement en dezelfde Azure Active Directory-tenant hebben. Deze connectors zijn beschikbaar in hetzelfde gebied waar logische apps worden geïmplementeerd. Zie voor meer informatie [Share custom connectors in your organization](https://docs.microsoft.com/connectors/custom-connectors/share) (Aangepaste connectors delen in uw organisatie).
+Aangepaste connectors in Azure Logic Apps zijn zichtbaar voor de auteurs van de connectors en gebruikers die hetzelfde Azure-abonnement hebben en dezelfde Azure Active Directory Tenant. Deze connectors zijn beschikbaar in dezelfde regio waar Logic apps worden geïmplementeerd. Zie voor meer informatie [Share custom connectors in your organization](https://docs.microsoft.com/connectors/custom-connectors/share) (Aangepaste connectors delen in uw organisatie).
 
-De sjabloon die u van Visual Studio krijgt, bevat alleen de brondefinities voor uw logische app en de bijbehorende verbindingen. Als uw logica-app dus andere bronnen gebruikt, bijvoorbeeld een integratieaccount en B2B-artefacten, zoals partners, overeenkomsten en schema's, moet u de sjabloon van dat integratieaccount exporteren met behulp van de Azure-portal. Deze sjabloon bevat de brondefinities voor zowel het integratieaccount als de artefacten. De sjabloon is echter niet volledig geparameteriseerd. U moet dus handmatig de waarden parameteriseren die u wilt gebruiken voor implementatie.
+De sjabloon die u in Visual Studio krijgt, bevat alleen de resource definities voor uw logische app en de bijbehorende verbindingen. Als uw logische app bijvoorbeeld gebruikmaakt van andere resources, zoals een integratie account en B2B-artefacten, zoals partners, overeenkomsten en schema's, moet u de sjabloon van dat integratie account exporteren met behulp van de Azure Portal. Deze sjabloon bevat de resource definities voor het integratie account en de artefacten. De sjabloon heeft echter geen volledige para meters. Daarom moet u de waarden die u wilt gebruiken voor implementatie hand matig para meters.
 
-### <a name="export-templates-for-integration-accounts"></a>Sjablonen exporteren voor integratieaccounts
+### <a name="export-templates-for-integration-accounts"></a>Sjablonen voor integratie accounts exporteren
 
-1. Zoek en open uw integratieaccount in de [Azure-portal.](https://portal.azure.com)
+1. Zoek en open uw integratie account in de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het menu van uw integratieaccount onder **Instellingen**de optie **Sjabloon Exporteren**.
+1. Selecteer in het menu van het integratie account onder **instellingen**de optie **sjabloon exporteren**.
 
-1. Selecteer op de werkbalk **Downloaden**en sla de sjabloon op.
+1. Selecteer op de werk balk de optie **downloaden**en sla de sjabloon op.
 
-1. Open en bewerk de sjabloon om de benodigde waarden voor implementatie te parameteriseren.
+1. Open en bewerk de sjabloon om de vereiste waarden voor de implementatie te para meters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure-bronnen verplaatsen naar nieuwe brongroepen of -abonnementen](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+[Azure-resources verplaatsen naar nieuwe resource groepen of-abonnementen](../azure-resource-manager/management/move-resource-group-and-subscription.md)
