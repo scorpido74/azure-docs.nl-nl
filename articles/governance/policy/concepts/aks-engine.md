@@ -1,41 +1,41 @@
 ---
-title: Meer informatie over Azure-beleid voor AKS-engine
-description: Lees hoe Azure Policy CustomResourceDefinitions en Open Policy Agent van Gatekeeper v3 gebruikt om clusters met AKS Engine te beheren.
+title: Azure Policy voor AKS-engine leren
+description: Meer informatie over hoe Azure Policy CustomResourceDefinitions gebruikt en de beleids agent van Gate v3 kunt openen om clusters met AKS-engine te beheren.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436431"
 ---
-# <a name="understand-azure-policy-for-aks-engine"></a>Azure-beleid voor AKS-engine begrijpen
+# <a name="understand-azure-policy-for-aks-engine"></a>Azure Policy voor AKS-engine begrijpen
 
-Azure Policy integreert met [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md), een systeem dat handige tooling biedt om snel een zelfbeheerd Kubernetes-cluster op Azure op te start zetten. Deze integratie maakt op grote schaal handhavingen en beveiligingen op uw AKS Engine zelfbeheerde clusters op een gecentraliseerde, consistente manier mogelijk. Door het gebruik van [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (bèta), een _webhook_ voor Kubernetes, te uitbreiden, maakt Azure Policy het mogelijk om de nalevingsstatus van uw Azure-resources en AKS Engine zelfbeheerde clusters vanaf één plek te beheren en te rapporteren.
+Azure Policy integreert met de [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md), een systeem dat handige hulp middelen biedt om snel een zelf beheerd Kubernetes-cluster in azure te Boots trappen. Dankzij deze integratie kunnen op een gecentraliseerde, consistente manier afdwingingen en beveiliging op uw eigen beheerde clusters van de AKS-engine worden uitgebreid. Door het gebruik van [Open Policy Agent](https://www.openpolicyagent.org/) (opa) [gate keeper](https://github.com/open-policy-agent/gatekeeper) v3 (bèta), een _toegangs controller webhook_ voor Kubernetes te verlengen, kunt Azure Policy de nalevings status van uw Azure-resources en AKS engine-eigen beheerde clusters van één locatie beheren en rapporteren.
 
 > [!NOTE]
-> Azure Policy for AKS Engine staat in Public Preview en heeft geen SLA. Gatekeeper v3 is in Beta en wordt ondersteund door de open source gemeenschap. De service ondersteunt alleen ingebouwde beleidsdefinities en één AKS Engine-cluster voor elke resourcegroep die is geconfigureerd met een Service Principal.
+> Azure Policy voor de AKS-engine bevindt zich in de open bare preview en heeft geen SLA. Gate keeper v3 is een bèta versie en wordt ondersteund door de open source-community. De service ondersteunt alleen ingebouwde beleids definities en één AKS engine-cluster voor elke resource groep die is geconfigureerd met een service-principal.
 
 > [!IMPORTANT]
-> Als u ondersteuning wilt krijgen voor Azure Policy voor AKS Engine, AKS Engine of Gatekeeper v3, maakt u een [nieuw probleem](https://github.com/Azure/aks-engine/issues/new/choose) in de AKS Engine GitHub-opslagplaats.
+> Als u ondersteuning voor Azure Policy voor de AKS-engine, AKS-Engine of gate keeper v3 wilt krijgen, maakt u een [nieuw probleem](https://github.com/Azure/aks-engine/issues/new/choose) in de AKS engine github-opslag plaats.
 
 ## <a name="overview"></a>Overzicht
 
-Ga als volgt te werk om Azure Policy for AKS Engine in te schakelen en te gebruiken met uw zelfbeheerde Kubernetes-cluster op Azure:
+Voer de volgende acties uit om Azure Policy voor de AKS-engine met uw zelf-beheerde Kubernetes-cluster in Azure in te scha kelen en te gebruiken:
 
 - [Vereisten](#prerequisites)
-- [De azure-beleidsinvoegtoepassing installeren](#installing-the-add-on)
-- [Een beleidsdefinitie toewijzen voor AKS Engine](#built-in-policies)
+- [De Azure Policy-invoeg toepassing installeren](#installing-the-add-on)
+- [Een beleids definitie voor de AKS-engine toewijzen](#built-in-policies)
 - [Wachten op validatie](#validation-and-reporting-frequency)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de Azure Policy Add-on installeert of een van de servicefuncties inschakelt, moet uw abonnement de **microsoft.PolicyInsights-bronprovider** inschakelen en een roltoewijzing maken voor de hoofdsom van de clusterservice. 
+Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource provider **micro soft. PolicyInsights** inschakelen en een roltoewijzing maken voor de Cluster-service-principal. 
 
-1. Als u de resourceprovider wilt inschakelen, voert u de stappen in [resourceproviders en -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) uit of voert u de opdracht Azure CLI of Azure PowerShell uit:
+1. Als u de resource provider wilt inschakelen, volgt u de stappen in [resource providers en typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) of voert u de Azure CLI-of Azure PowerShell opdracht uit:
 
-   - Azure-CLI
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -53,9 +53,9 @@ Voordat u de Azure Policy Add-on installeert of een van de servicefuncties insch
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
 
-1. Een roltoewijzing maken voor de hoofdsom van de clusterservice
+1. Een roltoewijzing maken voor de service-principal van het cluster
 
-   - Als u de hoofd-app-id van de clusterserviceservice niet kent, zoekt u deze op met de volgende opdracht.
+   - Als u de App-ID van de Cluster-service-principal niet weet, kunt u deze bekijken met de volgende opdracht.
 
      ```bash
      # Get the kube-apiserver pod name
@@ -65,28 +65,28 @@ Voordat u de Azure Policy Add-on installeert of een van de servicefuncties insch
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
 
-   - Toewijzing 'Beleidsinsights Data Writer (Preview)' toewijzen aan de hoofdapp-id van de clusterservice (waarde _aadClientID_ van vorige stap) met Azure CLI. Vervang `<subscriptionId>` door uw `<aks engine cluster resource group>` abonnements-ID en met de brongroep bevindt het zelfbeheerde Kubernetes-cluster van AKS Engine zich.
+   - Wijs de roltoewijzing ' policy Insights Data Writer (preview) ' toe aan de App-ID van de Cluster-service-principal (waarde _aadClientID_ uit de vorige stap) met Azure cli. Vervang `<subscriptionId>` door uw abonnements-id `<aks engine cluster resource group>` en de resource groep waarin het zelf beheerde Kubernetes-cluster van de AKS-engine zich bevindt.
 
      ```azurecli-interactive
      az role assignment create --assignee <cluster service principal app ID> --scope "/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>" --role "Policy Insights Data Writer (Preview)"
      ```
 
-## <a name="azure-policy-add-on"></a>Azure-beleidsinvoegtoepassing
+## <a name="azure-policy-add-on"></a>Invoeg toepassing Azure Policy
 
-De _Azure Policy Add-on_ voor Kubernetes verbindt de Azure Policy-service met de gatekeeper-toegangscontroller. De add-on, die is geïnstalleerd in de naamruimte van het _kube-systeem,_ voert de volgende functies uit:
+De _Azure Policy-invoeg toepassing_ voor Kubernetes verbindt de Azure Policy-service met de gate keeper Admission controller. De invoeg toepassing, die in de _uitvoeren-_ naam ruimte wordt geïnstalleerd, wordt voorzien van de volgende functies:
 
-- Controleert met Azure Policy voor toewijzingen aan het AKS Engine-cluster
-- Beleidsdetails, beperkingssjablonen en beperkingen downloaden en installeren
-- Voert een volledige scancompliancecontrole uit op het AKS Engine-cluster
-- Rapporten over controle- en nalevingsgegevens terug naar Azure-beleid
+- Controleert met Azure Policy voor toewijzingen aan het AKS-engine-cluster
+- Hiermee worden beleids Details, beperkings sjablonen en beperkingen gedownload en geïnstalleerd
+- Hiermee wordt een volledige controle op de naleving van het AKS-engine-cluster uitgevoerd
+- Rapporteert controle-en nalevings details terug naar Azure Policy
 
-### <a name="installing-the-add-on"></a>De invoegtoepassing installeren
+### <a name="installing-the-add-on"></a>De invoeg toepassing installeren
 
-Zodra de vereisten zijn voltooid, kan de Azure Policy Add-on worden geïnstalleerd. De installatie kan worden tijdens het maken of bijwerken cyclus van een AKS Engine of als een onafhankelijke actie op een bestaand cluster.
+Zodra de vereisten zijn voltooid, kan de invoeg toepassing Azure Policy worden geïnstalleerd. De installatie kan worden uitgevoerd tijdens het maken of bijwerken van een AKS-Engine of als onafhankelijke actie op een bestaand cluster.
 
-- Installeren tijdens de maak- of updatecyclus
+- Installeren tijdens maken of bijwerken van cyclus
 
-  Als u de Azure Policy Add-on wilt inschakelen tijdens het maken van een nieuw zelfbeheerd cluster of als een update voor een bestaand cluster, moet u de clusterdefinitie **van addons-eigenschap** voor AKS-engine opnemen.
+  Als u de invoeg toepassing Azure Policy wilt inschakelen tijdens het maken van een nieuw zelf beheerd cluster of als een update van een bestaand cluster, neemt u de eigenschap **Addons** cluster definition voor de AKS-engine op.
 
   ```json
   "addons": [{
@@ -99,98 +99,98 @@ Zodra de vereisten zijn voltooid, kan de Azure Policy Add-on worden geïnstallee
   }]
   ```
 
-  Zie de clusterdefinitie van de externe handleiding [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)voor meer informatie.
+  Zie voor meer informatie over de externe hand leiding [AKS engine-cluster definitie](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
 
-- Installeren in bestaand cluster met Helmdiagrammen
+- Installeren in een bestaand cluster met helm-grafieken
 
-  Gebruik de volgende stappen om het cluster voor te bereiden en de invoegtoepassing te installeren:
+  Gebruik de volgende stappen om het cluster voor te bereiden en de invoeg toepassing te installeren:
 
-  1. Installeer Gatekeeper in de naamruimte van het _poortwachterssysteem._
+  1. Gate keeper installeren op de _gate keeper-systeem_ naam ruimte.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
-  1. Voeg _het label van het besturingsvlak_ toe aan het _kube-systeem_. Dit label sluit de controle van _kube-system_ pods en services door Gatekeeper en de Azure Policy Add-on uit.
+  1. Voeg een _besturings element-vlak_ label toe aan _uitvoeren-System_. Dit label sluit de controle uit van _uitvoeren-systeem en-_ Services door gate keeper en de Azure Policy-invoeg toepassing.
 
      ```bash
      kubectl label namespaces kube-system control-plane=controller-manager
      ```
 
-  1. Synchroniseer Kubernetes-gegevens (Namespace, Pod, Ingress, Service) met OPA.
+  1. Synchroniseer Kubernetes-gegevens (naam ruimte, Pod, ingangs punt, service) met OPA.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/gatekeeper-opa-sync.yaml
      ```
 
-     Zie [OPA - Gegevens repliceren](https://github.com/open-policy-agent/gatekeeper#replicating-data)voor meer informatie.
+     Zie [opa-gegevens repliceren](https://github.com/open-policy-agent/gatekeeper#replicating-data)voor meer informatie.
 
-  1. Voeg de repo azure-beleid toe aan Helm.
+  1. Voeg de Azure Policy opslag plaats toe aan helm.
 
      ```bash
      helm repo add azure-policy https://raw.githubusercontent.com/Azure/azure-policy/master/extensions/policy-addon-kubernetes/helm-charts
      ```
 
-     Zie [Helm Chart - Quickstart Guide](https://helm.sh/docs/using_helm/#quickstart-guide)voor meer informatie.
+     Zie [helm Chart-Quick Start Guide (Engelstalig](https://helm.sh/docs/using_helm/#quickstart-guide)) voor meer informatie.
 
-  1. Installeer de add-on met een Helm-diagram. Vervang `<subscriptionId>` door uw `<aks engine cluster resource group>` abonnements-ID en met de brongroep bevindt het zelfbeheerde Kubernetes-cluster van AKS Engine zich.
+  1. Installeer de invoeg toepassing met een helm-grafiek. Vervang `<subscriptionId>` door uw abonnements-id `<aks engine cluster resource group>` en de resource groep waarin het zelf beheerde Kubernetes-cluster van de AKS-engine zich bevindt.
 
      ```bash
      helm install azure-policy/azure-policy-addon-aks-engine --name azure-policy-addon --set azurepolicy.env.resourceid="/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>"
      ```
 
-     Zie de definitie van [Azure Policy Add-on Helm Chart](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) op GitHub voor meer informatie over wat de add-on Helm Chart installeert.
+     Voor meer informatie over de installatie van de add-on helm-grafiek, zie de [grafiek definitie van de helm-invoeg toepassing Azure Policy](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) op github.
 
      > [!NOTE]
-     > Vanwege de relatie tussen Azure Policy Add-on en de resourcegroup id ondersteunt Azure Policy slechts één AKS Engine-cluster voor elke brongroep.
+     > Als gevolg van de relatie tussen Azure Policy invoeg toepassing en de resource groep-ID Azure Policy ondersteunt slechts één AKS-engine cluster voor elke resource groep.
 
-Als u wilt valideren of de installatie met invoegtoepassing is geslaagd en dat de _azure-beleidspod_ wordt uitgevoerd, voert u de volgende opdracht uit:
+Voer de volgende opdracht uit om te controleren of de installatie van de invoeg toepassing is geslaagd en dat de pod van het _Azure-beleid_ wordt uitgevoerd:
 
 ```bash
 kubectl get pods -n kube-system
 ```
 
-### <a name="validation-and-reporting-frequency"></a>Validatie- en rapportagefrequentie
+### <a name="validation-and-reporting-frequency"></a>Validatie-en rapportage frequentie
 
-De add-on controleert elke 5 minuten bij Azure Policy op wijzigingen in beleidstoewijzingen. Tijdens deze vernieuwingscyclus controleert de add-on op wijzigingen. Deze wijzigingen leiden tot het maken, bijwerken of verwijderen van de beperkingssjablonen en -beperkingen.
+De invoeg toepassing controleert met Azure Policy op wijzigingen in beleids toewijzingen om de vijf minuten. Tijdens deze vernieuwings cyclus controleert de invoeg toepassing op wijzigingen. Met deze wijzigingen trigger worden de beperkings sjablonen en-beperkingen gemaakt, bijgewerkt of verwijderd.
 
 > [!NOTE]
-> Hoewel een _clusterbeheerder_ mogelijk toestemming heeft om wijzigingen aan te brengen in beperkingssjablonen en -beperkingen, wordt dit niet aanbevolen of ondersteund om wijzigingen aan te brengen in beperkingssjablonen of beperkingen die zijn gemaakt door Azure Policy. Handmatige wijzigingen gaan verloren tijdens de vernieuwingscyclus.
+> Hoewel een _cluster beheerder_ gemachtigd is om wijzigingen aan te brengen in beperkings sjablonen en-beperkingen, wordt het niet aanbevolen of wordt deze niet ondersteund voor het aanbrengen van wijzigingen in beperkings sjablonen of beperkingen die zijn gemaakt door Azure Policy. Hand matige wijzigingen die zijn aangebracht, gaan verloren tijdens de vernieuwings cyclus.
 
-Elke 5 minuten, de add-on oproepen voor een volledige scan van het cluster. Nadat de add-on details van de volledige scan en eventuele real-time evaluaties door Gatekeeper van pogingen tot wijzigingen in het cluster hebben verzameld, rapporteert de add-on de resultaten terug naar Azure Policy voor opname in [nalevingsgegevens](../how-to/get-compliance-data.md) zoals elke Azure-beleidstoewijzing. Alleen resultaten voor actieve beleidsopdrachten worden geretourneerd tijdens de auditcyclus. Controleresultaten kunnen ook worden gezien als schendingen die worden vermeld in het statusveld van de mislukte beperking.
+Elke 5 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan van het cluster. Na het verzamelen van Details van de volledige scan en eventuele realtime-evaluaties door gate keeper van pogingen om wijzigingen aan te brengen in het cluster, worden de resultaten weer gegeven in Azure Policy om te worden opgenomen in [compatibiliteits Details](../how-to/get-compliance-data.md) zoals een Azure Policy toewijzing. Er worden alleen resultaten voor actieve beleids toewijzingen geretourneerd tijdens de controle cyclus. Controle resultaten kunnen ook worden gezien als schendingen die worden vermeld in het veld status van de beperking mislukt.
 
-## <a name="policy-language"></a>Beleidstaal
+## <a name="policy-language"></a>Beleids taal
 
-De taalstructuur azure-beleid voor het beheren van AKS Engine volgt die van bestaand beleid. Het effect _EnforceOPAConstraint_ wordt gebruikt om uw AKS Engine-clusters te beheren en neemt _details eigenschappen_ die specifiek zijn voor het werken met [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) en Gatekeeper v3. Zie het effect [Afdwingen opAConstraint](effects.md#enforceopaconstraint) voor meer informatie en voorbeelden.
+De Azure Policy taal structuur voor het beheren van de AKS-engine volgt de bestaande beleids regels. Het effect _EnforceOPAConstraint_ wordt gebruikt om uw AKS-engine clusters te beheren en bevat _gedetailleerde_ eigenschappen die specifiek zijn voor het werken met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) en gate keeper v3. Zie het effect [EnforceOPAConstraint](effects.md#enforceopaconstraint) voor meer informatie en voor beelden.
 
-Als onderdeel van de _details.constraintTemplate_ en _details.constraint_ eigenschappen in de beleidsdefinitie, geeft Azure Policy de URI's van deze [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) door aan de add-on. Rego is de taal die OPA en Gatekeeper ondersteunen om een aanvraag voor het Kubernetes-cluster te valideren. Door een bestaande standaard voor Kubernetes-beheer te ondersteunen, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage-ervaring voor cloudcompliance. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)voor meer informatie.
+Als onderdeel van de eigenschappen _Details. constraintTemplate_ en _Details. CONSTRAINT_ in de beleids definitie Azure Policy door gegeven de uri's van deze [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) naar de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)voor meer informatie.
 
 ## <a name="built-in-policies"></a>Ingebouwd beleid
 
-Voer de volgende stappen uit om het ingebouwde beleid voor het beheren van uw AKS Engine-cluster te vinden met behulp van de Azure-portal:
+Ga als volgt te werk om het ingebouwde beleid voor het beheren van uw AKS engine-cluster te vinden met behulp van de Azure Portal:
 
-1. Start de Azure Policy-service in de Azure-portal. Selecteer **Alle services** in het linkerdeelvenster en zoek en selecteer **Beleid**.
+1. Start de Azure Policy-service in de Azure Portal. Selecteer **alle services** in het linkerdeel venster en zoek en selecteer vervolgens **beleid**.
 
-1. Selecteer **Definities**in het linkerdeelvenster van de pagina Azure Policy .
+1. Selecteer in het linkerdeel venster van de pagina Azure Policy **definities**.
 
-1. Gebruik alles **selecteren** om het filter te wissen en selecteer Kubernetes in de vervolgkeuzelijst **Categorie.**
+1. Gebruik in de vervolg keuzelijst Categorie de **optie Alles selecteren** om het filter te wissen en selecteer vervolgens **Kubernetes**.
 
-1. Selecteer de beleidsdefinitie en selecteer vervolgens de knop **Toewijzen.**
+1. Selecteer de beleids definitie en selecteer vervolgens de knop **toewijzen** .
 
 > [!NOTE]
-> Wanneer u het Azure-beleid voor DE-engine-definitie toewijst, moet het **bereik** de brongroep van het AKS-engine-cluster zijn.
+> Bij het toewijzen van de Azure Policy voor de AKS-engine definitie moet het **bereik** de resource groep van het AKS-engine-cluster zijn.
 
-U afwisselend het [beleid toewijzen : Snel](../assign-policy-portal.md) start Portal om een AKS-enginebeleid te zoeken en toe te wijzen. Zoek naar een AKS Engine-beleidsdefinitie in plaats van de voorbeeld 'audit vms'.
+U kunt ook de Snelstartgids [een beleid toewijzen-Portal](../assign-policy-portal.md) gebruiken om een AKS-engine beleid te zoeken en toe te wijzen. Zoek in plaats van het voor beeld ' vm's controleren ' naar een beleids definitie van een AKS-engine.
 
 > [!IMPORTANT]
-> Ingebouwd beleid in categorie **Kubernetes** is alleen voor gebruik met AKS Engine.
+> Ingebouwde beleids regels in categorie **Kubernetes** zijn alleen bedoeld voor gebruik met de AKS-engine.
 
 ## <a name="logging"></a>Logboekregistratie
 
-### <a name="azure-policy-add-on-logs"></a>Azure-beleidsinvoegtoepassing
+### <a name="azure-policy-add-on-logs"></a>Azure Policy-invoeg logboeken
 
-Als Kubernetes-controller/-container houdt de Azure Policy Add-on logboeken bij in het AKS Engine-cluster.
+Als Kubernetes-controller/-container houdt de invoeg toepassing Azure Policy Logboeken in het AKS-engine-cluster.
 
-Als u de azure policy invoegtoepassinglogboeken wilt weergeven, gebruikt u: `kubectl`
+Als u de logboeken voor Azure Policy-invoeg toepassingen `kubectl`wilt weer geven, gebruikt u:
 
 ```bash
 # Get the Azure Policy Add-on pod name
@@ -200,26 +200,26 @@ kubectl -n kube-system get pods -l app=azure-policy --output=name
 kubectl logs <Azure Policy Add-on pod name> -n kube-system
 ```
 
-### <a name="gatekeeper-logs"></a>Poortwachterlogboeken
+### <a name="gatekeeper-logs"></a>Gate keeper logboeken
 
-De _Gatekeeper-pod, gatekeeper-controller-manager-0,_ `gatekeeper-system` bevindt zich meestal in de of `kube-system` naamruimte, maar kan zich in een andere naamruimte bevindt, afhankelijk van hoe deze wordt geïmplementeerd.
+De gate keeper Pod, _Gate-Controller-Manager-0_, bevindt zich meestal in de `gatekeeper-system` of `kube-system` naam ruimte, maar kan zich in een andere naam ruimte bevinden, afhankelijk van hoe de app is geïmplementeerd.
 
-Als u de logboeken van Gatekeeper wilt bekijken, gebruikt u: `kubectl`
+Als u de gate keeper- `kubectl`logboeken wilt weer geven, gebruikt u:
 
 ```bash
 NAMESPACE=<namespace of gatekeeper>
 kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 ```
 
-Zie [Gatekeeper debuggen in](https://github.com/open-policy-agent/gatekeeper#debugging) de OPA-documentatie voor meer informatie.
+Zie [debug Gate](https://github.com/open-policy-agent/gatekeeper#debugging) in de opa-documentatie voor meer informatie.
 
-## <a name="remove-the-add-on"></a>De invoegtoepassing verwijderen
+## <a name="remove-the-add-on"></a>De invoeg toepassing verwijderen
 
-Als u de Azure Policy Add-on en Gatekeeper uit uw AKS Engine-cluster wilt verwijderen, gebruikt u de methode die aansluit bij de installatie van de invoegtoepassing:
+Als u Azure Policy de invoeg toepassing en gate keeper van uw AKS-Engine wilt verwijderen, gebruikt u de methode die wordt afgestemd op de manier waarop de invoeg toepassing is geïnstalleerd:
 
-- Indien geïnstalleerd door de eigenschap **addons** in te stellen in de clusterdefinitie voor AKS Engine:
+- Indien geïnstalleerd door de eigenschap **Addons** in de cluster definitie voor de AKS-engine in te stellen:
 
-  Implementeer de clusterdefinitie opnieuw in AKS Engine nadat de eigenschap **addons** voor _azure-beleid_ is gewijzigd in false:
+  Implementeer de cluster definitie opnieuw in de AKS-Engine nadat u de eigenschap **Addons** voor _Azure-Policy_ hebt gewijzigd in False:
 
 
   ```json
@@ -229,59 +229,59 @@ Als u de Azure Policy Add-on en Gatekeeper uit uw AKS Engine-cluster wilt verwij
   }]
   ```
 
-- Indien geïnstalleerd met Helm grafieken:
+- Indien geïnstalleerd met helm-grafieken:
 
   1. Oude beperkingen verwijderen
 
-     Momenteel verwijdert het verwijderingsmechanisme alleen het Gatekeeper-systeem, verwijdert het geen _constrainttemplate-,_ _beperkings-_ of _Config-bronnen_ die door de gebruiker zijn gemaakt, noch verwijdert het hun bijbehorende _CRD's_.
+     Op het moment dat het installatie mechanisme alleen het gate keeper-systeem verwijdert, worden er geen _ConstraintTemplate_, _beperkingen_of _configuratie_ resources verwijderd die door de gebruiker zijn gemaakt, en worden de bijbehorende _CRDs_niet verwijderd.
 
-     Wanneer Gatekeeper wordt uitgevoerd, is het mogelijk om ongewenste beperkingen te verwijderen door:
+     Wanneer gate keeper actief is, is het mogelijk om ongewenste beperkingen te verwijderen door:
 
-     - Alle exemplaren van de beperkingsbron verwijderen
-     - De resource _ConstraintTemplate_ verwijderen, die de _CRD_ automatisch moet opschonen
-     - Als u de _Config-bron_ verwijdert, worden finalisten van gesynchroniseerde resources verwijderd
+     - Alle exemplaren van de beperkings resource verwijderen
+     - De _ConstraintTemplate_ -resource verwijderen, die automatisch de _CRD_ moet opschonen
+     - Als u de _configuratie_ bron verwijdert, worden volt ooien van de gesynchroniseerde resources verwijderd
 
-  1. Azure-beleidsinvoegtoepassing verwijderen
+  1. Azure Policy-invoeg toepassing verwijderen
   
      ```bash
      helm del --purge azure-policy-addon
      ```
 
-  1. Gatekeeper verwijderen
+  1. Gate keeper verwijderen
   
      ```bash
      kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostische gegevens verzameld door Azure Policy Add-on
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostische gegevens die door Azure Policy invoeg toepassing zijn verzameld
 
-De Azure Policy Add-on voor Kubernetes verzamelt beperkte clusterdiagnostische gegevens. Deze diagnostische gegevens zijn essentiële technische gegevens met betrekking tot software en prestaties. Het wordt gebruikt op de volgende manieren:
+De Azure Policy-invoeg toepassing voor Kubernetes verzamelt beperkte diagnostische gegevens van het cluster. Deze diagnostische gegevens zijn vitale technische gegevens met betrekking tot software en prestaties. Deze wordt op de volgende manieren gebruikt:
 
-- Azure Policy Add-on up-to-date houden
-- Houd Azure Policy Add-on veilig, betrouwbaar en performant
-- Azure Policy Add-on verbeteren - door de geaggregeerde analyse van het gebruik van de add-on
+- Azure Policy invoeg toepassing up-to-date houden
+- Bewaar Azure Policy extra beveiliging, betrouw bare, krachtige prestaties
+- De statistische analyse van het gebruik van de invoeg toepassing verbeteren Azure Policy
 
-De informatie die door de add-on wordt verzameld, zijn geen persoonlijke gegevens. De volgende gegevens worden momenteel verzameld:
+De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlijke gegevens. De volgende details worden momenteel verzameld:
 
-- Azure Policy Add-on agent-versie
-- Clustertype
-- Clustergebied
-- Clusterbrongroep
-- Clusterbron-id
-- Clusterabonnement-id
-- Cluster OS (Voorbeeld: Linux)
-- Clusterstad (Voorbeeld: Seattle)
-- Clusterstaat of provincie (Voorbeeld: Washington)
-- Clusterland of -regio (Voorbeeld: Verenigde Staten)
-- Uitzonderingen/fouten die zijn ondervonden bij azure-beleidsadd-on tijdens de installatie van agenten bij beleidsevaluatie
-- Aantal Gatekeeper-beleidsregels dat niet is geïnstalleerd door azure-beleidsadd-on
+- Azure Policy-Agent versie van invoeg toepassing
+- Cluster type
+- Cluster regio
+- Cluster resource groep
+- Cluster bron-ID
+- Abonnements-ID van cluster
+- Cluster besturingssysteem (voor beeld: Linux)
+- Cluster plaats (voor beeld: Seattle)
+- Status of provincie van cluster (voor beeld: Washington)
+- Land of regio van het cluster (voor beeld: Verenigde Staten)
+- Uitzonde ringen/fouten aangetroffen door Azure Policy-invoeg toepassing tijdens de installatie van de agent op beleids evaluatie
+- Het aantal gate keeper-beleids regels dat niet is geïnstalleerd door Azure Policy invoeg toepassing
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voorbeelden bekijken bij [Azure Policy-voorbeelden](../samples/index.md).
+- Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Bekijk de [structuur van Azure Policy-definities](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
-- Begrijpen hoe [u programmatisch beleid maken.](../how-to/programmatically-create.md)
-- Meer informatie over het [verzamelen van nalevingsgegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [herstellen van niet-conforme resources.](../how-to/remediate-resources.md)
-- Bekijk wat een beheergroep is met [Uw resources organiseren met Azure-beheergroepen.](../../management-groups/overview.md)
+- Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

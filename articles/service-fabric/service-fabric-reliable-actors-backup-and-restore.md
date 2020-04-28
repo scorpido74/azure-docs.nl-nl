@@ -1,24 +1,24 @@
 ---
-title: Azure Service Fabric-actoren back-ups maken en herstellen
-description: Meer informatie over het implementeren van back-ups en herstelin uw Azure Service Fabric-actoren.
+title: Back-ups maken en herstellen van Azure Service Fabric Actors
+description: Meer informatie over het implementeren van back-ups en herstel in uw Azure Service Fabric actors.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75370456"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Implementeren betrouwbare actoren back-up en herstel
+# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors back-up en herstel implementeren
 
 > [!NOTE]
-> Microsoft raadt aan om [periodieke back-ups en herstel](service-fabric-backuprestoreservice-quickstart-azurecluster.md) te gebruiken voor het configureren van gegevensback-up van betrouwbare stateful-services en betrouwbare actoren. 
+> Micro soft raadt u aan om [periodieke back-ups en herstel bewerkingen](service-fabric-backuprestoreservice-quickstart-azurecluster.md) te gebruiken voor het configureren van gegevens back-ups van betrouw bare stateful services en reliable actors. 
 > 
 
-In het volgende voorbeeld stelt een aangepaste actorservice een methode bloot om een back-up te maken van actorgegevens door gebruik te maken van de remoting-listener die al aanwezig is in `ActorService`:
+In het volgende voor beeld bevat een aangepaste actor service een methode voor het maken van back-ups van actor gegevens door gebruik te maken van de externe listener `ActorService`die al aanwezig is in:
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-In dit `IMyActorService` voorbeeld is een remoting-contract dat `IService` `Service` implementeert (C#) en `MyActorService`(Java) en vervolgens wordt geïmplementeerd door . Door het toevoegen van deze `IMyActorService` remoting contract, methoden op zijn nu `ActorServiceProxy`ook beschikbaar voor een klant door het creëren van een remoting proxy via:
+In dit voor beeld `IMyActorService` is een extern contract dat implementeert `IService` (C#) en `Service` (Java) en wordt vervolgens geïmplementeerd door. `MyActorService` Door dit externe contract toe te voegen, `IMyActorService` zijn methoden nu ook beschikbaar voor een-client door een externe proxy te `ActorServiceProxy`maken via:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -109,12 +109,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Voor meer informatie over betrouwbare actoren, lees de volgende artikelen:
-* [Actor staatbeheer](service-fabric-reliable-actors-state-management.md)
-* [Levenscyclus van actor's en garbage collection](service-fabric-reliable-actors-lifecycle.md)
-* [Verwijzingen naar API-verwijzingen van actoren](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+Lees de volgende artikelen voor meer informatie over Reliable Actors:
+* [Beheer van actor status](service-fabric-reliable-actors-state-management.md)
+* [Actor-levens cyclus en garbagecollection](service-fabric-reliable-actors-lifecycle.md)
+* [Naslag documentatie voor actors-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

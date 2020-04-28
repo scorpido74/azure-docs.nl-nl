@@ -1,5 +1,5 @@
 ---
-title: Hoogfrequente handel met Azure Stream Analytics
+title: Hoogwaardige handel met Azure Stream Analytics
 description: Lineaire-regressiemodeltrainingen en scores uitvoeren als onderdeel van een Azure Stream Analytics-taak.
 author: mamccrea
 ms.author: mamccrea
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426209"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Simulatie van high-frequency trading met Stream Analytics
@@ -70,7 +70,7 @@ VOI (Volume Order Imbalance) is een functie van de huidige prijs en het huidige 
 
 Het getrainde model wordt vervolgens gebruikt om in realtime koersen te voorspellen op de huidige handelsdag. Als er een prijswijziging wordt voorspeld die groot genoeg is, wordt er een aandelentransactie uitgevoerd. Afhankelijk van de instelling voor de drempelwaarde, kunnen voor een enkel aandeel tijdens een handelsdag duizenden transacties worden verwacht.
 
-![Definitie van volumevolgorde](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Definitie van onevenwichtige volume volgorde](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Laten we nu eens de trainings- en voorspellingsbewerkingen uitdrukken die tijdens een Azure Stream Analytics-taak plaatshebben.
 
@@ -202,7 +202,7 @@ modelInput AS (
 
 Omdat Azure Stream Analytics niet beschikt over een ingebouwde lineaire-regressiefunctie, worden de gegevens die met behulp van **SUM** en **AVG** zijn verzameld, gebruikt voor het berekenen van de coëfficiënten voor het lineaire model.
 
-![Lineaire regressiewiskundigeformule](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Mathematische formule voor lineaire regressie](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -450,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Trades Power BI-diagram visueel](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Visuele elementen Power BI grafiek](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![PNL Power BI-diagram visueel](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![Visual Power BI grafiek van PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Samenvatting

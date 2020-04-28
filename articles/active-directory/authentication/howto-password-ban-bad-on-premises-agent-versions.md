@@ -1,6 +1,6 @@
 ---
-title: Releasegeschiedenis van wachtwoordbeveiligingsagent - Azure Active Directory
-description: Documenten versie release en gedragsverandering geschiedenis
+title: Release geschiedenis van de wachtwoord beveiligings agent-Azure Active Directory
+description: Geschiedenis van versie en wijziging van het gedrag van de release van documenten
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,55 +12,55 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74847846"
 ---
-# <a name="azure-ad-password-protection-agent-version-history"></a>Versiegeschiedenis van azure AD Password Protection-agent
+# <a name="azure-ad-password-protection-agent-version-history"></a>Versie geschiedenis van de Azure AD-wachtwoord beveiligings agent
 
 ## <a name="121250"></a>1.2.125.0
 
-Releasedatum: 3/22/2019
+Release datum: 3/22/2019
 
-* Kleine foutfouten oplossen in gebeurtenislogboekberichten
-* Eula-overeenkomst bijwerken naar definitieve versie voor algemene beschikbaarheid
+* Kleine fout type fouten in gebeurtenis logboek berichten oplossen
+* GEBRUIKSRECHT overeenkomst bijwerken naar definitieve versie van algemene Beschik baarheid
 
 > [!NOTE]
-> Build 1.2.125.0 is de algemene beschikbaarheid te bouwen. Nogmaals bedankt aan iedereen heeft feedback gegeven over het product!
+> Build 1.2.125.0 is de algemene Beschik baarheid. Hartelijk dank voor iedereen heeft feedback gegeven over het product.
 
 ## <a name="121160"></a>1.2.116.0
 
-Releasedatum: 3/13/2019
+Release datum: 3/13/2019
 
-* De cmdlets Get-AzureADPasswordProtectionProxy en Get-AzureADPasswordProtectionDCAgent rapporteren nu de softwareversie en de huidige Azure-tenant met de volgende beperkingen:
-  * Softwareversie en Azure-tenantgegevens zijn alleen beschikbaar voor DC-agents en proxy's waarop versie 1.2.116.0 of hoger wordt uitgevoerd.
-  * Azure-tenantgegevens kunnen niet worden gerapporteerd totdat een herregistratie (of verlenging) van de proxy of forest is opgetreden.
-* De Proxy-service vereist nu dat .NET 4.7 is geïnstalleerd.
-  * .NET 4.7 moet al worden geïnstalleerd op een volledig bijgewerkte Windows Server. Als dit niet het geval is, download en voer u de installer te downloaden en uit te voeren die is gevonden bij [De .NET Framework 4.7 offline installer voor Windows.](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)
-  * Op Server Core-systemen kan het nodig zijn om de /q-vlag door te geven aan de .NET 4.7-installer om deze te laten slagen.
-* De Proxy-service ondersteunt nu automatische upgrade. Automatische upgrade maakt gebruik van de Microsoft Azure AD Connect Agent Updater-service die naast de proxyservice is geïnstalleerd. Automatische upgrade is standaard ingeschakeld.
-* Automatische upgrade kan worden ingeschakeld of uitgeschakeld met de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met de cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
-* De service-binaire voor de DC-agentservice is omgedoopt tot AzureADPasswordProtectionDCAgent.exe.
-* De servicebinaire voor de proxyservice is omgedoopt tot AzureADPasswordProtectionProxy.exe. Firewallregels moeten mogelijk dienovereenkomstig worden gewijzigd als een firewall van derden in gebruik is.
-  * OPMERKING: als een http-proxyconfig-bestand werd gebruikt in een vorige proxy-installatie, moet het na deze upgrade worden hernoemd (van *proxyservice.exe.config* naar *AzureADPasswordProtectionProxy.exe.config).*
-* Alle tijdbeperkte functionaliteitscontroles zijn verwijderd uit de DC-agent.
-* Kleine bugs fixes en logging verbeteringen.
+* De cmdlets Get-AzureADPasswordProtectionProxy en Get-AzureADPasswordProtectionDCAgent rapporteren nu de software versie en de huidige Azure-Tenant met de volgende beperkingen:
+  * Software versie en Azure-Tenant gegevens zijn alleen beschikbaar voor DC-agents en-proxy's waarop versie 1.2.116.0 of hoger wordt uitgevoerd.
+  * Azure-Tenant gegevens worden mogelijk pas gerapporteerd als er een nieuwe registratie (of verlenging) van de proxy of het forest is opgetreden.
+* Voor de proxy service moet .NET 4,7 nu zijn geïnstalleerd.
+  * .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat niet het geval is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * Op Server Core-systemen kan het nodig zijn om de/q-vlag door te geven aan het .NET 4,7-installatie programma om deze te laten slagen.
+* De proxy service ondersteunt nu automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld.
+* Automatische upgrades kunnen worden in-of uitgeschakeld met de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met behulp van de cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
+* De naam van de service-binary voor de DC-Agent service is gewijzigd in AzureADPasswordProtectionDCAgent. exe.
+* De naam van de service-binary voor de proxy service is gewijzigd in AzureADPasswordProtectionProxy. exe. Firewall regels moeten mogelijk dienovereenkomstig worden gewijzigd als een firewall van een derde partij in gebruik is.
+  * Opmerking: als er een http-proxy configuratie bestand werd gebruikt in een eerdere proxy installatie, moet dit na deze upgrade worden gewijzigd (van *proxyservice. exe. config* in *AzureADPasswordProtectionProxy. exe. config*).
+* Alle tijdgebonden functionaliteits controles zijn verwijderd uit de DC-agent.
+* Kleine oplossingen voor fouten en logboek registratie van verbeteringen.
 
 ## <a name="12650"></a>1.2.65.0
 
-Releasedatum: 2/1/2019
+Release datum: 2/1/2019
 
-Wijzigingen:
+Gewijzigde
 
-* DC-agent en proxyservice worden nu ondersteund op Server Core. Mininimum OS-vereisten zijn ongewijzigd ten opzichte van voorheen: Windows Server 2012 voor DC-agents en Windows Server 2012 R2 voor proxy's.
-* De cmdlets Register-AzureADPasswordProtectionProxy en Register-AzureADPasswordProtectionForest ondersteunen nu op apparaatcode gebaseerde Azure-verificatiemodi.
-* De cmdlet Get-AzureADPasswordProtectionDCAgent negeert verminkte en/of ongeldige serviceverbindingspunten. Dit lost de bug waar domeincontrollers soms meerdere keren in de uitvoer zouden verschijnen.
-* De cmdlet Get-AzureADPasswordProtectionSummaryReport negeert verminkte en/of ongeldige serviceverbindingspunten. Dit lost de bug waar domeincontrollers soms meerdere keren in de uitvoer zouden verschijnen.
-* De Proxy powershell-module is nu geregistreerd bij %ProgramFiles%\WindowsPowerShell\Modules. De PSModulePath-omgevingsvariabele van de machine wordt niet langer gewijzigd.
-* Er is een nieuwe cmdlet Get-AzureADPasswordProtectionProxy toegevoegd om te helpen bij het ontdekken van geregistreerde proxy's in een forest of domein.
-* De DC-agent gebruikt een nieuwe map in het sysvol-aandeel voor het repliceren van wachtwoordbeleid en andere bestanden.
+* DC-agent en proxy service worden nu ondersteund op Server Core. Mininimum OS-vereisten zijn niet gewijzigd ten opzichte van vóór: Windows Server 2012 voor DC-agents en Windows Server 2012 R2 voor proxy's.
+* De cmdlets REGI ster-AzureADPasswordProtectionProxy en REGI ster-AzureADPasswordProtectionForest bieden nu ondersteuning voor op apparaten code gebaseerde Azure-verificatie modi.
+* Met de cmdlet Get-AzureADPasswordProtectionDCAgent worden vervormde en/of ongeldige service verbindings punten genegeerd. Hiermee wordt de bug opgelost waarbij domein controllers soms meerdere keren in de uitvoer worden weer gegeven.
+* Met de cmdlet Get-AzureADPasswordProtectionSummaryReport worden vervormde en/of ongeldige service verbindings punten genegeerd. Hiermee wordt de bug opgelost waarbij domein controllers soms meerdere keren in de uitvoer worden weer gegeven.
+* De module proxy Power shell is nu geregistreerd bij%ProgramFiles%\WindowsPowerShell\Modules. De omgevings variabele PSModulePath van de machine wordt niet meer gewijzigd.
+* Er is een nieuwe cmdlet Get-AzureADPasswordProtectionProxy toegevoegd ter ondersteuning bij het detecteren van geregistreerde proxy's in een forest of domein.
+* De DC-agent gebruikt een nieuwe map in de SYSVOL-share voor het repliceren van wachtwoord beleid en andere bestanden.
 
    Oude maplocatie:
 
@@ -70,70 +70,70 @@ Wijzigingen:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   (Deze wijziging is aangebracht om vals-positieve "verweesde GPO" waarschuwingen te voorkomen.)
+   (Deze wijziging is doorgevoerd om waarschuwingen over onjuiste positieve ' zwevende GPO ' te voor komen.)
 
    > [!NOTE]
-   > Er wordt geen migratie of het delen van gegevens uitgevoerd tussen de oude map en de nieuwe map. Oudere DC-agentversies blijven de oude locatie gebruiken totdat deze wordt bijgewerkt naar deze versie of hoger. Zodra alle DC-agents versie 1.2.65.0 of hoger uitvoeren, kan de oude sysvol-map handmatig worden verwijderd.
+   > Er wordt geen migratie of delen van gegevens uitgevoerd tussen de oude map en de nieuwe map. Oudere versies van de DC-agent blijven de oude locatie gebruiken totdat deze is bijgewerkt naar deze versie of hoger. Zodra op alle DC-agents versie 1.2.65.0 of hoger wordt uitgevoerd, wordt de oude map SYSVOL mogelijk hand matig verwijderd.
 
-* De DC-agent en proxyservice detecteren en verwijderen nu verminkte kopieën van hun respectievelijke serviceverbindingspunten.
-* Elke DC-agent verwijdert periodiek verminkte en verouderde serviceverbindingspunten in zijn domein, voor zowel DC-agent- als proxyserviceverbindingspunten. Zowel dc-agent als proxyserviceverbindingspunten worden als verouderd beschouwd als de heartbeattijdstempel ouder is dan zeven dagen.
-* De DC-agent verlengt nu het forestcertificaat indien nodig.
-* De proxyservice verlengt nu het proxycertificaat indien nodig.
-* Updates voor wachtwoordvalidatiealgoritme: de algemene lijst met verboden wachtwoorden en klantspecifieke lijst met verboden wachtwoorden (indien geconfigureerd) worden gecombineerd voordat het wachtwoord wordt gevalideerd. Een bepaald wachtwoord kan nu worden afgewezen (alleen niet of controleren) als het tokens bevat van zowel de globale als klantspecifieke lijst. De documentatie van het gebeurtenislogboek is bijgewerkt om dit weer te geven; zie [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md).
+* De DC-agent en de proxy service detecteren de vervormde kopieën van hun respectieve service verbindings punten nu en worden verwijderd.
+* Elke DC-agent zal regel matig vervormde en verlopen service verbindings punten in het domein verwijderen voor zowel DC-agent-als proxy service-verbindings punten. De verbindings punten van de DC-agent en de proxy service worden als verouderd beschouwd als de heartbeat-tijds tempel ouder is dan zeven dagen.
+* De DC-agent zal het forest-certificaat nu vernieuwen als dat nodig is.
+* De proxy-service zal het proxy certificaat nu vernieuwen als dat nodig is.
+* Updates voor het algoritme voor wachtwoord validatie: de algemene lijst met geblokkeerde wacht woorden en de klantspecifieke lijst met geblokkeerde wacht woorden (indien geconfigureerd) worden gecombineerd voor validatie van wacht woorden. Een gegeven wacht woord kan nu worden geweigerd (alleen mislukt of alleen controleren) als het tokens uit de algemene en klantspecifieke lijst bevat. De documentatie van het gebeurtenis logboek is bijgewerkt, zodat deze kan worden weer gegeven. Zie [Azure AD-wachtwoord beveiliging controleren](howto-password-ban-bad-on-premises-monitor.md).
 * Oplossingen voor prestaties en robuustheid
-* Verbeterde logboekregistratie
+* Verbeterde logboek registratie
 
 > [!WARNING]
-> Tijdelijke functionaliteit: de DC-agentservice in deze release (1.2.65.0) stopt per 1 september 2019 met het verwerken van wachtwoordvalidatieaanvragen.  DC-agentservices in eerdere releases (zie onderstaande lijst) stoppen met de verwerking per 1 juli 2019. De DC-agentservice in alle versies logt 10021-gebeurtenissen in op het gebeurtenislogboek Admin in de twee maanden voorafgaand aan deze deadlines. Alle tijdslimietbeperkingen worden verwijderd in de komende GA-release. De Proxy agent service is niet beperkt in de tijd in elke versie, maar moet nog steeds worden opgewaardeerd naar de nieuwste versie om te profiteren van alle daaropvolgende bug fixes en andere verbeteringen.
+> Beperkte functionaliteit: de DC-Agent service in deze release (1.2.65.0) stopt met het verwerken van aanvragen voor wachtwoord validatie vanaf 1 september 2019.  DC-agent services in eerdere versies (Zie de lijst hieronder) stopt met de verwerking vanaf 1 juli 2019. De DC Agent-service in alle versies registreert 10021-gebeurtenissen in het gebeurtenis logboek van de beheerder in de twee maanden waarin deze deadlines van belang zijn. Alle tijds limiet beperkingen worden verwijderd in de aanstaande GA-release. De proxy-Agent service is niet in een wille keurige versie beperkt, maar moet nog steeds worden bijgewerkt naar de nieuwste versie om te kunnen profiteren van alle volgende oplossingen voor fouten en andere verbeteringen.
 
 ## <a name="12250"></a>1.2.25.0
 
-Releasedatum: 11/01/2018
+Release datum: 11/01/2018
 
-Fixes:
+Dit
 
-* DC-agent en proxyservice mogen niet langer mislukken als gevolg van fouten in certificaatvertrouwensrelaties.
-* DC-agent en proxyservice hebben extra oplossingen voor FIPS-compatibele machines.
-* Proxyservice werkt nu naar behoren in een TLS 1.2-netwerkomgeving.
-* Kleine prestatie- en robuustheidsoplossingen
-* Verbeterde logboekregistratie
+* DC-agent en proxy service mogen niet meer mislukken als gevolg van fouten in de certificaat vertrouwen.
+* DC-agent en proxy service hebben extra oplossingen voor FIPS-compatibele computers.
+* Proxy service werkt nu goed in een TLS 1,2-only-netwerk omgeving.
+* Kleine prestaties en robuustheid van oplossingen
+* Verbeterde logboek registratie
 
-Wijzigingen:
+Gewijzigde
 
-* Het minimaal vereiste besturingssysteemniveau voor de Proxy-service is nu Windows Server 2012 R2. Het minimaal vereiste besturingssysteemniveau voor de DC-agentservice blijft op Windows Server 2012.
-* De Proxy-service vereist nu .NET-versie 4.6.2.
-* Het wachtwoordvalidatiealgoritme maakt gebruik van een uitgebreide tekennormalisatietabel. Dit kan ertoe leiden dat wachtwoorden worden afgewezen die in eerdere versies zijn geaccepteerd.
+* Het mini maal vereiste besturingssysteem niveau voor de proxy service is nu Windows Server 2012 R2. Het mini maal vereiste besturingssysteem niveau voor de DC-Agent service blijft Windows Server 2012.
+* Voor de proxy service is nu .NET versie 4.6.2 vereist.
+* De wachtwoord validatie algoritme maakt gebruik van een verbreede teken normalisatie tabel. Dit kan ertoe leiden dat wacht woorden worden afgewezen die in eerdere versies zijn geaccepteerd.
 
 ## <a name="12100"></a>1.2.10.0
 
-Releasedatum: 8/17/2018
+Release datum: 8/17/2018
 
-Fixes:
+Dit
 
-* Register-AzureADPasswordProtectionProxy en Register-AzureADPasswordProtectionForest ondersteunen nu multi-factor authenticatie
-* Register-AzureADPasswordProtectionProxy vereist een WS2012 of hoger domeincontroller in het domein om versleutelingsfouten te voorkomen.
-* DC-agentservice is betrouwbaarder over het aanvragen van een nieuw wachtwoordbeleid van Azure bij het opstarten.
-* DC-agentservice vraagt indien nodig elk uur een nieuw wachtwoordbeleid van Azure aan, maar doet dit nu op een willekeurig geselecteerde begintijd.
-* DC-agentservice zal niet langer leiden tot een onbepaalde vertraging in nieuwe DC-advertentie wanneer geïnstalleerd op een server voorafgaand aan de promotie als een replica.
-* DC-agentservice eert nu de configuratie-instelling 'Wachtwoordbeveiliging inschakelen op Windows Server Active Directory'
-* Zowel DC-agent en proxy installateurs zullen nu ondersteunen in-place upgrade bij het upgraden naar toekomstige versies.
+* REGI ster-AzureADPasswordProtectionProxy en REGI ster-AzureADPasswordProtectionForest bieden nu ondersteuning voor multi-factor Authentication
+* Voor REGI ster-AzureADPasswordProtectionProxy is een WS2012 of nieuwe domein controller in het domein vereist om versleutelings fouten te voor komen.
+* De DC-Agent service is betrouwbaarder voor het aanvragen van een nieuw wachtwoord beleid van Azure bij het opstarten.
+* DC-Agent service vraagt elk uur, indien nodig, een nieuw wachtwoord beleid aan van Azure, maar zal dit nu doen op een wille keurige geselecteerde begin tijd.
+* DC-Agent service veroorzaakt niet langer een onbeperkte vertraging in een nieuwe DC-aankondiging wanneer deze wordt geïnstalleerd op een server voorafgaand aan de promotie als een replica.
+* De DC-Agent service voldoet nu aan de configuratie-instelling wachtwoord beveiliging inschakelen voor Windows Server Active Directory
+* Zowel DC-agent-als proxy installatie Programma's ondersteunen nu in-place upgrade bij het upgraden naar toekomstige versies.
 
 > [!WARNING]
-> In-place upgrade van versie 1.1.10.3 wordt niet ondersteund en zal resulteren in een installatiefout. Als u wilt upgraden naar versie 1.2.10 of hoger, moet u eerst de DC-agent en proxyservicesoftware volledig verwijderen en vervolgens de nieuwe versie helemaal opnieuw installeren. Opnieuw registratie van de Azure AD-wachtwoordbeveiliging-proxyservice is vereist.  Het is niet verplicht om het bos opnieuw te registreren.
+> Een in-place upgrade van versie 1.1.10.3 wordt niet ondersteund en leidt tot een installatie fout. Als u een upgrade wilt uitvoeren naar versie 1.2.10 of hoger, moet u eerst de DC-agent en de proxy service-software verwijderen en vervolgens de nieuwe versie volledig installeren. U moet de Azure AD-proxy service voor wachtwoord beveiliging opnieuw registreren.  Het is niet nodig om het forest opnieuw te registreren.
 
 > [!NOTE]
-> In-place upgrades van de DC-agent software vereist een reboot.
+> In-place Upgrades van de DC-agent software moet opnieuw worden opgestart.
 
-* DC-agent en proxyservice ondersteunen nu het uitvoeren van een server die is geconfigureerd om alleen FIPS-compatibele algoritmen te gebruiken.
-* Kleine prestatie- en robuustheidsoplossingen
-* Verbeterde logboekregistratie
+* DC-agent en proxy service bieden nu ondersteuning voor uitvoering op een server die is geconfigureerd om alleen FIPS-compatibele algoritmen te gebruiken.
+* Kleine prestaties en robuustheid van oplossingen
+* Verbeterde logboek registratie
 
 ## <a name="11103"></a>1.1.10.3
 
-Releasedatum: 6-15-2018
+Release datum: 6/15/2018
 
-Eerste openbare preview-release
+Eerste open bare preview-versie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure AD-wachtwoordbeveiliging implementeren](howto-password-ban-bad-on-premises-deploy.md)
+[Azure AD-wachtwoord beveiliging implementeren](howto-password-ban-bad-on-premises-deploy.md)

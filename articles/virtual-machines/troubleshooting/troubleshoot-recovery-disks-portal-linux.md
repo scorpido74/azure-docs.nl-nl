@@ -1,6 +1,6 @@
 ---
-title: Een VM voor het oplossen van problemen met Linux gebruiken in de Azure-portal | Microsoft Documenten
-description: Meer informatie over het oplossen van problemen met de virtuele machine van Linux door de OS-schijf te verbinden met een herstel-vm via de Azure-portal
+title: Gebruik een Linux-probleemoplossings-VM in de Azure Portal | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met virtuele Linux-machines door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
@@ -13,54 +13,54 @@ ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
 ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75374638"
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een Linux-vm oplossen door de OS-schijf aan een herstel-vm te koppelen met behulp van de Azure-portal
-Als uw Virtuele Linux-machine (VM) een opstart- of schijffout tegenkomt, moet u mogelijk stappen voor het oplossen van problemen uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voorbeeld is `/etc/fstab` een ongeldige vermelding die voorkomt dat de VM met succes kan opstarten. In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om uw virtuele harde schijf aan te sluiten op een andere Linux-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM opnieuw te maken.
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
+Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 Het probleemoplossingsproces is als volgt:
 
-1. Stop de betreffende VM.
-1. Maak een momentopname voor de OS-schijf van de VM.
-1. Maak een virtuele harde schijf van de momentopname.
-1. Voeg de virtuele harde schijf vast aan een andere Windows-vm voor probleemoplossingsdoeleinden.
-1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogramma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
+1. Stop de betrokken VM.
+1. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
+1. Maak een virtuele harde schijf van de moment opname.
+1. Koppel en koppel de virtuele harde schijf aan een andere Windows-VM voor het oplossen van problemen.
+1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
 1. Koppel de virtuele harde schijf van de VM voor probleemoplossing los.
-1. Wissel de OS-schijf in voor de VM.
+1. Wissel de besturingssysteem schijf voor de virtuele machine uit.
 
 > [!NOTE]
-> Dit artikel is niet van toepassing op de VM met onbeheerde schijf.
+> Dit artikel is niet van toepassing op de virtuele machine met een niet-beheerde schijf.
 
-## <a name="determine-boot-issues"></a>Opstartproblemen bepalen
-Bekijk de opstartdiagnostiek en vm-schermafbeelding om te bepalen waarom uw vm niet correct kan worden opgestart. Een veelvoorkomend voorbeeld is `/etc/fstab`een ongeldige vermelding in of een onderliggende virtuele harde schijf die wordt verwijderd of verplaatst.
+## <a name="determine-boot-issues"></a>Opstart problemen vaststellen
+Bekijk de scherm opname van diagnostische gegevens over opstarten en VM om te bepalen waarom de virtuele machine niet correct kan worden opgestart. Een veelvoorkomend voor beeld is een ongeldige vermelding in `/etc/fstab`of een onderliggende virtuele harde schijf die wordt verwijderd of verplaatst.
 
-Selecteer uw VM in de portal en blader naar beneden naar de sectie **Ondersteuning + Probleemoplossing.** Klik **op Diagnostische gegevens opstarten** om de consoleberichten weer te geven die vanaf uw vm worden gestreamd. Bekijk de consolelogboeken om te zien of u bepalen waarom de virtuele machine een probleem tegenkomt. In het volgende voorbeeld wordt een VM weergegeven die vastzit in de onderhoudsmodus waarvoor handmatige interactie vereist is:
+Selecteer uw virtuele machine in de portal en schuif omlaag naar de sectie **ondersteuning en probleem oplossing** . Klik op **Diagnostische gegevens over opstarten** om de console berichten weer te geven die zijn gestreamd vanaf uw VM. Bekijk de console Logboeken om te zien of u kunt bepalen waarom de virtuele machine een probleem ondervindt. In het volgende voor beeld ziet u een VM die is vastgelopen in de onderhouds modus waarvoor hand matige interactie is vereist:
 
-![Consolelogboeken voor vm-opstartdiagnostiek weergeven](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
+![De console logboeken voor diagnostische gegevens over opstarten van VM weer geven](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
-U ook klikken op **Screenshot** over de bovenkant van de boot diagnostics log om een opname van de VM screenshot te downloaden.
+U kunt ook op de **scherm opname** boven aan het logboek voor diagnostische gegevens over opstarten klikken om een opname van de VM-scherm afbeelding te downloaden.
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>Maak een momentopname van de OS Disk
-Een momentopname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). We raden u aan de VM netjes af te sluiten voordat u een momentopname maakt, zodat alle processen die worden uitgevoerd, worden gewist. Voer de volgende stappen uit om een momentopname van een os-schijf te maken:
+## <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
+Een moment opname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). U wordt aangeraden de virtuele machine op een schone manier af te sluiten voordat u een moment opname maakt, zodat alle processen die worden uitgevoerd, worden gewist. Voer de volgende stappen uit om een moment opname te maken van een besturingssysteem schijf:
 
-1. Ga naar [Azure-portal](https://portal.azure.com). Selecteer **Virtuele machines** op de zijbalk en selecteer de vm die een probleem heeft.
-1. Selecteer **schijven**in het linkerdeelvenster en selecteer vervolgens de naam van de osschijf.
-    ![Afbeelding over de naam van de OS-schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Selecteer **op** de pagina Overzicht van de osschijf en selecteer **Momentopname maken**.
-1. Maak een momentopname op dezelfde locatie als de OS-schijf.
+1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
+1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens de naam van de besturingssysteem schijf.
+    ![Afbeelding over de naam van de besturingssysteem schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. Op de pagina **overzicht** van de besturingssysteem schijf en selecteert u **moment opname maken**.
+1. Maak een moment opname op dezelfde locatie als de besturingssysteem schijf.
 
-## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de momentopname
-Voer de volgende stappen uit om een schijf te maken op basis van de momentopname:
+## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
+Voer de volgende stappen uit om een schijf te maken op basis van de moment opname:
 
-1. Selecteer **Cloud Shell** in de Azure-portal.
+1. Selecteer **Cloud shell** in het Azure Portal.
 
-    ![Afbeelding over Open Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
-1. Voer de volgende PowerShell-opdrachten uit om een beheerde schijf van de momentopname te maken. U moet deze voorbeeldnamen vervangen door de juiste namen.
+    ![Afbeelding over open Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+1. Voer de volgende Power shell-opdrachten uit om een beheerde schijf te maken op basis van de moment opname. Vervang deze voorbeeld namen door de juiste namen.
 
     ```powershell
     #Provide the name of your resource group
@@ -90,24 +90,24 @@ Voer de volgende stappen uit om een schijf te maken op basis van de momentopname
      
     New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
     ```
-3. Als de opdrachten zijn uitgevoerd, ziet u de nieuwe schijf in de door u opgegeven brongroep.
+3. Als de opdrachten correct worden uitgevoerd, ziet u de nieuwe schijf in de resource groep die u hebt ingevoerd.
 
-## <a name="attach-disk-to-another-vm"></a>Schijf aan een andere virtuele machine koppelen
-Voor de volgende stappen gebruikt u een andere vm voor probleemoplossingsdoeleinden. Nadat u de schijf aan de VM voor het oplossen van problemen hebt gekoppeld, u de inhoud van de schijf bekijken en bewerken. Met dit proces u eventuele configuratiefouten corrigeren of aanvullende toepassings- of systeemlogboekbestanden controleren. Voer de volgende stappen uit om de schijf aan een andere virtuele machine te koppelen:
+## <a name="attach-disk-to-another-vm"></a>Schijf koppelen aan een andere virtuele machine
+Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. Nadat u de schijf aan de virtuele machine voor probleem oplossing hebt gekoppeld, kunt u de inhoud van de schijf bekijken en bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden bekijken. Voer de volgende stappen uit om de schijf aan een andere virtuele machine te koppelen:
 
-1. Selecteer uw brongroep in de portal en selecteer vervolgens de VM voor het oplossen van problemen. Selecteer **Schijven,** selecteer **Bewerken**en klik op **Gegevensschijf toevoegen:**
+1. Selecteer uw resource groep in de portal en selecteer vervolgens de virtuele machine voor probleem oplossing. Selecteer **schijven**, selecteer **bewerken**en klik vervolgens op **gegevens schijf toevoegen**:
 
-    ![Bestaande schijf in de portal koppelen](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
+    ![Een bestaande schijf koppelen in de portal](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. Selecteer in de lijst **Gegevensschijven** de osschijf van de vm die u hebt geïdentificeerd. Als u de osschijf niet ziet, controleert u of vm en de OS-schijf probleemoplossing zich in dezelfde regio (locatie) bevinden. 
+2. Selecteer in de lijst **gegevens schijven** de besturingssysteem schijf van de virtuele machine die u hebt geïdentificeerd. Als u de besturingssysteem schijf niet ziet, zorg er dan voor dat u problemen met de virtuele machine oplost en de besturingssysteem schijf zich in dezelfde regio (locatie) bevindt. 
 3. Selecteer **Opslaan** om de wijzigingen toe te passen.
 
-## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevensschijf monteren
+## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevens schijf koppelen
 
 > [!NOTE]
-> In de volgende voorbeelden worden de stappen beschreven die vereist zijn voor een Ubuntu-vm. Als u een andere Linux distro gebruikt, zoals Red Hat Enterprise Linux `mount` of SUSE, kunnen de logbestandslocaties en -opdrachten een beetje anders zijn. Raadpleeg de documentatie voor uw specifieke distro voor de juiste wijzigingen in opdrachten.
+> In de volgende voor beelden worden de stappen beschreven die nodig zijn voor een Ubuntu-VM. Als u een andere Linux-distributie gebruikt, zoals Red Hat Enterprise Linux of SUSE, zijn de locaties en `mount` opdrachten van het logboek bestand mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de desbetreffende wijzigingen in de opdrachten.
 
-1. SSH aan uw vm voor het oplossen van problemen met behulp van de juiste referenties. Als deze schijf de eerste gegevensschijf is die is gekoppeld `/dev/sdc`aan de VM voor het oplossen van problemen, is deze waarschijnlijk verbonden met . Met `dmseg` gebruiken om bijgevoegde schijven weer te geven:
+1. SSH naar uw virtuele machine voor probleem oplossing met de juiste referenties. Als deze schijf de eerste gegevens schijf is die aan uw virtuele machine voor probleem oplossing is gekoppeld, `/dev/sdc`is deze waarschijnlijk verbonden met. Gebruiken `dmseg` om gekoppelde schijven weer te geven:
 
     ```bash
     dmesg | grep SCSI
@@ -122,60 +122,60 @@ Voor de volgende stappen gebruikt u een andere vm voor probleemoplossingsdoelein
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    In het voorgaande voorbeeld staat `/dev/sda` de OS-schijf op en `/dev/sdb`is de tijdelijke schijf voor elke vm op . Als u meerdere gegevensschijven had, `/dev/sdd` `/dev/sde`zouden zij bij, , enzovoort moeten zijn.
+    In het vorige voor beeld bevindt de besturingssysteem `/dev/sda` schijf zich op en de tijdelijke schijf die voor elke `/dev/sdb`VM is ingesteld, bevindt zich op. Als u meerdere gegevens schijven had, moeten ze zich op `/dev/sdd`, `/dev/sde`,,,, enzovoort.
 
-2. Maak een map om uw bestaande virtuele harde schijf te monteren. In het volgende voorbeeld `troubleshootingdisk`wordt een map gemaakt met de naam:
+2. Maak een directory voor het koppelen van uw bestaande virtuele harde schijf. In het volgende voor beeld wordt een `troubleshootingdisk`map gemaakt met de naam:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Als u meerdere partities op uw bestaande virtuele harde schijf hebt, monteert u de vereiste partitie. In het volgende voorbeeld wordt `/dev/sdc1`de eerste primaire partitie gemonteerd op :
+3. Als u meerdere partities op de bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. In het volgende voor beeld wordt de eerste primaire partitie `/dev/sdc1`gekoppeld aan:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Aanbevolen is het monteren van gegevensschijven op VM's in Azure met behulp van de universeel unieke id (UUID) van de virtuele harde schijf. Voor dit korte scenario voor het oplossen van problemen is het niet nodig om de virtuele harde schijf te monteren met behulp van de UUID. Bij normaal gebruik kan het `/etc/fstab` bewerken om virtuele harde schijven te monteren met de naam van het apparaat in plaats van UUID er echter toe leiden dat de VM niet wordt opgestart.
+    > Best Practice is het koppelen van gegevens schijven op virtuele machines in azure met behulp van de Universally Unique Identifier (UUID) van de virtuele harde schijf. Voor dit korte probleemoplossings scenario is het niet nodig om de virtuele harde schijf te koppelen met behulp van de UUID. Het bewerken `/etc/fstab` van virtuele harde schijven met de apparaatnaam in plaats van de UUID kan er echter toe leiden dat de VM niet kan worden opgestart onder normaal gebruik.
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen op de originele virtuele harde schijf oplossen
-Met de bestaande virtuele harde schijf gemonteerd, u nu alle onderhouds- en probleemoplossingsstappen uitvoeren als dat nodig is. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
+## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen op de oorspronkelijke virtuele harde schijf oplossen
+Als de bestaande virtuele harde schijf is gekoppeld, kunt u nu eventuele onderhouds-en probleemoplossings stappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Originele virtuele harde schijf loskoppelen en loskoppelen
-Zodra uw fouten zijn opgelost, u de bestaande virtuele harde schijf loskoppelen van uw vm voor het oplossen van problemen. U uw virtuele harde schijf niet gebruiken met een andere VM totdat de lease die de virtuele harde schijf aan de VM voor het oplossen van problemen koppelt, is vrijgegeven.
+## <a name="unmount-and-detach-original-virtual-hard-disk"></a>De oorspronkelijke virtuele harde schijf ontkoppelen en loskoppelen
+Wanneer de fouten zijn opgelost, koppelt u de bestaande virtuele harde schijf los van uw probleemoplossings-VM. U kunt de virtuele harde schijf niet met andere virtuele machines gebruiken totdat de lease die de virtuele harde schijf koppelt aan de VM voor probleem oplossing is vrijgegeven.
 
-1. Van de SSH-sessie tot de VM voor het oplossen van problemen, de bestaande virtuele harde schijf wordt losgekoppeld. Wijzig eerst de bovenliggende map voor uw bevestigingspunt:
+1. Ontkoppel de bestaande virtuele harde schijf van de SSH-sessie naar uw VM voor probleem oplossing. Wijzig eerst de bovenliggende map voor het koppel punt:
 
     ```bash
     cd /
     ```
 
-    Maak nu de bestaande virtuele harde schijf los. In het volgende voorbeeld wordt `/dev/sdc1`het apparaat ontkoppeld op :
+    Ontkoppel nu de bestaande virtuele harde schijf. In het volgende voor beeld wordt het apparaat ontkoppeld op `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Maak nu de virtuele harde schijf los van de VM. Selecteer uw VM in de portal en klik op **Schijven**. Selecteer uw bestaande virtuele harde schijf en klik op **Losmaken:**
+2. Ontkoppel nu de virtuele harde schijf van de VM. Selecteer uw virtuele machine in de portal en klik op **schijven**. Selecteer uw bestaande virtuele harde schijf en klik vervolgens op **ontkoppelen**:
 
-    ![Bestaande virtuele harde schijf loskoppelen](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
+    ![Bestaande virtuele harde schijf ontkoppelen](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    Wacht totdat de VM de gegevensschijf heeft losgemaakt voordat u verdergaat.
+    Wacht tot de virtuele machine de gegevens schijf heeft losgekoppeld voordat u doorgaat.
 
-## <a name="swap-the-os-disk-for-the-vm"></a>De OS-schijf ruilen voor de VM
+## <a name="swap-the-os-disk-for-the-vm"></a>De besturingssysteem schijf voor de virtuele machine wisselen
 
-Azure-portal ondersteunt nu het wijzigen van de OS-schijf van de VM. Voer de volgende stappen uit om dit te doen:
+Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de virtuele machine. Voer de volgende stappen uit om dit te doen:
 
-1. Ga naar [Azure-portal](https://portal.azure.com). Selecteer **Virtuele machines** op de zijbalk en selecteer de vm die een probleem heeft.
-1. Selecteer **schijven**in het linkerdeelvenster en selecteer **vervolgens De schijf van Het besturingssysteem wisselen**.
-        ![De afbeelding over Swap OS-schijf in Azure-portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
+1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens **besturingssysteem schijf wisselen**.
+        ![De afbeelding over het wisselen van de besturingssysteem schijf in Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als u de schijf niet in de lijst ziet, wacht u 10 ~ 15 minuten nadat u de schijf loskoppelt van de VM voor het oplossen van problemen. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de VM.
+1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als de schijf niet in de lijst wordt weer geven, wacht u 10 ~ 15 minuten nadat u de schijf hebt losgekoppeld van de virtuele machine voor probleem oplossing. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de virtuele machine.
 1. Selecteer OK.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [SSH-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw vm. Zie Problemen met de connectiviteit van [toepassingen op een Linux-vm oplossen voor](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)problemen met de toegang tot toepassingen op uw vm.
+Zie [problemen met ssh-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Linux-VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
 
-Zie overzicht van Azure Resource Manager voor meer informatie over het gebruik van Resource [Manager.](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over het gebruik van Resource Manager.

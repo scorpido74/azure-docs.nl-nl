@@ -1,21 +1,21 @@
 ---
 title: Scalaire expressies in Azure Cosmos DB SQL-query's
-description: Meer informatie over de SQL-syntaxis van scalaire expressie voor Azure Cosmos DB. In dit artikel wordt ook beschreven hoe scalaire expressies kunnen worden gecombineerd in complexe expressies met behulp van operatoren.
+description: Meer informatie over de SQL-syntaxis van scalaire expressies voor Azure Cosmos DB. In dit artikel wordt ook beschreven hoe u scalaire expressies kunt combi neren in complexe expressies met behulp van Opera tors.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74870731"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
 
-De [SELECT-component](sql-query-select.md) ondersteunt scalaire expressies. Een scalaire expressie is een combinatie van symbolen en operatoren die kunnen worden geëvalueerd om één waarde te verkrijgen. Voorbeelden van scalaire expressies zijn: constanten, eigenschapsverwijzingen, verwijzingen naar arrayelementen, aliasverwijzingen of functieaanroepen. Scalaire expressies kunnen worden gecombineerd tot complexe expressies met behulp van operatoren.
+De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een scalaire expressie is een combi natie van symbolen en Opera tors die kunnen worden geëvalueerd om één waarde te verkrijgen. Voor beelden van scalaire expressies zijn: constanten, eigenschaps verwijzingen, matrix element verwijzingen, alias verwijzingen of functie aanroepen. Scalaire expressies kunnen worden gecombineerd tot complexe expressies met behulp van Opera tors.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -50,60 +50,60 @@ De [SELECT-component](sql-query-select.md) ondersteunt scalaire expressies. Een 
   
 - `<constant>`  
   
-   Geeft een constante waarde weer. Zie [sectie Constanten](sql-query-constants.md) voor meer informatie.  
+   Vertegenwoordigt een constante waarde. Zie de sectie [constanten](sql-query-constants.md) voor meer informatie.  
   
 - `input_alias`  
   
-   Vertegenwoordigt een waarde gedefinieerd `input_alias` door de `FROM` geïntroduceerde in de clausule.  
-  Deze waarde is gegarandeerd niet **ongedefinieerd** –**ongedefinieerde** waarden in de invoer worden overgeslagen.  
+   Vertegenwoordigt een waarde die is gedefinieerd `input_alias` door de `FROM` component die is geïntroduceerd in.  
+  Deze waarde is gegarandeerd niet- **gedefinieerd** .**ongedefinieerde** waarden in de invoer worden overgeslagen.  
   
 - `<scalar_expression>.property_name`  
   
-   Hiermee vertegenwoordigt u een waarde van de eigenschap van een object. Als de eigenschap niet bestaat of eigenschap wordt verwezen naar een waarde, die geen object is, evalueert de expressie naar **ongedefinieerde** waarde.  
+   Vertegenwoordigt een waarde van de eigenschap van een object. Als de eigenschap niet bestaat of als er wordt verwezen naar de eigenschap in een waarde die geen object is, wordt de expressie geëvalueerd als niet- **gedefinieerde** waarde.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Hiermee vertegenwoordigt u een `property_name` waarde van de `array_index` eigenschap met naam of arrayelement met index van een array. Als de eigenschap/array-index niet bestaat of als de eigenschap/array-index wordt verwezen naar een waarde die geen object/array is, wordt de expressie geëvalueerd op niet-gedefinieerde waarde.  
+   Vertegenwoordigt een waarde van de eigenschap met de `property_name` naam of het matrix element `array_index` met de index van een matrix. Als de eigenschap/matrix index niet bestaat of als er wordt verwezen naar de eigenschap/matrix index op een waarde die geen object/matrix is, wordt de expressie geëvalueerd als niet-gedefinieerde waarde.  
   
 - `unary_operator <scalar_expression>`  
   
-   Vertegenwoordigt een operator die op één waarde wordt toegepast. Zie [Sectie Operators](sql-query-operators.md) voor meer informatie.  
+   Vertegenwoordigt een operator die wordt toegepast op een enkele waarde. Zie de sectie [Opera tors](sql-query-operators.md) voor meer informatie.  
   
 - `<scalar_expression> binary_operator <scalar_expression>`  
   
-   Vertegenwoordigt een operator die wordt toegepast op twee waarden. Zie [Sectie Operators](sql-query-operators.md) voor meer informatie.  
+   Vertegenwoordigt een operator die wordt toegepast op twee waarden. Zie de sectie [Opera tors](sql-query-operators.md) voor meer informatie.  
   
 - `<scalar_function_expression>`  
   
-   Vertegenwoordigt een waarde die wordt gedefinieerd door een resultaat van een functieaanroep.  
+   Vertegenwoordigt een waarde die is gedefinieerd door een resultaat van een functie aanroep.  
   
 - `udf_scalar_function`  
   
-   Naam van de door de gebruiker gedefinieerde scalaire functie.  
+   De naam van de door de gebruiker gedefinieerde scalaire functie.  
   
 - `builtin_scalar_function`  
   
-   Naam van de ingebouwde scalaire functie.  
+   De naam van de ingebouwde scalaire functie.  
   
 - `<create_object_expression>`  
   
-   Hiermee vertegenwoordigt u een waarde die wordt verkregen door een nieuw object te maken met opgegeven eigenschappen en hun waarden.  
+   Vertegenwoordigt een waarde die wordt opgehaald door het maken van een nieuw object met opgegeven eigenschappen en hun waarden.  
   
 - `<create_array_expression>`  
   
-   Vertegenwoordigt een waarde die wordt verkregen door een nieuwe array te maken met opgegeven waarden als elementen  
+   Vertegenwoordigt een waarde die wordt opgehaald door een nieuwe matrix te maken met opgegeven waarden als elementen  
   
 - `parameter_name`  
   
-   Hiermee vertegenwoordigt u een waarde van de opgegeven parameternaam. Parameternamen moeten een \@ enkel als eerste teken hebben.  
+   Vertegenwoordigt een waarde van de opgegeven parameter naam. Parameter namen moeten een enkel \@ als het eerste teken hebben.  
   
 ## <a name="remarks"></a>Opmerkingen
   
   Wanneer u een ingebouwde of door de gebruiker gedefinieerde scalaire functie aanroept, moeten alle argumenten worden gedefinieerd. Als een van de argumenten niet is gedefinieerd, wordt de functie niet aangeroepen en wordt het resultaat niet gedefinieerd.  
   
-  Bij het maken van een object wordt elke eigenschap die ongedefinieerde waarde is toegewezen, overgeslagen en niet opgenomen in het gemaakte object.  
+  Bij het maken van een object wordt elke eigenschap die niet-gedefinieerde waarde is toegewezen, overgeslagen en niet opgenomen in het gemaakte object.  
   
-  Bij het maken van een array wordt elke elementwaarde die **ongedefinieerde** waarde is toegewezen, overgeslagen en niet opgenomen in het gemaakte object. Hierdoor neemt het volgende gedefinieerde element zijn plaats in zodanig dat de gemaakte array geen overgeslagen indexen heeft.  
+  Wanneer u een matrix maakt, wordt een element waarde die niet is **gedefinieerd** , overgeslagen en niet in het gemaakte object opgenomen. Dit zorgt ervoor dat het volgende gedefinieerde element zodanig wordt geplaatst dat de gemaakte matrix geen indexen overgeslagen.  
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -119,7 +119,7 @@ U ziet deze uitvoer:
     }]
 ```
 
-In de volgende query is het resultaat van de scalaire expressie een Booleaan:
+In de volgende query is het resultaat van de scalaire expressie een Booleaanse waarde:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState

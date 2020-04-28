@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid instellen voor Azure Resource Manager VM's | Microsoft Documenten
-description: In deze zelfstudie ziet u hoe u een groep Always On-beschikbaarheid maakt met virtuele Azure-machines in de Azure Resource Manager-modus.
+title: Hoge Beschik baarheid instellen voor Azure Resource Manager Vm's | Microsoft Docs
+description: In deze zelf studie leert u hoe u een AlwaysOn-beschikbaarheids groep maakt met virtuele Azure-machines in Azure Resource Manager modus.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,199 +15,199 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75374249"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Beschikbaarheidsgroepen altijd configureren in Azure Virtual Machines: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>AlwaysOn AlwaysOn-beschikbaarheids groepen in azure Virtual Machines automatisch configureren: Resource Manager
 
-In deze zelfstudie ziet u hoe u een SQL Server-beschikbaarheidsgroep maakt die gebruikmaakt van virtuele azure-machines voor Azure Resource Manager. De zelfstudie gebruikt Azure-blades om een sjabloon te configureren. U de standaardinstellingen controleren, vereiste instellingen typen en de bladen in de portal bijwerken terwijl u deze zelfstudie doorloopt.
+In deze zelf studie wordt uitgelegd hoe u een SQL Server beschikbaarheids groep maakt die gebruikmaakt van Azure Resource Manager virtuele machines. De zelf studie maakt gebruik van Azure-Blades voor het configureren van een sjabloon. U kunt de standaard instellingen controleren, vereiste instellingen typen en de Blades bijwerken in de portal tijdens deze zelf studie.
 
-Met de volledige zelfstudie wordt een SQL Server-beschikbaarheidsgroep gemaakt op Azure Virtual Machines die de volgende elementen bevatten:
+Met de volledige zelf studie maakt u een SQL Server-beschikbaarheids groep in azure Virtual Machines die de volgende elementen bevat:
 
-* Een virtueel netwerk met meerdere subnetten, waaronder een frontend en een backend subnet
-* Twee domeincontrollers met een Active Directory-domein
-* Twee virtuele machines die SQL Server uitvoeren en worden geïmplementeerd op het backend-subnet en zijn samengevoegd met het Active Directory-domein
-* Een failovercluster met drie nodes met het quorummodel Knooppuntmeerderheid
-* Een beschikbaarheidsgroep met twee synchrone commit replica's van een beschikbaarheidsdatabase
+* Een virtueel netwerk met meerdere subnetten, met inbegrip van een front-end en een back-end-subnet
+* Twee domein controllers met een Active Directory domein
+* Twee virtuele machines met SQL Server en worden geïmplementeerd op het back-end-subnet en zijn gekoppeld aan het Active Directory domein
+* Een failover-cluster met drie knoop punten met het quorum model knooppunt meerderheid
+* Een beschikbaarheids groep met twee replica's met synchrone door Voer van een beschikbaarheids database
 
-De volgende illustratie vertegenwoordigt de volledige oplossing.
+De volgende afbeelding geeft de volledige oplossing.
 
-![Labarchitectuur testen voor beschikbaarheidsgroepen in Azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/0-EndstateSample.png)
+![Test Lab-architectuur voor beschikbaarheids groepen in azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/0-EndstateSample.png)
 
-Alle resources in deze oplossing behoren tot één resourcegroep.
+Alle resources in deze oplossing behoren tot één resource groep.
 
-Bevestig het volgende voordat u deze zelfstudie start:
+Voordat u met deze zelf studie begint, moet u het volgende bevestigen:
 
-* U hebt al een Azure-account. Als je er geen hebt, [meld je dan aan voor een proefaccount.](https://azure.microsoft.com/pricing/free-trial/)
-* U weet al hoe u de GUI moet gebruiken om een virtuele SQL Server-machine in te richten vanuit de virtuele machinegalerie. Zie [Een virtuele SQL Server-machine inrichten op Azure](virtual-machines-windows-portal-sql-server-provision.md)voor meer informatie.
-* Je hebt al een goed begrip van beschikbaarheidsgroepen. Zie [Beschikbaarheidsgroepen (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)voor meer informatie.
+* U hebt al een Azure-account. Als u er nog geen hebt, kunt u [zich aanmelden voor een proef account](https://azure.microsoft.com/pricing/free-trial/).
+* U weet al hoe u de GUI kunt gebruiken om een SQL Server virtuele machine in te richten vanuit de galerie met virtuele machines. Zie [een SQL Server virtuele machine inrichten in azure](virtual-machines-windows-portal-sql-server-provision.md)voor meer informatie.
+* U hebt al een solide uitleg van beschikbaarheids groepen. Zie AlwaysOn [Availability groups (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)voor meer informatie.
 
 > [!NOTE]
-> Als u beschikbaarheidsgroepen wilt gebruiken met SharePoint, raadpleegt u SQL [Server 2012 Altijd beschikbaarheidsgroepen configureren voor SharePoint 2013](/SharePoint/administration/configure-an-alwayson-availability-group).
+> Zie voor meer informatie over het gebruik van beschikbaarheids groepen met share point ook de [configuratie SQL Server 2012 altijd on-beschikbaarheids groepen configureren voor share point 2013](/SharePoint/administration/configure-an-alwayson-availability-group).
 >
 >
 
-Gebruik in deze zelfstudie de Azure-portal om:
+In deze zelf studie gebruikt u de Azure Portal voor het volgende:
 
-* Kies de sjabloon Altijd aan in de portal.
-* Controleer de sjablooninstellingen en werk een aantal configuratie-instellingen voor uw omgeving bij.
-* Houd Azure in de gaten terwijl het de hele omgeving creëert.
-* Maak verbinding met een domeincontroller en vervolgens met een server waarop SQL Server wordt uitgevoerd.
+* Kies de sjabloon altijd aan in de portal.
+* Controleer de sjabloon instellingen en werk een paar configuratie-instellingen voor uw omgeving bij.
+* Bewaak Azure terwijl het de hele omgeving maakt.
+* Maak verbinding met een domein controller en vervolgens naar een server waarop SQL Server wordt uitgevoerd.
 
 [!INCLUDE [availability-group-template](../../../../includes/virtual-machines-windows-portal-sql-alwayson-ag-template.md)]
 
-## <a name="provision-the-cluster-from-the-gallery"></a>Het cluster vanuit de galerie inrichten
-Azure biedt een galerijafbeelding voor de hele oplossing. Ga als u de sjabloon zoeken:
+## <a name="provision-the-cluster-from-the-gallery"></a>Het cluster inrichten vanuit de galerie
+Azure biedt een galerie-afbeelding voor de volledige oplossing. De sjabloon zoeken:
 
-1. Meld u aan bij de Azure-portal met uw account.
-2. Klik in de Azure-portal op **Een resource maken** om het deelvenster **Nieuw** te openen.
-3. Zoek in het **nieuwe** deelvenster naar **AlwaysOn**.
-   ![Alwayson-sjabloon zoeken](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-4. Zoek SQL Server **AlwaysOn-cluster**in de zoekresultaten .
-   ![Alwayson-sjabloon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
-5. Kies **Resourcebeheer**in **Een implementatiemodel selecteren**.
+1. Meld u aan bij de Azure Portal met uw account.
+2. Klik in de Azure Portal op **een resource maken** om het **nieuwe** deel venster te openen.
+3. Zoek in het **nieuwe** deel venster naar **AlwaysOn**.
+   ![AlwaysOn-sjabloon zoeken](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+4. Zoek in de zoek resultaten **SQL Server AlwaysOn-cluster**.
+   ![AlwaysOn-sjabloon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+5. Kies in **een implementatie model selecteren de**optie **Resource Manager**.
 
 ### <a name="basics"></a>Basisbeginselen
-Klik **op Basisbeginselen** en configureer de volgende instellingen:
+Klik op **basis principes** en configureer de volgende instellingen:
 
-* **De gebruikersnaam van** de beheerder is een gebruikersaccount met machtigingen voor domeinbeheerders en is lid van de vaste serverrol van SQL Server sysadmin op beide exemplaren van SQL Server. Gebruik **DomainAdmin**voor deze zelfstudie .
-* **Wachtwoord** is het wachtwoord voor het domeinbeheerdersaccount. Gebruik een complex wachtwoord. Bevestig het wachtwoord.
-* **Abonnement** is het abonnement dat Azure factureert om alle geïmplementeerde resources voor de beschikbaarheidsgroep uit te voeren. Als uw account meerdere abonnementen heeft, u een ander abonnement opgeven.
-* **Resourcegroep** is de naam voor de groep waartoe alle Azure-resources behoren die door deze sjabloon zijn gemaakt. Gebruik **SQL-HA-RG**voor deze zelfstudie . Zie voor meer informatie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
-* **Locatie** is het Azure-gebied waar de zelfstudie de resources maakt. Kies een Azure-gebied.
+* De **gebruikers naam** van de beheerder is een gebruikers account met beheerders machtigingen voor het domein en is lid van de vaste serverrol SQL Server sysadmin op beide exemplaren van SQL Server. Voor deze zelf studie gebruikt u **domein Administrator**.
+* Het **wacht woord is het** wacht woord voor het domein beheerders account. Gebruik een complex wacht woord. Bevestig het wachtwoord.
+* **Abonnement** is het abonnement dat door Azure wordt gebruikt om alle geïmplementeerde resources voor de beschikbaarheids groep uit te voeren. Als uw account meerdere abonnementen heeft, kunt u een ander abonnement opgeven.
+* De **resource groep** is de naam voor de groep waartoe alle Azure-resources behoren die door deze sjabloon worden gemaakt. Voor deze zelf studie gebruikt u **SQL-ha-RG**. Zie voor meer informatie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
+* De **locatie** is de Azure-regio waar de zelf studie de resources maakt. Kies een Azure-regio.
 
-De volgende schermafbeelding is een voltooid **basicsblad:**
+De volgende scherm afbeelding is een voltooide Blade **basis beginselen** :
 
 ![Basisbeginselen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 Klik op **OK**.
 
-### <a name="domain-and-network-settings"></a>Domein- en netwerkinstellingen
-Met deze Azure-galeriesjabloon wordt een domein- en domeincontrollers gemaakt. Het creëert ook een netwerk en twee subnetten. De sjabloon kan geen servers maken in een bestaand domein of virtueel netwerk. De volgende stap configureert de domein- en netwerkinstellingen.
+### <a name="domain-and-network-settings"></a>Domein-en netwerk instellingen
+Deze Azure Gallery-sjabloon maakt een domein en domein controllers. Er worden ook een netwerk en twee subnetten gemaakt. De sjabloon kan geen servers in een bestaand domein of virtueel netwerk maken. Met de volgende stap worden de domein-en netwerk instellingen geconfigureerd.
 
-Controleer op het blad **Domain en netwerkinstellingen** de vooraf ingestelde waarden voor de domein- en netwerkinstellingen:
+Controleer op de Blade **domein en netwerk instellingen** de vooraf ingestelde waarden voor de domein-en netwerk instellingen:
 
-* **Forestrootdomeinnaam** is de domeinnaam voor het Active Directory-domein dat het cluster host. Gebruik **contoso.com**voor de zelfstudie.
-* **De naam van het virtuele netwerk** is de netwerknaam voor het virtuele Azure-netwerk. Gebruik voor de zelfstudie **autohaVNET**.
-* **Subnetnaam Domeincontroller** is de naam van een deel van het virtuele netwerk dat de domeincontroller host. **Subnet-1 gebruiken**. In dit subnet wordt adresvoorvoegssel **10.0.0.0/24 gebruikt.**
-* **Sql Server-subnetnaam** is de naam van een deel van het virtuele netwerk dat de servers host waarop SQL Server en de getuige voor bestandsshare worden uitgevoerd. **Subnet-2 gebruiken**. In dit subnet wordt adresvoorvoegssel **10.0.1.0/26 gebruikt.**
+* **Forest-hoofd domein naam** is de domein naam voor het Active Directory domein dat als host fungeert voor het cluster. Gebruik **contoso.com**voor de zelf studie.
+* **Virtual Network naam** is de netwerk naam voor het virtuele netwerk van Azure. Gebruik **autohaVNET**voor de zelf studie.
+* De naam van het subnet van de **domein controller** is de naam van een deel van het virtuele netwerk dat als host fungeert voor de domein controller. **Subnet-1**gebruiken. Dit subnet maakt gebruik van adres voorvoegsel **10.0.0.0/24**.
+* **SQL Server naam** van het subnet is de naam van een deel van het virtuele netwerk dat als host fungeert voor de servers waarop SQL Server wordt uitgevoerd en de bestandssharewitness. **Subnet-2**gebruiken. Dit subnet gebruikt het adres voorvoegsel **10.0.1.0/26**.
 
-Zie [Virtueel netwerkoverzicht](../../../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele netwerken in Azure.  
+Zie [overzicht van virtueel netwerk](../../../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele netwerken in Azure.  
 
-De **domein- en netwerkinstellingen** moeten er uitzien als de volgende schermafbeelding:
+De **domein-en netwerk instellingen** moeten eruitzien als in de volgende scherm afbeelding:
 
-![Domein- en netwerkinstellingen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
+![Domein-en netwerk instellingen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
 
-Indien nodig u deze waarden wijzigen. Gebruik voor deze zelfstudie de vooraf ingestelde waarden.
+Als dat nodig is, kunt u deze waarden wijzigen. Voor deze zelf studie gebruikt u de vooraf ingestelde waarden.
 
-Controleer de instellingen en klik op **OK**.
+Controleer de instellingen en klik vervolgens op **OK**.
 
-### <a name="availability-group-settings"></a>Instellingen voor beschikbaarheidsgroepen
-Controleer in **groepsinstellingen beschikbaarheid**de vooraf ingestelde waarden voor de beschikbaarheidsgroep en de listener.
+### <a name="availability-group-settings"></a>Instellingen van beschikbaarheids groep
+Controleer de vooraf ingestelde waarden voor de beschikbaarheids groep en de listener op de instellingen van de **beschikbaarheids groep**.
 
-* De naam van de **beschikbaarheidsgroep** is de geclusterde resourcenaam voor de beschikbaarheidsgroep. Gebruik Voor deze zelfstudie **Contoso-ag**.
-* **De naam van** de groep listener voor beschikbaarheid wordt gebruikt door het cluster en de interne load balancer. Clients die verbinding maken met SQL Server kunnen deze naam gebruiken om verbinding te maken met de juiste replica van de database. Gebruik voor deze zelfstudie **Contoso-listener**.
-* **De serverlistenerpoort** voor beschikbaarheidsgroepen geeft de TCP-poort van de SQL Server-listener op. Gebruik voor deze zelfstudie de standaardpoort **1433**.
+* De naam van de **beschikbaarheids groep** is de geclusterde resource naam voor de beschikbaarheids groep. Gebruik **Contoso-AG**voor deze zelf studie.
+* De naam van de **beschikbaarheids groep-listener** wordt gebruikt door het cluster en de interne Load Balancer. Clients die verbinding maken met SQL Server kunnen deze naam gebruiken om verbinding te maken met de juiste replica van de data base. Voor deze zelf studie gebruikt u **Contoso-listener**.
+* **Poort van beschikbaarheids groep-listener** specificeert de TCP-poort van de SQL Server-listener. Voor deze zelf studie gebruikt u de standaard poort **1433**.
 
-Indien nodig u deze waarden wijzigen. Gebruik voor deze zelfstudie de vooraf ingestelde waarden.  
+Als dat nodig is, kunt u deze waarden wijzigen. Voor deze zelf studie gebruikt u de vooraf ingestelde waarden.  
 
-![instellingen voor beschikbaarheidsgroepen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
+![instellingen van beschikbaarheids groep](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
 Klik op **OK**.
 
-### <a name="virtual-machine-size-storage-settings"></a>Virtuele machinegrootte, opslaginstellingen
-Kies op **VM-formaat, opslaginstellingen**een SQL Server-grootte van de virtuele machine en controleer de andere instellingen.
+### <a name="virtual-machine-size-storage-settings"></a>Grootte van de virtuele machine, opslag instellingen
+Voor de **VM-grootte, opslag instellingen**, kiest u een SQL Server grootte van de virtuele machine en bekijkt u de overige instellingen.
 
-* **SQL Server virtuele machinegrootte** is de grootte voor beide virtuele machines die SQL Server uitvoeren. Kies een geschikte virtuele machinegrootte voor uw werkbelasting. Als u deze omgeving bouwt voor de zelfstudie, gebruikt u **DS2**. Kies voor productieworkloads een virtuele machinegrootte die de werkbelasting kan ondersteunen. Veel productieworkloads vereisen **DS4** of groter. De sjabloon bouwt twee virtuele machines van dit formaat en installeert SQL Server op elk van deze apparaten. Zie [Grootte voor virtuele machines voor](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)meer informatie .
+* **SQL Server grootte van de virtuele machine** is de grootte voor zowel virtuele machines waarop SQL Server wordt uitgevoerd. Kies een geschikte grootte voor de virtuele machine voor uw werk belasting. Als u deze omgeving bouwt voor de zelf studie, gebruikt u **DS2**. Kies voor werk belastingen voor productie een grootte van virtuele machines die de werk belasting kan ondersteunen. Veel productie werkbelastingen vereisen **DS4** of groter. Met de sjabloon worden twee virtuele machines van deze grootte gebouwd en worden er SQL Server op elke machine geïnstalleerd. Zie [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
 
 > [!NOTE]
-> Azure installeert de Enterprise Edition van SQL Server. De kosten zijn afhankelijk van de editie en de grootte van de virtuele machine. Zie de prijzen van [virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)voor gedetailleerde informatie over de huidige kosten.
+> Azure installeert de Enter prise-editie van SQL Server. De kosten zijn afhankelijk van de editie en de grootte van de virtuele machine. Zie [prijzen van virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)voor meer informatie over de huidige kosten.
 >
 >
 
-* **Domeincontroller virtuele machine grootte** is de virtuele machine grootte voor de domeincontrollers. Voor deze zelfstudie gebruik **D2**.
-* **File Share Witness virtuele machine grootte** is de virtuele machine grootte voor het bestand delen getuige. Gebruik Voor deze zelfstudie **A1**.
-* **SQL Storage-account** is de naam van het opslagaccount dat de SQL Server-gegevens en besturingssysteemschijven bevat. Gebruik voor deze zelfstudie **alwaysonsql01**.
-* **DC Storage-account** is de naam van het opslagaccount voor de domeincontrollers. Gebruik voor deze zelfstudie **alwaysondc01**.
-* **SQL Server-gegevensschijfgrootte** in TB is de grootte van de SQL Server-gegevensschijf in TB. Geef een getal op van 1 tot en met 4. Gebruik voor deze zelfstudie **1**.
-* **Opslagoptimalisatie** stelt specifieke opslagconfiguratie-instellingen in voor de virtuele SQL Server-machines op basis van het werkbelastingtype. Alle virtuele SQL Server-machines in dit scenario gebruiken premium opslag met Azure disk host cache ingesteld op alleen-lezen. Bovendien u SQL Server-instellingen voor de werkbelasting optimaliseren door een van de volgende drie instellingen te kiezen:
+* De grootte van de virtuele machine van de **domein controller** is de grootte van de virtuele machine voor de domein controllers. Voor deze zelf studie gebruikt u **D2**.
+* **Grootte van de virtuele machine van de bestands share-Witness** is de grootte van de virtuele machine voor de bestands share-Witness. Voor deze zelf studie gebruikt u **a1**.
+* **SQL-opslag account** is de naam van het opslag account dat de SQL Server gegevens en besturingssysteem schijven bevat. Voor deze zelf studie gebruikt u **alwaysonsql01**.
+* **DC-opslag account** is de naam van het opslag account voor de domein controllers. Voor deze zelf studie gebruikt u **alwaysondc01**.
+* **SQL Server grootte van de gegevens schijf** in TB is de grootte van de SQL Server gegevens schijf in TB. Geef een getal tussen 1 en 4 op. Voor deze zelf studie gebruikt u **1**.
+* **Opslag optimalisatie** stelt specifieke opslag configuratie-instellingen voor de virtuele machines van SQL Server in op basis van het type werk belasting. Alle SQL Server virtuele machines in dit scenario gebruiken Premium-opslag met de Azure Disk host-cache ingesteld op alleen-lezen. Daarnaast kunt u de SQL Server-instellingen voor de werk belasting optimaliseren door een van de volgende drie instellingen te kiezen:
 
-  * **Algemene werkbelasting** stelt geen specifieke configuratie-instellingen in.
-  * **Transactionele verwerking** stelt trace flag 1117 en 1118 in.
-  * **Data warehousing** sets trace flag 1117 en 610.
+  * **Algemene werk belasting** stelt geen specifieke configuratie-instellingen in.
+  * **Transactionele verwerking** sets tracerings vlag 1117 en 1118.
+  * **Gegevens opslag** sets tracerings vlag 1117 en 610.
 
-Gebruik voor deze zelfstudie **Algemene werkbelasting**.
+Voor deze zelf studie gebruikt u de **algemene werk belasting**.
 
-![Instellingen voor opslag van VM-formaat](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
+![Opslag instellingen voor VM-grootte](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
-Controleer de instellingen en klik op **OK**.
+Controleer de instellingen en klik vervolgens op **OK**.
 
 #### <a name="a-note-about-storage"></a>Een opmerking over opslag
-Extra optimalisaties zijn afhankelijk van de grootte van de SQL Server-gegevensschijven. Voor elke terabyte aan gegevensschijf voegt Azure een extra 1 TB premium-opslag toe. Wanneer een server 2 TB of meer nodig heeft, maakt de sjabloon een opslaggroep op elke virtuele SQL Server-machine. Een opslaggroep is een vorm van opslagvirtualisatie waarbij meerdere schijven zijn geconfigureerd om een hogere capaciteit, tolerantie en prestaties te bieden.  De sjabloon maakt vervolgens een opslagruimte in de opslaggroep en presenteert één gegevensschijf aan het besturingssysteem. De sjabloon wijst deze schijf aan als de gegevensschijf voor SQL Server. De sjabloon stemt de opslaggroep voor SQL Server af met de volgende instellingen:
+Extra optimalisaties zijn afhankelijk van de grootte van de SQL Server gegevens schijven. Voor elke terabyte van de gegevens schijf voegt Azure een extra Premium-opslag van 1 TB toe. Wanneer een server 2 TB of meer vereist, maakt de sjabloon een opslag groep op elke virtuele machine van SQL Server. Een opslag groep is een vorm van opslag virtualisatie waarbij meerdere schijven zijn geconfigureerd om hogere capaciteit, tolerantie en prestaties te bieden.  De sjabloon maakt vervolgens een opslag ruimte op de opslag groep en presenteert één gegevens schijf aan het besturings systeem. De sjabloon geeft deze schijf aan als de gegevens schijf voor SQL Server. Met de sjabloon wordt de opslag groep voor SQL Server gestemd met behulp van de volgende instellingen:
 
-* Streepgrootte is de interleave-instelling voor de virtuele schijf. Transactionele workloads gebruiken 64 KB. Data warehousing workloads gebruiken 256 KB.
-* Veerkracht is eenvoudig (geen veerkracht).
+* De Stripe-grootte is de Interleave-instelling voor de virtuele schijf. Transactionele workloads gebruiken 64 KB. Werk belastingen voor gegevens opslag gebruiken 256 KB.
+* Tolerantie is eenvoudig (geen tolerantie).
 
 > [!NOTE]
-> Azure premium storage is lokaal redundant en houdt drie kopieën van de gegevens binnen één regio, dus extra tolerantie in de opslaggroep is niet vereist.
+> Azure Premium Storage is lokaal redundant en houdt drie kopieën van de gegevens binnen één regio, waardoor er geen extra tolerantie bij de opslag groep nodig is.
 >
 >
 
-* Het aantal kolomtypen is gelijk aan het aantal schijven in de opslaggroep.
+* Het aantal kolommen is gelijk aan het aantal schijven in de opslag groep.
 
-Zie voor meer informatie over opslagruimte en opslagpools:
+Zie voor meer informatie over opslag ruimte en opslag groepen:
 
 * [Overzicht van Opslagruimten](https://technet.microsoft.com/library/hh831739.aspx)
-* [Windows Server-back-up- en opslaggroepen](https://technet.microsoft.com/library/dn390929.aspx)
+* [Windows Server Back-up en opslag groepen](https://technet.microsoft.com/library/dn390929.aspx)
 
-Zie Aanbevolen procedures voor prestaties voor [SQL Server in virtuele Azure-machines voor](virtual-machines-windows-sql-performance.md)meer informatie over best practices voor SQL Server-configuratie.
+Zie [Best practices voor prestaties voor SQL Server in azure virtual machines](virtual-machines-windows-sql-performance.md)voor meer informatie over aanbevolen procedures voor de configuratie van SQL Server.
 
 ### <a name="sql-server-settings"></a>SQL Server-instellingen
-Controleer en wijzig op **SQL Server-instellingen**het sql server-voorvoegsel voor virtuele machines, de SQL Server-versie, sql server-serviceaccount en -wachtwoord en het SQL-onderhoudsschema voor automatisch patchen.
+Bekijk en wijzig de SQL Server naam van de virtuele machine, SQL Server versie, SQL Server service account en wacht woord en de onderhouds planning voor SQL auto-patching voor **SQL Server instellingen**.
 
-* **SQL Server Name Prefix** wordt gebruikt om een naam te maken voor elke virtuele SQL Server-machine. Gebruik **sqlserver**voor deze zelfstudie . De sjabloon noemt de SQL Server virtuele machines *sqlserver-0* en *sqlserver-1*.
-* **SQL Server-versie** is de versie van SQL Server. Gebruik SQL **Server 2014 voor**deze zelfstudie . U ook kiezen voor **SQL Server 2012** of **SQL Server 2016.**
-* **De gebruikersnaam van sql server-serviceaccount** is de domeinnaam van het domein voor de SQL Server-service. Gebruik **sqlservice**voor deze zelfstudie.
-* **Wachtwoord** is het wachtwoord voor het SQL Server-serviceaccount.  Gebruik een complex wachtwoord. Bevestig het wachtwoord.
-* **SQL Auto Patching onderhoudsschema** identificeert de dag van de week dat Azure automatisch patches de SQL Servers. Typ voor deze zelfstudie **zondag.**
-* **SQL Auto Patching onderhoudsstartuur** is het tijdstip van de dag voor de Azure-regio wanneer de automatische patching begint.
+* **SQL Server naam voorvoegsel** wordt gebruikt voor het maken van een naam voor elke virtuele machine van SQL Server. Voor deze zelf studie gebruikt u **sqlserver**. De sjabloon namen de SQL Server virtuele machines *sqlserver-0* en *sqlserver-1*.
+* **SQL Server versie** is de versie van SQL Server. Voor deze zelf studie gebruikt u **SQL Server 2014**. U kunt ook kiezen **SQL Server 2012** of **SQL Server 2016**.
+* De **gebruikers naam van SQL Server-service account** is de naam van het domein account voor de SQL Server-service. Voor deze zelf studie gebruikt u **sqlservice**.
+* Het **wacht woord is het** wacht woord voor de SQL Server-service account.  Gebruik een complex wacht woord. Bevestig het wachtwoord.
+* De **onderhouds planning voor SQL auto patching** geeft aan op welke dag van de week de SQL-servers automatisch worden bijgewerkt door Azure. Voor deze zelf studie typt u **zondag**.
+* **Onderhoud start uur van SQL auto patching** is de tijd van de dag voor de Azure-regio wanneer automatische patching wordt gestart.
 
 > [!NOTE]
-> Het patchvenster voor elke virtuele machine wordt met een uur gespreid. Slechts één virtuele machine wordt tegelijkertijd gepatcht om verstoring van de dienstverlening te voorkomen.
+> Het patch venster voor elke virtuele machine wordt één uur gespreid. Er wordt slechts één virtuele machine tegelijk patches uitgevoerd om onderbreking van services te voor komen.
 >
 >
 
 ![SQL Server-instellingen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
 
-Controleer de instellingen en klik op **OK**.
+Controleer de instellingen en klik vervolgens op **OK**.
 
 ### <a name="summary"></a>Samenvatting
-Op de overzichtspagina valideert Azure de instellingen. U de sjabloon ook downloaden. Bekijk de samenvatting. Klik op **OK**.
+Op de pagina samen vatting valideert Azure de instellingen. U kunt de sjabloon ook downloaden. Bekijk de samenvatting. Klik op **OK**.
 
 ### <a name="buy"></a>Kopen
-Dit laatste blad bevat **gebruiksvoorwaarden**en **privacybeleid**. Bekijk deze informatie. Wanneer u klaar bent voor Azure om te beginnen met het maken van de virtuele machines en alle andere vereiste resources voor de beschikbaarheidsgroep, klikt u op **Maken**.
+Deze laatste Blade bevat **gebruiks voorwaarden**en het **Privacybeleid**. Lees deze informatie. Wanneer u klaar bent om Azure te gaan maken van de virtuele machines en alle andere vereiste resources voor de beschikbaarheids groep, klikt u op **maken**.
 
-De Azure-portal maakt de brongroep en alle resources.
+De Azure Portal maakt de resource groep en alle resources.
 
 ## <a name="monitor-deployment"></a>Implementatie bewaken
-Controleer de voortgang van de implementatie vanuit de Azure-portal. Een pictogram dat de implementatie vertegenwoordigt, wordt automatisch vastgemaakt aan het Azure-portaldashboard.
+De voortgang van de implementatie van de Azure Portal bewaken. Een pictogram dat de implementatie vertegenwoordigt, wordt automatisch vastgemaakt aan het dash board van Azure Portal.
 
-![Azure-dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
+![Azure-dash board](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>Verbinding maken met SQL Server
-De nieuwe exemplaren van SQL Server worden uitgevoerd op virtuele machines met IP-adressen met internetverbinding. U extern bureaublad (RDP) rechtstreeks naar elke virtuele SQL Server-machine leiden.
+De nieuwe exemplaren van SQL Server worden uitgevoerd op virtuele machines met IP-adressen die via internet zijn verbonden. U kunt extern bureau blad (RDP) rechtstreeks op elke virtuele machine van SQL Server.
 
-Voer de volgende stappen uit om RDP naar een SQL Server te gaan:
+Ga als volgt te werk om een SQL Server uit te voeren:
 
-1. Controleer in het Azure-portaldashboard of de implementatie is geslaagd.
-2. Klik **op Resources**.
-3. Klik in het blade **Resources** op **sqlserver-0**, de computernaam van een van de virtuele machines waarop SQL Server wordt uitgevoerd.
-4. Klik op het blad voor **sqlserver-0**op **Verbinden**. Uw browser vraagt of u het externe verbindingsobject wilt openen of opslaan. Klik op **Openen**.
-5. **Verbinding met extern bureaublad** kan u waarschuwen dat de uitgever van deze externe verbinding niet kan worden geïdentificeerd. Klik op **Verbinden**.
-6. Windows security vraagt u om uw referenties in te voeren om verbinding te maken met het IP-adres van de primaire domeincontroller. Klik **op Een ander account gebruiken**. Typ voor **gebruikersnaam** **contoso\DomainAdmin**. U hebt dit account geconfigureerd wanneer u de gebruikersnaam van de beheerder in de sjabloon instelt. Gebruik het complexe wachtwoord dat u hebt gekozen toen u de sjabloon configureerde.
-7. **Extern bureaublad** kan u waarschuwen dat de externe computer niet kan worden geverifieerd vanwege problemen met het beveiligingscertificaat. Het toont u de naam van het beveiligingscertificaat. Als u de tutorial hebt gevolgd, wordt de naam **sqlserver-0.contoso.com**. Klik **op Ja**.
+1. Controleer in het dash board van Azure Portal of de implementatie is geslaagd.
+2. Klik op **resources**.
+3. Klik op de Blade **resources** op **sqlserver-0**. Dit is de computer naam van een van de virtuele machines met SQL Server.
+4. Klik op de Blade voor **sqlserver-0**op **verbinden**. U wordt gevraagd of u het object voor externe verbinding wilt openen of opslaan. Klik op **Openen**.
+5. Via **verbinding met extern bureau blad** krijgt u mogelijk een waarschuwing dat de uitgever van deze externe verbinding niet kan worden geïdentificeerd. Klik op **Verbinden**.
+6. Windows-beveiliging vraagt u uw referenties in te voeren om verbinding te maken met het IP-adres van de primaire domein controller. Klik op **een ander account gebruiken**. Typ **contoso\DomainAdmin**voor **gebruikers naam**. U hebt dit account geconfigureerd bij het instellen van de gebruikers naam van de beheerder in de sjabloon. Gebruik het complexe wacht woord dat u hebt gekozen tijdens het configureren van de sjabloon.
+7. **Extern bureau blad** waarschuwt u mogelijk dat de externe computer niet kan worden geverifieerd vanwege problemen met het beveiligings certificaat. Hier wordt de naam van het beveiligings certificaat weer gegeven. Als u de zelf studie hebt gevolgd, is de naam **sqlserver-0.contoso.com**. Klik op **Ja**.
 
-U bent nu verbonden met RDP met de virtuele SQL Server-machine. U SQL Server Management Studio openen, verbinding maken met de standaardinstantie van SQL Server en controleren of de beschikbaarheidsgroep is geconfigureerd.
+U hebt nu verbinding met RDP met de virtuele machine van SQL Server. U kunt SQL Server Management Studio openen, verbinding maken met het standaard exemplaar van SQL Server en controleren of de beschikbaarheids groep is geconfigureerd.

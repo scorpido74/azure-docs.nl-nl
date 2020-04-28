@@ -1,6 +1,6 @@
 ---
-title: Knooppunten – Hyperscale (Citus) - Azure Database voor PostgreSQL
-description: Meer informatie over de twee typen knooppunten, coördinatoren en werknemers, vindt u in een servergroep in Azure Database voor PostgreSQL.
+title: Knoop punten – grootschalige (Citus)-Azure Database for PostgreSQL
+description: Meer informatie over de twee typen knoop punten, coördinator en werk nemers, in een server groep in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74973999"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Knooppunten in Azure-database voor PostgreSQL – Hyperscale (Citus)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Knoop punten in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Met het hyperscale-hostingtype (Citus) kan Azure Database voor PostgreSQL-servers (knooppunten genoemd) met elkaar coördineren in een 'shared nothing'-architectuur. De knooppunten in een servergroep bevatten gezamenlijk meer gegevens en gebruiken meer CPU-cores dan mogelijk zou zijn op één server. De architectuur maakt het ook mogelijk de database te schalen door het toevoegen van meer knooppunten aan de servergroep.
+Met het hosting type grootschalige (Citus) kunnen Azure Database for PostgreSQL-servers (knoop punten) worden gecoördineerd met elkaar in een architectuur met het gedeelde Nothing. De knoop punten in een server groep bevatten gezamenlijk meer gegevens en gebruiken meer CPU-kernen dan op één server mogelijk zijn. Met de architectuur kan de data base ook worden geschaald door meer knoop punten toe te voegen aan de Server groep.
 
-## <a name="coordinator-and-workers"></a>Coördinator en werknemers
+## <a name="coordinator-and-workers"></a>Coördinator en werk nemers
 
-Elke servergroep heeft een coördinatorknooppunt en meerdere werknemers. Toepassingen sturen hun vragen naar het coördinatorknooppunt, dat het doorgeeft aan de betrokken werknemers en hun resultaten verzamelt. Toepassingen kunnen niet rechtstreeks verbinding maken met werknemers.
+Elke server groep heeft een coördinator knooppunt en meerdere werk rollen. Toepassingen sturen hun query's naar het coördinator knooppunt, die het doorstuurt naar de relevante werk nemers en de resultaten samenvoegt. Toepassingen kunnen niet rechtstreeks verbinding maken met werk nemers.
 
-Voor elke query leidt de coördinator deze door naar één werkknooppunt of parallel met meerdere gegevens, afhankelijk van of de vereiste gegevens op één knooppunt of meerdere gegevens worden uitgevoerd. De coördinator bepaalt wat te doen door metadatatabellen te raadplegen. Deze tabellen volgen de DNS-namen en status van werknemersknooppunten en de verdeling van gegevens over knooppunten.
+Voor elke query stuurt de coördinator deze om naar één worker-knoop punt, of parallelizes deze op verschillende manieren, afhankelijk van het feit of de vereiste gegevens zich op één knoop punt of meerdere bevinden. De coördinator beslist wat er moet gebeuren met tabellen met advies voor de meta gegevens. Deze tabellen volgen de DNS-namen en de status van worker-knoop punten en de distributie van gegevens tussen knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over hoe knooppunten [gedistribueerde gegevens](concepts-hyperscale-distributed-data.md) opslaan
+- Meer informatie over hoe knoop punten [gedistribueerde gegevens](concepts-hyperscale-distributed-data.md) opslaan

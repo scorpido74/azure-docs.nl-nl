@@ -1,6 +1,6 @@
 ---
-title: H264 Single Bitrate 720p Media Encoder Standard preset - Azure | Microsoft Documenten
-description: Dit artikel geeft een overzicht van de Media Encoder Standard "H264 Single Bitrate 720p" taak preset.
+title: H264 single bitrate 720p Media Encoder Standard vooraf ingesteld-Azure | Microsoft Docs
+description: Dit artikel geeft een overzicht van de Media Encoder Standard ' H264 single bitrate 720p '.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: e48f0c614ba7a7b4199e6ddf0050de0ae7db063f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74886826"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 Single Bitrate 720p
-`Media Encoder Standard`definieert een set coderingsvoorinstellingen die u gebruiken bij het maken van coderingstaken. U een `preset name` a gebruiken om aan te geven in welke indeling u uw mediabestand wilt coderen. U ook uw eigen JSON- of XML-gebaseerde voorinstellingen maken (met UTF-8- of UTF-16-codering. U zou dan de aangepaste voorinstelling doorgeven aan de encoder. Zie `Media Encoder Standard` [Taakvoorinstellingen voor Media Encoder Standard voor](media-services-mes-presets-overview.md)de lijst met alle vooraf ingestelde namen die door deze encoder worden ondersteund.  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit `H264 Single Bitrate 720p` onderwerp wordt de voorinstelling in XML- en JSON-indeling weergegeven.  
+ In dit onderwerp worden `H264 Single Bitrate 720p` de voor instellingen in de XML-en JSON-indeling weer gegeven.  
   
- Deze voorinstelling produceert een enkel MP4-bestand met een bitrate van 4500 kbps en stereo OC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling rate, etc. van deze preset, onderzoekt u de XML of JSON die hieronder is gedefinieerd. Zie het [schemaonderwerp Media Encoder Standard](media-services-mes-schema.md) voor uitleg over wat elk element in deze voorinstellingen betekent en de geldige waarden voor elk element.  
+ Deze vooraf ingestelde produceert een enkel MP4-bestand met een bitrate van 4500 kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
  XML  
   

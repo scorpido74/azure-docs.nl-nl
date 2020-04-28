@@ -1,5 +1,5 @@
 ---
-title: Hybride verbindingen voor Azure Relay - WebSockets in knooppunt
+title: Hybride verbindingen-websockets in een knoop punt Azure Relay
 description: Een Node.js consoletoepassing schrijven voor websockets voor hybride verbindingen in Azure Relay
 services: service-bus-relay
 documentationcenter: node
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75352674"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Aan de slag met WebSockets voor hybride verbindingen in Azure Relay in Node.js
@@ -37,7 +37,7 @@ In deze snelstart voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Knooppunt.js.](https://nodejs.org/en/)
+- [Node. js](https://nodejs.org/en/).
 - Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-a-namespace"></a>Een naamruimte maken

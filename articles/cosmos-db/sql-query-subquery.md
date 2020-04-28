@@ -1,51 +1,51 @@
 ---
 title: SQL-subquery's voor Azure Cosmos DB
-description: Meer informatie over SQL-subquery's en hun algemene use cases en verschillende typen subquery's in Azure Cosmos DB
+description: Meer informatie over SQL-subquery's en de meest voorkomende use-cases en verschillende typen subquery's in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74870561"
 ---
-# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>SQL-subqueryvoorbeelden voor Azure Cosmos DB
+# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Voor beelden van SQL-subquery voor Azure Cosmos DB
 
-Een subquery is een query die is genest in een andere query. Een subquery wordt ook wel een innerlijke query of inner select genoemd. De instructie die een subquery bevat, wordt meestal een externe query genoemd.
+Een subquery is een query die is genest in een andere query. Een subquery wordt ook wel een binnenste query of binnenste selectie genoemd. De instructie die een subquery bevat, wordt meestal een buitenste query genoemd.
 
-In dit artikel worden SQL-subquery's en hun algemene use cases in Azure Cosmos DB beschreven. Alle voorbeeldquery's in dit document kunnen worden uitgevoerd tegen een voedingsgegevensset die vooraf is geladen op de [Azure Cosmos DB Query Playground.](https://www.documentdb.com/sql/demo)
+In dit artikel worden SQL-subquery's en de veelvoorkomende use cases in Azure Cosmos DB beschreven. Alle voorbeeld query's in dit document kunnen worden uitgevoerd op een voedings gegevensset die vooraf is geladen op de [Azure Cosmos DB query Playground](https://www.documentdb.com/sql/demo).
 
 ## <a name="types-of-subqueries"></a>Typen subquery's
 
-Er zijn twee hoofdtypen subquery's:
+Er zijn twee hoofd typen subquery's:
 
-* **Gecorreleerd:** een subquery die verwijst naar waarden uit de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query verwerkt.
-* **Niet-gecorreleerde**: een subquery die onafhankelijk is van de buitenste query. Het kan worden uitgevoerd op zijn eigen zonder te vertrouwen op de buitenste query.
+* **Gecorreleerd**: een subquery die verwijst naar waarden van de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query processen uitvoert.
+* **Niet-correled**: een subquery die onafhankelijk is van de buitenste query. Het kan zelfstandig worden uitgevoerd, zonder dat hiervoor de buitenste query nodig is.
 
 > [!NOTE]
 > Azure Cosmos DB ondersteunt alleen gecorreleerde subquery's.
 
-Subquery's kunnen verder worden geclassificeerd op basis van het aantal rijen en kolommen dat ze retourneren. Er zijn drie soorten:
-* **Tabel:** geeft als resultaat meerdere rijen en meerdere kolommen.
-* **Multi-value:** geeft als resultaat meerdere rijen en één kolom.
-* **Scalar:** geeft als resultaat een enkele rij en één kolom.
+Subquery's kunnen verder worden geclassificeerd op basis van het aantal rijen en kolommen dat ze retour neren. Er zijn drie typen:
+* **Tabel**: retourneert meerdere rijen en meerdere kolommen.
+* **Meerdere waarden**: retourneert meerdere rijen en één kolom.
+* **Scalair**: retourneert één rij en één kolom.
 
-SQL-query's in Azure Cosmos DB retourneren altijd één kolom (een eenvoudige waarde of een complex document). Daarom zijn alleen subquery's met meerdere waarde en scalaire query's van toepassing in Azure Cosmos DB. U een subquery met meerdere waardeen alleen gebruiken in de FROM-component als relationele expressie. U een scalaire subquery gebruiken als een scalaire expressie in de SELECT- of WHERE-component, of als relationele expressie in de FROM-component.
+SQL-query's in Azure Cosmos DB retour neren altijd één kolom (een eenvoudige waarde of een complex document). Daarom zijn alleen multi-waarden en scalaire subquery's van toepassing op Azure Cosmos DB. U kunt een subquery met meerdere waarden alleen in de component FROM als een relationele expressie gebruiken. U kunt een scalaire subquery gebruiken als scalaire expressie in de component SELECT of WHERE, of als een relationele expressie in de component FROM.
 
-## <a name="multi-value-subqueries"></a>Subquery's met meerdere waarde
+## <a name="multi-value-subqueries"></a>Subquery's met meerdere waarden
 
-Subquery's met meerdere waarde's retourneren een set documenten en worden altijd gebruikt binnen de FROM-component. Ze worden gebruikt voor:
+Subquery's met meerdere waarden retour neren een set documenten en worden altijd gebruikt in de component FROM. Ze worden gebruikt voor:
 
-* JOIN-expressies optimaliseren. 
-* Dure expressies één keer evalueren en meerdere keren verwijzen.
+* DEELNAME expressies optimaliseren. 
+* Het evalueren van dure expressies eenmaal en het verwijzen naar meerdere keren.
 
-## <a name="optimize-join-expressions"></a>JOIN-expressies optimaliseren
+## <a name="optimize-join-expressions"></a>KOPPELINGs expressies optimaliseren
 
-Subquery's met meerdere waarden kunnen JOIN-expressies optimaliseren door na elke select-many expressie op basis van selectie te drukken in plaats van dat alle cross-joins in de WHERE-component.
+Subquery's voor meerdere waarden kunnen samenvoegings expressies optimaliseren door predikaten te pushen na elke Select-veel'-expressie in plaats van alle kruis koppelingen in de component WHERE.
 
 Laten we nu eens naar deze query kijken:
 
@@ -59,11 +59,11 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-Voor deze query komt de index overeen met elk document met een tag met de naam 'zuigelingenvoeding'. Het is een voedingsartikel met een waarde tussen 0 en 10, en een serveeritem met een bedrag groter dan 1. De JOIN-expressie hier voert het cross-product uit van alle items van tags, voedingsstoffen en serveerarrays voor elk overeenkomend document voordat een filter wordt toegepast. 
+Voor deze query komt de index overeen met een document met een tag met de naam ' zuigeling Formula '. Het is een nutriënt item met een waarde tussen 0 en 10 en een onderhouds item met een bedrag dat groter is dan 1. De expressie voor samen voegen voert het cross-product uit van alle items met tags, nutriënten en zorgt voor matrices voor elk overeenkomend document voordat een filter wordt toegepast. 
 
-De WHERE-clausule past vervolgens het filterpredicaat toe op elke <c, t, n, s> tuple. Als een overeenkomend document bijvoorbeeld 10 items in elk van de drie arrays had, worden de tuples uitgebreid tot 1 x 10 x 10 x 10 (dat wil zeggen 1.000). Als u subquery's gebruikt, u bij het filteren van samengevoegde arrayitems helpen voordat u aansluit bij de volgende expressie.
+Vervolgens wordt het filter predicaat toegepast op elke <c, t, n, s> tuple. Als bijvoorbeeld een overeenkomend document 10 items in elk van de drie matrices had, wordt het uitgevouwen tot 1 x 10 x 10 x 10 (1.000) Tuples. U kunt subquerys hier gebruiken om gekoppelde matrix items te filteren voordat u met de volgende expressie samenvoegt.
 
-Deze query is gelijk aan de vorige query's, maar gebruikt subquery's:
+Deze query is gelijk aan de voor gaande, maar gebruikt subquery's:
 
 ```sql
 SELECT Count(1) AS Count
@@ -73,13 +73,13 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-Stel dat slechts één item in de array tags overeenkomt met het filter en dat er vijf items zijn voor zowel voedingsstoffen als arrays voor porties. De JOIN-expressies worden vervolgens uitgebreid tot 1 x 1 x 5 x 5 = 25 items, in tegenstelling tot 1.000 items in de eerste query.
+Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en dat er vijf items zijn voor beide nutriënten en dat er matrices worden gereserveerd. De samenvoegings expressies worden vervolgens uitgebreid tot 1 x 1 x 5 x 5 = 25 items, in tegens telling tot 1.000 items in de eerste query.
 
-## <a name="evaluate-once-and-reference-many-times"></a>Evalueer één keer en verwijs vele malen
+## <a name="evaluate-once-and-reference-many-times"></a>Eenmaal en een verwijzing naar een aantal keren evalueren
 
-Subquery's kunnen query's optimaliseren met dure expressies zoals door de gebruiker gedefinieerde functies (UDF's), complexe tekenreeksen of rekenkundige expressies. U een subquery samen met een JOIN-expressie gebruiken om de expressie één keer te evalueren, maar er vaak naar te verwijzen.
+Subquery's kunnen helpen bij het optimaliseren van query's met dure expressies zoals door de gebruiker gedefinieerde functies (Udf's), complexe teken reeksen of reken kundige expressies. U kunt een subquery samen met een JOINEXPRESSIE expressie gebruiken om de expressie één keer te evalueren, maar hiernaar te verwijzen.
 
-In de volgende query `GetMaxNutritionValue` wordt de UDF twee keer uitgevoerd:
+Met de volgende query wordt de `GetMaxNutritionValue` UDF twee keer uitgevoerd:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -87,7 +87,7 @@ FROM c
 WHERE udf.GetMaxNutritionValue(c.nutrients) > 100
 ```
 
-Hier is een gelijkwaardige query die de UDF slechts één keer uitvoert:
+Hier volgt een gelijkwaardige query die de UDF slechts eenmaal uitvoert:
 
 ```sql
 SELECT TOP 1000 c.id, MaxNutritionValue
@@ -97,10 +97,10 @@ WHERE MaxNutritionValue > 100
 ``` 
 
 > [!NOTE] 
-> Houd rekening met het cross-product gedrag van JOIN-expressies. Als de UDF-expressie kan worden geëvalueerd naar niet-gedefinieerd, moet u ervoor zorgen dat de JOIN-expressie altijd één rij produceert door een object uit de subquery terug te sturen in plaats van rechtstreeks de waarde.
+> Let op het cross-product gedrag van expressies voor samen voegen. Als de UDF-expressie kan worden geëvalueerd als niet-gedefinieerd, moet u ervoor zorgen dat de expressie voor samen voegen altijd één rij produceert door een object uit de subquery te retour neren in plaats van de waarde rechtstreeks.
 >
 
-Hier is een vergelijkbaar voorbeeld dat een object retourneert in plaats van een waarde:
+Hier volgt een vergelijkbaar voor beeld waarin een object wordt geretourneerd in plaats van een waarde:
 
 ```sql
 SELECT TOP 1000 c.id, m.MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-De aanpak is niet beperkt tot UDF's. Het is van toepassing op elke potentieel dure uitdrukking. U bijvoorbeeld dezelfde benadering volgen met `avg`de wiskundige functie:
+De methode is niet beperkt tot Udf's. Dit is van toepassing op een mogelijke dure expressie. U kunt bijvoorbeeld dezelfde benadering volgen met de wiskundige functie `avg`:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -118,34 +118,34 @@ JOIN (SELECT VALUE avg(n.nutritionValue) FROM n IN c.nutrients) AvgNutritionValu
 WHERE AvgNutritionValue > 80
 ```
 
-## <a name="mimic-join-with-external-reference-data"></a>Join nabootsen met externe referentiegegevens
+## <a name="mimic-join-with-external-reference-data"></a>Deelname met externe referentie gegevens simuleren
 
-Het kan vaak nodig zijn om te verwijzen naar statische gegevens die zelden veranderen, zoals meeteenheden of landcodes. Het is beter om dergelijke gegevens niet te dupliceren voor elk document. Het vermijden van deze duplicatie bespaart op opslag en verbetert de schrijfprestaties door de documentgrootte kleiner te houden. U een subquery gebruiken om semantiek voor verzameling en selectie na te bootsen met een verzameling referentiegegevens.
+Mogelijk moet u vaak verwijzen naar statische gegevens die zelden worden gewijzigd, zoals maat eenheden of land codes. Het is beter om dergelijke gegevens niet te dupliceren voor elk document. Voor komen dat deze duplicatie wordt bespaard op opslag en de schrijf prestaties verbeteren door de document grootte kleiner te houden. U kunt een subquery gebruiken om de interne join-semantiek te simuleren met een verzameling referentie gegevens.
 
-Denk bijvoorbeeld aan deze set referentiegegevens:
+Denk bijvoorbeeld aan deze set referentie gegevens:
 
-| **Eenheid** | **Naam**            | **Multiplier** | **Basiseenheid** |
+| **Teleenheid** | **Naam**            | **Vermenigvuldig** | **Basis eenheid** |
 | -------- | ------------------- | -------------- | ------------- |
-| Ng       | Nanogram            | 1.00E-09       | Gram          |
-| Μg       | Microgram microgram           | 1.00E-06       | Gram          |
-| Mg       | Milligram           | 1.00E-03       | Gram          |
-| g        | Gram                | 1.00E+00       | Gram          |
-| Kg       | Kilogram            | 1.00E+03       | Gram          |
-| Mg       | Megagram Megagram            | 1.00E+06       | Gram          |
-| Gg       | Gigagram Gigagram            | 1.00E+09       | Gram          |
-| Nj       | Nanojoule Nanojoule           | 1.00E-09       | Joule         |
-| μJ       | Microjoule Microjoule          | 1.00E-06       | Joule         |
-| Mj       | Millijoule Millijoule          | 1.00E-03       | Joule         |
-| J        | Joule               | 1.00E+00       | Joule         |
-| Kj       | Kilojoule Kilojoule           | 1.00E+03       | Joule         |
-| Mj       | Megajoule Megajoule           | 1.00E+06       | Joule         |
-| Gj       | Gigajoule Gigajoule           | 1.00E+09       | Joule         |
-| Cal      | Calorie             | 1.00E+00       | Calorie       |
-| Kcal     | Calorie             | 1.00E+03       | Calorie       |
-| Iu       | Internationale eenheden |                |               |
+| lopen       | Nanogram            | 1,00 e-09       | Gram          |
+| Fe       | Microgram           | 1,00 e-06       | Gram          |
+| mg       | Nauw           | 1,00 e-03       | Gram          |
+| g        | Gram                | 1,00 e + 00       | Gram          |
+| kilo       | Kilo            | 1,00 e + 03       | Gram          |
+| Mg       | Megagram            | 1,00 e + 06       | Gram          |
+| GG       | Gigagram            | 1,00 e + 09       | Gram          |
+| Één       | Nanojoule           | 1,00 e-09       | Joule         |
+| µJ       | Microjoule          | 1,00 e-06       | Joule         |
+| mJ       | Millijoule          | 1,00 e-03       | Joule         |
+| J        | Joule               | 1,00 e + 00       | Joule         |
+| kJ       | Kilojoule           | 1,00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1,00 e + 06       | Joule         |
+| GJ       | Gigajoule           | 1,00 e + 09       | Joule         |
+| overeenkomst      | Calorie             | 1,00 e + 00       | calorie       |
+| kcal     | Calorie             | 1,00 e + 03       | calorie       |
+| IE       | Internationale eenheden |                |               |
 
 
-De volgende query bootst het samenvoegen met deze gegevens na, zodat u de naam van het apparaat aan de uitvoer toevoegt:
+De volgende query imiteert de samen voeging met deze gegevens, zodat u de naam van de eenheid toevoegt aan de uitvoer:
 
 ```sql
 SELECT TOP 10 n.id, n.description, n.nutritionValue, n.units, r.name
@@ -177,27 +177,27 @@ WHERE n.units = r.unit
 
 ## <a name="scalar-subqueries"></a>Scalaire subquery's
 
-Een scalaire subqueryexpressie is een subquery die wordt geëvalueerd tot één waarde. De waarde van de scalaire subqueryexpressie is de waarde van de projectie (SELECT-component) van de subquery.  U een scalaire subqueryexpressie gebruiken op veel plaatsen waar een scalaire expressie geldig is. U bijvoorbeeld een scalaire subquery gebruiken in elke expressie in zowel de SELECT- als DE WAAR-clausules.
+Een scalaire subquery-expressie is een subquery die resulteert in een enkele waarde. De waarde van de scalaire subquery-expressie is de waarde van de projectie (SELECT-component) van de subquery.  U kunt een scalaire subquery-expressie gebruiken op veel plaatsen waar een scalaire expressie geldig is. U kunt bijvoorbeeld een scalaire subquery in een expressie in de component SELECT en WHERE gebruiken.
 
-Het gebruik van een scalaire subquery helpt echter niet altijd bij het optimaliseren. Als u bijvoorbeeld een scalaire subquery als argument doorgeeft aan een systeem of door de gebruiker gedefinieerde functies, heeft dit geen voordeel in het ru-verbruik of de latentie van resource-eenheden (RU).
+Het gebruik van een scalaire subquery helpt echter niet altijd te optimaliseren. Het door geven van een scalaire subquery als argument aan een systeem of door de gebruiker gedefinieerde functies biedt bijvoorbeeld geen voor deel in het gebruik van resource-eenheden (RU) of latentie.
 
-Scalar subqueries kunnen verder worden geclassificeerd als:
-* Scalaire subquery's met eenvoudige expressie
-* Geaggregeerde scalaire subquery's
+Scalaire subquery's kunnen verder worden geclassificeerd als:
+* Eenvoudige expressies scalaire subquery's
+* Cumulatieve scalaire subquery's
 
-## <a name="simple-expression-scalar-subqueries"></a>Scalaire subquery's met eenvoudige expressie
+## <a name="simple-expression-scalar-subqueries"></a>Eenvoudige expressies scalaire subquery's
 
-Een scalaire subquery met eenvoudige expressieis een gecorreleerde subquery met een SELECT-component die geen geaggregeerde expressies bevat. Deze subquery's bieden geen optimalisatievoordelen omdat de compiler ze omzet in één grotere eenvoudige expressie. Er is geen gecorreleerde context tussen de binnenste en buitenste query's.
+Een scalaire subquery met eenvoudige expressie is een gecorreleerde subquery met een SELECT-component die geen statistische expressies bevat. Deze subquery's bieden geen optimalisatie voordelen omdat de compiler deze converteert naar een grotere eenvoudige expressie. Er is geen gecorreleerde context tussen de binnenste en de buitenste query's.
 
-Hier zijn enkele voorbeelden:
+Hier volgen enkele voor beelden:
 
-**Voorbeeld 1**
+**Voor beeld 1**
 
 ```sql
 SELECT 1 AS a, 2 AS b
 ```
 
-U deze query herschrijven door een subquery met eenvoudige expressiescala te gebruiken om:
+U kunt deze query opnieuw schrijven met behulp van een scalaire, eenvoudige expressie, om het volgende te doen:
 
 ```sql
 SELECT (SELECT VALUE 1) AS a, (SELECT VALUE 2) AS b
@@ -211,21 +211,21 @@ Beide query's produceren deze uitvoer:
 ]
 ```
 
-**Voorbeeld 2**
+**Voor beeld 2**
 
 ```sql
 SELECT TOP 5 Concat('id_', f.id) AS id
 FROM food f
 ```
 
-U deze query herschrijven door een subquery met eenvoudige expressiescala te gebruiken om:
+U kunt deze query opnieuw schrijven met behulp van een scalaire, eenvoudige expressie, om het volgende te doen:
 
 ```sql
 SELECT TOP 5 (SELECT VALUE Concat('id_', f.id)) AS id
 FROM food f
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -237,21 +237,21 @@ Query-uitvoer:
 ]
 ```
 
-**Voorbeeld 3**
+**Voor beeld 3**
 
 ```sql
 SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : undefined
 FROM food f
 ```
 
-U deze query herschrijven door een subquery met eenvoudige expressiescala te gebruiken om:
+U kunt deze query opnieuw schrijven met behulp van een scalaire, eenvoudige expressie, om het volgende te doen:
 
 ```sql
 SELECT TOP 10 f.id, (SELECT f.description WHERE Contains(f.description, 'fruit')).description
 FROM food f
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -263,13 +263,13 @@ Query-uitvoer:
 ]
 ```
 
-### <a name="aggregate-scalar-subqueries"></a>Geaggregeerde scalaire subquery's
+### <a name="aggregate-scalar-subqueries"></a>Cumulatieve scalaire subquery's
 
-Een geaggregeerde scalaire subquery is een subquery met een geaggregeerde functie in de projectie of het filter die wordt geëvalueerd tot één waarde.
+Een gecombineerde scalaire subquery is een subquery met een statistische functie in de projectie of het filter waarmee een enkele waarde wordt geëvalueerd.
 
 **Voorbeeld 1:**
 
-Hier is een subquery met één samengevoegde functie-expressie in de projectie:
+Hier volgt een subquery met één statistische functie-expressie in de projectie:
 
 ```sql
 SELECT TOP 5 
@@ -279,7 +279,7 @@ SELECT TOP 5
 FROM food f
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -291,9 +291,9 @@ Query-uitvoer:
 ]
 ```
 
-**Voorbeeld 2**
+**Voor beeld 2**
 
-Hier is een subquery met meerdere samengevoegde functieexpressies:
+Hier volgt een subquery met meerdere statistische functie-expressies:
 
 ```sql
 SELECT TOP 5 f.id, (
@@ -304,7 +304,7 @@ SELECT TOP 5 f.id, (
 FROM food f
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -316,9 +316,9 @@ Query-uitvoer:
 ]
 ```
 
-**Voorbeeld 3**
+**Voor beeld 3**
 
-Hier is een query met een geaggregeerde subquery in zowel de projectie als het filter:
+Hier volgt een query met een statistische subquery in zowel de projectie als het filter:
 
 ```sql
 SELECT TOP 5 
@@ -328,7 +328,7 @@ FROM food f
 WHERE (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') > 20
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -340,7 +340,7 @@ Query-uitvoer:
 ]
 ```
 
-Een meer optimale manier om deze query te schrijven is door deel te nemen aan de subquery en de subqueryalias te verwijzen in zowel de SELECT- als DE WAAR-clausules. Deze query is efficiënter omdat u de subquery alleen binnen de join-instructie moet uitvoeren en niet in zowel de projectie als het filter.
+Een optimale manier om deze query te schrijven, is om lid te worden van de subquery en om te verwijzen naar de subquery-alias in de SELECT-en WHERE-componenten. Deze query is efficiënter omdat u de subquery alleen in de instructie samen voegen moet uitvoeren en niet in de projectie en het filter.
 
 ```sql
 SELECT TOP 5 f.id, count_mg
@@ -349,28 +349,28 @@ JOIN (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') AS count
 WHERE count_mg > 20
 ```
 
-## <a name="exists-expression"></a>BESTAANDE-expressie
+## <a name="exists-expression"></a>EXISTs-expressie
 
-Azure Cosmos DB ondersteunt BESTAANDE-expressies. Dit is een geaggregeerde scalaire subquery die is ingebouwd in de Azure Cosmos DB SQL API. BESTAAT is een Booleaanse expressie die een subquery-expressie neemt en waar retourneert als de subquery rijen retourneert. Anders wordt het onwaar geretourneerd.
+Azure Cosmos DB ondersteunt bestaande expressies. Dit is een cumulatieve scalaire subquery die is ingebouwd in de Azure Cosmos DB SQL-API. EXISTs is een booleaanse expressie die een subquery-expressie aanneemt en retourneert True als de subquery rijen retourneert. Anders wordt false geretourneerd.
 
-Omdat de Azure Cosmos DB SQL API geen onderscheid maakt tussen Booleaanse expressies en andere scalaire expressies, u BESTAANDE gebruiken in zowel SELECT- als WHERE-clausules. Dit is in tegenstelling tot T-SQL, waarbij een Booleaanse expressie (bijvoorbeeld BESTAAT, TUSSEN en IN) beperkt is tot het filter.
+Omdat de Azure Cosmos DB SQL-API geen onderscheid maakt tussen Boole-expressies en andere scalaire expressies, kunt u gebruiken in zowel SELECT-als WHERE-componenten. Dit is in tegens telling tot T-SQL, waarbij een booleaanse expressie (bijvoorbeeld bestaat, tussen en IN) is beperkt tot het filter.
 
-Als de subquery BESTAAT één waarde retourneert die niet is gedefinieerd, wordt BESTAAT geëvalueerd naar false. Houd bijvoorbeeld rekening met de volgende query die wordt geëvalueerd als onwaar:
+Als de EXISTs-subquery een enkelvoudige waarde retourneert die niet is gedefinieerd, wordt door berekend naar onwaar. Bekijk bijvoorbeeld de volgende query die als onwaar resulteert:
 ```sql
 SELECT EXISTS (SELECT VALUE undefined)
 ```   
 
 
-Als het trefwoord WAARDE in de voorgaande subquery wordt weggelaten, wordt de query geëvalueerd naar true:
+Als het sleutel woord VALUE in de voor gaande subquery wordt wegge laten, wordt de query geëvalueerd als True:
 ```sql
 SELECT EXISTS (SELECT undefined) 
 ```
 
-De subquery wordt de lijst met waarden in de geselecteerde lijst in een object bijgesloten. Als de geselecteerde lijst geen waarden heeft, retourneert de subquery de waarde '{}''. Deze waarde wordt gedefinieerd, dus BESTAAT evalueert naar waar.
+De subquery plaatst de lijst met waarden in de geselecteerde lijst in een-object. Als de geselecteerde lijst geen waarden bevat, retourneert de subquery de enkele waarde '{}'. Deze waarde is gedefinieerd, dus resulteert in waar.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Voorbeeld: ARRAY_CONTAINS herschrijven en JOIN als ER BESTAAT
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Voor beeld: ARRAY_CONTAINS herschrijven en samen voegen als bestaan
 
-Een veelgebruikte use case van ARRAY_CONTAINS is het filteren van een document op het bestaan van een item in een array. In dit geval controleren we of de array tags een item bevat met de naam 'oranje'.
+Een veelgebruikte use-case van ARRAY_CONTAINS is het filteren van een document door het bestaan van een item in een matrix. In dit geval controleren we of de labels matrix een item met de naam ' oranje ' bevat.
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -378,7 +378,7 @@ FROM food f
 WHERE ARRAY_CONTAINS(f.tags, {name: 'orange'})
 ```
 
-U dezelfde query herschrijven om BESTAAT te gebruiken:
+U kunt dezelfde query die moet worden gebruikt, opnieuw schrijven:
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Bovendien ARRAY_CONTAINS alleen controleren of een waarde gelijk is aan een element binnen een array. Als u complexere filters voor arrayeigenschappen nodig hebt, gebruikt u JOIN.
+Daarnaast kan ARRAY_CONTAINS alleen controleren of een waarde gelijk is aan een wille keurig element in een matrix. Als u complexere filters voor matrix eigenschappen nodig hebt, gebruikt u samen voegen.
 
-Houd rekening met de volgende query `nutritionValue` die wordt gefilterd op basis van de eenheden en eigenschappen in de array: 
+Bekijk de volgende query die op basis van de eenheden en `nutritionValue` eigenschappen in de matrix filtert: 
 
 ```sql
 SELECT VALUE c.description
@@ -397,9 +397,9 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-Voor elk van de documenten in de collectie wordt een cross-product uitgevoerd met de array-elementen. Deze JOIN-bewerking maakt het mogelijk om te filteren op eigenschappen binnen de array. Het RU-verbruik van deze query zal echter aanzienlijk zijn. Als er bijvoorbeeld 1.000 documenten in elke array 100 items bevatten, worden de tuples uitgebreid tot 1.000 x 100 (dat wil zeggen 100.000).
+Voor elk van de documenten in de verzameling wordt een kruis product uitgevoerd met de bijbehorende matrix elementen. Met deze KOPPELINGs bewerking kunt u filteren op Eigenschappen in de matrix. Het gebruik van deze query is echter aanzienlijk. Als bijvoorbeeld 1.000 documenten in elke matrix 100 items bevatten, wordt deze uitgebreid tot 1.000 x 100 (dat wil zeggen, 100.000) Tuples.
 
-Het gebruik van EXISTS kan helpen om dit dure cross-product te voorkomen:
+Met behulp van EXISTs kunt u dit kost bare cross-product voor komen:
 
 ```sql
 SELECT VALUE c.description
@@ -411,9 +411,9 @@ WHERE EXISTS(
 )
 ```
 
-In dit geval filtert u op matrixelementen binnen de subquery BESTAAT. Als een arrayelement overeenkomt met het filter, projecteert u het en evalueert U het naar true.
+In dit geval filtert u op matrix elementen binnen de subquery EXISTs. Als een matrix element overeenkomt met het filter, wordt het door project en EXISTs geëvalueerd als waar.
 
-U ook alias EXISTS en verwijzen naar het in de projectie:
+U kunt ook een alias bestaande en ernaar verwijzen in de projectie:
 
 ```sql
 SELECT TOP 1 c.description, EXISTS(
@@ -423,7 +423,7 @@ SELECT TOP 1 c.description, EXISTS(
 FROM c
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -434,16 +434,16 @@ Query-uitvoer:
 ]
 ```
 
-## <a name="array-expression"></a>ARRAY-expressie
+## <a name="array-expression"></a>MATRIX expressie
 
-U de arrayexpressie gebruiken om de resultaten van een query als een array te projecteren. U deze expressie alleen gebruiken binnen de SELECT-component van de query.
+U kunt de matrix expressie gebruiken om de resultaten van een query als een matrix te projecteren. U kunt deze expressie alleen gebruiken binnen de component SELECT van de query.
 
 ```sql
 SELECT TOP 1   f.id, ARRAY(SELECT VALUE t.name FROM t in f.tags) AS tagNames
 FROM  food f
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -459,14 +459,14 @@ Query-uitvoer:
 ]
 ```
 
-Net als bij andere subquery's zijn filters met de ARRAY-expressie mogelijk.
+Net als bij andere subquery's zijn er filters met de matrix expressie mogelijk.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t FROM t in c.tags WHERE t.name != 'infant formula') AS tagNames
 FROM c
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [
@@ -493,7 +493,7 @@ Query-uitvoer:
 ]
 ```
 
-Arrayexpressies kunnen ook na de FROM-component in subquery's komen.
+Matrix expressies kunnen ook worden opgehaald na de component FROM in subquery's.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t.name FROM t in c.tags) as tagNames
@@ -501,7 +501,7 @@ FROM c
 JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant formula'))
 ```
 
-Query-uitvoer:
+Query uitvoer:
 
 ```json
 [

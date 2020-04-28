@@ -1,6 +1,6 @@
 ---
-title: Opgeslagen procedure van Azure Data Factory Copy Activity aanroepen
-description: Meer informatie over het aanroepen van een opgeslagen procedure in Azure SQL Database of SQL Server vanuit een kopieeractiviteit van Azure Data Factory.
+title: Opgeslagen procedure aanroepen vanuit Azure Data Factory Kopieer activiteit
+description: Meer informatie over het aanroepen van een opgeslagen procedure in Azure SQL Database of SQL Server vanuit een Azure Data Factory Kopieer activiteit.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,23 +13,23 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74924085"
 ---
-# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Opgeslagen procedure aanroepen vanuit kopieeractiviteit in Azure Data Factory
+# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>De opgeslagen procedure vanuit een Kopieer activiteit in Azure Data Factory aanroepen
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [gegevens transformeren met behulp van opgeslagen procedureactiviteit in Gegevensfabriek](../transform-data-using-stored-procedure.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens transformeren met behulp van opgeslagen procedure activiteit in Data Factory](../transform-data-using-stored-procedure.md).
 
 
-Wanneer u gegevens kopieert naar [SQL Server](data-factory-sqlserver-connector.md) of Azure [SQL Database,](data-factory-azure-sql-connector.md)u de **SqlSink** configureren in kopieeractiviteit om een opgeslagen procedure aan te roepen. U de opgeslagen procedure gebruiken om extra verwerkingen uit te voeren (kolommen samenvoegen, waarden opzoeken, invoegen in meerdere tabellen, enz.) voordat u gegevens in de doeltabel invoegt. Deze functie maakt gebruik van [tabelwaardeparameters](https://msdn.microsoft.com/library/bb675163.aspx). 
+Bij het kopiëren van gegevens naar [SQL Server](data-factory-sqlserver-connector.md) of [Azure SQL database](data-factory-azure-sql-connector.md), kunt u de **SqlSink** in de Kopieer activiteit configureren om een opgeslagen procedure aan te roepen. U kunt de opgeslagen procedure gebruiken voor het uitvoeren van eventuele aanvullende verwerking (het samen voegen van kolommen, het opzoeken van waarden, invoeging in meerdere tabellen, enzovoort). Dit is vereist voordat u gegevens in de doel tabel invoegt. Deze functie maakt gebruik van [para meters met tabel waarden](https://msdn.microsoft.com/library/bb675163.aspx). 
 
-In het volgende voorbeeld ziet u hoe u een opgeslagen procedure in een SQL Server-database aanroept vanuit een Pijplijn Gegevensfabriek (kopieeractiviteit):  
+In het volgende voor beeld ziet u hoe u een opgeslagen procedure in een SQL Server-Data Base aanroept vanuit een Data Factory pijp lijn (Kopieer activiteit):  
 
-## <a name="output-dataset-json"></a>Uitvoergegevensset JSON
-Stel in de uitvoergegevensset JSON het **type** in op: **SqlServerTable**. Stel deze in op **AzureSqlTable** om te gebruiken met een Azure SQL-database. De waarde voor de eigenschap **tabelNaam** moet overeenkomen met de naam van de eerste parameter van de opgeslagen procedure.  
+## <a name="output-dataset-json"></a>JSON van uitvoer gegevensset
+Stel in de JSON van de uitvoer gegevensset het **type** in op: **SqlServerTable**. Stel deze in op **AzureSqlTable** om te gebruiken met een Azure-SQL database. De waarde voor de eigenschap **TableName** moet overeenkomen met de naam van de eerste para meter van de opgeslagen procedure.  
 
 ```json
 {
@@ -48,8 +48,8 @@ Stel in de uitvoergegevensset JSON het **type** in op: **SqlServerTable**. Stel 
 }
 ```
 
-## <a name="sqlsink-section-in-copy-activity-json"></a>SqlSink sectie in kopieeractiviteit JSON
-Definieer de sectie **SqlSink** in de kopieeractiviteit JSON als volgt. Als u een opgeslagen procedure wilt aanroepen terwijl u gegevens in de sink/destination-database invoegt, geeft u waarden op voor zowel **sqlwriterstoredprocedurenaam** als **sqlwritertabletype-eigenschappen.** Zie [SqlSink-sectie in het SQL Server-connectorartikel](data-factory-sqlserver-connector.md#sqlsink)voor beschrijvingen van deze eigenschappen.
+## <a name="sqlsink-section-in-copy-activity-json"></a>De sectie SqlSink in de JSON van de Kopieer activiteit
+Definieer de sectie **SqlSink** in de JSON Copy activity als volgt. Als u een opgeslagen procedure wilt aanroepen terwijl u gegevens in de Sink/doel database invoegt, geeft u waarden op voor de eigenschappen **SqlWriterStoredProcedureName** en **SqlWriterTableType** . Zie voor beschrijvingen van deze eigenschappen [SqlSink sectie in het artikel over de SQL Server-connector](data-factory-sqlserver-connector.md#sqlsink).
 
 ```json
 "sink":
@@ -67,8 +67,8 @@ Definieer de sectie **SqlSink** in de kopieeractiviteit JSON als volgt. Als u ee
 }
 ```
 
-## <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedures 
-Definieer in uw database de opgeslagen procedure met dezelfde naam als **SqlWriterStoredProcedureName.** De opgeslagen procedure verwerkt invoergegevens uit het brongegevensarchief en voegt gegevens in een tabel in de doeldatabase in. De naam van de eerste parameter van de opgeslagen procedure moet overeenkomen met de tabelNaam gedefinieerd in de gegevensset JSON (Marketing).
+## <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure 
+Definieer in uw data base de opgeslagen procedure met de naam **SqlWriterStoredProcedureName**. De opgeslagen procedure verwerkt invoer gegevens uit de brongegevens opslag en voegt gegevens toe aan een tabel in de doel database. De naam van de eerste para meter van de opgeslagen procedure moet overeenkomen met de TableName die is gedefinieerd in de gegevensset JSON (marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -80,8 +80,8 @@ BEGIN
 END
 ```
 
-## <a name="table-type-definition"></a>Tabeltypedefinitie
-Definieer in uw database het tabeltype met dezelfde naam als **SqlWriterTableType.** Het schema van het tabeltype moet overeenkomen met het schema van de invoergegevensset.
+## <a name="table-type-definition"></a>Definitie van tabel type
+Definieer in uw data base het tabel type met de naam **SqlWriterTableType**. Het schema van het tabel type moet overeenkomen met het schema van de invoer gegevensset.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -91,7 +91,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de volgende connectorartikelen die voor volledige JSON-voorbeelden: 
+Bekijk de volgende connector artikelen voor volledige JSON-voor beelden: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

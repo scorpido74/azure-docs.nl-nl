@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure Cloud Services | Microsoft Documenten
+title: Wat is Azure Cloud Services | Microsoft Docs
 description: Meer informatie over wat Azure Cloud Services is.
 services: cloud-services
 author: tgore03
@@ -8,46 +8,46 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386847"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Overzicht van Azure Cloud Services
-Azure Cloud Services is een voorbeeld van [een platform as a service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Net als [Azure App Service](../app-service/overview.md)is deze technologie ontworpen om toepassingen te ondersteunen die schaalbaar, betrouwbaar en goedkoop zijn om te werken. Net zoals App Service wordt gehost op virtuele machines (VM's), is azure cloud services dat ook. U hebt echter meer controle over de VM's. U uw eigen software installeren op VM's die Azure Cloud Services gebruiken en u deze op afstand openen.
+Azure Cloud Services is een voor beeld van een [platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Net als [Azure app service](../app-service/overview.md)is deze technologie ontworpen voor de ondersteuning van toepassingen die schaalbaar, betrouwbaar en goed koop zijn om te kunnen worden gebruikt. Op dezelfde manier als App Service wordt gehost op virtuele machines (Vm's), is ook Azure Cloud Services. U hebt echter meer controle over de Vm's. U kunt uw eigen software installeren op Vm's die gebruikmaken van Azure Cloud Services en u kunt deze op afstand openen.
 
-![Azure Cloud Services-diagram](./media/cloud-services-choose-me/diagram.png)
+![Cloud Services diagram van Azure](./media/cloud-services-choose-me/diagram.png)
 
-Meer controle betekent ook minder gebruiksgemak. Tenzij u de extra besturingselementopties nodig hebt, is het doorgaans sneller en eenvoudiger om een webtoepassing in de Web Apps-functie van App Service te gebruiken in vergelijking met Azure Cloud Services.
+Meer controle houdt ook minder gebruiks gemak met zich mee. Tenzij u de extra beheer opties nodig hebt, is het doorgaans sneller en eenvoudiger om een webtoepassing in de Web Apps-functie van App Service uit te voeren in vergelijking met Azure Cloud Services.
 
-Er zijn twee typen Azure Cloud Services-rollen. Het enige verschil tussen de twee is hoe uw rol wordt gehost op de VM's:
+Er zijn twee soorten Azure Cloud Services-rollen. Het enige verschil tussen de twee is hoe uw rol wordt gehost op de Vm's:
 
-* **Webrol:** implementeert en host uw app automatisch via IIS.
+* **Webrole**: implementeert en hosten uw app automatisch via IIS.
 
-* **Functie van werknemer:** maakt geen gebruik van IIS en voert uw app zelfstandig uit.
+* **Rol van werk nemer**: gebruikt IIS niet en voert de zelfstandige app uit.
 
-Een eenvoudige toepassing kan bijvoorbeeld slechts één webrol gebruiken, die een website bedient. Een complexere toepassing kan een webrol gebruiken om binnenkomende aanvragen van gebruikers te verwerken en deze aanvragen vervolgens door te geven aan een werkrol voor verwerking. (Deze communicatie kan gebruik maken van [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) of Azure Queue [storage](../storage/common/storage-introduction.md).)
+Een eenvoudige toepassing kan bijvoorbeeld gebruikmaken van slechts één webrol, voor een website. Een complexere toepassing maakt mogelijk gebruik van een webrol voor het verwerken van binnenkomende aanvragen van gebruikers en geeft deze aanvragen vervolgens door aan een worker-rol voor verwerking. (Deze communicatie kan gebruikmaken van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) of [Azure Queue-opslag](../storage/common/storage-introduction.md).)
 
-Zoals de vorige figuur suggereert, worden alle VM's in één toepassing uitgevoerd in dezelfde cloudservice. Gebruikers hebben toegang tot de toepassing via één openbaar IP-adres, waarbij aanvragen automatisch in evenwicht worden gebracht in de VM's van de toepassing. Het platform [schaalt en implementeert](cloud-services-how-to-scale-portal.md) de VM's in een Azure Cloud Services-toepassing op een manier die één punt van hardwarefout voorkomt.
+Zoals in de voor gaande afbeelding wordt voorgesteld, worden alle virtuele machines in één toepassing uitgevoerd in dezelfde Cloud service. Gebruikers hebben toegang tot de toepassing via één openbaar IP-adres, waarbij aanvragen automatisch worden verdeeld over de virtuele machines van de toepassing. Het platform [schaalt en implementeert](cloud-services-how-to-scale-portal.md) de virtuele machines in een Azure Cloud Services-toepassing op een manier die een single point of hardwarestoring voor komt.
 
-Hoewel toepassingen in VM's worden uitgevoerd, is het belangrijk om te begrijpen dat Azure Cloud Services PaaS biedt, geen infrastructuur als een service (IaaS). Hier is een manier om erover na te denken. Met IaaS, zoals Azure Virtual Machines, maakt en configureert u eerst de omgeving waarin uw toepassing wordt uitgevoerd. Vervolgens implementeert u uw toepassing in deze omgeving. U bent verantwoordelijk voor het beheer van een groot deel van deze wereld, door dingen te doen, zoals het implementeren van nieuwe gepatchte versies van het besturingssysteem in elke VM. In PaaS daarentegen is het alsof de omgeving al bestaat. Het enige wat u hoeft te doen is uw toepassing implementeren. Het beheer van het platform waarop het draait, inclusief het implementeren van nieuwe versies van het besturingssysteem, wordt voor u afgehandeld.
+Hoewel toepassingen worden uitgevoerd op virtuele machines, is het belang rijk om te begrijpen dat Azure Cloud Services voorziet in PaaS, geen IaaS (Infrastructure as a Service). Hier volgt een van de manieren waarop u dit kunt nadenken. Met IaaS, zoals Azure Virtual Machines, maakt en configureert u eerst de omgeving waarin uw toepassing wordt uitgevoerd. Vervolgens implementeert u uw toepassing in deze omgeving. U bent verantwoordelijk voor het beheren van veel van deze wereld, door het volgende te doen, zoals het implementeren van nieuwe patches van het besturings systeem op elke virtuele machine. In PaaS is het daarentegen alsof de omgeving al bestaat. U hoeft alleen maar uw toepassing te implementeren. Beheer van het platform waarop het wordt uitgevoerd, met inbegrip van de implementatie van nieuwe versies van het besturings systeem, wordt voor u afgehandeld.
 
 ## <a name="scaling-and-management"></a>Schalen en beheren
-Met Azure Cloud Services maakt u geen virtuele machines. In plaats daarvan biedt u een configuratiebestand op dat Azure vertelt hoeveel van elk dat u wilt, zoals 'drie webrolexemplaren' en 'twee rolinstanties voor werknemers'. Het platform maakt ze dan voor u. U kiest nog steeds [welke grootte](cloud-services-sizes-specs.md) die back-VM's moeten zijn, maar u maakt ze niet expliciet zelf. Als uw toepassing een grotere belasting moet verwerken, u om meer VM's vragen en Azure maakt deze exemplaren. Als de belasting afneemt, u deze exemplaren afsluiten en stoppen met betalen.
+Met Azure Cloud Services maakt u geen virtuele machines. In plaats daarvan geeft u een configuratie bestand op waarmee wordt aangegeven hoe veel van elk gewenst gewenst is, zoals ' drie rolinstanties ' en ' twee worker Role instances '. Het platform maakt deze vervolgens voor u. U hebt nog steeds de [grootte](cloud-services-sizes-specs.md) van de back-ups van de virtuele machines, maar u kunt ze zelf niet expliciet maken. Als uw toepassing een grotere belasting moet afhandelen, kunt u vragen om meer Vm's en worden deze instanties door Azure gemaakt. Als de belasting afneemt, kunt u die instanties afsluiten en voor hen niet meer betalen.
 
-Een Azure Cloud Services-toepassing wordt doorgaans beschikbaar gesteld aan gebruikers via een proces in twee stappen. Een ontwikkelaar [uploadt de toepassing](cloud-services-how-to-create-deploy-portal.md) eerst naar het faseringsgebied van het platform. Wanneer de ontwikkelaar klaar is om de toepassing live te maken, gebruiken ze de Azure-portal om fasering te ruilen met productie. Deze [switch tussen staging en productie](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) kan worden gedaan zonder downtime, waardoor een draaiende toepassing kan worden geüpgraded naar een nieuwe versie zonder de gebruikers te storen.
+Een Azure Cloud Services-toepassing wordt normaal gesp roken beschikbaar gesteld aan gebruikers via een proces dat uit twee stappen bestaat. Een ontwikkelaar [uploadt eerst de toepassing](cloud-services-how-to-create-deploy-portal.md) naar het faserings gebied van het platform. Wanneer de ontwikkelaar klaar is om de toepassing Live te maken, gebruiken ze de Azure Portal om fase ring met productie te vervangen. Deze [Schakel optie tussen fase ring en productie](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) kan zonder downtime worden uitgevoerd, waardoor een actieve toepassing kan worden bijgewerkt naar een nieuwe versie zonder dat de gebruikers ervan worden verstoord.
 
 ## <a name="monitoring"></a>Bewaking
-Azure Cloud Services biedt ook monitoring. Net als virtuele machines detecteert het een mislukte fysieke server en start de VM's die op die server op een nieuwe server werden uitgevoerd opnieuw. Maar Azure Cloud Services detecteert ook mislukte VM's en toepassingen, niet alleen hardwarefouten. In tegenstelling tot virtuele machines, het heeft een agent in elke web en werknemer rol, en dus het is in staat om nieuwe VM's en toepassingsinstanties te starten wanneer er fouten optreden.
+Azure Cloud Services biedt ook bewaking. Net als Virtual Machines detecteert het een mislukte fysieke server en start de virtuele machines die op die server worden uitgevoerd op een nieuwe computer. Azure Cloud Services detecteert ook mislukte Vm's en toepassingen, niet alleen hardwarestoringen. In tegens telling tot Virtual Machines heeft het een agent in elke web-en worker-rol, waardoor het mogelijk is om nieuwe Vm's en toepassings exemplaren te starten wanneer er fouten optreden.
 
-Het PaaS-karakter van Azure Cloud Services heeft ook andere implicaties. Een van de belangrijkste is dat toepassingen die op deze technologie zijn gebouwd, moeten worden geschreven om correct te worden uitgevoerd wanneer een web- of werknemersrolinstantie mislukt. Om dit te bereiken, mag een Azure Cloud Services-toepassing de status in het bestandssysteem van zijn eigen VM's niet behouden. In tegenstelling tot VM's die met virtuele machines zijn gemaakt, zijn schrijfbewerkingen naar Azure Cloud Services VM's niet blijvend. Er gaat niets boven een Virtual Machines data schijf. In plaats daarvan moet een Azure Cloud Services-toepassing expliciet alle statusnaar Azure SQL Database, blobs, tabellen of een andere externe opslag schrijven. Door toepassingen op deze manier te bouwen, kunnen ze eenvoudiger worden opschaald en beter bestand zijn tegen storingen, wat beide belangrijke doelen van Azure Cloud Services zijn.
+De PaaS aard van Azure Cloud Services heeft ook andere implicaties. Een van de belangrijkste is dat toepassingen die zijn gebouwd op basis van deze technologie, moeten worden geschreven om correct te worden uitgevoerd wanneer een web-of worker-instantie mislukt. Hiervoor is een Azure Cloud Services-toepassing niet in staat om de status in het bestands systeem van de eigen Vm's te hand haven. In tegens telling tot Vm's die zijn gemaakt met Virtual Machines, zijn de schrijf bewerkingen naar Azure Cloud Services Vm's niet permanent. Er is niets, zoals een Virtual Machines gegevens schijf. In plaats daarvan moet een Azure Cloud Services-toepassing alle status expliciet schrijven naar Azure SQL Database, blobs, tabellen of andere externe opslag. Door toepassingen op deze manier te bouwen, kunnen ze eenvoudiger worden geschaald en kunnen ze meer bestendig worden. Dit zijn beide belang rijke doelen van Azure Cloud Services.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een cloudservice-app maken in .NET](cloud-services-dotnet-get-started.md) 
-* [Een cloudservice-app maken in Node.js](cloud-services-nodejs-develop-deploy-app.md) 
-* [Een cloudservice-app maken in PHP](../cloud-services-php-create-web-role.md) 
-* [Een cloudservice-app maken in Python](cloud-services-python-ptvs.md)
+* [Een Cloud service-app maken in .NET](cloud-services-dotnet-get-started.md) 
+* [Een Cloud service-app maken in node. js](cloud-services-nodejs-develop-deploy-app.md) 
+* [Een Cloud service-app maken in PHP](../cloud-services-php-create-web-role.md) 
+* [Een Cloud service-app maken in python](cloud-services-python-ptvs.md)
 
 
 

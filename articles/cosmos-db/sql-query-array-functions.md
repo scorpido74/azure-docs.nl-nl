@@ -1,6 +1,6 @@
 ---
-title: Arrayfuncties in Azure Cosmos DB-querytaal
-description: Meer informatie over hoe u met de arrayfuncties bewerkingen uitvoeren op arrays in Azure Cosmos DB
+title: Matrix functies in Azure Cosmos DB query taal
+description: Meer informatie over hoe u met matrix functies bewerkingen kunt uitvoeren op matrices in Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74871802"
 ---
-# <a name="array-functions-azure-cosmos-db"></a>Arrayfuncties (Azure Cosmos DB)
+# <a name="array-functions-azure-cosmos-db"></a>Matrix functies (Azure Cosmos DB)
 
-Met de arrayfuncties u bewerkingen uitvoeren op arrays in Azure Cosmos DB.
+Met de matrix functies kunt u bewerkingen uitvoeren op matrices in Azure Cosmos DB.
 
 ## <a name="functions"></a>Functions
 
-Met de volgende scalaire functies wordt een bewerking uitgevoerd op een arrayinvoerwaarde en wordt numerieke, booleaanse of matrixwaarde retourneren:
+De volgende scalaire functies voeren een bewerking uit op een invoer waarde van een matrix en retour neren numerieke, Booleaanse of matrix waarde:
   
 ||||  
 |-|-|-|  
@@ -30,7 +30,7 @@ Met de volgende scalaire functies wordt een bewerking uitgevoerd op een arrayinv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)
 - [Door de gebruiker gedefinieerde functies](sql-query-udfs.md)
 - [Aggregaties](sql-query-aggregates.md)

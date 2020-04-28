@@ -1,64 +1,64 @@
 ---
-title: Geavanceerde autoschaal met Azure Virtual Machines
-description: Maakt gebruik van Resource Manager en VM-schaalsets met meerdere regels en profielen die url's met webhook-url's met schaalacties verzenden.
+title: Geavanceerd automatisch schalen met Azure Virtual Machines
+description: Maakt gebruik van Resource Manager en VM Scale Sets met meerdere regels en profielen die e-mail berichten verzenden en Url's van webhooks aanroepen met schaal acties.
 ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75364217"
 ---
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Geavanceerde automatische schaalconfiguratie met Resource Manager-sjablonen voor VM-schaalsets
-U in- en uitschalen in virtuele machineschaalsets op basis van prestatiemetrische drempels, een terugkerend schema of op een bepaalde datum. U ook e-mail- en webhookmeldingen configureren voor schaalacties. Deze walkthrough toont een voorbeeld van het configureren van al deze objecten met behulp van een Resource Manager-sjabloon op een VM-schaalset.
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets
+U kunt in Virtual Machine Scale Sets schalen en uitschalen op basis van de drempel waarden voor prestatie waarden, een terugkerend schema of een bepaalde datum. U kunt ook e-mail en webhook-meldingen configureren voor schaal acties. In dit scenario ziet u een voor beeld van het configureren van al deze objecten met behulp van een resource manager-sjabloon op een VM-Schaalset.
 
 > [!NOTE]
-> Terwijl deze walkthrough de stappen voor VM-schaalsets uitlegt, is dezelfde informatie van toepassing op autoscaling [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)en API Management [services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Voor een eenvoudige schaal-in/uit-instelling op een VM-schaalset op basis van een eenvoudige prestatiestatistiek zoals CPU, verwijzen naar de [Linux-](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) en [Windows-documenten](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)
+> Hoewel in dit overzicht de stappen voor VM Scale Sets worden uitgelegd, is dezelfde informatie van toepassing op het automatisch schalen van [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) voor een eenvoudige instelling voor schaal in/uit voor een VM-schaalset op basis van een eenvoudige prestatie metriek, zoals CPU, raadpleegt u de [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) -en [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) -documenten
 >
 >
 
-## <a name="walkthrough"></a>Kennismaking
-In deze walkthrough gebruiken we [Azure Resource Explorer](https://resources.azure.com/) om de instelling voor automatische schaal voor een schaalset te configureren en bij te werken. Azure Resource Explorer is een eenvoudige manier om Azure-bronnen te beheren via Resource Manager-sjablonen. Als u nieuw bent in azure resource explorer, leest u [deze inleiding](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
+## <a name="walkthrough"></a>Walkthrough
+In dit scenario gebruiken we [Azure resource Explorer](https://resources.azure.com/) om de instelling voor automatisch schalen voor een schaalset te configureren en bij te werken. Azure Resource Explorer is een eenvoudige manier om Azure-resources te beheren via Resource Manager-sjablonen. Lees [deze inleiding](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)als u geen ervaring hebt met Azure resource Explorer hulp programma.
 
-1. Een nieuwe schaalset implementeren met een basisinstelling voor automatische waarden. In dit artikel wordt gebruik gemaakt van de azure quickstartgalerie, die een Windows-schaalset heeft met een sjabloon voor automatische waarden. Linux schaal sets werken op dezelfde manier.
-2. Nadat de schaalset is gemaakt, navigeert u naar de schaalsetbron van Azure Resource Explorer. U ziet het volgende onder het knooppunt Microsoft.Insights.
+1. Implementeer een nieuwe schaalset met een basis instelling voor automatisch schalen. In dit artikel wordt de versie van de Azure Quick Start-Galerie gebruikt, die een Windows-schaalset met een basis sjabloon voor automatisch schalen heeft. Linux-schaal sets werken op dezelfde manier.
+2. Nadat de schaalset is gemaakt, gaat u naar de resource voor de schaalset van Azure Resource Explorer. U ziet het volgende onder het knoop punt micro soft. Insights.
 
-    ![Azure Explorer](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
+    ![Azure Verkenner](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    De sjabloonuitvoering heeft een standaardinstelling voor automatisch schalen gemaakt met de naam **'autoscalewad'.** Aan de rechterkant u de volledige definitie van deze instelling voor automatische waarden bekijken. In dit geval wordt de standaardinstelling voor automatisch schalen geleverd met een op CPU% gebaseerde scale-out- en scale-in-regel.  
+    Tijdens het uitvoeren van de sjabloon is een standaard instelling voor automatisch schalen gemaakt met de naam **autoscalewad**. Aan de rechter kant kunt u de volledige definitie van deze instelling voor automatisch schalen weer geven. In dit geval wordt de standaard instelling voor automatisch schalen geleverd met een scale-out-en scale-out-regel op basis van CPU.  
 
-3. U nu meer profielen en regels toevoegen op basis van de planning of specifieke vereisten. We maken een autoscale-instelling met drie profielen. Als u inzicht wilt krijgen in profielen en regels in autoscale, controleert [u Aanbevolen procedures voor autoscale](autoscale-best-practices.md).  
+3. U kunt nu meer profielen en regels toevoegen op basis van de planning of specifieke vereisten. We maken een instelling voor automatisch schalen met drie profielen. Zie [Aanbevolen procedures voor automatisch schalen](autoscale-best-practices.md)voor meer informatie over profielen en regels in automatisch schalen.  
 
     | Profielen & regels | Beschrijving |
     |--- | --- |
-    | **Profiel** |**Op basis van prestaties/statistiek** |
-    | Regel |Aantal berichten in servicebus> x |
-    | Regel |Aantal berichten voor servicebus< y |
+    | **Profiel** |**Op basis van prestaties/metriek** |
+    | Regel |Service Bus aantal wachtrij berichten > x |
+    | Regel |Aantal Service Bus wachtrij berichten < y |
     | Regel |CPU% > n |
     | Regel |CPU% < p |
-    | **Profiel** |**Doordeweekse ochtenduren (geen regels)** |
-    | **Profiel** |**Productstartdag (geen regels)** |
+    | **Profiel** |**Weekdag morgen uur (geen regels)** |
+    | **Profiel** |**Dag van product lancering (geen regels)** |
 
-4. Hier is een hypothetisch schaling scenario dat we gebruiken voor deze walk-through.
+4. Hier volgt een voor beeld van een hypothetisch schaal scenario dat wordt gebruikt voor deze procedure.
 
-   * **Load based** - Ik wil graag uitschalen of inop basis van de belasting van mijn toepassing gehost op mijn schaal set.*
-   * **Grootte van de berichtenwachtrij** - Ik gebruik een servicebuswachtrij voor de binnenkomende berichten naar mijn toepassing. Ik gebruik het aantal berichten in de wachtrij en cpu% en configureer een standaardprofiel om een schaalactie te activeren als een van de berichten of de CPU de drempel bereikt.\*
-   * **Tijd van week en dag** - Ik wil een wekelijks terugkerend 'tijd van de dag' gebaseerd profiel genaamd 'Weekday Morning Hours'. Op basis van historische gegevens, ik weet dat het beter is om een bepaald aantal VM-exemplaren om de belasting van mijn toepassing te behandelen gedurende deze tijd.\*
-   * **Speciale data** - Ik heb een 'Product Launch Day' profiel toegevoegd. Ik plan vooruit voor specifieke data, zodat mijn aanvraag is klaar om de belasting te behandelen als gevolg marketing aankondigingen en wanneer we een nieuw product in de toepassing.\*
-   * *De laatste twee profielen kunnen ook andere prestatiemetrische regels binnen hen hebben. In dit geval heb ik besloten om er geen te hebben en in plaats daarvan te vertrouwen op de standaard prestatiemetrische regels. Regels zijn optioneel voor de terugkerende en op datum gebaseerde profielen.*
+   * **Op basis** van de belasting van mijn toepassing die op mijn schaalset wordt gehost, is op de hoogte. *
+   * **Grootte van berichten wachtrij** -ik gebruik een service bus wachtrij voor inkomende berichten voor mijn toepassing. Ik gebruik het aantal berichten van de wachtrij en het CPU-percentage en configureer een standaard profiel om een schaal actie te activeren als een van de aantal berichten of CPU de drempel waarde overschrijdt.\*
+   * **Tijdstip van de week en dag** : Ik wil een wekelijkse terugkerende tijd van het profiel op basis van de dag met de naam ' weekdag ochtend uur '. Op basis van historische gegevens weet ik dat het beter is om een bepaald aantal VM-exemplaren te hebben om de belasting van mijn toepassing te verwerken tijdens deze periode.\*
+   * **Speciale datums** : Ik heb een ' product lancerings profiel ' toegevoegd. Ik plan vooruit voor specifieke datums zodat mijn toepassing gereed is voor het verwerken van de verwerkte Marketing aankondigingen voor belastingen en wanneer we een nieuw product in de toepassing plaatsen.\*
+   * *De laatste twee profielen kunnen ook andere regels voor prestatie metrieke waarden bevatten. In dit geval heeft ik besloten geen en te vertrouwen op de standaard regels op basis van de prestatie metriek. Regels zijn optioneel voor de terugkerende en op de datum gebaseerde profielen.*
 
-     De prioritering van de profielen en regels van de autoscale-engine wordt ook vastgelegd in het best practices-artikel voor [automatische schaling.](autoscale-best-practices.md)
-     Raadpleeg [Algemene statistieken voor Autoscale voor](autoscale-common-metrics.md) een lijst met algemene statistieken voor autoscale
+     De prioriteits volgorde van de profielen en regels van de engine voor automatisch schalen wordt ook vastgelegd in het artikel [Aanbevolen procedures](autoscale-best-practices.md) voor automatisch schalen.
+     Voor een lijst met algemene metrische gegevens voor automatisch schalen, verwijzen wij u naar [algemene metrische gegevens voor automatisch schalen](autoscale-common-metrics.md)
 
-5. Zorg ervoor dat u de **lees-/schrijfmodus** in Resource Explorer gebruikt
+5. Zorg ervoor dat u zich in de modus **lezen/schrijven** bevindt in resource Explorer
 
-    ![Autoscalewad, standaardinstelling voor automatisch schalen](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
+    ![Autoscalewad, standaard instelling voor automatisch schalen](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
-6. Klik op Bewerken. **Vervang** het element 'profielen' in de instelling voor automatische schaal door de volgende configuratie:
+6. Klik op Bewerken. **Vervang** het element ' Profiles ' in de instelling voor automatisch schalen door de volgende configuratie:
 
-    ![Profielen](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![profielen](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {
@@ -190,14 +190,14 @@ In deze walkthrough gebruiken we [Azure Resource Explorer](https://resources.azu
             }
           }
     ```
-    Zie [Autoscale REST API-documentatie](https://msdn.microsoft.com/library/azure/dn931928.aspx)voor ondersteunde velden en hun waarden. Nu bevat uw instelling voor automatisch schalen de drie eerder uiteengezette profielen.
+    Voor ondersteunde velden en hun waarden raadpleegt u de [documentatie voor automatisch schalen rest API](https://msdn.microsoft.com/library/azure/dn931928.aspx). De instelling voor automatisch schalen bevat nu de drie eerder beschreven profielen.
 
-7. Tot slot, kijk op de autoscale **melding** sectie. Met meldingen voor automatisch schalen u drie dingen doen wanneer een scale-out of in actie wordt geactiveerd.
-   - De beheerders en medebeheerders op de hoogte stellen van uw abonnement
-   - Een set gebruikers e-mailen
-   - Activeer een webhook call. Wanneer deze webhook wordt ontslagen, verzendt deze webhook metagegevens over de voorwaarde voor automatisch schalen en de bron voor de schaalset. Zie [Webhook-&-e-mailmeldingen configureren voor automatisch schalen voor](autoscale-webhook-email.md)meer informatie over de payload van webhook-webhook configureren.
+7. Bekijk ten slotte de sectie **melding over** automatisch schalen. Met meldingen voor automatisch schalen kunt u drie dingen doen wanneer een uitschalen of in actie wordt geactiveerd.
+   - De beheerder en mede beheerders van uw abonnement op de hoogte stellen
+   - Een set gebruikers per e-mail verzenden
+   - Activeer een webhook-aanroep. Als deze webhook wordt geactiveerd, worden meta gegevens over de voor waarde voor automatisch schalen en de resource voor de schaalset verzonden. Zie [webhook configureren & e-mail meldingen voor automatisch schalen voor](autoscale-webhook-email.md)meer informatie over de payload van de webhook voor automatisch schalen.
 
-   Het volgende toevoegen aan de instelling Autoscale ter vervanging van het **meldingselement** waarvan de waarde null is
+   Voeg het volgende toe aan de instelling voor automatisch schalen en vervang uw **meldings** element waarvan de waarde Null is
 
    ```
    "notifications": [
@@ -225,23 +225,23 @@ In deze walkthrough gebruiken we [Azure Resource Explorer](https://resources.azu
 
    ```
 
-   Druk op de knop **Plaatsen** in Resource Explorer om de instelling voor automatisch schalen bij te werken.
+   Klik op de knop **put** in resource Explorer om de instelling voor automatisch schalen bij te werken.
 
-U hebt een instelling voor automatische schaal bijgewerkt op een VM-schaalset met meerdere schaalprofielen en schaalmeldingen.
+U hebt een instelling voor automatisch schalen bijgewerkt op een VM-Schaalset die meerdere schaal profielen en schaal meldingen bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 Gebruik deze koppelingen voor meer informatie over automatisch schalen.
 
-[TroubleShoot Autoscale met virtuele machineschaalsets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+[Problemen met automatisch schalen oplossen met Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[Algemene statistieken voor automatisch schalen](autoscale-common-metrics.md)
+[Algemene metrische gegevens voor automatisch schalen](autoscale-common-metrics.md)
 
-[Aanbevolen procedures voor Azure Autoscale](autoscale-best-practices.md)
+[Aanbevolen procedures voor het automatisch schalen van Azure](autoscale-best-practices.md)
 
-[Autoscale beheren met PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[Automatisch schalen beheren met Power shell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 
 [Automatisch schalen beheren met CLI](cli-samples.md#autoscale)
 
-[Webhook-& e-mailmeldingen configureren voor automatisch schalen](autoscale-webhook-email.md)
+[Webhook & e-mail meldingen configureren voor automatisch schalen](autoscale-webhook-email.md)
 
-[Verwijzing naar microsoft.Insights/sjablooninstellingen](/azure/templates/microsoft.insights/autoscalesettings) voor automatisch schalen
+Naslag informatie over [micro soft. Insights/autoscalesettings-](/azure/templates/microsoft.insights/autoscalesettings) sjablonen

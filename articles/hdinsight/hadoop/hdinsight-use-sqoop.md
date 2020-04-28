@@ -1,6 +1,6 @@
 ---
 title: Apache Sqoop-taken uitvoeren met Azure HDInsight (Apache Hadoop)
-description: Meer informatie over het gebruik van Azure PowerShell vanuit een werkstation om Sqoop-import en export uit te voeren tussen een Hadoop-cluster en een Azure SQL-database.
+description: Informatie over het gebruik van Azure PowerShell van een werk station voor het uitvoeren van Sqoop importeren en exporteren tussen een Hadoop-cluster en een Azure SQL database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,32 +8,32 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74951850"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop gebruiken met Hadoop in HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Meer informatie over het gebruik van Apache Sqoop in HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure SQL-database.
+Meer informatie over het gebruik van Apache Sqoop in HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure-SQL database.
 
-Hoewel Apache Hadoop een natuurlijke keuze is voor het verwerken van ongestructureerde en semi-gestructureerde gegevens, zoals logboeken en bestanden, kan het ook nodig zijn om gestructureerde gegevens te verwerken die zijn opgeslagen in relationele databases.
+Hoewel Apache Hadoop een natuurlijke keus is voor het verwerken van niet-gestructureerde en semi-gestructureerde gegevens, zoals Logboeken en bestanden, kan het ook nodig zijn om gestructureerde gegevens te verwerken die zijn opgeslagen in relationele data bases.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) is een tool ontworpen om gegevens over te dragen tussen Hadoop clusters en relationele databases. U het gebruiken om gegevens uit een relationeel databasebeheersysteem (RDBMS) zoals SQL Server, MySQL of Oracle te importeren in het Hadoop distributed file system (HDFS), de gegevens in Hadoop om te zetten met MapReduce of Apache Hive en de gegevens vervolgens terug te exporteren naar een RDBMS . In dit artikel gebruikt u een SQL Server-database voor uw relationele database.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) is een hulp programma dat is ontworpen om gegevens over te dragen tussen Hadoop-clusters en relationele data bases. U kunt dit gebruiken om gegevens te importeren uit een relationele Database Management System (RDBMS), zoals SQL Server, MySQL of Oracle in het Hadoop Distributed File System (HDFS), de gegevens in Hadoop te transformeren met MapReduce of Apache Hive en vervolgens de gegevens terug te exporteren naar een RDBMS. In dit artikel gebruikt u een SQL Server-Data Base voor uw relationele data base.
 
 > [!IMPORTANT]  
-> In dit artikel wordt een testomgeving ingesteld om de gegevensoverdracht uit te voeren. Vervolgens kiest u een methode voor gegevensoverdracht voor deze omgeving uit een van de methoden in sectie [Sqoop-taken uitvoeren,](#run-sqoop-jobs)verder hieronder.
+> In dit artikel wordt een test omgeving ingesteld voor het uitvoeren van de gegevens overdracht. Vervolgens kiest u een methode voor gegevens overdracht voor deze omgeving van een van de methoden in de sectie [Sqoop-taken uitvoeren](#run-sqoop-jobs), verder hieronder.
 
-Zie Nieuwe versies van de cluster die door HDInsight worden geleverd voor Sqoop-versies die worden ondersteund op [HDInsight-clusters?](../hdinsight-component-versioning.md)
+Zie [Wat is er nieuw in de cluster versies van hdinsight?](../hdinsight-component-versioning.md) voor Sqoop-versies die worden ondersteund op hdinsight-clusters?
 
 ## <a name="understand-the-scenario"></a>Inzicht in het scenario
 
-HDInsight cluster wordt geleverd met een aantal voorbeeldgegevens. U gebruikt de volgende twee voorbeelden:
+HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt de volgende twee voor beelden:
 
-* Een Apache Log4j log bestand, `/example/data/sample.log`dat zich bevindt op . De volgende logboeken worden uit het bestand gehaald:
+* Een Apache Log4j-logboek bestand, dat zich bevindt in `/example/data/sample.log`. De volgende logboeken worden opgehaald uit het bestand:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,27 +42,27 @@ HDInsight cluster wordt geleverd met een aantal voorbeeldgegevens. U gebruikt de
 ...
 ```
 
-* Een Hive-tabel met de naam `hivesampletable`, `/hive/warehouse/hivesampletable`die verwijst naar het gegevensbestand op . De tabel bevat enkele gegevens van mobiele apparaten.
+* Een Hive-tabel `hivesampletable`met de naam, die verwijst naar het `/hive/warehouse/hivesampletable`gegevens bestand dat zich bevindt in. De tabel bevat enkele gegevens van mobiele apparaten.
   
   | Veld | Gegevenstype |
   | --- | --- |
   | clientid |tekenreeks |
-  | querytijd |tekenreeks |
+  | querytime |tekenreeks |
   | markt |tekenreeks |
   | deviceplatform |tekenreeks |
   | devicemake |tekenreeks |
-  | apparaatmodel |tekenreeks |
+  | devicemodel |tekenreeks |
   | state |tekenreeks |
   | land |tekenreeks |
   | querydwelltime |double |
-  | Sessionid |bigint |
-  | sessiepaginaweergavevolgorde |bigint |
+  | SessionID |bigint |
+  | sessionpagevieworder |bigint |
 
-In dit artikel gebruikt u deze twee gegevenssets om sqoop-import en export te testen.
+In dit artikel gebruikt u deze twee gegevens sets om het importeren en exporteren van Sqoop te testen.
 
-## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Testomgeving instellen
+## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Test omgeving instellen
 
-Het cluster, de SQL-database en andere objecten worden gemaakt via de Azure-portal met behulp van een Azure Resource Manager-sjabloon. De sjabloon is te vinden in [Azure quickstart-sjablonen.](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) De resourcemanagersjabloon roept een bacpac-pakket aan om de tabelschema's te implementeren in een SQL-database.  Het bacpac-pakket bevindt zich https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpacin een openbare blobcontainer. Als u een privécontainer voor de bacpac-bestanden wilt gebruiken, gebruikt u de volgende waarden in de sjabloon:
+Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt met behulp van een Azure Resource Manager sjabloon. De sjabloon is te vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)start-sjablonen. Met de Resource Manager-sjabloon wordt een Bacpac-pakket aangeroepen om de tabel schema's te implementeren in een SQL database.  Het Bacpac-pakket bevindt zich in een open https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpacbare BLOB-container. Als u een persoonlijke container wilt gebruiken voor de Bacpac-bestanden, gebruikt u de volgende waarden in de sjabloon:
 
 ```json
 "storageKeyType": "Primary",
@@ -70,9 +70,9 @@ Het cluster, de SQL-database en andere objecten worden gemaakt via de Azure-port
 ```
 
 > [!NOTE]  
-> Importeren met behulp van een sjabloon of de Azure-portal ondersteunt alleen het importeren van een BACPAC-bestand uit Azure blob-opslag.
+> Importeren met behulp van een sjabloon of de Azure Portal ondersteunt alleen het importeren van een BACPAC-bestand uit Azure Blob-opslag.
 
-1. Selecteer de volgende afbeelding om de sjabloon Resourcebeheer in de Azure-portal te openen.
+1. Selecteer de volgende afbeelding om de Resource Manager-sjabloon te openen in de Azure Portal.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -80,46 +80,46 @@ Het cluster, de SQL-database en andere objecten worden gemaakt via de Azure-port
 
     |Veld |Waarde |
     |---|---|
-    |Abonnement |Selecteer uw Azure-abonnement in de vervolgkeuzelijst.|
-    |Resourcegroep |Selecteer uw resourcegroep in de vervolgkeuzelijst of maak een nieuwe groep|
-    |Locatie |Selecteer een gebied in de vervolgkeuzelijst.|
-    |Clusternaam |Voer een naam in voor het Hadoop-cluster. Gebruik alleen kleine letters.|
-    |Gebruikersnaam voor clusteraanmelding |Houd de vooraf ingevulde waarde `admin`.|
-    |Wachtwoord voor clusteraanmelding |Voer een wachtwoord in.|
-    |Ssh-gebruikersnaam |Houd de vooraf ingevulde waarde `sshuser`.|
-    |Ssh-wachtwoord |Voer een wachtwoord in.|
-    |Sql-beheer aanmelding |Houd de vooraf ingevulde waarde `sqluser`.|
-    |Sql-beheerwachtwoord |Voer een wachtwoord in.|
-    |_artifacts locatie | Gebruik de standaardwaarde, tenzij u uw eigen bacpac-bestand op een andere locatie wilt gebruiken.|
-    |_artifacts Locatie Sas-token |Leeg laten.|
-    |Bacpac-bestandsnaam |Gebruik de standaardwaarde, tenzij u uw eigen bacpac-bestand wilt gebruiken.|
+    |Abonnement |Selecteer uw Azure-abonnement in de vervolg keuzelijst.|
+    |Resourcegroep |Selecteer uw resource groep in de vervolg keuzelijst of maak een nieuwe.|
+    |Locatie |Selecteer een regio in de vervolg keuzelijst.|
+    |Clusternaam |Voer een naam in voor het Hadoop-cluster. Alleen kleine letters gebruiken.|
+    |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin`.|
+    |Wachtwoord voor clusteraanmelding |Voer een wacht woord in.|
+    |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser`.|
+    |SSH-wacht woord |Voer een wacht woord in.|
+    |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser`.|
+    |Wacht woord voor SQL-beheerder |Voer een wacht woord in.|
+    |_artifacts locatie | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
+    |SAS-token _artifacts locatie |Leeg laten.|
+    |Bacpac-bestands naam |Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand wilt gebruiken.|
     |Locatie |Gebruik de standaardwaarde.|
 
-    De naam Azure SQL `<ClusterName>dbserver`Server is . De naam van `<ClusterName>db`de database is . De standaardnaam van `e6qhezrh2pdqu`het opslagaccount is .
+    De naam van de Azure- `<ClusterName>dbserver`SQL Server is. De naam van de data `<ClusterName>db`Base is. De standaard naam van het opslag account `e6qhezrh2pdqu`is.
 
-3. Selecteer **Ik ga akkoord met de hierboven vermelde algemene voorwaarden.**
+3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
 
-4. Selecteer **Aankoop**. U ziet een nieuwe tegel met de titel Implementatie indienen voor sjabloonimplementatie. Het duurt ongeveer 20 minuten om het cluster en de SQL-database te maken.
+4. Selecteer **Aankoop**. U ziet een nieuwe tegel met de titel verzenden van implementatie voor Sjabloonimlementatie. Het duurt ongeveer 20 minuten om het cluster en de SQL-database te maken.
 
 ## <a name="run-sqoop-jobs"></a>Sqoop-taken uitvoeren
 
-HDInsight kan Sqoop-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te beslissen welke methode geschikt is voor u en volg vervolgens de koppeling voor een walkthrough.
+HDInsight kan Sqoop-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te bepalen welke methode het meest geschikt is voor u en volg de koppeling voor een overzicht.
 
-| **Gebruik dit** als je wilt ... | ... een **interactieve** shell | ... **verwerking van partij** | ... van dit **besturingssysteem** van de client |
+| **Gebruik deze** als u wilt... | ... een **interactieve** shell | ... **batch** verwerking | ... van dit **besturings systeem** van de client |
 |:--- |:---:|:---:|:--- |:--- |
-| [Ssh](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux, Unix, Mac OS X of Windows |
-| [.NET-SDK voor Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows (voor nu) |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux, UNIX, Mac OS X of Windows |
+| [.NET-SDK voor Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows (nu) |
 | [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Windows |
 
 ## <a name="limitations"></a>Beperkingen
 
-* Bulkexport - Met HDInsight op Basis van Linux biedt de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database momenteel geen bulkinserts.
-* Batching - Met HdInsight op Basis `-batch` van Linux voert Sqoop bij het gebruik van de switch bij het uitvoeren van wisselplaten meerdere wisselplaten uit in plaats van de invoegbewerkingen te batcheren.
+* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of Azure SQL Database momenteel geen bulk toevoegingen ondersteunt.
+* Batch verwerking: met HDInsight op basis van Linux, worden bij `-batch` het gebruik van de switch tijdens het invoegen meerdere toevoegingen uitgevoerd in plaats van de invoeg bewerkingen batch-Sqoop.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu heb je geleerd hoe je Sqoop moet gebruiken. Voor meer informatie zie:
+U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
 
 * [Apache Hive gebruiken met HDInsight](../hdinsight-use-hive.md)
-* [Gegevens uploaden naar HDInsight:](../hdinsight-upload-data.md)zoek andere methoden voor het uploaden van gegevens naar HDInsight/Azure Blob-opslag.
+* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight/Azure Blob Storage zoeken.
 * [Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop in HDInsight en SQL Database](./apache-hadoop-use-sqoop-mac-linux.md)

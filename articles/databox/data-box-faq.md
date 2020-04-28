@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75438614"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
@@ -36,12 +36,12 @@ De vragen en antwoorden zijn in de volgende categorieën onderverdeeld:
 A.  De service Azure Data Box is bedoeld voor offlinegegevensopname. Deze service beheert een matrix met producten met verschillende opslagcapaciteiten die allemaal zijn afgestemd voor gegevenstransport. 
 
 ### <a name="q-what-is-azure-data-box"></a>V. Wat is Azure Data Box?
-A. De Azure Data Box maakt een snelle, goedkope en veilige overdracht van terabytes aan gegevens naar Azure mogelijk. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
+A. De Azure Data Box biedt een snelle, goedkope en veilige overdracht van terabytes aan gegevens in Azure. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
 
 Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>V. Wanneer moet ik Data Box gebruiken?
-A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Voor gegevensformaten < 40 TB gebruikt u Gegevensboxschijf en voor gegevensformaten > 500 TB, meld u aan voor [Data Box Heavy.](data-box-heavy-overview.md)
+A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>V. Wat kost Data Box?
 A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het productmodel selecteert terwijl u een bestelling in de Azure-portal maakt, zullen de kosten voor het apparaat worden weergegeven. De verzending is ook gratis, maar er zijn wel kosten verbonden aan de Azure-opslag. Ga voor meer informatie naar [Prijzen van Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -50,10 +50,10 @@ A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het p
 A. Data Box heeft een onbewerkte capaciteit van 100 TB en een bruikbare capaciteit van 80 TB. U kunt met Data Box maximaal 80 TB aan gegevens overdragen. Als u meer gegevens wilt overdragen, moet u meer apparaten bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>V. Hoe kan ik controleren of Data Box in mijn regio beschikbaar is? 
-A.  Ga voor informatie over welke landen/regio's de gegevensbox beschikbaar is, naar [de beschikbaarheid van de regio.](data-box-overview.md#region-availability)  
+A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u naar [beschik bare regio's](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>V. In welke regio's kan ik gegevens opslaan met Data Box?
-A. Data Box wordt ondersteund voor alle regio's binnen de VS, West-Europa, Noord-Europa, Frankrijk, het Verenigd Koninkrijk, Japan, Australië en Canada. Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.
+A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord, Frank rijk, UK, Japan, Australië en Canada. Ga naar [beschik bare regio](data-box-overview.md#region-availability)voor meer informatie.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box?
 A. Neem bij problemen met Data Box contact op met [Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md).
@@ -101,7 +101,7 @@ A.  U kunt de bestelling alleen annuleren nadat de Data Box is besteld en voorda
 A. Ja. Er kunnen meerdere hostcomputers verbinding met een Data Box maken om gegevens over te dragen en er kunnen meerdere kopieertaken parallel worden uitgevoerd. Ga voor meer informatie naar [Zelfstudie: Gegevens naar Azure Data Box kopiëren](data-box-deploy-copy-data.md).
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>V. Kan ik verbinding maken met beide 10 GbE-interfaces op de Data Box om gegevens over te dragen ?
-A. Ja. Beide 10 GbE-interfaces kunnen worden aangesloten op de Data Box om gegevens tegelijkertijd te kopiëren. Ga voor meer informatie over het kopiëren van gegevens naar [Zelfstudie: Gegevens kopiëren naar Azure Data Box](data-box-deploy-copy-data.md).
+A. Ja. Beide 10 GbE-interfaces kunnen worden aangesloten op de Data Box om gegevens tegelijkertijd te kopiëren. Ga voor meer informatie over het kopiëren van gegevens naar de [zelf studie: gegevens kopiëren naar Azure data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -116,7 +116,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>V. Het ledcontrolelampje voor systeemstoringen op het voorpaneel brandt. Wat moet ik doen?
-A. Als het ledcontrolelampje voor systeemstoringen brandt, betekent dit dat uw systeem niet in orde is. [Neem contact op met Microsoft Support](data-box-disk-contact-microsoft-support.md) voor de volgende stappen.
+A. Als het ledcontrolelampje voor systeemstoringen brandt, betekent dit dat uw systeem niet in orde is. [Neem contact op met Microsoft ondersteuning](data-box-disk-contact-microsoft-support.md) voor de volgende stappen.
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>V. Ik heb geen toegang tot het ontgrendelingswachtwoord voor de Data Box in de Azure Portal. Waarom is dit?
 A. Controleer de machtigingen in uw abonnement en opslagaccount als u geen toegang tot het ontgrendelingswachtwoord in de Azure Portal hebt. Zorg dat u inzender- of eigenaarsmachtigingen op resourcegroepniveau hebt. Als dit niet het geval is, moet u minimaal machtigingen op het niveau van de rol Data Box Operator hebben om de toegangsreferenties te kunnen zien.
@@ -141,7 +141,7 @@ A. U kunt in de Azure Portal naar uw Data Box-bestelling gaan en dan **Overzicht
 A.  Data Box heeft een bruikbare opslagcapaciteit van 80 TB. U kunt een Data Box-apparaat gebruiken voor gegevens met een grootte van 40 tot 80 TB. Voor grotere hoeveelheden gegevens tot 500 TB kunt u meerdere Data Box-apparaten bestellen. Meld u aan voor Data Box Heavy voor gegevens die groter zijn dan 500 TB.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>V. Wat zijn de maximale groottes voor blok-blob en pagina-blob die voor Data Box worden ondersteund? 
-A.  De maximale groottes worden bepaald door Azure Storage-limieten. De maximale blok-blob is ongeveer 4,768 TiB en de maximale blobgrootte is 8 TiB. Zie [Schaalbaarheids- en prestatiedoelen voor Blob-opslag voor](../storage/blobs/scalability-targets.md)meer informatie.
+A.  De maximale groottes worden bepaald door Azure Storage-limieten. De maximale blok-blob is ongeveer 4,768 TiB en de maximale blobgrootte is 8 TiB. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md)voor meer informatie.
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>V. Hoe weet ik of mijn gegevens veilig zijn tijdens de overdracht? 
 A. Er zijn meerdere beveiligingsfuncties geïmplementeerd om te zorgen dat uw Data Box veilig is tijdens het verzenden. Sommige daarvan zijn verzegeling, detectie van hardware- en softwaremanipulatie en een wachtwoord om het apparaat te ontgrendelen. Ga naar [Azure Data Box-beveiliging en -gegevensbescherming](data-box-security.md) voor meer informatie.
@@ -159,7 +159,7 @@ A.  U kunt het kopieerproces als volgt versnellen:
 - Gebruik meerdere gegevensstromen. In bijvoorbeeld Robocopy kunt u de optie voor meerdere threads gebruiken. Ga naar [Tutorial: Copy data to Azure Data Box and verify](data-box-deploy-copy-data.md) (Zelfstudie: Gegevens naar Azure Data Box kopiëren en verifiëren) voor meer informatie over de opdracht die u moet gebruiken.
 - Gebruik meerdere sessies.
 - In plaats van te kopiëren via een netwerkshare (waarbij de netwerksnelheid beperkend kan zijn), zorgt u ervoor dat de gegevens lokaal aanwezig zijn op de computer waarmee de Data Box is verbonden.
-- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste x86- of x64-build, selecteer het tabblad **Artefacten** en download de MSI.
+- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad **artefacten** en down load het MSI-bestand.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -180,30 +180,30 @@ A.  Ja. Data Box ondersteunt maximaal 10 opslagaccounts, algemene opslag, klassi
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>V. Mijn apparaat werd geleverd, maar het apparaat lijkt te zijn beschadigd. Wat moet ik doen?
 A. Gebruik het apparaat niet als het beschadigd is gearriveerd of als er bewijs van sabotage is. [Neem contact op met Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md) en stuur het apparaat zo snel mogelijk terug. U kunt ook een nieuwe Data Box-bestelling maken voor een vervangend apparaat. In dit geval worden er geen kosten voor het vervangende apparaat in rekening gebracht.
 
-### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>V. Kan ik mijn Data Box-bestelling zelf ophalen? Kan ik de Data Box retourneren via een provider die ik kies?
-A. Ja. Microsoft biedt ook zelfbeheerde verzending in de Amerikaanse gov regio alleen. Bij het plaatsen van de Data Box-order u de optie zelfbeheerde verzending kiezen. Als u uw Data Box-apparaat wilt ophalen, neemt u de volgende stappen:
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>V. Kan ik mijn Data Box bestelling zelf ophalen? Kan ik de Data Box retour neren via een door mij gekozen provider?
+A. Ja. Micro soft biedt ook zelf-beheerde verzen ding in US Gov regio. Wanneer u de Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen. Voer de volgende stappen uit om uw Data Box-apparaat op te halen:
     
-1. Nadat u de bestelling hebt geplaatst, wordt de bestelling verwerkt en wordt de Data Box voorbereid. U ontvangt via een e-mail een melding dat uw bestelling klaar is om af te halen. 
-2. Zodra de bestelling klaar is voor ophalen, gaat u naar uw bestelling in de Azure-portal en navigeert u naar het **overzichtsblad.** 
-3. U ziet een melding met een code in de Azure-portal. E-mail het [Azure Data Box Operations-team](mailto:adbops@microsoft.com) en geef ze de code op. Het team geeft de locatie op en plant een ophaaldatum en -tijd. U moet het team binnen 5 werkdagen na ontvangst van de e-mailmelding bellen.
+1. Nadat u de order hebt geplaatst, wordt de order verwerkt en wordt de Data Box voor bereid. U wordt gewaarschuwd via een e-mail bericht dat uw bestelling gereed is voor ophalen. 
+2. Zodra de bestelling gereed is voor ophalen, gaat u naar uw bestelling in het Azure Portal en gaat u naar de Blade **overzicht** . 
+3. Er wordt een melding met een code in de Azure Portal weer geven. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op. Het team geeft de locatie op en plant een datum en tijd voor het ophalen. U moet het team aanroepen binnen 5 werk dagen nadat u het e-mail bericht hebt ontvangen.
 
-Zodra de gegevenskopie is voltooid, voert u de volgende stappen uit om uw apparaat terug te sturen:
+Wanneer het kopiëren van de gegevens is voltooid, voert u de volgende stappen uit om uw apparaat te retour neren:
 
-1. Zodra de gegevenskopie zonder fouten is voltooid, voert **u Voorbereiden op verzenden**uit. Nadat de voorbereiding is voltooid, ontvangt u een code in de lokale webgebruikersinterface van het apparaat. Kopieer en sla de code op.
-2. Schakel het apparaat uit en verwijder de verbindingskabels.
+1. Als het kopiëren van de gegevens is voltooid zonder fouten, voert u **voorbereiding voor verzending**uit. Nadat de voor bereiding is voltooid, ontvangt u een code in de lokale web-UI van het apparaat. Kopieer de code en sla deze op.
+2. Schakel het apparaat uit en verwijder de verbindings kabels.
 3. Rol het netsnoer op en plaats het veilig aan de achterzijde van het apparaat.
-4. E-mail het [Azure Data Box Operations-team](mailto:adbops@microsoft.com) en geef ze de code die u eerder hebt opgeslagen. Ze zouden u informatie geven over waar en wanneer het apparaat moet worden afgezet.
+4. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op die u eerder hebt opgeslagen. Ze geven u informatie over waar en wanneer u het apparaat moet neerzetten.
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Gaan mijn Data Box-apparaten tijdens verzending de landsgrenzen over?
-A. Alle Data Box-apparaten worden verzonden vanuit hetzelfde land als hun bestemming en zullen geen internationale grenzen overschrijden. De enige uitzondering is voor bestellingen in de Europese Unie (EU), waar apparaten van en naar elk EU-land kunnen worden verzonden. Dit geldt zowel voor de Data Box als de Data Box Heavy-apparaten.
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Worden de land grenzen van mijn Data Box-apparaten tijdens de verzen ding overschreden?
+A. Alle Data Box apparaten worden verzonden vanuit hetzelfde land als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en vanuit elk land van de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.
 
-### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>V. Ik bestelde een Data Box in us East, maar ik kreeg een apparaat dat werd verzonden vanaf een locatie in us West. Waar moet ik het apparaat terugbrengen?
-A. We proberen u zo snel mogelijk een Data Box-apparaat te geven. We geven prioriteit aan de verzending vanuit een datacenter dat het dichtst bij de locatie van uw opslagaccount ligt, maar verzenden een apparaat vanuit een Azure-datacenter dat over voorraad beschikt. Uw gegevensvak moet worden geretourneerd naar dezelfde locatie waar het is verzonden, zoals weergegeven in het verzendlabel.
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>V. Ik heb een Data Box in VS Oost besteld, maar ik heb een apparaat ontvangen dat is verzonden vanaf een locatie in VS West. Waar moet ik het apparaat retour neren?
+A. We proberen zo snel mogelijk een Data Box apparaat te verkrijgen. We geven een prioriteit aan de verzen ding van een Data Center dat het dichtst bij de locatie van uw opslag account ligt, maar verzendt een apparaat vanuit elk Azure-Data Center dat beschik bare inventaris. Uw Data Box moet worden teruggestuurd naar dezelfde locatie waar deze is verzonden, zoals wordt weer gegeven in het verzend label.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>V. Er wordt geen label voor retourzending weergegeven op het E-ink-display. Wat moet ik doen?
 A. Voer de volgende stappen uit als er geen label voor retourverzending wordt weergegeven op het E-ink-display:
 - Verwijder het oude verzendlabel en alle stickers van de vorige verzending.
-- Ga naar uw bestelling in de Azure-portal. Ga naar **Overzicht** en **Download verzendlabel**. Ga voor meer informatie naar [Verzendlabel downloaden](data-box-portal-admin.md#download-shipping-label).
+- Ga naar uw bestelling in de Azure-portal. Ga naar **overzicht** en **down load het verzend label**. Ga voor meer informatie naar [Verzendlabel downloaden](data-box-portal-admin.md#download-shipping-label).
 - Print het verzendlabel en steek het in het doorzichtige plastic hoesje op het apparaat. 
 - Zorg dat het verzendlabel duidelijk zichtbaar is. 
 
@@ -222,7 +222,7 @@ A. Als u uw apparaat niet kunt opstarten, gaat u terug naar uw bestelling in de 
 ## <a name="verify-and-upload"></a>Verifiëren en uploaden
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>V. Wanneer heb ik weer toegang tot mijn gegevens in Azure als ik de Data Box heb teruggestuurd? 
-A.  Zodra de orderstatus voor **Gegevenskopie** wordt weergegeven als **Voltooid,** moet u meteen toegang hebben tot uw gegevens.
+A.  Zodra de status van de bestelling voor het **kopiëren van gegevens** wordt weer gegeven als **voltooid**, kunt u direct toegang krijgen tot uw gegevens.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>V. Waar bevinden zich mijn gegevens in Azure na het uploaden?
 A.  Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van deze locaties in uw Azure Storage-account geüpload, afhankelijk van het feit of de gegevens bestaan uit een blok-blob, een pagina-blob of Azure-bestanden.

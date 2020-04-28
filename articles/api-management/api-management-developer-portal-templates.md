@@ -1,7 +1,7 @@
 ---
-title: De ontwikkelaarsportal API-beheer aanpassen met behulp van sjablonen
+title: De API Management ontwikkelaars portal aanpassen met behulp van sjablonen
 titleSuffix: Azure API Management
-description: Meer informatie over het aanpassen van de Azure API Management-ontwikkelaarsportal met behulp van sjablonen.
+description: Meer informatie over het aanpassen van de Azure API Management-ontwikkelaars Portal met behulp van sjablonen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430777"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>De azure API Management-ontwikkelaarsportal aanpassen met behulp van sjablonen
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>De Azure API Management-ontwikkelaars portal aanpassen met behulp van sjablonen
 
 Er zijn die manieren waarop u de ontwikkelaarsportal in Azure API Management kunt aanpassen:
 
 * [De inhoud van statische pagina's en pagina-indelingselementen bewerken][modify-content-layout]
 * [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaarsportal][customize-styles]
-* [De sjablonen wijzigen die worden gebruikt voor pagina's die door de portal worden gegenereerd][portal-templates] (uitgelegd in deze handleiding)
+* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (uitgelegd in deze hand leiding)
 
-Sjablonen worden gebruikt om de inhoud van door het systeem gegenereerde ontwikkelaarsportalpagina's aan te passen (bijvoorbeeld API-documenten, producten, gebruikersverificatie, enz.). Met de syntaxis van [DotLiquid](http://dotliquidmarkup.org/) en een set gelokaliseerde tekenreeksbronnen, pictogrammen en paginabesturingselementen hebt u een grote flexibiliteit om de inhoud van de pagina's naar eigen inzicht te configureren.
+Sjablonen worden gebruikt om de inhoud van door het systeem gegenereerde ontwikkelaars Portal pagina's aan te passen (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort). Met behulp van de [DotLiquid](http://dotliquidmarkup.org/) -syntaxis en een opgegeven reeks gelokaliseerde teken reeks resources, pictogrammen en pagina besturings elementen kunt u de inhoud van de pagina's zo configureren dat deze er precies zo uitziet.
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="developer-portal-templates-overview"></a>Overzicht van ontwikkelaarsportalsjablonen
+## <a name="developer-portal-templates-overview"></a>Overzicht van sjablonen voor ontwikkelaars portals
 
-Het bewerken van sjablonen wordt gedaan vanuit de **portal Voor ontwikkelaars** terwijl ze zijn aangemeld als beheerder. Als u er wilt komen, opent u eerst de Azure-portal en klikt u op **De portal voor ontwikkelaars** vanaf de servicewerkbalk van uw API-beheerexemplaar.
+Het bewerken van sjablonen wordt uitgevoerd vanuit de **ontwikkelaars Portal** terwijl u bent aangemeld als beheerder. Ga als volgt te werk om eerst de Azure Portal te openen en klik op **ontwikkelaars Portal** op de service werkbalk van uw API Management-exemplaar.
 
-Als u toegang wilt krijgen tot de sjablonen voor ontwikkelaarsportalen, klikt u op het pictogram aanpassen aan de linkerkant om het aanpassingsmenu weer te geven en klikt u op **Sjablonen**.
+Voor toegang tot de sjablonen voor de ontwikkelaars Portal klikt u op het pictogram aanpassen aan de linkerkant om het menu aanpassing weer te geven en klikt u op **sjablonen**.
 
-![Ontwikkelaarsportalsjablonen][api-management-customize-menu]
+![Sjablonen voor ontwikkelaars Portal][api-management-customize-menu]
 
-In de lijst met sjablonen worden verschillende categorieën sjablonen weergegeven die de verschillende pagina's in de ontwikkelaarsportal bestrijken. Elke sjabloon is anders, maar de stappen om ze te bewerken en de wijzigingen te publiceren zijn hetzelfde. Als u een sjabloon wilt bewerken, klikt u op de naam van de sjabloon.
+In de lijst met sjablonen worden verschillende categorieën sjablonen weer gegeven die betrekking hebben op de verschillende pagina's in de ontwikkelaars Portal. Elke sjabloon is anders, maar de stappen om deze te bewerken en de wijzigingen te publiceren, zijn hetzelfde. Als u een sjabloon wilt bewerken, klikt u op de naam van de sjabloon.
 
-![Ontwikkelaarsportalsjablonen][api-management-templates-menu]
+![Sjablonen voor ontwikkelaars Portal][api-management-templates-menu]
 
-Als u op een sjabloon klikt, gaat u naar de pagina van de ontwikkelaarsportal die door die sjabloon is aanpasbaar. In dit voorbeeld wordt de sjabloon **Productlijst** weergegeven. De sjabloon **Productlijst** bepaalt het gebied van het scherm dat wordt aangegeven door de rode rechthoek.
+Als u op een sjabloon klikt, gaat u naar de pagina ontwikkelaars portal die kan worden aangepast door die sjabloon. In dit voor beeld wordt de sjabloon **product lijst** weer gegeven. De sjabloon **product lijst** bepaalt het gebied van het scherm dat wordt aangegeven door de rode rechthoek.
 
-![Sjabloon voor de lijst met producten][api-management-developer-portal-templates-overview]
+![Sjabloon producten lijst][api-management-developer-portal-templates-overview]
 
-Sommige sjablonen, zoals de **sjablonen voor gebruikersprofielen,** passen verschillende delen van dezelfde pagina aan.
+Bij sommige sjablonen, zoals de **gebruikers profiel** sjablonen, worden verschillende delen van dezelfde pagina aangepast.
 
-![Gebruikersprofielsjablonen][api-management-user-profile-templates]
+![Gebruikers profiel sjablonen][api-management-user-profile-templates]
 
-De editor voor elke sjabloon voor ontwikkelaarsportal heeft twee secties onder aan de pagina weergegeven. Aan de linkerkant wordt het bewerkingsvenster voor de sjabloon weergegeven en rechts wordt het gegevensmodel voor de sjabloon weergegeven.
+De editor voor elke ontwikkelaars Portal sjabloon bevat twee secties die onder aan de pagina worden weer gegeven. Aan de linkerkant wordt het bewerkings venster voor de sjabloon weer gegeven en aan de rechter kant wordt het gegevens model voor de sjabloon weer gegeven.
 
-Het deelvenster Sjabloonbewerking bevat de markering die de weergave en het gedrag van de bijbehorende pagina in de ontwikkelaarsportal regelt. De markering in de sjabloon gebruikt de syntaxis [Van DotLiquid.](http://dotliquidmarkup.org/) Een populaire editor voor DotLiquid is [DotLiquid voor ontwerpers.](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) Wijzigingen die tijdens het bewerken in de sjabloon zijn aangebracht, worden in realtime weergegeven in de browser, maar zijn pas zichtbaar voor uw klanten als u de sjabloon [opslaat](#to-save-a-template) en [publiceert.](#to-publish-a-template)
+Het deel venster sjabloon bewerken bevat de opmaak waarmee de weer gave en het gedrag van de corresponderende pagina in de ontwikkelaars portal wordt bepaald. De opmaak in de sjabloon maakt gebruik van de [DotLiquid](http://dotliquidmarkup.org/) -syntaxis. Een populaire editor voor DotLiquid is [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wijzigingen die zijn aangebracht in de sjabloon tijdens het bewerken, worden in realtime weer gegeven in de browser, maar zijn niet zichtbaar voor uw klanten totdat u de sjabloon [opslaat](#to-save-a-template) en [publiceert](#to-publish-a-template) .
 
-![Sjabloonmarkering][api-management-template]
+![Sjabloon opmaak][api-management-template]
 
-Het **deelvenster Sjabloongegevens** biedt een handleiding voor het gegevensmodel voor de entiteiten die beschikbaar zijn voor gebruik in een bepaalde sjabloon. Het biedt deze handleiding door het weergeven van de live gegevens die momenteel worden weergegeven in de ontwikkelaar portal. U de sjabloondeelvensters uitbreiden door op de rechthoek in de rechterbovenhoek van het **deelvenster Sjabloongegevens** te klikken.
+Het deel venster **sjabloon gegevens** bevat een hand leiding voor het gegevens model voor de entiteiten die beschikbaar zijn voor gebruik in een bepaalde sjabloon. Het biedt deze hand leiding door de Live-gegevens weer te geven die momenteel worden weer gegeven in de ontwikkelaars Portal. U kunt de sjabloon deel Vensters uitvouwen door te klikken op de rechthoek in de rechter bovenhoek van het deel venster **sjabloon gegevens** .
 
-![Sjabloongegevensmodel][api-management-template-data]
+![Sjabloon gegevens model][api-management-template-data]
 
-In het vorige voorbeeld worden twee producten weergegeven in de ontwikkelaarsportal die zijn opgehaald uit de gegevens die worden weergegeven in het deelvenster **Sjabloongegevens,** zoals in het volgende voorbeeld wordt weergegeven:
+In het vorige voor beeld worden twee producten weer gegeven in de ontwikkelaars portal die zijn opgehaald uit de gegevens die worden weer gegeven in het deel venster **sjabloon gegevens** , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {
@@ -103,7 +103,7 @@ In het vorige voorbeeld worden twee producten weergegeven in de ontwikkelaarspor
 }
 ```
 
-De opmaak in de **productlijstsjabloon** verwerkt de gegevens om de gewenste uitvoer te leveren door door het verzamelen van producten te herhalen om informatie weer te geven en een link naar elk afzonderlijk product. Let `<search-control>` op `<page-control>` de elementen en elementen in de opmaak. Deze regelen de weergave van de besturingselementen voor zoeken en paging op de pagina. `ProductsStrings|PageTitleProducts`is een gelokaliseerde tekenreeksverwijzing `h2` die de koptekst voor de pagina bevat. Zie [naslaginformatie api-portalsjablonen](api-management-developer-portal-templates-reference.md)voor ontwikkelaarsportalen voor een lijst met tekenreeksbronnen, paginabesturingselementen en pictogrammen die beschikbaar zijn voor gebruik in ontwikkelaarsportalsjablonen.
+De markering in de **product lijst** sjabloon verwerkt de gegevens om de gewenste uitvoer te leveren door de verzameling van producten te herhalen om informatie weer te geven en een koppeling naar elk afzonderlijk product. Let op `<search-control>` de `<page-control>` elementen en in de opmaak. Hiermee bepaalt u de weer gave van de besturings elementen zoeken en paginering op de pagina. `ProductsStrings|PageTitleProducts`is een gelokaliseerde teken reeks verwijzing die `h2` de koptekst voor de pagina bevat. Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor een lijst met teken reeks resources, pagina besturings elementen en pictogrammen die beschikbaar zijn voor gebruik in sjablonen voor ontwikkelaars portals.
 
 ```html
 <search-control></search-control>
@@ -132,61 +132,61 @@ De opmaak in de **productlijstsjabloon** verwerkt de gegevens om de gewenste uit
 ```
 
 ## <a name="to-save-a-template"></a>Een sjabloon opslaan
-Als u een sjabloon wilt opslaan, klikt u op Opslaan in de sjablooneditor.
+Klik op opslaan in de sjabloon editor om een sjabloon op te slaan.
 
 ![Sjabloon opslaan][api-management-save-template]
 
-Opgeslagen wijzigingen worden pas live in de ontwikkelaarsportal doorgevoerd als ze zijn gepubliceerd.
+Opgeslagen wijzigingen zijn pas actief in de ontwikkelaars portal als ze zijn gepubliceerd.
 
 ## <a name="to-publish-a-template"></a>Een sjabloon publiceren
-Opgeslagen sjablonen kunnen afzonderlijk of allemaal samen worden gepubliceerd. Als u een afzonderlijke sjabloon wilt publiceren, klikt u op Publiceren in de sjablooneditor.
+Opgeslagen sjablonen kunnen afzonderlijk of gezamenlijk worden gepubliceerd. Als u een afzonderlijke sjabloon wilt publiceren, klikt u in de sjabloon editor op publiceren.
 
 ![Sjabloon publiceren][api-management-publish-template]
 
-Klik **op Ja** om de sjabloon live te bevestigen en te maken op de ontwikkelaarsportal.
+Klik op **Ja** om te bevestigen en de sjabloon Live te maken op de ontwikkelaars Portal.
 
-![Publicatie bevestigen][api-management-publish-template-confirm]
+![Publiceren bevestigen][api-management-publish-template-confirm]
 
-Als u alle momenteel niet-gepubliceerde sjabloonversies wilt publiceren, klikt u op **Publiceren** in de lijst met sjablonen. Niet-gepubliceerde sjablonen worden aangeduid met een sterretje naar aanleiding van de naam van de sjabloon. In dit voorbeeld worden de **productlijst** en **productsjablonen** gepubliceerd.
+Als u alle momenteel niet-gepubliceerde sjabloon versies wilt publiceren, klikt u op **publiceren** in de lijst met sjablonen. Niet-gepubliceerde sjablonen worden aangeduid met een asterisk dat volgt op de naam van de sjabloon. In dit voor beeld worden de **product lijst** en **product** sjablonen gepubliceerd.
 
 ![Sjablonen publiceren][api-management-publish-templates]
 
-Klik **op Aanpassingen publiceren** om te bevestigen.
+Klik op **aanpassingen publiceren** om te bevestigen.
 
-![Publicatie bevestigen][api-management-publish-customizations]
+![Publiceren bevestigen][api-management-publish-customizations]
 
-Nieuw gepubliceerde sjablonen zijn onmiddellijk van kracht in de ontwikkelaarsportal.
+Nieuwe gepubliceerde sjablonen zijn direct van kracht in de ontwikkelaars Portal.
 
-## <a name="to-revert-a-template-to-the-previous-version"></a>Een sjabloon terugzetten naar de vorige versie
-Als u een sjabloon wilt terugzetten naar de vorige gepubliceerde versie, klikt u op Terugzetten in de sjablooneditor.
+## <a name="to-revert-a-template-to-the-previous-version"></a>Een sjabloon herstellen naar de vorige versie
+Als u een sjabloon wilt herstellen naar de vorige gepubliceerde versie, klikt u in de sjabloon editor op herstellen.
 
-![Sjabloon terugdraaien][api-management-revert-template]
+![Sjabloon herstellen][api-management-revert-template]
 
 Klik op **Ja** om te bevestigen.
 
 ![Bevestigen][api-management-revert-template-confirm]
 
-De eerder gepubliceerde versie van een sjabloon is live in de ontwikkelaarsportal zodra de bewerking opnieuw worden teruggedraaid.
+De eerder gepubliceerde versie van een sjabloon is in de ontwikkelaars Portal Live wanneer de herstel bewerking is voltooid.
 
-## <a name="to-restore-a-template-to-the-default-version"></a>Een sjabloon herstellen naar de standaardversie
-Het herstellen van sjablonen naar de standaardversie is een proces in twee stappen. Eerst moeten de sjablonen worden hersteld en vervolgens moeten de herstelde versies worden gepubliceerd.
+## <a name="to-restore-a-template-to-the-default-version"></a>Een sjabloon herstellen naar de standaard versie
+Het herstellen van sjablonen naar de standaard versie is een proces dat uit twee stappen bestaat. Eerst moeten de sjablonen worden hersteld, waarna de herstelde versies moeten worden gepubliceerd.
 
-Als u één sjabloon wilt herstellen naar de standaardversie, klikt u op Herstellen in de sjablooneditor.
+Klik op herstellen in de sjabloon editor om één sjabloon te herstellen naar de standaard versie.
 
-![Sjabloon terugdraaien][api-management-reset-template]
+![Sjabloon herstellen][api-management-reset-template]
 
 Klik op **Ja** om te bevestigen.
 
 ![Bevestigen][api-management-reset-template-confirm]
 
-Als u alle sjablonen wilt herstellen naar de standaardversies, klikt u op **Standaardsjablonen herstellen** in de sjabloonlijst.
+Als u alle sjablonen naar de standaard versie wilt herstellen, klikt u op **standaard sjablonen herstellen** in de lijst met sjablonen.
 
 ![Sjablonen herstellen][api-management-restore-templates]
 
-De herstelde sjablonen moeten vervolgens afzonderlijk of in één keer worden gepubliceerd door de stappen te volgen in [Een sjabloon publiceren](#to-publish-a-template).
+De herstelde sjablonen moeten vervolgens afzonderlijk of allemaal tegelijk worden gepubliceerd door de stappen in [te volgen om een sjabloon te publiceren](#to-publish-a-template).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie naslaginformatie voor ontwikkelaarsportalsjablonen, tekenreeksbronnen, pictogrammen en paginabesturingselementen voor [referentievoor referentievoor ontwerpportalsjablonen](api-management-developer-portal-templates-reference.md)voor ontwikkelaarsportalsjablonen.
+Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor referentie-Portal sjablonen, teken reeks resources, pictogrammen en pagina besturings elementen.
 
 [modify-content-layout]: api-management-modify-content-layout.md
 [customize-styles]: api-management-customize-styles.md

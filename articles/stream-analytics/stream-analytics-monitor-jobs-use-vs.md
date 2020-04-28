@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics bewaken en beheren met Visual Studio
-description: In dit artikel wordt beschreven hoe u Visual Studio gebruiken om Azure Stream Analytics-taken te controleren en te beheren.
+description: In dit artikel wordt beschreven hoe u met Visual Studio Azure Stream Analytics-taken bewaken en beheren.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: e43a8d157baaf7e02ab7f8db4c777009d2a0abe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431689"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Stream Analytics-taken beheren en beheren met Visual Studio
+# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Stream Analytics-taken bewaken en beheren met Visual Studio
 
-In dit artikel wordt uitgelegd hoe u uw Stream Analytics-taak in Visual Studio controleren. Azure Stream Analytics-hulpprogramma's voor Visual Studio bieden een bewakingservaring die vergelijkbaar is met azure-portal zonder dat u de IDE hoeft te verlaten. U beginnen met het controleren van een taak zodra u vanuit uw **Script.asaql** **naar Azure** verzendt of u bestaande taken controleren, ongeacht hoe deze zijn gemaakt. 
+In dit artikel ziet u hoe u uw Stream Analytics-taak in Visual Studio kunt bewaken. Azure Stream Analytics-hulpprogram ma's voor Visual Studio bieden een bewakings ervaring die vergelijkbaar is met Azure Portal, zonder dat u de IDE hoeft te verlaten. U kunt beginnen met het bewaken van een taak zodra u deze vanuit uw **script. Asaql** **verzendt naar Azure** , of u kunt bestaande taken bewaken, ongeacht hoe ze zijn gemaakt. 
 
-## <a name="job-summary"></a>Functieoverzicht
+## <a name="job-summary"></a>Taak samenvatting
 
-Het **functieoverzicht** en **functiestatistieken** geven een snelle momentopname van uw taak. In één oogopslag u de status en gebeurtenisgegevens van een taak bepalen.]
+Het **taak overzicht** en **metrische gegevens** voor taken geven een snelle moment opname van uw taak. U kunt in één oogopslag de status-en gebeurtenis gegevens van een taak bepalen.]
 
 <img src="./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-job-summary-metrics.png" alt="Stream Analytics job summary and job metrics" width="300px"/> 
 
 
-## <a name="job-metrics"></a>Taakstatistieken
+## <a name="job-metrics"></a>Metrische taak gegevens
 
-U het overzicht van taken **samenvouwen** en op het tabblad **Taakstatistieken** klikken om een grafiek met belangrijke statistieken weer te geven. Controleer en schakel de gegevenstypen uit om ze uit de grafiek toe te voegen en te verwijderen.
+U kunt de samen **vatting** van de taak samen vouwen en op het tabblad **taak metrieken** klikken om een grafiek met belang rijke metrische gegevens weer te geven. Controleer en schakel de selectie vakjes voor metrische gegevens uit om ze toe te voegen aan of te verwijderen uit de grafiek.
 
-![Analytics-statistieken streamen in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics metrische gegevens in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
-## <a name="error-monitoring"></a>Foutcontrole
+## <a name="error-monitoring"></a>Fout bewaking
 
-U fouten ook controleren door op het tabblad **Fouten** te klikken.
+U kunt ook fouten bewaken door op het tabblad **fouten** te klikken.
 
-![Fouten in Analytics streamen in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Stream Analytics fouten in Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
-Probeer ons Azure [Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp. 
+Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Een Azure Stream Analytics-taak maken met Visual Studio](stream-analytics-quick-create-vs.md)
-* [Azure Stream Analytics-hulpprogramma's installeren voor Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 
+* [Azure Stream Analytics-hulpprogram ma's voor Visual Studio installeren](stream-analytics-tools-for-visual-studio-install.md) 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Metagegevensschema azure Media Services | Microsoft Documenten
-description: In dit artikel vindt u een overzicht van het metagegevensschema van Azure Media Services.
+title: Meta gegevens schema voor invoer Azure Media Services | Microsoft Docs
+description: Dit artikel bevat een overzicht van Azure Media Services schema voor de invoer van meta gegevens.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,205 +14,205 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a81d6edfd887dc935a53742b7bc1492651c9bda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887115"
 ---
-# <a name="input-metadata"></a>Invoermetaalen 
+# <a name="input-metadata"></a>Invoer van meta gegevens 
 
-Een coderingstaak is gekoppeld aan een invoerelement (of elementen) waarop u bepaalde coderingstaken wilt uitvoeren.  Na voltooiing van een taak wordt een uitvoeractief geproduceerd.  Het uitvoerelement bevat video, audio, miniaturen, manifest, enz. Het uitvoerelement bevat ook een bestand met metagegevens over het invoerelement. De naam van het XML-bestand &lt;metagegevens heeft de volgende indeling: asset_id&gt;_metadata.xml (bijvoorbeeld 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), waarbij &lt;asset_id&gt; de AssetId-waarde van het invoerelement is.  
+Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren.  Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen, manifest, enzovoort. Het uitvoer activum bevat ook een bestand met meta gegevens over de invoer Asset. De naam van het XML-bestand met meta gegevens heeft de &lt;volgende&gt;indeling: asset_id _metadata. XML (bijvoorbeeld, 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. XML) &lt;,&gt; waarbij asset_id de AssetId-waarde is van de invoer Asset.  
 
-Media Services scant geen input-assets om metadata te genereren. Invoermetagegevens worden alleen gegenereerd als een artefact wanneer een invoerelement wordt verwerkt in een taak. Vandaar dat dit artefact is geschreven naar de output Asset. Verschillende tools worden gebruikt om metadata te genereren voor invoerassets en uitvoerassets. Daarom hebben de invoermetagegevens een iets ander schema dan de uitvoermetagegevens.
+Media Services voert geen bekend in voor het genereren van meta gegevens. Invoer meta gegevens worden alleen gegenereerd als een artefact wanneer een invoer element in een taak wordt verwerkt. Dit artefact wordt daarom geschreven naar de uitvoer Asset. Er worden verschillende hulpprogram ma's gebruikt voor het genereren van meta gegevens voor invoer assets en uitvoer assets. Daarom heeft de invoer meta gegevens een iets ander schema dan de uitvoer meta gegevens.
 
-Als u het metagegevensbestand wilt onderzoeken, u een **SAS-locator** maken en het bestand downloaden naar uw lokale computer. U een voorbeeld vinden over het maken van een SAS-locator en het downloaden van een bestand [met behulp van de Media Services .NET SDK Extensions](media-services-dotnet-get-started.md).  
+Als u het meta gegevensbestand wilt controleren, kunt u een **SAS** -Locator maken en het bestand downloaden naar uw lokale computer. Hier vindt u een voor beeld van hoe u een SAS-Locator maakt en een bestand downloadt [met behulp van de Media Services .NET SDK-extensies](media-services-dotnet-get-started.md).  
 
-In dit artikel worden de elementen en typen van het&lt;&gt;XML-schema besproken waarop de invoermetada (asset_id _metadata.xml) is gebaseerd.  Zie [Uitvoermetagegevens](media-services-output-metadata-schema.md)voor informatie over het bestand met metagegevens over het uitvoerelement.  
+In dit artikel worden de elementen en typen beschreven van het XML-schema waarop de invoer-&lt;metada&gt;(asset_id _metadata. XML) is gebaseerd.  Zie [uitvoer van meta gegevens](media-services-output-metadata-schema.md)voor informatie over het bestand dat meta gegevens bevat over het uitvoer element.  
 
-Aan het einde van dit artikel vindt u de [schemacode](media-services-input-metadata-schema.md#code) een [XML-voorbeeld.](media-services-input-metadata-schema.md#xml)  
+Aan het einde van dit artikel vindt u de [schema code](media-services-input-metadata-schema.md#code) een [XML-voor beeld](media-services-input-metadata-schema.md#xml) .  
  
 
-## <a name="assetfiles-element-root-element"></a><a name="AssetFiles"></a>Element AssetFiles (hoofdelement)
-Bevat een verzameling Elements van [AssetFile](media-services-input-metadata-schema.md#AssetFile)voor de coderingstaak.  
+## <a name="assetfiles-element-root-element"></a><a name="AssetFiles"></a>AssetFiles-element (hoofd element)
+Bevat een verzameling [AssetFile-elementen](media-services-input-metadata-schema.md#AssetFile)voor de coderings taak.  
 
-Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
-| **AssetFile (AssetFile)**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Een enkel kindelement. Zie [Element AssetFile](media-services-input-metadata-schema.md#AssetFile)voor meer informatie . |
+| **AssetFile**<br /><br /> minOccurs = "1" maxOccurs = "ontgrensd" |Eén onderliggend element. Zie het [element AssetFile](media-services-input-metadata-schema.md#AssetFile)voor meer informatie. |
 
-## <a name="assetfile-element"></a><a name="AssetFile"></a>Element AssetFile
- Bevat kenmerken en elementen die een assetbestand beschrijven.  
+## <a name="assetfile-element"></a><a name="AssetFile"></a>AssetFile-element
+ Bevat kenmerken en elementen waarmee een Asset-bestand wordt beschreven.  
 
- Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+ Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Naam**<br /><br /> Vereist |**xs:tekenreeks** |Asset bestandsnaam. |
-| **Grootte**<br /><br /> Vereist |**xs:lang** |Grootte van het assetbestand in bytes. |
-| **Duur**<br /><br /> Vereist |**xs:duur** |Inhoud afspelen duur. Voorbeeld: Duration="PT25M37.757S". |
-| **Aantal streams**<br /><br /> Vereist |**xs:int** |Aantal streams in het assetbestand. |
-| **FormatNames**<br /><br /> Vereist |**xs: tekenreeks** |Namen opmaken. |
-| **FormatVerboseNamen**<br /><br /> Vereist |**xs: tekenreeks** |Formaat verbose namen. |
-| **Starttime** |**xs:duur** |Begintijd van inhoud. Voorbeeld: StartTime="PT2.669S". |
-| **OverallBitRate** |**xs: int** |Gemiddelde bitrate van het assetbestand in kbps. |
+| **Naam**<br /><br /> Vereist |**XS: teken reeks** |Bestands naam van het activum. |
+| **Grootte**<br /><br /> Vereist |**XS: Long** |Grootte van het activa bestand in bytes. |
+| **Duur**<br /><br /> Vereist |**XS: duration** |Duur van het afspelen van inhoud. Voor beeld: duration = "PT25M 37.757 S". |
+| **NumberOfStreams**<br /><br /> Vereist |**XS: int** |Aantal streams in het activa bestand. |
+| **FormatNames**<br /><br /> Vereist |**XS: teken reeks** |Indelings namen. |
+| **FormatVerboseNames**<br /><br /> Vereist |**XS: teken reeks** |Uitgebreide namen opmaken. |
+| **StartTime** |**XS: duration** |Begin tijd van inhoud. Voor beeld: StartTime = "PT 2.669 S". |
+| **OverallBitRate** |**XS: int** |De gemiddelde bitrate van het activa bestand in kbps. |
 
 > [!NOTE]
-> De volgende vier onderliggende elementen moeten in een reeks worden weergegeven.  
+> De volgende vier onderliggende elementen moeten in een reeks worden weer gegeven.  
 > 
 > 
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Programma's**<br /><br /> minOccurs="0" | |Verzameling van alle [elementen Programma's](media-services-input-metadata-schema.md#Programs) wanneer het assetbestand in MPEG-TS-indeling staat. |
-| **VideoTracks**<br /><br /> minOccurs="0" | |Elk fysiek assetbestand kan nul of meer video's bevatten die zijn verbonden tot een geschikte containerindeling. Dit element bevat een verzameling van alle [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) die deel uitmaken van het assetbestand. |
-| **Audiotracks**<br /><br /> minOccurs="0" | |Elk fysiek assetbestand kan nul of meer audiotracks bevatten die zijn verweven in een geschikte containerindeling. Dit element bevat een verzameling van alle [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) die deel uitmaken van het assetbestand. |
-| **Metagegevens**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetagegevensType](media-services-input-metadata-schema.md#MetadataType) |De metagegevens van het assetbestand worden weergegeven als key\value strings. Bijvoorbeeld:<br /><br /> **&lt;Metagegevenskey="taal" value="eng" /&gt;** |
+| **Programma's**<br /><br /> minOccurs = "0" | |Verzameling van alle [Program ma's-elementen](media-services-input-metadata-schema.md#Programs) wanneer het Asset-bestand zich in MPEG-TS-indeling bevindt. |
+| **VideoTracks**<br /><br /> minOccurs = "0" | |Elk fysiek-activa bestand kan nul of meer video tracks bevatten die Interleaved zijn in een geschikte container indeling. Dit element bevat een verzameling van alle [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) die deel uitmaken van het activa bestand. |
+| **AudioTracks**<br /><br /> minOccurs = "0" | |Elk fysiek-activa bestand kan nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Dit element bevat een verzameling van alle [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) die deel uitmaken van het activa bestand. |
+| **Metagegevens**<br /><br /> minOccurs = "0" maxOccurs = "onbegrensd" |[Gegevens type](media-services-input-metadata-schema.md#MetadataType) |Meta gegevens van Asset file worden weer gegeven als key\value-teken reeksen. Bijvoorbeeld:<br /><br /> **&lt;Meta Data-sleutel = "taal" value = "eng"/&gt;** |
 
-## <a name="tracktype"></a><a name="TrackType"></a>TrackType TrackType
-Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+## <a name="tracktype"></a><a name="TrackType"></a>TrackType
+Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Id**<br /><br /> Vereist |**xs:int** |Zero-based index van deze audio- of videotrack.<br /><br /> Dit is niet noodzakelijkerwijs dat de TrackID zoals gebruikt in een MP4-bestand. |
-| **Codec** |**xs:tekenreeks** |Codec-tekenreeks voor videotrack. |
-| **CodecLongName** |**xs: tekenreeks** |Audio of video track codec lange naam. |
-| **TimeBase TimeBase**<br /><br /> Vereist |**xs:tekenreeks** |Tijdbasis. Voorbeeld: TimeBase="1/48000" |
-| **Aantal frames** |**xs:int** |Aantal frames (aanwezig voor videotracks). |
-| **Starttime** |**xs: duur** |Starttijd bijhouden. Voorbeeld: StartTime="PT2.669S" |
-| **Duur** |**xs:duur** |Volg de duur. Voorbeeld: Duration="PTSampleFormat M37.757S". |
+| **Id**<br /><br /> Vereist |**XS: int** |Op nul gebaseerde index van dit audio-of video spoor.<br /><br /> Dit is niet noodzakelijkerwijs het TrackID dat wordt gebruikt in een MP4-bestand. |
+| **Videocodec** |**XS: teken reeks** |Video track-codec teken reeks. |
+| **CodecLongName** |**XS: teken reeks** |De lange naam van de audio-of video track-codec. |
+| **Negatieve**<br /><br /> Vereist |**XS: teken reeks** |Tijd basis. Voor beeld: tijds basis = "1/48000" |
+| **NumberOfFrames** |**XS: int** |Aantal frames (aanwezig voor video tracks). |
+| **StartTime** |**XS: duration** |Start tijd bijhouden. Voor beeld: StartTime = "PT 2.669 S" |
+| **Duur** |**XS: duration** |Houd de duur bij. Voor beeld: duration = "PTSampleFormat M 37.757 S". |
 
 > [!NOTE]
-> De volgende twee onderliggende elementen moeten in een reeks worden weergegeven.  
+> De volgende twee onderliggende elementen moeten in een reeks worden weer gegeven.  
 > 
 > 
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Bevat presentatie-informatie (bijvoorbeeld of een bepaalde audiotrack voor slechtziende kijkers is). |
-| **Metagegevens**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetagegevensType](media-services-input-metadata-schema.md#MetadataType) |Algemene sleutel-/waardetekenreeksen die kunnen worden gebruikt om verschillende informatie vast te houden. Bijvoorbeeld key="taal" en value="eng". |
+| **Toestand**<br /><br /> minOccurs = "0" maxOccurs = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Bevat presentatie-informatie (bijvoorbeeld of een bepaald audio spoor is voor visueel gehandicapten). |
+| **Metagegevens**<br /><br /> minOccurs = "0" maxOccurs = "onbegrensd" |[Gegevens type](media-services-input-metadata-schema.md#MetadataType) |Algemene sleutel/waarde-teken reeksen die kunnen worden gebruikt voor het opslaan van verschillende gegevens. Bijvoorbeeld: Key = "taal" en waarde = "eng". |
 
-## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a>AudioTrackType (overerving van TrackType)
- **AudioTrackType** is een wereldwijd complex type dat overneemt van [TrackType.](media-services-input-metadata-schema.md#TrackType)  
+## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a>AudioTrackType (overneemt van TrackType)
+ **AudioTrackType** is een globaal complex type dat overneemt van [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
- Het type vertegenwoordigt een specifieke audiotrack in het assetbestand.  
+ Het type vertegenwoordigt een specifiek audio spoor in het activa bestand.  
 
- Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+ Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Voorbeeldopmaak** |**xs:tekenreeks** |Voorbeeldindeling. |
-| **Kanaalindeling** |**xs: tekenreeks** |Kanaalindeling. |
-| **Kanalen**<br /><br /> Vereist |**xs:int** |Aantal (0 of meer) van audiokanalen. |
-| **Bemonsteringsfrequentie**<br /><br /> Vereist |**xs:int** |Audiosamplingsnelheid in samples/sec of Hz. |
-| **Bitrate** |**xs:int** |Gemiddelde audiobitsnelheid in bits per seconde, berekend op basis van het assetbestand. Alleen de elementaire stroom lading wordt geteld, en de verpakking overhead is niet opgenomen in deze telling. |
-| **Bitspersample** |**xs:int** |Bits per voorbeeld voor het formaattype wFormatTag. |
+| **SampleFormat** |**XS: teken reeks** |Voorbeeld indeling. |
+| **ChannelLayout** |**XS: teken reeks** |Kanaal indeling. |
+| **Kanalen**<br /><br /> Vereist |**XS: int** |Aantal (0 of meer) audio kanalen. |
+| **SamplingRate**<br /><br /> Vereist |**XS: int** |Audio sampling frequentie in samples/sec of Hz. |
+| **Bitsnelheid** |**XS: int** |De gemiddelde bitsnelheid van audio in bits per seconde, zoals berekend op basis van het Asset-bestand. Alleen de nettolading van de elementaire stream wordt geteld en de pakket belasting is niet inbegrepen in dit aantal. |
+| **BitsPerSample** |**XS: int** |Bits per voor beeld voor het wFormatTag-indelings type. |
 
-## <a name="videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a>VideoTrackType (overerving van TrackType)
-**VideoTrackType** is een wereldwijd complex type dat overneemt van [TrackType](media-services-input-metadata-schema.md#TrackType).  
+## <a name="videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a>VideoTrackType (overneemt van TrackType)
+**VideoTrackType** is een globaal complex type dat overneemt van [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
-Het type vertegenwoordigt een specifieke videotrack in het assetbestand.  
+Het type vertegenwoordigt een specifiek video spoor in het activa bestand.  
 
-Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Fourcc**<br /><br /> Vereist |**xs:tekenreeks** |Videocodec FourCC-code. |
-| **Profiel** |**xs: tekenreeks** |Het profiel van de videotrack. |
-| **Niveau** |**xs: tekenreeks** |Het niveau van de videotrack. |
-| **Pixelopmaak** |**xs: tekenreeks** |De pixelindeling van videotrack. |
-| **Width**<br /><br /> Vereist |**xs:int** |Gecodeerde videobreedte in pixels. |
-| **Height**<br /><br /> Vereist |**xs:int** |Gecodeerde videohoogte in pixels. |
-| **DisplayAspectRatioNumerator**<br /><br /> Vereist |**xs: dubbel** |Beeldverhouding van de videoweergave. |
-| **DisplayAspectRatioNoemer**<br /><br /> Vereist |**xs:dubbel** |De noemer van de beeldverhouding van de videoweergave. |
-| **DisplayAspectRatioNoemer**<br /><br /> Vereist |**xs: dubbel** |Videosample-beeldverhoudingsmeter. |
-| **SampleAspectRatioNumerator** |**xs: dubbel** |Videosample-beeldverhoudingsmeter. |
-| **SampleAspectRatioNumerator** |**xs:dubbel** |De noemer van de videosample-beeldverhouding. |
-| **Framerate**<br /><br /> Vereist |**xs:decimal** |Gemeten videoframesnelheid in .3f-indeling. |
-| **Bitrate** |**xs:int** |Gemiddelde videobitsnelheid in kilobits per seconde, berekend op basis van het assetbestand. Alleen het elementair stroomlaadvermogen wordt geteld en de verpakking overhead is niet inbegrepen. |
-| **MaxGOPBitrate MaxGOPBitrate** |**xs: int** |Max GOP gemiddelde bitrate voor deze video track, in kilobits per seconde. |
-| **HasbFrames** |**xs:int** |Videotrack aantal B-frames. |
+| **FourCC**<br /><br /> Vereist |**XS: teken reeks** |Code van de video-codec FourCC. |
+| **Profiel** |**XS: teken reeks** |Profiel van video spoor. |
+| **Niveau** |**XS: teken reeks** |Niveau van de video track. |
+| **PixelFormat** |**XS: teken reeks** |Pixel indeling van video track. |
+| **Width**<br /><br /> Vereist |**XS: int** |Breedte van gecodeerde video in pixels. |
+| **Height**<br /><br /> Vereist |**XS: int** |Versleutelde video hoogte in pixels. |
+| **DisplayAspectRatioNumerator**<br /><br /> Vereist |**XS: Double** |Teller voor hoogte-breedte verhouding video weergave. |
+| **DisplayAspectRatioDenominator**<br /><br /> Vereist |**XS: Double** |Noemer van hoogte-breedte verhouding video weergave. |
+| **DisplayAspectRatioDenominator**<br /><br /> Vereist |**XS: Double** |Teller voor sample aspect verhouding van video. |
+| **SampleAspectRatioNumerator** |**XS: Double** |Teller voor sample aspect verhouding van video. |
+| **SampleAspectRatioNumerator** |**XS: Double** |Noemer voor beeld van hoogte verhouding voor video. |
+| **Snelheid**<br /><br /> Vereist |**XS: decimaal** |Gemeten video frame frequentie in. 3F-indeling. |
+| **Bitsnelheid** |**XS: int** |De gemiddelde bitsnelheid voor video in kilobits per seconde, zoals berekend op basis van het activa bestand. Alleen de nettolading van de elementaire stream wordt geteld en de verpakkings overhead is niet opgenomen. |
+| **MaxGOPBitrate** |**XS: int** |Maximale GOP terug gemiddelde bitrate voor dit video spoor, in kilobits per seconde. |
+| **HasBFrames** |**XS: int** |Video track van het aantal B-frames. |
 
-## <a name="metadatatype"></a><a name="MetadataType"></a>MetagegevensType
-**MetadataType** is een globaal complex type dat metagegevens van een assetbestand omschrijft als sleutel-/waardetekenreeksen. Bijvoorbeeld key="taal" en value="eng".  
+## <a name="metadatatype"></a><a name="MetadataType"></a>Gegevens type
+Meta **Data type** is een globaal complex type dat de gegevens van een activa bestand als sleutel/waarde teken reeksen beschrijft. Bijvoorbeeld: Key = "taal" en waarde = "eng".  
 
-Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Sleutel**<br /><br /> Vereist |**xs:tekenreeks** |De sleutel in het sleutel/waardepaar. |
-| **value**<br /><br /> Vereist |**xs:tekenreeks** |De waarde in het sleutel/waardepaar. |
+| **prestatie**<br /><br /> Vereist |**XS: teken reeks** |De sleutel in het sleutel/waarde-paar. |
+| **Value**<br /><br /> Vereist |**XS: teken reeks** |De waarde in het sleutel/waarde-paar. |
 
-## <a name="programtype"></a><a name="ProgramType"></a>ProgramType ProgramType
-**ProgramType** is een wereldwijd complex type dat een programma beschrijft.  
+## <a name="programtype"></a><a name="ProgramType"></a>ProgramType
+**ProgramType** is een globaal complex type dat een programma beschrijft.  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **ProgramId ProgramId**<br /><br /> Vereist |**xs:int** |Programma-id |
-| **Aantalprogramma's**<br /><br /> Vereist |**xs:int** |Aantal programma's. |
-| **PmtPid PmtPid**<br /><br /> Vereist |**xs:int** |Program Map Tables (PMT's) bevatten informatie over programma's.  Zie [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT)voor meer informatie. |
-| **PcrPid (PcrPid)**<br /><br /> Vereist |**xs: int** |Gebruikt door decoder. Zie [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) voor meer informatie |
-| **StartPTS** |**xs: lang** |Start presentatie tijdstempel. |
-| **EndPTS** |**xs: lang** |Einde presentatie tijdstempel. |
+| **ProgramId**<br /><br /> Vereist |**XS: int** |Programma-id |
+| **NumberOfPrograms**<br /><br /> Vereist |**XS: int** |Aantal Program ma's. |
+| **PmtPid**<br /><br /> Vereist |**XS: int** |Programma tabellen (PMTs) bevatten informatie over Program ma's.  Zie voor meer informatie [Bet](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
+| **PcrPid**<br /><br /> Vereist |**XS: int** |Gebruikt door de decoder. Zie [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) voor meer informatie. |
+| **StartPTS** |**XS: Long** |De tijds tempel van de presentatie wordt gestart. |
+| **EndPTS** |**XS: Long** |De tijds tempel van de presentatie wordt beëindigd. |
 
 ## <a name="streamdispositiontype"></a><a name="StreamDispositionType"></a>StreamDispositionType
-**StreamDispositionType** is een globaal complex type dat de stream beschrijft.  
+**StreamDispositionType** is een globaal complex type waarmee de stroom wordt beschreven.  
 
-Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Kenmerken
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Standaard**<br /><br /> Vereist |**xs: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de standaardpresentatie is. |
-| **Dub**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat dit de nagesynchroniseerde presentatie is. |
-| **Origineel**<br /><br /> Vereist |**xs: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de oorspronkelijke presentatie is. |
-| **Opmerking**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat deze track commentaar bevat. |
-| **Tekst**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat dit nummer songteksten bevat. |
-| **Karaoke**<br /><br /> Vereist |**xs:int** |Stel dit attribuut in op 1 om aan te geven dat dit de karaoketrack vertegenwoordigt (achtergrondmuziek, geen zang). |
-| **Gedwongen**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat dit de geforceerde presentatie is. |
-| **Slechthorend**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat deze track is voor mensen die slechthorend zijn. |
-| **Slechtzienden**<br /><br /> Vereist |**xs:int** |Stel dit kenmerk in op 1 om aan te geven dat deze track voor slechtzienden is. |
-| **CleanEffects (CleanEffects)**<br /><br /> Vereist |**xs: int** |Stel dit kenmerk in op 1 om aan te geven dat deze track schone effecten heeft. |
-| **Bijgevoegde Pic**<br /><br /> Vereist |**xs: int** |Stel dit kenmerk in op 1 om aan te geven dat deze track foto's heeft. |
+| **Prijs**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de standaard presentatie is. |
+| **Dub**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de nagesynchroniseerde presentatie is. |
+| **Origineel**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de oorspronkelijke presentatie is. |
+| **Opmerking**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit nummer commentaar bevat. |
+| **Waaraan**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit nummer Song teksten bevat. |
+| **Karaoke**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit staat voor het karaoke-spoor (achtergrond muziek, geen vocals). |
+| **Geforceerd**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit de geforceerde presentatie is. |
+| **HearingImpaired**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit nummer voor mensen is die slechthorend zijn. |
+| **VisualImpaired**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit nummer voor visueel gehandicapten is. |
+| **CleanEffects**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit spoor duidelijke effecten heeft. |
+| **AttachedPic**<br /><br /> Vereist |**XS: int** |Stel dit kenmerk in op 1 om aan te geven dat dit spoor afbeeldingen heeft. |
 
-## <a name="programs-element"></a><a name="Programs"></a>Het element Programma's
-Wikkelelement met meerdere **programma-elementen.**  
+## <a name="programs-element"></a><a name="Programs"></a>Element Program ma's
+Wrapper-element dat meerdere **programma** -elementen vasthoudt.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **Programma**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType ProgramType](media-services-input-metadata-schema.md#ProgramType) |Voor assetbestanden die in MPEG-TS-indeling zijn, bevat u informatie over programma's in het assetbestand. |
+| **Programma**<br /><br /> minOccurs = "0" maxOccurs = "onbegrensd" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Voor Asset-bestanden die zich in MPEG-TS-indeling bevinden, bevat informatie over Program ma's in het Asset-bestand. |
 
 ## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks-element
- Wikkelelement met meerdere **VideoTrack-elementen.**  
+ Wrapper-element dat meerdere **VideoTrack** -elementen vasthoudt.  
 
- Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+ Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (overerving van TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Bevat informatie over videotracks in het assetbestand. |
+| **VideoTrack**<br /><br /> minOccurs = "0" maxOccurs = "onbegrensd" |[VideoTrackType (overneemt van TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Bevat informatie over video tracks in het Asset-bestand. |
 
-## <a name="audiotracks-element"></a><a name="AudioTracks"></a>Element AudioTracks
- Wikkelelement met meerdere **AudioTrack-elementen.**  
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks-element
+ Wrapper-element dat meerdere **AudioTrack** -elementen vasthoudt.  
 
- Zie een XML-voorbeeld aan het einde van dit artikel: [XML-voorbeeld](media-services-input-metadata-schema.md#xml).  
+ Bekijk een XML-voor beeld aan het einde van dit artikel: [XML-voor beeld](media-services-input-metadata-schema.md#xml).  
 
-### <a name="elements"></a>Elementen
-| Name | Type | Beschrijving |
+### <a name="elements"></a>opties
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (overerving van TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Bevat informatie over audiotracks in het assetbestand. |
+| **AudioTrack**<br /><br /> minOccurs = "0" maxOccurs = "onbegrensd" |[AudioTrackType (overneemt van TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Bevat informatie over audio sporen in het Asset-bestand. |
 
-## <a name="schema-code"></a><a name="code"></a>Schemacode
+## <a name="schema-code"></a><a name="code"></a>Schema code
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -611,8 +611,8 @@ Wikkelelement met meerdere **programma-elementen.**
     </xs:schema>  
 
 
-## <a name="xml-example"></a><a name="xml"></a>XML-voorbeeld
-Het volgende is een voorbeeld van het metagegevensbestand Invoer.  
+## <a name="xml-example"></a><a name="xml"></a>XML-voor beeld
+Hier volgt een voor beeld van het meta gegevensbestand voor invoer.  
 
     <?xml version="1.0" encoding="utf-8"?>  
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  

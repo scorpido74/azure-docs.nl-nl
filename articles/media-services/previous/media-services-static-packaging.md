@@ -1,6 +1,6 @@
 ---
-title: Azure Media Packager gebruiken om statische verpakkingstaken uit te voeren | Microsoft Documenten
-description: In dit onderwerp worden verschillende taken weergegeven die zijn uitgevoerd met Azure Media Packager.
+title: Azure media packager gebruiken voor het uitvoeren van statische pakket taken | Microsoft Docs
+description: In dit onderwerp worden verschillende taken weer gegeven die met Azure media packager worden uitgevoerd.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: e99d72a0bce51d5d61e5f248f5ba279afe13a405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74970122"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager gebruiken om statische verpakkingstaken uit te voeren  
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure media packager gebruiken voor het uitvoeren van statische pakket taken  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 
 ## <a name="overview"></a>Overzicht
 
-Om digitale video via het internet te leveren, moet u de media comprimeren. Digitale videobestanden zijn groot en mogelijk te groot om via internet te leveren of om de apparaten van uw klanten goed weer te geven. Codering is het proces van het comprimeren van video en audio, zodat uw klanten uw media kunnen bekijken. Zodra een video is gecodeerd, kan deze in verschillende bestandscontainers worden geplaatst. Het proces van het plaatsen van gecodeerde media in een container wordt verpakking genoemd. U bijvoorbeeld een MP4-bestand nemen en converteren naar Smooth Streaming- of HLS-inhoud met behulp van de Azure Media Packager. 
+Om digitale video via internet te kunnen leveren, moet u het medium comprimeren. Digitale video bestanden zijn groot en zijn mogelijk te groot om te leveren via internet of voor de apparaten van uw klanten om goed te kunnen worden weer gegeven. Encoding is het proces van het comprimeren van video en audio zodat uw klanten uw media kunnen bekijken. Zodra een video is gecodeerd, kan deze in verschillende bestands containers worden geplaatst. Het proces voor het plaatsen van gecodeerde media in een container heet verpakking. U kunt bijvoorbeeld een MP4-bestand maken en dit converteren naar Smooth Streaming-of HLS-inhoud met behulp van de Azure media packager. 
 
-Media Services ondersteunt dynamische en statische verpakkingen. Wanneer u statische verpakkingen gebruikt, moet u een kopie van uw inhoud maken in elk formaat dat door uw klanten wordt vereist. Met dynamische verpakking, alles wat je nodig hebt is het creëren van een asset die een set van adaptieve bitrate MP4 of Smooth Streaming bestanden bevat. Vervolgens zorgt de On-Demand Streaming-server, op basis van de opgegeven indeling in het manifest- of fragmentverzoek, ervoor dat uw gebruikers de stream ontvangen in het door hen gekozen protocol. Hierdoor hoeft u voor slechts één opslagindeling de bestanden op te slaan en hiervoor te betalen. De Media Services-service bouwt en levert de juiste reactie op basis van aanvragen van een client.
-
-> [!NOTE]
-> Het wordt aanbevolen om [dynamische verpakkingen](media-services-dynamic-packaging-overview.md)te gebruiken.
-> 
-> 
-
-Er zijn echter enkele scenario's die statische verpakking vereisen: 
-
-* Het valideren van adaptieve bitrate MP4's gecodeerd met externe encoders (bijvoorbeeld met behulp van derden encoders).
-
-U ook statische verpakkingen gebruiken om de volgende taken uit te voeren: het wordt echter aanbevolen om dynamische versleuteling te gebruiken.
-
-* Statische versleuteling gebruiken om uw Smooth en MPEG DASH te beschermen met PlayReady
-* Statische versleuteling gebruiken om HLSv3 te beschermen met AES-128
-* Statische versleuteling gebruiken om HLSv3 te beschermen met PlayReady
-
-## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Het valideren van Adaptive Bitrate MP4's gecodeerd met externe encoders
-Als u een set adaptieve bitrate (multi-bitrate) MP4-bestanden wilt gebruiken die niet zijn gecodeerd met de encoders van Media Services, moet u uw bestanden valideren voordat u verder wordt verwerkt. De Media Services Packager kan een asset valideren die een set MP4-bestanden bevat en controleren of het item kan worden verpakt in Smooth Streaming of HLS. Als de validatietaak mislukt, wordt de taak die de taak heeft verwerkt, voltooid met een fout. De XML die de voorinstelling voor de validatietaak definieert, is te vinden in het artikel [Taakvoorinstelling voor Azure Media Packager.](https://msdn.microsoft.com/library/azure/hh973635.aspx)
+Media Services ondersteunt dynamische en statische pakketten. Wanneer u statische pakketten gebruikt, moet u een kopie van uw inhoud maken in elke indeling die uw klanten nodig hebben. Met dynamische pakketten hoeft u alleen maar een Asset te maken die een set Adaptive bitrate MP4-of Smooth Streaming-bestanden bevat. Vervolgens zorgt de on-demand streaming-server op basis van de opgegeven indeling in het manifest of de fragment aanvraag ervoor dat uw gebruikers de stroom ontvangen in het door hen gekozen protocol. Hierdoor hoeft u voor slechts één opslagindeling de bestanden op te slaan en hiervoor te betalen. De Media Services-service bouwt en levert de juiste reactie op basis van aanvragen van een client.
 
 > [!NOTE]
-> Gebruik de Media Encoder Standard om uw inhoud te produceren of de Media Services Packager om uw inhoud te valideren om runtime-problemen te voorkomen. Als de on-demand streamingserver uw bronbestanden niet kan ontlopen tijdens runtime, ontvangt u HTTP 1.1-fout '415 Niet-ondersteund mediatype'. Herhaaldelijk waardoor de server uw bronbestanden niet ontdoet, heeft dit invloed op de prestaties van de on-demand streamingserver en kan de beschikbare bandbreedte voor het indienen van andere aanvragen worden verminderd. Azure Media Services biedt een SLA (Service Level Agreement) voor zijn on-demand streamingservices; Deze SLA kan echter niet worden gehonoreerd als de server wordt misbruikt op de hierboven beschreven manier.
+> Het is raadzaam om [dynamische pakketten](media-services-dynamic-packaging-overview.md)te gebruiken.
 > 
 > 
 
-In deze sectie ziet u hoe u de validatietaak verwerkt. Het toont ook hoe u de status en het foutbericht van de taak die is voltooid met JobStatus.Error zien.
+Er zijn echter enkele scenario's waarvoor statische pakketten zijn vereist: 
 
-Als u uw MP4-bestanden wilt valideren met Media Services Packager, moet u uw eigen manifestbestand (.ism) maken en samen met de bronbestanden uploaden naar het Media Services-account. Hieronder vindt u een voorbeeld van het .ism-bestand dat is geproduceerd door de Media Encoder-standaard. De bestandsnamen zijn hoofdlettergevoelig. Zorg er ook voor dat de tekst in het .ism-bestand is gecodeerd met UTF-8.
+* Validatie van een adaptieve bitrate Mp4's die is gecodeerd met externe code ring (bijvoorbeeld met behulp van coderings Programma's van derden).
+
+U kunt ook statische pakketten gebruiken om de volgende taken uit te voeren: u wordt echter aangeraden dynamische versleuteling te gebruiken.
+
+* Statische versleuteling gebruiken om uw vloeiende en MPEG-streepje te beveiligen met PlayReady
+* Statische versleuteling gebruiken om HLSv3 te beveiligen met AES-128
+* Statische versleuteling gebruiken om HLSv3 te beveiligen met PlayReady
+
+## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Het valideren van een adaptieve bitrate Mp4's die is gecodeerd met externe encoders
+Als u een set apparaatafhankelijke bitrate-bestanden (multi-bitrate) wilt gebruiken die niet zijn versleuteld met Media Services encoders, moet u uw bestanden valideren voordat u verder gaat verwerken. De Media Services-pakket functie kan een Asset met een set MP4-bestanden valideren en controleren of de Asset kan worden verpakt op Smooth Streaming of HLS. Als de validatie taak mislukt, wordt de taak die de taak heeft verwerkt, voltooid met een fout. De XML die de voor instelling voor de validatie taak definieert, vindt u in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
+
+> [!NOTE]
+> Gebruik de Media Encoder Standard om te produceren of de Media Services packager om uw inhoud te valideren om runtime problemen te voor komen. Als de on-demand streaming-server uw bron bestanden niet kan parseren tijdens runtime, ontvangt u de HTTP 1,1-fout "415 niet-ondersteund media type". Herhaaldelijk zorgt ervoor dat de server het parseren van de bron bestanden niet kan uitvoeren op de prestaties van de streaming-server op aanvraag en kan de band breedte die beschikbaar is voor andere aanvragen verminderen. Azure Media Services biedt een Service Level Agreement (SLA) op de on-demand streaming services; Deze SLA kan echter niet worden gehonoreerd als de server wordt gebruikt op de manier die hierboven wordt beschreven.
+> 
+> 
+
+In deze sectie wordt beschreven hoe u de validatie taak verwerkt. U ziet ook hoe u de status en het fout bericht ziet van de taak die wordt voltooid met JobStatus. error.
+
+Als u uw MP4-bestanden met Media Services packager wilt valideren, moet u uw eigen manifest bestand (. ISM) maken en het samen met de bron bestanden uploaden naar het Media Services-account. Hieronder ziet u een voor beeld van het ISM-bestand dat door de Media Encoder Standard is geproduceerd. De bestands namen zijn hoofdletter gevoelig. Zorg er ook voor dat de tekst in het ISM-bestand is gecodeerd met UTF-8.
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -81,9 +81,9 @@ Als u uw MP4-bestanden wilt valideren met Media Services Packager, moet u uw eig
     </smil>
 ```
 
-Zodra u de adaptieve bitrate MP4-set hebt ingesteld, u profiteren van Dynamic Packaging. Met Dynamic Packaging u streams leveren in het opgegeven protocol zonder verdere verpakking. Zie [dynamische verpakkingen](media-services-dynamic-packaging-overview.md)voor meer informatie.
+Zodra u de Adaptive bitrate MP4 hebt ingesteld, kunt u gebruikmaken van dynamische pakketten. Met dynamische pakketten kunt u stromen leveren in het opgegeven protocol zonder verdere verpakking. Zie [dynamische verpakking](media-services-dynamic-packaging-overview.md)voor meer informatie.
 
-In het volgende codevoorbeeld wordt gebruik gemaakt van Azure Media Services .NET SDK-extensies.  Zorg ervoor dat u de code bijwerkt om naar de map te wijzen waar uw invoerMP4-bestanden en .ism-bestand zich bevinden. En ook naar waar uw MediaPackager_ValidateTask.xml-bestand zich bevindt. Dit XML-bestand wordt gedefinieerd in taakvoorinstelling voor het artikel [Azure Media Packager.](https://msdn.microsoft.com/library/azure/hh973635.aspx)
+Het volgende code voorbeeld maakt gebruik van Azure Media Services .NET SDK-extensies.  Zorg ervoor dat u de code bijwerkt zodat deze naar de map verwijst waarin de invoer-MP4-bestanden en het ISM-bestand zich bevinden. En ook waar uw MediaPackager_ValidateTask. XML-bestand zich bevindt. Dit XML-bestand wordt gedefinieerd in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -258,23 +258,23 @@ In het volgende codevoorbeeld wordt gebruik gemaakt van Azure Media Services .NE
     }
 ```
 
-## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Statische versleuteling gebruiken om uw Smooth en MPEG DASH te beschermen met PlayReady
-Als u uw inhoud wilt beschermen met PlayReady, u kiezen voor het gebruik van [dynamische versleuteling](media-services-protect-with-playready-widevine.md) (de aanbevolen optie) of statische versleuteling (zoals beschreven in deze sectie).
+## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Statische versleuteling gebruiken om uw vloeiende en MPEG-streepje te beveiligen met PlayReady
+Als u uw inhoud wilt beveiligen met PlayReady, kunt u gebruikmaken van [dynamische versleuteling](media-services-protect-with-playready-widevine.md) (de aanbevolen optie) of statische versleuteling (zoals beschreven in deze sectie).
 
-Het voorbeeld in deze sectie codeert een mezzaninebestand (in dit geval MP4) in adaptieve bitrate MP4-bestanden. Vervolgens worden MP4's verpakt in Smooth Streaming en wordt vloeiend streamen met PlayReady versleuteld. Hierdoor kun je Smooth Streaming of MPEG DASH streamen.
+In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) gecodeerd in de MP4-bestanden met een adaptieve bitsnelheid. Vervolgens worden de pakketten naar Smooth Streaming gemp4'sd en vervolgens Smooth Streaming met PlayReady versleuteld. Als gevolg hiervan kunt u Smooth Streaming of MPEG-DASH streamen.
 
-Media Services biedt nu een service voor het leveren van Microsoft PlayReady-licenties. In het voorbeeld in dit artikel ziet u hoe u de PlayReady-licentieleveringsservice van Media Services configureert (zie de methode ConfigureLicenseDeliveryService die is gedefinieerd in de onderstaande code). Zie [PlayReady Dynamic Encryption and License Delivery Service](media-services-protect-with-playready-widevine.md)gebruiken voor meer informatie over de PlayReady-licentieleveringsservice van Media Services.
+Media Services biedt nu een service voor het leveren van micro soft PlayReady-licenties. In het voor beeld in dit artikel ziet u hoe u de Media Services PlayReady-service voor het leveren van licenties kunt configureren (Zie de ConfigureLicenseDeliveryService-methode die in de onderstaande code is gedefinieerd). Zie [using PlayReady Dynamic Encryption and License delivery service](media-services-protect-with-playready-widevine.md)(Engelstalig) voor meer informatie over Media Services playready-licentie leverings service.
 
 > [!NOTE]
-> Als u MPEG DASH versleuteld wilt leveren met PlayReady, moet u CENC-opties gebruiken door de eigenschappen van UseSencBox in te stellen en subsamples -eigenschappen (beschreven in het artikel [Taakvoorinstelling voor Azure Media Encryptor)](https://msdn.microsoft.com/library/azure/hh973610.aspx) aan te passen op true.  
+> Als u MPEG-DASH versleuteld met PlayReady wilt leveren, moet u ervoor zorgen dat u CENC-opties gebruikt door de useSencBox-en adjustSubSamples-eigenschappen in te stellen (Zie de [voor instelling voor de taak vooraf voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) article) op True.  
 > 
 > 
 
-Zorg ervoor dat u de volgende code bijwerkt om naar de map te wijzen waar uw invoer-MP4-bestand zich bevindt.
+Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt.
 
-En ook naar waar uw MediaPackager_MP4ToSmooth.xml en MediaEncryptor_PlayReadyProtection.xml-bestanden zich bevinden. MediaPackager_MP4ToSmooth.xml is gedefinieerd in [Taakvoorinstelling voor Azure Media Packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection.xml is gedefinieerd in het artikel [Taakvoorinstelling voor Azure Media Encryptor.](https://msdn.microsoft.com/library/azure/hh973610.aspx) 
+En ook waar uw MediaPackager_MP4ToSmooth. XML-en MediaEncryptor_PlayReadyProtection. XML-bestanden zich bevinden. MediaPackager_MP4ToSmooth. XML is gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection. XML is gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel. 
 
-In het voorbeeld wordt de methode UpdatePlayReadyConfigurationXMLFile gedefinieerd die u gebruiken om het bestand MediaEncryptor_PlayReadyProtection.xml dynamisch bij te werken. Als u het sleutelzaad beschikbaar hebt, u de methode CommonEncryption.GeneratePlayReadyContentKey gebruiken om de inhoudssleutel te genereren op basis van de keySeedValue- en KeyId-waarden.
+In het voor beeld wordt de methode UpdatePlayReadyConfigurationXMLFile gedefinieerd die u kunt gebruiken om het bestand MediaEncryptor_PlayReadyProtection. XML dynamisch bij te werken. Als u de sleutel Seed beschikbaar hebt, kunt u de methode CommonEncryption. GeneratePlayReadyContentKey gebruiken om de inhouds sleutel te genereren op basis van de waarden keySeedValue en KeyId.
 
 ```csharp
     using System;
@@ -711,17 +711,17 @@ In het voorbeeld wordt de methode UpdatePlayReadyConfigurationXMLFile gedefiniee
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statische versleuteling gebruiken om HLSv3 te beschermen met AES-128
-Als u uw HLS wilt versleutelen met AES-128, hebt u de keuze om dynamische versleuteling (de aanbevolen optie) of statische versleuteling (zoals in deze sectie) te gebruiken. Als u besluit dynamische versleuteling te gebruiken, raadpleegt u [AES-128 Dynamic Encryption and Key Delivery Service](media-services-protect-with-aes128.md)gebruiken.
+## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statische versleuteling gebruiken om HLSv3 te beveiligen met AES-128
+Als u uw HLS met AES-128 wilt versleutelen, kunt u gebruikmaken van dynamische versleuteling (de aanbevolen optie) of statische versleuteling (zoals weer gegeven in deze sectie). Zie [using AES-128 Dynamic Encryption and key delivery service](media-services-protect-with-aes128.md)(Engelstalig) als u besluit dynamische versleuteling te gebruiken.
 
 > [!NOTE]
-> Om uw inhoud om te zetten in HLS, moet u uw inhoud eerst converteren/coderen in Smooth Streaming.
-> Zorg er ook voor dat de HLS versleuteld wordt met AES en zorg ervoor dat u de volgende eigenschappen in uw MediaPackager_SmoothToHLS.xml-bestand instelt: stel de eigenschap versleutelen in op true, stel de sleutelwaarde in en de keyuriwaarde om naar uw verificatie\autorisatieserver te verwijzen.
-> Media Services maakt een sleutelbestand en plaatst het in de assetcontainer. U moet het bestand /asset-containerguid/*.key naar uw server kopiëren (of uw eigen sleutelbestand maken) en vervolgens het bestand *.key uit de assetcontainer verwijderen.
+> Als u uw inhoud wilt converteren naar HLS, moet u uw inhoud eerst converteren/coderen in Smooth Streaming.
+> Zorg er ook voor dat HLS wordt versleuteld met AES door de volgende eigenschappen in te stellen in uw MediaPackager_SmoothToHLS. XML-bestand: Stel de eigenschap encryption in op True, stel de sleutel waarde in en de keyuri-waarde om naar uw authentication\authorization-server te verwijzen.
+> Media Services maakt een sleutel bestand en plaatst het in de-container. Kopieer het bestand/Asset-containerguid/*. key naar uw server (of maak uw eigen sleutel bestand) en verwijder vervolgens het bestand *. key uit de container Asset.
 > 
 > 
 
-Het voorbeeld in deze sectie codeert een mezzaninebestand (in dit geval MP4) in mp4-bestanden met meerdere bitrate en verpakt vervolgens MP4's in Smooth Streaming. Vervolgens wordt Smooth Streaming verpakt in HTTP Live Streaming (HLS) versleuteld met Advanced Encryption Standard (AES) 128-bits streamencryptie. Zorg ervoor dat u de volgende code bijwerkt om naar de map te wijzen waar uw invoer-MP4-bestand zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth.xml en MediaPackager_SmoothToHLS.xml-configuratiebestanden zich bevinden. U vindt de definitie voor deze bestanden in het artikel [Taakvoorinstelling voor Azure Media Packager.](https://msdn.microsoft.com/library/azure/hh973635.aspx)
+In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) gecodeerd in MP4-bestanden met multibitrate en worden vervolgens pakketten Mp4's naar Smooth Streaming. Vervolgens worden ze Smooth Streaming in HTTP Live Streaming (HLS) versleuteld met Advanced Encryption Standard (AES) 128-bits gegevensstroom versleuteling. Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth. XML-en MediaPackager_SmoothToHLS. xml-configuratie bestanden zich bevinden. U kunt de definitie voor deze bestanden vinden in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
 
 ```csharp
     using System;
@@ -997,19 +997,19 @@ Het voorbeeld in deze sectie codeert een mezzaninebestand (in dit geval MP4) in 
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Statische versleuteling gebruiken om HLSv3 te beschermen met PlayReady
-Als u uw inhoud wilt beschermen met PlayReady, u kiezen voor het gebruik van [dynamische versleuteling](media-services-protect-with-playready-widevine.md) (de aanbevolen optie) of statische versleuteling (zoals beschreven in deze sectie).
+## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Statische versleuteling gebruiken om HLSv3 te beveiligen met PlayReady
+Als u uw inhoud wilt beveiligen met PlayReady, kunt u gebruikmaken van [dynamische versleuteling](media-services-protect-with-playready-widevine.md) (de aanbevolen optie) of statische versleuteling (zoals beschreven in deze sectie).
 
 > [!NOTE]
-> Om je content te beschermen met PlayReady moet je je content eerst converteren/coderen naar een Smooth Streaming-indeling.
+> Als u uw inhoud met PlayReady wilt beveiligen, moet u uw inhoud eerst converteren/coderen in een Smooth Streaming-indeling.
 > 
 > 
 
-Het voorbeeld in deze sectie codeert een mezzaninebestand (in dit geval MP4) in mp4-bestanden met meerdere bitrate. Vervolgens worden MP4's verpakt in Smooth Streaming en wordt vloeiend streamen versleuteld met PlayReady. Om HTTP Live Streaming (HLS) versleuteld met PlayReady te produceren, moet de PlayReady Smooth Streaming-asset worden verpakt in HLS. In dit artikel wordt uitgelegd hoe u al deze stappen uitvoeren.
+In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) gecodeerd in MP4-bestanden met een multibitrate. Vervolgens worden de pakketten Mp4's in Smooth Streaming en worden Smooth Streaming met PlayReady versleuteld. Voor het produceren van HTTP Live Streaming (HLS) versleuteld met PlayReady, moet de PlayReady Smooth Streaming-Asset worden verpakt in HLS. In dit artikel wordt beschreven hoe u deze stappen uitvoert.
 
-Media Services biedt nu een service voor het leveren van Microsoft PlayReady-licenties. In het voorbeeld in dit artikel ziet u hoe u de PlayReady-licentieleveringsservice van Media Services configureert (zie de methode **ConfigureLicenseDeliveryService** die is gedefinieerd in de onderstaande code). 
+Media Services biedt nu een service voor het leveren van micro soft PlayReady-licenties. In het voor beeld in dit artikel ziet u hoe u de Media Services PlayReady-service voor het leveren van licenties kunt configureren (Zie de **ConfigureLicenseDeliveryService** -methode die in de onderstaande code is gedefinieerd). 
 
-Zorg ervoor dat u de volgende code bijwerkt om naar de map te wijzen waar uw invoer-MP4-bestand zich bevindt. En ook naar waar uw MediaPackager_MP4ToSmooth.xml, MediaPackager_SmoothToHLS.xml en MediaEncryptor_PlayReadyProtection.xml-bestanden zich bevinden. MediaPackager_MP4ToSmooth.xml en MediaPackager_SmoothToHLS.xml zijn gedefinieerd in [Taakvoorinstelling voor Azure Media Packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection.xml is gedefinieerd in het artikel [Taakvoorinstelling voor Azure Media Encryptor.](https://msdn.microsoft.com/library/azure/hh973610.aspx)
+Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth. XML-, MediaPackager_SmoothToHLS. XML-en MediaEncryptor_PlayReadyProtection. XML-bestanden zich bevinden. MediaPackager_MP4ToSmooth. XML en MediaPackager_SmoothToHLS. XML worden gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection. XML is gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel.
 
 ```csharp
     using System;
@@ -1481,7 +1481,7 @@ Zorg ervoor dat u de volgende code bijwerkt om naar de map te wijzen waar uw inv
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Private Link (FAQ)
-description: Meer informatie over Azure Private Link.
+title: Veelgestelde vragen over persoonlijke koppelingen van Azure
+description: Meer informatie over persoonlijke Azure-koppelingen.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,75 +8,75 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75349940"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Private Link (FAQ)
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Veelgestelde vragen over persoonlijke koppelingen van Azure
 
 ## <a name="private-link"></a>Private Link
 
-### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Wat is Azure Private Endpoint en Azure Private Link Service?
+### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Wat is Azure private endpoint en Azure Private Link service?
 
-- **[Azure Private Endpoint](private-endpoint-overview.md)**: Azure Private Endpoint is een netwerkinterface die u privé en veilig verbindt met een service die wordt aangedreven door Azure Private Link. U privéeindpunten gebruiken om verbinding te maken met een Azure PaaS-service die Private Link ondersteunt of met uw eigen Private Link-service.
-- **[Azure Private Link Service](private-link-service-overview.md)**: Azure Private Link-service is een service die is gemaakt door een serviceprovider. Momenteel kan een Private Link-service worden gekoppeld aan de ip-configuratie aan de voorkant van een Standaard Load Balancer. 
+- **[Persoonlijk Azure-eind punt](private-endpoint-overview.md)**: Azure persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. U kunt privé-eind punten gebruiken om verbinding te maken met een Azure PaaS-service die een persoonlijke koppeling of een persoonlijke koppelings service ondersteunt.
+- **[Persoonlijke Azure-koppelings service](private-link-service-overview.md)**: Azure Private Link service is een service die is gemaakt door een service provider. Op dit moment kan een persoonlijke koppelings service worden gekoppeld aan de front-end-IP-configuratie van een Standard Load Balancer. 
 
-### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hoe wordt verkeer verzonden bij het gebruik van Private Link?
-Verkeer wordt privé verzonden met behulp van Microsoft backbone. Het doorkruist het internet niet.  
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hoe wordt het verkeer verzonden wanneer een persoonlijke koppeling wordt gebruikt?
+Verkeer wordt privé verzonden met micro soft backbone. Er wordt geen verbinding met Internet verzonden.  
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Wat is het verschil tussen een Service Endpoints en een Private Endpoints?
-- Bij het gebruik van private eindpunten wordt netwerktoegang verleend aan specifieke bronnen achter een bepaalde service die gedetailleerde segmentatie biedt, ook verkeer kan de servicebron van on-premises bereiken zonder openbare eindpunten te gebruiken.
-- Een serviceeindpunt blijft een openbaar routeerbaar IP-adres.  Een privéeindpunt is een privé-IP in de adresruimte van het virtuele netwerk waar het privéeindpunt is geconfigureerd.
+### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Wat is het verschil tussen een service-eind punt en een persoonlijk eind punt?
+- Wanneer u privé-eind punten gebruikt, wordt netwerk toegang verleend aan specifieke bronnen achter een bepaalde service die een gedetailleerde segmentatie levert. het verkeer kan ook de service resource van on-premises bereiken zonder gebruik te maken van open bare eind punten.
+- Een service-eind punt blijft een openbaar routeerbaar IP-adres.  Een persoonlijk eind punt is een privé-IP in de adres ruimte van het virtuele netwerk waar het persoonlijke eind punt is geconfigureerd.
 
-### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Wat is de relatie tussen Private Link-service en Private Endpoint?
-Private Endpoint biedt toegang tot meerdere private link-bronnen, waaronder Azure PaaS-services en uw eigen Private Link-service. Het is een één-op-veel relatie. Eén Private Link-service kan verbindingen ontvangen van meerdere privéeindpunten. Aan de andere kant kan één privéeindpunt alleen verbinding maken met één Private Link-service.    
+### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Wat is de relatie tussen de service voor persoonlijke koppelingen en het persoonlijke eind punt?
+Persoonlijk eind punt biedt toegang tot de resource typen van een persoonlijke koppeling, met inbegrip van Azure PaaS Services en uw eigen persoonlijke koppelings service. Het is een een-op-veel-relatie. Een service voor persoonlijke koppelingen kan verbindingen van meerdere persoonlijke eind punten ontvangen. Aan de andere kant kan één persoonlijk eind punt alleen verbinding maken met één privé koppelings service.    
 
 ## <a name="private-endpoint"></a>Privé-eindpunt 
  
-### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>Kan ik meerdere privéeindpunten maken in dezelfde VNet? Kunnen ze verbinding maken met verschillende services? 
-Ja. U meerdere privéeindpunten in hetzelfde VNet of subnet hebben. Ze kunnen verbinding maken met verschillende diensten.  
+### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>Kan ik meerdere persoonlijke eind punten maken in hetzelfde VNet? Kunnen ze verbinding maken met verschillende services? 
+Ja. U kunt meerdere persoonlijke eind punten hebben in hetzelfde VNet of subnet. Ze kunnen verbinding maken met verschillende services.  
  
-### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Heb ik een speciaal subnet nodig voor privé eindpunten? 
-Nee. U hebt geen speciaal subnet nodig voor privéeindpunten. U een privé-eindpunt-IP kiezen uit elk subnet van het VNet waar uw service wordt geïmplementeerd.  
+### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Is er een toegewezen subnet vereist voor privé-eind punten? 
+Nee. U hebt geen toegewezen subnet voor privé-eind punten nodig. U kunt een privé-eindpunt-IP-adres kiezen uit elk subnet van het VNet waar uw service is geïmplementeerd.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Kan Private Endpoint verbinding maken met de Private Link-service voor Azure Active Directory Tenants? 
-Ja. Privéeindpunten kunnen verbinding maken met Private Link-services of Azure PaaS voor AD-tenants.  
+### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Kan een persoonlijk eind punt verbinding maken met de service voor persoonlijke koppelingen tussen Azure Active Directory tenants? 
+Ja. Privé-eind punten kunnen verbinding maken met persoonlijke koppelings Services of Azure PaaS over AD-tenants.  
  
-### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Kan privéeindpunt verbinding maken met Azure PaaS-resources in Azure-regio's?
-Ja. Privéeindpunten kunnen verbinding maken met Azure PaaS-resources in Azure-regio's.
+### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Kan een persoonlijk eind punt verbinding maken met Azure PaaS-resources in azure-regio's?
+Ja. Privé-eind punten kunnen verbinding maken met Azure PaaS-resources in azure-regio's.
 
 ## <a name="private-link-service"></a>Private Link-service
  
-### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Wat zijn de vereisten voor het maken van een Private Link-service? 
-Uw service backends moeten zich in een virtueel netwerk en achter een Standard Load Balancer bevinden.
+### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Wat zijn de vereisten voor het maken van een privé koppelings service? 
+Uw service back-ends moeten zich in een virtueel netwerk en achter een Standard Load Balancer bevindt.
  
-### <a name="how-can-i-scale-my-private-link-service"></a>Hoe kan ik mijn Private Link-service schalen? 
-U uw Private Link-service op een aantal verschillende manieren schalen: 
-- Backend VM's toevoegen aan de pool achter uw Standaard Load Balancer 
-- Voeg een IP toe aan de Private Link-service. We staan maximaal 8 IP's per Private Link-service toe.  
-- Voeg nieuwe Private Link-service toe aan Standard Load Balancer. We staan maximaal acht Private Link-services per load balancer toe.   
+### <a name="how-can-i-scale-my-private-link-service"></a>Hoe kan ik een persoonlijke koppelings service schalen? 
+U kunt uw persoonlijke koppelings service op een aantal verschillende manieren schalen: 
+- Back-end-Vm's toevoegen aan de groep achter uw Standard Load Balancer 
+- Voeg een IP-adres toe aan de persoonlijke koppelings service. We hebben Maxi maal 8 Ip's per privé koppelings service toegestaan.  
+- Voeg een nieuwe persoonlijke koppelings service toe aan Standard Load Balancer. We hebben Maxi maal acht Services voor persoonlijke koppelingen per load balancer toegestaan.   
 
-### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Kan ik mijn service koppelen aan meerdere privéeindpunten?
-Ja. Eén Private Link-service kan verbindingen ontvangen van meerdere privéeindpunten. Eén privéeindpunt kan echter alleen verbinding maken met één Private Link-service.  
+### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Kan ik mijn Service koppelen aan meerdere persoonlijke eind punten?
+Ja. Een service voor persoonlijke koppelingen kan verbindingen van meerdere persoonlijke eind punten ontvangen. Een persoonlijk eind punt kan echter alleen verbinding maken met één privé koppelings service.  
  
-### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Hoe moet ik de belichting van mijn Private Link-service beheren?
-U de belichting regelen met de zichtbaarheidsconfiguratie op de Private Link-service. Zichtbaarheid ondersteunt drie instellingen:
+### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Hoe kan ik de bloot stelling van mijn persoonlijke koppelings service controleren?
+U kunt de bloot stelling regelen met behulp van de zichtbaarheids configuratie voor de service private link. De zicht baarheid ondersteunt drie instellingen:
 
-- **Geen** - Alleen abonnementen met RBAC-toegang kunnen de service vinden. 
-- **Beperkend** - Alleen abonnementen die op de witte lijst staan en met RBAC-toegang kunnen de service vinden. 
-- **Alles** - Iedereen kan de service vinden. 
+- **Geen** : alleen abonnementen met RBAC-toegang kunnen de service vinden. 
+- **Beperkte** abonnementen die white list zijn en met RBAC-toegang, kunnen de service vinden. 
+- **Alle** -iedereen kan de service vinden. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kan ik een Private Link-service maken met Basic Load Balancer? 
-Nee. Private Link-service via een Basic Load Balancer wordt niet ondersteund.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kan ik een persoonlijke koppelings service maken met basis Load Balancer? 
+Nee. Een persoonlijke koppelings service via een basis Load Balancer wordt niet ondersteund.
  
-### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Is een speciaal subnet vereist voor Private Link-service? 
-Nee. Private Link-service vereist geen speciaal subnet. U elk subnet in uw VNet kiezen waar uw service wordt geïmplementeerd.   
+### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Is een toegewezen subnet vereist voor de service voor privé-koppeling? 
+Nee. Voor de service voor persoonlijke koppelingen is geen toegewezen subnet vereist. U kunt elk subnet in uw VNet kiezen waar uw service wordt geïmplementeerd.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ik ben een serviceprovider die Azure Private Link gebruikt. Moet ik ervoor zorgen dat al mijn klanten unieke IP-ruimte hebben en niet overlappen met mijn IP-ruimte? 
-Nee. Azure Private Link biedt deze functionaliteit voor u. U hoeft dus geen niet-overlappende adresruimte te hebben met de adresruimte van uw klant. 
+### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ik ben een service provider met behulp van een persoonlijke Azure-koppeling. Moet ik ervoor zorgen dat alle klanten een unieke IP-ruimte hebben en elkaar niet overlappen met mijn IP-ruimte? 
+Nee. Persoonlijke Azure-koppeling biedt deze functionaliteit voor u. Daarom is het niet nodig om niet-overlappende adres ruimte te hebben met de adres ruimte van uw klant. 
 
 ##  <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Private Link](private-link-overview.md)
+- Meer informatie over [persoonlijke Azure-koppelingen](private-link-overview.md)

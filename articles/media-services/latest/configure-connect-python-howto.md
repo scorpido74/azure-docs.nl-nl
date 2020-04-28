@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Media Services v3 API - Python
-description: In dit artikel wordt uitgelegd hoe u verbinding maken met Media Services v3 API met Python.
+title: Verbinding maken met Azure Media Services v3 API-python
+description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met python.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74888458"
 ---
-# <a name="connect-to-media-services-v3-api---python"></a>Verbinding maken met Media Services v3 API - Python
+# <a name="connect-to-media-services-v3-api---python"></a>Verbinding maken met Media Services v3 API-python
 
-In dit artikel ziet u hoe u verbinding maken met de Azure Media Services v3 Python SDK met behulp van de aanmeldingsmethode voor serviceprincipal.
+In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 python SDK met behulp van de aanmeldings methode voor de Service-Principal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Python downloaden van [python.org](https://www.python.org/downloads/)
-- Zorg ervoor dat `PATH` u de omgevingsvariabele instelt
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de brongroep en de naam van het Media Services-account onthoudt.
-- Volg de stappen in het onderwerp [Access API's.](access-api-cli-how-to.md) Neem de abonnements-ID, toepassings-ID (client-ID), de verificatiesleutel (geheim) en de tenant-id op die u in de latere stap nodig hebt.
+- Python downloaden via [python.org](https://www.python.org/downloads/)
+- Zorg ervoor dat u de `PATH` omgevings variabele instelt
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- Volg de stappen in het onderwerp [toegangs-api's](access-api-cli-how-to.md) . Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatie sleutel (geheim) en de Tenant-ID die u in de volgende stap nodig hebt.
 
 > [!IMPORTANT]
-> [Naamgevingsconventies bekijken](media-services-apis-overview.md#naming-conventions).
+> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="install-the-modules"></a>De modules installeren
 
-Als u met Azure Media Services wilt werken met Python, moet u deze modules installeren.
+Als u wilt werken met Azure Media Services met behulp van python, moet u deze modules installeren.
 
-* De `azure-mgmt-resource` module, die Azure-modules voor Active Directory bevat.
-* De `azure-mgmt-media` module, die de mediaservices-entiteiten omvat.
+* De `azure-mgmt-resource` module, waaronder Azure-modules voor Active Directory.
+* De `azure-mgmt-media` module, die de Media Services entiteiten bevat.
 
-Open een opdrachtregelgereedschap en gebruik de volgende opdrachten om de modules te installeren.
+Open een opdracht regel programma en gebruik de volgende opdrachten om de modules te installeren.
 
 ```
 pip3 install azure-mgmt-resource
 pip3 install azure-mgmt-media==1.1.1
 ```
 
-## <a name="connect-to-the-python-client"></a>Verbinding maken met de Python-client
+## <a name="connect-to-the-python-client"></a>Verbinding maken met de python-client
 
-1. Een bestand maken `.py` met een extensie
-1. Het bestand openen in uw favoriete editor
-1. Voeg de code die volgt toe aan het bestand. De code importeert de vereiste modules en maakt het Active Directory-object dat u nodig hebt om verbinding te maken met Media Services.
+1. Een bestand met een `.py` extensie maken
+1. Open het bestand in uw favoriete editor
+1. Voeg de volgende code toe aan het bestand. Met de code worden de vereiste modules geïmporteerd en wordt het Active Directory-referentie object gemaakt dat u nodig hebt om verbinding te maken met Media Services.
 
-      De waarden van de variabelen instellen op de waarden die u hebt gekregen van [Access API's](access-api-cli-how-to.md)
+      De waarden van de variabelen instellen op de waarden die u hebt ontvangen van [Access-api's](access-api-cli-how-to.md)
 
       ```
       import adal
@@ -103,5 +103,5 @@ pip3 install azure-mgmt-media==1.1.1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Python [SDK gebruiken](https://aka.ms/ams-v3-python-sdk).
+- [Python-SDK](https://aka.ms/ams-v3-python-sdk)gebruiken.
 - Raadpleeg de [Python-naslagdocumentatie](https://aka.ms/ams-v3-python-ref) van Media Services.

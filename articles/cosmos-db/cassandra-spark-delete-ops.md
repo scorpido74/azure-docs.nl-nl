@@ -1,6 +1,6 @@
 ---
-title: Bewerkingen op Azure Cosmos DB Cassandra API verwijderen van Spark
-description: In dit artikel wordt beschreven hoe u gegevens in tabellen in Azure Cosmos DB Cassandra API van Spark verwijdert
+title: Bewerkingen op Azure Cosmos DB Cassandra-API uit Spark verwijderen
+description: In dit artikel wordt beschreven hoe u gegevens in tabellen in Azure Cosmos DB Cassandra-API kunt verwijderen uit Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442092"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra API-tabellen verwijderen uit Spark
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra-API tabellen verwijderen uit Spark
 
-In dit artikel wordt beschreven hoe u gegevens in Azure Cosmos DB Cassandra API-tabellen uit Spark verwijdert.
+In dit artikel wordt beschreven hoe u gegevens uit Spark kunt verwijderen uit Azure Cosmos DB Cassandra-API tabellen.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API-configuratie
+## <a name="cassandra-api-configuration"></a>Cassandra-API configuratie
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Voorbeeldgegevensgenerator
-We gebruiken dit codefragment om voorbeeldgegevens te genereren:
+## <a name="sample-data-generator"></a>Voor beeld van gegevens generator
+Dit code fragment wordt gebruikt om voorbeeld gegevens te genereren:
 
 ```scala
 //Create dataframe
@@ -67,9 +67,9 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Api voor gegevensframe
+## <a name="dataframe-api"></a>Data frame-API
 
-### <a name="delete-rows-that-match-a-condition"></a>Rijen verwijderen die overeenkomen met een voorwaarde
+### <a name="delete-rows-that-match-a-condition"></a>Rijen verwijderen die overeenkomen met een voor waarde
 
 ```scala
 //1) Create dataframe
@@ -116,7 +116,7 @@ spark
   .show
 ```
 
-**Output:**
+**Uitvoer**
 
 ```
 == Physical Plan ==
@@ -199,7 +199,7 @@ spark
   .show
 ```
 
-**Output:**
+**Uitvoer**
 
 ```
 == Physical Plan ==
@@ -278,7 +278,7 @@ println("==================")
 println("3) After")
 sc.cassandraTable("books_ks", "books").collect.foreach(println)
 ```
-**Output:**
+**Uitvoer**
 
 ```
 ==================
@@ -331,7 +331,7 @@ println("3) After")
 sc.cassandraTable("books_ks", "books").take(4).foreach(println)
 ```
 
-**Output:**
+**Uitvoer**
 
 ```
 ==================
@@ -358,7 +358,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aggregatie- en gegevenskopieerbewerkingen wilt uitvoeren, verwijst u -
+Voor het uitvoeren van aggregatie en het kopiëren van gegevens, raadpleegt u
  
 * [Aggregatiebewerkingen](cassandra-spark-aggregation-ops.md)
-* [Bewerkingen voor tabelkopiëren](cassandra-spark-table-copy-ops.md)
+* [Tabel Kopieer bewerkingen](cassandra-spark-table-copy-ops.md)

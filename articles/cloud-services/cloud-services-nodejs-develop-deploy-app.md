@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386184"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Een Node.js-toepassing maken en implementeren in een Azure Cloud Service
@@ -35,7 +35,7 @@ De toepassing is een eenvoudige 'Hallo wereld'-toepassing:
 > [!NOTE]
 > In deze zelfstudie wordt Azure PowerShell gebruikt waarvoor Windows is vereist.
 
-* Azure [Powershell]installeren en configureren.
+* [Azure Power shell]installeren en configureren.
 * Download en installeer [Azure SDK voor .NET 2.7]. Selecteer in de installatie-instellingen:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -161,7 +161,7 @@ Zie het [Node.js-ontwikkelaarscentrum] voor meer informatie.
 
 [Vergelijking van Azure Websites, Cloud Services en Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [een eenvoudige web-app-functie te gebruiken]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure Powershell]: /powershell/azureps-cmdlets-docs
+[Azure Power shell]: /powershell/azureps-cmdlets-docs
 [Azure SDK voor .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Koppel PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

@@ -1,25 +1,25 @@
 ---
-title: Een synthetische partitiesleutel maken in Azure Cosmos DB
-description: Meer informatie over het gebruik van synthetische partitiesleutels in uw Azure Cosmos-containers om de gegevens en werkbelasting gelijkmatig over de partitiesleutels te verdelen
+title: Een synthetische partitie sleutel maken in Azure Cosmos DB
+description: Meer informatie over het gebruik van synthetische partitie sleutels in uw Azure Cosmos-containers om de gegevens en werk belasting gelijkmatig te verdelen over de partitie sleutels
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441223"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Een synthetische partitiesleutel maken
 
-Het is de beste praktijk om een partitiesleutel te hebben met veel verschillende waarden, zoals honderden of duizenden. Het doel is om uw gegevens en werkbelasting gelijkmatig te verdelen over de items die zijn gekoppeld aan deze partitiesleutelwaarden. Als een dergelijke eigenschap niet in uw gegevens bestaat, u een *synthetische partitiesleutel*maken. In dit document worden verschillende basistechnieken beschreven voor het genereren van een synthetische partitiesleutel voor uw Cosmos-container.
+Het is de best practice om een partitie sleutel te hebben met veel verschillende waarden, zoals honderden of duizend tallen. Het doel is om uw gegevens en werk belasting gelijkmatig te verdelen over de items die zijn gekoppeld aan deze partitie sleutel waarden. Als een dergelijke eigenschap niet in uw gegevens bestaat, kunt u een *synthetische partitie sleutel*maken. In dit document worden verschillende basis technieken voor het genereren van een synthetische partitie sleutel voor uw Cosmos-container beschreven.
 
-## <a name="concatenate-multiple-properties-of-an-item"></a>Meerdere eigenschappen van een item in concatenate
+## <a name="concatenate-multiple-properties-of-an-item"></a>Meerdere eigenschappen van een item samen voegen
 
-U een partitiesleutel vormen door meerdere eigenschapswaarden `partitionKey` samen te brengen in één kunstmatige eigenschap. Deze sleutels worden aangeduid als synthetische sleutels. Denk bijvoorbeeld aan het volgende voorbeelddocument:
+U kunt een partitie sleutel maken door meerdere eigenschaps waarden samen te voegen tot `partitionKey` één kunst matige eigenschap. Deze sleutels worden synthetische sleutels genoemd. Bekijk bijvoorbeeld het volgende voorbeeld document:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ U een partitiesleutel vormen door meerdere eigenschapswaarden `partitionKey` sam
 }
 ```
 
-Voor het vorige document is een optie het instellen /deviceId of /date als de partitiesleutel. Gebruik deze optie als u uw container wilt partitioneren op basis van apparaat-id of datum. Een andere optie is om deze twee waarden `partitionKey` te integreren in een synthetische eigenschap die wordt gebruikt als de partitiesleutel.
+Voor het vorige document is één optie om/deviceId of/date in te stellen als de partitie sleutel. Gebruik deze optie als u uw container wilt partitioneren op basis van de apparaat-ID of-datum. Een andere optie is om deze twee waarden samen te voegen `partitionKey` in een synthetische eigenschap die wordt gebruikt als de partitie sleutel.
 
 ```JavaScript
 {
@@ -38,27 +38,27 @@ Voor het vorige document is een optie het instellen /deviceId of /date als de pa
 }
 ```
 
-In realtime scenario's u duizenden items in een database hebben. In plaats van de synthetische sleutel handmatig toe te voegen, definieert u de logica aan de clientzijde om waarden samen te voegen en voegt u de synthetische sleutel in de items in uw Cosmos-containers.
+In realtime scenario's kunt u duizenden items in een Data Base hebben. In plaats van de synthetische sleutel hand matig toe te voegen, definieert u logica aan client zijde om waarden samen te voegen en de synthetische sleutel in te voegen in de items in uw Cosmos-containers.
 
-## <a name="use-a-partition-key-with-a-random-suffix"></a>Een partitiesleutel gebruiken met een willekeurig achtervoegsel
+## <a name="use-a-partition-key-with-a-random-suffix"></a>Een partitie sleutel met een wille keurig achtervoegsel gebruiken
 
-Een andere mogelijke strategie om de werkbelasting gelijkmatiger te verdelen, is het toevoegen van een willekeurig getal aan het einde van de waarde van de partitiesleutel. Wanneer u items op deze manier distribueert, u parallelle schrijfbewerkingen uitvoeren tussen partities.
+Een andere mogelijke strategie om de werk belasting gelijkmatiger te verdelen is om een wille keurig getal toe te voegen aan het einde van de waarde van de partitie sleutel. Wanneer u items op deze manier distribueert, kunt u parallelle schrijf bewerkingen uitvoeren op meerdere partities.
 
-Een voorbeeld is als een partitiesleutel een datum vertegenwoordigt. U een willekeurig getal kiezen tussen 1 en 400 en het als achtervoegsel op de datum ingaan. Deze methode resulteert in `2018-08-09.1`partitiesleutelwaarden zoals`2018-08-09.2`, `2018-08-09.400`, enzovoort, via . Omdat u de partitiesleutel randomiseert, worden de schrijfbewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een algehele hogere doorvoer.
+Een voor beeld is een partitie sleutel die een datum voor stelt. U kunt een wille keurig getal tussen 1 en 400 kiezen en dit samen voegen als een achtervoegsel voor de datum. Deze methode resulteert in de partitie sleutel waarden `2018-08-09.1`zoals`2018-08-09.2`,, enzovoort, tot en `2018-08-09.400`met. Omdat u de partitie sleutel wille keurig maakt, worden de schrijf bewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een hogere door voer.
 
-## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Een partitiesleutel met vooraf berekende achtervoegsels gebruiken 
+## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Een partitie sleutel met vooraf berekende achtervoegsels gebruiken 
 
-De random achtervoegselstrategie kan de schrijfdoorvoer sterk verbeteren, maar het is moeilijk om een specifiek item te lezen. U weet niet de achtervoegselwaarde die is gebruikt toen u het item schreef. Gebruik de vooraf berekende achtervoegselsstrategie om het lezen van afzonderlijke items gemakkelijker te maken. In plaats van een willekeurig getal te gebruiken om de items over de partities te verdelen, gebruikt u een getal dat wordt berekend op basis van iets dat u wilt opvragen.
+De strategie voor wille keurige achtervoegsels kan de schrijf doorvoer aanzienlijk verbeteren, maar het is moeilijk om een specifiek item te lezen. U weet niet welke achtervoegsel waarde is gebruikt toen u het item schreef. Gebruik de vooraf berekende achtervoegsels strategie om het gemakkelijker te maken om afzonderlijke items te lezen. In plaats van een wille keurig getal te gebruiken om de items te verdelen over de partities, gebruikt u een getal dat wordt berekend op basis van iets dat u wilt opvragen.
 
-Denk aan het vorige voorbeeld, waarbij een container een datum als partitiesleutel gebruikt. Stel nu dat elk `Vehicle-Identification-Number` `VIN`item een ( ) attribuut heeft dat we willen openen. Verder, stel dat u vaak query's `VIN`uitvoeren om items te vinden door de , in aanvulling op datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassisnummer en het toevoegen aan de datum van de partitiesleutel. De berekening kan leiden tot een getal tussen 1 en 400 dat gelijkmatig wordt verdeeld. Dit resultaat is vergelijkbaar met de resultaten van de random achtervoegsel strategie methode. De waarde van de partitiesleutel is vervolgens de datum die is gekoppeld aan het berekende resultaat.
+Bekijk het vorige voor beeld, waarbij een container een datum als de partitie sleutel gebruikt. Stel nu dat elk item een `Vehicle-Identification-Number` kenmerk (`VIN`) heeft dat we willen gebruiken. Stel dat u vaak query's uitvoert om items te vinden op de `VIN`, naast datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassis nummer en dit toevoegen aan de datum van de partitie sleutel. Tijdens de berekening wordt mogelijk een getal tussen 1 en 400 gegenereerd dat gelijkmatig is gedistribueerd. Dit resultaat is vergelijkbaar met de resultaten die door de strategie methode wille keurig achtervoegsel worden geproduceerd. De waarde van de partitie sleutel is vervolgens de datum die wordt samengevoegd met het berekende resultaat.
 
-Met deze strategie worden de schrijfbewerkingen gelijkmatig verdeeld over de partitiesleutelwaarden en over de partities. U een bepaald item en bepaalde datum eenvoudig lezen, `Vehicle-Identification-Number`omdat u de waarde van de partitiesleutel voor een specifieke berekenen. Het voordeel van deze methode is dat u voorkomen dat u één hete partitiesleutel maakt, d.w.z. een partitiesleutel die alle werkbelasting nodig heeft. 
+Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de waarden van de partitie sleutel en over de partities. U kunt eenvoudig een bepaald item en datum lezen, omdat u de partitie sleutel waarde voor een specifieke `Vehicle-Identification-Number`kunt berekenen. Het voor deel van deze methode is dat u voor komt dat u een enkele Hot-partitie sleutel maakt, dat wil zeggen een partitie sleutel die alle werk belasting neemt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het partitioneringsconcept vindt u in de volgende artikelen:
+Meer informatie over het partitioneren concept vindt u in de volgende artikelen:
 
 * Meer informatie over [logische partities](partition-data.md).
-* Meer informatie over het [inrichten van doorvoer op Azure Cosmos-containers en -databases](set-throughput.md).
-* Meer informatie over het [inrichten van doorvoer op een Azure Cosmos-container](how-to-provision-container-throughput.md).
-* Meer informatie over het [inrichten van doorvoer op een Azure Cosmos-database](how-to-provision-database-throughput.md).
+* Meer informatie over het [inrichten van de door Voer voor Azure Cosmos-containers en-data bases](set-throughput.md).
+* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
+* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).

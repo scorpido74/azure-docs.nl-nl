@@ -1,6 +1,6 @@
 ---
-title: Azure AD-wachtwoordbeveiliging - Azure Active Directory
-description: Zwakke wachtwoorden in on-premises Active Directory verbieden met azure AD-wachtwoordbeveiliging
+title: Azure AD-wachtwoord beveiliging-Azure Active Directory
+description: Zwakke wacht woorden in on-premises Active Directory met Azure AD-wachtwoord beveiliging verbieden
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,84 +12,84 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74848643"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Microsoft Azure Active Directory-wachtwoordbeveiliging afdwingen voor Windows Server Active Directory
 
-Azure AD-wachtwoordbeveiliging is een functie die het wachtwoordbeleid in een organisatie verbetert. On-premises implementatie van wachtwoordbeveiliging maakt gebruik van zowel de algemene als aangepaste lijsten met verboden wachtwoorden die zijn opgeslagen in Azure AD. Het doet dezelfde controles on-premises als Azure AD doet voor cloud-gebaseerde wijzigingen. Deze controles worden uitgevoerd tijdens wachtwoordwijzigingen en wachtwoordresetscenario's.
+Azure AD-wachtwoord beveiliging is een functie waarmee wachtwoord beleid in een organisatie wordt verbeterd. Bij een on-premises implementatie van wachtwoord beveiliging worden zowel de globale als aangepaste lijst met verboden wacht woorden gebruikt die zijn opgeslagen in azure AD. Het doet hetzelfde als Azure AD voor wijzigingen in de Cloud. Deze controles worden uitgevoerd tijdens wachtwoord wijzigingen en scenario's voor het opnieuw instellen van wacht woorden.
 
 ## <a name="design-principles"></a>Ontwerpprincipes
 
-Azure AD-wachtwoordbeveiliging is ontworpen met de volgende principes:
+Azure AD-wachtwoord beveiliging is ontworpen met het oog op deze principes:
 
-* Domeincontrollers hoeven nooit rechtstreeks met het internet te communiceren.
-* Er worden geen nieuwe netwerkpoorten geopend op domeincontrollers.
-* Er zijn geen wijzigingen in het Active Directory-schema vereist. De software maakt gebruik van de bestaande Active **Directory-container-** en **serviceConnectionPoint-schemaobjecten.**
-* Er is geen minimum Active Directory-domein of forestfunctionaliteitsniveau (DFL/FFL) vereist.
-* De software maakt of vereist geen accounts in de Active Directory-domeinen die worden beschermd.
-* Gebruikerswachtwoorden met duidelijke tekst verlaten de domeincontroller nooit, tijdens wachtwoordvalidatiebewerkingen of op een ander tijdstip.
-* De software is niet afhankelijk van andere Azure AD-functies; Azure AD-wachtwoordhashsynchronisatie is bijvoorbeeld niet gerelateerd en is niet vereist om azure AD-wachtwoordbeveiliging te laten functioneren.
-* Incrementele implementatie wordt ondersteund, maar het wachtwoordbeleid wordt alleen afgedwongen wanneer de Dc-agent (Domain Controller Agent) is geïnstalleerd. Zie het volgende onderwerp voor meer details.
+* Domein controllers hoeven nooit rechtstreeks met Internet te communiceren.
+* Er zijn geen nieuwe netwerk poorten geopend op domein controllers.
+* Er zijn geen wijzigingen in het Active Directory schema vereist. De software maakt gebruik van de bestaande Active Directory- **container** en de schema objecten van **serviceConnectionPoint** .
+* Er is geen minimum Active Directory domein of forest-functionaliteits niveau (DFL/FFL) vereist.
+* De software maakt of vereist geen accounts in de Active Directory domeinen die deze beveiligt.
+* Wacht woorden voor ongecodeerde tekst van de gebruiker houden nooit de domein controller, hetzij tijdens wachtwoord validatie bewerkingen of op een ander tijdstip.
+* De software is niet afhankelijk van andere Azure AD-functies. een voor beeld van een Azure AD-wachtwoord hash-synchronisatie is niet gerelateerd en is niet vereist om Azure AD-wachtwoord beveiliging te laten functioneren.
+* Incrementele implementatie wordt ondersteund, maar het wachtwoord beleid wordt alleen afgedwongen wanneer de domein controller agent (DC-agent) is geïnstalleerd. Zie het volgende onderwerp voor meer informatie.
 
 ## <a name="incremental-deployment"></a>Incrementele implementatie
 
-Azure AD-wachtwoordbeveiliging ondersteunt incrementele implementatie voor domeincontrollers in een Active Directory-domein, maar het is belangrijk om te begrijpen wat dit werkelijk betekent en wat de afwegingen zijn.
+Azure AD-wachtwoord beveiliging biedt ondersteuning voor incrementele implementatie op alle domein controllers in een Active Directory domein, maar het is belang rijk om te begrijpen wat dit echt betekent en wat de voor afwegingen zijn.
 
-De DC-agentsoftware voor Azure AD-wachtwoordbeveiliging kan alleen wachtwoorden valideren wanneer deze op een domeincontroller zijn geïnstalleerd, en alleen voor wachtwoordwijzigingen die naar die domeincontroller worden verzonden. Het is niet mogelijk om te bepalen welke domeincontrollers worden gekozen door Windows-clientmachines voor het verwerken van wijzigingen in gebruikerswachtwoorden. Om consistent gedrag en universele beveiliging van wachtwoorden te garanderen, moet de DC-agentsoftware op alle domeincontrollers in een domein worden geïnstalleerd.
+De Azure AD-agent software voor wachtwoord beveiliging kan alleen wacht woorden valideren wanneer deze is geïnstalleerd op een domein controller en alleen voor wachtwoord wijzigingen die worden verzonden naar die domein controller. Het is niet mogelijk om te bepalen welke domein controllers worden gekozen door Windows-client machines voor het verwerken van wijzigingen in het gebruikers wachtwoord. Om het consistente gedrag en de beveiliging van Universal-wachtwoord beveiliging te garanderen, moet de DC-agent software worden geïnstalleerd op alle domein controllers in een domein.
 
-Veel organisaties zullen zorgvuldig willen testen van Azure AD-wachtwoordbeveiliging op een subset van hun domeincontrollers voordat ze een volledige implementatie uitvoeren. Azure AD-wachtwoordbeveiliging ondersteunt gedeeltelijke implementatie, dat wil zeggen dat de DC-agentsoftware op een bepaalde DC wachtwoorden actief valideert, zelfs wanneer andere DC's in het domein de DC-agentsoftware niet hebben geïnstalleerd. Gedeeltelijke implementaties van dit type zijn NIET veilig en worden NIET aanbevolen, behalve voor testdoeleinden.
+Veel organisaties willen een zorgvuldige test uitvoeren van Azure AD-wachtwoord beveiliging op een subset van hun domein controllers voordat een volledige implementatie wordt uitgevoerd. Azure AD-wachtwoord beveiliging biedt ondersteuning voor gedeeltelijke implementatie. Internet Explorer wordt door de DC-agent software op een bepaalde domein controller actief gevalideerd, zelfs wanneer andere domein controllers in het domein niet de DC-agent software hebben geïnstalleerd. Gedeeltelijke implementaties van dit type zijn niet beveiligd en worden niet aanbevolen voor test doeleinden.
 
-## <a name="architectural-diagram"></a>Architecturaal diagram
+## <a name="architectural-diagram"></a>Architectuur diagram
 
-Het is belangrijk om de onderliggende ontwerp- en functieconcepten te begrijpen voordat u Azure AD-wachtwoordbeveiliging implementeert in een on-premises Active Directory-omgeving. In het volgende diagram ziet u hoe de onderdelen van wachtwoordbeveiliging samenwerken:
+Het is belang rijk om inzicht te krijgen in het onderliggende ontwerp en functionele concepten voordat u Azure AD-wachtwoord beveiliging in een on-premises Active Directory omgeving implementeert. In het volgende diagram ziet u hoe de onderdelen van wachtwoord beveiliging samen werken:
 
-![Hoe azure AD-wachtwoordbeveiligingscomponenten samenwerken](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+![Hoe de Azure AD-onderdelen voor wachtwoord beveiliging samen werken](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-* De Azure AD Password Protection Proxy-service wordt uitgevoerd op elke door een domein verbonden machine in het huidige Active Directory-forest. Het primaire doel is het doorsturen van wachtwoordbeleidsdownloadaanvragen van domeincontrollers naar Azure AD. Vervolgens worden de antwoorden van Azure AD teruggegeven aan de domeincontroller.
-* Het wachtwoordfilter DLL van de DC-agent ontvangt verzoeken om wachtwoordvalidatie van gebruikers van het besturingssysteem. Het stuurt ze door naar de DC Agent-service die lokaal wordt uitgevoerd op de domeincontroller.
-* De DC Agent-service voor wachtwoordbeveiliging ontvangt aanvragen voor wachtwoordvalidatie van het wachtwoordfilter DLL van de DC-agent. Het verwerkt ze met behulp van het huidige (lokaal beschikbare) wachtwoordbeleid en retourneert het resultaat: *doorgeven* of *mislukken.*
+* De Azure AD-proxy service voor wachtwoord beveiliging wordt uitgevoerd op een computer die lid is van een domein in het huidige Active Directory-forest. Het belangrijkste doel is om aanvragen voor het downloaden van wachtwoord beleid van domein controllers door te sturen naar Azure AD. Vervolgens worden de antwoorden van Azure AD naar de domein controller geretourneerd.
+* De wachtwoord filter-DLL van de DC-agent ontvangt aanvragen voor validatie van gebruikers wachtwoorden van het besturings systeem. Ze worden doorgestuurd naar de DC-Agent service die lokaal op de domein controller wordt uitgevoerd.
+* De DC-Agent service van wachtwoord beveiliging ontvangt aanvragen voor wachtwoord validatie van de wachtwoord filter-DLL van de DC-agent. Ze worden verwerkt met behulp van het huidige (lokaal beschik bare) wachtwoord beleid en retourneert het resultaat: *slagen* of *mislukken*.
 
-## <a name="how-password-protection-works"></a>Hoe wachtwoordbeveiliging werkt
+## <a name="how-password-protection-works"></a>Hoe wachtwoord beveiliging werkt
 
-Elke Azure AD Password Protection Proxy-serviceinstance adverteert zichzelf bij de domeincontrollers in het forest door een **serviceConnectionPoint-object** te maken in Active Directory.
+Elk Azure AD-service-exemplaar van het wacht woord voor wachtwoord beveiliging adverteert zichzelf aan de domein controllers in het forest door een **serviceConnectionPoint** -object te maken in Active Directory.
 
-Elke DC Agent-service voor wachtwoordbeveiliging maakt ook een **serviceConnectionPoint-object** in Active Directory. Dit object wordt voornamelijk gebruikt voor rapportage en diagnostiek.
+Elke DC-Agent service voor wachtwoord beveiliging maakt ook een **serviceConnectionPoint** -object in Active Directory. Dit object wordt hoofd zakelijk gebruikt voor rapportage en diagnose.
 
-De DC Agent-service is verantwoordelijk voor het starten van het downloaden van een nieuw wachtwoordbeleid van Azure AD. De eerste stap is het zoeken naar een Azure AD Password Protection Proxy-service door het forest op te vragen voor **proxyserviceConnectionPoint-objecten.** Wanneer een beschikbare proxyservice wordt gevonden, stuurt de DC-agent een downloadverzoek voor wachtwoordbeleid naar de proxyservice. De proxyservice stuurt het verzoek op zijn beurt naar Azure AD. De proxyservice retourneert vervolgens het antwoord op de DC-agentservice.
+De DC-Agent service is verantwoordelijk voor het initiëren van het downloaden van een nieuw wachtwoord beleid vanuit Azure AD. De eerste stap is het vinden van een Azure AD-proxy service voor wachtwoord beveiliging door het uitvoeren van een query op het forest voor proxy **serviceConnectionPoint** -objecten. Wanneer een beschik bare proxy service wordt gevonden, verzendt de DC-agent een aanvraag voor wachtwoord beleid downloaden naar de proxy service. De proxy service op zijn beurt verzendt de aanvraag naar Azure AD. De proxy service retourneert vervolgens de reactie van de DC-Agent service.
 
-Nadat de DC Agent-service een nieuw wachtwoordbeleid van Azure AD heeft ontvangen, slaat de service het beleid op in een speciale map aan de basis van het delen van de *domeinsysvol-map.* De DC Agent-service controleert deze map ook voor het geval nieuwere beleidsregels worden gerepliceerd vanuit andere DC-agentservices in het domein.
+Nadat de DC-Agent service een nieuw wachtwoord beleid van Azure AD heeft ontvangen, slaat de service het beleid op in een speciale map in de hoofdmap van de map *SYSVOL* van het domein. De DC-Agent service bewaakt deze map ook voor het geval nieuwere beleids regels worden gerepliceerd vanuit andere services van de DC-agent in het domein.
 
-De DC Agent-service vraagt altijd een nieuw beleid aan bij het opstarten van de service. Nadat de DC Agent-service is gestart, controleert deze de leeftijd van het huidige lokaal beschikbare beleid per uur. Als het beleid ouder is dan een uur, vraagt de DC-agent een nieuw beleid van Azure AD aan via de proxyservice, zoals eerder beschreven. Als het huidige beleid niet ouder is dan een uur, blijft de DC-agent dat beleid gebruiken.
+De DC-Agent service vraagt altijd een nieuw beleid op bij het starten van de service. Nadat de service DC-agent is gestart, wordt de leeftijd van het huidige lokaal beschik bare beleid per uur gecontroleerd. Als het beleid ouder is dan één uur, vraagt de DC-agent een nieuw beleid aan bij Azure AD via de proxy service, zoals eerder is beschreven. Als het huidige beleid niet ouder is dan één uur, blijft de DC-agent dit beleid gebruiken.
 
-Wanneer een Azure AD-wachtwoordbeveiligingswachtwoordbeleid wordt gedownload, is dat beleid specifiek voor een tenant. Met andere woorden, wachtwoordbeleid is altijd een combinatie van de lijst met algemene verboden wachtwoorden van Microsoft en de lijst met aangepaste verboden wachtwoorden per tenant.
+Wanneer een Azure AD-wachtwoord beleid voor wachtwoord beveiliging wordt gedownload, is dat beleid specifiek voor een Tenant. Met andere woorden, wachtwoord beleid is altijd een combi natie van de aangepaste lijst met verboden wacht woorden van micro soft en de lijst met geblokkeerde wacht woorden per Tenant.
 
-De DC-agent communiceert met de proxyservice via RPC via TCP. De proxyservice luistert naar deze aanroepen op een dynamische of statische RPC-poort, afhankelijk van de configuratie.
+De DC-Agent communiceert met de proxy service via RPC via TCP. De proxy service luistert naar deze aanroepen op een dynamische of statische RPC-poort, afhankelijk van de configuratie.
 
-De DC-agent luistert nooit op een netwerk-beschikbare poort.
+De DC-agent luistert nooit naar een poort die beschikbaar is via het netwerk.
 
-De proxyservice belt nooit de DC Agent-service.
+De proxy service roept de DC-Agent service nooit aan.
 
-De proxyservice is stateloos. Het caches nooit beleid of een andere staat gedownload van Azure.
+De proxy service is stateless. Het beleid of een andere status die is gedownload van Azure, wordt nooit in de cache opgeslagen.
 
-De DC Agent-service gebruikt altijd het meest recente lokaal beschikbare wachtwoordbeleid om het wachtwoord van een gebruiker te evalueren. Als er geen wachtwoordbeleid beschikbaar is op de lokale DC, wordt het wachtwoord automatisch geaccepteerd. Wanneer dat gebeurt, wordt een gebeurtenisbericht geregistreerd om de beheerder te waarschuwen.
+De DC Agent-service maakt altijd gebruik van het meest recente, lokaal beschik bare wachtwoord beleid om het wacht woord van een gebruiker te evalueren. Als er geen wachtwoord beleid beschikbaar is op de lokale domein controller, wordt het wacht woord automatisch geaccepteerd. Als dat gebeurt, wordt een gebeurtenis bericht in het logboek geregistreerd om de beheerder te waarschuwen.
 
-Azure AD-wachtwoordbeveiliging is geen realtime beleidstoepassingsengine. Er kan een vertraging optreden tussen het moment waarop een wijziging van de wachtwoordbeleidsconfiguratie wordt aangebracht in Azure AD en wanneer die wijziging alle domeincontrollers bereikt en afgedwongen.
+Azure AD-wachtwoord beveiliging is geen real-time beleids toepassings engine. Er kan een vertraging optreden tussen het moment dat een wachtwoord beleid configuratie wijziging wordt aangebracht in azure AD en wanneer deze wijziging wordt doorgevoerd en op alle domein controllers wordt afgedwongen.
 
-Azure AD-wachtwoordbeveiliging fungeert als aanvulling op het bestaande Active Directory-wachtwoordbeleid, niet als vervanging. Dit geldt ook voor alle andere 3rd-party wachtwoord filter dlls die kunnen worden geïnstalleerd. Active Directory vereist altijd dat alle wachtwoordvalidatiecomponenten akkoord gaan voordat ze een wachtwoord accepteren.
+Azure AD-wachtwoord beveiliging fungeert als aanvulling op de bestaande beleids regels voor Active Directory wachtwoord, niet als vervanging. Dit omvat alle andere dll-bestanden voor wachtwoord filter van derden die kunnen worden geïnstalleerd. Active Directory is altijd vereist dat alle onderdelen van wachtwoord validatie overeenkomen voordat een wacht woord wordt geaccepteerd.
 
-## <a name="foresttenant-binding-for-password-protection"></a>Forest/tenant binding voor wachtwoordbeveiliging
+## <a name="foresttenant-binding-for-password-protection"></a>Forest/Tenant-binding voor wachtwoord beveiliging
 
-Voor de implementatie van Azure AD-wachtwoordbeveiliging in een Active Directory-forest is registratie van dat forest met Azure AD vereist. Elke proxyservice die wordt geïmplementeerd, moet ook worden geregistreerd bij Azure AD. Deze forest- en proxyregistraties zijn gekoppeld aan een specifieke Azure AD-tenant, die impliciet wordt geïdentificeerd door de referenties die worden gebruikt tijdens de registratie.
+Voor de implementatie van Azure AD-wachtwoord beveiliging in een Active Directory-forest is registratie van dat forest met Azure AD vereist. Elke proxy service die is geïmplementeerd, moet ook worden geregistreerd bij Azure AD. Deze forest-en proxy registraties zijn gekoppeld aan een specifieke Azure AD-Tenant, die impliciet wordt geïdentificeerd door de referenties die worden gebruikt tijdens de registratie.
 
-Het Active Directory-forest en alle geïmplementeerde proxyservices binnen een forest moeten bij dezelfde tenant zijn geregistreerd. Er wordt geen ondersteuning voor dat een Active Directory-forest of proxyservices in dat forest is geregistreerd bij verschillende Azure AD-tenants. Symptomen van een dergelijke verkeerd geconfigureerde implementatie zijn het onvermogen om wachtwoordbeleid te downloaden.
+Het Active Directory-forest en alle geïmplementeerde proxy services binnen een forest moeten zijn geregistreerd bij dezelfde Tenant. Het is niet mogelijk om een Active Directory-forest of proxy services in dat forest te registreren bij verschillende Azure AD-tenants. Symptomen van een dergelijke configuratie met een onjuiste configuratie zijn het niet mogelijk om wachtwoord beleid te downloaden.
 
 ## <a name="download"></a>Download
 
-De twee vereiste agentinstallateurs voor Azure AD-wachtwoordbeveiliging zijn beschikbaar in het [Microsoft Download Center.](https://www.microsoft.com/download/details.aspx?id=57071)
+De twee vereiste agent installatie Programma's voor Azure AD-wachtwoord beveiliging zijn beschikbaar via het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57071).
 
 ## <a name="next-steps"></a>Volgende stappen
 [Wachtwoordbeveiliging in Azure AD implementeren](howto-password-ban-bad-on-premises-deploy.md)

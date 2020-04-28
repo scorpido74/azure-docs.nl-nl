@@ -1,31 +1,31 @@
 ---
-title: Logboeken configureren en lezen met Azure-functies trigger voor Cosmos DB
-description: Meer informatie over het blootstellen van de logboeken aan de azure-netwerkpijplijn voor logboeken wanneer u azure-functies gebruikt voor Cosmos DB
+title: Logboeken met Azure Functions trigger voor Cosmos DB configureren en lezen
+description: Meer informatie over hoe u de logboeken kunt weer geven in de pipeline voor Azure Functions Logboeken bij het gebruik van Azure Functions trigger voor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441829"
 ---
-# <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>De logboeken configureren en lezen wanneer u azure-functies gebruikt voor Cosmos DB
+# <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>De logboeken configureren en lezen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
-In dit artikel wordt beschreven hoe u de azure-functieomgeving configureren om de trigger voor Azure-functies voor Cosmos DB-logboeken naar uw geconfigureerde [bewakingsoplossing](../azure-functions/functions-monitoring.md)te verzenden.
+In dit artikel wordt beschreven hoe u uw Azure Functions omgeving kunt configureren om de Azure Functions trigger voor Cosmos DB logboeken te verzenden naar uw geconfigureerde [bewakings oplossing](../azure-functions/functions-monitoring.md).
 
 ## <a name="included-logs"></a>Opgenomen logboeken
 
-De trigger voor Azure-functies voor Cosmos DB gebruikt de [Change Feed Processor Library](./change-feed-processor.md) intern en de bibliotheek genereert een set statuslogboeken die kunnen worden gebruikt om interne bewerkingen te controleren voor [probleemoplossingsdoeleinden.](./troubleshoot-changefeed-functions.md)
+De Azure Functions trigger voor Cosmos DB gebruikt de [bibliotheek voor de wijzigings doorvoer processor](./change-feed-processor.md) intern en de bibliotheek genereert een set status logboeken die kunnen worden gebruikt voor het bewaken van interne bewerkingen voor het [oplossen van problemen](./troubleshoot-changefeed-functions.md).
 
-De statuslogboeken beschrijven hoe de Azure-functies zich gedragen voor Cosmos DB wanneer ze proberen te worden uitgevoerd tijdens taakverdelingsscenario's of initialisatie.
+De status logboeken beschrijven hoe de Azure Functions trigger voor Cosmos DB zich gedraagt bij het uitvoeren van bewerkingen tijdens taak verdeling of-initialisatie.
 
-## <a name="enabling-logging"></a>Logboekregistratie inschakelen
+## <a name="enabling-logging"></a>Logboek registratie inschakelen
 
-Als u logboekregistratie wilt inschakelen wanneer u `host.json` de trigger voor Azure Functions voor Cosmos DB gebruikt, zoekt u het bestand in uw Azure Functions-project of Azure Functions App en [configureert u het vereiste logboekregistratieniveau.](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson) U moet de sporen `Host.Triggers.CosmosDB` inschakelen voor zoals weergegeven in het volgende voorbeeld:
+Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voor Cosmos DB `host.json` gebruikt, zoekt u het bestand in uw Azure functions project of Azure functions app en [configureert u het niveau van de vereiste logboek registratie](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). U moet de traceringen inschakelen `Host.Triggers.CosmosDB` , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```js
 {
@@ -39,11 +39,11 @@ Als u logboekregistratie wilt inschakelen wanneer u `host.json` de trigger voor 
 }
 ```
 
-Nadat de Azure-functie is geïmplementeerd met de bijgewerkte configuratie, ziet u de trigger voor Azure-functies voor Cosmos DB-logboeken als onderdeel van uw traces. U de logboeken in uw geconfigureerde logboekregistratieprovider bekijken onder de *categorie* `Host.Triggers.CosmosDB`.
+Nadat de Azure function is geïmplementeerd met de bijgewerkte configuratie, ziet u de Azure Functions trigger voor Cosmos DB-Logboeken als onderdeel van uw traceringen. U kunt de logboeken weer geven in uw geconfigureerde logboek registratie provider onder de *categorie* `Host.Triggers.CosmosDB`.
 
-## <a name="query-the-logs"></a>De logboeken opvragen
+## <a name="query-the-logs"></a>Query's uitvoeren op de logboeken
 
-Voer de volgende query uit om de logboeken op te vragen die zijn gegenereerd door de Trigger voor Azure Functions voor Cosmos DB in [Azure Application Insights' Analytics:](../azure-monitor/app/analytics.md)
+Voer de volgende query uit om een query uit te voeren op de logboeken die zijn gegenereerd door de Azure Functions trigger voor Cosmos DB in [Azure-toepassing Insights-analyse](../azure-monitor/app/analytics.md):
 
 ```sql
 traces
@@ -52,5 +52,5 @@ traces
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Bewaking inschakelen](../azure-functions/functions-monitoring.md) in uw Azure Functions-toepassingen.
-* Meer informatie over het [diagnosticeren en oplossen van veelvoorkomende problemen](./troubleshoot-changefeed-functions.md) bij het gebruik van de trigger voor Azure-functies voor Cosmos DB.
+* [Schakel bewaking](../azure-functions/functions-monitoring.md) in uw Azure functions-toepassingen in.
+* Meer informatie over het [vaststellen en oplossen van veelvoorkomende problemen](./troubleshoot-changefeed-functions.md) bij het gebruik van de Azure functions trigger voor Cosmos db.

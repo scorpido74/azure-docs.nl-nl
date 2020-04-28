@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: S2S VPN configureren via Microsoft-peering'
-description: Configureer IPsec/IKE-connectiviteit met Azure via een ExpressRoute Microsoft-peeringcircuit met behulp van een site-to-site VPN-gateway.
+title: 'Azure ExpressRoute: S2S VPN configureren via micro soft-peering'
+description: Configureer IPsec/IKE-connectiviteit met Azure via een ExpressRoute micro soft peering-circuit met behulp van een site-naar-site-VPN-gateway.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,18 +9,18 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436816"
 ---
-# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Een site-to-site VPN configureren via ExpressRoute Microsoft-peering
+# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Een site-naar-site-VPN configureren via ExpressRoute micro soft-peering
 
-Met dit artikel u beveiligde versleutelde connectiviteit tussen uw on-premises netwerk en uw Virtual Networks (Azure) configureren via een privéverbinding met ExpressRoute. U Microsoft-peering gebruiken om een site-to-site IPsec/IKE VPN-tunnel op te zetten tussen uw geselecteerde on-premises netwerken en Azure VNets. Het configureren van een beveiligde tunnel via ExpressRoute zorgt voor gegevensuitwisseling met vertrouwelijkheid, anti-replay, authenticiteit en integriteit.
+Dit artikel helpt u bij het configureren van beveiligde versleutelde connectiviteit tussen uw on-premises netwerk en uw virtuele Azure-netwerken (VNets) via een ExpressRoute-particuliere verbinding. U kunt micro soft-peering gebruiken om een site-naar-site IPsec/IKE-VPN-tunnel te maken tussen de geselecteerde on-premises netwerken en Azure VNets. Het configureren van een beveiligde tunnel via ExpressRoute maakt het mogelijk om gegevens uitwisseling met vertrouwelijkheid, anti-replay, authenticiteit en integriteit te waarborgen.
 
 >[!NOTE]
->Wanneer u site-to-site VPN instelt via Microsoft-peering, worden er kosten in rekening gebracht voor de VPN-gateway en vpn-uitgang. Zie [VPN Gateway-prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway)voor meer informatie.
+>Wanneer u site-naar-site-VPN via micro soft-peering instelt, worden er kosten in rekening gebracht voor de VPN-gateway en VPN-uitgaand verkeer. Zie [VPN gateway prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway)voor meer informatie.
 >
 >
 
@@ -29,69 +29,69 @@ Met dit artikel u beveiligde versleutelde connectiviteit tussen uw on-premises n
 ## <a name="architecture"></a><a name="architecture"></a>Architectuur
 
 
-  ![connectiviteitsoverzicht](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
+  ![connectiviteits overzicht](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
 
-Voor hoge beschikbaarheid en redundantie u meerdere tunnels configureren over de twee MSEE-PE-paren van een ExpressRoute-circuit en taakverdeling tussen de tunnels mogelijk maken.
+Voor hoge Beschik baarheid en redundantie kunt u meerdere tunnels configureren op basis van de twee MSEE-PE-paren van een ExpressRoute-circuit en taak verdeling tussen de tunnels inschakelen.
 
-  ![opties voor hoge beschikbaarheid](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
+  ![opties voor hoge Beschik baarheid](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-VPN-tunnels via Microsoft-peering kunnen worden beëindigd via vpn-gateway of met behulp van een geschikt Network Virtual Appliance (NVA) dat beschikbaar is via Azure Marketplace. U routes statisch of dynamisch uitwisselen over de versleutelde tunnels zonder de route-uitwisseling bloot te stellen aan de onderliggende Microsoft-peering. In de voorbeelden in dit artikel wordt BGP (anders dan de BGP-sessie die wordt gebruikt om de Microsoft-peering te maken) gebruikt om dynamisch voorvoegsels uit te wisselen over de versleutelde tunnels.
+VPN-tunnels via micro soft-peering kunnen worden beëindigd met behulp van VPN gateway of met behulp van een geschikt virtueel netwerk apparaat (NVA) dat beschikbaar is via Azure Marketplace. U kunt routes statisch of dynamisch via de versleutelde tunnels uitwisselen zonder dat de route-uitwisseling naar de onderliggende micro soft-peering wordt weer gegeven. In de voor beelden in dit artikel wordt BGP (verschillend van de BGP-sessie die is gebruikt om de micro soft-peering te maken) gebruikt voor het dynamisch uitwisselen van voor voegsels voor de versleutelde tunnels.
 
 >[!IMPORTANT]
->Voor de on-premises kant wordt microsoft-peering meestal beëindigd op de DMZ en wordt private peering beëindigd in de kernnetwerkzone. De twee zones zouden worden gescheiden met behulp van firewalls. Als u Microsoft peering uitsluitend configureren voor het inschakelen van beveiligde tunneling via ExpressRoute, vergeet niet om te filteren door alleen de openbare IP's van belang die worden steeds geadverteerd via Microsoft peering.
+>Voor de on-premises kant wordt micro soft-peering meestal beëindigd op de DMZ en de persoonlijke peering wordt beëindigd op de basis netwerk zone. De twee zones zouden worden gescheiden met firewalls. Als u micro soft-peering alleen wilt configureren voor het inschakelen van beveiligde tunneling via ExpressRoute, moet u ervoor zorgen dat u alleen de open bare Ip's van belang die worden geadverteerd via micro soft-peering, kunt filteren.
 >
 >
 
 ## <a name="workflow"></a><a name="workflow"></a>Werkstroom
 
-1. Microsoft-peering configureren voor uw ExpressRoute-circuit.
-2. Adverteer geselecteerde azure-regionale voorvoegsels voor uw on-premises netwerk via Microsoft-peering.
-3. Een VPN-gateway configureren en IPsec-tunnels instellen
+1. Configureer micro soft-peering voor uw ExpressRoute-circuit.
+2. Adverteer geselecteerde Azure regionale open bare voor voegsels naar uw on-premises netwerk via micro soft-peering.
+3. Een VPN-gateway configureren en IPsec-tunnels tot stand brengen
 4. Configureer het on-premises VPN-apparaat.
-5. Maak de site-to-site IPsec/IKE-verbinding.
-6. (Optioneel) Firewalls/filtering configureren op het on-premises VPN-apparaat.
+5. Maak de site-naar-site-IPsec/IKE-verbinding.
+6. Beschrijving Firewalls/filtering configureren op het on-premises VPN-apparaat.
 7. Test en valideer de IPsec-communicatie via het ExpressRoute-circuit.
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. Microsoft-peering configureren
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. micro soft-peering configureren
 
-Als u een vpn-verbinding van site-to-site wilt configureren via ExpressRoute, moet u gebruikmaken van ExpressRoute Microsoft-peering.
+Als u een site-naar-site-VPN-verbinding wilt configureren via ExpressRoute, moet u gebruikmaken van ExpressRoute micro soft-peering.
 
-* Als u een nieuw ExpressRoute-circuit wilt configureren, begint u met het artikel [expressroutevereisten](expressroute-prerequisites.md) en [maakt en wijzigt u vervolgens een ExpressRoute-circuit.](expressroute-howto-circuit-arm.md)
+* Als u een nieuw ExpressRoute-circuit wilt configureren, begint u met het artikel [ExpressRoute vereisten](expressroute-prerequisites.md) en vervolgens [maakt en wijzigt u een ExpressRoute-circuit](expressroute-howto-circuit-arm.md).
 
-* Als u al een ExpressRoute-circuit hebt, maar microsoft-peering niet hebt geconfigureerd, configureert u Microsoft-peering met behulp van het artikel [Peering maken en wijzigen voor een expressroute-circuitartikel.](expressroute-howto-routing-arm.md#msft)
+* Als u al een ExpressRoute-circuit hebt, maar geen micro soft-peering hebt geconfigureerd, configureert u micro soft-peering met het artikel [maken en wijzigen van peering voor een ExpressRoute-circuit](expressroute-howto-routing-arm.md#msft) .
 
-Zodra u uw circuit en Microsoft-peering hebt geconfigureerd, u het eenvoudig bekijken via de **pagina Overzicht** in de Azure-portal.
+Zodra u het circuit en micro soft-peering hebt geconfigureerd, kunt u het eenvoudig weer geven met behulp van de pagina **overzicht** in de Azure Portal.
 
-![Circuit](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
+![schakelaar](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. Routefilters configureren
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. route filters configureren
 
-Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in wezen een lijst van alle BGP-communitywaarden. 
+Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst met toegestane waarden voor de BGP-community. 
 
-![routefilter](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
+![route filter](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-In dit voorbeeld bevindt de implementatie zich alleen in de regio *Azure West US 2.* Er wordt een routefilterregel toegevoegd om alleen de advertentie van regionale voorvoegsels van Azure West US 2 toe te staan, die de BGP-communitywaarde *12076:51026*heeft. U geeft de regionale voorvoegsels op die u wilt toestaan door **regel beheren**te selecteren.
+In dit voor beeld is de implementatie alleen in de regio *Azure West US 2* . Er wordt een regel voor route filter toegevoegd zodat alleen de advertentie van de regionale voor voegsels van Azure West 2 regionaal wordt toegestaan. deze heeft de BGP Community-waarde *12076:51026*. U geeft de regionale voor voegsels op die u wilt toestaan door **regel beheren**te selecteren.
 
-Binnen het routefilter moet u ook de ExpressRoute-circuits kiezen waarvoor het routefilter van toepassing is. U de ExpressRoute-circuits kiezen door **circuit toevoegen te**selecteren. In de vorige afbeelding is het routefilter gekoppeld aan het voorbeeld ExpressRoute-circuit.
+Binnen het route filter moet u ook de ExpressRoute-circuits kiezen waarvoor het route filter van toepassing is. U kunt de ExpressRoute-circuits kiezen door **circuit toevoegen**te selecteren. In de vorige afbeelding is het route filter gekoppeld aan het voor beeld-ExpressRoute-circuit.
 
-### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2.1 Het routefilter configureren
+### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2,1 het route filter configureren
 
-Een routefilter configureren. Zie [Routefilters configureren voor Microsoft-peering voor](how-to-routefilter-portal.md)stappen.
+Configureer een route filter. Zie voor stappen [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md).
 
-### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2.2 BGP-routes verifiëren
+### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2,2 BGP-routes verifiëren
 
-Zodra u Microsoft-peering over uw ExpressRoute-circuit hebt gemaakt en een routefilter aan het circuit hebt gekoppeld, u de BGP-routes verifiëren die u van MTE's hebt ontvangen op de PE-apparaten die peeren met de MEE's. De verificatieopdracht is afhankelijk van het besturingssysteem van uw PE-apparaten.
+Wanneer u micro soft-peering hebt gemaakt via uw ExpressRoute-circuit en een route filter met het circuit hebt gekoppeld, kunt u de BGP-routes controleren die zijn ontvangen van Msee's op de PE-apparaten die peering hebben met de Msee's. De verificatie opdracht varieert, afhankelijk van het besturings systeem van uw PE-apparaten.
 
-#### <a name="cisco-examples"></a>Cisco voorbeelden
+#### <a name="cisco-examples"></a>Cisco-voor beelden
 
-In dit voorbeeld wordt een cisco IOS-XE-opdracht gebruikt. In het voorbeeld wordt een instantie voor virtuele routering en doorsturen (VRF) gebruikt om het peeringverkeer te isoleren.
+In dit voor beeld wordt een Cisco IOS-XE-opdracht gebruikt. In het voor beeld wordt een VRF-exemplaar (Virtual Routing and Forwarding) gebruikt om het peering-verkeer te isoleren.
 
 ```
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-Uit de volgende gedeeltelijke uitvoer blijkt dat er \*68 voorvoegsels zijn ontvangen van de buurman .243.229.34 met de ASN 12076 (MSEE):
+In de volgende gedeeltelijke uitvoer ziet u dat er 68-voor voegsels zijn \*ontvangen van de neighbor. 243.229.34 met ASN 12076 (MSEE):
 
 ```
 ...
@@ -100,50 +100,50 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 X.243.229.34    4        12076   17671   17650    25228    0    0 1w4d           68
 ```
 
-Als u de lijst met voorvoegsels wilt bekijken die van de buurman zijn ontvangen, gebruikt u het volgende voorbeeld:
+Gebruik het volgende voor beeld om de lijst met voor voegsels te zien die zijn ontvangen van de neighbor:
 
 ```
 sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 ```
 
-Als u wilt bevestigen dat u de juiste set voorvoegsels ontvangt, u deze kruisverificatie controleren. In de volgende Azure PowerShell-opdrachtuitvoer worden de voorvoegsels weergegeven die via Microsoft-peering worden geadverteerd voor elk van de services en voor elk van de Azure-regio:
+Als u wilt controleren of u de juiste set voor voegsels ontvangt, kunt u de verificatie afkruisen. Met de volgende Azure PowerShell opdracht uitvoer worden de voor voegsels vermeld die zijn geadverteerd via micro soft-peering voor elk van de services en voor elk van de Azure-regio's:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. Configureer de VPN-gateway- en IPsec-tunnels
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. de VPN-gateway en de IPsec-tunnels configureren
 
-In deze sectie worden VPN-tunnels van IPsec gemaakt tussen de Azure VPN-gateway en het on-premises VPN-apparaat. De voorbeelden maken gebruik van Cisco Cloud Service Router (CSR1000) VPN-apparaten.
+In deze sectie worden IPsec VPN-tunnels gemaakt tussen de Azure VPN-gateway en het on-premises VPN-apparaat. In de voor beelden worden CSR1000-VPN-apparaten (Cisco Cloud service router) gebruikt.
 
-Het volgende diagram toont de VPN-tunnels van IPsec die zijn ingesteld tussen on-premises VPN-apparaat 1 en het azure VPN-gateway-instantiepaar. De twee IPsec VPN-tunnels die zijn ingesteld tussen het on-premises VPN-apparaat 2 en het Azure VPN-gateway-instantiepaar, worden niet geïllustreerd in het diagram en de configuratiedetails worden niet vermeld. Het hebben van extra VPN-tunnels verbetert echter de hoge beschikbaarheid.
+In het volgende diagram ziet u de IPsec VPN-tunnels tussen on-premises VPN-apparaat 1 en het exemplaar paar van de Azure VPN-gateway. De twee IPsec VPN-tunnels die tot stand zijn gebracht tussen het on-premises VPN-apparaat 2 en het Azure VPN gateway-exemplaar paar worden niet weer gegeven in het diagram en de configuratie details worden niet vermeld. Als er echter extra VPN-tunnels zijn, wordt de maximale Beschik baarheid verbeterd.
 
   ![VPN-tunnels](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
 
-Via het IPsec-tunnelpaar wordt een eBGP-sessie opgezet om privénetwerkroutes uit te wisselen. In het volgende diagram ziet u de eBGP-sessie die is ingesteld over het IPsec-tunnelpaar:
+Via het IPsec-tunnel paar wordt er een eBGP-sessie tot stand gebracht voor het uitwisselen van particuliere netwerk routes. In het volgende diagram ziet u de eBGP-sessie die is ingesteld via het IPsec-tunnel paar:
 
-  ![eBGP-sessies over tunnelpaar](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
+  ![eBGP-sessies via tunnel paar](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
 
-In het volgende diagram ziet u het geabstraheerde overzicht van het voorbeeldnetwerk:
+Het volgende diagram toont het overzicht van het voorbeeld netwerk:
 
-  ![voorbeeld netwerk](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
+  ![voor beeld netwerk](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
 
-### <a name="about-the-azure-resource-manager-template-examples"></a>Voorbeelden van de sjabloon Azure Resource Manager
+### <a name="about-the-azure-resource-manager-template-examples"></a>Over de Azure Resource Manager sjabloon voorbeelden
 
-In de voorbeelden worden de VPN-gateway en de IPsec-tunnelbeëindigingen geconfigureerd met behulp van een Azure Resource Manager-sjabloon. Zie [De structuur en de syntaxis van Azure Resource Manager-sjablonen begrijpen](../azure-resource-manager/templates/template-syntax.md)als u nieuw bent in het gebruik van Resource Manager-sjablonen of om de basisbeginselen van de resourcebeheersjabloon te begrijpen. De sjabloon in deze sectie maakt een greenfield Azure-omgeving (VNet). Als u echter een bestaand VNet hebt, u ernaar verwijzen in de sjabloon. Zie [Een site-to-site-verbinding maken](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)als u niet bekend bent met vpn-gateway IPsec/IKE-site-to-site-configuraties.
+In de voor beelden worden de VPN-gateway en de IPsec-tunnel afsluitingen geconfigureerd met behulp van een Azure Resource Manager sjabloon. Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md)als u geen ervaring hebt met het gebruik van Resource Manager-sjablonen of als u meer wilt weten over de basis principes van de Resource Manager-sjabloon. Met de sjabloon in deze sectie maakt u een ontwikkel Azure-omgeving (VNet). Als u echter een bestaand VNet hebt, kunt u ernaar verwijzen in de sjabloon. Zie [een site-naar-site-verbinding maken](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)als u niet bekend bent met VPN gateway IPSec/IKE site-naar-site-configuraties.
 
 >[!NOTE]
->U hoeft azure resourcebeheersjablonen niet te gebruiken om deze configuratie te maken. U deze configuratie maken met de Azure-portal of PowerShell.
+>U hoeft Azure Resource Manager sjablonen niet te gebruiken om deze configuratie te kunnen maken. U kunt deze configuratie maken met behulp van de Azure Portal of Power shell.
 >
 >
 
-### <a name="31-declare-the-variables"></a><a name="variables3"></a>3.1 De variabelen declareren
+### <a name="31-declare-the-variables"></a><a name="variables3"></a>3,1 Declareer de variabelen
 
-In dit voorbeeld komen de variabele declaraties overeen met het voorbeeldnetwerk. Wijzig deze sectie bij het declareren van variabelen om uw omgeving weer te geven.
+In dit voor beeld komen de variabelen declaraties overeen met het voorbeeld netwerk. Wanneer u variabelen declareert, wijzigt u deze sectie zodat deze overeenkomt met uw omgeving.
 
-* De variabele **localAddressPrefix** is een array van on-premises IP-adressen om de IP-tunnels te beëindigen.
-* De **gatewaySku** bepaalt de VPN-doorvoer. Zie [VPN Gateway-configuratie-instellingen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)voor meer informatie over gatewaySku en vpnType. Zie VPN [Gateway-prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway)voor prijzen.
-* Stel de **vpnType** in **op RouteBased**.
+* De variabele **localAddressPrefix** is een matrix van on-PREMISES IP-adressen om de IPSec-tunnels te beëindigen.
+* De **gatewaySku** bepaalt de VPN-door voer. Zie [VPN gateway-configuratie-instellingen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)voor meer informatie over GatewaySku en vpnType. Zie [VPN gateway prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway)voor prijzen.
+* Stel **vpnType** in op **RouteBased**.
 
 ```json
 "variables": {
@@ -175,9 +175,9 @@ In dit voorbeeld komen de variabele declaraties overeen met het voorbeeldnetwerk
 },
 ```
 
-### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3.2 Virtueel netwerk maken (VNet)
+### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3,2 virtueel netwerk (VNet) maken
 
-Als u een bestaand VNet associeert met de VPN-tunnels, u deze stap overslaan.
+Als u een bestaand VNet koppelt aan de VPN-tunnels, kunt u deze stap overs Laan.
 
 ```json
 {
@@ -210,7 +210,7 @@ Als u een bestaand VNet associeert met de VPN-tunnels, u deze stap overslaan.
 },
 ```
 
-### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3.3 Openbare IP-adressen toewijzen aan VPN-gateway-exemplaren
+### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3,3 open bare IP-adressen toewijzen aan exemplaren van VPN-gateway
  
 Wijs een openbaar IP-adres toe voor elk exemplaar van een VPN-gateway.
 
@@ -237,9 +237,9 @@ Wijs een openbaar IP-adres toe voor elk exemplaar van een VPN-gateway.
   },
 ```
 
-### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 Geef de on-premises VPN-tunnelbeëindiging op (lokale netwerkgateway)
+### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3,4 opgeven van on-premises VPN-tunnel afsluiting (lokale netwerk gateway)
 
-De on-premises VPN-apparaten worden aangeduid als de **lokale netwerkgateway.** In het volgende jsonfragment worden ook externe BGP-peerdetails opgegeven:
+De on-premises VPN-apparaten worden aangeduid als de **lokale netwerk gateway**. In het volgende JSON-fragment worden ook externe BGP-peer gegevens opgegeven:
 
 ```json
 {
@@ -262,13 +262,13 @@ De on-premises VPN-apparaten worden aangeduid als de **lokale netwerkgateway.** 
 },
 ```
 
-### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3.5 De VPN-gateway maken
+### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3,5 de VPN-gateway maken
 
-Dit gedeelte van de sjabloon configureert de VPN-gateway met de vereiste instellingen voor een actief actieve configuratie. Houd rekening met de volgende vereisten:
+In deze sectie van de sjabloon wordt de VPN-gateway geconfigureerd met de vereiste instellingen voor een actief/actief-configuratie. Houd de volgende vereisten in acht:
 
-* Maak de VPN-gateway met een **"RouteBased"** VpnType. Deze instelling is verplicht als u de BGP-routering tussen de VPN-gateway en de VPN-on-premises wilt inschakelen.
-* Als u VPN-tunnels wilt instellen tussen de twee exemplaren van de VPN-gateway en een bepaald on-premises apparaat in actieve actieve modus, wordt de parameter **"activeActive"** ingesteld op **true** in de sjabloon Resource Manager. Zie [Zeer beschikbare VPN-gatewayconnectiviteit](../vpn-gateway/vpn-gateway-highlyavailable.md)voor meer informatie over zeer beschikbare VPN-gateways.
-* Als u eBGP-sessies wilt configureren tussen de VPN-tunnels, moet u aan weerszijden twee verschillende ASN's opgeven. Het verdient de voorkeur om privé ASN-nummers op te geven. Zie [Overzicht van BGP- en Azure VPN-gateways](../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie.
+* Maak de VPN-gateway met een **RouteBased** -VpnType. Deze instelling is verplicht als u BGP-route ring wilt inschakelen tussen de VPN-gateway en de VPN on-premises.
+* Als u VPN-tunnels wilt maken tussen de twee exemplaren van de VPN-gateway en een gegeven on-premises apparaat in de modus actief-actief, wordt de para meter **' activeActive '** ingesteld op ' **True** ' in de Resource Manager-sjabloon. Zie connectiviteit met hoge Beschik baarheid [VPN-gateway](../vpn-gateway/vpn-gateway-highlyavailable.md)voor meer informatie over Maxi maal beschik bare VPN-gateways.
+* Als u eBGP-sessies tussen de VPN-tunnels wilt configureren, moet u twee verschillende Asn's aan beide zijden opgeven. Het is raadzaam om persoonlijke ASN-getallen op te geven. Zie [overzicht van BGP-en Azure VPN-gateways](../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie.
 
 ```json
 {
@@ -324,7 +324,7 @@ Dit gedeelte van de sjabloon configureert de VPN-gateway met de vereiste instell
   },
 ```
 
-### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3.6 De IPsec-tunnels instellen
+### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3,6 de IPsec-tunnels tot stand brengen
 
 De laatste actie van het script maakt IPsec-tunnels tussen de Azure VPN-gateway en het on-premises VPN-apparaat.
 
@@ -354,20 +354,20 @@ De laatste actie van het script maakt IPsec-tunnels tussen de Azure VPN-gateway 
   }
 ```
 
-## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Het on-premises VPN-apparaat configureren
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. het on-premises VPN-apparaat configureren
 
-De Azure VPN-gateway is compatibel met veel VPN-apparaten van verschillende leveranciers. Zie [Over VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md)voor configuratie-informatie en apparaten die zijn gevalideerd om met vpn-gateway te werken.
+De Azure VPN-gateway is compatibel met veel VPN-apparaten van verschillende leveranciers. Zie [over VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md)voor informatie over de configuratie en de apparaten die zijn gevalideerd voor gebruik met de VPN-gateway.
 
 Bij het configureren van uw VPN-apparaat hebt u de volgende items nodig:
 
-* Een gedeelde sleutel. Dit is dezelfde gedeelde sleutel die u opgeeft bij het maken van uw vpn-verbinding tussen site en site. De voorbeelden maken gebruik van een basisgedeelde sleutel. We raden u aan een complexere sleutel te genereren.
-* Het openbare IP-adres van uw VPN-gateway. U kunt het openbare IP-adres weergeven met behulp van Azure Portal, PowerShell of de CLI. Navigeer naar Virtuele netwerkgateways en klik op de naam van uw VPN-gateway om het openbare IP-adres dat gebruikmaakt van Azure Portal te achterhalen.
+* Een gedeelde sleutel. Dit is dezelfde gedeelde sleutel die u opgeeft wanneer u uw site-naar-site-VPN-verbinding maakt. In de voor beelden wordt gebruikgemaakt van een basis gedeelde sleutel. We raden u aan een complexere sleutel te genereren.
+* Het open bare IP-adres van uw VPN-gateway. U kunt het openbare IP-adres weergeven met behulp van Azure Portal, PowerShell of de CLI. Navigeer naar Virtuele netwerkgateways en klik op de naam van uw VPN-gateway om het openbare IP-adres dat gebruikmaakt van Azure Portal te achterhalen.
 
-Doorgaans zijn eBGP-peers rechtstreeks verbonden (vaak via een WAN-verbinding). Wanneer u echter eBGP configureert via IPsec VPN-tunnels via ExpressRoute Microsoft-peering, zijn er meerdere routeringsdomeinen tussen de eBGP-peers. Gebruik de **opdracht ebgp-multihop** om de eBGP-relatie tussen de twee niet-direct verbonden peers vast te stellen. Het gehele getal dat de opdracht ebgp-multihop volgt, geeft de TTL-waarde in de BGP-pakketten aan. De opdracht **maximale paden eibgp 2** maakt het mogelijk load balancing van het verkeer tussen de twee BGP paden.
+Doorgaans worden eBGP-peers rechtstreeks verbonden (vaak via een WAN-verbinding). Wanneer u echter eBGP via IPsec VPN-tunnels configureert via ExpressRoute micro soft-peering, zijn er meerdere routerings domeinen tussen de eBGP-peers. Gebruik de **ebgp-multihop** opdracht voor het instellen van de ebgp neighbor-relatie tussen de twee niet rechtstreeks verbonden peers. Het gehele getal dat volgt ebgp-multihop opdracht geeft de TTL-waarde in de BGP-pakketten. De opdracht **maximum aantal paden eibgp 2** maakt taak verdeling van verkeer tussen de twee BGP-paden mogelijk.
 
-### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000 voorbeeld
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000-voor beeld
 
-In het volgende voorbeeld wordt de configuratie voor Cisco CSR1000 in een virtuele Hyper-V-machine weergegeven als het on-premises VPN-apparaat:
+In het volgende voor beeld ziet u de configuratie van Cisco CSR1000 in een Hyper-V virtuele machine als een on-premises VPN-apparaat:
 
 ```
 !
@@ -475,13 +475,13 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. Filtering en firewalls van VPN-apparaten configureren (optioneel)
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. filteren van VPN-apparaten en firewalls configureren (optioneel)
 
-Configureer uw firewall en filtering volgens uw vereisten.
+Configureer uw firewall en filter op basis van uw vereisten.
 
-## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. Test en valideer de IPsec-tunnel
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. de IPsec-tunnel testen en valideren
 
-De status van IPsec-tunnels kan worden geverifieerd op de Azure VPN-gateway door Powershell-opdrachten:
+De status van IPsec-tunnels kan worden gecontroleerd op de Azure VPN-gateway met behulp van Power shell-opdrachten:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
@@ -495,7 +495,7 @@ EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
 ```
 
-Als u de status van de tunnels op de Azure VPN-gateway-exemplaren onafhankelijk wilt controleren, gebruikt u het volgende voorbeeld:
+Gebruik het volgende voor beeld om de status van de tunnels op de exemplaren van de Azure VPN-gateway onafhankelijk te controleren:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
@@ -517,9 +517,9 @@ EgressBytesTransferred           : 8980589
 LastConnectionEstablishedUtcTime : 11/04/2017 17:03:13
 ```
 
-U ook de tunnelstatus controleren op uw on-premises VPN-apparaat.
+U kunt ook de tunnel status op uw on-premises VPN-apparaat controleren.
 
-Cisco CSR1000 voorbeeld:
+Cisco CSR1000-voor beeld:
 
 ```
 show crypto session detail
@@ -571,7 +571,7 @@ Peer: 52.175.253.112 port 4500 fvrf: (none) ivrf: (none)
         Outbound: #pkts enc'ed 477 drop 0 life (KB/Sec) 4607953/437
 ```
 
-Het lijnprotocol op de Virtual Tunnel Interface (VTI) verandert niet in "up" totdat IKE fase 2 is voltooid. Met de volgende opdracht wordt de beveiligingskoppeling geverifieerd:
+Het regel Protocol van de virtuele tunnel interface (VTI) wordt pas gewijzigd in ' up ' tot IKE fase 2 is voltooid. Met de volgende opdracht wordt de beveiligings koppeling gecontroleerd:
 
 ```
 csr1#show crypto ikev2 sa
@@ -597,9 +597,9 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>Controleer de end-to-end-verbinding tussen het on-premises binnennetwerk en het Azure VNet
+### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>End-to-end-connectiviteit tussen het lokale netwerk en het Azure-VNet verifiëren
 
-Als de IPsec-tunnels zijn ingesteld en de statische routes correct zijn ingesteld, moet u het IP-adres van de externe BGP-peer kunnen pingen:
+Als de IPsec-tunnels actief zijn en de statische routes correct zijn ingesteld, kunt u het IP-adres van de externe BGP-peer pingen:
 
 ```
 csr1#ping 10.2.0.228
@@ -615,9 +615,9 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>Controleer de BGP-sessies via IPsec
+### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>De BGP-sessies via IPsec verifiëren
 
-Controleer op de Azure VPN-gateway de status van BGP-peer:
+Controleer de status van de BGP-peer op de Azure VPN-gateway:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
@@ -633,13 +633,13 @@ Voorbeelduitvoer:
 65000 07:13:51.0109601  10.2.0.228              507          500   10.2.0.229               6 Connected
 ```
 
-Als u de lijst met netwerkvoorvoegsels die via eBGP van de VPN-concentrator on-premises zijn ontvangen, wilt verifiëren, u filteren op kenmerk Origin:
+Als u de lijst met netwerk voorvoegsels wilt controleren die via eBGP van de VPN-concentrator on-premises worden ontvangen, kunt u filteren op kenmerk ' Origin ':
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
-In de voorbeelduitvoer is de ASN 65010 het BGP-autonome systeemnummer in de VPN on-premises.
+In het voorbeeld uitvoer is het ASN 65010 het autonome BGP-systeem nummer in het on-premises VPN-netwerk.
 
 ```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
@@ -648,7 +648,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 65010  10.2.0.228   10.0.0.0/24  172.16.0.10 EBgp   172.16.0.10  32768
 ```
 
-Ga als volgt te werk om de lijst met geadverteerde routes te bekijken:
+De lijst met aangekondigde routes weer geven:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
@@ -667,7 +667,7 @@ AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 65010  10.2.0.229   10.0.0.0/24    10.2.0.229 Igp                  0
 ```
 
-Voorbeeld voor de on-premises Cisco CSR1000:
+Voor beeld voor de on-premises Cisco CSR1000:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 routes
@@ -688,7 +688,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 4
 ```
 
-De lijst met netwerken die worden geadverteerd vanaf de on-premises Cisco CSR1000 tot de Azure VPN-gateway, kan worden weergegeven met de volgende opdracht:
+De lijst met netwerken die zijn geadverteerd vanaf de on-premises Cisco-CSR1000 naar de Azure VPN-gateway, kan worden weer gegeven met de volgende opdracht:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [Netwerkprestatiemeter configureren voor ExpressRoute](how-to-npm.md)
 
-* [Een site-to-site-verbinding toevoegen aan een VNet met een bestaande VPN-gatewayverbinding](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: Een VM voor het oplossen van problemen met Windows gebruiken met Azure PowerShell | Microsoft Documenten
-description: Meer informatie over het oplossen van Windows VM-problemen in Azure door de OS-schijf te verbinden met een herstel-vm met Azure PowerShell
+title: Een Windows-probleemoplossings-VM gebruiken met Azure PowerShell | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met Windows-VM'S in azure door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van Azure PowerShell
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,67 +13,67 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75374129"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Problemen met een Windows-vm oplossen door de OS-schijf aan een herstel-vm te koppelen met Azure PowerShell
-Als uw virtuele Windows-machine (VM) in Azure een opstart- of schijffout tegenkomt, moet u mogelijk stappen voor het oplossen van problemen uitvoeren op de schijf zelf. Een veelvoorkomend voorbeeld is een mislukte toepassingsupdate die voorkomt dat de VM kan opstarten. In dit artikel wordt beschreven hoe u Azure PowerShell gebruiken om de schijf aan te sluiten op een andere Windows-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke vm te herstellen. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van Azure PowerShell
+Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor het oplossen van problemen op de schijf zelf uitvoeren. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om de schijf te verbinden met een andere Windows-VM om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM te herstellen. 
 
 > [!Important]
-> De scripts in dit artikel zijn alleen van toepassing op de VM's die [Beheerde schijf](../windows/managed-disks-overview.md)gebruiken. 
+> De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [beheerde schijven](../windows/managed-disks-overview.md). 
 
  
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
-We kunnen Azure PowerShell nu gebruiken om de OS-schijf voor een vm te wijzigen. We hoeven de VM niet langer te verwijderen en opnieuw te maken.
+We kunnen nu Azure PowerShell gebruiken om de besturingssysteem schijf voor een virtuele machine te wijzigen. Het is niet meer nodig om de virtuele machine te verwijderen en opnieuw te maken.
 
 Het probleemoplossingsproces is als volgt:
 
-1. Stop de betreffende VM.
-2. Maak een momentopname op de OS-schijf van de vm.
-3. Maak een schijf op basis van de momentopname van de OS-schijf.
-4. Koppel de schijf als gegevensschijf aan een herstel-vm.
-5. Maak verbinding met de herstel-vm. Bewerk bestanden of voer hulpprogramma's uit om problemen op de gekopieerde osschijf op te lossen.
-6. De schijf loskoppelen en loskoppelen van herstel-VM.
-7. Wijzig de OS-schijf voor de betreffende vm.
+1. Stop de betrokken VM.
+2. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
+3. Maak een schijf van de moment opname van de besturingssysteem schijf.
+4. Koppel de schijf als een gegevens schijf aan een herstel-VM.
+5. Maak verbinding met de Recovery-VM. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de gekopieerde besturingssysteem schijf op te lossen.
+6. De schijf ontkoppelen en loskoppelen van de herstel-VM.
+7. Wijzig de besturingssysteem schijf voor de betrokken VM.
 
-U de VM-reparatieopdrachten gebruiken om de stappen 1, 2, 3, 4, 6 en 7 te automatiseren. Zie [Een Windows-vm herstellen met de reparatieopdrachten van Azure Virtual Machine](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer documentatie en instructies.
+U kunt de opdrachten voor het herstellen van de virtuele machine gebruiken om stap 1, 2, 3, 4, 6 en 7 te automatiseren. Zie [een Windows-VM herstellen met behulp van de opdrachten voor het herstellen van virtuele Azure-machines](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer documentatie en instructies.
 
-Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview) hebt geïnstalleerd en aangemeld bij uw abonnement:
+Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview) hebt geïnstalleerd en bent aangemeld bij uw abonnement:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Vervang in de volgende voorbeelden de parameternamen door uw eigen waarden. 
+Vervang in de volgende voor beelden de parameter namen door uw eigen waarden. 
 
-## <a name="determine-boot-issues"></a>Opstartproblemen bepalen
-U een schermafbeelding van uw VM in Azure bekijken om opstartproblemen op te lossen. Deze schermafbeelding kan helpen bepalen waarom een VM niet opstart. In het volgende voorbeeld wordt de `myVM` schermafbeelding van `myResourceGroup`de Windows-VM met de naam In de brongroep met de naam :
+## <a name="determine-boot-issues"></a>Opstart problemen vaststellen
+U kunt een scherm opname van uw virtuele machine in azure bekijken om opstart problemen op te lossen. Deze scherm afbeelding kan u helpen identificeren waarom een virtuele machine niet kan worden opgestart. `myVM` In het volgende voor beeld wordt de scherm opname opgehaald van de Windows-VM met `myResourceGroup`de naam in de resource groep met de naam:
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-Bekijk de schermafbeelding om te bepalen waarom de VM niet opstart. Let op eventuele specifieke foutmeldingen of foutcodes die worden verstrekt.
+Controleer de scherm afbeelding om te bepalen waarom de virtuele machine niet kan worden opgestart. Noteer alle specifieke fout berichten of fout codes die worden weer gegeven.
 
 ## <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-In het volgende voorbeeld `myVM` wordt de `myResourceGroup`vm met de naam van de resourcegroep met de naam :
+In het volgende voor beeld wordt de `myVM` VM gestopt met de naam `myResourceGroup`van de resource groep met de naam:
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Wacht tot de VM klaar is met verwijderen voordat u naar de volgende stap gaat.
+Wacht totdat de virtuele machine is verwijderd voordat u de volgende stap verwerkt.
 
 
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Een momentopname maken vanaf de OS-schijf van de vm
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Een moment opname maken van de besturingssysteem schijf van de virtuele machine
 
-In het volgende voorbeeld `mySnapshot` wordt een momentopname gemaakt met de naam van de OS-schijf van de VM met de naam 'myVM'. 
+In het volgende voor beeld wordt een moment `mySnapshot` opname gemaakt met de naam van de besturingssysteem schijf van de virtuele machine met de naam ' myVM '. 
 
 ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -99,11 +99,11 @@ New-AzSnapshot `
    -ResourceGroupName $resourceGroupName 
 ```
 
-Een momentopname is een volledige, alleen-lezen kopie van een VHD. Het kan niet worden gekoppeld aan een VM. In de volgende stap maken we een schijf van deze momentopname.
+Een moment opname is een volledige, alleen-lezen kopie van een VHD. Deze kan niet worden gekoppeld aan een virtuele machine. In de volgende stap maakt u een schijf van deze moment opname.
 
-## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de momentopname
+## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
 
-Met dit script wordt `newOSDisk` een beheerde `mysnapshot`schijf gemaakt met de naam van de momentopname met de naam .  
+Met dit script maakt u een beheerde schijf `newOSDisk` met een naam uit `mysnapshot`de moment opname met de naam.  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -140,14 +140,14 @@ $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -Cr
  
 New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
-Nu heb je een kopie van de originele OS schijf. U deze schijf op een andere Windows-VM monteren voor probleemoplossingsdoeleinden.
+U hebt nu een kopie van de oorspronkelijke besturingssysteem schijf. U kunt deze schijf koppelen aan een andere Windows-VM voor het oplossen van problemen.
 
-## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>De schijf aan een andere Windows-vm koppelen voor het oplossen van problemen
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>De schijf koppelen aan een andere Windows-VM voor probleem oplossing
 
-Nu koppelen we de kopie van de originele OS-schijf aan een VM als gegevensschijf. Met dit proces u configuratiefouten corrigeren of aanvullende toepassings- of systeemlogboekbestanden op de schijf controleren. In het volgende voorbeeld `newOSDisk` wordt de `RecoveryVM`schijf met de naam gekoppeld aan de vm met de naam .
+Nu koppelen we de kopie van de oorspronkelijke besturingssysteem schijf als een gegevens schijf aan een virtuele machine. Met dit proces kunt u configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden op de schijf controleren. `newOSDisk` In het volgende voor beeld wordt de schijf met de naam van `RecoveryVM`de virtuele machine gekoppeld.
 
 > [!NOTE]
-> Om de schijf te bevestigen, moeten de kopie van de oorspronkelijke osschijf en de herstel-vm zich op dezelfde locatie bevinden.
+> Als u de schijf wilt koppelen, moet het exemplaar van de oorspronkelijke besturingssysteem schijf en de herstel-VM zich op dezelfde locatie bevindt.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -163,22 +163,22 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Verbinding maken met de herstel-vm en problemen op de aangesloten schijf oplossen
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Verbinding maken met de herstel-VM en problemen oplossen op de gekoppelde schijf
 
-1. RDP naar uw herstel-VM met behulp van de juiste referenties. In het volgende voorbeeld wordt het RDP-verbindingsbestand voor de VM met de naam `RecoveryVM` in de brongroep met de naam `myResourceGroup`' downloads en gedownload naar `C:\Users\ops\Documents`"
+1. RDP naar de herstel-VM met de juiste referenties. `RecoveryVM` In het volgende voor beeld wordt het RDP `myResourceGroup`-verbindings bestand gedownload voor de virtuele machine met de naam in de resource groep, en wordt deze gedownload naar `C:\Users\ops\Documents`
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. De gegevensschijf moet automatisch worden gedetecteerd en gekoppeld. Bekijk de lijst met bijgevoegde volumes om de stationsletter als volgt te bepalen:
+2. De gegevens schijf moet automatisch worden gedetecteerd en gekoppeld. Bekijk de lijst met gekoppelde volumes om de stationsletter als volgt te bepalen:
 
     ```powershell
     Get-Disk
     ```
 
-    In de volgende voorbeelduitvoer ziet u de schijf die is aangesloten op een schijf **2**. (U `Get-Volume` ook gebruiken om de stationsletter te bekijken):
+    In de volgende voorbeeld uitvoer ziet u de schijf die is verbonden met een schijf **2**. (U kunt ook gebruiken `Get-Volume` om de stationsletter weer te geven):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -189,18 +189,18 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Nadat de kopie van de originele osschijf is gemonteerd, u desgewenst alle onderhouds- en probleemoplossingsstappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
+Nadat de kopie van de oorspronkelijke besturingssysteem schijf is gekoppeld, kunt u zo nodig onderhouds-en probleemoplossings stappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
 
-## <a name="unmount-and-detach-original-os-disk"></a>Originele osschijf loskoppelen en loskoppelen
-Zodra uw fouten zijn opgelost, wordt de bestaande schijf losgekoppeld en losgekoppeld van uw herstel-vm. U uw schijf niet met een andere VM gebruiken totdat de lease die de schijf aan de herstel-VM koppelt, is vrijgegeven.
+## <a name="unmount-and-detach-original-os-disk"></a>Oorspronkelijke besturingssysteem schijf ontkoppelen en loskoppelen
+Wanneer de fouten zijn opgelost, ontkoppelt u de bestaande schijf en koppelt u deze los van de herstel-VM. U kunt uw schijf met geen enkele andere virtuele machine gebruiken totdat de lease die de schijf aan de herstel-VM koppelt, wordt vrijgegeven.
 
-1. Vanuit uw RDP-sessie u de gegevensschijf op uw herstel-vm demonteren. U hebt het schijfnummer `Get-Disk` van de vorige cmdlet nodig. Gebruik vervolgens `Set-Disk` om de schijf offline in te stellen:
+1. Ontkoppel de gegevens schijf uit uw RDP-sessie op de virtuele machine voor herstel. U hebt het schijf nummer nodig van de `Get-Disk` vorige cmdlet. Ga vervolgens als `Set-Disk` volgt te werkt om de schijf als offline in te stellen:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Controleer of de schijf nu `Get-Disk` opnieuw als offline is ingesteld. In de volgende voorbeelduitvoerwordt weergegeven dat de schijf nu als offline is ingesteld:
+    Bevestig dat de schijf nu `Get-Disk` opnieuw is ingesteld als offline. In de volgende voorbeeld uitvoer ziet u dat de schijf nu is ingesteld als offline:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -211,7 +211,7 @@ Zodra uw fouten zijn opgelost, wordt de bestaande schijf losgekoppeld en losgeko
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Sluit uw RDP-sessie af. Verwijder in uw Azure PowerShell-sessie de schijf met de naam `newOSDisk` 'RecoveryVM'.
+2. Sluit uw RDP-sessie af. Verwijder vanuit uw Azure PowerShell-sessie de schijf met `newOSDisk` de naam uit de virtuele machine met de naam ' RecoveryVM '.
 
     ```powershell
     $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
@@ -219,11 +219,11 @@ Zodra uw fouten zijn opgelost, wordt de bestaande schijf losgekoppeld en losgeko
     Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
-## <a name="change-the-os-disk-for-the-affected-vm"></a>De osschijf voor de betreffende vm wijzigen
+## <a name="change-the-os-disk-for-the-affected-vm"></a>De besturingssysteem schijf voor de betrokken VM wijzigen
 
-U Azure PowerShell gebruiken om de OS-schijven te verwisselen. U hoeft de vm niet te verwijderen en opnieuw te maken.
+U kunt Azure PowerShell gebruiken om de schijven van het besturings systeem te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken.
 
-In dit voorbeeld `myVM` wordt de met `newOSDisk` de naam VM gestopt en wordt de schijf met de naam de nieuwe osschijf toewijst. 
+In dit voor beeld wordt de `myVM` virtuele machine met de naam gestopt en wordt de schijf toegewezen als de nieuwe besturingssysteem schijf. `newOSDisk` 
 
 ```powershell
 # Get the VM 
@@ -245,9 +245,9 @@ Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type
 Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
-## <a name="verify-and-enable-boot-diagnostics"></a>Opstartdiagnose verifiëren en inschakelen
+## <a name="verify-and-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten controleren en inschakelen
 
-In het volgende voorbeeld wordt de `myVMDeployed` diagnostische extensie `myResourceGroup`op de VM ingeschakeld die is genoemd in de resourcegroep met de naam :
+`myVMDeployed` In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele `myResourceGroup`machine met de naam in de resource groep met de naam:
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -256,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie Problemen [met RDP-verbindingen met een Azure VM](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw VM. Zie Problemen met de connectiviteit van [toepassingen op een Windows-vm oplossen voor](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)problemen met de toegang tot toepassingen op uw vm.
+Zie [problemen met RDP-verbindingen met een Azure VM oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Windows-VM](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
 
-Zie overzicht van Azure Resource Manager voor meer informatie over het gebruik van Resource [Manager.](../../azure-resource-manager/management/overview.md)
+Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)voor meer informatie over het gebruik van Resource Manager.

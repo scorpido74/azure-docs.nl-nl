@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid – Hyperscale (Citus) - Azure Database voor PostgreSQL
-description: Concepten met hoge beschikbaarheid en noodherstel
+title: Hoge Beschik baarheid – grootschalige (Citus)-Azure Database for PostgreSQL
+description: Concepten voor hoge Beschik baarheid en herstel na nood gevallen
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975530"
 ---
-# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Hoge beschikbaarheid in Azure Database voor PostgreSQL – Hyperscale (Citus)
+# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Hoge Beschik baarheid in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Ha (High availability) voorkomt databasedowntime door stand-by replica's van elk knooppunt in een servergroep te behouden. Als een knooppunt naar beneden gaat, schakelt Hyperscale binnenkomende verbindingen over van het mislukte knooppunt naar de stand-by. Failover gebeurt binnen een paar minuten, en gepromote knooppunten hebben altijd nieuwe gegevens via PostgreSQL synchrone streaming replicatie.
+Hoge Beschik baarheid (HA) vermijdt downtime van de data base door stand-by replica's van elk knoop punt in een server groep te behouden. Als een knoop punt uitvalt, schakelt grootschalige de binnenkomende verbindingen van het knoop punt met de fout naar de stand-bymodus. Failover vindt binnen enkele minuten plaats en gepromoveerde knoop punten bevatten altijd nieuwe gegevens via synchrone replicatie van PostgreSQL.
 
-Om gebruik te kunnen maken van HA op het coördinatorknooppunt, moeten databasetoepassingen verbroken en opnieuw verwijderde verbindingen en mislukte transacties detecteren en opnieuw proberen. De nieuw gepromoveerde coördinator is toegankelijk met dezelfde verbindingstekenreeks.
+Om te profiteren van HA op het coördinator knooppunt, moeten database toepassingen de verbindingen en mislukte trans acties detecteren en opnieuw proberen. De zojuist gepromoveerde coördinator is toegankelijk met dezelfde connection string.
 
-Herstel kan worden opgesplitst in drie fasen: detectie, failover, en volledig herstel.  Hyperscale voert periodieke gezondheidscontroles uit op elk knooppunt en na vier mislukte controles wordt vastgesteld dat een knooppunt is uitgeschakeld. Hyperscale bevordert vervolgens een stand-by naar primaire knooppuntstatus (failover) en voorziet in een nieuwe stand-by-to-be.
-Streaming replicatie begint, waardoor het nieuwe knooppunt up-to-date.  Wanneer alle gegevens zijn gerepliceerd, is het knooppunt volledig hersteld.
+Herstel kan worden onderverdeeld in drie fasen: detectie, failover en volledig herstel.  Grootschalige voert periodieke status controles uit op elk knoop punt en na vier mislukte controles wordt vastgesteld dat een knoop punt niet beschikbaar is. Grootschalige bevordert vervolgens een stand-by-status voor primaire knoop punt (failover) en richt een nieuwe stand-by-to--uit.
+Streaming-replicatie begint, waardoor het nieuwe knoop punt up-to-date is.  Wanneer alle gegevens zijn gerepliceerd, is het knoop punt volledig herstel bereikt.
 
 ### <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [inschakelen van hoge beschikbaarheid](howto-hyperscale-high-availability.md) in een Hyperscale-servergroep.
+- Meer informatie over het [inschakelen van hoge Beschik baarheid](howto-hyperscale-high-availability.md) in een grootschalige-Server groep.

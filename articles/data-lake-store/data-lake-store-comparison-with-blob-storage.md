@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen1 vergelijking met Azure Storage Blob | Microsoft Documenten
-description: Azure Data Lake Storage Gen1 vergelijking met Azure Storage Blob
+title: Vergelijking Azure Data Lake Storage Gen1 met Azure Storage Blob | Microsoft Docs
+description: Vergelijking Azure Data Lake Storage Gen1 met Azure Storage Blob
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,39 +13,39 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75438724"
 ---
-# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob-opslag vergelijken
+# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob Storage vergelijken
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
-De tabel in dit artikel geeft een overzicht van de verschillen tussen Azure Data Lake Storage Gen1 en Azure Blob Storage langs enkele belangrijke aspecten van de verwerking van big data. Azure Blob Storage is een schaalbare objectstore voor algemene doeleinden die is ontworpen voor een breed scala aan opslagscenario's. Azure Data Lake Storage Gen1 is een hyper-scale repository die is geoptimaliseerd voor big data analytics workloads.
+De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data Lake Storage Gen1 en Azure Blob Storage over de belangrijkste aspecten van big data verwerking. Azure Blob Storage is een schaalbaar object archief dat is ontworpen voor een groot aantal verschillende opslag scenario's. Azure Data Lake Storage Gen1 is een opslag plaats in de vorm van een Hyper schaal die is geoptimaliseerd voor big data analytische werk belastingen.
 
 |  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |
-| Doel |Geoptimaliseerde opslag voor big data analytics-workloads |Objectstore voor algemene doeleinden voor een breed scala aan opslagscenario's, waaronder big data-analyse |
-| Use Cases |Batch-, interactieve, streaming-analyse- en machine learning-gegevens zoals logbestanden, IoT-gegevens, klikstromen, grote gegevenssets |Elk type tekst of binaire gegevens, zoals back-end van toepassingen, back-upgegevens, mediaopslag voor streaming en gegevens voor algemene doeleinden. Daarnaast volledige ondersteuning voor analytics-workloads; batch-, interactieve, streaming-analyse- en machine learning-gegevens zoals logbestanden, IoT-gegevens, klikstromen, grote gegevenssets |
-| Belangrijkste concepten |Data Lake Storage Gen1-account bevat mappen, die op hun beurt gegevens bevatten die als bestanden zijn opgeslagen |Opslagaccount heeft containers, die op hun beurt gegevens in de vorm van blobs heeft |
-| Structuur |Hiërarchisch bestandssysteem |Objectopslag met platte naamruimte |
-| API |REST-API via HTTPS |REST API via HTTP/HTTPS |
-| API aan serverzijde |[WebHDFS-compatibele REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Hadoop File System Client |Ja |Ja |
-| Gegevensbewerkingen - Verificatie |Gebaseerd op [Azure Active Directory Identities](../active-directory/develop/authentication-scenarios.md) |Gebaseerd op gedeelde geheimen - [Accounttoegangssleutels](../storage/common/storage-account-keys-manage.md) en [handtekeningsleutels voor gedeelde toegang](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
-| Gegevensbewerkingen - Verificatieprotocol |OAuth 2.0. Aanroepen moeten een geldige JWT (JSON-webtoken) bevatten die is uitgegeven door Azure Active Directory |HMAC (Hash-based Message Authentication Code) . Oproepen moeten een SHA-256-hash met Basis64 bevatten voor een deel van de HTTP-aanvraag. |
-| Gegevensbewerkingen - Autorisatie |POSIX Access Control Lists (ACL's).  ACL's op basis van Azure Active Directory Identities kunnen worden ingesteld op bestands- en mapniveau. |Autorisatie op accountniveau : [Accounttoegangssleutels gebruiken](../storage/common/storage-account-keys-manage.md)<br>Voor account-, container- of blobautorisatie - [Beheer handtekeningsleutels voor gedeelde toegang](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
-| Gegevensbewerkingen - Controle |Beschikbaar. Zie [hier](data-lake-store-diagnostic-logs.md) voor informatie. |Beschikbaar |
-| Versleutelingsgegevens in rust |<ul><li>Transparant, serverzijde</li> <ul><li>Met servicebeheerde sleutels</li><li>Met door de klant beheerde sleutels in Azure KeyVault</li></ul></ul> |<ul><li>Transparant, serverzijde</li> <ul><li>Met servicebeheerde sleutels</li><li>Met door de klant beheerde sleutels in Azure KeyVault (voorbeeld)</li></ul><li>Clientversleuteling</li></ul> |
-| Beheerbewerkingen (bijv. Account maken) |[RBAC (Role-based access control)](../role-based-access-control/overview.md) van Azure voor accountbeheer |[RBAC (Role-based access control)](../role-based-access-control/overview.md) van Azure voor accountbeheer |
-| Ontwikkelaar SDKs |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
-| Prestaties van analytics-workloads |Geoptimaliseerde prestaties voor parallelle analytics-workloads. Hoge doorvoer en IOPS. |Geoptimaliseerde prestaties voor parallelle analytics-workloads. |
-| Groottelimieten |Geen beperkingen op accountgroottes, bestandsgrootte somof aantal bestanden |Zie [Schaalbaarheidsdoelen voor standaardopslagaccounts](../storage/common/scalability-targets-standard-account.md) en [schaalbaarheids- en prestatiedoelen voor Blob-opslag voor](../storage/blobs/scalability-targets.md)specifieke limieten. Grotere accountlimieten beschikbaar door contact op te nemen met [Azure Support](https://azure.microsoft.com/support/faq/) |
-| Geo-redundantie |Lokaal redundant (meerdere kopieën van gegevens in één Azure-regio) |Lokaal redundant (LRS), zone redundant (ZRS), wereldwijd redundant (GRS), read-access wereldwijd redundant (RA-GRS). Zie [hier](../storage/common/storage-redundancy.md) voor meer informatie |
+| Doel |Geoptimaliseerde opslag voor big data Analytics-workloads |Object opslag voor algemeen gebruik voor een groot aantal verschillende opslag scenario's, waaronder big data Analytics |
+| Use cases |Batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |Elk type tekst of binaire gegevens, zoals back-end van de toepassing, back-upgegevens, media opslag voor gegevens van streaming en algemeen gebruik. Daarnaast is volledige ondersteuning voor analytische werk belastingen; batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |
+| Belangrijkste concepten |Data Lake Storage Gen1 account bevat mappen, die op zijn beurt gegevens bevat die als bestanden zijn opgeslagen |Het opslag account heeft containers, die op zijn beurt gegevens hebben in de vorm van blobs |
+| Structuur |Hiërarchisch bestands systeem |Object archief met platte naam ruimte |
+| API |REST API via HTTPS |REST API via HTTP/HTTPS |
+| API aan server zijde |[WebHDFS-compatibele REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| Hadoop File System-client |Ja |Ja |
+| Gegevens bewerkingen-verificatie |Op basis van [Azure Active Directory-identiteiten](../active-directory/develop/authentication-scenarios.md) |Op basis van gedeelde geheimen- [account toegangs sleutels](../storage/common/storage-account-keys-manage.md) en [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Gegevens bewerkingen-verificatie Protocol |OAuth 2.0. Aanroepen moeten een geldig JWT (JSON Web Token) bevatten dat is uitgegeven door Azure Active Directory |Op hash gebaseerde Message Authentication Code (HMAC). Aanroepen moeten een SHA-256-Hash met base64-code ring hebben via een deel van de HTTP-aanvraag. |
+| Gegevens bewerkingen-autorisatie |POSIX-Access Control lijsten (Acl's).  Acl's op basis van Azure Active Directory-identiteiten kunnen worden ingesteld op het niveau van bestanden en mappen. |Voor autorisatie op account niveau: gebruik [account toegangs sleutels](../storage/common/storage-account-keys-manage.md)<br>Voor account-, container-of BLOB-autorisatie-gebruik [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Gegevens bewerkingen-controleren |Beschikken. Zie [hier](data-lake-store-diagnostic-logs.md) voor meer informatie. |Beschikbaar |
+| Versleutelen van gegevens in rust |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis</li></ul></ul> |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis (preview-versie)</li></ul><li>Clientversleuteling</li></ul> |
+| Beheer bewerkingen (bijvoorbeeld account maken) |[Op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) (RBAC) van Azure voor account beheer |[Op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) (RBAC) van Azure voor account beheer |
+| Sdk's van ontwikkel aars |.NET, Java, Python, node. js |.Net, Java, Python, node. js, C++, Ruby, PHP, go, Android, iOS |
+| Prestaties van de analysewerk belasting |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. Hoge door Voer en IOPS. |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. |
+| Grootte limieten |Geen limieten voor de grootte van het account, de bestands grootte of het aantal bestanden |Zie [schaalbaarheids doelen voor standaard opslag accounts](../storage/common/scalability-targets-standard-account.md) en [schaal baarheid en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md)voor specifieke limieten. Grotere account limieten beschikbaar door contact op te nemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/) |
+| Geo-redundantie |Lokaal redundant (meerdere kopieën van gegevens in één Azure-regio) |Lokaal redundant (LRS), zone redundante (ZRS), wereld wijd redundante (GRS), lees toegang wereld wijd redundante (RA-GRS). Zie [hier](../storage/common/storage-redundancy.md) voor meer informatie |
 | Servicestatus |Algemeen verkrijgbaar |Algemeen verkrijgbaar |
-| Regionale beschikbaarheid |Zie [hier](https://azure.microsoft.com/regions/#services) |Beschikbaar in alle Azure-regio's |
-| Prijs |Zie [Prijzen](https://azure.microsoft.com/pricing/details/data-lake-store/) |Zie [Prijzen](https://azure.microsoft.com/pricing/details/storage/) |
+| Regionale beschikbaarheid |[Hier](https://azure.microsoft.com/regions/#services) bekijken |Beschikbaar in alle Azure-regio's |
+| Prijs |[Prijzen](https://azure.microsoft.com/pricing/details/data-lake-store/) bekijken |[Prijzen](https://azure.microsoft.com/pricing/details/storage/) bekijken |
 
 

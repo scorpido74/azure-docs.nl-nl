@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360715"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
@@ -323,7 +323,7 @@ De voortgang wordt gedeeltelijk weergegeven in het uitvoervenster. Vervolgens zi
 De implementatie duurt enkele minuten. Daarna worden uw web- en/of werkrollen uitgevoerd in Azure.
 
 ### <a name="investigate-logs"></a>Logboeken onderzoeken
-Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **C:\Resources\Directory\\{role}\LogFiles.** **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
+Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **map c:\resources\directory\\{Role} \LogFiles** . **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de documentatie bij PTVS voor meer informatie over het werken met web- en werkrollen in Python-tools voor Visual Studio:
@@ -335,7 +335,7 @@ Zie de volgende artikelen voor meer informatie over het gebruik van Azure-servic
 * [Blob-service][Blob Service]
 * [Tabelservice][Table Service]
 * [Queue-service][Queue Service]
-* [Service Bus-wachtrijen][Service Bus Queues]
+* [Service Bus wachtrijen][Service Bus Queues]
 * [Service Bus-onderwerpen][Service Bus Topics]
 
 <!--Link references-->

@@ -1,6 +1,6 @@
 ---
-title: Opstarttaken uitvoeren in Azure Cloud Services | Microsoft Documenten
-description: Opstarttaken helpen bij het voorbereiden van uw cloudserviceomgeving voor uw app. Dit leert u hoe opstarttaken werken en hoe u ze maken
+title: Opstart taken uitvoeren in azure Cloud Services | Microsoft Docs
+description: Met opstart taken kunt u uw Cloud service omgeving voorbereiden voor uw app. Zo leert u hoe opstart taken werken en hoe u deze kunt maken
 services: cloud-services
 author: tgore03
 ms.service: cloud-services
@@ -8,55 +8,55 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360307"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Opstarttaken configureren en uitvoeren voor een cloudservice
-U opstarttaken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn het installeren van een component, het registreren van COM-onderdelen, het instellen van registersleutels of het starten van een langlopend proces.
+# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Opstart taken voor een Cloud service configureren en uitvoeren
+U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces.
 
 > [!NOTE]
-> Opstarttaken zijn niet van toepassing op virtuele machines, alleen op rollen van Cloud Service Web en Worker.
+> Opstart taken zijn niet van toepassing op Virtual Machines, alleen voor web-en werk rollen in de Cloud service.
 > 
 > 
 
-## <a name="how-startup-tasks-work"></a>Hoe opstarttaken werken
-Opstarttaken zijn acties die worden uitgevoerd voordat uw rollen beginnen en worden gedefinieerd in het bestand [ServiceDefinition.csdef] met behulp van het [element Taak] binnen het [element Opstarten.] Vaak opstarten taken zijn batch bestanden, maar ze kunnen ook console-toepassingen, of batch bestanden die PowerShell scripts te starten.
+## <a name="how-startup-tasks-work"></a>Hoe opstart taken werken
+Opstart taken zijn acties die worden uitgevoerd voordat de rollen beginnen en worden gedefinieerd in het bestand [ServiceDefinition. csdef] met behulp van het element [Task] in het [opstart] element. Veelvoorkomende opstart taken zijn batch-bestanden, maar ze kunnen ook console toepassingen zijn of batch bestanden die Power shell-scripts starten.
 
-Omgevingsvariabelen geven informatie door in een opstarttaak en lokale opslag kan worden gebruikt om informatie door te geven aan een opstarttaak. Een omgevingsvariabele kan bijvoorbeeld het pad opgeven naar een programma dat u wilt installeren en bestanden kunnen worden geschreven naar lokale opslag die later door uw rollen kan worden gelezen.
+Omgevings variabelen geven informatie door aan een opstart taak en lokale opslag kan worden gebruikt om gegevens uit een opstart taak door te geven. Een omgevings variabele kan bijvoorbeeld het pad opgeven naar een programma dat u wilt installeren, en bestanden kunnen worden geschreven naar lokale opslag die vervolgens later door uw rollen kan worden gelezen.
 
-Uw opstarttaak kan informatie en fouten registreren in de map die is opgegeven door de **temp-omgevingsvariabele.** Tijdens de opstarttaak wordt de **temp-omgevingsvariabele** opgelost naar de *C:\\Resources\\temp\\[guid].[ rolename]\\RoleTemp-map* wanneer u in de cloud wordt uitgevoerd.
+De opstart taak kan informatie en fouten registreren in de map die is opgegeven door de omgevings variabele **temp** . Tijdens de opstart taak wordt de omgevings variabele **temp** omgezet in de *map C\\:\\resources\\Temp [GUID]. [ Rolnaam]\\RoleTemp* map wanneer deze wordt uitgevoerd in de Cloud.
 
-Opstarttaken kunnen ook verschillende keren worden uitgevoerd tussen het opnieuw opstarten. De opstarttaak wordt bijvoorbeeld uitgevoerd telkens wanneer de rol opnieuw wordt gebruikt, en bij het opnieuw gebruiken van rollen wordt niet altijd opnieuw opgestart. Opstarttaken moeten worden geschreven op een manier die hen in staat stelt om meerdere keren zonder problemen uit te voeren.
+Opstarttaken kunnen ook verschillende keren worden uitgevoerd tussen het opnieuw opstarten. De opstarttaak wordt bijvoorbeeld uitgevoerd telkens wanneer de rol opnieuw wordt gebruikt, en bij het opnieuw gebruiken van rollen wordt niet altijd opnieuw opgestart. Opstart taken moeten zodanig worden geschreven dat ze meerdere keren zonder problemen kunnen worden uitgevoerd.
 
-Opstarttaken moeten eindigen met een **foutniveau** (of afsluitcode) van nul voor het opstartproces dat moet worden voltooid. Als een opstarttaak eindigt met een foutniveau zonder **nul,** wordt de rol niet gestart.
+Opstart taken moeten eindigen met een **Error level** (of afsluit code) van nul zodat het opstart proces kan worden voltooid. Als een opstart taak eindigt met een niet-nul- **Error level**, wordt de rol niet gestart.
 
-## <a name="role-startup-order"></a>Opstartvolgorde voor rollen
-In de volgende programma's wordt de procedure voor het opstarten van rollen in Azure weergegeven:
+## <a name="role-startup-order"></a>Opstart volgorde van rol
+Hieronder vindt u een lijst met opstart procedures voor rollen in Azure:
 
-1. De instantie is gemarkeerd als **Start** en ontvangt geen verkeer.
-2. Alle opstarttaken worden uitgevoerd op basis van het kenmerk **taskType.**
+1. Het exemplaar is gemarkeerd als **starten** en ontvangt geen verkeer.
+2. Alle opstart taken worden uitgevoerd volgens hun **TaskType** -kenmerk.
    
-   * De **eenvoudige** taken worden synchroon uitgevoerd, één voor één.
-   * De **achtergrond-** en **voorgrondtaken** worden asynchroon gestart, parallel aan de opstarttaak.  
+   * De **eenvoudige** taken worden synchroon uitgevoerd, één per keer.
+   * De **achtergrond** -en **voorgrond** taken worden asynchroon gestart, parallel aan de opstart taak.  
      
      > [!WARNING]
-     > IIS is mogelijk niet volledig geconfigureerd tijdens de opstarttaakfase in het opstartproces, zodat functiespecifieke gegevens mogelijk niet beschikbaar zijn. Opstarttakentaken waarvoor rolspecifieke gegevens nodig zijn, moeten [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))gebruiken .
+     > IIS is mogelijk niet volledig geconfigureerd tijdens het opstart taak stadium in het opstart proces, waardoor er mogelijk geen Role-specifieke gegevens beschikbaar zijn. Opstart taken waarvoor Role-specifieke gegevens moeten worden gebruikt, moeten [micro soft. WindowsAzure. ServiceRuntime. RoleEntryPoint. ONSTART](/previous-versions/azure/reference/ee772851(v=azure.100)).
      > 
      > 
-3. Het rolhostproces wordt gestart en de site wordt gemaakt in IIS.
-4. De methode [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) wordt aangeroepen.
-5. De instantie is gemarkeerd als **Gereed** en het verkeer wordt doorgestuurd naar de instantie.
-6. De methode [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](/previous-versions/azure/reference/ee772746(v=azure.100)) wordt aangeroepen.
+3. Het hostproces van de rol wordt gestart en de site wordt gemaakt in IIS.
+4. De methode [micro soft. WindowsAzure. ServiceRuntime. RoleEntryPoint. ONSTART](/previous-versions/azure/reference/ee772851(v=azure.100)) wordt aangeroepen.
+5. Het exemplaar is gemarkeerd als **gereed** en het verkeer wordt doorgestuurd naar het exemplaar.
+6. De methode [micro soft. WindowsAzure. ServiceRuntime. RoleEntryPoint. run](/previous-versions/azure/reference/ee772746(v=azure.100)) wordt aangeroepen.
 
-## <a name="example-of-a-startup-task"></a>Voorbeeld van een opstarttaak
-Opstarttaken worden gedefinieerd in het bestand [ServiceDefinition.csdef] in het element **Taak.** Het kenmerk **commandLine** geeft de naam en parameters op van het opstartbatchbestand of de consoleopdracht, het kenmerk **executionContext** geeft het bevoegdhedenniveau van de opstarttaak op en het kenmerk **taakType** geeft aan hoe de taak wordt uitgevoerd.
+## <a name="example-of-a-startup-task"></a>Voor beeld van een opstart taak
+Opstart taken worden gedefinieerd in het bestand [ServiceDefinition. csdef] in het element **Task** . Het kenmerk **commandline** geeft de naam en de para meters van de opdracht Startup batch bestand of console aan, het kenmerk **executionContext** geeft het Bevoegdheids niveau van de opstart taak aan en het kenmerk **TaskType** geeft aan hoe de taak wordt uitgevoerd.
 
-In dit voorbeeld wordt een omgevingsvariabele, **MyVersionNumber,** gemaakt voor de opstarttaak en ingesteld op de waarde "**1.0.0.0**".
+In dit voor beeld wordt een omgevings variabele, **MyVersionNumber**, gemaakt voor de opstart taak en ingesteld op de waarde "**1.0.0.0**".
 
-**ServiceDefinition.csdef**:
+**ServiceDefinition. csdef**:
 
 ```xml
 <Startup>
@@ -68,7 +68,7 @@ In dit voorbeeld wordt een omgevingsvariabele, **MyVersionNumber,** gemaakt voor
 </Startup>
 ```
 
-In het volgende voorbeeld schrijft het batchbestand **Opstarten.cmd** de regel 'De huidige versie is 1.0.0.0' naar het bestand StartupLog.txt in de map die is opgegeven door de temp-omgevingsvariabele. De `EXIT /B 0` regel zorgt ervoor dat de opstarttaak eindigt met een **foutniveau** van nul.
+In het volgende voor beeld schrijft het batch bestand **Startup. cmd** de regel ' de huidige versie is 1.0.0.0 ' naar het StartupLog. txt-bestand in de map die is opgegeven door de omgevings variabele TEMP. De `EXIT /B 0` regel zorgt ervoor dat de opstart taak eindigt met een **Error level** van nul.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,58 +76,58 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> In Visual Studio moet de eigenschap **Kopiëren naar uitvoermap** voor uw opstartbatchbestand worden ingesteld op **Altijd kopiëren** om er zeker van te zijn dat uw opstartbatchbestand correct is geïmplementeerd in uw project in Azure **(approot-opslaglocatie\\** voor webrollen en **approot** voor werknemersrollen).
+> In Visual Studio moet de eigenschap **kopiëren naar uitvoermap** voor het batch bestand voor opstarten altijd worden ingesteld op **kopiëren** om ervoor te zorgen dat uw opstart batch bestand correct is geïmplementeerd in uw project op Azure (**AppRoot\\bin** voor webrollen en **AppRoot** voor werk rollen).
 > 
 > 
 
 ## <a name="description-of-task-attributes"></a>Beschrijving van de taakkenmerken
-Het volgende beschrijft de kenmerken van het **element Taak** in het bestand [ServiceDefinition.csdef:]
+Hieronder worden de kenmerken van het element **Task** in het bestand [ServiceDefinition. csdef] beschreven:
 
-**commandLine** - Hiermee geeft u de opdrachtregel voor de opstarttaak op:
+**commandline** -Hiermee geeft u de opdracht regel voor de opstart taak op:
 
-* De opdracht, met optionele opdrachtregelparameters, waarmee de opstarttaak wordt gestart.
-* Vaak is dit de bestandsnaam van een .cmd of .bat batch bestand.
-* De taak is relatief\\ten opzichte van de map AppRoot-opslag voor de implementatie. Omgevingsvariabelen worden niet uitgebreid bij het bepalen van het pad en het bestand van de taak. Als uitbreiding van de omgeving vereist is, u een klein .cmd-script maken dat uw opstarttaak aanroept.
-* Kan een consoletoepassing zijn of een batchbestand waarmee een [PowerShell-script](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)wordt gestart.
+* De opdracht, met optionele opdracht regel parameters, waarmee de opstart taak wordt gestart.
+* Vaak is dit de bestands naam van een. cmd-of. bat batch-bestand.
+* De taak is relatief ten opzichte van de AppRoot\\bin-map voor de implementatie. Omgevings variabelen worden niet uitgebreid bij het bepalen van het pad en het bestand van de taak. Als omgevings uitbreiding vereist is, kunt u een klein. cmd-script maken dat de opstart taak aanroept.
+* Dit kan een console toepassing zijn of een batch bestand waarmee een [Power shell-script](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)wordt gestart.
 
-**executionContext** - Hiermee geeft u het bevoegdhedenniveau voor de opstarttaak op. Het bevoegdheidsniveau kan worden beperkt of verhoogd:
+**executionContext** : Hiermee geeft u het bevoegdheden niveau voor de opstart taak op. Het bevoegdheden niveau kan worden beperkt of verhoogd:
 
-* **Beperkt**  
-  De opstarttaak wordt uitgevoerd met dezelfde bevoegdheden als de rol. Wanneer het kenmerk **executionContext** voor het element [Runtime] ook **beperkt**is, worden gebruikersbevoegdheden gebruikt.
-* **Verhoogde**  
-  De opstarttaak wordt uitgevoerd met beheerdersbevoegdheden. Hierdoor kunnen opstarttaken programma's installeren, IIS-configuratiewijzigingen aanbrengen, registerwijzigingen en andere taken op administratorniveau uitvoeren, zonder het bevoegdhedenniveau van de rol zelf te verhogen.  
+* **aantal**  
+  De opstart taak wordt uitgevoerd met dezelfde bevoegdheden als de rol. Wanneer het kenmerk **executionContext** voor het [runtime] -element ook is **beperkt**, worden er gebruikers bevoegdheden gebruikt.
+* **verhoogde**  
+  De opstart taak wordt uitgevoerd met beheerders bevoegdheden. Op die manier kunt u opstart taken uitvoeren om Program ma's te installeren, wijzigingen in de IIS-configuratie aan te brengen, register wijzigingen uit te voeren en andere beheer niveau taken, zonder het Bevoegdheids niveau van de rol zelf te verhogen.  
 
 > [!NOTE]
-> Het bevoegdheidsniveau van een opstarttaak hoeft niet hetzelfde te zijn als de rol zelf.
+> Het bevoegdheden niveau van een opstart taak hoeft niet hetzelfde te zijn als de rol zelf.
 > 
 > 
 
-**taskType** - Hiermee geeft u de manier op waarop een opstarttaak wordt uitgevoerd.
+**TaskType** : Hiermee geeft u op hoe een opstart taak wordt uitgevoerd.
 
-* **Eenvoudige**  
-  Taken worden één voor één synchroon uitgevoerd in de volgorde die is opgegeven in het bestand [ServiceDefinition.csdef.] Wanneer een **eenvoudige** opstarttaak eindigt met een **foutniveau** van nul, wordt de volgende **eenvoudige** opstarttaak uitgevoerd. Als er geen **eenvoudige** opstarttaken meer moeten worden uitgevoerd, wordt de rol zelf gestart.   
+* **Simple**  
+  Taken worden synchroon uitgevoerd, een voor een in de volg orde die is opgegeven in het bestand [ServiceDefinition. csdef] . Wanneer één **eenvoudige** opstart taak eindigt met een **Error level** van nul, wordt de volgende **eenvoudige** opstart taak uitgevoerd. Als er geen **eenvoudige** opstart taken kunnen worden uitgevoerd, wordt de rol zelf gestart.   
   
   > [!NOTE]
-  > Als de **eenvoudige** taak eindigt met een **foutniveau**zonder nul, wordt de instantie geblokkeerd. Latere **eenvoudige** opstarttaken en de rol zelf worden niet gestart.
+  > Als de **eenvoudige** taak eindigt met een niet-nul- **Error level**, wordt het exemplaar geblokkeerd. Volgende **eenvoudige** opstart taken en de rol zelf, worden niet gestart.
   > 
   > 
   
-    Als u ervoor wilt zorgen dat uw batchbestand `EXIT /B 0` eindigt met een **foutniveau** van nul, voert u de opdracht uit aan het einde van het batchbestandsproces.
-* **Achtergrond**  
+    Om ervoor te zorgen dat uw batch bestand eindigt met een **Error level** van nul, `EXIT /B 0` voert u de opdracht uit aan het einde van het batch-bestand proces.
+* **achtergrondbitmap**  
   Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol.
-* **Voorgrond**  
-  Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol. Het belangrijkste verschil tussen een **voorgrond-** en een **achtergrondtaak** is dat een **voorgrondtaak** voorkomt dat de rol wordt gerecycled of afgesloten totdat de taak is beëindigd. De **achtergrondtaken** hebben deze beperking niet.
+* **vormen**  
+  Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol. Het belangrijkste verschil tussen een voor **grond** en een **achtergrond** taak is dat een **voorgrond** taak voor komt dat de rol wordt gerecycled of afgesloten totdat de taak is beëindigd. Voor de **achtergrond** taken gelden deze beperkingen niet.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
-Omgevingsvariabelen zijn een manier om informatie door te geven aan een opstarttaak. U het pad bijvoorbeeld naar een blob plaatsen met een te installeren programma of poortnummers die uw rol zal gebruiken, of instellingen om functies van uw opstarttaak te beheren.
+Omgevings variabelen zijn een manier om informatie door te geven aan een opstart taak. U kunt bijvoorbeeld het pad naar een BLOB plaatsen die een programma bevat dat moet worden geïnstalleerd, of poort nummers die door uw rol worden gebruikt, of instellingen voor het beheren van de functies van de opstart taak.
 
-Er zijn twee soorten omgevingsvariabelen voor opstarttaken; statische omgevingsvariabelen en omgevingsvariabelen op basis van leden van de klasse [RoleEnvironment.] Beide bevinden zich in de sectie [Omgeving] van het bestand [ServiceDefinition.csdef] en beide gebruiken het kenmerk [Variable] element en **name.**
+Er zijn twee soorten omgevings variabelen voor opstart taken. statische omgevings variabelen en omgevings variabelen op basis van leden van de klasse [RoleEnvironment] . Beide bevinden zich in het gedeelte [omgeving] van het bestand [ServiceDefinition. csdef] en gebruiken beide het kenmerk [Variable] en **name** .
 
-Statische omgevingsvariabelen gebruiken het **waardekenmerk** van het element [Variabele.] In het bovenstaande voorbeeld wordt de omgevingsvariabele **MyVersionNumber gemaakt** met een statische waarde van "**1.0.0.0**". Een ander voorbeeld is het maken van een **stagingorProduction-omgevingsvariabele** die u handmatig instellen op waarden van**staging**of**productie**om verschillende opstartacties uit te voeren op basis van de waarde van de omgevingsvariabele **StagingOrProduction.**
+Statische omgevings variabelen maakt gebruik van het kenmerk **Value** van het element [Variable] . In het bovenstaande voor beeld wordt de omgevings variabele **MyVersionNumber** met de statische waarde "**1.0.0.0**" gemaakt. Een ander voor beeld is het maken van een **StagingOrProduction** -omgevings variabele die u hand matig kunt instellen op de waarden "**staging**" of "**productie**" om verschillende opstart acties uit te voeren op basis van de waarde van de omgevings variabele **StagingOrProduction** .
 
-Omgevingsvariabelen op basis van leden van de klasse RoleEnvironment gebruiken het **waardekenmerk** van het element [Variabele] niet. In plaats daarvan wordt het onderliggende [element RoleInstanceValue,] met de juiste **XPath-kenmerkwaarde,** gebruikt om een omgevingsvariabele te maken op basis van een specifiek lid van de klasse [RoleEnvironment.] Waarden voor het kenmerk **XPath** om toegang te krijgen tot verschillende [waarden voor roleenvironment] vindt u [hier](cloud-services-role-config-xpath.md).
+Omgevings variabelen op basis van de leden van de klasse RoleEnvironment gebruiken niet het kenmerk **Value** van het element [Variable] . In plaats daarvan wordt het onderliggende [RoleInstanceValue] -element, met de juiste **XPath** -kenmerk waarde, gebruikt om een omgevings variabele te maken op basis van een specifiek lid van de klasse [RoleEnvironment] . De waarden voor het **XPath** -kenmerk voor toegang tot verschillende [RoleEnvironment] -waarden kunt u [hier](cloud-services-role-config-xpath.md)vinden.
 
-Als u bijvoorbeeld een omgevingsvariabele wilt maken die "**true**" is wanneer de instantie wordt uitgevoerd in de compute emulator en "**false**" wanneer deze in de cloud wordt uitgevoerd, gebruikt u de volgende [variabele] en [RoleInstanceValue-elementen:]
+Als u bijvoorbeeld een omgevings variabele wilt maken die '**True**' is wanneer het exemplaar wordt uitgevoerd in de compute-emulator en '**False**' wordt uitgevoerd in de Cloud, gebruikt u de volgende [variabele] en [RoleInstanceValue] elementen:
 
 ```xml
 <Startup>
@@ -149,17 +149,17 @@ Als u bijvoorbeeld een omgevingsvariabele wilt maken die "**true**" is wanneer d
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het uitvoeren van een aantal [veelvoorkomende opstarttaken](cloud-services-startup-tasks-common.md) met uw Cloud Service.
+Meer informatie over het uitvoeren van enkele [veelvoorkomende opstart taken](cloud-services-startup-tasks-common.md) met uw Cloud service.
 
-[Pakket](cloud-services-model-and-package.md) uw Cloud Service.  
+[Verpakken](cloud-services-model-and-package.md) uw Cloud service.  
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Taak]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Opstarten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Omgeving]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variabele]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceWaarde]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 

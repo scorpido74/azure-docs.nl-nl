@@ -1,6 +1,6 @@
 ---
-title: Machine Learning-modellen bijwerken met Azure Data Factory
-description: Beschrijft hoe u voorspellende pijplijnen maakt met Azure Data Factory en Azure Machine Learning
+title: Machine Learning modellen bijwerken met behulp van Azure Data Factory
+description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en Azure Machine Learning
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,60 +12,60 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74978710"
 ---
-# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning-modellen bijwerken met resourceactiviteit bijwerken
+# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 
-> [!div class="op_single_selector" title1="Transformatieactiviteiten"]
-> * [Hive Activiteit](data-factory-hive-activity.md) 
-> * [Varkensactiviteit](data-factory-pig-activity.md)
-> * [Activiteit kaart verminderen](data-factory-map-reduce.md)
-> * [Hadoop streaming activiteit](data-factory-hadoop-streaming-activity.md)
-> * [Vonkactiviteit](data-factory-spark.md)
+> [!div class="op_single_selector" title1="Transformatie activiteiten"]
+> * [Hive-activiteit](data-factory-hive-activity.md) 
+> * [Pig-activiteit](data-factory-pig-activity.md)
+> * [MapReduce-activiteit](data-factory-map-reduce.md)
+> * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
+> * [Spark-activiteit](data-factory-spark.md)
 > * [Machine Learning-batchuitvoeringsactiviteit](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning-activiteit resources bijwerken](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
-> * [.NET Aangepaste activiteit](data-factory-use-custom-activities.md)
+> * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
 
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [machine learning-modellen bijwerken in Gegevensfabriek](../update-machine-learning-models.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [machine learning modellen in Data Factory bijwerken](../update-machine-learning-models.md).
 
-Dit artikel vormt een aanvulling op het belangrijkste azure-gegevensfabriek - Azure Machine Learning-integratieartikel: [Voorspellende pijplijnen maken met Azure Machine Learning en Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Als u dit nog niet hebt gedaan, bekijk dan het hoofdartikel voordat u dit artikel leest. 
+Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure Machine Learning-integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning en Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest. 
 
 ## <a name="overview"></a>Overzicht
-Na verloop van tijd moeten de voorspellende modellen in de Azure ML-scoringsexperimenten worden omgeschoold met behulp van nieuwe invoergegevenssets. Nadat u klaar bent met omscholing, wilt u de scoringwebservice bijwerken met het omgetrainde ML-model. De typische stappen om Azure ML-modellen via webservices omte scholen en bijwerken in te schakelen zijn:
+Na verloop van tijd moeten de voorspellende modellen in de Score experimenten van Azure ML opnieuw worden getraind met behulp van nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde ML-model. De gebruikelijke stappen voor het inschakelen van het opnieuw trainen en bijwerken van Azure ML-modellen via webservices zijn:
 
-1. Maak een experiment in [Azure Machine Learning Studio (klassiek).](https://studio.azureml.net)
-2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) om webservices te publiceren voor zowel het **trainingsexperiment** als het scoren/**voorspellend experiment.**
+1. Maak een experiment in [Azure machine learning Studio (klassiek)](https://studio.azureml.net).
+2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
 
-In de volgende tabel worden de webservices beschreven die in dit voorbeeld worden gebruikt.  Zie [Machine Learning-modellen programmatisch omscholen](../../machine-learning/machine-learning-retrain-models-programmatically.md) voor meer informatie.
+In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [machine learning-modellen programmatisch opnieuw trainen](../../machine-learning/machine-learning-retrain-models-programmatically.md) voor meer informatie.
 
-- **Webservice trainen** - Ontvangt trainingsgegevens en produceert getrainde modellen. De uitvoer van de omscholing is een .ilearner-bestand in een Azure Blob-opslag. Het **standaardeindpunt** wordt automatisch voor u gemaakt wanneer u het trainingsexperiment als webservice publiceert. U meer eindpunten maken, maar in het voorbeeld wordt alleen het standaardeindpunt gebruikt.
-- **Webservice scoren** - Ontvangt voorbeelden van niet-gelabelde gegevens en maakt voorspellingen. De uitvoer van voorspelling kan verschillende vormen hebben, zoals een CSV-bestand of rijen in een Azure SQL-database, afhankelijk van de configuratie van het experiment. Het standaardeindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als webservice publiceert. 
+- **Training-webservice** : ontvangt trainings gegevens en produceert getrainde modellen. De uitvoer van het opnieuw trainen is een. ilearner-bestand in een Azure Blob-opslag. Het **standaard eindpunt** wordt automatisch voor u gemaakt wanneer u het trainings experiment als een webservice publiceert. U kunt meer eind punten maken, maar in het voor beeld wordt alleen het standaard eindpunt gebruikt.
+- **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in een Azure-SQL database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 
 
-De volgende afbeelding toont de relatie tussen trainings- en scoringseindpunten in Azure ML.
+In de volgende afbeelding ziet u de relatie tussen training en Score-eind punten in azure ML.
 
 ![Webservices](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-U de **trainingswebservice** aanroepen met behulp van de **Azure ML Batch Execution Activity**. Een beroep doen op een trainingswebservice is hetzelfde als een beroep doen op een Azure ML-webservice (webservice scoren) voor het scoren van gegevens. De voorgaande secties hebben betrekking op het in detail aanroepen van een Azure ML-webservice uit een Azure Data Factory-pijplijn. 
+U kunt de **training-webservice** aanroepen met behulp van de **Azure ml batch Execution-activiteit**. Het aanroepen van een training-webservice is hetzelfde als het aanroepen van een Azure ML-webservice (Score Web Service) voor het scoren van gegevens. De voor gaande secties bevatten informatie over het aanroepen van een Azure ML-webservice vanuit een Azure Data Factory pijp lijn. 
 
-U de **scoringswebservice** aanroepen door de **Azure ML Update Resource Activity** te gebruiken om de webservice bij te werken met het nieuw getrainde model. In de volgende voorbeelden worden gekoppelde servicedefinities gegeven: 
+U kunt de **Score-webservice** aanroepen met behulp van de **activiteit Azure ml update resource** om de webservice bij te werken met het nieuwe getrainde model. De volgende voor beelden bieden gekoppelde service definities: 
 
-## <a name="scoring-web-service-is-a-classic-web-service"></a>Scoring web service is een klassieke webservice
-Als de scoringswebservice een **klassieke webservice**is, maakt u het tweede **niet-standaard en updatable eindpunt** met behulp van de Azure-portal. Zie [Artikel Eindpunten maken](../../machine-learning/machine-learning-create-endpoint.md) voor stappen. Nadat u het niet-standaard updatable eindpunt hebt gemaakt, gaat u de volgende stappen uitvoeren:
+## <a name="scoring-web-service-is-a-classic-web-service"></a>Scores-webservice is een klassieke webservice
+Als de Score-webservice een **klassieke webservice**is, maakt u het tweede **niet-standaard en bijwerk bare eind punt** met behulp van de Azure Portal. Zie het artikel [endpoints maken](../../machine-learning/machine-learning-create-endpoint.md) voor de stappen. Nadat u het niet-standaard bijwerk bare eind punt hebt gemaakt, voert u de volgende stappen uit:
 
-* Klik **op BATCH-UITVOERING** om de URI-waarde voor de eigenschap **MLEndpoint** JSON op te halen.
-* Klik **op de** koppeling RESOURCE BIJWERKEN om de URI-waarde voor de eigenschap **UPDATEResourceEndpoint** JSON op te halen. De API-toets bevindt zich op de eindpuntpagina zelf (in de rechterbenedenhoek).
+* Klik op **batch-uitvoering** om de URI-waarde voor de JSON-eigenschap **mlEndpoint** op te halen.
+* Klik op **resource koppeling bijwerken** om de URI-waarde voor de JSON-eigenschap **updateResourceEndpoint** op te halen. De API-sleutel bevindt zich op de eindpunt pagina zelf (in de rechter benedenhoek).
 
-![updatable eindpunt](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
+![bijwerk bare eind punt](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
-In het volgende voorbeeld wordt een voorbeeld van JSON-definitie voor de gekoppelde AzureML-service gegeven. De gekoppelde service gebruikt de apiKey voor verificatie.  
+In het volgende voor beeld wordt een JSON-voorbeeld definitie voor de gekoppelde service van AzureML geboden. De gekoppelde service maakt gebruik van de apiKey voor authenticatie.  
 
 ```json
 {
@@ -81,14 +81,14 @@ In het volgende voorbeeld wordt een voorbeeld van JSON-definitie voor de gekoppe
 }
 ```
 
-## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Scoring webservice is Azure Resource Manager webservice 
-Als de webservice het nieuwe type webservice is dat een Azure Resource Manager-eindpunt blootlegt, hoeft u het tweede **niet-standaardeindpunt** niet toe te voegen. Het **updateResourceEndpoint** in de gekoppelde service is van de indeling: 
+## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Scores-webservice is Azure Resource Manager web service 
+Als de webservice het nieuwe type webservice is dat een Azure Resource Manager-eind punt beschikbaar maakt, hoeft u niet het tweede **niet-standaard** eindpunt toe te voegen. De **updateResourceEndpoint** in de gekoppelde service heeft de volgende indeling: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-U waarden voor plaatshouders in de URL ophalen wanneer u de webservice opvraagt op de [Azure Machine Learning Web Services Portal.](https://services.azureml.net/) Voor het nieuwe type eindpunt voor updatebronnen is een AAD-token (Azure Active Directory) vereist. Geef **servicePrincipalId** en **servicePrincipalKey** op in de gekoppelde Azure Machine Learning-service. Bekijk [hoe u serviceprincipal maakt en machtigingen toewijst voor het beheer van Azure-bronnen.](../../active-directory/develop/howto-create-service-principal-portal.md) Hier is een voorbeeld van AzureML linked service definition: 
+U kunt in de URL waarden ophalen voor de plaatsings houders bij het uitvoeren van een query op de webservice op de [Portal Azure machine learning](https://services.azureml.net/)-webservices. Voor het nieuwe type update resource-eind punt is een AAD-token (Azure Active Directory) vereist. Geef **servicePrincipalId** en **servicePrincipalKey** op in de gekoppelde Azure machine learning service. Zie [Service-Principal maken en machtigingen toewijzen om Azure-resources te beheren](../../active-directory/develop/howto-create-service-principal-portal.md). Hier volgt een voor beeld van een gekoppelde service definitie voor AzureML: 
 
 ```json
 {
@@ -108,22 +108,22 @@ U waarden voor plaatshouders in de URL ophalen wanneer u de webservice opvraagt 
 }
 ```
 
-Het volgende scenario geeft meer details. Het heeft een voorbeeld voor het omscholen en bijwerken van Azure ML-modellen vanuit een Azure Data Factory-pijplijn.
+Het volgende scenario bevat meer informatie. Het bevat een voor beeld voor het opnieuw trainen en bijwerken van Azure ML-modellen vanuit een Azure Data Factory-pijp lijn.
 
-## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Scenario: een Azure ML-model omscholen en bijwerken
-In deze sectie wordt een voorbeeldpijplijn opgenomen die de **azure ML-batchuitvoeringsactiviteit** gebruikt om een model opnieuw te trainen. De pijplijn gebruikt ook de **Azure ML Update Resource-activiteit** om het model in de scoringswebservice bij te werken. De sectie biedt ook JSON-fragmenten voor alle gekoppelde services, gegevenssets en pijplijnen in het voorbeeld.
+## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Scenario: een Azure ML-model opnieuw trainen en bijwerken
+Deze sectie bevat een voor beeld van een pijp lijn die gebruikmaakt **van de Azure ml batch Execution-activiteit** voor het opnieuw trainen van een model. De pijp lijn gebruikt ook de **activiteit Azure ml update resource** om het model bij te werken in de Score-webservice. De sectie bevat ook JSON-fragmenten voor alle gekoppelde services, gegevens sets en pijp lijnen in het voor beeld.
 
-Hier is de diagramweergave van de voorbeeldpijplijn. Zoals u zien, neemt de Azure ML Batch Execution Activity de trainingsinvoer en produceert een trainingsuitvoer (iLearner-bestand). De Azure ML Update Resource Activity voert deze trainingsuitvoer uit en werkt het model bij in het eindpunt van de scoringswebservice. De activiteit Resource bijwerken levert geen uitvoer op. De tijdelijke aanduidingBlob is slechts een uitvoergegevensset voor dummy's die vereist is door de Azure Data Factory-service om de pijplijn uit te voeren.
+Hier volgt de diagram weergave van de voorbeeld pijplijn. Zoals u kunt zien, neemt de activiteit Azure ML batch-uitvoering de trainings invoer en produceert hij een training (iLearner-bestand). Met de resource activiteit voor Azure ML update worden de uitvoer van deze training uitgevoerd en wordt het model bijgewerkt in het eind punt van de Score-webservice. De activiteit resource bijwerken produceert geen uitvoer. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
 
-![pijplijndiagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+![pijplijn diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
-### <a name="azure-blob-storage-linked-service"></a>Gekoppelde Azure Blob-opslagservice:
-De Azure Storage bevat de volgende gegevens:
+### <a name="azure-blob-storage-linked-service"></a>Gekoppelde Azure Blob Storage-service:
+De Azure Storage bevatten de volgende gegevens:
 
-* opleidingsgegevens. De invoergegevens voor de webservice Azure ML training.  
-* iLearner-bestand. De uitvoer van de Azure ML-trainingswebservice. Dit bestand is ook de invoer voor de activiteit Resource bijwerken.  
+* trainings gegevens. De invoer gegevens voor de Azure ML training-webservice.  
+* iLearner-bestand. De uitvoer van de Azure ML training-webservice. Dit bestand is ook de invoer voor de activiteit resource bijwerken.  
 
-Hier is de voorbeeld JSON definitie van de gekoppelde dienst:
+Hier volgt een voor beeld van de JSON-definitie van de gekoppelde service:
 
 ```JSON
 {
@@ -137,8 +137,8 @@ Hier is de voorbeeld JSON definitie van de gekoppelde dienst:
 }
 ```
 
-### <a name="training-input-dataset"></a>Gegevensset voor trainingsinvoer:
-De volgende gegevensset vertegenwoordigt de invoertrainingsgegevens voor de webservice Azure Machine Learning training. De activiteit Azure Machine Learning Batch Execution neemt deze gegevensset als invoer.
+### <a name="training-input-dataset"></a>Gegevensset voor invoer van training:
+De volgende gegevensset vertegenwoordigt de invoer trainings gegevens voor de webservice van de Azure Machine Learning-training. De activiteit voor het uitvoeren van Azure Machine Learning batch neemt deze gegevensset als invoer.
 
 ```JSON
 {
@@ -168,8 +168,8 @@ De volgende gegevensset vertegenwoordigt de invoertrainingsgegevens voor de webs
 }
 ```
 
-### <a name="training-output-dataset"></a>Gegevensset voor trainingsuitvoer:
-De volgende gegevensset vertegenwoordigt het uitvoer-iLearner-bestand van de webservice Azure ML training. De Azure ML Batch Execution Activity produceert deze gegevensset. Deze gegevensset is ook de ingang voor de Azure ML Update Resource-activiteit.
+### <a name="training-output-dataset"></a>Gegevensset voor trainings uitvoer:
+De volgende gegevensset vertegenwoordigt het uitvoer iLearner-bestand van de Azure ML training-webservice. Met de activiteit Azure ML batch Execution wordt deze gegevensset gegenereerd. Deze gegevensset is ook de invoer voor de activiteit Azure ML update resource.
 
 ```JSON
 {
@@ -192,8 +192,8 @@ De volgende gegevensset vertegenwoordigt het uitvoer-iLearner-bestand van de web
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Gekoppelde service voor azure Machine Learning-trainingseindpunt
-In het volgende JSON-fragment wordt een azure Machine Learning-gekoppelde service gedefinieerd die verwijst naar het standaardeindpunt van de trainingswebservice.
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Gekoppelde service voor Azure Machine Learning-trainings eindpunt
+Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde service die naar het standaard eindpunt van de training-webservice verwijst.
 
 ```JSON
 {    
@@ -208,16 +208,16 @@ In het volgende JSON-fragment wordt een azure Machine Learning-gekoppelde servic
 }
 ```
 
-Ga in **Azure Machine Learning Studio (klassiek)** als volgt te werk om waarden voor **mlEndpoint** en **apiKey**te krijgen:
+In **Azure machine learning Studio (klassiek)** gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
 
-1. Klik op **WEB SERVICES** in het linkermenu.
-2. Klik op de **webservice voor training** in de lijst met webservices.
-3. Klik op kopiëren naast het tekstvak **API-sleutel.** Plak de toets in het klembord in de JSON-editor van Data Factory.
-4. Klik in de **Azure Machine Learning Studio (klassiek)** op **BATCH-uitvoeringskoppeling.**
-5. Kopieer de **URI aanvragen** vanuit de sectie **Aanvraag** en plak deze in de JSON-editor van de gegevensfabriek.   
+1. Klik op **WEBservices** in het menu links.
+2. Klik op de training-webservice in de lijst met **webservices** .
+3. Klik op Kopiëren naast tekstvak **API-sleutel** . Plak de sleutel in het klem bord in de Data Factory JSON-editor.
+4. Klik in de **Azure machine learning Studio (klassiek)** op **batch-uitvoerings** koppeling.
+5. Kopieer de **aanvraag-URI** uit de sectie **Request** en plak deze in de Data Factory JSON-editor.   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Gekoppelde service voor Azure ML updatable scoring endpoint:
-In het volgende JSON-fragment wordt een azure Machine Learning-gekoppelde service gedefinieerd die verwijst naar het niet-standaard updatable eindpunt van de scoringswebservice.  
+### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Gekoppelde service voor het bijwerk bare Score eindpunt van Azure ML:
+In het volgende JSON-code fragment wordt een Azure Machine Learning gekoppelde service gedefinieerd die verwijst naar het niet-standaard bijwerk bare eind punt van de Score-webservice.  
 
 ```JSON
 {
@@ -236,8 +236,8 @@ In het volgende JSON-fragment wordt een azure Machine Learning-gekoppelde servic
 }
 ```
 
-### <a name="placeholder-output-dataset"></a>Uitvoergegevensset tijdelijke aanduiding:
-De azure ML-updatebronactiviteit genereert geen uitvoer. Azure Data Factory vereist echter een uitvoergegevensset om de planning van een pijplijn te sturen. Daarom gebruiken we in dit voorbeeld een dummy/tijdelijke aanduidingsgegevensset.  
+### <a name="placeholder-output-dataset"></a>Tijdelijke gegevensset voor uitvoer:
+Met de activiteit Azure ML update resource wordt geen uitvoer gegenereerd. Azure Data Factory echter een uitvoer gegevensset vereist om de planning van een pijp lijn te verzorgen. Daarom gebruiken we een dummy/tijdelijke aanduiding gegevensset in dit voor beeld.  
 
 ```JSON
 {
@@ -260,9 +260,9 @@ De azure ML-updatebronactiviteit genereert geen uitvoer. Azure Data Factory vere
 ```
 
 ### <a name="pipeline"></a>Pijplijn
-De pijplijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource**. De azure ML Batch Execution-activiteit neemt de trainingsgegevens als invoer en produceert een iLearner-bestand als uitvoer. De activiteit beroept zich op de trainingswebservice (trainingsexperiment dat als webservice wordt weergegeven) met de invoertrainingsgegevens en ontvangt het ilearner-bestand van de webservice. De tijdelijke aanduidingBlob is slechts een uitvoergegevensset voor dummy's die vereist is door de Azure Data Factory-service om de pijplijn uit te voeren.
+De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource**. De activiteit Azure ML batch Execution neemt de trainings gegevens als invoer en produceert een iLearner-bestand als uitvoer. De activiteit roept de training-webservice (trainings experiment beschikbaar als een webservice) aan met de gegevens voor het invoeren van de training en ontvangt het ilearner-bestand van de webservice. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
 
-![pijplijndiagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+![pijplijn diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ```JSON
 {

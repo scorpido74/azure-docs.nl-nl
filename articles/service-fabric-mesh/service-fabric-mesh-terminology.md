@@ -1,82 +1,82 @@
 ---
-title: Terminologie voor Azure Service Fabric-mesh
-description: In dit artikel wordt de terminologie beschreven die wordt gebruikt door Azure Service Fabric Mesh om u te helpen een beter inzicht te krijgen in de termen die in de documentatie worden gebruikt.
+title: Terminologie voor Azure Service Fabric net
+description: In dit artikel vindt u informatie over de terminologie die wordt gebruikt door Azure Service Fabric mesh, zodat u beter inzicht krijgt in de termen die in de documentatie worden gebruikt.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351979"
 ---
-# <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-terminologie
+# <a name="service-fabric-mesh-terminology"></a>Service Fabric net-terminologie
 
-Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. In dit artikel wordt de terminologie beschreven die wordt gebruikt door Azure Service Fabric Mesh om u te helpen een beter inzicht te krijgen in de termen die in de documentatie worden gebruikt.
+Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. In dit artikel vindt u informatie over de terminologie die wordt gebruikt door Azure Service Fabric mesh, zodat u beter inzicht krijgt in de termen die in de documentatie worden gebruikt.
 
 ## <a name="service-fabric"></a>Service Fabric
 
-[Service Fabric](/azure/service-fabric/) is een open source gedistribueerd systeemplatform dat het eenvoudig maakt om schaalbare en betrouwbare microservices te verpakken, implementeren en beheren. Service Fabric is de orchestrator die Service Fabric Mesh van kracht is. Service Fabric biedt opties voor hoe u uw microservices-toepassingen bouwen en uitvoeren. U elk framework gebruiken om uw services te schrijven en te kiezen waar u de toepassing wilt uitvoeren vanuit meerdere omgevingskeuzes.
+[Service Fabric](/azure/service-fabric/) is een open-source platform voor gedistribueerde systemen waarmee schaal bare en betrouw bare micro services eenvoudig kunnen worden verpakt, geïmplementeerd en beheerd. Service Fabric is de Orchestrator die Service Fabric net aanstuurt. Service Fabric biedt opties voor hoe u uw micro Services-toepassingen kunt bouwen en uitvoeren. U kunt elk Framework gebruiken om uw services te schrijven en te kiezen waar u de toepassing uitvoert vanuit meerdere omgevings opties.
 
-## <a name="application-and-service-concepts"></a>Toepassings- en serviceconcepten
+## <a name="application-and-service-concepts"></a>Toepassings-en service concepten
 
-**Service Fabric Mesh-toepassing:** Service Fabric Mesh-toepassingen worden beschreven door het [Resourcemodel](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (YAML- en JSON-bronbestanden) en kunnen worden geïmplementeerd in elke omgeving waar Service Fabric wordt uitgevoerd.
+**Service Fabric mesh-toepassing**: Service Fabric mesh-toepassingen worden beschreven door het [resource model](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (yaml-en JSON-bron bestanden) en kunnen worden geïmplementeerd in elke omgeving waarin Service Fabric wordt uitgevoerd.
 
-**Service Fabric Native Application:** Service Fabric Native Applications worden beschreven door het [Native Application Model](/azure/service-fabric/service-fabric-application-model) (XML-gebaseerde applicatie- en servicemanifesten).  Native applications servicefabric kunnen niet worden uitgevoerd in Service Fabric Mesh.
+**Service Fabric systeem eigen toepassing**: Service Fabric systeem eigen toepassingen worden beschreven door het [systeem eigen toepassings model](/azure/service-fabric/service-fabric-application-model) (XML-toepassings-en service manifesten).  Service Fabric systeem eigen toepassingen kunnen niet worden uitgevoerd in Service Fabric net.
 
-**Toepassing:** Een Service Fabric Mesh-toepassing is de eenheid van implementatie, versiebeheer en levensduur van een Mesh-toepassing. De levenscyclus van elke toepassingsinstantie kan onafhankelijk worden beheerd.  Toepassingen bestaan uit een of meer servicecodepakketten en -instellingen. Een toepassing wordt gedefinieerd met het RM-schema (Azure Resource Model).  Services worden beschreven als eigenschappen van de toepassingsbron in een RM-sjabloon.  Netwerken en volumes die door de toepassing worden gebruikt, worden door de toepassing verwezen.  Bij het maken van een toepassing worden de toepassing, service(s), het netwerk en het volume(en) gemodelleerd met behulp van het Service Fabric Resource Model.
+**Toepassing**: een service Fabric nettoepassing is de implementatie-eenheid, versie beheer en levens duur van een mesh-toepassing. De levens cyclus van elk toepassings exemplaar kan onafhankelijk worden beheerd.  Toepassingen bestaan uit een of meer service code pakketten en instellingen. Een toepassing wordt gedefinieerd met behulp van het schema van het Azure resource model (RM).  Services worden beschreven als eigenschappen van de toepassings bron in een RM-sjabloon.  Voor netwerken en volumes die worden gebruikt door de toepassing wordt verwezen door de toepassing.  Bij het maken van een toepassing worden de toepassing, de service (s), het netwerk en volume (s) gemodelleerd met behulp van het Service Fabric resource model.
 
-**Service:** Een service in een toepassing vertegenwoordigt een microservice en voert een volledige en zelfstandige functie uit. Elke service bestaat uit één of meer codepakketten waarin alles wordt beschreven wat nodig is om de containerafbeelding uit te voeren die aan het codepakket is gekoppeld.  Het aantal servicereplica's in een toepassing kan in- en uitschalen.
+**Service**: een service in een toepassing vertegenwoordigt een micro service en voert een volledige en zelfstandige functie uit. Elke service bestaat uit een of meer code pakketten met een beschrijving van alles wat nodig is voor het uitvoeren van de container installatie kopie die is gekoppeld aan het code pakket.  U kunt het aantal service replica's in een toepassing in-en uitschalen.
 
-**Codepakket**: Codepakketten beschrijven alles wat nodig is om de containerafbeelding uit te voeren die aan het codepakket is gekoppeld, inclusief het volgende:
+**Code pakket**: code pakketten beschrijven alles wat nodig is voor het uitvoeren van de container installatie kopie die is gekoppeld aan het code pakket, met inbegrip van het volgende:
 
-* Containernaam, versie en register
-* CPU- en geheugenbronnen die nodig zijn voor elke container
-* Netwerkeindpunten
-* Volumes die in de container moeten worden gemonteerd, verwijzend naar een afzonderlijke volumebron.
+* Container naam, versie en REGI ster
+* Benodigde CPU-en geheugen resources voor elke container
+* Netwerk eindpunten
+* Volumes die moeten worden gekoppeld in de container en verwijzen naar een afzonderlijke volume bron.
 
-## <a name="deployment-and-application-models"></a>Implementatie- en toepassingsmodellen 
+## <a name="deployment-and-application-models"></a>Implementatie-en toepassings modellen 
 
-Als u uw services wilt implementeren, moet u beschrijven hoe ze moeten worden uitgevoerd. Service Fabric ondersteunt drie verschillende implementatiemodellen:
+Als u uw services wilt implementeren, moet u beschrijven hoe ze moeten worden uitgevoerd. Service Fabric ondersteunt drie verschillende implementatie modellen:
 
 ### <a name="resource-model"></a>Resourcemodel
-Service Fabric Resources zijn alles wat individueel kan worden geïmplementeerd in Service Fabric; toepassingen, services, netwerken en volumes. Resources worden gedefinieerd met behulp van een JSON-bestand, dat kan worden geïmplementeerd op een clustereindpunt.  Voor Service Fabric Mesh wordt het Azure Resource Model-schema gebruikt. Een YAML-bestandsschema kan ook worden gebruikt om eenvoudiger definitiebestanden te maken. Resources kunnen overal worden geïmplementeerd waar Service Fabric wordt uitgevoerd. Het resourcemodel is de eenvoudigste manier om uw Service Fabric-toepassingen te beschrijven. De belangrijkste focus ligt op eenvoudige implementatie en beheer van containerdiensten. Lees [Inleiding tot het Service Fabric Resource Model](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)voor meer informatie.
+Service Fabric resources zijn alles wat afzonderlijk kan worden geïmplementeerd in Service Fabric; inclusief toepassingen, services, netwerken en volumes. Resources worden gedefinieerd met behulp van een JSON-bestand dat kan worden geïmplementeerd in een cluster eindpunt.  Voor Service Fabric net wordt het Azure resource model-schema gebruikt. Een YAML-bestands schema kan ook worden gebruikt om eenvoudig definitie bestanden te schrijven. Resources kunnen overal worden geïmplementeerd Service Fabric worden uitgevoerd. Het resource model is de eenvoudigste manier om uw Service Fabric-toepassingen te beschrijven. De belangrijkste focus is het eenvoudig implementeren en beheren van container Services. Lees [Introduction to the service Fabric resource model](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)voor meer informatie.
 
-### <a name="native-model"></a>Native model
-Het native applicatiemodel biedt uw toepassingen volledige toegang op laag niveau tot Service Fabric. Toepassingen en services worden gedefinieerd als geregistreerde typen in XML-manifestbestanden.
+### <a name="native-model"></a>Systeem eigen model
+Het systeem eigen toepassings model biedt uw toepassingen volledige toegang tot Service Fabric op laag niveau. Toepassingen en services worden gedefinieerd als geregistreerde typen in XML-manifest bestanden.
 
-Het native model ondersteunt het Reliable Services-framework, dat toegang biedt tot de Runtime API's van Service Fabric en API's voor clusterbeheer in C# en Java. Het native model ondersteunt ook willekeurige containers en executables.
+Het systeem eigen model ondersteunt het Reliable Services Framework, dat toegang biedt tot de Service Fabric runtime-Api's en Cluster beheer-Api's in C# en Java. Het systeem eigen model biedt ook ondersteuning voor wille keurige containers en uitvoer bare bestanden.
 
-Het native model wordt niet ondersteund in de Service Fabric Mesh-omgeving.  Zie voor meer informatie [het overzicht van het programmeermodel](/azure/service-fabric/service-fabric-choose-framework).
+Het systeem eigen model wordt niet ondersteund in de Service Fabric-omgeving.  Zie [programmeer model Overview](/azure/service-fabric/service-fabric-choose-framework)(Engelstalig) voor meer informatie.
 
-### <a name="docker-compose"></a>Docker componeren 
-[Docker Compose](https://docs.docker.com/compose/) maakt deel uit van het Docker project. Service Fabric biedt beperkte ondersteuning voor het implementeren van toepassingen met behulp van het Docker Compose-model.
+### <a name="docker-compose"></a>Docker opstellen 
+[Docker opstellen](https://docs.docker.com/compose/) maakt deel uit van het docker-project. Service Fabric biedt beperkte ondersteuning voor het implementeren van toepassingen met behulp van het model docker opstellen.
 
 ## <a name="environments"></a>Omgevingen
 
-Service Fabric is een open-source platform technologie waar verschillende diensten en producten op gebaseerd zijn. Microsoft biedt de volgende opties:
+Service Fabric is een open-source platform technologie waarmee verschillende services en producten zijn gebaseerd. Micro soft biedt de volgende opties:
 
- - **Service Fabric Mesh:** een volledig beheerde service voor het uitvoeren van Service Fabric-toepassingen in Microsoft Azure.
- - **Azure Service Fabric:** het azure hosted Service Fabric-clusteraanbod. Het biedt integratie tussen Service Fabric en de Azure-infrastructuur, samen met upgrade- en configuratiebeheer van Service Fabric-clusters.
- - **Service Fabric standalone:** een set installatie- en configuratietools om [Service Fabric-clusters overal](/azure/service-fabric/service-fabric-deploy-anywhere) te implementeren (on-premises of op elke cloudprovider). Niet beheerd door Azure.
- - **Service Fabric development cluster**: Biedt een lokale ontwikkelingservaring op Windows, Linux of Mac voor de ontwikkeling van Service Fabric-toepassingen.
+ - **Service Fabric mesh**: een volledig beheerde service voor het uitvoeren van service Fabric toepassingen in Microsoft Azure.
+ - **Azure service Fabric**: het gehoste service Fabric cluster van Azure. Het biedt integratie tussen Service Fabric en de Azure-infra structuur, samen met upgrade-en configuratie beheer van Service Fabric clusters.
+ - **Service Fabric standalone**: een set hulpprogram ma's voor installatie en configuratie om [service Fabric-clusters overal](/azure/service-fabric/service-fabric-deploy-anywhere) (on-premises of op een Cloud provider) te implementeren. Niet beheerd door Azure.
+ - **Service Fabric Development cluster**: biedt een lokale ontwikkel ervaring op Windows, Linux of Mac voor het ontwikkelen van service Fabric toepassingen.
 
-## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matrix voor ondersteuning van het omgevings-, framework- en implementatiemodel
-Verschillende omgevingen hebben verschillende ondersteuningsniveaus voor frameworks en implementatiemodellen. In de volgende tabel worden de ondersteunde combinaties van framework en implementatiemodellen beschreven.
+## <a name="environment-framework-and-deployment-model-support-matrix"></a>Ondersteunings matrix voor omgeving, Framework en implementatie model
+Verschillende omgevingen hebben een ander ondersteunings niveau voor frameworks en implementatie modellen. In de volgende tabel worden de ondersteunde combi Naties van Framework en implementatie modellen beschreven.
 
-| Type toepassing | Beschreven door | Azure Service Fabric Mesh | Azure Service Fabric-clusters (elk besturingssysteem)| Lokaal cluster | Zelfstandig cluster |
+| Type toepassing | Beschreven door | Azure Service Fabric Mesh | Azure Service Fabric-clusters (elk besturings systeem)| Lokaal cluster | Zelfstandig cluster |
 |---|---|---|---|---|---|
-| Mesh-toepassingen voor servicefabric | Resourcemodel (YAML & JSON) | Ondersteund |Niet ondersteund | Windows- ondersteund, Linux en Mac- niet ondersteund | Windows- niet ondersteund |
-|Native toepassingen voor servicefabric | Native Application Model (XML) | Niet ondersteund| Ondersteund|Ondersteund|Windows- ondersteund|
+| Service Fabric mesh-toepassingen | Resource model (YAML & JSON) | Ondersteund |Niet ondersteund | Windows: ondersteund, Linux en Mac: niet ondersteund | Windows-niet ondersteund |
+|Service Fabric systeem eigen toepassingen | Systeem eigen toepassings model (XML) | Niet ondersteund| Ondersteund|Ondersteund|Windows: ondersteund|
 
-In de volgende tabel worden de verschillende toepassingsmodellen en de tooling beschreven die voor hen bestaat ten opzichte van Service Fabric.
+In de volgende tabel worden de verschillende toepassings modellen en de hulp middelen beschreven die voor hen bestaan, vergeleken met Service Fabric.
 
-| Type toepassing | Beschreven door | Visual Studio | Eclipse | SFCTL (SFCTL) | AZ CLI | PowerShell|
+| Type toepassing | Beschreven door | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Mesh-toepassingen voor servicefabric | Resourcemodel (YAML & JSON) | VS 2017 |Niet ondersteund |Niet ondersteund | Alleen ondersteund - Mesh-omgeving | Niet ondersteund|
-|Native toepassingen voor servicefabric | Native Application Model (XML) | VS 2017 en VS 2015| Ondersteund|Ondersteund|Ondersteund|Ondersteund|
+| Service Fabric mesh-toepassingen | Resource model (YAML & JSON) | VS 2017 |Niet ondersteund |Niet ondersteund | Alleen ondersteunde mesh-omgeving | Niet ondersteund|
+|Service Fabric systeem eigen toepassingen | Systeem eigen toepassings model (XML) | VS 2017 en VS 2015| Ondersteund|Ondersteund|Ondersteund|Ondersteund|
 
 ## <a name="next-steps"></a>Volgende stappen
 

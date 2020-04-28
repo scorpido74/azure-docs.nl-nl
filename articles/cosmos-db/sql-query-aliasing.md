@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 74849eec4c5808a584894321269c49c41f0b8a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873468"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>Aliasing in Azure Cosmos DB
 
-U expliciet waarden aliasin query's. Als een query twee eigenschappen met dezelfde naam heeft, gebruikt u aliasing om de naam van een of beide eigenschappen te wijzigen, zodat deze worden gedesambigueerd in het geprojecteerde resultaat.
+U kunt expliciet alias waarden in query's. Als een query twee eigenschappen met dezelfde naam heeft, gebruikt u aliasing om de naam van een of beide eigenschappen te wijzigen, zodat ze in het verwachte resultaat worden disambiguated.
 
 ## <a name="examples"></a>Voorbeelden
 
-Het AS-trefwoord dat wordt gebruikt voor aliasing is optioneel, zoals `NameInfo`in het volgende voorbeeld wordt weergegeven bij het projecteren van de tweede waarde als :
+Het sleutel woord als dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld wanneer `NameInfo`de tweede waarde wordt geprojecteerd als:
 
 ```sql
     SELECT 
@@ -47,4 +47,4 @@ U ziet deze uitvoer:
 
 - [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT-component](sql-query-select.md)
-- [VAN clausule](sql-query-from.md)
+- [FROM-component](sql-query-from.md)

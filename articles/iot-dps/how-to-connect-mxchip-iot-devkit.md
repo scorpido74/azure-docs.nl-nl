@@ -1,6 +1,6 @@
 ---
-title: Autovoorzieningsservice voor Azure IoT Hub-apparaatvoorziening gebruiken om de MXChip IoT DevKit te registreren met IoT Hub | Microsoft Documenten
-description: Autovoorziening seinen van Azure IoT Hub Device Provisioning Service (DPS) gebruiken om de MXChip IoT DevKit te registreren met IoT Hub.
+title: Azure IoT Hub Device Provisioning Service automatische inrichting gebruiken om de MXChip IoT DevKit te registreren bij IoT Hub | Microsoft Docs
+description: Het gebruik van automatische inrichting van Azure IoT Hub Device Provisioning Service (DPS) voor het registreren van de MXChip IoT DevKit met IoT Hub.
 author: liydu
 ms.author: liydu
 ms.date: 06/25/2019
@@ -9,135 +9,135 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975649"
 ---
-# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Automatische inrichting van azure IoT-hub-apparaatinrichtingsservice gebruiken om de MXChip IoT DevKit te registreren met IoT Hub
+# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Gebruik Azure IoT Hub Device Provisioning Service automatische inrichting om de MXChip IoT DevKit te registreren bij IoT Hub
 
-In dit artikel wordt beschreven hoe u [de autoprovisioning](concepts-auto-provisioning.md)service voor Azure IoT Hub-inrichting gebruiken om de MXChip IoT DevKit te registreren met Azure IoT Hub. In deze zelfstudie leert u het volgende:
+In dit artikel wordt beschreven hoe u [automatische inrichting](concepts-auto-provisioning.md)van Azure IOT hub Device Provisioning Service kunt gebruiken om de MXChip IOT DevKit te registreren bij Azure IOT hub. In deze zelfstudie leert u het volgende:
 
-* Configureer het algemene eindpunt van de service Apparaatinrichting op een apparaat.
-* Gebruik een uniek apparaatgeheim (UDS) om een X.509-certificaat te genereren.
-* Schrijf een individueel apparaat in.
+* Configureer het globale eind punt van de Device Provisioning Service op een apparaat.
+* Een uniek apparaat Secret (UDS) gebruiken om een X. 509-certificaat te genereren.
+* Een afzonderlijk apparaat inschrijven.
 * Controleer of het apparaat is geregistreerd.
 
-De [MXChip IoT DevKit](https://aka.ms/iot-devkit) is een alles-in-één Arduino-compatibel bord met rijke randapparatuur en sensoren. U hiervoor ontwikkelen met [Azure IoT Device Workbench](https://aka.ms/iot-workbench) of [Azure IoT Tools](https://aka.ms/azure-iot-tools) extension pack in Visual Studio Code. De DevKit wordt geleverd met een groeiende [projectcatalogus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) om uw prototype Internet of Things (IoT)-oplossingen te begeleiden die profiteren van Azure-services.
+[MXChip IOT DevKit](https://aka.ms/iot-devkit) is een alles-in-een Arduino-compatibel bord met uitgebreide rand apparatuur en Sens oren. U kunt dit ontwikkelen met behulp van [Azure IOT Device Workbench](https://aka.ms/iot-workbench) of [Azure IOT tools](https://aka.ms/azure-iot-tools) Extension Pack in Visual Studio code. De DevKit wordt geleverd met een [catalogus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) voor groeiende projecten om uw prototype Internet of Things (IOT)-oplossingen te begeleiden die gebruikmaken van Azure-Services.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voer eerst de volgende taken uit om de stappen in deze zelfstudie uit te voeren:
+Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren:
 
-* Configureer de Wi-Fi van uw DevKit en bereid uw ontwikkelomgeving voor door de sectie stappen 'De ontwikkelomgeving voorbereiden' in [IoT DevKit AZ3166 verbinden met Azure IoT Hub in de cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)te volgen.
-* Upgrade naar de nieuwste firmware (1.3.0 of hoger) met de [devKit-firmware-zelfstudie bijwerken.](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)
-* Maak en koppel een IoT-hub aan een apparaatinrichtingsservice-instantie door de stappen te volgen in [De IoT Hub Device Provisioning Service instellen met de Azure-portal.](/azure/iot-dps/quick-setup-auto-provision)
+* Configureer de Wi-Fi van uw DevKit en bereid uw ontwikkel omgeving voor, door de stappen in de sectie ' de ontwikkel omgeving voorbereiden ' te volgen in [verbinding maken met IOT DEVKIT AZ3166 met Azure IOT hub in de Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment).
+* Voer een upgrade uit naar de nieuwste firmware (1.3.0 of hoger) met de zelf studie [DevKit firmware bijwerken](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) .
+* Maak en koppel een IoT Hub met een Device Provisioning Service-instantie door de stappen in [de IOT hub Device Provisioning Service in te stellen met de Azure Portal](/azure/iot-dps/quick-setup-auto-provision).
 
-## <a name="open-sample-project"></a>Voorbeeldproject openen
+## <a name="open-sample-project"></a>Voorbeeld project openen
 
-1. Zorg ervoor dat uw IoT DevKit **niet is verbonden met** uw computer. Start VS Code eerst en sluit de DevKit aan op uw computer.
+1. Zorg ervoor dat uw IoT-DevKit **niet is verbonden** met uw computer. Start VS code eerst en sluit de DevKit aan op uw computer.
 
-1. Klik `F1` hierom het opdrachtpalet te openen, de **Werkbank voor Azure IoT-apparaat te**typen en te selecteren: Voorbeelden openen... . Selecteer vervolgens **IoT DevKit** als bord.
+1. Klik `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: voor beelden openen...**. Selecteer vervolgens **IOT DevKit** as Board.
 
-1. Zoek **apparaatregistratie met DPS op** de pagina Voorbeeld van IoT-werkbank en klik op **Voorbeeld openen**. Hiermee selecteert u het standaardpad om de voorbeeldcode te downloaden.
-    ![Voorbeeld openen](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
+1. Zoek op de pagina met IoT Workbench-voor beelden de apparaatregistratie **met DPS** en klik op voor **Beeld openen**. Selecteert vervolgens het standaardpad voor het downloaden van de voorbeeld code.
+    ![Voor beeld openen](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
 
-## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Een uniek apparaatgeheim opslaan op de beveiliging van het apparaat
+## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Een uniek apparaat geheim opslaan in de beveiligings opslag van het apparaat
 
-Automatische inrichting kan worden geconfigureerd op een apparaat op basis van het [attestmechanisme van](concepts-security.md#attestation-mechanism)het apparaat. De MXChip IoT DevKit maakt gebruik van de [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) van de Trusted Computing [Group.](https://trustedcomputinggroup.org) Een **Unique Device Secret** (UDS) opgeslagen in een STSAFE-beveiligingschip[(STSAFE-A100)](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)op de DevKit wordt gebruikt om het unieke [X.509-certificaat](concepts-security.md#x509-certificates)van het apparaat te genereren. Het certificaat wordt later gebruikt voor het inschrijvingsproces in de service Apparaatvoorziening en tijdens de registratie tijdens de uitvoering.
+Automatische inrichting kan worden geconfigureerd op een apparaat op basis van het [Attestation-mechanisme](concepts-security.md#attestation-mechanism)van het apparaat. De MXChip IoT DevKit maakt gebruik van de engine voor het samen stellen van de [apparaat-id](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) van de [Trusted Computing Group](https://trustedcomputinggroup.org). Een **uniek apparaat Secret** (UDS) dat is opgeslagen in een STSAFE-beveiligings chip ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) op de DevKit wordt gebruikt voor het genereren van het unieke [X. 509-certificaat](concepts-security.md#x509-certificates)van het apparaat. Het certificaat wordt later gebruikt voor het inschrijvings proces in de Device Provisioning Service en tijdens de registratie tijdens runtime.
 
-Een typische UDS is een tekenreeks van 64 tekens, zoals te zien in het volgende voorbeeld:
+Een typische UDS is een teken reeks van 64, zoals in het volgende voor beeld wordt weer gegeven:
 
 ```
 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eae
 ```
 
-Ga als lid van het Op- en/uit voor een UDS op de DevKit:
+Een UDS opslaan op de DevKit:
 
-1. Klik in VS-code op de statusbalk om de COM-poort voor de DevKit te selecteren.
+1. Klik in VS code op de status balk om de COM-poort voor de DevKit te selecteren.
   ![COM-poort selecteren](media/how-to-connect-mxchip-iot-devkit/select-com.png)
 
-1. Houd op DevKit **de knop A**ingedrukt, druk op de **resetknop** en laat vervolgens **de knop A**los. Uw DevKit gaat in de configuratiemodus.
+1. Houd op DevKit de **knop** **opnieuw instellen** in de vervolg keuzelijst en laat deze knop los en laat vervolgens **knop a**los. Uw DevKit voert de configuratie modus in.
 
-1. Klik `F1` hierom het opdrachtpalet te openen, de Werkbank voor Azure IoT-apparaat te typen en te **selecteren: Apparaatinstellingen configureren... > Config Unique Device String (UDS)**.
+1. Klik `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: Apparaatinstellingen configureren... > configuratie unieke teken reeks voor apparaat (UDS)**.
   ![UDS configureren](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
-1. Noteer de gegenereerde UDS-tekenreeks. Je hebt het nodig om het X.509-certificaat te genereren. Druk `Enter`dan op .
+1. Noteer de gegenereerde UDS-teken reeks. U hebt deze nodig voor het genereren van het X. 509-certificaat. Druk vervolgens `Enter`op.
   ![UDS kopiëren](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
-1. Bevestig uit de melding dat UDS is geconfigureerd op de STSAFE.
-  ![UDS-succes configureren](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
+1. Controleer in de melding dat de UDS is geconfigureerd op de STSAFE.
+  ![De configuratie van UDS geslaagd](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
 
 > [!NOTE]
-> U u ook UDS configureren via de seriële poort met behulp van hulpprogramma's zoals Putty. Volg [De configuratiemodus](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) gebruiken om dit te doen.
+> U kunt ook instellen via een seriële poort met behulp van hulpprogram ma's zoals putty. Volg hiervoor de [configuratie modus](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) .
 
-## <a name="update-the-global-device-endpoint-and-id-scope"></a>Het eindpunt en de id-scope voor globale apparaten bijwerken
+## <a name="update-the-global-device-endpoint-and-id-scope"></a>Het eind punt van het globale apparaat en de ID-Scope bijwerken
 
-In apparaatcode moet u het eindpunt en de id-scope [voor apparaatinrichting](/azure/iot-dps/concepts-service#device-provisioning-endpoint) opgeven om de tenantisolatie te garanderen.
+In apparaatcode moet u het [eind punt](/azure/iot-dps/concepts-service#device-provisioning-endpoint) voor het inrichten van het apparaat en de id-scope opgeven om de Tenant isolatie te garanderen.
 
-1. Selecteer in de Azure-portal het **overzichtsvenster** van uw service voor apparaatinrichting en noteer de **waarden Global device endpoint** en **ID Scope.**
-  ![Global Endpoint- en ID-scope van apparaatinrichting](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+1. Selecteer in de Azure Portal het deel venster **overzicht** van de Device Provisioning Service en noteer de waarden voor het **globale apparaat-eind punt** en de **id-Scope** .
+  ![Globaal eind punt en-ID-bereik van Device Provisioning Service](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
-1. Open **DevKitDPS.ino**. Zoek en `[Global Device Endpoint]` `[ID Scope]` vervang en met de waarden die u zojuist hebt genoteerd.
-  ![Eindpunt van apparaatinrichtingsservice](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
+1. Open **DevKitDPS. Ino**. Zoek en vervang `[Global Device Endpoint]` en `[ID Scope]` door de waarden die u zojuist hebt genoteerd.
+  ![Device Provisioning Service-eind punt](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
-1. Vul `registrationId` de variabele in de code. Alleen alfanumerieke, kleine letters en koppeltekens combinatie met een maximum van 128 tekens is toegestaan. Ook opgemerkt vaststelling van de waarde.
-  ![Registratie-id](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
+1. Vul de `registrationId` variabele in de code in. Alleen alfanumerieke combi Naties, kleine letters en afbreek streepjes met een maximum van 128 tekens zijn toegestaan. Noteer ook de waarde.
+  ![Registratie-ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-1. Klik `F1`op , typ en selecteer **Azure IoT Device Workbench: Upload Device Code**. Het begint met het compileren en uploaden van de code naar DevKit.
+1. Klik `F1`op, typ en selecteer **Azure IOT Device Workbench: code van het apparaat uploaden**. U begint met het compileren en uploaden van de code naar DevKit.
   ![Device Upload](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
-## <a name="generate-x509-certificate"></a>X.509-certificaat genereren
+## <a name="generate-x509-certificate"></a>X. 509-certificaat genereren
 
-Het [attestmechanisme](/azure/iot-dps/concepts-device#attestation-mechanism) dat door dit monster wordt gebruikt, is x.509-certificaat. Je moet een hulpprogramma gebruiken om het te genereren.
+Het [Attestation-mechanisme](/azure/iot-dps/concepts-device#attestation-mechanism) dat door dit voor beeld wordt gebruikt, is X. 509-certificaat. U moet een hulp programma gebruiken om het te genereren.
 
-1. Klik in VS-code op `F1`Nieuwe terminal openen om **het** terminalvenster te openen.
+1. Klik in VS code op `F1`, typ en selecteer **nieuwe terminal openen** om Terminal venster te openen.
 
-1. Uitvoeren `dps_cert_gen.exe` `tool` in map.
+1. Uitvoeren `dps_cert_gen.exe` in `tool` map.
 
-1. Geef de gecompileerde binaire bestandslocatie op als `..\.build\DevKitDPS`. Plak vervolgens de **UDS** en **registrationId** die je net hebt genoteerd. 
-  ![X.509 genereren](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
+1. Geef de locatie van de gecompileerde `..\.build\DevKitDPS`binaire bestanden op als. Plak vervolgens de **UDS** en **registratie** die u zojuist hebt genoteerd. 
+  ![X. 509 genereren](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
 
-1. Een `.pem` X.509-certificaat genereert in dezelfde map.
-  ![X.509-bestand](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
+1. Een `.pem` X. 509-certificaat wordt in dezelfde map gegenereerd.
+  ![X. 509-bestand](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
 
 ## <a name="create-a-device-enrollment-entry"></a>Een vermelding voor apparaatinschrijving maken
 
-1. Open in de Azure-portal de service voor apparaatvoorziening, navigeer naar de sectie Inschrijvingen beheren en klik op **Afzonderlijke inschrijving toevoegen**.
-  ![Individuele inschrijving toevoegen](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+1. Open in de Azure Portal uw Device Provisioning Service, navigeer naar de sectie registraties beheren en klik op **Individuele inschrijving toevoegen**.
+  ![Afzonderlijke inschrijving toevoegen](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
-1. Klik op bestandspictogram naast **primair certificaat .pem- of .cer-bestand** om het `.pem` gegenereerde bestand te uploaden.
-  ![Upload .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
+1. Klik op het pictogram bestand naast het **primaire certificaat. pem-of. CER** - `.pem` bestand om het gegenereerde bestand te uploaden.
+  ![Upload. pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>Controleren of de DevKit is geregistreerd bij Azure IoT Hub
 
-Druk op de knop **Opnieuw instellen** op je DevKit. U zou **DPS Verbonden** moeten zien! op het DevKit-scherm. Nadat het apparaat opnieuw is opgestart, vinden de volgende acties plaats:
+Druk op de knop **Reset** op uw DevKit. U ziet dat **DPS Connected is.** op het scherm DevKit. Nadat het apparaat opnieuw is opgestart, worden de volgende acties uitgevoerd:
 
 1. Vanaf het apparaat wordt een registratie-aanvraag verzonden naar Device Provisioning Service.
-1. De service Apparaatvoorziening stuurt een registratieuitdaging terug waarop uw apparaat reageert.
-1. Bij succesvolle registratie stuurt de service Apparaatvoorziening de IoT Hub URI, apparaat-ID en de versleutelde sleutel terug naar het apparaat.
-1. De IoT Hub-clienttoepassing op het apparaat maakt verbinding met uw hub.
-1. Bij een geslaagde verbinding met de hub ziet u het apparaat worden weergegeven in de IoT Hub Device Explorer.
+1. De Device Provisioning service stuurt een registratie vraag naar die uw apparaat reageert.
+1. Bij een geslaagde registratie verzendt de Device Provisioning Service de IoT Hub URI, de apparaat-ID en de versleutelde sleutel terug naar het apparaat.
+1. De IoT Hub-client toepassing op het apparaat maakt verbinding met uw hub.
+1. Wanneer de verbinding met de hub is geslaagd, ziet u dat het apparaat wordt weer gegeven in de IoT Hub Device Explorer.
   ![Apparaat geregistreerd](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 
-Als u problemen ondervindt, raadpleegt u de [veelgestelde vragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)van Iot DevKit of neem contact op met de volgende kanalen voor ondersteuning:
+Als u problemen ondervindt, raadpleeg dan de [Veelgestelde vragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)over IOT DevKit of neem contact op met de volgende kanalen voor ondersteuning:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd een apparaat veilig in te schrijven bij de Apparaatinrichtingsservice met behulp van de Device Identity Composition Engine, zodat het apparaat zich automatisch kan registreren bij Azure IoT Hub. 
+In deze zelf studie hebt u geleerd om een apparaat veilig in te schrijven bij de Device Provisioning Service met behulp van de apparaat Identity compositie engine, zodat het apparaat automatisch kan worden geregistreerd bij Azure IoT Hub. 
 
-Samengevat heb je geleerd hoe je:
+In samen vatting hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Configureer het algemene eindpunt van de service Apparaatinrichting op een apparaat.
-> * Gebruik een uniek apparaatgeheim om een X.509-certificaat te genereren.
-> * Schrijf een individueel apparaat in.
+> * Configureer het globale eind punt van de Device Provisioning Service op een apparaat.
+> * Een uniek apparaat geheim gebruiken om een X. 509-certificaat te genereren.
+> * Een afzonderlijk apparaat inschrijven.
 > * Controleer of het apparaat is geregistreerd.
 
 Meer informatie over het [maken en inrichten van een gesimuleerd apparaat](./quick-create-simulated-device.md).

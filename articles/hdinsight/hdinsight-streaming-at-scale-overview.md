@@ -1,6 +1,6 @@
 ---
-title: Streamen op schaal in Azure HDInsight
-description: Datastreaming gebruiken met schaalbare Apache-clusters in Azure HDInsight.
+title: Streaming op schaal in azure HDInsight
+description: Gegevens stromen gebruiken met schaal bare Apache-clusters in azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,61 +9,61 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435400"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Schaalbaar streamen in HDInsight
 
-Real-time big data-oplossingen werken op data die in beweging is. Typisch, deze gegevens is het meest waardevol op het moment van aankomst. Als de binnenkomende gegevensstroom groter wordt dan op dat moment kan worden afgehandeld, moet u mogelijk resources beperken. Een HDInsight-cluster kan ook worden opgeschaald om aan uw streaming-oplossing te voldoen door knooppunten op aanvraag toe te voegen.
+Realtime-big data oplossingen worden toegepast op gegevens die zich in beweging bevindt. Normaal gesp roken zijn deze gegevens het meest waardevol op het moment van aankomst. Als de binnenkomende gegevens stroom groter wordt dan op dat moment kan worden verwerkt, moet u mogelijk resources beperken. Een HDInsight-cluster kan ook omhoog worden geschaald om te voldoen aan uw streaming-oplossing door knoop punten op aanvraag toe te voegen.
 
-In een streaming-toepassing genereren een of meer gegevensbronnen gebeurtenissen (soms in de miljoenen per seconde) die snel moeten worden ingenomen zonder nuttige informatie te laten vallen. De binnenkomende gebeurtenissen worden afgehandeld met *streambuffering*, ook wel *gebeurteniswachtrij genoemd,* door een service zoals [Apache Kafka](kafka/apache-kafka-introduction.md) of [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Nadat u de gebeurtenissen hebt verzameld, u de gegevens analyseren met behulp van een realtime analysesysteem binnen de *streamverwerkingslaag,* zoals [Apache Storm](storm/apache-storm-overview.md) of Apache [Spark Streaming.](spark/apache-spark-streaming-overview.md) De verwerkte gegevens kunnen worden opgeslagen in opslagsystemen voor de lange termijn, zoals [Azure Data Lake Storage,](https://azure.microsoft.com/services/storage/data-lake-storage/)en in realtime worden weergegeven op een business intelligence-dashboard, zoals [Power BI,](https://powerbi.microsoft.com)Tableau of een aangepaste webpagina.
+In een streaming-toepassing worden er in een of meer gegevens bronnen gebeurtenissen gegenereerd (soms in miljoenen per seconde) die snel moeten worden opgenomen zonder dat er bruikbare informatie hoeft te worden verwijderd. De binnenkomende gebeurtenissen worden verwerkt met behulp van de *stroom buffering*, ook wel *Event Queuing*genoemd, door een service zoals [Apache Kafka](kafka/apache-kafka-introduction.md) of [Event hubs](https://azure.microsoft.com/services/event-hubs/). Nadat u de gebeurtenissen hebt verzameld, kunt u de gegevens analyseren met behulp van een real-time analyse systeem binnen de laag voor *stroom verwerking* , zoals [Apache Storm](storm/apache-storm-overview.md) of [Apache Spark streaming](spark/apache-spark-streaming-overview.md). De verwerkte gegevens kunnen worden opgeslagen in lange termijn opslag systemen, zoals [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), en in realtime worden weer gegeven op een Business Intelligence dash board, zoals [Power bi](https://powerbi.microsoft.com), tableau of een aangepaste webpagina.
 
-![Azure HDInsight-streamingpatronen](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight-streaming-patronen](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-Apache Kafka biedt een service met een hoge doorvoer, lage latentie in de wachtrij en maakt nu deel uit van de Apache-suite van Open Source Software (OSS). Kafka gebruikt een berichtenmodel voor publiceren en abonneren en slaat stromen van partitiegegevens veilig op in een gedistribueerd, gerepliceerd cluster. Kafka schaalt lineair naarmate de doorvoer toeneemt.
+Apache Kafka biedt een berichten wachtrij service met hoge door Voer en lage latentie en maakt nu deel uit van de Apache-suite van open source software (OSS). Kafka maakt gebruik van een berichten model voor publiceren en abonneren en slaat streams van gepartitioneerde gegevens veilig op in een gedistribueerd, gerepliceerd cluster. Kafka schaalt lineair als door Voer toeneemt.
 
-Zie [Apache Kafka introduceren op HDInsight voor](kafka/apache-kafka-introduction.md)meer informatie.
+Zie [inleiding Apache Kafka op HDInsight](kafka/apache-kafka-introduction.md)voor meer informatie.
 
 ## <a name="apache-storm"></a>Apache Storm
 
-Apache Storm is een gedistribueerd, fouttolerant, open-source berekeningssysteem dat is geoptimaliseerd voor het verwerken van gegevensstromen in realtime met Hadoop. De kerneenheid van gegevens voor een binnenkomende gebeurtenis is een Tuple, een onveranderlijke set sleutel/waardeparen. Een onbegrensde opeenvolging van deze Tuples vormt een Stroom, die uit een Spout komt. De Spout omsluit een streaming gegevensbron (zoals Kafka) en zendt Tuples uit. Een storm Topologie is een opeenvolging van transformaties op deze stromen.
+Apache Storm is een gedistribueerd, fout tolerant, open-source berekenings systeem dat is geoptimaliseerd voor het verwerken van gegevens stromen in realtime met Hadoop. De kern eenheid van gegevens voor een binnenkomende gebeurtenis is een tuple. Dit is een onveranderlijke set sleutel-waardeparen. Een niet-gebonden reeks van deze Tuples vormt een stroom, die afkomstig is van een Spout. De Spout verloopt een streaming-gegevens bron (zoals Kafka) en verzendt Tuples. Een storm-topologie is een reeks trans formaties voor deze stromen.
 
-Zie [Wat is Apache Storm op Azure HDInsight voor](storm/apache-storm-overview.md)meer informatie.
+Zie [Wat is er Apache Storm in azure HDInsight?](storm/apache-storm-overview.md)voor meer informatie.
 
 ## <a name="spark-streaming"></a>Spark-streaming
 
-Spark Streaming is een extensie voor Spark, waarmee u dezelfde code hergebruiken die u gebruikt voor batchverwerking. U zowel batch- als interactieve query's combineren in dezelfde toepassing. In tegenstelling tot Storm biedt Spark Streaming stateful precies een keer verwerking semantiek. Bij gebruik in combinatie met de [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die ervoor zorgt dat alle Kafka-gegevens precies één keer door Spark Streaming worden ontvangen, is het mogelijk om precies één keer end-to-end te bereiken. Een van de sterke punten van Spark Streaming is de fouttolerante mogelijkheden, waarbij defecte knooppunten snel worden hersteld wanneer meerdere knooppunten binnen het cluster worden gebruikt.
+Spark streaming is een uitbrei ding van Spark, waarmee u dezelfde code kunt gebruiken die u voor batch verwerking gebruikt. U kunt zowel batch-als interactieve query's combi neren in dezelfde toepassing. In tegens telling tot Storm biedt Spark streaming een status precies eenmaal de verwerkings semantiek. Bij gebruik in combi natie met de [Kafka direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die ervoor zorgt dat alle Kafka-gegevens exact één keer worden ontvangen door Spark-streaming, is het mogelijk om end-to-end precies één keer per garantie te zorgen. Een van de sterke punten van Spark streaming is de fout tolerante mogelijkheden. het herstellen van defecte knoop punten is snel mogelijk wanneer er meerdere knoop punten in het cluster worden gebruikt.
 
-Zie Wat is Apache Spark Streaming voor meer [informatie?](hdinsight-spark-streaming-overview.md)
+Zie [Wat is Apache Spark streaming?](hdinsight-spark-streaming-overview.md)voor meer informatie.
 
 ## <a name="scaling-a-cluster"></a>Een cluster schalen
 
-Hoewel u tijdens het maken het aantal knooppunten in uw cluster opgeven, u het cluster laten groeien of verkleinen om de werkbelasting te laten overeenkomen. Met alle HDInsight-clusters u [het aantal knooppunten in het cluster wijzigen.](hdinsight-administer-use-portal-linux.md#scale-clusters) Spark-clusters kunnen worden verwijderd zonder verlies van gegevens, omdat alle gegevens worden opgeslagen in Azure Storage of Data Lake Storage.
+Hoewel u het aantal knoop punten in het cluster tijdens het maken kunt opgeven, wilt u het cluster wellicht verg Roten of verkleinen zodat het overeenkomt met de werk belasting. Alle HDInsight-clusters bieden u [de mogelijkheid om het aantal knoop punten in het cluster te wijzigen](hdinsight-administer-use-portal-linux.md#scale-clusters). Spark-clusters kunnen zonder gegevens verlies worden verwijderd, omdat alle gegevens worden opgeslagen in Azure Storage of Data Lake Storage.
 
-Er zijn voordelen aan het ontkoppelen van technologieën. Kafka is bijvoorbeeld een gebeurtenisbuffertechnologie, dus het is zeer IO-intensief en heeft niet veel verwerkingskracht nodig. Ter vergelijking: streamprocessors zoals Spark Streaming zijn rekenintensief, waardoor krachtigere VM's nodig zijn. Door deze technologieën in verschillende clusters te laten ontkoppelen, u ze onafhankelijk schalen terwijl u de VM's het beste gebruikt.
+Er zijn voor delen voor het loskoppelen van technologieën. Kafka is bijvoorbeeld een technologie voor gebeurtenis buffers, dus het is zeer IO-intensief en heeft geen veel verwerkings kracht nodig. In vergelijking zijn stream-processors, zoals Spark-streaming, reken intensief, waardoor krachtigere Vm's zijn vereist. Als deze technologieën zijn losgekoppeld van verschillende clusters, kunt u deze onafhankelijk van elkaar schalen terwijl u het beste gebruikmaakt van de Vm's.
 
-### <a name="scale-the-stream-buffering-layer"></a>De bufferlaag van de stroomschalen
+### <a name="scale-the-stream-buffering-layer"></a>De laag van de stroom buffer schalen
 
-De streambufferingtechnologieën Event Hubs en Kafka maken beide gebruik van partities en consumenten lezen uit die partities. Het schalen van de invoerdoorvoer vereist het opschalen van het aantal partities en het toevoegen van partities zorgt voor toenemende parallellisme. In gebeurtenishubs kan het aantal partities niet worden gewijzigd na implementatie, dus het is belangrijk om te beginnen met de doelschaal in gedachten. Met Kafka is het mogelijk om [partities toe](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)te voegen, zelfs terwijl Kafka gegevens verwerkt. Kafka biedt een hulpmiddel om `kafka-reassign-partitions.sh`partities opnieuw toe te wijzen. HDInsight biedt een [hulpmiddel voor het opnieuw balanceren van partitiereplica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Deze rebalancing tool `kafka-reassign-partitions.sh` roept de tool op een zodanige wijze dat elke replica is in een aparte fout domein en update domein, waardoor Kafka rack bewust en toenemende fouttolerantie.
+De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities opnieuw `kafka-reassign-partitions.sh`kunt toewijzen. HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
 
-### <a name="scale-the-stream-processing-layer"></a>De stroomverwerkingslaag schalen
+### <a name="scale-the-stream-processing-layer"></a>De laag voor stream processing schalen
 
-Zowel Apache Storm als Spark Streaming ondersteunen het toevoegen van worker nodes aan hun clusters, zelfs terwijl gegevens worden verwerkt.
+Zowel Apache Storm als Spark-streaming ondersteunen worker-knoop punten toe te voegen aan hun clusters, zelfs wanneer de gegevens worden verwerkt.
 
-Als u wilt profiteren van nieuwe knooppunten die zijn toegevoegd door storm te schalen, moet u eventuele stormtopologieën opnieuw in evenwicht brengen voordat de clustergrootte werd vergroot. Deze rebalancing kan worden gedaan met behulp van de Storm web UI of de CLI. Zie voor meer informatie de [documentatie van](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)apache storm .
+Als u wilt profiteren van nieuwe knoop punten die zijn toegevoegd door het schalen van stormen, moet u eventuele Storm-topologieën die zijn gestart voordat de cluster grootte werd verhoogd, opnieuw verdelen. Deze herverdeling kan worden uitgevoerd met behulp van de Storm-webgebruikersinterface of de CLI. Zie de [Apache Storm-documentatie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)voor meer informatie.
 
-Apache Spark gebruikt drie belangrijke parameters voor het configureren `spark.executor.instances`van `spark.executor.cores`de `spark.executor.memory`omgeving, afhankelijk van de toepassingsvereisten: , , en . Een *executor* is een proces dat wordt gestart voor een Spark-toepassing. Een executeur draait op het werknemersknooppunt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaardaantal uitvoerders en de uitvoerdergroottes voor elk cluster worden berekend op basis van het aantal werknemersknooppunten en de grootte van het werknemersknooppunt. Deze nummers worden `spark-defaults.conf`opgeslagen in het bestand op elk clusterhoofdknooppunt.
+Apache Spark gebruikt drie belang rijke para meters voor het configureren van de omgeving, afhankelijk `spark.executor.instances`van `spark.executor.cores`de toepassings `spark.executor.memory`vereisten:, en. Een uitvoerder *is een proces dat wordt gestart* voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster worden berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze getallen worden opgeslagen in het `spark-defaults.conf`bestand op elk cluster hoofd knooppunt.
 
-Deze drie parameters kunnen worden geconfigureerd op clusterniveau, voor alle toepassingen die op het cluster worden uitgevoerd, en kunnen ook worden opgegeven voor elke afzonderlijke toepassing. Zie [Resources voor Apache Spark-clusters beheren voor](spark/apache-spark-resource-manager.md)meer informatie.
+Deze drie para meters kunnen worden geconfigureerd op cluster niveau voor alle toepassingen die op het cluster worden uitgevoerd en kunnen ook voor elke afzonderlijke toepassing worden opgegeven. Zie [resources beheren voor Apache Spark-clusters](spark/apache-spark-resource-manager.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Apache Storm-topologie maken en bewaken in Azure HDInsight](storm/apache-storm-quickstart.md)
+* [Een Apache Storm topologie in azure HDInsight maken en bewaken](storm/apache-storm-quickstart.md)
 * [Example Storm toplogies and components for Apache Storm on HDInsight](storm/apache-storm-example-topology.md) (Voorbeelden van Storm-topologieën en -onderdelen in HDInsight)
 * [Inleiding tot Apache Spark op HDInsight](spark/apache-spark-overview.md)
 * [Met Apache Kafka in HDInsight beginnen](kafka/apache-kafka-get-started.md)

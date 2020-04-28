@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: een openbare peering verplaatsen naar Microsoft-peering'
-description: In dit artikel ziet u de stappen om uw openbare peering naar Microsoft-peering op ExpressRoute te verplaatsen.
+title: 'Azure ExpressRoute: een open bare peering verplaatsen naar micro soft-peering'
+description: In dit artikel ziet u de stappen voor het verplaatsen van uw open bare peering naar micro soft-peering op ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,87 +8,87 @@ ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436846"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Overstappen van openbare peering op Microsoft-peering
 
-Met dit artikel u een openbare peeringconfiguratie verplaatsen naar Microsoft-peering zonder downtime. ExpressRoute biedt ondersteuning voor het gebruik van Microsoft-peering met routefilters voor Azure PaaS-services, zoals Azure Storage en Azure SQL Database. U hebt nu maar één routeringsdomein nodig voor toegang tot Microsoft PaaS- en SaaS-services. U kunt routefilters gebruiken om de PaaS-servicevoorvoegsels selectief te adverteren voor Azure-regio's die u wilt verbruiken.
+Dit artikel helpt u bij het verplaatsen van een configuratie voor een open bare peering naar micro soft-peering zonder uitval tijd. ExpressRoute biedt ondersteuning voor het gebruik van Microsoft-peering met routefilters voor Azure PaaS-services, zoals Azure Storage en Azure SQL Database. U hebt nu maar één routeringsdomein nodig voor toegang tot Microsoft PaaS- en SaaS-services. U kunt routefilters gebruiken om de PaaS-servicevoorvoegsels selectief te adverteren voor Azure-regio's die u wilt verbruiken.
 
-Azure public peering heeft 1 NAT IP-adres dat is gekoppeld aan elke BGP-sessie. Met Microsoft-peering u uw eigen NAT-toewijzingen configureren en routefilters gebruiken voor selectieve voorvoegseladvertenties. Public Peering is een unidirectionele service waarmee connectiviteit altijd wordt gestart van uw WAN naar Microsoft Azure-services. Microsoft Azure-services kunnen geen verbindingen met uw netwerk starten via dit routeringsdomein.
+Open bare Azure-peering heeft één NAT IP-adres dat is gekoppeld aan elke BGP-sessie. Met micro soft-peering kunt u uw eigen NAT-toewijzingen configureren, maar ook route filters gebruiken voor selectieve voor voegsels van advertenties. Open bare peering is een service in één richting waarmee de connectiviteit altijd vanuit uw WAN naar Microsoft Azure Services wordt gestart. Microsoft Azure Services kunnen geen verbindingen met uw netwerk initiëren via dit routerings domein.
 
-Zodra openbaar peering is ingeschakeld, u verbinding maken met alle Azure-services. We staan u niet toe om selectief diensten te kiezen waarvoor we routes adverteren. Terwijl Microsoft peering een bidirectionele connectiviteit is waar verbinding kan worden gestart vanuit Microsoft Azure-service, samen met uw WAN. Zie [ExpressRoute-circuits en routeringsdomeinen](expressroute-circuit-peerings.md)voor meer informatie over routeringsdomeinen en peering.
+Zodra open bare peering is ingeschakeld, kunt u verbinding maken met alle Azure-Services. U kunt niet selectief Services picken waarvoor we routes aankondigen. Micro soft-peering is een bidirectionele connectiviteit waarbij verbinding kan worden gestart vanuit Microsoft Azure service samen met uw WAN. Zie voor meer informatie over routerings domeinen en peering [ExpressRoute-circuits en routerings domeinen](expressroute-circuit-peerings.md).
 
 ## <a name="before-you-begin"></a><a name="before"></a>Voordat u begint
 
-Als u verbinding wilt maken met Microsoft-peering, moet u NAT instellen en beheren. Uw connectiviteitsprovider kan de NAT instellen en beheren als een beheerde service. Als u van plan bent toegang te krijgen tot de Azure PaaS- en Azure SaaS-services op Microsoft-peering, is het belangrijk om de NAT IP-groep correct te vergroten. Zie de [NAT-vereisten voor Microsoft-peering voor](expressroute-nat.md#nat-requirements-for-microsoft-peering)meer informatie over NAT voor ExpressRoute. Wanneer u verbinding maakt met Microsoft via Azure ExpressRoute(Microsoft-peering), hebt u meerdere koppelingen naar Microsoft. De ene koppeling is uw bestaande internetverbinding en de andere gaat via ExpressRoute. Bepaald verkeer naar Microsoft kan via internet gaan maar kan terugkeren via ExpressRoute of andersom.
+Als u verbinding wilt maken met micro soft-peering, moet u NAT instellen en beheren. Uw connectiviteits provider kan de NAT instellen en beheren als een beheerde service. Als u van plan bent om toegang te krijgen tot de Azure PaaS-en Azure SaaS-Services op micro soft-peering, is het belang rijk om de IP-adres groep van NAT correct te maken. Voor meer informatie over NAT voor ExpressRoute raadpleegt u de [NAT-vereisten voor micro soft-peering](expressroute-nat.md#nat-requirements-for-microsoft-peering). Wanneer u verbinding maakt met micro soft via Azure ExpressRoute (micro soft-peering), hebt u meerdere koppelingen naar micro soft. De ene koppeling is uw bestaande internetverbinding en de andere gaat via ExpressRoute. Bepaald verkeer naar Microsoft kan via internet gaan maar kan terugkeren via ExpressRoute of andersom.
 
 ![Bidirectionele connectiviteit](./media/how-to-move-peering/bidirectional-connectivity.jpg)
 
 > [!Warning]
 > De NAT IP-adresgroep die wordt geadverteerd aan Microsoft mag niet worden geadverteerd op internet. Dit verbreekt de connectiviteit met andere Microsoft-services.
 
-Raadpleeg [Asymmetrische routering met meerdere netwerkpaden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) voor kanttekeningen van asymmetrische routering voordat u Microsoft-peering configureert.
+Raadpleeg [asymmetrische route ring met meerdere netwerk paden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) voor voor behoud van asymmetrische route ring voordat u micro soft-peering configureert.
 
-* Als u openbare peering gebruikt en momenteel IP-netwerkregels hebt voor openbare IP-adressen die worden gebruikt om toegang te krijgen tot [Azure Storage](../storage/common/storage-network-security.md) of Azure [SQL Database,](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)moet u ervoor zorgen dat de NAT IP-groep die is geconfigureerd met Microsoft-peering is opgenomen in de lijst met openbare IP-adressen voor het Azure-opslagaccount of Azure SQL-account.<br>
-* Gebruik de stappen in dit artikel in de volgorde waarin ze worden gepresenteerd om naar Microsoft-peering te gaan zonder downtime.
+* Als u gebruikmaakt van open bare peering en momenteel IP-netwerk regels voor open bare IP-adressen gebruikt voor toegang tot [Azure Storage](../storage/common/storage-network-security.md) of [Azure SQL database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), moet u ervoor zorgen dat de NAT IP-adres groep die is geconfigureerd met micro soft-peering, is opgenomen in de lijst met open bare IP-adressen voor het Azure-opslag account of het Azure SQL-account.<br>
+* Als u wilt overschakelen naar micro soft-peering zonder downtime, volgt u de stappen in dit artikel in de volg orde waarin ze worden weer gegeven.
 
-## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Microsoft-peering maken
+## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. micro soft-peering maken
 
-Als Microsoft-peering niet is gemaakt, gebruikt u een van de volgende artikelen om Microsoft-peering te maken. Als uw connectiviteitsprovider beheerde layer 3-services aanbiedt, u de connectiviteitsprovider vragen microsoft-peering voor uw circuit in te schakelen.
+Als micro soft-peering niet is gemaakt, gebruikt u een van de volgende artikelen om micro soft-peering te maken. Als uw connectiviteits provider beheerde Layer 3-services biedt, kunt u de connectiviteits provider vragen om micro soft-peering voor uw circuit in te scha kelen.
 
-Als laag 3 door u wordt beheerd, is de volgende informatie vereist voordat u verdergaat:
+Als de laag 3 door u wordt beheerd, is de volgende informatie vereist voordat u doorgaat:
 
-* Een /30-subnet voor de primaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bruikbare IP-adres toe aan uw router, omdat Microsoft het tweede bruikbare IP voor zijn router gebruikt.<br>
-* Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bruikbare IP-adres toe aan uw router, omdat Microsoft het tweede bruikbare IP voor zijn router gebruikt.<br>
-* Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel primaire als secundaire koppelingen moet u dezelfde VLAN-id gebruiken.<br>
+* Een /30-subnet voor de primaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.<br>
+* Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.<br>
+* Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel primaire als secundaire koppelingen moet u dezelfde VLAN-ID gebruiken.<br>
 * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.<br>
-* Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent een set voorvoegsels te verzenden, u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.<br>
+* Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent een aantal voor voegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.<br>
 * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
 
-* **Optioneel** - Klant ASN: Als u reclame maakt voorvoegsels die niet zijn geregistreerd op het AS-nummer voor peering, u het AS-nummer opgeven waarop ze zijn geregistreerd.<br>
-* **Optioneel** - Een MD5-hash als u ervoor kiest er een te gebruiken.
+* **Optioneel** : klant-ASN: als u voor voegsels adverteert die niet zijn geregistreerd voor het peering als-nummer, kunt u het as-nummer opgeven waarop ze zijn geregistreerd.<br>
+* **Optioneel** : een MD5-hash als u ervoor kiest om er een te gebruiken.
 
-Gedetailleerde instructies om Microsoft-peering in te schakelen zijn te vinden in de volgende artikelen:
+Gedetailleerde instructies voor het inschakelen van micro soft-peering vindt u in de volgende artikelen:
 
-* [Microsoft-peering maken met Azure-portal](expressroute-howto-routing-portal-resource-manager.md#msft)<br>
-* [Microsoft-peering maken met Azure Powershell](expressroute-howto-routing-arm.md#msft)<br>
-* [Microsoft-peering maken met Azure CLI](howto-routing-cli.md#msft)
+* [Micro soft-peering maken met behulp van Azure Portal](expressroute-howto-routing-portal-resource-manager.md#msft)<br>
+* [Micro soft-peering maken met behulp van Azure Power shell](expressroute-howto-routing-arm.md#msft)<br>
+* [Micro soft-peering maken met behulp van Azure CLI](howto-routing-cli.md#msft)
 
-## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2. Microsoft-peering valideren is ingeschakeld
+## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2. valideren of micro soft-peering is ingeschakeld
 
-Controleer of de Microsoft-peering is ingeschakeld en of de geadverteerde openbare voorvoegsels in de geconfigureerde status staan.
+Controleer of de micro soft-peering is ingeschakeld en of de aangekondigde open bare voor voegsels de geconfigureerde status hebben.
 
-* [Azure-portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure-CLI](howto-routing-cli.md#getmsft)
 
-## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3. Een routefilter configureren en koppelen aan het circuit
+## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3. een route filter configureren en koppelen aan het circuit
 
-Nieuwe Microsoft-peering adverteert standaard geen voorvoegsels totdat een routefilter aan het circuit is gekoppeld. Wanneer u een routefilterregel maakt, u de lijst met servicecommunity's opgeven voor Azure-regio's die u wilt gebruiken voor Azure PaaS-services. Dit biedt u de flexibiliteit om de routes te filteren volgens uw eis, zoals weergegeven in de volgende schermafbeelding:
+Nieuwe micro soft-peering adverteert standaard geen voor voegsels totdat een route filter aan het circuit is gekoppeld. Wanneer u een route filter regel maakt, kunt u de lijst met Service community's opgeven voor Azure-regio's die u wilt gebruiken voor Azure PaaS Services. Dit biedt u de flexibiliteit om de routes te filteren op basis van uw vereiste, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Openbaar peering samenvoegen](./media/how-to-move-peering/routefilter.jpg)
+![Open bare peering samen voegen](./media/how-to-move-peering/routefilter.jpg)
 
-Routefilters configureren met een van de volgende artikelen:
+Configureer route filters met behulp van een van de volgende artikelen:
 
-* [Routefilters configureren voor Microsoft-peering met Azure-portal](how-to-routefilter-portal.md)<br>
-* [Routefilters configureren voor Microsoft-peering met Azure PowerShell](how-to-routefilter-powershell.md)<br>
-* [Routefilters configureren voor Microsoft-peering met Azure CLI](how-to-routefilter-cli.md)
+* [Route filters configureren voor micro soft-peering met behulp van Azure Portal](how-to-routefilter-portal.md)<br>
+* [Route filters configureren voor micro soft-peering met behulp van Azure PowerShell](how-to-routefilter-powershell.md)<br>
+* [Route filters configureren voor micro soft-peering met behulp van Azure CLI](how-to-routefilter-cli.md)
 
-## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4. Verwijder de openbare peering
+## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4. de open bare peering verwijderen
 
-Nadat u hebt gecontroleerd of de Microsoft-peering is geconfigureerd en de voorvoegsels die u wilt consumeren correct zijn geadverteerd op Microsoft-peering, u vervolgens de openbare peering verwijderen. Als u het openbare peering wilt verwijderen, gebruikt u een van de volgende artikelen:
+Nadat u hebt gecontroleerd of de micro soft-peering is geconfigureerd en de voor voegsels die u wilt gebruiken, op de juiste wijze worden geadverteerd op micro soft-peering, kunt u de open bare peering verwijderen. Als u de open bare peering wilt verwijderen, gebruikt u een van de volgende artikelen:
 
-* [Azure public peering verwijderen met Azure PowerShell](about-public-peering.md#powershell)
-* [Azure public peering verwijderen met CLI](about-public-peering.md#cli)
+* [Open bare Azure-peering met Azure PowerShell verwijderen](about-public-peering.md#powershell)
+* [Open bare Azure-peering verwijderen met CLI](about-public-peering.md#cli)
   
-## <a name="5-view-peerings"></a><a name="view"></a>5. Peerings bekijken
+## <a name="5-view-peerings"></a><a name="view"></a>5. peerings weer geven
   
-U een lijst met alle ExpressRoute-circuits en peerings bekijken in de Azure-portal. Zie [Microsoft-peeringdetails bekijken](expressroute-howto-routing-portal-resource-manager.md#getmsft)voor meer informatie.
+U kunt een lijst weer geven met alle ExpressRoute-circuits en peerings in de Azure Portal. Zie [informatie over micro soft-peering weer geven](expressroute-howto-routing-portal-resource-manager.md#getmsft)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de Veelgestelde vragen over [ExpressRoute voor](expressroute-faqs.md)meer informatie over ExpressRoute.
+Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor meer informatie over ExpressRoute.

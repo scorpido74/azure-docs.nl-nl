@@ -1,73 +1,73 @@
 ---
-title: Azure Monitor voor toewijzingen van containersregio's
-description: In dit artikel worden de regiotoewijzingen beschreven die worden ondersteund tussen Azure Monitor voor containers, Log Analytics Workspace en aangepaste statistieken.
+title: Azure Monitor voor de regio toewijzingen voor containers
+description: In dit artikel worden de regio toewijzingen beschreven die worden ondersteund tussen Azure Monitor voor containers, Log Analytics werk ruimte en aangepaste metrische gegevens.
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75403426"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Regiotoewijzingen ondersteund door Azure Monitor voor containers
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Regio toewijzingen die worden ondersteund door Azure Monitor voor containers
 
- Wanneer u Azure Monitor inschakelt voor containers, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte en een AKS-cluster en het verzamelen van aangepaste statistieken die zijn ingediend bij Azure Monitor.
+ Als Azure Monitor voor containers wordt ingeschakeld, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een AKS-cluster en het verzamelen van aangepaste metrische gegevens die aan Azure Monitor zijn verzonden.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Door Log Analytics-werkruimte ondersteunde toewijzingen
+## <a name="log-analytics-workspace-supported-mappings"></a>Ondersteunde toewijzingen Log Analytics werk ruimte
 
-De AKS-clusterbronnen of de werkruimte Log Analytics kunnen zich in andere regio's bevinden en in de volgende tabel worden onze toewijzingen weergegeven.
+De AKS-cluster resources of Log Analytics werk ruimte kunnen zich in andere regio's bevinden, en in de volgende tabel ziet u de toewijzingen.
 
-|**AKS-clustergebied** | **Regio Logboekanalysewerkruimte** |
+|**AKS-cluster regio** | **Log Analytics werkruimte regio** |
 |-----------------------|------------------------------------|
 |**Afrika** | |
-|Zuid-AfrikaNoord |West-Europa |
-|Zuid-AfrikaWest |West-Europa |
+|SouthAfricaNorth |West-Europa |
+|SouthAfricaWest |West-Europa |
 |**Australië** | |
-|AustraliëOost |AustraliëOost |
-|AustraliëCentraal |AustraliëCentraal |
-|AustraliëCentraal2 |AustraliëCentraal |
-|AustraliëOost |AustraliëOost |
+|AustraliaEast |AustraliaEast |
+|AustraliaCentral |AustraliaCentral |
+|AustraliaCentral2 |AustraliaCentral |
+|AustraliaEast |AustraliaEast |
 |**Azië en Stille Oceaan** | |
-|Oost-Azië |Oost-Azië |
-|ZuidoostAzië |ZuidoostAzië |
+|EastAsia |EastAsia |
+|SoutheastAsia |SoutheastAsia |
 |**Brazilië** | |
-|BraziliëZuid | SouthCentralUS (SouthCentralUS) |
+|BrazilSouth | SouthCentralUS |
 |**Canada** ||
-|CanadaCentraal |CanadaCentraal |
-|CanadaOost |CanadaCentraal |
+|CanadaCentral |CanadaCentral |
+|CanadaEast |CanadaCentral |
 |**Europa** | |
-|FrankrijkCentraal |FrankrijkCentraal |
-|FrankrijkZuid |FrankrijkCentraal |
-|Noord-Europa |Noord-Europa |
-|UKZuid |UKZuid |
-|UKWest |UKZuid |
+|FranceCentral |FranceCentral |
+|FranceSouth |FranceCentral |
+|NorthEurope |NorthEurope |
+|UKSouth |UKSouth |
+|UKWest |UKSouth |
 |West-Europa |West-Europa |
 |**India** | |
-|Centraal-India |Centraal-India |
-|Zuid-India |Centraal-India |
-|WestIndia WestIndia |Centraal-India |
+|CentralIndia |CentralIndia |
+|SouthIndia |CentralIndia |
+|WestIndia |CentralIndia |
 |**Japan** | |
-|JapanOost |JapanOost |
-|JapanWest (JapanWest) |JapanOost |
+|JapanEast |JapanEast |
+|JapanWest |JapanEast |
 |**Korea** | |
-|KoreaCentraal |KoreaCentraal |
-|KoreaZuid |KoreaCentraal |
+|KoreaCentral |KoreaCentral |
+|KoreaSouth |KoreaCentral |
 |**VS** | |
-|CentralUS CentralUS |CentralUS CentralUS|
-|EastUS EastUS |EastUS EastUS |
-|EastUS2 EastUS2 |EastUS2 EastUS2 |
-|WestUS (WestUS) |WestUS (WestUS) |
-|WestUS2 WestUS2 |WestUS2 WestUS2 |
-|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
+|CentralUS |CentralUS|
+|EastUS |EastUS |
+|EastUS2 |EastUS2 |
+|WestUS |WestUS |
+|WestUS2 |WestUS2 |
+|WestCentralUS<sup>1</sup>|Oost,<sup>1</sup>|
 |VS (overheid) - Virginia |VS (overheid) - Virginia |
 
-<sup>1</sup> Vanwege capaciteitsbeperkingen is de regio niet beschikbaar bij het maken van nieuwe bronnen. Dit omvat een Werkruimte Log Analytics. Reeds bestaande gekoppelde middelen in de regio moeten echter blijven werken.
+<sup>1</sup> vanwege capaciteits beperkingen is de regio niet beschikbaar bij het maken van nieuwe resources. Dit omvat een Log Analytics-werk ruimte. Bestaande gekoppelde resources in de regio moeten echter blijven werken.
 
-## <a name="custom-metrics-supported-regions"></a>Ondersteunde aangepaste statistieken regio's
+## <a name="custom-metrics-supported-regions"></a>Ondersteunde regio's voor aangepaste metrische gegevens
 
-Het verzamelen van statistieken van AKS-clusters en pods (Azure Kubernetes Services) wordt alleen ondersteund voor publicatie als aangepaste statistieken in de volgende [Azure-regio's.](../platform/metrics-custom-overview.md#supported-regions)
+Het verzamelen van metrische gegevens van knoop punten van Azure Kubernetes Services (AKS)-clusters en peulen wordt alleen ondersteund voor publicatie als aangepaste metrische gegevens in de volgende [Azure-regio's](../platform/metrics-custom-overview.md#supported-regions).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt beginnen met het bewaken van uw AKS-cluster, controleert u [Hoe u de Azure-monitor voor containers inschakelt](container-insights-onboard.md) om inzicht te krijgen in de vereisten en beschikbare methoden om bewaking in te schakelen.  
+Als u wilt beginnen met het bewaken van uw AKS-cluster, raadpleegt u [How to Enable the Azure monitor for containers](container-insights-onboard.md) voor meer informatie over de vereisten en beschik bare methoden voor het inschakelen van  

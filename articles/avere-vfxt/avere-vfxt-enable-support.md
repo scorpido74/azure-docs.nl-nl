@@ -1,47 +1,47 @@
 ---
-title: Ondersteuning inschakelen voor Avere vFXT - Azure
-description: Ondersteuninguploads van Avere vFXT voor Azure inschakelen
+title: Ondersteuning voor avere vFXT-Azure inschakelen
+description: Ondersteuning voor het inschakelen van AVERE vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: d12bbd1708ceb948aea982f9ed1ab36879e3751c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75415374"
 ---
 # <a name="enable-support-uploads"></a>Ondersteuningsuploads inschakelen
 
-Avere vFXT voor Azure kan automatisch ondersteuningsgegevens over uw cluster uploaden. Met deze uploads kunnen ondersteuningsmedewerkers de best mogelijke klantenservice bieden.
+AVERE vFXT voor Azure kan automatisch ondersteunings gegevens over uw cluster uploaden. Met deze uploads kunnen ondersteunings medewerkers de best mogelijke klanten service bieden.
 
-## <a name="steps-to-enable-uploads"></a>Stappen om uploads in te schakelen
+## <a name="steps-to-enable-uploads"></a>Stappen voor het inschakelen van uploads
 
-Volg deze stappen vanuit het Configuratiescherm van Avere om ondersteuning te activeren. (Lees [Access het vFXT-cluster](avere-vfxt-cluster-gui.md) voor meer informatie over het openen van het configuratiescherm.)
+Voer de volgende stappen uit in het configuratie scherm van AVERE om ondersteuning te activeren. (Lees [toegang tot het vFXT-cluster](avere-vfxt-cluster-gui.md) voor meer informatie over het openen van het configuratie scherm.)
 
-1. Navigeer naar het tabblad **Instellingen** bovenaan.
-1. Klik op de koppeling **Ondersteuning** aan de linkerkant en accepteer het privacybeleid.
+1. Ga bovenaan naar het tabblad **instellingen** .
+1. Klik links op de koppeling **ondersteuning** en accepteer het privacybeleid.
 
-   ![Schermafbeelding van het Configuratiescherm van Avere en het pop-upvenster met de knop Bevestigen om het privacybeleid te accepteren](media/avere-vfxt-privacy-policy.png)
+   ![Scherm opname van het configuratie scherm van AVERE en het pop-upvenster met de knop bevestigen om het privacybeleid te accepteren](media/avere-vfxt-privacy-policy.png)
 
-1. Open op de pagina ondersteuningsconfiguratie de sectie **Klantgegevens** door op het driehoekje aan de linkerkant te klikken.
-1. Klik op de knop **Uploadgegevens opnieuw valideren.**
-1. Stel de ondersteuningsnaam van het cluster in **op unieke clusternaam**. Zorg ervoor dat deze naam uw cluster op unieke wijze identificeert om het personeel te ondersteunen.
-1. Schakel de selectievakjes voor **statistiekenbewaking,** **algemene informatie uploaden**en **crashinformatie uploaden**in .
-1. Klik **op Verzenden**.
+1. Open op de pagina ondersteunings configuratie de sectie **klant gegevens** door te klikken op de drie hoek aan de linkerkant.
+1. Klik op de knop **Upload gegevens opnieuw valideren** .
+1. Stel de ondersteunings naam van het cluster in de **unieke naam**van het cluster in. Zorg ervoor dat deze naam uw cluster op unieke wijze identificeert ter ondersteuning van mede werkers.
+1. Schakel de selectie vakjes in voor **Statistieken bewaking**, **algemene informatie uploaden**en **informatie over het uploaden van crashes**.
+1. Klik op **verzenden**.
 
-   ![Schermafbeelding van de sectie voltooide pagina met klantgegevens van de pagina Ondersteuningsinstellingen](media/avere-vfxt-support-info.png)
+   ![Scherm afbeelding met de sectie met voltooide klant gegevens van de pagina met ondersteunings instellingen](media/avere-vfxt-support-info.png)
 
-1. Klik op het driehoekje links van **Secure Proactive Support (SPS)** om de sectie uit te vouwen.
-1. Schakel het selectievakje in voor **SPS-koppeling inschakelen**.
-1. Klik **op Verzenden**.
+1. Klik op het drie hoekje links van **beveiligde proactieve ondersteuning (SPS)** om de sectie uit te vouwen.
+1. Schakel het selectie vakje in voor het inschakelen van de **SPS-koppeling**.
+1. Klik op **verzenden**.
 
-   ![Schermafbeelding van de voltooide sectie Secure Proactive Support op de pagina ondersteuningsinstellingen](media/avere-vfxt-support-sps.png)
+   ![Scherm afbeelding met de sectie beveiligde proactieve ondersteuning op de pagina ondersteunings instellingen](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een on-premises of bestaand cloudopslagsysteem aan het cluster wilt toevoegen, volgt u de instructies in [Opslag configureren.](avere-vfxt-add-storage.md)
+Als u een on-premises of een bestaand Cloud opslag systeem aan het cluster wilt toevoegen, volgt u de instructies in [opslag configureren](avere-vfxt-add-storage.md).
 
-Als u klaar bent om clients aan het cluster te koppelen, leest u [Het Avere vFXT-cluster monteren.](avere-vfxt-mount-clients.md)
+Als u klaar bent om aan de slag te gaan met het koppelen van clients aan het cluster, lees dan [het avere vFXT-cluster koppelen](avere-vfxt-mount-clients.md).

@@ -1,6 +1,6 @@
 ---
-title: Maprollen toewijzen aan gebruikers - Azure Active Directory | Microsoft Documenten
-description: Instructies voor het toewijzen van beheerders- en niet-beheerdersrollen aan gebruikers met Azure Active Directory.
+title: Directory rollen toewijzen aan gebruikers-Azure Active Directory | Microsoft Docs
+description: Instructies voor het toewijzen van beheerders-en niet-beheerders rollen aan gebruikers met Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,66 +14,66 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422905"
 ---
-# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Beheerders- en niet-beheerdersrollen toewijzen aan gebruikers met Azure Active Directory
-Als een gebruiker in uw organisatie toestemming nodig heeft om Azure Active Directory-resources (Azure AD) te beheren, moet u de gebruiker een geschikte rol toewijzen in Azure AD, op basis van de acties die de gebruiker toestemming nodig heeft om uit te voeren.
+# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory
+Als een gebruiker in uw organisatie toestemming nodig heeft om Azure Active Directory-resources (Azure AD) te beheren, moet u de gebruiker een geschikte rol toewijzen in azure AD, op basis van de acties die de gebruiker nodig heeft om uit te voeren.
 
-Zie [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de beschikbare rollen. Zie Nieuwe gebruikers toevoegen [aan Azure Active Directory](add-users-azure-active-directory.md)voor meer informatie over het toevoegen van gebruikers.
+Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de beschik bare rollen. Zie [nieuwe gebruikers toevoegen aan Azure Active Directory](add-users-azure-active-directory.md)voor meer informatie over het toevoegen van gebruikers.
 
 ## <a name="assign-roles"></a>Rollen toewijzen
-Een veelgebruikte manier om Azure AD-rollen aan een gebruiker toe te wijzen, is op de **maprolpagina** voor een gebruiker.
+Een gemeen schappelijke manier om Azure AD-rollen aan een gebruiker toe te wijzen, is op de pagina **Directory-functie** voor een gebruiker.
 
-U ook rollen toewijzen met Behulp van Privileged Identity Management (PIM). Zie [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)voor meer gedetailleerde informatie over het gebruik van PIM.
+U kunt ook rollen toewijzen met behulp van Privileged Identity Management (PIM). Zie [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)voor meer gedetailleerde informatie over het gebruik van Pim.
 
 ### <a name="to-assign-a-role-to-a-user"></a>Een rol toewijzen aan een gebruiker
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en meld u aan met een globale beheerdersaccount voor de map. 
+1. Ga naar de [Azure Portal](https://portal.azure.com/) en meld u aan met een algemeen beheerders account voor de Directory. 
 
 2. Zoek naar **Azure Active Directory** en selecteer deze optie.
 
-      ![Azure-portal zoeken naar Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
+      ![Azure Portal zoeken naar Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
 
 3. Selecteer **Gebruikers**.
 
-4. Zoek naar en selecteer de gebruiker die de roltoewijzing krijgt. Bijvoorbeeld, _Alain Charon_.
+4. Zoek en selecteer de gebruiker die de roltoewijzing ophaalt. Bijvoorbeeld _Alain Charon_.
 
-      ![Pagina Alle gebruikers - selecteer de gebruiker](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
+      ![Pagina alle gebruikers: Selecteer de gebruiker](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-5. Selecteer op de pagina **Alain Charon - Profiel** de optie Toegewezen **rollen**.
+5. Selecteer **toegewezen rollen**op de pagina **Alain Charon-profiel** .
 
-    De **rolpagina Alain Charon - Directory** wordt weergegeven.
+    De pagina **Alain Charon-Directory Role** wordt weer gegeven.
 
-6. Selecteer **Toewijzing toevoegen,** selecteer de rol die u aan Alain wilt toewijzen (bijvoorbeeld _Toepassingsbeheerder)_ en kies **Selecteer Vervolgens Selecteren**.
+6. Selecteer **toewijzing toevoegen**, selecteer de rol die u wilt toewijzen aan Alain (bijvoorbeeld _toepassings beheerder_) en kies vervolgens **selecteren**.
 
-    ![Pagina Toegewezen rollen - met de geselecteerde rol](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+    ![Pagina toegewezen functies: de geselecteerde rol wordt weer gegeven](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
-    De rol van de toepassingsbeheerder wordt toegewezen aan Alain Charon en wordt weergegeven op de rolpagina **Alain Charon - Directory.**
+    De rol toepassings beheerder is toegewezen aan Alain Charon en deze wordt weer gegeven op de pagina **Alain Charon-Directory** .
 
 ## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
-Als u de roltoewijzing van een gebruiker moet verwijderen, u dat ook doen via de rolpagina **Alain Charon - Directory.**
+Als u de roltoewijzing van een gebruiker wilt verwijderen, kunt u dit ook doen op de pagina **Alain Charon-Directory Role** .
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>Een roltoewijzing van een gebruiker verwijderen
 
-1. Selecteer **Azure Active Directory**, selecteer **Gebruikers**en zoek en selecteer de gebruiker die de roltoewijzing verwijderd. Bijvoorbeeld, _Alain Charon_.
+1. Selecteer **Azure Active Directory**, selecteer **gebruikers**, zoek naar en selecteer de gebruiker die de roltoewijzing heeft verwijderd. Bijvoorbeeld _Alain Charon_.
 
-2. Selecteer **Toegewezen rollen,** selecteer **Toepassingsbeheerder**en selecteer **Toewijzing verwijderen**.
+2. Selecteer **toegewezen rollen**, selecteer **toepassings beheerder**en selecteer vervolgens **toewijzing verwijderen**.
 
-    ![Pagina Toegewezen rollen, met de geselecteerde rol en de optie Verwijderen](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![Pagina toegewezen functies, waarin de geselecteerde rol en de optie verwijderen worden weer gegeven](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    De rol van de toepassingsbeheerder wordt verwijderd uit Alain Charon en wordt niet meer weergegeven op de rolpagina **Alain Charon - Directory.**
+    De rol toepassings beheerder wordt verwijderd uit Alain Charon en wordt niet meer weer gegeven op de pagina **Alain Charon-Directory** .
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Gebruikers toevoegen of verwijderen](add-users-azure-active-directory.md)
 
-- [Profielgegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)
+- [Profiel gegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)
 
 - [Gastgebruikers uit een andere directory toevoegen](../b2b/what-is-b2b.md)
 
-U ook andere gebruikersbeheertaken uitvoeren, zoals het toewijzen van gemachtigden, het gebruik van beleid en het delen van gebruikersaccounts. Zie [Azure Active Directory-gebruikersbeheerdocumentatie](../users-groups-roles/index.yml)voor meer informatie over andere beschikbare acties.
+U kunt ook andere gebruikers beheer taken uitvoeren, zoals het toewijzen van gemachtigden, het gebruiken van beleid en het delen van gebruikers accounts. Zie [Azure Active Directory-documentatie voor gebruikers beheer](../users-groups-roles/index.yml)voor meer informatie over andere beschik bare acties.
 
 

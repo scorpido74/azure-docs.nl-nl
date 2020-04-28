@@ -1,6 +1,6 @@
 ---
-title: 'Problemen met de prestaties van netwerkkoppelingen oplossen: Azure'
-description: Deze pagina biedt een gestandaardiseerde methode voor het testen van de prestaties van Azure-netwerkkoppelingen.
+title: 'Problemen met de netwerk verbinding oplossen: Azure'
+description: Deze pagina biedt een gestandaardiseerde methode voor het testen van de prestaties van Azure-netwerk koppelingen.
 services: expressroute
 author: tracsman
 ms.service: expressroute
@@ -9,203 +9,203 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74869643"
 ---
-# <a name="troubleshooting-network-performance"></a>Problemen met de netwerkprestaties oplossen
+# <a name="troubleshooting-network-performance"></a>Problemen met netwerk prestaties oplossen
 ## <a name="overview"></a>Overzicht
-Azure biedt stabiele en snelle manieren om vanuit uw on-premises netwerk verbinding te maken met Azure. Methoden zoals site-naar-site VPN en ExpressRoute worden met succes toegepast door klanten met kleine of grote ondernemingen om hun bedrijf te exploiteren in Azure. Maar wat gebeurt er als de prestaties niet voldoen aan uw verwachting of eerdere ervaring? Dit document kan helpen bij het standaardiseren van de manier waarop u uw specifieke omgeving test en basislijn.
+Azure biedt stabiele en snelle manieren om vanuit uw on-premises netwerk verbinding te maken met Azure. Methoden zoals site-naar-site VPN en ExpressRoute worden met succes toegepast door klanten met kleine of grote ondernemingen om hun bedrijf te exploiteren in Azure. Maar wat gebeurt er wanneer de prestaties niet voldoen aan uw verwachting of een eerdere ervaring? Dit document helpt u bij het standaardiseren van de manier waarop u uw specifieke omgeving test en basis lijn.
 
-In dit document ziet u hoe u de netwerklatentie en bandbreedte tussen twee hosts eenvoudig en consistent testen. Dit document geeft ook advies over manieren om naar het Azure-netwerk te kijken en probleempunten te isoleren. De PowerShell script en tools besproken vereisen twee hosts op het netwerk (aan weerszijden van de link wordt getest). De ene host moet een Windows Server of Desktop zijn, de andere kan Windows of Linux zijn. 
+Dit document laat zien hoe u de netwerk latentie en band breedte tussen twee hosts eenvoudig en consistent kunt testen. Dit document bevat ook een aantal adviezen over manieren om het Azure-netwerk te bekijken en probleem punten te isoleren. Het script en de hulpprogram ma's van Power shell vereisen twee hosts op het netwerk (aan beide uiteinden van de koppeling die wordt getest). Eén host moet een Windows-Server of-bureau blad zijn, de andere kan Windows of Linux zijn. 
 
 >[!NOTE]
->De benadering van probleemoplossing, de gebruikte tools en methoden zijn persoonlijke voorkeuren. Dit document beschrijft de aanpak en tools die ik vaak neem. Uw aanpak zal waarschijnlijk verschillen, er is niets mis met verschillende benaderingen van het oplossen van problemen. Als u echter geen vaste aanpak hebt, u met dit document aan de slag op het pad naar het bouwen van uw eigen methoden, hulpprogramma's en voorkeuren voor het oplossen van netwerkproblemen.
+>De aanpak van het oplossen van problemen, de hulpprogram ma's en de gebruikte methoden zijn persoonlijke voor keuren. In dit document worden de aanpak en de hulpprogram ma's beschreven die vaak worden gebruikt. Uw benadering wijkt waarschijnlijk af van de verschillende benaderingen van het oplossen van problemen. Als u echter geen benadering hebt, kunt u met dit document aan de slag gaan met het pad om uw eigen methoden, hulpprogram ma's en voor keuren te bouwen om netwerk problemen op te lossen.
 >
 >
 
 ## <a name="network-components"></a>Netwerkonderdelen
-Voordat we ons verdiepen in het oplossen van problemen, bespreken we enkele algemene termen en componenten. Deze discussie zorgt ervoor dat we nadenken over elk onderdeel in de end-to-end-keten die connectiviteit in Azure mogelijk maakt.
+Voordat u Blijf spitten in het oplossen van problemen, bespreken we enkele algemene voor waarden en onderdelen. Deze bespreking zorgt ervoor dat er wordt geadviseerd over elk onderdeel in de end-to-end keten dat connectiviteit in azure mogelijk maakt.
 ![1][1]
 
-Op het hoogste niveau beschrijf ik drie belangrijke netwerkroutingdomeinen;
+Op het hoogste niveau worden er drie grote netwerk routerings domeinen beschreven.
 
-- het Azure-netwerk (blauwe wolk aan de rechterkant)
-- internet of WAN (groene wolk in het midden)
-- het Bedrijfsnetwerk (perzikwolk aan de linkerkant)
+- het Azure-netwerk (blauwe cloud aan de rechter kant)
+- Internet of WAN (groene Cloud in het midden)
+- het bedrijfs netwerk (perzik-cloud aan de linkerkant)
 
-Als we het diagram van rechts naar links bekijken, bespreken we elk onderdeel kort:
- - **Virtuele machine** - De server kan meerdere NIC's hebben, ervoor zorgen dat statische routes, standaardroutes en instellingen van het besturingssysteem verkeer verzenden en ontvangen zoals u denkt dat het is. Ook heeft elke VM SKU een bandbreedtebeperking. Als u een kleinere VM SKU gebruikt, wordt uw verkeer beperkt door de bandbreedte die beschikbaar is voor de NIC. Ik gebruik meestal een DS5v2 voor het testen (en verwijder dan eenmaal gedaan met testen om geld te besparen) om voldoende bandbreedte te garanderen op de VM.
- - **NIC** - Zorg ervoor dat u het privé-IP kent dat is toegewezen aan de betreffende NIC.
- - **NIC NSG** - Er kunnen specifieke NSG's worden toegepast op NIC-niveau, zorg ervoor dat de NSG-regelset geschikt is voor het verkeer dat u probeert te passeren. Zorg er bijvoorbeeld voor dat poorten 5201 voor iPerf, 3389 voor RDP of 22 voor SSH open staan om testverkeer te laten passeren.
- - **VNet Subnet** - De NIC wordt toegewezen aan een specifiek subnet, zorg ervoor dat u weet welke en de regels die zijn gekoppeld aan dat subnet.
- - **Subnet NSG** - Net als de NIC kunnen ook NSG's op het subnet worden toegepast. Zorg ervoor dat de NSG-regelset geschikt is voor het verkeer dat u probeert te passeren. (voor verkeer dat aan NIC binnengaat is het subnet NSG eerst van toepassing, dan NIC NSG, omgekeerd voor verkeer uitgaand van VM is NIC NSG eerst van toepassing dan subnet NSG komt in spel).
- - **Subnet UDR** - User Defined Routes kunnen verkeer naar een tussenliggende hop leiden (zoals een firewall of load-balancer). Zorg ervoor dat u weet of er een UDR in de plaats voor uw verkeer en zo ja waar het gaat en wat die volgende hop zal doen om uw verkeer. (een firewall kan bijvoorbeeld wat verkeer passeren en ander verkeer tussen dezelfde twee hosts weigeren).
- - **Gateway subnet / NSG / UDR** - Net als het VM subnet, kan de gateway subnet hebben NSGs en UDRRs. Zorg ervoor dat u weet of ze er zijn en welke effecten ze hebben op uw verkeer.
- - **VNet Gateway (ExpressRoute)** - Zodra peering (ExpressRoute) of VPN is ingeschakeld, zijn er niet veel instellingen die van invloed kunnen zijn op hoe of als verkeer routes. Als u meerdere ExpressRoute-circuits of VPN-tunnels hebt die zijn verbonden met dezelfde VNet-gateway, moet u zich bewust zijn van de instellingen voor het verbindingsgewicht, aangezien deze instelling van invloed is op de voorkeur van de verbinding en van invloed is op het pad dat uw verkeer neemt.
- - **Routefilter** (niet weergegeven) - Een routefilter is alleen van toepassing op Microsoft Peering op ExpressRoute, maar is van cruciaal belang om te controleren of u de routes die u verwacht op Microsoft Peering niet ziet. 
+Bekijk het diagram van rechts naar links om elk onderdeel kort te bespreken:
+ - **Virtuele machine** : de server kan meerdere nic's hebben, Controleer of alle statische routes, standaard routes en instellingen van het besturings systeem verkeer verzenden en ontvangen zoals u dat wilt. Daarnaast heeft elke VM-SKU een bandbreedte beperking. Als u een kleinere VM-SKU gebruikt, wordt uw verkeer beperkt door de band breedte die beschikbaar is voor de NIC. Normaal gesp roken gebruikt u een DS5v2 voor het testen (en verwijdert u vervolgens eenmaal met testen om geld te besparen) om te zorgen voor voldoende band breedte op de VM.
+ - **NIC** : Zorg ervoor dat u weet wat het privé-IP-adres is dat is toegewezen aan de NIC in kwestie.
+ - **NIC-NSG** : er is mogelijk specifieke nsg's toegepast op het niveau van de NIC, zodat de NSG-regel is ingesteld op het verkeer dat u probeert door te geven. Zorg er bijvoorbeeld voor dat poort 5201 voor iPerf, 3389 voor RDP of 22 voor SSH is geopend, zodat test verkeer kan worden door gegeven.
+ - **VNet-subnet** : de NIC wordt toegewezen aan een specifiek subnet. Zorg ervoor dat u weet welke en welke regels aan dat subnet zijn gekoppeld.
+ - **SUBNET NSG** -net als de NIC kan nsg's ook worden toegepast op het subnet. Zorg ervoor dat de regel set NSG geschikt is voor het verkeer dat u probeert door te geven. (voor verkeer dat binnenkomt voor de NIC waarop de subnet-NSG van toepassing is, wordt de NIC NSG daarentegen voor uitgaand verkeer van de virtuele machine waarop de NIC NSG van toepassing is, waarna het subnet NSG wordt afgespeeld).
+ - **SUBNET UDR** : door de gebruiker gedefinieerde routes kunnen verkeer omleiden naar een tussenliggende hop (zoals een firewall of een load balancer). Zorg ervoor dat u weet of er een UDR is voor uw verkeer en zo ja, wanneer het gaat en wat de volgende hop naar uw verkeer doet. (een firewall kan bijvoorbeeld verkeer door lopen en ander verkeer tussen dezelfde twee hosts weigeren).
+ - **Gateway subnet/NSG/UDR** -net als het VM-subnet kan het gateway-subnet Nsg's en udr's hebben. Zorg ervoor dat u weet of ze daar zijn en wat het effect hiervan op uw verkeer is.
+ - **VNet-gateway (ExpressRoute)** : zodra peering (ExpressRoute) of VPN is ingeschakeld, zijn er geen instellingen die van invloed kunnen zijn op de manier waarop of wanneer er verkeer wordt gerouteerd. Als u meerdere ExpressRoute-circuits of VPN-tunnels hebt die zijn verbonden met dezelfde VNet-gateway, moet u rekening houden met de instellingen voor verbindings gewicht als deze instelling van invloed is op de verbindings voorkeur en die van invloed is op het pad dat het verkeer in beslag neemt.
+ - **Route filter** (niet weer gegeven): een route filter is alleen van toepassing op micro soft-peering op ExpressRoute, maar is essentieel om te controleren of u de routes die u verwacht op micro soft-peering niet ziet. 
 
-Op dit moment bevindt u zich op het WAN-gedeelte van de koppeling. Dit routeringsdomein kan uw serviceprovider, uw zakelijke WAN of internet zijn. Veel hop, technologieën en bedrijven die betrokken zijn bij deze links kan het enigszins moeilijk maken om problemen op te lossen. Vaak werkt u eerst uit te sluiten voor zowel Azure als uw bedrijfsnetwerken voordat u in deze verzameling bedrijven en hop springt.
+U bevindt zich op dit punt in het WAN-gedeelte van de koppeling. Dit routerings domein kan uw service provider, het WAN van uw bedrijf of Internet zijn. Veel hops, technologieën en bedrijven die bij deze koppelingen betrokken zijn, kunnen het moeilijk maken om problemen op te lossen. Vaak kunt u eerst zowel Azure als uw bedrijfs netwerken regel matig afwerken voordat u overgaat naar deze verzameling bedrijven en hops.
 
-In het voorgaande diagram, helemaal links is uw bedrijfsnetwerk. Afhankelijk van de grootte van uw bedrijf kan dit routeringsdomein een paar netwerkapparaten zijn tussen u en het WAN of meerdere lagen apparaten in een campus/bedrijfsnetwerk.
+In het voor gaande diagram is helemaal links uw bedrijfs netwerk. Afhankelijk van de grootte van uw bedrijf, kunnen dit routerings domein een aantal netwerk apparaten tussen u en de WAN-of meerdere lagen van apparaten in een campus/Enter prise-netwerk zijn.
 
-Gezien de complexiteit van deze drie verschillende netwerkomgevingen op hoog niveau, is het vaak optimaal om aan de randen te beginnen en te proberen te laten zien waar de prestaties goed zijn en waar het degradeert. Deze aanpak kan helpen bij het identificeren van het probleemrouterdomein van de drie en vervolgens uw probleemoplossing richten op die specifieke omgeving.
+Gezien de complexiteit van deze drie verschillende netwerk omgevingen op hoog niveau, is het vaak optimaal om aan de randen te beginnen en om te zien waar de prestaties goed zijn en waar deze worden verminderd. Deze aanpak kan helpen bij het identificeren van het routerings domein van het probleem van de drie en richt zich vervolgens op het oplossen van problemen met die specifieke omgeving.
 
 ## <a name="tools"></a>Hulpprogramma's
-De meeste netwerkproblemen kunnen worden geanalyseerd en geïsoleerd met behulp van basistools zoals ping en traceroute. Het is zeldzaam dat je nodig hebt om zo diep te gaan als een pakket analyse als Wireshark. Om te helpen bij het oplossen van problemen is de Azure Connectivity Toolkit (AzureCT) ontwikkeld om een aantal van deze hulpprogramma's in een eenvoudig pakket te plaatsen. Voor het testen van de prestaties, ik wil iPerf en PSPing gebruiken. iPerf is een veelgebruikt hulpmiddel en draait op de meeste besturingssystemen. iPerf is goed voor basisprestaties tests en is vrij eenvoudig te gebruiken. PSPing is een ping tool ontwikkeld door SysInternals. PSPing is een eenvoudige manier om ICMP- en TCP-pings uit te voeren in één ook eenvoudig te gebruiken commando. Beide tools zijn lichtgewicht en zijn "geïnstalleerd" gewoon door het omgaan met de bestanden om een directory op de host.
+De meeste netwerk problemen kunnen worden geanalyseerd en geïsoleerd met behulp van basis hulpprogramma's als ping en traceroute. Het lijkt erop dat u zo diep als een pakket analyse moet gaan, zoals wireshark. Voor hulp bij het oplossen van problemen is de Azure Connectivity Toolkit (AzureCT) ontwikkeld om enkele van deze hulpprogram ma's in een eenvoudig pakket te zetten. Voor het testen van de prestaties, ik wil iPerf en PSPing gebruiken. iPerf is een veelgebruikt hulp programma dat wordt uitgevoerd op de meeste besturings systemen. iPerf is geschikt voor elementaire uitvoeringen testen en is redelijk eenvoudig te gebruiken. PSPing is een ping-hulp programma dat is ontwikkeld door SysInternals. PSPing is een eenvoudige manier om ICMP-en TCP-pings uit te voeren in een eenvoudig te gebruiken opdracht. Beide hulpprogram ma's zijn licht gewicht en worden ' geïnstalleerd ' door de bestanden te omgaan naar een map op de host.
 
-Ik heb al deze tools en methoden verpakt in een PowerShell-module (AzureCT) die u installeren en gebruiken.
+Ik heb al deze hulpprogram ma's en methoden genest in een Power shell-module (AzureCT) die u kunt installeren en gebruiken.
 
-### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - de Azure Connectivity Toolkit
-De AzureCT PowerShell-module heeft twee componenten [Beschikbaarheidtesten][Availability Doc] en [Prestatietesten.][Performance Doc] Dit document heeft alleen betrekking op prestatietests, dus laten we ons richten op de twee Opdrachten voor Koppelingprestaties in deze PowerShell-module.
+### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT-de Azure Connectivity Toolkit
+De AzureCT Power shell-module heeft twee [Beschik baarheid][Availability Doc] van onderdelen en [prestatie testen][Performance Doc]. Dit document is alleen gericht op prestatie tests, zodat u zich kunt richten op de twee opdrachten voor koppelings prestaties in deze Power shell-module.
 
-Er zijn drie basisstappen om deze toolkit te gebruiken voor prestatietesten. 1) Installeer de PowerShell-module, 2) Installeer de ondersteunende toepassingen iPerf en PSPing 3) Voer de prestatietest uit.
+Er zijn drie basis stappen voor het gebruik van deze Toolkit voor het testen van de prestaties. 1) de Power shell-module installeren, 2) Installeer de ondersteunende toepassingen iPerf en PSPing 3) de prestatie test uitvoeren.
 
-1. De PowerShell-module installeren
+1. De Power shell-module installeren
 
     ```powershell
     (new-object Net.WebClient).DownloadString("https://aka.ms/AzureCT") | Invoke-Expression
     
     ```
 
-    Deze opdracht downloadt de PowerShell-module en installeert deze lokaal.
+    Met deze opdracht wordt de Power shell-module gedownload en lokaal geïnstalleerd.
 
 2. De ondersteunende toepassingen installeren
     ```powershell
     Install-LinkPerformance
     ```
-    Deze AzureCT-opdracht installeert iPerf en PSPing in een nieuwe map "C:\ACTTools", het opent ook de Windows Firewall-poorten om ICMP- en poort5201 -verkeer (iPerf) toe te staan.
+    Met deze AzureCT-opdracht worden iPerf en PSPing in een nieuwe directory "C:\ACTTools" geïnstalleerd, wordt ook de Windows Firewall poorten geopend om verkeer van ICMP-en poort 5201 (iPerf) toe te staan.
 
-3. De prestatietest uitvoeren
+3. De prestatie test uitvoeren
 
-    Ten eerste, op de externe host moet u iPerf installeren en uitvoeren in de servermodus. Zorg er ook voor dat de externe host luistert op 3389 (RDP voor Windows) of 22 (SSH voor Linux) en verkeer toestaat op poort 5201 voor iPerf. Als de externe host windows is, installeert u de AzureCT en voert u de opdracht Install-LinkPerformance uit om iPerf in te stellen en de firewallregels die nodig zijn om iPerf in de servermodus te starten. 
+    Eerst moet u op de externe host iPerf installeren en uitvoeren in de server modus. Zorg er ook voor dat de externe host op 3389 (RDP voor Windows) of 22 (SSH voor Linux) luistert en verkeer op poort 5201 voor iPerf toestaat. Als de externe host Windows is, installeert u de AzureCT en voert u de opdracht install-LinkPerformance uit om iPerf in te stellen en de firewall regels die nodig zijn om iPerf in de server modus te kunnen starten. 
     
-    Zodra de externe machine klaar is, opent u PowerShell op de lokale machine en start u de test:
+    Zodra de externe computer klaar is, opent u Power shell op de lokale computer en start u de test:
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 10
     ```
 
-    Met deze opdracht wordt een reeks gelijktijdige belasting- en latentietests uitgevoerd om de bandbreedtecapaciteit en latentie van uw netwerkkoppeling te schatten.
+    Met deze opdracht voert u een reeks gelijktijdige laad-en latentie tests uit om de bandbreedte capaciteit en latentie van uw netwerk koppeling te schatten.
 
-4. Bekijk de output van de tests
+4. Bekijk de uitvoer van de tests
 
-    De PowerShell-uitvoerindeling lijkt op:
+    De Power shell-uitvoer indeling ziet er ongeveer als volgt uit:
 
     ![4][4]
 
-    De gedetailleerde resultaten van alle iPerf- en PSPing-tests bevinden zich in afzonderlijke tekstbestanden in de map met AzureCT-hulpprogramma's op 'C:\ACTTools'.
+    De gedetailleerde resultaten van alle iPerf-en PSPing-tests vindt u in afzonderlijke tekst bestanden in de map hulpprogram ma's van AzureCT op ' C:\ACTTools. '
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Als de prestatietest u geen verwachte resultaten geeft, moet u uitzoeken waarom een progressief stapsgewijs proces moet zijn. Gezien het aantal componenten in het pad, een systematische aanpak biedt over het algemeen een snellere weg naar resolutie dan springen rond en potentieel onnodig doen dezelfde testen meerdere keren.
+Als de prestatie test niet de verwachte resultaten oplevert, kunt u het beste stapsgewijs een progressief proces maken. Op basis van het aantal onderdelen in het pad biedt een systematische benadering doorgaans een sneller pad naar de oplossing dan het probleem en mogelijk onnodig dezelfde tests meerdere keren uitvoeren.
 
 >[!NOTE]
->Het scenario hier is een prestatieprobleem, geen verbindingsprobleem. De trappen zouden anders zijn als het verkeer helemaal niet voorbij kwam.
+>Het scenario hier is een prestatie probleem, geen connectiviteits probleem. De stappen zijn anders als verkeer helemaal niet is door gegeven.
 >
 >
 
-Ten eerste, daag je veronderstellingen uit. Is uw verwachting redelijk? Als u bijvoorbeeld een 1-Gbps ExpressRoute-circuit en 100 ms latentie hebt, is het onredelijk om de volledige 1 Gbps verkeer te verwachten, gezien de prestatiekenmerken van TCP ten opzichte van hoge latentiekoppelingen. Zie de [sectie Referenties](#references) voor meer informatie over prestatieveronderstellingen.
+Vraag eerst uw veronderstellingen af. Is uw verwachting redelijk? Als u bijvoorbeeld een ExpressRoute-circuit van 1 Gbps en 100 MS van de latentie hebt, is het onredelijk dat u de volledige 1 Gbps aan verkeer krijgt, gezien de prestatie kenmerken van TCP via koppelingen met een hoge latentie. Zie het [gedeelte met verwijzingen](#references) voor meer informatie over prestatie aannames.
 
-Vervolgens raad ik aan om aan de randen tussen routeringsdomeinen te beginnen en te proberen het probleem te isoleren naar één belangrijk routeringsdomein; het Bedrijfsnetwerk, het WAN of het Azure-netwerk. Mensen vaak de schuld van de "zwarte doos" in het pad, terwijl de schuld van de zwarte doos is gemakkelijk te doen, kan het aanzienlijk vertragen resolutie vooral als het probleem is eigenlijk in een gebied dat je de mogelijkheid om veranderingen aan te brengen. Zorg ervoor dat u uw due diligence te doen voordat het overhandigen aan uw dienstverlener of ISP.
+Vervolgens raden we u aan om te beginnen bij de randen tussen routerings domeinen en het probleem te isoleren met één groot routerings domein. het bedrijfs netwerk, het WAN of het Azure-netwerk. Mensen liggen vaak het ' Black Box ' in het pad, terwijl blaming het zwarte vak gemakkelijk te doen is, kan de resolutie aanzienlijk vertragen als het probleem zich in een gebied bevindt dat u de mogelijkheid hebt om wijzigingen aan te brengen. Zorg ervoor dat u uw terdege toeneemt voordat u uw service provider of Internet provider uitlevert.
 
-Zodra u het belangrijkste routeringsdomein hebt geïdentificeerd dat het probleem lijkt te bevatten, moet u een diagram van het betrokken gebied maken. Ofwel op een whiteboard, kladblok, of Visio als een diagram biedt een concrete "battle map" om een methodische aanpak om het probleem verder te isoleren. U testpunten plannen en de kaart bijwerken terwijl u gebieden wist of dieper graaft naarmate het testen vordert.
+Zodra u het grote routerings domein hebt geïdentificeerd dat het probleem bevat, moet u een diagram van het betreffende gebied maken. Op een White Board, Klad blok of Visio als diagram kunt u een beton ' vechten-kaart ' maken, zodat een methode wordt gebruikt om het probleem verder te isoleren. U kunt test punten plannen en de kaart bijwerken wanneer u gebieden wist of dieper gaat naarmate de tests worden uitgevoerd.
 
-Nu u een diagram hebt, begint u het netwerk in segmenten te verdelen en het probleem te beperken. Zoek uit waar het werkt en waar het niet werkt. Blijf uw testpunten verplaatsen om te isoleren tot aan de gewraakte component.
+Nu u een diagram hebt, begint u met het verdelen van het netwerk in segmenten en beperkt u het probleem. Ontdek waar het werkt en waar dat niet het geval is. Blijf uw test punten verplaatsen om ze te isoleren tot het conflicterende onderdeel.
 
-Vergeet ook niet om te kijken naar andere lagen van het OSI-model. Het is eenvoudig om je te concentreren op het netwerk en lagen 1 - 3 (Fysieke, Gegevens- en Netwerklagen), maar de problemen kunnen ook oplopen bij Laag 7 in de toepassingslaag. Houd een open geest en controleer veronderstellingen.
+Vergeet ook niet om andere lagen van het OSI-model te bekijken. Het is eenvoudig om te richten op het netwerk en de lagen 1-3 (fysieke, gegevens en netwerk lagen), maar de problemen kunnen ook op laag 7 in de toepassingslaag worden weer gegeven. Houd een open gedachte en controleer hypo theses.
 
-## <a name="advanced-expressroute-troubleshooting"></a>Geavanceerde ExpressRoute-probleemoplossing
-Als u niet zeker weet waar de rand van de cloud zich eigenlijk bevindt, kan het isoleren van de Azure-componenten een uitdaging zijn. Wanneer ExpressRoute wordt gebruikt, is de rand een netwerkcomponent genaamd de Microsoft Enterprise Edge (MSEE). **Bij het gebruik van ExpressRoute**is de MSEE het eerste aanspreekpunt in het netwerk van Microsoft en de laatste hop die het Microsoft-netwerk verlaat. Wanneer u een verbindingsobject maakt tussen uw VNet-gateway en het ExpressRoute-circuit, maakt u daadwerkelijk een verbinding met de MSEE. Het herkennen van de MSEE als de eerste of laatste hop (afhankelijk van welke richting u gaat) is van cruciaal belang voor het isoleren van Azure Network-problemen om te bewijzen dat het probleem zich in Azure bevindt of verder stroomafwaarts in het WAN- of bedrijfsnetwerk. 
+## <a name="advanced-expressroute-troubleshooting"></a>Geavanceerde ExpressRoute problemen oplossen
+Als u niet zeker weet waar de rand van de Cloud zich daad werkelijk bevindt, kan het isoleren van de onderdelen van Azure een uitdaging zijn. Wanneer ExpressRoute wordt gebruikt, is de rand een netwerk onderdeel dat de micro soft Enter prise Edge (MSEE) wordt genoemd. **Wanneer u ExpressRoute gebruikt**, is de MSEE het eerste contact punt in het netwerk van micro soft en de laatste hop die het micro soft-netwerk verlaat. Wanneer u een verbindings object tussen uw VNet-gateway en het ExpressRoute-circuit maakt, maakt u een verbinding met de MSEE. Het herkennen van de MSEE als de eerste of laatste hop (afhankelijk van de richting die u gaat) is van cruciaal belang voor het isoleren van Azure-netwerk problemen om te bewijzen dat het probleem zich in azure of verder downstream in het WAN of het bedrijfs netwerk bevindt. 
 
 ![2][2]
 
 >[!NOTE]
-> Merk op dat de MSEE zich niet in de Azure-cloud bevindt. ExpressRoute is eigenlijk aan de rand van het Microsoft-netwerk niet echt in Azure. Zodra u verbinding hebt gemaakt met ExpressRoute met een MSEE, bent u verbonden met het netwerk van Microsoft, van daaruit u naar een van de cloudservices gaan, zoals Office 365 (met Microsoft Peering) of Azure (met Privé en/of Microsoft Peering).
+> U ziet dat de MSEE zich niet in de Azure-Cloud bevindt. ExpressRoute is daad werkelijk aan de rand van het micro soft-netwerk niet echt in Azure. Zodra u verbinding hebt gemaakt met ExpressRoute voor een MSEE, hebt u verbinding met het netwerk van micro soft. daar kunt u vervolgens naar een van de Cloud Services gaan, zoals Office 365 (met micro soft-peering) of Azure (met persoonlijke en/of micro soft-peering).
 >
 >
 
-Als twee VNets (VNets A en B in het diagram) zijn verbonden met **hetzelfde** ExpressRoute-circuit, u een reeks tests uitvoeren om het probleem in Azure te isoleren (of bewijzen dat het niet in Azure staat)
+Als twee VNets (VNets A en B in het diagram) zijn verbonden met **hetzelfde** ExpressRoute-circuit, kunt u een reeks tests uitvoeren om het probleem in azure te isoleren (of bewijzen dat het zich niet in azure bevindt)
  
-### <a name="test-plan"></a>Testplan
-1. Voer de Get-LinkPerformance-test uit tussen VM1 en VM2. Deze test geeft inzicht in of het probleem lokaal is of niet. Als deze test aanvaardbare latentie- en bandbreedteresultaten oplevert, u het lokale VNet-netwerk als goed markeren.
-2. Ervan uitgaande dat het lokale VNet-verkeer goed is, voert u de Get-LinkPerformance-test uit tussen VM1 en VM3. Deze test oefent de verbinding via het Microsoft-netwerk uit tot aan de MSEE en terug naar Azure. Als deze test aanvaardbare latentie- en bandbreedteresultaten oplevert, u het Azure-netwerk als goed markeren.
-3. Als Azure is uitgesloten, u een vergelijkbare reeks tests uitvoeren op uw bedrijfsnetwerk. Als dat ook goed test, is het tijd om samen te werken met uw serviceprovider of ISP om uw WAN-verbinding te diagnosticeren. Voorbeeld: Voer deze test uit tussen twee filialen of tussen uw bureau en een datacenterserver. Afhankelijk van wat u test, zoek je eindpunten (servers, pc's, enz.) die dat pad kunnen uitoefenen.
+### <a name="test-plan"></a>Test plan
+1. Voer de Get-LinkPerformance-test uit tussen VM1 en VM2. Deze test geeft inzicht in het geval dat het probleem lokaal is of niet. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het lokale VNet-netwerk markeren als goed.
+2. Ervan uitgaande dat het lokale VNet-verkeer goed is, voert u de Get-LinkPerformance-test tussen VM1 en VM3 uit. Met deze test wordt de verbinding via het micro soft-netwerk tot stand gebracht met de MSEE en weer in Azure. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het Azure-netwerk markeren als goed.
+3. Als Azure wordt uitgesloten, kunt u een vergelijk bare reeks testen op uw bedrijfs netwerk uitvoeren. Als dat ook goed wordt getest, is het tijd om samen te werken met uw service provider of provider om uw WAN-verbinding te diagnosticeren. Voor beeld: Voer deze test uit tussen twee filialen of tussen uw bureau en een Data Center-Server. Afhankelijk van wat u wilt testen, zoekt u eind punten (servers, Pc's, enzovoort) die dit pad kunnen uitoefenen.
 
 >[!IMPORTANT]
-> Het is van cruciaal belang dat u voor elke test het tijdstip van de test markeert en de resultaten op een gemeenschappelijke locatie registreert (ik vind OneNote of Excel leuk). Elke testrun moet dezelfde uitvoer hebben, zodat u de resulterende gegevens over testuitvoeringen vergelijken en geen gaten in de gegevens hebt. Consistentie voor meerdere tests is de belangrijkste reden waarom ik de AzureCT gebruik voor het oplossen van problemen. De magie is niet in de exacte belasting scenario's die ik uitte, maar in plaats daarvan de *magie* is het feit dat ik een *consistente test en gegevens output* van elke test. Het opnemen van de tijd en het hebben van consistente gegevens elke keer is vooral handig als je later merkt dat het probleem sporadisch is. Wees ijverig met uw gegevens verzameling op voorhand en je zult voorkomen dat uren van het opnieuw testen van dezelfde scenario's (ik leerde deze harde manier vele jaren geleden).
+> Het is essentieel dat voor elke test het tijdstip waarop u de test uitvoert, de resultaten op een algemene locatie (zoals OneNote of Excel) vastlegt. Elke test uitvoering moet een identieke uitvoer hebben, zodat u de resulterende gegevens in de test uitvoeringen kunt vergelijken en geen ' gaten ' in de gegevens hebt. Consistentie tussen meerdere tests is de belangrijkste reden waarom ik de AzureCT gebruik voor het oplossen van problemen. Het Magic is niet in de exacte werk scenario's die ik uitvoer, maar in plaats *daarvan is het* een *consistente test en gegevens uitvoer* van elke test. Het vastleggen van de tijd en het hebben van consistente gegevens elke enige tijd is met name handig als u later merkt dat het probleem sporadisch is. Wees zo snel mogelijk met uw gegevens verzameling, zodat u kunt voor komen dat dezelfde scenario's opnieuw worden getest (ik heb deze vaste weg al jaren geleden geleerd).
 >
 >
 
-## <a name="the-problem-is-isolated-now-what"></a>Het probleem is geïsoleerd, wat nu?
-Hoe meer u het probleem isoleren, hoe gemakkelijker het is om op te lossen, hoe vaak u het punt bereikt waarop u niet dieper of verder gaan met uw probleemoplossing. Voorbeeld: u ziet de link tussen uw serviceprovider die hop door Europa neemt, maar uw verwachte pad is allemaal in Azië. Dit punt is wanneer je moet bereiken voor hulp. Wie u vraagt is afhankelijk van het routeringsdomein waaraan u het probleem hebt geïsoleerd, of zelfs beter als u het beperken tot een specifiek onderdeel.
+## <a name="the-problem-is-isolated-now-what"></a>Is het probleem geïsoleerd, nu wat?
+Hoe meer u het probleem kunt isoleren, hoe eenvoudiger het is om te herstellen, maar vaak hebt u het punt waar u niet meer kunt doen met uw probleem oplossing. Voor beeld: u ziet de koppeling tussen uw service provider en hops, maar uw verwachte pad is allemaal in Azië. Dit punt is wanneer u hulp nodig hebt. Wie u vraagt, is afhankelijk van het routerings domein waar u het probleem hebt geïsoleerd, of nog beter als u het kunt beperken tot een specifiek onderdeel.
 
-Voor problemen met bedrijfsnetwerken kan uw interne IT-afdeling of serviceprovider die uw netwerk ondersteunt (mogelijk de hardwarefabrikant) helpen bij apparaatconfiguratie of hardwarereparatie.
+Bij problemen met het bedrijfs netwerk is uw interne IT-afdeling of service provider die uw netwerk ondersteunt (wat mogelijk de hardwarefabrikant kan zijn) mogelijk bij het configureren van apparaatconfiguratie of het herstellen van hardware.
 
-Voor het WAN kan het delen van uw testresultaten met uw serviceprovider of internetprovider helpen om aan de slag te gaan en te voorkomen dat u een aantal van dezelfde grond bestrijkt die u al hebt getest. Wees echter niet beledigd als ze uw resultaten zelf willen verifiëren. "Vertrouwen maar verifiëren" is een goed motto bij het oplossen van problemen op basis van de gerapporteerde resultaten van andere mensen.
+Voor het WAN kan het delen van de test resultaten met uw service provider of ISP ertoe bijdragen dat ze worden gestart en wordt voor komen dat een deel van hetzelfde terrein dat u al hebt getest, wordt bedekt. Als u uw resultaten zelf wilt verifiëren, is dit echter niet het geval. ' Vertrouwen, maar controleren ' is een goede motto bij het oplossen van problemen op basis van de gerapporteerde resultaten van andere gebruikers.
 
-Met Azure is het tijd om de Azure-netwerkdocumentatie te bekijken en, indien het nog nodig is, de [Azure-netwerkdocumentatie][Network Docs] te bekijken en vervolgens, indien nodig, [een ondersteuningsticket te openen.][Ticket Link]
+Wanneer u het probleem met Azure hebt geïsoleerd, is het tijd om de documentatie van het [Azure-netwerk][Network Docs] te bekijken en vervolgens als u nog steeds [een ondersteunings ticket hebt geopend][Ticket Link].
 
 ## <a name="references"></a>Verwijzingen
-### <a name="latencybandwidth-expectations"></a>Latentie/bandbreedteverwachtingen
+### <a name="latencybandwidth-expectations"></a>Verwachtingen voor latentie/band breedte
 >[!TIP]
-> Geografische latentie (mijlen of kilometers) tussen de eindpunten die u test is veruit het grootste onderdeel van latentie. Hoewel er apparatuur latentie (fysieke en virtuele componenten, aantal hop, enz.) betrokken is, heeft geografie bewezen de grootste component van de algehele latentie te zijn bij het omgaan met WAN-verbindingen. Het is ook belangrijk op te merken dat de afstand is de afstand van de vezel lopen niet de rechte lijn of routekaart afstand. Deze afstand is ongelooflijk moeilijk te krijgen met enige nauwkeurigheid. Als gevolg daarvan gebruik ik over het algemeen een stad afstand rekenmachine op het internet en weet dat deze methode is een grove onjuiste maatregel, maar is genoeg om een algemene verwachting.
+> Een geografische latentie (mijl of kilo meter) tussen de eind punten die u wilt testen, is het grootste deel van de latentie. Hoewel er sprake is van een latentie van apparatuur (fysieke en virtuele onderdelen, het aantal hops enz.), is de geografie bewezen als het grootste onderdeel van de totale latentie bij het omgaan met WAN-verbindingen. Het is ook belang rijk om te weten dat de afstand de afstand van de fiber-uitvoering is en niet de lijn afstand van de lineaire of de weg. Deze afstand is hard moeilijk om een nauw keurigheid te bereiken. Als gevolg hiervan gebruiken we doorgaans een lokale reken machine op internet en weet u dat deze methode een nagenoeg onnauwkeurige meting is, maar voldoende is om een algemene verwachting in te stellen.
 >
 >
 
-Ik heb een ExpressRoute setup in Seattle, Washington in de VS. De volgende tabel toont de latentie en bandbreedte die ik zag testen naar verschillende Azure-locaties. Ik heb de geografische afstand tussen elk einde van de test geschat.
+Ik heb een ExpressRoute-installatie in Seattle, Washington in de Verenigde Staten. De volgende tabel toont de latentie en band breedte die ik heb getest op verschillende Azure-locaties. Ik heb een schatting van de geografische afstand tussen elk einde van de test.
 
-Testopstelling:
+Setup testen:
  - Een fysieke server met Windows Server 2016 met een NIC van 10 Gbps, verbonden met een ExpressRoute-circuit.
- - Een 10Gbps Premium ExpressRoute circuit op de locatie geïdentificeerd met Private Peering ingeschakeld.
- - Een Azure VNet met een UltraPerformance-gateway in het opgegeven gebied.
- - Een DS5v2 VM met Windows Server 2016 op het VNet. De VM is niet-domein samengevoegd, opgebouwd uit de standaard Azure-afbeelding (geen optimalisatie of aanpassing) met AzureCT geïnstalleerd.
- - Alle tests werden uitgevoerd met de opdracht AzureCT Get-LinkPerformance met een belastingstest van 5 minuten voor elk van de zes testuitvoeringen. Bijvoorbeeld:
+ - Een 10 Gbps Premium ExpressRoute-circuit in de locatie die is geïdentificeerd met persoonlijke peering ingeschakeld.
+ - Een Azure VNet met een Ultra Performance-gateway in de opgegeven regio.
+ - Een DS5v2-VM met Windows Server 2016 op het VNet. De virtuele machine is toegevoegd aan een ander domein, gebouwd op basis van de standaard installatie kopie van Azure (geen optimalisatie of aanpassing) met AzureCT geïnstalleerd.
+ - Alle tests hebben de opdracht AzureCT Get-LinkPerformance gebruikt met een belasting test van 5 minuten voor elk van de zes test uitvoeringen. Bijvoorbeeld:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
     ```
- - De gegevensstroom voor elke test had de belasting die van de on-premises fysieke server (iPerf-client in Seattle) naar de Azure VM (iPerf-server in de vermelde Azure-regio) stroomde.
- - De kolomgegevens 'Latentie' zijn afkomstig van de No Load-test (een TCP-latentietest zonder dat iPerf wordt uitgevoerd).
- - De kolomgegevens 'Maximale bandbreedte' zijn afkomstig van de 16 TCP-stroombelastingstest met een venstergrootte van 1 mb.
+ - De gegevens stroom voor elke test had de belasting van de on-premises fysieke server (iPerf-client in Seattle) tot de Azure VM (iPerf-server in de vermelde Azure-regio).
+ - De gegevens van de latentie kolom zijn afkomstig uit de test geen belasting (een TCP-latentie test zonder iPerf).
+ - De kolom maximale band breedte is van de 16 TCP-stroom belasting test met een window-grootte van 1 MB.
 
 ![3][3]
 
-### <a name="latencybandwidth-results"></a>Latentie/bandbreedteresultaten
+### <a name="latencybandwidth-results"></a>Resultaten van latentie/band breedte
 >[!IMPORTANT]
-> Deze nummers zijn alleen voor algemene referentie. Veel factoren beïnvloeden latentie en hoewel deze waarden over het algemeen consistent zijn in de loop van de tijd, kunnen de omstandigheden binnen Azure of het Service Providers-netwerk op elk gewenst moment verkeer via verschillende paden verzenden, waardoor latentie en bandbreedte kunnen worden beïnvloed. Over het algemeen leiden de effecten van deze veranderingen niet tot significante verschillen.
+> Deze nummers gelden alleen voor algemene naslag informatie. Veel factoren beïnvloeden latentie, en hoewel deze waarden in de loop van de tijd doorgaans consistent zijn, kunnen de voor waarden in azure of het netwerk van de service providers verkeer via verschillende paden op elk gewenst moment verzenden, zodat latentie en band breedte kan worden beïnvloed. Over het algemeen zijn de gevolgen van deze wijzigingen niet van belang rijke verschillen.
 >
 >
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Locatie|Azure<br/>Regio|Geschatte<br/>Afstand (km)|Latentie|1 Sessie<br/>Bandbreedte|Maximum<br/>Bandbreedte|
-| Seattle | VS - west 2        |    191 km |   5 ms | 262,0 Mbits/sec |  3,74 Gbits/sec |
-| Seattle | VS - west          |  1.094 km |  18 ms |  82,3 Mbits/sec |  3,70 Gbits/sec |
-| Seattle | VS - centraal       |  2.357 km |  40 ms |  38,8 Mbits/sec |  2,55 Gbits/sec |
-| Seattle | VS - zuid-centraal |  2.877 km |  51 ms |  30,6 Mbits/sec |  2,49 Gbits/sec |
-| Seattle | VS - noord-centraal |  2.792 km |  55 ms |  27,7 Mbits/sec |  2,19 Gbits/sec |
-| Seattle | VS - oost 2        |  3.769 km |  73 ms |  21,3 Mbits/sec |  1,79 Gbits/sec |
-| Seattle | VS - oost          |  3.699 km |  74 ms |  21,1 mbbes/seconde |  1,78 Gbits/sec |
-| Seattle | Japan - oost       |  7.705 km | 106 ms |  14,6 Mbits/sec |  1,22 Gbits/sec |
-| Seattle | Verenigd Koninkrijk Zuid         |  7.708 km | 146 ms |  10,6 Mbits/sec |   896 Mbits/sec |
-| Seattle | Europa -west      |  7.834 km | 153 ms |  10,2 Mbits/sec |   761 Mbits/sec |
-| Seattle | Australië - oost   | 12.484 km | 165 ms |   9,4 Mbits/sec |   794 Mbits/sec |
-| Seattle | Azië - zuidoost   | 12.989 km | 170 ms |   9,2 Mbits/sec |   756 Mbits/sec |
-| Seattle | Brazilië Zuid *   | 10.930 km | 189 ms |   8,2 Mbits/sec |   699 Mbits/sec |
-| Seattle | India - zuid      | 12.918 km | 202 ms |   7,7 Mbits/sec |   634 Mbits/sec |
+|ExpressRoute<br/>Locatie|Azure<br/>Regio|Bepaald<br/>Afstand (km)|Latentie|1 sessie<br/>Bandbreedte|Maximum<br/>Bandbreedte|
+| Seattle | VS - west 2        |    191 km |   5 MS | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
+| Seattle | VS - west          |  1.094 km |  18 MS |  82,3 Mbit per seconde |  3,70 Gbits per seconde |
+| Seattle | VS - centraal       |  2.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
+| Seattle | VS - zuid-centraal |  2.877 km |  51 MS |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
+| Seattle | VS - noord-centraal |  2.792 km |  55 MS |  27,7 Mbit per seconde |  2,19 Gbits per seconde |
+| Seattle | VS - oost 2        |  3.769 km |  73 MS |  21,3 Mbit per seconde |  1,79 Gbits per seconde |
+| Seattle | VS - oost          |  3.699 km |  74 MS |  21,1 Mbit per seconde |  1,78 Gbits per seconde |
+| Seattle | Japan - oost       |  7.705 km | 106 MS |  14,6 Mbit per seconde |  1,22 Gbits per seconde |
+| Seattle | Verenigd Koninkrijk Zuid         |  7.708 km | 146 MS |  10,6 Mbit per seconde |   896 Mbit per seconde |
+| Seattle | Europa -west      |  7.834 km | 153 MS |  10,2 Mbit per seconde |   761 Mbit per seconde |
+| Seattle | Australië - oost   | 12.484 km | 165 MS |   9,4 Mbit per seconde |   794 Mbit per seconde |
+| Seattle | Azië - zuidoost   | 12.989 km | 170 MS |   9,2 Mbit per seconde |   756 Mbit per seconde |
+| Seattle | Brazilië-zuid *   | 10.930 km | 189 MS |   8,2 Mbit per seconde |   699 Mbit per seconde |
+| Seattle | India - zuid      | 12.918 km | 202 MS |   7,7 Mbit per seconde |   634 Mbit per seconde |
 
-\*De latentie naar Brazilië is een goed voorbeeld waar de rechte lijn afstand aanzienlijk verschilt van de fiber run afstand. Ik zou verwachten dat de latentie zou worden in de buurt van 160 ms, maar is eigenlijk 189 ms. Dit verschil met mijn verwachting zou kunnen wijzen op een netwerk probleem ergens, maar waarschijnlijk dat de vezel run niet naar Brazilië in een rechte lijn en heeft een extra 1.000 km of zo van de reis naar Brazilië van Seattle.
+\*De latentie van Brazilië is een goed voor beeld waarbij de lineaire afstand sterk afwijkt van de afstand van de fiber-uitvoering. Ik zou verwachten dat de latentie zich in de groep van 160 MS bevindt, maar wel in werkelijkheid 189 MS. Dit verschil ten opzichte van mijn verwachting kan ergens duiden op een netwerk probleem, maar het is waarschijnlijk dat de fiber-uitvoering niet naar Brazilië gaat in een rechte lijn en een extra 1.000 km of meer van de weg heeft om aan Brazilië van Seattle te gaan.
 
 ## <a name="next-steps"></a>Volgende stappen
-1. Download de Azure Connectivity Toolkit van GitHub op[https://aka.ms/AzCT][ACT]
-2. Volg de instructies voor [het testen van de koppelingsprestaties][Performance Doc]
+1. Down load de Azure Connectivity Toolkit vanuit GitHub op[https://aka.ms/AzCT][ACT]
+2. Volg de instructies voor het testen van de [koppelings prestaties][Performance Doc]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure-netwerkcomponenten"
-[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "Probleemoplossing expressroute"
-[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "Perf Test omgeving"
-[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell-uitvoer"
+[1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure-netwerk onderdelen"
+[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute problemen oplossen"
+[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "Prestatie test omgeving"
+[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "Power shell-uitvoer"
 
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
