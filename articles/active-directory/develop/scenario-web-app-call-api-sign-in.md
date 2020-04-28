@@ -1,6 +1,6 @@
 ---
-title: Accounts verwijderen uit de tokencache bij afmelding - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het verwijderen van een account uit de tokencache bij afmelding
+title: Accounts uit de token cache verwijderen bij het afmelden-micro soft Identity-platform | Azure
+description: Meer informatie over het verwijderen van een account uit de token cache bij afmelden
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,66 +11,38 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 934b756329065c466f21fca1480247065bdea28b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881609"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181644"
 ---
-# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Een web-app die web-API's aanroept: accounts verwijderen uit de tokencache bij wereldwijde afmelding
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Een web-app die web-Api's aanroept: verwijdert accounts uit de token cache op Global Sign-out
 
-U hebt geleerd hoe u aanmelding toevoegt aan uw web-app in [de web-app die gebruikers aanmeldt: Aanmelden en afmelden.](scenario-web-app-sign-user-sign-in.md)
+U hebt geleerd hoe u aanmelden kunt toevoegen aan uw web-app in een web-app die zich aanmeldt [bij gebruikers: aanmelden en afmelden](scenario-web-app-sign-user-sign-in.md).
 
-Afmelden is anders voor een web-app die webapis aanroept. Wanneer de gebruiker zich afmeldt bij uw toepassing of uit een toepassing, moet u de tokens die aan die gebruiker zijn gekoppeld, uit de tokencache verwijderen.
+Afmelden is anders voor een web-app die web-api's aanroept. Wanneer de gebruiker zich afmeldt bij uw toepassing of vanuit een wille keurige toepassing, moet u de tokens die zijn gekoppeld aan die gebruiker uit de token cache verwijderen.
 
-## <a name="intercept-the-callback-after-single-sign-out"></a>De terugroep na één afmelding onderscheppen
+## <a name="intercept-the-callback-after-single-sign-out"></a>Terugbellen onderscheppen na eenmalige afmelding
 
-Als u de vermelding in de tokencache wilt wissen die `logout` is gekoppeld aan het account dat is afgemeld, kan uw toepassing de na-gebeurtenis onderscheppen. Webapps slaan toegangstokens op voor elke gebruiker in een tokencache. Door de na-terugroep `logout` te onderscheppen, kan uw webtoepassing de gebruiker uit de cache verwijderen.
+Als u de token-cache vermelding wilt wissen die is gekoppeld aan het account waarmee u zich hebt afgemeld `logout` , kan uw toepassing de gebeurtenis after onderscheppen. Web-apps slaan toegangs tokens voor elke gebruiker op in een token cache. Door de terugroeping `logout` na terugbellen te onderscheppen, kan uw webtoepassing de gebruiker uit de cache verwijderen.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Voor ASP.NET Core wordt het afluistermechanisme geïllustreerd in de `AddMsal()` methode van [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157).
-
-Met de aanmeldings-URL die u eerder voor uw toepassing hebt geregistreerd, u één afmelding implementeren. Het eindpunt `logout` van het Microsoft-identiteitsplatform roept uw aanmeldings-URL aan. Dit gesprek vindt plaats als de afmelding is gestart vanuit uw web-app, of vanuit een andere web-app of de browser. Zie [Eenmalig aanmelden](v2-protocols-oidc.md#single-sign-out)voor meer informatie .
-
-```csharp
-public static class WebAppServiceCollectionExtensions
-{
- public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
- {
-  // Code omitted here
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-   // Code omitted here
-
-   // Handling the sign-out: Remove the account from MSAL.NET cache.
-   options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-   {
-    // Remove the account from MSAL.NET token cache.
-    var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-    await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
-   };
-  });
-  return services;
- }
-}
-```
-
-De code `RemoveAccountAsync` voor is beschikbaar op [Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+Micro soft. Identity. Web zorgt voor het implementeren van afmeldingen voor u.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Het voorbeeld van ASP.NET verwijdert geen accounts uit de cache bij wereldwijde afmelding.
+Het ASP.NET-voor beeld verwijdert geen accounts uit de cache op globale afmelding.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Het Java-voorbeeld verwijdert geen accounts uit de cache bij wereldwijde afmelding.
+In het Java-voor beeld worden geen accounts uit de cache verwijderd voor de globale afmelding.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Het Python-voorbeeld verwijdert geen accounts uit de cache bij wereldwijde afmelding.
+Het python-voor beeld verwijdert geen accounts uit de cache op globale afmelding.
 
 ---
 
@@ -79,21 +51,21 @@ Het Python-voorbeeld verwijdert geen accounts uit de cache bij wereldwijde afmel
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Een token voor de web-app aanschaffen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+> [Een token verkrijgen voor de web-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [Een token voor de web-app aanschaffen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+> [Een token verkrijgen voor de web-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Een token voor de web-app aanschaffen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+> [Een token verkrijgen voor de web-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Een token voor de web-app aanschaffen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+> [Een token verkrijgen voor de web-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
 
 ---

@@ -13,30 +13,14 @@
       items:
         - name: De webportal gebruiken
           href: getting-started-build-a-classifier.md
-        - name: De .NET SDK gebruiken
-          href: csharp-tutorial.md
-        - name: De Python-SDK gebruiken
-          href: python-tutorial.md
-        - name: De Java-SDK gebruiken
-          href: java-tutorial.md
-        - name: De Node.js-SDK gebruiken
-          href: node-tutorial.md
-        - name: Go-SDK gebruiken
-          href: go-tutorial.md
+        - name: De Custom Vision-SDK gebruiken
+          href: quickstarts/image-classification.md
     - name: Een objectdetector maken
       items:
         - name: De webportal gebruiken
           href: get-started-build-detector.md
-        - name: De .NET SDK gebruiken
-          href: csharp-tutorial-od.md
-        - name: De Python-SDK gebruiken
-          href: python-tutorial-od.md
-        - name: De Java-SDK gebruiken
-          href: java-tutorial-od.md
-        - name: De Node.js-SDK gebruiken
-          href: node-tutorial-object-detection.md
-        - name: Go-SDK gebruiken
-          href: go-tutorial-object-detection.md
+        - name: De Custom Vision-SDK gebruiken
+          href: quickstarts/object-detection.md
 - name: Zelfstudies
   items:
     - name: Visuele statussen rapporteren op IoT-apparaat

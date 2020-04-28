@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: de demoomgeving van De preview verkennen - Azure Time Series Insights | Microsoft Documenten'
-description: Ontdek de belangrijkste functies van de demo-omgeving van Azure Time Series Insights Preview.
+title: 'Snelstartgids: Verken de preview-demo omgeving-Azure Time Series Insights | Microsoft Docs'
+description: Bekijk de belangrijkste functies van de demo omgeving van Azure Time Series Insights preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,127 +9,127 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 02/07/2020
-ms.openlocfilehash: dc4a8da69b0398c6487008c106a9f5bcdb8a885e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/27/2020
+ms.openlocfilehash: c6cfec1d00fbd5b18e01afb0b51598e615cb0946
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77110231"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189195"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Snelstart: de demoomgeving van Azure Time Series Insights Preview verkennen
+# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Snelstartgids: Verken de Azure Time Series Insights preview-demo omgeving
 
-Met deze snelle start u aan de slag met de Azure Time Series Insights Preview-omgeving. In de gratis demo tour je door belangrijke functies die zijn toegevoegd aan Time Series Insights Preview.
+In deze Snelstartgids kunt u aan de slag met de Azure Time Series Insights preview-omgeving. In de gratis demo bekijkt u de belangrijkste functies die zijn toegevoegd aan Time Series Insights preview.
 
-De Time Series Insights Preview demo-omgeving bevat een scenariobedrijf, Contoso, dat twee windturbineparken exploiteert. Elke boerderij heeft 10 turbines. Elke turbine beschikt over 20 sensoren die elke minuut gegevens rapporteren aan Azure IoT Hub. De sensoren verzamelen informatie over de weersomstandigheden, blade pitch, en yaw positie. Informatie over de prestaties van de generator, het gedrag van de versnellingsbak en veiligheidsmonitoren wordt ook geregistreerd.
+De Time Series Insights preview-demo omgeving bevat een scenario bedrijf, contoso, dat twee wind turbine-Farms exploiteert. Elke farm heeft 10 turbines. Elke turbine beschikt over 20 sensoren die elke minuut gegevens rapporteren aan Azure IoT Hub. De Sens oren verzamelen informatie over weers omstandigheden, Blade Pitch en yaw positie. Informatie over de prestaties van de generator, het gedrag van de versnellingsbak en veiligheids monitors wordt ook vastgelegd.
 
-In deze quickstart leert u hoe u Time Series Insights gebruiken om bruikbare inzichten in Contoso-gegevens te vinden. U voert ook een korte analyse van de hoofdoorzaak uit om kritieke storingen beter te voorspellen en onderhoud uit te voeren.
+In deze Quick Start leert u hoe u Time Series Insights kunt gebruiken om inzicht te krijgen in de gegevens van contoso. U voert ook een korte analyse van de hoofd oorzaak uit om kritieke fouten beter te voors pellen en onderhoud uit te voeren.
 
 > [!IMPORTANT]
-> Maak een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) als u er geen hebt.
+> Maak een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) als u er nog geen hebt.
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Verkenner van Time Series Insights nader bekeken in een demo-omgeving
 
-De Time Series Insights Preview-verkenner toont historische gegevens en analyse van de hoofdoorzaak. Aan de slag:
+In de Time Series Insights preview Explorer worden historische gegevens en analyse van de hoofd oorzaak gedemonstreerd. Aan de slag:
 
-1. Ga naar de [Contoso Wind Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving.  
+1. Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving.  
 
-1. Als u wordt gevraagd, meldt u zich aan bij de Time Series Insights-verkenner met uw Azure-accountreferenties.
+1. Als u hierom wordt gevraagd, meldt u zich aan bij de Time Series Insights Explorer met behulp van de referenties van uw Azure-account.
 
 ## <a name="work-with-historical-data"></a>Werken met historische gegevens
 
-1. In **Contoso Plant 1**, kijk naar windturbine **W7**.  
+1. Bekijk in **Contoso plant 1**het wind turbine **W7**.  
 
-   1. Wijzig het weergavebereik in **1/1/17 20:00:00:00.00 naar 3/10/17 20:00:00.00 (UTC).**
-   1. Als u een sensor wilt selecteren, selecteert u **Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed**. Controleer vervolgens de waarden die worden weergegeven.
+   1. Wijzig het weergave bereik in **1/1/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)**.
+   1. Als u een sensor wilt selecteren, selecteert u **Contoso plant 1** > **W7** > **Generator systeem** > **GeneratorSpeed**. Controleer vervolgens de waarden die worden weer gegeven.
 
-      [![W7 in Contoso Plant 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![W7 in contoso plant 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. Onlangs heeft Contoso brand geconstateerd in windturbine **W7**. De meningen lopen uiteen over de oorzaak van de brand. In Time Series Insights wordt de brandmeldsensor weergegeven die tijdens de brand is geactiveerd.
+1. Onlangs heeft Contoso brand geconstateerd in windturbine **W7**. De mening is afhankelijk van wat het vuur heeft veroorzaakt. In Time Series Insights wordt de brand waarschuwing weer gegeven die tijdens de brand werd geactiveerd.
 
-   1. Wijzig het weergavebereik in **3/9/17 20:00:00:00.00 naar 3/10/17 20:00:00.00 (UTC).**
-   1. Selecteer **Veiligheidssysteem** > **FireAlert**.
+   1. Wijzig het weergave bereik in **3/9/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)**.
+   1. Selecteer **veiligheids systeem** > **FireAlert**.
 
-      [![Contoso vond een brand in windturbine W7](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
+      [![Contoso heeft een vuur in de wind turbine W7 gevonden](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
-1. Bekijk andere gebeurtenissen rond de tijd van de brand om te begrijpen wat er gebeurd is. Oliedruk en actieve waarschuwingen piekten vlak voor de brand.
+1. Bekijk andere gebeurtenissen rond het tijdstip van de brand om te begrijpen wat er is gebeurd. De olie druk en actieve waarschuwingen worden net vóór de brand weer gegeven.
 
-   1. Selecteer **Pitch System** > **HydraulicOilPressure**.
-   1. Selecteer**ActiveWarning** **Pitch System** > .
+   1. Selecteer **systeem** > **HydraulicOilPressure**verkopen.
+   1. Selecteer **systeem** > **ActiveWarning**verkopen.
 
-      [![Andere gebeurtenissen rond dezelfde tijd bekijken](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
+      [![Andere gebeurtenissen rond hetzelfde tijdstip controleren](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
-1. De oliedruk en actieve waarschuwingssensoren piekten vlak voor de brand. Vouw de weergegeven tijdreeks en bekijk andere tekenen die duidelijk waren in de aanloop naar de brand. Beide sensoren fluctueerden constant in de tijd. De schommelingen wijzen op een hardnekkig en zorgwekkend patroon.
+1. De olie druk en actieve waarschuwings sensors zijn direct vóór de brand opgetreden. Vouw de weer gegeven tijd reeks uit om andere tekens te bekijken waarvan duidelijk is dat deze de brand veroorzaakt. Beide Sens oren schommelen consistent in de loop van de tijd. De schommelingen geven een persistent en Worrisome patroon aan.
 
-    * Wijzig het weergavebereik in **2/24/17 20:00:00:00.00 naar 3/10/17 20:00:00.00 (UTC)**.
+    * Wijzig het weergave bereik in **2/24/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)**.
 
-      [![Oliedruk en actieve waarschuwingssensoren ook spiked](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
+      [![De belasting druk en actieve waarschuwings sensors zijn ook gepiekd](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
-1. Het onderzoeken van twee jaar van historische gegevens onthult een andere brand gebeurtenis die dezelfde sensor schommelingen had.
+1. Wanneer er twee jaar historische gegevens worden onderzocht, wordt een andere brand gebeurtenis met dezelfde sensor schommelingen onthuld.
 
-    * Wijzig het weergavebereik in **1/1/16 naar 12/31/17** (alle gegevens).
+    * Wijzig het weergave bereik in **1/1/16 tot 12/31/17** (alle gegevens).
 
-      [![Zoek naar historische patronen](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
+      [![Zoeken naar historische patronen](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
-Door time series insights en sensortelemetrie te gebruiken, hebben we een langetermijntrend ontdekt die verborgen zit in de historische gegevens. Met deze nieuwe inzichten kunnen we:
+Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, hebben we een lange termijn trend in de historische gegevens gedetecteerd. Met deze nieuwe inzichten kunnen we het volgende doen:
 
-* Leg uit wat er werkelijk is gebeurd.
-* Corrigeer het probleem.
-* Zet betere waarschuwingsmeldingssystemen op hun plaats.
+* Leg uit wat er daad werkelijk is gebeurd.
+* Los het probleem op.
+* Plaats betere systemen voor waarschuwings meldingen.
 
 ## <a name="root-cause-analysis"></a>Hoofdoorzaakanalyse
 
-1. Sommige scenario's vereisen geavanceerde analyse om aanwijzingen in gegevens te ontdekken. Selecteer de windmolen **W6** op datum **6/25**.
+1. Voor sommige scenario's is geavanceerde analyse vereist om aanwijzingen in gegevens op te slaan. Selecteer de Windmill **W6** op datum **6/25**.
 
-    1. Wijzig het weergavebereik in **6/1/17 20:00:00:00.00 naar 7/1/17 20:00:00.00 (UTC).**
-    1. Selecteer **Contoso Plant 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning**.
+    1. Wijzig het weergave bereik in **6/1/17 20:00:00.00 tot 7/1/17 20:00:00.00 (UTC)**.
+    1. Selecteer de**VoltageActuatorSwitchWarning**van het**W6** > -**beveiligings systeem** > van **Contoso 1** > .
 
-       [![Het weergavebereik wijzigen en W6 selecteren](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
+       [![Wijzig het weergave bereik en selecteer W6](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
-1. De waarschuwing geeft een probleem met de spanning van de generator. Het totale vermogen van de generator bevindt zich binnen de normale parameters in het huidige interval. Door het verhogen van ons interval, een ander patroon ontstaat. Een drop-off is evident.
+1. De waarschuwing duidt op een probleem met de spanning van de generator. De algemene energie-uitvoer van de Generator bevindt zich binnen de normale para meters in het huidige interval. Door ons interval te verg Roten, komt er een ander patroon aan de hand. Een vervolg keuzelijst is duidelijk.
 
-    1. Verwijder de **VoltageActuatorSwitchWarning-sensor.**
-    1. Selecteer **Generatorsysteem** > **ActivePower**.
-    1. Wijzig het interval in **3d**.
+    1. Verwijder de **VoltageActuatorSwitchWarning** -sensor.
+    1. Selecteer **Generator systeem** > **ActivePower**.
+    1. Wijzig het interval in **3D**.
 
-       [![Het interval wijzigen in 3d](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
+       [![Het interval wijzigen in 3D](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
-1. Door het tijdsbereik uit te breiden, kunnen we bepalen of het probleem is gestopt of dat het doorgaat.
+1. Door het tijds bereik uit te breiden, kunnen we bepalen of het probleem is gestopt of of het wordt voortgezet.
 
-    * Verleng de tijdspanne tot 60 dagen.
+    * Verleng de tijds Panne tot 60 dagen.
 
-      [![Verleng de tijdspanne tot 60 dagen](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
+      [![De tijds Panne verlengen tot 60 dagen](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. Andere sensorgegevenspunten kunnen worden toegevoegd om meer context te bieden. Hoe meer sensoren we bekijken, hoe beter ons begrip van het probleem is. Laten we een markering neerzetten om de werkelijke waarden weer te geven. 
+1. Andere sensor gegevens punten kunnen worden toegevoegd om meer context te bieden. Hoe meer Sens oren er worden weer gegeven, het uitgebreidere inzicht van het probleem is. Laten we een markering neerzetten om de werkelijke waarden weer te geven. 
 
-    1. Selecteer **Generatorsysteem**en selecteer vervolgens drie sensoren: **GridVoltagePhase1**, **GridVoltagePhase2**en **GridVoltagePhase3**.
+    1. Selecteer **Generator systeem**en selecteer vervolgens drie Sens oren: **GridVoltagePhase1**, **GridVoltagePhase2**en **GridVoltagePhase3**.
     1. Verwijder een markering van het laatste gegevenspunt in het zichtbare gedeelte.
 
-       [![Een markering laten vallen](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
+       [![Een markering verwijderen](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
-    Twee van de spanningssensoren werken vergelijkbaar en binnen normale parameters. Het lijkt erop dat de **GridVoltagePhase3** sensor is de boosdoener.
+    Twee van de spannings sensors zijn comparably en binnen de normale para meters. Het lijkt alsof de **GridVoltagePhase3** -sensor de culprit is.
 
-1. Met zeer contextuele gegevens toegevoegd, de fase 3 drop-off lijkt nog meer het probleem te zijn. We hebben een goede aanwijzing voor de oorzaak van de waarschuwing. We zijn klaar om het probleem door te verwijzen naar ons onderhoudsteam.  
+1. Wanneer zeer contextuele gegevens worden toegevoegd, lijkt de fase 3-uitschakeling nog meer om het probleem te verhelpen. Nu hebben we een goede inleiding op de oorzaak van de waarschuwing. We zijn klaar om het probleem naar ons onderhouds team te verwijzen.  
 
-    * Wijzig het display om alle **sensoren van het generatorsysteem** op dezelfde grafiekschaal te bedekken.
+    * Wijzig de weer gave om alle **Generator systeem** sensoren op dezelfde grafiek schaal te bedekken.
 
-      [![Het display wijzigen om alles op te nemen](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
+      [![Wijzig de weer gave zodat deze alles bevat](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nu u de snelle start hebt voltooid, ruimt u de resources op die u hebt gemaakt:
+Nu u de Quick Start hebt voltooid, kunt u de resources die u hebt gemaakt opschonen:
 
-1. Selecteer **alle bronnen**in het linkermenu in de [Azure-portal](https://portal.azure.com)en zoek uw Azure Time Series Insights-brongroep.
-1. Verwijder de volledige resourcegroep (en alle bronnen daarin) door Elke resource afzonderlijk **te** verwijderen of te verwijderen.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **alle resources**en zoek de Azure time series Insights resource groep.
+1. Verwijder de hele resource groep (en alle resources erin) door elke resource afzonderlijk **verwijderen** of verwijderen te selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U bent klaar om uw eigen Time Series Insights Preview-omgeving te maken. Om te beginnen:
+U bent klaar om uw eigen Time Series Insights-voorbeeld omgeving te maken. Starten:
 
 > [!div class="nextstepaction"]
 > [Een Time Series Insights-omgeving (preview) plannen](time-series-insights-update-plan.md)
 
-Leer de demo en de bijbehorende functies te gebruiken:
+Meer informatie over het gebruik van de demo en de bijbehorende functies:
 
 > [!div class="nextstepaction"]
-> [De Time Series Insights Preview explorer](time-series-insights-update-explorer.md)
+> [De Time Series Insights preview Explorer](time-series-insights-update-explorer.md)

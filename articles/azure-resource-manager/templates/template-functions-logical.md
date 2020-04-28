@@ -1,46 +1,46 @@
 ---
-title: Sjabloonfuncties - logisch
-description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om logische waarden te bepalen.
+title: Sjabloon functies-logisch
+description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om logische waarden te bepalen.
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192311"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logische functies voor ARM-sjablonen
 
-Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager -sjablonen (ARM).
+Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager-sjablonen (ARM).
 
-* [En](#and)
-* [bool](#bool)
-* [Als](#if)
-* [Niet](#not)
-* [Of](#or)
+* [maar](#and)
+* [booleaans](#bool)
+* [If](#if)
+* [ten](#not)
+* [of](#or)
 
 ## <a name="and"></a>en
 
 `and(arg1, arg2, ...)`
 
-Hiermee wordt gecontroleerd of alle parameterwaarden waar zijn.
+Controleert of alle parameter waarden waar zijn.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |booleaans |De eerste waarde om te controleren of waar is. |
-| arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of waar zijn. |
+| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-**Geeft als** resultaat True als alle waarden waar zijn; anders, **False**.
+Retourneert **waar** als alle waarden waar zijn. anders **False**.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
 
 ```json
 {
@@ -64,32 +64,32 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| enExampleOutput | Booleaanse waarde | False |
+| andExampleOutput | Booleaanse waarde | False |
 | orExampleOutput | Booleaanse waarde | True |
 | notExampleOutput | Booleaanse waarde | False |
 
-## <a name="bool"></a>Booleaanse waarde
+## <a name="bool"></a>booleaans
 
 `bool(arg1)`
 
-Hiermee converteert u de parameter naar een booleaan.
+Zet de para meter om in een Boole-waarde.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |tekenreeks of int |De waarde om te converteren naar een booleaan. |
+| Arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
 
 ### <a name="return-value"></a>Retourwaarde
-Een booleaan van de geconverteerde waarde.
+Een Boolean van de geconverteerde waarde.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ziet u hoe u bool gebruikt met een tekenreeks of geheelgetal.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ziet u hoe u BOOL gebruikt met een teken reeks of een geheel getal.
 
 ```json
 {
@@ -117,12 +117,12 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
+De uitvoer van het vorige voor beeld met de standaard waarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| trueString trueString trueString trueString | Booleaanse waarde | True |
-| falseString falseString falseString falseString | Booleaanse waarde | False |
+| trueString | Booleaanse waarde | True |
+| falseString | Booleaanse waarde | False |
 | trueInt | Booleaanse waarde | True |
 | falseInt | Booleaanse waarde | False |
 
@@ -130,27 +130,27 @@ De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
 `if(condition, trueValue, falseValue)`
 
-Geeft als resultaat een waarde op basis van de vraag of een voorwaarde waar of onwaar is.
+Retourneert een waarde op basis van het feit of een voor waarde waar of onwaar is.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Voorwaarde |Ja |booleaans |De waarde om te controleren of het waar of onwaar is. |
-| trueValue |Ja | tekenreeks, int, object of array |De waarde om terug te keren wanneer de voorwaarde waar is. |
-| falseValue |Ja | tekenreeks, int, object of array |De waarde om terug te keren wanneer de voorwaarde vals is. |
+| regeling |Ja |booleaans |De waarde om te controleren of deze True of False is. |
+| trueValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
+| falseValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Geeft als resultaat de tweede parameter wanneer de eerste parameter **True**is ; anders geeft de derde parameter een resultaat.
+Retourneert een tweede para meter wanneer de eerste para meter **True**is; anders retourneert de derde para meter.
 
 ### <a name="remarks"></a>Opmerkingen
 
-Wanneer de voorwaarde **True**is, wordt alleen de werkelijke waarde geëvalueerd. Wanneer de voorwaarde **Onwaar**is, wordt alleen de valse waarde geëvalueerd. Met de functie **als** u expressies opnemen die alleen voorwaardelijk geldig zijn. U bijvoorbeeld verwijzen naar een resource die onder één voorwaarde bestaat, maar niet onder de andere voorwaarde. Een voorbeeld van het voorwaardelijk evalueren van expressies wordt weergegeven in de volgende sectie.
+Als de voor waarde **waar**is, wordt alleen de waarde True geëvalueerd. Als de voor waarde **Onwaar**is, wordt alleen de waarde ONWAAR geëvalueerd. Met de functie **als** kunt u expressies toevoegen die alleen voorwaarde geldig zijn. U kunt bijvoorbeeld verwijzen naar een resource die zich onder één voor waarde bevindt, maar niet onder de andere voor waarde. In de volgende sectie ziet u een voor beeld van een conditioneel evalueren van expressies.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) `if` ziet u hoe u de functie gebruikt.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ziet u hoe u `if` de functie gebruikt.
 
 ```json
 {
@@ -175,15 +175,15 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | yesOutput | Tekenreeks | ja |
-| noOutput | Tekenreeks | nee |
-| objectOutput | Object | { "test": "waarde1" } |
+| geen uitvoer | Tekenreeks | nee |
+| objectOutput | Object | {"test": "waarde1"} |
 
-In de volgende [voorbeeldsjabloon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ziet u hoe u deze functie gebruikt met expressies die alleen voorwaardelijk geldig zijn.
+In de volgende [voorbeeld sjabloon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ziet u hoe u deze functie kunt gebruiken met expressies die alleen voorwaarde geldig zijn.
 
 ```json
 {
@@ -235,21 +235,21 @@ In de volgende [voorbeeldsjabloon](https://github.com/krnese/AzureDeploy/blob/ma
 
 `not(arg1)`
 
-Converteert booleaanse waarde naar de tegenovergestelde waarde.
+Zet Boole-waarde om in tegenovergestelde waarde.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |booleaans |De waarde die u wilt converteren. |
+| Arg1 |Ja |booleaans |De waarde die moet worden geconverteerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Geeft als resultaat **True** wanneer de parameter **Onwaar**is. **Retourneert Onwaar** wanneer de parameter **True is**.
+Retourneert **waar** als de para meter **False**is. Retourneert **Onwaar** wanneer de para meter **True**is.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
 
 ```json
 {
@@ -273,15 +273,15 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| enExampleOutput | Booleaanse waarde | False |
+| andExampleOutput | Booleaanse waarde | False |
 | orExampleOutput | Booleaanse waarde | True |
 | notExampleOutput | Booleaanse waarde | False |
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wordt **niet** met [gelijken gebruikt.](template-functions-comparison.md#equals)
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) gebruikt **niet** met [gelijk aan](template-functions-comparison.md#equals).
 
 ```json
 {
@@ -295,11 +295,12 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | checkNotEquals | Booleaanse waarde | True |
 
@@ -307,23 +308,23 @@ De uitvoer uit het voorgaande voorbeeld is:
 
 `or(arg1, arg2, ...)`
 
-Hiermee wordt gecontroleerd of een parameterwaarde waar is.
+Controleert of een parameter waarde waar is.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |booleaans |De eerste waarde om te controleren of waar is. |
-| arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of waar zijn. |
+| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Geeft als resultaat **True** als een waarde waar is; anders, **False**.
+Retourneert **waar** als een wille keurige waarde waar is; anders **False**.
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ziet u hoe u logische functies gebruikt.
 
 ```json
 {
@@ -347,18 +348,15 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| enExampleOutput | Booleaanse waarde | False |
+| andExampleOutput | Booleaanse waarde | False |
 | orExampleOutput | Booleaanse waarde | True |
 | notExampleOutput | Booleaanse waarde | False |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Sjablonen voor Azure Resource Manager ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager-sjabloon.
-* Zie [Gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)als u meerdere sjablonen wilt samenvoegen.
-* Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)als u een bepaald aantal keren wilt herhalen bij het maken van een type resource.
-* Zie Een toepassing implementeren [met Azure Resource Manager-sjabloon](deploy-powershell.md)als u wilt zien hoe u de sjabloon implementeren die u hebt gemaakt.
+* Zie [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
 

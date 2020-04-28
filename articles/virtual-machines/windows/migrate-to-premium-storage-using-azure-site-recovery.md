@@ -1,21 +1,18 @@
 ---
 title: Uw Windows VM's migreren naar Azure Premium Storage met Azure Site Recovery
 description: Migreer uw bestaande virtuele machines naar Azure Premium Storage met siteherstel. Premium Storage biedt krachtige schijfondersteuning met lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
-services: virtual-machines-windows,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 071596557de00c9dfb2afaa5751d9331c21ada99
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74819075"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866279"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium-opslag met Azure Site Recovery
 

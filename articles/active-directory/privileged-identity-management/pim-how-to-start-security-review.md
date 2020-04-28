@@ -1,6 +1,6 @@
 ---
-title: Een toegangsbeoordeling van Azure AD-rollen maken in PIM - Azure AD | Microsoft Documenten
-description: Meer informatie over het maken van een toegangscontrole van Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
+title: Een toegangs beoordeling van Azure AD-rollen maken in PIM-Azure AD | Microsoft Docs
+description: Meer informatie over het maken van een toegangs beoordeling van Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,59 +14,59 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f7e9ef503a9a3469ecbc835be8d9229fbd0167f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b4c8c1a1f846d8d04d7758c8d7bdcd932ac3c90
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73847117"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185712"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Een toegangscontrole van Azure AD-rollen maken in Privileged Identity Management
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Een toegangs beoordeling maken van Azure AD-rollen in Privileged Identity Management
 
-Als u het risico van verouderde roltoewijzingen wilt verminderen, moet u de toegang regelmatig controleren. U Azure AD Privileged Identity Management (PIM) gebruiken om toegangsbeoordelingen te maken voor geprivilegieerde Azure AD-rollen. U ook terugkerende toegangsbeoordelingen configureren die automatisch plaatsvinden.
+Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, moet u de toegang regel matig controleren. U kunt Azure AD Privileged Identity Management (PIM) gebruiken om toegangs beoordelingen te maken voor beschermde Azure AD-rollen. U kunt ook terugkerende toegangs beoordelingen configureren die automatisch worden uitgevoerd.
 
-In dit artikel wordt beschreven hoe u een of meer toegangsbeoordelingen maakt voor bevoorrechte Azure AD-rollen.
+In dit artikel wordt beschreven hoe u een of meer toegangs beoordelingen maakt voor beschermde Azure AD-rollen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Beheerder van een bevoorrechte rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Beheerder van geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-## <a name="open-access-reviews"></a>Open access-recensies
+## <a name="open-access-reviews"></a>Toegangs beoordelingen openen
 
-1. Meld u aan bij [azure portal](https://portal.azure.com/) met een gebruiker die lid is van de rol privileged role administrator.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol privileged Role.
 
-1. Azure **AD Privileged Identity Management openen**.
+1. Open **Azure AD privileged Identity Management**.
 
-1. Selecteer in het linkermenu **Azure AD-rollen** en selecteer **Access-recensies**.
+1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer onder Beheren de optie **Toegangsbeoordelingen**.
+1. Selecteer onder beheren de optie **toegangs beoordelingen**en selecteer vervolgens **Nieuw**.
 
-    ![Azure AD-rollen - Lijst met toegangsbeoordelingen met de status van alle beoordelingen](./media/pim-how-to-start-security-review/access-reviews.png)
+    ![Azure AD-rollen: lijst met toegangs beoordelingen waarin de status van alle beoordelingen wordt weer gegeven](./media/pim-how-to-start-security-review/access-reviews.png)
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
-## <a name="start-the-access-review"></a>De toegangscontrole starten
+## <a name="start-the-access-review"></a>De toegangs beoordeling starten
 
-Zodra u de instellingen voor een toegangscontrole hebt opgegeven, selecteert u **Start**. De toegangscontrole wordt weergegeven in uw lijst met een indicator van de status ervan.
+Nadat u de instellingen voor een toegangs beoordeling hebt opgegeven, selecteert u **starten**. De toegangs beoordeling wordt weer gegeven in de lijst met een indicator van de status.
 
-![Lijst met beoordelingen openen met de status van gestarte beoordelingen](./media/pim-how-to-start-security-review/access-reviews-list.png)
+![Lijst met toegangs beoordelingen waarin de status van de gestarte beoordelingen wordt weer gegeven](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
-Azure AD stuurt standaard een e-mail naar revisoren kort nadat de beoordeling is gestart. Als u ervoor kiest azure AD de e-mail niet te laten verzenden, moet u de revisoren informeren dat een toegangscontrole wacht voordat ze zijn voltooid. U ze de instructies weergeven voor het [controleren van de toegang tot Azure AD-rollen.](pim-how-to-perform-security-review.md)
+Standaard verzendt Azure AD een e-mail naar revisoren kort nadat de controle is gestart. Als u ervoor kiest om Azure AD de e-mail niet te laten verzenden, moet u de revisoren informeren dat een toegangs beoordeling wacht totdat deze is voltooid. U kunt de instructies weer geven voor het controleren van de [toegang tot Azure AD-rollen](pim-how-to-perform-security-review.md).
 
-## <a name="manage-the-access-review"></a>De toegangscontrole beheren
+## <a name="manage-the-access-review"></a>De toegangs beoordeling beheren
 
-U de voortgang bijhouden terwijl de revisoren hun beoordelingen voltooien op de **overzichtspagina** van de toegangscontrole. Er worden geen toegangsrechten gewijzigd in de map totdat de [beoordeling is voltooid.](pim-how-to-complete-review.md)
+U kunt de voortgang volgen zodra de revisoren hun beoordelingen hebben voltooid op de pagina **overzicht** van de toegangs beoordeling. Er worden geen toegangs rechten gewijzigd in de map totdat de [controle is voltooid](pim-how-to-complete-review.md).
 
-![Overzichtspagina met beoordelingen van access met de details van de beoordeling](./media/pim-how-to-start-security-review/access-review-overview.png)
+![Overzichts pagina toegangs beoordelingen met details van de beoordeling](./media/pim-how-to-start-security-review/access-review-overview.png)
 
-Als dit een eenmalige beoordeling is, volgt u na afloop van de toegangscontroleperiode of de beheerder de toegangscontrole, de stappen in [Een toegangscontrole van Azure AD-rollen voltooien](pim-how-to-complete-review.md) om de resultaten te bekijken en toe te passen.  
+Als dit een eenmalige controle is, volgt u de stappen in een [toegangs beoordeling van Azure AD-rollen](pim-how-to-complete-review.md) om de resultaten te bekijken en toe te passen nadat de toegangs beoordeling is voltooid of de beheerder de toegangs beoordeling heeft gestopt.  
 
-Als u een reeks toegangsbeoordelingen wilt beheren, navigeert u naar de toegangscontrole en vindt u aankomende gebeurtenissen in Geplande beoordelingen en bewerkt u de einddatum of voegt u revisoren dienovereenkomstig toe.
+Als u een reeks toegangs beoordelingen wilt beheren, gaat u naar de toegangs beoordeling en gaat u naar de geplande Beoordelingen. vervolgens kunt u de eind datum bewerken of revisoren toevoegen/verwijderen dienovereenkomstig.
 
-Op basis van uw selecties in **Instellingen na voltooiing**wordt automatisch toepassen uitgevoerd na de einddatum van de beoordeling of wanneer u de beoordeling handmatig stopt. De status van de beoordeling verandert van **Voltooid** via tussenliggende staten zoals **Toepassen** en ten slotte worden **vermeld toegepast**. U mag verwachten dat geweigerde gebruikers in een paar minuten uit rollen worden verwijderd.
+Op basis van uw selecties tijdens de **voltooiings instellingen**wordt automatisch Toep assen na de eind datum van de beoordeling of wanneer u de controle hand matig stopt. De status van de beoordeling wordt gewijzigd van **voltooid** met behulp van tussenliggende statussen, zoals **Toep assen** en tot slot op de status **toegepast**. U wordt gewend om geweigerde gebruikers, indien van toepassing, te zien, indien aanwezig, die in een paar minuten worden verwijderd uit rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toegang tot Azure AD-rollen controleren](pim-how-to-perform-security-review.md)
-- [Een toegangscontrole van Azure AD-rollen voltooien](pim-how-to-complete-review.md)
-- [Een toegangscontrole van Azure-bronrollen maken](pim-resource-roles-start-access-review.md)
+- [Een toegangs beoordeling van Azure AD-rollen volt ooien](pim-how-to-complete-review.md)
+- [Een toegangs beoordeling van Azure-resource rollen maken](pim-resource-roles-start-access-review.md)

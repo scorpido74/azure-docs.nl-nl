@@ -1,6 +1,6 @@
 ---
-title: Een raster toevoegen aan de gebruikersinterface van de oplossing voor externe bewaking - Azure | Microsoft Documenten
-description: In dit artikel ziet u hoe u een nieuwe gid toevoegt op een pagina in de webgebruikersinterface voor het versnellersweb op afstand.
+title: Een raster toevoegen aan de gebruikers interface van de oplossing voor externe bewaking-Azure | Microsoft Docs
+description: In dit artikel leest u hoe u een nieuwe GID kunt toevoegen op een pagina in de webgebruikersinterface van de oplossing voor externe bewaking.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,57 +8,57 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447094"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186285"
 ---
-# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepast raster toevoegen aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking
+# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepast raster toevoegen aan de webgebruikersinterface van de oplossings versneller voor externe controle
 
-In dit artikel ziet u hoe u een nieuw raster toevoegt aan een pagina in de webgebruikersinterface voor het versnellersweb op afstand. Het artikel beschrijft:
+In dit artikel wordt beschreven hoe u een nieuw raster kunt toevoegen aan een pagina in de webgebruikersinterface van de oplossing voor externe bewaking. In het artikel worden de volgende informatie beschreven:
 
-- Hoe maak je een lokale ontwikkelingsomgeving voor te bereiden.
-- Een nieuw raster toevoegen aan een pagina in de webgebruikersinterface.
+- Het voorbereiden van een lokale ontwikkel omgeving.
+- Een nieuw raster toevoegen aan een pagina in de gebruikers interface van het web.
 
-In het voorbeeldraster in dit artikel worden de gegevens van de service weergegeven die de aangepaste service toevoegen aan het artikel over de web-to-functie van [de rasoplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-service.md) toont u hoe u deze toevoegt.
+In het voorbeeld raster in dit artikel worden de gegevens van de service weer gegeven die door de [een aangepaste service worden toegevoegd aan het web-UI](iot-accelerators-remote-monitoring-customize-service.md) -artikel van de oplossing voor externe controle
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze handleiding wilt uitvoeren, hebt u de volgende software nodig die op uw lokale ontwikkelingsmachine is geïnstalleerd:
+Als u de stappen in deze hand leiding wilt uitvoeren, moet u de volgende software op uw lokale ontwikkel computer installeren:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Voer de stappen in de volgende artikelen uit voordat u verdergaat:
+U moet de stappen in de volgende artikelen volt ooien voordat u doorgaat:
 
-- [Voeg een aangepaste pagina toe aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking.](iot-accelerators-remote-monitoring-customize-page.md)
-- [Een aangepaste service toevoegen aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-service.md)
+- [Een aangepaste pagina toevoegen aan de WEBgebruikersinterface van de oplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-page.md).
+- [Een aangepaste service toevoegen aan de webgebruikersinterface voor externe bewaking oplossings versneller](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>Een raster toevoegen
 
-Als u een raster wilt toevoegen aan de webgebruikersinterface, moet u de bronbestanden toevoegen die het raster definiëren en enkele bestaande bestanden wijzigen om de webgebruikersinterface op de hoogte te houden van de nieuwe component.
+Als u een raster wilt toevoegen aan de webgebruikersinterface, moet u de bron bestanden toevoegen die het raster definiëren en enkele bestaande bestanden wijzigen om de webinterface van het nieuwe onderdeel op de hoogte te stellen.
 
-### <a name="add-the-new-files-that-define-the-grid"></a>De nieuwe bestanden toevoegen die het raster definiëren
+### <a name="add-the-new-files-that-define-the-grid"></a>De nieuwe bestanden toevoegen waarmee het raster wordt gedefinieerd
 
-Om u op weg te helpen, bevat de map **src/walkthrough/components/pages/pageWithGrid/exampleGrid** de bestanden die een raster definiëren:
+Om aan de slag te gaan, de map **src/walkthrough/onderdelen/pages/pageWithGrid/exampleGrid** bevat de bestanden die een raster definiëren:
 
-**voorbeeldGrid.js**
+**exampleGrid. js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**voorbeeldGridConfig.js**
+**exampleGridConfig. js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
-Kopieer de **src/walkthrough/components/pages/pageWithGrid/exampleGrid** map naar de **src/components/pages/example** folder.
+Kopieer de map **src/walkthrough/onderdelen/pages/pageWithGrid/exampleGrid** naar de map **src/Components/pages/example** .
 
-### <a name="add-the-grid-to-the-page"></a>Het raster aan de pagina toevoegen
+### <a name="add-the-grid-to-the-page"></a>Het raster toevoegen aan de pagina
 
-Wijzig de **src/componenten/pagina's/example/basicPage.container.js** als volgt om de servicedefinities te importeren:
+Wijzig de volgende stappen om de service definities te importeren met de opties **src/Components, pages, example/basicPage. container. js** :
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Wijzig de **src/componenten/pagina's/example/basicPage.js** als volgt om het raster toe te voegen:
+Wijzig de volgende stappen om het raster toe te voegen: **brondoc/onderdelen/pagina's/voor beeld/basicPage. js.**
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Wijzig de **src/componenten/pagina's/example/basicPage.test.js** als volgt om de tests bij te werken:
+Wijzig de tests **src/Components/pages/basicPage. test. js** als volgt om de testen bij te werken:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -176,23 +176,23 @@ describe('BasicPage Component', () => {
 
 ## <a name="test-the-grid"></a>Het raster testen
 
-Als de webgebruikersinterface nog niet lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdtekst van uw lokale kopie van de opslagplaats:
+Als de Web-UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdmap van uw lokale kopie van de opslag plaats:
 
 ```cmd/sh
 npm start
 ```
 
-Met de vorige opdracht wordt [http://localhost:3000/dashboard](http://localhost:3000/dashboard)de gebruikersinterface lokaal uitgevoerd op . Navigeer naar de **voorbeeldpagina** om de rasterweergavegegevens van de service te bekijken.
+Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op. Ga naar de **voorbeeld** pagina om het raster weer te geven gegevens van de service.
 
 ## <a name="select-rows"></a>Rijen selecteren
 
-Er zijn twee opties om een gebruiker in staat te stellen rijen in het raster te selecteren:
+Er zijn twee opties voor het inschakelen van een gebruiker om rijen te selecteren in het raster:
 
-### <a name="hard-select-rows"></a>Moeilijk geselecteerde rijen
+### <a name="hard-select-rows"></a>Rijen hard selecteren
 
-Als een gebruiker op meerdere rijen tegelijk moet reageren, gebruikt u selectievakjes in rijen:
+Als een gebruiker op hetzelfde moment op meerdere rijen moet handelen, gebruikt u selectie vakjes in rijen:
 
-1. Schakel een harde selectie van rijen in door een **selectievakjekolom** toe te voegen aan de **kolomDefs** die aan het raster worden geleverd. **checkboxColumn** is gedefinieerd in **/src/components/shared/pcsGrid/pcsGrid.js:**
+1. Schakel harde selecties van rijen in door een **checkboxColumn** toe te voegen aan de **columnDefs** die aan het raster worden gegeven. **checkboxColumn** is gedefinieerd in **/src/Components/Shared/pcsGrid/pcsGrid.js**:
 
     ```js
     this.columnDefs = [
@@ -202,7 +202,7 @@ Als een gebruiker op meerdere rijen tegelijk moet reageren, gebruikt u selectiev
     ];
     ```
 
-1. Als u toegang wilt krijgen tot de geselecteerde items, krijgt u een verwijzing naar de interne grid-API:
+1. Voor toegang tot de geselecteerde items krijgt u een verwijzing naar de interne Grid-API:
 
     ```js
     onGridReady = gridReadyEvent => {
@@ -214,7 +214,7 @@ Als een gebruiker op meerdere rijen tegelijk moet reageren, gebruikt u selectiev
     };
     ```
 
-1. Geef contextknoppen op de pagina wanneer een rij in het raster hard is geselecteerd:
+1. Geef context knoppen op de pagina op wanneer een rij in het raster hard is geselecteerd:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Als een gebruiker op meerdere rijen tegelijk moet reageren, gebruikt u selectiev
     }
     ```
 
-1. Wanneer op een contextknop wordt geklikt, krijgt u de moeilijk geselecteerde items om uw werk aan te doen:
+1. Als er op een context knop wordt geklikt, kunt u de geselecteerde items ophalen om uw werk uit te voeren:
 
     ```js
     doSomething = () => {
@@ -243,11 +243,11 @@ Als een gebruiker op meerdere rijen tegelijk moet reageren, gebruikt u selectiev
     };
     ```
 
-### <a name="soft-select-rows"></a>Rijen met zachte selectie
+### <a name="soft-select-rows"></a>Voorlopig: rijen selecteren
 
-Als de gebruiker slechts op één rij hoeft te werken, configureert u een koppeling voor soft-select voor een of meer kolommen in de **kolomDefs**.
+Als de gebruiker alleen op één rij moet reageren, configureert u een tijdelijke koppeling voor een of meer kolommen in de **columnDefs**.
 
-1. Voeg **in voorbeeldGridConfig.js** **SoftSelectLinkRenderer** toe als **cellRendererFramework** voor een **kolomDef**.
+1. Voeg in **exampleGridConfig. js** **SoftSelectLinkRenderer** toe als de **cellRendererFramework** voor een **columnDef**.
 
     ```js
     export const exampleColumnDefs = {
@@ -260,7 +260,7 @@ Als de gebruiker slechts op één rij hoeft te werken, configureert u een koppel
     };
     ```
 
-1. Wanneer op een koppeling met soft-select wordt geklikt, wordt de gebeurtenis **onSoftSelectChange** geactiveerd. Voer de gewenste actie uit voor die rij, zoals het openen van een flyout met details. In dit voorbeeld wordt eenvoudig naar de console geschreven:
+1. Wanneer u op een zachte koppeling klikt, wordt de gebeurtenis **onSoftSelectChange** geactiveerd. Voer een wille keurige actie uit voor die rij, zoals het openen van een info-flyout. Dit voor beeld schrijft simpelweg naar de-console:
 
     ```js
     onSoftSelectChange = (rowId, rowData) => {
@@ -279,8 +279,8 @@ Als de gebruiker slechts op één rij hoeft te werken, configureert u een koppel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u over de beschikbare bronnen om u te helpen pagina's toe te voegen of aan te passen in de webgebruikersinterface in de versneller van de oplossing voor externe bewaking.
+In dit artikel hebt u geleerd over de resources die beschikbaar zijn om u te helpen bij het toevoegen of aanpassen van pagina's in de webgebruikersinterface in de oplossings versneller voor externe controle.
 
-Nu u een raster hebt gedefinieerd, is de volgende stap het [toevoegen van een aangepaste flyout aan de web-gebruikersinterface van de externe bewakingsoplossing](iot-accelerators-remote-monitoring-customize-flyout.md) die wordt weergegeven op de voorbeeldpagina.
+U hebt nu een raster gedefinieerd. de volgende stap is het [toevoegen van een aangepaste flyout aan de gebruikers interface van de externe bewaking oplossings versneller](iot-accelerators-remote-monitoring-customize-flyout.md) die wordt weer gegeven op de voorbeeld pagina.
 
-Zie [Remote Monitoring architecture](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de remote monitoring oplossingsversneller.
+Zie [architectuur voor externe bewaking](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de oplossings versneller voor externe controle.

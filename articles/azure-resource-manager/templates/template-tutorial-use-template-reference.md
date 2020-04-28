@@ -1,25 +1,25 @@
 ---
 title: Sjabloonverwijzing gebruiken
-description: Gebruik de sjabloonverwijzing Azure Resource Manager om een sjabloon te maken.
+description: Gebruik de Azure Resource Manager sjabloon verwijzing om een sjabloon te maken.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878485"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185044"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Zelfstudie: De verwijzing naar de sjabloon resourcebeheer gebruiken
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Zelf studie: de Resource Manager-sjabloon verwijzing gebruiken
 
-Meer informatie over het zoeken naar de gegevens van het sjabloonschema en de informatie gebruiken om ARM-sjablonen (Azure Resource Manager) te maken.
+Meer informatie over het vinden van sjabloon schema-informatie en het maken van Azure Resource Manager-sjablonen (ARM).
 
-In deze zelfstudie gebruikt u een basissjabloon uit Azure-snelstartsjablonen. Met behulp van sjabloonreferentiedocumentatie past u de sjabloon aan.
+In deze zelfstudie gebruikt u een basissjabloon uit Azure-snelstartsjablonen. U kunt de sjabloon aanpassen met behulp van de referentie documentatie voor sjablonen.
 
-![Naslagwerk voor resourcebeheersjabloon implementeren-opslagaccount](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
+![Resource Manager-sjabloon referentie implementeren opslag account](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -30,19 +30,19 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De sjabloon bewerken
 > * De sjabloon implementeren
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio Code gebruiken om ARM-sjablonen te maken.](use-vs-code-to-create-template.md)
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio code gebruiken om arm-sjablonen te maken](use-vs-code-to-create-template.md).
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-[Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/) is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Standaardopslagaccount maken) genoemd. De sjabloon definieert een Azure Storage-accountresource.
+[Quick](https://azure.microsoft.com/resources/templates/) start-sjablonen van Azure is een opslag plaats voor arm-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Standaardopslagaccount maken) genoemd. De sjabloon definieert een Azure Storage-accountresource.
 
-1. Selecteer **Bestand**>**openen bestand**in Visual Studio-code .
+1. Selecteer **bestand**>**openen**in Visual Studio code.
 1. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -50,7 +50,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
     ```
 
 1. Selecteer **Openen** om het bestand te openen.
-1. Selecteer **Bestand**>**opslaan als** om het bestand op te slaan als **azuredeploy.json** op uw lokale computer.
+1. Selecteer **bestand**>**Opslaan als** om het bestand op te slaan als **azuredeploy. json** op de lokale computer.
 
 ## <a name="understand-the-schema"></a>Informatie over het schema
 
@@ -65,67 +65,88 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
     * **resources**: geef de resourcetypen op die worden geïmplementeerd of bijgewerkt in een resourcegroep.
     * **outputs**: geef de waarden op die worden geretourneerd na de implementatie.
 
-1. Vouw **Resources** uit. Er is een `Microsoft.Storage/storageAccounts`-resource gedefinieerd. De SKU-naam gebruikt een parameterwaarde.  De parameter heet **storageAccountType**.
+1. Vouw **Resources** uit. Er is een `Microsoft.Storage/storageAccounts`-resource gedefinieerd. De SKU-naam gebruikt een parameter waarde.  De para meter wordt **storageAccountType**genoemd.
 
     ![Definitie opslagaccount Resource Manager-sjabloon](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. Vouw **parameters** uit om te zien hoe **storageAccountType** is gedefinieerd. De parameter heeft vier toegestane waarden. U vindt de andere toegestane waarden en herziet vervolgens de parameterdefinitie.
+1. Vouw **para meters** uit om te zien hoe **storageAccountType** is gedefinieerd. De para meter heeft vier toegestane waarden. U vindt de andere toegestane waarden en vervolgens wijzigt u de parameter definitie.
 
-    ![Resource Manager-sjabloonopslagaccountbronnen skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
+    ![Resource Manager-sjabloon opslag account resources sku's](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>De sjabloonverwijzing zoeken
 
-1. Blader naar [Azure-sjabloonverwijzing](https://docs.microsoft.com/azure/templates/).
-1. Voer in het vak **Filteren op titel** **opslagaccounts**in en selecteer de eerste **opslagaccounts** onder **verwijzing > opslag**.
+1. Blader naar de [Naslag informatie voor Azure-sjablonen](https://docs.microsoft.com/azure/templates/).
+1. In het vak **filteren op titel** voert u **opslag accounts**in en selecteert u de eerste **opslag accounts** onder **verwijzing > opslag**.
 
     ![Resource Manager-sjabloon verwijzing opslagaccount](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 
-    Een resourceprovider heeft meestal meerdere API-versies:
+    Een resource provider heeft doorgaans diverse API-versies:
 
-    ![Naslaggeheugenvoorsjabloonbronaccountversies van resourcebeheer](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
+    ![Resource Manager-sjabloon referentie opslag account-versies](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
 
-1. Selecteer **Alle bronnen** onder **Opslag** in het linkerdeelvenster. Op deze pagina worden de brontypen en -versies van de opslagbronprovider weergegeven. Het wordt aanbevolen om de nieuwste API-versies te gebruiken voor de resourcetypen die in uw sjabloon zijn gedefinieerd.
+1. Selecteer **alle resources** onder **opslag** in het linkerdeel venster. Op deze pagina worden de resource typen en versies van de opslag Resource provider vermeld. Het is raadzaam om de nieuwste API-versies te gebruiken voor de resource typen die in de sjabloon zijn gedefinieerd.
 
-    ![Versies van naslaggeheugens van resourcebeheer-sjablonen](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
+    ![Resource Manager-sjabloon referentie opslag account typen](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Selecteer de nieuwste versie van het **brontype storageAccount.** De nieuwste versie is **2019-06-01** wanneer dit artikel is geschreven. Controleer of deze versie overeenkomt met de versie die wordt gebruikt voor de bron van het opslagaccount in uw sjabloon. Als u de API-versie bijwerkt, controleert u of de resourcedefinitie overeenkomt met de verwijzing naar de sjabloon.
+1. Selecteer de nieuwste versie van het resource type **Storage account** . De meest recente versie is **2019-06-01** wanneer dit artikel is geschreven. Zorg ervoor dat deze versie overeenkomt met de versie die wordt gebruikt voor de bron van het opslag account in uw sjabloon. Als u de API-versie bijwerkt, controleert u of de resource definitie overeenkomt met de sjabloon verwijzing.
 
-1. Op deze pagina worden de details van het brontype storageAccount weergegeven.  Er worden bijvoorbeeld de toegestane waarden voor het **Sku-object** weergegeven. Er zijn meer skus dan wat wordt vermeld in de quickstart sjabloon die u eerder hebt geopend. U de snelstartsjabloon aanpassen om alle beschikbare opslagtypen op te nemen.
+1. Op deze pagina vindt u de details van het resource type Storage account.  Het bevat bijvoorbeeld de toegestane waarden voor het **SKU** -object. Er zijn meer sku's dan wat wordt weer gegeven in de Quick Start-sjabloon die u eerder hebt geopend. U kunt de Quick Start-sjabloon aanpassen zodat alle beschik bare opslag typen worden toegevoegd.
 
-    ![Referentieopslagaccount voor resourcebeheer-sjabloon](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
+    ![Resource Manager-sjabloon verwijzing naar opslag account-sku's](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
-Voeg vanuit Visual Studio Code de extra opslagaccounttypen toe zoals in de volgende schermafbeelding:
+Voeg vanuit Visual Studio code de typen extra opslag accounts toe, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Bronbeheersjabloonopslagaccountbronnen](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus.png)
+![Resources van Resource Manager-opslag account](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus.png)
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Raadpleeg de sectie [De sjabloon implementeren](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) in de snelstartgids van Visual Studio Code voor de implementatieprocedure. Wanneer u de sjabloon implementeert, geeft u de parameter **storageAccountType** op met een nieuwe toegevoegde waarde, **bijvoorbeeld Premium_ZRS**. De deploy zou mislukken als u de oorspronkelijke snelstartsjabloon gebruikt omdat **Premium_ZRS** geen toegestane waarde was.  Als u de parameterwaarde wilt doorgeven, voegt u de volgende switch toe aan de opdracht Implementatie:
+1. Meld u aan bij de [Azure Cloud shell](https://shell.azure.com)
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+1. Kies uw voorkeurs omgeving door **Power shell** of **bash** (voor CLI) in de linkerbovenhoek te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure Portal Cloud Shell bestand uploaden](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. Selecteer **Upload/download files** en selecteer **Uploaden**. Zie de vorige schermafbeelding. Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. Nadat het bestand is geüpload, kunt u de opdracht **ls** gebruiken en de **Cat** -opdracht om te controleren of het bestand is geüpload.
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. Voer de volgende opdrachten uit op de Cloud Shell. Selecteer het tabblad om de PowerShell-code of de CLI-code weer te geven.
 
----
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ Wanneer u de sjabloon implementeert, geeft u de para meter **storageAccountType** op met een toegevoegde waarde, bijvoorbeeld **Standard_RAGRS**. De implementatie mislukt als u de oorspronkelijke Quick Start-sjabloon gebruikt omdat **Standard_RAGRS** geen toegestane waarde is.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 

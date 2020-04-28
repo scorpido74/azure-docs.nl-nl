@@ -1,88 +1,88 @@
 ---
-title: Gegevensstromen oplossen
-description: Meer informatie over het oplossen van problemen met de gegevensstroom in Azure Data Factory.
+title: Problemen met gegevens stromen oplossen
+description: Meer informatie over het oplossen van problemen met gegevens stromen in Azure Data Factory.
 services: data-factory
 ms.author: makromer
 author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/02/2020
-ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/27/2020
+ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417807"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187276"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevensstromen in Azure Data Factory oplossen
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevens stromen in Azure Data Factory oplossen
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In dit artikel worden veelvoorkomende probleemoplossingsmethoden voor gegevensstromen in Azure Data Factory onderzocht.
+In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen in Azure Data Factory besproken.
 
 ## <a name="common-errors-and-messages"></a>Veelvoorkomende fouten en berichten
 
-### <a name="error-code-df-executor-sourceinvalidpayload"></a>Foutcode: DF-Executor-SourceInvalidPayload
-- **Bericht:** Uitvoering gegevensvoorbeeld, foutopsporing en pijplijngegevensstroom mislukt omdat container niet bestaat
-- **Oorzaken**: Wanneer de gegevensset een container bevat die niet bestaat in de opslag
-- **Aanbeveling:** Zorg ervoor dat de container waarnaar in uw gegevensset wordt verwezen, bestaat of toegankelijk is.
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>Fout code: DF-uitvoerder-SourceInvalidPayload
+- **Bericht**: uitvoering van voor beeld, fout opsporing en pipeline-gegevens stroom is mislukt omdat de container niet bestaat
+- **Oorzaken**: wanneer dataset een container bevat die niet voor komt in de opslag
+- **Aanbeveling**: Controleer of de container waarnaar wordt verwezen in uw gegevensset bestaat of toegankelijk is.
 
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Foutcode: DF-Executor-SystemImplicitCartesian
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>Fout code: DF-uitvoerder-SystemImplicitCartesian
 
-- **Bericht:** Impliciet cartesiaans product voor INNER join wordt niet ondersteund, gebruik IN plaats daarvan CROSS JOIN. Kolommen die worden gebruikt bij join moeten een unieke sleutel voor rijen maken.
-- **Oorzaken**: Impliciet cartesiaans product voor INNER join tussen logische plannen wordt niet ondersteund. Als de kolommen die in de join worden gebruikt, de unieke sleutel maken, is ten minste één kolom van beide zijden van de relatie vereist.
-- **Aanbeveling:** Voor joins op basis van niet-gelijkheid moet je kiezen voor CUSTOM CROSS JOIN.
+- **Bericht**: impliciet Cartesisch product voor Inner join wordt niet ondersteund. gebruik in plaats daarvan cross join. Kolommen die in de samen voeging worden gebruikt, moeten een unieke sleutel voor rijen maken.
+- **Oorzaken**: impliciet Cartesisch product voor Inner join tussen logische abonnementen wordt niet ondersteund. Als de kolommen die worden gebruikt in de samen voeging de unieke sleutel maakt, is ten minste één kolom van beide zijden van de relatie vereist.
+- **Aanbeveling**: voor niet-gelijkheid gebaseerde samen voegingen moet u kiezen voor aangepaste cross-koppeling.
 
-### <a name="error-code-df-executor-systeminvalidjson"></a>Foutcode: DF-Executor-SystemInvalidJson
+### <a name="error-code-df-executor-systeminvalidjson"></a>Fout code: DF-uitvoerder-SystemInvalidJson
 
-- **Bericht:** JSON parsing error, unsupported encoding or multiline
-- **Oorzaken:** mogelijke problemen met het JSON-bestand: niet-ondersteunde codering, corrupte bytes of het gebruik van JSON-bron als enkel document op veel geneste regels
-- **Aanbeveling:** Controleer of de codering van het JSON-bestand wordt ondersteund. Vouw 'JSON-instellingen' uit en schakel 'Single Document' in op de brontransformatie die een JSON-gegevensset gebruikt.
+- **Bericht**: JSON-Parseerfout, niet-ondersteunde code ring of meerdere regels
+- **Oorzaken**: mogelijke problemen met het JSON-bestand: niet-ondersteunde code ring, beschadigde bytes of het gebruik van JSON-bron als één document op veel geneste lijnen
+- **Aanbeveling**: Controleer of de code ring van het JSON-bestand wordt ondersteund. Op de bron transformatie die gebruikmaakt van een JSON-gegevensset, vouwt u JSON-instellingen uit en schakelt u ' single document ' in.
  
-### <a name="error-code-df-executor-broadcasttimeout"></a>Foutcode: DF-Executor-BroadcastTimeout
+### <a name="error-code-df-executor-broadcasttimeout"></a>Fout code: DF-uitvoerder-BroadcastTimeout
 
-- **Bericht:** Broadcast join time-out error, zorg ervoor dat broadcast stream produceert gegevens binnen 60 seconden in debug runs en 300 seconden in taak loopt
-- **Oorzaken**: Broadcast heeft een standaard time-out van 60 seconden in foutopsporingsuitvoeringen en 300 seconden in taakuitvoeringen. Stream gekozen voor uitzending lijkt te groot om gegevens te produceren binnen deze limiet.
-- **Aanbeveling**: Vermijd het uitzenden van grote gegevensstromen waar de verwerking meer dan 60 seconden kan duren. Kies een kleinere stream om uit te zenden. Grote SQL/DW-tabellen en bronbestanden zijn doorgaans slechte kandidaten.
+- **Bericht**: er is een time-out opgetreden voor de broadcast. Zorg ervoor dat de stroom van de uitzending gegevens binnen 60 seconden produceert in debug-uitvoeringen en 300 seconden bij uitvoering
+- **Oorzaken**: Broadcast heeft een standaard time-out van 60 seconden in debug-uitvoeringen en 300 seconden in de uitvoering van taken. De stroom die is gekozen voor de broadcast lijkt groot te zijn voor het produceren van gegevens binnen deze limiet.
+- **Aanbeveling**: Controleer het tabblad optimaliseren op uw gegevensstroom transformaties voor samen voegen, bestaan en opzoeken. De standaard optie voor broadcast is ' auto '. Als deze optie is ingesteld, of als u de linker-of rechter kant hand matig instelt op broadcast onder ' fixed ', kunt u een grotere Azure Integration Runtime configuratie instellen of uitschakeling uitschakelen. De aanbevolen benadering voor de beste prestaties in gegevens stromen is om te voor komen dat Spark met ' auto ' wordt uitgezonden en een geoptimaliseerd voor geheugen gebruikt Azure IR.
 
-### <a name="error-code-df-executor-conversion"></a>Foutcode: DF-Executor-Conversion
+### <a name="error-code-df-executor-conversion"></a>Fout code: DF-uitvoeringen-conversie
 
-- **Bericht:** Converteren naar een datum of tijd is mislukt vanwege een ongeldig teken
-- **Oorzaken**: Gegevens zijn niet in de verwachte indeling
-- **Aanbeveling**: Het juiste gegevenstype gebruiken
+- **Bericht**: converteren naar een datum of tijd is mislukt vanwege een ongeldig teken
+- **Oorzaken**: gegevens hebben niet de verwachte indeling
+- **Aanbeveling**: gebruik het juiste gegevens type
 
-### <a name="error-code-df-executor-invalidcolumn"></a>Foutcode: DF-Executor-InvalidEKolom
+### <a name="error-code-df-executor-invalidcolumn"></a>Fout code: DF-uitvoerder-InvalidColumn
 
-- **Bericht:** Kolomnaam moet worden opgegeven in de query, een alias instellen als u een SQL-functie gebruikt
-- **Oorzaken**: Er is geen kolomnaam opgegeven
-- **Aanbeveling**: Stel een alias in als u een SQL-functie gebruikt, zoals min()/max(), enz.
+- **Bericht**: de kolom naam moet worden opgegeven in de query, een alias instellen als u een SQL-functie gebruikt
+- **Oorzaken**: er is geen kolom naam opgegeven
+- **Aanbeveling**: Stel een alias in als u een SQL-functie gebruikt, zoals min ()/Max (), enzovoort.
 
-### <a name="error-code-getcommand-outputasync-failed"></a>Foutcode: GetCommand OutputAsync is mislukt
+### <a name="error-code-getcommand-outputasync-failed"></a>Fout code: GetCommand OutputAsync is mislukt
 
-- **Bericht:** Tijdens dataflow debug genfout en data preview: GetCommand OutputAsync is mislukt met ...
-- **Oorzaken:** dit is een back-end servicefout. U de bewerking opnieuw proberen en ook uw foutopsporingssessie opnieuw starten.
-- **Aanbeveling:** Als u het probleem opnieuw probeert en opnieuw start, neemt u contact op met de klantenservice.
+- **Bericht**: tijdens fout opsporing en voor beeld van gegevens stroom: GetCommand OutputAsync is mislukt met...
+- **Oorzaken**: dit is een fout in de back-end-service. U kunt de bewerking opnieuw proberen en ook de foutopsporingssessie opnieuw opstarten.
+- **Aanbeveling**: als het probleem niet wordt opgelost door opnieuw op te starten, neemt u contact op met de klant ondersteuning.
 
-### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Foutcode: Onverwachte uitzondering raken en uitvoering is mislukt
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Fout code: er is een onverwachte uitzonde ring opgetreden en de uitvoering is mislukt
 
-- **Bericht:** Tijdens de activiteitsuitvoering gegevensstroom: Klik op onverwachte uitzondering en de uitvoering is mislukt.
-- **Oorzaken:** dit is een back-end servicefout. U de bewerking opnieuw proberen en ook uw foutopsporingssessie opnieuw starten.
-- **Aanbeveling:** Als u het probleem opnieuw probeert en opnieuw start, neemt u contact op met de klantenservice.
+- **Bericht**: tijdens de uitvoering van de gegevens stroom activiteit: er is een onverwachte uitzonde ring opgetreden en uitvoering mislukt.
+- **Oorzaken**: dit is een fout in de back-end-service. U kunt de bewerking opnieuw proberen en ook de foutopsporingssessie opnieuw opstarten.
+- **Aanbeveling**: als het probleem niet wordt opgelost door opnieuw op te starten, neemt u contact op met de klant ondersteuning.
 
-## <a name="general-troubleshooting-guidance"></a>Algemene richtlijnen voor probleemoplossing
+## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 
-1. Controleer de status van uw gegevenssetverbindingen. Ga in elke bron- en sinktransformatie naar de Gekoppelde service voor elke gegevensset die u gebruikt en test verbindingen.
-1. Controleer de status van uw bestand en tabelverbindingen van de gegevensstroomontwerper. Schakel Foutopsporing in en klik op Gegevensvoorbeeld voor uw brontransformaties om ervoor te zorgen dat u toegang hebt tot uw gegevens.
-1. Als alles er goed uitziet vanuit het voorbeeld van gegevens, gaat u naar de pijplijnontwerper en plaatst u uw gegevensstroom in een pijplijnactiviteit. Debuging van de pijplijn voor een end-to-end test.
+1. Controleer de status van uw gegevensset-verbindingen. Ga in elke bron-en Sink-trans formatie naar de gekoppelde service voor elke gegevensset die u gebruikt en test verbindingen.
+1. Controleer de status van uw bestands-en tabel verbindingen van de ontwerp functie voor gegevens stromen. Schakel over op fout opsporing en klik op voor beeld van gegevens op de bron transformaties om ervoor te zorgen dat u toegang hebt tot uw gegevens.
+1. Als alles er goed uitziet in de preview van gegevens, gaat u naar de ontwerp functie voor pijp lijnen en plaatst u uw gegevens stroom in een pijplijn activiteit. Fout opsporing voor de pijp lijn voor een end-to-end-test.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer deze bronnen voor meer hulp bij het oplossen van problemen:
-*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Functieaanvragen gegevensfabriek](https://feedback.azure.com/forums/270578-data-factory)
+Probeer deze bronnen voor meer informatie over probleem oplossing:
+*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter informatie over Data Factory](https://twitter.com/hashtag/DataFactory)
-*  [Prestatiehandleiding voor ADF-toewijzingsgegevens](concepts-data-flow-performance.md)
+*  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Prestatie gids voor gegevens stromen van ADF-toewijzing](concepts-data-flow-performance.md)

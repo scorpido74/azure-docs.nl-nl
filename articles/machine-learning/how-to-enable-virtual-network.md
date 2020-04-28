@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: bd4dabe1d5fbc4722d03f31492d2118802292df2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82111951"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188120"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -508,19 +508,7 @@ Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u
 
 ## <a name="use-azure-firewall"></a>Azure Firewall gebruiken
 
-Wanneer u Azure Firewall gebruikt, moet u een netwerk regel configureren om verkeer toe te staan van en naar de volgende adressen:
-
-- `*.batchai.core.windows.net`
-- `ml.azure.com`
-- `*.azureml.ms`
-- `*.experiments.azureml.net`
-- `*.modelmanagement.azureml.net`
-- `mlworkspace.azure.ai`
-- `*.aether.ms`
-
-Wanneer u de regel toevoegt, stelt u het __protocol__ in op wille keurige en de poorten `*`.
-
-Zie [Azure firewall implementeren en configureren](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)voor meer informatie over het configureren van een netwerk regel.
+Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-access-azureml-behind-firewall.md)voor meer informatie over het gebruik van Azure Machine Learning met Azure firewall.
 
 ## <a name="use-azure-container-registry"></a>Azure Container Registry gebruiken
 

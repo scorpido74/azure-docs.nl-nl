@@ -1,6 +1,6 @@
 ---
-title: Uw preview-omgeving plannen - Azure Time Series Insights | Microsoft Documenten
-description: Aanbevolen procedures voor het configureren, beheren, plannen en implementeren van uw Azure Time Series Insights Preview-omgeving.
+title: Uw preview-omgeving plannen-Azure Time Series Insights | Microsoft Docs
+description: Aanbevolen procedures voor het configureren, beheren, plannen en implementeren van uw Azure Time Series Insights-voorbeeld omgeving.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,97 +8,97 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: b16d78c9670d05fcec8126c5544d1dd97f6a03bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045719"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189246"
 ---
-# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights Preview-omgeving plannen
+# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights-voorbeeld omgeving plannen
 
-In dit artikel worden aanbevolen procedures beschreven om snel te plannen en aan de slag te gaan met Azure Time Series Insights Preview.
-
-> [!NOTE]
-> Lees [De algemene beschikbaarheidsomgeving](time-series-insights-environment-planning.md)van Azure Time Series Insights voor aanbevolen procedures voor het plannen van een exemplaar met algemene beschikbaarheid timeseries insights.
-
-## <a name="best-practices-for-planning-and-preparation"></a>Best practices voor planning en voorbereiding
-
-Best practices rond planning voor en voorbereiding van uw omgeving worden verder beschreven in de volgende artikelen:
-
-* Wat u krijgt wanneer u [een Time Series Insights Preview-omgeving indient.](#the-preview-environment)
-* Wat uw [time series id's en timestamp eigenschappen zijn.](#configure-time-series-ids-and-timestamp-properties)
-* Wat het nieuwe [Time Series Model is,](#understand-the-time-series-model)en hoe je je eigen te bouwen.
-* Hoe evenementen efficiënt te [verzenden in JSON](#shape-your-events).
-* Time Series Insights [business disaster recovery opties](#business-disaster-recovery).
-
-Azure Time Series Insights maakt gebruik van een pay-as-you-go business model. Lees de prijzen van [Time Series Insights voor](https://azure.microsoft.com/pricing/details/time-series-insights/)meer informatie over kosten en capaciteit.
-
-## <a name="the-preview-environment"></a>De voorbeeldomgeving
-
-Wanneer u een Time Series Insights Preview-omgeving indient, maakt u twee Azure-bronnen:
-
-* Een Azure Time Series Insights Preview-omgeving
-* Een V1-account voor algemene doeleinden van Azure Storage
-
-Als onderdeel van het inrichtingsproces geeft u op of u een warme winkel wilt inschakelen. Warme winkel biedt u een gelaagde query-ervaring. Als u dit hebt ingeschakeld, moet u een bewaartermijn tussen 7 en 30 dagen opgeven. Query's die binnen de bewaarperiode van warme winkels worden uitgevoerd, bieden over het algemeen snellere responstijden. Wanneer een query zich uitstrekt over de bewaarperiode voor warme winkels, wordt deze geserveerd vanuit het koelhuis.
-
-Vragen over warme winkel zijn gratis, terwijl vragen over koelhuis kosten met zich meebrengen. Het is belangrijk om uw querypatronen te begrijpen en uw warme winkelconfiguratie dienovereenkomstig te plannen. We raden aan dat interactieve analyses van de meest recente gegevens zich bevinden in uw warme winkel en patroonanalyse en langetermijntrends in de kou staan.
+In dit artikel worden de aanbevolen procedures beschreven voor het plannen en snel aan de slag met Azure Time Series Insights preview.
 
 > [!NOTE]
-> Lees de [API-naslaginformatie](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)voor meer informatie over het opvragen van uw warme gegevens.
+> Voor aanbevolen procedures voor het plannen van een algemene Beschik baarheid Time Series Insights-exemplaar, Lees [uw Azure time series Insights algemene beschikbaarheids omgeving plannen](time-series-insights-environment-planning.md).
 
-Om te beginnen heb je drie extra items nodig:
+## <a name="best-practices-for-planning-and-preparation"></a>Aanbevolen procedures voor planning en voor bereiding
 
-* Een [tijdseriemodel](./time-series-insights-update-tsm.md)
-* Een [gebeurtenisbron die is verbonden met inzichten uit de time-serie](./time-series-insights-how-to-add-an-event-source-iothub.md)
-* [Gebeurtenissen die naar de gebeurtenisbron stromen](./time-series-insights-send-events.md) en die zowel aan het model zijn toegewezen als in geldige JSON-indeling zijn
+De aanbevolen procedures voor het plannen en voorbereiden van uw omgeving worden verder beschreven in de volgende artikelen:
 
-## <a name="review-preview-limits"></a>Voorbeeldlimieten bekijken
+* Wat u krijgt wanneer u [een time series Insights preview-omgeving inricht](#the-preview-environment).
+* Wat uw [tijd reeks-id's en time stamp-eigenschappen zijn](#configure-time-series-ids-and-timestamp-properties).
+* Wat het nieuwe [Time Series-model is](#understand-the-time-series-model)en hoe u er een kunt maken.
+* Het [efficiënt verzenden van gebeurtenissen in JSON](#shape-your-events).
+* Time Series Insights [Opties voor herstel na nood](#business-disaster-recovery)geval.
+
+Azure Time Series Insights maakt gebruik van een zakelijk model voor betalen per gebruik. Lees [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over kosten en capaciteit.
+
+## <a name="the-preview-environment"></a>De voorbeeld omgeving
+
+Wanneer u een Time Series Insights preview-omgeving inricht, maakt u twee Azure-resources:
+
+* Een Azure Time Series Insights preview-omgeving
+* Een Azure Storage v1-account voor algemeen gebruik
+
+Als onderdeel van het inrichtings proces geeft u op of u een warme Store wilt inschakelen. Warme Store biedt u een gelaagde query-ervaring. Wanneer deze functie is ingeschakeld, moet u een Bewaar periode tussen 7 en 30 dagen opgeven. Query's die in de warme Bewaar periode worden uitgevoerd, bieden doorgaans snellere reactie tijden. Wanneer een query de Bewaar periode van het warme archief overschrijdt, wordt deze uit de koude Store bediend.
+
+Query's in de warme Store zijn gratis, terwijl query's voor de koude opslag kosten in rekening worden gebracht. Het is belang rijk om inzicht te krijgen in uw query patronen en uw warme archief configuratie dienovereenkomstig te plannen. We raden u aan om interactieve analyses uit te voeren op de meest recente gegevens in uw warme archief-en patroon analyse en op lange termijn trends.
+
+> [!NOTE]
+> Lees de [API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)voor meer informatie over het uitvoeren van een query op uw warme gegevens.
+
+Als u wilt beginnen, hebt u drie extra items nodig:
+
+* Een [Time Series-model](./time-series-insights-update-tsm.md)
+* Een [gebeurtenis bron die is verbonden met Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* [Gebeurtenissen die in de gebeurtenis bron stromen](./time-series-insights-send-events.md) die beide zijn toegewezen aan het model en in een geldige JSON-indeling zijn
+
+## <a name="review-preview-limits"></a>Preview-limieten bekijken
 
 [!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
-## <a name="configure-time-series-ids-and-timestamp-properties"></a>Tijdreeks-iD's en tijdstempeleigenschappen configureren
+## <a name="configure-time-series-ids-and-timestamp-properties"></a>Time Series-Id's en time stamp-eigenschappen configureren
 
-Als u een nieuwe Time Series Insights-omgeving wilt maken, selecteert u een time-series-id. Dit werkt als een logische partitie voor uw gegevens. Zoals opgemerkt, zorg ervoor dat uw Time Series ID's klaar.
+Selecteer een tijd reeks-ID om een nieuwe Time Series Insights omgeving te maken. Als u dit doet, fungeert dit als een logische partitie voor uw gegevens. Zorg ervoor dat uw time series-Id's gereed zijn.
 
 > [!IMPORTANT]
-> Time Series *ID's kunnen later niet worden gewijzigd.* Controleer elk voor de definitieve selectie en het eerste gebruik.
+> Time Series-Id's *kunnen later niet worden gewijzigd*. Verifieer elk één voor de uiteindelijke selectie en het eerste gebruik.
 
-U maximaal drie toetsen selecteren om uw resources op een unieke manier te differentiëren. Lees [Aanbevolen procedures voor het kiezen van een time-series-id](./time-series-insights-update-how-to-id.md) en opslag en [invallen](./time-series-insights-update-storage-ingress.md)voor meer informatie.
+U kunt Maxi maal drie sleutels selecteren om uw resources uniek te onderscheiden. Lees voor meer informatie [Aanbevolen procedures voor het kiezen van een tijd reeks-id](./time-series-insights-update-how-to-id.md) en [opslag en ingang](./time-series-insights-update-storage-ingress.md).
 
-De eigenschap **Timestamp** is ook belangrijk. U deze eigenschap aanwijzen wanneer u gebeurtenisbronnen toevoegt. Elke gebeurtenisbron heeft een optionele eigenschap Timestamp die wordt gebruikt om gebeurtenisbronnen in de loop van de tijd bij te houden. Tijdstempelwaarden zijn hoofdlettergevoelig en moeten worden opgemaakt volgens de afzonderlijke specificatie van elke gebeurtenisbron.
+De **tijds tempel** eigenschap is ook belang rijk. U kunt deze eigenschap aanwijzen wanneer u gebeurtenis bronnen toevoegt. Elke gebeurtenis bron heeft een optionele time stamp-eigenschap die wordt gebruikt om gebeurtenis bronnen na verloop van tijd bij te houden. Time Stamp-waarden zijn hoofdletter gevoelig en moeten worden opgemaakt als afzonderlijke specificatie van elke bron van de gebeurtenis.
 
 > [!TIP]
-> Controleer de vereisten voor opmaak en ontlijning voor uw gebeurtenisbronnen.
+> Controleer de vereisten voor de indeling en het parseren van uw gebeurtenis bronnen.
 
-Wanneer deze leeg blijft, wordt de gebeurtenis-enqueuetijd van een gebeurtenisbron gebruikt als gebeurtenistijdstempel. Als u historische gegevens of batched-gebeurtenissen verzendt, is het aanpassen van de eigenschap Timestamp handiger dan de standaardgebeurteniswachtrijtijd. Lees voor meer informatie over het [toevoegen van gebeurtenisbronnen in Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Als dit veld leeg blijft, wordt de tijd voor het plaatsen van gebeurtenissen van een gebeurtenis bron gebruikt als tijds tempel van de gebeurtenis. Als u historische gegevens of batch gebeurtenissen verzendt, is het aanpassen van de tijds tempel eigenschap handiger dan de standaard tijd voor het in de wachtrij plaatsen van gebeurtenissen. Lees voor meer informatie over het toevoegen van [gebeurtenis bronnen in Azure IOT hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
-## <a name="understand-the-time-series-model"></a>Begrijp het Model van de tijdreeks
+## <a name="understand-the-time-series-model"></a>Meer informatie over het time series-model
 
-U nu het Time Series Insights-model van uw Time Series Insights-omgeving configureren. Het nieuwe model maakt het gemakkelijk om IoT-gegevens te vinden en te analyseren. Het maakt de curatie, het onderhoud en de verrijking van tijdreeksgegevens mogelijk en helpt bij het voorbereiden van gegevenssets die klaar zijn voor de consument. Het model maakt gebruik van time-series-id's, die toewijzen aan een instantie die de unieke bron koppelt aan variabelen, ook wel typen en hiërarchieën genoemd. Lees meer over het nieuwe [Time Series Model](./time-series-insights-update-tsm.md).
+U kunt nu het time series-model van uw Time Series Insights omgeving configureren. Het nieuwe model maakt het eenvoudig om IoT-gegevens te vinden en analyseren. Hiermee wordt de inschakeling, het onderhoud en de verrijking van tijdreeks gegevens mogelijk en helpt u gegevens sets te voorbereiden. Het model maakt gebruik van Time Series-Id's, die zijn toegewezen aan een exemplaar dat de unieke resource koppelt aan variabelen, zoals typen en hiërarchieën. Meer informatie over het nieuwe [Time Series-model](./time-series-insights-update-tsm.md).
 
-Het model is dynamisch, dus het kan op elk moment worden gebouwd. Om snel aan de slag te gaan, bouw en upload je deze voordat je gegevens in Time Series Insights wilt pushen. Als u uw model wilt bouwen, leest [u Het Model van de tijdreeks gebruiken](./time-series-insights-update-how-to-tsm.md).
+Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Time Series Insights pusht. Lees [het time series-model gebruiken](./time-series-insights-update-how-to-tsm.md)om uw model te bouwen.
 
-Voor veel klanten wordt het Time Series Model toegewezen aan een bestaand assetmodel of ERP-systeem dat al bestaat. Als u geen bestaand model hebt, wordt een vooraf gebouwde gebruikerservaring [geboden](https://github.com/Microsoft/tsiclient) om snel aan de slag te gaan. Als u zich wilt voorstellen hoe een model u kan helpen, bekijkt u de [demo-omgeving van](https://insights.timeseries.azure.com/preview/demo)het voorbeeld.
+Voor veel klanten is het time series-model gekoppeld aan een bestaand Asset model of ERP-systeem dat al aanwezig is. Als u geen bestaand model hebt, wordt een vooraf ontwikkelde gebruikers ervaring [gegeven](https://github.com/Microsoft/tsiclient) om snel aan de slag te gaan. Als u wilt bepalen hoe een model u kan helpen, bekijkt u de voor [beeld-demo omgeving](https://insights.timeseries.azure.com/preview/demo).
 
-## <a name="shape-your-events"></a>Geef vorm aan uw evenementen
+## <a name="shape-your-events"></a>Uw gebeurtenissen vorm geven
 
-U controleren hoe u gebeurtenissen naar Time Series Insights stuurt. Idealiter worden uw evenementen goed en efficiënt gedenormaliseerd.
+U kunt controleren hoe u gebeurtenissen naar Time Series Insights verzendt. In het ideale geval zijn uw gebeurtenissen ongebruikelijk en efficiënt.
 
-Een goede vuistregel:
+Een goede vuist regel:
 
-* Sla metagegevens op in uw tijdseriemodel.
-* Zorg ervoor dat de tijdreeksmodus, instantievelden en gebeurtenissen alleen noodzakelijke informatie bevatten, zoals een time-series-id of eigenschap Timestamp.
+* Sla meta gegevens op in uw time series-model.
+* Zorg ervoor dat de modus Time Series, instance Fields en Events alleen de benodigde informatie bevat, zoals een tijd reeks-ID of eigenschap time stamp.
 
-Lees Voor meer informatie [Shape-gebeurtenissen](./time-series-insights-send-events.md#supported-json-shapes).
+Lees voor meer informatie [Shape-gebeurtenissen](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk [Azure Advisor](../advisor/advisor-overview.md) om uw configuratieopties voor bedrijfsherstel te plannen.
-- Lees meer over [opslag en invallen in](./time-series-insights-update-storage-ingress.md) de Time Series Insights Preview.
-- Meer informatie over [gegevensmodellering](./time-series-insights-update-tsm.md) in de Time Series Insights Preview.
+- Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
+- Meer informatie over [opslag en](./time-series-insights-update-storage-ingress.md) inkomend verkeer vindt u in de preview-versie van Time Series Insights.
+- Meer informatie over [gegevens modellering](./time-series-insights-update-tsm.md) in de time series Insights preview.

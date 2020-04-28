@@ -5,20 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 2249dde8578dcd5cc3444aeef6b51c8afb2f31fa
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160593"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190330"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
 U hebt gepubliceerd op Marketplace. u wilt nu uw aanbieding bekijken. We bieden u de voor delen: verkoop, technisch en marketing: u moet de groei van uw aanbieding versnellen.
 
-Wanneer u met uw aanbieding aan de slag gaat, neemt het Marketplace bene fits-team contact met u op voor uw in aanmerking komende voor delen. De voor delen van Marketplace-beloningen worden berekend op basis van uw commerciële Marketplace-betrokkenheid en verkoop. Hoe meer u in beslag gaat, hoe meer u terugkeert.
+Zodra uw aanbieding Live is op Azure Marketplace of AppSource, gaat u naar [partner centrum](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) om uw in aanmerking komende marketing-, verkoop-en technische voor delen te openen en te activeren. De voor delen van Marketplace-beloningen worden berekend op basis van uw commerciële Marketplace-betrokkenheid en verkoop. Hoe meer u in beslag gaat, hoe meer u terugkeert.
 
 ## <a name="marketplace-rewards"></a>Marketplace-beloningen
 
@@ -41,7 +41,19 @@ Gedetailleerde beschrijvingen van alle programma voordelen vindt u in het [Marke
 De stappen om aan de slag te gaan zijn eenvoudig:
 
 1. Publiceer een aanbieding in Microsoft AppSource of op Azure Marketplace.
-2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden info@company.com naar aliassen, zoals vaak verloren gaan.
+2. Ga naar het [dash board](https://partner.microsoft.com/dashboard/directory)van de partner centrum en selecteer op de pagina Marketplace-beloningen het tabblad **verkoop en marketing voor delen** om uw lijst met voor delen te bekijken.
+3. Als u het voor deel van verkoop en marketing wilt activeren, moet u eerst een bedrijfs marketing contact toewijzen. Deze contact persoon ontvangt opvolgings communicatie over uw Marketplace-beloningen.
+4. Als u uw marketing contactpersoongegevens wilt toevoegen of bijwerken, gaat u naar het tabblad voor delen van verkoop en marketing op de pagina Marketplace-beloningen en selecteert u vervolgens **toevoegen, bijwerken of wijzigen**.  Ga daarna als volgt te werk:
+
+    1. Selecteer een gebruiker uit de lijst. Als de gebruiker die u wilt toewijzen, zich niet in de lijst bevindt, kunt u nieuwe gebruikers toevoegen in **account instellingen**.
+    1. Geef een e-mail adres op voor de gebruiker die afwijkt van het e-mail adres dat is gekoppeld aan het partner centrum-account van uw bedrijf. We sturen instructies voor het gebruik van uw Marketplace-voor delen voor het e-mail adres van uw aangewezen marketing contact persoon.
+    1. Geef de telefoon en de voorkeurs taal van de contact persoon voor deze marketing contact persoon op. Wanneer u klaar bent met het invoeren van deze gegevens, selecteert u **gebruiker toewijzen**.
+    1. Nadat u de marketing contactpersoon hebt bijgewerkt, selecteert u **activeren** voor het voor deel dat u wilt gaan gebruiken. Zodra u een voor deel hebt geactiveerd, neemt de contact persoon van uw marketing binnen een week contact met u op met het team van de lonen.
+
+**Technische voordelen**
+
+1. U kunt uw technische voor deel gebruiken om technische hulp te vragen tijdens de ontwikkelings fase van de voor-en implementatie van uw Cloud en hybride oplossingen. Als u hulp wilt aanvragen, vult u het aanvraag formulier in en selecteert u vervolgens **aanvraag verzenden**.
+2. Het gebruik van de voor delen van Azure sponsor wordt gedeeld via een e-mail wanneer u deze voor delen ontgrendelt.
 
 >[!Note]
 >Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen, of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren bij [Help en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).

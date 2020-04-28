@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227405"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866720"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Ondersteuning voor OpenAPI 2.0-metagegevens in Azure-functies (voorbeeld)
 Ondersteuning voor openAPI 2.0 (voorheen Swagger) in Azure-functies is een voorbeeldfunctie die u gebruiken om een OpenAPI 2.0-definitie in een functie-app te schrijven. U dat bestand vervolgens hosten met behulp van de functie-app.
@@ -40,7 +40,7 @@ Zie de [zelfstudie aan](./functions-api-definition-getting-started.md)de slag vo
 
 ### <a name="available-templates"></a><a name="templates"></a>Beschikbare sjablonen
 
-|Name| Beschrijving |
+|Naam| Beschrijving |
 |:-----|:-----|
 |Gegenereerde definitie|Een OpenAPI-definitie met de maximale hoeveelheid informatie die kan worden afgeleid uit de bestaande metagegevens van de functie.|
 
@@ -60,7 +60,7 @@ De volgende tabel vertegenwoordigt de Azure-portalinstellingen en de bijbehorend
 > [!NOTE]
 > De x-ms-samenvattingsextensie biedt een weergavenaam in Logic Apps, PowerApps en Flow.
 >
-> Zie Uw [Swagger-definitie aanpassen voor PowerApps voor](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)meer informatie.
+> Zie Uw [Swagger-definitie aanpassen voor PowerApps voor](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)meer informatie.
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>CI/CD gebruiken om een API-definitie in te stellen
 

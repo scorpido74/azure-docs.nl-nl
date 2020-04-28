@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple - Beveiliging voor CloudSimple Services
-description: Beschrijft de modellen voor gedeelde verantwoordelijkheid voor de beveiliging van CloudSimple-services
+title: 'Azure VMware-oplossing door CloudSimple: beveiliging voor CloudSimple-Services'
+description: Beschrijft de modellen van gedeelde verantwoordelijkheden voor de beveiliging van CloudSimple-Services
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,83 +8,83 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024990"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187474"
 ---
 # <a name="cloudsimple-security-overview"></a>Overzicht van CloudSimple-beveiliging
 
-In dit artikel vindt u een overzicht van hoe beveiliging wordt geïmplementeerd op de Azure VMware-oplossing door cloudsimple-service, -infrastructuur en -datacenter. U leert over gegevensbescherming en -beveiliging, netwerkbeveiliging en hoe kwetsbaarheden en patches worden beheerd.
+Dit artikel bevat een overzicht van de manier waarop beveiliging wordt geïmplementeerd op de Azure VMware-oplossing door CloudSimple service, infra structuur en Data Center. Meer informatie over gegevens beveiliging en beveiliging, netwerk beveiliging en hoe beveiligings problemen en patches worden beheerd.
 
 ## <a name="shared-responsibility"></a>Gedeelde verantwoordelijkheid
 
-Azure VMware Solution by CloudSimple maakt gebruik van een gedeeld verantwoordelijkheidsmodel voor beveiliging. Vertrouwde beveiliging in de cloud wordt bereikt door de gedeelde verantwoordelijkheden van klanten en Microsoft als serviceprovider. Deze matrix van verantwoordelijkheid biedt een hogere beveiliging en elimineert single points of failure.
+Azure VMware-oplossing per CloudSimple gebruikt een gedeeld verantwoordelijkheids model voor beveiliging. Vertrouwde beveiliging in de Cloud wordt bereikt door de gedeelde verantwoordelijkheden van klanten en micro soft als een service provider. Deze matrix van verantwoordelijkheid biedt betere beveiliging en elimineert individuele storings punten.
 
 ## <a name="azure-infrastructure"></a>Azure-infrastructuur
 
-Azure-infrastructuurbeveiligingsoverwegingen omvatten de locatie van datacenters en apparatuur.
+Beveiligings overwegingen voor Azure-infra structuur omvatten de data centers en de locatie van het apparaat.
 
-### <a name="datacenter-security"></a>Datacenterbeveiliging
+### <a name="datacenter-security"></a>Beveiliging van data centers
 
-Microsoft heeft een hele divisie gewijd aan het ontwerpen, bouwen en exploiteren van de fysieke faciliteiten die Azure ondersteunen. Dit team investeert in het handhaven van state-of-the-art fysieke veiligheid. Zie [Azure-faciliteiten, lokalen en fysieke beveiliging](../security/azure-physical-security.md)voor meer informatie over fysieke beveiliging.
+Micro soft heeft een volledige afdeling voor het ontwerpen, bouwen en gebruiken van de fysieke faciliteiten die ondersteuning bieden voor Azure. Dit team is geïnvesteerd in het onderhouden van geavanceerde fysieke beveiliging. Zie [Azure-faciliteiten,-premises en fysieke beveiliging](../security/azure-physical-security.md)voor meer informatie over de fysieke beveiliging.
 
 ### <a name="equipment-location"></a>Locatie van apparatuur
 
-De bare metal hardware-apparatuur die uw Private Clouds uitvoert, wordt gehost in Azure-datacenterlocaties.  De kooien waar die apparatuur zich bevindt, vereist biometrische tweefactorauthenticatie om toegang te krijgen.
+De bare-metal hardware-apparatuur die uw Privécloud uitvoert, wordt gehost op Azure Data Center-locaties.  De kooien waar dat apparaat is, vereist biometrische twee ledige verificatie om toegang te krijgen.
 
 ## <a name="dedicated-hardware"></a>Toegewezen hardware
 
-Als onderdeel van de CloudSimple-service krijgen alle CloudSimple-klanten speciale bare metal-hosts met lokale aangesloten schijven die fysiek geïsoleerd zijn van andere tenanthardware. Een ESXi hypervisor met vSAN draait op elk knooppunt. De nodes worden beheerd via klantgerichte VMware vCenter en NSX. Het niet delen van hardware tussen tenants biedt een extra laag isolatie- en beveiligingsbeveiliging.
+Als onderdeel van de CloudSimple-service krijgen alle CloudSimple-klanten toegewezen bare metal-hosts met lokale gekoppelde schijven die fysiek zijn geïsoleerd van andere Tenant-hardware. Een ESXi-Hyper Visor met vSAN wordt uitgevoerd op elk knoop punt. De knoop punten worden beheerd via een door de klant toegewezen VMware vCenter-en NSX. Het delen van hardware tussen tenants biedt geen extra laag voor isolatie en beveiliging.
 
 ## <a name="data-security"></a>Gegevensbeveiliging
 
-Klanten behouden de controle en het eigendom van hun gegevens. Data stewardship van klantgegevens is de verantwoordelijkheid van de klant.
+Klanten houden toezicht en eigendom van hun gegevens. Gegevens opslag van klant gegevens is de verantwoordelijkheid van de klant.
 
-### <a name="data-protection-for-data-at-rest-and-data-in-motion-within-internal-networks"></a>Gegevensbescherming voor gegevens in rust en gegevens in beweging binnen interne netwerken
+### <a name="data-protection-for-data-at-rest-and-data-in-motion-within-internal-networks"></a>Gegevens beveiliging voor gegevens in rust tijd en gegevens in beweging in interne netwerken
 
-Voor gegevens in rust in de Private Cloud-omgeving u vSAN-versleuteling gebruiken. vSAN-versleuteling werkt met VMware-gecertificeerde externe key management servers (KMS) in uw eigen virtuele netwerk of on-premises.  U beheert zelf de sleutels van de gegevensversleuteling. Voor gegevens in beweging binnen de Private Cloud ondersteunt vSphere versleuteling van gegevens via de draad voor al het vmkernel-verkeer (inclusief vMotion-verkeer).
+Voor Data-at-rest in de Privécloud-omgeving kunt u vSAN-versleuteling gebruiken. vSAN-versleuteling werkt met VMware Certified External Key Management servers (KMS) in uw eigen virtuele netwerk of on-premises.  U beheert de gegevens versleutelings sleutels zelf. Voor gegevens in beweging in de Privécloud ondersteunt vSphere versleuteling van gegevens via de kabel voor al het vmkernel-verkeer (inclusief vMotion-verkeer).
 
-### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>Gegevensbescherming voor gegevens die nodig zijn om zich via openbare netwerken te verplaatsen
+### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>Gegevens beveiliging voor gegevens die nodig zijn om te scha kelen via open bare netwerken
 
-Om gegevens te beschermen die via openbare netwerken worden verplaatst, u IPsec- en SSL VPN-tunnels maken voor uw Private Clouds. Algemene versleutelingsmethoden worden ondersteund, waaronder AES van 128 byte en 256 byte. Onderweg gegevens (inclusief verificatie, administratieve toegang en klantgegevens) worden versleuteld met standaardversleutelingsmechanismen (SSH, TLS 1.2 en Secure RDP). Communicatie die gevoelige informatie vervoert, maakt gebruik van de standaard versleutelingsmechanismen.
+Voor het beveiligen van gegevens die via open bare netwerken worden verplaatst, kunt u IPsec-en TLS VPN-tunnels maken voor uw Privécloud. Algemene versleutelings methoden worden ondersteund, met inbegrip van 128-byte en 256-bytes AES. Gegevens die onderweg zijn (inclusief verificatie, beheerders toegang en klant gegevens) worden versleuteld met standaard versleutelings mechanismen (SSH, TLS 1,2 en Secure RDP). Communicatie waarbij gevoelige informatie wordt getransporteerd, maakt gebruik van de standaard versleutelings mechanismen.
 
-### <a name="secure-disposal"></a>Veilige verwijdering
+### <a name="secure-disposal"></a>Beveiligde verwijdering
 
-Als uw CloudSimple-service verloopt of wordt beëindigd, bent u verantwoordelijk voor het verwijderen of verwijderen van uw gegevens. CloudSimple zal met u samenwerken om alle klantgegevens zoals die in de klantovereenkomst zijn vastgelegd te verwijderen of terug te sturen, behalve voor zover CloudSimple wettelijk verplicht is om sommige of alle persoonsgegevens te bewaren. Indien nodig om persoonsgegevens te bewaren, zal CloudSimple de gegevens archiveren en redelijke maatregelen nemen om te voorkomen dat de klantgegevens verder worden verwerkt.
+Als uw CloudSimple-service verloopt of wordt beëindigd, bent u verantwoordelijk voor het verwijderen of verwijderen van uw gegevens. CloudSimple werkt samen met u bij het verwijderen of retour neren van alle klant gegevens zoals die zijn opgegeven in de klant overeenkomst, met uitzonde ring van de mate waarin CloudSimple is vereist door toepasselijk recht om enkele of alle persoons gegevens te bewaren. Als dit nodig is om persoonlijke gegevens te behouden, worden de gegevens door CloudSimple gearchiveerd en worden er redelijke maat regelen genomen om te voor komen dat de klant gegevens worden verwerkt.
 
 ### <a name="data-location"></a>Locatie van gegevens
 
-Wanneer u uw Private Clouds instelt, kiest u de Azure-regio waar ze worden geïmplementeerd. VMware virtuele machinegegevens worden niet verplaatst van dat fysieke datacenter, tenzij u gegevensmigratie of offsite data back-up uit te voeren. U ook workloads hosten en gegevens opslaan binnen meerdere Azure-regio's, indien nodig voor uw behoeften.
+Bij het instellen van uw persoonlijke Clouds kiest u de Azure-regio waar ze worden geïmplementeerd. Virtuele VMware-machine gegevens worden niet verplaatst van dat fysieke Data Center tenzij u gegevens migratie of externe gegevens back-up uitvoert. U kunt werk belastingen ook hosten en gegevens opslaan in meerdere Azure-regio's, indien van toepassing op uw behoeften.
 
-De klantgegevens die woonachtig zijn in hypergeconvergeerde knooppunten van Private Cloud, doorkruisen geen locaties zonder de expliciete actie van de tenantbeheerder. Het is uw verantwoordelijkheid om uw workloads op een zeer beschikbare manier te implementeren.
+De klant gegevens die zich in de Privécloud bevinden, Hyper-geconvergeerde knoop punten passeren geen locaties zonder de expliciete actie van de Tenant beheerder. Het is uw verantwoordelijkheid om uw workloads op een Maxi maal beschik bare manier te implementeren.
 
 ### <a name="data-backups"></a>Gegevensback-ups
 
-CloudSimple maakt geen back-ups of archiveert geen klantgegevens. CloudSimple voert wel periodieke back-ups uit van vCenter- en NSX-gegevens om een hoge beschikbaarheid van beheerservers te bieden. Voorafgaand aan de back-up worden alle gegevens versleuteld bij de vCenter-bron met VMware API's. De versleutelde gegevens worden getransporteerd en opgeslagen in Azure blob. Versleutelingssleutels voor back-ups worden opgeslagen in een zeer beveiligde CloudSimple beheerde kluis die wordt uitgevoerd in het virtuele CloudSimple-netwerk in Azure.
+CloudSimple maakt geen back-up van en archiveert geen klant gegevens. CloudSimple voert periodieke back-ups van vCenter-en NSX-gegevens uit om hoge Beschik baarheid van beheerser vers te bieden. Voordat de back-up wordt gemaakt, worden alle gegevens versleuteld op de vCenter-bron met behulp van VMware-Api's. De versleutelde gegevens worden getransporteerd en opgeslagen in Azure Blob. Versleutelings sleutels voor back-ups worden opgeslagen in een zeer veilige CloudSimple beheerde kluis die wordt uitgevoerd in het virtuele CloudSimple-netwerk in Azure.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-De CloudSimple-oplossing is gebaseerd op lagen van netwerkbeveiliging.
+De CloudSimple-oplossing is afhankelijk van lagen van netwerk beveiliging.
 
-### <a name="azure-edge-security"></a>Azure edge-beveiliging
+### <a name="azure-edge-security"></a>Beveiliging van Azure Edge
 
-De CloudSimple-services zijn gebouwd bovenop de basisnetwerkbeveiliging van Azure. Azure past beveiligings-in-diepte technieken voor detectie en tijdige reactie op netwerk-gebaseerde aanvallen in verband met afwijkende binnendringen of uitgaande verkeerspatronen en gedistribueerde denial-of-service (DDoS) aanvallen. Deze beveiligingscontrole is van toepassing op Private Cloud-omgevingen en de besturingsvlaksoftware die door CloudSimple is ontwikkeld.
+De CloudSimple-Services zijn gebaseerd op de basis netwerk beveiliging die wordt geboden door Azure. Azure past ingrijpende technieken toe voor detectie en tijdig antwoord op aanvallen op basis van het netwerk die zijn gekoppeld aan afwijkende ingangen of uitvoerige verkeers patronen en gedistribueerde Denial-of-service-aanvallen (DDoS). Dit beveiligings beheer is van toepassing op de omgevingen van de Privécloud en de software voor het beheer vlak die is ontwikkeld door CloudSimple.
 
 ### <a name="segmentation"></a>Segmentatie
 
-De CloudSimple-service heeft logischerwijs afzonderlijke Layer 2-netwerken die de toegang tot uw eigen privénetwerken in uw Private Cloud-omgeving beperken. U uw Private Cloud-netwerken verder beschermen met behulp van een firewall. Met de CloudSimple-portal u ew- en NS-regels voor netwerkverkeerscontroles definiëren voor al het netwerkverkeer, inclusief intra Private Cloud-verkeer, inter-private cloudverkeer, algemeen verkeer naar het internet en netwerkverkeer naar on-premises via IPsec VPN of ExpressRoute-verbinding.
+De CloudSimple-service heeft logische afzonderlijke laag 2-netwerken die de toegang tot uw eigen particuliere netwerken in uw privécloud-omgeving beperken. U kunt uw particuliere Cloud netwerken verder beveiligen met behulp van een firewall. Met de CloudSimple-Portal kunt u de regels voor het gebruik van ieuwe en NS-netwerk verkeer definiëren voor alle netwerk verkeer, met inbegrip van intra particuliere cloud verkeer, verkeer tussen particuliere Clouds, algemeen verkeer naar het internet en netwerk verkeer naar on-premises via IPsec VPN of ExpressRoute-verbinding.
 
-## <a name="vulnerability-and-patch-management"></a>Kwetsbaarheid en patchbeheer
+## <a name="vulnerability-and-patch-management"></a>Beveiligings problemen en patch beheer
 
-CloudSimple is verantwoordelijk voor het periodiek patchen van beheerde VMware-software (ESXi, vCenter en NSX).
+CloudSimple is verantwoordelijk voor periodieke beveiligings patches van beheerde VMware-software (ESXi, vCenter en NSX).
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
-Klanten kunnen zich verifiëren naar hun Azure-account (in Azure AD) met behulp van multi-factor authenticatie of SSO als voorkeur. Vanuit de Azure-portal u de CloudSimple-portal starten zonder referenties opnieuw in te voeren.
+Klanten kunnen zich verifiëren bij hun Azure-account (in azure AD) met behulp van multi-factor Authentication of SSO als voor keur. Vanuit het Azure Portal kunt u de CloudSimple-Portal starten zonder referenties opnieuw in te voeren.
 
-CloudSimple ondersteunt optionele configuratie van een identiteitsbron voor het Private Cloud vCenter. U een [on-premises identiteitsbron,](set-vcenter-identity.md)een nieuwe identiteitsbron voor de Private Cloud of [Azure AD](azure-ad.md)gebruiken.
+CloudSimple ondersteunt een optionele configuratie van een identiteits bron voor de Privécloud. U kunt een [on-premises identiteits bron](set-vcenter-identity.md), een nieuwe id-bron voor de Privécloud of [Azure AD](azure-ad.md)gebruiken.
 
-Standaard krijgen klanten de bevoegdheden die nodig zijn voor de dagelijkse activiteiten van vCenter binnen de Private Cloud. Dit machtigingsniveau omvat geen beheerderstoegang tot vCenter. Als beheerderstoegang tijdelijk vereist is, u [uw bevoegdheden](escalate-private-cloud-privileges.md) voor een beperkte periode escaleren terwijl u de beheertaken uitvoert.
+Klanten krijgen standaard de bevoegdheden die nodig zijn voor de dagelijkse bewerkingen van vCenter in de Privécloud. Dit machtigings niveau bevat geen beheerders toegang tot vCenter. Als beheerders toegang tijdelijk vereist is, kunt u [uw bevoegdheden](escalate-private-cloud-privileges.md) voor een beperkte periode escaleren tijdens het volt ooien van de beheer taken.

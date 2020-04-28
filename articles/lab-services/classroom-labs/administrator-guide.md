@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services - Beheerdershandleiding | Microsoft Documenten
-description: Deze handleiding helpt beheerders die labaccounts maken en beheren met Azure Lab Services.
+title: Azure Lab Services-beheerders handleiding | Microsoft Docs
+description: Deze hand leiding helpt beheerders die Lab-accounts maken en beheren met behulp van Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,254 +13,266 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257773"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183463"
 ---
-# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - Beheerdershandleiding
-It-beheerders (Information Technology) die de cloudresources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het opzetten van het labaccount voor hun school. Zodra een labaccount is ingesteld, maken beheerders of docenten klaslokalen die zich in het labaccount bevinden. Dit artikel biedt een overzicht op hoog niveau van de betrokken Azure-resources en de richtlijnen voor het maken ervan.
+# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
+IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.
 
-![Weergave op hoog niveau van Azure-resources in een labaccount](../media/administrator-guide/high-level-view.png)
+![Weer gave op hoog niveau van Azure-resources in een Lab-account](../media/administrator-guide/high-level-view.png)
 
-- Classroom labs worden gehost binnen een Azure-abonnement dat eigendom is van Azure Lab Services.
-- Labaccounts, gedeelde afbeeldingsgalerie en afbeeldingsversies worden gehost in uw abonnement.
-- U uw labaccount en de gedeelde afbeeldingsgalerie in dezelfde resourcegroep hebben. In dit diagram bevinden ze zich in verschillende resourcegroepen. 
+- Klassikale Labs worden gehost in een Azure-abonnement dat eigendom is van Azure Lab Services.
+- Lab-accounts, Galerie met gedeelde afbeeldingen en installatie kopie versies worden gehost in uw abonnement.
+- U kunt uw Lab-account en de galerie met gedeelde installatie kopieën in dezelfde resource groep hebben. In dit diagram bevinden ze zich in verschillende resource groepen. 
 
 ## <a name="subscription"></a>Abonnement
-Uw universiteit heeft een of meer Azure-abonnementen. Een abonnement wordt gebruikt voor het beheren van facturering en beveiliging voor alle Azure-resources\services die erin worden gebruikt, inclusief labaccounts.
+Uw universiteit heeft een of meer Azure-abonnementen. Een abonnement wordt gebruikt voor het beheren van facturering en beveiliging voor alle Azure-resources\services die erin worden gebruikt, met inbegrip van Lab-accounts.
 
-De relatie tussen een labaccount en het abonnement is belangrijk omdat:
+De relatie tussen een Lab-account en het abonnement is belang rijk omdat:
 
-- Facturering wordt gerapporteerd via het abonnement dat het labaccount bevat.
-- U gebruikers in de Azure Active Directory (AD)-tenant van het abonnement toegang geven tot Azure Lab Services. U een gebruiker toevoegen als eigenaar van een labaccount\bijdrager, maker van een klaslokaallab of eigenaar van een klaslokaallab.
+- Facturering wordt gerapporteerd via het abonnement dat het lab-account bevat.
+- U kunt gebruikers in de Tenant toegang van de Azure Active Directory (AD) van het abonnement geven om Azure Lab Services. U kunt een gebruiker toevoegen als een Lab-account owner\contributor, de maker van het leslokaal of de eigenaar van het leslokaal.
 
-Classroom labs en hun virtuele machines (VM's) worden beheerd en gehost voor u binnen een abonnement dat eigendom is van Azure Lab Services.
+Klassikale Labs en hun virtuele machines (Vm's) worden beheerd en worden gehost voor u binnen een abonnement dat eigendom is van Azure Lab Services.
 
 ## <a name="resource-group"></a>Resourcegroep
-Een abonnement bevat een of meer brongroepen. Resourcegroepen worden gebruikt om logische groeperingen van Azure-resources te maken die samen binnen dezelfde oplossing worden gebruikt.  
+Een abonnement bevat een of meer resource groepen. Resource groepen worden gebruikt voor het maken van logische groeperingen van Azure-resources die samen worden gebruikt binnen dezelfde oplossing.  
 
-Wanneer u een labaccount maakt, moet u de brongroep configureren die het labaccount bevat. 
+Wanneer u een Lab-account maakt, moet u de resource groep configureren die het lab-account bevat. 
 
-Er is ook een resourcegroep vereist bij het maken van een [gedeelde afbeeldingsgalerie](#shared-image-gallery). U ervoor kiezen om uw labaccount en gedeelde afbeeldingsgalerie in twee afzonderlijke brongroepen te plaatsen, wat typisch is als u van plan bent de afbeeldingsgalerie over verschillende oplossingen te delen. U er ook voor kiezen om ze in dezelfde resourcegroep te plaatsen.
+Een resource groep is ook vereist bij het maken van een [Galerie met gedeelde installatie kopieën](#shared-image-gallery). U kunt ervoor kiezen om uw Lab-account en de galerie met gedeelde afbeeldingen in twee afzonderlijke resource groepen te plaatsen, wat gebruikelijk is als u van plan bent de galerie met installatie kopieën te delen in verschillende oplossingen. U kunt er ook voor kiezen om deze in dezelfde resource groep te plaatsen.
 
-Wanneer u een labaccount maakt, u automatisch tegelijkertijd een gedeelde afbeeldingsgalerie maken en koppelen.  Deze optie resulteert in het labaccount en de gedeelde afbeeldingsgalerie die wordt gemaakt in afzonderlijke brongroepen. U ziet dit gedrag wanneer u de stappen gebruikt die in deze zelfstudie worden beschreven: [Gedeelde afbeeldingsgalerie configureren op het moment van het maken van labaccounten.](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation) De afbeelding bovenaan dit artikel maakt ook gebruik van deze configuratie. 
+Wanneer u een Lab-account maakt, kunt u automatisch een galerie met gedeelde installatie kopieën maken en koppelen.  Met deze optie worden het lab-account en de galerie met gedeelde afbeeldingen gemaakt in afzonderlijke resource groepen. U ziet dit gedrag wanneer u de stappen in deze zelf studie gebruikt: de [Galerie gedeelde afbeeldingen configureren op het moment dat het account wordt gemaakt](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). In de afbeelding boven aan dit artikel wordt deze configuratie ook gebruikt. 
 
-We raden u aan vooraf tijd te investeren om de structuur van uw resourcegroepen te plannen, omdat het *niet* mogelijk is om de brongroep van een labaccount of gedeelde afbeeldingsgalerie te wijzigen zodra deze is gemaakt. Als u de brongroep voor deze bronnen wilt wijzigen, moet u uw labaccount en de gedeelde afbeeldingsgalerie verwijderen en opnieuw maken.
+U wordt aangeraden tijd vooraf in te zetten om de structuur van uw resource groepen te plannen, omdat het *niet* mogelijk is om de resource groep van een test account of de gedeelde installatie kopie galerie te wijzigen nadat deze is gemaakt. Als u de resource groep voor deze resources moet wijzigen, moet u de en/of-galerie met gedeelde afbeeldingen van uw Lab-account verwijderen en opnieuw maken.
 
 ## <a name="lab-account"></a>Lab-account
-Een labaccount dient als container voor een of meer klaslokalen. Wanneer u aan de slag gaat met Azure Lab Services, is het gebruikelijk om slechts één labaccount te hebben. Naarmate uw laboratoriumgebruik wordt geschaald, u er later voor kiezen om meer labaccounts aan te maken.
 
-In de volgende lijst worden scenario's weergegeven waarin meer dan één labaccount nuttig kan zijn:
+Een Lab-account fungeert als een container voor een of meer klassikale Labs. Wanneer u aan de slag gaat met Azure Lab Services, is het gebruikelijk dat u slechts één Lab-account hebt. U kunt later meer Lab-accounts maken naarmate uw test gebruik wordt geschaald.
 
-- **Verschillende beleidsvereisten beheren in klaslokalen** 
-    
-    Wanneer u een labaccount instelt, stelt u beleid in dat van toepassing is op *alle* klaslokalen onder het labaccount, zoals:
-    - Het virtuele Azure-netwerk met gedeelde bronnen waartoe het klaslab toegang heeft. U bijvoorbeeld een reeks klaslokalen hebben die toegang nodig hebben tot een gedeelde gegevensset binnen een virtueel netwerk.
-    - De virtuele machine (VM) beelden die de klas labs kunnen gebruiken om VM's te maken. U bijvoorbeeld een reeks klaslokalen hebben die toegang nodig hebben tot de [afbeelding van de Data Science VM voor Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace. 
-    
-    Als u klaslokalen hebt met unieke beleidsvereisten van elkaar, kan het nuttig zijn om afzonderlijke labaccounts te maken om deze klaslokalen afzonderlijk te beheren.
+De volgende lijst geeft een overzicht van scenario's waarin meer dan één Lab-account nuttig kan zijn:
 
-- **Afzonderlijk budget per labaccount**
+- **Verschillende beleids vereisten in klassikale Labs beheren**
+
+    Wanneer u een Lab-account instelt, stelt u beleids regels in die van toepassing zijn op *alle* klassikale Labs onder het lab-account, zoals:
+    - Het virtuele Azure-netwerk met gedeelde bronnen waartoe het leslokaal Lab toegang heeft. Zo kunt u bijvoorbeeld een set klassikale Labs hebben die toegang nodig heeft tot een gedeelde gegevensset in een virtueel netwerk.
+    - De virtuele machine (VM)-installatie kopieën die de klassikale Labs kunnen gebruiken om Vm's te maken. U hebt bijvoorbeeld een set klassikale Labs die toegang nodig heeft tot de [Data Science VM voor Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace-installatie kopie.
+
+    Als u klassikale Labs hebt die unieke beleids vereisten van elkaar hebben, kan het nuttig zijn om afzonderlijke Lab-accounts te maken om deze klassikale Labs afzonderlijk te beheren.
+
+- **Afzonderlijk budget per Lab-account**
   
-    In plaats van alle klassikale labkosten te rapporteren via één labaccount, hebt u mogelijk een duidelijker gescheiden budget nodig. U bijvoorbeeld labaccounts maken voor de afdeling Wiskunde van uw universiteit, de afdeling Informatica, enzovoort, om het budget te scheiden tussen afdelingen.  Vervolgens u de kosten voor elk afzonderlijk labaccount bekijken met [Azure Cost Management.](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)
-    
-- **Proeflabs isoleren van actieve\productielaboratoria**
+    In plaats van alle klassikale Lab-kosten te rapporteren via één Lab-account, hebt u mogelijk een beter, gescheiden budget nodig. U kunt bijvoorbeeld Lab-accounts maken voor de reken kundige afdeling van uw universiteit, de afdeling computer wetenschappen, enzovoort, om het budget tussen afdelingen te scheiden.  U kunt vervolgens de kosten voor elk individueel Lab-account weer geven met behulp van [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+
+- **Prototype Labs isoleren van active\production Labs**
   
-    U gevallen hebben waarin u beleidswijzigingen voor een labaccount wilt doorvoeren zonder mogelijk invloed te hebben op actieve\productielaboratoria. In dit type scenario u met het maken van een afzonderlijk labaccount voor pilotdoeleinden wijzigingen isoleren. 
+    Het kan voor komen dat u beleids wijzigingen voor een Lab-account wilt testen zonder dat dit van invloed is op active\production Labs. In dit type scenario kunt u met het maken van een afzonderlijke Lab-account voor test doeleinden wijzigingen isoleren. 
 
-## <a name="classroom-lab"></a>Klaslokaal lab
-Een klaslokaal lab bevat virtuele machines (VM's) die elk zijn toegewezen aan een enkele student. In het algemeen u verwachten:
+## <a name="classroom-lab"></a>Klas Lab
 
-- Hebben een klaslokaal lab voor elke klas.
-- Maak elk semester een nieuwe set klaslokalen (of voor elk tijdsbestek dat je klas wordt aangeboden). Meestal voor klassen die dezelfde afbeeldingbehoeften hebben, moet u een [gedeelde afbeeldingsgalerie](#shared-image-gallery) gebruiken om afbeeldingen in laboratoria en semesters opnieuw te gebruiken.
+Een leslokaal Lab bevat virtuele machines (Vm's) die elk zijn toegewezen aan één student.  Over het algemeen kunt u het volgende verwachten:
 
-Houd rekening met de volgende punten bij het bepalen hoe u uw klassikale labs structureren:
+- U hebt één leslokaal Lab voor elke klasse.
+- Maak elk semester een nieuwe set klassikale Labs (of voor elke periode waarin uw klasse wordt aangeboden). Voor klassen die dezelfde installatie kopie nodig hebben, moet u meestal een [Galerie met gedeelde installatie](#shared-image-gallery) kopieën gebruiken om installatie kopieën in Labs en semesters opnieuw te gebruiken.
 
-- **Alle VM's in een klaslokaallab worden geïmplementeerd met dezelfde afbeelding die is gepubliceerd**
+Houd rekening met de volgende punten wanneer u bepaalt hoe u uw klassikale Labs structureert:
 
-    Als u een klasse hebt waarvoor verschillende laboratoriumafbeeldingen tegelijkertijd moeten worden gepubliceerd, moeten voor elk van deze klassen afzonderlijke klaslokalen worden gemaakt.
+- **Alle Vm's in een klas Lab worden geïmplementeerd met dezelfde installatie kopie die wordt gepubliceerd**
+
+    Als u een klasse hebt waarvoor verschillende Lab-installatie kopieën zijn vereist, moet u als gevolg hiervan afzonderlijke klassikale Labs voor elk abonnement maken.
   
-- **Gebruiksquotum is ingesteld op labniveau en is van toepassing op alle gebruikers in het lab**
-    
-    Als u verschillende quota voor gebruikers wilt instellen, moet u afzonderlijke klaslokalen maken. Het is echter mogelijk om meer uren toe te voegen aan een specifieke gebruiker nadat u het quotum hebt ingesteld.
+- **Gebruiks quotum is ingesteld op het lab-niveau en is van toepassing op alle gebruikers in het lab**
+
+    Als u verschillende quota wilt instellen voor gebruikers, moet u afzonderlijke klassikale Labs maken. Het is echter mogelijk om meer uren aan een specifieke gebruiker toe te voegen nadat u het quotum hebt ingesteld.
   
-- **Het opstart- of afsluitschema is ingesteld op labniveau en is van toepassing op alle VM's in het lab**
+- **Het opstart-of afsluit schema is ingesteld op het lab-niveau en is van toepassing op alle virtuele machines in het lab**
 
-    Net als bij het vorige punt moet u, als u verschillende schema's voor gebruikers moet instellen, afzonderlijke klaslokalen maken. 
+    Net als bij het vorige punt, moet u, als u verschillende planningen wilt instellen voor gebruikers, afzonderlijke klassikale Labs maken.
 
-## <a name="shared-image-gallery"></a>Gedeelde afbeeldingsgalerie
-Een gedeelde afbeeldingsgalerij is gekoppeld aan een labaccount en dient als een centrale opslagplaats voor het opslaan van afbeeldingen. Een afbeelding wordt opgeslagen in de galerie wanneer een docent ervoor kiest om te exporteren vanuit de virtuele machine (VM) van een klaslokaallab. Elke keer dat een docent wijzigingen aanbrengt in de sjabloon-VM en exporteert, worden nieuwe versies van de afbeelding opgeslagen met behoud van eerdere versies.
+Elk leslokaal Lab heeft standaard een eigen virtueel netwerk.  Als vnet-peering is ingeschakeld, heeft elk leslokaal Lab een eigen subnet dat is gekoppeld aan het opgegeven virtuele netwerk.
 
-Cursusleiders kunnen een afbeeldingsversie uit de gedeelde afbeeldingsgalerie publiceren wanneer ze een nieuw klaslokaallab maken. Hoewel de galerie meerdere versies van een afbeelding kan opslaan, kunnen docenten alleen de nieuwste versie selecteren tijdens het maken van het lab.
+## <a name="shared-image-gallery"></a>Galerie met gedeelde afbeeldingen
 
-Gedeelde afbeeldingsgalerie is een optionele bron die u mogelijk niet onmiddellijk nodig hebt wanneer u begint met slechts een paar klaslokalen. Het gebruik van gedeelde afbeeldingsgalerie heeft echter veel voordelen die nuttig zijn als u schaalt naar het hebben van meer klaslokalen:
+Een galerie met gedeelde installatie kopieën is gekoppeld aan een Lab-account en fungeert als een centrale opslag plaats voor het opslaan van installatie kopieën. Een afbeelding wordt in de galerie opgeslagen wanneer een docent de sjabloon van de virtuele machine (VM) van een leslokaal Lab wil exporteren. Telkens wanneer een docent wijzigingen aanbrengt in de sjabloon-VM en-export, worden nieuwe versies van de installatie kopie opgeslagen tijdens het behoud van eerdere versies.
 
-- **Hiermee u versies van een vm-afbeelding van een sjabloon opslaan en beheren**
+Docenten kunnen een installatie kopie versie publiceren vanuit de galerie met gedeelde afbeeldingen wanneer ze een nieuw leslokaal Lab maken. Hoewel in de galerie meerdere versies van een installatie kopie worden opgeslagen, kunnen docenten alleen de nieuwste versie selecteren tijdens het maken van het lab.
 
-    Het is handig om een aangepaste afbeelding te maken of wijzigingen aan te brengen (software, configuratie, enzovoort) in een afbeelding uit de openbare Marketplace-galerie.  Het is bijvoorbeeld gebruikelijk dat docenten verschillende software\tooling vereisen. In plaats van studenten te verplichten deze vereisten handmatig zelf te installeren, kunnen verschillende versies van de vm-afbeelding van de sjabloon worden geëxporteerd naar een gedeelde afbeeldingsgalerie. Deze afbeeldingsversies kunnen vervolgens worden gebruikt bij het maken van nieuwe klaslokalen.
-- **Hiermee u het delen van sjabloon-VM-afbeeldingen in klaslokalen gebruiken**
+De galerie met gedeelde afbeeldingen is een optionele resource die u mogelijk niet direct nodig hebt bij het starten met slechts enkele klassikale lessen. Het gebruik van de galerie met gedeelde afbeeldingen heeft echter veel voor delen die handig zijn wanneer u schaalt naar meer klassikale Labs:
 
-    U een afbeelding opslaan en opnieuw gebruiken, zodat u de afbeelding niet helemaal opnieuw hoeft te configureren telkens wanneer u een nieuw klaslokaallab maakt. Als er bijvoorbeeld meerdere klassen worden aangeboden die dezelfde afbeelding nodig hebben, hoeft deze afbeelding slechts één keer te worden gemaakt en geëxporteerd naar de gedeelde afbeeldingsgalerie, zodat deze kan worden gedeeld in klaslokalen.
-- **Zorgt voor beschikbaarheid van afbeeldingen door replicatie**
+- **Hiermee kunt u versies van een sjabloon-VM-installatie kopie opslaan en beheren**
 
-    Wanneer u vanuit een klaslokaal in de gedeelde afbeeldingsgalerie opslaat, wordt uw afbeelding automatisch gerepliceerd naar andere [regio's binnen dezelfde geografie.](https://azure.microsoft.com/global-infrastructure/regions/) In het geval dat er een storing is voor een regio, wordt het publiceren van de afbeelding in uw klaslokaallab niet beïnvloed omdat een afbeeldingsreplica uit een andere regio kan worden gebruikt.  Het publiceren van VM's uit meerdere replica's kan ook helpen bij de prestaties.
+    Het is handig om een aangepaste installatie kopie te maken of wijzigingen (software, configuratie, enzovoort) door te voeren in een installatie kopie van de open bare Marketplace-galerie.  Het is bijvoorbeeld gebruikelijk dat docenten verschillende software\tooling moeten installeren. In plaats van te vereisen dat cursisten hun eigen vereisten hand matig installeren, kunnen verschillende versies van de sjabloon-VM-installatie kopie worden geëxporteerd naar een galerie met gedeelde installatie kopieën. Deze installatie kopie versies kunnen vervolgens worden gebruikt bij het maken van nieuwe klassikale lessen.
+- **Hiermee wordt sharing\reuse van sjabloon-VM-installatie kopieën in klassikale Labs ingeschakeld**
 
-Als u gedeelde afbeeldingen logisch wilt groeperen, hebt u een aantal opties:
+    U kunt een installatie kopie opslaan en opnieuw gebruiken zodat u niet elke keer dat u een nieuw leslokaal Lab maakt de installatie kopie hoeft te configureren. Als er bijvoorbeeld meerdere klassen worden aangeboden die dezelfde installatie kopie nodig hebben, hoeft deze installatie kopie slechts één keer te worden gemaakt en naar de galerie met gedeelde afbeeldingen te worden geëxporteerd, zodat deze kan worden gedeeld in klassikale Labs.
+- **Hiermee wordt de beschik baarheid van afbeeldingen via replicatie gegarandeerd**
 
-- Meerdere gedeelde afbeeldingsgalerieën maken. Elk labaccount kan slechts verbinding maken met één gedeelde afbeeldingsgalerie, dus voor deze optie moet u ook meerdere labaccounts maken.
-- U ook één gedeelde afbeeldingsgalerie gebruiken die wordt gedeeld door meerdere labaccounts. In dit geval kan elk labaccount alleen afbeeldingen inschakelen die van toepassing zijn op de klaslabs die het bevat.
+    Wanneer u opslaat in de galerie met gedeelde afbeeldingen vanuit een leslokaal Lab, wordt uw installatie kopie automatisch gerepliceerd naar andere [regio's binnen dezelfde geografie](https://azure.microsoft.com/global-infrastructure/regions/). Als er een storing optreedt in een regio, wordt het publiceren van de installatie kopie naar uw klas Lab niet beïnvloed omdat een installatie kopie replica van een andere regio kan worden gebruikt.  Het publiceren van Vm's vanuit meerdere replica's kan ook helpen bij de prestaties.
+
+U hebt een aantal opties om gedeelde installatie kopieën logisch te groeperen:
+
+- Meerdere gemeen schappelijke afbeeldings galerieën maken. Elk lab-account kan alleen verbinding maken met één gedeelde installatie kopie galerie. Daarom moet u voor deze optie ook meerdere Lab-accounts maken.
+- U kunt ook één gedeelde installatie kopie galerie gebruiken die wordt gedeeld door meerdere Lab-accounts. In dit geval kan elk lab-account alleen de installatie kopieën inschakelen die van toepassing zijn op de klassikale Labs die het bevat.
 
 ## <a name="naming"></a>Naamgeving
-Terwijl u aan de slag gaat met Azure Lab Services, raden we u aan naamgevingsconventies op te stellen voor resourcegroepen, labaccounts, klaslokalen en de gedeelde afbeeldingsgalerie. Hoewel de naamgevingsconventies die u vaststelt, uniek zijn voor de behoeften van uw organisatie, worden in de volgende tabel algemene richtlijnen beschreven.
+
+Wanneer u aan de slag gaat met Azure Lab Services, raden we u aan om naam conventies voor resource groepen, Lab-accounts, klassikale Labs en de galerie met gedeelde afbeeldingen te bepalen. Hoewel de naamgevings regels die u instelt, uniek zijn voor de behoeften van uw organisatie, wordt in de volgende tabel een overzicht gegeven van de algemene richt lijnen.
 
 | Resourcetype | Rol | Voorgesteld patroon | Voorbeelden |
 | ------------- | ---- | ----------------- | -------- | 
-| Resourcegroep | Bevat een of meer labaccounts en een of meer gedeelde afbeeldingsgalerieën | \<organisatie korte\>-\<\>naam omgeving -rg<ul><li>**De korte naam** van de organisatie identificeert de naam van de organisatie die de resourcegroep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de bron, zoals Pilot of Production</li><li>**Rg** staat voor het resourcetype: resourcegroep.</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
-| Lab-account | Bevat een of meer labs | \<organisatie korte\>-\<\>naam omgeving -la<ul><li>**De korte naam** van de organisatie identificeert de naam van de organisatie die de resourcegroep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de bron, zoals Pilot of Production</li><li>**La** staat voor het type resource: lab account.</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
-| Klaslokaal lab | Bevat een of meer VM's |\<classificatie\>-\<van\>-\<klassenaam timeframe educator\><ul><li>**Klassenaam** identificeert de naam van de klasse die het lab ondersteunt.</li><li>**Het tijdsbestek** identificeert het tijdsbestek waarin de klasse wordt aangeboden.</li>**Onderwijs-id** identificeert de opvoeder die eigenaar is van het lab.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-lente2019-johndoe | 
-| Gedeelde afbeeldingsgalerie | Bevat een of meer VM-afbeeldingsversies | \<organisatie korte\>naam galerie | contosouniversitylabsgallery |
+| Resourcegroep | Bevat een of meer Lab-accounts en een of meer galerie met gedeelde afbeeldingen | \<\>-\<omgeving\>voor de korte naam van de organisatie-RG<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**RG** staat voor het resource type: resource groep.</li></ul> | contosouniversitylabs-RG<br/>contosouniversitylabs-pilot-RG<br/>contosouniversitylabs-Prod-RG |
+| Lab-account | Bevat een of meer Labs | \<\>-\<omgeving\>voor de korte naam van de organisatie-La<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**La** staat voor het resource type: Lab-account.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs-pilot-La<br/>sciencedeptlabs-Prod-La |
+| Klas Lab | Bevat een of meer virtuele machines |\<id van\>-\<de\>-\<klassen naam periode docent\><ul><li>**Klassenaam** identificeert de naam van de klasse die door het lab wordt ondersteund.</li><li>**Tijds bestek** duidt de periode aan waarin de klasse wordt aangeboden.</li>**Onderwijs-id** identificeert de docenten die eigenaar zijn van het lab.</li></ul> | CS1234-fall2019-JANJANSEN<br/>CS1234-spring2019-JANJANSEN |
+| Galerie met gedeelde afbeeldingen | Bevat een of meer versies van VM-installatie kopieën | \<Galerie met korte\>namen van organisaties | contosouniversitylabsgallery |
 
-Zie [Conventies voor Azure-bronnen benoemen](/azure/architecture/best-practices/naming-conventions)voor meer informatie over het benoemen van andere Azure-bronnen.
+Zie [naamgevings conventies voor Azure-resources](/azure/architecture/best-practices/naming-conventions)voor meer informatie over het benoemen van andere Azure-resources.
 
-## <a name="regionslocations"></a>Regio's\locaties
+## <a name="regionslocations"></a>Regions\locations
 
-Wanneer u de resources van uw Azure Lab Services instelt, moet u een regio (of locatie) van het datacenter opgeven dat de bron host. Hier vindt u meer informatie over de invloed van de regio op elk van de bronnen die betrokken zijn bij het opzetten van een lab.
+Wanneer u de resources van uw Azure Lab Services instelt, moet u een regio (of locatie) opgeven van het Data Center dat als host fungeert voor de resource. Hier vindt u meer informatie over de manier waarop de regio van invloed is op elk van de bronnen die zijn betrokken bij het instellen van een lab.
 
 ### <a name="resource-group"></a>Resourcegroep
 
-Het gebied geeft het datacenter op waar informatie over de resourcegroep wordt opgeslagen. Azure-resources in de resourcegroep kunnen zich in verschillende regio's bevinden dan hun bovenliggende bronnen.
+In de regio wordt het data centrum opgegeven waarin informatie over de resource groep wordt opgeslagen. Azure-resources die deel uitmaken van de resource groep, kunnen zich in verschillende regio's van hun bovenliggende regio bevinden.
 
 ### <a name="lab-account"></a>Lab-account
 
-De locatie van een labaccount geeft aan in welke regio deze bron bestaat.  
+De locatie van een test account geeft aan in welke regio deze resource zich bevindt.  
 
-### <a name="classroom-lab"></a>Klaslokaal lab
-    
-De locatie waarin een klassikale lab bestaat, is afhankelijk van de volgende factoren:
+### <a name="classroom-lab"></a>Klas Lab
 
-  - **Lab-account wordt gekeken naar een virtueel netwerk (VNet)**
+De locatie waar een leslokaal Lab zich bevindt, is afhankelijk van de volgende factoren:
+
+  - **Het lab-account is gekoppeld aan een virtueel netwerk (VNet)**
   
-    Een labaccount kan worden [gekeken met een VNet](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) wanneer deze zich in dezelfde regio bevindt.  Wanneer een labaccount wordt gekeken met een VNet, worden klaslokalen automatisch gemaakt in dezelfde regio als zowel het labaccount als VNet.
+    Een Lab-account kan worden [gekoppeld aan een VNet](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) wanneer ze zich in dezelfde regio bevinden.  Wanneer een Lab-account is gekoppeld aan een VNet, worden er automatisch klassikale Labs gemaakt in dezelfde regio als het lab-account en het VNet.
 
     > [!NOTE]
-    > Wanneer een labaccount wordt gekeken met een VNet, is de instelling voor **de locatie van** het lab uitgeschakeld. Aanvullende informatie is te vinden over deze instelling in het artikel: [Laat de maker van het lab locatie voor het lab kiezen.](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)
+    > Wanneer een Lab-account is gekoppeld aan een VNet, wordt de instelling voor het kiezen van Lab- **Maker voor de optie Lab-locatie toestaan** uitgeschakeld. Meer informatie over deze instelling vindt u in het artikel: [Lab Creator toestaan om de locatie voor het lab te kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-  - **Geen VNet is peered ***en*** lab makers zijn niet toegestaan om het lab locatie te kiezen**
+  - **Geen VNet is peered ***en*** Lab-makers mogen de locatie van het lab niet kiezen**
   
-    Wanneer er **geen** VNet-peered is met het labaccount *en* [labmakers de lablocatie **niet** mogen kiezen,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)worden klaslokalen automatisch gemaakt in een regio met beschikbare VM-capaciteit.  Azure Lab Services zoekt specifiek naar beschikbaarheid in [regio's die zich binnen dezelfde geografie bevinden als het labaccount.](https://azure.microsoft.com/global-infrastructure/regions)
+    Als er **geen** VNet is dat is gekoppeld aan het lab-account *en* [Lab-makers mogen de Lab-locatie **niet** kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), worden er automatisch leslokaal Labs gemaakt in een regio die de beschik bare VM-capaciteit heeft.  Met name Azure Lab Services zoekt naar Beschik baarheid in [regio's die zich binnen dezelfde geografie bevinden als het lab-account](https://azure.microsoft.com/global-infrastructure/regions).
 
-  - **Geen VNet is peered ***en*** lab makers zijn toegestaan om het lab locatie te kiezen**
+  - **Geen VNet is peered ***en*** Lab-makers mogen de locatie van het lab kiezen**
        
-    Wanneer er **geen** VNet peered is en [labmakers de lablocatie mogen kiezen,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)zijn de locaties die door de maker van het lab kunnen worden geselecteerd, gebaseerd op de beschikbare capaciteit.
+    Als er **geen** VNet-peered en [Lab-makers zijn toegestaan om de Lab-locatie te kiezen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), zijn de locaties die kunnen worden geselecteerd door de Lab-Maker gebaseerd op de beschik bare capaciteit.
 
 > [!NOTE]
-> Om ervoor te zorgen dat er voldoende VM-capaciteit is voor een regio, is het belangrijk dat u eerst capaciteit opvraagt via het labaccount of bij het maken van het lab.
+> Om ervoor te zorgen dat er voldoende VM-capaciteit voor een regio is, is het belang rijk dat u eerst capaciteit aanvraagt via het lab-account of bij het maken van het lab.
 
-Een algemene regel is om de regio van een resource in te stellen op een regio die het dichtst bij de gebruikers staat. Voor klaslokalen betekent dit het creëren van het klaslokaallab dat het dichtst bij uw leerlingen staat. Voor online cursussen waar studenten zich over de hele wereld bevinden, moet u uw beste oordeel gebruiken om een klaslokaallab te maken dat centraal is gelegen. Of splits een klas op in meerdere klaslokalen op basis van de regio van uw leerlingen.
+Een algemene regel is het instellen van de regio van een resource die het dichtst bij de gebruikers ligt. Voor klassikale Labs betekent dit dat u het leslokaal lab het dichtst bij uw studenten maakt. Voor online cursussen waar studenten zich overal ter wereld bevinden, moet u de beste beslissing nemen om een leslokaal Lab te maken dat zich centraal bevindt. Of Splits een klasse in meerdere klassikale Labs op basis van de regio van uw studenten.
 
-### <a name="shared-image-gallery"></a>Gedeelde afbeeldingsgalerie
+### <a name="shared-image-gallery"></a>Galerie met gedeelde afbeeldingen
 
-Het gebied geeft het brongebied aan waar de eerste afbeeldingsversie wordt opgeslagen voordat deze automatisch wordt gerepliceerd naar doelregio's.
+De regio geeft de bron regio aan waar de eerste versie van de installatie kopie wordt opgeslagen voordat deze automatisch wordt gerepliceerd naar doel regio's.
 
-## <a name="vm-sizing"></a>VM-formaat
-Wanneer beheerders of labmakers een klaslokaallab maken, kunnen ze kiezen uit de volgende VM-formaten op basis van de behoeften van hun klaslokaal. Houd er rekening mee dat de beschikbare rekengroottes afhankelijk zijn van de regio waarin uw labaccount zich bevindt:
+## <a name="vm-sizing"></a>VM-grootte
+
+Wanneer beheerders of Lab-makers een leslokaal Lab maken, kunnen ze kiezen uit de volgende VM-grootten op basis van de behoeften van hun klas lokaal. Houd er rekening mee dat de beschik bare reken grootten afhankelijk zijn van de regio waarin uw Lab-account zich bevindt:
 
 | Grootte | Specificaties | Reeks | Voorgesteld gebruik |
 | ---- | ----- | ------ | ------------- |
-| Klein| <ul><li>2 kernen</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor opdrachtregel, het openen van webbrowser, low traffic webservers, kleine tot middelgrote databases. |
-| Middelgroot | <ul><li>4 Kernen</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics. |
-| Medium (Geneste virtualisatie) | <ul><li>4 Kernen</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics.  Deze grootte ondersteunt ook geneste virtualisatie. |
-| Groot | <ul><li>8 kernen</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Dit formaat is het meest geschikt voor toepassingen die snellere CPU's nodig hebben, betere lokale schijfprestaties, grote databases, grote geheugencaches.  Deze grootte ondersteunt ook geneste virtualisatie. |
-| Kleine GPU (visualisatie) | <ul><li>6 Kernen</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Dit formaat is het meest geschikt voor externe visualisatie, streaming, gaming, codering met behulp van frameworks zoals OpenGL en DirectX. |
-| Kleine GPU (Berekenen) | <ul><li>6 Kernen</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Dit formaat is het meest geschikt voor computerintensieve toepassingen zoals Kunstmatige Intelligentie en Deep Learning. |
-| Middelgrote GPU (visualisatie) | <ul><li>12 kernen</li><li>112 GB RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Dit formaat is het meest geschikt voor externe visualisatie, streaming, gaming, codering met behulp van frameworks zoals OpenGL en DirectX. |
+| Klein| <ul><li>2 kernen</li><li>3,5 GB RAM-GEHEUGEN</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
+| Middelgroot | <ul><li>4 kernen</li><li>7 GB RAM-GEHEUGEN</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. |
+| Gemiddeld (geneste virtualisatie) | <ul><li>4 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
+| Groot | <ul><li>8 kernen</li><li>32 GB RAM-GEHEUGEN</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
+| Kleine GPU (visualisatie) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
+| Kleine GPU (Compute) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computer-intensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
+| Gemiddelde GPU (visualisatie) | <ul><li>12 kernen</li><li>112 GB RAM-GEHEUGEN</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
 
 ## <a name="manage-identity"></a>Identiteit beheren
-Met behulp van [het op rollen gebaseerde toegangscontrolebeheer van Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot labaccounts en klaslokalen:
+
+Met behulp [van het op rollen gebaseerd toegangs beheer van Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)kunnen de volgende rollen worden toegewezen om toegang te geven tot Lab-accounts en klassikale Labs:
 
 - **Labeigenaar**
 
-    De beheerder die het labaccount maakt, wordt automatisch toegevoegd aan de **rol Eigenaar** van het labaccount.  Een beheerder die de rol **Eigenaar** heeft toegewezen, kan:
-     - Wijzig de instellingen van het labaccount.
-     - Geef andere beheerders toegang tot het labaccount als eigenaren of bijdragers. 
-     - Geef docenten toegang tot klaslokalen als makers, eigenaren of bijdragers.
-     - Maak en beheer alle klaslokalen binnen het labaccount.
+    De beheerder die het lab-account maakt, wordt automatisch toegevoegd aan de rol **eigenaar** van het lab-account.  Een beheerder die de rol **eigenaar** heeft toegewezen, kan:
+     - De instellingen van het lab-account wijzigen.
+     - Geef andere beheerders toegang tot het lab-account als eigen aren of mede werkers.
+     - Bied docenten toegang tot klassikale Labs als makers, eigen aren of mede werkers.
+     - Maak en beheer alle klassikale Labs in het lab-account.
 
-- **Bijdrage aan labaccount**
+- **Inzender voor Lab-account**
 
     Een beheerder die de rol **Inzender** heeft toegewezen, kan:
-    - Wijzig de instellingen van het labaccount.
-    - Maak en beheer alle klaslokalen binnen het labaccount.
-    
-    Ze kunnen andere gebruikers echter *geen* toegang geven tot labaccounts of klaslokalen.
+    - De instellingen van het lab-account wijzigen.
+    - Maak en beheer alle klassikale Labs binnen het lab-account.
 
-- **De laboratoriumschepper van het klaslokaal**
+    Ze kunnen echter *geen* andere gebruikers toegang geven tot Lab-accounts of klassikale Labs.
 
-    Als u klaslokalen wilt maken binnen een labaccount, moet een docent lid zijn van de rol **Lab Creator.**  Wanneer een docent een klaslokaallab maakt, worden ze automatisch toegevoegd als eigenaar van het lab.  Raadpleeg de zelfstudie over het [toevoegen van een gebruiker aan de lab **creator-rol.** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role) 
+- **Klas Lab Maker**
 
-- **Classroom lab owner\contributor**
+    Als u klassikale Labs binnen een Lab-account wilt maken, moeten docenten lid zijn van de rol **Lab Creator** .  Wanneer een docent een leslokaal Lab maakt, worden ze automatisch toegevoegd als een eigenaar van het lab.  Raadpleeg de zelf studie over het [toevoegen van een gebruiker aan de rol **Lab Creator** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role). 
+
+- **Klas Lab owner\contributor**
   
-    Een docent kan de instellingen van een klaslokaallab bekijken en wijzigen wanneer hij lid is van de **rol Eigenaar** of **Bijdrager van** een lab. ze moeten ook lid zijn van de **Reader-rol** van het labaccount.
+    Een docent kan de instellingen van een leslokaal Lab bekijken en wijzigen wanneer ze lid zijn van de rol **eigenaar** of **bijdrager** van een Lab; ze moeten ook lid zijn van de rol **lezer** van het lab-account.
 
-    Een belangrijk verschil tussen de **rol van eigenaar** van een lab en de **inzender is** dat een bijdrager andere gebruikers geen toegang *kan* geven tot het beheer van het lab - alleen eigenaren kunnen andere gebruikers toegang geven om het lab te beheren.
-    
-    Bovendien kan een docent *geen* nieuwe klaslabs maken, tenzij ze ook lid zijn van de **Lab Creator-rol.**
+    Een belang rijk verschil tussen de **eigenaar** van een lab en **Inzender** rollen is dat een mede werker andere gebruikers *geen toegang kan* geven tot het beheer van de alleen de Lab-eigen aren kan andere gebruikers toegang geven tot het beheer van het lab.
 
-- **Gedeelde afbeeldingsgalerie**
-    
-    Wanneer u een gedeelde afbeeldingsgalerie koppelt aan een labaccount, worden eigenaren van labaccounten\bijdragers en labmakers\eigenaren\bijdragers, automatisch toegang tot het bekijken en opslaan van afbeeldingen in de galerie. 
+    Daarnaast kan een docent *geen* nieuwe klassikale Labs maken, tenzij ze ook lid zijn van de rol **Lab Creator** .
 
-Hier volgen enkele tips om rollen toe te wijzen:
-   - Doorgaans moeten alleen beheerders lid zijn van de **eigenaar-** of **inzenderrollen** van een labaccount. u meer dan één eigenaar hebben\bijdrager leveren.
+- **Galerie met gedeelde afbeeldingen**
 
-   - Om een docent de mogelijkheid te geven om nieuwe klaslabs te maken en de labs te beheren die ze maken; u hoeft alleen toegang toe te wijzen tot de lab **creator-rol.**
-   
-   - Om een docent de mogelijkheid te geven om specifieke klaslabs te beheren, maar *niet* de mogelijkheid om nieuwe labs te maken; u moet toegang toewijzen tot de rol **Eigenaar** of **inzender** voor elk van de klaslokalen die ze zullen beheren.  U bijvoorbeeld toestaan dat zowel een professor als een onderwijsassistent mede-eigenaar zijn van een klaslokaallab.  Raadpleeg de handleiding voor het [toevoegen van een gebruiker als eigenaar aan een klaslokaallab.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)
+    Wanneer u een galerie met gedeelde installatie kopieën koppelt aan een Lab-account, krijgen owners\contributors en Lab creators\owners\contributors automatisch toegang tot het weer geven en opslaan van installatie kopieën in de galerie.
+
+Hier volgen enkele tips voor het toewijzen van rollen:
+   - Normaal gesp roken moeten alleen beheerders lid zijn van de **eigenaar** van een Lab-account of **Inzender** rollen. mogelijk hebt u meer dan één owner\contributor.
+   - Om ervoor te zorgen dat een docent nieuwe klassikale Labs kan maken en de door hen gemaakte Labs kan beheren. u hoeft alleen toegang toe te wijzen aan de rol **Lab Creator** .
+   - Om ervoor te zorgen dat een docent specifieke klassikale Labs kan beheren, maar *niet* de mogelijkheid om nieuwe Labs te maken. u moet toegang tot de rol **eigenaar** of **Inzender** toewijzen voor elk van de klassikale Labs die ze zullen beheren.  U kunt bijvoorbeeld zowel een docent als een onderwijs assistent toestaan om een leslokaal Lab te maken.  Raadpleeg de hand leiding voor het [toevoegen van een gebruiker als eigenaar van een klas lokaal Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner).
 
 ## <a name="pricing"></a>Prijzen
 
 ### <a name="azure-lab-services"></a>Azure Lab-Services
-De prijzen voor Azure Lab Services worden beschreven in het volgende artikel: [Azure Lab Services-prijzen](https://azure.microsoft.com/pricing/details/lab-services/).
 
-U moet ook rekening houden met de prijzen voor de gedeelde afbeeldingsgalerie als u van plan bent deze te gebruiken voor het opslaan en beheren van afbeeldingsversies. 
+De prijzen voor Azure Lab Services worden beschreven in het volgende artikel: [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/).
 
-### <a name="shared-image-gallery"></a>Gedeelde afbeeldingsgalerie
-Het maken van een gedeelde afbeeldingsgalerie en het koppelen aan uw labaccount is gratis. Er worden geen kosten gemaakt totdat u een afbeeldingsversie in de galerie hebt opgeslagen. Doorgaans zijn de prijzen voor het gebruik van een gedeelde afbeeldingsgalerie vrij verwaarloosbaar, maar het is belangrijk om te begrijpen hoe deze wordt berekend, omdat deze niet is opgenomen in de prijzen voor Azure Lab Services.  
+U moet ook rekening houden met de prijzen voor de galerie met gedeelde afbeeldingen als u deze wilt gebruiken voor het opslaan en beheren van installatie kopieën. 
 
-#### <a name="storage-charges"></a>Opslagkosten
-Als u afbeeldingsversies wilt opslaan, maakt een gedeelde afbeeldingsgalerie gebruik van standaard schijven die door hdd's worden beheerd. De grootte van de hdd-beheerde schijf die wordt gebruikt, is afhankelijk van de grootte van de afbeeldingsversie die wordt opgeslagen. Zie het volgende artikel om de prijzen te bekijken: [Prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/).
+### <a name="shared-image-gallery"></a>Galerie met gedeelde afbeeldingen
 
+Het is gratis om een galerie met gedeelde afbeeldingen te maken en deze toe te voegen aan uw Lab-account. Er worden geen kosten in rekening gebracht totdat u een afbeeldings versie in de galerie opslaat. Normaal gesp roken is de prijs voor het gebruik van een galerie met gedeelde afbeeldingen redelijk te verwaarlozen, maar het is belang rijk om te begrijpen hoe deze wordt berekend omdat deze niet is opgenomen in de prijzen voor Azure Lab Services.  
 
-#### <a name="replication-and-network-egress-charges"></a>Replicatie- en netwerkuitgangskosten
-Wanneer u een afbeeldingsversie opslaat met de virtuele machine (VM) van een classroom lab, slaat Azure Lab Services deze eerst op in een brongebied en repliceert u de bronafbeeldingsversie automatisch naar een of meer doelregio's. Het is belangrijk op te merken dat Azure Lab Services automatisch de bronafbeeldingsversie repliceert naar alle [doelgebieden binnen de geografie](https://azure.microsoft.com/global-infrastructure/regions/) waar het klaslokaallab zich bevindt. Als uw klaslab zich bijvoorbeeld in de Amerikaanse geografie bevindt, wordt een afbeeldingsversie gerepliceerd naar elk van de acht regio's die binnen de VS bestaan.
+#### <a name="storage-charges"></a>Opslag kosten
 
-Er wordt een netwerkuitgangslading in rekening gebracht wanneer een afbeeldingsversie wordt gerepliceerd vanuit het brongebied naar extra doelregio's. Het in rekening gebrachte bedrag is gebaseerd op de grootte van de afbeeldingsversie wanneer de gegevens van de afbeelding in eerste instantie uitgaand worden overgedragen vanuit het brongebied.  Voor prijsdetails verwijzen wij u naar het volgende artikel: [Details over bandbreedteprijzen](https://azure.microsoft.com/pricing/details/bandwidth/).
+Voor het opslaan van afbeeldings versies gebruikt een galerie met gedeelde installatie kopieën standaard schijven die met schijven worden beheerd. De grootte van de schijf die wordt gebruikt voor de HDD, is afhankelijk van de grootte van de installatie kopie versie die wordt opgeslagen. Raadpleeg het volgende artikel voor het weer geven van de prijzen: [prijs informatie Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-Klanten van [onderwijsoplossingen](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) kunnen worden kwijtgescholden van het betalen van uitgaande kosten. Neem contact op met uw accountmanager voor meer informatie.  Zie voor meer informatie **de faq-sectie** in het gekoppelde document, met name de vraag "Welke programma's voor gegevensoverdracht bestaan voor academische klanten en hoe kom ik in aanmerking?".
+#### <a name="replication-and-network-egress-charges"></a>Kosten voor replicatie en netwerk uitgaand verkeer
 
-#### <a name="pricing-example"></a>Prijsvoorbeeld
-Als u de hierboven beschreven prijzen wilt samenvatten, bekijken we een voorbeeld van het opslaan van onze sjabloon-VM-afbeelding in gedeelde afbeeldingsgalerie. Ga uit van de volgende scenario's:
+Wanneer u een installatie kopie versie met behulp van de virtuele machine (VM) van een leslokaal Lab opslaat, wordt deze door Azure Lab Services eerst opgeslagen in een bron regio en wordt de versie van de bron installatie kopie automatisch gerepliceerd naar een of meer doel regio's. Het is belang rijk te weten dat Azure Lab Services de versie van de bron installatie kopie automatisch repliceert naar alle doel [regio's binnen de geografie](https://azure.microsoft.com/global-infrastructure/regions/) waar het leslokaal Lab zich bevindt. Als uw klas Lab zich bijvoorbeeld in de Verenigde Staten bevindt, wordt er een afbeeldings versie gerepliceerd naar elk van de acht regio's in de VS
 
-- U hebt één aangepaste VM-afbeelding.
-- Je slaat twee versies van de afbeelding op.
-- Je lab is in de VS, die in totaal acht regio's heeft.
-- Elke afbeeldingsversie is 32 GB groot; als gevolg daarvan, de HDD-beheerde schijf prijs is $ 1,54 per maand.
+Wanneer een versie van een installatie kopie wordt gerepliceerd van de bron regio naar extra doel regio's, treedt er een uitvulling van het netwerk op. De kosten worden berekend op basis van de grootte van de versie van de installatie kopie wanneer de gegevens van de afbeelding in eerste instantie uitgaande van de bron regio worden verzonden.  Raadpleeg het volgende artikel voor prijs informatie: [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/).
+
+[Educatie-oplossingen](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) klanten kunnen worden kwijtgescholden van de kosten voor het betalen van uitgaand verkeer. Neem contact op met uw account manager voor meer informatie.  Zie voor meer informatie **Raadpleeg de sectie Veelgestelde vragen** in het gekoppelde document, met name de vraag "welke Program ma's voor gegevens overdracht bestaan voor academische klanten en hoe kom ik in aanmerking?".
+
+#### <a name="pricing-example"></a>Prijs voorbeeld
+
+Voor het samen vatting van de prijzen die hierboven worden beschreven, bekijken we een voor beeld van het opslaan van de VM-installatie kopie van de sjabloon naar de galerie met gedeelde installatie kopieën. Stel dat de volgende scenario's zijn:
+
+- U hebt één aangepaste VM-installatie kopie.
+- U slaat twee versies van de installatie kopie op.
+- Uw lab bevindt zich in de Verenigde Staten, met in totaal acht regio's.
+- Elke afbeeldings versie is 32 GB groot. Als gevolg hiervan is de prijs voor de schijf met harde schijven $1,54 per maand.
 
 De totale kosten worden geschat als:
 
-Aantal afbeeldingen × aantal versies × aantal replica's × beheerde schijfprijs
+Aantal installatie kopieën × het aantal versies × het aantal replica's × de beheerde schijf prijs
 
-In dit voorbeeld zijn de kosten:
+In dit voor beeld zijn de kosten:
 
-1 aangepaste afbeelding (32 GB) x 2-versies x 8 Amerikaanse regio's x $ 1,54 = $ 24,64 per maand
+1 aangepaste installatie kopie (32 GB) x 2 versies x 8 Amerikaanse regio's x $1,54 = $24,64 per maand
 
 #### <a name="cost-management"></a>Kostenbeheer
-Het is belangrijk dat de beheerder van het labaccount de kosten beheert door routinematig overbodige afbeeldingsversies uit de galerie te verwijderen. 
 
-U moet replicatie naar specifieke regio's niet verwijderen als een manier om de kosten te verlagen (deze optie bestaat in de gedeelde afbeeldingsgalerie). Replicatiewijzigingen kunnen nadelige gevolgen hebben voor de mogelijkheid van Azure Lab Service om VM's te publiceren van afbeeldingen die zijn opgeslagen in een gedeelde afbeeldingsgalerie.
+Het is belang rijk dat een Lab-account beheerder kosten kan beheren door de niet-vereiste installatie kopieën in de galerie regel matig te verwijderen. 
+
+Het is niet mogelijk om replicatie naar specifieke regio's te verwijderen als een manier om de kosten te verlagen (deze optie komt voor in de galerie met gedeelde afbeeldingen). Wijzigingen in de replicatie kunnen nadelige gevolgen hebben voor de mogelijkheid van de Azure Lab-service om Vm's te publiceren vanuit afbeeldingen die zijn opgeslagen in een galerie met gedeelde installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de zelfstudie voor stapsgewijze instructies om een labaccount en een lab te maken: [Handleiding instellen](tutorial-setup-lab-account.md)
+
+Raadpleeg de zelf studie voor stapsgewijze instructies voor het maken van een Lab-account en een Lab: [gids instellen](tutorial-setup-lab-account.md)

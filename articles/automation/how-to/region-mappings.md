@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114476"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165770"
 ---
 # <a name="workspace-mappings"></a>Werkruimtetoewijzingen
 
 Bij het inschakelen van Updatebeheer, Wijzigingen bijhouden en inventaris of VM's buiten bedrijfsuren starten/stoppen worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement. Deze toewijzing is alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De Log Analytics-werk ruimte en het Automation-account moeten zich in hetzelfde abonnement bevinden, maar kunnen zich in verschillende resource groepen bevinden die in dezelfde regio zijn geïmplementeerd.
 
-Zie [log Analytics-werk ruimte en het Automation-account](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account)voor meer informatie.
+Zie [log Analytics-werk ruimte en het Automation-account](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)voor meer informatie.
 
 ## <a name="supported-mappings"></a>Ondersteunde toewijzingen
 

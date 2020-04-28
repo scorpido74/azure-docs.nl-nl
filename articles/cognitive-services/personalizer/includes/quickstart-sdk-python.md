@@ -8,90 +8,90 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: fe800280a7a652b5d9a397a21a5b0a66b40af4dc
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d35f11125809167c4834b33f913d9369a6402ac0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122920"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188853"
 ---
-[Referentiedocumentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [Bibliotheekbroncodepakket](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [(pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Reference documentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | Pypi-voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [package)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | voor referentie documentatie
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement - [Maak er gratis een](https://azure.microsoft.com/free/)
-* [Python 3.x](https://www.python.org/)
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* [Python 3. x](https://www.python.org/)
 
-## <a name="using-this-quickstart"></a>Deze quickstart gebruiken
+## <a name="using-this-quickstart"></a>Deze Snelstartgids gebruiken
 
 
-Er zijn verschillende stappen om deze quickstart te gebruiken:
+Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
 
-* Maak in de Azure-portal een personalizerbron
-* Wijzig in de Azure-portal voor de personalizerbron op de pagina **Configuratie** de frequentie van modelupdate in een zeer kort interval
-* Maak in een codeeditor een codebestand en bewerk het codebestand
-* Installeer de SDK in de opdrachtregel of terminal vanaf de opdrachtregel
-* Voer in de opdrachtregel of terminal het codebestand uit
+* Maak een persoonlijke resource in de Azure Portal
+* Wijzig in de Azure Portal, voor de resource Personaler op de pagina **configuratie** , de update frequentie van het model in een zeer korte interval
+* Maak in een code-editor een code bestand en bewerk het code bestand
+* Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
+* Voer in de opdracht regel of Terminal het code bestand uit
 
 [!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
 
-[!INCLUDE [!Change model frequency](change-model-frequency.md)]
+[!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-## <a name="install-the-python-library-for-personalizer"></a>De Python-bibliotheek installeren voor personalizer
+## <a name="install-the-python-library-for-personalizer"></a>De python-bibliotheek installeren voor personaliseren
 
-Installeer de personalizer-clientbibliotheek voor Python met de volgende opdracht:
+Installeer de Personaler-client bibliotheek voor python met de volgende opdracht:
 
 ```console
 pip install azure-cognitiveservices-personalizer
 ```
 
-## <a name="object-model"></a>Objectmodel
+## <a name="object-model"></a>Object model
 
-De Personalizer-client is een [PersonalizerClient-object](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient?view=azure-python) dat zich verifieert naar Azure met behulp van Microsoft.Rest.ServiceClientCredentials, dat uw sleutel bevat.
+De Personaler-client is een [PersonalizerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient?view=azure-python) -object dat wordt geverifieerd bij Azure met behulp van micro soft. rest. ServiceClientCredentials, dat uw sleutel bevat.
 
-Als u het beste item van de inhoud wilt aanvragen, maakt u een [RankRequest](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest?view=azure-python)en geeft u deze door aan de client. Rangmethode. De methode Rang retourneert een RankResponse.
+Om te vragen om één beste item van de inhoud, maakt u een [RankRequest](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest?view=azure-python)en geeft u het door aan de client. Positie methode. De methode Rank retourneert een RankResponse.
 
-Als u een beloningsscore naar Personalizer wilt sturen, stelt u de gebeurtenis-id en de beloningsscore (waarde) in die u naar de [beloningsmethode](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations?view=azure-python#reward-event-id--value--custom-headers-none--raw-false----operation-config-) in de klasse EventOperations wilt sturen.
+Als u een belonings score naar een persoonlijker wilt verzenden, stelt u de gebeurtenis-ID en de belonings Score (waarde) in die u wilt verzenden naar de [belonings](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations?view=azure-python#reward-event-id--value--custom-headers-none--raw-false----operation-config-) methode voor de EventOperations-klasse.
 
-Het bepalen van de beloning, in deze quickstart is triviaal. In een productiesysteem, de bepaling van wat de [beloningsscore](../concept-rewards.md) beïnvloedt en door hoeveel een complex proces kan zijn, dat u beslissen om in tijd te veranderen. Dit moet een van de belangrijkste ontwerpbeslissingen in uw personalizerarchitectuur zijn.
+Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](../concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze codefragmenten laten zien hoe u het volgende doen met de personalizer-clientbibliotheek voor Python:
+Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-client bibliotheek voor python:
 
-* [Een gepersonaliseerde client maken](#create-a-personalizer-client)
+* [Een Personaler-client maken](#create-a-personalizer-client)
 * [Rank-API](#request-the-best-action)
-* [Reward API](#send-a-reward)
+* [Belonings-API](#send-a-reward)
 
 ## <a name="create-a-new-python-application"></a>Een nieuwe python-toepassing maken
 
-Maak een nieuwe Python-toepassing in uw `sample.py`voorkeurseditor of IDE met de naam .
+Maak een nieuwe python-toepassing in uw voorkeurs editor of IDE `sample.py`met de naam.
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open in de projectmap het **sample.py-bestand** in uw voorkeurseditor of IDE. Voeg het volgende toe:
+Open het **sample.py** -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg het volgende toe:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 
-## <a name="add-personalizer-resource-information"></a>Persoonlijkeinformatie toevoegen
+## <a name="add-personalizer-resource-information"></a>Informatie over persoonlijker resources toevoegen
 
-Maak variabelen voor de Azure-sleutel en het eindpunt van uw `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`resource die zijn opgehaald uit de omgevingsvariabelen, benoemd en . Als u de omgevingsvariabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die wordt uitgevoerd, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden later in deze quickstart gemaakt.
+Maak variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald `PERSONALIZER_RESOURCE_KEY` uit `PERSONALIZER_RESOURCE_ENDPOINT`de omgevings variabelen met de naam en. Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
 
-De resourcenaam maakt deel uit `https://<your-resource-name>.api.cognitive.microsoft.com/`van de URL van het eindpunt: .
+De resource naam maakt deel uit van de eind punt `https://<your-resource-name>.api.cognitive.microsoft.com/`-URL:.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
-## <a name="create-a-personalizer-client"></a>Een gepersonaliseerde client maken
+## <a name="create-a-personalizer-client"></a>Een Personaler-client maken
 
-Maak vervolgens een methode om een Personalizer-client terug te sturen. De parameter voor de `PERSONALIZER_RESOURCE_ENDPOINT` methode is de `PERSONALIZER_RESOURCE_KEY`en de ApiKey is de .
+Maak vervolgens een methode voor het retour neren van een Personaler-client. De para meter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` de en de ApiKey is `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
-## <a name="get-content-choices-represented-as-actions"></a>Inhoudskeuzes weergeven als acties
+## <a name="get-content-choices-represented-as-actions"></a>Inhouds keuzes ophalen die worden weer gegeven als acties
 
-Acties vertegenwoordigen de inhoudskeuzes waaruit u wilt dat Personalizer het beste inhoudsitem selecteert. Voeg de volgende methoden toe aan de klasse Programma om de set acties en hun functies weer te geven.
+Acties vertegenwoordigen de inhouds keuzes waaruit u het beste inhouds item wilt selecteren. Voeg de volgende methoden toe aan de klasse Program om de set acties en hun functies weer te geven.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -99,15 +99,15 @@ Acties vertegenwoordigen de inhoudskeuzes waaruit u wilt dat Personalizer het be
 
 [!code-python[Present food taste preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTastePreference)]
 
-## <a name="create-the-learning-loop"></a>De leerlus maken
+## <a name="create-the-learning-loop"></a>De leer loop maken
 
-De Personalizer learning loop is een cyclus van [Rank en](#request-the-best-action) [Reward](#send-a-reward) calls. In deze quickstart wordt elk rangcall, om de inhoud te personaliseren, gevolgd door een beloningsoproep om Personalizer te vertellen hoe goed de service heeft gepresteerd.
+De training voor persoonlijker leren is een cyclus van [positie](#request-the-best-action) -en [belonings](#send-a-reward) aanroepen. In deze Quick Start wordt elke classificatie oproep, om de inhoud te personaliseren, gevolgd door een belonings oproep om persoonlijker te vertellen hoe goed de service wordt uitgevoerd.
 
-De volgende code lussen door een cyclus van het vragen van de gebruiker hun voorkeuren op de command line, het verzenden van die informatie naar Personalizer om de beste actie te selecteren, de presentatie van de selectie aan de klant om uit te kiezen uit de lijst, dan het verzenden van een beloning naar Personalizer signalering hoe goed de dienst deed in haar selectie.
+Met de volgende code wordt een cyclus door lopen van de gebruiker om de voor keuren te zien op de opdracht regel, waarna deze informatie wordt verzonden naar Personaler om de beste actie te selecteren, waarbij de selectie wordt gepresenteerd aan de klant om uit de lijst te kiezen en vervolgens een vergoeding te sturen naar een persoonlijker signaal om te bepalen hoe goed de service is geselecteerd.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
-Voeg de volgende methoden toe, waarmee [de inhoudsopties worden uitgevoerd](#get-content-choices-represented-as-actions)voordat u het codebestand uitvoert:
+Voeg de volgende methoden toe, die [de inhouds keuzes ophalen](#get-content-choices-represented-as-actions)voordat u het code bestand uitvoert:
 
 * `get_user_preference`
 * `get_user_timeofday`
@@ -116,18 +116,18 @@ Voeg de volgende methoden toe, waarmee [de inhoudsopties worden uitgevoerd](#get
 ## <a name="request-the-best-action"></a>De beste actie aanvragen
 
 
-Om de rank-aanvraag te voltooien, vraagt het programma `currentContent` de voorkeuren van de gebruiker om een van de inhoudskeuzes te maken. Het proces kan inhoud maken om uit `excludeActions`te sluiten van de acties, weergegeven als . De rangaanvraag heeft de acties en hun functies, huidigeContextfuncties, excludeActions en een unieke gebeurtenis-id nodig om het antwoord te ontvangen.
+Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker `currentContent` gevraagd om een van de inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de acties, `excludeActions`weer gegeven als. De rang aanvraag heeft de acties en hun functies, eigenschap currentcontext functies, excludeActions en een unieke gebeurtenis-ID nodig om de reactie te ontvangen.
 
-Deze quickstart heeft eenvoudige contextfuncties van het tijdstip van de dag en de voorkeur voor gebruikersvoeding. In productiesystemen kan het bepalen en [evalueren van](../concept-feature-evaluation.md) acties [en functies](../concepts-features.md) een niet-triviale zaak zijn.
+Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur voor de gebruikers-levens duur. In productie systemen kan het bepalen en [evalueren](../concept-feature-evaluation.md) van [acties en functies](../concepts-features.md) een niet-triviale zaak zijn.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=rank)]
 
-## <a name="send-a-reward"></a>Stuur een beloning
+## <a name="send-a-reward"></a>Een beloning verzenden
 
 
-Om de beloningsscore te krijgen om het beloningsverzoek in te sturen, krijgt het programma de selectie van de gebruiker uit de opdrachtregel, wijst het een numerieke waarde toe aan de selectie en stuurt het vervolgens de unieke gebeurtenis-ID en de beloningsscore als de numerieke waarde naar de Reward API.
+Om de belonings score te verkrijgen die in het belonings verzoek moet worden verzonden, haalt het programma de selectie van de gebruiker op via de opdracht regel, wijst een numerieke waarde toe aan de selectie. vervolgens worden de unieke gebeurtenis-ID en de belonings score als numerieke waarde naar de belonings-API verzonden.
 
-Deze quickstart kent een eenvoudig getal toe als beloningsscore, een nul of een 1. In productiesystemen kan bepalen wanneer en wat u naar de [Reward-oproep](../concept-rewards.md) moet worden verzonden, afhankelijk van uw specifieke behoeften.
+In deze Quick Start wordt een eenvoudig getal met een belonings Score, ofwel een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden verzonden naar de [belonings](../concept-rewards.md) oproep, afhankelijk van uw specifieke behoeften.
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 
@@ -139,4 +139,4 @@ Voer de toepassing uit met de python vanuit uw toepassingsmap.
 python sample.py
 ```
 
-![Het quickstart-programma stelt een paar vragen om gebruikersvoorkeuren te verzamelen, bekend als functies, en biedt vervolgens de hoogste actie.](../media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
+![In het Quick Start-programma wordt een aantal vragen gesteld om gebruikers voorkeuren, ook wel bekend als-functies, te verzamelen en de meest voorkomende actie te bieden.](../media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
