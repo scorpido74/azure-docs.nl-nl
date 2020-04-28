@@ -1,33 +1,33 @@
 ---
-title: Resources beheren - Azure CLI
-description: Gebruik Azure CLI en Azure Resource Manager om uw resources te beheren. Hier ziet u hoe u resources implementeert en verwijdert.
+title: Resources beheren-Azure CLI
+description: Gebruik Azure CLI en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
 author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: f00c1725201b0e49f80fec64e5d69b375ec7a233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485531"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-resources beheren met Azure CLI
 
-Meer informatie over het gebruik van Azure CLI met [Azure Resource Manager](overview.md) om uw Azure-bronnen te beheren. Zie [Azure-brongroepen beheren met Azure CLI](manage-resource-groups-cli.md)voor het beheren van resourcegroepen.
+Meer informatie over het gebruik van Azure CLI met [Azure Resource Manager](overview.md) voor het beheren van uw Azure-resources. Zie [Azure-resource groepen beheren met Azure cli](manage-resource-groups-cli.md)voor meer informatie over het beheren van resource groepen.
 
 Andere artikelen over het beheren van resources:
 
-- [Azure-resources beheren met behulp van de Azure-portal](manage-resources-portal.md)
-- [Azure-resources beheren met Azure PowerShell](manage-resources-powershell.md)
+- [Azure-resources beheren met behulp van de Azure Portal](manage-resources-portal.md)
+- [Azure-resources beheren met behulp van Azure PowerShell](manage-resources-powershell.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren voor een bestaande resourcegroep
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren voor een bestaande resource groep
 
-U Azure-resources rechtstreeks implementeren met Azure CLI of een resourcebeheersjabloon implementeren om Azure-resources te maken.
+U kunt Azure-resources rechtstreeks implementeren met behulp van Azure CLI of een resource manager-sjabloon implementeren om Azure-resources te maken.
 
 ### <a name="deploy-a-resource"></a>Een resource implementeren
 
-In het volgende script wordt een opslagaccount gemaakt.
+Met het volgende script maakt u een opslag account.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -42,7 +42,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Een sjabloon implementeren
 
-Met het volgende script wordt een Quickstart-sjabloon geïmplementeerd om een opslagaccount te maken. Zie [Snelstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)voor meer informatie.
+Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie Quick Start (Engelstalig) voor meer informatie over het [maken van Azure Resource Manager sjablonen met Visual Studio code](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -52,19 +52,19 @@ read location &&
 az group deployment create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI voor](../templates/deploy-cli.md)meer informatie.
+Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../templates/deploy-cli.md)voor meer informatie.
 
-## <a name="deploy-a-resource-group-and-resources"></a>Een resourcegroep en resources implementeren
+## <a name="deploy-a-resource-group-and-resources"></a>Een resource groep en-resources implementeren
 
-U een resourcegroep maken en resources implementeren in de groep. Zie [Resourcegroep maken en resources implementeren](../templates/deploy-to-subscription.md#resource-group-and-resources)voor meer informatie.
+U kunt een resource groep maken en resources implementeren voor de groep. Zie [resource groep maken en resources implementeren](../templates/deploy-to-subscription.md#resource-group-and-resources)voor meer informatie.
 
-## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Resources implementeren voor meerdere abonnementen of resourcegroepen
+## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Resources implementeren voor meerdere abonnementen of resource groepen
 
-Doorgaans implementeert u alle bronnen in uw sjabloon in één resourcegroep. Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze in verschillende resourcegroepen of -abonnementen wilt plaatsen. Zie [Azure-resources implementeren voor meerdere abonnementen of resourcegroepen](../templates/cross-resource-group-deployment.md)voor meer informatie.
+Doorgaans implementeert u alle resources in uw sjabloon tot één resource groep. Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze wilt plaatsen in verschillende resource groepen of-abonnementen. Zie [Azure-resources implementeren voor meerdere abonnementen of resource groepen](../templates/cross-resource-group-deployment.md)voor meer informatie.
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-In het volgende script ziet u hoe u een opslagaccount verwijdert.
+Het volgende script toont hoe u een opslag account verwijdert.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -74,11 +74,11 @@ read storageAccountName &&
 az storage account delete --resource-group $resourceGroupName --name $storageAccountName 
 ```
 
-Zie het verwijderen van [azure resource manager-bronnen](delete-resource-group.md)voor meer informatie over hoe Azure Resource Manager de verwijdering van resources bestelt.
+Zie [Azure Resource Manager resource groep verwijderen](delete-resource-group.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
 ## <a name="move-resources"></a>Resources verplaatsen
 
-In het volgende script ziet u hoe u een opslagaccount van de ene resourcegroep naar een andere resourcegroep verwijdert.
+Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 
 ```azurecli-interactive
 echo "Enter the source Resource Group name:" &&
@@ -95,9 +95,9 @@ Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of
 
 ## <a name="lock-resources"></a>Resources vergrendelen
 
-Vergrendeling voorkomt dat andere gebruikers in uw organisatie per ongeluk kritieke bronnen verwijderen of wijzigen, zoals Azure-abonnement, resourcegroep of resource. 
+Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 
-Het volgende script vergrendelt een opslagaccount, zodat het account niet kan worden verwijderd.
+Met het volgende script wordt een opslag account vergrendeld zodat het account niet kan worden verwijderd.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -107,7 +107,7 @@ read storageAccountName &&
 az lock create --name LockSite --lock-type CanNotDelete --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts 
 ```
 
-In het volgende script worden alle vergrendelingen voor een opslagaccount opgeslagen:
+Met het volgende script worden alle vergren delingen voor een opslag account opgehaald:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -117,7 +117,7 @@ read storageAccountName &&
 az lock list --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --parent ""
 ```
 
-In het volgende script wordt een vergrendeling van een opslagaccount verwijderd:
+Met het volgende script wordt een vergren deling van een opslag account verwijderd:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -132,15 +132,15 @@ Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](loc
 
 ## <a name="tag-resources"></a>Resources taggen
 
-Tagging helpt bij het logisch organiseren van uw resourcegroep en resources. Zie Tags [gebruiken om uw Azure-bronnen te ordenen](tag-resources.md#azure-cli)voor meer informatie.
+Door labels kunt u de resource groep en resources logisch ordenen. Zie [Tags gebruiken om uw Azure-resources te organiseren](tag-resources.md#azure-cli)voor meer informatie.
 
-## <a name="manage-access-to-resources"></a>Toegang tot bronnen beheren
+## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
 
-[RBAC (Role-based access control)](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot bronnen in Azure beheert. Zie [Toegang beheren met RBAC en Azure CLI](../../role-based-access-control/role-assignments-cli.md)voor meer informatie.
+[Op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md) is een manier om de toegang tot resources in azure te beheren. Zie [toegang beheren met RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Overzicht azure [resource manager](overview.md)voor azure resource manager.
-- Zie [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen](../templates/template-syntax.md)voor de syntaxis van de resourcemanagersjabloon .
-- Zie de [stapsgewijze zelfstudies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
-- Zie [sjabloonverwijzing](/azure/templates/)voor het weergeven van de sjabloonschema's van Azure Resource Manager .
+- Zie [overzicht van Azure Resource Manager](overview.md)voor meer informatie Azure Resource Manager.
+- Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](../templates/template-syntax.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
+- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.

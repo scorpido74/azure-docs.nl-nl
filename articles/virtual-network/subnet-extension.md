@@ -1,6 +1,6 @@
 ---
-title: Subnetextensie in Azure | Microsoft Documenten
-description: Meer informatie over subnetextensie in Azure.
+title: Subnet-extensie in azure | Microsoft Docs
+description: Meer informatie over de subnet-extensie in Azure.
 services: virtual-network
 documentationcenter: na
 author: anupam-p
@@ -16,41 +16,41 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
 ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73587509"
 ---
 # <a name="subnet-extension"></a>Subnetextensie
-Workloadmigratie naar de public cloud vereist een zorgvuldige planning en coördinatie. Een van de belangrijkste overwegingen kan de mogelijkheid zijn om uw IP-adressen te behouden. Dat kan vooral belangrijk zijn als uw toepassingen ip-adresafhankelijkheid hebben of als u nalevingsvereisten hebt om specifieke IP-adressen te gebruiken. Azure Virtual Network lost dit probleem voor u op door u vnet en subnetten te laten maken met behulp van een IP-adresbereik naar keuze.
+De migratie van werk belastingen naar de open bare Cloud vereist een zorgvuldige planning en coördinatie. Een van de belangrijkste overwegingen is de mogelijkheid om uw IP-adressen te bewaren. Dit kan bijzonder belang rijk zijn als uw toepassingen afhankelijk zijn van IP-adressen of als u nalevings vereisten hebt voor het gebruik van specifieke IP-adressen. Met Azure Virtual Network wordt dit probleem voor u opgelost, zodat u VNet en subnetten kunt maken met behulp van een IP-adres bereik van uw keuze.
 
-Migraties kunnen een beetje uitdagend worden wanneer de bovenstaande vereiste is gekoppeld aan een extra vereiste om sommige toepassingen on-premises te houden. In een situatie moet u de toepassingen splitsen tussen Azure en on-premises, zonder de IP-adressen aan weerszijden opnieuw te nummeren. Bovendien moet u toestaan dat de toepassingen communiceren alsof ze zich in hetzelfde netwerk bevinden.
+Migraties kunnen een beetje lastig zijn wanneer de bovenstaande vereiste is gekoppeld aan een extra vereiste om een aantal toepassingen on-premises te hand haven. In een situatie moet u de toepassingen tussen Azure en on-premises splitsen zonder de IP-adressen aan beide zijden opnieuw te nummeren. Daarnaast moet u toestaan dat de toepassingen communiceren alsof ze zich in hetzelfde netwerk bevinden.
 
-Een oplossing voor het bovenstaande probleem is subnet extensie. Door een netwerk uit te breiden, kunnen toepassingen over hetzelfde uitzenddomein praten wanneer ze op verschillende fysieke locaties bestaan, waardoor de noodzaak om uw netwerktopologie opnieuw te ontwerpen wordt voorkomen. 
+Een oplossing voor het bovenstaande probleem is een subnet-extensie. Door een netwerk uit te breiden, kunnen toepassingen via hetzelfde broadcast-domein communiceren wanneer ze op verschillende fysieke locaties bestaan, waardoor het niet nodig is om de netwerk topologie opnieuw te ontwerpen. 
 
-Hoewel het uitbreiden van uw netwerk in het algemeen geen goede praktijk is, kunnen onderstaande use cases het noodzakelijk maken.
+Het uitbreiden van uw netwerk is niet een goede gewoonte in het algemeen, onder use-cases kan het nodig zijn.
 
-- **Gefaseerde migratie**: Het meest voorkomende scenario is dat u uw migratie wilt faseren. U wilt eerst een paar toepassingen en na verloop van tijd de rest van de toepassingen migreren naar Azure.
-- **Latentie**: Lage latentievereisten kunnen een andere reden zijn om sommige toepassingen on-premises te houden om ervoor te zorgen dat ze zo dicht mogelijk bij uw datacenter staan.
-- **Naleving:** Een andere use case is dat u mogelijk nalevingsvereisten hebt om sommige van uw toepassingen on-premises te houden.
+- **Gefaseerde migratie**: het meest voorkomende scenario is dat u uw migratie wilt faseren. U wilt eerst een aantal toepassingen maken en de rest van de toepassingen naar Azure migreren.
+- **Latentie**: vereisten voor lage latentie kunnen een andere reden zijn voor u om sommige toepassingen on-premises te houden om ervoor te zorgen dat ze zo dicht mogelijk bij uw Data Center zijn.
+- **Naleving**: een ander gebruiks voorbeeld is dat u nalevings vereisten kunt hebben om een aantal van uw toepassingen on-premises te houden.
  
 > [!NOTE] 
-> U moet uw subnetten niet uitbreiden, tenzij het nodig is. In de gevallen waarin u uw subnetten uitbreidt, moet u proberen er een tussenstap van te maken. Probeer na verloop van tijd toepassingen opnieuw te nummeren in uw on-premises netwerk en migreer ze naar Azure.
+> U moet uw subnetten alleen uitbreiden als dat nodig is. In de gevallen waarin u de subnetten uitbreidt, moet u proberen om het een tussen stap te maken. Met tijd kunt u de toepassingen in uw on-premises netwerk opnieuw nummeren en deze migreren naar Azure.
 
-In het volgende gedeelte bespreken we hoe u uw subnetten uitbreiden naar Azure.
+In de volgende sectie wordt uitgelegd hoe u uw subnets kunt uitbreiden naar Azure.
 
 
 ## <a name="extend-your-subnet-to-azure"></a>Uw subnet uitbreiden naar Azure
- U uw on-premises subnetten uitbreiden naar Azure met behulp van een op laag-3 overlaynetwerkgebaseerde oplossing. De meeste oplossingen maken gebruik van een overlay-technologie zoals VXLAN om het layer-2-netwerk uit te breiden met behulp van een layer-3 overlay-netwerk. Het onderstaande diagram toont een algemene oplossing. In deze oplossing bestaat aan beide zijden hetzelfde subnet, dat wil zeggen Azure en on-premises. 
+ U kunt uw on-premises subnetten uitbreiden naar Azure met behulp van een laag-3-overlay-netwerk oplossing. De meeste oplossingen maken gebruik van een bedekkings technologie zoals VXLAN om het laag-2-netwerk uit te breiden met behulp van een laag-3-overlay-netwerk. In het onderstaande diagram ziet u een algemene oplossing. In deze oplossing bestaat hetzelfde subnet aan beide zijden van Azure en on-premises. 
 
-![Voorbeeld van subnetextensie](./media/subnet-extension/subnet-extension.png)
+![Voor beeld van een subnet-extensie](./media/subnet-extension/subnet-extension.png)
 
-De IP-adressen van het subnet worden toegewezen aan VM's in Azure en on-premises. Zowel Azure als on-premises hebben een NVA ingevoegd in hun netwerken. Wanneer een VM in Azure probeert te praten met een VM in on-premises netwerk, vangt de Azure NVA het pakket op, kapselt het in en stuurt het via VPN/Express Route naar het on-premises netwerk. De on-premises NVA ontvangt het pakket, decapuleert het en stuurt het door naar de beoogde ontvanger in haar netwerk. Het retourverkeer maakt gebruik van een vergelijkbaar pad en logica.
+De IP-adressen van het subnet worden toegewezen aan Vm's op Azure en on-premises. Azure en on-premises hebben een NVA in hun netwerken. Wanneer een virtuele machine in azure probeert te communiceren met een virtuele machine in een on-premises netwerk, wordt het pakket door Azure NVA vastgelegd, ingekapseld en verzonden via VPN/Express-route naar het on-premises netwerk. De on-premises NVA ontvangt het pakket decapsulates het en stuurt het door naar de bedoelde ontvanger in het netwerk. Het retour verkeer maakt gebruik van een vergelijk bare pad en logica.
 
-In het bovenstaande voorbeeld communiceren en leren de Azure NVA en de on-premises NVA over IP-adressen achter elkaar. Complexere netwerken kunnen ook een kaartservice hebben, die de mapping tussen de NVA's en de IP-adressen erachter in kaart brengt. Wanneer een NVA een pakket ontvangt, wordt de kaartservice gevraagd om het adres van de NVA te achterhalen waarop het doel-IP-adres achter zich ligt.
+In het bovenstaande voor beeld communiceren de Azure-NVA en de on-premises NVA en meer informatie over IP-adressen achter elkaar. Complexere netwerken kunnen ook een toewijzings service hebben, die de toewijzing bewaart tussen de Nva's en de IP-adressen die zich achter elkaar bevinden. Wanneer een NVA een pakket ontvangt, wordt een query uitgevoerd op de toewijzings service om het adres te vinden van de NVA die het bestemmings-IP-adres heeft.
 
-In het volgende gedeelte vindt u meer informatie over subnetextensieoplossingen die we op Azure hebben getest.
+In de volgende sectie vindt u informatie over de oplossingen voor subnet uitbreidingen die we hebben getest op Azure.
 
 ## <a name="next-steps"></a>Volgende stappen 
-[Breid uw subnet uit naar Azure met behulp van leveranciersoplossingen.](https://github.com/microsoft/Azure-LISP)
+[Breid uw subnet uit naar Azure met behulp van oplossingen van leveranciers.](https://github.com/microsoft/Azure-LISP)

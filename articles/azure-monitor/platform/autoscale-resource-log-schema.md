@@ -1,26 +1,26 @@
 ---
-title: Azure-schema voor logboekgebeurtenissen automatisch schalen
-description: Opmaak van logboeken voor het bewaken en oplossen van automatische schaalacties
+title: Schema voor logboek gebeurtenissen van Azure automatisch schalen
+description: Indeling van Logboeken voor het bewaken en oplossen van problemen met automatisch schalen
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75395950"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Schema voor automatisch schalen van Azure Monitor-acties
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitor resource logboek schema voor acties voor automatisch schalen
 
-Hieronder volgen de algemene indelingen voor bronlogboeken voor automatisch schalen met voorbeeldgegevens die zijn opgenomen. Niet alle onderstaande voorbeelden zijn goed gevormd JSON omdat ze meerdere waarden kunnen bevatten die geldig kunnen zijn voor een bepaald veld. 
+Hieronder vindt u de algemene notaties voor het automatisch schalen van resource logboeken, inclusief voorbeeld gegevens. Niet alle onderstaande voor beelden zijn juist gevormd door JSON omdat ze mogelijk meerdere waarden bevatten die geldig kunnen zijn voor een bepaald veld. 
 
-Gebruik dit soort gebeurtenissen om problemen op te lossen die u mogelijk ondervindt bij autoscale. Zie [Problemen met automatisch schalen oplossen](autoscale-troubleshoot.md)voor meer informatie.
+Gebruik gebeurtenissen van dit type om problemen op te lossen die u mogelijk ondervindt met automatisch schalen. Zie problemen [met automatisch schalen oplossen](autoscale-troubleshoot.md)voor meer informatie.
 
 
-## <a name="profile-evaluation"></a>Profielevaluatie
+## <a name="profile-evaluation"></a>Profiel evaluatie
 
-Opgenomen wanneer autoscale eerst naar een autoscale-profiel kijkt
+Vastgelegd wanneer automatisch schalen de eerste keer controleert op een profiel voor automatisch schalen
 
 ```json
 {
@@ -37,9 +37,9 @@ Opgenomen wanneer autoscale eerst naar een autoscale-profiel kijkt
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>Profiel cooldown evaluatie
+## <a name="profile-cooldown-evaluation"></a>Evaluatie van profiel cooldown
 
-Opgenomen wanneer autoscale evalueert als het niet moet doen een schaal als gevolg van een cool down periode. 
+Deze waarde wordt vastgelegd wanneer automatisch schalen evalueert als het niet mogelijk is om een schaal te doen wegens een koele periode. 
 
 ```json
 {
@@ -60,9 +60,9 @@ Opgenomen wanneer autoscale evalueert als het niet moet doen een schaal als gevo
 }
 ```
 
-## <a name="rule-evaluation"></a>Regelevaluatie
+## <a name="rule-evaluation"></a>Regel evaluatie
 
-Opgenomen wanneer autoscale voor het eerst begint met het evalueren van een bepaalde schaalregel. 
+Wordt vastgelegd wanneer automatisch schalen eerst een bepaalde schaal regel begint te evalueren. 
 
 ```json
 {
@@ -89,7 +89,7 @@ Opgenomen wanneer autoscale voor het eerst begint met het evalueren van een bepa
 
 ## <a name="metric-evaluation"></a>Metrische evaluatie
 
-Opgenomen wanneer autoscale de statistiek evalueerde die wordt gebruikt om een schaalactie te activeren. 
+Vastgelegd wanneer automatisch schalen de metriek heeft geëvalueerd die wordt gebruikt om een schaal actie te activeren. 
 
 ```json
 {
@@ -111,9 +111,9 @@ Opgenomen wanneer autoscale de statistiek evalueerde die wordt gebruikt om een s
 }
 ```
 
-## <a name="instance-count-evaluation"></a>Evaluatie van het aantal instance's
+## <a name="instance-count-evaluation"></a>Evaluatie van aantal exemplaren
 
-Opgenomen wanneer autoscale evalueert het aantal exemplaren dat al wordt uitgevoerd in voorbereiding voor de beslissing of het moet meer beginnen, afsluiten sommige, of niets doen. 
+Vastgelegd wanneer automatisch schalen het aantal exemplaren evalueert dat al in de voor bereiding wordt uitgevoerd om te bepalen of het meer moet beginnen, afsluiten of niets doet. 
 
 ```json
 {
@@ -132,9 +132,9 @@ Opgenomen wanneer autoscale evalueert het aantal exemplaren dat al wordt uitgevo
 }
 ```
 
-## <a name="scale-action-evaluation"></a>Evaluatie van schaalacties
+## <a name="scale-action-evaluation"></a>Beoordeling van schaal acties
 
-Geregistreerd wanneer autoscale de evaluatie start als er een schaalactie moet plaatsvinden. 
+Wordt vastgelegd wanneer automatisch schalen de evaluatie start als een schaal actie moet worden uitgevoerd. 
 
 ```json
 {
@@ -152,9 +152,9 @@ Geregistreerd wanneer autoscale de evaluatie start als er een schaalactie moet p
 }
 ```
 
-## <a name="instance-update-evaluation"></a>Evaluatie van de evaluatie van de instantie-update
+## <a name="instance-update-evaluation"></a>Evaluatie van exemplaar-updates
 
-Opgenomen wanneer automatisch schalen het aantal compute-exemplaren bijwerkt dat wordt uitgevoerd, omhoog of omlaag.
+Vastgelegd wanneer automatisch schalen het aantal Compute-exemplaren bijwerkt dat wordt uitgevoerd, hetzij omhoog of omlaag.
 
 ```json
 {
@@ -173,9 +173,9 @@ Opgenomen wanneer automatisch schalen het aantal compute-exemplaren bijwerkt dat
 }
 ```
 
-## <a name="scale-action"></a>Schaalactie
+## <a name="scale-action"></a>Schaal actie
 
-Opgenomen wanneer autoscale een schaalactie initieert, omhoog of omlaag. 
+Vastgelegd wanneer automatisch schalen een schaal actie initieert, hetzij omhoog of omlaag. 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ Opgenomen wanneer autoscale een schaalactie initieert, omhoog of omlaag.
 }
 ```
 
-## <a name="scale-action-tracking"></a>Actietracking schalen
+## <a name="scale-action-tracking"></a>Actie voor het bijhouden van schalen
 
-Opgenomen met verschillende intervallen van een instantieschaalactie.
+Vastgelegd op verschillende intervallen van een instantie schaal actie.
 
 ```json
 {

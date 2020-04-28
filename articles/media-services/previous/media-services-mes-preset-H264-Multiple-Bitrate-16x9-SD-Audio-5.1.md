@@ -1,6 +1,6 @@
 ---
-title: H264 Multiple Bitrate 16x9 SD Audio 5.1 | Microsoft Documenten
-description: Het onderwerp geeft een overzicht van de **H264 Multiple Bitrate 16x9 SD Audio 5.1** taak preset.
+title: H264 meerdere bitrate 16x9 SD-Audio 5,1 | Microsoft Docs
+description: In het onderwerp wordt een overzicht gegeven van de **H264 multiple bitrate 16X9 SD Audio 5,1** -taak vooraf.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 55cca9b2f01902727c540173a88626599029534d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129541"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd-audio-51"></a>H264 Multiple Bitrate 16x9 SD Audio 5.1
-`Media Encoder Standard`definieert een set coderingsvoorinstellingen die u gebruiken bij het maken van coderingstaken. U een `preset name` a gebruiken om aan te geven in welke indeling u uw mediabestand wilt coderen. U ook uw eigen JSON- of XML-gebaseerde voorinstellingen maken (met UTF-8- of UTF-16-codering. U zou dan de aangepaste voorinstelling doorgeven aan de encoder. Zie `Media Encoder Standard` [Taakvoorinstellingen voor Media Encoder Standard voor](media-services-mes-presets-overview.md)de lijst met alle vooraf ingestelde namen die door deze encoder worden ondersteund.  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit `H264 Multiple Bitrate 16x9 SD Audio 5.1` onderwerp wordt de voorinstelling in XML- en JSON-indeling weergegeven.  
+ In dit onderwerp worden `H264 Multiple Bitrate 16x9 SD Audio 5.1` de voor instellingen in de XML-en JSON-indeling weer gegeven.  
   
- Deze preset produceert een set van 5 GOP-uitgelijnde MP4-bestanden, variërend van 1900 kbps tot 400 kbps en AAC 5.1-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling rate, etc. van deze preset, onderzoekt u de XML of JSON die hieronder is gedefinieerd. Zie het [schema Media Encoder Standard](media-services-mes-schema.md)voor uitleg over wat elk element betekent en de geldige waarden voor elk element.  
+ Deze standaard instelling produceert een set van vijf GOP terug-afgevulde MP4-bestanden, variërend van 1900 kbps tot 400 kbps en AAC 5,1-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het [Media Encoder Standard schema](media-services-mes-schema.md)voor uitleg over wat elk element betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  Controleer bij `Width` het `Height` wijzigen van de waarden en waarden tussen lagen of de beeldverhouding consistent blijft. Bijvoorbeeld: 1920x1080, 1280x720, 1080x576, 640x360. U moet geen mix van beeldverhoudingen gebruiken, zoals: 1280x720, 720x480, 640x360.  
+>  Zorg ervoor dat `Width` de `Height` hoogte-breedte verhouding consistent blijft wanneer u de-en-waarden in lagen wijzigt. Bijvoorbeeld: 1920, 1280x720, 1080x576, 640 x 360. Gebruik geen combi natie van hoogte-breedte verhoudingen, zoals: 1280x720, 720x480, 640 x 360.  
   
  XML  
   

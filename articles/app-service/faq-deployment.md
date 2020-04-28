@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over implementatie - Azure App-service | Microsoft Documenten
-description: Antwoorden op veelgestelde vragen over implementatie voor de Web Apps-functie van Azure App Service.
+title: Veelgestelde vragen over implementatie-Azure App Service | Microsoft Docs
+description: Krijg antwoorden op veelgestelde vragen over implementatie voor de functie Web Apps van Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -10,87 +10,87 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74671689"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over implementaties voor web-apps in azure
 
-In dit artikel vindt u antwoorden op veelgestelde vragen (veelgestelde vragen) over implementatieproblemen voor de [Web Apps-functie van Azure App Service.](https://azure.microsoft.com/services/app-service/web/)
+In dit artikel vindt u antwoorden op veelgestelde vragen over implementatie problemen voor de [Web apps functie van Azure app service](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>Ik ben net begonnen met App Service web apps. Hoe publiceer ik mijn code?
+## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>Ik ben gewoon aan de slag met App Service web-apps. Hoe kan ik mijn code publiceren?
 
 Hier volgen enkele opties voor het publiceren van uw web-app-code:
 
-*   Implementeren met Visual Studio. Als u de Visual Studio-oplossing hebt, klikt u met de rechtermuisknop op het project voor webtoepassingen en selecteert u **Publiceren**.
-*   Implementeren met behulp van een FTP-client. Download in de Azure-portal het publicatieprofiel voor de web-app waarop u uw code wilt implementeren. Upload de bestanden vervolgens naar \site\wwwroot met dezelfde FTP-referenties voor publicatieprofielen.
+*   Implementeren met behulp van Visual Studio. Als u de Visual Studio-oplossing hebt, klikt u met de rechter muisknop op het Project Web Application en selecteert u **publiceren**.
+*   Implementeren met behulp van een FTP-client. Down load in het Azure Portal het publicatie profiel voor de web-app waarop u de code wilt implementeren. Upload de bestanden vervolgens naar \site\wwwroot door dezelfde FTP-referenties voor het publicatie profiel te gebruiken.
 
-Zie [Uw app implementeren naar app-service voor](deploy-local-git.md)meer informatie .
+Zie [uw app implementeren voor app service](deploy-local-git.md)voor meer informatie.
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Ik zie een foutmelding wanneer ik probeer te implementeren vanuit Visual Studio. Hoe los ik deze fout op?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Er wordt een fout bericht weer gegeven wanneer ik probeer te implementeren vanuit Visual Studio. Hoe kan ik deze fout op te lossen?
 
-Als u het volgende bericht ziet, gebruikt u mogelijk een oudere versie van de SDK: 'Fout tijdens implementatie voor resource 'YourResourceName' in resourcegroep 'YourResourceGroup': MissingRegistrationForLocation: Het abonnement is niet geregistreerd voor de resourcetype 'componenten' op de locatie 'Central US'. Schrijf je opnieuw in voor deze provider om toegang te hebben tot deze locatie." 
+Als u het volgende bericht ziet, gebruikt u mogelijk een oudere versie van de SDK: ' fout tijdens de implementatie van de resource ' YourResourceName ' in de resource groep ' YourResourceGroup ': MissingRegistrationForLocation: het abonnement is niet geregistreerd voor het resource type ' componenten ' in de locatie ' Central US '. Meld u opnieuw aan voor deze provider om toegang te krijgen tot deze locatie. " 
 
-Als u deze fout wilt oplossen, u upgraden naar de [nieuwste SDK.](https://azure.microsoft.com/downloads/) Als u dit bericht ziet en u beschikt over de nieuwste SDK, dient u een ondersteuningsverzoek in.
+Als u deze fout wilt oplossen, moet u een upgrade uitvoeren naar de [nieuwste SDK](https://azure.microsoft.com/downloads/). Als u dit bericht ziet en u de nieuwste SDK hebt, dient u een ondersteunings aanvraag in.
 
-## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Hoe implementeer ik een ASP.NET toepassing van Visual Studio naar App Service?
+## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Hoe kan ik een ASP.NET-toepassing implementeren vanuit Visual Studio naar App Service?
 <a id="deployasp"></a>
 
-In de zelfstudie [Maak je in vijf minuten je eerste ASP.NET web-app in Azure,](app-service-web-get-started-dotnet.md) zie je hoe je een ASP.NET-webtoepassing implementeert naar een web-app in App Service met Behulp van Visual Studio.
+In de zelf studie [maakt u binnen vijf minuten uw eerste ASP.net-Web-app in azure](app-service-web-get-started-dotnet.md) . hierin wordt beschreven hoe u een ASP.NET-webtoepassing implementeert in een web-app in app service met behulp van Visual Studio.
 
-## <a name="what-are-the-different-types-of-deployment-credentials"></a>Wat zijn de verschillende typen implementatiereferenties?
+## <a name="what-are-the-different-types-of-deployment-credentials"></a>Wat zijn de verschillende typen implementatie referenties?
 
-App Service ondersteunt twee typen referenties voor lokale Git-implementatie en FTP/S-implementatie. Zie [Implementatiereferenties configureren voor App Service](deploy-configure-credentials.md)voor meer informatie over het configureren van implementatiereferenties.
+App Service ondersteunt twee typen referenties voor lokale Git-implementatie en FTP/S-implementatie. Zie [implementatie referenties voor app service configureren voor](deploy-configure-credentials.md)meer informatie over het configureren van implementatie referenties.
 
-## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Wat is de bestands- of directorystructuur van mijn App Service-webapp?
+## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Wat is de bestands-of mapstructuur van mijn App Service web-app?
 
-Zie [Bestandsstructuur in Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)voor informatie over de bestandsstructuur van uw App Service-app.
+Zie [bestands structuur in azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)voor informatie over de bestands structuur van uw app service-app.
 
-## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Hoe los ik 'FTP-fout 550 - Er is niet genoeg ruimte op de schijf' op als ik mijn bestanden ftp probeer te ftp?
+## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Hoe kan ik ' FTP-fout 550: er is onvoldoende ruimte op de schijf ' wanneer ik mijn bestanden probeer te herstellen?
 
-Als u dit bericht ziet, loopt u waarschijnlijk tegen een schijfquotum aan in het serviceplan voor uw web-app. Mogelijk moet u opschalen naar een hogere servicelaag op basis van uw schijfruimtebehoeften. Zie [App Service-prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor meer informatie over prijsplannen en resourcelimieten.
+Als dit bericht wordt weer gegeven, is het waarschijnlijk dat u in het service abonnement voor uw web-app werkt met een schijf quotum. Mogelijk moet u omhoog schalen naar een hogere servicelaag op basis van de behoeften van uw schijf ruimte. Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor meer informatie over prijzen plannen en resource limieten.
 
-## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hoe stel ik continue implementatie in voor mijn App Service-webapp?
+## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hoe kan ik doorlopende implementatie instellen voor mijn App Service web-app?
 
-U continue implementatie instellen vanuit verschillende bronnen, waaronder Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox en andere Git-repositories. Deze opties zijn beschikbaar in de portal. [Continue implementatie naar App Service](deploy-continuous-deployment.md) is een handige zelfstudie die uitlegt hoe u continue implementatie instellen.
+U kunt continue implementatie van verschillende bronnen instellen, waaronder Azure DevOps, OneDrive, GitHub, bitbucket, Dropbox en andere Git-opslag plaatsen. Deze opties zijn beschikbaar in de portal. [Continue implementatie naar app service](deploy-continuous-deployment.md) is een handige zelf studie waarin wordt uitgelegd hoe u doorlopende implementatie kunt instellen.
 
-## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hoe los ik problemen op met continue implementatie van GitHub en Bitbucket?
+## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hoe kan ik problemen met continue implementatie van GitHub en bitbucket oplossen?
 
-Zie [Continue implementatie](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)onderzoeken voor hulp bij het onderzoeken van problemen met continue implementatie vanuit GitHub of Bitbucket.
+Zie [continue implementatie onderzoeken](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)voor informatie over het onderzoeken van problemen met continue implementatie vanuit github of bitbucket.
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Ik kan geen FTP naar mijn site en mijn code publiceren. Hoe los ik dit probleem op?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Ik kan geen FTP naar mijn site maken en mijn code publiceren. Hoe kan ik dit probleem oplossen?
 
-Ga als een besluit over FTP-problemen:
+FTP-problemen oplossen:
 
-1. Controleer of u de juiste hostnaam en -referenties invoert. Zie [Implementatiereferenties](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)voor gedetailleerde informatie over verschillende typen referenties en hoe deze te gebruiken.
-2. Controleer of de FTP-poorten niet worden geblokkeerd door een firewall. De poorten moeten de volgende instellingen hebben:
+1. Controleer of u de juiste hostnaam en referenties hebt ingevoerd. Zie [implementatie referenties](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)voor meer informatie over de verschillende typen referenties en hoe u deze kunt gebruiken.
+2. Controleer of de FTP-poorten niet zijn geblokkeerd door een firewall. De poorten moeten de volgende instellingen hebben:
     * Verbindingspoort voor FTP-besturingselement: 21
-    * FTP-gegevensverbindingspoort: 989, 10001-10300
+    * FTP-gegevens verbindings poort: 989, 10001-10300
 
-## <a name="how-do-i-publish-my-code-to-app-service"></a>Hoe publiceer ik mijn code naar App Service?
+## <a name="how-do-i-publish-my-code-to-app-service"></a>Hoe kan ik mijn code naar App Service publiceren?
 
-De Azure Quickstart is ontworpen om u te helpen uw app te implementeren met behulp van de implementatiestack en -methode van uw keuze. Als u de Quickstart wilt gebruiken, gaat u in de Azure-portal naar uw app-service onder **Implementatie**, selecteert u **Snelstart**.
+De Snelstartgids van Azure is ontworpen om u te helpen uw app te implementeren met behulp van de implementatie stack en de methode van uw keuze. Als u de Snelstartgids wilt gebruiken, gaat u in het Azure Portal naar uw app service onder **implementatie**en selecteert u **Quick**start.
 
-## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Waarom wordt mijn app soms opnieuw opgestart na implementatie naar App Service?
+## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Waarom wordt mijn app soms opnieuw opgestart na de implementatie naar App Service?
 
-Zie Problemen met implementatie [versus runtime](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")voor meer informatie over de omstandigheden waaronder een implementatie van een toepassing kan leiden tot een herstart. Zoals in het artikel wordt beschreven, implementeert App Service bestanden naar de map wwwroot. Het nooit direct opnieuw start uw app.
+Zie [implementatie versus runtime](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")voor meer informatie over de omstandigheden waaronder een toepassings implementatie kan resulteren in een herstart. Zoals beschreven in het artikel App Service implementeert bestanden in de map wwwroot. De app wordt nooit direct opnieuw opgestart.
 
 ## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Hoe kan ik Azure DevOps-code integreren met App Service?
 
-U hebt twee opties voor het gebruik van continue implementatie met Azure DevOps:
+U hebt twee opties voor het gebruik van doorlopende implementatie met Azure DevOps:
 
-*   Gebruik een Git-project. Maak verbinding via App Service via het Implementatiecentrum.
-*   Gebruik een Team Foundation Version Control (TFVC) project. Implementeren met behulp van de buildagent voor App Service.
+*   Gebruik een Git-project. Maak verbinding via App Service met behulp van het implementatie centrum.
+*   Gebruik een team Foundation Version Control (TFVC)-project. Implementeren met behulp van de build-agent voor App Service.
 
-Continue code-implementatie voor beide opties is afhankelijk van bestaande ontwikkelaarsworkflows en incheckprocedures. Raadpleeg voor meer informatie de volgende artikelen: 
+De implementatie van doorlopende code voor beide opties is afhankelijk van bestaande ontwikkel werk stromen en check-in-procedures. Raadpleeg voor meer informatie de volgende artikelen: 
 
 *   [Continue implementatie van uw app implementeren op een Azure-website](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [Een Azure DevOps-organisatie instellen zodat deze kan worden geïmplementeerd in een web-app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+*   [Stel een Azure DevOps-organisatie in zodat deze kan worden geïmplementeerd in een web-app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
-## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Hoe gebruik ik FTP of FTPS om mijn app te implementeren in De App Service?
+## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Hoe kan ik FTP of FTPS gebruiken om mijn app op App Service te implementeren?
 
-Zie [Uw app implementeren naar App-service implementeren met FTP/S](deploy-ftp.md)voor informatie over het gebruik van FTP of FTPS om uw web-app te implementeren in App-service.
+Voor informatie over het gebruik van FTP of FTPS om uw web-app te implementeren op App Service, raadpleegt u [uw app implementeren op app service met behulp van FTP/S](deploy-ftp.md).

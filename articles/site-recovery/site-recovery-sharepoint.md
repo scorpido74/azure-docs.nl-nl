@@ -1,6 +1,6 @@
 ---
-title: Herstel na noodgevallen voor een SharePoint-app met meerdere lagen met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u noodherstel instelt voor een SharePoint-toepassing met meerdere lagen met azure siteherstelmogelijkheden.
+title: Herstel na nood geval voor een share point-app met meerdere lagen met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor een share point-toepassing met meerdere lagen met behulp van Azure Site Recovery mogelijkheden.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
@@ -8,196 +8,196 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74706365"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Noodherstel instellen voor een SharePoint-toepassing met meerdere lagen voor noodherstel met Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
-In dit artikel wordt in detail beschreven hoe u een SharePoint-toepassing beveiligen met [Azure Site Recovery](site-recovery-overview.md).
+In dit artikel wordt gedetailleerde informatie gegeven over het beveiligen van een share point-toepassing met behulp van [Azure site Recovery](site-recovery-overview.md).
 
 
 ## <a name="overview"></a>Overzicht
 
-Microsoft SharePoint is een krachtige toepassing waarmee een groep of afdeling informatie kan organiseren, samenwerken en delen. SharePoint kan intranetportals, document- en bestandsbeheer, samenwerking, sociale netwerken, extranetten, websites, enterprise search en business intelligence bieden. Het heeft ook mogelijkheden voor systeemintegratie, procesintegratie en workflowautomatisering. Doorgaans beschouwen organisaties het als een Tier-1-toepassing die gevoelig is voor downtime en gegevensverlies.
+Micro soft share point is een krachtige toepassing die u kan helpen bij het organiseren, samen werken en delen van informatie. Share point biedt intranet portals, document-en bestands beheer, samen werking, sociale netwerken, extra netten, websites, Enter prise Search en business intelligence. Het biedt ook systeem integratie, proces integratie en mogelijkheden voor het automatiseren van werk stromen. Doorgaans beschouwen organisaties IT als een laag-1-toepassing gevoelig voor downtime en gegevens verlies.
 
-Vandaag de dag biedt Microsoft SharePoint geen out-of-the-box disaster recovery-mogelijkheden. Ongeacht het type en de omvang van een ramp, herstel omvat het gebruik van een stand-by datacenter dat u herstellen van de boerderij naar. Stand-by datacenters zijn vereist voor scenario's waarin lokale redundante systemen en back-ups niet kunnen herstellen van de storing in het primaire datacenter.
+Micro soft share point biedt vandaag geen mogelijkheden voor herstel na nood gevallen. Afhankelijk van het type en de schaal van een nood geval is het gebruik van een stand-by Data Center dat u de farm kunt herstellen. Stand-by data centers zijn vereist voor scenario's waarbij lokale redundante systemen en back-ups niet kunnen worden hersteld van de storing in het primaire Data Center.
 
-Een goede oplossing voor noodherstel moet het modelleren van herstelplannen rond de complexe toepassingsarchitecturen zoals SharePoint mogelijk maken. Het moet ook de mogelijkheid hebben om aangepaste stappen toe te voegen om toepassingstoewijzingen tussen verschillende lagen te verwerken en dus een failover met één klik te bieden met een lagere RTO in het geval van een ramp.
+Een goede oplossing voor herstel na nood gevallen moet het mogelijk maken dat herstel plannen worden gemodelleerd rond de complexe toepassings architecturen, zoals share point. Het moet ook de mogelijkheid hebben om aangepaste stappen toe te voegen voor het afhandelen van toepassings toewijzingen tussen verschillende lagen, waardoor een failover met één klik kan worden uitgevoerd met een lager RTO in het geval van een ramp.
 
-In dit artikel wordt in detail beschreven hoe u een SharePoint-toepassing beveiligen met [Azure Site Recovery](site-recovery-overview.md). In dit artikel vindt u best practices voor het repliceren van een SharePoint-toepassing met drie lagen naar Azure, hoe u een noodhersteloefening doen en hoe u de toepassing naar Azure mislukken.
+In dit artikel wordt gedetailleerde informatie gegeven over het beveiligen van een share point-toepassing met behulp van [Azure site Recovery](site-recovery-overview.md). In dit artikel worden aanbevolen procedures beschreven voor het repliceren van een share point-toepassing met drie lagen naar Azure, hoe u een nood herstel analyse kunt uitvoeren en hoe u de toepassing kunt failoveren naar Azure.
 
-U de onderstaande video over het herstellen van een multi-tier toepassing naar Azure bekijken.
+U kunt de onderstaande video bekijken over het herstellen van een toepassing met meerdere lagen naar Azure.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer voordat u begint het volgende:
+Voordat u begint, moet u het volgende weten:
 
 1. [Een virtuele machine repliceren naar Azure](site-recovery-vmware-to-azure.md)
-2. Een [herstelnetwerk ontwerpen](site-recovery-network-design.md)
-3. [Een testfailover naar Azure](site-recovery-test-failover-to-azure.md)
-4. [Een failover naar Azure](site-recovery-failover.md)
-5. Een [domeincontroller repliceren](site-recovery-active-directory.md)
-6. SQL [Server repliceren](site-recovery-sql.md)
+2. [Een herstel netwerk ontwerpen](site-recovery-network-design.md)
+3. [Een testfailover naar Azure uitvoeren](site-recovery-test-failover-to-azure.md)
+4. [Een failover naar Azure uitvoeren](site-recovery-failover.md)
+5. [Een domein controller repliceren](site-recovery-active-directory.md)
+6. [SQL server repliceren](site-recovery-sql.md)
 
-## <a name="sharepoint-architecture"></a>SharePoint-architectuur
+## <a name="sharepoint-architecture"></a>Share point-architectuur
 
-SharePoint kan worden geïmplementeerd op een of meer servers met gelaagde topologieën en serverrollen om een farmontwerp te implementeren dat voldoet aan specifieke doelen en doelstellingen. Een typische grote SharePoint-serverfarm met hoge vraag die een groot aantal gelijktijdige gebruikers ondersteunt en een groot aantal inhoudsitems servicegroepering gebruiken als onderdeel van hun schaalbaarheidsstrategie. Deze aanpak omvat het uitvoeren van services op dedicated servers, het groeperen van deze services en vervolgens het schalen van de servers als een groep. De volgende topologie illustreert de service- en servergroepering voor een SharePoint-serverfarm met drie lagen. Raadpleeg SharePoint-documentatie en productlijnarchitecturen voor gedetailleerde richtlijnen over verschillende SharePoint-topologieën. Meer informatie over de implementatie van SharePoint 2013 vindt u in [dit document.](https://technet.microsoft.com/library/cc303422.aspx)
+Share point kan worden geïmplementeerd op een of meer servers met behulp van gelaagde topologieën en Server functies voor het implementeren van een farm ontwerp dat voldoet aan specifieke doel stellingen en doel stellingen. Een typische share Point-server farm met hoge vraag die ondersteuning biedt voor een groot aantal gelijktijdige gebruikers en een groot aantal inhouds items service groeperingen gebruiken als onderdeel van hun schaalbaarheids strategie. Deze benadering omvat het uitvoeren van services op speciale servers, het groeperen van deze services en het schalen van de servers als groep. De volgende topologie illustreert de groepering van services en servers voor een share Point-server farm met drie lagen. Raadpleeg de documentatie van share point en product lijn architecturen voor gedetailleerde richt lijnen voor verschillende share point-topologieën. In [dit document](https://technet.microsoft.com/library/cc303422.aspx)vindt u meer informatie over de implementatie van share point 2013.
 
 
 
-![Implementatiepatroon 1](./media/site-recovery-sharepoint/sharepointarch.png)
+![Implementatie patroon 1](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
 ## <a name="site-recovery-support"></a>Ondersteuning voor Site Recovery
 
-Site recovery is applicatie-agnostisch en moet werken met elke versie van SharePoint die op een ondersteunde machine wordt uitgevoerd. Voor het maken van dit artikel zijn virtuele VMware-machines met Windows Server 2012 R2 Enterprise gebruikt. Er zijn SharePoint 2013 Enterprise edition en SQL server 2014 Enterprise edition gebruikt.
+Site Recovery is neutraal van toepassingen en moet werken met elke versie van share point die wordt uitgevoerd op een ondersteunde computer. Voor het maken van dit artikel zijn virtuele VMware-machines met Windows Server 2012 R2 Enter prise gebruikt. Share point 2013 Enter prise Edition en SQL Server 2014 Enter prise Edition zijn gebruikt.
 
 ### <a name="source-and-target"></a>Bron en doel
 
 **Scenario** | **Op een secundaire site** | **Naar Azure**
 --- | --- | ---
 **Hyper-V** | Ja | Ja
-**Vmware** | Ja | Ja
+**VMware** | Ja | Ja
 **Fysieke server** | Ja | Ja
 **Azure** | N.v.t. | Ja
 
 
 ### <a name="things-to-keep-in-mind"></a>Zaken om rekening mee te houden
 
-Als u een gedeeld schijfgebaseerd cluster gebruikt als elke laag in uw toepassing, u de replicatie van siteherstel niet gebruiken om deze virtuele machines te repliceren. U native replicatie gebruiken die door de toepassing wordt geleverd en vervolgens een [herstelplan](site-recovery-create-recovery-plans.md) gebruiken om alle lagen te mislukken.
+Als u een cluster op basis van schijven gebruikt als een wille keurige laag in uw toepassing, kunt u Site Recovery replicatie niet gebruiken om die virtuele machines te repliceren. U kunt systeem eigen replicatie gebruiken die door de toepassing wordt verschaft en vervolgens een [herstel plan](site-recovery-create-recovery-plans.md) gebruiken om alle lagen te failoveren.
 
 ## <a name="replicating-virtual-machines"></a>Virtuele machines repliceren
 
-Volg [deze richtlijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de virtuele machine naar Azure.
+Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de virtuele machine naar Azure.
 
-* Zodra de replicatie is voltooid, moet u naar elke virtuele machine van elke laag gaan en dezelfde beschikbaarheidselecteren in 'Gerepliceerd item > Instellingen > Eigenschappen > Compute en Netwerk'. Als uw weblaag bijvoorbeeld 3 VM's heeft, moet u ervoor zorgen dat alle drie de VM's zijn geconfigureerd om deel uit te maken van dezelfde beschikbaarheiddie is ingesteld in Azure.
+* Nadat de replicatie is voltooid, controleert u of u naar elke virtuele machine van elke laag gaat en selecteert u dezelfde beschikbaarheidsset in het gerepliceerde item > instellingen > eigenschappen > Compute en netwerk. Als uw weblaag bijvoorbeeld drie Vm's heeft, zorgt u ervoor dat alle drie de virtuele machines zijn geconfigureerd om deel te uitmaken van dezelfde beschikbaarheidsset in Azure.
 
-    ![Set beschikbaarheid](./media/site-recovery-sharepoint/select-av-set.png)
+    ![Set-Availability-set](./media/site-recovery-sharepoint/select-av-set.png)
 
-* Raadpleeg Active Directory en DNS beveiligen voor richtlijnen voor het beveiligen van Active Directory [en DNS.](site-recovery-active-directory.md)
+* Raadpleeg voor meer informatie over het beveiligen van Active Directory en DNS het document [Active Directory en DNS beveiligen](site-recovery-active-directory.md) .
 
-* Raadpleeg [SQL Server-document beveiligen](site-recovery-sql.md) voor richtlijnen voor het beveiligen van databaselagen die op SQL-server worden uitgevoerd.
+* Raadpleeg SQL Server-document [beveiligen](site-recovery-sql.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
 
-## <a name="networking-configuration"></a>Netwerkconfiguratie
+## <a name="networking-configuration"></a>Netwerk configuratie
 
-### <a name="network-properties"></a>Netwerkeigenschappen
+### <a name="network-properties"></a>Netwerk eigenschappen
 
-* Configureer voor de VM's van app- en weblagen netwerkinstellingen in Azure-portal, zodat de VM's na een failover aan het juiste DR-netwerk worden gekoppeld.
+* Configureer voor de virtuele machines van de app en de weblaag netwerk instellingen in Azure Portal zodat de Vm's worden gekoppeld aan het juiste DR-netwerk na een failover.
 
     ![Netwerk selecteren](./media/site-recovery-sharepoint/select-network.png)
 
 
-* Als u een statisch IP-adres gebruikt, geeft u het IP op dat de virtuele machine moet gebruiken in het **doel-IP-veld**
+* Als u een statisch IP-adres gebruikt, geeft u het IP-adres op dat u wilt dat de virtuele machine in het **doel-IP-** veld moet worden
 
-    ![Statisch IP instellen](./media/site-recovery-sharepoint/set-static-ip.png)
+    ![Statisch IP-adres instellen](./media/site-recovery-sharepoint/set-static-ip.png)
 
-### <a name="dns-and-traffic-routing"></a>DNS- en trafficrouting
+### <a name="dns-and-traffic-routing"></a>DNS en verkeers routering
 
-Maak voor sites die op internet staan [een Traffic Manager-profiel van het type 'Prioriteit'](../traffic-manager/traffic-manager-create-profile.md) in het Azure-abonnement. Configureer vervolgens uw DNS- en Traffic Manager-profiel op de volgende manier.
+Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type Priority](../traffic-manager/traffic-manager-create-profile.md) in het Azure-abonnement. En configureer uw DNS-en Traffic Manager profiel op de volgende manier.
 
 
-| **Waar** | **Bron** | **Doel**|
+| **Positie** | **Bron** | **Doel**|
 | --- | --- | --- |
-| Openbare DNS | Openbare DNS voor SharePoint-sites <br/><br/> Bijvoorbeeld sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
-| On-premises DNS | sharepointonprem.contoso.com | Openbaar IP op de on-premises boerderij |
+| Openbare DNS | Open bare DNS voor share point-sites <br/><br/> Bijvoorbeeld: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| On-premises DNS | sharepointonprem.contoso.com | Openbaar IP-adres op de on-premises Farm |
 
 
-Maak in het profiel Traffic Manager [de primaire en hersteleindpunten](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Gebruik het externe eindpunt voor on-premises eindpunt en openbaar IP-adres voor Azure-eindpunt. Zorg ervoor dat de prioriteit hoger is ingesteld op on-premises eindpunt.
+Maak in het Traffic Manager profiel [de primaire en herstel eindpunten](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Gebruik het externe eind punt voor het on-premises eind punt en het open bare IP-eind punt voor Azure. Zorg ervoor dat de prioriteit hoger is ingesteld op een on-premises eind punt.
 
-Host een testpagina op een specifieke poort (bijvoorbeeld 800) in de SharePoint-weblaag, zodat Traffic Manager automatisch de failover van beschikbaarheid na failover kan detecteren. Dit is een tijdelijke oplossing voor het geval u geen anonieme verificatie op een van uw SharePoint-sites inschakelen.
+Host een test pagina op een specifieke poort (bijvoorbeeld 800) in de share point-weblaag, zodat de beschik baarheid na failover automatisch door Traffic Manager wordt gedetecteerd. Dit is een tijdelijke oplossing voor het geval u anonieme verificatie niet kunt inschakelen op uw share point-sites.
 
-[Configureer het profiel Traffic Manager](../traffic-manager/traffic-manager-configure-priority-routing-method.md) met de onderstaande instellingen.
+[Configureer het Traffic Manager profiel](../traffic-manager/traffic-manager-configure-priority-routing-method.md) met de onderstaande instellingen.
 
-* Routeringsmethode - 'Prioriteit'
-* DNS time to live (TTL) - '30 seconden'
-* Instellingen voor endpointmonitor - Als u anonieme verificatie inschakelen, u een specifiek eindpunt van de website opgeven. U ook een testpagina op een specifieke poort gebruiken (bijvoorbeeld 800).
+* Routerings methode-' Priority '
+* DNS time to Live (TTL)-' 30 seconden '
+* Instellingen voor eindpunt monitor: als u anonieme verificatie kunt inschakelen, kunt u een specifiek eind punt voor de website opgeven. U kunt ook een test pagina gebruiken op een specifieke poort (bijvoorbeeld 800).
 
-## <a name="creating-a-recovery-plan"></a>Een herstelplan maken
+## <a name="creating-a-recovery-plan"></a>Een herstel plan maken
 
-Een herstelplan maakt het mogelijk om de failover van verschillende lagen in een multi-tier toepassing te rangschikken, vandaar, waardoor de consistentie van de toepassing behouden blijft. Volg de onderstaande stappen terwijl u een herstelplan maakt voor een multi-tier webtoepassing. [Meer informatie over het maken van een herstelplan](site-recovery-runbook-automation.md#customize-the-recovery-plan).
+Met een herstel plan kan de failover van verschillende lagen in een toepassing met meerdere lagen worden gevolgd, dus toepassings consistentie wordt gehandhaafd. Volg de onderstaande stappen voor het maken van een herstel plan voor een webtoepassing met meerdere lagen. [Meer informatie over het maken van een herstel plan](site-recovery-runbook-automation.md#customize-the-recovery-plan).
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuele machines toevoegen aan failovergroepen
+### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuele machines toevoegen aan failover-groepen
 
-1. Maak een herstelplan door de VM's van app en weblaag toe te voegen.
-2. Klik op 'Aanpassen' om de VM's te groeperen. Standaard maken alle VM's deel uit van 'Groep 1'.
+1. Maak een herstel plan door de Vm's voor de app en de weblaag toe te voegen.
+2. Klik op aanpassen om de Vm's te groeperen. Standaard maken alle Vm's deel uit van ' groep 1 '.
 
     ![RP aanpassen](./media/site-recovery-sharepoint/rp-groups.png)
 
-3. Maak een andere groep (groep 2) en verplaats de vm's van het webniveau naar de nieuwe groep. Uw VM's voor de app-laag moeten deel uitmaken van 'Groep 1' en vm's van weblagen moeten deel uitmaken van 'Groep 2'. Dit is om ervoor te zorgen dat de VM's van de app-laag eerst worden opgestart, gevolgd door VM's met weblagen.
+3. Maak een andere groep (groep 2) en verplaats de virtuele machines van de weblaag naar de nieuwe groep. De Vm's van de app-laag moeten deel uitmaken van ' groep 1 ' en virtuele machines in de weblaag moeten deel uitmaken van ' groep 2 '. Dit is om ervoor te zorgen dat de app-laag-Vm's eerst worden opgestart, gevolgd door de weblaag Vm's.
 
 
-### <a name="adding-scripts-to-the-recovery-plan"></a>Scripts toevoegen aan het herstelplan
+### <a name="adding-scripts-to-the-recovery-plan"></a>Scripts toevoegen aan het herstel plan
 
-U de meest gebruikte Azure Site Recovery-scripts implementeren in uw Automatiseringsaccount en klik hieronder op de knop 'Implementeren naar Azure'. Wanneer u een gepubliceerd script gebruikt, moet u ervoor zorgen dat u de richtlijnen in het script volgt.
+U kunt de meest gebruikte Azure Site Recovery scripts implementeren in uw Automation-account door te klikken op de knop implementeren naar Azure hieronder. Wanneer u een gepubliceerd script gebruikt, zorg er dan voor dat u de instructies in het script volgt.
 
-[![Implementeren naar Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Implementeren in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-1. Voeg een pre-action script toe aan 'Groep 1' aan failover SQL Availability group. Gebruik het script 'ASR-SQL-FailoverAG' dat is gepubliceerd in de voorbeeldscripts. Zorg ervoor dat u de richtlijnen in het script volgt en breng de vereiste wijzigingen in het script op de juiste manier aan.
+1. Voeg een pre-action script aan groep 1 toe aan een failover-SQL-beschikbaarheids groep. Gebruik het script ASR-SQL-FailoverAG dat is gepubliceerd in de voorbeeld scripts. Zorg ervoor dat u de instructies in het script volgt en breng de vereiste wijzigingen in het script op de juiste wijze aan.
 
-    ![Add-AG-Script-Stap-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
+    ![Add-AG-script-stap-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
 
-    ![Add-AG-Script-Stap-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
+    ![Add-AG-script-stap-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
 
-2. Voeg een post-actiescript toe om een load balancer toe te voegen aan de mislukte virtuele machines van weblaag (groep 2). Gebruik het script 'ASR-AddSingleLoadBalancer' dat is gepubliceerd in de voorbeeldscripts. Zorg ervoor dat u de richtlijnen in het script volgt en breng de vereiste wijzigingen in het script op de juiste manier aan.
+2. Voeg een bericht actie script toe om een load balancer toe te voegen aan de virtuele machines waarvoor een failover is uitgevoerd op de weblaag (groep 2). Gebruik het script ASR-AddSingleLoadBalancer dat is gepubliceerd in de voorbeeld scripts. Zorg ervoor dat u de instructies in het script volgt en breng de vereiste wijzigingen in het script op de juiste wijze aan.
 
-    ![Invoeg-LB-Script-Stap-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
+    ![Add-LB-script-stap-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
 
-    ![Add-LB-Script-Stap-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
+    ![Add-LB-script-stap-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
 
-3. Voeg een handmatige stap toe om de DNS-records bij te werken om naar de nieuwe farm in Azure te wijzen.
+3. Voeg een hand matige stap toe om de DNS-records bij te werken zodat deze naar de nieuwe farm in azure verwijzen.
 
-    * Voor sites die op internet worden geconfronteerd, zijn er geen DNS-updates vereist na failover. Volg de stappen die zijn beschreven in de sectie 'Netwerkrichtlijnen' om Traffic Manager te configureren. Als het Traffic Manager-profiel is ingesteld zoals beschreven in de vorige sectie, voegt u een script toe om dummypoort (800 in het voorbeeld) te openen op de Azure VM.
+    * Voor Internet gerichte sites zijn er geen DNS-updates vereist na failover. Volg de stappen die worden beschreven in de sectie netwerk richtlijnen om Traffic Manager te configureren. Als het Traffic Manager profiel is ingesteld zoals beschreven in de vorige sectie, voegt u een script toe om de dummy poort (800 in het voor beeld) op de virtuele Azure-machine te openen.
 
-    * Voor sites met interne aan-ogen voegt u een handmatige stap toe om de DNS-record bij te werken om het IP-IP van de nieuwe weblaag-VM aan te wijzen.
+    * Voor interne sites voegt u een hand matige stap toe om de DNS-record bij te werken zodat deze verwijst naar de nieuwe load balancer IP-adres van de virtuele weblaag.
 
-4. Voeg een handmatige stap toe om de zoektoepassing te herstellen vanuit een back-up of een nieuwe zoekservice te starten.
+4. Voeg een hand matige stap toe om de zoek toepassing te herstellen vanuit een back-up of start een nieuwe zoek service.
 
-5. Voer onderstaande stappen uit voor het herstellen van de zoekservicetoepassing vanuit een back-up.
+5. Volg de onderstaande stappen voor het herstellen van de zoek service toepassing vanuit een back-up.
 
-    * Deze methode gaat ervan uit dat een back-up van de zoekservicetoepassing is uitgevoerd vóór de catastrofale gebeurtenis en dat de back-up beschikbaar is op de DR-site.
-    * Dit kan eenvoudig worden bereikt door het plannen van de back-up (bijvoorbeeld eenmaal per dag) en het gebruik van een kopieerprocedure om de back-up op de DR-site te plaatsen. Kopieerprocedures kunnen gescripte programma's zoals AzCopy (Azure Copy) of het instellen van DFSR (Distributed File Services Replication) omvatten.
-    * Nu de SharePoint-farm wordt uitgevoerd, navigeert u door het centrale beheer, 'Back-up en herstel' en selecteert u Herstellen. Het herstel ondervraagt de opgegeven back-uplocatie (mogelijk moet u de waarde bijwerken). Selecteer de back-up van de zoekservicetoepassing die u wilt herstellen.
-    * Zoeken wordt hersteld. Houd er rekening mee dat het herstel verwacht dezelfde topologie (hetzelfde aantal servers) en dezelfde harde schijf letters toegewezen aan die servers te vinden. Zie ['Zoekservicetoepassing herstellen in SharePoint 2013'](https://technet.microsoft.com/library/ee748654.aspx) voor meer informatie.
+    * Bij deze methode wordt ervan uitgegaan dat er een back-up van de Search Service toepassing is uitgevoerd vóór het onherstelbare gebeurtenis en dat de back-up beschikbaar is op de DR-site.
+    * Dit kan eenvoudig worden bereikt door de back-up te plannen (bijvoorbeeld eenmaal per dag) en een Kopieer procedure te gebruiken om de back-up te plaatsen op de DR-site. Kopieer procedures kunnen scripts bevatten zoals AzCopy (Azure Copy) of DFSR instellen (Distributed File Services-replicatie).
+    * Nu de share point-farm wordt uitgevoerd, navigeert u naar Centraal beheer, back-up en terugzetten en selecteert u herstellen. De Restore heeft de opgegeven back-uplocatie (mogelijk moet u de waarde bijwerken). Selecteer de Search Service back-up van de toepassing die u wilt herstellen.
+    * De zoek opdracht wordt hersteld. Houd er rekening mee dat de Restore verwacht dezelfde topologie te vinden (hetzelfde aantal servers) en dat er dezelfde vaste stationsletters zijn toegewezen aan deze servers. Zie [' Search service-toepassing herstellen in share point 2013 '](https://technet.microsoft.com/library/ee748654.aspx) document voor meer informatie.
 
 
-6. Volg hieronder stappen om te beginnen met een nieuwe zoekservicetoepassing.
+6. Volg de onderstaande stappen om te beginnen met een nieuwe zoek service toepassing.
 
-    * Deze methode gaat ervan uit dat een back-up van de database 'Zoekbeheer' beschikbaar is op de DR-site.
-    * Aangezien de andere databases van de zoekservicetoepassing niet worden gerepliceerd, moeten ze opnieuw worden gemaakt. Ga hiervoor naar Centraal beheer en verwijdert de toepassing Zoekservice. Verwijder de indexbestanden op servers die de zoekindex hosten.
-    * Maak de zoekservicetoepassing opnieuw en hiermee worden de databases opnieuw gemaakt. Het wordt aanbevolen om een voorbereid script te hebben dat deze servicetoepassing opnieuw maakt, omdat het niet mogelijk is om alle acties via de GUI uit te voeren. Het instellen van de locatie van het indexstation en het configureren van de zoektopologie is bijvoorbeeld alleen mogelijk met SharePoint PowerShell-cmdlets. Gebruik de Windows PowerShell-cmdlet Restore-SPEnterpriseSearchServiceApplication en geef de database voor het beheer van logboeken en gerepliceerde Search_Service__DB op. Deze cmdlet geeft de zoekconfiguratie, het schema, de beheerde eigenschappen, regels en bronnen en maakt een standaardset van de andere componenten.
-    * Zodra de zoekservicetoepassing opnieuw is gemaakt, moet u een volledige verkenning starten voor elke inhoudsbron om de zoekservice te herstellen. U verliest bepaalde analyse-informatie van de on-premises farm, zoals zoekaanbevelingen.
+    * Bij deze methode wordt ervan uitgegaan dat er een back-up van de data base ' Search Administration ' beschikbaar is op de DR-site.
+    * Omdat de andere Search Service toepassings databases niet worden gerepliceerd, moeten ze opnieuw worden gemaakt. Hiertoe gaat u naar Centraal beheer en verwijdert u de Search Service toepassing. Verwijder de index bestanden op alle servers die als host fungeren voor de zoek index.
+    * Maak de Search Service-toepassing opnieuw en maakt de data base opnieuw. Het is raadzaam om een voor bereid script te hebben dat deze service toepassing opnieuw maakt, omdat het niet mogelijk is om alle acties uit te voeren via de gebruikers interface. Het instellen van de locatie van het index station en het configureren van de zoek topologie is bijvoorbeeld alleen mogelijk met share point Power shell-cmdlets. Gebruik de Windows Power shell-cmdlet Restore-SPEnterpriseSearchServiceApplication en geef de door het logboek verzonden en gerepliceerde Zoek beheer database Search_Service__DB op. Deze cmdlet geeft de zoek configuratie, het schema, de beheerde eigenschappen, regels en bronnen en maakt een standaardset van de andere onderdelen.
+    * Zodra de Search Service toepassing opnieuw is gemaakt, moet u een volledige verkenning starten voor elke inhouds bron om de Search Service te herstellen. U verliest enige analyse gegevens van de on-premises Farm, zoals zoek aanbevelingen.
 
-7. Zodra alle stappen zijn voltooid, slaat u het herstelplan op en ziet het uiteindelijke herstelplan er als volgt uit.
+7. Als alle stappen zijn voltooid, slaat u het herstel plan op en het laatste herstel plan ziet er als volgt uit.
 
-    ![Opgeslagen RP](./media/site-recovery-sharepoint/saved-rp.png)
+    ![RP opgeslagen](./media/site-recovery-sharepoint/saved-rp.png)
 
-## <a name="doing-a-test-failover"></a>Het doen van een test failover
-Volg [deze richtlijnen](site-recovery-test-failover-to-azure.md) om een testfailover te doen.
+## <a name="doing-a-test-failover"></a>Een testfailover uitvoeren
+Volg [deze richt lijnen](site-recovery-test-failover-to-azure.md) om een testfailover uit te voeren.
 
-1.  Ga naar Azure portal en selecteer uw Vault Recovery Service.
-2.  Klik op het herstelplan dat is gemaakt voor SharePoint-toepassing.
-3.  Klik op 'Test Failover'.
-4.  Selecteer herstelpunt en het virtuele Azure-netwerk om het failoverproces te starten.
-5.  Zodra de secundaire omgeving is up, u uw validaties uitvoeren.
-6.  Zodra de validaties zijn voltooid, u op 'Cleanup test failover' op het herstelplan klikken en wordt de failover-omgeving van de test gereinigd.
+1.  Ga naar Azure Portal en selecteer de Recovery service-kluis.
+2.  Klik op het herstel plan dat is gemaakt voor de share point-toepassing.
+3.  Klik op Failover testen.
+4.  Selecteer herstel punt en virtueel Azure-netwerk om het proces voor de testfailover te starten.
+5.  Zodra de secundaire omgeving actief is, kunt u uw validaties uitvoeren.
+6.  Zodra de validaties zijn voltooid, kunt u op ' testfailover opschonen ' klikken in het herstel plan en de test-failover-omgeving opschonen.
 
-Raadpleeg [failoveroverwegingen voor AD- en DNS-indelingen voor](site-recovery-active-directory.md#test-failover-considerations) richtlijnen voor het doen van testfailover.
+Raadpleeg voor meer informatie over het uitvoeren van een testfailover voor AD en DNS de [overwegingen voor het testen van failover voor AD-en DNS-](site-recovery-active-directory.md#test-failover-considerations) document.
 
-Raadpleeg voor richtlijnen voor het uitvoeren van testfailover voor SQL Always ON-beschikbaarheidsgroepen [naar Het uitvoeren van application DR met Azure Site Recovery en het uitvoeren van testfailoverdocument.](site-recovery-sql.md#disaster-recovery-of-an-application)
+Raadpleeg voor meer informatie over het uitvoeren van een testfailover voor SQL always ON-beschikbaarheids groepen het [uitvoeren van Application Dr met Azure site Recovery en](site-recovery-sql.md#disaster-recovery-of-an-application) het uitvoeren van een test-failover document.
 
-## <a name="doing-a-failover"></a>Het doen van een failover
-Volg [deze richtlijnen](site-recovery-failover.md) voor het doen van een failover.
+## <a name="doing-a-failover"></a>Een failover uitvoeren
+Volg [deze richt lijnen](site-recovery-failover.md) voor het uitvoeren van een failover.
 
-1.  Ga naar Azure-portal en selecteer uw vault voor Herstelservices.
-2.  Klik op het herstelplan dat is gemaakt voor SharePoint-toepassing.
-3.  Klik op 'Failover'.
-4.  Selecteer herstelpunt om het failoverproces te starten.
+1.  Ga naar Azure Portal en selecteer uw Recovery Services kluis.
+2.  Klik op het herstel plan dat is gemaakt voor de share point-toepassing.
+3.  Klik op failover.
+4.  Selecteer herstel punt om het failoverproces te starten.
 
 ## <a name="next-steps"></a>Volgende stappen
-U meer informatie vinden over [het repliceren van andere toepassingen](site-recovery-workload.md) met siteherstel.
+U kunt meer te weten komen over het [repliceren van andere toepassingen](site-recovery-workload.md) met behulp van site Recovery.

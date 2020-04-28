@@ -1,6 +1,6 @@
 ---
-title: PowerShell gebruiken om een Azure AD-app te maken om toegang te krijgen tot de Azure Media Services API | Microsoft Documenten
-description: Meer informatie over het gebruik van PowerShell om een Azure Active Directory-app (Azure AD) te maken en deze in te stellen voor toegang tot de Azure Media Services API.
+title: Power shell gebruiken om een Azure AD-app te maken voor toegang tot de Azure Media Services-API | Microsoft Docs
+description: Meer informatie over het gebruik van Power shell om een Azure Active Directory-app (Azure AD) te maken en deze in te stellen voor toegang tot de Azure Media Services-API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ff7f8bc27d358c667b10c0bd3383e78b20494303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64680120"
 ---
-# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>PowerShell gebruiken om een Azure AD-app te maken die u gebruiken met de Azure Media Services-API
+# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Power shell gebruiken om een Azure AD-app te maken voor gebruik met de Azure Media Services-API
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Meer informatie over het gebruik van een PowerShell-script om een Azure Active Directory-toepassing en serviceprincipal te maken voor toegang tot Azure Media Services-bronnen.  
+Meer informatie over het gebruik van een Power shell-script om een Azure Active Directory (Azure AD)-toepassing en Service-Principal te maken voor toegang tot Azure Media Services resources.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account. Als u geen account hebt, begint u met een [gratis proefversie van Azure.](https://azure.microsoft.com/pricing/free-trial/) 
-- Een Media Services-account. Zie [Een Azure Media Services-account maken in de Azure-portal](media-services-portal-create-account.md)voor meer informatie.
+- Een Azure-account. Als u geen account hebt, kunt u beginnen met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). 
+- Een Media Services-account. Zie [een Azure Media Services-account maken in de Azure Portal](media-services-portal-create-account.md)voor meer informatie.
 
-- Azure PowerShell. Zie [Azure PowerShell gebruiken voor](https://docs.microsoft.com/powershell/azure/overview)meer informatie.
+- Azure PowerShell. Zie [Azure PowerShell gebruiken](https://docs.microsoft.com/powershell/azure/overview)voor meer informatie.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="create-an-azure-ad-app-by-using-powershell"></a>Een Azure AD-app maken met PowerShell  
+## <a name="create-an-azure-ad-app-by-using-powershell"></a>Een Azure AD-app maken met behulp van Power shell  
 
 ```powershell
 Connect-AzAccount
@@ -61,9 +61,9 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-- [Toegangsbeheer op basis van rollen beheren met Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Daemon-apps handmatig configureren met behulp van certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
+- [Op rollen gebaseerde Access Control beheren met Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Daemon-apps hand matig configureren met behulp van certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met [het uploaden van bestanden naar je account.](media-services-portal-upload-files.md)
+Ga aan de slag met [het uploaden van bestanden naar uw account](media-services-portal-upload-files.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Script-voorbeeld - Peer twee virtuele netwerken | Microsoft Documenten
-description: Azure PowerShell Script-voorbeeld - Peer twee virtuele netwerken
+title: Azure PowerShell script-voor beeld-peer twee virtuele netwerken | Microsoft Docs
+description: Azure PowerShell script-voor beeld-peer twee virtuele netwerken
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890191"
 ---
 # <a name="peer-two-virtual-networks"></a>Peering van twee virtuele netwerken
 
-Dit script maakt en verbindt twee virtuele netwerken in dezelfde regio via het Azure-netwerk. Nadat het script is uitgevoerd, maakt u een peering tussen twee virtuele netwerken.
+Met dit script maakt en verbindt u twee virtuele netwerken in dezelfde regio via het Azure-netwerk. Nadat het script is uitgevoerd, maakt u een peering tussen twee virtuele netwerken.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 

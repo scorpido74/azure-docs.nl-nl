@@ -1,137 +1,137 @@
 ---
-title: Zelfstandige clusterimplementatievoorbereiding
-description: Documentatie met betrekking tot het voorbereiden van de omgeving en het maken van de clusterconfiguratie, die moet worden overwogen voordat een cluster wordt geïmplementeerd dat is bedoeld voor het verwerken van een productiewerkbelasting.
+title: Voor bereiding van zelfstandige cluster implementatie
+description: Documentatie met betrekking tot het voorbereiden van de omgeving en het maken van de cluster configuratie, moet worden overwogen voordat een cluster wordt geïmplementeerd dat is bedoeld voor het verwerken van een productiewerk belasting.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
 ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610060"
 ---
-# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Uw servicefabric-implementatie van standalone-clusterplannen en voorbereiden
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>De implementatie van uw Service Fabric zelfstandige cluster plannen en voorbereiden
 
-<a id="preparemachines"></a>Voer de volgende stappen uit voordat u uw cluster maakt.
+<a id="preparemachines"></a>Voer de volgende stappen uit voordat u het cluster maakt.
 
-## <a name="plan-your-cluster-infrastructure"></a>Uw clusterinfrastructuur plannen
-U staat op het punt een Cluster Service Fabric te maken op machines die u bezit, zodat u bepalen wat voor fouten u wilt dat het cluster overleeft. Heeft u bijvoorbeeld aparte stroomlijnen of internetverbindingen nodig die op deze machines worden geleverd? Houd bovendien rekening met de fysieke veiligheid van deze machines. Waar bevinden zich de machines en wie heeft er toegang toe nodig? Nadat u deze beslissingen hebt genomen, u de machines logischerwijs toewijzen aan verschillende foutdomeinen (zie volgende stap). De infrastructuurplanning voor productieclusters is meer betrokken dan voor testclusters.
+## <a name="plan-your-cluster-infrastructure"></a>De cluster infrastructuur plannen
+U staat op het punt een Service Fabric cluster te maken op de computers die u ' Own ' hebt, zodat u kunt bepalen welke soorten fouten het cluster moet overlaten. Hebt u bijvoorbeeld aparte energie lijnen of Internet verbindingen nodig die aan deze computers zijn verstrekt? Houd ook rekening met de fysieke beveiliging van deze computers. Waar bevinden de machines zich en wie moet er toegang toe hebben? Nadat u deze beslissingen hebt genomen, kunt u de computers logisch toewijzen aan verschillende fout domeinen (Zie de volgende stap). De planning van de infra structuur voor productie clusters is meer betrokken dan voor test clusters.
 
-## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Het aantal foutdomeinen en upgradedomeinen bepalen
-Een [ *foutdomein* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) is een fysieke storingseenheid en is direct gerelateerd aan de fysieke infrastructuur in de datacenters. Een foutdomein bestaat uit hardwarecomponenten (computers, switches, netwerken en meer) die één storingspunt delen. Hoewel er geen 1:1 mapping tussen fout domeinen en racks, losjes gesproken, elk rack kan worden beschouwd als een fout domein.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Het aantal fout domeinen en upgrade domeinen bepalen
+Een [ *fout domein* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) is een fysieke fout eenheid en is rechtstreeks gerelateerd aan de fysieke infra structuur in de data centers. Een fout domein bestaat uit hardware-onderdelen (computers, switches, netwerken en meer) die een Single Point of Failure delen. Hoewel er geen 1:1-toewijzing is tussen fout domeinen en racks, kunt u zonder problemen praten elk rek beschouwen als een fout domein.
 
-Wanneer u fd's opgeeft in ClusterConfig.json, u de naam voor elke FD kiezen. Service Fabric ondersteunt hiërarchische FD's, zodat u uw infrastructuurtopologie daarin weergeven.  De volgende FD's zijn bijvoorbeeld geldig:
+Wanneer u Fd's in ClusterConfig. json opgeeft, kunt u de naam voor elke FD kiezen. Service Fabric ondersteunt hiërarchische Fd's, zodat u uw infrastructuur topologie kunt weer spie gelen.  De volgende Fd's zijn bijvoorbeeld geldig:
 
-* "faultDomain": "fd:/Room1/Rack1/Machine1"
-* "faultDomain": "fd:/FD1"
-* "faultDomain": "fd:/Room1/Rack1/PDU1/M1"
+* "faultDomain": "FD:/Room1/Rack1/machine1"
+* "faultDomain": "FD:/FD1"
+* "faultDomain": "FD:/Room1/Rack1/PDU1/M1"
 
-Een *upgradedomein* (UD) is een logische eenheid van knooppunten. Tijdens servicefabric georkestreerde upgrades (een upgrade van een toepassing of een clusterupgrade) worden alle knooppunten in een UD naar beneden gehaald om de upgrade uit te voeren, terwijl knooppunten in andere UD's beschikbaar blijven om aanvragen te serveren. De firmware-upgrades die u uitvoert op uw machines niet eer UDs, dus je moet ze doen een machine tegelijk.
+Een *upgrade domein* (UD) is een logische eenheid van knoop punten. Tijdens Service Fabric georganisatiede upgrades (een toepassings upgrade of een upgrade van een cluster) worden alle knoop punten in een UD omlaag gezet om de upgrade uit te voeren terwijl er knoop punten in andere UDs beschikbaar blijven zijn om aanvragen te kunnen verwerken. De firmware-upgrades die u op uw computers uitvoert, voldoen niet aan de UDs, dus u moet deze op één computer tegelijk uitvoeren.
 
-De eenvoudigste manier om na te denken over deze concepten is om fd's te beschouwen als de eenheid van ongeplande mislukking en UDs als de eenheid van gepland onderhoud.
+De eenvoudigste manier om deze concepten te bedenken is om Fd's te beschouwen als de eenheid van ongeplande fout en UDs als eenheid voor gepland onderhoud.
 
-Wanneer u UD's opgeeft in ClusterConfig.json, u de naam voor elke UD kiezen. De volgende namen zijn bijvoorbeeld geldig:
+Wanneer u een UDs in ClusterConfig. json opgeeft, kunt u de naam voor elke UD kiezen. De volgende namen zijn bijvoorbeeld geldig:
 
-* "upgradeDomain": "UD0"
-* "upgradeDomain": "UD1A"
-* "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blauw"
+* "upgrade Domain": "UD0"
+* "upgrade Domain": "UD1A"
+* "upgrade Domain": "DomainRed"
+* "upgrade Domain": "Blue"
 
-Zie [Een cluster van servicefabricen beschrijven](service-fabric-cluster-resource-manager-cluster-description.md)voor meer gedetailleerde informatie over OEM's en UD's.
+Zie [een service Fabric cluster beschrijven](service-fabric-cluster-resource-manager-cluster-description.md)voor meer informatie over Fd's en UDS.
 
-Een cluster in productie moet ten minste drie fd's omvatten om te worden ondersteund in een productieomgeving, als u volledige controle hebt over het onderhoud en beheer van de knooppunten, dat wil zeggen dat u verantwoordelijk bent voor het bijwerken en vervangen van machines. Voor clusters die worden uitgevoerd in omgevingen (dat wil zeggen Amazon Web Services VM-exemplaren) waar u geen volledige controle over de machines hebt, moet u minimaal vijf fd's in uw cluster hebben. Elk FD kan een of meer knooppunten hebben. Dit is om problemen te voorkomen die worden veroorzaakt door machine-upgrades en updates, die afhankelijk van hun timing, kunnen interfereren met de werking van toepassingen en services in clusters.
+Een cluster in productie moet ten minste drie Fd's omvatten om te worden ondersteund in een productie omgeving, als u volledige controle hebt over het onderhoud en beheer van de knoop punten, dat wil zeggen dat u verantwoordelijk bent voor het bijwerken en vervangen van machines. Voor clusters die in omgevingen worden uitgevoerd (dat wil zeggen, Amazon Web Services VM-instanties) waarbij u geen volledige controle over de computers hebt, moet u Mini maal vijf Fd's in uw cluster hebben. Elke FD kan een of meer knoop punten bevatten. Dit is om te voor komen dat problemen die worden veroorzaakt door computer upgrades en-updates, afhankelijk van hun tijds duur, de uitvoering van toepassingen en services in clusters kunnen belemmeren.
 
-## <a name="determine-the-initial-cluster-size"></a>De oorspronkelijke clustergrootte bepalen
+## <a name="determine-the-initial-cluster-size"></a>De initiële cluster grootte bepalen
 
-Over het algemeen wordt het aantal knooppunten in uw cluster bepaald op basis van uw bedrijfsbehoeften, dat wil zeggen hoeveel services en containers op het cluster worden uitgevoerd en hoeveel resources u nodig hebt om uw workloads te ondersteunen. Voor productieclusters raden we aan om ten minste vijf knooppunten in uw cluster te hebben, verspreid over 5 fd's. Echter, zoals hierboven beschreven, als u volledige controle over uw knooppunten en kan drie FD's overspannen, dan drie knooppunten moet ook het werk doen.
+Over het algemeen wordt het aantal knoop punten in uw cluster bepaald op basis van uw bedrijfs behoeften, dat wil zeggen, hoeveel Services en containers op het cluster worden uitgevoerd en hoeveel bronnen u nodig hebt om uw workloads te houden. Voor productie clusters kunt u het beste ten minste vijf knoop punten in uw cluster hebben, met een spanning van 5 Fd's. Zoals hierboven is beschreven, kunt u, als u volledige controle over uw knoop punten hebt, drie Fd's beslaan, drie knoop punten ook de taak laten uitvoeren.
 
-Testclusters met stateful workloads moeten drie knooppunten hebben, terwijl testclusters die alleen stateless workloads uitvoeren, slechts één knooppunt nodig hebben. Er moet ook worden opgemerkt dat voor ontwikkelingsdoeleinden, u meer dan een knooppunt op een bepaalde machine. In een productieomgeving ondersteunt Service Fabric echter slechts één knooppunt per fysieke of virtuele machine.
+Test clusters waarop stateful werk belastingen worden uitgevoerd, moeten drie knoop punten hebben, terwijl alleen clusteren waarvoor stateless werk belastingen worden uitgevoerd, slechts één knoop punt nodig hebben. U moet er ook voor kunnen bepalen dat er meer dan één knoop punt op een bepaalde computer. In een productie omgeving ondersteunt Service Fabric echter slechts één knoop punt per fysieke of virtuele machine.
 
-## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Bereid de machines voor die als knooppunten dienen
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>De computers voorbereiden die fungeren als knoop punten
 
-Hier volgen enkele aanbevolen specificaties voor elke machine die u aan het cluster wilt toevoegen:
+Hier volgen enkele aanbevolen specificaties voor elke computer die u aan het cluster wilt toevoegen:
 
-* Minimaal 16 GB RAM
-* Minimaal 40 GB beschikbare schijfruimte
+* Mini maal 16 GB RAM-geheugen
+* Mini maal 40 GB beschik bare schijf ruimte
 * Een 4-core of meer CPU
-* Connectiviteit met een beveiligd netwerk of netwerken voor alle machines
-* Windows Server OS geïnstalleerd (geldige versies: 2012 R2, 2016, 1709 of 1803). Service Fabric versie 6.4.654.9590 en later ondersteunt ook Server 2019 en 1809.
-* [.NET Framework 4.5.1 of hoger,](https://www.microsoft.com/download/details.aspx?id=40773)volledige installatie
+* Connectiviteit met een beveiligd netwerk of netwerken voor alle computers
+* Windows Server-besturings systeem geïnstalleerd (geldige versies: 2012 R2, 2016, 1709 of 1803). Service Fabric versie 6.4.654.9590 en hoger ondersteunt ook server 2019 en 1809.
+* [.NET Framework 4.5.1 of hoger](https://www.microsoft.com/download/details.aspx?id=40773), volledige installatie
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* De [RemoteRegistry-service](https://technet.microsoft.com/library/cc754820) moet op alle machines worden uitgevoerd
-* Installatiestation Service Fabric moet NTFS-bestandssysteem zijn
+* De [RemoteRegistry-service](https://technet.microsoft.com/library/cc754820) moet op alle computers worden uitgevoerd
+* Service Fabric installatie station moet een NTFS-bestands systeem zijn
 
-De clusterbeheerder die het cluster implementeert en configureert, moet [beheerdersbevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) hebben voor elk van de machines. U kunt Service Fabric niet installeren op een domeincontroller.
+De Cluster beheerder die het cluster implementeert en configureert, moet over [beheerders bevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) beschikken voor elk van de computers. U kunt Service Fabric niet installeren op een domeincontroller.
 
-## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Het standalone pakket Service Fabric voor Windows Server downloaden
-[Download link - Service Fabric Standalone Package - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) en rits het pakket uit, hetzij naar een implementatiemachine die geen deel uitmaakt van het cluster, hetzij naar een van de machines die deel uitmaken van uw cluster.
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Het zelfstandige pakket voor de Service Fabric voor Windows Server downloaden
+[Down load link-service Fabric standalone package-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) en pak het pakket uit, hetzij naar een implementatie computer die geen deel uitmaakt van het cluster, of op een van de computers die deel uitmaken van het cluster.
 
-## <a name="modify-cluster-configuration"></a>Clusterconfiguratie wijzigen
-Als u een zelfstandig cluster wilt maken, moet u een zelfstandig clusterconfiguratie ClusterConfig.json-bestand maken, waarin de specificatie van het cluster wordt beschreven. U het configuratiebestand baseren op de sjablonen op de onderstaande link. <br>
-[Zelfstandige clusterconfiguraties](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+## <a name="modify-cluster-configuration"></a>Cluster configuratie wijzigen
+Als u een zelfstandig cluster wilt maken, moet u een zelfstandige cluster configuratie ClusterConfig. JSON-bestand maken, waarin de specificatie van het cluster wordt beschreven. U kunt het configuratie bestand baseren op de sjablonen die op de onderstaande koppeling zijn gevonden. <br>
+[Zelfstandige cluster configuraties](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-Zie [Configuratie-instellingen voor het zelfstandige Windows-cluster voor](service-fabric-cluster-manifest.md)meer informatie over de secties in dit bestand.
+Zie [configuratie-instellingen voor zelfstandige Windows-clusters](service-fabric-cluster-manifest.md)voor meer informatie over de secties in dit bestand.
 
-Open een van de ClusterConfig.json-bestanden van het pakket dat u hebt gedownload en wijzig de volgende instellingen:
+Open een van de ClusterConfig. json-bestanden van het pakket dat u hebt gedownload en wijzig de volgende instellingen:
 
 | **Configuratie-instelling** | **Beschrijving** |
 | --- | --- |
-| **NodeTypes** |Met knooppunttypen u uw clusterknooppunten in verschillende groepen scheiden. Een cluster moet ten minste één NodeType hebben. Alle knooppunten in een groep hebben de volgende gemeenschappelijke kenmerken: <br> **Naam** - Dit is de naam van het knooppunttype. <br>**Eindpuntpoorten** - Dit zijn verschillende benoemde eindpunten (poorten) die zijn gekoppeld aan dit knooppunttype. U elk poortnummer gebruiken dat u wenst, zolang ze niet in strijd zijn met iets anders in dit manifest en nog niet in gebruik zijn door een andere toepassing die op de machine/VM wordt uitgevoerd. <br> **Plaatsingseigenschappen** : deze beschrijven eigenschappen voor dit knooppunttype dat u gebruikt als plaatsingsbeperkingen voor de systeemservices of uw services. Deze eigenschappen zijn door de gebruiker gedefinieerde sleutel-/waardeparen die extra metagegevens voor een bepaald knooppunt leveren. Voorbeelden van knooppunteigenschappen zijn of het knooppunt een harde schijf of grafische kaart heeft, het aantal spindels in de harde schijf, kernen en andere fysieke eigenschappen. <br> **Capaciteiten** - Knooppuntcapaciteiten definiëren de naam en de hoeveelheid van een bepaalde resource die een bepaald knooppunt beschikbaar heeft voor consumptie. Een knooppunt kan bijvoorbeeld bepalen dat het capaciteit heeft voor een statistiek met de naam "MemoryInMb" en dat het standaard 2048 MB beschikbaar heeft. Deze capaciteiten worden gebruikt tijdens de runtime om ervoor te zorgen dat services waarvoor bepaalde hoeveelheden resources nodig zijn, worden geplaatst op de knooppunten die over deze resources beschikken in de vereiste bedragen.<br>**IsPrimary** - Als u meer dan één NodeType hebt gedefinieerd, moet u ervoor zorgen dat er slechts één is ingesteld op primair met de waarde *true,* en dat is waar de systeemservices worden uitgevoerd. Alle andere knooppunttypen moeten worden ingesteld op de waarde *false* |
-| **Knooppunten** |Dit zijn de details voor elk van de knooppunten die deel uitmaken van het cluster (knooppunttype, knooppuntnaam, IP-adres, foutdomein en upgradedomein van het knooppunt). De machines waarop het cluster moet worden gemaakt, moeten hier worden vermeld met hun IP-adressen. <br> Als u hetzelfde IP-adres voor alle knooppunten gebruikt, wordt een cluster met één doos gemaakt, dat u gebruiken voor testdoeleinden. Gebruik geen One-box clusters voor het implementeren van productieworkloads. |
+| **NodeTypes** |Met knooppunt typen kunt u uw cluster knooppunten scheiden in verschillende groepen. Een cluster moet ten minste één NodeType hebben. Alle knoop punten in een groep hebben de volgende algemene kenmerken: <br> **Naam** : dit is de naam van het knooppunt type. <br>**Eindpunt poorten** : Dit zijn verschillende benoemde eind punten (poorten) die zijn gekoppeld aan dit knooppunt type. U kunt elk gewenst poort nummer gebruiken, zolang ze niet conflicteren met iets anders in dit manifest en niet al worden gebruikt door een andere toepassing die wordt uitgevoerd op de machine/VM. <br> **Eigenschappen van plaatsing** : deze beschrijven de eigenschappen voor dit knooppunt type die u als plaatsings beperkingen voor de systeem services of uw services gebruikt. Deze eigenschappen zijn door de gebruiker gedefinieerde sleutel-waardeparen die extra meta gegevens voor een bepaald knoop punt bieden. Voor beelden van knooppunt eigenschappen zijn of het knoop punt een harde schijf of een grafische kaart heeft, het aantal aandrijf assen op de vaste schijf, kernen en andere fysieke eigenschappen. <br> **Capaciteit** : capaciteit van knoop punten definiëren de naam en het bedrag van een bepaalde resource dat een bepaald knoop punt beschikbaar is voor gebruik. Een knoop punt kan bijvoorbeeld bepalen dat het capaciteit heeft voor een metriek met de naam ' MemoryInMb ' en dat deze 2048 MB standaard beschikbaar is. Deze capaciteit wordt tijdens runtime gebruikt om ervoor te zorgen dat services waarvoor bepaalde hoeveel heden resources zijn vereist, worden geplaatst op de knoop punten waarop deze resources beschikbaar zijn in de vereiste aantallen.<br>**IsPrimary** -als u meer dan één NodeType hebt gedefinieerd, moet u ervoor zorgen dat slechts één van beide is ingesteld op primair met de waarde *True*, waar de systeem services worden uitgevoerd. Alle andere knooppunt typen moeten worden ingesteld op de waarde *False* |
+| **Knooppunten** |Dit zijn de Details voor elk van de knoop punten die deel uitmaken van het cluster (knooppunt type, knooppunt naam, IP-adres, fout domein en upgrade domein van het knoop punt). De computers waarop u het cluster wilt maken, moeten hier worden vermeld met hun IP-adressen. <br> Als u hetzelfde IP-adres voor alle knoop punten gebruikt, wordt er een cluster met één doos gemaakt, dat u kunt gebruiken voor test doeleinden. Gebruik geen clusters met één doos voor het implementeren van productie werkbelastingen. |
 
-Nadat de clusterconfiguratie alle instellingen heeft geconfigureerd voor de omgeving, kan deze worden getest op basis van de clusteromgeving (stap 7).
+Nadat de cluster configuratie alle instellingen voor de omgeving heeft geconfigureerd, kan deze worden getest op de cluster omgeving (stap 7).
 
 <a id="environmentsetup"></a>
 
 ## <a name="environment-setup"></a>Configuratie van de omgeving
 
-Wanneer een clusterbeheerder een zelfstandige cluster servicestructuur configureert, moet de omgeving worden ingesteld met de volgende criteria: <br>
-1. De gebruiker die het cluster maakt, moet beveiligingsbevoegdheden op administratorniveau hebben voor alle machines die worden weergegeven als knooppunten in het clusterconfiguratiebestand.
-2. Machine waaruit het cluster is gemaakt, evenals elke clusterknooppuntmachine moet:
-   * Service Fabric SDK laten verwijderd
-   * Runtime van servicestof laten verwijderd zijn
-   * De Windows Firewall-service (mpssvc) ingeschakeld hebben
-   * De Remote Registry Service (remote registry) ingeschakeld hebben
-   * Bestandsdeling (SMB) ingeschakeld
-   * De benodigde poorten laten openen op basis van clusterconfiguratiepoorten
-   * De benodigde poorten zijn geopend voor Windows SMB en Remote Registry-service: 135, 137, 138, 139 en 445
-   * Netwerkconnectiviteit met elkaar hebben
-3. Geen van de clusterknooppuntmachines mag een domeincontroller zijn.
-4. Als het te implementeren cluster een beveiligd cluster is, zijn de vereiste beveiligingsvereisten gevalideerd en correct geconfigureerd tegen de configuratie.
-5. Als de clustermachines niet internettoegankelijk zijn, stelt u het volgende in de clusterconfiguratie in:
-   * Telemetrie uitschakelen: onder *eigenschappen* set *"enableTelemetry": false*
-   * Automatische Fabric-versie downloaden uitschakelen & meldingen dat de huidige clusterversie het einde van de ondersteuning nadert: Onder *eigenschappenset* *'fabricClusterAutoupgradeEnabled': false*
-   * Als internettoegang voor het netwerk beperkt is tot domeinen die op de witte lijst staan, zijn de onderstaande domeinen ook vereist voor automatische upgrade: go.microsoft.com download.microsoft.com
+Wanneer een cluster beheerder een Service Fabric zelfstandige cluster configureert, moet de omgeving worden ingesteld met de volgende criteria: <br>
+1. De gebruiker die het cluster maakt, moet over beheerders rechten beschikken voor alle computers die als knoop punten in het cluster configuratie bestand worden weer gegeven.
+2. De computer van waaruit het cluster wordt gemaakt, evenals elke cluster knooppunt machine moet:
+   * Service Fabric SDK verwijderen
+   * Service Fabric runtime verwijderen
+   * De Windows Firewall service (MpsSvc) is ingeschakeld
+   * De Remote Registry-service (extern REGI ster) ingeschakeld hebben
+   * Het delen van bestanden (SMB) is ingeschakeld
+   * De benodigde poorten zijn geopend, op basis van de configuratie poorten van het cluster
+   * De benodigde poorten zijn geopend voor de Windows SMB-en Remote Registry-service: 135, 137, 138, 139 en 445
+   * Een netwerk verbinding met elkaar hebben
+3. Geen van de cluster knooppunt computers moet een domein controller zijn.
+4. Als het cluster dat moet worden geïmplementeerd een veilig cluster is, controleert u of de vereiste beveiligings vereisten aanwezig zijn en goed zijn geconfigureerd op basis van de configuratie.
+5. Als de cluster machines niet via internet toegankelijk zijn, stelt u het volgende in de cluster configuratie in:
+   * Telemetrie uitschakelen: onder *Eigenschappen* set *"enableTelemetry": False*
+   * Schakel de automatische infrastructuur versie voor het downloaden van & meldingen uit dat de huidige cluster versie bijna de ondersteuning ondervindt: Klik onder *Eigenschappen* instellen op *' fabricClusterAutoupgradeEnabled ': False*
+   * Als het netwerk Internet toegang is beperkt tot in wit vermelde domeinen, zijn de onderstaande domeinen vereist voor automatische upgrade: go.microsoft.com download.microsoft.com
 
-6. Stel de uitsluitingen van de juiste antivirusprogramma's van Service Fabric in:
+6. Stel de juiste Service Fabric anti virus-uitsluitingen in:
 
-| **Antivirus uitgesloten mappen** |
+| **Uitgesloten mappen van anti virus** |
 | --- |
-| Programmabestanden\Microsoft Service Fabric |
-| FabricDataRoot (van clusterconfiguratie) |
-| FabricLogRoot (van clusterconfiguratie) |
+| Program Files\Microsoft Service Fabric |
+| FabricDataRoot (uit de cluster configuratie) |
+| FabricLogRoot (uit de cluster configuratie) |
 
-| **Antivirus uitgesloten processen** |
+| **Uitgesloten processen van anti virus** |
 | --- |
-| Fabric.exe (Fabric.exe) |
-| FabricHost.exe (FabricHost.exe) |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe (FabricGateway.exe) |
-| FabricDCA.exe (FabricDCA.exe) |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe (FabricRM.exe) |
-| FileStoreService.exe |
+| Fabric. exe |
+| FabricHost. exe |
+| FabricInstallerService. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| ImageBuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| File Store service. exe |
 
-## <a name="validate-environment-using-testconfiguration-script"></a>Omgeving valideren met het script TestConfiguration
-Het TestConfiguration.ps1 script is te vinden in het standalone pakket. Het wordt gebruikt als een Best Practices Analyzer om een aantal van de bovenstaande criteria te valideren en moet worden gebruikt als een geestelijke gezondheid te controleren om te valideren of een cluster kan worden geïmplementeerd op een bepaalde omgeving. Als er een storing optreedt, raadpleegt u de lijst onder [Omgevinginstelling](service-fabric-cluster-standalone-deployment-preparation.md) voor het oplossen van problemen.
+## <a name="validate-environment-using-testconfiguration-script"></a>Omgeving valideren met behulp van de testconfiguration-script
+Het script de testconfiguration. ps1 kan worden gevonden in het zelfstandige pakket. Dit wordt gebruikt als Best Practices Analyzer voor het valideren van enkele van de bovenstaande criteria en moet worden gebruikt als een Sanity om te controleren of een cluster kan worden geïmplementeerd in een bepaalde omgeving. Als er een fout optreedt, raadpleegt u de lijst onder [omgeving instellen](service-fabric-cluster-standalone-deployment-preparation.md) voor het oplossen van problemen.
 
-Dit script kan worden uitgevoerd op elke machine die beheerderstoegang heeft tot alle machines die worden vermeld als knooppunten in het clusterconfiguratiebestand. De machine waarop dit script wordt uitgevoerd, hoeft geen deel uit te maken van het cluster.
+Dit script kan worden uitgevoerd op elke computer met beheerders toegang tot alle computers die worden vermeld als knoop punten in het cluster configuratie bestand. De computer waarop dit script wordt uitgevoerd, hoeft geen deel uit te maken van het cluster.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
@@ -152,10 +152,10 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-Momenteel valideert deze configuratietestmodule de beveiligingsconfiguratie niet, dus dit moet onafhankelijk van elkaar worden gedaan.
+Momenteel valideert deze configuratie test module de beveiligings configuratie niet, zodat deze onafhankelijk moet worden uitgevoerd.
 
 > [!NOTE]
-> We zijn voortdurend het maken van verbeteringen om deze module robuuster te maken, dus als er een defecte of ontbrekende zaak die u gelooft is momenteel niet gevangen door TestConfiguration, laat het ons weten via onze [ondersteuningskanalen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+> We nemen voortdurend verbeteringen aan om deze module robuuster te maken, dus als er sprake is van een defecte of ontbrekende situatie die momenteel niet wordt onderschept door de testconfiguration, moet u ons laten weten wat de [ondersteunings kanalen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)zijn.
 >
 >
 

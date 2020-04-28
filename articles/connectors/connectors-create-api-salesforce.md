@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Salesforce vanuit Azure Logic Apps
-description: Automatiseer taken en werkstromen die Salesforce-records en -taken bewaken, maken en beheren met Azure Logic Apps
+title: Verbinding maken met Sales Force vanuit Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee Sales Force-records en-taken worden bewaakt, gemaakt en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,55 +8,55 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789287"
 ---
-# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Salesforce-bronnen bewaken, maken en beheren met Azure Logic Apps
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Sales Force-bronnen bewaken, maken en beheren met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de Salesforce-connector u geautomatiseerde taken en werkstromen maken voor uw Salesforce-bronnen, zoals records, taken en objecten, bijvoorbeeld:
+Met Azure Logic Apps en de Sales Force-connector kunt u geautomatiseerde taken en werk stromen maken voor uw Sales Force-resources, zoals records, taken en objecten, bijvoorbeeld:
 
-* Houd in de gaten wanneer records worden gemaakt of gewijzigd. 
-* Taken en records maken, opvragen en beheren, inclusief acties invoegen, bijwerken en verwijderen.
+* Controleren wanneer records worden gemaakt of gewijzigd. 
+* Taken en records maken, ophalen en beheren, inclusief acties voor invoegen, bijwerken en verwijderen.
 
-Je Salesforce-triggers gebruiken die reacties van Salesforce ontvangen en de uitvoer beschikbaar maken voor andere acties. U acties in uw logische apps gebruiken om taken uit te voeren met Salesforce-bronnen. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt Sales Force-triggers gebruiken die antwoorden krijgen van Sales Force en de uitvoer beschikbaar maken voor andere acties. U kunt acties in uw Logic apps gebruiken om taken uit te voeren met Sales Force-resources. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Een [Salesforce-account](https://salesforce.com/)
+* Een [Sales Force-account](https://salesforce.com/)
 
-* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar je toegang wilt krijgen tot je Salesforce-account. Als u wilt beginnen met een Salesforce-trigger, [maakt u een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u een Salesforce-actie wilt gebruiken, start u uw logica-app met een andere trigger, bijvoorbeeld de **recidieftrigger.**
+* De logische app waartoe u toegang wilt krijgen tot uw Sales Force-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een Sales Force-trigger. Als u een Sales Force-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-salesforce"></a>Verbinding met Salesforce maken
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open uw logische app in Logic App Designer, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Voer voor lege logische apps in het zoekvak 'salesforce' in als filter. 
-   Selecteer onder de lijst triggers de gewenste trigger. 
+   * Voor lege Logic apps voert u in het zoekvak "Sales Force" in als uw filter. 
+   Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
-   * Kies **Nieuwe stap**voor bestaande logische apps onder de stap waarin u een actie wilt toevoegen. Voer in het zoekvak 'salesforce' in als filter. Selecteer onder de lijst met acties de gewenste actie.
+   * Kies **nieuwe stap**onder de stap waar u een actie wilt toevoegen voor bestaande Logic apps. In het zoekvak voert u "Sales Force" in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-1. Als je wordt gevraagd je aan te melden bij Salesforce, meld je je nu aan en geef je toegang.
+1. Als u wordt gevraagd om u aan te melden bij Sales Force, meldt u zich nu aan en verleent u toegang.
 
-   Uw referenties geven toestemming voor uw logische app om een verbinding met Salesforce te maken en toegang te krijgen tot uw gegevens.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding met Sales Force te maken en toegang te krijgen tot uw gegevens.
 
-1. Geef de benodigde details voor de geselecteerde trigger of actie en ga verder met het bouwen van de workflow van uw logische app.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische details over triggers, acties en limieten, die worden beschreven door de OpenAPI-beschrijving (voorheen Swagger) van de connector, raadpleegt u de [referentiepagina](/connectors/salesforce/)van de connector.
+Raadpleeg de [referentie pagina](/connectors/salesforce/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -65,4 +65,4 @@ Voor technische details over triggers, acties en limieten, die worden beschreven
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

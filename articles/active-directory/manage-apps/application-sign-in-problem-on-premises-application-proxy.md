@@ -1,6 +1,6 @@
 ---
-title: Probleem met aanmelden bij on-premises app met Azure AD-appproxy | Microsoft Documenten
-description: Veelvoorkomende problemen oplossen wanneer u zich niet aanmelden bij een on-premises toepassing die is geïntegreerd met Azure AD met behulp van de Azure AD-toepassingsproxy
+title: Probleem bij het aanmelden bij een on-premises app met Azure AD App proxy | Microsoft Docs
+description: Veelvoorkomende problemen oplossen die zich voordoen als u zich niet kunt aanmelden bij een on-premises toepassing die is geïntegreerd met Azure AD met behulp van Azure AD-toepassingsproxy
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74232332"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problemen met het aanmelden bij een on-premises toepassing met de azure AD-toepassingsproxy
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problemen bij het aanmelden bij een on-premises toepassing met behulp van de Azure AD-toepassings proxy
 
-Als u problemen ondervindt bij het aanmelden bij een on-premises toepassing, u proberen de onderstaande stappen te volgen om uw probleem op te lossen.
+Als u problemen ondervindt bij het aanmelden bij een on-premises toepassing, kunt u de onderstaande stappen uitvoeren om het probleem op te lossen.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Ik kan mijn toepassing laden, maar de pagina wordt niet correct weergegeven
 
@@ -56,7 +56,7 @@ De volgende documenten kunnen u helpen een aantal van de meest voorkomende probl
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Ik heb een probleem met de connector voor de toepassingsproxyagent
   De volgende documenten kunnen u helpen een aantal van de meest voorkomende problemen in deze categorie op te lossen.
-  * [Ik heb problemen met het installeren van de Application Proxy Agent Connector](application-proxy-connector-installation-problem.md)
+  * [Ik ondervind problemen bij het installeren van de agent connector voor de toepassings proxy](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 [How to provide secure remote access to on-premises applications](application-proxy.md) (Beveiligde externe toegang bieden voor on-premises toepassingen)

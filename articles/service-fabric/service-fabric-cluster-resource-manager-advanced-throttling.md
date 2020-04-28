@@ -1,40 +1,40 @@
 ---
-title: Beperking in de clusterbronbeheer servicefabric
-description: Leer de gashendels van de clusterbronbeheer van servicestructuur configureren.
+title: Beperking in het Service Fabric cluster resource manager
+description: Meer informatie over het configureren van de door de Service Fabric cluster resource manager beschik bare restricties.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452165"
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Beperking van de clusterbronbeheer voor servicefabric
-Zelfs als u de clusterbronbeheer correct hebt geconfigureerd, kan het cluster worden verstoord. Er kunnen bijvoorbeeld gelijktijdige node- en foutdomeinfouten zijn - wat zou er gebeuren als dat gebeurde tijdens een upgrade? De Clusterresourcemanager probeert altijd alles op te lossen en verbruikt de bronnen van het cluster om het cluster te reorganiseren en op te lossen. Throttles helpen een backstop te bieden, zodat het cluster resources kan gebruiken om te stabiliseren - de knooppunten komen terug, de netwerkpartities genezen, gecorrigeerde bits worden geïmplementeerd.
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>De Service Fabric cluster resource manager beperken
+Zelfs als u cluster resource manager correct hebt geconfigureerd, kan het cluster worden onderbroken. Er kunnen bijvoorbeeld gelijktijdige knooppunt-en fout domein fouten optreden, wat er zou gebeuren als het tijdens een upgrade is gebeurd? Cluster resource manager probeert altijd alles te herstellen, waarbij de bronnen van het cluster worden gebruikt om het cluster opnieuw te organiseren en te herstellen. Met behulp van gashendel kunt u een backstop bieden zodat het cluster bronnen kan gebruiken om te stabiliseren: de knoop punten worden teruggehaald, het herstellen van de netwerk partities, gecorrigeerde bits worden geïmplementeerd.
 
-Om te helpen met dit soort situaties, bevat de Service Fabric Cluster Resource Manager verschillende throttles. Deze gashendels zijn allemaal vrij grote hamers. Over het algemeen moeten ze niet worden veranderd zonder zorgvuldige planning en testen.
+Om u te helpen bij het sorteren van situaties, bevat de Service Fabric cluster resource manager verschillende gashendel. Deze gashendel zijn allemaal tamelijk grote hamers. Over het algemeen mogen ze niet worden gewijzigd zonder zorgvuldige planning en tests.
 
-Als u de gashendels van clusterbronbeheer wijzigt, moet u deze afstemmen op de verwachte werkelijke belasting. U bepalen dat u wat gashendels moet hebben, zelfs als dit betekent dat het cluster in sommige situaties langer duurt om te stabiliseren. Testen is vereist om de juiste waarden voor gashendels te bepalen. Throttles moeten hoog genoeg zijn om het cluster in staat te stellen te reageren op veranderingen in een redelijke hoeveelheid tijd, en laag genoeg om daadwerkelijk te veel resourceverbruik te voorkomen. 
+Als u de beperkingen van cluster resource manager wijzigt, moet u deze afstemmen op de verwachte werkelijke belasting. U kunt er ook voor zorgen dat u bepaalde versnellingen moet hebben, zelfs als dit betekent dat het cluster in bepaalde situaties langer duurt om te stabiliseren. Testen is vereist om de juiste waarden voor gashendel te bepalen. Vertragingen moeten hoog genoeg zijn om ervoor te zorgen dat het cluster kan reageren op wijzigingen in een redelijke hoeveelheid tijd en dat er weinig ruimte is om te voor komen dat er te veel bronnen worden verbruikt. 
 
-De meeste van de tijd hebben we gezien klanten gebruik gashendels het is omdat ze al in een resource beperkte omgeving. Enkele voorbeelden zijn een beperkte netwerkbandbreedte voor afzonderlijke knooppunten of schijven die niet in staat zijn om veel stateful replica's parallel te bouwen vanwege doorvoerbeperkingen. Zonder gashendels kunnen bewerkingen deze resources overweldigen, waardoor bewerkingen mislukken of traag zijn. In deze situaties gebruikten klanten gashendels en wisten ze dat ze de tijd die het cluster nodig had om een stabiele toestand te bereiken, uit te breiden. Klanten begrepen ook dat ze konden eindigen draaien op een lagere algehele betrouwbaarheid, terwijl ze werden gewurgd.
+Het grootste deel van de tijd dat klanten de vertraging gebruiken, is dat ze al in een omgeving met een resource beperkt waren. Enkele voor beelden zijn een beperkt aantal netwerk bandbreedte voor afzonderlijke knoop punten of schijven die geen veel stateful replica's tegelijk kunnen bouwen vanwege doorvoer beperkingen. Zonder beperking kunnen de bewerkingen deze resources overbelasten, waardoor bewerkingen mislukken of traag zijn. In deze situaties gebruiken klanten beperkingen en wisten ze de hoeveelheid tijd die het cluster zou verg Roten om een stabiele status te bereiken. Klanten begrijpen ook dat ze op een lagere totale betrouw baarheid kunnen worden uitgevoerd terwijl ze zijn beperkt.
 
 
-## <a name="configuring-the-throttles"></a>De gashendels configureren
+## <a name="configuring-the-throttles"></a>De gashendel configureren
 
-Service Fabric heeft twee mechanismen voor het beperken van het aantal replicabewegingen. Het standaardmechanisme dat bestond vóór Service Fabric 5.7 vertegenwoordigt beperking als een absoluut aantal toegestane zetten. Dit werkt niet voor clusters van alle groottes. Met name voor grote clusters kan de standaardwaarde te klein zijn, waardoor de balancering aanzienlijk wordt vertraagd, zelfs wanneer dit nodig is, terwijl deze geen effect heeft in kleinere clusters. Dit eerdere mechanisme is vervangen door op percentage gebaseerde beperking, die beter schaalt met dynamische clusters waarin het aantal services en knooppunten regelmatig verandert.
+Service Fabric heeft twee mechanismen voor het beperken van het aantal replica-verplaatsingen. Het standaard mechanisme dat bestond vóór Service Fabric 5,7 vertegenwoordigt het beperken van de beperking als een absoluut aantal verplaatsingen dat is toegestaan. Dit werkt niet voor clusters van elke grootte. Met name voor grote clusters kan de standaard waarde te klein zijn, zelfs als deze nood zakelijk is, aanzienlijk vertraagd worden, ook als dat nodig is, terwijl dit niet van invloed is op kleinere clusters. Dit vorige mechanisme is vervangen door beperking op basis van percentages, wat beter past bij dynamische clusters waarin het aantal services en knoop punten regel matig wordt gewijzigd.
 
-De gashendels zijn gebaseerd op een percentage van het aantal replica's in de clusters. Op percentage gebaseerde gashendels maken het mogelijk om de regel uit te drukken: "verplaats niet meer dan 10% van de replica's in een interval van 10 minuten", bijvoorbeeld.
+De vertraging is gebaseerd op een percentage van het aantal replica's in de clusters. Met de op percentage gebaseerde gashendel kunt u de regel uitdrukken: ' niet meer dan 10% van replica's verplaatsen in een interval van 10 minuten ', bijvoorbeeld.
 
-De configuratie-instellingen voor op percentage gebaseerde beperking zijn:
+De configuratie-instellingen voor het beperken op basis van een percentage zijn:
 
-  - GlobalMovementThrottleThresholdPercentage - Maximaal aantal bewegingen toegestaan in cluster op elk gewenst moment, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft geen limiet aan. De standaardwaarde is 0. Als zowel deze instelling als GlobalMovementThrottleThreshold zijn opgegeven, wordt de conservatievere limiet gebruikt.
-  - GlobalMovementThrottleThresholdPercentageForPlacement - Maximaal aantal bewegingen toegestaan tijdens de plaatsingsfase, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft geen limiet aan. De standaardwaarde is 0. Als zowel deze instelling als GlobalMovementThrottleThresholdForPlacement zijn opgegeven, wordt de conservatievere limiet gebruikt.
-  - GlobalMovementThrottleThresholdPercentageForBalancing - Maximaal aantal bewegingen toegestaan tijdens de balanceringsfase, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft geen limiet aan. De standaardwaarde is 0. Als zowel deze instelling als GlobalMovementThrottleThresholdForBalancing zijn opgegeven, wordt de meer conservatieve limiet gebruikt.
+  - GlobalMovementThrottleThresholdPercentage: het maximum aantal verkeer dat op elk gewenst moment in het cluster is toegestaan, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft aan dat er geen limiet is. De standaardwaarde is 0. Als deze instelling en GlobalMovementThrottleThreshold zijn opgegeven, wordt de meer conservatieve limiet gebruikt.
+  - GlobalMovementThrottleThresholdPercentageForPlacement: het maximum aantal verplaatsingen dat is toegestaan tijdens de plaatsings fase, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft aan dat er geen limiet is. De standaardwaarde is 0. Als deze instelling en GlobalMovementThrottleThresholdForPlacement zijn opgegeven, wordt de meer conservatieve limiet gebruikt.
+  - GlobalMovementThrottleThresholdPercentageForBalancing: het maximum aantal verplaatsingen dat is toegestaan tijdens de Balancing-fase, uitgedrukt als percentage van het totale aantal replica's in het cluster. 0 geeft aan dat er geen limiet is. De standaardwaarde is 0. Als deze instelling en GlobalMovementThrottleThresholdForBalancing zijn opgegeven, wordt de meer conservatieve limiet gebruikt.
 
-Wanneer u het gaspedaalpercentage opgeeft, geeft u 5% op als 0,05. Het interval waarop deze gashendels worden geregeld, is het GlobalMovementThrottleCountingInterval, dat in seconden is opgegeven.
+Wanneer u het bandbreedte percentage opgeeft, geeft u 5% op als 0,05. Het interval waarmee deze vertragingen worden bepaald, is de GlobalMovementThrottleCountingInterval, die in seconden is opgegeven.
 
 
 ``` xml
@@ -46,7 +46,7 @@ Wanneer u het gaspedaalpercentage opgeeft, geeft u 5% op als 0,05. Het interval 
 </Section>
 ```
 
-via ClusterConfig.json voor zelfstandige implementaties of Template.json voor azure gehoste clusters:
+via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -74,14 +74,14 @@ via ClusterConfig.json voor zelfstandige implementaties of Template.json voor az
 ]
 ```
 
-### <a name="default-count-based-throttles"></a>Op standaardtelling gebaseerde gashendels
-Deze informatie wordt verstrekt in het geval u oudere clusters hebt of deze configuraties nog steeds behoudt in clusters die sindsdien zijn bijgewerkt. In het algemeen wordt aanbevolen deze te vervangen door de bovenstaande gaspedaaladoordoordoordoor% Aangezien op percentage gebaseerde beperking standaard is uitgeschakeld, blijven deze gashendels de standaardgashendels voor een cluster totdat ze zijn uitgeschakeld en worden vervangen door de op percentage gebaseerde gashendels. 
+### <a name="default-count-based-throttles"></a>Standaard beperking op basis van aantal
+Deze informatie wordt verstrekt als u oudere clusters hebt of als u deze configuraties nog behoudt in clusters die zijn bijgewerkt. Over het algemeen is het raadzaam om deze te vervangen door de op percentage gebaseerde restricties hierboven. Omdat op percentage gebaseerde beperking standaard is uitgeschakeld, blijven deze gashendel de standaard beperking voor een cluster totdat ze zijn uitgeschakeld en vervangen door de versnellingen op basis van een percentage. 
 
-  - GlobalMovementThrottleThreshold – deze instelling regelt het totale aantal bewegingen in het cluster gedurende enige tijd. De hoeveelheid tijd wordt in enkele seconden opgegeven als de GlobalMovementThrottleCountingInterval. De standaardwaarde voor de GlobalMovementThrottleThreshold is 1000 en de standaardwaarde voor het GlobalMovementThrottleCountingInterval is 600.
-  - MovementPerPartitionThrottleThreshold – deze instelling regelt het totale aantal bewegingen voor een servicepartitie gedurende enige tijd. De hoeveelheid tijd wordt in enkele seconden opgegeven als de MovementPerPartitionThrottleCountingInterval. De standaardwaarde voor de MovementPerPartitionThrottleThreshold is 50 en de standaardwaarde voor de Interval van het papierperpartitie./uur is 600.
+  - GlobalMovementThrottleThreshold: met deze instelling bepaalt u het totale aantal verplaatsingen in het cluster gedurende een bepaalde periode. De hoeveelheid tijd wordt in seconden opgegeven als de GlobalMovementThrottleCountingInterval. De standaard waarde voor de GlobalMovementThrottleThreshold is 1000 en de standaard waarde voor de GlobalMovementThrottleCountingInterval is 600.
+  - MovementPerPartitionThrottleThreshold: met deze instelling bepaalt u het totale aantal verplaatsingen voor elke service partitie gedurende een bepaalde periode. De hoeveelheid tijd wordt in seconden opgegeven als de MovementPerPartitionThrottleCountingInterval. De standaard waarde voor de MovementPerPartitionThrottleThreshold is 50 en de standaard waarde voor de MovementPerPartitionThrottleCountingInterval is 600.
 
-De configuratie voor deze gashendels volgt hetzelfde patroon als de op percentage gebaseerde beperking.
+De configuratie voor deze vertragingen volgt hetzelfde patroon als op percentage gebaseerde beperking.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Als u wilt weten hoe de clusterresourcemanager de belasting in het cluster beheert en in evenwicht brengt, raadpleegt u het artikel over [het balanceren van de belasting](service-fabric-cluster-resource-manager-balancing.md)
-- De Clusterresourcemanager heeft veel opties voor het beschrijven van het cluster. Voor meer informatie over hen, check out dit artikel over [het beschrijven van een Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
+- Raadpleeg het artikel over het [verdelen](service-fabric-cluster-resource-manager-balancing.md) van de taken in het cluster voor meer informatie over hoe de cluster resource manager de belasting beheert en balanceert.
+- Cluster resource manager heeft veel opties voor het beschrijven van het cluster. Lees dit artikel over [het beschrijven van een service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) voor meer informatie.

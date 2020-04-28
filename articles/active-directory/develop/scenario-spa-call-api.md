@@ -1,6 +1,6 @@
 ---
-title: Een app voor één pagina maken die een web-API aanroept - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een toepassing van één pagina die een web-API aanroept
+title: Een app met één pagina bouwen die een web-API aanroept-micro soft Identity-platform | Azure
+description: Meer informatie over het bouwen van een toepassing met één pagina die een web-API aanroept
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,21 +12,21 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882128"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Toepassing met één pagina: een web-API aanroepen
 
-We raden u `acquireTokenSilent` aan de methode aan te roepen om een toegangstoken te verkrijgen of te vernieuwen voordat u een web-API aanroept. Nadat u een token hebt, u een beveiligde web-API aanroepen.
+U wordt aangeraden de methode `acquireTokenSilent` voor het verkrijgen of vernieuwen van een toegangs token aan te roepen voordat u een web-API aanroept. Nadat u een token hebt, kunt u een beveiligde web-API aanroepen.
 
 ## <a name="call-a-web-api"></a>Een web-API aanroepen
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Gebruik het verkregen toegangstoken als drager in een HTTP-verzoek om een web-API aan te roepen, zoals Microsoft Graph API. Bijvoorbeeld:
+Gebruik het verkregen toegangs token als een Bearer in een HTTP-aanvraag om een web-API, zoals Microsoft Graph-API, aan te roepen. Bijvoorbeeld:
 
 ```javascript
     var headers = new Headers();
@@ -46,7 +46,7 @@ Gebruik het verkregen toegangstoken als drager in een HTTP-verzoek om een web-AP
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-De MSAL Angular wrapper maakt gebruik van de HTTP interceptor om automatisch toegangstokens in stilte te verkrijgen en deze aan de HTTP-verzoeken aan API's te koppelen. Zie [Een token aanschaffen om een API aan te roepen](scenario-spa-acquire-token.md)voor meer informatie.
+De MSAL-hoek wrapper maakt gebruik van de HTTP-Interceptor om automatisch toegangs tokens op de achtergrond te verkrijgen en deze te koppelen aan de HTTP-aanvragen aan Api's. Zie [een token verkrijgen voor het aanroepen van een API](scenario-spa-acquire-token.md)voor meer informatie.
 
 ---
 

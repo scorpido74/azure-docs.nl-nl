@@ -1,6 +1,6 @@
 ---
-title: Bekijk het kostenschattingsrapport van Azure Site Recovery Deployment Planner voor noodherstel van Hyper V VM's naar Azure| Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u het kostenschattingsrapport bekijkt dat de Azure Site Recovery Deployment Planner voor herstel van hyperv's naar Azure heeft gegenereerd.
+title: Bekijk het Azure Site Recovery Deployment Planner schattings rapport voor de kosten voor herstel na nood gevallen van virtuele Hyper-V-machines naar Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u het ramings rapport van de kosten kunt bekijken dat het Azure Site Recovery Deployment Planner voor herstel na nood gevallen voor Hyper-V naar Azure heeft gegenereerd.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60947201"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Rapport met kostenramingen van Azure Site Recovery Deployment Planner 
@@ -56,7 +56,7 @@ In de eerste sectie ziet u de totale DR-kosten per onderdelen en per statussen.
 
 **Netwerk**: kosten voor ExpressRoute en site-naar-site VPN voor herstel na noodgeval. 
 
-**Azure Site Recovery-licentie:** de kosten van de siteherstellicentie voor alle compatibele VM's. Als u handmatig een virtuele machine in de tabel met de gedetailleerde kostenanalyse hebt ingevoerd, worden de kosten voor de Site Recovery-licentie ook voor die VM inbegrepen.
+**Azure site Recovery licentie**: de kosten voor de site Recovery-licentie voor alle compatibele vm's. Als u handmatig een virtuele machine in de tabel met de gedetailleerde kostenanalyse hebt ingevoerd, worden de kosten voor de Site Recovery-licentie ook voor die VM inbegrepen.
 
 ### <a name="overall-dr-costs-by-states"></a>Totale kosten voor herstel na noodgeval per status
 De totale kosten voor herstel na noodgeval zijn gebaseerd op twee verschillende statussen: replicatie en noodherstelanalyse.
@@ -90,7 +90,7 @@ Als u een Azure-partner of -klant bent en recht hebt op korting op algemene Azur
 Deze tabel toont het aantal virtuele machines (Windows en niet-Windows), en voor elk ervan de rekenkosten voor noodherstelanalyse.
 
 ### <a name="settings"></a>Instellingen 
-**Beheerde schijf gebruiken**: deze instelling geeft aan of een beheerde schijf wordt gebruikt tijdens noodherstelanalyse. De standaardinstelling is **Ja**. Als u **-UseManagedDisks** instelt op **Nee**, wordt de prijs voor onbeheerde schijf gebruikt in de kostenberekening.
+**Beheerde schijf gebruiken**: deze instelling geeft aan of een beheerde schijf wordt gebruikt tijdens noodherstelanalyse. De standaard waarde is **Ja**. Als u **-UseManagedDisks** instelt op **Nee**, wordt de prijs voor onbeheerde schijf gebruikt in de kostenberekening.
 
 **Valuta**: de valuta die voor het te genereren rapport wordt gebruikt.
 
@@ -121,7 +121,7 @@ Handmatig VM's toevoegen:
 
     g. **Het type besturingssysteem**
 
-    h. **Gegevensredundantie**
+    h. **De gegevensredundantie**
 
     i. **Azure Hybrid Use Benefit**
 
@@ -149,7 +149,7 @@ Handmatig VM's toevoegen:
 
 **Gegevensredundantie**: dit kan lokaal redundante opslag, geografisch redundante opslag of geografisch redundante opslag met leestoegang zijn. De standaardinstelling is lokaal redundante opslag. U kunt het type wijzigen op basis van uw opslagaccount voor bepaalde VM's of u kunt het nieuwe type toepassen op alle VM's. Wijzig het type van de bovenste rij en selecteer **Toepassen op alles**. De opslagkosten voor replicatie worden berekend op basis van de prijs van de gegevensredundantie die u hebt geselecteerd. 
 
-**Azure Hybrid Use Benefit**: u kunt Azure Hybrid Use Benefit toepassen op virtuele Windows-machines, indien van toepassing. De standaardinstelling is **Ja**. U kunt de instelling voor bepaalde VM's wijzigen of alle VM's bijwerken. Selecteer **Toepassen op alles**.
+**Azure Hybrid Use Benefit**: u kunt Azure Hybrid Use Benefit toepassen op virtuele Windows-machines, indien van toepassing. De standaard waarde is **Ja**. U kunt de instelling voor bepaalde VM's wijzigen of alle VM's bijwerken. Selecteer **Toepassen op alles**.
 
 **Totaal Azure-verbruik**: de kosten voor berekenen, opslag en de Site Recovery-licentie voor herstel na noodgeval. Afhankelijk van wat u hebt geselecteerd, worden hier de maandelijkse of jaarlijkse kosten weergegeven.
 
@@ -157,7 +157,7 @@ Handmatig VM's toevoegen:
 
 **Totale kosten noodherstelanalyse (gemiddeld)**: de bereken- en opslagkosten voor noodherstelanalyse.
 
-Kosten van **azure site recovery-licentie:** de kosten van de siteherstellicentie.
+**Azure site Recovery licentie kosten**: de kosten voor de site Recovery-licentie.
 
 ## <a name="supported-target-regions"></a>Ondersteunde doelregio's
 Azure Site Recovery Deployment Planner biedt een schatting van de kosten voor de volgende Azure-regio's. Als uw regio hieronder niet wordt vermeld, kunt u een van de volgende regio's gebruiken waarvan de prijzen het dichtst bij die van uw regio liggen:
@@ -167,13 +167,13 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Ondersteunde valuta's
 Met Azure Site Recovery Deployment Planner kunt u het kostenrapport genereren met een van de volgende valuta's.
 
-|Valuta|Name||Valuta|Name||Valuta|Name|
+|Valuta|Naam||Valuta|Naam||Valuta|Naam|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentijnse peso ($)||AUD|Australische dollar ($)||BRL|Braziliaanse real (R$)|
 |CAD|Canadese dollar ($)||CHF|Zwitserse frank (chf)||DKK|Deense kroon (kr)|
 |EUR|Euro (€)||GBP|Britse pond (£)||HKD|Hongkongse dollar (HK$)|
-|IDR|Indonesische roepia (Rp)||INR|Indiase roepie (·)||JPY|Japanse yen (¥)|
-|KRW|Koreaanse won (∙)||MXN|Mexicaanse peso (MX$)||MYR|Maleisische ringgit (RM$)|
+|IDR|Indonesische roepia (Rp)||INR|Indiase rupee (₹)||JPY|Japanse yen (¥)|
+|KRW|Koreaanse won (₩)||MXN|Mexicaanse peso (MX$)||MYR|Maleisische ringgit (RM$)|
 |NOK|Noorse kroon (kr)||NZD|Nieuw-Zeelandse dollar ($)||RUB|Russische roebel (руб)|
 |SAR|Saudische riyal (SR)||SEK|Zweedse kroon (kr)||TWD|Taiwanese dollar (NT$)|
 |TRY|Turkse lira (TL)||USD| Amerikaanse dollar ($)||ZAR|Zuid-Afrikaanse rand (R)|

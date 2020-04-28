@@ -1,42 +1,42 @@
 ---
-title: Toepassingsupgrades oplossen
-description: In dit artikel worden enkele veelvoorkomende problemen met betrekking tot het upgraden van een Service Fabric-toepassing en hoe deze kunnen worden opgelost.
+title: Problemen met toepassings upgrades oplossen
+description: Dit artikel heeft betrekking op enkele veelvoorkomende problemen bij het upgraden van een Service Fabric-toepassing en hoe u deze kunt oplossen.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377919"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problemen met toepassingsupgrades oplossen
 
-In dit artikel worden enkele veelvoorkomende problemen met betrekking tot het upgraden van een Azure Service Fabric-toepassing en hoe deze kunnen worden opgelost.
+In dit artikel worden enkele veelvoorkomende problemen besproken voor het upgraden van een Azure Service Fabric-toepassing en hoe u deze kunt oplossen.
 
-## <a name="troubleshoot-a-failed-application-upgrade"></a>Een mislukte toepassingsupgrade oplossen
+## <a name="troubleshoot-a-failed-application-upgrade"></a>Problemen met een mislukte toepassings upgrade oplossen
 
-Wanneer een upgrade mislukt, bevat de uitvoer van de opdracht **Get-ServiceFabricApplicationUpgrade** aanvullende informatie voor het opsporen van de fout.  In de volgende lijst wordt aangegeven hoe de aanvullende informatie kan worden gebruikt:
+Wanneer een upgrade mislukt, bevat de uitvoer van de opdracht **Get-ServiceFabricApplicationUpgrade** aanvullende informatie voor het opsporen van fouten.  In de volgende lijst wordt aangegeven hoe de aanvullende informatie kan worden gebruikt:
 
-1. Identificeer het type fout.
-2. Identificeer de reden van de fout.
-3. Isoleer een of meer falende componenten voor verder onderzoek.
+1. Het type fout identificeren.
+2. De reden van de fout vaststellen.
+3. Isoleer een of meer mislukte onderdelen voor nader onderzoek.
 
-Deze informatie is beschikbaar wanneer Service Fabric de fout detecteert, ongeacht of de **FailureAction** de upgrade moet terugdraaien of opschorten.
+Deze informatie is beschikbaar wanneer Service Fabric de fout detecteert, ongeacht of het **FailureAction** is om de upgrade te herstellen of te onderbreken.
 
 ### <a name="identify-the-failure-type"></a>Het type fout identificeren
 
-In de uitvoer van **Get-ServiceFabricApplicationUpgrade**identificeert **FailureTimestampUtc** de tijdstempel (in UTC) waarbij een upgradefout is gedetecteerd door Service Fabric en **FailureAction** is geactiveerd. **FailureReason** identificeert een van de drie potentiële oorzaken op hoog niveau van de storing:
+In de uitvoer van **Get-ServiceFabricApplicationUpgrade**identificeert **FailureTimestampUtc** de TIJDS tempel (in UTC) waarop een upgrade fout is gedetecteerd door service Fabric en **FailureAction** is geactiveerd. **FailureReason** identificeert een van de volgende drie mogelijke oorzaken van de fout op hoog niveau:
 
-1. UpgradeDomainTimeout - Geeft aan dat het te lang duurde voordat een bepaald upgradedomein is voltooid en **dat UpgradeDomainTimeout** is verlopen.
-2. OverallUpgradeTimeout - Geeft aan dat de algehele upgrade te lang duurde om te voltooien en **upgradetimeout** is verlopen.
-3. HealthCheck - Geeft aan dat na het upgraden van een updatedomein de toepassing ongezond is gebleven volgens het opgegeven gezondheidsbeleid en **dat HealthCheckRetryTimeout** is verlopen.
+1. UpgradeDomainTimeout: geeft aan dat het volt ooien van een bepaald upgrade domein te lang duurde en **UpgradeDomainTimeout** verlopen.
+2. OverallUpgradeTimeout: geeft aan dat de algehele upgrade te lang duurde en **UpgradeTimeout** is verlopen.
+3. Status controle: geeft aan dat na het bijwerken van een update domein de toepassing beschadigd is volgens het opgegeven status beleid en **HealthCheckRetryTimeout** is verlopen.
 
-Deze vermeldingen worden alleen weergegeven in de uitvoer wanneer de upgrade mislukt en begint terug te rollen. Meer informatie wordt weergegeven, afhankelijk van het type van de fout.
+Deze vermeldingen worden alleen weer gegeven in de uitvoer wanneer de upgrade mislukt en wordt teruggedraaid. Meer informatie wordt weer gegeven, afhankelijk van het type fout.
 
-### <a name="investigate-upgrade-timeouts"></a>Upgradetime-outs onderzoeken
+### <a name="investigate-upgrade-timeouts"></a>Upgrade-time-outs onderzoeken
 
-Fouten in de time-out van de upgrade worden meestal veroorzaakt door problemen met de beschikbaarheid van services. De uitvoer na deze alinea is typerend voor upgrades waarbij servicereplica's of -exemplaren niet worden gestart in de nieuwe codeversie. In het veld **UpgradeDomainProgressAtFailure** wordt een momentopname van een upgradein behandeling vastgelegd op het moment van de storing.
+Time-outfouten bij upgrades worden meestal veroorzaakt door problemen met de service beschikbaarheid. De uitvoer die volgt op deze alinea is een typische upgrade waarbij service replica's of exemplaren niet kunnen worden gestart in de nieuwe code versie. In het veld **UpgradeDomainProgressAtFailure** wordt een moment opname van alle wachtende upgrade werk opgenomen op het moment van de fout.
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -74,19 +74,19 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-In dit voorbeeld is de upgrade mislukt bij upgradedomein *MYUD1* en twee partities (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* en *4b43f4d8-b26b-424e-9307-7a7a62e79750*) bleven steken. De partities bleven vastzitten omdat de runtime geen primaire replica's *(WaitForPrimaryPlacement)* op doelknooppunten *Node1* en *Node4*kan plaatsen.
+In dit voor beeld is de upgrade mislukt voor het upgrade domein *MYUD1* en zijn er twee partities (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* en *4b43f4d8-b26b-424e-9307-7a7a62e79750*) vastgelopen. De partities zijn vastgelopen, omdat de runtime geen primaire replica's (*WaitForPrimaryPlacement*) kon plaatsen op doel knooppunten *Knooppunt1* en *Knooppunt4*.
 
-De opdracht **Get-ServiceFabricNode** kan worden gebruikt om te controleren of deze twee knooppunten zich in het upgradedomein *MYUD1 bevinden.* De *UpgradePhase* zegt *PostUpgradeSafetyCheck*, wat betekent dat deze veiligheidscontroles plaatsvinden nadat alle knooppunten in het upgradedomein klaar zijn met upgraden. Al deze informatie wijst op een mogelijk probleem met de nieuwe versie van de toepassingscode. De meest voorkomende problemen zijn servicefouten in de open of promotie naar primaire codepaden.
+De opdracht **Get-ServiceFabricNode** kan worden gebruikt om te controleren of deze twee knoop punten zich bevinden in een upgrade domein *MYUD1*. De *UpgradePhase* vertelt *PostUpgradeSafetyCheck*, wat betekent dat deze veiligheids controles worden uitgevoerd nadat alle knoop punten in het upgrade domein zijn bijgewerkt. Al deze informatie wijst op een mogelijk probleem met de nieuwe versie van de toepassings code. De meest voorkomende problemen zijn service fouten in paden open of promo to Primary code.
 
-Een *upgradefase* van *PreUpgradeSafetyCheck* betekent dat er problemen waren met de voorbereiding van het upgradedomein voordat het werd uitgevoerd. De meest voorkomende problemen in dit geval zijn servicefouten in de afsluiting of degradatie van primaire codepaden.
+Een *UpgradePhase* van *PreUpgradeSafetyCheck* houdt in dat er problemen zijn met het voorbereiden van het upgrade domein voordat het werd uitgevoerd. De meest voorkomende problemen in dit geval zijn service fouten in de paden sluiten of degradatie van primaire code.
 
-De huidige **UpgradeState** is *RollingBackCompleted,* dus de oorspronkelijke upgrade moet zijn uitgevoerd met een rollback **FailureAction**, die automatisch teruggedraaid van de upgrade bij mislukking. Als de oorspronkelijke upgrade is uitgevoerd met een handmatige **FailureAction,** dan is de upgrade in plaats daarvan in een opgeschorte staat om live foutopsporing van de toepassing mogelijk te maken.
+De huidige **UpgradeState** is *RollingBackCompleted*, dus de oorspronkelijke upgrade moet zijn uitgevoerd met een rollback **FailureAction**, die automatisch de upgrade terugdraait bij een fout. Als de oorspronkelijke upgrade is uitgevoerd met een hand matige **FailureAction**, is de upgrade in plaats daarvan in de onderbroken status om live fout opsporing van de toepassing toe te staan.
 
-In zeldzame gevallen kan het veld **UpgradeDomainProgressAtFailure** leeg zijn als de algehele upgradetijden uitvallen net zoals het systeem alle werkzaamheden voor het huidige upgradedomein voltooit. Als dit gebeurt, probeert u de parameterwaarden voor upgrade-upgradevan **UpgradeTimeout** en **UpgradeDomainTimeout** opnieuw en probeert u de upgrade opnieuw.
+In zeldzame gevallen kan het veld **UpgradeDomainProgressAtFailure** leeg zijn als er een time-out optreedt voor de totale upgrade, net zoals het systeem alle werk voor het huidige upgrade domein voltooit. Als dit het geval is, kunt u proberen de waarden voor de upgrade parameter **UpgradeTimeout** en **UpgradeDomainTimeout** te verhogen en de upgrade opnieuw uit te voeren.
 
-### <a name="investigate-health-check-failures"></a>Fouten in de statuscontrole onderzoeken
+### <a name="investigate-health-check-failures"></a>Status controle fouten onderzoeken
 
-Fouten in de statuscontrole kunnen worden geactiveerd door verschillende problemen die kunnen optreden nadat alle knooppunten in een upgradedomein zijn bijgewerkt en alle veiligheidscontroles kunnen doorstaan. De uitvoer na deze alinea is typerend voor een upgradefout als gevolg van mislukte statuscontroles. In het veld **Ongezonde evaluaties** wordt een momentopname van statuscontroles vastgelegd die zijn mislukt op het moment van de upgrade volgens het opgegeven [gezondheidsbeleid](service-fabric-health-introduction.md).
+Mislukte status controles kunnen worden geactiveerd door diverse problemen die zich kunnen voordoen nadat alle knoop punten in een upgrade domein de upgrade hebben voltooid en alle veiligheids controles hebben doorstaan. De uitvoer die volgt op deze alinea is een typische upgrade fout vanwege mislukte status controles. In het veld **UnhealthyEvaluations** wordt een moment opname van status controles vastgelegd die zijn mislukt op het moment van de upgrade volgens het opgegeven [status beleid](service-fabric-health-introduction.md).
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -142,23 +142,23 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-Voor het onderzoeken van fouten in de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status Maar zelfs zonder een dergelijk diepgaand begrip, kunnen we zien dat twee diensten ongezond zijn: *stof:/DemoApp/Svc3* en *stof:/DemoApp/Svc2*, samen met de foutgezondheidsrapporten ("InjectedFault" in dit geval). In dit voorbeeld zijn twee van de vier services ongezond, wat lager is dan de standaarddoelstelling van 0% ongezonde *(MaxPercentUnhealthyServices).*
+Voor het onderzoeken van status controle fouten moet u eerst weten wat het Service Fabric status model is. Maar zelfs zonder een diep gaande uitleg, kunnen we zien dat twee services een slechte status hebben: *Fabric:/DemoApp/Svc3* en *Fabric:/DemoApp/Svc2*, samen met de fout status rapporten (' InjectedFault ' in dit geval). In dit voor beeld zijn twee van de vier services niet in orde, wat lager is dan het standaard doel van 0% beschadigd (*MaxPercentUnhealthyServices*).
 
-De upgrade werd opgeschort bij het mislukken door het opgeven van een **FailureAction** van de handleiding bij het starten van de upgrade. Deze modus stelt ons in staat om het live systeem in de mislukte toestand te onderzoeken voordat we verdere actie ondernemen.
+De upgrade is onderbroken tijdens het mislukken door een **FailureAction** van de hand matig op te geven bij het starten van de upgrade. In deze modus kan ons het live-systeem onderzoeken met de status mislukt voordat verdere actie wordt ondernomen.
 
-### <a name="recover-from-a-suspended-upgrade"></a>Herstellen van een opgeschorte upgrade
+### <a name="recover-from-a-suspended-upgrade"></a>Herstellen van een onderbroken upgrade
 
-Met een rollback **FailureAction**, is er geen herstel nodig, omdat de upgrade automatisch terug rolt bij het mislukken. Met een handmatige **FailureAction**zijn er verschillende herstelopties:
+Met een rollback- **FailureAction**is het niet nodig om een herstel uit te voeren nadat de upgrade is mislukt. Met een hand matige **FailureAction**zijn er verschillende herstel opties:
 
-1.  een terugdraaien activeren
-2. Doorgaan met de rest van de upgrade handmatig
+1.  een terugdraai actie activeren
+2. De rest van de upgrade hand matig door lopen
 3. De bewaakte upgrade hervatten
 
-De opdracht **Start-ServiceFabricApplicationRollback** kan op elk gewenst moment worden gebruikt om de toepassing terug te draaien. Zodra de opdracht met succes wordt geretourneerd, is de terugdraaiaanvraag geregistreerd in het systeem en wordt het kort daarna gestart.
+De **Start-ServiceFabricApplicationRollback** opdracht kan op elk gewenst moment worden gebruikt om de toepassing terug te draaien. Zodra de opdracht met succes is geretourneerd, is de terugdraai aanvraag geregistreerd in het systeem en wordt u vervolgens binnenkort gestart.
 
-De opdracht **Cv-ServiceFabricApplicationUpgrade** kan worden gebruikt om de rest van de upgrade handmatig door te nemen, één upgradedomein tegelijk. In deze modus worden alleen veiligheidscontroles uitgevoerd door het systeem. Er worden geen gezondheidscontroles meer uitgevoerd. Deze opdracht kan alleen worden gebruikt wanneer de *upgradestate* *RollingForwardPending*weergeeft, wat betekent dat het huidige upgradedomein is voltooid met upgraden, maar de volgende is niet gestart (in behandeling).
+De opdracht **Resume-ServiceFabricApplicationUpgrade** kan worden gebruikt om de rest van de upgrade hand matig te door lopen, één upgrade domein per keer. In deze modus worden alleen veiligheids controles uitgevoerd door het systeem. Er worden niet meer status controles uitgevoerd. Deze opdracht kan alleen worden gebruikt wanneer de *UpgradeState* *RollingForwardPending*toont, wat betekent dat het huidige upgrade domein is bijgewerkt, maar dat het volgende niet is gestart (in behandeling).
 
-De opdracht **Update-ServiceFabricApplicationUpgrade** kan worden gebruikt om de bewaakte upgrade te hervatten, waarbij zowel veiligheids- als gezondheidscontroles worden uitgevoerd.
+De opdracht **Update-ServiceFabricApplicationUpgrade** kan worden gebruikt om de bewaakte upgrade te hervatten met de veiligheids-en status controles die worden uitgevoerd.
 
 ```powershell
 Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
@@ -182,50 +182,50 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-De upgrade gaat verder vanuit het upgradedomein waar het voor het laatst is opgeschort en gebruikt dezelfde upgradeparameters en het gezondheidsbeleid als voorheen. Indien nodig kan een van de upgradeparameters en het gezondheidsbeleid in de vorige uitvoer in dezelfde opdracht worden gewijzigd wanneer de upgrade wordt hervat. In dit voorbeeld is de upgrade hervat in de monitormodus, waarbij de parameters en het gezondheidsbeleid ongewijzigd zijn gebleven.
+De upgrade wordt voortgezet vanuit het upgrade domein waar het voor het laatst is onderbroken en gebruikt dezelfde upgrade parameters en status beleid als voorheen. Als dat nodig is, kunnen de upgrade parameters en status beleid die in de voor gaande uitvoer worden weer gegeven in dezelfde opdracht worden gewijzigd wanneer de upgrade wordt hervat. In dit voor beeld is de upgrade hervat in de bewaakte modus, met de para meters en de status beleidsregels ongewijzigd.
 
-## <a name="further-troubleshooting"></a>Verdere probleemoplossing
+## <a name="further-troubleshooting"></a>Verdere problemen oplossen
 
-### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric volgt het opgegeven gezondheidsbeleid niet
+### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric volgt niet het opgegeven status beleid
 
 Mogelijke oorzaak 1:
 
-Service Fabric vertaalt alle percentages naar werkelijke aantallen entiteiten (bijvoorbeeld replica's, partities en services) voor statusbeoordeling en rondt altijd af op hele entiteiten. Als de maximale *MaxPercentUnhealthyReplicasPerPartition* bijvoorbeeld 21% is en er vijf replica's zijn, staat Service`Math.Ceiling (5*0.21)`Fabric maximaal twee ongezonde replica's toe (dat wil zeggen). Daarom moet het gezondheidsbeleid dienovereenkomstig worden vastgesteld.
+Service Fabric worden alle percentages omgezet in het werkelijke aantal entiteiten (bijvoorbeeld replica's, partities en Services) voor de status evaluatie en worden er altijd naar hele entiteiten afgerond. Als de maximale *MaxPercentUnhealthyReplicasPerPartition* bijvoorbeeld 21% is en er vijf replica's zijn, kunt Service Fabric Maxi maal twee beschadigde replica's (dat wil zeggen`Math.Ceiling (5*0.21)`). Daarom moet het status beleid dienovereenkomstig worden ingesteld.
 
 Mogelijke oorzaak 2:
 
-Het gezondheidsbeleid wordt opgegeven in termen van percentages van de totale services en niet in specifieke service-exemplaren. Als een toepassing bijvoorbeeld vóór een upgrade vier service-exemplaren A, B, C en D heeft, waarbij service D niet in orde is, maar weinig invloed heeft op de toepassing. We willen de bekende ongezonde service D negeren tijdens de upgrade en de parameter *MaxPercentUnhealthyServices* instellen op 25%, ervan uitgaande dat alleen A, B en C gezond moeten zijn.
+Status beleidsregels worden opgegeven in termen van percentages van het totale aantal services en niet voor specifieke service-exemplaren. Als een toepassing bijvoorbeeld vóór een upgrade vier service-exemplaren A, B, C en D heeft, waarbij service D een slechte status heeft, maar met weinig invloed op de toepassing is. We willen de bekende slechte service D negeren tijdens de upgrade en stel de para meter *MaxPercentUnhealthyServices* in op 25%, ervan uitgaande dat alleen A, B en C in orde moeten zijn.
 
-Echter, tijdens de upgrade, D kan gezond worden, terwijl C wordt ongezond. De upgrade zou nog steeds slagen omdat slechts 25% van de diensten ongezond zijn. Echter, het kan resulteren in onverwachte fouten als gevolg van C wordt onverwacht ongezond in plaats van D. In deze situatie moet D worden gemodelleerd als een ander servicetype dan A, B en C. Aangezien het gezondheidsbeleid per servicetype is opgegeven, kunnen verschillende ongezonde percentagedrempels worden toegepast op verschillende services. 
+Tijdens de upgrade kan D echter in orde worden, terwijl C slecht wordt. De upgrade slaagt nog steeds omdat slechts 25% van de services niet in orde is. Het kan echter leiden tot onverwachte fouten omdat C onverwacht een slechte status heeft in plaats van D. In deze situatie moet D worden gemodelleerd als een ander Service type dan A, B en C. Omdat het status beleid per service type is opgegeven, kunnen verschillende waarden voor een slechtere frequentie worden toegepast op verschillende services. 
 
-### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Ik heb geen gezondheidsbeleid opgegeven voor het upgraden van toepassingen, maar de upgrade mislukt nog steeds voor een aantal time-outs die ik nooit heb opgegeven
+### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Ik heb geen status beleid opgegeven voor de upgrade van de toepassing, maar de upgrade mislukt voor een aantal time-outs die ik nooit heb opgegeven
 
-Wanneer het gezondheidsbeleid niet wordt verstrekt aan de upgradeaanvraag, worden deze overgenomen uit de *toepassingsversie applicationManifest.xml.* Als u bijvoorbeeld Toepassing X upgradet van versie 1.0 naar versie 2.0, wordt toepassingsstatusbeleid gebruikt waarvoor in versie 1.0 is opgegeven. Als een ander gezondheidsbeleid moet worden gebruikt voor de upgrade, moet het beleid worden opgegeven als onderdeel van de API-aanroep voor toepassingsverbetering. Het beleid dat is opgegeven als onderdeel van de API-aanroep, is alleen van toepassing tijdens de upgrade. Zodra de upgrade is voltooid, worden de beleidsregels gebruikt die zijn opgegeven in *applicationmanifest.xml.*
+Wanneer het status beleid niet aan de upgrade aanvraag wordt door gegeven, worden ze opgehaald uit de *ApplicationManifest. XML* van de huidige toepassings versie. Als u bijvoorbeeld toepassing X bijwerkt van versie 1,0 naar versie 2,0, worden de beleids regels voor de status van de toepassing gebruikt die in versie 1,0 zijn opgegeven. Als voor de upgrade een ander status beleid moet worden gebruikt, moet het beleid worden opgegeven als onderdeel van de API-aanroep van de toepassings upgrade. De beleids regels die zijn opgegeven als onderdeel van de API-aanroep, zijn alleen van toepassing tijdens de upgrade. Zodra de upgrade is voltooid, worden de beleids regels die zijn opgegeven in *ApplicationManifest. XML* gebruikt.
 
-### <a name="incorrect-time-outs-are-specified"></a>Onjuiste time-outs zijn opgegeven
+### <a name="incorrect-time-outs-are-specified"></a>Er zijn onjuiste time-outs opgegeven
 
-Je hebt je misschien afgevraagd wat er gebeurt als time-outs inconsistent zijn ingesteld. U bijvoorbeeld een *upgradetime-out* hebben die kleiner is dan de *UpgradeDomainTimeout.* Het antwoord is dat een fout wordt geretourneerd. Fouten worden geretourneerd als de *UpgradeDomainTimeout* kleiner is dan de som *van HealthCheckWaitDuration* en *HealthCheckRetryTimeout*of als *UpgradeDomainTimeout* kleiner is dan de som *van HealthCheckWaitDuration* en *HealthCheckStableDuration*.
+U hebt zich wellicht afvraagt wat er gebeurt wanneer time-outs inconsistent zijn ingesteld. U kunt bijvoorbeeld een *UpgradeTimeout* hebben die kleiner is dan de *UpgradeDomainTimeout*. Het antwoord is dat er een fout wordt geretourneerd. Er worden fouten geretourneerd als de *UpgradeDomainTimeout* kleiner is dan de som van *HealthCheckWaitDuration* en *HealthCheckRetryTimeout*, of als *UpgradeDomainTimeout* kleiner is dan de som van *HealthCheckWaitDuration* en *HealthCheckStableDuration*.
 
-### <a name="my-upgrades-are-taking-too-long"></a>Mijn upgrades duren te lang
+### <a name="my-upgrades-are-taking-too-long"></a>Mijn upgrades nemen te lang uit
 
-De tijd die een upgrade moet voltooien, is afhankelijk van de opgegeven statuscontroles en time-outs. Statuscontroles en time-outs zijn afhankelijk van hoe lang het duurt om de toepassing te kopiëren, implementeren en stabiliseren. Te agressief zijn met time-outs kan meer mislukte upgrades betekenen, dus we raden aan om conservatief te beginnen met langere time-outs.
+De tijd voor het volt ooien van een upgrade is afhankelijk van de status controles en de opgegeven time-outs. Status controles en time-outs zijn afhankelijk van hoe lang het duurt om de toepassing te kopiëren, te implementeren en te stabiliseren. Het is te agressief met time-outs betekent dat er meer mislukte upgrades mogelijk zijn. het wordt daarom aangeraden om op een conservatieve manier te beginnen met langere time-outs.
 
-Hier vindt u een snelle opfriscursus over hoe de time-outs omgaan met de upgradetijden:
+Hier volgt een snelle hernieuwde informatie over hoe de time-outs communiceren met de upgrade tijden:
 
-Upgrades voor een upgradedomein kunnen niet sneller worden voltooid dan *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+Upgrades voor een upgrade domein kunnen niet sneller worden uitgevoerd dan *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
 
-Upgradefout kan niet sneller optreden dan *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+De upgrade fout kan sneller worden uitgevoerd dan *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
 
-De upgradetijd voor een upgradedomein wordt beperkt door *UpgradeDomainTimeout.*  Als *HealthCheckRetryTimeout* en *HealthCheckStableDuration* zowel niet-nul zijn als de status van de toepassing heen en weer blijft schakelen, wordt de upgrade uiteindelijk opnieuw getimed op *UpgradeDomainTimeout.* *UpgradeDomainTimeout* begint af te tellen zodra de upgrade voor het huidige upgradedomein begint.
+De upgrade tijd voor een upgrade domein wordt beperkt door *UpgradeDomainTimeout*.  Als *HealthCheckRetryTimeout* en *HealthCheckStableDuration* beide niet-nul zijn en de status van de toepassing wordt omgeschakeld, wordt er uiteindelijk een time-out voor de upgrade uitgevoerd op *UpgradeDomainTimeout*. *UpgradeDomainTimeout* begint met tellen zodra de upgrade voor het huidige upgrade domein begint.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Upgraden van uw toepassing Met Visual Studio](service-fabric-application-upgrade-tutorial.md) u een applicatie-upgrade doorlopen met Visual Studio.
+Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
 
-[Het upgraden van uw toepassing met Powershell](service-fabric-application-upgrade-tutorial-powershell.md) leidt u door een applicatie-upgrade met PowerShell.
+Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
 
-Bepaal hoe uw toepassing wordt bijgewerkt met [upgradeparameters.](service-fabric-application-upgrade-parameters.md)
+Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
 
-Maak uw toepassingsupgrades compatibel door te leren hoe [u Data Serialization kunt](service-fabric-application-upgrade-data-serialization.md)gebruiken.
+Maak uw toepassings upgrades compatibel door te leren hoe u [gegevens serialisatie](service-fabric-application-upgrade-data-serialization.md)gebruikt.
 
-Meer informatie over het gebruik van geavanceerde functionaliteit tijdens het upgraden van uw toepassing door te verwijzen naar [geavanceerde onderwerpen.](service-fabric-application-upgrade-advanced.md)
+Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).

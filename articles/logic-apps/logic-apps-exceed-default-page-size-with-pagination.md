@@ -1,68 +1,68 @@
 ---
-title: Meer items of records met pagination
-description: Paginatie instellen om de standaardlimiet voor paginagrootte voor connectoracties in Azure Logic Apps te overschrijden
+title: Meer items of records met paginering ophalen
+description: Paginering instellen om de standaard limiet voor de pagina grootte te overschrijden voor connector acties in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792121"
 ---
-# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Meer gegevens, items of records downloaden met behulp van paginatie in Azure Logic Apps
+# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Meer gegevens, items of records ophalen met behulp van paginering in Azure Logic Apps
 
-Wanneer u gegevens, items of records ophaalt met behulp van een connectoractie in [Azure Logic Apps,](../logic-apps/logic-apps-overview.md)u resultaatsets krijgen die zo groot zijn dat de actie niet alle resultaten tegelijkertijd retourneert. Bij sommige acties kan het aantal resultaten groter zijn dan de standaardpaginagrootte van de connector. In dit geval retourneert de actie alleen de eerste pagina met resultaten. De standaardpaginagrootte voor de actie Rijen **van** de SQL Server-connector is bijvoorbeeld 2048, maar kan variëren op basis van andere instellingen.
+Wanneer u gegevens, items of records ophaalt met behulp van een connector actie in [Azure Logic apps](../logic-apps/logic-apps-overview.md), krijgt u mogelijk resultaten sets zo groot dat de actie niet alle resultaten tegelijk retourneert. Met sommige acties kan het aantal resultaten de standaard pagina grootte van de connector overschrijden. In dit geval retourneert de actie alleen de eerste pagina met resultaten. De standaard pagina grootte voor de actie **rijen ophalen** van SQL Server-connector is bijvoorbeeld 2048, maar kan variëren op basis van andere instellingen.
 
-Met sommige acties u een *paginatie-instelling* inschakelen, zodat uw logische app meer resultaten kan ophalen tot de paginatielimiet, maar deze resultaten retourneren als één bericht wanneer de actie is voltooid. Wanneer u paginatie gebruikt, moet u een *drempelwaarde* opgeven, het doelaantal resultaten dat u wilt dat de actie retourneert. De actie haalt resultaten op totdat de opgegeven drempelwaarde is bereikt. Wanneer het totale aantal items lager is dan de opgegeven drempelwaarde, worden alle resultaten opgehaald door de actie.
+Met sommige acties kunt u een *paginerings* instelling inschakelen zodat uw logische app meer resultaten kan ophalen tot aan de paginerings limiet, maar deze resultaten als één bericht retourneert wanneer de actie is voltooid. Wanneer u paginering gebruikt, moet u een *drempel* waarde opgeven. Dit is het doel aantal resultaten dat door de actie moet worden geretourneerd. Met de actie worden resultaten opgehaald totdat de opgegeven drempel waarde wordt bereikt. Wanneer het totale aantal items kleiner is dan de opgegeven drempel waarde, haalt de actie alle resultaten op.
 
-Als u de paginatie-instelling inschakelt, worden pagina's met resultaten opgehaald op basis van het paginaformaat van een connector. Dit gedrag betekent dat u soms meer resultaten krijgt dan de opgegeven drempelwaarde. Bijvoorbeeld bij het gebruik van de actie SQL Server **Get rijen,** die de instelling paginatie ondersteunt:
+Als u de paginerings instelling inschakelt, worden de pagina's met resultaten opgehaald op basis van de pagina grootte van een connector. Dit kan betekenen dat er soms meer resultaten worden weer gegeven dan de opgegeven drempel waarde. Wanneer u bijvoorbeeld de actie **rijen ophalen** van SQL Server gebruikt, die de paginerings instelling ondersteunt:
 
-* De standaardpaginagrootte van de actie is 2048 records per pagina.
-* Stel dat u 10.000 records hebt en 5000 records als minimum opgeeft.
-* Pagination krijgt pagina's met records, dus om ten minste het opgegeven minimum te krijgen, retourneert de actie 6144 records (3 pagina's x 2048 records), niet 5000 records.
+* De standaard pagina grootte van de actie is 2048 records per pagina.
+* Stel dat u 10.000 records hebt en 5000 records opgeeft als mini maal.
+* Paginering haalt pagina's van records op, zodat er ten minste het opgegeven minimum wordt opgehaald. de actie retourneert 6144 records (3 pagina's x 2048 records), niet 5000 records.
 
-Hier is een lijst met slechts enkele van de connectors waar u de standaardpaginagrootte voor specifieke acties overschrijden:
+Hier volgt een lijst met slechts enkele Connect oren waar u de standaard pagina grootte voor specifieke acties kunt overschrijden:
 
 * [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
 * [Excel](https://docs.microsoft.com/connectors/excel/)
-* [HTTP (HTTP)](https://docs.microsoft.com/azure/connectors/connectors-native-http)
+* [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
 * [IBM DB2](https://docs.microsoft.com/connectors/db2/)
-* [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
+* [Micro soft teams](https://docs.microsoft.com/connectors/teams/)
 * [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
-* [Salesforce](https://docs.microsoft.com/connectors/salesforce/)
+* [SalesForce](https://docs.microsoft.com/connectors/salesforce/)
 * [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
 * [SQL Server](https://docs.microsoft.com/connectors/sql/)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account.](https://azure.microsoft.com/free/)
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De logische app en de actie waar u pagination wilt inschakelen. Zie [Snelstart: Uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md)als u geen logische app hebt.
+* De logische app en de actie waar u paginering wilt inschakelen. Als u geen logische app hebt, raadpleegt u [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="turn-on-pagination"></a>Pagination inschakelen
+## <a name="turn-on-pagination"></a>Paginering inschakelen
 
-Als u wilt bepalen of een actie paginatie in de Logic App Designer ondersteunt, controleert u de instellingen van de actie voor de **instelling Pagination.** In dit voorbeeld ziet u hoe u paginatie inschakelt in de actie **Rijen voor pagina's van** SQL Server.
+Als u wilt bepalen of een actie paginering ondersteunt in de ontwerp functie voor logische apps, controleert u de instellingen van de actie voor de **paginerings** instelling. In dit voor beeld ziet u hoe u paginering inschakelt in de actie **rijen ophalen** van de SQL Server.
 
-1. Kies in de rechterbovenhoek van de actie de knop Ellipsen (**...**) en selecteer **Instellingen**.
+1. Klik in de rechter bovenhoek van de actie op de knop met weglatings tekens (**...**) en selecteer **instellingen**.
 
    ![De instellingen van de actie openen](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
-   Als de actie paginatie ondersteunt, wordt in de actie de **instelling Pagination** weergegeven.
+   Als de actie paginering ondersteunt, wordt in de actie de **paginerings** instelling weer gegeven.
 
-1. Wijzig de **instelling Pagination** van **Aan** naar **Aan**. Geef **in** de eigenschap Threshold een gehele waarde op voor het doelaantal resultaten dat de actie moet retourneren.
+1. Wijzig de **paginerings** instelling van **uit** in **op aan**. Geef in de eigenschap **drempel** waarde een geheel getal op voor het doel aantal resultaten dat moet worden geretourneerd door de actie.
 
-   ![Minimaal aantal resultaten opgeven om terug te keren](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
+   ![Geef het minimum aantal resultaten op dat moet worden geretourneerd](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
-1. Als je er klaar voor bent, kies je **Gereed.**
+1. Wanneer u klaar bent, kiest u **gereed**.
 
-## <a name="workflow-definition---pagination"></a>Werkstroomdefinitie - paginatie
+## <a name="workflow-definition---pagination"></a>Werk stroom definitie-paginering
 
-Wanneer u paginatie inschakelt voor een actie die deze mogelijkheid ondersteunt, `"paginationPolicy"` bevat de `"minimumItemCount"` werkstroomdefinitie van `"runtimeConfiguration"` uw logische app de eigenschap samen met de eigenschap in de eigenschap van die actie, bijvoorbeeld:
+Wanneer u paginering inschakelt voor een actie die ondersteuning biedt voor deze mogelijkheid, bevat de werk stroom definitie `"paginationPolicy"` van de logische app `"minimumItemCount"` de eigenschap samen met de `"runtimeConfiguration"` eigenschap in de eigenschap van die actie, bijvoorbeeld:
 
 ```json
 "actions": {

@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Trello vanuit Azure Logic Apps
-description: Werkstromen en werkstromen automatiseren die lijsten, borden en kaarten in uw Trello-projecten bewaken en beheren met Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee u lijsten, kaarten en kaarten in uw Trello-projecten kunt bewaken en beheren met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,60 +8,60 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5c4fcb9b4fea1a4d982b5cf665564599d371b7cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789134"
 ---
-# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Trello bewaken en beheren met Azure Logic Apps
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Trello met Azure Logic Apps bewaken en beheren
 
-Met Azure Logic Apps en de Trello-connector u geautomatiseerde taken en werkstromen maken die uw Trello-lijsten, kaarten, borden, teamleden enzovoort controleren en beheren, bijvoorbeeld:
+Met Azure Logic Apps en de Trello-connector kunt u geautomatiseerde taken en werk stromen maken voor het bewaken en beheren van uw Trello-lijsten,-kaarten,-borden,-team leden enzovoort, bijvoorbeeld:
 
-* Controleer wanneer nieuwe kaarten worden toegevoegd aan borden en lijsten. 
-* Maak, krijg en beheer borden, kaarten en lijsten.
+* Controleren wanneer nieuwe kaarten worden toegevoegd aan kaarten en lijsten. 
+* Kaarten, kaarten en lijsten maken, ophalen en beheren.
 * Voeg opmerkingen en leden toe aan kaarten.
-* Lijstborden, bordjes, kaarten op borden, kaartopmerkingen, kaartleden, teamleden en teams waar je lid van bent. 
-* Haal teams.
+* Lijst met kaarten, bord etiketten, kaarten op kaarten, kaart opmerkingen, kaart leden, team leden en teams waarvan u lid bent. 
+* Teams ophalen.
 
-U triggers gebruiken die reacties van uw Trello-account ontvangen en de uitvoer beschikbaar maken voor andere acties. U acties gebruiken die taken uitvoeren met uw Trello-account. U ook andere acties de uitvoer van Trello-acties laten gebruiken. Wanneer er bijvoorbeeld een nieuwe kaart aan het bord of de lijst wordt toegevoegd, u berichten verzenden met de Slack-connector. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die reacties ophalen van uw Trello-account en de uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken om taken uit te voeren met uw Trello-account. U kunt ook andere acties uitvoeren met de uitvoer van Trello-acties. Als er bijvoorbeeld een nieuwe kaart aan het bord of de lijst wordt toegevoegd, kunt u berichten verzenden met de connector voor toegestane vertraging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw Trello-account en gebruikersreferenties
+* Uw Trello-account en gebruikers referenties
 
-  Uw referenties autoriseren uw logische app om een verbinding te maken en toegang te krijgen tot uw Trello-account.
+  Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Trello-account.
 
-* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang wilt hebben tot uw Trello-account. Als u wilt beginnen met een Trello-trigger, [maakt u een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u een Trello-actie wilt gebruiken, start u uw logische app met een trigger, bijvoorbeeld de **recidieftrigger.**
+* De logische app waartoe u toegang wilt krijgen tot uw Trello-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een Trello-trigger. Als u een Trello-actie wilt gebruiken, start u uw logische app met een trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-trello"></a>Verbinding maken met Trello
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open uw logische app in Logic App Designer, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voer in het zoekvak 'trello' in als filter. Selecteer onder de lijst triggers de gewenste trigger. 
+1. Voor lege Logic apps voert u in het zoekvak ' Trello ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers. 
 
    -of-
 
-   Kies **Nieuwe stap**voor bestaande logische apps onder de laatste stap waarin u een actie wilt toevoegen. 
-   Voer in het zoekvak 'trello' in als filter. 
-   Selecteer onder de lijst met acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, kiest u **nieuwe stap**. 
+   Voer in het zoekvak ' Trello ' in als uw filter. 
+   Selecteer in de lijst acties de gewenste actie.
 
-   Als u een actie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl tussen de stappen. 
-   Kies het plusteken (**+**) dat wordt weergegeven en selecteer Vervolgens Een actie **toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Als u wordt gevraagd zich aan te melden bij Trello, geeft u toestemming voor toegang voor uw logische app en meldt u zich aan.
+1. Als u wordt gevraagd om u aan te melden bij Trello, machtigt u toegang voor uw logische app en meldt u zich aan.
 
-1. Geef de benodigde details voor de geselecteerde trigger of actie en ga verder met het bouwen van de workflow van uw logische app.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische details over triggers, acties en limieten, die worden beschreven door de OpenAPI-beschrijving (voorheen Swagger) van de connector, raadpleegt u de [referentiepagina](/connectors/trello/)van de connector.
+Raadpleeg de [referentie pagina](/connectors/trello/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -70,4 +70,4 @@ Voor technische details over triggers, acties en limieten, die worden beschreven
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

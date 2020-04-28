@@ -1,7 +1,7 @@
 ---
 title: Video versleutelen met AES-128
 titleSuffix: Azure Media Services
-description: Meer informatie over het versleutelen van video met AES 128-bits versleuteling en hoe u de service voor sleutellevering in Azure Media Services gebruiken.
+description: Meer informatie over het versleutelen van video met AES 128-bits versleuteling en het gebruik van de key delivery service in Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974169"
 ---
-# <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelfstudie: Video versleutelen met AES-128 en gebruik de service voor het leveren van sleutels
+# <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelf studie: video versleutelen met AES-128 en de key delivery service gebruiken
 
 > [!NOTE]
-> Hoewel de zelfstudie de [.NET SDK-voorbeelden](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) gebruikt, zijn de algemene stappen hetzelfde voor [REST API,](https://docs.microsoft.com/rest/api/media/liveevents) [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)of andere ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Hoewel in de zelf studie de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -voor beelden worden gebruikt, zijn de algemene stappen hetzelfde voor [rest API](https://docs.microsoft.com/rest/api/media/liveevents), [cli](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)of andere ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
-U Media Services gebruiken om HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming versleuteld met de AES te leveren met behulp van 128-bits encryptiesleutels. Media Services biedt ook de belangrijke leveringsservice die versleutelingssleutels levert aan geautoriseerde gebruikers. Als u wilt dat Media Services uw video dynamisch versleutelt, koppelt u de versleutelingssleutel aan een Streaming Locator en configureert u ook het beleid voor inhoudssleutel. Wanneer een stream wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met AES-128. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. De service evalueert het door u opgegeven beleid voor de inhoudssleutel om te bepalen of de gebruiker is gemachtigd om de sleutel op te halen.
+U kunt Media Services gebruiken om HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming te versleutelen met de AES door gebruik te maken van 128-bits coderings sleutels. Media Services biedt ook de key delivery service die versleutelings sleutels levert aan geautoriseerde gebruikers. Als u wilt dat Media Services uw video dynamisch versleutelt, koppelt u de versleutelings sleutel aan een streaming-Locator en configureert u ook het beleid voor de inhouds sleutel. Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met AES-128. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. De service evalueert het door u opgegeven beleid voor de inhoudssleutel om te bepalen of de gebruiker is gemachtigd om de sleutel op te halen.
 
-U kunt elke asset met meerdere versleutelingstypen versleutelen (AES-128, PlayReady, Widevine, FairPlay). Zie [Streamingprotocollen en versleutelingstypen](content-protection-overview.md#streaming-protocols-and-encryption-types) voor nuttige combinaties. Zie ook [Hoe te beschermen met DRM](protect-with-drm.md).
+U kunt elke asset met meerdere versleutelingstypen versleutelen (AES-128, PlayReady, Widevine, FairPlay). Zie [Streamingprotocollen en versleutelingstypen](content-protection-overview.md#streaming-protocols-and-encryption-types) voor nuttige combinaties. Zie ook [hoe u met DRM kunt beveiligen](protect-with-drm.md).
 
-De uitvoer uit het voorbeeld van dit artikel bevat een URL naar de Azure Media Player, manifest-URL en het AES-token dat nodig is om de inhoud af te spelen. In het voorbeeld wordt de vervaldatum van het JSON-webtoken (JWT) ingesteld op 1 uur. U een browser openen en de resulterende URL plakken om de demopagina van Azure Media ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```Player te starten met de URL en het token dat al voor u is ingevuld in de volgende indeling:.
+De uitvoer van het voor beeld dit artikel bevat een URL naar de Azure Media Player, manifest-URL en het AES-token dat nodig is voor het afspelen van de inhoud. In het voor beeld wordt de verval datum van het token van de JSON Web Token (JWT) ingesteld op 1 uur. U kunt een browser openen en de resulterende URL plakken om de Azure Media Player demo pagina te starten met de URL en het token dat u in de volgende indeling hebt ingevuld ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```:.
 
 In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
-> * Download het [EncryptWithAES-voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) dat in het artikel wordt beschreven.
-> * Ga mediaservices-API's gebruiken met .NET SDK.
-> * Maak een uitvoeritem.
-> * Maak een coderingstransformatie.
-> * Dien een job in.
+> * Down load het [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) -voor beeld dat wordt beschreven in het artikel.
+> * Begin met het gebruik van Media Services Api's met .NET SDK.
+> * Maak een uitvoer activum.
+> * Een coderings transformatie maken.
+> * Een taak verzenden.
 > * Wacht tot de taak is voltooid.
-> * Een inhoudssleutelbeleid maken
-> * Configureer het beleid om JWT-tokenbeperking te gebruiken.
-> * Maak een streaminglocator.
-> * Configureer de streaminglocator om de video te versleutelen met AES (ClearKey).
-> * Neem een testtoken.
+> * Een inhouds sleutel beleid maken
+> * Configureer het beleid om de JWT-token beperking te gebruiken.
+> * Maak een streaming-Locator.
+> * Configureer de streaming-Locator voor het versleutelen van de video met AES (ClearKey).
+> * Een test Token ophalen.
 > * Een streaming-URL bouwen.
 > * Resources opschonen.
 
@@ -58,7 +58,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien.
 * Lees het artikel [Content protection overview](content-protection-overview.md) (Overzicht inhoudsbeveiliging).
 * Installeer Visual Studio Code of Visual Studio.
 * [Een Azure Media Services-account maken](create-account-cli-quickstart.md).
-* Ontvang referenties die nodig zijn om API's van Media Services te gebruiken door [toegangsAPI's te](access-api-cli-how-to.md)volgen.
+* Referenties ophalen die nodig zijn voor het gebruik van Media Services Api's door [toegangs-api's](access-api-cli-how-to.md)te volgen.
 
 ## <a name="download-code"></a>Code downloaden
 
@@ -68,14 +68,14 @@ Kloon met de volgende opdracht een GitHub-opslagplaats met het volledige .NET-vo
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
-Het voorbeeld 'Versleutelen met AES-128' bevindt zich in de map [EncryptWithAES.](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES)
+Het voor beeld ' Encrypt with AES-128 ' bevindt zich in de map [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) .
 
 > [!NOTE]
-> Het voorbeeld creëert unieke bronnen elke keer dat u de app uitvoert. Doorgaans gebruikt u bestaande bronnen zoals transformaties en beleidsregels opnieuw (als bestaande resources configuraties vereisen).
+> In het voor beeld worden elke keer dat u de app uitvoert, unieke bronnen gemaakt. Normaal gesp roken gebruikt u bestaande resources als trans formaties en beleids regels (als de bestaande resource vereiste configuraties heeft).
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>Starten met het gebruik van Media Services API's met .NET SDK
 
-Als u API's van Media Services wilt gaan gebruiken met .NET, maakt u een **AzureMediaServicesClient-object.** Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de code die u aan het begin van het artikel hebt gekloond, wordt met de functie **GetCredentialsAsync** het object ServiceClientCredentials gemaakt op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
+Maak een **AzureMediaServicesClient** -object om Media Services-api's met .net te gebruiken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de code die u aan het begin van het artikel hebt gekloond, wordt met de functie **GetCredentialsAsync** het object ServiceClientCredentials gemaakt op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
@@ -87,33 +87,33 @@ In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het
 
 ## <a name="get-or-create-an-encoding-transform"></a>Een coderingstransformatie verkrijgen of maken
 
-Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste parameter is een **TransformOutput**-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming **. De preset codeert de invoervideo in een automatisch gegenereerde bitrateladder (bitrate-resolutieparen) op basis van de invoerresolutie en bitrate en produceert vervolgens ISO MP4-bestanden met H.264-video en OC-audio die overeenkomen met elk paar met bitrate-resolutie.
+Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste parameter is een **TransformOutput**-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming **. De voor instelling codeert de invoer video in een automatisch gegenereerde bitrate-ladder (paren voor de omzetting van de bitsnelheid) op basis van de invoer resolutie en bitrate, en produceert vervolgens ISO MP4-bestanden met H. 264 video en AAC-audio die overeenkomt met elke combi natie van de verlaagings oplossing.
 
-Controleer voordat u een nieuwe [transformatie maakt,](https://docs.microsoft.com/rest/api/media/transforms)eerst of er al een bestaat met de methode **Get,** zoals wordt weergegeven in de code die volgt. In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
+Voordat u een nieuwe [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)maakt, moet u eerst controleren of er al een bestaat met behulp van de **Get** -methode, zoals wordt weer gegeven in de volgende code. In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#EnsureTransformExists)]
 
 ## <a name="submit-job"></a>Taak indienen
 
-Zoals eerder vermeld, is het [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-object het recept en is de [taak](https://docs.microsoft.com/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** geeft informatie op, zoals de locatie van de invoervideo en de locatie voor de uitvoer.
+Zoals eerder vermeld, is het [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-object het recept en is de [taak](https://docs.microsoft.com/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** geeft informatie op zoals de locatie van de invoer video en de locatie voor de uitvoer.
 
-In deze zelfstudie maken we de invoer van de taak op basis van een bestand dat rechtstreeks wordt ingenomen vanuit een URL van de [HTTPs-bron.](job-input-from-http-how-to.md)
+In deze zelf studie maken we de invoer van de taak op basis van een bestand dat rechtstreeks vanuit een [https-bron-URL](job-input-from-http-how-to.md)wordt opgenomen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#SubmitJob)]
 
 ## <a name="wait-for-the-job-to-complete"></a>Wacht tot de taak is voltooid
 
-De klus duurt enige tijd. Als dat het zo is, wilt u op de hoogte worden gesteld. In het onderstaande codevoorbeeld ziet u hoe de status van de [taak](https://docs.microsoft.com/rest/api/media/jobs) kan worden opgevraagd in de service. Polling is geen aanbevolen aanbevolen best practice voor productie-apps vanwege mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken. Zie [Gebeurtenissen naar een aangepast webeindpunt leiden voor](job-state-events-cli-how-to.md)meer informatie.
+Het duurt enige tijd voordat de taak is voltooid. Wanneer dit het geval is, wilt u een melding ontvangen. In het onderstaande codevoorbeeld ziet u hoe de status van de [taak](https://docs.microsoft.com/rest/api/media/jobs) kan worden opgevraagd in de service. Polling is geen aanbevolen best practice voor productie-apps vanwege een mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken. Zie voor meer informatie [route gebeurtenissen naar een aangepast webeindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als de taak een fout is opgelopen, krijgt u de **status Fout.** Als de taak wordt geannuleerd, wordt u **geannuleerd** en **geannuleerd** wanneer deze is uitgevoerd.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en **geannuleerd** wanneer deze is voltooid...
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-content-key-policy"></a>Een inhoudssleutelbeleid maken
+## <a name="create-a-content-key-policy"></a>Een inhouds sleutel beleid maken
 
-Een inhoudssleutel biedt veilige toegang tot uw assets. U moet een **inhoudssleutelbeleid** maken dat configureert hoe de inhoudssleutel aan eindclients wordt geleverd. De inhoudssleutel is gekoppeld aan de **streaminglocator**. Media Services biedt ook de belangrijke leveringsservice die versleutelingssleutels levert aan geautoriseerde gebruikers.
+Een inhoudssleutel biedt veilige toegang tot uw assets. U moet een beleid voor **inhouds sleutels** maken dat configureert hoe de inhouds sleutel wordt geleverd aan de eind clients. De inhouds sleutel is gekoppeld aan de **streaming-Locator**. Media Services biedt ook de key delivery service die versleutelings sleutels levert aan geautoriseerde gebruikers.
 
-Wanneer een stream door een speler wordt aangevraagd, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen (in dit geval met Behulp van AES-versleuteling.) Om de stream te decoderen, vraagt de speler de sleutel van de belangrijke leveringsservice. De service evalueert het door u opgegeven beleid voor de inhoudssleutel om te bepalen of de gebruiker is gemachtigd om de sleutel op te halen.
+Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen (in dit geval door gebruik te maken van AES-versleuteling). Voor het ontsleutelen van de stroom vraagt de speler de sleutel aan bij de key delivery service. De service evalueert het door u opgegeven beleid voor de inhoudssleutel om te bepalen of de gebruiker is gemachtigd om de sleutel op te halen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
@@ -121,35 +121,35 @@ Wanneer een stream door een speler wordt aangevraagd, gebruikt Media Services de
 
 Nadat de codering is voltooid en het inhoudssleutelbeleid is ingesteld, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U maakt de video beschikbaar in twee stappen:
 
-1. Een [streaminglocator maken.](https://docs.microsoft.com/rest/api/media/streaminglocators)
+1. Maak een [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators).
 2. De streaming-URL's bouwen die clients kunnen gebruiken.
 
-Het proces van het maken van de **Streaming Locator** heet publiceren. Standaard is de **Streaming Locator** direct geldig nadat u de API-aanroepen hebt gemaakt. Het duurt tot het is verwijderd, tenzij u de optionele begin- en eindtijden configureert.
+Het proces voor het maken van de **streaming-Locator** wordt publicatie genoemd. De **streaming-Locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt. De laatste keer dat deze wordt verwijderd, tenzij u de optionele begin-en eind tijden configureert.
 
-Wanneer u een [streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators)maakt, moet u de gewenste **StreamingPolicyName**opgeven. In deze zelfstudie gebruiken we een van de vooraf gedefinieerde streamingbeleidsregels, waarmee Azure Media Services wordt uitgelegd hoe de inhoud voor streaming moet worden gepubliceerd. In dit voorbeeld wordt de AES Envelope-versleuteling toegepast (deze versleuteling wordt ook wel ClearKey-versleuteling genoemd omdat de sleutel via HTTPS aan de afspeelclient wordt geleverd en geen DRM-licentie).
+Wanneer u een [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators)maakt, moet u de gewenste **StreamingPolicyName**opgeven. In deze zelf studie gebruiken we een van de PredefinedStreamingPolicies, die vertelt Azure Media Services hoe de inhoud voor streaming moet worden gepubliceerd. In dit voor beeld wordt de AES-envelop versleuteling toegepast (deze versleuteling wordt ook wel ClearKey-versleuteling genoemd, omdat de sleutel wordt geleverd aan de Play-client via HTTPS en niet een DRM-licentie).
 
 > [!IMPORTANT]
-> Wanneer u een aangepast [streamingbeleid gebruikt,](https://docs.microsoft.com/rest/api/media/streamingpolicies)moet u een beperkte set van dergelijke beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde versleutelingsopties en -protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal StreamingPolicy-vermeldingen. U moet geen nieuw streamingbeleid maken voor elke streaminglocator.
+> Wanneer u een aangepaste [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies)gebruikt, dient u een beperkt aantal beleids regels te ontwerpen voor uw media service-account en deze opnieuw te gebruiken voor uw streaming-Locators wanneer dezelfde versleutelings opties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal StreamingPolicy-vermeldingen. Het is niet mogelijk om voor elke streaming-Locator een nieuwe StreamingPolicy te maken.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>Een test-token ophalen
 
-In deze zelfstudie geven we voor het inhoudssleutelbeleid op dat het een tokenbeperking heeft. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in het [JWT-formaat](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) en dat is wat we configureren in het voorbeeld.
+In deze zelfstudie geven we voor het inhoudssleutelbeleid op dat het een tokenbeperking heeft. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in de [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) -indeling en dat is wat we configureren in het voor beeld.
 
-De ContentKeyIdentifierClaim wordt gebruikt in het **beleid voor inhoudssleutel,** wat betekent dat het token dat wordt gepresenteerd aan de key delivery-service de id van de inhoudssleutel moet bevatten. In het voorbeeld hebben we geen inhoudssleutel opgegeven bij het maken van de Streaming Locator, het systeem heeft een willekeurige voor ons gemaakt. Om het testtoken te genereren, moeten we de ContentKeyId in de ContentKeyIdentifierClaim-claim laten plaatsen.
+De ContentKeyIdentifierClaim wordt gebruikt in het **beleid voor de inhouds sleutel**. Dit betekent dat het token dat wordt gepresenteerd aan de key delivery service, de id van de inhouds sleutel moet hebben. In het voor beeld hebben we geen inhouds sleutel opgegeven bij het maken van de streaming-Locator, het systeem heeft een wille keurige een voor ons gemaakt. Om het test token te genereren, moeten we de ContentKeyId ophalen om de ContentKeyIdentifierClaim-claim in te stellen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>Een DASH-streaming-URL bouwen
 
-Nu de [Streaming Locator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, u de streaming URL's krijgen. Als u een URL wilt maken, moet u de hostnaam [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) en het **pad van streaming locator met** zich meebrengt. In dit voorbeeld wordt het *standaard* **streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard* **streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
+Nu de [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-url's ophalen. Als u een URL wilt maken, moet u de hostnaam van de [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) en het pad van de **streaming-Locator** samen voegen. In dit voorbeeld wordt het *standaard* **streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard* **streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Resources in uw Media Services-account opschonen
 
-Over het algemeen moet u alles opschonen, behalve objecten die u opnieuw wilt gebruiken (meestal gebruikt u transformaties, streaminglocators, enzovoort). Als u wilt dat uw account schoon is na het experimenteren, verwijdert u de bronnen die u niet opnieuw wilt gebruiken. De volgende code verwijdert bijvoorbeeld Taken:
+Over het algemeen moet u alles opschonen behalve objecten die u wilt hergebruiken (meestal gebruikt u trans formaties, streaming-Locators, enzovoort). Als u wilt dat uw account wordt gereinigd na het experimenteren, verwijdert u de resources die u niet wilt hergebruiken. Met de volgende code worden bijvoorbeeld taken verwijderd:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
@@ -163,15 +163,15 @@ Voer de volgende CLI-opdracht uit:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, geef feedback, ontvang updates
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Beschermen met DRM](protect-with-drm.md)
+> [Beveiligen met DRM](protect-with-drm.md)

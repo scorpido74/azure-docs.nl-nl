@@ -1,118 +1,118 @@
 ---
-title: Aan de slag met autoscale in Azure
-description: Meer informatie over het schalen van uw resource Web App, Cloud Service, Virtual Machine of Virtual Machine Scale set in Azure.
+title: Aan de slag met automatisch schalen in azure
+description: Meer informatie over het schalen van uw resource web-app, Cloud service, virtuele machine of virtuele-machine schaal sets in Azure.
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75396352"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatische schaalaanpassing in Azure
-In dit artikel wordt beschreven hoe u uw instellingen voor automatische schaal instelt voor uw resource in de Microsoft Azure-portal.
+In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
 
-Azure Monitor autoscale is alleen van toepassing op [Virtual Machine Scale Sets,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [Cloud Services](https://azure.microsoft.com/services/cloud-services/), App Service - [Web Apps](https://azure.microsoft.com/services/app-service/web/)en API [Management services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="discover-the-autoscale-settings-in-your-subscription"></a>De instellingen voor automatisch schalen in uw abonnement ontdekken
-U alle bronnen ontdekken waarvoor Autoscale van toepassing is in Azure Monitor. Gebruik de volgende stappen voor een stapsgewijze walkthrough:
+## <a name="discover-the-autoscale-settings-in-your-subscription"></a>De instellingen voor automatisch schalen in uw abonnement detecteren
+U kunt alle resources ontdekken waarvoor automatisch schalen van toepassing is in Azure Monitor. Voer de volgende stappen uit voor een stapsgewijze Walkthrough:
 
-1. Open de [Azure-portal.][1]
-1. Klik op het Azure Monitor-pictogram in het linkerdeelvenster.
-  ![Azure-monitor openen][2]
-1. Klik **op Autoscale** om alle resources weer te geven waarvoor Autoscale van toepassing is, samen met de huidige status Autoscale.
-  ![Autoscale ontdekken in Azure Monitor][3]
+1. Open de [Azure Portal.][1]
+1. Klik op het pictogram Azure Monitor in het linkerdeel venster.
+  ![Azure Monitor openen][2]
+1. Klik op **automatisch schalen** om alle resources weer te geven waarvoor automatisch schalen van toepassing is, samen met de huidige status van automatisch schalen.
+  ![Automatisch schalen ontdekken in Azure Monitor][3]
 
-U het filtervenster bovenaan gebruiken om de lijst te bereiken om resources in een specifieke resourcegroep, specifieke resourcetypen of een specifieke resource te selecteren.
+U kunt het filter deel venster bovenaan het bereik van de lijst gebruiken om resources in een specifieke resource groep, specifieke resource typen of een specifieke resource te selecteren.
 
-Voor elke resource vindt u het huidige aantal instantieen de status Automatisch schalen. De status Autoscale kan zijn:
+Voor elke resource vindt u het aantal huidige instanties en de status automatisch schalen. De status voor automatisch schalen kan zijn:
 
-- **Niet geconfigureerd**: U hebt Autoscale nog niet ingeschakeld voor deze bron.
-- **Ingeschakeld**: U hebt Autoscale ingeschakeld voor deze resource.
-- **Uitgeschakeld:** U hebt Autoscale voor deze bron uitgeschakeld.
+- **Niet geconfigureerd**: u hebt automatisch schalen nog niet ingeschakeld voor deze resource.
+- **Ingeschakeld**: u hebt automatisch schalen ingeschakeld voor deze resource.
+- **Uitgeschakeld**: u hebt automatisch schalen uitgeschakeld voor deze resource.
 
 ## <a name="create-your-first-autoscale-setting"></a>Uw eerste instelling voor automatisch schalen maken
 
-Laten we nu een eenvoudige stapsgewijze walkthrough doorlopen om uw eerste autoscale-instelling te maken.
+We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling voor automatisch schalen te maken.
 
-1. Open het **mes automatisch schalen** in Azure Monitor en selecteer een resource die u wilt schalen. (De volgende stappen gebruiken een App Service-abonnement dat is gekoppeld aan een web-app. U [uw eerste ASP.NET web-app in Azure in 5 minuten maken.][4])
-1. Houd er rekening mee dat het huidige aantal instantie 1 is. Klik **op Automatisch schalen inschakelen**.
-  ![Schaalinstelling voor nieuwe web-app][5]
-1. Geef een naam op voor de schaalinstelling en klik op **Een regel toevoegen**. Let op de opties voor schaalregels die worden geopend als een contextvenster aan de rechterkant. Standaard stelt dit de optie in om het aantal instanceen met 1 te schalen als het CPU-percentage van de resource hoger is dan 70 procent. Laat het bij de standaardwaarden en klik op **Toevoegen**.
-  ![Schaalinstelling maken voor een web-app][6]
-1. Je hebt nu je eerste schaalregel gemaakt. Houd er rekening mee dat de UX aanbevolen best practices en stelt dat "Het wordt aanbevolen om ten minste een schaal in de regel." Dit doet u als volgt:
+1. Open de Blade **automatisch schalen** in azure monitor en selecteer een resource die u wilt schalen. (In de volgende stappen wordt gebruikgemaakt van een App Service-abonnement dat is gekoppeld aan een web-app. U kunt [binnen vijf minuten uw eerste ASP.net-Web-app maken in Azure.][4])
+1. Houd er rekening mee dat het huidige aantal instanties 1 is. Klik op **automatisch schalen inschakelen**.
+  ![Schaal instelling voor nieuwe web-app][5]
+1. Geef een naam op voor de schaal instelling en klik vervolgens op **een regel toevoegen**. U ziet de opties voor de schaal regel die worden geopend als een context venster aan de rechter kant. Dit stelt standaard de optie in voor het schalen van het aantal instanties met 1 als het CPU-percentage van de resource groter is dan 70 procent. Behoud de standaard waarden en klik op **toevoegen**.
+  ![Schaal instelling voor een web-app maken][6]
+1. U hebt nu uw eerste schaal regel gemaakt. Houd er rekening mee dat de UX aanbevolen procedures en ' wordt aanbevolen om ten minste één schaal in regel te hebben '. Dit doet u als volgt:
 
     a. Klik op **Een regel toevoegen**.
 
-    b. **Operator** instellen op **Minder dan**.
+    b. Stel **operator** in op **kleiner dan**.
 
-    c. **Drempel instellen** op **20**.
+    c. Stel **drempel waarde** in op **20**.
 
-    d. **Stel Bewerking** in om het aantal te **verlagen met**.
+    d. Stel de **bewerking** in op het **verkorten van het aantal**.
 
-   U moet nu een schaalinstelling hebben die uit/schaalt op basis van CPU-gebruik.
-   ![Schaal op basis van CPU][8]
+   U hebt nu een schaal instelling die wordt geschaald of geschaald op basis van het CPU-gebruik.
+   ![Schalen op basis van CPU][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd! U hebt nu met succes uw eerste schaalinstelling gemaakt om uw web-app automatisch te schalen op basis van cpu-gebruik.
+Gefeliciteerd! U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
-> Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele machineschaalset of cloudservicerol.
+> Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
 
 ## <a name="other-considerations"></a>Andere overwegingen
-### <a name="scale-based-on-a-schedule"></a>Schalen op basis van een schema
-Naast de schaal op basis van CPU, u uw schaal anders instellen voor specifieke dagen van de week.
+### <a name="scale-based-on-a-schedule"></a>Schalen op basis van een planning
+Naast schalen op basis van de CPU kunt u de schaal anders instellen voor specifieke dagen van de week.
 
-1. Klik **op Een schaalvoorwaarde toevoegen**.
-1. Het instellen van de schaalmodus en de regels is hetzelfde als de standaardvoorwaarde.
-1. Selecteer **Specifieke dagen herhalen** voor het schema.
-1. Selecteer de dagen en de begin-/eindtijd voor wanneer de schaalvoorwaarde moet worden toegepast.
+1. Klik op **een schaal voorwaarde toevoegen**.
+1. Het instellen van de schaal modus en de regels is hetzelfde als de standaard voorwaarde.
+1. Selecteer **specifieke dagen herhalen** voor de planning.
+1. Selecteer de dagen en de begin-en eind tijd waarop de schaal voorwaarde moet worden toegepast.
 
-![Schaalvoorwaarde op basis van planning][9]
+![Schaal voorwaarde op basis van planning][9]
 ### <a name="scale-differently-on-specific-dates"></a>Anders schalen op specifieke datums
-Naast de schaal op basis van CPU, u uw schaal anders instellen voor specifieke datums.
+Naast schalen op basis van de CPU kunt u de schaal anders instellen voor specifieke datums.
 
-1. Klik **op Een schaalvoorwaarde toevoegen**.
-1. Het instellen van de schaalmodus en de regels is hetzelfde als de standaardvoorwaarde.
-1. Selecteer **Begin-/einddatum opgeven** voor de planning.
-1. Selecteer de begin-/einddatum en de begin-/eindtijd voor wanneer de schaalvoorwaarde moet worden toegepast.
+1. Klik op **een schaal voorwaarde toevoegen**.
+1. Het instellen van de schaal modus en de regels is hetzelfde als de standaard voorwaarde.
+1. Selecteer **begin-en eind datums** voor het schema opgeven.
+1. Selecteer de begin-en eind datum en de begin-en eind tijd waarop de schaal voorwaarde moet worden toegepast.
 
-![Schaalvoorwaarde op basis van datums][10]
+![Schaal voorwaarde op basis van datums][10]
 
-### <a name="view-the-scale-history-of-your-resource"></a>De schaalgeschiedenis van uw resource weergeven
-Wanneer uw resource wordt opgeschaald of omlaag wordt geschaald, wordt een gebeurtenis aangemeld in het activiteitenlogboek. U de schaalgeschiedenis van uw resource van de afgelopen 24 uur bekijken door over te schakelen naar het tabblad **Geschiedenis uitvoeren.**
+### <a name="view-the-scale-history-of-your-resource"></a>De schaal geschiedenis van uw resource weer geven
+Wanneer uw resource omhoog of omlaag wordt geschaald, wordt er een gebeurtenis in het activiteiten logboek vastgelegd. U kunt de schaal geschiedenis van uw resource in de afgelopen 24 uur weer geven door over te scha kelen op het tabblad **uitvoerings geschiedenis** .
 
 ![Uitvoer.gesch][11]
 
-Als u de volledige schaalgeschiedenis (maximaal 90 dagen) wilt bekijken, selecteert u **Klik hier voor meer details.** Het activiteitenlogboek wordt geopend, waarbij Automatisch schalen vooraf zijn geselecteerd voor uw resource en categorie.
+Als u de volledige schaal geschiedenis (Maxi maal 90 dagen) wilt weer geven, selecteert u **hier om meer details weer te**geven. Het activiteiten logboek wordt geopend, waarbij automatisch schalen vooraf is geselecteerd voor uw resource en categorie.
 
-### <a name="view-the-scale-definition-of-your-resource"></a>De schaaldefinitie van uw resource weergeven
-Autoscale is een Azure Resource Manager-bron. U de schaaldefinitie in JSON bekijken door over te schakelen naar het **tabblad JSON.**
+### <a name="view-the-scale-definition-of-your-resource"></a>De schaal definitie van uw resource weer geven
+Automatisch schalen is een Azure Resource Manager bron. U kunt de schaal definitie in JSON weer geven door naar het tabblad **JSON** te scha kelen.
 
-![Schaaldefinitie][12]
+![Schaal definitie][12]
 
-U indien nodig direct wijzigingen aanbrengen in JSON. Deze wijzigingen worden weergegeven nadat u ze hebt opgeslagen.
+U kunt, indien nodig, direct wijzigingen aanbrengen in JSON. Deze wijzigingen worden weer gegeven nadat u deze hebt opgeslagen.
 
-### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Automatisch schalen uitschakelen en uw exemplaren handmatig schalen
-Er kunnen momenten zijn waarop u de huidige schaalinstelling wilt uitschakelen en uw resource handmatig wilt schalen.
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Automatisch schalen uitschakelen en uw instanties hand matig schalen
+Het kan voor komen dat u de huidige schaal instelling wilt uitschakelen en de resource hand matig wilt schalen.
 
-Klik bovenaan op de knop **Autoschaal uitschakelen.**
-![Autoscale uitschakelen][13]
+Klik bovenaan op de knop **automatisch schalen uitschakelen** .
+![Automatisch schalen uitschakelen][13]
 
 > [!NOTE]
-> Met deze optie wordt uw configuratie uitgeschakeld. U er echter weer naar terug gaan nadat u Autoscale opnieuw hebt ingeschakeld.
+> Met deze optie wordt de configuratie uitgeschakeld. U kunt deze echter weer terughalen nadat u automatisch schalen opnieuw hebt ingeschakeld.
 
-U nu het aantal exemplaren instellen waarop u handmatig wilt schalen.
+U kunt nu het aantal exemplaren dat u wilt schalen hand matig instellen.
 
-![Handmatige schaal instellen][14]
+![Hand matige schaal instellen][14]
 
-U altijd terugkeren naar Autoscale door op **Automatisch schalen inschakelen** te klikken en vervolgens op **Opslaan**.
+U kunt altijd terugkeren naar automatisch schalen door op **automatisch schalen inschakelen** te klikken en vervolgens op te **slaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een activiteitslogboekwaarschuwing maken om alle autoscale-enginebewerkingen op uw abonnement te controleren](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Een activiteitslogboekwaarschuwing maken om alle mislukte automatische schaal-in/scale-outbewerkingen op uw abonnement te controleren](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Een waarschuwing voor een activiteiten logboek maken om alle bewerkingen voor het automatisch schalen van de engine voor uw abonnement te bewaken](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Een waarschuwing voor een activiteiten logboek maken voor het bewaken van alle mislukte schaal-in-en uitschaal bewerkingen voor automatisch schalen op uw abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

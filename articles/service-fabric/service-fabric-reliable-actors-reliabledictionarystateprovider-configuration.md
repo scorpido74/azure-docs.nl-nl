@@ -1,44 +1,44 @@
 ---
-title: Instellingen voor ReliableDictionaryActorStateProvider wijzigen
-description: Meer informatie over het configureren van Azure Service Fabric stateful actoren van het type ReliableDictionaryActorStateProvider.
+title: ReliableDictionaryActorStateProvider-instellingen wijzigen
+description: Meer informatie over het configureren van Azure Service Fabric stateful actors van het type ReliableDictionaryActorStateProvider.
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609737"
 ---
-# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Betrouwbare actoren configureren - ReliableDictionaryActorStateProvider
-U de standaardconfiguratie van ReliableDictionaryActorStateProvider wijzigen door het bestand settings.xml te wijzigen dat is gegenereerd in de root van het Visual Studio-pakket onder de map Config voor de opgegeven actor.
+# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors configureren--ReliableDictionaryActorStateProvider
+U kunt de standaard configuratie van ReliableDictionaryActorStateProvider wijzigen door het bestand settings. XML te wijzigen dat is gegenereerd in de Visual Studio package root onder de map config voor de opgegeven actor.
 
-De runtime azure servicefabric zoekt naar vooraf gedefinieerde sectienamen in het bestand settings.xml en verbruikt de configuratiewaarden terwijl de onderliggende runtime-componenten worden gemaakt.
+De Azure Service Fabric runtime zoekt naar vooraf gedefinieerde sectie namen in het bestand settings. XML en verbruikt de configuratie waarden tijdens het maken van de onderliggende runtime-onderdelen.
 
 > [!NOTE]
-> Verwijder of wijzig de sectienamen van de volgende configuraties **niet** in het bestand settings.xml dat wordt gegenereerd in de Visual Studio-oplossing.
+> Verwijder of wijzig de sectie namen van de volgende configuraties **niet** in het bestand settings. XML dat is gegenereerd in de Visual Studio-oplossing.
 > 
 > 
 
 Er zijn ook algemene instellingen die van invloed zijn op de configuratie van ReliableDictionaryActorStateProvider.
 
-## <a name="global-configuration"></a>Globale configuratie
-De globale configuratie is opgegeven in het clustermanifest voor het cluster onder de sectie KtlLogger. Het maakt configuratie van de gedeelde log locatie en grootte plus de wereldwijde geheugenlimieten gebruikt door de logger. Houd er rekening mee dat wijzigingen in het clustermanifest van invloed zijn op alle services die gebruikmaken van ReliableDictionaryActorStateProvider en betrouwbare stateful services.
+## <a name="global-configuration"></a>Algemene configuratie
+De globale configuratie is opgegeven in het cluster manifest voor het cluster in de sectie KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Houd er rekening mee dat wijzigingen in het cluster manifest van invloed zijn op alle services die gebruikmaken van ReliableDictionaryActorStateProvider en betrouw bare stateful Services.
 
-Het clustermanifest is één XML-bestand met instellingen en configuraties die van toepassing zijn op alle knooppunten en services in het cluster. Het bestand wordt meestal ClusterManifest.xml genoemd. U het clustermanifest voor uw cluster bekijken met de opdracht Get-ServiceClusterManifest powershell.
+Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand heet doorgaans ClusterManifest. XML. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
 
-### <a name="configuration-names"></a>Configuratienamen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+### <a name="configuration-names"></a>Configuratie namen
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
-| WritebuffermemorypoolminimumInKB |Kilobytes |8388608 |Minimum aantal KB toe te wijzen in kernel modus voor de logger schrijf buffer memory pool. Deze geheugengroep wordt gebruikt voor het plaatsen van statusgegevens voordat u naar de schijf schrijft. |
-| WritebuffermemorypoolmaximumInKB |Kilobytes |Geen limiet |Maximale grootte waarop de logger buffer geheugen pool kan groeien. |
-| SharedLogId |GUID |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het standaard gedeelde logboekbestand dat wordt gebruikt door alle betrouwbare services op alle knooppunten in het cluster die de SharedLogId niet opgeven in hun servicespecifieke configuratie. Als SharedLogId is opgegeven, moet ook SharedLogPath worden opgegeven. |
-| SharedLogPath |Volledig gekwalificeerde padnaam |"" |Hiermee geeft u het volledig gekwalificeerde pad op waarin het gedeelde logboekbestand dat wordt gebruikt door alle betrouwbare services op alle knooppunten in het cluster die het SharedLogPath niet opgeven in hun servicespecifieke configuratie. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
-| SharedLogSizeInMB |Megabytes |8192 |Hiermee geeft u het aantal MB schijfruimte op dat statisch moet worden toegewezen voor het gedeelde logboek. De waarde moet 2048 of hoger zijn. |
+| WriteBufferMemoryPoolMinimumInKB |Kilo bytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
+| WriteBufferMemoryPoolMaximumInKB |Kilo bytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
+| SharedLogId |GUID |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het standaard gedeelde logboek bestand dat wordt gebruikt door alle betrouw bare Services op alle knoop punten in het cluster die de SharedLogId niet opgeven in hun servicespecifieke configuratie. Als SharedLogId is opgegeven, moet SharedLogPath ook worden opgegeven. |
+| SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand wordt gebruikt door alle betrouw bare Services op alle knoop punten in het cluster die de SharedLogPath niet opgeven in hun servicespecifieke configuratie. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
+| SharedLogSizeInMB |Mega bytes |8192 |Hiermee geeft u het aantal MB schijf ruimte op dat statisch moet worden toegewezen aan het gedeelde logboek. De waarde moet 2048 of groter zijn. |
 
-### <a name="sample-cluster-manifest-section"></a>Voorbeeldclustermanifestsectie
+### <a name="sample-cluster-manifest-section"></a>Sectie voor beeld van cluster manifest
 ```xml
    <Section Name="KtlLogger">
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
@@ -50,43 +50,43 @@ Het clustermanifest is één XML-bestand met instellingen en configuraties die v
 ```
 
 ### <a name="remarks"></a>Opmerkingen
-De logger heeft een wereldwijde pool van geheugen toegewezen van niet-gepageerde kernel geheugen dat beschikbaar is voor alle betrouwbare services op een knooppunt voor caching state data voordat ze worden geschreven naar de speciale log in verband met de betrouwbare service replica. De grootte van de groep wordt geregeld door de instellingen WriteBufferMemoryPoolMinimumInKB en WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB geeft zowel de initiële grootte van deze geheugengroep als de laagste grootte op waarop de geheugengroep kan krimpen. WriteBufferMemoryPoolMaximumInKB is de hoogste grootte waarop de geheugengroep kan groeien. Elke betrouwbare servicereplica die wordt geopend, kan de grootte van de geheugengroep vergroten met een door het systeem bepaald bedrag tot WriteBufferMemoryPoolMaximumInKB. Als er meer vraag is naar geheugen uit de geheugengroep dan beschikbaar is, worden aanvragen voor geheugen vertraagd totdat het geheugen beschikbaar is. Als de schrijfbuffergeheugenpool te klein is voor een bepaalde configuratie, kunnen de prestaties dus lijden.
+De logger heeft een globale geheugen groep die is toegewezen op basis van niet-wisselbaar kernelgeheugen dat beschikbaar is voor alle betrouw bare Services op een knoop punt om status gegevens in de cache op te zetten voordat ze worden geschreven naar het toegewezen logboek dat is gekoppeld aan de betrouw bare service replica. De pool grootte wordt bepaald door de instellingen WriteBufferMemoryPoolMinimumInKB en WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB Hiermee geeft u de oorspronkelijke grootte van deze geheugen groep en de laagste grootte op waarmee de geheugen groep kan worden verkleind. WriteBufferMemoryPoolMaximumInKB is de hoogste grootte waarmee de geheugen groep mag groeien. Elke betrouw bare service replica die wordt geopend, kan de grootte van de geheugen groep verhogen door een door het systeem vastgesteld bedrag tot WriteBufferMemoryPoolMaximumInKB. Als er meer geheugen nodig is dan beschikbaar is, worden de aanvragen voor geheugen uitgesteld totdat er geheugen beschikbaar is. Als de geheugen groep schrijf buffer te klein is voor een bepaalde configuratie, kan dit de prestaties nadelig beïnvloeden.
 
-De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt om de GUID en locatie voor het standaard gedeelde logboek voor alle knooppunten in het cluster te definiëren. Het standaard gedeelde logboek wordt gebruikt voor alle betrouwbare services die de instellingen in de instellingen.xml voor de specifieke service niet opgeven. Voor de beste prestaties moeten gedeelde logboekbestanden op schijven worden geplaatst die uitsluitend worden gebruikt voor het gedeelde logboekbestand om de twist te verminderen.
+De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt voor het definiëren van de GUID en locatie voor het standaard gedeelde logboek voor alle knoop punten in het cluster. Het standaard gedeelde logboek wordt gebruikt voor alle betrouw bare services die de instellingen niet opgeven in de instellingen. XML voor de specifieke service. Voor de beste prestaties moeten gedeelde logboek bestanden worden geplaatst op schijven die alleen worden gebruikt voor het gedeelde logboek bestand om conflicten te verminderen.
 
-SharedLogSizeInMB geeft de hoeveelheid schijfruimte op die vooraf moet worden toegewezen voor het standaard gedeelde logboek op alle knooppunten.  SharedLogId en SharedLogPath hoeven niet te worden opgegeven om SharedLogSizeInMB te kunnen specificeren.
+SharedLogSizeInMB Hiermee geeft u de hoeveelheid schijf ruimte op die vooraf moet worden toegewezen voor het gedeelde standaard logboek op alle knoop punten.  SharedLogId en SharedLogPath hoeven niet te worden opgegeven om SharedLogSizeInMB te kunnen opgeven.
 
-## <a name="replicator-security-configuration"></a>Beveiligingsconfiguratie Replicator
-Replicator-beveiligingsconfiguraties worden gebruikt om het communicatiekanaal te beveiligen dat wordt gebruikt tijdens de replicatie. Dit betekent dat services elkaars replicatieverkeer niet kunnen zien, zodat de gegevens die in hoge mate beschikbaar worden gesteld, ook veilig zijn.
-Standaard voorkomt een lege beveiligingsconfiguratiesectie replicatiebeveiliging.
+## <a name="replicator-security-configuration"></a>Replicatie-beveiligings configuratie
+Replicatie-beveiligings configuraties worden gebruikt voor het beveiligen van het communicatie kanaal dat wordt gebruikt tijdens de replicatie. Dit betekent dat het replicatie verkeer van de andere services niet kan worden weer gegeven, zodat de gegevens die Maxi maal beschikbaar worden, ook worden beveiligd.
+Een lege beveiligings configuratie sectie voor komt standaard replicatie beveiliging.
 
 > [!IMPORTANT]
-> Op Linux-knooppunten moeten certificaten pem-geformatteerd zijn. Zie Certificaten configureren [op Linux](./service-fabric-configure-certificates-linux.md)voor meer informatie over het zoeken en configureren van certificaten voor Linux. 
+> Voor Linux-knoop punten moeten certificaten PEM zijn. Zie [certificaten configureren voor Linux](./service-fabric-configure-certificates-linux.md)voor meer informatie over het zoeken en configureren van certificaten voor Linux. 
 > 
 
-### <a name="section-name"></a>Sectienaam
-&lt;ActorName&gt;ServiceReplicatorSecurityConfig
+### <a name="section-name"></a>Sectie naam
+&lt;Actornaam&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Replicatorconfiguratie
-Replicatorconfiguraties worden gebruikt om de replicator te configureren die verantwoordelijk is voor het maken van de status Actor State Provider zeer betrouwbaar door de status lokaal te repliceren en voort te zetten.
-De standaardconfiguratie wordt gegenereerd door de Visual Studio-sjabloon en moet volstaan. In deze sectie wordt gesproken over aanvullende configuraties die beschikbaar zijn om de replicator af te stemmen.
+## <a name="replicator-configuration"></a>Replicator-configuratie
+Replicatie configuraties worden gebruikt voor het configureren van de Replicator die verantwoordelijk is voor het zeer betrouwbaar maken van de status van de actor State-provider door de status lokaal te repliceren en op te slaan.
+De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en moet voldoende zijn. In deze sectie vindt u meer informatie over aanvullende configuraties die beschikbaar zijn voor het afstemmen van de Replicator.
 
-### <a name="section-name"></a>Sectienaam
-&lt;ActorName&gt;ServiceReplicatorConfig
+### <a name="section-name"></a>Sectie naam
+&lt;Actornaam&gt;ServiceReplicatorConfig
 
-### <a name="configuration-names"></a>Configuratienamen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+### <a name="configuration-names"></a>Configuratie namen
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Seconden |0.015 |Tijdsperiode waarvoor de replicator bij de secundaire wacht na ontvangst van een bewerking voordat u een bevestiging naar de primaire stuurt. Alle andere bevestigingen die binnen dit interval moeten worden verzonden voor bewerkingen, worden als één antwoord verzonden. |
-| ReplicatorEndpoint |N.v.t. |Geen standaardparameter |IP-adres en poort die de primaire/secundaire replicator zal gebruiken om te communiceren met andere replicators in de replicaset. Hiermee moet worden verwezen naar een TCP-resourceeindpunt in het servicemanifest. Raadpleeg [bronnen voor het manifest service](service-fabric-service-manifest-resources.md) om meer te lezen over het definiëren van eindpuntbronnen in het servicemanifest. |
-| MaxReplicatieMessageSize |Bytes |50 MB |Maximale grootte van replicatiegegevens die in één bericht kunnen worden verzonden. |
-| MaxPrimaryReplicationQueueSize MaxPrimaryReplicationQueueSize MaxprimaryReplicationQueueSize Maxprimary |Aantal bewerkingen |8192 |Maximaal aantal bewerkingen in de primaire wachtrij. Een bewerking wordt vrijgemaakt nadat de primaire replicator een bevestiging heeft ontvangen van alle secundaire replicators. Deze waarde moet groter zijn dan 64 en een vermogen van 2. |
-| MaxSecondaryReplicatieWachtrijgrootte |Aantal bewerkingen |16384 |Maximaal aantal bewerkingen in de secundaire wachtrij. Een operatie wordt vrijgemaakt na het maken van de staat zeer beschikbaar door middel van persistentie. Deze waarde moet groter zijn dan 64 en een vermogen van 2. |
-| CheckpointThresholdInMB |MB |200 |Hoeveelheid logboekbestandsruimte waarna de status wordt gecontroleereerd. |
-| MaxRecordSizeInKB |KB |1024 |Grootste recordgrootte die de replicator in het logboek kan schrijven. Deze waarde moet een veelvoud van 4 en groter dan 16 zijn. |
-| OptimaliserenLogForLowerDiskUsage |Booleaans |waar |Wanneer dit waar is, is het logboek zo geconfigureerd dat het speciale logboekbestand van de replica wordt gemaakt met behulp van een NTFS-bestand. Dit verlaagt het werkelijke schijfruimtegebruik voor het bestand. Wanneer false, wordt het bestand gemaakt met vaste toewijzingen, die de beste schrijfprestaties bieden. |
-| SharedLogId |Guid |"" |Hiermee geeft u een unieke guid op die u wilt gebruiken voor het identificeren van het gedeelde logboekbestand dat met deze replica wordt gebruikt. Services mogen deze instelling doorgaans niet gebruiken. Als SharedLogId echter is opgegeven, moet ook SharedLogPath worden opgegeven. |
-| SharedLogPath |Volledig gekwalificeerde padnaam |"" |Hiermee geeft u het volledig gekwalificeerde pad op waar het gedeelde logboekbestand voor deze replica wordt gemaakt. Services mogen deze instelling doorgaans niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
+| BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
+| ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in service manifest. |
+| MaxReplicationMessageSize |Bytes |50 MB |De maximale grootte van de replicatie gegevens die in één bericht kunnen worden verzonden. |
+| MaxPrimaryReplicationQueueSize |Aantal bewerkingen |8192 |Maximum aantal bewerkingen in de primaire wachtrij. Er wordt een bewerking vrijgemaakt nadat de primaire Replicator een bevestiging van alle secundaire replicaties heeft ontvangen. Deze waarde moet groter zijn dan 64 en een macht van 2 zijn. |
+| MaxSecondaryReplicationQueueSize |Aantal bewerkingen |16384 |Maximum aantal bewerkingen in de secundaire wachtrij. Een bewerking wordt vrijgegeven nadat de status Maxi maal beschikbaar is via persistentie. Deze waarde moet groter zijn dan 64 en een macht van 2 zijn. |
+| CheckpointThresholdInMB |MB |200 |De hoeveelheid logboek bestands ruimte waarna de status van een controle punt wordt gemaakt. |
+| MaxRecordSizeInKB |KB |1024 |Grootste record grootte die door de Replicator kan worden geschreven in het logboek. Deze waarde moet een meervoud van 4 en groter dan 16 zijn. |
+| OptimizeLogForLowerDiskUsage |Booleaans |waar |Indien true, wordt het logboek geconfigureerd zodat het vastgelegde logboek bestand van de replica wordt gemaakt met behulp van een NTFS sparse-bestand. Hiermee wordt het werkelijke gebruik van schijf ruimte voor het bestand verminderd. Als deze eigenschap onwaar is, wordt het bestand gemaakt met vaste toewijzingen. Dit biedt de beste schrijf prestaties. |
+| SharedLogId |guid |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het gedeelde logboek bestand dat wordt gebruikt met deze replica. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogId echter is opgegeven, moet SharedLogPath ook worden opgegeven. |
+| SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand voor deze replica wordt gemaakt. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 
 ## <a name="sample-configuration-file"></a>Voorbeeldconfiguratiebestand
 ```xml
@@ -110,14 +110,14 @@ De standaardconfiguratie wordt gegenereerd door de Visual Studio-sjabloon en moe
 ```
 
 ## <a name="remarks"></a>Opmerkingen
-De parameter BatchAcknowledgementInterval regelt replicatielatentie. Een waarde van '0' resulteert in de laagst mogelijke latentie, ten koste van doorvoer (omdat er meer bevestigingsberichten moeten worden verzonden en verwerkt, elk met minder bevestigingen).
-Hoe groter de waarde voor BatchAcknowledgementInterval, hoe hoger de totale replicatiedoorvoer, ten koste van hogere bewerkingslatentie. Dit vertaalt zich direct naar de latentie van transactiecommits.
+De BatchAcknowledgementInterval-para meter beheert de replicatie latentie. De waarde ' 0 ' resulteert in de laagst mogelijke latentie, tegen de kosten van de door Voer (omdat er meer bevestigings berichten moeten worden verzonden en verwerkt, elk met minder bevestigingen).
+Hoe groter de waarde voor BatchAcknowledgementInterval, hoe hoger de totale replicatie doorvoer, tegen de kosten van een hogere latentie van de bewerking. Dit kan rechtstreeks worden omgezet naar de latentie van trans acties door voeren.
 
-De parameter CheckpointThresholdInMB bepaalt de hoeveelheid schijfruimte die de replicator kan gebruiken om statusgegevens op te slaan in het specifieke logboekbestand van de replica. Als u dit verhoogt tot een hogere waarde dan de standaardwaarde, kan dit leiden tot snellere herconfiguratietijden wanneer een nieuwe replica aan de set wordt toegevoegd. Dit is te wijten aan de gedeeltelijke overdracht van de status die plaatsvindt als gevolg van de beschikbaarheid van meer geschiedenis van bewerkingen in het logboek. Dit kan mogelijk de hersteltijd van een replica na een crash verhogen.
+De CheckpointThresholdInMB para meter bepaalt de hoeveelheid schijf ruimte die door de Replicator kan worden gebruikt om status gegevens op te slaan in het specifieke logboek bestand van de replica. Het verhogen van dit naar een hogere waarde dan de standaard instelling kan leiden tot snellere herconfiguratie tijden wanneer een nieuwe replica wordt toegevoegd aan de set. Dit wordt veroorzaakt door de gedeeltelijke status overdracht die plaatsvindt als gevolg van de beschik baarheid van meer geschiedenis van bewerkingen in het logboek. Dit kan leiden tot een grotere herstel tijd van een replica na een crash.
 
-Als u OptimizeForLowerDiskUsage instelt op true, wordt de logbestandsruimte over-ingericht, zodat actieve replica's meer statusinformatie in hun logboekbestanden kunnen opslaan, terwijl inactieve replica's minder schijfruimte gebruiken. Dit maakt het mogelijk om meer replica's op een knooppunt te hosten. Als u OptimizeForLowerDiskUsage instelt op false, wordt de statusinformatie sneller naar de logboekbestanden geschreven.
+Als u OptimizeForLowerDiskUsage instelt op True, wordt de ruimte van het logboek bestand overbelast zodat actieve replica's meer status informatie in hun logboek bestanden kunnen opslaan, terwijl inactieve replica's minder schijf ruimte in beslag nemen. Dit maakt het mogelijk om meer replica's op een knoop punt te hosten. Als u OptimizeForLowerDiskUsage instelt op False, wordt de status informatie sneller naar de logboek bestanden geschreven.
 
-Met de instelling MaxRecordSizeInKB wordt de maximale grootte gedefinieerd van een record die door de replicator in het logboekbestand kan worden geschreven. In de meeste gevallen is de standaard recordgrootte van 1024 KB optimaal. Als de service er echter voor zorgt dat grotere gegevensitems deel uitmaken van de statusgegevens, moet deze waarde mogelijk worden verhoogd. Er is weinig voordeel in het maken van MaxRecordSizeInKB kleiner dan 1024, als kleinere records gebruiken alleen de ruimte die nodig is voor de kleinere record. Wij verwachten dat deze waarde slechts in zeldzame gevallen moet worden gewijzigd.
+De instelling MaxRecordSizeInKB definieert de maximale grootte van een record die door de Replicator kan worden geschreven naar het logboek bestand. In de meeste gevallen is de standaard record grootte van 1024 KB optimaal. Als de service echter zorgt voor grotere gegevens items die deel uitmaken van de status informatie, moet deze waarde mogelijk worden verhoogd. Er is weinig voor deel bij het maken van MaxRecordSizeInKB kleiner dan 1024, omdat kleinere records alleen de benodigde ruimte voor de kleinere record gebruiken. We verwachten dat deze waarde alleen in zeldzame gevallen moet worden gewijzigd.
 
-De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt om een service een afzonderlijk gedeeld logboek te laten gebruiken van het standaard gedeelde logboek voor het knooppunt. Voor de beste efficiëntie moeten zoveel mogelijk services hetzelfde gedeelde logboek opgeven. Gedeelde logboekbestanden moeten op schijven worden geplaatst die uitsluitend worden gebruikt voor het gedeelde logboekbestand, om de geschil over hoofdbewegingen te verminderen. Wij verwachten dat deze waarden slechts in zeldzame gevallen moeten worden gewijzigd.
+De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt om een service een afzonderlijk gedeeld logboek te laten gebruiken van het gedeelde standaard logboek voor het knoop punt. Voor de beste efficiëntie moeten zoveel mogelijke services hetzelfde gedeelde logboek opgeven. Gedeelde logboek bestanden moeten worden geplaatst op schijven die uitsluitend voor het gedeelde logboek bestand worden gebruikt, om de inhoud van de hoofd verplaatsing te verminderen. We verwachten dat deze waarden alleen in zeldzame gevallen moeten worden gewijzigd.
 

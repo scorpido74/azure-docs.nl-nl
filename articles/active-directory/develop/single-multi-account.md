@@ -1,6 +1,6 @@
 ---
-title: Apps voor openbare client met één en meerdere account | Azure
-description: Een overzicht van afzonderlijke en meerdere account openbare client apps.
+title: Enkele en open bare client-apps voor één account | Azure
+description: Een overzicht van de open bare client-apps voor één en meerdere accounts.
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -13,42 +13,42 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881329"
 ---
-# <a name="single-and-multiple-account-public-client-apps"></a>Apps voor openbare client met één en meerdere account
+# <a name="single-and-multiple-account-public-client-apps"></a>Open bare client-apps met één of meer accounts
 
-In dit artikel u inzicht krijgen in de typen die worden gebruikt in openbare client-apps met één en meerdere accounten, met een focus op openbare client-apps met één account. 
+Dit artikel helpt u bij het begrijpen van de typen die worden gebruikt in één account en open bare client-apps met één account, met een focus op open bare client-apps voor een enkele rekening. 
 
-De ADAL (Azure Active Directory Authentication Library) modelleert de server.  De Microsoft Authentication Library (MSAL) modelleert in plaats daarvan uw clienttoepassing.  De meeste Android-apps worden beschouwd als openbare clients. Een openbare client is een app die niet veilig een geheim kan bewaren.  
+Met de Azure Active Directory-verificatie bibliotheek (ADAL) worden de-server modellen gemodelleerd.  In plaats daarvan modellen uw client toepassing in de micro soft Authentication Library (MSAL).  De meeste Android-apps worden beschouwd als open bare clients. Een open bare client is een app waarmee een geheim niet veilig kan worden bewaard.  
 
-MSAL is gespecialiseerd in `PublicClientApplication` het API-oppervlak om de ontwikkelingservaring te vereenvoudigen en te verduidelijken voor apps waarmee slechts één account tegelijk kan worden gebruikt. `PublicClientApplication`wordt gesubclasseerd door `SingleAccountPublicClientApplication` en `MultipleAccountPublicClientApplication`.  In het volgende diagram ziet u de relatie tussen deze klassen.
+MSAL is gespecialiseerd in het API- `PublicClientApplication` Opper vlak van om de ontwikkelings ervaring te vereenvoudigen en te verduidelijken voor apps waarmee slechts één account tegelijk kan worden gebruikt. `PublicClientApplication`is subklasseeerd door `SingleAccountPublicClientApplication` en `MultipleAccountPublicClientApplication`.  In het volgende diagram ziet u de relatie tussen deze klassen.
 
-![UML-klassediagram met singleaccountpublicclienttoepassing](./media/single-multi-account/single-and-multiple-account.png)
+![Diagram van SingleAccountPublicClientApplication UML-klasse](./media/single-multi-account/single-and-multiple-account.png)
 
-## <a name="single-account-public-client-application"></a>Single account openbare client applicatie
+## <a name="single-account-public-client-application"></a>Open bare client toepassing met één account
 
-Met `SingleAccountPublicClientApplication` de klasse u een msal-gebaseerde app maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication`verschilt van `PublicClientApplication` de volgende manieren:
+Met `SingleAccountPublicClientApplication` de-klasse kunt u een app op basis van MSAL maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication`verschilt van `PublicClientApplication` op de volgende manieren:
 
-- MSAL volgt het momenteel aangemelde account.
-  - Als uw app een broker gebruikt (de standaardregistratie tijdens de registratie van azure-portal-apps) en is geïnstalleerd op een apparaat waar een broker aanwezig is, controleert MSAL of het account nog steeds beschikbaar is op het apparaat.
-- `signIn`hiermee u zich expliciet en los van het aanvragen van scopes aanmelden.
-- `acquireTokenSilent`vereist geen accountparameter.  Als u een account opgeeft en het account dat u opgeeft niet `MsalClientException` overeenkomt met de lopende rekening die door MSAL wordt bijgehouden, wordt er een account gegooid.
-- `acquireToken`staat de gebruiker niet toe om van account te wisselen. Als de gebruiker probeert over te schakelen naar een ander account, wordt er een uitzondering gemaakt.
-- `getCurrentAccount`retourneert een resultaatobject dat het volgende biedt:
-  - Een booleaan die aangeeft of het account is gewijzigd. Een account kan worden gewijzigd als gevolg van het verwijderen van het apparaat, bijvoorbeeld.
-  - De eerdere rekening. Dit is handig als u lokale gegevens moet opruimen wanneer het account van het apparaat wordt verwijderd of wanneer een nieuw account is aangemeld.
-  - De huidigeAccount.
-- `signOut`verwijdert alle tokens die aan uw client zijn gekoppeld, van het apparaat.  
+- MSAL houdt het account dat momenteel is aangemeld bij.
+  - Als uw app gebruikmaakt van een Broker (de standaard tijdens het registreren van Azure Portal app) en is geïnstalleerd op een apparaat waarop een Broker aanwezig is, controleert MSAL of het account nog steeds beschikbaar is op het apparaat.
+- `signIn`Hiermee kunt u een account expliciet en onafhankelijk van het aanvragen van scopes aanmelden.
+- `acquireTokenSilent`vereist geen account parameter.  Als u een account opgeeft en het account dat u opgeeft, niet overeenkomt met het huidige account dat wordt getraceerd door MSAL, wordt er een `MsalClientException` gegenereerd.
+- `acquireToken`de gebruiker mag niet overschakelen naar een ander account. Als de gebruiker probeert over te scha kelen naar een ander account, wordt er een uitzonde ring gegenereerd.
+- `getCurrentAccount`retourneert een resultaat object dat het volgende biedt:
+  - Een Booleaanse waarde die aangeeft of het account is gewijzigd. Een account kan worden gewijzigd als gevolg van het verwijderen van het apparaat, bijvoorbeeld.
+  - Het vorige account. Dit is handig als u lokaal gegevens opschoning wilt uitvoeren wanneer het account wordt verwijderd van het apparaat of wanneer een nieuw account is aangemeld.
+  - De currentAccount.
+- `signOut`Hiermee verwijdert u de tokens die zijn gekoppeld aan uw client van het apparaat.  
 
-Wanneer een Android Authentication broker zoals Microsoft Authenticator of Intune Company Portal op het apparaat `signOut` is geïnstalleerd en uw app is geconfigureerd om de broker te gebruiken, wordt het account niet van het apparaat verwijderd.
+Wanneer een Android-verificatie Broker, zoals Microsoft Authenticator of Intune-bedrijfsportal op het apparaat is geïnstalleerd en uw app is geconfigureerd voor het gebruik van `signOut` de Broker, wordt het account niet van het apparaat verwijderd.
 
-## <a name="single-account-scenario"></a>Scenario voor één account
+## <a name="single-account-scenario"></a>Scenario met één account
 
-De volgende pseudo-code `SingleAccountPublicClientApplication`illustreert het gebruik van .
+De volgende pseudo code illustreert het `SingleAccountPublicClientApplication`gebruik van.
 
 ```java
 // Construct Single Account Public Client Application
@@ -105,30 +105,30 @@ if (app.signOut())
 }
 ```
 
-## <a name="multiple-account-public-client-application"></a>Openbare clienttoepassing met meerdere account
+## <a name="multiple-account-public-client-application"></a>Open bare client toepassing voor meerdere accounts
 
-De `MultipleAccountPublicClientApplication` klasse wordt gebruikt om op MSAL gebaseerde apps te maken waarmee meerdere accounts tegelijkertijd kunnen worden aangemeld. Hiermee u accounts als volgt krijgen, toevoegen en verwijderen:
+De `MultipleAccountPublicClientApplication` klasse wordt gebruikt voor het maken van MSAL-apps waarmee meerdere accounts tegelijkertijd kunnen worden aangemeld. U kunt als volgt accounts ophalen, toevoegen en verwijderen:
 
 ### <a name="add-an-account"></a>Een account toevoegen
 
-Gebruik een of meer accounts `acquireToken` in uw toepassing door een of meer keren te bellen.  
+Gebruik een of meer accounts in uw toepassing door een `acquireToken` of meer keren aan te roepen.  
 
-### <a name="get-accounts"></a>Accounts openen
+### <a name="get-accounts"></a>Accounts ophalen
 
-- Bel `getAccount` om een specifiek account te krijgen.
-- Bel `getAccounts`om een lijst met accounts te krijgen die momenteel bekend zijn bij de app.
+- Aanroep `getAccount` om een specifiek account op te halen.
+- Aanroep `getAccounts`voor het ophalen van een lijst met accounts die op dit moment bekend zijn bij de app.
 
-Uw app kan niet alle Microsoft-accounts voor identiteitsplatformen opsommen op het apparaat dat bekend is bij de broker-app. Het kan alleen accounts opsommen die door uw app zijn gebruikt.  Accounts die van het apparaat zijn verwijderd, worden niet geretourneerd door deze functies.
+Uw app kan niet alle micro soft Identity platform-accounts op het apparaat opsommen die bekend zijn bij de Broker-app. Het kan alleen accounts opsommen die door uw app zijn gebruikt.  Accounts die zijn verwijderd van het apparaat, worden niet geretourneerd door deze functies.
 
 ### <a name="remove-an-account"></a>Een account verwijderen
 
-Een account verwijderen `removeAccount` door te bellen met een account-id.
+Verwijder een account door aan `removeAccount` te roepen met een account-id.
 
-Als uw app is geconfigureerd om een broker te gebruiken en een broker op het apparaat is `removeAccount`geïnstalleerd, wordt het account niet verwijderd van de broker wanneer u belt.  Alleen tokens die aan uw client zijn gekoppeld, worden verwijderd.
+Als uw app is geconfigureerd voor het gebruik van een Broker en er een Broker op het apparaat is geïnstalleerd, wordt het account niet uit de Broker verwijderd wanneer `removeAccount`u aanroept.  Alleen tokens die zijn gekoppeld aan uw client, worden verwijderd.
 
-## <a name="multiple-account-scenario"></a>Scenario voor meerdere account
+## <a name="multiple-account-scenario"></a>Scenario met meerdere accounts
 
-De volgende pseudo-code laat zien hoe je een app met meerdere accounts maakt, accounts op het apparaat vermeldt en tokens verwerft.
+De volgende pseudo code laat zien hoe u een app voor meerdere accounts maakt, accounts op het apparaat lijsteert en tokens aanschaft.
 
 ```java
 // Construct Multiple Account Public Client Application

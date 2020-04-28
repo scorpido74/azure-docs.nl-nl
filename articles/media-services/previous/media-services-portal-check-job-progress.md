@@ -1,6 +1,6 @@
 ---
-title: Voortgang van coderingstaak met de Azure-portal controleren
-description: In deze zelfstudie u de stappen doorlopen om de voortgang van uw taak te volgen met behulp van de Azure-portal.
+title: De voortgang van de taak codering bewaken met de Azure Portal
+description: In deze zelf studie wordt u begeleid bij de stappen voor het bewaken van de voortgang van uw taak met behulp van de Azure Portal.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64867223"
 ---
-# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Voortgang van coderingstaak met de Azure-portal controleren
+# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>De voortgang van de taak codering bewaken met de Azure Portal
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Overzicht
 
@@ -34,12 +34,12 @@ Als u de voortgang van de codering van de taak wilt controleren, klikt u op **In
 
 ![Taken](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-U op de taak klikken om meer details te zien.
+U kunt op de taak klikken om meer details weer te geven.
 
 ![Taken](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat uw coderingstaak één is, u uw assets publiceren en afspelen, zoals [hier](media-services-portal-publish.md)beschreven.
+Nadat u een coderings taak hebt, kunt u uw assets publiceren en afspelen, zoals [hier](media-services-portal-publish.md)wordt beschreven.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

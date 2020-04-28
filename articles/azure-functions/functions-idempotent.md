@@ -1,45 +1,45 @@
 ---
-title: Azure-functies ontwerpen voor identieke invoer
-description: Azure-functies bouwen om idempotent te zijn
+title: Azure Functions ontwerpen voor identieke invoer
+description: Azure Functions bouwen om te worden idempotent
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 9/12/2019
 ms.topic: article
 ms.openlocfilehash: 15af60ac5a862e6fb20e65ba6fbb92482420b7c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74226860"
 ---
-# <a name="designing-azure-functions-for-identical-input"></a>Azure-functies ontwerpen voor identieke invoer
+# <a name="designing-azure-functions-for-identical-input"></a>Azure Functions ontwerpen voor identieke invoer
 
-De realiteit van event-driven en message-based architectuur dicteert de noodzaak om identieke verzoeken te accepteren met behoud van gegevensintegriteit en systeemstabiliteit.
+De realiteit van op gebeurtenissen gebaseerde architectuur en op berichten gebaseerde architecturen bepaalt dat er identieke aanvragen moeten worden geaccepteerd terwijl de integriteit van gegevens en de stabiliteit van het systeem behouden blijven.
 
-Ter illustratie, overweeg een lift oproep knop. Als u op de knop drukt, licht deze op en wordt er een lift naar uw verdieping gestuurd. Even later komt er iemand anders in de lobby. Deze persoon glimlacht naar je en drukt een tweede keer op de verlichte knop. Je glimlacht terug en grinnikt naar jezelf als je eraan herinnerd dat het commando om een lift te bellen is idempotent.
+Als u wilt illustreren, kunt u de knop voor het aanroepen van een lift beschouwen. Wanneer u op de knop drukt, wordt het oplicht en wordt een lift naar uw vloer verzonden. Een paar minuten later neemt iemand anders mee aan de lobby. Deze persoon komt bij u geglim lach en drukt een tweede keer op de verlichtings knop. U krijgt een glim lach en chuckle als u eraan wordt herinnerd dat de opdracht voor het aanroepen van een lift idempotent is.
 
-Een druk op een liftoproepknop een tweede, derde of vierde keer heeft geen invloed op het eindresultaat. Wanneer u op de knop drukt, ongeacht het aantal keren, wordt de lift naar uw verdieping gestuurd. Idempotente systemen, zoals de lift, resulteren in hetzelfde resultaat, ongeacht hoe vaak identieke commando's worden uitgegeven.
+Als u op een lift oproep knop klikt, is de tweede, derde of vierde tijd niet van invloed op het uiteindelijke resultaat. Wanneer u op de knop drukt, ongeacht het aantal keren dat de lift naar uw vloer wordt verzonden. Idempotent-systemen, zoals de Lift, resulteren in hetzelfde resultaat, ongeacht hoe vaak identieke opdrachten worden gegeven.
 
-Als het gaat om het bouwen van toepassingen, overweeg dan de volgende scenario's:
+Bij het bouwen van toepassingen moet u rekening houden met de volgende scenario's:
 
-- Wat gebeurt er als uw voorraadbeheertoepassing hetzelfde product meerdere tijd probeert te verwijderen?
-- Hoe gedraagt uw personeelstoepassing zich als er meer dan één verzoek is om een werknemersrecord voor dezelfde persoon te maken?
-- Waar gaat het geld naartoe als uw bankapp 100 verzoeken krijgt om dezelfde opname te maken?
+- Wat gebeurt er als uw inventarisatie controleprogramma meerdere keren probeert om hetzelfde product te verwijderen?
+- Hoe gedraagt uw HRM-toepassing zich als er meerdere aanvragen zijn voor het maken van een werknemers record voor dezelfde persoon?
+- Waar gaat het geld uit als uw bank-app 100 aanvragen voor het maken van dezelfde intrekking krijgt?
 
-Er zijn veel contexten waarin aanvragen voor een functie identieke opdrachten kunnen ontvangen. Enkele situaties zijn:
+Er zijn veel contexten waarbij aanvragen naar een functie identieke opdrachten kunnen ontvangen. Enkele situaties zijn onder andere:
 
-- Beleid dat hetzelfde verzoek verzendt, vele malen opnieuw proberen
-- Opdrachten in cache afgespeeld naar de toepassing
-- Toepassingsfouten die meerdere identieke aanvragen verzenden
+- Beleid voor opnieuw proberen, waarbij dezelfde aanvraag meermaals wordt verzonden
+- In cache geplaatste opdrachten die aan de toepassing zijn gespeld
+- Toepassings fouten bij het verzenden van meerdere identieke aanvragen
 
-Om de gegevensintegriteit en de systeemstatus te beschermen, bevat een idempotente toepassing logica die mogelijk de volgende gedragingen bevat:
+Ter bescherming van gegevens integriteit en systeem status bevat een idempotent-toepassing logica die mogelijk het volgende gedrag kan bevatten:
 
-- Controleren van het bestaan van gegevens voordat u probeert een verwijdering uit te voeren
-- Controleren of er al gegevens zijn voordat u een maakactie probeert uit te voeren
-- Logica combineren die uiteindelijke consistentie in gegevens creëert
-- Gelijktijdigheidsbesturingselementen
-- Duplicatiedetectie
-- Validatie van gegevensversheid
-- Beveiligingslogica om invoergegevens te verifiëren
+- Controleren of er gegevens bestaan voordat u een verwijdering probeert uit te voeren
+- Controleren of er al gegevens bestaan voordat u een actie maken uitvoert
+- Het afstemmen van logica die uiteindelijke consistentie in gegevens maakt
+- Gelijktijdigheids besturings elementen
+- Duplicaten detectie
+- Validatie van gegevens vernieuwing
+- Logica voor het verifiëren van invoer gegevens
 
-Uiteindelijk idempotentie wordt bereikt door ervoor te zorgen een bepaalde actie is mogelijk en wordt slechts eenmaal uitgevoerd.
+Uiteindelijk idempotentie wordt bereikt door ervoor te zorgen dat een bepaalde actie kan worden uitgevoerd.

@@ -1,15 +1,15 @@
 ---
 title: Geo-replicatie toepassen voor een register
-description: Aan de slag met het maken en beheren van een geo-gerepliceerd Azure-containerregister, waarmee het register meerdere regio's kan bedienen met multimaster regionale replica's.
+description: Ga aan de slag met het maken en beheren van een geo-gerepliceerd Azure container Registry, waarmee het REGI ster meerdere regio's met regionale replica's voor meerdere masters kan verwerken.
 author: stevelas
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
 ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456439"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
@@ -57,11 +57,11 @@ De functie voor geo-replicatie van Azure Container Registry biedt de volgende vo
 
 * Eén register beheren voor alle regio's: `contoso.azurecr.io`
 * Eén configuratie van installatiekopie-implementaties beheren, omdat voor alle regio's dezelfde installatiekopie-URL wordt gebruikt: `contoso.azurecr.io/public/products/web:1.2`
-* Duw naar één register, terwijl ACR de geo-replicatie beheert. U regionale [webhooks](container-registry-webhook.md) configureren om u op de hoogte te stellen van gebeurtenissen in specifieke replica's.
+* Push naar één REGI ster, terwijl ACR de geo-replicatie beheert. U kunt regionale [webhooks](container-registry-webhook.md) configureren om u op de hoogte te stellen van gebeurtenissen in specifieke replica's.
 
 ## <a name="configure-geo-replication"></a>Geo-replicatie configureren
 
-Het configureren van geo-replicatie is net zo gemakkelijk als regio's aanklikken op een kaart. U geo-replicatie ook beheren met behulp van hulpprogramma's, waaronder de [az acr-replicatieopdrachten](/cli/azure/acr/replication) in de Azure CLI, of een register implementeren dat is ingeschakeld voor georeplicatie met een [Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication).
+Het configureren van geo-replicatie is net zo gemakkelijk als regio's aanklikken op een kaart. U kunt geo-replicatie ook beheren met hulpprogram ma's met inbegrip van de opdracht [AZ ACR Replication](/cli/azure/acr/replication) commands in de Azure CLI of het implementeren van een REGI ster dat is ingeschakeld voor geo-replicatie met een [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication).
 
 De functie voor geo-replicatie is alleen voor [Premium-registers](container-registry-skus.md) beschikbaar. Als uw register nog niet Premium is, kunt u overstappen van Basic en Standard naar Premium in de [Azure-portal](https://portal.azure.com):
 
@@ -89,24 +89,24 @@ Als u extra replica's wilt configureren, selecteert u de groene zeshoeken voor a
 
 ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica's. Zodra dit is voltooid, geeft de portal *Gereed* weer. De status van de replica in de portal wordt niet automatisch bijgewerkt. Gebruik de vernieuwknop om de bijgewerkte status te bekijken.
 
-## <a name="considerations-for-using-a-geo-replicated-registry"></a>Overwegingen voor het gebruik van een geo-gerepliceerd register
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>Overwegingen voor het gebruik van een geo-gerepliceerd REGI ster
 
-* Elke regio in een geo-gerepliceerd register is onafhankelijk zodra deze is ingesteld. Azure Container Registry SLA's zijn van toepassing op elke geo-gerepliceerde regio.
-* Wanneer u afbeeldingen uit een geo-gerepliceerd register duwt of ophaalt, stuurt Azure Traffic Manager op de achtergrond het verzoek naar het register in de regio die het dichtst bij u staat.
-* Nadat u een afbeelding of tagupdate naar het dichtstbijzijnde gebied hebt gepusht, duurt het enige tijd voordat Azure Container Registry de manifesten en lagen repliceert naar de resterende regio's waaru zich voor hebt aangemeld. Grotere afbeeldingen duren langer om te repliceren dan kleinere. Afbeeldingen en tags worden gesynchroniseerd in de replicatiegebieden met een uiteindelijk consistentiemodel.
-* Als u werkstromen wilt beheren die afhankelijk zijn van push-updates voor een geo-gerepliceerde, raden we u aan [webhooks](container-registry-webhook.md) te configureren om te reageren op de pushgebeurtenissen. U regionale webhooks instellen in een geo-gerepliceerd register om pushgebeurtenissen bij te houden die worden voltooid in de geo-gerepliceerde regio's.
+* Elke regio in een geo-gerepliceerd REGI ster is onafhankelijk nadat deze is ingesteld. Azure Container Registry Sla's gelden voor elke regio met geo-replicatie.
+* Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de dichtstbijzijnde regio.
+* Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
+* Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd, wordt u aangeraden [webhooks](container-registry-webhook.md) te configureren om te reageren op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen
 
-Nadat u een replica voor uw register hebt geconfigureerd, u deze op elk gewenst moment verwijderen als deze niet meer nodig is. Een replica verwijderen met behulp van de Azure-portal of andere hulpprogramma's, zoals de opdracht voor [het verwijderen van az acr-replicatie](/cli/azure/acr/replication#az-acr-replication-delete) in de Azure CLI.
+Nadat u een replica voor uw REGI ster hebt geconfigureerd, kunt u deze op elk gewenst moment verwijderen als deze niet meer nodig is. Verwijder een replica met de Azure Portal of andere hulpprogram ma's, zoals de opdracht [AZ ACR Replication delete](/cli/azure/acr/replication#az-acr-replication-delete) in de Azure cli.
 
-Ga als lid van het nieuwe bedrijf over een replica in de Azure-portal:
+Een replica verwijderen in de Azure Portal:
 
-1. Navigeer naar uw Azure Container Registry en selecteer **Replicaties**.
-1. Selecteer de naam van een replica en selecteer **Verwijderen**. Controleer of u de replica wilt verwijderen.
+1. Navigeer naar uw Azure Container Registry en selecteer **replicaties**.
+1. Selecteer de naam van een replica en selecteer **verwijderen**. Bevestig dat u de replica wilt verwijderen.
 
 > [!NOTE]
-> U de registerreplica niet verwijderen in het *thuisgebied* van het register, dat wil zeggen de locatie waar u het register hebt gemaakt. U de huisreplica alleen verwijderen door het register zelf te verwijderen.
+> U kunt de register replica niet verwijderen in de *regio thuis* van het REGI ster, dat wil zeggen, de locatie waar u het REGI ster hebt gemaakt. U kunt de start replica alleen verwijderen door het REGI ster zelf te verwijderen.
 
 ## <a name="geo-replication-pricing"></a>Prijzen van geo-replicatie
 
@@ -114,13 +114,13 @@ Geo-replicatie is een functie van de [Premium SKU](container-registry-skus.md) v
 
 In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde het bedrijf replica's toe aan VS - oost, Canada - centraal en Europa - west. Contoso zou vier keer per maand Premium betalen, zonder extra configuratie of beheer. Elke regio haalt nu installatiekopieën lokaal op, wat zorgt voor betere prestaties en een hogere betrouwbaarheid zonder kosten voor uitgaand netwerkverkeer voor VS - west naar Canada en VS - oost.
 
-## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Push-bewerkingen oplossen met geo-gerepliceerde registers
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Problemen met push bewerkingen met geo-gerepliceerde registers oplossen
  
-Een Docker-client die een afbeelding naar een geo-gerepliceerd register duwt, mag niet alle afbeeldingslagen en het manifest naar één gerepliceerd gebied pushen. Dit kan gebeuren omdat Azure Traffic Manager registeraanvragen doorstuurt naar het gerepliceerde register dat het dichtst bij het netwerk ligt. Als het register twee *replicatiegebieden in* de buurt heeft, kunnen afbeeldingslagen en het manifest worden gedistribueerd naar de twee sites en mislukt de pushbewerking wanneer het manifest wordt gevalideerd. Dit probleem treedt op vanwege de manier waarop de DNS-naam van het register is opgelost op sommige Linux-hosts. Dit probleem doet zich niet voor op Windows, dat een DNS-cache aan clientzijde biedt.
+Een docker-client die een installatie kopie naar een geo-gerepliceerd REGI ster pusht, kan niet alle afbeeldings lagen en het bijbehorende manifest naar één gerepliceerde regio pushen. Dit kan gebeuren omdat Azure-Traffic Manager register aanvragen naar het netwerk-dichtstbijzijnde gerepliceerde REGI ster stuurt. Als het REGI ster twee regio's voor replicatie in de *buurt* heeft, kunnen afbeeldings lagen en het manifest naar de twee sites worden gedistribueerd en mislukt de push bewerking wanneer het manifest is gevalideerd. Dit probleem wordt veroorzaakt door de manier waarop de DNS-naam van het REGI ster op sommige Linux-hosts wordt opgelost. Dit probleem doet zich niet voor in Windows, dat een DNS-cache aan de client zijde biedt.
  
-Als dit probleem zich voordoet, is een oplossing `dnsmasq` om een DNS-cache aan de clientzijde toe te passen, zoals op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het register consistent wordt opgelost. Als u een Linux-VM in Azure gebruikt om naar een register te pushen, raadpleegt u opties in [dns-naamomzettingsopties voor virtuele Linux-machines in Azure.](../virtual-machines/linux/azure-dns.md)
+Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, `dnsmasq` zoals op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](../virtual-machines/linux/azure-dns.md).
 
-Als u de DNS-resolutie wilt optimaliseren voor de dichtstbijzijnde replica wanneer u afbeeldingen pusht, configureert u een geo-gerepliceerd register in dezelfde Azure-regio's als de bron van de pushbewerkingen of de dichtstbijzijnde regio wanneer u buiten Azure werkt.
+Als u de DNS-omzetting naar de dichtstbijzijnde replica tijdens het pushen van installatie kopieën wilt optimaliseren, configureert u een geo-gerepliceerd REGI ster in dezelfde Azure-regio's als de bron van de push bewerkingen of de dichtstbijzijnde regio bij het werken buiten Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

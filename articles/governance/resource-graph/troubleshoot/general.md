@@ -1,38 +1,38 @@
 ---
 title: Veelvoorkomende problemen oplossen
-description: Meer informatie over het oplossen van problemen met de verschillende SDK's tijdens het opvragen van Azure-bronnen met Azure Resource Graph.
+description: Meer informatie over het oplossen van problemen met de verschillende Sdk's tijdens het uitvoeren van query's op Azure-resources met Azure resource Graph.
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74303907"
 ---
-# <a name="troubleshoot-errors-using-azure-resource-graph"></a>Fouten oplossen met Azure Resource Graph
+# <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 
-U fouten tegenkomen bij het opvragen van Azure-bronnen met Azure Resource Graph. In dit artikel worden verschillende fouten beschreven die kunnen optreden en hoe u deze oplossen.
+Er kunnen fouten optreden bij het uitvoeren van query's op Azure-resources met Azure resource Graph. In dit artikel worden verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
 
-## <a name="finding-error-details"></a>Foutgegevens zoeken
+## <a name="finding-error-details"></a>Fout details zoeken
 
-De meeste fouten zijn het gevolg van een probleem tijdens het uitvoeren van een query met Azure Resource Graph. Wanneer een query mislukt, geeft de SDK details over de mislukte query. Deze informatie geeft het probleem aan, zodat het kan worden opgelost en een latere query slaagt.
+De meeste fouten zijn het resultaat van een probleem bij het uitvoeren van een query met Azure resource Graph. Wanneer een query mislukt, biedt de SDK Details over de mislukte query. Deze informatie geeft het probleem aan zodat het kan worden hersteld en een latere query kan worden uitgevoerd.
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Scenario: Te veel abonnementen
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Scenario: te veel abonnementen
 
 #### <a name="issue"></a>Probleem
 
-Klanten met toegang tot meer dan 1000 abonnementen, waaronder abonnementen met meerdere tenants met [Azure Lighthouse,](../../../lighthouse/overview.md)kunnen geen gegevens ophalen voor alle abonnementen in één gesprek met Azure Resource Graph.
+Klanten met toegang tot meer dan 1000 abonnementen, waaronder cross-Tenant abonnementen met [Azure Lighthouse](../../../lighthouse/overview.md), kunnen geen gegevens ophalen over alle abonnementen in één aanroep naar een Azure-resource grafiek.
 
 #### <a name="cause"></a>Oorzaak
 
-Azure CLI en PowerShell sturen alleen de eerste 1000 abonnementen naar Azure Resource Graph. De REST API voor Azure Resource Graph accepteert een maximum aantal abonnementen om de query op uit te voeren.
+Alleen de eerste 1000 abonnementen op Azure resource Graph worden door Azure CLI en Power shell doorgestuurd. De REST API voor de resource grafiek van Azure accepteert een maximum aantal abonnementen voor het uitvoeren van de query.
 
 #### <a name="resolution"></a>Oplossing
 
-Batchaanvragen voor de query met een subset van abonnementen om onder de limiet van 1000 abonnementen te blijven. De oplossing is het gebruik van de parameter **Abonnement** in PowerShell.
+Batch-aanvragen voor de query met een subset van abonnementen die blijven onder de limiet van 1000-abonnementen. De oplossing maakt gebruik van de **abonnements** parameter in Power shell.
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -57,38 +57,38 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>Scenario: Rest-header van inhoudstype niet-ondersteund
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>Scenario: niet-ondersteunde content-type REST header
 
 #### <a name="issue"></a>Probleem
 
-Klanten die de Azure Resource Graph REST API bevragen, krijgen een reactie van _500_ (Interne serverfout) geretourneerd.
+Klanten die een query uitvoeren op de Azure-resource grafiek REST API een _500_ -reactie ontvangen (interne server fout).
 
 #### <a name="cause"></a>Oorzaak
 
-De Azure Resource Graph REST `Content-Type` API ondersteunt alleen een **van toepassing/json**. Sommige REST-hulpprogramma's of agents standaard **tekst/effen,** die niet wordt ondersteund door de REST API.
+De Azure resource Graph-REST API ondersteunt alleen `Content-Type` een van de **toepassingen/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
 
 #### <a name="resolution"></a>Oplossing
 
-Valideren of de tool of agent die u gebruikt om `Content-Type` Azure Resource Graph op te vragen, de REST API-header heeft geconfigureerd voor **toepassing/json**.
+Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken op `Content-Type` Azure resource Graph, de rest API-header is geconfigureerd voor **Application/JSON**.
 
-### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Scenario: Geen leestoestemming voor alle abonnementen in de lijst
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Scenario: geen lees machtiging voor alle abonnementen in de lijst
 
 #### <a name="issue"></a>Probleem
 
-Klanten die expliciet slagen voor een lijst met abonnementen met een Azure Resource Graph-query, krijgen een antwoord van _403_ (Verboden).
+Klanten die expliciet een lijst met abonnementen door geven met een query van een Azure-resource grafiek, krijgen een antwoord van _403_ (verboden).
 
 #### <a name="cause"></a>Oorzaak
 
-Als de klant geen leestoestemming heeft voor alle verstrekte abonnementen, wordt het verzoek geweigerd wegens gebrek aan geschikte beveiligingsrechten.
+Als de klant geen lees machtiging heeft voor alle aangevraagde abonnementen, wordt de aanvraag geweigerd omdat de juiste beveiligings rechten ontbreken.
 
 #### <a name="resolution"></a>Oplossing
 
-Neem ten minste één abonnement op in de abonnementslijst waartoe de klant die de query uitvoert, ten minste leestoegang heeft. Zie [Machtigingen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)voor meer informatie.
+Neem ten minste één abonnement op in de lijst met abonnementen die de klant die de query uitvoert, ten minste lees toegang heeft tot. Zie [machtigingen in azure resource Graph](../overview.md#permissions-in-azure-resource-graph)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-- Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
-- Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met – het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
-- Als u meer hulp nodig hebt, u een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+- Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
+- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+- Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

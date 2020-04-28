@@ -1,22 +1,22 @@
 ---
-title: Reliable Actors noteert over actor type serialisatie
-description: Bespreekt basisvereisten voor het definiëren van serializable klassen die kunnen worden gebruikt om service fabric betrouwbare actoren staten en interfaces te definiëren
+title: Reliable Actors notities op serialisatie van het actor type
+description: Hierin worden de basis vereisten beschreven voor het definiëren van serialiseerbare klassen die kunnen worden gebruikt voor het definiëren van Service Fabric Reliable Actors status en interfaces
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75349304"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Opmerkingen over Service Fabric Betrouwbare Actoren type serialisatie
-De argumenten van alle methoden, resultaattypen van de taken die door elke methode in een actorinterface worden geretourneerd en objecten die zijn opgeslagen in de statusbeheerder van een actor, moeten [gegevenscontract serializable](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)zijn . Dit geldt ook voor de argumenten van de methoden die zijn gedefinieerd in [actorgebeurtenis-interfaces](service-fabric-reliable-actors-events.md). (Actor gebeurtenis interface methoden altijd nietig terug.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Opmerkingen over Service Fabric Reliable Actors type serialisatie
+De argumenten van alle methoden, resultaat typen van de taken die worden geretourneerd door elke methode in een actor-interface, en objecten die zijn opgeslagen in de status Manager van een actor moeten [serialiseerbaar](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)zijn. Dit geldt ook voor de argumenten van de methoden die in [actor-gebeurtenis interfaces](service-fabric-reliable-actors-events.md)zijn gedefinieerd. (De interface methoden van actor-gebeurtenissen retour neren altijd void.)
 
-## <a name="custom-data-types"></a>Aangepaste gegevenstypen
-In dit voorbeeld definieert de volgende actorinterface een `VoicemailBox`methode die een aangepast gegevenstype met de naam retourneert:
+## <a name="custom-data-types"></a>Aangepaste gegevens typen
+In dit voor beeld definieert de volgende actor-interface een methode die resulteert in een aangepast gegevens `VoicemailBox`type met de naam:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -32,7 +32,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-De interface wordt geïmplementeerd door een actor die `VoicemailBox` de statusbeheerder gebruikt om een object op te slaan:
+De interface wordt geïmplementeerd door een actor die gebruikmaakt van de status Manager voor het `VoicemailBox` opslaan van een object:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -68,12 +68,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-In dit voorbeeld `VoicemailBox` wordt het object geserialiseerd wanneer:
+In dit voor beeld wordt `VoicemailBox` het object geserialiseerd wanneer:
 
-* Het object wordt verzonden tussen een actorinstantie en een beller.
-* Het object wordt opgeslagen in de statusbeheerder waar het wordt ingeschakeld op schijf en gerepliceerd naar andere knooppunten.
+* Het object wordt verzonden tussen een actor-exemplaar en een aanroeper.
+* Het object wordt opgeslagen in de status Manager, waar het wordt bewaard op schijf en gerepliceerd naar andere knoop punten.
 
-Het Framework Reliable Actor maakt gebruik van DataContract serialisatie. Daarom moeten de aangepaste gegevensobjecten en hun leden worden geannoteerd met respectievelijk de kenmerken **DataContract** en **DataMember.**
+Het reliable actor-Framework gebruikt data contract-serialisatie. Daarom moeten de aangepaste gegevens objecten en hun leden worden voorzien van de kenmerken **Data contract** en **Data member** , respectievelijk.
 
 ```csharp
 [DataContract]
@@ -137,9 +137,9 @@ public class VoicemailBox implements Serializable
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Levenscyclus van actor's en garbage collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actortimers en herinneringen](service-fabric-reliable-actors-timers-reminders.md)
-* [Actorgebeurtenissen](service-fabric-reliable-actors-events.md)
-* [Acteur reentrancy](service-fabric-reliable-actors-reentrancy.md)
-* [Actor polymorfisme en object-georiënteerde ontwerppatronen](service-fabric-reliable-actors-polymorphism.md)
-* [Actor diagnostiek en prestatiebewaking](service-fabric-reliable-actors-diagnostics.md)
+* [Actor-levens cyclus en garbagecollection](service-fabric-reliable-actors-lifecycle.md)
+* [Actor timers en herinneringen](service-fabric-reliable-actors-timers-reminders.md)
+* [Actor gebeurtenissen](service-fabric-reliable-actors-events.md)
+* [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
+* [Actor-polymorfisme-en object gerichte ontwerp patronen](service-fabric-reliable-actors-polymorphism.md)
+* [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)

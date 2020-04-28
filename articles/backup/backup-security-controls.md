@@ -1,61 +1,61 @@
 ---
 title: Beveiligingsmaatregelen
-description: Meer informatie over de beveiligingsbesturingselementen die worden gebruikt in de Azure Backup-service. Deze besturingselementen helpen de service beveiligingsproblemen te voorkomen, op te sporen en erop te reageren.
+description: Meer informatie over de beveiligings opties die worden gebruikt in de Azure Backup-service. Deze besturings elementen helpen de service om beveiligings problemen te voor komen, te detecteren en erop te reageren.
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 0e3f5ce942ea8aef9bf5eb98883ae1e72a7ab239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172143"
 ---
-# <a name="security-controls-for-azure-backup"></a>Beveiligingsbesturingselementen voor Azure Backup
+# <a name="security-controls-for-azure-backup"></a>Beveiligings controles voor Azure Backup
 
-In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in Azure Backup, documenteer.
+In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure Backup.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen | Documentatie
+| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie
 |---|---|--|
-| Ondersteuning voor serviceeindpunten| Nee |  |  |
+| Ondersteuning voor service-eind punten| Nee |  |  |
 | Ondersteuning voor VNet-injectie| Nee |  |  |
-| Ondersteuning voor netwerkisolatie en firewalling| Ja | Gedwongen tunneling wordt ondersteund voor VM-back-up. Gedwongen tunneling wordt niet ondersteund voor workloads die in VM's worden uitgevoerd. |  |
-| Ondersteuning voor gedwongen tunneling| Nee |  |  |
+| Ondersteuning voor netwerk isolatie en firewalling| Ja | Geforceerde tunneling wordt ondersteund voor VM-back-ups. Geforceerde tunneling wordt niet ondersteund voor werk belastingen die in Vm's worden uitgevoerd. |  |
+| Ondersteuning voor geforceerde tunneling| Nee |  |  |
 
-## <a name="monitoring--logging"></a>Controle & logboekregistratie
+## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| | Documentatie
+| Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | Log Analytics wordt ondersteund via resourcelogs. Zie [Beveiligde workloads](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)met azure backup met behulp van Log Analytics voor meer informatie. |  |
-| Logboekregistratie en audit van het controle- en beheervlak| Ja | Alle acties die door klanten vanuit de Azure-portal worden geactiveerd, worden vastgelegd in activiteitslogboeken. |  |
-| Logboekregistratie en -audit van gegevensvliegtuigen| Nee | Azure Backup-gegevensvlak is niet rechtstreeks bereikbaar.  |  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)voor meer informatie. |  |
+| Logboek registratie en controle op het vlak van controle en beheer| Ja | Alle door de klant geactiveerde acties van de Azure Portal worden vastgelegd in activiteiten Logboeken. |  |
+| Logboek registratie en controle van het gegevens vlak| Nee | Azure Backup gegevens vlak kan niet rechtstreeks worden bereikt.  |  |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| | Documentatie
+| Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Authentication| Ja | Verificatie gebeurt via Azure Active Directory. |  |
-| Autorisatie| Ja | Klant gemaakte en ingebouwde RBAC rollen worden gebruikt. Zie [Toegangsbeheer op basis van rollen gebruiken om herstelpunten voor Azure Backup te beheren](/azure/backup/backup-rbac-rs-vault)voor meer informatie. |  |
+| Verificatie| Ja | Verificatie is via Azure Active Directory. |  |
+| Autorisatie| Ja | Door de klant gemaakte en ingebouwde RBAC-rollen worden gebruikt. Zie [Access Control op rollen gebaseerd gebruiken om Azure backup herstel punten te beheren](/azure/backup/backup-rbac-rs-vault)voor meer informatie. |  |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen | | Documentatie
+| Beveiligings beheer | Ja/Nee | Opmerkingen | | Documentatie
 |---|---|--|
-| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Met behulp van opslagserviceversleuteling voor opslagaccounts. |  |
-| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Nee |  |  |
-| Versleuteling op kolomniveau (Azure Data Services)| Nee |  |  |
-| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Nee | HTTPS gebruiken. |  |
-| API-aanroepen versleuteld| Ja |  |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Storage-service versleuteling gebruiken voor opslag accounts. |  |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee |  |  |
+| Versleuteling op kolom niveau (Azure Data Services)| Nee |  |  |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Nee | HTTPS gebruiken. |  |
+| Versleutelde API-aanroepen| Ja |  |  |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| | Documentatie
+| Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Ondersteuning voor configuratiebeheer (versiebeheer van configuratie, enz.)| Ja|  |  |
+| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja|  |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../security/fundamentals/security-controls.md).

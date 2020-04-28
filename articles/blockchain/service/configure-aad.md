@@ -1,37 +1,37 @@
 ---
-title: Azure Active Directory-toegang configureren - Azure Blockchain-service
-description: Azure Blockchain-service configureren met Azure Active Directory-toegang
+title: Azure Active Directory toegang configureren-Azure Block Chain-Service
+description: Azure Block Chain service configureren met Azure Active Directory toegang
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455867"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure Active Directory-toegang configureren voor Azure Blockchain-service
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure Active Directory toegang configureren voor de Azure Block Chain-Service
 
-In dit artikel leert u hoe u toegang verleent en verbinding maakt met Azure Blockchain Service-knooppunten met azure active directory(Azure AD) gebruikers-, groeps- of toepassings-id's.
+In dit artikel leert u hoe u toegang verleent en verbinding maakt met Azure Block Chain Service-knoop punten met behulp van de gebruikers-, groeps-of toepassings-Id's van Azure Active Directory (Azure AD).
 
-Azure AD biedt cloudgebaseerd identiteitsbeheer en stelt u in staat om één identiteit te gebruiken voor een hele onderneming en toegang te krijgen tot toepassingen in Azure. Azure Blockchain Service is geïntegreerd met Azure AD en biedt voordelen zoals ID-federatie, single sign-on en multi-factor authenticatie.
+Azure AD biedt identiteits beheer op basis van de Cloud en stelt u in staat om één identiteit te gebruiken voor een hele onderneming en toegang te krijgen tot toepassingen in Azure. De Azure Block Chain-service is geïntegreerd met Azure AD en biedt voor delen zoals ID-Federatie, eenmalige aanmelding en multi-factor Authentication.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Een blockchain-lid maken met behulp van de Azure-portal](create-member.md)
+* [Een Block Chain-lid maken met behulp van de Azure Portal](create-member.md)
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-U toegang verlenen op zowel lidniveau als knooppuntniveau. Het verlenen van toegangsrechten op lidniveau verleent op zijn beurt toegang tot alle knooppunten onder het lid.
+U kunt zowel het lidniveau als het knooppunt niveau toegang verlenen. Het verlenen van toegangs rechten op het niveau van de gebruiker verleent toegang tot alle knoop punten onder het lid.
 
-### <a name="grant-member-level-access"></a>Toegang tot lidniveau verlenen
+### <a name="grant-member-level-access"></a>Toegang op leden niveau verlenen
 
-Om toegangstoestemming te verlenen op lidniveau.
+Toegangs rechten verlenen op het niveau van de gebruiker.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Navigeer naar **Toegangsbesturingselement (IAM) > Voeg > roltoewijzing toevoegen toe.**
-1. Selecteer de rol **Van Toegang voor het Knooppunt voor Blockchain-leden (Preview)** en voeg het Azure AD ID-object toe waartoe u toegang wilt verlenen. Azure AD ID-object kan zijn:
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Navigeer naar **toegangs beheer (IAM) > voeg > roltoewijzing**toe.
+1. Selecteer de rol **toegang tot Block Chain (preview-node)** en voeg het Azure ad-id-object toe waaraan u toegang wilt verlenen. Het Azure AD-ID-object kan zijn:
 
     | Azure AD-object | Voorbeeld |
     |-----------------|---------|
@@ -43,45 +43,45 @@ Om toegangstoestemming te verlenen op lidniveau.
 
 1. Selecteer **Opslaan**.
 
-### <a name="grant-node-level-access"></a>Toegang tot knooppuntniveau verlenen
+### <a name="grant-node-level-access"></a>Toegang verlenen op knooppunt niveau
 
-U toegang verlenen op knooppuntniveau door te navigeren naar knooppuntbeveiliging en op de knooppuntnaam te klikken die u toegang wilt verlenen.
+U kunt toegang verlenen op knooppunt niveau door te navigeren naar knoop punt beveiliging en te klikken op de naam van het knoop punt dat u toegang wilt verlenen.
 
-Selecteer de rol Van Toegang voor het Knooppunt voor Blockchain-leden (Preview) en voeg het Azure AD ID-object toe waartoe u toegang wilt verlenen.
+Selecteer de rol toegang tot Block Chain (preview-node) en voeg het Azure AD-ID-object toe waaraan u toegang wilt verlenen.
 
-Zie [Transactieknooppunten voor Azure Blockchain Service configureren](configure-transaction-nodes.md#azure-active-directory-access-control)voor meer informatie .
+Zie [service transactie knooppunten van Azure Block Chain configureren](configure-transaction-nodes.md#azure-active-directory-access-control)voor meer informatie.
 
-## <a name="connect-using-azure-blockchain-connector"></a>Verbinding maken met Azure Blockchain Connector
+## <a name="connect-using-azure-blockchain-connector"></a>Verbinding maken met behulp van de Azure Block Chain-connector
 
-Download of kloon de [Azure Blockchain Connector van GitHub.](https://github.com/Microsoft/azure-blockchain-connector/)
+Down load of kloon de [Azure Block Chain-connector van github](https://github.com/Microsoft/azure-blockchain-connector/).
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-De sectie Snelstart in het **leesthema** volgen om de connector van de broncode te bouwen.
+Volg de sectie Quick Start in het **Leesmij-bestand** om de connector te bouwen op basis van de bron code.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Verbinding maken met een Azure AD-gebruikersaccount
+### <a name="connect-using-an-azure-ad-user-account"></a>Verbinding maken met behulp van een Azure AD-gebruikers account
 
-1. Voer de volgende opdracht uit om te verifiëren met een Azure AD-gebruikersaccount. MyAADDirectory \<\> vervangen door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
+1. Voer de volgende opdracht uit om te verifiëren met behulp van een Azure AD-gebruikers account. Vervang \<myAADDirectory\> door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
 1. Azure AD vraagt om referenties.
-1. Meld u aan met uw gebruikersnaam en wachtwoord.
-1. Bij succesvolle verificatie maakt uw lokale proxy verbinding met uw blockchain-knooppunt. U uw Geth-client nu koppelen aan het lokale eindpunt.
+1. Meld u aan met uw gebruikers naam en wacht woord.
+1. Bij een geslaagde verificatie maakt uw lokale proxy verbinding met uw Block Chain-knoop punt. U kunt nu uw Geth-client aan het lokale eind punt koppelen.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Verbinding maken met een toepassings-id
+### <a name="connect-using-an-application-id"></a>Verbinding maken met behulp van een toepassings-ID
 
-Veel toepassingen verifiëren met Azure AD met behulp van een toepassings-id in plaats van een Azure AD-gebruikersaccount.
+Veel toepassingen verifiëren met Azure AD met behulp van een toepassings-ID in plaats van een Azure AD-gebruikers account.
 
-Als u verbinding wilt maken met uw knooppunt met een toepassings-id, vervangt u **aadauthcode** door **aadclient.**
+Als u verbinding wilt maken met uw knoop punt met behulp van een toepassings-ID, vervangt u **aadauthcode** door **aadclient**.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| tenant-id | Azure AD-domein, bijvoorbeeld,`yourdomain.onmicrosoft.com`
-| client-id | Client-id van de geregistreerde toepassing in Azure AD
-| klantgeheim | Clientgeheim van de geregistreerde toepassing in Azure AD
+| Tenant-id | Azure AD-domein, bijvoorbeeld`yourdomain.onmicrosoft.com`
+| client-id | Client-ID van de geregistreerde toepassing in azure AD
+| client-geheim | Client geheim van de geregistreerde toepassing in azure AD
 
-Zie De portal gebruiken om een Azure [AD-toepassing en serviceprincipal te maken waarmee toegang tot resources kan worden gemaakt](../../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie over het registreren van een toepassing in Azure AD.
+Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken voor toegang tot resources](../../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie over het registreren van een toepassing in azure AD.
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Een mobiel apparaat of tekstbrowser verbinden
+### <a name="connect-a-mobile-device-or-text-browser"></a>Een mobiel apparaat of een tekst browser verbinden
 
-Voor een mobiel apparaat of browser op basis van tekst waar het pop-upscherm azure AD-verificatie niet mogelijk is, genereert Azure AD een eenmalige toegangscode. U de toegangscode kopiëren en doorgaan met Azure AD-verificatie in een andere omgeving.
+Voor een mobiel apparaat of een tekst-gebaseerde browser waarbij het pop-upvenster Azure AD-verificatie niet mogelijk is, genereert Azure AD een eenmalige wachtwoord code. U kunt de wachtwoord code kopiëren en door gaan met Azure AD-verificatie in een andere omgeving.
 
-Als u de toegangscode wilt genereren, vervangt u **aadauthcode** door **aaddevice.** MyAADDirectory \<\> vervangen door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
+Als u de wachtwoord code wilt genereren, vervangt u **aadauthcode** door **aaddevice**. Vervang \<myAADDirectory\> door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Blockchain Service-beveiliging](data-security.md)voor meer informatie over gegevensbeveiliging in Azure Blockchain Service.
+Zie [Azure Block Chain Service Security](data-security.md)(Engelstalig) voor meer informatie over de beveiliging van gegevens in de Azure Block Chain-service.

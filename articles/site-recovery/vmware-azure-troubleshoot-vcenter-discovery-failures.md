@@ -1,6 +1,6 @@
 ---
-title: Problemen met VMware vCenter-detectiefouten in Azure Site Recovery oplossen
-description: In dit artikel wordt beschreven hoe u vMware vCenter-detectiefouten oplossen in Azure Site Recovery.
+title: Problemen met VMware vCenter-detectie in Azure Site Recovery oplossen
+description: In dit artikel wordt beschreven hoe u problemen met VMware vCenter-detectie oplost in Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74091242"
 ---
-# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problemen met vCenter Server-detectiefouten oplossen
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problemen met vCenter Server detectie oplossen
 
-In dit artikel u problemen oplossen die optreden als gevolg van vMware vCenter-detectiefouten.
+Dit artikel helpt u bij het oplossen van problemen die zich voordoen als gevolg van fouten in VMware vCenter-detectie.
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Niet-numerieke waarden in de eigenschap maxSnapShots
 
-Op versies vóór 9.20 wordt de verbinding verbroken wanneer `snapshot.maxSnapShots` vCenter een niet-numerieke waarde voor de eigenschap eigenschap op een vm ophaalt.
+Op eerdere versies dan 9,20 wordt de verbinding met vCenter verbroken wanneer het een niet-numerieke waarde voor de eigenschap `snapshot.maxSnapShots` Property op een virtuele machine ophaalt.
 
-Dit probleem wordt geïdentificeerd door fout-id 95126.
+Dit probleem wordt geïdentificeerd aan de hand van fout-ID 95126.
 
     ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
     System.FormatException: Input string was not in a correct format.
@@ -30,53 +30,53 @@ Dit probleem wordt geïdentificeerd door fout-id 95126.
        at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
        at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
     
-Ga als ander op zoek naar het probleem:
+Om het probleem op te lossen:
 
-- Identificeer de VM en stel de waarde in op een numerieke waarde (VM-bewerkingsinstellingen in vCenter).
+- Identificeer de virtuele machine en stel de waarde in op een numerieke waarde (VM-instellingen bewerken in vCenter).
 
 of
 
-- Upgrade uw configuratieserver naar versie 9.20 of hoger.
+- Voer een upgrade uit van uw configuratie server naar versie 9,20 of hoger.
 
-## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problemen met proxyconfiguratie voor vCenter-connectiviteit
+## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problemen met de proxy configuratie voor de vCenter-connectiviteit
 
-vCenter Discovery eert de standaardproxy-instellingen van het systeem die zijn geconfigureerd door de systeemgebruiker. De DRA-service eert de proxy-instellingen die door de gebruiker worden verstrekt tijdens de installatie van de configuratieserver met behulp van de uniforme installatie-installatie- of OVA-sjabloon. 
+vCenter-detectie voldoet aan de systeem standaard proxy-instellingen die zijn geconfigureerd door de systeem gebruiker. De DRA-service verzorgt de proxy-instellingen van de gebruiker tijdens de installatie van de configuratie server met behulp van het installatie programma voor installatie of eicellen van de Unified Setup. 
 
-In het algemeen wordt de proxy gebruikt om te communiceren met openbare netwerken; zoals communiceren met Azure. Als de proxy is geconfigureerd en vCenter zich in een lokale omgeving bevindt, kan deze niet met DRA communiceren.
+In het algemeen wordt de proxy gebruikt om te communiceren met open bare netwerken. zoals communiceren met Azure. Als de proxy is geconfigureerd en vCenter zich in een lokale omgeving bevindt, kan deze niet communiceren met DRA.
 
-De volgende situaties doen zich voor wanneer dit probleem wordt ondervonden:
+De volgende situaties treden op wanneer dit probleem zich voordoet:
 
-- VCenter-servervCenter-> \<niet bereikbaar is vanwege de fout: de externe server heeft een fout geretourneerd: (503) Server niet beschikbaar
-- De vCenter-server \<vCenter-> niet bereikbaar is vanwege de fout: de externe server heeft een fout geretourneerd: kan geen verbinding maken met de externe server.
-- Kan geen verbinding maken met vCenter/ESXi-server.
+- Het vCenter- \<> van de vCenter-Server is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: (503) server niet beschikbaar
+- Het vCenter- \<> van de vCenter-Server is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: kan geen verbinding maken met de externe server.
+- Kan geen verbinding maken met de vCenter/ESXi-server.
 
-Ga als ander op zoek naar het probleem:
+Om het probleem op te lossen:
 
-Download de [PsExec tool](https://aka.ms/PsExec). 
+Down load het [PsExec-hulp programma](https://aka.ms/PsExec). 
 
-Gebruik het gereedschap PsExec om toegang te krijgen tot de gebruikerscontext van het systeem en te bepalen of het proxyadres is geconfigureerd. U vervolgens vCenter toevoegen aan de bypasslijst met behulp van de volgende procedures.
+Gebruik het hulp programma PsExec om toegang te krijgen tot de context van het systeem gebruikers en te bepalen of het proxy adres is geconfigureerd. U kunt vervolgens met behulp van de volgende procedures vCenter toevoegen aan de lijst overs Laan.
 
-Voor detectieproxyconfiguratie:
+Voor detectie proxy configuratie:
 
-1. Open IE in de context van de systeemgebruiker met de PsExec-tool.
+1. Open IE in de context van het systeem gebruikers met het hulp programma PsExec.
     
-    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+    PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 
 2. Wijzig de proxy-instellingen in Internet Explorer om het vCenter-IP-adres te omzeilen.
 3. Start de tmanssvc-service opnieuw.
 
-Voor DRA-proxyconfiguratie:
+Voor DRA-proxy configuratie:
 
-1. Open een opdrachtprompt en open de map Microsoft Azure Site Recovery Provider.
+1. Open een opdracht prompt en open de map Microsoft Azure Site Recovery provider.
  
-    **cd C:\Program Files\Microsoft Azure Site Recovery Provider**
+    **CD C:\Program Files\Microsoft Azure Site Recovery provider**
 
-3. Voer in de opdrachtprompt de volgende opdracht uit.
+3. Voer de volgende opdracht uit vanaf de opdracht prompt.
    
-   **DRCONFIGURATOR. EXE /configure /AddBypassUrls [IP-adres/FQDN van vCenter Server op het moment van vCenter toevoegen]**
+   **DRCONFIGURATOR. EXE/configure/AddBypassUrls [IP-adres/FQDN van vCenter Server beschikbaar op het moment van vCenter toevoegen]**
 
-4. Start de DRA-providerservice opnieuw.
+4. Start de DRA-Provider service opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De configuratieserver voor VMware VM-noodherstel beheren](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[De configuratie server voor herstel na nood gevallen voor VMware VM beheren](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

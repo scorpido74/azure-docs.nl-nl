@@ -1,6 +1,6 @@
 ---
-title: Per app schalen voor hosting met hoge dichtheid
-description: Schaal apps onafhankelijk van de App Service-abonnementen en optimaliseer de geschaalde exemplaren in uw abonnement.
+title: Schalen per app voor high-density hosting
+description: Schaal apps onafhankelijk van de App Service plannen en Optimaliseer de uitgeschaalde instanties in uw abonnement.
 author: btardif
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.topic: article
@@ -8,31 +8,31 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672355"
 ---
-# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting met hoge dichtheid op Azure App Service met per app-schaling
+# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosten met hoge dichtheid op Azure App Service met schalen per app
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Wanneer u App Service gebruikt, u uw apps schalen door het [App Service-abonnement](overview-hosting-plans.md) waarop ze worden uitgevoerd te schalen. Wanneer meerdere apps in hetzelfde App Service-abonnement worden uitgevoerd, worden alle apps in het abonnement uitgevoerd in elke geschaalde instantie.
+Wanneer u App Service gebruikt, kunt u uw apps schalen door het [app service plan](overview-hosting-plans.md) waarmee ze worden uitgevoerd, te schalen. Wanneer meerdere apps worden uitgevoerd in hetzelfde App Service-abonnement, worden alle apps in het plan uitgevoerd met elk uitgebreid exemplaar.
 
-Schalen per app kan worden ingeschakeld op het niveau van het App-serviceplan, zodat een app onafhankelijk van het App *Service-abonnement* kan worden geschaald. Op deze manier kan een App Service-abonnement worden geschaald naar 10 exemplaren, maar kan een app worden ingesteld op slechts vijf exemplaren.
+*Schalen per app* kan worden ingeschakeld op het niveau van de app service plan om een app te kunnen schalen onafhankelijk van het app service plan dat als host fungeert voor het abonnement. Op deze manier kan een App Service plan worden geschaald naar 10 instanties, maar een app kan zo worden ingesteld dat deze slechts vijf keer wordt gebruikt.
 
 > [!NOTE]
-> Schalen per app is alleen beschikbaar voor **standaard-,** **Premium-,** **Premium-, Premium V2-** en **Geïsoleerde** prijsniveaus.
+> Schalen per app is alleen beschikbaar voor **Standard**-, **Premium**-, **Premium v2** -en **geïsoleerde** prijs categorieën.
 >
 
-Apps worden toegewezen aan het beschikbare App Service-abonnement met behulp van een best effort-aanpak voor een gelijkmatige verdeling over instanties. Hoewel een gelijkmatige distributie niet is gegarandeerd, zorgt het platform ervoor dat twee exemplaren van dezelfde app niet worden gehost op hetzelfde app-abonnement.
+Apps worden toegewezen aan een beschik bare App Service plan met behulp van een aanbevolen benadering voor een gelijkmatige verdeling van alle exemplaren. Hoewel een gelijkmatige distributie niet gegarandeerd is, zorgt het platform ervoor dat er geen twee exemplaren van dezelfde app worden gehost op hetzelfde exemplaar van de App Service-abonnement.
 
-Het platform is niet afhankelijk van statistieken om te beslissen over de toewijzing van werknemers. Toepassingen worden alleen opnieuw in evenwicht gebracht wanneer instanties worden toegevoegd of verwijderd uit het App-serviceplan.
+Het platform is niet afhankelijk van metrische gegevens om te beslissen over de toewijzing van werk nemers. Toepassingen worden alleen opnieuw gesaldeerd wanneer instanties worden toegevoegd aan of verwijderd uit het App Service plan.
 
-## <a name="per-app-scaling-using-powershell"></a>Schalen per app met PowerShell
+## <a name="per-app-scaling-using-powershell"></a>Schalen per app met behulp van Power shell
 
-Maak een plan met per-app ```-PerSiteScaling $true``` schalen door ```New-AzAppServicePlan``` de parameter door te geven aan de cmdlet.
+Maak een plan met schalen per app door de ```-PerSiteScaling $true``` para meter aan de ```New-AzAppServicePlan``` cmdlet door te geven.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Schakel per-app schalen in met een bestaand `-PerSiteScaling $true` App ```Set-AzAppServicePlan``` Service Plan door de parameter door te geven aan de cmdlet.
+Schakel per app schalen in met een bestaand App Service plan door de `-PerSiteScaling $true` para meter door te geven aan ```Set-AzAppServicePlan``` de cmdlet.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -49,9 +49,9 @@ Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
-Configureer op app-niveau het aantal exemplaren dat de app kan gebruiken in het App Service-abonnement.
+Configureer op het niveau van de app het aantal instanties dat de app kan gebruiken in het App Service plan.
 
-In het onderstaande voorbeeld is de app beperkt tot twee instanties, ongeacht naar hoeveel exemplaren het onderliggende app-serviceplan wordt geschaald.
+In het onderstaande voor beeld is de app beperkt tot twee instanties, ongeacht het aantal exemplaren waarvan het onderliggende app service-plan wordt geschaald naar.
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
@@ -65,16 +65,16 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`is anders `$newapp.MaxNumberOfWorkers`dan . Per app-schaling wordt gebruikt `$newapp.SiteConfig.NumberOfWorkers` om de schaalkenmerken van de app te bepalen.
+> `$newapp.SiteConfig.NumberOfWorkers`wijkt af van `$newapp.MaxNumberOfWorkers`. Schaal baarheid per app wordt gebruikt `$newapp.SiteConfig.NumberOfWorkers` om de schaal kenmerken van de app te bepalen.
 
-## <a name="per-app-scaling-using-azure-resource-manager"></a>Schalen per app met Azure Resource Manager
+## <a name="per-app-scaling-using-azure-resource-manager"></a>Schalen per app met behulp van Azure Resource Manager
 
-Met de volgende sjabloon Azure Resource Manager wordt het volgende:
+Met de volgende Azure Resource Manager sjabloon maakt u:
 
-- Een App-serviceplan dat is opgeschaald naar 10 exemplaren
-- een app die is geconfigureerd om te schalen naar maximaal vijf exemplaren.
+- Een App Service plan dat is geschaald naar 10 instanties
+- een app die is geconfigureerd om te worden geschaald naar een maximum van vijf exemplaren.
 
-Het App-serviceplan stelt de eigenschap `"perSiteScaling": true` **PerSiteScaling** in op true. De app stelt het **aantal werknemers** `"properties": { "numberOfWorkers": "5" }`in dat moet worden gebruikt op 5 .
+De eigenschap **PerSiteScaling** wordt ingesteld op True `"perSiteScaling": true`voor het app service plan. De App stelt het **aantal werk** rollen in dat moet worden gebruikt `"properties": { "numberOfWorkers": "5" }`voor 5.
 
 ```json
 {
@@ -123,21 +123,21 @@ Het App-serviceplan stelt de eigenschap `"perSiteScaling": true` **PerSiteScalin
 }
 ```
 
-## <a name="recommended-configuration-for-high-density-hosting"></a>Aanbevolen configuratie voor hosting met hoge dichtheid
+## <a name="recommended-configuration-for-high-density-hosting"></a>Aanbevolen configuratie voor high-density hosting
 
-Schalen per app is een functie die is ingeschakeld in zowel algemene Azure-regio's als [App-serviceomgevingen.](environment/app-service-app-service-environment-intro.md) De aanbevolen strategie is echter om App Service-omgevingen te gebruiken om te profiteren van hun geavanceerde functies en de grotere app-service-abonnementscapaciteit.  
+Het schalen per app is een functie die is ingeschakeld in zowel wereld wijde Azure-regio's als [app service omgevingen](environment/app-service-app-service-environment-intro.md). De aanbevolen strategie is echter het gebruik van App Service omgevingen om te profiteren van hun geavanceerde functies en de grotere capaciteit van het App Service plan.  
 
-Volg de volgende stappen om hosting met hoge dichtheid voor uw apps te configureren:
+Volg deze stappen om hosting met hoge dichtheid voor uw apps te configureren:
 
-1. Wijs een App Service-abonnement aan als het plan met hoge dichtheid en schaal het op naar de gewenste capaciteit.
-1. Stel `PerSiteScaling` de vlag in op het app-abonnement.
-1. Er worden nieuwe apps gemaakt en toegewezen aan dat App-serviceplan met de eigenschap **numberOfWorkers** ingesteld op **1**.
-   - Het gebruik van deze configuratie levert de hoogst mogelijke dichtheid op.
-1. Het aantal werknemers kan onafhankelijk per app worden geconfigureerd om indien nodig extra resources toe te kennen. Bijvoorbeeld:
-   - Een app voor veel gebruik kan **het aantal Werknemers** instellen op **3** om meer verwerkingscapaciteit voor die app te hebben.
-   - Apps met weinig gebruik zouden **het aantal werknemers** instellen op **1**.
+1. Wijs een App Service plan aan als het hoge dichtheids plan en schaal het naar de gewenste capaciteit.
+1. Stel de `PerSiteScaling` vlag in op True voor het app service plan.
+1. Er worden nieuwe apps gemaakt en toegewezen aan dat App Service plan waarbij de eigenschap **numberOfWorkers** is ingesteld op **1**.
+   - Het gebruik van deze configuratie levert de hoogst mogelijke dichtheid.
+1. Het aantal werk nemers kan onafhankelijk per app worden geconfigureerd om extra resources toe te kennen wanneer dat nodig is. Bijvoorbeeld:
+   - Een app met veel gebruik kan **numberOfWorkers** instellen op **3** om meer verwerkings capaciteit voor die app te krijgen.
+   - Met toepassingen voor laag gebruik wordt **numberOfWorkers** ingesteld op **1**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure App Service plant diepgaand overzicht](overview-hosting-plans.md)
+- [Gedetailleerd overzicht van Azure App Service plannen](overview-hosting-plans.md)
 - [Inleiding tot de App Service-omgeving](environment/app-service-app-service-environment-intro.md)

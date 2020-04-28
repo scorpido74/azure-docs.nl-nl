@@ -1,49 +1,49 @@
 ---
-title: Afbeelding & docker trekken & trekken
+title: '& pull-docker-installatie kopie pushen'
 description: Docker-installatiekopieën pushen naar en ophalen van een privécontainerregister in Azure met de Docker-CLI
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456351"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Uw eerste installatiekopie naar een Docker-containerregister pushen met de Docker-CLI
 
-Een Azure-containerregister slaat persoonlijke [Docker](https://hub.docker.com)-containerinstallatiekopieën op en beheert ze, vergelijkbaar met de manier waarop [Docker Hub](https://hub.docker.com/) openbare Docker-installatiekopieën opslaat. U de [Docker command-line interface](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) gebruiken voor [inloggen,](https://docs.docker.com/engine/reference/commandline/login/) [pushen,](https://docs.docker.com/engine/reference/commandline/push/) [trekken](https://docs.docker.com/engine/reference/commandline/pull/)en andere bewerkingen in uw containerregister.
+Een Azure-containerregister slaat persoonlijke [Docker](https://hub.docker.com)-containerinstallatiekopieën op en beheert ze, vergelijkbaar met de manier waarop [Docker Hub](https://hub.docker.com/) openbare Docker-installatiekopieën opslaat. U kunt de [docker-opdracht regel interface](https://docs.docker.com/engine/reference/commandline/cli/) (docker CLI) gebruiken voor [aanmelding](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/)en andere bewerkingen in het container register.
 
-In de volgende stappen downloadt u een officiële [Nginx-afbeelding](https://store.docker.com/images/nginx) uit het openbare Docker Hub-register, tagt u deze voor uw privé Azure-containerregister, duwt u deze naar uw register en haalt u deze vervolgens uit het register.
+In de volgende stappen downloadt u een officiële [nginx-installatie kopie](https://store.docker.com/images/nginx) uit het open bare docker hub-REGI ster, labelt u deze voor uw persoonlijke Azure-container register, pusht u deze naar uw REGI ster en haalt u het vervolgens op uit het REGI ster.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-containerregister**: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure-portal](container-registry-get-started-portal.md) of de [Azure CLI](container-registry-get-started-azure-cli.md).
-* **Docker CLI** - U moet Docker ook lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
+* **Azure-containerregister**: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
+* **Docker cli** : u moet ook docker lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
 
 ## <a name="log-in-to-a-registry"></a>Aanmelden bij een register
 
-Er zijn [verschillende manieren om te verifiëren](container-registry-authentication.md) aan uw prive-container register. De aanbevolen methode bij het werken in een opdrachtregel is met de Azure CLI-opdracht [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Bijvoorbeeld om in te loggen op een register met de naam *myregistry:*
+Er zijn [verschillende manieren om te verifiëren](container-registry-authentication.md) bij uw persoonlijke container register. De aanbevolen methode voor het werken op een opdracht regel is met de Azure CLI-opdracht [AZ ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Als u zich bijvoorbeeld wilt aanmelden bij een REGI ster met de naam *myregistry*:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-U ook inloggen met [docker login](https://docs.docker.com/engine/reference/commandline/login/). U hebt bijvoorbeeld [een serviceprincipal toegewezen aan](container-registry-authentication.md#service-principal) uw register voor een automatiseringsscenario. Wanneer u de volgende opdracht uitvoert, geeft u de serviceprincipal appID (gebruikersnaam) en het wachtwoord op wanneer u daarom wordt gevraagd. Zie de naslagverwijzing voor de [inlogopdracht docker](https://docs.docker.com/engine/reference/commandline/login/) voor aanbevolen procedures voor het beheren van inloggegevens:
+U kunt zich ook aanmelden met [docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/). Stel dat u [een Service-Principal hebt toegewezen](container-registry-authentication.md#service-principal) aan het REGI ster voor een automatiserings scenario. Wanneer u de volgende opdracht uitvoert, geeft u de Service-Principal appID (gebruikers naam) en het wacht woord interactief op wanneer u hierom wordt gevraagd. Zie voor aanbevolen procedures voor het beheren van aanmeldings referenties de opdracht referentie voor [docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/) :
 
 ```
 docker login myregistry.azurecr.io
 ```
 
-Beide opdrachten `Login Succeeded` keren terug zodra deze zijn voltooid.
+Beide opdrachten retour `Login Succeeded` neren eenmaal voltooid.
 
 > [!TIP]
-> Geef altijd de volledig gekwalificeerde registernaam op `docker login` (alle kleine letters) wanneer u afbeeldingen gebruikt en wanneer u afbeeldingen tagt om naar uw register te duwen. In de voorbeelden in dit artikel wordt de volledig gekwalificeerde naam *myregistry.azurecr.io*.
+> Geef altijd de volledig gekwalificeerde register naam op (alle kleine letters) wanneer `docker login` u gebruikt en wanneer u afbeeldingen labelt voor het naar uw REGI ster pushen. In de voor beelden in dit artikel is de volledig gekwalificeerde naam *myregistry.azurecr.io*.
 
-## <a name="pull-the-official-nginx-image"></a>Trek de officiële Nginx-afbeelding
+## <a name="pull-the-official-nginx-image"></a>De officiële nginx-installatie kopie ophalen
 
-Trek eerst de openbare Nginx-afbeelding naar uw lokale computer.
+Haal eerst de open bare nginx-installatie kopie op uw lokale computer.
 
 ```
 docker pull nginx
@@ -51,33 +51,33 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>De container lokaal uitvoeren
 
-Uitvoeren volgende [docker run](https://docs.docker.com/engine/reference/run/) opdracht om een lokale instantie van`-it`de Nginx container interactief te starten ( ) op poort 8080. Het `--rm` argument geeft aan dat de container moet worden verwijderd wanneer u deze stopt.
+Voer de volgende opdracht [docker run](https://docs.docker.com/engine/reference/run/) uit om een lokaal exemplaar van de nginx-container interactief te`-it`starten () op poort 8080. Het `--rm` argument geeft aan dat de container moet worden verwijderd wanneer u deze stopt.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Blader `http://localhost:8080` naar de standaardwebpagina die door Nginx wordt weergegeven in de lopende container. U ziet een pagina die vergelijkbaar is met de volgende pagina:
+Blader naar `http://localhost:8080` om de standaard webpagina weer te geven die wordt aangeboden door nginx in de container die wordt uitgevoerd. Er wordt een pagina weer gegeven die er ongeveer als volgt uitziet:
 
 ![Nginx op lokale computer](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Omdat u de container `-it`interactief hebt gestart met, u de uitvoer van de Nginx-server op de opdrachtregel zien nadat u ernaar in uw browser bent genavigeerd.
+Omdat u de container interactief met `-it`hebt gestart, ziet u de uitvoer van de nginx-server op de opdracht regel nadat u deze in uw browser hebt genavigeerd.
 
-Druk op `Control` + `C`om de container te stoppen en te verwijderen.
+Als u de container wilt stoppen en verwijderen `Control` + `C`, drukt u op.
 
-## <a name="create-an-alias-of-the-image"></a>Een alias van de afbeelding maken
+## <a name="create-an-alias-of-the-image"></a>Een alias van de installatie kopie maken
 
-Gebruik [dockertag](https://docs.docker.com/engine/reference/commandline/tag/) om een alias van de afbeelding te maken met het volledig gekwalificeerde pad naar uw register. In dit voorbeeld wordt de naamruimte `samples` gespecificeerd om overbodige items in de hoofdmap van het register te voorkomen.
+Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om een alias van de installatie kopie te maken met het volledig gekwalificeerde pad naar uw REGI ster. In dit voorbeeld wordt de naamruimte `samples` gespecificeerd om overbodige items in de hoofdmap van het register te voorkomen.
 
 ```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
-Zie het gedeelte [Naamruimten repository](container-registry-best-practices.md#repository-namespaces) van [Best practices voor Azure Container Registry voor](container-registry-best-practices.md)meer informatie over het taggen met naamruimten.
+Zie de sectie [naam ruimten van opslag](container-registry-best-practices.md#repository-namespaces) plaatsen in [aanbevolen procedures voor Azure container Registry](container-registry-best-practices.md)voor meer informatie over het labelen met naam ruimten.
 
 ## <a name="push-the-image-to-your-registry"></a>De installatiekopie naar uw register pushen
 
-Nu u de afbeelding hebt getagd met het volledig gekwalificeerde pad naar uw privéregister, u deze naar het register pushen met [docker push:](https://docs.docker.com/engine/reference/commandline/push/)
+Nu u de installatie kopie hebt gelabeld met het volledig gekwalificeerde pad naar uw persoonlijke REGI ster, kunt u deze naar het REGI ster pushen met [docker push](https://docs.docker.com/engine/reference/commandline/push/):
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
@@ -85,7 +85,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 ## <a name="pull-the-image-from-your-registry"></a>De installatiekopie vanuit uw register ophalen
 
-Gebruik de opdracht [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om de afbeelding uit uw register te halen:
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om de installatie kopie uit het REGI ster te halen:
 
 ```
 docker pull myregistry.azurecr.io/samples/nginx
@@ -93,25 +93,25 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 ## <a name="start-the-nginx-container"></a>De Nginx-container starten
 
-Gebruik de opdracht [Docker run](https://docs.docker.com/engine/reference/run/) om de afbeelding uit uw register uit te voeren:
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/run/) voor het uitvoeren van de installatie kopie die u uit het REGI ster hebt opgehaald:
 
 ```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Blader `http://localhost:8080` naar de lopende container om de lopende container te bekijken.
+Blader naar `http://localhost:8080` om de actieve container weer te geven.
 
-Druk op `Control` + `C`om de container te stoppen en te verwijderen.
+Als u de container wilt stoppen en verwijderen `Control` + `C`, drukt u op.
 
-## <a name="remove-the-image-optional"></a>De afbeelding verwijderen (optioneel)
+## <a name="remove-the-image-optional"></a>De installatie kopie verwijderen (optioneel)
 
-Als u de Nginx-afbeelding niet meer nodig hebt, u deze lokaal verwijderen met de opdracht [docker rmi.](https://docs.docker.com/engine/reference/commandline/rmi/)
+Als u de nginx-installatie kopie niet meer nodig hebt, kunt u deze lokaal verwijderen met de opdracht [docker RMI](https://docs.docker.com/engine/reference/commandline/rmi/) .
 
 ```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Als u afbeeldingen uit uw Azure-containerregister wilt verwijderen, u de opdracht Azure CLI [az acr-repository verwijderen.](/cli/azure/acr/repository#az-acr-repository-delete) Met de volgende opdracht wordt bijvoorbeeld het `samples/nginx:latest` manifest verwijderd waarnaar wordt verwezen door de tag, eventuele unieke laaggegevens en alle andere tags die naar het manifest verwijzen.
+Als u installatie kopieën uit het Azure container Registry wilt verwijderen, kunt u de Azure CLI-opdracht [AZ ACR repository delete](/cli/azure/acr/repository#az-acr-repository-delete)gebruiken. Met de volgende opdracht wordt bijvoorbeeld het manifest verwijderd waarnaar wordt verwezen door `samples/nginx:latest` de tag, alle unieke laag gegevens en alle andere tags die verwijzen naar het manifest.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -119,13 +119,13 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis weet, bent u klaar om te beginnen met het gebruik van uw register! Implementeer bijvoorbeeld containerafbeeldingen vanuit uw register naar:
+Nu u de basis principes kent, bent u klaar om uw REGI ster te gaan gebruiken. Implementeer bijvoorbeeld container installatie kopieën uit het REGI ster naar:
 
 * [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-Installeer eventueel de [Docker-extensie voor Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-accountextensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) om te werken met uw Azure-containerregisters. Afbeeldingen naar een Azure-containerregister trekken en pushen of ACR-taken uitvoeren, allemaal binnen Visual Studio Code.
+Installeer eventueel de [docker-extensie voor Visual Studio code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extensie om met uw Azure-container registers te werken. Pull-en push-installatie kopieën naar een Azure container Registry, of voer ACR-taken uit, allemaal in Visual Studio code.
 
 
 <!-- LINKS - external -->

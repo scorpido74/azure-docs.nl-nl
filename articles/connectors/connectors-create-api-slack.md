@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Slack vanuit Azure Logic Apps
-description: Werk- en werkstromen automatiseren die bestanden bewaken en kanalen, groepen en berichten beheren in uw Slack-account met Azure Logic Apps
+title: Verbinding maken met toegestane vertraging van Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee bestanden worden bewaakt en kanalen, groepen en berichten in uw toegestane account kunnen worden beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,65 +8,65 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789168"
 ---
-# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Slack bewaken en beheren met Azure Logic Apps
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>De toegestane vertraging controleren en beheren met Azure Logic Apps
 
-Met Azure Logic Apps en de Slack-connector u geautomatiseerde taken en werkstromen maken die uw Slack-bestanden bewaken en uw Slack-kanalen, berichten, groepen enzovoort beheren, bijvoorbeeld:
+Met Azure Logic Apps en de uitzonderings connector kunt u geautomatiseerde taken en werk stromen maken die uw toegestane vertragings bestanden controleren en uw toegestane vertragings kanalen, berichten, groepen enzovoort beheren, bijvoorbeeld:
 
-* Controleer wanneer er nieuwe bestanden worden gemaakt.
-* Kanalen maken, aanbieden en deelnemen 
-* Berichten plaatsen.
-* Groepen maken en instellen niet storen.
+* Controleren wanneer nieuwe bestanden worden gemaakt.
+* Kanalen maken, weer geven en koppelen 
+* Berichten posten.
+* Maken van groepen en instellen niet Stores.
 
-U triggers gebruiken die reacties van uw Slack-account ontvangen en de uitvoer beschikbaar maken voor andere acties. U acties gebruiken die taken uitvoeren met uw Slack-account. U ook andere acties de uitvoer van Slack-acties laten gebruiken. Wanneer er bijvoorbeeld een nieuw bestand wordt gemaakt, u e-mail verzenden met de Office 365 Outlook-connector. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die antwoorden krijgen van uw toegestane account en de uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken om taken uit te voeren met uw toegestane vertragings account. U kunt ook andere acties uitvoeren op basis van de actie uitvoer van vertraging. Als er bijvoorbeeld een nieuw bestand wordt gemaakt, kunt u een e-mail verzenden met de Office 365 Outlook-Connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw [Slack-account](https://slack.com/) en gebruikersreferenties
+* Uw [toegestane vertragings](https://slack.com/) account en gebruikers referenties
 
-  Uw referenties autoriseren uw logische app om een verbinding te maken en toegang te krijgen tot uw Slack-account.
+  Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw toegestane vertragings account.
 
-* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang wilt hebben tot uw Slack-account. Als u wilt beginnen met een Slack-trigger, [maakt u een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u een Slack-actie wilt gebruiken, start u uw logische app met een trigger, zoals een Slack-trigger of een andere trigger, zoals de **recidieftrigger.**
+* De logische app waar u toegang wilt krijgen tot uw toegestane vertragings account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een toegestane marge-trigger. Als u een actie voor een toegestane vertraging wilt gebruiken, start u uw logische app met een trigger, zoals een toegestane vertragings trigger of een andere trigger, zoals de trigger voor **terugkeer patroon** .
 
-## <a name="connect-to-slack"></a>Verbinding maken met Slack
+## <a name="connect-to-slack"></a>Verbinding maken met toegestane vertraging
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open uw logische app in Logic App Designer, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voer in het zoekvak 'speling' in als filter. Selecteer onder de lijst triggers de gewenste trigger. 
+1. Voer voor lege logische apps in het zoekvak ' toegestane vertraging ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers. 
 
    -of-
 
-   Kies **Nieuwe stap**voor bestaande logische apps onder de laatste stap waarin u een actie wilt toevoegen. 
-   Voer in het zoekvak 'speling' in als filter. 
-   Selecteer onder de lijst met acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, kiest u **nieuwe stap**. 
+   Voer in het zoekvak ' toegestane vertraging ' in als uw filter. 
+   Selecteer in de lijst acties de gewenste actie.
 
-   Als u een actie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl tussen de stappen. 
-   Kies het plusteken (**+**) dat wordt weergegeven en selecteer Vervolgens Een actie **toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Als u wordt gevraagd zich aan te melden bij Slack, meldt u zich aan bij uw Werkruimte Slack. 
+1. Als u wordt gevraagd om u aan te melden bij toegestane vertraging, meldt u zich aan bij uw werk ruimte voor vertraging. 
 
-   ![Aanmelden bij de werkruimte Slack](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+   ![Meld u aan bij de werk ruimte toegestane vertraging](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
 
-1. Toegang voor uw logische app autoriseren.
+1. Machtig de toegang voor uw logische app.
 
-   ![Toegang tot Slack autoriseren](./media/connectors-create-api-slack/slack-authorize-access.png)
+   ![Toegang tot toegestane vertraging toestaan](./media/connectors-create-api-slack/slack-authorize-access.png)
 
-1. Geef de benodigde details op voor de geselecteerde trigger of actie. Als u de werkstroom van uw logische app wilt blijven bouwen, voegt u meer acties toe.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie. Voeg meer acties toe om door te gaan met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische details over triggers, acties en limieten, die worden beschreven door de OpenAPI-beschrijving (voorheen Swagger) van de connector, raadpleegt u de [referentiepagina](/connectors/slack/)van de connector.
+Raadpleeg de [referentie pagina](/connectors/slack/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -75,4 +75,4 @@ Voor technische details over triggers, acties en limieten, die worden beschreven
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

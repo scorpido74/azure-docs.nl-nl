@@ -1,28 +1,28 @@
 ---
-title: Voorbeelden van slimme analyse van Log Analytics | Microsoft Documenten
-description: Voorbeelden die slimme analysefuncties in Log Analytics gebruiken om analyse van gebruikersactiviteit uit te voeren.
+title: Voor beelden van Log Analytics Smart Analytics | Microsoft Docs
+description: Voor beelden die gebruikmaken van slimme Analytics-functies in Log Analytics voor het uitvoeren van een analyse van gebruikers activiteit.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
 ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659829"
 ---
-# <a name="log-analytics-smart-analytics-examples"></a>Voorbeelden van slimme analyse van Log Analytics
-Dit artikel bevat voorbeelden die slimme analysefuncties in Log Analytics gebruiken om analyse van gebruikersactiviteit uit te voeren. U deze voorbeelden gebruiken om uw eigen toepassingen te analyseren die worden gecontroleerd door Application Insights of om de concepten in deze query's te gebruiken voor vergelijkbare analyse op andere gegevens. 
+# <a name="log-analytics-smart-analytics-examples"></a>Voor beelden van Log Analytics Smart Analytics
+In dit artikel vindt u voor beelden van het gebruik van slimme Analytics-functies in Log Analytics voor het uitvoeren van analyse van gebruikers activiteit. U kunt deze voor beelden gebruiken om uw eigen toepassingen te analyseren die worden bewaakt door Application Insights of gebruik de concepten in deze query's voor vergelijk bare analyse van andere gegevens. 
 
-Zie de [Kusto-taalverwijzing](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende zoekwoorden die in deze voorbeelden worden gebruikt. Ga door een [les over het maken van query's](get-started-queries.md) als je nieuw bent bij Log Analytics.
+Zie de [Kusto-taal referentie](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met log Analytics.
 
-## <a name="cohorts-analytics"></a>Cohorts analytics
+## <a name="cohorts-analytics"></a>Analyse van cohortes
 
-Cohortanalyse volgt de activiteit van specifieke groepen gebruikers, cohorten genoemd. Het probeert te meten hoe aantrekkelijk een dienst is door het meten van de snelheid van terugkerende gebruikers. De gebruikers worden gegroepeerd tegen de tijd dat ze de service voor het eerst gebruikten. Bij het analyseren van cohorten verwachten we een afname van de activiteit over de eerste bijgehouden perioden. Elk cohort is getiteld door de week dat haar leden werden waargenomen voor de eerste keer.
+Cohort-analyse houdt de activiteit bij van specifieke groepen gebruikers, ook wel cohortes genoemd. Er wordt geprobeerd te meten hoe aantrekkelijk een service is door het aantal terugkerende gebruikers te meten. De gebruikers worden gegroepeerd op het moment dat ze de service voor het eerst gebruiken. Bij het analyseren van cohortes verwachten we een afname van de activiteit in de eerste bijgehouden periode te vinden. Elke cohort wordt getiteld op basis van de week waarin de leden voor de eerste keer zijn waargenomen.
 
-In het volgende voorbeeld wordt het aantal activiteiten geanalyseerd dat gebruikers in de loop van 5 weken uitvoeren, na hun eerste gebruik van de service.
+In het volgende voor beeld wordt het aantal activiteiten geanalyseerd dat gebruikers in de loop van vijf weken uitvoeren, na het eerste gebruik van de service.
 
 ```Kusto
 let startDate = startofweek(bin(datetime(2017-01-20T00:00:00Z), 1d));
@@ -83,12 +83,12 @@ week
           p4 = todouble(r4)/todouble(r0)*100 
 | sort by Cohort asc
 ```
-Dit voorbeeld resulteert in de volgende uitvoer.
+Dit voor beeld resulteert in de volgende uitvoer.
 
-![Cohortanalyse-output](media/smart-analytics/cohorts.png)
+![Resultaten van cohort-analyse](media/smart-analytics/cohorts.png)
 
-## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Rollende maandelijkse actieve gebruikers en gebruikersstickiness
-In de volgende voorbeelden wordt gebruik gemaakt van tijdreeksanalyse met de [series_fir-functie](/azure/kusto/query/series-firfunction) waarmee u vensterberekeningen uitvoeren. De voorbeeldtoepassing die wordt gecontroleerd, is een online winkel die de activiteit van gebruikers bijhoudt via aangepaste gebeurtenissen. De query houdt twee typen gebruikersactiviteiten bij, _AddToCart_ en _Checkout,_ en definieert _actieve gebruikers_ als gebruikers die ten minste eenmaal per dag een uitchecken hebben uitgevoerd.
+## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Maandelijkse actieve gebruikers en gebruikers persistentie
+In de volgende voor beelden wordt gebruikgemaakt van Time Series-analyses met de functie [series_fir](/azure/kusto/query/series-firfunction) , waarmee u sliding window berekeningen kunt uitvoeren. De voorbeeld toepassing die wordt bewaakt, is een online winkel waarmee de activiteiten van gebruikers worden bijgehouden via aangepaste gebeurtenissen. De query houdt twee typen gebruikers activiteiten bij, _AddToCart_ en _uitchecken_en definieert _actieve gebruikers_ als degenen die ten minste één keer op een bepaalde dag een check-out hebben uitgevoerd.
 
 
 
@@ -131,11 +131,11 @@ customEvents
 | render timechart
 ```
 
-Dit voorbeeld resulteert in de volgende uitvoer.
+Dit voor beeld resulteert in de volgende uitvoer.
 
-![Maandelijkse gebruikersuitvoer doorrollen](media/smart-analytics/rolling-mau.png)
+![Maandelijkse gebruikers draaien](media/smart-analytics/rolling-mau.png)
 
-Het volgende voorbeeld verandert de bovenstaande query in een herbruikbare functie en gebruikt deze om rollende gebruikersstickiness te berekenen. Actieve gebruikers in deze query worden gedefinieerd als alleen gebruikers die ten minste eenmaal op een bepaalde dag uitchecken hebben uitgevoerd.
+In het volgende voor beeld wordt de bovenstaande query omgezet in een herbruikbare functie en gebruikt deze om de persistentie van de Rolling gebruiker te berekenen. Actieve gebruikers in deze query worden gedefinieerd als alleen gebruikers die ten minste één keer op een bepaalde dag een uitchecking hebben uitgevoerd.
 
 ``` Kusto
 let rollingDcount = (sliding_window_size: int, event_name:string)
@@ -173,17 +173,17 @@ on Timestamp
 | render timechart
 ```
 
-Dit voorbeeld resulteert in de volgende uitvoer.
+Dit voor beeld resulteert in de volgende uitvoer.
 
-![Gebruiker stickiness output](media/smart-analytics/user-stickiness.png)
+![Persistentie uitvoer van gebruiker](media/smart-analytics/user-stickiness.png)
 
-## <a name="regression-analysis"></a>Regressieanalyse
-In dit voorbeeld wordt uitgelegd hoe u een geautomatiseerde detector maakt voor serviceonderbrekingen die uitsluitend zijn gebaseerd op de tracelogs van een toepassing. De detector streeft naar abnormale plotselinge toename van de relatieve hoeveelheid fouten en waarschuwingssporen in de toepassing.
+## <a name="regression-analysis"></a>Regressie analyse
+In dit voor beeld ziet u hoe u een geautomatiseerde detector maakt voor service-onderbrekingen op basis van uitsluitend de traceer logboeken van een toepassing. De detector zoekt abnormaal plotselinge toename van de relatieve hoeveelheid fout-en waarschuwings traceringen in de toepassing.
 
-Twee technieken worden gebruikt om de servicestatus te evalueren op basis van trace logs-gegevens:
+Er worden twee technieken gebruikt om de status van de service op basis van traceer logboek gegevens te evalueren:
 
-- Gebruik [make-series](/azure/kusto/query/make-seriesoperator) om semi-gestructureerde tekstuele tracelogs om te zetten in een statistiek die de verhouding tussen positieve en negatieve traceringslijnen vertegenwoordigt.
-- Gebruik [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) en [series_fit_line](/azure/kusto/query/series-fit-linefunction) om geavanceerde stap-sprongdetectie uit te voeren met behulp van tijdreeksanalyse met een 2-regelige lineaire regressie.
+- Gebruik de [Maak reeks](/azure/kusto/query/make-seriesoperator) om semi-gestructureerde tekstuele traceer logboeken te converteren naar een metrieke waarde die de verhouding tussen positieve en negatieve tracerings regels vertegenwoordigt.
+- Gebruik [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) en [series_fit_line](/azure/kusto/query/series-fit-linefunction) voor het uitvoeren van geavanceerde stapsgewijze detectie met behulp van Time-Series-analyses met een lineaire regressie van twee lijnen.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));
@@ -214,5 +214,5 @@ traces
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [taalverwijzing van Data Explorer](/azure/kusto/query) voor meer informatie over de taal.
-- Loop door een [les over het schrijven van query's in Log Analytics.](get-started-queries.md)
+- Raadpleeg de [Data Explorer taal referentie](/azure/kusto/query) voor meer informatie over de taal.
+- Door loop een [Les over het schrijven van query's in log Analytics](get-started-queries.md).

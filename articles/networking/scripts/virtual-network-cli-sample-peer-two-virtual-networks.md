@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script-voorbeeld - Peer twee virtuele netwerken | Microsoft Documenten
-description: Azure CLI Script-voorbeeld - Peer twee virtuele netwerken
+title: Voor beeld van Azure CLI-script-peering van twee virtuele netwerken | Microsoft Docs
+description: Voor beeld van Azure CLI-script-peering van twee virtuele netwerken
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890249"
 ---
 # <a name="peer-two-virtual-networks"></a>Peering van twee virtuele netwerken
 
-Dit script maakt en verbindt twee virtuele netwerken in dezelfde regio via het Azure-netwerk. Nadat het script is uitgevoerd, maakt u een peering tussen twee virtuele netwerken.
+Met dit script maakt en verbindt u twee virtuele netwerken in dezelfde regio via het Azure-netwerk. Nadat het script is uitgevoerd, maakt u een peering tussen twee virtuele netwerken.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

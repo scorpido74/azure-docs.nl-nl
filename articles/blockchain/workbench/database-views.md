@@ -1,406 +1,406 @@
 ---
-title: Azure Blockchain Workbench-databaseweergaven
-description: Overzicht van beschikbare Azure Blockchain Workbench Preview SQL DB-databaseweergaven.
+title: Database weergaven voor Azure Block Chain workbench
+description: Overzicht van beschik bare SQL Data Base-weer gaven voor Azure Block Chain Workbench preview.
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325976"
 ---
-# <a name="azure-blockchain-workbench-database-views"></a>Azure Blockchain Workbench-databaseweergaven
+# <a name="azure-blockchain-workbench-database-views"></a>Database weergaven voor Azure Block Chain workbench
 
-Azure Blockchain Workbench Preview levert gegevens van gedistribueerde grootboeken naar een *off-chain* SQL DB-database. De off-chain database maakt het mogelijk om SQL en bestaande tools, zoals [SQL Server Management Studio,](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)te gebruiken om te communiceren met blockchain-gegevens.
+Azure Block Chain Workbench preview levert gegevens van gedistribueerde groot boeken aan een externe SQL DB *-* data base. De buiten-keten database maakt het mogelijk om SQL en bestaande hulpprogram ma's, zoals [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), te gebruiken om te communiceren met block Chain-gegevens.
 
-Azure Blockchain Workbench biedt een reeks databaseweergaven die toegang bieden tot gegevens die nuttig zijn bij het uitvoeren van uw query's. Deze weergaven worden sterk gedenormaliseerd om het eenvoudig te maken om snel aan de slag te gaan met het bouwen van rapporten, analyses en anderszins blockchain-gegevens te consumeren met bestaande tools en zonder databasepersoneel om te scholen.
+Azure Block Chain Workbench biedt een reeks database weergaven die toegang bieden tot gegevens die handig zijn bij het uitvoeren van uw query's. Deze weer gaven zijn sterk genormaliseerd, zodat het eenvoudig is om snel aan de slag te gaan met het maken van rapporten, analyses en andere Block Chain-gegevens met bestaande hulpprogram ma's en zonder dat u de data base-mede werkers hoeft te trainen.
 
-Deze sectie bevat een overzicht van de databaseweergaven en de gegevens die deze bevatten.
+Deze sectie bevat een overzicht van de database weergaven en de gegevens die ze bevatten.
 
 > [!NOTE]
-> Direct gebruik van databasetabellen die buiten deze weergaven in de database worden gevonden, terwijl dit mogelijk is, wordt niet ondersteund.
+> Direct gebruik van database tabellen die in de data base buiten deze weer gaven worden gevonden, wordt mogelijk niet ondersteund.
 >
 
 ## <a name="vwapplication"></a>vwApplication
 
-In deze weergave vindt u informatie over **toepassingen** die zijn geüpload naar Azure Blockchain Workbench.
+Deze weer gave bevat details over **toepassingen** die zijn geüpload naar Azure Block Chain Workbench.
 
-| Name                             | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
+| Naam                             | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                  | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDescription           | nvarchar(255) | Ja         | Een beschrijving van de aanvraag |
-| ApplicationDisplayName           | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled               | bit           | Nee          | Identificeert of de toepassing momenteel is ingeschakeld<br /> **Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database. |
-| Geüploade DtTm                     | datum2(7)  | Nee          | De datum en het tijdstip waarop een contract is geüpload |
-| Geüploaddoor userid                 | int           | Nee          | De id van de gebruiker die de toepassing heeft geüpload |
-| Geüploaddoor userexternalid         | nvarchar(255) | Nee          | De externe id voor de gebruiker die de toepassing heeft geüpload. Deze id is standaard de gebruiker van de Azure Active Directory voor het consortium.                                                                                                |
-| Status van geüploaddoor gebruikerprovisioning | int           | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor de gebruiker aangegeven. Mogelijke waarden zijn: <br />0 – Gebruiker is gemaakt door de API<br />1 – Er is een sleutel gekoppeld aan de gebruiker in de database<br />2 – De gebruiker is volledig ingericht                         |
-| UploadedByUserFirstName          | nvarchar(50)  | Ja         | De voornaam van de gebruiker die het contract heeft geüpload |
-| UploadedByUserLastName           | nvarchar(50)  | Ja         | De achternaam van de gebruiker die het contract heeft geüpload |
-| UploadedByUserEmailAddress       | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die het contract heeft geüpload |
+| ApplicationName                  | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDescription           | nvarchar (255) | Ja         | Een beschrijving van de toepassing |
+| ApplicationDisplayName           | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled               | bit           | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld<br /> **Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base. |
+| UploadedDtTm                     | DATETIME2 (7)  | Nee          | De datum en tijd waarop een contract is geüpload |
+| UploadedByUserId                 | int           | Nee          | De ID van de gebruiker die de toepassing heeft geüpload |
+| UploadedByUserExternalId         | nvarchar (255) | Nee          | De externe ID voor de gebruiker die de toepassing heeft geüpload. Deze ID is standaard de gebruiker van de Azure Active Directory voor het consortium.                                                                                                |
+| UploadedByUserProvisioningStatus | int           | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor de gebruiker geïdentificeerd. Mogelijke waarden zijn: <br />0: gebruiker is gemaakt door de API<br />1: er is een sleutel aan de gebruiker in de data base gekoppeld<br />2: de gebruiker is volledig ingericht                         |
+| UploadedByUserFirstName          | nvarchar (50)  | Ja         | De voor naam van de gebruiker die het contract heeft geüpload |
+| UploadedByUserLastName           | nvarchar (50)  | Ja         | De achternaam van de gebruiker die het contract heeft geüpload |
+| UploadedByUserEmailAddress       | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die het contract heeft geüpload |
 
-## <a name="vwapplicationrole"></a>vwApplicationRol
+## <a name="vwapplicationrole"></a>vwApplicationRole
 
-In deze weergave vindt u meer informatie over de rollen die zijn gedefinieerd in Azure Blockchain Workbench-toepassingen.
+Deze weer gave bevat details over de rollen die zijn gedefinieerd in azure Block Chain Workbench-toepassingen.
 
-In een toepassing *Asset Transfer* kunnen bijvoorbeeld rollen zoals *rollen koper* en *verkoper* worden gedefinieerd.
+In een *Asset overboeking* -toepassing kunnen bijvoorbeeld rollen zoals de rollen *koper* en *verkoper* worden gedefinieerd.
 
-| Name                   | Type             | Kan null zijn | Beschrijving                                       |
+| Naam                   | Type             | Kan null zijn | Beschrijving                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | Nee          | Een unieke id voor de toepassing           |
-| ApplicationName        | nvarchar(50)     | Nee          | De naam van de toepassing                       |
-| ApplicationDescription | nvarchar(255)    | Ja         | Een beschrijving van de aanvraag                  |
-| ApplicationDisplayName | nvarchar(255)    | Nee          | De naam die moet worden weergegeven in een gebruikersinterface      |
-| RoleId (RolId)                 | int              | Nee          | Een unieke id voor een rol in de toepassing |
+| ApplicationName        | nvarchar (50)     | Nee          | De naam van de toepassing                       |
+| ApplicationDescription | nvarchar (255)    | Ja         | Een beschrijving van de toepassing                  |
+| ApplicationDisplayName | nvarchar (255)    | Nee          | De naam die moet worden weer gegeven in een gebruikers interface      |
+| RoleId                 | int              | Nee          | Een unieke id voor een rol in de toepassing |
 | RoleName               | nvarchar50)      | Nee          | De naam van de rol                              |
-| RoleDescription        | description(255) | Ja         | Een beschrijving van de rol                         |
+| RoleDescription        | Beschrijving (255) | Ja         | Een beschrijving van de rol                         |
 
 ## <a name="vwapplicationroleuser"></a>vwApplicationRoleUser
 
-In deze weergave vindt u informatie over de rollen die zijn gedefinieerd in Azure Blockchain Workbench-toepassingen en de gebruikers die eraan zijn gekoppeld.
+Deze weer gave bevat details over de rollen die zijn gedefinieerd in azure Block Chain Workbench-toepassingen en de gebruikers die eraan zijn gekoppeld.
 
-In een asset *transfer-toepassing* kan *John Smith* bijvoorbeeld worden gekoppeld aan de rol *Koper.*
+In een *Asset overboeking* -toepassing kan bijvoorbeeld *John Smith* worden gekoppeld aan de rol van de *koper* .
 
-| Name                       | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
+| Naam                       | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | Nee          | Een unieke id voor de toepassing                                                                                                                                                                                               |
-| ApplicationName            | nvarchar(50)  | Nee          | De naam van de toepassing                                                                                                                                                                                                           |
-| ApplicationDescription     | nvarchar(255) | Ja         | Een beschrijving van de aanvraag                                                                                                                                                                                                      |
-| ApplicationDisplayName     | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface                                                                                                                                                                                          |
+| ApplicationName            | nvarchar (50)  | Nee          | De naam van de toepassing                                                                                                                                                                                                           |
+| ApplicationDescription     | nvarchar (255) | Ja         | Een beschrijving van de toepassing                                                                                                                                                                                                      |
+| ApplicationDisplayName     | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface                                                                                                                                                                                          |
 | ApplicationRoleId          | int           | Nee          | Een unieke id voor een rol in de toepassing                                                                                                                                                                                     |
 | ApplicationRoleName        | nvarchar50)   | Nee          | De naam van de rol                                                                                                                                                                                                                  |
-| ApplicationRoleDescription | nvarchar(255) | Ja         | Een beschrijving van de rol                                                                                                                                                                                                             |
-| UserId                     | int           | Nee          | De id van de gebruiker die aan de rol is gekoppeld |
-| UserExternalId             | nvarchar(255) | Nee          | De externe id voor de gebruiker die aan de rol is gekoppeld. Deze id is standaard de gebruiker van de Azure Active Directory voor het consortium.                                                                     |
-| UserProvisioningStatus     | int           | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor de gebruiker aangegeven. Mogelijke waarden zijn: <br />0 – Gebruiker is gemaakt door de API<br />1 – Er is een sleutel gekoppeld aan de gebruiker in de database<br />2 – De gebruiker is volledig ingericht |
-| UserFirstName              | nvarchar(50)  | Ja         | De voornaam van de gebruiker die aan de rol is gekoppeld |
-| UserLastName               | nvarchar(255) | Ja         | De achternaam van de gebruiker die aan de rol is gekoppeld |
-| Gebruikerse-mailadres           | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die aan de rol is gekoppeld |
+| ApplicationRoleDescription | nvarchar (255) | Ja         | Een beschrijving van de rol                                                                                                                                                                                                             |
+| UserId                     | int           | Nee          | De ID van de gebruiker die is gekoppeld aan de rol |
+| UserExternalId             | nvarchar (255) | Nee          | De externe ID voor de gebruiker die aan de rol is gekoppeld. Deze ID is standaard de gebruiker van de Azure Active Directory voor het consortium.                                                                     |
+| UserProvisioningStatus     | int           | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor de gebruiker geïdentificeerd. Mogelijke waarden zijn: <br />0: gebruiker is gemaakt door de API<br />1: er is een sleutel aan de gebruiker in de data base gekoppeld<br />2: de gebruiker is volledig ingericht |
+| UserFirstName              | nvarchar (50)  | Ja         | De voor naam van de gebruiker die aan de rol is gekoppeld |
+| UserLastName               | nvarchar (255) | Ja         | De achternaam van de gebruiker die aan de rol is gekoppeld |
+| UserEmailAddress           | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die aan de rol is gekoppeld |
 
 ## <a name="vwconnectionuser"></a>vwConnectionUser
 
-Deze weergave bevat details over de verbindingen die zijn gedefinieerd in Azure Blockchain Workbench en de gebruikers die eraan zijn gekoppeld. Voor elke verbinding bevat deze weergave de volgende gegevens:
+Deze weer gave bevat details over de verbindingen die zijn gedefinieerd in azure Block Chain Workbench en de gebruikers die aan hen zijn gekoppeld. Voor elke verbinding bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde grootboekgegevens
--   Gekoppelde gebruikersgegevens
+-   Gekoppelde grootboek gegevens
+-   Bijbehorende gebruikers gegevens
 
-| Name                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
+| Naam                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ConnectionId             | int           | Nee          | De unieke id voor een verbinding in Azure Blockchain Workbench |
-| ConnectionEndpointUrl    | nvarchar(50)  | Nee          | De url van het eindpunt voor een verbinding |
-| ConnectionFundingAccount | nvarchar(255) | Ja         | De financieringsrekening die aan een verbinding is gekoppeld, indien van toepassing |
-| LedgerId (LedgerId)                 | int           | Nee          | De unieke id voor een grootboek |
-| LedgerName               | nvarchar(50)  | Nee          | De naam van het grootboek |
-| LedgerDisplayName        | nvarchar(255) | Nee          | De naam van het grootboek dat moet worden weergegeven in de gebruikersinterface |
-| UserId                   | int           | Nee          | De id van de gebruiker die aan de verbinding is gekoppeld |
-| UserExternalId           | nvarchar(255) | Nee          | De externe id voor de gebruiker die aan de verbinding is gekoppeld. Deze id is standaard de gebruiker van de Azure Active Directory voor het consortium. |
-| UserProvisioningStatus   | int           | Nee          |Hiermee wordt de huidige status van het inrichtingsproces voor de gebruiker aangegeven. Mogelijke waarden zijn: <br />0 – Gebruiker is gemaakt door de API<br />1 – Er is een sleutel gekoppeld aan de gebruiker in de database<br />2 – De gebruiker is volledig ingericht |
-| UserFirstName            | nvarchar(50)  | Ja         | De voornaam van de gebruiker die is gekoppeld aan de verbinding |
-| UserLastName             | nvarchar(255) | Ja         | De achternaam van de gebruiker die is gekoppeld aan de verbinding |
-| Gebruikerse-mailadres         | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die aan de verbinding is gekoppeld |
+| ConnectionId             | int           | Nee          | De unieke id voor een verbinding in azure Block Chain workbench |
+| ConnectionEndpointUrl    | nvarchar (50)  | Nee          | De eind punt-URL voor een verbinding |
+| ConnectionFundingAccount | nvarchar (255) | Ja         | Het financierings account dat is gekoppeld aan een verbinding, indien van toepassing |
+| LedgerId                 | int           | Nee          | De unieke id voor een groot boek |
+| Grootboeknaam               | nvarchar (50)  | Nee          | De naam van het groot boek |
+| LedgerDisplayName        | nvarchar (255) | Nee          | De naam van het groot boek dat moet worden weer gegeven in de gebruikers interface |
+| UserId                   | int           | Nee          | De ID van de gebruiker die is gekoppeld aan de verbinding |
+| UserExternalId           | nvarchar (255) | Nee          | De externe ID voor de gebruiker die is gekoppeld aan de verbinding. Deze ID is standaard de gebruiker van de Azure Active Directory voor het consortium. |
+| UserProvisioningStatus   | int           | Nee          |Hiermee wordt de huidige status van het inrichtings proces voor de gebruiker geïdentificeerd. Mogelijke waarden zijn: <br />0: gebruiker is gemaakt door de API<br />1: er is een sleutel aan de gebruiker in de data base gekoppeld<br />2: de gebruiker is volledig ingericht |
+| UserFirstName            | nvarchar (50)  | Ja         | De voor naam van de gebruiker die is gekoppeld aan de verbinding |
+| UserLastName             | nvarchar (255) | Ja         | De achternaam van de gebruiker die is gekoppeld aan de verbinding |
+| UserEmailAddress         | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die is gekoppeld aan de verbinding |
 
 ## <a name="vwcontract"></a>vwContract
 
-In deze weergave vindt u meer informatie over geïmplementeerde contracten. Voor elk contract bevat deze weergave de volgende gegevens:
+Deze weer gave bevat details over geïmplementeerde contracten. Voor elk contract bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Bijbehorende grootboekimplementatie voor de functie
--   Details voor de gebruiker die de actie heeft gestart
--   Details met betrekking tot het blockchain-blok en de transactie
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Gekoppelde grootboek implementatie voor de functie
+-   Details van de gebruiker die de actie heeft gestart
+-   Details met betrekking tot het block Chain-blok en de trans actie
 
-| Name                                     | Type           | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
+| Naam                                     | Type           | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ConnectionId                             | int            | Nee          | De unieke id voor een verbinding in Azure Blockchain Workbench.                                                                                                                                                                                         |
-| ConnectionEndpointUrl                    | nvarchar(50)   | Nee          | De url van het eindpunt voor een verbinding |
-| ConnectionFundingAccount                 | nvarchar(255)  | Ja         | De financieringsrekening die aan een verbinding is gekoppeld, indien van toepassing |
-| LedgerId (LedgerId)                                 | int            | Nee          | De unieke id voor een grootboek |
-| LedgerName                               | nvarchar(50)   | Nee          | De naam van het grootboek |
-| LedgerDisplayName                        | nvarchar(255)  | Nee          | De naam van het grootboek dat moet worden weergegeven in de gebruikersinterface |
+| ConnectionId                             | int            | Nee          | De unieke id voor een verbinding in azure Block Chain Workbench.                                                                                                                                                                                         |
+| ConnectionEndpointUrl                    | nvarchar (50)   | Nee          | De eind punt-URL voor een verbinding |
+| ConnectionFundingAccount                 | nvarchar (255)  | Ja         | Het financierings account dat is gekoppeld aan een verbinding, indien van toepassing |
+| LedgerId                                 | int            | Nee          | De unieke id voor een groot boek |
+| Grootboeknaam                               | nvarchar (50)   | Nee          | De naam van het groot boek |
+| LedgerDisplayName                        | nvarchar (255)  | Nee          | De naam van het groot boek dat moet worden weer gegeven in de gebruikers interface |
 | ApplicationId                            | int            | Nee          | Een unieke id voor de toepassing |
 | ApplicationName                          | nvarchar (50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName                   | nvarchar (255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                       | bit            | Nee          | Hiermee wordt aangegeven of de toepassing momenteel is ingeschakeld.<br /> **Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database.  |
-| Werkstroom-id                               | int            | Nee          | Een unieke id voor de werkstroom die is gekoppeld aan een contract |
-| Werkstroomnaam                             | nvarchar(50)   | Nee          | De naam van de werkstroom die is gekoppeld aan een contract |
-| WerkstroomWeergaveNaam                      | nvarchar(255)  | Nee          | De naam van de werkstroom die is gekoppeld aan het contract dat wordt weergegeven in de gebruikersinterface |
-| Werkstroombeschrijving                      | nvarchar(255)  | Ja         | De beschrijving van de werkstroom die is gekoppeld aan een contract |
-| ContractcodeId                           | int            | Nee          | Een unieke id voor de contractcode die aan het contract is gekoppeld |
-| ContractFileName                         | int            | Nee          | De naam van het bestand met de slimme contractcode voor deze werkstroom. |
-| ContractUploadedDtTm                     | int            | Nee          | De datum en tijd waarop de contractcode is geüpload |
-| ContractId (ContractId)                               | int            | Nee          | De unieke id voor het contract |
-| ContractProvisioningStatus               | int            | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor het contract aangegeven. Mogelijke waarden zijn: <br />0 – Het contract is gemaakt door de API in de database<br />1 – Het contract is verzonden naar het grootboek<br />2 – Het contract is met succes geïmplementeerd in het grootboek<br />3 of 4 - Het contract is niet geïmplementeerd in het grootboek<br />5 - Het contract is met succes geïmplementeerd in het grootboek <br /><br />Vanaf versie 1.5 worden waarden 0 tot en met 5 ondersteund. Voor backwards compatibility in de huidige release is **vwContractV0** beschikbaar die alleen waarden 0 tot en met 2 ondersteunt. |
-| ContractLedgerIdentifier                 | nvarchar (255) |             | Het e-mailadres van de gebruiker die het contract heeft geïmplementeerd |
-| ContractGeïmplementeerdByUserId                 | int            | Nee          | Een externe id voor de gebruiker die het contract heeft geïmplementeerd. Standaard is deze id de guid die de Azure Active Directory ID voor de gebruiker vertegenwoordigt.                                                                                                          |
-| ContractDeployedByUserExternalId         | nvarchar(255)  | Nee          | Een externe id voor de gebruiker die het contract heeft geïmplementeerd. Standaard is deze id de guid die de Azure Active Directory ID voor de gebruiker vertegenwoordigt.                                                                                                         |
-| ContractDeployedByUserProvisioningStatus | int            | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor de gebruiker aangegeven. Mogelijke waarden zijn: <br />0 – gebruiker is gemaakt door de API<br />1 – Er is een sleutel gekoppeld aan de gebruiker in de database <br />2 – De gebruiker is volledig ingericht                     |
-| ContractDeployedByUserFirstName          | nvarchar(50)   | Ja         | De voornaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserLastName           | nvarchar(255)  | Ja         | De achternaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserEmailAddress       | nvarchar(255)  | Ja         | Het e-mailadres van de gebruiker die het contract heeft geïmplementeerd |
+| ApplicationDisplayName                   | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                       | bit            | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld.<br /> **Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base.  |
+| WorkflowId                               | int            | Nee          | Een unieke id voor de werk stroom die aan een contract is gekoppeld |
+| WorkflowName                             | nvarchar (50)   | Nee          | De naam van de werk stroom die aan een contract is gekoppeld |
+| WorkflowDisplayName                      | nvarchar (255)  | Nee          | De naam van de werk stroom die is gekoppeld aan het contract dat wordt weer gegeven in de gebruikers interface |
+| WorkflowDescription                      | nvarchar (255)  | Ja         | De beschrijving van de werk stroom die aan een contract is gekoppeld |
+| ContractCodeId                           | int            | Nee          | Een unieke id voor de contract code die is gekoppeld aan het contract |
+| ContractFileName                         | int            | Nee          | De naam van het bestand met de code van het slimme contract voor deze werk stroom. |
+| ContractUploadedDtTm                     | int            | Nee          | De datum en tijd waarop de contract code is geüpload |
+| ContractId                               | int            | Nee          | De unieke id voor het contract |
+| ContractProvisioningStatus               | int            | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor het contract aangeduid. Mogelijke waarden zijn: <br />0: het contract is gemaakt door de API in de data base<br />1: het contract is naar het groot boek verzonden<br />2: het contract is geïmplementeerd in het groot boek<br />3 of 4: het contract kan niet in het groot boek worden geïmplementeerd<br />5-het contract is in het groot boek geïmplementeerd <br /><br />Met ingang van versie 1,5 worden de waarden 0 t/m 5 ondersteund. Voor achterwaartse compatibiliteit in de huidige versie is de weer gave **vwContractV0** beschikbaar die alleen waarden 0 t/m 2 ondersteunt. |
+| ContractLedgerIdentifier                 | nvarchar (255) |             | Het e-mail adres van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserId                 | int            | Nee          | Een externe ID voor de gebruiker die het contract heeft geïmplementeerd. Deze ID is standaard de GUID die de Azure Active Directory-ID voor de gebruiker vertegenwoordigt.                                                                                                          |
+| ContractDeployedByUserExternalId         | nvarchar (255)  | Nee          | Een externe ID voor de gebruiker die het contract heeft geïmplementeerd. Deze ID is standaard de GUID die de Azure Active Directory-ID voor de gebruiker vertegenwoordigt.                                                                                                         |
+| ContractDeployedByUserProvisioningStatus | int            | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor de gebruiker geïdentificeerd. Mogelijke waarden zijn: <br />0: gebruiker is gemaakt door de API<br />1: er is een sleutel aan de gebruiker in de data base gekoppeld <br />2: de gebruiker is volledig ingericht                     |
+| ContractDeployedByUserFirstName          | nvarchar (50)   | Ja         | De voor naam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserLastName           | nvarchar (255)  | Ja         | De achternaam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserEmailAddress       | nvarchar (255)  | Ja         | Het e-mail adres van de gebruiker die het contract heeft geïmplementeerd |
 
 ## <a name="vwcontractaction"></a>vwContractAction
 
-Deze visie vertegenwoordigt de meerderheid van de informatie met betrekking tot acties die op contracten zijn genomen en is bedoeld om gemeenschappelijke rapportagescenario's gemakkelijk te vergemakkelijken. Voor elke actie die wordt ondernomen, bevat deze weergave de volgende gegevens:
+Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot de acties die zijn uitgevoerd op contracten en is ontworpen om veelvoorkomende rapportage scenario's te vergemakkelijken. Voor elke uitgevoerde actie bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Gekoppelde slimme contractfunctie en parameterdefinitie
--   Bijbehorende grootboekimplementatie voor de functie
--   Specifieke instantiewaarden voor parameters
--   Details voor de gebruiker die de actie heeft gestart
--   Details met betrekking tot het blockchain-blok en de transactie
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Gekoppelde functie voor slimme contracten en parameter definitie
+-   Gekoppelde grootboek implementatie voor de functie
+-   Specifieke instantie waarden die zijn opgegeven voor para meters
+-   Details van de gebruiker die de actie heeft gestart
+-   Details met betrekking tot het block Chain-blok en de trans actie
 
-| Name                                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                                                    |
+| Naam                                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                          | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName                   | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                       | bit           | Nee          | In dit veld wordt aangegeven of de toepassing momenteel is ingeschakeld. Opmerking - Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database.                                                  |
-| Werkstroom-id                               | int           | Nee          | Een unieke id voor een werkstroom |
-| Werkstroomnaam                             | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam                      | nvarchar(255) | Nee          | De naam van de werkstroom die moet worden weergegeven in een gebruikersinterface |
-| Werkstroombeschrijving                      | nvarchar(255) | Ja         | De beschrijving van de werkstroom |
-| ContractId (ContractId)                               | int           | Nee          | Een unieke id voor het contract |
-| ContractProvisioningStatus               | int           | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor het contract aangegeven. Mogelijke waarden zijn: <br />0 – Het contract is gemaakt door de API in de database<br />1 – Het contract is verzonden naar het grootboek<br />2 – Het contract is met succes geïmplementeerd in het grootboek<br />3 of 4 - Het contract is niet geïmplementeerd in het grootboek<br />5 - Het contract is met succes geïmplementeerd in het grootboek <br /><br />Vanaf versie 1.5 worden waarden 0 tot en met 5 ondersteund. Voor backwards compatibility in de huidige release is **vwContractActionV0** beschikbaar die alleen waarden 0 tot en met 2 ondersteunt. |
-| ContractcodeId                           | int           | Nee          | Een unieke id voor de codeuitvoering van het contract |
-| ContractLedgerIdentifier                 | nvarchar(255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd grootboek. Bijvoorbeeld, Ethereum. |
-| ContractGeïmplementeerdByUserId                 | int           | Nee          | De unieke id van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserFirstName          | nvarchar(50)  | Ja         | Voornaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserLastName           | nvarchar(255) | Ja         | Achternaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserExternalId         | nvarchar(255) | Nee          | Externe id van de gebruiker die het contract heeft geïmplementeerd. Standaard is deze id de guid die hun identiteit vertegenwoordigt in het consortium Azure Active Directory.                                                                                                                                                |
-| ContractDeployedByUserEmailAddress       | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die het contract heeft geïmplementeerd |
-| WerkstroomFunctieId                       | int           | Nee          | Een unieke id voor een werkstroomfunctie |
-| WerkstroomFunctieNaam                     | nvarchar(50)  | Nee          | De naam van de functie |
-| WerkstroomfunctieWeergaveNaam              | nvarchar(255) | Nee          | De naam van een functie die in de gebruikersinterface moet worden weergegeven |
-| WerkstroomfunctieBeschrijving              | nvarchar(255) | Nee          | De beschrijving van de functie |
-| ContractActionId                         | int           | Nee          | De unieke id voor een contractactie |
-| ContractActionProvisioningStatus         | int           | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor de contractactie aangegeven. Mogelijke waarden zijn: <br />0 – De contractactie is gemaakt door de API in de database<br />1 – De contractactie is naar het grootboek gestuurd<br />2 – De contractactie is met succes geïmplementeerd in het grootboek<br />3 of 4 - Het contract is niet geïmplementeerd in het grootboek<br />5 - Het contract is met succes geïmplementeerd in het grootboek <br /><br />Vanaf versie 1.5 worden waarden 0 tot en met 5 ondersteund. Voor backwards compatibility in de huidige release is **vwContractActionV0** beschikbaar die alleen waarden 0 tot en met 2 ondersteunt. |
-| ContractActionTimestamp                  | datum(2,7) | Nee          | De tijdstempel van de contractactie |
-| ContractactionuitgevoerdDoorUserId           | int           | Nee          | Unieke id van de gebruiker die de contractactie heeft uitgevoerd |
-| ContractactionuitgevoerddoorUserFirstName    | int           | Ja         | Voornaam van de gebruiker die de contractactie heeft uitgevoerd |
-| ContractactionuitgevoerdDoorUserLastName     | nvarchar(50)  | Ja         | Achternaam van de gebruiker die de contractactie heeft uitgevoerd |
-| ContractactionuitgevoerddoorUserExternalId   | nvarchar(255) | Ja         | Externe id van de gebruiker die de contractactie heeft uitgevoerd. Standaard is deze id de guid die hun identiteit vertegenwoordigt in het consortium Azure Active Directory. |
-| Contractactionuitgevoerddooruseremailadres | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die de contractactie heeft uitgevoerd |
-| WerkstroomfunctieParameterId              | int           | Nee          | Een unieke id voor een parameter van de functie |
-| WerkstroomFunctieParameterName            | nvarchar(50)  | Nee          | De naam van een parameter van de functie |
-| WerkstroomfunctieParameterDisplayName     | nvarchar(255) | Nee          | De naam van een functieparameter die in de gebruikersinterface moet worden weergegeven |
-| WorkflowfunctieParameterDataTypeId      | int           | Nee          | De unieke id voor het gegevenstype dat is gekoppeld aan een parameter van de werkstroomfunctie |
-| WorkflowParameterDataTypeName            | nvarchar(50)  | Nee          | De naam van een gegevenstype dat is gekoppeld aan een parameter van de werkstroomfunctie |
-| ContractActionParameterWaarde             | nvarchar(255) | Nee          | De waarde voor de parameter die is opgeslagen in het slimme contract |
-| BlockHash BlockHash                                | nvarchar(255) | Ja         | De hash van het blok |
-| Bloknummer                              | int           | Ja         | Het nummer van het blok op het grootboek |
-| BlockTimestamp                           | datum(2,7) | Ja         | De tijdstempel van het blok |
-| TransactionId                            | int           | Nee          | Een unieke id voor de transactie |
-| Transactievan                          | nvarchar(255) | Ja         | De partij die de transactie heeft ontstaan |
-| TransactionTo                            | nvarchar(255) | Ja         | De partij die werd afgehandeld met |
-| TransactionHash                          | nvarchar(255) | Ja         | De hash van een transactie |
-| TransactionIsWorkbenchTransactie        | bit           | Ja         | Een bit dat aangeeft of de transactie een Azure Blockchain Workbench-transactie is |
-| Transactieprovisioningstatus            | int           | Ja         | Hiermee wordt de huidige status van het inrichtingsproces voor de transactie aangegeven. Mogelijke waarden zijn: <br />0 – De transactie is gemaakt door de API in de database<br />1 – De transactie is verzonden naar het grootboek<br />2 – De transactie is met succes geïmplementeerd in het grootboek                 |
-| Transactiewaarde                         | decimaal(32,2) | Ja         | De waarde van de transactie |
+| ApplicationName                          | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName                   | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                       | bit           | Nee          | Dit veld geeft aan of de toepassing momenteel is ingeschakeld. Opmerking: Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base.                                                  |
+| WorkflowId                               | int           | Nee          | Een unieke id voor een werk stroom |
+| WorkflowName                             | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName                      | nvarchar (255) | Nee          | De naam van de werk stroom die moet worden weer gegeven in een gebruikers interface |
+| WorkflowDescription                      | nvarchar (255) | Ja         | De beschrijving van de werk stroom |
+| ContractId                               | int           | Nee          | Een unieke id voor het contract |
+| ContractProvisioningStatus               | int           | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor het contract aangeduid. Mogelijke waarden zijn: <br />0: het contract is gemaakt door de API in de data base<br />1: het contract is naar het groot boek verzonden<br />2: het contract is geïmplementeerd in het groot boek<br />3 of 4: het contract kan niet in het groot boek worden geïmplementeerd<br />5-het contract is in het groot boek geïmplementeerd <br /><br />Met ingang van versie 1,5 worden de waarden 0 t/m 5 ondersteund. Voor achterwaartse compatibiliteit in de huidige versie is de weer gave **vwContractActionV0** beschikbaar die alleen waarden 0 t/m 2 ondersteunt. |
+| ContractCodeId                           | int           | Nee          | Een unieke id voor de code-implementatie van het contract |
+| ContractLedgerIdentifier                 | nvarchar (255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd groot boek. Bijvoorbeeld Ethereum. |
+| ContractDeployedByUserId                 | int           | Nee          | De unieke id van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserFirstName          | nvarchar (50)  | Ja         | De voor naam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserLastName           | nvarchar (255) | Ja         | De achternaam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserExternalId         | nvarchar (255) | Nee          | De externe ID van de gebruiker die het contract heeft geïmplementeerd. Deze ID is standaard de GUID die de identiteit vertegenwoordigt in het consortium Azure Active Directory.                                                                                                                                                |
+| ContractDeployedByUserEmailAddress       | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die het contract heeft geïmplementeerd |
+| WorkflowFunctionId                       | int           | Nee          | Een unieke id voor een werk stroom functie |
+| WorkflowFunctionName                     | nvarchar (50)  | Nee          | De naam van de functie |
+| WorkflowFunctionDisplayName              | nvarchar (255) | Nee          | De naam van een functie die moet worden weer gegeven in de gebruikers interface |
+| WorkflowFunctionDescription              | nvarchar (255) | Nee          | De beschrijving van de functie |
+| ContractActionId                         | int           | Nee          | De unieke id voor een contract actie |
+| ContractActionProvisioningStatus         | int           | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor de contract actie aangegeven. Mogelijke waarden zijn: <br />0: de contract actie is gemaakt door de API in de data base<br />1: de contract actie is naar het groot boek verzonden<br />2: de contract actie is geïmplementeerd in het groot boek<br />3 of 4: het contract kan niet in het groot boek worden geïmplementeerd<br />5-het contract is in het groot boek geïmplementeerd <br /><br />Met ingang van versie 1,5 worden de waarden 0 t/m 5 ondersteund. Voor achterwaartse compatibiliteit in de huidige versie is de weer gave **vwContractActionV0** beschikbaar die alleen waarden 0 t/m 2 ondersteunt. |
+| ContractActionTimestamp                  | datetime (2, 7) | Nee          | De tijds tempel van de contract actie |
+| ContractActionExecutedByUserId           | int           | Nee          | De unieke id van de gebruiker die de contract actie heeft uitgevoerd |
+| ContractActionExecutedByUserFirstName    | int           | Ja         | De voor naam van de gebruiker die de contract actie heeft uitgevoerd |
+| ContractActionExecutedByUserLastName     | nvarchar (50)  | Ja         | De achternaam van de gebruiker die de contract actie heeft uitgevoerd |
+| ContractActionExecutedByUserExternalId   | nvarchar (255) | Ja         | De externe ID van de gebruiker die de contract actie heeft uitgevoerd. Deze ID is standaard de GUID die de identiteit vertegenwoordigt in het consortium Azure Active Directory. |
+| ContractActionExecutedByUserEmailAddress | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die de contract actie heeft uitgevoerd |
+| WorkflowFunctionParameterId              | int           | Nee          | Een unieke id voor een para meter van de functie |
+| WorkflowFunctionParameterName            | nvarchar (50)  | Nee          | De naam van een para meter van de functie |
+| WorkflowFunctionParameterDisplayName     | nvarchar (255) | Nee          | De naam van een functie parameter die moet worden weer gegeven in de gebruikers interface |
+| WorkflowFunctionParameterDataTypeId      | int           | Nee          | De unieke id voor het gegevens type dat is gekoppeld aan een werk stroom functie parameter |
+| WorkflowParameterDataTypeName            | nvarchar (50)  | Nee          | De naam van een gegevens type dat is gekoppeld aan een werk stroom functie parameter |
+| ContractActionParameterValue             | nvarchar (255) | Nee          | De waarde voor de para meter die is opgeslagen in het slimme contract |
+| BlockHash                                | nvarchar (255) | Ja         | De hash van het blok |
+| BlockNumber                              | int           | Ja         | Het nummer van het blok op het groot boek |
+| BlockTimestamp                           | datetime (2, 7) | Ja         | Het tijds tempel van het blok |
+| TransactionId                            | int           | Nee          | Een unieke id voor de trans actie |
+| TransactionFrom                          | nvarchar (255) | Ja         | De partij die de trans actie heeft gestart |
+| TransactionTo                            | nvarchar (255) | Ja         | De partij die heeft gehandeld met |
+| TransactionHash                          | nvarchar (255) | Ja         | De hash van een trans actie |
+| TransactionIsWorkbenchTransaction        | bit           | Ja         | Een bit waarmee wordt aangegeven of de trans actie een Azure Block Chain Workbench-trans actie is |
+| TransactionProvisioningStatus            | int           | Ja         | Identificeert de huidige status van het inrichtings proces voor de trans actie. Mogelijke waarden zijn: <br />0: de trans actie is gemaakt door de API in de data base<br />1: de trans actie is naar het groot boek verzonden<br />2: de trans actie is in het groot boek geïmplementeerd                 |
+| TransactionValue                         | decimaal (32, 2) | Ja         | De waarde van de trans actie |
 
 ## <a name="vwcontractproperty"></a>vwContractProperty
 
-Deze weergave vertegenwoordigt de meerderheid van de informatie met betrekking tot eigenschappen die zijn gekoppeld aan een contract en is ontworpen om veelvoorkomende rapportagescenario's gemakkelijk te vergemakkelijken. Voor elke genomen eigenschap bevat deze weergave de volgende gegevens:
+Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot eigenschappen die zijn gekoppeld aan een contract en is ontworpen om veelvoorkomende rapportage scenario's te vergemakkelijken. Voor elke ondernomen eigenschap bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Gegevens voor de gebruiker die de werkstroom heeft geïmplementeerd
--   Gekoppelde definitie van smart contract-eigenschappen
--   Specifieke instantiewaarden voor eigenschappen
--   Details voor het staatseigendom van het contract
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Details van de gebruiker die de werk stroom heeft geïmplementeerd
+-   Definitie van gekoppelde Smart-contract eigenschap
+-   Specifieke instantie waarden voor eigenschappen
+-   Details voor de eigenschap State van het contract
 
-| Name                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
+| Naam                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                    | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName             | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                 | bit           | Nee          | Hiermee wordt aangegeven of de toepassing momenteel is ingeschakeld.<br />**Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database.                      |
-| Werkstroom-id                         | int           | Nee          | De unieke id voor de werkstroom |
-| Werkstroomnaam                       | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam                | nvarchar(255) | Nee          | De naam van de werkstroom die wordt weergegeven in de gebruikersinterface |
-| Werkstroombeschrijving                | nvarchar(255) | Ja         | De beschrijving van de werkstroom |
-| ContractId (ContractId)                         | int           | Nee          | De unieke id voor het contract |
-| ContractProvisioningStatus         | int           | Nee          | Hiermee wordt de huidige status van het inrichtingsproces voor het contract aangegeven. Mogelijke waarden zijn: <br />0 – Het contract is gemaakt door de API in de database<br />1 – Het contract is verzonden naar het grootboek<br />2 – Het contract is met succes geïmplementeerd in het grootboek<br />3 of 4 - Het contract is niet geïmplementeerd in het grootboek<br />5 - Het contract is met succes geïmplementeerd in het grootboek <br /><br />Vanaf versie 1.5 worden waarden 0 tot en met 5 ondersteund. Voor backwards compatibility in de huidige release is **vwContractPropertyV0** beschikbaar die alleen waarden 0 tot en met 2 ondersteunt. |
-| ContractcodeId                     | int           | Nee          | Een unieke id voor de codeuitvoering van het contract |
-| ContractLedgerIdentifier           | nvarchar(255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd grootboek. Bijvoorbeeld, Ethereum. |
-| ContractGeïmplementeerdByUserId           | int           | Nee          | De unieke id van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserFirstName    | nvarchar(50)  | Ja         | Voornaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserLastName     | nvarchar(255) | Ja         | Achternaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nee          | Externe id van de gebruiker die het contract heeft geïmplementeerd. Deze id is standaard de guid die hun identiteit vertegenwoordigt in het consortium Azure Active Directory |
-| ContractDeployedByUserEmailAddress | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die het contract heeft geïmplementeerd |
-| WerkstroomPropertyId                 | int           |             | Een unieke id voor een eigenschap van een werkstroom |
-| WorkflowPropertyDataTypeId         | int           | Nee          | De id van het gegevenstype van de eigenschap |
-| WerkstroomPropertyDataTypeName       | nvarchar(50)  | Nee          | De naam van het gegevenstype van de eigenschap |
-| WerkstroomPropertyName               | nvarchar(50)  | Nee          | De naam van de eigenschap werkstroom |
-| WerkstroomPropertyDisplayName        | nvarchar(255) | Nee          | De weergavenaam van de eigenschap werkstroom |
-| Beschrijving van werkstroomEigenschapbeschrijving        | nvarchar(255) | Ja         | Een beschrijving van het pand |
-| ContractPropertyValue              | nvarchar(255) | Nee          | De waarde voor een woning op het contract |
-| StateName                          | nvarchar(50)  | Ja         | Als deze eigenschap de status van het contract bevat, is dit de weergavenaam voor de status. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
-| StateDisplayName                   | nvarchar(255) | Nee          | Als deze eigenschap de status bevat, is dit de weergavenaam voor de status. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
-| Statuswaarde                         | nvarchar(255) | Ja         | Als deze eigenschap de status bevat, is dit de statuswaarde. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
+| ApplicationName                    | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName             | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                 | bit           | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld.<br />**Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base.                      |
+| WorkflowId                         | int           | Nee          | De unieke id voor de werk stroom |
+| WorkflowName                       | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName                | nvarchar (255) | Nee          | De naam van de werk stroom die wordt weer gegeven in de gebruikers interface |
+| WorkflowDescription                | nvarchar (255) | Ja         | De beschrijving van de werk stroom |
+| ContractId                         | int           | Nee          | De unieke id voor het contract |
+| ContractProvisioningStatus         | int           | Nee          | Hiermee wordt de huidige status van het inrichtings proces voor het contract aangeduid. Mogelijke waarden zijn: <br />0: het contract is gemaakt door de API in de data base<br />1: het contract is naar het groot boek verzonden<br />2: het contract is geïmplementeerd in het groot boek<br />3 of 4: het contract kan niet in het groot boek worden geïmplementeerd<br />5-het contract is in het groot boek geïmplementeerd <br /><br />Met ingang van versie 1,5 worden de waarden 0 t/m 5 ondersteund. Voor achterwaartse compatibiliteit in de huidige versie is de weer gave **vwContractPropertyV0** beschikbaar die alleen waarden 0 t/m 2 ondersteunt. |
+| ContractCodeId                     | int           | Nee          | Een unieke id voor de code-implementatie van het contract |
+| ContractLedgerIdentifier           | nvarchar (255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd groot boek. Bijvoorbeeld Ethereum. |
+| ContractDeployedByUserId           | int           | Nee          | De unieke id van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserFirstName    | nvarchar (50)  | Ja         | De voor naam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserLastName     | nvarchar (255) | Ja         | De achternaam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserExternalId   | nvarchar (255) | Nee          | De externe ID van de gebruiker die het contract heeft geïmplementeerd. Deze ID is standaard de GUID die de identiteit vertegenwoordigt in het consortium Azure Active Directory |
+| ContractDeployedByUserEmailAddress | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die het contract heeft geïmplementeerd |
+| WorkflowPropertyId                 | int           |             | Een unieke id voor een eigenschap van een werk stroom |
+| WorkflowPropertyDataTypeId         | int           | Nee          | De ID van het gegevens type van de eigenschap |
+| WorkflowPropertyDataTypeName       | nvarchar (50)  | Nee          | De naam van het gegevens type van de eigenschap |
+| WorkflowPropertyName               | nvarchar (50)  | Nee          | De naam van de werk stroom eigenschap |
+| WorkflowPropertyDisplayName        | nvarchar (255) | Nee          | De weergave naam van de werk stroom eigenschap |
+| WorkflowPropertyDescription        | nvarchar (255) | Ja         | Een beschrijving van de eigenschap |
+| ContractPropertyValue              | nvarchar (255) | Nee          | De waarde voor een eigenschap in het contract |
+| Stateful                          | nvarchar (50)  | Ja         | Als deze eigenschap de status van het contract bevat, is dit de weergave naam voor de status. Als deze niet is gekoppeld aan de status, is de waarde Null. |
+| StateDisplayName                   | nvarchar (255) | Nee          | Als deze eigenschap de status bevat, is dit de weergave naam voor de status. Als deze niet is gekoppeld aan de status, is de waarde Null. |
+| StateValue                         | nvarchar (255) | Ja         | Als deze eigenschap de status bevat, is het de status waarde. Als deze niet is gekoppeld aan de status, is de waarde Null. |
 
 ## <a name="vwcontractstate"></a>vwContractState
 
-Deze weergave vertegenwoordigt de meerderheid van de informatie met betrekking tot de stand van een specifiek contract en is bedoeld om gemeenschappelijke rapportagescenario's gemakkelijk te vergemakkelijken. Elke record in deze weergave bevat de volgende gegevens:
+Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot de status van een specifiek contract en is ontworpen om veelvoorkomende rapportage scenario's te vergemakkelijken. Elke record in deze weer gave bevat de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Gegevens voor de gebruiker die de werkstroom heeft geïmplementeerd
--   Gekoppelde definitie van smart contract-eigenschappen
--   Details voor het staatseigendom van het contract
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Details van de gebruiker die de werk stroom heeft geïmplementeerd
+-   Definitie van gekoppelde Smart-contract eigenschap
+-   Details voor de eigenschap State van het contract
 
-| Name                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
+| Naam                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                    | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName             | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                 | bit           | Nee          | Hiermee wordt aangegeven of de toepassing momenteel is ingeschakeld.<br />**Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database. |
-| Werkstroom-id                         | int           | Nee          | Een unieke id voor de werkstroom |
-| Werkstroomnaam                       | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam                | nvarchar(255) | Nee          | De naam die wordt weergegeven in de gebruikersinterface |
-| Werkstroombeschrijving                | nvarchar(255) | Ja         | De beschrijving van de werkstroom |
-| ContractLedgerImplementatieid     | nvarchar(255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd grootboek. Bijvoorbeeld, Ethereum. |
-| ContractId (ContractId)                         | int           | Nee          | Een unieke id voor het contract |
-| ContractProvisioningStatus         | int           | Nee          |Hiermee wordt de huidige status van het inrichtingsproces voor het contract aangegeven. Mogelijke waarden zijn: <br />0 – Het contract is gemaakt door de API in de database<br />1 – Het contract is verzonden naar het grootboek<br />2 – Het contract is met succes geïmplementeerd in het grootboek<br />3 of 4 - Het contract is niet geïmplementeerd in het grootboek<br />5 - Het contract is met succes geïmplementeerd in het grootboek <br /><br />Vanaf versie 1.5 worden waarden 0 tot en met 5 ondersteund. Voor backwards compatibility in de huidige release is **vwContractStateV0** beschikbaar die alleen waarden 0 tot en met 2 ondersteunt. |
-| ConnectionId                       | int           | Nee          | Een unieke id voor het blockchain-exemplaar waaraan de werkstroom wordt geïmplementeerd |
-| ContractcodeId                     | int           | Nee          | Een unieke id voor de codeuitvoering van het contract |
-| ContractGeïmplementeerdByUserId           | int           | Nee          | Unieke id van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nee          | Externe id van de gebruiker die het contract heeft geïmplementeerd. Standaard is deze id de guid die hun identiteit vertegenwoordigt in het consortium Azure Active Directory. |
-| ContractDeployedByUserFirstName    | nvarchar(50)  | Ja         | Voornaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserLastName     | nvarchar(255) | Ja         | Achternaam van de gebruiker die het contract heeft geïmplementeerd |
-| ContractDeployedByUserEmailAddress | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker die het contract heeft geïmplementeerd |
-| WerkstroomPropertyId                 | int           | Nee          | Een unieke id voor een werkstroomeigenschap |
-| WorkflowPropertyDataTypeId         | int           | Nee          | De id van het gegevenstype van de eigenschap werkstroom |
-| WerkstroomPropertyDataTypeName       | nvarchar(50)  | Nee          | De naam van het gegevenstype van de eigenschap werkstroom |
-| WerkstroomPropertyName               | nvarchar(50)  | Nee          | De naam van de eigenschap werkstroom |
-| WerkstroomPropertyDisplayName        | nvarchar(255) | Nee          | De weergavenaam van de eigenschap die moet worden weergegeven in een gebruikersinterface |
-| Beschrijving van werkstroomEigenschapbeschrijving        | nvarchar(255) | Ja         | De beschrijving van het pand |
-| ContractPropertyValue              | nvarchar(255) | Nee          | De waarde voor een woning die in het contract is opgeslagen |
-| StateName                          | nvarchar(50)  | Ja         | Als deze eigenschap de status bevat, wordt de weergavenaam voor de status weergegeven. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
-| StateDisplayName                   | nvarchar(255) | Nee          | Als deze eigenschap de status bevat, is dit de weergavenaam voor de status. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
-| Statuswaarde                         | nvarchar(255) | Ja         | Als deze eigenschap de status bevat, is dit de statuswaarde. Als deze niet aan de status is gekoppeld, wordt de waarde nietig verklaard. |
+| ApplicationName                    | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName             | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                 | bit           | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld.<br />**Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base. |
+| WorkflowId                         | int           | Nee          | Een unieke id voor de werk stroom |
+| WorkflowName                       | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName                | nvarchar (255) | Nee          | De naam die wordt weer gegeven in de gebruikers interface |
+| WorkflowDescription                | nvarchar (255) | Ja         | De beschrijving van de werk stroom |
+| ContractLedgerImplementationId     | nvarchar (255) | Ja         | Een unieke id die is gekoppeld aan de geïmplementeerde versie van een slim contract voor een specifiek gedistribueerd groot boek. Bijvoorbeeld Ethereum. |
+| ContractId                         | int           | Nee          | Een unieke id voor het contract |
+| ContractProvisioningStatus         | int           | Nee          |Hiermee wordt de huidige status van het inrichtings proces voor het contract aangeduid. Mogelijke waarden zijn: <br />0: het contract is gemaakt door de API in de data base<br />1: het contract is naar het groot boek verzonden<br />2: het contract is geïmplementeerd in het groot boek<br />3 of 4: het contract kan niet in het groot boek worden geïmplementeerd<br />5-het contract is in het groot boek geïmplementeerd <br /><br />Met ingang van versie 1,5 worden de waarden 0 t/m 5 ondersteund. Voor achterwaartse compatibiliteit in de huidige versie is de weer gave **vwContractStateV0** beschikbaar die alleen waarden 0 t/m 2 ondersteunt. |
+| ConnectionId                       | int           | Nee          | Een unieke id voor het block Chain-exemplaar waarop de werk stroom wordt geïmplementeerd |
+| ContractCodeId                     | int           | Nee          | Een unieke id voor de code-implementatie van het contract |
+| ContractDeployedByUserId           | int           | Nee          | De unieke id van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserExternalId   | nvarchar (255) | Nee          | De externe ID van de gebruiker die het contract heeft geïmplementeerd. Deze ID is standaard de GUID die de identiteit vertegenwoordigt in het consortium Azure Active Directory. |
+| ContractDeployedByUserFirstName    | nvarchar (50)  | Ja         | De voor naam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserLastName     | nvarchar (255) | Ja         | De achternaam van de gebruiker die het contract heeft geïmplementeerd |
+| ContractDeployedByUserEmailAddress | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker die het contract heeft geïmplementeerd |
+| WorkflowPropertyId                 | int           | Nee          | Een unieke id voor een werk stroom eigenschap |
+| WorkflowPropertyDataTypeId         | int           | Nee          | De ID van het gegevens type van de werk stroom eigenschap |
+| WorkflowPropertyDataTypeName       | nvarchar (50)  | Nee          | De naam van het gegevens type van de werk stroom eigenschap |
+| WorkflowPropertyName               | nvarchar (50)  | Nee          | De naam van de werk stroom eigenschap |
+| WorkflowPropertyDisplayName        | nvarchar (255) | Nee          | De weergave naam van de eigenschap die moet worden weer gegeven in een gebruikers interface |
+| WorkflowPropertyDescription        | nvarchar (255) | Ja         | De beschrijving van de eigenschap |
+| ContractPropertyValue              | nvarchar (255) | Nee          | De waarde voor een eigenschap die in het contract is opgeslagen |
+| Stateful                          | nvarchar (50)  | Ja         | Als deze eigenschap de status bevat, wordt deze weer gegeven als de weergave naam van de status. Als deze niet is gekoppeld aan de status, is de waarde Null. |
+| StateDisplayName                   | nvarchar (255) | Nee          | Als deze eigenschap de status bevat, is dit de weergave naam voor de status. Als deze niet is gekoppeld aan de status, is de waarde Null. |
+| StateValue                         | nvarchar (255) | Ja         | Als deze eigenschap de status bevat, is het de status waarde. Als deze niet is gekoppeld aan de status, is de waarde Null. |
 
 ## <a name="vwuser"></a>vwUser
 
-In deze weergave vindt u informatie over de consortiumleden die zijn ingericht om Azure Blockchain Workbench te gebruiken. Standaard worden gegevens ingevuld door de initiële inrichting van de gebruiker.
+Deze weer gave bevat details over de consortium leden die zijn ingericht voor het gebruik van Azure Block Chain Workbench. Standaard worden gegevens gevuld via de eerste inrichting van de gebruiker.
 
-| Name               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                               |
+| Naam               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Id                 | int           | Nee          | Een unieke id voor een gebruiker |
-| Externe ID         | nvarchar(255) | Nee          | Een externe id voor een gebruiker. Standaard is deze id de guid die de Azure Active Directory ID voor de gebruiker vertegenwoordigt. |
-| ProvisioningStatus | int           | Nee          |Hiermee wordt de huidige status van het inrichtingsproces voor de gebruiker aangegeven. Mogelijke waarden zijn: <br />0 – Gebruiker is gemaakt door de API<br />1 – Er is een sleutel gekoppeld aan de gebruiker in de database<br />2 – De gebruiker is volledig ingericht |
-| FirstName          | nvarchar(50)  | Ja         | De voornaam van de gebruiker |
-| LastName           | nvarchar(50)  | Ja         | De achternaam van de gebruiker |
-| Emailaddress       | nvarchar(255) | Ja         | Het e-mailadres van de gebruiker |
+| ExternalID         | nvarchar (255) | Nee          | Een externe ID voor een gebruiker. Deze ID is standaard de GUID die de Azure Active Directory-ID voor de gebruiker vertegenwoordigt. |
+| ProvisioningStatus | int           | Nee          |Hiermee wordt de huidige status van het inrichtings proces voor de gebruiker geïdentificeerd. Mogelijke waarden zijn: <br />0: gebruiker is gemaakt door de API<br />1: er is een sleutel aan de gebruiker in de data base gekoppeld<br />2: de gebruiker is volledig ingericht |
+| FirstName          | nvarchar (50)  | Ja         | De voor naam van de gebruiker |
+| LastName           | nvarchar (50)  | Ja         | De achternaam van de gebruiker |
+| EmailAddress       | nvarchar (255) | Ja         | Het e-mail adres van de gebruiker |
 
 ## <a name="vwworkflow"></a>vwWorkflow
 
-Deze weergave vertegenwoordigt de details core workflow metadata evenals de functies en parameters van de workflow. Ontworpen voor rapportage, bevat het ook metagegevens over de toepassing die is gekoppeld aan de werkstroom. Deze weergave bevat gegevens uit meerdere onderliggende tabellen om rapportage over workflows te vergemakkelijken. Voor elke werkstroom bevat deze weergave de volgende gegevens:
+Deze weer gave bevat de meta gegevens van de werk stroom en de functies en para meters van de werk stroom. Het is ontworpen voor rapportage en bevat ook meta gegevens over de toepassing die is gekoppeld aan de werk stroom. Deze weer gave bevat gegevens uit meerdere onderliggende tabellen om de rapportage van werk stromen mogelijk te maken. Voor elke werk stroom bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Statusstatus van gekoppelde werkstroomstart
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Informatie over de begin status van de werk stroom
 
-| Name                              | Type          | Kan null zijn | Beschrijving                                                                                                                                |
+| Naam                              | Type          | Kan null zijn | Beschrijving                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                   | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName            | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                | bit           | Nee          | Identificeert of de toepassing is ingeschakeld |
-| Werkstroom-id                        | int           | Ja         | Een unieke id voor een werkstroom |
-| Werkstroomnaam                      | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam               | nvarchar(255) | Nee          | De naam die wordt weergegeven in de gebruikersinterface |
-| Werkstroombeschrijving               | nvarchar(255) | Ja         | De beschrijving van de werkstroom. |
-| WerkstroomConstructorFunctionId     | int           | Nee          | De id van de werkstroomfunctie die fungeert als constructor voor de werkstroom |
-| WerkstroomStartStateId              | int           | Nee          | Een unieke id voor de status |
-| WerkstroomStartStateName            | nvarchar(50)  | Nee          | De naam van de staat |
-| WerkstroomStartStateDisplayName     | nvarchar(255) | Nee          | De naam die moet worden weergegeven in de gebruikersinterface voor de status |
-| WerkstroomStartStateDescription     | nvarchar(255) | Ja         | Een beschrijving van de werkstroomstatus |
-| WorkflowStartStateStyle           | nvarchar(50)  | Ja         | Deze waarde identificeert het percentage voltooid dat de werkstroom is wanneer in deze status |
-| WorkflowStartStateValue           | int           | Nee          | De waarde van de staat |
-| WerkstroomStartStatePercentcomplete | int           | Nee          | Een tekstbeschrijving die clients een hint geeft over hoe deze status in de gebruikersinterface moet worden weergegeven. Ondersteunde staten zijn *succes* en *mislukking* |
+| ApplicationName                   | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName            | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                | bit           | Nee          | Hiermee wordt aangegeven of de toepassing is ingeschakeld |
+| WorkflowId                        | int           | Ja         | Een unieke id voor een werk stroom |
+| WorkflowName                      | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName               | nvarchar (255) | Nee          | De naam die wordt weer gegeven in de gebruikers interface |
+| WorkflowDescription               | nvarchar (255) | Ja         | De beschrijving van de werk stroom. |
+| WorkflowConstructorFunctionId     | int           | Nee          | De id van de werk stroom functie die fungeert als constructor voor de werk stroom |
+| WorkflowStartStateId              | int           | Nee          | Een unieke id voor de status |
+| WorkflowStartStateName            | nvarchar (50)  | Nee          | De naam van de status |
+| WorkflowStartStateDisplayName     | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in de gebruikers interface voor de status |
+| WorkflowStartStateDescription     | nvarchar (255) | Ja         | Een beschrijving van de werk stroom status |
+| WorkflowStartStateStyle           | nvarchar (50)  | Ja         | Deze waarde geeft het percentage aan dat de werk stroom in deze status is voltooid |
+| WorkflowStartStateValue           | int           | Nee          | De waarde van de status |
+| WorkflowStartStatePercentComplete | int           | Nee          | Een beschrijving van een tekst die een hint biedt aan clients om deze status in de gebruikers interface weer te geven. Ondersteunde statussen zijn *geslaagd* en *mislukt* |
 
-## <a name="vwworkflowfunction"></a>vwWorkflowFunctie
+## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Deze weergave vertegenwoordigt de details core workflow metadata evenals de functies en parameters van de workflow. Ontworpen voor rapportage, bevat het ook metagegevens over de toepassing die is gekoppeld aan de werkstroom. Deze weergave bevat gegevens uit meerdere onderliggende tabellen om rapportage over workflows te vergemakkelijken. Voor elke werkstroomfunctie bevat deze weergave de volgende gegevens:
+Deze weer gave bevat de meta gegevens van de werk stroom en de functies en para meters van de werk stroom. Het is ontworpen voor rapportage en bevat ook meta gegevens over de toepassing die is gekoppeld aan de werk stroom. Deze weer gave bevat gegevens uit meerdere onderliggende tabellen om de rapportage van werk stromen mogelijk te maken. Voor elke werk stroom functie bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Details van de werkstroomfunctie
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Details van werk stroom functie
 
-| Name                                 | Type          | Kan null zijn | Beschrijving                                                                          |
+| Naam                                 | Type          | Kan null zijn | Beschrijving                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName                      | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName               | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled                   | bit           | Nee          | Identificeert of de toepassing is ingeschakeld |
-| Werkstroom-id                           | int           | Nee          | Een unieke id voor een werkstroom |
-| Werkstroomnaam                         | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam                  | nvarchar(255) | Nee          | De naam van de werkstroom die wordt weergegeven in de gebruikersinterface |
-| Werkstroombeschrijving                  | nvarchar(255) | Ja         | De beschrijving van de werkstroom |
-| WerkstroomFunctieId                   | int           | Nee          | Een unieke id voor een functie |
-| WerkstroomFunctieNaam                 | nvarchar(50)  | Ja         | De naam van de functie |
-| WerkstroomfunctieWeergaveNaam          | nvarchar(255) | Nee          | De naam van een functie die in de gebruikersinterface moet worden weergegeven |
-| WerkstroomfunctieBeschrijving          | nvarchar(255) | Ja         | De beschrijving van de werkstroomfunctie |
-| WerkstroomFunctieConstructor        | bit           | Nee          | Identificeert of de werkstroomfunctie de constructor voor de werkstroom is |
-| WerkstroomfunctieParameterId          | int           | Nee          | Een unieke id voor een parameter van een functie |
-| WerkstroomFunctieParameterName        | nvarchar(50)  | Nee          | De naam van een parameter van de functie |
-| WerkstroomfunctieParameterDisplayName | nvarchar(255) | Nee          | De naam van een functieparameter die in de gebruikersinterface moet worden weergegeven |
-| WorkflowfunctieParameterDataTypeId  | int           | Nee          | Een unieke id voor het gegevenstype dat is gekoppeld aan een parameter werkstroomfunctie |
-| WorkflowParameterDataTypeName        | nvarchar(50)  | Nee          | De naam van een gegevenstype dat is gekoppeld aan een parameter van de werkstroomfunctie |
+| ApplicationName                      | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName               | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled                   | bit           | Nee          | Hiermee wordt aangegeven of de toepassing is ingeschakeld |
+| WorkflowId                           | int           | Nee          | Een unieke id voor een werk stroom |
+| WorkflowName                         | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName                  | nvarchar (255) | Nee          | De naam van de werk stroom die wordt weer gegeven in de gebruikers interface |
+| WorkflowDescription                  | nvarchar (255) | Ja         | De beschrijving van de werk stroom |
+| WorkflowFunctionId                   | int           | Nee          | Een unieke id voor een functie |
+| WorkflowFunctionName                 | nvarchar (50)  | Ja         | De naam van de functie |
+| WorkflowFunctionDisplayName          | nvarchar (255) | Nee          | De naam van een functie die moet worden weer gegeven in de gebruikers interface |
+| WorkflowFunctionDescription          | nvarchar (255) | Ja         | De beschrijving van de werk stroom functie |
+| WorkflowFunctionIsConstructor        | bit           | Nee          | Hiermee wordt aangegeven of de werk stroom functie de constructor voor de werk stroom is |
+| WorkflowFunctionParameterId          | int           | Nee          | Een unieke id voor een para meter van een functie |
+| WorkflowFunctionParameterName        | nvarchar (50)  | Nee          | De naam van een para meter van de functie |
+| WorkflowFunctionParameterDisplayName | nvarchar (255) | Nee          | De naam van een functie parameter die moet worden weer gegeven in de gebruikers interface |
+| WorkflowFunctionParameterDataTypeId  | int           | Nee          | Een unieke id voor het gegevens type dat is gekoppeld aan een werk stroom functie parameter |
+| WorkflowParameterDataTypeName        | nvarchar (50)  | Nee          | De naam van een gegevens type dat is gekoppeld aan een werk stroom functie parameter |
 
 ## <a name="vwworkflowproperty"></a>vwWorkflowProperty
 
-Deze weergave vertegenwoordigt de eigenschappen die zijn gedefinieerd voor een werkstroom. Voor elke eigenschap bevat deze weergave de volgende gegevens:
+Deze weer gave bevat de eigenschappen die voor een werk stroom zijn gedefinieerd. Deze weer gave bevat voor elke eigenschap de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Details van de eigenschap Workflow
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Details van werk stroom eigenschap
 
-| Name                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
+| Naam                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName              | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName       | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| ApplicationEnabled           | bit           | Nee          | Hiermee wordt aangegeven of de toepassing momenteel is ingeschakeld.<br />**Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database. |
-| Werkstroom-id                   | int           | Nee          | Een unieke id voor de werkstroom |
-| Werkstroomnaam                 | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam          | nvarchar(255) | Nee          | De naam die moet worden weergegeven voor de werkstroom in een gebruikersinterface |
-| Werkstroombeschrijving          | nvarchar(255) | Ja         | Een beschrijving van de werkstroom |
-| WerkstroomPropertyID           | int           | Nee          | Een unieke id voor een eigenschap van een werkstroom |
-| WerkstroomPropertyName         | nvarchar(50)  | Nee          | De naam van het pand |
-| Beschrijving van werkstroomEigenschapbeschrijving  | nvarchar(255) | Ja         | Een beschrijving van het pand |
-| WerkstroomPropertyDisplayName  | nvarchar(255) | Nee          | De naam die moet worden weergegeven in een gebruikersinterface |
-| WerkstroomPropertyWorkflowId   | int           | Nee          | De id van de werkstroom waaraan deze eigenschap is gekoppeld |
-| WorkflowPropertyDataTypeId   | int           | Nee          | De id van het gegevenstype dat voor de eigenschap is gedefinieerd |
-| WerkstroomPropertyDataTypeName | nvarchar(50)  | Nee          | De naam van het gegevenstype dat voor de eigenschap is gedefinieerd |
-| WorkflowPropertyIsState      | bit           | Nee          | In dit veld wordt aangegeven of deze werkstroomeigenschap de status van de werkstroom bevat |
+| ApplicationName              | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName       | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| ApplicationEnabled           | bit           | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld.<br />**Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base. |
+| WorkflowId                   | int           | Nee          | Een unieke id voor de werk stroom |
+| WorkflowName                 | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName          | nvarchar (255) | Nee          | De naam die moet worden weer gegeven voor de werk stroom in een gebruikers interface |
+| WorkflowDescription          | nvarchar (255) | Ja         | Een beschrijving van de werk stroom |
+| WorkflowPropertyID           | int           | Nee          | Een unieke id voor een eigenschap van een werk stroom |
+| WorkflowPropertyName         | nvarchar (50)  | Nee          | De naam van de eigenschap |
+| WorkflowPropertyDescription  | nvarchar (255) | Ja         | Een beschrijving van de eigenschap |
+| WorkflowPropertyDisplayName  | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in een gebruikers interface |
+| WorkflowPropertyWorkflowId   | int           | Nee          | De ID van de werk stroom waaraan deze eigenschap is gekoppeld |
+| WorkflowPropertyDataTypeId   | int           | Nee          | De ID van het gegevens type dat voor de eigenschap is gedefinieerd |
+| WorkflowPropertyDataTypeName | nvarchar (50)  | Nee          | De naam van het gegevens type dat voor de eigenschap is gedefinieerd |
+| WorkflowPropertyIsState      | bit           | Nee          | Dit veld geeft aan of deze werk stroom eigenschap de status van de werk stroom bevat |
 
 ## <a name="vwworkflowstate"></a>vwWorkflowState
 
-Deze weergave vertegenwoordigt de eigenschappen die zijn gekoppeld aan een werkstroom. Voor elk contract bevat deze weergave de volgende gegevens:
+Deze weer gave bevat de eigenschappen die aan een werk stroom zijn gekoppeld. Voor elk contract bevat deze weer gave de volgende gegevens:
 
--   Gekoppelde toepassingsdefinitie
--   Gekoppelde werkstroomdefinitie
--   Gegevens over werkstroomstatus
+-   Definitie van gekoppelde toepassing
+-   Gekoppelde werk stroom definitie
+-   Status informatie werk stroom
 
-| Name                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
+| Naam                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nee          | Een unieke id voor de toepassing |
-| ApplicationName              | nvarchar(50)  | Nee          | De naam van de toepassing |
-| ApplicationDisplayName       | nvarchar(255) | Nee          | Een beschrijving van de aanvraag |
-| ApplicationEnabled           | bit           | Nee          | Hiermee wordt aangegeven of de toepassing momenteel is ingeschakeld.<br />**Let op:** Hoewel een toepassing kan worden weergegeven als uitgeschakeld in de database, blijven gekoppelde contracten op de blockchain staan en blijven gegevens over die contracten in de database. |
-| Werkstroom-id                   | int           | Nee          | De unieke id voor de werkstroom |
-| Werkstroomnaam                 | nvarchar(50)  | Nee          | De naam van de werkstroom |
-| WerkstroomWeergaveNaam          | nvarchar(255) | Nee          | De naam die wordt weergegeven in de gebruikersinterface voor de werkstroom |
-| Werkstroombeschrijving          | nvarchar(255) | Ja         | De beschrijving van de werkstroom |
+| ApplicationName              | nvarchar (50)  | Nee          | De naam van de toepassing |
+| ApplicationDisplayName       | nvarchar (255) | Nee          | Een beschrijving van de toepassing |
+| ApplicationEnabled           | bit           | Nee          | Hiermee wordt aangegeven of de toepassing op dit moment is ingeschakeld.<br />**Opmerking:** Hoewel een toepassing kan worden weer gegeven als uitgeschakeld in de data base, blijven gerelateerde contracten op de Block chain en gegevens over die contracten in de-data base. |
+| WorkflowId                   | int           | Nee          | De unieke id voor de werk stroom |
+| WorkflowName                 | nvarchar (50)  | Nee          | De naam van de werk stroom |
+| WorkflowDisplayName          | nvarchar (255) | Nee          | De naam die wordt weer gegeven in de gebruikers interface voor de werk stroom |
+| WorkflowDescription          | nvarchar (255) | Ja         | De beschrijving van de werk stroom |
 | WorkflowStateID              | int           | Nee          | De unieke id voor de status |
-| WerkstroomStaatNaam            | nvarchar(50)  | Nee          | De naam van de staat |
-| WorkflowStateDisplayName     | nvarchar(255) | Nee          | De naam die moet worden weergegeven in de gebruikersinterface voor de status |
-| WerkstroomStatusBeschrijving     | nvarchar(255) | Ja         | Een beschrijving van de werkstroomstatus |
-| WorkflowStatePercentComplete | int           | Nee          | Deze waarde identificeert het percentage voltooid dat de werkstroom is wanneer in deze status |
-| WorkflowStateValue           | nvarchar(50)  | Nee          | Waarde van de staat |
-| WorkflowStateStyle           | nvarchar(50)  | Nee          | Een tekstbeschrijving die clients een hint geeft over hoe deze status in de gebruikersinterface moet worden weergegeven. Ondersteunde staten zijn *succes* en *mislukking* |
+| WorkflowStateName            | nvarchar (50)  | Nee          | De naam van de status |
+| WorkflowStateDisplayName     | nvarchar (255) | Nee          | De naam die moet worden weer gegeven in de gebruikers interface voor de status |
+| WorkflowStateDescription     | nvarchar (255) | Ja         | Een beschrijving van de werk stroom status |
+| WorkflowStatePercentComplete | int           | Nee          | Deze waarde geeft het percentage aan dat de werk stroom in deze status is voltooid |
+| WorkflowStateValue           | nvarchar (50)  | Nee          | Waarde van de status |
+| WorkflowStateStyle           | nvarchar (50)  | Nee          | Een beschrijving van een tekst die een hint biedt aan clients om deze status in de gebruikers interface weer te geven. Ondersteunde statussen zijn *geslaagd* en *mislukt* |

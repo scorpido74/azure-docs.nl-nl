@@ -1,78 +1,78 @@
 ---
-title: Taken plannen om aaneengesloten gegevens te verwerken
-description: Terugkerende taken maken en uitvoeren die aaneengesloten gegevens verwerken met schuifvensters in Azure Logic Apps
+title: Taken plannen om aaneengesloten gegevens af te handelen
+description: Terugkerende taken maken en uitvoeren die aaneengesloten gegevens verwerken met behulp van Schuif vensters in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74786908"
 ---
-# <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Taken voor aaneengesloten gegevens plannen en uitvoeren met de trigger schuifvenster in Azure Logic Apps
+# <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Taken plannen en uitvoeren voor aaneengesloten gegevens met behulp van de taak verschuiving van het venster in Azure Logic Apps
 
-Als u taken, processen of taken die gegevens in aaneengesloten segmenten moeten verwerken, regelmatig wilt uitvoeren, u de werkstroom van uw logische app starten met de trigger **voor schuifvenster.** U een datum en tijd instellen, evenals een tijdzone voor het starten van de werkstroom en een herhaling voor het herhalen van die werkstroom. Als herhalingen worden gemist om welke reden dan ook, deze trigger verwerkt die gemiste herhalingen. Gebruik bijvoorbeeld bij het synchroniseren van gegevens tussen uw database en back-upopslag de trigger schuifvenster, zodat de gegevens worden gesynchroniseerd zonder dat er hiaten ontstaan. Zie [Terugkerende geautomatiseerde, taken en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor meer informatie over de ingebouwde triggers en acties voor het plannen.
+Als u taken, processen of taken die gegevens in aaneengesloten segmenten moeten verwerken regel matig wilt uitvoeren, kunt u de werk stroom van de logische app starten met de trigger voor het **schuivende venster** . U kunt een datum en tijd instellen, evenals een tijd zone voor het starten van de werk stroom en een terugkeer patroon voor het herhalen van die werk stroom. Als terugkeer patronen om welke reden dan ook worden gemist, worden deze gemiste terugkeer patronen door deze trigger verwerkt. Als u bijvoorbeeld gegevens synchroniseert tussen uw data base en back-upopslag, gebruikt u de trigger voor het schuif venster, zodat de gegevens worden gesynchroniseerd zonder dat er hiaten ontstaan. Zie voor meer informatie over de ingebouwde plannings triggers en-acties [planning en uitvoeren van terugkerende automatische, taken en werk stromen met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Hier volgen enkele patronen die deze trigger ondersteunt:
 
-* Loop onmiddellijk en herhaal elk *n* aantal seconden, minuten of uren.
+* Voer onmiddellijk uit en herhaal elke *n* seconden, minuten of uren.
 
-* Begin op een specifieke datum en tijd en voer vervolgens elk *n-aantal* seconden, minuten of uren uit en herhaal deze. Met deze trigger u een begintijd in het verleden opgeven, die alle herhalingen in het verleden uitvoert.
+* Begin op een specifieke datum en tijd en voer vervolgens elke *n* seconden, minuten of uren uit en herhaal deze. Met deze trigger kunt u een begin tijd in het verleden opgeven, waarmee alle eerdere terugkeer patronen worden uitgevoerd.
 
-* Stel elke herhaling voor een bepaalde duur uit voordat u wordt uitgevoerd.
+* Elke herhaling voor een specifieke duur vertragen voordat deze wordt uitgevoerd.
 
-Zie [Terugkerende geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor verschillen tussen deze trigger en de recidieftrigger of voor meer informatie over het plannen van terugkerende werkstromen.
+Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor verschillen tussen deze trigger en de terugkeer patroon of voor meer informatie over het plannen van terugkerende werk stromen.
 
 > [!TIP]
-> Zie [Taken één keer](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)uitvoeren als u uw logische app wilt activeren en slechts één keer wilt uitvoeren.
+> Als u uw logische app wilt activeren en slechts één keer in de toekomst wilt uitvoeren, raadpleegt u [eenmalige taken uitvoeren](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement hebt, u [zich aanmelden voor een gratis Azure-account.](https://azure.microsoft.com/free/)
+* Een Azure-abonnement. Als u geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basiskennis over [logische apps.](../logic-apps/logic-apps-overview.md) Als u nieuw bent in logische apps, leest u [hoe u uw eerste logische app maakt.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [Logic apps](../logic-apps/logic-apps-overview.md). Als u geen ervaring hebt met Logic apps, kunt u leren [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="add-sliding-window-trigger"></a>Trigger voor schuifvenster toevoegen
+## <a name="add-sliding-window-trigger"></a>Verschuivings venster trigger toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
-1. Nadat Logic App Designer is weergegeven, voert u in het zoekvak 'schuifvenster' in als filter. Selecteer deze trigger in de lijst triggers als de eerste stap in de werkstroom van uw logische app: **Schuifvenster**
+1. Wanneer Logic app Designer wordt weer gegeven, voert u in het zoekvak ' sliding window ' in als uw filter. Selecteer in de lijst triggers deze trigger als de eerste stap in de werk stroom van de logische app: **Schuif venster**
 
-   ![De trigger 'Schuifvenster' selecteren](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
+   ![Selecteer de trigger voor het schuivende venster](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
-1. Stel het interval en de frequentie voor het terugkeerpatroon in. Stel in dit voorbeeld deze eigenschappen in om uw werkstroom elke week uit te voeren.
+1. Stel het interval en de frequentie voor het terugkeerpatroon in. In dit voor beeld stelt u deze eigenschappen in om elke week uw werk stroom uit te voeren.
 
    ![Interval en frequentie instellen](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
    | Eigenschap | Vereist | JSON-naam | Type | Beschrijving |
    |----------|----------|-----------|------|-------------|
-   | **Interval** | Ja | interval | Geheel getal | Een positief geheel getal dat beschrijft hoe vaak de werkstroom wordt uitgevoerd op basis van de frequentie. Hier zijn de minimale en maximale intervallen: <p>- Uur: 1-12.000 uur </br>- Minuut: 1-72.000 minuten </br>- Tweede: 1-9.999.999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie 'Uur' is, is de herhaling om de 6 uur. |
-   | **Frequentie** | Ja | frequency | Tekenreeks | De tijdseenheid voor de herhaling: **Tweede,** **Minuut**of **Uur** |
+   | **Bereik** | Ja | interval | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie is ' uur ', is het terugkeer patroon elke 6 uur. |
+   | **Frequentie** | Ja | frequency | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **seconde**, **minuut**of **uur** |
    ||||||
 
-   ![Geavanceerde herhalingsopties](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
+   ![Geavanceerde opties voor terugkeer patroon](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   Open de lijst **Nieuwe parameter toevoegen voor** meer herhalingsopties. 
-   Alle opties die u selecteert, worden na selectie op de trigger weergegeven.
+   Open de lijst **nieuwe para meter toevoegen** voor meer terugkeer opties. 
+   De opties die u selecteert, worden weer gegeven op de trigger na selectie.
 
    | Eigenschap | Vereist | JSON-naam | Type | Beschrijving |
    |----------|----------|-----------|------|-------------|
-   | **Vertraging** | Nee | Vertraging | Tekenreeks | De duur om elke herhaling uit te stellen met behulp van de [datumspecificatie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
-   | **Tijdzone** | Nee | timeZone | Tekenreeks | Geldt alleen wanneer u een begintijd opgeeft omdat deze trigger geen [UTC-verschuiving](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijdzone die u wilt toepassen. |
-   | **Begintijd** | Nee | startTime | Tekenreeks | Geef een begindatum en -tijd op in deze indeling: <p>YYYY-MM-DDThh:mm:ss als u een tijdzone selecteert <p>-of- <p>YYYY-MM-DDThh:mm:ssZ als u geen tijdzone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 14:00 uur wilt, geeft u '2017-09-18T14:00:00' op en selecteert u een tijdzone zoals Pacific Standard Time. Of geef '2017-09-18T14:00:00Z' op zonder tijdzone. <p>**Let op:** Deze begintijd moet de [ISO 8601-datumtijdspecificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [utc-datumtijdnotatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)volgen, maar zonder [utc-verschuiving](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijdzone selecteert, moet u de letter 'Z' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de gelijkwaardige [nautische tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de begintijd de eerste gebeurtenis, terwijl voor gevorderde herhalingen de trigger niet eerder dan de begintijd wordt geactiveerd. [*Op welke manieren kan ik de begindatum en -tijd gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Vertraging** | Nee | spoedig | Tekenreeks | De duur voor het uitstellen van elk terugkeer patroon met de [datum tijd specificatie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
+   | **Tijdzone** | Nee | timeZone | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
+   | **Begintijd** | Nee | startTime | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd moet voldoen aan de [ISO 8601-datum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) en-tijd [notatie in UTC-datum/tijd-indeling](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een UTC- [afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor geavanceerde terugkeer patronen de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
-1. Bouw nu uw resterende werkstroom samen met andere acties. Zie [Connectors voor Azure Logic Apps voor](../connectors/apis-list.md)meer acties die u toevoegen.
+1. Bouw nu uw resterende werk stroom met andere acties. Zie [Connect oren voor Azure Logic apps](../connectors/apis-list.md)voor meer acties die u kunt toevoegen.
 
-## <a name="workflow-definition---sliding-window"></a>Werkstroomdefinitie - Schuifvenster
+## <a name="workflow-definition---sliding-window"></a>Werk stroom definitie-schuif venster
 
-In de onderliggende werkstroomdefinitie van uw logische app, die JSON gebruikt, u de triggerdefinitie schuifvenster bekijken met de opties die u hebt gekozen. Als u deze definitie wilt weergeven, kiest u op de werkbalk Code de optie **Codeweergave**. Als u wilt terugkeren naar de ontwerper, kiest u op de werkbalk **designer, Designer**.
+In de definitie van de onderliggende werk stroom van uw logische app, die gebruikmaakt van JSON, kunt u de verschuivings venster trigger definitie weer geven met de opties die u hebt gekozen. Als u deze definitie wilt bekijken, kiest u in de werk balk ontwerpen de optie **code weergave**. Als u wilt terugkeren naar de ontwerp functie, kiest u op de werk balk ontwerpen en **Designer**.
 
-In dit voorbeeld ziet u hoe een triggerdefinitie voor schuifvenster eruit kan zien in een onderliggende werkstroomdefinitie waarbij de vertraging voor elke herhaling vijf seconden bedraagt voor een herhaling per uur:
+Dit voor beeld laat zien hoe een verschuivende definitie van een venster trigger kan zoeken in een onderliggende werk stroom definitie waarbij de vertraging voor elk terugkeer patroon vijf seconden is voor een terugkeer patroon van elk uur:
 
 ``` json
 "triggers": {
@@ -95,5 +95,5 @@ In dit voorbeeld ziet u hoe een triggerdefinitie voor schuifvenster eruit kan zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De volgende actie in werkstromen uitstellen](../connectors/connectors-native-delay.md)
+* [De volgende actie in werk stromen vertragen](../connectors/connectors-native-delay.md)
 * [Connectors voor Logic Apps](../connectors/apis-list.md)

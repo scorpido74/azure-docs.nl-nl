@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met SMTP vanuit Azure Logic Apps
-description: Taken en werkstromen automatiseren die e-mail verzenden via uw SMTP-account (Simple Mail Transfer Protocol) met Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee e-mail via uw SMTP-account (Simple Mail Transfer Protocol) wordt verzonden met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80657005"
 ---
-# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanaf uw SMTP-account met Azure Logic Apps
+# <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
 
-Met Azure Logic Apps en de SMTP-connector (Simple Mail Transfer Protocol) u geautomatiseerde taken en werkstromen maken die e-mail verzenden vanuit uw SMTP-account. U ook andere acties de uitvoer van SMTP-acties laten gebruiken. Nadat uw SMTP bijvoorbeeld een e-mail heeft gestuurd, u uw team in Slack op de hoogte stellen met de Slack-connector. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u geautomatiseerde taken en werk stromen maken waarmee e-mail berichten worden verzonden vanuit uw SMTP-account. U kunt ook andere acties uitvoeren met de uitvoer van SMTP-acties. Nadat uw SMTP bijvoorbeeld een e-mail heeft verzonden, kunt u uw team in de toegestane vertraging melden met de uitzonderings connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw SMTP-account en gebruikersreferenties
+* Uw SMTP-account en gebruikers referenties
 
-  Uw referenties geven toestemming voor uw logische app om een verbinding te maken en toegang te krijgen tot uw SMTP-account.
+  Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw SMTP-account.
 
-* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang wilt hebben tot uw SMTP-account. Als u een SMTP-actie wilt gebruiken, start u uw logica-app met een trigger, zoals een Salesforce-trigger, als u een Salesforce-account hebt.
+* De logische app waartoe u toegang wilt krijgen tot uw SMTP-account. Als u een SMTP-actie wilt gebruiken, start u uw logische app met een trigger, zoals een Sales Force-trigger, als u een Sales Force-account hebt.
 
-  U uw logische app bijvoorbeeld starten met de **Salesforce-trigger wanneer een record is gemaakt.** 
-  Deze trigger vuurt elke keer dat een nieuwe record, zoals een lead, wordt gemaakt in Salesforce. 
-  U deze trigger vervolgens volgen met de actie SMTP **Send Email.** Op die manier stuurt uw logische app een e-mail van uw SMTP-account over de nieuwe record wanneer de nieuwe record wordt gemaakt.
+  U kunt bijvoorbeeld uw logische app starten met de trigger **Wanneer een record wordt gemaakt** Sales Force. 
+  Deze trigger wordt geactiveerd elke keer dat een nieuwe record, zoals een lead, wordt gemaakt in Sales Force. 
+  U kunt deze trigger vervolgens volgen met de actie SMTP- **e-mail verzenden** . Op die manier verzendt de logische app een e-mail van uw SMTP-account over de nieuwe record wanneer de nieuwe record wordt gemaakt.
 
 ## <a name="connect-to-smtp"></a>Verbinding maken met SMTP
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open uw logische app in Logic App Designer, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Kies Onder de laatste stap waarin u een SMTP-actie wilt toevoegen, de optie **Nieuwe stap**. 
+1. Kies **nieuwe stap**onder de laatste stap waarin u een SMTP-actie wilt toevoegen. 
 
-   Als u een actie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl tussen de stappen. 
-   Kies het plusteken (**+**) dat wordt weergegeven en selecteer Vervolgens Een actie **toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak 'smtp' in als filter. Selecteer onder de lijst met acties de gewenste actie.
+1. Voer in het zoekvak ' SMTP ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-1. Geef desgevraagd de som van deze verbindingsgegevens op:
+1. Wanneer u hierom wordt gevraagd, geeft u de volgende verbindings gegevens op:
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Verbindingsnaam** | Ja | Een naam voor de verbinding met uw SMTP-server | 
-   | **SMTP-serveradres** | Ja | Het adres voor uw SMTP-server | 
-   | **Gebruikersnaam** | Ja | Uw gebruikersnaam voor uw SMTP-account | 
-   | **Wachtwoord** | Ja | Uw wachtwoord voor uw SMTP-account | 
-   | **SMTP-serverpoort** | Nee | Een specifieke poort op uw SMTP-server die u wilt gebruiken | 
-   | **SSL inschakelen?** | Nee | TLS/SSL-versleuteling in- of uitschakelen. | 
+   | **Verbindings naam** | Ja | Een naam voor de verbinding met de SMTP-server | 
+   | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
+   | **Gebruikers naam** | Ja | Uw gebruikers naam voor uw SMTP-account | 
+   | **Wachtwoord** | Ja | Uw wacht woord voor uw SMTP-account | 
+   | **SMTP-server poort** | Nee | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
+   | **SSL inschakelen?** | Nee | Schakel TLS/SSL-versleuteling in of uit. | 
    |||| 
 
-1. Geef de benodigde details op voor uw geselecteerde actie. 
+1. Geef de benodigde gegevens op voor de geselecteerde actie. 
 
-1. Sla uw logische app op of bouw de werkstroom van uw logische app verder.
+1. Sla de logische app op of ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentiepagina van](https://docs.microsoft.com/connectors/smtpconnector/)de connector voor meer technische details over deze connector, zoals triggers, acties en limieten zoals beschreven in het Swagger-bestand van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/smtpconnector/).
 
 > [!NOTE]
-> Voor logische apps in een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)gebruikt de ISE-versie met HET LABEL ISE in plaats daarvan de [ISE-berichtlimieten.](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

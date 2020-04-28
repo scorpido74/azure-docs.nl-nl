@@ -1,33 +1,33 @@
 ---
-title: Werken met tekenreeksen in azure monitor-logboekquery's | Microsoft Documenten
-description: Beschrijft hoe u een groot aantal andere bewerkingen op tekenreeksen in Azure Monitor-logboekquery's bewerken, vergelijken, zoeken en uitvoeren.
+title: Werken met teken reeksen in Azure Monitor-logboek query's | Microsoft Docs
+description: Hierin wordt beschreven hoe u een aantal andere bewerkingen voor teken reeksen in Azure Monitor-logboek query's bewerkt, vergelijkt, doorzoekt en uitvoert.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397475"
 ---
-# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Werken met tekenreeksen in azure monitor-logboekquery's
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Werken met teken reeksen in Azure Monitor-logboek query's
 
 
 > [!NOTE]
-> U moet aan [de slag gaan met Azure Monitor Log Analytics](get-started-portal.md) en Aan de slag met Azure [Monitor-logboekquery's](get-started-queries.md) voordat u deze zelfstudie voltooit.
+> U moet aan de [slag met Azure Monitor Log Analytics om](get-started-portal.md) aan de slag te gaan [met Azure monitor-logboek query's](get-started-queries.md) voordat u deze zelf studie voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In dit artikel wordt beschreven hoe u een verscheidenheid aan andere bewerkingen op tekenreeksen bewerken, vergelijken, zoeken en uitvoeren.
+In dit artikel wordt beschreven hoe u een aantal andere bewerkingen op teken reeksen kunt bewerken, vergelijken, zoeken en uitvoeren.
 
-Elk teken in een tekenreeks heeft een indexnummer, afhankelijk van de locatie. Het eerste teken is op index 0, het volgende teken is 1, enzovoort. Verschillende tekenreeksfuncties gebruiken indexnummers zoals weergegeven in de volgende secties. Veel van de volgende voorbeelden gebruiken de **afdrukopdracht** om tekenreeksmanipulatie aan te tonen zonder een specifieke gegevensbron te gebruiken.
+Elk teken in een teken reeks heeft een index nummer, afhankelijk van de locatie. Het eerste teken is bij index 0, het volgende teken is 1, enzovoort. Met verschillende teken reeks functies worden index nummers gebruikt, zoals wordt weer gegeven in de volgende secties. In veel van de volgende voor beelden wordt de opdracht **afdrukken** gebruikt voor het demonstreren van teken reeks manipulatie zonder een specifieke gegevens bron te gebruiken.
 
 
-## <a name="strings-and-escaping-them"></a>Strijkers en ontsnappen ze
-Tekenreekswaarden zijn verpakt met enkele of dubbele aanhalingstekens. Backslash\\( ) wordt gebruikt om te ontsnappen aan tekens aan het teken na \" het, zoals \t voor tabblad, \n voor newline, en het citaat teken zelf.
+## <a name="strings-and-escaping-them"></a>Teken reeksen en Escapes
+Teken reeks waarden worden verpakt met één of dubbele aanhalings tekens. Back slash\\() wordt gebruikt om tekens naar het volgende teken te escapen, zoals \t voor Tab, \n voor nieuwe regel \" en het aanhalings teken zelf.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -37,71 +37,71 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Om te\\voorkomen dat " als een\@ontsnappingsteken fungeert, voeg " als voorvoegsel toe aan de tekenreeks:
+Als u wilt\\voor komen dat "" als escape teken fungeert,\@voegt u "" toe als voor voegsel voor de teken reeks:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
 
-## <a name="string-comparisons"></a>Tekenreeksvergelijkingen
+## <a name="string-comparisons"></a>Teken reeks vergelijkingen
 
-Operator       |Beschrijving                         |Hoofdlettergevoelig|Voorbeeld (opbrengsten `true`)
+Operator       |Beschrijving                         |Hoofdletter gevoelig|Voor beeld (opbrengst `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Is gelijk aan                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Niet gelijk aan                          |Ja           |`"abc" != "ABC"`
 `=~`           |Is gelijk aan                              |Nee            |`"abc" =~ "ABC"`
 `!~`           |Niet gelijk aan                          |Nee            |`"aBc" !~ "xyz"`
-`has`          |Rechts is een hele term in de linker-side |Nee|`"North America" has "america"`
-`!has`         |Rechts is geen volledige term aan de linkerkant       |Nee            |`"North America" !has "amer"` 
-`has_cs`       |Rechts is een hele term in de linker-side |Ja|`"North America" has_cs "America"`
-`!has_cs`      |Rechts is geen volledige term aan de linkerkant       |Ja            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Rechts is een term voorvoegsel aan de linkerkant         |Nee            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Rechts is geen term voorvoegsel aan de linkerkant     |Nee            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Rechts is een term voorvoegsel aan de linkerkant         |Ja            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Rechts is geen term voorvoegsel aan de linkerkant     |Ja            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Rechts is een term achtervoegsel in de linker-side         |Nee            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Rechts is geen term achtervoegsel in de linkerzijde     |Nee            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Rechts is een term achtervoegsel in de linker-side         |Ja            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Rechts is geen term achtervoegsel in de linkerzijde     |Ja            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Rechts treedt op als een subsequentie van de linkerzijde  |Nee            |`"FabriKam" contains "BRik"`
-`!contains`    |Rechts komt niet voor in de linkerzijde           |Nee            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Rechts treedt op als een subsequentie van de linkerzijde  |Ja           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Rechts komt niet voor in de linkerzijde           |Ja           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Rechts is een eerste subsequentie van de linkerzijde|Nee            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Rechts is geen eerste subsequentie van de linkerkant|Nee        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Rechts is een eerste subsequentie van de linkerzijde|Ja            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Rechts is geen eerste subsequentie van de linkerkant|Ja        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Rechts is een afsluitende subsequentie van de linkerzijde|Nee             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Rechts is geen afsluitende subsequentie van de linkerkant|Nee         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Rechts is een afsluitende subsequentie van de linkerzijde|Ja             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Rechts is geen afsluitende subsequentie van de linkerkant|Ja         |`"Fabrikam" !endswith "brik"`
-`matches regex`|links bevat een overeenkomst voor rechts        |Ja           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Gelijk aan een van de elementen       |Ja           |`"abc" in ("123", "345", "abc")`
-`!in`          |Niet gelijk aan een van de elementen   |Ja           |`"bca" !in ("123", "345", "abc")`
+`has`          |Aan de rechter kant is een hele term aan de linkerkant |Nee|`"North America" has "america"`
+`!has`         |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Nee            |`"North America" !has "amer"` 
+`has_cs`       |Aan de rechter kant is een hele term aan de linkerkant |Ja|`"North America" has_cs "America"`
+`!has_cs`      |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Ja            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |Nee            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |Nee            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |Ja            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |Ja            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |Nee            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |Nee            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |Ja            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |Ja            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Aan de rechter kant vindt u een subreeks van links  |Nee            |`"FabriKam" contains "BRik"`
+`!contains`    |Aan de rechter kant komt niet aan de linkerkant           |Nee            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Aan de rechter kant vindt u een subreeks van links  |Ja           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Aan de rechter kant komt niet aan de linkerkant           |Ja           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|Nee            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Nee        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|Ja            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Ja        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Nee             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Nee         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Ja             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Ja         |`"Fabrikam" !endswith "brik"`
+`matches regex`|links van de rechter kant bevat een overeenkomst voor rechts        |Ja           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Is gelijk aan een van de elementen       |Ja           |`"abc" in ("123", "345", "abc")`
+`!in`          |Is niet gelijk aan een van de elementen   |Ja           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
 
-Hiermee worden gebeurtenissen van een subtekenreeks in een tekenreeks geteld. Kan overeenkomen met gewone tekenreeksen of regex gebruiken. Plain string matches may overlap while regex matches do not.
+Telt het aantal exemplaren van een subtekenreeks in een teken reeks. Kan teken reeksen overeenkomen of regex gebruiken. Niet-overeenkomende teken reeks overeenkomsten kunnen overlappen terwijl regex-overeenkomsten niet zijn toegestaan.
 
 ### <a name="syntax"></a>Syntaxis
 ```
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Argumenten:
-- `text`- De invoertekenreeks 
-- `search`- Effen tekenreeks of reguliere expressie die overeenkomt met de tekst.
+### <a name="arguments"></a>Opmerkingen
+- `text`-De invoer teken reeks 
+- `search`-Teken reeks of reguliere expressie die in tekst moet worden gezocht.
 - `kind` - _normale_ | _regex_ (standaard: normaal).
 
 ### <a name="returns"></a>Retourneert
 
-Het aantal keren dat de zoektekenreeks kan worden gekoppeld in de container. Plain string matches may overlap while regex matches do not.
+Het aantal keren dat de zoek teken reeks in de container kan worden gevonden. Niet-overeenkomende teken reeks overeenkomsten kunnen overlappen terwijl regex-overeenkomsten niet zijn toegestaan.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="plain-string-matches"></a>Effen tekenreeksovereenkomsten
+#### <a name="plain-string-matches"></a>Teken reeks overeenkomsten zonder opmaak
 
 ```Kusto
 print countof("The cat sat on the mat", "at");  //result: 3
@@ -111,7 +111,7 @@ print countof("ababa", "ab", "normal");  //result: 2
 print countof("ababa", "aba");  //result: 2
 ```
 
-#### <a name="regex-matches"></a>Regex komt overeen
+#### <a name="regex-matches"></a>Regex-overeenkomsten
 
 ```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
@@ -120,9 +120,9 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 ```
 
 
-## <a name="extract"></a>Extract
+## <a name="extract"></a>daaruit
 
-Krijgt een overeenkomst voor een reguliere expressie van een bepaalde tekenreeks. Optioneel wordt de geëxtraheerde subtekenreeks ook omgezet naar het opgegeven type.
+Hiermee wordt een overeenkomst opgehaald voor een reguliere expressie van een opgegeven teken reeks. Hiermee wordt ook de geëxtraheerde subtekenreeks geconverteerd naar het opgegeven type.
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -132,18 +132,18 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenten
 
-- `regex`- Een regelmatige uitdrukking.
-- `captureGroup`- Een positieve gehele constante die de te extraheren afvanggroep aangeeft. 0 voor de gehele wedstrijd, 1 voor de waarde die wordt geëvenaard door de eerste '('haakjes')' in de reguliere expressie, 2 of meer voor volgende haakjes.
-- `text`- Een string om te zoeken.
-- `typeLiteral`- Een optioneel type letterlijk (bijvoorbeeld type(lang)). Indien aanwezig, wordt de geëxtraheerde subtekenreeks omgezet in dit type.
+- `regex`-Een reguliere expressie.
+- `captureGroup`-Een positieve gehele getallen constante die aangeeft welke opname groep moet worden geëxtraheerd. 0 voor de volledige overeenkomst, 1 voor de waarde die overeenkomt met het eerste ' (' haakje ') ' in de reguliere expressie, 2 of meer voor de volgende haakjes.
+- `text`-Een teken reeks die moet worden gezocht.
+- `typeLiteral`-Een optioneel type letterlijke waarde (bijvoorbeeld typeof (Long)). Als deze wordt vermeld, wordt de geëxtraheerde subtekenreeks geconverteerd naar dit type.
 
 ### <a name="returns"></a>Retourneert
-De substring komt overeen met de aangegeven capture group captureGroup, optioneel geconverteerd naar typeLiteral.
-Als er geen overeenkomst is of als de typeconversie mislukt, geeft u null terug.
+De subtekenreeks die overeenkomt met de aangegeven captureGroup van de opname groep, optioneel geconverteerd naar typeLiteral.
+Als er geen overeenkomst is, of als het type conversie mislukt, retourneert u null.
 
 ### <a name="examples"></a>Voorbeelden
 
-In het volgende voorbeeld wordt het laatste octet van *ComputerIP* uit een hartslagrecord gehaald:
+In het volgende voor beeld wordt het laatste octet van *ComputerIP* geëxtraheerd uit een heartbeat-record:
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -151,7 +151,7 @@ Heartbeat
 | project ComputerIP, last_octet=extract("([0-9]*$)", 1, ComputerIP) 
 ```
 
-In het volgende voorbeeld wordt het laatste octet geëxtraheerd, naar een *echt* type (getal) gegoten en wordt de volgende IP-waarde berekend
+In het volgende voor beeld wordt het laatste octet geëxtraheerd, wordt dit geconverteerd naar een *echt* type (getal) en wordt de volgende IP-waarde berekend:
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -161,7 +161,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-In het onderstaande voorbeeld *wordt* gezocht naar een definitie van 'Duur'. De wedstrijd wordt gegoten naar *echt* en vermenigvuldigd met een tijdconstante (1 s) *die Duur werpt om tijdspanne te typen.*
+In het onderstaande voor beeld zoekt de teken reeks *tracering* naar een definitie van ' duration '. De overeenkomst wordt in *werkelijkheid* geconverteerd en vermenigvuldigd met een tijd constante (1 s) *die de duur van het type time-out overgeeft*.
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -169,10 +169,10 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ```
 
 
-## <a name="isempty-isnotempty-notempty"></a>isleeg, isnotleeg, niet leeg
+## <a name="isempty-isnotempty-notempty"></a>IsEmpty, isnotempty, geneigd
 
-- *isempty* retourneert waar als het argument een lege tekenreeks of null is (zie ook *isnull*).
-- *isnotempty* retourneert waar als het argument geen lege tekenreeks of een null is (zie ook *isnotnull*). alias: *niet leeg*.
+- *IsEmpty* retourneert True als het argument een lege teken reeks of null is (Zie ook *IsNull*).
+- *isnotempty* retourneert ' True ' als het argument geen lege teken reeks of null is (Zie ook *isnotnull*). alias: de *neiging*.
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -198,7 +198,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 ## <a name="parseurl"></a>parseurl
 
-Splitst een URL op in de onderdelen (protocol, host, poort, enz.) en retourneert een woordenboekobject met de onderdelen als tekenreeksen.
+Hiermee wordt een URL gesplitst in de onderdelen (protocol, host, poort enzovoort) en wordt een Dictionary-object geretourneerd dat de onderdelen als teken reeksen bevat.
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -212,7 +212,7 @@ parseurl(urlstring)
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
-Het resultaat zal zijn:
+De uitkomst is:
 ```
 {
     "Scheme" : "http",
@@ -229,7 +229,7 @@ Het resultaat zal zijn:
 
 ## <a name="replace"></a>vervangen
 
-Hiermee vervangt u alle regex-overeenkomsten door een andere tekenreeks. 
+Vervangt alle regex-overeenkomsten met een andere teken reeks. 
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -239,12 +239,12 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenten
 
-- `regex`- De reguliere uitdrukking aan te passen door. Het kan vanggroepen bevatten in '('haakjes')'.
-- `rewrite`- De vervangende regex voor elke wedstrijd gemaakt door matching regex. Gebruik \0 om te verwijzen naar de hele match, \1 voor de eerste groep vastleggen, \2, enzovoort voor volgende groep van vastleggen.
-- `input_text`- De invoertekenreeks om in te zoeken.
+- `regex`-De reguliere expressie die moet worden vergeleken met. Het kan opname groepen bevatten in ' (' haakjes ') '.
+- `rewrite`-De vervangende regex voor een overeenkomst die is gemaakt door de overeenkomende regex. Gebruik \ 0 om te verwijzen naar de volledige overeenkomst, \ 1 voor de eerste vastleg groep, \ 2, enzovoort voor volgende opname groepen.
+- `input_text`-De invoer teken reeks waarnaar moet worden gezocht.
 
 ### <a name="returns"></a>Retourneert
-De tekst na het vervangen van alle wedstrijden van regex met evaluaties van herschrijven. Overeenkomsten overlappen elkaar niet.
+De tekst na het vervangen van alle treffers van regex met evaluaties van herschrijven. Overeenkomsten overlappen elkaar niet.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -257,25 +257,25 @@ SecurityEvent
 
 Kan de volgende resultaten hebben:
 
-Activiteit                                        |Vervangen
+Activiteit                                        |Geplaatst
 ------------------------------------------------|----------------------------------------------------------
-4663 - Er is geprobeerd toegang te krijgen tot een object  |Activiteits-ID 4663: er is geprobeerd toegang te krijgen tot een object.
+4663-er is geprobeerd om toegang te krijgen tot een object  |Activiteits-ID 4663: er is geprobeerd om toegang te krijgen tot een object.
 
 
 ## <a name="split"></a>split
 
-Splitst een bepaalde tekenreeks op basis van een opgegeven scheidingsteken en retourneert een array van de resulterende subtekenreeksen.
+Splitst een opgegeven teken reeks volgens een opgegeven scheidings teken en retourneert een matrix van de resulterende subtekenreeksen.
 
 ### <a name="syntax"></a>Syntaxis
 ```
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Argumenten:
+### <a name="arguments"></a>Opmerkingen
 
-- `source`- De tekenreeks die moet worden gesplitst volgens de opgegeven scheidingsteken.
-- `delimiter`- De scheidingsteken die wordt gebruikt om de brontekenreeks te splitsen.
-- `requestedIndex`- Een optionele nul-gebaseerde index. Indien aanwezig, houdt de geretourneerde tekenreeksarray alleen dat item vast (als dit bestaat).
+- `source`-De teken reeks die moet worden gesplitst op basis van het opgegeven scheidings teken.
+- `delimiter`-Het scheidings teken dat wordt gebruikt om de bron teken reeks te splitsen.
+- `requestedIndex`-Een optionele op nul gebaseerde index. Indien opgegeven, bevat de geretourneerde teken reeks matrix alleen dat item (indien aanwezig).
 
 
 ### <a name="examples"></a>Voorbeelden
@@ -289,9 +289,9 @@ print split("a__b", "_");           // result: ["a","","b"]
 print split("aabbcc", "bb");        // result: ["aa","cc"]
 ```
 
-## <a name="strcat"></a>strcat strcat
+## <a name="strcat"></a>strcat
 
-Hiermee worden tekenreeksargumenten samengevoegd (ondersteunt 1-16 argumenten).
+Voegt teken reeks argumenten samen (ondersteunt 1-16-argumenten).
 
 ### <a name="syntax"></a>Syntaxis
 ```
@@ -304,9 +304,9 @@ print strcat("hello", " ", "world") // result: "hello world"
 ```
 
 
-## <a name="strlen"></a>strlen strlen
+## <a name="strlen"></a>strlen
 
-Geeft als resultaat de lengte van een tekenreeks.
+Retourneert de lengte van een teken reeks.
 
 ### <a name="syntax"></a>Syntaxis
 ```
@@ -319,20 +319,20 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>Subtekenreeks
+## <a name="substring"></a>subtekenreeks
 
-Haalt een subtekenreeks uit een bepaalde brontekenreeks, te beginnen bij de opgegeven index. Optioneel kan de lengte van de gevraagde subtekenreeks worden opgegeven.
+Hiermee wordt een subtekenreeks geëxtraheerd uit een bepaalde bron teken reeks, beginnend bij de opgegeven index. Optioneel: de lengte van de aangevraagde subtekenreeks kan worden opgegeven.
 
 ### <a name="syntax"></a>Syntaxis
 ```
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Argumenten:
+### <a name="arguments"></a>Opmerkingen
 
-- `source`- De brontekenreeks waaruit de subtekenreeks wordt genomen.
-- `startingIndex`- De nulgebaseerde starttekenpositie van de gevraagde subtekenreeks.
-- `length`- Een optionele parameter die kan worden gebruikt om de gevraagde lengte van de geretourneerde subtekenreeks op te geven.
+- `source`-De bron teken reeks waaruit de subtekenreeks wordt opgehaald.
+- `startingIndex`-De begin positie op basis van nul van de aangevraagde subtekenreeks.
+- `length`-Een optionele para meter die kan worden gebruikt om de aangevraagde lengte van de geretourneerde subtekenreeks op te geven.
 
 ### <a name="examples"></a>Voorbeelden
 ```Kusto
@@ -345,7 +345,7 @@ print substring("ABCD", 0, 2);  // result: "AB"
 
 ## <a name="tolower-toupper"></a>tolower, toupper
 
-Hiermee converteert u een bepaalde tekenreeks naar alle onderste of hoofdletters.
+Converteert een opgegeven teken reeks naar een kleine letter of een hoofd letters.
 
 ### <a name="syntax"></a>Syntaxis
 ```
@@ -362,10 +362,10 @@ print toupper("hello"); // result: "HELLO"
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Ga verder met de geavanceerde tutorials:
+Ga door met de geavanceerde zelf studies:
 * [Aggregatiefuncties](aggregations.md)
 * [Geavanceerde aggregaties](advanced-aggregations.md)
 * [Grafieken en diagrammen](charts.md)
-* [Werken met JSON en datastructuren](json-data-structures.md)
+* [Werken met JSON en gegevens structuren](json-data-structures.md)
 * [Geavanceerde query's schrijven](advanced-query-writing.md)
-* [Joins - cross-analyse](joins.md)
+* [Samen voegingen-cross-analyse](joins.md)

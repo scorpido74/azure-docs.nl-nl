@@ -1,7 +1,7 @@
 ---
-title: SSO configureren op macOS en iOS
+title: Eenmalige aanmelding configureren in macOS en iOS
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het configureren van één aanmelding (SSO) op macOS en iOS.
+description: Meer informatie over het configureren van eenmalige aanmelding (SSO) in macOS en iOS.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881245"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>How to: SSO configureren op macOS en iOS
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: SSO configureren in macOS en iOS
 
-De Microsoft Authentication Library (MSAL) voor macOS en iOS ondersteunt Single Sign-on (SSO) tussen macOS/iOS-apps en browsers. In dit artikel worden de volgende SSO-scenario's bewerk:
+De micro soft Authentication Library (MSAL) voor macOS en iOS ondersteunt eenmalige aanmelding (SSO) tussen macOS/iOS-apps en-browsers. In dit artikel worden de volgende SSO-scenario's behandeld:
 
 - [Stille SSO tussen meerdere apps](#silent-sso-between-apps)
 
-Dit type SSO werkt tussen meerdere apps die door dezelfde Apple Developer worden gedistribueerd. Het biedt stille SSO (dat wil zeggen, de gebruiker wordt niet gevraagd om referenties) door het lezen van refresh tokens geschreven door andere apps uit de sleutelhanger, en ze in stilte te ruilen voor toegangstokens.  
+Dit type SSO werkt tussen meerdere apps die door dezelfde Apple-ontwikkelaar worden gedistribueerd. Het biedt Silent SSO (dat wil zeggen, de gebruiker wordt niet gevraagd om referenties) door vernieuwings tokens te lezen die zijn geschreven door andere apps uit de sleutel hanger, en ze te wisselen voor toegangs tokens op de achtergrond.  
 
-- [SSO via verificatiemakelaar](#sso-through-authentication-broker-on-ios)
+- [SSO via verificatie Broker](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
-> Deze flow is niet beschikbaar op macOS.
+> Deze stroom is niet beschikbaar in macOS.
 
-Microsoft biedt apps, zogenaamde brokers, waarmee SSO tussen toepassingen van verschillende leveranciers mogelijk is, zolang het mobiele apparaat is geregistreerd bij Azure Active Directory (AAD). Dit type SSO vereist een broker-toepassing die op het apparaat van de gebruiker wordt geïnstalleerd.
+Micro soft biedt apps, die Brokers worden genoemd, die SSO mogelijk maken tussen toepassingen van verschillende leveranciers zolang het mobiele apparaat is geregistreerd met Azure Active Directory (AAD). Voor dit type SSO moet een Broker-toepassing worden geïnstalleerd op het apparaat van de gebruiker.
 
 - **SSO tussen MSAL en Safari**
 
-SSO wordt bereikt via de [klasse ASWebAuthenticationSession.](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) Het maakt gebruik van bestaande aanmeldingsstatus van andere apps en de Safari-browser. Het is niet beperkt tot apps die door dezelfde Apple Developer worden gedistribueerd, maar het vereist enige interactie van de gebruiker.
+SSO wordt bereikt via de [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) -klasse. Er wordt een bestaande aanmeldings status van andere apps en de Safari-browser gebruikt. Het is niet beperkt tot apps die worden gedistribueerd door dezelfde Apple-ontwikkelaar, maar hiervoor is wel een interactie van de gebruiker vereist.
 
-Als u de standaardwebweergave in uw app gebruikt om gebruikers aan te melden, krijgt u automatische SSO tussen MSAL-gebaseerde toepassingen en Safari. Ga naar [Browsers en WebViews aanpassen voor](customize-webviews.md)meer informatie over de webweergaven die MSAL ondersteunt.
+Als u de standaard webweergave in uw app gebruikt om gebruikers aan te melden, ontvangt u automatische SSO tussen MSAL toepassingen en Safari. Ga voor meer informatie over de webweergaven die MSAL ondersteunt naar [Customize browsers and Webviews](customize-webviews.md).
 
 > [!IMPORTANT]
-> Dit type SSO is momenteel niet beschikbaar op macOS. MSAL op macOS ondersteunt alleen WKWebView, dat geen SSO-ondersteuning heeft met Safari. 
+> Dit type SSO is momenteel niet beschikbaar in macOS. MSAL in macOS ondersteunt alleen WKWebView die geen SSO-ondersteuning met Safari hebben. 
 
-- **Stille SSO tussen ADAL en MSAL macOS/iOS apps**
+- **Stille SSO tussen ADAL en MSAL macOS/iOS-apps**
 
-MSAL Objective-C ondersteunt migratie en SSO met ADAL Objective-C-gebaseerde apps. De apps moeten worden gedistribueerd door dezelfde Apple Developer.
+MSAL doelstelling-C ondersteunt migratie en eenmalige aanmelding met ADAL-toepassingen op basis van het doel C. De apps moeten worden gedistribueerd door dezelfde Apple-ontwikkelaar.
 
-Zie [SSO tussen ADAL- en MSAL-apps op macOS en iOS](sso-between-adal-msal-apps-macos-ios.md) voor instructies voor cross-app SSO tussen ADAL- en MSAL-gebaseerde apps.
+Zie [SSO tussen ADAL-en MSAL-apps in macOS en IOS](sso-between-adal-msal-apps-macos-ios.md) voor instructies voor de cross-app-SSO tussen ADAL-en MSAL-apps.
 
 ## <a name="silent-sso-between-apps"></a>Stille SSO tussen apps
 
-MSAL ondersteunt SSO-delen via iOS-sleutelhangertoegangsgroepen.
+MSAL biedt ondersteuning voor het delen van SSO via iOS-toegangs groepen voor sleutel hanger.
 
-Als u SSO voor uw toepassingen wilt inschakelen, moet u de volgende stappen uitvoeren, die hieronder nader worden uitgelegd:
+Als u SSO in uw toepassingen wilt inschakelen, moet u de volgende stappen uitvoeren, die in meer detail worden beschreven:
 
-1. Zorg ervoor dat al uw toepassingen dezelfde client-id of toepassings-id gebruiken.
-1. Zorg ervoor dat al uw toepassingen hetzelfde ondertekeningscertificaat van Apple delen, zodat u sleutelhangers delen.
-1. Vraag voor elk van uw toepassingen hetzelfde sleutelketenrecht aan.
-1. Vertel de MSAL SDKs over de gedeelde sleutelhanger die u wilt dat we gebruiken als deze anders is dan de standaardketen.
+1. Zorg ervoor dat alle toepassingen dezelfde client-ID of toepassings-ID gebruiken.
+1. Zorg ervoor dat alle toepassingen hetzelfde handtekening certificaat van Apple delen, zodat u de sleutel ketens kunt delen.
+1. Vraag hetzelfde sleutel hanger aan voor elk van uw toepassingen.
+1. Vertel de MSAL-Sdk's over de gedeelde sleutel hanger die u door ons wilt laten gebruiken als deze verschilt van de standaard versie.
 
-### <a name="use-the-same-client-id-and-application-id"></a>Dezelfde client-id en toepassings-id gebruiken
+### <a name="use-the-same-client-id-and-application-id"></a>Dezelfde client-ID en toepassings-ID gebruiken
 
-Als het Microsoft-identiteitsplatform wil weten welke toepassingen tokens kunnen delen, moeten deze toepassingen dezelfde client-id of toepassings-id delen. Dit is de unieke id die u werd verstrekt toen u uw eerste toepassing in de portal registreerde.
+Voor het micro soft Identity-platform om te weten welke toepassingen tokens kunnen delen, moeten die toepassingen dezelfde client-ID of toepassings-ID delen. Dit is de unieke id die aan u is gegeven tijdens het registreren van uw eerste toepassing in de portal.
 
-De manier waarop het Microsoft-identiteitsplatform apps vertelt die dezelfde toepassings-id apart gebruiken, is door hun **Omleidings-URI's.** Elke toepassing kan meerdere Omleidings-URI's hebben die zijn geregistreerd in de onboarding-portal. Elke app in uw suite heeft een andere omleiding URI. Bijvoorbeeld:
+De manier waarop het micro soft Identity-platform voor apps die gebruikmaken van dezelfde toepassings-ID, wordt door de **omleidings-uri's**verteld. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Bijvoorbeeld:
 
-App1 Redirect URI:`msauth.com.contoso.mytestapp1://auth`  
-App2 Redirect URI:`msauth.com.contoso.mytestapp2://auth`  
-App3 Redirect URI:`msauth.com.contoso.mytestapp3://auth`  
+App1 omleidings-URI:`msauth.com.contoso.mytestapp1://auth`  
+App2 omleidings-URI:`msauth.com.contoso.mytestapp2://auth`  
+App3 omleidings-URI:`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Het formaat van omleidingsuris moet compatibel zijn met het formaat dat MSAL ondersteunt, dat is gedocumenteerd in [MSAL Redirect URI-formaatvereisten](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
+> De indeling van omleidings-uri's moet compatibel zijn met de indeling MSAL ondersteunt, die wordt beschreven in de [vereisten voor MSAL omleidings-URI-indeling](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
 
-### <a name="setup-keychain-sharing-between-applications"></a>Het delen van sleutelhangers instellen tussen toepassingen
+### <a name="setup-keychain-sharing-between-applications"></a>Sleutel hanger delen tussen toepassingen instellen
 
-Raadpleeg het artikel ['Toevoegen van Apple'](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) om het delen van sleutelhangers mogelijk te maken. Wat belangrijk is, is dat u beslist hoe u wilt dat uw sleutelhanger wordt aangeroepen en dat vermogen toevoegt aan al uw toepassingen die betrokken zullen zijn bij SSO.
+Raadpleeg het artikel ' [functies toevoegen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) ' van Apple om het delen van sleutel hanger in te scha kelen. Het is belang rijk dat u bepaalt wat u wilt dat uw sleutel keten wordt aangeroepen en voeg die mogelijkheid toe aan alle toepassingen die bij SSO betrokken zullen worden.
 
-Wanneer u de rechten correct hebt ingesteld, ziet `entitlements.plist` u een bestand in uw projectmap dat iets als dit voorbeeld bevat:
+Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlements.plist` bestand in de projectmap dat iets als dit voor beeld bevat:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -94,21 +94,21 @@ Wanneer u de rechten correct hebt ingesteld, ziet `entitlements.plist` u een bes
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>Een nieuwe sleutelhangergroep toevoegen
+#### <a name="add-a-new-keychain-group"></a>Een nieuwe sleutel keten groep toevoegen
 
-Voeg een nieuwe sleutelhangergroep toe aan uw **projectmogelijkheden.** De sleutelhangergroep moet zijn:
+Voeg een nieuwe sleutel keten groep toe aan de project **mogelijkheden**. De sleutel keten groep moet:
 * `com.microsoft.adalcache`op iOS 
-* `com.microsoft.identity.universalstorage`op macOS.
+* `com.microsoft.identity.universalstorage`in macOS.
 
-![voorbeeld sleutelhanger](media/single-sign-on-macos-ios/keychain-example.png)
+![voor beeld van sleutel hanger](media/single-sign-on-macos-ios/keychain-example.png)
 
-Zie [sleutelhangergroepen voor](howto-v2-keychain-objc.md)meer informatie.
+Zie [sleutel hanger groepen](howto-v2-keychain-objc.md)voor meer informatie.
 
-## <a name="configure-the-application-object"></a>Het toepassingsobject configureren
+## <a name="configure-the-application-object"></a>Het toepassings object configureren
 
-Zodra u het keychain-recht hebt ingeschakeld in elk van uw toepassingen en `MSALPublicClientApplication` u klaar bent om SSO te gebruiken, configureert u met uw sleutelhangertoegangsgroep zoals in het volgende voorbeeld:
+Wanneer u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent voor het gebruik van SSO `MSALPublicClientApplication` , configureert u met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
 NSError *error = nil;
@@ -118,7 +118,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-Swift:
+Swift
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -133,19 +133,19 @@ do {
 ```
 
 > [!WARNING]
-> Wanneer u een sleutelhanger deelt in uw toepassingen, kan elke toepassing gebruikers of zelfs alle tokens in uw toepassing verwijderen.
-> Dit is vooral impactvol als u toepassingen hebt die afhankelijk zijn van tokens om achtergrondwerk te doen.
-> Het delen van een sleutelhanger betekent dat u heel voorzichtig moet zijn wanneer uw app microsoft-identiteitsSDK-verwijderingsbewerkingen gebruikt.
+> Wanneer u een sleutel hanger in uw toepassingen deelt, kan elke toepassing gebruikers of zelfs alle tokens in uw toepassing verwijderen.
+> Dit is vooral van invloed op toepassingen die afhankelijk zijn van tokens om achtergrond taken uit te voeren.
+> Het delen van een sleutel hanger houdt in dat u zeer voorzichtig moet zijn wanneer uw app gebruikmaakt van micro soft Identity SDK Remove-bewerkingen.
 
-Dat is alles. De Microsoft identity SDK deelt nu referenties voor al uw toepassingen. De accountlijst wordt ook gedeeld in toepassingsinstanties.
+Dat is alles. De micro soft Identity SDK zal nu referenties delen in al uw toepassingen. De lijst met accounts wordt ook gedeeld tussen toepassings exemplaren.
 
-## <a name="sso-through-authentication-broker-on-ios"></a>SSO via Authenticatie broker op iOS
+## <a name="sso-through-authentication-broker-on-ios"></a>Eenmalige aanmelding via de verificatie Broker op iOS
 
-MSAL biedt ondersteuning voor gebrokereerde verificatie met Microsoft Authenticator. Microsoft Authenticator biedt SSO voor aad-geregistreerde apparaten en helpt uw toepassing ook bij het volgen van beleid voor voorwaardelijke toegang.
+MSAL biedt ondersteuning voor brokered-verificatie met Microsoft Authenticator. Microsoft Authenticator biedt eenmalige aanmelding voor AAD-geregistreerde apparaten en helpt uw toepassing bij het volgen van beleid voor voorwaardelijke toegang.
 
-De volgende stappen zijn hoe u SSO inschakelt met behulp van een verificatiebroker voor uw app:
+Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van een verificatie Broker voor uw app:
 
-1. Registreer een broker compatibele Redirect URI-indeling voor de toepassing in de Info.plist van uw app. De broker compatibele Redirect `msauth.<app.bundle.id>://auth`URI-indeling is . Vervang '<app.bundle.id>'' door de bundel-ID van uw toepassing. Bijvoorbeeld:
+1. Registreer een Broker-compatibele omleidings-URI-indeling voor de toepassing in de info. plist van uw app. De indeling van de Broker-compatibele `msauth.<app.bundle.id>://auth`omleidings-URI is. Vervang '<app.bundle.id>' ' door de bundel-ID van uw toepassing. Bijvoorbeeld:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +154,7 @@ De volgende stappen zijn hoe u SSO inschakelt met behulp van een verificatiebrok
     </array>
     ```
 
-1. Voeg de volgende schema's toe aan `LSApplicationQueriesSchemes`de Info.plist van uw app onder :
+1. Voeg volgende schema's toe aan de info. plist van uw `LSApplicationQueriesSchemes`app onder:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,9 +164,9 @@ De volgende stappen zijn hoe u SSO inschakelt met behulp van een verificatiebrok
     </array>
     ```
 
-1. Voeg het volgende `AppDelegate.m` toe aan uw bestand om callbacks af te handelen:
+1. Voeg het volgende toe aan `AppDelegate.m` het bestand voor het afhandelen van retour aanroepen:
 
-    Doelstelling-C:
+    Doel-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -175,7 +175,7 @@ De volgende stappen zijn hoe u SSO inschakelt met behulp van een verificatiebrok
     }
     ```
     
-    Swift:
+    Swift
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -183,10 +183,10 @@ De volgende stappen zijn hoe u SSO inschakelt met behulp van een verificatiebrok
     }
     ```
     
-**Als u Xcode 11 gebruikt,** moet u in `SceneDelegate` plaats daarvan MSAL-callback in het bestand plaatsen.
-Als u zowel UISceneDelegate als UIApplicationDelegate ondersteunt voor compatibiliteit met oudere iOS, moet MSAL-terugroepen in beide bestanden worden geplaatst.
+**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-Call `SceneDelegate` back in het bestand plaatsen.
+Als u zowel UISceneDelegate als UIApplicationDelegate voor compatibiliteit met oudere iOS-versies ondersteunt, moet MSAL call back in beide bestanden worden geplaatst.
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
  - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
@@ -199,7 +199,7 @@ Doelstelling-C:
  }
 ```
 
-Swift:
+Swift
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -217,4 +217,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [verificatiestromen en toepassingsscenario's](authentication-flows-app-scenarios.md)
+Meer informatie over [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)

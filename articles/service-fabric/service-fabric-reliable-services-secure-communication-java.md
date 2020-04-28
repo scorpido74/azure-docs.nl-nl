@@ -1,29 +1,29 @@
 ---
-title: Beveiligde service remoting communicatie met Java
-description: Meer informatie over het beveiligen van serviceremoting-gebaseerde communicatie voor javabetrouwbare services die worden uitgevoerd in een Azure Service Fabric-cluster.
+title: Beveiligde communicatie tussen veilige services en Java
+description: Meer informatie over het beveiligen van communicatie tussen service op afstand voor Java reliable services die worden uitgevoerd in een Azure Service Fabric-cluster.
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609635"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Beveiligde service remoting communicatie in een Java-service
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Externe communicatie met beveiligde service in een Java-service
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java op Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Veiligheid is een van de belangrijkste aspecten van communicatie. Het application framework Reliable Services biedt een aantal vooraf gebouwde communicatiestacks en -tools die u gebruiken om de beveiliging te verbeteren. In dit artikel wordt besproken hoe u de beveiliging verbeteren wanneer u serviceremoting gebruikt in een Java-service. Het bouwt voort op een bestaand [voorbeeld](service-fabric-reliable-services-communication-remoting-java.md) dat uitlegt hoe remoting in te stellen voor betrouwbare diensten geschreven in Java. 
+Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. In dit artikel wordt beschreven hoe u de beveiliging verbetert wanneer u service remoting gebruikt in een Java-service. Het is gebaseerd op een bestaand [voor beeld](service-fabric-reliable-services-communication-remoting-java.md) waarin wordt uitgelegd hoe u externe toegang instelt voor betrouw bare services die zijn geschreven in Java. 
 
-Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremoting met Java-services gebruikt:
+Voer de volgende stappen uit om een service te helpen beveiligen wanneer u service voor externe toegang met Java-Services gebruikt:
 
-1. Maak een `HelloWorldStateless`interface, die de methoden definieert die beschikbaar zijn voor een externe procedureaanroep op uw service. Uw service `FabricTransportServiceRemotingListener`wordt gebruikt, die `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` wordt aangegeven in het pakket. Dit is `CommunicationListener` een implementatie die remoting mogelijkheden biedt.
+1. Een interface `HelloWorldStateless`maken, waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep van uw service. Uw service gebruikt `FabricTransportServiceRemotingListener`, die in het `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakket wordt gedeclareerd. Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -45,15 +45,15 @@ Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremot
         }
     }
     ```
-2. Voeg listenerinstellingen en beveiligingsreferenties toe.
+2. Luister instellingen en beveiligings referenties toevoegen.
 
-    Zorg ervoor dat het certificaat dat u wilt gebruiken om uw servicecommunicatie te beveiligen, is geïnstalleerd op alle knooppunten in het cluster. Voor services die op Linux worden uitgevoerd, moet het certificaat beschikbaar zijn als een PEM-formulierbestand; ofwel `.pem` een bestand dat de certificaat- `.crt` en privésleutel bevat, of een bestand met het certificaat en een `.key` bestand dat de privésleutel bevat. Zie [Locatie en formaat van X.509-certificaten op Linux-knooppunten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)voor meer informatie.
+    Zorg ervoor dat het certificaat dat u wilt gebruiken om uw service communicatie te beveiligen, is geïnstalleerd op alle knoop punten in het cluster. Voor services die worden uitgevoerd op Linux moet het certificaat beschikbaar zijn als een PEM-formmatted-bestand. een `.pem` bestand dat het certificaat en de persoonlijke sleutel bevat of een `.crt` bestand dat het certificaat bevat en een `.key` bestand dat de persoonlijke sleutel bevat. Zie [locatie en indeling van X. 509-certificaten op Linux-knoop punten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)voor meer informatie.
     
-    Er zijn twee manieren waarop u listenerinstellingen en beveiligingsreferenties opgeven:
+    Er zijn twee manieren waarop u listener-instellingen en beveiligings referenties kunt opgeven:
 
-   1. Geef ze met behulp van een [config pakket:](service-fabric-application-and-service-manifests.md)
+   1. Geef ze op met behulp van een [configuratie pakket](service-fabric-application-and-service-manifests.md):
 
-       Voeg een `TransportSettings` benoemde sectie toe in het bestand settings.xml.
+       Voeg een benoemde `TransportSettings` sectie toe aan het bestand settings. XML.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremot
 
        ```
 
-       In dit geval `createServiceInstanceListeners` ziet de methode er als volgt uit:
+       In dit geval ziet de `createServiceInstanceListeners` -methode er als volgt uit:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -80,7 +80,7 @@ Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremot
         }
        ```
 
-        Als u `TransportSettings` een sectie toevoegt in het bestand `FabricTransportListenerSettings` settings.xml zonder voorvoegsel, worden standaard alle instellingen uit deze sectie geladen.
+        Als u een `TransportSettings` sectie toevoegt in het bestand settings. XML zonder voor voegsel, `FabricTransportListenerSettings` worden alle instellingen in deze sectie standaard geladen.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -88,7 +88,7 @@ Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremot
             ...
         </Section>
         ```
-        In dit geval `CreateServiceInstanceListeners` ziet de methode er als volgt uit:
+        In dit geval ziet de `CreateServiceInstanceListeners` -methode er als volgt uit:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -99,9 +99,9 @@ Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremot
             return listeners;
         }
        ```
-3. Wanneer u methoden aanroept op een beveiligde service met behulp `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` van de remoting-stack, gebruikt u in plaats van de klasse om een serviceproxy te maken `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, in plaats `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` van de klasse te gebruiken om een service `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`proxy te maken, gebruikt u.
 
-    Als de clientcode wordt uitgevoerd als onderdeel `FabricTransportSettings` van een service, u laden vanuit het bestand settings.xml. Maak een sectie TransportInstellingen die vergelijkbaar is met de servicecode, zoals eerder wordt weergegeven. Breng de volgende wijzigingen aan in de clientcode:
+    Als de client code wordt uitgevoerd als onderdeel van een service, kunt u laden `FabricTransportSettings` vanuit het bestand settings. XML. Maak een TransportSettings-sectie die vergelijkbaar is met de service code, zoals eerder wordt weer gegeven. Breng de volgende wijzigingen aan in de client code:
 
     ```java
 
