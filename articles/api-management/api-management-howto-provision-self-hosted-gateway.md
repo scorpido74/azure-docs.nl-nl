@@ -1,6 +1,6 @@
 ---
-title: Een zelf gehoste gateway inrichten in Azure API Management | Microsoft Documenten
-description: Meer informatie over het inrichten van een zelfgehoste gateway in Azure API Management.
+title: Een zelf-hostende gateway inrichten in azure API Management | Microsoft Docs
+description: Meer informatie over het inrichten van een zelf-hostende gateway in azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,47 +13,47 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74075294"
 ---
-# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Een zelf gehoste gateway inrichten in Azure API-beheer
+# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Een zelf-hostende gateway inrichten in azure API Management
 
-Het inrichten van een gatewaybron in uw Azure API Management-exemplaar is een vereiste voor het implementeren van een zelf gehoste gateway. In dit artikel worden de stappen doorlopen om een gatewaybron in API-beheer in te richten.
+Het inrichten van een gateway bron in uw Azure API Management-exemplaar is een vereiste voor het implementeren van een zelf-hostende gateway. In dit artikel worden de stappen beschreven voor het inrichten van een gateway bron in API Management.
 
 > [!NOTE]
-> Zelf gehoste gateway-functie is in preview. Tijdens de preview is de zelf gehoste gateway alleen beschikbaar in de lagen Developer en Premium zonder extra kosten. De ontwikkelaarslaag is beperkt tot één zelf gehoste gateway-implementatie.
+> De zelf-hostende gateway functie is beschikbaar als preview-versie. Tijdens de preview-periode is de zelf-hostende gateway alleen beschikbaar in de lagen ontwikkelaar en Premium zonder extra kosten. De Developer-laag is beperkt tot één zelf-hostende gateway-implementatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
+Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="provision-a-self-hosted-gateway"></a>Een zelf-hostende gateway inrichten
 
-1. Selecteer de **gateways** van onder **Instellingen**.
+1. Selecteer de **gateways** onder **instellingen**.
 2. Klik op **+ Toevoegen**.
-3. Voer de **naam** en **het gebied** van de gateway in.
+3. Voer de **naam** en de **regio** van de gateway in.
 > [!TIP]
-> **Regio** geeft de beoogde locatie op van de gatewayknooppunten die aan deze gatewaybron worden gekoppeld. Het is semantisch gelijk aan een vergelijkbare eigenschap die is gekoppeld aan een Azure-bron, maar kan een willekeurige tekenreekswaarde worden toegewezen.
+> **Regio** specificeert de beoogde locatie van de gateway knooppunten die aan deze gateway bron worden gekoppeld. Het is semantisch gelijk aan een vergelijk bare eigenschap die is gekoppeld aan een Azure-resource, maar er kan een wille keurige teken reeks waarde aan worden toegewezen.
 
-4. Voer destijds een **beschrijving** van de gatewaybron in.
-5. Selecteer eventueel **+** onder **API's** om een of meer API's aan deze gatewaybron te koppelen.
+4. Voer desgewenst een **Beschrijving** in van de gateway resource.
+5. Selecteer **+** desgewenst onder **api's** om een of meer api's aan deze gateway bron te koppelen.
 > [!TIP]
-> U een API koppelen en verwijderen van een gateway op het tabblad **Instellingen van** de API.
+> U kunt een API koppelen aan en verwijderen uit een gateway op het tabblad **instellingen** van de API.
 
 > [!IMPORTANT]
-> Standaard wordt geen van de bestaande API's gekoppeld aan de nieuwe gatewaybron. Daarom zullen pogingen om ze aan te `404 Resource Not Found` roepen via de nieuwe gateway resulteren in reacties.
+> Standaard wordt geen van de bestaande Api's gekoppeld aan de nieuwe gateway resource. Daarom zullen pogingen om deze via de nieuwe gateway aan te roepen, `404 Resource Not Found` leiden tot antwoorden.
 
-6. Klik op**toevoegen**.
+6. Klik op **Add**.
 
-Nu is de gatewaybron ingericht in uw API-beheerexemplaar. U doorgaan met het implementeren van de gateway.
+De gateway bron is nu ingericht in uw API Management-exemplaar. U kunt door gaan met het implementeren van de gateway.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Azure [API Management zelf gehostgatewayoverzicht](self-hosted-gateway-overview.md) voor meer informatie over de zelfgehoste gateway
-* Meer informatie over het [implementeren van een zelfgehoste gateway naar Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
-* Meer informatie over het [implementeren van een zelfgehoste gateway naar Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+* Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
+* Meer informatie over het [implementeren van een zelf-hostende gateway naar Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+* Meer informatie over het [implementeren van een zelf-hostende gateway naar docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)

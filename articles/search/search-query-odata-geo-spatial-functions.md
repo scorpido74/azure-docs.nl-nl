@@ -1,7 +1,7 @@
 ---
-title: Verwijzing naar de georuimtelijke functie van OData
+title: Verwijzing naar geo-spatiale functie van OData
 titleSuffix: Azure Cognitive Search
-description: Syntaxis- en referentiedocumentatie voor het gebruik van odata-georuimtelijke functies, geo.distance en geo.intersects, in Azure Cognitive Search queries.
+description: Syntaxis en referentie documentatie voor het gebruik van geo-ruimtelijke functies van OData, geo. Distance en geo. intersects, in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,24 +20,24 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113174"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Georuimtelijke functies van OData in `geo.distance` Azure Cognitive Search - en`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geo-ruimtelijke functies van OData in azure Cognitive Search `geo.distance` -en`geo.intersects`
 
-Azure Cognitive Search ondersteunt georuimtelijke query's in `geo.distance` `geo.intersects` [OData-filterexpressies](query-odata-filter-orderby-syntax.md) via de en functies. De `geo.distance` functie retourneert de afstand in kilometers tussen twee punten, een is een veld of bereik variabele, en een is een constante doorgegeven als onderdeel van het filter. De `geo.intersects` functie `true` wordt geretourneerd als een bepaald punt zich binnen een bepaalde veelhoek bevindt, waarbij het punt een veld- of bereikvariabele is en de veelhoek wordt opgegeven als een constante die als onderdeel van het filter wordt doorgegeven.
+Azure Cognitive Search ondersteunt geo-ruimtelijke query's in [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `geo.distance` de `geo.intersects` functies en. De `geo.distance` functie retourneert de afstand in kilo meters tussen twee punten, een veld of bereik variabele en een constante die wordt door gegeven als onderdeel van het filter. De `geo.intersects` functie retourneert `true` of een bepaald punt zich in een bepaalde veelhoek bevindt, waarbij het punt een veld-of bereik variabele is en de veelhoek is opgegeven als een constante die als onderdeel van het filter wordt door gegeven.
 
-De `geo.distance` functie kan ook worden gebruikt in de [ **parameter $orderby** ](search-query-odata-orderby.md) om zoekresultaten te sorteren op afstand van een bepaald punt. De syntaxis voor `geo.distance` in **$orderby** is dezelfde als in **$filter**. Bij `geo.distance` gebruik in **$orderby**moet het veld waarop `Edm.GeographyPoint` het van toepassing is van het type zijn en moet het ook **sorteerbaar**zijn .
+De `geo.distance` functie kan ook worden gebruikt in de [para meter **$OrderBy** ](search-query-odata-orderby.md) om Zoek resultaten te sorteren op afstand van een bepaald punt. De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, `Edm.GeographyPoint` van het type zijn en moet het ook **sorteerbaar**zijn.
 
 > [!NOTE]
-> Bij `geo.distance` gebruik in de **parameter $orderby** mag het veld dat u aan de functie doorgeeft slechts één geopunt bevatten. Met andere woorden, het `Edm.GeographyPoint` moet `Collection(Edm.GeographyPoint)`van het type zijn en niet. Het is niet mogelijk om te sorteren op verzamelingsvelden in Azure Cognitive Search.
+> Wanneer u `geo.distance` gebruikt in de para meter **$OrderBy** , mag het veld dat u aan de functie doorgeeft slechts één geo-Point bevatten. Met andere woorden, deze moeten van het type `Edm.GeographyPoint` en niet `Collection(Edm.GeographyPoint)`. Het is niet mogelijk om te sorteren op verzamelings velden in azure Cognitive Search.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([Extended Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)Form `geo.distance` `geo.intersects` ) definieert de grammatica van de en functies, evenals de geo-ruimtelijke waarden waarop ze werken:
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `geo.distance` functies `geo.intersects` en, evenals de geo-ruimtelijke waarden waarop ze worden toegepast:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,69 +61,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-Er is ook een interactief syntaxisdiagram beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Syntaxisdiagram OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Zie [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-### <a name="geodistance"></a>geo.afstand
+### <a name="geodistance"></a>geo. distance
 
-De `geo.distance` functie neemt twee `Edm.GeographyPoint` parameters `Edm.Double` van het type en geeft een waarde die de afstand tussen hen in kilometers. Dit verschilt van andere services die odata geo-ruimtelijke bewerkingen ondersteunen, die doorgaans afstanden in meters retourneren.
+De `geo.distance` functie heeft twee para meters `Edm.GeographyPoint` van het type `Edm.Double` en retourneert een waarde die de afstand ertussen in kilo meters. Dit wijkt af van andere services die ondersteuning bieden voor geo-spatiale bewerkingen van OData, die doorgaans afstanden retour neren in meters.
 
-Een van de `geo.distance` parameters moet een aardrijkskundepuntconstante zijn en de andere moet een veldpad zijn (of een bereikvariabele `Collection(Edm.GeographyPoint)`in het geval van een filter dat over een veld van het type wordt getand). De volgorde van deze parameters maakt niet uit.
+Een van de para meters `geo.distance` moet een geografische punt constante zijn, en de andere moet een veld pad (of een bereik variabele zijn in het geval van een filter iteratie voor een veld van `Collection(Edm.GeographyPoint)`het type). De volg orde van deze para meters is niet van belang.
 
-De constante van het aardrijkskundepunt is van de vorm `geography'POINT(<longitude> <latitude>)'`, waar de lengte en de breedtegraad numerieke constanten zijn.
+De geografie punt constante is van het formulier `geography'POINT(<longitude> <latitude>)'`, waarbij de lengte graad en de breedte numeriek constanten zijn.
 
 > [!NOTE]
-> Bij `geo.distance` gebruik in een filter moet u de door de `lt` `le`functie `gt`geretourneerde afstand vergelijken met een constante met behulp van , , of `ge`. De `eq` operatoren en `ne` worden niet ondersteund bij het vergelijken van afstanden. Dit is bijvoorbeeld een correct `geo.distance` `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`gebruik van : .
+> Wanneer u `geo.distance` in een filter gebruikt, moet u de afstand die door de functie wordt geretourneerd, vergelijken `lt`met `le`een `gt`constante using `ge`,, of. De Opera `eq` tors `ne` en worden niet ondersteund bij het vergelijken van de afstanden. Dit is bijvoorbeeld een correct gebruik van `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
 
-### <a name="geointersects"></a>geo.intersects
+### <a name="geointersects"></a>geo. intersects
 
-De `geo.intersects` functie neemt een `Edm.GeographyPoint` variabele `Edm.GeographyPolygon` van het `Edm.Boolean`  --  `true` type en een constante en geeft `false` een als het punt is binnen de grenzen van de veelhoek, anders.
+De `geo.intersects` functie gebruikt een variabele van het `Edm.GeographyPoint` type en een `Edm.GeographyPolygon` constante en retourneert `Edm.Boolean`  --  `true` een als het punt zich binnen de grenzen van de veelhoek bevindt, `false` anders.
 
-De veelhoek is een tweedimensionaal oppervlak dat is opgeslagen als een reeks punten die een grenzende ring definiëren (zie de [voorbeelden](#examples) hieronder). De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste puntsets hetzelfde moeten zijn. [De punten in een veelhoek moeten tegen de klok in zijn.](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)
+De veelhoek is een tweedimensionale Opper vlak dat is opgeslagen als een reeks punten die een gebonden ring definiëren (Zie de [voor beelden](#examples) hieronder). De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [Punten in een veelhoek moeten een aflinksome volg orde hebben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geo-ruimtelijke query's en polygonen verspreid over de 180e meridiaan
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Georuimtelijke query's en veelhoeken die de 180th-meridiaan bespannen
 
-Voor veel geo-ruimtelijke querybibliotheken is het formuleren van een query die de 180e meridiaan (in de buurt van de datumlijn) bevat, of is het verboden of vereist een tijdelijke oplossing, zoals het splitsen van de veelhoek in twee, één aan weerszijden van de meridiaan.
+Voor veel georuimtelijke query bibliotheken waarbij een query wordt ingesteld die de 180th-meridiaan (in de buurt van de grens waarde) bevat, of een tijdelijke oplossing vereist, zoals het splitsen van de veelhoek in twee, één aan beide zijden van de meridiaan.
 
-In Azure Cognitive Search werken georuimtelijke query's met 180-graden lengtegraad zoals verwacht als de queryvorm rechthoekig is en uw coördinaten `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`worden uitgelijnd op een rasterindeling langs lengte en breedtegraad (bijvoorbeeld). Anders, voor niet-rechthoekige of niet-uitgelijnde vormen, overweeg dan de gesplitste veelhoekbenadering.  
+In azure Cognitive Search werken georuimtelijke query's met een lengte van 180 graden zoals verwacht als de query vorm rechthoekig is en uw coördinaten worden uitgelijnd op een raster indeling langs lengte graad en breedte graad (bijvoorbeeld `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). Als dat niet het geval is, kunt u voor niet-rechthoekige of niet-afgestemde vormen de methode split-veelhoek overwegen.  
 
 ### <a name="geo-spatial-functions-and-null"></a>Georuimtelijke functies en`null`
 
-Net als alle andere niet-verzamelvelden in `Edm.GeographyPoint` Azure `null` Cognitive Search kunnen typevelden waarden bevatten. Wanneer Azure Cognitive `geo.intersects` Search evalueert `null`voor een veld `false`dat is, zal het resultaat altijd . Het gedrag `geo.distance` van in dit geval hangt af van de context:
+Net als alle andere niet-verzamelings velden in azure Cognitive Search, kunnen `Edm.GeographyPoint` velden van `null` het type waarden bevatten. Wanneer Azure Cognitive Search een veld `geo.intersects` evalueert dat is `null`, is het resultaat altijd `false`. Het gedrag van `geo.distance` in dit geval is afhankelijk van de context:
 
-- In filters `geo.distance` resulteert `null` van `null`een veld in . Dit betekent dat het `null` document niet overeenkomt omdat in `false`vergelijking met een niet-null-waarde evalueert tot .
-- Bij het sorteren van `geo.distance` resultaten `null` met behulp van **$orderby**, van een veld resulteert in de maximaal mogelijke afstand. Documenten met een dergelijk veld sorteren lager dan `asc` alle andere wanneer de sorteerrichting wordt gebruikt `desc`(de standaardinstelling) en hoger dan alle andere wanneer de richting is .
+- In filters `geo.distance` resulteert een `null` veld in. `null` Dit betekent dat het document niet overeenkomt `null` omdat er een andere waarde dan null wordt geëvalueerd `false`.
+- Bij het sorteren van resultaten met `geo.distance` behulp `null` van **$OrderBy**, resulteert een veld in de Maxi maal mogelijke afstand. Documenten met een dergelijk veld worden lager gesorteerd dan alle andere wanneer de sorteer richting `asc` wordt gebruikt (de standaard instelling) en hoger dan alle andere wanneer de richting is `desc`.
 
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="filter-examples"></a>Voorbeelden van filter
 
-Vind alle hotels binnen 10 kilometer van een bepaald referentiepunt `Edm.GeographyPoint`(waar de locatie is een veld van het type):
+Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij locatie een veld van het `Edm.GeographyPoint`type is):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Vind alle hotels binnen een bepaalde viewport beschreven als een `Edm.GeographyPoint`veelhoek (waar de locatie is een veld van het type ). Houd er rekening mee dat de veelhoek is gesloten (de eerste en laatste puntsets moeten hetzelfde zijn) en [dat de punten tegen de klok in moeten worden vermeld.](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)
+Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij locatie een veld `Edm.GeographyPoint`van het type is). Houd er rekening mee dat de veelhoek is gesloten (de eerste en laatste punt sets moeten hetzelfde zijn) en [de punten moeten in de juiste volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
-### <a name="order-by-examples"></a>Voorbeelden van bestelling en volgorde
+### <a name="order-by-examples"></a>Voor beelden per order
 
-Sorteer hotels `rating`aflopend op , dan oplopend op afstand van de opgegeven coördinaten:
+Hotels sorteren op `rating`aflopend en vervolgens oplopend op afstand van de opgegeven coördinaten:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Sorteer hotels in `search.score` aflopende volgorde op en `rating`, en vervolgens in oplopende volgorde op afstand van de gegeven coördinaten, zodat tussen twee hotels met identieke beoordelingen, de dichtstbijzijnde wordt eerst vermeld:
+Sorteer hotels in aflopende Volg `search.score` orde `rating`op en, en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Filters in Azure Cognitive Search](search-filters.md)
-- [Overzicht van OData-expressietaal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
-- [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoekdocumenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filters in azure Cognitive Search](search-filters.md)
+- [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ontwerpen voor herstel na noodgevallen'
-description: Deze pagina bevat architecturale aanbevelingen voor herstel na noodgevallen tijdens het gebruik van Azure ExpressRoute.
+title: 'Azure ExpressRoute: ontwerpen voor herstel na nood geval'
+description: Deze pagina bevat architectuur aanbevelingen voor herstel na nood gevallen tijdens het gebruik van Azure ExpressRoute.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,143 +8,143 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74076690"
 ---
-# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor noodherstel met ExpressRoute private peering
+# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering
 
-ExpressRoute is ontworpen voor hoge beschikbaarheid om privénetwerkconnectiviteit van carrierkwaliteit te bieden voor Microsoft-bronnen. Met andere woorden, er is geen enkel storingspunt in het ExpressRoute-pad binnen het Microsoft-netwerk. Zie [Ontwerpen voor hoge beschikbaarheid met ExpressRoute voor][HA]ontwerpoverwegingen om de beschikbaarheid van een ExpressRoute-circuit te maximaliseren.
+ExpressRoute is ontworpen voor hoge Beschik baarheid om de communicatie van particuliere netwerken naar micro soft-resources te verzorgen. Met andere woorden: er is geen Single Point of Failure in het pad ExpressRoute in het micro soft-netwerk. Zie [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA]voor overwegingen bij het ontwerpen van de beschik baarheid van een ExpressRoute-circuit.
 
-Echter, het nemen van murphy's populaire adagium-*als er iets mis kan gaan, zal het*--in aanmerking, in dit artikel laten we ons richten op oplossingen die verder gaan dan mislukkingen die kunnen worden aangepakt met behulp van een enkele ExpressRoute circuit. Met andere woorden, in dit artikel laten we kijken naar de overwegingen van netwerkarchitectuur voor het bouwen van robuuste backend-netwerkconnectiviteit voor disaster recovery met behulp van georedundante ExpressRoute-circuits.
+*Als er echter iets mis gaat*met Murphy--adage, kunt u in dit artikel zich richten op oplossingen die verder gaan dan storingen die kunnen worden opgelost met één ExpressRoute-circuit. Met andere woorden, in dit artikel, kunnen we in het kader van de netwerk architectuur controleren op het bouwen van robuuste back-end-netwerk connectiviteit voor herstel na nood gevallen met geo-redundante ExpressRoute-circuits.
 
-## <a name="need-for-redundant-connectivity-solution"></a>Behoefte aan redundante connectiviteitsoplossing
+## <a name="need-for-redundant-connectivity-solution"></a>Behoefte aan redundante connectiviteits oplossing
 
-Er zijn mogelijkheden en instanties waarin een hele regionale service (of het nu die van Microsoft, netwerkserviceproviders, klant of andere cloudserviceproviders is) wordt afgebroken. De oorzaak voor een dergelijke regionale brede dienstverlening impact zijn natuurlijke calamiteit. Daarom is het voor bedrijfscontinuïteit en bedrijfskritische toepassingen belangrijk om te plannen voor disaster recovery.   
+Er zijn mogelijkheden en instanties waarbij een volledige regionale service (die van micro soft, netwerk serviceproviders, klanten of andere Cloud serviceproviders) wordt gedegradeerd. De hoofd oorzaak van dergelijke regionale service-impact is onder andere natuurlijke Calamity. Daarom is het belang rijk om voor bedrijfs continuïteit en essentiële toepassingen te plannen voor herstel na nood gevallen.   
 
-Ongeacht of u uw bedrijfskritieke toepassingen uitvoert in een Azure-regio of on-premises of ergens anders, u een andere Azure-regio gebruiken als uw failoversite. In de volgende artikelen wordt ingegaan op noodherstel van toepassingen en frontend-toegangsperspectieven:
+Ongeacht of u uw essentiële bedrijfs toepassingen uitvoert in een Azure-regio of on-premises of op een wille keurige locatie, kunt u een andere Azure-regio gebruiken als uw failover-site. De volgende artikelen zijn bedoeld voor nood herstel van toepassingen en perspectieven voor toegang tot de frontend:
 
 - [Herstel na noodgevallen voor bedrijven][Enterprise DR]
 - [SMB-herstel na noodgeval met Azure Site Recovery][SMB DR]
 
-Als u voor bedrijfskritieke operaties afhankelijk bent van ExpressRoute-connectiviteit tussen uw on-premises netwerk en Microsoft, moet uw noodherstelplan ook georedundante netwerkconnectiviteit bevatten. 
+Als u afhankelijk bent van de ExpressRoute-verbinding tussen uw on-premises netwerk en micro soft voor bedrijfs kritieke bewerkingen, moet uw plan voor herstel na nood gevallen ook geo-redundante netwerk connectiviteit bevatten. 
 
-## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Uitdagingen bij het gebruik van meerdere ExpressRoute-circuits
+## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Problemen met het gebruik van meerdere ExpressRoute-circuits
 
-Wanneer u dezelfde set netwerken met elkaar verbindt met meer dan één verbinding, introduceert u parallelle paden tussen de netwerken. Parallelle paden, wanneer niet goed ontworpen, kunnen leiden tot asymmetrische routing. Als u stateful entiteiten (bijvoorbeeld NAT, firewall) in het pad hebt, kan asymmetrische routering de verkeersstroom blokkeren.  Meestal komt u via het privé-peeringpad van ExpressRoute geen stateful entiteiten tegen, zoals NAT of Firewalls. Daarom blokkeert asymmetrische routering via ExpressRoute private peering niet noodzakelijkerwijs de verkeersstroom.
+Wanneer u dezelfde set netwerken vergelijkt met meer dan één verbinding, maakt u parallelle paden tussen de netwerken. Parallelle paden, wanneer deze niet correct zijn ontworpen, kunnen leiden tot asymmetrische route ring. Als u stateful-entiteiten (bijvoorbeeld NAT, firewall) in het pad hebt, kan asymmetrische route ring de verkeers stroom blok keren.  Normaal gesp roken komt het over het ExpressRoute persoonlijke peering-pad niet over stateful-entiteiten zoals NAT of firewalls. Daarom blokkeert asymmetrische route ring via ExpressRoute persoonlijke peering niet noodzakelijkerwijs de verkeers stroom.
  
-Als u echter balansverkeer laadt over georedundante parallelle paden, ongeacht of u stateful entiteiten hebt of niet, zou u inconsistente netwerkprestaties ervaren. In dit artikel bespreken we hoe we deze uitdagingen kunnen aanpakken.
+Als u echter taak verdeling van verkeer via Geo-redundante parallelle paden hebt, ongeacht of u stateful entiteiten hebt of niet, zou u inconsistente netwerk prestaties ondervinden. In dit artikel bespreken we hoe u deze uitdagingen kunt aanpakken.
 
-## <a name="small-to-medium-on-premises-network-considerations"></a>Kleine tot middelgrote on-premises netwerkoverwegingen
+## <a name="small-to-medium-on-premises-network-considerations"></a>Aandachtspunten voor kleine tot middel grote on-premises netwerken
 
-Laten we eens kijken naar het voorbeeld netwerk geïllustreerd in het volgende diagram. In het voorbeeld wordt georedundante ExpressRoute-connectiviteit vastgesteld tussen de on-premises locatie van een Contoso en het VNet van Contoso in een Azure-regio. In het diagram geeft de effen groene lijn het voorkeurspad aan (via ExpressRoute 1) en de stippellijn staat voor stand-bypad (via ExpressRoute 2).
+Laten we eens kijken naar het voorbeeld netwerk geïllustreerd in het volgende diagram. In het voor beeld wordt geo-redundante ExpressRoute-connectiviteit tot stand gebracht tussen de on-premises locatie van Contoso en het VNet van Contoso in een Azure-regio. In het diagram geeft effen groene lijn aan dat het voorkeurs pad (via ExpressRoute 1) en de gestippelde waarde staat voor een pad (via ExpressRoute 2).
 
-[![1]][1]
+[![i]][1]
 
-Wanneer u ExpressRoute-connectiviteit ontwerpt voor herstel na noodgevallen, moet u rekening houden met:
+Wanneer u ExpressRoute-connectiviteit ontwerpt voor herstel na nood gevallen, moet u rekening houden met het volgende:
 
-- met behulp van geo-redundante ExpressRoute-circuits
-- gebruik maken van divers netwerk(en) van de serviceprovider voor verschillende ExpressRoute-circuits
-- het ontwerpen van elk van het ExpressRoute circuit voor [hoge beschikbaarheid][HA]
-- het beëindigen van het verschillende ExpressRoute-circuit op verschillende locaties in het klantennetwerk
+- Geo-redundante ExpressRoute-circuits gebruiken
+- diverse service provider netwerk (en) gebruiken voor verschillende ExpressRoute-circuits
+- elk ExpressRoute-circuit ontwerpen voor [hoge Beschik baarheid][HA]
+- het verschillende ExpressRoute-circuit wordt beëindigd op een andere locatie in het netwerk van de klant
 
-Als u routes op alle ExpressRoute-paden identiek adverteert, wordt het on-premises verkeer in balans gebracht over alle ExpressRoute-paden met ECMP-routering (Equal-cost multi-path).
+Als u bijvoorbeeld de routes op identieke wijze adverteert over alle ExpressRoute-paden, wordt door Azure het on-premises gebonden verkeer verdeeld over alle ExpressRoute-paden met een gelijke-kosten Multi-Path (ECMP)-route ring.
 
-Met de georedundante ExpressRoute-circuits moeten we echter rekening houden met verschillende netwerkprestaties met verschillende netwerkpaden (met name voor netwerklatentie). Om consistentere netwerkprestaties te krijgen tijdens normaal gebruik, u de voorkeur geven aan het ExpressRoute-circuit dat de minimale latentie biedt.
+Met het geo-redundante ExpressRoute-circuit moeten we echter rekening houden met verschillende netwerk prestaties met verschillende netwerk paden (met name voor netwerk latentie). Voor meer consistente netwerk prestaties tijdens de normale werking, wilt u mogelijk de voor keur geven aan het ExpressRoute-circuit dat de minimale latentie biedt.
 
-U Azure beïnvloeden om het ene ExpressRoute-circuit te verkiezen boven een ander circuit met behulp van een van de volgende technieken (weergegeven in de volgorde van effectiviteit):
+U kunt met behulp van een van de volgende technieken (Zie de volg orde van effectiviteit) van invloed zijn op Azure om de voor keur te geven aan een ExpressRoute-circuit van een andere.
 
-- reclame meer specifieke route over de voorkeur ExpressRoute circuit in vergelijking met andere ExpressRoute circuit(s)
-- configureren van een hoger verbindingsgewicht op de verbinding die het virtuele netwerk koppelt aan het gewenste ExpressRoute-circuit
-- reclame voor de routes over minder voorkeur ExpressRoute circuit met langere AS Path (AS Path prepend)
+- adverteren van een specifieke route via het voorkeurs ExpressRoute-Circuit vergeleken met andere ExpressRoute-circuit (s)
+- een hoger verbindings gewicht configureren op de verbinding die het virtuele netwerk koppelt aan het voorkeurs ExpressRoute-circuit
+- het adverteren van de routes via minder ExpressRoute-circuit met meer dan het pad (als pad laten voorafgaan door)
 
 ### <a name="more-specific-route"></a>Meer specifieke route
 
-Het volgende diagram illustreert het beïnvloeden van ExpressRoute pad selectie met behulp van meer specifieke route advertentie. In het geïllustreerde voorbeeld wordt contoso on-premises /24 IP-bereik geadverteerd als twee /25 adresbereiken via het voorkeurspad (ExpressRoute 1) en als /24 via het stand-by pad (ExpressRoute 2).
+In het volgende diagram ziet u de selectie van het ExpressRoute met behulp van een meer specifieke route advertentie. In het Gedemonstreerde voor beeld wordt het IP-adres van Contoso op locatie/24 geadverteerd als twee/25 adresbereiken via het voorkeurs pad (ExpressRoute 1) en als/24 via het standaard traject (ExpressRoute 2).
 
-[![2]][2]
+[![twee]][2]
 
-Omdat /25 specifieker is, vergeleken met /24, zou Azure het verkeer dat bestemd is naar 10.1.11.0/24 via ExpressRoute 1 in de normale staat verzenden. Als beide verbindingen van ExpressRoute 1 naar beneden gaan, dan zou vNet de 10.1.11.0/24 routereclame slechts via UitdrukkelijkeRoute 2 zien; en daarom wordt het stand-by circuit gebruikt in deze storingstoestand.
+Omdat/25 specifiekere, vergeleken met/24, verzendt Azure het verkeer dat is bestemd voor 10.1.11.0/24 via ExpressRoute 1 met de status normaal. Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 
-### <a name="connection-weight"></a>Verbindingsgewicht
+### <a name="connection-weight"></a>Verbindings gewicht
 
-De volgende schermafbeelding illustreert het configureren van het gewicht van een ExpressRoute-verbinding via Azure-portal.
+De volgende scherm afbeelding illustreert het configureren van het gewicht van een ExpressRoute-verbinding via Azure Portal.
 
-[![3]][3]
+[![3D]][3]
 
-Het volgende diagram illustreert het beïnvloeden van expressroute padselectie met behulp van verbindingsgewicht. Het standaardverbindingsgewicht is 0. In het onderstaande voorbeeld wordt het gewicht van de verbinding voor ExpressRoute 1 geconfigureerd als 100. Wanneer een VNet een routevoorvoegsel ontvangt dat via meer dan één ExpressRoute-circuit wordt geadverteerd, geeft het VNet de voorkeur aan de verbinding met het hoogste gewicht.
+Het volgende diagram illustreert de selectie van het ExpressRoute met behulp van het verbindings gewicht. Het standaard verbindings gewicht is 0. In het onderstaande voor beeld is het gewicht van de verbinding voor ExpressRoute 1 geconfigureerd als 100. Wanneer een VNet een route voorvoegsel ontvangt dat is geadverteerd via meer dan één ExpressRoute-circuit, zal het VNet de voor keur geven aan de verbinding met het hoogste gewicht.
 
-[![4]][4]
+[![3]][4]
 
-Als beide verbindingen van ExpressRoute 1 naar beneden gaan, dan zou vNet de 10.1.11.0/24 routereclame slechts via UitdrukkelijkeRoute 2 zien; en daarom wordt het stand-by circuit gebruikt in deze storingstoestand.
+Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 
-### <a name="as-path-prepend"></a>AS pad prepend
+### <a name="as-path-prepend"></a>ALS pad laten voorafgaan door
 
-Het volgende diagram illustreert het beïnvloeden van expressroute padselectie met behulp van AS pad prepend. In het diagram geeft de routeadvertentie via ExpressRoute 1 het standaardgedrag van eBGP aan. Op de routeadvertentie via ExpressRoute 2 wordt het ASN van het onterreinnetwerk bovendien voorbereid op het AS-pad van de route. Wanneer dezelfde route wordt ontvangen via meerdere ExpressRoute-circuits, volgens het eBGP-routeselectieproces, geeft VNet de voorkeur aan de route met het kortste AS-pad. 
+In het volgende diagram ziet u de selectie van ExpressRoute paden gebruiken als pad laten voorafgaan door. In het diagram geeft de route advertentie via ExpressRoute 1 het standaard gedrag van eBGP aan. Op de route advertisement via ExpressRoute 2 wordt het ASN van het on-premises netwerk op het pad van de route geplaatst. Wanneer dezelfde route wordt ontvangen via meerdere ExpressRoute-circuits, geeft VNet de voor keur aan de route met het kortste AS-pad. 
 
-[![5]][5]
+[![5,0]][5]
 
-Als beide verbindingen van ExpressRoute 1 naar beneden gaan, dan zou de VNet de routeadvertentie 10.1.11.0/24 alleen via ExpressRoute 2 zien. Bijgevolg zou het langere AS-pad irrelevant worden. Daarom zou het stand-by circuit worden gebruikt in deze storingstaat.
+Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24-route-advertisement alleen weer geven via ExpressRoute 2. Het pad dat langer is dan is niet alleen relevant. Daarom wordt het standby-circuit gebruikt in deze fout status.
 
-Als u azure gebruikt om een van uw ExpressRoute boven andere te verkiezen, moet u er ook voor zorgen dat het on-premises netwerk ook de voorkeur geeft aan hetzelfde ExpressRoute-pad voor Azure-gebonden verkeer om asymmetrische stromen te voorkomen. Meestal wordt de lokale voorkeurswaarde gebruikt om het on-premises netwerk te beïnvloeden om het ene ExpressRoute-circuit boven het andere te verkiezen. Lokale voorkeur is een interne BGP (iBGP) statistiek. De BGP-route met de hoogste lokale voorkeurswaarde heeft de voorkeur.
+Als u gebruikmaakt van een van de technieken, moet u er ook voor zorgen dat het on-premises netwerk van invloed is op een van de voor delen van een van uw ExpressRoute. De lokale voorkeurs waarde wordt doorgaans gebruikt om het on-premises netwerk te beïnvloeden om de voor keur aan een ExpressRoute-circuit over andere te geven. Lokale voor keur is een interne BGP-waarde (iBGP). De BGP-route met de hoogste lokale voorkeurs waarde verdient de voor keur.
 
 > [!IMPORTANT]
-> Wanneer u bepaalde ExpressRoute-circuits als stand-by gebruikt, moet u deze actief beheren en periodiek failoverbewerking testen. 
+> Wanneer u bepaalde ExpressRoute-circuits als stand-by gebruikt, moet u ze actief beheren en de failoverbewerking periodiek testen. 
 > 
 
-## <a name="large-distributed-enterprise-network"></a>Groot gedistribueerd bedrijfsnetwerk
+## <a name="large-distributed-enterprise-network"></a>Groot gedistribueerd bedrijfs netwerk
 
-Wanneer u een groot gedistribueerd bedrijfsnetwerk hebt, hebt u waarschijnlijk meerdere ExpressRoute-circuits. Laten we in deze sectie eens kijken hoe u disaster recovery ontwerpen met behulp van de actief actieve ExpressRoute-circuits, zonder dat er extra stand-bycircuits nodig zijn. 
+Wanneer u een groot gedistribueerd bedrijfs netwerk hebt, hebt u waarschijnlijk meerdere ExpressRoute-circuits. In dit gedeelte ziet u hoe u herstel na nood gevallen kunt ontwerpen met het actief-actief ExpressRoute-circuits, zonder extra standaard circuits. 
 
-Laten we eens kijken naar het voorbeeld geïllustreerd in het volgende diagram. In het voorbeeld heeft Contoso twee on-premises locaties die zijn verbonden met twee Contoso IaaS-implementatie in twee verschillende Azure-regio's via ExpressRoute-circuits op twee verschillende peeringlocaties. 
+Laten we eens kijken naar het voor beeld in het volgende diagram. In het voor beeld heeft Contoso twee on-premises locaties die zijn verbonden met twee contoso IaaS-implementaties in twee verschillende Azure-regio's via ExpressRoute-circuits op twee verschillende peering locaties. 
 
-[![6]][6]
+[![6,5]][6]
 
-Hoe we het disaster recovery ontwerpen heeft invloed op hoe cross regional naar cross locatie (regio1/regio2 naar locatie2/locatie1) verkeer wordt omgeleid. Laten we eens kijken naar twee verschillende rampenarchitecturen die het verkeer tussen regio-locatie en regio's anders doorkruisen.
+De manier waarop het herstel na nood gevallen wordt beïnvloed, is van invloed op de manier waarop het verkeer van de regionale naar de andere locatie (region1/REGION2 naar location2/location1) wordt gerouteerd. Laten we eens kijken naar twee verschillende rampen architecturen die interregionale verkeer op verschillende locaties routeren.
 
 ### <a name="scenario-1"></a>Scenario 1
 
-In het eerste scenario, laten we ontwerpen disaster recovery zodanig dat al het verkeer tussen een Azure-regio en on-premises netwerk stromen via de lokale ExpressRoute circuit in de stabiele staat. Als het lokale ExpressRoute-circuit uitvalt, wordt het externe ExpressRoute-circuit gebruikt voor alle verkeersstromen tussen Azure en on-premises netwerk.
+In het eerste scenario ontwerpt u herstel na nood gevallen, waardoor al het verkeer tussen een Azure-regio en een on-premises netwerk stroomt via het lokale ExpressRoute-circuit in de stationaire toestand. Als het lokale ExpressRoute-circuit mislukt, wordt het circuit voor externe ExpressRoute gebruikt voor alle verkeer stromen tussen Azure en het on-premises netwerk.
 
-Scenario 1 wordt geïllustreerd in het volgende diagram. In het diagram geven groene lijnen paden aan voor de verkeersstroom tussen VNet1 en on-premises netwerken. De blauwe lijnen geven paden aan voor de verkeersstroom tussen VNet2 en on-premises netwerken. Vaste lijnen geven het gewenste pad aan in de steady-state en de stippellijnen geven het verkeerspad aan in het uitvallen van het overeenkomstige ExpressRoute-circuit dat een steady-state verkeersstroom draagt. 
+Scenario 1 wordt geïllustreerd in het volgende diagram. In het diagram geven groene lijnen paden voor de verkeers stroom tussen VNet1 en on-premises netwerken aan. De blauwe lijnen geven paden voor de verkeers stroom tussen VNet2 en on-premises netwerken aan. Effen lijnen geven het gewenste pad in de stationaire toestand aan en de onderbroken lijnen geven het verkeers traject aan bij het mislukken van het bijbehorende ExpressRoute-circuit dat een stationaire verkeers stroom uitvoert. 
 
 [![7]][7]
 
-U het scenario ontwerpen met verbindingsgewicht om VNets te beïnvloeden om de verbinding te verkiezen boven lokale peeringlocatie ExpressRoute voor on-premises netwerkgebonden verkeer. Om de oplossing te voltooien, moet u zorgen voor symmetrische omgekeerde verkeersstroom. U de lokale voorkeur op de iBGP-sessie tussen uw BGP-routers (waarop ExpressRoute-circuits aan on-premises zijde worden beëindigd) gebruiken om de voorkeur te geven aan een ExpressRoute-circuit. De oplossing wordt geïllustreerd in het volgende diagram. 
+U kunt het scenario ontwerpen met behulp van het verbindings gewicht om te beïnvloeden hoe VNets verbinding maakt met de lokale locatie van de peering ExpressRoute voor on-premises gebonden netwerk verkeer. Als u de oplossing wilt volt ooien, moet u ervoor zorgen dat symmetrisch omgekeerd verkeer stroom wordt uitgevoerd. U kunt de lokale voor keur gebruiken op de iBGP-sessie tussen uw BGP-routers (waarop ExpressRoute-circuits aan de on-premises kant worden beëindigd) om de voor keur te geven aan een ExpressRoute-circuit. De oplossing wordt geïllustreerd in het volgende diagram. 
 
-[![8]][8]
+[![achtste]][8]
 
 ### <a name="scenario-2"></a>Scenario 2
 
-Scenario 2 wordt geïllustreerd in het volgende diagram. In het diagram geven groene lijnen paden aan voor de verkeersstroom tussen VNet1 en on-premises netwerken. De blauwe lijnen geven paden aan voor de verkeersstroom tussen VNet2 en on-premises netwerken. In steady-state (vaste lijnen in het diagram) stroomt al het verkeer tussen VNets en on-premises locaties grotendeels via Microsoft backbone en stroomt door de interconnectie tussen on-premises locaties alleen in de storingsstatus (stippellijnen in het diagram) van een ExpressRoute.
+Het scenario 2 wordt geïllustreerd in het volgende diagram. In het diagram geven groene lijnen paden voor de verkeers stroom tussen VNet1 en on-premises netwerken aan. De blauwe lijnen geven paden voor de verkeers stroom tussen VNet2 en on-premises netwerken aan. In de stationaire toestand (ononderbroken lijnen in het diagram) stroomt al het verkeer tussen VNets en on-premises locaties via micro soft backbone voor het grootste deel, en doorloopt de onderlinge verbinding tussen on-premises locaties, alleen in de fout status (stippel lijnen in het diagram) van een ExpressRoute.
 
-[![9]][9]
+[![9,4]][9]
 
-De oplossing wordt geïllustreerd in het volgende diagram. Zoals geïllustreerd, u het scenario ontwerpen met behulp van een specifiekere route (optie 1) of AS-pad prepend (optie 2) om de selectie van VNet-paden te beïnvloeden. Als u de selectie van on-premises netwerkroutevoor Azure-gebonden verkeer wilt beïnvloeden, moet u de interconnectie tussen de on-premises locatie configureren als minder gunstig. Howe u configureert de interconnectiekoppeling als bij voorkeur, afhankelijk van het routeringsprotocol dat binnen het on-premises netwerk wordt gebruikt. U lokale voorkeur gebruiken met iBGP of metric met IGP (OSPF of IS-IS).
+De oplossing wordt geïllustreerd in het volgende diagram. Zoals u ziet, kunt u het scenario architecten met behulp van een specifiekere route (optie 1) of als laten voorafgaan door (optie 2) om de selectie van het VNet-pad te beïnvloeden. Als u de selectie van een on-premises netwerk route wilt beïnvloeden voor afhankelijk Azure-verkeer, moet u de onderlinge verbinding tussen de on-premises locatie zo weinig mogelijk configureren. Howe u de koppeling voor verbinding zoals gewenst configureert, is afhankelijk van het routerings protocol dat in het on-premises netwerk wordt gebruikt. U kunt lokale voor keur gebruiken met iBGP of metric met IGP (OSPF of IS-IS).
 
-[![10]][10]
+[![6]][10]
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel bespraken we hoe te ontwerpen voor noodherstel van een ExpressRoute-circuit privé-peering-connectiviteit. In de volgende artikelen wordt ingegaan op noodherstel van toepassingen en frontend-toegangsperspectieven:
+In dit artikel wordt uitgelegd hoe u een herstel na nood gevallen van een persoonlijke peering-verbinding met een ExpressRoute-circuit kunt ontwerpen. De volgende artikelen zijn bedoeld voor nood herstel van toepassingen en perspectieven voor toegang tot de frontend:
 
 - [Herstel na noodgevallen voor bedrijven][Enterprise DR]
 - [SMB-herstel na noodgeval met Azure Site Recovery][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "kleine tot middelgrote on-premises netwerkoverwegingen"
-[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "het beïnvloeden van padselectie met meer specifieke routes"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "verbindingsgewicht configureren via Azure-portal"
-[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "padselectie beïnvloeden met verbindingsgewicht"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "het beïnvloeden van padselectie met AS-padvoorbereiding"
-[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "grote gedistribueerde on-premises netwerkoverwegingen"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "klein tot middel groot aantal on-premises netwerk overwegingen"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "invloed op het selecteren van paden met meer specifieke routes"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.pnghet "verbindings gewicht configureren via Azure Portal"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "invloed op het selecteren van paden met verbindings gewicht"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "invloed op het selecteren van paden met als pad laten voorafgaan door"
+[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "grote aandachtspunten voor het distribueren van een on-premises netwerk"
 [7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "scenario 1"
-[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "actief actieve ExpressRoute-circuitsoplossing 1"
+[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "actief-actief ExpressRoute-circuit oplossing 1"
 [9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "scenario 2"
-[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "actief actieve ExpressRoute-circuitsoplossing 2"
+[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "actief-actief ExpressRoute-circuit oplossing 2"
 
 <!--Link References-->
 [HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute

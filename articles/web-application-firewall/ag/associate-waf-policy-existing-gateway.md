@@ -1,6 +1,6 @@
 ---
-title: Een Firewall-beleid voor webtoepassingen koppelen aan een bestaande Azure Application Gateway
-description: Meer informatie over het koppelen van een Firewall-beleid voor webtoepassingen aan een bestaande Azure Application Gateway.
+title: Een firewall beleid voor webtoepassingen koppelen aan een bestaande Azure-toepassing gateway
+description: Meer informatie over het koppelen van een Web Application firewall-beleid met een bestaande Azure-toepassing gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,17 +8,17 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083912"
 ---
-# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>Een WAF-beleid koppelen aan een bestaande toepassingsgateway
+# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>Een WAF-beleid koppelen aan een bestaande Application Gateway
 
-U Azure PowerShell gebruiken om [een WAF-beleid](create-waf-policy-ag.md)te maken, maar mogelijk hebt u al een toepassingsgateway en wilt u er gewoon een WAF-beleid aan koppelen. In dit artikel, je doet precies dat; u maakt een WAF-beleid en koppelt deze aan een reeds bestaande Application Gateway. 
+U kunt Azure PowerShell gebruiken om [een WAF-beleid te maken](create-waf-policy-ag.md), maar mogelijk hebt u al een Application Gateway en wilt u hieraan gewoon een WAF-beleid koppelen. In dit artikel hebt u het volgende gedaan: u maakt een WAF-beleid en koppelt dit aan een al bestaande Application Gateway. 
 
-1. Download uw application gateway- en firewallbeleid. Zie stap 2 als u geen bestaand firewallbeleid hebt. 
+1. Uw Application Gateway-en firewall-beleid ophalen. Als u geen bestaand firewall beleid hebt, raadpleegt u stap 2. 
 
    ```azurepowershell-interactive
       Connect-AzAccount
@@ -29,17 +29,17 @@ U Azure PowerShell gebruiken om [een WAF-beleid](create-waf-policy-ag.md)te make
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
 
-2. (Optioneel) Maak een firewallbeleid.
+2. Beschrijving Maak een firewall beleid.
 
    ```azurepowershell-interactive
       New-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>'
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
    > [!NOTE]
-   > Als u dit WAF-beleid maakt om over te stappen van een WAF Config naar een WAF-beleid, moet het beleid een exacte kopie van uw oude Config zijn. Dit betekent dat elke uitsluiting, aangepaste regel, uitgeschakelde regelgroep, enz.
-3. (Optioneel) U het WAF-beleid zo configureren dat aan uw behoeften voldoet. Dit omvat aangepaste regels, het uitschakelen van regels/regelgroepen, uitsluitingen, het instellen van limieten voor het uploaden van bestanden, enz. Als u deze stap overslaat, worden alle standaardinstellingen geselecteerd. 
+   > Als u dit WAF-beleid maakt om de overgang van een WAF-configuratie naar een WAF-beleid te maken, moet het beleid een exacte kopie van de oude configuratie zijn. Dit betekent dat elke uitsluiting, aangepaste regel, uitgeschakelde regel groep, enzovoort moet exact hetzelfde zijn als in de WAF-configuratie.
+3. Beschrijving U kunt het WAF-beleid configureren om aan uw behoeften aan te passen. Dit omvat aangepaste regels, het uitschakelen van regels/regel groepen, uitsluitingen, het instellen van limieten voor het uploaden van bestanden, enzovoort. Als u deze stap overs laat, worden alle standaard waarden geselecteerd. 
    
-4. Sla het beleid op en voeg het toe aan de toepassingsgateway. 
+4. Sla het beleid op en koppel dit aan uw Application Gateway. 
    
    ```azurepowershell-interactive
       #Save the policy itself

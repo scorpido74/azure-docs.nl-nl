@@ -1,6 +1,6 @@
 ---
-title: 'VPN-gateway: problemen met VPN-client - Azure AD-verificatie'
-description: Problemen met VPN Gateway P2S Azure AD-verificatieclients oplossen
+title: 'VPN Gateway: problemen met VPN-client oplossen-Azure AD-verificatie'
+description: Problemen met VPN Gateway P2S Azure AD-verificatie-clients oplossen
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74151971"
 ---
-# <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Problemen met een AZURE AD-verificatieVPN-client oplossen
+# <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Problemen met een VPN-client voor Azure AD-verificatie oplossen
 
-Met dit artikel u problemen oplossen met een VPN-client om verbinding te maken met een virtueel netwerk met behulp van Point-to-Site VPN en Azure Active Directory-verificatie.
+Dit artikel helpt u bij het oplossen van problemen met een VPN-client om verbinding te maken met een virtueel netwerk met behulp van punt-naar-site-VPN en Azure Active Directory-verificatie.
 
-## <a name="view-status-log"></a><a name="status"></a>Statuslogboek weergeven
+## <a name="view-status-log"></a><a name="status"></a>Status logboek weer geven
 
-Het statuslogboek weergeven voor foutberichten.
+Het status logboek weer geven voor fout berichten.
 
 ![logboeken](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. Klik op het pijlenpictogram rechtsonder in het clientvenster om de **statuslogboeken**weer te geven.
-2. Controleer de logboeken op fouten die op het probleem kunnen wijzen.
-3. Foutberichten worden rood weergegeven.
+1. Klik op het pictogram met de pijlen aan de rechter benedenhoek van het client venster om de **status logboeken**weer te geven.
+2. Controleer de logboeken op fouten die mogelijk duiden op het probleem.
+3. Fout berichten worden rood weer gegeven.
 
-## <a name="clear-sign-in-information"></a><a name="clear"></a>Inloggegevens wissen
+## <a name="clear-sign-in-information"></a><a name="clear"></a>Aanmeldings gegevens wissen
 
-De aanmeldingsgegevens wissen.
+Wis de aanmeldings gegevens.
 
 ![aanmelden](./media/troubleshoot-ad-vpn-client/2.png)
 
-1. Selecteer de ... naast het profiel dat u wilt oplossen. Selecteer **> opgeslagen account configureren > wissen**.
+1. Selecteer de... Naast het profiel dat u wilt oplossen. Selecteer **configureren-> opgeslagen account wissen**.
 2. Selecteer **Opslaan**.
 3. Probeer verbinding te maken.
-4. Als de verbinding nog steeds mislukt, gaat u verder naar de volgende sectie.
+4. Als de verbinding nog steeds mislukt, gaat u verder met de volgende sectie.
 
 ## <a name="run-diagnostics"></a><a name="diagnostics"></a>Diagnose uitvoeren
 
@@ -45,27 +45,27 @@ Voer diagnostische gegevens uit op de VPN-client.
 
 ![diagnostische gegevens](./media/troubleshoot-ad-vpn-client/3.png)
 
-1. Klik op de **...** naast het profiel waarop u diagnoses wilt uitvoeren. Selecteer **Diagnose -> Stel diagnose uit.**
-2. De klant voert een reeks tests uit en geeft het resultaat van de test weer
+1. Klik op de **..** . Naast het profiel waarvoor u Diagnostische gegevens wilt uitvoeren. Selecteer diagnose **-> diagnose uitvoeren**.
+2. Op de client wordt een reeks tests uitgevoerd en wordt het resultaat van de test weer gegeven
 
-   * Internettoegang : controleert of de client een internetverbinding heeft
-   * Clientreferenties : controleer of het eindpunt azure Active Directory-verificatie bereikbaar is
-   * Server Resolvable – Neemt contact op met de DNS-server om het IP-adres van de geconfigureerde VPN-server op te lossen
-   * Server bereikbaar – Controleert of de VPN-server reageert of niet
-3. Als een van de tests mislukt, neemt u contact op met uw netwerkbeheerder om het probleem op te lossen.
-4. In de volgende sectie ziet u hoe u de logboeken verzamelen, indien nodig.
+   * Internet toegang: controleert of de client verbinding heeft met Internet
+   * Client Referenties: Controleer of het Azure Active Directory verificatie-eind punt bereikbaar is
+   * Server omzettingable: contact op met de DNS-server om het IP-adres van de geconfigureerde VPN-server op te lossen
+   * Bereikbaar server: controleert of de VPN-server reageert of niet
+3. Als een van de tests mislukt, neemt u contact op met uw netwerk beheerder om het probleem op te lossen.
+4. In de volgende sectie ziet u hoe u de logboeken kunt verzamelen, indien nodig.
 
-## <a name="collect-client-log-files"></a><a name="logfiles"></a>Logboekbestanden voor client verzamelen
+## <a name="collect-client-log-files"></a><a name="logfiles"></a>Client logboek bestanden verzamelen
 
-Verzamel de VPN-clientlogbestanden. De logbestanden kunnen via een methode naar keuze naar ondersteuning/beheerder worden gestuurd. Bijvoorbeeld e-mail.
+Verzamel de logboek bestanden van de VPN-client. De logboek bestanden kunnen worden verzonden naar ondersteuning/beheerder via een methode van uw keuze. Bijvoorbeeld e-mail.
 
-1. Klik op de "..." naast het profiel waarop u diagnoses wilt uitvoeren. Selecteer **Diagnose -> Logboekenoverzicht weergeven**.
+1. Klik op de '... ' Naast het profiel waarvoor u Diagnostische gegevens wilt uitvoeren. Selecteer **Diagnostics-> map Logs weer geven**.
 
-   ![logboeken weergeven](./media/troubleshoot-ad-vpn-client/4.png)
-2. Windows Verkenner wordt geopend voor de map die de logboekbestanden bevat.
+   ![logboeken weer geven](./media/troubleshoot-ad-vpn-client/4.png)
+2. Windows Verkenner wordt geopend in de map met de logboek bestanden.
 
-   ![weergavebestand](./media/troubleshoot-ad-vpn-client/5.png)
+   ![bestand weer geven](./media/troubleshoot-ad-vpn-client/5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een Azure Active Directory-tenant maken voor P2S Open VPN-verbindingen die Azure AD-verificatie gebruiken voor](openvpn-azure-ad-tenant.md)meer informatie.
+Zie [een Azure Active Directory-Tenant maken voor P2S open VPN-verbindingen die gebruikmaken van Azure AD-verificatie](openvpn-azure-ad-tenant.md)voor meer informatie.

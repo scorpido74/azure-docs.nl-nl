@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure CDN-eindpunten oplossen - 404-statuscode
-description: Problemen oplossen met 404-antwoordcodes met Azure CDN-eindpunten.
+title: Problemen met Azure CDN eind punten oplossen-404-status code
+description: Troubleshoot 404-antwoord codes met Azure CDN-eind punten.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,92 +15,92 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083119"
 ---
-# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Problemen met Azure CDN-eindpunten oplossen die een statuscode van 404 retourneren
-In dit artikel u problemen met CDN-eindpunten (Azure Content Delivery Network) oplossen die 404 HTTP-antwoordstatuscodes retourneren.
+# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Troubleshooting Azure CDN-eind punten die een 404-status code retour neren
+Dit artikel biedt u de mogelijkheid om problemen met Azure Content Delivery Network (CDN)-eind punten op te lossen die de status codes van 404 HTTP-antwoorden retour neren.
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op [de MSDN Azure- en de Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure Support-site](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
 ## <a name="symptom"></a>Symptoom
-U hebt een CDN-profiel en een eindpunt gemaakt, maar uw inhoud lijkt niet beschikbaar te zijn op het CDN. Gebruikers die via de CDN-URL toegang tot uw inhoud proberen te krijgen, ontvangen een HTTP 404-statuscode. 
+U hebt een CDN-profiel en een eind punt gemaakt, maar uw inhoud lijkt niet beschikbaar te zijn op het CDN. Gebruikers die toegang proberen te krijgen tot uw inhoud via de CDN-URL, ontvangen een HTTP 404-status code. 
 
 ## <a name="cause"></a>Oorzaak
-Er zijn verschillende mogelijke oorzaken, waaronder:
+Er zijn verschillende mogelijke oorzaken, zoals:
 
 * De oorsprong van het bestand is niet zichtbaar voor het CDN.
-* Het eindpunt is verkeerd geconfigureerd, waardoor het CDN op de verkeerde plaats kijkt.
-* De host weigert de hostheader van het CDN.
-* Het eindpunt heeft geen tijd gehad om zich door het CDN te verspreiden.
+* Het eind punt is onjuist geconfigureerd, waardoor het CDN op de verkeerde plaats zoekt.
+* De host-header van het CDN wordt door de host afgewezen.
+* Het eind punt heeft geen tijd door gegeven in het CDN.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 > [!IMPORTANT]
-> Na het maken van een CDN-eindpunt is het niet onmiddellijk beschikbaar voor gebruik, omdat het tijd kost voordat de registratie zich door het CDN verspreidt:
+> Nadat u een CDN-eind punt hebt gemaakt, is het niet direct beschikbaar voor gebruik, omdat het tijd kost om de registratie door te geven via het CDN:
 > - Voor profielen van **Azure CDN Standard van Microsoft** is het doorgeven gewoonlijk binnen tien minuten voltooid. 
 > - Profielen van **Azure CDN Standard van Akamai** worden doorgaans binnen één minuut doorgegeven. 
 > - Profielen van **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** worden doorgaans binnen 90 minuten doorgegeven, maar in sommige gevallen kan dit langer duren. 
 > 
-> Als u de stappen in dit document voltooit en u nog steeds 404 reacties krijgt, u overwegen om een paar uur te wachten om het opnieuw te controleren voordat u een ondersteuningsticket opent.
+> Als u de stappen in dit document hebt voltooid en er nog 404 reacties worden ontvangen, moet u een paar uur wachten om opnieuw te controleren voordat u een ondersteunings ticket opent.
 > 
 > 
 
-### <a name="check-the-origin-file"></a>Het oorsprongsbestand controleren
-Controleer eerst of het bestand naar cache beschikbaar is op de oorsprongsserver en openbaar toegankelijk is op internet. De snelste manier om dat te doen is door een browser te openen in een privé- of incognitosessie en rechtstreeks naar het bestand te bladeren. Typ of plak de URL in het adresvak en controleer of deze resulteert in het bestand dat u verwacht. Stel dat u een bestand hebt in een Azure\/Storage-account dat toegankelijk is op https: /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Als u de inhoud van dit bestand met succes laden, slaagt het voor de test.
+### <a name="check-the-origin-file"></a>Het bron bestand controleren
+Controleer eerst of het bestand dat in de cache is opgeslagen, beschikbaar is op de oorspronkelijke server en toegankelijk is via internet. De snelste manier om dat te doen is door een browser in een persoonlijke of incognito-sessie te openen en rechtstreeks naar het bestand te bladeren. Typ of plak de URL in het vak Adres en controleer of het bestand de verwachte resultaten heeft. Stel dat u een bestand in een Azure Storage-account hebt dat toegankelijk is op https:\//cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt. Als u de inhoud van dit bestand kunt laden, wordt de test door gegeven.
 
 ![Gelukt!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
 > [!WARNING]
-> Hoewel dit de snelste en eenvoudigste manier is om te controleren of uw bestand openbaar beschikbaar is, kunnen sommige netwerkconfiguraties in uw organisatie het lijkt alsof een bestand openbaar beschikbaar is wanneer het in feite alleen zichtbaar is voor gebruikers van uw netwerk (zelfs als het wordt gehost in Azure). Als u ervoor wilt zorgen dat dit niet het geval is, test u het bestand met een externe browser, zoals een mobiel apparaat dat niet is verbonden met het netwerk van uw organisatie of een virtuele machine in Azure.
+> Dit is de snelste en eenvoudigste manier om te controleren of uw bestand openbaar beschikbaar is, maar sommige netwerk configuraties in uw organisatie kunnen erop wijzen dat een bestand openbaar beschikbaar is wanneer dit in feite alleen zichtbaar is voor gebruikers van uw netwerk (zelfs als het wordt gehost in Azure). Om ervoor te zorgen dat dit niet het geval is, test u het bestand met een externe browser, zoals een mobiel apparaat dat niet is verbonden met het netwerk van uw organisatie of een virtuele machine in Azure.
 > 
 > 
 
-### <a name="check-the-origin-settings"></a>De oorsprongsinstellingen controleren
-Nadat u hebt geverifieerd dat het bestand openbaar beschikbaar is op internet, controleert u uw oorsprongsinstellingen. Blader in de [Azure Portal](https://portal.azure.com)naar uw CDN-profiel en selecteer het eindpunt dat u probleemoplossing biedt. Selecteer op de resulterende **eindpuntpagina** de oorsprong.  
+### <a name="check-the-origin-settings"></a>Controleer de instellingen voor de oorsprong
+Nadat u hebt gecontroleerd of het bestand openbaar beschikbaar is op internet, controleert u de oorspronkelijke instellingen. Blader in [Azure Portal](https://portal.azure.com)naar uw CDN-profiel en selecteer het eind punt dat u wilt oplossen. Selecteer op de pagina resulterende **eind punt** de oorsprong.  
 
-![Eindpuntpagina met gemarkeerde oorsprong](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
+![Pagina eind punt met gemarkeerde oorsprong](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
 
-De **Origin-pagina** wordt weergegeven. 
+De pagina **oorsprong** wordt weer gegeven. 
 
-![Origin-pagina](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
+![Oorspronkelijke pagina](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
 
-#### <a name="origin-type-and-hostname"></a>Oorsprongstype en hostnaam
-Controleer of de waarden van het **origin-type** en de **oorspronkelijke hostnaam** correct zijn. In dit voorbeeld\/wordt https: /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, het hostnamegedeelte van de URL *cdndocdemo.blob.core.windows.net,* wat juist is. Omdat azure Storage, Web App en Cloud Service origins een vervolgkeuzelijstwaarde gebruiken voor het veld **Origin-hostname,** zijn onjuiste spellingen geen probleem. Als u echter een aangepaste oorsprong gebruikt, moet u ervoor zorgen dat uw hostnaam correct is gespeld.
+#### <a name="origin-type-and-hostname"></a>Type oorsprong en hostnaam
+Controleer of de waarden van het **type oorsprong** en de hostnaam van de **oorsprong** juist zijn. In dit voor beeld is https\/:/cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt, het hostname-gedeelte van de URL is *cdndocdemo.blob.core.Windows.net*, dat juist is. Omdat Azure Storage, Web-apps en Cloud service-oorsprong een vervolg keuzelijst waarde gebruiken voor het veld **hostnaam hostnamen** , zijn onjuiste spellen geen problemen. Als u echter een aangepaste oorsprong gebruikt, controleert u of de hostnaam juist is gespeld.
 
-#### <a name="http-and-https-ports"></a>HTTP- en HTTPS-poorten
-Controleer uw **HTTP-** en **HTTPS-poorten**. In de meeste gevallen zijn 80 en 443 correct en hebt u geen wijzigingen nodig.  Echter, als de oorsprong server luistert op een andere poort, dat zal moeten hier worden vertegenwoordigd. Als u dit niet zeker weet, bekijkt u de URL voor uw herkomstbestand. De HTTP- en HTTPS-specificaties gebruiken poorten 80 en 443 als standaardwaarden. In het voorbeeld-URL, https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt is een poort niet opgegeven, dus de standaardwaarde van 443 wordt aangenomen en de instellingen correct zijn.  
+#### <a name="http-and-https-ports"></a>HTTP-en HTTPS-poorten
+Controleer uw **http-** en **HTTPS-poorten**. In de meeste gevallen zijn 80 en 443 juist, en u hoeft geen wijzigingen aan te brengen.  Als de oorspronkelijke server op een andere poort luistert, moet deze hier worden weer gegeven. Als u het niet zeker weet, bekijkt u de URL van het bron bestand. De specificatie van HTTP-en HTTPS-poorten 80 en 443 worden als standaard waarden gebruikt. In de voor beeld-URL,\/https:/cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt, is geen poort opgegeven, dus wordt de standaard waarde van 443 gebruikt en zijn de instellingen juist.  
 
-Stel echter dat de URL voor het oorsprongsbestand\/dat u eerder hebt getest http: /www.contoso.com:8080/file.txt is. Let op het *gedeelte :8080* aan het einde van het segment hostname. Dat nummer instrueert de browser om poort 8080\.te gebruiken om verbinding te maken met de webserver op www contoso.com, daarom moet u *8080* invoeren in het **HTTP-poortveld.** Het is belangrijk op te merken dat deze poortinstellingen alleen van invloed zijn op de poort die het eindpunt gebruikt om informatie van de oorsprong op te halen.
+Stel echter dat de URL voor het oorspronkelijke bestand dat u eerder hebt getest http:\//www.contoso.com:8080/file.txt. Noteer het gedeelte *: 8080* aan het einde van het hostname-segment. Met dit nummer geeft u aan dat de browser poort 8080 moet gebruiken om verbinding te maken\.met de webserver op www-contoso.com. Daarom moet u *8080* invoeren in het veld **http-poort** . Het is belang rijk te weten dat deze poort instellingen alleen van invloed zijn op de poort die door het eind punt wordt gebruikt om informatie op te halen van de oorsprong.
 
 > [!NOTE]
-> **Azure CDN Standard van Akamai-eindpunten** staan het volledige TCP-poortbereik voor oorsprong niet toe.  Zie [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Door Azure CDN van Akamai toegestane poorten van oorsprong) voor een lijst met poorten van oorsprong die niet zijn toegestaan.  
+> **Azure CDN standaard van Akamai** -eind punten staan niet het volledige TCP-poort bereik voor de oorsprong toe.  Zie [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Door Azure CDN van Akamai toegestane poorten van oorsprong) voor een lijst met poorten van oorsprong die niet zijn toegestaan.  
 > 
 > 
 
-### <a name="check-the-endpoint-settings"></a>De eindpuntinstellingen controleren
-Selecteer **op** de pagina Eindpunt de knop **Configureren.**
+### <a name="check-the-endpoint-settings"></a>Controleer de instellingen van het eind punt
+Selecteer op de pagina **eind punt** de knop **configureren** .
 
-![Eindpuntpagina met knop configureren gemarkeerd](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
+![De pagina eind punt met de knop configureren gemarkeerd](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
 
-De pagina CDN-eindpunt **configureren** wordt weergegeven.
+De pagina CDN-eind punt **configureren** wordt weer gegeven.
 
 ![Pagina configureren](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
 #### <a name="protocols"></a>Protocollen
-Controleer **bij protocollen**of het protocol dat door de clients wordt gebruikt, is geselecteerd. Omdat hetzelfde protocol dat door de client wordt gebruikt, wordt gebruikt om toegang te krijgen tot de oorsprong, is het belangrijk dat de oorsprongspoorten correct zijn geconfigureerd in de vorige sectie. Het CDN-eindpunt luistert alleen op de standaard HTTP- en HTTPS-poorten (80 en 443), ongeacht de oorsprongspoorten.
+Voor **protocollen**, controleert u of het protocol dat door de clients wordt gebruikt, is geselecteerd. Omdat hetzelfde protocol dat wordt gebruikt door de client wordt gebruikt voor toegang tot de bron, is het belang rijk dat de oorspronkelijke poorten correct zijn geconfigureerd in de vorige sectie. Het CDN-eind punt luistert alleen op de standaard-HTTP-en HTTPS-poorten (80 en 443), ongeacht de poort van oorsprong.
 
-Laten we terugkeren naar ons hypothetische voorbeeld met http:\//www.contoso.com:8080/file.txt.  Zoals u zich zult herinneren, heeft Contoso *8080* opgegeven als hun HTTP-poort, maar laten we er ook van uitgaan dat ze *44300* als hun HTTPS-poort hebben opgegeven.  Als ze een eindpunt met de naam *contoso*hebben gemaakt, zou hun CDN-eindpunthostnaam *contoso.azureedge.net*zijn.  Een aanvraag voor\/http: /contoso.azureedge.net/file.txt is een HTTP-aanvraag, dus het eindpunt zou HTTP op poort 8080 gebruiken om het van de oorsprong op te halen.  Een beveiligde aanvraag via\/HTTPS, https: /contoso.azureedge.net/file.txt, zou ervoor zorgen dat het eindpunt HTTPS op poort 44300 gebruikt bij het ophalen van het bestand van de oorsprong.
+We gaan terug naar ons hypothetische voor beeld met\/http:/www.contoso.com:8080/file.txt.  Zoals u herinnert, heeft Contoso opgegeven *8080* als http-poort, maar laten we ook aannemen dat *44300* als HTTPS-poort is opgegeven.  Als ze een eind punt hebben gemaakt met de naam *Contoso*, wordt de hostnaam van het CDN-eind punt *contoso.azureedge.net*.  Een aanvraag voor http:\//contoso.azureedge.net/file.txt is een HTTP-aanvraag. Daarom gebruikt het eind punt http op poort 8080 om het op te halen van de oorsprong.  Een beveiligde aanvraag via HTTPS, https:\//contoso.azureedge.net/file.txt, zorgt ervoor dat het eind punt https gebruikt op poort 44300 bij het ophalen van het bestand van de oorsprong.
 
 #### <a name="origin-host-header"></a>Host-header van oorsprong
-De **Origin-hostheader** is de hostheaderwaarde die bij elke aanvraag naar de oorsprong wordt verzonden.  In de meeste gevallen moet dit hetzelfde zijn als de **Origin-hostnaam die** we eerder hebben geverifieerd.  Een onjuiste waarde in dit veld zal over het algemeen niet leiden tot 404 statussen, maar waarschijnlijk andere 4xx-statussen veroorzaken, afhankelijk van wat de oorsprong verwacht.
+De **oorsprong** van de host-header is de waarde van de host-header die met elke aanvraag wordt verzonden naar de oorsprong.  In de meeste gevallen moet dit hetzelfde zijn als de hostnaam van de **oorsprong** die we eerder hebben geverifieerd.  Een onjuiste waarde in dit veld veroorzaakt doorgaans geen 404-statussen, maar veroorzaakt waarschijnlijk andere 4xx-statussen, afhankelijk van wat de oorsprong verwacht.
 
 #### <a name="origin-path"></a>Pad voor de oorsprong
-Ten slotte moeten we ons **Origin-pad**verifiëren.  Standaard is dit leeg.  U moet dit veld alleen gebruiken als u het bereik wilt verkleinen van de door oorsprong gehoste resources die u beschikbaar wilt stellen op het CDN.  
+Ten slotte moeten we het **oorspronkelijke pad**verifiëren.  Dit is standaard leeg.  U moet dit veld alleen gebruiken als u het bereik wilt beperken van de bron-hostende resources die u beschikbaar wilt maken op het CDN.  
 
-In het voorbeeldeindpunt wilden we dat alle resources op het opslagaccount beschikbaar waren, zodat **origin-pad** leeg bleef.  Dit betekent dat een\/verzoek om https: /cdndocdemo.azureedge.net/publicblob/lorem.txt resulteert in een verbinding van het eindpunt naar cdndocdemo.core.windows.net die */publicblob/lorem.txt aanvraagt.*  Ook een aanvraag voor\/https: /cdndocdemo.azureedge.net/donotcache/status.png resulteert in het eindpunt waarin */donotcache/status.png* van de oorsprong wordt gevraagd.
+In het voor beeld-eind punt wilden alle resources op het opslag account beschikbaar zijn, dus het **bronpad** is leeg gelaten.  Dit betekent dat een aanvraag voor https:\//cdndocdemo.azureedge.net/publicblob/Lorem.txt resulteert in een verbinding van het eind punt naar cdndocdemo.core.Windows.net die */publicblob/Lorem.txt*aanvraagt.  Evenzo resulteert een aanvraag voor https:\//cdndocdemo.azureedge.net/donotcache/status.png in het eind punt dat */donotcache/status.png* van de oorsprong aanvraagt.
 
-Maar wat als je het CDN niet voor elk pad op je afkomst wilt gebruiken?  Stel dat je alleen het *publicblobpad* wilde blootleggen.  Als we */publicblob* invoeren in het **veld Origin-pad,** wordt het eindpunt invoegen */publicblob* voordat elk verzoek wordt ingediend bij de oorsprong.  Dit betekent dat het\/verzoek om https: /cdndocdemo.azureedge.net/publicblob/lorem.txt nu daadwerkelijk het aanvraaggedeelte van de URL, */publicblob/lorem.txt*en het toevoegen */publicblob* naar het begin zal brengen. Dit resulteert in een aanvraag voor */publicblob/publicblob/lorem.txt* van de oorsprong.  Als dat pad niet wordt opgelost in een echt bestand, geeft de oorsprong een status van 404 terug.  De juiste URL om lorem.txt in dit\/voorbeeld op te halen zou eigenlijk https zijn: /cdndocdemo.azureedge.net/lorem.txt.  Houd er rekening mee dat we het */publicblob-pad* helemaal niet opnemen, omdat het aanvraaggedeelte van de URL */lorem.txt* is en het eindpunt */publicblob*toevoegt, wat resulteert in */publicblob/lorem.txt* die het verzoek wordt doorgegeven aan de oorsprong.
+Maar wat als u het CDN niet wilt gebruiken voor elk pad op uw oorsprong?  Stel dat u het pad naar de *publicblob* wilt weer geven.  Als we */publicblob* in het veld **bronpad** invoeren, zorgt dat ervoor dat het eind punt */publicblob* invoegt voordat elke aanvraag wordt ingediend bij de oorsprong.  Dit betekent dat de aanvraag voor https:\//cdndocdemo.azureedge.net/publicblob/Lorem.txt nu daad werkelijk het aanvraag gedeelte van de URL, */publicblob/Lorem.txt*en het toevoegen van */publicblob* aan het begin zal nemen. Dit resulteert in een aanvraag voor */publicblob/publicblob/Lorem.txt* van de oorsprong.  Als dat pad niet kan worden omgezet naar een echt bestand, wordt de status van de 404 geretourneerd.  De juiste URL voor het ophalen van Lorem. txt in dit voor beeld is in\/werkelijkheid https:/cdndocdemo.azureedge.net/Lorem.txt.  Houd er rekening mee dat het pad van de */publicblob* helemaal niet is opgenomen, omdat het aanvraag gedeelte van de URL */lorem.txt* is en het eind punt */publicblob*toevoegt, wat *betekent dat de aanvraag wordt door* gegeven aan de oorsprong.
 

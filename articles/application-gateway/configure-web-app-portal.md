@@ -1,7 +1,7 @@
 ---
-title: Verkeer naar apps met meerdere tenant's beheren met behulp van de portal
+title: Verkeer naar multi tenant-apps beheren via de portal
 titleSuffix: Azure Application Gateway
-description: In dit artikel vindt u richtlijnen voor het configureren van Web-apps voor Azure App-service als leden in backendpool op een bestaande of nieuwe toepassingsgateway.
+description: Dit artikel bevat richt lijnen voor het configureren van Azure-app service-Web-apps als leden in back-end-pool op een bestaande of nieuwe toepassings gateway.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -9,98 +9,98 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74075166"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>App-service configureren met Application Gateway
+# <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
 
-Aangezien app-service een multi-tenantservice is in plaats van een implementatie, gebruikt deze hostheader in het binnenkomende verzoek om het verzoek op te lossen naar het juiste eindpunt van de app-service. Meestal is de DNS-naam van de toepassing, die op zijn beurt de DNS-naam is die is gekoppeld aan de toepassingsgateway voor de app-service, anders dan de domeinnaam van de backend-app-service. Daarom is de hostheader in de oorspronkelijke aanvraag die door de toepassingsgateway is ontvangen, niet dezelfde als de hostnaam van de backendservice. Hierdoor kunnen de back-ends van de multitenant back-ends het verzoek naar het juiste eindpunt niet oplossen, tenzij de hostheader in de aanvraag van de toepassingsgateway naar de backend wordt gewijzigd in de hostnaam van de backendservice.
+Omdat app service een multi tenant-service is in plaats van een exclusief gebruik, gebruikt deze host-header in de inkomende aanvraag om de aanvraag om te zetten in het juiste app service-eind punt. Normaal gesp roken is de DNS-naam van de toepassing, die op zijn beurt de DNS-naam die is gekoppeld aan de toepassings gateway voor de app service, afwijkt van de domein naam van de back-end-app service. Daarom is de host-header in de oorspronkelijke aanvraag die wordt ontvangen door de toepassings gateway niet hetzelfde als de hostnaam van de back-end-service. Als gevolg hiervan, tenzij de host-header in de aanvraag van de toepassings gateway naar de back-end is gewijzigd in de hostnaam van de back-end-service, kunnen de back-endservers van meerdere tenants de aanvraag niet omzetten naar het juiste eind punt.
 
-Application Gateway biedt `Pick host name from backend address` een schakelaar die de hostheader in de aanvraag overschrijft met de hostnaam van de back-end wanneer het verzoek wordt doorgestuurd van de Application Gateway naar de backend. Met deze mogelijkheid u ondersteuning bieden voor back-ends met meerdere tenant's, zoals Azure-app-service en API-beheer. 
+Application Gateway biedt een switch die `Pick host name from backend address` wordt aangeroepen en die de host-header in de aanvraag overschrijft met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end. Deze mogelijkheid biedt ondersteuning voor back-ends met meerdere tenants, zoals Azure app service en API management. 
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
-> - Een backendpool maken en er een app-service aan toevoegen
-> - HTTP-instellingen en aangepaste sonde maken met de switches Hostname kiezen ingeschakeld
+> - Een back-end-pool maken en hieraan een App Service toevoegen
+> - HTTP-instellingen en aangepaste test maken met de Schakel opties hostname kiezen ingeschakeld
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Toepassingsgateway: als u geen bestaande toepassingsgateway hebt, raadpleegt u hoe [u een toepassingsgateway maakt](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-- App-service: Als u geen bestaande App-service hebt, raadpleegt u [App-servicedocumentatie](https://docs.microsoft.com/azure/app-service/).
+- Application Gateway: als u geen bestaande toepassings gateway hebt, raadpleegt u [een toepassings gateway maken](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- App service: als u geen bestaande app service hebt, raadpleegt u [app service-documentatie](https://docs.microsoft.com/azure/app-service/).
 
-## <a name="add-app-service-as-backend-pool"></a>App-service toevoegen als backendpool
+## <a name="add-app-service-as-backend-pool"></a>App service toevoegen als back-end-groep
 
-1. Open in de Azure-portal de configuratieweergave van uw toepassingsgateway.
+1. Open in de Azure Portal de configuratie weergave van de Application Gateway.
 
-2. Klik onder **Backend-groepen**op **Toevoegen** om een nieuwe backendpool te maken.
+2. Klik onder **back-end-Pools**op **toevoegen** om een nieuwe back-end-groep te maken.
 
-3. Geef een geschikte naam aan de backend pool. 
+3. Geef een geschikte naam op voor de back-end-groep. 
 
-4. Klik **onder Doelen**op de vervolgkeuzelijst en kies App **Services** als optie.
+4. Klik onder **doelen**op de vervolg keuzelijst en kies **app Services** als optie.
 
-5. Er verschijnt een vervolgkeuzelijst direct onder de vervolgkeuzelijst **Doelen** die een lijst met uw App-services bevat. Kies in deze vervolgkeuzelijst de appservice die u als backendpoollid wilt toevoegen en klik op Toevoegen.
+5. Een vervolg keuzelijst direct onder de vervolg keuzelijst **doel** wordt weer gegeven, die een lijst met uw app Services bevat. Kies in deze vervolg keuzelijst de App Service die u wilt toevoegen als lid van een back-end-groep en klik op toevoegen.
 
-   ![Backend van app-service](./media/configure-web-app-portal/backendpool.png)
+   ![App service-back-end](./media/configure-web-app-portal/backendpool.png)
    
    > [!NOTE]
-   > De vervolgkeuzelijst vult alleen de app-services die zich in hetzelfde abonnement bevinden als uw Application Gateway. Als u een app-service wilt gebruiken die een ander abonnement heeft dan de app-gateway, kiest u in plaats van **App-services** te kiezen in de **vervolgkeuzelijst Doelen,** kiest u **IP-adres of hostnaam** optie en voert u de hostnaam in (bijvoorbeeld. azurewebsites.net) van de app-service.
+   > In de vervolg keuzelijst worden alleen de app-Services ingevuld die zich in hetzelfde abonnement bevinden als uw Application Gateway. Als u een app-service wilt gebruiken die zich in een ander abonnement bevindt dan de versie waarin de Application Gateway is, kiest u in plaats van **app Services** in de vervolg keuzelijst **doel** de optie **IP-adres of hostnaam** en voert u de hostnaam (voor beeld in. azurewebsites.net) van de app service.
 
-## <a name="create-http-settings-for-app-service"></a>HTTP-instellingen voor app-service maken
+## <a name="create-http-settings-for-app-service"></a>HTTP-instellingen voor app service maken
 
-1. Klik **onder HTTP-instellingen**op **Toevoegen** om een nieuwe HTTP-instelling te maken.
+1. Klik onder **http-instellingen**op **toevoegen** om een nieuwe http-instelling te maken.
 
-2. Voer een naam in voor de HTTP-instelling en u cookiegebaseerde affiniteit in- of uitschakelen volgens uw vereiste.
+2. Voer een naam in voor de HTTP-instelling en u kunt op cookie gebaseerd affiniteit op basis van uw vereisten in-of uitschakelen.
 
-3. Kies het protocol als HTTP of HTTPS volgens uw use case. 
+3. Kies het protocol als HTTP of HTTPS volgens uw use-case. 
 
    > [!NOTE]
-   > Als u HTTPS selecteert, hoeft u geen verificatiecertificaat of vertrouwd rootcertificaat te uploaden om de back-end van de app-service op de witte lijst te krijgen, omdat app-service een vertrouwde Azure-service is.
+   > Als u HTTPS selecteert, hoeft u geen verificatie certificaat of vertrouwd basis certificaat te uploaden om de app service-back-end te white list omdat app service een vertrouwde Azure-service is.
 
-4. Schakel het selectievakje voor **Gebruik voor App-service** in. Houd er `Create a probe with pick host name from backend address` rekening `Pick host name from backend address` mee dat de schakelaars automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de hostheader in de aanvraag met de hostnaam van de back-end wanneer het verzoek wordt doorgestuurd van de Application Gateway naar de backend.  
+4. Schakel het selectie vakje in voor het **gebruik van app service** . Houd er rekening mee `Create a probe with pick host name from backend address` dat `Pick host name from backend address` de switches automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de host-header in de aanvraag met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end.  
 
-   `Create a probe with pick host name from backend address`maakt automatisch een statussonde en koppelt deze aan deze HTTP-instelling. U hoeft geen andere statussonde sonde voor deze HTTP-instelling te maken. U controleren of een <HTTP Setting name> <Unique GUID> nieuwe sonde met de naam is toegevoegd `Pick host name from backend http settings enabled`in de lijst van gezondheid sondes en het heeft al de schakelaar.
+   `Create a probe with pick host name from backend address`maakt automatisch een status test en koppelt deze aan deze HTTP-instelling. U hoeft geen andere Health probe voor deze HTTP-instelling te maken. U kunt controleren of er een nieuwe test met de <HTTP Setting name> <Unique GUID> naam is toegevoegd aan de lijst met status controles en dat deze al de switch `Pick host name from backend http settings enabled`heeft.
 
-   Als u al een of meer HTTP-instellingen hebt die worden gebruikt voor de App-service en als deze HTTP-instellingen `Create a probe with pick host name from backend address` hetzelfde protocol gebruiken als het protocol dat u gebruikt in de instelling die u maakt, krijgt u in plaats van de switch een vervolgkeuzelijst om een van de aangepaste sondes te selecteren. Dit komt omdat er al een HTTP-instelling met app-service bestaat, zou `Pick host name from backend http settings enabled` er dus ook een gezondheidssonde bestaan die de schakelaar heeft. Kies die aangepaste sonde in de vervolgkeuzelijst.
+   Als u al een of meer HTTP-instellingen hebt die worden gebruikt voor app service en als deze HTTP-instellingen hetzelfde protocol gebruiken als de protocollen die u maakt, wordt in plaats van de `Create a probe with pick host name from backend address` switch een vervolg keuzelijst weer geven om een van de aangepaste tests te selecteren. Dit komt doordat er al een HTTP-instelling met app service bestaat, dus er zou ook een status test met de switch `Pick host name from backend http settings enabled` bestaan. Kies die aangepaste test in de vervolg keuzelijst.
 
-5. Klik op **OK** om de HTTP-instelling te maken.
+5. Klik op **OK** om de http-instelling te maken.
 
-   ![HTTP-instelling1](./media/configure-web-app-portal/http-setting1.png)
+   ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP-instelling2](./media/configure-web-app-portal/http-setting2.png)
+   ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
 
 
 
-## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Regel maken om de instelling Listener, Backend Pool en HTTP vast te binden
+## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Regel maken om de listener, back-end-pool en HTTP-instelling te koppelen
 
-1. Klik **onder Regels**op **Basisom** een nieuwe basisregel te maken.
+1. Klik onder **regels**op **Basic** om een nieuwe basis regel te maken.
 
-2. Geef een geschikte naam op en selecteer de luisteraar die de inkomende aanvragen voor de App-service accepteert.
+2. Geef een geschikte naam op en selecteer de listener waarmee de binnenkomende aanvragen voor de app service worden geaccepteerd.
 
-3. Kies in de vervolgkeuzelijst **Backend** pool de backendpool die u hierboven hebt gemaakt.
+3. Kies in de vervolg keuzelijst **back-endadresgroep** de back-end-groep die u hierboven hebt gemaakt.
 
-4. Kies in de vervolgkeuzelijst **HTTP-instelling** de http-instelling die u hierboven hebt gemaakt.
+4. Kies in de vervolg keuzelijst **http-instelling** de http-instelling die u hierboven hebt gemaakt.
 
 5. Klik op **OK** om deze regel op te slaan.
 
    ![Regel](./media/configure-web-app-portal/rule.png)
 
-## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Aanvullende configuratie in geval van omleiding naar het relatieve pad van de app-service
+## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Aanvullende configuratie in het geval van omleiding naar het relatieve pad van de app service
 
-Wanneer de app-service een omleidingsreactie naar de client stuurt om om te leiden naar het relatieve pad (bijvoorbeeld een omleiding van contoso.azurewebsites.net/path1 naar contoso.azurewebsites.net/path2), gebruikt deze dezelfde hostnaam in de locatiekop van de reactie als die in het verzoek dat is ontvangen van de toepassingsgateway. Dus de client zal het verzoek rechtstreeks aan contoso.azurewebsites.net/path2 in plaats van te gaan via de applicatie gateway (contoso.com/path2). Het omzeilen van de toepassingsgateway is niet wenselijk.
+Wanneer de app service een omleidings reactie naar de client verzendt om om te leiden naar het relatieve pad (bijvoorbeeld een omleiding van contoso.azurewebsites.net/path1 naar contoso.azurewebsites.net/path2), wordt dezelfde hostnaam gebruikt in de locatie header van de reactie van de toepassing in de aanvraag die is ontvangen van de toepassings gateway. De client gaat de aanvraag dus rechtstreeks naar contoso.azurewebsites.net/path2 in plaats van de Application Gateway (contoso.com/path2). Het overs laan van de toepassings gateway is niet gewenst.
 
-Als er in uw gebruiksvoorbeeld scenario's zijn waarin de app-service een omleidingsreactie naar de client moet verzenden, de extra stappen uitvoeren [om de locatiekoptekst te herschrijven.](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration)
+Als u in uw gebruiks voorbeeld scenario's hebt waarbij de app service een omleidings antwoord naar de client moet verzenden, voert [u de extra stappen uit om de locatie header te herschrijven](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
 
 ## <a name="restrict-access"></a>Toegang beperken
 
-De web-apps die in deze voorbeelden worden geïmplementeerd, gebruiken openbare IP-adressen die rechtstreeks vanaf internet toegankelijk zijn. Dit helpt bij het oplossen van problemen wanneer u meer te weten komt over een nieuwe functie en nieuwe dingen probeert. Maar als u van plan bent een functie in productie te nemen, wilt u meer beperkingen toevoegen.
+In de web-apps die in deze voor beelden zijn geïmplementeerd, worden open bare IP-adressen gebruikt die rechtstreeks via internet toegankelijk zijn. Dit helpt bij het oplossen van problemen met een nieuwe functie en nieuwe dingen. Maar als u van plan bent een functie in productie te implementeren, wilt u meer beperkingen toevoegen.
 
-Een manier waarop u de toegang tot uw web-apps beperken, is door [statische IP-beperkingen](../app-service/app-service-ip-restrictions.md)van Azure App Service te gebruiken. U bijvoorbeeld de web-app beperken zodat deze alleen verkeer van de toepassingsgateway ontvangt. Gebruik de IP-beperkingsfunctie voor app-service om de VIP-gateway van de toepassing als het enige adres met toegang te vermelden.
+Een manier om de toegang tot uw web-apps te beperken, is door [Azure app service statische IP-beperkingen](../app-service/app-service-ip-restrictions.md)te gebruiken. Zo kunt u de Web-App zodanig beperken dat alleen verkeer van de toepassings gateway wordt ontvangen. Gebruik de functie IP-beperking van app service om de Application Gateway-VIP weer te geven als het enige adres met Access.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie ondersteuning voor ondersteuning met [meerdere tenant-toepassingen met toepassingsgateway voor](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)meer informatie over de app-service en andere ondersteuning met meerdere tenants.
+Zie [ondersteuning voor multi tenant-Services met toepassings gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)voor meer informatie over de app service en andere ondersteuning voor meerdere tenants met Application Gateway.

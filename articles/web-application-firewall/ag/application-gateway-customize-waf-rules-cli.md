@@ -1,6 +1,6 @@
 ---
-title: Regels aanpassen met CLI - Azure Web Application Firewall
-description: In dit artikel vindt u informatie over het aanpassen van firewallregels voor webtoepassingen in Application Gateway met de Azure CLI.
+title: Regels aanpassen met CLI-Azure Web Application firewall
+description: Dit artikel bevat informatie over het aanpassen van de firewall regels voor webtoepassingen in Application Gateway met de Azure CLI.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,29 +8,29 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74048532"
 ---
-# <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Firewallregels voor webtoepassingen aanpassen met de Azure CLI
+# <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Firewall regels voor web-apps aanpassen met behulp van Azure CLI
 
-De Azure Application Gateway Web Application Firewall (WAF) biedt bescherming voor webtoepassingen. Deze beveiligingen worden geboden door de Open Web Application Security Project (OWASP) Core Rule Set (CRS). Sommige regels kunnen valse positieven veroorzaken en echt verkeer blokkeren. Daarom biedt Application Gateway de mogelijkheid om regelgroepen en regels aan te passen. Zie [Lijst met CRS-regelgroepen en -regels voor webtoepassingsfirewall.](application-gateway-crs-rulegroups-rules.md)
+De Azure-toepassing gateway Web Application firewall (WAF) biedt beveiliging voor webtoepassingen. Deze beveiligingen worden verzorgd door de OWASP (open Web Application Security project) kern regelset (CRS). Sommige regels kunnen valse positieven veroorzaken en werkelijk verkeer blok keren. Daarom biedt Application Gateway de mogelijkheid om regel groepen en regels aan te passen. Zie voor meer informatie over de specifieke regel groepen en regels de [lijst met CRS-regel groepen en-regels voor Web Application firewall](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Regelgroepen en regels weergeven
+## <a name="view-rule-groups-and-rules"></a>Regel groepen en-regels weer geven
 
-In de volgende codevoorbeelden ziet u hoe u regels en regelgroepen weergeven die configureerbaar zijn.
+De volgende code voorbeelden laten zien hoe u regels en regel groepen kunt weer geven die kunnen worden geconfigureerd.
 
-### <a name="view-rule-groups"></a>Regelgroepen weergeven
+### <a name="view-rule-groups"></a>Regel groepen weer geven
 
-In het volgende voorbeeld ziet u hoe u de regelgroepen weergeven:
+In het volgende voor beeld ziet u hoe de regel groepen worden weer gegeven:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
-De volgende uitvoer is een afgekapt antwoord uit het voorgaande voorbeeld:
+De volgende uitvoer is een afgekapte reactie van het vorige voor beeld:
 
 ```json
 [
@@ -75,15 +75,15 @@ De volgende uitvoer is een afgekapt antwoord uit het voorgaande voorbeeld:
 ]
 ```
 
-### <a name="view-rules-in-a-rule-group"></a>Regels in een regelgroep weergeven
+### <a name="view-rules-in-a-rule-group"></a>Regels in een regel groep weer geven
 
-In het volgende voorbeeld ziet u hoe u regels in een bepaalde regelgroep weergeeft:
+In het volgende voor beeld ziet u hoe u regels kunt weer geven in een opgegeven regel groep:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
-De volgende uitvoer is een afgekapt antwoord uit het voorgaande voorbeeld:
+De volgende uitvoer is een afgekapte reactie van het vorige voor beeld:
 
 ```json
 [
@@ -116,28 +116,28 @@ De volgende uitvoer is een afgekapt antwoord uit het voorgaande voorbeeld:
 
 ## <a name="disable-rules"></a>Regels uitschakelen
 
-In het volgende `910018` voorbeeld `910017` worden regels en op een toepassingsgateway uitgeschakeld:
+In het volgende voor beeld worden regels `910018` en `910017` een toepassings gateway uitgeschakeld:
 
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
-## <a name="mandatory-rules"></a>Verplichte regels
+## <a name="mandatory-rules"></a>Regels verplicht
 
-De volgende lijst bevat voorwaarden die ervoor zorgen dat de WAF het verzoek blokkeert in de preventiemodus (in de detectiemodus worden ze geregistreerd als uitzonderingen). Deze kunnen niet worden geconfigureerd of uitgeschakeld:
+De volgende lijst bevat voor waarden die ervoor zorgen dat de WAF de aanvraag blokkeert in de preventie modus (in de detectie modus worden ze als uitzonde ringen geregistreerd). Deze kunnen niet worden geconfigureerd of uitgeschakeld:
 
-* Als u de aanvraaginstantie niet ontleedt, wordt de aanvraag geblokkeerd, tenzij de lichaamsinspectie is uitgeschakeld (XML, JSON, formuliergegevens)
-* De gegevenslengte van de aanvraagtekst (zonder bestanden) is groter dan de geconfigureerde limiet
-* Aanvraagbody (inclusief bestanden) is groter dan de limiet
+* Fout bij het parseren van de aanvraag tekst leidt ertoe dat de aanvraag wordt geblokkeerd, tenzij de hoofd inspectie is uitgeschakeld (XML-, JSON-, formulier gegevens)
+* De gegevens lengte van de aanvraag tekst (zonder bestanden) is groter dan de geconfigureerde limiet
+* De aanvraag tekst (inclusief bestanden) is groter dan de limiet
 * Er is een interne fout opgetreden in de WAF-engine
 
-CRS 3.x specifiek:
+CRS 3. x specifiek:
 
-* Inkomende anomaliescore overschreden drempelwaarde
+* Drempel waarde voor binnenkomende afwijkings Score overschreden
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw uitgeschakelde regels hebt geconfigureerd, u leren hoe u uw WAF-logboeken bekijken. Zie [Application Gateway diagnostics](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)voor meer informatie.
+Nadat u de uitgeschakelde regels hebt geconfigureerd, kunt u meer informatie over het weer geven van uw WAF-logboeken bekijken. Zie [Application Gateway Diagnostics (diagnostische](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)gegevens) voor meer informatie.
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

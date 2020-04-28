@@ -1,7 +1,7 @@
 ---
 title: Interne omleiding met CLI
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het maken van een toepassingsgateway die intern webverkeer doorverwijst naar de juiste groep met behulp van de Azure CLI.
+description: Meer informatie over het maken van een toepassings gateway die intern webverkeer omleidt naar de juiste pool met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,26 +9,26 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74074557"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Een toepassingsgateway maken met interne omleiding met azure cli
+# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Een toepassings gateway met interne omleiding maken met behulp van Azure CLI
 
-U de Azure CLI gebruiken om [de omleiding van webverkeer](multiple-site-overview.md) te configureren wanneer u een [toepassingsgateway maakt.](overview.md) In deze zelfstudie definieert u een backendpool met behulp van een virtuele machineschaalset. Vervolgens configureert u luisteraars en regels op basis van domeinen die u bezit om ervoor te zorgen dat webverkeer bij de juiste groep terechtkomt. Deze zelfstudie gaat ervan uit dat u meerdere domeinen bezit en gebruikt voorbeelden van *www\.contoso.com* en *www\.contoso.org*.
+U kunt de Azure CLI gebruiken voor het configureren van [omleiding van webverkeer](multiple-site-overview.md) wanneer u een [toepassings gateway](overview.md)maakt. In deze zelf studie definieert u een back-end-pool met behulp van een schaalset voor virtuele machines. Vervolgens configureert u listeners en regels op basis van domeinen waarvan u de eigenaar bent om ervoor te zorgen dat webverkeer bij de juiste groep arriveert. In deze zelf studie wordt ervan uitgegaan dat u beschikt over meerdere domeinen en gebruikmaakt van voor beelden van *www\.-contoso.com* en *www\.-contoso.org*.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Netwerk instellen
 > * Een toepassingsgateway maken
-> * Listeners en omleidingsregel toevoegen
-> * Een virtuele machineschaalset maken met de backendpool
+> * Listeners en omleidings regel toevoegen
+> * Een schaalset voor virtuele machines maken met de back-end-groep
 > * Een CNAME-record in uw domein maken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken 
 
-Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). U vervolgens het subnet met de naam *myBackendSubnet* toevoegen dat nodig is door de backendpool van servers met behulp van [het az-netwerk vnet subnet maken.](/cli/azure/network/vnet/subnet) Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). U kunt vervolgens het subnet met de naam *myBackendSubnet* toevoegen dat nodig is voor de back-end-groep van servers met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -97,7 +97,7 @@ Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt. Nadat de 
 
 ## <a name="add-listeners-and-rules"></a>Listeners en regels toevoegen 
 
-Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In deze zelfstudie maakt u twee listeners voor de twee domeinen. In dit voorbeeld worden luisteraars gemaakt voor de domeinen *www\.contoso.com* en *www\.contoso.org*.
+Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In deze zelfstudie maakt u twee listeners voor de twee domeinen. In dit voor beeld worden listeners gemaakt voor de domeinen *www\.-contoso.com* en *www\.-contoso.org*.
 
 Voeg de back-endlisteners, die voor het omleiden van verkeer nodig zijn, toe met [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
 
@@ -118,9 +118,9 @@ az network application-gateway http-listener create \
   --host-name www.contoso.org   
   ```
 
-### <a name="add-the-redirection-configuration"></a>De omleidingsconfiguratie toevoegen
+### <a name="add-the-redirection-configuration"></a>De configuratie van de omleiding toevoegen
 
-Voeg de omleidingsconfiguratie toe die verkeer van *www\.consoto.org* naar de luisteraar verzendt voor *www\.contoso.com* in de toepassingsgateway met behulp van [az-netwerk-applicatie-gateway redirect-config maken.](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)
+Voeg de omleidings configuratie toe die verkeer van *www\.-consoto.org* naar de listener verzendt *voor\.www-contoso.com* in de toepassings gateway met [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -135,9 +135,9 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Routeringsregels toevoegen
 
-Regels worden verwerkt in de volgorde waarin ze zijn gemaakt en het verkeer wordt geleid met behulp van de eerste regel die overeenkomt met de URL die naar de toepassingsgateway wordt verzonden. Als u bijvoorbeeld een regel hebt die van een basislistener gebruikmaakt en een regel die via dezelfde poort van een listener voor meerdere sites gebruikmaakt, moet de regel voor de listener voor meerdere sites vermeld worden vóór de regel met de basislistener, opdat de regel voor meerdere sites kan functioneren zoals het hoort. 
+Regels worden verwerkt in de volg orde waarin ze worden gemaakt en verkeer wordt omgeleid met behulp van de eerste regel die overeenkomt met de URL die wordt verzonden naar de toepassings gateway. Als u bijvoorbeeld een regel hebt die van een basislistener gebruikmaakt en een regel die via dezelfde poort van een listener voor meerdere sites gebruikmaakt, moet de regel voor de listener voor meerdere sites vermeld worden vóór de regel met de basislistener, opdat de regel voor meerdere sites kan functioneren zoals het hoort. 
 
-In dit voorbeeld maakt u twee nieuwe regels en verwijdert u de standaardregel die is gemaakt.  U kunt de regel toevoegen met [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+In dit voor beeld maakt u twee nieuwe regels en verwijdert u de standaard regel die is gemaakt.  U kunt de regel toevoegen met [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -162,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
 
-In dit voorbeeld maakt u een virtuele machineschaalset die de backendpool ondersteunt die u hebt gemaakt. De schaalset die u maakt, heet *myvmss* en bevat twee virtuele machine-exemplaren waarop u NGINX installeert.
+In dit voor beeld maakt u een schaalset voor virtuele machines die ondersteuning biedt voor de back-end-groep die u hebt gemaakt. De schaalset die u maakt, heeft de naam *myvmss* en bevat twee exemplaren van virtuele machines waarop u NGINX installeert.
 
 ```azurecli-interactive
 az vmss create \
@@ -209,18 +209,18 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Voer uw domeinnaam in de adresbalk van de browser in. Zoals, http:\//www.contoso.com.
+Voer uw domeinnaam in de adresbalk van de browser in. Zoals http:\//www.contoso.com.
 
 ![Contoso-site testen in toepassingsgateway](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Wijzig het adres naar uw andere\/domein, bijvoorbeeld http: /www.contoso.org en u moet zien\.dat het verkeer is doorgestuurd naar de luisteraar voor www contoso.com.
+Wijzig het adres in uw andere domein, bijvoorbeeld http:\//www.contoso.org, en u ziet dat het verkeer is omgeleid naar de listener voor www\.-contoso.com.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > * Netwerk instellen
 > * Een toepassingsgateway maken
-> * Listeners en omleidingsregel toevoegen
-> * Een virtuele machineschaalset maken met de backendpool
+> * Listeners en omleidings regel toevoegen
+> * Een schaalset voor virtuele machines maken met de back-end-groep
 > * Een CNAME-record in uw domein maken

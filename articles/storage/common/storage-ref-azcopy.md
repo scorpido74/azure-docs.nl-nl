@@ -1,6 +1,6 @@
 ---
-title: azcopy | Microsoft Documenten
-description: In dit artikel vindt u referentiegegevens voor de opdracht azcopy.
+title: azcopy | Microsoft Docs
+description: In dit artikel vindt u Naslag informatie voor de azcopy-opdracht.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,36 +9,36 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74038091"
 ---
 # <a name="azcopy"></a>azcopy
 
-AzCopy is een opdrachtregeltool dat gegevens in en uit Azure Storage verplaatst.
+AzCopy is een opdracht regel programma waarmee gegevens worden verplaatst van en naar Azure Storage.
 
-## <a name="synopsis"></a>Synopsis
+## <a name="synopsis"></a>Samen vatting
 
-De algemene indeling van de `azcopy [command] [arguments] --[flag-name]=[flag-value]`opdrachten is: .
+De algemene indeling van de opdrachten is: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
-Zie [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
+Zie [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)als u problemen wilt melden of als u meer wilt weten over het hulp programma.
 
 ## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
-- [Gegevens overbrengen met AzCopy- en Blob-opslag](storage-use-azcopy-blobs.md)
-- [Gegevens overbrengen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Opties
 
-**--cap-mbps uint32**   Caps de overdrachtssnelheid, in megabits per seconde. De doorvoer van moment tot moment kan enigszins afwijken van de dop. Als deze optie is ingesteld op nul of wordt weggelaten, wordt de doorvoer niet afgetopt.
+**--Cap-Mbps uint32**   De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
 
-**-h, --help** Hulp voor azcopy
+**-h,--Help** Help voor azcopy
       
-**--output-type**  Indeling van de uitvoer van de opdracht. De keuzes zijn: tekst, json. De standaardwaarde is 'tekst'. (standaard "tekst")
+**--uitvoer type**  De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst)
 
 ## <a name="see-also"></a>Zie ook
 

@@ -1,6 +1,6 @@
 ---
-title: Een script toevoegen aan een herstelplan in Azure Site Recovery
-description: Meer informatie over het toevoegen van een VMM-script aan een herstelplan voor noodherstel van Hyper V VM's in VMM-clouds.
+title: Een script toevoegen aan een herstel plan in Azure Site Recovery
+description: Meer informatie over het toevoegen van een VMM-script aan een herstel plan voor nood herstel van virtuele Hyper-V-machines in VMM-Clouds.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,74 +8,74 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084877"
 ---
-# <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstelplan
+# <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstel plan
 
-In dit artikel wordt beschreven hoe u een VMM-script (System Center Virtual Machine Manager) maakt en toevoegt aan een herstelplan in [Azure Site Recovery](site-recovery-overview.md).
+In dit artikel wordt beschreven hoe u een System Center Virtual Machine Manager (VMM)-script maakt en dit toevoegt aan een herstel plan in [Azure site Recovery](site-recovery-overview.md).
 
-Plaats opmerkingen of vragen onder aan dit artikel of op het [Azure Recovery Services-forum.](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)
+Plaats opmerkingen of vragen onder aan dit artikel of op het [Azure Recovery Services-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Vereisten
 
-U PowerShell-scripts gebruiken in uw herstelplannen. Als u toegankelijk wilt zijn vanuit het herstelplan, moet u het script schrijven en het script in de VMM-bibliotheek plaatsen. Houd rekening met de volgende overwegingen tijdens het schrijven van het script:
+U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het herstel plan toegang wilt hebben, moet u het script ontwerpen en het script in de VMM-bibliotheek plaatsen. Houd rekening met de volgende overwegingen wanneer u het script schrijft:
 
-* Zorg ervoor dat scripts try-catch blokken gebruiken, zodat uitzonderingen op een elegante manier worden verwerkt.
-    - Als er een uitzondering optreedt in het script, wordt het script niet meer uitgevoerd en wordt de taak weergegeven als mislukt.
+* Zorg ervoor dat scripts try-catch-blokken gebruiken, zodat uitzonde ringen op de juiste wijze worden afgehandeld.
+    - Als er een uitzonde ring optreedt in het script, wordt het script gestopt en wordt de taak als mislukt weer gegeven.
     - Als er een fout optreedt, wordt de rest van het script niet uitgevoerd.
-    - Als er een fout optreedt wanneer u een ongeplande failover uitvoert, gaat het herstelplan door.
-    - Als er een fout optreedt wanneer u een geplande failover uitvoert, wordt het herstelplan gestopt. Repareer het script, controleer of het wordt uitgevoerd zoals verwacht en voer het herstelplan opnieuw uit.
-        - De `Write-Host` opdracht werkt niet in een script voor herstelplannen. Als u `Write-Host` de opdracht in een script gebruikt, mislukt het script. Als u uitvoer wilt maken, maakt u een proxyscript waarop het hoofdscript wordt uitgevoerd. Gebruik de ** \> ** opdracht om ervoor te zorgen dat alle uitvoer wordt uitgesluisd.
-        - Het script is een tijd uit als het niet binnen 600 seconden terugkeert.
-        - Als er iets naar STDERR is geschreven, wordt het script geclassificeerd als mislukt. Deze informatie wordt weergegeven in de details van de uitvoering van het script.
+    - Als er een fout optreedt wanneer u een niet-geplande failover uitvoert, wordt het herstel plan voortgezet.
+    - Als er een fout optreedt wanneer u een geplande failover uitvoert, wordt het herstel plan gestopt. Herstel het script, Controleer of het wordt uitgevoerd zoals verwacht en voer het herstel plan opnieuw uit.
+        - De `Write-Host` opdracht werkt niet in een herstel plan script. Als u de `Write-Host` opdracht in een script gebruikt, mislukt het script. Als u een uitvoer wilt maken, maakt u een proxy script dat op zijn beurt uw hoofd script uitvoert. Gebruik de ** \> ** opdracht om ervoor te zorgen dat alle uitvoer wordt uitgepiped.
+        - Er wordt een time-out van het script gegeven als het niet binnen 600 seconden wordt geretourneerd.
+        - Als er iets wordt geschreven naar STDERR, wordt het script als mislukt geclassificeerd. Deze informatie wordt weer gegeven in de details van de uitvoering van het script.
 
-* Scripts in een herstelplan worden uitgevoerd in de context van het VMM-serviceaccount. Controleer of dit account leesmachtigingen heeft voor het externe aandeel waarop het script zich bevindt. Test het script om uit te voeren met hetzelfde niveau van gebruikersrechten als het VMM-serviceaccount.
-* VMM-cmdlets worden geleverd in een Windows PowerShell-module. De module wordt geïnstalleerd wanneer u de VMM-console installeert. Als u de module in uw script wilt laden, gebruikt u de volgende opdracht in het script: 
+* Scripts in een herstel plan worden uitgevoerd in de context van het VMM-service account. Zorg ervoor dat dit account lees machtigingen heeft voor de externe share waarop het script zich bevindt. Test het script om uit te voeren met hetzelfde niveau van gebruikers rechten als het VMM-service account.
+* VMM-cmdlets worden geleverd in een Windows Power shell-module. De module wordt geïnstalleerd tijdens de installatie van de VMM-console. Als u de module in uw script wilt laden, gebruikt u de volgende opdracht in het script: 
 
     `Import-Module -Name virtualmachinemanager`
 
-    Zie [Aan de slag met Windows PowerShell en VMM](https://technet.microsoft.com/library/hh875013.aspx)voor meer informatie.
-* Zorg ervoor dat u ten minste één bibliotheekserver in uw VMM-implementatie hebt. Het pad voor het delen van de bibliotheek voor een VMM-server bevindt zich standaard lokaal op de VMM-server. De mapnaam is MSCVMMLibrary.
+    Zie [aan de slag met Windows Power shell en VMM](https://technet.microsoft.com/library/hh875013.aspx)voor meer informatie.
+* Zorg ervoor dat uw VMM-implementatie ten minste één bibliotheek server bevat. Het pad naar de bibliotheek share voor een VMM-server bevindt zich standaard lokaal op de VMM-server. De mapnaam is MSCVMMLibrary.
 
-  Als het pad voor het delen van uw bibliotheek op afstand is (of als het \\lokaal is, maar niet wordt gedeeld met MSCVMMLibrary), configureert u het aandeel als volgt met libserver2.contoso.com\share\ als voorbeeld:
+  Als het pad naar de bibliotheek share extern is (of als het lokaal is, maar niet is gedeeld met MSCVMMLibrary), configureert u de \\share als volgt met behulp van libserver2. contoso. com\share\ als voor beeld:
   
-  1. Open de registereditor en ga naar **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
+  1. Open de REGI ster-editor en ga naar **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
 
-  1. Wijzig de waarde voor **ScriptLibraryPath** in ** \\\libserver2.contoso.com\share\\**. Geef de volledige FQDN op. Geef machtigingen voor de locatie voor delen. Dit is het wortelknooppunt van het aandeel. Ga naar het hoofdknooppunt in de bibliotheek om te controleren of het hoofdknooppunt in VMM wordt geopend. Het pad dat wordt geopend is de wortel van het pad. Dit is het pad dat u moet gebruiken in de variabele.
+  1. Wijzig de waarde voor **ScriptLibraryPath** in ** \\\libserver2.contoso.com\share\\**. Geef de volledige FQDN op. Machtigingen voor de share locatie opgeven. Dit is het hoofd knooppunt van de share. Als u wilt controleren op het hoofd knooppunt, gaat u in VMM naar het hoofd knooppunt in de bibliotheek. Het pad dat wordt geopend, is de hoofdmap van het pad. Dit is het pad dat u moet gebruiken in de variabele.
 
-  1. Test het script met behulp van een gebruikersaccount dat hetzelfde niveau van gebruikersrechten heeft als het VMM-serviceaccount. Met behulp van deze gebruikersrechten wordt gecontroleerd of zelfstandige, geteste scripts op dezelfde manier worden uitgevoerd als in herstelplannen. Stel op de VMM-server het uitvoeringsbeleid als volgt in:
+  1. Test het script met behulp van een gebruikers account dat hetzelfde niveau van gebruikers rechten heeft als het VMM-service account. Met deze gebruikers rechten wordt gecontroleerd of zelfstandige, geteste scripts op dezelfde manier worden uitgevoerd als in herstel plannen. Stel op de VMM-server het uitvoerings beleid als volgt in op bypass:
 
-     a. Open de **64-bits Windows PowerShell-console** als beheerder.
+     a. Open de **64-bits Windows Power shell-** console als beheerder.
      
-     b. Voer **de bypass voor het beleid voor uitvoering instellen in**. Zie [De cmdlet Set-ExecutionPolicy gebruiken](https://technet.microsoft.com/library/ee176961.aspx)voor meer informatie .
+     b. Geef **Set-ExecutionPolicy bypass**op. Zie [using the Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)voor meer informatie.
 
      > [!IMPORTANT]
-     > **Stel alleen de bypass voor set-uitvoeringbeleid** in in de 64-bits PowerShell-console. Als u deze instelt voor de 32-bits PowerShell-console, worden de scripts niet uitgevoerd.
+     > Stel **Set-ExecutionPolicy bypass** alleen in de 64-bits Power shell-console in. Als u deze instelt voor de 32-bits Power shell-console, worden de scripts niet uitgevoerd.
 
 ## <a name="add-the-script-to-the-vmm-library"></a>Het script toevoegen aan de VMM-bibliotheek
 
-Als u een VMM-bronsite hebt, u een script maken op de VMM-server. Neem vervolgens het script op in uw herstelplan.
+Als u een VMM-bron site hebt, kunt u een script maken op de VMM-server. Neem vervolgens het script op in het herstel plan.
 
-1. Maak in het delen van de bibliotheek een nieuwe map. \<VMM-servernaam>\MSSCVMMLibrary\RPScripts. Plaats de map op de bron- en doelvmm-servers.
-1. Maak het script. Geef bijvoorbeeld de naam van het script RPScript. Controleer of het script werkt zoals verwacht.
-1. Plaats het script \<in de VMM-servernaam>\MSSCVMMLibrary-map op de bron- en doelvmm-servers.
+1. Maak een nieuwe map in de bibliotheek share. Bijvoorbeeld VMM- \<server naam> \msscvmmlibrary\rpscripts. Plaats de map op de bron-en doel-VMM-servers.
+1. Maak het script. Geef bijvoorbeeld het script de naam RPScript. Controleer of het script werkt zoals verwacht.
+1. Plaats het script in de \<naam van de VMM-server> map \msscvmmlibrary op de bron-en doel-VMM-servers.
 
-## <a name="add-the-script-to-a-recovery-plan"></a>Het script toevoegen aan een herstelplan
+## <a name="add-the-script-to-a-recovery-plan"></a>Het script toevoegen aan een herstel plan
 
-Nadat u VM's of replicatiegroepen aan een herstelplan hebt toegevoegd en het plan hebt gemaakt, u het script aan de groep toevoegen.
+Nadat u Vm's of replicatie groepen hebt toegevoegd aan een herstel plan en het plan hebt gemaakt, kunt u het script toevoegen aan de groep.
 
-1. Open het herstelplan.
-1. Selecteer een item in de lijst **Stappen.** Selecteer vervolgens **Script** of **Handmatige actie**.
-1. Geef op of u het script of de actie wilt toevoegen voor of na het geselecteerde item. Als u de positie van het script omhoog of omlaag wilt verplaatsen, selecteert u de knoppen **Omhoog** en **Omlaag verplaatsen.**
-1. Als u een VMM-script toevoegt, selecteert u **Failover naar VMM-script**. Voer in **Scriptpad**het relatieve pad naar het aandeel in. Typ bijvoorbeeld **\RPScripts\RPScript.PS1**.
-1. Als u een Azure Automation-runbook toevoegt, geeft u het automatiseringsaccount op waarin de runbook zich bevindt. Selecteer vervolgens het Azure-runbook-script dat u wilt gebruiken.
-1. Als u ervoor wilt zorgen dat het script werkt zoals verwacht, voert u een testfailover van het herstelplan uit.
+1. Open het herstel plan.
+1. Selecteer een item in de **stap** lijst. Selecteer vervolgens **script** of **hand matige actie**.
+1. Geef op of het script of de actie vóór of na het geselecteerde item moet worden toegevoegd. Als u de positie van het script omhoog of omlaag wilt verplaatsen, selecteert u de knoppen **omhoog** en **omlaag** .
+1. Als u een VMM-script toevoegt, selecteert u **failover naar VMM-script**. In het pad naar het **script**voert u het relatieve pad naar de share in. Voer bijvoorbeeld **\RPScripts\RPScript.ps1**.
+1. Als u een Azure Automation runbook toevoegt, geeft u het Automation-account op waarin het runbook zich bevindt. Selecteer vervolgens het Azure runbook-script dat u wilt gebruiken.
+1. Voer een testfailover van het herstel plan uit om ervoor te zorgen dat het script werkt zoals verwacht.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het uitvoeren van failovers](site-recovery-failover.md).
+* Meer informatie over het [uitvoeren van failovers](site-recovery-failover.md).
 

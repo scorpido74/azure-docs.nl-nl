@@ -1,7 +1,7 @@
 ---
-title: Verwijzing oData selecteren
+title: Verwijzing naar OData selecteren
 titleSuffix: Azure Cognitive Search
-description: Syntaxis en taalverwijzing voor expliciete selectie van velden die moeten worden weergegeven in de zoekresultaten van Azure Cognitive Search-query's.
+description: De syntaxis en de taal verwijzing voor een expliciete selectie van velden die moeten worden geretourneerd in de zoek resultaten van Azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113097"
 ---
-# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select syntaxis in Azure Cognitive Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-$select syntaxis in azure Cognitive Search
 
- U de [parameter OData **$select** ](query-odata-filter-orderby-syntax.md) gebruiken om te kiezen welke velden u wilt opnemen in zoekresultaten van Azure Cognitive Search. In dit artikel worden de syntaxis van **$select** in detail beschreven. Zie [Hoe u met zoekresultaten werken in Azure Cognitive Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$select** bij het presenteren van zoekresultaten.
+ U kunt de [OData- **$Select** para meter](query-odata-filter-orderby-syntax.md) gebruiken om te kiezen welke velden u wilt toevoegen aan de zoek resultaten van Azure Cognitive Search. In dit artikel wordt de syntaxis van **$Select** uitvoerig beschreven. Zie [How to work with Search Results in Azure Cognitive Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$Select** bij het presen teren van zoek resultaten.
 
 ## <a name="syntax"></a>Syntaxis
 
-De **parameter $select** bepaalt welke velden voor elk document worden geretourneerd in de queryresultaatset. In het volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) wordt de grammatica voor de **parameter $select** gedefinieerd:
+De **$Select** -para meter bepaalt welke velden voor elk document worden geretourneerd in de resultatenset van de query. De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de para meter **$Select** :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,30 +42,30 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-Er is ook een interactief syntaxisdiagram beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Syntaxisdiagram OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Zie [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-De **parameter $select** komt in twee vormen:
+De para meter **$Select** is beschikbaar in twee vormen:
 
-1. Een enkele`*`ster ( ), die aangeeft dat alle opvraagbare velden moeten worden geretourneerd, of
-1. Een door komma's gescheiden lijst met veldpaden, die bepalen welke velden moeten worden geretourneerd.
+1. Een enkele ster (`*`), waarmee wordt aangegeven dat alle ophaalbaar velden moeten worden geretourneerd, of
+1. Een door komma's gescheiden lijst met veld paden, waarmee wordt aangegeven welke velden moeten worden geretourneerd.
 
-Wanneer u het tweede formulier gebruikt, u alleen ophaalbare velden in de lijst opgeven.
+Wanneer u het tweede formulier gebruikt, mag u alleen ophalen bare velden in de lijst opgeven.
 
-Als u een complex veld aangeeft zonder de subvelden expliciet op te geven, worden alle opvraagbare subvelden opgenomen in de queryresultatenset. Stel dat uw index `Address` een `Street`veld `City`heeft `Country` met , en subvelden die allemaal kunnen worden opgehaald. Als u `Address` in **$select**opgeeft, bevatten de queryresultaten alle drie de subvelden.
+Als u een complex veld vermeldt zonder de subvelden expliciet op te geven, worden alle subvelden die kunnen worden opgehaald, opgenomen in de resultatenset van de query. Stel bijvoorbeeld dat `Address` uw index een veld bevat met `Street`, `City`en `Country` subvelden die allemaal kunnen worden opgehaald. Als u in `Address` **$Select**opgeeft, worden in de query resultaten alle drie subvelden weer geven.
 
 ## <a name="examples"></a>Voorbeelden
 
-Neem `HotelId`de `HotelName`velden `Rating` op het hoogste niveau op in `City` de resultaten, evenals het subveld van `Address`:
+Neem de `HotelId`velden `HotelName`, en `Rating` op het hoogste niveau in de resultaten op, evenals het `City` subveld van: `Address`
 
     $select=HotelId, HotelName, Rating, Address/City
 
-Een voorbeeldresultaat kan er als volgt uitzien:
+Een voor beeld van een resultaat kan er als volgt uitzien:
 
 ```json
 {
@@ -78,11 +78,11 @@ Een voorbeeldresultaat kan er als volgt uitzien:
 }
 ```
 
-Neem `HotelName` het veld op het hoogste niveau op in `Address`de resultaten, `BaseRate` evenals alle subvelden `Rooms` van , en de `Type` en subvelden van elk object in de verzameling:
+Neem het `HotelName` veld op het hoogste niveau in de resultaten op, evenals alle subvelden van `Address`, en de `Type` `BaseRate` subvelden van elk object in de `Rooms` verzameling:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
-Een voorbeeldresultaat kan er als volgt uitzien:
+Een voor beeld van een resultaat kan er als volgt uitzien:
 
 ```json
 {
@@ -110,7 +110,7 @@ Een voorbeeldresultaat kan er als volgt uitzien:
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Werken met zoekresultaten in Azure Cognitive Search](search-pagination-page-layout.md)
-- [Overzicht van OData-expressietaal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
-- [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoekdocumenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Werken met zoek resultaten in azure Cognitive Search](search-pagination-page-layout.md)
+- [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

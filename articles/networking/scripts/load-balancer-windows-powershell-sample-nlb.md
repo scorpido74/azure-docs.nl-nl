@@ -1,6 +1,6 @@
 ---
-title: Load balance verkeer naar VM's voor HA - Azure PowerShell
-description: Azure PowerShell Script-voorbeeld - Load balance-verkeer naar VM's voor hoge beschikbaarheid
+title: Taak verdeling van verkeer naar Vm's voor HA-Azure PowerShell
+description: "Azure PowerShell-voorbeeld script: taak verdeling verkeer naar Vm's voor hoge Beschik baarheid"
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
 ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74067072"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid
 
-Dit scriptvoorbeeld maakt alles wat nodig is om verschillende Virtuele Windows-machines uit te voeren die zijn geconfigureerd in een zeer beschikbare en laadgebalanceerde configuratie. Nadat het script is uitgevoerd, beschikt u over drie virtuele machines, die gekoppeld zijn aan een Azure-beschikbaarheidsset en toegankelijk zijn via een Azure Load Balancer.
+Met dit script voorbeeld maakt u alles wat u nodig hebt om meerdere virtuele Windows-machines uit te voeren, geconfigureerd in een configuratie met hoge Beschik baarheid en taak verdeling. Nadat het script is uitgevoerd, beschikt u over drie virtuele machines, die gekoppeld zijn aan een Azure-beschikbaarheidsset en toegankelijk zijn via een Azure Load Balancer.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Accepteert mijn aanmeldingspagina voor Azure AD Microsoft-accounts | Microsoft Documenten
-description: Hoe berichten op het scherm het opzoeken van gebruikersnaam weergeven tijdens aanmelding
+title: Accepteert mijn aanmeldings pagina voor Azure AD micro soft-accounts | Microsoft Docs
+description: Hoe scherm berichten de gebruikers naam zoeken weer spie gelen tijdens het aanmelden
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,26 +14,26 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74024286"
 ---
-# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Aanmeldingsopties voor Microsoft-accounts in Azure Active Directory
+# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Aanmeldings opties voor micro soft-accounts in Azure Active Directory
 
-De Microsoft 365-aanmeldingspagina voor Azure Active Directory (Azure AD) ondersteunt werk- of schoolaccounts en Microsoft-accounts, maar afhankelijk van de situatie van de gebruiker kan dit het een of de ander zijn. De aanmeldingspagina van Azure AD ondersteunt bijvoorbeeld:
+De Microsoft 365-aanmeldings pagina voor Azure Active Directory (Azure AD) ondersteunt werk-of school accounts en micro soft-accounts, maar afhankelijk van de situatie van de gebruiker, kan dit een van beide of beide zijn. De aanmeldings pagina van Azure AD ondersteunt bijvoorbeeld:
 
-* Apps die aanmeldingen van beide typen account accepteren
+* Apps die aanmeldingen accepteren van beide typen accounts
 * Organisaties die gasten accepteren
 
 ## <a name="identification"></a>Identificatie
-U zien of de aanmeldingspagina die uw organisatie gebruikt Microsoft-accounts ondersteunt door te kijken naar de hinttekst in het gebruikersnaamveld. Als in de hinttekst 'E-mail, telefoon of Skype' staat, ondersteunt de aanmeldingspagina Microsoft-accounts.
+U kunt zien of de aanmeldings pagina die door uw organisatie wordt gebruikt, micro soft-accounts ondersteunt door te kijken naar de tekst van de hint in het veld username. Als de tekst van de hint "E-mail, telefoon of Skype" luidt, ondersteunt de aanmeldings pagina micro soft-accounts.
 
-![Verschil tussen aanmeldingspagina's voor account](./media/signin-account-support/ui-prompt.png)
+![Verschil tussen de aanmeldings pagina's van een account](./media/signin-account-support/ui-prompt.png)
 
-[Aanvullende aanmeldingsopties werken alleen voor persoonlijke Microsoft-accounts,](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) maar kunnen niet worden gebruikt voor het aanmelden bij bronnen voor werk- of schoolaccounts.
+[Aanvullende aanmeldings opties werken alleen voor persoonlijke micro soft-accounts](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , maar kunnen niet worden gebruikt voor het aanmelden bij resources van het werk-of school account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw aanmeldingsmerking aanpassen](../fundamentals/add-custom-domain.md)
+[Uw huis stijl voor aanmelden aanpassen](../fundamentals/add-custom-domain.md)

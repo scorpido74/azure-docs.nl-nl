@@ -1,6 +1,6 @@
 ---
-title: Proceswijzigingsfeed in Azure Blob Storage (Preview) | Microsoft Documenten
-description: Meer informatie over het verwerken van feedlogboeken voor wijzigingen in een .NET-clienttoepassing
+title: Wijzigings feed in Azure Blob Storage verwerken (preview) | Microsoft Docs
+description: Meer informatie over het verwerken van Logboeken voor wijzigings invoer in een .NET-client toepassing
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,36 +9,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74111868"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Voert voor proceswijziging in Azure Blob Storage (voorbeeld)
+# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Wijzigings feed in Azure Blob Storage verwerken (preview-versie)
 
-De feed wijzigen biedt transactielogboeken van alle wijzigingen die zich voordoen in de blobs en de blobmetagegevens in uw opslagaccount. In dit artikel ziet u hoe u feedrecords voor wijzigingen lezen met behulp van de feedprocessorbibliotheek voor blobwijzigingen.
+Change feed biedt transactie logboeken van alle wijzigingen die plaatsvinden in de blobs en de BLOB-meta gegevens in uw opslag account. In dit artikel leest u hoe u wijzigingen in feeds kunt lezen met behulp van de processor bibliotheek voor het wijzigen van de blob.
 
-Zie [Feed wijzigen in Azure Blob Storage (Preview)](storage-blob-change-feed.md)voor meer informatie over de wijzigingsfeed.
+Zie [Change feed in Azure Blob Storage (preview)](storage-blob-change-feed.md)voor meer informatie over de feed voor wijzigingen.
 
 > [!NOTE]
-> De wijzigingsfeed is openbaar en is beschikbaar in de regio's **Westcentralus** en **Westus2.** Zie [Feedondersteuning wijzigen in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over deze functie en bekende problemen en beperkingen. De bibliotheek voor de wijzigingsfeedprocessor kan worden gewijzigd tussen nu en wanneer deze bibliotheek algemeen beschikbaar wordt.
+> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie [ondersteuning voor feeds wijzigen in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over deze functie, samen met bekende problemen en beperkingen. De processor bibliotheek van de wijzigings feed kan nu worden gewijzigd en wanneer deze bibliotheek algemeen beschikbaar wordt.
 
-## <a name="get-the-blob-change-feed-processor-library"></a>De feedprocessorbibliotheek voor blobwijzigingen weergeven
+## <a name="get-the-blob-change-feed-processor-library"></a>De processor bibliotheek voor het wijzigen van de BLOB-feed ophalen
 
-1. Voeg in Visual Studio `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` de URL toe aan uw NuGet-pakketbronnen. 
+1. Voeg in Visual Studio de URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` toe aan uw NuGet-pakket bronnen. 
 
-   Zie [pakketbronnen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)voor meer informatie.
+   Zie [pakket bronnen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)voor meer informatie.
 
-2. Zoek in NuGet Package Manager het **Microsoft.Azure.Storage.Changefeed-pakket** en installeer het in uw project. 
+2. Zoek in de NuGet package manager het pakket **micro soft. Azure. storage. Changefeed** en installeer het in uw project. 
 
-   Zie [Een pakket zoeken en installeren](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)voor meer informatie.
+   Zie [een pakket zoeken en installeren](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)voor meer informatie.
 
-## <a name="connect-to-the-storage-account"></a>Verbinding maken met het opslagaccount
+## <a name="connect-to-the-storage-account"></a>Verbinding maken met het opslag account
 
-Ontwende de verbindingstekenreeks door de [methode CloudStorageAccount.TryParse aan](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) te roepen. 
+Parseer de connection string door de methode [Cloud Storage account. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) aan te roepen. 
 
-Maak vervolgens een object dat Blob Storage vertegenwoordigt in uw opslagaccount door de [methode CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) aan te roepen.
+Maak vervolgens een object dat Blob Storage in uw opslag account vertegenwoordigt door de methode [Cloud Storage account. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) aan te roepen.
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
@@ -58,16 +58,16 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 }
 ```
 
-## <a name="initialize-the-change-feed"></a>De wijzigingsfeed initialiseren
+## <a name="initialize-the-change-feed"></a>De wijzigings feed initialiseren
 
-Voeg het volgende toe met behulp van instructies aan de bovenkant van uw codebestand. 
+Voeg de volgende using-instructies toe aan de bovenkant van het code bestand. 
 
 ```csharp
 using Avro.Generic;
 using ChangeFeedClient;
 ```
 
-Maak vervolgens een instantie van de klasse **ChangeFeed** door de **methode GetContainerReference** aan te roepen. Geef de naam van de wijzigingsvoercontainer door.
+Maak vervolgens een instantie van de klasse **ChangeFeed** door de methode **GetContainerReference** aan te roepen. Geef de naam van de container voor de wijzigings invoer door.
 
 ```csharp
 public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
@@ -82,14 +82,14 @@ public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
 }
 ```
 
-## <a name="reading-records"></a>Het lezen van records
+## <a name="reading-records"></a>Records lezen
 
 > [!NOTE]
-> De wijzigingsfeed is een onveranderlijke en alleen-lezen entiteit in uw opslagaccount. Elk aantal toepassingen kan de wijzigingsfeed gelijktijdig en onafhankelijk lezen en verwerken op hun eigen gemak. Records worden niet verwijderd uit de wijzigingsfeed wanneer een toepassing ze leest. De lees- of iteratiestatus van elke verbruikende lezer is onafhankelijk en wordt alleen door uw toepassing onderhouden.
+> De wijzigings feed is een onveranderlijke en alleen-lezen entiteit in uw opslag account. Een wille keurig aantal toepassingen kan de wijzigings feed gelijktijdig en onafhankelijk van hun eigen gemak lezen en verwerken. Records worden niet uit de wijzigings feed verwijderd wanneer deze door een toepassing worden gelezen. De lees-of iteratie status van elke verbruikte lezer is onafhankelijk en wordt alleen door uw toepassing onderhouden.
 
 De eenvoudigste manier om records te lezen is door een instantie van de klasse **ChangeFeedReader** te maken. 
 
-In dit voorbeeld worden alle records in de wijzigingsfeed doorgestoofd en wordt vervolgens een paar waarden van elke record naar de console afgedrukt. 
+In dit voor beeld worden alle records in de wijzigings feed door lopen en wordt er een paar waarden uit elke record naar de console afgedrukt. 
  
 ```csharp
 public async Task ProcessRecords(ChangeFeed changeFeed)
@@ -116,15 +116,15 @@ public async Task ProcessRecords(ChangeFeed changeFeed)
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Leesrecords hervatten vanuit een opgeslagen positie
+## <a name="resuming-reading-records-from-a-saved-position"></a>Het lezen van records vanuit een opgeslagen positie hervatten
 
-U ervoor kiezen om uw leespositie op te slaan in uw wijzigingsfeed en de records op een later tijdstip te herhalen. U de status van uw iteratie van de wijzigingsfeed op elk gewenst moment opslaan met de methode **ChangeFeedReader.SerializeState().** De status is een **tekenreeks** en uw toepassing kan die status opslaan op basis van het ontwerp van uw toepassing (bijvoorbeeld naar een database of een bestand).
+U kunt ervoor kiezen om uw Lees positie op te slaan in uw wijzigings feed en de records in een later tijdstip te hervatten. U kunt de status van uw iteratie van de wijzigings feed op elk gewenst moment opslaan met de methode **ChangeFeedReader. SerializeState ()** . De status is een **teken reeks** en uw toepassing kan die status opslaan op basis van het ontwerp van uw toepassing (bijvoorbeeld: naar een Data Base of een bestand).
 
 ```csharp
     string currentReadState = processor.SerializeState();
 ```
 
-U door records van de laatste status blijven herhalen door de **ChangeFeedReader te** maken met de methode **CreateChangeFeedReaderFromPointerAsync.**
+U kunt door gaan met het door lopen van records van de laatste status door de **ChangeFeedReader** te maken met behulp van de methode **CreateChangeFeedReaderFromPointerAsync** .
 
 ```csharp
 public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
@@ -152,9 +152,9 @@ public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string l
 
 ```
 
-## <a name="stream-processing-of-records"></a>Verwerking van records streamen
+## <a name="stream-processing-of-records"></a>Stroom verwerking van records
 
-U ervoor kiezen om feedrecords te wijzigen zodra deze binnenkomen. Zie [Specificaties](storage-blob-change-feed.md#specifications).
+U kunt ervoor kiezen om wijzigingen in de feed-records te verwerken wanneer ze binnenkomen. Zie [specificaties](storage-blob-change-feed.md#specifications).
 
 ```csharp
 public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
@@ -186,13 +186,13 @@ public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
 }
 ```
 
-## <a name="reading-records-within-a-time-range"></a>Records lezen binnen een tijdsbereik
+## <a name="reading-records-within-a-time-range"></a>Records in een tijds bereik lezen
 
-De wijzigingsfeed is ingedeeld in segmenten per uur op basis van de gebeurtenistijd wijzigen. Zie [Specificaties](storage-blob-change-feed.md#specifications). U records lezen uit feedsegmenten wijzigen die binnen een bepaald tijdsbereik vallen.
+De wijzigings feed is ingedeeld in uren segmenten op basis van de tijd voor het wijzigen van de gebeurtenis. Zie [specificaties](storage-blob-change-feed.md#specifications). U kunt records lezen van invoer segmenten die binnen een bepaald tijds bereik vallen.
 
-In dit voorbeeld worden de begintijden van alle segmenten opeen. Vervolgens wordt deze lijst doorgezet totdat de begintijd voorbij de tijd van het laatste verbruikssegment of voorbij de eindtijd van het gewenste bereik ligt. 
+In dit voor beeld worden de begin tijden van alle segmenten opgehaald. Vervolgens wordt deze lijst doorlopend totdat de begin tijd na het tijdstip van het laatste verbruikte segment of voorbij de eind tijd van het gewenste bereik valt. 
 
-### <a name="selecting-segments-for-a-time-range"></a>Segmenten voor een tijdsbereik selecteren
+### <a name="selecting-segments-for-a-time-range"></a>Segmenten selecteren voor een tijds bereik
 
 ```csharp
 public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
@@ -235,9 +235,9 @@ public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
 }
 ```
 
-### <a name="reading-records-in-a-segment"></a>Records lezen in een segment
+### <a name="reading-records-in-a-segment"></a>Records in een segment lezen
 
-U records uit afzonderlijke segmenten of segmentenreeksen lezen.
+U kunt records uit afzonderlijke segmenten of bereiken van segmenten lezen.
 
 ```csharp
 public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset segmentOffset)
@@ -267,11 +267,11 @@ public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset 
 }
 ```
 
-## <a name="read-records-starting-from-a-time"></a>Records vanaf een tijd lezen
+## <a name="read-records-starting-from-a-time"></a>Records lezen vanaf een tijd
 
-U de records van de wijzigingsfeed van een beginsegment tot het einde lezen. Net als bij het lezen van records binnen een tijdsbereik, u de segmenten weergeven en een segment kiezen om te beginnen met herhalen.
+U kunt de records van de wijzigings feed lezen van een begin segment tot het einde. Net als bij het lezen van records binnen een tijds bereik, kunt u de segmenten weer geven en een segment kiezen om te beginnen met het herhalen van.
 
-In dit voorbeeld wordt de [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) van het eerste segment verwerkt.
+In dit voor beeld wordt de [Date Time offset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) opgehaald van het eerste segment dat moet worden verwerkt.
 
 ```csharp
 public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
@@ -304,7 +304,7 @@ public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
 }
 ```
 
-In dit voorbeeld worden feedrecords gewijzigd vanaf de [DatumTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) van een beginsegment.
+In dit voor beeld worden wijzigingen in feed-records verwerkt vanaf de [Date Time offset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) van een begin segment.
 
 ```csharp
 public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
@@ -367,8 +367,8 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 ```
 
 >[!TIP]
-> Een segment van de kan feedlogs wijzigen in een of meer *chunkFilePath*. In het geval van meerdere *chunkFilePath* heeft het systeem de records intern verdeeld in meerdere shards om publicatiedoorvoer te beheren. Het is gegarandeerd dat elke partitie van het segment wijzigingen zal bevatten voor wederzijds exclusieve blobs en onafhankelijk kan worden verwerkt zonder de volgorde te schenden. U de klasse **ChangeFeedSegmentShardReader** gebruiken om records op shardniveau te herhalen als dat het meest efficiënt is voor uw scenario.
+> In een segment van de kunnen wijzigingen in de feed worden vastgelegd in een of meer *chunkFilePath*. In het geval van meerdere *chunkFilePath* heeft het systeem intern de records in meerdere Shards gepartitioneerd om de door Voer van de publicatie te beheren. Het is gegarandeerd dat elke partitie van het segment wijzigingen voor wederzijds exclusieve blobs bevat en onafhankelijk kan worden verwerkt zonder de volg orde te schenden. U kunt de **ChangeFeedSegmentShardReader** -klasse gebruiken om records op het niveau van Shard te herhalen als dat het meest geschikt is voor uw scenario.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over feedlogboeken wijzigen. Zie [Feed wijzigen in Azure Blob Storage (Voorbeeld)](storage-blob-change-feed.md)
+Meer informatie over feeds voor wijzigings Logboeken. Zie [Change feed in Azure Blob Storage (preview-versie)](storage-blob-change-feed.md)

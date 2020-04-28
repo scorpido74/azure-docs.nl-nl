@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: routefilters - Microsoft-peering:Azure CLI'
-description: In dit artikel wordt beschreven hoe u routefilters voor Microsoft Peering configureert met Azure CLI
+title: 'ExpressRoute: route filters-micro soft-peering: Azure CLI'
+description: In dit artikel wordt beschreven hoe u route filters configureert voor micro soft-peering met behulp van Azure CLI
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -8,71 +8,71 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
 ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74033420"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Routefilters configureren voor Microsoft-peering: Azure CLI
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Route filters voor micro soft-peering configureren: Azure CLI
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](how-to-routefilter-portal.md)
+> * [Azure-Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure-CLI](how-to-routefilter-cli.md)
 > 
 
-Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. Met de stappen in dit artikel u routefilters voor ExpressRoute-circuits configureren en beheren.
+Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. Met de stappen in dit artikel kunt u route filters configureren en beheren voor ExpressRoute-circuits.
 
-Office 365-services zoals Exchange Online, SharePoint Online en Skype voor Bedrijven zijn toegankelijk via microsoft-peering. Wanneer Microsoft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voorvoegsels met betrekking tot deze services geadverteerd via de BGP-sessies die zijn ingesteld. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie [BGP-community's](expressroute-routing.md#bgp)voor een lijst met de waarden van de BGP-community en de services die ze in kaart brengen.
+Office 365-Services, zoals Exchange Online, share point online en Skype voor bedrijven, zijn toegankelijk via micro soft-peering. Wanneer micro soft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voor voegsels die betrekking hebben op deze services, geadverteerd via de BGP-sessies die zijn ingesteld. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie [BGP-community's](expressroute-routing.md#bgp)voor een lijst met de waarden van de BGP-Community en de services waaraan ze zijn toegewezen.
 
-Als u connectiviteit met alle services nodig hebt, wordt een groot aantal voorvoegsels geadverteerd via BGP. Dit verhoogt aanzienlijk de grootte van de routetabellen die worden onderhouden door routers binnen uw netwerk. Als u van plan bent om slechts een subset van services te gebruiken die via Microsoft-peering worden aangeboden, u de grootte van uw routetabellen op twee manieren verkleinen. U kunt:
+Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt het volgende doen:
 
-* Filter ongewenste voorvoegsels door routefilters toe te passen op BGP-community's. Dit is een standaard netwerkpraktijk en wordt vaak gebruikt binnen veel netwerken.
+* Ongewenste voor voegsels uitfilteren door route filters op BGP-community's toe te passen. Dit is een standaard netwerk praktijk en wordt meestal gebruikt in veel netwerken.
 
-* Definieer routefilters en pas ze toe op uw ExpressRoute-circuit. Een routefilter is een nieuwe bron waarmee u de lijst met services selecteren die u wilt gebruiken via Microsoft-peering. ExpressRoute-routers verzenden alleen de lijst met voorvoegsels die behoren tot de services die in het routefilter zijn geïdentificeerd.
+* Definieer route filters en pas deze toe op uw ExpressRoute-circuit. Een route filter is een nieuwe resource waarmee u de lijst met Services kunt selecteren die u wilt gebruiken via micro soft-peering. ExpressRoute-routers verzenden alleen de lijst met voor voegsels die horen bij de services die zijn geïdentificeerd in het route filter.
 
-### <a name="about-route-filters"></a><a name="about"></a>Routefilters
+### <a name="about-route-filters"></a><a name="about"></a>Over route filters
 
-Wanneer Microsoft-peering is geconfigureerd op uw ExpressRoute-circuit, stellen de Microsoft edge-routers een paar BGP-sessies op met de edge-routers (de uwe of die van uw connectiviteitsprovider). Er worden geen routes geadverteerd naar uw netwerk. Als u dit wel wilt doen, moet u een routefilter koppelen.
+Wanneer micro soft-peering is geconfigureerd op uw ExpressRoute-circuit, worden door de micro soft Edge-routers een paar BGP-sessies tot stand gebracht met de Edge-routers (of uw connectiviteits provider). Er worden geen routes geadverteerd naar uw netwerk. Als u dit wel wilt doen, moet u een routefilter koppelen.
 
 Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst met alle toegestane BGP-communitywaarden. Zodra er een routefilter is gedefinieerd en aan een ExpressRoute-circuit is gekoppeld, worden alle voorvoegsels die overeenkomen met de BGP-communitywaarden naar uw netwerk geadverteerd.
 
-Als u routefilters met Office 365-services erop wilt koppelen, moet u toestemming hebben om Office 365-services te gebruiken via ExpressRoute. Als u niet gemachtigd bent om Office 365-services via ExpressRoute te gebruiken, mislukt de bewerking voor het koppelen van routefilters. Zie [Azure ExpressRoute voor Office 365 voor](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)meer informatie over het autorisatieproces.
+Als u route filters met Office 365-Services wilt koppelen, moet u gemachtigd zijn om Office 365-services te gebruiken via ExpressRoute. Als u niet gemachtigd bent om Office 365-services te gebruiken via ExpressRoute, mislukt de bewerking voor het koppelen van route filters. Zie voor meer informatie over het autorisatie proces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
-> Microsoft-peering van ExpressRoute-circuits die vóór 1 augustus 2017 zijn geconfigureerd, hebben alle servicevoorvoegsels die worden geadverteerd via Microsoft-peering, zelfs als routefilters niet zijn gedefinieerd. Microsoft-peering van ExpressRoute-circuits die op of na 1 augustus 2017 zijn geconfigureerd, worden pas geadverteerd als er een routefilter aan het circuit is gekoppeld.
+> Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017, heeft alle service voorvoegsels die worden geadverteerd via micro soft-peering, zelfs als er geen route filters zijn gedefinieerd. Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voor voegsels die worden geadverteerd totdat een route filter aan het circuit is gekoppeld.
 > 
 > 
 
 ### <a name="workflow"></a><a name="workflow"></a>Werkstroom
 
-Als u verbinding wilt maken met services via Microsoft-peering, moet u de volgende configuratiestappen uitvoeren:
+Om verbinding te kunnen maken met Services via micro soft-peering, moet u de volgende configuratie stappen uitvoeren:
 
-* U moet beschikken over een actief ExpressRoute-circuit waarop Microsoft peering is ingericht. U de volgende instructies gebruiken om deze taken uit te voeren:
-  * [Maak een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit inschakelen door uw connectiviteitsprovider voordat u verdergaat. Het ExpressRoute-circuit moet in een ingerichte en ingeschakelde staat zijn.
-  * [Microsoft-peering maken](howto-routing-cli.md) als u de BGP-sessie rechtstreeks beheert. Of laat uw connectiviteitsprovider Microsoft-peering voor uw circuit inrichten.
+* U moet een actief ExpressRoute-circuit hebben dat micro soft-peering heeft ingericht. U kunt de volgende instructies gebruiken om deze taken uit te voeren:
+  * [Maak een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit ingeschakeld door uw connectiviteits provider voordat u verdergaat. Het ExpressRoute-circuit moet de status ingericht en ingeschakeld hebben.
+  * [Maak micro soft-peering](howto-routing-cli.md) als u de BGP-sessie rechtstreeks beheert. Of zorg ervoor dat uw connectiviteits provider micro soft-peering voor uw circuit inricht.
 
-* U moet een routefilter maken en configureren.
-  * Identificeren van de services waarmee u gebruiken om te gebruiken via Microsoft-peering
-  * De lijst met BGP-communitywaarden identificeren die aan de services zijn gekoppeld
-  * Een regel maken waarmee de voorvoegsellijst overeenkomt met de waarden van de BGP-community
+* U moet een route filter maken en configureren.
+  * Identificeer de services die u wilt gebruiken via micro soft-peering
+  * De lijst met BGP Community-waarden identificeren die zijn gekoppeld aan de services
+  * Een regel maken om de voorvoegsel lijst toe te staan die overeenkomt met de waarden van de BGP-Community
 
-* U moet het routefilter aan het ExpressRoute-circuit bevestigen.
+* U moet het route filter koppelen aan het ExpressRoute-circuit.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Installeer eerst de meest recente versie van de CLI-opdrachten (2.0 of hoger). Zie [Azure CLI installeren](/cli/azure/install-azure-cli) en [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli) voor meer informatie over de CLI-opdrachten.
 
-* Bekijk de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u met de configuratie begint.
+* Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
-* U moet een actief ExpressRoute-circuit hebben. Volg de instructies voor het [maken van een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit inschakelen door de connectiviteitsprovider voordat u verder gaat. Het ExpressRoute-circuit moet in een ingerichte en ingeschakelde staat zijn.
+* U moet een actief ExpressRoute-circuit hebben. Volg de instructies voor het [maken van een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit inschakelen door de connectiviteitsprovider voordat u verder gaat. Het ExpressRoute-circuit moet de status ingericht en ingeschakeld hebben.
 
-* U moet een actieve Microsoft-peering hebben. Instructies volgen bij [Peering-configuratie maken en wijzigen](howto-routing-cli.md)
+* U moet een actieve micro soft-peering hebben. Volg de instructies bij het [maken en wijzigen van de peering-configuratie](howto-routing-cli.md)
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Meld u aan bij uw Azure-account en selecteer uw abonnement
 
-Als u uw configuratie wilt starten, meldt u zich aan bij uw Azure-account. Als u de Try It gebruikt, bent u automatisch aangemeld en u de inlogstap overslaan. Gebruik de volgende voorbeelden om verbinding te maken:
+Meld u aan bij uw Azure-account om de configuratie te starten. Als u de ' Try ' gebruikt, bent u automatisch aangemeld en kunt u de aanmeldings stap overs Laan. Gebruik de volgende voor beelden om u te helpen bij het maken van verbinding:
 
 ```azurecli
 az login
@@ -90,32 +90,32 @@ Selecteer het abonnement waarvoor u een ExpressRoute-circuit wilt maken.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Stap 1: Een lijst met voorvoegsels en BGP-communitywaarden
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Stap 1: een lijst met voor voegsels en waarden voor de BGP-Community ophalen
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Ontvang een lijst met BGP-communitywaarden
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. een lijst met BGP Community-waarden ophalen
 
-Gebruik de volgende cmdlet om de lijst met BGP-communitywaarden te krijgen die zijn gekoppeld aan services die toegankelijk zijn via Microsoft-peering en de lijst met voorvoegsels die eraan zijn gekoppeld:
+Gebruik de volgende cmdlet om de lijst met BGP Community-waarden te verkrijgen die zijn gekoppeld aan services die toegankelijk zijn via micro soft-peering en de lijst met voor voegsels die eraan zijn gekoppeld:
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst met de waarden die u wilt gebruiken
 
-Maak een lijst met BGP-communitywaarden die u wilt gebruiken in het routefilter.
+Maak een lijst met de BGP-Community-waarden die u wilt gebruiken in het route filter.
 
-## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Stap 2: Een routefilter en een filterregel maken
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Stap 2: een route filter en een filter regel maken
 
-Een routefilter kan slechts één regel hebben en de regel moet van het type 'Toestaan' zijn. Met deze regel kan een lijst met BGP-communitywaarden zijn gekoppeld.
+Een route filter kan slechts één regel bevatten en de regel moet van het type toestaan zijn. Aan deze regel kan een lijst met BGP Community-waarden zijn gekoppeld.
 
-### <a name="1-create-a-route-filter"></a>1. Een routefilter maken
+### <a name="1-create-a-route-filter"></a>1. een route filter maken
 
-Maak eerst het routefilter. De `az network route-filter create` opdracht maakt alleen een routefilterbron. Nadat u de resource hebt gemaakt, moet u een regel maken en deze koppelen aan het routefilterobject. Voer de volgende opdracht uit om een routefilterbron te maken:
+Maak eerst het route filter. De opdracht `az network route-filter create` maakt alleen een resource voor een route filter. Nadat u de resource hebt gemaakt, moet u vervolgens een regel maken en deze koppelen aan het object route filter. Voer de volgende opdracht uit om een route filter bron te maken:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Een filterregel maken
+### <a name="2-create-a-filter-rule"></a>2. een filter regel maken
 
 Voer de volgende opdracht uit om een nieuwe regel te maken:
  
@@ -123,9 +123,9 @@ Voer de volgende opdracht uit om een nieuwe regel te maken:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Stap 3: Bevestig het routefilter aan een ExpressRoute-circuit
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Stap 3: het route filter koppelen aan een ExpressRoute-circuit
 
-Voer de volgende opdracht uit om het routefilter aan het ExpressRoute-circuit te koppelen:
+Voer de volgende opdracht uit om het route filter te koppelen aan het ExpressRoute-circuit:
 
 ```azurecli-interactive
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --route-filter MyRouteFilter
@@ -133,33 +133,33 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Algemene taken
 
-### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>De eigenschappen van een routefilter opte krijgen
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>De eigenschappen van een route filter ophalen
 
-Als u de eigenschappen van een routefilter wilt opdoen, gebruikt u de volgende opdracht:
+Als u de eigenschappen van een route filter wilt ophalen, gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilter 
 ```
 
-### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>De eigenschappen van een routefilter bijwerken
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>De eigenschappen van een route filter bijwerken
 
-Als het routefilter al aan een circuit is gekoppeld, worden de juiste voorvoegselwijzigingen automatisch door updates van de BGP-communitylijst gepropageerd via de vastgestelde BGP-sessies. U de BGP-communitylijst van uw routefilter bijwerken met de volgende opdracht:
+Als het route filter al is gekoppeld aan een circuit, worden in de lijst met BGP-community's automatisch de juiste wijzigingen in de aankondiging van de voor voegsels door gegeven aan de ingestelde BGP-sessies. U kunt de lijst met BGP-community's van uw route filter bijwerken met behulp van de volgende opdracht:
 
 ```azurecli-interactive
 az network route-filter rule update --filter-name MyRouteFilter -n CRM -g ExpressRouteResourceGroupName --add communities '12076:5040' --add communities '12076:5010'
 ```
 
-### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Een routefilter loskoppelen van een ExpressRoute-circuit
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Een route filter loskoppelen van een ExpressRoute-circuit
 
-Zodra een routefilter is losgekoppeld van het ExpressRoute-circuit, worden er geen voorvoegsels geadverteerd via de BGP-sessie. U een routefilter loskoppelen van een ExpressRoute-circuit met de volgende opdracht:
+Zodra een route filter is losgekoppeld van het ExpressRoute-circuit, worden er geen voor voegsels geadverteerd via de BGP-sessie. Met de volgende opdracht kunt u een route filter loskoppelen van een ExpressRoute-circuit:
 
 ```azurecli-interactive
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Een routefilter verwijderen
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Een route filter verwijderen
 
-U een routefilter alleen verwijderen als het niet aan een circuit is gekoppeld. Zorg ervoor dat het routefilter niet aan een circuit is gekoppeld voordat u probeert het te verwijderen. U een routefilter verwijderen met de volgende opdracht:
+U kunt een route filter alleen verwijderen als deze niet aan een circuit is gekoppeld. Zorg ervoor dat het route filter niet is gekoppeld aan een circuit voordat u het probeert te verwijderen. U kunt een route filter verwijderen met de volgende opdracht:
 
 ```azurecli-interactive
 az network route-filter delete -n MyRouteFilter -g MyResourceGroup
@@ -167,4 +167,4 @@ az network route-filter delete -n MyRouteFilter -g MyResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de Veelgestelde vragen over [ExpressRoute voor](expressroute-faqs.md)meer informatie over ExpressRoute.
+Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor meer informatie over ExpressRoute.

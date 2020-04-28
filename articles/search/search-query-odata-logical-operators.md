@@ -1,7 +1,7 @@
 ---
-title: OData logische operator referentie
+title: Verwijzing naar logische operator van OData
 titleSuffix: Azure Cognitive Search
-description: Syntaxis- en referentiedocumentatie voor het gebruik van logische operatoren van OData en, en, en en niet, in Azure Cognitive Search-query's.
+description: Syntaxis en referentie documentatie voor het gebruik van logische OData-Opera Tors, en, of en niet in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,25 +20,25 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113180"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logische operatoren in `and` `or`Azure Cognitive Search - ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure `and`Cognitive Search `or`-,,`not`
 
-[OData-filterexpressies](query-odata-filter-orderby-syntax.md) in Azure Cognitive Search `true` zijn `false`Booleaanse expressies die evalueren op of . U een complex filter schrijven door een reeks [eenvoudigere filters te](search-query-odata-comparison-operators.md) schrijven en ze samen te stellen met behulp van de logische operatoren uit [booleaanse algebra:](https://en.wikipedia.org/wiki/Boolean_algebra)
+[OData-filter expressies](query-odata-filter-orderby-syntax.md) in azure Cognitive Search zijn Booleaanse expressies die de `true` waarde `false`van of bepalen. U kunt een complex filter schrijven door een reeks [eenvoudiger filters](search-query-odata-comparison-operators.md) te schrijven en deze samen te stellen met behulp van de logische Opera tors van [Boole algebra](https://en.wikipedia.org/wiki/Boolean_algebra):
 
-- `and`: Een binaire operator `true` die evalueert als zowel de `true`linker- als de rechter subexpressies evalueren op .
-- `or`: Een binaire operator `true` die evalueert als een van de linker- of rechtersubexpressies evalueert op `true`.
-- `not`: Een unary operator `true` die evalueert of de `false`subexpressie evalueert, en vice versa.
+- `and`: Een binaire operator waarmee wordt geëvalueerd `true` of de linker-en rechter-sub-expressies worden `true`geëvalueerd.
+- `or`: Een binaire operator die evalueert `true` of een van de linker-of rechter-sub-expressies resulteert in. `true`
+- `not`: Een unaire operator die evalueert `true` of de sub-expressie resulteert in `false`, en omgekeerd.
 
-Deze, samen met de [collectie operators `any` en `all` ](search-query-odata-collection-operators.md), u filters die zeer complexe zoekcriteria kan uitdrukken construeren.
+Met deze combi natie van de [verzamelings operators `any` en `all` ](search-query-odata-collection-operators.md)kunt u filters maken die zeer complexe zoek criteria kunnen uitdrukken.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die de logische operatoren gebruikt.
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de logische Opera tors.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -48,31 +48,31 @@ logical_expression ::=
     | 'not' boolean_expression
 ```
 
-Er is ook een interactief syntaxisdiagram beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Syntaxisdiagram OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Zie [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Er zijn twee vormen van`and`/`or`logische expressies: binaire ( ), waar`not`er twee sub-expressies, en unary ( ), waar er slechts een. De subexpressies kunnen Booleaanse uitdrukkingen van welke aard dan ook zijn:
+Er zijn twee soorten logische`and`/`or`expressies: binary (), waar er twee subexpressies en Unair (`not`) zijn, waarbij er slechts één wordt. De subexpressies kunnen Booleaanse expressies van elk soort zijn:
 
-- Velden of bereikvariabelen van het type`Edm.Boolean`
-- Functies die waarden `Edm.Boolean`van het `geo.intersects` type retourneren, zoals of`search.ismatch`
-- [Vergelijkingsuitdrukkingen](search-query-odata-comparison-operators.md), zoals`rating gt 4`
-- [Verzamelingsexpressies](search-query-odata-collection-operators.md), zoals`Rooms/any(room: room/Type eq 'Deluxe Room')`
-- De Booleaanse `true` `false`literals of.
-- Andere logische expressies `and` `or`die `not`zijn opgebouwd met , en .
+- Velden of bereik variabelen van het type`Edm.Boolean`
+- Functies die waarden van het type `Edm.Boolean`retour neren, `geo.intersects` zoals of`search.ismatch`
+- [Vergelijkings expressies](search-query-odata-comparison-operators.md), zoals`rating gt 4`
+- [Verzamelings expressies](search-query-odata-collection-operators.md), zoals`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- De letterlijke Boole `true` - `false`waarden of.
+- Andere logische expressies die zijn `and`gemaakt `or`met, `not`en.
 
 > [!IMPORTANT]
-> Er zijn enkele situaties waarin niet alle soorten `and` / `or`sub-expressie kunnen worden gebruikt met , met name binnen lambda uitdrukkingen. Zie [OData-verzamelingsoperatoren in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) voor meer informatie.
+> Er zijn enkele situaties waarin niet alle soorten Subexpressies kunnen worden gebruikt met `and` / `or`, met name binnen lambda-expressies. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) voor meer informatie.
 
-### <a name="logical-operators-and-null"></a>Logische operatoren en`null`
+### <a name="logical-operators-and-null"></a>Logische Opera tors en`null`
 
-De meeste Booleaanse expressies zoals `null` functies en vergelijkingen kunnen geen `null` waarden produceren en `x and null` de logische operatoren kunnen niet rechtstreeks op de letterlijke worden toegepast (is bijvoorbeeld niet toegestaan). Booleaanse velden kunnen `null`echter worden , dus u `and` `or`moet `not` zich bewust zijn van hoe de , , en operators zich gedragen in de aanwezigheid van null. Dit wordt samengevat in de `b` volgende tabel, `Edm.Boolean`waar een veld van het type is:
+De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen waarden `null` produceren en de logische Opera tors kunnen niet rechtstreeks op de `null` letterlijke waarde worden toegepast ( `x and null` bijvoorbeeld is niet toegestaan). Boole-velden kunnen echter wel `null`zijn, dus u moet weten hoe de `and`Opera Tors, `or`en `not` zich gedragen in de aanwezigheid van Null. Dit wordt in de volgende tabel samenvatten, `b` waarbij een veld van het `Edm.Boolean`type is:
 
-| Expressie | Resultaat `b` wanneer is`null` |
+| Expressie | Resultaat wanneer `b` is`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,29 +87,29 @@ De meeste Booleaanse expressies zoals `null` functies en vergelijkingen kunnen g
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Wanneer een `b` Booleaanse veld op zichzelf wordt weergegeven in een filterexpressie, gedraagt het zich alsof het is geschreven, `b eq true`dus als `b` dat zo is, `null`evalueert de expressie tot `false`. Op dezelfde `not b` manier gedraagt zich als `not (b eq true)` `true`, dus het evalueert om . Op deze `null` manier gedragen velden `false`zich hetzelfde als . Dit komt overeen met hoe ze zich `and` `or`gedragen in combinatie met andere expressies die gebruik maken en , zoals in de bovenstaande tabel. Desondanks zal een `false` directe`b eq false`vergelijking met `false`( ) nog steeds evalueren om . Met andere `null` woorden, is `false`niet gelijk aan , ook al gedraagt het zich als het in Booleaanse uitdrukkingen.
+Wanneer een Boole- `b` veld in een filter expressie wordt weer gegeven, wordt gereageerd alsof het is geschreven `b eq true` `b` `false`. als dat het `null`geval is, wordt de expressie geëvalueerd. Dit `not b` werkt op dezelfde manier `not (b eq true)`als, zodat deze kan worden `true`geëvalueerd. Op deze manier werken `null` velden hetzelfde als `false`. Dit is consistent met de manier waarop ze zich gedragen wanneer ze worden gecombineerd `and` met `or`andere expressies die gebruikmaken van en, zoals wordt weer gegeven in de bovenstaande tabel. Ondanks dit geldt dat er nog steeds `false` een`b eq false`directe vergelijking naar () `false`wordt geëvalueerd. Met andere woorden, `null` is niet gelijk aan `false`, hoewel het zich gedraagt als in Boole-expressies.
 
 ## <a name="examples"></a>Voorbeelden
 
-Overeenkomen met `rating` documenten waarbij het veld tussen 3 en 5 ligt, inclusief:
+Overeenkomende documenten waarbij het `rating` veld tussen 3 en 5 ligt:
 
     rating ge 3 and rating le 5
 
-Overeenkomen met documenten waarin `ratings` alle elementen van het veld kleiner zijn dan 3 of meer dan 5:
+Overeenkomende documenten waarbij alle elementen van het `ratings` veld kleiner zijn dan 3 of groter dan 5:
 
     ratings/all(r: r lt 3 or r gt 5)
 
-Documenten overeenkomen `location` waar het veld zich binnen de opgegeven veelhoek bevindt en het document bevat niet de term 'openbaar'.
+Vergelijkt documenten `location` waarbij het veld binnen de gegeven veelhoek ligt en het document niet de term ' openbaar ' bevat.
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
 
-Match documenten voor hotels in Vancouver, Canada, waar er een deluxe kamer met een basistarief van minder dan 160:
+Documenten voor hotels zoeken in Vancouver, Canada waar zich een luxe ruimte bevindt met een basis tempo van minder dan 160:
 
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Filters in Azure Cognitive Search](search-filters.md)
-- [Overzicht van OData-expressietaal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
-- [Syntaxisverwijzing oData-expressie voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Zoekdocumenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filters in azure Cognitive Search](search-filters.md)
+- [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

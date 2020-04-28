@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: routerconfiguratievoorbeelden - NAT'
-description: Deze pagina biedt routerconfiguratievoorbeelden voor Cisco- en Juniper-routers.
+title: 'Azure ExpressRoute: voor beelden van router configuratie-NAT'
+description: Op deze pagina vindt u voor beelden van router configuraties voor Cisco-en Juniper-routers.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74072116"
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Routerconfiguratievoorbeelden voor het instellen en beheren van NAT
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Voor beelden van router configuraties voor het instellen en beheren van NAT
 
-Deze pagina biedt NAT-configuratievoorbeelden voor cisco ASA- en Juniper SRX-serierouters bij het werken met ExpressRoute. Deze zijn uitsluitend bedoeld als monsters voor begeleiding en mogen niet worden gebruikt zoals het is. U met uw leverancier samenwerken om de juiste configuraties voor uw netwerk te bedenken.
+Op deze pagina vindt u voor beelden van de NAT-configuratie voor Cisco ASA-en Juniper SRX-Series bij het werken met ExpressRoute. Deze zijn alleen bedoeld als voor beelden en mogen niet worden gebruikt als is. U kunt samen werken met uw leverancier om te voldoen aan de juiste configuraties voor uw netwerk.
 
 > [!IMPORTANT]
-> Voorbeelden op deze pagina zijn bedoeld als puur voor begeleiding. U moet samenwerken met het verkoop-/technische team van uw leverancier en uw netwerkteam om met de juiste configuraties te komen om aan uw behoeften te voldoen. Microsoft ondersteunt geen problemen met betrekking tot configuraties die op deze pagina worden vermeld. U moet contact opnemen met uw apparaatleverancier voor ondersteuningsproblemen.
+> Voor beelden op deze pagina zijn bedoeld als louter voor hulp. U moet samen werken met het verkoop-en technische team van uw leverancier en uw netwerk team om te voorzien in de juiste configuraties om te voldoen aan uw behoeften. Micro soft biedt geen ondersteuning voor problemen met configuraties die op deze pagina worden weer gegeven. Neem contact op met de leverancier van uw apparaat voor ondersteunings problemen.
 > 
 > 
 
-* Onderstaande voorbeelden van routerconfiguratie zijn van toepassing op Azure Public- en Microsoft-peerings. U mag NAT niet configureren voor Azure private peering. Bekijk [ExpressRoute-peerings](expressroute-circuit-peerings.md) en [ExpressRoute NAT-vereisten](expressroute-nat.md) voor meer informatie.
+* Voor beelden van router configuraties zijn van toepassing op de open bare en micro soft-peering van Azure. U moet NAT niet configureren voor persoonlijke Azure-peering. Bekijk [ExpressRoute-peerings](expressroute-circuit-peerings.md) en [ExpressRoute NAT-vereisten](expressroute-nat.md) voor meer informatie.
 
-* U moet aparte NAT IP-pools gebruiken voor connectiviteit met internet en ExpressRoute. Het gebruik van dezelfde NAT IP-pool op het internet en ExpressRoute zal resulteren in asymmetrische routing en verlies van connectiviteit.
+* U moet afzonderlijke NAT IP-adres groepen gebruiken voor de connectiviteit met internet en ExpressRoute. Het gebruik van dezelfde NAT IP-adres groep via internet en ExpressRoute leidt tot asymmetrische route ring en verlies van connectiviteit.
 
 
-## <a name="cisco-asa-firewalls"></a>Cisco ASA firewalls
-### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-configuratie voor verkeer van klantennetwerk naar Microsoft
+## <a name="cisco-asa-firewalls"></a>Cisco ASA-firewalls
+### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-configuratie voor verkeer van het klanten netwerk naar micro soft
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -49,26 +49,26 @@ Deze pagina biedt NAT-configuratievoorbeelden voor cisco ASA- en Juniper SRX-ser
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PAT-configuratie voor verkeer van Microsoft naar klantennetwerk
+### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PAT-configuratie voor verkeer van micro soft naar het klanten netwerk
 
 **Interfaces en richting:**
 
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
-**Configuratie:**
+**Configuratie**
 
-NAT-pool:
+NAT-groep:
 
     object network outbound-PAT
         host <NAT-IP>
 
-Doelserver:
+Doel server:
 
     object network Customer-Network
         network-object <IP> <Subnet-Mask>
 
-Objectgroep voor IP-adressen van klanten
+Object groep voor IP-adressen van klant
 
     object-group network MSFT-Network-1
         network-object <MSFT-IP> <Subnet-Mask>
@@ -81,8 +81,8 @@ NAT-opdrachten:
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
 
-## <a name="juniper-srx-series-routers"></a>Jeneverbes SRX-serie routers
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Redundante Ethernet-interfaces voor het cluster maken
+## <a name="juniper-srx-series-routers"></a>Routers van de Juniper SRX-serie
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. redundante Ethernet-interfaces maken voor het cluster
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -114,15 +114,15 @@ NAT-opdrachten:
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. Twee veiligheidszones maken
-* Vertrouwenszone voor intern netwerk en onbetrouwbare zone voor extern netwerk met Edge-routers
-* Geschikte interfaces toewijzen aan de zones
-* Services toestaan op de interfaces
+### <a name="2-create-two-security-zones"></a>2. Maak twee beveiligings zones
+* Vertrouwens zone voor intern netwerk en niet-vertrouwde zone voor externe netwerk gerichte Edge-routers
+* De juiste interfaces aan de zones toewijzen
+* Services op de interfaces toestaan
 
-    beveiliging { zones { security-zone Trust { host-inbound-traffic { system-services { ping;                   } protocollen { bgp;                   } } interfaces { reth0.100;               } } security-zone Ontrust { host-inbound-traffic { system-services { ping;                   } protocollen { bgp;                   } } interfaces { reth1.100;               }           }       }   }
+    beveiliging {zones {Security-Zone Trust {host-inkomend verkeer {System-Services {ping;                   } protocollen {BGP;                   }} interfaces {reth 0.100;               }} beveiligings zone niet vertrouwen {host-inkomend verkeer {System-Services {ping;                   } protocollen {BGP;                   }} interfaces {reth 1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. Beveiligingsbeleid maken tussen zones
+### <a name="3-create-security-policies-between-zones"></a>3. beveiligings beleidsregels maken tussen zones
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -154,8 +154,8 @@ NAT-opdrachten:
 
 
 ### <a name="4-configure-nat-policies"></a>4. NAT-beleid configureren
-* Maak twee NAT-groepen. Een zal worden gebruikt om NAT verkeer uitgaande naar Microsoft en andere van Microsoft naar de klant.
-* Regels maken voor NAT het desbetreffende verkeer
+* Maak twee NAT-Pools. Er wordt een NAT-verkeer naar micro soft en andere van micro soft naar de klant gebruikt.
+* Regels maken voor NAT het respectieve verkeer
   
        security {
            nat {
@@ -212,10 +212,10 @@ NAT-opdrachten:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Configureer BGP om selectieve voorvoegsels in elke richting te adverteren
-Raadpleeg voorbeelden op de pagina [Routeringsconfiguratievoorbeelden.](expressroute-config-samples-routing.md)
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Configureer BGP voor het adverteren van selectieve voor voegsels in elke richting
+Raadpleeg voor beelden op de pagina [routerings configuratie voorbeelden](expressroute-config-samples-routing.md) .
 
-### <a name="6-create-policies"></a>6. Beleid maken
+### <a name="6-create-policies"></a>6. beleids regels maken
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

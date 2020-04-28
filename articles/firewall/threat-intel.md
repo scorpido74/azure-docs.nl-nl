@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall threat intelligence based filtering Azure Firewall threat intelligence
-description: Filtering op basis van bedreigingsinformatie kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende kwaadaardige IP-adressen en domeinen te waarschuwen en te weigeren.
+title: Azure Firewall op bedreigingen gebaseerd filteren
+description: Op bedreigingen gebaseerd filteren kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende schadelijke IP-adressen en domeinen te Signa lering en te weigeren.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74168672"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall threat intelligence-gebaseerde filtering
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall op bedreigingen gebaseerd filteren
 
-Filtering op basis van bedreigingsinformatie kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende kwaadaardige IP-adressen en domeinen te waarschuwen en te weigeren. De IP-adressen en domeinen zijn afkomstig uit de Microsoft Threat Intelligence-feed. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) is de drijvende kracht achter Microsoft-bedreigingsinformatie en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+Op bedreigingen gebaseerd filteren kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende schadelijke IP-adressen en domeinen te Signa lering en te weigeren. De IP-adressen en domeinen zijn afkomstig van de micro soft Threat Intelligence-feed. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
 
-![Firewall threat intelligence](media/threat-intel/firewall-threat.png)
+![Firewall Threat Intelligence](media/threat-intel/firewall-threat.png)
 
-Als u filtering op basis van bedreigingsinformatie hebt ingeschakeld, worden de bijbehorende regels verwerkt vóór een van de NAT-regels, netwerkregels of toepassingsregels.
+Als u op bedreigingen gebaseerd filteren hebt ingeschakeld, worden de bijbehorende regels verwerkt vóór een van de NAT-regels, netwerk regels of toepassings regels.
 
-U ervoor kiezen om gewoon een waarschuwing in te loggen wanneer een regel wordt geactiveerd, of u de waarschuwings- en weigeringsmodus kiezen.
+U kunt ervoor kiezen om alleen een waarschuwing te registreren wanneer een regel wordt geactiveerd, of u kunt de modus waarschuwing en weigeren kiezen.
 
-Standaard is filtering op basis van bedreigingsinformatie ingeschakeld in de waarschuwingsmodus. U deze functie niet uitschakelen of de modus wijzigen totdat de portalinterface beschikbaar is in uw regio.
+Op bedreigingen gebaseerd filteren is standaard ingeschakeld in de waarschuwings modus. U kunt deze functie niet uitschakelen of de modus wijzigen totdat de portal-interface beschikbaar is in uw regio.
 
-![Op bedreigingsinformatie gebaseerde filterportalinterface](media/threat-intel/threat-intel-ui.png)
+![Portal interface voor het filteren op basis van bedreigings informatie](media/threat-intel/threat-intel-ui.png)
 
 ## <a name="logs"></a>Logboeken
 
-In het volgende logboekfragment ziet u een geactiveerde regel:
+In het volgende logboek fragment wordt een regel geactiveerd weer gegeven:
 
 ```
 {
@@ -46,12 +46,12 @@ In het volgende logboekfragment ziet u een geactiveerde regel:
 
 ## <a name="testing"></a>Testen
 
-- **Uitgaande tests** - Uitgaande verkeerswaarschuwingen moeten een zeldzame gebeurtenis zijn, omdat dit betekent dat uw omgeving is aangetast. Om te helpen testen uitgaande waarschuwingen werken, is een test FQDN gemaakt die een waarschuwing activeert. Gebruik **testmaliciousdomain.eastus.cloudapp.azure.com** voor uw uitgaande tests.
+- **Uitgaande tests** : waarschuwingen voor uitgaand verkeer moeten een zeldzame gebeurtenis zijn, omdat het betekent dat uw omgeving is aangetast. Er is een test-FQDN gemaakt waarmee een waarschuwing wordt geactiveerd om te voor komen dat uitgaande waarschuwingen worden uitgevoerd. Gebruik **testmaliciousdomain.eastus.cloudapp.Azure.com** voor uw uitgaande tests.
 
-- **Binnenkomende tests** - U waarschuwingen verwachten voor binnenkomend verkeer als DNAT-regels zijn geconfigureerd op de firewall. Dit geldt zelfs als alleen specifieke bronnen zijn toegestaan op de DNAT-regel en het verkeer anders wordt geweigerd. Azure Firewall waarschuwt niet voor alle bekende poortscanners; alleen op scanners waarvan bekend is dat ze ook kwaadaardige activiteiten uitvoeren.
+- **Inkomend testen** : u kunt verwachten dat er waarschuwingen worden weer geven voor binnenkomend verkeer als DNAT-regels zijn geconfigureerd op de firewall. Dit geldt ook als alleen specifieke bronnen zijn toegestaan in de DNAT-regel en verkeer anderszins wordt geweigerd. Azure Firewall geen waarschuwing voor alle bekende poort scanners. alleen op scanners waarvan bekend is dat ze ook schadelijke activiteiten kunnen uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Voorbeelden van Azure Firewall Log Analytics](log-analytics-samples.md)
-- Meer informatie over het [implementeren en configureren van een Azure Firewall](tutorial-firewall-deploy-portal.md)
-- Het [rapport microsoft security intelligence bekijken](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- Zie [Azure Firewall log Analytics](log-analytics-samples.md) -voor beelden
+- Meer informatie over het [implementeren en configureren van een Azure firewall](tutorial-firewall-deploy-portal.md)
+- Raadpleeg het [micro soft Security Intelligence-rapport](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

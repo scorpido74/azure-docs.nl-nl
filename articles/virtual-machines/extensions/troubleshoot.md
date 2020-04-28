@@ -1,6 +1,6 @@
 ---
-title: Problemen met Windows VM-extensiefouten oplossen
-description: Meer informatie over het oplossen van azure Windows VM-extensiefouten
+title: Problemen met Windows VM-extensie fouten oplossen
+description: Meer informatie over het oplossen van problemen met Azure Windows VM-extensie fouten
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
 ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74073656"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problemen met Azure Windows VM-extensiefouten oplossen
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problemen met extensie fouten van Azure Windows VM oplossen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
-## <a name="viewing-extension-status"></a>Extensiestatus weergeven
-Azure Resource Manager-sjablonen kunnen worden uitgevoerd vanuit Azure PowerShell. Zodra de sjabloon is uitgevoerd, kan de status van de extensie worden weergegeven vanuit Azure Resource Explorer of de opdrachtregelgereedschappen.
+## <a name="viewing-extension-status"></a>Uitbrei ding status weer geven
+Azure Resource Manager sjablonen kunnen vanuit Azure PowerShell worden uitgevoerd. Zodra de sjabloon is uitgevoerd, kunt u de status van de uitbrei ding bekijken vanuit Azure Resource Explorer of de opdracht regel Programma's.
 
 Hier volgt een voorbeeld:
 
@@ -58,13 +58,13 @@ Hier volgt een voorbeeld van uitvoer:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Fouten in extensieoplossend optreden
-### <a name="rerun-the-extension-on-the-vm"></a>De extensie op de VM opnieuw uitvoeren
-Als u scripts op de VM uitvoert met behulp van aangepaste scriptextensie, u soms een fout tegenkomen waarbij VM is gemaakt, maar het script is mislukt. Onder deze omstandigheden is de aanbevolen manier om te herstellen van deze fout het verwijderen van de extensie en het opnieuw uitvoeren van de sjabloon.
-Opmerking: In de toekomst zou deze functionaliteit worden verbeterd om de noodzaak voor het verwijderen van de extensie te verwijderen.
+## <a name="troubleshooting-extension-failures"></a>Problemen met extensies oplossen
+### <a name="rerun-the-extension-on-the-vm"></a>De uitbrei ding op de VM opnieuw uitvoeren
+Als u scripts uitvoert op de VM met behulp van aangepaste script extensie, zou u soms een fout kunnen ondervinden waarbij de VM is gemaakt, maar het script is mislukt. Onder deze omstandigheden wordt de aanbevolen manier om deze fout te herstellen, de uitbrei ding te verwijderen en de sjabloon opnieuw uit te voeren.
+Opmerking: in de toekomst zou deze functionaliteit worden uitgebreid om de installatie van de uitbrei ding te verwijderen.
 
-#### <a name="remove-the-extension-from-azure-powershell"></a>De extensie verwijderen uit Azure PowerShell
+#### <a name="remove-the-extension-from-azure-powershell"></a>De uitbrei ding verwijderen uit Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Zodra de extensie is verwijderd, kan de sjabloon opnieuw worden uitgevoerd om de scripts op de VM uit te voeren.
+Zodra de extensie is verwijderd, kan de sjabloon opnieuw worden uitgevoerd om de scripts op de virtuele machine uit te voeren.
 
