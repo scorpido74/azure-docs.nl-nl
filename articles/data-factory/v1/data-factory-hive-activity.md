@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met Hive-activiteit - Azure
-description: Ontdek hoe u de Hive-activiteit in een Azure-gegevensfabriek gebruiken om Hive-query's uit te voeren op een on-demand/uw eigen HDInsight-cluster.
+title: Gegevens transformeren met hive-activiteit-Azure
+description: Meer informatie over hoe u de Hive-activiteit in een Azure-data factory kunt gebruiken om Hive-query's uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,32 +13,32 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703358"
 ---
-# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met Hive-activiteit in Azure Data Factory 
-> [!div class="op_single_selector" title1="Transformatieactiviteiten"]
-> * [Hive Activiteit](data-factory-hive-activity.md) 
-> * [Varkensactiviteit](data-factory-pig-activity.md)
-> * [Activiteit kaart verminderen](data-factory-map-reduce.md)
-> * [Hadoop streaming activiteit](data-factory-hadoop-streaming-activity.md)
-> * [Vonkactiviteit](data-factory-spark.md)
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hive-activiteit in Azure Data Factory 
+> [!div class="op_single_selector" title1="Transformatie activiteiten"]
+> * [Hive-activiteit](data-factory-hive-activity.md) 
+> * [Pig-activiteit](data-factory-pig-activity.md)
+> * [MapReduce-activiteit](data-factory-map-reduce.md)
+> * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
+> * [Spark-activiteit](data-factory-spark.md)
 > * [Machine Learning-batchuitvoeringsactiviteit](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning-activiteit resources bijwerken](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
-> * [.NET Aangepaste activiteit](data-factory-use-custom-activities.md)
+> * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [gegevens transformeren met behulp van Hive-activiteit in Gegevensfabriek](../transform-data-using-hadoop-hive.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens transformeren met hive-activiteit in Data Factory](../transform-data-using-hadoop-hive.md).
 
-De HDInsight Hive-activiteit in een Data [Factory-pijplijn](data-factory-create-pipelines.md) voert Hive-query's uit op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [on-demand](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-cluster op basis van Windows/Linux. Dit artikel bouwt voort op het artikel [over gegevenstransformatieactiviteiten,](data-factory-data-transformation-activities.md) dat een algemeen overzicht geeft van gegevenstransformatie en de ondersteunde transformatieactiviteiten.
+De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create-pipelines.md) voert Hive-query's uit op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) gebaseerd HDInsight-cluster op basis van Windows/Linux. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
 
 > [!NOTE] 
-> Als u nieuw bent in Azure Data Factory, leest u [Inleiding tot Azure Data Factory](data-factory-introduction.md) en doet u de zelfstudie: Bouw uw eerste [gegevenspijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
+> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -71,23 +71,23 @@ De HDInsight Hive-activiteit in een Data [Factory-pijplijn](data-factory-create-
     }
 }
 ```
-## <a name="syntax-details"></a>Syntaxisdetails
+## <a name="syntax-details"></a>Syntaxis Details
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | name |Naam van de activiteit |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightHive HDinsightHive |Ja |
-| Ingangen |Inputs verbruikt door de Hive-activiteit |Nee |
-| Uitgangen |Outputs geproduceerd door de Hive-activiteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als gekoppelde service in Data Factory |Ja |
-| uit |De inline van het Hive-script opgeven |Nee |
-| scriptPath |Sla het Hive-script op in een Azure blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap 'script' of 'scriptPath'. Beide kunnen niet samen worden gebruikt. De bestandsnaam is hoofdlettergevoelig. |Nee |
-| Definieert |Parameters opgeven als sleutel-/waardeparen voor verwijzing in het Hive-script met behulp van 'hiveconf' |Nee |
+| type |HDinsightHive |Ja |
+| invoer |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
+| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Ja |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
+| uit |Het Hive-script inline opgeven |Nee |
+| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
+| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
 
 ## <a name="example"></a>Voorbeeld
-Laten we eens kijken naar een voorbeeld van analyse van gamelogboeken waarbij u de tijd wilt identificeren die wordt besteed aan gebruikers die games spelen die door uw bedrijf zijn gelanceerd. 
+Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die gebruikers spelen die door uw bedrijf worden gestart. 
 
-Het volgende logboek is een voorbeeld spel`,`log, dat is komma ( ) gescheiden en bevat de volgende velden - ProfileID, SessionStart, Duur, SrcIPAddress, en GameType.
+Het volgende logboek is een voor beeld van een spel logboek, een`,`komma () van elkaar gescheiden en bevat de volgende velden: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -97,7 +97,7 @@ Het volgende logboek is een voorbeeld spel`,`log, dat is komma ( ) gescheiden en
 .....
 ```
 
-Het **Hive-script** om deze gegevens te verwerken:
+Het **Hive-script** voor het verwerken van deze gegevens:
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -124,18 +124,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Als u dit Hive-script wilt uitvoeren in een Data Factory-pijplijn, moet u het volgende doen
+Als u dit Hive-script in een Data Factory-pijp lijn wilt uitvoeren, moet u het volgende doen:
 
-1. Maak een gekoppelde service om [uw eigen HDInsight-computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of [on-demand HDInsight-computecluster te](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)configureren. Laten we deze gekoppelde dienst "HDInsightLinkedService" noemen.
-2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob-opslag met de gegevens te configureren. Laten we deze gekoppelde service "StorageLinkedService" noemen
-3. Maak [gegevenssets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoergegevens. Laten we de invoergegevensset 'HiveSampleIn' en de uitvoergegevensset 'HiveSampleOut' noemen
-4. Kopieer de Hive-query als bestand naar Azure Blob Storage, geconfigureerd in stap #2. Als de opslag voor het hosten van de gegevens verschilt van de opslag die dit querybestand host, maakt u een afzonderlijke gekoppelde Azure Storage-service en verwijst u ernaar in de activiteit. Gebruik **scriptPath** om het pad naar het querybestand en **scriptLinkedService** op te geven om de Azure-opslag op te geven die het scriptbestand bevat. 
+1. Maak een gekoppelde service om [uw eigen hdinsight Compute-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of configureer het [hdinsight-berekenings cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). We bellen u de gekoppelde service ' HDInsightLinkedService '.
+2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob Storage te configureren die als host fungeert voor de gegevens. We noemen deze gekoppelde service ' StorageLinkedService '
+3. Maak gegevens [sets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoer gegevens. We bellen de invoer gegevensset "HiveSampleIn" en de uitvoer gegevensset "HiveSampleOut"
+4. Kopieer de Hive-query als een bestand naar Azure Blob Storage geconfigureerd in stap #2. Als de opslag voor het hosten van de gegevens verschilt van het hosten van dit query bestand, maakt u een afzonderlijke Azure Storage gekoppelde service en raadpleegt u deze in de activiteit. Gebruik **ScriptPath** om het pad naar het Hive-query bestand en **scriptLinkedService** op te geven om de Azure-opslag met het script bestand op te geven. 
    
    > [!NOTE]
-   > U de Hive-scriptinline ook in de activiteitsdefinitie opnemen met behulp van de eigenschap **script.** We raden deze aanpak niet aan, omdat alle speciale tekens in het script in het JSON-document moeten worden ontsnapt en problemen met foutopsporing kunnen veroorzaken. De beste praktijk is om stap #4 te volgen.
+   > U kunt ook het Hive-script inline in de definitie van de activiteit opgeven met behulp van de eigenschap **script** . Deze benadering wordt niet aanbevolen omdat alle speciale tekens in het script in het JSON-document moeten worden ontsnapd en kan problemen met de fout opsporing veroorzaken. De best practice moet worden gevolgd door een stap #4.
    > 
    > 
-5. Maak een pijplijn met de HDInsightHive-activiteit. De activiteit verwerkt/transformeert de gegevens.
+5. Maak een pijp lijn met de activiteit HDInsightHive. Met de activiteit worden de gegevens verwerkt/getransformeerd.
 
     ```JSON   
     {   
@@ -169,15 +169,15 @@ Als u dit Hive-script wilt uitvoeren in een Data Factory-pijplijn, moet u het vo
         }
     }
     ```
-6. Implementeer de pijplijn. Zie Het artikel [Pijplijnen maken](data-factory-create-pipelines.md) voor meer informatie. 
-7. Controleer de pijplijn met behulp van de monitoring- en beheerweergaven van de gegevensfabriek. Zie Het artikel [over gegevensfabrieken controleren en beheren](data-factory-monitor-manage-pipelines.md) voor meer informatie. 
+6. Implementeer de pijp lijn. Zie [het artikel pijp lijnen maken](data-factory-create-pipelines.md) voor meer informatie. 
+7. Bewaak de pijp lijn met behulp van de data factory controle-en beheer weergaven. Zie het artikel [Data Factory pipelines controleren en beheren](data-factory-monitor-manage-pipelines.md) voor meer informatie. 
 
-## <a name="specifying-parameters-for-a-hive-script"></a>Parameters opgeven voor een Hive-script
-In dit voorbeeld worden gamelogboeken dagelijks opgenomen in Azure Blob Storage en worden ze opgeslagen in een map met datum en tijd. U wilt het Hive-script parameteriseren en de locatie van de invoermap dynamisch doorgeven tijdens runtime en ook de uitvoer produceren die is verdeeld met datum en tijd.
+## <a name="specifying-parameters-for-a-hive-script"></a>Para meters opgeven voor een Hive-script
+In dit voor beeld worden Game-logboeken dagelijks opgenomen in Azure Blob Storage en opgeslagen in een map die is gepartitioneerd met datum en tijd. U het Hive-script wilt para meters en de locatie van de invoercel dynamisch wilt door geven tijdens runtime en ook de uitvoer gepartitioneerd met datum en tijd.
 
-Ga als volgt te werk om een geparameteriseerd Hive-script te gebruiken:
+Ga als volgt te werk om het Hive-script met para meters te gebruiken
 
-* Definieer de parameters in **definieert**.
+* Definieer de para meters in **definieert**.
 
     ```JSON  
     {
@@ -215,7 +215,7 @@ Ga als volgt te werk om een geparameteriseerd Hive-script te gebruiken:
       }
     }
     ```
-* Raadpleeg in het Hive Script de parameter met **${hiveconf:parameterName}**. 
+* In het Hive-script, raadpleegt u de para meter met **$ {hiveconf: para meternaam}**. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 
@@ -242,9 +242,9 @@ Ga als volgt te werk om een geparameteriseerd Hive-script te gebruiken:
     FROM HiveSampleIn Group by ProfileID
     ```
   ## <a name="see-also"></a>Zie ook
-* [Varkensactiviteit](data-factory-pig-activity.md)
-* [Activiteit kaart verminderen](data-factory-map-reduce.md)
-* [Hadoop streaming activiteit](data-factory-hadoop-streaming-activity.md)
+* [Pig-activiteit](data-factory-pig-activity.md)
+* [MapReduce-activiteit](data-factory-map-reduce.md)
+* [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 * [Spark-programma's aanroepen](data-factory-spark.md)
 * [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

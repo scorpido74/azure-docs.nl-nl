@@ -5,26 +5,26 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: c94e7d1fb5c42a0246b38c88eb097c75ec8ca4e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789856"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [Facebook-account](https://www.facebook.com/) 
+* Een [Facebook](https://www.facebook.com/) -account 
 
-Voordat je je Facebook-account gebruiken in een Logic-app, moet je de Logic-app autoriseren om verbinding te maken met je Facebook-account. Gelukkig u dit eenvoudig doen vanuit uw Logic-app op de Azure Portal. 
+Voordat u uw Facebook-account kunt gebruiken in een logische app, moet u de logische app toestemming geven om verbinding te maken met uw Facebook-account. Gelukkig kunt u dit eenvoudig doen vanuit uw logische app in azure Portal. 
 
-Dit zijn de stappen om je Logic-app te autoriseren om verbinding te maken met je Facebook-account:
+Hier volgen de stappen om uw logische app te autoriseren om verbinding te maken met uw Facebook-account:
 
-1. Als u een verbinding met Facebook wilt maken, selecteert u in de maker van de Logic-app de optie **Beheerde API's van Microsoft weergeven** in de vervolgkeuzelijst en voert u *Facebook* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:  
-   ![facebook stap 1](./media/connectors-create-api-facebook/facebook-1.png)
-2. Als je nog nooit connecties met Facebook hebt gemaakt, wordt je gevraagd je Facebook-referenties op te geven. Deze referenties worden gebruikt om uw Logic-app te autoriseren om verbinding te maken en toegang te krijgen tot de gegevens van uw Facebook-account:  
-   ![facebook stap 2](./media/connectors-create-api-facebook/facebook-2.png)
-3. Geef je Facebook-gebruikersnaam en -wachtwoord op om je Logic-app te autoriseren:  
-   ![facebook stap 3](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Merk op dat de verbinding is gemaakt en dat u nu vrij bent om verder te gaan met de andere stappen in uw Logic-app:  
-   ![facebook stap 4](./media/connectors-create-api-facebook/facebook-4.png)   
+1. Als u een verbinding met Facebook wilt maken, selecteert u in de ontwerp functie voor logische apps de optie **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voert u *Facebook* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:  
+   ![Facebook-stap 1](./media/connectors-create-api-facebook/facebook-1.png)
+2. Als u nog geen verbindingen met Facebook hebt gemaakt, wordt u gevraagd om uw Facebook-referenties op te geven. Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en toegang te krijgen tot de gegevens van uw Facebook-account:  
+   ![Facebook-stap 2](./media/connectors-create-api-facebook/facebook-2.png)
+3. Geef uw Facebook-gebruikers naam en-wacht woord op om uw logische app te autoriseren:  
+   ![Facebook-stap 3](./media/connectors-create-api-facebook/facebook-3.png)   
+4. U ziet dat de verbinding is gemaakt en u kunt nu door gaan met de andere stappen in uw logische app:  
+   ![Facebook-stap 4](./media/connectors-create-api-facebook/facebook-4.png)   
 

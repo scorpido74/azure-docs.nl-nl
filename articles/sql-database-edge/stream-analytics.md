@@ -1,7 +1,7 @@
 ---
-title: SQL Database DAC-pakketten en Stream Analytics-taken gebruiken met Azure SQL Database Edge | Microsoft Documenten
+title: SQL Database DAC-pakketten en Stream Analytics-taken gebruiken met Azure SQL Database Edge | Microsoft Docs
 description: Meer informatie over het gebruik van Stream Analytics-taken in SQL Database Edge
-keywords: sql-databaseedge, stream analytics, sqlpackage
+keywords: SQL data base Edge, stream Analytics, sqlpackage
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74384162"
 ---
 # <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>SQL Database DAC-pakketten en Stream Analytics-taken gebruiken met SQL Database Edge
 
-Azure SQL Database Edge Preview is een geoptimaliseerde relationele databaseengine die is afgestemd op IoT- en edge-implementaties. Het is gebouwd op de nieuwste versies van de Microsoft SQL Server Database Engine, die toonaangevende mogelijkheden voor prestaties, beveiliging en queryverwerking biedt. Naast de toonaangevende relationele databasebeheermogelijkheden van SQL Server biedt Azure SQL Database Edge ingebouwde streamingmogelijkheden voor realtime analyses en complexe gebeurtenisverwerking.
+Azure SQL Database Edge-Preview is een geoptimaliseerde relationele data base-engine die is afgestemd op IoT-en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server, biedt Azure SQL Database Edge ingebouwde streaming-mogelijkheden voor real-time analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Database Edge biedt ook een native implementatie van SqlPackage.exe waarmee u een [SQL Database DAC-pakket](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) implementeren tijdens de implementatie van SQL Database Edge.
+Azure SQL Database Edge biedt ook een systeem eigen implementatie van SqlPackage. exe, waarmee u een [SQL database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL database Edge.
 
-Azure SQL Database Edge legt twee `module twin's desired properties` optionele parameters bloot via de optie van de IoT Edge-module:
+Azure SQL Database Edge stelt twee optionele para meters met `module twin's desired properties` de optie van de IOT Edge module:
 
 ```json
 {
@@ -36,35 +36,35 @@ Azure SQL Database Edge legt twee `module twin's desired properties` optionele p
 
 |Veld | Beschrijving |
 |------|-------------|
-| SqlPackage | Uri azure blob-opslag voor het *.zip-bestand dat het SQL Database DAC-pakket bevat.
-| ASAJobInfo | Azure Blob-opslagURI voor de ASA Edge-taak. Zie [Een ASA Edge-taak publiceren voor SQL Database Edge voor](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)meer informatie.
+| SqlPackage | Azure Blob-opslag-URI voor het *. zip-bestand dat de SQL Database DAC-pakket bevat.
+| ASAJobInfo | Azure Blob-opslag-URI voor de ASA Edge-taak. Zie [een ASA Edge-taak publiceren voor SQL database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)voor meer informatie.
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database DAC-pakketten gebruiken met SQL Database Edge
 
-Als u een SQL Database DAC-pakket (*.dacpac) met SQL Database Edge wilt gebruiken, neemt u de volgende stappen:
+Voer de volgende stappen uit om een SQL Database DAC-pakket (*. dacpac) te gebruiken met SQL Database Edge:
 
-1. Een SQL Database DAC-pakket maken of extraheren. Zie [Een DAC uit een database extraheren](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-database.
+1. Een SQL Database DAC-pakket maken of extra heren. Zie [een DAC extra heren uit een Data Base](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-Data Base.
 
-2. Rits de *.dacpac dicht en upload deze naar een Azure Blob-opslagaccount. Zie [Blobs uploaden, downloaden en aanbieden met de Azure-portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor meer informatie over het uploaden van bestanden naar Azure Blob-opslag.
+2. Zip-dacpac en upload het naar een Azure Blob Storage-account. Zie [blobs uploaden, downloaden en weer geven met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor meer informatie over het uploaden van bestanden naar Azure Blob-opslag.
 
-3. Genereer een gedeelde toegangshandtekening voor het zip-bestand met behulp van de Azure-portal. Zie [Toegang tot gemachtigde met gedeelde toegangshandtekeningen (SAS) voor](../storage/common/storage-sas-overview.md)meer informatie.
+3. Genereer een Shared Access Signature voor het zip-bestand met behulp van de Azure Portal. Zie [Toegang delegeren met Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md)voor meer informatie.
 
-4. Werk de SQL Database Edge-moduleconfiguratie bij om de gedeelde toegangs-URI voor het DAC-pakket op te nemen. Als u de SQL Database Edge-module wilt bijwerken, neemt u de volgende stappen uit:
+4. Werk de configuratie van de module SQL Database-rand bij om de gedeelde toegangs-URI voor het DAC-pakket op te geven. Voer de volgende stappen uit om de module SQL Database Edge bij te werken:
 
-    1. Ga in de Azure-portal naar uw IoT Hub-implementatie.
+    1. Ga in het Azure Portal naar de implementatie van IoT Hub.
 
     2. Selecteer **IoT Edge** in het linkerdeelvenster.
 
-    3. Zoek en selecteer op de pagina **IoT Edge** de IoT-rand waar de SQL Database Edge-module is geïmplementeerd.
+    3. Zoek en selecteer op de pagina **IOT Edge** de IOT-rand waar de module SQL database Edge is geïmplementeerd.
 
-    4. Selecteer op de apparaatpagina **van IoT Edge Device** de optie Module **instellen**.
+    4. Selecteer op de pagina **apparaat IOT edge apparaten** de optie **module instellen**.
 
-    5. Selecteer op de pagina **Modules instellen** de optie **Configureren** ten opzichte van de SQL Database Edge-module.
+    5. Selecteer op de pagina **modules instellen** de optie **configureren** voor de module SQL database Edge.
 
-    6. Selecteer in het deelvenster **Aangepaste IoT Edge-modules** de **gewenste eigenschappen van moduletwin instellen.** Werk de gewenste eigenschappen bij `SQLPackage` om de URI voor de optie op te nemen, zoals in het volgende voorbeeld wordt weergegeven.
+    6. Selecteer in het deel venster **aangepaste Modules IOT Edge** de **gewenste eigenschappen van module configureren**. Werk de gewenste eigenschappen bij om de URI voor de `SQLPackage` optie op te geven, zoals wordt weer gegeven in het volgende voor beeld.
 
         > [!NOTE]
-        > De SAS URI in de volgende JSON is slechts een voorbeeld. Vervang de URI door de werkelijke URI van uw implementatie.
+        > De SAS-URI in de volgende JSON is slechts een voor beeld. Vervang de URI door de daad werkelijke URI van uw implementatie.
 
         ```json
             {
@@ -77,38 +77,38 @@ Als u een SQL Database DAC-pakket (*.dacpac) met SQL Database Edge wilt gebruike
 
     7. Selecteer **Opslaan**.
 
-    8. Selecteer **Volgende**op de pagina **Modules instellen** .
+    8. Selecteer op de pagina **modules instellen** de optie **volgende**.
 
-    9. Selecteer op de pagina **Modules instellen** **de** optie Volgende en voer **vervolgens In.**
+    9. Selecteer op de pagina **modules instellen** de optie **volgende** en vervolgens **verzenden**.
 
-5. Na de module-update wordt het DAC-pakketbestand gedownload, uitgepakt en geïmplementeerd tegen de SQL Database Edge-instantie.
+5. Na het bijwerken van de module wordt het DAC-pakket bestand gedownload, uitgepakt en geïmplementeerd op basis van het SQL Database Edge-exemplaar.
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>Streamingtaken gebruiken met SQL Database Edge
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>Streaming-taken gebruiken met SQL Database Edge
 
-Azure SQL Database Edge heeft een native implementatie van de runtime van streamanalytics. Met deze implementatie u een Azure Stream Analytics-randtaak maken en die taak implementeren als een SQL Database Edge-streamingtaak. Voer de volgende stappen uit om een edge-taak van Stream Analytics te maken:
+Azure SQL Database Edge heeft een systeem eigen implementatie van de stream Analytics-runtime. Met deze implementatie kunt u een Azure Stream Analytics Edge-taak maken en die taak implementeren als een SQL Database Edge streaming-taak. Voer de volgende stappen uit om een Stream Analytics Edge-taak te maken:
 
-1. Ga naar de Azure-portal met behulp van de [preview-URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true). Met deze preview-URL u SQL Database-uitvoer configureren voor een edge-taak van Stream Analytics.
+1. Ga naar de Azure Portal met behulp van de voor beeld- [URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true). Met deze Preview-URL kunt u SQL Database uitvoer voor een Stream Analytics Edge-taak configureren.
 
-2. Maak een nieuwe **Azure Stream Analytics voor iot edge-taak.** Kies de hostingomgeving die is gericht op **Edge.**
+2. Een nieuwe **Azure stream Analytics op IOT Edge** -taak maken. Kies de hosting omgeving die de **rand**van het doel heeft.
 
-3. Definieer een invoer en uitvoer voor de Azure Stream Analytics-taak. Elke SQL-uitvoer, die u hier instelt, is gekoppeld aan één tabel in de database. Als u gegevens naar meerdere tabellen moet streamen, moet u meerdere SQL-database-uitvoermaken. U de SQL-uitvoer configureren om naar verschillende databases te wijzen.
+3. Definieer een invoer en uitvoer voor de Azure Stream Analytics taak. Elke SQL-uitvoer, die u hier instelt, is gekoppeld aan één tabel in de data base. Als u gegevens naar meerdere tabellen wilt streamen, moet u meerdere SQL Database-uitvoer maken. U kunt de SQL-uitvoer zodanig configureren dat deze naar verschillende data bases verwijst.
 
-    **Invoer**. Kies EdgeHub als invoer voor de randtaak en geef de brongegevens op.
+    **Invoer**. Kies EdgeHub als invoer voor de Edge-taak en geef de resource gegevens op.
 
-    **Output**. Selecteer SQL Database als uitvoer. Selecteer **SQL-database-instellingen handmatig opgeven**. Geef de configuratiegegevens voor de database en tabel op.
+    **Uitvoer**. Selecteer SQL Database de als uitvoer. Selecteer **SQL database-instellingen hand matig opgeven**. Geef de configuratie gegevens op voor de data base en tabel.
 
     |Veld      | Beschrijving |
     |---------------|-------------|
-    |Uitvoeralias | Naam van de uitvoeralias.|
-    |Database | Naam van de SQL-database. Het moet een geldige naam zijn van een database die bestaat op de SQL Database Edge-instantie.|
-    |Servernaam | Naam (of IP-adres) en poortnummergegevens voor de SQL-instantie. Voor een SQL Database Edge-implementatie u **tcp:.,1433** gebruiken voor de servernaam.|
-    |Gebruikersnaam | SQL-aanmeldingsaccount met toegang tot gegevenslezer en gegevensschrijver tot de database die u eerder hebt opgegeven.|
-    |Wachtwoord | Wachtwoord voor het SQL-aanmeldingsaccount dat u eerder hebt opgegeven.|
-    |Tabel | Naam van de tabel die wordt uitgevoerd voor de streamingtaak.|
-    |Partitionering overnemen| Hiermee u het partitieschema van uw vorige querystap of -invoer overnemen. Wanneer deze optie is ingeschakeld, u een betere doorvoer verwachten wanneer u naar een op schijven gebaseerde tabel schrijft en een volledig parallelle topologie voor uw taak hebt.|
-    |Batchgrootte| Het maximum aantal records dat wordt verzonden bij elke bulkwisseltransactie.|
+    |Uitvoeralias | De naam van de uitvoer alias.|
+    |Database | De naam van de SQL database. Dit moet een geldige naam zijn van een Data Base die zich op het SQL Database Edge-exemplaar bevindt.|
+    |Servernaam | Naam (of IP-adres) en Details van het poort nummer voor het SQL-exemplaar. Voor een SQL Database Edge-implementatie kunt u **TCP:., 1433** gebruiken voor de server naam.|
+    |Gebruikersnaam | SQL-aanmeldings account met gegevens lezer en gegevens schrijver toegang tot de data base die u eerder hebt opgegeven.|
+    |Wachtwoord | Wacht woord voor het SQL-aanmeldings account dat u eerder hebt opgegeven.|
+    |Tabel | De naam van de tabel die wordt uitgevoerd voor de streaming-taak.|
+    |Partities overnemen| Hiermee wordt het schema voor het partitioneren van de vorige query stap of-invoer ingeschakeld. Wanneer deze optie is ingeschakeld, kunt u een betere door Voer verwachten wanneer u naar een op schijf gebaseerde tabel schrijft en een volledig parallelle topologie voor uw taak hebt.|
+    |Batch grootte| Het maximum aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie.|
 
-    Hier is een voorbeeldinvoer-/uitvoerconfiguratie:
+    Hier volgt een voor beeld van een invoer/uitvoer-configuratie:
 
     ```txt
         Input:
@@ -130,32 +130,32 @@ Azure SQL Database Edge heeft een native implementatie van de runtime van stream
     ```
 
     > [!NOTE]
-    > Zie [Azure Stream Analytics-uitvoer naar Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md)voor meer informatie over de SQL-uitvoeradapter voor Azure Stream Analytics.
+    > Zie [Azure stream Analytics output to Azure SQL database](../stream-analytics/stream-analytics-sql-output-perf.md)voor meer informatie over de SQL-uitvoer adapter voor Azure stream Analytics.
 
-4. Definieer de ASA-taakquery voor de randtaak. Deze query moet de gedefinieerde invoer-/uitvoeraliassen gebruiken als de invoer- en uitvoernamen in de query. Zie [Naslaganalyse querytaalverwijzing](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)voor meer informatie.
+4. Definieer de ASA-taak query voor de Edge-taak. Deze query moet de gedefinieerde invoer/uitvoer aliassen gebruiken als de invoer-en uitvoer namen in de query. Zie [Stream Analytics-query taal](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)voor meer informatie.
 
-5. Stel de instellingen voor het opslagaccount in voor de randtaak. Het opslagaccount wordt gebruikt als publicatiedoel voor de randtaak.
+5. Stel de instellingen voor het opslag account voor de Edge-taak in. Het opslag account wordt gebruikt als het publicatie doel voor de Edge-taak.
 
-6. Selecteer **onder Configureren**de optie **Publiceren**en selecteer de knop **Publiceren.** Sla de SAS URI op voor gebruik met de SQL Database Edge-module.
+6. Selecteer onder **configureren**de optie **publiceren**en selecteer vervolgens de knop **publiceren** . Sla de SAS-URI op voor gebruik met de module SQL Database Edge.
 
-### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>De edge-taak van Stream Analytics implementeren in SQL Database Edge
+### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>De Stream Analytics Edge-taak implementeren op SQL Database Edge
 
-Als u de streamingtaak wilt implementeren in de SQL Database Edge-module, werkt u de SQL Database Edge-moduleconfiguratie bij om de SAS URI voor de streamingtaak van de eerdere stap op te nemen. Ga als een te werk om de SQL Database Edge-module bij te werken:
+Als u de streaming-taak wilt implementeren in de module SQL Database Edge, moet u de configuratie van de module SQL Database Edge bijwerken met de SAS-URI voor de streaming-taak uit de vorige stap. De module SQL Database Edge bijwerken:
 
-1. Ga in de Azure-portal naar uw IoT Hub-implementatie.
+1. Ga in het Azure Portal naar de implementatie van IoT Hub.
 
 2. Selecteer **IoT Edge** in het linkerdeelvenster.
 
-3. Zoek en selecteer op de pagina **IoT Edge** de IoT-rand waar de SQL Database Edge-module is geïmplementeerd.
+3. Zoek en selecteer op de pagina **IOT Edge** de IOT-rand waar de module SQL database Edge is geïmplementeerd.
 
-4. Selecteer op de apparaatpagina **van IoT Edge Device** de optie Module **instellen**.
+4. Selecteer op de pagina **apparaat IOT edge apparaten** de optie **module instellen**.
 
-5. Selecteer op de pagina **Modules instellen** de optie **Configureren** ten opzichte van de SQL Database Edge-module.
+5. Selecteer op de pagina **modules instellen** de optie **configureren** voor de module SQL database Edge.
 
-6. Selecteer in het deelvenster **Aangepaste IoT Edge-modules** de **gewenste eigenschappen van moduletwin instellen.** Werk de gewenste eigenschappen bij `ASAJobInfo` om de URI voor de optie op te nemen, zoals in het volgende voorbeeld wordt weergegeven.
+6. Selecteer in het deel venster **aangepaste Modules IOT Edge** de **gewenste eigenschappen van module configureren**. Werk de gewenste eigenschappen bij om de URI voor de `ASAJobInfo` optie op te geven, zoals wordt weer gegeven in het volgende voor beeld.
 
     > [!NOTE]
-    > De SAS URI in de volgende JSON is slechts een voorbeeld. Vervang de URI door de werkelijke URI van uw implementatie.
+    > De SAS-URI in de volgende JSON is slechts een voor beeld. Vervang de URI door de daad werkelijke URI van uw implementatie.
 
     ```json
         {
@@ -168,14 +168,14 @@ Als u de streamingtaak wilt implementeren in de SQL Database Edge-module, werkt 
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer **Volgende**op de pagina **Modules instellen** .
+8. Selecteer op de pagina **modules instellen** de optie **volgende**.
 
-9. Selecteer op de pagina **Modules instellen** **de** optie Volgende en voer **vervolgens In.**
+9. Selecteer op de pagina **modules instellen** de optie **volgende** en vervolgens **verzenden**.
 
-10. Na de module-update wordt het taakbestand streamanalytics gedownload, uitgepakt en geïmplementeerd tegen de SQL Database Edge-instantie.
+10. Na het bijwerken van de module wordt het Stream Analytics-taak bestand gedownload, uitgepakt en geïmplementeerd op basis van het SQL Database Edge-exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Azure SQL Database [Edge](https://azure.microsoft.com/services/sql-database-edge/)voor prijs- en beschikbaarheidsgegevens.
-- Azure SQL Database Edge inschakelen aanvragen voor uw abonnement.
-- Zie [SQL Database Edge implementeren via Azure-portal](deploy-portal.md)om aan de slag te gaan.
+- Zie [Azure SQL database Edge](https://azure.microsoft.com/services/sql-database-edge/)voor prijzen en Details van de beschik baarheid.
+- Aanvraag voor het inschakelen van Azure SQL Database Edge voor uw abonnement.
+- Als u aan de slag wilt gaan, raadpleegt u [SQL database Edge implementeren via Azure Portal](deploy-portal.md).

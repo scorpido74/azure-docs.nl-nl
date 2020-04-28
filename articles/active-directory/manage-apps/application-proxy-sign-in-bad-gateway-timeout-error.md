@@ -1,6 +1,6 @@
 ---
-title: Heeft geen toegang tot deze fout in de bedrijfstoepassing met de app Proxy-app
-description: Algemene toegangsproblemen met Azure AD-toepassingsproxytoepassingen oplossen.
+title: Kan geen toegang krijgen tot deze zakelijke toepassings fout met app proxy-app
+description: Veelvoorkomende toegangs problemen oplossen met Azure AD-toepassingsproxy-toepassingen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,92 +17,92 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275472"
 ---
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fout "Kan geen toegang krijgen tot deze bedrijfstoepassing" fout bij het gebruik van een application proxy-toepassing
+# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fout bericht ' kan geen toegang krijgen tot deze bedrijfs toepassing ' wanneer u een toepassings proxy toepassing gebruikt
 
-Met dit artikel u veelvoorkomende problemen oplossen voor de fout 'Deze bedrijfsapp kan niet worden geopend' op een Azure AD Application Proxy-toepassing.
+Dit artikel helpt u bij het oplossen van veelvoorkomende problemen met de fout ' deze zakelijke app kan niet worden geopend ' op een Azure AD-toepassingsproxy-toepassing.
 
 ## <a name="overview"></a>Overzicht
 
-Wanneer u deze fout ziet, zoekt u de statuscode op de foutpagina. Die code is waarschijnlijk een van de volgende statuscodes:
+Wanneer u deze fout ziet, zoekt u de status code op de fout pagina. Deze code is waarschijnlijk een van de volgende status codes:
 
-- **Gateway time-out:** de application proxy-service kan de connector niet bereiken. Deze fout duidt meestal op een probleem met de verbindingstoewijzing, connector zelf of de netwerkregels rond de connector.
-- **Slechte gateway:** de connector kan de backend-toepassing niet bereiken. Deze fout kan duiden op een verkeerde configuratie van de toepassing.
-- **Verboden**: De gebruiker is niet bevoegd om toegang te krijgen tot de applicatie. Deze fout kan optreden wanneer de gebruiker niet is toegewezen aan de toepassing in Azure Active Directory, of als de gebruiker op de backend geen toestemming heeft om toegang te krijgen tot de toepassing.
+- **Time-out van Gateway**: de service Application proxy kan de connector niet bereiken. Deze fout duidt doorgaans op een probleem met de connector toewijzing, connector zelf of de netwerk regels rondom de connector.
+- **Ongeldige gateway**: de connector kan de back-end-toepassing niet bereiken. Deze fout kan duiden op een onjuiste configuratie van de toepassing.
+- **Verboden**: de gebruiker is niet gemachtigd om toegang te krijgen tot de toepassing. Deze fout kan optreden als de gebruiker niet is toegewezen aan de toepassing in Azure Active Directory, of als op de back-end de gebruiker geen machtiging heeft voor toegang tot de toepassing.
 
-Als u de code wilt vinden, bekijkt u de tekst linksonder in het foutbericht voor het veld Statuscode. Zoek ook naar eventuele extra tips aan de onderkant van de pagina.
+Als u de code wilt vinden, bekijkt u de tekst linksonder in het fout bericht voor het veld status code. Kijk ook naar extra tips onder aan de pagina.
 
-![Voorbeeld: fout time-out gateway](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![Voor beeld: time-out van Gateway](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
-Zie het overeenkomstige gedeelte hieronder voor meer informatie over het oplossen van de hoofdoorzaak van deze fouten en meer details over voorgestelde oplossingen.
+Zie de bijbehorende sectie hieronder voor meer informatie over het oplossen van de hoofd oorzaak van deze fouten en meer informatie over voorgestelde oplossingen.
 
-## <a name="gateway-timeout-errors"></a>Time-outfouten voor gateway's
+## <a name="gateway-timeout-errors"></a>Time-outfouten voor gateway
 
-Een time-out van de gateway vindt plaats wanneer de service de connector probeert te bereiken en niet binnen het time-outvenster kan worden uitgevoerd. Deze fout wordt meestal veroorzaakt door een toepassing die is toegewezen aan een connectorgroep zonder werkende connectoren of sommige poorten die door de connector zijn vereist, zijn niet geopend.
+Er treedt een time-out voor de gateway op wanneer de service de connector probeert te bereiken en niet binnen het time-outvenster kan worden gehaald. Deze fout wordt meestal veroorzaakt door een toepassing die is toegewezen aan een connector groep zonder werkende connectors, of sommige poorten die door de connector zijn vereist, zijn niet geopend.
 
-## <a name="bad-gateway-errors"></a>Foute gatewayfouten
+## <a name="bad-gateway-errors"></a>Ongeldige gateway fouten
 
-Een fout in de gateway geeft aan dat de connector de backend-toepassing niet kan bereiken. zorg ervoor dat u de juiste toepassing hebt gepubliceerd. Veelvoorkomende fouten die deze fout veroorzaken zijn:
+Een ongeldige gateway fout geeft aan dat de connector de back-end-toepassing niet kan bereiken. Zorg ervoor dat u de juiste toepassing hebt gepubliceerd. Veelvoorkomende fouten die deze fout veroorzaken, zijn:
 
-- Een typefout of fout in de interne URL
-- De hoofdmap van de toepassing niet publiceren. Bijvoorbeeld publiceren, <http://expenses/reimbursement> maar proberen toegang te krijgen tot<http://expenses>
-- Problemen met de Configuratie van de Kerberos Constrained Delegation (KCD)
-- Problemen met de backend-toepassing
+- Een type of fout in de interne URL
+- De hoofdmap van de toepassing niet publiceren. Bijvoorbeeld publiceren <http://expenses/reimbursement> , maar toegang proberen<http://expenses>
+- Problemen met de configuratie van de Kerberos-beperkte overdracht (KCD)
+- Problemen met de back-end-toepassing
 
 ## <a name="forbidden-errors"></a>Verboden fouten
 
-Als u een verboden fout ziet, is de gebruiker niet toegewezen aan de toepassing. Deze fout kan zich bevinden in Azure Active Directory of in de backend-toepassing.
+Als er een verboden fout wordt weer geven, is de gebruiker niet toegewezen aan de toepassing. Deze fout kan zich voordoen in Azure Active Directory of op de back-end-toepassing.
 
-Zie de [configuratiedocumentatie](application-proxy-add-on-premises-application.md#test-the-application)voor meer informatie over het toewijzen van gebruikers aan de toepassing in Azure.
+Zie de [configuratie documentatie](application-proxy-add-on-premises-application.md#test-the-application)voor meer informatie over het toewijzen van gebruikers aan de toepassing in Azure.
 
-Als u bevestigt dat de gebruiker is toegewezen aan de toepassing in Azure, controleert u de gebruikersconfiguratie in de backend-toepassing. Zie de pagina Problemen met kcd-problemen voor richtlijnen als u Kerberos Constrained Delegation/Integrated Windows Authentication gebruikt.
+Als u bevestigt dat de gebruiker is toegewezen aan de toepassing in azure, controleert u de gebruikers configuratie in de back-end-toepassing. Als u beperkte Kerberos-overdracht/geïntegreerde Windows-authenticatie gebruikt, raadpleegt u de pagina KCD Troubleshooting (Engelstalig) voor richt lijnen.
 
 ## <a name="check-the-applications-internal-url"></a>De interne URL van de toepassing controleren
 
-Als eerste snelle stap controleert en repareert u de interne URL door de toepassing te openen via **Enterprise-toepassingen**en vervolgens het menu **Toepassingsproxy te** selecteren. Controleer of de interne URL de URL is die wordt gebruikt vanuit uw on-premises netwerk om toegang te krijgen tot de toepassing.
+Als eerste snelle stap controleert en corrigeert u de interne URL door de toepassing te openen via **zakelijke toepassingen**en vervolgens het menu **toepassings proxy** te selecteren. Controleer of de interne URL wordt gebruikt in uw on-premises netwerk om toegang te krijgen tot de toepassing.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Controleren of de toepassing is toegewezen aan een werkgroep
+## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Controleren of de toepassing is toegewezen aan een werkende connector groep
 
-Ga als volgt te werk om te controleren of de toepassing is toegewezen aan een werkgroepgroep:
+Controleren of de toepassing is toegewezen aan een werkende connector groep:
 
-1. Open de toepassing in de portal door naar **Azure Active Directory**te gaan , te klikken op **Enterprise-toepassingen**en vervolgens **Alle toepassingen.** Open de toepassing en selecteer **Vervolgens Toepassingsproxy** in het linkermenu.
-1. Kijk naar het veld Connectorgroep. Als er geen actieve connectors in de groep zijn, ziet u een waarschuwing. Als u geen waarschuwingen ziet, gaat u verder om te controleren of alle vereiste poorten zijn toegestaan.
-1. Als de verkeerde verbindingsgroep wordt weergegeven, gebruikt u de vervolgkeuzelijst om de juiste groep te selecteren en bevestigt u dat u geen waarschuwingen meer ziet. Als de beoogde connectorgroep wordt weergegeven, klikt u op het waarschuwingsbericht om de pagina met Connectorbeheer te openen.
-1. Vanaf hier zijn er een paar manieren om verder te boren:
+1. Open de toepassing in de portal door naar **Azure Active Directory**te gaan, op **bedrijfs toepassingen**en vervolgens op **alle toepassingen** te klikken. Open de toepassing en selecteer vervolgens **toepassings proxy** in het menu links.
+1. Bekijk het veld connector groep. Als er geen actieve connectors in de groep aanwezig zijn, wordt er een waarschuwing weer gegeven. Als er geen waarschuwingen worden weer gegeven, gaat u naar om te controleren of alle vereiste poorten zijn toegestaan.
+1. Als de verkeerde connector groep wordt weer gegeven, gebruikt u de vervolg keuzelijst om de juiste groep te selecteren en controleert u of er geen waarschuwingen meer beschikbaar zijn. Als de bedoelde connector groep wordt weer gegeven, klikt u op het waarschuwings bericht om de pagina te openen met het beheer van connectors.
+1. Hier volgen enkele manieren om verder in te zoomen:
 
-   - Een actieve connector naar de groep verplaatsen: als u een actieve connector hebt die tot deze groep moet behoren en zichtlijn heeft naar de doelbackendtoepassing, u de connector naar de toegewezen groep verplaatsen. Klik hiervoor op de connector. Gebruik in het veld 'Verbindingsgroep' de vervolgkeuzelijst om de juiste groep te selecteren en klik op Opslaan.
-   - Download een nieuwe connector voor die groep: op deze pagina u de koppeling downloaden om een nieuwe connector te [downloaden.](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download) Installeer de connector op een machine met directe zichtlijn naar de backend-toepassing. Normaal gesproken is de connector geïnstalleerd op dezelfde server als de toepassing. Gebruik de koppeling Connector downloaden om een connector op de doelmachine te downloaden. Klik vervolgens op de connector en gebruik de vervolgkeuzelijst 'Connectorgroep' om te zien of deze tot de juiste groep behoort.
-   - Een inactieve connector onderzoeken: als een connector als inactief wordt weergegeven, kan deze de service niet bereiken. Deze fout is meestal te wijten aan een aantal vereiste poorten worden geblokkeerd. Als u dit probleem wilt oplossen, gaat u verder om te controleren of alle vereiste poorten zijn toegestaan.
+   - Een actieve connector verplaatsen naar de groep: als u een actieve connector hebt die deel moet uitmaken van deze groep en een regel voor de detectie van de doel-backend-toepassing heeft, kunt u de connector verplaatsen naar de toegewezen groep. Als u dit wilt doen, klikt u op de connector. In het veld connector groep gebruikt u de vervolg keuzelijst om de juiste groep te selecteren en klikt u op opslaan.
+   - Een nieuwe connector voor die groep downloaden: vanaf deze pagina kunt u de koppeling ophalen om [een nieuwe connector te downloaden](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installeer de connector op een computer met een rechtstreekse gezichts lijn voor de back-end-toepassing. Normaal gesp roken wordt de connector geïnstalleerd op dezelfde server als de toepassing. Gebruik de koppeling connector downloaden om een connector te downloaden naar de doel computer. Klik vervolgens op de connector en gebruik de vervolg keuzelijst connector groep om te controleren of deze bij de juiste groep hoort.
+   - Een inactieve connector onderzoeken: als een connector als inactief wordt weer gegeven, kan de service niet worden bereikt. Deze fout wordt meestal veroorzaakt doordat de vereiste poorten zijn geblokkeerd. Als u dit probleem wilt oplossen, gaat u naar om te controleren of alle vereiste poorten zijn toegestaan.
 
-Nadat u deze stappen hebt gebruikt om ervoor te zorgen dat de toepassing is toegewezen aan een groep met werkende connectors, test u de toepassing opnieuw. Als het nog steeds niet werkt, ga dan verder naar de volgende sectie.
+Nadat u deze stappen hebt uitgevoerd om ervoor te zorgen dat de toepassing wordt toegewezen aan een groep met werkende connectors, test u de toepassing opnieuw. Als het nog steeds niet werkt, gaat u door naar de volgende sectie.
 
-## <a name="check-all-required-ports-are-open"></a>Controleer of alle vereiste poorten open zijn
+## <a name="check-all-required-ports-are-open"></a>Controleer of alle vereiste poorten zijn geopend
 
-Zie de documentatie over het openen van poorten om te controleren of alle vereiste poorten zijn geopend. Als alle vereiste poorten zijn geopend, gaat u naar de volgende sectie.
+Raadpleeg de documentatie over het openen van poorten om te controleren of alle vereiste poorten zijn geopend. Als alle vereiste poorten open zijn, gaat u naar de volgende sectie.
 
-## <a name="check-for-other-connector-errors"></a>Controleren op andere verbindingsfouten
+## <a name="check-for-other-connector-errors"></a>Controleren op andere connector fouten
 
-Als geen van de bovenstaande problemen is opgelost, is de volgende stap om te zoeken naar problemen of fouten met de connector zelf. U enkele veelvoorkomende fouten zien in het [document Problemen oplossen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors).
+Als geen van de bovenstaande stappen het probleem oplost, is de volgende stap het zoeken naar problemen of fouten met de connector zelf. In het [document problemen oplossen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)vindt u enkele veelvoorkomende fouten.
 
-U ook rechtstreeks naar de Connector-logboeken kijken om eventuele fouten te identificeren. Veel van de foutberichten delen specifieke aanbevelingen voor oplossingen. Zie de [documentatie van](application-proxy-connectors.md#under-the-hood)connectors om de logboeken te bekijken.
+U kunt ook direct zoeken in de connector Logboeken om eventuele fouten te identificeren. Veel van de fout berichten delen specifieke aanbevelingen voor oplossingen. Raadpleeg de [documentatie van connectors](application-proxy-connectors.md#under-the-hood)als u de logboeken wilt weer geven.
 
-## <a name="additional-resolutions"></a>Aanvullende resoluties
+## <a name="additional-resolutions"></a>Aanvullende oplossingen
 
-Als het bovenstaande het probleem niet heeft opgelost, zijn er een paar verschillende mogelijke oorzaken. Ga als u op de juiste plaats om het probleem te identificeren:
+Als het probleem hiermee niet is opgelost, zijn er enkele mogelijke oorzaken. Het probleem identificeren:
 
-Als uw toepassing is geconfigureerd om Geïntegreerde Windows-verificatie (IWA) te gebruiken, test u de toepassing zonder eenmalige aanmelding. Zo niet, ga dan naar de volgende alinea. Als u de toepassing wilt controleren zonder één aanmelding, opent u uw toepassing via **Enterprise-toepassingen** en gaat u naar het menu **Eenmalig aanmelden.** Wijzig de vervolgkeuzelijst van 'Geïntegreerde Windows-verificatie' in 'Azure AD single sign-on disabled'.
+Als uw toepassing is geconfigureerd voor het gebruik van geïntegreerde Windows-authenticatie (IWA), test u de toepassing zonder eenmalige aanmelding. Als dat niet het geval is, gaat u naar de volgende alinea. Als u de toepassing zonder eenmalige aanmelding wilt controleren, opent u uw toepassing via **bedrijfs toepassingen** en gaat u naar het menu voor **eenmalige aanmelding** . Wijzig de vervolg keuzelijst van ' geïntegreerde Windows-verificatie ' in ' voor eenmalige aanmelding bij Azure AD uitgeschakeld '.
 
-Open nu een browser en probeer opnieuw toegang te krijgen tot de toepassing. U moet worden gevraagd om verificatie en krijgen in de toepassing. Als u zich verifiëren, is het probleem met de KCD-configuratie (Kerberos Constrained Delegation) waarmee de enkele aanmelding wordt ingeschakeld. Zie de pagina Problemen met kcd's voor meer informatie.
+Open nu een browser en probeer opnieuw toegang te krijgen tot de toepassing. U wordt gevraagd om verificatie en u krijgt toegang tot de toepassing. Als u zich kunt verifiëren, is het probleem de KCD-configuratie (Kerberos-beperkte overdracht) waarmee eenmalige aanmelding mogelijk is. Zie de pagina KCD Troubleshooting (Engelstalig) voor meer informatie.
 
-Als u de fout blijft zien, gaat u naar de machine waar de connector is geïnstalleerd, opent u een browser en probeert u de interne URL te bereiken die voor de toepassing wordt gebruikt. De Connector werkt als een andere client van dezelfde machine. Als u de toepassing niet bereiken, onderzoekt u waarom die machine de toepassing niet kan bereiken of gebruikt u een connector op een server die toegang heeft tot de toepassing.
+Als u de fout blijft zien, gaat u naar de computer waarop de connector is geïnstalleerd, opent u een browser en probeert u de interne URL te bereiken die voor de toepassing wordt gebruikt. De connector fungeert als een andere client van dezelfde computer. Als u de toepassing niet kunt bereiken, onderzoekt u waarom die computer de toepassing niet kan bereiken, of gebruikt u een connector op een server die toegang heeft tot de toepassing.
 
-Als u de toepassing van die machine bereiken, om te zoeken naar problemen of fouten met de Connector zelf. U enkele veelvoorkomende fouten zien in het [document Problemen oplossen](application-proxy-troubleshoot.md#connector-errors). U ook rechtstreeks naar de Connector-logboeken kijken om eventuele fouten te identificeren. Veel van onze foutmeldingen kunnen specifiekere aanbevelingen voor oplossingen delen. Zie onze documentatie voor connectors voor meer informatie over het bekijken van de [logboeken.](application-proxy-connectors.md#under-the-hood)
+Als u de toepassing vanaf die computer kunt bereiken, kunt u zoeken naar problemen of fouten met de connector zelf. In het [document problemen oplossen](application-proxy-troubleshoot.md#connector-errors)vindt u enkele veelvoorkomende fouten. U kunt ook direct zoeken in de connector Logboeken om eventuele fouten te identificeren. Veel van onze fout berichten kunnen specifieke aanbevelingen voor oplossingen delen. Zie [onze connectors-documentatie](application-proxy-connectors.md#under-the-hood)voor meer informatie over het weer geven van de logboeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)
+[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)

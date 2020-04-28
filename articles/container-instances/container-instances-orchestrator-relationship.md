@@ -1,68 +1,68 @@
 ---
-title: Containerexemplaren en containerorchestration
-description: Begrijpen hoe Azure-containerexemplaren communiceren met containerorchestrators.
+title: Container instanties en container indeling
+description: Begrijp hoe Azure container instances met container Orchestrator werken.
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533665"
 ---
-# <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances en containerorchestrators
+# <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances en container Orchestrator
 
-Door hun kleine formaat en toepassingsoriëntatie zijn containers zeer geschikt voor flexibele leveringsomgevingen en microservicegebaseerde architecturen. De taak van het automatiseren en beheren van een groot aantal containers en hoe ze interageren staat bekend als *orchestration.* Populaire containerorchestrators zijn Kubernetes, DC/OS en Docker Swarm.
+Vanwege hun geringe grootte en toepassings stand zijn containers geschikt voor flexibele bezorgings omgevingen en architecturen op basis van micro Services. De taak van het automatiseren en beheren van een groot aantal containers en hoe deze *communiceren, wordt bekend als indeling*. Populaire container-Orchestrator zijn onder andere Kubernetes, DC/OS en docker Swarm.
 
-Azure Container Instances biedt een aantal van de basisplanningsmogelijkheden van orchestration-platforms. En hoewel het niet de diensten met een hogere waarde dekt die deze platforms bieden, kunnen Azure Container Instances er complementair aan zijn. In dit artikel wordt beschreven wat Azure Container Instances hanteert en hoe volledige containerorchestrators ermee kunnen communiceren.
+Azure Container Instances biedt een aantal basis mogelijkheden voor het plannen van Orchestration-platforms. En hoewel het geen betrekking heeft op de services met hogere waarden die deze platformen bieden, kan Azure Container Instances complementair zijn. In dit artikel wordt het bereik beschreven van wat Azure Container Instances ingangen, en hoe de volledige container Orchestrator ermee kan werken.
 
-## <a name="traditional-orchestration"></a>Traditionele orkestratie
+## <a name="traditional-orchestration"></a>Traditionele indeling
 
-De standaarddefinitie van orkestratie omvat de volgende taken:
+De standaard definitie van indeling omvat de volgende taken:
 
-- **Planning**: Zoek een geschikte machine waarop de container kan worden uitgevoerd, een containerafbeelding en een resourceaanvraag.
-- **Affiniteit/Anti-affiniteit**: Geef op dat een set containers in de buurt van elkaar moet draaien (voor prestaties) of voldoende ver uit elkaar moet staan (voor beschikbaarheid).
-- **Statusbewaking:** Let op containerfouten en plan deze automatisch opnieuw.
-- **Failover:** houd bij wat er op elke machine wordt uitgevoerd en replan containers van mislukte machines naar gezonde knooppunten.
-- **Schalen:** Containerexemplaren toevoegen of verwijderen om aan de vraag te voldoen, handmatig of automatisch.
-- **Netwerken:** zorg voor een overlaynetwerk voor het coördineren van containers om te communiceren over meerdere hostmachines.
-- **Servicedetectie:** Schakel containers in om elkaar automatisch te lokaliseren, zelfs als ze tussen hostmachines bewegen en IP-adressen wijzigen.
-- **Gecoördineerde toepassingsupgrades:** Beheer containerupgrades om uitvaltijd van toepassingen te voorkomen en schakel terugdraaiing in als er iets misgaat.
+- **Planning**: voor het uitvoeren van een container installatie kopie en een resource aanvraag vindt u een geschikte computer waarop de container moet worden uitgevoerd.
+- **Affiniteit/anti-affiniteit**: Geef op dat een set containers naast elkaar moet worden uitgevoerd (voor prestaties) of te veel uit elkaar (voor Beschik baarheid).
+- **Status controle**: controleren op container fouten en deze automatisch opnieuw plannen.
+- **Failover**: Houd bij wat er op elke machine wordt uitgevoerd en plan de containers van mislukte machines opnieuw in goede knoop punten.
+- **Schalen**: container instanties toevoegen of verwijderen om te voldoen aan de vraag, hetzij hand matig of automatisch.
+- **Netwerken**: bieden een overlay-netwerk voor het coördineren van containers om te communiceren op meerdere hostcomputers.
+- **Service detectie**: Hiermee kunnen containers automatisch worden gevonden, zelfs als ze tussen hostcomputers worden verplaatst en IP-adressen worden gewijzigd.
+- **Gecoördineerde toepassings upgrades**: container upgrades beheren om uitval tijd van toepassingen te voor komen en terugdraai actie in te scha kelen als er iets fout gaat.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orkestratie met Azure Container Instances: een gelaagde aanpak
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Indeling met Azure Container Instances: een gelaagde benadering
 
-Azure Container Instances maakt een gelaagde benadering van orkestratie mogelijk, met alle plannings- en beheermogelijkheden die nodig zijn om één container uit te voeren, terwijl orchestrator-platforms meerdere containertaken kunnen beheren.
+Azure Container Instances maakt een gelaagde benadering van de indeling mogelijk, waarbij alle plannings-en beheer mogelijkheden zijn vereist voor het uitvoeren van één container, terwijl Orchestrator-platformen de mogelijkheid hebben om meerdere-container taken te beheren.
 
-Omdat de onderliggende infrastructuur voor containerexemplaren wordt beheerd door Azure, hoeft een orchestrator-platform zich niet bezig te houden met het vinden van een geschikte hostmachine waarop één container kan worden uitgevoerd. De elasticiteit van de cloud zorgt ervoor dat er altijd een beschikbaar is. In plaats daarvan kan de orchestrator zich richten op de taken die de ontwikkeling van multi-container architecturen vereenvoudigen, inclusief schalen en gecoördineerde upgrades.
+Omdat de onderliggende infra structuur voor container instanties wordt beheerd door Azure, hoeft een Orchestrator-platform zich niet te houden aan het vinden van een geschikte hostmachine waarop één container kan worden uitgevoerd. De elasticiteit van de cloud zorgt ervoor dat er altijd een beschikbaar is. In plaats daarvan kan de Orchestrator zich richten op de taken die de ontwikkeling van architecturen met meerdere containers vereenvoudigen, met inbegrip van schalen en gecoördineerde upgrades.
 
 ## <a name="scenarios"></a>Scenario's
 
-Hoewel de orchestrator-integratie met Azure Container Instances nog steeds ontluikend is, verwachten we dat er een paar verschillende omgevingen zullen ontstaan:
+Hoewel Orchestrator-integratie met Azure Container Instances nog steeds nascent is, anticiperen we dat een aantal verschillende omgevingen zich voordoen:
 
-### <a name="orchestration-of-container-instances-exclusively"></a>Orkestratie van containerexemplaren uitsluitend
+### <a name="orchestration-of-container-instances-exclusively"></a>Container instanties uitsluitend organiseren
 
-Omdat ze snel beginnen en per seconde worden gefactureerd, biedt een omgeving die uitsluitend is gebaseerd op Azure Container Instances de snelste manier om aan de slag te gaan en zeer variabele workloads aan te pakken.
+Omdat deze snel worden gestart en gefactureerd op basis van de tweede, biedt een omgeving die uitsluitend is gebaseerd op Azure Container Instances de snelste manier om aan de slag te gaan en om zeer variabele workloads te verwerken.
 
-### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Combinatie van containerexemplaren en containers in virtuele machines
+### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Combi natie van container instanties en containers in Virtual Machines
 
-Voor langlopende, stabiele workloads is het orkestreren van containers in een cluster van speciale virtuele machines doorgaans goedkoper dan het uitvoeren van dezelfde containers met Azure Container Instances. Container-exemplaren bieden echter een geweldige oplossing voor het snel uitbreiden en contracteren van uw totale capaciteit om onverwachte of kortstondige pieken in gebruik aan te pakken.
+Voor langlopende, stabiele werk belastingen is het organiseren van containers in een cluster met toegewezen virtuele machines doorgaans goed koper dan het uitvoeren van dezelfde containers met Azure Container Instances. Container instanties bieden echter een fantastische oplossing om snel uit te breiden en te voldoen aan uw totale capaciteit om te kunnen omgaan met onverwachte of korte pieken in het gebruik.
 
-In plaats van het aantal virtuele machines in uw cluster uit te schalen en vervolgens extra containers op die machines te implementeren, kan de orchestrator de extra containers in Azure Container Instances eenvoudig plannen en verwijderen wanneer ze niet langer Nodig.
+In plaats van het aantal virtuele machines in uw cluster te schalen en vervolgens extra containers op deze computers te implementeren, kan de Orchestrator de extra containers in Azure Container Instances plannen en deze verwijderen wanneer ze niet meer nodig zijn.
 
-## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Voorbeeldimplementatie: virtuele knooppunten voor Azure Kubernetes Service (AKS)
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Voorbeeld implementatie: virtuele knoop punten voor Azure Kubernetes service (AKS)
 
-Als u toepassingsworkloads snel wilt schalen in een AKS-cluster [(Azure Kubernetes Service),](../aks/intro-kubernetes.md) u *virtuele knooppunten* gebruiken die dynamisch zijn gemaakt in Azure Container Instances. Virtuele knooppunten maken netwerkcommunicatie mogelijk tussen pods die worden uitgevoerd in ACI en het AKS-cluster. 
+Als u werk belastingen van toepassingen snel wilt schalen in een [Azure Kubernetes service](../aks/intro-kubernetes.md) -cluster (AKS), kunt u *virtuele knoop punten* die dynamisch zijn gemaakt, gebruiken in azure container instances. Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in ACI en het AKS-cluster. 
 
-Virtuele knooppunten ondersteunen momenteel Linux-containerexemplaren. Ga aan de slag met virtuele knooppunten via de Azure CLI- of [Azure-portal.](https://go.microsoft.com/fwlink/?linkid=2047545) [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538)
+Virtuele knoop punten ondersteunen momenteel Linux-container exemplaren. Ga aan de slag met virtuele knoop punten met behulp van [Azure cli](https://go.microsoft.com/fwlink/?linkid=2047538) of [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Virtuele knooppunten gebruiken de open source [Virtual Kubelet][aci-connector-k8s] om de Kubernetes [kubelet][kubelet-doc] na te bootsen door zich te registreren als een knooppunt met onbeperkte capaciteit. De Virtuele Kubelet verzendt het maken van [pods][pod-doc] als containergroepen in Azure Container Instances.
+Virtuele knoop punten gebruiken het open-source [virtuele-Kubelet][aci-connector-k8s] om de Kubernetes- [Kubelet][kubelet-doc] te simuleren door te registreren als een knoop punt met onbeperkte capaciteit. De virtuele-Kubelet verzendt het maken van een [peul][pod-doc] als container groepen in azure container instances.
 
-Zie het [Virtual Kubelet-project](https://github.com/virtual-kubelet/virtual-kubelet) voor aanvullende voorbeelden van het uitbreiden van de Kubernetes API naar serverless containerplatforms.
+Bekijk het [virtuele-Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) -project voor meer voor beelden van het uitbreiden van de KUBERNETES-API naar serverloze container platforms.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Maak uw eerste container met Azure Container Instances met behulp van de [quickstart-handleiding](container-instances-quickstart.md).
+Maak uw eerste container met Azure Container Instances met behulp van de [Snelstartgids](container-instances-quickstart.md).
 
 <!-- IMAGES -->
 

@@ -1,6 +1,6 @@
 ---
-title: Het MFA-registratiebeleid configureren - Azure Active Directory Identity Protection
-description: Meer informatie over het configureren van het azure AD Identity Protection-beleid voor het registreren van meervoudige verificatie.
+title: Het MFA-registratie beleid configureren-Azure Active Directory Identity Protection
+description: Meer informatie over het configureren van het registratie beleid voor Azure AD Identity Protection multi-factor Authentication.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,51 +12,51 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74382145"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>How To: Het registratiebeleid voor azure-verificatie met meerdere factoren configureren
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Procedure: het Azure Multi-Factor Authentication-registratie beleid configureren
 
-Azure AD Identity Protection helpt u bij het beheren van de uitrol van Azure Multi-Factor Authentication (MFA) registratie door een voorwaardelijke toegangsbeleid te configureren om MFA-registratie te vereisen, ongeacht bij welke moderne verificatie-app u zich aanmeldt.
+Azure AD Identity Protection helpt u bij het beheren van de uitrollen van de registratie van Azure Multi-Factor Authentication (MFA) door een beleid voor voorwaardelijke toegang te configureren om MFA-registratie te vereisen, ongeacht de moderne verificatie-app waarmee u zich aanmeldt.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Wat is het azure multi-factor authentication-registratiebeleid?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Wat is het Azure Multi-Factor Authentication-registratie beleid?
 
-Azure Multi-Factor Authentication biedt een middel om te controleren wie u meer gebruikt dan alleen een gebruikersnaam en wachtwoord. Het biedt een tweede beveiligingslaag aan aanmeldingen van gebruikers. Om ervoor te doen dat gebruikers kunnen reageren op MFA-prompts, moeten ze zich eerst registreren voor Azure Multi-Factor Authentication.
+Azure Multi-Factor Authentication biedt een manier om te controleren wie u meer dan alleen een gebruikers naam en wacht woord gebruikt. Het biedt een tweede beveiligingslaag voor gebruikers aanmeldingen. Om gebruikers te kunnen reageren op MFA-prompts, moeten ze zich eerst registreren voor Azure Multi-Factor Authentication.
 
-We raden u aan Azure Multi-Factor Authentication te gebruiken voor aanmeldingen van gebruikers, omdat dit het zo is:
+U wordt aangeraden Azure Multi-Factor Authentication te vereisen voor aanmeldingen van gebruikers omdat:
 
-- Levert sterke verificatie via een reeks verificatieopties.
-- Speelt een belangrijke rol bij het voorbereiden van uw organisatie om zelf te herstellen van risicodetecties in Identiteitsbescherming.
+- Biedt sterke verificatie via verschillende verificatie opties.
+- Speelt een belang rijke rol bij het voorbereiden van uw organisatie op zelf herstel van risico detecties in identiteits beveiliging.
 
-Zie Wat is Azure Multi-Factor Authentication voor meer informatie over Azure [Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
+Zie [Wat is azure multi-factor Authentication?](../authentication/howto-mfa-getstarted.md) voor meer informatie over Azure multi-factor Authentication.
 
 ## <a name="policy-configuration"></a>Beleidsconfiguratie
 
-1. Navigeer naar de [Azure-portal](https://portal.azure.com).
-1. Blader naar **het** > **mfa-registratiebeleid**voor Azure Active Directory**Security** > **Identity Protection.** > 
-   1. Onder **Opdrachten**
-      1. **Gebruikers** - Kies **Alle gebruikers** of Selecteer personen **en groepen** als u uw implementatie beperkt.
-         1. Optioneel u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-   1. Onder **Besturingselementen**
-      1. Controleer of het selectievakje **Azure MFA-registratie vereisen** is ingeschakeld en kies **Selecteren**.
+1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Blader naar **Azure Active Directory** > **beleid voor MFA-registratie**van**beveiligings** > **identiteits beveiliging** > .
+   1. Onder **toewijzingen**
+      1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
+         1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
+   1. Onder **besturings elementen**
+      1. Zorg ervoor dat het selectie vakje **Azure MFA-registratie vereist** is ingeschakeld en kies **selecteren**.
    1. **Beleid afdwingen** - **op**
    1. **Opslaan**
 
 ## <a name="user-experience"></a>Gebruikerservaring
 
-Azure Active Directory Identity Protection vraagt uw gebruikers om zich te registreren wanneer ze zich de volgende keer interactief aanmelden en ze hebben 14 dagen de tijd om de registratie te voltooien. Tijdens deze periode van 14 dagen kunnen ze de registratie omzeilen, maar aan het einde van de periode moeten ze zich registreren voordat ze het aanmeldingsproces kunnen voltooien.
+Azure Active Directory Identity Protection vraagt uw gebruikers om zich te registreren wanneer ze zich de volgende keer interactief aanmelden en ze hebben 14 dagen de registratie kunnen volt ooien. Tijdens deze periode van 14 dagen kunnen ze de registratie overs Laan, maar aan het einde van de periode dat ze moeten worden geregistreerd voordat ze het aanmeldings proces kunnen volt ooien.
 
-Zie voor een overzicht van de gerelateerde gebruikerservaring:
+Zie voor een overzicht van de gerelateerde gebruikers ervaring:
 
-- [Aanmeldingservaringen met Azure AD-identiteitsbeveiliging](concept-identity-protection-user-experience.md).  
+- [Aanmeld ervaring met Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanmeldings- en gebruikersrisicobeleid inschakelen](howto-identity-protection-configure-risk-policies.md)
+- [Aanmeldings-en gebruikers risico beleid inschakelen](howto-identity-protection-configure-risk-policies.md)
 
-- [Azure AD selfservice wachtwoord opnieuw instellen inschakelen](../authentication/howto-sspr-deployment.md)
+- [Selfservice voor wachtwoord herstel van Azure AD inschakelen](../authentication/howto-sspr-deployment.md)
 
 - [Azure Multi-Factor Authentication inschakelen](../authentication/howto-mfa-getstarted.md)

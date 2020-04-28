@@ -1,6 +1,6 @@
 ---
 title: Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
-description: Problemen met latentie identificeren en oplossen met Azure Storage Analytic-logboeken en de clienttoepassing optimaliseren.
+description: U kunt latentie problemen identificeren en oplossen met behulp van Azure Storage analytic-logboeken en de client toepassing optimaliseren.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,25 +11,25 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196510"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
 
-Diagnose en probleemoplossing is een belangrijke vaardigheid voor het bouwen en ondersteunen van clienttoepassingen met Azure Storage.
+Diagnose en probleem oplossing is een belang rijke vaardigheid voor het maken en ondersteunen van client toepassingen met Azure Storage.
 
-Vanwege het gedistribueerde karakter van een Azure-toepassing kunnen het diagnosticeren en oplossen van zowel fouten als prestatieproblemen complexer zijn dan in traditionele omgevingen.
+Als gevolg van de gedistribueerde aard van een Azure-toepassing, is het diagnosticeren en oplossen van fouten en prestatie problemen mogelijk ingewik kelder dan in traditionele omgevingen.
 
-De volgende stappen laten zien hoe u latentieproblemen identificeren en oplossen met Azure Storage Analytic-logboeken en de clienttoepassing optimaliseren.
+De volgende stappen laten zien hoe u latentie problemen kunt identificeren en oplossen met behulp van Azure Storage analytic-logboeken en de client toepassing kunt optimaliseren.
 
 ## <a name="recommended-steps"></a>Aanbevolen stappen
 
-1. Download de [logboeken storage analytics](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Down load de [Opslaganalyse-logboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
 
-2. Gebruik het volgende PowerShell-script om de logboeken met de raw-indeling om te zetten in tabelindeling:
+2. Gebruik het volgende Power shell-script om de RAW-indelings logboeken te converteren naar tabellaire indeling:
 
    ```Powershell
    $Columns = 
@@ -70,99 +70,99 @@ De volgende stappen laten zien hoe u latentieproblemen identificeren en oplossen
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
 
-3. Het script start een GUI-venster waar u de informatie filteren op kolommen, zoals hieronder wordt weergegeven.
+3. Met het script wordt een GUI-venster gestart waarin u de informatie op kolommen kunt filteren, zoals hieronder wordt weer gegeven.
 
-   ![Venster voor analytische logboeken](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
+   ![Venster opslag analyse logboek parser](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
  
-4. Verklein de logboekvermeldingen op basis van 'operationeel type' en zoek naar de logboekvermelding die tijdens het tijdsbestek van het probleem is gemaakt.
+4. Verfijn de logboek vermeldingen op basis van het ' bewerkings type ' en zoek de logboek vermelding die tijdens de tijds periode van het probleem is gemaakt.
 
-   ![Logboekvermeldingen van het type bewerking](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
+   ![Logboek vermeldingen van het type bewerking](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
-5. Tijdens het moment dat het probleem zich heeft voorgedaan, zijn de volgende waarden belangrijk:
+5. Tijdens het tijdstip waarop het probleem is opgetreden, zijn de volgende waarden belang rijk:
 
-   * Operation-type = GetBlob
-   * aanvraagstatus = SASNetworkError
-   * End-to-End-Latency-In-Ms = 8453
-   * Server-Latency-In-Ms = 391
+   * Bewerking-type = GetBlob
+   * aanvraag-status = SASNetworkError
+   * End-to-end-latentie-in-MS = 8453
+   * Server-latentie-in-MS = 391
 
-   End-to-End Latency wordt berekend met behulp van de volgende vergelijking:
+   End-to-end-latentie wordt berekend met behulp van de volgende vergelijking:
 
-   * End-to-End latentie = Server-Latency + ClientLatency
+   * End-to-end latentie = server-latentie + client latentie
 
-   Bereken de clientlatentie met de logboekvermelding:
+   De latentie van de client berekenen met behulp van de logboek vermelding:
 
-   * Clientlatentie = End-to-End latentie – Serverlatentie
+   * Client latentie = end-to-end latentie – server latentie
 
           * Example: 8453 – 391 = 8062ms
 
-   In de volgende tabel vindt u informatie over de resultaten van OperationType en RequestStatus met hoge latentie:
+   De volgende tabel bevat informatie over de OperationType-en RequestStatus-resultaten met een hoge latentie:
 
-   |   |Aanvraagstatus=<br>Geslaagd|Aanvraagstatus=<br>(SAS) Netwerkfout|Aanbeveling|
+   |   |RequestStatus =<br>Geslaagd|RequestStatus =<br>GEBASEERD NetworkError|Aanbeveling|
    |---|---|---|---|
-   |GetBlob (GetBlob)|Ja|Nee|[**GetBlob-bewerking:** RequestStatus = Succes](#getblob-operation-requeststatus--success)|
-   |GetBlob (GetBlob)|Nee|Ja|[**GetBlob-bewerking:** RequestStatus = (SAS)NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob PutBlob|Ja|Nee|[**Zet Operatie:** RequestStatus = Succes](#put-operation-requeststatus--success)|
-   |PutBlob PutBlob|Nee|Ja|[**Zet Operatie:** RequestStatus = (SAS)NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Ja|Nee|[**GetBlob-bewerking:** RequestStatus = geslaagd](#getblob-operation-requeststatus--success)|
+   |GetBlob|Nee|Ja|[**GetBlob-bewerking:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Ja|Nee|[**Put-bewerking:** RequestStatus = geslaagd](#put-operation-requeststatus--success)|
+   |PutBlob|Nee|Ja|[**Put-bewerking:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
-## <a name="status-results"></a>Statusresultaten
+## <a name="status-results"></a>Status resultaten
 
-### <a name="getblob-operation-requeststatus--success"></a>GetBlob-bewerking: requeststatus = succes
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob-bewerking: RequestStatus = geslaagd
 
-Controleer de volgende waarden zoals vermeld in stap 5 van de sectie 'Aanbevolen stappen':
+Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
-* End-to-End latentie
-* Serverlatentie
-* Clientlatentie
+* End-to-end-latentie
+* Server-latentie
+* Client-latentie
 
-In een **GetBlob-bewerking** met **RequestStatus = Succes**, als **Max. Tijd** wordt besteed aan **client-latentie,** geeft dit aan dat Azure Storage een groot deel van de tijd besteedt aan het schrijven van gegevens aan de client. Deze vertraging duidt op een probleem aan de clientzijde.
+In een **GetBlob-bewerking** met **RequestStatus = geslaagd**, **wordt met** deze waarde aangegeven **Client-Latency**dat Azure Storage een grote hoeveelheid tijd besteedt aan het schrijven van gegevens naar de client. Deze vertraging duidt op een probleem aan de client zijde.
 
-**Aanbeveling:**
+**Advies**
 
-* Onderzoek de code in uw cliënt.
-* Gebruik Wireshark, Microsoft Message Analyzer of Tcping om problemen met de netwerkconnectiviteit van de client te onderzoeken. 
+* Onderzoek de code in uw client.
+* Gebruik wireshark, micro soft Message Analyzer of Tcping voor het onderzoeken van problemen met de netwerk verbinding van de client. 
 
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob-bewerking: requeststatus = (SAS)NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob-bewerking: RequestStatus = (SAS) NetworkError
 
-Controleer de volgende waarden zoals vermeld in stap 5 van de sectie 'Aanbevolen stappen':
+Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
-* End-to-End latentie
-* Serverlatentie
-* Clientlatentie
+* End-to-end-latentie
+* Server-latentie
+* Client-latentie
 
-In een **GetBlob-bewerking** met **RequestStatus = (SAS)NetworkError**, als **Max Time** wordt besteed aan **client-latentie,** is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out verloopt in de opslagservice.
+In een **GetBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 
-**Aanbeveling:**
+**Advies**
 
-* Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslagservice verbreekt.
-* Gebruik Wireshark, Microsoft Message Analyzer of Tcping om problemen met de netwerkconnectiviteit van de client te onderzoeken. 
+* Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt.
+* Gebruik wireshark, micro soft Message Analyzer of Tcping voor het onderzoeken van problemen met de netwerk verbinding van de client. 
 
-### <a name="put-operation-requeststatus--success"></a>Put Operation: RequestStatus = Succes
+### <a name="put-operation-requeststatus--success"></a>Put-bewerking: RequestStatus = geslaagd
 
-Controleer de volgende waarden zoals vermeld in stap 5 van de sectie 'Aanbevolen stappen':
+Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
-* End-to-End latentie
-* Serverlatentie
-* Clientlatentie
+* End-to-end-latentie
+* Server-latentie
+* Client-latentie
 
-In een **putbewerking** met **RequestStatus = Succes** **Client-Latency**, als **Max.** Deze vertraging duidt op een probleem aan de clientzijde.
+In een **put-bewerking** met **RequestStatus = geslaagd**, als de **maximale tijd** wordt besteed aan de **client latentie**, geeft dit aan dat de client meer tijd neemt om gegevens te verzenden naar de Azure Storage. Deze vertraging duidt op een probleem aan de client zijde.
 
-**Aanbeveling:**
+**Advies**
 
-* Onderzoek de code in uw cliënt.
-* Gebruik Wireshark, Microsoft Message Analyzer of Tcping om problemen met de netwerkconnectiviteit van de client te onderzoeken. 
+* Onderzoek de code in uw client.
+* Gebruik wireshark, micro soft Message Analyzer of Tcping voor het onderzoeken van problemen met de netwerk verbinding van de client. 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put Operation: RequestStatus = (SAS)NetworkError
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put-bewerking: RequestStatus = (SAS) NetworkError
 
-Controleer de volgende waarden zoals vermeld in stap 5 van de sectie 'Aanbevolen stappen':
+Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
-* End-to-End latentie
-* Serverlatentie
-* Clientlatentie
+* End-to-end-latentie
+* Server-latentie
+* Client-latentie
 
-In een **PutBlob-bewerking** met **RequestStatus = (SAS)NetworkError**, als **Max.** **Client-Latency**
+In een **PutBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 
-**Aanbeveling:**
+**Advies**
 
-* Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslagservice verbreekt.
-* Gebruik Wireshark, Microsoft Message Analyzer of Tcping om problemen met de netwerkconnectiviteit van de client te onderzoeken.
+* Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt.
+* Gebruik wireshark, micro soft Message Analyzer of Tcping voor het onderzoeken van problemen met de netwerk verbinding van de client.
 

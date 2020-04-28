@@ -1,6 +1,6 @@
 ---
-title: 'Gegevensmigratie: On-premises Apache Hadoop naar Azure HDInsight'
-description: Lees aanbevolen procedures voor gegevensmigratie voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
+title: 'Gegevens migratie: on-premises Apache Hadoop naar Azure HDInsight'
+description: Meer informatie over de aanbevolen procedures voor gegevens migratie voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74665998"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop-clusters migreren naar Azure HDInsight - best practices voor gegevensmigratie
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor het migreren van Azure HDInsight-gegevens
 
-In dit artikel worden aanbevelingen gegeven voor gegevensmigratie naar Azure HDInsight. Het maakt deel uit van een serie die best practices biedt om te helpen bij het migreren van on-premises Apache Hadoop-systemen naar Azure HDInsight.
+Dit artikel bevat aanbevelingen voor het migreren van gegevens naar Azure HDInsight. Het is onderdeel van een serie die aanbevolen procedures biedt voor het migreren van on-premises Apache Hadoop systemen naar Azure HDInsight.
 
 ## <a name="migrate-on-premises-data-to-azure"></a>On-premises gegevens migreren naar Azure
 
-Er zijn twee belangrijke opties om gegevens van on-premises naar azure-omgeving te migreren:
+Er zijn twee belang rijke opties voor het migreren van gegevens van on-premises naar Azure-omgeving:
 
-* Gegevens overzetten via netwerk met TLS
-    * Via internet - U gegevens overbrengen naar Azure-opslag via een gewone internetverbinding met behulp van een van de verschillende hulpprogramma's, zoals: Azure Storage Explorer, AzCopy, Azure Powershell en Azure CLI. Zie [Gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md)voor meer informatie.
+* Gegevens overdragen via het netwerk met TLS
+    * Via internet: u kunt gegevens overdragen naar Azure Storage via een reguliere Internet verbinding met een van de volgende hulpprogram ma's, zoals: Azure Storage Explorer, AzCopy, Azure Power shell en Azure CLI. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md)voor meer informatie.
 
-    * Express Route - ExpressRoute is een Azure-service waarmee u privéverbindingen maken tussen Microsoft-datacenters en infrastructuur die zich op uw locatie of in een colocatiefaciliteit bevinden. ExpressRoute-verbindingen gaan niet via het openbare internet en bieden hogere beveiliging, betrouwbaarheid en snelheden met lagere latencies dan typische verbindingen via internet. Zie [Een ExpressRoute-circuit maken en wijzigen](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)voor meer informatie.
+    * Express route-ExpressRoute is een Azure-service waarmee u particuliere verbindingen kunt maken tussen micro soft-data centers en-infra structuur op uw locatie of in een functie voor samen locatie. ExpressRoute-verbindingen gaan niet via het open bare Internet en bieden betere beveiliging, betrouw baarheid en snelheden met lagere latenties dan typische verbindingen via internet. Zie [een ExpressRoute-circuit maken en wijzigen](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)voor meer informatie.
 
-    * Online gegevensoverdracht van gegevensbox - Data Box Edge en Data Box Gateway zijn online gegevensoverdrachtsproducten die fungeren als netwerkopslaggateways om gegevens tussen uw site en Azure te beheren. Data Box Edge, een on-premises netwerkapparaat, brengt gegevens van en naar Azure over en maakt gebruik van kunstmatige intelligentie (AI)-enabled edge compute om gegevens te verwerken. Data Box Gateway is een virtueel toestel met mogelijkheden voor opslaggateways. Zie [Azure Data Box Documentation - Online Transfer](https://docs.microsoft.com/azure/databox-online/)voor meer informatie.
+    * Data Box Online gegevens overdracht: Data Box Edge en Data Box Gateway zijn online gegevens overdracht producten die fungeren als gateways voor netwerk opslag om gegevens te beheren tussen uw site en Azure. Data Box Edge, een on-premises netwerk apparaat, brengt gegevens over van en naar Azure en maakt gebruik van een Edge Compute met kunst matige intelligentie (AI) voor het verwerken van gegevens. Data Box Gateway is een virtueel apparaat met mogelijkheden voor opslag gateway. Zie [Azure data Box documentatie-online overdracht](https://docs.microsoft.com/azure/databox-online/)voor meer informatie.
 
 * Gegevens offline verzenden
 
-    Data Box offline gegevensoverdracht - Data Box, Data Box Disk en Data Box Heavy-apparaten helpen u grote hoeveelheden gegevens over te zetten naar Azure wanneer het netwerk geen optie is. Deze apparaten voor offline gegevensoverdracht worden verzonden tussen uw organisatie en het Azure-datacenter. Ze gebruiken AES-versleuteling om uw gegevens tijdens het transport te beschermen en ondergaan een grondig ontsmettingsproces na het uploaden om uw gegevens van het apparaat te verwijderen. Zie Azure Data Box Documentation - [Offline Transfer](https://docs.microsoft.com/azure/databox/)voor meer informatie over de offline transferapparaten van de databox. Zie Azure Data Box gebruiken om [te migreren van een on-premises HDFS-winkel naar Azure Storage voor](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)meer informatie over migratie van Hadoop-clusters.
+    Data Box offline gegevens overdracht: Data Box-, Data Box Disk-en Data Box Heavy-apparaten kunt u grote hoeveel heden gegevens naar Azure overdragen wanneer het netwerk geen optie is. Deze apparaten voor offline gegevens overdracht worden verzonden tussen uw organisatie en het Azure-Data Center. Ze gebruiken AES-versleuteling om uw gegevens tijdens de overdracht te beschermen en ze ondervinden een verouderd proces voor het opschonen van de upload om uw gegevens van het apparaat te verwijderen. Zie [Azure data Box-documentatie-offline overdracht](https://docs.microsoft.com/azure/databox/)voor meer informatie over de data Box apparaten voor offline overdracht. Zie [Azure data box gebruiken om te migreren van een on-premises HDFS-Store naar Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)voor meer informatie over de migratie van Hadoop-clusters.
 
-De volgende tabel heeft een geschatte duur van de gegevensoverdracht op basis van het gegevensvolume en de netwerkbandbreedte. Gebruik een vak Gegevens als de gegevensmigratie naar verwachting meer dan drie weken in de duren zal duren.
+De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het gegevens volume en de netwerk bandbreedte. Gebruik een Data box als de gegevens migratie meer dan drie weken naar verwachting duurt.
 
-|Gegevens Qty|Netwerkbandbreedte||||
+|Hoeveelheid gegevens|Netwerk bandbreedte||||
 |---|---|---|---|---|
 || **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB|2 dagen|1 dag| 2 uur|14 minuten|
@@ -50,74 +50,74 @@ De volgende tabel heeft een geschatte duur van de gegevensoverdracht op basis va
 |2 PB|12 jaar|Vijf jaar
 |194 dagen|19 dagen|
 
-Hulpprogramma's die zijn voor Azure, zoals Apache Hadoop DistCp, Azure Data Factory en AzureCp, kunnen worden gebruikt om gegevens over het netwerk over te dragen. De tool VAN derden WANDisco kan ook voor hetzelfde doel worden gebruikt. Apache Kafka Mirrormaker en Apache Sqoop kunnen worden gebruikt voor voortdurende gegevensoverdracht van on-premises naar Azure-opslagsystemen.
+Hulpprogram ma's systeem eigen naar Azure, zoals Apache Hadoop DistCp, Azure Data Factory en AzureCp, kunnen worden gebruikt voor het overdragen van gegevens via het netwerk. De WANDisco van het hulp programma van derden kunnen ook voor hetzelfde doel einde worden gebruikt. Apache Kafka MirrorMaker en Apache Sqoop kunnen worden gebruikt voor doorlopende gegevens overdracht van on-premises naar Azure-opslag systemen.
 
-## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Prestatieoverwegingen bij het gebruik van Apache Hadoop DistCp
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Prestatie overwegingen bij het gebruik van Apache Hadoop DistCp
 
-DistCp is een Apache-project dat een mapreduce map-taak gebruikt om gegevens over te dragen, fouten te verwerken en te herstellen van die fouten. Er wordt een lijst met bronbestanden toegewezen aan elke kaarttaak. De taak Kaart kopieert vervolgens alle toegewezen bestanden naar de bestemming. Er zijn verschillende technieken kunnen de prestaties van DistCp verbeteren.
+DistCp is een Apache-project dat gebruikmaakt van een MapReduce-toewijzings taak voor het overdragen van gegevens, het afhandelen van fouten en het herstellen van deze fouten. Er wordt een lijst met bron bestanden aan elke kaart taak toegewezen. De toewijzings taak kopieert vervolgens alle toegewezen bestanden naar de bestemming. Er zijn verschillende technieken waarmee de prestaties van DistCp kunnen worden verbeterd.
 
-### <a name="increase-the-number-of-mappers"></a>Het aantal Mappers verhogen
+### <a name="increase-the-number-of-mappers"></a>Verhoog het aantal mappers
 
-DistCp probeert kaarttaken te maken, zodat elk van deze taken ongeveer hetzelfde aantal bytes kopieert. Standaard gebruiken DistCp-taken 20 mappers. Het gebruik van meer Mappers voor Distcp (met de parameter 'm' op de opdrachtregel) verhoogt het parallellisme tijdens het gegevensoverdrachtproces en vermindert de lengte van de gegevensoverdracht. Er zijn echter twee dingen om te overwegen, terwijl het verhogen van het aantal Mappers:
+DistCp probeert toewijzings taken te maken zodat elk exemplaar ongeveer hetzelfde aantal bytes heeft. DistCp-taken gebruiken standaard 20 mappers. Het gebruik van meer mappers voor Distcp (met de para meter ' op de opdracht regel) verhoogt de parallellisme tijdens het proces van gegevens overdracht en vermindert de lengte van de gegevens overdracht. Er zijn echter twee dingen waarmee u rekening moet houden bij het verhogen van het aantal mappers:
 
-* De laagste granulariteit van DistCp is één bestand. Het opgeven van een aantal Mappers meer dan het aantal bronbestanden helpt niet en zal de beschikbare clusterbronnen verspillen.
+* De laagste granulatie van DistCp is één bestand. Het opgeven van een aantal mappers is groter dan het aantal bron bestanden dat niet helpt en zal de beschik bare cluster bronnen verspillen.
 
-* Overweeg het beschikbare garengeheugen op het cluster om het aantal Mappers te bepalen. Elke kaarttaak wordt gestart als garencontainer. Ervan uitgaande dat er geen andere zware workloads worden uitgevoerd op het cluster, kan het aantal \* Mappers worden bepaald door de volgende formule: m = (aantal werknemersknooppunten GARENgeheugen voor elke werknemerknooppunt) / YARN-containergrootte. Als andere toepassingen echter geheugen gebruiken, kiest u ervoor om slechts een gedeelte van het YARN-geheugen te gebruiken voor DistCp-taken.
+* Houd rekening met het beschik bare garen geheugen op het cluster om het aantal Mapper te bepalen. Elke kaart taak wordt gestart als een garen-container. Ervan uitgaande dat er geen andere zware werk belastingen op het cluster worden uitgevoerd, kan het aantal mappers worden bepaald door de volgende formule: m = (aantal worker \* -knoop punten garen geheugen voor elk worker-knoop punt)/grootte van de garen-container. Als andere toepassingen echter gebruikmaken van geheugen, moet u ervoor kiezen om alleen een deel van het geheugen van de DistCp te gebruiken voor de taken van de werk ruimte.
 
 ### <a name="use-more-than-one-distcp-job"></a>Meer dan één DistCp-taak gebruiken
 
-Wanneer de grootte van de te verplaatsen gegevensset groter is dan 1 TB, gebruikt u meer dan één DistCp-taak. Het gebruik van meer dan één taak beperkt de impact van fouten. Als een taak mislukt, hoeft u alleen die specifieke taak opnieuw op te starten in plaats van alle taken.
+Wanneer de grootte van de gegevensset die moet worden verplaatst groter is dan 1 TB, gebruikt u meer dan één DistCp-taak. Het gebruik van meer dan één taak beperkt de gevolgen van fouten. Als een taak mislukt, hoeft u die specifieke taak alleen opnieuw te starten in plaats van alle taken.
 
-### <a name="consider-splitting-files"></a>Overweeg bestanden te splitsen
+### <a name="consider-splitting-files"></a>Overweeg om bestanden te splitsen
 
-Als er een klein aantal grote bestanden, dan overwegen splitsen ze in 256-MB bestandsbrokken om meer potentiële gelijktijdigheid te krijgen met meer Mappers.
+Als er sprake is van een klein aantal grote bestanden, kunt u overwegen deze te splitsen in bestands segmenten van 256 MB om meer potentiële gelijktijdigheid te verkrijgen met meer toewijzingen.
 
-### <a name="use-the-strategy-command-line-parameter"></a>De opdrachtregelparameter 'strategie' gebruiken
+### <a name="use-the-strategy-command-line-parameter"></a>Gebruik de opdracht regel parameter ' strategie '
 
-Overweeg `strategy = dynamic` de parameter in de opdrachtregel te gebruiken. De standaardwaarde `strategy` van `uniform size`de parameter is , in welk geval elke kaart ongeveer hetzelfde aantal bytes kopieert. Wanneer deze parameter `dynamic`wordt gewijzigd in , wordt het vermeldingsbestand opgesplitst in verschillende "chunk-files". Het aantal chunk-bestanden is een veelvoud van het aantal kaarten. Aan elke kaarttaak wordt een van de chunk-bestanden toegewezen. Nadat alle paden in een stuk zijn verwerkt, wordt de huidige brok verwijderd en wordt een nieuwe brok verkregen. Het proces gaat door totdat er geen brokken meer beschikbaar zijn. Deze "dynamische" benadering maakt het mogelijk snellere kaarttaken om meer paden te verbruiken dan langzamere, waardoor de DistCp-taak in het algemeen wordt versneld.
+Overweeg het `strategy = dynamic` gebruik van para meters op de opdracht regel. De standaard waarde van de `strategy` para meter `uniform size`is, in welk geval elke toewijzing een kopie heeft van ongeveer hetzelfde aantal bytes. Als deze para meter wordt gewijzigd `dynamic`in, wordt het vermelding bestand gesplitst in meerdere ' chunk-files '. Het aantal chunk-bestanden is een veelvoud van het aantal toewijzingen. Aan elke toewijzings taak is een van de segment bestanden toegewezen. Nadat alle paden in een segment zijn verwerkt, wordt het huidige segment verwijderd en wordt er een nieuwe chunk verkregen. Het proces wordt voortgezet totdat er geen segmenten meer beschikbaar zijn. Met deze ' dynamische ' benadering kunt u snellere toewijzings taken gebruiken om meer paden te verbruiken dan tragere, waardoor de DistCp-taak in het algemeen sneller verloopt.
 
 ### <a name="increase-the-number-of-threads"></a>Het aantal threads verhogen
 
-Kijk of `-numListstatusThreads` het verhogen van de parameter de prestaties verbetert. Deze parameter bepaalt het aantal threads dat moet worden gebruikt voor het maken van bestandsvermelding en 40 is de maximale waarde.
+Bekijk of het verhogen `-numListstatusThreads` van de para meter de prestaties verbetert. Deze para meter bepaalt het aantal threads dat moet worden gebruikt voor het maken van bestands vermelding en 40 is de maximum waarde.
 
-### <a name="use-the-output-committer-algorithm"></a>Het algoritme voor uitvoercommitter gebruiken
+### <a name="use-the-output-committer-algorithm"></a>Het doorvoer algoritme voor uitvoer gebruiken
 
-Kijk of het `-Dmapreduce.fileoutputcommitter.algorithm.version=2` passeren van de parameter de DistCp-prestaties verbetert. Deze uitvoer committer algoritme heeft optimalisaties rond het schrijven van output bestanden naar de bestemming. De volgende opdracht is een voorbeeld dat het gebruik van verschillende parameters weergeeft:
+Bekijk of de para meter `-Dmapreduce.fileoutputcommitter.algorithm.version=2` wordt door gegeven, verbetert de prestaties van DistCp. Dit algoritme voor het door voeren van de uitvoer heeft optimalisaties rondom het schrijven van uitvoer bestanden naar het doel. De volgende opdracht is een voor beeld waarin het gebruik van verschillende para meters wordt weer gegeven:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/
 ```
 
-## <a name="metadata-migration"></a>Migratie van metagegevens
+## <a name="metadata-migration"></a>Migratie van meta gegevens
 
-### <a name="apache-hive"></a>Apache Bijenkorf
+### <a name="apache-hive"></a>Apache Hive
 
-De hive metastore kan worden gemigreerd met behulp van de scripts of met behulp van de DB-replicatie.
+De Hive-meta Store kan worden gemigreerd met behulp van de scripts of door gebruik te maken van de database replicatie.
 
-#### <a name="hive-metastore-migration-using-scripts"></a>Hive metastoremigratie met behulp van scripts
+#### <a name="hive-metastore-migration-using-scripts"></a>Hive-metastore migratie met behulp van scripts
 
-1. Genereer de Hive DDLs van on-premises Hive metastore. Deze stap kan worden gedaan met behulp van een [wrapper bash script](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
-1. Bewerk de gegenereerde DDL om de HDFS-url te vervangen door WASB/ADLS/ABFS URL's.
-1. Voer de bijgewerkte DDL uit op de metastore vanuit het HDInsight-cluster.
-1. Zorg ervoor dat de Hive-versie compatibel is tussen on-premises en cloud.
+1. Genereer de Hive DDLs van on-premises Hive-metastore. Deze stap kan worden uitgevoerd met behulp van een [wrapper bash-script](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. Bewerk de gegenereerde DDL om HDFS-URL te vervangen door WASB/ADLS/ABFS-Url's.
+1. Voer de bijgewerkte DDL uit op de meta Store vanuit het HDInsight-cluster.
+1. Zorg ervoor dat de Hive-metastore-versie compatibel is tussen on-premises en de Cloud.
 
-#### <a name="hive-metastore-migration-using-db-replication"></a>Hive metastoremigratie met DB-replicatie
+#### <a name="hive-metastore-migration-using-db-replication"></a>Hive-metastore migratie met behulp van DB-replicatie
 
-- Databasereplicatie instellen tussen on-premises Hive metastore DB en HDInsight metastore DB.
-- Gebruik de "Hive MetaTool" om hdfs-url te vervangen door WASB/ADLS/ABFS urls, bijvoorbeeld:
+- Database replicatie instellen tussen on-premises Hive-metastore DB en HDInsight meta Store DB.
+- Gebruik het ' hive-hulp programma ' om de HDFS-URL te vervangen door WASB/ADLS/ABFS-url's, bijvoorbeeld:
 
     ```bash
     ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
     ```
 
-### <a name="apache-ranger"></a>Apache Ranger
+### <a name="apache-ranger"></a>Apache zwerver
 
-- On-premises Ranger-beleid exporteren naar xml-bestanden.
-- Transformeer op specifieke HDFS-gebaseerde paden naar WASB/ADLS met behulp van een tool als XSLT.
-- Importeer het beleid op Ranger dat op HDInsight wordt uitgevoerd.
+- Een on-premises zwerver-beleid exporteren naar XML-bestanden.
+- Transformeer specifieke, op HDFS gebaseerde paden naar WASB/ADLS met behulp van een hulp programma zoals XSLT.
+- Importeer het beleid voor zwerver op HDInsight.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees het volgende artikel in deze serie:
 
-- [Aanbevolen procedures voor beveiliging en DevOps voor on-premises naar Azure HDInsight Hadoop-migratie](apache-hadoop-on-premises-migration-best-practices-security-devops.md)
+- [Best practices voor beveiliging en DevOps voor on-premises migratie van Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-security-devops.md)

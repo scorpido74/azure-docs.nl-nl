@@ -1,6 +1,6 @@
 ---
-title: Apps publiceren op afzonderlijke netwerken via verbindingsgroepen - Azure AD
-description: Hiermee u groepen connectors maken en beheren in Azure AD-toepassingsproxy.
+title: Apps op afzonderlijke netwerken publiceren via connector groepen-Azure AD
+description: In dit artikel wordt beschreven hoe u groepen Connect oren maakt en beheert in azure AD-toepassingsproxy.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -15,118 +15,118 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275569"
 ---
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Toepassingen publiceren op afzonderlijke netwerken en locaties met behulp van verbindingsgroepen
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Toepassingen publiceren op afzonderlijke netwerken en locaties met connector groepen
 
-Klanten gebruiken de toepassingsproxy van Azure AD voor steeds meer scenario's en toepassingen. Daarom hebben we App Proxy nog flexibeler gemaakt door meer topologieën mogelijk te maken. U connectorgroepen voor toepassingsproxy maken, zodat u specifieke connectors toewijzen om specifieke toepassingen te serveren. Deze mogelijkheid geeft u meer controle en manieren om uw implementatie van toepassingsproxy te optimaliseren.
+Klanten gebruiken de toepassings proxy van Azure AD voor meer en meer scenario's en toepassingen. Daarom hebben we app proxy nog flexibeler gemaakt door meer topologieën in te scha kelen. U kunt Application proxy connector-groepen maken zodat u specifieke connectors kunt toewijzen voor specifieke toepassingen. Deze mogelijkheid geeft u meer controle en manieren om uw implementatie van de toepassings proxy te optimaliseren.
 
-Elke toepassingsproxyconnector is toegewezen aan een connectorgroep. Alle connectoren die tot dezelfde connectorgroep behoren, fungeren als een aparte eenheid voor hoge beschikbaarheid en taakverdeling. Alle connectoren behoren tot een connectorgroep. Als u geen groepen maakt, bevinden al uw connectors zich in een standaardgroep. Uw beheerder kan nieuwe groepen maken en er connectoren aan toewijzen in de Azure-portal.
+Elke toepassings proxy connector wordt toegewezen aan een connector groep. Alle connectors die deel uitmaken van dezelfde connector groep fungeren als een afzonderlijke eenheid voor hoge Beschik baarheid en taak verdeling. Alle connectors horen bij een connector groep. Als u geen groepen maakt, zijn alle connectors in een standaard groep. Uw beheerder kan nieuwe groepen maken en Connect oren aan hen toewijzen in de Azure Portal.
 
-Alle toepassingen worden toegewezen aan een verbindingsgroep. Als u geen groepen maakt, worden al uw toepassingen toegewezen aan een standaardgroep. Maar als u uw connectors in groepen ordeeert, u instellen dat elke toepassing met een specifieke connectorgroep werkt. In dit geval dienen alleen de connectors in die groep de toepassing op verzoek. Deze functie is handig als uw toepassingen op verschillende locaties worden gehost. U verbindingsgroepen maken op basis van locatie, zodat toepassingen altijd worden bediend door connectoren die fysiek dicht bij hen staan.
+Alle toepassingen worden toegewezen aan een connector groep. Als u geen groepen maakt, worden al uw toepassingen toegewezen aan een standaard groep. Maar als u uw connectors in groepen indeelt, kunt u elke toepassing zo instellen dat deze werkt met een specifieke connector groep. In dit geval dienen alleen de connectors in die groep de toepassing op aanvraag. Deze functie is handig als uw toepassingen worden gehost op verschillende locaties. U kunt connector groepen maken op basis van locatie, zodat toepassingen altijd worden bediend door connectors die zich fysiek dicht bij hen bevinden.
 
 > [!TIP]
-> Als u een grote implementatie van toepassingsproxy hebt, wijst u geen toepassingen toe aan de standaardconnectorgroep. Op die manier ontvangen nieuwe connectors geen live verkeer totdat u ze aan een actieve connectorgroep toewijst. Met deze configuratie u connectors ook in een niet-actieve modus plaatsen door ze terug te verplaatsen naar de standaardgroep, zodat u onderhoud uitvoeren zonder dat dit gevolgen heeft voor uw gebruikers.
+> Als u een grote implementatie van een toepassings proxy hebt, wijst u geen toepassingen toe aan de standaard connector groep. Op die manier ontvangen nieuwe connectors geen live verkeer totdat u ze toewijst aan een actieve connector groep. Met deze configuratie kunt u ook connectors in een niet-actieve modus plaatsen door ze terug te verplaatsen naar de standaard groep, zodat u onderhoud kunt uitvoeren zonder dat dit van invloed is op uw gebruikers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u uw connectors wilt groeperen, moet u ervoor zorgen dat u [meerdere connectoren hebt geïnstalleerd.](application-proxy-add-on-premises-application.md) Wanneer u een nieuwe connector installeert, wordt deze automatisch lid van de **groep Standaardconnector.**
+Als u uw connectors wilt groeperen, moet u ervoor zorgen dat u [meerdere connectors hebt geïnstalleerd](application-proxy-add-on-premises-application.md). Wanneer u een nieuwe connector installeert, wordt automatisch lid van de **standaard** connector groep.
 
-## <a name="create-connector-groups"></a>Verbindingsgroepen maken
+## <a name="create-connector-groups"></a>Connector groepen maken
 
-Gebruik deze stappen om zoveel verbindingsgroepen te maken als u wilt.
+Gebruik deze stappen om zoveel connector groepen te maken als u wilt.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer de proxy van **Azure Active Directory** > **Enterprise-toepassingen** > **.**
-1. Selecteer **Nieuwe verbindingsgroep**. Het mes van de nieuwe connectorgroep wordt weergegeven.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory** > **toepassings proxy**voor**bedrijfs toepassingen** > .
+1. Selecteer **nieuwe connector groep**. De Blade nieuwe connector groep wordt weer gegeven.
 
-   ![Toont het scherm om een nieuwe verbindingsgroep te selecteren](./media/application-proxy-connector-groups/new-group.png)
+   ![Hiermee wordt het scherm weer gegeven om een nieuwe connector groep te selecteren](./media/application-proxy-connector-groups/new-group.png)
 
-1. Geef uw nieuwe connectorgroep een naam en gebruik vervolgens het vervolgkeuzemenu om te selecteren welke connectoren in deze groep thuishoren.
+1. Geef een naam op voor uw nieuwe connector groep en gebruik vervolgens de vervolg keuzelijst om te selecteren welke connectors in deze groep horen.
 1. Selecteer **Opslaan**.
 
-## <a name="assign-applications-to-your-connector-groups"></a>Toepassingen toewijzen aan uw verbindingsgroepen
+## <a name="assign-applications-to-your-connector-groups"></a>Toepassingen toewijzen aan uw connector groepen
 
-Gebruik deze stappen voor elke toepassing die u hebt gepubliceerd met Application Proxy. U een toepassing toewijzen aan een verbindingsgroep wanneer u deze voor het eerst publiceert, of u deze stappen gebruiken om de toewijzing te wijzigen wanneer u maar wilt.
+Volg deze stappen voor elke toepassing die u hebt gepubliceerd met toepassings proxy. U kunt een toepassing toewijzen aan een connector groep wanneer u deze voor het eerst publiceert of u kunt deze stappen gebruiken om de toewijzing op elk gewenst moment te wijzigen.
 
-1. Selecteer in het beheerdashboard voor uw directory **Enterprise-toepassingen** > **Alle toepassingen** > de toepassing die u wilt toewijzen aan een connectorgroep > Application **Proxy.**
-1. Gebruik het vervolgkeuzemenu **Connectorgroep** om de groep te selecteren die de toepassing moet gebruiken.
+1. In het beheer dashboard voor uw Directory selecteert u **bedrijfs toepassingen** > **alle toepassingen** > de toepassing die u wilt toewijzen aan een connector groep > **toepassings proxy**.
+1. Gebruik de vervolg keuzelijst **groep connector** om de groep te selecteren die u door de toepassing wilt laten gebruiken.
 1. Selecteer **Opslaan** om de wijziging toe te passen.
 
-## <a name="use-cases-for-connector-groups"></a>Gebruiksaanvragen voor verbindingsgroepen
+## <a name="use-cases-for-connector-groups"></a>Cases voor connector groepen gebruiken
 
-Connectorgroepen zijn handig voor verschillende scenario's, waaronder:
+Connector groepen zijn handig voor verschillende scenario's, waaronder:
 
-### <a name="sites-with-multiple-interconnected-datacenters"></a>Sites met meerdere onderling verbonden datacenters
+### <a name="sites-with-multiple-interconnected-datacenters"></a>Sites met meerdere onderling verbonden data centers
 
-Veel organisaties hebben een aantal onderling verbonden datacenters. In dit geval wilt u zoveel mogelijk verkeer binnen het datacenter houden omdat cross-datacenterkoppelingen duur en traag zijn. U connectors in elk datacenter implementeren om alleen de toepassingen te bedienen die zich in het datacenter bevinden. Deze aanpak minimaliseert cross-datacenter koppelingen en biedt uw gebruikers een volledig transparante ervaring.
+Veel organisaties hebben een aantal onderling verbonden data centers. In dit geval wilt u zoveel mogelijk verkeer binnen het Data Center houden omdat koppelingen tussen data centers duur en langzaam zijn. U kunt connectors in elk Data Center implementeren zodat alleen de toepassingen worden gebruikt die zich in het Data Center bevinden. Deze aanpak minimaliseert koppelingen tussen data centers en biedt uw gebruikers een volledig transparante ervaring.
 
-### <a name="applications-installed-on-isolated-networks"></a>Toepassingen die op geïsoleerde netwerken zijn geïnstalleerd
+### <a name="applications-installed-on-isolated-networks"></a>Toepassingen die zijn geïnstalleerd in geïsoleerde netwerken
 
-Toepassingen kunnen worden gehost in netwerken die geen deel uitmaken van het belangrijkste bedrijfsnetwerk. U verbindingsgroepen gebruiken om speciale connectors op geïsoleerde netwerken te installeren om ook toepassingen aan het netwerk te isoleren. Dit gebeurt meestal wanneer een externe leverancier een specifieke toepassing voor uw organisatie onderhoudt.
+Toepassingen kunnen worden gehost in netwerken die geen deel uitmaken van het hoofd bedrijfs netwerk. U kunt connector groepen gebruiken voor het installeren van specifieke connectors in geïsoleerde netwerken om ook toepassingen op het netwerk te isoleren. Dit gebeurt meestal wanneer een externe leverancier een specifieke toepassing voor uw organisatie bijhoudt.
 
-Met connectorgroepen u speciale connectors installeren voor netwerken die alleen specifieke toepassingen publiceren, waardoor het eenvoudiger en veiliger wordt om toepassingsbeheer uit te besteden aan externe leveranciers.
+Connector groepen bieden u de mogelijkheid om specifieke connectors te installeren voor die netwerken die alleen specifieke toepassingen publiceren, waardoor het eenvoudiger en veiliger wordt om het uitbesteden van toepassings beheer aan externe leveranciers.
 
-### <a name="applications-installed-on-iaas"></a>Toepassingen geïnstalleerd op IaaS
+### <a name="applications-installed-on-iaas"></a>Toepassingen die zijn geïnstalleerd op IaaS
 
-Voor toepassingen die op IaaS zijn geïnstalleerd voor cloudtoegang, bieden connectorgroepen een gemeenschappelijke service om de toegang tot alle apps te beveiligen. Connectorgroepen maken geen extra afhankelijkheid van uw bedrijfsnetwerk of fragmenteren de app-ervaring. Connectors kunnen op elk clouddatacenter worden geïnstalleerd en alleen toepassingen weergeven die zich in dat netwerk bevinden. U verschillende connectors installeren om een hoge beschikbaarheid te bereiken.
+Voor toepassingen die zijn geïnstalleerd op IaaS voor Cloud toegang bieden connector groepen een gemeen schappelijke service om de toegang tot alle apps te beveiligen. Connector groepen maken geen extra afhankelijkheid op uw bedrijfs netwerk of fragmenteren de ervaring van de app. Connectors kunnen worden geïnstalleerd op elk Cloud-Data Center en alleen voor toepassingen die zich in dat netwerk bevinden. U kunt verschillende connectors installeren om hoge Beschik baarheid te garanderen.
 
-Neem als voorbeeld een organisatie die verschillende virtuele machines heeft aangesloten op hun eigen IaaS gehostvirtueel netwerk. Om werknemers in staat te stellen deze toepassingen te gebruiken, zijn deze privénetwerken verbonden met het bedrijfsnetwerk via site-to-site VPN. Dit biedt een goede ervaring voor medewerkers die zich on-premises bevinden. Maar het is misschien niet ideaal voor externe werknemers, omdat het extra on-premises infrastructuur vereist om toegang tot de route te leiden, zoals u zien in het onderstaande diagram:
+Neem een voor beeld van een organisatie met verschillende virtuele machines die zijn verbonden met hun eigen IaaS-gehoste virtuele netwerk. Om werk nemers in staat te stellen deze toepassingen te gebruiken, zijn deze particuliere netwerken verbonden met het bedrijfs netwerk met behulp van site-naar-site-VPN. Dit biedt een goede ervaring voor werk nemers die on-premises zich bevinden. Het is echter mogelijk niet ideaal voor externe werk nemers, omdat hiervoor extra on-premises infra structuur is vereist om toegang te kunnen krijgen, zoals u kunt zien in het onderstaande diagram:
 
 ![Diagram dat het Azure AD IaaS-netwerk illustreert](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
-Met Azure AD Application Proxy-connectorgroepen u een algemene service inschakelen om de toegang tot alle toepassingen te beveiligen zonder extra afhankelijkheid van uw bedrijfsnetwerk te creëren:
+Met Azure AD-toepassingsproxy-connector groepen kunt u een gemeen schappelijke service inschakelen voor het beveiligen van de toegang tot alle toepassingen zonder extra afhankelijkheid te maken op uw bedrijfs netwerk:
 
-![Azure AD IaaS Meerdere Cloud-leveranciers](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS meerdere Cloud leveranciers](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
-### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Multi-forest – verschillende verbindingsgroepen voor elk forest
+### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Meerdere forests: verschillende connector groepen voor elk forest
 
-De meeste klanten die Application Proxy hebben geïmplementeerd, gebruiken de mogelijkheden voor single-sign-on (SSO) door Kerberos Constrained Delegation (KCD) uit te voeren. Om dit te bereiken, moeten de machines van de connector worden samengevoegd met een domein dat de gebruikers kan delegeren aan de toepassing. KCD ondersteunt cross-forest mogelijkheden. Maar voor bedrijven die verschillende multi-forest omgevingen hebben zonder vertrouwen tussen hen, kan een enkele connector niet worden gebruikt voor alle bossen. 
+De meeste klanten die toepassings proxy hebben geïmplementeerd, gebruiken de SSO-mogelijkheden (single sign-on) door Kerberos-beperkte delegering (KCD) uit te voeren. Om dit te bereiken, moeten de computers van de connector lid zijn van een domein dat de gebruikers naar de toepassing kan delegeren. KCD ondersteunt functionaliteit voor meerdere forests. Voor bedrijven die verschillende omgevingen met meerdere forests hebben zonder vertrouwens relatie, kan één connector echter niet worden gebruikt voor alle forests. 
 
-In dit geval kunnen specifieke connectors per forest worden geïmplementeerd en worden ingesteld op toepassingen die zijn gepubliceerd om alleen de gebruikers van dat specifieke forest te bedienen. Elke verbindingsgroep vertegenwoordigt een ander forest. Hoewel de tenant en het grootste deel van de ervaring is verenigd voor alle forests, kunnen gebruikers worden toegewezen aan hun foresttoepassingen met Azure AD-groepen.
+In dit geval kunnen specifieke connectors per forest worden geïmplementeerd en zo worden ingesteld dat toepassingen die zijn gepubliceerd, alleen de gebruikers van het betreffende forest gebruiken. Elke connector groep vertegenwoordigt een ander forest. Hoewel de Tenant en de meeste ervaring voor alle forests zijn geïntegreerd, kunnen gebruikers worden toegewezen aan hun Forest-toepassingen met behulp van Azure AD-groepen.
 
-### <a name="disaster-recovery-sites"></a>Disaster Recovery-sites
+### <a name="disaster-recovery-sites"></a>Nood herstel sites
 
-Er zijn twee verschillende benaderingen die u volgen met een DR-site (Disaster Recovery), afhankelijk van hoe uw sites worden geïmplementeerd:
+Er zijn twee verschillende benaderingen die u met een site voor nood herstel (DR) kunt uitvoeren, afhankelijk van hoe uw sites worden geïmplementeerd:
 
-* Als uw DR-site is gebouwd in de actieve modus waarin deze precies hetzelfde is als de hoofdsite en dezelfde netwerk- en AD-instellingen heeft, u de connectors op de DR-site maken in dezelfde connectorgroep als de hoofdsite. Hierdoor kan Azure AD failovers voor u detecteren.
-* Als uw DR-site gescheiden is van de hoofdsite, u een andere verbindingsgroep maken op de DR-site en een back-uptoepassing hebben of 2) de bestaande toepassing handmatig doorleiden naar de DR-connectorgroep als dat nodig is.
+* Als uw DR-site is ingebouwd in de modus actief-actief, waarbij deze precies overeenkomt met de hoofd site en dezelfde netwerk-en AD-instellingen heeft, kunt u de connectors maken op de DR-site in dezelfde connector groep als de hoofd site. Hierdoor kan Azure AD failovers voor u detecteren.
+* Als uw DR-site gescheiden is van de hoofd site, kunt u een andere connector groep maken op de DR-site, en 1 hebben back-uptoepassingen of 2) hand matig de bestaande toepassing naar de groep DR-connector omleiden naar behoefte.
 
-### <a name="serve-multiple-companies-from-a-single-tenant"></a>Meerdere bedrijven bedienen vanuit één tenant
+### <a name="serve-multiple-companies-from-a-single-tenant"></a>Meerdere bedrijven van één Tenant gebruiken
 
-Er zijn veel verschillende manieren om een model te implementeren waarin één serviceprovider Azure AD-gerelateerde services implementeert en onderhoudt voor meerdere bedrijven. Connectorgroepen helpen de beheerder de connectors en toepassingen te scheiden in verschillende groepen. Een manier, die geschikt is voor kleine bedrijven, is om een enkele Azure AD-tenant te hebben, terwijl de verschillende bedrijven hun eigen domeinnaam en netwerken hebben. Dit geldt ook voor M&A-scenario's en situaties waarin één IT-afdeling meerdere bedrijven bedient om regelgevende of zakelijke redenen.
+Er zijn veel verschillende manieren voor het implementeren van een model waarin één service provider Azure AD gerelateerde services voor meerdere bedrijven implementeert en onderhoudt. Connector groepen helpen de beheerder de connectors en toepassingen te scheiden in verschillende groepen. Een van de manieren, die geschikt is voor kleine bedrijven, is om één Azure AD-Tenant te hebben terwijl de verschillende bedrijven hun eigen domein naam en netwerken hebben. Dit geldt ook voor M&van een scenario en situaties waarin een enkele IT-afdeling verschillende bedrijven voor wettelijke of zakelijke redenen heeft.
 
-## <a name="sample-configurations"></a>Voorbeeldconfiguraties
+## <a name="sample-configurations"></a>Voorbeeld configuraties
 
-Enkele voorbeelden die u implementeren, zijn de volgende verbindingsgroepen.
+Enkele voor beelden die u kunt implementeren, zijn de volgende connector groepen.
 
-### <a name="default-configuration--no-use-for-connector-groups"></a>Standaardconfiguratie – geen gebruik voor connectorgroepen
+### <a name="default-configuration--no-use-for-connector-groups"></a>Standaard configuratie: geen gebruik voor connector groepen
 
-Als u geen verbindingsgroepen gebruikt, ziet uw configuratie er als volgt uit:
+Als u geen connector groepen gebruikt, ziet uw configuratie er als volgt uit:
 
-![Voorbeeld Azure AD No-connectorgroepen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Voor beelden van Azure AD geen connector groepen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
-Deze configuratie is voldoende voor kleine implementaties en tests. Het zal ook goed werken als uw organisatie een platte netwerktopologie heeft.
+Deze configuratie is voldoende voor kleine implementaties en tests. Het werkt ook goed als uw organisatie een platte netwerk topologie heeft.
 
-### <a name="default-configuration-and-an-isolated-network"></a>Standaardconfiguratie en een geïsoleerd netwerk
+### <a name="default-configuration-and-an-isolated-network"></a>Standaard configuratie en een geïsoleerd netwerk
 
-Deze configuratie is een evolutie van de standaard, waarin er een specifieke app die wordt uitgevoerd in een geïsoleerd netwerk, zoals IaaS virtueel netwerk:
+Deze configuratie is een evolutie van de standaard versie, waarbij er een specifieke app is die wordt uitgevoerd in een geïsoleerd netwerk zoals IaaS virtueel netwerk:
 
-![Voorbeeld Azure AD No-connectorgroepen en een geïsoleerd netwerk](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Voor beelden van Azure AD geen connector groepen en een geïsoleerd netwerk](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
-### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Aanbevolen configuratie : verschillende specifieke groepen en een standaardgroep voor inactieven
+### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Aanbevolen configuratie: verschillende specifieke groepen en een standaard groep voor inactief
 
-De aanbevolen configuratie voor grote en complexe organisaties is om de standaardconnectorgroep te hebben als een groep die geen toepassingen bedient en wordt gebruikt voor inactieve of nieuw geïnstalleerde connectors. Alle toepassingen worden bediend met behulp van aangepaste connectorgroepen. Dit maakt alle complexiteit van de hierboven beschreven scenario's mogelijk.
+De aanbevolen configuratie voor grote en complexe organisaties is om de standaard connector groep te hebben als een groep die geen toepassingen gebruikt en voor niet-actieve of zojuist geïnstalleerde connectors. Alle toepassingen worden geleverd met behulp van aangepaste connector groepen. Hiermee wordt de complexiteit van de hierboven beschreven scenario's mogelijk.
 
-In het onderstaande voorbeeld heeft het bedrijf twee datacenters, A en B, met twee connectors die elke site bedienen. Elke site heeft verschillende toepassingen die erop worden uitgevoerd.
+In het onderstaande voor beeld heeft het bedrijf twee data centers, A en B, met twee Connect oren die elke site gebruiken. Elke site heeft verschillende toepassingen die erop worden uitgevoerd.
 
-![Voorbeeld van bedrijf met 2 datacenters en 2 connectoren](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Voor beeld van een bedrijf met 2 data centers en twee connectors](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)
+* [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
 * [Eenmalige aanmelding inschakelen](what-is-single-sign-on.md)

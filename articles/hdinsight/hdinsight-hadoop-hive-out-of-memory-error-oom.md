@@ -1,7 +1,7 @@
 ---
-title: Een Hive oplossen uit geheugenfout in Azure HDInsight
-description: Fix a Hive out of memory error in HDInsight. Het klantscenario is een query voor veel grote tabellen.
-keywords: uit geheugenfout, OOM, Hive-instellingen
+title: Een fout in het geheugen van een Hive oplossen in azure HDInsight
+description: Fout bij onvoldoende geheugen in HDInsight oplossen. Het scenario van de klant is een query in veel grote tabellen.
+keywords: fout vanwege onvoldoende geheugen, OOM, Hive-instellingen
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,17 +10,17 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
 ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687774"
 ---
-# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Een Apache Hive oplossen uit geheugenfout in Azure HDInsight
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>De fout Apache Hive onvoldoende geheugen in azure HDInsight oplossen
 
-Meer informatie over het oplossen van een Fout van Apache Hive uit het geheugen (OOM) bij het verwerken van grote tabellen door Hive-geheugeninstellingen te configureren.
+Meer informatie over het oplossen van een Apache Hive OOM-fout (out of Memory) bij het verwerken van grote tabellen door het configureren van Hive-geheugen instellingen.
 
-## <a name="run-apache-hive-query-against-large-tables"></a>Apache Hive-query uitvoeren tegen grote tabellen
+## <a name="run-apache-hive-query-against-large-tables"></a>Apache Hive query uitvoeren op grote tabellen
 
 Een klant heeft een Hive-query uitgevoerd:
 
@@ -44,16 +44,16 @@ where (T1.KEY1 = T2.KEY1….
 
 Enkele nuances van deze query:
 
-* T1 is een alias voor een grote tabel, TABLE1, die veel tekenreekskolomtypen heeft.
-* Andere tabellen zijn niet zo groot, maar hebben wel veel kolommen.
-* Alle tabellen voegen zich bij elkaar, in sommige gevallen met meerdere kolommen in TABEL1 en andere.
+* T1 is een alias voor een grote tabel, TABEL1, die veel van de kolom typen van de teken reeks bevat.
+* Andere tabellen zijn niet groot, maar hebben wel veel kolommen.
+* Alle tabellen worden samengevoegd met elkaar, in sommige gevallen met meerdere kolommen in TABEL1 en anderen.
 
-De Hive-query duurde 26 minuten om te voltooien op een 24-knooppunt A3 HDInsight-cluster. De klant merkte de volgende waarschuwingsberichten op:
+Het volt ooien van de Hive-query duurde 26 minuten in een HDInsight-cluster van 24 knoop punt a3. De klant heeft de volgende waarschuwings berichten gemerkt:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Met behulp van de Apache Tez uitvoeringsmotor. Dezelfde query liep voor 15 minuten, en vervolgens gooide de volgende fout:
+Door gebruik te maken van de Apache TEZ Execution Engine. Dezelfde query is 15 minuten uitgevoerd en vervolgens de volgende fout gegenereerd:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -79,15 +79,15 @@ Met behulp van de Apache Tez uitvoeringsmotor. Dezelfde query liep voor 15 minut
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-De fout blijft bij het gebruik van een grotere virtuele machine (bijvoorbeeld D12).
+De fout blijft actief wanneer u een grotere virtuele machine gebruikt (bijvoorbeeld D12).
 
-## <a name="debug-the-out-of-memory-error"></a>Fout loos geheugen debuggen
+## <a name="debug-the-out-of-memory-error"></a>Fout bericht over onvoldoende geheugen
 
-Onze ondersteuning en engineering teams samen gevonden een van de problemen waardoor de out of memory fout was een [bekend probleem beschreven in de Apache JIRA:](https://issues.apache.org/jira/browse/HIVE-8306)
+Onze ondersteunings-en technische teams hebben een van de problemen gevonden waardoor de fout onvoldoende geheugen wordt veroorzaakt. Dit is een [bekend probleem dat wordt beschreven in Apache Jira](https://issues.apache.org/jira/browse/HIVE-8306):
 
-"Wanneer hive.auto.convert.join.noconditionaltask = true controleren we noconditionaltask.size en als de som van de tabellen grootte in de kaart join is minder dan noconditionaltask.size het plan zou genereren een kaart join, het probleem met deze is dat de berekening niet te nemen rekening houdend met de overhead die door verschillende HashTable-implementatie wordt geïntroduceerd als resultaten als de som van de invoergrootte kleiner is dan de noconditionaltaskgrootte door een kleine margequery's, zal OOM raken."
+"When component. auto. Convert. samen voegen. noconditionaltask = True Controleer of noconditionaltask. size wordt gecontroleerd en of de som van de grootte van de tabellen in de kaart koppeling kleiner is dan noconditionaltask. de grootte van het plan zou een toewijzings koppeling genereren, het probleem hiervan is dat de berekening geen rekening houdt met de overhead die wordt geïntroduceerd door de verschillende implementatie van de hashtabel als resultaat als de som van de invoer grootte kleiner is dan de noconditionaltask grootte door
 
-De **taak hive.auto.convert.join.noconditionaltask** in het bestand hive-site.xml is ingesteld op **true:**
+De **component. auto. Convert. joinexpressie. noconditionaltask** in het bestand Hive-site. XML is ingesteld op **True**:
 
 ```xml
 <property>
@@ -101,22 +101,22 @@ De **taak hive.auto.convert.join.noconditionaltask** in het bestand hive-site.xm
 </property>
 ```
 
-Het is waarschijnlijk kaart join was de oorzaak van de Java Heap Space uit het geheugen fout. Zoals uitgelegd in de blog post [Hadoop Garen geheugen instellingen in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), wanneer Tez uitvoering motor wordt gebruikt de heap ruimte gebruikt eigenlijk behoort tot de Tez container. Zie de volgende afbeelding waarin het tez-containergeheugen wordt beschreven.
+Het is waarschijnlijk dat de toewijzing van de Java-heap onvoldoende geheugen is vanwege de fout melding. Zoals uitgelegd in de blog post [Hadoop-geheugen instellingen in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), wanneer TEZ Execution Engine wordt gebruikt, wordt de gebruikte heap-ruimte van de TEZ-container. Bekijk de volgende afbeelding met een beschrijving van het geheugen van de TEZ-container.
 
-![Tez-containergeheugendiagram: Hive out of memory error](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![TEZ container-geheugen diagram: fout in geheugen van Hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Zoals de blogpost suggereert, definiëren de volgende twee geheugeninstellingen het containergeheugen voor de heap: **hive.tez.container.size** en **hive.tez.java.opts**. Uit onze ervaring, de out of memory uitzondering betekent niet dat de container grootte is te klein. Het betekent dat de Java heap grootte (hive.tez.java.opts) is te klein. Dus wanneer je ziet uit het geheugen, u proberen om **hive.tez.java.opts**te verhogen. Indien nodig moet u misschien **hive.tez.container.size**verhogen. De **instelling java.opts** moet ongeveer 80% van **container.size**zijn.
+Als het blog bericht wordt voorgesteld, definieert de volgende twee geheugen instellingen het container geheugen voor de heap: **Hive. TEZ. container. size** en **Hive. TEZ. java. kiest**. Vanuit onze ervaring betekent de uitzonde ring voor onvoldoende geheugen niet dat de container grootte te klein is. Dit betekent dat de grootte van de Java-heap (Hive. TEZ. java. kiest) te klein is. Als er onvoldoende geheugen wordt weer geven, kunt u proberen om **Hive. TEZ. java. kiest**. Als dat nodig is, moet u wellicht **component. TEZ. container. size**verhogen. De instelling **Java. kiest** zich ongeveer 80% van **container. size**.
 
 > [!NOTE]  
-> De instelling **hive.tez.java.opts** moet altijd kleiner zijn dan **hive.tez.container.size**.
+> De **component setting. TEZ. java. kiest** altijd kleiner dan **Hive. TEZ. container. size**.
 
-Omdat een D12-machine 28 GB geheugen heeft, hebben we besloten om een containergrootte van 10 GB (10240 MB) te gebruiken en 80% toe te wijzen aan java.opts:
+Omdat een D12 machine 28 GB geheugen heeft, hebben we besloten een container grootte van 10 GB (10240 MB) te gebruiken en 80% toe te wijzen aan java. kiest voor:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-Met de nieuwe instellingen is de query in minder dan 10 minuten uitgevoerd.
+Met de nieuwe instellingen is de query binnen tien minuten uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het krijgen van een OOM-fout betekent niet noodzakelijkerwijs dat de containergrootte te klein is. In plaats daarvan moet u de geheugeninstellingen zo configureren dat de heapgrootte wordt vergroot en ten minste 80% van de grootte van het containergeheugen is. Zie [Apache Hive-query's optimaliseren voor Apache Hadoop in HDInsight voor](hdinsight-hadoop-optimize-hive-query.md)het optimaliseren van Hive-query's.
+Het ophalen van een OOM-fout betekent niet noodzakelijkerwijs dat de container grootte te klein is. In plaats daarvan moet u de geheugen instellingen configureren zodat de heap groter wordt en ten minste 80% van de grootte van het container geheugen. Zie [Apache Hive Query's optimaliseren voor Apache Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md)voor het optimaliseren van Hive-query's.

@@ -9,29 +9,29 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74228156"
 ---
 In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen vanuit een .NET-console-app.
 
 1. Maak in Visual Studio een nieuwe Visual C#-consoletoepassing:
-    1. Selecteer **Bestand** > **Nieuw** > **project**in het menu .
-    1. Selecteer **console-app (.NET Framework)** voor C# in de lijst met sjablonen en selecteer **Volgende**in **Een nieuw project maken**.
+    1. Selecteer in het menu **bestand** > **Nieuw** > **project**.
+    1. Selecteer in **een nieuw project maken**de optie **console-app (.NET Framework)** voor C# in de lijst met sjablonen en selecteer **volgende**.
     1. voer een naam voor de app in.
-    1. Kies Bij **Oplossing**de optie **Toevoegen aan oplossing**en selecteer **Maken** om het project te maken.
+    1. Voor **oplossing**kiest **u toevoegen aan oplossing**en selecteert u **maken** om het project te maken.
 
-1. Selecteer **NuGet** > **Package Manager** > **Package Manager Console** en voer in het consolevenster de volgende opdracht uit:
+1. Selecteer **extra** > **NuGet package manager** > **package** Manager-console en voer vervolgens in het console venster de volgende opdracht uit:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   Met deze actie wordt een verwijzing naar de Azure Notification Hubs SDK toegevoegd met behulp van het [Microsoft.Azure.NotificationHubs-pakket.]
+   Met deze actie wordt een verwijzing toegevoegd aan de Azure Notification Hubs SDK met behulp van het pakket [micro soft. Azure. notification hubs] .
 
-1. Open het *Program.cs* bestand en `using` voeg de volgende instructie toe:
+1. Open het *Program.cs* -bestand en voeg de volgende `using` instructie toe:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -69,7 +69,7 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
 
 1. Vervang in de voorgaande code de tijdelijke aanduidingen `<hub name>` en `<connection string with full access>` door de naam van de meldingenhub en de verbindingsreeks voor *DefaultFullSharedAccessSignature* uit het dashboard van de meldingenhub.
 
-1. Voeg `Main()` in de methode de volgende regels toe:
+1. Voeg in `Main()` de-methode de volgende regels toe:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -86,4 +86,4 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Micro soft. Azure. notification hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

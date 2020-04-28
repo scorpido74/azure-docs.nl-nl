@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325224"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps

@@ -1,6 +1,6 @@
 ---
-title: Problemen met verouderde hybride Azure Active Directory-samengevoegde apparaten oplossen
-description: Het oplossen van problemen met hybride Azure Active Directory is samengevoegd op apparaten op downniveau.
+title: Problemen met legacy Hybrid Azure Active Directory gekoppelde apparaten oplossen
+description: Het oplossen van problemen met hybride Azure Active Directory gekoppelde apparaten op hetzelfde niveau.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74379108"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen met hybride Azure Active Directory mogelijk maken van apparaten op downniveau 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten op hetzelfde niveau 
 
 Dit artikel is alleen van toepassing op de volgende apparaten: 
 
@@ -28,61 +28,61 @@ Dit artikel is alleen van toepassing op de volgende apparaten:
 - Windows Server 2012 
 - Windows Server 2012 R2 
 
-Zie Het oplossen van hybride Azure Active Directory voor Windows 10- [of Windows Server 2016.](troubleshoot-hybrid-join-windows-current.md)
+Zie [problemen met hybride Azure Active Directory voor Windows 10-en Windows server 2016-apparaten oplossen](troubleshoot-hybrid-join-windows-current.md)voor Windows 10 of windows server 2016.
 
-In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory-samengevoegde apparaten](hybrid-azuread-join-plan.md) hebt geconfigureerd om de volgende scenario's te ondersteunen:
+In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekoppelde apparaten hebt geconfigureerd](hybrid-azuread-join-plan.md) om de volgende scenario's te ondersteunen:
 
 - Voorwaardelijke toegang op basis van het apparaat
 
-In dit artikel vindt u richtlijnen voor het oplossen van problemen voor het oplossen van mogelijke problemen.  
+In dit artikel vindt u richt lijnen voor probleem oplossing voor het oplossen van potentiële problemen.  
 
-**Wat je moet weten:** 
+**Wat u moet weten:** 
 
-- Hybride Azure AD join voor downlevel Windows-apparaten werkt iets anders dan in Windows 10. Veel klanten realiseren zich niet dat ze AD FS (voor federatieve domeinen) of Seamless SSO geconfigureerd (voor beheerde domeinen) nodig hebben.
-- Voor klanten met federatieve domeinen, als het Service Connection Point (SCP) zodanig is geconfigureerd dat het naar de beheerde domeinnaam verwijst (bijvoorbeeld contoso.onmicrosoft.com in plaats van contoso.com), dan wordt Hybride Azure AD Join voor downlevel Windows-apparaten niet werken.
-- Het maximum aantal apparaten per gebruiker is momenteel ook van toepassing op hybride Azure AD-apparaten met downlevel. 
-- Hetzelfde fysieke apparaat wordt meerdere keren weergegeven in Azure AD wanneer meerdere domeingebruikers zich aanmelden voor de hybride Azure AD-apparaten met downlevel.  Als *jdoe* en *jharnett* zich bijvoorbeeld aanmelden bij een apparaat, wordt voor elk van hen een aparte registratie (DeviceID) gemaakt op het tabblad **GEBRUIKERSgegevens.** 
-- U ook meerdere vermeldingen voor een apparaat op het tabblad gebruikersgegevens krijgen vanwege een herinstallatie van het besturingssysteem of een handmatige herregistratie.
-- De eerste registratie / join van apparaten is geconfigureerd om een poging uit te voeren om aan te melden of te vergrendelen / ontgrendelen. Er kan 5 minuten vertraging worden veroorzaakt door een taakplannertaak. 
-- Zorg ervoor dat [KB4284842](https://support.microsoft.com/help/4284842) is geïnstalleerd, in het geval van Windows 7 SP1 of Windows Server 2008 R2 SP1. Deze update voorkomt toekomstige verificatiefouten als gevolg van het toegangsverlies van de klant tot beveiligde sleutels na het wijzigen van het wachtwoord.
+- Hybride Azure AD-deelname voor down level Windows-apparaten werkt iets anders dan in Windows 10. Veel klanten realiseren zich niet dat ze AD FS nodig hebben (voor federatieve domeinen) of naadloze SSO geconfigureerd (voor beheerde domeinen).
+- Als het service aansluitpunt (SCP) zo is geconfigureerd dat deze verwijst naar de naam van het beheerde domein (bijvoorbeeld contoso.onmicrosoft.com in plaats van contoso.com), werkt de hybride Azure AD-deelname voor down level Windows-apparaten niet.
+- Het maximum aantal apparaten per gebruiker is momenteel ook van toepassing op Down Level Hybrid Azure AD gekoppelde apparaten. 
+- Hetzelfde fysieke apparaat wordt meerdere keren weer gegeven in azure AD wanneer meerdere domein gebruikers zich aanmelden bij de Down Level Hybrid Azure AD gekoppelde apparaten.  Als bijvoorbeeld *jdoe* -en *jharnett* -aanmelding bij een apparaat, wordt er een afzonderlijke registratie (DeviceID) gemaakt voor elk van deze op het tabblad **gebruikers** gegevens. 
+- U kunt ook meerdere vermeldingen voor een apparaat vinden op het tabblad gebruikers gegevens, omdat het besturings systeem opnieuw wordt geïnstalleerd of hand matig opnieuw wordt geregistreerd.
+- De eerste registratie/samen voeging van apparaten is geconfigureerd voor het uitvoeren van een poging bij het aanmelden of vergren delen/ontgrendelen. Er kan een vertraging van 5 minuten worden geactiveerd door een taak planner taak. 
+- Zorg ervoor dat [KB4284842](https://support.microsoft.com/help/4284842) is geïnstalleerd in het geval van Windows 7 SP1 of windows server 2008 R2 SP1. Deze update voor komt toekomstige verificatie fouten als gevolg van het toegangs verlies van de klant tot beveiligde sleutels na het wijzigen van het wacht woord.
 
-## <a name="step-1-retrieve-the-registration-status"></a>Stap 1: De registratiestatus ophalen 
+## <a name="step-1-retrieve-the-registration-status"></a>Stap 1: de registratie status ophalen 
 
-**Ga als volgt te werk om de registratiestatus te verifiëren:**  
+**De registratie status verifiëren:**  
 
-1. Meld u aan met het gebruikersaccount waarmee een hybride Azure AD-lid is uitgevoerd.
-1. De opdrachtprompt openen 
+1. Meld u aan met het gebruikers account dat een hybride Azure AD-deelname heeft uitgevoerd.
+1. Open de opdracht prompt 
 1. Type `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-Met deze opdracht wordt een dialoogvenster weergegeven waarin u meer informatie krijgt over de joinstatus.
+Met deze opdracht wordt een dialoog venster weer gegeven met informatie over de status van de samen voeging.
 
 ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Stap 2: De hybride Azure AD-joinstatus evalueren 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Stap 2: de deelname status van de hybride Azure AD evalueren 
 
-Als het apparaat niet hybride is Azure AD, u proberen om hybride Azure AD-lid te maken door op de knop Deelnemen te klikken. Als de poging om hybride Azure AD-join te doen mislukt, worden de details over de fout weergegeven.
+Als het apparaat niet aan hybride Azure AD is toegevoegd, kunt u proberen om hybride Azure AD join uit te voeren door te klikken op de knop toevoegen. Als de poging om hybride Azure AD-deelname uit te voeren mislukt, wordt de informatie over de fout weer gegeven.
 
 **De meest voorkomende problemen zijn:**
 
-- Een verkeerd geconfigureerde AD FS- of Azure AD- of Netwerkproblemen
+- Een onjuist geconfigureerde AD FS-of Azure AD-of netwerk problemen
 
     ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Autoworkplace.exe kan niet stilletjes verifiëren met Azure AD of AD FS. Dit kan worden veroorzaakt door ontbrekende of verkeerd geconfigureerde AD FS (voor federatieve domeinen) of ontbrekende of verkeerd geconfigureerde Azure AD Seamless Single Sign-On (voor beheerde domeinen) of netwerkproblemen. 
-   - Het kan zijn dat multi-factor authenticatie (MFA) is ingeschakeld/geconfigureerd voor de gebruiker en WIAORMULTIAUTHN is niet geconfigureerd op de AD FS-server. 
-   - Een andere mogelijkheid is dat de HRD-pagina (Home Realm Discovery) wacht op interactie van de gebruiker, waardoor **autoworkplace.exe** niet stilletjes een token kan aanvragen.
-   - Het kan zijn dat AD FS- en Azure AD-URL's ontbreken in de intranetzone van IE op de client.
-   - Problemen met de netwerkconnectiviteit kunnen voorkomen dat **autoworkplace.exe** AD FS of de AZURE AD-URL's bereikt. 
-   - **Autoworkplace.exe** vereist dat de client een directe zichtlijn heeft van de client naar de on-premises AD-domeincontroller van de organisatie, wat betekent dat hybride Azure AD-join alleen slaagt wanneer de client is verbonden met het intranet van de organisatie.
-   - Uw organisatie gebruikt Azure AD Seamless `https://autologon.microsoftazuread-sso.com` `https://aadg.windows.net.nsatc.net` Single Sign-On of is niet aanwezig op de IE-intranetinstellingen van het apparaat en **Updates toestaan voor de statusbalk via het script** is niet ingeschakeld voor de intranetzone.
-- U bent niet aangemeld als domeingebruiker
+   - Autowerkplek. exe kan niet op de achtergrond worden geverifieerd met Azure AD of AD FS. Dit kan worden veroorzaakt door ontbrekende of onjuist geconfigureerde AD FS (voor federatieve domeinen) of ontbrekende of niet-geconfigureerde Azure AD-naadloze eenmalige aanmelding (voor beheerde domeinen) of netwerk problemen. 
+   - Het kan zijn dat multi-factor Authentication (MFA) is ingeschakeld/geconfigureerd voor de gebruiker en WIAORMULTIAUTHN niet is geconfigureerd op de AD FS-server. 
+   - Een andere mogelijkheid is dat de HRD-pagina (Home realm Discovery) wacht op de interactie van de gebruiker, waardoor **autowerkplek. exe** niet op de achtergrond een token kan aanvragen.
+   - Het kan zijn dat AD FS en Azure AD-Url's ontbreken in de intranet zone van Internet op de client.
+   - Problemen met de netwerk verbinding kunnen verhinderen dat **autowerkers. exe** AD FS of de Url's van Azure AD bereikt. 
+   - Voor **autowerkplek. exe** moet de client rechtstreeks een regel van het gezichts vermogen van de client naar de on-premises AD-domein controller van de organisatie hebben. Dit betekent dat de deelname aan de hybride Azure AD alleen slaagt wanneer de client is verbonden met het intranet van de organisatie.
+   - Uw organisatie maakt gebruik van de naadloze eenmalige aanmelding van `https://autologon.microsoftazuread-sso.com` Azure `https://aadg.windows.net.nsatc.net` AD of is niet aanwezig op de intranet instellingen van het apparaat, en het is niet **mogelijk om updates van de status balk via script in te** scha kelen voor de intranet zone.
+- U bent niet aangemeld als een domein gebruiker
 
    ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
 
-   Er zijn een paar verschillende redenen waarom dit kan gebeuren:
+   Er zijn verschillende redenen waarom dit kan gebeuren:
 
-   - De aangemelde gebruiker is geen domeingebruiker (bijvoorbeeld een lokale gebruiker). Hybride Azure AD-lid worden op apparaten op downniveau wordt alleen ondersteund voor domeingebruikers.
-   - De client kan geen verbinding maken met een domeincontroller.    
+   - De aangemelde gebruiker is geen domein gebruiker (bijvoorbeeld een lokale gebruiker). Hybride Azure AD-deelname op Down Level-apparaten wordt alleen ondersteund voor domein gebruikers.
+   - De client kan geen verbinding maken met een domein controller.    
 - Er is een quotum bereikt
 
     ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
@@ -91,18 +91,18 @@ Als het apparaat niet hybride is Azure AD, u proberen om hybride Azure AD-lid te
 
     ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-U de statusgegevens ook vinden in het gebeurtenislogboek onder: **Logboek toepassingen en services\Microsoft-Workplace Join**
+U kunt de status informatie ook vinden in het gebeurtenis logboek onder: **toepassingen en services Log\Microsoft-Workplace toevoegen**
   
-**De meest voorkomende oorzaken voor een mislukte hybride Azure AD join zijn:** 
+**De meest voorkomende oorzaken voor een mislukte hybride Azure AD-deelname zijn:** 
 
-- Uw computer is niet verbonden met het interne netwerk van uw organisatie of met een VPN met een verbinding met uw on-premises AD-domeincontroller.
-- U bent aangemeld bij uw computer met een lokaal computeraccount. 
-- Problemen met de serviceconfiguratie: 
-   - De AD FS-server is niet geconfigureerd om **WIAORMULTIAUTHN**te ondersteunen. 
-   - Het forest van uw computer heeft geen object Service Connection Point dat verwijst naar uw geverifieerde domeinnaam in Azure AD 
-   - Of als uw domein wordt beheerd, is Seamless SSO niet geconfigureerd of werkt deze niet.
+- Uw computer is niet verbonden met het interne netwerk van uw organisatie of een VPN met een verbinding met uw on-premises AD-domein controller.
+- U bent aangemeld bij uw computer met een lokale computer account. 
+- Problemen met de service configuratie: 
+   - De AD FS-server is niet geconfigureerd voor de ondersteuning van **WIAORMULTIAUTHN**. 
+   - Het forest van uw computer heeft geen object voor het service verbindings punt dat verwijst naar de naam van het geverifieerde domein in azure AD 
+   - Of als uw domein wordt beheerd, is naadloze SSO niet geconfigureerd of werkt het niet.
    - Een gebruiker heeft de limiet van apparaten bereikt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [veelgestelde vragen over apparaatbeheer](faq.md) voor vragen  
+Zie [Veelgestelde vragen over Apparaatbeheer](faq.md) voor meer informatie.  

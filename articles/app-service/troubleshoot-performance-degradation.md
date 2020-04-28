@@ -1,164 +1,164 @@
 ---
-title: Prestatiedegradatie oplossen
-description: Ontdek hoe u trage problemen met de prestaties van apps in Azure App Service oplossen, waaronder het bewaken van app-gedrag, het verzamelen van gegevens en het beperken van het probleem.
+title: Prestatie vermindering oplossen
+description: Meer informatie over het oplossen van problemen met trage prestaties in Azure App Service, waaronder het gedrag van de bewakings app, het verzamelen van gegevens en het beperken van het probleem.
 tags: top-support-issue
-keywords: web app prestaties, trage app, app traag
+keywords: prestaties van web-apps, trage app, trage app
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688305"
 ---
-# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problemen met trage app-prestaties in Azure App-service oplossen
-Met dit artikel u trage problemen met de prestaties van apps oplossen in [Azure App Service.](https://go.microsoft.com/fwlink/?LinkId=529714)
+# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problemen met prestatie problemen met langzame apps in Azure App Service oplossen
+Dit artikel helpt u bij het oplossen van problemen met prestatie problemen met langzame apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op [de MSDN Azure- en de Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure Support-site](https://azure.microsoft.com/support/options/) en klik op **Ondersteuning krijgen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en klik op **Ontvang ondersteuning**.
 
 ## <a name="symptom"></a>Symptoom
-Wanneer u door de app bladert, worden de pagina's langzaam en soms een time-out geladen.
+Wanneer u door de app bladert, worden de pagina's langzaam geladen en soms is de time-out.
 
 ## <a name="cause"></a>Oorzaak
-Dit probleem wordt vaak veroorzaakt door problemen op toepassingsniveau, zoals:
+Dit probleem wordt vaak veroorzaakt door problemen op toepassings niveau, zoals:
 
-* netwerkaanvragen die lang duren
-* toepassingscode of databasequery's die inefficiënt zijn
-* toepassing met behulp van een hoog geheugen /CPU
-* toepassing crashen als gevolg van een uitzondering
+* netwerk aanvragen nemen lange tijd in beslag
+* toepassings code of database query's zijn inefficiënt
+* toepassing met hoge geheugen/CPU
+* toepassing is vastgelopen vanwege een uitzonde ring
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
-Probleemoplossing kan worden onderverdeeld in drie verschillende taken, in opeenvolgende volgorde:
+Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequentiële volg orde:
 
-1. [Toepassingsgedrag observeren en controleren](#observe)
+1. [Gedrag van de toepassing observeren en bewaken](#observe)
 2. [Gegevens verzamelen](#collect)
-3. [Het probleem beperken](#mitigate)
+3. [Het probleem oplossen](#mitigate)
 
-[App Service](overview.md) biedt u verschillende opties bij elke stap.
+[App service](overview.md) biedt u verschillende opties bij elke stap.
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Het gedrag van toepassingen observeren en controleren
-#### <a name="track-service-health"></a>De status van de service bijhouden
-Microsoft Azure maakt elke keer bekend wanneer er een onderbreking van de service of prestatiedegradatie is. U de status van de service volgen op de [Azure-portal.](https://portal.azure.com/) Zie [De status van de service bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
+### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
+#### <a name="track-service-health"></a>Service status bijhouden
+Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service op het [Azure Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
 
 #### <a name="monitor-your-app"></a>Uw app controleren
-Met deze optie u zien of uw toepassing problemen heeft. Klik in het blad van uw app op de tegel **Aanvragen en fouten.** Het **metrische** blad toont u alle statistieken die u toevoegen.
+Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de Blade van uw app op de tegel **aanvragen en fouten** . Op de Blade **metrische gegevens** ziet u alle metrische gegevens die u kunt toevoegen.
 
-Enkele van de statistieken die u mogelijk wilt controleren voor uw app, zijn
+Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 
-* Gemiddelde geheugenwerkset
-* Gemiddelde responstijd
+* Gemiddelde werkset geheugen
+* Gemiddelde reactie tijd
 * CPU-tijd
-* Geheugenwerkset
+* Werkset geheugen
 * Aanvragen
 
-![app-prestaties bewaken](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![prestaties van apps bewaken](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 Zie voor meer informatie:
 
-* [Apps controleren in Azure App Service](web-sites-monitor.md)
+* [Apps in Azure App Service bewaken](web-sites-monitor.md)
 * [Waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-#### <a name="monitor-web-endpoint-status"></a>Webeindpuntstatus controleren
-Als u uw app **Standard** uitvoert in de standaardprijslaag, u met App Service twee eindpunten vanaf drie geografische locaties controleren.
+#### <a name="monitor-web-endpoint-status"></a>Status van web-eind punt bewaken
+Als uw app wordt uitgevoerd in de prijs categorie **Standard** , kunt u met app service twee eind punten van drie geografische locaties bewaken.
 
-Endpoint-bewaking configureert webtests vanaf geogedistribueerde locaties die de responstijd en uptime van web-URL's testen. De test voert een HTTP GET-bewerking uit op de web-URL om de reactietijd en uptime vanaf elke locatie te bepalen. Elke geconfigureerde locatie voert elke vijf minuten een test uit.
+Met eindpunt controle configureert u webtests van geografisch gedistribueerde locaties die de reactie tijd en de uptime van weburl's testen. De test voert een HTTP GET-bewerking uit op de web-URL om de reactie tijd en de uptime van elke locatie te bepalen. Elke geconfigureerde locatie voert elke vijf minuten een test uit.
 
-Uptime wordt gecontroleerd met BEHULP van HTTP-antwoordcodes en de reactietijd wordt gemeten in milliseconden. Een monitoringtest mislukt als de HTTP-responscode groter is dan of gelijk is aan 400 of als de respons meer dan 30 seconden duurt. Een eindpunt wordt als beschikbaar beschouwd als de bewakingstests slagen vanaf alle opgegeven locaties.
+De uptime wordt bewaakt met behulp van HTTP-antwoord codes en de reactie tijd wordt gemeten in milliseconden. Een bewakings test mislukt als de HTTP-antwoord code groter is dan of gelijk is aan 400 of als het antwoord meer dan 30 seconden duurt. Een eind punt wordt als beschikbaar beschouwd als de bewakings tests van alle opgegeven locaties slagen.
 
-Zie Apps controleren [in Azure App Service](web-sites-monitor.md)als u dit wilt instellen.
+Als u deze wilt instellen, raadpleegt u [apps controleren in azure app service](web-sites-monitor.md).
 
-Zie [Azure-websites behouden plus Endpoint-controle - met Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) voor een video over endpoint-monitoring.
+Zie ook voor het [bewaren van Azure web sites up-to-endpoint bewaking-met Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) voor een video op endpoint-bewaking.
 
-#### <a name="application-performance-monitoring-using-extensions"></a>Toepassingsprestatiebewaking met extensies
-U ook de prestaties van uw toepassing controleren met behulp van een *site-extensie.*
+#### <a name="application-performance-monitoring-using-extensions"></a>Bewaking van toepassings prestaties met behulp van uitbrei dingen
+U kunt ook de prestaties van uw toepassingen bewaken met behulp van een *site-uitbrei ding*.
 
-Elke App Service-app biedt een uitbreidbaar beheereindpunt waarmee u een krachtige set hulpprogramma's gebruiken die als site-extensies worden geïmplementeerd. Extensies zijn: 
+Elke App Service-app biedt een uitbreidbaar beheer eindpunt waarmee u een krachtige set hulpprogram ma's kunt gebruiken die als site-extensies worden geïmplementeerd. Uitbrei dingen zijn: 
 
-- Broncodeeditors zoals [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
-- Beheertools voor verbonden bronnen, zoals een MySQL-database die is verbonden met een app.
+- Bron code-editors zoals [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Beheer hulpprogramma's voor verbonden resources, zoals een MySQL-data base die is verbonden met een app.
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) is een prestatiebewaking site extensie die ook beschikbaar is. Als u Application Insights wilt gebruiken, bouwt u uw code opnieuw op met een SDK. U ook een extensie installeren die toegang biedt tot extra gegevens. Met de SDK u code schrijven om het gebruik en de prestaties van uw app in meer detail te controleren. Zie [Prestaties controleren in webtoepassingen voor](../azure-monitor/app/web-monitor-performance.md)meer informatie.
+[Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/) is een site-uitbrei ding voor prestatie bewaking die ook beschikbaar is. Als u Application Insights wilt gebruiken, bouwt u uw code opnieuw met een SDK. U kunt ook een extensie installeren die toegang biedt tot aanvullende gegevens. Met de SDK kunt u code schrijven om het gebruik en de prestaties van uw app in meer detail te bewaken. Zie [prestaties van webtoepassingen controleren](../azure-monitor/app/web-monitor-performance.md)voor meer informatie.
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Gegevens verzamelen
-App Service biedt diagnostische functionaliteit voor het registreren van informatie van zowel de webserver als de webtoepassing. De informatie is gescheiden in webserverdiagnostiek en toepassingsdiagnostiek.
+### <a name="2-collect-data"></a>2. gegevens verzamelen
+App Service biedt diagnostische functionaliteit voor het vastleggen van logboek gegevens van zowel de webserver als de webtoepassing. De informatie wordt onderverdeeld in webserver diagnostiek en toepassings diagnoses.
 
-#### <a name="enable-web-server-diagnostics"></a>Webserverdiagnose inschakelen
-U de volgende soorten logboeken in- of uitschakelen:
+#### <a name="enable-web-server-diagnostics"></a>Diagnostische gegevens van webserver inschakelen
+U kunt de volgende soorten logboeken in-of uitschakelen:
 
-* **Gedetailleerde foutlogboekregistratie** - Gedetailleerde foutgegevens voor HTTP-statuscodes die wijzen op een fout (statuscode 400 of hoger). Dit kan informatie bevatten die kan helpen bepalen waarom de server de foutcode heeft geretourneerd.
-* **Tracering van mislukte aanvragen** - Gedetailleerde informatie over mislukte aanvragen, inclusief een spoor van de IIS-componenten die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is genomen. Dit kan handig zijn als u probeert de prestaties van apps te verbeteren of te isoleren wat een specifieke HTTP-fout veroorzaakt.
-* **Webserverlogboekregistratie** - Informatie over HTTP-transacties met de uitgebreide w3C-bestandsindeling. Dit is handig bij het bepalen van algemene app-statistieken, zoals het aantal afgehandelde aanvragen of het aantal aanvragen dat afkomstig is van een specifiek IP-adres.
+* **Gedetailleerde fout registratie** : gedetailleerde fout informatie voor HTTP-status codes die duiden op een fout (status code 400 of hoger). Dit kan informatie bevatten die u kan helpen om te bepalen waarom de server de fout code heeft geretourneerd.
+* **Tracering van mislukte aanvragen** -gedetailleerde informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Dit kan handig zijn als u probeert de prestaties van de app te verbeteren of te isoleren wat een specifieke HTTP-fout veroorzaakt.
+* **Logboek registratie van webserver** -informatie over http-trans acties met de uitgebreide W3C-indeling van logboek bestand. Dit is handig bij het bepalen van de algemene metrische gegevens van de app, zoals het aantal verwerkte aanvragen of hoeveel aanvragen van een specifiek IP-adres.
 
-#### <a name="enable-application-diagnostics"></a>Toepassingsdiagnose inschakelen
-Er zijn verschillende opties om prestatiegegevens van toepassingen van App Service te verzamelen, uw toepassing live te profileren vanuit Visual Studio of uw toepassingscode aan te passen om meer informatie en traces te registreren. U de opties kiezen op basis van hoeveel toegang u hebt tot de toepassing en wat u hebt waargenomen vanuit de bewakingstools.
+#### <a name="enable-application-diagnostics"></a>Application Diagnostics inschakelen
+Er zijn verschillende opties voor het verzamelen van prestatie gegevens van toepassingen van App Service, het profiel van uw toepassing in Visual Studio of het wijzigen van de toepassings code om meer informatie en traceringen te registreren. U kunt de opties kiezen op basis van de mate van toegang tot de toepassing en wat u hebt geconstateerd via de controle hulpprogramma's.
 
 ##### <a name="use-application-insights-profiler"></a>Application Insights Profiler gebruiken
-U de Application Insights Profiler inschakelen om gedetailleerde prestatiesporen vast te leggen. U toegang krijgen tot sporen die tot vijf dagen geleden zijn vastgelegd wanneer u problemen in het verleden moet onderzoeken. U deze optie kiezen zolang u toegang hebt tot de Application Insights-bron van de app op Azure-portal.
+U kunt de Application Insights Profiler inschakelen om te beginnen met het vastleggen van gedetailleerde prestatie traceringen. U kunt traceringen die Maxi maal vijf dagen geleden zijn vastgelegd, benaderen wanneer u problemen in het verleden wilt onderzoeken. U kunt deze optie kiezen op voor waarde dat u toegang hebt tot de Application Insights resource van de app op Azure Portal.
 
-Application Insights Profiler biedt statistieken over de reactietijd voor elke weboproep en traceringen die aangeeft welke regel code de trage reacties heeft veroorzaakt. Soms is de App Service-app traag omdat bepaalde code niet op een performante manier is geschreven. Voorbeelden hiervan zijn sequentiële code die parallel en ongewenste databaselock-stellingen kan worden uitgevoerd. Het verwijderen van deze knelpunten in de code verhoogt de prestaties van de app, maar ze zijn moeilijk te detecteren zonder het instellen van uitgebreide sporen en logboeken. De sporen verzameld door Application Insights Profiler helpt bij het identificeren van de regels code die de toepassing vertraagt en deze uitdaging voor App Service-apps te overwinnen.
+Application Insights Profiler biedt statistieken over de reactie tijd voor elke webaanroep en traceringen die aangeven welke regel code de langzame reacties heeft veroorzaakt. Soms is de App Service-app traag omdat bepaalde code niet op een uitvoerende manier wordt geschreven. Voor beelden zijn sequentiële code die kan worden uitgevoerd in parallelle en ongewenste database vergrendelings conflicten. Door deze knel punten in de code te verwijderen, worden de prestaties van de app verhoogd, maar ze zijn moeilijk te detecteren zonder dat er uitgebreide traceringen en logboeken hoeven worden ingesteld. Met de traceringen die door Application Insights Profiler worden verzameld, kunt u de code regels identificeren waarmee de toepassing wordt vertraagd en deze uitdaging voor App Service-apps wordt verholpen.
 
- Zie [Live-apps profileren in Azure App Service met Application Insights](../azure-monitor/app/profiler.md)voor meer informatie.
+ Zie voor meer informatie [Live-apps profileren in azure app service met Application Insights](../azure-monitor/app/profiler.md).
 
-##### <a name="use-remote-profiling"></a>Externe profilering gebruiken
-In Azure App Service kunnen web-apps, API-apps, mobiele back-ends en WebJobs op afstand worden geprofileerd. Kies deze optie als u toegang hebt tot de app-bron en u weet hoe u het probleem moet reproduceren of als u het exacte tijdsinterval weet, treedt het prestatieprobleem op.
+##### <a name="use-remote-profiling"></a>Externe profile ring gebruiken
+In azure app service kunnen Web apps, API apps, mobiele back-ends en webjobs op afstand worden profileeerd. Kies deze optie als u toegang hebt tot de app-resource en u weet hoe u het probleem moet reproduceren of als u het precieze tijds interval weet dat het prestatie probleem optreedt.
 
-Remote Profiling is handig als het CPU-gebruik van het proces hoog is en uw proces trager werkt dan verwacht, of de latentie van HTTP-aanvragen hoger is dan normaal, u uw proces op afstand profileren en de CPU-selectiecallstacks krijgt om het proces te analyseren activiteit en code hot paths.
+Externe profile ring is handig als het CPU-gebruik van het proces hoog is en het proces langzamer is dan verwacht, of de latentie van HTTP-aanvragen hoger is dan normaal, u kunt uw proces op afstand profileren en de CPU-sampling-bemonsterings stacks ophalen om de proces activiteit en de code-Hot paden te analyseren.
 
-Zie [Ondersteuning voor externe profilering in Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)voor meer informatie.
+Zie [ondersteuning voor externe profilering in azure app service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)voor meer informatie.
 
-##### <a name="set-up-diagnostic-traces-manually"></a>Diagnostische sporen handmatig instellen
-Als u toegang hebt tot de broncode van de webtoepassing, u met toepassingsdiagnose informatie vastleggen die door een webtoepassing is geproduceerd. ASP.NET toepassingen kunnen `System.Diagnostics.Trace` de klasse gebruiken om informatie aan te melden bij het logboek voor toepassingsdiagnostiek. U moet de code echter wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd op een testomgeving.
+##### <a name="set-up-diagnostic-traces-manually"></a>Diagnostische traceringen hand matig instellen
+Als u toegang hebt tot de bron code van de webtoepassing, kunt u met Application Diagnostics gegevens vastleggen die zijn gemaakt door een webtoepassing. ASP.NET-toepassingen kunnen de `System.Diagnostics.Trace` -klasse gebruiken om informatie te registreren in het logboek voor toepassings diagnose. U moet echter de code wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd in een test omgeving.
 
-Zie [Diagnostische logboekregistratie inschakelen voor apps in Azure App Service](troubleshoot-diagnostic-logs.md)voor gedetailleerde instructies over het configureren van uw toepassing voor logboekregistratie.
+Zie [Diagnostische logboek registratie inschakelen voor apps in azure app service](troubleshoot-diagnostic-logs.md)voor gedetailleerde instructies voor het configureren van uw toepassing voor logboek registratie.
 
-#### <a name="use-the-diagnostics-tool"></a>Het diagnosegereedschap gebruiken
-App Service biedt een intelligente en interactieve ervaring om u te helpen problemen op te lossen met uw app zonder configuratie vereist. Wanneer u problemen met uw app tegenkomt, geeft de diagnostische tool aan wat er mis is om u naar de juiste informatie te leiden om het probleem gemakkelijker en sneller op te lossen en op te lossen.
+#### <a name="use-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens gebruiken
+App Service biedt een intelligente en interactieve ervaring om u te helpen bij het oplossen van problemen met uw app zonder dat hiervoor configuratie is vereist. Wanneer u problemen ondervindt met uw app, wordt in het diagnostische hulp programma aangegeven wat er mis is met de juiste informatie om snel te kunnen werken en het probleem op te lossen.
 
-Als u toegang wilt krijgen tot diagnostische gegevens van App Service, navigeert u naar uw App Service-app of App Service-omgeving in de [Azure-portal.](https://portal.azure.com) Klik in de linkernavigatie op **Diagnosticeren en los problemen op.**
+Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App Service app of App Service Environment in de [Azure Portal](https://portal.azure.com). Klik in de linkernavigatiebalk op **problemen vaststellen en oplossen**.
 
-#### <a name="use-the-kudu-debug-console"></a>De Kudu-foutopsporingsconsole gebruiken
-App Service wordt geleverd met een foutopsporingsconsole die u gebruiken voor het debuggen, verkennen, uploaden van bestanden, evenals JSON-eindpunten voor het verkrijgen van informatie over uw omgeving. Deze console wordt de *Kudu-console* of het *SCM-dashboard* voor uw app genoemd.
+#### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
+App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Deze console wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U dit dashboard openen door naar de link te gaan **https://&lt;Uw app-naam>.scm.azurewebsites.net/**.
+U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam>. scm.azurewebsites.net/**.
 
-Enkele van de dingen die Kudu biedt zijn:
+Enkele van de dingen die kudu biedt:
 
-* omgevingsinstellingen voor uw toepassing
-* logboekstroom
+* omgevings instellingen voor uw toepassing
+* logboek stroom
 * diagnostische dump
-* foutopsporingsconsole waarin u Powershell-cmdlets en eenvoudige DOS-opdrachten uitvoeren.
+* console voor fout opsporing, waarin u Power shell-cmdlets en Basic DOS-opdrachten kunt uitvoeren.
 
-Een ander handig kenmerk van Kudu is dat, in het geval uw toepassing is het gooien van eerste kans uitzonderingen, u Kudu en de SysInternals tool Procdump gebruiken om geheugen dumps te maken. Deze geheugendumps zijn momentopnamen van het proces en kunnen u vaak helpen bij het oplossen van meer gecompliceerde problemen met uw app.
+Een andere handige functie van kudu is dat, als uw toepassing uitzonde ringen voor de eerste kans verkrijgt, u kudu en het hulp programma SysInternals kunt gebruiken Procdump om geheugen dumps te maken. Deze geheugen dumps zijn moment opnamen van het proces en kunnen u vaak helpen om complexere problemen met uw app op te lossen.
 
-Zie [Azure DevOps-hulpprogramma's die u moet weten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)voor meer informatie over functies die beschikbaar zijn in Kudu.
+Zie [Azure DevOps-hulpprogram ma's waarover u moet weten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)voor meer informatie over de beschik bare functies in kudu.
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Het probleem beperken
+### <a name="3-mitigate-the-issue"></a>3. het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen
-In Azure App Service u voor betere prestaties en doorvoer de schaal aanpassen waarop u uw toepassing uitvoert. Het opschalen van een app omvat twee gerelateerde acties: het wijzigen van uw App Service-abonnement naar een hogere prijscategorie en het configureren van bepaalde instellingen nadat u bent overgestapt naar de hogere prijscategorie.
+In Azure App Service kunt u voor betere prestaties en door Voer de schaal aanpassen waarop u uw toepassing uitvoert. Voor het omhoog schalen van een app zijn twee gerelateerde acties vereist: het wijzigen van uw App Service plan in een hogere prijs categorie en het configureren van bepaalde instellingen nadat u bent overgeschakeld naar de hogere prijs categorie.
 
-Zie [Een app schalen in Azure App Service](manage-scale-up.md)voor meer informatie over schalen.
+Zie [een app schalen in azure app service](manage-scale-up.md)voor meer informatie over schalen.
 
-Bovendien u ervoor kiezen om uw toepassing op meer dan één exemplaar uit te voeren. Uitschalen biedt u niet alleen meer verwerkingsmogelijkheden, maar geeft u ook een zekere mate van fouttolerantie. Als het proces op één instantie wordt afgebroken, blijven de andere instanties aanvragen weergeven.
+Daarnaast kunt u ervoor kiezen om uw toepassing uit te voeren op meer dan één exemplaar. Als u niet alleen uitschalen hebt, beschikt u niet alleen over meer verwerkings mogelijkheden, maar biedt u ook een zekere mate van fout tolerantie. Als het proces wordt uitgevoerd op één instantie, blijven de andere instanties aanvragen verwerken.
 
-U de schaling instellen als Handmatig of automatisch.
+U kunt de schaal instellen op hand matig of automatisch.
 
-#### <a name="use-autoheal"></a>AutoHeal gebruiken
-AutoHeal recyclet het werkproces voor uw app op basis van instellingen die u kiest (zoals configuratiewijzigingen, aanvragen, limieten op basis van geheugen of de tijd die nodig is om een aanvraag uit te voeren). De meeste van de tijd, recyclen van het proces is de snelste manier om te herstellen van een probleem. Hoewel u de app altijd rechtstreeks vanuit de Azure-portal opnieuw starten, doet AutoHeal dit automatisch voor u. Het enige wat u hoeft te doen is een aantal triggers toevoegen in de root web.config voor uw app. Deze instellingen zouden op dezelfde manier werken, zelfs als uw toepassing geen .NET-app is.
+#### <a name="use-autoheal"></a>Automatisch herstellen gebruiken
+Met auto Retoucheer wordt het werk proces voor uw app gerecycled op basis van de instellingen die u kiest (zoals configuratie wijzigingen, aanvragen, limieten op basis van geheugen of de tijd die nodig is om een aanvraag uit te voeren). In de meeste gevallen is het recyclen van het proces de snelste manier om een probleem op te lossen. U kunt de app altijd direct vanuit de Azure Portal opnieuw opstarten, maar automatisch herstellen voor u. U hoeft alleen maar enkele triggers toe te voegen in de hoofdmap web. config voor uw app. Deze instellingen werken op dezelfde manier, zelfs als uw toepassing geen .NET-app is.
 
-Zie [Azure-websites voor](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)meer informatie .
+Zie voor meer informatie [automatisch herstel van Azure web sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
 #### <a name="restart-the-app"></a>De app opnieuw starten
-Opnieuw opstarten is vaak de eenvoudigste manier om te herstellen van eenmalige problemen. Op de [Azure-portal](https://portal.azure.com/), op het blad van uw app, hebt u de opties om uw app te stoppen of opnieuw te starten.
+Het opnieuw starten is vaak de eenvoudigste manier om te herstellen vanuit eenmalige problemen. Op de [Azure Portal](https://portal.azure.com/)op de Blade van uw app hebt u de opties om uw app te stoppen of opnieuw op te starten.
 
- ![app opnieuw opstarten om prestatieproblemen op te lossen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![app opnieuw starten om prestatie problemen op te lossen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-U uw app ook beheren met Azure Powershell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
+U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.

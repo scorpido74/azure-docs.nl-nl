@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - On-premises basisdirectory en Azure AD-omgeving.
+title: Zelf studie-basis Active Directory on-premises en Azure AD-omgeving.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,38 +11,38 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74793896"
 ---
-# <a name="tutorial-basic-active-directory-environment"></a>Zelfstudie: Basis-Active Directory-omgeving
+# <a name="tutorial-basic-active-directory-environment"></a>Zelf studie: Basic Active Directory Environment
 
-Met deze zelfstudie u een basis-Active Directory-omgeving maken. 
+In deze zelf studie wordt u begeleid bij het maken van een basis Active Directory-omgeving. 
 
 ![Maken](media/tutorial-single-forest/diagram1.png)
 
-U de omgeving die u in de zelfstudie maakt gebruiken om verschillende aspecten van hybride identiteitsscenario's te testen en is een voorwaarde voor sommige van de zelfstudies.  Als u al een bestaande Active Directory-omgeving hebt, u dat als vervanging gebruiken.  Deze informatie wordt verstrekt voor personen die mijn beginnen vanuit het niets.
+U kunt de omgeving die u in de zelf studie maakt, gebruiken om verschillende aspecten van hybride identiteits scenario's te testen en is een vereiste voor sommige zelf studies.  Als u al een bestaande Active Directory omgeving hebt, kunt u deze gebruiken als vervanging.  Deze informatie wordt verstrekt voor personen die vanaf niets beginnen.
 
-Deze tutorial bestaat uit
+Deze zelf studie bestaat uit
 ## <a name="prerequisites"></a>Vereisten
 Dit zijn de vereisten voor het voltooien van deze zelfstudie
 - Een computer waarop [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) is geïnstalleerd.  Het wordt aangeraden dit te doen op een computer met [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) of [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 - Een [externe netwerkadapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) waarmee de virtuele machine kan communiceren met internet.
 - Een [Azure-abonnement](https://azure.microsoft.com/free)
 - Een exemplaar van Windows Server 2016
-- [Microsoft .NET framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
+- [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
 
 > [!NOTE]
 > In deze zelfstudie worden PowerShell-scripts gebruikt, zodat u de omgeving voor de zelfstudie zo snel mogelijk kunt inrichten.  Elk van de scripts maakt gebruik van variabelen die worden gedeclareerd aan het begin van de scripts.  U kunt en moet de variabelen aanpassen aan uw omgeving.
 >
->De gebruikte scripts maken een algemene Active Directory-omgeving voordat de Azure AD Connect-cloudinrichtingsagent wordt geïnstalleerd.  De scripts zijn relevant voor alle zelfstudies.
+>De scripts die worden gebruikt, maken een algemene Active Directory omgeving voordat u de Azure AD Connect Cloud inrichtings Agent installeert.  De scripts zijn relevant voor alle zelfstudies.
 >
 > Kopieën van de PowerShell-scripts die worden gebruikt in deze zelfstudie zijn [hier](https://github.com/billmath/tutorial-phs) beschikbaar op GitHub.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
-Het eerste wat u moet doen, om onze hybride identiteitsomgeving operationeel te krijgen, is het maken van een virtuele machine die zal worden gebruikt als onze on-premises Active Directory-server.  Ga als volgt te werk:
+Het eerste wat u moet doen om ervoor te zorgen dat onze Hybrid Identity Environment actief is, is het maken van een virtuele machine die wordt gebruikt als onze on-premises Active Directory server.  Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -82,12 +82,12 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. **Selecteer Aangepast: Windows alleen installeren (geavanceerd)**
-9. Klik **op Volgende**
+8. Selecteer **aangepast: alleen Windows installeren (Geavanceerd)**
+9. Klik op **volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ## <a name="install-active-directory-prerequisites"></a>Vereisten voor de installatie van Active Directory Domain Services
-Nu u een virtuele machine hebt, moet u een paar dingen doen voordat u Active Directory installeert.  Dat wil zeggen dat u de naam van de virtuele machine moet wijzigen, een statisch IP-adres en DNS-informatie moet instellen en de hulpprogramma's voor extern serverbeheer moet installeren.   Ga als volgt te werk:
+Nu u een virtuele machine hebt, moet u enkele dingen doen voordat u Active Directory installeert.  Dat wil zeggen, u moet de naam van de virtuele machine wijzigen, een statisch IP-adres en DNS-informatie instellen en de Remote Server Administration Tools installeren.   Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -123,7 +123,7 @@ Nu u een virtuele machine hebt, moet u een paar dingen doen voordat u Active Dir
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Een Windows Server AD-omgeving inrichten
-Nu u de VIRTUELE V.D. hebt gemaakt en deze is hernoemd en een statisch IP-adres heeft, u Active Directory Domain Services installeren en configureren.  Ga als volgt te werk:
+Nu u de virtuele machine hebt gemaakt en de naam ervan hebt gewijzigd en een statisch IP-adres hebt, kunt u door gaan en Active Directory Domain Services installeren en configureren.  Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -154,7 +154,7 @@ Nu u de VIRTUELE V.D. hebt gemaakt en deze is hernoemd en een statisch IP-adres 
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Een Windows Server AD-gebruiker maken
-Nu u onze Active Directory-omgeving hebt, moet u een testaccount gebruiken.  Dit account wordt gemaakt in onze on-premises AD-omgeving en vervolgens gesynchroniseerd met Azure Active Directory.  Ga als volgt te werk:
+Nu u onze Active Directory omgeving hebt, moet u een test account hebben.  Dit account wordt gemaakt in onze on-premises AD-omgeving en vervolgens gesynchroniseerd met Azure Active Directory.  Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -194,18 +194,18 @@ Nu u onze Active Directory-omgeving hebt, moet u een testaccount gebruiken.  Dit
 
 
 ## <a name="create-an-azure-ad-tenant"></a>Een Azure Active Directory-tenant maken
-Nu moet u een Azure AD-tenant maken, zodat u onze gebruikers synchroniseren met de cloud.  Ga als volgt te werk om een nieuwe Azure Active Directory-tenant te maken.
+U moet nu een Azure AD-Tenant maken zodat u onze gebruikers kunt synchroniseren met de Cloud.  Ga als volgt te werk om een nieuwe Azure Active Directory-tenant te maken.
 
 1. Meld u bij de [Azure Portal](https://portal.azure.com) aan met een account waaraan een Azure-abonnement is gekoppeld.
 2. Selecteer het **plusteken (+)** en zoek naar **Azure Active Directory**.
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
 ![Maken](media/tutorial-single-forest/create1.png)</br>
-5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
+5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Een globale beheerder maken in Azure Active Directory
-Nu u een Azure AD-tenant hebt, maakt u een algemeen beheerdersaccount.  Ga als volgt te werk om het globale beheerdersaccount te maken.
+Nu u een Azure AD-Tenant hebt, maakt u een algemeen beheerders account.  Ga als volgt te werk om het globale beheerdersaccount te maken.
 
 1.  Onder **Beheren**, selecteer **Gebruikers**.</br>
 ![Maken](media/tutorial-single-forest/administrator1.png)</br>
@@ -216,9 +216,9 @@ Nu u een Azure AD-tenant hebt, maakt u een algemeen beheerdersaccount.  Ga als v
 5. Wijzig het wachtwoord voor de globale beheerder in iets dat u makkelijk kunt onthouden.
 
 ## <a name="optional--additional-server-and-forest"></a>Optioneel: extra server en forest
-Het volgende is een optionele sectie die stappen biedt voor het maken van een extra server en of forest.  Dit kan worden gebruikt in enkele van de meer geavanceerde tutorials, zoals [Pilot voor Azure AD Connect voor cloudprovisioning.](tutorial-pilot-aadc-aadccp.md)
+Hier volgt een optionele sectie met stappen voor het maken van een extra server en of forest.  Dit kan worden gebruikt in een aantal geavanceerdere zelf studies zoals [pilot voor Azure AD Connect naar Cloud inrichting](tutorial-pilot-aadc-aadccp.md).
 
-Als u alleen een extra server nodig hebt, u stoppen na de stap - **De virtuele machine maken** en de server aansluiten bij het bestaande domein dat hierboven is gemaakt.  
+Als u alleen een extra server nodig hebt, kunt u stoppen na de stap- **de virtuele machine maken** en de server toevoegen aan het bestaande domein dat hierboven is gemaakt.  
 
 ### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -269,12 +269,12 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. **Selecteer Aangepast: Windows alleen installeren (geavanceerd)**
-9. Klik **op Volgende**
+8. Selecteer **aangepast: alleen Windows installeren (Geavanceerd)**
+9. Klik op **volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ### <a name="install-active-directory-prerequisites"></a>Vereisten voor de installatie van Active Directory Domain Services
-Nu u een virtuele machine hebt, moet u een paar dingen doen voordat u Active Directory installeert.  Dat wil zeggen dat u de naam van de virtuele machine moet wijzigen, een statisch IP-adres en DNS-informatie moet instellen en de hulpprogramma's voor extern serverbeheer moet installeren.   Ga als volgt te werk:
+Nu u een virtuele machine hebt, moet u enkele dingen doen voordat u Active Directory installeert.  Dat wil zeggen, u moet de naam van de virtuele machine wijzigen, een statisch IP-adres en DNS-informatie instellen en de Remote Server Administration Tools installeren.   Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -324,7 +324,7 @@ Nu u een virtuele machine hebt, moet u een paar dingen doen voordat u Active Dir
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Een Windows Server AD-omgeving inrichten
-Nu u de VIRTUELE V.D. hebt gemaakt en deze is hernoemd en een statisch IP-adres heeft, u Active Directory Domain Services installeren en configureren.  Ga als volgt te werk:
+Nu u de virtuele machine hebt gemaakt en de naam ervan hebt gewijzigd en een statisch IP-adres hebt, kunt u door gaan en Active Directory Domain Services installeren en configureren.  Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -370,7 +370,7 @@ Nu u de VIRTUELE V.D. hebt gemaakt en deze is hernoemd en een statisch IP-adres 
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Een Windows Server AD-gebruiker maken
-Nu u onze Active Directory-omgeving hebt, moet u een testaccount gebruiken.  Dit account wordt gemaakt in onze on-premises AD-omgeving en vervolgens gesynchroniseerd met Azure Active Directory.  Ga als volgt te werk:
+Nu u onze Active Directory omgeving hebt, moet u een test account hebben.  Dit account wordt gemaakt in onze on-premises AD-omgeving en vervolgens gesynchroniseerd met Azure Active Directory.  Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -409,7 +409,7 @@ Nu u onze Active Directory-omgeving hebt, moet u een testaccount gebruiken.  Dit
     ```
 
 ## <a name="conclusion"></a>Conclusie
-Nu heb je een omgeving die kan worden gebruikt voor bestaande tutorials en om extra functies cloud provisioning biedt te testen.
+U hebt nu een omgeving die kan worden gebruikt voor bestaande zelf studies en om aanvullende functies te testen die in de cloud worden ingericht.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

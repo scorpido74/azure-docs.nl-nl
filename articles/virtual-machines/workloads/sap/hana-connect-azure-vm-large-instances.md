@@ -1,6 +1,6 @@
 ---
-title: Connectiviteitsinstallatie van virtuele machines naar SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
-description: Connectiviteitsinstellingen van virtuele machines voor het gebruik van SAP HANA op Azure (Large Instances).
+title: Connectiviteits instellingen van virtuele machines om te SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Connectiviteits instellingen van virtuele machines voor het gebruik van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -16,136 +16,136 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74224733"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-VM's verbinden met grote HANA-instanties
 
-Het artikel [Wat is SAP HANA op Azure (Large Instances)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) vermeldt dat de minimale implementatie van HANA Large Instances met de SAP-toepassingslaag in Azure er als volgt uitziet:
+Het artikel [Wat is SAP Hana op Azure (grote exemplaren)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) de minimale implementatie van HANA grote instanties met de SAP-toepassingslaag in azure ziet er als volgt uit:
 
-![Azure VNet verbonden met SAP HANA op Azure (Large Instances) en on-premises](./media/hana-overview-architecture/image1-architecture.png)
+![Azure VNet verbonden met SAP HANA op Azure (grote exemplaren) en on-premises](./media/hana-overview-architecture/image1-architecture.png)
 
-Als u de virtuele netwerkzijde van Azure nader bekijkt, is er behoefte aan:
+Als u meer wilt weten over het virtuele Azure-netwerk, hebt u het volgende nodig:
 
-- De definitie van een virtueel Azure-netwerk waarin u de VM's van de SAP-toepassingslaag gaat implementeren.
-- De definitie van een standaardsubnet in het virtuele Azure-netwerk dat echt het segment is waarin de VM's worden geïmplementeerd.
-- Het azure virtuele netwerk dat is gemaakt, moet ten minste één VM-subnet en één subnet voor azure ExpressRoute-clients hebben. Aan deze subnetten moeten de IP-adresbereiken worden toegewezen, zoals gespecificeerd en besproken in de volgende secties.
+- De definitie van een virtueel Azure-netwerk waarin u de Vm's van de SAP-toepassingslaag gaat implementeren.
+- De definitie van een standaard subnet in het virtuele Azure-netwerk dat in feite de Vm's bevat waarin de virtuele machines worden geïmplementeerd.
+- Het virtuele Azure-netwerk dat wordt gemaakt, moet ten minste één VM-subnet en één subnet van een virtuele Azure ExpressRoute-netwerk gateway hebben. Aan deze subnetten moeten de IP-adresbereiken worden toegewezen, zoals gespecificeerd en besproken in de volgende secties.
 
 
-## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Het virtuele Azure-netwerk maken voor HANA-grote exemplaren
+## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Het virtuele Azure-netwerk voor HANA grote instanties maken
 
 >[!Note]
->Het Azure virtual network voor HANA Large Instances moet worden gemaakt met behulp van het Azure Resource Manager-implementatiemodel. Het oudere Azure-implementatiemodel, beter bekend als het klassieke implementatiemodel, wordt niet ondersteund door de HANA Large Instance-oplossing.
+>Het virtuele Azure-netwerk voor HANA grote instanties moet worden gemaakt met behulp van het Azure Resource Manager-implementatie model. Het oudere Azure-implementatie model, ook wel bekend als het klassieke implementatie model, wordt niet ondersteund door de HANA-oplossing voor grote exemplaren.
 
-U de Azure-portal, PowerShell, een Azure-sjabloon of de Azure CLI gebruiken om het virtuele netwerk te maken. (Zie [Een virtueel netwerk maken met de Azure-portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)voor meer informatie. In het volgende voorbeeld kijken we naar een virtueel netwerk dat is gemaakt met behulp van de Azure-portal.
+U kunt de Azure Portal, Power shell, een Azure-sjabloon of de Azure CLI gebruiken om het virtuele netwerk te maken. (Zie [een virtueel netwerk maken met behulp van de Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)) voor meer informatie. In het volgende voor beeld bekijken we een virtueel netwerk dat is gemaakt met behulp van de Azure Portal.
 
-Wanneer u verwijst naar de **adresruimte** in deze documentatie, naar de adresruimte die het virtuele Azure-netwerk mag gebruiken. Deze adresruimte is ook het adresbereik dat het virtuele netwerk gebruikt voor het uitdragen van BGP-route. Deze **adresruimte** is hier te zien:
+Wanneer wordt verwezen naar de **adres ruimte** in deze documentatie, naar de adres ruimte die het virtuele Azure-netwerk mag gebruiken. Deze adres ruimte is ook het adres bereik dat het virtuele netwerk gebruikt voor het door sturen van BGP-routes. Deze **adres ruimte** kan hier worden weer gegeven:
 
-![Adresruimte van een Virtueel Azure-netwerk dat wordt weergegeven in de Azure-portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
+![Adres ruimte van een virtueel Azure-netwerk dat wordt weer gegeven in de Azure Portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
 
-In het vorige voorbeeld, met 10.16.0.0/16, kreeg het virtuele Azure-netwerk een vrij groot en breed IP-adresbereik om te gebruiken. Daarom kunnen alle IP-adresbereiken van volgende subnetten binnen dit virtuele netwerk hun bereik binnen die adresruimte hebben. We raden meestal niet zo'n groot adresbereik aan voor één virtueel netwerk in Azure. Maar laten we eens kijken naar de subnetten die zijn gedefinieerd in het virtuele Azure-netwerk:
+In het vorige voor beeld werd met 10.16.0.0/16 het virtuele netwerk van Azure een groot en breed IP-adres bereik gekregen dat moet worden gebruikt. Daarom kunnen alle IP-adresbereiken van de volgende subnetten binnen dit virtuele netwerk hun bereik binnen die adres ruimte hebben. Normaal gesp roken wordt een dergelijk groot adres bereik niet aanbevolen voor één virtueel netwerk in Azure. Maar laten we eens kijken naar de subnetten die zijn gedefinieerd in het virtuele Azure-netwerk:
 
-![Subnetten voor azure-netwerken en hun IP-adresbereiken](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
+![Subnetten van het virtuele Azure-netwerk en de IP-adresbereiken](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
 
-We kijken naar een virtueel netwerk met een eerste VM-subnet (hier "standaard" genoemd) en een subnet genaamd "GatewaySubnet".
+We kijken naar een virtueel netwerk met een eerste VM-subnet (hier ' default ' genoemd) en een subnet met de naam ' GatewaySubnet '.
 
-In de twee vorige afbeeldingen omvat de **virtuele netwerkadresruimte** zowel **het subnet-IP-adresbereik van de Azure VM** als dat van de virtuele netwerkgateway.
+In de twee voor gaande afbeeldingen omvatten de **adres ruimte van het virtuele netwerk** het **IP-adres bereik van het subnet van de virtuele Azure-machine** en die van de gateway van een virtueel netwerk.
 
-U de **virtuele netwerkadresruimte** beperken tot de specifieke bereiken die door elk subnet worden gebruikt. U ook de **virtuele netwerkadresruimte** van een virtueel netwerk definiëren als meerdere specifieke bereiken, zoals hier wordt weergegeven:
+U kunt de **adres ruimte van het virtuele netwerk** beperken tot de specifieke bereiken die worden gebruikt door elk subnet. U kunt ook de **adres ruimte van het virtuele netwerk** van een virtueel netwerk definiëren als meerdere specifieke bereiken, zoals hier wordt weer gegeven:
 
-![Azure virtual network address space with two spaces Azure virtual network address space with two spaces Azure virtual network address space with two spaces Azure virtual](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
+![Azure Virtual Network-adres ruimte met twee spaties](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-In dit geval heeft de **virtuele netwerkadresruimte** twee spaties gedefinieerd. Ze zijn hetzelfde als de IP-adresbereiken die zijn gedefinieerd voor het subnet-IP-adresbereik van de Azure VM en de virtuele netwerkgateway. 
+In dit geval heeft de **adres ruimte van het virtuele netwerk** twee spaties gedefinieerd. Ze zijn hetzelfde als de IP-adresbereiken die zijn gedefinieerd voor het IP-adres bereik van het subnet van de Azure-VM en de gateway van het virtuele netwerk. 
 
-U elke naamgevingsstandaard gebruiken die u wilt voor deze tenant-subnetten (VM-subnetten). Er moet echter **altijd één en slechts één gateway-subnet zijn voor elk virtueel netwerk** dat verbinding maakt met het SAP HANA op Azure (Large Instances) ExpressRoute-circuit. **Dit gateway subnet moet "GatewaySubnet" heten** om ervoor te zorgen dat de ExpressRoute gateway correct is geplaatst.
+U kunt elke gewenste naamgevings norm gebruiken voor deze Tenant subnetten (VM-subnetten). **Er moeten echter altijd één, en slechts één, gateway-subnet zijn voor elk virtueel netwerk** dat verbinding maakt met de SAP Hana op Azure (grote instanties) ExpressRoute-circuit. **Dit gateway-subnet moet de naam ' GatewaySubnet ' hebben** om ervoor te zorgen dat de ExpressRoute-gateway op de juiste wijze is geplaatst.
 
 > [!WARNING] 
-> Het is van cruciaal belang dat het gatewaysubnet altijd "GatewaySubnet" wordt genoemd.
+> Het is essentieel dat het gateway-subnet altijd de naam ' GatewaySubnet ' heeft.
 
-U meerdere VM-subnetten en niet-aaneengesloten adresbereiken gebruiken. Deze adresbereiken moeten worden gedekt door de **virtuele netwerkadresruimte** van het virtuele netwerk. Ze kunnen in een geaggregeerde vorm zijn. Ze kunnen ook in een lijst van de exacte bereiken van de VM-subnetten en het gateway-subnet staan.
+U kunt meerdere VM-subnetten en niet-aaneengesloten adresbereiken gebruiken. Deze adresbereiken moeten worden gedekt door de **adres ruimte** van het virtuele netwerk van het virtuele netwerk. Ze kunnen zich in een geaggregeerd formulier bevinden. Ze kunnen zich ook in een lijst met de exacte bereiken van de VM-subnetten en het gateway-subnet bevinden.
 
-Hieronder volgt een overzicht van de belangrijke feiten over een virtueel Azure-netwerk dat verbinding maakt met HANA Large Instances:
+Hieronder volgt een samen vatting van de belang rijke feiten over een virtueel Azure-netwerk dat is verbonden met HANA grote instanties:
 
-- U moet de **ruimte voor virtueel netwerkadres** indienen bij Microsoft wanneer u een eerste implementatie van HANA Large Instances uitvoert. 
-- De **virtuele netwerkadresruimte** kan een groter bereik zijn dat de bereiken dekt voor zowel het subnet-IP-adresbereik van de Azure VM als de virtuele netwerkgateway.
-- U ook meerdere bereiken indienen die betrekking hebben op de verschillende IP-adresbereiken van VM-subnet-IP-adresbereik(s) en het IP-adresbereik van de virtuele netwerkgateway.
-- De gedefinieerde **virtuele netwerkadresruimte** wordt gebruikt voor het uitdragen van BGP-routering.
-- De naam van het gatewaysubnet moet zijn: **"GatewaySubnet"**.
-- De adresruimte wordt gebruikt als filter aan de HANA Large Instance-kant om verkeer naar de HANA Large Instance-eenheden van Azure toe te staan of te weigeren. De BGP-routeringsgegevens van het virtuele Azure-netwerk en de IP-adresbereiken die zijn geconfigureerd voor filtering aan de HANA-kant van grote instanties, moeten overeenkomen. Anders kunnen verbindingsproblemen optreden.
-- Er zijn enkele details over de gateway subnet die later worden besproken, in de sectie **Het aansluiten van een virtueel netwerk met HANA Large Instance ExpressRoute.**
+- U moet de **adres ruimte van het virtuele netwerk** naar micro soft verzenden wanneer u een eerste implementatie van Hana grote instanties uitvoert. 
+- De **adres ruimte van het virtuele netwerk** kan een groter bereik zijn dat de bereiken voor het IP-adres bereik van het subnet van de Azure-VM en de gateway van het virtuele netwerk dekt.
+- U kunt ook meerdere bereiken verzenden die de verschillende IP-adresbereiken van IP-adresbereiken van het VM-subnet en het IP-adres bereik van de virtuele netwerk gateway omvatten.
+- De gedefinieerde **adres ruimte van het virtuele netwerk** wordt gebruikt voor het door geven van BGP-route ring.
+- De naam van het gateway-subnet moet zijn: **"GatewaySubnet"**.
+- De adres ruimte wordt gebruikt als een filter op de HANA grote instantie zijde om verkeer toe te staan of niet toe te staan voor de HANA grote instantie-eenheden van Azure. De BGP-routerings gegevens van het virtuele Azure-netwerk en de IP-adresbereiken die zijn geconfigureerd voor filteren op de HANA grote instantie zijde moeten overeenkomen. Anders kunnen connectiviteits problemen optreden.
+- Er zijn een aantal details over het gateway-subnet dat later wordt beschreven, in de sectie **verbinding maken met een virtueel netwerk met Hana grote instantie ExpressRoute.**
 
 
 
-## <a name="different-ip-address-ranges-to-be-defined"></a>Verschillende te definiëren IP-adresbereiken 
+## <a name="different-ip-address-ranges-to-be-defined"></a>Verschillende IP-adresbereiken die moeten worden gedefinieerd 
 
-Sommige IP-adresbereiken die nodig zijn voor het implementeren van HANA Large Instances, zijn al geïntroduceerd. Maar er zijn meer IP-adres bereiken die ook belangrijk zijn. Niet alle volgende IP-adresbereiken hoeven bij Microsoft te worden ingediend. U moet ze echter wel definiëren voordat u een verzoek voor de eerste implementatie verzendt:
+Sommige IP-adresbereiken die nodig zijn voor de implementatie van HANA grote instanties, worden al geïntroduceerd. Maar er zijn meer IP-adresbereiken die ook belang rijk zijn. Niet alle volgende IP-adresbereiken moeten naar micro soft worden verzonden. U moet deze echter definiëren voordat u een aanvraag voor de eerste implementatie verzendt:
 
-- **Virtuele netwerkadresruimte**: De **virtuele netwerkadresruimte** is de IP-adresbereiken die u toewijst aan de parameter adresruimte in de virtuele Azure-netwerken. Deze netwerken maken verbinding met de SAP HANA Large Instance-omgeving. We raden aan dat deze parameter adresruimte een multiregelwaarde is. Het moet bestaan uit het subnetbereik van de Azure VM en het subnetbereik(en) van de Azure-gateway. Dit subnetbereik werd weergegeven in de vorige afbeeldingen. Het mag NIET overlappen met uw on-premises of server IP-pool of ER-P2P-adresbereiken. Hoe krijg je deze IP-adres bereik (s)? Uw bedrijfsnetwerkteam of serviceprovider moet een of meerdere IP-adresbereik(en) bieden die niet binnen uw netwerk worden gebruikt. Het subnet van uw Azure VM is bijvoorbeeld 10.0.1.0/24 en het subnet van uw Azure-gatewaysubnet is 10.0.2.0/28.  We raden u aan de status van uw Azure-netwerkadres te definiëren als: 10.0.1.0/24 en 10.0.2.0/28. Hoewel de adresruimtewaarden kunnen worden samengevoegd, raden we u aan deze aan te passen aan de subnetbereiken. Op deze manier u per ongeluk voorkomen dat ongebruikte IP-adresbereiken worden hergebruikt binnen grotere adresruimten elders in uw netwerk. **De virtuele netwerkadresruimte is een IP-adresbereik. Het moet worden ingediend bij Microsoft wanneer u vraagt om een eerste implementatie**.
-- **IP-adresbereik azure VM-subnet:** Dit IP-adresbereik is het bereik dat u toewijst aan de subnetparameter Azure virtual network. Deze parameter bevindt zich in uw virtuele Azure-netwerk en maakt verbinding met de SAP HANA Large Instance-omgeving. Dit IP-adresbereik wordt gebruikt om IP-adressen toe te wijzen aan uw Azure VM's. De IP-adressen buiten dit bereik mogen verbinding maken met uw SAP HANA Large Instance server(s). Indien nodig u meerdere Azure VM-subnetten gebruiken. We raden een CIDR-blok van 24 euro aan voor elk Azure VM-subnet. Dit adresbereik moet deel uitmaken van de waarden die worden gebruikt in de azure-ruimte voor virtuele netwerkadres. Hoe krijg je dit IP-adresbereik? Uw bedrijfsnetwerkteam of serviceprovider moet een IP-adresbereik bieden dat niet binnen uw netwerk wordt gebruikt.
-- **IP-adresbereik voor virtuele netwerkgateways:** Afhankelijk van de functies die u van plan bent te gebruiken, is de aanbevolen grootte:
-   - Ultra-performance ExpressRoute gateway: /26 adres blok - vereist voor Type II klasse van SKU's.
-   - Coëxistentie met VPN en ExpressRoute met behulp van een high-performance ExpressRoute virtuele netwerk gateway (of kleiner): / 27 adres blok.
-   - Alle andere situaties: /28 adresblok. Dit adresbereik moet deel uitmaken van de waarden die worden gebruikt in de waarden 'VNet-adresruimte'. Dit adresbereik moet deel uitmaken van de waarden die worden gebruikt in de waarden van de azure-adresruimte voor virtuele netwerken die u bij Microsoft indient. Hoe krijg je dit IP-adresbereik? Uw bedrijfsnetwerkteam of serviceprovider moet een IP-adresbereik bieden dat momenteel niet binnen uw netwerk wordt gebruikt. 
-- **Adresbereik voor ER-P2P-connectiviteit:** Dit bereik is het IP-bereik voor uw SAP HANA Large Instance ExpressRoute (ER) P2P-verbinding. Dit bereik van IP-adressen moet een /29 CIDR IP-adresbereik zijn. Dit bereik mag NIET overlappen met uw on-premises of andere Azure IP-adresbereiken. Dit IP-adresbereik wordt gebruikt om de ER-connectiviteit in te stellen vanaf uw Virtuele ExpressRoute-gateway naar de SAP HANA Large Instance-servers. Hoe krijg je dit IP-adresbereik? Uw bedrijfsnetwerkteam of serviceprovider moet een IP-adresbereik bieden dat momenteel niet binnen uw netwerk wordt gebruikt. **Dit bereik is een IP-adresbereik. Het moet worden ingediend bij Microsoft wanneer u vraagt om een eerste implementatie**.  
-- **Adresbereik van server-IP-groep:** Dit IP-adresbereik wordt gebruikt om het afzonderlijke IP-adres toe te wijzen aan HANA-servers voor grote instanties. De aanbevolen subnetgrootte is een /24 CIDR-blok. Indien nodig kan het kleiner zijn, met slechts 64 IP-adressen. Vanuit dit bereik zijn de eerste 30 IP-adressen gereserveerd voor gebruik door Microsoft. Zorg ervoor dat u rekening houdt met dit feit wanneer u de grootte van het bereik kiest. Dit bereik mag NIET overlappen met uw on-premises of andere Azure IP-adressen. Hoe krijg je dit IP-adresbereik? Uw bedrijfsnetwerkteam of serviceprovider moet een IP-adresbereik bieden dat momenteel niet binnen uw netwerk wordt gebruikt.  **Dit bereik is een IP-adresbereik, dat moet worden ingediend bij Microsoft wanneer u om een eerste implementatie vraagt.**
+- **Adres ruimte van virtueel netwerk**: de **adres ruimte van het virtuele netwerk** is de IP-adresbereiken die u toewijst aan de para meter voor de adres ruimte in de virtuele Azure-netwerken. Deze netwerken maken verbinding met de SAP HANA-omgeving met grote instanties. We raden u aan deze adres ruimte parameter een waarde met meerdere regels te maken. Deze moet bestaan uit het subnetmasker van de Azure-VM en de subnetten van de Azure-gateway. Dit subnet-bereik wordt weer gegeven in de vorige grafische afbeelding. Het mag niet overlappen met uw on-premises of server-IP-adres groep of geen-P2P-adresbereiken. Hoe krijgt u deze IP-adres bereik (en)? Het team van uw bedrijfs netwerk of service provider moet een of meer IP-adres bereik (en) opgeven die niet binnen uw netwerk worden gebruikt. Het subnet van uw Azure-VM is bijvoorbeeld 10.0.1.0/24, en het subnet van het subnet van de Azure-gateway is 10.0.2.0/28.  We raden u aan de adres ruimte van uw virtuele Azure-netwerk te definiëren als: 10.0.1.0/24 en 10.0.2.0/28. Hoewel de adres ruimte waarden kunnen worden geaggregeerd, wordt aangeraden deze te vergelijken met de bereiken in het subnet. Op die manier kunt u ongebruikte IP-adresbereiken in grotere adres ruimten ergens anders in uw netwerk vermijden. **De adres ruimte van het virtuele netwerk is een IP-adres bereik. Het moet worden verzonden naar micro soft wanneer u een eerste implementatie vraagt**.
+- **IP-adres bereik van Azure VM-subnet:** Dit is het IP-adres bereik dat u toewijst aan de para meter van het subnet van het virtuele netwerk van Azure. Deze para meter bevindt zich in uw virtuele Azure-netwerk en maakt verbinding met de SAP HANA-omgeving met grote instanties. Dit IP-adres bereik wordt gebruikt om IP-adressen toe te wijzen aan uw Azure-Vm's. De IP-adressen buiten dit bereik zijn toegestaan om verbinding te maken met uw SAP HANA grote instantie server (s). U kunt, indien nodig, meerdere Azure VM-subnetten gebruiken. We raden een/24 CIDR-blok aan voor elk Azure VM-subnet. Dit adres bereik moet deel uitmaken van de waarden die worden gebruikt in de adres ruimte van het virtuele Azure-netwerk. Hoe krijgt u dit IP-adres bereik? Het team of de service provider van het bedrijfs netwerk moet een IP-adres bereik opgeven dat niet in uw netwerk wordt gebruikt.
+- **IP-adres bereik van het subnet van het virtuele netwerk gateway:** Afhankelijk van de functies die u wilt gebruiken, is de aanbevolen grootte:
+   - Ultra-Performance ExpressRoute-gateway:/26 adres blok--vereist voor de klasse van type II van Sku's.
+   - Samen werking met VPN en ExpressRoute met behulp van een ExpressRoute virtuele netwerk gateway met hoge prestaties (of kleiner):/27-adres blok.
+   - Alle andere situaties:/28-adres blok. Dit adres bereik moet deel uitmaken van de waarden die worden gebruikt in de waarden voor de VNet-adres ruimte. Dit adres bereik moet deel uitmaken van de waarden die worden gebruikt in de adres ruimte waarden van het virtuele Azure-netwerk die u naar micro soft verzendt. Hoe krijgt u dit IP-adres bereik? Het team of de service provider van het bedrijfs netwerk moet een IP-adres bereik opgeven dat momenteel niet in uw netwerk wordt gebruikt. 
+- **Adres bereik voor er-P2P-connectiviteit:** Dit bereik is het IP-bereik voor uw SAP HANA grote instance ExpressRoute (er) P2P-verbinding. Dit bereik van IP-adressen moet een/29 CIDR IP-adres bereik zijn. Dit bereik mag niet overlappen met uw on-premises of andere IP-adresbereiken voor Azure. Dit IP-adres bereik wordt gebruikt voor het instellen van de verbindings connectiviteit van uw virtuele ExpressRoute-gateway naar de SAP HANA grote instantie servers. Hoe krijgt u dit IP-adres bereik? Het team of de service provider van het bedrijfs netwerk moet een IP-adres bereik opgeven dat momenteel niet in uw netwerk wordt gebruikt. **Dit bereik is een IP-adres bereik. Het moet worden verzonden naar micro soft wanneer u een eerste implementatie vraagt**.  
+- **Adres bereik van de server-IP-groep:** Dit IP-adres bereik wordt gebruikt om het afzonderlijke IP-adres toe te wijzen aan HANA-servers voor grote instanties. De aanbevolen subnet grootte is een/24 CIDR-blok. Als dat nodig is, kan het kleiner zijn, met slechts 64 IP-adressen. Vanuit dit bereik zijn de eerste 30 IP-adressen gereserveerd voor gebruik door micro soft. Zorg ervoor dat u het account voor dit feit hebt wanneer u de grootte van het bereik kiest. Dit bereik mag niet overlappen met uw on-premises of andere Azure IP-adressen. Hoe krijgt u dit IP-adres bereik? Het team of de service provider van het bedrijfs netwerk moet een IP-adres bereik opgeven dat momenteel niet in uw netwerk wordt gebruikt.  **Dit bereik is een IP-adres bereik dat naar micro soft moet worden verzonden wanneer u wordt gevraagd een eerste implementatie te installeren**.
 
-Optionele IP-adresbereiken die uiteindelijk aan Microsoft moeten worden ingediend:
+Optionele IP-adresbereiken die uiteindelijk moeten worden verzonden naar micro soft:
 
-- Als u ervoor kiest [expressroute global reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om directe routering van on-premises naar HANA Large Instance-eenheden in te schakelen, moet u een ander IP-adresbereik van 29 reserveren. Dit bereik overlapt mogelijk niet met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
-- Als u ervoor kiest [expressroute global reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om directe routering van een HANA Large Instance-tenant in een Azure-regio naar een andere HANA Large Instance-tenant in een andere Azure-regio in te schakelen, moet u een ander IP-adresbereik van 29 reserveren. Dit bereik overlapt mogelijk niet met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
+- Als u ervoor kiest om [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om directe route ring van on-premises naar Hana grote instantie-eenheden in te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
+- Als u ervoor kiest om [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om direct routeren vanuit een Hana grote instantie-Tenant in een Azure-regio naar een andere Hana grote instantie-Tenant in een andere Azure-regio te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
 
-Voor meer informatie over ExpressRoute Global Reach en het gebruik rond HANA grote exemplaren, raadpleegt u de documenten:
+Voor meer informatie over Global Reach ExpressRoute en gebruik rond HANA grote instanties controleert u de documenten:
 
-- [SAP HANA (Large Instances) netwerkarchitectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Een virtueel netwerk verbinden met grote exemplaren van HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [Netwerk architectuur van SAP HANA (grote exemplaren)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
+- [Een virtueel netwerk verbinden met HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
  
-U moet de IP-adresbereiken definiëren en plannen die eerder zijn beschreven. U hoeft ze echter niet allemaal naar Microsoft te verzenden. De IP-adresbereiken die u aan Microsoft moet noemen, zijn:
+U moet de IP-adresbereiken definiëren en plannen die eerder zijn beschreven. U hoeft deze echter niet allemaal naar micro soft te verzenden. De IP-adresbereiken die u nodig hebt voor de naam van micro soft zijn:
 
-- Azure virtual network address space(s)
-- Adresbereik voor ER-P2P-connectiviteit
-- Adresbereik van server-IP-groep
+- Azure Virtual Network-adres ruimte (n)
+- Adres bereik voor er-P2P-connectiviteit
+- Adres bereik van de server-IP-groep
 
-Als u extra virtuele netwerken toevoegt die verbinding moeten maken met HANA Large Instances, moet u de nieuwe Azure-adresruimte voor virtuele netwerken indienen die u aan Microsoft toevoegt. 
+Als u extra virtuele netwerken toevoegt die verbinding moeten maken met HANA grote instanties, moet u de nieuwe Azure Virtual Network-adres ruimte die u aan micro soft toevoegt, indienen. 
 
-Hieronder volgt een voorbeeld van de verschillende bereiken en enkele voorbeeldbereiken die u moet configureren en uiteindelijk aan Microsoft moet verstrekken. De waarde voor de azure-adresruimte voor virtuele netwerken wordt in het eerste voorbeeld niet samengevoegd. Het is echter gedefinieerd uit de bereiken van het eerste Azure VM-subnet-IP-adresbereik en het subnet-IP-adresbereik voor virtuele netwerkgateways. 
+Hieronder volgt een voor beeld van de verschillende bereiken en enkele voor beelden van de bereiken die u nodig hebt om micro soft te configureren en uiteindelijk aan te bieden. De waarde voor de adres ruimte van het virtuele Azure-netwerk wordt niet geaggregeerd in het eerste voor beeld. Het is echter gedefinieerd vanuit de bereiken van het eerste IP-adres bereik van een Azure-VM-subnet en het IP-adres bereik van het subnet van de virtuele netwerk gateway. 
 
-U meerdere VM-subnetten binnen het virtuele Azure-netwerk gebruiken wanneer u de extra IP-adresbereiken van de extra VM-subnet(s) configureert en verzendt als onderdeel van de azure-virtuele netwerkadresruimte.
+U kunt meerdere VM-subnetten in het virtuele Azure-netwerk gebruiken wanneer u de extra IP-adresbereiken van de extra VM-subnetten als onderdeel van de adres ruimte van het virtuele Azure-netwerk hebt geconfigureerd en verzonden.
 
-![Minimale implementatie van IP-adresbereiken vereist in SAP HANA op Azure (Large Instances)](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
+![IP-adresbereiken vereist in SAP HANA op Azure (grote exemplaren) minimale implementatie](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
 
-De afbeelding toont niet het extra IP-adresbereik(en) dat nodig is voor het optionele gebruik van ExpressRoute Global Reach.
+De afbeelding bevat niet de extra IP-adres bereik (en) die zijn vereist voor het optionele gebruik van ExpressRoute Global Reach.
 
-U ook de gegevens die u bij Microsoft indient, samenvoegen. In dat geval bevat de adresruimte van het virtuele Azure-netwerk slechts één ruimte. Met behulp van het IP-adres varieert van het eerdere voorbeeld, de geaggregeerde virtuele netwerk adresruimte kan eruit zien als de volgende afbeelding:
+U kunt ook de gegevens die u naar micro soft verzendt, samen voegen. In dat geval bevat de adres ruimte van het virtuele netwerk van Azure slechts één spatie. Als u de IP-adresbereiken uit het vorige voor beeld gebruikt, kan de geaggregeerde adres ruimte van het virtuele netwerk eruitzien als de volgende afbeelding:
 
-![Tweede mogelijkheid van IP-adresbereiken vereist in SAP HANA op Azure (Large Instances) minimale implementatie](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
+![Tweede mogelijkheid van IP-adresbereiken vereist in SAP HANA op Azure (grote exemplaren) minimale implementatie](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-In het voorbeeld hebben we in plaats van twee kleinere bereiken die de adresruimte van het virtuele Azure-netwerk hebben gedefinieerd, één groter bereik dat 4096 IP-adressen omvat. Zo'n grote definitie van de adresruimte laat een aantal vrij grote reeksen ongebruikt. Aangezien de waarde(en) van de virtuele netwerkadresruimte wordt gebruikt voor het uitdragen van BGP-route, kan het gebruik van de ongebruikte bereiken on-premises of elders in uw netwerk leidend probleem veroorzaken. De afbeelding toont niet het extra IP-adresbereik(en) dat nodig is voor het optionele gebruik van ExpressRoute Global Reach.
+In het voor beeld, in plaats van twee kleinere bereiken die de adres ruimte van het virtuele Azure-netwerk hebben gedefinieerd, hebben we een groter bereik dat 4096 IP-adressen dekt. Een dergelijke grote definitie van de adres ruimte laat enkele niet-gebruikte grote bereiken ongebruikt. Omdat de waarde (n) van de virtuele netwerk ruimte wordt gebruikt voor het door sturen van BGP-routes, kan het gebruik van de niet-gebruikte bereiken on-premises of ergens anders in uw netwerk routerings problemen veroorzaken. De afbeelding bevat niet de extra IP-adres bereik (en) die zijn vereist voor het optionele gebruik van ExpressRoute Global Reach.
 
-We raden u aan de adresruimte goed af te stemmen op de werkelijke subnetadresruimte die u gebruikt. Indien nodig, zonder downtime op het virtuele netwerk, u later altijd nieuwe adresruimtewaarden toevoegen.
+We raden u aan de adres ruimte nauw keurig te laten afstemmen op de daad werkelijke adres ruimte van het subnet die u gebruikt. Indien nodig kunt u later altijd nieuwe adres ruimte waarden toevoegen zonder uitval tijd op het virtuele netwerk.
  
 > [!IMPORTANT] 
-> Elk IP-adresbereik in ER-P2P, de IP-groep van de server en de azure-virtuele netwerkadresruimte mogen **NIET** overlappen met elkaar of met een ander bereik dat in uw netwerk wordt gebruikt. Elk moet discreet zijn. Zoals de twee vorige graphics laten zien, kunnen ze ook niet een subnet van een ander bereik. Als er overlappingen zijn tussen bereiken, maakt het virtuele Azure-netwerk mogelijk geen verbinding met het ExpressRoute-circuit.
+> Elk IP-adres bereik in er-P2P, de server-IP-adres groep en de virtuele Azure-netwerk ruimte mogen **niet** overlappen met elkaar of met een ander bereik dat in uw netwerk wordt gebruikt. Elk moet afzonderlijk zijn. Als de twee vorige afbeeldingen worden weer gegeven, kunnen ze ook geen subnet van een ander bereik zijn. Als overlap pingen tussen bereiken optreden, kan het virtuele netwerk van Azure mogelijk geen verbinding maken met het ExpressRoute-circuit.
 
-## <a name="next-steps-after-address-ranges-have-been-defined"></a>Volgende stappen nadat adresbereiken zijn gedefinieerd
-Nadat de IP-adresbereiken zijn gedefinieerd, moeten de volgende dingen gebeuren:
+## <a name="next-steps-after-address-ranges-have-been-defined"></a>Volgende stappen na het bereiken van adresbereiken zijn gedefinieerd
+Nadat de IP-adresbereiken zijn gedefinieerd, moet u het volgende doen:
 
-1. Verzend de IP-adresbereiken voor de azure-locatie adresruimte voor virtuele netwerken, de ER-P2P-connectiviteit en het IP-pooladresbereik van de server, samen met andere gegevens die aan het begin van het document zijn vermeld. Op dit punt u ook beginnen met het maken van het virtuele netwerk en de VM-subnetten. 
-2. Er wordt een ExpressRoute-circuit gemaakt door Microsoft tussen uw Azure-abonnement en de HANA Large Instance-stempel.
-3. Er wordt een tenantnetwerk gemaakt op de stempel Voor grote instanties van Microsoft.
-4. Microsoft configureert netwerken in de SAP HANA op Azure (Large Instances) infrastructuur om IP-adressen te accepteren van uw Azure virtuele netwerkadresruimte die communiceert met HANA Large Instances.
-5. Afhankelijk van de specifieke SAP HANA op Azure (Large Instances) SKU die u hebt gekocht, wijst Microsoft een rekeneenheid toe in een tenantnetwerk. Het wijst ook en monteert opslag, en installeert het besturingssysteem (SUSE of Red Hat Linux). IP-adressen voor deze eenheden worden uit het IP-pooladresbereik van de server gehaald dat u bij Microsoft hebt ingediend.
+1. Verzend de IP-adresbereiken voor de adres ruimte van het virtuele netwerk van Azure, het adres bereik voor de verbinding en de IP-groep van de server, samen met andere gegevens die aan het begin van het document staan vermeld. Op dit moment kunt u ook beginnen met het maken van het virtuele netwerk en de VM-subnetten. 
+2. Er wordt een ExpressRoute-circuit gemaakt door micro soft tussen uw Azure-abonnement en de HANA grote instantie stempel.
+3. Er wordt een Tenant netwerk gemaakt op basis van de stempel van het grote exemplaar van micro soft.
+4. Micro soft configureert netwerken in de infra structuur van het SAP HANA op Azure (grote instanties) om IP-adressen te accepteren van de adres ruimte van uw virtuele Azure-netwerk die met HANA grote instanties communiceert.
+5. Afhankelijk van de specifieke SAP HANA op Azure (grote instanties) SKU die u hebt gekocht, wijst micro soft een reken eenheid toe aan een Tenant netwerk. Ook wordt opslag toegewezen en gekoppeld en wordt het besturings systeem (SUSE of Red Hat Linux) geïnstalleerd. IP-adressen voor deze eenheden worden opgehaald uit het bereik van de IP-adres groep van de server die u hebt verzonden naar micro soft.
 
-Aan het einde van het implementatieproces levert Microsoft de volgende gegevens aan u:
-- Informatie die nodig is om uw virtuele Azure-netwerk(en) te verbinden met het ExpressRoute-circuit dat virtuele Azure-netwerken verbindt met HANA Large Instances:
-     - Autorisatiesleutel(en)
+Aan het einde van het implementatie proces levert micro soft de volgende gegevens aan u:
+- Informatie die nodig is om uw Azure Virtual Network (s) te verbinden met het ExpressRoute-circuit dat virtuele Azure-netwerken verbindt met HANA grote instanties:
+     - Autorisatie sleutel (s)
      - ExpressRoute PeerID
-- Gegevens voor toegang tot HANA Large Instances nadat u het ExpressRoute-circuit en het virtuele Azure-netwerk hebt ingesteld.
+- Gegevens voor toegang tot HANA grote instanties nadat u het ExpressRoute-circuit en het virtuele netwerk van Azure hebt ingesteld.
 
-U ook de volgorde van het verbinden van HANA Large Instances vinden in de installatie van [SAP HANA op Azure (Large Instances).](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/) Veel van de volgende stappen worden weergegeven in een voorbeeldimplementatie in dat document. 
+U kunt ook de volg orde van het verbinden van HANA grote instanties in het document vinden [SAP Hana op Azure (grote exemplaren) Setup](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Veel van de volgende stappen worden weer gegeven in een voorbeeld implementatie in dat document. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg [het verbinden van een virtueel netwerk met HANA Large Instance ExpressRoute.](hana-connect-vnet-express-route.md)
+- Raadpleeg [verbinding maken met een virtueel netwerk met Hana grote instantie ExpressRoute](hana-connect-vnet-express-route.md).

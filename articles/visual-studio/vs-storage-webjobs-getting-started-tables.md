@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure-opslag met Visual Studio (WebJob-projecten)
-description: Azure Table-opslag gebruiken in een Azure WebJobs-project in Visual Studio nadat u verbinding hebt gemaakt met een opslagaccount met visuele studio-verbonden services
+title: Aan de slag met Azure Storage met Visual Studio (webtaaks van projecten)
+description: Aan de slag met Azure Table Storage in een Azure WebJobs-project in Visual Studio nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74707605"
 ---
-# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Aan de slag met Azure Storage (Azure WebJob-projecten)
+# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Aan de slag met Azure Storage (projecten van Azure webtaaks)
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit artikel worden C#-codevoorbeelden weergegeven die laten zien hoe u de Azure WebJobs SDK-versie 1.x gebruiken met de Azure-tabelopslagservice. De codevoorbeelden maken gebruik van de [WebJobs SDK-versie](https://github.com/Azure/azure-webjobs-sdk/wiki) 1.x.
+In dit artikel vindt u voor beelden van C#-code die laten zien hoe u de Azure WebJobs SDK versie 1. x kunt gebruiken met de Azure Table Storage-service. De code voorbeelden gebruiken de [Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) versie 1. x.
 
-Met de Azure Table-opslagservice u grote hoeveelheden gestructureerde gegevens opslaan. De service is een NoSQL-gegevensarchief dat geverifieerde oproepen van binnen en buiten de Azure-cloud accepteert. Azure-tabellen zijn ideaal voor het opslaan van gestructureerde, niet-relationele gegevens.  Zie [Aan de slag met Azure Table-opslag met .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) voor meer informatie.
+Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde gegevens opslaan. De service is een NoSQL-gegevens opslag die geverifieerde aanroepen binnen en buiten de Azure-Cloud accepteert. Azure-tabellen zijn ideaal voor het opslaan van gestructureerde, niet-relationele gegevens.  Zie [aan de slag met Azure Table Storage met .net](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) voor meer informatie.
 
-In sommige codefragmenten wordt het kenmerk **Tabel** weergegeven dat wordt gebruikt in functies die handmatig worden aangeroepen, dat wil zeggen niet met een van de triggerkenmerken.
+Sommige code fragmenten bevatten het **tabel** kenmerk dat wordt gebruikt in functies die hand matig worden aangeroepen, dat wil zeggen, niet door een van de trigger kenmerken te gebruiken.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entiteiten toevoegen aan een tabel
 
-Als u entiteiten aan een tabel wilt toevoegen, gebruikt u het kenmerk **Tabel** met een **ICollector\<T->** of **IAsyncCollector\<T->** parameter waarin **T** het schema opgeeft van de entiteiten die u wilt toevoegen. De kenmerkconstructor neemt een tekenreeksparameter die de naam van de tabel opgeeft.
+Als u entiteiten wilt toevoegen aan een tabel, gebruikt u het kenmerk **Table** met een **ICollector\<t>** of **IAsyncCollector\<t>** para meter waarbij **T** het schema aangeeft van de entiteiten die u wilt toevoegen. De kenmerk-constructor heeft een teken reeks parameter waarmee de naam van de tabel wordt opgegeven.
 
-In het volgende codevoorbeeld worden **person-entiteiten** toegevoegd aan een tabel met de naam *Ingress*.
+In het volgende code voorbeeld **worden entiteits entiteiten toegevoegd aan een** tabel met *de naam*inkomend verkeer.
 
 ```csharp
 [NoAutomaticTrigger]
@@ -54,7 +54,7 @@ public static void IngressDemo(
 }
 ```
 
-Meestal is het type dat u met **ICollector** gebruikt afkomstig van **TableEntity** of implementeert **ITableEntity,** maar dat hoeft niet. Een van de volgende **klassen Persoon** werken met de code die wordt weergegeven in de voorgaande **Methode Ingress.**
+Normaal gesp roken wordt het type dat u gebruikt met **ICollector** afgeleid van **TableEntity** of **ITableEntity**geïmplementeerd, maar dit is niet nodig. Een van de volgende **persoons** klassen werkt met de code die wordt weer gegeven in de voor gaande **ingangs** methode.
 
 ```csharp
 public class Person : TableEntity
@@ -70,27 +70,27 @@ public class Person
 }
 ```
 
-Als u rechtstreeks met de Azure-opslag-API wilt werken, u een **parameter CloudStorageAccount** toevoegen aan de methodehandtekening.
+Als u rechtstreeks met de Azure Storage API wilt werken, kunt u een **Cloud Storage account** -para meter toevoegen aan de methode handtekening.
 
 ## <a name="real-time-monitoring"></a>Realtimecontrole
 
-Omdat gegevensinvallende functies vaak grote hoeveelheden gegevens verwerken, biedt het WebJobs SDK-dashboard realtime bewakingsgegevens. In de sectie **Aanroeplogboek** ziet u of de functie nog steeds wordt uitgevoerd.
+Omdat de functies voor het inkomen van gegevens vaak grote hoeveel heden gegevens verwerken, biedt het SDK-dash board van webjobs real-time bewakings gegevens. De sectie **aanroep logboek** geeft aan of de functie nog wordt uitgevoerd.
 
-![Ingress, functie running](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
+![De functie ingangs functies wordt uitgevoerd](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-Op de pagina **Aanroepdetails** wordt de voortgang van de functie (aantal geschreven entiteiten) gerapporteerd terwijl deze wordt uitgevoerd en u deze kunnen afbreken.
+Op de pagina **aanroep Details** wordt de voortgang van de functie gerapporteerd (het aantal entiteiten dat is geschreven) terwijl deze wordt uitgevoerd en krijgt u de mogelijkheid om deze af te breken.
 
-![Ingress, functie running](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
+![De functie ingangs functies wordt uitgevoerd](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-Wanneer de functie is voltooid, wordt op de pagina **Aanroepdetails** het aantal rijen gerapporteerd dat is geschreven.
+Wanneer de functie is voltooid, wordt in de pagina **aanroep Details** het aantal geschreven rijen gerapporteerd.
 
-![Ingress functie voltooid](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
+![De functie ingress is voltooid](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Meerdere entiteiten uit een tabel lezen
 
-Als u een tabel wilt lezen, gebruikt u het kenmerk **Tabel** met een **\<IQueryable T-parameter>** waarbij type **T** afkomstig is van **TableEntity** of **ITableEntity**implementeert.
+Als u een tabel wilt lezen, gebruikt u het kenmerk **Table** met een **IQueryable\<T>** -para meter waarbij type **T** is afgeleid van **TableEntity** of **ITableEntity**implementeert.
 
-In het volgende codevoorbeeld worden alle rijen uit de tabel Binnenlaten gelezen en **logboeken:**
+In het volgende code voorbeeld worden alle rijen uit de **ingangs** tabel gelezen en geregistreerd:
 
 ```csharp
 public static void ReadTable(
@@ -106,11 +106,11 @@ public static void ReadTable(
 }
 ```
 
-### <a name="how-to-read-a-single-entity-from-a-table"></a>Een enkele entiteit uit een tabel lezen
+### <a name="how-to-read-a-single-entity-from-a-table"></a>Een afzonderlijke entiteit uit een tabel lezen
 
-Er is **Table** een tabelkenmerkconstructor met twee extra parameters waarmee u de partitiesleutel en de rijsleutel opgeven wanneer u wilt binden aan één tabelentiteit.
+Er is een **Table** -kenmerk constructie met twee extra para meters waarmee u de partitie sleutel en de rij-sleutel kunt opgeven wanneer u wilt binden aan een enkele tabel entiteit.
 
-In het volgende codevoorbeeld wordt een tabelrij voor een **entiteit persoon** gelezen op basis van partitiesleutel- en rijsleutelwaarden die in een wachtrijbericht zijn ontvangen:
+In het volgende code voorbeeld wordt een tabelrij gelezen voor een **persoons** entiteit op basis van de waarden van de partitie sleutel en de rijwaarden die zijn ontvangen in een wachtrij bericht:
 
 ```csharp
 public static void ReadTableEntity(
@@ -131,13 +131,13 @@ public static void ReadTableEntity(
 }
 ```
 
-De klasse **Persoon** in dit voorbeeld hoeft **ITableEntity**niet te implementeren .
+De **persoons** klasse in dit voor beeld hoeft geen **ITableEntity**te implementeren.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>De .NET Storage API direct gebruiken om met een tabel te werken
+## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>De .NET Storage-API rechtstreeks gebruiken om te werken met een tabel
 
-U het kenmerk **Tabel** ook gebruiken met een **CloudTable-object** voor meer flexibiliteit bij het werken met een tabel.
+U kunt ook het kenmerk **Table** gebruiken met een **CloudTable** -object voor meer flexibiliteit bij het werken met een tabel.
 
-In het volgende codevoorbeeld wordt een **CloudTable-object** gebruikt om één entiteit toe te voegen aan de *insin-tabel.*
+In het volgende code voorbeeld wordt een **CloudTable** -object gebruikt om één entiteit toe te voegen aan de *ingangs* tabel.
 
 ```csharp
 public static void UseStorageAPI(
@@ -155,12 +155,12 @@ public static void UseStorageAPI(
 }
 ```
 
-Zie Aan de [slag met Azure Table-opslag met .NET](../storage/storage-dotnet-how-to-use-tables.md)voor meer informatie over het gebruik van het **cloudtable-object.**
+Zie [aan de slag met Azure Table Storage met .net](../storage/storage-dotnet-how-to-use-tables.md)voor meer informatie over het gebruik van het **CloudTable** -object.
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Gerelateerde onderwerpen die in de wachtrijen worden behandeld how-to-artikel
+## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Verwante onderwerpen die worden behandeld in het artikel wacht rijen
 
-Zie [Aan de slag met Azure Queue-opslag en Visual Studio connected services (WebJob Projects)](../storage/vs-storage-webjobs-getting-started-queues.md)voor informatie over het verwerken van tabelverwerking die wordt geactiveerd door een wachtrijbericht of voor WebJobs SDK-scenario's die niet specifiek zijn voor tabelverwerking.
+Zie aan de slag [met Azure Queue Storage en Visual Studio Connected Services (project taak)](../storage/vs-storage-webjobs-getting-started-queues.md)voor meer informatie over het verwerken van tabel verwerking die wordt geactiveerd door een wachtrij bericht of voor WEBjobs SDK-scenario's die niet specifiek zijn voor tabel verwerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel worden codevoorbeelden weergegeven waarin wordt uitgelegd hoe u veelvoorkomende scenario's voor het werken met Azure-tabellen verwerken. Zie [Azure WebJobs-documentatiebronnen](https://go.microsoft.com/fwlink/?linkid=390226)voor meer informatie over het gebruik van Azure WebJobs en de WebJobs SDK.
+In dit artikel vindt u code voorbeelden die laten zien hoe u veelvoorkomende scenario's kunt afhandelen voor het werken met Azure-tabellen. Zie [Azure WebJobs documentation resources](https://go.microsoft.com/fwlink/?linkid=390226)(Engelstalig) voor meer informatie over het gebruik van Azure WebJobs en de webjobs SDK.

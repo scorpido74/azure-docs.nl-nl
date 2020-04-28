@@ -1,5 +1,5 @@
 ---
-title: SaaS-apps configureren voor B2B-samenwerking - Azure AD
+title: SaaS-apps voor B2B-samen werking configureren-Azure AD
 description: Code- en PowerShell-voorbeelden voor Azure Active Directory B2B-samenwerking
 services: active-directory
 ms.service: active-directory
@@ -13,97 +13,97 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272953"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-toepassingen configureren voor B2B-samenwerking
 
-Azure Active Directory (Azure AD) B2B-samenwerking werkt met de meeste apps die zijn geïntegreerd met Azure AD. In deze sectie doorlopen we instructies voor het configureren van een aantal populaire SaaS-apps voor gebruik met Azure AD B2B.
+Azure Active Directory (Azure AD) B2B-samen werking werkt met de meeste apps die zijn geïntegreerd met Azure AD. In deze sectie wordt uitgelegd hoe u enkele populaire SaaS-apps kunt configureren voor gebruik met Azure AD B2B.
 
-Voordat u naar app-specifieke instructies kijkt, volgen enkele vuistregels:
+Voordat u de app-specifieke instructies bekijkt, zijn hier enkele vuist regels:
 
-* Voor de meeste apps moet de installatie van de gebruiker handmatig gebeuren. Dat wil zeggen, gebruikers moeten handmatig worden gemaakt in de app ook.
+* Voor de meeste apps moet gebruikers installatie hand matig plaatsvinden. Dat wil zeggen dat gebruikers ook hand matig in de app moeten worden gemaakt.
 
-* Voor apps die automatische instellingen ondersteunen, zoals Dropbox, worden afzonderlijke uitnodigingen gemaakt van de apps. Gebruikers moeten er zeker van zijn dat ze elke uitnodiging accepteren.
+* Voor apps die ondersteuning bieden voor automatische installatie, zoals Dropbox, worden afzonderlijke uitnodigingen gemaakt op basis van de apps. Gebruikers moeten elke uitnodiging accepteren.
 
-* Stel in de gebruikerskenmerken altijd **gebruikers-id** in om eventuele problemen met verminkte gebruikersprofielschijf (UPD) bij gastgebruikers **te**beperken.
+* Stel in de gebruikers kenmerken de **gebruikers-id** altijd in op **gebruiker. mail**om problemen met een vervormde gebruikers profiel schijf (UPD) te beperken in gast gebruikers.
 
 
-## <a name="dropbox-business"></a>Dropbox Business
+## <a name="dropbox-business"></a>Dropbox-bedrijven
 
-Als u gebruikers in staat wilt stellen zich aan te melden met hun organisatieaccount, moet u Dropbox Business handmatig configureren om Azure AD te gebruiken als saml-identiteitsprovider (Security Assertion Markup Language). Als Dropbox Business hiervoor niet is geconfigureerd, kunnen gebruikers zich niet op de hoogte stellen van of anderszins toestaan dat ze zich aanmelden met Azure AD.
+Als u gebruikers in staat wilt stellen om zich aan te melden met hun organisatie account, moet u de Dropbox-onderneming hand matig configureren voor gebruik van Azure AD als Security Assertion Markup Language (SAML)-ID-provider. Als Dropbox Business niet is geconfigureerd om dit te doen, kan de gebruiker zich niet vragen of op een andere manier toestaan zich aan te melden met Azure AD.
 
-1. Als u de Dropbox Business-app wilt toevoegen aan Azure AD, selecteert u **Enterprise-toepassingen** in het linkerdeelvenster en klikt u op **Toevoegen**.
+1. Als u de BDC Business-app wilt toevoegen aan Azure AD, selecteert u **bedrijfs toepassingen** in het linkerdeel venster en klikt u vervolgens op **toevoegen**.
 
-   ![De knop 'Toevoegen' op de pagina Enterprise-toepassingen](media/configure-saas-apps/add-dropbox.png)
+   ![De knop toevoegen op de pagina bedrijfs toepassingen](media/configure-saas-apps/add-dropbox.png)
 
-2. Typ **dropbox** in het zoekvak en selecteer Dropbox **voor Bedrijven** in het venster Met een **aanvraag** toevoegen in de lijst met resultaten.
+2. In het venster **een toepassing toevoegen** voert u **Dropbox** in het zoekvak in en selecteert u **Dropbox voor bedrijven** in de lijst met resultaten.
 
-   ![Zoeken naar 'dropbox' op de pagina Een toepassingspagina toevoegen](media/configure-saas-apps/add-app-dialog.png)
+   ![Zoeken naar Dropbox op de pagina een toepassing toevoegen](media/configure-saas-apps/add-app-dialog.png)
 
-3. Selecteer op de pagina **Eén aanmelding** **in** het linkerdeelvenster en voer **vervolgens user.mail** in het vak **Gebruikers-id** in. (Het is standaard ingesteld als UPN.)
+3. Selecteer op de pagina **eenmalige aanmelding** de optie **eenmalige aanmelding** in het linkerdeel venster en voer vervolgens **gebruiker. mail** in het vak **gebruikers-id** in. (Deze is standaard ingesteld als UPN.)
 
    ![Eenmalige aanmelding voor de app configureren](media/configure-saas-apps/configure-app-sso.png)
 
-4. Als u het certificaat wilt downloaden dat u wilt gebruiken voor Dropbox-configuratie, selecteert u **DropBox configureren**en selecteert u **vervolgens DE URL van SAML-geadresseerde aan-papier** service in de lijst.
+4. Als u het certificaat wilt downloaden om te gebruiken voor de Dropbox-configuratie, selecteert u **Dropbox configureren**en selecteert u **URL voor eenmalige aanmelding voor SAML** in de lijst.
 
-   ![Het certificaat voor Dropbox-configuratie downloaden](media/configure-saas-apps/download-certificate.png)
+   ![Het certificaat voor de Dropbox-configuratie downloaden](media/configure-saas-apps/download-certificate.png)
 
-5. Meld u aan bij Dropbox met de aanmeldings-URL van de pagina **Eén aanmelding.**
+5. Meld u aan bij Dropbox met de aanmeldings-URL op de pagina voor **eenmalige aanmelding** .
 
-   ![Schermafbeelding van de aanmeldingspagina van Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Scherm afbeelding van de aanmeldings pagina voor Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
 
-6. Selecteer in het menu de optie **Beheerconsole**.
+6. Selecteer in het menu de optie **beheer console**.
 
-   ![De link 'Beheerconsole' in het Dropbox-menu](media/configure-saas-apps/dropbox-menu.png)
+   ![De koppeling ' beheer console ' in het menu Dropbox](media/configure-saas-apps/dropbox-menu.png)
 
-7. Selecteer **in** het dialoogvenster Verificatie de optie **Meer,** upload het certificaat en voer vervolgens in het vak **AanmeldingsURL** de URL voor eenmalig aanmelden in.
+7. In het dialoog venster **verificatie** selecteert u **meer**, uploadt u het certificaat en voert u in het vak **aanmeldings-URL** de URL voor eenmalige SAML-aanmelding in.
 
-   ![De koppeling 'Meer' in het dialoogvenster Samengevouwen verificatie](media/configure-saas-apps/dropbox-auth-01.png)
+   ![De koppeling ' meer ' in het dialoog venster samengevouwen verificatie](media/configure-saas-apps/dropbox-auth-01.png)
 
-   ![De URL 'Aanmelden' in het dialoogvenster Uitgebreide verificatie](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![De aanmeldings-URL in het dialoog venster uitgebreide verificatie](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
-8. Als u de automatische gebruikersinstelling in de Azure-portal wilt configureren, selecteert u **Voorziening** in het linkerdeelvenster, selecteert u **Automatisch** in het vak **Inrichtingsmodus** en selecteert u **Vervolgens Toestaan**.
+8. Als u automatische gebruikers instellingen wilt configureren in de Azure Portal, selecteert u **inrichting** in het linkerdeel venster, selecteert u **automatisch** in het vak **inrichtings modus** en selecteert u vervolgens **autoriseren**.
 
-   ![Automatische gebruikersvoorziening configureren in de Azure-portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Automatische gebruikers inrichting configureren in de Azure Portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
-Nadat gast- of ledengebruikers zijn ingesteld in de Dropbox-app, ontvangen ze een aparte uitnodiging van Dropbox. Als u Dropbox-enkele aanmelding wilt gebruiken, moeten genodigden de uitnodiging accepteren door op een koppeling in de uitnodiging te klikken.
+Nadat gasten of gebruikers in de Dropbox-app zijn ingesteld, ontvangen ze een afzonderlijke uitnodiging van Dropbox. Als u eenmalige aanmelding met Dropbox wilt gebruiken, moeten genodigden de uitnodiging accepteren door te klikken op een koppeling hierin.
 
 ## <a name="box"></a>Box
-U gebruikers in staat stellen gastgebruikers van Box te verifiëren met hun Azure AD-account met behulp van federatie die is gebaseerd op het SAML-protocol. In deze procedure upload je metadata naar Box.com.
+U kunt gebruikers in staat stellen gast gebruikers te verifiëren met hun Azure AD-account door Federatie te gebruiken dat is gebaseerd op het SAML-protocol. In deze procedure uploadt u meta gegevens naar Box.com.
 
-1. Voeg de Box-app toe vanuit de bedrijfsapps.
+1. Voeg de box-app toe vanuit de Enter prise-apps.
 
-2. Eenmalige aanmelding configureren in de volgende volgorde:
+2. Eenmalige aanmelding configureren in de volgende volg orde:
 
-   ![Schermafbeelding van de configuratie-instellingen voor één aanmelding](media/configure-saas-apps/configure-box-sso.png)
+   ![Scherm opname met de configuratie-instellingen voor eenmalige aanmelding](media/configure-saas-apps/configure-box-sso.png)
 
-   a. Controleer **in** het vak Aanmelden op URL of de aanmeldings-URL op de juiste manier is ingesteld voor Box in de Azure-portal. Deze URL is de URL van uw Box.com tenant. Het moet de *https://.box.com*naamgevingsconventie volgen.  
-   De **id** is niet van toepassing op deze app, maar wordt nog steeds weergegeven als een verplicht veld.
+   a. Controleer in het vak **Sign on URL** of de AANMELDINGS-URL juist is ingesteld voor box in het Azure Portal. Deze URL is de URL van uw Box.com-Tenant. Deze moet de naamgevings Conventie *https://.box.com*volgen.  
+   De **id** is niet van toepassing op deze app, maar wordt nog steeds weer gegeven als een verplicht veld.
 
-   b. Voer in het vak **Gebruikers-id** **user.mail** (voor SSO voor gastaccounts) in.
+   b. Voer in het vak **gebruikers** -id **gebruiker. mail** in (voor SSO voor gast-accounts).
 
-   c. Klik onder **SAML-ondertekeningscertificaat**op **Nieuw certificaat maken**.
+   c. Klik onder **SAML-handtekening certificaat**op **Nieuw certificaat maken**.
 
-   d. Als u wilt beginnen met het configureren van uw Box.com tenant om Azure AD als identiteitsprovider te gebruiken, downloadt u het metagegevensbestand en slaat u het op uw lokale station op.
+   d. Als u de Box.com-Tenant wilt configureren voor het gebruik van Azure AD als id-provider, downloadt u het meta gegevensbestand en slaat u het op uw lokale station op.
 
-   e. Stuur het metagegevensbestand door naar het ondersteuningsteam van Box, dat eenmalige aanmelding voor u configureert.
+   e. Stuur het meta gegevensbestand door naar het ondersteunings team van het vak, waarmee eenmalige aanmelding voor u wordt geconfigureerd.
 
-3. Selecteer voor automatische gebruikersinstelling van Azure AD in het linkerdeelvenster De optie **Inrichten**en selecteer **Vervolgens Autoriseren**.
+3. Selecteer voor automatische gebruikers installatie van Azure AD in het linkerdeel venster de optie **inrichten**en selecteer vervolgens **autoriseren**.
 
-   ![Azure AD autoriseren om verbinding te maken met Box](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Azure AD toestemming geven om verbinding te maken met Box](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-Net als Dropbox-genodigden moeten genodigden hun uitnodiging inwisselen in de Box-app.
+Net als voor Dropbox-genodigden moeten Box-genodigden hun uitnodiging inwisselen vanuit de box-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen over Azure AD B2B-samenwerking:
+Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [Dynamische groepen en B2B-samenwerking](use-dynamic-groups.md)
-- [B2B-samenwerking gebruiker claims mapping](claims-mapping.md)
+- [Dynamische groepen en B2B-samen werking](use-dynamic-groups.md)
+- [Toewijzing van gebruikers claims voor B2B-samen werking](claims-mapping.md)
 - [Office 365 extern delen](o365-external-user.md)
 

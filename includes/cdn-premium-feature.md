@@ -9,14 +9,14 @@ ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: include file
 ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74284099"
 ---
 > [!IMPORTANT]
-> Dit is een functie van **Azure CDN Premium van Verizon** alleen, om regels op Azure **CDN van Microsoft** te configureren gebruik maken van de Standard rules [engine](../articles/cdn/cdn-standard-rules-engine-reference.md). Geavanceerde regels zijn niet beschikbaar voor **Azure CDN van Akamai.** Zie [Azure CDN-productfuncties](../articles/cdn/cdn-features.md)voor een volledige vergelijking van CDN-functies. 
+> Dit is een functie van **Azure CDN Premium van Verizon** alleen, om regels te configureren voor **Azure CDN van micro soft** , de [standaard regels-engine](../articles/cdn/cdn-standard-rules-engine-reference.md)te gebruiken. Er zijn geen geavanceerde regels beschikbaar voor **Azure CDN van Akamai**. Zie [Azure CDN product functies](../articles/cdn/cdn-features.md)voor een volledige vergelijking van CDN-functies. 
 > 
 > 
 

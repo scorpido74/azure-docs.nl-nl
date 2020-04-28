@@ -1,6 +1,6 @@
 ---
-title: Parameters configureren - Azure Database voor PostgreSQL - Single Server
-description: In dit artikel wordt beschreven hoe u Postgres-parameters configureert in Azure Database voor PostgreSQL - Single Server met de Azure CLI.
+title: Para meters configureren-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u post gres-para meters configureert in Azure Database for PostgreSQL-één server met behulp van de Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,47 +8,47 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74763620"
 ---
-# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Serverconfiguratieparameters voor Azure Database voor PostgreSQL aanpassen - Enkele server met Azure CLI
-U configuratieparameters voor een Azure PostgreSQL-server aanbieden, weergeven en bijwerken met behulp van de Command Line Interface (Azure CLI). Een subset van motorconfiguraties wordt op serverniveau weergegeven en kan worden gewijzigd. 
+# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Server configuratie parameters aanpassen voor Azure Database for PostgreSQL-één server met behulp van Azure CLI
+U kunt configuratie parameters voor een Azure PostgreSQL-server weer geven, tonen en bijwerken met behulp van de opdracht regel interface (Azure CLI). Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd. 
 
 ## <a name="prerequisites"></a>Vereisten
-Om deze handleiding door te nemen, hebt u het volgende nodig:
-- Een Azure-database maken voor PostgreSQL-server en -database door [een Azure-database voor PostgreSQL](quickstart-create-server-database-azure-cli.md) te maken
-- Installeer [Azure CLI-opdrachtregelinterface](/cli/azure/install-azure-cli) op uw machine of gebruik de [Azure Cloud Shell](../cloud-shell/overview.md) in de Azure-portal met uw browser.
+Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
+- Maak een Azure Database for PostgreSQL-server en-data base door [de volgende Azure database for PostgreSQL te maken](quickstart-create-server-database-azure-cli.md)
+- Installeer de [Azure cli](/cli/azure/install-azure-cli) -opdracht regel interface op uw computer of gebruik de [Azure Cloud Shell](../cloud-shell/overview.md) in het Azure Portal met behulp van uw browser.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Serverconfiguratieparameters voor Azure Database voor PostgreSQL-server weergeven
-Als u alle aanpasbare parameters in een server en hun waarden wilt weergeven, voert u de opdracht voor de configuratielijst van de [AZ-postgres-server](/cli/azure/postgres/server/configuration) uit.
+## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Server configuratie parameters voor Azure Database for PostgreSQL server weer geven
+Voer de opdracht [AZ post gres Server Configuration List](/cli/azure/postgres/server/configuration) uit om alle para meters die kunnen worden gewijzigd op een server en hun waarden weer te geven.
 
-U de serverconfiguratieparameters voor de server **mydemoserver.postgres.database.azure.com** onder resourcegroep **myresourcegroup**.
+U kunt de server configuratie parameters weer geven voor de server **mydemoserver.postgres.database.Azure.com** onder resource groep **myresourcegroup**.
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="show-server-configuration-parameter-details"></a>Details van de parameter van serverconfiguratie weergeven
-Voer de opdracht az [postgres server configuration show](/cli/azure/postgres/server/configuration) uit om details over een bepaalde configuratieparameter voor een server weer te geven.
+## <a name="show-server-configuration-parameter-details"></a>Details van server configuratie parameters weer geven
+Voer de opdracht [AZ post gres Server Configuration show](/cli/azure/postgres/server/configuration) uit om details over een bepaalde configuratie parameter voor een server weer te geven.
 
-In dit voorbeeld worden details weergegeven van de **mydemoserver.postgres.database.azure.com** parameter voor **myresourcegroup.** **\_\_** de configuratie van de logmin-berichtenserver voor servermydemoserver.postgres.database.azure.com onder de myresourcegroep van de brongroep.
+In dit voor beeld worden details weer gegeven van de server configuratie parameter **\_\_min berichten logboek** voor server **mydemoserver.postgres.database.Azure.com** onder resource groep **myresourcegroup.**
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="modify-server-configuration-parameter-value"></a>Parameterwaarde serverconfiguratie wijzigen
-U ook de waarde wijzigen van een bepaalde parameter voor serverconfiguratie, waarmee de onderliggende configuratiewaarde voor de PostgreSQL-serverengine wordt bijgewerkt. Als u de configuratie wilt bijwerken, gebruikt u de opdracht voor de configuratieset van de [AZ-postgres-server.](/cli/azure/postgres/server/configuration) 
+## <a name="modify-server-configuration-parameter-value"></a>Parameter waarde voor de server configuratie wijzigen
+U kunt ook de waarde van een bepaalde server configuratie parameter wijzigen, waarmee de onderliggende configuratie waarde wordt bijgewerkt voor de PostgreSQL-server engine. Als u de configuratie wilt bijwerken, gebruikt u de opdracht [AZ post gres server configuration set](/cli/azure/postgres/server/configuration) . 
 
-Als u de parameter van de **logmin-berichtenserver\_\_** van server **mydemoserver.postgres.database.azure.com** bijwerken onder de **myresourcegroep van resourcegroepen.**
+De server configuratie parameter van het **\_\_logboek min-berichten** van server **mydemoserver.postgres.database.Azure.com** onder resource groep myresourcegroup bijwerken **.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
-Als u de waarde van een configuratieparameter opnieuw wilt instellen, kiest u ervoor om de optionele `--value` parameter weg te laten en past de service de standaardwaarde toe. In het bovenstaande voorbeeld, zou het eruit zien als:
+Als u de waarde van een configuratie parameter opnieuw wilt instellen, kunt u gewoon de optionele `--value` para meter laten verlaten en de service de standaard waarde Toep assen. In het bovenstaande voor beeld ziet het er als volgt uit:
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Met deze opdracht wordt de configuratie **van de\_inlogminberichten\_** ingesteld op de standaardwaardeWAARSCHUWING . **WARNING** Zie PostgreSQL-documentatie op [serverconfiguratie](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over serverconfiguratie en toegestane waarden.
+Met deze opdracht wordt **de\_configuratie\_min-logboek berichten** opnieuw ingesteld op de standaard waarde **waarschuwing**. Zie PostgreSQL-documentatie over [Server configuratie](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over de configuratie van de server en de toegestane waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Meer informatie over het opnieuw opstarten van een server](howto-restart-server-cli.md)
-- Zie [Serverlogboeken in Azure Database voor PostgreSQL](concepts-server-logs.md) configureren en openen
+- Zie [Server Logboeken in azure database for PostgreSQL](concepts-server-logs.md) voor informatie over het configureren en openen van server logboeken

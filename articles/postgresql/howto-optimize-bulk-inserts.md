@@ -1,40 +1,40 @@
 ---
-title: Bulkinserts optimaliseren - Azure Database voor PostgreSQL - Single Server
-description: In dit artikel wordt beschreven hoe u bewerkingen voor het invoegen van bulk optimaliseren in een Azure-database voor PostgreSQL - Single Server.
+title: Bulksgewijs invoegen optimaliseren-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u Bulk Insert-bewerkingen kunt optimaliseren op een Azure Database for PostgreSQL-één server.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770132"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Bulkinserts optimaliseren en tijdelijke gegevens gebruiken in een Azure-database voor PostgreSQL - Single Server 
-In dit artikel wordt beschreven hoe u bewerkingen voor het invoegen van bulk optimaliseren en tijdelijke gegevens gebruiken op een Azure Database voor PostgreSQL-server.
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Bulk toevoegingen optimaliseren en tijdelijke gegevens gebruiken op een Azure Database for PostgreSQL-één server 
+In dit artikel wordt beschreven hoe u bewerkingen voor bulksgewijs invoegen optimaliseert en tijdelijke gegevens op een Azure Database for PostgreSQL server gebruikt.
 
 ## <a name="use-unlogged-tables"></a>Niet-geregistreerde tabellen gebruiken
-Als u werkbelastingbewerkingen hebt die tijdelijke gegevens bevatten of die grote gegevenssets in bulk invoegen, u overwegen om niet-gelogde tabellen te gebruiken.
+Als u werk belasting bewerkingen hebt waarbij tijdelijke gegevens worden betrokken of als u grote data sets tegelijk invoegt, kunt u gebruikmaken van niet-geregistreerde tabellen.
 
-Ongeregistreerde tabellen is een PostgreSQL-functie die effectief kan worden gebruikt om bulkinserts te optimaliseren. PostgreSQL maakt gebruik van Write-Ahead Logging (WAL). Het biedt atomiteit en duurzaamheid, standaard. Atomiciteit, consistentie, isolatie en duurzaamheid vormen de ZUUR-eigenschappen. 
+Niet-geregistreerde tabellen is een PostgreSQL-functie die effectief kan worden gebruikt om bulk toevoegingen te optimaliseren. PostgreSQL maakt gebruik van write-Ahead logboek registratie (WAL). Het biedt standaard atomische en duurzaamheid. Atomiciteit, consistentie, isolatie en duurzaamheid vormen de ACID-eigenschappen. 
 
-Invoegen in een niet-gelogde tabel betekent dat PostgreSQL voegt in zonder te schrijven in het transactielogboek, wat zelf een I/O-bewerking is. Hierdoor zijn deze tabellen aanzienlijk sneller dan gewone tabellen.
+Als u invoegt in een niet-geregistreerde tabel, betekent dit dat PostgreSQL wordt ingevoegd zonder te worden geschreven naar het transactie logboek. Dit is een I/O-bewerking. Als gevolg hiervan zijn deze tabellen aanzienlijk sneller dan gewone tabellen.
 
 Gebruik de volgende opties om een niet-geregistreerde tabel te maken:
-- Maak een nieuwe niet-geregistreerde `CREATE UNLOGGED TABLE <tableName>`tabel met behulp van de syntaxis .
-- Een bestaande aangemelde tabel converteren naar een `ALTER TABLE <tableName> SET UNLOGGED`niet-aangemelde tabel met behulp van de syntaxis .  
+- Een nieuwe, niet-geregistreerde tabel maken met behulp van de syntaxis `CREATE UNLOGGED TABLE <tableName>`.
+- Een bestaande, geregistreerde tabel naar een niet-geregistreerde tabel converteren met behulp van de syntaxis `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-Als u het proces `ALTER TABLE <tableName> SET LOGGED`wilt omkeren, gebruikt u de syntaxis .
+Gebruik de syntaxis `ALTER TABLE <tableName> SET LOGGED`om het proces om te keren.
 
-## <a name="unlogged-table-tradeoff"></a>Niet-gelogde tafelafweging
-Ongeregistreerde tabellen zijn niet crash-safe. Een niet-gelogde tabel wordt automatisch afgekapt na een crash of onderworpen aan een onreine shutdown. De inhoud van een niet-gelogde tabel wordt ook niet gerepliceerd naar stand-byservers. Alle indexen die op een niet-gelogde tabel zijn gemaakt, worden ook automatisch niet geregistreerd. Nadat de invoegbewerking is voltooid, converteert u de tabel naar gelogd, zodat de invoegtoepassing duurzaam is.
+## <a name="unlogged-table-tradeoff"></a>Niet-geregistreerde tabel balans
+Niet-geregistreerde tabellen zijn niet crash-veilig. Een niet-geregistreerde tabel wordt automatisch afgekapt na een crash of een onvolledige afsluiting. De inhoud van een niet-geregistreerde tabel wordt ook niet gerepliceerd naar stand-by-servers. Indexen die zijn gemaakt in een niet-geregistreerde tabel, worden ook automatisch niet geregistreerd. Nadat de bewerking is voltooid, converteert u de tabel naar vastgelegd zodat de invoeging duurzaam is.
 
-Sommige klantworkloads hebben ongeveer 15 tot 20 procent prestatieverbetering ervaren toen niet-gelogde tabellen werden gebruikt.
+Sommige werk belastingen van klanten hebben ongeveer een prestatie verbetering van 15 tot 20% ondervonden bij het gebruik van niet-geregistreerde tabellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer uw werkbelasting op het gebruik van tijdelijke gegevens en grote bulkinserts. Zie de volgende PostgreSQL-documentatie:
+Controleer uw werk belasting op het gebruik van tijdelijke gegevens en grote bulk toevoegingen. Raadpleeg de volgende PostgreSQL-documentatie:
  
-- [Sql-opdrachten voor tabelmaken maken](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+- [SQL-opdrachten voor tabel maken](https://www.postgresql.org/docs/current/static/sql-createtable.html)

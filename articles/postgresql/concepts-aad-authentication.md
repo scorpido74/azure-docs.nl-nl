@@ -1,97 +1,97 @@
 ---
-title: Active Directory-verificatie - Azure Database voor PostgreSQL - Single Server
-description: Meer informatie over de concepten van Azure Active Directory voor verificatie met Azure Database voor PostgreSQL - Single Server
+title: Active Directory-verificatie-Azure Database for PostgreSQL-één server
+description: Meer informatie over de concepten van Azure Active Directory voor verificatie met een Azure Database for PostgreSQL-enkele server
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74769911"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
-Azure AD-verificatie (Microsoft Azure Active Directory) is een mechanisme om verbinding te maken met Azure Database voor PostgreSQL met behulp van identiteiten die zijn gedefinieerd in Azure AD.
-Met Azure AD-verificatie u databasegebruikersidentiteiten en andere Microsoft-services op een centrale locatie beheren, wat het beheer van machtigingen vereenvoudigt.
+Microsoft Azure Active Directory-verificatie (Azure AD) is een mechanisme om verbinding te maken met Azure Database for PostgreSQL met behulp van identiteiten gedefinieerd in azure AD.
+Met Azure AD-verificatie kunt u gebruikers identiteiten van data bases en andere micro soft-Services beheren op een centrale locatie, waardoor het beheer van machtigingen wordt vereenvoudigd.
 
 > [!IMPORTANT]
-> Azure AD-verificatie voor Azure Database voor PostgreSQL is momenteel in openbare preview.
+> Azure AD-verificatie voor Azure Database for PostgreSQL is momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Voordelen van het gebruik van Azure AD zijn:
+Voor delen van het gebruik van Azure AD zijn:
 
-- Verificatie van gebruikers in Azure Services op een uniforme manier
-- Beheer van wachtwoordbeleid en wachtwoordrotatie op één plaats
-- Meerdere vormen van verificatie die worden ondersteund door Azure Active Directory, waardoor wachtwoorden niet meer hoeven op te slaan
-- Klanten kunnen databasemachtigingen beheren met externe (Azure AD)-groepen.
-- Azure AD-verificatie gebruikt PostgreSQL-databaserollen om identiteiten op databaseniveau te verifiëren
-- Ondersteuning voor tokenverificatie voor toepassingen die verbinding maken met Azure Database voor PostgreSQL
+- Verificatie van gebruikers op een uniforme manier door Azure-Services
+- Beheer van wachtwoord beleid en het draaien van wacht woorden op één plek
+- Meerdere vormen van verificatie die door Azure Active Directory worden ondersteund, waarmee de nood zaak om wacht woorden op te slaan, kan worden voor komen
+- Klanten kunnen database machtigingen beheren met externe groepen (Azure AD).
+- Azure AD-verificatie maakt gebruik van PostgreSQL-database rollen om identiteiten op database niveau te verifiëren
+- Ondersteuning van verificatie op basis van tokens voor toepassingen die verbinding maken met Azure Database for PostgreSQL
 
-Als u Azure Active Directory-verificatie wilt configureren en gebruiken, gebruikt u het volgende proces:
+Gebruik het volgende proces om Azure Active Directory-verificatie te configureren en gebruiken:
 
-1. Maak en vul Azure Active Directory indien nodig met gebruikersidentiteiten.
-2. Eventueel de Active Directory koppelen of wijzigen die momenteel is gekoppeld aan uw Azure-abonnement.
-3. Maak een Azure AD-beheerder voor de Azure Database voor PostgreSQL-server.
-4. Maak databasegebruikers in uw database die zijn toegewezen aan Azure AD-identiteiten.
-5. Maak verbinding met uw database door een token op te halen voor een Azure AD-identiteit en u in te loggen.
+1. Maak en vul zo nodig Azure Active Directory met gebruikers identiteiten in.
+2. U kunt eventueel de Active Directory koppelen of wijzigen die momenteel is gekoppeld aan uw Azure-abonnement.
+3. Maak een Azure AD-beheerder voor de Azure Database for PostgreSQL-server.
+4. Maak database gebruikers in uw data base die zijn toegewezen aan Azure AD-identiteiten.
+5. Maak verbinding met uw data base door een token op te halen voor een Azure AD-identiteit en u aan te melden.
 
 > [!NOTE]
-> Zie [Configureren en aanmelden bij Azure AD voor Azure Database voor PostgreSQL](howto-configure-sign-in-aad-authentication.md)voor meer informatie over het maken en invullen van Azure AD en vervolgens Azure AD configureren met Azure Database voor PostgreSQL.
+> Zie [configureren en aanmelden met Azure AD voor Azure database for PostgreSQL](howto-configure-sign-in-aad-authentication.md)voor meer informatie over het maken en vullen van Azure AD en het configureren van Azure ad met Azure database for PostgreSQL.
 
 ## <a name="architecture"></a>Architectuur
 
-In het volgende diagram op hoog niveau wordt samengevat hoe verificatie werkt met Azure AD-verificatie met Azure Database voor PostgreSQL. De pijlen geven communicatietrajecten aan.
+In het volgende diagram op hoog niveau wordt een overzicht gegeven van hoe verificatie werkt met Azure AD-verificatie met Azure Database for PostgreSQL. De pijlen geven communicatie paden aan.
 
-![verificatiestroom][1]
+![verificatie stroom][1]
 
-## <a name="administrator-structure"></a>Beheerdersstructuur
+## <a name="administrator-structure"></a>Beheerder structuur
 
-Bij het gebruik van Azure AD-verificatie zijn er twee administratoraccounts voor de PostgreSQL-server. de oorspronkelijke PostgreSQL-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-databasegebruiker maken in een gebruikersdatabase. De aanmelding van Azure AD-beheerders kan een Azure AD-gebruiker of een Azure AD-groep zijn. Wanneer de beheerder een groepsaccount is, kan het door elk groepslid worden gebruikt, waardoor meerdere Azure AD-beheerders voor de PostgreSQL-server worden inschakelen. Het gebruik van een groepsaccount als beheerder verbetert de beheerbaarheid doordat u groepsleden centraal toevoegen en verwijderen in Azure AD zonder de gebruikers of machtigingen in de PostgreSQL-server te wijzigen. Slechts één Azure AD-beheerder (een gebruiker of groep) kan op elk gewenst moment worden geconfigureerd.
+Wanneer u Azure AD-verificatie gebruikt, zijn er twee beheerders accounts voor de PostgreSQL-server. de oorspronkelijke PostgreSQL-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-database gebruiker in een gebruikers database maken. De aanmelding van de Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Wanneer de beheerder een groeps account is, kan dit worden gebruikt door elk groepslid om meerdere Azure AD-beheerders voor de PostgreSQL-server in te scha kelen. Het gebruik van een groeps account als beheerder verbetert de beheer baarheid, zodat u groeps leden in azure AD centraal kunt toevoegen en verwijderen zonder de gebruikers of machtigingen in de PostgreSQL-server te wijzigen. Er kan slechts één Azure AD-beheerder (een gebruiker of groep) op elk gewenst moment worden geconfigureerd.
 
-![beheerstructuur][2]
+![beheerder structuur][2]
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u nieuwe gebruikers wilt maken die kunnen `azure_ad_admin` verifiëren met Azure AD, moet u de rol in de database hebben. Deze rol wordt toegewezen door het Azure AD Administrator-account te configureren voor een specifieke Azure-database voor PostgreSQL-server.
+Als u nieuwe gebruikers wilt maken die kunnen worden geverifieerd met Azure AD, moet `azure_ad_admin` u de rol hebben in de-data base. Deze rol wordt toegewezen door het Azure AD-beheerders account voor een specifieke Azure Database for PostgreSQL server te configureren.
 
-Als u een nieuwe Azure AD-databasegebruiker wilt maken, moet u verbinding maken als Azure AD-beheerder. Dit wordt gedemonstreerd in [Configureren en inloggen met Azure AD voor Azure Database voor PostgreSQL.](howto-configure-sign-in-aad-authentication.md)
+Als u een nieuwe Azure AD-database gebruiker wilt maken, moet u verbinding maken als de Azure AD-beheerder. Dit wordt uitgelegd in [configureren en aanmelden met Azure AD voor Azure database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 
-Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt voor Azure Database voor PostgreSQL. Als de Azure Active Directory-beheerder van de server is verwijderd, kunnen bestaande Azure Active Directory-gebruikers die eerder zijn gemaakt, geen verbinding meer maken met de database met behulp van hun Azure Active Directory-referenties.
+Een Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt voor Azure Database for PostgreSQL. Als de Azure Active Directory-beheerder van de server is verwijderd, kunnen bestaande Azure Active Directory gebruikers die eerder zijn gemaakt, geen verbinding meer maken met de data base met behulp van hun Azure Active Directory referenties.
 
 ## <a name="connecting-using-azure-ad-identities"></a>Verbinding maken met Azure AD-identiteiten
 
-Azure Active Directory-verificatie ondersteunt de volgende methoden om verbinding te maken met een database met Azure AD-identiteiten:
+Azure Active Directory-verificatie ondersteunt de volgende methoden om verbinding te maken met een Data Base met behulp van Azure AD-identiteiten:
 
-- Azure Active Directory-wachtwoord
+- Azure Active Directory wacht woord
 - Azure Active Directory geïntegreerd
 - Azure Active Directory Universal met MFA
-- Active Directory-toepassingscertificaten of clientgeheimen gebruiken
+- Active Directory toepassings certificaten of client geheimen gebruiken
 
-Zodra u zich hebt geverifieerd ten opzichte van de Active Directory, haalt u vervolgens een token op. Dit token is uw wachtwoord voor het inloggen.
+Zodra u hebt geverifieerd op basis van de Active Directory, haalt u een token op. Dit token is uw wacht woord voor het aanmelden.
 
 > [!NOTE]
-> Zie Configureren en aanmelden bij Azure AD [voor Azure Database voor PostgreSQL voor](howto-configure-sign-in-aad-authentication.md)meer informatie over hoe u verbinding maken met een Active Directory-token.
+> Zie voor meer informatie over het maken van verbinding met een Active Directory-token [configureren en aanmelden met Azure AD voor Azure database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 
 ## <a name="additional-considerations"></a>Aanvullende overwegingen
 
-- Om de beheerbaarheid te verbeteren, raden we u aan een speciale Azure AD-groep in te richten als beheerder.
-- Slechts één Azure AD-beheerder (een gebruiker of groep) kan op elk gewenst moment worden geconfigureerd voor een Azure-database voor PostgreSQL-server.
-- Alleen een Azure AD-beheerder voor PostgreSQL kan in eerste instantie verbinding maken met de Azure Database voor PostgreSQL met behulp van een Azure Active Directory-account. De Active Directory-beheerder kan volgende Azure AD-databasegebruikers configureren.
-- Als een gebruiker uit Azure AD wordt verwijderd, kan die gebruiker niet meer verifiëren met Azure AD en is het daarom niet langer mogelijk om een toegangstoken voor die gebruiker te verkrijgen. In dit geval, hoewel de overeenkomende rol nog steeds in de database, zal het niet mogelijk zijn om verbinding te maken met de server met die rol.
+- Voor een betere beheer baarheid raden wij u aan een exclusieve Azure AD-groep in te richten als beheerder.
+- Er kan slechts één Azure AD-beheerder (een gebruiker of groep) op elk gewenst moment worden geconfigureerd voor een Azure Database for PostgreSQL-server.
+- Alleen een Azure AD-beheerder voor PostgreSQL kan eerst verbinding maken met de Azure Database for PostgreSQL met behulp van een Azure Active Directory-account. De beheerder van de Active Directory kan nieuwe Azure AD-database gebruikers configureren.
+- Als een gebruiker uit Azure AD wordt verwijderd, kan die gebruiker niet langer worden geverifieerd bij Azure AD, waardoor het niet langer mogelijk is om een toegangs token voor die gebruiker te verkrijgen. In dit geval, hoewel de overeenkomende rol nog steeds in de data base aanwezig is, is het niet mogelijk om met die rol verbinding te maken met de server.
 > [!NOTE]
-> Inloggen met de verwijderde Azure AD-gebruiker kan nog steeds tot het is verlopen (tot 60 minuten vanaf de uitgifte van token).  Als u de gebruiker ook uit Azure Database voor PostgreSQL verwijdert, wordt deze toegang onmiddellijk ingetrokken.
-- Als de Azure AD-beheerder van de server wordt verwijderd, wordt de server niet langer gekoppeld aan een Azure AD-tenant en worden daarom alle Azure AD-aanmeldingen voor de server uitgeschakeld. Als u een nieuwe Azure AD-beheerder toevoegt van dezelfde tenant, worden Azure AD-aanmeldingen opnieuw ingeschakeld.
-- Azure Database voor PostgreSQL koppelt toegangstokens aan de Azure Database voor PostgreSQL-rol met behulp van de unieke Azure AD-gebruikers-id van de gebruiker, in tegenstelling tot het gebruik van de gebruikersnaam. Dit betekent dat als een Azure AD-gebruiker wordt verwijderd in Azure AD en een nieuwe gebruiker met dezelfde naam is gemaakt, Azure Database voor PostgreSQL van mening is dat een andere gebruiker. Als een gebruiker uit Azure AD wordt verwijderd en vervolgens een nieuwe gebruiker met dezelfde naam wordt toegevoegd, kan de nieuwe gebruiker geen verbinding maken met de bestaande rol. Om dit mogelijk te maken, moet de Azure Database voor PostgreSQL Azure AD-beheerder de rol 'azure_ad_user' intrekken en vervolgens de gebruiker de rol 'azure_ad_user' verlenen om de Azure AD-gebruikers-id te vernieuwen.
+> Aanmelding met de verwijderde Azure AD-gebruiker kan nog steeds worden uitgevoerd, totdat het token verloopt (Maxi maal 60 minuten van het uitgeven van tokens).  Als u de gebruiker ook verwijdert uit Azure Database for PostgreSQL wordt deze toegang onmiddellijk ingetrokken.
+- Als de Azure AD-beheerder wordt verwijderd van de server, wordt de server niet meer gekoppeld aan een Azure AD-Tenant en daarom worden alle Azure AD-aanmeldingen voor de server uitgeschakeld. Als u een nieuwe Azure AD-beheerder toevoegt vanuit dezelfde Tenant, worden de Azure AD-aanmeldingen opnieuw ingeschakeld.
+- Azure Database for PostgreSQL overeenkomt met de toegangs Azure Database for PostgreSQL tokens van de gebruiker met de unieke Azure AD-gebruikers-ID, in tegens telling tot het gebruik van de gebruikers naam. Dit betekent dat als een Azure AD-gebruiker wordt verwijderd in azure AD en een nieuwe gebruiker is gemaakt met dezelfde naam, Azure Database for PostgreSQL van mening is dat een andere gebruiker. Als een gebruiker wordt verwijderd uit Azure AD en vervolgens een nieuwe gebruiker met dezelfde naam wordt toegevoegd, kan de nieuwe gebruiker geen verbinding maken met de bestaande rol. Als u dit wilt toestaan, moet de Azure Database for PostgreSQL Azure AD-beheerder de rol ' azure_ad_user ' intrekken en vervolgens aan de gebruiker toekennen om de gebruikers-ID van Azure AD te vernieuwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Configureren en aanmelden bij Azure AD voor Azure Database voor PostgreSQL](howto-configure-sign-in-aad-authentication.md)voor meer informatie over het maken en invullen van Azure AD en vervolgens Azure AD configureren met Azure Database voor PostgreSQL.
-- Zie [Gebruikers maken in Azure Database voor PostgreSQL - Eén server voor](howto-create-users.md)een overzicht van aanmeldingen, gebruikers en databaserollen Azure Database voor PostgreSQL .
+- Zie [configureren en aanmelden met Azure AD voor Azure database for PostgreSQL](howto-configure-sign-in-aad-authentication.md)voor meer informatie over het maken en vullen van Azure AD en het configureren van Azure ad met Azure database for PostgreSQL.
+- Zie voor een overzicht van aanmeldingen, gebruikers en database rollen Azure Database for PostgreSQL [gebruikers maken in azure database for PostgreSQL-één server](howto-create-users.md).
 
 <!--Image references-->
 

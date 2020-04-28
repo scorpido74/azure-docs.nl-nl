@@ -1,6 +1,6 @@
 ---
-title: Een beheerde identiteitstoegang toewijzen aan een bron met PowerShell - Azure AD
-description: Stapsgewijze instructies voor het toewijzen van een beheerde identiteit op de ene bron, toegang tot een andere bron, met behulp van PowerShell.
+title: Een beheerde identiteits toegang toewijzen aan een resource met behulp van Power shell-Azure AD
+description: Stapsgewijze instructies voor het toewijzen van een beheerde identiteit aan één resource, toegang tot een andere resource met behulp van Power shell.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,36 +16,36 @@ ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a2283ac076ef761fd098d75e7120e6557a959574
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74547250"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Een beheerde identiteitstoegang toewijzen aan een bron met PowerShell
+# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Een beheerde identiteits toegang tot een resource toewijzen met behulp van Power shell
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Zodra u een Azure-bron met een beheerde identiteit hebt geconfigureerd, u de beheerde identiteit toegang geven tot een andere bron, net als elke beveiligingsprincipal. In dit voorbeeld ziet u hoe u de beheerde identiteit van een Azure-virtuele machine toegang geeft tot een Azure-opslagaccount met PowerShell.
+Zodra u een Azure-resource met een beheerde identiteit hebt geconfigureerd, kunt u de beheerde identiteit toegang geven tot een andere resource, net zoals elke beveiligingsprincipal. Dit voor beeld laat zien hoe u met behulp van Power shell een beheerde identiteits toegang van een virtuele Azure-machine naar een Azure-opslag account kunt geven.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-bronnen, raadpleegt u het [overzichtsgedeelte](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Installeer [de nieuwste versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet hebt gedaan.
+- Installeer [de meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet hebt gedaan.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC gebruiken om een beheerde identiteitstoegang toe te wijzen aan een andere bron
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC gebruiken om een beheerde identiteits toegang toe te wijzen aan een andere resource
 
-Nadat u beheerde identiteit hebt ingeschakeld op een Azure-bron, [zoals een Azure VM:](qs-configure-powershell-windows-vm.md)
+Nadat u de beheerde identiteit hebt ingeschakeld voor een Azure-resource, [zoals een Azure-VM](qs-configure-powershell-windows-vm.md):
 
-1. Meld u aan `Connect-AzAccount` bij Azure met de cmdlet. Gebruik een account dat is gekoppeld aan het Azure-abonnement waaronder u de beheerde identiteit hebt geconfigureerd:
+1. Meld u aan bij Azure met `Connect-AzAccount` de cmdlet. Gebruik een account dat is gekoppeld aan het Azure-abonnement waaronder u de beheerde identiteit hebt geconfigureerd:
 
    ```powershell
    Connect-AzAccount
    ```
-2. In dit voorbeeld geven we een Azure VM toegang tot een opslagaccount. Eerst gebruiken we [Get-AzVM](/powershell/module/az.compute/get-azvm) om de serviceprincipal voor de VM met de naam `myVM`VM te krijgen, die is gemaakt toen we beheerde identiteit inschakelen. Gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om de VM **Reader** toegang `myStorageAcct`te geven tot een opslagaccount genaamd:
+2. In dit voor beeld geven we een Azure-VM toegang tot een opslag account. Eerst gebruiken we [Get-AzVM](/powershell/module/az.compute/get-azvm) om de Service-Principal op te halen voor `myVM`de VM met de naam, die is gemaakt toen de beheerde identiteit werd ingeschakeld. Gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om de VM- **lezer** toegang te geven tot een opslag account `myStorageAcct`met de naam:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
@@ -54,5 +54,5 @@ Nadat u beheerde identiteit hebt ingeschakeld op een Azure-bron, [zoals een Azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht beheerde identiteit voor Azure-bronnen](overview.md)
-- Zie [Beheerde identiteit configureren voor Azure-resources op een Azure VM configureren met PowerShell](qs-configure-powershell-windows-vm.md)als u beheerde identiteit op een Azure VM wilt inschakelen.
+- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
+- Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met Power shell](qs-configure-powershell-windows-vm.md)voor meer informatie over het inschakelen van beheerde identiteiten op een virtuele Azure-machine.

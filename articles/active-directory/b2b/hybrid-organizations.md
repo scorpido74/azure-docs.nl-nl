@@ -1,6 +1,6 @@
 ---
-title: B2B-samenwerking voor hybride organisaties - Azure AD
-description: Geef partners toegang tot zowel on-premises als cloudresources met Azure AD B2B-samenwerking.
+title: B2B-samen werking voor hybride organisaties-Azure AD
+description: Geef partners toegang tot zowel on-premises als cloud resources met Azure AD B2B-samen werking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,42 +12,42 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272474"
 ---
-# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory B2B-samenwerking voor hybride organisaties
+# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory B2B-samen werking voor hybride organisaties
 
-Azure Active Directory (Azure AD) B2B-samenwerking maakt het voor u gemakkelijk om uw externe partners toegang te geven tot apps en bronnen in uw organisatie. Dit geldt zelfs in een hybride configuratie waar u zowel on-premises als cloudgebaseerde bronnen hebt. Het maakt niet uit of u momenteel externe partneraccounts lokaal beheert in uw on-premises identiteitssysteem of dat u de externe accounts in de cloud beheert als Azure AD B2B-gebruikers. U deze gebruikers nu toegang verlenen tot bronnen op beide locaties, met dezelfde aanmeldingsreferenties voor beide omgevingen.
+Azure Active Directory (Azure AD) B2B-samen werking maakt het eenvoudig voor u om uw externe partners toegang te geven tot apps en resources in uw organisatie. Dit geldt zelfs in een hybride configuratie waarbij u zowel on-premises als cloud resources hebt. Het maakt niet uit of u externe partner accounts lokaal beheert in uw on-premises identiteits systeem, of dat u de externe accounts in de Cloud beheert als Azure AD B2B-gebruikers. U kunt deze gebruikers nu toegang verlenen tot bronnen op beide locaties, met dezelfde aanmeldings referenties voor beide omgevingen.
 
-## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>B2B-gebruikers in Azure AD toegang verlenen tot uw on-premises apps
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises apps
 
-Als uw organisatie Azure AD B2B-samenwerkingsmogelijkheden gebruikt om gastgebruikers van partnerorganisaties uit te nodigen voor uw Azure AD, u deze B2B-gebruikers nu toegang bieden tot on-premises apps.
+Als uw organisatie gebruikmaakt van Azure AD B2B-samenwerkings mogelijkheden om gast gebruikers van partner organisaties uit te nodigen voor uw Azure AD, kunt u deze B2B-gebruikers nu toegang bieden tot on-premises apps.
 
-Voor apps die SAML-gebaseerde verificatie gebruiken, u deze apps beschikbaar maken voor B2B-gebruikers via de Azure-portal, met Azure AD-toepassingsproxy voor verificatie.
+Voor apps die gebruikmaken van SAML-verificatie kunt u deze apps beschikbaar maken voor B2B-gebruikers via de Azure Portal, met behulp van Azure AD-toepassingsproxy voor authenticatie.
 
-Voor apps die Geïntegreerde Windows-verificatie (IWA) met Kerberos constrained delegation (KCD) gebruiken, gebruikt u ook Azure AD Proxy voor verificatie. Voor een autorisatie om te werken is een gebruikersobject echter vereist in de on-premises Windows Server Active Directory. Er zijn twee methoden die u gebruiken om lokale gebruikersobjecten te maken die uw B2B-gastgebruikers vertegenwoordigen.
+Voor apps die gebruikmaken van geïntegreerde Windows-verificatie (IWA) met Kerberos-beperkte delegering (KCD), kunt u ook Azure AD proxy gebruiken voor verificatie. Om autorisatie te kunnen gebruiken, is echter een gebruikers object vereist in het on-premises Windows Server-Active Directory. Er zijn twee methoden die u kunt gebruiken om lokale gebruikers objecten te maken die uw B2B-gast gebruikers vertegenwoordigen.
 
-- U Microsoft Identity Manager (MIM) 2016 SP1 en de MIM-beheeragent voor Microsoft Graph gebruiken.
-- U een PowerShell-script gebruiken. (Deze oplossing vereist geen MIM.)
+- U kunt Microsoft Identity Manager (MIM) 2016 SP1 en de MIM-beheer agent voor Microsoft Graph gebruiken.
+- U kunt een Power shell-script gebruiken. (Voor deze oplossing is MIM niet vereist.)
 
-Zie [B2B-gebruikers in Azure AD-toegang verlenen tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)voor meer informatie over het implementeren van deze oplossingen.
+Zie voor meer informatie over het implementeren van deze oplossingen [B2B-gebruikers in azure AD-toegang verlenen aan uw on-premises toepassingen](hybrid-cloud-to-on-premises.md).
 
-## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Lokaal beheerde partneraccounts toegang verlenen tot cloudbronnen
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Lokaal beheerde partner accounts toegang verlenen tot cloud resources
 
-Vóór Azure AD hebben organisaties met on-premises identiteitssystemen traditioneel partneraccounts beheerd in hun on-premises directory. Als u zo'n organisatie bent, wilt u ervoor zorgen dat uw partners toegang blijven houden terwijl u uw apps en andere bronnen naar de cloud verplaatst. Idealiter wilt u dat deze gebruikers dezelfde set referenties gebruiken om toegang te krijgen tot zowel cloud- als on-premises resources. 
+Voor Azure AD hebben organisaties met on-premises identiteits systemen traditioneel beheerde partner accounts in hun on-premises Directory. Als u een dergelijke organisatie bent, wilt u er zeker van zijn dat uw partners toegang blijven houden wanneer u uw apps en andere resources verplaatst naar de Cloud. In het ideale geval wilt u dat deze gebruikers dezelfde set referenties gebruiken om toegang te krijgen tot zowel Cloud-als on-premises resources. 
 
-We bieden nu methoden aan waarmee u Azure AD Connect gebruiken om deze lokale accounts te synchroniseren met de cloud als 'gastgebruikers', waarbij de accounts zich gedragen net als Azure AD B2B-gebruikers.
+We bieden nu methoden aan waar u Azure AD Connect kunt gebruiken om deze lokale accounts te synchroniseren met de Cloud als ' gast gebruikers ', waarbij de accounts zich gedragen als Azure AD B2B-gebruikers.
 
-Om uw bedrijfsgegevens te beschermen, u de toegang tot de juiste bronnen beheren en autorisatiebeleid configureren dat deze gastgebruikers anders behandelt dan uw werknemers.
+Om uw bedrijfs gegevens te helpen beveiligen, kunt u de toegang tot de juiste resources beheren en verificatie beleidsregels configureren die deze gast gebruikers verschillend van uw werk nemers behandelen.
 
-Zie [Lokaal beheerde partneraccounts toegang verlenen tot cloudbronnen met Azure AD B2B-samenwerking](hybrid-on-premises-to-cloud.md)voor implementatiedetails.
+Zie [lokaal beheerde partner accounts toegang verlenen tot cloud resources met Azure AD B2B Collaboration](hybrid-on-premises-to-cloud.md)voor meer informatie over de implementatie.
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- [B2B-gebruikers in Azure AD toegang verlenen tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
-- [Lokaal beheerde partneraccounts toegang verlenen tot cloudbronnen met Azure AD B2B-samenwerking](hybrid-on-premises-to-cloud.md)
+- [B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen](hybrid-cloud-to-on-premises.md)
+- [Lokaal beheerde partner accounts toegang verlenen tot cloud resources met behulp van Azure AD B2B-samen werking](hybrid-on-premises-to-cloud.md)
 
 

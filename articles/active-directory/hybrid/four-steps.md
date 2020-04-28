@@ -1,6 +1,6 @@
 ---
-title: Vier stappen naar een sterke identiteitsbasis - Azure AD
-description: Dit onderwerp beschrijft vier stappen hybride identiteit klanten kunnen nemen om een sterke identiteit stichting op te bouwen.
+title: Vier stappen voor een sterke identiteits-Foundation-Azure AD
+description: In dit onderwerp worden vier stappen voor Hybrid Identity-klanten beschreven die kunnen worden uitgevoerd om een sterke identiteits basis te bouwen.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -14,259 +14,259 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74206782"
 ---
-# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen naar een sterke identiteitsbasis met Azure Active Directory
+# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
-Het beheren van toegang tot apps en gegevens kan niet langer afhankelijk zijn van de traditionele grensstrategieën voor netwerkbeveiliging, zoals perimeternetwerken en firewalls, vanwege de snelle verplaatsing van apps naar de cloud. Nu moeten organisaties vertrouwen op hun identiteitsoplossing om te bepalen wie en wat toegang heeft tot de apps en gegevens van de organisatie. Meer organisaties staan werknemers toe om hun eigen apparaten mee te nemen naar het werk en hun apparaten te gebruiken vanaf elke plek waar ze verbinding kunnen maken met internet. Ervoor zorgen dat deze apparaten compatibel en veilig zijn, is een belangrijke overweging geworden in de identiteitsoplossing die een organisatie kiest om te implementeren. In de huidige digitale werkplek [is identiteit het primaire controlevlak](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) van elke organisatie die naar de cloud verhuist.
+Het beheren van de toegang tot apps en gegevens is niet langer afhankelijk van de traditionele strategieën voor netwerk beveiligings grenzen zoals perimeter netwerken en firewalls vanwege de snelle verplaatsing van apps naar de Cloud. Organisaties moeten nu hun identiteits oplossing vertrouwen om te bepalen wie en wat toegang heeft tot de apps en gegevens van de organisatie. Met meer organisaties kunnen werk nemers hun eigen apparaten gebruiken om hun apparaten te laten werken en vanaf elke locatie verbinding te maken met internet. Het is belang rijk om ervoor te zorgen dat deze apparaten voldoen aan het beleid en dat ze veilig zijn geworden in de identiteits oplossing die een organisatie kiest om te implementeren. In de huidige digitale werk plek [is de identiteit het primaire besturings vlak](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) van een organisatie die naar de Cloud gaat.
 
-Bij de toepassing van een azure active directory -hybride identiteitsoplossing (Azure Ad) krijgen organisaties toegang tot premiumfuncties die productiviteit ontsluiten door automatisering, delegeren, selfservice en single sign-on-mogelijkheden. Het stelt uw werknemers in staat om toegang te krijgen tot bedrijfsbronnen, waar ze ook hun werk moeten doen, terwijl uw IT-team die toegang kan regelen door ervoor te zorgen dat de juiste mensen de juiste toegang hebben tot de juiste middelen om een veilige productiviteit te garanderen.
+Bij het aannemen van een hybride identiteits oplossing voor Azure Active Directory (Azure AD) krijgen organisaties toegang tot Premium-functies die de productiviteit vergren delen via Automation, delegering, self-service en mogelijkheden voor eenmalige aanmelding. Zo hebben uw werk nemers toegang tot bedrijfs bronnen vanaf elke locatie die ze nodig hebben om hun werk te kunnen doen, terwijl uw IT-team deze toegang kan regelen door ervoor te zorgen dat de juiste mensen toegang hebben tot de juiste bronnen om een veilige productiviteit tot stand te brengen.
 
-Op basis van onze learnings helpt deze checklist met best practices u om snel aanbevolen acties te implementeren om een *sterke* identiteitsbasis in uw organisatie op te bouwen:
+Op basis van onze informatie kunt u met deze controle lijst met aanbevolen procedures snel aanbevolen acties implementeren voor het bouwen van een *sterke* identiteits basis in uw organisatie:
 
-* Maak eenvoudig verbinding met apps
-* Stel automatisch één identiteit vast voor elke gebruiker
-* Geef uw gebruikers een veilige staat van kracht
-* Operationaliseer uw inzichten
+* Eenvoudig verbinding maken met apps
+* Eén identiteit voor elke gebruiker automatisch instellen
+* Geef uw gebruikers veilig
+* Operationeel maken uw inzichten
 
-## <a name="step-1---connect-to-apps-easily"></a>Stap 1 - Eenvoudig verbinding maken met apps
+## <a name="step-1---connect-to-apps-easily"></a>Stap 1: Maak eenvoudig verbinding met apps
 
-Door uw apps te verbinden met Azure AD, u de productiviteit en beveiliging van eindgebruikers verbeteren door eenmalige aanmelding (SSO) in te schakelen en gebruikersvoorzieningen uit te brengen. Door uw apps op één plaats, Azure AD, te beheren, u de administratieve overhead minimaliseren en één controlepunt voor uw beveiligings- en nalevingsbeleid bereiken.
+Als u uw apps verbindt met Azure AD, kunt u de productiviteit en beveiliging van eind gebruikers verbeteren door eenmalige aanmelding (SSO) in te scha kelen en gebruikers in te richten. Door uw apps op één locatie te beheren, kunt u met Azure AD de administratieve overhead minimaliseren en één controle punt voor uw beveiligings-en nalevings beleid.
 
-In dit gedeelte worden uw opties voor het beheren van gebruikerstoegang tot apps, het inschakelen van veilige externe toegang tot interne apps en de voordelen van het migreren van uw apps naar Azure AD, weergegeven.
+In deze sectie worden de opties beschreven voor het beheren van gebruikers toegang tot apps, het inschakelen van veilige externe toegang tot interne apps en de voor delen van het migreren van uw apps naar Azure AD.
 
 ### <a name="make-apps-available-to-your-users-seamlessly"></a>Apps naadloos beschikbaar maken voor uw gebruikers
 
-Azure AD stelt beheerders in staat [om toepassingen toe](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) te voegen aan de galerie met Enterprise-toepassingen in de [Azure-portal.](https://portal.azure.com/) Als u toepassingen toevoegt aan de galerie met Enterprise-toepassingen, u toepassingen eenvoudiger configureren om Azure AD als uw identiteitsprovider te gebruiken. Hiermee u ook de toegang van gebruikers tot de toepassing beheren met beleid voor voorwaardelijke toegang en eenmalige aanmelding (SSO) configureren voor toepassingen, zodat gebruikers hun wachtwoorden niet herhaaldelijk hoeven in te voeren en automatisch worden aangemeld bij zowel on-premises als cloudgebaseerde toepassingen.
+Met Azure AD kunnen beheerders [toepassingen toevoegen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) aan de galerie met bedrijfs toepassingen in de [Azure Portal](https://portal.azure.com/). Door toepassingen toe te voegen aan de Enter prise-toepassings galerie, is het eenvoudiger voor u om toepassingen te configureren voor het gebruik van Azure AD als uw ID-provider. U kunt hiermee ook gebruikers toegang tot de toepassing beheren met beleid voor voorwaardelijke toegang en eenmalige aanmelding (SSO) configureren voor toepassingen, zodat gebruikers hun wacht woorden niet herhaaldelijk hoeven in te voeren en automatisch worden aangemeld bij on-premises en in de cloud gebaseerde toepassingen.
 
-Zodra toepassingen zijn toegevoegd aan de Azure AD-galerie, kunnen gebruikers apps zien die aan hen zijn toegewezen en naar behoefte andere apps zoeken en aanvragen. Azure AD biedt [verschillende methoden](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) voor gebruikers om toegang te krijgen tot hun apps:
+Zodra toepassingen zijn toegevoegd aan de Azure AD-galerie, kunnen gebruikers apps zien die aan hen zijn toegewezen en vervolgens naar behoefte andere apps aanvragen. Azure AD biedt [verschillende methoden](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) voor gebruikers om toegang te krijgen tot hun apps:
 
-* Access-paneel/Mijn apps
+* Toegangs venster/mijn apps
 * Startprogramma voor de Office 365-app
 * Directe aanmelding bij federatieve apps
-* Directe aanmeldingskoppelingen
+* Directe aanmeldings koppelingen
 
-Zie Stap 3 voor meer informatie over gebruikerstoegang tot apps: Uw gebruikers in dit artikel **versterken.**
+Zie voor meer informatie over gebruikers toegang tot apps, **stap 3--uw gebruikers** in dit artikel stimuleren.
 
 ### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Apps migreren van Active Directory Federation Services naar Azure AD
 
-Als u een enkele aanmeldingsconfiguratie migreert van Active Directory Federation Services (ADFS) naar Azure AD, u extra mogelijkheden op beveiliging, een consistentere beheerbaarheid en samenwerking mogelijk maken. Voor optimale resultaten raden we u aan uw apps te migreren van AD FS naar Azure AD. Het meenemen van uw toepassingsverificatie en -autorisatie naar Azure AD biedt u de volgende voordelen:
+Als u de configuratie van eenmalige aanmelding migreert van Active Directory Federation Services (ADFS) naar Azure AD, worden extra mogelijkheden voor beveiliging, een consistente beheer baarheid en samen werking mogelijk. Voor optimale resultaten raden wij u aan uw apps te migreren van AD FS naar Azure AD. Door de verificatie en autorisatie van uw toepassing naar Azure AD te brengen, beschikt u over de volgende voor delen:
 
 * Kosten beheren
-* Risico's beheren
-* Verhoging van de productiviteit
-* Naleving en governance aanpakken
+* Risico beheren
+* Productiviteit verhogen
+* Naleving en beheer van adres sering
 
-Zie De whitepaper [Uw toepassingen migreren naar Azure Active Directory](https://aka.ms/migrateapps/whitepaper) voor meer informatie.
+Zie voor meer informatie het onderwerp [uw toepassingen migreren naar Azure Active Directorye](https://aka.ms/migrateapps/whitepaper) White Paper.
 
-### <a name="enable-secure-remote-access-to-apps"></a>Beveiligde externe toegang tot apps inschakelen
+### <a name="enable-secure-remote-access-to-apps"></a>Veilige externe toegang tot apps inschakelen
 
-[Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) biedt een eenvoudige oplossing voor organisaties om on-premises apps naar de cloud te publiceren voor externe gebruikers die op een veilige manier toegang tot interne apps nodig hebben. Na één aanmelding bij Azure AD hebben gebruikers toegang tot zowel cloud- als on-premises toepassingen via externe URL's of een interne toepassingsportal.
+[Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) biedt organisaties een eenvoudige oplossing voor het publiceren van on-premises apps naar de Cloud voor externe gebruikers die op een veilige manier toegang moeten hebben tot interne apps. Na een eenmalige aanmelding bij Azure AD, hebben gebruikers toegang tot zowel Cloud-als on-premises toepassingen via externe Url's of een interne toepassings Portal.
 
-Azure AD-toepassingsproxy biedt de volgende voordelen:
+Azure AD-toepassingsproxy biedt de volgende voor delen:
 
 * Azure AD uitbreiden naar on-premises resources
-  * Beveiliging en beveiliging op cloudschaal
-  * Functies zoals voorwaardelijke toegang en multi-factor authenticatie die eenvoudig in te schakelen zijn
-* Geen componenten in het perimeternetwerk zoals VPN en traditionele reverse proxy-oplossingen
-* Geen inkomende verbindingen vereist
-* SSO (Single sign-on) voor apparaten, resources en apps in de cloud en on-premises
-* Stelt eindgebruikers in staat om altijd en overal productief te zijn
+  * Beveiliging en beveiliging in de Cloud schalen
+  * Functies zoals voorwaardelijke toegang en Multi-Factor Authentication die eenvoudig zijn in te scha kelen
+* Geen onderdelen in het perimeter netwerk, zoals VPN-en traditionele reverse proxy-oplossingen
+* Geen binnenkomende verbindingen vereist
+* Eenmalige aanmelding (SSO) op apparaten, resources en apps in de Cloud en on-premises
+* Biedt eind gebruikers de mogelijkheid om overal en altijd productief te zijn
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Ontdek Shadow IT met Microsoft Cloud App Security
+### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Schaduw IT met Microsoft Cloud App Security ontdekken
 
-In moderne ondernemingen zijn IT-afdelingen vaak niet op de hoogte van alle cloudtoepassingen die door de gebruikers worden gebruikt om hun werk te doen. Wanneer IT-beheerders wordt gevraagd hoeveel cloud-apps ze denken dat hun werknemers gebruiken, zeggen ze gemiddeld 30 of 40. In werkelijkheid is het gemiddelde meer dan 1.000 afzonderlijke apps die worden gebruikt door werknemers in uw organisatie. 80% van de werknemers gebruikt niet-gesanctioneerde apps die niemand heeft beoordeeld en mogelijk niet voldoet aan uw beveiligings- en nalevingsbeleid.
+In moderne ondernemingen zijn IT-afdelingen vaak niet op de hoogte van alle Cloud toepassingen die door de gebruikers worden gebruikt om hun werk uit te voeren. Wanneer IT-beheerders worden gevraagd hoeveel Cloud-apps ze hun werk nemers gebruiken, hebben ze gemiddeld 30 of 40. In werkelijkheid is het gemiddelde groter dan 1.000 afzonderlijke apps die worden gebruikt door werk nemers in uw organisatie. 80% van de werk nemers gebruiken niet-goedgekeurde apps die niet zijn gecontroleerd en die mogelijk niet compatibel zijn met uw beveiligings-en nalevings beleid.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) kan u helpen bij het identificeren van nuttige apps die populair zijn bij gebruikers die IT kan sanctioneren en toevoegen aan de galerij met Enterprise-toepassingen, zodat gebruikers kunnen profiteren van mogelijkheden zoals SSO en Voorwaardelijke toegang.
+Met [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) kunt u nuttige apps identificeren die populair zijn bij gebruikers die ze kunnen erkennen en toevoegen aan de galerie met bedrijfs toepassingen, zodat gebruikers profiteren van mogelijkheden als SSO en voorwaardelijke toegang.
 
-<em>"**Cloud App Security** helpt ons ervoor te zorgen dat onze mensen onze cloud- en SaaS-applicaties goed gebruiken, op een manier die het fundamentele beveiligingsbeleid ondersteunt dat Accenture helpt beschermen."</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud app Security** helpt ons ervoor te zorgen dat onze mensen onze Cloud-en SaaS-toepassingen op de juiste wijze gebruiken, op manieren die ondersteuning bieden voor het basis beleid voor de beveiliging van Accenture."</em> --- [John blasi, Director beheren, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-Naast het detecteren van schaduw-IT kan MCAS ook het risiconiveau van apps bepalen, ongeautoriseerde toegang tot bedrijfsgegevens, mogelijk gegevenslekken en andere beveiligingsrisico's die inherent zijn aan de toepassingen voorkomen.
+Naast het detecteren van schaduw, kan MCAS ook het risico niveau van apps bepalen, voor komen dat onbevoegde toegang tot Bedrijfs gegevens, mogelijke gegevens lekken en andere beveiligings Risico's die inherent zijn aan de toepassingen.
 
-## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Stap 2 - Stel automatisch één identiteit vast voor elke gebruiker
+## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Stap 2: een identiteit voor elke gebruiker automatisch instellen
 
-Als u on-premises en cloudmappen samenbrengt in een hybride azure-identiteitsoplossing voor AD, u uw bestaande on-premises Active Directory-investering opnieuw gebruiken door uw bestaande identiteiten in de cloud in te richten. De oplossing synchroniseert on-premises identiteiten met Azure AD, terwijl IT de on-premises Active Directory blijft draaien met bestaande governance-oplossingen als de primaire bron van waarheid voor identiteiten. De hybride identiteitsoplossing van Microsoft azure AD omvat on-premises en cloudgebaseerde mogelijkheden, waardoor een algemene gebruikersidentiteit wordt voorverificatie en autorisatie voor alle resources, ongeacht hun locatie.
+Door on-premises en Cloud directory's samen te brengen in een Azure AD hybride identiteits oplossing, kunt u uw bestaande on-premises Active Directory investering opnieuw gebruiken door uw bestaande identiteiten in de cloud in te richten. De oplossing synchroniseert on-premises identiteiten met Azure AD, terwijl de on-premises Active Directory worden uitgevoerd met een bestaande governance-oplossing als de primaire bron van waarheid voor identiteiten. De Azure AD hybride identiteits oplossing van micro soft bevat on-premises en Cloud mogelijkheden, waarmee een algemene gebruikers-id voor verificatie en autorisatie wordt gemaakt voor alle bronnen, ongeacht hun locatie.
 
-De integratie van uw on-premises mappen met Azure AD maakt uw gebruikers productiever en voorkomt dat gebruikers meerdere accounts in apps en services kunnen gebruiken door een gemeenschappelijke identiteit te bieden voor toegang tot zowel cloud- als on-premises bronnen. Het gebruik van meerdere accounts is een pijnpunt voor eindgebruikers en IT. Vanuit het oogpunt van de eindgebruiker betekent het hebben van meerdere accounts dat u meerdere wachtwoorden moet onthouden. Om dit te voorkomen, veel gebruikers hergebruiken hetzelfde wachtwoord voor elk account, dat is slecht vanuit een beveiligingsperspectief. Vanuit IT-perspectief leidt hergebruik vaak tot meer wachtwoordresets en helpdeskkosten, samen met de klachten van de eindgebruiker.
+Door uw on-premises directory's met Azure AD te integreren, kunnen uw gebruikers productiever worden en voor komt u dat gebruikers meerdere accounts gebruiken in apps en services door een algemene identiteit op te geven voor toegang tot zowel Cloud-als on-premises resources. Het gebruik van meerdere accounts is een knel punt voor eind gebruikers en het eerlijk. In het perspectief van eind gebruikers moeten meerdere accounts meerdere wacht woorden onthouden. Om dit te voor komen, hebben veel gebruikers hetzelfde wacht woord voor elk account opnieuw gebruiken, wat niet het gevolg is van een beveiligings perspectief. Het hergebruik van een IT-perspectief leidt vaak tot het opnieuw instellen van wacht woorden en de helpdesk kosten samen met de klachten van de eind gebruiker.
 
-Azure AD Connect is het hulpprogramma dat wordt gebruikt om uw on-premises identiteiten te synchroniseren met Azure AD, dat vervolgens kan worden gebruikt om toegang te krijgen tot cloudtoepassingen. Zodra de identiteiten zich in Azure AD bevinden, kunnen ze worden ingericht voor SaaS-toepassingen zoals Salesforce of Concur.
+Azure AD Connect is het hulp programma dat wordt gebruikt voor om uw on-premises identiteiten te synchroniseren met Azure AD, dat vervolgens kan worden gebruikt voor toegang tot Cloud toepassingen. Zodra de identiteiten zich in azure AD bevinden, kunnen ze worden ingericht voor SaaS-toepassingen zoals Sales Force of concur.
 
-In deze sectie zetten we aanbevelingen op een rij voor het bieden van hoge beschikbaarheid, moderne authenticatie voor de cloud en het verminderen van uw on-premises voetafdruk.
+In deze sectie worden aanbevelingen weer geven voor hoge Beschik baarheid, moderne authenticatie voor de Cloud en het verminderen van uw on-premises footprint.
 
 > [!NOTE]
-> Zie Azure AD Connect Sync als u meer wilt weten over Azure AD [Connect?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
+> Als u meer wilt weten over Azure AD Connect, raadpleegt u [Wat is Azure AD Connect Sync?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
 
-### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Een faseringsserver instellen voor Azure AD Connect en deze up-to-date houden
+### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Een staging-server instellen voor Azure AD Connect en deze up-to-date houden
 
-Azure AD Connect speelt een belangrijke rol in het inrichtingsproces. Als de synchronisatieserver om welke reden dan ook offline gaat, worden wijzigingen in on-premises niet bijgewerkt in de cloud en veroorzaken ze toegangsproblemen voor gebruikers. Het is belangrijk om een failoverstrategie te definiëren waarmee beheerders de synchronisatie snel kunnen hervatten nadat de synchronisatieserver offline is gegaan.
+Azure AD Connect speelt een belang rijke rol in het inrichtings proces. Als de synchronisatie server om een of andere reden offline gaat, worden wijzigingen in on-premises niet in de Cloud bijgewerkt en veroorzaken er toegangs problemen voor gebruikers. Het is belang rijk dat u een failover-strategie definieert waarmee beheerders snel de synchronisatie kunnen hervatten nadat de synchronisatie server offline gaat.
 
-Als u een hoge beschikbaarheid wilt bieden in het geval dat uw primaire Azure AD Connect-server offline gaat, wordt aanbevolen een afzonderlijke [faseringsserver](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) voor Azure AD Connect te implementeren. Door een server te implementeren, kan de beheerder de staging-server "promoten" tot productie via een eenvoudige configuratieswitch. Als u een stand-byserver hebt geconfigureerd in de faseringsmodus, u ook nieuwe configuratiewijzigingen testen en implementeren en een nieuwe server introduceren als de oude wordt buiten gebruik gesteld.
+Om hoge Beschik baarheid te bieden in het geval uw primaire Azure AD Connect server offline gaat, is het raadzaam om een afzonderlijke [staging-server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) voor Azure AD Connect te implementeren. Als u een server implementeert, kan de beheerder de staging-server promo veren tot productie door een eenvoudige configuratie-switch. Als er een stand-by-server in de faserings modus is geconfigureerd, kunt u ook nieuwe configuratie wijzigingen testen en implementeren en een nieuwe server introduceren als u de oude wilt uit bedrijf nemen.
 
 > [!TIP]
-> Azure AD Connect wordt regelmatig bijgewerkt. Daarom wordt het ten zeerste aanbevolen om de staging-server actueel te houden om te profiteren van de prestatieverbeteringen, bugfixes en nieuwe mogelijkheden die elke nieuwe versie biedt.
+> Azure AD Connect wordt regel matig bijgewerkt. Daarom wordt het ten zeerste aanbevolen dat u de staging-server up-to-date blijft om te kunnen profiteren van de prestatie verbeteringen, oplossingen voor fouten en nieuwe mogelijkheden die elke nieuwe versie biedt.
 
-### <a name="enable-cloud-authentication"></a>Cloudverificatie inschakelen
+### <a name="enable-cloud-authentication"></a>Cloud verificatie inschakelen
 
-Organisaties met on-premises Active Directory moeten hun directory uitbreiden naar Azure AD met Azure AD Connect en de juiste verificatiemethode configureren. [Het kiezen van de juiste verificatiemethode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) voor uw organisatie is de eerste stap in uw reis om apps naar de cloud te verplaatsen. Het is een essentieel onderdeel omdat het de toegang tot alle cloudgegevens en -bronnen regelt.
+Organisaties met een on-premises Active Directory moeten hun Directory uitbreiden naar Azure AD met behulp van Azure AD Connect en de juiste verificatie methode configureren. Het [kiezen van de juiste verificatie methode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) voor uw organisatie is de eerste stap bij het verplaatsen van apps naar de Cloud. Het is een essentieel onderdeel omdat hiermee de toegang tot alle Cloud gegevens en resources wordt beheerd.
 
-De eenvoudigste en aanbevolen methode voor het inschakelen van cloudverificatie voor on-premises directoryobjecten in Azure AD is het inschakelen [van Password Hash Synchronization](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS). Als alternatief kunnen sommige organisaties overwegen [om Pass-through Authentication](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) in te schakelen.
+De eenvoudigste en aanbevolen methode voor het inschakelen van Cloud verificatie voor on-premises Directory-objecten in azure AD is het inschakelen van de [synchronisatie van wacht woord-hash](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS). Sommige organisaties kunnen overwegen om [Pass-Through-verificatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) in te scha kelen.
 
-Of u nu phs of PTA kiest, vergeet niet om [Seamless Single Sign-on](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) in te schakelen om gebruikers toegang te geven tot cloud-apps zonder voortdurend hun gebruikersnaam en wachtwoord in de app in te voeren wanneer ze Windows 7- en 8-apparaten in uw bedrijfsnetwerk gebruiken. Zonder eenmalige aanmelding moeten gebruikers toepassingsspecifieke wachtwoorden onthouden en zich aanmelden bij elke toepassing. Op dezelfde manier moeten IT-medewerkers gebruikersaccounts maken en bijwerken voor elke toepassing, zoals Office 365, Box en Salesforce. Gebruikers moeten hun wachtwoorden onthouden en de tijd besteden om zich bij elke toepassing aan te melden. Het bieden van een gestandaardiseerd single sign-on mechanisme voor de hele onderneming is cruciaal voor de beste gebruikerservaring, vermindering van risico's, vermogen om te rapporteren en governance.
+Of u kiest voor PHS of PTA, vergeet niet om [naadloze eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) in te scha kelen zodat gebruikers toegang krijgen tot Cloud-apps zonder dat ze hun gebruikers naam en wacht woord in de app blijven gebruiken wanneer ze Windows 7-en 8-apparaten in uw bedrijfs netwerk gebruikt. Zonder eenmalige aanmelding moeten gebruikers toepassingsspecifieke wacht woorden onthouden en zich aanmelden bij elke toepassing. De IT-afdeling moet ook gebruikers accounts maken en bijwerken voor elke toepassing, zoals Office 365, box en Sales Force. Gebruikers moeten hun wacht woord onthouden, plus de tijd om zich aan te melden bij elke toepassing. Het bieden van een gestandaardiseerd mechanisme voor eenmalige aanmelding bij de hele onderneming is essentieel voor de beste gebruikers ervaring, vermindering van het risico, de mogelijkheid om te rapporteren en te voor komen.
 
-Voor organisaties die ad FS of een andere on-premises verificatieprovider al gebruiken, kan de overstap naar Azure AD als uw identiteitsprovider de complexiteit verminderen en de beschikbaarheid verbeteren. Tenzij u specifieke use cases hebt voor het gebruik van federatie, raden we u aan te migreren van federatieve verificatie naar PHS en Seamless SSO of PTA en Seamless SSO om te genieten van de voordelen van een verminderde on-premises footprint en de flexibiliteit die de cloud biedt met verbeterde gebruikerservaringen. Zie [Migreren van federatie naar wachtwoordhashsynchronisatie voor Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync)meer informatie.
+Voor organisaties die al AD FS of een andere on-premises verificatie provider gebruiken, gaat u naar Azure AD, omdat uw ID-provider de complexiteit kan verminderen en de beschik baarheid kan verbeteren. Tenzij u specifieke use cases voor het gebruik van Federatie hebt, raden wij u aan de migratie uit te voeren van Federated Authentication naar PHS, naadloze SSO of PTA en naadloze SSO om te profiteren van de voor delen van een gereduceerde on-premises ruimte en de flexibiliteit die de Cloud biedt met verbeterde gebruikers ervaring. Zie voor meer informatie [migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
 
-### <a name="enable-automatic-deprovisioning-of-accounts"></a>Automatische deprovisioning van accounts inschakelen
+### <a name="enable-automatic-deprovisioning-of-accounts"></a>Automatische onttoewijzing van accounts inschakelen
 
-Het inschakelen van geautomatiseerde inrichting en deprovisioning voor uw toepassingen is de beste strategie voor het regelen van de levenscyclus van identiteiten in meerdere systemen. Azure AD ondersteunt [geautomatiseerde, op beleid gebaseerde inrichting en deprovisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) van gebruikersaccounts voor een verscheidenheid aan populaire SaaS-toepassingen, zoals ServiceNow en Salesforce, en andere die het [SCIM 2.0-protocol](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)implementeren. In tegenstelling tot traditionele inrichtingsoplossingen, waarvoor aangepaste code of handmatige uploaden van CSV-bestanden vereist is, wordt de inrichtingsservice gehost in de cloud en beschikt het over vooraf geïntegreerde connectors die kunnen worden ingesteld en beheerd met behulp van de Azure-portal. Een belangrijk voordeel van automatische deprovisioning is dat het helpt uw organisatie te beveiligen door de identiteit van gebruikers direct te verwijderen uit belangrijke SaaS-apps wanneer ze de organisatie verlaten.
+Het inschakelen van automatische inrichting en ongedaan maken van de inrichting van uw toepassingen is de beste strategie voor het beheren van de levens cyclus van identiteiten op meerdere systemen. Azure AD biedt ondersteuning voor [geautomatiseerde, op beleid gebaseerde inrichting en](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) het ongedaan maken van de inrichting van gebruikers accounts voor diverse populaire SaaS-toepassingen, zoals ServiceNow en Sales Force, en andere die het [scim 2,0-protocol](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)implementeren. In tegens telling tot traditionele inrichtings oplossingen waarvoor aangepaste code of hand matig uploaden van CSV-bestanden vereist is, wordt de inrichtings service gehost in de Cloud en worden de vooraf geïntegreerde connectors geleverd die kunnen worden ingesteld en beheerd met behulp van de Azure Portal. Een belang rijk voor deel van het automatisch ongedaan maken van de inrichting is dat het uw organisatie helpt beveiligen door de identiteit van gebruikers direct te verwijderen uit Key SaaS-apps wanneer ze de organisatie verlaten.
 
-Zie [Gebruikersinrichting en deprovisioning voor gebruikersvoorziening automatiseren voor SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)voor meer informatie over het inrichten van automatische gebruikersaccounts en hoe deze werkt.
+Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)voor meer informatie over automatische toewijzing van gebruikers accounts en hoe deze werkt.
 
-## <a name="step-3---empower-your-users-securely"></a>Stap 3 - Uw gebruikers veilig mondiger maken
+## <a name="step-3---empower-your-users-securely"></a>Stap 3: Geef uw gebruikers veilig
 
-In de huidige digitale werkplek is het belangrijk om beveiliging in evenwicht te brengen met productiviteit. Eindgebruikers dringen echter vaak terug op beveiligingsmaatregelen die hun productiviteit en toegang tot cloud-apps vertragen. Om dit op te pakken, biedt Azure AD selfservicemogelijkheden waarmee gebruikers productief kunnen blijven en tegelijkertijd de administratieve overhead minimaliseren.
+In de huidige digitale werk plek is het belang rijk om de beveiliging met productiviteit te verbalanceren. Eind gebruikers pushen echter vaak een back-up op beveiligings maatregelen die hun productiviteit en toegang tot Cloud-apps vertragen. Om dit te helpen aanpakken, biedt Azure AD selfservice mogelijkheden waarmee gebruikers productief kunnen blijven terwijl de administratieve overhead wordt geminimaliseerd.
 
-In deze sectie worden aanbevelingen weergegeven voor het verwijderen van frictie uit uw organisatie door uw gebruikers mondiger te maken terwijl ze waakzaam blijven.
+In deze sectie vindt u de aanbevelingen voor het verwijderen van wrijving van uw organisatie door uw gebruikers te voorzien van de resterende Vigilant.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Selfservice wachtwoordreset inschakelen voor alle gebruikers
+### <a name="enable-self-service-password-reset-for-all-users"></a>Selfservice voor wacht woord opnieuw instellen inschakelen voor alle gebruikers
 
-Azure's [self-service password reset](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) biedt een eenvoudige manier voor IT-beheerders om gebruikers in staat te stellen hun wachtwoorden of accounts te resetten en te ontgrendelen zonder tussenkomst van de beheerder. Het systeem biedt gedetailleerde rapporten zodat u kunt volgen wanneer gebruikers het systeem openen. U ontvangt ook meldingen om u te waarschuwen over misbruik.
+De [self-service voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) van Azure biedt een eenvoudige manier om gebruikers toe te staan hun wacht woorden of accounts te herstellen en te ontgrendelen zonder tussen komst van de beheerder. Het systeem biedt gedetailleerde rapporten zodat u kunt volgen wanneer gebruikers het systeem openen. U ontvangt ook meldingen om u te waarschuwen over misbruik.
 
-Azure AD ontgrendelt standaard accounts wanneer het een wachtwoordreset uitvoert. Wanneer u echter on-premises Azure AD [Connect-integratie inschakelt,](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)hebt u ook de mogelijkheid om deze twee bewerkingen te scheiden, zodat gebruikers hun account kunnen ontgrendelen zonder het wachtwoord opnieuw in te hoeven stellen.
+Standaard worden accounts door Azure AD ontgrendeld wanneer het wacht woord opnieuw wordt ingesteld. Wanneer u echter Azure AD Connect [integratie on-premises](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)inschakelt, hebt u ook de mogelijkheid om deze twee bewerkingen te scheiden, zodat gebruikers hun account kunnen ontgrendelen zonder het wacht woord opnieuw in te stellen.
 
 ### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Zorg ervoor dat alle gebruikers zijn geregistreerd voor MFA en SSPR
 
-Azure biedt rapporten die door u en uw organisatie kunnen worden gebruikt om ervoor te zorgen dat gebruikers zijn geregistreerd voor MFA en SSPR. Gebruikers die zich nog niet hebben geregistreerd, moeten mogelijk worden opgeleid over het proces.
+Azure biedt rapporten die door u en uw organisatie kunnen worden gebruikt om ervoor te zorgen dat gebruikers worden geregistreerd voor MFA en SSPR. Gebruikers die zich niet hebben geregistreerd, moeten mogelijk worden getraind voor het proces.
 
-Het [MFA-aanmeldingsrapport](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) bevat informatie over MFA-gebruik en geeft u inzicht in hoe MFA werkt in uw organisatie. Toegang hebben tot aanmeldingsactiviteiten (en audits en risicodetecties) voor Azure AD is cruciaal voor het oplossen van problemen, gebruiksanalyses en forensisch onderzoek.
+Het rapport voor MFA [-aanmeldingen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) bevat informatie over het gebruik van MFA en geeft inzicht in hoe MFA werkt in uw organisatie. U hebt toegang tot activiteiten voor aanmelden (en controles en risico detecties) voor Azure AD is essentieel voor het oplossen van problemen, gebruiks analyses en forensische onderzoek.
 
-Op dezelfde manier kan het [selfservice wachtwoordbeheerrapport](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) worden gebruikt om te bepalen wie zich heeft (of niet) heeft geregistreerd voor SSPR.
+Op dezelfde manier kan het [rapport voor Self-Service wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) worden gebruikt om te bepalen wie (of niet) is geregistreerd voor SSPR.
 
-### <a name="self-service-app-management"></a>Beheer van selfservice-apps
+### <a name="self-service-app-management"></a>Self-service app-beheer
 
-Voordat uw gebruikers zelf toepassingen kunnen ontdekken vanuit hun toegangspaneel, moet u [selfservice-toepassingen toegang](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) bieden tot toepassingen die u gebruikers zelf wilt laten ontdekken en toegang tot aanvragen. Selfservice-applicatietoegang is een geweldige manier om gebruikers in staat te stellen toepassingen zelf te ontdekken en de bedrijfsgroep optioneel toegang tot die toepassingen te laten goedkeuren. U de bedrijfsgroep toestaan de referenties te beheren die aan deze gebruikers zijn toegewezen voor toepassingen met een enkel wachtwoord met [één melding vanaf](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) hun toegangspanelen.
+Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster, moet u de toegang van [selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zichzelf te detecteren en toegang tot te vragen. Toegang voor selfservice toepassingen is een uitstekende manier om gebruikers de mogelijkheid te bieden om zelf toepassingen te detecteren en de bedrijfs groep toe te staan om de toegang tot deze toepassingen goed te keuren. U kunt de bedrijfs groep toestaan om de referenties te beheren die aan deze gebruikers zijn toegewezen voor [wacht woord voor eenmalige aanmelding voor toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) , direct vanaf hun toegangs Vensters.
 
 ### <a name="self-service-group-management"></a>Groepsbeheer via selfservice
 
-Het toewijzen van gebruikers aan toepassingen kan het beste in kaart worden gebracht bij het gebruik van groepen, omdat ze een grote flexibiliteit en het vermogen om op schaal te beheren mogelijk maken:
+Het toewijzen van gebruikers aan toepassingen is het meest geschikt voor het gebruik van groepen, omdat ze grote flexibiliteit en mogelijkheid bieden om op schaal te beheren:
 
-* Op basis van kenmerken met behulp van dynamisch groepslidmaatschap
-* Delegeren naar app-eigenaren
+* Kenmerk-gebaseerd op het gebruik van een dynamisch groepslid maatschap
+* Delegeren naar app-eigen aren
 
-Azure AD biedt de mogelijkheid om toegang tot bronnen te beheren met behulp van beveiligingsgroepen en Office 365-groepen. Deze groepen kunnen worden beheerd door een groepseigenaar die lidmaatschapsaanvragen kan goedkeuren of weigeren en het beheer van het groepslidmaatschap kan delegeren. Deze functie wordt [zelfservicegroepsbeheer genoemd](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)en bespaart tijd doorgroepseigenaren die geen beheerrol toegewezen krijgen, toe te staan groepen te maken en te beheren zonder dat u hoeft te vertrouwen op beheerders om hun aanvragen af te handelen.
+Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Office 365-groepen. Deze groepen kunnen worden beheerd door een groeps eigenaar die lidmaatschaps aanvragen kan goed keuren of weigeren en het beheer van groepslid maatschap kan overdragen. Met deze functie wordt het [beheer van self-service groep](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)genoemd, zodat groeps eigenaren die geen beheerdersrol hebben toegewezen, groepen kunnen maken en beheren zonder dat ze moeten vertrouwen op beheerders om hun aanvragen te kunnen verwerken.
 
-## <a name="step-4---operationalize-your-insights"></a>Stap 4 - Operationaliseer uw inzichten
+## <a name="step-4---operationalize-your-insights"></a>Stap 4-operationeel maken uw inzichten
 
-Het controleren en registreren van beveiligingsgerelateerde gebeurtenissen en gerelateerde waarschuwingen zijn essentiële onderdelen van een efficiënte strategie om ervoor te zorgen dat gebruikers productief blijven en uw organisatie veilig is. Beveiligingslogboeken en rapporten kunnen helpen bij het beantwoorden van vragen zoals:
+Controle en logboek registratie van gebeurtenissen met betrekking tot beveiliging en gerelateerde waarschuwingen zijn essentiële onderdelen van een efficiënte strategie om ervoor te zorgen dat gebruikers productief blijven en uw organisatie veilig is. Beveiligings logboeken en rapporten kunnen u helpen bij het beantwoorden van vragen zoals:
 
-* Gebruik je waar je voor betaalt?
-* Is er iets verdachts of kwaadaardigs gebeurt in mijn tenant?
-* Wie is er getroffen tijdens een beveiligingsincident?
+* Gebruikt u waarvoor u betaalt?
+* Is er iets verdacht of schadelijk in mijn Tenant?
+* Wie is van invloed op een beveiligings incident?
 
-Beveiligingslogboeken en -rapporten bieden u een elektronisch overzicht van verdachte activiteiten en helpen u patronen te detecteren die kunnen duiden op een poging tot of succesvolle externe penetratie van het netwerk en interne aanvallen. U controle gebruiken om de activiteiten van gebruikers te controleren, naleving van de regelgeving te documenteren, forensische analyses te doen en meer. Waarschuwingen bieden meldingen van beveiligingsgebeurtenissen.
+Beveiligings logboeken en rapporten bieden een elektronische record van verdachte activiteiten en helpen u bij het detecteren van patronen die kunnen wijzen op geslaagde, externe indringing van het netwerk en interne aanvallen. U kunt controle gebruiken om gebruikers activiteiten te bewaken, naleving van regelgeving te documenteren, forensische analyse uit te voeren en meer. Waarschuwingen bieden meldingen van beveiligings gebeurtenissen.
 
-### <a name="assign-least-privileged-admin-roles-for-operations"></a>Minste bevoorrechte beheerdersrollen toewijzen voor bewerkingen
+### <a name="assign-least-privileged-admin-roles-for-operations"></a>Ten minste bevoegde beheerders rollen toewijzen voor bewerkingen
 
-Als u nadenkt over uw aanpak van de operaties, zijn er een paar niveaus van administratie te overwegen. Het eerste niveau legt de administratielast op uw globale beheerder(s). Altijd gebruik maken van de wereldwijde beheerder rol, kan geschikt zijn voor kleinere bedrijven. Maar voor grotere organisaties met helpdeskpersoneel en beheerders die verantwoordelijk zijn voor specifieke taken, kan het toewijzen van de rol van globale beheerder een beveiligingsrisico zijn, omdat het die personen de mogelijkheid biedt om taken te beheren die hoger zijn dan wat ze moeten kunnen doen.
+Net zoals u op de hoogte bent van uw aanpak van bewerkingen, zijn er een aantal beheer niveaus die u kunt overwegen. Het eerste niveau plaatst de belasting van het beheer van uw globale beheerder (s). Het gebruik van de rol globale beheerder kan altijd geschikt zijn voor kleinere bedrijven. Maar voor grotere organisaties met helpdesk medewerkers en beheerders die verantwoordelijk zijn voor specifieke taken, kan het toewijzen van de rol van globale beheerder een beveiligings risico vormen, omdat deze personen de mogelijkheid biedt om taken te beheren die hoger zijn dan en wat ze kunnen doen.
 
-In dit geval moet u rekening houden met het volgende niveau van administratie. Met Azure AD u eindgebruikers aanwijzen als 'beperkte beheerders' die taken kunnen beheren in minder bevoorrechte rollen. U uw helpdeskpersoneel bijvoorbeeld de rol [van beveiligingslezer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) toewijzen om hen de mogelijkheid te bieden beveiligingsfuncties te beheren met alleen-lezen toegang. Of misschien is het zinvol om de [verificatiebeheerderrol](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) toe te wijzen aan individuen om hen de mogelijkheid te geven om niet-wachtwoordreferenties opnieuw in te stellen of Azure Service Health te lezen en te configureren.
+In dit geval moet u rekening houden met het volgende beheer niveau. Met Azure AD kunt u eind gebruikers aanwijzen als ' beperkte beheerders ' die taken in functies met minder bevoegdheden kunnen beheren. U kunt bijvoorbeeld uw helpdesk medewerker de rol van [beveiligings lezer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) geven om hen de mogelijkheid te bieden om beveiligings functies met alleen-lezen toegang te beheren. Het is ook handig om de rol [authenticatie beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) toe te wijzen aan personen om hen de mogelijkheid te geven niet-wachtwoord referenties opnieuw in te stellen of Azure service Health te lezen en te configureren.
 
-Zie [Beheerdersrolmachtigingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)voor meer informatie.
+Zie [Administrator role permissions in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)voor meer informatie.
 
-### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Hybride componenten bewaken (Azure AD Connect-synchronisatie, AD FS) met Azure AD Connect-status
+### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Hybride onderdelen (Azure AD Connect Sync, AD FS) bewaken met behulp van Azure AD Connect Health
 
-Azure AD Connect en AD FS zijn kritieke onderdelen die het levenscyclusbeheer en de verificatie mogelijk kunnen doorbreken en uiteindelijk tot uitval kunnen leiden. Daarom moet u Azure AD Connect-status implementeren voor het bewaken en rapporteren van deze onderdelen.
+Azure AD Connect en AD FS zijn essentiële onderdelen die het beheer en de verificatie van de levens cyclus kunnen verstoren en uiteindelijk leiden tot storingen. Daarom moet u Azure AD Connect Health implementeren voor het bewaken en rapporteren van deze onderdelen.
 
-Lees [ad fs.v. Monitor AD FS voor](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)meer informatie met Azure AD Connect Health .
+Ga voor meer informatie naar [Monitor AD FS met behulp van Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs).
 
-### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Azure Monitor gebruiken om gegevenslogboeken voor analyses te verzamelen
+### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Azure Monitor gebruiken om gegevens logboeken te verzamelen voor analyse
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) is een uniforme monitoringportal voor alle Azure AD-logboeken, die diepgaande inzichten, geavanceerde analyses en slimme machine learning biedt. Met Azure Monitor u statistieken en logboeken binnen de portal en via API's gebruiken om meer inzicht te krijgen in de status en prestaties van uw resources. Het maakt een enkele ruitervaring binnen het portaal mogelijk en maakt een breed scala aan productintegraties mogelijk via API's en gegevensexportopties die traditionele SIEM-systemen van derden ondersteunen. Azure Monitor biedt u ook de mogelijkheid om waarschuwingsregels te configureren om een melding te ontvangen of om geautomatiseerde acties uit te voeren voor problemen die van invloed zijn op uw resources.
+[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) is een uniforme bewakings portal voor alle Azure AD-logboeken, waarmee uitgebreide inzichten, geavanceerde analyses en slimme machine learning worden geboden. Met Azure Monitor kunt u metrische gegevens en Logboeken in de portal en via Api's gebruiken om meer inzicht te krijgen in de status en prestaties van uw resources. Er wordt één venster glas ervaring in de portal ingeschakeld, terwijl een breed scala aan product integraties via Api's en opties voor gegevens export wordt ingeschakeld die traditionele SIEM-systemen van derden ondersteunen. Azure Monitor biedt u ook de mogelijkheid om waarschuwings regels te configureren om u op de hoogte te stellen of om geautomatiseerde acties uit te voeren op problemen die van invloed zijn op uw resources.
 
 ![Azure Monitor](./media/four-steps/image1.png)
 
-### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Maak aangepaste dashboards voor uw leiderschap en uw dagelijkse
+### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Aangepaste Dash boards maken voor uw leiderschap en dag tot dag
 
-Organisaties die geen SIEM-oplossing hebben, kunnen het [Power BI-inhoudspakket](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) voor Azure AD downloaden. Het Power BI-inhoudspakket bevat vooraf gebouwde rapporten om u te helpen begrijpen hoe uw gebruikers Azure AD-functies gebruiken en gebruiken, zodat u inzicht krijgen in alle activiteiten in uw directory. U ook uw eigen [aangepaste dashboard](https://docs.microsoft.com/power-bi/service-dashboards) maken en delen met uw leiderschapsteam om verslag uit te brengen over dagelijkse activiteiten. Dashboards zijn een geweldige manier om uw bedrijf te controleren en al uw belangrijkste statistieken in één oogopslag te bekijken. De visualisaties op een dashboard kunnen afkomstig zijn uit een of meer onderliggende gegevenssets en rapporten. Een dashboard combineert on-premises gegevens en gegevens in de cloud om zo een geconsolideerde weergave te bieden van uw gegevens, ongeacht waar deze zich bevinden.
+Organisaties die geen SIEM-oplossing hebben, kunnen het [Power bi-inhouds pakket](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) voor Azure ad downloaden. Het Power BI inhouds pakket bevat vooraf ontwikkelde rapporten waarmee u kunt begrijpen hoe uw gebruikers Azure AD-functies aannemen en gebruiken, waarmee u inzicht kunt krijgen in alle activiteiten in uw Directory. U kunt ook uw eigen [aangepaste dash board](https://docs.microsoft.com/power-bi/service-dashboards) maken en delen met uw leiderschaps team om te rapporteren over dagelijkse activiteiten. Dash boards zijn een uitstekende manier om uw bedrijf te bewaken en al uw belangrijkste metrische gegevens in één oogopslag te bekijken. De visualisaties op een dashboard kunnen afkomstig zijn uit een of meer onderliggende gegevenssets en rapporten. Een dashboard combineert on-premises gegevens en gegevens in de cloud om zo een geconsolideerde weergave te bieden van uw gegevens, ongeacht waar deze zich bevinden.
 
-![Op power BI aangepast dashboard](./media/four-steps/image2.png)
+![Aangepast dash board Power BI](./media/four-steps/image2.png)
 
-### <a name="understand-your-support-call-drivers"></a>Inzicht in uw ondersteuningsoproepstuurprogramma's
+### <a name="understand-your-support-call-drivers"></a>Meer informatie over uw ondersteunings oproep Stuur Programma's
 
-Wanneer u een hybride identiteitsoplossing implementeert zoals beschreven in dit artikel, moet u uiteindelijk een vermindering van uw ondersteuningsoproepen opmerken. Veelvoorkomende problemen zoals vergeten wachtwoorden en accountuitsluitingen worden beperkt door het implementeren van Azure's selfservice wachtwoordreset, terwijl gebruikers selfservice-toepassingstoegang kunnen inschakelen en toegang tot toepassingen kunnen aanvragen zonder te vertrouwen op uw IT-personeel.
+Wanneer u een hybride identiteits oplossing implementeert, zoals beschreven in dit artikel, moet u uiteindelijk een verlaging in uw ondersteunings oproepen opmerken. Veelvoorkomende problemen, zoals verg eten wacht woorden en account vergrendelingen, worden verholpen door de selfservice voor wachtwoord herstel van Azure te implementeren, terwijl het inschakelen van selfservice toepassings toegang gebruikers in staat stelt om toegang te krijgen tot toepassingen zonder afhankelijk te zijn van uw IT-personeel.
 
-Als u geen vermindering van het aantal ondersteuningsoproepen waarneemt, raden we u aan uw ondersteuningsoproepstuurprogramma's te analyseren in een poging om te bevestigen of de toegang tot SSPR of selfservice-toepassingen correct is geconfigureerd of als er andere nieuwe problemen zijn die systematisch kunnen worden Gericht.
+Als u geen verlaging ondervindt in ondersteunings oproepen, raden wij u aan uw ondersteunings gespreks Stuur Programma's te analyseren in een poging om te bevestigen of SSPR of selfservice voor toegang tot de toepassing correct is geconfigureerd, of dat er andere nieuwe problemen zijn die systematisch kunnen worden opgelost.
 
-*"In ons digitale transformatietraject hadden we een betrouwbare leverancier van identiteits- en toegangsbeheer nodig om een naadloze maar veilige integratie tussen ons, partners en cloudserviceproviders te vergemakkelijken, voor een effectief ecosysteem; Azure AD was de beste optie die ons de benodigde mogelijkheden en zichtbaarheid bood die ons in staat stelden om risico's te detecteren en erop te reageren."* --- [Yazan Almasri, Global Information Security Director, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"In onze digitale trans formatie-reis hebben we een betrouw bare provider voor identiteits-en toegangs beheer nodig om een krachtige, maar veilige integratie tussen VS, partners en Cloud serviceproviders te vergemakkelijken voor een effectief ecosysteem. Azure AD is de beste optie om de benodigde mogelijkheden en zicht baarheid aan te bieden die ons heeft ingeschakeld om Risico's te detecteren en erop te reageren. "* --- [Yazan Almasri, Global Information Security Director, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
-### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Houd uw gebruik van apps in de gaten om inzichten te genereren
+### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Uw gebruik van apps controleren om inzichten te verkrijgen
 
-Naast het ontdekken van Shadow IT, kan het monitoren van app-gebruik in uw hele organisatie met behulp van [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) uw organisatie helpen om de belofte van cloudtoepassingen ten volle te benutten. Het kan u helpen de controle over uw assets te behouden door een betere zichtbaarheid in de activiteit en de bescherming van kritieke gegevens in verschillende cloudtoepassingen te verbeteren. Door het gebruik van apps in uw organisatie te controleren met BEHULP van MCAS, u de volgende vragen beantwoorden:
+Naast het detecteren van schaduw, kunt u het gebruik van apps in uw organisatie bewaken met behulp van [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) uw organisatie helpen om optimaal te profiteren van de belofte van Cloud toepassingen. Het biedt u de controle over uw assets door betere zicht baarheid in de activiteiten en de beveiliging van essentiële gegevens in Cloud toepassingen te verbeteren. Als u het gebruik van apps in uw organisatie bewaken met behulp van MCAS, kunt u de volgende vragen beantwoorden:
 
-* In welke niet-goedgekeurde apps gebruiken werknemers om gegevens op te slaan?
-* Waar en wanneer worden gevoelige gegevens opgeslagen in de cloud?
-* Wie heeft toegang tot gevoelige gegevens in de cloud?
+* In welke niet-goedgekeurde apps worden werk nemers gebruikt om gegevens op te slaan?
+* Waar en wanneer worden gevoelige gegevens opgeslagen in de Cloud?
+* Wie heeft toegang tot gevoelige gegevens in de Cloud?
 
-*"Met Cloud App Security kunnen we snel afwijkingen opsporen en actie ondernemen."* --- [Eric LePenske, Senior Manager Informatiebeveiliging, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Met Cloud App Security kunnen we snel afwijkingen herkennen en actie ondernemen."* --- [Eric LePenske, Senior Manager, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Samenvatting
 
-Er zijn veel aspecten aan het implementeren van een hybride identiteitsoplossing, maar deze checklist in vier stappen helpt u snel een identiteitsinfrastructuur te realiseren waarmee gebruikers productiever en veiliger kunnen zijn.
+Er zijn veel aspecten voor het implementeren van een hybride identiteits oplossing, maar deze controle lijst met vier stappen helpt u snel een infra structuur voor identiteiten te maken waarmee gebruikers productiever en veiliger kunnen zijn.
 
-* Maak eenvoudig verbinding met apps
-* Stel automatisch één identiteit vast voor elke gebruiker
-* Geef uw gebruikers een veilige staat van kracht
-* Operationaliseer uw inzichten
+* Eenvoudig verbinding maken met apps
+* Eén identiteit voor elke gebruiker automatisch instellen
+* Geef uw gebruikers veilig
+* Operationeel maken uw inzichten
 
-We hopen dat dit document een nuttig stappenplan is om een sterke identiteitsbasis voor uw organisatie op te zetten.
+We hopen dat dit document een handig schema is voor het opzetten van een sterke identiteits basis voor uw organisatie.
 
-## <a name="identity-checklist"></a>Identiteitschecklist
+## <a name="identity-checklist"></a>Controle lijst voor identiteit
 
-We raden u aan de volgende checklist ter referentie af te drukken wanneer u uw reis naar een meer solide identiteitsbasis in uw organisatie begint.
+U wordt aangeraden de volgende controle lijst af te drukken voor referentie wanneer u begint met uw reis naar een meer solide identiteits basis in uw organisatie.
 
 ### <a name="today"></a>Today
 
 |Klaar?|Item|
 |:-|:-|
-||Pilot Self-Service Password Reset (SSPR) voor een groep|
-||Hybride componenten bewaken met Azure AD Connect-status|
-||Minste bevoorrechte beheerdersrollen toewijzen voor bewerking|
-||Ontdek Shadow IT met Microsoft Cloud App Security|
-||Azure Monitor gebruiken om gegevenslogboeken te verzamelen voor analyse|
+||Self-service voor wachtwoord herstel (SSPR) testen voor een groep|
+||Hybride onderdelen bewaken met behulp van Azure AD Connect Health|
+||Ten minste bevoegde beheerders rollen toewijzen voor bewerking|
+||Schaduw IT met Microsoft Cloud App Security ontdekken|
+||Azure Monitor gebruiken om gegevens logboeken te verzamelen voor analyse|
 
-### <a name="next-two-weeks"></a>Komende twee weken
+### <a name="next-two-weeks"></a>Volgende twee weken
 
 |Klaar?|Item|
 |:-|:-|
 ||Een app beschikbaar maken voor uw gebruikers|
-||Azure AD-inrichting voor een SaaS-app naar keuze pilot|
-||Een faseringsserver instellen voor Azure AD Connect en deze up-to-date houden|
-||Apps migreren van ADFS naar Azure AD|
-||Maak aangepaste dashboards voor uw leiderschap en uw dagelijkse|
+||Prototype van Azure AD inrichten voor een SaaS-app van Choice|
+||Een staging-server instellen voor Azure AD Connect en deze up-to-date houden|
+||Beginnen met het migreren van apps van ADFS naar Azure AD|
+||Aangepaste Dash boards maken voor uw leiderschap en dag tot dag|
 
 ### <a name="next-month"></a>Volgende maand
 
 |Klaar?|Item|
 |:-|:-|
-||Houd uw gebruik van apps in de gaten om inzichten te genereren|
-||Pilot veilige toegang op afstand tot apps|
+||Uw gebruik van apps controleren om inzichten te verkrijgen|
+||Pilot beveiligde externe toegang tot apps|
 ||Zorg ervoor dat alle gebruikers zijn geregistreerd voor MFA en SSPR|
-||Cloudverificatie inschakelen|
+||Cloud verificatie inschakelen|
 
 ### <a name="next-three-months"></a>Volgende drie maanden
 
 |Klaar?|Item|
 |:-|:-|
-||Selfservice-appbeheer inschakelen|
-||Selfservicegroepsbeheer inschakelen|
-||Houd uw gebruik van apps in de gaten om inzichten te genereren|
-||Inzicht in uw ondersteuningsoproepstuurprogramma's|
+||Self-service app-beheer inschakelen|
+||Self-service groeps beheer inschakelen|
+||Uw gebruik van apps controleren om inzichten te verkrijgen|
+||Meer informatie over uw ondersteunings oproep Stuur Programma's|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ontdek hoe u uw veilige houding vergroten met behulp van de mogelijkheden van Azure Active Directory en deze checklist voor vijf stappen - [Vijf stappen om uw identiteitsinfrastructuur te beveiligen.](https://aka.ms/securitysteps)
+Meer informatie over hoe u uw beveiligde postuur kunt verhogen met behulp van de mogelijkheden van Azure Active Directory en deze controle lijst [voor vijf stappen-vijf stap om uw identiteits infrastructuur te beveiligen](https://aka.ms/securitysteps).
 
-Ontdek hoe de identiteitsfuncties in Azure AD u kunnen helpen uw overgang naar cloudbeheer te versnellen door de oplossingen en mogelijkheden te bieden waarmee organisaties snel meer van hun identiteitsbeheer kunnen overnemen en verplaatsen van traditionele on-premises systemen naar Azure AD - [Hoe Azure AD Cloud-beheer levert voor on-premises workloads.](https://aka.ms/cloudgoverned)
+Lees hoe u met de identiteits functies in azure AD uw overgang naar het beheer van de cloud kunt versnellen door de oplossingen en mogelijkheden te bieden waarmee organisaties snel meer hun identiteits beheer van traditionele on-premises systemen kunnen overnemen en verplaatsen naar Azure AD: [hoe Azure ad het beheer van de Cloud biedt voor on-premises workloads](https://aka.ms/cloudgoverned).

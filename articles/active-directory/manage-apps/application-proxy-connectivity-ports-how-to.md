@@ -1,6 +1,6 @@
 ---
-title: Firewallpoorten openen die vereist zijn voor een app Voor proxy van toepassingen
-description: Ontdek welke poorten u wilt openen voor de Azure AD-toepassingsproxy om correct te werken
+title: Firewall poorten openen die zijn vereist voor een toepassings proxy-app
+description: Ontdek welke poorten er moeten worden geopend om de Azure-AD-toepassingsproxy correct te laten werken
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275556"
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>De firewallpoorten openen die nodig zijn voor een toepassingsproxytoepassing
+# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>De firewall poorten openen die zijn vereist voor een toepassings proxy toepassing
 
-Zie het gedeelte vereisten van de documentatie van de [toepassingsproxy](application-proxy-add-on-premises-application.md)om een volledige lijst met vereiste poorten en de functie van elke poort te bekijken. Houd er rekening mee dat Application Proxy alleen uitgaande poorten gebruikt.
+Zie de sectie vereisten van de documentatie van de [toepassings proxy](application-proxy-add-on-premises-application.md)voor een volledige lijst met de vereiste poorten en de functie van elke poort. Houd er rekening mee dat toepassings proxy alleen uitgaande poorten gebruikt.
 
-U ook controleren of u alle vereiste poorten hebt geopend door de [Connector Ports Test Tool](https://aadap-portcheck.connectorporttest.msappproxy.net/) te openen vanuit uw on-premises netwerk. Meer groene vinkjes betekent meer veerkracht. 
+U kunt ook controleren of alle vereiste poorten zijn geopend door het [test hulpprogramma voor connector poorten](https://aadap-portcheck.connectorporttest.msappproxy.net/) te openen vanaf uw on-premises netwerk. Meer groene vinkjes betekent een grotere tolerantie. 
 
-## <a name="app-proxy-regions"></a>Proxyregio's voor apps
+## <a name="app-proxy-regions"></a>App-proxy regio's
 
-We werken aan een manier om u te laten weten welke van deze regio's groen voor u moet zijn. Voor nu, zorg ervoor dat ze allemaal zijn. Centraal VS is ook vereist, ongeacht in welke regio u zich bevindt.
+We werken aan een manier om u te laten weten welke van deze regio's voor u groen moet zijn. Zorg er ook voor dat deze allemaal zijn. Central US is ook vereist, ongeacht in welke regio u zich bevindt.
 
-Om ervoor te zorgen dat de tool u de juiste resultaten geeft, moet u:
+Zorg ervoor dat het hulp programma de juiste resultaten krijgt door het volgende te doen:
 
--   Open het hulpprogramma in een browser vanaf de server waar u de connector hebt geïnstalleerd.
+-   Open het hulp programma op een browser van de server waarop u de connector hebt geïnstalleerd.
 
--   Zorg ervoor dat alle proxy's of firewalls die van toepassing zijn op uw connector ook op deze pagina worden toegepast. Dit kan in Internet Explorer door naar **Connections**  - &gt; **Lan-instellingen**voor **instellingen**  - &gt; **internetopties**  - &gt; te gaan. Op deze pagina ziet u het veld "Gebruik een proxyserver voor uw LAN". Selecteer dit vak en plaats het proxyadres in het veld Adres.
+-   Zorg ervoor dat alle proxy's of firewalls die van toepassing zijn op uw connector ook worden toegepast op deze pagina. Dit kan in Internet Explorer worden gedaan door te gaan naar **instellingen**  - &gt; **Internet opties**  - &gt; **verbindingen**  - &gt; **LAN-instellingen**. Op deze pagina ziet u het veld "een proxy server gebruiken voor uw LAN". Schakel dit selectie vakje in en plaats het proxy adres in het veld adres.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)
+[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)

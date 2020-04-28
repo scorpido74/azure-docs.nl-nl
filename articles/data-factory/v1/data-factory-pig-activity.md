@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met varkensactiviteit in Azure Data Factory
-description: Ontdek hoe u de varkensactiviteit in een Azure-gegevensfabriek gebruiken om Pig-scripts uit te voeren op een on-demand/uw eigen HDInsight-cluster.
+title: Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
+description: Meer informatie over hoe u de Pig-activiteit in een Azure data factory kunt gebruiken om Pig-scripts uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,33 +13,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703197"
 ---
-# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met varkensactiviteit in Azure Data Factory
-> [!div class="op_single_selector" title1="Transformatieactiviteiten"]
-> * [Hive Activiteit](data-factory-hive-activity.md) 
-> * [Varkensactiviteit](data-factory-pig-activity.md)
-> * [Activiteit kaart verminderen](data-factory-map-reduce.md)
-> * [Hadoop streaming activiteit](data-factory-hadoop-streaming-activity.md)
-> * [Vonkactiviteit](data-factory-spark.md)
+# <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
+> [!div class="op_single_selector" title1="Transformatie activiteiten"]
+> * [Hive-activiteit](data-factory-hive-activity.md) 
+> * [Pig-activiteit](data-factory-pig-activity.md)
+> * [MapReduce-activiteit](data-factory-map-reduce.md)
+> * [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
+> * [Spark-activiteit](data-factory-spark.md)
 > * [Machine Learning-batchuitvoeringsactiviteit](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning-activiteit resources bijwerken](data-factory-azure-ml-update-resource-activity.md)
 > * [Opgeslagen procedureactiviteit](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-activiteit](data-factory-usql-activity.md)
-> * [.NET Aangepaste activiteit](data-factory-use-custom-activities.md)
+> * [Aangepaste .NET-activiteit](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [gegevens transformeren met varkensactiviteit in Gegevensfabriek](../transform-data-using-hadoop-pig.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens transformeren met behulp van Pig-activiteit in Data Factory](../transform-data-using-hadoop-pig.md).
 
 
-De HDInsight Pig-activiteit in een Data [Factory-pijplijn](data-factory-create-pipelines.md) voert Pig-query's uit op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [on-demand](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-gebaseerde HDInsight-cluster. Dit artikel bouwt voort op het artikel [over gegevenstransformatieactiviteiten,](data-factory-data-transformation-activities.md) dat een algemeen overzicht geeft van gegevenstransformatie en de ondersteunde transformatieactiviteiten.
+Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-create-pipelines.md) worden Pig-query's uitgevoerd op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) gebaseerd HDInsight-cluster op basis van Windows/Linux. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
 
 > [!NOTE] 
-> Als u nieuw bent in Azure Data Factory, leest u [Inleiding tot Azure Data Factory](data-factory-introduction.md) en doet u de zelfstudie: Bouw uw eerste [gegevenspijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
+> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -80,24 +80,24 @@ De HDInsight Pig-activiteit in een Data [Factory-pijplijn](data-factory-create-p
 }
 ```
 
-## <a name="syntax-details"></a>Syntaxisdetails
+## <a name="syntax-details"></a>Syntaxis Details
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | name |Naam van de activiteit |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightPig HDinsightPig |Ja |
-| Ingangen |Een of meer inputs verbruikt door de Pig-activiteit |Nee |
-| Uitgangen |Een of meer outputs geproduceerd door de varkensactiviteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als gekoppelde service in Data Factory |Ja |
-| uit |De inline van het varkensscript opgeven |Nee |
-| scriptPath |Sla het Pig-script op in een Azure blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap 'script' of 'scriptPath'. Beide kunnen niet samen worden gebruikt. De bestandsnaam is hoofdlettergevoelig. |Nee |
-| Definieert |Parameters opgeven als sleutel-/waardeparen voor verwijzingen in het script Varken |Nee |
+| type |HDinsightPig |Ja |
+| invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |Nee |
+| uitvoer |Een of meer uitvoer die wordt geproduceerd door de Pig-activiteit |Ja |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
+| uit |Inline van het Pig-script opgeven |Nee |
+| scriptPath |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
+| compliant |Para meters opgeven als sleutel/waarde-paren voor het verwijzen binnen het Pig-script |Nee |
 
 ## <a name="example"></a>Voorbeeld
-Laten we eens kijken naar een voorbeeld van analytics voor gamelogs waarbij u de tijd wilt identificeren die wordt besteed aan spelers die games spelen die door uw bedrijf zijn gelanceerd.
+Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die wordt besteed aan spelers die games spelen die door uw bedrijf worden gestart.
 
-Het volgende voorbeeldspellogboek is een door komma (,) gescheiden bestand. Het bevat de volgende velden : ProfileID, SessionStart, Duur, SrcIPAddress en GameType.
+Het volgende voor beeld van een spel logboek is een door komma's (,) gescheiden bestand. Het bevat de volgende velden: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -107,7 +107,7 @@ Het volgende voorbeeldspellogboek is een door komma (,) gescheiden bestand. Het 
 .....
 ```
 
-Het **script Varken** om deze gegevens te verwerken:
+Het **Pig-script** voor het verwerken van deze gegevens:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -119,18 +119,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Ga als volgt te werk om dit Varkensscript uit te voeren in een pijplijn gegevensfabriek:
+Voer de volgende stappen uit om dit Pig-script uit te voeren in een Data Factory pijp lijn:
 
-1. Maak een gekoppelde service om [uw eigen HDInsight-computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of [on-demand HDInsight-computecluster te](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)configureren. Laten we deze gekoppelde dienst **HDInsightLinkedService**noemen.
-2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob-opslag met de gegevens te configureren. Laten we deze gekoppelde service **StorageLinkedService**noemen.
-3. Maak [gegevenssets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoergegevens. Laten we de invoergegevensset **PigSampleIn** en de uitvoergegevensset **PigSampleOut**aanroepen.
-4. Kopieer de varkensquery in een bestand dat de Azure Blob Storage in stap #2 heeft geconfigureerd. Als de Azure-opslag die de gegevens host, verschilt van de opslag die het querybestand host, maakt u een afzonderlijke azure storage-gekoppelde service. Raadpleeg de gekoppelde service in de activiteitsconfiguratie. Gebruik **scriptPath** om het pad naar het varkensscriptbestand en **scriptLinkedService**op te geven . 
+1. Maak een gekoppelde service om [uw eigen hdinsight Compute-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) te registreren of configureer het [hdinsight-berekenings cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). We bellen u de **HDInsightLinkedService**van de gekoppelde service.
+2. Maak een [gekoppelde service](data-factory-azure-blob-connector.md) om de verbinding met Azure Blob Storage te configureren die als host fungeert voor de gegevens. We bellen u de **StorageLinkedService**van de gekoppelde service.
+3. Maak gegevens [sets](data-factory-create-datasets.md) die verwijzen naar de invoer en de uitvoer gegevens. We gaan de invoer gegevensset **PigSampleIn** en de uitvoer gegevensset **PigSampleOut**noemen.
+4. Kopieer de Pig-query in een bestand met de Azure-Blob Storage die in stap #2 zijn geconfigureerd. Als de Azure-opslag die als host fungeert voor de gegevens een andere is dan die als host fungeert voor het query bestand, maakt u een afzonderlijke Azure Storage gekoppelde service. Raadpleeg de gekoppelde service in de configuratie van de activiteit. Gebruik **ScriptPath** om het pad naar het Pig-script bestand en **scriptLinkedService**op te geven. 
    
    > [!NOTE]
-   > U de inline van het varkensscript ook in de activiteitsdefinitie opnemen met behulp van de eigenschap **script.** We raden deze aanpak echter niet aan, omdat alle speciale tekens in het script moeten worden ontsnapt en problemen met foutopsporing kunnen veroorzaken. De beste praktijk is om stap #4 te volgen.
+   > U kunt ook het Pig-script inline in de definitie van de activiteit opgeven met behulp van de eigenschap **script** . Deze aanpak wordt echter niet aanbevolen omdat alle speciale tekens in het script moeten worden ontsnapd en kan problemen met de fout opsporing veroorzaken. De best practice moet worden gevolgd door een stap #4.
    >
    >
-5. Maak de pijplijn met de HDInsightPig-activiteit. Deze activiteit verwerkt de invoergegevens door het pig-script uit te voeren op het HDInsight-cluster.
+5. Maak de pijp lijn met de activiteit HDInsightPig. Met deze activiteit worden de invoer gegevens verwerkt door Pig-script uit te voeren op HDInsight-cluster.
 
     ```JSON
     {
@@ -164,15 +164,15 @@ Ga als volgt te werk om dit Varkensscript uit te voeren in een pijplijn gegevens
       }
     }
     ```
-6. Implementeer de pijplijn. Zie Het artikel [Pijplijnen maken](data-factory-create-pipelines.md) voor meer informatie. 
-7. Controleer de pijplijn met behulp van de monitoring- en beheerweergaven van de gegevensfabriek. Zie Het artikel [over gegevensfabrieken controleren en beheren](data-factory-monitor-manage-pipelines.md) voor meer informatie.
+6. Implementeer de pijp lijn. Zie [het artikel pijp lijnen maken](data-factory-create-pipelines.md) voor meer informatie. 
+7. Bewaak de pijp lijn met behulp van de data factory controle-en beheer weergaven. Zie het artikel [Data Factory pipelines controleren en beheren](data-factory-monitor-manage-pipelines.md) voor meer informatie.
 
-## <a name="specifying-parameters-for-a-pig-script"></a>Parameters opgeven voor een Varkensscript
-Neem het volgende voorbeeld: gamelogboeken worden dagelijks ingenomen in Azure Blob Storage en opgeslagen in een map die is verdeeld op basis van datum en tijd. U wilt het Pig-script parameteriseren en de locatie van de invoermap dynamisch doorgeven tijdens runtime en ook de uitvoer produceren die is verdeeld met datum en tijd.
+## <a name="specifying-parameters-for-a-pig-script"></a>Para meters opgeven voor een Pig-script
+Bekijk het volgende voor beeld: spel logboeken worden dagelijks opgenomen in Azure Blob Storage en opgeslagen in een map die is gepartitioneerd op basis van datum en tijd. U wilt het Pig-script para meters en de locatie van de invoercel dynamisch tijdens runtime door geven en ook de uitvoer gepartitioneerd met datum en tijd.
 
-Ga als volgt te werk om het met parameteren de seinsom te gebruiken:
+Ga als volgt te werk om het Pig-script te gebruiken:
 
-* Definieer de parameters in **definieert**.
+* Definieer de para meters in **definieert**.
 
     ```JSON
     {
@@ -210,7 +210,7 @@ Ga als volgt te werk om het met parameteren de seinsom te gebruiken:
       }
     }
     ```
-* Raadpleeg in het Varkensscript de parameters met **'$parameterName'** zoals weergegeven in het volgende voorbeeld:
+* In het Pig-script raadpleegt u de para meters met behulp van '**$parameterName**', zoals wordt weer gegeven in het volgende voor beeld:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -220,8 +220,8 @@ Ga als volgt te werk om het met parameteren de seinsom te gebruiken:
     ```
 
 ## <a name="see-also"></a>Zie ook
-* [Hive Activiteit](data-factory-hive-activity.md)
-* [Activiteit kaart verminderen](data-factory-map-reduce.md)
-* [Hadoop streaming activiteit](data-factory-hadoop-streaming-activity.md)
+* [Hive-activiteit](data-factory-hive-activity.md)
+* [MapReduce-activiteit](data-factory-map-reduce.md)
+* [Hadoop streaming-activiteit](data-factory-hadoop-streaming-activity.md)
 * [Spark-programma's aanroepen](data-factory-spark.md)
 * [R-scripts aanroepen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

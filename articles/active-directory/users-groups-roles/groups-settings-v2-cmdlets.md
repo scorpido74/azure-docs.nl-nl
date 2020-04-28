@@ -1,7 +1,7 @@
 ---
-title: PowerShell V2-voorbeelden voor het beheren van groepen - Azure AD | Microsoft Documenten
-description: Op deze pagina vindt u PowerShell-voorbeelden waarmee u uw groepen beheren in Azure Active Directory
-keywords: Azure AD, Azure Active Directory, PowerShell, Groepen, Groepsbeheer
+title: Power shell v2-voor beelden voor het beheren van groepen-Azure AD | Microsoft Docs
+description: Op deze pagina vindt u Power shell-voor beelden voor het beheren van uw groepen in Azure Active Directory
+keywords: Azure AD, Azure Active Directory, Power shell, groepen, groeps beheer
 services: active-directory
 author: curtand
 manager: daveba
@@ -15,32 +15,32 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74233117"
 ---
-# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-versie 2-cmdlets voor groepsbeheer
+# <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
 
 > [!div class="op_single_selector"]
-> - [Azure-portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> - [Powershell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
-Dit artikel bevat voorbeelden van het gebruik van PowerShell om uw groepen te beheren in Azure Active Directory (Azure AD).  Het vertelt u ook hoe u instellen met de Azure AD PowerShell-module. Eerst moet u [de Azure AD PowerShell-module downloaden.](https://www.powershellgallery.com/packages/AzureAD/)
+In dit artikel vindt u voor beelden van het gebruik van Power shell voor het beheren van uw groepen in Azure Active Directory (Azure AD).  Ook wordt uitgelegd hoe u kunt instellen met de Azure AD Power shell-module. Eerst moet u [de Azure AD Power shell-module downloaden](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="install-the-azure-ad-powershell-module"></a>De Azure AD PowerShell-module installeren
+## <a name="install-the-azure-ad-powershell-module"></a>De Azure AD Power shell-module installeren
 
-Als u de Azure AD PowerShell-module wilt installeren, gebruikt u de volgende opdrachten:
+Als u de Azure AD Power shell-module wilt installeren, gebruikt u de volgende opdrachten:
 
 ```powershell
     PS C:\Windows\system32> install-module azuread
     PS C:\Windows\system32> import-module azuread
 ```
 
-Als u wilt controleren of de module klaar is voor gebruik, gebruikt u de volgende opdracht:
+Als u wilt controleren of de module gereed is voor gebruik, gebruikt u de volgende opdracht:
 
 ```powershell
     PS C:\Windows\system32> get-module azuread
@@ -50,17 +50,17 @@ Als u wilt controleren of de module klaar is voor gebruik, gebruikt u de volgend
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Nu u beginnen met het gebruik van de cmdlets in de module. Raadpleeg de online referentiedocumentatie voor [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0)voor een volledige beschrijving van de cmdlets in de Azure AD-module.
+U kunt nu beginnen met het gebruik van de cmdlets in de module. Raadpleeg de online-referentie documentatie voor [Azure Active Directory Power shell-versie 2](/powershell/azure/install-adv2?view=azureadps-2.0)voor een volledige beschrijving van de cmdlets in de Azure ad-module.
 
 ## <a name="connect-to-the-directory"></a>Verbinding maken met de map
 
-Voordat u groepen beheren met Azure AD PowerShell-cmdlets, moet u uw PowerShell-sessie verbinden met de map die u wilt beheren. Gebruik de volgende opdracht:
+Voordat u groepen kunt gaan beheren met Azure AD Power shell-cmdlets, moet u uw Power shell-sessie verbinden met de map die u wilt beheren. Gebruik de volgende opdracht:
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-De cmdlet vraagt u om de referenties die u wilt gebruiken om toegang te krijgen tot uw directory. In dit voorbeeld gebruiken karen@drumkit.onmicrosoft.com we om toegang te krijgen tot de demonstratiemap. De cmdlet retourneert een bevestiging om aan te geven dat de sessie is verbonden met uw map:
+De cmdlet vraagt u om de referenties die u wilt gebruiken voor toegang tot uw Directory. In dit voor beeld gebruiken karen@drumkit.onmicrosoft.com we om toegang te krijgen tot de demo Directory. De cmdlet retourneert een bevestiging om weer te geven dat de sessie is verbonden met uw map:
 
 ```powershell
     Account                       Environment Tenant
@@ -68,27 +68,27 @@ De cmdlet vraagt u om de referenties die u wilt gebruiken om toegang te krijgen 
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
-U nu beginnen met het gebruik van de AzureAD-cmdlets om groepen in uw map te beheren.
+U kunt nu beginnen met het gebruik van de AzureAD-cmdlets voor het beheren van groepen in uw Directory.
 
 ## <a name="retrieve-groups"></a>Groepen ophalen
 
-Als u bestaande groepen uit uw map wilt ophalen, gebruikt u de cmdlet Get-AzureADGroups. 
+Gebruik de cmdlet Get-AzureADGroups om bestaande groepen uit uw directory op te halen. 
 
-Als u alle groepen in de map wilt ophalen, gebruikt u de cmdlet zonder parameters:
+Als u alle groepen in de Directory wilt ophalen, gebruikt u de cmdlet zonder para meters:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup
 ```
 
-De cmdlet retourneert alle groepen in de verbonden map.
+Met de cmdlet worden alle groepen in de verbonden Directory geretourneerd.
 
-U de parameter -objectID gebruiken om een specifieke groep op te halen waarvoor u de objectID van de groep opgeeft:
+U kunt de para meter-objectID gebruiken voor het ophalen van een specifieke groep waarvoor u de object-id van de groep opgeeft:
 
 ```powershell
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 ```
 
-De cmdlet retourneert nu de groep waarvan de objectID overeenkomt met de waarde van de parameter die u hebt ingevoerd:
+De cmdlet retourneert nu de groep waarvan de object-id overeenkomt met de waarde van de para meter die u hebt ingevoerd:
 
 ```powershell
     DeletionTimeStamp            :
@@ -107,7 +107,7 @@ De cmdlet retourneert nu de groep waarvan de objectID overeenkomt met de waarde 
     SecurityEnabled              : True
 ```
 
-U zoeken naar een specifieke groep met behulp van de parameter -filter. Deze parameter neemt een ODATA-filterclausule en retourneert alle groepen die overeenkomen met het filter, zoals in het volgende voorbeeld:
+U kunt zoeken naar een specifieke groep met behulp van de para meter-filter. Deze para meter gebruikt een ODATA-filter component en retourneert alle groepen die overeenkomen met het filter, zoals in het volgende voor beeld:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -130,19 +130,19 @@ U zoeken naar een specifieke groep met behulp van de parameter -filter. Deze par
 ```
 
 > [!NOTE]
-> De Azure AD PowerShell-cmdlets implementeren de OData-querystandaard. Zie **$filter** in [de queryopties van het OData-systeem voor](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)meer informatie met het OData-eindpunt .
+> De Azure AD Power shell-cmdlets implementeren de OData-query standaard. Zie **$filter** in [de query opties van het odata-systeem met behulp van het odata-eind punt](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)voor meer informatie.
 
 ## <a name="create-groups"></a>Groepen maken
 
-Als u een nieuwe groep in uw map wilt maken, gebruikt u de cmdlet Nieuw-AzureADGroup. Deze cmdlet creëert een nieuwe beveiligingsgroep genaamd "Marketing":
+Als u een nieuwe groep in uw Directory wilt maken, gebruikt u de cmdlet New-AzureADGroup. Met deze cmdlet wordt een nieuwe beveiligings groep gemaakt met de naam ' Marketing ':
 
 ```powershell
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 ```
 
-## <a name="update-groups"></a>Groepen bijwerken
+## <a name="update-groups"></a>Update groepen
 
-Als u een bestaande groep wilt bijwerken, gebruikt u de cmdlet Set-AzureADGroup. In dit voorbeeld wijzigen we de eigenschap DisplayName van de groep 'Intune Administrators'. Eerst zoeken we de groep met de cmdlet en het filter Get-AzureADGroup met het kenmerk DisplayName:
+Als u een bestaande groep wilt bijwerken, gebruikt u de cmdlet Set-AzureADGroup. In dit voor beeld wijzigen we de eigenschap DisplayName van de groep ' intune-beheerders '. Eerst vinden we de groep met behulp van de cmdlet Get-AzureADGroup en filteren met behulp van het kenmerk DisplayName:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -164,13 +164,13 @@ Als u een bestaande groep wilt bijwerken, gebruikt u de cmdlet Set-AzureADGroup.
     SecurityEnabled              : True
 ```
 
-Vervolgens wijzigen we de eigenschap Beschrijving in de nieuwe waarde 'Apparaatbeheerders inafstemmen':
+Vervolgens wijzigen we de eigenschap Description in de nieuwe waarde ' intune-apparaten beheerders ':
 
 ```powershell
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-Als we de groep nu opnieuw vinden, zien we dat de eigenschap Beschrijving is bijgewerkt om de nieuwe waarde weer te geven:
+Als we de groep nu opnieuw vinden, zien we dat de eigenschap Beschrijving is bijgewerkt met de nieuwe waarde:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -193,7 +193,7 @@ Als we de groep nu opnieuw vinden, zien we dat de eigenschap Beschrijving is bij
 
 ## <a name="delete-groups"></a>Groepen verwijderen
 
-Als u groepen uit uw map wilt verwijderen, gebruikt u de cmdlet Remove-AzureADGroup als volgt:
+Als u groepen uit uw Directory wilt verwijderen, gebruikt u de cmdlet Remove-AzureADGroup als volgt:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
@@ -203,17 +203,17 @@ Als u groepen uit uw map wilt verwijderen, gebruikt u de cmdlet Remove-AzureADGr
 
 ### <a name="add-members"></a>Leden toevoegen
 
-Als u nieuwe leden aan een groep wilt toevoegen, gebruikt u de cmdlet Add-AzureADGroupMember. Met deze opdracht wordt een lid toegevoegd aan de groep Intune-beheerders die we in het vorige voorbeeld hebben gebruikt:
+Als u nieuwe leden wilt toevoegen aan een groep, gebruikt u de cmdlet Add-AzureADGroupMember. Met deze opdracht wordt een lid toegevoegd aan de groep intune-beheerders die we in het vorige voor beeld hebben gebruikt:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-De parameter -ObjectId is de ObjectID van de groep waaraan we een lid willen toevoegen, en de -RefObjectId is de ObjectID van de gebruiker die we als lid aan de groep willen toevoegen.
+De para meter-ObjectId is de ObjectID van de groep waaraan we een lid willen toevoegen en de-RefObjectId is de ObjectID van de gebruiker die u als lid wilt toevoegen aan de groep.
 
-### <a name="get-members"></a>Leden krijgen
+### <a name="get-members"></a>Leden ophalen
 
-Als u de bestaande leden van een groep wilt opvragen, gebruikt u de cmdlet Get-AzureADGroupMember, zoals in dit voorbeeld:
+Als u de bestaande leden van een groep wilt ophalen, gebruikt u de cmdlet Get-AzureADGroupMember, zoals in dit voor beeld:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -226,27 +226,27 @@ Als u de bestaande leden van een groep wilt opvragen, gebruikt u de cmdlet Get-A
 
 ### <a name="remove-members"></a>Leden verwijderen
 
-Als u het lid wilt verwijderen dat we eerder aan de groep hebben toegevoegd, gebruikt u de cmdlet Remove-AzureADGroupMember, zoals hier wordt weergegeven:
+Als u het eerder aan de groep toegevoegde lid wilt verwijderen, gebruikt u de cmdlet Remove-AzureADGroupMember, zoals hier wordt weer gegeven:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-### <a name="verify-members"></a>Leden verifiëren
+### <a name="verify-members"></a>Leden controleren
 
-Als u de groepslidmaatschappen van een gebruiker wilt verifiëren, gebruikt u de cmdlet Select-AzureADGroupIdsUserIsMemberOf. Deze cmdlet neemt als zijn parameters de ObjectId van de gebruiker waarvoor de groep lidmaatschappen te controleren, en een lijst van groepen waarvoor de lidmaatschappen te controleren. De lijst met groepen moet worden weergegeven in de vorm van een complexe variabele van het type "Microsoft.Open.AzureAD.Model.Model.GroupIdsForMembershipCheck", dus we moeten eerst een variabele met dat type maken:
+Als u de groepslid maatschappen van een gebruiker wilt controleren, gebruikt u de cmdlet Select-AzureADGroupIdsUserIsMemberOf. Deze cmdlet krijgt de ObjectId van de gebruiker waarvoor de groepslid maatschappen moeten worden gecontroleerd en een lijst met groepen waarvoor de lidmaatschappen moeten worden gecontroleerd. De lijst met groepen moet worden weer gegeven in de vorm van een complexe variabele van het type micro soft. open. AzureAD. model. GroupIdsForMembershipCheck. Daarom moet u eerst een variabele met dat type maken:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 ```
 
-Vervolgens geven we waarden voor de groupId's om het kenmerk "GroupIds" van deze complexe variabele te controleren:
+We geven vervolgens waarden op voor de groupIds om het kenmerk ' GroupIds ' van deze complexe variabele te controleren:
 
 ```powershell
     PS C:\Windows\system32> $g.GroupIds = "b11ca53e-07cc-455d-9a89-1fe3ab24566b", "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
 ```
 
-Nu, als we willen de groepslidmaatschappen van een gebruiker te controleren met ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea tegen de groepen in $g, moeten we gebruiken:
+Als we nu de groepslid maatschappen van een gebruiker met ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea willen controleren op basis van de groepen in $g, moeten we het volgende gebruiken:
 
 ```powershell
     PS C:\Windows\system32> Select-AzureADGroupIdsUserIsMemberOf -ObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea -GroupIdsForMembershipCheck $g
@@ -256,43 +256,43 @@ Nu, als we willen de groepslidmaatschappen van een gebruiker te controleren met 
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-De geretourneerde waarde is een lijst met groepen waarvan deze gebruiker lid is. U deze methode ook toepassen om het lidmaatschap van contactpersonen, groepen of serviceprincipals te controleren op een bepaalde lijst met groepen, met Behulp van Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf of Select-AzureADGroupIdsServicePrincipalIsMemberOf
+De geretourneerde waarde is een lijst met groepen waarvan deze gebruiker lid is. U kunt deze methode ook Toep assen om het lidmaatschap van contact personen, groepen of service-principals voor een bepaalde lijst met groepen te controleren met Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf of Select-AzureADGroupIdsServicePrincipalIsMemberOf
 
-## <a name="disable-group-creation-by-your-users"></a>Groepscreatie door uw gebruikers uitschakelen
+## <a name="disable-group-creation-by-your-users"></a>Het maken van groepen door uw gebruikers uitschakelen
 
-U voorkomen dat niet-beheerders beveiligingsgroepen maken. Het standaardgedrag in Microsoft Online Directory Services (MSODS) is om niet-beheerders in staat te stellen groepen te maken, ongeacht of ook selfservicegroepsbeheer (SSGM) is ingeschakeld. De SSGM-instelling regelt alleen het gedrag in het toegangspaneel Van Mijn apps.
+U kunt voor komen dat gebruikers zonder beheerders rechten beveiligings groepen maken. Het standaard gedrag in micro soft Online Directory Services (MSODS) is om niet-beheerders gebruikers toe te staan groepen te maken, ongeacht of self-service groeps beheer (SSGM) ook is ingeschakeld. De instelling SSGM bepaalt alleen gedrag in het toegangs venster mijn apps.
 
-Ga als u de aanmaak van groepen voor niet-beheerders uit:
+Het maken van groepen uitschakelen voor gebruikers die geen beheerder zijn:
 
-1. Controleer of niet-beheerders groepen mogen maken:
+1. Controleer of niet-beheerders gebruikers groepen mogen maken:
    
    ```powershell
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Als het `UsersPermissionToCreateGroupsEnabled : True`terugkeert, kunnen niet-beheerdersgroepen maken. Ga als volgt te werk om deze functie uit te schakelen:
+2. Als deze wordt `UsersPermissionToCreateGroupsEnabled : True`geretourneerd, kunnen gebruikers die geen beheerder zijn, groepen maken. U kunt deze functie als volgt uitschakelen:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
   
-## <a name="manage-owners-of-groups"></a>Eigenaren van groepen beheren
+## <a name="manage-owners-of-groups"></a>Eigen aren van groepen beheren
 
-Als u eigenaren aan een groep wilt toevoegen, gebruikt u de cmdlet Add-AzureADGroupOwner:
+Als u eigen aren wilt toevoegen aan een groep, gebruikt u de cmdlet Add-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-De parameter -ObjectId is de ObjectID van de groep waaraan we een eigenaar willen toevoegen, en de -RefObjectId is de ObjectID van de gebruiker of serviceprincipal die we als eigenaar van de groep willen toevoegen.
+De para meter-ObjectId is de ObjectID van de groep waaraan we een eigenaar willen toevoegen en de-RefObjectId is de ObjectID van de gebruiker of service-principal die u wilt toevoegen als een eigenaar van de groep.
 
-Als u de eigenaren van een groep wilt ophalen, gebruikt u de cmdlet Get-AzureADGroupOwner:
+Als u de eigen aren van een groep wilt ophalen, gebruikt u de cmdlet Get-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-De cmdlet retourneert de lijst met eigenaren (gebruikers en serviceprincipals) voor de opgegeven groep:
+De cmdlet retourneert de lijst met eigen aren (gebruikers en service-principals) voor de opgegeven groep:
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -300,7 +300,7 @@ De cmdlet retourneert de lijst met eigenaren (gebruikers en serviceprincipals) v
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 ```
 
-Als u een eigenaar uit een groep wilt verwijderen, gebruikt u de cmdlet Verwijderen-AzureADGroupOwner:
+Als u een eigenaar uit een groep wilt verwijderen, gebruikt u de cmdlet Remove-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
@@ -308,33 +308,33 @@ Als u een eigenaar uit een groep wilt verwijderen, gebruikt u de cmdlet Verwijde
 
 ## <a name="reserved-aliases"></a>Gereserveerde aliassen
 
-Wanneer een groep wordt gemaakt, kunnen bepaalde eindpunten de eindgebruiker toestaan een e-mailnickname of alias op te geven die moet worden gebruikt als onderdeel van het e-mailadres van de groep.Groepen met de volgende zeer bevoorrechte e-mailaliassen kunnen alleen worden gemaakt door een globale Azure AD-beheerder. 
+Wanneer een groep wordt gemaakt, kan de eind gebruiker met bepaalde eind punten een mailnickname of alias opgeven die moet worden gebruikt als onderdeel van het e-mail adres van de groep.Groepen met de volgende Maxi maal privileged e-mail aliassen kunnen alleen worden gemaakt door een globale beheerder van Azure AD. 
   
-* Misbruik
+* verslaving
 * beheerder
 * beheerder
 * hostmaster
 * majordomo
-* Postmaster
-* Root
-* Veilige
+* beheerder
+* basis
+* beveiligd
 * security
-* ssl-beheerder
+* SSL-beheerder
 * Webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>Schrijven naar on-premises groep (voorbeeld)
+## <a name="group-writeback-to-on-premises-preview"></a>Terugschrijven naar on-premises groep (preview-versie)
 
-Tegenwoordig worden veel groepen nog steeds beheerd in on-premises Active Directory. Als u verzoeken wilt beantwoorden om cloudgroepen opnieuw te synchroniseren met on-premises, is de terugschrijffunctie voor Office 365-groepen voor Azure AD nu beschikbaar voor preview.
+Vandaag worden nog veel groepen beheerd in on-premises Active Directory. Voor het beantwoorden van aanvragen om Cloud groepen te synchroniseren met on-premises, is de functie voor het terugschrijven van Office 365-groepen voor Azure AD nu beschikbaar als preview-versie.
 
-Office 365-groepen worden gemaakt en beheerd in de cloud. Met de schrijfmogelijkheid u Office 365-groepen als distributiegroepen terugschrijven naar een Active Directory-forest met Exchange geïnstalleerd. Gebruikers met on-premises Exchange-postvakken kunnen vervolgens e-mails van deze groepen verzenden en ontvangen. De groepterugschrijffunctie biedt geen ondersteuning voor Azure AD-beveiligingsgroepen of distributiegroepen.
+Office 365-groepen worden gemaakt en beheerd in de Cloud. Met de back-upfunctie kunt u Office 365-groepen als distributie groepen schrijven naar een Active Directory-forest waarop Exchange is geïnstalleerd. Gebruikers met on-premises Exchange-post vakken kunnen vervolgens e-mails van deze groepen verzenden en ontvangen. De functie voor het terugschrijven van groepen biedt geen ondersteuning voor Azure AD-beveiligings groepen of-distributie groepen.
 
-Raadpleeg voor meer informatie documentatie voor de [Azure AD Connect-synchronisatieservice](../hybrid/how-to-connect-syncservice-features.md).
+Raadpleeg de documentatie voor de [Azure AD Connect Sync-Service](../hybrid/how-to-connect-syncservice-features.md)voor meer informatie.
 
-Office 365-groepsafschrijving is een openbare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar met elk betaald Azure AD-licentieplan. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bepaalde juridische informatie over voorvertoningen.
+Het terugschrijven van Office 365-groep is een open bare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor een aantal juridische informatie over voor beelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U meer Azure Active Directory PowerShell-documentatie vinden in [Azure Active Directory Cmdlets.](/powershell/azure/install-adv2?view=azureadps-2.0)
+U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context) (Toegang tot resources beheren met Azure Active Directory-groepen)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

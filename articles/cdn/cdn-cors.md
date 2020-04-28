@@ -1,6 +1,6 @@
 ---
-title: Azure CDN gebruiken met CORS | Microsoft Documenten
-description: Meer informatie over het gebruik van het Azure Content Delivery Network (CDN) met Cross-Origin Resource Sharing (CORS).
+title: Azure CDN gebruiken met CORS | Microsoft Docs
+description: Meer informatie over het gebruik van de Azure Content Delivery Network (CDN) voor het delen van cross-Origin-resources (CORS).
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,91 +15,91 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74278108"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN gebruiken met CORS
 ## <a name="what-is-cors"></a>Wat is CORS?
-CORS (Cross Origin Resource Sharing) is een HTTP-functie waarmee een webtoepassing die onder het ene domein wordt uitgevoerd, toegang heeft tot bronnen in een ander domein. Om de mogelijkheid van cross-site scripting-aanvallen te verminderen, implementeren alle moderne webbrowsers een beveiligingsbeperking die bekend staat als [het beleid van same-origin.](https://www.w3.org/Security/wiki/Same_Origin_Policy)  Dit voorkomt dat een webpagina API's in een ander domein aanroept.  CORS biedt een veilige manier om een oorsprong (het oorsprongsdomein) toe te staan API's in een andere oorsprong aan te roepen.
+CORS (cross Origin Resource Sharing) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd onder het ene domein toegang kan krijgen tot bronnen in een ander domein. Om de kans op cross-site scripting aanvallen te verminderen, implementeren alle moderne webbrowsers een beveiligings beperking die bekend staat als [hetzelfde-Origin-beleid](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Hiermee wordt voor komen dat een webpagina Api's in een ander domein aanroept.  CORS biedt een veilige manier om één oorsprong (het oorspronkelijke domein) toe te staan om Api's in een andere oorsprong aan te roepen.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
-Er zijn twee soorten CORS-verzoeken, *eenvoudige verzoeken* en *complexe aanvragen.*
+Er zijn twee typen CORS-aanvragen, *eenvoudige aanvragen* en *complexe aanvragen.*
 
-### <a name="for-simple-requests"></a>Voor eenvoudige verzoeken:
+### <a name="for-simple-requests"></a>Voor eenvoudige aanvragen:
 
-1. De browser stuurt de CORS-aanvraag met een extra **Origin** HTTP-aanvraagkop. De waarde van deze koptekst is de oorsprong die de bovenliggende pagina heeft weergegeven, die wordt gedefinieerd als de combinatie van *protocol,* *domein* en *poort.*  Wanneer een pagina\:uit https /www.contoso.com probeert toegang te krijgen tot de gegevens van een gebruiker in de fabrikam.com oorsprong, wordt de volgende aanvraagkoptekst naar fabrikam.com verzonden:
+1. De browser verzendt de CORS-aanvraag met een extra header van de HTTP-aanvraag van de **bron** . De waarde van deze header is de oorsprong die de bovenliggende pagina heeft geleverd. deze is gedefinieerd als de combi natie van *protocol,* *domein* en *poort.*  Wanneer een pagina van HTTPS\://www.contoso.com probeert toegang te krijgen tot de gegevens van een gebruiker in de fabrikam.com-oorsprong, wordt de volgende aanvraag header verzonden naar fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. De server kan reageren met een van de volgende opties:
+2. De server reageert mogelijk met een van de volgende:
 
-   * Een header **Access-Control-Allow-Origin** geeft aan welke oorsprongssite is toegestaan. Bijvoorbeeld:
+   * Een ' **Access-Control-Allow-Origin** -header in het antwoord dat aangeeft welke oorspronkelijke site is toegestaan. Bijvoorbeeld:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Een HTTP-foutcode zoals 403 als de server de cross-origin-aanvraag niet toestaat na het controleren van de Origin-header
+   * Een HTTP-fout code zoals 403 als de server de cross-Origin-aanvraag niet toestaat na het controleren van de oorspronkelijke header
 
-   * Een header **Access-Control-Allow-Origin** met een wildcard waarmee alle oorsprong en selectie het eens is:
+   * Een ' **Access-Control-Allow-Origin** -header met een Joker teken waarmee alle oorsprongen worden toegestaan:
 
      `Access-Control-Allow-Origin: *`
 
 ### <a name="for-complex-requests"></a>Voor complexe aanvragen:
 
-Een complexe aanvraag is een CORS-verzoek waarbij de browser een *preflight-verzoek* moet verzenden (dat wil zeggen een voorlopige sonde) voordat de werkelijke CORS-aanvraag wordt verzonden. De preflight-aanvraag vraagt de server toestemming of het `OPTIONS` oorspronkelijke CORS-verzoek kan doorgaan en is een verzoek om dezelfde URL.
+Een complexe aanvraag is een CORS-aanvraag waarbij de browser een *Preflight-aanvraag* (dat wil zeggen een oriënterende test) moet verzenden voordat de daad werkelijke CORS-aanvraag wordt verzonden. De Preflight-aanvraag vraagt de server machtiging aan als de oorspronkelijke CORS-aanvraag kan door `OPTIONS` gaan en een aanvraag voor dezelfde URL is.
 
 > [!TIP]
-> Voor meer informatie over CORS-stromen en veelvoorkomende valkuilen, bekijk de [Gids voor CORS voor REST API's](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Voor meer informatie over CORS-stromen en veelvoorkomende Valk uilen, raadpleegt [u de hand leiding voor cors voor rest api's](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
-## <a name="wildcard-or-single-origin-scenarios"></a>Wildcard- of scenario's voor één oorsprong
-CORS op Azure CDN werkt automatisch zonder extra configuratie wanneer de header **Access-Control-Allow-Origin** is ingesteld op wildcard (*) of één origine.  Het CDN slaat het eerste antwoord in de cache en volgende aanvragen gebruiken dezelfde koptekst.
+## <a name="wildcard-or-single-origin-scenarios"></a>Joker tekens of scenario's met één oorsprong
+CORS op Azure CDN werkt automatisch zonder extra configuratie wanneer de header **Access-Control-Allow-Origin** is ingesteld op Joker teken (*) of één oorsprong.  Het CDN zal het eerste antwoord in de cache opslaan en de volgende aanvragen zullen dezelfde header gebruiken.
 
-Als er al aanvragen zijn gedaan bij het CDN voordat CORS is ingesteld op uw oorsprong, moet u inhoud op uw eindpuntinhoud verwijderen om de inhoud opnieuw te laden met de header **Access-Control-Allow-Origin.**
+Als er al aanvragen zijn gedaan in het CDN voordat CORS is ingesteld op uw oorsprong, moet u de inhoud van de eindpunt inhoud verwijderen om de inhoud opnieuw te laden met de header **Access-Control-Allow-Origin** .
 
-## <a name="multiple-origin-scenarios"></a>Meerdere oorsprongsscenario's
-Als u een specifieke lijst van oorsprong voor CORS moet toestaan, wordt het een beetje ingewikkelder. Het probleem treedt op wanneer de CDN de header **Access-Control-Allow-Origin** voor de eerste CORS-oorsprong in de cache opslaat.  Wanneer een andere CORS-oorsprong een volgend verzoek indient, wordt de **header Access-Control-Allow-Origin** in de cache weergegeven, die niet overeenkomt.  Er zijn verschillende manieren om dit te corrigeren.
+## <a name="multiple-origin-scenarios"></a>Scenario's met meerdere oorsprong
+Als u wilt toestaan dat een specifieke lijst met oorsprongen voor CORS wordt toegestaan, zijn de dingen wat gecompliceerder. Het probleem treedt op wanneer de CDN het **toegangs beheer-allow-Origin** -header voor de eerste CORS-oorsprong in cache opslaat.  Wanneer een andere CORS-oorsprong een volgende aanvraag doet, wordt het CDN de in cache opgeslagen **Access-Control-Allow-Origin** -header, die niet overeenkomt.  Er zijn verschillende manieren om dit te corrigeren.
 
-### <a name="azure-cdn-standard-profiles"></a>Azure CDN-standaardprofielen
-Op Azure CDN Standard van Microsoft u een regel maken in de [standaardregelsengine](cdn-standard-rules-engine-reference.md) om de **Origin-header** op de aanvraag te controleren. Als het een geldige oorsprong is, stelt uw regel de header **Access-Control-Allow-Origin** in met de gewenste waarde. In dit geval wordt de **header Access-Control-Allow-Origin** van de origin-server van het bestand genegeerd en beheert de regelsvan het CDN de toegestane CORS-oorsprong volledig.
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN standaard profielen
+In Azure CDN standaard van micro soft kunt u een regel maken in de [standaard regels-engine](cdn-standard-rules-engine-reference.md) om de **oorspronkelijke** header van de aanvraag te controleren. Als het een geldige oorsprong is, wordt met de regel de header **Access-Control-Allow-Origin** ingesteld met de gewenste waarde. In dit geval wordt de header **Access-Control-Allow-Origin** van de oorspronkelijke server van het bestand genegeerd en worden de toegestane CORS-oorsprong volledig beheerd door de engine van de CDN.
 
-![Regels voorbeeld met standaard regels motor](./media/cdn-cors/cdn-standard-cors.png)
+![Voor beeld van regels met standaard regels-engine](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> U extra acties aan uw regel toevoegen om extra antwoordkoppen te wijzigen, zoals **Methoden voor toegangsbeheer-toestaan.**
+> U kunt extra acties aan uw regel toevoegen om extra antwoord headers te wijzigen, zoals **Access-Control-Allow-methoden**.
 > 
 
-Op **Azure CDN Standard van Akamai**, het enige mechanisme om meerdere oorsprong toe te staan zonder het gebruik van de joker oorsprong is het gebruik van [query string caching](cdn-query-string.md). Schakel de instelling voor querytekenreeksen in voor het CDN-eindpunt en gebruik vervolgens een unieke querytekenreeks voor aanvragen van elk toegestaan domein. Als u dit doet, wordt er een afzonderlijk object in het CDN voor elke unieke querytekenreeks gecachingd. Deze aanpak is echter niet ideaal, omdat het zal resulteren in meerdere kopieën van hetzelfde bestand dat op het CDN is opgeslagen.  
+Op **Azure CDN standaard van Akamai**is het enige mechanisme voor het toestaan van meerdere oorsprongen zonder het gebruik van de oorsprong van de Joker [teken reeks cache](cdn-query-string.md)gebruik te gebruiken. Schakel de query teken reeks instelling voor het CDN-eind punt in en gebruik vervolgens een unieke query reeks voor aanvragen van elk toegestaan domein. Dit leidt ertoe dat de CDN een afzonderlijk object in de cache opslaat voor elke unieke query reeks. Deze methode is echter niet ideaal, omdat deze ertoe leidt dat meerdere kopieën van hetzelfde bestand in het cache geheugen van de CDN worden opgeslagen.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium van Verizon
-Met de Verizon Premium-regelsmoet u [een regel maken](cdn-rules-engine.md) om de **Origin-header** op de aanvraag te controleren.  Als het een geldige oorsprong is, stelt uw regel de header **Access-Control-Allow-Origin** in op de oorsprong die in de aanvraag wordt opgegeven.  Als de oorsprong die is opgegeven in de **Origin-header** niet is toegestaan, moet uw regel de header **Access-Control-Allow-Origin** weglaten, waardoor de browser het verzoek weigert. 
+U moet [een regel maken](cdn-rules-engine.md) voor het controleren van de **oorspronkelijke** header van de aanvraag met de Verizon Premium-regels engine.  Als het een geldige oorsprong is, stelt uw regel de header **Access-Control-Allow-Origin** in met de oorsprong die in de aanvraag is opgegeven.  Als de oorsprong die in de koptekst van de **oorsprong** is opgegeven, niet is toegestaan, moet uw regel de header **Access-Control-Allow-Origin** weglaten, waardoor de browser de aanvraag weigert. 
 
-Er zijn twee manieren om dit te doen met de Premium regels motor. In beide gevallen wordt de **access-control-allow-origin-header** van de origin-server van het bestand genegeerd en beheert de regelsengine van het CDN de toegestane CORS-oorsprong volledig.
+Er zijn twee manieren om dit te doen met de Premium-regel engine. In beide gevallen wordt de header **Access-Control-Allow-Origin** van de oorspronkelijke server van het bestand genegeerd en worden de toegestane CORS-oorsprong volledig beheerd door de engine van de CDN.
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>Eén reguliere uitdrukking met alle geldige oorsprong
-In dit geval maakt u een reguliere expressie die alle oorsprongbevat die u wilt toestaan: 
+#### <a name="one-regular-expression-with-all-valid-origins"></a>Eén reguliere expressie met alle geldige oorsprongen
+In dit geval maakt u een reguliere expressie die alle oorsprongen bevat die u wilt toestaan: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN Premium van Verizon** gebruikt [Perl Compatible Regular Expressions](https://pcre.org/) als engine voor reguliere expressies.  U een tool als [Reguliere Expressie101](https://regex101.com/) gebruiken om uw reguliere expressie te valideren.  Merk op dat het teken "/" geldig is in reguliere expressies en niet hoeft te worden ontsnapt, maar ontsnappen aan dat teken wordt beschouwd als een best practice en wordt verwacht door sommige regex validators.
+> **Azure CDN Premium van Verizon** gebruikt [perl-compatibele reguliere expressies](https://pcre.org/) als engine voor reguliere expressies.  U kunt een hulp programma zoals [reguliere expressies 101](https://regex101.com/) gebruiken om uw reguliere expressie te valideren.  Houd er rekening mee dat het teken '/' geldig is in reguliere expressies en niet hoeft te worden ontsnapt, maar dat het escape-teken wordt beschouwd als een best practice en wordt verwacht door sommige regex-validatie functies.
 > 
 > 
 
-Als de reguliere expressie overeenkomt, vervangt uw regel de header **Access-Control-Allow-Origin** (indien aanwezig) van de oorsprong door de oorsprong die het verzoek heeft verzonden.  U ook extra CORS-headers toevoegen, zoals **Access-Control-Allow-Methods**.
+Als de reguliere expressie overeenkomt, vervangt uw regel de header **Access-Control-Allow-Origin** (indien van toepassing) van de oorsprong met de oorsprong die de aanvraag heeft verzonden.  U kunt ook extra CORS-headers toevoegen, zoals **Access-Control-Allow-methoden**.
 
-![Voorbeeld van regels met reguliere expressie](./media/cdn-cors/cdn-cors-regex.png)
+![Voor beeld van regels met reguliere expressie](./media/cdn-cors/cdn-cors-regex.png)
 
-#### <a name="request-header-rule-for-each-origin"></a>Kopregel aanvragen voor elke oorsprong.
-In plaats van reguliere expressies u in plaats daarvan een aparte regel maken voor elke oorsprong die u wilt toestaan met de [voorwaarde](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)Wildcard **voor jokertekens aanvragen.** Net als bij de reguliere expressiemethode stelt de regelsmotor alleen de CORS-headers in. 
+#### <a name="request-header-rule-for-each-origin"></a>Regel voor aanvraag header voor elke oorsprong.
+U kunt in plaats van reguliere expressies een afzonderlijke regel maken voor elke oorsprong die u wilt toestaan met de [voor waarde](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)voor het gebruik van de **aanvraag header joker tekens** . Net als bij de methode reguliere expressie, worden de CORS-headers door de engine voor regels alleen ingesteld. 
 
-![Voorbeelden van regels zonder reguliere expressie](./media/cdn-cors/cdn-cors-no-regex.png)
+![Voor beeld van regels zonder reguliere expressie](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> In het bovenstaande voorbeeld geeft het gebruik van het jokerteken * de regelsengine aan dat deze overeenkomt met zowel HTTP als HTTPS.
+> In het bovenstaande voor beeld wordt het gebruik van het Joker teken * door gegeven aan de regel Engine om zowel HTTP als HTTPS aan te passen.
 > 
 > 
 

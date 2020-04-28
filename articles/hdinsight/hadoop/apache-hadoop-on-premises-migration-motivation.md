@@ -1,6 +1,6 @@
 ---
-title: 'Voordelen: Migreren on-premises Apache Hadoop naar Azure HDInsight'
-description: Leer de motivatie en voordelen voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
+title: 'Voor delen: migratie van on-premises Apache Hadoop naar Azure HDInsight'
+description: Meer informatie over de motivatie en voor delen voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74267331"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop-clusters migreren naar Azure HDInsight - motivatie en voordelen
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
-Dit artikel is het eerste in een serie over best practices voor het migreren van on-premises Apache Hadoop eco-systeemimplementaties naar Azure HDInsight. Deze serie artikelen is bedoeld voor mensen die verantwoordelijk zijn voor het ontwerp, de implementatie en de migratie van Apache Hadoop-oplossingen in Azure HDInsight. De rollen die kunnen profiteren van deze artikelen zijn cloudarchitecten, Hadoop-beheerders en DevOps-technici. Softwareontwikkelaars, dataengineers en data scientists moeten ook profiteren van de uitleg hoe verschillende soorten clusters werken in de cloud.
+Dit artikel is de eerste in een reeks over de best practices voor het migreren van on-premises Apache Hadoop implementaties van het eco-systeem naar Azure HDInsight. Deze reeks artikelen is bedoeld voor mensen die verantwoordelijk zijn voor het ontwerp, de implementatie en de migratie van Apache Hadoop oplossingen in azure HDInsight. De rollen die kunnen profiteren van deze artikelen zijn onder andere Cloud Architects, Hadoop-beheerders en DevOps-technici. Software ontwikkelaars, gegevens technici en gegevens wetenschappers moeten ook profiteren van de uitleg over hoe verschillende typen clusters in de Cloud werken.
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Waarom migreren naar Azure HDInsight
 
-Azure HDInsight is een clouddistributie van Hadoop-componenten. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. HDInsight bevat de meest populaire open-source frameworks zoals:
+Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. HDInsight bevat de populairste open source-frameworks, zoals:
 
 - Apache Hadoop
 - Apache Spark
@@ -31,176 +31,176 @@ Azure HDInsight is een clouddistributie van Hadoop-componenten. Azure HDInsight 
 - Apache HBase
 - R
 
-## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Azure HDInsight profiteert van on-premises Hadoop
+## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Voor delen van Azure HDInsight over on-premises Hadoop
 
-- **Lage kosten** - Kosten kunnen worden verlaagd door [clusters op aanvraag te maken](../hdinsight-hadoop-create-linux-clusters-adf.md) en alleen te betalen voor wat u gebruikt. Ontkoppelde rekenkracht en opslag biedt flexibiliteit door het gegevensvolume onafhankelijk te houden van de clustergrootte.
+- **Lage kosten** -kosten kunnen worden verminderd door [clusters op aanvraag te maken](../hdinsight-hadoop-create-linux-clusters-adf.md) en alleen te betalen voor wat u gebruikt. Ontkoppelde reken kracht en opslag bieden flexibiliteit door het gegevens volume onafhankelijk van de cluster grootte te bewaren.
 
-- **Geautomatiseerde clustercreatie** - Voor het maken van geautomatiseerde clusterinstellingen is minimale installatie en configuratie vereist. Automatisering kan worden gebruikt voor on-demand clusters.
+- **Automatisch maken van clusters** : voor het automatisch maken van een cluster zijn minimale installatie en configuratie vereist. Automation kan worden gebruikt voor clusters op aanvraag.
 
-- **Beheerde hardware en configuratie** - U hoeft zich geen zorgen te maken over de fysieke hardware of infrastructuur met een HDInsight-cluster. Geef gewoon de configuratie van het cluster op en Azure stelt het in.
+- **Beheerde hardware en configuratie** : u hoeft zich geen zorgen te maken over de fysieke hardware of infra structuur met een HDInsight-cluster. U hoeft alleen de configuratie van het cluster op te geven. Azure stelt deze in.
 
-- **Eenvoudig schaalbaar** - MET HDInsight u workloads omhoog of omlaag [schalen.](../hdinsight-administer-use-portal-linux.md) Azure zorgt voor gegevensherverdeling en het opnieuw in evenwicht brengen van workloads zonder gegevensverwerkingstaken te onderbreken.
+- **Eenvoudig schaal bare** HDInsight biedt u de mogelijkheid om werk belastingen omhoog of omlaag te [schalen](../hdinsight-administer-use-portal-linux.md) . Azure zorgt ervoor dat de herverdeling van gegevens en de herverdeling van de werk belasting zonder onderbreking van de gegevensverwerkings taken worden uitgevoerd.
 
-- **Wereldwijde beschikbaarheid** - HDInsight is beschikbaar in meer [regio's](https://azure.microsoft.com/regions/services/) dan enig ander big data analytics-aanbod. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden.
+- **Wereld wijde Beschik baarheid** -HDInsight is beschikbaar in meer [regio's](https://azure.microsoft.com/regions/services/) dan enige andere Big data analyse-aanbieding. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden.
 
-- **Veilig en compatibel** - MET HDInsight u uw bedrijfsgegevensassets beveiligen met [Azure Virtual Network,](../hdinsight-plan-virtual-network-deployment.md) [versleuteling](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)en integratie met Azure [Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight voldoet ook aan de meest populaire normen voor [naleving](https://azure.microsoft.com/overview/trusted-cloud)van de industrie en de overheid.
+- Met **beveiligen en compatibel** -HDInsight kunt u uw zakelijke gegevensassets beveiligen met [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md), [versleuteling](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)en integratie met [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight voldoet ook aan de meest populaire normen voor de industrie-en regerings [naleving](https://azure.microsoft.com/overview/trusted-cloud).
 
-- **Vereenvoudigd versiebeheer** - Azure HDInsight beheert de versie van Hadoop-ecosysteemcomponenten en houdt deze up-to-date. Software-updates zijn meestal een complex proces voor on-premises implementaties.
+- **Vereenvoudigd versie beheer** : Azure HDInsight beheert de versie van de Hadoop-eco-systeem onderdelen en houdt deze up-to-date. Software-updates zijn doorgaans een complex proces voor on-premises implementaties.
 
-- **Kleinere clusters die zijn geoptimaliseerd voor specifieke workloads met minder afhankelijkheden tussen componenten** - Een typische on-premises Hadoop-installatie maakt gebruik van één cluster dat vele doeleinden dient. Met Azure HDInsight kunnen workload-specifieke clusters worden gemaakt. Als u clusters maakt voor specifieke workloads, wordt de complexiteit van het onderhouden van één cluster met toenemende complexiteit weggevonden.
+- **Kleinere clusters die zijn geoptimaliseerd voor specifieke werk belastingen met minder afhankelijkheden tussen onderdelen** : een typische on-premises Hadoop-installatie maakt gebruik van één cluster dat veel doelen speelt. Met Azure HDInsight kunnen specifieke werkbelasting clusters worden gemaakt. Het maken van clusters voor specifieke werk belastingen verwijdert de complexiteit van het onderhoud van één cluster met toenemende complexiteit.
 
-- **Productiviteit** - U verschillende tools gebruiken voor Hadoop en Spark in uw gewenste ontwikkelomgeving.
+- **Productiviteit** : u kunt verschillende hulpprogram Ma's voor Hadoop en Spark gebruiken in uw favoriete ontwikkel omgeving.
 
-- **Uitbreidbaarheid met aangepaste hulpprogramma's of toepassingen van derden** - HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde componenten en kunnen ook worden geïntegreerd met de andere big [data-oplossingen](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) met behulp van implementaties met één klik van de Azure Market-plaats.
+- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) implementaties van de Azure-markt plaats.
 
-- **Eenvoudig beheer, beheer en bewaking** - Azure HDInsight integreert met [Azure Monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om één interface te bieden waarmee u al uw clusters bewaken.
+- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
 
-- **Integratie met andere Azure-services** - HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-services, zoals:
+- **Integratie met andere Azure-Services** -HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-Services, zoals de volgende:
 
-    - Azure-gegevensfabriek (ADF)
+    - Azure Data Factory (ADF)
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
 
-- **Zelfherstellende processen en componenten** - HDInsight controleert voortdurend de infrastructuur en open-source componenten met behulp van een eigen monitoringinfrastructuur. Het herstelt ook automatisch kritieke fouten, zoals het niet beschikbaar zijn van open-source componenten en knooppunten. Waarschuwingen worden geactiveerd in Ambari als een OSS-component is mislukt.
+- Zelf herstellende **processen en onderdelen** : met HDInsight worden de infra structuur en open source-onderdelen voortdurend gecontroleerd met behulp van een eigen bewakings infrastructuur. Daarnaast worden kritieke fouten, zoals niet-beschik baarheid van open-source onderdelen en knoop punten, automatisch hersteld. Waarschuwingen worden in Ambari geactiveerd als een OSS-onderdeel is mislukt.
 
-Zie voor meer informatie het artikel [Wat is Azure HDInsight en de Apache Hadoop-technologiestack.](../hadoop/apache-hadoop-introduction.md)
+Zie het artikel [Wat is Azure HDInsight en de technologie stack van Apache Hadoop](../hadoop/apache-hadoop-introduction.md)voor meer informatie.
 
-## <a name="migration-planning-process"></a>Migratieplanningsproces
+## <a name="migration-planning-process"></a>Migratie plannings proces
 
 De volgende stappen worden aanbevolen voor het plannen van een migratie van on-premises Hadoop-clusters naar Azure HDInsight:
 
 1. Inzicht in de huidige on-premises implementatie en topologieën.
-2. Inzicht in de huidige projectscope, tijdlijnen en teamexpertise.
-3. Begrijp de Azure-vereisten.
+2. Inzicht in de huidige project omvang, tijd lijnen en team expertise.
+3. Meer informatie over de vereisten van Azure.
 4. Bouw een gedetailleerd plan op basis van best practices.
 
-## <a name="gathering-details-to-prepare-for-a-migration"></a>Het verzamelen van details om zich voor te bereiden op een migratie
+## <a name="gathering-details-to-prepare-for-a-migration"></a>Details verzamelen om een migratie voor te bereiden
 
-In deze sectie vindt u sjabloonvragenlijsten om belangrijke informatie over:
+Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt verzamelen over:
 
 - De on-premises implementatie
-- Projectdetails
+- Project Details
 - Azure-vereisten
 
-### <a name="on-premises-deployment-questionnaire"></a>On-premises implementatievragenlijst
+### <a name="on-premises-deployment-questionnaire"></a>Vragen lijst on-premises implementatie
 
-| **Vraag** | **Voorbeeld** | **Antwoord** |
+| **Produkt** | **Voorbeeld** | **Antwoord** |
 |---|---|---|
-|**Onderwerp**: **Milieu**|||
-|Clusterdistributieversie|HDP 2.6.5, CDH 5.7|
-|Big Data eco-systeem componenten|HDFS, Garen, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
-|Clustertypen|Hadoop, Spark, Confluent Kafka, Storm, Solr|
+|**Onderwerp**: **omgeving**|||
+|Distributie versie van cluster|HDP 2.6.5, CDH 5,7|
+|Systeem onderdelen van Big Data|HDFS, garens, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, solr, Sqoop, Oozie, zwerver, Atlas, Falcon, Zeppelin, R|
+|Cluster typen|Hadoop, Spark, Confluent Kafka, Storm, solr|
 |Aantal clusters|4|
-|Aantal hoofdknooppunten|2|
-|Aantal werknemersknooppunten|100|
-|Aantal randknooppunten| 5|
-|Totale schijfruimte|100 TB|
-|Configuratie van hoofdknooppunt|m/y, cpu, schijf, etc.|
-|Configuratie van gegevensknooppunten|m/y, cpu, schijf, etc.|
-|Configuratie randknooppunten|m/y, cpu, schijf, etc.|
-|HDFS Encryptie?|Ja|
-|Hoge beschikbaarheid|HDFS HA, Metastore HA|
-|Disaster Recovery / Back-up|Back-up cluster?|  
-|Systemen die afhankelijk zijn van cluster|SQL Server, Teradata, Power BI, MongoDB|
-|Integraties van derden|Tableau, GridGain, Qubole, Informatica, Splunk|
-|**Onderwerp**: **Beveiliging**|||
-|Perimeterbeveiliging|Firewalls|
-|Beheer van clusterverificatie & autorisatie|Active Directory, Ambari, Cloudera Manager, Geen verificatie|
-|HDFS-toegangsbeheer|  Handmatige, ssh-gebruikers|
-|Hive-verificatie & autorisatie|Sentry, LDAP, AD met Kerberos, Ranger|
-|Controleren|Ambari, Cloudera Navigator, Ranger|
-|Bewaking|Grafiet, verzameld, statsd, Telegraf, InfluxDB|
+|Aantal hoofd knooppunten|2|
+|Aantal worker-knoop punten|100|
+|Aantal Edge-knoop punten| 5|
+|Totale schijf ruimte|100 TB|
+|Configuratie van hoofd knooppunt|m/y, CPU, schijf, etc.|
+|Configuratie van gegevens knooppunten|m/y, CPU, schijf, etc.|
+|Configuratie van Edge-knoop punten|m/y, CPU, schijf, etc.|
+|HDFS-versleuteling?|Ja|
+|Hoge beschikbaarheid|HDFS HA, meta Store HA|
+|Herstel na nood geval/back-up|Back-upcluster?|  
+|Systemen die afhankelijk zijn van het cluster|SQL Server, Teradata, Power BI, MongoDB|
+|Integraties van derden|Tableau, GridGain, Qubole, informatica, Splunk|
+|**Onderwerp**: **beveiliging**|||
+|Perimeter beveiliging|Firewalls|
+|Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
+|HDFS Access Control|  Hand matig, SSH-gebruikers|
+|Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
+|Controleren|Ambari, Cloudera Navigator, zwerver|
+|Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
-|Duur van gegevensbewaring| 3 jaar, 5 jaar|
-|Clusterbeheerders|Eén beheerder, meerdere beheerders|
+|Duur van gegevens retentie| 3 jaar, 5 jaar|
+|Cluster beheerders|Eén beheerder, meerdere beheerders|
 
-### <a name="project-details-questionnaire"></a>Vragenlijst projectdetails
+### <a name="project-details-questionnaire"></a>Project details vragen lijst
 
-|**Vraag**|**Voorbeeld**|**Antwoord**|
+|**Produkt**|**Voorbeeld**|**Antwoord**|
 |---|---|---|
-|**Onderwerp**: **Workloads en Frequentie**|||
-|MapTaken verminderen|10 banen -- twee keer per dag||
-|Hive vacatures|100 banen -- elk uur||
-|Batchtaken spark|50 banen -- elke 15 minuten||
-|Spark-streamingtaken|5 banen -- elke 3 minuten||
-|Gestructureerde streamingtaken|5 banen -- elke minuut||
-|ML Model trainingsvacatures|2 banen -- één keer per week||
-|Programmeertalen|Python, Scala, Java||
-|Scripts uitvoeren|Shell, Python||
-|**Onderwerp**: **Gegevens**|||
-|Gegevensbronnen|Platte bestanden, Json, Kafka, RDBMS||
-|Gegevensorkestratie|Oozie-werkstromen, Luchtstroom||
-|In geheugenopzoekingen|Apache Ignite, Redis||
-|Gegevensbestemmingen|HDFS, RDBMS, Kafka, MPP ||
-|**Onderwerp**: **Meta-gegevens**|||
-|Hive DB-type|Mysql, Postgres||
-|Aantal Hive metastores|2||
+|**Onderwerp**: **werk belastingen en frequentie**|||
+|MapReduce-taken|10 taken-twee keer per dag||
+|Hive-taken|100-taken--elk uur||
+|Spark-batch taken|50 taken: elke 15 minuten||
+|Spark-streaming-taken|5 taken--elke 3 minuten||
+|Structured streaming-taken|5 taken--elke minuut||
+|Trainings taken voor ML model|2 taken: één keer per week||
+|Programmeer talen|Python, scala, java||
+|Scripts uitvoeren|Shell, python||
+|**Onderwerp**: **gegevens**|||
+|Gegevensbronnen|Platte bestanden, JSON, Kafka, RDBMS||
+|Gegevens indeling|Oozie werk stromen, lucht stroom||
+|Zoek opdrachten in het geheugen|Apache Ignite, redis||
+|Gegevens bestemmingen|HDFS, RDBMS, Kafka, MPP ||
+|**Onderwerp**: **meta gegevens**|||
+|DATABASE type van Hive|MySQL, post gres||
+|Aantal Hive-meta Stores|2||
 |Aantal Hive-tabellen|100||
-|Aantal Ranger-beleid|20||
-|Aantal Oozie-werkstromen|100||
-|**Onderwerp**: **Schaal**|||
-|Gegevensvolume inclusief replicatie|100 TB||
-|Dagelijks innamevolume|50 GB||
-|Datagroeisnelheid|10% per jaar||
-|Groeisnelheid clusterknooppunten|5% per jaar
-|**Onderwerp**: **Clustergebruik**|||
-|Gemiddeld CPU%-percentage gebruikt|60%||
-|Gemiddeld geheugen % gebruikt|75%||
-|Gebruikte schijfruimte|75%||
-|Gemiddeld netwerk % gebruikt|25%
-|**Onderwerp**: **Personeel**|||
+|Aantal beleids regels voor Zwerver|20||
+|Aantal Oozie-werk stromen|100||
+|**Onderwerp**: **schalen**|||
+|Gegevens volume inclusief replicatie|100 TB||
+|Dagelijks opname volume|50 GB||
+|Groei tempo van gegevens|10% per jaar||
+|Groei tempo van cluster knooppunten|5% per jaar
+|**Onderwerp**: **cluster gebruik**|||
+|Gemiddeld CPU-percentage gebruikt|60%||
+|Gemiddeld geheugen gebruikt%|75%||
+|Gebruikte schijf ruimte|75%||
+|Gemiddeld netwerk gebruikt%|25%
+|**Onderwerp**: **personeel**|||
 |Aantal beheerders|2||
-|Aantal ontwikkelaars|10||
-|Aantal eindgebruikers|100||
-|Vaardigheden|Hadoop, Vonk||
-|Aantal beschikbare middelen voor migratie-inspanningen|2||
-|**Onderwerp**: **Beperkingen**|||
+|Aantal ontwikkel aars|10||
+|Aantal eind gebruikers|100||
+|Lacune|Hadoop, Spark||
+|Aantal beschik bare resources voor migratie taken|2||
+|**Onderwerp**: **beperkingen**|||
 |Huidige beperkingen|Latentie is hoog||
-|Huidige uitdagingen|Gelijktijdigheidsprobleem||
+|Huidige uitdagingen|Probleem met gelijktijdigheid||
 
-### <a name="azure-requirements-questionnaire"></a>Vragenlijst voor Azure-vereisten
+### <a name="azure-requirements-questionnaire"></a>Vragen lijst Azure-vereisten
 
-|**Onderwerp**: **Infrastructuur** |||
+|**Onderwerp**: **infra structuur** |||
 |---|---|---|
-|**Vraag**|**Voorbeeld**|**Antwoord**|
-| Voorkeursregio|US - oost||
-|VNet voorkeur?|Ja||
-|HA / DR nodig?|Ja||
-|Integratie met andere cloudservices?|ADF, CosmosDB||
-|**Onderwerp**: **Data Movement**  |||
-|Voorkeur voor initiële belasting|DistCp, gegevensvak, ADF, WANDisco||
-|Delta voor gegevensoverdracht|DistCp, AzCopy||
-|Lopende incrementele gegevensoverdracht|DistCp, Sqoop||
-|**Onderwerp**: **Monitoring & Alerting** |||
-|Azure Monitoring & Waarschuwingen gebruiken Voor het integreren van bewaking door derden|Azure Monitoring & waarschuwen gebruiken||
-|**Onderwerp**: **Beveiligingsvoorkeuren** |||
-|Particuliere en beveiligde gegevenspijplijn?|Ja||
-|Domein samengevoegd cluster (ESP)?|     Ja||
-|On-Premises AD-synchronisatie naar cloud?|     Ja||
+|**Produkt**|**Voorbeeld**|**Antwoord**|
+| Voorkeurs regio|US - oost||
+|Voor keur voor VNet?|Ja||
+|HA/DR nodig?|Ja||
+|Integratie met andere Cloud Services?|ADF, CosmosDB||
+|**Onderwerp**: **gegevens verplaatsing**  |||
+|Initiële laad voorkeur|DistCp, data box, ADF, WANDisco||
+|Delta voor gegevens overdracht|DistCp, AzCopy||
+|Voortdurende incrementele gegevens overdracht|DistCp, Sqoop||
+|**Onderwerp**: **bewaking & waarschuwingen** |||
+|Azure monitoring &-waarschuwingen gebruiken versus bewaking van derden integreren|Azure monitoring &-waarschuwingen gebruiken||
+|**Onderwerp**: **beveiligings voorkeuren** |||
+|Persoonlijke en beveiligde gegevens pijplijn?|Ja||
+|Aan het domein toegevoegd cluster (ESP)?|     Ja||
+|On-premises AD Sync naar de Cloud?|     Ja||
 |Aantal AD-gebruikers dat moet worden gesynchroniseerd?|          100||
-|Ok om wachtwoorden te synchroniseren met de cloud?|    Ja||
-|Alleen gebruikers in de cloud?|                 Ja||
-|MFA nodig?|                       Nee|| 
-|Vereisten voor gegevensautorisatie?|  Ja||
-|Op rollen gebaseerd toegangscontrole?|        Ja||
-|Auditing nodig?|                  Ja||
-|Dataencryptie in rust?|          Ja||
-|Data encryptie onderweg?|       Ja||
-|**Onderwerp**: **Voorkeuren voor re-architectuur** |||
-|Eén cluster vs Specifieke clustertypen|Specifieke clustertypen||
-|Colocated Storage Vs Remote Storage?|Externe opslag||
-|Kleinere clustergrootte omdat gegevens op afstand worden opgeslagen?|Kleinere clustergrootte||
-|Meerdere kleinere clusters gebruiken in plaats van één groot cluster?|Meerdere kleinere clusters gebruiken||
-|Gebruik je een remote metastore?|Ja||
-|Metastores delen tussen verschillende clusters?|Ja||
-|Workloads deconstrueren?|Hive-taken vervangen door Spark-taken||
-|ADF gebruiken voor gegevensorkestratie?|Nee||
+|Wilt u wacht woorden synchroniseren met de Cloud?|    Ja||
+|Alleen gebruikers in de Cloud?|                 Ja||
+|MFA vereist?|                       Nee|| 
+|Vereisten voor gegevens autorisatie?|  Ja||
+|Access Control op basis van rollen?|        Ja||
+|Controle vereist?|                  Ja||
+|Gegevens versleuteling in rust?|          Ja||
+|Gegevens versleuteling in transit?|       Ja||
+|**Onderwerp**: **voor keuren voor opnieuw bearchitectuur** |||
+|Eén cluster versus specifieke cluster typen|Specifieke cluster typen||
+|Opgeslagen opslag versus externe opslag?|Externe opslag||
+|Kleinere cluster grootte naarmate gegevens extern worden opgeslagen?|Kleinere cluster grootte||
+|Gebruikt u meerdere kleinere clusters in plaats van één groot cluster?|Meerdere kleinere clusters gebruiken||
+|Een externe meta Store gebruiken?|Ja||
+|Wilt u de meta Stores delen tussen verschillende clusters?|Ja||
+|Werk belastingen ontconstrueren?|Hive-taken vervangen door Spark-taken||
+|ADF gebruiken voor gegevens indeling?|Nee||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees het volgende artikel in deze serie:
 
-- [Aanbevolen procedures voor architectuur voor on-premises naar Azure HDInsight Hadoop-migratie](apache-hadoop-on-premises-migration-best-practices-architecture.md)
+- [Aanbevolen procedures voor architectuur voor on-premises migratie van Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-architecture.md)

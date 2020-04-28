@@ -1,5 +1,5 @@
 ---
-title: InifinBand inschakelen met SR-IOV - Azure Virtual Machines | Microsoft Documenten
+title: InifinBand inschakelen met SR-IOV-Azure Virtual Machines | Microsoft Docs
 description: Meer informatie over het inschakelen van InfiniBand met SR-IOV.
 services: virtual-machines
 documentationcenter: ''
@@ -13,33 +13,33 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
 ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196769"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>InfiniBand inschakelen met SR-IOV
 
-De Azure NC-, ND- en H-serie VM's worden allemaal ondersteund door een toegewijd InfiniBand-netwerk. Alle rdma-formaten zijn in staat om gebruik te maken van dat netwerk met behulp van Intel MPI. Sommige VM-series hebben de ondersteuning voor alle MPI-implementaties en RDMA-werkwoorden uitgebreid via SR-IOV. VM's met RDMA-geschikt zijn [GPU-geoptimaliseerde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) en [HPC-vm's (High-performance compute).](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)
+De Azure NC-, ND-en H-serie Vm's worden allemaal ondersteund door een speciaal InfiniBand-netwerk. Alle RDMA-ingeschakelde grootten kunnen gebruikmaken van het netwerk met behulp van Intel MPI. Sommige VM-reeksen bieden uitgebreide ondersteuning voor alle MPI-implementaties en RDMA-werk woorden via SR-IOV. Virtuele machines die geschikt zijn voor RDMA, zijn [geoptimaliseerd voor GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) en [HPC-vm's (High-Performance Compute)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
 
 ## <a name="choose-your-installation-path"></a>Kies uw installatiepad
 
-Om aan de slag te gaan, is de eenvoudigste optie om een platformafbeelding te gebruiken die vooraf is geconfigureerd voor InfiniBand, indien beschikbaar:
+Om aan de slag te gaan, is het gebruik van een platform installatie kopie vooraf geconfigureerd voor InfiniBand, waar beschikbaar:
 
-- **HPC IaaS VM's** - Om aan de slag te gaan met IaaS VM's voor HPC, is de eenvoudigste oplossing het gebruik van de [CentOS-HPC 7.6 VM OS-afbeelding](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), die al is geconfigureerd met InfiniBand. Aangezien deze afbeelding al is geconfigureerd met InfiniBand, hoeft u deze niet handmatig te configureren. Zie Exemplaren met [Windows RDMA-geschikte exemplaren](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)voor compatibele Windows-versies .
+- **HPC IaaS vm's** : om aan de slag te gaan met IaaS VM'S voor HPC, is de eenvoudigste oplossing het gebruik van de [CentOS-HPC 7,6 VM OS-installatie kopie](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), die al is geconfigureerd met Infiniband. Omdat deze installatie kopie al is geconfigureerd met InfiniBand, hoeft u deze niet hand matig te configureren. Zie voor compatibele Windows-versies [Windows RDMA-compatibele exemplaren](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-- **GPU IaaS VM's** - Geen platformafbeeldingen zijn momenteel vooraf geconfigureerd voor GPU-geoptimaliseerde VM's, met uitzondering van [CentOS-HPC 7.6 VM OS-afbeelding](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Zie [Handmatig Mellanox OFED installeren](#manually-install-mellanox-ofed)om een aangepaste afbeelding met InfiniBand te configureren.
+- **GPU IaaS vm's** : er zijn momenteel geen platform installatie kopieën geconfigureerd voor door GPU geoptimaliseerde vm's, met uitzonde ring van [CentOS-HPC 7,6 VM-installatie kopie van het besturings systeem](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Als u een aangepaste installatie kopie met InfiniBand wilt configureren, raadpleegt u [MELLANOX OFED hand matig installeren](#manually-install-mellanox-ofed).
 
-Als u een aangepaste VM-afbeelding of een [voor GPU geoptimaliseerde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) VM gebruikt, moet u deze configureren met InfiniBand door de InfiniBandDriverLinux- of InfiniBandDriverWindows VM-extensie toe te voegen aan uw implementatie. Meer informatie over het gebruik van deze VM-extensies met [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) en [Windows.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+Als u een aangepaste VM-installatie kopie of een door [GPU geoptimaliseerde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) virtuele machine gebruikt, moet u deze configureren met InfiniBand door de VM-extensie InfiniBandDriverLinux of InfiniBandDriverWindows toe te voegen aan uw implementatie. Meer informatie over het gebruik van deze VM-extensies met [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-## <a name="manually-install-mellanox-ofed"></a>Handmatig installeren Mellanox OFED
+## <a name="manually-install-mellanox-ofed"></a>Mellanox OFED hand matig installeren
 
-Als u InfiniBand handmatig wilt configureren met SR-IOV, gebruikt u de volgende stappen. In het voorbeeld in deze stappen wordt syntaxis weergegeven voor RHEL/CentOS, maar de stappen zijn algemeen en kunnen worden gebruikt voor elk compatibel besturingssysteem zoals Ubuntu (16.04, 18.04 19.04) en SLES (12 SP4 en 15). De inbox drivers werken ook, maar de Mellanox OpenFabrics drivers bieden meer functies.
+Als u InfiniBand met SR-IOV hand matig wilt configureren, gebruikt u de volgende stappen. In het voor beeld in deze stappen ziet u de syntaxis voor RHEL/CentOS, maar de stappen zijn algemeen en kunnen worden gebruikt voor elk compatibel besturings systeem zoals Ubuntu (16,04, 18,04 19,04) en SLES (12 SP4 en 15). De Stuur Programma's voor het postvak in werken ook, maar de Mellanox-Stuur Programma's voor openfabrics bieden meer functies.
 
-Voor meer informatie over de ondersteunde distributies voor de Mellanox driver, zie de nieuwste [Mellanox OpenFabrics drivers.](https://www.mellanox.com/page/products_dyn?product_family=26) Zie de [Mellanox-gebruikershandleiding](https://docs.mellanox.com/category/mlnxofedib)voor meer informatie over de Mellanox OpenFabrics-driver.
+Voor meer informatie over de ondersteunde distributies voor het Mellanox-stuur programma raadpleegt u de meest recente [Mellanox-Stuur Programma's](https://www.mellanox.com/page/products_dyn?product_family=26)voor een open Fabric-apparaat. Zie de [Mellanox-gebruikers handleiding](https://docs.mellanox.com/category/mlnxofedib)voor meer informatie over het Mellanox-stuur programma van de gebruiker.
 
-Zie het volgende voorbeeld voor het configureren van InfiniBand op Linux:
+Zie het volgende voor beeld voor het configureren van InfiniBand op Linux:
 
 ```bash
 # Modify the variable to desired Mellanox OFED version
@@ -53,11 +53,11 @@ sudo ./mlnxofedinstall
 popd
 ```
 
-Download en installeer voor Windows de [Mellanox OFED voor Windows-stuurprogramma's.](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+Voor Windows downloadt en installeert u de [MELLANOX OFED voor Windows-Stuur Programma's](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
 
-## <a name="enable-ip-over-infiniband"></a>IP inschakelen via InfiniBand
+## <a name="enable-ip-over-infiniband"></a>IP via InfiniBand inschakelen
 
-Gebruik de volgende opdrachten om IP over InfiniBand in te schakelen.
+Gebruik de volgende opdrachten om IP via InfiniBand in te scha kelen.
 
 ```bash
 sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf

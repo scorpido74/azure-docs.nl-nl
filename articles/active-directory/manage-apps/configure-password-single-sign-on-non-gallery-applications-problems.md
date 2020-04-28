@@ -1,6 +1,6 @@
 ---
-title: Problemen met het configureren van wachtwoord SSO voor een niet-galerij-apps
-description: Veelvoorkomende problemen die optreden wanneer u een malige aanmelding (SSO) voor wachtwoordinstellingen configureert voor aangepaste apps die zich niet in de Azure AD-toepassingsgalerie bevinden.
+title: Problemen met het configureren van SSO van wacht woord voor een niet-galerie-apps
+description: Veelvoorkomende problemen die zich voordoen wanneer u eenmalige aanmelding voor een wacht woord (SSO) configureert voor aangepaste apps die zich niet in de Azure AD-toepassings galerie bevinden.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -16,240 +16,240 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74274135"
 ---
-# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemen met het configureren van een enkele aanmelding voor een wachtwoordvoormelding voor een niet-galerietoepassing
+# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemen met het configureren van eenmalige aanmelding met een wacht woord voor een toepassing buiten de galerie
 
-In dit artikel worden veelvoorkomende problemen beschreven die kunnen optreden wanneer u *een sso (Password Single Sign-on)* configureert voor een niet-galerij-app.
+In dit artikel worden veelvoorkomende problemen beschreven die zich kunnen voordoen wanneer u *eenmalige aanmelding* (SSO) voor een niet-galerij-app configureert.
 
-## <a name="capture-sign-in-fields-for-an-app"></a>Aanmeldingsvelden vastleggen voor een app
+## <a name="capture-sign-in-fields-for-an-app"></a>Aanmeldings velden vastleggen voor een app
 
-Het vastleggen van aanmeldingsvelden wordt alleen ondersteund voor aanmeldingspagina's met HTML-ingeschakelde pagina's. Het wordt niet ondersteund voor niet-standaard aanmeldingspagina's, zoals pagina's die Adobe Flash of andere niet-HTML-technologieën gebruiken.
+Het vastleggen van het registratie veld wordt alleen ondersteund voor aanmeldings pagina's met HTML-functionaliteit. Het wordt niet ondersteund voor niet-standaard aanmeldings pagina's, zoals die voor Adobe Flash of andere technologieën zonder HTML-functionaliteit.
 
-Er zijn twee manieren om aanmeldingsvelden vast te leggen voor uw aangepaste apps:
+Er zijn twee manieren om aanmeldings velden voor uw aangepaste apps vast te leggen:
 
-- **Automatische aanmeldingsveldopname** werkt goed bij de meeste html-inlogpagina's, *als ze bekende DIV-id's gebruiken* voor de gebruikersnaam- en wachtwoordvelden. De HTML op de pagina wordt geschraapt om DIV-id's te vinden die aan bepaalde criteria voldoen. Die metagegevens worden opgeslagen, zodat deze later opnieuw kunnen worden afgespeeld in de app.
+- **Automatische registratie van het registratie veld** werkt goed met de meeste HTML-aanmeldings pagina's, *als ze bekende div-id's gebruiken* voor de velden gebruikers naam en wacht woord. De HTML-code op de pagina wordt opgevallen om DIV-Id's te vinden die overeenkomen met bepaalde criteria. Die meta gegevens worden opgeslagen zodat deze later opnieuw kunnen worden afgespeeld naar de app.
 
-- **Handmatige aanmeldingsveldopname** wordt gebruikt als de *app-leverancier de aanmeldingsinvoervelden niet labelt.* Handmatig vastleggen wordt ook gebruikt als de leverancier *meerdere velden rendert die niet automatisch kunnen worden gedetecteerd.* Azure Active Directory (Azure AD) kan gegevens opslaan voor zoveel velden als op de aanmeldingspagina, als u deze vertelt waar die velden zich op de pagina bevinden.
+- **Hand matige registratie van** het registratie veld wordt gebruikt als de leverancier *van de app geen label heeft voor de aanmeldings invoer velden*. Hand matige vastleg ging wordt ook gebruikt als de leverancier *meerdere velden rendert die niet automatisch kunnen worden gedetecteerd*. Met Azure Active Directory (Azure AD) kunnen gegevens worden opgeslagen voor net zoveel velden als op de aanmeldings pagina, als u het weet waar deze velden zich op de pagina bevinden.
 
-Als automatische aanmeldingsveldopname niet werkt, probeert u de handmatige optie.
+Over het algemeen kunt u de optie hand matig gebruiken als het vastleggen van automatische aanmeldings velden niet werkt.
 
-### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Aanmeldingsvelden voor een app automatisch vastleggen
+### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Aanmeldings velden automatisch vastleggen voor een app
 
-Voer de volgende stappen uit om sso op basis van wachtwoorden te configureren met behulp van automatische aanmeldingsveldopname:
+Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woord te configureren met behulp van automatische registratie van het registratie veld:
 
 1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
-2. Selecteer **alle services** om de Azure AD-extensie te openen in het navigatiedeelvenster aan de linkerkant.
+2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
-3. Typ **Azure Active Directory** in het zoekvak van het filter en selecteer vervolgens Azure Active **Directory**.
+3. Typ **Azure Active Directory** in het vak Zoek opdracht filteren en selecteer vervolgens **Azure Active Directory**.
 
-4. Selecteer **Bedrijfstoepassingen** in het Azure AD-navigatiedeelvenster.
+4. Selecteer **bedrijfs toepassingen** in het navigatie deel venster van Azure AD.
 
-5. Selecteer **Alle toepassingen** om een lijst met uw apps weer te geven.
+5. Selecteer **alle toepassingen** om een lijst met uw apps weer te geven.
 
    > [!NOTE]
-   > Als u de gewenste app niet ziet, gebruikt u het besturingselement **Filter** boven aan de lijst **Alle toepassingen.** Stel de optie **Weergeven** in op 'Alle toepassingen'.
+   > Als u de gewenste app niet ziet, gebruikt u het **filter** besturings element boven aan de lijst **alle toepassingen** . Stel de optie **weer geven** in op alle toepassingen.
 
-6. Selecteer de app die u voor SSO wilt configureren.
+6. Selecteer de app die u wilt configureren voor eenmalige aanmelding.
 
-7. Nadat de app is geladen, selecteert u **Eén aanmelding** in het navigatiedeelvenster aan de linkerkant.
+7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster aan de linkerkant.
 
-8. Selecteer **de aanmeldingsmodus op basis van een wachtwoord.**
+8. Selecteer **aanmeldings modus op basis van wacht woorden** .
 
-9. Voer de **aanmeldings-URL**in, de URL van de pagina waar gebruikers hun gebruikersnaam en wachtwoord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldingsvelden zichtbaar zijn op de pagina voor de URL die u opgeeft.*
+9. Voer de **aanmeldings-URL**in. Dit is de URL van de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
 
 10. Selecteer **Opslaan**.
 
-    De pagina wordt automatisch geschraapt voor de invoervakken voor gebruikersnaam en wachtwoord. U Azure AD nu gebruiken om wachtwoorden veilig naar die app te verzenden met behulp van de browserextensie Access Panel.
+    De pagina wordt automatisch uitgewisseld voor de invoer vakken gebruikers naam en wacht woord. U kunt Azure AD nu gebruiken voor het veilig verzenden van wacht woorden naar die app met behulp van de browser uitbreiding van het toegangs venster.
 
-### <a name="manually-capture-sign-in-fields-for-an-app"></a>Aanmeldingsvelden handmatig vastleggen voor een app
+### <a name="manually-capture-sign-in-fields-for-an-app"></a>Aanmeldings velden hand matig vastleggen voor een app
 
-Als u aanmeldingsvelden handmatig wilt vastleggen, moet u de browserextensie Access Panel hebben geïnstalleerd. Uw browser kan ook niet worden uitgevoerd in *de inPrivate-,* *incognito-* of *privémodus.*
+Als u hand matig aanmeldings velden wilt vastleggen, moet u de browser uitbreiding van het toegangs venster hebben geïnstalleerd. Uw browser kan ook niet worden uitgevoerd in de modus *InPrivate*, *incognito*of *Private* .
 
-Zie de extensie [App-extensie Voor het installeren](#install-the-access-panel-browser-extension) van de extensie Van het toegangspaneel browser van dit artikel om de extensie te installeren.
+Zie de sectie [de browser uitbreiding van het toegangs venster installeren](#install-the-access-panel-browser-extension) in dit artikel voor informatie over het installeren van de uitbrei ding.
 
-Voer de volgende stappen uit om sso op basis van een wachtwoord voor een app te configureren met behulp van handmatige aanmeldingsveldopname:
+Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren voor een app door gebruik te maken van hand matige registratie van het registratie veld:
 
 1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
-2. Selecteer **alle services** om de Azure AD-extensie te openen in het navigatiedeelvenster aan de linkerkant.
+2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
-3. Typ **Azure Active Directory** in het zoekvak van het filter en selecteer vervolgens Azure Active **Directory**.
+3. Typ **Azure Active Directory** in het vak Zoek opdracht filteren en selecteer vervolgens **Azure Active Directory**.
 
-4. Selecteer **Bedrijfstoepassingen** in het Azure AD-navigatiedeelvenster.
+4. Selecteer **bedrijfs toepassingen** in het navigatie deel venster van Azure AD.
 
-5. Selecteer **Alle toepassingen** om een lijst met uw apps weer te geven.
+5. Selecteer **alle toepassingen** om een lijst met uw apps weer te geven.
 
    > [!NOTE] 
-   > Als u de gewenste app niet ziet, gebruikt u het besturingselement **Filter** boven aan de lijst **Alle toepassingen.** Stel de optie **Weergeven** in op 'Alle toepassingen'.
+   > Als u de gewenste app niet ziet, gebruikt u het **filter** besturings element boven aan de lijst **alle toepassingen** . Stel de optie **weer geven** in op alle toepassingen.
 
-6. Selecteer de app die u voor SSO wilt configureren.
+6. Selecteer de app die u wilt configureren voor eenmalige aanmelding.
 
-7. Nadat de app is geladen, selecteert u **Eén aanmelding** in het navigatiedeelvenster aan de linkerkant.
+7. Nadat de app is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster aan de linkerkant.
 
-8. Selecteer **de aanmeldingsmodus op basis van een wachtwoord.**
+8. Selecteer **aanmeldings modus op basis van wacht woorden** .
 
-9. Voer de **aanmeldings-URL**in, de pagina waarop gebruikers hun gebruikersnaam en wachtwoord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldingsvelden zichtbaar zijn op de pagina voor de URL die u opgeeft.*
+9. Voer de **aanmeldings-URL**in. Dit is de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
 
-10. Selecteer **Instellingen voor het configureren van * &lt;appnaam&gt; * Wachtwoord Met eenmalige aanmelding**.
+10. Selecteer **instellingen * &lt;&gt; * voor wacht woord voor eenmalige aanmelding configureren**.
 
-11. Selecteer **Aanmeldingsvelden handmatig detecteren**.
+11. Selecteer **aanmeldings velden hand matig detecteren**.
 
-14. Selecteer **Ok**.
+14. Selecteer **OK**.
 
 15. Selecteer **Opslaan**.
 
-16. Volg de instructies voor het gebruik van het Toegangspaneel.
+16. Volg de instructies voor het gebruik van het toegangs venster.
 
 ## <a name="troubleshoot-problems"></a>Problemen oplossen
 
-### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Ik krijg een foutmelding 'We konden geen aanmeldingsvelden vinden op die URL'
+### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Ik krijg de fout ' kan geen aanmeldings velden vinden bij die URL '
 
-U krijgt deze foutmelding wanneer automatische detectie van aanmeldingsvelden mislukt. Als u het probleem wilt oplossen, probeert u handmatige aanmeldingsvelddetectie. Zie de [aanmeldingsvelden handmatig vastleggen voor een toepassingssectie](#manually-capture-sign-in-fields-for-an-app) van dit artikel.
+Dit fout bericht wordt weer gegeven wanneer automatische detectie van aanmeldings velden mislukt. Om het probleem op te lossen, kunt u hand matig de detectie van het aanmeldings veld proberen. Zie de [aanmeldings velden hand matig vastleggen voor een toepassings](#manually-capture-sign-in-fields-for-an-app) sectie van dit artikel.
 
-### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Ik krijg een fout 'Kan geen enkele aanmeldingsconfiguratie opslaan'
+### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Ik krijg de fout ' kan de configuratie voor eenmalige aanmelding niet opslaan '
 
-Zelden mislukt het bijwerken van de SSO-configuratie. Als u dit probleem wilt oplossen, probeert u de configuratie opnieuw op te slaan.
+Zelden: het bijwerken van de SSO-configuratie mislukt. Sla de configuratie opnieuw op om dit probleem op te lossen.
 
-Als u de fout blijft krijgen, opent u een ondersteuningsaanvraag. Voeg de informatie op die wordt beschreven in de [meldingsgegevens van](#view-portal-notification-details) de portal bekijken en [Stuur meldingsgegevens naar een ondersteuningstechnicus om hulpsecties](#send-notification-details-to-a-support-engineer-to-get-help) van dit artikel te ontvangen.
+Als u de fout blijft ontvangen, opent u een ondersteunings aanvraag. Neem de informatie op die wordt beschreven in de details van de [Portal-melding weer geven](#view-portal-notification-details) en [Verzend meldings gegevens naar een ondersteunings technicus om Help](#send-notification-details-to-a-support-engineer-to-get-help) -onderwerpen van dit artikel te verkrijgen.
 
-### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Ik kan aanmeldingsvelden voor mijn app niet handmatig detecteren
+### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Ik kan de aanmeldings velden voor mijn app niet hand matig detecteren
 
-Mogelijk ziet u het volgende gedrag wanneer handmatige detectie niet werkt:
+U kunt de volgende problemen waarnemen wanneer hand matige detectie niet werkt:
 
-- Het handmatige opnameproces bleek te werken, maar de vastgelegde velden zijn niet correct.
+- Het hand matige vastleg proces leek te werken, maar de vastgelegde velden zijn niet juist.
 
-- De juiste velden worden niet gemarkeerd wanneer het opnameproces wordt uitgevoerd.
+- De juiste velden worden niet gemarkeerd wanneer het vastleg proces wordt uitgevoerd.
 
-- Het opnameproces brengt u naar de aanmeldingspagina van de app zoals verwacht, maar er gebeurt niets.
+- Tijdens het vastleggen gaat u naar de aanmeldings pagina van de app zoals verwacht, maar er gebeurt niets.
 
-- Handmatig vastleggen lijkt te werken, maar SSO gebeurt niet wanneer gebruikers vanuit het Access Panel naar de app navigeren.
+- Hand matige vastleg ging lijkt te werken, maar SSO gebeurt niet wanneer gebruikers vanuit het toegangs venster naar de app navigeren.
 
-Als u een van deze problemen ondervindt, doe dan de volgende dingen:
+Als u een van deze problemen ondervindt, doet u het volgende:
 
-- Zorg ervoor dat u de nieuwste versie van de browserextensie Access Panel *hebt geïnstalleerd en ingeschakeld.* Zie de sectie [Browserextensie Access Panel installeren](#install-the-access-panel-browser-extension) van dit artikel.
+- Zorg ervoor dat u de nieuwste versie van de browser uitbreiding van het toegangs venster hebt *geïnstalleerd en ingeschakeld*. Zie de sectie [de browser uitbreiding van het toegangs venster installeren](#install-the-access-panel-browser-extension) van dit artikel.
 
-- Zorg ervoor dat uw browser tijdens het vastleggen niet in de *incognito-,* *inPrivate-* of *privémodus* staat. De extensie Access Panel wordt niet ondersteund in deze modi.
+- Zorg ervoor dat uw browser tijdens het vastleggen geen *incognito*, *InPrivate*of *Private* modus heeft. De uitbrei ding van het toegangs paneel wordt niet ondersteund in deze modus.
 
-- Zorg ervoor dat uw gebruikers zich niet vanuit het Access Panel bij de app proberen aan te melden in de *incognito-,* *inPrivate-* of *privémodus*.
+- Zorg ervoor dat uw gebruikers zich niet aanmelden bij de app vanuit het toegangs venster in *incognito*, *InPrivate*of *Private*.
 
-- Probeer het handmatige opnameproces opnieuw. Zorg ervoor dat de rode markeringen zich over de juiste velden bevinden.
+- Probeer het hand matige vastleg proces opnieuw. Zorg ervoor dat de rode markeringen zich in de juiste velden bevinden.
 
-- Als het handmatige vastleggen niet meer reageert of als de aanmeldingspagina niet reageert, probeert u het handmatige opnameproces opnieuw. Maar deze keer, na het voltooien van het proces, druk op de F12-toets om de ontwikkelaarsconsole van uw browser te openen. Selecteer het **tabblad console.** Typ **window.location="*&lt;de aanmeldings-URL&gt;die u hebt opgegeven bij het configureren van de app*"** en druk op Enter. Dit dwingt een pagina omleiding die het vastleggen proces eindigt en slaat de velden die zijn vastgelegd.
+- Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "*&lt;de aanmeldings-URL die u hebt opgegeven bij het configureren van&gt;de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
 
 ### <a name="contact-support"></a>Contact opnemen met ondersteuning
 
-Als u nog steeds problemen hebt, opent u een aanvraag met Microsoft Support. Beschrijf wat je hebt geprobeerd. Voeg de details toe die worden beschreven in de [meldingsgegevens van](#view-portal-notification-details) de portal bekijken en [Stuur meldingsgegevens naar een ondersteuningstechnicus om helpsecties](#send-notification-details-to-a-support-engineer-to-get-help) van dit artikel te ontvangen (indien van toepassing).
+Als u nog steeds problemen ondervindt, opent u een aanvraag met Microsoft Ondersteuning. Beschrijf wat u hebt geprobeerd. Neem de details op die worden beschreven in de details van de [Portal-melding weer geven](#view-portal-notification-details) en [Verzend meldings gegevens naar een ondersteunings technicus om Help](#send-notification-details-to-a-support-engineer-to-get-help) -onderwerpen van dit artikel te ontvangen (indien van toepassing).
 
-## <a name="install-the-access-panel-browser-extension"></a>De browserextensie Access Panel installeren
+## <a name="install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
 
 Volg deze stappen:
 
-1. Open [Access Panel](https://myapps.microsoft.com) in een ondersteunde browser. Meld u aan bij Azure AD als *gebruiker*.
+1. Open [het toegangs venster](https://myapps.microsoft.com) in een ondersteunde browser. Meld u als *gebruiker*aan bij Azure AD.
 
-2. Selecteer **de wachtwoord-SSO-toepassing** in het Access-paneel.
+2. Selecteer **wacht woord-SSO-toepassing** in het toegangs venster.
 
-3. Wanneer u wordt gevraagd de software te installeren, selecteert u **Nu installeren**.
+3. Wanneer u wordt gevraagd de software te installeren, selecteert u **nu installeren**.
 
-4. Je wordt doorgestuurd naar een downloadpagina voor je browser. Kies ervoor om de extensie toe te **voegen.**
+4. U wordt omgeleid naar een download pagina voor uw browser. Kies voor het **toevoegen** van de extensie.
 
-5. Als u wordt gevraagd, selecteert u **Inschakelen** of **Toestaan**.
+5. Als u hierom wordt gevraagd, selecteert u **inschakelen** of **toestaan**.
 
-6. Start na de installatie de browser opnieuw op.
+6. Nadat de installatie is gestart, start u de browser opnieuw.
 
-7. Meld u aan bij het toegangspaneel. Kijk of u uw apps met SSO-wachtwoord openen.
+7. Meld u aan bij het toegangs venster. Controleer of u uw apps met een wacht woord-SSO-functionaliteit kunt openen.
 
-U de browserextensie voor Chrome en Firefox ook rechtstreeks downloaden via deze links:
+U kunt de browser uitbreiding voor Chrome en Firefox ook rechtstreeks downloaden via de volgende koppelingen:
 
--   [Chrome Access Panel-extensie](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Uitbrei ding Chrome toegangs paneel](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox Access Panel-extensie](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Extensie voor het toegangs paneel van Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="view-portal-notification-details"></a>Details van de portalmelding weergeven
+## <a name="view-portal-notification-details"></a>Details van portal melding weer geven
 
-Voer de volgende stappen uit om de details van een portalmelding te bekijken:
+Voer de volgende stappen uit om de details van een portal melding te bekijken:
 
-1. Selecteer het pictogram **Meldingen** (de bel) in de rechterbovenhoek van de Azure-portal.
+1. Selecteer het pictogram **meldingen** (de Bell) in de rechter bovenhoek van de Azure Portal.
 
-2. Selecteer een melding met een *foutstatus.* (Ze hebben een rode "!".)
+2. Selecteer een melding waarin een *fout* status wordt weer gegeven. (Ze hebben een rode '! '.)
 
    > [!NOTE]
-   > U geen meldingen selecteren die zich in de status *Geslaagd* of *In uitvoering bevinden.*
+   > U kunt geen meldingen selecteren die de status *geslaagd* of *in uitvoering* hebben.
 
-3. Het deelvenster **Meldingsdetails** wordt geopend. Lees de informatie om meer te weten te komen over het probleem.
+3. Het deel venster met de **meldings Details** wordt geopend. Lees de informatie voor meer informatie over het probleem.
 
-5. Als u nog steeds hulp nodig hebt, deelt u de informatie met een ondersteuningstechnicus of de productgroep. Selecteer het **kopieerpictogram** rechts van het vak **Fout kopiëren** om de meldingsgegevens te kopiëren om te delen.
+5. Als u nog hulp nodig hebt, kunt u de informatie delen met een ondersteunings technicus of de product groep. Selecteer het **Kopieer** pictogram rechts van het vak **Kopieer fout** om de meldings details te kopiëren om te delen.
 
-## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Stuur meldingsgegevens naar een ondersteuningstechnicus om hulp te krijgen
+## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Verzend Details van de melding naar een ondersteunings technicus om hulp te krijgen
 
-Het is belangrijk dat u *alle* details die in deze sectie worden vermeld, deelt met ondersteuning, zodat ze u snel kunnen helpen. Als u deze wilt opnemen, u een schermafbeelding maken of **Fout kopiëren**selecteren.
+Het is belang rijk dat u *alle* details die in deze sectie worden vermeld, deelt met ondersteuning zodat u snel aan de slag kunt. Als u deze wilt vastleggen, kunt u een scherm opname maken of een **Kopieer fout**selecteren.
 
-In de volgende informatie wordt uitgelegd wat elk meldingsitem betekent en worden voorbeelden gegeven.
+De volgende informatie legt uit wat elk meldings item betekent en biedt voor beelden.
 
-### <a name="essential-notification-items"></a>Essentiële meldingsitems
+### <a name="essential-notification-items"></a>Essentiële meldings items
 
-- **Benaming**: de beschrijvende titel van de kennisgeving.
+- **Titel**: de beschrijvende titel van de melding.
 
-   Voorbeeld: *Instellingen voor toepassingsproxy*
+   Voor beeld: *proxy-instellingen* van de toepassing
 
-- **Beschrijving**: wat is er gebeurd als gevolg van de operatie.
+- **Beschrijving**: wat is er gebeurd als gevolg van de bewerking.
 
-   Voorbeeld: *de ingevoerde interne URL wordt al gebruikt door een andere toepassing.*
+   Voor beeld: de *ingevoerde interne URL wordt al gebruikt door een andere toepassing.*
 
-- **Meldings-ID**: de unieke id van de melding.
+- **Meldings-id**: de unieke id van de melding.
 
-    Voorbeeld: *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
+    Voor beeld: *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
 
-- **Clientaanvraag-id:** de specifieke aanvraag-id die uw browser heeft gemaakt.
+- **Client aanvraag-id**: de specifieke aanvraag-id die uw browser heeft gemaakt.
 
-    Voorbeeld: *302fd775-3329-4670-a9f3-bea37004f0bc*
+    Voor beeld: *302fd775-3329-4670-a9f3-bea37004f0bc*
 
-- **Time Stamp UTC**: de tijdstempel van wanneer de melding plaatsvond, in UTC.
+- **Tijds tempel UTC**: de tijds tempel van wanneer de melding is opgetreden, in UTC.
 
-    Voorbeeld: *2017-03-23T19:50:43.7583681Z*
+    Voor beeld: *2017-03-23T19:50:43.7583681 z*
 
-- **Interne transactie-ID:** de interne ID die wordt gebruikt om de fout in onze systemen op te zoeken.
+- **Interne trans actie-id**: de interne id die wordt gebruikt om de fout op onze systemen op te zoeken.
 
-    Voorbeeld: **71a2f329-ca29-402f-aa72-bc00a7aca603**
+    Voor beeld: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
 - **UPN**: de gebruiker die de bewerking heeft uitgevoerd.
 
-    Voorbeeld: *tperkins\@f128.info*
+    Voor beeld *:\@tperkins f128.info*
 
-- **Tenant-id:** de unieke id van de tenant waarvan de gebruiker die de bewerking heeft uitgevoerd, lid is van.
+- **Tenant-id**: de unieke id van de Tenant waarvan de gebruiker die de bewerking heeft uitgevoerd, lid is.
 
-    Voorbeeld: *7918d4b5-0442-4a97-be2d-36f9f9962ece*
+    Voor beeld: *7918d4b5-0442-4a97-be2d-36f9f9962ece*
 
-- **Gebruikersnaam- id:** de unieke id van de gebruiker die de bewerking heeft uitgevoerd.
+- **Gebruikers object-id**: de unieke id van de gebruiker die de bewerking heeft uitgevoerd.
 
-    Voorbeeld: *17f84be4-51f8-483a-b533-383791227a99*
+    Voor beeld: *17f84be4-51f8-483a-b533-383791227a99*
 
-### <a name="detailed-notification-items"></a>Gedetailleerde kennisgevingsitems
+### <a name="detailed-notification-items"></a>Gedetailleerde meldings items
 
-- **Weergavenaam**: (kan leeg zijn) een meer gedetailleerde weergavenaam voor de fout.
+- **Weergave naam**: (mag leeg zijn) een meer gedetailleerde weergave naam voor de fout.
 
-    Voorbeeld: *Instellingen voor toepassingsproxy*
+    Voor beeld: *proxy-instellingen* van de toepassing
 
-- **Status**: de specifieke status van de kennisgeving.
+- **Status**: de specifieke status van de melding.
 
-    Voorbeeld: *Mislukt*
+    Voor beeld: *mislukt*
 
-- **Object-ID**: (kan leeg zijn) de object-ID waartegen de bewerking is uitgevoerd.
+- **Object-id**: (kan leeg zijn) de object-id waarmee de bewerking is uitgevoerd.
 
-   Voorbeeld: *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
+   Voor beeld: *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
 
-- **Bijzonderheden**: de gedetailleerde beschrijving van wat er als gevolg van de operatie is gebeurd.
+- **Details**: de gedetailleerde beschrijving van wat er is gebeurd als gevolg van de bewerking.
 
-    Voorbeeld: *Interne<https://bing.com/>url ' ' is ongeldig omdat deze al in gebruik is.*
+    Voor beeld: *interne URL<https://bing.com/>' ' is ongeldig omdat deze al in gebruik is.*
 
-- **Fout kopiëren:** hiermee u het **kopieerpictogram** rechts van het tekstvak **Met fout kopiëren** selecteren om de meldingsgegevens te kopiëren om te helpen bij de ondersteuning.
+- **Kopieer fout**: Hiermee kunt u het **Kopieer pictogram** rechts van het tekstvak **Kopieer fout** selecteren om de details van de melding te kopiëren om de ondersteuning te helpen.
 
-    Voorbeeld:```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    Hierbij```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Volgende stappen
-[Eén aanmelding bij uw apps bieden met Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)
+[Eenmalige aanmelding bieden voor uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)
