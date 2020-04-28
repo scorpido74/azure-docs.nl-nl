@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde codering met Media Encoder Premium Workflow | Microsoft Documenten
-description: Meer informatie over het coderen met Media Encoder Premium Workflow. Codevoorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
+title: Geavanceerde code ring met Media Encoder Premium Workflow | Microsoft Docs
+description: Meer informatie over het coderen met Media Encoder Premium Workflow. Code voorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,60 +14,60 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72792303"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Geavanceerd coderen met Media Encoder Premium Workflow
 > [!NOTE]
-> Media Encoder Premium Workflow media processor besproken in dit artikel is niet beschikbaar in China.
+> Media Encoder Premium Workflow media processor die in dit artikel wordt besproken, is niet beschikbaar in China.
 >
 >
 
 ## <a name="overview"></a>Overzicht
-Microsoft Azure Media Services introduceert de **Media Encoder Premium Workflow-mediaprocessor.** Deze processor biedt geavanceerde coderingsmogelijkheden voor uw premium on-demand workflows.
+Microsoft Azure Media Services introduceert de **Media Encoder Premium workflow** media processor. Deze processor biedt geavanceerde coderings mogelijkheden voor uw Premium on-demand werk stromen.
 
-De volgende onderwerpen beschrijven details met betrekking tot **Media Encoder Premium Workflow:**
+De volgende onderwerpen bevatten informatie over de **Media Encoder Premium workflow**:
 
-* [Indelingen die worden ondersteund door de Media Encoder Premium-workflow](media-services-premium-workflow-encoder-formats.md) – bespreekt de bestandsindelingen en codecs die worden ondersteund door **Media Encoder Premium Workflow.**
-* [Overzicht en vergelijking van Azure on-demand media encoders](media-services-encode-asset.md) vergelijkt de coderingsmogelijkheden van **Media Encoder Premium Workflow** en Media **Encoder Standard**.
+* [Indelingen die worden ondersteund door de Media Encoder Premium workflow](media-services-premium-workflow-encoder-formats.md) : hierin worden de bestands indelingen en codecs besproken die door **Media Encoder Premium workflow**worden ondersteund.
+* [Overzicht en vergelijking van media encoders van Azure op aanvraag](media-services-encode-asset.md) vergelijkt de coderings mogelijkheden van **Media Encoder Premium workflow** en **Media Encoder Standard**.
 
-In dit artikel wordt uitgelegd hoe u coderen met **Media Encoder Premium Workflow** met behulp van .NET.
+In dit artikel wordt beschreven hoe u kunt coderen met **Media Encoder Premium workflow** met behulp van .net.
 
-Voor coderingstaken voor de **Media Encoder Premium-werkstroom** is een afzonderlijk configuratiebestand vereist, een werkstroombestand genaamd. Deze bestanden hebben een .workflow-extensie en worden gemaakt met het gereedschap [Workflow Designer.](media-services-workflow-designer.md)
+Voor het coderen van taken voor de **Media Encoder Premium workflow** is een afzonderlijk configuratie bestand vereist. dit wordt een werk stroom bestand genoemd. Deze bestanden hebben de extensie. werk stroom en worden gemaakt met het hulp programma [Workflow Designer](media-services-workflow-designer.md) .
 
-U [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)ook de standaardwerkstroombestanden krijgen. De map bevat ook de beschrijving van deze bestanden.
+U kunt [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)ook de standaard werk stroom bestanden ophalen. De map bevat ook de beschrijving van deze bestanden.
 
-De werkstroombestanden moeten als asset worden geüpload naar uw Media Services-account en dit item moet worden doorgegeven aan de coderingstaak.
+De werk stroom bestanden moeten worden geüpload naar uw Media Services-account als een Asset en deze asset moet worden door gegeven aan de coderings taak.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
-## <a name="encoding-example"></a>Voorbeeld van codering
+## <a name="encoding-example"></a>Voor beeld van code ring
 
-In het volgende voorbeeld wordt uitgelegd hoe u coderen met **Media Encoder Premium Workflow.**
+In het volgende voor beeld ziet u hoe u kunt coderen met **Media Encoder Premium workflow**.
 
 De volgende stappen worden uitgevoerd:
 
-1. Maak een asset en upload een werkstroombestand.
-2. Maak een asset en upload een bronmediabestand.
-3. Download de mediaprocessor "Media Encoder Premium Workflow".
+1. Maak een Asset en upload een werk stroom bestand.
+2. Maak een Asset en upload een bron media bestand.
+3. Haal de media processor ' Media Encoder Premium Workflow ' op.
 4. Maak een taak en een taak.
 
-    In de meeste gevallen is de configuratietekenreeks voor de taak leeg (zoals in het volgende voorbeeld). Er zijn enkele geavanceerde scenario's (waarvoor u runtime-eigenschappen dynamisch moet instellen) in welk geval u een XML-tekenreeks aan de coderingstaak zou verstrekken. Voorbeelden van dergelijke scenario's zijn: het maken van een overlay, parallelle of sequentiële media stiksels, ondertiteling.
-5. Voeg twee invoerelementen toe aan de taak.
+    In de meeste gevallen is de configuratie teken reeks voor de taak leeg (zoals in het volgende voor beeld). Er zijn een aantal geavanceerde scenario's (waarvoor u runtime-eigenschappen dynamisch moet instellen) in dat geval kunt u een XML-teken reeks voor de coderings taak opgeven. Voor beelden van dergelijke scenario's zijn: het maken van een overlay, parallelle of sequentiële media steek-en Subtitling.
+5. Voeg twee invoer assets toe aan de taak.
 
-   1. Eerste – de workflow asset.
-   2. 2e – de video-asset.
+   1. 1e: de werk stroom Asset.
+   2. 2e: de video-Asset.
 
       >[!NOTE]
-      >Het werkstroomitem moet vóór het media-element aan de taak worden toegevoegd.
-      De configuratietekenreeks voor deze taak moet leeg zijn.
+      >Het werk stroom activum moet worden toegevoegd aan de taak vóór de media-asset.
+      De configuratie teken reeks voor deze taak moet leeg zijn.
    
-6. Dien de coderingstaak in.
+6. De coderings taak verzenden.
 
 ```csharp
 using System;
@@ -231,7 +231,7 @@ namespace MediaEncoderPremiumWorkflowSample
 
 ## <a name="need-help"></a>Hebt u hulp nodig?
 
-U een ondersteuningsticket openen door te navigeren naar [nieuw ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

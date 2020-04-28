@@ -1,6 +1,6 @@
 ---
-title: Toepassingssjablonen in Azure API Management | Microsoft Documenten
-description: Meer informatie over het aanpassen van de inhoud van de toepassingspagina's in de ontwikkelaarsportal in Azure API Management.
+title: Toepassings sjablonen in azure API Management | Microsoft Docs
+description: Meer informatie over het aanpassen van de inhoud van de toepassings pagina's in de ontwikkelaars Portal in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176908"
 ---
-# <a name="application-templates-in-azure-api-management"></a>Toepassingssjablonen in Azure API-beheer
-Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsportalpagina's aan te passen met behulp van een reeks sjablonen die de inhoud ervan configureren. Met behulp van [DotLiquid](http://dotliquidmarkup.org/) syntaxis en de editor van uw keuze, zoals [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een meegeleverde set van gelokaliseerde [string bronnen,](api-management-template-resources.md#strings) [Glyph middelen,](api-management-template-resources.md#glyphs)en [Pagina besturingselementen](api-management-page-controls.md), hebt u grote flexibiliteit om de inhoud van de pagina's te configureren zoals u dat wilt met behulp van deze sjablonen.  
+# <a name="application-templates-in-azure-api-management"></a>Toepassings sjablonen in azure API Management
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
   
- Met de sjablonen in deze sectie u de inhoud van de toepassingspagina's in de ontwikkelaarsportal aanpassen.  
+ Met de sjablonen in deze sectie kunt u de inhoud van de toepassings pagina's in de ontwikkelaars portal aanpassen.  
   
--   [Toepassingslijst](#ProductList)  
+-   [Lijst met toepassingen](#ProductList)  
   
 -   [Toepassing](#Application)  
   
 > [!NOTE]
->  Standaardsjablonen voor voorbeelden zijn opgenomen in de volgende documentatie, maar kunnen worden gewijzigd als gevolg van continue verbeteringen. U de standaardstandaardsjablonen in de ontwikkelaarsportal bekijken door naar de gewenste afzonderlijke sjablonen te navigeren. Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
+>  Voor beelden van standaard sjablonen zijn opgenomen in de volgende documentatie, maar zijn onderhevig aan wijzigingen als gevolg van voortdurende verbeteringen. U kunt de Live standaard sjablonen in de ontwikkelaars portal weer geven door te navigeren naar de gewenste afzonderlijke sjablonen. Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="application-list"></a><a name="ProductList"></a>Toepassingslijst  
- Met de sjabloon **Toepassingslijst** u de hoofdtekst van de pagina met de toepassingslijst aanpassen in de ontwikkelaarsportal.  
+##  <a name="application-list"></a><a name="ProductList"></a>Lijst met toepassingen  
+ Met de sjabloon **toepassings lijst** kunt u de hoofd tekst van de lijst pagina met toepassingen in de ontwikkelaars portal aanpassen.  
   
- ![Ontwikkelaarsportalsjablonen voor toepassingslijst](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM-toepassingslijstpagina-ontwikkelaarsportalsjablonen")  
+ ![Application List-pagina ontwikkelaars Portal sjablonen](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List-pagina ontwikkelaars Portal sjablonen")  
   
-### <a name="default-template"></a>Standaardsjabloon  
+### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml  
 <div class="row">  
@@ -74,19 +74,19 @@ Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsporta
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- De `Product list` sjabloon kan de volgende [paginabesturingselementen](api-management-page-controls.md)gebruiken .  
+ De `Product list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [paginering-besturings element](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) entiteit.|De paging informatie voor de aanvragen verzamelen.|  
-|`Applications`|Verzameling [Application](api-management-template-data-model-reference.md#Application) van toepassingsentiteiten.|De toepassingen zichtbaar voor de huidige gebruiker.|  
-|`CategoryName`|tekenreeks|De categorie van toepassing.|  
+|`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  
+|`Applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen die zichtbaar zijn voor de huidige gebruiker.|  
+|`CategoryName`|tekenreeks|De categorie van de toepassing.|  
   
-### <a name="sample-template-data"></a>Voorbeeldsjabloongegevens  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -137,12 +137,12 @@ Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsporta
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>Toepassing  
- Met **de sjabloon Toepassing** u de hoofdtekst van de toepassingspagina aanpassen in de ontwikkelaarsportal.  
+##  <a name="application"></a><a name="Application"></a>Modules  
+ Met de **toepassings** sjabloon kunt u de hoofd tekst van de toepassings pagina aanpassen in de ontwikkelaars Portal.  
   
- ![Ontwikkelaarsportalsjablonen voor toepassingspagina's](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM-toepassingspagina-ontwikkelaarsportalsjablonen")  
+ ![Toepassings pagina ontwikkelaars Portal sjablonen](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM toepassings pagina ontwikkelaars Portal sjablonen")  
   
-### <a name="default-template"></a>Standaardsjabloon  
+### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml  
 <h2>{{title}}</h2>  
@@ -181,12 +181,12 @@ Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsporta
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- De `Application` sjabloon staat het gebruik van [paginabesturingselementen](api-management-page-controls.md)niet toe.  
+ De `Application` sjabloon staat het gebruik van geen enkele [pagina besturings elementen](api-management-page-controls.md)toe.  
   
 ### <a name="data-model"></a>Gegevensmodel  
- [Toepassingsentiteit.](api-management-template-data-model-reference.md#Application)  
+ [Toepassings](api-management-template-data-model-reference.md#Application) entiteit.  
   
-### <a name="sample-template-data"></a>Voorbeeldsjabloongegevens  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -224,4 +224,4 @@ Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsporta
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

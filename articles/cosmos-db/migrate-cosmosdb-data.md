@@ -1,6 +1,6 @@
 ---
 title: Honderden terabytes aan gegevens migreren naar Azure Cosmos DB
-description: In dit document wordt beschreven hoe u 100 s terabytes aan gegevens migreren naar Cosmos DB
+description: In dit document wordt beschreven hoe u een 100s van terabytes aan gegevens kunt migreren naar Cosmos DB
 author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
 ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72880208"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
 Azure Cosmos DB kan terabytes aan gegevens opslaan. U kunt een grootschalige gegevensmigratie uitvoeren om de werkbelasting van uw productie naar Azure Cosmos DB te verplaatsen. In dit artikel worden de uitdagingen beschreven van het verplaatsen van grootschalige gegevens naar Azure Cosmos DB en wordt u voorgesteld aan het hulpprogramma dat u helpt bij deze uitdagingen en dat gegevens naar Azure Cosmos DB migreert. In deze casestudy heeft de klant de Cosmos DB SQL-API gebruikt.  
 
-Voordat u de volledige werkbelasting migreert naar Azure Cosmos DB, u een subset van gegevens migreren om een aantal aspecten te valideren, zoals de keuze van partitiesleutel, queryprestaties en gegevensmodellering. Nadat u de proof of concept hebt gevalideerd, u de volledige werkbelasting verplaatsen naar Azure Cosmos DB.  
+Voordat u de volledige werk belasting naar Azure Cosmos DB migreert, kunt u een subset van gegevens migreren om enkele van de aspecten te valideren, zoals de partitie sleutel keuze, query prestaties en gegevens modellering. Nadat u het testen van het concept hebt gevalideerd, kunt u de gehele werk belasting naar Azure Cosmos DB verplaatsen.  
 
-## <a name="tools-for-data-migration"></a>Hulpmiddelen voor gegevensmigratie 
+## <a name="tools-for-data-migration"></a>Hulpprogram ma's voor gegevens migratie 
 
-Azure Cosmos DB-migratiestrategieën verschillen momenteel op basis van de API-keuze en de grootte van de gegevens. Als u kleinere gegevenssets wilt migreren - voor het valideren van gegevensmodellering, queryprestaties, keuze van partitiesleutel enz.) u kiezen voor het [Hulpprogramma voor gegevensmigratie](import-data.md) of de [Azure Cosmos DB-connector van Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Als u bekend bent met Spark, u er ook voor kiezen om de [Azure Cosmos DB Spark-connector](spark-connector.md) te gebruiken om gegevens te migreren.
+Azure Cosmos DB migratie strategieën op dit moment verschillen op basis van de API-keuze en de grootte van de gegevens. Voor het migreren van kleinere gegevens sets – voor het valideren van de gegevensmodeling, de query prestaties, de partitie sleutel keuze, enzovoort: u kunt het [hulp programma voor gegevens migratie](import-data.md) of de [Azure Cosmos DB-connector van de Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)kiezen. Als u bekend bent met Spark, kunt u er ook voor kiezen om de [Azure Cosmos DB Spark-connector](spark-connector.md) te gebruiken om gegevens te migreren.
 
 ## <a name="challenges-for-large-scale-migrations"></a>Uitdagingen voor grootschalige migraties 
 
-De bestaande hulpprogramma's voor het migreren van gegevens naar Azure Cosmos DB hebben een aantal beperkingen die vooral op grote schaal duidelijk worden:
+De bestaande hulpprogram ma's voor het migreren van gegevens naar Azure Cosmos DB hebben enkele beperkingen die bijzonder duidelijk worden op grote schaal bewerkingen:
 
- * **Beperkte scale-outmogelijkheden:** Om terabytes aan gegevens zo snel mogelijk te migreren naar Azure Cosmos DB en om de volledige ingerichte doorvoer effectief te verbruiken, moeten de migratieclients de mogelijkheid hebben om voor onbepaalde tijd uit te schalen.  
+ * **Beperkte mogelijkheden voor uitschalen**: om terabytes aan gegevens zo snel mogelijk naar Azure Cosmos DB te migreren en de volledige ingerichte door Voer effectief te verbruiken, moeten de migratie-clients voor onbepaalde tijd kunnen uitschalen.  
 
-* **Gebrek aan voortgangstracking en controle-aanwijzen:** Het is belangrijk om de voortgang van de migratie bij te houden en controlete laten wijzen tijdens het migreren van grote gegevenssets. Anders stopt elke fout die optreedt tijdens de migratie de migratie en moet u het proces helemaal opnieuw starten. Het zou niet productief zijn om het hele migratieproces opnieuw op te starten als 99% ervan al is voltooid.  
+* **Geen voortgang van bijhouden en controleren**: het is belang rijk om de voortgang van de migratie bij te houden en te controleren op het moment dat u grote gegevens sets migreert. Anders moet elke fout die tijdens de migratie optreedt, de migratie stoppen en moet u het proces helemaal opnieuw starten. Het is niet productief om het hele migratie proces opnieuw te starten wanneer 99% van de service al is voltooid.  
 
-* **Gebrek aan dode letter wachtrij**: Binnen grote gegevenssets, in sommige gevallen kunnen er problemen met delen van de brongegevens. Bovendien kunnen er tijdelijke problemen zijn met de client of het netwerk. Een van deze gevallen mag er niet toe leiden dat de hele migratie mislukt. Hoewel de meeste migratietools robuuste mogelijkheden voor nieuwe oplossingen hebben die voorkomen tegen intermitterende problemen, is het niet altijd voldoende. Als bijvoorbeeld minder dan 0,01% van de brongegevensdocumenten groter is dan 2 MB, mislukt het schrijven van documenten in Azure Cosmos DB. Idealiter is het handig dat het migratiehulpprogramma deze 'mislukte' documenten blijft voortduren in een andere wachtrij voor dode letters, die na migratie kan worden verwerkt. 
+* **Geen wachtrij met onbestelbare berichten**: in grote gegevens sets kunnen er in sommige gevallen problemen optreden met delen van de bron gegevens. Daarnaast kunnen er tijdelijke problemen zijn met de client of het netwerk. Een van deze gevallen zou ertoe kunnen leiden dat de volledige migratie niet kan worden uitgevoerd. Hoewel de meeste migratie hulpprogramma's robuuste pogingen bieden die zich tegen tijdelijke problemen beschermen, is het niet altijd voldoende. Als er bijvoorbeeld minder dan 0,01% van de brongegevens documenten groter is dan 2 MB, wordt het schrijven van het document in Azure Cosmos DB mislukt. In het ideale geval is het handig voor het migratie programma om deze ' mislukte ' documenten op te slaan in een andere wachtrij met onbestelbare berichten. Dit kan worden verwerkt na de migratie. 
 
-Veel van deze beperkingen worden opgelost voor hulpprogramma's zoals Azure Data factory, Azure Data Migration services. 
+Veel van deze beperkingen worden vastgesteld voor hulpprogram ma's zoals Azure Data Factory, Azure Data Migration Services. 
 
-## <a name="custom-tool-with-bulk-executor-library"></a>Aangepast gereedschap met bulkexecutorbibliotheek 
+## <a name="custom-tool-with-bulk-executor-library"></a>Aangepast hulp programma met de bibliotheek voor bulksgewijs uitvoerder 
 
-De uitdagingen die in de bovenstaande sectie worden beschreven, kunnen worden opgelost met behulp van een aangepast hulpprogramma dat eenvoudig kan worden uitgeschaald over meerdere instanties en bestand is tegen tijdelijke fouten. Bovendien kan het aangepaste gereedschap de migratie bij verschillende controlepunten onderbreken en hervatten. Azure Cosmos DB biedt al de [bulkexecutorbibliotheek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) die een aantal van deze functies bevat. De bulkexecutorbibliotheek heeft bijvoorbeeld al de functionaliteit om tijdelijke fouten te verwerken en kan threads in één knooppunt uitschalen om ongeveer 500 K RU's per knooppunt te verbruiken. De bibliotheek voor bulkuitvoerbestanden partities ook de brongegevensset in microbatches die onafhankelijk worden uitgevoerd als een vorm van controlecontrole.  
+De uitdagingen die in de bovenstaande sectie worden beschreven, kunnen worden opgelost met behulp van een aangepast hulp programma dat eenvoudig kan worden uitgeschaald over meerdere instanties en dat kan leiden tot tijdelijke storingen. Daarnaast kan het aangepaste hulp programma de migratie op verschillende controle punten onderbreken en hervatten. Azure Cosmos DB biedt al de [bulk](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) -uitvoerder bibliotheek die enkele van deze functies bevat. De bibliotheek bulk-uitvoerder heeft bijvoorbeeld al de functionaliteit voor het afhandelen van tijdelijke fouten en het kan uitschalen van threads in één knoop punt om te verbruiken ongeveer 500 K RUs per knoop punt. De bulk-uitvoerder bibliotheek partitioneert ook de bron-gegevensset in micro batches die onafhankelijk worden uitgevoerd als een vorm van controle punten.  
 
-Het aangepaste gereedschap maakt gebruik van de bulkexecutorbibliotheek en ondersteunt het uitschalen van meerdere clients en het bijhouden van fouten tijdens het innameproces. Als u dit hulpprogramma wilt gebruiken, moeten de brongegevens worden verdeeld in afzonderlijke bestanden in Azure Data Lake Storage (ADLS), zodat verschillende migratiewerkers elk bestand kunnen oppakken en in Azure Cosmos DB kunnen opnemen. Het aangepaste hulpprogramma maakt gebruik van een aparte verzameling, die metagegevens opslaat over de migratievoortgang voor elk afzonderlijk bronbestand in ADLS en eventuele fouten bijhoudt die eraan zijn gekoppeld.  
+Het aangepaste hulp programma maakt gebruik van de bibliotheek voor bulk-uitvoerder en biedt ondersteuning voor uitbrei ding op meerdere clients en bij het volgen van fouten tijdens het opname proces. Als u dit hulp programma wilt gebruiken, moeten de bron gegevens worden gepartitioneerd in afzonderlijke bestanden in Azure Data Lake Storage (ADLS) zodat verschillende migratie medewerkers elk bestand kunnen ophalen en opnemen in Azure Cosmos DB. Het aangepaste hulp programma maakt gebruik van een afzonderlijke verzameling, die meta gegevens over de voortgang van de migratie voor elk afzonderlijk bron bestand in ADLS opslaat en eventuele fouten registreert die eraan zijn gekoppeld.  
 
-In de volgende afbeelding wordt het migratieproces beschreven met behulp van dit aangepaste gereedschap. De tool wordt uitgevoerd op een set virtuele machines en elke virtuele machine vraagt de trackingverzameling in Azure Cosmos DB om een lease op een van de brongegevenspartities te verkrijgen. Zodra dit is gebeurd, wordt de brongegevenspartitie door het hulpprogramma gelezen en inopgenomen in Azure Cosmos DB met behulp van de bibliotheek voor bulkuitvoermiddelen. Vervolgens wordt de trackingverzameling bijgewerkt om de voortgang van de inname van gegevens en eventuele aangetroffen fouten vast te leggen. Nadat een gegevenspartitie is verwerkt, probeert het hulpprogramma de volgende beschikbare bronpartitie op te vragen. Het blijft de volgende bronpartitie verwerken totdat alle gegevens zijn gemigreerd. De broncode voor de tool is [hier](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)beschikbaar.  
-
- 
-![Instelling van migratiehulpprogramma's](./media/migrate-cosmosdb-data/migrationsetup.png)
- 
+In de volgende afbeelding wordt het migratie proces beschreven dat gebruikmaakt van dit aangepaste hulp programma. Het hulp programma wordt uitgevoerd op een set virtuele machines en elke virtuele machine voert een query uit op de tracerings verzameling in Azure Cosmos DB om een lease te verkrijgen op een van de bron gegevens partities. Zodra dit is gebeurd, wordt de bron gegevens partitie door het hulp programma gelezen en opgenomen in Azure Cosmos DB met behulp van de bulk-uitvoerder bibliotheek. Vervolgens wordt de verzameling bijhouden bijgewerkt met de voortgang van de opname van gegevens en eventuele fouten die zijn opgetreden. Nadat een gegevens partitie is verwerkt, probeert het hulp programma de volgende beschik bare bron partitie op te vragen. Het proces blijft de volgende bron partitie verwerken totdat alle gegevens zijn gemigreerd. De bron code voor het hulp programma is [hier](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)beschikbaar.  
 
  
+![Migratie Hulpprogramma's instellen](./media/migrate-cosmosdb-data/migrationsetup.png)
+ 
 
-De trackingverzameling bevat documenten zoals weergegeven in het volgende voorbeeld. U ziet dergelijke documenten één voor elke partitie in de brongegevens.  Elk document bevat de metagegevens voor de brongegevenspartitie, zoals de locatie, migratiestatus en eventuele fouten:Each document contains the metadata for the source data partition such as the location, migration status, and errors (if any any):  
+ 
+
+De tracerings verzameling bevat documenten, zoals wordt weer gegeven in het volgende voor beeld. Deze documenten worden één voor elke partitie in de bron gegevens weer gegeven.  Elk document bevat de meta gegevens voor de gegevens partitie van de bron, zoals de locatie, de migratie status en eventuele fouten (indien van toepassing):  
 
 ```json
 { 
@@ -82,37 +82,37 @@ De trackingverzameling bevat documenten zoals weergegeven in het volgende voorbe
 ```
  
 
-## <a name="prerequisites-for-data-migration"></a>Voorwaarden voor gegevensmigratie 
+## <a name="prerequisites-for-data-migration"></a>Vereisten voor gegevens migratie 
 
-Voordat de gegevensmigratie begint, zijn er een paar vereisten om rekening mee te houden:  
+Voordat de gegevens migratie wordt gestart, moet u rekening houden met de volgende vereisten:  
 
-#### <a name="estimate-the-data-size"></a>Schat de gegevensgrootte:  
+#### <a name="estimate-the-data-size"></a>Schatting van de gegevens grootte:  
 
-De grootte van de brongegevens wordt mogelijk niet precies toegewezen aan de gegevensgrootte in Azure Cosmos DB. Er kunnen enkele voorbeelddocumenten van de bron worden ingevoegd om hun gegevensgrootte in Azure Cosmos DB te controleren. Afhankelijk van de grootte van het voorbeelddocument kan de totale gegevensgrootte in Azure Cosmos DB na migratie worden geschat. 
+De grootte van de bron gegevens kan niet exact worden toegewezen aan de gegevens grootte in Azure Cosmos DB. Er kunnen een aantal voorbeeld documenten uit de bron worden ingevoegd om de gegevens grootte in Azure Cosmos DB te controleren. Afhankelijk van de grootte van het voorbeeld document, kan de totale gegevens grootte in Azure Cosmos DB na de migratie worden geschat. 
 
-Als elk document na migratie in Azure Cosmos DB bijvoorbeeld ongeveer 1 KB is en als er ongeveer 60 miljard documenten in de brongegevensset staan, betekent dit dat de geschatte grootte in Azure Cosmos DB bijna 60 TB zou bedragen. 
-
- 
-
-#### <a name="pre-create-containers-with-enough-rus"></a>Maak containers vooraf met voldoende R's: 
-
-Hoewel Azure Cosmos DB de opslag automatisch schaalt, is het niet raadzaam om te beginnen met de kleinste containergrootte. Kleinere containers hebben een lagere beschikbaarheid van de doorvoer, wat betekent dat de migratie veel langer zou duren om te voltooien. In plaats daarvan is het handig om de containers te maken met de uiteindelijke gegevensgrootte (zoals geschat in de vorige stap) en ervoor te zorgen dat de migratieworkload de ingerichte doorvoer volledig verbruikt.  
-
-In de vorige stap. aangezien de gegevensgrootte wordt geschat op ongeveer 60 TB, is een container van ten minste 2,4 M-R's vereist om de volledige gegevensset te kunnen aanpassen.  
+Als bijvoorbeeld elk document na de migratie in Azure Cosmos DB ongeveer 1 KB is en als er ongeveer 60.000.000.000 documenten in de bron-gegevensset staan, zou de geschatte grootte in Azure Cosmos DB dicht bij 60 TB liggen. 
 
  
 
-#### <a name="estimate-the-migration-speed"></a>Schat de migratiesnelheid: 
+#### <a name="pre-create-containers-with-enough-rus"></a>Maak vooraf containers met voldoende RUs: 
 
-Ervan uitgaande dat de migratiewerkbelasting de volledige ingerichte doorvoer kan verbruiken, zou de gehele inrichting een schatting geven van de migratiesnelheid. Als u het vorige voorbeeld voortzet, zijn 5 RALLY's vereist voor het schrijven van een document van 1 KB naar Azure Cosmos DB SQL API-account.  2,4 miljoen AMERIKAANSE gegevens zouden een overdracht van 480.000 documenten per seconde (of 480 MB/s) mogelijk maken. Dit betekent dat de volledige migratie van 60 TB 125.000 seconden of ongeveer 34 uur zal duren.  
+Hoewel Azure Cosmos DB opslag automatisch wordt geschaald, is het niet raadzaam om te beginnen met de kleinste container grootte. Kleinere containers hebben een lagere Beschik baarheid van de door Voer, wat betekent dat de migratie veel meer tijd in beslag neemt. In plaats daarvan is het handig om de containers met de uiteindelijke gegevens grootte te maken (zoals in de vorige stap is geschat) en om ervoor te zorgen dat de werk belasting van de migratie de ingerichte door Voer volledig verbruikt.  
 
-Als u wilt dat de migratie binnen een dag wordt voltooid, moet u de ingerichte doorvoer verhogen tot 5 miljoen RU's. 
+In de vorige stap. omdat de omvang van de gegevens ongeveer 60 TB werd geschat, is een container van ten minste 2,4 M RUs vereist voor de volledige gegevensset.  
 
  
 
-#### <a name="turn-off-the-indexing"></a>Schakel de indexering uit:  
+#### <a name="estimate-the-migration-speed"></a>De migratie snelheid schatten: 
 
-Aangezien de migratie zo snel mogelijk moet worden voltooid, is het raadzaam om de tijd te minimaliseren en DE's die worden besteed aan het maken van indexen voor elk van de ingenomen documenten.  Azure Cosmos DB indexeert automatisch alle eigenschappen, het is de moeite waard om indexering te minimaliseren tot een select aantal termen of deze volledig uit te schakelen voor het verloop van migratie. U het indexeringsbeleid van de container uitschakelen door de indexeringsmodus te wijzigen in geen, zoals hieronder wordt weergegeven:  
+Ervan uitgaande dat de werk belasting van de migratie de volledige ingerichte door Voer kan verbruiken, is de beschik bare hoeveelheid een schatting van de migratie snelheid. Het vorige voor beeld is 5 RUs vereist voor het schrijven van een document van 1 KB naar Azure Cosmos DB SQL-API-account.  2.400.000 RUs zou een overdracht van 480.000 documenten per seconde (of 480 MB/s) toestaan. Dit betekent dat de volledige migratie van 60 TB 125.000 seconden of ongeveer 34 uur duurt.  
+
+Als u de migratie binnen een dag wilt volt ooien, moet u de ingerichte door Voer verhogen tot 5.000.000 RUs. 
+
+ 
+
+#### <a name="turn-off-the-indexing"></a>Het indexeren uitschakelen:  
+
+Aangezien de migratie zo snel mogelijk moet worden voltooid, is het raadzaam om de tijd en het RUs te minimaliseren die zijn besteed aan het maken van indexen voor elk van de opgenomen documenten.  Azure Cosmos DB alle eigenschappen automatisch indexeert, is het de moeite waard om het indexeren naar een of meer voor waarden te minimaliseren of het volledig uit te scha kelen voor de cursus van de migratie. U kunt het indexerings beleid van de container uitschakelen door de indexingMode te wijzigen in geen, zoals hieronder wordt weer gegeven:  
 
  
 ```
@@ -122,34 +122,34 @@ Aangezien de migratie zo snel mogelijk moet worden voltooid, is het raadzaam om 
 ```
  
 
-Nadat de migratie is voltooid, u de indexering bijwerken.  
+Nadat de migratie is voltooid, kunt u de indexering bijwerken.  
 
 ## <a name="migration-process"></a>Migratieproces 
 
-Nadat de vereisten zijn voltooid, u gegevens migreren met de volgende stappen:  
+Nadat de vereisten zijn voltooid, kunt u gegevens migreren met de volgende stappen:  
 
-1. Importeer eerst de gegevens uit de bron naar Azure Blob Storage. Om de migratiesnelheid te verhogen, is het handig om te parallellopen over verschillende bronpartities. Voordat de migratie wordt gestart, moet de brongegevensset worden verdeeld in bestanden met een grootte van ongeveer 200 MB.   
+1. Importeer eerst de gegevens van de bron naar Azure Blob Storage. Om de migratie snelheid te verhogen, is het handig om te parallelliserenen voor verschillende bron partities. Voordat u met de migratie begint, moet de bron gegevensverzameling zijn gepartitioneerd naar bestanden met een grootte van ongeveer 200 MB.   
 
-2. De bulkexecutorbibliotheek kan worden opgeschaald om 500.000 RU's in één client-VM te verbruiken. Aangezien de beschikbare doorvoer 5 miljoen R's bedraagt, moeten 10 Ubuntu 16.04 VM's (Standard_D32_v3) worden ingericht in dezelfde regio waar uw Azure Cosmos-database zich bevindt. U moet deze VM's voorbereiden met het migratiehulpprogramma en het instellingenbestand.  
+2. De bibliotheek voor bulk-uitvoerder kan worden geschaald om 500.000 RUs te gebruiken in één client-VM. Omdat de beschik bare door Voer is 5.000.000 RUs, moeten 10 Ubuntu 16,04 Vm's (Standard_D32_v3) worden ingericht in dezelfde regio waarin uw Azure Cosmos-data base zich bevindt. U moet deze Vm's voorbereiden met het hulp programma voor migratie en het bijbehorende instellingen bestand.  
 
-3. Voer de wachtrijstap uit op een van de virtuele clientmachines. Met deze stap wordt de trackingverzameling gemaakt, die de ADLS-container scant en een voortgangstrackingdocument maakt voor elk van de partitiebestanden van de brongegevensset.  
+3. Voer de wachtrij stap uit op een van de virtuele machines van de client. Met deze stap maakt u de tracerings verzameling, die de ADLS-container scant en een document voor voortgangs tracering maakt voor elk van de partitie bestanden van de bron gegevens.  
 
-4. Voer vervolgens de importstap uit op alle VM's van de client. Elk van de clients kan eigenaar worden van een bronpartitie en zijn gegevens opnemen in Azure Cosmos DB. Zodra het is voltooid en de status ervan is bijgewerkt in de trackingverzameling, kunnen de clients vervolgens de volgende beschikbare bronpartitie in de trackingverzameling opvragen.  
+4. Voer vervolgens de stap importeren uit op alle client-Vm's. Elk van de clients kan eigenaar worden van een bron partitie en de gegevens opnemen in Azure Cosmos DB. Zodra de service is voltooid en de status ervan wordt bijgewerkt in de tracerings verzameling, kunnen de clients vervolgens een query uitvoeren voor de volgende beschik bare bron partitie in de verzameling tracking.  
 
-5. Dit proces gaat door totdat de hele set bronpartities is ingenomen. Zodra alle bronpartities zijn verwerkt, moet het gereedschap opnieuw worden uitgevoerd in de foutcorrectiemodus op dezelfde trackingverzameling. Deze stap is vereist om de bronpartities te identificeren die opnieuw moeten worden verwerkt vanwege fouten.  
+5. Dit proces wordt voortgezet totdat de volledige set met bron partities is opgenomen. Zodra alle bron partities zijn verwerkt, moet u het hulp programma opnieuw uitvoeren in de modus voor fout correctie op dezelfde tracking-verzameling. Deze stap is vereist om de bron partities te identificeren die opnieuw moeten worden verwerkt als gevolg van fouten.  
 
-6. Sommige van deze fouten kunnen het gevolg zijn van onjuiste documenten in de brongegevens. Deze moeten worden geïdentificeerd en vastgesteld. Vervolgens moet u de importstap op de mislukte partities opnieuw uitvoeren om ze opnieuw te plaatsen. 
+6. Sommige van deze fouten kunnen worden veroorzaakt door onjuiste documenten in de bron gegevens. Deze moeten worden aangeduid en opgelost. Vervolgens moet u de import stap op de mislukte partities opnieuw uitvoeren om ze opnieuw op te nemen. 
 
-Zodra de migratie is voltooid, u valideren dat het aantal documenten in Azure Cosmos DB gelijk is aan het aantal documenten in de brondatabase. In dit voorbeeld is de totale grootte in Azure Cosmos DB 65 terabyte geworden. Na migratie kan indexering selectief worden ingeschakeld en kunnen de RU's worden verlaagd tot het niveau dat vereist is voor de bewerkingen van de werkbelasting.
+Nadat de migratie is voltooid, kunt u controleren of het aantal documenten in Azure Cosmos DB hetzelfde is als het aantal documenten in de bron database. In dit voor beeld is de totale grootte in Azure Cosmos DB 65 terabytes. Na de migratie kan indexering selectief worden ingeschakeld en het RUs kan worden verlaagd naar het niveau dat nodig is voor de bewerkingen van de werk belasting.
 
-## <a name="contact-the-azure-cosmos-db-team"></a>Contact opnemen met het Azure Cosmos DB-team
-Hoewel u deze handleiding volgen om grote gegevenssets succesvol te migreren naar Azure Cosmos DB, wordt voor grootschalige migraties aanbevolen dat u het Azure Cosmos DB-productteam bereikt om de gegevensmodellering en een algemene architectuurbeoordeling te valideren. Op basis van uw gegevensset en werkbelasting kan het productteam ook andere prestatie- en kostenoptimalisaties voorstellen die op u van toepassing kunnen zijn. Als u contact wilt opnemen met het Azure Cosmos DB-team voor hulp bij grootschalige migraties, u een ondersteuningsticket openen onder het probleemtype 'Algemeen advies' en het probleemsubtype 'Grote (TB+) migraties zoals hieronder weergegeven.
+## <a name="contact-the-azure-cosmos-db-team"></a>Contact opnemen met het Azure Cosmos DB team
+Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos DB te migreren voor grootschalige migraties, is het raadzaam om het Azure Cosmos DB-product team te bereiken om de gegevens modellen en een algemene architectuur beoordeling te valideren. Op basis van uw gegevensset en werk belasting kan het product team ook andere prestaties en kosten optimalisaties Voorst Ellen die van toepassing kunnen zijn op u. Als u contact wilt opnemen met het Azure Cosmos DB team voor hulp bij grootschalige migraties, kunt u een ondersteunings ticket openen onder het probleem type ' algemeen advies ' en ' grote (TB +) migraties ', zoals hieronder wordt weer gegeven.
 
-![Ondersteuningsonderwerp migratie](./media/migrate-cosmosdb-data/supporttopic.png)
+![Onderwerp over migratie ondersteuning](./media/migrate-cosmosdb-data/supporttopic.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie door de voorbeeldtoepassingen uit te proberen die de bibliotheek voor bulkuitvoerbestanden in [.NET](bulk-executor-dot-net.md) en [Java gebruiken](bulk-executor-java.md). 
-* De bulkexecutorbibliotheek is geïntegreerd in de Cosmos DB Spark-connector, zie het artikel [azure cosmos DB Spark-connector.](spark-connector.md)  
-* Neem contact op met het Azure Cosmos DB-productteam door een ondersteuningsticket te openen onder het probleemtype 'Algemeen advies' en het probleemsubtype 'Grote (TB+) migraties' voor extra hulp bij grootschalige migraties. 
+* Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
+* De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
+* Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties. 

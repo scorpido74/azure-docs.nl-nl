@@ -1,7 +1,7 @@
 ---
-title: Een werkstroom verzenden met behulp van BAM-bestandsinvoer
+title: Een werk stroom verzenden met behulp van BAM-bestands invoer
 titleSuffix: Microsoft Genomics
-description: In dit artikel wordt uitgelegd hoe u een werkstroom indienen bij de Microsoft Genomics-service als uw invoerbestand één BAM-bestand is.
+description: In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service als uw invoer bestand een enkel BAM-bestand is.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72249171"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Een werkstroom verzenden met behulp van een BAM-bestandsinvoer
 
-In dit artikel wordt uitgelegd hoe u een werkstroom indienen bij de Microsoft Genomics-service als uw invoerbestand één BAM-bestand is. In dit onderwerp wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werkstroom met de meegeleverde voorbeeldgegevens hebt ingediend, u klaar zijn om verder te gaan met dit artikel. 
+In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service als uw invoer bestand een enkel BAM-bestand is. In dit onderwerp wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Instellen: uw BAM-bestand uploaden naar Azure Storage
 Stel dat u één BAM bestand, *reads.bam*, hebt en dat u het naar uw opslagaccount *myaccount* in Azure hebt geüpload als **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. U hebt de URL van de API en uw toegangssleutel. U wilt de uitvoer in **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** hebben.

@@ -1,6 +1,6 @@
 ---
-title: Toegangsbeheer delegeren aan toegangsbeheer in Azure AD-rechtenbeheer - Azure Active Directory
-description: Meer informatie over het delegeren van toegangsbeheer van IT-beheerders aan toegang tot pakketbeheerders en projectmanagers, zodat ze zelf toegang kunnen beheren.
+title: Delegeer toegangs beheer voor toegang tot pakket beheerders in azure AD-beleid voor rechten-Azure Active Directory
+description: Meer informatie over het overdragen van toegangs beheer van IT-beheerders om toegang te krijgen tot pakket beheerders en project managers, zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,56 +17,56 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73174367"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Toegangsbeheer delegeren aan toegangsbeheer in Azure AD-rechtenbeheer
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Het toegangs beheer voor toegang tot pakket beheerders in azure AD-rechts Management delegeren
 
-Als u het maken en beheren van toegangspakketten in een catalogus wilt delegeren, voegt u gebruikers toe aan de rol toegangspakketbeheer. Beheerders van toegangspakketten moeten vertrouwd zijn met de noodzaak voor gebruikers om toegang te vragen tot bronnen in een catalogus. Als een catalogus bijvoorbeeld wordt gebruikt voor een project, kan een projectlead een toegangspakketbeheerder voor die catalogus zijn.  Beheerders van toegangspakketten kunnen geen resources toevoegen aan een catalogus, maar ze kunnen de toegangspakketten en -beleidsregels in een catalogus beheren.  Bij het delegeren aan een access package manager kan die persoon dan verantwoordelijk zijn voor:
+Als u het maken en beheren van toegangs pakketten in een catalogus wilt delegeren, voegt u gebruikers toe aan de rol toegangs pakket beheer. Toegangs pakket beheerders moeten vertrouwd zijn met de behoeften van gebruikers om toegang te vragen tot bronnen in een catalogus. Als er bijvoorbeeld een catalogus voor een project wordt gebruikt, kan een project lead een Access Package Manager voor die catalogus zijn.  Toegangs pakket beheerders kunnen geen resources toevoegen aan een catalogus, maar ze kunnen de toegangs pakketten en het beleid in een catalogus beheren.  Bij het delegeren naar een Access package manager kan die persoon vervolgens verantwoordelijk zijn voor:
 
-- Welke rollen een gebruiker heeft voor de bronnen in een catalogus
-- Wie heeft toegang nodig
-- Wie moet de toegangsaanvragen goedkeuren
-- Hoe lang het project zal duren
+- Welke rollen een gebruiker heeft voor de resources in een catalogus
+- Wie moet er toegang toe hebben
+- Wie moet de toegangs aanvragen goed keuren?
+- Hoe lang het duurt voordat het project wordt
 
-In deze video vindt u een overzicht van hoe u toegangsbeheer delegeren van de eigenaar van de catalogus naar toegang tot pakketbeheer.
+In deze video vindt u een overzicht van de manier waarop u Access governance van de catalogus eigenaar kunt delegeren voor toegang tot pakket beheer.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
 
-## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Delegeren aan een toegangspakketbeheerder aan een toegangspakketbeheerder als eigenaar van een catalogus
+## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Als een catalogus eigenaar, delegeren aan een toegangs pakket beheer
 
-Volg deze stappen om een gebruiker toe te wijzen aan de rol access package manager:
+Volg deze stappen om een gebruiker toe te wijzen aan de rol toegangs pakket beheer:
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder of cataloguseigenaar
+**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
+1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
 
-1. Klik in het linkermenu op **Rollen en beheerders**.
+1. Klik in het menu links op **rollen en beheerders**.
 
-    ![Rollen en beheerders van catalogi](./media/entitlement-management-shared/catalog-roles-administrators.png)
+    ![Catalogiseert rollen en beheerders](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. Klik **op Access-pakketbeheerders toevoegen** om de leden voor deze rollen te selecteren.
+1. Klik op **toegangs pakket beheerders toevoegen** om de leden voor deze rollen te selecteren.
 
-1. Klik **op Selecteren** om deze leden toe te voegen.
+1. Klik op **selecteren** om deze leden toe te voegen.
 
-## <a name="remove-an-access-package-manager"></a>Een toegangspakketbeheerder verwijderen
+## <a name="remove-an-access-package-manager"></a>Een Access Package Manager verwijderen
 
-Volg de volgende stappen om een gebruiker uit de rol access package manager te verwijderen:
+Volg deze stappen om een gebruiker te verwijderen uit de rol Access Package Manager:
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder of cataloguseigenaar
+**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
+1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
 
-1. Klik in het linkermenu op **Rollen en beheerders**.
+1. Klik in het menu links op **rollen en beheerders**.
 
-1. Voeg een vinkje toe naast een toegangspakketbeheer dat u wilt verwijderen.
+1. Voeg een selectie vakje toe naast een Access package manager die u wilt verwijderen.
 
 1. Klik op **Verwijderen**.
 

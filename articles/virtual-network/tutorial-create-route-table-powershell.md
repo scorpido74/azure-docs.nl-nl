@@ -1,6 +1,6 @@
 ---
-title: Routenetwerkverkeer Azure PowerShell | Microsoft Documenten
-description: In dit artikel leert u hoe u netwerkverkeer routeren met een routetabel met PowerShell.
+title: Netwerk verkeer omleiden Azure PowerShell | Microsoft Docs
+description: In dit artikel leest u hoe u netwerk verkeer met een route tabel met behulp van Power shell kunt routeren.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73163986"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Netwerkverkeer routeren met een routetabel met PowerShell
+# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Netwerk verkeer routeren met een route tabel met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,21 +38,21 @@ Azure routeert standaard automatisch verkeer tussen alle subnetten in een virtue
 * Virtuele machines (VM's) implementeren in verschillende subnetten
 * Verkeer van het ene subnet naar het andere leiden via een NVA
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell-moduleversie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u Power shell lokaal wilt installeren en gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-route-table"></a>Een routetabel maken
 
-Voordat u een routetabel maken, maakt u een resourcegroep met [Nieuw-AzResourceGroep](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt voor alle bronnen die in dit artikel zijn gemaakt.
+Voordat u een route tabel kunt maken, moet u een resource groep maken met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt voor alle resources die in dit artikel zijn gemaakt.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Maak een routetabel met [Nieuw-AzRouteTable](/powershell/module/az.network/new-azroutetable). In het volgende voorbeeld wordt een routetabel met de naam *myRouteTablePublic gemaakt.*
+Maak een route tabel met [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). In het volgende voor beeld wordt een route tabel gemaakt met de naam *myRouteTablePublic*.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzRouteTable `
@@ -63,7 +63,7 @@ $routeTablePublic = New-AzRouteTable `
 
 ## <a name="create-a-route"></a>Een route maken
 
-Maak een route door het object routetabel op te halen met [Get-AzRouteTable,](/powershell/module/az.network/get-azroutetable)maak een route met [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig)en schrijf vervolgens de routeconfiguratie naar de routetabel met [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable).
+Maak een route door het object route tabel op te halen met [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable), een route te maken met [add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig)en de route configuratie vervolgens naar de route tabel te schrijven met [set-AzRouteTable](/powershell/module/az.network/set-azroutetable).
 
 ```azurepowershell-interactive
 Get-AzRouteTable `
@@ -79,7 +79,7 @@ Get-AzRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Een routetabel aan een subnet koppelen
 
-Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwerk en subnet maken. Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* met het adresvoorvoegsel *10.0.0.0/16 .*
+Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwerk en subnet maken. Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt met het adres voorvoegsel *10.0.0.0/16*.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -89,7 +89,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Maak drie subnetten door drie subnetconfiguraties te maken met [New-AzVirtualNetworkSubnetConfig.](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) In het volgende voorbeeld worden drie subnetconfiguraties gemaakt voor *subnetten voor openbare,* *private*en *DMZ-subnetten:*
+Maak drie subnetten door drie subnet configuraties te maken met [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voor beeld worden drie subnet configuraties gemaakt voor *open bare*, *particuliere*en *DMZ* -subnetten:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -108,13 +108,13 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Schrijf de subnetconfiguraties naar het virtuele netwerk met [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork), waardoor de subnetten in het virtuele netwerk worden gemaakt:
+Schrijf de subnet-configuraties naar het virtuele netwerk met [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork), waarmee de subnetten in het virtuele netwerk worden gemaakt:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-Koppel de *tabel myRouteTablePublic* route aan het *openbare* subnet met [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) en schrijf vervolgens de subnetconfiguratie naar het virtuele netwerk met [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork).
+Koppel de *myRouteTablePublic* -route tabel aan het *open bare* subnet met [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) en schrijf vervolgens de configuratie van het subnet naar het virtuele netwerk met [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork).
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -129,11 +129,11 @@ Set-AzVirtualNetwork
 
 Een NVA is een VM die een netwerkfunctie uitvoert, zoals routering, firewall of WAN-optimalisatie.
 
-Maak voordat u een VM maakt een netwerkinterface.
+Voordat u een virtuele machine maakt, maakt u een netwerk interface.
 
-### <a name="create-a-network-interface"></a>Een netwerkinterface maken
+### <a name="create-a-network-interface"></a>Een netwerk interface maken
 
-Voordat u een netwerkinterface maakt, moet u de virtuele netwerk-id ophalen met [Get-AzVirtualNetwork,](/powershell/module/az.network/get-azvirtualnetwork)vervolgens de subnet-id met [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig). Maak een netwerkinterface met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) in het *Subnet DMZ* met IP forwarding ingeschakeld:
+Voordat u een netwerk interface maakt, moet u de id van het virtuele netwerk ophalen met [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)en vervolgens de subnet-id met [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig). Een netwerk interface maken met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) in het *DMZ* -subnet waarvoor door sturen via IP is ingeschakeld:
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -157,7 +157,7 @@ $nic = New-AzNetworkInterface `
 
 ### <a name="create-a-vm"></a>Een virtuele machine maken
 
-Als u een VM wilt maken en er een bestaande netwerkinterface aan wilt koppelen, moet u eerst een VM-configuratie maken met [Nieuw-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). De configuratie bevat de netwerkinterface die in de vorige stap is gemaakt. Wanneer u om een gebruikersnaam en wachtwoord wordt gevraagd, selecteert u de gebruikersnaam en het wachtwoord waarmee u zich bij de vm wilt aanmelden.
+Als u een virtuele machine wilt maken en hieraan een bestaande netwerk interface wilt koppelen, moet u eerst een VM-configuratie maken met [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). De configuratie bevat de netwerk interface die in de vorige stap is gemaakt. Selecteer de gebruikers naam en het wacht woord waarmee u zich wilt aanmelden bij de virtuele machine.
 
 ```azurepowershell-interactive
 # Create a credential object.
@@ -178,7 +178,7 @@ $vmConfig = New-AzVMConfig `
   Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Maak de VM met de [VM-configuratie met Nieuw-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voorbeeld wordt een VM met de naam *myVmNva geopperd.*
+Maak de virtuele machine met behulp van de VM-configuratie met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voor beeld wordt een VM gemaakt met de naam *VM myvmnva*.
 
 ```azurepowershell-interactive
 $vmNva = New-AzVM `
@@ -188,13 +188,13 @@ $vmNva = New-AzVM `
   -AsJob
 ```
 
-Met `-AsJob` de optie wordt de VM op de achtergrond gemaakt, zodat u door gaan naar de volgende stap.
+Met `-AsJob` deze optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap.
 
 ## <a name="create-virtual-machines"></a>Virtuele machines maken
 
-Maak twee VM's in het virtuele netwerk, zodat u valideren dat verkeer van het *openbare* subnet in een latere stap via het virtuele netwerknaar het subnet *Privé* wordt doorgestuurd.
+Maak twee Vm's in het virtuele netwerk, zodat u kunt valideren dat verkeer van het *open bare* subnet wordt doorgestuurd naar het *privé* subnet via het virtuele netwerk apparaat in een latere stap.
 
-Maak een VM in het *openbare* subnet met [Nieuw-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voorbeeld wordt een VM met de naam *myVmPublic* gemaakt in het *openbare* subnet van het virtuele *myVirtualNetwork-netwerk.*
+Maak een virtuele machine in het *open bare* subnet met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voor beeld wordt een virtuele machine met de naam *VM myvmpublic* gemaakt in het *open bare* subnet van het virtuele netwerk *myVirtualNetwork* .
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -207,7 +207,7 @@ New-AzVm `
   -AsJob
 ```
 
-Maak een VM in het *subnet Privé.*
+Maak een virtuele machine in het *privé* -subnet.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -219,11 +219,11 @@ New-AzVm `
   -Name "myVmPrivate"
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de volgende stap totdat de VM is gemaakt en Azure de uitvoer teruggeeft aan PowerShell.
+Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de volgende stap totdat de virtuele machine is gemaakt en Azure de uitvoer naar Power shell retourneert.
 
 ## <a name="route-traffic-through-an-nva"></a>Verkeer routeren via een NVA
 
-Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van de *myVmPrivate* VM terug te geven. In het volgende voorbeeld wordt het openbare IP-adres van de *myVmPrivate-vm* geretourneerd:
+Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het open bare IP-adres van de *VM myvmprivate* -VM te retour neren. In het volgende voor beeld wordt het open bare IP-adres van de *VM myvmprivate* -VM geretourneerd:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -232,7 +232,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Gebruik de volgende opdracht om een externe bureaubladsessie te maken met de *myVmPrivate* VM vanaf uw lokale computer. Vervang `<publicIpAddress>` door het IP-adres dat is geretourneerd met de vorige opdracht.
+Gebruik de volgende opdracht om een sessie met een extern bureau blad te maken met de *VM myvmprivate* -VM vanaf uw lokale computer. Vervang `<publicIpAddress>` door het IP-adres dat is geretourneerd met de vorige opdracht.
 
 ```
 mstsc /v:<publicIpAddress>
@@ -242,17 +242,17 @@ Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer hierom 
 
 Voer de gebruikersnaam en het wachtwoord in die u bij het maken van de VM hebt opgegeven (mogelijk moet u **Meer opties** en **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine) en selecteer **OK**. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Selecteer **Ja** om door te gaan met de verbinding.
 
-In een latere `tracert.exe` stap wordt de opdracht gebruikt om routering te testen. Tracert maakt gebruik van het Internet Control Message Protocol (ICMP), dat wordt geweigerd via de Windows Firewall. Schakel ICMP via de Windows-firewall in met de volgende opdracht vanuit PowerShell op de VM *myVmPrivate*:
+In een latere stap wordt de `tracert.exe` opdracht gebruikt om de route ring te testen. Tracert gebruikt de Internet Control Message Protocol (ICMP), die wordt geweigerd via de Windows Firewall. Schakel ICMP via de Windows-firewall in met de volgende opdracht vanuit PowerShell op de VM *myVmPrivate*:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-Hoewel traceroute wordt gebruikt om routering in dit artikel te testen, wordt het niet aanbevolen om ICMP via de Windows Firewall toe te staan voor productie-implementaties.
+Hoewel tracerings route wordt gebruikt om de route ring in dit artikel te testen, wordt het gebruik van ICMP via de Windows Firewall voor productie-implementaties niet aanbevolen.
 
-U hebt doorsturen via IP in Azure voor de netwerkinterface van de VM ingeschakeld in Doorsturen via IP inschakelen. In de VM moet het besturingssysteem of een toepassing die wordt uitgevoerd op de virtuele machine, ook netwerkverkeer kunnen doorsturen. Ip forwarding inschakelen binnen het besturingssysteem van de *myVmNva*.
+U hebt doorsturen via IP in Azure voor de netwerkinterface van de VM ingeschakeld in Doorsturen via IP inschakelen. In de VM moet het besturingssysteem of een toepassing die wordt uitgevoerd op de virtuele machine, ook netwerkverkeer kunnen doorsturen. Schakel door sturen via IP in het besturings systeem van de *VM myvmnva*.
 
-Van een opdrachtprompt op de *myVmPrivate* VM, extern bureaublad tot de *myVmNva:*
+Vanaf een opdracht prompt op de *VM myvmprivate* -VM, extern bureau blad naar de *VM myvmnva*:
 
 ``` 
 mstsc /v:myvmnva
@@ -323,7 +323,7 @@ Sluit de externe bureaubladsessie naar de VM *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet langer nodig bent, gebruikt u [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle resources die deze bevat te verwijderen.
+Wanneer u deze niet meer nodig hebt, gebruikt u [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources die deze bevat, te verwijderen.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -331,6 +331,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een routetabel gemaakt en deze gekoppeld aan een subnet. U hebt een eenvoudig netwerkvirtueel toestel gemaakt dat verkeer van een openbaar subnet naar een privésubnet heeft geleid. Implementeer verschillende vooraf geconfigureerde virtuele netwerkapparaten die netwerkfuncties uitvoeren, zoals firewall- en WAN-optimalisatie vanuit de [Azure Marketplace.](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) Zie [Routeringoverzicht](virtual-networks-udr-overview.md) en [Routetabel beheren](manage-route-table.md) voor meer informatie over routeren.
+In dit artikel hebt u een route tabel gemaakt en gekoppeld aan een subnet. U hebt een eenvoudig virtueel netwerk apparaat gemaakt dat verkeer van een openbaar subnet gerouteerd naar een privé subnet. Implementeer een aantal vooraf geconfigureerde virtuele netwerk apparaten die netwerk functies, zoals firewall-en WAN-optimalisatie, uitvoeren vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Zie [Routeringoverzicht](virtual-networks-udr-overview.md) en [Routetabel beheren](manage-route-table.md) voor meer informatie over routeren.
 
-Hoewel u veel Azure-resources binnen een virtueel netwerk kunt implementeren, kunnen resources voor sommige Azure PaaS-diensten niet in een virtueel netwerk worden geïmplementeerd. U kunt de toegang tot de resources van sommige Azure PaaS-diensten echter nog steeds beperken tot alleen verkeer vanaf een subnet van een virtueel netwerk. Zie [Netwerktoegang tot PaaS-bronnen beperken voor](tutorial-restrict-network-access-to-resources-powershell.md)meer informatie.
+Hoewel u veel Azure-resources binnen een virtueel netwerk kunt implementeren, kunnen resources voor sommige Azure PaaS-diensten niet in een virtueel netwerk worden geïmplementeerd. U kunt de toegang tot de resources van sommige Azure PaaS-diensten echter nog steeds beperken tot alleen verkeer vanaf een subnet van een virtueel netwerk. Zie [netwerk toegang tot PaaS-resources beperken](tutorial-restrict-network-access-to-resources-powershell.md)voor meer informatie.

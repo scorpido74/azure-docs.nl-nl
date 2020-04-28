@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde filtering - Azure Event Grid IoT Edge | Microsoft Documenten
-description: Geavanceerde filtering in gebeurtenisraster op IoT Edge.
+title: Geavanceerde filtering-Azure Event Grid IoT Edge | Microsoft Docs
+description: Geavanceerd filteren in Event Grid op IoT Edge.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992559"
 ---
 # <a name="advanced-filtering"></a>Geavanceerd filteren
-Met Event Grid kunnen filters worden opgegeven op elke eigenschap in de json-payload. Deze filters zijn gemodelleerd `AND` als set van voorwaarden, `OR` met elke buitenste voorwaarde met optionele innerlijke omstandigheden. Voor `AND` elke voorwaarde geeft u de volgende waarden op:
+Met Event Grid kunt u filters voor elke eigenschap in de JSON-nettolading opgeven. Deze filters zijn gemodelleerd als set `AND` voor waarden, waarbij elke Outer voor waarde optionele `OR` interne voor waarden heeft. Voor elke `AND` voor waarde geeft u de volgende waarden op:
 
-* `OperatorType`- Het type vergelijking.
-* `Key`- Het jsonpad naar de eigenschap waarop het filter moet worden toegepast.
-* `Value`- De referentiewaarde waartegen het filter `Values` wordt uitgevoerd (of) - De set referentiewaarden waartegen het filter wordt uitgevoerd.
+* `OperatorType`-Het type vergelijking.
+* `Key`-Het JSON-pad naar de eigenschap waarop het filter moet worden toegepast.
+* `Value`-De referentie waarde waarmee het filter wordt uitgevoerd (of) `Values` : de set referentie waarden waartegen het filter wordt uitgevoerd.
 
-## <a name="json-syntax"></a>SYNTAXIS JSON
+## <a name="json-syntax"></a>JSON-syntaxis
 
-De SYNTAXIS VAN JSON voor een geavanceerd filter is als volgt:
+De JSON-syntaxis voor een geavanceerd filter is als volgt:
 
 ```json
 {
@@ -44,57 +44,57 @@ De SYNTAXIS VAN JSON voor een geavanceerd filter is als volgt:
 }
 ```
 
-## <a name="filtering-on-array-values"></a>Filteren op matrixwaarden
+## <a name="filtering-on-array-values"></a>Filteren op matrix waarden
 
-Event Grid ondersteunt vandaag de dag geen filtering op een array met waarden. Als een binnenkomende gebeurtenis een matrixwaarde heeft voor de sleutel van het geavanceerde filter, mislukt de overeenkomende bewerking. De inkomende gebeurtenis komt uiteindelijk niet overeen met het evenementabonnement.
+Event Grid biedt geen ondersteuning voor filteren op een matrix met waarden vandaag. Als een binnenkomende gebeurtenis een matrix waarde heeft voor de sleutel van het geavanceerde filter, mislukt de overeenkomende bewerking. De binnenkomende gebeurtenis eindigt niet op overeenkomst met het gebeurtenis abonnement.
 
-## <a name="and-or-not-semantics"></a>EN-OF-NIET semantiek
+## <a name="and-or-not-semantics"></a>EN-of-geen semantiek
 
-Merk op dat in het json-voorbeeld dat eerder is gegeven, `AdvancedFilters` een array is. Zie elk `AdvancedFilter` array-element `AND` als een voorwaarde.
+U ziet dat in het JSON-voor beeld `AdvancedFilters` dat eerder is gegeven, een matrix is. Denk aan elk `AdvancedFilter` matrix element als een `AND` voor waarde.
 
-Voor de operatoren die meerdere `NumberIn` `NumberNotIn`waarden `StringIn`ondersteunen (zoals , , `OR` enz.), wordt elke waarde als voorwaarde behandeld. Dus, `StringBeginsWith("a", "b", "c")` een zal overeenkomen met een `a` `b` string `c`waarde die begint met een of .
+Voor de Opera tors die meerdere waarden ondersteunen (zoals `NumberIn`, `NumberNotIn`, `StringIn`, enzovoort), wordt elke waarde behandeld als een `OR` voor waarde. Een `StringBeginsWith("a", "b", "c")` komt dus overeen met een teken reeks waarde die begint met `a` ofwel `b` of `c`.
 
 > [!CAUTION]
-> De NIET-operatoren - `NumberNotIn` en `StringNotIn` gedragen zich als `Values` EN voorwaarden op elke waarde die in het veld wordt gegeven.
+> De Opera tors `NumberNotIn` en `StringNotIn` gedragen zich als en voor waarden voor elke waarde die in het `Values` veld wordt gegeven.
 >
-> Als u dit niet doet, wordt het filter een Accept-All-filter en wordt het doel van filteren verloren.
+> Als u dit niet doet, wordt het filter ' accept-all filter en verslaan het doel van het filteren.
 
-## <a name="floating-point-rounding-behavior"></a>Afrondingsgedrag zwevend punt
+## <a name="floating-point-rounding-behavior"></a>Drijvende komma Afrondings gedrag
 
-Gebeurtenisraster gebruikt `decimal` het .NET-type om alle numerieke waarden te verwerken. De getalwaarden die zijn opgegeven in het gebeurtenisabonnement JSON, zijn niet onderhevig aan zwevend puntafrondingsgedrag.
+Event Grid gebruikt het `decimal` .net-type voor het afhandelen van alle numerieke waarden. De numerieke waarden die zijn opgegeven in de JSON van het gebeurtenis abonnement zijn niet onderhevig aan drijvende-komma afronding.
 
-## <a name="case-sensitivity-of-string-filters"></a>Hoofdlettergevoeligheid van tekenreeksfilters
+## <a name="case-sensitivity-of-string-filters"></a>Hoofdletter gevoeligheid van teken reeks filters
 
-Alle snaarvergelijkingen zijn case-ongevoelig. Er is geen manier om dit gedrag vandaag te veranderen.
+Alle teken reeks vergelijkingen zijn hoofdletter gevoelig. Het is niet mogelijk om dit gedrag vandaag nog te wijzigen.
 
-## <a name="allowed-advanced-filter-keys"></a>Toegestane geavanceerde filtertoetsen
+## <a name="allowed-advanced-filter-keys"></a>Toegestane geavanceerde filter sleutels
 
-De `Key` eigenschap kan een bekende eigenschap op het hoogste niveau zijn, of een jsonpad zijn met meerdere punten, waarbij elke stip betekent dat u in een genest json-object stapt.
+De `Key` eigenschap kan een bekende eigenschap op het hoogste niveau zijn of een JSON-pad met meerdere punten zijn, waarbij elke punt wordt stapsgewijs in een genest JSON-object.
 
-Event Grid heeft geen speciale betekenis `$` voor het teken in de sleutel, in tegenstelling tot de JSONPath-specificatie.
+Event Grid heeft geen speciale betekenis voor het `$` teken in de sleutel, in tegens telling tot de JSONPath-specificatie.
 
-### <a name="event-grid-schema"></a>Gebeurtenisrasterschema
+### <a name="event-grid-schema"></a>Event grid-schema
 
-Voor gebeurtenissen in het schema gebeurtenisraster:
+Voor gebeurtenissen in het Event Grid schema:
 
 * Id
 * Onderwerp
 * Onderwerp
-* EventType (EventType)
-* Gegevensversie
-* Data.Prop1
-* Data.Prop*Prop2.Prop3.Prop4.Prop5
+* Type
+* DataVersion
+* Data. Prop1
+* Data. prop * Prop2. Prop3. Prop4. Prop5
 
-### <a name="custom-event-schema"></a>Aangepast gebeurtenisschema
+### <a name="custom-event-schema"></a>Aangepast gebeurtenis schema
 
-Er is geen beperking `Key` op het aangepaste gebeurtenisschema, omdat Gebeurtenisraster geen envelopschema afdwingt op de payload.
+Er is geen beperking voor het `Key` aangepaste gebeurtenis schema, omdat Event grid geen envelop schema op de payload afdwingt.
 
-## <a name="numeric-single-value-filter-examples"></a>Voorbeelden van filtermet numerieke waarde
+## <a name="numeric-single-value-filter-examples"></a>Numerieke voor beelden van filter voor één waarde
 
-* AantalGroter dan
-* NumberGreaterThanOrEquals NumberGreaterThanOrEquals NumberGreaterThanOrEquals NumberGreater
-* Numberlessthan
-* Numberlessthanorequals
+* NumberGreaterThan
+* NumberGreaterThanOrEquals
+* NumberLessThan
+* NumberLessThanOrEquals
 
 ```json
 {
@@ -125,10 +125,10 @@ Er is geen beperking `Key` op het aangepaste gebeurtenisschema, omdat Gebeurteni
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>Voorbeelden van filtervoorbeelden voor numerieke bereikwaarden
+## <a name="numeric-range-value-filter-examples"></a>Voor beelden van numerieke filter-waarden
 
 * NumberIn
-* NummerNotin
+* NumberNotIn
 
 ```json
 {
@@ -149,13 +149,13 @@ Er is geen beperking `Key` op het aangepaste gebeurtenisschema, omdat Gebeurteni
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>Voorbeelden van filtervoorbeelden voor tekenreeksbereik-waarde
+## <a name="string-range-value-filter-examples"></a>Voor beelden van teken reeks-Waardefilter
 
-* Tekenreeksbevat
+* StringContains
 * StringBeginsWith
 * StringEndsWith
-* Stringin
-* StringNotin
+* StringIn
+* StringNotIn
 
 ```json
 {
@@ -191,9 +191,9 @@ Er is geen beperking `Key` op het aangepaste gebeurtenisschema, omdat Gebeurteni
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>Booleaanse filtervoorbeelden met één waarde
+## <a name="boolean-single-value-filter-examples"></a>Voor beelden van Booleaanse filtering voor één waarde
 
-* BoolEquals BoolEquals
+* BoolEquals
 
 ```json
 {

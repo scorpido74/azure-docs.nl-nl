@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72801875"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Aanpak en proces voor het overstappen op Azure Data Catalog
@@ -54,7 +54,7 @@ Hier volgen enkele tips voor het definiëren van uw visie:
 
 Hier vindt u een voorbeeld van een visie voor een overstapplan naar Data Catalog voor het fictieve bedrijf Adventure Works.
 
-**Azure Data Catalog** stelt het Adventure Works Finance-team in staat om samen te werken aan belangrijke gegevensbronnen, zodat elk teamlid gemakkelijk de gegevens kan vinden en gebruiken die ze nodig hebben en zijn kennis kan delen met het team als geheel.
+**Azure Data Catalog** biedt het IT-team van Adventure Works de mogelijkheid om samen te werken aan belang rijke gegevens bronnen, zodat elk teamlid de benodigde gegevens gemakkelijk kan vinden en gebruiken en hun kennis kan delen met het team als geheel.
 
 Zodra u een heldere visie hebt gemaakt, moet u een geschikt proefproject bepalen voor Data Catalog. Er zijn verschillende scenario's voor Data Catalog. Daarom bevat de volgende sectie een aantal tips om relevante gebruiksvoorbeelden te herkennen.
 
@@ -69,7 +69,7 @@ Hier volgen enkele tips voor het identificeren van gebruiksvoorbeelden:
 * **Definieer de doelstellingen van het team** - hoe bereikt het team hun doelstellingen? Richt u nog niet op Data Catalog, omdat u in deze fase objectief wilt zijn. Vergeet niet dat het om de bedrijfsresultaten en niet om de technologie draait.
 * **Definieer het zakelijke probleem** - wat zijn de problemen van het team met betrekking tot het zoeken en leren over gegevensassets? Bijvoorbeeld, er staat informatie over belangrijke gegevensbronnen in Excel-werkmappen in een netwerkmap, en het team spendeert mogelijk veel tijd aan het vinden van de werkmappen.
 * **Krijg inzicht in de teamcultuur met betrekking tot verandering** - veel uitdagingen met betrekking tot acceptatie hebben te maken met weerstand tegen verandering, in plaats van met de implementatie van een nieuw hulpprogramma. Hoe een team reageert op verandering is belangrijk bij het identificeren van gebruiksvoorbeelden, omdat processen mogelijk bestaan met de redenering "dit hebben we altijd zo hebben gedaan" of "waarom zouden we het veranderen als het niet stuk is?". De overstap op een nieuw hulpprogramma of proces is altijd het gemakkelijkst als de betrokken mensen weten welke meerwaarde ze kunnen realiseren door de verandering, en erkennen dat het belangrijk is dat de problemen worden opgelost. 
-* **Houd focus met betrekking tot gegevensactiva** - Bij het bespreken van de zakelijke problemen waarmee een team wordt geconfronteerd, moet u "door het onkruid snijden", en u richten op wat relevant is voor het effectiever benutten van bedrijfsgegevensassets.
+* **Blijf op de hoogte** van gegevensassets-bij het bespreken van de bedrijfs problemen die een team gezichten hebben, moet u de onkruid door lopen en zich richten op wat u nodig hebt om bedrijfs gegevensassets effectiever te benutten.
 
 Hier volgen enkele gebruiksvoorbeelden met betrekking tot Data Catalog:
 
@@ -91,7 +91,7 @@ Uw proefplan moet rekening houden met zakelijke doelstellingen die u wilt behale
 
 ### <a name="target-the-right-team"></a>Richt u op het juiste team
 
-Als u uw proefproject kiest, selecteert u een team met de meest interessante scenario's dat een bestaand zakelijk probleem oplost. Bijvoorbeeld, een bedrijfsanalist maakt rapporten van een SQL Server-database. Het probleem is dat ze pas na een gesprek met verschillende collega's op de hoogte zijn geworden van de gegevensbron. Ten slotte, na het verspillen van tijd proberen om te vinden welke gegevensbronnen te gebruiken, ontdekten ze over een Excel-werkmap, die een beschrijving van elke gegevensbron bevat. Hoewel de Excel-werkmap de tabellen die ze nodig hebben, adequaat beschrijft, zouden ze deze gegevensbronnen snel hebben gevonden als ze waren geregistreerd en geannoteerd in **Azure Data Catalog**.
+Als u uw proefproject kiest, selecteert u een team met de meest interessante scenario's dat een bestaand zakelijk probleem oplost. Bijvoorbeeld, een bedrijfsanalist maakt rapporten van een SQL Server-database. Het probleem is dat de gegevens bron pas na het communiceren met verschillende collega's bekend is geworden. Ten slotte, nadat u de tijd hebt verspild om te bepalen welke gegevens bronnen u moet gebruiken, hebben ze een Excel-werkmap gevonden met een beschrijving van elke gegevens bron. Hoewel de Excel-werkmap op de juiste wijze de tabellen beschrijft die ze nodig hebben, zouden ze deze gegevens bronnen snel kunnen vinden als ze zijn geregistreerd en aantekeningen hebben gemaakt in **Azure Data Catalog**.
 
 ### <a name="identify-data-heroes"></a>Gegevensproducenten en -gebruikers identificeren
 
@@ -101,7 +101,7 @@ In uw eerste proefproject neemt u enkele personen op die gegevens produceren en 
 
 **Gegevensgebruikers** zijn mensen met expertise over het gebruik van gegevens om bedrijfsproblemen op te lossen. Nancy is bijvoorbeeld een bedrijfsanalist die gegevensbronnen van SQL Server bij Adventure Works gebruikt om gegevens te analyseren.
 
-Een van de bedrijfsproblemen die **Azure Data Catalog** oplost, is het verbinden van **gegevensproducenten** met **gegevensgebruikers**. Data Catalog doet dit door te fungeren als een centrale opslagplaats voor informatie over zakelijke gegevensbronnen. Met behulp van Data Catalog registreert David gegevensbronnen van Adventure Works en SQL Server. Met behulp van crowdsourcing elke gebruiker die deze gegevensbron ontdekt kan haar mening over de gegevens te delen, in aanvulling op het gebruik van de gegevens die ze hebben ontdekt. Bijvoorbeeld, Nancy detecteert de gegevensbronnen door in de catalogus te zoeken en deelt haar gespecialiseerde kennis over de gegevens.  Anderen in de organisatie profiteren nu van de gedeelde kennis door in de catalogus met gegevens te zoeken.
+Een van de bedrijfsproblemen die **Azure Data Catalog** oplost, is het verbinden van **gegevensproducenten** met **gegevensgebruikers**. Data Catalog doet dit door te fungeren als een centrale opslagplaats voor informatie over zakelijke gegevensbronnen. Met behulp van Data Catalog registreert David gegevensbronnen van Adventure Works en SQL Server. Door crowdsourcing te gebruiken, kunnen alle gebruikers die deze gegevens bron detecteren, haar meningen over de gegevens delen, naast het gebruik van de gegevens die ze hebben gedetecteerd. Bijvoorbeeld, Nancy detecteert de gegevensbronnen door in de catalogus te zoeken en deelt haar gespecialiseerde kennis over de gegevens.  Anderen in de organisatie profiteren nu van de gedeelde kennis door in de catalogus met gegevens te zoeken.
 
 * Zie voor meer informatie over het registreren van gegevensbronnen [Gegevensbronnen registreren](data-catalog-get-started.md).
 * Zie voor meer informatie over het detecteren van gegevensbronnen [Gegevensbronnen zoeken](data-catalog-get-started.md).
@@ -116,7 +116,7 @@ In de volgende sectie wordt een voorbeeldproject van het bedrijf Adventure Works
 
 ### <a name="an-example-project"></a>Een voorbeeldproject
 
-In dit voorbeeld maakt bedrijfsanalist Nancy rapporten voor haar team met behulp van gegevens uit een SQL Server-database. Het probleem is dat ze pas na een gesprek met verschillende collega's op de hoogte zijn geworden van de gegevensbron. Ze zouden deze gegevensbronnen snel hebben gevonden als ze waren geregistreerd en geannoteerd op een centrale locatie zoals **Azure Data Catalog.**
+In dit voorbeeld maakt bedrijfsanalist Nancy rapporten voor haar team met behulp van gegevens uit een SQL Server-database. Het probleem is dat de gegevens bron pas na het communiceren met verschillende collega's bekend is geworden. Ze zouden deze gegevens bronnen snel hebben gevonden als ze zijn geregistreerd en aantekeningen maken op een centrale locatie, zoals **Azure Data Catalog**.
 
 Als u wilt laten zien hoe eenvoudig Nancy en haar team waardevolle gegevens kunnen vinden, gebruikt u het hulpprogramma voor registratie van gegevensbronnen om de catalogus met informatie (metagegevens) over de gegevensbronnen te vullen. Op deze manier is de informatie over de database beschikbaar voor het team en de onderneming, in plaats van slechts enkele personen. Nadat de relevante gegevensbronnen zijn geregistreerd in Data Catalog, kunnen Nancy en haar team deze bronnen gemakkelijk gebruiken. Het resultaat is een uitgebreidere en relevante gegevenscatalogus voor haar team en de onderneming. Naarmate er meer teams overstappen op Data Catalog, zijn gegevensbronnen binnen het bedrijf steeds gemakkelijker te vinden en gebruiken. Daardoor ontstaat er een meer gegevensgerichte cultuur waarin u meer kunt bereiken met uw gegevens.
 

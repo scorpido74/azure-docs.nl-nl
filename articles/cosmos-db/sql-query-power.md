@@ -1,6 +1,6 @@
 ---
-title: POWER in Azure Cosmos DB-querytaal
-description: Meer informatie over SQL-systeemfunctie POWER in Azure Cosmos DB.
+title: Azure Cosmos DB query taal inschakelen
+description: Meer informatie over de kracht van de functie voor SQL-systeem functies in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349629"
 ---
-# <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB)
- Geeft als resultaat de waarde van de opgegeven expressie aan de opgegeven bevoegdheid.  
+# <a name="power-azure-cosmos-db"></a>ENERGIE (Azure Cosmos DB)
+ Retourneert de waarde van de opgegeven expressie naar de opgegeven macht.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,21 +29,21 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    Is een numerieke expressie.  
   
 *numeric_expr2*  
-   Is de macht om *numeric_expr1*te verhogen.  
+   Is de macht waarmee *numeric_expr1*worden verhoogd.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een numerieke expressie.  
+  Retourneert een numerieke expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld wordt aangetoond dat een getal wordt verhoogd tot de kracht van 3 (de kubus van het getal).  
+  In het volgende voor beeld wordt gedemonstreerd dat een getal wordt verhoogd naar de macht 3 (de kubus van het getal).  
   
 ```sql
 SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2  
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{pow1: 8, pow2: 15.625}]  
@@ -52,5 +52,5 @@ SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wiskundige functies Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

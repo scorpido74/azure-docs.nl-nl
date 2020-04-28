@@ -1,6 +1,6 @@
 ---
-title: ST_ISVALID in Azure Cosmos DB-querytaal
-description: Meer informatie over de SQL-systeemfunctie ST_ISVALID in Azure Cosmos DB.
+title: ST_ISVALID in Azure Cosmos DB query taal
+description: Meer informatie over de functie ST_ISVALID van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349360"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
@@ -26,25 +26,25 @@ ST_ISVALID(<spatial_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *spatial_expr*  
-   Is een expressie geoJSON-punt, veelhoek of lijntekenreeks.  
+   Is een geojson Point-, veelhoek-of lines Tring-expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een Booleaanse expressie.  
+  Retourneert een Boole-expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld ziet u hoe u controleren of een punt geldig is met behulp van ST_VALID.  
+  In het volgende voor beeld ziet u hoe u kunt controleren of een punt geldig is met behulp van ST_VALID.  
   
-  Dit punt heeft bijvoorbeeld een breedtegraadwaarde die zich niet in het geldige waardenbereik bevindt [-90, 90], zodat de query false retourneert.  
+  Dit punt heeft bijvoorbeeld een waarde van een breedte die niet voor komt in het geldige bereik van waarden [-90, 90], waardoor de query onwaar retourneert.  
   
-  Voor veelhoeken vereist de GeoJSON-specificatie dat het laatste meegeleverde coördinatenpaar hetzelfde moet zijn als het eerste, om een gesloten vorm te maken. Punten binnen een veelhoek moeten tegen de klok in worden opgegeven. Een veelhoek die in de volgorde met de klok mee wordt opgegeven, vertegenwoordigt het omgekeerde van het gebied erin.  
+  Voor veelhoeken moet de geojson-specificatie overeenkomen met de naam van het laatste coördinaten paar, om een gesloten vorm te maken. Punten binnen een veelhoek moeten worden opgegeven in de volg orde van linksom. Een veelhoek die in de volg orde van de klok wordt opgegeven, vertegenwoordigt de inverse van de regio.  
   
 ```sql
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{ "b": false }]  
@@ -53,5 +53,5 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ruimtelijke functies Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

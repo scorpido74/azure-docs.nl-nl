@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsfuncties beheren en bewaken - Microsoft Azure | Microsoft Documenten
-description: In dit artikel vindt u een overzicht van de beveiligingsfuncties en services die Azure biedt om te helpen bij het beheer en de bewaking van Azure-cloudservices en virtuele machines.
+title: Beveiligings functies voor beheer en bewaking-Microsoft Azure | Microsoft Docs
+description: Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,47 +16,47 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73162743"
 ---
-# <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligingsbeheer en -bewaking
-In dit artikel vindt u een overzicht van de beveiligingsfuncties en services die Azure biedt om te helpen bij het beheer en de bewaking van Azure-cloudservices en virtuele machines.
+# <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
+Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-RBAC (Role-Based Access Control) biedt gedetailleerd toegangsbeheer voor Azure-bronnen. Door RBAC te gebruiken, u mensen alleen de hoeveelheid toegang geven die ze nodig hebben om hun werk uit te voeren. RBAC kan u ook helpen ervoor te zorgen dat wanneer mensen de organisatie verlaten, ze geen toegang meer hebben tot bronnen in de cloud.
+Access Control op basis van rollen (RBAC) biedt gedetailleerd toegangs beheer voor Azure-resources. Met RBAC kunt u personen alleen de hoeveelheid toegang verlenen die ze nodig hebben om hun taken uit te voeren. RBAC kan u er ook voor zorgen dat wanneer mensen de organisatie verlaten, de toegang tot resources in de Cloud verloren gaat.
 
 Meer informatie:
 
-* [Active Directory-teamblog over RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure-toegangsbeheer op basis van azure-rollen](../../role-based-access-control/role-assignments-portal.md)
+* [Team blog op RBAC Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Access Control op basis van rollen in azure](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware
 
-Met Azure u antimalwaresoftware van grote beveiligingsleveranciers zoals Microsoft, Symantec, Trend Micro, McAfee en Kaspersky gebruiken. Deze software helpt uw virtuele machines te beschermen tegen schadelijke bestanden, adware en andere bedreigingen.
+Met Azure kunt u antimalware-software gebruiken van belang rijke leveranciers van beveiliging, zoals micro soft, Symantec, Trend Micro, McAfee en Kaspersky. Deze software helpt bij het beschermen van uw virtuele machines tegen schadelijke bestanden, adware en andere bedreigingen.
 
-Microsoft Antimalware voor Azure Cloud Services en Virtual Machines biedt u de mogelijkheid om een antimalwaremiddel te installeren voor zowel PaaS-rollen als virtuele machines. Op basis van System Center Endpoint Protection brengt deze functie bewezen on-premises beveiligingstechnologie naar de cloud.
+Micro soft antimalware voor Azure Cloud Services en Virtual Machines biedt u de mogelijkheid om een antimalware-agent te installeren voor zowel PaaS-als virtuele machines. Op basis van System Center Endpoint Protection biedt deze functie een on-premises beveiligings technologie in de Cloud.
 
-We bieden ook diepgaande integratie voor Trend's [Deep Security-](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) en [SecureCloud-producten](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) in het Azure-platform. Deep Security is een antivirusoplossing en SecureCloud is een versleutelingsoplossing. Deep Security wordt geïmplementeerd in VM's via een extensiemodel. Door de Gebruikersinterface van de Azure-portal en PowerShell te gebruiken, u ervoor kiezen om Deep Security te gebruiken in nieuwe VM's die worden gesponnen of bestaande VM's die al zijn geïmplementeerd.
+We bieden ook diep gaande integratie voor de [diepe beveiligings](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) -en [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) -producten van de trend in het Azure-platform. Grondige beveiliging is een antivirus oplossing en SecureCloud is een versleutelings oplossing. Uitgebreide beveiliging wordt binnen Vm's geïmplementeerd via een extensie model. Met behulp van de Azure Portal gebruikers interface en Power shell kunt u ervoor kiezen om diepe beveiliging te gebruiken in nieuwe Vm's die worden geïnstalleerd of bestaande Vm's die al zijn geïmplementeerd.
 
-Symantec Endpoint Protection (SEP) wordt ook ondersteund op Azure. Door middel van portalintegratie u opgeven dat u VAN plan bent SEP op een VM te gebruiken. SEP kan op een nieuwe VM worden geïnstalleerd via de Azure-portal, of het kan via PowerShell op een bestaande VM worden geïnstalleerd.
+Symantec Endpoint Protection (SEP) wordt ook ondersteund op Azure. Via Portal-integratie kunt u opgeven dat u SEP wilt gebruiken op een virtuele machine. SEP kan worden geïnstalleerd op een nieuwe virtuele machine via de Azure Portal of kan worden geïnstalleerd op een bestaande virtuele machine via Power shell.
 
 Meer informatie:
 
 * [Deploying Antimalware Solutions on Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/) (Antimalware-oplossingen implementeren op virtuele machines van Azure)
-* [Microsoft Antimalware voor Azure Cloud Services en virtuele machines](antimalware.md)
-* [Trend Micro Deep Security as a Service installeren en configureren op een Windows VM](/azure/virtual-machines/windows/classic/install-trend)
-* [Symantec Endpoint Protection installeren en configureren op een Windows VM](/azure/virtual-machines/windows/classic/install-symantec)
-* [Nieuwe antimalwareopties voor het beschermen van virtuele azure-machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
+* [Micro soft antimalware voor Azure Cloud Services en Virtual Machines](antimalware.md)
+* [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](/azure/virtual-machines/windows/classic/install-trend)
+* [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](/azure/virtual-machines/windows/classic/install-symantec)
+* [Nieuwe antimalware-opties voor het beveiligen van Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication is een verificatiemethode waarvoor meer dan één verificatiemethode moet worden gebruikt. Het voegt een kritieke tweede beveiligingslaag toe aan aanmeldingen en transacties van gebruikers.
+Azure Multi-Factor Authentication is een verificatie methode die het gebruik van meer dan één verificatie methode vereist. Er wordt een kritieke tweede beveiligingslaag toegevoegd aan gebruikers aanmeldingen en trans acties.
 
-Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te waarborgen en tegelijkertijd te voldoen aan de vraag van gebruikers naar een eenvoudig aanmeldingsproces. Het levert sterke verificatie via een reeks verificatieopties (telefoongesprek, sms of mobiele app-melding of verificatiecode) en OATH-tokens van derden.
+Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via een reeks verificatie opties (telefoon oproep, tekst bericht of mobiele app-melding of verificatie code) en OATH-tokens van derden.
 
 Meer informatie:
 
@@ -66,13 +66,13 @@ Meer informatie:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-U Azure ExpressRoute gebruiken om uw on-premises netwerken uit te breiden naar de Microsoft Cloud via een speciale privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute u verbindingen tot stand brengen met Microsoft-cloudservices zoals Azure, Office 365 en CRM Online. Connectiviteit kan zijn van:
+U kunt Azure ExpressRoute gebruiken om uw on-premises netwerken uit te breiden naar de Microsoft Cloud via een speciale particuliere verbinding die wordt vereenvoudigd door een connectiviteits provider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Azure, Office 365 en CRM Online. Connectiviteit kan afkomstig zijn van:
 
-* Een any-to-any (IP VPN) netwerk.
-* Een point-to-point Ethernet-netwerk.
-* Een virtuele cross-verbinding via een connectiviteitsprovider op een colocatiefaciliteit.
+* Een wille keurig (IP VPN)-netwerk.
+* Een Point-to-Point Ethernet-netwerk.
+* Een virtuele cross-verbinding via een connectiviteits provider op een co-locatie-faciliteit.
 
-ExpressRoute-verbindingen gaan niet via het openbare internet. Ze kunnen bieden meer betrouwbaarheid, hogere snelheden, lagere latencies, en hogere beveiliging dan typische verbindingen via het internet.
+ExpressRoute-verbindingen gaan niet via het open bare Internet. Ze kunnen meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging bieden dan typische verbindingen via internet.
 
 Meer informatie:
 
@@ -80,20 +80,20 @@ Meer informatie:
 
 ## <a name="virtual-network-gateways"></a>Virtuele netwerkgateways
 
-VPN-gateways, ook wel Azure virtual network gateways genoemd, worden gebruikt om netwerkverkeer tussen virtuele netwerken en on-premises locaties te verzenden. Ze worden ook gebruikt om verkeer te verzenden tussen meerdere virtuele netwerken binnen Azure (netwerk naar netwerk). VPN-gateways bieden veilige cross-premises connectiviteit tussen Azure en uw infrastructuur.
+VPN-gateways, ook wel virtuele Azure-netwerk gateways genoemd, worden gebruikt voor het verzenden van netwerk verkeer tussen virtuele netwerken en on-premises locaties. Ze worden ook gebruikt voor het verzenden van verkeer tussen meerdere virtuele netwerken in azure (netwerk naar netwerk). VPN-gateways bieden een beveiligde cross-premises connectiviteit tussen Azure en uw infra structuur.
 
 Meer informatie:
 
 * [Over VPN-gateways](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Overzicht van Azure-netwerkbeveiliging](network-overview.md)
+* [Overzicht van Azure-netwerk beveiliging](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Soms moeten gebruikers bevoorrechte bewerkingen uitvoeren in Azure-resources of andere SaaS-toepassingen. Dit betekent vaak dat organisaties hen permanent bevoorrechte toegang geven in Azure Active Directory (Azure AD).
+Soms moeten gebruikers geprivilegieerde bewerkingen uitvoeren in azure-resources of andere SaaS-toepassingen. Dit betekent vaak dat organisaties hen permanente privileged Access bieden in Azure Active Directory (Azure AD).
 
-Dit is een groeiend beveiligingsrisico voor door de cloud gehoste resources omdat organisaties niet voldoende kunnen controleren wat die gebruikers doen met hun bevoorrechte toegang. Bovendien, als een gebruikersaccount met bevoorrechte toegang is aangetast, kan die ene inbreuk de algehele cloudbeveiliging van een organisatie beïnvloeden. Azure AD Privileged Identity Management helpt dit risico op te lossen door de belichtingstijd van bevoegdheden te verlagen en de zichtbaarheid in het gebruik te vergroten.  
+Dit is een groeiend beveiligings risico voor resources die in de cloud worden gehost, omdat organisaties niet voldoende kunnen controleren wat deze gebruikers doen met hun bevoegde toegang. Als een gebruikers account met bevoorrechte toegang is aangetast, kan dit ook van invloed zijn op de algehele Cloud beveiliging van de organisatie. Azure AD Privileged Identity Management helpt dit risico op te lossen door de blootstellings tijd van bevoegdheden te verlagen en de zicht baarheid van het gebruik te verg Roten.  
 
-Privileged Identity Management introduceert het concept van een tijdelijke beheerder voor een rol of "just in time" beheerderstoegang. Dit soort beheerder is een gebruiker die een activeringsproces voor die toegewezen rol moet voltooien. Het activeringsproces wijzigt de toewijzing van de gebruiker in een rol in Azure AD van inactief naar actief, voor een bepaalde periode.
+Privileged Identity Management introduceert het concept van een tijdelijke beheerder voor een rol of ' just-in-time ' beheerders toegang. Dit type beheerder is een gebruiker die een activerings proces voor die toegewezen rol moet volt ooien. Met het activerings proces wordt de toewijzing van de gebruiker aan een rol in azure AD gewijzigd van inactief in actief, gedurende een opgegeven periode.
 
 Meer informatie:
 
@@ -102,43 +102,43 @@ Meer informatie:
 
 ## <a name="identity-protection"></a>Identiteitsbeveiliging
 
-Azure AD Identity Protection biedt een geconsolideerde weergave van verdachte aanmeldingsactiviteiten en potentiële kwetsbaarheden om uw bedrijf te beschermen. Identiteitsbescherming detecteert verdachte activiteiten voor gebruikers en bevoorrechte (beheerders) identiteiten, op basis van signalen zoals:
+Azure AD Identity Protection biedt een geconsolideerde weer gave van verdachte aanmeldings activiteiten en mogelijke beveiligings problemen om uw bedrijf te helpen beveiligen. Identiteits beveiliging detecteert verdachte activiteiten voor gebruikers en geprivilegieerde identiteiten (beheerders), op basis van signalen zoals:
 
-* Brute-force aanvallen.
+* Aanvallen tegen brute kracht.
 * Gelekte referenties.
 * Aanmeldingen vanaf onbekende locaties en geïnfecteerde apparaten.
 
-Door meldingen te verstrekken en aanbevolen herstel, helpt Identity Protection om risico's in realtime te beperken. Het berekent de ernst van het gebruikersrisico. U op risico's gebaseerd beleid configureren om de toegang tot toepassingen automatisch te beschermen tegen toekomstige bedreigingen.
+Door meldingen en aanbevolen herstel te bieden, helpt identiteits beveiliging de Risico's in realtime te verminderen. De risico ernst van de gebruiker wordt berekend. U kunt beleids regels op basis van Risico's configureren om automatisch de toegang tot toepassingen te helpen beschermen tegen toekomstige bedreigingen.
 
 Meer informatie:
 
-* [Azure Active Directory-identiteitsbeveiliging](/azure/active-directory/active-directory-identityprotection)
-* [Kanaal 9: Azure AD en Identity Show: Preview voor identiteitsbescherming](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Security Center geeft u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen. Het helpt bij het detecteren van bedreigingen die anders onopgemerkt zouden kunnen blijven, en werkt met een breed ecosysteem van beveiligingsoplossingen.
+Azure Security Center helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Security Center biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer in uw Azure-abonnementen. Het helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en die werken met een breed ecosysteem van beveiligings oplossingen.
 
-Security Center helpt u bij het optimaliseren en bewaken van de beveiliging van uw Azure-bronnen door:
+Security Center helpt u de beveiliging van uw Azure-resources te optimaliseren en te controleren door:
 
-* Hiermee u beleidsregels voor uw Azure-abonnementsbronnen definiëren volgens:
-  * De beveiligingsbehoeften van uw bedrijf.
+* U kunt beleids regels voor uw Azure-abonnements resources definiëren op basis van:
+  * De beveiligings behoeften van uw bedrijf.
   * Het type toepassingen of de gevoeligheid van de gegevens in elk abonnement.
-* De status van uw virtuele Azure-machines, netwerken en toepassingen controleren.
-* Een lijst met geprioritteerde beveiligingswaarschuwingen, inclusief waarschuwingen van geïntegreerde partneroplossingen. Het biedt ook de informatie die u nodig hebt om snel een aanval te onderzoeken en aanbevelingen over hoe deze te verhelpen.
+* Bewaken van de status van uw virtuele machines, netwerken en toepassingen van Azure.
+* Bieden van een lijst met beveiligings waarschuwingen met prioriteit, inclusief waarschuwingen van geïntegreerde partner oplossingen. Het bevat ook de informatie die u nodig hebt om snel een aanval te onderzoeken en aanbevelingen voor het oplossen ervan.
 
 Meer informatie:
 
 * [Inleiding tot Azure Security Center](../../security-center/security-center-intro.md)
-* [Uw veilige score verbeteren in Azure Security Center](../../security-center/security-center-secure-score.md)
+* [Verbeter uw beveiligde Score in Azure Security Center](../../security-center/security-center-secure-score.md)
 
-## <a name="intelligent-security-graph"></a>Intelligente beveiligingsgrafiek
+## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 
-Intelligent Security Graph biedt real-time bescherming tegen bedreigingen in Microsoft-producten en -services. Het maakt gebruik van geavanceerde analyses die een enorme hoeveelheid bedreigingsinformatie en beveiligingsgegevens koppelen om inzichten te bieden die de organisatiebeveiliging kunnen versterken. Microsoft maakt gebruik van geavanceerde analyses: het verwerken van meer dan 450 miljard verificaties per maand, het scannen van 400 miljard e-mails op malware en phishing en het bijwerken van een miljard apparaten om rijkere inzichten te bieden. Deze inzichten kunnen uw organisatie helpen om aanvallen snel te detecteren en erop te reageren.
+Intelligent Security Graph biedt real-time bedreigings beveiliging in micro soft-producten en-services. Er wordt gebruikgemaakt van geavanceerde analyses waarmee een enorme hoeveelheid bedreigings informatie en beveiligings gegevens worden gekoppeld om inzicht te krijgen in de beveiliging van de organisatie. Micro soft maakt gebruik van geavanceerde analyses: verwerking van meer dan 450.000.000.000 authenticaties per maand, scannen van 400.000.000.000-e-mail berichten voor malware en phishing en het bijwerken van 1.000.000.000 apparaten — om uitgebreidere inzichten te leveren. Deze inzichten kunnen uw organisatie helpen aanvallen snel te detecteren en erop te reageren.
 
-* [Intelligente beveiligingsgrafiek](https://www.microsoft.com/security/intelligence)
+* [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [gedeelde verantwoordelijkheidsmodel](shared-responsibility.md) en welke beveiligingstaken door Microsoft worden uitgevoerd en welke taken door u worden uitgevoerd.
+Meer informatie over het [gedeelde verantwoordelijkheids model](shared-responsibility.md) en de beveiligings taken die door micro soft worden verwerkt en welke taken door u worden uitgevoerd.
 
-Zie [Beveiligingsbeheer in Azure](management.md)voor meer informatie over beveiligingsbeheer.
+Zie voor meer informatie over beveiligings beheer [beveiligings beheer in azure](management.md).

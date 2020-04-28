@@ -1,7 +1,7 @@
 ---
-title: Werkstroom met behulp van handtekeningen voor gedeelde toegang
+title: Werk stroom met hand tekeningen voor gedeelde toegang
 titleSuffix: Microsoft Genomics
-description: In dit artikel wordt uitgelegd hoe u een werkstroom indient bij de Microsoft Genomics-service met behulp van gedeelde toegangshandtekeningen (SAS) in plaats van opslagaccountsleutels.
+description: In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van Shared Access signatures (SAS) in plaats van de sleutels van een opslag account.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248589"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Een werkstroom indienen aan Microsoft Genomics met behulp van een SAS in plaats van een opslagaccountsleutel 
 
-In dit artikel wordt uitgelegd hoe u een werkstroom indienen bij de Microsoft Genomics-service met behulp van een config.txt-bestand dat [gedeelde toegangshandtekeningen (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) bevat in plaats van opslagaccountsleutels. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
+In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config. txt-bestand dat [gedeelde toegangs handtekeningen (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) bevat in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
 
-In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werkstroom met de meegeleverde voorbeeldgegevens hebt ingediend, u klaar zijn om verder te gaan met dit artikel. 
+In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
 
 ## <a name="what-is-a-sas"></a>Wat is een SAS?
 Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. Met behulp van een SAS kunt u toegang geven tot resources in uw opslagaccount zonder dat u de sleutels van uw account hoeft te delen. De belangrijkste reden voor het gebruik van handtekeningen voor gedeelde toegang in uw toepassingen is dat een SAS een veilige manier is voor het delen van uw opslagresources zonder dat uw accountsleutels in gevaar komen.
@@ -53,10 +53,10 @@ Er zijn twee manieren om een SAS-token te maken: met behulp van Azure Storage Ex
 
 Het bereik van de SAS voor de invoerbestanden moet worden ingesteld op het specifieke invoerbestand (blob). Volg [deze instructies](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) om een SAS-token te maken. Als u de SAS hebt gemaakt, ziet u de volledige URL met de querytekenreeks, evenals de querytekenreeks zelf, op het scherm en kunt u deze gegevens kopiëren.
 
- ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
+ ![SAS Storage Explorer-Genomics](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "SAS Storage Explorer-Genomics")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Instellen: een SAS-programmatisch maken
+### <a name="set-up-create-a-sas-programmatically"></a>Instellen: een SAS programmatisch maken
 
 Als u een SAS wilt maken met behulp van de SDK van Azure Storage, raadpleegt u de documentatie voor verschillende talen, waaronder [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) en [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
@@ -66,7 +66,7 @@ Als u een SAS wilt maken zonder een SDK, kunt u de SAS-querytekenreeks rechtstre
 ## <a name="add-the-sas-to-the-configtxt-file"></a>De SAS toevoegen aan het config.txt-bestand
 Als u een werkstroom wilt uitvoeren via de service Microsoft Genomics met behulp van een SAS-queryreeks, bewerkt u het config.txt-bestand om de sleutels te verwijderen uit het bestand. Vervolgens voegt u de SAS-queryreeks (begint met een `?`) toe aan de naam van de container, zoals hier wordt weergegeven. 
 
-![Genomics SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS config")
+![SAS-configuratie Genomics](./media/quickstart-input-sas/genomics-sas-config.png "SAS-configuratie Genomics")
 
 Gebruik de Microsoft Genomics Python-client voor het indienen van de werkstroom met de volgende opdracht, waarbij u de bijbehorende SAS-queryreeks toevoegt aan de namen van de blob-invoerbestanden:
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>Namen van invoerbestanden toevoegen aan config.txt-bestand
 U kunt ook de namen van de gekoppelde end read-bestanden rechtstreeks toevoegen aan het config.txt-bestand, met de SAS-querytokens toegevoegd zoals hier wordt weergegeven:
 
-![Genomics SAS config blobnamen](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomics SAS config blobnamen")
+![Met blobnamen voor genomics SAS-configuratie](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Met blobnamen voor genomics SAS-configuratie")
 
 In dit geval gebruikt u de Python-client voor Microsoft Genomics om uw werkstroom te verzenden met de volgende opdracht, waarbij u de parameters `-b1` en `-b2` weglaat:
 

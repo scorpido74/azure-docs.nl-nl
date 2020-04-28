@@ -1,6 +1,6 @@
 ---
-title: Module Twin - IoT-rand voor Azure-gebeurtenisraster | Microsoft Documenten
-description: Configuratie via Module Twin.
+title: Azure Event Grid IoT Edge voor de module dubbele Microsoft Docs
+description: Configuratie via module twee.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,25 +10,25 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992143"
 ---
-# <a name="module-twin-json-schema"></a>Module twin JSON-schema
+# <a name="module-twin-json-schema"></a>Module dubbele JSON-schema
 
-Event Grid on IoT Edge integreert met het IoT Edge-ecosysteem en ondersteunt het maken van onderwerpen en abonnementen via de Module Twin. Het rapporteert ook de huidige status van alle onderwerpen en gebeurtenisabonnementen op de gerapporteerde eigenschappen op de Module Twin.
+Event Grid op IoT Edge integreert met het IoT Edge ecosysteem en ondersteunt het maken van onderwerpen en abonnementen via de module twee. Ook wordt de huidige status van alle onderwerpen en gebeurtenis abonnementen gerapporteerd aan de gerapporteerde eigenschappen van de module dubbele.
 
 > [!WARNING]
-> Vanwege beperkingen in het IoT Edge-ecosysteem zijn alle arrayelementen in het volgende json-voorbeeld gecodeerd als json-tekenreeksen. Zie `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` en toetsen in het volgende voorbeeld.
+> Vanwege beperkingen in het IoT Edge ecosysteem zijn alle matrix elementen in het volgende JSON-voor beeld gecodeerd als JSON-teken reeksen. Zie `EventSubscription.Filter.EventTypes` en `EventSubscription.Filter.AdvancedFilters` sleutels in het volgende voor beeld.
 
 ## <a name="desired-properties-json"></a>Gewenste eigenschappen JSON
 
-* De waarde van elk sleutelwaardepaar in de sectie onderwerpen heeft precies `Topic.Properties` hetzelfde JSON-schema dat wordt gebruikt voor de API bij het maken van onderwerpen.
-* De waarde van elk sleutelwaardepaar in de sectie **EventSubscriptions** heeft precies `EventSubscription.Properties` hetzelfde json-schema dat wordt gebruikt in de API bij het maken van onderwerpen.
-* Als u een onderwerp wilt `null` verwijderen, stelt u de waarde ervan in op de gewenste eigenschappen.
-* Het verwijderen van gebeurtenisabonnementen via gewenste eigenschappen wordt niet ondersteund.
+* De waarde van elk sleutel-waardepaar in het gedeelte topics heeft precies hetzelfde JSON-schema dat wordt gebruikt voor `Topic.Properties` de API bij het maken van onderwerpen.
+* De waarde van elk sleutel-waardepaar in het gedeelte **EventSubscriptions** heeft precies hetzelfde JSON-schema dat wordt gebruikt voor `EventSubscription.Properties` de API bij het maken van onderwerpen.
+* Als u een onderwerp wilt verwijderen, stelt u `null` de waarde in op in de gewenste eigenschappen.
+* Het verwijderen van gebeurtenis abonnementen via gewenste eigenschappen wordt niet ondersteund.
 
 ```json
 {
@@ -81,11 +81,11 @@ Event Grid on IoT Edge integreert met het IoT Edge-ecosysteem en ondersteunt het
 
 ## <a name="reported-properties-json"></a>Gerapporteerde eigenschappen JSON
 
-De sectie gerapporteerde eigenschappen van de moduletweeling bevat de volgende informatie:
+De sectie gerapporteerde eigenschappen van de module dubbele bevat de volgende informatie:
 
-* De reeks onderwerpen en abonnementen die in de winkel van de module bestaan
-* Eventuele fouten die zijn opgetreden bij het maken van gewenste onderwerpen/gebeurtenisabonnementen
-* Eventuele opstartfouten (zoals de gewenste eigenschappen die JSON ontleden is mislukt)
+* De set met onderwerpen en abonnementen die voor komen in de Store van de module
+* Er zijn fouten opgetreden bij het maken van de gewenste onderwerpen/gebeurtenis abonnementen
+* Eventuele opstart fouten (zoals de gewenste eigenschappen JSON parseren is mislukt)
 
 ```json
 {
