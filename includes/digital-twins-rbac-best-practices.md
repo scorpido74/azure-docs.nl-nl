@@ -10,26 +10,26 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.custom: include file
 ms.openlocfilehash: 893beb0800af0eece4d69e727e427c3e92b79121
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76044954"
 ---
-Op rollen gebaseerd toegangsbeheer is een op overervingen gebaseerde beveiligingsstrategie voor het beheren van toegang, machtigingen en rollen. Afstammelingenrollen erven machtigingen van bovenliggende rollen. Machtigingen kunnen ook worden toegewezen zonder te worden overgenomen van een bovenliggende rol. Ze kunnen ook worden toegewezen om een rol aan te passen als dat nodig is.
+Op rollen gebaseerd toegangs beheer is een overname strategie voor het beheren van de toegang, machtigingen en rollen. Onderliggende rollen nemen machtigingen over van bovenliggende rollen. Machtigingen kunnen ook worden toegewezen zonder dat ze worden overgenomen van een bovenliggende rol. Ze kunnen ook worden toegewezen om een rol zo nodig aan te passen.
 
-Een ruimtebeheerder heeft bijvoorbeeld algemene toegang nodig om alle bewerkingen voor een bepaalde ruimte uit te voeren. Toegang omvat alle knooppunten onder of binnen de ruimte. Een apparaatinstallatieprogramma hoeft mogelijk alleen *lees-* en *updatemachtigingen* voor apparaten en sensoren.
+Een ruimte beheerder kan bijvoorbeeld globale toegang nodig hebben om alle bewerkingen voor een opgegeven ruimte uit te voeren. De toegang omvat alle knoop punten onder of in de ruimte. Het installatie programma van een apparaat heeft mogelijk alleen *Lees* -en *Update* -machtigingen nodig voor apparaten en Sens oren.
 
-In elk geval worden rollen precies verleend *en niet meer dan de toegang die nodig is* om hun taken te vervullen volgens het beginsel van het minste voorrecht. Volgens dit beginsel wordt een identiteit *slechts*toegekend :
+In elk geval worden rollen precies toegekend *en niet meer dan de toegang* die is vereist om aan hun taken te voldoen volgens het principe van minimale bevoegdheden. Volgens dit principe wordt een identiteit *alleen*verleend:
 
-* De hoeveelheid toegang die nodig is om zijn taak te voltooien.
-* Een passende rol en beperkt tot de uitvoering van haar taak.
+* De hoeveelheid toegang die nodig is om de taak te volt ooien.
+* Een rol die geschikt en beperkt is om de taak uit te voeren.
 
 >[!IMPORTANT]
-> Volg altijd het principe van het minste voorrecht.
+> Volg altijd het principe van minimale bevoegdheden.
 
-Twee andere belangrijke op rollen gebaseerde toegangscontrolepraktijken die moeten worden gevolgd:
+Twee andere belang rijke op rollen gebaseerde toegangs beheer procedures:
 
 > [!div class="checklist"]
-> * Controleer periodiek roltoewijzingen om te controleren of elke rol over de juiste machtigingen beschikt.
-> * Taken en opdrachten opschonen wanneer personen van rol of toewijzing veranderen.
+> * Controleer regel matig de roltoewijzingen om te controleren of elke rol over de juiste machtigingen beschikt.
+> * Rollen en toewijzingen opschonen wanneer individuen rollen of toewijzingen wijzigen.

@@ -1,6 +1,6 @@
 ---
-title: 'Python: Accountbeheerbewerkingen op Azure Data Lake Storage Gen1 | Microsoft Documenten'
-description: Meer informatie over het gebruik van Python SDK om te werken met Azure Data Lake Storage Gen1-accountbeheerbewerkingen.
+title: 'Python: account beheer bewerkingen op Azure Data Lake Storage Gen1 | Microsoft Docs'
+description: Meer informatie over het gebruik van python SDK voor het werken met Azure Data Lake Storage Gen1 account beheer bewerkingen.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76290611"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Accountbeheerbewerkingen op Azure Data Lake Storage Gen1 met Python
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST-API](data-lake-store-get-started-rest-api.md)
@@ -27,23 +27,23 @@ ms.locfileid: "76290611"
 >
 >
 
-Meer informatie over het gebruik van de Python SDK voor Azure Data Lake Storage Gen1 om basisaccountbeheerbewerkingen uit te voeren, zoals het maken van een Data Lake Storage Gen1-account, het aanbieden van de Data Lake Storage Gen1-accounts, enz. Zie [Bestandssysteembewerkingen](data-lake-store-data-operations-python.md)op Data Lake Storage Gen1 met Python voor instructies over het uitvoeren van bestandssysteembewerkingen op Data Lake Storage Gen1.
+Meer informatie over het gebruik van de python-SDK voor Azure Data Lake Storage Gen1 voor het uitvoeren van elementaire account beheer bewerkingen, zoals het maken van een Data Lake Storage Gen1 account, het weer geven van de Data Lake Storage Gen1 accounts, enzovoort. Zie [bestandssysteem bewerkingen op Data Lake Storage gen1 met python](data-lake-store-data-operations-python.md)voor instructies over het uitvoeren van bestandssysteem bewerkingen op Data Lake Storage gen1 met python.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Python.** U kunt Python [hier](https://www.python.org/downloads/) downloaden. In dit artikel wordt Python 3.6.2 gebruikt.
+* **Python**. U kunt Python [hier](https://www.python.org/downloads/) downloaden. In dit artikel wordt Python 3.6.2 gebruikt.
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Een Azure-brongroep**. Zie [Een Azure-resourcegroep maken](../azure-resource-manager/management/manage-resource-groups-portal.md) voor instructies.
+* **Een Azure-resource groep**. Zie [Een Azure-resourcegroep maken](../azure-resource-manager/management/manage-resource-groups-portal.md) voor instructies.
 
 ## <a name="install-the-modules"></a>De modules installeren
 
-Als u met Data Lake Storage Gen1 wilt werken met Python, moet u drie modules installeren.
+Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie modules installeren.
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
-* De `azure-mgmt-datalake-store` module, die de beheerbewerkingen van Azure Data Lake Storage Gen1-accountbeheer omvat. Zie Naslaginformatie over de [Azure Data Lake Storage Gen1 Management-module voor](/python/api/azure-mgmt-datalake-store/)meer informatie over deze module .
-* De `azure-datalake-store` module, die de bestandssysteembewerkingen van Azure Data Lake Storage Gen1 bevat. Zie [naslaginformatie](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)over deze module voor meer informatie over deze module .
+* De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
+* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
@@ -86,16 +86,16 @@ pip install azure-datalake-store
 
 3. Sla de wijzigingen in mysample.py op.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 In deze sectie bespreken we de verschillende manieren om te verifiëren met Azure AD. De beschikbare opties zijn:
 
-* Zie Verificatie van eindgebruikers met [Gegevensmeeropslag Gen1 met Python](data-lake-store-end-user-authenticate-python.md)voor verificatie door eindgebruikers voor de eindgebruiker.
-* Zie [Service-to-service-verificatie met Data Lake Storage Gen1 met Python](data-lake-store-service-to-service-authenticate-python.md)voor service-to-service-verificatie voor uw toepassing.
+* Voor verificatie door eind gebruikers voor uw toepassing raadpleegt [u verificatie door eind gebruikers met data Lake Storage gen1 met behulp van python](data-lake-store-end-user-authenticate-python.md).
+* Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van python](data-lake-store-service-to-service-authenticate-python.md)voor service-naar-service verificatie voor uw toepassing.
 
-## <a name="create-client-and-data-lake-storage-gen1-account"></a>Client- en Data Lake Storage Gen1-account maken
+## <a name="create-client-and-data-lake-storage-gen1-account"></a>Client-en Data Lake Storage Gen1 account maken
 
-In het volgende fragment wordt eerst de Data Lake Storage Gen1-accountclient gemaakt. Het maakt gebruik van het clientobject om een Data Lake Storage Gen1-account te maken. Ten slotte maakt het fragment een clientobject voor het bestandssysteem.
+In het volgende code fragment maakt u eerst de client voor het Data Lake Storage Gen1-account. Er wordt gebruikgemaakt van het-client object om een Data Lake Storage Gen1-account te maken. Ten slotte maakt het fragment een clientobject voor het bestandssysteem.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -116,7 +116,7 @@ In het volgende fragment wordt eerst de Data Lake Storage Gen1-accountclient gem
     ).wait()
 
     
-## <a name="list-the-data-lake-storage-gen1-accounts"></a>De Data Lake Storage Gen1-accounts weergeven
+## <a name="list-the-data-lake-storage-gen1-accounts"></a>De Data Lake Storage Gen1-accounts weer geven
 
     ## List the existing Data Lake Storage Gen1 accounts
     result_list_response = adlsAcctClient.account.list()
@@ -124,16 +124,16 @@ In het volgende fragment wordt eerst de Data Lake Storage Gen1-accountclient gem
     for items in result_list:
         print(items)
 
-## <a name="delete-the-data-lake-storage-gen1-account"></a>Het Data Lake Storage Gen1-account verwijderen
+## <a name="delete-the-data-lake-storage-gen1-account"></a>Het Data Lake Storage Gen1 account verwijderen
 
     ## Delete an existing Data Lake Storage Gen1 account
     adlsAcctClient.account.delete(adlsAccountName)
     
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Bestandssysteembewerkingen op Data Lake Storage Gen1 met Python](data-lake-store-data-operations-python.md).
+* [Bestandssysteem bewerkingen op Data Lake Storage gen1 met behulp van python](data-lake-store-data-operations-python.md).
 
 ## <a name="see-also"></a>Zie ook
 
-* [Azure-datalake-store Python (Filesystem) referentie](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
-* [Open Source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
+* [Naslag informatie over Azure-datalake-Store python (File System)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Open source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

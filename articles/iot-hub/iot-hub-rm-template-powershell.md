@@ -1,6 +1,6 @@
 ---
-title: Een Azure IoT-hub maken met een sjabloon (PowerShell) | Microsoft Documenten
-description: Een Azure Resource Manager-sjabloon gebruiken om een IoT-hub met Azure PowerShell te maken.
+title: Een Azure-IoT Hub maken met behulp van een sjabloon (Power shell) | Microsoft Docs
+description: Een Azure Resource Manager sjabloon gebruiken om een IoT Hub met Azure PowerShell te maken.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,31 +9,31 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75976612"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Een IoT-hub maken met Azure Resource Manager-sjabloon (PowerShell)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Een IoT-hub maken met Azure Resource Manager-sjabloon (Power shell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Meer informatie over het gebruik van een Azure Resource Manager-sjabloon om een IoT-hub en een consumentengroep te maken. Resource Manager-sjablonen zijn JSON-bestanden die de resources definiëren die u voor uw oplossing moet implementeren. Zie Azure Resource Manager-documentatie voor meer informatie over het ontwikkelen van Resource [Manager-sjablonen.](https://docs.microsoft.com/azure/azure-resource-manager/)
+Meer informatie over het gebruik van een Azure Resource Manager sjabloon voor het maken van een IoT Hub en een consumenten groep. Resource Manager-sjablonen zijn JSON-bestanden die de resources definiëren die u voor uw oplossing moet implementeren. Zie [Azure Resource Manager-documentatie](https://docs.microsoft.com/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-De sjabloon Resourcebeheer die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Hier is een kopie van de sjabloon:
+De Resource Manager-sjabloon die in deze Quick Start wordt gebruikt, is van [Azure Quick](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)start-sjablonen. Hier volgt een kopie van de sjabloon:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-De sjabloon maakt een Azure Iot-hub met drie eindpunten (eventhub, cloud-to-device en messaging) en een consumentengroep. Zie [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)voor meer sjabloonvoorbeelden. Het iot Hub-sjabloonschema is [hier](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)te vinden.
+Met de sjabloon wordt een Azure IOT-hub gemaakt met drie eind punten (eventhub, Cloud-naar-apparaat en Messa ging) en een consumenten groep. Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van sjablonen. Het sjabloon schema voor IOT Hub vindt u [hier](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
 
-Er zijn verschillende methoden voor het implementeren van een sjabloon.  U gebruikt Azure PowerShell in deze zelfstudie.
+Er zijn verschillende methoden voor het implementeren van een sjabloon.  In deze zelf studie gebruikt u Azure PowerShell.
 
-Als u het PowerShell-script wilt uitvoeren, selecteert **u Proberen** om de Azure Cloud-shell te openen. Als u het script wilt plakken, klikt u met de rechtermuisknop op de shell en selecteert u Plakken:
+Als u het Power shell-script wilt uitvoeren, selecteert u **proberen** om de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens plakken:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,22 +47,22 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-Zoals u zien in het PowerShell-script, is de gebruikte sjabloon afkomstig van Azure Quickstart-sjablonen. Als u uw eigen bestand wilt gebruiken, moet u het sjabloonbestand eerst uploaden naar de cloudshell en vervolgens de switch gebruiken om de `-TemplateFile` bestandsnaam op te geven.  Zie De [sjabloon implementeren](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)voor een voorbeeld .
+Zoals u kunt zien in het Power shell-script, is de sjabloon die wordt gebruikt van Azure Quick Start-sjablonen. Als u uw eigen wilt gebruiken, moet u eerst het sjabloon bestand uploaden naar de Cloud shell en vervolgens de `-TemplateFile` Schakel optie gebruiken om de bestands naam op te geven.  Zie [de sjabloon implementeren](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)voor een voor beeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT-hub hebt geïmplementeerd met behulp van een Azure Resource Manager-sjabloon, u verder verkennen:
+Nu u een IoT-hub hebt geïmplementeerd met behulp van een Azure Resource Manager-sjabloon, kunt u het beste verder verkennen:
 
-* Lees meer over de mogelijkheden van de REST API van [IoT Hub-bronprovider][lnk-rest-api].
-* Lees [het overzicht van Azure Resource Manager][lnk-azure-rm-overview] voor meer informatie over de mogelijkheden van Azure Resource Manager.
-* Zie [Microsoft.Devices-brontypen](/azure/templates/microsoft.devices/iothub-allversions)voor de syntaxis en eigenschappen van JSON in sjablonen.
+* Meer informatie over de mogelijkheden van de [IOT hub resource provider rest API][lnk-rest-api].
+* Lees [Azure Resource Manager overzicht][lnk-azure-rm-overview] voor meer informatie over de mogelijkheden van Azure Resource Manager.
+* Zie [resource typen van micro soft. devices](/azure/templates/microsoft.devices/iothub-allversions)voor de JSON-syntaxis en-eigenschappen die in sjablonen moeten worden gebruikt.
 
-Zie de volgende artikelen voor meer informatie over het ontwikkelen voor IoT Hub:
+Raadpleeg de volgende artikelen voor meer informatie over het ontwikkelen van IoT Hub:
 
 * [Inleiding tot C SDK][lnk-c-sdk]
-* [SDK’s voor Azure IoT][lnk-sdks]
+* [SDK's voor Azure IoT][lnk-sdks]
 
-Zie:
+Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
 * [AI implementeren op Edge-apparaten met Azure IoT Edge][lnk-iotedge]
 

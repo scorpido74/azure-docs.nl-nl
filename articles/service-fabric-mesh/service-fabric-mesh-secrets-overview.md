@@ -1,15 +1,15 @@
 ---
-title: Geheimen van Azure Service Fabric Mesh-toepassingsgeheimen opslaan en gebruiken
-description: Service Fabric Mesh biedt ondersteuning voor geheimen als Azure-resources. Zo u geheimen opslaan en beheren met uw Service Fabric Mesh-toepassingen.
+title: Azure Service Fabric mesh-toepassings geheimen opslaan en gebruiken
+description: Service Fabric Mesh biedt ondersteuning voor geheimen als Azure-resources. Hier vindt u informatie over het opslaan en beheren van geheimen met uw Service Fabric-mesh-toepassingen.
 author: erikadoyle
 ms.author: edoyle
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: da4eaa34840f14714616b85e24fd62cf65602b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277624"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-toepassingsgeheimen

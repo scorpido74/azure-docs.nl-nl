@@ -1,166 +1,166 @@
 ---
-title: Handleiding voor probleemoplossing voor Azure Spring Cloud | Microsoft Documenten
-description: Handleiding voor probleemoplossing voor Azure Spring Cloud
+title: Gids voor probleem oplossing voor Azure lente-Cloud | Microsoft Docs
+description: Gids voor probleem oplossing voor Azure lente-Cloud
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277588"
 ---
-# <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende Azure Spring Cloud-problemen oplossen
+# <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
-In dit artikel vindt u instructies voor het oplossen van problemen met azure spring cloud-ontwikkelingsproblemen. Zie [Veelgestelde vragen over Azure Spring Cloud voor](spring-cloud-faq.md)meer informatie.
+In dit artikel vindt u instructies voor het oplossen van problemen met Azure lente voor Cloud ontwikkeling. Zie [Veelgestelde vragen over Azure veer Cloud](spring-cloud-faq.md)voor meer informatie.
 
-## <a name="availability-performance-and-application-issues"></a>Problemen met beschikbaarheid, prestaties en toepassingen
+## <a name="availability-performance-and-application-issues"></a>Problemen met Beschik baarheid, prestaties en toepassingen
 
-### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Mijn toepassing kan niet worden gestart (het eindpunt kan bijvoorbeeld niet worden aangesloten of het retourneert een 502 na een paar nieuwe pogingen)
+### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Mijn toepassing kan niet worden gestart (bijvoorbeeld omdat het eind punt niet kan worden verbonden, of het retourneert een 502 na een paar nieuwe pogingen)
 
-Exporteer de logboeken naar Azure Log Analytics. De tabel voor logboeken van de toepassing van de lente wordt genoemd *AppPlatformLogsforSpring*. Zie [Logboeken en statistieken analyseren met diagnostische instellingen](diagnostic-services.md)voor meer informatie.
+De logboeken exporteren naar Azure Log Analytics. De tabel voor veer toepassings logboeken heeft de naam *AppPlatformLogsforSpring*. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md)voor meer informatie.
 
-Het volgende foutbericht wordt mogelijk weergegeven in uw logboeken:
+Het volgende fout bericht kan worden weer gegeven in de logboeken:
 
-> "org.springframework.context.ApplicationContextException: Niet in staat om webserver te starten"
+> "org. springframework. context. ApplicationContextException: kan de webserver niet starten"
 
-Het bericht geeft een van de twee waarschijnlijke problemen aan: 
-* Een van de bonen of een van zijn afhankelijkheden ontbreekt.
-* Een van de bean-eigenschappen ontbreekt of is ongeldig In dit geval zal "java.lang.IllegalArgumentException" waarschijnlijk worden weergegeven.
+Het bericht geeft een van de twee mogelijke problemen aan: 
+* Een van de bonen of een van de afhankelijkheden ontbreekt.
+* Een van de bean-eigenschappen ontbreekt of is ongeldig In dit geval wordt ' Java. lang. IllegalArgumentException ' waarschijnlijk weer gegeven.
 
-Servicebindingen kunnen ook leiden tot fouten bij het starten van toepassingen. Als u de logboeken wilt opvragen, gebruikt u trefwoorden die gerelateerd zijn aan de gebonden services. Laten we er bijvoorbeeld van uitgaan dat uw toepassing een binding heeft met een MySQL-exemplaar dat is ingesteld op lokale systeemtijd. Als de toepassing niet wordt gestart, wordt mogelijk het volgende foutbericht in het logboek weergegeven:
+Service bindingen kunnen ook start fouten van toepassingen veroorzaken. Als u een query wilt uitvoeren voor de logboeken, gebruikt u tref woorden die zijn gerelateerd aan de gebonden Services. Stel bijvoorbeeld dat uw toepassing een binding heeft met een MySQL-exemplaar dat is ingesteld op lokale systeem tijd. Als de toepassing niet kan worden gestart, wordt het volgende fout bericht weer gegeven in het logboek:
 
-> "java.sql.SQLException: De servertijdzonewaarde 'Coordinated Universal Time' wordt niet herkend of vertegenwoordigt meer dan één tijdzone."
+> ' Java. SQL. SQLException: de tijdzone waarde ' Coordinated Universal Time ' van de server wordt niet herkend of bevat meer dan een tijd zone. '
 
-Als u deze fout `server parameters` wilt oplossen, gaat u `time_zone` naar de van uw MySQL-exemplaar en wijzigt u de waarde van *SYSTEEM* naar *+0:00*.
+Als u deze fout wilt oplossen, gaat `server parameters` u naar de van uw MySQL-exemplaar `time_zone` en wijzigt u de waarde van *systeem* in *+ 0:00*.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Mijn toepassing is vastgelopen of heeft een onverwachte fout gegenereerd
 
-Wanneer u toepassingsvastabuggen foutloopt, controleert u eerst de status en detectiestatus van de toepassing. Ga hiervoor naar _App-beheer_ in de Azure-portal om ervoor te zorgen dat de statussen van alle toepassingen _actief_ en _UP_zijn.
+Wanneer u fouten opspoort in de toepassing, moet u eerst de status en detectie status van de toepassing controleren. Als u dit wilt doen, gaat u naar _app-beheer_ in de Azure Portal om ervoor te zorgen dat de statussen van alle toepassingen worden _uitgevoerd_ _._
 
-* Als de status _actief is,_ maar de detectiestatus niet _UP_is, gaat u naar de sectie ['Mijn toepassing kan niet worden geregistreerd'.](#my-application-cant-be-registered)
+* Als de status _actief_ is, maar de detectie status niet _actief is_, gaat u naar de sectie [mijn toepassing kan niet worden geregistreerd](#my-application-cant-be-registered) .
 
-* Als de detectiestatus _UP_is, gaat u naar Metrische gegevens om de status van de toepassing te controleren. Controleer de volgende statistieken:
+* Als de detectie status _actief_is, gaat u naar metrische gegevens om de status van de toepassing te controleren. Inspecteer de volgende metrische gegevens:
 
 
-  - `TomcatErrorCount`(_tomcat.global.error):_ Alle uitzonderingen op de voorjaarstoepassing worden hier geteld. Als dit aantal groot is, gaat u naar Azure Log Analytics om uw toepassingslogboeken te inspecteren.
+  - `TomcatErrorCount`(_Tomcat. Global. error_): alle uitzonde ringen voor de lente toepassing worden hier geteld. Als dit aantal groot is, gaat u naar Azure Log Analytics om uw toepassings logboeken te controleren.
 
-  - `AppMemoryMax`(_jvm.memory.max):_ De maximale hoeveelheid geheugen beschikbaar voor de toepassing. Het bedrag kan niet worden gedefinieerd of in de loop van de tijd veranderen als het wordt gedefinieerd. Als het is gedefinieerd, is de hoeveelheid gebruikt en vastgelegd geheugen altijd minder dan of gelijk aan max. Een geheugentoewijzing kan echter `OutOfMemoryError` mislukken met een bericht als de toewijzing probeert het gebruikte geheugen zodanig te verhogen dat *> vastgelegd*, zelfs als <= max wordt *gebruikt,* nog steeds waar is. Probeer in een dergelijke situatie de maximale `-Xmx` heapgrootte te vergroten met behulp van de parameter.
+  - `AppMemoryMax`(_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het bedrag kan niet worden gedefinieerd, of het kan in de loop van de tijd worden gewijzigd als het is gedefinieerd. Als deze is gedefinieerd, is de hoeveelheid gebruikt en toegewezen geheugen altijd kleiner dan of gelijk aan de maximum waarde. Een geheugen toewijzing kan echter mislukken met een `OutOfMemoryError` bericht als de toewijzing probeert het gebruikte geheugen te verg Roten, zoals het gebruik van *> vastgelegd*, zelfs als het *wordt gebruikt <= Max* is ingesteld op True. Probeer in een dergelijke situatie de maximale Heap-grootte te verhogen met behulp `-Xmx` van de para meter.
 
-  - `AppMemoryUsed`(_jvm.memory.used):_ De hoeveelheid geheugen in bytes die momenteel wordt gebruikt door de toepassing. Voor een normale lading Java-toepassing vormt deze metrische reeks een *zaagtandpatroon,* waarbij het geheugengebruik gestaag toeneemt en afneemt in kleine stappen en plotseling veel daalt, en dan het patroon terugkeert. Deze metrische serie treedt op als gevolg van garbage collection in Java virtuele machine, waar de verzameling acties vertegenwoordigen druppels op de zaagtand patroon.
+  - `AppMemoryUsed`(_JVM. Memory. used_): de hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een normale toepassing voor het laden van Java vormt deze metrische reeks een *zaagtand* patroon, waarbij het geheugen gebruik gestaag toeneemt en afneemt in kleine stappen en plotseling een hoop zou afnemen en het patroon wordt herhaald. Deze metrische serie wordt veroorzaakt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties voor komen op het zaagtand patroon.
     
-    Deze statistiek is belangrijk om geheugenproblemen te identificeren, zoals:
-    * Een geheugenexplosie aan het begin.
-    * De toewijzing van piekgeheugenvoor een specifiek logicapad.
-    * Geleidelijk geheugen lekt.
+    Deze metrische gegevens zijn belang rijk voor het identificeren van geheugen problemen, zoals:
+    * Een geheugen explosie aan het begin.
+    * De toewijzing van piek geheugen voor een specifiek logisch pad.
+    * Geleidelijke geheugen lekkage.
 
-  Zie [Statistieken voor](spring-cloud-concept-metrics.md)meer informatie .
+  Zie [metrische](spring-cloud-concept-metrics.md)gegevens voor meer informatie.
 
-Zie [Aan de slag met Logboekanalyse in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure Log Analytics.
+Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics.
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Mijn toepassing heeft een hoog CPU-gebruik of een hoog geheugengebruik
 
-Als uw toepassing een hoog CPU- of geheugengebruik ervaart, is een van de twee dingen waar:
-* Alle app-exemplaren ervaren een hoog CPU- of geheugengebruik.
-* Sommige app-exemplaren ervaren een hoog CPU- of geheugengebruik.
+Als uw toepassing een hoog CPU-of geheugen gebruik ondervindt, is een van de twee dingen waar:
+* Alle app-exemplaren hebben een hoog CPU-of geheugen gebruik.
+* Enkele van de app-exemplaren hebben een hoog CPU-of geheugen gebruik.
 
-Ga als volgt te werk om na te gaan welke situatie van toepassing is:
+Ga als volgt te werk om te controleren welke situatie van toepassing is:
 
-1. Ga naar **Metrics**en selecteer vervolgens **het service-CPU-gebruikspercentage** of **het gebruikte servicegeheugen**.
-2. Voeg een **App=-filter** toe om op te geven welke toepassing u wilt controleren.
-3. De statistieken splitsen op **instantie**.
+1. Ga naar **metrische gegevens**en selecteer vervolgens het **CPU-gebruiks percentage** van de service of het **gebruikte service geheugen**.
+2. Voeg een **app =** filter toe om op te geven welke toepassing u wilt bewaken.
+3. Splits de metrische gegevens op **exemplaar**.
 
-Als *alle exemplaren* een hoog CPU- of geheugengebruik ervaren, moet u de toepassing uitschalen of het CPU- of geheugengebruik opschalen. Zie [Zelfstudie: Een toepassing schalen in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md)voor meer informatie.
+Als *alle instanties* een hoog CPU-of geheugen gebruik ondervinden, moet u de toepassing uitschalen of het CPU-of geheugen gebruik omhoog schalen. Zie [zelf studie: een toepassing schalen in azure veer Cloud](spring-cloud-tutorial-scale-manual.md)voor meer informatie.
 
-Als *in sommige gevallen* een hoog CPU- of geheugengebruik wordt ervaren, controleert u de instantiestatus en de detectiestatus.
+Als *sommige instanties een* hoog CPU-of geheugen gebruik ondervinden, controleert u de status van het exemplaar en de detectie status ervan.
 
-Zie [Statistieken voor Azure Spring Cloud voor](spring-cloud-concept-metrics.md)meer informatie .
+Zie [metrische gegevens voor Azure lente-Cloud](spring-cloud-concept-metrics.md)voor meer informatie.
 
-Als alle exemplaren actief zijn, gaat u naar Azure Log Analytics om uw toepassingslogboeken op te vragen en uw codelogica te controleren. Zo u zien of een van deze gevolgen kan hebben voor schaalverdeling. Zie [Logboeken en statistieken analyseren met diagnostische instellingen voor](diagnostic-services.md)meer informatie.
+Als alle exemplaren actief zijn, gaat u naar Azure Log Analytics om een query uit te voeren op uw toepassings logboeken en de code logica te controleren. Dit helpt u te zien of een van deze van invloed kan zijn op de schaal partitionering. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md)voor meer informatie.
 
-Zie [Aan de slag met Logboekanalyse in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure Log Analytics. Vraag de logboeken met de [Kusto-querytaal](https://docs.microsoft.com/azure/kusto/query/).
+Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
 
-### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Checklist voor het implementeren van uw voorjaarstoepassing naar Azure Spring Cloud
+### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Controle lijst voor het implementeren van uw lente toepassing in azure veer Cloud
 
-Voordat u aan boord van uw aanvraag, ervoor te zorgen dat het voldoet aan de volgende criteria:
+Voordat u de toepassing uitschakelt, moet u controleren of deze voldoet aan de volgende criteria:
 
-* De toepassing kan lokaal worden uitgevoerd met de opgegeven Java-runtime-versie.
-* De omgevingsconfig (CPU/RAM/Instances) voldoet aan de minimale eis die is ingesteld door de toepassingsprovider.
-* De configuratie-items hebben hun verwachte waarden. Zie [Config Server](spring-cloud-tutorial-config-server.md)voor meer informatie.
-* De omgevingsvariabelen hebben hun verwachte waarden.
-* De JVM-parameters hebben hun verwachte waarden.
-* We raden u aan de ingesloten _Config Server-_ en _Spring Service Registry-services_ uit het toepassingspakket uit te schakelen of te verwijderen.
+* De toepassing kan lokaal worden uitgevoerd met de opgegeven Java runtime-versie.
+* De omgevings configuratie (CPU/RAM/exemplaren) voldoet aan de minimum vereisten die zijn ingesteld door de provider van de toepassing.
+* De configuratie-items hebben hun verwachte waarden. Zie [config server](spring-cloud-tutorial-config-server.md)(Engelstalig) voor meer informatie.
+* De omgevings variabelen hebben hun verwachte waarden.
+* De JVM-para meters hebben hun verwachte waarden.
+* U wordt aangeraden de Inge sloten _Configuratie server_ -en _veer service register_ services uit het toepassings pakket uit te scha kelen of te verwijderen.
 * Als Azure-resources moeten worden gebonden via _servicebinding_, moet u ervoor zorgen dat de doelresources actief zijn.
 
 ## <a name="configuration-and-management"></a>Configuratie en beheer
 
-### <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Ik heb een probleem ondervonden bij het maken van een Azure Spring Cloud-service-exemplaar
+### <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Er is een probleem opgetreden bij het maken van een Azure lente-Cloud service-exemplaar
 
-Wanneer u een Azure Spring Cloud-service-exemplaar instelt met behulp van de Azure-portal, voert Azure Spring Cloud de validatie voor u uit.
+Wanneer u een Azure lente-Cloud service-exemplaar instelt met behulp van de Azure Portal, voert Azure lente Cloud de validatie voor u uit.
 
-Maar als u de instantie Azure Spring Cloud-service probeert in te stellen met behulp van de azure [CLI-](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) of Azure [Resource Manager-sjabloon,](https://docs.microsoft.com/azure/azure-resource-manager/)controleert u of:
+Maar als u probeert het Azure lente-Cloud service-exemplaar in te stellen met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) of de [Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/), controleert u het volgende:
 
 * Het abonnement is actief.
-* De locatie [wordt ondersteund](spring-cloud-faq.md) door Azure Spring Cloud.
-* De resourcegroep voor de instantie is al gemaakt.
-* De resourcenaam voldoet aan de naamgevingsregel. Het mag alleen kleine letters, cijfers en koppeltekens bevatten. Het eerste teken moet een letter zijn. Het laatste teken moet een letter of getal zijn. De waarde moet 2 tot 32 tekens bevatten.
+* De locatie wordt [ondersteund](spring-cloud-faq.md) door de Azure lente-Cloud.
+* De resource groep voor het exemplaar is al gemaakt.
+* De resource naam voldoet aan de naamgevings regel. De naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken moet een letter zijn. Het laatste teken moet een letter of getal zijn. De waarde moet tussen 2 en 32 tekens bevatten.
 
-Als u de azure spring cloud-service-instantie wilt instellen met behulp van de sjabloon Resourcebeheer, raadpleegt u eerst [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de Resource Manager-sjabloon, raadpleegt u eerst [de structuur en de syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 
-De naam van de Azure Spring Cloud-serviceinstantie wordt gebruikt `azureapps.io`voor het aanvragen van een subdomeinnaam onder , zodat de instelling mislukt als de naam in strijd is met een bestaande naam. Mogelijk vindt u meer details in de activiteitenlogboeken.
+De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io`, zodat de installatie mislukt als de naam in conflict is met een bestaande. Mogelijk vindt u meer informatie in de activiteiten Logboeken.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>Ik kan geen JAR-pakket implementeren
 
-U het JAR-bestand (Java Archive)/bronpakket niet uploaden met behulp van de Azure-portal of de sjabloon ResourceManager.
+U kunt het/source-pakket van Java Archive File (JAR) niet uploaden met behulp van de Azure Portal of de Resource Manager-sjabloon.
 
-Wanneer u uw toepassingspakket implementeert met behulp van de [Azure CLI,](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)wordt de implementatievoortgang in Azure CLI periodiek gepeild en wordt uiteindelijk het implementatieresultaat weergegeven.
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
 Als de controles worden onderbroken, kunt u nog steeds de volgende opdrachten gebruiken om de implementatielogboeken op te halen:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Zorg ervoor dat uw toepassing is verpakt in de juiste [uitvoerbare JAR-indeling.](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html) Als het niet correct is verpakt, ontvangt u een foutbericht dat vergelijkbaar is met het volgende:
+Zorg ervoor dat uw toepassing is verpakt in de juiste [uitvoer bare jar-indeling](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Als deze niet correct is verpakt, wordt een fout bericht van de volgende strekking weer gegeven:
 
-> "Fout: Ongeldig of corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714"
+> "Fout: ongeldig of beschadigd jarfile/jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714"
 
-### <a name="i-cant-deploy-a-source-package"></a>Ik kan geen bronpakket implementeren
+### <a name="i-cant-deploy-a-source-package"></a>Ik kan een bron pakket niet implementeren
 
-U jar/bronpakket niet uploaden met de Azure-portal of de sjabloon ResourceManager.
+U kunt het JAR/Bron pakket niet uploaden met behulp van de Azure Portal of de Resource Manager-sjabloon.
 
-Wanneer u uw toepassingspakket implementeert met behulp van de [Azure CLI,](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)wordt de implementatievoortgang in Azure CLI periodiek gepeild en wordt uiteindelijk het implementatieresultaat weergegeven.
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
 Als de controles worden onderbroken, kunt u nog steeds de volgende opdrachten gebruiken om de compilatie- en implementatielogboeken op te halen:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Houd er echter rekening mee dat één Azure Spring Cloud-serviceinstantie slechts één buildtaak voor één bronpakket tegelijk kan activeren. Zie [Een toepassing implementeren](spring-cloud-quickstart-launch-app-portal.md) en Een [faseringsomgeving instellen in Azure Spring Cloud](spring-cloud-howto-staging-environment.md)voor meer informatie.
+Houd er echter rekening mee dat één exemplaar van de Azure veer-Cloud service per keer slechts één bouw taak voor één bron pakket kan activeren. Zie [een toepassing implementeren](spring-cloud-quickstart-launch-app-portal.md) en [een faserings omgeving instellen in azure lente-Cloud](spring-cloud-howto-staging-environment.md)voor meer informatie.
 
-### <a name="my-application-cant-be-registered"></a>Mijn aanvraag kan niet worden geregistreerd
+### <a name="my-application-cant-be-registered"></a>Mijn toepassing kan niet worden geregistreerd
 
-In de meeste gevallen treedt deze situatie op wanneer *vereiste afhankelijkheden* en *servicedetectie* niet goed zijn geconfigureerd in het POM-bestand (Project Object Model). Zodra het is geconfigureerd, wordt het ingebouwde serviceregisterservereindpunt geïnjecteerd als een omgevingsvariabele met uw toepassing. Toepassingen registreren zich vervolgens bij de Service Registry-server en ontdekken andere afhankelijke microservices.
+In de meeste gevallen treedt deze situatie op wanneer *vereiste afhankelijkheden* en *service detectie* niet correct zijn geconfigureerd in uw pom-bestand (project object model). Zodra de configuratie is geconfigureerd, wordt het ingebouwde eind punt van het service register server geïnjecteerd als een omgevings variabele met uw toepassing. Toepassingen registreren zich vervolgens bij de service register server en ontdekken andere afhankelijke micro Services.
 
-Wacht ten minste twee minuten voordat een nieuw geregistreerde instantie verkeer begint te ontvangen.
+Wacht ten minste twee minuten voordat een nieuw geregistreerd exemplaar het verkeer ontvangt.
 
-Als u een bestaande op Spring Cloud gebaseerde oplossing migreert naar Azure, moet u ervoor zorgen dat uw _ad-hocserviceregister_ en _Config Server-exemplaren_ worden verwijderd (of uitgeschakeld) om te voorkomen dat deze in strijd zijn met de beheerde exemplaren van Azure Spring Cloud.
+Als u een bestaande tot een cloud gebaseerde oplossing naar Azure migreert, moet u ervoor zorgen dat uw _REGI ster_ -en _Configuratie server_ -exemplaren van ad-hoc service worden verwijderd (of uitgeschakeld) om te voor komen dat er conflicten ontstaan met de beheerde exemplaren van Azure lente Cloud.
 
-U ook de clientlogboeken van het _serviceregister_ controleren in Azure Log Analytics. Zie [Logboeken en statistieken analyseren met diagnostische instellingen voor](diagnostic-services.md) meer informatie
+U kunt ook de logboeken van de _service register_ -client in azure log Analytics controleren. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md) voor meer informatie.
 
-Zie [Aan de slag met Logboekanalyse in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure Log Analytics. Vraag de logboeken met de [Kusto-querytaal](https://docs.microsoft.com/azure/kusto/query/).
+Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
 
-### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ik wil de omgevingsvariabelen van mijn toepassing inspecteren
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ik wil de omgevings variabelen van mijn toepassing controleren
 
-Omgevingsvariabelen informeren het Azure Spring Cloud-framework en zorgen ervoor dat Azure begrijpt waar en hoe u de services configureren waaruit uw toepassing bestaat. Ervoor zorgen dat uw omgevingsvariabelen correct zijn, is een noodzakelijke eerste stap in het oplossen van mogelijke problemen.  U het eindpunt van de Spring Boot Actuator gebruiken om uw omgevingsvariabelen te bekijken.  
+Met omgevings variabelen wordt het Azure lente Cloud-Framework geïnformeerd, waardoor Azure begrijpt waar en hoe de services kunnen worden geconfigureerd waaruit uw toepassing is opgebouwd. Zorg ervoor dat uw omgevings variabelen correct zijn om mogelijke problemen op te lossen.  U kunt het eind punt voor de Spring boot-klep gebruiken om uw omgevings variabelen te controleren.  
 
 > [!WARNING]
-> Deze procedure legt uw omgevingsvariabelen bloot met behulp van uw testeindpunt.  Ga niet verder als uw testeindpunt openbaar toegankelijk is of als u een domeinnaam aan uw toepassing hebt toegewezen.
+> Met deze procedure worden de omgevings variabelen weer gegeven met behulp van het eind punt van de test.  Ga niet verder als uw test eindpunt openbaar toegankelijk is of als u een domein naam aan uw toepassing hebt toegewezen.
 
 1. Ga naar `https://<your application test endpoint>/actuator/health`.  
-    - Een antwoord `{"status":"UP"}` dat vergelijkbaar is met dat het eindpunt is ingeschakeld.
-    - Als het antwoord negatief is, neemt u de volgende afhankelijkheid op in uw *POM.xml-bestand:*
+    - Een antwoord dat lijkt `{"status":"UP"}` op dat het eind punt is ingeschakeld.
+    - Als het antwoord negatief is, neemt u de volgende afhankelijkheden op in het bestand *pom. XML* :
 
         ```xml
             <dependency>
@@ -169,11 +169,11 @@ Omgevingsvariabelen informeren het Azure Spring Cloud-framework en zorgen ervoor
             </dependency>
         ```
 
-1. Als het eindpunt van de VeerbootActuator is ingeschakeld, gaat u naar de Azure-portal en zoekt u naar de configuratiepagina van uw toepassing.  Voeg een omgevingsvariabele `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` toe met `*` de naam en de waarde . 
+1. Als het eind punt voor de installatie van de veer boot is ingeschakeld, gaat u naar de Azure Portal en zoekt u naar de pagina configuratie van uw toepassing.  Voeg een omgevings variabele met de `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` naam en de `*` waarde toe. 
 
-1. Start uw toepassing opnieuw.
+1. Start de toepassing opnieuw.
 
-1. Ga `https://<your application test endpoint>/actuator/env` naar en inspecteer het antwoord.  Dit ziet er als volgt uit:
+1. Ga naar `https://<your application test endpoint>/actuator/env` en controleer het antwoord.  Dit ziet er als volgt uit:
 
     ```json
     {
@@ -189,16 +189,16 @@ Omgevingsvariabelen informeren het Azure Spring Cloud-framework en zorgen ervoor
     }
     ```
 
-Zoek naar het kinderknooppunt met de naam `systemEnvironment`.  Dit knooppunt bevat de omgevingsvariabelen van uw toepassing.
+Zoek naar het onderliggende knoop punt `systemEnvironment`met de naam.  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
 
 > [!IMPORTANT]
-> Vergeet niet om de belichting van uw omgevingsvariabelen om te keren voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure-portal, zoek naar de configuratiepagina van `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`uw toepassing en verwijder deze omgevingsvariabele: .
+> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
-### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Ik kan geen statistieken of logboeken voor mijn toepassing vinden
+### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Ik kan geen metrische gegevens of Logboeken vinden voor mijn toepassing
 
-Ga naar **App-beheer** om ervoor te zorgen dat de toepassingsstatussen _actief_ en _UP_zijn.
+Ga naar **app-beheer** om te controleren of de statussen _van_de toepassing _actief_ zijn.
 
-Als u statistieken van _JVM_ zien, maar geen statistieken `spring-boot-actuator` van _Tomcat,_ controleert u of de afhankelijkheid is ingeschakeld in uw toepassingspakket en of deze met succes wordt opgestart.
+Als u de metrische gegevens van _JVM_ kunt zien, maar geen metrische gegevens van _Tomcat_, controleert u of `spring-boot-actuator` de afhankelijkheid is ingeschakeld in uw toepassings pakket en of deze correct wordt opgestart.
 
 ```xml
 <dependency>
@@ -207,4 +207,4 @@ Als u statistieken van _JVM_ zien, maar geen statistieken `spring-boot-actuator`
 </dependency>
 ```
 
-Als uw toepassingslogboeken kunnen worden gearchiveerd naar een opslagaccount, maar niet naar Azure Log Analytics worden verzonden, controleert u of u [uw werkruimte correct hebt ingesteld.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) Als u een gratis laag Azure Log Analytics gebruikt, moet u er rekening mee houden dat [de gratis laag geen SLA (Service-level Agreement) biedt.](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)
+Als uw toepassings logboeken kunnen worden gearchiveerd in een opslag account, maar niet naar Azure Log Analytics worden verzonden, controleert u of u [uw werk ruimte op de juiste wijze hebt ingesteld](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Als u een gratis laag van Azure Log Analytics gebruikt, moet u er rekening mee houden dat [de gratis laag geen Sla (Service Level Agreement) biedt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).

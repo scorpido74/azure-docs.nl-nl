@@ -9,17 +9,17 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76037945"
 ---
-Dit document loopt door de verschillen tussen beheerde en onbeheerde schijven wanneer u Azure Resource Manager-sjablonen gebruikt om virtuele machines in te richten. Met de voorbeelden u bestaande sjablonen die onbeheerde schijven gebruiken, bijwerken naar beheerde schijven. Ter referentie gebruiken we de sjabloon [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als leidraad. U de sjabloon zien met zowel [beheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) als een eerdere versie met behulp van [onbeheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) als u ze direct wilt vergelijken.
+In dit document wordt uitgelegd wat de verschillen zijn tussen beheerde en onbeheerde schijven bij het gebruik van Azure Resource Manager sjablonen voor het inrichten van virtuele machines. De voor beelden helpen u bij het bijwerken van bestaande sjablonen die gebruikmaken van niet-beheerde schijven naar beheerde schijven. Ter referentie gebruiken we de sjabloon [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als richt lijn. U kunt de sjabloon weer geven met behulp van zowel [beheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) als een eerdere versie met behulp van [onbeheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) als u deze direct wilt vergelijken.
 
-## <a name="unmanaged-disks-template-formatting"></a>Sjabloonopmaak voor niet-beheerde schijven
+## <a name="unmanaged-disks-template-formatting"></a>Niet-beheerde schijven sjabloon opmaak
 
-Laten we om te beginnen eens kijken hoe onbeheerde schijven worden geïmplementeerd. Bij het maken van onbeheerde schijven hebt u een opslagaccount nodig om de VHD-bestanden vast te houden. U een nieuw opslagaccount maken of een account gebruiken dat al bestaat. In dit artikel ziet u hoe u een nieuw opslagaccount maakt. Maak een opslagaccountbron in het bronnenblok zoals hieronder weergegeven.
+We gaan nu kijken hoe onbeheerde schijven worden geïmplementeerd. Bij het maken van niet-beheerde schijven hebt u een opslag account nodig voor het opslaan van de VHD-bestanden. U kunt een nieuw opslag account maken of er een gebruiken dat al bestaat. In dit artikel wordt beschreven hoe u een nieuw opslag account maakt. Maak een opslag account resource in het blok resources, zoals hieronder wordt weer gegeven.
 
 ```json
 {
@@ -35,7 +35,7 @@ Laten we om te beginnen eens kijken hoe onbeheerde schijven worden geïmplemente
 }
 ```
 
-Voeg binnen het object virtuele machine een afhankelijkheid toe van het opslagaccount om ervoor te zorgen dat het is gemaakt vóór de virtuele machine. Geef `storageProfile` in de sectie de volledige URI van de VHD-locatie op, die verwijst naar het opslagaccount en die nodig is voor de OS-schijf en eventuele gegevensschijven.
+Voeg binnen het virtuele-machine object een afhankelijkheid toe aan het opslag account om ervoor te zorgen dat deze wordt gemaakt vóór de virtuele machine. Geef in `storageProfile` de sectie de volledige URI op van de VHD-locatie, die verwijst naar het opslag account en is vereist voor de besturingssysteem schijf en alle gegevens schijven.
 
 ```json
 {
@@ -83,27 +83,27 @@ Voeg binnen het object virtuele machine een afhankelijkheid toe van het opslagac
 }
 ```
 
-## <a name="managed-disks-template-formatting"></a>Sjabloonopmaak voor beheerde schijven
+## <a name="managed-disks-template-formatting"></a>Sjabloon opmaak voor Managed disks
 
-Met Azure Managed Disks wordt de schijf een bron op het hoogste niveau en hoeft er geen opslagaccount meer te worden gemaakt door de gebruiker. Beheerde schijven werden `2016-04-30-preview` voor het eerst blootgesteld in de API-versie, ze zijn beschikbaar in alle volgende API-versies en zijn nu het standaardschijftype. De volgende secties lopen door de standaardinstellingen en details hoe u uw schijven verder aanpassen.
+Met Azure Managed Disks wordt de schijf een resource op het hoogste niveau en hoeft er geen opslag account meer te worden gemaakt door de gebruiker. Managed disks zijn voor het `2016-04-30-preview` eerst beschikbaar gemaakt in de API-versie en zijn nu ook het standaard schijf type. In de volgende secties worden de standaard instellingen en details beschreven voor het aanpassen van uw schijven.
 
 > [!NOTE]
-> Het wordt aanbevolen om een API-versie later te gebruiken dan `2016-04-30-preview` omdat er wijzigingen waren tussen `2016-04-30-preview` en `2017-03-30`.
+> Het is raadzaam om een API-versie later te `2016-04-30-preview` gebruiken dan wanneer er sprake `2016-04-30-preview` is `2017-03-30`van een laatste wijziging tussen en.
 >
 >
 
-### <a name="default-managed-disk-settings"></a>Standaardbeheerde schijfinstellingen
+### <a name="default-managed-disk-settings"></a>Standaard instellingen voor beheerde schijven
 
-Als u een VM met beheerde schijven wilt maken, hoeft u de bron voor het opslagaccount niet langer te maken. Als u verwijst naar het onderstaande voorbeeld van de sjabloon, zijn er enkele verschillen met de vorige voorbeelden van onmangede schijven om op te merken:
+Als u een virtuele machine met Managed disks wilt maken, hoeft u de bron van het opslag account niet meer te maken. Als u verwijst naar het volgende voor beeld van een sjabloon, zijn er enkele verschillen ten opzichte van de voor beelden van de vorige unmanged-schijf:
 
-- Het `apiVersion` is een versie die beheerde schijven ondersteunt.
-- `osDisk`en `dataDisks` niet langer verwijzen naar een specifieke URI voor de VHD.
-- Bij het implementeren zonder extra eigenschappen op te geven, gebruikt de schijf een opslagtype op basis van de grootte van de VM. Als u bijvoorbeeld een VM-formaat gebruikt dat premiumopslag ondersteunt (formaten met 's' in hun naam, zoals Standard_D2s_v3), worden standaard premiumschijven geconfigureerd. U dit wijzigen door de sku-instelling van de schijf te gebruiken om een opslagtype op te geven.
-- Als er geen naam voor de schijf `<VMName>_OsDisk_1_<randomstring>` is opgegeven, `<VMName>_disk<#>_<randomstring>` duurt het formaat voor de OS-schijf en voor elke gegevensschijf.
-  - Als een vm wordt gemaakt op basis van een aangepaste afbeelding, worden de standaardinstellingen voor het type opslagaccount en de schijfnaam opgehaald uit de schijfeigenschappen die zijn gedefinieerd in de aangepaste afbeeldingsbron. Deze kunnen worden overschreven door waarden hiervoor op te geven in de sjabloon.
-- Azure-schijfversleuteling is standaard uitgeschakeld.
-- Standaard is schijfcache lezen/schrijven voor de OS-schijf en Geen voor gegevensschijven.
-- In het onderstaande voorbeeld is er nog steeds een afhankelijkheid van opslagaccount, hoewel dit alleen is voor de opslag van diagnostiek en niet nodig is voor schijfopslag.
+- De `apiVersion` is een versie die beheerde schijven ondersteunt.
+- `osDisk`en `dataDisks` verwijzen niet meer naar een specifieke URI voor de VHD.
+- Wanneer u implementeert zonder extra eigenschappen op te geven, gebruikt de schijf een opslag type op basis van de grootte van de virtuele machine. Als u bijvoorbeeld een VM-grootte gebruikt die Premium-opslag (grootten met ' s ' in hun naam ondersteunt, zoals Standard_D2s_v3), worden standaard Premium-schijven geconfigureerd. U kunt dit wijzigen door de SKU-instelling van de schijf te gebruiken om een opslag type op te geven.
+- Als er geen naam voor de schijf is opgegeven, wordt de indeling van `<VMName>_OsDisk_1_<randomstring>` de besturingssysteem schijf en `<VMName>_disk<#>_<randomstring>` voor elke gegevens schijf gebruikt.
+  - Als er een virtuele machine wordt gemaakt op basis van een aangepaste installatie kopie, worden de standaard instellingen voor het type opslag account en de schijf naam opgehaald uit de schijf eigenschappen die zijn gedefinieerd in de aangepaste installatie kopie bron. Deze kunnen worden overschreven door waarden voor deze in de sjabloon op te geven.
+- Azure Disk Encryption is standaard uitgeschakeld.
+- Schijf cache is standaard lezen/schrijven voor de besturingssysteem schijf en geen voor gegevens schijven.
+- In het voor beeld hieronder bevindt zich nog steeds een opslag account afhankelijkheid, hoewel dit alleen geldt voor opslag van diagnostische gegevens en niet nodig is voor schijf opslag.
 
 ```json
 {
@@ -142,9 +142,9 @@ Als u een VM met beheerde schijven wilt maken, hoeft u de bron voor het opslagac
 }
 ```
 
-### <a name="using-a-top-level-managed-disk-resource"></a>Een beheerde schijfbron op het hoogste niveau gebruiken
+### <a name="using-a-top-level-managed-disk-resource"></a>Een beheerde schijf resource op het hoogste niveau gebruiken
 
-Als alternatief voor het opgeven van de schijfconfiguratie in het virtuele machineobject, u een schijfbron op het hoogste niveau maken en deze koppelen als onderdeel van het maken van de virtuele machine. U bijvoorbeeld een schijfbron als volgt maken om als gegevensschijf te gebruiken.
+Als alternatief voor het opgeven van de schijf configuratie in het virtuele-machine object, kunt u een schijf bron op het hoogste niveau maken en deze koppelen als onderdeel van het maken van de virtuele machine. U kunt bijvoorbeeld als volgt een schijf bron maken om te gebruiken als een gegevens schijf.
 
 ```json
 {
@@ -164,7 +164,7 @@ Als alternatief voor het opgeven van de schijfconfiguratie in het virtuele machi
 }
 ```
 
-Verwijs in het VM-object naar het schijfobject dat moet worden gekoppeld. Als u de resource-id opgeeft `managedDisk` van de beheerde schijf die in de eigenschap is gemaakt, kan de bevestiging van de schijf worden gemaakt terwijl de vm wordt gemaakt. De `apiVersion` voor de VM-bron is ingesteld op `2017-03-30`. Er wordt een afhankelijkheid van de schijfbron toegevoegd om ervoor te zorgen dat deze is gemaakt voordat de VM wordt gemaakt. 
+In het VM-object verwijst u naar het schijf object dat moet worden gekoppeld. Het opgeven van de bron-ID van de beheerde schijf `managedDisk` die is gemaakt in de eigenschap, staat de bijlage van de schijf toe als de virtuele machine wordt gemaakt. De `apiVersion` voor de VM-resource is ingesteld `2017-03-30`op. Er wordt een afhankelijkheid van de schijf resource toegevoegd om ervoor te zorgen dat deze is gemaakt voordat de VM wordt gemaakt. 
 
 ```json
 {
@@ -207,9 +207,9 @@ Verwijs in het VM-object naar het schijfobject dat moet worden gekoppeld. Als u 
 }
 ```
 
-### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Beheerde beschikbaarheidssets maken met VM's met beheerde schijven
+### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Beheerde beschikbaarheids sets maken met Vm's met behulp van beheerde schijven
 
-Als u beheerde beschikbaarheidssets met VM's wilt maken met beheerde schijven, voegt u het `sku` object toe aan de bron voor beschikbaarheidsset en stelt u de `name` eigenschap in op `Aligned`. Deze eigenschap zorgt ervoor dat de schijven voor elke VM voldoende van elkaar zijn geïsoleerd om enkele storingspunten te voorkomen. Houd er `apiVersion` ook rekening mee dat de `2018-10-01`bron voor de beschikbaarheidsset is ingesteld op .
+Als u beheerde beschikbaarheids sets wilt maken met virtuele machines met behulp `sku` van beheerde schijven, voegt u het object toe `name` aan de `Aligned`resource van de beschikbaarheidsset en stelt u de eigenschap in op. Met deze eigenschap zorgt u ervoor dat de schijven voor elke VM voldoende van elkaar zijn geïsoleerd om afzonderlijke storings punten te voor komen. Houd er ook rekening `apiVersion` mee dat de voor de resource van de `2018-10-01`beschikbaarheidsset is ingesteld op.
 
 ```json
 {
@@ -227,14 +227,14 @@ Als u beheerde beschikbaarheidssets met VM's wilt maken met beheerde schijven, v
 }
 ```
 
-### <a name="standard-ssd-disks"></a>Standaard SSD-schijven
+### <a name="standard-ssd-disks"></a>Standard-SSD schijven
 
-Hieronder staan de parameters die nodig zijn in de sjabloon Resourcemanager om standaard SSD-schijven te maken:
+Hieronder vindt u de para meters die nodig zijn in het Resource Manager-sjabloon om Standard-SSD schijven te maken:
 
-* *apiVersion* voor Microsoft.Compute moet `2018-04-01` worden ingesteld als (of later)
-* *ManagedDisk.storageAccountType* opgeven als`StandardSSD_LRS`
+* *apiVersion* voor micro soft. Compute moet worden `2018-04-01` ingesteld als (of hoger)
+* Geef *managedDisk. storageAccountType* op als`StandardSSD_LRS`
 
-In het volgende voorbeeld wordt de sectie *properties.storageProfile.osDisk* voor een VM weergegeven die standaard SSD-schijven gebruikt:
+In het volgende voor beeld ziet u de sectie *Properties. storageProfile. osDisk* voor een virtuele machine die gebruikmaakt van Standard-SSD schijven:
 
 ```json
 "osDisk": {
@@ -248,18 +248,18 @@ In het volgende voorbeeld wordt de sectie *properties.storageProfile.osDisk* voo
 }
 ```
 
-Zie [Een vm maken op basis van een Windows-afbeelding met standaard SSD-gegevensschijven](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)voor een volledig voorbeeld van het maken van een standaard SSD-schijf met een sjabloon.
+Zie [een virtuele machine maken op basis van een Windows-installatie kopie met Standard-SSD-gegevens schijven](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)voor een volledig sjabloon voor beeld van het maken van een Standard-SSD schijf met een sjabloon.
 
 ### <a name="additional-scenarios-and-customizations"></a>Aanvullende scenario's en aanpassingen
 
-Als u alle informatie wilt vinden over de REST API-specificaties, raadpleegt u de [BEHEERDE REST API-documentatie voor de schijf.](/rest/api/manageddisks/disks/disks-create-or-update) U vindt er aanvullende scenario's, evenals standaard- en acceptabele waarden die via sjabloonimplementaties naar de API kunnen worden verzonden. 
+Raadpleeg de documentatie voor het [maken van een beheerde schijf rest API](/rest/api/manageddisks/disks/disks-create-or-update)voor volledige informatie over de rest API specificaties. Er vindt u aanvullende scenario's, evenals standaard en acceptabele waarden die kunnen worden verzonden naar de API via sjabloon implementaties. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ga voor volledige sjablonen die beheerde schijven gebruiken naar de volgende Azure Quickstart Repo-koppelingen.
-    * [Windows VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Linux VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* Ga naar het document [Overzicht van Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) voor meer informatie over beheerde schijven.
-* Bekijk de sjabloonreferentiedocumentatie voor bronnen voor virtuele machines door naar het [referentiedocument voor microsoft.compute/virtualMachines-sjabloon te](/azure/templates/microsoft.compute/virtualmachines) gaan.
-* Controleer de sjabloonreferentiedocumentatie voor schijfbronnen door naar het [sjabloonreferentiedocument Microsoft.Compute/disks te](/azure/templates/microsoft.compute/disks) gaan.
-* Ga naar het document [Gegevensschijven gebruiken met schaalsets voor beheerde](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) schijven in Azure- eenvoudigkoppelingssets.
+* Ga naar de volgende opslag plaats-koppelingen voor Azure Quick start voor volledige sjablonen die gebruikmaken van beheerde schijven.
+    * [Windows-VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+    * [Linux-VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+* Ga naar het document [overzicht van Azure Managed disks](../articles/virtual-machines/windows/managed-disks-overview.md) voor meer informatie over Managed disks.
+* Raadpleeg de documentatie over de sjabloon voor virtuele machines voor meer informatie. Ga naar het document [micro soft. Compute/informatie voor sjablonen](/azure/templates/microsoft.compute/virtualmachines) .
+* Raadpleeg de documentatie over sjablonen voor schijf bronnen door naar het document [micro soft. Compute/disks-sjabloon](/azure/templates/microsoft.compute/disks) te gaan.
+* Ga voor meer informatie over het gebruik van beheerde schijven in virtuele-machine schaal sets van Azure naar het document [gegevens schijven met schaal sets gebruiken](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) .

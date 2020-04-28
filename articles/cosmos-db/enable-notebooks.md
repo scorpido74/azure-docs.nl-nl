@@ -1,72 +1,72 @@
 ---
-title: Notitieblokken inschakelen in het Azure Cosmos DB-account (voorbeeld)
-description: Met de ingebouwde notitieblokken van Azure Cosmos DB u uw gegevens vanuit de portal analyseren en visualiseren. In dit artikel wordt beschreven hoe u deze functie voor Cosmos-accounts inschakelen.
+title: Notitie blokken in het Azure Cosmos DB-account inschakelen (preview)
+description: Met de ingebouwde notitie blokken van Azure Cosmos DB kunt u uw gegevens in de portal analyseren en visualiseren. In dit artikel wordt beschreven hoe u deze functie inschakelt voor Cosmos-accounts.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
 ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76768020"
 ---
-# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Notitieblokken inschakelen voor Azure Cosmos DB-accounts (voorbeeld)
+# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Notebooks inschakelen voor Azure Cosmos DB accounts (preview-versie)
 
 > [!IMPORTANT]
-> Ingebouwde notebooks voor Azure Cosmos DB zijn momenteel beschikbaar in de volgende Azure-regio's: Australië-Oost, Oost-VS, Oost-VS 2, Noord-Europa, Zuid-Centraal-VS, Zuidoost-Azië, het Verenigd Koninkrijk Zuid, West-Europa en West-VS 2. Als u notitieblokken wilt gebruiken, [maakt u een nieuw account met notitieblokken](#enable-notebooks-in-a-new-cosmos-account) of schakelt u [notitieblokken in een bestaand account](#enable-notebooks-in-an-existing-cosmos-account) in een van deze regio's in.
+> Ingebouwde notitie blokken voor Azure Cosmos DB zijn momenteel beschikbaar in de volgende Azure-regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west en VS-West 2. Als u notebooks wilt gebruiken, [maakt u een nieuw account met notitie blokken](#enable-notebooks-in-a-new-cosmos-account) of [schakelt u notitie blokken in voor een bestaand account](#enable-notebooks-in-an-existing-cosmos-account) in een van deze regio's.
 
-Met ingebouwde Jupyter-notitieblokken in Azure Cosmos DB u uw gegevens van de Azure-portal analyseren en visualiseren. In dit artikel wordt beschreven hoe u deze functie voor uw Azure Cosmos DB-account kunt inschakelen.
+Met ingebouwde Jupyter-notebooks in Azure Cosmos DB kunt u uw gegevens van de Azure Portal analyseren en visualiseren. In dit artikel wordt beschreven hoe u deze functie voor uw Azure Cosmos DB-account kunt inschakelen.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Notitieblokken inschakelen in een nieuw Cosmos-account
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Selecteer **Een resourcedatabases** > maken**Azure** > **Cosmos DB**.
-1. Selecteer **Notitieblokken**op de pagina **Azure Cosmos DB-account** maken . 
+## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Notitie blokken in een nieuw Cosmos-account inschakelen
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Selecteer **een resource** > **databases** > maken**Azure Cosmos DB**.
+1. Selecteer op de pagina **Azure Cosmos DB account maken** de optie **notebooks**. 
  
-    ![Optie Notitieblokken selecteren in Azure Cosmos DB Blade maken](media/enable-notebooks/create-new-account-with-notebooks.png)
-1. Selecteer **Controleren + maken**. U de optie **Netwerk** en **tags** overslaan. 
-1. Controleer de accountinstellingen en selecteer **Vervolgens Maken**. Het maken van het account duurt enkele minuten. Wacht tot de portalpagina wordt weergegeven **Uw implementatie is voltooid.** 
+    ![Selecteer de optie notebooks in Azure Cosmos DB Blade maken](media/enable-notebooks/create-new-account-with-notebooks.png)
+1. Selecteer **controleren + maken**. U kunt de optie **netwerk** en **Tags** overs Laan. 
+1. Controleer de account instellingen en selecteer vervolgens **maken**. Het duurt enkele minuten om het account te maken. Wacht tot de portal pagina **uw implementatie is voltooid**. 
 
     ![Het deelvenster Meldingen in Azure Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
-1. Selecteer **Ga naar resource om** naar de azure cosmos DB-accountpagina te gaan. 
+1. Selecteer **Ga naar resource** om naar de pagina Azure Cosmos DB-account te gaan. 
 
     ![De pagina Azure Cosmos DB-account](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
 
-1. Navigeer naar het deelvenster **Gegevensverkenner.** U moet nu de werkruimte voor notitieblokken bekijken.
+1. Ga naar het deel venster **Data Explorer** . Nu ziet u de werk ruimte notitie blokken.
 
-    ![Nieuwe werkruimte Azure Cosmos DB-laptops](media/enable-notebooks/new-notebooks-workspace.png)
+    ![Nieuwe Azure Cosmos DB notitie blokken-werk ruimte](media/enable-notebooks/new-notebooks-workspace.png)
 
-## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Notitieblokken inschakelen in een bestaand Cosmos-account
-U ook notitieblokken inschakelen op bestaande accounts. Deze stap hoeft slechts één keer per account te worden uitgevoerd.
+## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Notebooks inschakelen in een bestaand Cosmos-account
+U kunt ook notebooks inschakelen op bestaande accounts. Deze stap hoeft slechts één keer per account te worden uitgevoerd.
 
-1. Navigeer naar het deelvenster **Gegevensverkenner** in uw Cosmos-account.
-1. Selecteer **Notitieblokken inschakelen**.
+1. Ga naar het **Data Explorer** deel venster in uw Cosmos-account.
+1. Selecteer **notebooks inschakelen**.
 
-    ![Een nieuwe werkruimte voor notitieblokken maken in Gegevensverkenner](media/enable-notebooks/enable-notebooks-workspace.png)
-1. Dit zal u vragen om een nieuwe werkruimte voor notitieblokken te maken. Selecteer **De installatie voltooien.**
-1. Uw account is nu ingeschakeld om notitieblokken te gebruiken!
+    ![Een nieuwe werk ruimte voor notitie blokken maken in Data Explorer](media/enable-notebooks/enable-notebooks-workspace.png)
+1. Hiermee wordt u gevraagd om een nieuwe werk ruimte voor notitie blokken te maken. Selecteer **volledige installatie.**
+1. Uw account is nu ingeschakeld voor het gebruik van notitie blokken.
 
-## <a name="create-and-run-your-first-notebook"></a>Uw eerste notitieblok maken en uitvoeren
+## <a name="create-and-run-your-first-notebook"></a>Uw eerste notitie blok maken en uitvoeren
 
-Als u wilt controleren of u notitieblokken gebruiken, selecteert u een van de notitieblokken onder Voorbeeldnotitieblokken. Hiermee wordt een kopie van het notitieblok opgeslagen in uw werkruimte en wordt deze geopend.
+Als u wilt controleren of u notebooks kunt gebruiken, selecteert u een van de notitie blokken onder voorbeeld notitieblokken. Hiermee wordt een kopie van het notitie blok opgeslagen in uw werk ruimte en geopend.
 
-In dit voorbeeld gebruiken we **GettingStarted.ipynb**. 
+In dit voor beeld gebruiken we **GettingStarted. ipynb**. 
 
-![Notitieblok GettingStarted.ipynb weergeven](media/enable-notebooks/select-getting-started-notebook.png)
+![GettingStarted. ipynb-notebook weer geven](media/enable-notebooks/select-getting-started-notebook.png)
 
-Ga als beste over het notitieblok:
-1. Selecteer de eerste codecel die Python-code bevat. 
-1. Selecteer **Uitvoeren** om de cel uit te voeren. U **Shift + Enter** ook gebruiken om de cel uit te voeren.
-1. Vernieuw het resourcevenster om de database en container te zien die is gemaakt.
+Als u het notitie blok wilt uitvoeren:
+1. Selecteer de eerste code cel die python-code bevat. 
+1. Selecteer **uitvoeren** om de cel uit te voeren. U kunt ook **SHIFT + ENTER** gebruiken om de cel uit te voeren.
+1. Vernieuw het resource venster om de data base en de container te zien die zijn gemaakt.
 
-    ![Notitieblok aan de slag uitvoeren](media/enable-notebooks/run-first-notebook-cell.png)
+    ![Aan de slag-notebook uitvoeren](media/enable-notebooks/run-first-notebook-cell.png)
 
-U ook **Nieuw notitieblok** selecteren om een nieuw notitieblok te maken of een bestaand notitieblokbestand (.ipynb) uploaden door **Bestand uploaden** te selecteren in het menu **Mijn notitieblok.** 
+U kunt ook **Nieuw notitie blok** selecteren om een nieuw notitie blok te maken of een bestaand notebook bestand (. ipynb) te uploaden door **Upload File** te selecteren in het menu **mijn notitie blokken** . 
 
-![Een nieuw notitieblok maken of uploaden](media/enable-notebooks/create-or-upload-new-notebook.png)
+![Een nieuw notitie blok maken of uploaden](media/enable-notebooks/create-or-upload-new-notebook.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de voordelen van [Azure Cosmos DB Jupyter-notitieblokken](cosmosdb-jupyter-notebooks.md)
+- Meer informatie over de voor delen van [Azure Cosmos DB Jupyter-notebooks](cosmosdb-jupyter-notebooks.md)

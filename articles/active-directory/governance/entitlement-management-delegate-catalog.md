@@ -1,6 +1,6 @@
 ---
-title: Toegangsbeheer delegeren aan catalogusmakers in Azure AD-rechtenbeheer - Azure Active Directory
-description: Meer informatie over het delegeren van toegangsbeheer van IT-beheerders aan catalogusmakers en projectmanagers, zodat ze de toegang zelf kunnen beheren.
+title: Delegeren toegang tot de catalogus makers in het beheer van rechten van Azure AD-Azure Active Directory
+description: Meer informatie over het overdragen van het toegangs beheer van IT-beheerders naar het catalogiseren van makers en project managers, zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,54 +17,54 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77120189"
 ---
-# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Toegangsbeheer delegeren aan catalogusmakers in Azure AD-rechtenbeheer
+# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Beheer van toegang tot catalogussen van de maker van het Azure AD-recht
 
-Een catalogus is een container met resources en toegangspakketten. U maakt een catalogus wanneer u gerelateerde bronnen wilt groeperen en toegang wilt krijgen tot pakketten. Standaard kan een globale beheerder of een gebruikersbeheerder [een catalogus maken](entitlement-management-catalog-create.md)en kunnen extra gebruikers toevoegen als cataloguseigenaren.
+Een catalogus is een container met resources en toegangs pakketten. U maakt een catalogus wanneer u gerelateerde resources en toegangs pakketten wilt groeperen. Standaard kan een globale beheerder of een gebruikers beheerder [een catalogus maken](entitlement-management-catalog-create.md)en kunnen ze extra gebruikers toevoegen als catalogus eigenaren.
 
-Als u wilt delegeren aan gebruikers die geen beheerders zijn, zodat ze hun eigen catalogi kunnen maken, u deze gebruikers toevoegen aan de rol van Azure AD-rechtenbeheer. U afzonderlijke gebruikers toevoegen of een groep toevoegen, waarvan de leden vervolgens catalogi kunnen maken.  Nadat ze een catalogus hebben gemaakt, kunnen ze vervolgens resources die ze bezitten toevoegen aan hun catalogus.
+Als u wilt delegeren aan gebruikers die geen beheerder zijn, zodat ze hun eigen catalogi kunnen maken, kunt u deze gebruikers toevoegen aan de rol van Azure AD-bevoegdheids beheer-gedefinieerde catalogus Maker. U kunt afzonderlijke gebruikers toevoegen, maar u kunt ook een groep toevoegen, waarvan de leden vervolgens catalogi kunnen maken.  Nadat u een catalogus hebt gemaakt, kunnen ze de resources die ze in hun catalogus hebben, vervolgens toevoegen.
 
-## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Delegeren aan een catalogusmaker als IT-beheerder
+## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Als IT-beheerder delegeren aan een maker van de catalogus
 
-Volg deze stappen om een gebruiker toe te wijzen aan de rol van de maker van de catalogus.
+Volg deze stappen om een gebruiker toe te wijzen aan de maker van de catalogus.
 
-**Vereiste rol:** Globale beheerder of gebruikersbeheerder
+**Vereiste rol:** Globale beheerder of gebruikers beheerder
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu in de sectie **Beheer van rechten** op **Instellingen**.
+1. Klik in het menu links in het gedeelte **beheer rechten** op **instellingen**.
 
 1. Klik op **Bewerken**.
 
-    ![Instellingen om catalogusmakers toe te voegen](./media/entitlement-management-delegate-catalog/settings-delegate.png)
+    ![Instellingen voor het toevoegen van catalogus makers](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
-1. Klik in de sectie **Beheer van gemachtigden recht** op **Catalogusmakers toevoegen** om de gebruikers of groepen te selecteren waaraan u deze beheerrol voor rechten wilt delegeren.
+1. Klik in de sectie bevoegdheids **beheer voor gemachtigden** op **catalogus makers toevoegen** om de gebruikers of groepen te selecteren aan wie u deze rechten wilt delegeren.
 
-1. Klik **op Selecteren**.
+1. Klik op **selecteren**.
 
 1. Klik op **Opslaan**.
 
-## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Gedelegeerde rollen toegang geven tot de Azure-portal
+## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Gedelegeerde rollen toestaan om toegang te krijgen tot de Azure Portal
 
-Als u gedelegeerde rollen, zoals catalogusmakers en toegangspakketbeheerders, toegang wilt geven tot de Azure-portal om toegangspakketten te beheren, moet u de instelling voor beheerportalen controleren.
+Als u gedelegeerde functies, zoals catalogus makers en toegangs pakket beheerders, wilt toestaan om toegang te krijgen tot de Azure Portal voor het beheren van toegangs pakketten, moet u de instelling van de beheer Portal controleren.
 
-**Vereiste rol:** Globale beheerder of gebruikersbeheerder
+**Vereiste rol:** Globale beheerder of gebruikers beheerder
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Gebruikers**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **gebruikers**.
 
-1. Klik in het linkermenu op **Gebruikersinstellingen**.
+1. Klik in het menu links op **gebruikers instellingen**.
 
-1. Controleer of **De toegang tot azure AD-beheerportal** beperken is ingesteld op **Nee.**
+1. Zorg ervoor dat de toegang tot de **Azure AD-beheer Portal beperken** is ingesteld op **Nee**.
 
-    ![Azure AD-gebruikersinstellingen - Beheerportal](./media/entitlement-management-delegate-catalog/user-settings.png)
+    ![Gebruikers instellingen van Azure AD-beheer Portal](./media/entitlement-management-delegate-catalog/user-settings.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een catalogus met bronnen maken en beheren](entitlement-management-catalog-create.md)
-- [Toegangsbeheer delegeren aan toegangspakketbeheerders](entitlement-management-delegate-managers.md)
+- [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
+- [Toegangs beheer delegeren voor toegang tot pakket beheerders](entitlement-management-delegate-managers.md)
 

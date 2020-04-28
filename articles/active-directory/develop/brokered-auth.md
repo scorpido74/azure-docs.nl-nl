@@ -1,7 +1,7 @@
 ---
-title: Gebrokereerde verificatie in Android | Azure
+title: Brokered-verificatie in Android | Azure
 titlesuffix: Microsoft identity platform
-description: Een overzicht van gebrokereerde verificatie & autorisatie voor Android in het Microsoft-identiteitsplatform
+description: Een overzicht van brokered verificatie & autorisatie voor Android in het micro soft Identity-platform
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697894"
 ---
-# <a name="brokered-authentication-in-android"></a>Gebrokereerde verificatie in Android
+# <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
 
-U moet een van de verificatiemakelaars van Microsoft gebruiken om deel te nemen aan apparaatbrede Single Sign-On (SSO) en om te voldoen aan het beleid voor voorwaardelijke toegang voor organisaties. Integratie met een makelaar biedt de volgende voordelen:
+U moet een van de verificatie-Brokers van micro soft gebruiken om deel te nemen aan SSO (single sign-on) voor het hele apparaat en om te voldoen aan beleid voor voorwaardelijke toegang voor organisaties. Integreren met een Broker biedt de volgende voor delen:
 
-- Apparaatenkele aanmelding
+- Eenmalige aanmelding voor het apparaat
 - Voorwaardelijke toegang voor:
   - Intune-app-beveiliging
   - Apparaatregistratie (Workplace Join)
   - Beheer van mobiele apparaten
-- Accountbeheer voor het hele apparaat
-  -  via Android AccountManager & Accountinstellingen
-  - 'Werkaccount' - aangepast accounttype
+- Account beheer op het hele apparaat
+  -  via Android AccountManager &-account instellingen
+  - "Werk account"-aangepast account type
 
-Op Android is de Microsoft Authentication Broker een onderdeel dat is opgenomen in [Microsoft Authenticator App](https://play.google.com/store/apps/details?id=com.azure.authenticator) en [Intune Company Portal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
+Op Android is de micro soft Authentication Broker een onderdeel dat is opgenomen in [Microsoft Authenticator app](https://play.google.com/store/apps/details?id=com.azure.authenticator) en [intune-bedrijfsportal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
 
 > [!TIP]
-> Slechts één toepassing die de makelaar host, is tegelijkertijd actief als de makelaar. Welke toepassing actief is als makelaar wordt bepaald door de installatievolgorde op het apparaat. De eerste die wordt geïnstalleerd, of het laatste geschenk op het apparaat, wordt de actieve makelaar.
+> Er is slechts één toepassing die als host fungeert voor de Broker als de Broker tegelijk actief is. Welke toepassing is actief als Broker, wordt bepaald door de installatie volgorde op het apparaat. Het eerste dat moet worden geïnstalleerd, of de laatste huidige op het apparaat, wordt de actieve Broker.
 
-In het volgende diagram wordt de relatie tussen uw app, de Microsoft Authentication Library (MSAL) en de verificatiemakelaars van Microsoft geïllustreerd.
+In het volgende diagram ziet u de relatie tussen uw app, de micro soft Authentication Library (MSAL) en de verificatie-Brokers van micro soft.
 
-![Implementatiediagram voor broker](./media/brokered-auth/brokered-deployment-diagram.png)
+![Broker-implementatie diagram](./media/brokered-auth/brokered-deployment-diagram.png)
 
-## <a name="installing-apps-that-host-a-broker"></a>Apps installeren die een broker hosten
+## <a name="installing-apps-that-host-a-broker"></a>Apps installeren die een Broker hosten
 
-Broker-hosting apps kunnen op elk gewenst moment door de eigenaar van het apparaat worden geïnstalleerd in de app store (meestal Google Play Store). Sommige API's (resources) worden echter beschermd door beleid voor voorwaardelijke toegang, waarvoor apparaten moeten worden:
+Apps met Broker-hosting kunnen op elk gewenst moment worden geïnstalleerd door de eigenaar van het apparaat vanuit hun App Store (meestal Google Play Store). Sommige Api's (bronnen) worden echter beschermd door beleids regels voor voorwaardelijke toegang waarvoor apparaten zijn vereist:
 
-- Geregistreerd (werkplek samengevoegd) en/of
-- Ingeschreven voor apparaatbeheer of
-- Ingeschreven in Intune-appbeveiliging
+- Geregistreerd (toegevoegd aan werk plek) en/of
+- Geregistreerd in Apparaatbeheer of
+- Inge schreven bij Intune-app-beveiliging
 
-Als een apparaat nog geen broker-app heeft geïnstalleerd, instrueert MSAL de gebruiker er een te installeren zodra de app probeert een token interactief te krijgen. De app moet de gebruiker dan door de stappen leiden om het apparaat aan het vereiste beleid te laten voldoen.
+Als op een apparaat nog geen Broker-app is geïnstalleerd, geeft MSAL de gebruiker de opdracht om er een te installeren zodra de app interactief een token probeert op te halen. De app moet de gebruiker vervolgens door geven aan de hand van de stappen om het apparaat compatibel te maken met het vereiste beleid.
 
-## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Effecten van het installeren en verwijderen van een makelaar
+## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Gevolgen van het installeren en verwijderen van een Broker
 
-### <a name="when-a-broker-is-installed"></a>Wanneer een makelaar is geïnstalleerd
+### <a name="when-a-broker-is-installed"></a>Wanneer een Broker is geïnstalleerd
 
-Wanneer een broker op een apparaat is geïnstalleerd, `acquireToken()`worden alle daaropvolgende interactieve tokenaanvragen (oproepen naar) behandeld door de makelaar in plaats van lokaal door MSAL. Elke SSO-status die voorheen beschikbaar was voor MSAL is niet beschikbaar voor de makelaar. Als gevolg hiervan moet de gebruiker opnieuw verifiëren of een account selecteren in de bestaande lijst met accounts die bekend zijn met het apparaat.
+Wanneer een Broker op een apparaat is geïnstalleerd, worden alle volgende interactieve token aanvragen (aanroepen naar `acquireToken()`) afgehandeld door de broker in plaats van lokaal door MSAL. Elke SSO-status die eerder beschikbaar is voor MSAL, is niet beschikbaar voor de Broker. Als gevolg hiervan moet de gebruiker zich opnieuw verifiëren of een account selecteren uit de bestaande lijst met accounts die bekend zijn bij het apparaat.
 
-Het installeren van een makelaar vereist niet dat de gebruiker zich opnieuw aanmeldt. Alleen wanneer de gebruiker `MsalUiRequiredException` een oplossing moet oplossen, gaat het volgende verzoek naar de makelaar. `MsalUiRequiredException`wordt gegooid om een aantal redenen, en moet interactief worden opgelost. Dit zijn enkele veel voorkomende redenen:
+Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een `MsalUiRequiredException` moet omzetten, gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException`wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
 
-- De gebruiker heeft het wachtwoord gewijzigd dat aan zijn/haar account is gekoppeld.
-- Het account van de gebruiker voldoet niet meer aan een beleid voor voorwaardelijke toegang.
-- De gebruiker heeft zijn toestemming ingetrokken om de app aan zijn account te laten gekoppeld.
+- De gebruiker heeft het wacht woord gewijzigd dat is gekoppeld aan het account.
+- Het account van de gebruiker voldoet niet meer aan het beleid voor voorwaardelijke toegang.
+- De gebruiker heeft de toestemming ingetrokken om de app te koppelen aan hun account.
 
-### <a name="when-a-broker-is-uninstalled"></a>Wanneer een broker is verwijderd
+### <a name="when-a-broker-is-uninstalled"></a>Wanneer een Broker wordt verwijderd
 
-Als er slechts één broker hosting app is geïnstalleerd en deze wordt verwijderd, moet de gebruiker zich opnieuw aanmelden. Als u de actieve broker verwijdert, verwijdert u het account en de bijbehorende tokens van het apparaat.
+Als er slechts één app voor het hosten van Broker is geïnstalleerd en deze is verwijderd, moet de gebruiker zich opnieuw aanmelden. Als u de actieve Broker verwijdert, worden het account en de bijbehorende tokens van het apparaat verwijderd.
 
-Als Intune Company Portal is geïnstalleerd en werkt als de actieve broker, en Microsoft Authenticator is ook geïnstalleerd, dan als de Intune Company Portal (actieve broker) is verwijderd, moet de gebruiker zich opnieuw aanmelden. Zodra ze zich opnieuw aanmelden, wordt de Microsoft Authenticator-app de actieve broker.
+Als Intune-bedrijfsportal is geïnstalleerd en als de actieve Broker fungeert, en Microsoft Authenticator ook is geïnstalleerd, moet de gebruiker zich opnieuw aanmelden als de Intune-bedrijfsportal (actieve Broker) is verwijderd. Zodra de gebruiker zich opnieuw aanmeldt, wordt de app Microsoft Authenticator de actieve Broker.
 
-## <a name="integrating-with-a-broker"></a>Integreren met een makelaar
+## <a name="integrating-with-a-broker"></a>Integreren met een Broker
 
-### <a name="generating-a-redirect-uri-for-a-broker"></a>Het genereren van een omleiding URI voor een makelaar
+### <a name="generating-a-redirect-uri-for-a-broker"></a>Een omleidings-URI voor een Broker genereren
 
-U moet een omleiding URI die compatibel is met de makelaar registreren. De omleiding URI voor de makelaar moet de pakketnaam van uw app bevatten, evenals de base64 gecodeerde weergave van de handtekening van uw app.
+U moet een omleidings-URI registreren die compatibel is met de Broker. De omleidings-URI voor de Broker moet de pakket naam van uw app bevatten, evenals de door base64 gecodeerde representatie van de hand tekening van uw app.
 
-Het formaat van de omleiding URI is:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+De indeling van de omleidings-URI is:`msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-Genereer uw Base64 url gecodeerde handtekening met behulp van de ondertekeningssleutels van uw app. Hier volgen enkele voorbeeldopdrachten die uw handtekeningsleutels voor foutopsporingssleutels gebruiken:
+Genereer uw base64 URL-gecodeerde hand tekening met behulp van de handtekening sleutels van uw app. Hier volgen enkele voor beelden van opdrachten die gebruikmaken van uw handtekening sleutels voor fout opsporing:
 
 #### <a name="macos"></a>macOS
 
@@ -92,14 +92,14 @@ keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore |
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-Zie [Uw app ondertekenen](https://developer.android.com/studio/publish/app-signing) voor informatie over het ondertekenen van uw app.
+Zie [uw app ondertekenen](https://developer.android.com/studio/publish/app-signing) voor informatie over het ondertekenen van uw app.
 
 > [!IMPORTANT]
-> Gebruik uw tekensleutel voor de productieproductieversie van uw app.
+> Gebruik de handtekening sleutel van uw productie voor de productie versie van uw app.
 
-### <a name="configure-msal-to-use-a-broker"></a>MSAL configureren om een broker te gebruiken
+### <a name="configure-msal-to-use-a-broker"></a>MSAL configureren voor het gebruik van een Broker
 
-Als u een broker in uw app wilt gebruiken, moet u bevestigen dat u uw broker-omleiding hebt geconfigureerd. Neem bijvoorbeeld zowel uw broker ingeschakeld omleiden URI - en geven aan dat u het hebt geregistreerd - door het volgende op te nemen in uw MSAL-configuratiebestand:
+Als u een Broker in uw app wilt gebruiken, moet u bevestigen dat u de omleiding van de Broker hebt geconfigureerd. Neem bijvoorbeeld zowel de door Broker ingeschakelde omleidings-URI op, en geef aan dat u deze hebt geregistreerd, door het volgende op te nemen in uw MSAL-configuratie bestand:
 
 ```javascript
 "redirect_uri" : "<yourbrokerredirecturi>",
@@ -107,18 +107,18 @@ Als u een broker in uw app wilt gebruiken, moet u bevestigen dat u uw broker-oml
 ```
 
 > [!TIP]
-> Met de nieuwe gebruikersinterface voor de registratie van azure-portal-apps u uri doordeleiden. Als u uw app hebt geregistreerd met behulp van de oudere ervaring of dit hebt gedaan met behulp van de microsoft-appregistratieportal, moet u mogelijk de omleidings-URI genereren en de lijst met omleidings-URI's in de portal handmatig bijwerken.
+> De nieuwe Azure Portal app-registratie GEBRUIKERSINTERFACE helpt u bij het genereren van de Broker omleidings-URI. Als u uw app hebt geregistreerd met behulp van de oudere ervaring of als u de micro soft app-registratie Portal hebt gebruikt, moet u mogelijk de omleidings-URI genereren en de lijst met omleidings-Uri's in de portal hand matig bijwerken.
 
-### <a name="broker-related-exceptions"></a>Uitzonderingen op basis van broker
+### <a name="broker-related-exceptions"></a>Uitzonde ringen die betrekking hebben op Broker
 
-MSAL communiceert op twee manieren met de makelaar:
+MSAL communiceert met de Broker op twee manieren:
 
 - Broker gebonden service
-- Android-accountmanager
+- Android-AccountManager
 
-MSAL maakt eerst gebruik van de broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding aan de gebonden service mislukt, gebruikt MSAL de Android AccountManager API. MSAL doet dit alleen als uw `"READ_CONTACTS"` app al toestemming heeft gekregen.
+MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als de `"READ_CONTACTS"` machtiging al is toegekend aan uw app.
 
-Als u `MsalClientException` een met `"BROKER_BIND_FAILURE"`foutcode krijgt, dan zijn er twee opties:
+Als er een met `MsalClientException` de fout code `"BROKER_BIND_FAILURE"`wordt weer geven, zijn er twee opties:
 
-- Vraag de gebruiker om energieoptimalisatie uit te schakelen voor de Microsoft Authenticator-app en de Intune Company Portal.
-- De gebruiker vragen `"READ_CONTACTS"` om de toestemming te verlenen
+- Vraag de gebruiker om energie optimalisatie uit te scha kelen voor de Microsoft Authenticator-app en de Intune-bedrijfsportal.
+- De gebruiker vragen om de `"READ_CONTACTS"` machtiging te verlenen

@@ -1,63 +1,63 @@
 ---
-title: Selecteer een VMware-migratieoptie met Migratie van Azure-migratieserver | Microsoft Documenten
-description: Biedt een overzicht van opties voor het migreren van VMware VM's naar Azure met Azure Migrate Server Migration
+title: Selecteer een optie voor VMware-migratie met Azure Migrate server migratie | Microsoft Docs
+description: Biedt een overzicht van de opties voor het migreren van virtuele VMware-machines naar Azure met Azure Migrate server migratie
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76028711"
 ---
-# <a name="select-a-vmware-migration-option"></a>Een VMware-migratieoptie selecteren
+# <a name="select-a-vmware-migration-option"></a>Selecteer een VMware-migratie optie
 
-U VMware VM's migreren naar Azure met het hulpprogramma Azure Migrate Server Migration. Deze tool biedt een aantal opties voor VMware VM-migratie:
+U kunt virtuele VMware-machines migreren naar Azure met behulp van het hulp programma voor migratie van Azure Migrate-server. Dit hulp programma biedt een aantal opties voor de migratie van virtuele VMware-machines:
 
-- Migratie met behulp van agentless replicatie. Migreer VM's zonder er iets op te hoeven installeren.
-- Migratie met een agent voor replicatie. Installeer een agent op de VM voor replicatie.
-
-
+- Migratie met replicatie zonder agent. Migreer Vm's zonder dat u iets hoeft te installeren.
+- Migratie met een agent voor replicatie. Installeer een agent op de virtuele machine voor replicatie.
 
 
-## <a name="compare-migration-methods"></a>Migratiemethoden vergelijken
 
-Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode u wilt gebruiken. U ook de volledige ondersteuningsvereisten voor [agentloze](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) en [op agentgebaseerde](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) migratie bekijken.
 
-**Instelling** | **Zonder agent** | **Agent-based**
+## <a name="compare-migration-methods"></a>Migratie methoden vergelijken
+
+Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode u wilt gebruiken. U kunt ook volledige ondersteunings vereisten voor niet- [gemachtigde](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) en [op agents gebaseerde](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) migraties bekijken.
+
+**Instelling** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
-**Azure-machtigingen** | U hebt machtigingen nodig om een Azure Migrate-project te maken en Azure AD-apps te registreren die zijn gemaakt wanneer u het Azure Migrate-toestel implementeert. | U hebt inzendermachtigingen nodig voor het Azure-abonnement. 
-**Gelijktijdige replicatie** | Een maximum van 100 VM's kan tegelijkertijd worden gerepliceerd vanaf een vCenter-server.<br/> Als u meer dan 50 VM's voor migratie hebt, maakt u meerdere batches vm's.<br/> Het repliceren van meer in één keer heeft invloed op de prestaties. | N.v.t.
-**Toestelimplementatie** | Het [Azure Migrate-toestel](migrate-appliance.md) wordt on-premises geïmplementeerd. | Het [Azure Migrate Replication-toestel](migrate-replication-appliance.md) wordt on-premises geïmplementeerd.
-**Compatibiliteit met siteherstel** | Compatibel. | U niet repliceren met Azure Migrate Server Migration als u replicatie voor een machine hebt ingesteld met Site recovery.
-**Doelschijf** | Managed Disks | Managed Disks
-**Schijflimieten** | OS-schijf: 2 TB<br/><br/> Gegevensschijf: 4 TB<br/><br/> Maximale schijven: 60 | OS-schijf: 2 TB<br/><br/> Gegevensschijf: 8 TB<br/><br/> Maximale schijven: 63
-**Doorgeefschijven** | Niet ondersteund | Ondersteund
-**UEFI-opstart** | Niet ondersteund | De gemigreerde VM in Azure wordt automatisch geconverteerd naar een BIOS-opstartVM.<br/><br/> De OS-schijf moet maximaal vier partities hebben en volumes moeten worden opgemaakt met NTFS.
+**Azure-machtigingen** | U hebt machtigingen nodig voor het maken van een Azure Migrate project en voor het registreren van Azure AD-apps die zijn gemaakt bij het implementeren van het Azure Migrate apparaat. | U hebt Inzender machtigingen nodig voor het Azure-abonnement. 
+**Gelijktijdige replicatie** | Er kunnen Maxi maal 100 Vm's gelijktijdig worden gerepliceerd vanuit een vCenter Server.<br/> Als u meer dan 50 Vm's voor migratie hebt, maakt u meerdere batches met virtuele machines.<br/> Het repliceren van meer dan één keer is van invloed op de prestaties. | N.v.t.
+**Implementatie van het apparaat** | Het [Azure migrate apparaat](migrate-appliance.md) wordt on-premises geïmplementeerd. | Het [Azure migrate replicatie apparaat](migrate-replication-appliance.md) wordt on-premises geïmplementeerd.
+**Site Recovery compatibiliteit** | Browsercompatibele. | U kunt niet repliceren met Azure Migrate server migratie als u replicatie voor een machine hebt ingesteld met behulp van Site Recovery.
+**Doel schijf** | Managed Disks | Managed Disks
+**Schijf limieten** | BESTURINGSSYSTEEM schijf: 2 TB<br/><br/> Gegevens schijf: 4 TB<br/><br/> Maximum aantal schijven: 60 | BESTURINGSSYSTEEM schijf: 2 TB<br/><br/> Gegevens schijf: 8 TB<br/><br/> Maximum aantal schijven: 63
+**Passthrough-schijven** | Niet ondersteund | Ondersteund
+**UEFI-opstart** | Niet ondersteund | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM.<br/><br/> De besturingssysteem schijf moet Maxi maal vier partities hebben en volumes moeten worden geformatteerd met NTFS.
 
 
-## <a name="deployment-steps-comparison"></a>Vergelijking van implementatiestappen
+## <a name="deployment-steps-comparison"></a>Vergelijking van implementatie stappen
 
-Nadat u de beperkingen hebt bekeken, u na het bekijken van de stappen die nodig zijn bij het implementeren van elke oplossing, bepalen welke optie u wilt kiezen.
+Nadat u de beperkingen hebt bekeken, kunt u aan de hand van de stappen in de implementatie van elke oplossing bepalen welke optie u moet kiezen.
 
-**Taak** | **Details** |**Zonder agent** | **Agent-based**
+**Taak** | **Nadere** |**Zonder agent** | **Op basis van een agent**
 --- | --- | --- | ---
-**Beoordeling** | Beoordeel servers vóór migratie.  Beoordeling is optioneel. We raden u aan machines te beoordelen voordat u ze migreert, maar dat hoeft niet. <br/><br/> Voor de beoordeling stelt Azure Migrate een lichtgewicht toestel in om VM's te ontdekken en te beoordelen. | Als u na beoordeling een agentloze migratie uitvoert, wordt hetzelfde Azure Migrate-toestel dat is ingesteld voor beoordeling gebruikt voor agentloze migratie.  |  Als u na beoordeling een op agent gebaseerde migratie uitvoert, wordt het apparaat dat is ingesteld voor beoordeling niet gebruikt tijdens agentloze migratie. U het apparaat op zijn plaats laten staan of verwijderen als u geen verdere ontdekking en beoordeling wilt doen.
-**VMware-servers en VM's voorbereiden op migratie** | Configureer een aantal instellingen op VMware-servers en VM's. | Vereist | Vereist
-**Het gereedschap Servermigratie toevoegen** | Voeg het hulpprogramma azure migrateservermigratie toe aan het Azure Migrate-project. | Vereist | Vereist
-**Het Azure Migrate-toestel implementeren** | Stel een lichtgewicht toestel in op een VMware VM voor VM-detectie en -beoordeling. | Vereist | Niet vereist.
-**De Mobiliteitsservice installeren op VM's** | Installeer de Mobiliteitsservice op elke vm die u wilt repliceren | Niet vereist | Vereist
-**Het replicatietoestel azure migrateserver-migratie implementeren implementeren** | Een toestel instellen op een VMware VM om VM's te ontdekken en een brug te slaan tussen de Mobiliteitsservice die wordt uitgevoerd op VM's en Azure Migrate Server Migration | Niet vereist | Vereist
-**VM's repliceren**. VM-replicatie inschakelen. | Replicatie-instellingen configureren en VM's selecteren om te repliceren | Vereist | Vereist
-**Een testmigratie uitvoeren** | Voer een testmigratie uit om te zien of alles werkt zoals verwacht. | Vereist | Vereist
-**Een volledige migratie uitvoeren** | Migreer de VM's. | Vereist | Vereist
+**Beoordeling** | Evalueer servers vóór de migratie.  De evaluatie is optioneel. U wordt aangeraden machines te beoordelen voordat u ze migreert, maar u hoeft dit niet te doen. <br/><br/> Voor beoordeling wordt Azure Migrate een licht gewicht in te stellen voor het detecteren en beoordelen van Vm's. | Als u na de evaluatie een agentloze migratie uitvoert, wordt hetzelfde Azure Migrate apparaat dat is ingesteld voor evaluatie, gebruikt voor migratie zonder agent.  |  Als u na de evaluatie een migratie op basis van een agent uitvoert, wordt het apparaat dat is ingesteld voor evaluatie niet gebruikt tijdens migratie zonder agent. U kunt het apparaat laten staan of het verwijderen als u geen verdere detectie en evaluatie wilt uitvoeren.
+**VMware-servers en virtuele machines voorbereiden voor migratie** | Configureer een aantal instellingen op VMware-servers en virtuele machines. | Vereist | Vereist
+**Het hulp programma voor server migratie toevoegen** | Voeg het hulp programma voor migratie van Azure Migrate-server toe in het Azure Migrate-project. | Vereist | Vereist
+**Het Azure Migrate apparaat implementeren** | Stel een licht gewicht in op een virtuele VMware-machine voor detectie en evaluatie van VM'S. | Vereist | Niet vereist.
+**De Mobility-service installeren op Vm's** | De Mobility-service installeren op elke virtuele machine die u wilt repliceren | Niet vereist | Vereist
+**Het replicatie apparaat voor migratie van Azure Migrate server implementeren** | Stel een apparaat in op een virtuele VMware-machine voor het detecteren van Vm's en de brug tussen de Mobility-service die wordt uitgevoerd op Vm's en Azure Migrate server migratie | Niet vereist | Vereist
+**Virtuele machines repliceren**. Schakel VM-replicatie in. | Configureer de replicatie-instellingen en selecteer de Vm's die u wilt repliceren | Vereist | Vereist
+**Een testmigratie uitvoeren** | Voer een test migratie uit om te controleren of alles werkt zoals verwacht. | Vereist | Vereist
+**Een volledige migratie uitvoeren** | Migreer de Vm's. | Vereist | Vereist
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[VMware VM's migreren](tutorial-migrate-vmware.md) met agentloze migratie.
+[Migreer VMware-vm's](tutorial-migrate-vmware.md) met agentloze migratie.
 
 
 

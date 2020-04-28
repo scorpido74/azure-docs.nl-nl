@@ -1,32 +1,32 @@
 ---
-title: Avere vFXT non-owner workaround - Azure
-description: Tijdelijke oplossing om gebruikers zonder toestemming van de eigenaar van een abonnement toestemming te geven om Avere vFXT voor Azure te implementeren
+title: AVERE vFXT niet-eigenaars tijdelijke oplossing-Azure
+description: Tijdelijke oplossing om gebruikers zonder abonnements eigenaar toestemming te geven om avere vFXT voor Azure te implementeren
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153272"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Toestaan dat niet-eigenaren Avere vFXT implementeren
 
-Deze instructies zijn een tijdelijke oplossing waarmee een gebruiker zonder bevoegdheden voor abonnementseigenaar een Avere vFXT voor Azure-systeem kan maken.
+Deze instructies zijn een tijdelijke oplossing waarmee een gebruiker zonder abonnements eigenaars bevoegdheden een avere vFXT voor Azure-systeem kan maken.
 
-(De aanbevolen manier om het Avere vFXT-systeem te implementeren, is om een gebruiker met eigenaarbevoegdheden de creatiestappen te laten uitvoeren, zoals uitgelegd in [Voorbereiden op het maken van de Avere vFXT](avere-vfxt-prereqs.md).)  
+(De aanbevolen manier om het avere vFXT-systeem te implementeren, is door een gebruiker met eigenaars bevoegdheden de aanmaak stappen uit te voeren, zoals wordt uitgelegd in [voorbereiden om de avere-vFXT te maken](avere-vfxt-prereqs.md).)  
 
-De tijdelijke oplossing omvat het maken van een extra toegangsrol die de gebruikers voldoende machtigingen geeft om het cluster te installeren. De rol moet worden gemaakt door een eigenaar van een abonnement en een eigenaar moet deze toewijzen aan de juiste gebruikers.
+De tijdelijke oplossing omvat het maken van een extra Access-rol die de gebruikers voldoende machtigingen geeft om het cluster te installeren. De rol moet worden gemaakt door een eigenaar van het abonnement en een eigenaar moet deze toewijzen aan de juiste gebruikers.
 
-Een abonnement eigenaar moet ook [de gebruiksvoorwaarden](avere-vfxt-prereqs.md) voor de Avere vFXT marktplaats afbeelding te accepteren.
+De eigenaar van een abonnement moet ook [de gebruiks voorwaarden accepteren](avere-vfxt-prereqs.md) voor de avere vFXT Marketplace-installatie kopie.
 
 > [!IMPORTANT]
-> Al deze stappen moeten worden uitgevoerd door een gebruiker met eigenaarbevoegdheden voor het abonnement dat voor het cluster wordt gebruikt.
+> Al deze stappen moeten worden uitgevoerd door een gebruiker met eigenaars bevoegdheden voor het abonnement dat wordt gebruikt voor het cluster.
 
-1. Kopieer deze regels en sla ze op `averecreatecluster.json`in een bestand (bijvoorbeeld). Gebruik uw abonnements-ID in de `AssignableScopes` verklaring.
+1. Kopieer deze regels en sla ze op in een bestand (bijvoorbeeld `averecreatecluster.json`). Gebruik uw abonnements-ID in `AssignableScopes` de-instructie.
 
    ```json
    {
@@ -68,12 +68,12 @@ Een abonnement eigenaar moet ook [de gebruiksvoorwaarden](avere-vfxt-prereqs.md)
     az role definition create --role-definition ./averecreatecluster.json
     ```
 
-1. Wijs deze rol toe aan de gebruiker die het cluster maakt:
+1. Wijs deze rol toe aan de gebruiker die het cluster gaat maken:
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Na het voltooien van dit proces geeft de rol elke gebruiker die deze de volgende machtigingen voor het abonnement heeft toegewezen:
+Nadat dit proces is voltooid, geeft de rol aan de gebruiker de volgende machtigingen aan voor het abonnement:
 
-* De netwerkinfrastructuur maken en configureren
-* De clustercontroller maken
-* Clustercreatiescripts uitvoeren vanuit de clustercontroller om het cluster te maken
+* De netwerk infrastructuur maken en configureren
+* De cluster controller maken
+* Scripts voor het maken van clusters uitvoeren vanaf de cluster controller om het cluster te maken

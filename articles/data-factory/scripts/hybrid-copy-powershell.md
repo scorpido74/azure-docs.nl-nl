@@ -1,6 +1,6 @@
 ---
-title: Gegevens van on-premises naar Azure kopiëren met PowerShell
-description: Met dit PowerShell-script worden gegevens uit een on-premises SQL Server-database gekopieerd naar een andere een Azure Blob Storage.
+title: Gegevens van on-premises naar Azure kopiëren met Power shell
+description: Met dit Power shell-script worden gegevens gekopieerd van een on-premises SQL Server Data Base naar een andere Azure-Blob Storage.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,15 +11,15 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75974690"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>PowerShell gebruiken om een pijplijn in gegevensfabrieken te maken om gegevens van on-premises naar Azure te kopiëren
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Power shell gebruiken om een data factory pijp lijn te maken voor het kopiëren van gegevens van on-premises naar Azure
 
-Met dit voorbeeld maakt PowerShell-script een pijplijn in Azure Data Factory die gegevens kopieert van een on-premises SQL Server-database naar een Azure Blob Storage.
+Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory waarmee gegevens van een on-premises SQL Server-Data Base naar een Azure-Blob Storage worden gekopieerd.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ Met dit voorbeeld maakt PowerShell-script een pijplijn in Azure Data Factory die
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **SQL Server**. U gebruikt een on-premises SQL Server-database als **brongegevensarchief** in dit voorbeeld.
-- **Azure Storage-account**. U gebruikt Azure blob-opslag als **een doel-/sinkgegevensarchief** in dit voorbeeld. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
-- **Zelf gehoste runtime voor integratie**. Download MSI-bestand uit het [downloadcentrum](https://www.microsoft.com/download/details.aspx?id=39717) en voer het uit om een zelfgehoste ingebruikloop voor integratie op uw machine te installeren.  
+- **SQL Server**. In dit voor beeld gebruikt u een on-premises SQL Server-Data Base als een **brongegevens** opslag.
+- **Azure Storage-account**. U gebruikt Azure Blob Storage als een **doel/Sink-** gegevens archief in dit voor beeld. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
+- **Zelf-hostende Integration runtime**. Down load het MSI-bestand uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=39717) en voer het uit om een zelf-hostende Integration runtime op uw computer te installeren.  
 
-### <a name="create-sample-database-in-sql-server"></a>Voorbeelddatabase maken in SQL Server
-1. Maak in de on-premises SQL Server-database een tabel met de naam **emp** met behulp van het volgende SQL-script:
+### <a name="create-sample-database-in-sql-server"></a>Voorbeeld database maken in SQL Server
+1. Maak in de on-premises SQL Server-Data Base een tabel met de naam **EMP** met behulp van het volgende SQL-script:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -45,7 +45,7 @@ Met dit voorbeeld maakt PowerShell-script een pijplijn in Azure Data Factory die
      GO
    ```
 
-2. Voeg enkele voorbeeldgegevens in de tabel in:
+2. Voeg enkele voorbeeld gegevens in de tabel in:
 
    ```sql
      INSERT INTO emp VALUES ('John', 'Doe')
@@ -55,19 +55,19 @@ Met dit voorbeeld maakt PowerShell-script een pijplijn in Azure Data Factory die
 ## <a name="sample-script"></a>Voorbeeldscript
 
 > [!IMPORTANT]
-> Met dit script worden JSON-bestanden gemaakt die entiteiten in Gegevensfabriek (gekoppelde service, gegevensset en pijplijn) definiëren op uw harde schijf in de c:\ Map.
+> Met dit script worden JSON-bestanden gemaakt waarmee Data Factory entiteiten (gekoppelde service, gegevensset en pijp lijn) op de vaste schijf worden gedefinieerd in de c:\ map.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Nadat u het voorbeeldscript hebt uitgevoerd, u de volgende opdracht gebruiken om de resourcegroep en alle bijbehorende resources te verwijderen:
+Nadat u het voorbeeld script hebt uitgevoerd, kunt u de volgende opdracht gebruiken om de resource groep en alle bijbehorende resources te verwijderen:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Voer de volgende opdracht uit om het gegevensfabriek uit de resourcegroep te verwijderen:
+Als u de data factory uit de resource groep wilt verwijderen, voert u de volgende opdracht uit:
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -81,12 +81,12 @@ In dit script worden de volgende opdrachten gebruikt:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Een gegevensfactory maken. |
-| [Nieuw-azdatafactoryv2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Hiermee versleutelt u referenties in een gekoppelde service en genereert u een nieuwe gekoppelde servicedefinitie met de versleutelde referenties.
-| [Set-azdatafactoryv2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Hiermee maakt u een gekoppelde service in de gegevensfabriek. Een gekoppelde service koppelt een gegevensarchief of gegevensbestand aan een gegevensfabriek. |
-| [Set-azdatafactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Hiermee maakt u een gegevensset in de gegevensfabriek. Een gegevensset vertegenwoordigt invoer/uitvoer voor een activiteit in een pijplijn. |
-| [Set-azdatafactoryV2-pijplijn](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Hiermee maakt u een pijplijn in de gegevensfabriek. Een pijplijn bevat een of meer activiteiten die een bepaalde bewerking uitvoeren. In deze pijplijn kopieert een kopieeractiviteit gegevens van de ene locatie naar de andere locatie in een Azure Blob Storage. |
-| [Invoke-azdatafactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Hiermee maakt u een run voor de pijplijn. Met andere woorden, loopt de pijplijn. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Hier vindt u meer informatie over de uitvoering van de activiteit (activiteitsuitvoering) in de pijplijn.
+| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Versleutelt referenties in een gekoppelde service en genereert een nieuwe definitie van de gekoppelde service met de versleutelde referentie.
+| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Hiermee maakt u een gekoppelde service in de data factory. Een gekoppelde service koppelt een gegevens archief of kan worden berekend op een data factory. |
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Hiermee maakt u een gegevensset in de data factory. Een gegevensset vertegenwoordigt invoer/uitvoer voor een activiteit in een pijp lijn. |
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Hiermee maakt u een pijp lijn in de data factory. Een pijp lijn bevat een of meer activiteiten die een bepaalde bewerking uitvoeren. In deze pijp lijn kopieert een Kopieer activiteit gegevens van de ene locatie naar een andere locatie in een Azure-Blob Storage. |
+| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Hiermee maakt u een uitvoering voor de pijp lijn. Met andere woorden, de pijp lijn uitvoeren. |
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Haalt Details op over de uitvoering van de activiteit (uitvoering van de activiteit) in de pijp lijn.
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 
@@ -94,4 +94,4 @@ In dit script worden de volgende opdrachten gebruikt:
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Data Factory PowerShell-scriptvoorbeelden zijn te vinden in de [PowerShell-voorbeelden](../samples-powershell.md)van Azure Data Factory.
+Aanvullende Azure Data Factory Power shell-voorbeeld scripts vindt u in de [Azure Data Factory Power shell](../samples-powershell.md)-voor beelden.

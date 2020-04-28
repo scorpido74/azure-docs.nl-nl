@@ -1,6 +1,6 @@
 ---
-title: Uitzonderingen op Azure Service Bus Resource Manager | Microsoft Documenten
-description: Lijst met uitzonderingen voor servicebus die zijn opgedoken door Azure Resource Manager en voorgestelde acties.
+title: Uitzonde ringen voor Azure Service Bus Resource Manager | Microsoft Docs
+description: Lijst met Service Bus-uitzonde ringen die door Azure Resource Manager en aanbevolen acties worden geoppereerd.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
 ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978276"
 ---
-# <a name="service-bus-resource-manager-exceptions"></a>Uitzonderingen op Service Bus Resource Manager
+# <a name="service-bus-resource-manager-exceptions"></a>Uitzonde ringen voor Service Bus Resource Manager
 
-In dit artikel worden uitzonderingen weergegeven die zijn gegenereerd bij interactie met Azure Service Bus met Azure Resource Manager - via sjablonen of directe oproepen.
+Dit artikel bevat een lijst met uitzonde ringen die worden gegenereerd bij het werken met Azure Service Bus met behulp van Azure Resource Manager-via-sjablonen of directe aanroepen.
 
 > [!IMPORTANT]
-> Dit document wordt regelmatig bijgewerkt. Kijk terug voor updates.
+> Dit document wordt regel matig bijgewerkt. Ga terug naar updates.
 
-Hieronder vindt u de verschillende uitzonderingen/fouten die via Azure Resource Manager worden weergegeven.
+Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeven via de Azure Resource Manager.
 
-## <a name="error-bad-request"></a>Fout: Slecht verzoek
+## <a name="error-bad-request"></a>Fout: ongeldige aanvraag
 
-'Slecht verzoek' houdt in dat de aanvraag die door de Resource Manager is ontvangen, is mislukt.
+"Onjuiste aanvraag" impliceert dat de aanvraag die door de Resource Manager is ontvangen, niet is gevalideerd.
 
-| Foutcode | Foutsubcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Onjuiste aanvraag | 40000 | Subcode=40000. De eigenschap *'eigenschapnaam'* kan niet worden ingesteld bij het maken van een wachtrij omdat de naamruimte *'naamruimtenaam'* de 'Basisrij' gebruikt. Deze bewerking wordt alleen ondersteund in de laag 'Standaard' of 'Premium'. | Op Azure Service Bus Basic Tier kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt - <ul> <li> VereistDubbeleDetectie </li> <li> Automatisch verwijderen </li> <li>VereistSessie</li> <li>DefaultMessageTimeToLive DefaultMessageTimeToLive DefaultMessageTimeToLive DefaultMessage </li> <li> DuplicaatHistoryTimeWindow </li> <li> InschakelenExpress </li> <li> Doorsturen </li> <li> Onderwerpen </li> </ul> | Overweeg een upgrade van Basic naar Standard- of Premium-laag om deze functionaliteit te gebruiken. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. De waarde voor de eigenschap 'vereistDubbeledetectie' van een bestaande wachtrij(of onderwerp) kan niet worden gewijzigd. | Dubbele detectie moet zijn ingeschakeld/uitgeschakeld op het moment van het maken van de entiteit. De parameter voor dubbele detectieconfiguratie kan niet worden gewijzigd na het maken. | Als u dubbele detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, u een nieuwe wachtrij/onderwerp maken met dubbele detectie en vervolgens doorsturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. De opgegeven waarde 16384 is ongeldig. De eigenschap 'MaxSizeInMegabytes' moet een van de volgende waarden zijn: 1024;2048;3072;4096;5120. | De waarde MaxSizeInMegabytes is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is - 1024, 2048, 3072, 4096, 5120. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. Partitionering kan niet worden gewijzigd voor Wachtrij/onderwerp. | Partitionering kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
-| Onjuiste aanvraag | geen | De naamruimte *'naamruimtenaam'* bestaat niet. | De naamruimte bestaat niet binnen uw Azure-abonnement. | Als u deze fout wilt oplossen, probeert u de onderstaande <ul> <li> Controleer of het Azure-abonnement correct is. </li> <li> Controleer of de naamruimte bestaat. </li> <li> Controleer of de naamruimtenaam correct is (geen spelfouten of null-tekenreeksen). </li> </ul> | 
-| Onjuiste aanvraag | 40400 | Subcode=40400. De entiteit voor het automatisch doorsturen van de bestemming bestaat niet. | De bestemming voor de entiteit autoforwarding-bestemming bestaat niet. | De doelentiteit (wachtrij of onderwerp) moet bestaan voordat de bron wordt gemaakt. Probeer opnieuw na het maken van de doelentiteit. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. De meegeleverde sluistijd overschrijdt het toegestane maximum van '5' minuten. | De tijd waarvoor een bericht kan worden vergrendeld, moet tussen 1 minuut (minimum) en 5 minuten (maximum) liggen. | Zorg ervoor dat de meegeleverde vergrendelingstijd tussen 1 min en 5 minuten ligt. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. Zowel de eigenschap DelayedPersistence als requiresDuplicateDetection kunnen niet samen worden ingeschakeld. | Entiteiten met dubbele detectie ingeschakeld op hen moeten persistent zijn, zodat persistentie niet kan worden uitgesteld. | Meer informatie over [dubbele detectie](duplicate-detection.md) |
-| Onjuiste aanvraag | 40000 | Subcode=40000. De waarde voor de eigenschap RequiresSession van een bestaande wachtrij kan niet worden gewijzigd. | Ondersteuning voor sessies moet worden ingeschakeld op het moment van het maken van entiteiten. Eenmaal gemaakt, u sessies op een bestaande entiteit (wachtrij of abonnement) niet meer in- of uitschakelen | Een nieuwe wachtrij (of abonnement) verwijderen en opnieuw maken met de eigenschap 'Vereistsessie'. |
-| Onjuiste aanvraag | 40000 | Subcode=40000. 'URI_PATH' bevat karakter(s) die niet zijn toegestaan door de Service Bus. Entiteitssegmenten kunnen alleen letters, cijfers, perioden(.), koppeltekens(-) en underscores(_) bevatten. | Entiteitssegmenten kunnen alleen letters, cijfers, perioden(.), koppeltekens(-) en underscores(_) bevatten. Alle andere tekens zorgen ervoor dat het verzoek mislukt. | Zorg ervoor dat er geen ongeldige tekens in het URI-pad staan. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. De configuratie parameter duplicaten detectie kan niet worden gewijzigd nadat deze is gemaakt. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven waarde 16384 is ongeldig. De eigenschap MaxSizeInMegabytes moet een van de volgende waarden hebben: 1024; 2048; 3072; 4096; 5120. | De MaxSizeInMegabytes-waarde is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is: 1024, 2048, 3072, 4096, 5120. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. Partitioneren kan niet worden gewijzigd voor wachtrij/onderwerp. | Partitioneren kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
+| Onjuiste aanvraag | geen | De naam ruimte *name* van de naam ruimte bestaat niet. | De naam ruimte bestaat niet in uw Azure-abonnement. | Voer de onderstaande stappen uit om deze fout op te lossen <ul> <li> Zorg ervoor dat het Azure-abonnement juist is. </li> <li> Zorg ervoor dat de naam ruimte bestaat. </li> <li> Controleer of de naam van de naam ruimte juist is (geen spel fouten of null-teken reeksen). </li> </ul> | 
+| Onjuiste aanvraag | 40400 | Subcode = 40400. De doel entiteit voor automatisch door sturen bestaat niet. | De bestemming voor de doel entiteit voor automatisch door sturen bestaat niet. | De doel entiteit (wachtrij of onderwerp) moet bestaan voordat de bron wordt gemaakt. Probeer het opnieuw nadat de doel entiteit is gemaakt. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven vergrendelings tijd overschrijdt het toegestane maximum van ' 5 ' minuten. | De tijd waarvoor een bericht kan worden vergrendeld, moet tussen 1 minuut (mini maal) en 5 minuten (maximum) zijn. | Zorg ervoor dat de opgegeven vergrendelings tijd tussen 1 minuten en 5 minuten ligt. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschap DelayedPersistence en RequiresDuplicateDetection kunnen niet samen worden ingeschakeld. | Entiteiten waarvoor duplicaten detectie is ingeschakeld, moeten permanent zijn, zodat persistentie niet kan worden vertraagd. | Meer informatie over [Duplicaten detectie](duplicate-detection.md) |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap RequiresSession van een bestaande wachtrij kan niet worden gewijzigd. | Ondersteuning voor sessies moet zijn ingeschakeld op het moment dat de entiteit wordt gemaakt. Wanneer u eenmaal hebt gemaakt, kunt u geen sessies inschakelen/uitschakelen voor een bestaande entiteit (wachtrij of abonnement) | Een nieuwe wachtrij (of een nieuw abonnement) verwijderen en opnieuw maken met de eigenschap ' RequiresSession ' ingeschakeld. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. URI_PATH bevat een of meer tekens die niet zijn toegestaan door Service Bus. Entiteits segmenten kunnen alleen letters, cijfers, punten (.), afbreek streepjes (-) en onderstrepings tekens (_) bevatten. | Entiteits segmenten kunnen alleen letters, cijfers, punten (.), afbreek streepjes (-) en onderstrepings tekens (_) bevatten. Alle andere tekens zorgen ervoor dat de aanvraag mislukt. | Zorg ervoor dat het URI-pad geen ongeldige tekens bevat. |
 
 
-## <a name="error-code-429"></a>Foutcode: 429
+## <a name="error-code-429"></a>Fout code: 429
 
-Net als in HTTP geeft "Foutcode 429" aan dat er "te veel aanvragen" zijn. Dit houdt in dat de specifieke resource (naamruimte) wordt beperkt vanwege te veel aanvragen (of als gevolg van conflicterende bewerkingen) op die resource.
+Net als bij HTTP geeft "fout code 429" te veel aanvragen aan ". Het impliceert dat de specifieke resource (naam ruimte) wordt beperkt vanwege te veel aanvragen (of als gevolg van conflicterende bewerkingen) voor die bron.
 
-| Foutcode | Foutsubcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | 50004 | Subcode=50004. De aanvraag is beëindigd omdat de naamruimte *van uw naamruimte* wordt beperkt. | Deze foutvoorwaarde wordt geraakt wanneer het aantal binnenkomende aanvragen de beperking van de resource overschrijdt. | Wacht een paar seconden en probeer het opnieuw. <br/> <br/> Meer informatie over de [quota en](service-bus-quotas.md) Azure [Resource Manager-aanvraaglimieten](../azure-resource-manager/management/request-limits-and-throttling.md)|
-| 429 | 40901 | Subcode=40901. Een andere conflicterende operatie is in volle gang. | Een andere conflicterende bewerking is aan de gang op dezelfde resource/entiteit | Wacht tot de huidige bewerking is voltooid voordat u het opnieuw probeert. |
-| 429 | 40900 | SubCode=40900. Conflict. U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. | Deze voorwaarde kan worden geraakt wanneer meerdere aanvragen worden gedaan om de bewerkingen op dezelfde entiteit (wachtrij, onderwerp, abonnement of regel) tegelijkertijd uit te voeren. | Wacht een paar seconden en probeer het opnieuw |
-| 429 | 40901 | Aanvraag op *entiteitsnaam in* strijd met een ander verzoek | Een andere conflicterende bewerking is aan de gang op dezelfde resource/entiteit | Wachten tot de vorige bewerking is voltooid voordat u het opnieuw probeert |
-| 429 | 40901 | Er loopt nog een updateverzoek voor de *entiteit 'entiteitsnaam'.* | Een andere conflicterende bewerking is aan de gang op dezelfde resource/entiteit | Wachten tot de vorige bewerking is voltooid voordat u het opnieuw probeert |
-| 429 | geen | Er is een resourceconflict opgetreden. Een andere conflicterende operatie kan worden uitgevoerd. Als dit een nieuwe poging is voor mislukte bewerking, is het opschonen op de achtergrond nog in behandeling. Probeer het later opnieuw. | Deze voorwaarde kan worden geraakt wanneer er een lopende bewerking tegen dezelfde entiteit is. | Wacht tot de vorige bewerking is voltooid voordat u het opnieuw probeert. |
+| 429 | 50004 | Subcode = 50004. De aanvraag is beëindigd omdat de naam ruimte van *uw naam ruimte* wordt beperkt. | Deze fout is opgetreden wanneer het aantal binnenkomende aanvragen de beperking van de resource overschrijdt. | Wacht een paar seconden en probeer het opnieuw. <br/> <br/> Meer informatie over de [quota](service-bus-quotas.md) en [limieten voor Azure Resource Manager aanvragen](../azure-resource-manager/management/request-limits-and-throttling.md)|
+| 429 | 40901 | Subcode = 40901. Er wordt een andere conflicterende bewerking uitgevoerd. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de huidige bewerking in uitvoering is voltooid en probeer het opnieuw. |
+| 429 | 40900 | Subcode = 40900. Conflicteren. U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. | Deze voor waarde kan worden bereikt wanneer meerdere aanvragen tegelijkertijd worden uitgevoerd om de bewerkingen op dezelfde entiteit (wachtrij, onderwerp, abonnement of regel) tegelijk uit te voeren. | Wacht een paar seconden en probeer het opnieuw |
+| 429 | 40901 | Er is een conflict opgetreden tussen de aanvraag op de entiteits *naam* en de andere aanvraag | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
+| 429 | 40901 | Er wordt een andere update aanvraag uitgevoerd voor de entiteits *naam entiteit*. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
+| 429 | geen | Er is een bron conflict opgetreden. Er wordt mogelijk een andere conflicterende bewerking uitgevoerd. Als dit een nieuwe poging is voor een mislukte bewerking, is het opruimen van de achtergrond nog in behandeling. Probeer het later opnieuw. | Deze voor waarde kan worden bereikt wanneer er een bewerking in behandeling is voor dezelfde entiteit. | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
 
 
-## <a name="error-code-not-found"></a>Foutcode: niet gevonden
+## <a name="error-code-not-found"></a>Fout code: niet gevonden
 
-Deze klasse van fouten geeft aan dat de resource niet is gevonden.
+Deze klasse van fouten geeft aan dat de bron niet is gevonden.
 
-| Foutcode | Foutsubcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Niet gevonden | geen | Entiteit *'entiteitsnaam'* werd niet gevonden. | De entiteit waartegen de bewerking niet is gevonden. | Controleer of de entiteit bestaat en probeer de bewerking opnieuw. |
-| Niet gevonden | geen | Niet gevonden. De operatie bestaat niet. | De bewerking die u probeert uit te voeren, bestaat niet. | Controleer de bewerking en probeer het opnieuw. |
-| Niet gevonden | geen | De binnenkomende aanvraag wordt niet herkend als een naamruimtebeleidsaanvraag. | De binnenkomende aanvraaginstantie is null en kan dus niet worden uitgevoerd als een putverzoek. | Controleer de aanvraaginstantie om te controleren of deze niet niet null is. | 
-| Niet gevonden | geen | De *'entiteitsnaam'* van de berichtenentiteit kan niet worden gevonden. | De entiteit tegen wie u de bewerking probeert uit te voeren, kan niet worden gevonden. | Controleer of de entiteit bestaat en probeer de bewerking opnieuw. |
+| Niet gevonden | geen | Entiteit *' entiteit naam '* is niet gevonden. | De entiteit waartegen de bewerking niet is gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |
+| Niet gevonden | geen | Niet gevonden. De bewerking bestaat niet. | De bewerking die u probeert uit te voeren, bestaat niet. | Controleer de bewerking en probeer het opnieuw. |
+| Niet gevonden | geen | De binnenkomende aanvraag wordt niet herkend als een naam ruimte beleid voor het opslaan van een aanvraag. | De hoofd tekst van de binnenkomende aanvraag is null en kan daarom niet worden uitgevoerd als een put-aanvraag. | Controleer de hoofd tekst van de aanvraag om er zeker van te zijn dat deze niet null is. | 
+| Niet gevonden | geen | De bericht entiteit *' entiteits naam '* is niet gevonden. | De entiteit waarvoor u de bewerking probeert uit te voeren, is niet gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |
 
-## <a name="error-code-internal-server-error"></a>Foutcode: interne serverfout
+## <a name="error-code-internal-server-error"></a>Fout code: interne server fout
 
-Deze klasse van fouten geeft aan dat er een interne serverfout is opgetreden
+Deze klasse van fouten geeft aan dat er een interne server fout is opgetreden
 
-| Foutcode | Foutsubcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Interne serverfout | 50000 | Subcode=50000. Interne serverfout| Kan gebeuren om verschillende redenen. Sommige van de symptomen zijn - <ul> <li> Client aanvraag / lichaam is beschadigd en leidt tot een fout. </li> <li> De clientaanvraag heeft een time-out vanwege verwerkingsproblemen op de service. </li> </ul> | Om dit op te lossen <ul> <li> Zorg ervoor dat de aanvragen parameters niet null of misvormd zijn. </li> <li> Probeer het verzoek opnieuw. </li> </ul> |
+| Interne server fout | 50000 | Subcode = 50.000. Interne server fout| Kan om verschillende redenen plaatsvinden. Enkele symptomen zijn: <ul> <li> De client aanvraag/de hoofd tekst is beschadigd en resulteert in een fout. </li> <li> Er is een time-out opgetreden voor de client aanvraag vanwege het verwerken van problemen met de service. </li> </ul> | Om dit probleem op te lossen <ul> <li> Zorg ervoor dat de aanvragen para meters niet null of misvormd zijn. </li> <li> Voer de aanvraag opnieuw uit. </li> </ul> |
 
-## <a name="error-code-unauthorized"></a>Foutcode: ongeautoriseerd
+## <a name="error-code-unauthorized"></a>Fout code: niet geautoriseerd
 
-Deze klasse van fouten geeft het ontbreken van toestemming om de opdracht uit te voeren.
+Deze klasse van fouten geeft aan dat er geen autorisatie is om de opdracht uit te voeren.
 
-| Foutcode | Foutsubcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Niet geautoriseerd | geen | Ongeldige bewerking op de secundaire naamruimte. Secundaire naamruimte is alleen-lezen. | De bewerking is uitgevoerd tegen de secundaire naamruimte, die is ingesteld als een alleen-lezen naamruimte. | Probeer de opdracht opnieuw tegen de primaire naamruimte. Meer informatie over [secundaire naamruimte](service-bus-geo-dr.md) |
-| Niet geautoriseerd | geen | MissingToken: De autorisatiekop is niet gevonden. | Deze fout treedt op wanneer de autorisatie nullof onjuiste waarden heeft. | Controleer of de tokenwaarde die in de autorisatiekop wordt vermeld, correct is en niet null. |
+| Niet geautoriseerd | geen | Ongeldige bewerking op de secundaire naam ruimte. Secundaire naam ruimte heeft het kenmerk alleen-lezen. | De bewerking is uitgevoerd op basis van de secundaire naam ruimte, die is ingesteld als een alleen-lezen naam ruimte. | Voer de opdracht opnieuw uit op de primaire naam ruimte. Meer informatie over [secundaire naam ruimte](service-bus-geo-dr.md) |
+| Niet geautoriseerd | geen | MissingToken: de autorisatie-header is niet gevonden. | Deze fout treedt op wanneer de autorisatie null of onjuiste waarden heeft. | Zorg ervoor dat de token waarde die wordt vermeld in de autorisatie-header juist is en niet null is. |

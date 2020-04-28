@@ -1,6 +1,6 @@
 ---
-title: Aangepast veld toewijzen aan azure-gebeurtenisrasterschema
-description: In dit artikel wordt beschreven hoe u uw aangepaste schema converteren naar het Azure Event Grid-schema wanneer uw gebeurtenisgegevens niet overeenkomen met het schema van gebeurtenisraster.
+title: Aangepast veld toewijzen aan Azure Event Grid schema
+description: In dit artikel wordt beschreven hoe u uw aangepaste schema converteert naar het Azure Event Grid schema wanneer uw gebeurtenis gegevens niet overeenkomen met Event Grid schema.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721656"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Aangepaste velden toewijzen aan Event Grid-schema
 
-Als uw gebeurtenisgegevens niet overeenkomen met het verwachte [gebeurtenisrasterschema,](event-schema.md)u gebeurtenisraster nog steeds gebruiken om gebeurtenis naar abonnees te leiden. In dit artikel wordt beschreven hoe u uw schema toewijzen aan het schema voor gebeurtenisraster.
+Als uw gebeurtenis gegevens niet overeenkomen met het verwachte [Event grid schema](event-schema.md), kunt u nog steeds gebruikmaken van Event grid om gebeurtenis te routeren naar abonnees. In dit artikel wordt beschreven hoe u uw schema aan het Event Grid schema kunt toewijzen.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -25,7 +25,7 @@ Als uw gebeurtenisgegevens niet overeenkomen met het verwachte [gebeurtenisraste
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>Origineel gebeurtenisschema
+## <a name="original-event-schema"></a>Oorspronkelijk gebeurtenis schema
 
 Stel dat u een toepassing hebt die gebeurtenissen in de volgende indeling verzendt:
 
@@ -39,19 +39,19 @@ Stel dat u een toepassing hebt die gebeurtenissen in de volgende indeling verzen
 ]
 ```
 
-Hoewel die indeling niet overeenkomt met het vereiste schema, u met Gebeurtenisraster uw velden toewijzen aan het schema. U ook de waarden in het oorspronkelijke schema ontvangen.
+Hoewel deze indeling niet overeenkomt met het vereiste schema, Event Grid u in staat stelt uw velden toe te wijzen aan het schema. U kunt ook de waarden in het oorspronkelijke schema ontvangen.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>Aangepaste onderwerp maken met toegewezen velden
+## <a name="create-custom-topic-with-mapped-fields"></a>Aangepast onderwerp maken met toegewezen velden
 
-Wanneer u een aangepast onderwerp maakt, geeft u op hoe u velden van uw oorspronkelijke gebeurtenis toewijzen aan het gebeurtenisrasterschema. Er zijn drie waarden die u gebruikt om de toewijzing aan te passen:
+Wanneer u een aangepast onderwerp maakt, geeft u op hoe velden van de oorspronkelijke gebeurtenis moeten worden toegewezen aan het event grid-schema. Er zijn drie waarden die u gebruikt om de toewijzing aan te passen:
 
-* De waarde van het **invoerschema** geeft het type schema op. De beschikbare opties zijn het CloudEvents-schema, het aangepaste gebeurtenisschema of het gebeurtenisrasterschema. De standaardwaarde is het schema gebeurtenisraster. Wanneer u aangepaste toewijzing maakt tussen uw schema en het gebeurtenisrasterschema, gebruikt u het aangepaste gebeurtenisschema. Wanneer gebeurtenissen zich in het cloudgebeurtenissenschema bevinden, gebruikt u het cloudevents-schema.
+* De waarde van het **invoer schema** geeft u het type schema op. De beschik bare opties zijn CloudEvents schema, aangepast gebeurtenis schema of Event Grid schema. De standaard waarde is Event Grid schema. Gebruik aangepast gebeurtenis schema bij het maken van een aangepaste toewijzing tussen uw schema en het event grid-schema. Wanneer gebeurtenissen zich in het CloudEvents-schema bevinden, gebruikt u het Cloudevents-schema.
 
-* De eigenschap **standaardwaarden toewijzen** geeft standaardwaarden op voor velden in het schema gebeurtenisraster. U standaardwaarden `subject` `eventtype`instellen `dataversion`voor, en. Normaal gesproken gebruikt u deze parameter wanneer uw aangepaste schema geen veld bevat dat overeenkomt met een van deze drie velden. U bijvoorbeeld opgeven dat de gegevensversie altijd is ingesteld op **1.0**.
+* De eigenschap **standaard waarden toewijzen** geeft standaard waarden voor velden in het event grid schema op. U kunt standaard waarden instellen voor `subject`, `eventtype`, en `dataversion`. Normaal gesp roken gebruikt u deze para meter wanneer uw aangepaste schema geen veld bevat dat overeenkomt met een van deze drie velden. U kunt bijvoorbeeld opgeven dat de gegevens versie altijd is ingesteld op **1,0**.
 
-* De **waarde voor toewijzingsvelden** brengt velden van uw schema naar het gebeurtenisrasterschema toe. U geeft waarden op in door de ruimte gescheiden sleutel-/waardeparen. Gebruik voor de sleutelnaam de naam van het veld gebeurtenisraster. Gebruik voor de waarde de naam van uw veld. U belangrijke `id`namen `topic` `eventtime`gebruiken `subject` `eventtype`voor `dataversion`,,, en.
+* De waarde van de **toewijzings velden** wijst velden van uw schema toe aan het event grid-schema. U geeft waarden op in een spatie gescheiden sleutel/waarde-paren. Gebruik de naam van het gebeurtenis raster veld voor de sleutel naam. Gebruik de naam van uw veld voor de waarde. U kunt sleutel namen gebruiken voor `id`, `topic`, `eventtime` `subject` `eventtype`,, en `dataversion`.
 
-Als u een aangepast onderwerp wilt maken met Azure CLI, gebruikt u:
+Als u een aangepast onderwerp met Azure CLI wilt maken, gebruikt u:
 
 ```azurecli-interactive
 # If you have not already installed the extension, do it now.
@@ -83,11 +83,11 @@ New-AzureRmEventGridTopic `
   -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>U abonneren op het onderwerp gebeurtenisraster
+## <a name="subscribe-to-event-grid-topic"></a>Onderwerp abonneren op Event grid
 
-Wanneer u zich abonneert op het aangepaste onderwerp, geeft u het schema op dat u wilt gebruiken voor het ontvangen van de gebeurtenissen. U geeft het cloudgebeurtenissenschema, het aangepaste gebeurtenisschema of het schema voor gebeurtenisrasterop. De standaardwaarde is het schema gebeurtenisraster.
+Wanneer u zich abonneert op het aangepaste onderwerp, geeft u het schema op dat u wilt gebruiken voor het ontvangen van de gebeurtenissen. U geeft het CloudEvents-schema, het aangepaste gebeurtenis schema of het Event Grid schema op. De standaard waarde is Event Grid schema.
 
-In het volgende voorbeeld wordt een gebeurtenisrasteronderwerp geabonneerd en wordt het schema gebeurtenisraster gebruikt. Gebruik voor Azure CLI:
+In het volgende voor beeld wordt een abonnement op een event grid-onderwerp gemaakt en wordt het Event Grid schema gebruikt. Gebruik voor Azure CLI:
 
 ```azurecli-interactive
 topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-In het volgende voorbeeld wordt het invoerschema van de gebeurtenis gebruikt:
+In het volgende voor beeld wordt het invoer schema van de gebeurtenis gebruikt:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -109,7 +109,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-In het volgende voorbeeld wordt een gebeurtenisrasteronderwerp geabonneerd en wordt het schema gebeurtenisraster gebruikt. Gebruik voor PowerShell:
+In het volgende voor beeld wordt een abonnement op een event grid-onderwerp gemaakt en wordt het Event Grid schema gebruikt. Gebruik voor PowerShell:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
@@ -122,7 +122,7 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema EventGridSchema
 ```
 
-In het volgende voorbeeld wordt het invoerschema van de gebeurtenis gebruikt:
+In het volgende voor beeld wordt het invoer schema van de gebeurtenis gebruikt:
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -133,9 +133,9 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CustomInputSchema
 ```
 
-## <a name="publish-event-to-topic"></a>Gebeurtenis naar onderwerp publiceren
+## <a name="publish-event-to-topic"></a>Gebeurtenis publiceren in onderwerp
 
-U bent nu klaar om een gebeurtenis naar het aangepaste onderwerp te verzenden en het resultaat van de toewijzing te bekijken. Het volgende script om een gebeurtenis in het voorbeeldschema te [plaatsen:](#original-event-schema)
+U bent nu klaar om een gebeurtenis naar het aangepaste onderwerp te verzenden en het resultaat van de toewijzing te bekijken. Het volgende script voor het plaatsen van een gebeurtenis in het [voorbeeld schema](#original-event-schema):
 
 Gebruik voor Azure CLI:
 
@@ -166,9 +166,9 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Kijk nu eens naar je WebHook-eindpunt. De twee abonnementen leverden gebeurtenissen in verschillende schema's.
+Bekijk nu het eind punt van de webhook. De twee abonnementen die gebeurtenissen in verschillende schema's hebben geleverd.
 
-Het eerste abonnement maakte gebruik van het gebeurtenisrasterschema. Het formaat van het geleverde evenement is:
+Het eerste gebruikte abonnement voor het gebeurtenis raster schema. De indeling van de bezorgde gebeurtenis is:
 
 ```json
 {
@@ -189,9 +189,9 @@ Het eerste abonnement maakte gebruik van het gebeurtenisrasterschema. Het formaa
 }
 ```
 
-Deze velden bevatten de toewijzingen van het aangepaste onderwerp. **myEventTypeField** is toegewezen aan **EventType**. De standaardwaarden voor **DataVersion** en **Onderwerp** worden gebruikt. Het object **Gegevens** bevat de oorspronkelijke gebeurtenisschemavelden.
+Deze velden bevatten de toewijzingen van het aangepaste onderwerp. **myEventTypeField** is toegewezen aan **Event**type. De standaard waarden voor **DataVersion** en **subject** worden gebruikt. Het **gegevens** object bevat de oorspronkelijke velden van het gebeurtenis schema.
 
-In het tweede abonnement werd het invoergebeurtenisschema gebruikt. Het formaat van het geleverde evenement is:
+Voor het tweede abonnement is het invoer gebeurtenis schema gebruikt. De indeling van de bezorgde gebeurtenis is:
 
 ```json
 {
@@ -203,10 +203,10 @@ In het tweede abonnement werd het invoergebeurtenisschema gebruikt. Het formaat 
 }
 ```
 
-Merk op dat de oorspronkelijke velden zijn geleverd.
+U ziet dat de oorspronkelijke velden zijn geleverd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over het bezorgen en opnieuw proberen van [gebeurtenissen, het verzenden van het gebeurtenisrasterbericht en het opnieuw proberen](delivery-and-retry.md).
+* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Zie [Aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md)om snel aan de slag te gaan met gebeurtenisraster.
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

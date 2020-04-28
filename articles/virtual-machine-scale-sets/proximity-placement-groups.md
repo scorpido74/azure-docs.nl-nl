@@ -1,6 +1,6 @@
 ---
-title: Voorbeeld van plaatsingsgroepen voor virtuele machineschalen
-description: Meer informatie over het maken en gebruiken van plaatsingsgroepen voor virtuele machineschalen van Windows in Azure.
+title: Voor beeld van proximity placement groups voor schaal sets voor virtuele machines
+description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor schaal sets voor virtuele Windows-machines in Azure.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -9,27 +9,27 @@ ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76273623"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Voorbeeld: Groepen voor nabijheidsplaatsing maken en gebruiken met PowerShell
+# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Voor beeld: proximity-plaatsings groepen maken en gebruiken met Power shell
 
-Als u VM's zo dicht mogelijk wilt plaatsen en de laagst mogelijke latentie wilt bereiken, moet u uw schaalset implementeren binnen een [plaatsingsgroep voor nabijheid.](co-location.md#preview-proximity-placement-groups)
+Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u de schaalset binnen een [proximity-plaatsings groep](co-location.md#preview-proximity-placement-groups)implementeren.
 
-Een plaatsingsgroep voor nabijheid is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure-rekenbronnen fysiek dicht bij elkaar staan. Plaatsingsgroepen voor nabijheidzijn handig voor workloads waarbij lage latentie een vereiste is.
+Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
 
 > [!IMPORTANT]
-> Nabijheidsplaatsingsgroepen staan momenteel in een openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Proximity-plaatsings groepen bevindt zich momenteel in een open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Nabijheidsplaatsingsgroepen zijn niet beschikbaar in deze regio's tijdens de preview: **Japan East**, **Australia East** en India **Central**.
+> Proximity placement groups zijn niet beschikbaar in deze regio's tijdens de preview-versie: **Japan-Oost**, **Australië-Oost** en **India centraal**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Een nabijheidsplaatsingsgroep maken
-Maak een plaatsingsgroep voor nabijheid met de cmdlet [Nieuw-AzProximityPlacementGroep.](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) 
+Maak een proximity-plaatsings groep met behulp van de cmdlet [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) . 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -43,9 +43,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Plaatsingsgroepen voor nabijheid weergeven
+## <a name="list-proximity-placement-groups"></a>Proximity-plaatsings groepen weer geven
 
-U alle nabijheidsplaatsingsgroepen weergeven met de cmdlet [Get-AzProximityPlacementGroup.](/powershell/module/az.compute/get-azproximityplacementgroup)
+U kunt alle proximity-plaatsings groepen weer geven met behulp van de cmdlet [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) .
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -54,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
 
-Maak een schaal in de `-ProximityPlacementGroup $ppg.Id` groep nabijheidsplaatsing met behulp van de groeps-id voor plaatsing in de nabijheid wanneer u [Nieuw-AzVMSS gebruikt](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om de schaalset te maken.
+Maak een schaal in de locatie van de Proximity `-ProximityPlacementGroup $ppg.Id` -plaatsings groep met om te verwijzen naar de locatie van de plaatsings groep bij gebruik van [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om de schaalset te maken.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"
@@ -71,7 +71,7 @@ New-AzVmss `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-U de instantie in de plaatsingsgroep zien met [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
+U kunt het exemplaar in de plaatsings groep bekijken met [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
 
 ```azurepowershell-interactive
   Get-AzProximityPlacementGroup `
@@ -82,4 +82,4 @@ U de instantie in de plaatsingsgroep zien met [Get-AzProximityPlacementGroup](/p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U de [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) ook gebruiken om nabijheidsplaatsingsgroepen te maken.
+U kunt ook de [Azure cli](../virtual-machines/linux/proximity-placement-groups.md) gebruiken om proximity-plaatsings groepen te maken.

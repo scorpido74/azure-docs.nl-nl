@@ -15,52 +15,52 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309032"
 ---
-### <a name="authenticationresult-properties-in-msalnet"></a>VerificatieResultaateigenschappen in MSAL.NET
+### <a name="authenticationresult-properties-in-msalnet"></a>Eigenschappen van AuthenticationResult in MSAL.NET
 
-De methoden om tokens `AuthenticationResult`te verkrijgen keren terug. `Task<AuthenticationResult>` Retourneert voor async-methoden.
+De methoden voor het verkrijgen van tokens retour neren `AuthenticationResult`. Voor asynchrone methoden `Task<AuthenticationResult>` retourneert.
 
-In MSAL.NET, `AuthenticationResult` onthult:
+In MSAL.NET wordt `AuthenticationResult` het volgende getoond:
 
-- `AccessToken`voor de web-API om toegang te krijgen tot bronnen. Deze parameter is een tekenreeks, meestal een Base-64-gecodeerde JWT. De client mag nooit in het toegangstoken kijken. Het formaat is niet gegarandeerd stabiel te blijven, en het kan worden versleuteld voor de bron. Het schrijven van code die afhankelijk is van toegangstokeninhoud op de client is een van de grootste bronnen van fouten en fouten in de clientlogica. Zie [Toegangstokens voor](../articles/active-directory/develop/access-tokens.md)meer informatie.
-- `IdToken`voor de gebruiker. Deze parameter is een gecodeerde JWT. Zie [ID-tokens voor](../articles/active-directory/develop/id-tokens.md)meer informatie.
-- `ExpiresOn`geeft de datum en het tijdstip aan waarop het token verloopt.
-- `TenantId`bevat de tenant waarin de gebruiker is gevonden. Voor gastgebruikers in Azure Active Directory (Azure AD) B2B-scenario's is de tenant de gasttenant, niet de unieke tenant.
-Wanneer het token voor een `AuthenticationResult` gebruiker wordt geleverd, bevat het ook informatie over deze gebruiker. Voor vertrouwelijke clientstromen waarbij tokens worden aangevraagd zonder gebruiker voor de toepassing, is deze gebruikersinformatie null.
-- Waarvoor `Scopes` het token werd uitgegeven.
+- `AccessToken`voor de Web-API voor toegang tot bronnen. Deze para meter is een teken reeks, meestal een met base-64-gecodeerde JWT. De client mag nooit kijken in het toegangs token. De indeling is niet gegarandeerd stabiel en kan worden versleuteld voor de resource. Het schrijven van code die afhankelijk is van de inhoud van toegangs tokens op de client is een van de grootste bronnen van fouten en client logica-onderbrekingen. Zie [toegangs tokens](../articles/active-directory/develop/access-tokens.md)voor meer informatie.
+- `IdToken`voor de gebruiker. Deze para meter is een gecodeerde JWT. Zie [id-tokens](../articles/active-directory/develop/id-tokens.md)voor meer informatie.
+- `ExpiresOn`Hiermee wordt aangegeven op welke datum en tijd het token verloopt.
+- `TenantId`bevat de Tenant waarin de gebruiker is gevonden. Voor gast gebruikers in Azure Active Directory-B2B-scenario's (Azure AD) is de Tenant-ID de gast-Tenant, niet de unieke Tenant.
+Wanneer het token wordt geleverd voor een gebruiker, `AuthenticationResult` bevat ook informatie over deze gebruiker. Voor vertrouwelijke client stromen waarbij tokens worden aangevraagd zonder gebruiker voor de toepassing, zijn deze gebruikers gegevens null.
+- De `Scopes` waarvoor het token is uitgegeven.
 - De unieke ID voor de gebruiker.
 
 ### <a name="iaccount"></a>IAccount
 
-MSAL.NET definieert de notie van een account via de `IAccount` interface. Deze brekende verandering biedt de juiste semantiek. Dezelfde gebruiker kan meerdere accounts hebben, in verschillende Azure AD-mappen. Ook biedt MSAL.NET betere informatie in het geval van gastscenario's omdat thuisaccountgegevens worden verstrekt.
-Het volgende diagram toont `IAccount` de structuur van de interface.
+MSAL.NET definieert het begrip van een account via de `IAccount` interface. Deze laatste wijziging biedt de juiste semantiek. Dezelfde gebruiker kan meerdere accounts hebben in verschillende Azure AD-directory's. Daarnaast biedt MSAL.NET betere informatie in het geval van gast scenario's, omdat informatie over het privé-account wordt verstrekt.
+In het volgende diagram ziet u de structuur `IAccount` van de interface.
 
-![IAccount-interfacestructuur](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
+![IAccount-interface structuur](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
 
-De `AccountId` klasse identificeert een account in een specifieke tenant met de eigenschappen die in de volgende tabel worden weergegeven.
-
-| Eigenschap | Beschrijving |
-|----------|-------------|
-| `TenantId` | Een tekenreeksweergave voor een GUID, de id van de tenant waar het account zich bevindt. |
-| `ObjectId` | Een tekenreeksweergave voor een GUID, de id van de gebruiker die eigenaar is van het account in de tenant. |
-| `Identifier` | Unieke id voor het account. `Identifier`is de samenvoeging van `ObjectId` en `TenantId` gescheiden door een komma. Ze zijn niet gebaseerd op basis 64. |
-
-De `IAccount` interface vertegenwoordigt informatie over één account. Dezelfde gebruiker kan aanwezig zijn in verschillende tenants, wat betekent dat een gebruiker meerdere accounts kan hebben. De leden worden weergegeven in de volgende tabel.
+De `AccountId` klasse identificeert een account in een specifieke Tenant met de eigenschappen die in de volgende tabel worden weer gegeven.
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
-| `Username` | Een tekenreeks die bijvoorbeeld de weergavebare waarde bevat in de john.doe@contoso.comUPN-indeling (UserPrincipalName). Deze tekenreeks kan null zijn, in tegenstelling tot HomeAccountId en HomeAccountId.Identifier, die niet null zijn. Deze eigenschap `DisplayableId` vervangt `IUser` de eigenschap van in eerdere versies van MSAL.NET. |
-| `Environment` | Een tekenreeks die bijvoorbeeld de identiteitsprovider voor `login.microsoftonline.com`dit account bevat. Deze eigenschap `IdentityProvider` vervangt `IUser`de eigenschap `IdentityProvider` van , behalve dat had ook informatie over de huurder, in aanvulling op de cloud-omgeving. Hier is de waarde alleen de gastheer. |
-| `HomeAccountId` | De account-ID van het thuisaccount voor de gebruiker. Deze eigenschap identificeert de gebruiker op unieke wijze voor Azure AD-tenants. |
+| `TenantId` | Een teken reeks representatie voor een GUID. Dit is de ID van de Tenant waar het account zich bevindt. |
+| `ObjectId` | Een teken reeks representatie voor een GUID. Dit is de ID van de gebruiker die eigenaar is van het account in de Tenant. |
+| `Identifier` | De unieke id voor het account. `Identifier`is de samen voeging `ObjectId` van `TenantId` en gescheiden door een komma. Deze zijn niet base 64-code ring. |
+
+De `IAccount` interface vertegenwoordigt informatie over één account. Dezelfde gebruiker kan zich in verschillende tenants bevinden, wat betekent dat een gebruiker meerdere accounts kan hebben. De leden ervan worden weer gegeven in de volgende tabel.
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| `Username` | Een teken reeks die de waarde unplayable bevat in de indeling UserPrincipalName (UPN), bijvoorbeeld john.doe@contoso.com. Deze teken reeks kan null zijn, in tegens telling tot HomeAccountId en HomeAccountId. Identifier, die niet null zijn. Met deze eigenschap wordt `DisplayableId` de eigenschap `IUser` van in eerdere versies van MSAL.net vervangen. |
+| `Environment` | Een teken reeks die de ID-provider bevat voor dit account, bijvoorbeeld `login.microsoftonline.com`. Deze eigenschap vervangt het `IdentityProvider` eigendom van `IUser`, behalve dat `IdentityProvider` ook informatie over de Tenant bevat, naast de cloud omgeving. Hier is de waarde alleen de host. |
+| `HomeAccountId` | De account-ID van het thuis account voor de gebruiker. Met deze eigenschap wordt de gebruiker op unieke wijze in azure AD-tenants geïdentificeerd. |
 
 ### <a name="use-the-token-to-call-a-protected-api"></a>Het token gebruiken om een beveiligde API aan te roepen
 
-Nadat `AuthenticationResult` wordt geretourneerd door `result`MSAL in , voeg deze toe aan de HTTP-autorisatiekop voordat u de aanroep doet om toegang te krijgen tot de beveiligde web-API.
+Nadat `AuthenticationResult` het is geretourneerd door MSAL `result`in, voegt u deze toe aan de http-autorisatie-header voordat u de aanroep voor toegang tot de beveiligde web-API uitvoert.
 
 ```csharp
 httpClient = new HttpClient();

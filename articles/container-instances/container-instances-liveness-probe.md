@@ -1,29 +1,29 @@
 ---
-title: Liveness-sonde instellen op containerinstantie
-description: Meer informatie over het configureren van liveness probes om ongezonde containers opnieuw op te starten in Azure Container Instances
+title: De afronding van de liveiteit instellen voor het container exemplaar
+description: Meer informatie over het configureren van Live-tests om beschadigde containers opnieuw te starten in Azure Container Instances
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934166"
 ---
 # <a name="configure-liveness-probes"></a>Activiteitstests configureren
 
-Gecontaineriseerde toepassingen kunnen gedurende langere tijd worden uitgevoerd, wat resulteert in verbroken toestanden die mogelijk moeten worden gerepareerd door de container opnieuw op te starten. Azure Container Instances ondersteunt liveness probes, zodat u uw containers binnen uw containergroep configureren om opnieuw te starten als kritieke functionaliteit niet werkt. De levendigheidssonde gedraagt zich als een [Kubernetes levendigheidsssonde.](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+Container toepassingen kunnen gedurende lange tijd worden uitgevoerd, wat leidt tot verbroken statussen die mogelijk moeten worden hersteld door de container opnieuw op te starten. Azure Container Instances ondersteunt beproefde tests zodat u uw containers in uw container groep kunt configureren om opnieuw op te starten als essentiële functionaliteit niet werkt. De test op de duur van de liveiteit gedraagt zich als een Kubernetes-test voor de [liveiteit](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
-In dit artikel wordt uitgelegd hoe u een containergroep implementeert die een levendigheidsssdetectie bevat, waarbij de automatische herstart van een gesimuleerde ongezonde container wordt aangetoond.
+In dit artikel wordt uitgelegd hoe u een container groep implementeert die een afsluitings sonde bevat, waarbij het automatisch opnieuw opstarten van een gesimuleerde beschadigde container wordt gedemonstreerd.
 
-Azure Container Instances ondersteunt ook [gereedheidssssssondes,](container-instances-readiness-probe.md)die u configureren om ervoor te zorgen dat het verkeer een container alleen bereikt wanneer deze er klaar voor is.
+Azure Container Instances biedt ook ondersteuning voor [gereedheids tests](container-instances-readiness-probe.md), die u kunt configureren om ervoor te zorgen dat verkeer alleen een container bereikt wanneer het gereed is voor IT.
 
 > [!NOTE]
-> Momenteel u geen liveness-sonde gebruiken in een containergroep die is geïmplementeerd in een virtueel netwerk.
+> U kunt op dit moment geen beproefde test gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
 
 ## <a name="yaml-deployment"></a>YAML-implementatie
 
-Maak `liveness-probe.yaml` een bestand met het volgende fragment. Dit bestand definieert een containergroep die bestaat uit een NGNIX-container die uiteindelijk ongezond wordt.
+Maak een `liveness-probe.yaml` bestand met het volgende code fragment. Dit bestand definieert een container groep die bestaat uit een NGNIX-container die uiteindelijk slecht wordt.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -55,53 +55,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Voer de volgende opdracht uit om deze containergroep te implementeren met de bovenstaande YAML-configuratie:
+Voer de volgende opdracht uit om deze container groep te implementeren met de bovenstaande YAML-configuratie:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Start, opdracht
+### <a name="start-command"></a>Opdracht starten
 
-De implementatie `command` bevat een eigenschap die een startopdracht definieert die wordt uitgevoerd wanneer de container voor het eerst wordt uitgevoerd. Deze eigenschap accepteert een scala aan tekenreeksen. Met deze opdracht wordt gesimuleerd dat de container een ongezonde status invoert.
+De implementatie bevat een `command` eigenschap waarmee een begin opdracht wordt gedefinieerd die wordt uitgevoerd wanneer de container voor het eerst wordt gestart. Deze eigenschap accepteert een matrix met teken reeksen. Met deze opdracht wordt de container met een slechte status gesimuleerd.
 
-Eerst begint het een bashsessie en `healthy` maakt `/tmp` een bestand dat in de map wordt aangeroepen. Het slaapt dan gedurende 30 seconden voor het verwijderen van het bestand, dan voert een 10-minuten slaap:
+Eerst wordt een bash-sessie gestart en wordt een bestand gemaakt `healthy` dat wordt `/tmp` aangeroepen in de map. Vervolgens wordt er 30 seconden geslapend voordat het bestand wordt verwijderd. vervolgens wordt er een slaap stand van 10 minuten ingevoerd:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
-### <a name="liveness-command"></a>Levendigheid, opdracht
+### <a name="liveness-command"></a>Opdracht van liveiteit
 
-Deze implementatie `livenessProbe` definieert `exec` een opdracht die een levendigheidsopdracht ondersteunt die fungeert als de liveness-controle. Als deze opdracht wordt afgesloten met een niet-nulwaarde, wordt `healthy` de container gedood en opnieuw gestart, waardoor het bestand niet kan worden gevonden. Als deze opdracht met succes wordt afgesloten met exitcode 0, wordt er geen actie ondernomen.
+Deze implementatie definieert een `livenessProbe` die ondersteuning biedt `exec` voor een opdracht van de online werking die als controle op de levens duur fungeert. Als deze opdracht wordt afgesloten met een waarde die niet gelijk is aan nul, wordt de container afgebroken en opnieuw `healthy` gestart, waardoor het bestand niet kan worden gevonden. Als de opdracht met de afsluit code 0 is voltooid, wordt er geen actie ondernomen.
 
-De `periodSeconds` eigenschap wijst de liveness opdracht moet elke 5 seconden uit te voeren.
+De `periodSeconds` eigenschap geeft aan dat de opdracht voor de liveiteit elke vijf seconden moet worden uitgevoerd.
 
-## <a name="verify-liveness-output"></a>Liveness-uitvoer controleren
+## <a name="verify-liveness-output"></a>Uitvoer van de liveiteit controleren
 
-Binnen de eerste 30 `healthy` seconden bestaat het bestand dat is gemaakt door de startopdracht. Wanneer de opdracht levendigheid `healthy` controleert op het bestaan van het bestand, retourneert de statuscode 0, waardoor succes wordt gesignaleerd, zodat er geen opnieuw wordt gestart.
+In de eerste 30 seconden bestaat het `healthy` bestand dat is gemaakt met de opdracht starten. Wanneer de opdracht van de bewerking voor het `healthy` bestaan van het bestand wordt gecontroleerd, retourneert de status code 0, het signaal is geslaagd, dus wordt het niet opnieuw opgestart.
 
-Na 30 seconden `cat /tmp/healthy` begint het commando te mislukken, waardoor ongezonde en dodende gebeurtenissen optreden.
+Na 30 seconden kan de `cat /tmp/healthy` opdracht niet worden uitgevoerd, waardoor er sprake is van een slechte status en het doden van gebeurtenissen.
 
-Deze gebeurtenissen kunnen worden bekeken vanuit de Azure-portal of Azure CLI.
+Deze gebeurtenissen kunnen worden bekeken vanuit de Azure Portal of Azure CLI.
 
-![Portal ongezonde gebeurtenis][portal-unhealthy]
+![De portal heeft een slechte gebeurtenis][portal-unhealthy]
 
-Door de gebeurtenissen in de Azure-portal te bekijken, worden gebeurtenissen van het type `Unhealthy` geactiveerd wanneer de opdracht levendigheid mislukt. De volgende gebeurtenis `Killing`is van type, wat betekent dat een container verwijderen, zodat een herstart kan beginnen. Het aantal opnieuw startende stappen voor de containerstappen telkens wanneer deze gebeurtenis optreedt.
+Door de gebeurtenissen in de Azure Portal weer te geven, worden `Unhealthy` gebeurtenissen van het type geactiveerd op het moment dat de opdracht voor de bewerking wordt uitgevoerd. De volgende gebeurtenis is van het `Killing`type, waardoor een container wordt verwijderd, zodat het opnieuw opstarten kan worden gestart. Het aantal opnieuw te starten voor de container wordt telkens verhoogd wanneer deze gebeurtenis plaatsvindt.
 
-Opnieuw opstarten wordt voltooid, zodat bronnen zoals openbare IP-adressen en knooppuntspecifieke inhoud worden bewaard.
+Opnieuw opstarten is in-place voltooid, zodat resources zoals open bare IP-adressen en knooppunt afhankelijke inhoud behouden blijven.
 
-![Teller voor het opnieuw opstarten van portalen][portal-restart]
+![Teller voor opnieuw starten van portal][portal-restart]
 
-Als de levendigheidssonde continu uitvalt en te veel herstarten activeert, treedt uw container een exponentiële vertraging in.
+Als de duur van de bewerking continu wordt uitgevoerd en er te veel opnieuw moet worden opgestart, treedt er een exponentiële uitstel vertraging op.
 
-## <a name="liveness-probes-and-restart-policies"></a>Levendigheidssprobes en beleid opnieuw opstarten
+## <a name="liveness-probes-and-restart-policies"></a>Online tests en beleid voor opnieuw opstarten
 
-Het beleid voor opnieuw starten vervangt het herstartgedrag dat wordt geactiveerd door liveness-sondes. Als u bijvoorbeeld een `restartPolicy = Never` liveness-sonde instelt, wordt de containergroep niet opnieuw opgestart vanwege een mislukte liveness-controle. *and* De containergroep houdt zich in plaats daarvan `Never`aan het herstartbeleid van de containergroep van .
+Beleid voor opnieuw opstarten vervangt het gedrag voor opnieuw opstarten dat door de Live-tests wordt geactiveerd. Als u bijvoorbeeld een `restartPolicy = Never` - *en* een-test voor de duur instelt, wordt de container groep niet opnieuw opgestart vanwege een mislukte online controle. In plaats daarvan wordt de container groep gevolgd door het beleid voor het opnieuw `Never`opstarten van de container groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Op taken gebaseerde scenario's vereisen mogelijk een levendigheidssonde om automatische herstart mogelijk te maken als een vereiste functie niet goed werkt. Zie [Containertaken uitvoeren in Azure Container Instances](container-instances-restart-policy.md)voor meer informatie over het uitvoeren van op taken gebaseerde containers.
+Voor scenario's op basis van taken kan het nodig zijn om automatisch opnieuw opstarten in te scha kelen als een vereiste functie niet goed werkt. Zie [taken in een container uitvoeren in azure container instances](container-instances-restart-policy.md)voor meer informatie over het uitvoeren van taak containers.
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

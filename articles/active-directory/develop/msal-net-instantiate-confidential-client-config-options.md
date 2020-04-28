@@ -1,7 +1,7 @@
 ---
-title: Instantiate een vertrouwelijke client app (MSAL.NET) | Azure
+title: Een vertrouwelijke client-app instantiëren (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het momentmaken van een vertrouwelijke clienttoepassing met configuratieopties met behulp van de Microsoft Authentication Library voor .NET (MSAL.NET).
+description: Meer informatie over hoe u een vertrouwelijke client toepassing kunt instantiëren met configuratie opties met behulp van de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084733"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Instantiate een vertrouwelijke clientapplicatie met configuratie-opties met behulp van MSAL.NET
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Een vertrouwelijke client toepassing instantiëren met configuratie opties met behulp van MSAL.NET
 
-In dit artikel wordt beschreven hoe u een [vertrouwelijke clienttoepassing](msal-client-applications.md) instantiëren met Microsoft Authentication Library voor .NET (MSAL.NET).  De toepassing wordt geinstantieerd met configuratieopties die zijn gedefinieerd in een instellingenbestand.
+In dit artikel wordt beschreven hoe u een [vertrouwelijke client toepassing](msal-client-applications.md) maakt met behulp van micro soft Authentication Library voor .net (MSAL.net).  De toepassing wordt geïnstantieerd met configuratie opties die zijn gedefinieerd in een instellingen bestand.
 
-Voordat u een toepassing initialiseert, moet u deze eerst [registreren,](quickstart-register-app.md) zodat uw app kan worden geïntegreerd met het Microsoft-identiteitsplatform. Na registratie hebt u mogelijk de volgende informatie nodig (die te vinden is in de Azure-portal):
+Voordat u een toepassing initialiseert, moet u deze eerst [registreren](quickstart-register-app.md) , zodat uw app kan worden geïntegreerd met het micro soft Identity-platform. Na de registratie hebt u mogelijk de volgende informatie nodig (die kan worden gevonden in de Azure Portal):
 
-- De client-id (een tekenreeks die een GUID vertegenwoordigt)
-- De URL van de identiteitsprovider (de naam van de instantie) en de aanmeldingsdoelgroep voor uw toepassing. Deze twee parameters staan gezamenlijk bekend als de autoriteit.
-- De tenant-id als u een regel van zakelijke toepassing uitsluitend voor uw organisatie (ook wel single-tenant applicatie) schrijft.
-- Het toepassingsgeheim (clientsecret string) of certificaat (van type X509Certificate2) als het een vertrouwelijke client-app is.
-- Voor web-apps, en soms voor openbare client-apps (met name wanneer uw app een broker moet gebruiken), hebt u ook de redirectUri ingesteld waar de identiteitsprovider contact opneemt met uw toepassing met de beveiligingstokens.
+- De client-ID (een teken reeks die een GUID vertegenwoordigt)
+- De URL van de identiteits provider (de naam van het exemplaar) en de aanmeldings doel groep voor uw toepassing. Deze twee para meters worden gezamenlijk bekend als de-instantie.
+- De Tenant-ID als u alleen een line-of-Business-toepassing schrijft voor uw organisatie (ook wel een toepassing met één Tenant genoemd).
+- Het toepassings geheim (client Secret String) of certificaat (van het type X509Certificate2) als het een vertrouwelijke client-app is.
+- Voor web-apps en soms voor open bare client-apps (met name wanneer uw app een Broker moet gebruiken), moet u ook de redirectUri instellen waar de ID-provider verbinding maakt met uw toepassing met de beveiligings tokens.
 
-## <a name="configure-the-application-from-the-config-file"></a>De toepassing configureren vanuit het config-bestand
-De naam van de eigenschappen van de opties in `AzureADOptions` MSAL.NET overeenkomen met de naam van de eigenschappen van de in ASP.NET Core, zodat u geen lijmcode hoeft te schrijven.
+## <a name="configure-the-application-from-the-config-file"></a>De toepassing configureren vanuit het configuratie bestand
+De naam van de eigenschappen van de opties in MSAL.NET overeenkomt met de naam van de eigenschappen `AzureADOptions` van de in ASP.net core, dus u hoeft geen lijm code te schrijven.
 
-Een ASP.NET Core-toepassingsconfiguratie wordt beschreven in een *appsettings.json-bestand:*
+Een ASP.NET Core toepassings configuratie wordt beschreven in een bestand *appSettings. json* :
 
 ```json
 {
@@ -58,9 +58,9 @@ Een ASP.NET Core-toepassingsconfiguratie wordt beschreven in een *appsettings.js
 }
 ```
 
-Vanaf MSAL.NET v3.x u uw vertrouwelijke clienttoepassing configureren vanuit het config-bestand.
+Vanaf MSAL.NET v3. x kunt u uw vertrouwelijke client toepassing configureren vanuit het configuratie bestand.
 
-In de klasse waarin u uw toepassing wilt configureren en `ConfidentialClientApplicationOptions` instantiëren, moet u een object declareren.  Bind de configuratie die wordt gelezen uit de bron (inclusief het appconfig.json-bestand) aan de instantie van de toepassingsopties, met behulp van de `IConfigurationRoot.Bind()` methode van het [nuget-pakket Microsoft.Extensions.Configuration.Binder:](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)
+In de klasse waar u uw toepassing wilt configureren en instantiëren, moet u een `ConfidentialClientApplicationOptions` object declareren.  Bind de configuratie gelezen van de bron (inclusief het bestand appconfig. json) aan het exemplaar van de toepassings opties met behulp `IConfigurationRoot.Bind()` van de methode vanuit het [pakket micro soft. Extensions. Configuration. Binder nuget](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Hierdoor kan de inhoud van het gedeelte 'AzureAD' van het *bestand appsettings.json* worden gekoppeld aan de bijbehorende eigenschappen van het `ConfidentialClientApplicationOptions` object.  Bouw vervolgens `ConfidentialClientApplication` een object:
+Hiermee wordt de inhoud van de sectie ' AzureAD ' van het bestand *appSettings. json* gekoppeld aan de bijbehorende eigenschappen van het `ConfidentialClientApplicationOptions` object.  Bouw vervolgens een `ConfidentialClientApplication` object:
 
 ```csharp
 IConfidentialClientApplication app;
@@ -78,8 +78,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>Runtime-configuratie toevoegen
-In een vertrouwelijke clienttoepassing hebt u meestal een cache per gebruiker. Daarom moet u de cache gekoppeld aan de gebruiker te krijgen en de applicatie bouwer dat u het wilt gebruiken. Op dezelfde manier u een dynamisch berekende omleiding URI hebben. In dit geval is de code de volgende:
+## <a name="add-runtime-configuration"></a>Runtime configuratie toevoegen
+In een vertrouwelijke client toepassing hebt u meestal een cache per gebruiker. Daarom moet u de cache ophalen die aan de gebruiker is gekoppeld en de opbouw functie voor toepassingen op de hoogte stellen die u wilt gebruiken. Op dezelfde manier kunt u een dynamisch berekende omleidings-URI hebben. In dit geval is de code het volgende:
 
 ```csharp
 IConfidentialClientApplication app;

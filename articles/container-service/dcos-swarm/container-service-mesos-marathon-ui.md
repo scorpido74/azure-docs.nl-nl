@@ -1,5 +1,5 @@
 ---
-title: (AFGESCHAFT) Azure DC/OS-cluster beheren met marathongebruikersinterface
+title: KEUR Een Azure DC/OS-cluster beheren met de marathon-gebruikers interface
 description: Implementeer containers naar een Azure Container Service-cluster met behulp van de webgebruikersinterface van Marathon.
 author: iainfoulds
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277805"
 ---
-# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(AFGESCHAFT) Een Azure Container Service DC/OS-cluster beheren via de gebruikersinterface van het marathonweb
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>KEUR Een Azure Container Service DC/OS-cluster beheren via de marathon-webgebruikersinterface
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS biedt een omgeving voor het implementeren en schalen van geclusterde werkbelastingen terwijl de onderliggende hardware wordt onttrokken. Op de DC/OS ligt een framework dat de planning en uitvoering van rekenworkloads regelt.
 
-Hoewel frameworks beschikbaar zijn voor veel populaire workloads, wordt in dit document beschreven hoe u aan de slag met het implementeren van containers met Marathon. 
+In dit document wordt beschreven hoe u aan de slag gaat met het implementeren van containers met marathon. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -30,16 +30,16 @@ Voer het uitvoeren van deze voorbeelden hebt u een DC/OS-cluster nodig dat is ge
 * [Verbinding maken met een Azure Container Service-cluster](../container-service-connect.md)
 
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat u via uw lokale poort 80 naar het DC/OS-cluster tunnelt.
+> In dit artikel wordt ervan uitgegaan dat u tunnelt naar het DC/OS-cluster via uw lokale poort 80.
 >
 
 ## <a name="explore-the-dcos-ui"></a>De DC/OS-gebruikersinterface verkennen
-Met een Secure Shell (SSH) tunnel [ingesteld,](../container-service-connect.md)blader naar http:\//localhost/. Hierdoor wordt de DC/OS-webgebruikersinterface geladen met informatie over het cluster, zoals gebruikte resources, actieve agents en actieve services.
+Als er een SSH-tunnel (Secure Shell) is [ingesteld](../container-service-connect.md), gaat\/u naar http:/localhost/. Hierdoor wordt de DC/OS-webgebruikersinterface geladen met informatie over het cluster, zoals gebruikte resources, actieve agents en actieve services.
 
 ![DC/OS-webgebruikersinterface](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>De Marathon-gebruikersinterface verkennen
-Als u de gebruikersinterface van\/de marathon wilt bekijken, bladert u naar http: /localhost/marathon. In dit scherm kunt u een nieuwe container of een andere toepassing starten op het DC/OS-cluster in Azure Container Service. U ziet ook informatie over actieve containers en toepassingen.  
+Als u de marathon-gebruikers interface wilt weer geven\/, gaat u naar http:/localhost/marathon. In dit scherm kunt u een nieuwe container of een andere toepassing starten op het DC/OS-cluster in Azure Container Service. U ziet ook informatie over actieve containers en toepassingen.  
 
 ![Marathon-gebruikersinterface](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -83,7 +83,7 @@ Op de hoofdpagina van Marathon ziet u de implementatiestatus voor de container. 
 
 ![Hoofdpagina van Marathon: implementatiestatus van container](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Wanneer u terugschakelt naar de webgebruikersinterface\/DC/OS (http: /localhost/), ziet u dat een taak (in dit geval een container met Docker-indeling) wordt uitgevoerd op het DC/OS-cluster.
+Wanneer u terugschakelt naar de DC/OS Web UI (http\/:/localhost/), ziet u dat een taak (in dit geval een container met docker-indeling) wordt uitgevoerd op het DC/OS-cluster.
 
 ![DC/OS-webgebruikersinterface: taak die wordt uitgevoerd op het cluster](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,9 +91,9 @@ U kunt het clusterknooppunt waarop de taak wordt uitgevoerd weergeven door op he
 
 ![DC/OS-webgebruikersinterface: clusterknooppunt van taak](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Bereik de container
+## <a name="reach-the-container"></a>De container bereiken
 
-In dit voorbeeld wordt de toepassing uitgevoerd op een knooppunt van een openbare agent. U bereikt de applicatie vanaf het internet door te bladeren `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`naar de agent FQDN van het cluster: , waar:
+In dit voor beeld wordt de toepassing uitgevoerd op een knoop punt van een open bare agent. U bereikt de toepassing via internet door te bladeren naar de FQDN van de agent van het `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`cluster:, waar:
 
 * **DNSPREFIX** het DNS-voorvoegsel is dat is opgegeven tijdens de implementatie van het cluster.
 * **REGION** de regio is waarin uw resourcegroep zich bevindt.

@@ -1,5 +1,5 @@
 ---
-title: 'Verbinding maken met een VNet vanaf een computer - P2S VPN en native Azure-certificaatverificatie: PowerShell'
+title: 'Verbinding maken met een VNet vanaf een computer-P2S VPN en systeem eigen Azure-certificaat verificatie: Power shell'
 description: Verbind Windows- en Mac OS X-clients veilig met een virtueel Azure-netwerk met behulp van P2S en zelfondertekende of door certificeringsinstanties uitgegeven certificaten. In dit artikel wordt PowerShell gebruikt.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045110"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Een Point-to-Site VPN-verbinding configureren met een VNet met native Azure-certificaatverificatie: PowerShell
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Een punt-naar-site-VPN-verbinding met een VNet configureren met behulp van systeem eigen Azure-certificaat verificatie: Power shell
 
-Met dit artikel u afzonderlijke clients met Windows, Linux of Mac OS X veilig verbinden met een Azure VNet. P2S-verbindingen zijn nuttig als u verbinding wilt maken met uw VNet vanaf een externe locatie, bijvoorbeeld als u ook thuis werkt of op een congres verbinding wilt maken. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2. Voor meer informatie over punt-naar-site-VPN leest u [About Point-to-Site VPN](point-to-site-about.md) (Over punt-naar-site-VPN).
+Dit artikel helpt u bij het veilig verbinden van afzonderlijke clients met Windows, Linux of Mac OS X naar een Azure-VNet. P2S-verbindingen zijn nuttig als u verbinding wilt maken met uw VNet vanaf een externe locatie, bijvoorbeeld als u ook thuis werkt of op een congres verbinding wilt maken. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2. Voor meer informatie over punt-naar-site-VPN leest u [About Point-to-Site VPN](point-to-site-about.md) (Over punt-naar-site-VPN).
 
 ![Diagram: een computer verbinden met een Azure VNet-punt-naar-site-verbinding](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 
@@ -39,10 +39,10 @@ Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt,
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 >[!NOTE]
-> De meeste stappen in dit artikel kunnen Azure Cloud Shell gebruiken. Als u de openbare hoofdcertificaatsleutel wilt uploaden, moet u PowerShell lokaal of de Azure-portal gebruiken.
+> De meeste stappen in dit artikel kunnen Azure Cloud Shell gebruiken. Als u de open bare sleutel van het basis certificaat echter wilt uploaden, moet u Power shell lokaal of op de Azure Portal gebruiken.
 >
 
-### <a name="example-values"></a><a name="example"></a>Voorbeeldwaarden
+### <a name="example-values"></a><a name="example"></a>Voorbeeld waarden
 
 U kunt de volgende voorbeeldwaarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel. De variabelen worden ingesteld in sectie [1](#declare) van dit artikel. U kunt de stappen gebruiken als een overzicht en de waarden ongewijzigd gebruiken, of u kunt ze wijzigen zodat ze overeenkomen met uw omgeving.
 
@@ -54,16 +54,16 @@ U kunt de volgende voorbeeldwaarden gebruiken om een testomgeving te maken of ze
   * **Subnetadresbereik: 10.254.1.0/24**
 * **Subnetnaam: GatewaySubnet**<br>De naam van het subnet *GatewaySubnet* is verplicht voor een goede werking van de VPN-gateway.
   * **Adresbereik GatewaySubnet: 192.168.200.0/24** 
-* **VPN-clientadrespool: 172.16.201.0/24**<br>VPN-clients die verbinding maken met het VNet via deze punt-naar-site-verbinding, ontvangen een IP-adres van de VPN-clientadresgroep.
+* **VPN-client adres groep: 172.16.201.0/24**<br>VPN-clients die verbinding maken met het VNet via deze punt-naar-site-verbinding, ontvangen een IP-adres van de VPN-clientadresgroep.
 * **Abonnement:** controleer of u het juiste abonnement hebt in het geval u er meer dan één hebt.
 * **Resourcegroep: TestRG**
-* **Locatie: Oost-VS**
+* **Locatie: VS-Oost**
 * **DNS-server: IP-adres** van de DNS-server die u wilt gebruiken voor naamomzetting. (optioneel)
 * **Gatewaynaam: Vnet1GW**
 * **Openbare IP-naam: VNet1GWPIP**
 * **VpnType: RouteBased** 
 
-## <a name="1-sign-in-and-set-variables"></a><a name="declare"></a>1. Variabelen aanmelden en instellen
+## <a name="1-sign-in-and-set-variables"></a><a name="declare"></a>1. aanmelden en variabelen instellen
 
 In deze sectie meldt u zich aan en declareert u de waarden die voor deze configuratie worden gebruikt. De opgegeven waarden worden in de voorbeeldscripts gebruikt. Wijzig de waarden zodat ze overeenkomen met uw omgeving. U kunt ook de gedeclareerde waarden gebruiken en de stappen bij wijze van oefening doorlopen.
 
@@ -73,7 +73,7 @@ In deze sectie meldt u zich aan en declareert u de waarden die voor deze configu
 
 ### <a name="declare-variables"></a>Variabelen declareren
 
-Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en vervang zo nodig de waarden door uw eigen waarden. Als u uw PowerShell/Cloud Shell-sessie op enig moment tijdens de oefening sluit, kopieert en plakt u de waarden opnieuw om de variabelen opnieuw te declareren.
+Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en vervang zo nodig de waarden door uw eigen waarden. Als u uw Power shell/Cloud Shell-sessie op een wille keurig moment tijdens de oefening sluit, kopieert en plakt u de waarden opnieuw om de variabelen opnieuw te declareren.
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"
@@ -93,7 +93,7 @@ Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en ve
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-configure-a-vnet"></a><a name="ConfigureVNet"></a>2. Een VNet configureren
+## <a name="2-configure-a-vnet"></a><a name="ConfigureVNet"></a>2. een VNet configureren
 
 1. Maak een resourcegroep.
 
@@ -129,13 +129,13 @@ Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en ve
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-create-the-vpn-gateway"></a><a name="creategateway"></a>3. De VPN-gateway maken
+## <a name="3-create-the-vpn-gateway"></a><a name="creategateway"></a>3. de VPN-gateway maken
 
 Configureer en maak de virtuele netwerkgateway voor uw VNet.
 
 * De -GatewayType moet **Vpn** zijn en het -VpnType moet **RouteBased** zijn.
-* -VpnClientProtocol wordt gebruikt om de soorten tunnels op te geven die u wilt inschakelen. De tunnel opties zijn **OpenVPN, SSTP** en **IKEv2**. U ervoor kiezen om een van hen of een ondersteunde combinatie in te schakelen. Als u meerdere typen wilt inschakelen, geeft u de namen op die zijn gescheiden door een komma. OpenVPN en SSTP kunnen niet samen worden ingeschakeld. De strongSwan-client op Android en Linux en de systeemeigen IKEv2 VPN-client op iOS en OS x gebruiken alleen de IKEv2-tunnel om verbinding te maken. Windows-clients proberen eerst IKEv2. Als daarmee geen verbinding kan worden gemaakt, vallen ze terug op SSTP. U de OpenVPN-client gebruiken om verbinding te maken met het type OpenVPN-tunnel.
-* De virtuele netwerkgateway 'Basic' SKU ondersteunt geen IKEv2, OpenVPN of RADIUS authenticatie. Als u van plan bent Mac-clients verbinding te laten maken met uw virtuele netwerk, gebruikt u de Basic SKU niet.
+* -VpnClientProtocol wordt gebruikt om de soorten tunnels op te geven die u wilt inschakelen. De tunnel opties zijn **openvpn, SSTP** en **IKEv2**. U kunt ervoor kiezen om een van deze of een ondersteunde combi natie in te scha kelen. Als u meerdere typen wilt inschakelen, geeft u de namen op, gescheiden door een komma. OpenVPN en SSTP kunnen niet samen worden ingeschakeld. De strongSwan-client op Android en Linux en de systeemeigen IKEv2 VPN-client op iOS en OS x gebruiken alleen de IKEv2-tunnel om verbinding te maken. Windows-clients proberen eerst IKEv2. Als daarmee geen verbinding kan worden gemaakt, vallen ze terug op SSTP. U kunt de OpenVPN-client gebruiken om verbinding te maken met het tunnel type OpenVPN.
+* De SKU Basic van de virtuele netwerk gateway biedt geen ondersteuning voor IKEv2-, OpenVPN-of RADIUS-verificatie. Als u van plan bent Mac-clients verbinding te laten maken met uw virtuele netwerk, moet u de basis-SKU niet gebruiken.
 * Een VPN-gateway wordt binnen maximaal 45 minuten voltooid. De daadwerkelijke instelduur hangt af van de [gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md) die u selecteert. In dit voorbeeld wordt IKEv2 gebruikt.
 
 ```azurepowershell-interactive
@@ -144,7 +144,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
-## <a name="4-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>4. Voeg de VPN-clientadresgroep toe
+## <a name="4-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>4. de adres groep voor de VPN-client toevoegen
 
 Nadat de VPN-gateway is gemaakt, kunt u de VPN-clientadrespool toevoegen. De VPN-clientadrespool is het bereik vanwaaruit de VPN-clients een IP-adres ontvangen wanneer er verbinding wordt gemaakt. Gebruik een privé-IP-adresbereik dat niet overlapt met de on-premises locatie waarvanaf u verbinding maakt of met het VNet waarmee u verbinding wilt maken. In dit voorbeeld wordt de VPN-clientadrespool in stap 1 opgegeven als [variabele](#declare).
 
@@ -153,27 +153,27 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="5-generate-certificates"></a><a name="Certificates"></a>5. Certificaten genereren
+## <a name="5-generate-certificates"></a><a name="Certificates"></a>5. certificaten genereren
 
 Certificaten worden door Azure gebruikt om VPN-clients voor punt-naar-site-VPN's te verifiëren. U uploadt de informatie van de openbare sleutel over het basiscertificaat naar Azure. De openbare sleutel wordt dan beschouwd als 'vertrouwd'. Clientcertificaten moeten worden gegenereerd op basis van het vertrouwde basiscertificaat en geïnstalleerd op elke clientcomputer. Dit gebeurt in het certificaatarchief Certificates-Current user/Personal. Het certificaat wordt gebruikt om de client te verifiëren bij het maken van verbinding met het VNet. 
 
 Als u zelfondertekende certificaten gebruikt, moeten ze worden gemaakt met behulp van specifieke parameters. U kunt een zelfondertekend certificaat maken met behulp van de instructies voor [PowerShell en Windows 10](vpn-gateway-certificates-point-to-site.md). Als u niet beschikt over Windows 10, kunt u ook [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) gebruiken. Het is belangrijk dat u de stappen in de instructies opvolgt bij het maken van zelfondertekende basiscertificaten en clientcertificaten. Anders zijn de certificaten die u maakt, niet compatibel met P2S-verbindingen en treedt er een verbindingsfout op.
 
-### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1. Het .cer-bestand voor het basiscertificaat verkrijgen
+### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1. het. cer-bestand voor het basis certificaat verkrijgen
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 
-### <a name="2-generate-a-client-certificate"></a><a name="generate"></a>2. Een clientcertificaat genereren
+### <a name="2-generate-a-client-certificate"></a><a name="generate"></a>2. Genereer een client certificaat
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="6-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>6. Upload de openbare hoofdsleutelgegevens van het basiscertificaat
+## <a name="6-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>6. de gegevens van de open bare sleutel van het basis certificaat uploaden
 
 Controleer of het maken van de VPN-gateway is voltooid. Als dat het geval is, uploadt u het CER-bestand (met de gegevens van de openbare sleutel) voor een vertrouwd basiscertificaat naar Azure. Nadat het CER-bestand is geüpload, kan Azure daarmee clients met een geïnstalleerd clientcertificaat (gemaakt op basis van het vertrouwde basiscertificaat) verifiëren. Indien nodig kunt u later aanvullende vertrouwde basiscertificaatbestanden uploaden (maximaal 20).
 
 >[!NOTE]
-> U het .cer-bestand niet uploaden met Azure Cloud Shell. U PowerShell lokaal op uw computer gebruiken of u de [Azure-portalstappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)gebruiken.
+> U kunt het CER-bestand niet uploaden met behulp van Azure Cloud Shell. U kunt Power shell lokaal op uw computer gebruiken of u kunt de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)gebruiken.
 >
 
 1. Declareer de variabele voor uw certificaatnaam, waarbij u de waarde vervangt door uw eigen waarde.
@@ -189,13 +189,13 @@ Controleer of het maken van de VPN-gateway is voltooid. Als dat het geval is, up
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaatgegevens zijn geüpload, beschouwt Azure het als een vertrouwd rootcertificaat. Controleer bij het uploaden of u PowerShell lokaal op uw computer gebruikt, of in plaats daarvan u de [azure-portalstappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)gebruiken. U niet uploaden met Azure Cloud Shell.
+3. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaat gegevens zijn geüpload, beschouwt Azure deze als een vertrouwd basis certificaat. Zorg ervoor dat u Power shell lokaal op uw computer uitvoert, of dat u in plaats daarvan de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kunt gebruiken. U kunt niet uploaden met behulp van Azure Cloud Shell.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
    ```
 
-## <a name="7-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>7. Een geëxporteerd clientcertificaat installeren
+## <a name="7-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>7. een geëxporteerd client certificaat installeren
 
 Als u een P2S-verbinding wilt maken vanaf een andere clientcomputer dan de computer die u gebruikt om de clientcertificaten te genereren, moet u een clientcertificaat installeren. Wanneer u een clientcertificaat installeert, hebt u het wachtwoord nodig dat is gemaakt tijdens het exporteren van het clientcertificaat.
 
@@ -203,11 +203,11 @@ Zorg ervoor dat het certificaat is geëxporteerd als een PFX-bestand, samen met 
 
 Zie voor de installatiestappen [Install a client certificate](point-to-site-how-to-vpn-client-install-azure-cert.md) (Een clientcertificaat installeren).
 
-## <a name="8-configure-the-native-vpn-client"></a><a name="clientconfig"></a>8. Configureer de native VPN-client
+## <a name="8-configure-the-native-vpn-client"></a><a name="clientconfig"></a>8. de systeem eigen VPN-client configureren
 
 De configuratiebestanden van de VPN-clients bevatten de instellingen voor het configureren van apparaten om verbinding te maken met een VNet via een P2S-verbinding. Zie voor instructies voor het genereren en installeren van VPN-clientconfiguratiebestanden [Create and install VPN client configuration files for native Azure certificate authentication P2S configurations](point-to-site-vpn-client-configuration-azure-cert.md) (VPN-clientconfiguratiebestanden voor P2S-configuraties voor systeemeigen Azure-certificaatverificatie maken en installeren).
 
-## <a name="9-connect-to-azure"></a><a name="connect"></a>9. Verbinding maken met Azure
+## <a name="9-connect-to-azure"></a><a name="connect"></a>9. Maak verbinding met Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Verbinding maken vanaf een Windows-VPN-client
 
@@ -231,7 +231,7 @@ De configuratiebestanden van de VPN-clients bevatten de instellingen voor het co
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Verbinding maken vanaf een Mac-VPN-client
 
 Zoek in het dialoogvenster Netwerk het clientprofiel dat u wilt gebruiken en klik op **Verbinding maken**.
-Controleer [Installeren - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) voor gedetailleerde instructies. Als u problemen ondervindt bij het maken van verbinding, controleert u of de virtuele netwerkgateway geen BasisSKU gebruikt. Basic SKU wordt niet ondersteund voor Mac-clients.
+Controleer de [installatie-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) voor gedetailleerde instructies. Als u problemen ondervindt bij het verbinding maken, controleert u of de gateway van het virtuele netwerk geen basis-SKU gebruikt. Basis-SKU wordt niet ondersteund voor Mac-clients.
 
   ![Mac-verbinding](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -272,7 +272,7 @@ U kunt maximaal 20 CER-basiscertificaatbestanden toevoegen aan Azure. Volg de vo
 #### <a name="method-1"></a><a name="certmethod1"></a>Methode 1
 
 
-Deze methode is de meest efficiënte manier om een rootcertificaat te uploaden. Hiervoor zijn Azure PowerShell-cmdlets vereist die lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
+Deze methode is de meest efficiënte manier om een basis certificaat te uploaden. Hiervoor moeten Azure PowerShell cmdlets lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
 
 1. Bereid het CER-bestand voor dat u wilt uploaden:
 
@@ -295,9 +295,9 @@ Deze methode is de meest efficiënte manier om een rootcertificaat te uploaden. 
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-#### <a name="method-2---azure-portal"></a><a name="certmethod2"></a>Methode 2 - Azure-portal
+#### <a name="method-2---azure-portal"></a><a name="certmethod2"></a>Methode 2-Azure Portal
 
-Deze methode heeft meer stappen dan methode 1, maar levert hetzelfde resultaat. Gebruik deze methode als u de gegevens van het certificaat wilt weergeven. Hiervoor zijn Azure PowerShell-cmdlets vereist die lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
+Deze methode heeft meer stappen dan methode 1, maar levert hetzelfde resultaat. Gebruik deze methode als u de gegevens van het certificaat wilt weergeven. Hiervoor moeten Azure PowerShell cmdlets lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
 
 1. Maak en bereid het nieuwe basiscertificaat voor dat u aan Azure gaat toevoegen. Exporteer de openbare sleutel als een met Base-64 gecodeerd X.509-certificaat (.CER) en open het bestand met een teksteditor. Kopieer de waarden, zoals weergegeven in het volgende voorbeeld:
 
@@ -356,7 +356,7 @@ De algemene procedure is het basiscertificaat te gebruiken om de toegang te behe
 
 ### <a name="revoke-a-client-certificate"></a><a name="revokeclientcert"></a>Een clientcertificaat intrekken
 
-1. Haal de vingerafdruk voor het clientcertificaat op. Zie [De duimafdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor meer informatie.
+1. Haal de vingerafdruk voor het clientcertificaat op. Zie [de vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor meer informatie.
 2. Kopieer de gegevens naar een teksteditor en verwijder alle spaties, zodat u een doorlopende tekenreeks overhoudt. Deze reeks wordt in de volgende stap gedeclareerd als een variabele.
 3. Declareer de variabelen. Zorg ervoor dat u de vingerafdruk declareert die u in de vorige stap hebt opgehaald.
 

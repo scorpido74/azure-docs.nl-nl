@@ -1,24 +1,24 @@
 ---
-title: Parameters in sjablonen
-description: Beschrijft hoe u parameters definieert in een Azure Resource Manager-sjabloon.
+title: Para meters in sjablonen
+description: Hierin wordt beschreven hoe u para meters definieert in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122420"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Parameters in Azure Resource Manager-sjablonen
+# <a name="parameters-in-azure-resource-manager-templates"></a>Para meters in Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u parameters definieert en gebruikt in uw Azure Resource Manager-sjabloon. Door verschillende waarden voor parameters op te geven, u een sjabloon opnieuw gebruiken voor verschillende omgevingen.
+In dit artikel wordt beschreven hoe u para meters definieert en gebruikt in uw Azure Resource Manager sjabloon. Door verschillende waarden voor para meters op te geven, kunt u een sjabloon gebruiken voor verschillende omgevingen.
 
-Resourcebeheer lost parameterwaarden op voordat de implementatiebewerkingen worden gestart. Waar de parameter in de sjabloon wordt gebruikt, vervangt Resource Manager deze door de opgeloste waarde.
+Resource Manager zet parameter waarden om voordat de implementatie bewerkingen worden gestart. Wanneer de para meter wordt gebruikt in de sjabloon, wordt deze vervangen door de omgezette waarde.
 
-## <a name="define-parameter"></a>Parameter definiëren
+## <a name="define-parameter"></a>Para meter definiëren
 
-In het volgende voorbeeld ziet u een eenvoudige parameterdefinitie. Het definieert een parameter met de naam **storageSKU**. De parameter is een tekenreekswaarde en accepteert alleen waarden die geldig zijn voor het beoogde gebruik. De parameter gebruikt een standaardwaarde wanneer er geen waarde wordt opgegeven tijdens de implementatie.
+In het volgende voor beeld ziet u een eenvoudige parameter definitie. Hiermee wordt een para meter gedefinieerd met de naam **storageSKU**. De para meter is een teken reeks waarde en accepteert alleen waarden die geldig zijn voor het beoogde gebruik. De para meter gebruikt een standaard waarde wanneer er geen waarde wordt gegeven tijdens de implementatie.
 
 ```json
 "parameters": {
@@ -39,9 +39,9 @@ In het volgende voorbeeld ziet u een eenvoudige parameterdefinitie. Het definiee
 }
 ```
 
-## <a name="use-parameter"></a>Parameter gebruiken
+## <a name="use-parameter"></a>Para meter gebruiken
 
-In de sjabloon verwijst u naar de waarde voor de parameter met behulp van de functie [Parameters.](template-functions-deployment.md#parameters) In het volgende voorbeeld wordt de parameterwaarde gebruikt om SKU in te stellen voor het opslagaccount.
+In de sjabloon verwijst u naar de waarde voor de para meter met behulp van de [para meters](template-functions-deployment.md#parameters) -functie. In het volgende voor beeld wordt de waarde van de para meter gebruikt om SKU in te stellen voor het opslag account.
 
 ```json
 "resources": [
@@ -57,7 +57,7 @@ In de sjabloon verwijst u naar de waarde voor de parameter met behulp van de fun
 
 ## <a name="template-functions"></a>Sjabloonfuncties
 
-Wanneer u de standaardwaarde voor een parameter opgeeft, u de meeste sjabloonfuncties gebruiken. U een andere parameterwaarde gebruiken om een standaardwaarde te maken. In de volgende sjabloon wordt het gebruik van functies in de standaardwaarde weergegeven. Wanneer er geen naam is opgegeven voor de site, wordt een unieke tekenreekswaarde toegevoegd en wordt deze toegevoegd aan **de site.** Wanneer er geen naam is opgegeven voor het hostplan, wordt de waarde voor de site nodig en wordt **het plan toegevoegd**.
+Wanneer u de standaard waarde voor een para meter opgeeft, kunt u de meeste sjabloon functies gebruiken. U kunt een andere parameter waarde gebruiken om een standaard waarde te maken. De volgende sjabloon toont het gebruik van functies in de standaard waarde. Als er geen naam wordt gegeven voor de site, maakt deze een unieke teken reeks waarde en voegt deze toe aan de **site**. Als er geen naam wordt gegeven voor het host-abonnement, neemt deze de waarde voor de-site en de **-plan**toe.
 
 ```json
 "parameters": {
@@ -78,13 +78,13 @@ Wanneer u de standaardwaarde voor een parameter opgeeft, u de meeste sjabloonfun
 }
 ```
 
-U de [referentiefunctie](template-functions-resource.md#reference) of een van de [lijstfuncties](template-functions-resource.md#list) in de sectie parameters niet gebruiken. Deze functies krijgen de runtime-status van een resource en kunnen niet worden uitgevoerd voordat de implementatie wordt uitgevoerd wanneer parameters zijn opgelost.
+U kunt de functie [Reference](template-functions-resource.md#reference) of een van de [lijst](template-functions-resource.md#list) functies niet gebruiken in de para meters van de sectie. Deze functies halen de runtime status van een resource en kunnen niet worden uitgevoerd voor implementatie wanneer para meters worden omgezet.
 
-## <a name="objects-as-parameters"></a>Objecten als parameters
+## <a name="objects-as-parameters"></a>Objecten als para meters
 
-Het kan gemakkelijker zijn om gerelateerde waarden te organiseren door ze als object door te geven. Deze aanpak vermindert ook het aantal parameters in de sjabloon.
+Het kan gemakkelijker zijn om verwante waarden te organiseren door ze als een object door te geven. Deze benadering vermindert ook het aantal para meters in de sjabloon.
 
-In het volgende voorbeeld wordt een parameter weergegeven die een object is. De standaardwaarde toont de verwachte eigenschappen voor het object.
+In het volgende voor beeld ziet u een para meter die een-object is. De standaard waarde toont de verwachte eigenschappen van het object.
 
 ```json
 "parameters": {
@@ -114,7 +114,7 @@ In het volgende voorbeeld wordt een parameter weergegeven die een object is. De 
 },
 ```
 
-U verwijst naar de eigenschappen van het object met behulp van de stipoperator.
+U verwijst naar de eigenschappen van het object met behulp van de punt operator.
 
 ```json
 "resources": [
@@ -148,18 +148,18 @@ U verwijst naar de eigenschappen van het object met behulp van de stipoperator.
 ]
 ```
 
-## <a name="example-templates"></a>Voorbeeldsjablonen
+## <a name="example-templates"></a>Voorbeeld sjablonen
 
-In de volgende voorbeelden worden scenario's gedemonstreerd voor het gebruik van parameters.
+In de volgende voor beelden ziet u scenario's voor het gebruik van para meters.
 
 |Template  |Beschrijving  |
 |---------|---------|
-|[parameters met functies voor standaardwaarden](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Laat zien hoe u sjabloonfuncties gebruikt bij het definiëren van standaardwaarden voor parameters. De sjabloon implementeert geen resources. Het construeert parameterwaarden en retourneert deze waarden. |
-|[parameterobject](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Toont het gebruik van een object voor een parameter aan. De sjabloon implementeert geen resources. Het construeert parameterwaarden en retourneert deze waarden. |
+|[para meters met functies voor standaard waarden](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Demonstreert hoe u sjabloon functies gebruikt bij het definiëren van standaard waarden voor para meters. De sjabloon implementeert geen resources. Er worden parameter waarden gemaakt en deze waarden worden geretourneerd. |
+|[parameter object](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Laat zien hoe u een object gebruikt voor een para meter. De sjabloon implementeert geen resources. Er worden parameter waarden gemaakt en deze waarden worden geretourneerd. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)voor meer informatie over de beschikbare eigenschappen voor parameters.
-* Zie [Resourcebeheer-parameterbestand maken](parameter-files.md)voor meer informatie over het doorgeven van parameterwaarden als bestand.
-* Zie [Aanbevolen procedures - parameters](template-best-practices.md#parameters)voor aanbevelingen over het maken van parameters .
+* Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](template-syntax.md)voor meer informatie over de beschik bare eigenschappen voor para meters.
+* Zie [Resource Manager-parameter bestand maken](parameter-files.md)voor meer informatie over het door geven van parameter waarden als een bestand.
+* Zie [Best practices-para meters (](template-best-practices.md#parameters)Engelstalig) voor aanbevelingen voor het maken van para meters.

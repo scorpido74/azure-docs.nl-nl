@@ -1,7 +1,7 @@
 ---
-title: Het uitgeversdomein van een app configureren | Azure
+title: Het Uitgever domein van een app configureren | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het configureren van het uitgeversdomein van een toepassing om gebruikers te laten weten waar hun gegevens worden verzonden.
+description: Meer informatie over het configureren van het domein van de uitgever van een toepassing om gebruikers te laten weten waar hun gegevens worden verzonden.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,64 +14,64 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697129"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain"></a>How to: Het uitgeversdomein van een toepassing configureren
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Procedure: het domein van de uitgever van een toepassing configureren
 
-Het uitgeversdomein van een toepassing wordt weergegeven aan gebruikers op de [toestemmingsprompt van](application-consent-experience.md) de toepassing om gebruikers te laten weten waar hun informatie wordt verzonden. Multi-tenant toepassingen die zijn geregistreerd na 21 mei 2019 en die geen uitgeversdomein hebben, worden weergegeven als **niet-geverifieerd.** Multitenant-toepassingen zijn toepassingen die accounts buiten één organisatiemap ondersteunen; Besteun bijvoorbeeld alle Azure AD-accounts of ondersteun alle Azure AD-accounts en persoonlijke Microsoft-accounts.
+Het domein van de uitgever van een toepassing wordt weer gegeven aan gebruikers op de [toestemming prompt van de toepassing](application-consent-experience.md) om gebruikers te laten weten waar hun gegevens worden verzonden. Multi tenant-toepassingen die na 21 mei 2019 zijn geregistreerd en die geen Publisher-domein hebben, worden weer gegeven als niet- **geverifieerd**. Toepassingen met meerdere tenants zijn toepassingen die ondersteuning bieden voor accounts buiten één organisatie Directory. u kunt bijvoorbeeld alle Azure AD-accounts ondersteunen of alle Azure AD-accounts en persoonlijke micro soft-accounts ondersteunen.
 
 ## <a name="new-applications"></a>Nieuwe toepassingen
 
-Wanneer u een nieuwe app registreert, wordt het uitgeversdomein van uw app mogelijk ingesteld op een standaardwaarde. De waarde is afhankelijk van waar de app is geregistreerd, met name of de app is geregistreerd in een tenant en of de tenant domeinen heeft geverifieerd.
+Wanneer u een nieuwe app registreert, kan het uitgevers domein van uw app worden ingesteld op een standaard waarde. De waarde is afhankelijk van waar de app is geregistreerd, met name of de app is geregistreerd in een Tenant en of de Tenant geverifieerde domeinen heeft.
 
-Als er domeinen met tenant zijn geverifieerd, wordt het uitgeversdomein van de app standaard ingesteld op het primaire geverifieerde domein van de tenant. Als er geen tenant geverifieerde domeinen zijn (wat het geval is wanneer de toepassing niet is geregistreerd in een tenant), wordt het uitgeversdomein van de app ingesteld op null.
+Als er domeinen met tenants zijn geverifieerd, wordt het Uitgever domein van de app standaard ingesteld op het primaire geverifieerde domein van de Tenant. Als er geen geverifieerde Tenant domeinen zijn (dit is het geval wanneer de toepassing niet is geregistreerd in een Tenant), wordt het Uitgever domein van de app ingesteld op null.
 
-In de volgende tabel wordt het standaardgedrag van de waarde van het uitgeversdomein samengevat.  
+De volgende tabel bevat een overzicht van het standaard gedrag van de domein waarde van de uitgever.  
 
-| Tenant-geverifieerde domeinen | Standaardwaarde van uitgeversdomein |
+| Door tenants geverifieerde domeinen | Standaard waarde van het uitgevers domein |
 |-------------------------|----------------------------|
 | null | null |
-| *.onmicrosoft.com | *.onmicrosoft.com |
-| - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com (primair) | domain2.com |
+| *. onmicrosoft.com | *. onmicrosoft.com |
+| -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (primair) | domain2.com |
 
-Als het uitgeversdomein van een multitenant-toepassing niet is ingesteld of als het is ingesteld op een domein dat eindigt op .onmicrosoft.com, wordt de toestemmingsprompt van de app **niet geverifieerd** in plaats van het uitgeversdomein weergegeven.
+Als het Publisher-domein van een multi tenant-toepassing niet is ingesteld, of als het is ingesteld op een domein dat eindigt op. onmicrosoft.com, geeft de toestemming prompt van de app niet **geverifieerd** in plaats van het domein van de uitgever.
 
-## <a name="grandfathered-applications"></a>Grandfathered toepassingen
+## <a name="grandfathered-applications"></a>Grandfathered-toepassingen
 
-Als uw app vóór 21 mei 2019 is geregistreerd, wordt de toestemmingsprompt van uw toepassing niet **geverifieerd** als u geen uitgeversdomein hebt ingesteld. We raden u aan de waarde van het uitgeversdomein in te stellen, zodat gebruikers deze informatie kunnen zien op de toestemmingsprompt van uw app.
+Als uw app is geregistreerd vóór 21 mei 2019, wordt de vraag van de toestemming van uw toepassing **niet weer gegeven** als u geen uitgever domein hebt ingesteld. We raden u aan de domein waarde van de uitgever zo in te stellen dat gebruikers deze informatie kunnen zien op de toestemming prompt van uw app.
 
-## <a name="configure-publisher-domain-using-the-azure-portal"></a>Publisher-domein configureren met de Azure-portal
+## <a name="configure-publisher-domain-using-the-azure-portal"></a>Het domein van de uitgever configureren met behulp van de Azure Portal
 
-Voer deze stappen uit om het uitgeversdomein van uw app in te stellen.
+Voer de volgende stappen uit om het Uitgever domein van uw app in te stellen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
 
-1. Als uw account aanwezig is in meer dan één Azure AD-tenant:
-   1. Selecteer uw profiel in het menu rechtsboven op de pagina en **schakel de map over.**
-   1. Wijzig uw sessie in de Azure AD-tenant waar u uw toepassing wilt maken.
+1. Als uw account in meer dan één Azure AD-Tenant aanwezig is:
+   1. Selecteer uw profiel in het menu in de rechter bovenhoek van de pagina en **Schakel vervolgens over naar de map**.
+   1. Wijzig uw sessie in de Azure AD-Tenant waar u de toepassing wilt maken.
 
-1. Navigeer naar [Azure Active Directory >-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om de app te zoeken en te selecteren die u wilt configureren.
+1. Navigeer naar [Azure Active Directory > app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om de app te zoeken en te selecteren die u wilt configureren.
 
-   Zodra je de app hebt geselecteerd, zie je de **overzichtspagina** van de app.
+   Zodra u de app hebt geselecteerd, ziet u de **overzichts** pagina van de app.
 
-1. Selecteer op de **pagina Overzicht** van de app de sectie **Branding.**
+1. Selecteer op de pagina **overzicht** van de app de sectie **huis stijl** .
 
-1. Zoek het **domeinveld Publisher** en selecteer een van de volgende opties:
+1. Zoek het **domein** veld van de uitgever en selecteer een van de volgende opties:
 
-   - Selecteer **Een domein configureren** als u nog geen domein hebt geconfigureerd.
-   - Selecteer **Domein bijwerken** als een domein al is geconfigureerd.
+   - Selecteer **een domein configureren** als u nog geen domein hebt geconfigureerd.
+   - Selecteer **domein bijwerken** als er al een domein is geconfigureerd.
 
-Als uw app is geregistreerd in een tenant, ziet u twee tabbladen om uit te kiezen: **Selecteer een geverifieerd domein** en **Verifieer een nieuw domein.**
+Als uw app is geregistreerd in een Tenant, worden er twee tabbladen weer geven waaruit u kunt kiezen: **Selecteer een geverifieerd domein** en **Controleer of er een nieuw domein**is.
 
-Als uw app niet is geregistreerd in een tenant, ziet u alleen de optie om een nieuw domein voor uw toepassing te verifiëren.
+Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een nieuw domein voor uw toepassing te controleren.
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Een nieuw domein voor uw app verifiëren
 
-1. Maak een `microsoft-identity-association.json` bestand met de naam en plak het volgende JSON-codefragment.
+1. Maak een bestand met `microsoft-identity-association.json` de naam en plak het volgende JSON-code fragment.
 
    ```json
    {
@@ -83,57 +83,57 @@ Als uw app niet is geregistreerd in een tenant, ziet u alleen de optie om een ni
     }
    ```
 
-1. Vervang de tijdelijke aanduiding *{YOUR-APP-ID-HERE}* door de toepassings-id (client) id die overeenkomt met uw app.
+1. Vervang de tijdelijke aanduiding *{your-app-id-hier}* door de client-id van de toepassing die overeenkomt met uw app.
 
-1. Host het bestand `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`op: . Vervang de tijdelijke aanduiding *{YOUR-DOMAIN-HERE}* om overeen te komen met het geverifieerde domein.
+1. Host het bestand op: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Vervang de tijdelijke aanduiding *{uw domein-hier}* zodat deze overeenkomt met het geverifieerde domein.
 
-1. Klik op de knop **Domein verifiëren en opslaan.**
+1. Klik op de knop **domein controleren en opslaan** .
 
 ### <a name="to-select-a-verified-domain"></a>Een geverifieerd domein selecteren
 
-- Als uw tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolgkeuzelijst **Een geverifieerd domein** selecteren.
+- Als uw Tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolg keuzelijst **Selecteer een geverifieerd domein** .
 
 >[!Note]
-> De verwachte koptekst 'Inhoudstype' `application/json`die moet worden geretourneerd, is . U een fout krijgen zoals hieronder vermeld als u iets anders zoals`application/json; charset=utf-8` 
+> De verwachte header content-type die moet worden geretourneerd, is `application/json`. Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >
 
-## <a name="implications-on-the-app-consent-prompt"></a>Implicaties voor de toestemmingsprompt voor apps
+## <a name="implications-on-the-app-consent-prompt"></a>Implicaties voor de toestemming om de app te vragen
 
-Het configureren van het uitgeversdomein heeft een impact op wat gebruikers zien op de toestemmingsprompt van de app. Zie De ervaringen met [de toestemmingstoestemming](application-consent-experience.md)begrijpen om de onderdelen van de toestemming volledig te begrijpen.
+Het configureren van het uitgevers domein heeft invloed op wat gebruikers te zien krijgen op de vraag om toestemming van de app. Meer informatie over de onderdelen van de toestemming prompt vindt u in [inzicht in de ervaring voor de toestemming van de toepassing](application-consent-experience.md).
 
-In de volgende tabel wordt het gedrag beschreven voor toepassingen die vóór 21 mei 2019 zijn gemaakt.
+De volgende tabel beschrijft het gedrag voor toepassingen die zijn gemaakt vóór 21 mei 2019.
 
-![Toestemmingsprompt voor apps die vóór 21 mei 2019 zijn gemaakt](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
+![Vraag toestemming voor apps die zijn gemaakt vóór 21 mei 2019](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
 
-Het gedrag voor nieuwe toepassingen die na 21 mei 2019 zijn gemaakt, is afhankelijk van het uitgeversdomein en het type toepassing. In de volgende tabel worden de wijzigingen beschreven die u mag verwachten met de verschillende combinaties van configuraties.
+Het gedrag voor nieuwe toepassingen die na 21 mei 2019 worden gemaakt, is afhankelijk van het domein van de uitgever en het type toepassing. In de volgende tabel worden de wijzigingen beschreven die u verwacht te zien met de verschillende combi Naties van configuraties.
 
-![Toestemmingsprompt voor apps die na 21 mei 2019 zijn gemaakt](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
+![Toestemming vragen voor apps die zijn gemaakt na 21 mei 2019](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
 
-## <a name="implications-on-redirect-uris"></a>Implicaties voor omleiding URI's
+## <a name="implications-on-redirect-uris"></a>Implicaties voor omleidings-Uri's
 
-Toepassingen die zich aanmelden bij gebruikers met een werk- of schoolaccount of persoonlijke[Microsoft-accounts (multi-tenant)](single-and-multi-tenant-apps.md)zijn onderworpen aan weinig beperkingen bij het opgeven van omleidings-URI's.
+Toepassingen die zich aanmelden bij gebruikers met een werk-of school account of persoonlijke micro soft[-accounts (multi tenant](single-and-multi-tenant-apps.md)), zijn onderhevig aan enkele beperkingen bij het opgeven van omleidings-uri's.
 
-### <a name="single-root-domain-restriction"></a>Beperking van één hoofddomein
+### <a name="single-root-domain-restriction"></a>Beperking van één hoofd domein
 
-Wanneer de waarde van het uitgeversdomein voor apps met meerdere tenant is ingesteld op null, zijn apps beperkt tot het delen van één hoofddomein voor de omleidings-URI's. De volgende combinatie van waarden is bijvoorbeeld niet toegestaan omdat het hoofddomein, contoso.com, niet overeenkomt met fabrikam.com.
+Wanneer de domein waarde van de uitgever voor multi tenant-apps is ingesteld op NULL, kunnen apps worden beperkt tot het delen van één hoofd domein voor de omleidings-Uri's. De volgende combi natie van waarden is bijvoorbeeld niet toegestaan omdat het hoofd domein, contoso.com, niet overeenkomt met fabrikam.com.
 
 ```
 "https://contoso.com",
 "https://fabrikam.com",
 ```
 
-### <a name="subdomain-restrictions"></a>Beperkingen van subdomein
+### <a name="subdomain-restrictions"></a>Beperkingen voor subdomeinen
 
-Subdomeinen zijn toegestaan, maar u moet het hoofddomein expliciet registreren. Terwijl de volgende URI's bijvoorbeeld één hoofddomein delen, is de combinatie niet toegestaan.
+Subdomeinen zijn toegestaan, maar u moet het hoofd domein expliciet registreren. Bijvoorbeeld, terwijl de volgende Uri's één hoofd domein delen, is de combi natie niet toegestaan.
 
 ```
 "https://app1.contoso.com",
 "https://app2.contoso.com",
 ```
 
-Als de ontwikkelaar echter expliciet het hoofddomein toevoegt, is de combinatie toegestaan.
+Als de ontwikkelaar echter expliciet het hoofd domein toevoegt, is de combi natie toegestaan.
 
 ```
 "https://contoso.com",
@@ -143,12 +143,12 @@ Als de ontwikkelaar echter expliciet het hoofddomein toevoegt, is de combinatie 
 
 ### <a name="exceptions"></a>Uitzonderingen
 
-In de volgende gevallen geldt geen beperking van het enkele hoofddomein:
+Voor de volgende gevallen gelden de beperkingen voor één hoofd domein niet:
 
-- Apps met één tenant of apps die accounts in één map targeten
-- Gebruik van localhost als omleidings-URI's
-- URI's omleiden met aangepaste schema's (niet-HTTP of HTTPS)
+- Apps met één Tenant of apps die zijn gericht op accounts in één map
+- Gebruik van localhost als omleidings-Uri's
+- Uri's omleiden met aangepaste schema's (niet-HTTP of HTTPS)
 
-## <a name="configure-publisher-domain-programmatically"></a>Publisher-domein programmatisch configureren
+## <a name="configure-publisher-domain-programmatically"></a>Het Uitgever domein via een programma configureren
 
-Momenteel is er geen REST API- of PowerShell-ondersteuning om publisher-domein programmatisch te configureren.
+Er is momenteel geen REST API-of Power Shell-ondersteuning voor het configureren van het Publisher-domein via een programma.

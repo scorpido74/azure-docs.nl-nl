@@ -1,5 +1,5 @@
 ---
-title: Azure Automation Runbook gebruiken om StorSimple-apparaten te beheren
+title: Azure Automation Runbook gebruiken voor het beheren van StorSimple-apparaten
 description: Meer informatie over het gebruik van Azure Automation Runbook om StorSimple-taken te automatiseren
 author: alkohli
 ms.service: storsimple
@@ -7,49 +7,49 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276960"
 ---
-# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation-runbooks gebruiken om StorSimple-apparaten te beheren
+# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation runbooks gebruiken voor het beheren van StorSimple-apparaten
 
-In dit artikel wordt beschreven hoe Azure Automation-runbooks worden gebruikt om uw StorSimple 8000-serieapparaat in Azure-portal te beheren. Een voorbeeld van runbook is opgenomen om u door de stappen van het configureren van uw omgeving om dit runbook uit te voeren.
+In dit artikel wordt beschreven hoe Azure Automation runbooks worden gebruikt voor het beheren van uw StorSimple 8000 Series-apparaat in Azure Portal. Er is een voor beeld van een runbook opgenomen om u te helpen bij het configureren van uw omgeving om dit runbook uit te voeren.
 
 
-## <a name="configure-add-and-run-azure-runbook"></a>Azure-runbook configureren, toevoegen en uitvoeren
+## <a name="configure-add-and-run-azure-runbook"></a>Azure runbook configureren, toevoegen en uitvoeren
 
-In deze sectie wordt een voorbeeld van Windows PowerShell-script voor StorSimple opgenomen en worden de verschillende stappen beschreven die nodig zijn om het script in een runbook te importeren en vervolgens het runbook te publiceren en uit te voeren.
+In deze sectie vindt u een voor beeld van een Windows Power shell-script voor StorSimple en worden de verschillende stappen beschreven die nodig zijn om het script te importeren in een runbook en vervolgens het runbook te publiceren en uit te voeren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat u:
+Voordat u begint, moet u ervoor zorgen dat:
 
-* een actief Azure-abonnement dat is gekoppeld aan uw StorSimple Device Manager-service die is geregistreerd bij een apparaat uit de StorSimple 8000-serie.
+* een actief Azure-abonnement dat is gekoppeld aan uw StorSimple-Apparaatbeheer service, geregistreerd bij een StorSimple 8000 Series-apparaat.
 
-* Windows PowerShell 5.0 is geïnstalleerd op uw computer (of uw Windows Server-host voor uw StorSimple als u er een gebruikt).
+* Windows Power shell 5,0 is geïnstalleerd op uw computer (of uw Windows Server-host voor uw StorSimple als u er een gebruikt).
 
-### <a name="create-automation-runbook-module-in-windows-powershell"></a>Automatiseringsrunbookmodule maken in Windows PowerShell
+### <a name="create-automation-runbook-module-in-windows-powershell"></a>Een Automation runbook-module maken in Windows Power shell
 
-Voer de volgende stappen uit om een automatiseringsmodule voor het apparaatbeheer van de StorSimple 8000-serie te maken:
+Voer de volgende stappen uit om een Automation-module te maken voor het StorSimple van de 8000-serie:
 
-1. Start Windows PowerShell. Maak een nieuwe map en wijzig de map in de nieuwe map.
+1. Start Windows Power shell. Maak een nieuwe map en wijzig de map in de nieuwe map.
 
     ```powershell
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. [Download NuGet CLI](https://www.nuget.org/downloads) onder de map die in de vorige stap is gemaakt. Er zijn verschillende versies van _nuget.exe_. Kies de versie die overeenkomt met uw SDK. Elke downloadlink verwijst rechtstreeks naar een _.exe-bestand._ Zorg ervoor dat u met de rechtermuisknop klikt en het bestand op uw computer opslaat in plaats van het vanuit de browser uit te voeren.
+2. [Down load NUGET cli](https://www.nuget.org/downloads) in de map die u in de vorige stap hebt gemaakt. Er zijn verschillende versies van _nuget. exe_. Kies de versie die overeenkomt met uw SDK. Elke download koppeling verwijst rechtstreeks naar een _exe_ -bestand. Zorg ervoor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
 
-    U ook de volgende opdracht uitvoeren om het script te downloaden en op te slaan in dezelfde map die u eerder hebt gemaakt.
+    U kunt ook de volgende opdracht uitvoeren om het script te downloaden en op te slaan in dezelfde map die u eerder hebt gemaakt.
 
     ```
         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
     ```
 
-3. Download de afhankelijke SDK.
+3. Down load de afhankelijke SDK.
 
     ```
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
@@ -57,13 +57,13 @@ Voer de volgende stappen uit om een automatiseringsmodule voor het apparaatbehee
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
     ```
 
-4. Download het script van het voorbeeld Van GitHub-project.
+4. Down load het script uit het voorbeeld project GitHub.
 
     ```
         wget https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1 -Out Monitor-Backups.ps1
     ```
 
-5. Maak een Azure Automation Runbook Module voor apparaatbeheer uit de StorSimple 8000-serie. Typ in het Windows Powershell-venster de volgende opdrachten:
+5. Een Azure Automation Runbook-module maken voor StorSimple van de 8000-serie. Typ in het venster Windows Power shell de volgende opdrachten:
 
     ```powershell
         # set path variables
@@ -83,11 +83,11 @@ Voer de volgende stappen uit om een automatiseringsmodule voor het apparaatbehee
         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-6. Controleer of er een zip-bestand voor automatiseringsmodule is gemaakt in `C:\scripts\StorSimpleSDKTools`.
+6. Controleer of een zip-bestand van de Automation `C:\scripts\StorSimpleSDKTools`-module is gemaakt in.
 
-    ![verify-automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![controleren-Automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
-7. De volgende uitvoer wordt gepresenteerd wanneer de automatiseringsmodule wordt gemaakt via de Windows PowerShell.
+7. De volgende uitvoer wordt weer gegeven wanneer de Automation-module wordt gemaakt via de Windows Power shell.
 
     ```powershell
     mkdir C:\scripts\StorSimpleSDKTools
@@ -169,51 +169,51 @@ Voer de volgende stappen uit om een automatiseringsmodule voor het apparaatbehee
     compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-### <a name="import-publish-and-run-automation-runbook"></a>Runbook voor automatisering importeren, publiceren en uitvoeren
+### <a name="import-publish-and-run-automation-runbook"></a>Automation-runbook importeren, publiceren en uitvoeren
 
-1. Maak een Azure Run As-automatiseringsaccount in de Azure-portal. Ga hiervoor naar **Azure marketplace > Alles** en zoek vervolgens naar **Automatisering.** Selecteer **Automatiseringsaccounts**.
+1. Maak een Azure run as Automation-account in de Azure Portal. Ga hiervoor naar **Azure marketplace > alles** en zoek vervolgens naar **Automation**. Selecteer **Automation-accounts**.
 
-    ![zoekautomatisering](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
+    ![zoeken-automatisering](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
-2. Ga als bedoeld in het blade **Van automatiseringsaccount toevoegen:**
+2. Op de Blade **Automation-account toevoegen** :
 
-   1. Geef de **naam** van uw automatiseringsaccount op.
-   2. Selecteer het **abonnement dat** is gekoppeld aan uw StorSimple Device Manager-service.
-   3. Maak een nieuwe resourcegroep of selecteer uit een bestaande resourcegroep.
+   1. Geef de **naam** van uw Automation-account op.
+   2. Selecteer het **abonnement** dat is gekoppeld aan uw StorSimple-Apparaatbeheer service.
+   3. Maak een nieuwe resource groep of Selecteer deze uit een bestaande resource groep.
    4. Selecteer een **locatie** (indien mogelijk hetzelfde als waar uw service wordt uitgevoerd).
-   5. Laat de standaard **optie Run as-account maken** geselecteerd.
-   6. Schakel optioneel **Vastmaken aan dashboard in.** Klik **op Maken**.
+   5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
+   6. Controleer eventueel **vastmaken aan dash board**. Klik op **maken**.
 
-       ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![Create-Automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-      Nadat het automatiseringsaccount is gemaakt, wordt u hiervan op de hoogte gesteld. Ga voor meer informatie over het maken van een Automatiseringsaccount naar [Een Run As-account maken.](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
+      Nadat het Automation-account is gemaakt, wordt u hiervan op de hoogte gebracht. Ga naar [een uitvoeren als-account maken](https://docs.microsoft.com/azure/automation/automation-create-runas-account)voor meer informatie over het maken van een Automation-account.
 
-3. Als u ervoor wilt zorgen dat het gemaakte automatiseringsaccount toegang heeft tot de StorSimple Device Manager-service, moet u de juiste machtigingen toewijzen aan het automatiseringsaccount. Ga naar **Toegangscontrole** in uw StorSimple Device Manager-service. Klik **op + Voeg** de naam van uw Azure Automation-account toe en geef deze op. Sla de instellingen **op.**
+3. Om ervoor te zorgen dat het Automation-account dat is gemaakt, toegang heeft tot de StorSimple Apparaatbeheer-service, moet u de juiste machtigingen toewijzen aan het Automation-account. Ga naar **toegangs beheer** in uw StorSimple-Apparaatbeheer service. Klik op **+ toevoegen** en geef de naam van uw Azure Automation-account op. **Sla** de instellingen op.
 
-    ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
+    ![add-permissions-Automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
-4. Ga in het nieuw gemaakte account naar **Gedeelde bronnen > Modules** en klik op module toevoegen **.**
+4. Ga in het zojuist gemaakte account naar **gedeelde Resources > modules** en klik op **+ add module**.
 
-5. Blader in het **moduleblad Toevoegen** naar de locatie van de ritsmodule en selecteer en open de module. Klik op **OK**.
+5. Blader op de Blade **module toevoegen** naar de locatie van de gezipte module en selecteer en open de module. Klik op **OK**.
 
-    ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![invoeg module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Ga naar **Procesautomatisering > Runbooks en klik op + Een runbook toevoegen**. Klik in het **runbook-blad toevoegen** op **Een bestaand runbook importeren**. Wijs het Windows PowerShell-scriptbestand aan voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving op voor het runbook. Klik **op Maken**.
+6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **maken**.
 
-    ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
+    ![invoeg module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
 7. Het runbook wordt toegevoegd aan de lijst met runbooks. Selecteer en klik op dit runbook.
 
-    ![klik-nieuw-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
+    ![Klik op-nieuw-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Bewerk het runbook en klik op **Deelvenster Testen**. Geef de parameters op, zoals de naam van uw StorSimple Device Manager-service, de naam van het StorSimple-apparaat en het abonnement. **Start** de test. Het rapport wordt gegenereerd wanneer de run is voltooid. Ga voor meer informatie naar [hoe u een runbook testen.](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)
+8. Bewerk het runbook en klik op **test venster**. Geef de para meters op, zoals de naam van de StorSimple-Apparaatbeheer service, de naam van het StorSimple-apparaat en het-abonnement. **Start** de test. Het rapport wordt gegenereerd wanneer de uitvoering is voltooid. Ga voor meer informatie naar [How to test a runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![testen-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
-9. Controleer de uitvoer uit het runbook in het testvenster. Sluit indien tevreden het deelvenster. Klik **op Publiceren** en wanneer u om bevestiging wordt gevraagd, bevestig en publiceer het runbook.
+9. Controleer de uitvoer van het runbook in het test venster. Als u tevreden bent, sluit u het deel venster. Klik op **publiceren** en wanneer u wordt gevraagd om bevestiging, bevestig het runbook en publiceer het.
 
-    ![publicatie-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![publiceren-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gebruik de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+[Gebruik StorSimple Apparaatbeheer service om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).

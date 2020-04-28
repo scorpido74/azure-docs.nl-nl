@@ -1,6 +1,6 @@
 ---
-title: Problemen met beperkingsfouten in Azure oplossen | Microsoft Documenten
-description: Beperking van fouten, nieuwe pogingen en back-off in Azure Compute.
+title: Problemen met beperkings fouten in azure oplossen | Microsoft Docs
+description: Beperkings fouten, nieuwe pogingen en uitstel in azure compute.
 services: virtual-machines
 documentationcenter: ''
 author: changov
@@ -14,33 +14,33 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045356"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Problemen met API-beperkingsfouten oplossen 
 
-Azure Compute-aanvragen kunnen worden beperkt bij een abonnement en per regio om te helpen bij de algehele prestaties van de service. We zorgen ervoor dat alle oproepen naar de Azure Compute Resource Provider (CRP), die resources beheert onder Microsoft.Compute-naamruimte niet hoger zijn dan de maximaal toegestane API-aanvraagsnelheid. In dit document worden API-beperking, details over het oplossen van beperkingsproblemen en best practices beschreven om te voorkomen dat deze worden beperkt.  
+Azure Compute-aanvragen kunnen op basis van een abonnement en per regio worden beperkt om te helpen bij de algehele prestaties van de service. We zorgen ervoor dat alle aanroepen naar de Azure Compute resource provider (CRP), die resources onder micro soft beheert, worden beheerd. de berekenings naam ruimte overschrijdt de Maxi maal toegestane API-aanvraag snelheid. Dit document beschrijft de API-beperking, informatie over het oplossen van problemen met beperking en aanbevolen procedures om te voor komen dat deze wordt beperkt.  
 
-## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Beperking door Azure Resource Manager vs Resource Providers  
+## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Beperking door Azure Resource Manager VS resource providers  
 
-Als voordeur naar Azure doet Azure Resource Manager de verificatie- en eerste-ordervalidatie en -beperking van alle binnenkomende API-aanvragen. Azure Resource Manager-gespreksfrequentielimieten en gerelateerde diagnostische responsHTTP-headers worden [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)beschreven.
+Als front-deur naar Azure Azure Resource Manager de verificatie en de eerste validatie en beperking van alle binnenkomende API-aanvragen. Azure Resource Manager aanroep frequentie limieten en gerelateerde diagnostische antwoord HTTP-headers worden [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)beschreven.
  
-Wanneer een Azure API-client een beperkingsfout krijgt, is de HTTP-status 429 te veel aanvragen. Als u wilt weten of de beperking van de aanvraag wordt uitgevoerd `x-ms-ratelimit-remaining-subscription-reads` door Azure `x-ms-ratelimit-remaining-subscription-writes` Resource Manager of een onderliggende resourceprovider zoals CRP, controleert u de voor GET-aanvragen en antwoordkoppen voor niet-GET-aanvragen. Als het resterende aantal oproepen 0 nadert, is de algemene aanroeplimiet van het abonnement bereikt die is gedefinieerd door Azure Resource Manager. Activiteiten van alle abonnementsklanten worden samen geteld. Anders is de beperking afkomstig van de doelresourceprovider (de `/providers/<RP>` provider die wordt geadresseerd door het segment van de aanvraag-URL). 
+Wanneer een Azure API-client een beperkings fout krijgt, is de HTTP-status 429 te veel aanvragen. Als u wilt weten of de aanvraag beperking wordt uitgevoerd door Azure Resource Manager of een onderliggende resource provider zoals CRP, raadpleegt u de `x-ms-ratelimit-remaining-subscription-reads` voor `x-ms-ratelimit-remaining-subscription-writes` Get-aanvragen en reactie HEADERS voor niet-Get-aanvragen. Als het resterende aantal aanroepen bijna 0 is, is de algemene oproep limiet van het abonnement bereikt door Azure Resource Manager. Activiteiten door alle abonnements-clients worden samen geteld. Als dat niet het geval is, is de beperking afkomstig van de resource provider van de doel `/providers/<RP>` groep (de oplossing die wordt bepaald door het segment van de aanvraag-URL). 
 
-## <a name="call-rate-informational-response-headers"></a>Informatiekoppen voor informatieover de gesprekssnelheid 
+## <a name="call-rate-informational-response-headers"></a>Informatie over oproep frequentie gegevens 
 
-| Header                            | Waardenotatie                           | Voorbeeld                               | Beschrijving                                                                                                                                                                                               |
+| Header                            | Waarde-indeling                           | Voorbeeld                               | Beschrijving                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Resterende API-aanroeptelling voor het beperkingsbeleid voor de resourcebucket of -bewerkingsgroep, inclusief het doel van deze aanvraag                                                                   |
-| x-ms-request-charge               | ```<count>```                             | 1                                     | Het aantal aantal oproepen telt "in rekening gebracht" voor deze HTTP-aanvraag in de richting van de limiet van het toepasselijke beleid. Dit is meestal 1. Batchaanvragen, zoals voor het schalen van een virtuele machineschaalset, kunnen meerdere tellingen in rekening brengen. |
+| x-MS-ratelimit-rest-resource |```<source RP>/<policy or bucket>;<count>```| Micro soft. Compute/HighCostGet3Min; 159 | Resterend aantal API-aanroepen voor het beperkings beleid met betrekking tot de resource Bucket of bewerkings groep, inclusief het doel van deze aanvraag                                                                   |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | Het aantal aanroepen voor deze HTTP-aanvraag wordt in rekening gebracht voor de limiet van het betreffende beleid. Dit is meestal 1. Batch-aanvragen, zoals voor het schalen van een schaalset voor virtuele machines, kunnen meerdere tellingen in rekening brengen. |
 
 
-Houd er rekening mee dat een API-aanvraag kan worden onderworpen aan beleid voor meervoudige beperking. Er zal een `x-ms-ratelimit-remaining-resource` aparte header voor elk beleid. 
+Houd er rekening mee dat een API-aanvraag kan worden onderhevig aan meerdere beperkings beleidsregels. Er is een afzonderlijke `x-ms-ratelimit-remaining-resource` koptekst voor elk beleid. 
 
-Hier is een voorbeeldreactie om het verzoek voor virtuele machineschaalset te verwijderen.
+Hier volgt een voor beeld van een antwoord voor het verwijderen van de aanvraag voor een schaalset voor virtuele machines.
 
 ```
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/DeleteVMScaleSet3Min;107 
@@ -49,9 +49,9 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VMScaleSetBatchedVMRequests
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720 
 ```
 
-## <a name="throttling-error-details"></a>Details van beperkingsfouten
+## <a name="throttling-error-details"></a>Details van beperkings fout
 
-De HTTP-status 429 wordt vaak gebruikt om een aanvraag af te wijzen omdat een gesprekslimiet is bereikt. Een typische foutreactie voor beperking van de gegevensbeperking van Compute Resource Provider ziet eruit als het onderstaande voorbeeld (alleen relevante kopteksten worden weergegeven):
+De 429 HTTP-status wordt meestal gebruikt voor het afwijzen van een aanvraag omdat een limiet voor de aanroep frequentie is bereikt. Een typisch beperkings fout antwoord van de compute-resource provider ziet er ongeveer uit zoals in het onderstaande voor beeld (alleen relevante headers worden weer gegeven):
 
 ```
 HTTP/1.1 429 Too Many Requests
@@ -73,31 +73,31 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Het beleid met het resterende aantal oproepen van 0 is het beleid waarvoor de beperkingsfout wordt geretourneerd. In dit geval `HighCostGet30Min`is dat . De algemene indeling van de antwoordtekst is de algemene Azure Resource Manager API-foutindeling (conformant met OData). De belangrijkste `OperationNotAllowed`foutcode, , is de ene Compute Resource Provider gebruikt om throttling fouten te melden (onder andere soorten clientfouten). De `message` eigenschap van de innerlijke fout(en) bevat een geserialiseerde JSON-structuur met de details van de beperkingsschending.
+Het beleid met het resterende aantal aanroepen van 0 is het wacht tijd dat de beperkings fout wordt geretourneerd. In dit geval is `HighCostGet30Min`. De algemene indeling van de antwoord tekst is de algemene Azure Resource Manager API-fout indeling (conform OData). De hoofd fout code, `OperationNotAllowed`, is de resource provider van één Compute gebruikt voor het rapporteren van beperkings fouten (onder andere typen client fouten). De `message` eigenschap van de interne fout (en) bevat een geserialiseerde JSON-structuur met de details van de beperkings schending.
 
-Zoals hierboven beschreven, omvat elke beperkingsfout de `Retry-After` koptekst, die het minimumaantal seconden biedt dat de client moet wachten voordat de aanvraag opnieuw wordt geprobeerd. 
+Zoals hierboven is beschreven, omvat elke beperkings fout `Retry-After` de header, waarmee het minimum aantal seconden wordt aangegeven dat de client moet wachten voordat het opnieuw wordt geprobeerd om de aanvraag uit te voeren. 
 
-## <a name="api-call-rate-and-throttling-error-analyzer"></a>API-aanroepsnelheid en beperkingsfoutanalyzer
-Er is een previewversie van een probleemoplossingsfunctie beschikbaar voor de API van de Compute-resourceprovider. Deze PowerShell-cmdlets bieden statistieken over de API-aanvraagsnelheid per tijdsinterval per bewerking en beperkingsschendingen per bewerkingsgroep (beleid):
--   [Export-azloganalyticrateratebyinterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>API-aanroep snelheid en beperking van fout analyse
+Er is een preview-versie van de functie voor probleem oplossing beschikbaar voor de API van de compute-resource provider. Deze Power shell-cmdlets bieden statistieken over de API-aanvraag snelheid per tijds interval per bewerking en schendingen van beperking per bewerkings groep (beleid):
+-   [Exporteren-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Exporteren-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
-De API-oproepstatistieken kunnen veel inzicht bieden in het gedrag van de client(s) van een abonnement en eenvoudige identificatie van oproeppatronen mogelijk maken die beperking veroorzaken.
+Met de API-aanroep statistieken kunt u het gedrag van de client (s) van een abonnement goed begrijpen en zo een eenvoudige identificatie van oproep patronen mogelijk maken die een beperking veroorzaken.
 
-Een beperking van de analyzer is voorlopig dat het geen aanvragen voor schijf- en momentopnamebronnen telt (ter ondersteuning van beheerde schijven). Aangezien het verzamelt gegevens uit telemetrie CRP's, het kan ook niet helpen bij het identificeren van throttling fouten van ARM. Maar die kunnen gemakkelijk worden geïdentificeerd op basis van de onderscheidende ARM response headers, zoals eerder besproken.
+Een beperking van het analyse programma voor de tijd is dat er geen aanvragen worden geteld voor bron typen van schijven en moment opnamen (ter ondersteuning van beheerde schijven). Omdat de gegevens worden verzameld van de telemetrie van CRP, kan deze ook niet helpen bij het identificeren van beperkings fouten van ARM. Deze kunnen echter gemakkelijk worden geïdentificeerd op basis van de reactie headers van de onderscheidende ARM, zoals eerder is besproken.
 
-De PowerShell-cmdlets maken gebruik van een REST-service-API, die eenvoudig rechtstreeks door clients kan worden aangeroepen (hoewel met nog geen formele ondersteuning). Als u de HTTP-aanvraagindeling wilt bekijken, voert u de cmdlets uit met -Foutopsporingsschakelaar of snuffelt u in de uitvoering ervan met Fiddler.
+De Power shell-cmdlets maken gebruik van een REST Service-API, die gemakkelijk rechtstreeks kan worden aangeroepen door clients (hoewel er nog geen formele ondersteuning is). Als u de indeling van de HTTP-aanvraag wilt weer geven, voert u de switch cmdlets with debug of checke with Fiddler uit.
 
 
 ## <a name="best-practices"></a>Aanbevolen procedures 
 
-- Probeer Azure-service-API-fouten niet onvoorwaardelijk en/of onmiddellijk opnieuw. Een veel voorkomende gebeurtenis is dat clientcode in een snelle lus voor nieuwe try komt wanneer u een fout tegenkomt die niet opnieuw kan worden geprobeerd. Pogingen zullen uiteindelijk de toegestane gesprekslimiet voor de groep van de doelbewerking uitputten en andere klanten van het abonnement beïnvloeden. 
-- In api-automatiseringsgevallen met een hoog volume u overwegen proactieve client-side self-throttling te implementeren wanneer het beschikbare aantal oproepen voor een doelgroep onder een lage drempel zakt. 
-- Respecteer bij het bijhouden van async-bewerkingen de kophints opnieuw proberen-na. 
-- Als de clientcode informatie nodig heeft over een bepaalde virtuele machine, vraagt u die VM rechtstreeks op in plaats van alle VM's in de brongroep of het volledige abonnement op te sommen en vervolgens de benodigde VM aan de clientzijde te kiezen. 
-- Als clientcode VM's, schijven en momentopnamen van een specifieke Azure-locatie nodig heeft, gebruikt u locatiegebaseerde vorm van `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` de query in plaats van alle abonnementsVM's op te vragen en vervolgens te filteren op locatie aan de clientzijde: query naar regionale eindpunten van Compute Resource Provider. 
--   Bij het maken of bijwerken van API-bronnen in het bijzonder, VM's en virtuele machine schaal sets, is het veel `provisioningState`efficiënter om de geretourneerde async operatie te volgen tot voltooiing dan polling op de resource URL zelf (op basis van de ).
+- Voer de API-fouten van Azure service niet onvoorwaardelijk en/of onmiddellijk opnieuw uit. Een veelvoorkomend exemplaar is voor client code om een herhaalde lus te krijgen wanneer er een fout optreedt die niet opnieuw kan worden uitgevoerd. De toegestane oproep limiet voor de groep van de doel bewerking wordt uiteindelijk uitgeput en de andere clients van het abonnement zijn van invloed op de nieuwe pogingen. 
+- In het geval van API-automatiserings toepassingen met veel volumes kunt u de proactieve zelf beperking aan de client zijde implementeren wanneer het aantal beschik bare aanroepen voor een doel bewerkings groep onder een lage drempel waarde daalt. 
+- Houd bij het volgen van asynchrone bewerkingen rekening met de hints voor opnieuw proberen na. 
+- Als de client code informatie nodig heeft over een bepaalde virtuele machine, voert u een query uit op de VM in plaats van alle virtuele machines in de betreffende resource groep of het hele abonnement te vermelden en vervolgens de benodigde VM aan de client zijde te selecteren. 
+- Als voor de client code Vm's, schijven en moment opnamen van een specifieke Azure-locatie nodig zijn, gebruikt u op locatie gebaseerde formulier van de query in plaats van alle Vm's van het abonnement te doorzoeken en vervolgens `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` te filteren op locatie aan de client zijde: query om regionale eind punten van de resource provider te berekenen. 
+-   Bij het maken of bijwerken van API-resources met name Vm's en virtuele-machine schaal sets is het veel efficiënter om de geretourneerde async-bewerking bij te houden dan polling op de bron-URL zelf ( `provisioningState`op basis van de).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Richtlijnen voor specifieke services opnieuw proberen voor meer informatie over het opnieuw proberen van richtlijnen [voor andere services.](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+Zie [richt lijnen voor opnieuw proberen voor specifieke services](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) voor meer informatie over nieuwe richt lijnen voor andere services in Azure.

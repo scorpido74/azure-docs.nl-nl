@@ -1,6 +1,6 @@
 ---
-title: Beheertaken automatiseren op SQL VM's (Klassiek) | Microsoft Documenten
-description: In dit onderwerp wordt beschreven hoe u de SQL Server-agentextensie beheert, die specifieke SQL Server-beheertaken automatiseert. Deze omvatten Geautomatiseerde back-up, geautomatiseerde patching en Azure Key Vault-integratie. In dit onderwerp wordt de klassieke implementatiemodus gebruikt.
+title: Beheer taken automatiseren op SQL-Vm's (klassiek) | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u de SQL Server Agent-extensie beheert, waarmee specifieke SQL Server beheer taken worden geautomatiseerd. Dit zijn onder andere automatische back-ups, automatische patching en integratie van Azure Key Vault. In dit onderwerp wordt gebruikgemaakt van de klassieke implementatie modus.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -16,94 +16,94 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75982284"
 ---
-# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Beheertaken op Azure Virtual Machines automatiseren met de SQL Server Agent Extension (Classic)
+# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Beheer taken op Azure Virtual Machines automatiseren met de SQL Server Agent extensie (klassiek)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
 > * [Klassiek](../classic/sql-server-agent-extension.md)
 > 
 >
  
-De SQL Server IaaS Agent Extension (SQLIaaSAgent) wordt uitgevoerd op virtuele Azure-machines om beheertaken te automatiseren. Dit onderwerp geeft een overzicht van de services die door de extensie worden ondersteund, evenals instructies voor installatie, status en verwijdering.
+De SQL Server IaaS agent extension (SQLIaaSAgent) wordt uitgevoerd op virtuele machines van Azure om de beheer taken te automatiseren. Dit onderwerp bevat een overzicht van de services die door de extensie worden ondersteund, evenals instructies voor de installatie, status en verwijdering.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken en werken met resources: [Resource Manager en Classic.](../../../azure-resource-manager/management/deployment-models.md) In dit artikel wordt het implementatiemodel Classic gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Zie [SQL Server Agent Extension voor SQL Server VMs Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)als u de versie van Resource Manager van dit artikel wilt weergeven.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [SQL Server Agent-extensie voor SQL Server Vm's Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="supported-services"></a>Ondersteunde services
-De SQL Server IaaS Agent Extension ondersteunt de volgende beheertaken:
+De SQL Server IaaS agent-extensie ondersteunt de volgende beheer taken:
 
-| Beheerfunctie | Beschrijving |
+| Beheer functie | Beschrijving |
 | --- | --- |
-| **Automatische back-up van SQL** |Automatiseert de planning van back-ups voor alle databases voor de standaardinstantie van SQL Server in de VM. Zie [Geautomatiseerde back-up voor SQL Server in Azure Virtual Machines (Classic) voor](../classic/sql-automated-backup.md)meer informatie. |
-| **Automatisch patchen van SQL** |Hiermee configureert u een onderhoudsvenster waarin belangrijke Windows-updates voor uw vm kunnen plaatsvinden, zodat u updates tijdens piekuren voor uw werkbelasting voorkomen. Zie [Automatisch patchen voor SQL Server in Azure Virtual Machines (Classic) voor](../classic/sql-automated-patching.md)meer informatie. |
-| **Azure Key Vault-integratie** |Hiermee u Azure Key Vault automatisch installeren en configureren op uw SQL Server VM. Zie [Azure Key Vault Integration for SQL Server configureren voor SQL Server op Azure VM's (Klassiek) voor](../classic/ps-sql-keyvault.md)meer informatie. |
+| **Automatische back-up van SQL** |Automatiseert het plannen van back-ups voor alle data bases voor het standaard exemplaar van SQL Server in de virtuele machine. Zie [automatische back-up voor SQL Server in Azure virtual machines (klassiek)](../classic/sql-automated-backup.md)voor meer informatie. |
+| **Automatisch patchen van SQL** |Hiermee configureert u een onderhouds venster waarin belang rijke Windows-updates voor uw virtuele machine kunnen worden uitgevoerd, zodat u updates kunt voor komen tijdens piek tijden voor uw werk belasting. Zie voor meer informatie [automatische patching voor SQL Server in Azure virtual machines (klassiek)](../classic/sql-automated-patching.md). |
+| **Integratie van Azure Key Vault** |Hiermee kunt u Azure Key Vault automatisch installeren en configureren op uw SQL Server-VM. Zie [Azure Key Vault-integratie configureren voor SQL Server op virtuele Azure-machines (klassiek)](../classic/ps-sql-keyvault.md)voor meer informatie. |
 
 ## <a name="prerequisites"></a>Vereisten
-Vereisten om de SQL Server IaaS Agent Extension op uw VM te gebruiken:
+Vereisten voor het gebruik van de SQL Server IaaS agent-extensie op uw VM:
 
 ### <a name="operating-system"></a>Besturingssysteem:
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
 
-### <a name="sql-server-versions"></a>SQL Server-versies:
+### <a name="sql-server-versions"></a>SQL Server versies:
 * SQL Server 2012
 * SQL Server 2014
 * SQL Server 2016
 
 ### <a name="azure-powershell"></a>Azure PowerShell:
-[Download en configureer de nieuwste Azure PowerShell-opdrachten.](/powershell/azure/overview)
+[Down load en configureer de nieuwste Azure PowerShell-opdrachten](/powershell/azure/overview).
 
-Start Windows PowerShell en verbind het met uw Azure-abonnement met de opdracht **Add-AzureAccount.**
+Start Windows Power shell en verbind deze met uw Azure-abonnement met de opdracht **add-AzureAccount** .
 
     Add-AzureAccount
 
-Als u meerdere abonnementen hebt, gebruikt u **Select-AzureSubscription** om het abonnement te selecteren dat uw doelklassieke VM bevat.
+Als u meerdere abonnementen hebt, gebruikt u **Select-abonnement** om het abonnement te selecteren dat de klassieke VM van uw doel bevat.
 
     Select-AzureSubscription -SubscriptionName <subscriptionname>
 
-Op dit punt u een lijst met de klassieke virtuele machines en de bijbehorende servicenamen krijgen met de opdracht **Get-AzureVM.**
+Op dit moment kunt u een lijst met de klassieke virtuele machines en de bijbehorende service namen ophalen met de opdracht **Get-AzureVM** .
 
     Get-AzureVM
 
 ## <a name="installation"></a>Installeren
-Voor klassieke VM's moet u PowerShell gebruiken om de SQL Server IaaS Agent Extension te installeren en de bijbehorende services te configureren. Gebruik de **PowerDlet Set-AzureVMSqlServerExtension** om de extensie te installeren. Met de volgende opdracht wordt de extensie bijvoorbeeld geïnstalleerd op een Windows Server VM (klassiek) en wordt de extensie "SQLIaaSExtension" genoemd.
+Voor klassieke Vm's moet u Power shell gebruiken om de SQL Server IaaS agent-extensie te installeren en de bijbehorende services te configureren. Gebruik de Power shell **-cmdlet Set-AzureVMSqlServerExtension** om de extensie te installeren. Met de volgende opdracht wordt bijvoorbeeld de uitbrei ding geïnstalleerd op een virtuele Windows Server-machine (klassiek) en de naam ' SQLIaaSExtension '.
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
 
-Als u bijwerkt naar de nieuwste versie van de SQL IaaS-agentextensie, moet u uw virtuele machine opnieuw opstarten nadat de extensie is bijgewerkt.
+Als u de nieuwste versie van de SQL IaaS agent-extensie bijwerkt, moet u de virtuele machine opnieuw opstarten nadat u de extensie hebt bijgewerkt.
 
 > [!NOTE]
-> Klassieke virtuele machines hebben geen optie om de SQL IaaS Agent Extension via de portal te installeren en configureren.
+> Klassieke virtuele machines hebben geen optie voor het installeren en configureren van de SQL IaaS agent-extensie via de portal.
 
 > [!NOTE]
-> De SQL Server IaaS Agent Extension wordt alleen ondersteund op [SQL Server VM-galerijafbeeldingen](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (pay-as-you-go of bring-your-own-license). Deze wordt niet ondersteund als u SQL Server handmatig installeert op een virtuele machine van WINDOWS Server met alleen os of als u een aangepaste SQL Server VM VHD implementeert. In deze gevallen is het mogelijk om de extensie handmatig te installeren en te beheren met PowerShell, maar het wordt ten zeerste aanbevolen om in plaats daarvan een SQL Server VM-galerijafbeelding te installeren en vervolgens aan te passen.
+> De uitbrei ding voor de SQL Server IaaS-agent wordt alleen ondersteund op [SQL Server VM-galerie kopieën](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (betalen per gebruik of uw eigen licentie). Het wordt niet ondersteund als u SQL Server hand matig installeert op een virtuele Windows Server-machine met alleen een besturings systeem of als u een aangepaste SQL Server VM-VHD implementeert. In dergelijke gevallen is het mogelijk om de uitbrei ding hand matig te installeren en beheren met behulp van Power shell, maar het wordt ten zeerste aanbevolen om in plaats daarvan een SQL Server VM-galerie afbeelding te installeren en deze vervolgens aan te passen.
 
 ## <a name="status"></a>Status
-Een manier om te controleren of de extensie is geïnstalleerd, is door de status van de agent in de Azure Portal weer te geven. Selecteer een virtuele machine die in het virtuele machineblad wordt vermeld en klik op **Extensies**. U ziet de **SQLIaaSAgent-extensie** vermeld.
+Een manier om te controleren of de uitbrei ding is geïnstalleerd, is de agent status weer geven in azure Portal. Selecteer een virtuele machine die wordt weer gegeven op de Blade van de virtuele machine en klik vervolgens op **extensies**. De uitbrei ding **SQLIaaSAgent** wordt weer gegeven.
 
-![SQL Server IaaS-agentextensie in Azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
+![IaaS agent-extensie SQL Server in azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
 
-U ook de cmdlet **Get-AzureVMSqlServerExtension** Azure Powershell gebruiken.
+U kunt ook de Azure Power shell **-cmdlet Get-AzureVMSqlServerExtension** gebruiken.
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
-## <a name="removal"></a>Verwijdering
-In de Azure Portal u de extensie verwijderen door op de ellips op het **extensionsblad** van de eigenschappen van uw virtuele machine te klikken. Klik vervolgens op **Verwijderen**.
+## <a name="removal"></a>Procedure
+In azure Portal kunt u de uitbrei ding verwijderen door op het weglatings teken te klikken op de Blade **uitbrei dingen** van de eigenschappen van de virtuele machine. Klik vervolgens op **verwijderen**.
 
-![De SQL Server IaaS-agentextensie verwijderen in Azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
+![De uitbrei ding voor de SQL Server IaaS-agent verwijderen in azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
 
-U ook de cmdlet **Remove-AzureVMSqlServerExtension** Powershell gebruiken.
+U kunt ook de Power shell **-cmdlet Remove-AzureVMSqlServerExtension** gebruiken.
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
 
 ## <a name="next-steps"></a>Volgende stappen
-Begin met het gebruik van een van de services die door de extensie worden ondersteund. Zie voor meer informatie de onderwerpen waarnaar wordt verwezen in het gedeelte [Ondersteunde services](#supported-services) van dit artikel.
+Gebruik een van de services die door de extensie worden ondersteund. Zie de onderwerpen waarnaar wordt verwezen in de sectie [ondersteunde services](#supported-services) van dit artikel voor meer informatie.
 
-Zie [SQL Server op Azure Virtual Machines overzicht](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het uitvoeren van SQL Server op Azure Virtual Machines.
+Zie [SQL Server in azure virtual machines Overview](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het uitvoeren van SQL Server op Azure virtual machines.
 

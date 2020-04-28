@@ -1,7 +1,7 @@
 ---
-title: Instantiate een openbare client app (MSAL.NET) | Azure
+title: Een open bare client-app instantiëren (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het momentmaken van een openbare clienttoepassing met configuratieopties met behulp van de Microsoft-verificatiebibliotheek voor .NET (MSAL.NET).
+description: Meer informatie over het instantiëren van een open bare client toepassing met configuratie opties met behulp van de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083590"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Een openbare clienttoepassing instantiëren met configuratieopties met behulp van MSAL.NET
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Een open bare client toepassing instantiëren met configuratie opties met behulp van MSAL.NET
 
-In dit artikel wordt beschreven hoe u een [openbare clienttoepassing](msal-client-applications.md) instantiëren met Microsoft Authentication Library voor .NET (MSAL.NET).  De toepassing wordt geinstantieerd met configuratieopties die zijn gedefinieerd in een instellingenbestand.
+In dit artikel wordt beschreven hoe u een [open bare client toepassing](msal-client-applications.md) kunt instantiëren met micro soft Authentication Library voor .net (MSAL.net).  De toepassing wordt geïnstantieerd met configuratie opties die zijn gedefinieerd in een instellingen bestand.
 
-Voordat u een toepassing initialiseert, moet u deze eerst [registreren,](quickstart-register-app.md) zodat uw app kan worden geïntegreerd met het Microsoft-identiteitsplatform. Na registratie hebt u mogelijk de volgende informatie nodig (die te vinden is in de Azure-portal):
+Voordat u een toepassing initialiseert, moet u deze eerst [registreren](quickstart-register-app.md) , zodat uw app kan worden geïntegreerd met het micro soft Identity-platform. Na de registratie hebt u mogelijk de volgende informatie nodig (die kan worden gevonden in de Azure Portal):
 
-- De client-id (een tekenreeks die een GUID vertegenwoordigt)
-- De URL van de identiteitsprovider (de naam van de instantie) en de aanmeldingsdoelgroep voor uw toepassing. Deze twee parameters staan gezamenlijk bekend als de autoriteit.
-- De tenant-id als u een regel van zakelijke toepassing uitsluitend voor uw organisatie (ook wel single-tenant applicatie) schrijft.
-- Voor web-apps, en soms voor openbare client-apps (met name wanneer uw app een broker moet gebruiken), hebt u ook de redirectUri ingesteld waar de identiteitsprovider contact opneemt met uw toepassing met de beveiligingstokens.
+- De client-ID (een teken reeks die een GUID vertegenwoordigt)
+- De URL van de identiteits provider (de naam van het exemplaar) en de aanmeldings doel groep voor uw toepassing. Deze twee para meters worden gezamenlijk bekend als de-instantie.
+- De Tenant-ID als u alleen een line-of-Business-toepassing schrijft voor uw organisatie (ook wel een toepassing met één Tenant genoemd).
+- Voor web-apps en soms voor open bare client-apps (met name wanneer uw app een Broker moet gebruiken), moet u ook de redirectUri instellen waar de ID-provider verbinding maakt met uw toepassing met de beveiligings tokens.
 
 
-Een .NET Core-consoletoepassing kan het volgende *configuratiebestand appsettings.json* hebben:
+Een .NET core-console toepassing kan het volgende bestand *appSettings. json* configureren:
 
 ```json
 {
@@ -48,7 +48,7 @@ Een .NET Core-consoletoepassing kan het volgende *configuratiebestand appsetting
 }
 ```
 
-De volgende code leest dit bestand met behulp van het .NET-configuratiekader:
+Met de volgende code wordt dit bestand gelezen met behulp van het .NET-configuratie raamwerk:
 
 ```csharp
 public class SampleConfiguration
@@ -90,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-Met de volgende code wordt uw toepassing gemaakt met behulp van de configuratie vanuit het instellingenbestand:
+Met de volgende code wordt uw toepassing gemaakt met behulp van de configuratie uit het instellingen bestand:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

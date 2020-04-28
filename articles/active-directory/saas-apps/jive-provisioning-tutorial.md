@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Jive configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+title: 'Zelf studie: Jive configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Jive.
 services: active-directory
 documentationCenter: na
@@ -16,92 +16,92 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057731"
 ---
-# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Zelfstudie: Jive configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Zelf studie: Jive configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om u de stappen te laten zien die u moet uitvoeren in Jive en Azure AD om gebruikersaccounts automatisch in te richten en te de-provisionen van Azure AD naar Jive.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in Jive en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar Jive.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
-*   Een Azure Active directory tenant.
-*   Een Jive-abonnement met één teken op ingeschakeld.
-*   Een gebruikersaccount in Jive met machtigingen voor teambeheer.
+*   Een Azure Active Directory-Tenant.
+*   Een Jive-abonnement dat is ingeschakeld voor eenmalige aanmelding.
+*   Een gebruikers account in Jive met team beheerders machtigingen.
 
 ## <a name="assigning-users-to-jive"></a>Gebruikers toewijzen aan Jive
 
-Azure Active Directory gebruikt een concept genaamd 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van automatische gebruikersaccountinrichting worden alleen de gebruikers en groepen die zijn 'toegewezen' aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Jive-app. Eenmaal besloten, u deze gebruikers toewijzen aan uw Jive app door het volgen van de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Jive-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw Jive-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfsapp](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-jive"></a>Belangrijke tips voor het toewijzen van gebruikers aan Jive
+### <a name="important-tips-for-assigning-users-to-jive"></a>Belang rijke tips voor het toewijzen van gebruikers aan Jive
 
-*   Het wordt aanbevolen dat één Azure AD-gebruiker aan Jive wordt toegewezen om de inrichtingsconfiguratie te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+*   U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Jive om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-*   Wanneer u een gebruiker aan Jive toewijst, moet u een geldige gebruikersrol selecteren. De rol 'Standaardtoegang' werkt niet voor inrichten.
+*   Wanneer u een gebruiker toewijst aan Jive, moet u een geldige gebruikersrol selecteren. De rol ' standaard toegang ' werkt niet voor het inrichten.
 
-## <a name="enable-user-provisioning"></a>Gebruikersvoorziening inschakelen
+## <a name="enable-user-provisioning"></a>Gebruikers inrichten inschakelen
 
-In deze sectie u uw Azure AD verbinden met de API voor het inrichten van gebruikersaccounts van Jive en de inrichtingsservice configureren om toegewezen gebruikersaccounts in Jive te maken, bij te werken en uit te schakelen op basis van gebruikers- en groepstoewijzing in Azure AD.
+In deze sectie vindt u instructies voor het verbinden van uw Azure AD-Jive en het configureren van de inrichtings service om toegewezen gebruikers accounts in Jive te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om SAML-gebaseerde single sign-On voor Jive in te schakelen, volgens de instructies in [Azure portal.](https://portal.azure.com) Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Jive, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="to-configure-user-account-provisioning"></a>Ga als een te meer meting in de inrichting van gebruikersaccounts:
+### <a name="to-configure-user-account-provisioning"></a>Het inrichten van een gebruikers account configureren:
 
-Het doel van deze sectie is om te schetsen hoe u gebruikersvoorzieningen voor Active Directory-gebruikersaccounts naar Jive inschakelen.
-Als onderdeel van deze procedure moet u een gebruikersbeveiligingstoken verstrekken dat u bij Jive.com moet aanvragen.
+Het doel van deze sectie is het maken van een overzicht van de gebruikers inrichting van Active Directory gebruikers accounts in te stellen op Jive.
+Als onderdeel van deze procedure moet u een beveiligings token van de gebruiker opgeven dat u moet aanvragen bij Jive.com.
 
-1. Blader in de [Azure-portal](https://portal.azure.com)naar de sectie **Azure Active Directory > Enterprise Apps > Alle toepassingen.**
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
-1. Als u Jive al hebt geconfigureerd voor één aanmelding, zoekt u naar uw exemplaar van Jive met behulp van het zoekveld. Selecteer anders **Toevoegen** en zoeken naar **Jive** in de toepassingsgalerie. Selecteer Jive in de zoekresultaten en voeg deze toe aan uw lijst met toepassingen.
+1. Als u Jive al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Jive met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **Jive** in de toepassings galerie. Selecteer Jive in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-1. Selecteer uw exemplaar van Jive en selecteer vervolgens het tabblad **Inrichten.**
+1. Selecteer uw exemplaar van Jive en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **inrichtingsmodus** in op **Automatisch**. 
+1. Stel de **inrichtings modus** in op **automatisch**. 
 
-    ![Provisioning](./media/jive-provisioning-tutorial/provisioning.png)
+    ![inrichtings](./media/jive-provisioning-tutorial/provisioning.png)
 
-1. Geef onder de sectie **Beheerdersreferenties** de volgende configuratie-instellingen op:
+1. Geef onder de sectie **beheerders referenties** de volgende configuratie-instellingen op:
    
-    a. Typ in het tekstvak **Gebruikersnaam van de Jive-beheerder** een Jive-accountnaam waarop het **systeembeheerdersprofiel** in Jive.com is toegewezen.
+    a. Typ in het tekstvak **Jive beheer gebruikers naam** een Jive-account naam waaraan het profiel van de **systeem beheerder** is toegewezen in Jive.com.
    
-    b. Typ het wachtwoord voor dit account in het tekstvak **Jive-beheerderswachtwoord.**
+    b. Typ het wacht woord voor dit account in het tekstvak **Jive beheerders wachtwoord** .
    
-    c. Typ in het tekstvak **URL van de jive-tenant** de URL van de jive-tenant.
+    c. Typ in het tekstvak **Jive Tenant-URL** de URL van de Jive-Tenant.
       
       > [!NOTE]
-      > De URL van de Jive-tenant is URL die door uw organisatie wordt gebruikt om in te loggen op Jive.  
-      > Meestal heeft de URL de volgende indeling: **www.\< organisatie\>.jive.com**.          
+      > De Jive-Tenant-URL is de URL die door uw organisatie wordt gebruikt om u aan te melden bij Jive.  
+      > Normaal gesp roken heeft de URL de volgende indeling: **www\< . Organization\>. Jive.com**.          
 
-1. Klik in de Azure-portal op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Jive-app.
+1. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Jive-app.
 
-1. Voer het e-mailadres in van een persoon of groep die meldingen van provisioning-fouten moet ontvangen in het veld **E-mail melden** en schakel het selectievakje hieronder in.
+1. Voer het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen in het veld **e-mail melding** en schakel het selectie vakje hieronder in.
 
-1. Klik **op Opslaan.**
+1. Klik op **opslaan.**
 
-1. Selecteer Azure **Active Directory-gebruikers synchroniseren met Jive** onder de sectie Toewijzingen.
+1. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met Jive.**
 
-1. Controleer in de sectie **Toewijzingen van kenmerken** de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Jive. De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Jive te matchen voor updatebewerkingen. Selecteer de knop Opslaan om wijzigingen door te voeren.
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Jive. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Jive voor bijwerk bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
-1. Als u de Azure AD-inrichtingsservice voor Jive wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie Instellingen
+1. Als u de Azure AD-inrichtings service voor Jive wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte instellingen
 
-1. Klik **op Opslaan.**
+1. Klik op **opslaan.**
 
-Hiermee wordt de eerste synchronisatie gestart van gebruikers en/of groepen die aan Jive zijn toegewezen in de sectie Gebruikers en groepen. De eerste synchronisatie duurt langer om uit te voeren dan de daaropvolgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de service wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het inrichten van activiteitslogboeken te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtingsservice in uw Jive-app.
+Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan Jive in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw Jive-app.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](tutorial-list.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Eén aanmelding configureren](jive-tutorial.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Eenmalige aanmelding configureren](jive-tutorial.md)

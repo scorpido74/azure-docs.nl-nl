@@ -1,6 +1,6 @@
 ---
 title: Verschillen tussen gedelegeerde en app-machtigingen | Azure
-description: Meer informatie over gedelegeerde en toepassingsmachtigingen, hoe deze worden gebruikt door clients en worden blootgesteld door bronnen voor toepassingen die u ontwikkelt met Azure AD
+description: Meer informatie over gedelegeerde en toepassings machtigingen, hoe deze worden gebruikt door clients en worden weer gegeven door resources voor toepassingen die u ontwikkelt met Azure AD
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697605"
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Verschillen tussen gedelegeerde en toepassingsmachtigingen herkennen
+# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Verschillen tussen gedelegeerde en toepassings machtigingen herkennen
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
-- Meer informatie over hoe clienttoepassingen [gedelegeerde en toepassingsmachtigingenaanvragen](developer-glossary.md#permissions) gebruiken om toegang te krijgen tot bronnen.
-- Stapsgewijze instructies bekijken voor het [configureren van de machtigingsaanvragen van een clienttoepassing](quickstart-configure-app-access-web-apis.md)
-- Lees voor meer diepte hoe resourcetoepassingen [scopes](developer-glossary.md#scopes) en [toepassingsrollen](developer-glossary.md#roles) blootstellen aan clienttoepassingen, die zich respectievelijk manifesteren als gedelegeerde en toepassingsmachtigingen in de Azure-portal. 
+- Meer informatie over hoe client toepassingen [gedelegeerde en toepassings machtigings aanvragen](developer-glossary.md#permissions) gebruiken om toegang te krijgen tot bronnen.
+- Zie stap-voor-stap instructies voor het [configureren van de machtigings aanvragen van een client toepassing](quickstart-configure-app-access-web-apis.md)
+- Meer informatie over hoe resource toepassingen [scopes](developer-glossary.md#scopes) en [toepassings rollen](developer-glossary.md#roles) beschikbaar maken voor client toepassingen, die respectievelijk als gedelegeerde en toepassings machtigingen in de Azure Portal worden weer gegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

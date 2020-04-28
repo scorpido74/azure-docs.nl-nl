@@ -1,28 +1,28 @@
 ---
-title: Suborchestrations voor duurzame functies - Azure
-description: Orkestraties aanroepen vanuit orkestraties in de extensie Duurzame functies voor Azure-functies.
+title: Sub-Orchestrations voor Durable Functions-Azure
+description: Het aanroepen van indelingen van Orchestrations in de Durable Functions-extensie voor Azure Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76261514"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Suborchestrations in duurzame functies (Azure-functies)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-indelingen in Durable Functions (Azure Functions)
 
-Naast het aanroepen van activiteitsfuncties kunnen orchestrator-functies andere orchestrator-functies aanroepen. U bijvoorbeeld een grotere orkestratie bouwen uit een bibliotheek met kleinere orchestrator-functies. U ook meerdere exemplaren van een orchestratorfunctie parallel uitvoeren.
+Naast het aanroepen van activiteit functies kunnen Orchestrator-functies andere Orchestrator-functies aanroepen. U kunt bijvoorbeeld een grotere indeling van een bibliotheek met kleinere Orchestrator-functies bouwen. U kunt ook meerdere exemplaren van een Orchestrator-functie parallel uitvoeren.
 
-Een orchestrator-functie kan een andere `CallSubOrchestratorAsync` orchestrator-functie aanroepen met behulp van de of de `CallSubOrchestratorWithRetryAsync` methoden in .NET of de of-methoden `callSubOrchestrator` `callSubOrchestratorWithRetry` in JavaScript. Het artikel [Foutafhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) bevat meer informatie over automatisch opnieuw proberen.
+Een Orchestrator-functie kan een andere Orchestrator-functie aanroepen `CallSubOrchestratorAsync` met behulp van de-of `CallSubOrchestratorWithRetryAsync` - `callSubOrchestrator` methoden `callSubOrchestratorWithRetry` in .net of de methoden of in Java script. De [fout afhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) artikel bevat meer informatie over automatische opnieuw proberen.
 
-Suborchestrator-functies gedragen zich net als activiteitsfuncties vanuit het perspectief van de beller. Ze kunnen een waarde retourneren, een uitzondering maken en kunnen worden afgewacht door de bovenliggende orchestrator-functie. 
+Suborchestrator-functies gedragen zich op dezelfde manier als de activiteit functies van het perspectief van de aanroeper. Ze kunnen een waarde Retour neren, een uitzonde ring genereren en kunnen wachten door de bovenliggende Orchestrator-functie. 
 ## <a name="example"></a>Voorbeeld
 
-Het volgende voorbeeld illustreert een IoT-scenario ("Internet of Things") waarbij er meerdere apparaten zijn die moeten worden ingericht. De volgende functie vertegenwoordigt de inrichtingswerkstroom die voor elk apparaat moet worden uitgevoerd:
+In het volgende voor beeld ziet u een IoT-scenario (' Internet of Things ') waarin meerdere apparaten moeten worden ingericht. De volgende functie vertegenwoordigt de inrichtings werk stroom die moet worden uitgevoerd voor elk apparaat:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -66,11 +66,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Deze orchestrator-functie kan worden gebruikt als-is voor eenmalige apparaatinrichting of het kan deel uitmaken van een grotere orkestratie. In het laatste geval kan de bovenliggende `DeviceProvisioningOrchestration` orchestrator-functie instanties plannen voor het gebruik van de `CallSubOrchestratorAsync` (.NET) of `callSubOrchestrator` (JavaScript)-API.
+Deze Orchestrator-functie kan worden gebruikt als-is voor eenmalige inrichting van apparaten of kan deel uitmaken van een grotere indeling. In het laatste geval kan de bovenliggende Orchestrator-functie instanties plannen van het `DeviceProvisioningOrchestration` gebruik van `CallSubOrchestratorAsync` de API (.net `callSubOrchestrator` ) of (Java script).
 
-Hier is een voorbeeld dat laat zien hoe meerdere orchestrator functies parallel uit te voeren.
+Hier volgt een voor beeld waarin wordt getoond hoe u meerdere Orchestrator-functies parallel kunt uitvoeren.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,7 +94,7 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> De vorige C# voorbeelden zijn voor Duurzame Functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -123,9 +123,9 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Suborchestrations moeten worden gedefinieerd in dezelfde functie-app als de bovenliggende orkestratie. Als u moet bellen en wachten op orkestraties in een andere functie-app, u overwegen de ingebouwde ondersteuning voor HTTP-API's en het http 202-polling-consumentenpatroon te gebruiken. Zie het onderwerp [HTTP-functies voor](durable-functions-http-features.md) meer informatie.
+> Sub-indelingen moeten worden gedefinieerd in dezelfde functie-app als de bovenliggende indeling. Als u in een andere functie-app-integratie moet aanroepen en wachten, kunt u overwegen de ingebouwde ondersteuning voor HTTP-Api's en het HTTP 202-polling-consument patroon te gebruiken. Zie het onderwerp [http-functies](durable-functions-http-features.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het instellen van een aangepaste orchestration-status](durable-functions-custom-orchestration-status.md)
+> [Meer informatie over het instellen van een aangepaste indelings status](durable-functions-custom-orchestration-status.md)

@@ -1,6 +1,6 @@
 ---
-title: PowerShell - Aangepaste afbeelding maken van VHD-bestand in Azure Lab Services
-description: Met dit PowerShell-script wordt een aangepaste afbeelding gemaakt van een VHD-bestand in Azure Lab Services.
+title: 'Power shell: aangepaste installatie kopie maken van VHD-bestand in Azure Lab Services'
+description: Met dit Power shell-script maakt u een aangepaste installatie kopie van een VHD-bestand in Azure Lab Services.
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 38383462a665ced1ccb6c6a2f062fab0492eee9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169988"
 ---
-# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>PowerShell gebruiken om een aangepaste afbeelding te maken van een VHD-bestand in Azure Lab Services
+# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Power shell gebruiken om een aangepaste installatie kopie te maken op basis van een VHD-bestand in Azure Lab Services
 
-Met dit voorbeeld maakt PowerShell-script een aangepaste afbeelding van een VHD-bestand in Azure Lab Services
+Met dit Power shell-voorbeeld script maakt u een aangepaste installatie kopie van een VHD-bestand in Azure Lab Services
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Een lab.** Het script vereist dat je een bestaand lab hebt. 
+* **Een Lab**. Het script vereist dat u een bestaand Lab hebt. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -40,12 +40,12 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Krijgt middelen. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Haalt resources op. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Hiermee worden de toegangssleutels voor Azure opslagaccounts weergegeven. |
-| [Implementatie van nieuwe azresourcegroepen](/powershell/module/az.resources/new-azresourcegroupdeployment) | Hiermee voegt u een Azure-implementatie toe aan een resourcegroep. |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Hiermee voegt u een Azure-implementatie toe aan een resource groep. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Lab Services PowerShell-scriptvoorbeelden zijn te vinden in de [Azure Lab Services PowerShell-voorbeelden.](../samples-powershell.md)
+Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.

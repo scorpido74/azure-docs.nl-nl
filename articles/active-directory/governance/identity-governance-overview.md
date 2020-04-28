@@ -1,6 +1,6 @@
 ---
-title: Identiteitsbeheer - Azure Active Directory | Microsoft Documenten
-description: Met Azure Active Directory Identity Governance u de behoefte van uw organisatie aan beveiliging en productiviteit van werknemers in evenwicht brengen met de juiste processen en zichtbaarheid.
+title: Identity governance-Azure Active Directory | Microsoft Docs
+description: Met Azure Active Directory Identity Governance kunt u de behoeften van uw organisatie voor beveiliging en productiviteit van werk nemers verdelen met de juiste processen en zicht baarheid.
 services: active-directory
 documentationcenter: ''
 author: msaburnley
@@ -17,83 +17,83 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063676"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
-Met Azure Active Directory (Azure AD) Identity Governance u de behoefte van uw organisatie aan beveiliging en productiviteit van werknemers in evenwicht brengen met de juiste processen en zichtbaarheid. Het biedt u mogelijkheden om ervoor te zorgen dat de juiste mensen de juiste toegang hebben tot de juiste bronnen. Met deze en gerelateerde Azure AD- en Enterprise Mobility + Security-functies u toegangsrisico's beperken door de toegang tot kritieke assets te beschermen, te bewaken en te controleren, terwijl u tegelijkertijd de productiviteit van werknemers en bedrijfspartners garanderen.  
+Met Identity governance van Azure Active Directory (Azure AD) kunt u de behoeften van uw organisatie voor beveiliging en productiviteit van werk nemers balanceren met de juiste processen en zicht baarheid. Het biedt u de mogelijkheid om ervoor te zorgen dat de juiste mensen toegang hebben tot de juiste bronnen. Met deze en verwante Azure AD-en Enterprise Mobility + Security-functies kunt u het risico op toegang beperken door toegang tot kritieke assets te beveiligen, te bewaken en te controleren, en tegelijkertijd de productiviteit van werk nemers en zaken partners te garanderen.  
 
-Identity Governance biedt organisaties de mogelijkheid om de volgende taken uit te voeren voor werknemers, zakenpartners en leveranciers, en tussen services en toepassingen, zowel on-premises als in clouds:
+Identiteits beheer biedt organisaties de mogelijkheid om de volgende taken uit te voeren voor werk nemers, zakelijke partners en leveranciers, en in verschillende services en toepassingen, zowel on-premises als in Clouds:
 
-- De levenscyclus van de identiteit regelen
-- Levenscyclus van toegang regelen
-- Beveiligde bevoorrechte toegang voor beheer
+- De levens cyclus van identiteiten bepalen
+- De toegangs levenscyclus bepalen
+- Beveiligde privileged Access for Administration
 
-Het is specifiek bedoeld om organisaties te helpen deze vier belangrijke vragen aan te pakken:
+Het is met name bedoeld om organisaties te helpen bij het oplossen van deze vier belang rijke vragen:
 
 - Welke gebruikers moeten toegang hebben tot welke bronnen?
-- Wat doen die gebruikers met die toegang?
-- Zijn er effectieve organisatorische controles voor het beheren van toegang?
-- Kunnen auditors controleren of de controles werken?
+- Wat doen gebruikers met die toegang?
+- Zijn er effectief organisatie-instellingen voor het beheren van toegang?
+- Kunnen Audi tors controleren of de besturings elementen werken?
 
-## <a name="identity-lifecycle"></a>Levenscyclus van identiteit
+## <a name="identity-lifecycle"></a>Levens duur van identiteit
 
-Identity Governance helpt organisaties een evenwicht te vinden tussen *productiviteit* - Hoe snel kan een persoon toegang hebben tot de resources die hij nodig heeft, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En *veiligheid* - Hoe moet hun toegang veranderen in de tijd, zoals als gevolg van veranderingen in de arbeidsstatus van die persoon?  Identity lifecycle management is de basis voor Identity Governance, en effectief beheer op schaal vereist modernisering van de infrastructuur voor identiteitslevenscyclusbeheer voor toepassingen.
+Identiteits beheer helpt organisaties bij het verkrijgen van een evenwicht tussen *productiviteit* : hoe snel kan een persoon toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En *hoe* moet de toegang tot de tijd worden gewijzigd, bijvoorbeeld als gevolg van wijzigingen in de werk status van die persoon?  Het beheer van identiteits levenscyclus is de basis voor Identity governance, en effectief beheer op schaal vereist een modernisering van de infra structuur voor Identity Lifecycle Management voor toepassingen.
 
-![Levenscyclus van identiteit](./media/identity-governance-overview/identity-lifecycle.png)
+![Levens duur van identiteit](./media/identity-governance-overview/identity-lifecycle.png)
 
-Voor veel organisaties is de levenscyclus van identiteiten voor werknemers gekoppeld aan de vertegenwoordiging van die gebruiker in een HCM -systeem (human capital management).  Azure AD Premium onderhoudt automatisch gebruikersidentiteiten voor personen die in Workday zijn vertegenwoordigd in zowel Active Directory als Azure Active Directory, zoals beschreven in de [inkomende inkomende inprovisioning-zelfstudie Workday.](../saas-apps/workday-inbound-tutorial.md)  Azure AD Premium bevat ook [Microsoft Identity Manager,](/microsoft-identity-manager/)dat records kan importeren uit on-premises HCM-systemen zoals SAP, Oracle eBusiness en Oracle PeopleSoft.
+Voor veel organisaties is de identiteits levenscyclus voor werk nemers gekoppeld aan de weer gave van die gebruiker in een HCM-systeem (Human Capital Management).  Azure AD Premium onderhoudt automatisch gebruikers identiteiten voor personen die in workday worden weer gegeven in zowel Active Directory als Azure Active Directory, zoals beschreven in de [zelf studie voor inkomende inrichtingen](../saas-apps/workday-inbound-tutorial.md)voor werk dagen.  Azure AD Premium omvat ook [Microsoft Identity Manager](/microsoft-identity-manager/), waarmee u records kunt importeren uit on-PREMISes HCM-systemen zoals SAP, Oracle eBusiness en Oracle People Soft.
 
-Scenario's vereisen steeds vaker samenwerking met mensen buiten uw organisatie. [Azure AD B2B-samenwerking](/azure/active-directory/b2b/) stelt u in staat om de applicaties en services van uw organisatie veilig te delen met gastgebruikers en externe partners van elke organisatie, terwijl u de controle behoudt over uw eigen bedrijfsgegevens.  [Azure AD-rechtenbeheer](entitlement-management-overview.md) stelt u in staat om te selecteren welke gebruikers van de organisatie toegang mogen aanvragen en als B2B-gasten aan de directory van uw organisatie kunnen worden toegevoegd, en zorgt ervoor dat deze gasten worden verwijderd wanneer ze geen toegang meer nodig hebben.
+Scenario's vereisen steeds meer samen werking met mensen buiten uw organisatie. Met [Azure AD B2B](/azure/active-directory/b2b/) Collaboration kunt u de toepassingen en services van uw organisatie veilig delen met gast gebruikers en externe partners van elke organisatie, terwijl u de controle houdt over uw eigen bedrijfs gegevens.  Met het [beheer recht van Azure AD](entitlement-management-overview.md) kunt u selecteren welke gebruikers van de organisatie toegang mogen aanvragen en als B2B-gasten kunnen worden toegevoegd aan de directory van uw organisatie. Hiermee zorgt u ervoor dat deze gasten worden verwijderd wanneer ze niet langer toegang nodig hebben.
 
-## <a name="access-lifecycle"></a>Toegangslevenscyclus
+## <a name="access-lifecycle"></a>Toegangs levenscyclus
 
-Organisaties hebben een proces nodig om toegang te beheren die verder gaat dan wat in eerste instantie voor een gebruiker was ingericht toen de identiteit van die gebruiker werd gemaakt.  Bovendien moeten bedrijfsorganisaties efficiënt kunnen schalen om voortdurend toegangsbeleid en -controles te kunnen ontwikkelen en afdwingen.
+Organisaties hebben een proces nodig om toegang te beheren dan wat oorspronkelijk is ingericht voor een gebruiker wanneer de identiteit van die gebruiker is gemaakt.  Daarnaast moeten bedrijfs organisaties efficiënt kunnen schalen om het toegangs beleid en besturings elementen continu te kunnen ontwikkelen en afdwingen.
 
-![Toegangslevenscyclus](./media/identity-governance-overview/access-lifecycle.png)
+![Toegangs levenscyclus](./media/identity-governance-overview/access-lifecycle.png)
 
-Doorgaans hebben IT-afgevaardigden toegang tot goedkeuringsbeslissingen voor zakelijke besluitvormers.  Bovendien kan IT de gebruikers zelf betrekken.  Gebruikers die toegang hebben tot vertrouwelijke klantgegevens in de marketingtoepassing van een bedrijf in Europa, moeten bijvoorbeeld het beleid van het bedrijf kennen. Gastgebruikers zijn mogelijk niet op de hoogte van de verwerkingsvereisten voor gegevens in een organisatie waarvoor ze zijn uitgenodigd.
+Normaal gesp roken worden de toegangs goedkeurings beslissingen overgedragen aan besluit vormers van uw bedrijf.  Daarnaast kunnen de gebruikers zelf gebruikmaken van deze.  Gebruikers die toegang hebben tot vertrouwelijke klant gegevens in de marketing toepassing van een bedrijf in Europa, moeten bijvoorbeeld het beleid van het bedrijf weten. Gast gebruikers zijn mogelijk niet op de hoogte van de verwerkings vereisten voor gegevens in een organisatie waarvoor ze zijn uitgenodigd.
 
-Organisaties kunnen het proces van toegangslevenscyclus automatiseren via technologieën zoals [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), in combinatie met gebruikersvoorzieningen voor [SaaS-apps](../saas-apps/tutorial-list.md) of [apps die zijn geïntegreerd met SCIM.](../app-provisioning/use-scim-to-provision-users-and-groups.md)  Organisaties kunnen ook bepalen welke [gastgebruikers toegang hebben tot on-premises toepassingen.](../b2b/hybrid-cloud-to-on-premises.md)  Deze toegangsrechten kunnen vervolgens regelmatig worden beoordeeld met terugkerende [Azure AD-toegangsbeoordelingen.](access-reviews-overview.md)   [Azure AD-rechtenbeheer](entitlement-management-overview.md) stelt u ook in staat om te definiëren hoe gebruikers toegang aanvragen voor pakketten van groeps- en teamlidmaatschappen, toepassingsrollen en SharePoint Online-rollen.
+Organisaties kunnen het toegangs levenscyclus proces automatiseren door middel van technologieën zoals [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), samen met het inrichten van gebruikers tot [SaaS-apps](../saas-apps/tutorial-list.md) of apps die zijn [geïntegreerd met scim](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organisaties kunnen ook bepalen welke [gast gebruikers toegang hebben tot on-premises toepassingen](../b2b/hybrid-cloud-to-on-premises.md).  Deze toegangs rechten kunnen vervolgens regel matig worden gecontroleerd met behulp van terugkerende [Azure AD-toegangs beoordelingen](access-reviews-overview.md).   Met het [beheer van rechten van Azure AD](entitlement-management-overview.md) kunt u ook definiëren hoe gebruikers toegang aanvragen via pakketten van groeps-en team lidmaatschappen, toepassings rollen en share point online-rollen.
 
-Wanneer een gebruiker toegang probeert te krijgen tot toepassingen, dwingt Azure AD [beleid voor voorwaardelijke toegang](/azure/active-directory/conditional-access/) af. Het beleid voor voorwaardelijke toegang kan bijvoorbeeld bestaan uit het weergeven van een [gebruiksvoorwaarden](../conditional-access/terms-of-use.md) en [ervoor zorgen dat de gebruiker met deze voorwaarden heeft ingestemd](../conditional-access/require-tou.md) voordat hij toegang heeft tot een toepassing.
+Wanneer een gebruiker probeert toegang te krijgen tot toepassingen, dwingt Azure AD beleids regels voor [voorwaardelijke toegang](/azure/active-directory/conditional-access/) af. Het beleid voor voorwaardelijke toegang kan bijvoorbeeld bestaan uit het weer geven [van gebruiks voorwaarden](../conditional-access/terms-of-use.md) en [ervoor zorgen dat de gebruiker akkoord gaat met deze voor waarden](../conditional-access/require-tou.md) voordat ze toegang kunnen krijgen tot een toepassing.
 
-## <a name="privileged-access-lifecycle"></a>Levenscyclus van bevoorrechte toegang
+## <a name="privileged-access-lifecycle"></a>Privileged Access Lifecycle
 
-In het verleden is bevoorrechte toegang door andere leveranciers beschreven als een afzonderlijke mogelijkheid van Identiteitsbeheer. Bij Microsoft denken we echter dat het beheren van bevoorrechte toegang een belangrijk onderdeel is van Identity Governance - vooral gezien het potentieel voor misbruik in verband met die beheerdersrechten kan leiden tot een organisatie. De werknemers, leveranciers en contractanten die administratieve rechten overnemen moeten worden geregeld.
+In het verleden werd bevoorrechte toegang door andere leveranciers als afzonderlijke mogelijkheid van Identity governance beschreven. Bij micro soft denken we echter dat het beheer van bevoegde toegang een belang rijk onderdeel van Identity governance is, met name op basis van het potentieel voor misbruik dat is gekoppeld aan deze beheerders rechten kan een organisatie tot gevolg hebben. De werk nemers, leveranciers en contract ANTEN die gebruikmaken van administratieve rechten, moeten worden geregeld.
 
-![Levenscyclus van bevoorrechte toegang](./media/identity-governance-overview/privileged-access-lifecycle.png)
+![Privileged Access Lifecycle](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) biedt extra besturingselementen die zijn afgestemd op het beveiligen van toegangsrechten voor resources, in Azure AD, Azure en andere Microsoft Online Services.  De just-in-time toegang en de waarschuwingsmogelijkheden voor het waarschuwen van problemen met rollenswijzigingen die worden geboden door Azure AD PIM, naast multi-factor authenticatie en voorwaardelijke toegang, bieden een uitgebreide set beheerbesturingselementen om de bronnen van uw bedrijf te beveiligen (directory, Office 365- en Azure-bronrollen). Net als bij andere vormen van toegang kunnen organisaties toegangsbeoordelingen gebruiken om terugkerende toegangshercertificering te configureren voor alle gebruikers in beheerdersrollen.
+[Azure AD privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) biedt extra besturings elementen die zijn afgestemd op het beveiligen van toegangs rechten voor resources, in azure AD, Azure en andere online services van micro soft.  De just-in-time-toegang en functies voor het wijzigen van de waarschuwingen die worden geboden door Azure AD PIM, naast multi-factor Authentication en voorwaardelijke toegang, bieden een uitgebreide set beheer controles waarmee u de resources van uw bedrijf (Directory, Office 365 en Azure resource roles) kunt beveiligen. Net als bij andere vormen van toegang kunnen organisaties toegangs beoordelingen gebruiken om hercertificering van terugkerende toegang te configureren voor alle gebruikers in beheerders rollen.
 
 ## <a name="getting-started"></a>Aan de slag
 
-Bekijk het tabblad Aan de slag met **Identiteitsbeheer** in de Azure-portal om te beginnen met het beheer van rechten, toegangsbeoordelingen, Privileged Identity Management en Gebruiksvoorwaarden.
+Bekijk het tabblad aan de slag van **Identity governance** in het Azure Portal om rechten beheer, toegangs beoordelingen, Privileged Identity Management en gebruiksvoorwaarden te gebruiken.
 
-![Identity Governance aan de slag](./media/identity-governance-overview/getting-started.png)
+![Aan de slag met Identity governance](./media/identity-governance-overview/getting-started.png)
 
 
-Als u feedback hebt over functies voor identiteitsbeheer, klikt u op **Feedback ontvangen** in de Azure-portal om uw feedback in te dienen. Het team beoordeelt regelmatig uw feedback.
+Als u feedback hebt over de functies voor identiteits beheer, klikt u op **feedback ontvangen?** in de Azure Portal om uw feedback te verzenden. Het team controleert uw feedback regel matig.
 
-Hoewel er geen perfecte oplossing of aanbeveling is voor elke klant, bieden de volgende configuratiehandleidingen ook het basisbeleid dat Microsoft aanbeveelt om een veiliger en productiever personeelsbestand te garanderen.
+Hoewel er voor elke klant geen perfecte oplossing of aanbeveling bestaat, bieden de volgende configuratie handleidingen ook het basislijn beleid dat door micro soft wordt aanbevolen om een veiligere en productief personeel te garanderen.
 
 - [Configuraties voor identiteit en apparaattoegang](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Uitgebreide toegang beveiligen](../users-groups-roles/directory-admin-roles-secure.md)
 
-## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Bijlage - minst bevoorrechte rollen voor het beheer in functies voor identiteitsbeheer
+## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Bijlagen-minst geprivilegieerde rollen voor het beheren van Identity governance-functies
 
-Het is een beste gewoonte om de minst bevoorrechte rol te gebruiken om administratieve taken uit te voeren in Identity Governance. We raden u aan Azure AD PIM te gebruiken om een rol te activeren die nodig is om deze taken uit te voeren. De volgende zijn de minst bevoorrechte directoryrollen om functies voor identiteitsbeheer te configureren:
+Het is een best practice om de minst privileged Role te gebruiken voor het uitvoeren van beheer taken in Identity governance. We raden u aan Azure AD PIM te gebruiken om een rol zo nodig te activeren om deze taken uit te voeren. Hieronder vindt u de minst geprivilegieerde Directory rollen voor het configureren van Identity governance-functies:
 
-| Functie | Minst bevoorrechte rol |
+| Functie | Minst geprivilegieerde rol |
 | ------- | --------------------- |
-| Rechtenbeheer | Gebruikersbeheerder (met uitzondering van het toevoegen van SharePoint Online-sites aan catalogi, waarvoor globale beheerder vereist is) |
-| Toegangsbeoordelingen | Gebruikersbeheerder (met uitzondering van toegangsbeoordelingen van Azure- of Azure AD-rollen, waarvoor bevoorrechte rolbeheerder vereist is) |
-|Privileged Identity Management | Bevoegde rolbeheerder |
-| Gebruiksvoorwaarden | Beveiligingsbeheerder of beheerder van voorwaardelijke toegang |
+| Rechtenbeheer | Gebruikers beheerder (met uitzonde ring van het toevoegen van share point online-sites aan catalogi, waarvoor globale beheerder is vereist) |
+| Toegangsbeoordelingen | Gebruikers beheerder (met uitzonde ring van toegangs beoordelingen van Azure-of Azure AD-rollen, waarvoor beheerders van een bevoegde rol zijn vereist) |
+|Privileged Identity Management | Beheerder van geprivilegieerde rol |
+| Gebruiksvoorwaarden | Beveiligings beheerder of beheerder van voorwaardelijke toegang |
 
 ## <a name="next-steps"></a>Volgende stappen
 

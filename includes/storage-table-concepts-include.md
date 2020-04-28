@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77013836"
 ---
 ## <a name="what-is-table-storage"></a>Wat is Table Storage
@@ -30,8 +30,8 @@ Table Storage omvat de volgende onderdelen:
 
   Accounts voor de tabel-API van Azure Cosmos DB maken gebruik van deze indeling: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
-  U kunt rechtstreeks naar Azure-tabellen verwijzen met dit adres met het OData-protocol. Zie [OData.org voor][OData.org]meer informatie.
-* **Account** alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [Overzicht van opslagaccounts](../articles/storage/common/storage-account-overview.md)voor meer informatie over opslagaccounts.
+  U kunt rechtstreeks naar Azure-tabellen verwijzen met dit adres met het OData-protocol. Zie [OData.org][OData.org]voor meer informatie.
+* **Account** alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie voor meer informatie over opslag accounts [overzicht van opslag account](../articles/storage/common/storage-account-overview.md).
 
     Alle toegang tot Azure Cosmos DB vindt plaats via een Table-API-account. Zie [Een tabel-API-account maken](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account) voor meer informatie het maken van een tabel-API-account.
 * **Tabel**: een tabel is een verzameling entiteiten. Met tabellen wordt geen schema voor entiteiten afgedwongen, wat betekent dat één tabel entiteiten kan bevatten die verschillende sets eigenschappen hebben.  

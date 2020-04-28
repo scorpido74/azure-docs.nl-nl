@@ -1,6 +1,6 @@
 ---
-title: Een aangepaste afbeelding maken van VHD-bestand met Azure PowerShell
-description: Het maken van een aangepaste afbeelding in Azure DevTest Labs automatiseren vanuit een VHD-bestand met PowerShell
+title: Een aangepaste installatie kopie maken van een VHD-bestand met behulp van Azure PowerShell
+description: Het maken van een aangepaste installatie kopie in Azure DevTest Labs automatiseren vanuit een VHD-bestand met behulp van Power shell
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: cd144659dd8a8e981e267be998c9c783b7482840
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169580"
 ---
-# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Een aangepaste afbeelding maken op basis van een VHD-bestand met PowerShell
+# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Een aangepaste installatie kopie maken van een VHD-bestand met behulp van Power shell
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -33,22 +33,22 @@ ms.locfileid: "76169580"
 
 ## <a name="step-by-step-instructions"></a>Stapsgewijze instructies
 
-In de volgende stappen u een aangepaste afbeelding maken van een VHD-bestand met PowerShell:
+De volgende stappen helpen u bij het maken van een aangepaste installatie kopie vanuit een VHD-bestand met behulp van Power shell:
 
-1. Meld u bij een PowerShell-prompt aan bij uw Azure-account met de volgende oproep bij de cmdlet **Connect-AzAccount.**
+1. Meld u bij een Power shell-prompt aan bij uw Azure-account met de volgende aanroep van de cmdlet **Connect-AzAccount** .
 
     ```powershell
     Connect-AzAccount
     ```
 
-1.  Selecteer het gewenste Azure-abonnement door de cmdlet **Select-AzSubscription** aan te roepen. Vervang de volgende tijdelijke aanduiding voor de **$subscriptionId** variabele door een geldige Azure-abonnements-id.
+1.  Selecteer het gewenste Azure-abonnement door de cmdlet **Select-AzSubscription** aan te roepen. Vervang de volgende tijdelijke aanduiding voor de variabele **$subscriptionId** door een geldige Azure-abonnements-id.
 
     ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  Haal het labobject op door de **get-AzResource-cmdlet** te bellen. Vervang de volgende tijdelijke aanduidingen voor de **$labRg** en **$labName** variabelen door de juiste waarden voor uw omgeving.
+1.  Haal het lab-object op door de cmdlet **Get-AzResource** aan te roepen. Vervang de volgende tijdelijke aanduidingen voor de variabelen **$labRg** en **$labName** door de juiste waarden voor uw omgeving.
 
     ```powershell
     $labRg = '<Specify your lab resource group name here>'
@@ -56,13 +56,13 @@ In de volgende stappen u een aangepaste afbeelding maken van een VHD-bestand met
     $lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     ```
 
-1.  Vervang de volgende tijdelijke aanduiding voor de **$vhdUri** variabele door de URI naar uw geüploade VHD-bestand. U de URI van het VHD-bestand ophalen via het blobblad van het opslagaccount in de Azure-portal.
+1.  Vervang de volgende tijdelijke aanduiding voor de variabele **$vhdUri** door de URI naar uw GEÜPLOADe VHD-bestand. U kunt de URI van het VHD-bestand ophalen van de Blade blob van het opslag account in de Azure Portal.
 
     ```powershell
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
-1.  Maak de aangepaste afbeelding met de cmdlet **Nieuw-AzResourceGroupDeployment.** Vervang de volgende tijdelijke aanduidingen voor de **$customImageName** en **$customImageDescription** variabelen in betekenisvolle namen voor uw omgeving.
+1.  Maak de aangepaste installatie kopie met behulp van de cmdlet **New-AzResourceGroupDeployment** . Vervang de volgende tijdelijke aanduidingen voor de variabelen **$customImageName** en **$customImageDescription** naar zinvolle namen voor uw omgeving.
 
     ```powershell
     $customImageName = '<Specify the custom image name>'
@@ -73,9 +73,9 @@ In de volgende stappen u een aangepaste afbeelding maken van een VHD-bestand met
     New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/samples/DevTestLabs/QuickStartTemplates/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
     ```
 
-## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>PowerShell-script om een aangepaste afbeelding te maken op basis van een VHD-bestand
+## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>Power shell-script voor het maken van een aangepaste installatie kopie van een VHD-bestand
 
-Het volgende PowerShell-script kan worden gebruikt om een aangepaste afbeelding te maken op basis van een VHD-bestand. Vervang de tijdelijke aanduidingen (begin en einde met hoekbeugels) door de juiste waarden voor uw behoeften.
+Het volgende Power shell-script kan worden gebruikt om een aangepaste installatie kopie te maken op basis van een VHD-bestand. Vervang de tijdelijke aanduidingen (beginnen en eindigen met punt haken) door de juiste waarden voor uw behoeften.
 
 ```powershell
 # Log in to your Azure account.
@@ -104,11 +104,11 @@ $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsT
 New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/samples/DevTestLabs/QuickStartTemplates/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
 ```
 
-## <a name="related-blog-posts"></a>Gerelateerde blogberichten
+## <a name="related-blog-posts"></a>Gerelateerde blog berichten
 
 - [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Aangepaste afbeeldingen kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Aangepaste installatie kopieën kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een vm toevoegen aan uw lab](devtest-lab-add-vm.md)
+- [Een virtuele machine toevoegen aan uw Lab](devtest-lab-add-vm.md)

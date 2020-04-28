@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop-taken uitvoeren met PowerShell en Azure HDInsight
-description: Meer informatie over het gebruik van Azure PowerShell vanuit een werkstation voor het importeren en exporteren van Apache Sqoop tussen een Apache Hadoop-cluster en een Azure SQL Database.
+title: Apache Sqoop-taken uitvoeren met behulp van Power shell en Azure HDInsight
+description: Informatie over het gebruik van Azure PowerShell van een werk station voor het uitvoeren van Apache Sqoop importeren en exporteren tussen een Apache Hadoop cluster en een Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: f39b595adf249b7412cb9b6b48f86b6fbd2c5e1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263401"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met Azure PowerShell voor Apache Hadoop in HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met behulp van Azure PowerShell voor Apache Hadoop in HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Meer informatie over het gebruik van Azure PowerShell om Apache Sqoop-taken in Azure HDInsight uit te voeren voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure SQL Database- of SQL Server-database.  Dit artikel is een voortzetting van [Gebruik Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+Meer informatie over het gebruik van Azure PowerShell voor het uitvoeren van Apache Sqoop-taken in azure HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure SQL Database of SQL Server-Data Base.  Dit artikel is een voortzetting van het [gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkstation met Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+* Een werk station met Azure PowerShell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
 
-* Voltooiing van [de testomgeving instellen](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) van [Apache Sqoop gebruiken met Hadoop in HDInsight.](./hdinsight-use-sqoop.md)
+* Volt ooien van de [instelling test omgeving](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [voor het gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
-* Vertrouwdheid met Sqoop. Zie [Sqoop-gebruikershandleiding](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)voor meer informatie.
+* Vertrouwd met Sqoop. Zie [Sqoop User Guide (Engelstalig](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)) voor meer informatie.
 
-## <a name="sqoop-export"></a>Sqoop export
+## <a name="sqoop-export"></a>Sqoop exporteren
 
 Van Hive naar SQL Server.
 
-In dit voorbeeld worden `hivesampletable` gegevens `mobiledata` uit de tabel Hive geëxporteerd naar de tabel in SQL Database. Stel de waarden in voor de onderstaande variabelen en voer de opdracht uit.
+In dit voor beeld worden gegevens uit `hivesampletable` de Hive- `mobiledata` tabel naar de tabel in SQL database geëxporteerd. Stel de waarden voor de onderstaande variabelen in en voer vervolgens de opdracht uit.
 
 ```powershell
 $hdinsightClusterName = ""
@@ -62,7 +62,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ### <a name="alternative-execution"></a>Alternatieve uitvoering
 
-1. De onderstaande code voert dezelfde export uit; het biedt echter een manier om de uitvoerlogboeken te lezen. Voer de code uit om de export te starten.
+1. De onderstaande code voert dezelfde export uit. Het biedt echter een manier om de uitvoer logboeken te lezen. Voer de code uit om het exporteren te starten.
 
     ```powershell
     $sqoopCommand = "export --connect $connectionString --table mobiledata --hcatalog-table hivesampletable"
@@ -76,7 +76,7 @@ New-AzHDInsightSqoopJobDefinition `
                     -JobDefinition $sqoopDef
     ```
 
-1. De onderstaande code geeft de uitvoerlogboeken weer. Voer de onderstaande code uit:
+1. In de onderstaande code worden de uitvoer logboeken weer gegeven. Voer de volgende code uit:
 
     ```powershell
     Get-AzHDInsightJobOutput `
@@ -92,11 +92,11 @@ New-AzHDInsightSqoopJobDefinition `
         -DisplayOutputType StandardOutput
     ```
 
-Als u het foutbericht ontvangt, `The specified blob does not exist.`probeert u het na enkele minuten opnieuw.
+Als het fout bericht wordt weer gegeven `The specified blob does not exist.`, probeert u het over enkele minuten opnieuw.
 
 ## <a name="sqoop-import"></a>Sqoop importeren
 
-Van SQL Server naar Azure Storage. In dit voorbeeld `mobiledata` worden gegevens uit de `wasb:///tutorials/usesqoop/importeddata` tabel in SQL Database geïmporteerd naar de map op HDInsight. De velden in de gegevens worden gescheiden door een tabteken en de regels worden beëindigd door een nieuwregelteken. In dit voorbeeld wordt ervan uitgegaan dat u het eerdere voorbeeld hebt voltooid.
+Van SQL Server naar Azure Storage. In dit voor beeld worden gegevens `mobiledata` uit de tabel in SQL database geïmporteerd `wasb:///tutorials/usesqoop/importeddata` in de map op HDInsight. De velden in de gegevens worden gescheiden door een tab en de lijnen worden afgesloten met een nieuw regel teken. In dit voor beeld wordt ervan uitgegaan dat u het vorige voor beeld hebt voltooid.
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -124,11 +124,11 @@ Get-AzHDInsightJobOutput `
 
 ```
 
-## <a name="additional-sqoop-export-example"></a>Aanvullend voorbeeld van Sqoop-export
+## <a name="additional-sqoop-export-example"></a>Voor beeld van extra Sqoop-export
 
-Dit is een robuust voorbeeld `/tutorials/usesqoop/data/sample.log` waarmee gegevens uit het standaardopslagaccount worden `log4jlogs` geëxporteerd en deze vervolgens worden geïmporteerd naar een tabel die in een SQL Server-database wordt aangeroepen. Dit voorbeeld is niet afhankelijk van de eerdere voorbeelden.
+Dit is een robuust voor beeld van het exporteren `/tutorials/usesqoop/data/sample.log` van gegevens uit het standaard opslag account en vervolgens geïmporteerd in een tabel met `log4jlogs` de naam in een SQL Server-Data Base. Dit voor beeld is niet afhankelijk van de voor gaande voor beelden.
 
-Met het volgende PowerShell-script wordt het bronbestand vooraf verwerkt `log4jlogs`en wordt het vervolgens geëxporteerd naar een Azure SQL Database naar de tabel . Vervang `CLUSTERNAME` `CLUSTERPASSWORD`, `SQLPASSWORD` en met de waarden die u hebt gebruikt vanuit de vereiste.
+Met het volgende Power shell-script wordt het bron bestand vooraf verwerkt en vervolgens geëxporteerd naar een Azure SQL Database `log4jlogs`naar een tabel. Vervang `CLUSTERNAME`, `CLUSTERPASSWORD`en `SQLPASSWORD` door de waarden die u hebt gebruikt in de vereiste.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -269,15 +269,15 @@ Get-AzHDInsightJobOutput `
 
 ## <a name="limitations"></a>Beperkingen
 
-Linux-gebaseerde HDInsight presenteert de volgende beperkingen:
+HDInsight op basis van Linux biedt de volgende beperkingen:
 
-* Bulkexport: de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database, biedt momenteel geen ondersteuning voor bulkinserts.
+* Bulk export: de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt momenteel geen ondersteuning voor bulksgewijs invoegen.
 
-* Batching: Door `-batch` de schakelaar te gebruiken wanneer de inzetstukken worden uitgevoerd, voert Sqoop meerdere inserts uit in plaats van de invoegbewerkingen te batcheren.
+* Batching: door gebruik te `-batch` maken van de switch wanneer deze wordt ingevoegd, voert Sqoop meerdere toevoegingen uit in plaats van de invoeg bewerkingen uit batch te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu heb je geleerd hoe je Sqoop moet gebruiken. Voor meer informatie zie:
+U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
 
-* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): Gebruik Sqoop-actie in een Oozie-workflow.
-* [Gegevens uploaden naar HDInsight:](../hdinsight-upload-data.md)zoek andere methoden voor het uploaden van gegevens naar HDInsight- of Azure Blob-opslag.
+* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
+* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight of Azure Blob Storage zoeken.

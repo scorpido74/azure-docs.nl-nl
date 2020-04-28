@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Vak configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Box .
+title: 'Zelf studie: vak configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Box.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,122 +16,122 @@ ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058566"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Zelfstudie: Vak configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Zelf studie: vak configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen weer te geven die u moet uitvoeren in Box en Azure AD om gebruikersaccounts automatisch in te richten en te de-provisionen van Azure AD naar Box.
+Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren in box en Azure AD om gebruikers accounts automatisch van Azure AD in te richten en uit te voeren.
 
 > [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het configureren van Azure AD-integratie met Box hebt u de volgende items nodig:
 
-- Een Azure AD-tenant
-- Een Box Business plan of beter
+- Een Azure AD-Tenant
+- Een box-Business-abonnement of beter
 
 > [!NOTE]
-> Wanneer u de stappen in deze zelfstudie test, raden we u aan *geen* productieomgeving te gebruiken.
+> Wanneer u de stappen in deze zelf studie test, wordt u aangeraden *geen* productie omgeving te gebruiken.
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
 - Als u niet beschikt over een evaluatieomgeving in Azure AD, kunt u [een gratis proefversie van één maand krijgen](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-box"></a>Gebruikers toewijzen aan Vak 
+## <a name="assigning-users-to-box"></a>Gebruikers toewijzen aan vak 
 
-Azure Active Directory gebruikt een concept genaamd 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van automatische gebruikersaccountinrichting worden alleen de gebruikers en groepen die zijn 'toegewezen' aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Box-app. Eenmaal besloten, u deze gebruikers toewijzen aan uw Box-app door de instructies hier te volgen:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Box-app. Eenmaal besloten, kunt u deze gebruikers toewijzen aan uw Box-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfsapp](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ## <a name="assign-users-and-groups"></a>Gebruikers en groepen toewijzen
-Met het tabblad **Vak > gebruikers en groepen** in de Azure-portal u opgeven welke gebruikers en groepen toegang moeten krijgen tot Box. Toewijzing van een gebruiker of groep zorgt ervoor dat de volgende dingen optreden:
+In het **vak > gebruikers en groepen** op het tabblad Azure Portal kunt u opgeven aan welke gebruikers en groepen toegang moet worden verleend. De toewijzing van een gebruiker of groep leidt ertoe dat de volgende zaken optreden:
 
-* Azure AD staat de toegewezen gebruiker (via directe toewijzing of groepslidmaatschap) toe om zich te verifiëren naar Box. Als een gebruiker niet is toegewezen, staat Azure AD niet toe zich aan te melden bij Box en geeft het een fout op de aanmeldingspagina van Azure AD.
-* Er wordt een app-tegel voor Box toegevoegd aan het [startprogramma voor toepassingen](../manage-apps/end-user-experiences.md)van de gebruiker.
-* Als automatische inrichting is ingeschakeld, worden de toegewezen gebruikers en/of groepen toegevoegd aan de inrichtingswachtrij die automatisch moet worden ingericht.
+* In azure AD is de toegewezen gebruiker (door middel van een directe toewijzing of groepslid maatschap) in staat om zich aan te melden. Als een gebruiker niet is toegewezen, staat Azure AD niet toe om zich aan te melden bij box en wordt er een fout bericht weer gegeven op de aanmeldings pagina van Azure AD.
+* Een app-tegel voor box wordt toegevoegd aan het start programma van de [toepassing](../manage-apps/end-user-experiences.md)van de gebruiker.
+* Als automatische inrichting is ingeschakeld, worden de toegewezen gebruikers en/of groepen aan de inrichtings wachtrij toegevoegd om automatisch te worden ingericht.
   
-  * Als alleen gebruikersobjecten zijn geconfigureerd om te worden ingericht, worden alle direct toegewezen gebruikers in de inrichtingswachtrij geplaatst en worden alle gebruikers die lid zijn van toegewezen groepen in de inrichtingswachtrij geplaatst. 
-  * Als groepsobjecten zijn geconfigureerd om te worden ingericht, worden alle toegewezen groepsobjecten in box ingericht en alle gebruikers die lid zijn van die groepen. De groeps- en gebruikerslidmaatschappen worden bewaard nadat ze naar Box zijn geschreven.
+  * Als alleen gebruikers objecten zijn geconfigureerd om te worden ingericht, worden alle rechtstreeks toegewezen gebruikers in de inrichtings wachtrij geplaatst en worden alle gebruikers die lid zijn van een toegewezen groep in de inrichtings wachtrij geplaatst. 
+  * Als groeps objecten zijn geconfigureerd om te worden ingericht, worden alle toegewezen groeps objecten ingericht voor box en alle gebruikers die lid zijn van deze groepen. De groeps-en gebruikers lidmaatschappen worden bewaard wanneer ze worden geschreven naar box.
 
-U het tabblad **Kenmerken > Enkele aanmelding** gebruiken om te configureren welke gebruikerskenmerken (of claims) aan Box worden gepresenteerd tijdens SAML-verificatie en het tabblad **Kenmerken > Inrichting** om te configureren hoe gebruikers- en groepskenmerken tijdens inrichtingsbewerkingen van Azure AD naar Box stromen.
+U kunt de **kenmerken > tabblad eenmalige aanmelding** gebruiken om te configureren welke gebruikers kenmerken (of claims) worden weer gegeven aan box tijdens op SAML gebaseerde verificatie, en het tabblad **kenmerken > inrichten** om te configureren hoe gebruikers-en groeps kenmerken stromen van Azure AD naar box tijdens het inrichten.
 
-### <a name="important-tips-for-assigning-users-to-box"></a>Belangrijke tips voor het toewijzen van gebruikers aan Box 
+### <a name="important-tips-for-assigning-users-to-box"></a>Belang rijke tips voor het toewijzen van gebruikers aan box 
 
-*   Het wordt aanbevolen dat één Azure AD-gebruiker die aan Box is toegewezen, de inrichtingsconfiguratie test. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+*   Het is raadzaam om één Azure AD-gebruiker toe te wijzen aan box om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-*   Wanneer u een gebruiker aan een vak toewijst, moet u een geldige gebruikersrol selecteren. De rol 'Standaardtoegang' werkt niet voor inrichten.
+*   Wanneer u een gebruiker aan het vak toewijzen, moet u een geldige gebruikersrol selecteren. De rol ' standaard toegang ' werkt niet voor het inrichten.
 
-## <a name="enable-automated-user-provisioning"></a>Geautomatiseerde gebruikersinrichting inschakelen
+## <a name="enable-automated-user-provisioning"></a>Automatische gebruikers inrichting inschakelen
 
-In deze sectie wordt uw Azure AD verbonden met de API voor het inrichten van het gebruikersaccount van Box en wordt de inrichtingsservice geconfigureerd om toegewezen gebruikersaccounts in Box te maken, bij te werken en uit te schakelen op basis van gebruikers- en groepstoewijzing in Azure AD.
+In deze sectie vindt u instructies voor het verbinden van de API voor het inrichten van de gebruikers account van Azure AD in box en het configureren van de inrichtings service om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in vak op basis van de gebruikers-en groeps toewijzing in azure AD.
 
-Als automatische inrichting is ingeschakeld, worden de toegewezen gebruikers en/of groepen toegevoegd aan de inrichtingswachtrij die automatisch moet worden ingericht.
+Als automatische inrichting is ingeschakeld, worden de toegewezen gebruikers en/of groepen aan de inrichtings wachtrij toegevoegd om automatisch te worden ingericht.
     
- * Als alleen gebruikersobjecten zijn geconfigureerd om te worden ingericht, worden direct toegewezen gebruikers in de inrichtingswachtrij geplaatst en worden alle gebruikers die lid zijn van toegewezen groepen in de inrichtingswachtrij geplaatst. 
+ * Als alleen gebruikers objecten zijn geconfigureerd om te worden ingericht, worden direct toegewezen gebruikers in de inrichtings wachtrij geplaatst en alle gebruikers die lid zijn van een toegewezen groep, worden in de inrichtings wachtrij geplaatst. 
     
- * Als groepsobjecten zijn geconfigureerd om te worden ingericht, worden alle toegewezen groepsobjecten in box ingericht en alle gebruikers die lid zijn van die groepen. De groeps- en gebruikerslidmaatschappen worden bewaard nadat ze naar Box zijn geschreven.
+ * Als groeps objecten zijn geconfigureerd om te worden ingericht, worden alle toegewezen groeps objecten ingericht voor box en alle gebruikers die lid zijn van deze groepen. De groeps-en gebruikers lidmaatschappen worden bewaard wanneer ze worden geschreven naar box.
 
 > [!TIP] 
-> U er ook voor kiezen om SAML-gebaseerde single sign-On for Box in te schakelen, volgens de instructies in [Azure portal.](https://portal.azure.com) Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Ga als een automatisch beheer van het gebruikersaccount:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Automatische toewijzing van gebruikers accounts configureren:
 
-Het doel van deze sectie is om te schetsen hoe u de inrichting van Active Directory-gebruikersaccounts naar Box inschakelen.
+Het doel van deze sectie is het maken van een overzicht van het inrichten van Active Directory gebruikers accounts in box.
 
-1. Blader in de [Azure-portal](https://portal.azure.com)naar de sectie **Azure Active Directory > Enterprise Apps > Alle toepassingen.**
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
-2. Als u Box al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Vak met behulp van het zoekveld. Selecteer Anders **Toevoegen** en zoeken naar **Vak** in de toepassingsgalerie. Selecteer Vak in de zoekresultaten en voeg het toe aan uw lijst met toepassingen.
+2. Als u het vak al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw exemplaar van box met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **vak** in de toepassings galerie. Selecteer een vak in de zoek resultaten en voeg dit toe aan uw lijst met toepassingen.
 
-3. Selecteer uw instantie van Vak en selecteer vervolgens het tabblad **Inrichten.**
+3. Selecteer uw instantie van Box en selecteer vervolgens het tabblad **inrichten** .
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**. 
+4. Stel de **inrichtings modus** in op **automatisch**. 
 
-    ![Provisioning](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![inrichtings](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. Klik onder de sectie **Beheerdersreferenties** op **Autoriseren** om een aanmeldingsdialoogvenster voor een vak te openen in een nieuw browservenster.
+5. Klik onder de sectie **beheerders referenties** op **machtigen** om een dialoog venster Aanmelden bij een vak te openen in een nieuw browser venster.
 
-6. Geef **op de pagina Aanmelden toegang tot de** pagina Vak op en klik op **Autoriseren.** 
+6. Geef op de pagina **aanmelden om toegang te verlenen** tot het vak de vereiste referenties op en klik vervolgens op **autoriseren**. 
    
-    ![Automatische gebruikersvoorziening inschakelen](./media/box-userprovisioning-tutorial/IC769546.png "Automatische gebruikersvoorziening inschakelen")
+    ![Automatische gebruikers inrichting inschakelen](./media/box-userprovisioning-tutorial/IC769546.png "Automatische gebruikers inrichting inschakelen")
 
-7. Klik **op Toegang verlenen tot Box** om deze bewerking te autoriseren en terug te keren naar de Azure-portal. 
+7. Klik op **toegang verlenen aan** om deze bewerking te autoriseren en terug te keren naar de Azure Portal. 
    
-    ![Automatische gebruikersvoorziening inschakelen](./media/box-userprovisioning-tutorial/IC769549.png "Automatische gebruikersvoorziening inschakelen")
+    ![Automatische gebruikers inrichting inschakelen](./media/box-userprovisioning-tutorial/IC769549.png "Automatische gebruikers inrichting inschakelen")
 
-8. Klik in de Azure-portal op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Box-app. Als de verbinding mislukt, moet u ervoor zorgen dat uw Box-account machtigingen voor teambeheer heeft en probeert u de stap **'Autoriseren'** opnieuw.
+8. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Box-app. Als de verbinding mislukt, zorgt u ervoor dat uw Box-account beschikt over team beheerders machtigingen en voert u de stap **' autoriseren '** opnieuw uit.
 
-9. Voer het e-mailadres in van een persoon of groep die meldingen van provisioning-fouten moet ontvangen in het veld **E-mail melden** en schakel het selectievakje in.
+9. Voer het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen in het veld **e-mail melding** en schakel het selectie vakje in.
 
-10. Klik **op Opslaan.**
+10. Klik op **opslaan.**
 
-11. Selecteer Azure **Active Directory-gebruikers synchroniseren naar vak** onder de sectie Toewijzingen.
+11. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met.**
 
-12. Controleer in de sectie **Toewijzingen van kenmerken** de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Box. De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Vak voor updatebewerkingen te matchen. Selecteer de knop Opslaan om wijzigingen door te voeren.
+12. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD in box. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor de overeenkomst tussen de gebruikers accounts in box voor bijwerk bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
-13. Als u de Azure AD-inrichtingsservice voor Vak wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie Instellingen
+13. Als u de Azure AD-inrichtings service voor Box wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte instellingen
 
-14. Klik **op Opslaan.**
+14. Klik op **opslaan.**
 
-Hiermee wordt de eerste synchronisatie gestart van gebruikers en/of groepen die zijn toegewezen aan Box in de sectie Gebruikers en groepen. De eerste synchronisatie duurt langer om uit te voeren dan de daaropvolgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de service wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het inrichten van activiteitslogboeken te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtingsservice in uw Box-app.
+Hiermee start u de eerste synchronisatie van gebruikers en/of groepen die zijn toegewezen aan box in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw Box-app.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-In de boxtenant worden gesynchroniseerde gebruikers weergegeven onder **Beheerde gebruikers** in de **beheerconsole**.
+In uw Box-Tenant worden gesynchroniseerde gebruikers vermeld onder **beheerde gebruikers** in de **beheer console**.
 
-![Integratiestatus](./media/box-userprovisioning-tutorial/IC769556.png "Integratiestatus")
+![Integratie status](./media/box-userprovisioning-tutorial/IC769556.png "Integratie status")
 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](tutorial-list.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Eén aanmelding configureren](box-tutorial.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Eenmalige aanmelding configureren](box-tutorial.md)

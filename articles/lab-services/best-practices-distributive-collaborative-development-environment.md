@@ -1,6 +1,6 @@
 ---
-title: Gedistribueerde samenwerkingsontwikkeling van Azure DevTest Labs-bronnen
-description: Biedt best practices voor het opzetten van een gedistribueerde en collaboratieve ontwikkelomgeving om DevTest Labs-bronnen te ontwikkelen.
+title: Gedistribueerde samenwerkings ontwikkeling van Azure DevTest Labs resources
+description: Voorziet in Aanbevolen procedures voor het instellen van een gedistribueerde en samenwerkings omgeving voor het ontwikkelen van DevTest Labs-resources.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,52 +14,52 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170111"
 ---
-# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Aanbevolen procedures voor gedistribueerde en collaboratieve ontwikkeling van Azure DevTest Labs-bronnen
-Gedistribueerde collaboratieve ontwikkeling stelt verschillende teams of mensen in staat om een codebasis te ontwikkelen en te onderhouden. Om succesvol te zijn, is het ontwikkelingsproces afhankelijk van de mogelijkheid om informatie te maken, te delen en te integreren. Dit sleutelontwikkelingsprincipe kan worden gebruikt in Azure DevTest Labs. Er zijn verschillende soorten resources binnen een lab die vaak worden verdeeld over verschillende laboratoria binnen een onderneming. De verschillende soorten resources zijn gericht op twee gebieden:
+# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Aanbevolen procedures voor gedistribueerde en samen werkende ontwikkeling van Azure DevTest Labs bronnen
+Dankzij gedistribueerde samenwerkings ontwikkeling kunnen verschillende teams of mensen een code basis ontwikkelen en onderhouden. Om te slagen, is het ontwikkel proces afhankelijk van de mogelijkheid om informatie te maken, te delen en te integreren. Deze methode voor het ontwikkelen van sleutels kan worden gebruikt in Azure DevTest Labs. Er zijn verschillende soorten resources binnen een lab die vaak tussen verschillende Labs binnen een onderneming worden gedistribueerd. De verschillende typen resources zijn gericht op twee gebieden:
 
-- Resources die intern zijn opgeslagen in het lab (lab-based)
-- Bronnen die zijn opgeslagen in [externe opslagplaatsen die zijn verbonden met het lab](devtest-lab-add-artifact-repo.md) (code repository-based). 
+- Bronnen die intern zijn opgeslagen in het lab (op basis van Lab)
+- Bronnen die zijn opgeslagen in [externe opslag plaatsen die zijn verbonden met het lab](devtest-lab-add-artifact-repo.md) (op code opslagplaats gebaseerd). 
 
-Dit document beschrijft enkele aanbevolen procedures die samenwerking en distributie over meerdere teams mogelijk maken en tegelijkertijd zorgen voor aanpassing en kwaliteit op alle niveaus.
+In dit document worden enkele aanbevolen procedures beschreven voor het toestaan van samen werking en distributie in meerdere teams, terwijl de aanpassing en kwaliteit op alle niveaus worden gegarandeerd.
 
-## <a name="lab-based-resources"></a>Lab-gebaseerde bronnen
+## <a name="lab-based-resources"></a>Resources op basis van Lab
 
-### <a name="custom-virtual-machine-images"></a>Aangepaste virtuele machineafbeeldingen
-U een gemeenschappelijke bron van aangepaste afbeeldingen die worden geïmplementeerd om labs op een nachtelijke basis. Zie [Afbeeldingsfabriek](image-factory-create.md)voor gedetailleerde informatie .    
+### <a name="custom-virtual-machine-images"></a>Aangepaste installatie kopieën voor virtuele machines
+U kunt een gemeen schappelijke bron van aangepaste installatie kopieën hebben die dagelijks worden geïmplementeerd in Labs. Zie [Image Factory](image-factory-create.md)voor gedetailleerde informatie.    
 
 ### <a name="formulas"></a>Formules
-[Formules](devtest-lab-manage-formulas.md) zijn labspecifiek en hebben geen distributiemechanisme. De lableden doen alle ontwikkeling van formules. 
+[Formules](devtest-lab-manage-formulas.md) zijn specifiek voor het lab en hebben geen distributie mechanisme. De leden van de test omgeving doen de ontwikkeling van formules. 
 
-## <a name="code-repository-based-resources"></a>Op coderepository gebaseerde bronnen
-Er zijn twee verschillende functies die zijn gebaseerd op coderepositories, artefacten en omgevingen. Dit artikel gaat over de functies en hoe u het meest effectief repositories en workflow instellen om de mogelijkheid te bieden om de beschikbare artefacten en omgevingen op organisatie- of teamniveau aan te passen.  Deze werkstroom is gebaseerd op de strategie voor [het vertakken van standaardbroncode.](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops) 
+## <a name="code-repository-based-resources"></a>Resources op basis van code opslagplaats
+Er zijn twee verschillende functies die zijn gebaseerd op code opslagplaatsen, artefacten en omgevingen. In dit artikel worden de functies beschreven en wordt uitgelegd hoe u het meest effectief opslag plaatsen en de werk stroom kunt instellen zodat de beschik bare artefacten en omgevingen op organisatie niveau of team niveau kunnen worden aangepast.  Deze werk stroom is gebaseerd op de standaard [strategie voor broncode beheer](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Belangrijkste concepten
-De broninformatie voor artefacten bevat metadata, scripts. De broninformatie voor omgevingen bevat metagegevens en Resource Manager-sjablonen met ondersteunende bestanden zoals PowerShell-scripts, DSC-scripts, Zip-bestanden, enzovoort.  
+De bron gegevens voor artefacten bevatten meta gegevens, scripts. De bron gegevens voor omgevingen bevatten meta gegevens en Resource Manager-sjablonen met ondersteunende bestanden zoals Power shell-scripts, DSC-scripts, zip-bestanden enzovoort.  
 
-### <a name="repository-structure"></a>Repository-structuur  
-De meest voorkomende configuratie voor broncodebeheer (SCC) is het instellen van een multi-tier structuur voor het opslaan van codebestanden (Resource Manager-sjablonen, metagegevens en scripts) die worden gebruikt in de labs. Maak in het bijzonder verschillende opslagplaatsen om resources op te slaan die worden beheerd door de verschillende niveaus van het bedrijf:   
+### <a name="repository-structure"></a>Structuur van opslag plaats  
+De meest voorkomende configuratie voor broncode beheer (SCC) is het instellen van een structuur met meerdere lagen voor het opslaan van code bestanden (Resource Manager-sjablonen, meta gegevens en scripts) die in de Labs worden gebruikt. Maak met name verschillende opslag plaatsen om de resources op te slaan die worden beheerd door de verschillende niveaus van het bedrijf:   
 
-- Bedrijfsbrede middelen.
-- Business unit/Division-wide resources
-- Teamspecifieke bronnen.
+- Bronnen voor het hele bedrijf.
+- Bronnen voor bedrijfs eenheid/divisie
+- Team-specifieke resources.
 
-Elk van deze niveaus link naar een andere repository waar de master branch is vereist om van de productiekwaliteit. De [branches](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) in elke opslagplaats zouden voor de ontwikkeling van die specifieke bronnen (artefacten of sjablonen) zijn. Deze structuur sluit goed aan bij DevTest Labs, omdat u eenvoudig meerdere repositories en meerdere branches tegelijk verbinden met de laboratoria van de organisatie. De naam van de opslagplaats is opgenomen in de gebruikersinterface (UI) om verwarring te voorkomen wanneer er identieke namen, beschrijvingen en uitgevers zijn.
+Elk van deze niveaus is gekoppeld aan een andere opslag plaats waar de hoofd vertakking van de productie kwaliteit moet zijn. De [vertakkingen](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) in elke opslag plaats zijn bedoeld voor de ontwikkeling van deze specifieke resources (artefacten of sjablonen). Deze structuur wordt goed uitgelijnd met DevTest Labs, omdat u eenvoudig meerdere opslag plaatsen en meerdere vertakkingen tegelijk kunt verbinden met de laboratoria van de organisatie. De naam van de opslag plaats is opgenomen in de gebruikers interface (UI) om Verwar ring te voor komen wanneer er identieke namen, een beschrijving en een uitgever zijn.
      
-Het volgende diagram toont twee repositories: een bedrijfsrepository die wordt onderhouden door de IT-divisie en een divisierepository die wordt onderhouden door de R-&D-divisie.
+In het volgende diagram ziet u twee opslag plaatsen: een bedrijfs opslagplaats die wordt onderhouden door de IT-afdeling en een divisie opslagplaats die wordt onderhouden door de R&D-afdeling.
 
-![Een voorbeeld distributieve en collaboratieve ontwikkelingsomgeving](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
+![Een voor beeld van distributie en samen werkende ontwikkel omgeving](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Deze gelaagde structuur zorgt voor ontwikkeling terwijl een hoger niveau van kwaliteit op de master branch, terwijl het hebben van meerdere repositories aangesloten op een lab zorgt voor meer flexibiliteit.
+Deze gelaagde structuur maakt het mogelijk om te ontwikkelen met een hoger niveau van kwaliteit bij de Master vertakking, terwijl meerdere opslag plaatsen zijn verbonden met een lab, meer flexibiliteit biedt.
 
 ## <a name="next-steps"></a>Volgende stappen    
 Zie de volgende artikelen:
 
-- Een opslagplaats toevoegen aan een lab met behulp van de [Azure-portal](devtest-lab-add-artifact-repo.md) of via [azure resourcebeheersjabloon](add-artifact-repository.md)
-- [DevTest Labs artefacten](devtest-lab-artifact-author.md)
-- [DevTest Labs omgevingen](devtest-lab-create-environment-from-arm.md).
+- Een opslag plaats toevoegen aan een Lab met behulp van de [Azure Portal](devtest-lab-add-artifact-repo.md) of via [Azure resource management-sjabloon](add-artifact-repository.md)
+- [DevTest Labs-artefacten](devtest-lab-artifact-author.md)
+- [DevTest Labs-omgevingen](devtest-lab-create-environment-from-arm.md).

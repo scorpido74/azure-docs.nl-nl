@@ -1,6 +1,6 @@
 ---
-title: Een VM maken met een statisch openbaar IP-adres - Azure CLI | Microsoft Documenten
-description: Meer informatie over het maken van een VM met een statisch openbaar IP-adres met de Azure command-line interface (CLI).
+title: Een virtuele machine met een statisch openbaar IP-adres maken-Azure CLI | Microsoft Docs
+description: Meer informatie over het maken van een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure-opdracht regel interface (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,28 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
 ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76043404"
 ---
-# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Een virtuele machine maken met een statisch openbaar IP-adres met de Azure CLI
+# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Een virtuele machine met een statisch openbaar IP-adres maken met behulp van de Azure CLI
 
-U een virtuele machine maken met een statisch openbaar IP-adres. Met een openbaar IP-adres u vanaf het internet communiceren met een virtuele machine. Wijs een statisch openbaar IP-adres toe, in plaats van een dynamisch adres, om ervoor te zorgen dat het adres nooit verandert. Meer informatie over [statische openbare IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Zie [IP-adressen toevoegen, wijzigen of verwijderen](virtual-network-network-interface-addresses.md)als u een openbaar IP-adres wilt wijzigen dat is toegewezen aan een bestaande virtuele machine van dynamisch naar statisch, of om met privé-IP-adressen te werken. Openbare IP-adressen hebben een [nominale vergoeding](https://azure.microsoft.com/pricing/details/ip-addresses)en er is een [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aan het aantal openbare IP-adressen dat u per abonnement gebruiken.
+U kunt een virtuele machine maken met een statisch openbaar IP-adres. Met een openbaar IP-adres kunt u via internet communiceren met een virtuele machine. Wijs een statisch openbaar IP-adres in plaats van een dynamisch adres toe om ervoor te zorgen dat het adres nooit wordt gewijzigd. Meer informatie over [statische open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Zie [IP-adressen toevoegen, wijzigen of verwijderen](virtual-network-network-interface-addresses.md)voor meer informatie over het wijzigen van een openbaar IP-adres dat is toegewezen aan een bestaande virtuele machine van dynamisch naar statisch of voor gebruik van privé-IP-adressen. Open bare IP-adressen hebben een [nominale belasting](https://azure.microsoft.com/pricing/details/ip-addresses)en er geldt een [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal open bare IP-adressen dat u per abonnement kunt gebruiken.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-U de volgende stappen uitvoeren vanaf uw lokale computer of met de Azure Cloud Shell. Als u uw lokale computer wilt gebruiken, moet u ervoor zorgen dat de [Azure CLI is geïnstalleerd.](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) Als u de Azure Cloud Shell wilt gebruiken, selecteert **u Probeer het** in de rechterbovenhoek van een opdrachtvak dat volgt. De Cloud Shell ondertekent u in Azure.
+U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van de Azure Cloud Shell. Als u uw lokale computer wilt gebruiken, controleert u of de [Azure cli is geïnstalleerd](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Als u de Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van een wille keurig opdracht venster. De Cloud Shell meldt u aan bij Azure.
 
-1. Als u de Cloud Shell gebruikt, gaat u naar stap 2. Open een opdrachtsessie en `az login`meld u aan bij Azure met .
-2. Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep in de Azure-regio Oost-VS gezoend:
+1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2. Open een opdracht sessie en meld u aan bij `az login`Azure met.
+2. Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voor beeld wordt een resource groep gemaakt in de regio VS Oost Azure:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. Maak een virtuele machine met de opdracht [az vm create](/cli/azure/vm#az-vm-create). De `--public-ip-address-allocation=static` optie wijst een statisch openbaar IP-adres toe aan de virtuele machine. In het volgende voorbeeld wordt een Virtuele Ubuntu-machine gemaakt met een statisch, eenvoudig SKU-openbaar IP-adres met de naam *myPublicIpAddress:*
+3. Maak een virtuele machine met de opdracht [az vm create](/cli/azure/vm#az-vm-create). Met `--public-ip-address-allocation=static` deze optie wordt een statisch openbaar IP-adres toegewezen aan de virtuele machine. In het volgende voor beeld wordt een Ubuntu-virtuele machine gemaakt met een statisch IP-adres voor de basis-SKU met de naam *myPublicIpAddress*:
 
    ```azurecli-interactive
    az vm create \
@@ -50,9 +50,9 @@ U de volgende stappen uitvoeren vanaf uw lokale computer of met de Azure Cloud S
      --public-ip-address-allocation static
    ```
 
-   Als het openbare IP-adres een standaard `--public-ip-sku Standard` SKU moet zijn, voegt u deze toe aan de vorige opdracht. Meer informatie over [SKU's voor openbaar IP-adres](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-endpool van een openbare Azure Load Balancer, moet de SKU van het openbare IP-adres van de virtuele machine overeenkomen met de SKU van het openbare IP-adres van de load balancer. Zie Azure [Load Balancer](../load-balancer/concepts-limitations.md#skus)voor meer informatie.
+   Als het open bare IP-adres een standaard-SKU moet `--public-ip-sku Standard` zijn, voegt u toe aan de vorige opdracht. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus)voor meer informatie.
 
-4. Bekijk het toegewezen openbare IP-adres en bevestig dat het is gemaakt als een statisch, basis SKU-adres, met [openbare IP-show van het AZ-netwerk:](/cli/azure/network/public-ip#az-network-public-ip-show)
+4. Bekijk het toegewezen open bare IP-adres en bevestig dat het is gemaakt als een statisch, basis-SKU-adres met [AZ Network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show):
 
    ```azurecli-interactive
    az network public-ip show \
@@ -62,10 +62,10 @@ U de volgende stappen uitvoeren vanaf uw lokale computer of met de Azure Cloud S
      --output table
    ```
 
-   Azure heeft een openbaar IP-adres toegewezen aan adressen die worden gebruikt in de regio waarin u de virtuele machine hebt gemaakt. U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
+   Azure heeft een openbaar IP-adres toegewezen op basis van adressen die worden gebruikt in de regio waarin u de virtuele machine hebt gemaakt. U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
 
 > [!WARNING]
-> Wijzig de IP-adresinstellingen in het besturingssysteem van de virtuele machine niet. Het besturingssysteem is niet op de hoogte van openbare IP-adressen van Azure. Hoewel u privé-IP-adresinstellingen aan het besturingssysteem toevoegen, raden we u aan dit niet te doen tenzij dat nodig is, en pas na het lezen [een privé-IP-adres toevoegen aan een besturingssysteem.](virtual-network-network-interface-addresses.md#private)
+> Wijzig de IP-adres instellingen in het besturings systeem van de virtuele machine niet. Het besturings systeem is niet op de hoogte van open bare IP-adressen van Azure. Hoewel u persoonlijke IP-adres instellingen kunt toevoegen aan het besturings systeem, wordt aangeraden dit niet te doen, tenzij dit nodig is, en pas na het lezen van [een privé-IP-adres toevoegen aan een besturings systeem](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -77,7 +77,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [openbare IP-adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure
-- Meer informatie over alle [instellingen voor openbare IP-adres](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- Meer informatie over [open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in azure
+- Meer informatie over alle [open bare IP-adres instellingen](virtual-network-public-ip-address.md#create-a-public-ip-address)
 - Meer informatie over [privé-IP-adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) en het toewijzen van een [statisch privé-IP-adres](virtual-network-network-interface-addresses.md#add-ip-addresses) aan een virtuele Azure-machine
-- Meer informatie over [het](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maken van virtuele Linux- en [Windows-machines](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Meer informatie over het maken van virtuele [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machines

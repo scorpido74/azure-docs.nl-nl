@@ -1,6 +1,6 @@
 ---
-title: Azure-plaatsingsgroepen voor SAP-toepassingen | Microsoft Documenten
-description: Beschrijft SAP-implementatiescenario's met Azure-plaatsingsgroepen voor nabijheid
+title: Plaatsings groepen voor Azure nabij voor SAP-toepassingen | Microsoft Docs
+description: Beschrijft SAP-implementatie scenario's met Azure proximity placement groups
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,154 +16,154 @@ ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277602"
 ---
-# <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure proximity placement groepen voor optimale netwerklatentie met SAP-toepassingen
-SAP-toepassingen op basis van de SAP NetWeaver- of SAP S/4HANA-architectuur zijn gevoelig voor netwerklatentie tussen de SAP-toepassingslaag en de SAP-databaselaag. Deze gevoeligheid is het resultaat van de meeste bedrijfslogica die in de toepassingslaag wordt uitgevoerd. Omdat de SAP-toepassingslaag de bedrijfslogica uitvoert, worden query's met een hoge frequentie met een snelheid van duizenden of tienduizenden per seconde aan de databaselaag uitgevoerd. In de meeste gevallen is de aard van deze query's eenvoudig. Ze kunnen vaak worden uitgevoerd op de database laag in 500 microseconden of minder.
+# <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen
+SAP-toepassingen die zijn gebaseerd op de architectuur van SAP NetWeaver of SAP S/4HANA, zijn gevoelig voor netwerk latentie tussen de SAP-toepassingslaag en de SAP-gegevenslaag. Deze gevoeligheid is het resultaat van de meeste bedrijfs logica die wordt uitgevoerd in de toepassingslaag. Omdat de SAP-toepassingslaag de bedrijfs logica uitvoert, worden query's naar de data base-laag met een hoge frequentie, met een snelheid van duizenden of tien tallen per seconde, uitgegeven. In de meeste gevallen is de aard van deze query's eenvoudig. Ze kunnen vaak worden uitgevoerd op de database laag in 500 micro seconden of minder.
 
-De tijd die aan het netwerk wordt besteed om een dergelijke query van de toepassingslaag naar de databaselaag te verzenden en het ingestelde resultaat te ontvangen, heeft een grote invloed op de tijd die nodig is om bedrijfsprocessen uit te voeren. Deze gevoeligheid voor netwerklatentie is de reden waarom u een optimale netwerklatentie moet bereiken in SAP-implementatieprojecten. Zie [SAP Note #1100926 - FAQ: Netwerkprestaties](https://launchpad.support.sap.com/#/notes/1100926/E) voor richtlijnen voor het classificeren van de netwerklatentie.
+De tijd die is besteed aan het netwerk om een dergelijke query vanuit de toepassingslaag naar de databaserol te verzenden, heeft een grote invloed op de tijd die nodig is om bedrijfs processen uit te voeren. Deze gevoeligheid voor netwerk latentie is waarom u een optimale netwerk latentie nodig hebt in SAP-implementatie projecten. Zie [SAP Note #1100926-Veelgestelde vragen: netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E) voor richt lijnen voor het classificeren van de netwerk latentie.
 
-In veel Azure-regio's is het aantal datacenters gegroeid. Deze groei is ook veroorzaakt door de invoering van beschikbaarheidszones. Tegelijkertijd gebruiken klanten, vooral voor high-end SAP-systemen, meer speciale VM SKU's in de M-serie- of HANA Large Instances. Deze Azure-typen voor virtuele machines zijn niet beschikbaar in alle datacenters in een specifieke Azure-regio. Door deze twee tendensen hebben klanten netwerklatentie ervaren die niet in het optimale bereik ligt. In sommige gevallen resulteert deze latentie in suboptimale prestaties van hun SAP-systemen.
+In veel Azure-regio's is het aantal data centers verg root. Deze groei is ook geactiveerd door de introductie van Beschikbaarheidszones. Tegelijkertijd gebruiken klanten, met name voor hoogwaardige SAP-systemen, meer speciale VM-Sku's in de M-serie, of in HANA grote instanties. Deze typen virtuele machines van Azure zijn niet beschikbaar in alle data centers in een specifieke Azure-regio. Als gevolg van deze twee Tendencies hebben klanten een netwerk latentie gezien die zich niet in het optimale bereik bevindt. In sommige gevallen resulteert deze latentie in de optimale prestaties van hun SAP-systemen.
 
-Om deze problemen te voorkomen, biedt Azure [nabijheidsplaatsingsgroepen](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Deze nieuwe functionaliteit is al gebruikt om verschillende SAP-systemen te implementeren. Zie het artikel waarnaar wordt verwezen aan het begin van deze alinea voor beperkingen op plaatsingsgroepen voor nabijheidsplaatsing. In dit artikel worden de SAP-scenario's bewerkt waarin azure-plaatsingsgroepen voor nabijheid kunnen of moeten worden gebruikt.
+Om deze problemen te voor komen, biedt Azure [proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Deze nieuwe functionaliteit is al gebruikt voor het implementeren van verschillende SAP-systemen. Zie het artikel waarnaar wordt verwezen aan het begin van deze alinea voor beperkingen op proximity-plaatsings groepen. In dit artikel worden de SAP-scenario's beschreven waarin Azure proximity placement groups kunnen of moeten worden gebruikt.
 
-## <a name="what-are-proximity-placement-groups"></a>Wat zijn nabijheidsplaatsingsgroepen? 
-Een Azure-plaatsingsgroep voor nabijheid is een logische constructie. Wanneer een azure-regio en een Azure-brongroep zijn gedefinieerd, is deze afhankelijk van een Azure-regio en een Azure-brongroep. Wanneer VM's worden geïmplementeerd, wordt een groep voor nabijheidsplaatsing verwezen door:
+## <a name="what-are-proximity-placement-groups"></a>Wat zijn proximity placement groups? 
+Een Azure proximity-plaatsings groep is een logische constructie. Als er een is gedefinieerd, is deze gebonden aan een Azure-regio en een Azure-resource groep. Wanneer Vm's zijn geïmplementeerd, wordt naar een plaatsings groep voor nabijheid verwezen door:
 
-- De eerste Azure VM geïmplementeerd in het datacenter. U de eerste virtuele machine zien als een 'scope VM' die wordt geïmplementeerd in een datacenter op basis van Azure-toewijzingsalgoritmen die uiteindelijk worden gecombineerd met gebruikersdefinities voor een specifieke beschikbaarheidszone.
-- Alle volgende VM's die verwijzen naar de plaatsingsgroep voor nabijheid, om alle vervolgens geïmplementeerde Azure VM's in hetzelfde datacenter te plaatsen als de eerste virtuele machine.
+- De eerste virtuele machine van Azure die is geïmplementeerd in het Data Center. U kunt de eerste virtuele machine beschouwen als een ' scope-VM ' die is geïmplementeerd in een Data Center op basis van Azure-toewijzings algoritmen die uiteindelijk worden gecombineerd met de gebruikers definities voor een specifieke beschikbaarheids zone.
+- Alle volgende Vm's die worden geïmplementeerd, verwijzen naar de plaatsings groep, om alle vervolgens geïmplementeerde Azure-Vm's in hetzelfde Data Center als de eerste virtuele machine te plaatsen.
 
 > [!NOTE]
-> Als er geen hosthardware is geïmplementeerd die een specifiek VM-type kan uitvoeren in het datacenter waar de eerste VM is geplaatst, wordt de implementatie van het gevraagde VM-type niet uitgevoerd. Je krijgt een foutmelding.
+> Als er geen host-hardware is geïmplementeerd waardoor een specifiek VM-type kan worden uitgevoerd in het Data Center waarin de eerste VM is geplaatst, mislukt de implementatie van het aangevraagde VM-type. Er wordt een fout bericht weer gegeven.
 
-Aan één [Azure-brongroep](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) kunnen meerdere plaatsingsgroepen voor nabijheid worden toegewezen. Een plaatsingsgroep voor nabijheid kan echter slechts aan één Azure-brongroep worden toegewezen.
+Aan één [Azure-resource groep](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) kunnen meerdere proximity-plaatsings groepen worden toegewezen. Een proximity-plaatsings groep kan maar aan één Azure-resource groep worden toegewezen.
 
-Wanneer u nabijheidsplaatsingsgroepen gebruikt, houdt u rekening met deze overwegingen:
+Houd rekening met de volgende aandachtspunten wanneer u proximity-plaatsings groepen gebruikt:
 
-- Wanneer u streeft naar optimale prestaties voor uw SAP-systeem en zich beperkt tot één Azure-datacenter voor het systeem met behulp van nabijheidsplaatsingsgroepen, u mogelijk niet alle typen VM-families binnen de plaatsingsgroep combineren. Deze beperkingen treden op omdat de hosthardware die nodig is om een bepaald VM-type uit te voeren, mogelijk niet aanwezig is in het datacenter waarop de 'scoped VM' van de plaatsingsgroep is geïmplementeerd.
-- Tijdens de levenscyclus van zo'n SAP-systeem kan je gedwongen worden om het systeem naar een ander datacenter te verplaatsen. Deze verplaatsing kan nodig zijn als u besluit dat uw scale-out HANA DBMS-laag bijvoorbeeld moet worden verplaatst van vier knooppunten naar 16 knooppunten en er niet genoeg capaciteit is om 12 VM's te krijgen van het type dat u in het datacenter hebt gebruikt.
-- Vanwege de ontmanteling van hardware kan Microsoft capaciteit opbouwen voor een VM-type dat u in een ander datacenter hebt gebruikt, in plaats van het type dat u in eerste instantie hebt gebruikt. In dat scenario moet u mogelijk de vm's van de hele nabijheidsplaatsingsgroep naar een ander datacenter verplaatsen.
+- Wanneer u de beste prestaties voor uw SAP-systeem hebt bereikt en u beperkt tot een enkel Azure-Data Center voor het systeem door gebruik te maken van proximity placement groups, kunt u mogelijk niet alle typen VM-families in de plaatsings groep combi neren. Deze beperkingen doen zich voor omdat de host-hardware die nodig is voor het uitvoeren van een bepaald VM-type, mogelijk niet aanwezig is in het Data Center waarop de ' scoped VM ' van de plaatsings groep is geïmplementeerd.
+- Tijdens de levens cyclus van een dergelijk SAP-systeem kunt u het systeem gedwongen verplaatsen naar een ander Data Center. Deze overstap kan nodig zijn als u besluit om te bepalen of uw scale-out HANA DBMS-laag bijvoorbeeld van vier knoop punten naar 16 knoop punten moet verplaatsen en er onvoldoende capaciteit is voor het verkrijgen van een extra 12 Vm's van het type dat u in het Data Center hebt gebruikt.
+- Vanwege het buiten gebruik stellen van hardware, kan micro soft capaciteit bouwen voor een VM-type dat u in een ander Data Center hebt gebruikt, in plaats van de versie die u in eerste instantie hebt gebruikt. In dat scenario moet u mogelijk de Vm's van alle proximity-plaatsings groepen verplaatsen naar een ander Data Center.
 
-## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Nabijheidsplaatsingsgroepen met SAP-systemen die alleen Azure VM's gebruiken
-De meeste SAP NetWeaver- en S/4HANA-systeemimplementaties op Azure maken geen gebruik van [HANA Large Instances.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) Voor implementaties die geen HANA Large Instances gebruiken, is het belangrijk om optimale prestaties te bieden tussen de SAP-toepassingslaag en de DBMS-laag. Definieer hiervoor een Azure-plaatsingsgroep voor nabijheid alleen voor het systeem.
+## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Proximity-plaatsings groepen met SAP-systemen die alleen virtuele Azure-machines gebruiken
+Voor de meeste SAP NetWeaver en S/4HANA-systeem implementaties in Azure worden geen [grote exemplaren van Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)gebruikt. Voor implementaties die geen gebruik maken van HANA grote instanties, is het belang rijk om optimale prestaties te bieden tussen de SAP-toepassingsobjectlaag en de DBMS-laag. Als u dit wilt doen, definieert u een Azure proximity-plaatsings groep alleen voor het systeem.
 
-In de meeste klantimplementaties bouwen klanten één [Azure-brongroep](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) voor SAP-systemen. In dat geval is er een één-op-één relatie tussen bijvoorbeeld de brongroep voor productie-ERP-systemen en de plaatsingsgroep voor nabijheid. In andere gevallen organiseren klanten hun resourcegroepen horizontaal en verzamelen ze alle productiesystemen in één resourcegroep. In dit geval hebt u een één-op-één relatie tussen uw resourcegroep voor productieSAP-systemen en verschillende nabijheidsplaatsingsgroepen voor uw productie SAP ERP, SAP BW, enzovoort.
+In de meeste implementaties van klanten bouwen klanten één [Azure-resource groep](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) voor SAP-systemen. In dat geval is er een een-op-een-relatie tussen, bijvoorbeeld de resource groep productie ERP-systeem en de plaatsings groep voor de Proximity. In andere gevallen organiseren klanten hun resource groepen horizon taal en verzamelen ze alle productie systemen in één resource groep. In dit geval hebt u een een-op-veel-relatie tussen de resource groep voor productie SAP-systemen en verschillende proximity-plaatsings groepen voor uw productie SAP ERP, SAP BW, enzovoort.
 
-Vermijd het bundelen van verschillende SAP-productie- of niet-productiesystemen in één nabijheidsplaatsingsgroep. Wanneer een klein aantal SAP-systemen of een SAP-systeem en sommige omliggende toepassingen een netwerkcommunicatie met een lage latentie moeten hebben, u overwegen deze systemen in één nabijheidsplaatsingsgroep te verplaatsen. U moet bundels van systemen vermijden, omdat hoe meer systemen u groepeert in een nabijheidsplaatsingsgroep, hoe groter de kans:
+Vermijd het bundelen van meerdere SAP-productie-of niet-productie systemen in één proximity-plaatsings groep. Wanneer een klein aantal SAP-systemen of een SAP-systeem en sommige omringende toepassingen netwerk communicatie met een lage latentie nodig hebben, kunt u overwegen om deze systemen te verplaatsen naar één proximity-plaatsings groep. U dient bundels van systemen te vermijden omdat de meer systemen die u in een proximity-plaatsings groep hebt gegroepeerd, hoger zijn dan de kans:
 
-- Dat u een VM-type nodig hebt dat niet kan worden uitgevoerd in het specifieke datacenter waarin de plaatsingsgroep voor nabijheid is ingericht.
-- Dat resources van niet-mainstream VM's, zoals VM's uit de M-serie, uiteindelijk onvervuld kunnen zijn wanneer u meer nodig hebt omdat u software toevoegt aan een nabijheidsplaatsingsgroep na verloop van tijd.
+- U hebt een VM-type nodig dat niet kan worden uitgevoerd in het specifieke Data Center waarin de Proximity-plaatsings groep ligt.
+- Deze bronnen van niet-mainstream Vm's, zoals virtuele machines uit de M-serie, kunnen uiteindelijk niet worden afgehandeld wanneer u meer nodig hebt omdat u gedurende een periode software toevoegt aan een proximity-plaatsings groep.
 
-Zo ziet de ideale configuratie eruit, zoals beschreven, eruit:
+De ideale configuratie, zoals beschreven, ziet er als volgt uit:
 
-![Plaatsingsgroepen voor nabijheid met alleen Azure VM's](./media/sap-proximity-placement-scenarios/ppg-for-all-azure-vms.png)
+![Proximity-plaatsings groepen met alleen virtuele Azure-machines](./media/sap-proximity-placement-scenarios/ppg-for-all-azure-vms.png)
 
-In dit geval worden afzonderlijke SAP-systemen gegroepeerd in één resourcegroep, met elk één nabijheidsplaatsingsgroep. Er is geen afhankelijkheid van de vraag of u HANA scale-out of DBMS scale-up configuraties gebruikt.
+In dit geval worden enkelvoudige SAP-systemen in één resource groep gegroepeerd, met één proximity-plaatsings groep elk. Er is geen afhankelijkheid van het gebruik van HANA scale-out-of DBMS-schaal configuraties.
 
-## <a name="proximity-placement-groups-and-hana-large-instances"></a>Nabijheidsplaatsingsgroepen en HANA-grote instanties
-Als sommige van uw SAP-systemen afhankelijk zijn van [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) voor de toepassingslaag, u aanzienlijke verbeteringen in netwerklatentie tussen de EENHEID HANA Large Instances en Azure VM's ervaren wanneer u HANA Large Instances-eenheden gebruikt die zijn geïmplementeerd in [revisie 4 rijen of stempels.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance) Een verbetering is dat HANA Large Instances-eenheden, zoals ze worden geïmplementeerd, worden geïmplementeerd met een nabijheidsplaatsingsgroep. U die nabijheidsplaatsingsgroep gebruiken om vm's van de toepassingslaag te implementeren. Als gevolg hiervan worden deze VM's geïmplementeerd in hetzelfde datacenter dat uw HANA Large Instances-eenheid host.
+## <a name="proximity-placement-groups-and-hana-large-instances"></a>Proximity-plaatsings groepen en HANA grote instanties
+Als sommige van uw SAP-systemen zijn gebaseerd op [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) voor de toepassingslaag, kunt u aanzienlijke verbeteringen in de netwerk latentie ervaren tussen de Hana-eenheid voor grote instanties en virtuele Azure-machines wanneer u gebruikmaakt van Hana grote instanties-eenheden die zijn geïmplementeerd in [revisie 4 rijen of stem pels](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Een verbetering is dat HANA-eenheden voor grote instanties, zoals ze zijn geïmplementeerd, implementeren met een proximity-plaatsings groep. U kunt die proximity-plaatsings groep gebruiken om uw Application Layer-Vm's te implementeren. Als gevolg hiervan worden deze Vm's geïmplementeerd in hetzelfde Data Center als de host van uw HANA-eenheid voor grote exemplaren.
 
-Als u wilt bepalen of uw HANA-eenheid voor grote instanties is geïmplementeerd in een revisie 4-stempel of -rij, controleert u het artikel [azure HANA Large Instances-besturingselement via Azure-portal.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit) In het kenmerkenoverzicht van uw HANA-eenheid voor grote instanties u ook de naam van de groep nabijheidsplaatsing bepalen omdat deze is gemaakt toen uw HANA-eenheid voor grote instanties is geïmplementeerd. De naam die wordt weergegeven in het kenmerkenoverzicht is de naam van de groep nabijheidsplaatsing waarin u de VM's van de toepassingslaag moet implementeren.
+Als u wilt bepalen of uw HANA-eenheid voor grote instanties wordt geïmplementeerd in een stempel of rij met revisie 4, raadpleegt u het artikel [Azure Hana-besturings element voor grote instanties via Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit). In het overzicht kenmerken van de eenheid voor grote instanties van HANA, kunt u ook de naam van de plaatsings groep bepalen, omdat deze is gemaakt toen de eenheid van de HANA-grote instanties werd geïmplementeerd. De naam die wordt weer gegeven in de kenmerken overzicht is de naam van de plaatsings groep waar u uw Application Layer-Vm's moet implementeren in.
 
-In vergelijking met SAP-systemen die alleen gebruik maken van virtuele Azure-machines, hebt u bij het gebruik van HANA Large Instances minder flexibiliteit bij het bepalen van het aantal [Azure-brongroepen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) dat u wilt gebruiken. Alle eenheden HANA Large Instances van een [HANA Large Instances-tenant](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms) zijn gegroepeerd in één resourcegroep, zoals [beschreven in dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal). Tenzij u in verschillende tenants implementeert om bijvoorbeeld productie- en niet-productiesystemen of andere systemen te scheiden, worden al uw HANA Large Instances-eenheden geïmplementeerd in één HANA Large Instances-tenant. Deze tenant heeft een één-op-één relatie met een resourcegroep. Maar voor elk van de afzonderlijke eenheden wordt een afzonderlijke plaatsingsgroep voor nabijheid gedefinieerd.
+In vergelijking met SAP-systemen die alleen virtuele Azure-machines gebruiken, hebt u bij het gebruik van HANA grote instanties minder flexibiliteit bij het bepalen van het aantal te gebruiken [Azure-resource groepen](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) . Alle HANA-eenheden voor grote instanties van een in een bron met een [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms) worden gegroepeerd in één resource groep, zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal). Tenzij u in verschillende tenants implementeert om bijvoorbeeld productie-en niet-productie systemen of andere systemen te scheiden, worden al uw HANA grote instanties-eenheden geïmplementeerd in één HANA grote instanties Tenant. Deze Tenant heeft een een-op-een-relatie met een resource groep. Er wordt echter een afzonderlijke proximity-plaatsings groep voor elk van de afzonderlijke eenheden gedefinieerd.
 
-Als gevolg hiervan worden de relaties tussen Azure-brongroepen en nabijheidsplaatsingsgroepen voor één tenant weergegeven zoals hier wordt weergegeven:
+Als gevolg hiervan zijn de relaties tussen Azure-resource groepen en proximity-plaatsings groepen voor één Tenant, zoals hier wordt weer gegeven:
 
-![Nabijheidsplaatsingsgroepen en HANA-grote instanties](./media/sap-proximity-placement-scenarios/ppg-for-hana-large-instance-units.png)
+![Proximity-plaatsings groepen en HANA grote instanties](./media/sap-proximity-placement-scenarios/ppg-for-hana-large-instance-units.png)
 
-## <a name="example-of-deployment-with-proximity-placement-groups"></a>Voorbeeld van implementatie met nabijheidsplaatsingsgroepen
-Hieronder volgen enkele PowerShell-opdrachten die u gebruiken om uw VM's te implementeren met Azure-plaatsingsgroepen voor nabijheid.
+## <a name="example-of-deployment-with-proximity-placement-groups"></a>Voor beeld van een implementatie met proximity-plaatsings groepen
+Hieronder volgen enkele Power shell-opdrachten die u kunt gebruiken voor het implementeren van uw Vm's met Azure proximity placement groups.
 
-De eerste stap, nadat u zich hebt aangemeld bij [Azure Cloud Shell,](https://azure.microsoft.com/features/cloud-shell/)is om te controleren of u zich in het Azure-abonnement bevindt dat u wilt gebruiken voor de implementatie:
+De eerste stap, nadat u zich hebt aangemeld bij [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/), is om te controleren of u zich in het Azure-abonnement bevindt dat u wilt gebruiken voor de implementatie:
 
 <pre><code>
 Get-AzureRmContext
 </code></pre>
 
-Als u wilt overstappen op een ander abonnement, u dit doen door deze opdracht uit te voeren:
+Als u een ander abonnement wilt wijzigen, kunt u dit doen door de volgende opdracht uit te voeren:
 
 <pre><code>
 Set-AzureRmContext -Subscription "my PPG test subscription"
 </code></pre>
 
-Maak een nieuwe Azure-brongroep door deze opdracht uit te voeren:
+Maak een nieuwe Azure-resource groep door deze opdracht uit te voeren:
 
 <pre><code>
 New-AzResourceGroup -Name "myfirstppgexercise" -Location "westus2"
 </code></pre>
 
-Maak de nieuwe groep nabijheidsplaatsing door deze opdracht uit te voeren:
+Maak de nieuwe proximity-plaatsings groep door deze opdracht uit te voeren:
 
 <pre><code>
 New-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose" -Location "westus2"
 </code></pre>
 
-Implementeer uw eerste VM in de groep nabijheidsplaatsing met een opdracht als deze:
+Implementeer uw eerste VM in de plaatsings groep voor nabijheid met behulp van een opdracht zoals deze:
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location "westus2" -OpenPorts 80,3389 -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"
 </code></pre>
 
-De vorige opdracht implementeert een vm op basis van Windows. Nadat deze VM-implementatie is geslaagd, wordt het datacenterbereik van de groep nabijheidsplaatsing gedefinieerd binnen de Azure-regio. Alle volgende VM-implementaties die verwijzen naar de plaatsingsgroep voor nabijheid, zoals weergegeven in de vorige opdracht, worden geïmplementeerd in hetzelfde Azure-datacenter, zolang het VM-type kan worden gehost op hardware die in dat datacenter is geplaatst en de capaciteit voor dat VM-type is Beschikbaar.
+Met de voor gaande opdracht wordt een VM op basis van Windows geïmplementeerd. Nadat deze VM-implementatie is voltooid, wordt het Data Center-bereik van de Proximity-plaatsings groep gedefinieerd in de Azure-regio. Alle volgende VM-implementaties die verwijzen naar de plaatsings groep voor nabijheid, zoals weer gegeven in de voor gaande opdracht, worden geïmplementeerd in hetzelfde Azure-Data Center, zolang het VM-type kan worden gehost op hardware die in dat Data Center is geplaatst en de capaciteit voor dat VM-type beschikbaar is.
 
-## <a name="combine-availability-sets-and-availability-zones-with-proximity-placement-groups"></a>Beschikbaarheidssets en beschikbaarheidszones combineren met plaatsingsgroepen voor nabijheid
-Een van de nadelen van het gebruik van beschikbaarheidszones voor SAP-systeemimplementaties is dat u de SAP-toepassingslaag niet implementeren met beschikbaarheidssets binnen de specifieke zone. U wilt dat de SAP-toepassingslaag wordt geïmplementeerd in dezelfde zones als de DBMS-laag. Een verwijzing naar een beschikbaarheidszone en een beschikbaarheidsset bij het implementeren van één virtuele machine wordt niet ondersteund. Dus voorheen werd u gedwongen om uw toepassingslaag te implementeren door te verwijzen naar een zone. U hebt de mogelijkheid verloren om ervoor te zorgen dat de VM's van de toepassingslaag zijn verspreid over verschillende update- en foutdomeinen.
+## <a name="combine-availability-sets-and-availability-zones-with-proximity-placement-groups"></a>Beschikbaarheids sets en Beschikbaarheidszones combi neren met proximity-plaatsings groepen
+Een van de nadelen van het gebruik van Beschikbaarheidszones voor SAP-systeem implementaties is dat u de SAP-toepassingslaag niet kunt implementeren met behulp van beschikbaarheids sets in de specifieke zone. U wilt dat de SAP-toepassingslaag wordt geïmplementeerd in dezelfde zones als de DBMS-laag. Het verwijzen naar een beschikbaarheids zone en een beschikbaarheidsset bij het implementeren van één virtuele machine wordt niet ondersteund. U bent dus eerder gedwongen om uw toepassingslaag te implementeren door te verwijzen naar een zone. U hebt de mogelijkheid om te controleren of de virtuele machines van de toepassingslaag zijn verdeeld over verschillende update-en fout domeinen.
 
-Door nabijheidsplaatsingsgroepen te gebruiken, u deze beperking omzeilen. Hier is de implementatiereeks:
+Door gebruik te maken van proximity-plaatsings groepen kunt u deze beperking overs Laan. Hier volgt de implementatie volgorde:
 
-- Maak een plaatsingsgroep voor nabijheid.
-- Implementeer uw anker-VM, meestal de DBMS-server, door te verwijzen naar een beschikbaarheidszone.
-- Maak een beschikbaarheidsset die verwijst naar de azure-nabijheidsgroep. (Zie de opdracht later in dit artikel.)
-- Implementeer de VM's van de toepassingslaag door te verwijzen naar de beschikbaarheidsset en de plaatsingsgroep voor nabijheid.
+- Maak een proximity-plaatsings groep.
+- Implementeer uw anker-VM, meestal de DBMS-server, door te verwijzen naar een beschikbaarheids zone.
+- Maak een beschikbaarheidsset die verwijst naar de Proximity-groep van Azure. (Zie de opdracht verderop in dit artikel.)
+- Implementeer de Application Layer-Vm's door te verwijzen naar de beschikbaarheidsset en de plaatsings groep.
 
-In plaats van de eerste VM te implementeren zoals in de vorige sectie is aangetoond, verwijst u naar een beschikbaarheidszone en de groep nabijheidsplaatsing wanneer u de VM implementeert:
+In plaats van de eerste virtuele machine te implementeren, zoals wordt beschreven in de vorige sectie, verwijst u naar een beschikbaarheids zone en de locatie van de Proximity-groep wanneer u de virtuele machine implementeert:
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location "westus2" -OpenPorts 80,3389 -Zone "1" -ProximityPlacementGroup "letsgetclose" -Size "Standard_E16_v3"
 </code></pre>
 
-Een succesvolle implementatie van deze virtuele machine zou de database-instantie van het SAP-systeem hosten in één beschikbaarheidszone. Het bereik van de groep nabijheidsplaatsing is bevestigd aan een van de datacenters die de beschikbaarheidszone vertegenwoordigen die u hebt gedefinieerd.
+Een geslaagde implementatie van deze virtuele machine host het data base-exemplaar van het SAP-systeem in één beschikbaarheids zone. Het bereik van de plaatsings groep voor proximity is vastgelegd in een van de data centers die de beschikbaarheids zone vertegenwoordigen die u hebt gedefinieerd.
 
-Stel dat u de VM's voor centrale services op dezelfde manier implementeert als de DBMS-VM's, waarbij wordt verwezen naar dezelfde zone of zones en dezelfde plaatsingsgroepen voor nabijheid. In de volgende stap moet u de beschikbaarheidssets maken die u wilt gebruiken voor de toepassingslaag van uw SAP-systeem.
+Stel dat u de virtuele machines van de centrale Services op dezelfde manier als de DBMS-Vm's implementeert. deze verwijzen naar dezelfde zone of zones en dezelfde proximity-plaatsings groepen. In de volgende stap moet u de beschikbaarheids sets maken die u wilt gebruiken voor de toepassingslaag van uw SAP-systeem.
 
-U moet de plaatsingsgroep voor nabijheid definiëren en maken. De opdracht voor het maken van de beschikbaarheidsset vereist een extra verwijzing naar de groeps-id voor nabijheidsplaatsing (niet de naam). U de id van de groep nabijheidsplaatsing opdoen met behulp van deze opdracht:
+U moet de Proximity-plaatsings groep definiëren en maken. Voor de opdracht voor het maken van de beschikbaarheidsset is een aanvullende verwijzing naar de groeps-ID voor proximity-plaatsing (niet de naam) vereist. U kunt de ID van de plaatsings groep voor proximity ophalen met behulp van de volgende opdracht:
 
 <pre><code>
 Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose"
 </code></pre>
 
-Wanneer u de beschikbaarheidsset maakt, moet u rekening houden met aanvullende parameters wanneer u beheerde schijven gebruikt (standaard tenzij anders opgegeven) en plaatsingsgroepen voor nabijheid:
+Wanneer u de beschikbaarheidsset maakt, moet u extra para meters overwegen wanneer u beheerde schijven gebruikt (standaard tenzij anders opgegeven) en proximity placement groups:
 
 <pre><code>
 New-AzAvailabilitySet -ResourceGroupName "myfirstppgexercise" -Name "myppgavset" -Location "westus2" -ProximityPlacementGroupId "/subscriptions/my very long ppg id string" -sku "aligned" -PlatformUpdateDomainCount 3 -PlatformFaultDomainCount 2 
 </code></pre>
 
-Idealiter moet u drie foutdomeinen gebruiken. Maar het aantal ondersteunde foutdomeinen kan per regio verschillen. In dit geval is het maximum aantal foutdomeinen dat mogelijk is voor de specifieke regio's twee. Als u de VM's van de toepassingslaag wilt implementeren, moet u een verwijzing toevoegen naar de naam van uw beschikbaarheidsset en de naam van de plaatsingsgroep in de nabijheid, zoals hier wordt weergegeven:
+In het ideale geval moet u drie fout domeinen gebruiken. Maar het aantal ondersteunde fout domeinen kan variëren van regio tot regio. In dit geval is het maximum aantal fout domeinen dat mogelijk is voor de specifieke regio's twee. Als u uw Application Layer-Vm's wilt implementeren, moet u een verwijzing naar de naam van de beschikbaarheidsset en de naam van de locatie van de plaatsings groep toevoegen, zoals hier wordt weer gegeven:
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Location "westus2" -OpenPorts 80,3389 -AvailabilitySetName "myppgavset" -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"
 </code></pre>
 
 Het resultaat van deze implementatie is:
-- Een DBMS-laag en Centrale Services voor uw SAP-systeem dat zich in een specifieke beschikbaarheidszone of beschikbaarheidszones bevindt.
-- Een SAP-toepassingslaag die zich bevindt via beschikbaarheidssets in dezelfde Azure-datacenters als de DBMS VM of VM's.
+- Een DBMS-laag en centrale Services voor uw SAP-systeem dat zich in een specifieke beschikbaarheids zone of Beschikbaarheidszones bevindt.
+- Een SAP-toepassingslaag die zich bevindt in beschikbaarheids sets in dezelfde Azure-Data Centers als de DBMS-VM of Vm's.
 
 > [!NOTE]
-> Omdat u één DBMS VM in één zone en de tweede DBMS VM in een andere zone implementeert om een configuratie met hoge beschikbaarheid te maken, hebt u voor elk van de zones een andere plaatsingsgroep voor de nabijheid nodig. Hetzelfde geldt voor elke beschikbaarheidset die u gebruikt.
+> Omdat u een DBMS-VM in één zone en de tweede DBMS-VM in een andere zone implementeert om een configuratie met een hoge Beschik baarheid te maken, hebt u een andere proximity-plaatsings groep nodig voor elk van de zones. Dit geldt ook voor alle beschikbaarheids sets die u gebruikt.
 
-## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Een bestaand systeem verplaatsen naar plaatsingsgroepen in de nabijheid
-Als u al SAP-systemen hebt geïmplementeerd, wilt u misschien de netwerklatentie van sommige van uw kritieke systemen optimaliseren en de toepassingslaag en de DBMS-laag in hetzelfde datacenter lokaliseren. Als u de VM's van een volledige Azure-beschikbaarheidsset wilt verplaatsen naar een bestaande plaatsingsgroep voor nabijheid die al is ingesteld, moet u alle VM's van de beschikbaarheidsset afsluiten en de beschikbaarheidsset toewijzen aan de bestaande plaatsingsgroep voor nabijheid via Azure-portal, PowerShell of CLI. Als u een vm wilt verplaatsen die geen deel uitmaakt van een beschikbaarheidsset in een bestaande groep voor plaatsing in de nabijheid, hoeft u de VM alleen maar af te sluiten en toe te wijzen aan een bestaande groep voor plaatsing in de nabijheid. 
+## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Een bestaand systeem verplaatsen naar proximity-plaatsings groepen
+Als er al SAP-systemen zijn geïmplementeerd, wilt u mogelijk de netwerk latentie van een aantal van uw kritieke systemen optimaliseren en de toepassingslaag en de DBMS-laag in hetzelfde Data Center vinden. Als u de Vm's van een volledige Azure-beschikbaarheidsset wilt verplaatsen naar een bestaande proximity-plaatsings groep die al is scoped, moet u alle Vm's van de beschikbaarheidsset afsluiten en de beschikbaarheidsset toewijzen aan de bestaande plaatsings groep via Azure Portal, Power shell of CLI. Als u een virtuele machine die geen deel uitmaakt van een beschikbaarheidsset, wilt verplaatsen naar een bestaande proximity-plaatsings groep, hoeft u alleen de virtuele machine af te zetten en toe te wijzen aan een bestaande plaatsings groep. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk de documentatie:
 
-- [SAP-workloads op Azure: checklist voor planning en implementatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [Voorbeeld: VM's implementeren voor nabijheidsplaatsingsgroepen met Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [Voorbeeld: VM's implementeren voor nabijheidsplaatsingsgroepen met PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SAP-workloads op Azure: controle lijst voor planning en implementatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+- [Voor beeld: Vm's op proximity-plaatsings groepen implementeren met behulp van Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
+- [Voor beeld: Vm's implementeren op proximity-plaatsings groepen met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
+- [Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 

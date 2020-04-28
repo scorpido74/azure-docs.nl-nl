@@ -1,34 +1,34 @@
 ---
-title: Azure Disk Encryption en Azure virtual machine scale stelt extensiesequencing in
-description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure Disk Encryption for Linux IaaS VM's.
+title: Schaal sets voor Azure Disk Encryption en Azure virtual machine scaleset
+description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure schijf versleuteling voor virtuele Linux IaaS-machines.
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279032"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure-schijfversleuteling gebruiken met detectie van extensie voor virtuele machineschaal
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines
 
-Extensies zoals Azure-schijfversleuteling kunnen worden toegevoegd aan een Azure-schaal schaal in een bepaalde volgorde. Gebruik hiervoor [extensiesequencing](virtual-machine-scale-sets-extension-sequencing.md). 
+Extensies, zoals Azure Disk Encryption, kunnen worden toegevoegd aan een schaalset voor virtuele Azure-machines in een opgegeven volg orde. U doet dit door gebruik te maken van [extensie volgorde bepaling](virtual-machine-scale-sets-extension-sequencing.md). 
 
 In het algemeen moet versleuteling worden toegepast op een schijf:
 
-- Na extensies of aangepaste scripts die de schijven of volumes voorbereiden.
-- Voordat extensies of aangepaste scripts die toegang krijgen tot of verbruiken van de gegevens op de versleutelde schijven of volumes.
+- Na extensies of aangepaste scripts waarmee de schijven of volumes worden voor bereid.
+- Vóór extensies of aangepaste scripts die de gegevens op de versleutelde schijven of volumes benaderen of gebruiken.
 
-In beide gevallen `provisionAfterExtensions` wijst de eigenschap aan welke extensie later in de reeks moet worden toegevoegd.
+In beide gevallen geeft de `provisionAfterExtensions` eigenschap aan welke extensie later in de reeks moet worden toegevoegd.
 
-## <a name="sample-azure-templates"></a>Voorbeeld van Azure-sjablonen
+## <a name="sample-azure-templates"></a>Voor beelden van Azure-sjablonen
 
-Als u Azure Disk Encryption wilt laten toepassen `provisionAfterExtensions` na een andere extensie, plaatst u de eigenschap in het azurediskencryption-extensieblok. 
+Als u Azure Disk Encryption na een andere uitbrei ding wilt Toep assen, `provisionAfterExtensions` plaatst u de eigenschap in het AzureDiskEncryption-extensie blok. 
 
-Hier volgt een voorbeeld met 'CustomScriptExtension', een Powershell-script dat een Windows-schijf initialiseert en opsmaakt, gevolgd door 'AzureDiskEncryption':
+Hier volgt een voor beeld van het gebruik van ' CustomScriptExtension ', een Power shell-script voor het initialiseren en Format teren van een Windows-schijf, gevolgd door ' AzureDiskEncryption ':
 
 ```json
 "virtualMachineProfile": {
@@ -84,9 +84,9 @@ Hier volgt een voorbeeld met 'CustomScriptExtension', een Powershell-script dat 
 }
 ```
 
-Als u Azure Disk Encryption wilt laten toepassen `provisionAfterExtensions` vóór een andere extensie, plaatst u de eigenschap in het blok van de extensie die moet worden gevolgd.
+Als u Azure Disk Encryption wilt Toep assen vóór een andere uitbrei ding, `provisionAfterExtensions` plaatst u de eigenschap in het blok van de uitbrei ding die moet worden gevolgd.
 
-Hier volgt een voorbeeld met 'AzureDiskEncryption', gevolgd door 'VMDiagnosticsSettings', een extensie die bewakings- en diagnostische mogelijkheden biedt op een Windows-gebaseerde Azure VM:
+Hier volgt een voor beeld van het gebruik van ' AzureDiskEncryption ', gevolgd door ' VMDiagnosticsSettings ', een uitbrei ding die de bewakings-en diagnostische mogelijkheden biedt voor een Azure-VM op basis van Windows:
 
 
 ```json
@@ -151,14 +151,14 @@ Hier volgt een voorbeeld met 'AzureDiskEncryption', gevolgd door 'VMDiagnosticsS
 }
 ```
 
-Zie voor een meer diepgaande sjabloon:
-* De Azure Disk Encryption-extensie toepassen na een aangepast shellscript dat de schijf opsmaakt (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+Voor een dieper sjabloon raadpleegt u:
+* Pas de Azure Disk Encryption-extensie toe na een aangepast shell-script waarmee de schijf (Linux) wordt geformatteerd: [Deploy-extseq-Linux-ade-after-customscript. json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over extensiesequencing: [inprovisioning van reeksextensies in virtuele machineschaalsets](virtual-machine-scale-sets-extension-sequencing.md).
-- Meer informatie `provisionAfterExtensions` over de eigenschap: [Microsoft.Compute virtualMachineScaleSets/extensions template reference](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
-- [Azure-schijfversleuteling voor virtuele machineschaalsets](disk-encryption-overview.md)
-- [Een virtuele machineschaalsets versleutelen met de Azure CLI](disk-encryption-cli.md)
-- [Een virtuele machineschaalsets versleutelen met de Azure PowerShell](disk-encryption-powershell.md)
-- [Een sleutelkluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)
+- Meer informatie over de volg orde van extensies: [Sequence-inrichting inrichten in virtuele-machine schaal sets](virtual-machine-scale-sets-extension-sequencing.md).
+- Meer informatie over de `provisionAfterExtensions` eigenschap: [micro soft. Compute virtualMachineScaleSets/Extensions Temp late Reference](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- [Azure Disk Encryption voor schaal sets voor virtuele machines](disk-encryption-overview.md)
+- [Een schaalset voor virtuele machines versleutelen met behulp van Azure CLI](disk-encryption-cli.md)
+- [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure PowerShell](disk-encryption-powershell.md)
+- [Een sleutel kluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)

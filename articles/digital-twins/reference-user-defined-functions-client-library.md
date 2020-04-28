@@ -1,6 +1,6 @@
 ---
-title: Door de gebruiker gedefinieerde verwijzingen naar de clientbibliotheek van de client - Azure Digital Twins | Microsoft Documenten
-description: Azure Digital Twins door gebruikers gedefinieerde functies clientbibliotheek referentiedocumentatie.
+title: Door de gebruiker gedefinieerde functies referentie client bibliotheek-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Referentie documentatie voor de door de gebruiker gedefinieerde Azure Digital Apparaatdubbels-client bibliotheek.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,23 +10,23 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276819"
 ---
-# <a name="user-defined-functions-client-library-reference"></a>Door de gebruiker gedefinieerde verwijzingen naar de clientbibliotheek door de gebruiker
+# <a name="user-defined-functions-client-library-reference"></a>Naslag informatie voor de door de gebruiker gedefinieerde functies client bibliotheken
 
-Dit document bevat referentiegegevens voor de clientbibliotheek met gebruikers van Azure Digital Twins.
+Dit document bevat referentie-informatie voor de client bibliotheek van de door de gebruiker gedefinieerde functies van Azure Digital Apparaatdubbels.
 
-## <a name="helper-methods"></a>Helpermethoden
+## <a name="helper-methods"></a>Helper-methoden
 
-De clientbibliotheek definieert helpermethoden voor veelgebruikte bewerkingen.
+De client bibliotheek definieert hulp methoden voor veelgebruikte bewerkingen.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ∙`space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (id) ⇒`space`
 
-Met een spatie-id haalt deze functie de ruimte uit de grafiek op.
+Met een spatie-id haalt deze functie de ruimte op uit de grafiek.
 
 **Soort**: globale functie
 
@@ -34,19 +34,19 @@ Met een spatie-id haalt deze functie de ruimte uit de grafiek op.
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Ruimte-id |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ∙`sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (id) ⇒`sensor`
 
-Met een sensor-id haalt deze functie de sensor uit de grafiek.
+Op basis van een sensor-ID haalt deze functie de sensor op uit de grafiek.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Sensor-id |
+| *id*  | `guid` | Sensor-ID |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ∙`device`
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (id) ⇒`device`
 
-Met een apparaat-id haalt deze functie het apparaat uit de grafiek.
+Met deze functie wordt het apparaat uit de grafiek opgehaald met een apparaat-id.
 
 **Soort**: globale functie
 
@@ -54,63 +54,53 @@ Met een apparaat-id haalt deze functie het apparaat uit de grafiek.
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Apparaat-id |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ∙`value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, data type) ⇒`value`
 
-Met een sensor-id en het gegevenstype haalt deze functie de huidige waarde voor die sensor op.
+Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie de huidige waarde voor die sensor op.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *sensorId sensorId*  | `guid` | Sensor-id |
-| *Datatype*  | `string` | Sensorgegevenstype |
+| *sensorId*  | `guid` | Sensor-ID |
+| *param1*  | `string` | Gegevens type sensor |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ∙`value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) ⇒`value`
 
-Met een spatie-id en de waardenaam haalt deze functie de huidige waarde voor die ruimteeigenschap op.
+Op basis van een spatie-id en de waardenaam wordt met deze functie de huidige waarde voor die eigenschap Space opgehaald.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Ruimte-id |
-| *valueName* | `string` | Naam ruimteeigenschap |
+| *valueName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ∙`value[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, data type) ⇒`value[]`
 
-Met een sensor-id en het gegevenstype haalt deze functie de historische waarden voor die sensor op.
-
-**Soort**: globale functie
-
-| Parameter  | Type                | Beschrijving  |
-| ------ | ------------------- | ------------ |
-| *sensorId sensorId* | `guid` | Sensor-id |
-| *Datatype* | `string` | Sensorgegevenstype |
-
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ∙`value[]`
-
-Met een spatie-id en de waardenaam haalt deze functie de historische waarden voor die eigenschap op de ruimte op.
+Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie de historische waarden voor die sensor op.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Ruimte-id |
-| *valueName* | `string` | Naam ruimteeigenschap |
+| *sensorId* | `guid` | Sensor-ID |
+| *param1* | `string` | Gegevens type sensor |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ∙`space[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, data type) ⇒`value[]`
 
-Met een spatie-id haalt deze functie de onderliggende spaties voor die bovenliggende ruimte op.
+Op basis van een spatie-id en de waardenaam, haalt deze functie de historische waarden voor die eigenschap op in de ruimte.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
+| *valueName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ∙`sensor[]`
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒`space[]`
 
-Met een spatie-id haalt deze functie de onderliggende sensoren voor die bovenliggende ruimte op.
+Met deze functie worden de onderliggende ruimten voor die bovenliggende ruimte opgehaald met een spatie-id.
 
 **Soort**: globale functie
 
@@ -118,9 +108,9 @@ Met een spatie-id haalt deze functie de onderliggende sensoren voor die bovenlig
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ∙`device[]`
+### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒`sensor[]`
 
-Met een spatie-id haalt deze functie de onderliggende apparaten voor die bovenliggende ruimte op.
+Met een spatie-id haalt u de onderliggende Sens oren op voor die bovenliggende ruimte.
 
 **Soort**: globale functie
 
@@ -128,9 +118,19 @@ Met een spatie-id haalt deze functie de onderliggende apparaten voor die bovenli
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
 
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ∙`sensor[]`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒`device[]`
 
-Met een apparaat-id haalt deze functie de onderliggende sensoren voor dat bovenliggende apparaat op.
+Met een spatie-id haalt u de onderliggende apparaten voor die bovenliggende ruimte op.
+
+**Soort**: globale functie
+
+| Parameter  | Type                | Beschrijving  |
+| ------ | ------------------- | ------------ |
+| *spaceId* | `guid` | Ruimte-id |
+
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒`sensor[]`
+
+Met behulp van een apparaat-id haalt deze functie de onderliggende Sens oren voor dat bovenliggende apparaat op.
 
 **Soort**: globale functie
 
@@ -138,9 +138,9 @@ Met een apparaat-id haalt deze functie de onderliggende sensoren voor dat bovenl
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Apparaat-id |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ∙`space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒`space`
 
-Met een spatie-id haalt deze functie de bovenliggende ruimte op.
+Met deze functie wordt de bovenliggende ruimte van een spatie-id opgehaald.
 
 **Soort**: globale functie
 
@@ -148,19 +148,19 @@ Met een spatie-id haalt deze functie de bovenliggende ruimte op.
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Ruimte-id |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ∙`space`
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒`space`
 
-Met een sensor-id haalt deze functie de bovenliggende ruimte op.
+Met deze functie wordt de bovenliggende ruimte van de sensor-ID opgehaald.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor-id |
+| *childSensorId* | `guid` | Sensor-ID |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ∙`space`
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒`space`
 
-Met een apparaat-id haalt deze functie de bovenliggende ruimte op.
+Als er een apparaat-id is opgegeven, haalt deze functie de bovenliggende ruimte op.
 
 **Soort**: globale functie
 
@@ -168,76 +168,76 @@ Met een apparaat-id haalt deze functie de bovenliggende ruimte op.
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Apparaat-id |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ∙`space`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒`space`
 
-Met een sensor-id haalt deze functie het bovenliggende apparaat op.
+Met behulp van een sensor-ID haalt deze functie het bovenliggende apparaat op.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor-id |
+| *childSensorId* | `guid` | Sensor-ID |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ∙`extendedProperty`
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, PropertyName) ⇒`extendedProperty`
 
-Met een spatie-id haalt deze functie de eigenschap en de waarde ervan uit de ruimte.
+Met een spatie-id haalt deze functie de eigenschap en de waarde ervan op uit de ruimte.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
-| *Propertyname* | `string` | Naam ruimteeigenschap |
+| *propertyName* | `string` | Naam van de eigenschap Space |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ∙`extendedProperty`
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, PropertyName) ⇒`extendedProperty`
 
-Met een sensor-id haalt deze functie de eigenschap en de waarde ervan uit de sensor.
+Op basis van een sensor-ID haalt deze functie de eigenschap en de waarde ervan op uit de sensor.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *sensorId sensorId* | `guid` | Sensor-id |
-| *Propertyname* | `string` | Naam sensoreigenschap |
+| *sensorId* | `guid` | Sensor-ID |
+| *propertyName* | `string` | Naam sensor eigenschap |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ∙`extendedProperty`
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, PropertyName) ⇒`extendedProperty`
 
-Met een apparaat-id haalt deze functie de eigenschap en de waarde ervan op van het apparaat.
+Met een apparaat-id haalt deze functie de eigenschap en de waarde van het apparaat op.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Apparaat-id |
-| *Propertyname* | `string` | Naam van de eigenschap Apparaat |
+| *propertyName* | `string` | Naam van de apparaat-eigenschap |
 
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, waarde)
+### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, data type, waarde)
 
-Met deze functie stelt u een waarde in op het sensorobject met het opgegeven gegevenstype.
+Deze functie stelt een waarde in voor het sensor-object met het opgegeven gegevens type.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *sensorId sensorId* | `guid` | Sensor-id |
-| *Datatype*  | `string` | Sensorgegevenstype |
-| *value*  | `string` | Waarde |
+| *sensorId* | `guid` | Sensor-ID |
+| *param1*  | `string` | Gegevens type sensor |
+| *Value*  | `string` | Waarde |
 
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, waarde)
+### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, data type, waarde)
 
-Met deze functie stelt u een waarde in op het ruimteobject met het opgegeven gegevenstype.
+Deze functie stelt een waarde in voor het Space-object met het opgegeven gegevens type.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
-| *Datatype* | `string` | Gegevenstype |
-| *value* | `string` | Waarde |
+| *param1* | `string` | Gegevenstype |
+| *Value* | `string` | Waarde |
 
-### <a name="logmessage"></a>logboek(bericht)
+### <a name="logmessage"></a>logboek (bericht)
 
-Met deze functie wordt het volgende bericht binnen de door de gebruiker gedefinieerde functie logboeken.
+Met deze functie wordt het volgende bericht geregistreerd binnen de door de gebruiker gedefinieerde functie.
 
 **Soort**: globale functie
 
@@ -245,21 +245,21 @@ Met deze functie wordt het volgende bericht binnen de door de gebruiker gedefini
 | ------ | ------------------- | ------------ |
 | *Bericht* | `string` | Bericht dat moet worden geregistreerd |
 
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
+### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, Payload)
 
-Deze functie stuurt een aangepaste melding die moet worden verzonden.
+Deze functie verzendt een aangepaste melding om te worden verzonden.
 
 **Soort**: globale functie
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *topologieObjectId*  | `guid` | Graph object identifier. Voorbeelden zijn ruimte, sensor en apparaat-ID.|
-| *topologyObjectType*  | `string` | Voorbeelden zijn sensor en apparaat.|
-| *nettolading*  | `string` | De JSON payload die met de melding moet worden verzonden. |
+| *topologyObjectId*  | `guid` | Object-id van grafiek. Voor beelden zijn ruimte, sensor en apparaat-ID.|
+| *topologyObjectType*  | `string` | Voor beelden zijn sensor en apparaat.|
+| *nettolading*  | `string` | De JSON-nettolading die met de melding moet worden verzonden. |
 
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
 
-De responsmodellen die worden geretourneerd uit clientreferentiehelpermethoden worden hieronder beschreven.
+De antwoord modellen die worden geretourneerd door de hulp methoden voor client verwijzing, worden hieronder beschreven.
 
 ### <a name="space"></a>Space
 
@@ -274,51 +274,51 @@ De responsmodellen die worden geretourneerd uit clientreferentiehelpermethoden w
 }
 ```
 
-### <a name="space-methods"></a>Ruimtemethoden
+### <a name="space-methods"></a>Ruimte methoden
 
-#### <a name="parent--space"></a>Ouder() ∙`space`
+#### <a name="parent--space"></a>Bovenliggende () ⇒`space`
 
-Met deze functie wordt de bovenliggende ruimte van de huidige ruimte geretourneerd.
+Deze functie retourneert de bovenliggende ruimte van de huidige ruimte.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ∙`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors() ⇒`sensor[]`
 
-Deze functie retourneert de onderliggende sensoren van de huidige ruimte.
+Deze functie retourneert de onderliggende Sens oren van de huidige ruimte.
 
-#### <a name="childdevices--device"></a>ChildDevices() ∙`device[]`
+#### <a name="childdevices--device"></a>ChildDevices() ⇒`device[]`
 
-Met deze functie worden de onderliggende apparaten van de huidige ruimte geretourneerd.
+Deze functie retourneert de onderliggende apparaten van de huidige ruimte.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ∙`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
 
-Met deze functie wordt de verlengde eigenschap en de waarde ervan voor de huidige ruimte geretourneerd.
-
-| Parameter  | Type                | Beschrijving  |
-| ------ | ------------------- | ------------ |
-| *Propertyname* | `string` | Naam van de uitgebreide eigenschap |
-
-#### <a name="valuevaluename--value"></a>Waarde(waardeNaam) ∙`value`
-
-Met deze functie wordt de waarde van de huidige ruimte geretourneerd.
+Deze functie retourneert de uitgebreide eigenschap en de waarde voor de huidige ruimte.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Naam van de waarde |
+| *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
-#### <a name="historyvaluename--value"></a>Geschiedenis(valueName) ∙`value[]`
+#### <a name="valuevaluename--value"></a>Waarde (waardenaam) ⇒`value`
 
-Met deze functie worden de historische waarden van de huidige ruimte geretourneerd.
+Deze functie retourneert de waarde van de huidige ruimte.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Naam van de waarde |
 
-#### <a name="notifypayload"></a>Melding(payload)
+#### <a name="historyvaluename--value"></a>Geschiedenis (waardenaam) ⇒`value[]`
 
-Deze functie stuurt een melding met de opgegeven payload.
+Deze functie retourneert de historische waarden van de huidige ruimte.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-payload op te nemen in de kennisgeving |
+| *valueName* | `string` | Naam van de waarde |
+
+#### <a name="notifypayload"></a>Melding (Payload)
+
+Met deze functie wordt een melding met de opgegeven Payload verzonden.
+
+| Parameter  | Type                | Beschrijving  |
+| ------ | ------------------- | ------------ |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="device"></a>Apparaat
 
@@ -340,31 +340,31 @@ Deze functie stuurt een melding met de opgegeven payload.
 
 ### <a name="device-methods"></a>Apparaatmethoden
 
-#### <a name="parent--space"></a>Ouder() ∙`space`
+#### <a name="parent--space"></a>Bovenliggende () ⇒`space`
 
-Met deze functie wordt de bovenliggende ruimte van het huidige apparaat geretourneerd.
+Deze functie retourneert de bovenliggende ruimte van het huidige apparaat.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ∙`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors() ⇒`sensor[]`
 
-Met deze functie worden de onderliggende sensoren van het huidige apparaat geretourneerd.
+Deze functie retourneert de onderliggende Sens oren van het huidige apparaat.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ∙`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
 
-Met deze functie wordt de uitgebreide eigenschap en de waarde ervan voor het huidige apparaat geretourneerd.
-
-| Parameter  | Type                | Beschrijving  |
-| ------ | ------------------- | ------------ |
-| *Propertyname* | `string` | Naam van de uitgebreide eigenschap |
-
-#### <a name="notifypayload"></a>Melding(payload)
-
-Deze functie stuurt een melding met de opgegeven payload.
+Deze functie retourneert de uitgebreide eigenschap en de waarde voor het huidige apparaat.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-payload op te nemen in de kennisgeving |
+| *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
-### <a name="sensor"></a>Sensor
+#### <a name="notifypayload"></a>Melding (Payload)
+
+Met deze functie wordt een melding met de opgegeven Payload verzonden.
+
+| Parameter  | Type                | Beschrijving  |
+| ------ | ------------------- | ------------ |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+
+### <a name="sensor"></a>Sensoren
 
 ```JSON
 {
@@ -386,39 +386,39 @@ Deze functie stuurt een melding met de opgegeven payload.
 }
 ```
 
-### <a name="sensor-methods"></a>Sensormethoden
+### <a name="sensor-methods"></a>Sensor methoden
 
-#### <a name="space--space"></a>Ruimte() ∙`space`
+#### <a name="space--space"></a>Ruimte () ⇒`space`
 
-Met deze functie wordt de bovenliggende ruimte van de huidige sensor geretourneerd.
+Deze functie retourneert de bovenliggende ruimte van de huidige sensor.
 
-#### <a name="device--device"></a>Inrichting() ∙`device`
+#### <a name="device--device"></a>Apparaat () ⇒`device`
 
-Met deze functie wordt het bovenliggende apparaat van de huidige sensor geretourneerd.
+Deze functie retourneert het bovenliggende apparaat van de huidige sensor.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ∙`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (PropertyName) ⇒`extendedProperty`
 
-Deze functie retourneert de verlengde eigenschap en de waarde ervan voor de huidige sensor.
+Deze functie retourneert de uitgebreide eigenschap en de waarde ervan voor de huidige sensor.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *Propertyname* | `string` | Naam van de uitgebreide eigenschap |
+| *propertyName* | `string` | Naam van de uitgebreide eigenschap |
 
-#### <a name="value--value"></a>Waarde() ∙`value`
+#### <a name="value--value"></a>Waarde () ⇒`value`
 
-Deze functie geeft de waarde van de huidige sensor als resultaat.
+Deze functie retourneert de waarde van de huidige sensor.
 
-#### <a name="history--value"></a>Geschiedenis() ∙`value[]`
+#### <a name="history--value"></a>Geschiedenis () ⇒`value[]`
 
 Deze functie retourneert de historische waarden van de huidige sensor.
 
-#### <a name="notifypayload"></a>Melding(payload)
+#### <a name="notifypayload"></a>Melding (Payload)
 
-Deze functie stuurt een melding met de opgegeven payload.
+Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-payload op te nemen in de kennisgeving |
+| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="value"></a>Waarde
 
@@ -441,8 +441,8 @@ Deze functie stuurt een melding met de opgegeven payload.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [door gebruikers gedefinieerde functies van Azure Digital Twins](./concepts-user-defined-functions.md).
+- Meer informatie over door de [gebruiker gedefinieerde Azure Digital apparaatdubbels-functies](./concepts-user-defined-functions.md).
 
-- Meer informatie over [het maken van door de gebruiker gedefinieerde functies](./how-to-user-defined-functions.md).
+- Meer informatie [over het maken van door de gebruiker gedefinieerde functies](./how-to-user-defined-functions.md).
 
-- Meer informatie over [het opsporen van door gebruikers gedefinieerde functies](./how-to-diagnose-user-defined-functions.md).
+- Meer informatie [over het oplossen van door de gebruiker gedefinieerde functies](./how-to-diagnose-user-defined-functions.md).

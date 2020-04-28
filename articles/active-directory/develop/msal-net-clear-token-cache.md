@@ -1,7 +1,7 @@
 ---
-title: De tokencache wissen (MSAL.NET) | Azure
+title: De token cache wissen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het wissen van de tokencache met behulp van de Microsoft-verificatiebibliotheek voor .NET (MSAL.NET).
+description: Meer informatie over het wissen van de token cache met behulp van de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: a10efb5ff0a2c6a3ced3631dfe82c86e3e8a72fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084761"
 ---
-# <a name="clear-the-token-cache-using-msalnet"></a>De tokencache wissen met MSAL.NET
+# <a name="clear-the-token-cache-using-msalnet"></a>De token cache wissen met behulp van MSAL.NET
 
-Wanneer u [een toegangstoken aandoet](msal-acquire-cache-tokens.md) met Microsoft Authentication Library voor .NET (MSAL.NET), wordt het token in de cache opgeslagen. Wanneer de toepassing een token nodig `AcquireTokenSilent` heeft, moet deze eerst de methode aanroepen om te controleren of er een acceptabel token in de cache is. 
+Wanneer u [een toegangs token aanschaft](msal-acquire-cache-tokens.md) met behulp van micro soft Authentication Library voor .net (MSAL.net), wordt het token in de cache opgeslagen. Wanneer de toepassing een token vereist, moet het eerst de `AcquireTokenSilent` methode aanroepen om te controleren of een acceptabel token zich in de cache bevindt. 
 
-Het wissen van de cache wordt bereikt door de accounts uit de cache te verwijderen. Deze browser wordt echter niet verwijderd door dat de cookie van de browser wordt gebruikt.  In het volgende voorbeeld wordt een openbare clienttoepassing geinstantt, worden de accounts voor de toepassing opgetuerd en worden de accounts verwijderd.
+Het wissen van de cache wordt bereikt door de accounts uit de cache te verwijderen. Hiermee wordt de sessie cookie die zich in de browser bevindt, echter niet verwijderd.  In het volgende voor beeld wordt een open bare client toepassing geïnstantieerd, worden de accounts voor de toepassing opgehaald en worden de accounts verwijderd.
 
 ```csharp
 private readonly IPublicClientApplication _app;
@@ -46,4 +46,4 @@ while (accounts.Any())
 
 ```
 
-Voor meer informatie over het verwerven en caching tokens, lees [verwerven van een access token](msal-acquire-cache-tokens.md).
+Lees [een toegangs Token ophalen](msal-acquire-cache-tokens.md)voor meer informatie over het verkrijgen en caching van tokens.

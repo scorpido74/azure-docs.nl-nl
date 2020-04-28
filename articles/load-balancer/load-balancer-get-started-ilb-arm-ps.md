@@ -1,5 +1,5 @@
 ---
-title: Een azure internal Load Balancer maken met PowerShell
+title: Een interne Azure-Load Balancer maken met behulp van Power shell
 titleSuffix: Azure Load Balancer
 description: Informatie over hoe u met de Azure PowerShell-module een interne load balancer maakt in Azure Resource Manager
 services: load-balancer
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045488"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Een interne load balancer maken met behulp van de Azure PowerShell-module
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -48,7 +48,7 @@ De volgende objecten moeten worden gemaakt om een load balancer te implementeren
 * Testconfiguratie: de status van de tests voor virtuele machines.
 * Binnenkomende NAT-regels: de poortregels voor directe toegang tot virtuele machines.
 
-Zie [Azure Load Balancer-componenten](concepts-limitations.md#load-balancer-components)voor meer informatie over onderdelen van de load balancer.
+Zie [Azure Load Balancer-onderdelen](concepts-limitations.md#load-balancer-components)voor meer informatie over Load Balancer-onderdelen.
 
 In de volgende stappen wordt uitgelegd hoe u een load balancer tussen twee virtuele machines configureert.
 
@@ -251,7 +251,7 @@ Nadat de virtuele machine is gemaakt, voegt u de netwerkinterface toe.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Stap 1: De load balancer-resource opslaan
 
-Sla de load balancer-resource op in een variabele (als u dat nog niet hebt gedaan). We gebruiken de variabele naam **$lb.** Voor de kenmerkwaarden in het script gebruikt u de namen voor de resources voor de load balancer die in de vorige stappen zijn gemaakt.
+Sla de load balancer-resource op in een variabele (als u dat nog niet hebt gedaan). We gebruiken de naam van de variabele **$lb**. Voor de kenmerk waarden in het script gebruikt u de namen voor de load balancer resources die zijn gemaakt in de vorige stappen.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

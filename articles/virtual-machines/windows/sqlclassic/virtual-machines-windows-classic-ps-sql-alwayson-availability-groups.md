@@ -1,6 +1,6 @@
 ---
-title: De groep Always On beschikbaarheid configureren op een Azure VM met PowerShell | Microsoft Documenten
-description: In deze zelfstudie worden resources gebruikt die zijn gemaakt met het klassieke implementatiemodel. U gebruikt PowerShell om een groep Always On-beschikbaarheid in Azure te maken.
+title: De AlwaysOn-beschikbaarheids groep configureren op een virtuele Azure-machine met behulp van Power shell | Microsoft Docs
+description: In deze zelf studie worden resources gebruikt die zijn gemaakt met het klassieke implementatie model. U kunt Power shell gebruiken om een AlwaysOn-beschikbaarheids groep te maken in Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,52 +15,52 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978145"
 ---
-# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>De groep Always On-beschikbaarheid configureren op een Azure VM met PowerShell
+# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>De AlwaysOn-beschikbaarheids groep configureren op een virtuele Azure-machine met Power shell
 > [!div class="op_single_selector"]
-> * [Klassiek: Gebruikersinterface](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Klassiek: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Klassiek: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klassiek: Power shell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Voordat u begint, moet u er rekening mee houden dat u deze taak nu voltooien in het Azure-resourcemanagermodel. We raden Azure resource manager-model aan voor nieuwe implementaties. Zie [SQL Server Always On availability groups op Azure virtuele machines](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Bedenk voordat u begint dat u deze taak nu kunt volt ooien in het Azure Resource Manager-model. We raden het Azure Resource Manager-model aan voor nieuwe implementaties. Zie SQL Server AlwaysOn- [beschikbaarheids groepen op virtuele machines van Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> We raden u aan dat de meeste nieuwe implementaties het Resource Manager-model gebruiken. Azure heeft twee verschillende implementatiemodellen voor het maken en werken met resources: [Resource Manager en klassiek.](../../../azure-resource-manager/management/deployment-models.md) Dit artikel gaat over het gebruik van het klassieke implementatiemodel.
+> Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel.
 
-Azure virtual machines (VM's) kunnen databasebeheerders helpen om de kosten van een SQL Server-systeem met hoge beschikbaarheid te verlagen. In deze zelfstudie ziet u hoe u een beschikbaarheidsgroep implementeert met SQL Server Always On end-to-end in een Azure-omgeving. Aan het einde van de zelfstudie bestaat uw SQL Server Always On-oplossing in Azure uit de volgende elementen:
+Azure virtual machines (Vm's) kunnen database beheerders helpen bij het verlagen van de kosten van een SQL Server systeem met hoge Beschik baarheid. In deze zelf studie leert u hoe u een beschikbaarheids groep implementeert met behulp van SQL Server altijd op end-to-end in een Azure-omgeving. Aan het einde van de zelf studie bestaan uw SQL Server always on solution in azure uit de volgende elementen:
 
-* Een virtueel netwerk dat meerdere subnetten bevat, waaronder een front-end en een back-end subnet.
-* Een domeincontroller met een Active Directory-domein.
-* Twee SQL Server VM's die zijn geïmplementeerd op het back-end subnet en zijn verbonden met het Active Directory-domein.
-* Een Windows-failovercluster met drie knooppunten met het quorummodel Knooppuntmeerderheid.
-* Een beschikbaarheidsgroep met twee synchrone commit replica's van een beschikbaarheidsdatabase.
+* Een virtueel netwerk met meerdere subnetten, met inbegrip van een front-end en een back-end-subnet.
+* Een domein controller met een Active Directory domein.
+* Twee SQL Server Vm's die worden geïmplementeerd naar het back-end-subnet en zijn gekoppeld aan het Active Directory domein.
+* Een Windows-failovercluster met drie knoop punten met het quorum model knooppunt meerderheid.
+* Een beschikbaarheids groep met twee replica's met synchrone door Voer van een beschikbaarheids database.
 
-Dit scenario is een goede keuze voor de eenvoud op Azure, niet voor de kosteneffectiviteit of andere factoren. U bijvoorbeeld het aantal VM's voor een groep voor beschikbaarheid met twee replica's minimaliseren om te besparen op rekenuren in Azure door de domeincontroller te gebruiken als getuige van de quorumbestandsshare in een failovercluster met twee kopjes. Met deze methode wordt het aantal vm's met één verminderd ten opzichte van de bovenstaande configuratie.
+Dit scenario is een goede keuze voor de eenvoud op Azure, niet voor de kosten effectiviteit of andere factoren. U kunt bijvoorbeeld het aantal virtuele machines voor een beschikbaarheids groep met twee replica's minimaliseren om de reken uren in azure op te slaan met behulp van de domein controller als de bestandssharewitness voor quorum bestands shares in een failovercluster met twee knoop punten. Met deze methode wordt het aantal VM'S met één van de bovenstaande configuratie verminderd.
 
-Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hierboven beschreven oplossing in te stellen, zonder de details van elke stap uit te werken. Daarom, in plaats van het verstrekken van de GUI-configuratie stappen, het maakt gebruik van PowerShell scripting om u snel door elke stap. In deze zelfstudie wordt het volgende aangenomen:
+Deze zelf studie is bedoeld om u te laten zien welke stappen u moet uitvoeren om de hierboven beschreven oplossing in te stellen, zonder dat u de details van elke stap hoeft op te lossen. Daarom kunt u in plaats van de GUI-configuratie stappen een Power shell-script gebruiken om snel door elke stap te gaan. In deze zelf studie wordt ervan uitgegaan dat het volgende:
 
-* U hebt al een Azure-account met het abonnement op de virtuele machine.
+* U hebt al een Azure-account met het abonnement van de virtuele machine.
 * U hebt de [Azure PowerShell-cmdlets](/powershell/azure/overview)geïnstalleerd.
-* U hebt al een goed begrip van Always On beschikbaarheidsgroepen voor on-premises oplossingen. Zie [Beschikbaarheidsgroepen (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)voor meer informatie.
+* U hebt al een solide memorandum van AlwaysOn-beschikbaarheids groepen voor on-premises oplossingen. Zie AlwaysOn [Availability groups (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)voor meer informatie.
 
-## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Verbinding maken met uw Azure-abonnement en het virtuele netwerk maken
-1. Importeer in een PowerShell-venster op uw lokale computer de Azure-module, download het publicatie-instellingenbestand naar uw machine en verbind uw PowerShell-sessie met uw Azure-abonnement door de gedownloade publicatie-instellingen te importeren.
+## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Maak verbinding met uw Azure-abonnement en maak het virtuele netwerk
+1. Importeer in een Power shell-venster op uw lokale computer de Azure-module, down load het bestand met publicatie-instellingen naar uw computer en verbind uw Power shell-sessie met uw Azure-abonnement door de gedownloade publicatie-instellingen te importeren.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    De opdracht **Get-AzurePublishSettingsFile** genereert automatisch een beheercertificaat met Azure en downloadt het naar uw machine. Een browser wordt automatisch geopend en u wordt gevraagd de Microsoft-accountreferenties voor uw Azure-abonnement in te voeren. Het gedownloade **bestand .publishsettings** bevat alle informatie die u nodig hebt om uw Azure-abonnement te beheren. Nadat u dit bestand hebt opgeslagen in een lokale map, importeert u het met de opdracht **Import-AzurePublishSettingsFile.**
+    Met de opdracht **Get-AzurePublishSettingsFile** wordt automatisch een beheer certificaat met Azure gegenereerd en gedownload naar uw computer. Er wordt automatisch een browser geopend en u wordt gevraagd om de Microsoft-account referenties voor uw Azure-abonnement in te voeren. Het gedownloade **. publishsettings** -bestand bevat alle informatie die u nodig hebt om uw Azure-abonnement te beheren. Nadat u dit bestand hebt opgeslagen in een lokale map, importeert u dit met de opdracht **import-AzurePublishSettingsFile** .
 
    > [!NOTE]
-   > Het bestand .publishsettings bevat uw referenties (ongecodeerd) die worden gebruikt om uw Azure-abonnementen en -services te beheren. De beste beveiligingstoepassing voor dit bestand is om het tijdelijk op te slaan buiten uw bronmappen (bijvoorbeeld in de map Bibliotheken\Documenten) en deze vervolgens te verwijderen nadat de import is voltooid. Een kwaadwillende gebruiker die toegang krijgt tot het bestand .publishsettings kan uw Azure-services bewerken, maken en verwijderen.
+   > Het. publishsettings-bestand bevat uw referenties (niet-versleuteld) die worden gebruikt voor het beheren van uw Azure-abonnementen en-services. De beveiligings best practice voor dit bestand is het opslaan van de sjabloon tijdelijk buiten uw bron mappen (bijvoorbeeld in de map Libraries\Documents) en deze vervolgens verwijderen nadat het importeren is voltooid. Een kwaadwillende gebruiker die toegang tot het. publishsettings-bestand krijgt, kan uw Azure-Services bewerken, maken en verwijderen.
 
-2. Definieer een reeks variabelen die u gebruikt om uw it-infrastructuur in de cloud te maken.
+2. Definieer een reeks variabelen die u gaat gebruiken om uw Cloud IT-infra structuur te maken.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -80,14 +80,14 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Let op het volgende om ervoor te zorgen dat uw opdrachten later slagen:
+    Let op het volgende om ervoor te zorgen dat uw opdrachten later worden uitgevoerd:
 
-   * Variabelen **$storageAccountName** en **$dcServiceName** moeten uniek zijn omdat ze worden gebruikt om respectievelijk uw cloudopslagaccount en cloudserver op internet te identificeren.
-   * De namen die u opgeeft voor variabelen **$affinityGroupName** en **$virtualNetworkName** zijn geconfigureerd in het virtuele netwerkconfiguratiedocument dat u later zult gebruiken.
-   * **$sqlImageName** de bijgewerkte naam op van de VM-afbeelding die SQL Server 2012 Service Pack 1 Enterprise Edition bevat.
-   * Voor de eenvoud is **Contoso!000** hetzelfde wachtwoord dat gedurende de hele zelfstudie wordt gebruikt.
+   * Variabelen **$storageAccountName** en **$dcServiceName** moeten uniek zijn omdat ze worden gebruikt om respectievelijk uw Cloud Storage-account en de Cloud Server op internet te identificeren.
+   * De namen die u opgeeft voor variabelen **$affinityGroupName** en **$virtualNetworkName** worden geconfigureerd in het configuratie document van het virtuele netwerk dat u later gaat gebruiken.
+   * **$sqlImageName** geeft de bijgewerkte naam van de VM-installatie kopie op die SQL Server 2012 Service Pack 1 ENTER prise Edition bevat.
+   * Voor het gemak is **Contoso! 000** hetzelfde als het wacht woord dat wordt gebruikt in de volledige zelf studie.
 
-3. Maak een affiniteitsgroep.
+3. Maak een affiniteits groep.
 
         New-AzureAffinityGroup `
             -Name $affinityGroupName `
@@ -95,12 +95,12 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
             -Description $affinityGroupDescription `
             -Label $affinityGroupLabel
 
-4. Maak een virtueel netwerk door een configuratiebestand te importeren.
+4. Een virtueel netwerk maken door een configuratie bestand te importeren.
 
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    Het configuratiebestand bevat het volgende XML-document. In het kort, het specificeert een virtueel netwerk genaamd **ContosoNET** in de affiniteit groep genaamd **ContosoAG**. Het heeft de adresruimte **10.10.0.0/16** en heeft twee subnetten, **respectievelijk 10.10.1.0/24** en **10.10.2.0/24**, die respectievelijk het subnet aan de voorzijde en het achtersubnet zijn. Het voorste subnet is de plaats waar u clienttoepassingen zoals Microsoft SharePoint plaatsen. Het achtersubnet is waar u de SQL Server VM's plaatst. Als u de **$affinityGroupName** en **$virtualNetworkName** variabelen eerder wijzigt, moet u ook de bijbehorende namen hieronder wijzigen.
+    Het configuratie bestand bevat het volgende XML-document. In korte informatie geeft u een virtueel netwerk met de naam **ContosoNET** op in de affiniteits groep met de naam **ContosoAG**. Het heeft de adres ruimte **10.10.0.0/16** en heeft twee subnetten: **10.10.1.0/24** en **10.10.2.0/24**, die respectievelijk het front-subnet en het back-subnet zijn. Het front-subnet is waar u client toepassingen zoals micro soft share point kunt plaatsen. In het back-subnet plaatst u de SQL Server Vm's. Als u de **$affinityGroupName** en **$virtualNetworkName** variabelen eerder wijzigt, moet u ook de bijbehorende namen wijzigen.
 
         <NetworkConfiguration xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -123,7 +123,7 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Maak een opslagaccount dat is gekoppeld aan de affiniteitsgroep die u hebt gemaakt en stel het in als het huidige opslagaccount in uw abonnement.
+5. Maak een opslag account dat is gekoppeld aan de affiniteits groep die u hebt gemaakt en stel deze in als het huidige opslag account in uw abonnement.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -133,7 +133,7 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Maak de domeincontrollerserver in de nieuwe cloudservice- en beschikbaarheidsset.
+6. Maak de domein controller server in de nieuwe Cloud service en beschikbaarheidsset.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -151,14 +151,14 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
                     –AffinityGroup $affinityGroupName `
                     -VNetName $virtualNetworkName
 
-    Deze piped commando's doen de volgende dingen:
+    Deze pipede opdrachten doen het volgende:
 
-   * **Nieuw-AzureVMConfig** maakt een VM-configuratie.
-   * **Add-AzureProvisioningConfig** geeft de configuratieparameters van een zelfstandige Windows-server.
-   * **Add-AzureDataDisk** voegt de gegevensschijf toe die u gebruikt voor het opslaan van Active Directory-gegevens, waarbij de caching-optie is ingesteld op Geen.
-   * **Nieuw-AzureVM** maakt een nieuwe cloudservice en maakt de nieuwe Azure VM in de nieuwe cloudservice.
+   * **New-AzureVMConfig** maakt een VM-configuratie.
+   * **Add-AzureProvisioningConfig** geeft de configuratie parameters van een zelfstandige Windows-Server.
+   * **Add-AzureDataDisk** voegt de gegevens schijf toe die u gebruikt voor het opslaan van Active Directory gegevens, waarbij de optie cache is ingesteld op geen.
+   * **New-AzureVM** maakt een nieuwe Cloud service en maakt de nieuwe virtuele machine van Azure in de nieuwe Cloud service.
 
-7. Wacht tot de nieuwe virtuele machine volledig is ingericht en download het externe bureaubladbestand naar uw werkmap. Omdat de nieuwe Azure VM lang duurt `while` om in te richten, blijft de lus de nieuwe VM peilen totdat deze klaar is voor gebruik.
+7. Wacht tot de nieuwe virtuele machine volledig is ingericht en down load het extern bureau blad-bestand naar uw werkmap. Omdat de nieuwe virtuele machine van Azure veel tijd in beslag neemt `while` , blijft de lus de nieuwe VM pollen tot deze klaar is voor gebruik.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -174,12 +174,12 @@ Deze zelfstudie is bedoeld om u de stappen te laten zien die nodig zijn om de hi
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-De server met domeincontroller is nu ingericht. Vervolgens configureert u het Active Directory-domein op deze domeincontrollerserver. Laat het PowerShell-venster open op uw lokale computer. U gebruikt het later opnieuw om de twee SQL Server VM's te maken.
+De domein controller Server is nu ingericht. Vervolgens configureert u het domein Active Directory op deze domein controller Server. Sluit het Power shell-venster geopend op de lokale computer. U gebruikt deze later opnieuw om de twee SQL Server Vm's te maken.
 
-## <a name="configure-the-domain-controller"></a>De domeincontroller configureren
-1. Maak verbinding met de server van de domeincontroller door het extern bureaublad-bestand te starten. Gebruik de gebruikersnaam AzureAdmin van de machinebeheerder en het wachtwoord **Contoso!000**, die u hebt opgegeven toen u de nieuwe vm maakte.
-2. Open een PowerShell-venster in de beheerdersmodus.
-3. Voer de volgende **DCPROMO uit. EXE-opdracht** om het **corp.contoso.com** domein in te stellen, met de gegevensmappen op station M.
+## <a name="configure-the-domain-controller"></a>De domein controller configureren
+1. Maak verbinding met de domein controller Server door het extern bureau blad-bestand te starten. Gebruik de gebruikers naam AzureAdmin en het wacht woord **Contoso! 000**dat u hebt opgegeven tijdens het maken van de nieuwe virtuele machine.
+2. Open een Power shell-venster in de beheerders modus.
+3. Voer de volgende **dcpromo uit. EXE** -opdracht voor het instellen van het domein **Corp.contoso.com** , met de gegevens Directory's op station M.
 
         dcpromo.exe `
             /unattend `
@@ -199,12 +199,12 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
 
     Nadat de opdracht is voltooid, wordt de VM automatisch opnieuw opgestart.
 
-4. Maak opnieuw verbinding met de server van de domeincontroller door het externe bureaubladbestand te starten. Meld u deze keer aan als **CORP\Administrator.**
-5. Open een PowerShell-venster in de beheerdersmodus en importeer de Active Directory PowerShell-module met de volgende opdracht:
+4. Maak opnieuw verbinding met de domein controller Server door het extern bureau blad-bestand te starten. Nu meldt u zich aan als **CORP\Administrator**.
+5. Open een Power shell-venster in de beheerders modus en importeer de Active Directory Power shell-module met de volgende opdracht:
 
         Import-Module ActiveDirectory
 
-6. Voer de volgende opdrachten uit om drie gebruikers aan het domein toe te voegen.
+6. Voer de volgende opdrachten uit om drie gebruikers toe te voegen aan het domein.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -226,8 +226,8 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** wordt gebruikt om alles te configureren dat verband houdt met de SQL Server-serviceexemplaren, het failovercluster en de beschikbaarheidsgroep. **CORP\SQLSvc1** en **CORP\SQLSvc2** worden gebruikt als SQL Server-serviceaccounts voor de twee SQL Server VM's.
-7. Voer vervolgens de volgende opdrachten uit om **CORP\Installeer** de machtigingen om computerobjecten in het domein te maken.
+    **CORP\Install** wordt gebruikt voor het configureren van alles dat is gerelateerd aan de SQL Server service-exemplaren, het failovercluster en de beschikbaarheids groep. **CORP\SQLSvc1** en **CORP\SQLSvc2** worden gebruikt als de SQL Server-service accounts voor de twee SQL Server vm's.
+7. Voer vervolgens de volgende opdrachten uit om **CORP\Install** de machtigingen te geven voor het maken van computer objecten in het domein.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -238,12 +238,12 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    De hierboven opgegeven GUID is de GUID voor het type computerobject. Het **CORP\Installatieaccount** heeft de machtiging **Alle eigenschappen lezen** en **Computerobjecten maken** nodig om de Active Direct-objecten voor het failovercluster te maken. De machtiging **Alle eigenschappen lezen** is al standaard aan CORP\Installeren gegeven, dus u hoeft deze niet expliciet toe te kennen. Zie [Failovercluster stapsgewijze handleiding: Accounts configureren in Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)voor meer informatie over machtigingen die nodig zijn om het failovercluster te maken.
+    De hierboven opgegeven GUID is de GUID voor het type computer object. Het **CORP\Install** -account heeft de machtiging **alle eigenschappen lezen** en **computer objecten maken** nodig om de Active direct-objecten voor het failovercluster te maken. De machtiging **alle eigenschappen lezen** wordt standaard al aan CORP\Install gegeven, dus u hoeft deze niet expliciet toe te kennen. Zie [Stapsgewijze hand leiding voor failover-clusters](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)voor meer informatie over de machtigingen die nodig zijn voor het maken van het failovercluster: accounts configureren in Active Directory.
 
-    Nu u active directory en de gebruikersobjecten hebt geconfigureerd, maakt u twee SQL Server VM's en sluit u deze aan bij dit domein.
+    Nu u klaar bent met het configureren van Active Directory en de gebruikers objecten, maakt u twee SQL Server Vm's en voegt u deze toe aan dit domein.
 
-## <a name="create-the-sql-server-vms"></a>De SQL Server VM's maken
-1. Blijf het PowerShell-venster gebruiken dat is geopend op uw lokale computer. Definieer de volgende aanvullende variabelen:
+## <a name="create-the-sql-server-vms"></a>De SQL Server Vm's maken
+1. Ga verder met het Power shell-venster dat is geopend op de lokale computer. Definieer de volgende aanvullende variabelen:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -256,8 +256,8 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    Het IP-adres **10.10.0.4** wordt doorgaans toegewezen aan de eerste vm die u maakt in het subnet **10.10.0.0/16** van uw virtuele Azure-netwerk. U moet controleren of dit het adres van uw domeincontrollerserver is door **IPCONFIG**uit te voeren.
-2. Voer de volgende pipeteopdrachten uit om de eerste VM in het failovercluster te maken, genaamd **ContosoQuorum:**
+    Het IP-adres **10.10.0.4** wordt doorgaans toegewezen aan de eerste virtuele machine die u maakt in het **10.10.0.0/16** -subnet van uw virtuele Azure-netwerk. U moet controleren of dit het adres van uw domein controller Server is door het uitvoeren van **ipconfig**.
+2. Voer de volgende opdrachten in de pipes uit om de eerste VM in het failovercluster te maken, met de naam **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -283,13 +283,13 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Let op het volgende met betrekking tot de opdracht hierboven:
+    Let op het volgende met betrekking tot de bovenstaande opdracht:
 
-   * **Nieuw-AzureVMConfig** maakt een VM-configuratie met de gewenste naam van de beschikbaarheidsset. De volgende VM's worden gemaakt met dezelfde beschikbaarheidssetnaam, zodat ze worden gekoppeld aan dezelfde beschikbaarheidsset.
-   * **Add-AzureProvisioningConfig** voegt de VM toe aan het Active Directory-domein dat u hebt gemaakt.
-   * **Set-AzureSubnet** plaatst de VM in het achtersubnet.
-   * **Nieuw-AzureVM** maakt een nieuwe cloudservice en maakt de nieuwe Azure VM in de nieuwe cloudservice. De parameter **DnsSettings** geeft aan dat de DNS-server voor de servers in de nieuwe cloudservice het IP-adres **10.10.0.4**heeft. Dit is het IP-adres van de domeincontrollerserver. Deze parameter is nodig om de nieuwe VM's in de cloudservice in staat te stellen zich met succes aan te sluiten bij het Active Directory-domein. Zonder deze parameter moet u handmatig de IPv4-instellingen in uw VM instellen om de domeincontrollerserver te gebruiken als de primaire DNS-server nadat de VM is ingericht, en vervolgens de VM aansluiten bij het Active Directory-domein.
-3. Voer de volgende piped-opdrachten uit om de SQL Server VM's te maken, genaamd **ContosoSQL1** en **ContosoSQL2.**
+   * **New-AzureVMConfig** maakt een VM-configuratie met de gewenste naam van de beschikbaarheidsset. De volgende Vm's worden gemaakt met dezelfde naam voor de beschikbaarheidsset, zodat ze zijn gekoppeld aan dezelfde beschikbaarheidsset.
+   * **Add-AzureProvisioningConfig** voegt de virtuele machine toe aan het Active Directory domein dat u hebt gemaakt.
+   * **Set-AzureSubnet** plaatst de virtuele machine in het back-subnet.
+   * **New-AzureVM** maakt een nieuwe Cloud service en maakt de nieuwe virtuele machine van Azure in de nieuwe Cloud service. De para meter **DnsSettings** geeft aan dat de DNS-server voor de servers in de nieuwe Cloud service het IP-adres **10.10.0.4**heeft. Dit is het IP-adres van de domein controller Server. Deze para meter is vereist om de nieuwe virtuele machines in de Cloud service in te scha kelen om lid te worden van het Active Directory domein. Als u deze para meter niet opgeeft, moet u de IPv4-instellingen in uw virtuele machine hand matig instellen op het gebruik van de domein controller Server als de primaire DNS-server nadat de virtuele machine is ingericht, en vervolgens de virtuele machine toevoegen aan het Active Directory domein.
+3. Voer de volgende opdrachten uit om de SQL Server Vm's met de naam **ContosoSQL1** en **ContosoSQL2**te maken.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -349,12 +349,12 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
 
     Let op het volgende met betrekking tot de bovenstaande opdrachten:
 
-   * **Nieuw-AzureVMConfig** gebruikt dezelfde beschikbaarheidssetnaam als de server van de domeincontroller en gebruikt de SQL Server 2012 Service Pack 1 Enterprise Edition-afbeelding in de galerie met virtuele machines. Het stelt ook het besturingssysteem schijf op read-caching alleen (geen schrijven caching). We raden u aan de databasebestanden te migreren naar een afzonderlijke gegevensschijf die u aan de vm koppelt en deze te configureren zonder te lezen of te schrijven. Echter, de volgende beste ding is het verwijderen van schrijf caching op het besturingssysteem schijf, omdat je niet verwijderen lees caching op het besturingssysteem schijf.
-   * **Add-AzureProvisioningConfig** voegt de VM toe aan het Active Directory-domein dat u hebt gemaakt.
-   * **Set-AzureSubnet** plaatst de VM in het achtersubnet.
-   * **Add-AzureEndpoint** voegt access endpoints toe zodat clienttoepassingen toegang hebben tot deze SQL Server-services-exemplaren op internet. Verschillende poorten worden gegeven aan ContosoSQL1 en ContosoSQL2.
-   * **Nieuw-AzureVM** maakt de nieuwe SQL Server VM in dezelfde cloudservice als ContosoQuorum. U moet de VM's in dezelfde cloudservice plaatsen als u wilt dat ze in dezelfde beschikbaarheidsset zijn.
-4. Wacht tot elke vm volledig is ingericht en dat elke virtuele machine het externe bureaubladbestand downloadt naar uw werkmap. De `for` lus cycli door de drie nieuwe VM's en voert de commando's in de top-level krullende beugels voor elk van hen.
+   * **New-AzureVMConfig** gebruikt dezelfde naam voor de beschikbaarheidsset als de domein controller Server en maakt gebruik van de SQL Server 2012 Service Pack 1 ENTER prise Edition-installatie kopie in de galerie met virtuele machines. Ook wordt de schijf van het besturings systeem ingesteld op alleen-lezen-caching (geen schrijf cache). U wordt aangeraden om de database bestanden te migreren naar een afzonderlijke gegevens schijf die u aan de virtuele machine koppelt en deze te configureren zonder lees-of schrijf cache. De volgende keer is echter het verwijderen van de schrijf cache op de schijf met het besturings systeem, omdat u de Lees cache niet kunt verwijderen op de besturingssysteem schijf.
+   * **Add-AzureProvisioningConfig** voegt de virtuele machine toe aan het Active Directory domein dat u hebt gemaakt.
+   * **Set-AzureSubnet** plaatst de virtuele machine in het back-subnet.
+   * **Add-AzureEndpoint** voegt toegangs eindpunten toe zodat client toepassingen toegang hebben tot deze SQL Server services-instanties op internet. Er worden verschillende poorten gegeven aan ContosoSQL1 en ContosoSQL2.
+   * **New-AzureVM** maakt de nieuwe SQL Server virtuele machine in dezelfde Cloud service als ContosoQuorum. U moet de virtuele machines in dezelfde Cloud service plaatsen als u wilt dat ze zich in dezelfde beschikbaarheidsset bevinden.
+4. Wacht totdat elke virtuele machine volledig is ingericht en voor elke virtuele machine het externe bureau blad-bestand naar uw werkmap downloadt. De `for` lus doorloopt de drie nieuwe virtuele machines en voert de opdrachten binnen de accolades van het hoogste niveau voor elk van deze cycli uit.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -374,77 +374,77 @@ De server met domeincontroller is nu ingericht. Vervolgens configureert u het Ac
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    De SQL Server VM's zijn nu ingericht en uitgevoerd, maar ze zijn geïnstalleerd met SQL Server met standaardopties.
+    De SQL Server Vm's worden nu ingericht en uitgevoerd, maar ze worden met SQL Server geïnstalleerd met de standaard opties.
 
-## <a name="initialize-the-failover-cluster-vms"></a>Initialisaliseren van de failovercluster VM's
-In deze sectie moet u de drie servers wijzigen die u gebruikt in het failovercluster en de SQL Server-installatie. Met name:
+## <a name="initialize-the-failover-cluster-vms"></a>Virtuele failover-cluster-Vm's initialiseren
+In deze sectie moet u de drie servers wijzigen die u gaat gebruiken in het failovercluster en de SQL Server-installatie. Met name:
 
-* Alle servers: u moet de functie **Failoverclustering** installeren.
-* Alle servers: u moet **CORP\Install** als **machinebeheerder**toevoegen.
-* Alleen ContosoSQL1 en ContosoSQL2: U moet **CORP\Install** toevoegen als **sysadmin-rol** in de standaarddatabase.
-* Alleen ContosoSQL1 en ContosoSQL2: U moet **NT AUTHORITY\System** toevoegen als aanmelding met de volgende machtigingen:
+* Alle servers: u moet het onderdeel **failover clustering** installeren.
+* Alle servers: u moet **CORP\Install** toevoegen als machine **beheerder**.
+* Alleen ContosoSQL1 en ContosoSQL2: u moet **CORP\Install** toevoegen als **sysadmin** -rol in de standaard database.
+* Alleen ContosoSQL1 en ContosoSQL2: u moet **NT AUTHORITY\SYSTEM** toevoegen als aanmelding met de volgende machtigingen:
 
-  * Elke beschikbaarheidsgroep wijzigen
-  * SQL verbinden
-  * Serverstatus weergeven
-* Alleen ContosoSQL1 en ContosoSQL2: het **TCP-protocol** is al ingeschakeld op de SQL Server VM. U moet echter nog steeds de firewall openen voor externe toegang tot SQL Server.
+  * Elke beschikbaarheids groep wijzigen
+  * Verbinding maken met SQL
+  * Server status weer geven
+* Alleen ContosoSQL1 en ContosoSQL2: het **TCP** -protocol is al ingeschakeld op de SQL Server VM. U moet echter wel de firewall openen voor externe toegang van SQL Server.
 
-Nu ben je klaar om te beginnen. Volg de onderstaande stappen vanaf **ContosoQuorum:**
+U bent nu klaar om te beginnen. Volg de onderstaande stappen vanaf **ContosoQuorum**:
 
-1. Maak verbinding met **ContosoQuorum** door de externe bureaubladbestanden te starten. Gebruik de gebruikersnaam **AzureAdmin** van de machinebeheerder en het wachtwoord **Contoso!000**, die u hebt opgegeven toen u de VM's hebt gemaakt.
-2. Controleer of de computers zijn samengevoegd met **corp.contoso.com**.
-3. Wacht tot de SQL Server-installatie is voltooid met het uitvoeren van de geautomatiseerde initialisatietaken voordat u verdergaat.
-4. Open een PowerShell-venster in de beheerdersmodus.
+1. Maak verbinding met **ContosoQuorum** door de bestanden van extern bureau blad te starten. Gebruik de gebruikers naam **AzureAdmin** en het wacht woord **Contoso! 000**dat u hebt opgegeven tijdens het maken van de vm's.
+2. Controleer of de computers zijn toegevoegd aan **Corp.contoso.com**.
+3. Wacht totdat de SQL Server installatie is voltooid met het uitvoeren van de geautomatiseerde initialisatie taken voordat u doorgaat.
+4. Open een Power shell-venster in de beheerders modus.
 5. Installeer de functie Windows Failover Clustering.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. **Corp\Installeren** als lokale beheerder toevoegen.
+6. Voeg **CORP\Install** toe als een lokale beheerder.
 
         net localgroup administrators "CORP\Install" /Add
-7. Meld u af bij ContosoQuorum. Je bent nu klaar met deze server.
+7. Meld u af bij ContosoQuorum. U bent nu klaar met deze server.
 
         logoff.exe
 
-Initialiseer **Vervolgens ContosoSQL1** en **ContosoSQL2**. Volg de onderstaande stappen, die identiek zijn voor beide SQL Server VM's.
+Initialiseer vervolgens **ContosoSQL1** en **ContosoSQL2**. Volg de onderstaande stappen, die identiek zijn voor beide SQL Server Vm's.
 
-1. Maak verbinding met de twee SQL Server VM's door de externe bureaubladbestanden te starten. Gebruik de gebruikersnaam **AzureAdmin** van de machinebeheerder en het wachtwoord **Contoso!000**, die u hebt opgegeven toen u de VM's hebt gemaakt.
-2. Controleer of de computers zijn samengevoegd met **corp.contoso.com**.
-3. Wacht tot de SQL Server-installatie is voltooid met het uitvoeren van de geautomatiseerde initialisatietaken voordat u verdergaat.
-4. Open een PowerShell-venster in de beheerdersmodus.
+1. Maak verbinding met de twee SQL Server Vm's door de bestanden van extern bureau blad te starten. Gebruik de gebruikers naam **AzureAdmin** en het wacht woord **Contoso! 000**dat u hebt opgegeven tijdens het maken van de vm's.
+2. Controleer of de computers zijn toegevoegd aan **Corp.contoso.com**.
+3. Wacht totdat de SQL Server installatie is voltooid met het uitvoeren van de geautomatiseerde initialisatie taken voordat u doorgaat.
+4. Open een Power shell-venster in de beheerders modus.
 5. Installeer de functie Windows Failover Clustering.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. **Corp\Installeren** als lokale beheerder toevoegen.
+6. Voeg **CORP\Install** toe als een lokale beheerder.
 
         net localgroup administrators "CORP\Install" /Add
-7. Importeer de SQL Server PowerShell-provider.
+7. Importeer de SQL Server Power shell-provider.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. **Corp\Install** als de sysadmin-rol voor de standaardSQL Server-instantie.
+8. Voeg **CORP\Install** toe als de rol sysadmin voor het standaard SQL Server exemplaar.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. **NT AUTHORITY\System** toevoegen als aanmelding met de drie hierboven beschreven machtigingen.
+9. Voeg **NT AUTHORITY\SYSTEM** toe als een aanmelding met de drie machtigingen die hierboven worden beschreven.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-10. Open de firewall voor externe toegang tot SQL Server.
+10. Open de firewall voor externe toegang van SQL Server.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
-11. Meld u af bij beide VM's.
+11. Meld u af bij beide Vm's.
 
          logoff.exe
 
-Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt de SQL Server PowerShell-provider om al het werk aan **ContosoSQL1**uit te voeren.
+Ten slotte bent u klaar om de beschikbaarheids groep te configureren. U gebruikt de SQL Server Power shell-provider om alle werkzaamheden op **ContosoSQL1**uit te voeren.
 
-## <a name="configure-the-availability-group"></a>De beschikbaarheidsgroep configureren
-1. Maak opnieuw verbinding met **ContosoSQL1** door de externe bureaubladbestanden te starten. In plaats van u aan te melden met het machineaccount, meldt u zich aan met **CORP\Install**.
-2. Open een PowerShell-venster in de beheerdersmodus.
+## <a name="configure-the-availability-group"></a>De beschikbaarheids groep configureren
+1. Maak opnieuw verbinding met **ContosoSQL1** door de bestanden van extern bureau blad te starten. Meld u aan met behulp van **CORP\Install**in plaats van u aan te melden met behulp van het computer account.
+2. Open een Power shell-venster in de beheerders modus.
 3. Definieer de volgende variabelen:
 
         $server1 = "ContosoSQL1"
@@ -459,11 +459,11 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
         $backupShare = "\\$server1\backup"
         $quorumShare = "\\$server1\quorum"
         $ag = "AG1"
-4. Importeer de SQL Server PowerShell-provider.
+4. Importeer de SQL Server Power shell-provider.
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. Wijzig het SQL Server-serviceaccount voor ContosoSQL1 in CORP\SQLSvc1.
+5. Wijzig het SQL Server-service account voor ContosoSQL1 in CORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -472,7 +472,7 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. Wijzig het SQL Server-serviceaccount voor ContosoSQL2 in CORP\SQLSvc2.
+6. Wijzig het SQL Server-service account voor ContosoSQL2 in CORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -481,12 +481,12 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Download **CreateAzureFailoverCluster.ps1** van [Failovercluster maken voor always on availability-groepen in Azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen een functioneel failovercluster te maken. Zie [Hoge beschikbaarheid en noodherstel voor SQL Server in Azure Virtual Machines voor](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)belangrijke informatie over de interactie met Windows Failoverclustering met het Azure-netwerk.
-8. Wijzig in uw werkmap en maak het failovercluster met het gedownloade script.
+7. Down load **CreateAzureFailoverCluster. ps1** van het maken van een failovercluster voor AlwaysOn- [beschikbaarheids groepen in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen bij het maken van een functioneel failovercluster. Zie [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure virtual machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor belang rijke informatie over de interactie van Windows Failover Clustering met het Azure-netwerk.
+8. Ga naar uw werkmap en maak het failovercluster met het gedownloade script.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Schakel Always On-beschikbaarheidsgroepen in voor de standaard SQL Server-exemplaren in **ContosoSQL1** en **ContosoSQL2**.
+9. Schakel AlwaysOn-beschikbaarheids groepen in voor de standaard SQL Server instanties in **ContosoSQL1** en **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -498,20 +498,20 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Maak een back-upmap en geef machtigingen voor de SQL Server-serviceaccounts. U gebruikt deze map om de beschikbaarheidsdatabase op de secundaire replica voor te bereiden.
+10. Maak een back-upmap en verleen machtigingen voor de SQL Server-service accounts. U gebruikt deze map om de beschikbaarheids database op de secundaire replica voor te bereiden.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Maak een database op **ContosoSQL1** genaamd **MyDB1,** neem zowel een volledige back-up als een logboekback-up en herstel ze op **ContosoSQL2** met de **optie WITH NORECOVERY.**
+11. Maak een Data Base op **ContosoSQL1** met de naam **MyDB1**, neem een volledige back-up en een logboek back-up en herstel ze op **CONTOSOSQL2** met de optie **with norecovery** .
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Maak de eindpunten van de beschikbaarheidsgroep op de SQL Server VM's en stel de juiste machtigingen in op de eindpunten.
+12. Maak de eind punten van de beschikbaarheids groep op de SQL Server Vm's en stel de juiste machtigingen in voor de eind punten.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -532,7 +532,7 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
-13. Maak de beschikbaarheidsreplica's.
+13. Maak de beschikbaarheids replica's.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -550,7 +550,7 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Maak ten slotte de beschikbaarheidsgroep en sluit u aan bij de secundaire replica voor de beschikbaarheidsgroep.
+14. Maak ten slotte de beschikbaarheids groep en voeg de secundaire replica toe aan de beschikbaarheids groep.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -565,6 +565,6 @@ Ten slotte bent u klaar om de beschikbaarheidsgroep te configureren. U gebruikt 
              -Database $db
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt SQL Server Always On nu geïmplementeerd door een beschikbaarheidsgroep in Azure te maken. Zie [Een ILB-listener configureren voor beschikbaarheidsgroepen](../classic/ps-sql-int-listener.md)altijd in Azure als u een listener voor deze beschikbaarheidsgroep wilt configureren.
+U hebt nu de implementatie SQL Server altijd voltooid door een beschikbaarheids groep te maken in Azure. Zie een ILB-listener configureren voor AlwaysOn- [beschikbaarheids groepen in azure](../classic/ps-sql-int-listener.md)voor informatie over het configureren van een listener voor deze beschikbaarheids groep.
 
-Zie [SQL Server op Azure-virtuele machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere informatie over het gebruik van SQL Server in Azure.
+Zie [SQL Server op virtuele machines van Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het gebruik van SQL Server in Azure.
