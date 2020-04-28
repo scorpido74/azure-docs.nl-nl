@@ -17,7 +17,7 @@
       items:
         - name: Bulksgewijs uitnodigen via PowerShell
           href: bulk-invite-powershell.md
-        - name: Bulksgewijs uitnodigen via de portal (preview)
+        - name: Bulksgewijs uitnodigen via de portal
           href: tutorial-bulk-invite.md
         - name: Meervoudige verificatie forceren
           href: b2b-tutorial-require-mfa.md

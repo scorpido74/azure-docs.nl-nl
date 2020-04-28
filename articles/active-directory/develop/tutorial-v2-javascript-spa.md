@@ -1,6 +1,6 @@
 ---
-title: JavaScript-zelfstudie voor apps op één pagina - Microsoft-identiteitsplatform | Azure
-description: Hoe JavaScript SPA-toepassingen een API kunnen aanroepen waarvoor toegangstokens vereist zijn voor Azure Active Directory v2.0-eindpunt
+title: Java script-zelf studie voor een app met één pagina-micro soft Identity-platform | Azure
+description: Hoe Java script-SPA-toepassingen een API kunnen aanroepen waarvoor toegangs tokens zijn vereist door Azure Active Directory v 2.0-eind punt
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -11,64 +11,58 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678031"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181559"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een Java script-toepassing met één pagina (SPA)
 
-Deze handleiding laat zien hoe een JavaScript single-page applicatie (SPA) kan:
-- Persoonlijke accounts aanmelden, werk- en schoolaccounts
+In deze hand leiding wordt gedemonstreerd hoe een Java script-toepassing met één pagina (SPA) kan:
+- Persoonlijke accounts aanmelden, evenals werk-en school accounts
 - Een toegangstoken verkrijgen
-- Bel de Microsoft Graph API of andere API's waarvoor toegangstokens van het Eindpunt van het *Microsoft-identiteitsplatform* nodig zijn
+- Roep de Microsoft Graph-API of andere Api's aan die toegangs tokens van het *micro soft Identity platform-eind punt* vereisen
 
 >[!NOTE]
-> Als u nieuw bent op het Microsoft-identiteitsplatform, raden we u aan om met de [gebruikers aan te melden en snel een toegangstoken te krijgen in een JavaScript SPA.](quickstart-v2-javascript.md)
+> Als u niet bekend bent met het micro soft-identiteits platform, raden we u aan om te beginnen met de [gebruikers voor aanmelden en een toegangs token in een Java script-Spa-Snelstartgids te verkrijgen](quickstart-v2-javascript.md).
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voorbeeld-app die door deze handleiding wordt gegenereerd, werkt
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voor beeld-app die wordt gegenereerd door deze hand leiding werkt
 
-![Laat zien hoe de voorbeeld-app die door deze zelfstudie wordt gegenereerd, werkt](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Toont hoe de voor beeld-app die door deze zelf studie wordt gegenereerd, werkt](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Meer informatie
 
-Met de voorbeeldtoepassing die door deze handleiding is gemaakt, kan een JavaScript SPA de Microsoft Graph API of een web-API opvragen die tokens van het eindpunt van het Microsoft-identiteitsplatform accepteert. In dit scenario wordt, nadat een gebruiker zich heeft aanmeldt, een toegangstoken aangevraagd en toegevoegd aan HTTP-aanvragen via de autorisatiekop. Dit token wordt gebruikt om het profiel en de e-mails van de gebruiker te verkrijgen via **de MS Graph API.** Tokenacquisitie en -verlenging worden afgehandeld door de **Microsoft Authentication Library (MSAL) voor JavaScript.**
+De voorbeeld toepassing die door deze hand leiding is gemaakt, maakt het mogelijk een Java script-beveiligd-wachtwoord verificatie op te vragen van de Microsoft Graph API of een web-API die tokens van het micro soft Identity platform-eind punt accepteert Wanneer een gebruiker zich aanmeldt, wordt in dit scenario een toegangs token aangevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Dit token wordt gebruikt om het profiel en de e-mail berichten van de gebruiker via **MS Graph API**te verkrijgen. Het verkrijgen en vernieuwen van tokens wordt verwerkt door de **micro soft Authentication Library (MSAL) voor Java script**.
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>Bibliotheken
 
-In deze handleiding wordt de volgende bibliotheek gebruikt:
+Deze hand leiding maakt gebruik van de volgende bibliotheek:
 
 |Bibliotheek|Beschrijving|
 |---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft-verificatiebibliotheek voor JavaScript|
+|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Micro soft-verificatie bibliotheek voor Java script|
 
-<!--end-collapse-->
+## <a name="set-up-your-web-server-or-project"></a>Uw webserver of project instellen
 
-## <a name="set-up-your-web-server-or-project"></a>Uw webserver of -project instellen
-
-> Liever het project van dit voorbeeld downloaden? [Download de projectbestanden](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> Wilt u in plaats daarvan het project van dit voor beeld downloaden? [Down load de project bestanden](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> Als u het codevoorbeeld wilt configureren voordat u het uitvoert, gaat u naar de [configuratiestap](#register-your-application).
+> Als u het code voorbeeld wilt configureren voordat u het uitvoert, gaat u naar de [configuratie stap](#register-your-application).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u deze zelfstudie wilt uitvoeren, hebt u een lokale webserver nodig, zoals [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)of IIS Express-integratie met [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Als u deze zelf studie wilt uitvoeren, hebt u een lokale webserver nodig, zoals [node. js](https://nodejs.org/en/download/), [.net core](https://www.microsoft.com/net/core)of IIS Express integratie met [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
-* Instructies in deze handleiding zijn gebaseerd op een webserver die is ingebouwd in Node.js. We raden u aan [Visual Studio Code](https://code.visualstudio.com/download) te gebruiken als uw geïntegreerde ontwikkelomgeving (IDE).
+* De instructies in deze hand leiding zijn gebaseerd op een webserver die is gebouwd in node. js. U wordt aangeraden [Visual Studio code](https://code.visualstudio.com/download) als uw Integrated Development Environment (IDE) te gebruiken.
 
 ## <a name="create-your-project"></a>Uw project maken
 
-Zorg ervoor dat [Node.js](https://nodejs.org/en/download/) is geïnstalleerd en maak vervolgens een map om uw toepassing te hosten. Daar implementeren we een eenvoudige [Express](https://expressjs.com/) webserver `index.html` om uw bestand te serveren.
+Zorg ervoor dat [node. js](https://nodejs.org/en/download/) is geïnstalleerd en maak een map om uw toepassing te hosten. Daar gaan we een eenvoudige [Express](https://expressjs.com/) -webserver implementeren voor uw `index.html` bestand.
 
-1. Zoek eerst met de geïntegreerde terminal van Visual Studio Code uw projectmap en installeer Vervolgens Express met NPM.
+1. Eerst kunt u met Visual Studio code geïntegreerde Terminal de projectmap vinden en vervolgens Express installeren met behulp van NPM.
 
-1. Maak vervolgens een JS-bestand met de naam `server.js`. JS en voeg vervolgens de volgende code toe:
+1. Maak vervolgens een JS-bestand met de `server.js`naam en voeg de volgende code toe:
 
    ```JavaScript
    const express = require('express');
@@ -97,15 +91,15 @@ Zorg ervoor dat [Node.js](https://nodejs.org/en/download/) is geïnstalleerd en 
    console.log('Listening on port ' + port + '...');
    ```
 
-U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur aan het einde van deze zelfstudie ziet er als volgt uit:
+U hebt nu een eenvoudige server voor uw beveiligd-wachtwoord verificatie. Aan het einde van deze zelf studie hebt u de volgende mapstructuur:
 
-![een tekstafbeelding van de beoogde SPA-mapstructuur](./media/tutorial-v2-javascript-spa/single-page-application-folder-structure.png)
+![een tekst voors telling van de gewenste indeling van de beveiligd-wachtwoord verificatie-map](./media/tutorial-v2-javascript-spa/single-page-application-folder-structure.png)
 
-## <a name="create-the-spa-ui"></a>Maak de SPA-gebruikersinterface
+## <a name="create-the-spa-ui"></a>De beveiligd-wachtwoord verificatie-gebruikers interface maken
 
-1. Maak `index.html` een bestand voor uw JavaScript SPA. Dit bestand implementeert een gebruikersinterface die is gebouwd met **Bootstrap 4 Framework** en importeert scriptbestanden voor configuratie, verificatie en API-aanroep.
+1. Maak een `index.html` bestand voor uw Java script-beveiligd-wachtwoord verificatie. Dit bestand implementeert een UI die is gebouwd met **Boots trap 4 Framework** en importeert script bestanden voor configuratie, authenticatie en API-aanroepen.
 
-   Voeg `index.html` in het bestand de volgende code toe:
+   Voeg in `index.html` het bestand de volgende code toe:
 
    ```html
    <!DOCTYPE html>
@@ -183,9 +177,9 @@ U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur a
    ```
 
    > [!TIP]
-   > U de versie van MSAL.js in het vorige script vervangen door de nieuwste versie onder [MSAL.js releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+   > U kunt de versie van MSAL. js in het voor gaande script vervangen door de meest recente versie onder [MSAL. js-releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
-2. Maak nu een .js-bestand met de naam `ui.js`, dat DOM-elementen opent en bijwerkt en voegt de volgende code toe:
+2. Maak nu een JS-bestand met de `ui.js`naam, waarmee DOM-elementen worden geopend en bijgewerkt, en voeg de volgende code toe:
 
    ```JavaScript
    // Select DOM elements to work with
@@ -259,35 +253,35 @@ U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur a
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-Voordat u verder gaat met verificatie, registreert u uw toepassing in **Azure Active Directory.**
+Voordat u verder gaat met verificatie, registreert u uw toepassing op **Azure Active Directory**.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Als uw account u toegang geeft tot meer dan één tenant, selecteert u het account rechtsboven en stelt u uw portalsessie in op de Azure AD-tenant die u wilt gebruiken.
-1. Ga naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
+1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u het account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure AD-Tenant die u wilt gebruiken.
+1. Ga naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-1. Selecteer in de sectie **URI omleiden** het **webplatform** in de vervolgkeuzelijst en stel de waarde in op de URL van de toepassing die is gebaseerd op uw webserver.
+1. Selecteer in de sectie **URI omleiden** het **webplatform in** de vervolg keuzelijst en stel vervolgens de waarde in op de toepassings-URL die is gebaseerd op uw webserver.
 1. Selecteer **Registreren**.
-1. Noteer op de pagina **Overzicht** van de app de waarde **van de id-toepassing (client)** voor later gebruik.
-1. Voor deze quickstart moet de [Impliciete toekenningsstroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld. Selecteer **Verificatie**in het linkerdeelvenster van de geregistreerde toepassing .
-1. Schakel in **Geavanceerde instellingen**onder **Impliciete toekenning**de **selectievakjes ID-tokens** en **Toegangstokens** in. ID-tokens en toegangstokens zijn vereist omdat deze app gebruikers moet aanmelden en een API moet aanroepen.
+1. Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
+1. Voor deze quickstart moet de [Impliciete toekenningsstroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld. Selecteer in het linkerdeel venster van de geregistreerde toepassing **verificatie**.
+1. Selecteer in **Geavanceerde instellingen**onder **impliciete toekenning**de selectie vakjes **id-tokens** en **toegangs tokens** . ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API aanroept.
 1. Selecteer **Opslaan**.
 
-> ### <a name="set-a-redirect-url-for-nodejs"></a>Een omleidings-URL instellen voor Node.js
+> ### <a name="set-a-redirect-url-for-nodejs"></a>Een omleidings-URL instellen voor node. js
 >
-> Voor Node.js u de webserverpoort instellen in het *server.js-bestand.* Deze zelfstudie maakt gebruik van poort 3000, maar u elke andere beschikbare poort gebruiken.
+> Voor node. js kunt u de webserver poort instellen in het bestand *server. js* . In deze zelf studie wordt poort 3000 gebruikt, maar u kunt elke andere beschik bare poort gebruiken.
 >
-> Als u een omleidings-URL in de registratiegegevens van de toepassing wilt instellen, schakelt u terug naar het deelvenster **Toepassingsregistratie** en gaat u op een van de volgende handelingen:
+> Als u een omleidings-URL wilt instellen in de registratie gegevens van de toepassing, gaat u terug naar het deel venster **toepassings registratie** en voert u een van de volgende handelingen uit:
 >
-> - Stel *`http://localhost:3000/`* in als de **URL omleiden**.
-> - Als u een aangepaste TCP-poort *`http://localhost:<port>/`* gebruikt, gebruikt u (waarbij * \<poort>* het aangepaste TCP-poortnummer is).
->   1. Kopieer de **URL-waarde.**
->   1. Ga terug naar het deelvenster **Toepassingsregistratie** en plak de gekopieerde waarde als de **URL omleiden**.
+> - Instellen *`http://localhost:3000/`* als de **omleidings-URL**.
+> - Als u een aangepaste TCP-poort gebruikt, gebruikt *`http://localhost:<port>/`* u (waarbij * \<poort>* het aangepaste TCP-poort nummer is).
+>   1. Kopieer de **URL** -waarde.
+>   1. Ga terug naar het deel venster **toepassings registratie** en plak de gekopieerde waarde als de **omleidings-URL**.
 >
 
-### <a name="configure-your-javascript-spa"></a>Uw JavaScript SPA configureren
+### <a name="configure-your-javascript-spa"></a>Uw Java script-SPA configureren
 
-Maak een nieuw .js-bestand met de naam `authConfig.js`, dat uw configuratieparameters voor verificatie bevat en voeg de volgende code toe:
+Maak een nieuw. js-bestand `authConfig.js`met de naam, dat uw configuratie parameters voor verificatie bevat, en voeg de volgende code toe:
 
 ```javascript
   const msalConfig = {
@@ -314,17 +308,17 @@ Maak een nieuw .js-bestand met de naam `authConfig.js`, dat uw configuratieparam
 ```
 
  Waar:
- - Enter_the_Application_Id_Here>is de **applicatie (client) ID** voor de applicatie die u hebt geregistreerd. * \<*
- - Enter_the_Cloud_Instance_Id_Here>is het voorbeeld van de Azure-cloud. * \<* Voer voor de hoofd- of *https://login.microsoftonline.com*globale Azure-cloud gewoon . Voor **nationale** wolken (bijvoorbeeld, China), zie [Nationale wolken](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+ - Enter_the_Application_Id_Here>de **client-id** is van de toepassing die u hebt geregistreerd. * \<*
+ - Enter_the_Cloud_Instance_Id_Here>is het exemplaar van de Azure-Cloud. * \<* Voor de hoofd-of wereld wijde Azure- *https://login.microsoftonline.com*Cloud voert u in. Zie [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)voor **nationale** Clouds (bijvoorbeeld China).
  - Enter_the_Tenant_info_here>is ingesteld op een van de volgende opties: * \<*
-   - Als uw toepassing *accounts in deze organisatiemap*ondersteunt, vervangt u deze waarde door de **tenant-id** of **tenantnaam** (bijvoorbeeld *contoso.microsoft.com).*
-   - Als uw toepassing *accounts in een organisatiemap*ondersteunt, vervangt u deze waarde door **organisaties**.
-   - Als uw toepassing *accounts in een organisatiemap en persoonlijke Microsoft-accounts*ondersteunt, vervangt u deze waarde door **algemene**. Als u de ondersteuning alleen voor *persoonlijke Microsoft-accounts*wilt beperken, vervangt u deze waarde door **consumenten**.
+   - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
+   - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.
+   - Als uw toepassing *accounts in een organisatorische map en persoonlijke micro soft-accounts*ondersteunt, vervangt u deze waarde door **common**. Als u de ondersteuning voor *persoonlijke micro soft-accounts*wilt beperken, moet u deze waarde vervangen door **consumenten**.
 
 
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>De Microsoft-verificatiebibliotheek (MSAL) gebruiken om zich bij de gebruiker aan te melden
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Gebruik de micro soft Authentication Library (MSAL) om u aan te melden bij de gebruiker
 
-Maak een nieuw .js-bestand met de naam `authPopup.js`, dat uw verificatie- en tokenacquisitielogica bevat en voeg de volgende code toe:
+Maak een nieuw. js-bestand `authPopup.js`met de naam, dat uw verificatie-en Token verwervings logica bevat, en voeg de volgende code toe:
 
    ```JavaScript
    const myMSALObj = new Msal.UserAgentApplication(msalConfig);
@@ -400,38 +394,36 @@ Maak een nieuw .js-bestand met de naam `authPopup.js`, dat uw verificatie- en to
    }
    ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>Meer informatie
 
-Nadat een gebruiker voor de eerste keer de `signIn` knop `loginPopup` **Aanmelden** heeft geselecteerd, roept de methode op om zich bij de gebruiker aan te melden. Met deze methode wordt een pop-upvenster geopend met het eindpunt van het *Microsoft-identiteitsplatform* om de referenties van de gebruiker te vragen en te valideren. Na een succesvolle aanmelding wordt de gebruiker omgeleid naar de oorspronkelijke *index.html-pagina.* Een token wordt ontvangen, verwerkt door `msal.js`, en de informatie in het token wordt in de cache opgeslagen. Dit token staat bekend als het *ID-token* en bevat basisinformatie over de gebruiker, zoals de gebruikersnaam. Als u van plan bent om gegevens die door dit token worden verstrekt voor alle doeleinden te gebruiken, moet u ervoor zorgen dat dit token wordt gevalideerd door uw backendserver om te garanderen dat het token is uitgegeven aan een geldige gebruiker voor uw toepassing.
+Nadat een gebruiker de **aanmeldings** knop voor de eerste keer selecteert, wordt de `signIn` methode aangeroepen `loginPopup` om zich aan te melden bij de gebruiker. Met deze methode wordt een pop-upvenster geopend met het *micro soft Identity platform-eind punt* om de referenties van de gebruiker te vragen en te valideren. Nadat het aanmelden is geslaagd, wordt de gebruiker teruggeleid naar de oorspronkelijke *index. html-* pagina. Er wordt een token ontvangen, verwerkt `msal.js`door en de informatie in het token wordt opgeslagen in de cache. Dit token staat bekend als *id-token* en bevat basis informatie over de gebruiker, zoals de weergave naam van de gebruiker. Als u van plan bent om gegevens te gebruiken die door dit token worden verstrekt, moet u ervoor zorgen dat dit token wordt gevalideerd door de back-endserver om te garanderen dat het token is uitgegeven aan een geldige gebruiker voor uw toepassing.
 
-De SPA die wordt `acquireTokenSilent` gegenereerd `acquireTokenPopup` door deze handleidingaanroepen en/of om een *toegangstoken* te verkrijgen dat wordt gebruikt om de Microsoft Graph-API op te vragen voor gebruikersprofielgegevens. Als u een voorbeeld nodig hebt dat het ID-token valideert, bekijkt u [deze](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2-voorbeeld") voorbeeldtoepassing in GitHub. Het voorbeeld maakt gebruik van een ASP.NET web-API voor tokenvalidatie.
+Het beveiligd-wachtwoord verificatie dat door `acquireTokenSilent` deze hand leiding `acquireTokenPopup` wordt gegenereerd, roept en/of een *toegangs token* op dat wordt gebruikt om een query uit te voeren op de Microsoft Graph-API voor gebruikers profiel gegevens. Als u een voor beeld nodig hebt dat het ID-token valideert, bekijkt u [deze](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-java script-singlepageapp-DotNet-webapi-v2-voor beeld") voorbeeld toepassing in github. In het voor beeld wordt een ASP.NET-Web-API gebruikt voor het valideren van tokens.
 
 #### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 
-Na de eerste aanmelding wilt u gebruikers niet elke keer dat ze een token nodig hebben om toegang te krijgen tot een bron opnieuw verifiëren. Dus *acquireTokenSilent* moet het grootste deel van de tijd worden gebruikt om tokens te verwerven. Er zijn echter situaties waarin u gebruikers moet dwingen om te communiceren met het eindpunt van het Microsoft-identiteitsplatform. Voorbeelden zijn:
+Na de eerste aanmelding wilt u gebruikers niet vragen om opnieuw te verifiëren wanneer ze een token nodig hebben om toegang te krijgen tot een resource. Daarom moet *acquireTokenSilent* de meeste tijd worden gebruikt voor het verkrijgen van tokens. Er zijn echter situaties waarin u gebruikers moet dwingen met het micro soft Identity platform-eind punt te communiceren. Voorbeelden zijn:
 
-- Gebruikers moeten hun referenties opnieuw invoeren omdat het wachtwoord is verlopen.
-- Uw toepassing vraagt toegang tot een bron en u hebt de toestemming van de gebruiker nodig.
-- Tweestapsverificatie is vereist.
+- Gebruikers moeten hun referenties opnieuw invoeren omdat het wacht woord is verlopen.
+- Uw toepassing vraagt toegang tot een resource en u hebt toestemming van de gebruiker nodig.
+- Verificatie met twee factoren is vereist.
 
-Aanroepen *van acquireTokenPopup* opent een pop-upvenster (of *acquireTokenRedirect* leidt gebruikers door naar het eindpunt van het Microsoft-identiteitsplatform). In dat venster moeten gebruikers communiceren door hun referenties te bevestigen, toestemming te geven voor de vereiste bron of de tweestapsverificatie te voltooien.
+Als *acquireTokenPopup* wordt aangeroepen, wordt een pop-upvenster geopend (of *acquireTokenRedirect* worden gebruikers omgeleid naar het micro soft Identity platform-eind punt). In dat venster moeten gebruikers communiceren door hun referenties te bevestigen, toestemming te geven aan de vereiste resource of de twee ledige verificatie te volt ooien.
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
-De `acquireTokenSilent` methode verwerkt tokenacquisitie en -vernieuwing zonder enige interactie van de gebruiker. Nadat `loginPopup` (of) `loginRedirect`wordt uitgevoerd voor `acquireTokenSilent` de eerste keer, is de methode vaak gebruikt om tokens gebruikt om toegang te krijgen tot beschermde bronnen voor latere oproepen te verkrijgen. (Oproepen om tokens aan te vragen of te vernieuwen worden in stilte gedaan.) `acquireTokenSilent` kan in sommige gevallen mislukken. Het wachtwoord van de gebruiker is bijvoorbeeld mogelijk verlopen. Uw toepassing kan deze uitzondering op twee manieren verwerken:
+De `acquireTokenSilent` methode verwerkt het verkrijgen van tokens en vernieuwingen zonder tussen komst van de gebruiker. Nadat `loginPopup` (of `loginRedirect`) voor de eerste keer wordt uitgevoerd, `acquireTokenSilent` is de methode die wordt gebruikt om tokens te verkrijgen die worden gebruikt voor toegang tot beveiligde resources voor volgende aanroepen. (Aanroepen naar aanvragen of vernieuwings tokens worden op de achtergrond uitgevoerd.) `acquireTokenSilent` kan in sommige gevallen mislukken. Het is bijvoorbeeld mogelijk dat het wacht woord van de gebruiker is verlopen. Uw toepassing kan deze uitzonde ring op twee manieren afhandelen:
 
-1. Direct een `acquireTokenPopup` oproep doen, waardoor een aanmeldingsprompt van de gebruiker wordt geactiveerd. Dit patroon wordt vaak gebruikt in online toepassingen waar er geen niet-geverifieerde inhoud in de toepassing beschikbaar is voor de gebruiker. Het voorbeeld dat door deze begeleide instelling wordt gegenereerd, maakt gebruik van dit patroon.
+1. Een aanroep naar `acquireTokenPopup` onmiddellijk uitvoeren, waarmee een aanmeldings prompt van de gebruiker wordt geactiveerd. Dit patroon wordt vaak gebruikt in online toepassingen waarbij er geen niet-geverifieerde inhoud in de toepassing beschikbaar is voor de gebruiker. Het voor beeld dat door deze begeleide installatie wordt gegenereerd, maakt gebruik van dit patroon.
 
-1. Toepassingen kunnen ook een visuele indicatie maken aan de gebruiker dat een interactieve aanmelding vereist is, zodat de `acquireTokenSilent` gebruiker het juiste moment kan selecteren om in te loggen of de toepassing op een later tijdstip opnieuw kan proberen. Dit wordt vaak gebruikt wanneer de gebruiker andere functionaliteit van de toepassing kan gebruiken zonder te worden verstoord. Er kan bijvoorbeeld niet-geverifieerde inhoud beschikbaar zijn in de toepassing. In deze situatie kan de gebruiker beslissen wanneer hij zich wil aanmelden om toegang te krijgen tot de beveiligde bron of om de verouderde informatie te vernieuwen.
+1. Toepassingen kunnen ook een visuele indicatie geven aan de gebruiker dat een interactieve aanmelding is vereist, zodat de gebruiker de juiste tijd kan selecteren om zich aan te melden, of de toepassing kan op `acquireTokenSilent` een later tijdstip opnieuw worden geprobeerd. Dit wordt meestal gebruikt wanneer de gebruiker andere functionaliteit van de toepassing kan gebruiken zonder te worden onderbroken. Het is bijvoorbeeld mogelijk dat er niet-geverifieerde inhoud beschikbaar is in de toepassing. In dit geval kan de gebruiker beslissen wanneer hij of zij zich wil aanmelden om toegang te krijgen tot de beveiligde resource, of om de verouderde informatie te vernieuwen.
 
 > [!NOTE]
-> Deze quickstart `loginPopup` maakt `acquireTokenPopup` standaard gebruik van de methoden en de methoden. Als u Internet Explorer als browser gebruikt, wordt `loginRedirect` `acquireTokenRedirect` het aanbevolen om te gebruiken en methoden te gebruiken, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot de manier waarop Internet Explorer met pop-upvensters omgaat. Als u wilt zien hoe u hetzelfde resultaat te bereiken met behulp van, `Redirect methods` [zie](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js).
-<!--end-collapse-->
+> Deze Quick Start maakt `loginPopup` standaard `acquireTokenPopup` gebruik van de methoden en. Als u Internet Explorer als uw browser gebruikt, is het raadzaam om gebruik `loginRedirect` te maken `acquireTokenRedirect` van en methoden, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot de manier waarop Internet Explorer pop-upvensters verwerkt. `Redirect methods` [Zie](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)als u wilt weten hoe u hetzelfde resultaat kunt krijgen met.
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Bel de Microsoft Graph API met behulp van het token dat u zojuist hebt aangeschaft
+## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>De Microsoft Graph-API aanroepen met behulp van het token dat u zojuist hebt aangeschaft
 
-1. Maak eerst een .js-bestand met de naam `graphConfig.js`, waarmee je REST-eindpunten opslaat. Voeg de volgende code toe:
+1. Maak eerst een JS-bestand met de `graphConfig.js`naam, waarin uw rest-eind punten worden opgeslagen. Voeg de volgende code toe:
 
    ```JavaScript
       const graphConfig = {
@@ -441,9 +433,9 @@ De `acquireTokenSilent` methode verwerkt tokenacquisitie en -vernieuwing zonder 
    ```
 
    Waar:
-   - Enter_the_Graph_Endpoint_Here>is het voorbeeld van MS Graph API. * \<* Voor het globale MS Graph API-eindpunt `https://graph.microsoft.com`vervangt u deze tekenreeks eenvoudig door . Voor nationale cloudimplementaties verwijzen wij u naar [Graph API Documentation](https://docs.microsoft.com/graph/deployments).
+   - Enter_the_Graph_Endpoint_Here>is het exemplaar van MS Graph API. * \<* Voor het globale MS Graph API-eind punt vervangt u deze teken `https://graph.microsoft.com`reeks door. Raadpleeg de [documentatie van Graph API](https://docs.microsoft.com/graph/deployments)voor de implementaties van nationale Clouds.
 
-1. Maak vervolgens een .js-bestand met de naam `graph.js`, waarmee een REST-aanroep wordt gemaakt naar de Microsoft Graph API en de volgende code wordt toegevoegd:
+1. Maak vervolgens een. js-bestand met `graph.js`de naam, waardoor een rest-aanroep naar Microsoft Graph-API wordt gemaakt en voeg de volgende code toe:
 
    ```javascript
    function callMSGraph(endpoint, token, callback) {
@@ -466,52 +458,45 @@ De `acquireTokenSilent` methode verwerkt tokenacquisitie en -vernieuwing zonder 
    }
    ```
 
-<!--start-collapse-->
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Meer informatie over het maken van een REST-aanroep voor een beveiligde API
 
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Meer informatie over het maken van een REST-aanroep tegen een beveiligde API
-
-In de voorbeeldtoepassing die door `callMSGraph()` deze handleiding is `GET` gemaakt, wordt de methode gebruikt om een HTTP-aanvraag te maken tegen een beveiligde bron waarvoor een token vereist is. De aanvraag retourneert de inhoud vervolgens naar de beller. Met deze methode wordt het verkregen token toegevoegd aan de *koptekst HTTP Autorisatie*. Voor de voorbeeldtoepassing die door deze handleiding is gemaakt, is de bron het eindpunt van microsoft graph-api *me,* waarmee de profielgegevens van de gebruiker worden weergegeven.
-
-<!--end-collapse-->
+In de voorbeeld toepassing die door deze hand leiding is `callMSGraph()` gemaakt, wordt de methode gebruikt om `GET` een HTTP-aanvraag te doen tegen een beveiligde bron waarvoor een token is vereist. De aanvraag retourneert vervolgens de inhoud naar de aanroeper. Met deze methode wordt het verkregen token toegevoegd aan de *http-autorisatie-header*. Voor de voorbeeld toepassing die door deze hand leiding is gemaakt, is de resource het Microsoft Graph API *me* -eind punt, waarin de profiel gegevens van de gebruiker worden weer gegeven.
 
 ## <a name="test-your-code"></a>Uw code testen
 
-1. Configureer de server om te luisteren naar een TCP-poort die is gebaseerd op de locatie van uw *index.html-bestand.* Voor Node.js start u de webserver om naar de poort te luisteren door de volgende opdrachten uit te voeren op een opdrachtregelprompt vanuit de toepassingsmap:
+1. Configureer de server om naar een TCP-poort te Luis teren die is gebaseerd op de locatie van het bestand *index. html* . Voor node. js start u de webserver om naar de poort te Luis teren door de volgende opdrachten uit te voeren vanaf een opdracht regel prompt vanuit de toepassingsmap:
 
    ```bash
    npm install
    npm start
    ```
-1. Voer in uw **http://localhost:3000** **http://localhost:{port}** browser de *poort* in of waar naar uw webserver luistert. U ziet de inhoud van uw *index.html-bestand* en de knop **Aanmelden.**
+1. Voer **http://localhost:3000** in uw browser in of **http://localhost:{port}**, waarbij *poort* de poort is waarnaar uw webserver luistert. U ziet nu de inhoud van het bestand *index. html* en de knop **Aanmelden** .
 
 ## <a name="test-your-application"></a>Uw toepassing testen
 
-Nadat de browser uw *index.html-bestand* heeft geladen, selecteert u **Aanmelden**. U wordt gevraagd zich aan te melden bij het eindpunt van het Microsoft-identiteitsplatform:
+Nadat de browser het bestand *index. html* heeft geladen, selecteert u **Aanmelden**. U wordt gevraagd om u aan te melden met het micro soft Identity platform-eind punt:
 
-![Het aanmeldingsvenster voor JavaScript SPA-account](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
+![Het aanmeld venster voor het Java script-account](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
 ### <a name="provide-consent-for-application-access"></a>Toestemming geven voor toegang tot toepassingen
 
-De eerste keer dat u zich aanmeldt bij uw aanvraag, wordt u gevraagd deze toegang te verlenen tot uw profiel en u aan te melden:
+De eerste keer dat u zich bij uw toepassing aanmeldt, wordt u gevraagd de toegang tot uw profiel toe te kennen en u aan te melden:
 
-![Het venster 'Gevraagde machtigingen'](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+![Het venster machtigingen aangevraagd](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
-### <a name="view-application-results"></a>Toepassingsresultaten weergeven
+### <a name="view-application-results"></a>Toepassings resultaten weer geven
 
-Nadat u zich hebt aangemeld, worden uw gebruikersprofielgegevens geretourneerd in de Microsoft Graph API-reactie die wordt weergegeven:
+Nadat u zich hebt aangemeld, worden de gegevens van uw gebruikers profiel geretourneerd in de Microsoft Graph API-reactie die wordt weer gegeven:
 
-![Resultaten van de Microsoft Graph API-aanroep](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+![Resultaten van de API-aanroep van Microsoft Graph](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-<!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over scopes en gedelegeerde machtigingen
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over bereiken en gedelegeerde machtigingen
 
-De Microsoft Graph API vereist dat de *user.read-scope* het profiel van een gebruiker leest. Standaard wordt dit bereik automatisch toegevoegd in elke toepassing die is geregistreerd op het registratieportaal. Andere API's voor Microsoft Graph en aangepaste API's voor uw back-endserver vereisen mogelijk extra scopes. De Microsoft Graph API vereist bijvoorbeeld het *e-mailbereik.Leesbereik* om de e-mails van de gebruiker weer te geven.
+Voor de Microsoft Graph-API is het bereik *User. Read* vereist om het profiel van een gebruiker te lezen. Deze scope wordt standaard automatisch toegevoegd in elke toepassing die is geregistreerd op de registratie Portal. Andere Api's voor Microsoft Graph, evenals aangepaste Api's voor uw back-endserver, vereisen mogelijk extra scopes. De Microsoft Graph-API vereist bijvoorbeeld het bereik *mail. Read* om de e-mail berichten van de gebruiker weer te geven.
 
 > [!NOTE]
-> De gebruiker kan worden gevraagd om extra toestemmingen als u het aantal scopes te verhogen.
+> De gebruiker wordt mogelijk gevraagd om aanvullende toestemmingen wanneer u het aantal bereiken verhoogt.
 
-Als een back-end-API geen scope vereist (niet aanbevolen), u *clientId* gebruiken als het bereik in de aanroepen om tokens te verkrijgen.
-
-<!--end-collapse-->
+Als voor een back-end-API geen bereik is vereist (niet aanbevolen), kunt u *clientId* gebruiken als het bereik in de aanroepen om tokens te verkrijgen.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

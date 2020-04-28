@@ -24,7 +24,9 @@
       href: private-endpoint-overview.md
     - name: Private Link-service
       href: private-link-service-overview.md
-- name: Procedure
+    - name: DNS-integratie voor privé-eindpunt
+      href: private-endpoint-dns.md
+- name: Procedures
   items:
     - name: Privé verbinding maken met een opslagaccount
       href: create-private-endpoint-storage-portal.md
@@ -64,9 +66,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
-- name: Bronnen
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'

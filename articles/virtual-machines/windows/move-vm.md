@@ -1,24 +1,18 @@
 ---
 title: Een Windows VM-bron verplaatsen in Azure
 description: Een Windows-vm verplaatsen naar een ander Azure-abonnement of een andere brongroep in het implementatiemodel voor ResourceBeheer.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c3f5541405d1fd983bbf988b99d2b4e10d8908c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919563"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865665"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Move a Windows VM to another Azure subscription or resource group (Een Windows-VM verplaatsen naar een ander Azure-abonnement of een andere resourcegroep)
 In dit artikel u zich uitleven hoe u een virtuele Windows-machine (VM) verplaatst tussen resourcegroepen of abonnementen. Het verplaatsen van abonnementen kan handig zijn als u oorspronkelijk een VM in een persoonlijk abonnement hebt gemaakt en deze nu wilt verplaatsen naar het abonnement van uw bedrijf om uw werk voort te zetten. U hoeft de VM niet te starten om deze te verplaatsen en deze moet tijdens de verhuizing blijven worden uitgevoerd.

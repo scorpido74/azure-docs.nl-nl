@@ -1,6 +1,6 @@
 ---
-title: Een lab opzetten om big data-analyses te leren met Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het opzetten van een lab om de big data analytics te leren met Docker deployment van Hortonworks Data Platform (HDP).
+title: Stel een lab in om big data Analytics te leren gebruiken met behulp van Azure Lab Services | Microsoft Docs
+description: Meer informatie over het instellen van een Lab voor het leren van de big data Analytics met behulp van docker-implementatie van Hortonworks data platform (HDP).
 services: lab-services
 documentationcenter: na
 author: nicolela
@@ -14,123 +14,123 @@ ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
 ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538776"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Een lab opzetten voor big data analytics met Docker-implementatie van HortonWorks Data Platform
+# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Een Lab instellen voor het big data van analyses met behulp van docker-implementatie van HortonWorks-gegevens platform
 
-In dit artikel ziet u hoe u een lab instelt om een big data-analyseklasse te onderwijzen.  Met dit type klas leren studenten hoe ze met grote hoeveelheden gegevens om kunnen gaan en machine- en statistische leeralgoritmen toepassen om gegevensinzichten af te leiden.  Een belangrijke doelstelling voor studenten is om te leren om data analytics tools te gebruiken, zoals [Apache Hadoop's open-source software pakket](https://hadoop.apache.org/) dat tools biedt voor het opslaan, beheren en verwerken van big data.
+In dit artikel wordt beschreven hoe u een Lab instelt om een big data Analytics-klasse te leren.  Met dit type klasse leren cursisten hoe u grote hoeveel heden gegevens kunt verwerken en machine-en statistische leer algoritmen kunt Toep assen om gegevens inzichten te verkrijgen.  Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals [het open-source software pakket van Apache Hadoop](https://hadoop.apache.org/) waarmee u Big data kunt opslaan, beheren en verwerken.
 
-In dit lab zullen studenten gebruik maken van een populaire commerciële versie van Hadoop die wordt geleverd door [Cloudera](https://www.cloudera.com/), genaamd [Hortonworks Data Platform (HDP).](https://www.cloudera.com/products/hdp.html)  In het bijzonder zullen studenten [HDP Sandbox 3.0.1](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html) gebruiken, een vereenvoudigde, gebruiksvriendelijke versie van het platform die gratis is en bedoeld is om te leren en te experimenteren.  Hoewel deze klasse windows- of Linux-virtuele machines (VM) kan gebruiken met HDP Sandbox geïmplementeerd, wordt in dit artikel weergegeven hoe u Windows gebruiken.
+In dit lab gebruiken studenten een populaire commerciële versie van Hadoop, die wordt verschaft door [Cloudera](https://www.cloudera.com/), [Hortonworks data platform (hdp)](https://www.cloudera.com/products/hdp.html).  In het bijzonder gebruiken studenten [HDP sandbox 3.0.1](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html) . Dit is een vereenvoudigde, gebruiks vriendelijke versie van het platform die gratis is en bedoeld is voor leren en experimenteren.  Hoewel deze klasse kan gebruikmaken van virtuele Windows-of Linux-machines (VM) met HDP sandbox geïmplementeerd, wordt in dit artikel weer gegeven hoe u Windows gebruikt.
 
-Een ander interessant aspect van dit lab, is dat we HDP Sandbox inzetten op het lab VM's met behulp van [Docker](https://www.docker.com/) containers.  Elke Docker-container biedt zijn eigen geïsoleerde omgeving voor softwaretoepassingen die binnen kunnen worden uitgevoerd.  Conceptueel zijn Docker-containers vergelijkbaar met geneste VM's en kunnen ze worden gebruikt om eenvoudig een breed scala aan softwaretoepassingen te implementeren en uit te voeren op basis van containerafbeeldingen die op [Docker Hub](https://www.docker.com/products/docker-hub)worden geleverd.  Cloudera's implementatiescript voor HDP Sandbox haalt automatisch de [HDP Sandbox 3.0.1 Docker-afbeelding](https://hub.docker.com/r/hortonworks/sandbox-hdp) uit Docker Hub en voert twee Docker-containers uit:
-  - sandbox-hdp
+Een ander interessant aspect van dit lab is dat we HDP sandbox implementeren op de Lab-Vm's met behulp van [docker](https://www.docker.com/) -containers.  Elke docker-container biedt een eigen geïsoleerde omgeving voor het uitvoeren van software toepassingen.  Docker-containers zijn in het algemeen als geneste Vm's en kunnen worden gebruikt om eenvoudig een breed scala aan software toepassingen te implementeren en uit te voeren op basis van container installatie kopieën die worden meegeleverd op [docker hub](https://www.docker.com/products/docker-hub).  Het implementatie script van Cloudera voor HDP-sandbox haalt automatisch de [HDP sandbox 3.0.1 docker-installatie kopie](https://hub.docker.com/r/hortonworks/sandbox-hdp) uit vanuit docker hub en voert twee docker-containers uit:
+  - sandbox-HDP
   - sandbox-proxy
 
-## <a name="lab-configuration"></a>Labconfiguratie
+## <a name="lab-configuration"></a>Lab-configuratie
 
-Om dit lab in te stellen, hebt u een Azure-abonnement en labaccount nodig om aan de slag te gaan. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt, u een nieuw labaccount maken in Azure Lab Services. Zie [Zelfstudie om een Lab-account op te zetten voor](tutorial-setup-lab-account.md)meer informatie over het maken van een nieuw labaccount.  U ook een bestaand labaccount gebruiken.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md)voor meer informatie over het maken van een nieuw Lab-account.  U kunt ook een bestaand Lab-account gebruiken.
 
-### <a name="lab-account-settings"></a>Lab-accountinstellingen
+### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Schakel de instellingen in die in de onderstaande tabel worden beschreven voor het labaccount. Zie Marketplace-afbeeldingen opgeven die beschikbaar zijn voor makers van het lab voor meer informatie over het inschakelen [van marketplace-afbeeldingen.](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
 
-| Lab-accountinstelling | Instructies |
+| Account instelling Lab | Instructies |
 | ------------------- | ------------ |
-|Afbeelding van Marktplaats| Schakel de Windows 10 Pro-afbeelding in voor gebruik binnen uw labaccount.|
+|Marketplace-installatie kopie| Schakel de Windows 10 Pro-installatie kopie in voor gebruik binnen uw Lab-account.|
 
 ### <a name="lab-settings"></a>Lab-instellingen
 
-Gebruik de instellingen in de onderstaande tabel bij het instellen van een klaslokaallab.  Zie een lesprogramma voor een klaslokaal voor meer informatie over het maken van een [leslokaallab.](tutorial-setup-classroom-lab.md)
+Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslokaal Lab.  Voor meer informatie over het maken van een leslokaal Lab raadpleegt u [een klassikale Lab-zelf studie instellen](tutorial-setup-classroom-lab.md).
 
 | Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
-|Virtuele machinegrootte| Medium (Geneste virtualisatie). Deze VM-grootte is het meest geschikt voor relationele databases, caches in het geheugen en analyses.  Deze grootte ondersteunt ook geneste virtualisatie.|  
-|Afbeelding van virtuele machine| Windows 10 Pro|
+|Grootte van virtuele machine| Gemiddeld (geneste virtualisatie). Deze VM-grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie.|  
+|Installatie kopie van virtuele machine| Windows 10 Pro|
 
 > [!NOTE] 
-> We moeten Medium (Geneste virtualisatie) gebruiken, omdat het implementeren van HDP Sandbox met Docker vereist:
+> We moeten gemiddeld (geneste virtualisatie) gebruiken omdat het implementeren van HDP sandbox met docker vereist is:
 >   - Windows Hyper-V met geneste virtualisatie
->   - Minstens 10 GB RAM
+>   - Mini maal 10 GB aan RAM-geheugen
 
-## <a name="template-machine-configuration"></a>Sjabloonmachineconfiguratie
+## <a name="template-machine-configuration"></a>Configuratie van de sjabloon machine
 
-Om de sjabloonmachine in te stellen, zullen we:
+Als u de sjabloon machine wilt instellen, doet u het volgende:
 - Docker installeren
-- HDP Sandbox implementeren
-- PowerShell en Windows Taakplanner gebruiken om de Docker-containers automatisch te starten
+- HDP sandbox implementeren
+- Power shell en Windows Task Scheduler gebruiken om automatisch de docker-containers te starten
 
 ### <a name="install-docker"></a>Docker installeren
 
-De stappen in deze sectie zijn gebaseerd op [de instructies van Cloudera voor het implementeren met Docker-containers.](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html) 
+De stappen in deze sectie zijn gebaseerd op [de instructies van Cloudera voor de implementatie met docker-containers](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html). 
 
-Als u Docker-containers wilt gebruiken, moet u dockerbureaublad eerst installeren op de sjabloon-vm:
+Als u docker-containers wilt gebruiken, moet u eerst docker Desktop installeren op de sjabloon-VM:
 
-1. Volg de stappen in de [sectie Voorwaarden](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) om [Docker voor Windows](https://docs.docker.com/docker-for-windows/install/)te installeren. 
+1. Volg de stappen in de [sectie vereisten](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) om [docker voor Windows](https://docs.docker.com/docker-for-windows/install/)te installeren. 
 
     > [!IMPORTANT] 
-    > Controleer of de **configuratieoptie Windows-containers gebruiken in plaats van Linux-containers** niet wordt ingeschakeld.
+    > Zorg ervoor dat de configuratie optie **Windows-containers gebruiken in plaats van Linux-containers** is uitgeschakeld.
 
-1. Controleer of **de functies Windows Containers en Hyper-V** zijn ingeschakeld.
+1. Zorg ervoor dat **Windows-containers en de Hyper-V-functies** zijn ingeschakeld.
    ![Windows-onderdelen in- of uitschakelen](../media/class-type-big-data-analytics/windows-hyperv-features.png)
 
-1. Volg de stappen in de sectie [Geheugen voor Windows](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows) om de geheugenconfiguratie van Docker te configureren.
+1. Volg de stappen in de sectie [geheugen voor Windows](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows) om de geheugen configuratie van de docker te configureren.
 
     > [!WARNING]
-    > Als u per ongeluk de optie **Windows-containers gebruiken in plaats van Linux-containers** controleert bij het installeren van Docker, ziet u de instellingen voor geheugenconfiguratie niet.  Om dit op te lossen, u overschakelen naar het gebruik van Linux-containers door [te klikken op het Docker-pictogram in de windows-systeemlade;](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) Wanneer het menu Docker Desktop wordt geopend, selecteert u **Overschakelen naar Linux-containers**.
+    > Als u per ongeluk de optie **Windows-containers gebruiken in plaats van Linux-containers** hebt ingeschakeld tijdens de installatie van docker, worden de configuratie-instellingen van het geheugen niet weer geven.  Om dit probleem op te lossen, kunt u overschakelen naar het gebruik van Linux-containers door [te klikken op het docker-pictogram in het Windows](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)-systeemvak. Wanneer het menu van docker Desktop wordt geopend, selecteert **u overschakelen naar Linux-containers**.
  
-### <a name="deploy-hdp-sandbox"></a>HDP Sandbox implementeren
+### <a name="deploy-hdp-sandbox"></a>HDP sandbox implementeren
 
-In deze sectie implementeert u HDP Sandbox en krijgt u vervolgens ook toegang tot HDP Sandbox via de browser.
+In deze sectie implementeert u HDP sandbox en opent u vervolgens ook toegang tot HDP sandbox via de browser.
 
-1. Zorg ervoor dat u [Git Bash](https://gitforwindows.org/) hebt geïnstalleerd zoals vermeld in het [gedeelte Voorwaarden](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) van de handleiding, omdat dit wordt aanbevolen voor het voltooien van de volgende stappen.
+1. Zorg ervoor dat u [Git Bash](https://gitforwindows.org/) hebt geïnstalleerd zoals vermeld in de [sectie vereisten](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) van de hand leiding, aangezien dit wordt aanbevolen voor het volt ooien van de volgende stappen.
 
-1. Voer de stappen in de volgende secties uit met de [implementatie- en installatiehandleiding van Clouder voor Docker:](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)
+1. Volg de stappen in de volgende secties [om de implementatie-en installatie handleiding van Cloudera te gebruiken voor docker](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html):
    
-   -    HDP Sandbox implementeren
-   -    HDP Sandbox verifiëren
+   -    HDP sandbox implementeren
+   -    HDP sandbox controleren
 
     > [!WARNING] 
-    > Wanneer u het nieuwste .zip-bestand voor HDP downloadt, moet u ervoor zorgen dat u het .zip-bestand *niet* opslaat in een mappad met witruimte.
+    > Wanneer u het meest recente zip-bestand voor HDP downloadt, moet u ervoor zorgen dat u het zip-bestand *niet* in een mappad opslaat dat witruimte bevat.
 
     > [!NOTE] 
-    > Als u tijdens de implementatie een uitzondering ontvangt waarin staat dat **Drive niet is gedeeld,** moet u uw C-station delen met Docker, zodat de Linux-containers van HDP toegang hebben tot lokale Windows-bestanden.  Als u dit wilt oplossen, [klikt u op het pictogram Docker in de vakleiding van Windows-systeem](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) om het menu Docker Desktop te openen en **instellingen**te selecteren.  Wanneer het dialoogvenster **Instellingen van Docker** wordt geopend, selecteert u **Bronnen > Het delen van bestanden** en schakelt u het **C-station** in.  U vervolgens de stappen herhalen om HDP Sandbox te implementeren.
+    > Als u een uitzonde ring ontvangt tijdens de implementatie waarbij het **station niet is gedeeld**, moet u uw C-station met docker delen zodat de Linux-containers van HDP toegang hebben tot lokale Windows-bestanden.  Om dit probleem op te lossen, klikt u op [het pictogram docker op de Windows-systeem balk](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) om het menu docker-bureau blad te openen en **instellingen**te selecteren.  Wanneer **het dialoog venster instellingen van docker** wordt geopend, selecteert u **resources > het delen van bestanden** en controleert u het station **C** .  Vervolgens kunt u de stappen voor het implementeren van HDP sandbox herhalen.
 
-1. Zodra de Docker-containers voor HDP Sandbox zijn geïmplementeerd en uitgevoerd, hebt u toegang tot de omgeving door uw browser te starten en de instructies van Cloudera te volgen voor het openen van de [Welkomstpagina](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) van de Sandbox en het starten van het HDP-dashboard.
+1. Zodra de docker-containers voor HDP sandbox zijn geïmplementeerd en worden uitgevoerd, kunt u toegang krijgen tot de omgeving door uw browser te starten en de instructies van Cloudera te volgen voor het openen van de [welkomst pagina](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) van de sandbox en het HDP-dash board te starten.
 
     > [!NOTE] 
-    > Deze instructies gaan ervan uit dat u eerst het lokale IP-adres van de sandbox-omgeving hebt toegewezen aan de sandbox-hdp.hortonworks.com in het hostbestand op uw sjabloon-VM.  Als u deze toewijzing **niet** doet, u de [http://localhost:8080](http://localhost:8080)pagina Sandbox-welkom openen door te navigeren naar.
+    > Bij deze instructies wordt ervan uitgegaan dat u het lokale IP-adres van de sandbox-omgeving eerst hebt toegewezen aan de sandbox-hdp.hortonworks.com in het hostbestand op de VM van de sjabloon.  Als u deze toewijzing **niet** doet, kunt u toegang krijgen tot de welkomst pagina van de sandbox door [http://localhost:8080](http://localhost:8080)te navigeren naar.
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>Docker-containers automatisch starten wanneer studenten zich aanmelden
 
-Om studenten een gebruiksvriendelijke ervaring te bieden, gebruiken we automatisch een PowerShell-script dat automatisch:
-  - Hiermee start u de HDP Sandbox Docker-containers wanneer een student start en verbinding maakt met hun lab-VM.
-  - Start de browser en navigeert naar de Sandbox Welkomstpagina.
-We gebruiken windows taakplanner ook om dit script automatisch uit te voeren wanneer een student zich aanmeldt bij zijn VM.
-Volg de volgende stappen: [Big Data Analytics scripting](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/)om dit in te stellen.
+We gaan een Power shell-script gebruiken dat automatisch wordt gebruikt voor het maken van een gebruiks ervaring:
+  - Start de HDP sandbox docker-containers wanneer een student wordt gestart en verbinding maakt met hun Lab-VM.
+  - Hiermee opent u de browser en gaat u naar de welkomst pagina van de sandbox.
+We gebruiken Windows Task Scheduler ook om dit script automatisch uit te voeren wanneer een student zich aanmeldt bij de VM.
+Voer de volgende stappen uit om deze in te stellen: [Big Data Analytics scripting](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/).
 
-## <a name="cost-estimate"></a>Kostenraming
+## <a name="cost-estimate"></a>Kosten raming
 
-Als u de kosten van dit lab wilt schatten, u het volgende voorbeeld gebruiken.
+Als u de kosten van dit Lab wilt schatten, kunt u het volgende voor beeld gebruiken.
 
-Voor een klas van 25 studenten met 20 uur geplande lestijd en 10 uur quotum voor huiswerk of opdrachten, zou de prijs voor het lab zijn:
-  - 25 studenten * (20 + 10) uur * 55 Lab Units * 0,01 USD per uur = 412,50 USD
+Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab:
+  - 25 studenten * (20 + 10) uur * 55 Lab-eenheden * 0,01 USD per uur = 412,50 USD
 
-Meer informatie over prijzen, zie [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
 
 ## <a name="conclusion"></a>Conclusie
 
-Dit artikel heeft u de stappen doorlopen die nodig zijn om een lab te maken voor een big data-analyseklasse die gebruik maakt van Hortonworks Data Platform dat is geïmplementeerd met Docker.  De instelling voor dit klassetype kan worden gebruikt voor vergelijkbare klassen voor gegevensanalyse.  Deze instelling kan ook van toepassing zijn op andere typen klassen die Docker gebruiken voor implementatie.
+In dit artikel werd uitgelegd hoe u stapsgewijs door de stappen die nodig zijn voor het maken van een Lab voor een big data Analytics-klasse die gebruikmaakt van Hortonworks-gegevens platform dat is geïmplementeerd met docker.  De instellingen voor dit klassetype kunnen worden gebruikt voor soort gelijke gegevens analyse klassen.  Deze installatie kan ook van toepassing zijn op andere typen klassen die gebruikmaken van docker voor implementatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende stappen zijn gebruikelijk voor het opzetten van een lab.
+De volgende stappen zijn gebruikelijk voor het instellen van elk lab.
 
 - [Een sjabloon maken en beheren](how-to-create-manage-template.md)
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Quotum instellen](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Een schema instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Koppelingen naar e-mailregistratie naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)

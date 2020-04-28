@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c5ea32fb198a61391e1be3648d1d2d2e829a7214
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137260"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186438"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
 
@@ -32,6 +32,9 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
+
+> [!NOTE]  
+> Als u de klassieke waarschuwings regels wilt migreren en een bestaande virtuele Linux-machine wilt gebruiken, moet u ervoor zorgen dat aan de virtueel-machine een **door**het systeem toegewezen identiteit is ingesteld op on.
 
 Een nieuwe virtuele Linux-machine maken: 
 

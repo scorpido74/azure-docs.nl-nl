@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d083ba757004fa477038750ad6210e4bb30659ee
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120754"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176597"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -140,7 +140,7 @@ U kunt ook gebruikmaken van ingebouwde beleids definities met betrekking tot het
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
 
-**Hulp**: Labels gebruiken voor netwerk beveiligings groepen (NSG) en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan. Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op labelen, zoals ' vereist label en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources. U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren. 
+**Hulp**: Labels gebruiken voor netwerk beveiligings groepen (NSG) en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan. Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op labelen, zoals ' tag vereisen en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources. U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren. 
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -687,7 +687,7 @@ Gebruik Advanced Threat Protection voor Azure Storage ook om niet-geautoriseerde
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
-**Hulp: Azure**Policy gebruiken om beperkingen te geven aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
+**Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
 
  - Niet toegestane brontypen 
  - Toegestane brontypen 
@@ -730,7 +730,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
-**Hulp: Azure**Policy gebruiken om beperkingen te geven aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
+**Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities: 
 
 - Niet toegestane brontypen 
 - Toegestane brontypen 
@@ -783,7 +783,7 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Storage ' om aangepaste beleids regels te maken om de configuratie van uw opslag account-exemplaren te controleren of af te dwingen. U kunt ook ingebouwde Azure-beleids definities voor Azure Storage account gebruiken, zoals: 
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Storage ' om aangepaste beleids regels te maken om de configuratie van uw opslag account-exemplaren te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities voor Azure Storage account gebruiken, zoals: 
 
 Onbeperkte netwerk toegang controleren tot opslag accounts geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager bronnen beveiligde overdracht naar opslag accounts moet worden ingeschakeld 
 
@@ -807,7 +807,7 @@ Gebruik aanbevelingen van Azure Security Center als een veilige configuratie bas
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7,3: veilige configuraties voor alle Azure-resources onderhouden
 
-**Richt lijnen**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor de resources van uw opslag account. 
+**Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor de resources van uw opslag account. 
 
 - [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

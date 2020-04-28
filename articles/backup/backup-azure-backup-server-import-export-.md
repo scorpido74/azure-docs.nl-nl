@@ -1,281 +1,281 @@
 ---
 title: Offline back-ups voor DPM en Azure Backup Server
-description: Met Azure Backup u gegevens uit het netwerk verzenden met behulp van de Azure Import/Export-service. In dit artikel wordt de offline back-upwerkstroom voor DPM en Azure Backup Server uitgelegd.
+description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 080b0bc53b2058bd186e90f354b8f5bcda510414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d45716fea92a25b0deea6ee5c1972820341d64a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197045"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183854"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offline back-upwerkstroom voor DPM en Azure Backup Server
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Werk stroom voor offline back-ups voor DPM en Azure Backup Server
 
-Azure Backup heeft verschillende ingebouwde efficiëntieverbeteringen die netwerk- en opslagkosten besparen tijdens de eerste volledige back-ups van gegevens naar Azure. Initiële volledige back-ups brengen doorgaans grote hoeveelheden gegevens over en vereisen meer netwerkbandbreedte in vergelijking met latere back-ups die alleen de delta's/incrementele gegevens overbrengen. Azure Backup comprimeert de eerste back-ups. Tijdens het proces van offline zaaien kan Azure Backup schijven gebruiken om de gecomprimeerde initiële back-upgegevens offline naar Azure te uploaden.
+Azure Backup heeft verschillende ingebouwde efficiency waarmee netwerk-en opslag kosten worden bespaard tijdens de eerste volledige back-ups van gegevens naar Azure. Bij eerste volledige back-ups worden grote hoeveel heden gegevens overgebracht en is er meer netwerk bandbreedte nodig in vergelijking met de volgende back-ups die alleen de Deltas/toenames overdragen. Azure Backup comprimeert de eerste back-ups. Dankzij het proces van offline seeding kan Azure Backup schijven gebruiken om de gecomprimeerde initiële back-upgegevens offline te uploaden naar Azure.
 
-Het offline-seedingproces van Azure Backup is nauw geïntegreerd met de [Azure Import/Export-service.](../storage/common/storage-import-export-service.md) U deze service gebruiken om gegevens over te dragen aan Azure met behulp van schijven. Als u terabytes (TB's) hebt van de eerste back-upgegevens die moeten worden overgedragen via een netwerk met hoge latentie en lage bandbreedte, u de offline-seeding-workflow gebruiken om de eerste back-upkopie op een of meer harde schijven naar een Azure-datacenter te verzenden. In dit artikel vindt u een overzicht en verdere stappen die deze werkstroom voor System Center Data Protection Manager (DPM) en Microsoft Azure Backup Server (MABS) voltooien.
+Het offline-seeding proces van Azure Backup is nauw geïntegreerd met de [Azure import/export-service](../storage/common/storage-import-export-service.md). Met deze service kunt u gegevens overdragen naar Azure met behulp van schijven. Als u een TBs hebt van de eerste back-upgegevens die moeten worden overgezet via een netwerk met een hoge latentie en een lage band breedte, kunt u de werk stroom voor offline seeding gebruiken om de eerste back-up op een of meer harde schijven naar een Azure-Data Center te verzenden. Dit artikel bevat een overzicht en verdere stappen voor het volt ooien van deze werk stroom voor System Center Data Protection Manager (DPM) en Microsoft Azure Backup Server (MABS).
 
 > [!NOTE]
-> Het proces van offline back-up voor de Microsoft Azure Recovery Services (MARS) Agent onderscheidt zich van DPM en MABS. Zie [Offline back-upwerkstroom in Azure Backup](backup-azure-backup-import-export.md)voor informatie over het gebruik van offline back-ups met de MARS-agent. Offline back-upwordt niet ondersteund voor back-ups van systeemstatus die worden uitgevoerd met de Azure Backup Agent.
+> Het proces van offline back-up voor de Microsoft Azure Recovery Services-agent (MARS) verschilt van DPM en MABS. Zie [offline back-upwerk stroom in azure backup](backup-azure-backup-import-export.md)voor meer informatie over het gebruik van offline back-ups met de Mars-agent. Offline back-up wordt niet ondersteund voor systeem status back-ups die worden uitgevoerd met behulp van de Azure Backup-Agent.
 >
 
 ## <a name="overview"></a>Overzicht
 
-Met de offline-seeding-mogelijkheden van Azure Backup en de Azure Import/Export-service is het eenvoudig om de gegevens offline naar Azure te uploaden met behulp van schijven. Het offline back-upproces omvat de volgende stappen:
+Met de offline-seeding-mogelijkheid van Azure Backup en de Azure import/export-service, is het eenvoudig om de gegevens offline naar Azure te uploaden met behulp van schijven. Het offline back-upproces bestaat uit de volgende stappen:
 
 > [!div class="checklist"]
 >
-> * De back-upgegevens worden naar een faseringslocatie geschreven in plaats van via het netwerk te worden verzonden.
-> * De gegevens op de faseringslocatie worden vervolgens naar een of meer SATA-schijven geschreven met behulp van het *AzureOfflineBackupDiskPrep-hulpprogramma.*
-> * Een Azure-importtaak wordt automatisch gemaakt door het hulpprogramma.
-> * De SATA-stations worden vervolgens verzonden naar het dichtstbijzijnde Azure-datacenter.
-> * Nadat de upload van de back-upgegevens naar Azure is voltooid, kopieert Azure Backup de back-upgegevens naar de back-upkluis en worden de incrementele back-ups gepland.
+> * De back-upgegevens worden naar een faserings locatie geschreven in plaats van via het netwerk te verzenden.
+> * De gegevens op de faserings locatie worden vervolgens naar een of meer SATA-schijven geschreven met behulp van het *AzureOfflineBackupDiskPrep* -hulp programma.
+> * Er wordt automatisch een Azure import-taak gemaakt door het hulp programma.
+> * De SATA-schijven worden vervolgens verzonden naar het dichtstbijzijnde Azure-Data Center.
+> * Nadat het uploaden van de back-upgegevens naar Azure is voltooid, Azure Backup de back-upgegevens naar de back-upkluis gekopieerd en de incrementele back-ups worden gepland.
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
 
-Offline back-up wordt ondersteund voor alle implementatiemodellen van Azure Backup die back-ups maken van gegevens van on-premises naar de Microsoft-cloud. Deze modellen omvatten:
+Offline back-ups worden ondersteund voor alle implementatie modellen van Azure Backup die een back-up van gegevens van on-premises naar de micro soft-Cloud maken. Deze modellen omvatten:
 
 > [!div class="checklist"]
 >
-> * Back-up van bestanden en mappen met de MARS-agent of de Azure Backup Agent.
-> * Back-up van alle workloads en bestanden met DPM.
-> * Back-up van alle workloads en bestanden met MABS.
+> * Back-ups maken van bestanden en mappen met de MARS-agent of de Azure Backup-Agent.
+> * Back-ups maken van alle werk belastingen en bestanden met DPM.
+> * Back-ups maken van alle werk belastingen en bestanden met MABS.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer of aan de volgende vereisten is voldaan voordat u de offline back-upworkflow start:
+Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom voor offline back-ups start:
 
-* Er is [een kluis van Recovery Services](backup-azure-recovery-services-vault-overview.md) gemaakt. Als u er een wilt maken, volgt u de stappen in [Een kluis van Herstelservices maken](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
-* Een Azure Backup Agent of MABS of DPM is geïnstalleerd op Windows Server of een Windows-client, indien van toepassing, en de computer is geregistreerd bij de kluis Recovery Services. Controleer of alleen de [nieuwste versie van Azure Backup](https://go.microsoft.com/fwlink/?linkid=229525) wordt gebruikt.
-* [Download het bestand met Azure-publicatie-instellingen](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) op de computer van waaruit u een back-up van uw gegevens wilt maken. Het abonnement van waaruit u het publicatie-instellingenbestand downloadt, kan afwijken van het abonnement dat de kluis Recovery Services bevat. Als uw abonnement zich op soevereine Azure-clouds bevindt, gebruikt u de volgende koppelingen om het bestand met Azure-publicatie-instellingen te downloaden.
+* Er is een [Recovery Services kluis](backup-azure-recovery-services-vault-overview.md) gemaakt. Als u er een wilt maken, volgt u de stappen in [een Recovery Services kluis maken](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
+* Een Azure Backup Agent of MABS of DPM is geïnstalleerd op Windows Server of een Windows-client, indien van toepassing, en de computer is geregistreerd bij de Recovery Services kluis. Zorg ervoor dat alleen de [meest recente versie van Azure backup](https://go.microsoft.com/fwlink/?linkid=229525) wordt gebruikt.
+* [Down load het Azure Publish settings-bestand](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) op de computer van waaruit u een back-up van uw gegevens wilt maken. Het abonnement waaruit u het publicatie-instellingen bestand downloadt, kan afwijken van het abonnement dat de Recovery Services kluis bevat. Als uw abonnement is gekoppeld aan soevereine Azure-Clouds, gebruikt u de volgende koppelingen voor het downloaden van het Azure Publish settings-bestand.
 
-    | Soevereine wolkenregio | Bestandskoppeling voor Azure-publicatie-instellingen |
+    | Soevereine Cloud regio | Bestands koppeling van Azure Publish-instellingen |
     | --- | --- |
     | Verenigde Staten | [Koppeling](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | China | [Koppeling](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Er is een Azure-opslagaccount met het implementatiemodel Resource Manager gemaakt in het abonnement waarvan u het publicatie-instellingenbestand hebt gedownload.
+* Een Azure-opslag account met het Resource Manager-implementatie model is gemaakt in het abonnement van waaruit u het bestand met publicatie-instellingen hebt gedownload.
 
-  ![Een opslagaccount maken met de ontwikkeling van Resource Manager](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
+  ![Een opslag account maken met Resource Manager-ontwikkeling](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
-* Er wordt een faseringslocatie gemaakt, die een netwerkshare of een extra schijf op de computer kan zijn, intern of extern, met voldoende schijfruimte om uw eerste kopie vast te houden. Als u bijvoorbeeld een back-up wilt maken van een bestandsserver van 500 GB, moet u ervoor zorgen dat het faseringsgebied ten minste 500 GB bedraagt. (Een kleinere hoeveelheid wordt gebruikt als gevolg van compressie.)
-* Voor schijven die naar Azure worden verzonden, moet u ervoor zorgen dat alleen interne harde schijven van 2,5-inch SSD of 2,5-inch of 3,5-inch SATA II/III worden gebruikt. U harde schijven tot 10 TB gebruiken. Controleer de [servicedocumentatie voor Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) voor de nieuwste set schijven die de service ondersteunt.
-* De SATA-stations moeten zijn aangesloten op een computer (aangeduid als een *kopieercomputer)* van waaruit de kopie van back-upgegevens van de halteplaats naar de SATA-stations wordt uitgevoerd. Controleer of BitLocker is ingeschakeld op de kopieercomputer.
+* Een faserings locatie, die een netwerk share kan zijn of een extra station op de computer, intern of extern, met voldoende schijf ruimte om uw eerste kopie te bewaren, wordt gemaakt. Als u bijvoorbeeld een back-up van een bestands server van 500 GB wilt maken, moet u ervoor zorgen dat de tijdelijke ruimte ten minste 500 GB is. (Er wordt een kleiner bedrag gebruikt vanwege compressie.)
+* Zorg ervoor dat er voor schijven die naar Azure worden verzonden, alleen 2,5-inch SSD-of 2,5-inch of 3,5-inch SATA II/III interne harde schijven worden gebruikt. U kunt harde schijven van Maxi maal 10 TB gebruiken. Raadpleeg de [documentatie van de Azure import/export-service](../storage/common/storage-import-export-requirements.md#supported-hardware) voor de meest recente set stations die door de service worden ondersteund.
+* De SATA-schijven moeten zijn verbonden met een computer (waarnaar wordt verwezen als een *Kopieer computer*) van waaruit het kopiëren van back-upgegevens van de faserings locatie naar de SATA-schijven is voltooid. Zorg ervoor dat BitLocker is ingeschakeld op de Kopieer computer.
 
-## <a name="prepare-the-server-for-the-offline-backup-process"></a>De server voorbereiden op het offline back-upproces
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>De server voorbereiden voor het offline back-upproces
 
 >[!NOTE]
-> Als u de vermelde hulpprogramma's, zoals *AzureOfflineBackupCertGen.exe,* niet vinden in AskAzureBackupTeam@microsoft.com uw installatie van de MARS-agent, schrijft u naar om toegang tot deze hulpprogramma's te krijgen.
+> Als u de vermelde hulpprogram ma's, zoals *AzureOfflineBackupCertGen. exe*, niet kunt vinden in uw installatie van de Mars-agent, AskAzureBackupTeam@microsoft.com schrijft u naar om toegang te krijgen.
 
-* Open een opdrachtprompt met verhoogde bevoegdheid op de server en voer de volgende opdracht uit:
+* Open een opdracht prompt met verhoogde bevoegdheid op de server en voer de volgende opdracht uit:
 
     ```cmd
     AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
     ```
 
-    Het hulpprogramma maakt een Azure Offline Backup Active Directory Application als deze niet bestaat.
+    Het hulp programma maakt een Azure offline back-up Active Directory toepassing als deze niet bestaat.
 
-    Als er al een toepassing bestaat, vraagt deze uitvoerbare u om het certificaat handmatig te uploaden naar de toepassing in de tenant. Volg de stappen in [deze sectie](#manually-upload-an-offline-backup-certificate) om het certificaat handmatig naar de toepassing te uploaden.
+    Als een toepassing al bestaat, wordt u door dit uitvoer bare programma gevraagd het certificaat hand matig te uploaden naar de toepassing in de Tenant. Volg de stappen in [deze sectie](#manually-upload-an-offline-backup-certificate) om het certificaat hand matig te uploaden naar de toepassing.
 
-* Het hulpprogramma *AzureOfflineBackup.exe* genereert een *Bestand OfflineApplicationParams.xml.* Kopieer dit bestand naar de server met MABS of DPM.
-* Installeer de [nieuwste MARS-agent](https://aka.ms/azurebackup_agent) op het DPM-exemplaar of de Azure Backup-server.
-* Registreer de server op Azure.
+* Het hulp programma *AzureOfflineBackup. exe* genereert een *OfflineApplicationParams. XML-* bestand. Kopieer dit bestand naar de server met MABS of DPM.
+* Installeer de [nieuwste Mars-agent](https://aka.ms/azurebackup_agent) op het DPM-exemplaar of de Azure backup-server.
+* Registreer de server bij Azure.
 * Voer de volgende opdracht uit:
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
     ```
 
-* Met de vorige `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`opdracht wordt het bestand gemaakt.
+* Met de vorige opdracht maakt u `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`het bestand.
 
-## <a name="manually-upload-an-offline-backup-certificate"></a>Een offline back-upcertificaat handmatig uploaden
+## <a name="manually-upload-an-offline-backup-certificate"></a>Een offline back-upcertificaat hand matig uploaden
 
-Volg deze stappen om het offline back-upcertificaat handmatig te uploaden naar een eerder gemaakte Azure Active Directory-toepassing die is bedoeld voor offline back-up.
+Volg deze stappen om het offline back-upcertificaat hand matig te uploaden naar een eerder gemaakte Azure Active Directory toepassing die bedoeld is voor offline back-ups.
 
 1. Meld u aan bij Azure Portal.
-1. Ga naar **Azure Active Directory** > **App-registraties**.
-1. Zoek op het tabblad **Bezeten toepassingen** een `AzureOfflineBackup _<Azure User Id`toepassing met de weergavenaamindeling .
+1. Ga naar **Azure Active Directory** > **app-registraties**.
+1. Zoek op het tabblad **toepassingen in eigendom** een toepassing met de indeling `AzureOfflineBackup _<Azure User Id`van de weergave naam.
 
-    ![Toepassing zoeken op tabblad Eigen toepassingen](./media/backup-azure-backup-import-export/owned-applications.png)
+    ![Zoek naar de toepassing op het tabblad toepassingen in eigendom](./media/backup-azure-backup-import-export/owned-applications.png)
 
-1. Selecteer de toepassing. Ga **onder Beheren** in het linkerdeelvenster naar Certificaten & **geheimen**.
-1. Controleer op reeds bestaande certificaten of openbare sleutels. Als die er zijn, u de toepassing veilig verwijderen door de knop **Verwijderen** te selecteren op de **pagina Overzicht** van de toepassing. Vervolgens u de stappen opnieuw proberen om de server voor te [bereiden op het offline back-upproces](#prepare-the-server-for-the-offline-backup-process) en de volgende stappen overslaan. Anders blijft u deze stappen volgen vanaf de DPM-instantie of Azure Backup-server waar u offline back-up wilt configureren.
-1. Selecteer het tabblad **Persoonlijke toepassing Computercertificaat beheren.** > **Personal** `CB_AzureADCertforOfflineSeeding_<ResourceId>`Zoek naar het certificaat met de naam .
-1. Selecteer het certificaat, klik met de rechtermuisknop op **Alle taken**en selecteer **Vervolgens Exporteren**zonder privésleutel in de .cer-indeling.
-1. Ga naar de Azure offline back-uptoepassing in de Azure-portal.
-1. Selecteer **Certificaten beheren** > **& geheimen** > **Uploadcertificaat**. Upload het certificaat dat in de vorige stap is geëxporteerd.
+1. Selecteer de toepassing. Ga onder **beheren** in het linkerdeel venster naar **certificaten & geheimen**.
+1. Controleer op bestaande certificaten of open bare sleutels. Als er geen is, kunt u de toepassing veilig verwijderen door de knop **verwijderen** te selecteren op de **overzichts** pagina van de toepassing. Vervolgens kunt u de stappen opnieuw uitvoeren om [de server voor te bereiden voor het offline back-](#prepare-the-server-for-the-offline-backup-process) upproces en de volgende stappen over te slaan. Ga anders verder met de volgende stappen van het DPM-exemplaar of Azure Backup server waarvoor u offline back-ups wilt configureren.
+1. Selecteer > **het tabblad** `CB_AzureADCertforOfflineSeeding_<ResourceId>` **computer certificaat toepassing beheren**. Zoek het certificaat met de naam.
+1. Selecteer het certificaat, klik met de rechter muisknop op **alle taken**en selecteer vervolgens **exporteren**, zonder een persoonlijke sleutel, in de. CER-indeling.
+1. Ga naar de Azure-toepassing voor offline back-ups in de Azure Portal.
+1. Selecteer **certificaten beheren** > **& geheimen** > **Upload certificaat**. Upload het certificaat dat u in de vorige stap hebt geëxporteerd.
 
     ![Het certificaat uploaden](./media/backup-azure-backup-import-export/upload-certificate.png)
 
-1. Open het register op de server door **regedit** in het run-venster in te voeren.
-1. Ga naar de *registerinvoercomputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
-1. Klik met de rechtermuisknop op **CloudBackupProvider**en `AzureADAppCertThumbprint_<Azure User Id>`voeg een nieuwe tekenreekswaarde toe met de naam .
+1. Open het REGI ster op de server door in het venster uitvoeren **regedit** in te voeren.
+1. Ga naar de register vermelding *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+1. Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde `AzureADAppCertThumbprint_<Azure User Id>`toe met de naam.
 
     >[!NOTE]
-    > Ga als volgt te werk om de Azure-gebruikers-id te zoeken:
+    > Voer een van de volgende stappen uit om de gebruikers-ID van Azure te vinden:
     >
-    >* Voer de `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` opdracht uit vanuit de PowerShell met Azure verbonden.
-    >* Ga naar het `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`registerpad .
+    >* Voer de `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` opdracht uit vanuit de met Azure verbonden Power shell.
+    >* Ga naar het registerpad `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`.
 
-1. Klik met de rechtermuisknop op de tekenreeks die in de vorige stap is toegevoegd en selecteer **Wijzigen**. Geef in de waarde de duimafdruk op van het certificaat dat u in stap 7 hebt geëxporteerd. Selecteer vervolgens **OK**.
-1. Dubbelklik op het certificaat om de waarde van de duimafdruk te krijgen. Selecteer het tabblad **Details** en schuif omlaag totdat u het veld duimafdruk ziet. Selecteer **Duimafdruk**en kopieer de waarde.
+1. Klik met de rechter muisknop op de teken reeks die u in de vorige stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in stap 7 hebt geëxporteerd. Selecteer vervolgens **OK**.
+1. Als u de waarde van de vinger afdruk wilt ophalen, dubbelklikt u op het certificaat. Selecteer het tabblad **Details** en schuif omlaag totdat u het veld vinger afdruk ziet. Selecteer **vinger afdruk**en kopieer de waarde.
 
-    ![Waarde kopiëren van het veld duimafdruk](./media/backup-azure-backup-import-export/thumbprint-field.png)
+    ![Waarde kopiëren uit het veld vinger afdruk](./media/backup-azure-backup-import-export/thumbprint-field.png)
 
-1. Ga verder naar de sectie [Werkstroom](#workflow) om verder te gaan met het offline back-upproces.
+1. Ga door naar de [werk stroom](#workflow) sectie om door te gaan met het offline back-upproces.
 
 ## <a name="workflow"></a>Werkstroom
 
-Met de informatie in deze sectie u de offline back-upwerkstroom voltooien, zodat uw gegevens kunnen worden geleverd aan een Azure-datacenter en kunnen worden geüpload naar Azure Storage. Als u vragen hebt over de importservice of enig aspect van het proces, [raadpleegt](../storage/common/storage-import-export-service.md) u de documentatie van het overzicht van de service importeren waarnaar eerder wordt verwezen.
+De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor offline back-ups, zodat uw gegevens kunnen worden geleverd aan een Azure-Data Center en naar Azure Storage worden geüpload. Als u vragen hebt over de import service of een aspect van het proces, raadpleegt u de [documentatie overzicht](../storage/common/storage-import-export-service.md) van het importeren van de service.
 
-### <a name="initiate-offline-backup"></a>Offline back-up starten
+### <a name="initiate-offline-backup"></a>Offline back-up initiëren
 
 1. Wanneer u een back-up plant, ziet u de volgende pagina in Windows Server, een Windows-client of DPM.
 
-    ![Pagina Importeren](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
+    ![Pagina importeren](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
 
-    Hier is de bijbehorende pagina in DPM. <br/>
-    
-    ![Importpagina DPM en Azure Backup Server](./media/backup-azure-backup-import-export/dpmoffline.png)
+    Hier is de overeenkomstige pagina in DPM. <br/>
 
-    De vakken die u invult zijn:
+    ![De pagina DPM en Azure Backup Server importeren](./media/backup-azure-backup-import-export/dpmoffline.png)
 
-   * **Staging Locatie:** de tijdelijke opslaglocatie waarnaar de eerste back-up kopie is geschreven. De faseringslocatie bevindt zich mogelijk op een netwerkshare of een lokale computer. Als de kopieercomputer en de broncomputer verschillend zijn, geeft u het volledige netwerkpad van de faseringslocatie op.
-   * **Azure-publicatie-instellingen:** het lokale pad naar het publicatie-instellingenbestand.
-   * **Naam azure importtaak:** de unieke naam waarmee de Azure Import/Export-service en Azure Backup de overdracht bijhouden van gegevens die op schijven naar Azure worden verzonden.
-   * **Azure Subscription ID**: De Azure-abonnements-ID voor het abonnement van waaruit u het Azure-publicatie-instellingenbestand hebt gedownload.
-   * **Azure Storage-account:** de naam van het opslagaccount in het Azure-abonnement dat is gekoppeld aan het Azure-publicatie-instellingenbestand.
-   * **Azure Storage Container:** de naam van de blob met doelopslag in het Azure-opslagaccount waar de back-upgegevens worden geïmporteerd.
+    De vakken die u invult, zijn:
 
-   Sla de **tijdelijke locatie en** de azure import **jobname-gegevens** op die u hebt opgegeven. Het is nodig om de schijven voor te bereiden.
+   * **Faserings locatie**: de tijdelijke opslag locatie waarnaar de eerste back-up wordt geschreven. De faserings locatie Bekan zich op een netwerk share of een lokale computer. Als de Kopieer computer en de bron computer verschillend zijn, geeft u het volledige netwerkpad van de faserings locatie op.
+   * **Azure Publish-instellingen**: het lokale pad naar het bestand met publicatie-instellingen.
+   * **Azure import-taak naam**: de unieke naam waarmee de Azure import/export-service en Azure Backup het volgen van de overdracht van gegevens die op schijven zijn verzonden naar Azure.
+   * **Azure-abonnements-id**: de id van het Azure-abonnement voor het abonnement waarvandaan u het Azure Publish settings-bestand hebt gedownload.
+   * **Azure Storage account**: de naam van het opslag account in het Azure-abonnement dat is gekoppeld aan het Azure Publish settings-bestand.
+   * **Azure storage container**: de naam van de doel-Storage-Blob in het Azure-opslag account waarin de back-upgegevens worden geïmporteerd.
 
-1. Voltooi de werkstroom. Als u de offline back-upwilt starten, selecteert u **Nu back-up** maken op de beheerconsole azure backup agent. De eerste back-up wordt naar het faseringsgebied geschreven als onderdeel van deze stap.
+   Sla de **faserings locatie** en de gegevens van de **Azure import-taak naam** op die u hebt ingevoerd. Het is vereist om de schijven voor te bereiden.
 
-    ![Back-up nu](./media/backup-azure-backup-import-export/backupnow.png)
+1. Voltooi de werk stroom. Als u de offline back-upkopie wilt initiëren, selecteert u **Nu back-up maken** in de beheer console van de Azure backup-agent. Als onderdeel van deze stap wordt de eerste back-up naar het faserings gebied geschreven.
 
-    Als u de bijbehorende werkstroom in DPM of Azure Backup Server wilt voltooien, klikt u met de rechtermuisknop op de **beveiligingsgroep**. Selecteer de optie **Herstelpunt maken.** Selecteer vervolgens de optie **Onlinebeveiliging.**
+    ![Nu back-up maken](./media/backup-azure-backup-import-export/backupnow.png)
+
+    Als u de bijbehorende werk stroom in DPM of Azure Backup Server wilt volt ooien, klikt u met de rechter muisknop op de **beveiligings groep**. Selecteer de optie **herstel punt maken** . Selecteer vervolgens de optie voor **online beveiliging** .
 
     ![DPM en MABS maken nu een back-up](./media/backup-azure-backup-import-export/dpmbackupnow.png)
 
-    Nadat de bewerking is voltooid, is de faseringslocatie klaar voor de voorbereiding van de schijf.
+    Nadat de bewerking is voltooid, kan de faserings locatie worden gebruikt voor het voorbereiden van de schijf.
 
-    ![Voortgang van back-ups](./media/backup-azure-backup-import-export/opbackupnow.png)
+    ![Voortgang van back-up](./media/backup-azure-backup-import-export/opbackupnow.png)
 
-### <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA-stations voorbereiden en verzenden naar Azure
+### <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA-schijven voorbereiden en verzenden naar Azure
 
-Het *AzureOfflineBackupDiskPrep-hulpprogramma* wordt gebruikt om de SATA-schijven voor te bereiden die naar het dichtstbijzijnde Azure-datacenter worden verzonden. Dit hulpprogramma is beschikbaar in de installatiemap van de Recovery Services Agent in het volgende pad:
+Het hulp programma *AzureOfflineBackupDiskPrep* wordt gebruikt om de SATA-schijven voor te bereiden die worden verzonden naar het dichtstbijzijnde Azure-Data Center. Dit hulp programma is beschikbaar in de installatiemap van de Recovery Services agent in het volgende pad:
 
 `*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
-1. Ga naar de map en kopieer de map *AzureOfflineBackupDiskPrep* naar een kopieercomputer waarop de sata-stations zijn aangesloten. Zorg ervoor dat:
+1. Ga naar de map en kopieer de Directory *AzureOfflineBackupDiskPrep* naar een kopie van de computer waarop de SATA-schijven die moeten worden voor bereid, zijn verbonden. Zorg ervoor dat:
 
-   * De kopieercomputer heeft toegang tot de faseringslocatie voor de offlinezaaiende werkstroom met behulp van hetzelfde netwerkpad dat in de werkstroom is opgegeven in de sectie Offline back-up initiëren.
-   * BitLocker is ingeschakeld op de kopieercomputer.
-   * De kopieercomputer heeft toegang tot de Azure-portal. Indien nodig kan de kopieercomputer hetzelfde zijn als de broncomputer.
+   * De Kopieer computer heeft toegang tot de faserings locatie voor de werk stroom voor offline seeding met behulp van hetzelfde netwerkpad dat is gegeven in de werk stroom in de sectie ' offline back-up initiëren '.
+   * BitLocker is ingeschakeld op de Kopieer computer.
+   * De Kopieer computer heeft toegang tot de Azure Portal. Als dat nodig is, kan de Kopieer computer gelijk zijn aan die van de bron computer.
 
      > [!IMPORTANT]
-     > Als de broncomputer een virtuele machine is, is het verplicht om een andere fysieke server of clientmachine als kopieercomputer te gebruiken.
+     > Als de bron computer een virtuele machine is, is het verplicht een andere fysieke server of client computer als Kopieer computer te gebruiken.
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid op de kopieercomputer met de hulpprogrammamap *AzureOfflineBackupDiskPrep* als de huidige map. Voer de volgende opdracht uit:
+1. Open een opdracht prompt met verhoogde bevoegdheid op de computer kopiëren met de map *AzureOfflineBackupDiskPrep* Utility als de huidige map. Voer de volgende opdracht uit:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
     | Parameter | Beschrijving |
     | --- | --- |
-    | s:&lt;*Locatiepad met fasering*&gt; |Deze verplichte invoer wordt gebruikt om het pad naar de faseringslocatie te geven die u in de werkstroom hebt ingevoerd in de sectie Offline back-up initiëren. |
-    | p:&lt;*Path to PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad te bieden naar het Azure-publicatie-instellingenbestand dat u hebt ingevoerd in de werkstroom in de sectie Offline back-up starten. |
+    | s:&lt;*pad naar locatie van tijdelijke bestanden*&gt; |Deze verplichte invoer wordt gebruikt om het pad naar de faserings locatie op te geven die u hebt ingevoerd in de werk stroom in de sectie ' offline back-up initiëren '. |
+    | p:&lt;*pad naar PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven dat u in de werk stroom hebt ingevoerd in de sectie ' offline back-up initiëren '. |
 
     > [!NOTE]
-    > De &lt;waarde Path to&gt; AzurePublishSettingFile is verplicht wanneer de kopieercomputer en de broncomputer verschillend zijn.
+    > Het &lt;pad naar de&gt; AzurePublishSettingFile-waarde is verplicht wanneer de Kopieer computer en de bron computer verschillend zijn.
     >
     >
 
-    Wanneer u de opdracht uitvoert, vraagt het hulpprogramma de selectie van de Azure-importtaak aan die overeenkomt met de stations die moeten worden voorbereid. Als slechts één importtaak is gekoppeld aan de opgegeven faseringslocatie, ziet u een pagina als deze.
+    Wanneer u de opdracht uitvoert, vraagt het hulp programma de selectie van de Azure import-taak aan die overeenkomt met de stations die moeten worden voor bereid. Als er slechts één import taak is gekoppeld aan de gegeven faserings locatie, ziet u een pagina zoals deze.
 
-    ![Invoer van azure-schijfvoorbereidingsgereedschappen](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
+    ![Invoer van hulp programma voor Azure-schijf voorbereiding](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
 
-1. Voer de stationsletter in zonder de slepende dubbele punt voor de gemonteerde schijf die u wilt voorbereiden op overdracht naar Azure. Geef desgevraagd een bevestiging voor de opmaak van het station.
+1. Voer de stationsletter zonder de afsluitende dubbele punt in voor de gekoppelde schijf die u wilt voorbereiden voor overdracht naar Azure. Wanneer u hierom wordt gevraagd, geeft u een bevestiging voor de Format teren van het station.
 
-    Het hulpprogramma begint vervolgens de schijf voor te bereiden en de back-upgegevens te kopiëren. Mogelijk moet u extra schijven toevoegen wanneer het hulpprogramma daarom vraagt als de meegeleverde schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
+    Het hulp programma begint vervolgens met het voorbereiden van de schijf en het kopiëren van de back-upgegevens. Mogelijk moet u extra schijven koppelen wanneer u hierom wordt gevraagd, in het geval dat de schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
 
-    Nadat het hulpprogramma is voltooid, worden een of meer schijven die u hebt geleverd, voorbereid voor verzending naar Azure. Er wordt ook een importtaak gemaakt met de naam die u tijdens de werkstroom hebt opgegeven in de sectie Offline back-up initiëren, ook in Azure. Ten slotte geeft het hulpprogramma het verzendadres weer naar het Azure-datacenter waar de schijven moeten worden verzonden.
+    Wanneer het hulp programma is voltooid, zijn een of meer schijven die u hebt geleverd voor bereid voor verzen ding naar Azure. Een import taak met de naam die u hebt ingevoerd tijdens de werk stroom in de sectie ' offline back-up initiëren ' wordt ook gemaakt in Azure. Ten slotte wordt in het hulp programma het verzend adres weer gegeven naar het Azure-Data Center waar de schijven moeten worden verzonden.
 
-    ![Azure-schijfvoorbereiding voltooid](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
+    ![Voorbereiden van Azure-schijf is voltooid](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
-1. Aan het einde van de opdrachtuitvoering ziet u ook de optie om verzendgegevens bij te werken.
+1. Aan het einde van de uitvoering van de opdracht ziet u ook de optie om de verzend gegevens bij te werken.
 
-    ![Optie Verzendgegevens bijwerken](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
+    ![Optie verzend gegevens bijwerken](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
 
-1. U de gegevens meteen invoeren. De tool begeleidt u door het proces dat een reeks ingangen omvat. Als u geen informatie hebt zoals het trackingnummer of andere details met betrekking tot verzending, u de sessie beëindigen. De stappen om de verzendgegevens later bij te werken, worden in dit artikel gegeven.
+1. U kunt de details direct opgeven. Het hulp programma begeleidt u bij het proces waarbij een serie invoer is betrokken. Als u geen informatie hebt, zoals het tracking nummer of andere details die betrekking hebben op verzen ding, kunt u de sessie beëindigen. De stappen voor het bijwerken van de verzend gegevens vindt u verderop in dit artikel.
 
-1. Verzend de schijven naar het adres dat het gereedschap heeft verstrekt. Bewaar het volgnummer voor toekomstige referentie.
+1. Verzend de schijven naar het adres dat het hulp programma heeft geleverd. Bewaar het tracking nummer voor toekomstige referentie.
 
    > [!IMPORTANT]
-   > Geen twee Azure-importtaken kunnen hetzelfde trackingnummer hebben. Zorg ervoor dat schijven die zijn opgesteld door het hulpprogramma onder één Azure-importtaak samen worden verzonden in één pakket en dat er één uniek trackingnummer voor het pakket is. Combineer geen schijven die zijn voorbereid als onderdeel van verschillende Azure-importtaken in één pakket.
+   > Er kunnen niet twee Azure-import taken hetzelfde tracking nummer hebben. Zorg ervoor dat de stations die worden voor bereid met het hulp programma onder één Azure import-taak samen worden verzonden in één pakket en dat er één uniek Volg nummer is voor het pakket. Combi neer geen stations die zijn voor bereid als onderdeel van verschillende Azure-import taken in één pakket.
 
-1. Wanneer u de trackingnummergegevens hebt, gaat u naar de broncomputer, die wacht op het voltooien van de importtaak. Voer de volgende opdracht uit in een opdrachtprompt met de hulpprogrammamap *AzureOfflineBackupDiskPrep* als de huidige map.
+1. Wanneer u de informatie over het tracerings nummer hebt, gaat u naar de bron computer, die wacht op het importeren van de taak is voltooid. Voer de volgende opdracht uit in een opdracht prompt met verhoogde bevoegdheid met de map *AzureOfflineBackupDiskPrep* Utility als de huidige map.
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:`
 
-   U optioneel de volgende opdracht uitvoeren vanaf een andere computer, zoals de kopieercomputer, met de hulpprogrammamap *AzureOfflineBackupDiskPrep* als de huidige map.
+   U kunt eventueel de volgende opdracht uitvoeren vanaf een andere computer, zoals de Kopieer computer, met de map *AzureOfflineBackupDiskPrep* Utility als de huidige map.
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
     | Parameter | Beschrijving |
     | --- | --- |
-    | U: | Deze verplichte invoer wordt gebruikt om verzendgegevens bij te werken voor een Azure-importtaak. |
-    | s:&lt;*Locatiepad met fasering*&gt; | Deze verplichte invoer wordt gebruikt wanneer de opdracht niet wordt uitgevoerd op de broncomputer. Het wordt gebruikt om het pad naar de faseringslocatie te bieden die u hebt ingevoerd in de werkstroom in de sectie Offline back-up initiëren. |
-    | p:&lt;*Path to PublishSettingsFile*&gt; | Deze verplichte invoer wordt gebruikt wanneer de opdracht niet wordt uitgevoerd op de broncomputer. Het wordt gebruikt om het pad naar het Azure-publicatie-instellingenbestand te bieden dat u hebt ingevoerd in de werkstroom in de sectie Offline back-up initiëren. |
+    | h | Deze verplichte invoer wordt gebruikt om de verzend gegevens voor een Azure import-taak bij te werken. |
+    | s:&lt;*pad naar locatie van tijdelijke bestanden*&gt; | Deze verplichte invoer wordt gebruikt wanneer de opdracht niet wordt uitgevoerd op de bron computer. Het wordt gebruikt om het pad naar de faserings locatie op te geven die u hebt ingevoerd in de werk stroom in de sectie ' offline back-up initiëren '. |
+    | p:&lt;*pad naar PublishSettingsFile*&gt; | Deze verplichte invoer wordt gebruikt wanneer de opdracht niet wordt uitgevoerd op de bron computer. Het wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven dat u in de werk stroom hebt ingevoerd in de sectie ' offline back-up initiëren '. |
 
-    Het hulpprogramma detecteert automatisch de importtaak waarop de broncomputer wacht of de importtaken die zijn gekoppeld aan de faseringslocatie wanneer de opdracht op een andere computer wordt uitgevoerd. Het biedt dan de mogelijkheid om verzendinformatie bij te werken via een reeks ingangen.
+    Het hulp programma detecteert automatisch de import taak die op de bron computer wacht of de import taken die zijn gekoppeld aan de faserings locatie wanneer de opdracht wordt uitgevoerd op een andere computer. Vervolgens wordt de optie geboden om de verzend gegevens bij te werken via een serie invoer.
 
-    ![Verzendgegevens invoeren](./media/backup-azure-backup-import-export/shippinginputs.png)<br/>
+    ![Verzend gegevens invoeren](./media/backup-azure-backup-import-export/shippinginputs.png)<br/>
 
-1. Nadat alle ingangen zijn verstrekt, bekijk de details zorgvuldig en bega de verzendinformatie die u verstrekt door het invoeren van **ja**.
+1. Nadat alle invoer gegevens zijn verstrekt, controleert u de details aandachtig en voert u de verzend gegevens door die u hebt verstrekt door **Ja**in te voeren.
 
-    ![Verzendgegevens bekijken](./media/backup-azure-backup-import-export/reviewshippinginformation.png)<br/>
+    ![Verzend gegevens controleren](./media/backup-azure-backup-import-export/reviewshippinginformation.png)<br/>
 
-1. Nadat de verzendgegevens zijn bijgewerkt, biedt het hulpprogramma een lokale locatie waar de verzendgegevens die u hebt ingevoerd, worden opgeslagen.
+1. Nadat de verzend gegevens zijn bijgewerkt, biedt het hulp programma een lokale locatie waar de verzend gegevens die u hebt ingevoerd, worden opgeslagen.
 
-    ![Verzendgegevens opslaan](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
+    ![Verzend gegevens opslaan](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
 
    > [!IMPORTANT]
-   > Zorg ervoor dat de stations het Azure-datacenter bereiken binnen twee weken na het verstrekken van de verzendgegevens met behulp van het *AzureOfflineBackupDiskPrep-hulpprogramma.* Als u dit niet doet, kunnen de schijven niet worden verwerkt. 
+   > Zorg ervoor dat de stations het Azure-Data Center binnen twee weken na het verstrekken van de verzend gegevens bereiken met behulp van het *AzureOfflineBackupDiskPrep* -hulp programma. Als u dit niet doet, kan dit leiden tot de stations die niet worden verwerkt.
 
-Nadat u de vorige stappen hebt voltooid, is het Azure-datacenter klaar om de stations te ontvangen en ze verder te verwerken om de back-upgegevens van de stations over te zetten naar het klassieke Azure-opslagaccount dat u hebt gemaakt.
+Nadat u de vorige stappen hebt voltooid, is het Azure-Data Center klaar om de stations te ontvangen en ze verder te verwerken om de back-upgegevens over te dragen van de stations naar het klassieke Azure-opslag account dat u hebt gemaakt.
 
-### <a name="time-to-process-the-drives"></a>Tijd om de schijven te verwerken
+### <a name="time-to-process-the-drives"></a>Tijd voor het verwerken van de stations
 
-De hoeveelheid tijd die nodig is om een Azure-importtaak te verwerken, varieert. De procestijd is afhankelijk van factoren zoals verzendtijd, taaktype, type en grootte van de gegevens die worden gekopieerd en de grootte van de geleverde schijven. De Azure Import/Export-service heeft geen SLA. Nadat schijven zijn ontvangen, streeft de service ernaar om de back-upgegevenskopie naar uw Azure-opslagaccount binnen 7 tot 10 dagen te voltooien. In de volgende sectie wordt beschreven hoe u de status van de Azure-importtaak controleren.
+De hoeveelheid tijd die nodig is voor het verwerken van een Azure import-taak varieert. De verwerkings tijd is afhankelijk van factoren zoals de verzend tijd, het taak type, het type en de grootte van de gegevens die worden gekopieerd en de grootte van de geleverde schijven. De Azure import/export-service heeft geen SLA. Nadat de schijven zijn ontvangen, streeft de service naar het kopiëren van de back-upgegevens naar uw Azure Storage-account in 7 tot tien dagen. In de volgende sectie wordt beschreven hoe u de status van de Azure import-taak kunt controleren.
 
-### <a name="monitor-azure-import-job-status"></a>Status van Azure-importtaak controleren
+### <a name="monitor-azure-import-job-status"></a>Status van Azure import-taak controleren
 
-Terwijl uw schijven onderweg zijn of in het Azure-datacenter om naar het opslagaccount te worden gekopieerd, toont de Azure Backup Agent of DPM of de MABS-console op de broncomputer de volgende taakstatus voor uw geplande back-ups:
+Hoewel uw stations onderweg of in het Azure-Data Center worden gekopieerd naar het opslag account, toont de Azure Backup Agent of DPM of de MABS-console op de bron computer de volgende taak status voor uw geplande back-ups:
 
   `Waiting for Azure Import Job to complete. Please check on Azure Management portal for more information on job status`
 
-Ga als u de status van de importtaak controleren:
+De status van de import taak controleren:
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid op de broncomputer en voer de volgende opdracht uit:
+1. Open een opdracht prompt met verhoogde bevoegdheid op de bron computer en voer de volgende opdracht uit:
 
      `AzureOfflineBackupDiskPrep.exe u:`
 
-1. De uitvoer geeft de huidige status van de importtaak weer.
+1. In de uitvoer wordt de huidige status van de import taak weer gegeven.
 
-    ![Status van importtaak controleren](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
+    ![Status van import taak controleren](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
 
-Zie [De status van Azure Import/Export-taken weergeven](../storage/common/storage-import-export-view-drive-status.md)voor meer informatie over de verschillende statussen van de azure-importtaak.
+Zie [de status van Azure import/export-taken weer geven](../storage/common/storage-import-export-view-drive-status.md)voor meer informatie over de verschillende statussen van de Azure import-taak.
 
-### <a name="finish-the-workflow"></a>De werkstroom voltooien
+### <a name="finish-the-workflow"></a>De werk stroom volt ooien
 
-Nadat de importtaak is voltooid, zijn de eerste back-upgegevens beschikbaar in uw opslagaccount. Op het moment van de volgende geplande back-up kopieert Azure Backup de inhoud van de gegevens van het opslagaccount naar de kluis Van Herstelservices.
+Nadat de import taak is voltooid, zijn de eerste back-upgegevens beschikbaar in uw opslag account. Op het moment van de volgende geplande back-up Azure Backup kopieert de inhoud van de gegevens uit het opslag account naar de Recovery Services kluis.
 
-   ![Gegevens kopiëren naar de kluis Recovery Services](./media/backup-azure-backup-import-export/copyingfromstorageaccounttoazurebackup.png)<br/>
+   ![Gegevens kopiëren naar Recovery Services kluis](./media/backup-azure-backup-import-export/copyingfromstorageaccounttoazurebackup.png)<br/>
 
 Op het moment van de volgende geplande back-up voert Azure Backup incrementele back-up uit via de eerste back-upkopie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [De service Microsoft Azure Import/Export gebruiken om gegevens over te dragen naar Blob-opslag voor](../storage/common/storage-import-export-service.md)vragen over de azure import/exportservice.
+* Zie [de Microsoft Azure import/export-service gebruiken voor het overdragen van gegevens naar de Blob-opslag](../storage/common/storage-import-export-service.md)voor vragen over de Azure import/export-service werk stroom.

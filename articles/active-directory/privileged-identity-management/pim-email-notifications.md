@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/05/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72756386"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866425"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailmeldingen in PIM
 
@@ -76,6 +76,18 @@ De e-mail bevat vier tegels:
 | **Rolopdrachten buiten PIM** | Het aantal keren dat gebruikers een permanente rol krijgen buiten Privileged Identity Management (binnen Azure AD). |
 
 In het overzicht van de sectie **Toprollen** worden de vijf belangrijkste rollen in uw tenant weergegeven op basis van het totale aantal permanente en in aanmerking komende beheerders voor elke rol. Met de koppeling **Actie uitvoeren** wordt de wizard [PIM geopend,](pim-security-wizard.md) waar u permanente beheerders converteren naar in aanmerking komende beheerders in batches.
+
+## <a name="email-timing-for-activation-approvals"></a>E-mailtiming voor activeringsgoedkeuringen
+
+Wanneer gebruikers hun rol activeren en de rolinstelling goedkeuring vereist, ontvangen fiatteurs drie e-mails voor elke goedkeuring:
+
+- Verzoek om het activeringsverzoek van de gebruiker goed te keuren of te weigeren (verzonden door de goedkeuringsengine voor aanvragen)
+- Het verzoek van de gebruiker wordt goedgekeurd (verzonden door de engine voor aanvraaggoedkeuring)
+- De rol van de gebruiker wordt geactiveerd (verzonden door Privileged Identity Management)
+
+De eerste twee e-mails die door de goedkeuringsengine van het verzoek worden verzonden, kunnen worden vertraagd. Momenteel duurt 90% van de e-mails drie tot tien minuten, maar voor 1% klanten kan het veel langer zijn, tot vijftien minuten.
+
+Als een goedkeuringsaanvraag is goedgekeurd in de Azure-portal voordat de eerste e-mail wordt verzonden, wordt de eerste e-mail niet meer geactiveerd en worden andere fiatteurs niet per e-mail op de hoogte gesteld van de goedkeuringsaanvraag. Het lijkt misschien alsof ze geen e-mail hebben ontvangen, maar het is het verwachte gedrag.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mails voor Azure-bronrollen
 

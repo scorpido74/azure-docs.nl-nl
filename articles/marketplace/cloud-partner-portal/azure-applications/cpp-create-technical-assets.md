@@ -7,77 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7bfc74b2d27a879352f54df0772784a98e15e46d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393524"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865544"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Uw technische elementen van azure-toepassingen voorbereiden
 
-In dit artikel worden de bronnen beschreven voor het voorbereiden van de technische elementen voor uw Azure-toepassingsaanbieding.
+De [Cloud Partner Portal](https://cloudpartner.azure.com/) ondersteunt niet langer het maken en beheren van Azure-toepassingsaanbiedingen. In plaats daarvan is deze functionaliteit verplaatst naar de Microsoft [Partner Center-portal.](https://partner.microsoft.com/) Zie [Een Azure-toepassingsaanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)voor meer informatie.
 
-## <a name="before-you-begin"></a>Voordat u begint
-
-Bekijk de volgende video, [Oplossingen voor het bouwen en Beheerde toepassingen voor de Azure Marketplace,](https://channel9.msdn.com/Events/Build/2018/BRK3603)een overzicht over het maken van een Azure Resource Manager-sjabloon om een Azure-toepassingsoplossing te definiëren en vervolgens hoe u de app-aanbieding vervolgens publiceert naar de Azure Marketplace.
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
-
-
-Bekijk de volgende Azure-toepassingsdocumentatie, die Quickstarts, Tutorials en Voorbeelden bevat.
-
-- [Azure Resource Manager-sjablonen begrijpen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-- Quickstarts:
-
-  - [Azure Quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
-  - [GitHub Azure Quickstart-sjablonen](https://github.com/azure/azure-quickstart-templates)
-  - [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Servicecatalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
-
-  
-- Zelfstudies:
-
-  - [Definitiebestanden maken](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [Een Marketplace-toepassing publiceren](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
-
-  - Monsters:
-
-    - [Azure-CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [Beheerde toepassingsoplossingen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
-
-## <a name="fundamental-technical-knowledge"></a>Fundamentele technische kennis
-
-Het ontwerpen, bouwen en testen van deze assets kost tijd en vereist technische kennis van zowel het Azure-platform als de technologieën die worden gebruikt om het aanbod te bouwen.
-
-Uw engineeringteam moet kennis hebben over de volgende Microsoft-technologieën:
-
-- Basiskennis van [Azure Services](https://azure.microsoft.com/services/)
-- [Azure-toepassingen ontwerpen en ontwerpen](https://azure.microsoft.com/solutions/architecture/)
-- Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage)en Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
-- Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
-- Werkkennis van [JSON](https://www.json.org/)
-
-## <a name="suggested-tools"></a>Voorgestelde hulpprogramma's
-
-Kies een of beide van de volgende scriptomgevingen om uw Azure-toepassing te beheren:
-
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-- [Azure-CLI](https://docs.microsoft.com/cli/azure)
-
-We raden u aan de volgende tools toe te voegen aan uw ontwikkelomgeving:
-
-- [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-- [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
-
-  - Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
-
-We raden ook aan om de beschikbare hulpprogramma's op de pagina [Azure Developer Tools](https://azure.microsoft.com/tools/) te bekijken en, als u Visual Studio gebruikt, de Visual Studio [Marketplace](https://marketplace.visualstudio.com/).
-
-## <a name="next-steps"></a>Volgende stappen
-
-[Aanbieding voor Azure-toepassing maken](./cpp-create-offer.md)
-
+Voordat u een nieuwe Azure-toepassingsaanbieding maakt, moet u [Een Partnercentrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dashboard Commerciële Marktplaats](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichtspagina.** Volg de instructies in [Een Azure-toepassingsaanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) om uw aanbieding te maken.

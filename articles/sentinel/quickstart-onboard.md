@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: aan boord in Azure Sentinel'
-description: Meer informatie over het verzamelen van gegevens in Azure Sentinel door dit Quickstart-document te volgen.
+title: 'Snelstartgids: onboarding in azure-Sentinel'
+description: Meer informatie over het verzamelen van gegevens in azure Sentinel door dit Quick Start-document te volgen.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -8,73 +8,73 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: bcb6cd7393419fb8fc75decb00a8f4165d15668c
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.date: 04/27/2020
+ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184330"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Snelstart: Azure Sentinel aan boord
+# <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
-In deze quickstart leert u hoe u Azure Sentinel aan boord nemen. 
+In deze Quick Start leert u hoe u een Azure-Sentinel op de trein kunt vinden. 
 
-Als u Azure Sentinel aan boord wilt hebben, moet u Azure Sentinel eerst inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die uit de doos beschikbaar zijn en realtime integratie bieden, waaronder Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U ook algemene gebeurtenisindeling, Syslog of REST-API gebruiken om uw gegevensbronnen te verbinden met Azure Sentinel.  
+Als u Azure Sentinel wilt gebruiken, moet u eerst Azure Sentinel inschakelen en vervolgens verbinding maken met uw gegevens bronnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder oplossingen voor micro soft Threat Protection, Microsoft 365 bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, enzovoort. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligings ecosysteem voor niet-micro soft-oplossingen. U kunt ook algemene gebeurtenis indeling, syslog of REST-API gebruiken om uw gegevens bronnen met Azure Sentinel te verbinden.  
 
-Nadat u uw gegevensbronnen hebt verbonden, u kiezen uit een galerij met vakkundig gemaakte werkmappen die inzichten op basis van uw gegevens weergeven. Deze werkmappen kunnen eenvoudig worden aangepast aan uw behoeften.
+Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie met deskundig gemaakte werkmappen op basis van uw gegevens. Deze werkmappen kunnen eenvoudig worden aangepast aan uw behoeften.
 
 >[!IMPORTANT] 
-> Zie [Azure Sentinel-prijzen](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor informatie over de kosten die zijn gemaakt bij het gebruik van Azure Sentinel.
+> Zie [Azure Sentinel-prijzen](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor meer informatie over de kosten die worden gemaakt bij het gebruik van Azure Sentinel.
   
 
 ## <a name="global-prerequisites"></a>Globale vereisten
 
-- Active Azure Subscription, als u er geen hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+- Actief Azure-abonnement: als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-- Log Analytics-werkruimte. Meer informatie over het [maken van een Log Analytics-werkruimte](../log-analytics/log-analytics-quick-create-workspace.md). Zie Het ontwerpen van de [implementatie van Azure Monitor Logs](../azure-monitor/platform/design-logs-deployment.md)voor meer informatie over Logboekanalyse-werkruimten.
+- Log Analytics werk ruimte. Meer informatie over het [maken van een log Analytics-werk ruimte](../log-analytics/log-analytics-quick-create-workspace.md). Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](../azure-monitor/platform/design-logs-deployment.md)voor meer informatie over log Analytics-werk ruimten.
 
-- Als u Azure Sentinel wilt inschakelen, hebt u machtigingen voor bijdragen nodig voor het abonnement waarin de Azure Sentinel-werkruimte zich bevindt. 
-- Als u Azure Sentinel wilt gebruiken, hebt u inzender- of lezermachtigingen nodig voor de brongroep waartoe de werkruimte behoort.
-- Mogelijk zijn er aanvullende machtigingen nodig om specifieke gegevensbronnen met elkaar te verbinden.
-- Azure Sentinel is een betaalde service. Zie Informatie [over Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)voor prijsinformatie .
+- Als u Azure Sentinel wilt inschakelen, hebt u Inzender machtigingen nodig voor het abonnement waarin de Azure Sentinel-werk ruimte zich bevindt. 
+- Als u Azure Sentinel wilt gebruiken, hebt u Inzender-of lezer-machtigingen nodig voor de resource groep waartoe de werk ruimte behoort.
+- Er zijn mogelijk extra machtigingen nodig om verbinding te maken met specifieke gegevens bronnen.
+- Azure Sentinel is een betaalde service. Zie [about Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)(Engelstalig) voor informatie over prijzen.
  
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel inschakelen<a name="enable"></a>
 
-1. Meld u aan bij Azure Portal. Controleer of het abonnement waarin Azure Sentinel is gemaakt, is geselecteerd.
+1. Meld u aan bij Azure Portal. Zorg ervoor dat het abonnement waarin Azure Sentinel is gemaakt, is geselecteerd.
 
-1. Azure **Sentinel**zoeken en selecteren .
+1. Zoek en selecteer **Azure Sentinel**.
 
    ![zoeken](./media/quickstart-onboard/search-product.png)
 
 1. Selecteer **Toevoegen**.
 
-1. Selecteer de werkruimte die u wilt gebruiken of maak een nieuwe werkruimte. U Azure Sentinel op meer dan één werkruimte uitvoeren, maar de gegevens worden geïsoleerd tot één werkruimte.
+1. Selecteer de werk ruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werk ruimte, maar de gegevens worden geïsoleerd voor één werk ruimte.
 
    ![zoeken](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - Standaardwerkruimten die zijn gemaakt door Azure Security Center, worden niet weergegeven in de lijst. U Azure Sentinel er niet op installeren.
-   > - Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics,](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) behalve de regio's China, Duitsland en Azure Government. Gegevens die worden gegenereerd door Azure Sentinel (zoals incidenten, bladwijzers en waarschuwingsregels, die sommige klantgegevens uit deze werkruimten kunnen bevatten) worden opgeslagen in West-Europa (voor werkruimten in Europa) of Oost-VS (voor alle werkruimten in de VS, evenals elke andere regio behalve Europa).
+   > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.
+   > - Azure Sentinel kan worden uitgevoerd op werk ruimten in een [Ga-gebied van log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) , met uitzonde ring van de regio's China en Duitsland (soeverein). Gegevens die worden gegenereerd door Azure Sentinel (zoals incidenten, blad wijzers en waarschuwings regels, die mogelijk bepaalde klant gegevens bron van deze werk ruimten bevatten), worden opgeslagen in Europa (voor werk ruimten in Europa), in Australië (voor werk ruimten die zich in Australië bevinden) of in VS-Oost (voor werk ruimten in een andere regio).
 
-1. Selecteer **Azure Sentinel toevoegen**.
+1. Selecteer **Azure-Sentinel toevoegen**.
   
 
 ## <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
-Azure Sentinel maakt de verbinding met services en apps door verbinding te maken met de service en de gebeurtenissen en logboeken door te sturen naar Azure Sentinel. Voor machines en virtuele machines u de Azure Sentinel-agent installeren die de logboeken verzamelt en doorstuurt naar Azure Sentinel. Voor firewalls en proxy's maakt Azure Sentinel gebruik van een Linux Syslog-server. De agent is geïnstalleerd op het en van waaruit de agent verzamelt de logbestanden en stuurt ze door naar Azure Sentinel. 
+Azure Sentinel maakt de verbinding met Services en apps door verbinding te maken met de service en de gebeurtenissen en logboeken door te sturen naar Azure Sentinel. Voor machines en virtuele machines kunt u de Azure Sentinel-agent installeren waarmee de logboeken worden verzameld en doorgestuurd naar Azure Sentinel. Voor firewalls en proxy's maakt Azure Sentinel gebruik van een Linux syslog-server. De agent is geïnstalleerd en van waaruit de agent de logboek bestanden verzamelt en doorstuurt naar Azure Sentinel. 
  
-1. Klik **op Gegevensconnectoren**.
-2. Er is een tegel voor elke gegevensbron die u verbinden.<br>
-Klik bijvoorbeeld op **Azure Active Directory**. Als u deze gegevensbron verbindt, streamt u alle logboeken van Azure AD naar Azure Sentinel. U selecteren welk type logboeken u wilt krijgen - aanmeldingslogboeken en/of controlelogboeken. <br>
-Onderaan geeft Azure Sentinel aanbevelingen voor welke werkmappen u voor elke connector moet installeren, zodat u onmiddellijk interessante inzichten over uw gegevens krijgen. <br> Volg de installatie-instructies of [raadpleeg de relevante verbindingsgids](connect-data-sources.md) voor meer informatie. Zie [Microsoft-services verbinden](connect-data-sources.md)voor informatie over gegevensconnectoren.
+1. Klik op **gegevens connectors**.
+2. Er is een tegel voor elke gegevens bron waarmee u verbinding kunt maken.<br>
+Klik bijvoorbeeld op **Azure Active Directory**. Als u deze gegevens bron verbindt, streamt u alle logboeken van Azure AD naar Azure Sentinel. U kunt selecteren welk type logboeken u in WAN wilt ontvangen van Logboeken en/of audit Logboeken. <br>
+Aan de onderkant biedt Azure Sentinel aanbevelingen voor de werkmappen die u voor elke connector moet installeren, zodat u direct interessante inzichten kunt krijgen in uw gegevens. <br> Volg de installatie-instructies of [Raadpleeg de relevante verbindings gids](connect-data-sources.md) voor meer informatie. Zie [verbinding maken met micro soft-Services](connect-data-sources.md)voor meer informatie over gegevens connectors.
 
-Nadat uw gegevensbronnen zijn verbonden, worden uw gegevens gestreamd naar Azure Sentinel en u klaar zijn om mee te werken. U de logboeken in de [ingebouwde dashboards](quickstart-get-visibility.md) bekijken en query's gaan bouwen in Log Analytics om de gegevens te [onderzoeken.](tutorial-investigate-cases.md)
+Nadat uw gegevens bronnen zijn verbonden, worden uw gegevens streamen naar Azure Sentinel en kunt u aan de slag gaan met. U kunt de logboeken weer geven in de [ingebouwde Dash boards](quickstart-get-visibility.md) en beginnen met het bouwen van query's in log Analytics om [de gegevens te onderzoeken](tutorial-investigate-cases.md).
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u informatie geleerd over het koppelen van gegevensbronnen aan Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
-- Gegevens van [apparaten met common eventformat-indeling](connect-common-event-format.md) en naar Azure Sentinel streamen.
+In dit document hebt u geleerd hoe u gegevens bronnen verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Gegevens streamen van [algemene gebeurtenis indelings apparaten](connect-common-event-format.md) in azure Sentinel.

@@ -1,28 +1,28 @@
 ---
-title: Back-up voor azure-bestandsshare beheren met Rest API
-description: Meer informatie over het gebruik van REST API voor het beheren en bewaken van Azure-bestandsshares waarvan een back-up wordt gemaakt door Azure Backup.
+title: Back-ups van Azure-bestands shares beheren met rest-API
+description: Meer informatie over het gebruik van REST API voor het beheren en bewaken van Azure-bestands shares waarvan een back-up is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 9d29b226aff568c91de8e1f19ddc0c64f8169e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444730"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184908"
 ---
-# <a name="manage-azure-file-share-backup-with-rest-api"></a>Back-up voor azure-bestandsshare beheren met REST API
+# <a name="manage-azure-file-share-backup-with-rest-api"></a>Back-ups van Azure-bestands shares beheren met REST API
 
-In dit artikel wordt uitgelegd hoe u taken uitvoert voor het beheren en bewaken van de Azure-bestandsshares waarvan een back-up wordt gemaakt door [Azure Backup.](https://docs.microsoft.com/azure/backup/backup-overview)
+In dit artikel wordt uitgelegd hoe u taken kunt uitvoeren voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
 ## <a name="monitor-jobs"></a>Taken controleren
 
-De Azure Backup-service activeert taken die op de achtergrond worden uitgevoerd. Dit omvat scenario's zoals het activeren van back-ups, herstelbewerkingen en het uitschakelen van back-ups. Deze taken kunnen worden bijgehouden met behulp van hun id's.
+De Azure Backup-service activeert taken die op de achtergrond worden uitgevoerd. Dit omvat scenario's zoals het activeren van back-ups, herstel bewerkingen en het uitschakelen van back-ups. Deze taken kunnen worden gevolgd met hun Id's.
 
-### <a name="fetch-job-information-from-operations"></a>Taakgegevens ophalen uit bewerkingen
+### <a name="fetch-job-information-from-operations"></a>Taak gegevens ophalen uit bewerkingen
 
-Een bewerking zoals het activeren van back-ups retourneert altijd een jobID in het antwoord.
+Een bewerking zoals het activeren van een back-up retourneert altijd een jobID in het antwoord.
 
-De uiteindelijke reactie van een [triggerback-upREST API-bewerking](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) is bijvoorbeeld als volgt:
+De laatste reactie van een [trigger back-up rest API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) bewerking is bijvoorbeeld als volgt:
 
 ```json
 {
@@ -38,15 +38,15 @@ De uiteindelijke reactie van een [triggerback-upREST API-bewerking](backup-azure
 }
 ```
 
-De back-uptaak azure-bestandsshare wordt geïdentificeerd door het **veld jobId** en kan worden bijgehouden zoals [hier](https://docs.microsoft.com/rest/api/backup/jobdetails/) wordt vermeld met behulp van een GET-aanvraag.
+De back-uptaak voor Azure-bestands share wordt geïdentificeerd door het veld **jobId** en kan worden gevolgd als [hier](https://docs.microsoft.com/rest/api/backup/jobdetails/) wordt beschreven met BEhulp van een GET-aanvraag.
 
-### <a name="tracking-the-job"></a>Het bijhouden van de taak
+### <a name="tracking-the-job"></a>De taak bijhouden
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-De {jobName} is de hierboven genoemde "jobId". Het antwoord is altijd "200 OK" met het **statusveld** dat de status van de taak aangeeft. Zodra het "Voltooid" of "CompletedWithWarnings" is, onthult de uitgebreide **info-sectie** meer details over de taak.
+{JobName} is de ' jobId ' die hierboven wordt vermeld. Het antwoord is altijd ' 200 OK ' met het veld **status** om de status van de taak aan te geven. Zodra het ' voltooid ' of ' CompletedWithWarnings ' is, toont de sectie **extendedInfo** meer informatie over de taak.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
@@ -54,13 +54,13 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Antwoord
 
-Name  | Type  |  Beschrijving
+Naam  | Type  |  Beschrijving
 --- | --- | ----
 200 OK |  JobResource  | OK
 
-#### <a name="response-example"></a>Voorbeeld van antwoord
+#### <a name="response-example"></a>Antwoord voorbeeld
 
-Zodra de *GET* URI is ingediend, wordt een 200-antwoord geretourneerd.
+Zodra de *Get* -URI is verzonden, wordt een 200-antwoord geretourneerd.
 
 ```http
 HTTP/1.1" 200
@@ -111,9 +111,9 @@ HTTP/1.1" 200
 
 ## <a name="modify-policy"></a>Beleid wijzigen
 
-Als u het beleid wilt wijzigen waarmee de bestandsshare is beveiligd, u dezelfde indeling gebruiken als het inschakelen van beveiliging. Geef de nieuwe beleids-ID op in het aanvraagbeleid en dien de aanvraag in.
+Als u het beleid wilt wijzigen waarmee de bestands share is beveiligd, kunt u dezelfde indeling gebruiken als voor het inschakelen van de beveiliging. Geef alleen de nieuwe beleids-ID op in het aanvraag beleid en verzend de aanvraag.
 
-Bijvoorbeeld: Als u het beveiligingsbeleid van *testshare* wilt wijzigen van *schema1* naar *schema2,* geeft u de *planning2-id* op in de aanvraaginstantie.
+Bijvoorbeeld: als u het beveiligings beleid van *testshare* wilt wijzigen van *schedule1* naar *schedule2*, geeft u de *schedule2* -id op in de aanvraag tekst.
 
 ```json
 {
@@ -125,9 +125,9 @@ Bijvoorbeeld: Als u het beveiligingsbeleid van *testshare* wilt wijzigen van *sc
 }
 ```
 
-## <a name="stop-protection-but-retain-existing-data"></a>De beveiliging stoppen, maar bestaande gegevens bewaren
+## <a name="stop-protection-but-retain-existing-data"></a>Beveiliging stoppen, maar bestaande gegevens behouden
 
-U de beveiliging van een beveiligde bestandsshare verwijderen, maar de gegevens waarover al een back-up is gemaakt, behouden. Verwijder hiervoor het beleid in de aanvraaginstantie die u hebt gebruikt om[back-up in](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) te schakelen en verzendt u de aanvraag. Zodra de koppeling met het beleid is verwijderd, worden back-ups niet meer geactiveerd en worden er geen nieuwe herstelpunten gemaakt.
+U kunt de beveiliging op een beveiligde bestands share verwijderen, maar de gegevens waarvan al een back-up is gemaakt, behouden. U doet dit door het beleid te verwijderen in de hoofd tekst van de aanvraag die u hebt gebruikt om[back-up in te scha kelen](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) en de aanvraag te verzenden. Zodra de koppeling met het beleid is verwijderd, worden back-ups niet meer geactiveerd en worden er geen nieuwe herstel punten gemaakt.
 
 ```json
 {
@@ -142,9 +142,9 @@ U de beveiliging van een beveiligde bestandsshare verwijderen, maar de gegevens 
 
 ### <a name="sample-response"></a>Voorbeeldantwoord
 
-Het stoppen van de beveiliging voor een bestandsshare is een asynchrone bewerking. De bewerking maakt een andere bewerking die moet worden bijgehouden. Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 wanneer die bewerking is voltooid.
+Het stoppen van de beveiliging voor een bestands share is een asynchrone bewerking. Met deze bewerking wordt een andere bewerking gemaakt die moet worden gevolgd. Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 wanneer deze bewerking is voltooid.
 
-Antwoordkopwanneer de bewerking wordt geaccepteerd:
+Reactie header wanneer de bewerking is geaccepteerd:
 
 ```http
 HTTP/1.1" 202
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-Houd vervolgens de resulterende bewerking bij met de locatiekop- of Azure-AsyncOperation-header met een get-opdracht:
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een GET-opdracht:
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01
@@ -190,15 +190,15 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Beveiliging stoppen en gegevens verwijderen
 
-Als u de beveiliging van een beveiligde bestandsshare wilt verwijderen en de back-upgegevens ook wilt verwijderen, voert u een verwijderingsbewerking uit zoals hier wordt [beschreven.](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)
+Als u de beveiliging op een beveiligde bestands share wilt verwijderen en ook de back-upgegevens wilt verwijderen, moet u een Verwijder bewerking uitvoeren, zoals [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)wordt beschreven.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-De parameters {containerName} en {protectedItemName} zijn [hier](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)ingesteld .
+De para meters {containerName} en {protectedItemName} zijn [hier](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)ingesteld.
 
-In het volgende voorbeeld wordt een bewerking geactiveerd om de beveiliging te stoppen voor de beveiliging van het *testshare-bestand* dat is beveiligd met *azurefilesvault.*
+In het volgende voor beeld wordt een bewerking geactiveerd voor het stoppen van de beveiliging van de *testshare* -bestands share die wordt beveiligd met *azurefilesvault*.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
@@ -206,9 +206,9 @@ DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f4
 
 ### <a name="responses"></a>Antwoorden
 
-Delete protection is ansynchronous operation. De bewerking maakt een andere bewerking die afzonderlijk moet worden bijgehouden.
-Het retourneert twee reacties: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 204 (NoContent) wanneer die bewerking is voltooid.
+Beveiliging verwijderen is een asynchrone bewerking. Met deze bewerking wordt een andere bewerking gemaakt die afzonderlijk moet worden bijgehouden.
+Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 204 (geen inhoud) wanneer deze bewerking is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [oplossen van problemen tijdens het configureren van back-ups voor Azure File-shares](troubleshoot-azure-files.md).
+* Meer informatie over het [oplossen van problemen bij het configureren van back-ups voor Azure-bestands shares](troubleshoot-azure-files.md).

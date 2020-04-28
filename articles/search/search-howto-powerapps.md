@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: eafd0ced64567ec7b51ff0f8aac19668343867ea
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82129718"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184397"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Zelf studie: een Cognitive Search-index uit Power-apps opvragen
 
@@ -214,7 +214,7 @@ In deze stap maakt u een Power-app met een zoekvak, een zoek knop en een weergav
 
    De volgende scherm afbeelding toont de formule balk voor de actie **onselect** .
 
-       :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Button OnSelect" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Knop onselect" border="true":::
 
    Deze actie zorgt ervoor dat de knop een nieuwe verzameling met de naam *azResult* bijwerkt met het resultaat van de zoek opdracht, met behulp van de tekst in het tekstvak *txtQuery* als query term.
 

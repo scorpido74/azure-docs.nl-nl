@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586373"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183684"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -459,7 +459,12 @@ Hieronder vindt u enkele voor beelden voor het schrijven van query's op Azure Ba
     | extend Vault= Resource
     | project-away Resource
     ````
-    
+
+## <a name="v1-schema-vs-v2-schema"></a>V1-schema VS v2-schema
+Eerder werden de diagnostische gegevens voor Azure Backup Agent en Azure VM-back-up verzonden naar Azure Diagnostics tabel in een schema waarnaar wordt verwezen als ***v1-schema***. Daarna werden nieuwe kolommen toegevoegd ter ondersteuning van andere scenario's en werk belastingen, en worden diagnostische gegevens gepusht in een nieuw schema waarnaar wordt verwezen als ***v2-schema***. 
+
+Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Wanneer u het gegevens model hebt gecontroleerd, kunt u beginnen met het [maken van aangepaste query's](../azure-monitor/learn/tutorial-logs-dashboards.md) in azure monitor Logboeken om uw eigen dash board te bouwen.

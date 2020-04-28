@@ -59,7 +59,7 @@
       href: traffic-manager-how-it-works.md
     - name: Veelgestelde vragen
       href: traffic-manager-FAQs.md
-- name: Procedure
+- name: Procedures
   items:
     - name: Prestatieroutering configureren in Traffic Manager
       href: traffic-manager-configure-performance-routing-method.md
@@ -83,7 +83,7 @@
       href: traffic-manager-load-balancing-azure.md
     - name: Prestaties van Traffic Manager meten
       href: traffic-manager-performance-considerations.md
-    - name: Diagnostische logboeken inschakelen
+    - name: Resourcelogboeken inschakelen
       href: traffic-manager-diagnostic-logs.md
     - name: Azure PowerShell gebruiken om Traffic Manager te beheren
       href: traffic-manager-powershell-arm.md
@@ -119,7 +119,7 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

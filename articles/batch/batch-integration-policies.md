@@ -4,12 +4,12 @@ description: Azure Policy is een service in azure die u gebruikt om beleids rege
 ms.topic: article
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116074"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184262"
 ---
 # <a name="integration-with-azure-policy"></a>Integratie met Azure Policy
 
@@ -26,7 +26,7 @@ Met beleids definities worden de voor waarden beschreven waaraan moet worden vol
 
 De resources die worden vereist door batch, zijn onder andere: account, reken knooppunt, pool, taak en taak. U kunt daarom eigenschaps aliassen gebruiken om toegang te krijgen tot specifieke eigenschappen voor deze resources. Meer informatie over [aliassen](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-Gebruik de Azure-beleids extensie voor Visual Studio code om ervoor te zorgen dat u de huidige aliassen kent en uw resources en beleid controleert. Het kan worden geïnstalleerd op alle platforms die worden ondersteund door Visual Studio code. Deze ondersteuning omvat Windows, Linux en macOS. Zie [installatie richtlijnen](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
+Gebruik de extensie Azure Policy voor Visual Studio code om ervoor te zorgen dat u de huidige aliassen kent en uw resources en beleid controleert. Het kan worden geïnstalleerd op alle platforms die worden ondersteund door Visual Studio code. Deze ondersteuning omvat Windows, Linux en macOS. Zie [installatie richtlijnen](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
 
 
 

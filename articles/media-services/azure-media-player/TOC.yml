@@ -34,7 +34,9 @@
       href: azure-media-player-localization.md
 - name: Voorbeelden
   items:
-    - name: Azure Media Player-voorbeelden
+    - name: Demo’s voor Azure Media Player
+      href: demos.md
+    - name: Voorbeelden voor Azure Media Player
       href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: Naslaginformatie
   items:

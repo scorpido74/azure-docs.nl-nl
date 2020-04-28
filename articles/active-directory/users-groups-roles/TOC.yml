@@ -18,7 +18,7 @@
       href: groups-quickstart-naming-policy.md
 - name: Zelfstudies
   items:
-    - name: Een dynamisch gevulde groep maken
+    - name: Een dynamische groep maken
       href: groups-dynamic-tutorial.md
 - name: Concepten
   expanded: true
@@ -40,21 +40,23 @@
       items:
         - name: Gebruikers maken
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Gebruikers in bulk maken (preview)
+        - name: Gebruikers bulksgewijs maken
           href: users-bulk-add.md
         - name: Gebruikersprofielen beheren
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Gebruikersgegevens downloaden (preview)
+        - name: 'Mijn personeel: delegering'
+          href: my-staff-configure.md
+        - name: Gebruikersgegevens downloaden
           href: users-bulk-download.md
         - name: Gebruikersaccounts delen
           href: users-sharing-accounts.md
         - name: Gebruikers aan beheerdersrollen toewijzen
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Gebruikers in bulk verwijderen (preview)
+        - name: Gebruikers bulksgewijs verwijderen
           href: users-bulk-delete.md
         - name: Een verwijderde gebruiker herstellen
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Gebruikers in bulk herstellen (preview)
+        - name: Gebruikers bulksgewijs herstellen
           href: users-bulk-restore.md
         - name: Een account in een niet-beheerde directory sluiten
           href: users-close-account.md
@@ -82,42 +84,18 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Groepen beheren
       items:
-        - name: Groepen- en ledenlijsten zoeken (preview)
-          href: groups-members-owners-search.md
+        - name: Toegang beheren met Azure AD-groepen
+          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Groep maken (Azure-portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Gevoeligheidslabels toewijzen (preview)
-          href: groups-assign-sensitivity-labels.md
         - name: Groepen beheren met PowerShell voor Graph (v2)
           href: groups-settings-v2-cmdlets.md
         - name: Groepen beheren met PowerShell MSOnline
           href: groups-settings-cmdlets.md
+        - name: Groeps- en ledenlijsten zoeken
+          href: groups-members-owners-search.md
         - name: Groepsleden toevoegen of verwijderen
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Leden in bulk toevoegen (preview)
-          href: groups-bulk-import-members.md
-        - name: Leden in bulk verwijderen (preview)
-          href: groups-bulk-remove-members.md
-        - name: Ledenlijst in bulk downloaden (preview)
-          href: groups-bulk-download-members.md
-        - name: Eigenaren van groepen beheren
-          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Groepslijst in bulk downloaden (preview)
-          href: groups-bulk-download.md
-        - name: Groepen in groepen beheren
-          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Groepstoegang tot SaaS-apps toevoegen
-          href: groups-saasapps.md
-        - name: Naamgevingsreferentie voor groepen
-          href: groups-naming-policy.md
-        - name: Verloopreferentie voor groepen
-          href: groups-lifecycle.md
-        - name: Verwijderde groepen herstellen
-          href: groups-restore-deleted.md
-        - name: Groepsinstellingen beheren
-          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Selfservice instellen voor groepen
-          href: groups-self-service-management.md
         - name: Dynamische groepen
           items:
             - name: Een dynamische groep maken
@@ -128,6 +106,32 @@
               href: groups-dynamic-rule-validation.md
             - name: Type groepslidmaatschap wijzigen
               href: groups-change-type.md
+        - name: Leden bulksgewijs toevoegen
+          href: groups-bulk-import-members.md
+        - name: Leden bulksgewijs verwijderen
+          href: groups-bulk-remove-members.md
+        - name: Ledenlijst bulksgewijs downloaden
+          href: groups-bulk-download-members.md
+        - name: Groepslijst bulksgewijs downloaden
+          href: groups-bulk-download.md
+        - name: Verwijderde groepen herstellen
+          href: groups-restore-deleted.md
+        - name: Groepsinstellingen beheren
+          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Eigenaren van groepen beheren
+          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Groepen in groepen beheren
+          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Groepstoegang tot SaaS-apps toevoegen
+          href: groups-saasapps.md
+        - name: Naamgevingsbeleid voor groepen instellen
+          href: groups-naming-policy.md
+        - name: Verloopbeleid voor groepen instellen
+          href: groups-lifecycle.md
+        - name: Selfservice instellen voor groepen
+          href: groups-self-service-management.md
+        - name: Gevoeligheidslabels toewijzen
+          href: groups-assign-sensitivity-labels.md
     - name: Licenties toewijzen
       items:
         - name: Licenties toewijzen aan een groep
@@ -145,14 +149,15 @@
         - name: Serviceplan-id's voor licentieverlening
           href: licensing-service-plan-reference.md
     - name: Azure AD-beheerdersrollen
+      expanded: true
       items:
         - name: Rollen en machtigingen
           href: directory-assign-admin-roles.md
         - name: Rollen weergeven en toewijzen
           href: directory-manage-roles-portal.md
-        - name: Preview van aangepaste rollen
+        - name: Aangepaste rol
           items:
-            - name: Preview van aangepaste rollen
+            - name: Aangepaste rol
               href: roles-custom-overview.md
             - name: Aangepast rol maken
               href: roles-create-custom.md
@@ -162,7 +167,7 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Aangepaste rollen toewijzen in PowerShell
               href: roles-assign-powershell.md
-            - name: Machtigingen voor preview van aangepaste rollen
+            - name: Aangepaste rolmachtigingen
               href: roles-custom-available-permissions.md
             - name: App-beheerdersmachtigingen delegeren
               href: roles-delegate-app-roles.md
@@ -176,8 +181,20 @@
               href: directory-admin-roles-secure.md
             - name: Accounts voor noodgevallen maken
               href: directory-emergency-access.md
-        - name: Beheereenheden
-          href: directory-administrative-units.md
+        - name: Beheereenheid
+          items:
+            - name: Overzicht van beheereenheden
+              href: directory-administrative-units.md
+            - name: AU’s toevoegen en beheren
+              href: roles-admin-units-manage.md
+            - name: Gebruikers in AU’s toevoegen en beheren
+              href: roles-admin-units-add-manage-users.md
+            - name: Groepen in AU’s toevoegen en beheren
+              href: roles-admin-units-add-manage-groups.md
+            - name: Een rol met AU-bereik toewijzen
+              href: roles-admin-units-assign-roles.md
+            - name: Veelgestelde vragen en probleemoplossing
+              href: roles-admin-units-faq-troubleshoot.md
     - name: Aanmelding beheren
       items:
         - name: Bedrijfshuisstijl aanpassen

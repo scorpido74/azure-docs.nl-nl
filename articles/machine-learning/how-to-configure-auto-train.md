@@ -1,7 +1,7 @@
 ---
 title: Geautomatiseerde ML-experimenten maken
 titleSuffix: Azure Machine Learning
-description: Geautomatiseerde machine learning kiest een algoritme voor u en genereert een model dat klaar is voor implementatie. Meer informatie over de opties die u gebruiken om geautomatiseerde machine learning-experimenten te configureren.
+description: Automatische machine learning kiest een algoritme voor u en genereert een model dat gereed is voor implementatie. Meer informatie over de opties die u kunt gebruiken voor het configureren van geautomatiseerde machine learning experimenten.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: sgilley
@@ -11,61 +11,61 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8997f5cd1bed06fab8ca90e7b1cdfcb3e5ec6b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313785"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186926"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze handleiding vindt u informatie over het definiëren van verschillende configuratie-instellingen van uw geautomatiseerde machine learning-experimenten met de [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Automated machine learning kiest een algoritme en hyperparameters voor u en genereert een model dat klaar is voor implementatie. Er zijn verschillende opties die u gebruiken om geautomatiseerde machine learning-experimenten te configureren.
+In deze hand leiding vindt u informatie over het definiëren van verschillende configuratie-instellingen van uw geautomatiseerde machine learning experimenten met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatische machine learning kiest een algoritme en Hyper parameters voor u en genereert een model dat gereed is voor implementatie. Er zijn verschillende opties die u kunt gebruiken voor het configureren van geautomatiseerde machine learning experimenten.
 
-Zie [Zelfstudie: Train een classificatiemodel met geautomatiseerde machine learning](tutorial-auto-train-models.md) of [Train-modellen met geautomatiseerde machine learning in de cloud](how-to-auto-train-remote.md)om voorbeelden van een geautomatiseerde machine learning-experimenten weer te geven.
+Zie [zelf studie: een classificatie model met geautomatiseerde machine learning](tutorial-auto-train-models.md) of [Train modellen met geautomatiseerde machine learning in de Cloud](how-to-auto-train-remote.md)om voor beelden van een geautomatiseerde machine learning experimenten weer te geven.
 
-Configuratieopties beschikbaar in geautomatiseerde machine learning:
+Configuratie opties die beschikbaar zijn in automatische machine learning:
 
-* Selecteer het experimenttype: Classificatie, Regressie of Tijdreeksprognoses
-* Gegevensbron, indelingen en ophalen van gegevens
-* Kies uw rekendoel: lokaal of extern
-* Geautomatiseerde machine learning-experimentinstellingen
+* Selecteer het type experiment: classificatie, regressie of time series-prognose
+* Gegevens bron, indelingen en gegevens ophalen
+* Kies uw reken doel: lokaal of extern
+* Instellingen voor automatisch machine learning experiment
 * Een geautomatiseerd machine learning-experiment uitvoeren
-* Modelstatistieken verkennen
+* Model statistieken verkennen
 * Model registreren en implementeren
 
-Als u de voorkeur geeft aan een geen-code-ervaring, u ook [uw geautomatiseerde machine learning-experimenten maken in Azure Machine Learning-studio.](how-to-use-automated-ml-for-ml-models.md)
+Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning experimenten maken in azure machine learning Studio](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>Het type experimenten selecteren
 
-Voordat u begint met uw experiment, moet u bepalen wat voor soort machine learning probleem dat u oplost. Geautomatiseerde machine learning ondersteunt taaktypen classificatie, regressie en prognoses. Meer informatie over [taaktypen](how-to-define-task-type.md).
+Voordat u begint met het experiment, moet u het soort machine learning probleem bepalen dat u wilt oplossen. Automatische machine learning ondersteunt de taak typen classificatie, regressie en prognose. Meer informatie over [taak typen](how-to-define-task-type.md).
 
-Geautomatiseerde machine learning ondersteunt de volgende algoritmen tijdens het automatiserings- en tuningproces. Als gebruiker hoeft u het algoritme niet op te geven.
+Automatische machine learning ondersteunt de volgende algoritmen tijdens het automatiserings-en afstemmings proces. Als gebruiker hoeft u het algoritme niet op te geven.
 
 > [!NOTE]
-> Als u van plan bent om uw door automatische ML gemaakte modellen te exporteren naar een [ONNX-model,](concept-onnx.md)kunnen alleen de algoritmen die met een * zijn aangegeven, worden geconverteerd naar de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Let ook op, ONNX ondersteunt op dit moment alleen classificatie- en regressietaken. 
+> Als u van plan bent om uw automatisch gegenereerde modellen te exporteren naar een [ONNX-model](concept-onnx.md), kunnen alleen de algoritmen worden geconverteerd naar de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Opmerking: ONNX ondersteunt op dit moment alleen classificatie-en regressie taken. 
 
 Classificatie | Regressie | Tijdreeksvoorspelling
 |-- |-- |--
-[Logistieke regressie](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastisch net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineaire SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Ondersteuningsvectorclassificatie (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Willekeurig bos](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Willekeurig bos](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN Classifier](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN Lineaire classificatie](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naïeve bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Snelle lineaire regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online verloopafdaling regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Profeet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[Gemiddelde Perceptron Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||PrognoseTCN
-|[Lineaire SVM-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[Logistiek regressie](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastisch net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineair-SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Vector classificatie (SVC) ondersteunen](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[Classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[Lineaire classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Snelle lineaire Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatische ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online verloop Daal Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|[Gemiddelde Perceptron-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
+|[Classificatie van lineaire SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
-Gebruik `task` de parameter `AutoMLConfig` in de constructor om het experimenttype op te geven.
+Gebruik de `task` para meter in `AutoMLConfig` de constructor om uw type experiment op te geven.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -74,17 +74,17 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task = "classification")
 ```
 
-## <a name="data-source-and-format"></a>Gegevensbron en -indeling
+## <a name="data-source-and-format"></a>Gegevens bron en-indeling
 
-Geautomatiseerde machine learning ondersteunt gegevens die zich op uw lokale bureaublad of in de cloud bevinden, zoals Azure Blob Storage. De gegevens kunnen worden uitgelezen in een **Pandas DataFrame** of een **Azure Machine Learning TabularDataset.**  [Meer informatie over gegevenssets](how-to-create-register-datasets.md).
+Automatische machine learning ondersteunt gegevens die zich op uw lokale bureau blad of in de cloud bevinden, zoals Azure Blob Storage. De gegevens kunnen worden gelezen in een **Panda data frame** of een **Azure machine learning TabularDataset**.  [Meer informatie over gegevens sets](how-to-create-register-datasets.md).
 
-Vereisten voor opleidingsgegevens:
-- De gegevens moeten in tabelvorm zijn.
-- De te voorspellen waarde, de doelkolom, moet in de gegevens staan.
+Vereisten voor trainings gegevens:
+- Gegevens moeten in tabel vorm zijn.
+- De waarde die u wilt voors pellen, doel kolom, moet in de gegevens zijn.
 
-In de volgende codevoorbeelden wordt uitgelegd hoe u de gegevens in deze indelingen opslaan.
+De volgende code voorbeelden laten zien hoe u de gegevens in deze indelingen opslaat.
 
-* Tabeltabelgegevensset
+* TabularDataset
 
   ```python
   from azureml.core.dataset import Dataset
@@ -95,7 +95,7 @@ In de volgende codevoorbeelden wordt uitgelegd hoe u de gegevens in deze indelin
   label = "Y"
   ```
 
-* Panda's dataframe
+* Panda data frame
 
   ```python
   import pandas as pd
@@ -106,52 +106,52 @@ In de volgende codevoorbeelden wordt uitgelegd hoe u de gegevens in deze indelin
   label = "label-col-name"
   ```
 
-## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Gegevens ophalen voor het uitvoeren van experiment op externe gegevens
+## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Gegevens ophalen voor het uitvoeren van experiment op externe compute
 
-Voor externe uitvoeringen moeten trainingsgegevens toegankelijk zijn via de externe gegevensberekening. De [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) klasse in de SDK stelt functionaliteit bloot aan:
+Voor uitvoering op afstand moeten de trainings gegevens toegankelijk zijn vanaf de externe compute. De- [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) klasse in de SDK biedt de volgende functionaliteit:
 
-* eenvoudig gegevens van statische bestanden of URL-bronnen naar uw werkruimte overbrengen
-* uw gegevens beschikbaar maken voor trainingsscripts wanneer u op cloudcomputeresources wordt uitgevoerd
+* eenvoudig gegevens van statische bestanden of URL-bronnen overdragen naar uw werk ruimte
+* uw gegevens beschikbaar maken voor trainings scripts wanneer ze worden uitgevoerd op Cloud Compute-resources
 
-Zie de [how-to](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) voor een `Dataset` voorbeeld van het gebruik van de klasse om gegevens te monteren op uw compute target.
+Zie de [instructies](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) voor een voor beeld van het gebruik van `Dataset` de klasse om gegevens te koppelen aan uw reken doel.
 
-## <a name="train-and-validation-data"></a>Trein- en validatiegegevens
+## <a name="train-and-validation-data"></a>Train-en validatie gegevens
 
-U afzonderlijke trein- en `AutoMLConfig` validatiesets rechtstreeks in de constructor opgeven.
+U kunt afzonderlijke treinen en validatie sets rechtstreeks in de `AutoMLConfig` constructor opgeven.
 
-### <a name="k-folds-cross-validation"></a>Kruisvalidatie voor K-Folds
+### <a name="k-folds-cross-validation"></a>Kruis validatie: K-vouwen
 
-Gebruik `n_cross_validations` de instelling om het aantal kruisvalidaties op te geven. De trainingsgegevensset wordt willekeurig `n_cross_validations` opgesplitst in plooien van gelijke grootte. Tijdens elke cross validatie ronde, zal een van de plooien worden gebruikt voor validatie van het model getraind op de resterende plooien. Dit proces wordt `n_cross_validations` herhaald voor rondes totdat elke vouw eenmaal wordt gebruikt als validatieset. De gemiddelde scores `n_cross_validations` over alle rondes worden gerapporteerd en het bijbehorende model wordt omgeschoold op de hele trainingsgegevensset.
+Gebruik `n_cross_validations` de instelling om het aantal Kruis validaties op te geven. De set met trainings gegevens wordt wille keurig gesplitst `n_cross_validations` in vouwen van gelijke grootte. Tijdens elke Kruis validatie ronde wordt een van de vouwen gebruikt voor de validatie van het model dat is getraind op de resterende vouwen. Dit proces wordt herhaald voor `n_cross_validations` afrondingen totdat elke vouw als validatieset wordt gebruikt. De gemiddelde scores voor `n_cross_validations` alle rondingen worden gerapporteerd en het bijbehorende model wordt opnieuw getraind op de hele set trainings gegevens.
 
-### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo Cross Validatie (Herhaalde willekeurige sub-sampling)
+### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo-Kruis validatie (herhaalde, wille keurige subsampling)
 
-Met `validation_size` deze neigen het percentage van de trainingsgegevensset `n_cross_validations` dat moet worden gebruikt voor validatie en u het aantal kruisvalidaties opgeven. Tijdens elke cross validatieronde wordt `validation_size` willekeurig een subset van grootte geselecteerd voor validatie van het model dat is getraind op de resterende gegevens. Ten slotte worden de `n_cross_validations` gemiddelde scores over alle rondes gerapporteerd en wordt het bijbehorende model omgeschoold op de hele trainingsgegevensset. Monte Carlo wordt niet ondersteund voor het voorspellen van tijdreeksen.
+Gebruik `validation_size` om het percentage van de trainings gegevensset op te geven dat moet worden gebruikt voor validatie en `n_cross_validations` om het aantal Kruis validaties op te geven. Tijdens elke Kruis validatie ronde is een subset van de `validation_size` grootte wille keurig geselecteerd voor validatie van het model dat is getraind voor de resterende gegevens. Ten slotte worden de gemiddelde scores `n_cross_validations` voor alle afrondingen gerapporteerd en wordt het bijbehorende model opnieuw getraind op de hele set trainings gegevens. Monte Carlo wordt niet ondersteund voor time series-prognoses.
 
-### <a name="custom-validation-dataset"></a>Aangepaste validatiegegevensset
+### <a name="custom-validation-dataset"></a>Gegevensset voor aangepaste validatie
 
-Gebruik aangepaste validatiegegevensset als willekeurige splitsing niet acceptabel is, meestal tijdreeksgegevens of onevenwichtige gegevens. U uw eigen validatiegegevensset opgeven. Het model wordt geëvalueerd aan de hand van de validatiegegevensset die is opgegeven in plaats van de willekeurige gegevensset.
+Aangepaste validatie gegevensset gebruiken als wille keurige splitsing niet acceptabel is, meestal time series-gegevens of gegevens die niet in balans zijn. U kunt uw eigen validatie gegevensset opgeven. Het model wordt geëvalueerd op basis van de validatie gegevensset die is opgegeven in plaats van een wille keurige gegevensset.
 
 ## <a name="compute-to-run-experiment"></a>Compute en uitvoering van het experiment instellen
 
-Bepaal vervolgens waar het model zal worden opgeleid. Een geautomatiseerd machine learning-trainingsexperiment kan worden uitgevoerd op de volgende rekenopties:
-* Uw lokale machine, zoals een lokale desktop of laptop - Over het algemeen wanneer u een kleine gegevensset hebt en u nog in de verkenningsfase bent.
-* Een externe machine in de cloud – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) is een beheerde service waarmee machine learning-modellen kunnen worden getraind op clusters van virtuele Azure-machines.
+Bepaal vervolgens op welke locatie het model moet worden getraind. Een geautomatiseerd machine learning training-experiment kan worden uitgevoerd op de volgende reken opties:
+* Uw lokale computer, zoals een lokaal bureau blad of laptop, in het algemeen wanneer u een kleine gegevensset hebt en u zich nog steeds in het exploratie stadium bevindt.
+* Een externe computer in de Cloud – [Azure machine learning beheerde Compute](concept-compute-target.md#amlcompute) is een beheerde service waarmee u machine learning modellen kunt trainen op clusters van virtuele machines van Azure.
 
-  Zie deze [GitHub-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) voor voorbeelden van notitieblokken met lokale en externe rekendoelen.
+  Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) voor voor beelden van notitie blokken met lokale en externe Compute-doelen.
 
-* Een Azure Databricks-cluster in uw Azure-abonnement. Meer informatie vindt u hier - [Azure Databricks-cluster instellen voor geautomatiseerde ML](how-to-configure-environment.md#azure-databricks)
+* Een Azure Databricks cluster in uw Azure-abonnement. U kunt hier meer informatie vinden- [Setup Azure Databricks cluster voor automatische milliliters](how-to-configure-environment.md#azure-databricks)
 
-  Zie deze [GitHub-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voorbeelden van notitieblokken met Azure Databricks.
+  Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voor beelden van notitie blokken met Azure Databricks.
 
 <a name='configure-experiment'></a>
 
-## <a name="configure-your-experiment-settings"></a>De experimentinstellingen configureren
+## <a name="configure-your-experiment-settings"></a>De instellingen voor uw experiment configureren
 
-Er zijn verschillende opties die u gebruiken om uw geautomatiseerde machine learning-experiment te configureren. Deze parameters worden ingesteld door `AutoMLConfig` een object te instantiëring. Zie de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor een volledige lijst met parameters.
+Er zijn verschillende opties die u kunt gebruiken om uw geautomatiseerde machine learning-experiment te configureren. Deze para meters worden ingesteld door `AutoMLConfig` een object te instantiëren. Zie de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor een volledige lijst met para meters.
 
 Voorbeelden zijn:
 
-1. Classificatie-experiment met AUC gewogen als primaire statistiek met tijdstime-outminuten ingesteld op 30 minuten en 2 kruisvalidatievouwen.
+1. Beoordelings experiment waarbij AUC wordt gewogen als primaire metriek met de time-out van het experiment, ingesteld op 30 minuten en 2 Kruis validatie vouwen.
 
    ```python
        automl_classifier=AutoMLConfig(
@@ -163,7 +163,7 @@ Voorbeelden zijn:
        label_column_name=label,
        n_cross_validations=2)
    ```
-2. Hieronder vindt u een voorbeeld van een regressieexperiment dat na 60 minuten eindigt met vijf validatiekruisplooien.
+2. Hieronder ziet u een voor beeld van een regressie experiment dat is ingesteld om na 60 minuten te eindigen met vijf validatie-Kruis vouwen.
 
    ```python
       automl_regressor = AutoMLConfig(
@@ -176,12 +176,12 @@ Voorbeelden zijn:
       n_cross_validations=5)
    ```
 
-De drie `task` verschillende parameterwaarden (het `forecasting`derde taaktype is en `regression` gebruikt een vergelijkbare algoritmegroep als taken) bepalen de lijst met modellen die moeten worden toegepast. Gebruik `whitelist` de `blacklist` or-parameters om iteraties met de beschikbare modellen verder te wijzigen om deze op te nemen of uit te sluiten. De lijst met ondersteunde modellen is te vinden op [SupportedModels Class](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) voor ([Classificatie,](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification) [Forecasting](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)en [Regressie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
+De drie verschillende `task` parameter waarden (het derde taak type is `forecasting`en gebruikt een vergelijk bare algoritme groep als `regression` taken) bepalen de lijst met modellen die moeten worden toegepast. Gebruik de `whitelist` para `blacklist` meters of om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [SupportedModels-klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) voor ([classificatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognose](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)en [regressie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
-Om time-outfouten voor experimenten te voorkomen, moet `experiment_timeout_minutes` de validatieservice van Automated ML worden ingesteld op een minimum van 15 minuten of 60 minuten als uw rij per kolomgrootte meer dan 10 miljoen bedraagt.
+Om te voor komen dat time-outstoringen experimenteren, moet de `experiment_timeout_minutes` validatie service voor automatische milliliters worden ingesteld op mini maal 15 minuten of 60 minuten als uw rij op kolom grootte groter is dan 10.000.000.
 
-### <a name="primary-metric"></a>Primaire statistiek
-De primaire statistiek bepaalt de statistiek die moet worden gebruikt tijdens modeltraining voor optimalisatie. De beschikbare statistieken die u selecteren, worden bepaald door het taaktype dat u kiest en in de volgende tabel worden geldige primaire statistieken voor elk taaktype weergegeven.
+### <a name="primary-metric"></a>Primaire metriek
+De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
 
 |Classificatie | Regressie | Tijdreeksvoorspelling
 |-- |-- |--
@@ -191,31 +191,31 @@ De primaire statistiek bepaalt de statistiek die moet worden gebruikt tijdens mo
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-Meer informatie over de specifieke definities van deze statistieken in [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md).
+Meer informatie over de specifieke definities van deze metrische gegevens in [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 
-### <a name="data-featurization"></a>Data featurization
+### <a name="data-featurization"></a>Gegevens parametrisatie
 
-In elk geautomatiseerd machine learning-experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die zich op verschillende schalen bevinden.  U echter ook extra prestatieverbeteringen inschakelen, zoals toerekening ontbrekende waarden, codering en transformaties. [Meer informatie over wat featurization is opgenomen.](how-to-use-automated-ml-for-ml-models.md#featurization)
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-use-automated-ml-for-ml-models.md#featurization).
 
-Wanneer u uw experimenten configureert, `featurization`u de geavanceerde instelling inschakelen. In de volgende tabel worden de geaccepteerde instellingen voor featurisatie weergegeven in de [klasse AutoMLConfig.](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
+Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `featurization`inschakelen. De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Featurisatieconfiguratie | Beschrijving |
+|Parametrisatie-configuratie | Beschrijving |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee geeft u aan dat de aangepaste prestatiestap moet worden gebruikt. [Meer informatie over het aanpassen van featurization.](how-to-configure-auto-train.md#customize-feature-engineering)|
-|`"featurization": 'off'`| Geeft aan dat featurisatiestap niet automatisch moet worden uitgevoerd.|
-|`"featurization": 'auto'`| Geeft aan dat als onderdeel van [voorbewerking, gegevensvangrails en featurisatiestappen](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch worden uitgevoerd.|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
+|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch worden uitgevoerd.|
 
 > [!NOTE]
-> Geautomatiseerde machine learning featurization stappen (functie normalisatie, omgaan met ontbrekende gegevens, het omzetten van tekst naar numerieke, enz.) deel uitmaken van het onderliggende model. Bij het gebruik van het model voor voorspellingen worden dezelfde featurisatiestappen die tijdens de training worden toegepast, automatisch toegepast op uw invoergegevens.
+> Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
 
 ### <a name="time-series-forecasting"></a>Tijdreeksvoorspelling
-De taak `forecasting` tijdreeksen vereist extra parameters in het configuratieobject:
+De time series `forecasting` -taak vereist extra para meters in het configuratie object:
 
-1. `time_column_name`: Vereiste parameter die de naam van de kolom in uw trainingsgegevens definieert die een geldige tijdreeks bevatten.
-1. `max_horizon`: Hiermee bepaalt u de tijdsduur die u wilt voorspellen op basis van de periodiciteit van de trainingsgegevens. Als u bijvoorbeeld trainingsgegevens met dagelijkse tijdkorrels hebt, bepaalt u hoe ver in dagen u het model wilt trainen.
-1. `grain_column_names`: Hiermee definieert u de naam van kolommen die afzonderlijke tijdreeksgegevens in uw trainingsgegevens bevatten. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel voorspelt, definieert u winkel- en merkkolommen als uw korrelkolommen. Voor elke korrel/groepering worden afzonderlijke tijdreeksen en prognoses gemaakt. 
+1. `time_column_name`: De vereiste para meter voor het definiëren van de naam van de kolom in uw trainings gegevens met een geldige time-reeks.
+1. `max_horizon`: Hiermee definieert u de tijds duur die u wilt voors pellen op basis van de periodiciteit van de trainings gegevens. Als u bijvoorbeeld trainings gegevens met dagelijkse tijd korrels hebt, definieert u hoe ver in dagen u het model wilt trainen.
+1. `grain_column_names`: Hiermee definieert u de naam van kolommen die afzonderlijke time series-gegevens bevatten in uw trainings gegevens. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel wilt ramen, definieert u de kolommen Store en merk als korrel. Er worden afzonderlijke time-series en prognoses voor elke korrel/groepering gemaakt. 
 
-Zie het [voorbeeldnotitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)voor voorbeelden van de onderstaande instellingen .
+Zie voor voor beelden van de onderstaande instellingen het voor [beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -246,17 +246,17 @@ automl_config = AutoMLConfig(task = 'forecasting',
                              **time_series_settings)
 ```
 
-### <a name="ensemble-configuration"></a><a name="ensemble"></a>Ensembleconfiguratie
+### <a name="ensemble-configuration"></a><a name="ensemble"></a>Configuratie van ensemble
 
-Ensemblemodellen zijn standaard ingeschakeld en worden weergegeven als de laatste uitvoeringiteraties in een geautomatiseerde machine learning-uitvoering. Momenteel ondersteund ensemble methoden zijn stemmen en stapelen. Stemmen wordt geïmplementeerd als soft-voting met behulp van gewogen gemiddelden, en de stapeling implementatie is met behulp van een twee laag implementatie, waar de eerste laag heeft dezelfde modellen als de stemming ensemble, en de tweede laag model wordt gebruikt om de optimale combinatie van de modellen uit de eerste laag te vinden. Als u ONNX-modellen gebruikt **of** modelexplainability hebt ingeschakeld, wordt stapelen uitgeschakeld en wordt alleen stemmen gebruikt.
+Ensemble-modellen zijn standaard ingeschakeld en worden weer gegeven als de laatste uitvoerings herhalingen in een automatische machine learning uitvoering. Momenteel worden op dit moment ondersteunde ensemble-methoden gestemd en gestapeld. Stemmen wordt geïmplementeerd als zachte stem met gewogen gemiddelden en de stacking-implementatie maakt gebruik van een implementatie met twee lagen, waarbij de eerste laag dezelfde modellen heeft als de naam van de stem ensemble en het tweede laag model wordt gebruikt om de optimale combi natie van modellen van de eerste laag te vinden. Als u gebruikmaakt van ONNX-modellen **of** als u model uitleg hebt ingeschakeld, wordt stacking uitgeschakeld en wordt alleen de stem gebruikt.
 
-Er zijn meerdere standaardargumenten die `kwargs` kunnen `AutoMLConfig` worden opgegeven als in een object om het standaardgedrag van het stackensemble te wijzigen.
+Er zijn meerdere standaard argumenten die kunnen worden gegeven als `kwargs` in een `AutoMLConfig` -object om het standaard gedrag van de stack-ensemble te wijzigen.
 
-* `stack_meta_learner_type`: de metaleerling is een model dat getraind is op de output van de individuele heterogene modellen. Standaardmeta-leerlingen zijn `LogisticRegression` voor classificatietaken `LogisticRegressionCV` (of als cross-validatie `ElasticNet` is ingeschakeld) en `ElasticNetCV` voor regressie/prognosetaken (of als cross-validatie is ingeschakeld). Deze parameter kan een van `LogisticRegression`de `LogisticRegressionCV` `LightGBMClassifier`volgende `ElasticNet` `ElasticNetCV`tekenreeksen zijn: , , , , `LightGBMRegressor`, of `LinearRegression`.
-* `stack_meta_learner_train_percentage`: geeft het aandeel van de trainingsset (bij het kiezen van trein en validatietype training) aan dat moet worden gereserveerd voor de opleiding van de metaleerling. Standaardwaarde `0.2`is .
-* `stack_meta_learner_kwargs`: optionele parameters om door te geven aan de initialisator van de meta-leerling. Deze parameters en parametertypen weerspiegelen de parameters en parametertypen van de bijbehorende modelconstructor en worden doorgestuurd naar de modelconstructeur.
+* `stack_meta_learner_type`: de meta-informatieer is een model dat is getraind op de uitvoer van de afzonderlijke heterogene modellen. Standaard- `LogisticRegression` meta informatie is voor classificatie taken (of `LogisticRegressionCV` als kruis validatie is ingeschakeld) en voor regressie `ElasticNet` -en prognose taken (of `ElasticNetCV` als kruis validatie is ingeschakeld). Deze para meter kan een van de volgende teken reeksen `LogisticRegression`zijn `LogisticRegressionCV`: `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`,, `LinearRegression`, of.
+* `stack_meta_learner_train_percentage`: Hiermee geeft u het aandeel van de Trainingsset (bij het kiezen van trein en validatie type training) op dat moet worden gereserveerd voor de training van de meta-informatieer. De standaard waarde `0.2`is.
+* `stack_meta_learner_kwargs`: optionele para meters die moeten worden door gegeven aan de initialisatie functie van de meta-informatieer. Met deze para meters en parameter typen worden de para meters en parameter typen van de bijbehorende model-constructor gespiegeld en doorgestuurd naar de model-constructor.
 
-In de volgende code wordt een voorbeeld `AutoMLConfig` weergegeven van het opgeven van aangepast ensemblegedrag in een object.
+De volgende code toont een voor beeld van het opgeven van een aangepast `AutoMLConfig` ensemble-gedrag in een object.
 
 ```python
 ensemble_settings = {
@@ -282,7 +282,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Ensembletraining is standaard ingeschakeld, maar kan worden uitgeschakeld `enable_voting_ensemble` `enable_stack_ensemble` met behulp van de en booleaanse parameters.
+Een ensemble-training is standaard ingeschakeld, maar kan worden uitgeschakeld met behulp `enable_voting_ensemble` van `enable_stack_ensemble` de para meters en Booleaanse waarden.
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -299,7 +299,7 @@ automl_classifier = AutoMLConfig(
 
 ## <a name="run-experiment"></a>Experiment uitvoeren
 
-Voor geautomatiseerde ML `Experiment` maakt u een object, `Workspace` een benoemd object in een object dat wordt gebruikt om experimenten uit te voeren.
+Voor automatische MILLILITERs maakt u een `Experiment` -object dat een benoemd object is in een `Workspace` gebruikt om experimenten uit te voeren.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -313,33 +313,34 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Dien het experiment in om een model uit te voeren en te genereren. Geef `AutoMLConfig` de `submit` methode door om het model te genereren.
+Dien het experiment in om een model uit te voeren en te genereren. `AutoMLConfig` Geef de `submit` methode door aan om het model te genereren.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
 ```
 
 >[!NOTE]
->Afhankelijkheden worden eerst geïnstalleerd op een nieuwe machine.  Het kan tot 10 minuten duren voordat de uitvoer wordt weergegeven.
->Als `show_output` `True` u de uitvoer instelt, wordt de uitvoer op de console weergegeven.
+>Afhankelijkheden worden eerst op een nieuwe computer geïnstalleerd.  Het kan tot tien minuten duren voordat uitvoer wordt weer gegeven.
+>Instelling `show_output` van `True` resultaten die in uitvoer wordt weer gegeven op de-console.
 
-### <a name="exit-criteria"></a>Exitcriteria
-Er zijn een paar opties die u definiëren om uw experiment te beëindigen.
-1. Geen criteria: Als u geen exitparameters definieert, wordt het experiment voortgezet totdat er geen verdere vooruitgang is geboekt op uw primaire statistiek.
-1. Afsluiten na een bepaalde `experiment_timeout_minutes` tijd: met behulp in uw instellingen u bepalen hoe lang in minuten moet een experiment blijven in run.
-1. Afsluiten nadat een score is `experiment_exit_score` bereikt: Met het gebruik wordt het experiment voltooid nadat een primaire metrische score is bereikt.
+### <a name="exit-criteria"></a><a name="exit"></a>Afsluit criteria
 
-### <a name="explore-model-metrics"></a>Modelstatistieken verkennen
+Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
+1. Geen criteria: als u geen afsluit parameters definieert, wordt het experiment voortgezet totdat er geen verdere voortgang wordt gemaakt op uw primaire metriek.
+1. Afsluiten na een periode: als u in `experiment_timeout_minutes` uw instellingen gebruikt, kunt u opgeven hoelang in minuten een experiment moet worden uitgevoerd.
+1. Afsluiten nadat een score is bereikt: met `experiment_exit_score` wordt het experiment voltooid nadat een primaire meet Score is bereikt.
 
-U uw trainingsresultaten bekijken in een widget of inline als u zich in een notitieblok bevindt. Zie [Modellen volgen en evalueren](how-to-track-experiments.md#view-run-details) voor meer details.
+### <a name="explore-model-metrics"></a>Model statistieken verkennen
 
-## <a name="understand-automated-ml-models"></a>Inzicht in geautomatiseerde ML-modellen
+U kunt uw trainings resultaten weer geven in een widget of inline als u zich in een notebook bevindt. Zie [modellen volgen en evalueren](how-to-track-experiments.md#view-run-details) voor meer informatie.
 
-Elk model dat wordt geproduceerd met behulp van geautomatiseerde ML bevat de volgende stappen:
-+ Geautomatiseerde functie-engineering (indien) `"featurization": 'auto'`
-+ Schalen/normaliseren en algoritme met hyperparameterwaarden
+## <a name="understand-automated-ml-models"></a>Meer informatie over geautomatiseerde modellen van ML
 
-We maken het transparant om deze informatie te krijgen van de fitted_model output van geautomatiseerde ML.
+Elk model dat is gemaakt met behulp van automatische ML omvat de volgende stappen:
++ Geautomatiseerde functie techniek (indien `"featurization": 'auto'`)
++ Schalen/normaliseren en algoritmen met afstemming-waarden
+
+We maken het transparant om deze informatie op te halen uit de fitted_model uitvoer van automatische MILLILITERs.
 
 ```python
 automl_config = AutoMLConfig(…)
@@ -347,19 +348,19 @@ automl_run = experiment.submit(automl_config …)
 best_run, fitted_model = automl_run.get_output()
 ```
 
-### <a name="automated-feature-engineering"></a>Geautomatiseerde functie-engineering
+### <a name="automated-feature-engineering"></a>Geautomatiseerde functie techniek
 
-Zie de lijst met voorbewerking en `"featurization": 'auto'` [geautomatiseerde functie-engineering](concept-automated-ml.md#preprocess) die plaatsvindt wanneer .
+Bekijk de lijst met voor verwerkings-en [automatische functie techniek](concept-automated-ml.md#preprocess) die `"featurization": 'auto'`zich voordoet wanneer.
 
-Neem dit voorbeeld:
-+ Er zijn vier invoerfuncties: A (Numeriek), B (numeriek), C (Numeriek), D (DateTime)
-+ Numerieke functie C wordt verwijderd omdat het een ID-kolom is met alle unieke waarden
-+ Numerieke kenmerken A en B hebben ontbrekende waarden en worden dus toegerekend door het gemiddelde
-+ DateTime-functie D is in 11 verschillende engineered functies opgenomen
+Bekijk dit voor beeld:
++ Er zijn vier invoer functies: A (numeriek), B (numeriek), C (numeriek), D (DateTime)
++ De numerieke functie C wordt verwijderd omdat deze een ID-kolom met alle unieke waarden bevat
++ De numerieke functies A en B bevatten ontbrekende waarden en worden daarom toegerekend aan het gemiddelde
++ Datum/tijd-functie D is featurized in 11 verschillende ontworpen functies
 
-Gebruik deze 2 API's op de eerste stap van het ingebouwde model om meer te begrijpen.  Zie [dit voorbeeldnotitieblok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Bekijk [dit voor beeld van een notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-+ API 1: `get_engineered_feature_names()` retourneert een lijst met ontworpen functienamen.
++ API 1: `get_engineered_feature_names()` retourneert een lijst met functie namen van het Engineer.
 
   Gebruik:
   ```python
@@ -370,12 +371,12 @@ Gebruik deze 2 API's op de eerste stap van het ingebouwde model om meer te begri
   Output: ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
   ```
 
-  Deze lijst bevat alle ontworpen functienamen.
+  Deze lijst bevat alle functie namen van technici.
 
   >[!Note]
-  >Gebruik 'timeseriestransformer' voor task='forecasting', anders gebruik je 'datatransformer' voor 'regressie' of 'classificatie'-taak.
+  >Gebruik ' timeseriestransformer ' voor taak = ' prognose ', Else gebruik ' datatransformer ' voor de taak ' regressie ' of ' classificatie '.
 
-+ API 2: `get_featurization_summary()` retourneert featurization samenvatting voor alle invoerfuncties.
++ API 2: `get_featurization_summary()` retourneert een samen vatting van parametrisatie voor alle invoer functies.
 
   Gebruik:
   ```python
@@ -383,7 +384,7 @@ Gebruik deze 2 API's op de eerste stap van het ingebouwde model om meer te begri
   ```
 
   >[!Note]
-  >Gebruik 'timeseriestransformer' voor task='forecasting', anders gebruik je 'datatransformer' voor 'regressie' of 'classificatie'-taak.
+  >Gebruik ' timeseriestransformer ' voor taak = ' prognose ', Else gebruik ' datatransformer ' voor de taak ' regressie ' of ' classificatie '.
 
   Uitvoer:
   ```
@@ -413,25 +414,25 @@ Gebruik deze 2 API's op de eerste stap van het ingebouwde model om meer te begri
 
    |Uitvoer|Definitie|
    |----|--------|
-   |RawFeatureName|Invoerfunctie/kolomnaam uit de meegeleverde gegevensset.|
-   |Typegedetecteerd|Gedetecteerd gegevenstype van de invoerfunctie.|
-   |Gedaald|Geeft aan of de invoerfunctie is verwijderd of gebruikt.|
-   |EngineeringFeatureCount|Aantal functies gegenereerd door middel van geautomatiseerde feature engineering transformaties.|
-   |Transformaties|Lijst met transformaties die worden toegepast op invoerfuncties om ontworpen functies te genereren.|
+   |RawFeatureName|Invoer functie/kolom naam van de opgegeven gegevensset.|
+   |TypeDetected|Het gegevens type van de invoer functie is gedetecteerd.|
+   |Minder|Hiermee wordt aangegeven of de invoer functie is verwijderd of gebruikt.|
+   |EngineeringFeatureCount|Aantal functies dat wordt gegenereerd via geautomatiseerde functie technische trans formaties.|
+   |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
    
-### <a name="customize-feature-engineering"></a>Functie-engineering aanpassen
-Als u functie-engineering wilt aanpassen, geeft u op `"featurization": FeaturizationConfig`.
+### <a name="customize-feature-engineering"></a>Functie techniek aanpassen
+Als u functie techniek wilt aanpassen `"featurization": FeaturizationConfig`, geeft u op.
 
-Ondersteunde aanpassing omvat:
+Ondersteunde aanpassingen zijn onder andere:
 
 |Aanpassing|Definitie|
 |--|--|
-|Update van kolomdoel|Functietype overschrijven voor de opgegeven kolom.|
-|Parameterupdate transformator |Parameters bijwerken voor de opgegeven transformator. Ondersteunt momenteel Imputer (gemiddelde, meest voorkomende & mediaan) en HashOneHotEncoder.|
-|Kolommen neerzetten |Kolommen te laten vallen van wordt featurized.|
-|Bloktransformatoren| Bloktransformatoren te gebruiken op featurization proces.|
+|Update van het kolom doel|Het functie type voor de opgegeven kolom overschrijven.|
+|Para meter bijwerken van trans formatie |De para meters voor de opgegeven transformator bijwerken. Biedt momenteel ondersteuning voor toerekening (gemiddelde, meest frequente & mediaan) en HashOneHotEncoder.|
+|Kolommen neerzetten |Kolommen die moeten worden verwijderd uit de featurized.|
+|Trans formaties blok keren| Blok keren dat trans formaties moeten worden gebruikt in het parametrisatie-proces.|
 
-Maak het object FeaturizationConfig met API-aanroepen:
+Het FeaturizationConfig-object maken met API-aanroepen:
 ```python
 featurization_config = FeaturizationConfig()
 featurization_config.blocked_transformers = ['LabelEncoder']
@@ -445,15 +446,15 @@ featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "m
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
 ```
 
-### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Schalen/normaliseren en algoritme met hyperparameterwaarden:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Schalen/normaliseren en algoritmen met afstemming-waarden:
 
-Gebruik fitted_model.steps om inzicht te krijgen in de waarden schalen/normaliseren en algoritme/hyperparameter voor een pijplijn. [Meer informatie over schalen/normaliseren](concept-automated-ml.md#preprocess). Hier volgt een voorbeeld van uitvoer:
+Gebruik fitted_model om inzicht te krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn. Meer [informatie over schalen/normalisatie](concept-automated-ml.md#preprocess). Hier volgt een voorbeeld van uitvoer:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
 ```
 
-Voor meer informatie gebruikt u deze helperfunctie: 
+Voor meer informatie gebruikt u deze hulp functie: 
 
 ```python
 from pprint import pprint
@@ -476,7 +477,7 @@ def print_model(model, prefix=""):
 print_model(model)
 ```
 
-De volgende voorbeelduitvoer is voor een pijplijn met behulp van een specifiek algoritme (LogisticRegression met RobustScalar, in dit geval).
+De volgende voorbeeld uitvoer is voor een pijp lijn met behulp van een specifieke algoritme (LogisticRegression met RobustScalar, in dit geval).
 
 ```
 RobustScaler
@@ -502,31 +503,31 @@ LogisticRegression
 'warm_start': False}
 ```
 
-### <a name="predict-class-probability"></a>De kans op klasse voorspellen
+### <a name="predict-class-probability"></a>Klasse waarschijnlijkheid voors pellen
 
-Modellen die worden geproduceerd met behulp van geautomatiseerde ML hebben allemaal wrapper objecten die functionaliteit spiegelen van hun open-source origin klasse. De meeste classificatiemodelwrapperobjecten die `predict_proba()` worden geretourneerd door geautomatiseerde ML implementeren de functie, die een array-achtig of schaars matrixgegevensvoorbeeld van uw functies (X-waarden) accepteert en een n-dimensionale array van elk monster en de respectievelijke klassewaarschijnlijkheid retourneert.
+Modellen die zijn gemaakt met behulp van automatische ML, bevatten alle wrapper-objecten die de functionaliteit van de open-source klasse Origin spie gelen. De meeste wrapper-objecten die worden geretourneerd door automatische `predict_proba()` milliliters implementeren de functie, die een matrix-achtige of Sparse matrix gegevens voorbeeld van uw functies (X-waarden) accepteert en een n-dimensionale matrix van elk voor beeld en de bijbehorende klasse-kans retourneert.
 
-Ervan uitgaande dat u het beste run en fitted model hebt `predict_proba()` opgehaald met dezelfde oproepen `X_test` van bovenaf, u rechtstreeks vanuit het gemonteerde model bellen en een monster in het juiste formaat leveren, afhankelijk van het modeltype.
+Als u het beste uitvoeren en het model hebt opgehaald met behulp van de bovenstaande oproepen, kunt u rechtstreeks `predict_proba()` vanuit het ingebouwde model aanroepen, waarbij u `X_test` een voor beeld in de juiste indeling levert, afhankelijk van het model type.
 
 ```python
 best_run, fitted_model = automl_run.get_output()
 class_prob = fitted_model.predict_proba(X_test)
 ```
 
-Als het onderliggende model `predict_proba()` de functie niet ondersteunt of de indeling onjuist is, wordt een modelklassespecifieke uitzondering gegenereerd. Zie de [referentiedocumenten RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) en [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) voor voorbeelden van hoe deze functie voor verschillende modeltypen wordt geïmplementeerd.
+Als het onderliggende model de `predict_proba()` functie niet ondersteunt of als de indeling onjuist is, wordt een model klasse-specifieke uitzonde ring gegenereerd. Zie de documentatie voor [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) en [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) voor voor beelden van hoe deze functie voor verschillende model typen wordt geïmplementeerd.
 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>Interpreteerbaarheid van modellen
 
-Met modelinterpreteerbaarheid u begrijpen waarom uw modellen voorspellingen hebben gedaan en wat de onderliggende waarden voor het functiebelang zijn. De SDK bevat verschillende pakketten voor het inschakelen van modelinterpreteerbaarheidsfuncties, zowel op training als inference tijd, voor lokale en geïmplementeerde modellen.
+Met de functie voor het interpreteren van modellen kunt u begrijpen waarom de voor spellingen en de onderliggende waarden van de functie belang rijk zijn. De SDK bevat verschillende pakketten voor het inschakelen van functies voor het interpreteren van modellen, zowel tijdens trainingen als voor het afleiden van tijd, voor lokale en geïmplementeerde modellen.
 
-Bekijk de [how-to](how-to-machine-learning-interpretability-automl.md) voor codevoorbeelden over hoe u interpreteerbaarheidsfuncties specifiek in schakelt in geautomatiseerde machine learning-experimenten.
+Raadpleeg de [procedures](how-to-machine-learning-interpretability-automl.md) voor code voorbeelden voor het inschakelen van de functies voor het door verwijzen van voorzieningen, specifiek binnen automatische machine learning experimenten.
 
-Zie het [conceptartikel](how-to-machine-learning-interpretability.md) over interpreteerbaarheid voor algemene informatie over hoe modeluitleg en functiebelang op andere gebieden van de SDK kunnen worden ingeschakeld.
+Voor algemene informatie over hoe model toelichtingen en functie belang kunnen worden ingeschakeld op andere gebieden van de SDK buiten automatische machine learning, raadpleegt u het [concept](how-to-machine-learning-interpretability.md) artikel over de interpretatie mogelijkheden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [hoe en waar u een model implementeren.](how-to-deploy-and-where.md)
+Meer informatie over [hoe en waar een model moet worden geïmplementeerd](how-to-deploy-and-where.md).
 
-Meer informatie over het trainen van [een regressiemodel met Geautomatiseerde machine learning](tutorial-auto-train-models.md) of hoe u trainen met [geautomatiseerde machine learning op een externe bron.](how-to-auto-train-remote.md)
+Meer informatie over [het trainen van een regressie model met geautomatiseerde machine learning](tutorial-auto-train-models.md) of [hoe u het gebruik van geautomatiseerde machine learning op een externe bron kunt trainen](how-to-auto-train-remote.md).

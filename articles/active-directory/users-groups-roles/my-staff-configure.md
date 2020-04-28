@@ -1,6 +1,6 @@
 ---
-title: Mijn personeel gebruiken om gebruikersbeheer te delegeren (voorbeeld) - Azure AD | Microsoft Documenten
-description: Gebruikersbeheer delegeren met mijn personeel en administratieve eenheden
+title: Mijn personeel gebruiken om gebruikers beheer te delegeren (preview)-Azure AD | Microsoft Docs
+description: Gebruikers beheer delegeren met mijn personeel en administratieve eenheden
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,96 +9,114 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7c12612dbe37de6b08cb05a64af460296ade93
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394213"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165859"
 ---
-# <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met Mijn personeel (voorbeeld)
+# <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met mijn personeel (preview)
 
-Met Mijn personeel u delegeren aan een autoriteit, zoals een winkelmanager of een teamleider, de machtigingen om ervoor te zorgen dat hun medewerkers toegang hebben tot hun Azure AD-accounts. In plaats van te vertrouwen op een centrale helpdesk, kunnen organisaties veelvoorkomende taken delegeren, zoals het opnieuw instellen van wachtwoorden of het wijzigen van telefoonnummers aan een teammanager. Met Mijn personeel kan een gebruiker die geen toegang heeft tot zijn account in slechts een paar klikken weer toegang krijgen, zonder dat er helpdesk- of IT-medewerkers nodig zijn.
+Met mijn mede werkers kunt u een instantie van de autoriteit overdragen, zoals een winkel manager of een team lead, de machtigingen om ervoor te zorgen dat hun mede werkers toegang hebben tot hun Azure AD-accounts. In plaats van te vertrouwen op een Central-Help Desk kunnen organisaties algemene taken, zoals het opnieuw instellen van wacht woorden of het wijzigen van telefoon nummers, overdragen aan een team beheerder. Met mijn mede werkers kunnen gebruikers die geen toegang hebben tot hun account, toegang krijgen tot slechts een paar klikken, zonder helpdesk medewerkers of IT-personeel.
 
-Voordat u Mijn personeel voor uw organisatie configureert, raden we u aan deze documentatie en de [gebruikersdocumentatie](../user-help/my-staff-team-manager.md) te bekijken om ervoor te zorgen dat u de functionaliteit en de impact van deze functie op uw gebruikers begrijpt. U de gebruikersdocumentatie gebruiken om uw gebruikers te trainen en voor te bereiden op de nieuwe ervaring en om een succesvolle implementatie te garanderen.
+Voordat u mijn personeel voor uw organisatie configureert, wordt u aangeraden deze documentatie en de [gebruikers documentatie](../user-help/my-staff-team-manager.md) door te nemen, zodat u zeker weet dat u de functionaliteit en invloed van deze functie op uw gebruikers begrijpt. U kunt gebruikmaken van de gebruikers documentatie om uw gebruikers te trainen en voor te bereiden voor de nieuwe ervaring en om te zorgen voor een geslaagde implementatie.
 
 ## <a name="how-my-staff-works"></a>Hoe mijn personeel werkt
 
-Mijn personeel is gebaseerd op administratieve eenheden (AU's), die een container met resources zijn die kan worden gebruikt om de reikwijdte van de administratieve controle van een roltoewijzing te beperken. In Mijn personeel worden AU's gebruikt om een subset van gebruikers van een organisatie te definiëren, zoals een winkel of afdeling. Vervolgens kan bijvoorbeeld een teammanager worden toegewezen aan een rol waarvan het bereik een of meer AU's is. In het onderstaande voorbeeld heeft de gebruiker de rol Verificatiebeheer gekregen en de drie AU's zijn het bereik van de rol. Zie [Beheer van beheereenheden in Azure Active Directory](directory-administrative-units.md)voor meer informatie over beheereenheden.
+Mijn personeel is gebaseerd op administratieve eenheden (AUs), die een container zijn van resources die kunnen worden gebruikt om het bereik van de beheer controle van een roltoewijzing te beperken. In mijn personeel worden AUs gebruikt voor het definiëren van een subset van de gebruikers van een organisatie, zoals een winkel of afdeling. Een team manager kan bijvoorbeeld worden toegewezen aan een rol waarvan het bereik een of meer AUs is. In het onderstaande voor beeld is de gebruiker de administratieve rol verificatie verleend en is de drie AUs het bereik van de rol. Zie beheer [eenheden beheren in azure Active Directory](directory-administrative-units.md)voor meer informatie over administratieve eenheden.
 
-## <a name="how-to-enable-my-staff"></a>Hoe mijn personeel in te schakelen
+## <a name="how-to-enable-my-staff"></a>Mijn personeel inschakelen
 
-Zodra u AU's hebt geconfigureerd, u dit bereik toepassen op uw gebruikers die toegang hebben tot Mijn personeel. Alleen gebruikers aan wie een administratieve rol is toegewezen, hebben toegang tot Mijn personeel. Voer de volgende stappen uit om Mijn personeel in te schakelen:
+Zodra u AUs hebt geconfigureerd, kunt u dit bereik Toep assen op uw gebruikers die toegang hebben tot mijn personeel. Alleen gebruikers aan wie een beheerdersrol is toegewezen, hebben toegang tot mijn personeel. Als u mijn personeel wilt inschakelen, voert u de volgende stappen uit:
 
-1. Meld u aan bij de Azure-portal als gebruikersbeheerder.
-2. Blader naar **Azure Active Directory** > **Gebruikersinstellingen** > **Gebruikersfunctievoorbeelden** > **Gebruikersfunctiepreviews Gebruikersfunctiepreview-instellingen beheren**.
-3. Onder **Administrators heeft u toegang tot Mijn personeel**, u ervoor kiezen om in te schakelen voor alle gebruikers, geselecteerde gebruikers of geen gebruikerstoegang.
+1. Meld u aan bij de Azure Portal als een gebruikers beheerder.
+2. Blader naar **Azure Active Directory** > **gebruikers instellingen** > **previews** > **voor de preview-functie van gebruikers onderdelen beheren**.
+3. Onder **beheerders hebben toegang tot mijn personeel**. u kunt ervoor kiezen om in te scha kelen voor alle gebruikers, geselecteerde gebruikers of geen gebruikers toegang.
 
 > [!Note]
-> Alleen gebruikers aan wie een beheerdersrol is toegewezen, hebben toegang tot Mijn personeel. Als u Mijn personeel inschakelt voor een gebruiker die geen beheerdersrol heeft toegewezen, heeft deze persoon geen toegang tot Mijn personeel.
+> Alleen gebruikers aan wie een beheerdersrol is toegewezen, hebben toegang tot mijn personeel. Als u mijn personeel inschakelt voor een gebruiker aan wie geen beheerdersrol is toegewezen, hebben ze geen toegang tot mijn personeel.
+
+## <a name="conditional-access"></a>Voorwaardelijke toegang
+
+U kunt de portal mijn personeel beveiligen met behulp van het beleid voor voorwaardelijke toegang van Azure AD. Gebruik het voor taken zoals het vereisen van multi-factor Authentication voordat ze toegang krijgen tot mijn personeel.
+
+We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor voorwaardelijke toegang van Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/). Als u een beleid voor voorwaardelijke toegang wilt Toep assen op mijn personeel, moet u de service-principal van mijn personeel hand matig maken met behulp van Power shell.
+
+### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Een beleid voor voorwaardelijke toegang Toep assen op mijn personeel
+
+1. Installeer de [Microsoft Graph Beta Power shell-cmdlets](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
+1. Voer de volgende opdrachten uit:
+
+        Connect-Graph -Scopes "Directory.AccessAsUser.All"
+        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+
+1. Een beleid voor voorwaardelijke toegang maken dat van toepassing is op de Cloud toepassing mijn personeel.
+
+    ![Een beleid voor voorwaardelijke toegang maken voor de app mijn personeel](media/my-staff-configure/conditional-access.png)
 
 ## <a name="using-my-staff"></a>Mijn personeel gebruiken
 
-Wanneer een gebruiker naar Mijn personeel gaat, worden de namen weergegeven van de [administratieve eenheden](directory-administrative-units.md) waarover hij of zij administratieve machtigingen heeft. In de [gebruikersdocumentatie van Mijn Personeel](../user-help/my-staff-team-manager.md)gebruiken we de term "locatie" om te verwijzen naar administratieve eenheden. Als de machtigingen van een beheerder geen AU-bereik hebben, zijn de machtigingen van toepassing in de hele organisatie. Nadat Mijn personeel is ingeschakeld, kunnen de gebruikers die zijn ingeschakeld en [https://mystaff.microsoft.com](https://mystaff.microsoft.com)een administratieve rol hebben gekregen, deze openen via . Ze kunnen een AU selecteren om de gebruikers in die AU te bekijken en een gebruiker selecteren om zijn of haar profiel te openen.
+Wanneer een gebruiker naar mijn personeel gaat, worden de namen weer gegeven van de [beheer eenheden](directory-administrative-units.md) waarvoor ze beheerders machtigingen hebben. In de [gebruikers documentatie van mijn personeel](../user-help/my-staff-team-manager.md)gebruiken we de term ' locatie ' om te verwijzen naar beheer eenheden. Als de machtigingen van een beheerder geen AU-bereik hebben, gelden de machtigingen voor de hele organisatie. Nadat mijn mede werkers zijn ingeschakeld, hebben de gebruikers die zijn ingeschakeld en aan wie een beheerdersrol is toegewezen, toegang [https://mystaff.microsoft.com](https://mystaff.microsoft.com)tot het netwerk via. Ze kunnen een AU selecteren om de gebruikers in die AU weer te geven en een gebruiker selecteren om zijn of haar profiel te openen.
 
 ## <a name="licenses"></a>Licenties
 
-Elke gebruiker die is ingeschakeld in Mijn personeel moet een licentie hebben, zelfs als hij de mijn personeel-portal niet gebruikt. Elke ingeschakelde gebruiker moet een van de volgende Azure AD- of Microsoft 365-licenties hebben:
+Elke gebruiker die is ingeschakeld in mijn personeel moet een licentie hebben, zelfs als ze de portal mijn personeel niet gebruiken. Elke ingeschakelde gebruiker moet een van de volgende Azure AD-of Microsoft 365-licenties hebben:
 
 - Azure AD Premium P1 of P2
 - Microsoft 365 F1 of F3
 
 ## <a name="reset-a-users-password"></a>Het wachtwoord van een gebruiker opnieuw instellen
 
-De volgende rollen hebben toestemming om het wachtwoord van een gebruiker opnieuw in te stellen:
+De volgende rollen zijn gemachtigd om het wacht woord van een gebruiker opnieuw in te stellen:
 
-- [Verificatiebeheerder](directory-assign-admin-roles.md#authentication-administrator)
-- [Bevoegde verificatiebeheerder](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [Verificatie beheerder](directory-assign-admin-roles.md#authentication-administrator)
+- [Beheerder voor geprivilegieerde authenticatie](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globale beheerder](directory-assign-admin-roles.md#global-administrator--company-administrator)
-- [Helpdeskbeheerder](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Gebruikersbeheerder](directory-assign-admin-roles.md#user-administrator)
+- [Helpdesk beheerder](directory-assign-admin-roles.md#helpdesk-administrator)
+- [Gebruikers beheerder](directory-assign-admin-roles.md#user-administrator)
 - [Wachtwoordbeheerder](directory-assign-admin-roles.md#password-administrator)
 
-Vanuit **Mijn personeel,** open het profiel van een gebruiker. Selecteer **Wachtwoord opnieuw instellen**.
+Open vanuit **mijn personeel**het profiel van een gebruiker. Selecteer **wacht woord opnieuw instellen**.
 
-- Als de gebruiker alleen in de cloud is, ziet u een tijdelijk wachtwoord dat u aan de gebruiker geven.
-- Als de gebruiker wordt gesynchroniseerd vanuit on-premises Active Directory, u een wachtwoord invoeren dat voldoet aan uw on-premises AD-beleid. U dat wachtwoord vervolgens aan de gebruiker geven.
+- Als de gebruiker alleen in de Cloud staat, kunt u een tijdelijk wacht woord zien dat u aan de gebruiker kunt geven.
+- Als de gebruiker is gesynchroniseerd vanaf de on-premises Active Directory, kunt u een wacht woord invoeren dat voldoet aan uw on-premises AD-beleid. U kunt dat wacht woord vervolgens aan de gebruiker geven.
 
-    ![Voortgangsindicator voor het opnieuw instellen van wachtwoorden en melding van succes](media/my-staff-configure/reset-password.png)
+    ![Voortgangs indicator voor wachtwoord herstel en geslaagde melding](media/my-staff-configure/reset-password.png)
 
-De gebruiker moet zijn wachtwoord wijzigen wanneer hij zich de volgende keer aanmeldt.
+De gebruiker moet het wacht woord wijzigen wanneer ze zich de volgende keer aanmelden.
 
-## <a name="manage-a-phone-number"></a>Een telefoonnummer beheren
+## <a name="manage-a-phone-number"></a>Een telefoon nummer beheren
 
-Vanuit **Mijn personeel,** open het profiel van een gebruiker.
+Open vanuit **mijn personeel**het profiel van een gebruiker.
 
-- De sectie **Telefoonnummer toevoegen** selecteren om een telefoonnummer voor de gebruiker toe te voegen
-- Selecteer **Telefoonnummer bewerken** om het telefoonnummer te wijzigen
-- Selecteer **Telefoonnummer verwijderen** om het telefoonnummer voor de gebruiker te verwijderen
+- Selecteer de sectie **telefoon nummer toevoegen** om een telefoon nummer voor de gebruiker toe te voegen
+- Selecteer **telefoon nummer bewerken** om het telefoon nummer te wijzigen
+- Selecteer **telefoon nummer verwijderen** om het telefoon nummer voor de gebruiker te verwijderen
 
-Afhankelijk van uw instellingen kan de gebruiker vervolgens het telefoonnummer gebruiken dat u hebt ingesteld om in te loggen met sms, multi-factor authenticatie uit te voeren en zelfservicewachtwoord opnieuw instellen uit te voeren.
+Afhankelijk van uw instellingen kan de gebruiker vervolgens het telefoon nummer gebruiken dat u instelt om u aan te melden bij SMS, multi-factor Authentication uit te voeren en self-service voor wachtwoord herstel uit te voeren.
 
-Als u het telefoonnummer van een gebruiker wilt beheren, moet u een van de volgende rollen toegewezen krijgen:
+Als u het telefoon nummer van een gebruiker wilt beheren, moet u een van de volgende rollen toewijzen:
 
-- [Verificatiebeheerder](directory-assign-admin-roles.md#authentication-administrator)
-- [Bevoegde verificatiebeheerder](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [Verificatie beheerder](directory-assign-admin-roles.md#authentication-administrator)
+- [Beheerder voor geprivilegieerde authenticatie](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globale beheerder](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
 ## <a name="search"></a>Search
 
-U zoeken naar AU's en gebruikers in uw organisatie met behulp van de zoekbalk in Mijn personeel. U zoeken in alle AU's en gebruikers in uw organisatie, maar u alleen wijzigingen aanbrengen in gebruikers die deel uitmaken van een AU waarover u beheerdersmachtigingen hebt gekregen.
+U kunt zoeken naar AUs en gebruikers in uw organisatie met behulp van de zoek balk in mijn personeel. U kunt zoeken in alle AUs en gebruikers in uw organisatie, maar u kunt alleen wijzigingen aanbrengen aan gebruikers die zich in een AU bevinden waarvoor u beheerders machtigingen hebt gekregen.
 
-U ook zoeken naar een gebruiker binnen een AU. Gebruik hiervoor de zoekbalk boven aan de gebruikerslijst.
+U kunt ook zoeken naar een gebruiker binnen een AU. U doet dit door de zoek balk boven aan de gebruikers lijst te gebruiken.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-U controlelogboeken weergeven voor acties die zijn uitgevoerd in Mijn personeel in de Azure Active Directory-portal. Als een controlelogboek is gegenereerd door een actie in Mijn personeel, ziet u dit onder AANVULLENDE DETAILS in de controlegebeurtenis.
+U kunt audit logboeken bekijken voor acties die in mijn personeel in de Azure Active Directory Portal worden uitgevoerd. Als er een controle logboek is gegenereerd door een actie die is ondernomen in mijn personeel, wordt dit aangegeven onder aanvullende DETAILS in de controle gebeurtenis.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Documentatie van de gebruikersdocumentatie](../user-help/my-staff-team-manager.md)
-[van](directory-administrative-units.md) Mijn Personeel
+[Documentatie voor de gebruikers documentatie](../user-help/my-staff-team-manager.md)
+[Administrative units documentation](directory-administrative-units.md) van mijn personeel

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430953"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866260"
 ---
 # <a name="certificate-creation-methods"></a>Methoden voor het maken van certificaten
 
@@ -80,10 +80,10 @@ De adresseerbare sleutel en het geheim halen hun kenmerken uit de KV-certificaat
 ## <a name="partnered-ca-providers"></a>Samenwerkende CA-providers
 Het maken van certificaten kan handmatig worden voltooid of met behulp van een "Self"-uitgever. Key Vault werkt ook samen met bepaalde emittentproviders om het maken van certificaten te vereenvoudigen. De volgende soorten certificaten kunnen worden besteld voor sleutelkluis bij deze aanbieders van partneruitgevers.  
 
-|Provider|Certificaattype|  
-|--------------|----------------------|  
-|DigiCert|Key Vault biedt OV- of EV SSL-certificaten met DigiCert|
-|GlobalSign|Key Vault biedt OV- of EV SSL-certificaten met GlobalSign|
+|Provider|Certificaattype|Configuratie-instelling  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault biedt OV- of EV SSL-certificaten met DigiCert| [Integratiegids](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault biedt OV- of EV SSL-certificaten met GlobalSign| [Integratiegids](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Een certificaatuitgever is een entiteit die in Azure Key Vault (KV) wordt vertegenwoordigd als een Bron van CertificateIssuer. Het wordt gebruikt om informatie te verstrekken over de bron van een KV-certificaat; naam van de uitgever, provider, referenties en andere administratieve details.
 

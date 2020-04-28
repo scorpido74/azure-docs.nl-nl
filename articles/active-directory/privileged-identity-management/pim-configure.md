@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899964"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867449"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Wat is Azure AD Privileged Identity Management?
 
@@ -50,9 +50,7 @@ Zodra u Privileged Identity Management hebt ingesteld, ziet u **taken,** **behee
 
 ## <a name="who-can-do-what"></a>Wie kan wat doen?
 
-Als u de eerste persoon bent die Privileged Identity Management gebruikt, krijgt u automatisch de rollen [Beveiligingsbeheerder](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) en [Bevoorrechte Rolbeheerder](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) toegewezen in de map.
-
-Voor Azure AD-rollen in Privileged Identity Management kan alleen een gebruiker die zich in de rol Privileged Role Administrator bevindt, toewijzingen voor andere beheerders beheren. U [toegang verlenen aan andere beheerders om privileged identity management te beheren.](pim-how-to-give-access-to-pim.md) Globale beheerders, beveiligingsbeheerders, wereldwijde lezers en beveiligingslezers kunnen ook toewijzingen voor Azure AD-rollen bekijken in Privileged Identity Management.
+Voor Azure AD-rollen in Privileged Identity Management kan alleen een gebruiker die zich in de bevoegde rolbeheerder of globale beheerdersrol bevindt, toewijzingen voor andere beheerders beheren. U [toegang verlenen aan andere beheerders om privileged identity management te beheren.](pim-how-to-give-access-to-pim.md) Globale beheerders, beveiligingsbeheerders, wereldwijde lezers en beveiligingslezers kunnen ook toewijzingen voor Azure AD-rollen bekijken in Privileged Identity Management.
 
 Voor Azure-bronrollen in Privileged Identity Management kunnen alleen een abonnementsbeheerder, een broneigenaar of een beheerder van gebruikerstoegang voor bronnen toewijzingen voor andere beheerders beheren. Gebruikers die privileged role administrators, security administrators of security readers zijn, hebben standaard geen toegang tot weergavetoewijzingen voor Azure-bronrollen in Privileged Identity Management.
 

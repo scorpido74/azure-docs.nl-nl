@@ -1,187 +1,187 @@
 ---
-title: Verkeer in Azure Kubernetes-service (AKS) beperken
-description: Meer informatie over welke poorten en adressen nodig zijn om het uitgaande verkeer in Azure Kubernetes Service (AKS) te beheren
+title: Uitgaand verkeer beperken in azure Kubernetes service (AKS)
+description: Meer informatie over welke poorten en adressen vereist zijn voor het beheren van uitgaand verkeer in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2cd7aeea272d22615d3ba3d3db6acc2c84d22cca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080176"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183922"
 ---
-# <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Verkeer voor uitgangsverkeer voor clusterknooppunten beheren in Azure Kubernetes Service (AKS)
+# <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
-Standaard hebben AKS-clusters onbeperkte uitgaande (uitgaande) internettoegang. Met dit niveau van netwerktoegang kunnen knooppunten en services die u uitvoert, toegang krijgen tot externe bronnen als dat nodig is. Als u het verkeer wilt beperken, moet een beperkt aantal poorten en adressen toegankelijk zijn voor gezonde clusteronderhoudstaken. Uw cluster is standaard geconfigureerd om alleen basissysteemcontainerafbeeldingen te gebruiken uit Microsoft Container Registry (MCR) of Azure Container Registry (ACR). Configureer de firewall- en beveiligingsregels van uw voorkeur om deze vereiste poorten en adressen toe te staan.
+Standaard hebben AKS-clusters onbeperkte uitgaande (uitgaand) Internet toegang. Met dit niveau van netwerk toegang kunnen knoop punten en services die u uitvoert om toegang te krijgen tot externe bronnen als dat nodig is. Als u uitgaand verkeer wilt beperken, moet een beperkt aantal poorten en adressen toegankelijk zijn voor het onderhouden van goede cluster onderhouds taken. Uw cluster wordt standaard alleen geconfigureerd voor het gebruik van basis installatie kopieën van het hoofd systeem van micro soft Container Registry (MCR) of Azure Container Registry (ACR). Configureer uw voorkeurs firewall en beveiligings regels om deze vereiste poorten en adressen toe te staan.
 
-In dit artikel wordt beschreven welke netwerkpoorten en volledig gekwalificeerde domeinnamen (FQDN's) vereist en optioneel zijn als u het uitgangsverkeer in een AKS-cluster beperkt.
+In dit artikel wordt beschreven welke netwerk poorten en FQDN-namen (FULLy Qualified Domain names) vereist zijn en optioneel als u uitgaand verkeer in een AKS-cluster beperkt.
 
 > [!IMPORTANT]
-> Dit document heeft alleen betrekking op het vergrendelen van het verkeer dat het AKS-subnet verlaat. AKS heeft geen invallende eisen.  Het blokkeren van intern subnetverkeer met behulp van netwerkbeveiligingsgroepen (NSG's) en firewalls wordt niet ondersteund. Als u het verkeer binnen het cluster wilt beheren en blokkeren, gebruikt u [Netwerkbeleid][network-policy].
+> In dit document wordt alleen beschreven hoe u het verkeer vergrendelt dat het AKS-subnet verlaat. AKS heeft geen ingangs vereisten.  Het blok keren van het verkeer van interne subnetten met netwerk beveiligings groepen (Nsg's) en firewalls wordt niet ondersteund. Gebruik [netwerk beleid][network-policy]om het verkeer binnen het cluster te beheren en te blok keren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.66 of hoger installeren en configureren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.66 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
 
-## <a name="egress-traffic-overview"></a>Overzicht van het verkeer van Uitgang
+## <a name="egress-traffic-overview"></a>Overzicht van uitgaand verkeer
 
-Voor beheer- en operationele doeleinden moeten knooppunten in een AKS-cluster toegang hebben tot bepaalde poorten en volledig gekwalificeerde domeinnamen (FQDN's). Deze acties kunnen zijn om te communiceren met de API-server, of om kern-Kubernetes-clustercomponenten en knooppuntbeveiligingsupdates te downloaden en vervolgens te installeren. Standaard is het uitgaande internetverkeer niet beperkt voor knooppunten in een AKS-cluster. Het cluster kan containerafbeeldingen van het basissysteem uit externe opslagplaatsen halen.
+Voor beheer-en operationele doel einden moeten knoop punten in een AKS-cluster toegang hebben tot bepaalde poorten en FQDN-namen (Fully Qualified Domain Name). Deze acties zijn mogelijk te communiceren met de API-server of voor het downloaden en installeren van kern Kubernetes-cluster onderdelen en beveiligings updates voor knoop punten. Uitgaand verkeer van het internet is standaard niet beperkt tot een knoop punt in een AKS-cluster. Het cluster kan installatie kopieën van het basis systeem container uit externe opslag plaatsen halen.
 
-Als u de beveiliging van uw AKS-cluster wilt verhogen, u het verkeer beperken. Het cluster is geconfigureerd om containerafbeeldingen van basissysteemuit MCR of ACR te halen. Als u het uitgangsverkeer op deze manier vergrendelt, definieert u specifieke poorten en FQDN's zodat de AKS-knooppunten correct kunnen communiceren met de vereiste externe services. Zonder deze geautoriseerde poorten en FQDN's kunnen uw AKS-knooppunten niet communiceren met de API-server of kerncomponenten installeren.
+Als u de beveiliging van uw AKS-cluster wilt verhogen, kunt u uitgaand verkeer beperken. Het cluster is geconfigureerd voor het ophalen van basis installatie kopieën van het systeem container van MCR of ACR. Als u het uitgaande verkeer op deze manier vergrendelt, definieert u specifieke poorten en FQDN-s zodat de AKS-knoop punten correct kunnen communiceren met de vereiste externe services. Zonder deze geautoriseerde poorten en FQDN-namen kunnen uw AKS-knoop punten niet communiceren met de API-server of kern onderdelen installeren.
 
-U [Azure Firewall][azure-firewall] of een firewalltoestel van derden gebruiken om uw uitgangsverkeer te beveiligen en deze vereiste poorten en adressen te definiëren. AKS maakt deze regels niet automatisch voor u. De volgende poorten en adressen zijn ter referentie als u de juiste regels in uw netwerkfirewall maakt.
+U kunt [Azure firewall][azure-firewall] of een firewall apparaat van een derde partij gebruiken om uw uitgangs verkeer te beveiligen en deze vereiste poorten en adressen te definiëren. AKS maakt deze regels niet automatisch voor u. De volgende poorten en adressen zijn als referentie bij het maken van de juiste regels in uw netwerk firewall.
 
 > [!IMPORTANT]
-> Wanneer u Azure Firewall gebruikt om het uitgangsverkeer te beperken en een door de gebruiker gedefinieerde route (UDR) te maken om al het uitgangsverkeer te forceren, moet u een geschikte DNAT-regel in Firewall maken om binnendringend verkeer correct toe te staan. Het gebruik van Azure Firewall met een UDR breekt de ingress-installatie als gevolg van asymmetrische routering. (Het probleem treedt op als het AKS-subnet een standaardroute heeft die naar het privé-IP-adres van de firewall gaat, maar u een public load balancer gebruikt - ingress of Kubernetes-service van type: LoadBalancer). In dit geval wordt het inkomende load balancer-verkeer ontvangen via het openbare IP-adres, maar het retourpad gaat via het privé IP-adres van de firewall. Omdat de firewall stateful is, laat het het terugkerende pakket vallen omdat de firewall niet op de hoogte is van een gevestigde sessie. Zie [Azure Firewall integreren met Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb)voor meer informatie over het integreren van Azure Firewall met uw insgress of serviceload balancer.
-> U het verkeer voor TCP-poort 9000, TCP-poort 22 en UDP-poort 1194 vergrendelen met behulp van een netwerkregel tussen het IP-adres van de uitgangsmedewerker en het IP-adres voor de API-server.
+> Wanneer u Azure Firewall gebruikt om uitgaand verkeer te beperken en een door de gebruiker gedefinieerde route (UDR) te maken om al het uitgaande verkeer af te dwingen, moet u een geschikte DNAT-regel in de firewall maken om binnenkomend verkeer op de juiste wijze toe te staan. Als Azure Firewall wordt gebruikt met een UDR, wordt de ingangs instellingen voor asymmetrische route ring onderbroken. (Het probleem treedt op als het AKS-subnet een standaard route heeft die naar het privé-IP-adres van de firewall gaat, maar u een open bare load balancer-binnenkomend of Kubernetes service van het type: LoadBalancer) gebruikt. In dit geval wordt het binnenkomende load balancer verkeer ontvangen via het open bare IP-adres, maar het retour pad gaat via het privé-IP-adres van de firewall. Omdat de firewall stateful is, wordt het terugkerende pakket neergezet omdat de firewall niet op de hoogte is van een vastgestelde sessie. Zie [Azure firewall integreren met Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb)voor meer informatie over het integreren van Azure Firewall met uw ingangs-of service Load Balancer.
+> U kunt het verkeer voor TCP-poort 9000, TCP-poort 22 en UDP-poort 1194 vergren delen met behulp van een netwerk regel tussen de IP (s) van de uitvoerder knooppunt en het IP-adres voor de API-server.
 
 In AKS zijn er twee sets poorten en adressen:
 
-* De [vereiste poorten en het adres voor AKS-clusters](#required-ports-and-addresses-for-aks-clusters) geven de minimale vereisten voor geautoriseerd uitgangsverkeer weer.
-* De [optionele aanbevolen adressen en poorten voor AKS-clusters](#optional-recommended-addresses-and-ports-for-aks-clusters) zijn niet voor alle scenario's vereist, maar integratie met andere services zoals Azure Monitor werkt niet correct. Bekijk deze lijst met optionele poorten en FQDN's en geef een van de services en onderdelen die in uw AKS-cluster worden gebruikt, een goed overzicht.
+* De [vereiste poorten en het adres voor AKS-clusters](#required-ports-and-addresses-for-aks-clusters) zijn de minimale vereisten voor het toestaan van uitgaand uitgaand verkeer.
+* De [optionele aanbevolen adressen en poorten voor AKS-clusters](#optional-recommended-addresses-and-ports-for-aks-clusters) zijn niet vereist voor alle scenario's, maar integratie met andere services, zoals Azure monitor, werkt niet correct. Bekijk deze lijst met optionele poorten en FQDN-namen en autoriseer de services en onderdelen die worden gebruikt in uw AKS-cluster.
 
 > [!NOTE]
-> Het beperken van het verkeer werkt alleen op nieuwe AKS-clusters. Voer voor bestaande clusters [een clusterupgradebewerking uit][aks-upgrade] met de `az aks upgrade` opdracht voordat u het uitgangsverkeer beperkt.
+> Het beperken van uitgaand verkeer werkt alleen op nieuwe AKS-clusters. Voor bestaande clusters [voert u een cluster upgrade bewerking uit][aks-upgrade] met `az aks upgrade` behulp van de opdracht voordat u het uitgaande verkeer beperkt.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Vereiste poorten en adressen voor AKS-clusters
 
-Voor een AKS-cluster zijn de volgende uitgaande poorten/netwerkregels vereist:
+De volgende uitgaande poorten/netwerk regels zijn vereist voor een AKS-cluster:
 
 * TCP-poort *443*
-* TCP [IPAddrOfYourAPIServer]:443 is vereist als u een app hebt die met de API-server moet praten.  Deze wijziging kan worden ingesteld nadat het cluster is gemaakt.
-* TCP-poort *9000*, TCP-poort *22* en UDP-poort *1194* voor de tunnelfrontpod om te communiceren met het tunneluiteinde op de API-server.
-    * Om specifieker te worden, zie de **.hcp.\< locatie\>.azmk8s.io* en **.tun.\< locatie\>.azmk8s.io* adressen in de volgende tabel.
-* UDP-poort *123* voor NTP-tijdsynchronisatie (Network Time Protocol) (Linux-knooppunten).
-* UDP-poort *53* voor DNS is ook vereist als u rechtstreeks toegang hebt tot de API-server.
+* TCP [IPAddrOfYourAPIServer]: 443 is vereist als u een app hebt die moet communiceren met de API-server.  Deze wijziging kan worden ingesteld nadat het cluster is gemaakt.
+* TCP-poort *9000*, TCP-poort *22* en UDP-poort *1194* voor de tunnel front-pod om te communiceren met het tunnel einde op de API-server.
+    * Zie voor meer specifieke informatie over het **. hcp.\< Location\>. azmk8s.io* en **. tun.\< locatie\>. azmk8s.io* -adressen in de volgende tabel.
+* UDP-poort *123* voor ntp (Network Time Protocol) tijd synchronisatie (Linux-knoop punten).
+* UDP-poort *53* voor DNS is ook vereist als u een rechtstreekse toegang hebt tot de API-server.
 
-De volgende FQDN/ toepassingsregels zijn vereist:
-
-> [!IMPORTANT]
-> ***.blob.core.windows.net en aksrepos.azurecr.io** zijn niet langer vereist FQDN regels voor het opheffen van lockdown.  Voer voor bestaande clusters [een clusterupgradebewerking uit][aks-upgrade] met de `az aks upgrade` opdracht om deze regels te verwijderen.
+De volgende FQDN/toepassings regels zijn vereist:
 
 > [!IMPORTANT]
-> *.cdn.mscr.io is vervangen door *.data.mcr.microsoft.com voor de Azure public cloud-regio's. Upgrade uw bestaande firewallregels om de wijzigingen van kracht te laten worden.
+> ***. blob.core.Windows.net en aksrepos.azurecr.io** zijn niet langer vereiste FQDN-regels voor het uituitgangs vergrendeling.  Voor bestaande clusters [voert u een upgrade van een cluster][aks-upgrade] uit `az aks upgrade` met behulp van de opdracht om deze regels te verwijderen.
+
+> [!IMPORTANT]
+> *. cdn.mscr.io is vervangen door *. data.mcr.microsoft.com voor de open bare Cloud regio's van Azure. Voer een upgrade van uw bestaande firewall regels uit om de wijzigingen van kracht te laten worden.
 
 - Azure Global
 
 | FQDN                       | Poort      | Gebruiken      |
 |----------------------------|-----------|----------|
-| *.hcp. \<locatie\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| *.tun. \<locatie\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| *.cdn.mscr.io       | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
-| mcr.microsoft.com          | HTTPS:443 | Dit adres is vereist om toegang te krijgen tot afbeeldingen in Microsoft Container Registry (MCR). Dit register bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld moby, enz.) die nodig zijn voor de werking van het cluster tijdens de upgrade en schaal van het cluster |
-| *.data.mcr.microsoft.com             | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure-content delivery network (CDN). |
-| management.azure.com       | HTTPS:443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
-| login.microsoftonline.com  | HTTPS:443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
-| ntp.ubuntu.com             | UDP:123   | Dit adres is vereist voor NTP-tijdsynchronisatie op Linux-knooppunten. |
-| packages.microsoft.com     | HTTPS:443 | Dit adres is de Microsoft-pakketten repository gebruikt voor in de cache *apt-get* operaties.  Voorbeeldpakketten zijn Moby, PowerShell en Azure CLI. |
-| acs-mirror.azureedge.net      | HTTPS:443 | Dit adres is bedoeld voor de opslagplaats die nodig is om vereiste binaire bestanden te installeren, zoals kubenet en Azure CNI. |
+| *. hcp. \<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| *.tun. \<location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| *. cdn.mscr.io       | HTTPS: 443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
+| mcr.microsoft.com          | HTTPS: 443 | Dit adres is vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat installatie kopieën/grafieken van de eerste partij (bijvoorbeeld Moby, enzovoort) die vereist zijn voor het functioneren van het cluster tijdens de upgrade en schaal van het cluster |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Dit adres is vereist voor de MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
+| management.azure.com       | HTTPS: 443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
+| login.microsoftonline.com  | HTTPS: 443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
+| ntp.ubuntu.com             | UDP: 123   | Dit adres is vereist voor NTP-tijd synchronisatie op Linux-knoop punten. |
+| packages.microsoft.com     | HTTPS: 443 | Dit adres is de micro soft packages-opslag plaats die wordt gebruikt voor *apt-get-* bewerkingen in de cache.  Voor beelden van pakketten zijn Moby, Power shell en Azure CLI. |
+| acs-mirror.azureedge.net      | HTTPS: 443 | Dit adres is voor de opslag plaats die vereist is voor het installeren van vereiste binaire bestanden, zoals kubenet en Azure CNI. |
 
 - Azure China 21Vianet
 
 | FQDN                       | Poort      | Gebruiken      |
 |----------------------------|-----------|----------|
-| *.hcp. \<locatie\>.cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| *.tun. \<locatie\>.cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| *.azk8s.cn        | HTTPS:443 | Dit adres is vereist om vereiste binaire bestanden en afbeeldingen te downloaden|
-| mcr.microsoft.com          | HTTPS:443 | Dit adres is vereist om toegang te krijgen tot afbeeldingen in Microsoft Container Registry (MCR). Dit register bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld moby, enz.) die nodig zijn voor de werking van het cluster tijdens de upgrade en schaal van het cluster |
-| *.cdn.mscr.io       | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
-| *.data.mcr.microsoft.com             | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure-content delivery network (CDN). |
-| management.chinacloudapi.cn       | HTTPS:443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
-| login.chinacloudapi.cn  | HTTPS:443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
-| ntp.ubuntu.com             | UDP:123   | Dit adres is vereist voor NTP-tijdsynchronisatie op Linux-knooppunten. |
-| packages.microsoft.com     | HTTPS:443 | Dit adres is de Microsoft-pakketten repository gebruikt voor in de cache *apt-get* operaties.  Voorbeeldpakketten zijn Moby, PowerShell en Azure CLI. |
+| *. hcp. \<location\>. CX.Prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| *.tun. \<location\>. CX.Prod.service.azk8s.cn | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| *. azk8s.cn        | HTTPS: 443 | Dit adres is vereist voor het downloaden van de vereiste binaire bestanden en installatie kopieën|
+| mcr.microsoft.com          | HTTPS: 443 | Dit adres is vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat installatie kopieën/grafieken van de eerste partij (bijvoorbeeld Moby, enzovoort) die vereist zijn voor het functioneren van het cluster tijdens de upgrade en schaal van het cluster |
+| *. cdn.mscr.io       | HTTPS: 443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Dit adres is vereist voor de MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
+| management.chinacloudapi.cn       | HTTPS: 443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
+| login.chinacloudapi.cn  | HTTPS: 443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
+| ntp.ubuntu.com             | UDP: 123   | Dit adres is vereist voor NTP-tijd synchronisatie op Linux-knoop punten. |
+| packages.microsoft.com     | HTTPS: 443 | Dit adres is de micro soft packages-opslag plaats die wordt gebruikt voor *apt-get-* bewerkingen in de cache.  Voor beelden van pakketten zijn Moby, Power shell en Azure CLI. |
 
 - Azure Government
 
 | FQDN                       | Poort      | Gebruiken      |
 |----------------------------|-----------|----------|
-| *.hcp. \<locatie\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| *.tun. \<locatie\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000, UDP:1194 | Dit adres is vereist voor < > API-servercommunicatie van Node. Vervang * \<\> de locatie* door het gebied waar uw AKS-cluster is geïmplementeerd. |
-| mcr.microsoft.com          | HTTPS:443 | Dit adres is vereist om toegang te krijgen tot afbeeldingen in Microsoft Container Registry (MCR). Dit register bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld moby, enz.) die nodig zijn voor de werking van het cluster tijdens de upgrade en schaal van het cluster |
-|*.cdn.mscr.io              | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
-| *.data.mcr.microsoft.com             | HTTPS:443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door het Azure-content delivery network (CDN). |
-| management.usgovcloudapi.net       | HTTPS:443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
-| login.microsoftonline.us  | HTTPS:443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
-| ntp.ubuntu.com             | UDP:123   | Dit adres is vereist voor NTP-tijdsynchronisatie op Linux-knooppunten. |
-| packages.microsoft.com     | HTTPS:443 | Dit adres is de Microsoft-pakketten repository gebruikt voor in de cache *apt-get* operaties.  Voorbeeldpakketten zijn Moby, PowerShell en Azure CLI. |
-| acs-mirror.azureedge.net      | HTTPS:443 | Dit adres is bedoeld voor de opslagplaats die nodig is om vereiste binaire bestanden te installeren, zoals kubenet en Azure CNI. |
+| *. hcp. \<location\>. CX.AKS.CONTAINERSERVICE.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| *.tun. \<location\>. CX.AKS.CONTAINERSERVICE.Azure.us | HTTPS: 443, TCP: 22, TCP: 9000, UDP: 1194 | Dit adres is vereist voor de communicatie van het knoop punt <-> API-server. Vervang * \<locatie\> * door de regio waar uw AKS-cluster is geïmplementeerd. |
+| mcr.microsoft.com          | HTTPS: 443 | Dit adres is vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat installatie kopieën/grafieken van de eerste partij (bijvoorbeeld Moby, enzovoort) die vereist zijn voor het functioneren van het cluster tijdens de upgrade en schaal van het cluster |
+|*. cdn.mscr.io              | HTTPS: 443 | Dit adres is vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
+| *. data.mcr.microsoft.com             | HTTPS: 443 | Dit adres is vereist voor de MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
+| management.usgovcloudapi.net       | HTTPS: 443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
+| login.microsoftonline.us  | HTTPS: 443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
+| ntp.ubuntu.com             | UDP: 123   | Dit adres is vereist voor NTP-tijd synchronisatie op Linux-knoop punten. |
+| packages.microsoft.com     | HTTPS: 443 | Dit adres is de micro soft packages-opslag plaats die wordt gebruikt voor *apt-get-* bewerkingen in de cache.  Voor beelden van pakketten zijn Moby, Power shell en Azure CLI. |
+| acs-mirror.azureedge.net      | HTTPS: 443 | Dit adres is voor de opslag plaats die vereist is voor het installeren van vereiste binaire bestanden, zoals kubenet en Azure CNI. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Optionele aanbevolen adressen en poorten voor AKS-clusters
 
-De volgende uitgaande poorten/netwerkregels zijn optioneel voor een AKS-cluster:
+De volgende uitgaande poorten/netwerk regels zijn optioneel voor een AKS-cluster:
 
-De volgende FQDN / toepassingsregels worden aanbevolen om AKS-clusters correct te laten functioneren:
-
-| FQDN                                    | Poort      | Gebruiken      |
-|-----------------------------------------|-----------|----------|
-| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com | HTTP:80   | Met dit adres kunnen de Linux-clusterknooppunten de vereiste beveiligingspatches en -updates downloaden. |
-
-## <a name="required-addresses-and-ports-for-gpu-enabled-aks-clusters"></a>Vereiste adressen en poorten voor AKS-clusters met GPU-ingeschakeld
-
-De volgende FQDN/ toepassingsregels zijn vereist voor AKS-clusters waarop GPU is ingeschakeld:
+De volgende FQDN/toepassings regels worden aanbevolen voor een juiste werking van AKS-clusters:
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| nvidia.github.io | HTTPS:443 | Dit adres wordt gebruikt voor de juiste installatie en werking van stuurprogramma's op GPU-gebaseerde knooppunten. |
-| us.download.nvidia.com | HTTPS:443 | Dit adres wordt gebruikt voor de juiste installatie en werking van stuurprogramma's op GPU-gebaseerde knooppunten. |
-| apt.dockerproject.org | HTTPS:443 | Dit adres wordt gebruikt voor de juiste installatie en werking van stuurprogramma's op GPU-gebaseerde knooppunten. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com | HTTP: 80   | Met dit adres kunnen Linux-cluster knooppunten de vereiste beveiligings patches en updates downloaden. |
+
+## <a name="required-addresses-and-ports-for-gpu-enabled-aks-clusters"></a>Vereiste adressen en poorten voor GPU-ingeschakelde AKS-clusters
+
+De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarop GPU is ingeschakeld:
+
+| FQDN                                    | Poort      | Gebruiken      |
+|-----------------------------------------|-----------|----------|
+| nvidia.github.io | HTTPS: 443 | Dit adres wordt gebruikt voor juiste installatie van Stuur Programma's en bewerkingen op op GPU gebaseerde knoop punten. |
+| us.download.nvidia.com | HTTPS: 443 | Dit adres wordt gebruikt voor juiste installatie van Stuur Programma's en bewerkingen op op GPU gebaseerde knoop punten. |
+| apt.dockerproject.org | HTTPS: 443 | Dit adres wordt gebruikt voor juiste installatie van Stuur Programma's en bewerkingen op op GPU gebaseerde knoop punten. |
 
 ## <a name="required-addresses-and-ports-with-azure-monitor-for-containers-enabled"></a>Vereiste adressen en poorten met Azure Monitor voor containers ingeschakeld
 
-De volgende FQDN/ toepassingsregels zijn vereist voor AKS-clusters waarvoor de Azure Monitor voor containers is ingeschakeld:
+De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure Monitor voor containers is ingeschakeld:
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS:443    | Dit is voor de juiste statistieken en het bewaken van telemetrie met behulp van Azure Monitor. |
-| *.ods.opinsights.azure.com    | HTTPS:443    | Dit wordt gebruikt door Azure Monitor voor het innemen van loganalytics-gegevens. |
-| *.oms.opinsights.azure.com | HTTPS:443 | Dit adres wordt gebruikt door omsagent, die wordt gebruikt om de log-analyseservice te verifiëren. |
-|*.microsoftonline.com | HTTPS:443 | Dit wordt gebruikt voor het verifiëren en verzenden van statistieken naar Azure Monitor. |
-|*.monitoring.azure.com | HTTPS:443 | Dit wordt gebruikt om metrische gegevens naar Azure Monitor te verzenden. |
+| dc.services.visualstudio.com | HTTPS: 443    | Dit is voor het corrigeren van metrische gegevens en het bewaken van telemetrie met behulp van Azure Monitor. |
+| *.ods.opinsights.azure.com    | HTTPS: 443    | Dit wordt gebruikt door Azure Monitor voor opname van log Analytics-gegevens. |
+| *.oms.opinsights.azure.com | HTTPS: 443 | Dit adres wordt gebruikt door omsagent, dat wordt gebruikt om de log Analytics-service te verifiëren. |
+|*.microsoftonline.com | HTTPS: 443 | Dit wordt gebruikt voor het verifiëren en verzenden van metrische gegevens naar Azure Monitor. |
+|*. monitoring.azure.com | HTTPS: 443 | Dit wordt gebruikt om metrische gegevens naar Azure Monitor te verzenden. |
 
-## <a name="required-addresses-and-ports-with-azure-dev-spaces-enabled"></a>Vereiste adressen en poorten met Azure Dev Spaces ingeschakeld
+## <a name="required-addresses-and-ports-with-azure-dev-spaces-enabled"></a>Vereiste adressen en poorten waarvoor Azure dev Spaces zijn ingeschakeld
 
-De volgende FQDN/ toepassingsregels zijn vereist voor AKS-clusters waarvoor de Azure Dev Spaces zijn ingeschakeld:
+De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure dev Spaces zijn ingeschakeld:
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| cloudflare.docker.com | HTTPS:443 | Dit adres wordt gebruikt om linux alpine en andere Azure Dev Spaces-afbeeldingen te trekken |
-| gcr.io | HTTP:443 | Dit adres wordt gebruikt om helm/ helm/helmstokbeelden te trekken |
-| storage.googleapis.com | HTTP:443 | Dit adres wordt gebruikt om helm/ helm/helmstokbeelden te trekken |
-| azds-\<guid\>. \<locatie\>.azds.io | HTTPS:443 | Om te communiceren met Azure Dev Spaces backend services voor uw controller. De exacte FQDN is te vinden in het "dataplaneFqdn" in %USERPROFILE%\.azds\settings.json |
+| cloudflare.docker.com | HTTPS: 443 | Dit adres wordt gebruikt voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
+| gcr.io | HTTP: 443 | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
+| storage.googleapis.com | HTTP: 443 | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
+| azds-\<GUID\>. \<location\>. azds.io | HTTPS: 443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json |
 
-## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Vereiste adressen en poorten voor AKS-clusters met Azure Policy (in openbare preview) ingeschakeld
+## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Vereiste adressen en poorten voor AKS-clusters met Azure Policy (in open bare preview) ingeschakeld
 
 > [!CAUTION]
-> Enkele van de onderstaande functies zijn in preview.  De suggesties in dit artikel kunnen worden gewijzigd naarmate de functie wordt verplaatst naar openbare preview- en toekomstige releasefasen.
+> Enkele van de onderstaande functies zijn beschikbaar als preview-versie.  De suggesties in dit artikel zijn onderhevig aan wijzigingen wanneer de functie wordt verplaatst naar de open bare preview-versie en toekomstige release fasen.
 
-De volgende FQDN/ toepassingsregels zijn vereist voor AKS-clusters waarvoor het Azure-beleid is ingeschakeld.
+De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure Policy ingeschakeld.
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Dit adres wordt gebruikt voor de juiste werking van Azure Policy. (momenteel in preview in AKS) |
-| raw.githubusercontent.com | HTTPS:443 | Dit adres wordt gebruikt om het ingebouwde beleid van GitHub te halen om de juiste werking van Azure Policy te garanderen. (momenteel in preview in AKS) |
-| *.gk. \<locatie\>.azmk8s.io | HTTPS:443    | Azure-beleidsadd-on waarmee wordt gesproken met het eindpunt van gatekeeper-audit die wordt uitgevoerd in hoofdserver om de controleresultaten op te halen. |
-| dc.services.visualstudio.com | HTTPS:443 | Azure-beleidsadd-on waarmee telemetriegegevens worden verstuurt naar eindpunt van toepassingeninzichten. |
+| gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Dit adres wordt gebruikt voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
+| raw.githubusercontent.com | HTTPS: 443 | Dit adres wordt gebruikt om het ingebouwde beleid van GitHub te halen om te zorgen voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
+| *. GK. \<location\>. azmk8s.io | HTTPS: 443    | Azure Policy invoeg toepassing die het gate keeper-controle-eind punt dat wordt uitgevoerd op de master server voor de controle resultaten krijgt. |
+| dc.services.visualstudio.com | HTTPS: 443 | Azure Policy-invoeg toepassing waarmee telemetriegegevens worden verzonden naar het apps Insights-eind punt. |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vereist door op Windows Server gebaseerde knooppunten (in openbare preview) ingeschakeld
+## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vereist voor knoop punten op basis van Windows Server (in open bare preview-versie) ingeschakeld
 
 > [!CAUTION]
-> Enkele van de onderstaande functies zijn in preview.  De suggesties in dit artikel kunnen worden gewijzigd naarmate de functie wordt verplaatst naar openbare preview- en toekomstige releasefasen.
+> Enkele van de onderstaande functies zijn beschikbaar als preview-versie.  De suggesties in dit artikel zijn onderhevig aan wijzigingen wanneer de functie wordt verplaatst naar de open bare preview-versie en toekomstige release fasen.
 
-De volgende FQDN/ toepassingsregels zijn vereist voor AKS-clusters op basis van Windows Server:
+De volgende FQDN/toepassings regels zijn vereist voor op Windows Server gebaseerde AKS-clusters:
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS:443 | Windows-gerelateerde binaire bestanden installeren |
-| mp.microsoft.com,<span></span>www .msftconnecttest.com, ctldl.windowsupdate.com | HTTP:80 | Windows-gerelateerde binaire bestanden installeren |
-| kms.core.windows.net | TCP:1688 | Windows-gerelateerde binaire bestanden installeren |
+| onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows-gerelateerde binaire bestanden installeren |
+| mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows-gerelateerde binaire bestanden installeren |
+| kms.core.windows.net | TCP: 1688 | Windows-gerelateerde binaire bestanden installeren |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd welke poorten en adressen u wilt toestaan als u het verkeer voor het cluster beperkt. U ook definiëren hoe de pods zelf kunnen communiceren en welke beperkingen ze binnen het cluster hebben. Zie [Verkeer tussen pods beveiligen met netwerkbeleid in AKS][network-policy]voor meer informatie.
+In dit artikel hebt u geleerd welke poorten en adressen zijn toegestaan als u uitgaand verkeer voor het cluster beperkt. U kunt ook definiëren hoe de peul zelf kan communiceren en welke beperkingen ze hebben in het cluster. Zie voor meer informatie [beveiligd verkeer tussen peulen met netwerk beleid in AKS][network-policy].
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

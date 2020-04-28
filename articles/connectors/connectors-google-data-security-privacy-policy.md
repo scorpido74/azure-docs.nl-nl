@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 01121612c5574544ef6985d33f56f3e334f8d37c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120650"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181936"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Beleid voor gegevens beveiliging en privacy voor Google connectors in Azure Logic Apps
 
@@ -34,13 +34,13 @@ Als u Logic apps hebt die de Gmail-connector gebruiken, ontvangt u een e-mail ov
 
 Wanneer u onder dit beleid een Gmail-Consumer-account gebruikt, kunt u de Gmail-connector gebruiken met alleen specifieke door Google goedgekeurde Services, die kunnen worden gewijzigd. Onze engineering teams blijven werken met Google om meer services aan deze lijst toe te voegen. Hier volgen nu de door Google goedgekeurde triggers, acties en connectors die u kunt gebruiken in de werk stroom van de logische app met de Gmail-connector wanneer u een Gmail-consument account gebruikt:
 
-* Logic Apps ingebouwde triggers en acties: batch, besturings element, gegevens bewerkingen, datum en tijd, plat bestand, vloeistof, aanvraag, schema, variabelen en XML
+* Logic Apps ingebouwde triggers en acties: batch, besturings element, gegevens bewerkingen, datum en tijd, plat bestand, HTTP, vloeistof, aanvraag, schema, variabelen en XML
 
 * Google services: Gmail, Google Calendar, Google Contacts, Google Drive, Google spread sheets en Google-taken
 
 * Goedgekeurde micro soft-Services: Dynamics 365, Excel online, micro soft teams, Office 365, OneDrive en share point online
 
-* Connectors voor door de klant beheerde gegevens bronnen: FTP, HTTP, RSS, SFTP, SMTP en SQL Server
+* Connectors voor door de klant beheerde gegevens bronnen: FTP, RSS, SFTP, SMTP en SQL Server
 
 Raadpleeg de [technische documentatie van de Gmail-connector](https://docs.microsoft.com/connectors/gmail/)voor de meest recente informatie.
 

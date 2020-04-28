@@ -1,165 +1,162 @@
 ---
 title: Apps bewaken
-description: Meer informatie over het bewaken van apps in Azure App Service met behulp van de Azure-portal. Inzicht in de quota en statistieken die worden gerapporteerd.
+description: Meer informatie over het bewaken van apps in Azure App Service met behulp van de Azure Portal. Meer informatie over de quota's en metrische gegevens die worden gerapporteerd.
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500438"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181219"
 ---
-# <a name="monitor-apps-in-azure-app-service"></a>Apps controleren in Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde bewakingsfunctionaliteit voor web-apps, mobiele en API-apps in de [Azure-portal.](https://portal.azure.com)
+# <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
+[Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
 
-In de Azure-portal u *quota's* en *statistieken* voor een app- en app-serviceabonnement bekijken en *waarschuwingen* en regels voor *automatisch schalen* instellen op basis van statistieken.
+In de Azure Portal kunt u *quota's* en *metrische gegevens* voor een app bekijken en app service plannen, en *waarschuwingen* en regels voor automatisch *schalen* instellen op basis van metrische gegevens.
 
-## <a name="understand-quotas"></a>Inzicht in quota
+## <a name="understand-quotas"></a>Meer informatie over quota's
 
-Apps die worden gehost in App Service zijn onderworpen aan bepaalde beperkingen op de resources die ze kunnen gebruiken. De limieten worden gedefinieerd door het App Service-abonnement dat aan de app is gekoppeld.
+Voor apps die worden gehost in App Service gelden bepaalde beperkingen voor de resources die ze kunnen gebruiken. De limieten worden gedefinieerd door het App Service plan dat is gekoppeld aan de app.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Als de app wordt gehost in een *gratis* of *gedeeld* abonnement, worden de limieten voor de resources die de app kan gebruiken gedefinieerd door quota.
+Als de app wordt gehost in een *gratis* of *gedeeld* abonnement, worden de limieten voor de resources die de app kan gebruiken door quota gedefinieerd.
 
-Als de app wordt gehost in een *Basis-,* *Standaard-* of *Premium-abonnement,* worden de limieten voor de resources die ze kunnen gebruiken ingesteld op de *grootte* (Klein, Gemiddeld, Groot) en *instantietelling* (1, 2, 3, enzovoort) van het App Service-abonnement.
+Als de app wordt gehost in een *Basic*-, *Standard*-of *Premium* -abonnement, worden de limieten voor de resources die ze kunnen gebruiken, ingesteld op de *grootte* (klein, gemiddeld, groot) en aantal *instanties* (1, 2, 3, enzovoort) van het app service plan.
 
 Quota voor gratis of gedeelde apps zijn:
 
 | Quota | Beschrijving |
 | --- | --- |
-| **CPU (Kort)** | De hoeveelheid CPU toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt elke vijf minuten gereset. |
-| **CPU (Dag)** | De totale hoeveelheid CPU toegestaan voor deze app in een dag. Dit quotum wordt elke 24 uur om middernacht ingesteld. |
-| **Geheugen** | De totale hoeveelheid geheugen toegestaan voor deze app. |
-| **Bandbreedte** | De totale hoeveelheid uitgaande bandbreedte toegestaan voor deze app in een dag. Dit quotum wordt elke 24 uur om middernacht ingesteld. |
-| **Bestandssysteem** | De totale hoeveelheid opslagruimte is toegestaan. |
+| **CPU (kort)** | De hoeveelheid CPU die is toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt om de vijf minuten opnieuw ingesteld. |
+| **CPU (dag)** | De totale hoeveelheid CPU die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
+| **Geheugen** | De totale hoeveelheid geheugen die is toegestaan voor deze app. |
+| **Bandbreedte** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
+| **Bestandssysteem** | De totale hoeveelheid toegestane opslag ruimte. |
 
-Het enige quotum dat van toepassing is op apps die worden gehost in *Basic,* *Standard*en *Premium* is Filesystem.
+Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*, *Standard*en *Premium* , is bestands systeem.
 
-Zie [Azure Subscription service limits](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota, limieten en functies die beschikbaar zijn voor de verschillende SKU's van de App Service.
+Zie [service limieten voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota's, limieten en functies die beschikbaar zijn voor de verschillende app service sku's.
 
-### <a name="quota-enforcement"></a>Quotahandhaving
+### <a name="quota-enforcement"></a>Quota afdwingen
 
-Als een app de *CPU (short),* *CPU (Day)* of *bandbreedtequotum* overschrijdt, wordt de app gestopt totdat het quotum wordt gereset. Gedurende deze periode resulteren alle binnenkomende aanvragen in een HTTP 403-fout.
+Als een app de *CPU (kort)*, *CPU (dag)* of *bandbreedte* quotum overschrijdt, wordt de app gestopt totdat het quotum opnieuw wordt ingesteld. Gedurende deze periode resulteert alle inkomende aanvragen in een HTTP 403-fout.
 
-![403 foutbericht][http403]
+![403-fout bericht][http403]
 
-Als het app-geheugenquotum wordt overschreden, wordt de app opnieuw gestart.
+Als het geheugen quotum van de app wordt overschreden, wordt de app opnieuw gestart.
 
-Als het bestandssysteemquotum wordt overschreden, mislukt elke schrijfbewerking. Schrijfbewerkingsfouten omvatten eventuele schrijfbewerkingen naar logboeken.
+Als het bestandssysteem quotum wordt overschreden, mislukt elke schrijf bewerking. Fouten bij schrijf bewerkingen zijn onder andere schrijf bewerkingen naar Logboeken.
 
-U quota uit uw app verhogen of verwijderen door uw App Service-abonnement te upgraden.
+U kunt quota's verhogen of verwijderen uit uw app door uw App Service-abonnement bij te werken.
 
-## <a name="understand-metrics"></a>Statistieken begrijpen
+## <a name="understand-metrics"></a>Metrische gegevens begrijpen
 
 > [!NOTE]
-> **Bestandssysteemgebruik** is een nieuwe statistiek die wereldwijd wordt uitgerold, er worden geen gegevens verwacht, tenzij u op de witte lijst staat voor een privévoorbeeld.
+> Het gebruik van het **Bestands systeem** is een nieuwe waarde die wereld wijd wordt getotaliseerd, er worden geen gegevens verwacht, tenzij u White List hebt voor een persoonlijke preview.
 > 
 
 > [!IMPORTANT]
-> **De gemiddelde responstijd** wordt afgeschaft om verwarring met metrische aggregaties te voorkomen. Gebruik **de responstijd** als vervanging.
+> De **gemiddelde reactie tijd** wordt afgeschaft om Verwar ring met metrische aggregaties te voor komen. Gebruik de **reactie tijd** als vervanging.
 
-Statistieken geven informatie over het gedrag van de app of het App-serviceplan.
+Metrische gegevens geven informatie over de app of het gedrag van het App Service plan.
 
-Voor een app zijn de beschikbare statistieken:
+De beschik bare metrische gegevens voor een app zijn:
 
 | Gegevens | Beschrijving |
 | --- | --- |
-| **Reactietijd** | De tijd die nodig is voor de app om verzoeken te dienen, in seconden. |
-| **Gemiddelde responstijd (afgeschaft)** | De gemiddelde tijd die nodig is voor de app om verzoeken te serveren, in seconden. |
-| **Gemiddelde geheugenwerkset** | De gemiddelde hoeveelheid geheugen die door de app wordt gebruikt, in megabytes (MiB). |
-| **Verbindingen** | Het aantal gebonden sockets dat in de sandbox aanwezig is (w3wp.exe en de onderliggende processen).  Er wordt een gebonden socket gemaakt door api's van binding()/connect() aan te roepen en blijft totdat deze socket is gesloten met CloseHandle()/closesocket(). |
-| **CPU-tijd** | De hoeveelheid CPU verbruikt door de app, in seconden. Zie [CPU-tijd vs CPU-percentage](#cpu-time-vs-cpu-percentage)voor meer informatie over deze statistiek. |
-| **Huidige vergaderingen** | Het huidige aantal verzamelingen dat in alle AppDomains in deze toepassing is geladen. |
-| **Gegevens in** | De hoeveelheid inkomende bandbreedte verbruikt door de app, in MiB. |
-| **Gegevens uit** | De hoeveelheid uitgaande bandbreedte verbruikt door de app, in MiB. |
-| **Gebruik van bestandssysteem** | Percentage bestandssysteemquotum dat door de app wordt verbruikt. |
-| **Gen 0 Garbage Collections** | Het aantal keren dat de generatie 0-objecten vuilnis zijn verzameld sinds het begin van het app-proces. GCs van hogere generatie omvatten alle gc's van de lagere generatie.|
-| **Gen 1 Garbage Collections** | Het aantal keren dat de generatie 1-objecten vuilnis zijn verzameld sinds het begin van het app-proces. GCs van hogere generatie omvatten alle gc's van de lagere generatie.|
-| **Gen 2 Garbage Collections** | Het aantal keren dat de generatie 2-objecten vuilnis zijn verzameld sinds het begin van het app-proces.|
-| **Aantal ingangen** | Het totale aantal handgrepen dat momenteel door het app-proces wordt geopend.|
-| **Http 2xx** | Het aantal aanvragen dat resulteert in een HTTP-statuscode ≥ 200, maar < 300. |
-| **Http 3xx** | Het aantal aanvragen dat resulteert in een HTTP-statuscode ≥ 300 maar < 400. |
-| **Http 401** | Het aantal aanvragen dat resulteert in http 401-statuscode. |
-| **Http 403** | Het aantal aanvragen dat resulteert in http 403-statuscode. |
-| **Http 404** | Het aantal aanvragen dat resulteert in http 404-statuscode. |
-| **Http 406** | Het aantal aanvragen dat resulteert in http 406-statuscode. |
-| **Http 4xx** | Het aantal aanvragen dat resulteert in een HTTP-statuscode ≥ 400 maar < 500. |
-| **Http-serverfouten** | Het aantal aanvragen dat resulteert in een HTTP-statuscode ≥ 500, maar < 600. |
-| **IO Andere bytes per seconde** | De snelheid waarmee het app-proces bytes uitgeeft aan I/O-bewerkingen die geen gegevens bevatten, zoals controlebewerkingen.|
-| **IO Andere bewerkingen per seconde** | De snelheid waarmee het app-proces I/O-bewerkingen uitgeeft die geen lees- of schrijfbewerkingen zijn.|
-| **IO Leesbytes per seconde** | De snelheid waarmee het app-proces bytes van I/O-bewerkingen leest.|
-| **IO-leesbewerkingen per seconde** | De snelheid waarmee het app-proces wordt uitgegeven, leest I/O-bewerkingen.|
-| **IO-schrijfbytes per seconde** | De snelheid waarmee het app-proces bytes voor I/O-bewerkingen schrijft.|
-| **IO-schrijfbewerkingen per seconde** | De snelheid waarmee het app-proces wordt uitgegeven, schrijft I/O-bewerkingen.|
-| **Geheugenwerkset** | De huidige hoeveelheid geheugen die door de app wordt gebruikt, in MiB. |
-| **Privébytes** | Private Bytes is de huidige grootte, in bytes, van het geheugen dat het app-proces heeft toegewezen dat niet kan worden gedeeld met andere processen.|
-| **Verzoeken** | Het totale aantal aanvragen, ongeacht de resulterende HTTP-statuscode. |
-| **Aanvragen in toepassingswachtrij** | Het aantal aanvragen in de wachtrij voor toepassingsaanvragen.|
-| **Aantal draad** | Het aantal threads dat momenteel actief is in het app-proces.|
-| **Totaal aantal app-domeinen** | Het huidige aantal AppDomains dat in deze toepassing is geladen.|
-| **Totaal aantal app-domeinen gelost** | Het totale aantal AppDomains dat sinds het begin van de toepassing is gelost.|
+| **Reactie tijd** | De tijd die nodig is voor het uitvoeren van aanvragen voor de app, in seconden. |
+| **Gemiddelde reactie tijd (afgeschaft)** | De gemiddelde tijd die nodig is voor het verwerken van aanvragen in de app. |
+| **Gemiddelde werkset geheugen** | De gemiddelde hoeveelheid geheugen die wordt gebruikt door de app, in mega bytes (MiB). |
+| **Verbindingen** | Het aantal gekoppelde sockets dat in de sandbox aanwezig is (W3wp. exe en de onderliggende processen).  Een gebonden socket wordt gemaakt door binding-Api's ()/Connect () aan te roepen en blijft totdat de andere socket is gesloten met CloseHandle ()/closesocket (). |
+| **CPU-tijd** | De hoeveelheid CPU die wordt verbruikt door de app, in seconden. Zie [CPU-tijd versus CPU-percentage](#cpu-time-vs-cpu-percentage)voor meer informatie over deze metrische gegevens. |
+| **Huidige Assembly's** | Het huidige aantal Assembly's dat is geladen in alle AppDomains in deze toepassing. |
+| **Gegevens in** | De hoeveelheid inkomende band breedte die door de app wordt gebruikt in MiB. |
+| **Gegevens uit** | De hoeveelheid uitgaande band breedte die door de app wordt gebruikt in MiB. |
+| **Gebruik van bestands systeem** | Percentage van het bestandssysteem quotum dat door de app wordt gebruikt. |
+| **Schone verzamelingen van 0 gen** | Het aantal keren dat de generatie 0-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
+| **1 garbagecollection-verzamelingen** | Het aantal keren dat de generatie 1-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
+| **Opschoon verzamelingen van generatie 2** | Het aantal keren dat de generatie 2-objecten permanent zijn verzameld sinds het begin van het app-proces.|
+| **Aantal ingangen** | Het totale aantal ingangen dat momenteel door het app-proces is geopend.|
+| **Http-2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
+| **HTTP-3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
+| **HTTP 401** | Het aantal aanvragen dat resulteert in de HTTP 401-status code. |
+| **HTTP 403** | Het aantal aanvragen dat resulteert in de HTTP 403-status code. |
+| **Http 404** | Het aantal aanvragen dat resulteert in de HTTP 404-status code. |
+| **Http 406** | Het aantal aanvragen dat resulteert in de HTTP 406-status code. |
+| **Http-4xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 400, maar < 500. |
+| **Http-server fouten** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 500, maar < 600. |
+| **Andere i/o-bytes per seconde** | De snelheid waarmee het app-proces bytes uitgeeft aan I/O-bewerkingen die geen gegevens omvatten, zoals controle bewerkingen.|
+| **Andere i/o-bewerkingen per seconde** | De snelheid waarmee I/O-bewerkingen worden uitgevoerd die geen lees-of schrijf bewerkingen zijn.|
+| **I/o gelezen bytes per seconde** | De snelheid waarmee het app-proces bytes van I/O-bewerkingen leest.|
+| **I/o-Lees bewerkingen per seconde** | De snelheid waarmee het app-proces Lees-I/O-bewerkingen uitgeeft.|
+| **I/o-schrijf bewerkingen in bytes per seconde** | De snelheid waarmee het app-proces bytes naar I/O-bewerkingen schrijft.|
+| **I/o-schrijf bewerkingen per seconde** | De snelheid waarmee het app-proces I/O-schrijf bewerkingen uitgeeft.|
+| **Werkset geheugen** | De huidige hoeveelheid geheugen die wordt gebruikt door de app in MiB. |
+| **Privé-bytes** | Eigen bytes is de huidige grootte, in bytes, van het geheugen dat het app-proces heeft toegewezen en dat niet met andere processen kan worden gedeeld.|
+| **Aanvragen** | Het totale aantal aanvragen, ongeacht de resulterende HTTP-status code. |
+| **Aanvragen in de wachtrij van de toepassing** | Het aantal aanvragen in de wachtrij voor toepassings aanvragen.|
+| **Aantal threads** | Het aantal threads dat momenteel actief is in het app-proces.|
+| **Totaal aantal app-domeinen** | Het huidige aantal AppDomains dat is geladen in deze toepassing.|
+| **Totaal aantal verwijderde app-domeinen** | Het totale aantal AppDomains dat sinds het begin van de toepassing is verwijderd.|
 
 
-Voor een App Service-abonnement zijn de beschikbare statistieken:
+De beschik bare metrische gegevens voor een App Service plan zijn:
 
 > [!NOTE]
-> Statistieken van het App Service-abonnement zijn alleen beschikbaar voor abonnementen in *basis-,* *standaard-* en *premiumlagen.*
+> De metrische gegevens voor het App Service plan zijn alleen beschikbaar voor abonnementen in de lagen *Basic*, *Standard*en *Premium* .
 > 
 
 | Gegevens | Beschrijving |
 | --- | --- |
-| **CPU-percentage** | De gemiddelde CPU die wordt gebruikt in alle exemplaren van het plan. |
-| **Geheugenpercentage** | Het gemiddelde geheugen dat wordt gebruikt voor alle exemplaren van het plan. |
-| **Gegevens in** | De gemiddelde binnenkomende bandbreedte die wordt gebruikt voor alle exemplaren van het plan. |
-| **Gegevens uit** | De gemiddelde uitgaande bandbreedte die wordt gebruikt voor alle exemplaren van het plan. |
-| **Lengte van de schijfwachtrij** | Het gemiddelde aantal lees- en schrijfverzoeken dat in de wachtrij stond bij opslag. Een hoge schijfwachtrijlengte is een indicatie van een app die mogelijk vertraagt vanwege overmatige schijf-I/O. |
-| **Http-wachtrijlengte** | Het gemiddelde aantal HTTP-aanvragen dat in de wachtrij moest zitten voordat het werd uitgevoerd. Een hoge of toenemende HTTP-wachtrijlengte is een symptoom van een plan onder zware belasting. |
+| **CPU-percentage** | De gemiddelde CPU die wordt gebruikt voor alle exemplaren van het plan. |
+| **Geheugen percentage** | Het gemiddelde geheugen dat wordt gebruikt voor alle exemplaren van het plan. |
+| **Gegevens in** | De gemiddelde binnenkomende band breedte die wordt gebruikt voor alle exemplaren van het abonnement. |
+| **Gegevens uit** | De gemiddelde uitgaande band breedte die wordt gebruikt voor alle exemplaren van het abonnement. |
+| **Wachtrij lengte voor schijf** | Het gemiddelde aantal lees-en schrijf aanvragen dat in de wachtrij is geplaatst op opslag. Een hoge wachtrij lengte voor de schijf is een indicatie van een app die kan vertragen vanwege een buitensporige schijf-I/O. |
+| **Lengte van http-wachtrij** | Het gemiddelde aantal HTTP-aanvragen dat aan de wachtrij is gewacht voordat wordt voldaan. Een hoge of verhoogde HTTP-wachtrij lengte is een symptoom van een plan onder zware belasting. |
 
-### <a name="cpu-time-vs-cpu-percentage"></a>CPU-tijd vs CPU-percentage
+### <a name="cpu-time-vs-cpu-percentage"></a>CPU-tijd versus CPU-percentage
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-Er zijn twee statistieken die het CPU-gebruik weerspiegelen:
+Er zijn twee metrische gegevens die het CPU-gebruik weer spie gelen:
 
-**CPU-tijd:** handig voor apps die worden gehost in gratis of gedeelde abonnementen, omdat een van hun quota is gedefinieerd in CPU-minuten die door de app worden gebruikt.
+**CPU-tijd**: handig voor apps die worden gehost in een gratis of gedeeld abonnement, omdat een van de quota's is gedefinieerd in CPU-minuten die door de app worden gebruikt.
 
-**CPU-percentage:** handig voor apps die worden gehost in basis-, standaard- en premiumabonnementen, omdat ze kunnen worden opgeschaald. CPU-percentage is een goede indicatie van het totale gebruik in alle instanties.
+**CPU-percentage**: handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
 
-## <a name="metrics-granularity-and-retention-policy"></a>Beleid voor gedetailleerdheid en behoud van statistieken
-Statistieken voor een app- en app-serviceplan worden geregistreerd en samengevoegd door de service, met de volgende granulaire en bewaarbeleid:
+## <a name="metrics-granularity-and-retention-policy"></a>Granulatie van metrische gegevens en bewaar beleid
 
-* **Minute** granulariteitsstatistieken worden gedurende 30 uur bewaard.
-* **Hour** Uurgranulariteitsstatistieken worden 30 dagen bewaard.
-* **Day** Daggranulariteitsstatistieken worden 30 dagen bewaard.
+Metrische gegevens voor een app-en app service-plan worden vastgelegd en geaggregeerd door de service. Metrische gegevens worden 90 dagen bewaard.
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Quota en statistieken controleren in de Azure-portal
-Als u de status wilt controleren van de verschillende quota en statistieken die van invloed zijn op een app, gaat u naar de [Azure-portal](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Quota en metrische gegevens bewaken in de Azure Portal
+Als u de status van de verschillende quota's en metrische gegevens wilt bekijken die van invloed zijn op een app, gaat u naar de [Azure Portal](https://portal.azure.com).
 
-![Quotagrafiek in de Azure-portal][quotas]
+![De grafiek quota's in het Azure Portal][quotas]
 
-Als u quota wilt vinden, selecteert u > **Instellingenquota**. **Settings** In de grafiek u het als: 
+Selecteer **instellingen** > **quota's**om quota's te vinden. In de grafiek kunt u het volgende controleren: 
 1. De naam van het quotum.
-1. Het reset-interval.
+1. Het interval voor opnieuw instellen.
 1. De huidige limiet.
 1. De huidige waarde.
 
-![Metrische grafiek in][metrics] de Azure-portal U hebt rechtstreeks toegang tot statistieken vanaf de pagina **Resourceoverzicht.** Hier ziet u grafieken die enkele van de statistieken van apps weergeven.
+![Grafiek met metrische gegevens in][metrics] de Azure Portal hebt u rechtstreeks toegang tot metrische gegevens via de pagina resource **overzicht** . Hier ziet u grafieken die enkele van de metrische gegevens van de app vertegenwoordigen.
 
-Als u op een van deze grafieken klikt, gaat u naar de weergave met statistieken waarin u aangepaste grafieken maken, verschillende statistieken opvragen en nog veel meer. 
+Wanneer u op een van deze grafieken klikt, wordt u naar de weer gave metrische gegevens geleid, waar u aangepaste grafieken kunt maken, verschillende metrische gegevens en nog veel meer wilt opvragen. 
 
-Zie [Servicestatistieken controleren](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)voor meer informatie over statistieken .
+Zie [metrische service gegevens bewaken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)voor meer informatie over metrische gegevens.
 
 ## <a name="alerts-and-autoscale"></a>Waarschuwingen en automatisch schalen
-Statistieken voor een app of een App Service-abonnement kunnen worden aangesloten op waarschuwingen. Zie [Meldingen van waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-alerts-portal.md) voor meer informatie.
+Metrische gegevens voor een app of een App Service plan kunnen worden aangesloten op waarschuwingen. Zie [Meldingen van waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-alerts-portal.md) voor meer informatie.
 
-App Service-apps die worden gehost in basisplannen of hoger app-serviceabonnementen ondersteunen automatisch schalen. Met autoscale u regels configureren die de statistieken van het App Service-abonnement bewaken. Regels kunnen het aantal instance's verhogen of verlagen, wat mogelijk extra resources biedt. Regels kunnen u ook helpen geld te besparen wanneer de app over-ingericht is.
+App Service-apps die worden gehost in basis-of snellere App Service plannen ondersteunen automatisch schalen. Met automatisch schalen kunt u regels configureren die de metrische gegevens van het App Service plan bewaken. Regels kunnen het aantal instanties verg Roten of verkleinen, zodat u indien nodig aanvullende bronnen kunt opgeven. Regels kunnen u helpen bij het besparen van geld wanneer de app te veel is ingericht.
 
-Zie Hoe u [schalen](../monitoring-and-diagnostics/insights-how-to-scale.md) en [Aanbevolen procedures voor automatisch schalen voor Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)voor meer informatie over automatisch schalen.
+Zie [How to scale](../monitoring-and-diagnostics/insights-how-to-scale.md) and [Best practices for Azure monitor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md)voor meer informatie over automatisch schalen.
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

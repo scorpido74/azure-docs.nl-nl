@@ -210,7 +210,7 @@
       items:
         - name: Waarschuwingen instellen op basis van metrische gegevens
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: Waarschuwingen instellen op basis van diagnostische logboeken
+        - name: Waarschuwingen instellen op basis van resourcelogboeken
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Pakketopnamen configureren
       href: packet-capture.md

@@ -44,6 +44,9 @@
     - name: Klanten weergeven en beheren
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Toegang tot een delegatie verwijderen
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Azure Monitor-integratie
       items:
         - name: Azure Monitor-logboeken op schaal gebruiken

@@ -85,7 +85,7 @@
           href: ea-portal-get-started.md
         - name: EA-rollen in Azure
           href: understand-ea-roles.md
-        - name: Beheer van Azure EA-portal
+        - name: Beheer van Azure EA Portal
           href: ea-portal-administration.md
         - name: EA-taken in Microsoft-klantovereenkomst
           href: mca-enterprise-operations.md
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: Geweigerde kaart
       href: troubleshoot-declined-card.md
-    - name: Problemen met aanmelden
+    - name: Registratieproblemen voor Azure-account
       href: troubleshoot-azure-sign-up.md
     - name: Aanmeldingsproblemen voor abonnementen
       href: troubleshoot-sign-in-issue.md

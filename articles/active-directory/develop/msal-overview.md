@@ -1,7 +1,7 @@
 ---
 title: Meer informatie over MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) stelt toepassingsontwikkelaars in staat om tokens te verwerven om beveiligde web-API's te bellen. Deze web-API's kunnen de Microsoft Graph, andere Microsoft API's, webAPI's van derden of uw eigen web-API zijn. MSAL ondersteunt meerdere applicatiearchitecturen en platformen.
+description: Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen tokens verkrijgen om beveiligde web-Api's aan te roepen. Deze web-Api's kunnen de Microsoft Graph, andere micro soft-Api's, Web-Api's van derden of uw eigen web-API zijn. MSAL ondersteunt meerdere toepassings architecturen en-platforms.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536213"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181780"
 ---
-# <a name="overview-of-microsoft-authentication-library-msal"></a>Overzicht van Microsoft Authentication Library (MSAL)
-Microsoft Authentication Library (MSAL) stelt ontwikkelaars in staat om [tokens](developer-glossary.md#security-token) te verwerven van het eindpunt van het Microsoft-identiteitsplatform om toegang te krijgen tot beveiligde web-API's. Deze web-API's kunnen de Microsoft Graph, andere Microsoft API's, webAPI's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, JavaScript, Android en iOS, die veel verschillende applicatiearchitecturen en -platforms ondersteunen.
+# <a name="overview-of-microsoft-authentication-library-msal"></a>Overzicht van micro soft Authentication Library (MSAL)
+Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars [tokens](developer-glossary.md#security-token) verkrijgen van het micro soft Identity platform-eind punt om toegang te krijgen tot beveiligde web-api's. Deze web-Api's kunnen de Microsoft Graph, andere micro soft-Api's, Web-Api's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, java script, Android en iOS, die ondersteuning bieden voor veel verschillende toepassings architecturen en-platforms.
 
-MSAL biedt u vele manieren om tokens te krijgen, met een consistente API voor een aantal platforms. Het gebruik van MSAL biedt de volgende voordelen:
+MSAL biedt u een groot aantal manieren om tokens te verkrijgen, met een consistente API voor een aantal platforms. Het gebruik van MSAL biedt de volgende voor delen:
 
-* U hoeft de OAuth-bibliotheken of -code niet direct te gebruiken tegen het protocol in uw toepassing.
+* U hoeft niet rechtstreeks de OAuth-bibliotheken of code te gebruiken voor het protocol in uw toepassing.
 * Verwerft tokens namens een gebruiker of namens een toepassing (indien van toepassing op het platform).
-* Onderhoudt een tokencache en vernieuwt tokens voor u wanneer ze bijna verlopen. U hoeft de vervaldatum van token niet alleen af te handelen.
-* Hiermee u opgeven welk publiek u wilt dat uw toepassing inlogt (uw organisatie, verschillende organisaties, werk- en school- en Microsoft-persoonlijke accounts, sociale identiteiten met Azure AD B2C, gebruikers in soevereine en nationale clouds).
-* Hiermee u uw toepassing instellen op configuratiebestanden.
-* Hiermee u uw app oplossen door bruikbare uitzonderingen, logboekregistratie en telemetrie bloot te leggen.
+* Houdt een token cache bij en vernieuwt tokens voor u wanneer ze bijna verlopen. U hoeft het token verloop niet zelf te verwerken.
+* Helpt u de doel groep op te geven die u wilt dat uw toepassing zich aanmeldt (uw organisatie, verschillende organisaties, werk-en school-en micro soft-accounts, sociale identiteiten met Azure AD B2C, gebruikers in soevereine en nationale Clouds).
+* Helpt u bij het instellen van uw toepassing vanuit configuratie bestanden.
+* Helpt u bij het oplossen van problemen met uw app door uitzonde ringen, logboek registratie en telemetrie te tonen.
 
 ## <a name="application-types-and-scenarios"></a>Typen apps en scenario's
-Met behulp van MSAL kan een token worden verkregen uit een aantal toepassingstypen: webtoepassingen, web-API's, apps met één pagina (JavaScript), mobiele en native toepassingen en daemons en servertoepassingen.
+Met MSAL kunt u een token verkrijgen van een aantal toepassings typen: webtoepassingen, Web-Api's, apps met één pagina (Java script), mobiele en systeem eigen toepassingen, en daemons en server toepassingen.
 
-MSAL kan worden gebruikt in veel toepassingsscenario's, waaronder:
+MSAL kan worden gebruikt in veel toepassings scenario's, waaronder de volgende:
 
-* [Toepassingen met één pagina (JavaScript)](scenario-spa-overview.md)
-* [Aanmelden bij webapps voor gebruikers](scenario-web-app-sign-user-overview.md)
-* [Webtoepassing die een gebruiker aantekent en namens de gebruiker een web-API aanroept](scenario-web-app-call-api-overview.md)
-* [Een web-API beveiligen zodat alleen geverifieerde gebruikers er toegang toe hebben](scenario-protected-web-api-overview.md)
-* [Web API die een andere downstream web-API aanroept namens de aangemelde gebruiker](scenario-web-api-call-api-overview.md)
-* [Bureaubladtoepassing die namens de aangemelde gebruiker een web-API aanroept](scenario-desktop-overview.md)
-* [Mobiele toepassing die een web-API aanroept namens de gebruiker die interactief is aangemeld.](scenario-mobile-overview.md)
-* [Desktop/service daemon-toepassing die namens zichzelf web-API aanroept](scenario-daemon-overview.md)
+* [Toepassingen met één pagina (Java script)](scenario-spa-overview.md)
+* [Gebruikers die zich aanmelden bij een web-app](scenario-web-app-sign-user-overview.md)
+* [Webtoepassing voor het aanmelden bij een gebruiker en het aanroepen van een web-API namens de gebruiker](scenario-web-app-call-api-overview.md)
+* [Een web-API beveiligen zodat alleen geverifieerde gebruikers er toegang tot hebben](scenario-protected-web-api-overview.md)
+* [Web-API die een andere stroomafwaartse Web-API aanroept namens de aangemelde gebruiker](scenario-web-api-call-api-overview.md)
+* [Bureaublad toepassing die een web-API aanroept namens de aangemelde gebruiker](scenario-desktop-overview.md)
+* [Mobiele toepassing die een web-API aanroept namens de gebruiker die zich interactief aanmeldt](scenario-mobile-overview.md).
+* [Desktop/service daemon-toepassing die een web-API aanroept namens zichzelf](scenario-daemon-overview.md)
 
-## <a name="languages-and-frameworks"></a>Talen en kaders
+## <a name="languages-and-frameworks"></a>Talen en frameworks
 
 | Bibliotheek | Ondersteunde platforms en frameworks|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Universal Windows Platform|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript-frameworks zoals AngularJS, Ember.js of Durandal.js|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET core, Xamarin Android, Xamarin iOS, Universeel Windows-platform|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Java script-type script frameworks zoals AngularJS, wordt. js of Durandal. js|
 | [MSAL voor Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [MSAL voor iOS en macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS en macOS|
-| [MSAL Java (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
-| [MSAL Python (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
+| [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
+| [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows, macOS, Linux|
 
 ## <a name="differences-between-adal-and-msal"></a>Verschillen tussen ADAL en MSAL
 
-Active Directory Authentication Library (ADAL) integreert met het Azure AD voor ontwikkelaars (v1.0) eindpunt, waar MSAL integreert met het Microsoft Identity Platform (v2.0) eindpunt. Het v1.0-eindpunt ondersteunt werkaccounts, maar geen persoonlijke accounts. Het v2.0-eindpunt is de eenmaking van persoonlijke accounts van Microsoft en het verwerken van accounts in één verificatiesysteem. Bovendien u met MSAL ook verificaties voor Azure AD B2C krijgen.
+Active Directory Authentication Library (ADAL) wordt geïntegreerd met het eind punt van Azure AD voor ontwikkel aars (v 1.0), waarbij MSAL integreert met het micro soft Identity platform (v 2.0)-eind punt. Het eind punt v 1.0 ondersteunt werk accounts, maar geen persoonlijke accounts. Het v 2.0-eind punt is het combineert van persoonlijke micro soft-accounts en werk accounts in één verificatie systeem. Daarnaast kunt u met MSAL ook verificaties voor Azure AD B2C ophalen.
 
-Lees voor meer specifieke informatie over [migreren naar MSAL.NET van ADAL.NET](msal-net-migration.md) en migreren naar [MSAL.js van ADAL.js](msal-compare-msal-js-and-adal-js.md).
+Lees voor meer informatie over [het migreren naar MSAL.net van ADAL.net](msal-net-migration.md) en [migratie naar MSAL. js vanuit ADAL. js](msal-compare-msal-js-and-adal-js.md).

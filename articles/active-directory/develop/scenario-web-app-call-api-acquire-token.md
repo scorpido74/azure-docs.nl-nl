@@ -1,6 +1,6 @@
 ---
-title: Ontvang een token in een web-app die web-API's aanroept - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het aanschaffen van een token voor een web-app die web-API's aanroept
+title: Een Token ophalen in een web-app die web-Api's aanroept-micro soft Identity-platform | Azure
+description: Meer informatie over het verkrijgen van een token voor een web-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,23 +11,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537097"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181729"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-API's aanroept: een token voor de app aanschaffen
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-Api's aanroept: een Token ophalen voor de app
 
-U hebt uw clienttoepassingsobject gebouwd. Nu gebruikt u het om een token te verkrijgen om een web-API aan te roepen. In ASP.NET of ASP.NET Core wordt het aanroepen van een web-API in de controller gedaan:
+U hebt uw client toepassings object gemaakt. Nu gebruikt u het om een token te verkrijgen om een web-API aan te roepen. In ASP.NET of ASP.NET Core wordt het aanroepen van een web-API uitgevoerd in de controller:
 
-- Download een token voor de web-API met behulp van de tokencache. Om dit token te `AcquireTokenSilent` krijgen, belt u de methode.
-- Roep de beveiligde API aan en geef het toegangstoken door als parameter.
+- Een Token ophalen voor de Web-API met behulp van de token cache. Als u dit token wilt ophalen, roept u `AcquireTokenSilent` de methode MSAL aan (of het equivalent in micro soft. Identity. web).
+- Roep de beveiligde API aan, waarbij het toegangs token wordt door gegeven als para meter.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-De verwerkingsmethoden worden beschermd `[Authorize]` door een kenmerk dat gebruikers die worden geverifieerd dwingt de web-app te gebruiken. Hier is de code die Microsoft Graph aanroept:
+De controller methoden worden beveiligd door een `[Authorize]` kenmerk dat ervoor zorgt dat gebruikers worden geauthenticeerd om de web-app te gebruiken. Dit is de code die Microsoft Graph aanroept:
 
 ```csharp
 [Authorize]
@@ -45,16 +45,16 @@ public class HomeController : Controller
 }
 ```
 
-De `ITokenAcquisition` service wordt geïnjecteerd door ASP.NET met behulp van afhankelijkheidinjectie.
+De `ITokenAcquisition` service wordt geïnjecteerd door ASP.net met behulp van afhankelijkheids injectie.
 
-Hier is vereenvoudigde code voor de `HomeController`actie van de , die een token krijgt om Microsoft Graph te bellen:
+Hier volgt een vereenvoudigde code voor de actie van `HomeController`, waarmee een token wordt opgehaald om Microsoft Graph aan te roepen:
 
 ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -63,28 +63,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Zie de stap fase 2 ([2-1-web app Calls Microsoft Graph)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)van de [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) om beter te begrijpen wat nodig is voor dit scenario.
+Zie de stap 2 ([2-1-Web-app-aanroepen Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) van de zelf studie [MS-Identity-aspnetcore-zelf studie](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) voor meer informatie over de code die is vereist voor dit scenario.
 
 Er zijn andere complexe variaties, zoals:
 
-- Meerdere API's bellen.
-- Verwerking van incrementele toestemming en voorwaardelijke toegang.
+- Meerdere Api's aanroepen.
+- Incrementele toestemming en voorwaardelijke toegang verwerken.
 
-Deze geavanceerde stappen komen aan bod in hoofdstuk 3 van de [3-WebApp-multi-API's-zelfstudie.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs)
+Deze geavanceerde stappen zijn opgenomen in hoofd stuk 3 van de zelf studie [3-webapp-multi-api's](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-De code voor ASP.NET is vergelijkbaar met de code die wordt weergegeven voor ASP.NET Core:
+De code voor ASP.NET is vergelijkbaar met de code die wordt weer gegeven voor ASP.NET Core:
 
-- Een controlleractie, beschermd door een kenmerk [Machtig], haalt de `ClaimsPrincipal` tenant-id en gebruikersnaam van het lid van de controller uit. (ASP.NET `HttpContext.User`gebruikt .)
-- Van daaruit bouwt het `IConfidentialClientApplication` een MSAL.NET object.
-- Ten slotte noemt `AcquireTokenSilent` het de methode van de vertrouwelijke clientapplicatie.
+- Een controller actie, beveiligd door het kenmerk [autoriseren], extraheert de Tenant-ID en de gebruikers `ClaimsPrincipal` -id van het lid van de controller. (ASP.NET gebruikt `HttpContext.User`.)
+- Van daaruit bouwt het een MSAL.NET `IConfidentialClientApplication` -object.
+- Ten slotte wordt de `AcquireTokenSilent` methode van de vertrouwelijke client toepassing aangeroepen.
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het Java-voorbeeld bevindt de code die een API aanroept zich in de getUsersFromGraph-methode in [AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
+In het Java-voor beeld bevindt de code waarmee een API wordt aangeroepen zich in de methode getUsersFromGraph in [AuthPageController. java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-De methode probeert `getAuthResultBySilentFlow`te bellen . Als de gebruiker toestemming moet geven voor meer `MsalInteractionRequiredException` scopes, verwerkt de code het object om de gebruiker uit te dagen.
+De methode probeert aan te `getAuthResultBySilentFlow`roepen. Als de gebruiker moet toestemming geven voor meer bereiken, verwerkt de code het `MsalInteractionRequiredException` object om de gebruiker te vragen.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -144,9 +144,9 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het Voorbeeld van Python staat de code die Microsoft Graph aanroept in [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
+In het python-voor beeld bevindt de code die Microsoft Graph aanroept, zich in [app. py # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-De code probeert een token uit de tokencache te halen. Vervolgens, na het instellen van de autorisatie header, het roept de web-API. Als het geen token kan krijgen, wordt de gebruiker opnieuw inlogt.
+De code probeert een token op te halen uit de token cache. Nadat de autorisatie-header is ingesteld, wordt de Web-API aangeroepen. Als er geen token kan worden opgehaald, wordt de gebruiker opnieuw in het bericht ondertekend.
 
 ```python
 @app.route("/graphcall")
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

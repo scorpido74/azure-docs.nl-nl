@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401a39d4a65c7aee67d62ed0a6ba77893a11c2d1
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181287"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -645,7 +645,7 @@ Kan algemene taken met betrekking tot facturering uitvoeren, zoals het bijwerken
 | micro soft. map/organisatie/basis/bijwerken | Basis eigenschappen van de organisatie in Azure Active Directory bijwerken. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van Office 365-facturering. |
+| micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van de facturering. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -755,7 +755,7 @@ Kan alle aspecten beheren van Azure AD en micro soft-services die gebruikmaken v
 | micro soft. Azure. informationProtection/allTasks | Beheer alle aspecten van Azure Information Protection. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van Office 365-facturering. |
+| micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van de facturering. |
 | micro soft. intune/toestemmingen/allTasks | Beheer alle aspecten van intune. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
 | micro soft. office365. desktopAnalytics/cons/allTasks | Beheer alle aspecten van Desktop Analytics. |
@@ -1048,7 +1048,7 @@ Kan alles lezen dat een globale beheerder wel kan, maar geen bewerkingen kan ond
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
-| micro soft. commerce. facturering/toerekeningen/lezen    | Lees alle aspecten van Office 365-facturering. |
+| micro soft. commerce. facturering/toerekeningen/lezen    | Lees alle aspecten van de facturering. |
 | micro soft. map/administrativeUnits/Basic/lezen    | Lees de basis eigenschappen van administrativeUnits in Azure Active Directory. |
 | micro soft. map/administrativeUnits/leden/lezen    | Lees de eigenschap administrativeUnits. members in Azure Active Directory. |
 | micro soft. Directory/toepassingen/basis/lezen    | Lees de basis eigenschappen van toepassingen in Azure Active Directory. |

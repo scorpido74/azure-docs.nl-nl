@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674187"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867603"
 ---
 # <a name="create-a-power-bi-app"></a>Een Power BI-app maken
 
@@ -149,7 +149,7 @@ Definieer marktplaatsdetails (zoals aanbiedingsnaam, beschrijving en afbeeldinge
 > [!NOTE]
 > Aanbiedingdetails hoeven niet in het Engels te zijn als &quot;de aanbiedingsbeschrijving begint met de woordgroep, Deze toepassing is alleen beschikbaar in [niet-Engelse taal]. &quot; Het&#39;is ook goed om een nuttige link te bieden om inhoud aan te bieden in een taal die anders&#39;dan die in de aanbiedingsvermelding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt weergegeven als de titel van uw aanbieding. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -221,6 +221,9 @@ Geef ten minste één en maximaal drie gerelateerde marketingdocumenten op in PD
 ### <a name="marketplace-images"></a>Marketplace-afbeeldingen
 
 Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in .png-indeling zijn. Wazige afbeeldingen worden afgewezen.
+
+>[!Note]
+>Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
 
 #### <a name="store-logos"></a>Winkellogo's
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047990"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866676"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Problemen met azure application gateway-sessieproblemen oplossen
 
@@ -97,7 +97,7 @@ Dit probleem treedt op omdat Internet Explorer en andere browsers de cookie met 
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik bijvoorbeeld [http://website.com](https://website.com/) of [http://appgw.website.com](http://appgw.website.com/) .
+U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik bijvoorbeeld [http://website.com](https://website.com/) of [http://appgw.website.com](http://website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Aanvullende logboeken om problemen op te lossen
 

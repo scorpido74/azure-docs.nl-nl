@@ -1,0 +1,33 @@
+- name: Azure Confidential Computing
+  href: overview.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Maken in Azure Portal
+      href: quick-create-portal.md
+    - name: Maken met Marketplace
+      href: quick-create-marketplace.md
+- name: Concepten
+  expanded: true
+  items:
+    - name: Oplossingen op virtuele machines
+      href: virtual-machine-solutions.md
+- name: Resources
+  expanded: true
+  items:
+    - name: Veelgestelde vragen
+      href: faq.md
+    - name: Feedback over Confidential Computing
+      href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
+    - name: Open Enclave-SDK
+      href: 'https://aka.ms/oesdkGitHubRepo'
+    - name: Confidential Computing Consortium
+      href: 'https://confidentialcomputing.io/'
+    - name: Virtuele machines op Azure
+      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
+    - name: Regio's
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines'

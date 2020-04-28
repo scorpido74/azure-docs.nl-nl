@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een blob maken met PowerShell
+title: 'Quick Start: een BLOB maken met Power shell'
 titleSuffix: Azure Storage
 description: In deze snelstart gebruikt u Azure PowerShell in object(blob)-opslag. Vervolgens gebruikt u PowerShell om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 services: storage
@@ -9,14 +9,14 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473999"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176648"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Snelstart: blobs uploaden, downloaden en aanbieden met PowerShell
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quick Start: blobs uploaden, downloaden en vermelden met Power shell
 
 Gebruik de Azure PowerShell-module om Azure-resources te maken en beheren. Azure-resources kunnen vanaf de PowerShell-opdrachtregel of met scripts worden gemaakt of beheerd. In deze handleiding wordt beschreven hoe PowerShell kan worden gebruikt om bestanden over te dragen tussen de lokale schijf en Azure Blob Storage.
 
@@ -97,9 +97,9 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Gegevensoverdracht met AzCopy
 
-Het azcopy-hulpprogramma biedt krachtige, scriptbare gegevensoverdracht voor Azure Storage. U AzCopy gebruiken om gegevens over te zetten van en naar Blob-opslag en Azure-bestanden. Zie [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy v10, de nieuwste versie van AzCopy. Zie [Gegevens overbrengen met AzCopy- en Blob-opslag](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy v10 met Blob-opslag.
+Het opdracht regel hulpprogramma AzCopy biedt hoogwaardige, script bare gegevens overdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te dragen van en naar Blob Storage en Azure Files. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy V10 toevoegen, de nieuwste versie van AzCopy. Zie [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy V10 toevoegen met Blob Storage.
 
-In het volgende voorbeeld wordt AzCopy gebruikt om een lokaal bestand naar een blob te uploaden. Vergeet niet om de voorbeeldwaarden te vervangen door uw eigen waarden:
+In het volgende voor beeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeld waarden te vervangen door uw eigen waarden:
 
 ```powershell
 azcopy login
@@ -116,10 +116,10 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u bestanden overgebracht tussen een lokale schijf en Azure Blob-Storage. Als u meer wilt weten over het werken met Blob-opslag met behulp van PowerShell, kunt u instructies voor Azure PowerShell met Azure Storage blijven gebruiken.
+In deze Quick Start hebt u bestanden overgebracht tussen een lokaal bestands systeem en Azure Blob-opslag. Voor meer informatie over het werken met Blob-opslag met behulp van Power shell kunt u Azure PowerShell voor beelden voor Blob-opslag verkennen.
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell gebruiken met Azure Storage](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Voorbeelden van Azure PowerShell voor Azure Blob Storage](storage-samples-blobs-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Naslaginformatie over Microsoft Azure PowerShell Storage-cmdlets
 

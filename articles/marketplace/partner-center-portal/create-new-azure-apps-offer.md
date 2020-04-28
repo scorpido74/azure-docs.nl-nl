@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730622"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867272"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -221,6 +221,9 @@ In de sectie **Contactpersoon voor ondersteuning** moet u ook de URL voor **onde
 
 In deze sectie u logo's en afbeeldingen verstrekken die worden gebruikt bij het weergeven van uw aanbieding aan de klant. Alle afbeeldingen moeten in .png-indeling zijn.
 
+>[!Note]
+>Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
+
 #### <a name="store-logos"></a>Winkellogo's
 
 Geef het logo van uw aanbieding in drie maten: **klein (48 x 48)**, **medium (90 x 90)** en **Groot (216 x 216)**.
@@ -355,7 +358,7 @@ Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld 
 
 Geef de prijs per maand op voor dit abonnement.  Deze prijs is een aanvulling op de kosten van een Azure-infrastructuur of pay-as-you-go-software die wordt gemaakt door de resources die door deze oplossing worden geïmplementeerd.
 
-Prijzen in lokale valuta (USD = Amerikaanse dollar) worden omgerekend in de lokale valuta van alle geselecteerde markten met behulp van de huidige wisselkoersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen voordat u publiceert door de prijsspreadsheet te exporteren en de prijs in elke markt te bekijken. Als u aangepaste prijzen in een afzonderlijke markt wilt instellen, wijzigt en importeert u de prijsspreadsheet. 
+Prijzen in USD (USD = Amerikaanse dollar) worden omgerekend in de lokale valuta van alle geselecteerde markten met behulp van de huidige wisselkoersen wanneer opgeslagen. Valideer deze prijzen voordat u publiceert door de prijsspreadsheet te exporteren en de prijs in elke markt te bekijken. Als u aangepaste prijzen in een afzonderlijke markt wilt instellen, wijzigt en importeert u de prijsspreadsheet. 
 
 >[!Note]
 >U moet eerst uw prijswijzigingen opslaan om het exporteren van prijsgegevens mogelijk te maken.
@@ -397,7 +400,16 @@ Alle azure-toepassingsplanpakketten moeten deze twee bestanden `.zip` in de hoof
 
 * Een definitie van de gebruikersinterface voor de ervaring voor het maken van Azure-toepassingen met de naam [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
+Maximale bestandsgroottes worden ondersteund:
+
+* Tot 1 Gb in `.zip` totale gecomprimeerde archiefgrootte
+
+* Maximaal 1 Gb voor elk afzonderlijk niet-gecomprimeerd bestand in het `.zip` archief  
+
 Alle nieuwe Azure-toepassingsaanbiedingen moeten ook een [AZURE-partner-guid voor het gebruik van klanten](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) bevatten.
+
+>[!Note]
+>Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
 
 ### <a name="previously-published-packages"></a>Eerder gepubliceerde pakketten 
 

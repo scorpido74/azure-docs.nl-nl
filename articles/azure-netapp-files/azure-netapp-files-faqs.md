@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aebc669a90511e48ddd2a7876553948c04b97710
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667813"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185639"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -46,6 +46,10 @@ Ja, u kunt, als u de vereiste DNS-vermeldingen maakt. Azure NetApp Files levert 
 > [!NOTE] 
 > Azure NetApp Files kunt indien nodig extra IP-adressen voor de service implementeren.  DNS-vermeldingen moeten mogelijk periodiek worden bijgewerkt.
 
+### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Kan ik mijn eigen IP-adres voor een Azure NetApp Files volume instellen of selecteren?  
+
+Nee. De IP-toewijzing aan Azure NetApp Files volumes is dynamisch. Toewijzing van statisch IP-adres wordt niet ondersteund. 
+ 
 ## <a name="security-faqs"></a>Veelgestelde vragen over beveiliging
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Kan het netwerk verkeer tussen de virtuele machine van Azure en de opslag worden versleuteld?

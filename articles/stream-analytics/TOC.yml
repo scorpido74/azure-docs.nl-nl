@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Querylogica
           href: stream-analytics-troubleshoot-query.md
-        - name: Diagnostische en activiteitslogboeken
+        - name: Activiteiten- en resourcelogboeken
           href: stream-analytics-job-diagnostic-logs.md
         - name: Gegevensfouten
           href: data-errors.md

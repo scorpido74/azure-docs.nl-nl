@@ -1,6 +1,6 @@
 ---
-title: Geneste virtualisatie inschakelen op een sjabloon-VM in Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het maken van een sjabloon-vm met meerdere VM's erin.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
+title: Geneste virtualisatie inschakelen op een sjabloon-VM in Azure Lab Services | Microsoft Docs
+description: Meer informatie over het maken van een sjabloon-VM met meerdere virtuele machines in.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502008"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184670"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Geneste virtualisatie inschakelen op een virtuele sjabloonmachine in Azure Lab Services
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services
 
-Op dit moment u met Azure Lab Services één virtuele sjabloonmachine in een lab instellen en één exemplaar beschikbaar maken voor elk van uw gebruikers. Als u een professor bent die netwerk-, beveiligings- of IT-klassen onderwijst, moet u mogelijk elk van uw studenten een omgeving bieden waarin meerdere virtuele machines met elkaar kunnen praten via een netwerk.
+Op dit moment kunt u met Azure Lab Services één sjabloon virtuele machine in een Lab instellen en één exemplaar beschikbaar maken voor elk van uw gebruikers. Als u een docent netwerk, beveiliging of IT-klassen bent, moet u mogelijk uw studenten voorzien van een omgeving waarin meerdere virtuele machines via een netwerk met elkaar kunnen communiceren.
 
-Geneste virtualisatie stelt u in staat om een multi-VM-omgeving te maken in de virtuele machine van een lab. Als u de sjabloon publiceert, krijgt elke gebruiker in het lab een virtuele machine die is ingesteld met meerdere VM's erin.  In dit artikel wordt ingaan op het instellen van geneste virtualisatie op een sjabloonmachine in Azure Lab Services.
+Met geneste virtualisatie kunt u een multi-VM-omgeving maken in de virtuele machine van een lab. Als u de sjabloon publiceert, wordt elke gebruiker in het lab voorzien van een virtuele machine die is ingesteld met meerdere virtuele machines in de test omgeving.  In dit artikel wordt beschreven hoe u een geneste virtualisatie instelt op een sjabloon machine in Azure Lab Services.
 
 ## <a name="what-is-nested-virtualization"></a>Wat is geneste virtualisatie?
 
-Geneste virtualisatie stelt u in staat om virtuele machines te maken binnen een virtuele machine. Geneste virtualisatie gebeurt via Hyper-V en is alleen beschikbaar op Windows VM's.
+Met geneste virtualisatie kunt u virtuele machines maken binnen een virtuele machine. Geneste virtualisatie wordt uitgevoerd via Hyper-V en is alleen beschikbaar op Windows-Vm's.
 
-Zie de volgende artikelen voor meer informatie over geneste virtualisatie:
+Raadpleeg de volgende artikelen voor meer informatie over geneste virtualisatie:
 
-- [Geneste virtualisatie in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
+- [Geneste virtualisatie in azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
 - [Geneste virtualisatie inschakelen in een Azure VM](../../virtual-machines/windows/nested-virtualization.md)
 
 ## <a name="considerations"></a>Overwegingen
 
-Voordat u een lab met geneste virtualisatie, hier zijn een paar dingen om rekening mee te houden.
+Voordat u een Lab met geneste virtualisatie instelt, zijn hier enkele dingen die u in overweging moet nemen.
 
-- Selecteer bij het maken van een nieuw lab de grootte **Van Medium (Geneste virtualisatie)** of **Grote (Geneste virtualisatie)** voor de grootte van de virtuele machine. Deze virtuele machineformaten ondersteunen geneste virtualisatie.
-- Kies een grootte die goede prestaties biedt voor zowel de virtuele machines van de host als de client.  Vergeet niet dat bij het gebruik van virtualisatie de grootte die u kiest, voldoende moet zijn voor niet slechts één machine, maar de host en alle clientmachines die gelijktijdig moeten worden uitgevoerd.
-- Virtuele clientmachines hebben geen toegang tot Azure-bronnen, zoals DNS-servers in het virtuele Azure-netwerk.
-- Host virtuele machine vereist setup om voor de client machine om internetverbinding te hebben.
-- Client virtuele machines zijn gelicentieerd als onafhankelijke machines. Zie [Microsoft Licensing](https://www.microsoft.com/licensing/default) voor informatie over licenties voor Microsoft-besturingssystemen en -producten. Controleer licentieovereenkomsten voor andere software die wordt gebruikt voordat u de sjabloonmachine instelt.
+- Wanneer u een nieuw Lab maakt, selecteert u **medium (geneste virtualisatie)** of **groot (geneste virtualisatie)** grootten voor de grootte van de virtuele machine. Deze virtuele-machine grootten ondersteunen geneste virtualisatie.
+- Kies een grootte die goede prestaties biedt voor zowel de host als de virtuele machine van de client.  Houd er rekening mee dat bij gebruik van virtualisatie de grootte die u kiest, voldoende is voor niet meer dan één computer, maar de host en alle Hyper-V-machines die gelijktijdig worden uitgevoerd.
+- Virtuele machines van de client hebben geen toegang tot Azure-resources, zoals DNS-servers, in het virtuele Azure-netwerk.
+- Voor de virtuele machine van de host is installatie vereist zodat de client computer verbinding met Internet kan hebben.
+- Virtuele machines van de client worden als onafhankelijke computers in licentie gegeven. Zie [micro soft-licentie verlening](https://www.microsoft.com/licensing/default) voor informatie over licenties voor micro soft-besturings systemen en-producten. Controleer de licentie overeenkomsten op alle andere software die wordt gebruikt voordat u de sjabloon machine instelt.
 
 ## <a name="enable-nested-virtualization-on-a-template-vm"></a>Geneste virtualisatie inschakelen in een sjabloon-VM
 
-In dit artikel wordt ervan uitgegaan dat u een labaccount en lab hebt gemaakt.  Zie Zelfstudie voor het instellen van [een Lab-account voor](tutorial-setup-lab-account.md)meer informatie over het maken van een nieuw labaccount. Zie [een lesprogramma voor een klaslokaalvoor de les](tutorial-setup-classroom-lab.md)in het laboratorium instellen voor meer informatie over het maken van een lab.
+In dit artikel wordt ervan uitgegaan dat u een Lab-account en Lab hebt gemaakt.  Zie [zelf studie voor het instellen van een Lab](tutorial-setup-lab-account.md)-account voor meer informatie over het maken van een nieuw Lab-account. Voor meer informatie over het maken van een Lab raadpleegt u [een klassikale-Lab-zelf studie instellen](tutorial-setup-classroom-lab.md).
 
 >[!IMPORTANT]
->Selecteer **Groot (geneste virtualisatie)** of **Medium (geneste virtualisatie)** voor de grootte van de virtuele machine bij het maken van het lab.  Geneste virtualisatie werkt anders niet.  
+>Selecteer **groot (geneste virtualisatie)** of **Gemiddeld (geneste virtualisatie)** voor de grootte van de virtuele machine bij het maken van het lab.  Geneste virtualisatie werkt anders niet.  
 
-Zie [een klassjabloon maken en beheren](how-to-create-manage-template.md)als u verbinding wilt maken met de sjabloonmachine.
+Zie [een leslokaal sjabloon maken en beheren](how-to-create-manage-template.md)als u verbinding wilt maken met de sjabloon machine.
 
-### <a name="using-script-to-enable-nested-virtualization"></a>Script gebruiken om geneste virtualisatie in te schakelen
+Voor het inschakelen van geneste virtualisatie zijn er een aantal taken die u kunt uitvoeren.  
 
-Zie Geneste virtualisatie inschakelen [op een sjabloon virtuele machine in Azure Lab Services inschakelen met behulp van een script](how-to-enable-nested-virtualization-template-vm-using-script.md)als u de geautomatiseerde installatie voor geneste virtualisatie wilt gebruiken met Windows Server 2016 of Windows Server 2019. U gebruikt scripts van [Lab Services Hyper-V scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) om de Hyper-V rol te installeren.  De scripts zullen ook het opzetten van netwerken, zodat de Hyper-V virtuele machines kunnen toegang tot internet hebben.
+- **Schakel de Hyper-V-functie in**. De Hyper-V-rol moet zijn ingeschakeld voor het maken en uitvoeren van virtuele Hyper-V-machines op de virtuele machine van de Lab-Services.
+- **Schakel DHCP in**.  Wanneer de virtuele machine van de test services-functie is ingeschakeld, kan aan de virtuele Hyper-V-machines automatisch een IP-adres worden toegewezen.
+- **Maak een NAT-netwerk voor virtuele Hyper-V-machines**.  Het NAT-netwerk is zo ingesteld dat de virtuele Hyper-V-machines toegang hebben tot internet.  De Hyper-V virtuele machines kunnen met elkaar communiceren.
 
-### <a name="using-windows-tools-to-enable-nested-virtualization"></a>Windows-hulpprogramma's gebruiken om geneste virtualisatie in te schakelen
+>[!NOTE]
+>Met het NAT-netwerk dat is gemaakt op de Lab Services-VM kan een Hyper-V-VM toegang krijgen tot het internet en andere Hyper-V-Vm's op dezelfde Lab Services-VM.  De Hyper-V-VM kan geen toegang krijgen tot Azure-resources, zoals DNS-servers, in het virtuele Azure-netwerk.
 
-De installatie geneste virtualisatie voor Windows Server 2016 of Windows Server 2019 met Windows-rollen en beheerhulpprogramma's, zie [Geneste virtualisatie inschakelen op een virtuele sjabloonmachine in Azure Lab Services.](how-to-enable-nested-virtualization-template-vm-ui.md)  Instructies zullen ook betrekking hebben op het opzetten van netwerken, zodat de Hyper-V virtuele machines kunnen toegang tot internet hebben.
+Het uitvoeren van de hierboven vermelde taken kan worden uitgevoerd met behulp van een script of met behulp van Windows-hulpprogram ma's.  Lees de onderstaande secties voor meer informatie.
+
+### <a name="using-script-to-enable-nested-virtualization"></a>Script gebruiken om geneste virtualisatie in te scha kelen
+
+Zie [geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services met behulp van een script](how-to-enable-nested-virtualization-template-vm-using-script.md)om de geautomatiseerde installatie voor geneste virtualisatie met windows server 2016 of windows server 2019 te gebruiken. U gebruikt scripts uit de [hyper-v-scripts van Lab-Services](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) om de hyper-v-functie te installeren.  Met de scripts wordt ook netwerken ingesteld, zodat de virtuele Hyper-V-machines toegang hebben tot internet.
+
+### <a name="using-windows-tools-to-enable-nested-virtualization"></a>Windows-hulpprogram ma's gebruiken om geneste virtualisatie in te scha kelen
+
+Met de installatie van geneste virtualisatie voor Windows Server 2016 of Windows Server 2019 met behulp van Windows-rollen en-beheer Programma's raadpleegt u [geneste virtualisatie op een sjabloon virtuele machine in Azure Lab Services hand matig inschakelen](how-to-enable-nested-virtualization-template-vm-ui.md).  Instructies hebben ook betrekking op het instellen van netwerken, zodat de virtuele Hyper-V-machines toegang hebben tot internet.

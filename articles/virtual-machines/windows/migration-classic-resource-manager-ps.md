@@ -1,25 +1,19 @@
 ---
 title: Migreren naar Resource Manager met PowerShell
 description: In dit artikel wordt de door het platform ondersteunde migratie van IaaS-bronnen zoals virtuele machines (VM's), virtuele netwerken en opslagaccounts van klassiek naar Azure Resource Manager doorlopen met Azure PowerShell-opdrachten
-services: virtual-machines-windows
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 12a77c4c21a26f1ec52bb3ffdc312df56d3c4537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249969"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865950"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-resources migreren van klassiek naar Azure Resource Manager met PowerShell
 
@@ -60,7 +54,7 @@ Zie [Azure PowerShell installeren en configureren voor](/powershell/azure/overvi
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Stap 3: Ervoor zorgen dat u een beheerder bent voor het abonnement
 Als u deze migratie wilt uitvoeren, moet u worden toegevoegd als medebeheerder voor het abonnement in de [Azure-portal.](https://portal.azure.com)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Abonnement**in het menu **Hub** . Als u het niet ziet, selecteert u **Alle services**.
 3. Zoek de juiste abonnementsvermelding en bekijk het veld **MIJN ROL.** Voor een medebeheerder moet de waarde _accountbeheerder_zijn.
 

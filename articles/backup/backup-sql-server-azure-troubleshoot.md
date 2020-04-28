@@ -1,203 +1,201 @@
 ---
-title: Problemen met SQL Server-databaseback-up oplossen
-description: Probleemoplossingsgegevens voor het maken van back-ups van SQL Server-databases die worden uitgevoerd op Azure VM's met Azure Backup.
+title: Problemen met SQL Server database back-up oplossen
+description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 8d49adb0ab741903ccb2989cfeb4ceaef2e8a38d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408613"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183327"
 ---
-# <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server-databaseback-up oplossen met Azure Backup
+# <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
-In dit artikel vindt u informatie over probleemoplossing voor SQL Server-databases die worden uitgevoerd op virtuele Azure-machines.
+Dit artikel bevat informatie over het oplossen van problemen met SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure.
 
-Zie [Over SQL Server-back-up in Azure VM's voor](sql-support-matrix.md#feature-consideration-and-limitations)meer informatie over het back-upproces en de beperkingen.
+Zie [over SQL Server back-up in azure vm's](sql-support-matrix.md#feature-consideration-and-limitations)voor meer informatie over het back-upproces en de beperkingen.
 
-## <a name="sql-server-permissions"></a>SQL Server-machtigingen
+## <a name="sql-server-permissions"></a>SQL Server machtigingen
 
-Als u beveiliging wilt configureren voor een SQL Server-database op een virtuele machine, moet u de **AzureBackupWindowsWorkload-extensie** op die virtuele machine installeren. Als u de fout **UserErrorSQLNoSysadminMembership**krijgt, betekent dit dat uw SQL Server-instantie niet over de vereiste back-upmachtigingen beschikt. Als u deze fout wilt oplossen, voert u de stappen [in VM-machtigingen instellen](backup-azure-sql-database.md#set-vm-permissions)uit.
+Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt configureren, moet u de **AzureBackupWindowsWorkload** -extensie op die virtuele machine installeren. Als u de fout **UserErrorSQLNoSysadminMembership**krijgt, betekent dit dat uw SQL Server-exemplaar niet over de vereiste back-upmachtigingen beschikt. Volg de stappen in [set VM permissions](backup-azure-sql-database.md#set-vm-permissions)om deze fout op te lossen.
 
-## <a name="troubleshoot-discover-and-configure-issues"></a>Problemen met ontdekken en configureren oplossen
+## <a name="troubleshoot-discover-and-configure-issues"></a>Problemen met detectie en configuratie oplossen
 
-Na het maken en configureren van een Vault recovery services, is het ontdekken van databases en het configureren van back-ups een proces in twee stappen.<br>
+Na het maken en configureren van een Recovery Services kluis, het detecteren van data bases en het configureren van back-ups is een proces dat uit twee stappen bestaat.<br>
 
 ![sql](./media/backup-azure-sql-database/sql.png)
 
-Als de SQL VM en de bijbehorende exemplaren tijdens de back-upconfiguratie niet zichtbaar zijn in de **Detectie-dB's in VM's** en **Back-up configureren** (zie bovenstaande afbeelding) ervoor zorgen dat:
+Als de SQL-VM en de exemplaren ervan tijdens de back-upconfiguratie niet zichtbaar zijn in de **detectie db's in vm's** en de **back-up configureren** (Zie de bovenstaande afbeelding), moet u het volgende doen:
 
-### <a name="step-1-discovery-dbs-in-vms"></a>Stap 1: Discovery DBs in VM's
+### <a name="step-1-discovery-dbs-in-vms"></a>Stap 1: detectie Db's in Vm's
 
-- Als de VM niet wordt vermeld in de gedetecteerde VM-lijst en ook niet is geregistreerd voor SQL-back-up in een andere kluis, volgt u de [back-upstappen van Discovery SQL Server.](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases)
+- Als de virtuele machine niet wordt weer gegeven in de lijst met gedetecteerde VM'S en ook niet is geregistreerd voor SQL-back-ups in een andere kluis, voert u de stappen voor [detectie SQL Server back-up](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) uit.
 
-### <a name="step-2-configure-backup"></a>Stap 2: Back-up configureren
+### <a name="step-2-configure-backup"></a>Stap 2: back-up configureren
 
-- Als de kluis waarin de SQL VM is geregistreerd in dezelfde kluis die wordt gebruikt om de databases te beschermen, volgt u de stappen [Back-up configureren.](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)
+- Als de kluis waarin de SQL-VM is geregistreerd in dezelfde kluis die wordt gebruikt voor het beveiligen van de data bases, volgt u de stappen voor het [configureren van back-ups](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) .
 
-Als de SQL VM moet worden geregistreerd in de nieuwe kluis, moet deze worden niet geregistreerd uit de oude kluis.  Voor het uitschrijven van een SQL VM uit de kluis moeten alle beveiligde gegevensbronnen worden gestopt met protecteden en u de back-upgegevens verwijderen. Het verwijderen van back-upgegevens is een destructieve bewerking.  Nadat u alle voorzorgsmaatregelen hebt genomen om de SQL VM uit te schrijven, registreert u deze zelfde VM met een nieuwe kluis en probeert u de back-upbewerking opnieuw.
+Als de SQL-VM in de nieuwe kluis moet worden geregistreerd, moet de registratie bij de oude kluis ongedaan worden gemaakt.  Voor het ongedaan maken van de registratie van een SQL-VM van de kluis moeten alle beveiligde gegevens bronnen worden beveiligd en vervolgens kunt u de back-upgegevens verwijderen. Het verwijderen van een back-up van gegevens is een destructieve bewerking.  Nadat u alle voorzorgsmaatregelen hebt bekeken en hebt genomen om de registratie van de SQL-VM ongedaan te maken, registreert u dezelfde VM met een nieuwe kluis en voert u de back-upbewerking opnieuw uit.
 
-## <a name="troubleshoot-backup-and-recovery-issues"></a>Problemen met back-ups en herstel problemen oplossen  
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Problemen met back-up en herstel oplossen  
 
-Soms kunnen er willekeurige fouten optreden bij back-up- en herstelbewerkingen of kunnen deze bewerkingen vast komen te zitten. Dit kan het gevolg zijn van antivirusprogramma's op uw VM. Als best practice stellen we de volgende stappen voor:
+Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkingen of kunnen de bewerkingen vastlopen. Dit kan worden veroorzaakt door antivirus Programma's op uw virtuele machine. Als best practice worden de volgende stappen voorgesteld:
 
-1. Sluit de volgende mappen uit bij het scannen van antivirusprogramma's:
+1. Sluit de volgende mappen uit van antivirus scans:
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    Vervang `C:\` de letter van uw *SystemDrive*.
+    Vervang `C:\` door de letter van het *Systeem station*.
 
-1. Sluit de volgende drie processen die binnen een VM worden uitgevoerd uit antivirusscanning uit:
+1. De volgende drie processen die worden uitgevoerd in een VM uitsluiten van antivirus scans:
 
-    - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
-    - TriggerExtensionJob.exe
+    - IaasWLPluginSvc. exe
+    - IaasWorkloadCoordinaorService. exe
+    - TriggerExtensionJob. exe
 
-1. SQL biedt ook een aantal richtlijnen over om te werken met antivirusprogramma's. Zie [dit artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) voor meer informatie.
+1. SQL biedt ook enkele richt lijnen voor het werken met antivirus Programma's. Raadpleeg [dit artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) voor meer informatie.
 
 ## <a name="error-messages"></a>Foutberichten
 
-### <a name="backup-type-unsupported"></a>Back-uptype niet ondersteund
+### <a name="backup-type-unsupported"></a>Het back-uptype wordt niet ondersteund
 
 | Severity | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
-| Waarschuwing | De huidige instellingen voor deze database ondersteunen bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid niet. | <li>Alleen een volledige databaseback-upbewerking kan worden uitgevoerd in de hoofddatabase. Noch differentiële back-up, noch transactie log back-up is mogelijk. </li> <li>Elke database in het eenvoudige herstelmodel staat geen back-up van transactielogboeken toe.</li> | Wijzig de database-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Wijzig ook het huidige beleid om alleen de ondersteunde back-uptypen op te nemen. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens geplande back-up staak of mislukt de back-uptaak voor on-demand back-up.
+| Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Deze SQL-database biedt geen ondersteuning voor het gevraagde type back-up. | Treedt op wanneer het databaseherstelmodel het gevraagde back-uptype niet toestaat. De fout kan in de volgende situaties optreden: <br/><ul><li>Een database die een eenvoudig herstelmodel gebruikt, staat geen logboekback-up toe.</li><li>Differentiële en logboekback-ups zijn niet toegestaan voor een hoofddatabase.</li></ul>Zie de documentatie [van SQL Server-herstelmodellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) voor meer informatie. | Als de logboekbackup mislukt voor de database in het eenvoudige herstelmodel, probeert u een van de volgende opties:<ul><li>Als de database zich in de eenvoudige herstelmodus bevindt, schakelt u logboekback-ups uit.</li><li>Gebruik de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) om het databaseherstelmodel te wijzigen in volledig of bulkgeregistreerd. </li><li> Als u het herstelmodel niet wilt wijzigen en u een standaardbeleid hebt om een back-up te maken van meerdere databases die niet kunnen worden gewijzigd, negeert u de fout. Uw volledige en differentiële back-ups werken per schema. De logboekback-ups worden overgeslagen, wat in dit geval wordt verwacht.</li></ul>Als het een hoofddatabase is en u differentiële of logboekback-up hebt geconfigureerd, gebruikt u een van de volgende stappen:<ul><li>Gebruik de portal om het back-upbeleidsschema voor de hoofddatabase volledig te wijzigen.</li><li>Als u een standaardbeleid hebt om een back-up te maken van meerdere databases die niet kunnen worden gewijzigd, negeert u de fout. Uw volledige back-up werkt per schema. Differentiële of log back-ups zal niet gebeuren, wat wordt verwacht in dit geval.</li></ul> |
-| Bewerking geannuleerd omdat een conflicterende bewerking al in dezelfde database werd uitgevoerd. | Bekijk het [blogbericht over back-up- en herstelbeperkingen](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) die gelijktijdig worden uitgevoerd.| [Gebruik SQL Server Management Studio (SSMS) om de back-uptaken te controleren.](manage-monitor-sql-database-backup.md) Nadat de conflicterende bewerking is mislukt, start u de bewerking opnieuw.|
+| Deze SQL-database biedt geen ondersteuning voor het gevraagde type back-up. | Deze gebeurtenis treedt op wanneer het herstel model van de data base het aangevraagde back-uptype niet toestaat. De fout kan in de volgende situaties optreden: <br/><ul><li>Voor een Data Base die gebruikmaakt van een eenvoudig herstel model is logboek back-up niet toegestaan.</li><li>Differentiële en logboek back-ups zijn niet toegestaan voor een hoofd database.</li></ul>Zie de documentatie over [SQL Server herstel modellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) voor meer informatie. | Als de back-up van het logboek mislukt voor de data base in het eenvoudige herstel model, probeert u een van de volgende opties:<ul><li>Als de data base zich in de modus voor eenvoudig herstel bevindt, schakelt u logboek back-ups uit.</li><li>Gebruik de [SQL Server documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) om het herstel model van de data base te wijzigen in volledig of bulksgewijs vastgelegd. </li><li> Als u het herstel model niet wilt wijzigen en u een standaard beleid hebt voor het maken van back-ups van meerdere data bases die niet kunnen worden gewijzigd, negeert u de fout. Uw volledige en differentiële back-ups worden per schema uitgevoerd. De back-ups van het logboek worden overgeslagen, wat in dit geval wordt verwacht.</li></ul>Als het een hoofd database is en u differentiële of logboek back-up hebt geconfigureerd, gebruikt u een van de volgende stappen:<ul><li>Gebruik de portal om het schema voor back-upbeleid voor de hoofd database te wijzigen in volledig.</li><li>Als u een standaard beleid hebt voor het maken van back-ups van meerdere data bases die niet kunnen worden gewijzigd, kunt u de fout negeren. De volledige back-up wordt per schema uitgevoerd. Differentiële of logboek back-ups worden niet uitgevoerd, wat in dit geval wordt verwacht.</li></ul> |
+| De bewerking is geannuleerd omdat er al een conflicterende bewerking wordt uitgevoerd op dezelfde data base. | Zie het [blog bericht over de beperkingen voor back-ups en herstel](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) die gelijktijdig worden uitgevoerd.| [Gebruik SQL Server Management Studio (SSMS) om de back-uptaken te bewaken](manage-monitor-sql-database-backup.md). Als de conflicterende bewerking is mislukt, start u de bewerking opnieuw.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| SQL-database bestaat niet. | De database is verwijderd of hernoemd. | Controleer of de database per ongeluk is verwijderd of de naam is gewijzigd.<br/><br/> Als de database per ongeluk is verwijderd, u de back-ups voortzetten om de database naar de oorspronkelijke locatie te herstellen.<br/><br/> Als u de database hebt verwijderd en toekomstige back-ups niet nodig hebt, selecteert u in de kluis Herstelservices de optie **Back-up stoppen** met **Back-upgegevens behouden** of **Back-upgegevens verwijderen.** Zie [Back-upSQL Server-databases beheren en controleren](manage-monitor-sql-database-backup.md)voor meer informatie.
+| SQL-database bestaat niet. | De data base is verwijderd of heeft een andere naam gekregen. | Controleer of de data base per ongeluk is verwijderd of een andere naam heeft gekregen.<br/><br/> Als de data base per ongeluk is verwijderd, kunt u de data base herstellen naar de oorspronkelijke locatie om door te gaan met het maken van back-ups.<br/><br/> Als u de Data Base hebt verwijderd en geen back-ups meer nodig hebt, selecteert u in de Recovery Services kluis back **-up stoppen** met **back-upgegevens behouden** of **back-upgegevens verwijderen**. Zie [back-ups beheren en controleren SQL server data bases](manage-monitor-sql-database-backup.md)voor meer informatie.
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Logboekketen is onderbroken. | Er wordt een back-up van de database of de VM gemaakt via een andere back-upoplossing, die de logboekketen afgekapt.|<ul><li>Controleer of er een andere back-upoplossing of script in gebruik is. Als dat het zo is, stopt u de andere back-upoplossing. </li><li>Als de back-up een on-demand logboekback is, activeert u een volledige back-up om een nieuwe logboekketen te starten. Voor geplande logboekbackups is geen actie nodig omdat de Azure Backup-service automatisch een volledige back-up activeert om dit probleem op te lossen.</li>|
+| Logboekketen is onderbroken. | Er wordt een back-up gemaakt van de data base of de virtuele machine via een andere back-upoplossing, waardoor de logboek keten wordt afgekapt.|<ul><li>Controleer of er een andere back-upoplossing of een ander script wordt gebruikt. Als dit het geval is, stopt u de andere back-upoplossing. </li><li>Als de back-up een logboek back-up op aanvraag is, moet u een volledige back-up activeren om een nieuwe logboek keten te starten. Voor geplande logboek back-ups is geen actie vereist omdat de Azure Backup-service automatisch een volledige back-up wordt geactiveerd om dit probleem op te lossen.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Azure Backup kan geen verbinding maken met de SQL-instantie. | Azure Backup kan geen verbinding maken met het SQL Server-exemplaar. | Gebruik de aanvullende details in het azure-portalfoutmenu om de onderliggende oorzaken te beperken. Raadpleeg [SQL-back-upproblemen](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) om de fout op te lossen.<br/><ul><li>Als de standaard SQL-instellingen geen externe verbindingen toestaan, wijzigt u de instellingen. Zie de volgende artikelen voor informatie over het wijzigen van de instellingen:<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Als er aanmeldingsproblemen zijn, gebruikt u deze koppelingen om deze op te lossen:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup kan geen verbinding maken met het SQL-exemplaar. | Azure Backup kan geen verbinding maken met het SQL Server exemplaar. | Gebruik de aanvullende details in het menu Azure Portal fouten om de hoofd oorzaken te beperken. Raadpleeg [SQL backup Troubleshooting](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) om de fout op te lossen.<br/><ul><li>Als de standaard SQL-instellingen geen externe verbindingen toestaan, wijzigt u de instellingen. Raadpleeg de volgende artikelen voor informatie over het wijzigen van de instellingen:<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Als er zich problemen met de aanmelding voordoen, gebruikt u deze koppelingen om ze te herstellen:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| De eerste volledige back-up ontbreekt voor deze gegevensbron. | Volledige back-up ontbreekt voor de database. Log- en differentiële back-ups zijn ouders van een volledige back-up, dus zorg ervoor dat u volledige back-ups maakt voordat u differentiële of logboekback-ups activeert. | Activeer een on-demand volledige back-up.   |
+| De eerste volledige back-up ontbreekt voor deze gegevens bron. | Volledige back-up ontbreekt voor de data base. Logboeken en differentiële back-ups zijn ouders van een volledige back-up. Zorg er dus voor dat u volledige back-ups maakt voordat u differentiële of logboek back-ups gaat activeren. | Activeer een volledige back-up op aanvraag.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Kan geen back-up maken omdat het transactielogboek voor de gegevensbron vol is. | De database transactionele logboekruimte is vol. | Als u dit probleem wilt oplossen, raadpleegt u de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
+| Kan geen back-up maken omdat het transactie logboek voor de gegevens bron vol is. | De logboek ruimte voor de transactionele data base is vol. | Raadpleeg de [documentatie van SQL Server](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)om dit probleem op te lossen. |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Database met dezelfde naam bestaat al op de doellocatie | De doelherstelbestemming heeft al een database met dezelfde naam.  | <ul><li>Wijzig de naam van de doeldatabase.</li><li>Of gebruik de optie overschrijven van de kracht op de herstelpagina.</li> |
+| Er bestaat al een Data Base met dezelfde naam op de doel locatie | De doel locatie voor terugzetten heeft al een Data Base met dezelfde naam.  | <ul><li>Wijzig de naam van de doel database.</li><li>Of gebruik de optie Overwrite afdwingen op de pagina herstellen.</li> |
 
 ### <a name="usererrorrestorefaileddatabasecannotbeofflined"></a>UserErrorRestoreFailedDatabaseCannotBeOfflined
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Herstellen is mislukt, omdat de database niet offline kan worden gezet. | Terwijl u een herstel doet, moet de doeldatabase offline worden gehaald. Azure Backup kan deze gegevens niet offline halen. | Gebruik de aanvullende details in het azure-portalfoutmenu om de onderliggende oorzaken te beperken. Raadpleeg de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) voor meer informatie. |
+| Herstellen is mislukt, omdat de database niet offline kan worden gezet. | Wanneer u een herstel bewerking uitvoert, moet de doel database offline worden gezet. Azure Backup kunt deze gegevens niet offline zetten. | Gebruik de aanvullende details in het menu Azure Portal fouten om de hoofd oorzaken te beperken. Raadpleeg de [SQL Server-documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) voor meer informatie. |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Kan het servercertificaat met duimafdruk op het doel niet vinden. | De hoofddatabase op de doelinstantie heeft geen geldige versleutelingsduimafdruk. | Importeer de geldige certificaatduimafdruk die op de broninstantie wordt gebruikt, in de doelinstantie. |
+| Kan het server certificaat met de vinger afdruk niet vinden op het doel. | De hoofd database op het doel exemplaar heeft geen geldige versleutelings vingerafdruk. | Importeer de geldige certificaat vingerafdruk die op het bron exemplaar wordt gebruikt, naar het doel exemplaar. |
 
 ### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| De logboekback-up die is gebruikt voor herstel bevat bulksgewijs geregistreerde wijzigingen. Deze kan niet worden gebruikt om op een willekeurig tijdstip te stoppen volgens de SQL-richtlijnen. | Wanneer een database zich in de herstelmodus voor bulkbestanden bevindt, kunnen de gegevens tussen een bulkgeregistreerde transactie en de volgende logboektransactie niet worden hersteld. | Kies een ander tijdstip voor herstel. [Meer informatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| De logboekback-up die is gebruikt voor herstel bevat bulksgewijs geregistreerde wijzigingen. Deze kan niet worden gebruikt om op een willekeurig tijdstip te stoppen volgens de SQL-richtlijnen. | Wanneer een Data Base zich in de herstel modus met meerdere logboeken bevindt, kunnen de gegevens tussen een bulksgewijs geregistreerde trans actie en de volgende logboek transactie niet worden hersteld. | Kies een ander tijdstip voor herstel. [Meer informatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Er kan niet worden voldaan aan de voorkeur van Backup voor de SQL AlwaysOn-beschikbaarheidsgroep omdat bepaalde knooppunten van de beschikbaarheidsgroep niet zijn geregistreerd. | Knooppunten die nodig zijn om back-ups uit te voeren, worden niet geregistreerd of zijn onbereikbaar. | <ul><li>Zorg ervoor dat alle knooppunten die nodig zijn om back-ups van deze database uit te voeren, zijn geregistreerd en in orde en probeer de bewerking opnieuw.</li><li>Wijzig de back-upvoorkeur voor de sql server altijd bij beschikbaarheidsgroep.</li></ul> |
+| Er kan niet worden voldaan aan de voorkeur van Backup voor de SQL AlwaysOn-beschikbaarheidsgroep omdat bepaalde knooppunten van de beschikbaarheidsgroep niet zijn geregistreerd. | Knoop punten die zijn vereist voor het uitvoeren van back-ups zijn niet geregistreerd of zijn onbereikbaar. | <ul><li>Zorg ervoor dat alle knoop punten die nodig zijn voor het uitvoeren van back-ups van deze data base, zijn geregistreerd en in orde zijn, en probeer het opnieuw.</li><li>Wijzig de voor keuren van de back-up voor de groep SQL Server AlwaysOn.</li></ul> |
 
 ### <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| SQL server VM wordt afgesloten en niet toegankelijk voor Azure Backup-service. | De VM is uitgeschakeld. | Controleer of de SQL Server-instantie wordt uitgevoerd. |
+| De SQL Server-VM is afgesloten en niet toegankelijk voor Azure Backup service. | De virtuele machine wordt afgesloten. | Controleer of het SQL Server exemplaar wordt uitgevoerd. |
 
 ### <a name="guestagentstatusunavailableusererror"></a>GuestAgentStatusUnavailableUserError
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Azure Backup-service maakt gebruik van Azure VM-gastagent voor het maken van back-ups, maar gastagent is niet beschikbaar op de doelserver. | De gastagent is niet ingeschakeld of is niet in orde. | [Installeer de VM-gastagent](../virtual-machines/extensions/agent-windows.md) handmatig. |
+| Azure Backup-Service gebruikt de Azure VM-gast agent voor het uitvoeren van back-ups maar de gast agent is niet beschikbaar op de doel server. | De gast agent is niet ingeschakeld of heeft een slechte status. | [Installeer de VM-gast agent](../virtual-machines/extensions/agent-windows.md) hand matig. |
 
 ### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| Automatische beveiliging Intent is verwijderd of niet meer geldig. | Wanneer u automatische beveiliging inschakelt op een SQL Server-instantie, worden **back-uptaken configureren** voor alle databases in dat exemplaar. Als u automatische beveiliging uitschakelt terwijl de taken worden uitgevoerd, worden de **in-progress-taken** geannuleerd met deze foutcode. | Schakel opnieuw automatische beveiliging in om alle resterende databases te beschermen. |
+| De opzet van de automatische beveiliging is verwijderd of is niet geldig. | Wanneer u automatische beveiliging inschakelt voor een SQL Server-exemplaar, **configureert u back-** uptaken voor alle data bases in dat exemplaar. Als u automatische beveiliging uitschakelt terwijl de taken worden uitgevoerd, worden de taken **in uitvoering** met deze fout code geannuleerd. | Schakel automatische beveiliging opnieuw in om alle resterende data bases te beveiligen. |
 
-### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitBereikt
-
-| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
-|---|---|---|
-De bewerking wordt geblokkeerd omdat u de limiet voor het aantal toegestane bewerkingen in 24 uur hebt bereikt. | Wanneer u de maximaal toelaatbare limiet voor een bewerking in een periode van 24 uur hebt bereikt, komt deze fout. <br> Bijvoorbeeld: als u de limiet hebt bereikt voor het aantal configureback-uptaken dat per dag kan worden geactiveerd en u probeert een back-up te configureren voor een nieuw item, ziet u deze fout. | Als u de bewerking doorgaans na 24 uur opnieuw probeert, wordt dit probleem opgelost. Als het probleem echter blijft bestaan, u contact opnemen met microsoft-ondersteuning voor hulp.
-
-### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedRetry
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De werking wordt geblokkeerd omdat de kluis zijn maximumlimiet heeft bereikt voor dergelijke bewerkingen die in een periode van 24 uur zijn toegestaan. | Wanneer u de maximaal toelaatbare limiet voor een bewerking in een periode van 24 uur hebt bereikt, komt deze fout. Deze fout komt meestal wanneer er op grote schaal bewerkingen zijn, zoals het wijzigen van het beleid of automatische beveiliging. In tegenstelling tot in het geval van CloudDosAbsoluteLimitReached, is er niet veel wat u doen om deze status op te lossen, in feite zal Azure Backup-service de bewerkingen intern opnieuw proberen voor alle items in kwestie.<br> Bijvoorbeeld: als u een groot aantal gegevensbronnen hebt beschermd met een beleid en u probeert dat beleid te wijzigen, wordt dit geactiveerd voor het configureren van beveiligingstaken voor elk van de beveiligde items en kan het soms de maximale limiet bereiken die voor dergelijke bewerkingen per dag is toegestaan.| Azure Backup-service probeert deze bewerking na 24 uur automatisch opnieuw uit.
+De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. <br> Bijvoorbeeld: als u de limiet hebt bereikt van het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
+|---|---|---|
+De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. Deze fout treedt meestal op wanneer er op schaal bewerkingen worden uitgevoerd, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot in het geval van CloudDosAbsoluteLimitReached is het niet veel wat u kunt doen om deze status op te lossen, Azure Backup service de bewerkingen intern opnieuw probeert uit te voeren voor alle betreffende items.<br> Als er bijvoorbeeld sprake is van een groot aantal gegevens bronnen dat wordt beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd.
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De VM kan geen contact opnemen met azure backup-service vanwege problemen met de internetverbinding. | De VM heeft uitgaande connectiviteit nodig voor Azure Backup Service, Azure Storage of Azure Active Directory services.| - Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup toe te staan tot Azure Backup Service, Azure Storage of Azure Active Directory-services. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) om toegang te verlenen.<br>- Zorg ervoor dat DNS Azure-eindpunten oplost.<br>- Controleer of de VM achter een load balancer zit die de toegang tot internet blokkeert. Door openbare IP toe te wijs aan de VM's, zal detectie werken.<br>- Controleer of er geen firewall / antivirus / proxy is die oproepen naar de bovenstaande drie doelservices blokkeert.
+De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft uitgaande verbindingen met Azure Backup Service, Azure Storage of Azure Active Directory Services nodig.| -Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang toe te staan Azure Backup Azure Backup-Service, Azure Storage of Azure Active Directory Services. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
 
-## <a name="re-registration-failures"></a>Fouten bij de herregistratie
+## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 
-Controleer op een of meer van de volgende symptomen voordat u de bewerking opnieuw registreren activeert:
+Controleer op een of meer van de volgende symptomen voordat u de bewerking opnieuw registreren start:
 
-* Alle bewerkingen (zoals back-up, herstel en back-up configureren) mislukken op de VM met een van de volgende foutcodes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Als het gebied **Back-upstatus** voor het back-upitem **niet bereikbaar**wordt weergegeven, sluit u alle andere oorzaken uit die kunnen leiden tot dezelfde status:
+- Alle bewerkingen (zoals back-up, herstel en configuratie back-up) mislukken op de virtuele machine met een van de volgende fout codes: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+- Als het gebied voor de **back-upstatus** voor het back-upitem **niet bereikbaar**is, geeft u alle andere oorzaken uit die kunnen resulteren in dezelfde status:
 
-  * Gebrek aan toestemming om back-upgerelateerde bewerkingen uit te voeren op de VM.
-  * Het afsluiten van de VM, zodat back-ups niet kunnen plaatsvinden.
-  * Netwerkproblemen.
+  - Onvoldoende machtigingen voor het uitvoeren van back-upbewerkingen op de VM.
+  - De virtuele machine wordt afgesloten, dus er kunnen geen back-ups worden gemaakt.
+  - Netwerk problemen.
 
-   ![VM opnieuw registreren](./media/backup-azure-sql-database/re-register-vm.png)
+   ![de virtuele machine opnieuw registreren](./media/backup-azure-sql-database/re-register-vm.png)
 
+- In het geval van een AlwaysOn-beschikbaarheids groep zijn de back-ups gestart na het wijzigen van de voor keur van de back-up of na een failover.
 
+Deze symptomen kunnen om een of meer van de volgende redenen optreden:
 
-* In het geval van een groep Beschikbaarheid always on zijn de back-ups mislukt nadat u de back-upvoorkeur hebt gewijzigd of na een failover.
+- Er is een extensie verwijderd uit de portal.
+- Een uitbrei ding van het **configuratie scherm** op de virtuele machine is verwijderd onder het **verwijderen of wijzigen van een programma**.
+- De virtuele machine is terug in de tijd teruggezet via een in-place schijf herstel bewerking.
+- De virtuele machine is afgesloten gedurende een langere periode, waardoor de configuratie van de uitbrei ding is verlopen.
+- De virtuele machine is verwijderd en een andere virtuele machine is gemaakt met dezelfde naam en in dezelfde resource groep als de verwijderde VM.
+- Een van de knoop punten van de beschikbaarheids groep heeft de volledige back-upconfiguratie niet ontvangen. Dit kan gebeuren wanneer de beschikbaarheids groep is geregistreerd bij de kluis of wanneer er een nieuw knoop punt wordt toegevoegd.
 
-Deze symptomen kunnen zich voordoen om een of meer van de volgende redenen:
+In de voor gaande scenario's wordt u aangeraden een bewerking voor het opnieuw registreren van de virtuele machine te activeren. Zie [hier](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) voor instructies over het uitvoeren van deze taak in Power shell.
 
-* Een extensie is verwijderd of verwijderd van de portal.
-* Er is een extensie verwijderd uit **het Configuratiescherm** op de VM onder **Een programma verwijderen of wijzigen.**
-* De VM is hersteld terug in de tijd door middel van in-place schijf te herstellen.
-* De VM werd voor een langere periode afgesloten, zodat de extensieconfiguratie ervan is verlopen.
-* De VM is verwijderd en een andere vm is gemaakt met dezelfde naam en in dezelfde brongroep als de verwijderde VM.
-* Een van de knooppunten voor beschikbaarheidsgroepen heeft niet de volledige back-upconfiguratie ontvangen. Dit kan gebeuren wanneer de beschikbaarheidsgroep is geregistreerd bij de kluis of wanneer een nieuw knooppunt wordt toegevoegd.
+## <a name="size-limit-for-files"></a>Maximale grootte voor bestanden
 
-In de voorgaande scenario's raden we u aan een bewerking opnieuw te registreren op de VM. Zie [hier](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) voor instructies over het uitvoeren van deze taak in PowerShell.
-
-## <a name="size-limit-for-files"></a>Groottelimiet voor bestanden
-
-De totale tekenreeksgrootte van bestanden is niet alleen afhankelijk van het aantal bestanden, maar ook van hun namen en paden. Voor elk databasebestand krijgt u de logische bestandsnaam en het fysieke pad. U deze SQL-query gebruiken:
+De totale grootte van de teken reeks van bestanden is niet alleen afhankelijk van het aantal bestanden, maar ook voor de namen en paden. Haal voor elk database bestand de logische bestands naam en het fysieke pad op. U kunt deze SQL-query gebruiken:
 
 ```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
@@ -205,7 +203,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
                WHERE db.name = N'<Database Name>'"
 ```
 
-Schik ze nu in de volgende indeling:
+Rang schik ze nu in de volgende notatie:
 
 ```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
@@ -217,13 +215,13 @@ Hier volgt een voorbeeld:
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
-Als de tekenreeksgrootte van de inhoud meer dan 20.000 bytes bedraagt, worden de databasebestanden anders opgeslagen. Tijdens het herstel u het doelbestandspad niet instellen voor herstel. De bestanden worden hersteld naar het standaard SQL-pad dat sql-server biedt.
+Als de teken reeks grootte van de inhoud groter is dan 20.000 bytes, worden de database bestanden anders opgeslagen. Tijdens het herstel kunt u het pad naar het doel bestand voor herstellen niet instellen. De bestanden worden teruggezet naar het standaard SQL-pad dat wordt verschaft door SQL Server.
 
-### <a name="override-the-default-target-restore-file-path"></a>Het standaardbestandspad voor doelherstel overschrijven
+### <a name="override-the-default-target-restore-file-path"></a>Het pad van het standaard doel bestand voor terugzetten overschrijven
 
-U het doelherstelbestandspad tijdens de herstelbewerking overschrijven door een JSON-bestand te plaatsen dat de toewijzing van het databasebestand bevat naar het doelherstelpad. Maak `database_name.json` een bestand en plaats het op de locatie *C:\Program Files\Azure Workload Backup\bin\plugins\SQL*.
+U kunt het pad voor het terugzetten van het doel bestand overschrijven tijdens de herstel bewerking door een JSON-bestand met de toewijzing van het database bestand te plaatsen in het pad naar de doel-herstellen. Maak een `database_name.json` bestand en plaats het op de locatie `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`.
 
-De inhoud van het bestand moet in deze indeling zijn:
+De inhoud van het bestand moet de volgende indeling hebben:
 
 ```json
 [
@@ -257,7 +255,7 @@ Hier volgt een voorbeeld:
 ]
 ```
 
-In de voorgaande inhoud u de logische naam van het databasebestand krijgen met behulp van de volgende SQL-query:
+In de voor gaande inhoud kunt u de logische naam van het database bestand ophalen met behulp van de volgende SQL-query:
 
 ```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
@@ -265,8 +263,8 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 WHERE db.name = N'<Database Name>'"
   ```
 
-Dit bestand moet worden geplaatst voordat u de herstelbewerking activeert.
+Dit bestand moet worden geplaatst voordat u de herstel bewerking kunt activeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Backup for SQL VM's voor](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)meer informatie over Azure Backup for SQL Server VM's (public preview).
+Zie [Azure backup voor SQL-vm's](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)voor meer informatie over Azure Backup voor SQL Server vm's (open bare preview).

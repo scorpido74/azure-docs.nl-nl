@@ -1,7 +1,7 @@
 ---
 title: De Speech Devices SDK ophalen
 titleSuffix: Azure Cognitive Services
-description: De Spraakservice werkt met een breed scala aan apparaten en audiobronnen. Nu u uw spraaktoepassingen naar een hoger niveau tillen met afgestemde hardware en software. In dit artikel leert u hoe u toegang krijgt tot de Spraakapparaten SDK en begint met ontwikkelen.
+description: De speech-service werkt met een groot aantal verschillende apparaten en audio bronnen. Nu kunt u uw spraak toepassingen naar een hoger niveau brengen met overeenkomende hardware en software. In dit artikel leert u hoe u toegang krijgt tot de speech-apparaten SDK en hoe u kunt ontwikkelen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 756ec976c4643c1cd80552b7fa552b70fd1f5d24
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: ed3400689272d262ff5c8cda3cc2bd451f2ced4d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391275"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184891"
 ---
-# <a name="get-the-cognitive-services-speech-devices-sdk"></a>Download de Cognitive Services Speech Devices SDK
+# <a name="get-the-cognitive-services-speech-devices-sdk"></a>De SDK voor Cognitive Services speech-apparaten ophalen
 
-De Speech Devices SDK is een vooraf afgestemde bibliotheek die is ontworpen om te werken met speciaal gebouwde ontwikkelingskits en verschillende microfoonarrayconfiguraties.
+De SDK voor spraak apparaten is een vooraf geclusterde bibliotheek die is ontworpen om te werken met doel ontwikkelde ontwikkel kits en verschillende matrix configuraties van microfoons.
 
-## <a name="choose-a-development-kit"></a>Kies een Development kit
+## <a name="choose-a-development-kit"></a>Een Development Kit kiezen
 
 |Apparaten|Specificatie|Beschrijving|Scenario's|
 |--|--|--|--|
-|[URbetter T11 Development Board](https://www.alibaba.com/product-detail/URBETTER-Dev-Kits-for-Microsoft-Speech_62358746402.html)![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 Mic Array, ARM SOC, WIFI, Ethernet, HDMI, USB Camera. <br>Linux|Een spraakapparaatSDK op industrieniveau die de Microsoft Mic-array aanpast en uitgebreide I/O ondersteunt, zoals HDMI/Ethernet en meer USB-randapparatuur|Gesprek Transcriptie, Onderwijs, Ziekenhuis, Robots, OTT Box, Voice Agent, Drive Thru|
-|[Roobo Smart Audio Dev Kit](https://ddk.roobo.com)<br>[Setup](speech-devices-sdk-roobo-v1.md) / [Quickstart](speech-devices-sdk-android-quickstart.md)![Roobo Smart Audio Dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mic Array, ARM SOC, WIFI, Audio Out, IO. <br>[Android](speech-devices-sdk-android-quickstart.md)|De eerste SpraakherkenningsSDK die Microsoft Mic Array en frontprocessing SDK aanpast, voor het ontwikkelen van transcriptie- en spraakscenario's van hoge kwaliteit|Gesprek transcriptie, slimme luidspreker, voice agent, wearable|
-|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[Snel](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [start](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK instellen](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic Array RGB en Diepte camera's. <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Een ontwikkelaarskit met geavanceerde kunstmatige intelligentie (AI) sensoren voor het bouwen van geavanceerde computervision- en spraakmodellen. Het combineert een best-in-class ruimtelijke microfoon array en diepte camera met een videocamera en oriëntatie sensor- alles in een klein apparaat met meerdere modi, opties en SDKs om een scala van compute types tegemoet te komen.|Gesprek Transcriptie, Robotica, Smart Building|
-|Roobo Smart Audio Dev Kit 2<br>[Instellen](speech-devices-sdk-roobo-v2.md)<br>![Roobo Smart Audio Dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 Mic Array, ARM SOC, WIFI, Bluetooth, IO. <br>Linux|De 2e generatie Speech Devices SDK die alternatieve besturingssysteem en meer functies biedt in een kosteneffectief referentieontwerp.|Gesprek transcriptie, slimme luidspreker, voice agent, wearable|
+|[URbetter dev kit](http://www.urbetter.com/products_56/278.html)![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7-microfoon matrix, ARM SOC, WIFI, Ethernet, HDMI, USB-camera. <br>Linux|De SDK voor spraak apparaten op branche niveau die micro soft Mic-matrix aanpast en ondersteuning biedt voor uitgebreide I/O, zoals HDMI/Ethernet en meer USB-rand apparatuur|Transcriptie, onderwijs, zieken huis, robots, OTT box, Voice agent, drive t/m|
+|[Roobo slimme audio dev kit](https://ddk.roobo.com)<br>[Setup](speech-devices-sdk-roobo-v1.md) / [Quick](speech-devices-sdk-android-quickstart.md)![start voor het instellen van Snelstartgids roobo Smart audio dev kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7-Mic-matrix, ARM SOC, WIFI, audio out, IO. <br>[Android](speech-devices-sdk-android-quickstart.md)|De eerste speech-apparaten SDK voor het aanpassen van micro soft Mic-matrix en front processing SDK, voor het ontwikkelen van transcriptie-en spraak scenario's van hoge kwaliteit|Conversation transcriptie, Smart spreker, Voice agent, wearable|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[Setup](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [Quickstart](speech-devices-sdk-windows-quickstart.md)Quick![start voor Azure Kinect DK instellen](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7-microfoon matrix RGB en diepte camera's. <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Een Developer Kit met geavanceerde kunst matige intelligentie (AI) Sens oren voor het bouwen van geavanceerde computer vision-en spraak modellen. Het combineert een ' best-in-class ' ruimtelijke microfoon matrix en diepte camera met een video camera en afdruk stand-sensor, allemaal op één klein apparaat met meerdere modi, opties en Sdk's om een bereik van reken typen te bieden.|Conversation transcriptie, Robotics, slim bouwen|
+|Roobo slimme audio dev kit 2<br>[Instellen](speech-devices-sdk-roobo-v2.md)<br>![Roobo slimme audio dev kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7-Mic-matrix, ARM SOC, WIFI, Bluetooth, IO. <br>Linux|De tweede generatie speech-apparaten SDK die alternatieve besturings systemen en meer functies biedt in een kosteneffectd referentie ontwerp.|Conversation transcriptie, Smart spreker, Voice agent, wearable|
 
 
-## <a name="download-the-speech-devices-sdk"></a>De SDK voor spraakapparaten downloaden
+## <a name="download-the-speech-devices-sdk"></a>De speech-apparaten-SDK downloaden
 
-Download de [SDK spraakapparaten](https://aka.ms/sdsdk-download).
+Down load de [SDK voor spraak apparaten](https://aka.ms/sdsdk-download).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aan de slag met de Spraakapparaten SDK](https://aka.ms/sdsdk-quickstart)
+> [Aan de slag met de SDK voor spraak apparaten](https://aka.ms/sdsdk-quickstart)

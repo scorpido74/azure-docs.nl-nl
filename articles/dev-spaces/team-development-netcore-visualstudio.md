@@ -1,5 +1,5 @@
 ---
-title: Teamontwikkeling met .NET Core en Visual Studio
+title: Team ontwikkeling met behulp van .NET core en Visual Studio
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
@@ -7,16 +7,16 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruiken om teamontwikkeling te doen op een .NET Core-toepassing in Azure Kubernetes Service
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
-ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio kunt gebruiken om team ontwikkeling te doen op een .NET core-toepassing in azure Kubernetes service
+keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245050"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166033"
 ---
-# <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Teamontwikkeling met .NET Core en Visual Studio met Azure Dev Spaces
+# <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Team ontwikkeling met behulp van .NET core en Visual Studio met Azure dev Spaces
 
 In deze zelfstudie leert u hoe een team van ontwikkelaars tegelijkertijd in hetzelfde Kubernetes-cluster kan samenwerken met behulp van Dev Spaces.
 
@@ -45,7 +45,7 @@ Met Azure Dev Spaces kunt u een *gedeelde* ontwikkelruimte instellen in Azure. E
 Terwijl u code ontwikkelt voor uw service en voordat u klaar bent om deze uit te geven, is de codestatus meestal niet in orde. U bent de code nog steeds iteratief aan het vormen en testen, en aan het experimenten met oplossingen. Azure Dev Spaces biedt het concept van een **ruimte**, waardoor u geïsoleerd kunt werken, zonder dat u de code van teamleden per ongeluk breekt.
 
 ## <a name="use-dev-spaces-for-team-development"></a>Dev Spaces gebruiken voor teamontwikkeling
-Laten we deze ideeën demonstreren met een concreet voorbeeld met behulp van onze *webfrontend* -> *mywebapi* sample applicatie. We gebruiken een scenario waarin een ontwikkelaar, Scott, een wijziging moet aanbrengen in de *mywebapi*-service, en in die service *alleen*. De *webfrontend* hoeft niet te worden gewijzigd als onderdeel van de door Scott uitgevoerde update.
+Laten we deze ideeën zien met een concreet voor beeld met behulp van onze *webfrontend* -> *mywebapi* -voorbeeld toepassing. We gebruiken een scenario waarin een ontwikkelaar, Scott, een wijziging moet aanbrengen in de *mywebapi*-service, en in die service *alleen*. De *webfrontend* hoeft niet te worden gewijzigd als onderdeel van de door Scott uitgevoerde update.
 
 _Zonder_ Dev Spaces zou Scott maar over een paar manieren beschikken om de update te ontwikkelen en te testen, en geen van alle is daarvoor ideaal:
 * ALLE onderdelen lokaal uitvoeren, waarvoor een krachtigere ontwikkelmachine waarop Docker is geïnstalleerd en mogelijk MiniKube is vereist.
@@ -56,15 +56,15 @@ _Zonder_ Dev Spaces zou Scott maar over een paar manieren beschikken om de updat
 ### <a name="set-up-your-baseline"></a>De basislijn instellen
 We moeten eerst een basislijn voor onze services implementeren. Deze implementatie vertegenwoordigt de laatst bekende goed werkende situatie. Daardoor kunt u eenvoudig het gedrag van uw lokale code vergelijken met de ingecheckte versie. Vervolgens maakt u een onderliggende ruimte op basis van deze basislijn zodat we onze wijzigingen van *mywebapi* kunnen testen binnen de context van de grotere toepassing.
 
-1. Kloon de [voorbeeldtoepassing Dev Spaces:](https://github.com/Azure/dev-spaces)`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. Bekijk de remote branch *azds_updates:*`git checkout -b azds_updates origin/azds_updates`
+1. De [voorbeeld toepassing voor ontwikkel ruimten](https://github.com/Azure/dev-spaces)klonen:`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Bekijk de *azds_updates*van de externe vertakking:`git checkout -b azds_updates origin/azds_updates`
 1. Sluit alle F5-foutopsporingssessies voor beide services, maar houd de projecten open in de bijbehorende Visual Studio-vensters.
 1. Schakel over naar het Visual Studio-venster met het _mywebapi_-project.
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties**.
 1. Selecteer aan de linkerkant het tabblad **Debug** om de Azure Dev Spaces-instellingen weer te geven.
 1. Selecteer **Wijziging** om de ruimte te maken die wordt gebruikt wanneer u F5 of Ctrl + F5 gebruikt in de service.
-1. Selecteer in de vervolgkeuzelijst Ruimte de optie ** \<Nieuwe ruimte maken... \>**.
-1. Zorg ervoor dat de bovenliggende ruimte op ** \<geen\>is**ingesteld en voer de naam van de ruimte **dev**in. Klik op OK.
+1. Selecteer in de ruimte vervolg keuzelijst ** \<nieuwe ruimte maken... \>**.
+1. Zorg ervoor dat de bovenliggende ruimte is ingesteld ** \<op\>geen**en voer de ruimte naam **dev**in. Klik op OK.
 1. Druk op Ctrl + F5 om _mywebapi_ uit te voeren zonder het gekoppelde foutopsporingsprogramma.
 1. Schakel over naar het Visual Studio-venster met het _webfrontend_-project en druk op Ctrl+F5 om dit ook uit te voeren.
 
@@ -88,7 +88,7 @@ Doe het volgende om een nieuwe ruimte te maken:
 2. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties**.
 3. Selecteer aan de linkerkant het tabblad **Debug** om de Azure Dev Spaces-instellingen weer te geven.
 4. Van hieruit kunt u het cluster en/of de ruimte maken die wordt gebruikt wanneer u F5 of Ctrl+F5 gebruikt. *Zorg ervoor dat de Azure Dev-ruimte is geselecteerd die u eerder hebt gemaakt*.
-5. Selecteer in de vervolgkeuzelijst Ruimte de optie ** \<Nieuwe ruimte maken... \>**.
+5. Selecteer in de ruimte vervolg keuzelijst ** \<nieuwe ruimte maken... \>**.
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -122,9 +122,9 @@ Hier ziet u een diagram waarin u de werking van de verschillende ruimtes kunt zi
 Deze ingebouwde mogelijkheid van Azure Dev Spaces stelt u in staat om code end-to-end te testen in een gedeelde omgeving zonder dat ontwikkelaars de volledige groep services in hun ruimte opnieuw hoeven te maken. Voor deze routering moeten doorgifteheaders worden doorgestuurd in uw app-code, zoals uitgelegd in de vorige stap van deze handleiding.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>Code testen die wordt uitgevoerd in de _dev/scott_-ruimte
-Als u de nieuwe versie van *mywebapi* wilt testen samen met *webfrontend*, opent u de URL van het openbare toegangspunt voor *webfrontend* in de browser (bijvoorbeeld http://dev.webfrontend.123456abcdef.eus.azds.io)) en gaat u naar de pagina About. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
+Als u uw nieuwe versie van *mywebapi* in combi natie met *webfrontend*wilt testen, opent u uw browser naar de URL van het open bare toegangs punt `http://dev.webfrontend.123456abcdef.eus.azds.io`voor *webfrontend* (bijvoorbeeld) en gaat u naar de pagina over. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
 
-Voeg nu het gedeelte scott.s. toe onderdeel van de URL, zodat\:het leest iets als http -scott.s.dev.webfrontend.123456abcdef.eus.azds.io en vernieuwen van de browser. Het onderbrekingspunt dat u hebt ingesteld in het *mywebapi*-project wordt nu gevonden. Klik op F5 om door te gaan. In de browser ziet u nu het nieuwe bericht: Hello from webfrontend and mywebapi now says something new. Dit komt omdat het pad naar de bijgewerkte code in *mywebapi* wordt uitgevoerd in de _dev/scott_-ruimte.
+Voeg nu het gedeelte scott.s. toe onderdeel van de URL, zodat er iets zoals http\://Scott.s.dev.webfrontend.123456abcdef.Eus.azds.io wordt gelezen en de browser wordt vernieuwd. Het onderbrekingspunt dat u hebt ingesteld in het *mywebapi*-project wordt nu gevonden. Klik op F5 om door te gaan. In de browser ziet u nu het nieuwe bericht: Hello from webfrontend and mywebapi now says something new. Dit komt omdat het pad naar de bijgewerkte code in *mywebapi* wordt uitgevoerd in de _dev/scott_-ruimte.
 
 Zodra u een _dev_-ruimte hebt die altijd de meest recente wijzigingen bevat en ervan uitgaande dat uw toepassing is ontworpen om te profiteren van de DevSpace-routering op basis van ruimte, zoals beschreven in dit gedeelte van de zelfstudie, wordt het in het ideale geval gemakkelijk om te zien hoe Dev Spaces aanzienlijk kan helpen bij het testen van nieuwe functies in de context van de grotere toepassing. In plaats van dat u _alle_ services naar uw privéruimte moet implementeren, kunt u een privéruimte maken die is afgeleid van _dev_, en alleen de services aanroepen waaraan u daadwerkelijk werkt. De routeringsinfrastructuur van Dev Spaces zorgt voor de rest door alle services die deze kan vinden buiten uw privéruimte, terwijl de standaardwaarden terug worden gezet naar de meest recent uitgevoerde versie in de _dev_-ruimte. En nog beter: _meerdere_ ontwikkelaars kunnen actief verschillende services op hetzelfde moment in hun eigen ruimte ontwikkelen zonder elkaar te onderbreken.
 

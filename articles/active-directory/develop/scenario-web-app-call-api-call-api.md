@@ -1,6 +1,6 @@
 ---
-title: Een web-api aanbellen vanuit een web-app - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het maken van een webapp die web-API's aanroept (een beveiligde web-API aanroepen)
+title: Een web-API aanroepen vanuit een web-app-micro soft Identity platform | Azure
+description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (waarmee een beveiligde web-API wordt aangeroepen)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,20 +11,24 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 84df33137566445015848655cfecb87ba67ef123
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868720"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181678"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-API's aanroept: een web-API aanroepen
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-Api's aanroept: een web-API aanroepen
 
-Nu u een token hebt, u een beveiligde web-API aanroepen.
+Nu u een token hebt, kunt u een beveiligde web-API aanroepen.
+
+## <a name="call-a-protected-web-api"></a>Een beveiligde web-API aanroepen
+
+Het aanroepen van een beveiligde web-API is afhankelijk van uw taal en het gewenste Framework:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier is vereenvoudigde code voor de `HomeController`actie van de . Deze code krijgt een token om Microsoft Graph te bellen. Er is code toegevoegd om te laten zien hoe u Microsoft Graph als REST-API aanroepen. De URL voor de Microsoft Graph API wordt weergegeven in het bestand `webOptions`appsettings.json en wordt gelezen in een variabele met de naam:
+Hier volgt een vereenvoudigde code voor de actie van `HomeController`. Met deze code wordt een token opgehaald om Microsoft Graph aan te roepen. Code is toegevoegd om te laten zien hoe Microsoft Graph moet worden aangeroepen als een REST API. De URL voor de Microsoft Graph-API wordt opgegeven in het bestand appSettings. json en wordt gelezen in een variabele `webOptions`met de naam:
 
 ```json
 {
@@ -40,48 +44,33 @@ Hier is vereenvoudigde code voor de `HomeController`actie van de . Deze code kri
 ```csharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token.
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
- // Get the account.
- IAccount account = await application.GetAccountAsync(accountIdentifier);
+ // Use the access token to call a protected web API.
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ 
+  var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 
- // Special case for guest users, because the guest ID / tenant ID are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
+  if (response.StatusCode == HttpStatusCode.OK)
+  {
+   var content = await response.Content.ReadAsStringAsync();
 
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
+   dynamic me = JsonConvert.DeserializeObject(content);
+   return me;
+  }
 
- // Calls the web API (Microsoft Graph in this case).
- HttpClient httpClient = new HttpClient();
- httpClient.DefaultRequestHeaders.Authorization =
-     new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
- var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
-
- if (response.StatusCode == HttpStatusCode.OK)
- {
-  var content = await response.Content.ReadAsStringAsync();
-
-  dynamic me = JsonConvert.DeserializeObject(content);
-  return me;
- }
-
- ViewData["Me"] = me;
- return View();
+  ViewData["Me"] = me;
+  return View();
 }
 ```
 
 > [!NOTE]
-> U hetzelfde principe gebruiken om elke web-API aan te roepen.
+> U kunt dezelfde methode gebruiken om een web-API aan te roepen.
 >
-> De meeste Azure-web-API's bieden een SDK die het aanroepen van de API vereenvoudigt. Dit geldt ook voor Microsoft Graph. In het volgende artikel leert u waar u een zelfstudie vinden die het api-gebruik illustreert.
+> De meeste Azure-Web-Api's bieden een SDK die het aanroepen van de API vereenvoudigt. Dit geldt ook voor Microsoft Graph. In het volgende artikel leert u hoe u een zelf studie kunt vinden die API-gebruik illustreert.
 
 # <a name="java"></a>[Java](#tab/java)
 
