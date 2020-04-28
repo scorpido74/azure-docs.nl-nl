@@ -1,19 +1,21 @@
 ---
+title: bestand opnemen
+description: bestand opnemen
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75752162"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865603"
 ---
 Met de aanzienlijke groei van VM's die in Azure worden gehost, is het belangrijk om prestatie- en gezondheidsproblemen te identificeren die van invloed zijn op toepassingen en infrastructuurservices die ze ondersteunen. Basisbewaking wordt standaard met Azure geleverd door de metrische typen CPU-gebruik, schijfgebruik, geheugengebruik en netwerkverkeer dat door de hosthypervisor wordt verzameld. Aanvullende metrische en logboekgegevens kunnen worden verzameld met behulp van [extensies](../articles/virtual-machines/windows/extensions-features.md) om diagnostische gegevens op uw VM's te configureren vanuit het gastbesturingssysteem.
 
-Azure Monitor biedt gecentraliseerde bewaking met uitgebreide functies zoals Azure Monitor voor VM's om prestatie- en gezondheidsproblemen met het gastbesturingssysteem, .NET- of Java-webtoepassingscomponenten die in de VM worden uitgevoerd, op te sporen en te diagnosticeren. en Application Insights.
+Azure Monitor biedt gecentraliseerde bewaking met uitgebreide functies zoals Azure Monitor voor VM's en Application Insights om prestatie- en gezondheidsproblemen met het gastbesturingssysteem, .NET- of Java-webtoepassingscomponenten die in de VM worden uitgevoerd, op te sporen en te diagnosticeren.
 
 ## <a name="diagnostics-and-metrics"></a>Diagnostiek en statistieken 
 
@@ -68,7 +70,7 @@ Enkele van de dingen die u doen met diagnostische logboeken zijn:
 
 Voor de zichtbaarheid van de toepassing of service die wordt ondersteund door de azure VM- en virtuele machineschaalsets, u problemen met het gastbesturingssysteem of de werkbelasting die in de VM wordt uitgevoerd, worden geïdentificeerd om te begrijpen of dit van invloed is op de beschikbaarheid of prestaties van de toepassing of dat dit een probleem is met de toepassing, en schakelt u zowel [Azure Monitor voor VM's](../articles/azure-monitor/insights/vminsights-overview.md) als [Application Insights in.](../articles/azure-monitor/app/app-insights-overview.md)
 
-Azure Monitor voor VM's bewaakt uw Virtuele Azure-machines (VM) op schaal door de prestaties en status van uw Windows- en Linux-VM's te analyseren, inclusief de verschillende processen en onderling verbonden afhankelijkheden van andere resources en externe processen Ontdekt. Het bevat verschillende trendprestatiegrafieken om te helpen bij het onderzoeken van problemen en het beoordelen van de capaciteit van uw VM's. De afhankelijkheidskaart toont bewaakte en niet-bewaakte machines, mislukte en actieve netwerkverbindingen tussen processen en deze machines en toont trenddiagrammen met standaard netwerkverbindingsstatistieken. In combinatie met Application Insights controleert u uw toepassing en legt u telemetrie vast, zoals HTTP-verzoeken, uitzonderingen, enz. Configureer [Azure Monitor-waarschuwingen](../articles/azure-monitor/platform/alerts-overview.md) om u te waarschuwen voor belangrijke voorwaarden die zijn gedetecteerd door bewakingsgegevens die zijn verzameld door Azure Monitor voor VM's.
+Azure Monitor voor VM's bewaakt uw Virtuele Azure-machines (VM) op schaal door de prestaties en status van uw Windows- en Linux-VM's te analyseren, inclusief de verschillende processen en onderling verbonden afhankelijkheden van andere resources en externe processen die worden ontdekt. Het bevat verschillende trendprestatiegrafieken om te helpen bij het onderzoeken van problemen en het beoordelen van de capaciteit van uw VM's. De afhankelijkheidskaart toont bewaakte en niet-bewaakte machines, mislukte en actieve netwerkverbindingen tussen processen en deze machines en toont trenddiagrammen met standaard netwerkverbindingsstatistieken. In combinatie met Application Insights controleert u uw toepassing en legt u telemetrie vast, zoals HTTP-verzoeken, uitzonderingen, enz. Configureer [Azure Monitor-waarschuwingen](../articles/azure-monitor/platform/alerts-overview.md) om u te waarschuwen voor belangrijke voorwaarden die zijn gedetecteerd door bewakingsgegevens die zijn verzameld door Azure Monitor voor VM's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

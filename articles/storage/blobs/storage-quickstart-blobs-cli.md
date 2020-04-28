@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: tamram
-ms.openlocfilehash: 237982c2135430891022ab7a823f8374844e8d90
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117536"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176682"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Quick Start: blobs maken, downloaden en vermelden met Azure CLI
 
@@ -163,7 +163,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u bestanden overbrengt tussen een lokaal bestands systeem en een container in Azure Blob Storage. Raadpleeg de zelfstudie voor het werken met Azure Blob Storage, voor meer informatie over het werken met blobs in Azure Storage.
+In deze Quick Start hebt u geleerd hoe u bestanden overbrengt tussen een lokaal bestands systeem en een container in Azure Blob Storage. Voor meer informatie over het werken met Blob Storage met behulp van Azure CLI kunt u Azure CLI-voor beelden voor Blob-opslag verkennen.
 
 > [!div class="nextstepaction"]
-> [Procedure: Blob-opslagbewerkingen uitvoeren met Azure CLI](storage-how-to-use-blobs-cli.md)
+> [Azure CLI-voor beelden voor Blob Storage](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

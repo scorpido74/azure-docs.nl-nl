@@ -1,6 +1,6 @@
 ---
-title: Aanmelden voor een wachtwoordloze beveiligingssleutel (voorbeeld) - Azure Active Directory
-description: Aanmelding met wachtwoordloze beveiligingssleutel bij Azure AD inschakelen met FIDO2-beveiligingssleutels (voorbeeld)
+title: Aanmeld wachtwoord voor een beveiligings sleutel (preview)-Azure Active Directory
+description: Aanmeldings wachtwoord zonder wacht woord inschakelen voor Azure AD met behulp van FIDO2-beveiligings sleutels (preview-versie)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,96 +12,96 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450918"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden voor een wachtwoordloze beveiligingssleutel inschakelen (voorbeeld)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
-Voor bedrijven die tegenwoordig wachtwoorden gebruiken en een gedeelde pc-omgeving hebben, bieden beveiligingssleutels werknemers een naadloze manier om zich te verifiëren zonder een gebruikersnaam of wachtwoord in te voeren. Beveiligingssleutels zorgen voor een hogere productiviteit voor werknemers en hebben een betere beveiliging.
+Voor ondernemingen die tegenwoordig wacht woorden gebruiken en een gedeelde PC-omgeving hebben, bieden beveiligings sleutels een naadloze manier voor het verifiëren van werk nemers zonder een gebruikers naam of wacht woord in te voeren. Beveiligings sleutels bieden een verbeterde productiviteit voor werk nemers en hebben betere beveiliging.
 
-Dit document richt zich op het inschakelen van verificatie op basis van beveiligingssleutel op basis van wachtwoord. Aan het einde van dit artikel u zich aanmelden bij webgebaseerde toepassingen met uw Azure AD-account met behulp van een FIDO2-beveiligingssleutel.
+Dit document is gericht op het inschakelen van op wacht woord gebaseerde verificatie op basis van een sleutel. Aan het einde van dit artikel kunt u zich met behulp van een FIDO2-beveiligings sleutel aanmelden bij webtoepassingen met uw Azure AD-account.
 
 |     |
 | --- |
-| FIDO2-beveiligingssleutels zijn een openbare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) meer informatie over voorvertoningen|
+| FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
 |     |
 
 ## <a name="requirements"></a>Vereisten
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Voorbeeld van registratie van gecombineerde beveiligingsgegevens](concept-registration-mfa-sspr-combined.md)
-- Compatibele [FIDO2-beveiligingssleutels](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN vereist Windows 10 versie 1809 of hoger**
+- [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
+- Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
+- Webauthn vereist Windows 10 versie 1809 of hoger * *
 
-Als u beveiligingssleutels wilt gebruiken voor het inloggen op web-apps en -services, moet u een browser hebben die het WebAuthN-protocol ondersteunt. Deze omvatten Microsoft Edge, Chrome, Firefox en Safari.
+Als u beveiligings sleutels wilt gebruiken om u aan te melden bij Web-apps en-services, moet u een browser hebben die het webauthn-protocol ondersteunt. Dit zijn onder andere micro soft Edge, Chrome, Firefox en Safari.
 
-## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden op voorbeeld
+## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden voor de preview-versie
 
-Azure AD-apparaten waarmee u wordt getest, moeten Windows 10-versie 1809 of hoger uitvoeren. De beste ervaring is op Windows 10 versie 1903 of hoger.
+In azure AD gekoppelde apparaten waarvoor u een pilot uitvoert, moeten Windows 10 versie 1809 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
 
-Hybride Azure AD-apparaten moeten Windows 10 Insider Build 18945 of nieuwer uitvoeren.
+Voor hybride Azure AD gekoppelde apparaten moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
 
-## <a name="enable-passwordless-authentication-method"></a>Verificatiemethode zonder wachtwoord inschakelen
+## <a name="enable-passwordless-authentication-method"></a>Verificatie methode met wacht woord inschakelen
 
 ### <a name="enable-the-combined-registration-experience"></a>De gecombineerde registratie-ervaring inschakelen
 
-Registratiefuncties voor wachtwoordloze verificatiemethoden zijn afhankelijk van de gecombineerde registratiefunctie. Volg de stappen in het artikel [Schakel gecombineerde beveiligingsgegevensregistratie (voorbeeld) in](howto-registration-mfa-sspr-combined.md)om gecombineerde registratie in te schakelen.
+Registratie functies voor verificatie methoden met een wacht woord zijn afhankelijk van de functie voor gecombineerde registratie. Volg de stappen in het artikel [registratie van gecombineerde beveiligings gegevens inschakelen (preview)](howto-registration-mfa-sspr-combined.md)om gecombineerde registratie in te scha kelen.
 
-### <a name="enable-fido2-security-key-method"></a>Fido2-beveiligingssleutelmethode inschakelen
+### <a name="enable-fido2-security-key-method"></a>FIDO2-beveiligings sleutel methode inschakelen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Blader naar het**verificatiemethodebeleid voor verificatiemethoden** > voor Azure Active > **Directory-beveiliging** > **(Voorbeeld)**. **Azure Active Directory**
-1. Kies onder de methode **FIDO2 Security Key**de volgende opties:
-   1. **Inschakelen** - Ja of Nee
-   1. **Doel** - Alle gebruikers of Selectie-gebruikers
-1. Sla de configuratie **op.**
+1. Blader naar **Azure Active Directory** > **beleid voor verificatie methode**voor**beveiligings** > **verificatie methoden** > (preview).
+1. Kies onder de **beveiligings sleutel methode FIDO2**de volgende opties:
+   1. **Inschakelen** -ja of Nee
+   1. **Doel** -alle gebruikers of Selecteer gebruikers
+1. **Sla** de configuratie op.
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>Gebruikersregistratie en -beheer van FIDO2-beveiligingssleutels
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>Gebruikers registratie en het beheer van FIDO2-beveiligings sleutels
 
-1. Blader [https://myprofile.microsoft.com](https://myprofile.microsoft.com)naar .
-1. Log in als je dat nog niet hebt gedaan.
-1. Klik **op Beveiligingsgegevens**.
-   1. Als de gebruiker al ten minste één Azure Multi-Factor Authentication-methode heeft geregistreerd, kan hij of zij onmiddellijk een FIDO2-beveiligingssleutel registreren.
-   1. Als ze niet ten minste één Azure Multi-Factor Authentication-methode hebben geregistreerd, moeten ze er een toevoegen.
-1. Voeg een FIDO2-beveiligingssleutel toe door op **Methode toevoegen** te klikken en **beveiligingssleutel**te kiezen .
-1. Kies **USB-apparaat** of **NFC-apparaat**.
-1. Maak uw sleutel klaar en kies **Volgende**.
-1. Er verschijnt een vakje en vraagt de gebruiker om een pincode voor uw beveiligingssleutel te maken/invoeren en vervolgens het vereiste gebaar voor de sleutel uit te voeren, biometrisch of aanraken.
-1. De gebruiker wordt teruggestuurd naar de gecombineerde registratie-ervaring en gevraagd om een zinvolle naam voor de sleutel te geven, zodat de gebruiker kan identificeren welke als ze meerdere hebben. Klik op **Volgende**.
-1. Klik **op Gereed** om het proces te voltooien.
+1. Blader naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Meld u aan als dat nog niet het geval is.
+1. Klik op **beveiligings gegevens**.
+   1. Als de gebruiker al ten minste één Azure Multi-Factor Authentication-methode heeft geregistreerd, kunnen ze onmiddellijk een FIDO2-beveiligings sleutel registreren.
+   1. Als er niet ten minste één Azure Multi-Factor Authentication-methode is geregistreerd, moeten deze er een worden toegevoegd.
+1. Voeg een FIDO2-beveiligings sleutel toe door te klikken op **methode toevoegen** en **beveiligings sleutel**te kiezen.
+1. Kies een **USB-apparaat** of **NFC-apparaat**.
+1. Laat uw sleutel gereed en kies **volgende**.
+1. Er wordt een vak weer gegeven waarin de gebruiker wordt gevraagd een pincode voor uw beveiligings sleutel te maken of in te voeren. vervolgens moet u de vereiste penbeweging voor de sleutel, biometrisch of touch, uitvoeren.
+1. De gebruiker wordt teruggekeerd naar de gecombineerde registratie-ervaring en er wordt gevraagd om een duidelijke naam op te geven voor de sleutel, zodat de gebruiker kan identificeren dat er meerdere zijn. Klik op **Volgende**.
+1. Klik op **gereed** om het proces te volt ooien.
 
-## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met wachtwoordloze referenties
+## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met een wacht woord zonder referenties
 
-In het onderstaande voorbeeld heeft een gebruiker zijn FIDO2-beveiligingssleutel al ingericht. De gebruiker kan ervoor kiezen om in te loggen op het web met hun FIDO2-beveiligingssleutel in een ondersteunde browser op Windows 10 versie 1809 of hoger.
+In het voor beeld onder een gebruiker heeft de FIDO2-beveiligings sleutel al ingericht. De gebruiker kan ervoor kiezen om zich aan te melden op het web met de beveiligings sleutel FIDO2 in een ondersteunde browser in Windows 10 versie 1809 of hoger.
 
-![Aanmeldingscode Microsoft Edge van beveiligingssleutel](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![Aanmelden voor beveiligings sleutel micro soft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>Probleemoplossing en feedback
+## <a name="troubleshooting-and-feedback"></a>Problemen oplossen en feedback
 
-Als u feedback wilt delen of problemen wilt ondervinden tijdens het bekijken van deze functie, deelt u via de Windows Feedback Hub-app de volgende stappen:
+Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken van deze functie, kunt u met de volgende stappen delen via de Windows feedback hub-app:
 
-1. Start **de feedbackhub** en zorg ervoor dat je bent aangemeld.
-1. Feedback verzenden onder de volgende indeling:
-   - Categorie: Beveiliging en privacy
+1. Start de **feedback-hub** en zorg ervoor dat u bent aangemeld.
+1. Feedback verzenden in de volgende categorisatie:
+   - Categorie: beveiliging en privacy
    - Subcategorie: FIDO
 1. Als u logboeken wilt vastleggen, gebruikt u de optie om **mijn probleem opnieuw te maken**
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="security-key-provisioning"></a>Beveiliging sleutel provisioning
+### <a name="security-key-provisioning"></a>Inrichten van beveiligings sleutel
 
-Het inrichten en de-inrichten van beveiligingssleutels door beheerders is niet beschikbaar in de openbare preview.
+Het inrichten van de beheerder en het ongedaan maken van de inrichting van beveiligings sleutels is niet beschikbaar in de open bare preview.
 
 ### <a name="upn-changes"></a>UPN-wijzigingen
 
-We werken aan het ondersteunen van een functie waarmee UPN-wijzigingen op hybride Azure AD kunnen worden samengevoegd en Azure AD-apparaten. Als de UPN van een gebruiker verandert, u fido2-beveiligingssleutels niet langer wijzigen om rekening te houden met de wijziging. De resolutie is om het apparaat te resetten en de gebruiker moet opnieuw registreren.
+We werken aan het ondersteunen van een functie waarmee UPN kan worden gewijzigd op hybride Azure AD en aan Azure AD gekoppelde apparaten. Als de UPN van een gebruiker wordt gewijzigd, kunt u FIDO2-beveiligings sleutels niet meer wijzigen om de wijziging aan te brengen. De oplossing is het opnieuw instellen van het apparaat en de gebruiker moet zich opnieuw registreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[FIDO2-beveiligingssleutel Windows 10-aanmelding](howto-authentication-passwordless-security-key-windows.md)
+[FIDO2 beveiligings sleutel voor Windows 10 aanmelden](howto-authentication-passwordless-security-key-windows.md)
 
 [FIDO2-verificatie inschakelen voor on-premises resources](howto-authentication-passwordless-security-key-on-premises.md)
 

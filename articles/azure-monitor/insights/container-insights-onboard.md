@@ -2,13 +2,13 @@
 title: Azure Monitor voor containers inschakelen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt begrijpen hoe uw container presteert en welke prestatie problemen zijn geïdentificeerd.
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185928"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -20,7 +20,9 @@ In dit artikel vindt u een overzicht van de beschik bare opties voor het instell
 
 - Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises met behulp van AKS-engine.
 
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure Red Hat open Shift](../../openshift/intro-openshift.md) versie 3. x en 4. x
+
+- [Red Hat open Shift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) versie 4. x
 
 Azure Monitor voor containers kunnen worden ingeschakeld voor nieuwe of een of meer bestaande implementaties van Kubernetes met behulp van de volgende ondersteunde methoden:
 
@@ -62,8 +64,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 |Agentresource|Poorten |
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 | 
-| *.blob.core.windows.net | 443 |
+| *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
@@ -75,7 +76,6 @@ De informatie in de volgende tabel bevat de configuratie gegevens van de proxy e
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Gegevensopname |
 | *. oms.opinsights.azure.cn | 443 | OMS-onboarding |
-| *.blob.core.windows.net | 443 | Wordt gebruikt voor het bewaken van uitgaande verbindingen. |
 | microsoft.com | 80 | Wordt gebruikt voor de netwerk verbinding. Dit is alleen vereist als de versie van de agent installatie kopie ciprod09262019 of eerder is. |
 | dc.services.visualstudio.com | 443 | Voor agent-telemetrie met behulp van open bare Azure-Cloud Application Insights. |
 
@@ -85,7 +85,6 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 |--------------|------|-------------|
 | *. ods.opinsights.azure.us | 443 | Gegevensopname |
 | *. oms.opinsights.azure.us | 443 | OMS-onboarding |
-| *.blob.core.windows.net | 443 | Wordt gebruikt voor het bewaken van uitgaande verbindingen. |
 | microsoft.com | 80 | Wordt gebruikt voor de netwerk verbinding. Dit is alleen vereist als de versie van de agent installatie kopie ciprod09262019 of eerder is. |
 | dc.services.visualstudio.com | 443 | Voor agent-telemetrie met behulp van open bare Azure-Cloud Application Insights. |
 
