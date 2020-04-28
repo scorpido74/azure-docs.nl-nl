@@ -1,6 +1,6 @@
 ---
-title: Diagnostische logboeken voor Azure Data Lake Storage Gen1 | Microsoft Documenten
-description: 'Informatie over het instellen en openen van diagnostische logboeken voor Azure Data Lake Storage Gen1 '
+title: Diagnostische logboeken weer geven voor Azure Data Lake Storage Gen1 | Microsoft Docs
+description: 'Meer informatie over het instellen en openen van Diagnostische logboeken voor Azure Data Lake Storage Gen1 '
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,83 +13,83 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60878684"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnostische logboeken openen voor Azure Data Lake Storage Gen1
-Lees diagnostische logboekregistratie voor uw Azure Data Lake Storage Gen1-account en hoe u de logboeken weergeven die voor uw account zijn verzameld.
+Meer informatie over het inschakelen van diagnostische logboek registratie voor uw Azure Data Lake Storage Gen1-account en het weer geven van de logboeken die voor uw account zijn verzameld.
 
-Organisaties kunnen diagnostische logboekregistratie voor hun Azure Data Lake Storage Gen1-account inschakelen om controlepaden voor gegevenstoegang te verzamelen die informatie bevatten, zoals een lijst van gebruikers die toegang hebben tot de gegevens, hoe vaak de gegevens worden geopend, hoeveel gegevens in het account worden opgeslagen, enz. Wanneer ingeschakeld, worden de diagnostiek en/of verzoeken op een best-effort basis geregistreerd. Zowel aanvragen als logboekvermeldingen voor diagnostische gegevens worden alleen gemaakt als er aanvragen zijn ingediend tegen het eindpunt van de service.
+Organisaties kunnen diagnostische logboek registratie inschakelen voor hun Azure Data Lake Storage Gen1-account om gegevens toegangscontrole te verzamelen die informatie biedt, zoals een lijst met gebruikers die toegang hebben tot de gegevens, hoe vaak de gegevens worden geopend, hoeveel gegevens er worden opgeslagen in het account, enzovoort. Wanneer deze optie is ingeschakeld, worden de diagnostische gegevens en/of aanvragen op basis van de beste inspanningen geregistreerd. Zowel aanvragen als logboek vermeldingen voor diagnostische gegevens worden alleen gemaakt als er aanvragen voor het service-eind punt zijn gedaan.
 
 ## <a name="prerequisites"></a>Vereisten
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage Gen1-account**. Volg de instructies bij [Aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure Portal.](data-lake-store-get-started-portal.md)
+* **Azure data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-get-started-portal.md).
 
-## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Diagnostische logboekregistratie inschakelen voor uw Data Lake Storage Gen1-account
-1. Meld u aan bij de nieuwe [Azure-portal](https://portal.azure.com).
-2. Open uw Data Lake Storage Gen1-account en klik vanaf uw Data Lake Storage Gen1-accountblad op **Diagnostische instellingen**.
-3. Klik in het **blad Diagnostische instellingen** op Diagnostische gegevens **inschakelen**.
+## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Diagnostische logboek registratie inschakelen voor uw Data Lake Storage Gen1-account
+1. Meld u aan bij de nieuwe [Azure Portal](https://portal.azure.com).
+2. Open uw Data Lake Storage Gen1-account en klik op de Blade Data Lake Storage Gen1 account op **Diagnostische instellingen**.
+3. Klik op de Blade **Diagnostische instellingen** op **Diagnostische gegevens inschakelen**.
 
     ![registratie in het diagnoselogboek inschakelen](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Diagnostische logboeken inschakelen")
 
-3. Breng in het blad **Diagnostische instellingen** de volgende wijzigingen aan om diagnostische logboekregistratie te configureren.
+3. Voer op de Blade **Diagnostische instellingen** de volgende wijzigingen uit om diagnostische logboek registratie in te stellen.
    
     ![registratie in het diagnoselogboek inschakelen](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Diagnostische logboeken inschakelen")
    
-   * Voer voor **Naam**een waarde in voor de configuratie van het diagnostisch logboek.
-   * U ervoor kiezen om de gegevens op verschillende manieren op te slaan/verwerken.
+   * Voer bij **naam**een waarde in voor de configuratie van het diagnostische logboek.
+   * U kunt ervoor kiezen om de gegevens op verschillende manieren op te slaan/te verwerken.
      
-        * Selecteer de optie om **te archiveren naar een opslagaccount** om logboeken op te slaan in een Azure Storage-account. U gebruikt deze optie als u de gegevens wilt archiveren die op een later tijdstip worden verwerkt. Als u deze optie selecteert, moet u een Azure Storage-account opgeven om de logboeken op te slaan.
+        * Selecteer de optie voor het **archiveren naar een opslag account** om logboeken op te slaan in een Azure Storage-account. U gebruikt deze optie als u de gegevens wilt archiveren die op een later tijdstip door batch worden verwerkt. Als u deze optie selecteert, moet u een Azure Storage-account opgeven om de logboeken op te slaan.
         
-        * Selecteer de optie streamen **naar een gebeurtenishub** om logboekgegevens naar een Azure Event Hub te streamen. Hoogstwaarschijnlijk gebruikt u deze optie als u een downstream verwerkingspijplijn hebt om binnenkomende logboeken in realtime te analyseren. Als u deze optie selecteert, moet u de gegevens opgeven voor de Azure Event Hub die u wilt gebruiken.
+        * Selecteer de optie om **te streamen naar een event hub** om logboek gegevens naar een Azure Event hub te streamen. Waarschijnlijk zult u deze optie gebruiken als u een downstream verwerkings pijplijn hebt om inkomende Logboeken in realtime te analyseren. Als u deze optie selecteert, moet u de details opgeven voor de Azure Event hub die u wilt gebruiken.
 
-        * Selecteer de optie die u **wilt verzenden naar logboekanalyse** om de Azure Monitor-service te gebruiken om de gegenereerde logboekgegevens te analyseren. Als u deze optie selecteert, moet u de gegevens opgeven voor de werkruimte Log Analytics die u de loganalyse zou gebruiken. Zie [Gegevens weergeven of analyseren die zijn verzameld met Azure Monitor-logboeken, zoeken naar](../azure-monitor/learn/tutorial-viewdata.md) details over het gebruik van Azure Monitor-logboeken.
+        * Selecteer de optie om **naar log Analytics te verzenden** om de Azure Monitor-service te gebruiken om de gegenereerde logboek gegevens te analyseren. Als u deze optie selecteert, moet u de Details voor de Log Analytics-werk ruimte opgeven waarvoor u de logboek analyse uitvoeren wilt gebruiken. Zie [verzamelde gegevens weer geven of analyseren met Azure monitor logboeken zoeken](../azure-monitor/learn/tutorial-viewdata.md) voor meer informatie over het gebruik van Azure monitor-Logboeken.
      
-   * Geef op of u controlelogboeken of aanvraaglogboeken of beide wilt opvragen.
-   * Geef het aantal dagen op waarvoor de gegevens moeten worden bewaard. Bewaar is alleen van toepassing als u Azure-opslagaccount gebruikt om logboekgegevens te archiveren.
+   * Geef op of u audit Logboeken of aanvraag Logboeken of beide wilt ophalen.
+   * Geef het aantal dagen op dat de gegevens moeten worden bewaard. Bewaren is alleen van toepassing als u Azure Storage-account gebruikt om logboek gegevens te archiveren.
    * Klik op **Opslaan**.
 
-Zodra u diagnostische instellingen hebt ingeschakeld, u de logboeken bekijken op het tabblad **Diagnostische logboeken.**
+Wanneer u Diagnostische instellingen hebt ingeschakeld, kunt u de logboeken bekijken op het tabblad **Diagnostische logboeken** .
 
-## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>Diagnostische logboeken weergeven voor uw Data Lake Storage Gen1-account
-Er zijn twee manieren om de logboekgegevens voor uw Data Lake Storage Gen1-account te bekijken.
+## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>Diagnostische logboeken voor uw Data Lake Storage Gen1-account weer geven
+Er zijn twee manieren om de logboek gegevens voor uw Data Lake Storage Gen1-account weer te geven.
 
-* Vanuit de weergave Gegevensmeeropslag Gen1-accountinstellingen
-* Vanuit het Azure Storage-account waar de gegevens worden opgeslagen
+* In de weer gave instellingen van Data Lake Storage Gen1 account
+* Van het Azure Storage-account waar de gegevens zijn opgeslagen
 
-### <a name="using-the-data-lake-storage-gen1-settings-view"></a>De instellingenweergave Voor Gegevensmeeropslag Gen1 gebruiken
-1. Klik in het blade **Settings** Van uw Data Lake Storage Gen1-accountinstellingen op **Diagnostische logboeken**.
+### <a name="using-the-data-lake-storage-gen1-settings-view"></a>De weer gave Data Lake Storage Gen1 instellingen gebruiken
+1. Klik op de Blade **instellingen** van data Lake Storage gen1 account op **Diagnostische logboeken**.
    
-    ![Diagnostische logboeken weergeven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Diagnostische logboeken weergeven") 
-2. In het blad **Diagnostische logboeken** ziet u de logboeken die zijn gecategoriseerd **door controlelogboeken** en **aanvraaglogboeken**.
+    ![Diagnostische logboeken weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Diagnostische logboeken weergeven") 
+2. Op de Blade **Diagnostische logboeken** ziet u de logboeken die zijn gecategoriseerd door **audit logboeken** en **Logboeken aanvragen**.
    
-   * Aanvraaglogboeken leggen elke API-aanvraag vast die is gedaan op het Data Lake Storage Gen1-account.
-   * Audit logs zijn vergelijkbaar met het aanvragen van logboeken, maar bieden een veel meer gedetailleerde uitsplitsing van de bewerkingen die worden uitgevoerd op de Data Lake Storage Gen1 account. Een enkele api-aanroep voor uploaden in aanvraaglogboeken kan bijvoorbeeld resulteren in meerdere bewerkingen 'Toevoegen' in de controlelogboeken.
-3. Als u de logboeken wilt downloaden, klikt u op de **koppeling Downloaden** voor elke logboekvermelding.
+   * De aanvraag logboeken vastleggen elke API-aanvraag die is gemaakt voor het Data Lake Storage Gen1-account.
+   * Audit logboeken zijn vergelijkbaar met aanvraag logboeken, maar bieden een veel gedetailleerde uitsplitsing van de bewerkingen die worden uitgevoerd op het Data Lake Storage Gen1-account. Eén voor beeld van een API-aanroep in de aanvraag logboeken kan ertoe leiden dat meerdere toevoeg bewerkingen worden uitgevoerd in de audit Logboeken.
+3. Als u de logboeken wilt downloaden, klikt u op de **Download** koppeling voor elke logboek vermelding.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Vanuit het Azure Storage-account dat logboekgegevens bevat
-1. Open het Azure Storage-accountblad dat is gekoppeld aan Data Lake Storage Gen1 voor logboekregistratie en klik op Blobs. Het **Blob-serviceblad** bevat twee containers.
+### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Van het Azure Storage-account dat logboek gegevens bevat
+1. Open de Blade Azure Storage account die is gekoppeld aan Data Lake Storage Gen1 voor logboek registratie en klik vervolgens op blobs. Op de Blade **BLOB service** worden twee containers weer gegeven.
    
-    ![Diagnostische logboekregistratie weergeven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Diagnostische logboeken weergeven")
+    ![Diagnostische logboek registratie weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Diagnostische logboeken weergeven")
    
-   * De container **insights-logs-audit** bevat de auditlogs.
-   * De container **insights-logs-requests** bevatten de aanvraaglogboeken.
-2. Binnen deze containers worden de logboeken opgeslagen onder de volgende structuur.
+   * De container **Insights-logs-audit** bevat de audit Logboeken.
+   * De container **Insights-logboeken-aanvragen** bevat de logboeken van de aanvraag.
+2. In deze containers worden de Logboeken opgeslagen onder de volgende structuur.
    
-    ![Diagnostische logboekregistratie weergeven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Diagnostische logboeken weergeven")
+    ![Diagnostische logboek registratie weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Diagnostische logboeken weergeven")
    
-    Zo kan het volledige pad naar een controlelogboek`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Een voor beeld: het volledige pad naar een audit logboek kan worden`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Op dezelfde manier kan het volledige pad naar een aanvraaglogboek`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Het volledige pad naar een aanvraag logboek kan ook worden`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## <a name="understand-the-structure-of-the-log-data"></a>De structuur van de loggegevens begrijpen
-De controle- en aanvraaglogboeken zijn in een JSON-indeling. In deze sectie kijken we naar de structuur van JSON voor aanvraag- en auditlogs.
+## <a name="understand-the-structure-of-the-log-data"></a>Inzicht in de structuur van de logboek gegevens
+De audit-en aanvraag logboeken hebben een JSON-indeling. In deze sectie kijken we naar de structuur van JSON voor aanvraag-en audit Logboeken.
 
 ### <a name="request-logs"></a>Logboeken aanvragen
-Hier is een voorbeeld vermelding in de JSON-geformatteerd aanvraaglogboek. Elke blob heeft één hoofdobject met records genaamd **records** die een array van logboekobjecten bevat.
+Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-indeling. Elke BLOB heeft één hoofd object met de naam **records** die een matrix met logboek objecten bevatten.
 
     {
     "records": 
@@ -112,31 +112,31 @@ Hier is een voorbeeld vermelding in de JSON-geformatteerd aanvraaglogboek. Elke 
       ]
     }
 
-#### <a name="request-log-schema"></a>Logboekschema aanvragen
-| Name | Type | Beschrijving |
+#### <a name="request-log-schema"></a>Schema voor aanvraag logboek
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| tijd |Tekenreeks |De tijdstempel (in UTC) van het logboek |
-| resourceId |Tekenreeks |De id van de resource waarop de bewerking plaatsvond |
-| category |Tekenreeks |De logcategorie. Bijvoorbeeld **aanvragen**. |
-| operationName |Tekenreeks |Naam van de bewerking die is geregistreerd. Bijvoorbeeld getfilestatus. |
+| tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
+| resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
+| category |Tekenreeks |De logboek categorie. Bijvoorbeeld **aanvragen**. |
+| operationName |Tekenreeks |De naam van de bewerking die is geregistreerd. Bijvoorbeeld getfilestatus. |
 | resultType |Tekenreeks |De status van de bewerking, bijvoorbeeld 200. |
-| callerIpAddress |Tekenreeks |Het IP-adres van de klant die het verzoek indient |
-| correlationId |Tekenreeks |De id van het logboek dat kan worden gebruikt om een reeks gerelateerde logboekvermeldingen samen te voegen |
+| callerIpAddress |Tekenreeks |Het IP-adres van de client die de aanvraag doet |
+| correlationId |Tekenreeks |De ID van het logboek dat kan worden gebruikt om een set gerelateerde logboek vermeldingen samen te groeperen |
 | identity |Object |De identiteit die het logboek heeft gegenereerd |
 | properties |JSON |Zie hieronder voor meer informatie |
 
-#### <a name="request-log-properties-schema"></a>Schema voor logboekeigenschappen aanvragen
-| Name | Type | Beschrijving |
+#### <a name="request-log-properties-schema"></a>Schema eigenschappen van het aanvraag logboek
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| HttpMethod |Tekenreeks |De HTTP-methode die voor de bewerking wordt gebruikt. Bijvoorbeeld, GET. |
-| Pad |Tekenreeks |Het pad waarop de bewerking is uitgevoerd |
-| AanvraagContentLengte |int |De inhoudsduur van de HTTP-aanvraag |
-| ClientRequestId |Tekenreeks |De id die dit verzoek op unieke wijze identificeert |
-| StartTime |Tekenreeks |Het tijdstip waarop de server het verzoek heeft ontvangen |
+| HttpMethod |Tekenreeks |De HTTP-methode die wordt gebruikt voor de bewerking. Bijvoorbeeld ophalen. |
+| Pad |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
+| RequestContentLength |int |De lengte van de inhoud van de HTTP-aanvraag |
+| ClientRequestId |Tekenreeks |De unieke ID voor deze aanvraag |
+| StartTime |Tekenreeks |Het tijdstip waarop de server de aanvraag heeft ontvangen |
 | EndTime |Tekenreeks |Het tijdstip waarop de server een antwoord heeft verzonden |
 
 ### <a name="audit-logs"></a>Auditlogboeken
-Hier is een voorbeeld vermelding in de JSON-geformatteerd audit log. Elke blob heeft één hoofdobject met records genaamd **records** die een array van logboekobjecten bevat
+Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeling. Elke BLOB heeft één hoofd object met de naam **records** dat een matrix met logboek objecten bevat
 
     {
     "records": 
@@ -160,25 +160,25 @@ Hier is een voorbeeld vermelding in de JSON-geformatteerd audit log. Elke blob h
     }
 
 #### <a name="audit-log-schema"></a>Schema van auditlogboek
-| Name | Type | Beschrijving |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| tijd |Tekenreeks |De tijdstempel (in UTC) van het logboek |
-| resourceId |Tekenreeks |De id van de resource waarop de bewerking plaatsvond |
-| category |Tekenreeks |De logcategorie. Bijvoorbeeld **Audit**. |
-| operationName |Tekenreeks |Naam van de bewerking die is geregistreerd. Bijvoorbeeld getfilestatus. |
+| tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
+| resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
+| category |Tekenreeks |De logboek categorie. Bijvoorbeeld **audit**. |
+| operationName |Tekenreeks |De naam van de bewerking die is geregistreerd. Bijvoorbeeld getfilestatus. |
 | resultType |Tekenreeks |De status van de bewerking, bijvoorbeeld 200. |
 | resultSignature |Tekenreeks |Meer informatie over de bewerking. |
-| correlationId |Tekenreeks |De id van het logboek dat kan worden gebruikt om een reeks gerelateerde logboekvermeldingen samen te voegen |
+| correlationId |Tekenreeks |De ID van het logboek dat kan worden gebruikt om een set gerelateerde logboek vermeldingen samen te groeperen |
 | identity |Object |De identiteit die het logboek heeft gegenereerd |
 | properties |JSON |Zie hieronder voor meer informatie |
 
-#### <a name="audit-log-properties-schema"></a>Programma voor controlelogboekeigenschappen
-| Name | Type | Beschrijving |
+#### <a name="audit-log-properties-schema"></a>Schema eigenschappen van controle logboek
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
-| StreamName |Tekenreeks |Het pad waarop de bewerking is uitgevoerd |
+| StreamName |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
 
-## <a name="samples-to-process-the-log-data"></a>Voorbeelden om de loggegevens te verwerken
-Wanneer logboeken worden verzonden van Azure Data Lake Storage Gen1 naar Azure Monitor-logboeken (zie [Gegevens weergeven of analyseren die zijn verzameld met Azure Monitor-logboeken zoeken naar](../azure-monitor/learn/tutorial-viewdata.md) details over het gebruik van Azure Monitor-logboeken), retourneert de volgende query een tabel met een lijst met weergavenamen van gebruikers, het tijdstip van de gebeurtenissen en het aantal gebeurtenissen voor de gebeurtenis, samen met een visueel diagram. Het kan eenvoudig worden aangepast om GUID of andere kenmerken van de gebruiker weer te geven:
+## <a name="samples-to-process-the-log-data"></a>Voor beelden voor het verwerken van de logboek gegevens
+Bij het verzenden van logboeken van Azure Data Lake Storage Gen1 naar Azure Monitor-Logboeken (Zie [gegevens weer geven of analyseren die zijn verzameld met Azure monitor logboeken zoeken](../azure-monitor/learn/tutorial-viewdata.md) voor meer informatie over het gebruik van Azure monitor Logboeken), wordt met de volgende query een tabel geretourneerd met een lijst met gebruikers weergave namen, de tijd van de gebeurtenissen en het aantal gebeurtenissen voor het tijdstip van de gebeurtenis samen met een visueel diagram. Het kan eenvoudig worden gewijzigd om gebruikers-GUID of andere kenmerken weer te geven:
 
 ```
 search *
@@ -187,7 +187,7 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 biedt een voorbeeld over het verwerken en analyseren van de loggegevens. U het [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)monster vinden op. 
+Azure Data Lake Storage Gen1 biedt een voor beeld van hoe u de logboek gegevens kunt verwerken en analyseren. U kunt het voor beeld vinden [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)op. 
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)

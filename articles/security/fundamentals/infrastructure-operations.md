@@ -1,6 +1,6 @@
 ---
-title: Beheer van Azure-productienetwerk - Microsoft Azure
-description: In dit artikel wordt beschreven hoe Microsoft het Azure-productienetwerk beheert en beheert om de Azure-datacenters te beveiligen.
+title: Beheer van het productie netwerk van Azure-Microsoft Azure
+description: In dit artikel wordt beschreven hoe micro soft het productie netwerk van Azure beheert en exploiteert om de Azure-data centers te beveiligen.
 services: security
 documentationcenter: n
 author: TerryLanfear
@@ -16,49 +16,49 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727117"
 ---
-# <a name="management-and-operation-of-the-azure-production-network"></a>Beheer en werking van het Azure-productienetwerk    
-In dit artikel wordt beschreven hoe Microsoft het Azure-productienetwerk beheert en beheert om de Azure-datacenters te beveiligen.
+# <a name="management-and-operation-of-the-azure-production-network"></a>Beheer en werking van het productie netwerk van Azure    
+In dit artikel wordt beschreven hoe micro soft het productie netwerk van Azure beheert en exploiteert om de Azure-data centers te beveiligen.
 
-## <a name="monitor-log-and-report"></a>Controleren, inloggen en rapporteren
+## <a name="monitor-log-and-report"></a>Bewaken, registreren en rapporteren
 
-Het beheer en de werking van het Azure-productienetwerk is een gecoördineerde inspanning tussen de bedrijfsteams van Azure en Azure SQL Database. De teams maken gebruik van verschillende systeem- en applicatie-prestatiebewakingstools in de omgeving. En ze gebruiken de juiste tools om netwerkapparaten, servers, services en toepassingsprocessen te controleren.
+Het beheer en de werking van het productie netwerk van Azure is een gecoördineerde inspanning tussen de Operations-teams van Azure en Azure SQL Database. De teams gebruiken verschillende hulpprogram ma's voor prestatie controle van systeem en toepassingen in de omgeving. En gebruiken ze de juiste hulpprogram ma's voor het bewaken van netwerk apparaten, servers, services en toepassings processen.
 
-Om ervoor te zorgen dat services in de Azure-omgeving veilig worden uitgevoerd, implementeren de operations-teams meerdere niveaus van monitoring, logboekregistratie en rapportage, waaronder de volgende acties:
+Om ervoor te zorgen dat de services die worden uitgevoerd in de Azure-omgeving veilig worden uitgevoerd, kunnen de Operations-teams meerdere bewakings-, logboek registratie-en rapportage niveaus implementeren, met inbegrip van de volgende acties:
 
-- In de eerste plaats verzamelt de Microsoft Monitoring Agent (MMA) monitoring- en diagnostische logboekinformatie van vele plaatsen, waaronder de fabriccontroller (FC) en het root-besturingssysteem (OS), en schrijft deze naar logboekbestanden. De agent duwt uiteindelijk een verteerd subset van de informatie naar een vooraf geconfigureerd Azure-opslagaccount. Daarnaast leest de vrijstaande monitoring- en diagnostische dienst verschillende monitoring- en diagnostische loggegevens en vat de informatie samen. De monitoring- en diagnostische dienst schrijft de informatie naar een geïntegreerd logboek. Azure maakt gebruik van de op maat gemaakte Azure-beveiligingsbewaking, een uitbreiding van het Azure-bewakingssysteem. Het heeft componenten die observeren, analyseren en rapporteren over beveiligingsrelevante gebeurtenissen van verschillende punten in het platform.
+- In het hoofd zakelijk verzamelt micro soft Monitoring Agent (MMA) bewakings-en diagnostische logboek gegevens van vele locaties, waaronder de infrastructuur controller (FC) en het basis besturingssysteem (OS), en schrijft u deze naar logboek bestanden. De agent duwt uiteindelijk een gedigesteerde subset van de gegevens naar een vooraf geconfigureerd Azure-opslag account. Daarnaast leest de beknopte bewerkings-en diagnostische service verschillende bewakings-en diagnostische logboek gegevens en geeft deze een overzicht van de informatie. De bewakings-en diagnostische service schrijft de gegevens naar een geïntegreerd logboek. Azure maakt gebruik van de aangepaste Azure-beveiligings bewaking, een uitbrei ding van het Azure-bewakings systeem. Het bevat onderdelen voor het observeren, analyseren en rapporteren van gebeurtenissen die relevant zijn voor beveiliging van verschillende punten in het platform.
 
-- Het Azure SQL Database Windows Fabric-platform biedt beheer-, implementatie-, ontwikkel- en operationele toezichtsservices voor Azure SQL Database. Het platform biedt gedistribueerde implementatieservices in meerdere stappen, statusbewaking, automatische reparaties en naleving van de serviceversie. Het biedt de volgende diensten:
+- Het Azure SQL Database Windows Fabric-platform biedt beheer, implementatie, ontwikkeling en operationele toezicht Services voor Azure SQL Database. Het platform biedt gedistribueerde, implementatie services voor meerdere stappen, status controle, automatisch herstellen en compatibiliteit met Service versies. Het biedt de volgende services:
 
-   - Mogelijkheden voor servicemodellering met een high-fidelity ontwikkelomgeving (datacenterclusters zijn duur en schaars).
-   - Implementatie- en upgradeworkflows met één klik voor servicebootstrap en -onderhoud.
-   - Gezondheidsrapportage met geautomatiseerde reparatieworkflows om zelfgenezing mogelijk te maken.
-   - Realtime bewaking, waarschuwingen en foutopsporingsfaciliteiten op de knooppunten van een gedistribueerd systeem.
-   - Gecentraliseerde verzameling van operationele gegevens en statistieken voor gedistribueerde oorzaakanalyse en service-inzicht.
-   - Operationele tooling voor implementatie, wijzigingsbeheer en monitoring.
-   - Het Azure SQL Database Windows Fabric-platform en de watchdog-scripts worden continu uitgevoerd en worden in realtime gecontroleerd.
+   - Mogelijkheden voor service modellering met een hoogwaardige ontwikkel omgeving (datacenter clusters zijn duur en schaars).
+   - Implementatie-en upgrade werk stromen met één klik voor service-Boots trap en onderhoud.
+   - Status rapportage met geautomatiseerde reparatie werk stromen om zelf herstel mogelijk te maken.
+   - Real-time bewaking, waarschuwingen en fout opsporing van faciliteiten op de knoop punten van een gedistribueerd systeem.
+   - Gecentraliseerde verzameling van operationele gegevens en gegevens voor gedistribueerde analyse van de hoofd oorzaak en service Insight.
+   - Operationele hulp middelen voor implementatie, wijzigings beheer en bewaking.
+   - De Azure SQL Database Windows Fabric platform-en watchdog-scripts worden doorlopend uitgevoerd en in realtime gecontroleerd.
 
-Als er afwijkingen optreden, wordt het incidentresponsproces dat wordt gevolgd door het Azure-incidenttriageteam geactiveerd. Het juiste Azure-ondersteuningspersoneel wordt op de hoogte gesteld om op het incident te reageren. Het bijhouden en oplossen van problemen worden gedocumenteerd en beheerd in een gecentraliseerd ticketsysteem. Systeemuptime metrics zijn beschikbaar onder de non-disclosure agreement (NDA) en op verzoek.
+Als er afwijkingen optreden, wordt het reactie proces van incidenten gevolgd door het Azure incident sorteren-team geactiveerd. Het juiste ondersteunings personeel van Azure wordt op de hoogte gesteld van het incident. Het bijhouden en oplossen van problemen wordt gedocumenteerd en beheerd in een gecentraliseerd ticket systeem. Metrische gegevens over de uptime van het systeem zijn beschikbaar onder de GEHEIMHOUDINGs overeenkomst (Non-Disclosure Agreement) en op aanvraag.
 
-## <a name="corporate-network-and-multi-factor-access-to-production"></a>Bedrijfsnetwerk en multi-factor toegang tot productie
-De gebruikersgroep van het bedrijfsnetwerk omvat Azure-ondersteuningspersoneel. Het bedrijfsnetwerk ondersteunt interne bedrijfsfuncties en omvat toegang tot interne toepassingen die worden gebruikt voor Azure-klantenondersteuning. Het bedrijfsnetwerk is zowel logisch als fysiek gescheiden van het Azure-productienetwerk. Azure-personeel heeft toegang tot het bedrijfsnetwerk met Azure-werkstations en laptops. Alle gebruikers moeten een Azure Active Directory-account (Azure AD) hebben, inclusief gebruikersnaam en wachtwoord, om toegang te krijgen tot bedrijfsnetwerkbronnen. Bedrijfsnetwerktoegang maakt gebruik van Azure AD-accounts, die worden uitgegeven aan alle Microsoft-personeel, contractanten en leveranciers en worden beheerd door Microsoft Information Technology. Unieke gebruikers-id's onderscheiden personeel op basis van hun arbeidsstatus bij Microsoft.
+## <a name="corporate-network-and-multi-factor-access-to-production"></a>Bedrijfs netwerk en multi-factor Access to Production
+De gebruikers basis van het bedrijfs netwerk bevat ondersteunings personeel voor Azure. Het bedrijfs netwerk ondersteunt interne bedrijfs functies en biedt toegang tot interne toepassingen die worden gebruikt voor Azure-klanten ondersteuning. Het bedrijfs netwerk is zowel logisch als fysiek gescheiden van het productie netwerk van Azure. Azure-personeel heeft toegang tot het bedrijfs netwerk met behulp van Azure-werk stations en laptops. Alle gebruikers moeten een Azure Active Directory (Azure AD)-account, met inbegrip van een gebruikers naam en wacht woord, hebben om toegang te krijgen tot bedrijfs netwerk bronnen. Toegang tot het bedrijfs netwerk maakt gebruik van Azure AD-accounts die worden verleend aan alle mede werkers, aannemers en leveranciers van micro soft en worden beheerd door micro soft Information Technology. Unieke gebruikers-id's onderscheiden mede werkers op basis van hun werkgelegenheids status bij micro soft.
 
-Toegang tot interne Azure-toepassingen wordt beheerd via verificatie met Active Directory Federation Services (AD FS). AD FS is een service die wordt gehost door Microsoft Information Technology en die verificatie van zakelijke netwerkgebruikers biedt door het toepassen van een beveiligde token en gebruikersclaims. AD FS maakt met interne Azure-toepassingen gebruikers te verifiëren tegen het Active Directory-domein van Microsoft. Om toegang te krijgen tot het productienetwerk vanuit de bedrijfsnetwerkomgeving, moeten gebruikers zich verifiëren met behulp van meervoudige verificatie.
+Toegang tot interne Azure-toepassingen wordt gecontroleerd via verificatie met Active Directory Federation Services (AD FS). AD FS is een service die wordt gehost door micro soft Information Technology en die verificatie van zakelijke netwerk gebruikers biedt via het Toep assen van een beveiligde token en gebruikers claims. AD FS kunnen interne Azure-toepassingen gebruikers verifiëren voor het micro soft-bedrijfs Active Directory-domein. Gebruikers moeten zich verifiëren met behulp van multi-factor Authentication om toegang te krijgen tot het productie netwerk vanuit de bedrijfs netwerk omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
+Zie voor meer informatie over de mogelijkheden van micro soft voor het beveiligen van de Azure-infra structuur:
 
-- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
-- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
-- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
-- [Azure-netwerkarchitectuur](infrastructure-network.md)
-- [Azure-productienetwerk](production-network.md)
-- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
-- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
-- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
-- [Azure-klantgegevensbeveiliging](protection-customer-data.md)
+- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
+- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
+- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
+- [Azure-netwerk architectuur](infrastructure-network.md)
+- [Productie netwerk van Azure](production-network.md)
+- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
+- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
+- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
+- [Azure-klant gegevens beveiliging](protection-customer-data.md)

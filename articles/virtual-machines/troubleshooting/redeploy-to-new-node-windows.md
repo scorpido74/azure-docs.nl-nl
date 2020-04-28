@@ -1,6 +1,6 @@
 ---
-title: Windows-virtuele machines opnieuw implementeren in Azure | Microsoft Documenten
-description: Virtuele machines van Windows opnieuw implementeren in Azure om problemen met rdp-verbindingen te beperken.
+title: Virtuele Windows-machines opnieuw implementeren in azure | Microsoft Docs
+description: Windows virtual machines opnieuw implementeren in azure om problemen met de RDP-verbinding te verhelpen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
@@ -14,23 +14,23 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71058629"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Een Windows-virtual machine opnieuw implementeren naar een nieuw Azure-knooppunt
-Als u problemen hebt ondervonden bij het oplossen van problemen met de Verbinding met Extern bureaublad (RDP) of de toegang tot de toegang tot windows-gebaseerde Azure virtual machine (VM), kan het mogelijk zijn om de VM opnieuw te implementeren. Wanneer u een VM opnieuw implementeert, schakelt Azure de VM af, verplaatst u de VM naar een nieuw knooppunt binnen de Azure-infrastructuur en schakelt u deze vervolgens weer in, waarbij u alle configuratieopties en bijbehorende resources behoudt. In dit artikel ziet u hoe u een VM opnieuw implementeert met Azure PowerShell of de Azure-portal.
+Als u problemen ondervindt met het oplossen van problemen met de probleem oplossing voor Extern bureaublad (RDP) of toegang tot een toepassing op een virtuele Windows-machine (VM), is het mogelijk dat u de VM opnieuw implementeert. Wanneer u een virtuele machine opnieuw implementeert, wordt de VM door Azure afgesloten, wordt de virtuele machine verplaatst naar een nieuw knoop punt in de Azure-infra structuur en wordt deze weer ingeschakeld en worden alle configuratie opties en bijbehorende resources bewaard. In dit artikel wordt beschreven hoe u een virtuele machine opnieuw implementeert met behulp van Azure PowerShell of de Azure Portal.
 
 > [!NOTE]
-> Nadat u een vm opnieuw hebt geïmplementeerd, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerkinterface bijgewerkt. 
+> Nadat u een virtuele machine opnieuw hebt geïmplementeerd, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerk interface, bijgewerkt. 
 
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
-Zorg ervoor dat u de nieuwste Azure PowerShell 1.x op uw machine hebt geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+Zorg ervoor dat u de nieuwste Azure PowerShell 1. x op uw computer hebt geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
 
-In het volgende voorbeeld `myVM` wordt de VM `myResourceGroup`geïmplementeerd die is vernoemd in de resourcegroep met de naam:
+In het volgende voor beeld wordt de VM `myVM` geïmplementeerd met de naam in `myResourceGroup`de resource groep met de naam:
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -39,5 +39,5 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u problemen ondervindt bij het maken van verbinding met uw vm, u specifieke hulp vinden bij het oplossen van problemen met [RDP-verbindingen](troubleshoot-rdp-connection.md) of [gedetailleerde stappen voor het oplossen van problemen met RDP.If](detailed-troubleshoot-rdp.md)you are a Als u geen toegang hebt tot een toepassing die op uw vm wordt uitgevoerd, u ook [problemen met het oplossen van toepassingen](../windows/troubleshoot-app-connection.md)lezen.
+Als u problemen ondervindt met het verbinding maken met uw virtuele machine, vindt u specifieke hulp bij het [oplossen van problemen met RDP-verbindingen](troubleshoot-rdp-connection.md) of [gedetailleerde probleemoplossings stappen voor RDP](detailed-troubleshoot-rdp.md). Als u geen toegang krijgt tot een toepassing die wordt uitgevoerd op uw virtuele machine, kunt u ook [problemen met het oplossen van toepassingen](../windows/troubleshoot-app-connection.md)lezen.
 

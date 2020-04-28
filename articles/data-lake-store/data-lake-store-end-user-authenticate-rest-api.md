@@ -1,6 +1,6 @@
 ---
-title: 'Verificatie van eindgebruikers: REST API met Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het bereiken van verificatie door eindgebruikers met Azure Data Lake Storage Gen1 met Azure Active Directory met REST API
+title: 'Verificatie door eind gebruikers: REST API met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met behulp van REST API
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877819"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Verificatie van eindgebruikers met Azure Data Lake Storage Gen1 met REST API
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,20 +27,20 @@ ms.locfileid: "60877819"
 > 
 >  
 
-In dit artikel vindt u meer informatie over het gebruik van de REST API om verificatie van eindgebruikers uit te brengen met Azure Data Lake Storage Gen1. Zie [Service-to-service-verificatie met Data Lake](data-lake-store-service-to-service-authenticate-rest-api.md)Storage Gen1 met REST API met REST API.
+In dit artikel vindt u informatie over het gebruik van de REST API voor de verificatie van eind gebruikers met Azure Data Lake Storage Gen1. Zie [service-to-service-verificatie met Data Lake Storage Gen1 rest API](data-lake-store-service-to-service-authenticate-rest-api.md)voor service-naar-service verificatie met data Lake Storage gen1 met behulp van rest API.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Maak een Azure Active Directory 'Native'-toepassing.** U moet de stappen in [verificatie van eindgebruikers met Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md)hebben voltooid met Azure Active Directory .
+* **Maak een Azure Active Directory systeem eigen toepassing**. U moet de stappen in de [verificatie van eind gebruikers hebben voltooid met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](https://curl.haxx.se/)**. In dit artikel wordt cURL gebruikt om aan te tonen hoe u REST API-aanroepen voeren tegen een Data Lake Storage Gen1-account.
+* **[krul](https://curl.haxx.se/)**. Dit artikel maakt gebruik van krul om te laten zien hoe u REST API aanroepen voor een Data Lake Storage Gen1 account maakt.
 
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
-Verificatie door eindgebruikers is de aanbevolen aanpak als u wilt dat een gebruiker zich aanmeldt bij uw toepassing met Azure AD. Uw toepassing heeft toegang tot Azure-bronnen met hetzelfde toegangsniveau als de ingelogde gebruiker. De gebruiker moet zijn referenties periodiek verstrekken om ervoor te zorgen dat uw toepassing de toegang behoudt.
+Verificatie door eind gebruikers is de aanbevolen methode als u wilt dat een gebruiker zich bij uw toepassing aanmeldt met behulp van Azure AD. Uw toepassing kan toegang krijgen tot Azure-resources met hetzelfde toegangs niveau als de aangemelde gebruiker. De gebruiker moet regel matig hun referenties opgeven om de toegang tot de toepassing te behouden.
 
-Het resultaat van het inloggen van de eindgebruiker is dat uw toepassing een toegangstoken en een vernieuwingstoken krijgt. Het toegangstoken wordt gekoppeld aan elk verzoek aan Data Lake Storage Gen1 of Data Lake Analytics en is standaard één uur geldig. Het vernieuwingstoken kan worden gebruikt om een nieuw toegangstoken te verkrijgen en is standaard maximaal twee weken geldig, indien regelmatig gebruikt. U twee verschillende benaderingen gebruiken voor het inloggen van eindgebruikers.
+Het resultaat van het aanmelden van de eind gebruiker is dat uw toepassing een toegangs token en een vernieuwings token krijgt. Het toegangs token wordt gekoppeld aan elke aanvraag van Data Lake Storage Gen1 of Data Lake Analytics en is standaard één uur geldig. Het vernieuwings token kan worden gebruikt om een nieuw toegangs token op te halen en is Maxi maal twee weken standaard geldig, als u regel matig gebruikt. U kunt twee verschillende benaderingen gebruiken voor aanmelding door de eind gebruiker.
 
 In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden en worden alle bewerkingen uitgevoerd in de context van de gebruiker. Voer de volgende stappen uit:
 
@@ -49,13 +49,13 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI> moet zijn gecodeerd om te worden gebruikt in een URL. Dus, https://localhostvoor `https%3A%2F%2Flocalhost`, gebruik )
+   > \<REDIRECT-URI> moet zijn gecodeerd om te worden gebruikt in een URL. Voor https://localhost, gebruiken `https%3A%2F%2Flocalhost`)
 
     Voor deze zelfstudie kunt u de waarden van de tijdelijke aanduiding in bovenstaande URL vervangen en deze in de adresbalk van de webbrowser plakken. U wordt omgeleid om u te verifiëren met uw Azure-aanmelding. Wanneer u bent aangemeld, wordt het antwoord weergegeven in de adresbalk van de browser. Het antwoord heeft de volgende indeling:
 
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
-2. Leg de autorisatiecode uit het antwoord vast. Voor deze zelfstudie u de autorisatiecode kopiëren vanaf de adresbalk van de webbrowser en deze doorgeven in het POST-verzoek aan het tokeneindpunt, zoals in het volgende fragment wordt weergegeven:
+2. Leg de autorisatiecode uit het antwoord vast. Voor deze zelf studie kunt u de autorisatie code kopiëren uit de adres balk van de webbrowser en deze door geven in de POST-aanvraag naar het eind punt van het token, zoals wordt weer gegeven in het volgende code fragment:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -69,11 +69,11 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
    > 
    > 
 
-3. Het antwoord is een JSON-object dat een `"access_token": "<ACCESS_TOKEN>"`access token (bijvoorbeeld) `"refresh_token": "<REFRESH_TOKEN>"`en een vernieuwingstoken (bijvoorbeeld) bevat. Uw toepassing gebruikt het toegangstoken wanneer u toegang krijgt tot Azure Data Lake Storage Gen1 en het vernieuwingstoken om een ander toegangstoken te krijgen wanneer een toegangstoken verloopt.
+3. Het antwoord is een JSON-object dat een toegangs token bevat (bijvoorbeeld `"access_token": "<ACCESS_TOKEN>"`) en een vernieuwings token (bijvoorbeeld `"refresh_token": "<REFRESH_TOKEN>"`). Uw toepassing gebruikt het toegangs token bij het openen van Azure Data Lake Storage Gen1 en het vernieuwings token om een ander toegangs token op te halen wanneer een toegangs token verloopt.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
-4. Wanneer het toegangstoken verloopt, u een nieuw toegangstoken aanvragen met behulp van het vernieuwingstoken, zoals in het volgende fragment wordt weergegeven:
+4. Wanneer het toegangs token is verlopen, kunt u een nieuw toegangs token aanvragen met het vernieuwings token, zoals wordt weer gegeven in het volgende code fragment:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -84,8 +84,8 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
 Zie [De stroom voor autorisatiecodetoekenning](https://msdn.microsoft.com/library/azure/dn645542.aspx) voor meer informatie over interactieve gebruikersverificatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u service-to-service-verificatie gebruiken om te verifiëren met Azure Data Lake Storage Gen1 met behulp van REST API. U nu de volgende artikelen bekijken waarin wordt gesproken over hoe u de REST API gebruiken om te werken met Azure Data Lake Storage Gen1.
+In dit artikel hebt u geleerd hoe u service-naar-service-verificatie kunt gebruiken om te verifiëren met Azure Data Lake Storage Gen1 met behulp van REST API. U kunt nu de volgende artikelen bekijken om te praten over het gebruik van de REST API om met Azure Data Lake Storage Gen1 te werken.
 
-* [Accountbeheerbewerkingen op Data Lake Storage Gen1 met REST API](data-lake-store-get-started-rest-api.md)
-* [Gegevensbewerkingen op Data Lake Storage Gen1 met REST API](data-lake-store-data-operations-rest-api.md)
+* [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van REST API](data-lake-store-get-started-rest-api.md)
+* [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van REST API](data-lake-store-data-operations-rest-api.md)
 

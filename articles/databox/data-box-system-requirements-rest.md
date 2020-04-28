@@ -1,6 +1,6 @@
 ---
-title: Opslagvereisten voor Microsoft Azure Data Box Blob| Microsoft Documenten
-description: Meer informatie over de ondersteunde versies voor API's, SDK's en clientbibliotheken voor Azure Data Box Blob-opslag
+title: Vereisten voor de opslag van Microsoft Azure Data Box BLOB | Microsoft Docs
+description: Meer informatie over de ondersteunde versies voor Api's, Sdk's en client bibliotheken voor Azure Data Box Blob-opslag
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61436491"
 ---
-# <a name="azure-data-box-blob-storage-requirements"></a>Opslagvereisten voor Azure Data Box Blob
+# <a name="azure-data-box-blob-storage-requirements"></a>Vereisten voor Blob Storage Azure Data Box
 
-In dit artikel worden de versies van de Azure API's, Azure-clientbibliotheken en hulpprogramma's weergegeven die worden ondersteund met de Data Box Blob-opslag. Gegevensbox Blob-opslag biedt blobbeheerfunctionaliteit met Azure-consistente semantiek. In dit artikel worden ook de bekende Azure Data Box Blob-opslagverschillen van de Azure Storage-services samengevat.
+In dit artikel vindt u een overzicht van de versies van de Azure-Api's, Azure-client bibliotheken en hulpprogram ma's die worden ondersteund met de Data Box Blob-opslag. Data Box Blob-opslag biedt functionaliteit voor het beheer van blobs met Azure-consistente semantiek. In dit artikel wordt ook een overzicht gegeven van de bekende Azure Data Box verschillen in Blob Storage van de Azure Storage services.
 
-We raden u aan de informatie zorgvuldig te bekijken voordat u verbinding maakt met de Data Box Blob-opslag en deze vervolgens zo nodig terugte verwijzen.
+We raden u aan de informatie zorgvuldig te controleren voordat u verbinding maakt met de Data Box Blob-opslag en vervolgens naar de gewenste gegevens te verwijzen.
 
 
-## <a name="storage-differences"></a>Opslagverschillen
+## <a name="storage-differences"></a>Verschillen in opslag
 
 |     Functie                                             |     Azure Storage                                     |     Data Box-blobopslag |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure File Storage                                   |    Ondersteunde cloudgebaseerde MKB-bestandsshares              |    Niet ondersteund      |
-|    Serviceversleuteling voor gegevens in rust                  |    256-bits AES-versleuteling                             |    256-bits AES-versleuteling |
-|    Type opslagaccount                                 |    Opslagaccounts voor algemene doeleinden en Azure-blobs    |    Alleen v1 voor algemeen gebruik|
+|    Azure File Storage                                   |    Door de cloud gebaseerde SMB-bestands shares worden ondersteund              |    Niet ondersteund      |
+|    Service versleuteling voor Data-at-rest                  |    256-bits AES-versleuteling                             |    256-bits AES-versleuteling |
+|    Type opslagaccount                                 |    Algemene en Azure Blob Storage-accounts    |    Alleen voor algemeen gebruik v1|
 |    Blobnaam                                            |    1.024 tekens (2.048 bytes)                     |    880 tekens (1.760 bytes)|
-|    Blob maximale grootte blokkeren                              |    4,75 TB (100 MB X 50.000 blokken)                   |    4,75 TB (100 MB x 50.000 blokken) voor Azure Data Box v 1.8.|
-|    Maximale grootte van paginablob                               |    8 TB                                               |    1 TB                   |
-|    Paginablobpaginagrootte                                  |    512 bytes                                          |    4 kB                   |
+|    Maximale grootte van blok-BLOB                              |    4,75 TB (100 MB X 50.000 blokken)                   |    4,75 TB (100 MB x 50.000 blokken) voor Azure Data Box v 1,8.|
+|    Maximum grootte voor pagina-blobs                               |    8 TB                                               |    1 TB                   |
+|    Pagina formaat pagina-BLOB                                  |    512 bytes                                          |    4 kB                   |
 
 ## <a name="supported-api-versions"></a>Ondersteunde API-versies
 
-De volgende versies van Azure Storage-service API's worden ondersteund met Data Box Blob-opslag:
+De volgende versies van Azure Storage service-Api's worden ondersteund met Data Box Blob-opslag:
 
-Azure Data Box 1.8 en verder
+Azure Data Box 1,8 en hoger
 
 - [2017-11-09](/rest/api/storageservices/version-2017-11-09)
 - [2017-07-29](/rest/api/storageservices/version-2017-07-29)
@@ -47,28 +47,28 @@ Azure Data Box 1.8 en verder
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
 - [2015-07-08](/rest/api/storageservices/version-2015-07-08)
 - [2015-04-05](/rest/api/storageservices/version-2015-04-05)|
-## <a name="supported-azure-client-libraries"></a>Ondersteunde Azure-clientbibliotheken
+## <a name="supported-azure-client-libraries"></a>Ondersteunde Azure-client bibliotheken
 
-Voor Gegevensbox Blob-opslag zijn er specifieke clientbibliotheken en specifieke vereisten voor eindpuntachtervoegsel. De databox Blob-opslageindpunten hebben niet volledige pariteit met de nieuwste versie van de Azure Blob Storage REST API, zie [de ondersteunde versies voor Azure Data Box 1.8 en .nl](#supported-api-versions). Voor de opslagclientbibliotheken moet u op de hoogte zijn van de versie die compatibel is met de REST API.
+Voor Data Box Blob Storage zijn er specifieke client bibliotheken en specifieke vereisten voor eindpunt achtervoegsels. De Data Box Blob Storage-eind punten hebben geen volledige pariteit met de nieuwste versie van de Azure Blob Storage REST API. Zie de [ondersteunde versies voor Azure Data Box 1,8 en hoger](#supported-api-versions). U moet rekening houden met de versie die compatibel is met de REST API voor de opslag-client bibliotheken.
 
-### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1.8 en verder
+### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1,8 en hoger
 
-| Clientbibliotheek     |Ondersteunde versie van Data Box Blob-opslag     | Koppeling   |     Eindpuntspecificatie      |
+| Clientbibliotheek     |Data Box versie van Blob Storage die wordt ondersteund     | Koppeling   |     Eindpunt specificatie      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Nuget pakket:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub release:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config-bestand                 |
-|    Java                |    7.0.0                                           |    Maven pakket:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub release:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Instelling van verbindingstekenreeks         |
-|    Node.js             |    2.8.3                                           |    NPM-koppeling: https://www.npmjs.com/package/azure-storage (Uitvoeren: `npm install azure-storage@2.7.0`)   <br>GitHub release:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Aangifte van service-instantie    |
-|    C++                 |    5.2.0                                           |    Nuget pakket:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub release:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Instelling van verbindingstekenreeks         |
-|    PHP                 |    1.2.0                                           |    GitHub release:<br>Gemeenschappelijk:https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob:https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Installeren via Componist (Zie de details hieronder voor meer informatie.)                                                                                                             |    Instelling van verbindingstekenreeks         |
-|    Python              |    1.1.0                                           |    GitHub release:<br>Gemeenschappelijk:https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blob:https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Aangifte van service-instantie    |
-|    Ruby                |    1.0.1                                           |    RubyGems pakket:<br>Gemeenschappelijk:https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Blob:https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub release:<br>Gemeenschappelijk:https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Blob:https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Instelling van verbindingstekenreeks         |
+|    .NET                |    9.2.0                                           |    Nuget-pakket:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub release:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    bestand app. config                 |
+|    Java                |    7.0.0                                           |    Maven-pakket:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub release:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Verbindingsteken reeks instellen         |
+|    Node.js             |    2.8.3                                           |    NPM-koppeling https://www.npmjs.com/package/azure-storage : (uitvoeren `npm install azure-storage@2.7.0`:)   <br>GitHub release:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Declaratie van service-exemplaar    |
+|    C++                 |    5.2.0                                           |    Nuget-pakket:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub release:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Verbindingsteken reeks instellen         |
+|    PHP                 |    1.2.0                                           |    GitHub release:<br>Algemenehttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blobcachehttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Installeren via Composer (Zie de details hieronder voor meer informatie).                                                                                                             |    Verbindingsteken reeks instellen         |
+|    Python              |    1.1.0                                           |    GitHub release:<br>Algemenehttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blobcachehttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Declaratie van service-exemplaar    |
+|    Ruby                |    1.0.1                                           |    RubyGems-pakket:<br>Algemenehttps://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Blobcachehttps://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub release:<br>Algemenehttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Blobcachehttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Verbindingsteken reeks instellen         |
 
 
 
-### <a name="install-php-client-via-composer---current"></a>PHP-client installeren via Composer - actueel
+### <a name="install-php-client-via-composer---current"></a>PHP-client installeren via Composer-actueel
 
-Installeren via Composer: (neem blob als voorbeeld).
-1. Maak een bestand met de naam composer.json in de hoofdmap van het project met de volgende code:
+Installeren via Composer: (Maak een BLOB als voor beeld).
+1. Maak een bestand met de naam Composer. json in de hoofdmap van het project met de volgende code:
 
     ```
     {
@@ -77,19 +77,19 @@ Installeren via Composer: (neem blob als voorbeeld).
     }
     ```
 
-2. Download `composer.phar` naar de projectroot.
+2. Down `composer.phar` load de hoofdmap van het project.
 
-3. Run: php composer.phar install.
+3. Uitvoeren: PHP Composer. Phar-installatie.
 
-### <a name="endpoint-declaration"></a>Eindpuntaangifte
+### <a name="endpoint-declaration"></a>Eindpunt declaratie
 
-Een eindpunt voor azure Data Box Blob-opslag bevat twee delen: de naam van een regio en het domein Data Box. In de SDK van de Gegevensbox `\<serial no. of the device>.microsoftdatabox.com`Blob-opslag is het standaardeindpunt .  Ga voor meer informatie over het eindpunt van blobservice naar [Verbinding maken via Data Box Blob-opslag](data-box-deploy-copy-data-via-rest.md).
+Een Azure Data Box Blob Storage-eind punt bestaat uit twee delen: de naam van een regio en het Data Box domein. In de Data Box Blob Storage SDK is `\<serial no. of the device>.microsoftdatabox.com`het standaard eindpunt.  Ga voor meer informatie over het eind punt van de BLOB-service naar [verbinding maken via data Box Blob-opslag](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="net"></a>.NET
 
-Voor De Blob-opslag van gegevensboxen wordt `app.config` het eindpuntachtervoegsel in het bestand opgegeven:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt `app.config` opgegeven in het bestand:
 
 ```
 <add key="StorageConnectionString"
@@ -99,7 +99,7 @@ EndpointSuffix=<<serial no. of the device>.microsoftdatabox.com  />
 
 ### <a name="java"></a>Java
 
-Voor De Blob-opslag van gegevensboxen wordt het eindpuntachtervoegsel opgegeven in de instelling van de verbindingstekenreeks:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt opgegeven in de installatie van connection string:
 
 ```
 public static final String storageConnectionString =
@@ -111,7 +111,7 @@ public static final String storageConnectionString =
 
 ### <a name="nodejs"></a>Node.js
 
-Voor de opslag van De Klodder gegevens box wordt het eindpuntachtervoegsel opgegeven in de declaratie-instantie:
+Voor Data Box Blob-opslag is het eind punt achtervoegsel opgegeven in het declaratie-exemplaar:
 
 ```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
@@ -120,7 +120,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 ### <a name="c"></a>C++
 
-Voor De Blob-opslag van gegevensboxen wordt het eindpuntachtervoegsel opgegeven in de instelling van de verbindingstekenreeks:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt opgegeven in de installatie van connection string:
 
 ```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
@@ -131,7 +131,7 @@ EndpointSuffix=<serial no. of the device>.microsoftdatabox.com "));
 
 ### <a name="php"></a>PHP
 
-Voor De Blob-opslag van gegevensboxen wordt het eindpuntachtervoegsel opgegeven in de instelling van de verbindingstekenreeks:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt opgegeven in de installatie van connection string:
 
 ```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.<serial no. of the device>.microsoftdatabox.com /;
@@ -140,7 +140,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 ### <a name="python"></a>Python
 
-Voor de opslag van De Klodder gegevens box wordt het eindpuntachtervoegsel opgegeven in de declaratie-instantie:
+Voor Data Box Blob-opslag is het eind punt achtervoegsel opgegeven in het declaratie-exemplaar:
 
 ```
 block_blob_service = BlockBlobService(account_name='myaccount',
@@ -150,7 +150,7 @@ endpoint_suffix=’<serial no. of the device>.microsoftdatabox.com’)
 
 ### <a name="ruby"></a>Ruby
 
-Voor De Blob-opslag van gegevensboxen wordt het eindpuntachtervoegsel opgegeven in de instelling van de verbindingstekenreeks:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt opgegeven in de installatie van connection string:
 
 ```
 set
@@ -162,4 +162,4 @@ EndpointSuffix=<serial no. of the device>.microsoftdatabox.com
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw Azure-gegevensvak implementeren](data-box-deploy-ordered.md)
+* [Uw Azure Data Box implementeren](data-box-deploy-ordered.md)

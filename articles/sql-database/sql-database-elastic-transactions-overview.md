@@ -1,6 +1,6 @@
 ---
 title: Over clouddatabases gedistribueerde transacties
-description: Overzicht van elastische databasetransacties met Azure SQL Database
+description: Overzicht van Elastic Database transacties met Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,42 +12,42 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68568287"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Over clouddatabases gedistribueerde transacties
 
-Met elastische databasetransacties voor Azure SQL Database (SQL DB) u transacties uitvoeren die meerdere databases in SQL DB omvatten. Elastische databasetransacties voor SQL DB zijn beschikbaar voor .NET-toepassingen met ADO .NET en integreren met de vertrouwde programmeerervaring met behulp van de klassen [System.Transaction.](https://msdn.microsoft.com/library/system.transactions.aspx) Zie [.NET Framework 4.6.1 (Web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de bibliotheek te krijgen.
+Met Elastic data base trans Actions for Azure SQL Database (SQL DB) kunt u trans acties uitvoeren die meerdere data bases omvatten in SQL DB. Elastic data base-trans acties voor SQL DB zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
 
-On premises, een dergelijk scenario meestal vereist draait Microsoft Distributed Transaction Coordinator (MSDTC). Aangezien MSDTC niet beschikbaar is voor Platform-as-a-Service-toepassing in Azure, is de mogelijkheid om gedistribueerde transacties te coördineren nu rechtstreeks geïntegreerd in SQL DB. Toepassingen kunnen verbinding maken met elke SQL-database om gedistribueerde transacties te starten en een van de databases coördineert de gedistribueerde transactie transparant, zoals in de volgende afbeelding wordt weergegeven. 
+On-premises, een scenario dat doorgaans vereist is voor het uitvoeren van micro soft Distributed Transaction Coordinator (MSDTC). Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL DB. Toepassingen kunnen verbinding maken met alle SQL Database om gedistribueerde trans acties te starten. een van de data bases kan de gedistribueerde trans actie transparant coördineren, zoals in de volgende afbeelding wordt weer gegeven. 
 
-  ![Gedistribueerde transacties met Azure SQL Database met elastische databasetransacties ][1]
+  ![Gedistribueerde trans acties met Azure SQL Database met Elastic data base-trans acties ][1]
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-Elastische databasetransacties voor SQL DB stellen toepassingen in staat om atomaire wijzigingen aan te brengen in gegevens die zijn opgeslagen in verschillende SQL-databases. De preview richt zich op klant-side development ervaringen in C# en .NET. Een server-side ervaring met behulp van T-SQL is gepland voor een later tijdstip.  
-Elastische databasetransacties zijn gericht op de volgende scenario's:
+Met Elastic data base-trans acties voor SQL data base kunnen toepassingen atomische wijzigingen aanbrengen in gegevens die zijn opgeslagen in verschillende SQL-data bases. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring met T-SQL is gepland voor een later tijdstip.  
+Elastische-database transacties zijn gericht op de volgende scenario's:
 
-* Multi-databasetoepassingen in Azure: Met dit scenario worden gegevens verticaal verdeeld over verschillende databases in SQL DB, zodat verschillende soorten gegevens zich op verschillende databases bevinden. Voor sommige bewerkingen zijn wijzigingen in gegevens vereist die in twee of meer databases worden bewaard. De toepassing maakt gebruik van elastische databasetransacties om de wijzigingen in databases te coördineren en atomiciteit te garanderen.
-* Gesharde databasetoepassingen in Azure: met dit scenario gebruikt de gegevenslaag de [elastic database-clientbibliotheek](sql-database-elastic-database-client-library.md) of zelfsharding om de gegevens horizontaal te verdelen over veel databases in SQL DB. Een prominente use case is de noodzaak om atomaire wijzigingen uit te voeren voor een geshard multi-tenant toepassing bij wijzigingen over tenants. Denk bijvoorbeeld aan een overdracht van de ene huurder naar de andere, beide woonachtig in verschillende databases. Een tweede geval is fijnkorrelige sharding om tegemoet te komen aan de capaciteitsbehoeften voor een grote tenant, wat op zijn beurt meestal impliceert dat sommige atomaire bewerkingen zich moeten uitstrekken over verschillende databases die voor dezelfde tenant worden gebruikt. Een derde geval is atoomupdates voor referentiegegevens die worden gerepliceerd in databases. Atoom, afgehandeld, bewerkingen langs deze lijnen kunnen nu worden gecoördineerd in verschillende databases met behulp van de preview.
-  Elastische databasetransacties maken gebruik van tweefasencommit om transactieataliteit tussen databases te garanderen. Het is een goede pasvorm voor transacties die minder dan 100 databases tegelijk binnen een enkele transactie omvatten. Deze limieten worden niet gehandhaafd, maar men moet verwachten dat de prestaties en slagingspercentages voor elastische databasetransacties zullen lijden wanneer deze limieten worden overschreden.
+* Toepassingen voor meerdere data bases in Azure: in dit scenario worden gegevens verticaal gepartitioneerd over verschillende data bases in SQL DB, zodat verschillende soorten gegevens zich op verschillende data bases bevinden. Voor sommige bewerkingen zijn wijzigingen in gegevens vereist die in twee of meer data bases worden bewaard. De toepassing maakt gebruik van Elastic data base-trans acties voor het coördineren van de wijzigingen in data bases en zorgt voor een atomiciteit.
+* Shard-database toepassingen in Azure: in dit scenario gebruikt de gegevenslaag de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md) of Self-sharding om de gegevens in verschillende data bases horizon taal te partitioneren in SQL DB. Eén prominente use case is de nood zaak om atomische wijzigingen uit te voeren voor een Shard multi tenant-toepassing wanneer de tenants worden gewijzigd. Denk na over een overdracht van de ene Tenant naar de andere, beide op verschillende data bases. Een tweede geval is een nauw keurige sharding om de capaciteits behoeften voor een grote Tenant in te passen die doorgaans in de praktijk impliceert dat sommige atomische bewerkingen moeten worden uitgerekt over verschillende data bases die voor dezelfde Tenant worden gebruikt. Een derde geval is atomische updates om te verwijzen naar gegevens die in data bases worden gerepliceerd. Atomische, transactionele bewerkingen op deze regels kunnen nu worden gecoördineerd over verschillende data bases met behulp van de preview-versie.
+  Elastische-database transacties gebruiken twee fasen door voeren om transactie atomiciteit in data bases te garanderen. Het is geschikt voor trans acties met minder dan 100 data bases tegelijk binnen één trans actie. Deze limieten worden niet afgedwongen, maar één moet rekening houden met prestaties en succes percentages voor Elastic data base-trans acties wanneer deze limieten worden overschreden.
 
 ## <a name="installation-and-migration"></a>Installatie en migratie
 
-De mogelijkheden voor elastische databasetransacties in SQL DB worden geleverd via updates voor de .NET-bibliotheken System.Data.dll en System.Transactions.dll. De DLL's zorgen ervoor dat twee-fase commit waar nodig wordt gebruikt om atomiciteit te garanderen. Als u toepassingen wilt ontwikkelen met elastische databasetransacties, installeert u [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) of een latere versie. Wanneer transacties worden uitgevoerd op een eerdere versie van het .NET-framework, worden transacties niet gepromoot naar een gedistribueerde transactie en wordt een uitzondering verhoogd.
+De mogelijkheden voor Elastic data base-trans acties in SQL DB worden geboden via updates voor de .NET-bibliotheken System. data. dll en System. Trans actions. dll. De Dll's zorgen ervoor dat door voeren in twee fasen wordt gebruikt wanneer dit nodig is om atomisch te garanderen. Als u toepassingen wilt ontwikkelen met Elastic data base trans acties, installeert u [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) of een latere versie. Bij het uitvoeren van een eerdere versie van .NET Framework kunnen trans acties niet worden gepromoveerd naar een gedistribueerde trans actie. er wordt een uitzonde ring gegenereerd.
 
-Na de installatie u de gedistribueerde transactie-API's gebruiken in System.Transactions met verbindingen met SQL DB. Als u bestaande MSDTC-toepassingen hebt met behulp van deze API's, u uw bestaande toepassingen voor .NET 4.6 opnieuw opbouwen nadat u het 4.6.1-framework hebt geïnstalleerd. Als uw projecten op .NET 4.6 zijn gericht, gebruiken ze automatisch de bijgewerkte DLL's van de nieuwe Framework-versie en zullen gedistribueerde transactie-API-aanroepen in combinatie met verbindingen met SQL DB nu slagen.
+Na de installatie kunt u de Api's voor Distributed Trans Action gebruiken in System. Trans actions met verbindingen met SQL data base. Als u beschikt over bestaande MSDTC-toepassingen die gebruikmaken van deze Api's, bouwt u uw bestaande toepassingen voor .NET 4,6 opnieuw op nadat u het 4.6.1-Framework hebt geïnstalleerd. Als uw projecten .NET 4,6 doel hebben, zullen ze automatisch gebruikmaken van de bijgewerkte dll-bestanden van de nieuwe Framework-versie en gedistribueerde API-aanroepen in combi natie met verbindingen met SQL data base.
 
-Houd er rekening mee dat elastische databasetransacties geen MSDTC hoeven te installeren. In plaats daarvan worden elastische databasetransacties rechtstreeks beheerd door en binnen SQL DB. Dit vereenvoudigt cloudscenario's aanzienlijk, omdat een implementatie van MSDTC niet nodig is om gedistribueerde transacties met SQL DB te gebruiken. In deel 4 wordt nader uitgelegd hoe elastische databasetransacties en het vereiste .NET-framework samen met uw cloudtoepassingen kunnen worden geïmplementeerd in Azure.
+Houd er rekening mee dat voor Elastic data base-trans acties geen MSDTC moet worden geïnstalleerd. In plaats daarvan worden Elastic data base-trans acties rechtstreeks beheerd door en in SQL data base. Hierdoor worden Cloud scenario's aanzienlijk vereenvoudigd omdat een implementatie van MSDTC niet nodig is voor het gebruik van gedistribueerde trans acties met SQL DB. Sectie 4 bevat meer informatie over het implementeren van elastische database transacties en de vereiste .NET Framework samen met uw Cloud toepassingen naar Azure.
 
-## <a name="development-experience"></a>Ontwikkelingservaring
+## <a name="development-experience"></a>Ontwikkel ervaring
 
-### <a name="multi-database-applications"></a>Toepassingen met meerdere gegevens
+### <a name="multi-database-applications"></a>Toepassingen voor meerdere data bases
 
-De volgende voorbeeldcode maakt gebruik van de vertrouwde programmeerervaring met .NET System.Transactions. Met de klasse TransactionScope wordt een omgevingstransactie in .NET vastgelegd. (Een "ambient transactie" is er een die leeft in de huidige thread.) Alle verbindingen die binnen de TransactionScope zijn geopend, nemen deel aan de transactie. Als verschillende databases deelnemen, wordt de transactie automatisch verhoogd tot een gedistribueerde transactie. Het resultaat van de transactie wordt gecontroleerd door de scope in te stellen die moet worden voltooid om een commit aan te geven.
+De volgende voorbeeld code maakt gebruik van de bekende programmeer ervaring met .NET System. Trans actions. De TransactionScope-klasse brengt een ambient trans actie in .NET tot stand. (Een ' Ambient trans actie ' is een ' in de huidige thread '.) Alle verbindingen die in de TransactionScope zijn geopend, nemen deel aan de trans actie. Als verschillende data bases deel nemen, wordt de trans actie automatisch verhoogd naar een gedistribueerde trans actie. De uitkomst van de trans actie wordt bepaald door het bereik in te stellen op voltooid om aan te geven dat er een doorvoer bewerking is.
 
     using (var scope = new TransactionScope())
     {
@@ -70,9 +70,9 @@ De volgende voorbeeldcode maakt gebruik van de vertrouwde programmeerervaring me
         scope.Complete();
     }
 
-### <a name="sharded-database-applications"></a>Geshard databasetoepassingen
+### <a name="sharded-database-applications"></a>Shard-database toepassingen
 
-Elastische databasetransacties voor SQL DB ondersteunen ook het coördineren van gedistribueerde transacties waarbij u de OpenConnectionForKey-methode van de elastische databaseclientbibliotheek gebruikt om verbindingen te openen voor een geschaalde gegevenslaag. Houd rekening met gevallen waarin u transactionele consistentie moet garanderen voor wijzigingen in verschillende sharding-hoofdwaarden. Verbindingen met de scherven die de verschillende sharding-kernwaarden hosten, worden bemiddeld met OpenConnectionForKey. In het algemeen kunnen de verbindingen worden gelegd op verschillende scherven, zodat het waarborgen van transactionele garanties een gedistribueerde transactie vereist. In het volgende voorbeeld van de code wordt deze benadering geïllustreerd. Er wordt van uitgegaan dat een variabele genaamd shardmap wordt gebruikt om een shardkaart uit de elastische databaseclientbibliotheek weer te geven:
+Elastic data base-trans acties voor SQL data base ondersteunen ook het coördineren van gedistribueerde trans acties waarbij u de methode OpenConnectionForKey van de client bibliotheek voor Elastic data base gebruikt om verbindingen te openen voor een geschaalde gegevenslaag. Houd rekening met gevallen waarin u transactionele consistentie moet garanderen voor wijzigingen in verschillende sharding-sleutel waarden. Verbindingen met de Shards die de verschillende sharding-sleutel waarden hosten, zijn met behulp van OpenConnectionForKey Broker. In het algemeen is het mogelijk om verbinding te maken met verschillende Shards die ervoor zorgen dat voor transactionele garanties een gedistribueerde trans actie is vereist. In het volgende code voorbeeld ziet u deze aanpak. Hierbij wordt ervan uitgegaan dat een variabele met de naam shardmap wordt gebruikt om een Shard-toewijzing te vertegenwoordigen uit de client bibliotheek voor Elastic Data Base:
 
     using (var scope = new TransactionScope())
     {
@@ -98,11 +98,11 @@ Elastische databasetransacties voor SQL DB ondersteunen ook het coördineren van
 
 ## <a name="net-installation-for-azure-cloud-services"></a>.NET-installatie voor Azure Cloud Services
 
-Azure biedt verschillende aanbiedingen voor het hosten van .NET-toepassingen. Een vergelijking van de verschillende aanbiedingen is beschikbaar in [azure-appservice, cloudservices en vergelijking van virtuele machines.](/azure/architecture/guide/technology-choices/compute-decision-tree) Als het gastbesturingssysteem van het aanbod kleiner is dan .NET 4.6.1 dat vereist is voor elastische transacties, moet u het gastbesturingssysteem upgraden naar 4.6.1. 
+Azure biedt verschillende aanbiedingen voor het hosten van .NET-toepassingen. Een vergelijking van de verschillende aanbiedingen is beschikbaar in [Azure app service, Cloud Services en virtual machines vergelijking](/azure/architecture/guide/technology-choices/compute-decision-tree). Als het gast besturingssysteem van de aanbieding kleiner is dan .NET 4.6.1 die vereist zijn voor elastische trans acties, moet u het gast besturingssysteem upgraden naar 4.6.1. 
 
-Voor Azure App Services worden upgrades naar het besturingssysteem van de gast momenteel niet ondersteund. Voor Azure Virtual Machines u zich eenvoudig aanmelden bij de VM en het installatieprogramma uitvoeren voor het nieuwste .NET-framework. Voor Azure Cloud Services moet u de installatie van een nieuwere .NET-versie opnemen in de opstarttaken van uw implementatie. De concepten en stappen zijn gedocumenteerd in [Install .NET on a Cloud Service Role](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+Voor Azure-app services worden upgrades naar het gast besturingssysteem momenteel niet ondersteund. Voor Azure Virtual Machines meldt u zich aan bij de virtuele machine en voert u het installatie programma uit voor de nieuwste versie van .NET Framework. Voor Azure Cloud Services moet u de installatie van een nieuwere versie van .NET toevoegen aan de opstart taken van uw implementatie. De concepten en stappen worden beschreven in [.net installeren op een Cloud service functie](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
-Houd er rekening mee dat de installer voor .NET 4.6.1 mogelijk meer tijdelijke opslag nodig heeft tijdens het bootstrappingproces op Azure-cloudservices dan de installer voor .NET 4.6. Om een succesvolle installatie te garanderen, moet u de tijdelijke opslag voor uw Azure-cloudservice in uw ServiceDefinition.csdef-bestand in de sectie LocalResources en de omgevingsinstellingen van uw opstarttaak verhogen, zoals in het volgende voorbeeld wordt weergegeven:
+Houd er rekening mee dat het installatie programma voor .NET 4.6.1 mogelijk meer tijdelijke opslag vereist tijdens het Boots trap proces van Azure Cloud Services dan het installatie programma voor .NET 4,6. Om ervoor te zorgen dat de installatie is voltooid, moet u de tijdelijke opslag voor uw Azure-Cloud service verhogen in het bestand ServiceDefinition. csdef in het gedeelte LocalResources en de omgevings instellingen van de opstart taak, zoals wordt weer gegeven in het volgende voor beeld:
 
     <LocalResources>
     ...
@@ -123,41 +123,41 @@ Houd er rekening mee dat de installer voor .NET 4.6.1 mogelijk meer tijdelijke o
         </Task>
     </Startup>
 
-## <a name="transactions-across-multiple-servers"></a>Transacties op meerdere servers
+## <a name="transactions-across-multiple-servers"></a>Trans acties op meerdere servers
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De PowerShell Azure Resource Manager-module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkelingen zijn voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn nagenoeg identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
-Elastische databasetransacties worden ondersteund op verschillende SQL Database-servers in Azure SQL Database. Wanneer transacties de grenzen van de SQL Database-server overschrijden, moeten de deelnemende servers eerst een wederzijdse communicatierelatie aangaan. Zodra de communicatierelatie is vastgesteld, kan elke database in een van de twee servers deelnemen aan elastische transacties met databases van de andere server. Met transacties die meer dan twee SQL Database-servers omvatten, moet er een communicatierelatie zijn voor elk paar SQL Database-servers.
+Elastische-database transacties worden ondersteund op verschillende SQL Database servers in Azure SQL Database. Wanneer trans acties SQL Database Server grenzen, moeten de deelnemende servers eerst worden ingevoerd in een wederzijdse communicatie relatie. Zodra de communicatie relatie tot stand is gebracht, kan elke data base in een van de twee servers deel nemen aan elastische trans acties met data bases van de andere server. Bij trans acties die meer dan twee SQL Database servers omspannen, moet er een communicatie relatie bestaan voor elk paar SQL Database-servers.
 
-Gebruik de volgende PowerShell-cmdlets om communicatierelaties tussen servers te beheren voor elastische databasetransacties:
+Gebruik de volgende Power shell-cmdlets voor het beheren van communicatie relaties tussen servers voor Elastic data base-trans acties:
 
-* **Nieuw-AzSqlServerCommunicationLink**: Gebruik deze cmdlet om een nieuwe communicatierelatie te maken tussen twee SQL Database-servers in Azure SQL Database. De relatie is symmetrisch, wat betekent dat beide servers transacties met de andere server kunnen initiëren.
-* **Get-AzSqlServerCommunicationLink**: Gebruik deze cmdlet om bestaande communicatierelaties en hun eigenschappen op te halen.
-* **Remove-AzSqlServerCommunicationLink**: Gebruik deze cmdlet om een bestaande communicatierelatie te verwijderen. 
+* **New-AzSqlServerCommunicationLink**: gebruik deze cmdlet om een nieuwe communicatie relatie te maken tussen twee SQL database servers in Azure SQL database. De relatie is symmetrisch, wat betekent dat beide servers trans acties kunnen initiëren met de andere server.
+* **Get-AzSqlServerCommunicationLink**: gebruik deze cmdlet om bestaande communicatie relaties en hun eigenschappen op te halen.
+* **Remove-AzSqlServerCommunicationLink**: gebruik deze cmdlet om een bestaande communicatie relatie te verwijderen. 
 
-## <a name="monitoring-transaction-status"></a>Transactiestatus bewaken
+## <a name="monitoring-transaction-status"></a>Controle transactie status
 
-Gebruik Dynamic Management Views (DMVs) in SQL DB om de status en voortgang van uw lopende elastische databasetransacties te controleren. Alle DMVs met betrekking tot transacties zijn relevant voor gedistribueerde transacties in SQL DB. U vindt de bijbehorende lijst met DMVs hier: [Transaction Related Dynamic Management Views and Functions (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Gebruik dynamische beheer weergaven (Dmv's) in SQL Data Base om de status en voortgang van uw lopende elastische database transacties te controleren. Alle Dmv's die betrekking hebben op trans acties zijn relevant voor gedistribueerde trans acties in SQL data base. U vindt de bijbehorende lijst met Dmv's hier: [trans actie-gerelateerde dynamische beheer weergaven en-functies (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
-Deze DM's zijn bijzonder nuttig:
+Deze Dmv's zijn bijzonder nuttig:
 
-* **sys.dm\_\_tran\_actieve transacties:** Lijsten momenteel actieve transacties en hun status. De kolom UOW (Unit Of Work) kan de verschillende onderliggende transacties identificeren die tot dezelfde gedistribueerde transactie behoren. Alle transacties binnen dezelfde gedistribueerde transactie hebben dezelfde UOW-waarde. Zie de [DMV documentatie](https://msdn.microsoft.com/library/ms174302.aspx) voor meer informatie.
-* **sys.dm\_\_tran\_database transacties:** Biedt aanvullende informatie over transacties, zoals plaatsing van de transactie in het logboek. Zie de [DMV documentatie](https://msdn.microsoft.com/library/ms186957.aspx) voor meer informatie.
-* **sys.dm\_\_tran-vergrendelingen**: geeft informatie over de vergrendelingen die momenteel worden bewaard door lopende transacties. Zie de [DMV documentatie](https://msdn.microsoft.com/library/ms190345.aspx) voor meer informatie.
+* **sys.DM\_Tran\_actieve\_trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx) voor meer informatie.
+* **sys.DM\_Tran\_-\_database transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx) voor meer informatie.
+* **sys.DM\_Tran\_-vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
-De volgende beperkingen zijn momenteel van toepassing op elastische databasetransacties in SQL DB:
+De volgende beperkingen zijn momenteel van toepassing op elastische data base-trans acties in SQL DB:
 
-* Alleen transacties in databases in SQL DB worden ondersteund. Andere [X/Open XA-bronproviders](https://en.wikipedia.org/wiki/X/Open_XA) en databases buiten SQL DB kunnen niet deelnemen aan elastische databasetransacties. Dat betekent dat elastische databasetransacties zich niet kunnen uitstrekken over sql server en Azure SQL Database. Voor gedistribueerde transacties op locatie, blijven MSDTC gebruiken. 
-* Alleen door de klant gecoördineerde transacties vanuit een .NET-toepassing worden ondersteund. Server-side ondersteuning voor T-SQL, zoals BEGIN DISTRIBUTED TRANSACTION is gepland, maar nog niet beschikbaar. 
-* Transacties in WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-servicemethode waarmee een transactie wordt uitgevoerd. Het bijvoegen van de aanroep binnen een transactiebereik mislukt als [system.servicemodel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
+* Alleen trans acties in data bases in SQL DB worden ondersteund. Andere [X//Open XA-](https://en.wikipedia.org/wiki/X/Open_XA) resource providers en data bases buiten SQL DB kunnen niet deel nemen aan Elastic data base-trans acties. Dit betekent dat Elastic data base-trans acties niet kunnen worden uitgerekt over on-premises SQL Server en Azure SQL Database. Ga verder met het gebruik van MSDTC voor gedistribueerde trans acties op locatie. 
+* Alleen door de client samengestelde trans acties van een .NET-toepassing worden ondersteund. De server ondersteuning voor T-SQL zoals BEGIN gedistribueerde trans actie is gepland, maar is nog niet beschikbaar. 
+* Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor vragen u contact met ons opnemen op het [SQL Database-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functieverzoeken u deze toevoegen aan het [SQL Database-feedbackforum.](https://feedback.azure.com/forums/217321-sql-database/)
+Voor vragen kunt u contact opnemen met ons op het [SQL database-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functie aanvragen, voeg ze toe aan het [forum van SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

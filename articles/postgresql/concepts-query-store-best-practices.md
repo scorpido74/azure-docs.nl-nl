@@ -1,49 +1,49 @@
 ---
-title: Aanbevolen procedures voor queryopslag in Azure-database voor PostgreSQL - Enkele server
-description: In dit artikel worden aanbevolen procedures beschreven voor de Query Store in Azure Database voor PostgreSQL - Single Server.
+title: Aanbevolen procedures voor query Store in Azure Database for PostgreSQL-één server
+description: In dit artikel worden aanbevolen procedures beschreven voor het query archief in Azure Database for PostgreSQL-één-server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70764221"
 ---
-# <a name="best-practices-for-query-store"></a>Aanbevolen procedures voor queryarchief
+# <a name="best-practices-for-query-store"></a>Aanbevolen procedures voor query Store
 
-**Geldt voor:** Azure Database voor PostgreSQL - Single Server-versies 9.6, 10, 11
+**Van toepassing op:** Azure Database for PostgreSQL-één server versie 9,6, 10, 11
 
-In dit artikel worden aanbevolen procedures beschreven voor het gebruik van Query Store in Azure Database voor PostgreSQL.
+In dit artikel vindt u een overzicht van de aanbevolen procedures voor het gebruik van query Store in Azure Database for PostgreSQL.
 
-## <a name="set-the-optimal-query-capture-mode"></a>De optimale queryopnamemodus instellen
-Laat Query Store de gegevens vastleggen die voor u van belang zijn. 
+## <a name="set-the-optimal-query-capture-mode"></a>De optimale query Capture-modus instellen
+Laat query Store de gegevens vastleggen die voor u belang rijk zijn. 
 
-|**pg_qs.query_capture_mode** | **Scenario**|
+|**pg_qs. query_capture_mode** | **Scenario**|
 |---|---|
-|_Alle_  |Analyseer uw werklast grondig in termen van alle query's en hun uitvoeringsfrequenties en andere statistieken. Identificeer nieuwe query's in uw werkbelasting. Detecteren of ad-hocquery's worden gebruikt om mogelijkheden voor gebruikers- of automatische parameterisatie te identificeren. _Alles_ wordt geleverd met een verhoogde kosten voor het verbruik van hulpbronnen. |
-|_Boven_  |Richt uw aandacht op top query's - die uitgegeven door klanten.
-|_Geen_ |U hebt al een queryset en tijdvenster vastgelegd die u wilt onderzoeken en u wilt de afleidingen elimineren die andere query's kunnen introduceren. _Geen_ enkele is geschikt voor het testen en bench-marking omgevingen. _Geen moet_ met de nodige voorzichtigheid worden gebruikt, omdat u de kans mist om belangrijke nieuwe query's bij te houden en te optimaliseren. U geen gegevens herstellen op die vensters uit het verleden. |
+|_Alle_  |Analyseer uw werk belasting uitgebreid met alle query's en hun uitvoerings frequenties en andere statistieken. Nieuwe query's in uw workload identificeren. Detecteren of ad hoc-query's worden gebruikt voor het identificeren van de mogelijkheden voor de gebruiker of de automatische parameterisering. _Alle_ wordt geleverd met een verhoogde resource verbruiks kosten. |
+|_Boven_  |Richt u op de belangrijkste query's die door clients worden uitgegeven.
+|_Geen_ |U hebt al een queryset en tijd venster vastgelegd die u wilt onderzoeken en u wilt de afleidingen elimineren die andere query's kunnen introduceren. _Geen_ is geschikt voor het testen en in de Bank markeren van omgevingen. _Geen_ van beide moet worden gebruikt om te zorgen dat u belang rijke nieuwe query's kunt bijhouden en optimaliseren. U kunt geen gegevens meer herstellen op dit moment Windows. |
 
-Query Store bevat ook een winkel voor wachtstatistieken. Er is een aanvullende opnamemodusquery die wachtstatistieken regelt: **pgms_wait_sampling.query_capture_mode** kan worden ingesteld op _geen_ of _alle_. 
+Query Store bevat ook een Store voor wacht statistieken. Er is een aanvullende query voor de opname modus die wacht statistieken regelt: **pgms_wait_sampling. query_capture_mode** kan worden ingesteld op _geen_ of _alle_. 
 
 > [!NOTE] 
-> **pg_qs,query_capture_mode** vervangt **pgms_wait_sampling,query_capture_mode**. Als pg_qs.query_capture_mode _geen_is, heeft de instelling pgms_wait_sampling,query_capture_mode geen effect. 
+> **pg_qs. query_capture_mode** vervangt **pgms_wait_sampling. query_capture_mode**. Als pg_qs. query_capture_mode _geen_, de instelling pgms_wait_sampling. query_capture_mode geen effect heeft. 
 
 
-## <a name="keep-the-data-you-need"></a>Bewaar de gegevens die u nodig hebt
-De parameter **pg_qs.retention_period_in_days** geeft in dagen de bewaarperiode voor queryopslag op. Oudere query- en statistiekengegevens worden verwijderd. Query Store is standaard geconfigureerd om de gegevens 7 dagen te bewaren. Vermijd het bewaren van historische gegevens die u niet van plan bent te gebruiken. Verhoog de waarde als u gegevens langer moet bewaren.
+## <a name="keep-the-data-you-need"></a>Behoud de gegevens die u nodig hebt
+Met de para meter **pg_qs. retention_period_in_days** geeft u in dagen de Bewaar periode voor gegevens voor de query Store op. Oudere query-en statistische gegevens worden verwijderd. Query Store is standaard geconfigureerd om de gegevens 7 dagen te bewaren. Vermijd historische gegevens die u niet wilt gebruiken. Verhoog de waarde als u gegevens langer wilt gebruiken.
 
 
-## <a name="set-the-frequency-of-wait-stats-sampling"></a>Stel de frequentie van wachtstatistieken bemonstering 
-De parameter **pgms_wait_sampling.history_period** geeft aan hoe vaak (in milliseconden) wachtgebeurtenissen worden bemonsterd. Hoe korter de periode, hoe vaker de bemonstering. Meer informatie wordt opgehaald, maar dat komt met de kosten van een groter verbruik van hulpbronnen. Verhoog deze periode als de server onder belasting staat of als u de granulariteit niet nodig hebt
+## <a name="set-the-frequency-of-wait-stats-sampling"></a>De frequentie van de steek proef van wachtende statistieken instellen 
+De para meter **pgms_wait_sampling. history_period** geeft aan hoe vaak (in milliseconden) wacht gebeurtenissen worden bemonsterd. Hoe korter de periode, hoe vaker de steek proef. Er worden meer gegevens opgehaald, maar dit wordt geleverd met de kosten van een groter Resource verbruik. Verhoog deze periode als de server wordt geladen of als u de granulatie niet nodig hebt
 
 
-## <a name="get-quick-insights-into-query-store"></a>Krijg snel inzicht in de Query Store
-U [QueryPerformance Insight](concepts-query-performance-insight.md) gebruiken in de Azure-portal om snel inzicht te krijgen in de gegevens in de Query Store. De visualisaties geven de langstlopende query's en de langste wachtgebeurtenissen in de tijd weer.
+## <a name="get-quick-insights-into-query-store"></a>Snelle inzichten verkrijgen in query Store
+U kunt [query Performance Insight](concepts-query-performance-insight.md) in de Azure Portal gebruiken om snel inzicht te krijgen in de gegevens in het query archief. De visualisaties zijn het Opper vlak van de langst uitgevoerde query's en de langste wacht gebeurtenissen gedurende een periode.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het instellen of instellen van parameters met behulp van de [Azure-portal](howto-configure-server-parameters-using-portal.md) of de [Azure CLI](howto-configure-server-parameters-using-cli.md).
+- Meer informatie over het ophalen of instellen van para meters met behulp van de [Azure Portal](howto-configure-server-parameters-using-portal.md) of de [Azure cli](howto-configure-server-parameters-using-cli.md).

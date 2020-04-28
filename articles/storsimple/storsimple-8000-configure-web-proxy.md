@@ -1,6 +1,6 @@
 ---
-title: Webproxy instellen voor storSimple 8000-serie apparaat | Microsoft Documenten
-description: Meer informatie over het gebruik van Windows PowerShell voor StorSimple om webproxy-instellingen voor uw StorSimple-apparaat te configureren.
+title: Webproxy instellen voor StorSimple 8000 Series-apparaat | Microsoft Docs
+description: Meer informatie over het gebruik van Windows PowerShell voor StorSimple voor het configureren van web proxy-instellingen voor uw StorSimple-apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,83 +15,83 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65204255"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy configureren voor uw StorSimple-apparaat
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt beschreven hoe u Windows PowerShell voor StorSimple gebruiken om webproxy-instellingen voor uw StorSimple-apparaat te configureren en weer te geven. De webproxy-instellingen worden gebruikt door het StorSimple-apparaat bij het communiceren met de cloud. Een webproxyserver wordt gebruikt om een andere beveiligingslaag toe te voegen, inhoud te filteren, cache te beheren om bandbreedtevereisten te verlichten of zelfs te helpen met analytics.
+In deze zelf studie wordt beschreven hoe u Windows PowerShell voor StorSimple kunt gebruiken om webproxy-instellingen voor uw StorSimple-apparaat te configureren en weer te geven. De web proxy-instellingen worden gebruikt door het StorSimple-apparaat bij de communicatie met de Cloud. Er wordt een webproxyserver gebruikt voor het toevoegen van een extra beveiligingslaag, het filteren van inhoud, cache om bandbreedte vereisten te vereenvoudigen of zelfs te helpen bij het analyseren.
 
-De richtlijnen in deze zelfstudie zijn alleen van toepassing op fysieke apparaten uit de StorSimple 8000-serie. Webproxyconfiguratie wordt niet ondersteund op het StorSimple Cloud Appliance (8010 en 8020).
+De instructies in deze zelf studie zijn alleen van toepassing op fysieke apparaten uit de StorSimple-serie van 8000. De web proxy-configuratie wordt niet ondersteund op de StorSimple Cloud Appliance (8010 en 8020).
 
-Webproxy is een _optionele_ configuratie voor uw StorSimple-apparaat. U webproxy alleen configureren via Windows PowerShell voor StorSimple. De configuratie is een proces in twee stappen als volgt:
+Webproxy is een _optionele_ configuratie voor uw StorSimple-apparaat. U kunt webproxy alleen configureren via Windows PowerShell voor StorSimple. De configuratie is als volgt in twee stappen:
 
-1. U configureert eerst webproxy-instellingen via de wizard Setup of Windows PowerShell voor StorSimple-cmdlets.
-2. Vervolgens schakelt u de geconfigureerde webproxy-instellingen in via Windows PowerShell voor StorSimple-cmdlets.
+1. U configureert eerst webproxy-instellingen via de installatie wizard of Windows PowerShell voor StorSimple-cmdlets.
+2. Vervolgens schakelt u de geconfigureerde web proxy-instellingen in via Windows PowerShell voor StorSimple-cmdlets.
 
-Nadat de webproxyconfiguratie is voltooid, u de geconfigureerde webproxy-instellingen bekijken in zowel de Microsoft Azure StorSimple Device Manager-service als de Windows PowerShell voor StorSimple.
+Nadat de configuratie van de webproxy is voltooid, kunt u de geconfigureerde web proxy-instellingen weer geven in de Microsoft Azure StorSimple Apparaatbeheer-service en de Windows PowerShell voor StorSimple.
 
-Na het lezen van deze tutorial, zult u in staat zijn om:
+Na het lezen van deze zelf studie kunt u het volgende doen:
 
 * Configureer webproxy met behulp van de wizard Setup en cmdlets.
-* Webproxy inschakelen met behulp van cmdlets.
-* Webproxy-instellingen weergeven in de Azure-portal.
-* Fouten oplossen tijdens de configuratie van webproxy's.
+* Webproxy inschakelen met behulp van-cmdlets.
+* Webproxy-instellingen weer geven in de Azure Portal.
+* Fouten tijdens de configuratie van de webproxy oplossen.
 
 
 ## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Webproxy configureren via Windows PowerShell voor StorSimple
 
-U gebruikt een van de volgende opties om webproxy-instellingen te configureren:
+U kunt een van de volgende opties gebruiken om proxy-instellingen te configureren:
 
-* De wizard Setup om u door de configuratiestappen te leiden.
+* De installatie wizard om u te begeleiden bij de configuratie stappen.
 * Cmdlets in Windows PowerShell voor StorSimple.
 
-Elk van deze methoden wordt besproken in de volgende secties.
+Elk van deze methoden wordt in de volgende secties besproken.
 
-## <a name="configure-web-proxy-via-the-setup-wizard"></a>Webproxy configureren via de wizard Setup
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Webproxy configureren via de installatie wizard
 
-Gebruik de wizard Setup om u door de stappen voor webproxyconfiguratie te leiden. Voer de volgende stappen uit om de webproxy op uw apparaat te configureren.
+Gebruik de wizard Setup om u te begeleiden bij de stappen voor de configuratie van de webproxy. Voer de volgende stappen uit om de webproxy op uw apparaat te configureren.
 
-#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Webproxy configureren via de wizard Setup
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Webproxy configureren via de installatie wizard
 
-1. Kies in het menu van de seriële console optie 1, **Log in met volledige toegang** en geef het wachtwoord van de **apparaatbeheerder**op. Typ de volgende opdracht om een installatiewizardsessie te starten:
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang** en geef het **beheerders wachtwoord**voor het apparaat op. Typ de volgende opdracht om een installatie wizard-sessie te starten:
    
     `Invoke-HcsSetupWizard`
-2. Als dit de eerste keer is dat u de wizard Setup hebt gebruikt voor apparaatregistratie, moet u alle vereiste netwerkinstellingen configureren totdat u de webproxyconfiguratie hebt bereikt. Als uw apparaat al is geregistreerd, accepteert u alle geconfigureerde netwerkinstellingen totdat u de webproxyconfiguratie hebt bereikt. Typ **Ja**. in de wizard Setup wanneer u wordt gevraagd de instellingen van webproxy's te configureren.
-3. Geef voor de URL van de **webproxy**het IP-adres of de volledig gekwalificeerde domeinnaam (FQDN) van uw webproxyserver en het TCP-poortnummer op dat u wilt dat uw apparaat gebruikt wanneer het communiceert met de cloud. Gebruik de volgende indeling:
+2. Als dit de eerste keer is dat u de wizard Setup voor apparaatregistratie hebt gebruikt, moet u alle vereiste netwerk instellingen configureren totdat u de configuratie van de webproxy hebt bereikt. Als uw apparaat al is geregistreerd, accepteert u alle geconfigureerde netwerk instellingen totdat u de configuratie van de webproxy hebt bereikt. In de installatie wizard, wanneer u wordt gevraagd om de instellingen voor de webproxy te configureren, typt u **Ja**.
+3. Geef voor de **webproxy-URL**het IP-adres of de Fully QUALIFIED domain name (FQDN) op van de webproxyserver en het TCP-poort nummer dat u wilt gebruiken voor de communicatie met de Cloud. Gebruik de volgende indeling:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
-    Standaard is TCP-poortnummer 8080 opgegeven.
-4. Kies het verificatietype als **NTLM,** **Basic**of **Geen**. Basic is de minst veilige verificatie voor de proxyserverconfiguratie. NT LAN Manager (NTLM) is een zeer veilig en complex verificatieprotocol dat een drierichtingsberichtensysteem gebruikt (soms vier als extra integriteit vereist is) om een gebruiker te verifiëren. De standaardverificatie is NTLM. Zie [Basis-](https://hc.apache.org/httpclient-3.x/authentication.html) en [NTLM-verificatie](https://hc.apache.org/httpclient-3.x/authentication.html)voor meer informatie. 
+    TCP-poort nummer 8080 is standaard opgegeven.
+4. Kies het verificatie type als **NTLM**, **Basic**of **geen**. Basic is de minst veilige verificatie voor de proxy server configuratie. NT LAN Manager (NTLM) is een zeer veilig en complex verificatie protocol dat gebruikmaakt van een bericht systeem in drie richtingen (soms vier als er extra integriteit is vereist) om een gebruiker te verifiëren. De standaard verificatie is NTLM. Zie [Basic](https://hc.apache.org/httpclient-3.x/authentication.html) -en [NTLM-verificatie](https://hc.apache.org/httpclient-3.x/authentication.html)voor meer informatie. 
    
    > [!IMPORTANT]
-   > **In de StorSimple Device Manager-service werken de apparaatcontrolediagrammen niet wanneer basis- of NTLM-verificatie is ingeschakeld in de proxyserverconfiguratie voor het apparaat. Als de controlegrafieken werken, moet u ervoor zorgen dat de verificatie is ingesteld op GEEN.**
+   > **In de StorSimple-Apparaatbeheer-service werken de grafieken voor het controleren van apparaten niet wanneer Basic-of NTLM-verificatie is ingeschakeld in de proxyserver configuratie voor het apparaat. Voor de werking van de bewakings grafieken moet u ervoor zorgen dat verificatie is ingesteld op geen.**
   
-5. Als u de verificatie hebt ingeschakeld, geeft u een **gebruikersnaam voor webproxy** en een **webproxywachtwoord**. U moet ook het wachtwoord bevestigen.
+5. Als u de verificatie hebt ingeschakeld, geeft u een **webproxy-gebruikers naam** en een **webproxy-wacht woord**op. U moet ook het wacht woord bevestigen.
    
     ![Webproxy configureren op StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-Als u uw apparaat voor de eerste keer registreert, gaat u verder met de registratie. Als uw apparaat al is geregistreerd, wordt de wizard afgesloten. De geconfigureerde instellingen worden opgeslagen.
+Als u uw apparaat voor de eerste keer registreert, gaat u door met de registratie. Als uw apparaat al is geregistreerd, wordt de wizard afgesloten. De geconfigureerde instellingen worden opgeslagen.
 
-Webproxy is nu ingeschakeld. U de stap [Webproxy inschakelen](#enable-web-proxy) overslaan en rechtstreeks naar [Webproxy-instellingen weergeven in de Azure-portal.](#view-web-proxy-settings-in-the-azure-portal)
+Web proxy is nu ingeschakeld. U kunt de stap voor het inschakelen van de [webproxy](#enable-web-proxy) overs Laan en direct gaan om de [webproxy-instellingen weer te geven in de Azure Portal](#view-web-proxy-settings-in-the-azure-portal).
 
 ## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Webproxy configureren via Windows PowerShell voor StorSimple-cmdlets
 
-Een alternatieve manier om webproxy-instellingen te configureren is via de Windows PowerShell voor StorSimple-cmdlets. Voer de volgende stappen uit om de webproxy te configureren.
+Een andere manier om webproxy-instellingen te configureren, is via de Windows PowerShell voor StorSimple-cmdlets. Voer de volgende stappen uit om de webproxy te configureren.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>Webproxy configureren via cmdlets
-1. Kies in het menu van de seriële console optie 1, **Log in met volledige toegang**. Geef het wachtwoord van de **apparaatbeheerder**op wanneer u daarom wordt gevraagd. Het standaardwachtwoord `Password1`is .
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
 2. Typ het volgende na de opdrachtprompt:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
-    Geef het wachtwoord op en bevestig het wanneer daarom wordt gevraagd.
+    Geef het wacht woord op en bevestig dit wanneer u hierom wordt gevraagd.
    
     ![Webproxy configureren op StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
 
@@ -99,61 +99,61 @@ De webproxy is nu geconfigureerd en moet worden ingeschakeld.
 
 ## <a name="enable-web-proxy"></a>Webproxy inschakelen
 
-Webproxy is standaard uitgeschakeld. Nadat u de webproxy-instellingen op uw StorSimple-apparaat hebt geconfigureerd, gebruikt u de Windows PowerShell voor StorSimple om de webproxy-instellingen in te schakelen.
+Webproxy is standaard uitgeschakeld. Nadat u de web proxy-instellingen op uw StorSimple-apparaat hebt geconfigureerd, gebruikt u de Windows PowerShell voor StorSimple om de webproxy-instellingen in te scha kelen.
 
 > [!NOTE]
-> **Deze stap is niet vereist als u de wizard Setup hebt gebruikt om de webproxy te configureren. Webproxy wordt standaard automatisch ingeschakeld na een installatiewizardsessie.**
+> **Deze stap is niet vereist als u de wizard Setup voor het configureren van de webproxy hebt gebruikt. Webproxy wordt na een installatie wizard-sessie automatisch standaard ingeschakeld.**
 
 
-Voer de volgende stappen uit in Windows PowerShell voor StorSimple om webproxy op uw apparaat in te schakelen:
+Voer de volgende stappen uit in Windows PowerShell voor StorSimple om webproxy op uw apparaat in te scha kelen:
 
 #### <a name="to-enable-web-proxy"></a>Webproxy inschakelen
-1. Kies in het menu van de seriële console optie 1, **Log in met volledige toegang**. Geef het wachtwoord van de **apparaatbeheerder**op wanneer u daarom wordt gevraagd. Het standaardwachtwoord `Password1`is .
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
 2. Typ het volgende na de opdrachtprompt:
    
     `Enable-HcsWebProxy`
    
-    U hebt nu de webproxyconfiguratie ingeschakeld op uw StorSimple-apparaat.
+    U hebt nu de configuratie van de webproxy ingeschakeld op uw StorSimple-apparaat.
    
     ![Webproxy configureren op StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Webproxy-instellingen weergeven in de Azure-portal
+## <a name="view-web-proxy-settings-in-the-azure-portal"></a>Webproxy-instellingen weer geven in de Azure Portal
 
-De webproxy-instellingen zijn geconfigureerd via de Windows PowerShell-interface en kunnen niet worden gewijzigd vanuit de portal. U deze geconfigureerde instellingen echter wel bekijken in de portal. Voer de volgende stappen uit om de webproxy weer te geven.
+De web proxy-instellingen worden geconfigureerd via de Windows Power shell-interface en kunnen niet worden gewijzigd vanuit de portal. U kunt deze geconfigureerde instellingen echter bekijken in de portal. Voer de volgende stappen uit om de webproxy weer te geven.
 
-#### <a name="to-view-web-proxy-settings"></a>Webproxy-instellingen weergeven
-1. Navigeer naar **de StorSimple Device Manager-service > Apparaten.** Selecteer en klik op een apparaat en ga vervolgens naar **Apparaatinstellingen > Netwerk**.
+#### <a name="to-view-web-proxy-settings"></a>Webproxy-instellingen weer geven
+1. Ga naar **StorSimple Apparaatbeheer service >-apparaten**. Selecteer en klik op een apparaat en ga vervolgens naar **apparaatinstellingen > netwerk**.
 
-    ![Klik op Netwerk](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
+    ![Klik op netwerk](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. Klik in het blad **Netwerkinstellingen** op de **tegel Webproxy.**
+2. Klik op de Blade **netwerk instellingen** op de tegel **webproxy** .
 
-    ![Klik op webproxy](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
+    ![Klik op web proxy](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
-3. Controleer in het **webproxyblad** de geconfigureerde webproxy-instellingen op uw StorSimple-apparaat.
+3. Controleer op de Blade **webproxy** de geconfigureerde web proxy-instellingen op uw StorSimple-apparaat.
    
-    ![Webproxy-instellingen weergeven](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
+    ![Webproxy-instellingen weer geven](./media/storsimple-8000-configure-web-proxy/view-web-proxy-3.png)
 
 
-## <a name="errors-during-web-proxy-configuration"></a>Fouten tijdens de configuratie van webproxy's
+## <a name="errors-during-web-proxy-configuration"></a>Fouten tijdens de configuratie van de webproxy
 
-Als de webproxy-instellingen onjuist zijn geconfigureerd, worden foutmeldingen weergegeven aan de gebruiker in Windows PowerShell voor StorSimple. In de volgende tabel worden enkele van deze foutmeldingen, de waarschijnlijke oorzaken en de aanbevolen acties uitgelegd.
+Als de webproxy-instellingen onjuist zijn geconfigureerd, worden er fout berichten weer gegeven aan de gebruiker in Windows PowerShell voor StorSimple. In de volgende tabel worden enkele van deze fout berichten, hun waarschijnlijke oorzaken en aanbevolen acties uitgelegd.
 
-| Seriële nr. | HRESULT-foutcode | Mogelijke oorzaak | Aanbevolen actie |
+| Serienr. | HRESULT-fout code | Mogelijke hoofd oorzaak | Aanbevolen actie |
 |:--- |:--- |:--- |:--- |
-| 1. |0x80070001 |Commando wordt uitgevoerd vanaf de passieve controller en het is niet in staat om te communiceren met de actieve controller. |Voer de opdracht uit op de actieve controller. Als u de opdracht vanaf de passieve controller wilt uitvoeren, moet u de verbinding van passieve naar actieve controller herstellen. U moet Microsoft Support inschakelen als deze verbinding is verbroken. |
-| 2. |0x800710dd - De bewerkings-id is niet geldig |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. Deze kunnen alleen worden geconfigureerd op een StorSimple fysiek apparaat. |
-| 3. |0x80070057 - Ongeldige parameter |Een van de parameters voor de proxy-instellingen is niet geldig. |De URI is niet in de juiste indeling. Gebruik de volgende indeling:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
-| 4. |0x800706ba - RPC-server niet beschikbaar |De hoofdoorzaak is een van de volgende:</br></br>Cluster is niet up. </br></br>De Datapath-service wordt niet uitgevoerd.</br></br>De opdracht wordt uitgevoerd vanaf de passieve controller en kan niet communiceren met de actieve controller. |Schakel Microsoft Support in om ervoor te zorgen dat het cluster is uitgevoerd en dat de datapath-service wordt uitgevoerd.</br></br>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht vanaf de passieve controller wilt uitvoeren, moet u ervoor zorgen dat de passieve controller met de actieve controller kan communiceren. U moet Microsoft Support inschakelen als deze verbinding is verbroken. |
-| 5. |0x800706be - RPC-gesprek mislukt |Cluster is uitgevallen. |Schakel Microsoft Support in om ervoor te zorgen dat het cluster is up. |
-| 6. |0x8007138f - Clusterbron niet gevonden |Clusterbron platformservice wordt niet gevonden. Dit kan gebeuren wanneer de installatie niet correct was. |Mogelijk moet u een fabrieksreset uitvoeren op uw apparaat. Mogelijk moet u een platformbron maken. Neem contact op met Microsoft Ondersteuning voor volgende stappen. |
-| 7. |0x8007138c - Clusterbron niet online |Clusterbronnen van platforms of gegevensgroepen zijn niet online. |Neem contact op met Microsoft Support om ervoor te zorgen dat de gegevenspad- en platformservicebron online is. |
+| 1. |0x80070001 |De opdracht wordt uitgevoerd vanaf de passieve controller en kan niet communiceren met de actieve controller. |Voer de opdracht uit op de actieve controller. Als u de opdracht vanaf de passieve controller wilt uitvoeren, moet u de verbinding van passieve naar actieve controller verhelpen. U moet Microsoft Ondersteuning als deze verbinding is verbroken. |
+| 2. |0x800710dd-de bewerkings-id is ongeldig |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. Deze kunnen alleen worden geconfigureerd op een fysiek StorSimple-apparaat. |
+| 3. |0x80070057-ongeldige para meter |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 4. |0x800706ba-RPC-server niet beschikbaar |De hoofd oorzaak is een van de volgende:</br></br>Het cluster is niet actief. </br></br>De DataPath-service wordt niet uitgevoerd.</br></br>De opdracht wordt uitgevoerd vanaf de passieve controller en kan niet communiceren met de actieve controller. |Zorg Microsoft Ondersteuning om ervoor te zorgen dat het cluster actief is en dat de DataPath-service wordt uitgevoerd.</br></br>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht van de passieve controller wilt uitvoeren, moet u ervoor zorgen dat de passieve controller kan communiceren met de actieve controller. U moet Microsoft Ondersteuning als deze verbinding is verbroken. |
+| 5. |0x800706be-RPC-aanroep is mislukt |Het cluster is niet beschikbaar. |Zorg Microsoft Ondersteuning om ervoor te zorgen dat het cluster actief is. |
+| 6. |0x8007138f-cluster bron niet gevonden |De cluster bron van de platform service is niet gevonden. Dit kan gebeuren wanneer de installatie niet de juiste is. |Mogelijk moet u de fabrieks instellingen herstellen op het apparaat. Mogelijk moet u een platform bron maken. Neem contact op met Microsoft Ondersteuning voor volgende stappen. |
+| 7. |0x8007138c: cluster bron is niet online |De cluster bronnen platform of DataPath zijn niet online. |Neem contact op met Microsoft Ondersteuning om ervoor te zorgen dat de service bronnen DataPath en platform online zijn. |
 
 > [!NOTE]
-> * De bovenstaande lijst met foutmeldingen is niet volledig.
-> * Fouten met betrekking tot webproxy-instellingen worden niet weergegeven in de Azure-portal in uw StorSimple Device Manager-service. Als er een probleem is met de webproxy nadat de configuratie is voltooid, wordt de apparaatstatus gewijzigd in **Offline** in de klassieke portal.|
+> * De bovenstaande lijst met fout berichten is niet limitatief.
+> * Fouten met betrekking tot web proxy-instellingen worden niet weer gegeven in de Azure Portal in uw StorSimple Apparaatbeheer-service. Als er een probleem is met de webproxy nadat de configuratie is voltooid, wordt de apparaatstatus gewijzigd in **offline** in de klassieke Portal. |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u problemen ondervindt bij het implementeren van uw apparaat of het configureren van webproxy-instellingen, raadpleegt u [Problemen met de implementatie van uw StorSimple-apparaat.](storsimple-troubleshoot-deployment.md)
-* Als u wilt weten hoe u de StorSimple Device Manager-service gebruiken, gaat u [naar De StorSimple Device Manager-service gebruiken om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Raadpleeg [problemen met de implementatie van uw StorSimple-apparaat oplossen](storsimple-troubleshoot-deployment.md)als u problemen ondervindt bij het implementeren van uw apparaat of het configureren van de webproxy-instellingen.
+* Ga voor meer informatie over het gebruik van de StorSimple Apparaatbeheer-service naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
 

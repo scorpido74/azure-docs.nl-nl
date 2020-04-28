@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-script: instellingen voor azure data share-instellingen instellen en weergeven| Microsoft Documenten'
-description: Dit PowerShell-script stelt synchronisatie-instellingen voor delen in en krijgt deze.
+title: 'Power shell-script: instellingen voor Azure data share synchronisatie instellen en weer geven | Microsoft Docs'
+description: Met dit Power shell-script worden synchronisatie-instellingen voor delen ingesteld en opgehaald.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307185"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>PowerShell gebruiken om het gebruik van een verzonden gegevensaandeel te controleren
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Power shell gebruiken voor het bewaken van het gebruik van een verzonden gegevens share
 
-Dit PowerShell-script stelt synchronisatie-instellingen voor delen in en krijgt deze.
+Met dit Power shell-script worden synchronisatie-instellingen voor delen ingesteld en opgehaald.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -48,12 +48,12 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Nieuw-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Maak een synchronisatie van delen. |
-| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Hier worden synchronisatie-instellingen van een sharesynchronisatie opdegewenste status krijgen. |
+| [New-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Maak een synchronisatie van shares. |
+| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Hiermee worden de synchronisatie-instellingen van een synchronisatie van shares opgehaald. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Data Share PowerShell-scriptvoorbeelden zijn te vinden in de [PowerShell-voorbeelden voor Azure Data Share.](../../samples-powershell.md)
+Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.

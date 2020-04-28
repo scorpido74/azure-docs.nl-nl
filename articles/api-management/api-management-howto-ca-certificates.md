@@ -1,6 +1,6 @@
 ---
-title: Een aangepast CA-certificaat toevoegen - Azure API-beheer | Microsoft Documenten
-description: Meer informatie over het toevoegen van een aangepast CA-certificaat in Azure API Management.
+title: Een aangepast CA-certificaat toevoegen-Azure API Management | Microsoft Docs
+description: Meer informatie over het toevoegen van een aangepast CA-certificaat in azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70073608"
 ---
-# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Een aangepast CA-certificaat toevoegen in Azure API Management
+# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Een aangepast CA-certificaat toevoegen in azure API Management
 
-Azure API Management maakt het installeren van CA-certificaten op de machine mogelijk in de vertrouwde root- en intermediate certificaatopslag. Deze functionaliteit moet worden gebruikt als voor uw services een aangepast CA-certificaat vereist is.
+Met Azure API Management kunnen CA-certificaten op de computer worden geïnstalleerd binnen de vertrouwde basis-en tussenliggende certificaat archieven. Deze functie moet worden gebruikt als voor uw services een aangepast CA-certificaat is vereist.
 
-In het artikel ziet u hoe u CA-certificaten van een Azure API Management-serviceinstantie beheert in de Azure-portal.
+In dit artikel wordt beschreven hoe u CA-certificaten van een exemplaar van Azure API Management service beheert in de Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,9 +33,9 @@ In het artikel ziet u hoe u CA-certificaten van een Azure API Management-service
 
 ![CA-certificaten toevoegen](media/api-management-howto-ca-certificates/00.png)
 
-Volg de onderstaande stappen om een nieuw CA-certificaat te uploaden. Als u nog geen API Management-serviceinstantie hebt gemaakt, raadpleegt u de zelfstudie [Een API Management-serviceinstantie maken.](get-started-create-service-instance.md)
+Volg de onderstaande stappen om een nieuw CA-certificaat te uploaden. Als u nog geen API Management service-exemplaar hebt gemaakt, raadpleegt u de zelf studie [een API Management service-exemplaar maken](get-started-create-service-instance.md).
 
-1. Navigeer naar de instantie azure API Management-service in de Azure-portal.
+1. Navigeer naar uw Azure API Management service-exemplaar in de Azure Portal.
 
 2. Selecteer **CA-certificaten** in het menu.
 
@@ -43,7 +43,7 @@ Volg de onderstaande stappen om een nieuw CA-certificaat te uploaden. Als u nog 
 
     ![CA-certificaten toevoegen](media/api-management-howto-ca-certificates/01.png)  
 
-4. Blader naar het certificaat en bepaal het certificaatarchief. Alleen de openbare sleutel is nodig, zodat het wachtwoord niet vereist is.
+4. Blader naar het certificaat en beslis het certificaat archief. Alleen de open bare sleutel is nodig, dus het wacht woord is niet vereist.
 
     ![CA-certificaten toevoegen](media/api-management-howto-ca-certificates/02.png)  
 
@@ -52,11 +52,11 @@ Volg de onderstaande stappen om een nieuw CA-certificaat te uploaden. Als u nog 
     ![CA-certificaten toevoegen](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> U een CA-certificaat uploaden met de `New-AzApiManagementSystemCertificate` opdracht Powershell.
+> U kunt een CA-certificaat uploaden met `New-AzApiManagementSystemCertificate` behulp van de Power shell-opdracht.
 
-## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Een clientcertificaat verwijderen
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Een client certificaat verwijderen
 
-Als u een certificaat wilt verwijderen, klikt u op contextmenu **...** en selecteert u **Verwijderen** naast het certificaat.
+Als u een certificaat wilt verwijderen, klikt u op context menu **...** en selecteert u **verwijderen** naast het certificaat.
 
 ![CA-certificaten verwijderen](media/api-management-howto-ca-certificates/04.png)  
 

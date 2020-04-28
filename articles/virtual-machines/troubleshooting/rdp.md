@@ -1,6 +1,6 @@
 ---
-title: RDP-problemen voor Windows VM's in Azure oplossen | Microsoft Documenten
-description: Rdp-problemen in Azure voor Windows VM's oplossen.
+title: Problemen met RDP oplossen voor Windows-Vm's in azure | Microsoft Docs
+description: Los problemen met RDP-problemen op in azure voor virtuele Windows-machines.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,15 +15,15 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057271"
 ---
-# <a name="troubleshoot-rdp-issues"></a>Rdp-problemen oplossen
+# <a name="troubleshoot-rdp-issues"></a>Problemen met RDP oplossen
 
-In deze sectie worden de volgende problemen met het maken van een RDP voor verbinding met een vm behandeld:
+In deze sectie komen de volgende problemen met het maken van een RDP-verbinding met een virtuele machine aan de orde:
 
 - [RDP opnieuw instellen](reset-rdp.md)
 - [Problemen met RDP oplossen](troubleshoot-rdp-connection.md)

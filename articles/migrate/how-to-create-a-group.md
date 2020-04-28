@@ -1,92 +1,92 @@
 ---
-title: Machines groeperen voor beoordeling met Azure Migrate | Microsoft Documenten
-description: Beschrijft hoe u machines groepeert voordat u een beoordeling uitvoert met de Azure Migrate-service.
+title: Machines groeperen voor evaluatie met Azure Migrate | Microsoft Docs
+description: Hierin wordt beschreven hoe u machines groepeert voordat u een evaluatie uitvoert met de Azure Migrate-service.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
 ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68301678"
 ---
-# <a name="create-a-group-for-assessment"></a>Een groep maken voor beoordeling
+# <a name="create-a-group-for-assessment"></a>Een groep maken voor evaluatie
 
-In dit artikel wordt beschreven hoe u groepen machines maakt voor beoordeling met Azure Migrate: Server Assessment.
+In dit artikel wordt beschreven hoe u groepen machines maakt voor evaluatie met Azure Migrate: Server evaluatie.
 
-[Azure Migreren](migrate-services-overview.md) helpt u te migreren naar Azure. Azure Migrate biedt een gecentraliseerde hub om detectie, beoordeling en migratie van on-premises infrastructuur, toepassingen en gegevens naar Azure bij te houden. De hub biedt Azure-hulpprogramma's voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden. 
+[Azure migrate](migrate-services-overview.md) helpt u bij het migreren naar Azure. Azure Migrate biedt een gecentraliseerde hub voor het bijhouden van detectie, beoordeling en migratie van on-premises infra structuur, toepassingen en gegevens naar Azure. De hub biedt Azure-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV-aanbiedingen (Independent Software Vendor) van derden. 
 
-## <a name="grouping-machines"></a>Groepering sgroepering van machines
+## <a name="grouping-machines"></a>Machines groeperen
 
-U verzamelt machines in groepen om te beoordelen of ze geschikt zijn voor migratie naar Azure en om Azure-schattingen en kostenschattingen voor hen te krijgen. Er zijn een paar manieren om groepen te maken:
+U verzamelt computers in groepen om te beoordelen of ze geschikt zijn voor migratie naar Azure en om Azure-omvang en kosten schattingen voor hen te krijgen. Er zijn een aantal manieren om groepen te maken:
 
-- Als u weet welke machines samen moeten worden gemigreerd, u de groep handmatig maken in Azure Migrate.
-- Als u niet zeker bent van de machines die moeten worden gegroepeerd, u de functionaliteit voor afhankelijkheidsvisualisatie in Azure Migreren gebruiken om groepen te maken. 
+- Als u weet welke computers samen moeten worden gemigreerd, kunt u de groep hand matig maken in Azure Migrate.
+- Als u niet zeker weet welke computers moeten worden gegroepeerd, kunt u de visualisatie functionaliteit voor afhankelijkheid in Azure Migrate gebruiken om groepen te maken. 
 
 > [!NOTE]
 > De functie voor visualisatie van afhankelijkheden is niet beschikbaar in Azure Government.
 
-## <a name="create-a-group-manually"></a>Een groep handmatig maken
+## <a name="create-a-group-manually"></a>Hand matig een groep maken
 
-U een groep maken op hetzelfde moment dat u [een beoordeling maakt.](how-to-create-assessment.md)
+U kunt een groep maken op het moment dat u [een evaluatie maakt](how-to-create-assessment.md).
 
-Als u een groep handmatig wilt maken buiten het maken van een beoordeling, gaat u als volgt te werk:
+Als u hand matig een groep wilt maken buiten het maken van een beoordeling, doet u het volgende:
 
-1. Klik in het Azure Migrate-project > **Overzicht**op **Servers beoordelen en migreren**. Klik in **Azure Migrate: Serverbeoordeling**op **Groepen**
-    - Als u het azure migrate: serverassessment-hulpprogramma nog niet hebt toegevoegd, klikt u om het toe te voegen. [Meer informatie](how-to-assess.md).
-    - Als u nog geen Azure Migrate-project hebt gemaakt, [leest u meer](how-to-add-tool-first-time.md).
+1. Klik in het Azure Migrate project > **overzicht**op **servers evalueren en migreren**. Klik in **Azure migrate: Server evaluatie**op **groepen**
+    - Als u het Azure Migrate: Server Assessment nog niet hebt toegevoegd, klikt u hierop om het toe te voegen. [Meer informatie](how-to-assess.md).
+    - Als u nog geen Azure Migrate project hebt gemaakt, kunt u [meer informatie](how-to-add-tool-first-time.md)vinden.
 
     ![Groepen selecteren](./media/how-to-create-a-group/select-groups.png)
 
-2. Klik op het pictogram **Groeperen.**
-3. Selecteer in **groep Maken**een groepsnaam en selecteer in **toestelnaam**het Azure Migrate-toestel dat u gebruikt voor machinedetectie.
-1. Selecteer in de machinelijst de machines die u wilt toevoegen aan de groep > **Maken.**
+2. Klik op het **groeps** pictogram.
+3. Geef in **groep maken**een groeps naam op en selecteer bij **apparaatnaam**het Azure migrate apparaat dat u voor machine detectie gebruikt.
+1. Selecteer in de lijst computer de machines die u wilt toevoegen aan de groep > **maken**.
 
     ![Groep maken](./media/how-to-create-a-group/create-group.png)
 
-U deze groep nu gebruiken wanneer u [een beoordeling maakt.](how-to-create-assessment.md)
+U kunt deze groep nu gebruiken bij het [maken van een evaluatie](how-to-create-assessment.md).
 
-## <a name="refine-a-group-with-dependency-mapping"></a>Een groep verfijnen met afhankelijkheidstoewijzing
+## <a name="refine-a-group-with-dependency-mapping"></a>Een groep verfijnen met afhankelijkheids toewijzing
 
-Met afhankelijkheidstoewijzing u afhankelijkheden op verschillende machines visualiseren. U gebruikt doorgaans afhankelijkheidstoewijzing wanneer u machinegroepen met hogere vertrouwensniveaus wilt beoordelen.
-- Het helpt u om afhankelijkheden van machines te controleren voordat u een beoordeling uitvoert. 
-- Het helpt ook om uw migratie naar Azure effectief te plannen, door ervoor te zorgen dat er niets achterblijft en zo verrassingsonderbrekingen tijdens migratie te voorkomen.
-- U onderling afhankelijke systemen ontdekken die samen moeten migreren en bepalen of een lopend systeem gebruikers nog steeds bedient of een kandidaat is voor ontmanteling in plaats van migratie.
+Met afhankelijkheids toewijzing kunt u afhankelijkheden op verschillende computers visualiseren. U gebruikt meestal afhankelijkheids toewijzing als u computer groepen wilt beoordelen met een hoger vertrouwens niveau.
+- U kunt hiermee computer afhankelijkheden van elkaar controleren voordat u een evaluatie uitvoert. 
+- Het helpt ook om uw migratie naar Azure effectief te plannen door ervoor te zorgen dat er niets achterblijft, waardoor onverwachte storingen worden voor komen tijdens de migratie.
+- U kunt onafhankelijke systemen detecteren die samen moeten worden gemigreerd, en identificeren of een actief systeem nog steeds gebruikers is of een kandidaat is voor buiten gebruik stellen in plaats van migratie.
 
-Als u [afhankelijkheidstoewijzing](how-to-create-group-machine-dependencies.md)al hebt ingesteld en een bestaande groep wilt verfijnen, gaat u als volgt te werk:
+Als u al een [afhankelijkheids toewijzing hebt ingesteld](how-to-create-group-machine-dependencies.md)en een bestaande groep wilt verfijnen, gaat u als volgt te werk:
 
-1. Klik op het tabblad **Servers** in **Azure Migreren:** tegel Serverbeoordeling op **Groepen**.
+1. Klik op het tabblad **servers** in **Azure migrate: tegel server bepaling** op **groepen**.
 2. Klik op de groep die u wilt verfijnen.
-    - Als u de afhankelijkheidstoewijzing nog niet hebt ingesteld, wordt in de kolom **Afhankelijkheden** de **installatiestatus Vereist** weergegeven. Klik op **Installatie vereist voor**elke virtuele machine waarvoor u afhankelijkheden wilt visualiseren. Installeer een paar agents op elke VM, voordat u de afhankelijkheden van de machine in kaart brengen. [Meer informatie](how-to-create-group-machine-dependencies.md).
+    - Als u nog geen afhankelijkheids toewijzing hebt ingesteld, wordt in de kolom **afhankelijkheden** de **installatie status vereist** weer gegeven. Voor elke virtuele machine waarvoor u afhankelijkheden wilt visualiseren, klikt u op **installatie vereist**. Installeer een aantal agents op elke virtuele machine voordat u de computer afhankelijkheden kunt toewijzen. [Meer informatie](how-to-create-group-machine-dependencies.md).
 
-        ![Afhankelijkheidstoewijzing toevoegen](./media/how-to-create-a-group/add-dependency-mapping.png)
+        ![Afhankelijkheids toewijzing toevoegen](./media/how-to-create-a-group/add-dependency-mapping.png)
 
-    - Als u al afhankelijkheidstoewijzing hebt ingesteld, klikt u op de groepspagina op **Afhankelijkheden weergeven** om de groepsafhankelijkheidskaart te openen.
+    - Als u de afhankelijkheids toewijzing al hebt ingesteld, klikt u op de pagina groep op **afhankelijkheden weer geven** om de toewijzing van de groeps afhankelijke map te openen.
 
-3. Nadat u op **Afhankelijkheden weergeven**hebt geklikt, wordt in de groepsafhankelijkheidskaart het volgende weergegeven:
+3. Nadat u op **afhankelijkheden weer geven**hebt geklikt, wordt in de groep afhankelijkheids kaart het volgende weer gegeven:
 
-    - Binnenkomende (clients) en uitgaande (servers) TCP-verbindingen van en naar alle machines in de groep waarop de afhankelijkheidsagents zijn geïnstalleerd.
-    - Afhankelijke machines die de afhankelijkheidsagents niet hebben geïnstalleerd, worden gegroepeerd op poortnummers.
-    - Afhankelijke machines met geïnstalleerde afhankelijkheidsagents worden als afzonderlijke vakken weergegeven.
-    - Processen die in de machine worden uitgevoerd. Vouw elke machinebox uit om de processen te bekijken.
-    - Machine-eigenschappen (inclusief FQDN, besturingssysteem, MAC-adres). Klik op elk machinevak om de details te bekijken.
+    - Inkomende (clients) en uitgaande (servers) TCP-verbindingen naar en van alle computers in de groep waarvoor de afhankelijkheids agenten zijn geïnstalleerd.
+    - Afhankelijke computers waarop geen afhankelijkheids agenten zijn geïnstalleerd, worden gegroepeerd op poort nummers.
+    - Afhankelijke computers waarop afhankelijkheids agenten zijn geïnstalleerd, worden weer gegeven als afzonderlijke vakken.
+    - Processen die worden uitgevoerd op de computer. Vouw elke machine uit om de processen weer te geven.
+    - Computer eigenschappen (inclusief FQDN, besturings systeem, MAC-adres). Klik op elke computer vak om de details weer te geven.
 
-4. Als u afhankelijkheden wilt weergeven in een tijdsinterval van uw keuze, wijzigt u het tijdsbereik (standaard een uur) door begin- en einddatums of de duur op te geven.
+4. Als u afhankelijkheden binnen een tijds interval wilt weer geven, wijzigt u het tijds bereik (standaard een uur) door begin-en eind datums op te geven, of de duur.
 
     > [!NOTE]
-    > Het tijdsbereik kan oplopen tot een uur. Als u een groter bereik nodig hebt, gebruikt u [Azure Monitor om afhankelijke gegevens](how-to-create-group-machine-dependencies.md) voor een langere periode op te vragen.
+    > Het tijds bereik kan Maxi maal een uur duren. Als u een langere periode nodig hebt, gebruikt u Azure Monitor voor het [opvragen van afhankelijke gegevens](how-to-create-group-machine-dependencies.md) gedurende langere tijd.
 
-5. Nadat u de afhankelijkheden hebt geïdentificeerd waaraan u wilt toevoegen of uit de groep wilt verwijderen, u de groep wijzigen. Gebruik Ctrl+Klik om machines uit de groep toe te voegen of te verwijderen.
+5. Nadat u de afhankelijkheden hebt geïdentificeerd die u wilt toevoegen aan of verwijderen uit de groep, kunt u de groep wijzigen. Gebruik Ctrl + klikken om computers toe te voegen aan of te verwijderen uit de groep.
 
-    - U alleen machines toevoegen die zijn ontdekt.
-    - Het toevoegen en verwijderen van machines maakt eerdere beoordelingen voor een groep ongeldig.
-    - U optioneel een nieuwe beoordeling maken wanneer u de groep wijzigt.
+    - U kunt alleen gedetecteerde computers toevoegen.
+    - Door computers toe te voegen en te verwijderen, worden eerdere beoordelingen voor een groep ongeldig.
+    - U kunt eventueel een nieuwe evaluatie maken wanneer u de groep wijzigt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het instellen en gebruiken van [afhankelijkheidstoewijzing](how-to-create-group-machine-dependencies.md) om groepen met een hoog vertrouwen te maken.
+Meer informatie over het instellen en gebruiken van [afhankelijkheids toewijzing](how-to-create-group-machine-dependencies.md) voor het maken van groepen met hoge betrouw baarheid.
 

@@ -1,5 +1,5 @@
 ---
-title: Aan de slag - Microsoft Threat Modeling Tool - Azure | Microsoft Documenten
+title: Aan de slag-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
 description: Dit is een dieper overzicht van de Threat Modeling Tool in actie.
 services: security
 documentationcenter: na
@@ -16,132 +16,132 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68728222"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Aan de slag met de Threat Modeling Tool
 
-De Microsoft Threat Modeling Tool 2018 werd uitgebracht als GA in september 2018 als een gratis **[click-to-download.](https://aka.ms/threatmodelingtool)** De verandering in het leveringsmechanisme stelt ons in staat om de nieuwste verbeteringen en bugfixes naar klanten te pushen elke keer dat ze de tool openen, waardoor het gemakkelijker te onderhouden en te gebruiken is.
-Dit artikel neemt u mee door het proces van aan de slag met de Microsoft SDL threat modeling aanpak en laat u zien hoe u de tool gebruiken om grote bedreigingsmodellen te ontwikkelen als een ruggengraat van uw beveiligingsproces.
+De Microsoft Threat Modeling Tool 2018 is uitgebracht als GA in september 2018 als gratis **[Klik-en-down load](https://aka.ms/threatmodelingtool)**. Met de wijziging in het leverings mechanisme kunnen wij de nieuwste verbeteringen en oplossingen voor fouten naar klanten pushen telkens wanneer ze het hulp programma openen, waardoor het eenvoudiger te onderhouden en te gebruiken is.
+In dit artikel wordt stapsgewijs beschreven hoe u aan de slag gaat met de micro soft SDL Threat Modeling-benadering en ziet u hoe u het hulp programma kunt gebruiken om fantastische bedreigings modellen te ontwikkelen als een backbone van uw beveiligings proces.
 
-Dit artikel bouwt voort op bestaande kennis van de SDL threat modeling aanpak. Voor een snelle beoordeling, verwijzen naar **[Threat Modeling Web Applications](https://msdn.microsoft.com/library/ms978516.aspx)** en een gearchiveerde versie van Uncover Security Flaws Using the STRIDE **[Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN artikel gepubliceerd in 2006.
+Dit artikel is gebaseerd op de bestaande kennis van de SDL Threat Modeling-aanpak. Raadpleeg voor een snelle beoordeling de **[webtoepassingen voor bedreigings modellen](https://msdn.microsoft.com/library/ms978516.aspx)** en een gearchiveerde versie van **[beveiligings fouten tegen komen met behulp van het MSDN-artikel STRIDEe benadering](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** dat is gepubliceerd in 2006.
 
-Om snel samen te vatten, de aanpak omvat het maken van een diagram, het identificeren van bedreigingen, het beperken van hen en valideren van elke mitigatie. Hier volgt een diagram dat dit proces belicht:
+Als u snel wilt samenvatten, is het maken van een diagram, het identificeren van bedreigingen, het beperken van de oplossing en het valideren van elke oplossing. Hier volgt een diagram dat dit proces markeert:
 
 ![SDL-proces](./media/threat-modeling-tool-getting-started/sdlapproach.png)
 
-## <a name="starting-the-threat-modeling-process"></a>Het proces voor het modelleren van bedreigingen starten
+## <a name="starting-the-threat-modeling-process"></a>Het proces voor het maken van bedreigings modellen starten
 
-Wanneer u de Threat Modeling Tool start, zult u een paar dingen opmerken, zoals te zien op de foto:
+Wanneer u de Threat Modeling Tool start, ziet u enkele dingen, zoals in de afbeelding wordt weer gegeven:
 
-![Lege startpagina](./media/threat-modeling-tool-feature-overview/tmtstart.png)
+![Lege start pagina](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
-### <a name="threat-model-section"></a>Sectie Bedreigingsmodel
+### <a name="threat-model-section"></a>Sectie bedreigings model
 
 | Onderdeel                                   | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Knop Feedback, suggesties en problemen** | Neemt u de **[MSDN Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** voor alle dingen SDL. Het geeft u de mogelijkheid om te lezen door wat andere gebruikers doen, samen met oplossingen en aanbevelingen. Als u nog steeds niet vinden wat tmtextsupport@microsoft.com u zoekt, u een e-mail sturen naar ons ondersteuningsteam om u te helpen                                                                                                                            |
+| **Feedback, suggesties en problemen knop** | Hiermee gaat u naar het **[MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** voor alle zaken SDL. Het biedt u de mogelijkheid om te lezen wat andere gebruikers doen, samen met tijdelijke oplossingen en aanbevelingen. Als u nog steeds niet kunt vinden wat u zoekt, kunt tmtextsupport@microsoft.com u een e-mail sturen naar ons ondersteunings team om u te helpen                                                                                                                            |
 | **Een model maken**                          | Hiermee opent u een leeg canvas om uw diagram te tekenen. Zorg ervoor dat u selecteert welke sjabloon u voor uw model wilt gebruiken                                                                                                                                                                                                                                                                                                                                                                       |
-| **Sjabloon voor nieuwe modellen**                 | U moet selecteren welke sjabloon u wilt gebruiken voordat u een model maakt. Onze belangrijkste sjabloon is de Azure Threat Model Template, die Azure-specifieke stencils, bedreigingen en mitigaties bevat. Selecteer voor generieke modellen de SDL TM Knowledge Base in het vervolgkeuzemenu. Wilt u uw eigen sjabloon maken of een nieuwe sjabloon indienen voor alle gebruikers? Bekijk onze **[Template Repository](https://github.com/Microsoft/threat-modeling-templates)** GitHub-pagina voor meer informatie                              |
-| **Een model openen**                            | <p>Hiermee opent u eerder opgeslagen bedreigingsmodellen. De functie Onlangs geopende modellen is geweldig als u uw meest recente bestanden moet openen. Wanneer u de boventoon over de selectie houdt, vindt u twee manieren om modellen te openen:</p><p><ul><li>Open vanaf deze computer – klassieke manier om een bestand te openen met behulp van lokale opslag</li><li>Open vanuit OneDrive – teams kunnen mappen in OneDrive gebruiken om al hun bedreigingsmodellen op één locatie op te slaan en te delen om de productiviteit en samenwerking te verhogen</li></ul></p> |
-| **Handleiding aan de slag**                   | Hiermee opent u de hoofdpagina **[van microsoft threat modeling tool](threat-modeling-tool.md)**                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Sjabloon voor nieuwe modellen**                 | Voordat u een model maakt, moet u selecteren welke sjabloon u wilt gebruiken. Onze hoofd sjabloon is de Azure Threat model-sjabloon, die Azure-specifieke stencils, bedreigingen en oplossingen bevat. Voor algemene modellen selecteert u de SDL TM-Knowledge Base in de vervolg keuzelijst. Wilt u uw eigen sjabloon maken of een nieuwe opgeven voor alle gebruikers? Bekijk onze github-pagina voor **[sjabloon opslagplaatsen](https://github.com/Microsoft/threat-modeling-templates)** voor meer informatie                              |
+| **Een model openen**                            | <p>Hiermee opent u eerder opgeslagen bedreigings modellen. De functie recent geopende modellen is handig als u uw meest recente bestanden moet openen. Wanneer u de muis aanwijzer over de selectie houdt, vindt u twee manieren om modellen te openen:</p><p><ul><li>Open op deze computer: klassieke manier om een bestand te openen met behulp van lokale opslag</li><li>Openen vanuit OneDrive: teams kunnen mappen in OneDrive gebruiken om al hun bedreigings modellen op één locatie op te slaan en te delen om de productiviteit en samen werking te verg Roten</li></ul></p> |
+| **Hand leiding aan de slag**                   | Hiermee opent u de hoofd pagina van **[Microsoft Threat Modeling tool](threat-modeling-tool.md)**                                                                                                                                                                                                                                                                                                                                                                                            |
 
-### <a name="template-section"></a>Sjabloonsectie
+### <a name="template-section"></a>Sjabloon sectie
 
 | Onderdeel               | Details                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nieuwe sjabloon maken** | Hiermee opent u een lege sjabloon waarop u bouwen. Tenzij u uitgebreide kennis hebt in het bouwen van sjablonen vanaf nul, raden wij u aan om te bouwen van bestaande |
-| **Sjabloon openen**       | Hiermee opent u bestaande sjablonen om wijzigingen aan te brengen in                                                                                                              |
+| **Nieuwe sjabloon maken** | Hiermee opent u een lege sjabloon waarmee u kunt bouwen. Tenzij u uitgebreide kennis hebt bij het maken van nieuwe sjablonen, raden we u aan om bestaande te bouwen |
+| **Sjabloon openen**       | Hiermee opent u de bestaande sjablonen waarmee u wijzigingen kunt aanbrengen                                                                                                              |
 
-Het Threat Modeling Tool-team werkt voortdurend aan het verbeteren van de functionaliteit en ervaring van de tool. In de loop van het jaar kunnen enkele kleine wijzigingen plaatsvinden, maar alle belangrijke wijzigingen vereisen herschrijft in de gids. Raadpleeg het vaak om ervoor te zorgen dat u de laatste aankondigingen krijgt.
+Het Threat Modeling Tool team is voortdurend bezig met het verbeteren van de functionaliteit en ervaring van het hulp programma. Enkele kleine wijzigingen kunnen plaatsvinden in de loop van het jaar, maar voor alle belang rijke wijzigingen moet herschrijven in de hand leiding worden uitgevoerd. Raadpleeg het regel matig om te controleren of u de laatste aankondigingen krijgt.
 
 ## <a name="building-a-model"></a>Een model bouwen
 
-In deze sectie volgen we:
+In deze sectie volgen we het volgende:
 
 - Cristina (een ontwikkelaar)
-- Ricardo (programmamanager) en
+- Ricardo (een programma manager) en
 - Ashish (een tester)
 
-Ze gaan door het proces van de ontwikkeling van hun eerste bedreiging model.
+Ze maken gebruik van het proces voor het ontwikkelen van het eerste bedreigings model.
 
-> Ricardo: Hallo Cristina, ik werkte aan de bedreiging model diagram en wilde ervoor zorgen dat we de details goed. Kun je me helpen het na te kijken?
-> Cristina: Absoluut. Laten we dit eens bekijken.
-> Ricardo opent de tool en deelt zijn scherm met Cristina.
+> Ricardo: Hi Cristina, ik heb gewerkt aan het bedreigings model diagram en wil ervoor zorgen dat we het gegevens recht hebben ontvangen. Kunt u het zien?
+> Cristina: absoluut. Laten we dit eens bekijken.
+> Ricardo opent het hulp programma en deelt zijn scherm met Cristina.
 
-![Basisbedreigingsmodel](./media/threat-modeling-tool-feature-overview/basictmt.png)
+![Basis risico model](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, ziet er eenvoudig uit, maar kun je me er doorheen helpen?
-> Ricardo: Zeker! Hier is de verdeling:
-> - Onze menselijke gebruiker wordt getekend als een externe entiteit - een vierkant
-> - Ze sturen opdrachten naar onze webserver: de cirkel
-> - De webserver raadpleegt een database (twee parallelle lijnen)
+> Cristina: OK, dat is eenvoudig, maar u kunt er een stap mee doen?
+> Ricardo: zeker! Dit is de uitsplitsing:
+> - Onze menselijke gebruiker wordt getekend als een externe entiteit, een vier kant
+> - Ze verzenden opdrachten naar onze webserver: de cirkel
+> - De webserver is een Consulting van een Data Base (twee parallelle lijnen)
 
-Wat Ricardo net toonde Cristina is een DFD, kort voor **[Data Flow Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Met de Threat Modeling Tool kunnen gebruikers vertrouwensgrenzen opgeven, aangegeven door de rode stippellijnen, om aan te geven waar verschillende entiteiten de controle hebben. IT-beheerders hebben bijvoorbeeld een Active Directory-systeem nodig voor verificatiedoeleinden, zodat de Active Directory buiten hun controle valt.
+Wat Ricardo laat zien Cristina is een GSD-, kortere voor **[Data flow-diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Met de Threat Modeling Tool kunnen gebruikers vertrouwens grenzen opgeven, aangegeven door de rode stippel lijnen, om aan te geven waar verschillende entiteiten in het besturings element staan. IT-beheerders hebben bijvoorbeeld een Active Directory systeem voor verificatie doeleinden nodig, dus de Active Directory bevindt zich buiten het besturings element.
 
-> Cristina: Ziet er recht uit voor mij. Hoe zit het met de bedreigingen?
-> Ricardo: Laat me het je laten zien.
+> Cristina: zoekt direct naar mij. Hoe zit het met de bedreigingen?
+> Ricardo: laat mij u zien.
 
 ## <a name="analyzing-threats"></a>Bedreigingen analyseren
 
-Zodra hij klikt op de analyse weergave van het pictogram menu selectie (bestand met vergrootglas), wordt hij meegenomen naar een lijst van gegenereerde bedreigingen de Threat Modeling Tool gevonden op basis van de standaard sjabloon, die gebruik maakt van de SDL aanpak genaamd **[STRIDE (Spoofing, Tampering, Info Disclosure, Repudiation, Denial of Service en Elevation of Privilege)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Het idee is dat software valt onder een voorspelbare set van bedreigingen, die kan worden gevonden met behulp van deze 6 categorieën.
+Zodra hij op de analyse weergave klikt vanuit de selectie van het pictogram menu (bestand met vergroot glas), wordt er een lijst met gegenereerde Threat Modeling Tool bedreigingen gemaakt die op basis van de standaard sjabloon is gevonden, die gebruikmaakt van de SDL-aanpak **[STRIDE (spoofing, knoeien, informatie vrijgeven, afwijzing, denial of service en uitbrei ding van bevoegdheden)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Het idee is dat software onder een voorspel bare set bedreigingen komt, die u kunt vinden met behulp van deze 6 categorieën.
 
-Deze aanpak is als het beveiligen van uw huis door ervoor te zorgen dat elke deur en raam heeft een vergrendeling mechanisme op zijn plaats voor het toevoegen van een alarmsysteem of jagen na de dief.
+Deze methode is vergelijkbaar met het beveiligen van uw huis door ervoor te zorgen dat elke deur en elk venster een vergrendelings mechanisme heeft voordat een alarm systeem of Chasing wordt toegevoegd na de dief.
 
-![Basisbedreigingen](./media/threat-modeling-tool-getting-started/basicthreats.png)
+![Basis bedreigingen](./media/threat-modeling-tool-getting-started/basicthreats.png)
 
-Ricardo begint met het selecteren van het eerste item op de lijst. Dit is wat er gebeurt:
+Ricardo begint met het selecteren van het eerste item in de lijst. Wat gebeurt er nu:
 
-Ten eerste wordt de interactie tussen de twee stencils verbeterd
+Ten eerste is de interactie tussen de twee stencils verbeterd
 
 ![Interactie](./media/threat-modeling-tool-getting-started/interaction.png)
 
-Ten tweede wordt aanvullende informatie over de bedreiging weergegeven in het venster Bedreigingseigenschappen
+Ten tweede wordt er meer informatie over de bedreiging weer gegeven in de dreiging venster Eigenschappen
 
-![Interactiegegevens](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Interactie-informatie](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
-De gegenereerde dreiging helpt hem te begrijpen potentiële ontwerpfouten. De STRIDE-categorisatie geeft hem een idee over mogelijke aanvalsvectoren, terwijl de aanvullende beschrijving hem precies vertelt wat er mis is, samen met mogelijke manieren om het te beperken. Hij kan bewerkbare velden gebruiken om notities te schrijven in de motiveringsdetails of prioriteitsbeoordelingen te wijzigen, afhankelijk van de bugbalk van zijn organisatie.
+De gegenereerde bedreiging helpt hem potentiële ontwerp fouten te begrijpen. De STRIDE-categorisatie geeft u een idee over mogelijke aanvals vectoren, terwijl de extra beschrijving er precies op kan wijzen wat er mis is, samen met mogelijke manieren om het probleem te verhelpen. Hij kan Bewerk bare velden gebruiken om notities te schrijven in de details van de motivering of om prioriteits niveaus te wijzigen, afhankelijk van de fout balk van de organisatie.
 
-Azure-sjablonen bevatten aanvullende details om gebruikers te helpen niet alleen te begrijpen wat er mis is, maar ook hoe ze dit kunnen oplossen door beschrijvingen, voorbeelden en hyperlinks toe te voegen aan Azure-specifieke documentatie.
+Azure-sjablonen bevatten aanvullende details waarmee gebruikers niet alleen kunnen begrijpen wat er mis is, maar ook hoe ze kunnen worden opgelost door beschrijvingen, voor beelden en hyper links toe te voegen aan specifieke documentatie over Azure.
 
-De beschrijving deed hem beseffen het belang van het toevoegen van een authenticatie mechanisme om te voorkomen dat gebruikers worden vervalst, het onthullen van de eerste bedreiging te werken. Een paar minuten in de discussie met Cristina, begrepen ze het belang van de uitvoering van toegangscontrole en rollen. Ricardo vulde een aantal snelle notities in om ervoor te zorgen dat deze werden geïmplementeerd.
+De beschrijving die hem heeft gegeven, is het belang rijk om een verificatie mechanisme toe te voegen om te voor komen dat gebruikers worden vervalst, waardoor de eerste dreiging wordt onthuld waaraan wordt gewerkt. Een paar minuten in de discussie met Cristina, ze begrijpen het belang van het implementeren van toegangs beheer en-rollen. Ricardo heeft enkele snelle notities ingevuld om er zeker van te zijn dat deze zijn geïmplementeerd.
 
-Toen Ricardo inging op de bedreigingen onder Information Disclosure, realiseerde hij zich dat het toegangscontroleplan een aantal alleen-lezen accounts vereiste voor audit en het genereren van rapporten. Hij vroeg zich af of dit een nieuwe bedreiging zou moeten zijn, maar de beperkingen waren hetzelfde, dus merkte hij de dreiging dienovereenkomstig op.
-Hij dacht ook over informatie openbaarmaking een beetje meer en besefte dat de back-up tapes zouden gaan encryptie nodig, een baan voor de operations team.
+Zoals Ricardo in de bedreigingen onder het vrijgeven van informatie heeft gestaan, heeft hij het Access Control-plan een aantal alleen-lezen accounts nodig voor het genereren van controles en rapporten. Hij heeft gevraag of dit een nieuwe bedreiging zou moeten zijn, maar de oplossingen waren hetzelfde, zodat hij de dreiging dienovereenkomstig heeft genoteerd.
+Hij heeft ook gedacht dat informatie over een beetje meer en gerealiseerd dat de back-uptapes versleuteling nodig hadden, een taak voor het operationele team.
 
-Bedreigingen die niet van toepassing zijn op het ontwerp vanwege bestaande beperkingen of beveiligingsgaranties, kunnen worden gewijzigd in 'Niet van toepassing' vanuit de vervolgkeuzelijst Status. Er zijn drie andere keuzes: Niet gestart - standaard selectie, Needs Investigation - gebruikt om op te volgen op items en verzacht - zodra het volledig is gewerkt.
+Bedreigingen die niet van toepassing zijn op het ontwerp door bestaande oplossingen of beveiligings garanties kunnen worden gewijzigd in ' niet van toepassing ' in de vervolg keuzelijst status. Er zijn drie andere opties: niet gestart – standaard selectie, vereist onderzoek: wordt gebruikt voor het opvolgen van items en het oplossen van problemen – zodra het volledig is uitgevoerd.
 
 ## <a name="reports--sharing"></a>Rapporten & delen
 
-Zodra Ricardo gaat door de lijst met Cristina en voegt belangrijke notities, mitigaties / rechtvaardigingen, prioriteit en status veranderingen, selecteert hij Rapporten -> Maak full report-> Save Report, die print een mooi rapport voor hem om door te gaan met collega's om ervoor te zorgen dat de juiste beveiligingswerk wordt uitgevoerd.
+Nadat Ricardo de lijst met Cristina heeft door lopen en belang rijke opmerkingen, verkleiningen/motieven, prioriteit en status wijzigingen toevoegt, selecteert hij Reports-> volledig rapport maken-> rapport opslaan, waarin u een goed rapport kunt afdrukken.
 
-![Interactiegegevens](./media/threat-modeling-tool-feature-overview/report.png)
+![Interactie-informatie](./media/threat-modeling-tool-feature-overview/report.png)
 
-Als Ricardo het bestand in plaats daarvan wil delen, kan hij dit eenvoudig doen door op te slaan in het OneDrive-account van zijn organisatie. Zodra hij dat doet, kan hij de documentlink kopiëren en delen met zijn collega's. 
+Als Ricardo het bestand wil delen, kan hij dit eenvoudig doen door het OneDrive-account van de organisatie op te slaan. Zodra hij dat doet, kan hij de document koppeling kopiëren en delen met zijn collega's. 
 
-## <a name="threat-modeling-meetings"></a>Vergaderingen voor het modelleren van bedreigingen
+## <a name="threat-modeling-meetings"></a>Threat model-vergaderingen
 
-Toen Ricardo zijn bedreigingsmodel naar zijn collega stuurde via OneDrive, werd Ashish, de tester, onderwhelmed. Leek ricardo en Cristina miste een flink aantal belangrijke hoek gevallen, die gemakkelijk kunnen worden aangetast. Zijn scepsis is een aanvulling op bedreigingsmodellen.
+Wanneer Ricardo zijn bedreigings model naar zijn collega heeft verzonden met behulp van OneDrive, Ashish, de tester, werd underwhelmed. Leek bijvoorbeeld Ricardo en Cristina gemist enkele belang rijke hoek gevallen, die eenvoudig kunnen worden aangetast. Zijn skepticism is een aanvulling op bedreigings modellen.
 
-In dit scenario, nadat Ashish het bedreigingsmodel overnam, riep hij op tot twee vergadering voor bedreigingsmodellering: één vergadering om het proces te synchroniseren en door de diagrammen te lopen en vervolgens een tweede vergadering voor bedreigingsbeoordeling en afmelding.
+In dit scenario heeft hij nadat Ashish het bedreigings model heeft geduurd, opgeroepen voor twee bedreigingen voor bedreigings modellering: één vergadering om op het proces te synchroniseren en door loop de diagrammen en vervolgens een tweede vergadering voor het beoordelen en afmelden van bedreigingen.
 
-In de eerste vergadering, Ashish bracht 10 minuten lopen iedereen door de SDL bedreiging modellering proces. Hij trok toen het diagram van het bedreigingsmodel omhoog en begon het in detail uit te leggen. Binnen vijf minuten was een belangrijk ontbrekend onderdeel geïdentificeerd.
+In de eerste vergadering heeft Ashish 10 minuten besteed aan iedereen via het SDL Threat model proces. Vervolgens stelt hij het diagram van het bedreigings model samen en wordt het uitgebreid uitgelegd. Binnen vijf minuten is een belang rijk onderdeel geïdentificeerd.
 
-Een paar minuten later, Ashish en Ricardo kreeg in een uitgebreide discussie over hoe de webserver werd gebouwd. Het was niet de ideale manier voor een vergadering om verder te gaan, maar iedereen uiteindelijk het erover eens dat het ontdekken van de discrepantie vroeg zou gaan om hen tijd te besparen in de toekomst.
+Een paar minuten later hebben Ashish en Ricardo een uitgebreide bespreking ontvangen van de manier waarop de webserver is gebouwd. Het was niet de ideale manier om een vergadering voort te zetten, maar iedereen die uiteindelijk heeft besloten dat het verschil zich voordoet, werd in de toekomst tijd bespaard.
 
-In de tweede vergadering, het team liep door de bedreigingen, besprak een aantal manieren om ze aan te pakken, en ondertekende af op de dreiging model. Ze controleerden het document in broncontrole en gingen verder met de ontwikkeling.
+In de tweede vergadering heeft het team werd uitgelegd hoe door de bedreigingen, besproken hoe ze zich kunnen aanpakken en afgemeld op het bedreigings model. Ze hebben het document gecontroleerd in broncode beheer en blijven de ontwikkeling voortzetten.
 
-## <a name="thinking-about-assets"></a>Nadenken over activa
+## <a name="thinking-about-assets"></a>Nadenken over assets
 
-Sommige lezers die bedreiging gemodelleerd kunnen merken dat we niet hebben gesproken over activa op alle. We hebben ontdekt dat veel software-engineers hun software beter begrijpen dan dat ze het concept van assets begrijpen en in welke activa een aanvaller mogelijk geïnteresseerd is.
+Sommige lezers die bedreigingen hebben gemodelleerd, kunnen merken dat we nog niet over assets hebben gesp roken. We hebben ontdekt dat veel software technici hun software beter begrijpen dan het concept van assets en welke activa een aanvaller mogelijk geïnteresseerd is in.
 
-Als je gaat bedreigen model een huis, zou je kunnen beginnen met na te denken over uw familie, onvervangbare foto's of waardevolle kunstwerken. Misschien u beginnen met na te denken over wie zou kunnen inbreken en het huidige beveiligingssysteem. Of je zou kunnen beginnen met het overwegen van de fysieke kenmerken, zoals het zwembad of de veranda. Deze zijn analoog aan het denken over activa, aanvallers, of software ontwerp. Elk van deze drie benaderingen werken.
+Als u een bedreigings model maakt, kunt u beginnen met uw familie, onvervangbare Foto's of waardevolle illustraties. Misschien kunt u beginnen met het nadenken over wie zich kan afbreeken en het huidige beveiligings systeem. Of u kunt beginnen met het overwegen van de fysieke functies, zoals de groep of de front-porch. Deze zijn vergelijkbaar met het nadenken over assets, aanvallers of software ontwerp. Een van deze drie benaderingen werkt.
 
-De benadering van threat modeling die we hier hebben gepresenteerd is aanzienlijk eenvoudiger dan wat Microsoft in het verleden heeft gedaan. We vonden dat de software design aanpak werkt goed voor veel teams. We hopen dat dat ook de jouwe.
+De aanpak van bedreigings modellen die we hier hebben gepresenteerd, is aanzienlijk eenvoudiger dan wat micro soft in het verleden heeft gedaan. We hebben vastgesteld dat de aanpak van het software ontwerp goed werkt voor veel teams. We hopen dat u dat ook hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Stuur uw vragen, opmerkingen tmtextsupport@microsoft.comen zorgen naar . **[Download](https://aka.ms/threatmodelingtool)** de Threat Modeling Tool om aan de slag te gaan.
+Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com. **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.

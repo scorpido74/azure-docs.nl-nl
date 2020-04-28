@@ -1,38 +1,38 @@
 ---
-title: Azure Cosmos DB PDF-querycheatsheets
-description: Afdrukbare PDF-cheatsheets waarmee u sql-sql-, mongoDB-, grafiek- en tabel-API's van Azure Cosmos DB gebruiken om uw gegevens op te vragen
+title: Azure Cosmos DB PDF-query Cheat-pagina's
+description: Afdruk bare PDF Cheat-pagina's die u helpen bij het gebruik van de SQL-, MongoDB-, Graph-en Table-Api's van Azure Cosmos DB om uw gegevens op te vragen
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66256985"
 ---
-# <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB-querycheatsheets
+# <a name="azure-cosmos-db-query-cheat-sheets"></a>Query Cheat-werk bladen Azure Cosmos DB
 
-Met de **Azure Cosmos DB-querycheatsheets** u snel query's voor uw gegevens schrijven door algemene databasequery's, bewerkingen, functies en operators weer te geven in eenvoudig af te drukken PDF-referentiebladen. De cheat sheets bevatten referentie-informatie voor de SQL, MongoDB, Tabel en Gremlin API's. 
+Met de **Azure Cosmos DB Cheat-pagina's** kunt u snel query's voor uw gegevens schrijven door algemene database query's, bewerkingen, functies en Opera tors weer te geven in gemakkelijk te afdrukken PDF-referentie bladen. De cheat-pagina's bevatten referentie-informatie voor de SQL-, MongoDB-, Table-en Gremlin-Api's. 
 
-Kies uit een download van een letterformaat of A3-formaat. 
+Kies uit een down load van letter grootte of A3-formaat. 
 
-## <a name="letter-sized-cheat-sheets"></a>Spiekbriefjes op papierformaat
+## <a name="letter-sized-cheat-sheets"></a>Cheat vellen met letter grootte
 
-Download de [querycheatsheets van Azure Cosmos DB-query's](https://go.microsoft.com/fwlink/?LinkId=623215) als u gaat afdrukken op papier ter grootte van een brief (8,5 inch x 11").
+Down load de [Azure Cosmos DB Cheat-pagina's van de letterlijke grootte](https://go.microsoft.com/fwlink/?LinkId=623215) als u wilt afdrukken op A4-formaat (8,5 x 11).
 
-![Azure Cosmos DB query cheat sheets - letter-sized, met SQL API, JavaScript, MongoDB, Gremlin, en Table API query's en functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+![Azure Cosmos DB query Cheat Sheets-letterlijke grootte, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 
-## <a name="oversized-cheat-sheets"></a>Oversized spiekbriefjes
-Download de [azure cosmos DB A3-formaat querycheatsheets](https://go.microsoft.com/fwlink/?linkid=870413) als u gaat afdrukken met een plotter of grootschalige printer op A3-formaat papier (11,7 inch x 16,5").
+## <a name="oversized-cheat-sheets"></a>Grote cheat-bladen
+Down load de [Azure Cosmos DB Blade Cheat van A3-formaat](https://go.microsoft.com/fwlink/?linkid=870413) als u wilt afdrukken met een plotter of grootschalige printer op A3-formaat (11,7 x 16,5).
 
-![Azure Cosmos DB query cheat sheets - A3-formaat, met SQL API, JavaScript, MongoDB, Gremlin en Table API queries en -functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+![Azure Cosmos DB query Cheat Sheets: A3-formaat, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer hulp bij het schrijven van query's:
-* Zie [Query met sql-API,](tutorial-query-sql-api.md) [SQL-query's voor Azure Cosmos DB](how-to-sql-query.md)en [SQL-syntaxisverwijzing](sql-api-query-reference.md) voor SQL API-query's.
-* Zie [Query met API voor Azure Cosmos DB voor MongoDB-](tutorial-query-mongodb.md) en Azure Cosmos [DB-query's voor MongoDB-functieondersteuning en syntaxis](mongodb-feature-support.md)
-* Zie [Query met de](tutorial-query-graph.md) ondersteuning voor Gremlin API-query's voor Gremlin-API-query's [Azure Cosmos DB Gremlin graph support](gremlin-support.md)
-* Zie [Query met de tabel-API](tutorial-query-table.md) voor tabel-API-query's
+Raadpleeg de volgende artikelen voor meer informatie over het schrijven van query's:
+* Voor SQL-API-query's raadpleegt [u query met behulp van de SQL-API](tutorial-query-sql-api.md), [SQL-query's voor Azure Cosmos DB](how-to-sql-query.md)en [Naslag informatie over SQL-syntaxis](sql-api-query-reference.md)
+* Voor MongoDB query's raadpleegt [u query met de API van Azure Cosmos DB voor MongoDb](tutorial-query-mongodb.md) en [de API van Azure Cosmos DB voor MongoDb-functie ondersteuning en-syntaxis](mongodb-feature-support.md)
+* Voor Gremlin-API-query's raadpleegt [u query met de Gremlin-API en de](tutorial-query-graph.md) [ondersteuning van Azure Cosmos DB Gremlin Graph](gremlin-support.md)
+* Zie voor Table-API query's query's [gebruiken met de Table-API](tutorial-query-table.md)

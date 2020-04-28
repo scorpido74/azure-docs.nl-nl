@@ -1,6 +1,6 @@
 ---
-title: Grote aantallen Hyper-V VM's beoordelen voor migratie naar Azure met Azure Migrate | Microsoft Documenten
-description: Beschrijft hoe u grote aantallen Hyper-V VM's beoordelen op migratie naar Azure met behulp van de Azure Migrate-service.
+title: Een groot aantal virtuele Hyper-V-machines evalueren voor migratie naar Azure met Azure Migrate | Microsoft Docs
+description: Hierin wordt beschreven hoe u een groot aantal virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure met behulp van de Azure Migrate-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
@@ -8,81 +8,81 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70279442"
 ---
-# <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Grote aantallen Hyper-V VM's beoordelen op migratie naar Azure
+# <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Een groot aantal virtuele Hyper-V-machines beoordelen voor migratie naar Azure
 
-In dit artikel wordt beschreven hoe u grote aantallen on-premises Hyper-V VM's beoordelen op migratie naar Azure, met behulp van het hulpprogramma Azure Migrate Server Assessment.
+In dit artikel wordt beschreven hoe u een groot aantal on-premises virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure, met behulp van het hulp programma Azure Migrate server Assessment.
 
-[Azure Migrate](migrate-services-overview.md) biedt een hub met hulpprogramma's waarmee u apps, infrastructuur en workloads ontdekken, beoordelen en migreren naar Microsoft Azure. De hub bevat Azure Migrate-hulpprogramma's en isv-aanbiedingen (independent software vendor) van derden. 
+[Azure migrate](migrate-services-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden. 
 
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
-> * Plan voor beoordeling op schaal.
-> * Configureer Azure-machtigingen en bereid Hyper-V voor op beoordeling.
-> * Maak een Azure Migrate-project en maak een beoordeling.
-> * Bekijk de beoordeling terwijl u van plan bent migratie.
+> * Plan voor evaluatie op schaal.
+> * Azure-machtigingen configureren en Hyper-V voorbereiden voor evaluatie.
+> * Maak een Azure Migrate project en maak een evaluatie.
+> * Controleer de evaluatie tijdens het plannen van de migratie.
 
 
 > [!NOTE]
-> Als u een proof-of-concept wilt uitproberen om een paar VM's te beoordelen voordat u op schaal beoordeelt, volgt u onze [zelfstudiereeks](tutorial-prepare-hyper-v.md)
+> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](tutorial-prepare-hyper-v.md) studies
 
-## <a name="plan-for-assessment"></a>Plan voor beoordeling
+## <a name="plan-for-assessment"></a>Beoordeling plannen
 
-Bij de planning voor de beoordeling van een groot aantal Hyper-V VM's, zijn er een paar dingen om over na te denken:
+Bij het plannen van de beoordeling van een groot aantal virtuele Hyper-V-machines, kunt u een aantal dingen nadenken:
 
-- **Azure Migrate-projecten plannen:** zoek uit hoe azure-migratieprojecten kunnen worden geïmplementeerd. Als uw datacenters zich bijvoorbeeld in verschillende regio's bevinden of als u detectie-, beoordelings- of migratiegerelateerde metagegevens in een andere geografie moet opslaan, hebt u mogelijk meerdere projecten nodig.
-- **Apparaten plannen**: Azure Migrate gebruikt een on-premises Azure Migrate-toestel, geïmplementeerd als Een Hyper-V VM, om vm's voortdurend te ontdekken voor beoordeling en migratie. Het toestel controleert omgevingswijzigingen, zoals het toevoegen van VM's, schijven of netwerkadapters. Het stuurt ook metagegevens en prestatiegegevens over hen naar Azure. Je moet uitzoeken hoeveel apparaten je moet inzetten.
+- **Azure migrate projecten plannen**: Ontdek hoe u Azure migrate projecten implementeert. Als uw data centers zich bijvoorbeeld in verschillende geografische grafieken bevinden, of als u de meta gegevens voor detectie, analyses of migratie wilt opslaan in een andere geografie, hebt u mogelijk meerdere projecten nodig.
+- **Toestellen plannen**: Azure migrate gebruikt een on-premises Azure migrate-apparaat, geïmplementeerd als een Hyper-V-VM, om voortdurend vm's te detecteren voor evaluatie en migratie. Het apparaat bewaakt omgevings wijzigingen, zoals het toevoegen van Vm's, schijven of netwerk adapters. Ook worden er meta gegevens en prestatie gegevens naar Azure verzonden. U moet bepalen hoeveel apparaten er moeten worden geïmplementeerd.
 
 
-## <a name="planning-limits"></a>Planningslimieten
+## <a name="planning-limits"></a>Plannings limieten
  
-Gebruik de limieten die in deze tabel zijn samengevat voor planning.
+Gebruik de limieten in deze tabel voor de planning.
 
-**Planning** | **Grenzen**
+**Planning** | **Limieten**
 --- | --- 
-**Azure-migratieprojecten** | Beoordeel tot 35.000 VM's in een project.
-**Azure Migrate-apparaat** | Een toestel kan tot 5000 VM's ontdekken.<br/> Een toestel kan verbinding maken met maximaal 300 Hyper-V-hosts.<br/> Een toestel kan alleen worden gekoppeld aan één Azure Migrate-project.<br/> Elk aantal apparaten kan worden gekoppeld aan één Azure Migrate-project. <br/><br/> 
-**Groep** | U maximaal 35.000 VM's in één groep toevoegen.
-**Azure-migratiebeoordeling** | U maximaal 35.000 VM's beoordelen in één beoordeling.
+**Azure Migrate projecten** | Evalueer Maxi maal 35.000 Vm's in een project.
+**Azure Migrate-apparaat** | Een apparaat kan Maxi maal 5000 Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
+**Groep** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
+**Azure Migrate beoordeling** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 
 
-## <a name="other-planning-considerations"></a>Andere planningsoverwegingen
+## <a name="other-planning-considerations"></a>Andere overwegingen bij de planning
 
 - Als u de detectie van het apparaat wilt starten, moet u elke Hyper-V-host selecteren. 
-- Als u een omgeving met meerdere tenant's uitvoert, u momenteel niet alleen VM's ontdekken die van een specifieke tenant zijn. 
+- Als u een omgeving met meerdere tenants hebt, kunt u momenteel alleen Vm's detecteren die horen bij een specifieke Tenant. 
 
-## <a name="prepare-for-assessment"></a>Voorbereiden op beoordeling
+## <a name="prepare-for-assessment"></a>Evaluatie voorbereiden
 
-Bereid Azure en Hyper-V voor op serverbeoordeling. 
+Azure en Hyper-V voorbereiden voor de evaluatie van de server. 
 
-1. Controleer [de vereisten en beperkingen voor Hyper-V-ondersteuningsvereisten.](migrate-support-matrix-hyper-v.md)
-2. Machtigingen instellen voor uw Azure-account voor interactie met Azure Migrate
-3. Hyper-V-hosts en VM's voorbereiden
+1. Controleer de [vereisten en beperkingen voor Hyper-V-ondersteuning](migrate-support-matrix-hyper-v.md).
+2. Stel machtigingen in voor uw Azure-account om te communiceren met Azure Migrate
+3. Hyper-V-hosts en virtuele machines voorbereiden
 
-Volg de instructies in [deze zelfstudie](tutorial-prepare-hyper-v.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelf studie](tutorial-prepare-hyper-v.md) om deze instellingen te configureren.
 
 ## <a name="create-a-project"></a>Een project maken
 
-Ga als volgt te werk in overeenstemming met uw planningsvereisten:
+In overeenstemming met uw plannings vereisten gaat u als volgt te werk:
 
-1. Maak een Azure Migrate-projecten.
-2. Voeg het hulpprogramma voor azure migrateserverbeoordeling toe aan de projecten.
+1. Een Azure Migrate projecten maken.
+2. Voeg het hulp programma voor het evalueren van Azure Migrate-servers toe aan de projecten.
 
 [Meer informatie](how-to-add-tool-first-time.md)
 
-## <a name="create-and-review-an-assessment"></a>Een beoordeling maken en beoordelen
+## <a name="create-and-review-an-assessment"></a>Een evaluatie maken en bekijken
 
-1. Maak beoordelingen voor Hyper-V VM's.
-1. Bekijk de beoordelingen ter voorbereiding van migratieplanning.
+1. Maak evaluaties voor virtuele Hyper-V-machines.
+1. Bekijk de evaluaties in de voor bereiding op de migratie planning.
 
-[Meer informatie](tutorial-assess-hyper-v.md) over het maken en beoordelen van beoordelingen.
+[Meer informatie](tutorial-assess-hyper-v.md) over het maken en beoordelen van evaluaties.
     
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -90,9 +90,9 @@ Ga als volgt te werk in overeenstemming met uw planningsvereisten:
 In dit artikel leert u het volgende:
  
 > [!div class="checklist"] 
-> * Gepland om Azure Migrate-beoordelingen voor Hyper-V VM's te schalen
-> * Azure en Hyper-V voorbereid voor beoordeling
-> * Een Azure Migrate-project maken en beoordelingen uitvoeren
-> * Herziene beoordelingen ter voorbereiding van migratie.
+> * Gepland om Azure Migrate Beoordelingen voor virtuele Hyper-V-machines te schalen
+> * Azure en Hyper-V zijn voor bereid voor evaluatie
+> * Een Azure Migrate project gemaakt en evaluaties uitgevoerd
+> * Gereviseerde evaluaties in de voor bereiding voor de migratie.
 
-Leer [nu hoe](concepts-assessment-calculation.md) beoordelingen worden berekend en hoe [u beoordelingen wijzigen](how-to-modify-assessment.md)
+Ontdek nu [hoe](concepts-assessment-calculation.md) beoordelingen worden berekend en hoe u [beoordelingen wijzigt](how-to-modify-assessment.md)

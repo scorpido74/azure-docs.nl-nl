@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67849263"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
@@ -31,7 +31,7 @@ Microsoft Azure biedt een toenemend aantal services dat u aan uw klanten kunt aa
 Microsoft biedt CSP's met API's voor het beheren van de Azure-klantabonnementen aan de hand van programmatische integratie met uw eigen servicebeheersystemen. U vindt de ondersteunde beheermogelijkheden [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Beheer van Microsoft Azure-resources
-Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. De CSP kan het maken en het onderhouden van resources rechtstreeks beheren, maar de klant kan ook zelf de controle behouden over het Microsoft Azure-abonnement en de Azure-resources naar behoefte maken. Als uw klant het maken van resources in zijn Microsoft Azure-abonnement beheert, gebruikt hij een van de twee modellen: "*Connect-Through"* model of "*Direct-To"* model. Deze modellen worden gedetailleerd beschreven in de volgende gedeelten.  
+Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. De CSP kan het maken en het onderhouden van resources rechtstreeks beheren, maar de klant kan ook zelf de controle behouden over het Microsoft Azure-abonnement en de Azure-resources naar behoefte maken. Als uw klant het maken van resources in hun Microsoft Azure-abonnement beheert, zullen ze een van de twee modellen gebruiken: '*connect-through*' model of '*direct-to '-* model. Deze modellen worden gedetailleerd beschreven in de volgende gedeelten.  
 
 ### <a name="connect-through-model"></a>Het model 'Doorverbinden'
 ![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-through.png)  

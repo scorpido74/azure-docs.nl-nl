@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met E Sales Manager Remix | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met E Sales Manager Remix | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en E Sales Manager Remix.
 services: active-directory
 documentationCenter: na
@@ -17,33 +17,33 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65406959"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integreren met E Sales Manager Remix
 
-In deze zelfstudie leert u hoe u Azure Active Directory (Azure AD) integreert met E Sales Manager Remix.
+In deze zelf studie leert u hoe u Azure Active Directory (Azure AD) integreert met E Sales Manager Remix.
 
-Door Azure AD te integreren met E Sales Manager Remix, krijgt u de volgende voordelen:
+Door Azure AD te integreren met E Sales Manager Remix, profiteert u van de volgende voor delen:
 
-- U in Azure AD bepalen wie toegang heeft tot E Sales Manager Remix.
-- U uw gebruikers automatisch laten aanmelden bij E Sales Manager Remix (single sign-on of SSO) met hun Azure AD-accounts.
+- U kunt beheren in azure AD die toegang heeft tot E Sales Manager Remix.
+- U kunt uw gebruikers in staat stellen om automatisch te worden aangemeld bij E Sales Manager Remix (eenmalige aanmelding of SSO) met hun Azure AD-accounts.
 - U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory voor](../manage-apps/what-is-single-sign-on.md)meer informatie over de integratie van de SaaS-app met Azure AD. .
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie wilt configureren met E Sales Manager Remix, hebt u de volgende items nodig:
+Als u Azure AD-integratie met E Sales Manager Remix wilt configureren, hebt u de volgende items nodig:
 
 - Een Azure AD-abonnement
-- Een E Sales Manager Remix SSO-abonnement
+- Een E-mail abonnement voor Remix SSO van de Sales Manager
 
 > [!NOTE]
-> Wanneer u de stappen in deze zelfstudie test, raden we u aan *geen* productieomgeving te gebruiken.
+> Wanneer u de stappen in deze zelf studie test, wordt u aangeraden *geen* productie omgeving te gebruiken.
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
@@ -51,229 +51,229 @@ Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 - Als u niet beschikt over een evaluatieomgeving in Azure AD, kunt u [een gratis proefversie van één maand krijgen](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
-In deze zelfstudie test u Azure AD single sign-on in een testomgeving. 
+In deze zelf studie test u eenmalige aanmelding voor Azure AD in een test omgeving. 
 
-Het scenario dat in deze zelfstudie wordt beschreven, bestaat uit twee belangrijke bouwstenen:
+Het scenario dat in deze zelf studie wordt beschreven, bestaat uit twee belang rijke bouw stenen:
 
 * E Sales Manager Remix toevoegen vanuit de galerie
-* Azure AD-aanmelding configureren en testen
+* Eenmalige aanmelding voor Azure AD configureren en testen
 
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>E Sales Manager Remix toevoegen vanuit de galerie
-Als u de integratie van Azure AD met E Sales Manager Remix wilt configureren, voegt u E Sales Manager Remix vanuit de galerie toe aan uw lijst met beheerde SaaS-apps:
+Als u de integratie van Azure AD wilt configureren met E Sales Manager Remix, voegt u E Sales Manager Remix van de galerie toe aan uw lijst met beheerde SaaS-apps door het volgende te doen:
 
 1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**. 
 
     ![De knop Azure Active Directory][1]
 
-1. Selecteer **Enterprise-toepassingen** > **Alle toepassingen**.
+1. Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
 
-    ![Het venster 'Enterprise-toepassingen'][2]
+    ![Het venster bedrijfs toepassingen][2]
     
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** boven aan het venster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **nieuwe toepassing** boven aan het venster.
 
     ![De knop Nieuwe toepassing][3]
 
-1. Typ E Sales **Manager Remix**in het zoekvak, selecteer **E Sales Manager Remix** in de resultatenlijst en selecteer **Vervolgens Toevoegen**.
+1. Typ in het zoekvak **e Sales Manager Remix**, selecteer **e Sales Manager Remix** in de lijst met resultaten en selecteer vervolgens **toevoegen**.
 
-    ![E Sales Manager Remix in de resultatenlijst](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
+    ![E Sales Manager Remix in de lijst met resultaten](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met E Sales Manager Remix, op basis van een testgebruiker genaamd 'Britta Simon'.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met E Sales Manager Remix, op basis van een test gebruiker met de naam ' Julia Simon '.
 
-Azure AD moet de E Sales Manager Remix-gebruiker en zijn tegenhanger in Azure AD identificeren om eenmalige aanmelding te laten werken. Met andere woorden, er moet een koppeling slinken tussen een Azure AD-gebruiker en dezelfde gebruiker in E Sales Manager Remix.
+Voor gebruik van eenmalige aanmelding moet Azure AD de Remix-gebruiker van de verkoop Manager en de bijbehorende tegen hanger identificeren in azure AD. Met andere woorden, een koppelings relatie tussen een Azure AD-gebruiker en dezelfde gebruiker in E Sales Manager Remix moet tot stand worden gebracht.
 
-Als u Azure AD-singlesign-aan wilt configureren en testen met E Sales Manager Remix, vult u de bouwstenen in de volgende vijf secties in:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met E Sales Manager Remix, voltooit u de bouw stenen in de volgende vijf secties:
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-Schakel Azure AD single sign-on in de Azure-portal in en configureer eenmalige aanmelding in uw E Sales Manager Remix-toepassing door het volgende te doen:
+Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer eenmalige aanmelding in uw E Sales Manager Remix-toepassing door het volgende te doen:
 
-1. Selecteer in de **Azure-portal**op de pagina **E Sales Manager Remix-toepassingsintegratie** de optie Eén aanmelding .
+1. Selecteer in de Azure Portal op de pagina **E-Remix van verkoop Manager** de optie **eenmalige aanmelding**.
 
-    ![De link 'Eenmalig aanmelden'][4]
+    ![De koppeling eenmalige aanmelding][4]
 
-1. Selecteer in het venster **Eén aanmelding** in het vak **Inderetekenmodus** de optie **OP SAML-gebaseerde aanmelding**.
+1. Selecteer op **SAML gebaseerde aanmelding**in **het venster eenmalige aanmelding in** het vak **modus voor eenmalige** aanmelding.
  
-    ![Het venster "Eenmalig aanmeldingsvenster"](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
+    ![Het venster eenmalige aanmelding](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-1. Ga als volgt te werk onder **E Sales Manager Remix Domain en URL's:**
+1. Ga als volgt te werk onder **E Remix domein en url's van verkoop Manager**:
 
-    ![E Sales Manager Remix Domein en URL's single sign-on informatie](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
+    ![E-Remix-domein en Url's voor de eenmalige aanmelding van de verkoop Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Typ in het vak **AANmeldingsURL** een URL in de volgende indeling: *\<https:// Server-URL>/\<subdomein>/esales-pc*.
+    a. Typ in het vak **AANMELD URL** een URL in de volgende indeling: *https://\<Server-based-URL>/\<subdomein>/esales-PC*.
 
-    b. Typ in het vak **Id** een URL in de volgende indeling: *https://\<server-URL>/\<subdomein>/*.
+    b. Typ in het vak **id** een URL in de volgende indeling: *\<https://Server-based-URL>/\<subdomein>/*.
 
-    c. Let in deze zelfstudie op de **waarde-id** voor later gebruik.
+    c. Noteer de **id** -waarde voor later gebruik in deze zelf studie.
     
     > [!NOTE] 
-    > De bovenstaande waarden zijn niet echt. Werk ze bij met de werkelijke aanmeldings-URL en id. Neem contact op met [E Sales Manager Remix Client support team](mailto:esupport@softbrain.co.jp)om de waarden te verkrijgen.
+    > De bovenstaande waarden zijn niet echt. Werk deze bij met de werkelijke aanmeldings-URL en id. Neem contact op met [E Sales Manager Remix client ondersteunings team](mailto:esupport@softbrain.co.jp)om de waarden te verkrijgen.
 
-1. Selecteer **onder SAML-ondertekeningscertificaat** **Certificaat (Base64)** en sla het certificaatbestand op uw computer op.
+1. Onder **SAML-handtekening certificaat**selecteert u **certificaat (base64)** en vervolgens slaat u het certificaat bestand op uw computer op.
 
-    ![De downloadkoppeling Certificate (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
+    ![De download koppeling voor het certificaat (base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-1. Schakel het selectievakje **Alle andere gebruikerskenmerken weergeven en bewerken** in en schakel het kenmerk **e-mailadres** in.
+1. Schakel het selectie vakje **alle andere gebruikers kenmerken weer geven en bewerken** in en selecteer vervolgens het kenmerk **EmailAddress** .
     
-    ![Het venster Gebruikerskenmerken](./media/esalesmanagerremix-tutorial/configure1.png)
+    ![Het venster gebruikers kenmerken](./media/esalesmanagerremix-tutorial/configure1.png)
 
-    Het venster **Kenmerk bewerken** wordt geopend.
+    Het venster **kenmerk bewerken** wordt geopend.
 
-1. Kopieer de **waarden Naamruimte** en **Naam.** Genereer de waarde in het patroon * \<Namespace>/\<Name>* en bewaar deze voor later gebruik in deze zelfstudie.
+1. Kopieer de waarden van de **naam ruimte** en de **naam** . Genereer de waarde in de patroon * \<naam ruimte\<>/naam>* en sla deze op voor later gebruik in deze zelf studie.
 
-    ![Het venster Kenmerk bewerken](./media/esalesmanagerremix-tutorial/configure2.png)
+    ![Het venster kenmerk bewerken](./media/esalesmanagerremix-tutorial/configure2.png)
 
-1. Selecteer **Onder E Sales Manager Remix-configuratie**de optie E Sales Manager Remix **configureren**.
+1. Selecteer onder **e configuratie van de Sales Manager-Remix**de optie **E Sales Manager Remix configureren**.
 
-    ![E Sales Manager Remix-configuratie](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![E Remix-configuratie voor verkoop Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
-    Het **aanmeldingsvenster configureren** wordt geopend.
+    Het venster **aanmelden configureren** wordt geopend.
 
-1. Kopieer in de sectie **Snel nagaan** de aanmeldings-URL en de URL van de SAML-aanmeldingsservice.
+1. Kopieer in het gedeelte **snelle verwijzing** de afmeldings-URL en de URL voor de SSO-service voor eenmalige aanmelding.
 
 1. Selecteer **Opslaan**.
 
     ![De knop Opslaan](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
-1. Meld u aan bij uw E Sales Manager Remix-toepassing als beheerder.
+1. Meld u aan bij de Remix-toepassing van uw E-Sales Manager als beheerder.
 
-1. Selecteer rechtsboven **het menu Administrator .**
+1. Selecteer rechtsboven **in het menu Administrator**.
 
-    ![De opdracht 'Naar administratormenu',](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![De opdracht ' aan beheerder menu '](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Selecteer in het linkerdeelvenster de optie **Systeeminstellingen** > **Samenwerking met het externe systeem**.
+1. Selecteer in het linkerdeel venster de optie **systeem instellingen** > **samen werking met het externe systeem**.
 
-    ![De koppelingen "Systeeminstellingen" en "Samenwerking met extern systeem"](./media/esalesmanagerremix-tutorial/configure5.png)
+    ![De koppelingen systeem instellingen en samen werking met extern systeem](./media/esalesmanagerremix-tutorial/configure5.png)
     
-1. Selecteer **SAML**in **het venster Samenwerking met extern systeem** .
+1. Selecteer in het venster **samen werking met extern systeem** de optie **SAML**.
 
-    ![Het venster "Samenwerking met extern systeem"](./media/esalesmanagerremix-tutorial/configure6.png)
+    ![Het venster ' samen werking met extern systeem '](./media/esalesmanagerremix-tutorial/configure6.png)
 
-1. Ga als volgt te werk onder **de saml-verificatieinstelling:**
+1. Onder **SAML-verificatie-instelling**gaat u als volgt te werk:
 
-    ![De sectie SAML-verificatie](./media/esalesmanagerremix-tutorial/configure3.png)
+    ![De sectie SAML-verificatie-instelling](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a. Schakel het selectievakje **PC-versie** in.
+    a. Schakel het selectie vakje **PC-versie** in.
     
-    b. Selecteer in de sectie **Samenwerkingsitem** in de vervolgkeuzelijst **e-mail**.
+    b. Selecteer in de vervolg keuzelijst van het onderdeel **samen werking** de optie **e-mail**.
 
-    c. Plak in het vak **Samenwerkingsitem** de claimwaarde die u eerder hebt **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**gekopieerd uit de Azure-portal (dat wil zeggen ).
+    c. Plak in het vak **samenwerkings item** de claim waarde die u eerder hebt gekopieerd uit de Azure Portal (dat wil zeggen **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
-    d. Plak in het vak **Issuer (entity ID)** de id-waarde die u eerder hebt gekopieerd uit het gedeelte **E Sales Manager Remix-domein en URL's** van de Azure-portal.
+    d. Plak in het vak **verlener (Entiteits-ID)** de id-waarde die u eerder hebt gekopieerd uit de sectie **E-Remix domein en Url's** van de e-mail van de Azure Portal.
 
-    e. Als u uw gedownloade certificaat wilt uploaden vanuit de Azure-portal, selecteert u **Bestandsselectie**.
+    e. Selecteer voor het uploaden van uw gedownloade certificaat van de Azure Portal **bestands selectie**.
 
-    f. Plak in het **inlog-URL-vak van de ID-provider** de URL van de SAML-aanmeldingsservice die u eerder in de Azure-portal hebt gekopieerd.
+    f. Plak in het vak **ID-provider aanmeldings-URL** de service-URL voor eenmalige SAML-aanmelding die u eerder hebt gekopieerd in de Azure Portal.
 
-    g. Plak in **het vak URL-instantie Van** de identiteitsprovider de afmeldings-URL-waarde die u eerder in de Azure-portal hebt gekopieerd.
+    g. Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde voor de afmeldings-URL die u eerder hebt gekopieerd in de Azure Portal.
 
-    h. Selecteer **Instelling voltooid**.
+    h. Selecteer **instelling voltooid**.
 
 > [!TIP]
-> Terwijl u de app instelt, u een beknopte versie van de voorgaande instructies lezen in de [Azure-portal.](https://portal.azure.com) Nadat u de app hebt toegevoegd in de sectie **Active Directory** > **Enterprise Applications,** selecteert u het tabblad **Eén aanmelding** en opent u de ingesloten documentatie in de sectie **Configuratie** onderaan. Zie [Azure AD-ingesloten documentatie]( https://go.microsoft.com/fwlink/?linkid=845985)voor meer informatie over de ingesloten documentatie.
+> Wanneer u de app instelt, kunt u een beknopte versie van de voor gaande instructies in de [Azure Portal](https://portal.azure.com)lezen. Nadat u de app hebt toegevoegd in de sectie **Active Directory** > **Enter prise-toepassingen** , selecteert u het tabblad **eenmalige aanmelding** en opent u de Inge sloten documentatie in de sectie **configuratie** onderaan. Zie voor meer informatie over de Inge sloten documentatie functie [Azure AD embedded-documentatie]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u testgebruiker Britta Simon in de Azure-portal als volgt:
+In deze sectie maakt u een test gebruiker Julia Simon in de Azure Portal door het volgende te doen:
 
 ![Een Azure AD-testgebruiker maken][100]
 
-1. Selecteer **Azure Active Directory**in de Azure-portal in het linkerdeelvenster .
+1. Selecteer **Azure Active Directory**in het linkerdeel venster van de Azure Portal.
 
-    ![De Azure Active Directory-koppeling](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
+    ![De Azure Active Directory koppeling](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Als u een lijst met huidige gebruikers wilt weergeven, selecteert u **Gebruikers en groepen** > **Alle gebruikers**.
+1. Als u een lijst met huidige gebruikers wilt weer geven, selecteert u **gebruikers en groepen** > **alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-1. Selecteer Boven aan het venster **Alle gebruikers** de optie **Toevoegen**.
+1. Selecteer aan de bovenkant van het venster **alle gebruikers** de optie **toevoegen**.
 
-    ![De knop Toevoegen](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
+    ![De knop toevoegen](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
-    Het venster **Gebruiker** wordt geopend.
+    Het venster **gebruiker** wordt geopend.
 
-1. Ga als volgt te werk in het venster **Gebruiker:**
+1. Ga als volgt te werk in het venster **gebruiker** :
 
-    ![Het venster Gebruiker](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
+    ![Het venster gebruiker](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a. Typ **BrittaSimon**in het vak **Naam** .
+    a. Typ **BrittaSimon**in het vak **naam** .
 
-    b. Typ in het vak **Gebruikersnaam** het e-mailadres van gebruiker Britta Simon.
+    b. Typ in het vak **gebruikers naam** het e-mail adres van de gebruiker Julia Simon.
 
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+    c. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
     d. Selecteer **Maken**.
  
-### <a name="create-an-e-sales-manager-remix-test-user"></a>Een E Sales Manager Remix-testgebruiker maken
+### <a name="create-an-e-sales-manager-remix-test-user"></a>Een E-Remix test gebruiker voor de verkoop Manager maken
 
-1. Meld u aan bij uw E Sales Manager Remix-toepassing als beheerder.
+1. Meld u aan bij de Remix-toepassing van uw E-Sales Manager als beheerder.
 
-1. Selecteer **Het menu Beheerder in** het menu rechtsboven.
+1. Selecteer in het menu aan de rechter kant **naar het menu beheerder** .
 
-    ![E Sales Manager Remix-configuratie](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![E Remix-configuratie voor verkoop Manager](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Selecteer **de instellingen** > van uw bedrijf**Onderhoud van afdelingen en werknemers**en selecteer vervolgens Geregistreerde **werknemers.**
+1. Selecteer **de instellingen** > van het bedrijf**onderhoud van afdelingen en werk nemers**en selecteer vervolgens **werk nemers geregistreerd**.
 
-    ![Het tabblad 'Werknemers geregistreerd'](./media/esalesmanagerremix-tutorial/user1.png)
+    ![Het tabblad "geregistreerde mede werkers"](./media/esalesmanagerremix-tutorial/user1.png)
 
-1. Ga in de sectie **Nieuwe werknemersregistratie** als volgt te werk:
+1. Voer de volgende handelingen uit in de sectie **nieuwe registratie van werk nemers** :
     
-    ![De sectie "Nieuwe werknemersregistratie"](./media/esalesmanagerremix-tutorial/user2.png)
+    ![De sectie ' nieuwe werknemers registratie '](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. Typ **in** het vak Naam van werknemer de naam van de gebruiker (bijvoorbeeld **Britta**).
+    a. Typ in het vak **naam van werk nemer** de naam van de gebruiker (bijvoorbeeld **Julia**).
 
     b. Vul de resterende vereiste velden in.
     
-    c. Als u SAML inschakelt, kan de beheerder zich niet aanmelden vanaf de aanmeldingspagina. Geef beheerdersaanmeldingsrechten toe aan de gebruiker door het selectievakje **Aanmelding voor beheerders in** te schakelen.
+    c. Als u SAML inschakelt, kan de beheerder zich niet aanmelden vanaf de aanmeldings pagina. Ken beheerders machtigingen voor de gebruiker toe door het selectie vakje **beheerder aanmelden** in te scha kelen.
 
-    d. Selecteer **Registratie**.
+    d. Selecteer **registratie**.
 
-1. Als u zich in de toekomst wilt aanmelden als beheerder, meldt u zich aan als de gebruiker die beheerdersmachtigingen heeft en selecteert u vervolgens rechtsboven **het beheerdersmenu**.
+1. Als u zich in de toekomst wilt aanmelden als beheerder, meldt u zich aan als de gebruiker met beheerders machtigingen en selecteert u in de rechter bovenhoek het **menu beheerder**.
 
-    ![De opdracht 'Naar administratormenu',](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![De opdracht ' aan beheerder menu '](./media/esalesmanagerremix-tutorial/configure4.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u gebruiker Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot E Sales Manager Remix. Ga als volgt te werk: 
+In deze sectie schakelt u gebruiker Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot E Sales Manager Remix. Ga hiervoor als volgt te werk: 
 
 ![De gebruikersrol toewijzen][200] 
 
-1. Open in de Azure-portal de weergave **Toepassingen,** ga naar de **directoryweergave** en selecteer Vervolgens Alle**toepassingen** **voor Bedrijven** > selecteren.
+1. Open in de Azure Portal de weer gave **toepassingen** , ga **naar de mapweergave** en selecteer vervolgens**alle toepassingen**in **bedrijfs toepassingen** > .
 
-    ![De koppelingen "Enterprise-toepassingen" en "Alle toepassingen"][201] 
+    ![De koppelingen bedrijfs toepassingen en alle toepassingen][201] 
 
-1. Selecteer E Sales **Manager Remix**in de lijst **Toepassingen** .
+1. Selecteer in de lijst **toepassingen** de optie **E Sales Manager Remix**.
 
-    ![De e Sales Manager Remix link](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
+    ![De E-Remix-koppeling voor de verkoop Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. Selecteer gebruikers en **groepen**in het linkerdeelvenster .
+1. Selecteer in het linkerdeel venster **gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen][202]
 
-1. Selecteer **Toevoegen** en selecteer vervolgens in het deelvenster **Toewijzing toevoegen** de optie Gebruikers en **groepen**.
+1. Selecteer **toevoegen** en selecteer vervolgens in het deel venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
 
     ![Het deelvenster Toewijzing toevoegen][203]
 
-1. Selecteer **Britta Simon**in het venster **Gebruikers en groepen** in de lijst **Gebruikers** .
+1. Selecteer in het venster **gebruikers en groepen** in de lijst **gebruikers** de optie **Julia Simon**.
 
-1. Selecteer de knop **Selecteren.**
+1. Selecteer de knop **selecteren** .
 
-1. Selecteer **Toewijzing toewijzen** in het venster Toewijzing **toevoegen**.
+1. Selecteer in het venster **toewijzing toevoegen** de optie **toewijzen**.
     
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel Remix e Sales Manager selecteert in het toegangspaneel, moet u automatisch worden aangemeld bij uw E Sales Manager Remix-toepassing.
+Wanneer u de tegel E Sales Manager Remix selecteert in het toegangs venster, moet u zich automatisch aanmelden bij uw E-Remix-toepassing voor verkoop Manager.
 
 Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster. 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-* [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

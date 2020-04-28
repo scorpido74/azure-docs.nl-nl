@@ -1,6 +1,6 @@
 ---
-title: Toegang tot Azure Cosmos DB Cassandra API vanuit Azure Databricks
-description: In dit artikel wordt ingegaan op het werken met Azure Cosmos DB Cassandra API van Azure Databricks.
+title: Toegang tot Azure Cosmos DB Cassandra-API vanuit Azure Databricks
+description: In dit artikel wordt beschreven hoe u kunt werken met Azure Cosmos DB Cassandra-API van Azure Databricks.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,31 +9,31 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60894008"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Toegang tot Azure Cosmos DB Cassandra API-gegevens van Azure Databricks
+# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Toegang tot Azure Cosmos DB Cassandra-API gegevens vanuit Azure Databricks
 
-In dit artikel wordt beschreven hoe u werken met Azure Cosmos DB Cassandra API van Spark op [Azure Databricks.](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)
+In dit artikel wordt beschreven hoe u Azure Cosmos DB Cassandra-API van Spark kunt workwith op [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Een Azure Cosmos DB Cassandra API-account inrichten](create-cassandra-dotnet.md#create-a-database-account)
+* [Een Azure Cosmos DB Cassandra-API-account inrichten](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Bekijk de basisprincipes van verbinding maken met Azure Cosmos DB Cassandra API](cassandra-spark-generic.md)
+* [Bekijk de basis beginselen van het maken van verbinding met Azure Cosmos DB Cassandra-API](cassandra-spark-generic.md)
 
-* [Een Azure Databricks-cluster inrichten](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Een Azure Databricks cluster inrichten](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
 
-* [Bekijk de codevoorbeelden voor het werken met Cassandra API](cassandra-spark-generic.md#next-steps)
+* [De code voorbeelden voor het werken met Cassandra-API bekijken](cassandra-spark-generic.md#next-steps)
 
-* [Gebruik cqlsh voor validatie als u dat liever hebt](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Gebruik cqlsh voor validatie als u dat wilt](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Cassandra API-instantieconfiguratie voor Cassandra-connector:**
+* **Configuratie van Cassandra-API-exemplaar voor Cassandra-connector:**
 
-  De connector voor Cassandra API vereist dat de Cassandra-verbindingsgegevens worden geïnitialiseerd als onderdeel van de vonkcontext. Wanneer u een Databricks-notitieblok start, is de vonkcontext al geïnitialiseerd en is het niet raadzaam om deze te stoppen en opnieuw te initialiseren. Een oplossing is het toevoegen van de Cassandra API-instantieconfiguratie op clusterniveau in de clustervonkconfiguratie. Dit is een eenmalige activiteit per cluster. Voeg de volgende code toe aan de Spark-configuratie als een spatiegescheiden sleutelwaardepaar:
+  De connector voor Cassandra-API vereist dat de Cassandra-verbindings Details worden geïnitialiseerd als onderdeel van de Spark-context. Wanneer u een Databricks-notebook start, is de Spark-context al geïnitialiseerd en is het niet raadzaam deze te stoppen en opnieuw te initialiseren. Een oplossing is het toevoegen van de Cassandra-API-exemplaar configuratie op een cluster niveau, in de configuratie van het cluster Spark. Dit is een eenmalige activiteit per cluster. Voeg de volgende code toe aan de Spark-configuratie als een door spaties gescheiden paar sleutel waarden:
  
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
@@ -45,25 +45,25 @@ In dit artikel wordt beschreven hoe u werken met Azure Cosmos DB Cassandra API v
 
 ## <a name="add-the-required-dependencies"></a>De vereiste afhankelijkheden toevoegen
 
-* **Cassandra Spark-connector:** - Om Azure Cosmos DB Cassandra API te integreren met Spark, moet de Cassandra-connector worden gekoppeld aan het Azure Databricks-cluster. Ga als u het cluster wilt koppelen:
+* **Cassandra Spark-connector:** -om Azure Cosmos DB Cassandra-API te integreren met Spark, moet de Cassandra-connector zijn gekoppeld aan het Azure Databricks cluster. Het cluster koppelen:
 
-  * Bekijk de Databricks runtime-versie, de Spark-versie. Zoek vervolgens de [maven-coördinaten](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) die compatibel zijn met de Cassandra Spark-connector en bevestig deze aan het cluster. Zie het artikel ['Een Maven-pakket of Spark-pakket uploaden'](https://docs.databricks.com/user-guide/libraries.html) om de connectorbibliotheek aan het cluster te koppelen. Maven coördinaat voor 'Databricks Runtime versie 4.3', 'Spark 2.3.1' en 'Scala 2.11' is bijvoorbeeld`spark-cassandra-connector_2.11-2.3.1`
+  * Controleer de runtime versie van Databricks, de Spark-versie. Zoek vervolgens de [maven-coördinaten](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) die compatibel zijn met de Cassandra Spark-connector en koppel deze aan het cluster. Zie het artikel [een Maven-pakket uploaden of Spark-pakket](https://docs.databricks.com/user-guide/libraries.html) om de connector bibliotheek aan het cluster te koppelen. Bijvoorbeeld maven-coördinaat voor ' Databricks Runtime versie 4,3 ', ' Spark 2.3.1 ' en ' scala 2,11 ' is`spark-cassandra-connector_2.11-2.3.1`
 
-* **Azure Cosmos DB Cassandra API-specifieke bibliotheek:** - Er is een aangepaste verbindingsfabriek vereist om het beleid voor opnieuw proberen te configureren van de Cassandra Spark-connector naar Azure Cosmos DB Cassandra API. Voeg `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`de [maven-coördinaten](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) toe om de bibliotheek aan het cluster te koppelen.
+* **Azure Cosmos DB Cassandra-API-specifieke bibliotheek:** -er is een aangepaste Connection Factory vereist voor het configureren van het beleid voor opnieuw proberen van de Cassandra Spark-connector tot Azure Cosmos DB Cassandra-API. Voeg de `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [maven-coördinaten](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) toe om de bibliotheek aan het cluster te koppelen.
 
 ## <a name="sample-notebooks"></a>Voorbeelden van notebooks
 
-Een lijst met [voorbeeldnotitieblokken](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) van Azure Databricks is beschikbaar in GitHub repo die u downloaden. Deze voorbeelden omvatten hoe u verbinding maken met Azure Cosmos DB Cassandra API van Spark en verschillende CRUD-bewerkingen op de gegevens uitvoeren. U ook [alle notitieblokken importeren](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) in uw Databricks-clusterwerkruimte en deze uitvoeren. 
+Er is een lijst met Azure Databricks [voorbeeld notitieblokken](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) beschikbaar in github opslag plaats die u kunt downloaden. Deze voor beelden bevatten informatie over het maken van verbinding met Azure Cosmos DB Cassandra-API van Spark en het uitvoeren van verschillende ruwe bewerkingen op de gegevens. U kunt ook [alle notitie blokken](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) in uw Databricks cluster-werk ruimte importeren en uitvoeren. 
 
-## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Toegang tot Azure Cosmos DB Cassandra API van Spark Scala-programma's
+## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Toegang tot Azure Cosmos DB Cassandra-API vanuit Spark scala Program ma's
 
-Spark-programma's die moeten worden uitgevoerd als geautomatiseerde processen op Azure Databricks, worden naar het cluster verzonden met behulp van [spark-submit)](https://spark.apache.org/docs/latest/submitting-applications.html)en moeten worden uitgevoerd via de Azure Databricks-taken.
+Spark-Program ma's die moeten worden uitgevoerd als geautomatiseerde processen op Azure Databricks, worden verzonden naar het cluster door gebruik te maken van [Spark-verzen](https://spark.apache.org/docs/latest/submitting-applications.html)ding en volgens de Azure Databricks taken worden uitgevoerd.
 
-Hieronder vindt u koppelingen om aan de slag te gaan met het bouwen van Spark Scala-programma's om te communiceren met Azure Cosmos DB Cassandra API.
-* [Verbinding maken met Azure Cosmos DB Cassandra API vanuit een Spark Scala-programma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Een Spark Scala-programma uitvoeren als een geautomatiseerde taak op Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
-* [Volledige lijst met codevoorbeelden voor het werken met Cassandra API](cassandra-spark-generic.md#next-steps)
+Hieronder vindt u koppelingen waarmee u aan de slag kunt gaan met het bouwen van Spark scala-Program ma's om te communiceren met Azure Cosmos DB Cassandra-API.
+* [Verbinding maken met Azure Cosmos DB Cassandra-API vanuit een Spark scala-programma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Een Spark scala-programma uitvoeren als een geautomatiseerde taak op Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Volledige lijst met code voorbeelden voor het werken met Cassandra-API](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met [het maken van een Cassandra API-account, database en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
+Aan de slag met het [maken van een Cassandra-API-account,-data base en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.

@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-script: bestaande aandelen in Azure-gegevensshare weergeven | Microsoft Documenten'
-description: Dit PowerShell-script bevat en geeft details van aandelen weer.
+title: 'Power shell-script: een lijst met bestaande shares in azure data share | Microsoft Docs'
+description: In dit Power shell-script worden de details van shares weer gegeven.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307125"
 ---
-# <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>PowerShell gebruiken om de details van een verzonden gegevensaandeel weer te geven
+# <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>Power shell gebruiken om de details van een verzonden gegevens share weer te geven
 
-Dit PowerShell-script bevat gegevensaandelen van een bestaande account en krijgt de details van een specifiek aandeel.
+Met dit Power shell-script worden gegevens shares uit een bestaand account weer gegeven en worden de details van een specifieke share opgehaald.
 
 
 ## <a name="sample-script"></a>Voorbeeldscript
@@ -45,11 +45,11 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | Krijgt en lijsten van aandelen in een account. |
+| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | Hiermee wordt een lijst met shares in een account opgehaald en weer gegeven. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Data Share PowerShell-scriptvoorbeelden zijn te vinden in de [PowerShell-voorbeelden voor Azure Data Share.](../../samples-powershell.md)
+Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.

@@ -1,6 +1,6 @@
 ---
-title: Op eenpersoonsaanmelding op basis van wachtwoorden (SSO) in het toegangspaneel | Microsoft Documenten
-description: Bespreekt probleemgebieden die richtlijnen bieden om problemen op te lossen die verband houden met het aanmelden bij Azure AD Gallery-toepassingen die zijn geconfigureerd voor eenmalige aanmelding met wachtwoord.
+title: Eenmalige aanmelding op basis van wacht woorden (SSO) in het toegangs venster | Microsoft Docs
+description: Hierin worden probleem gebieden beschreven die hulp bieden bij het oplossen van problemen met het aanmelden bij Azure AD Gallery-toepassingen die zijn geconfigureerd voor eenmalige aanmelding met een wacht woord.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,187 +17,187 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68381235"
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemen met het aanmelden bij een Azure AD Gallery-toepassing die is geconfigureerd voor eenmalige aanmelding met wachtwoord
+# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemen bij het aanmelden bij een Azure AD Gallery-toepassing die is geconfigureerd voor eenmalige aanmelding met een wacht woord
 
-Het Access-paneel is een webportal waarmee een gebruiker met een werk- of schoolaccount in Azure Active Directory (Azure AD) cloudtoepassingen kan weergeven en starten waartoe de Azure AD-beheerder hem toegang heeft verleend. Een gebruiker met Azure AD-edities kan ook gebruikmaken van mogelijkheden voor selfservicegroepen en app-beheer via het Access-paneel. Het Access-paneel staat los van de Azure-portal en vereist niet dat gebruikers een Azure-abonnement hebben.
+Het toegangs venster is een portal op Internet waarmee een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) Cloud toepassingen kan weer geven en starten waartoe de Azure AD-beheerder hen toegang heeft verleend. Een gebruiker met Azure AD-edities kan ook selfservice-en app-beheer mogelijkheden gebruiken via het toegangs venster. Het toegangs venster is gescheiden van de Azure Portal en vereist niet dat gebruikers een Azure-abonnement hebben.
 
-Als u een op eenwachtwoord gebaseerde aanmelding (SSO) wilt gebruiken in het toegangspaneel, moet de extensie Toegangspaneel in de browser van de gebruiker worden geïnstalleerd. Deze extensie wordt automatisch gedownload wanneer een gebruiker een toepassing selecteert die is geconfigureerd voor sso op basis van wachtwoorden.
+Als u eenmalige aanmelding (SSO) op basis van wacht woorden in het toegangs venster wilt gebruiken, moet de uitbrei ding van het toegangs paneel worden geïnstalleerd in de browser van de gebruiker. Deze uitbrei ding wordt automatisch gedownload wanneer een gebruiker een toepassing selecteert die is geconfigureerd voor SSO op basis van een wacht woord.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Voldoen aan browservereisten voor het Toegangspaneel
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Browser vereisten voor de vergadering voor het toegangs venster
 
-Het Access Panel vereist een browser die JavaScript ondersteunt en CSS heeft ingeschakeld. Als u een op eenwachtwoord gebaseerde aanmelding (SSO) wilt gebruiken in het toegangspaneel, moet de extensie Toegangspaneel in de browser van de gebruiker worden geïnstalleerd. Deze extensie wordt automatisch gedownload wanneer een gebruiker een toepassing selecteert die is geconfigureerd voor sso op basis van wachtwoorden.
+Het toegangs venster vereist een browser die Java script ondersteunt en waarvoor CSS is ingeschakeld. Als u eenmalige aanmelding (SSO) op basis van wacht woorden in het toegangs venster wilt gebruiken, moet de uitbrei ding van het toegangs paneel worden geïnstalleerd in de browser van de gebruiker. Deze uitbrei ding wordt automatisch gedownload wanneer een gebruiker een toepassing selecteert die is geconfigureerd voor SSO op basis van een wacht woord.
 
-Voor sso op basis van wachtwoorden kunnen de browsers van de eindgebruiker zijn:
+Voor SSO op basis van een wacht woord kunnen de browsers van de eind gebruiker het volgende zijn:
 
--   Internet Explorer 8, 9, 10, 11 - op Windows 7 of hoger
+-   Internet Explorer 8, 9, 10, 11, op Windows 7 of hoger
 
--   Chrome - op Windows 7 of hoger, en op MacOS X of hoger
+-   Chrome--op Windows 7 of hoger en op MacOS X of hoger
 
--   Firefox 26.0 of hoger , op Windows XP SP2 of hoger, en op Mac OS X 10.6 of hoger
+-   Firefox 26,0 of hoger, op Windows XP SP2 of hoger, en op Mac OS X 10,6 of hoger
 
 >[!NOTE]
->De op wachtwoorden gebaseerde SSO-extensie wordt beschikbaar voor Microsoft Edge in Windows 10 wanneer browserextensies worden ondersteund voor Microsoft Edge.
+>De SSO-uitbrei ding op basis van wacht woorden is beschikbaar voor micro soft Edge in Windows 10 wanneer browser uitbreidingen worden ondersteund voor micro soft Edge.
 >
 >
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>De extensie Access Panel Browser installeren
+## <a name="how-to-install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
 
-Voer de onderstaande stappen uit om de extensie Access Panel Browser te installeren:
+Volg de onderstaande stappen om de browser uitbreiding van het toegangs venster te installeren:
 
-1.  Open het [Access-paneel](https://myapps.microsoft.com) in een van de ondersteunde browsers en meld u aan als **gebruiker** in uw Azure AD.
+1.  Open het [toegangs venster](https://myapps.microsoft.com) in een van de ondersteunde browsers en meld u aan als een **gebruiker** in uw Azure AD.
 
-2.  klik op een **Wachtwoord-SSO-toepassing** in het Access-paneel.
+2.  Klik op een **wacht woord-SSO-toepassing** in het toegangs venster.
 
-3.  Selecteer **Nu installeren**in de prompt waarin u vraagt de software te installeren .
+3.  Selecteer **nu installeren**bij de vraag of u de software wilt installeren.
 
-4.  Op basis van uw browser wordt u doorverwezen naar de downloadlink. **Voeg** de extensie toe aan uw browser.
+4.  Op basis van uw browser wordt u omgeleid naar de download koppeling. **Voeg** de uitbrei ding toe aan uw browser.
 
-5.  Als uw browser daarom vraagt, selecteert u de extensie **inschakelen** of **toestaan.**
+5.  Als uw browser vraagt, selecteert u de extensie **inschakelen** of **toestaan** .
 
-6.  Zodra u deze **browserhebt geïnstalleerd, start u** de browsersessie opnieuw.
+6.  Nadat de installatie is voltooid, start u de browser sessie **opnieuw** .
 
-7.  Meld u aan bij het Toegangspaneel en kijk of u uw wachtwoord-SSO-toepassingen **starten**
+7.  Meld u aan bij het toegangs venster en controleer of u uw wacht woord-SSO-toepassingen kunt **starten** .
 
-U ook downloaden van de extensie voor Chrome en Firefox van de directe links hieronder:
+U kunt de uitbrei ding voor Chrome en Firefox ook downloaden via de onderstaande rechtstreekse koppelingen:
 
--   [Chrome Access Panel Extension](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Uitbrei ding Chrome toegangs paneel](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox Access Panel Extension](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Extensie voor het toegangs paneel van Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Een groepsbeleid instellen voor Internet Explorer
+## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Instellen van groeps beleid voor Internet Explorer
 
-U een groepsbeleid instellen waarmee u de extensie Access Panel voor Internet Explorer op afstand installeren op de machines van uw gebruikers.
+U kunt een groeps beleid instellen waarmee u de uitbrei ding van het toegangs paneel voor Internet Explorer op afstand installeert op de computers van uw gebruikers.
 
-De voorwaarden zijn onder meer:
+De vereisten zijn onder andere:
 
--   U hebt [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)ingesteld en u hebt de machines van uw gebruikers bij uw domein gevoegd.
+-   U hebt [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)ingesteld en u hebt de computers van uw gebruikers toegevoegd aan uw domein.
 
--   U moet de machtiging 'Instellingen bewerken' hebben om het groepsbeleidsobject (GPO) te bewerken. Standaard hebben leden van de volgende beveiligingsgroepen deze toestemming: domeinbeheerders, bedrijfsbeheerders en eigenaren van groepsbeleidseigenaren. [Meer informatie](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   U moet beschikken over de machtiging instellingen bewerken om het groepsbeleid object (GPO) te bewerken. Standaard hebben leden van de volgende beveiligings groepen deze machtiging: domein beheerders, ondernemings Administrators en groepsbeleid Maker eigen aren. [Meer informatie](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Volg de zelfstudie [Hoe implementeer je de extensie van het toegangspaneel voor Internet Explorer met groepsbeleid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) voor stapsgewijze instructies over het configureren van het groepsbeleid en het implementeren ervan naar gebruikers.
+Volg de zelf studie [hoe u de uitbrei ding voor het toegangs paneel voor Internet Explorer kunt implementeren met behulp van Groepsbeleid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) voor stapsgewijze instructies voor het configureren van groeps beleid en het implementeren ervan voor gebruikers.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problemen met het toegangspaneel in Internet Explorer oplossen
+## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problemen met het toegangs paneel in Internet Explorer oplossen
 
-Volg de [handleiding Problemen met het toegangspaneel voor Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) voor toegang tot een diagnosetool en stapsgewijze instructies voor het configureren van de extensie voor IE.
+Volg de richt lijnen voor [het openen van de uitbrei ding van het toegangs paneel voor Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) voor toegang tot een diagnostisch hulp programma en stapsgewijze instructies voor het configureren van de uitbrei ding voor IE.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Eenmalige aanmelding voor een niet-galerietoepassing configureren voor een aanvraag voor een niet-galerie
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Eenmalige aanmelding met een wacht woord configureren voor een toepassing buiten de galerie
 
-Als u een toepassing wilt configureren vanuit de Azure AD-galerie, moet u het gaat doen:
+Als u een toepassing vanuit de Azure AD-galerie wilt configureren, moet u het volgende doen:
 
--   [Een niet-galerietoepassing toevoegen](#add-a-non-gallery-application)
+-   [Een niet-galerie toepassing toevoegen](#add-a-non-gallery-application)
 
--   [De toepassing voor eenmalige aanmelding voor wachtwoorden configureren](#configure-the-application-for-password-single-sign-on)
+-   [De toepassing configureren voor eenmalige aanmelding met een wacht woord](#configure-the-application-for-password-single-sign-on)
 
 -   [Gebruikers toewijzen aan een toepassing](#assign-users-to-the-application)
 
-### <a name="add-a-non-gallery-application"></a>Een niet-galerietoepassing toevoegen
+### <a name="add-a-non-gallery-application"></a>Een niet-galerie toepassing toevoegen
 
-Voer de onderstaande stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
+Voer de volgende stappen uit om een toepassing toe te voegen vanuit de Azure AD-galerie:
 
-1.  De [Azure-portal openen](https://portal.azure.com) en u aanmelden als **globale beheerder** of **medebeheerder**
+1.  Open de [Azure Portal](https://portal.azure.com) en meld u aan als **globale beheerder** of **co-** beheerder
 
-2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4.  Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  klik op de knop **Toevoegen** in de rechterbovenhoek in het deelvenster **Ondernemingstoepassingen.**
+5.  Klik op de knop **toevoegen** in de rechter bovenhoek van het deel venster **bedrijfs toepassingen** .
 
-6.  klik **op Niet-galerietoepassing.**
+6.  Klik op **toepassing voor niet-galerie.**
 
-7.  Voer de naam van uw toepassing in het tekstvak **Naam** in. Selecteer **Toevoegen.**
+7.  Voer de naam van uw toepassing in het tekstvak **naam** in. Selecteer **toevoegen.**
 
-Na een korte periode u het configuratievenster van de toepassing zien.
+Na een korte periode kunt u het configuratie venster van de toepassing bekijken.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing voor eenmalige aanmelding voor wachtwoorden configureren
+### <a name="configure-the-application-for-password-single-sign-on"></a>De toepassing configureren voor eenmalige aanmelding met een wacht woord
 
-Voer de onderstaande stappen uit om een malige aanmelding voor een toepassing te configureren:
+Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor een toepassing:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing die u wilt configureren als u één aanmelding wilt configureren
+6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren
 
-7. Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Selecteer de modus **Aanmelding op basis van wachtwoord.**
+8. Selecteer de **aanmeldings modus op basis van wacht woord.**
 
-9. Voer de **aanmeldings-URL in**. Dit is de URL waar gebruikers hun gebruikersnaam en wachtwoord invoeren om zich aan te melden. Zorg ervoor dat de aanmeldingsvelden zichtbaar zijn op de URL.
+9. Voer de **aanmeldings-URL**in. Dit is de URL waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. Zorg ervoor dat de aanmeldings velden zichtbaar zijn op de URL.
 
 10. Gebruikers toewijzen aan de toepassing.
 
-11. Bovendien u namens de gebruiker ook referenties opgeven door de rijen van de gebruikers te selecteren en op **Referenties bijwerken** te klikken en namens de gebruikers de gebruikersnaam en het wachtwoord in te voeren. Anders worden gebruikers gevraagd om de referenties zelf in te voeren bij de lancering.
+11. Daarnaast kunt u ook referenties namens de gebruiker opgeven door de rijen van de gebruikers te selecteren en op **referenties bijwerken** te klikken en de gebruikers naam en het wacht woord namens de gebruikers in te voeren. Anders wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
 
 ### <a name="assign-users-to-the-application"></a>Gebruikers toewijzen aan een toepassing
 
-Als u een of meer gebruikers rechtstreeks aan een toepassing wilt toewijzen, voert u de onderstaande stappen uit:
+Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing waaraan u een gebruiker wilt toewijzen uit de lijst.
+6. Selecteer in de lijst de toepassing waaraan u een gebruiker wilt toewijzen.
 
-7. Zodra de toepassing wordt geladen, klikt u op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Klik **op** de knop Toevoegen boven aan de lijst **Gebruikers en groepen** om het deelvenster Toewijzing **toevoegen** te openen.
+8. Klik op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** om het deel venster **toewijzing toevoegen** te openen.
 
-9. klik op de selectie **voor gebruikers en groepen** in het deelvenster Toewijzing **toevoegen.**
+9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-10. Typ de **volledige naam** of het volledige **e-mailadres** van de gebruiker die u wilt toewijzen aan het zoekvak Zoeken op naam of **e-mailadres.**
+10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
 
-11. Plaats de **plaats van** de gebruiker in de lijst om een **selectievakje**te onthullen. Klik op het selectievakje naast de profielfoto of het logo van de gebruiker om uw gebruiker toe te voegen aan de **lijst Geselecteerde.**
+11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast de foto of het logo van het profiel van de gebruiker om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
 
-12. **Optioneel:** Als u meer dan één gebruiker wilt **toevoegen,** typt u een andere **volledige naam** of **e-mailadres** in het zoekvak **Zoeken op naam of e-mailadres** en klikt u op het selectievakje om deze gebruiker toe te voegen aan de **lijst Geselecteerde.**
+12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
 
-13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **Selecteren** om deze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
+13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** klik op de rolkiezer **selecteren** in het deelvenster **Toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
+14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
 
-15. Klik **op** de knop Toewijzen om de toepassing toe te wijzen aan de geselecteerde gebruikers.
+15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
 
-Na een korte periode kunnen de geselecteerde gebruikers deze toepassingen starten in het Access Panel.
+Na een korte periode kunnen de gebruikers die u hebt geselecteerd deze toepassingen in het toegangs venster starten.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor het oplossen van problemen het probleem niet oplossen
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor probleem oplossing niet het probleem oplossen
 
-open een support ticket met de volgende informatie indien beschikbaar:
+Open een ondersteunings ticket met de volgende informatie, indien beschikbaar:
 
--   Correlatiefout-id
+-   ID correlatie fout
 
--   UPN (e-mailadres van de gebruiker)
+-   UPN (e-mail adres van gebruiker)
 
 -   TenantID
 
 -   Browsertype
 
--   Tijdzone en tijd/tijdsbestek tijdens fout treedt op
+-   Tijd zone en tijd/tijds duur tijdens fout
 
--   Fiddler sporen
+-   Fiddler traceringen
 
 ## <a name="next-steps"></a>Volgende stappen
-[Eén aanmelding bij uw apps bieden met Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)
+[Eenmalige aanmelding bieden voor uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)
 

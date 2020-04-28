@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Application Proxy en Tableau | Microsoft Documenten
-description: Meer informatie over het gebruik van Azure Active Directory (Azure AD) Application Proxy om externe toegang te bieden voor uw Tableau-implementatie.
+title: Azure Active Directory-toepassingsproxy en tableau | Microsoft Docs
+description: Meer informatie over het gebruik van Azure Active Directory (Azure AD)-toepassings proxy om externe toegang te bieden voor uw tableau-implementatie.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -14,73 +14,73 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65783854"
 ---
-# <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy van Azure Active Directory-toepassing en Tableau 
+# <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-toepassingsproxy en tableau 
 
-Azure Active Directory Application Proxy en Tableau zijn een partnerschap aangegaan om ervoor te zorgen dat u eenvoudig Application Proxy gebruiken om externe toegang te bieden voor uw Tableau-implementatie. In dit artikel wordt uitgelegd hoe u dit scenario configureert.  
+Azure Active Directory-toepassingsproxy en tableau hebben een partner om ervoor te zorgen dat u eenvoudig een toepassings proxy kunt gebruiken om externe toegang te bieden voor uw tableau-implementatie. In dit artikel wordt uitgelegd hoe u dit scenario kunt configureren.  
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Het scenario in dit artikel gaat ervan uit dat u:
+In het scenario in dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
 - [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) geconfigureerd. 
 
-- Een [Application Proxy-connector](application-proxy-add-on-premises-application.md) geïnstalleerd. 
+- Er is een [Application proxy-connector](application-proxy-add-on-premises-application.md) geïnstalleerd. 
 
  
-## <a name="enabling-application-proxy-for-tableau"></a>Application Proxy inschakelen voor Tableau 
+## <a name="enabling-application-proxy-for-tableau"></a>Toepassings proxy inschakelen voor tableau 
 
-Application Proxy ondersteunt de OAuth 2.0 Grant Flow, die nodig is om Tableau goed te laten werken. Dit betekent dat er geen speciale stappen meer nodig zijn om deze toepassing in te schakelen, anders dan deze te configureren door de onderstaande publicatiestappen te volgen.
-
-
-## <a name="publish-your-applications-in-azure"></a>Uw toepassingen publiceren in Azure 
-
-Als u Tableau wilt publiceren, moet u een toepassing publiceren in de Azure Portal.
-
-Voor:
-
-- Gedetailleerde instructies voor stappen 1-8, zie [Toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). 
-- Zie de Tableau-documentatie voor informatie over het vinden van Tableau-waarden voor de velden App Proxy.  
-
-**Uw app publiceren:** 
+Toepassings proxy biedt ondersteuning voor de OAuth 2,0-toekennings stroom, die vereist is voor een goede werking van tableau. Dit betekent dat er geen speciale stappen meer nodig zijn om deze toepassing in te scha kelen, behalve de configuratie door de onderstaande publicatie stappen te volgen.
 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als toepassingsbeheerder. 
+## <a name="publish-your-applications-in-azure"></a>Uw toepassingen publiceren in azure 
 
-2. Selecteer **Azure Active Directory > Enterprise-toepassingen**. 
+Als u tableau wilt publiceren, moet u een toepassing publiceren in azure Portal.
 
-3. Selecteer **Toevoegen** boven aan het blad. 
+Zo
 
-4. Selecteer **On-premises toepassing**. 
+- Gedetailleerde instructies voor stap 1-8, Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). 
+- Zie de tableau-documentatie voor informatie over het zoeken naar tableau-waarden voor de app-proxy velden.  
 
-5. Vul de vereiste velden in met informatie over uw nieuwe app. Gebruik de volgende richtlijnen voor de instellingen: 
+**Uw app publiceren**: 
 
-    - **Interne URL**: Deze toepassing moet een interne URL hebben die de Tableau-URL zelf is. Bijvoorbeeld `https://adventure-works.tableau.com`. 
 
-    - **Verificatiemethode**voor vooraf verificatie: Azure Active Directory (aanbevolen, maar niet vereist). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een toepassings beheerder. 
 
-6. Selecteer **Toevoegen** boven aan het blad. Uw toepassing wordt toegevoegd en het menu snel beginnen wordt geopend. 
+2. Selecteer **Azure Active Directory > bedrijfs toepassingen**. 
 
-7. Selecteer in het menu Snelstarten de optie **Een gebruiker toewijzen voor het testen**en voeg ten minste één gebruiker toe aan de toepassing. Zorg ervoor dat dit testaccount toegang heeft tot de on-premises toepassing. 
+3. Selecteer **toevoegen** boven aan de Blade. 
 
-8. Selecteer **Toewijzen** om de testgebruikerstoewijzing op te slaan. 
+4. Selecteer **on-premises toepassing**. 
 
-9. (Optioneel) Selecteer op de pagina appbeheer de optie **Eén aanmelding**. Kies **Geïntegreerde Windows-verificatie** in het vervolgkeuzemenu en vul de vereiste velden in op basis van uw Tableau-configuratie. Selecteer **Opslaan**. 
+5. Vul de vereiste velden in met informatie over uw nieuwe app. Gebruik de volgende richt lijnen voor de instellingen: 
+
+    - **Interne URL**: deze toepassing moet een interne URL hebben die de tableau-URL zelf is. Bijvoorbeeld `https://adventure-works.tableau.com`. 
+
+    - **Methode voor verificatie vooraf**: Azure Active Directory (aanbevolen maar niet vereist). 
+
+6. Selecteer **toevoegen** boven aan de Blade. Uw toepassing wordt toegevoegd en het menu snel starten wordt geopend. 
+
+7. Selecteer in het menu snel starten de optie **een gebruiker toewijzen voor testen**en voeg ten minste één gebruiker toe aan de toepassing. Zorg ervoor dat dit test account toegang heeft tot de on-premises toepassing. 
+
+8. Selecteer **toewijzen** om de gebruikers toewijzing test op te slaan. 
+
+9. Beschrijving Selecteer op de pagina app-beheer de optie **eenmalige aanmelding**. Kies **geïntegreerde Windows-verificatie** in de vervolg keuzelijst en vul de vereiste velden in op basis van uw tableau-configuratie. Selecteer **Opslaan**. 
 
  
 
 ## <a name="testing"></a>Testen 
 
-Uw aanvraag is nu klaar om te testen. Toegang tot de externe URL die u hebt gebruikt om Tableau te publiceren en in te loggen als gebruiker die aan beide toepassingen is toegewezen.
+Uw toepassing is nu gereed om te testen. Open de externe URL die u hebt gebruikt voor het publiceren van tableau en meld u aan als een gebruiker die is toegewezen aan beide toepassingen.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Hoe u beveiligde externe [toegang tot on-premises toepassingen](application-proxy.md)bieden voor meer informatie over Azure AD-toepassingsproxy.
+Zie [veilige externe toegang bieden voor on-premises toepassingen](application-proxy.md)voor meer informatie over Azure AD-toepassingsproxy.
 

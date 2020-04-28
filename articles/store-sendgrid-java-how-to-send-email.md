@@ -1,6 +1,6 @@
 ---
-title: De e-mailservice SendGrid (Java) gebruiken | Microsoft Documenten
-description: Meer informatie over het verzenden van e-mail met de e-mailservice SendGrid op Azure. Code monsters geschreven in Java.
+title: De SendGrid-e-mail service (Java) gebruiken | Microsoft Docs
+description: Meer informatie over het verzenden van e-mail met de SendGrid-e-mail service op Azure. Code voorbeelden geschreven in Java.
 services: ''
 documentationcenter: java
 author: thinkingserious
@@ -16,34 +16,34 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67876515"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mail verzenden via SendGrid vanuit Java
-In deze handleiding wordt uitgelegd hoe u veelvoorkomende programmeertaken uitvoeren met de e-mailservice SendGrid op Azure. De monsters zijn geschreven in Java. De scenario's die onder meer worden behandeld, zijn **het maken van e-mail,** **het verzenden van e-mail,** **het toevoegen van bijlagen,** **het gebruik van filters**en het bijwerken **van eigenschappen**. Zie de sectie [Volgende stappen](#next-steps) voor meer informatie over SendGrid en het verzenden van e-mail.
+# <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mail verzenden met SendGrid vanuit Java
+In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven in Java. De besproken scenario's zijn onder andere het **maken van e-mail**, het **verzenden van e-mail**, het toevoegen van **bijlagen**, het **gebruiken van filters**en het **bijwerken van eigenschappen**. Zie de sectie [volgende stappen](#next-steps) voor meer informatie over het SendGrid en verzenden van e-mail.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid Email Service?
-SendGrid is een [cloudgebaseerde e-mailservice] die betrouwbare [transactionele e-maillevering,]schaalbaarheid en realtime analyses biedt, samen met flexibele API's die aangepaste integratie eenvoudig maken. Veelvoorkomende sendgrid-gebruiksscenario's zijn:
+## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid-e-mail service?
+SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactionele e-mail levering], schaal baarheid en real-time analyse biedt, samen met flexibele api's die eenvoudig aangepaste integratie maken. Veelvoorkomende scenario's voor SendGrid-gebruik zijn:
 
-* Automatisch ontvangstbewijzen naar klanten verzenden
-* Het beheren van distributielijsten voor het verzenden van klanten maandelijkse e-flyers en speciale aanbiedingen
-* Realtime statistieken verzamelen voor zaken als geblokkeerde e-mail en reactievermogen van klanten
+* Automatisch ontvangst bevestigingen verzenden naar klanten
+* Distributie lijsten beheren voor het maandelijks verzenden van klanten per maand e-flyers en speciale aanbiedingen
+* Realtime metrische gegevens verzamelen voor zaken als geblokkeerde e-mail en reactie tijd van klant
 * Rapporten genereren om trends te identificeren
-* Vragen van klanten doorsturen
-* E-mailmeldingen van uw toepassing
+* Vragen van klanten door sturen
+* E-mail meldingen van uw toepassing
 
 Zie <https://sendgrid.com> voor meer informatie.
 
 ## <a name="create-a-sendgrid-account"></a>Een SendGrid-account maken
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="how-to-use-the-javaxmail-libraries"></a>How to: Gebruik de javax.mail bibliotheken
-Verkrijg de javax.mail bibliotheken, <https://www.oracle.com/technetwork/java/javamail> bijvoorbeeld van en importeer ze in uw code. Op hoog niveau is het volgende proces voor het gebruik van de javax.mail-bibliotheek om e-mail te verzenden met SMTP:
+## <a name="how-to-use-the-javaxmail-libraries"></a>Procedure: de bibliotheken javax. mail gebruiken
+Zorg ervoor dat u de Java. mail-bibliotheken kunt <https://www.oracle.com/technetwork/java/javamail> ophalen, bijvoorbeeld uit en importeren in uw code. Op hoog niveau is het proces voor het gebruik van de javax. mail-bibliotheek voor het verzenden van e-mail via SMTP de volgende handelingen uit te voeren:
 
-1. Geef de SMTP-waarden op, inclusief de SMTP-server, die voor SendGrid smtp.sendgrid.net is.
+1. Geef de SMTP-waarden op, met inbegrip van de SMTP-server, die voor SendGrid is smtp.sendgrid.net.
 
 ```
         import java.util.Properties;
@@ -69,7 +69,7 @@ Verkrijg de javax.mail bibliotheken, <https://www.oracle.com/technetwork/java/ja
                  // …
 ```
 
-1. Breid de *klasse javax.mail.Authenticator* uit en retourneer bij de implementatie van de *getPasswordAuthentication-methode* uw SendGrid-gebruikersnaam en -wachtwoord.  
+1. Breid de klasse *javax. mail. Authenticator* uit en retour neer uw SendGrid-gebruikers naam en-wacht woord in uw implementatie van de *getPasswordAuthentication* -methode.  
 
        private class SMTPAuthenticator extends javax.mail.Authenticator {
        public PasswordAuthentication getPasswordAuthentication() {
@@ -77,15 +77,15 @@ Verkrijg de javax.mail bibliotheken, <https://www.oracle.com/technetwork/java/ja
           String password = SMTP_AUTH_PWD;
           return new PasswordAuthentication(username, password);
        }
-2. Maak een geverifieerde e-mailsessie via een *object javax.mail.Session.*  
+2. Een geverifieerde e-mail sessie maken via een *Java. mail. Session-* object.  
 
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
-3. Maak uw bericht en wijs **aan**, **Van**, **Onderwerp** en inhoudwaarden toe. Dit wordt weergegeven in de sectie [Hoe: Een e-mail maken.](#how-to-create-an-email)
-4. Stuur het bericht via een *object javax.mail.Transport.* Dit wordt weergegeven in de sectie [Hoe: Een e-mail verzenden][#how-naar-verzenden-een-e-mail] wordt weergegeven.
+3. Uw bericht maken en toewijzen **aan**waarden, **van**, **onderwerp** en inhoud. Dit wordt weer gegeven in de sectie [procedure: een E-mail maken](#how-to-create-an-email) .
+4. Het bericht verzenden via een *javax. mail. Trans Port-* object. Dit wordt weer gegeven in de sectie [How to: Send a E-mail] [#how-to-send-a-email].
 
-## <a name="how-to-create-an-email"></a>Hoe: Een e-mail maken
-Hieronder ziet u hoe u waarden voor een e-mail opgeeft.
+## <a name="how-to-create-an-email"></a>Procedure: een e-mail maken
+Hieronder ziet u hoe u waarden voor een e-mail kunt opgeven.
 
     MimeMessage message = new MimeMessage(mailSession);
     Multipart multipart = new MimeMultipart("alternative");
@@ -105,7 +105,7 @@ Hieronder ziet u hoe u waarden voor een e-mail opgeeft.
     message.setSubject("Your recent order");
     message.setContent(multipart);
 
-## <a name="how-to-send-an-email"></a>Hoe: Een e-mail verzenden
+## <a name="how-to-send-an-email"></a>Procedure: een e-mail verzenden
 Hieronder ziet u hoe u een e-mail verzendt.
 
     Transport transport = mailSession.getTransport();
@@ -116,8 +116,8 @@ Hieronder ziet u hoe u een e-mail verzendt.
     // Close the connection.
     transport.close();
 
-## <a name="how-to-add-an-attachment"></a>Hoe: Een bijlage toevoegen
-In de volgende code ziet u hoe u een bijlage toevoegt.
+## <a name="how-to-add-an-attachment"></a>Procedure: een bijlage toevoegen
+De volgende code laat zien hoe u een bijlage kunt toevoegen.
 
     // Local file name and path.
     String attachmentName = "myfile.zip";
@@ -131,10 +131,10 @@ In de volgende code ziet u hoe u een bijlage toevoegt.
     attachmentPart.setFileName(attachmentName);
     multipart.addBodyPart(attachmentPart);
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Hoe: Filters gebruiken om voetteksten, tracking en analyses in te schakelen
-SendGrid biedt extra e-mailfunctionaliteit door het gebruik van *filters.* Dit zijn instellingen die kunnen worden toegevoegd aan een e-mailbericht om specifieke functionaliteit in te schakelen, zoals het inschakelen van kliktracking, Google analytics, het bijhouden van abonnementen, enzovoort. Zie [Filterinstellingen][Filter Settings]voor een volledige lijst met filters .
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Procedure: filters gebruiken om voet teksten, tracering en analyses in te scha kelen
+SendGrid biedt extra e-mail functionaliteit dankzij het gebruik van *filters*. Dit zijn instellingen die kunnen worden toegevoegd aan een e-mail bericht om specifieke functionaliteit in te scha kelen, zoals het inschakelen van klikken op bijhouden, Google Analytics, bijhouden van abonnementen, enzovoort. Zie [filter instellingen][Filter Settings]voor een volledige lijst met filters.
 
-* Het volgende laat zien hoe u een voettekstfilter invoegt dat resulteert in HTML-tekst die onder aan de verzonden e-mail wordt weergegeven.
+* Hieronder ziet u hoe u een voet tekst filter kunt invoegen waarmee HTML-tekst wordt weer gegeven aan de onderkant van het e-mail bericht dat wordt verzonden.
 
       message.addHeader("X-SMTPAPI",
           "{\"filters\":
@@ -142,7 +142,7 @@ SendGrid biedt extra e-mailfunctionaliteit door het gebruik van *filters.* Dit z
           {\"settings\":
           {\"enable\":1,\"text/html\":
           \"<html><b>Thank you</b> for your business.</html>\"}}}}");
-* Een ander voorbeeld van een filter is click tracking. Stel dat uw e-mailtekst een hyperlink bevat, zoals de volgende, en dat u de klikfrequentie wilt bijhouden:
+* Een ander voor beeld van een filter is klikken op bijhouden. Stel dat uw e-mail tekst een Hyper link bevat, zoals de volgende, en u de klik frequentie wilt volgen:
 
       messagePart.setContent(
           "Hello,
@@ -150,7 +150,7 @@ SendGrid biedt extra e-mailfunctionaliteit door het gebruik van *filters.* Dit z
           <a href='http://www.contoso.com'>http://www.contoso.com</a>.</p>
           Thank you.",
           "text/html");
-* Gebruik de volgende code om de kliktracking in te schakelen:
+* Als u de klik tracering wilt inschakelen, gebruikt u de volgende code:
 
       message.addHeader("X-SMTPAPI",
           "{\"filters\":
@@ -158,10 +158,10 @@ SendGrid biedt extra e-mailfunctionaliteit door het gebruik van *filters.* Dit z
           {\"settings\":
           {\"enable\":1}}}}");
 
-## <a name="how-to-update-email-properties"></a>Instellen: e-maileigenschappen bijwerken
-Sommige e-maileigenschappen kunnen worden overschreven met **de eigenschap set** of worden toegevoegd met eigenschap **toevoegen**.
+## <a name="how-to-update-email-properties"></a>Instructies: e-mail eigenschappen bijwerken
+Sommige e-mail eigenschappen kunnen worden overschreven met behulp van **eigenschap instellen** of toegevoegd met behulp van de **eigenschap add**.
 
-Als u bijvoorbeeld **ReplyTo-adressen** wilt opgeven, gebruikt u het volgende:
+Als u bijvoorbeeld **ReplyTo** -adressen wilt opgeven, gebruikt u het volgende:
 
     InternetAddress addresses[] =
         { new InternetAddress("john@contoso.com"),
@@ -169,21 +169,21 @@ Als u bijvoorbeeld **ReplyTo-adressen** wilt opgeven, gebruikt u het volgende:
 
     message.setReplyTo(addresses);
 
-Als u een **Cc-ontvanger** wilt toevoegen, gebruikt u het volgende:
+Gebruik het volgende om een **CC** -ontvanger toe te voegen:
 
     message.addRecipient(Message.RecipientType.CC, new
     InternetAddress("john@contoso.com"));
 
-## <a name="how-to-use-additional-sendgrid-services"></a>How to: Extra SendGrid-services gebruiken
-SendGrid biedt webgebaseerde API's die u gebruiken om extra SendGrid-functionaliteit uit uw Azure-toepassing te gebruiken. Zie de [SendGrid API-documentatie][SendGrid API documentation]voor meer informatie.
+## <a name="how-to-use-additional-sendgrid-services"></a>Procedure: extra SendGrid Services gebruiken
+SendGrid biedt op web gebaseerde Api's die u kunt gebruiken om gebruik te maken van extra SendGrid-functionaliteit vanuit uw Azure-toepassing. Zie de [SENDGRID API-documentatie][SendGrid API documentation]voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basisbeginselen van de SendGrid-e-mailservice hebt geleerd, volgt u deze koppelingen voor meer informatie.
+Nu u de basis principes van de SendGrid-e-mail service hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
-* Voorbeeld dat aantoont dat SendGrid wordt gebruikt in een Azure-implementatie: [E-mail verzenden met SendGrid vanuit Java in een Azure-implementatie](store-sendgrid-java-how-to-send-email-example.md)
+* Voor beeld van het gebruik van SendGrid in een Azure-implementatie: [e-mail verzenden met SendGrid vanuit java in een Azure-implementatie](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid Java SDK:<https://sendgrid.com/docs/Code_Examples/java.html>
 * SendGrid API-documentatie:<https://sendgrid.com/docs/API_Reference/index.html>
-* Speciale sendGrid-aanbieding voor Azure-klanten:<https://sendgrid.com/windowsazure.html>
+* SendGrid speciale aanbieding voor Azure-klanten:<https://sendgrid.com/windowsazure.html>
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html
@@ -193,5 +193,5 @@ Nu u de basisbeginselen van de SendGrid-e-mailservice hebt geleerd, volgt u deze
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
 [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
 [https://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
-[cloudgebaseerde e-mailservice]: https://sendgrid.com/email-solutions
-[transactionele e-mailbezorging]: https://sendgrid.com/transactional-email
+[e-mail service op basis van de Cloud]: https://sendgrid.com/email-solutions
+[e-mail levering via een transactie]: https://sendgrid.com/transactional-email

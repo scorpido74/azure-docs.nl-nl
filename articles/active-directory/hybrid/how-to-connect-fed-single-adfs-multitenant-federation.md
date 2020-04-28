@@ -1,5 +1,5 @@
 ---
-title: Meerdere Azure AD-federatie met één AD FS - Azure
+title: Federeren meerdere Azure AD met één AD FS-Azure
 description: In dit document leert u hoe u meerdere exemplaren van Azure AD federeert met één exemplaar van AD FS.
 keywords: federeren, ADFS, AD FS, meerdere tenants, één AD FS, één ADFS, federatie met meerdere tenants, adfs met meerdere forests, aad connect, federatie, federatie tussen tenants
 services: active-directory
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65137820"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Meerdere exemplaren van Azure AD federeren met één exemplaar van AD FS

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60244523"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Aan de slag met Azure AD Connect met expresinstellingen
@@ -53,7 +53,7 @@ In de sectie met [video's](#videos) kunt u zien hoe deze stappen in de praktijk 
 9. Wanneer de installatie is voltooid, klikt u op **Afsluiten**.
 10. Nadat de installatie is voltooid, dient u zich af te melden en weer aan te melden voordat u de Synchronization Service Manager of Synchronization Rule Editor gaat gebruiken.
 
-## <a name="videos"></a>Video's
+## <a name="videos"></a>Video 's
 Voor een video over het gebruik van expresinstallatie gaat u naar:
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Express-Settings/player]

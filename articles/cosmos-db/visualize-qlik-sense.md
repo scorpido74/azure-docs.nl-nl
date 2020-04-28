@@ -1,6 +1,6 @@
 ---
-title: Verbind Qlik Sense met Azure Cosmos DB en visualiseer uw gegevens
-description: In dit artikel worden de stappen beschreven die nodig zijn om Azure Cosmos DB met Qlik Sense te verbinden en uw gegevens te visualiseren.
+title: Verbind Qlik Sense om uw gegevens te Azure Cosmos DB en te visualiseren
+description: In dit artikel worden de stappen beschreven die nodig zijn om Azure Cosmos DB te verbinden met Qlik Sense en uw gegevens te visualiseren.
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67985552"
 ---
-# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbind Qlik Sense met Azure Cosmos DB en visualiseer uw gegevens
+# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbind Qlik Sense om uw gegevens te Azure Cosmos DB en te visualiseren
 
-Qlik Sense is een tool voor gegevensvisualisatie die gegevens uit verschillende bronnen combineert in één weergave. Qlik Sense indexeert elke mogelijke relatie in uw gegevens, zodat u direct inzicht krijgt in de gegevens. U Azure Cosmos DB-gegevens visualiseren met Qlik Sense. In dit artikel worden de stappen beschreven die nodig zijn om Azure Cosmos DB met Qlik Sense te verbinden en uw gegevens te visualiseren. 
+Qlik Sense is een hulp programma voor gegevens visualisatie waarmee gegevens uit verschillende bronnen worden gecombineerd in één weer gave. Qlik Sense indexeert elke mogelijke relatie in uw gegevens, zodat u direct inzicht kunt krijgen in de gegevens. U kunt Azure Cosmos DB gegevens visualiseren met behulp van Qlik Sense. In dit artikel worden de stappen beschreven die nodig zijn om Azure Cosmos DB te verbinden met Qlik Sense en uw gegevens te visualiseren. 
 
 > [!NOTE]
-> Het aansluiten van Qlik Sense met Azure Cosmos DB wordt momenteel alleen ondersteund voor SQL API en Azure Cosmos DB's API voor MongoDB-accounts.
+> Het verbinden van Qlik Sense met Azure Cosmos DB wordt momenteel alleen ondersteund voor de SQL-API en de Azure Cosmos DB-API voor MongoDB-accounts.
 
-U Qlik Sense verbinden met Azure Cosmos DB met:
+U kunt Qlik Sense verbinden met Azure Cosmos DB:
 
-* Cosmos DB SQL API met behulp van de ODBC-connector.
+* Cosmos DB SQL-API met behulp van de ODBC-Connector.
 
-* Azure Cosmos DB's API voor MongoDB met behulp van de Qlik Sense MongoDB-connector (momenteel in preview).
+* De API van Azure Cosmos DB voor MongoDB met behulp van de Qlik Sense MongoDB-connector (momenteel als preview-versie).
 
-* De API van Azure Cosmos DB voor MongoDB en SQL API met restapi-connector in Qlik Sense.
+* De API van Azure Cosmos DB voor MongoDB en SQL API met behulp van REST API-connector in Qlik Sense.
 
-* Cosmos DB Mongo DB API met de gRPC-connector voor Qlik Core.
-In dit artikel worden de details beschreven van het verbinden met de Cosmos DB SQL API met behulp van de ODBC-connector.
+* Cosmos DB Mongo DB API met behulp van de gRPC-connector voor Qlik core.
+In dit artikel worden de details van de verbinding met de Cosmos DB SQL-API beschreven met behulp van de ODBC-Connector.
 
-In dit artikel worden de details beschreven van het verbinden met de Cosmos DB SQL API met behulp van de ODBC-connector.
+In dit artikel worden de details van de verbinding met de Cosmos DB SQL-API beschreven met behulp van de ODBC-Connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer voordat u de instructies in dit artikel volgt, dat u de volgende bronnen gereed hebt:
+Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u de volgende resources gereed hebt:
 
-* Download de [Qlik Sense Desktop](https://www.qlik.com/us/try-or-buy/download-qlik-sense) of stel Qlik Sense in Azure in door [het Qlik Sense marketplace-item te installeren.](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense)
+* Down load het [Qlik Sense-bureau blad](https://www.qlik.com/us/try-or-buy/download-qlik-sense) of stel Qlik Sense in Azure in door [het Qlik Sense Marketplace-item te installeren](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
 
-* Download de [video game gegevens,](https://www.kaggle.com/gregorut/videogamesales)deze voorbeeldgegevens zijn in CSV-formaat. Je slaat deze gegevens op in een Cosmos DB-account en visualiseert deze in Qlik Sense.
+* Down load de [video game gegevens](https://www.kaggle.com/gregorut/videogamesales), deze voorbeeld gegevens hebben de CSV-indeling. U kunt deze gegevens in een Cosmos DB-account opslaan en deze visualiseren in Qlik Sense.
 
-* Maak een Azure Cosmos DB SQL API-account met behulp van de stappen die zijn beschreven in [het maken van een accountsectie](create-sql-api-dotnet.md#create-account) van het quickstart-artikel.
+* Maak een Azure Cosmos DB SQL-API-account met behulp van de stappen in de sectie [een account maken](create-sql-api-dotnet.md#create-account) van het artikel Quick Start.
 
-* [Een database en een verzameling maken](create-sql-api-java.md#add-a-container) : u de doorvoerwaarde van de verzameling instellen op 1000 RU/s. 
+* [Een Data Base en verzameling maken](create-sql-api-java.md#add-a-container) : u kunt de doorvoer waarde van de verzameling instellen op 1000 ru/s. 
 
-* Laad de verkoopgegevens van de voorbeeldvideogame naar uw Cosmos DB-account. U de gegevens importeren met behulp van Azure Cosmos DB-gegevensmigratietool, u een [sequentiële](import-data.md#SQLSeqTarget) of een [bulkimport](import-data.md#SQLBulkTarget) van gegevens doen. Het duurt ongeveer 3-5 minuten voor de gegevens te importeren naar de Cosmos DB account.
+* Laad de verkoop gegevens van het voor beeld-video spel naar uw Cosmos DB-account. U kunt de gegevens importeren met Azure Cosmos DB hulp programma voor gegevens migratie, u kunt een [sequentieel](import-data.md#SQLSeqTarget) of een [bulksgewijze import](import-data.md#SQLBulkTarget) van gegevens uitvoeren. Het duurt ongeveer 3-5 minuten voordat de gegevens naar het Cosmos DB-account worden geïmporteerd.
 
-* Download, installeer en configureer het ODBC-stuurprogramma met behulp van de stappen in de [verbinding met Cosmos DB met ODBC-stuurprogrammaartikel.](odbc-driver.md) De video game gegevens is een eenvoudige dataset en je hoeft niet om het schema te bewerken, gewoon gebruik maken van de standaard collectie-mapping schema.
+* Down load, installeer en configureer het ODBC-stuur programma met behulp van de stappen in het artikel [verbinding maken met Cosmos DB met een ODBC-stuur programma](odbc-driver.md) . De video game gegevens zijn een eenvoudige gegevensset en u hoeft het schema niet te bewerken. gebruik gewoon het standaard schema voor verzamelings toewijzing.
 
-## <a name="connect-qlik-sense-to-cosmos-db"></a>Verbind Qlik Sense met Cosmos DB
+## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense verbinden met Cosmos DB
 
-1. Open Qlik Sense en selecteer **Nieuwe app maken**. Geef een naam op voor uw app en selecteer **Maken**.
+1. Open Qlik Sense en selecteer **nieuwe app maken**. Geef een naam op voor uw app en selecteer **maken**.
 
    ![Een nieuwe Qlik Sense-app maken](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. Nadat de nieuwe app is gemaakt, selecteert u **App openen** en kiest u Gegevens toevoegen uit bestanden en **andere bronnen**. 
+2. Nadat de nieuwe app is gemaakt, selecteert u **app openen** en kiest u **gegevens toevoegen uit bestanden en andere bronnen**. 
 
-3. Selecteer **ODBC in** de gegevensbronnen om het nieuwe venster voor het instellen van verbindingen te openen. 
+3. Selecteer in de gegevens bronnen **ODBC** om het venster nieuwe verbinding instellen te openen. 
 
-4. Schakel over naar **Gebruiker DSN** en kies de ODBC-verbinding die u eerder hebt gemaakt. Geef een naam op voor de verbinding en selecteer **Maken**. 
+4. Schakel over naar de **gebruikers-DSN** en kies de ODBC-verbinding die u eerder hebt gemaakt. Geef een naam op voor de verbinding en selecteer **maken**. 
 
    ![Een nieuwe verbinding maken](./media/visualize-qlik-sense/create-new-connection.png)
 
-5. Nadat u de verbinding hebt gemaakt, u de database kiezen, verzamelen waar de videogamegegevens zich bevinden en deze vervolgens bekijken.
+5. Nadat u de verbinding hebt gemaakt, kunt u de data base kiezen, verzamelen waar de video game gegevens zich bevinden en vervolgens een voor beeld bekijken.
 
-   ![De database en verzameling kiezen](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   ![De data base en verzameling kiezen](./media/visualize-qlik-sense/choose-database-and-collection.png) 
 
-6. Selecteer vervolgens **Gegevens toevoegen** om de gegevens naar Qlik Sense te laden. Nadat u gegevens hebt geladen naar Qlik Sense, u inzichten genereren en analyses uitvoeren op de gegevens. Je de inzichten gebruiken of je eigen app bouwen om de verkoop van videogames te verkennen. De volgende afbeelding wordt weergegeven 
+6. Selecteer vervolgens **gegevens toevoegen** om de gegevens naar Qlik Sense te laden. Nadat u gegevens naar Qlik Sense hebt geladen, kunt u inzichten genereren en analyses uitvoeren op de gegevens. U kunt de inzichten gebruiken of uw eigen app bouwen met het verkennen van de omzet voor video games. In de volgende afbeelding ziet u 
 
    ![Gegevens visualiseren](./media/visualize-qlik-sense/visualize-data.png)
 
-### <a name="limitations-when-connecting-with-odbc"></a>Beperkingen bij het verbinden met ODBC 
+### <a name="limitations-when-connecting-with-odbc"></a>Beperkingen bij het maken van verbinding met ODBC 
 
-Cosmos DB is een schemaloze gedistribueerde database met stuurprogramma's gemodelleerd naar ontwikkelaarsbehoeften. Het ODBC-stuurprogramma vereist een database met schema om kolommen, hun gegevenstypen en andere eigenschappen af te leiden. De reguliere SQL-query of de DML-syntaxis met relationele mogelijkheden is niet van toepassing op Cosmos DB SQL API omdat SQL API geen ANSI SQL is. Om deze reden worden de SQL-instructies die via het ODBC-stuurprogramma worden uitgegeven, vertaald naar Cosmos DB-specifieke SQL-syntaxis die geen equivalenten heeft voor alle constructies. Als u deze vertaalproblemen wilt voorkomen, moet u een schema toepassen bij het instellen van de ODBC-verbinding. Het [artikel verbinding met ODBC-stuurprogramma's](odbc-driver.md) geeft u suggesties en methoden om u te helpen het schema te configureren. Zorg ervoor dat u deze toewijzing maakt voor elke database/verzameling binnen het Cosmos DB-account.
+Cosmos DB is een schema-less gedistribueerde data base met stuur Programma's die zijn gemodelleerd rond ontwikkelaars behoeften. Het ODBC-stuur programma vereist een Data Base met schema voor het afleiden van kolommen, hun gegevens typen en andere eigenschappen. De normale SQL-query of de DML-syntaxis met relationele functionaliteit is niet van toepassing op Cosmos DB SQL-API, omdat SQL API geen ANSI SQL is. Om die reden worden de SQL-instructies die zijn uitgegeven via het ODBC-stuur programma, omgezet in Cosmos DB-specifieke SQL-syntaxis die geen equivalenten heeft voor alle constructs. Als u deze Vertaal problemen wilt voor komen, moet u een schema Toep assen bij het instellen van de ODBC-verbinding. In het artikel [Connect with ODBC driver](odbc-driver.md) vindt u suggesties en methoden om u te helpen bij het configureren van het schema. Zorg ervoor dat u deze toewijzing maakt voor elke data base/verzameling binnen het Cosmos DB-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een ander visualisatiegereedschap gebruikt, zoals Power BI, u er verbinding mee maken met de instructies in het volgende document:
+Als u een ander visualisatie programma gebruikt, zoals Power BI, kunt u er verbinding mee maken met behulp van de instructies in het volgende document:
 
-* [Cosmos DB-gegevens visualiseren met de Power BI-connector](powerbi-visualize.md)
+* [Cosmos DB gegevens visualiseren met behulp van de Power BI-connector](powerbi-visualize.md)

@@ -1,6 +1,6 @@
 ---
-title: Het wachtwoord van het Azure AD Connector-account wijzigen | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u het Azure AD Connector-account herstellen.
+title: Het wacht woord van het Azure AD Connector-account wijzigen | Microsoft Docs
+description: In dit onderwerp vindt u informatie over het herstellen van het Azure AD-Connector account.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67204537"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Het wachtwoord voor het Azure AD Connector-account wijzigen
-Het Azure AD Connector-account moet servicevrij zijn. Als u de referenties opnieuw moet instellen, dan is dit onderwerp iets voor u. Als een globale beheerder bijvoorbeeld per ongeluk het wachtwoord van het account opnieuw heeft ingesteld met PowerShell.
+Het account van de Azure AD-connector moet gratis service zijn. Als u de referenties opnieuw wilt instellen, is dit onderwerp voor u. Als een globale beheerder bijvoorbeeld per ongeluk het wacht woord voor het account opnieuw instelt met behulp van Power shell.
 
 ## <a name="reset-the-credentials"></a>De referenties opnieuw instellen
-Als het Azure AD Connector-account geen contact kan opnemen met Azure AD vanwege verificatieproblemen, kan het wachtwoord opnieuw worden ingesteld.
+Als het account van de Azure AD-connector geen contact kan maken met Azure AD vanwege verificatie problemen, kan het wacht woord opnieuw worden ingesteld.
 
-1. Meld u aan bij de synchronisatieserver van Azure AD Connect en start PowerShell.
+1. Meld u aan bij de Azure AD Connect-synchronisatie server en start Power shell.
 2. Voer `Add-ADSyncAADServiceAccount` uit.  
-   ![PowerShell-account voor cmdlet addadsyncaadservice](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
-3. Geef Azure AD Global-beheerdersreferenties op.
+   ![Power shell-cmdlet addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
+3. Globale beheerders referenties voor Azure AD opgeven.
 
-Deze cmdlet reset het wachtwoord voor het serviceaccount en werkt het bij zowel in Azure AD als in de synchronisatieengine.
+Met deze cmdlet wordt het wacht woord voor het service account opnieuw ingesteld en in azure AD en in de synchronisatie-engine bijgewerkt.
 
-## <a name="known-issues-these-steps-can-solve"></a>Bekende problemen die deze stappen kunnen oplossen
-Deze sectie is een lijst met fouten die zijn gerapporteerd door klanten die zijn opgelost door een reset van referenties op het Azure AD Connector-account.
-
----
-Evenement 6900  
-De server heeft een onverwachte fout opgelopen tijdens het verwerken van een melding van wachtwoordwijziging:  
-AADSTS70002: Fout bij het valideren van referenties. AADSTS50054: Oud wachtwoord wordt gebruikt voor verificatie.
+## <a name="known-issues-these-steps-can-solve"></a>Bekende problemen met deze stappen kunnen worden opgelost
+Deze sectie bevat een lijst met fouten die zijn gerapporteerd door klanten die zijn hersteld door het opnieuw instellen van een referenties voor het Azure AD Connector-account.
 
 ---
-Evenement 659  
-Fout bij het ophalen van de synchronisatieconfiguratie van het wachtwoordbeleid. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Fout bij het valideren van referenties. AADSTS50054: Oud wachtwoord wordt gebruikt voor verificatie.
+Gebeurtenis 6900  
+Er is een onverwachte fout opgetreden in de server tijdens het verwerken van een melding voor wachtwoord wijzigingen:  
+AADSTS70002: fout bij het valideren van referenties. AADSTS50054: het oude wacht woord wordt gebruikt voor authenticatie.
+
+---
+Gebeurtenis 659  
+Fout bij ophalen van synchronisatie configuratie voor wachtwoord beleid. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
+AADSTS70002: fout bij het valideren van referenties. AADSTS50054: het oude wacht woord wordt gebruikt voor authenticatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-**Overzichtsonderwerpen**
+**Overzichts onderwerpen**
 
-* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Toegangscontrolerecords beheren in StorSimple | Microsoft Documenten
-description: Beschrijft hoe u toegangscontrolerecords (ABE's) gebruiken om te bepalen welke hosts verbinding kunnen maken met een volume op het StorSimple-apparaat.
+title: Access Control records beheren in StorSimple | Microsoft Docs
+description: Hierin wordt beschreven hoe u een ACRs-record (Access Control records) gebruikt om te bepalen welke hosts verbinding kunnen maken met een volume op het StorSimple-apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,119 +15,119 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64693236"
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>De StorSimple Manager-service gebruiken om toegangsbeheerrecords te beheren
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>De StorSimple Manager-service gebruiken voor het beheren van records voor Access Control
 
 ## <a name="overview"></a>Overzicht
-Met Toegangscontrolerecords (ACL's) u opgeven welke hosts verbinding kunnen maken met een volume op het StorSimple-apparaat. ADR's zijn ingesteld op een specifiek volume en bevatten de iSCSI-gekwalificeerde namen (IQN's) van de hosts. Wanneer een host verbinding probeert te maken met een volume, controleert het apparaat de ACR die aan dat volume is gekoppeld op de IQN-naam en als er een overeenkomst is, wordt de verbinding tot stand gebracht. De toegangscontrolerecords in de sectie **Configuratie** van uw StorSimple Device Manager-serviceblade geven alle toegangscontrolerecords weer met de bijbehorende IQN's van de hosts.
+Met Access Control records (ACRs) kunt u opgeven welke hosts verbinding kunnen maken met een volume op het StorSimple-apparaat. ACRs worden ingesteld op een specifiek volume en bevatten de iSCSI-gekwalificeerde namen (IQNs) van de hosts. Wanneer een host verbinding probeert te maken met een volume, controleert het apparaat de ACR die aan dat volume is gekoppeld voor de IQN-naam. als er een overeenkomst wordt gevonden, wordt de verbinding tot stand gebracht. Met de Access Control records in de **configuratie** sectie van de Blade StorSimple Apparaatbeheer service worden alle Access Control records met de bijbehorende IQNs van de hosts weer gegeven.
 
-In deze zelfstudie worden de volgende veelvoorkomende ACR-gerelateerde taken uitgelegd:
+In deze zelf studie worden de volgende algemene taken met betrekking tot ACR uitgelegd:
 
-* Een toegangscontrolerecord toevoegen
-* Een toegangscontrolerecord bewerken
-* Een toegangscontrolerecord verwijderen
+* Een Access Control Record toevoegen
+* Een Access Control Record bewerken
+* Een Access Control Record verwijderen
 
 > [!IMPORTANT]
-> * Let er bij het toewijzen van een ACR op een volume op dat het volume niet gelijktijdig wordt geopend door meer dan één niet-geclusterde host, omdat dit het volume kan beschadigen.
-> * Controleer bij het verwijderen van een ACR uit een volume of de bijbehorende host geen toegang heeft tot het volume, omdat de verwijdering kan leiden tot een lees-schrijfonderbreking.
+> * Wanneer u een ACR aan een volume toewijst, moet u ervoor zorgen dat het volume niet gelijktijdig wordt geopend door meer dan één niet-geclusterde host, omdat dit het volume kan beschadigen.
+> * Wanneer u een ACR van een volume verwijdert, moet u ervoor zorgen dat de bijbehorende host geen toegang heeft tot het volume omdat het verwijderen kan leiden tot een lees-schrijf onderbreking.
 
-## <a name="get-the-iqn"></a>Haal de IQN
+## <a name="get-the-iqn"></a>De IQN ophalen
 
-Voer de volgende stappen uit om het IQN van een Windows-host op te halen waarop Windows Server 2012 wordt uitgevoerd.
+Voer de volgende stappen uit om de IQN van een Windows-host te verkrijgen waarop Windows Server 2012 wordt uitgevoerd.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
-## <a name="add-an-access-control-record"></a>Een toegangscontrolerecord toevoegen
-U gebruikt de sectie **Configuratie** in het StorSimple Device Manager-serviceblad om AAC's toe te voegen. Meestal associeert u één ACR met één volume.
+## <a name="add-an-access-control-record"></a>Een Access Control Record toevoegen
+U gebruikt de **configuratie** sectie op de Blade StorSimple Apparaatbeheer service om ACRs toe te voegen. Normaal gesp roken koppelt u één ACR aan één volume.
 
 Voer de volgende stappen uit om een ACR toe te voegen.
 
 #### <a name="to-add-an-acr"></a>Een ACR toevoegen
 
-1. Ga naar uw StorSimple Device Manager-service, dubbelklik op de servicenaam en klik vervolgens in de sectie **Configuratie** op **Toegangsbeheerrecords**.
-2. Klik in het **blad Voor het controlerecord van Access** op + **ACR toevoegen**.
+1. Ga naar de StorSimple-Apparaatbeheer service, dubbel klik op de service naam en klik vervolgens in de sectie **configuratie** op **Access Control records**.
+2. Klik op de Blade **toegangs beheer records** op **+ ACR toevoegen**.
 
     ![Klik op ACR toevoegen](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. Ga in het **ACR-blad toevoegen** de volgende stappen uit:
+3. Voer op de Blade **ACR toevoegen** de volgende stappen uit:
 
-    1. Lever een naam voor uw ACR.
+    1. Geef een naam op voor uw ACR.
     
-    2. Geef de IQN-naam van uw Windows Server-host op onder **iqn (iSCSI Initiator Name).**
+    2. Geef de IQN-naam van uw Windows Server-host op onder **iSCSI-initiator naam (IQN)**.
 
-    3. Klik **op Toevoegen** om de ACR te maken.
+    3. Klik op **toevoegen** om de ACR te maken.
 
         ![Klik op ACR toevoegen](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  De nieuw toegevoegde ACR wordt weergegeven in de tabeltabellijst van ACL's.
+4.  De zojuist toegevoegde ACR wordt weer gegeven in de lijst in tabel vorm van ACRs.
 
     ![Klik op ACR toevoegen](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
-## <a name="edit-an-access-control-record"></a>Een toegangscontrolerecord bewerken
-U gebruikt de sectie **Configuratie** in het storSimple Device Manager-serviceblad om AVR's te bewerken.
+## <a name="edit-an-access-control-record"></a>Een Access Control Record bewerken
+U gebruikt de **configuratie** sectie op de Blade StorSimple Apparaatbeheer service om ACRs te bewerken.
 
 > [!NOTE]
-> Het wordt aanbevolen dat u alleen de ACL's wijzigt die momenteel niet in gebruik zijn. Als u een ACR wilt bewerken die is gekoppeld aan een volume dat momenteel wordt gebruikt, moet u eerst het volume offline halen.
+> Het is raadzaam dat u alleen de ACRs wijzigt die momenteel niet in gebruik zijn. Als u een ACR wilt bewerken die is gekoppeld aan een volume dat momenteel in gebruik is, moet u eerst het volume offline halen.
 
 Voer de volgende stappen uit om een ACR te bewerken.
 
-#### <a name="to-edit-an-access-control-record"></a>Een toegangscontrolerecord bewerken
-1.  Ga naar uw StorSimple Device Manager-service, dubbelklik op de servicenaam en klik vervolgens in de sectie **Configuratie** op **Toegangsbeheerrecords**.
+#### <a name="to-edit-an-access-control-record"></a>Een Access Control Record bewerken
+1.  Ga naar de StorSimple-Apparaatbeheer service, dubbel klik op de service naam en klik vervolgens in de sectie **configuratie** op **Access Control records**.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. Klik in de tabeltabellijst van de toegangscontrolerecords op de ACR die u wilt wijzigen.
+2. In de lijst in tabel vorm van de Access Control records klikt en selecteert u de ACR die u wilt wijzigen.
 
-    ![Toegangsbeheerrecords bewerken](./media/storsimple-8000-manage-acrs/editacr1.png)
+    ![Access Control records bewerken](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. Geef in het **recordblad voor toegangscontrole bewerken** een ander IQN op dat overeenkomt met een andere host.
+3. Geef op de Blade **bewerken Access Control record** een andere IQN op die overeenkomt met een andere host.
 
-    ![Toegangsbeheerrecords bewerken](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Access Control records bewerken](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. Klik op **Opslaan**. Klik op **Ja** als u om bevestiging wordt gevraagd. 
 
-    ![Toegangsbeheerrecords bewerken](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Access Control records bewerken](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. U wordt op de hoogte gesteld wanneer de ACR wordt bijgewerkt. De tabelvermelding wordt ook bijgewerkt om de wijziging weer te geven.
+5. U wordt gewaarschuwd wanneer de ACR wordt bijgewerkt. De lijst in tabel vorm wordt ook bijgewerkt om de wijziging weer te geven.
 
    
-## <a name="delete-an-access-control-record"></a>Een toegangscontrolerecord verwijderen
-U gebruikt de sectie **Configuratie** in het serviceblad StorSimple Device Manager om AVR's te verwijderen.
+## <a name="delete-an-access-control-record"></a>Een Access Control Record verwijderen
+U gebruikt de **configuratie** sectie op de Blade StorSimple Apparaatbeheer service om ACRs te verwijderen.
 
 > [!NOTE]
-> U alleen de ACL's verwijderen die momenteel niet in gebruik zijn. Als u een ACR wilt verwijderen die is gekoppeld aan een volume dat momenteel wordt gebruikt, moet u eerst het volume offline halen.
+> U kunt alleen de ACRs verwijderen die momenteel niet in gebruik zijn. Als u een ACR wilt verwijderen die is gekoppeld aan een volume dat momenteel in gebruik is, moet u eerst het volume offline halen.
 
-Voer de volgende stappen uit om een toegangscontrolerecord te verwijderen.
+Voer de volgende stappen uit om een Access Control Record te verwijderen.
 
-#### <a name="to-delete-an-access-control-record"></a>Een toegangscontrolerecord verwijderen
-1.  Ga naar uw StorSimple Device Manager-service, dubbelklik op de servicenaam en klik vervolgens in de sectie **Configuratie** op **Toegangsbeheerrecords**.
+#### <a name="to-delete-an-access-control-record"></a>Een Access Control Record verwijderen
+1.  Ga naar de StorSimple-Apparaatbeheer service, dubbel klik op de service naam en klik vervolgens in de sectie **configuratie** op **Access Control records**.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. Klik in de tabeltabellijst van de toegangscontrolerecords op de ACR die u wilt verwijderen.
+2. In de lijst in tabel vorm van de Access Control records klikt en selecteert u de ACR die u wilt verwijderen.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Klik met de rechtermuisknop om het contextmenu aan te roepen en selecteer **Verwijderen**.
+3. Klik met de rechter muisknop om het context menu aan te roepen en selecteer **verwijderen**.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Controleer de informatie en klik op **Verwijderen**wanneer u om bevestiging wordt gevraagd.
+4. Als u om bevestiging wordt gevraagd, controleert u de informatie en klikt u vervolgens op **verwijderen**.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. U wordt op de hoogte gesteld wanneer de verwijdering is voltooid. De tabelvermelding wordt bijgewerkt om de verwijdering weer te geven.
+5. U wordt gewaarschuwd wanneer het verwijderen is voltooid. De lijst in tabel vorm wordt bijgewerkt om de verwijdering weer te geven.
 
-    ![Naar toegangsbeheerrecords gaan](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Ga naar Access Control records](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het beheren van StorSimple-volumes.](storsimple-8000-manage-volumes-u2.md)
-* Meer informatie over [het gebruik van de StorSimple Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Meer informatie over het [beheren van StorSimple-volumes](storsimple-8000-manage-volumes-u2.md).
+* Meer informatie over [het gebruik van de StorSimple Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

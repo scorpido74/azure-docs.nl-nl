@@ -1,6 +1,6 @@
 ---
-title: Een Azure-tenant maken voor een multi-tenanttoepassing
-description: Richtlijnen voor onafhankelijke softwareleveranciers over de integratie met Azure Active Directory
+title: Een Azure-Tenant maken voor een toepassing met meerdere tenants
+description: Richt lijnen voor onafhankelijke software leveranciers op het integreren met Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,34 +13,34 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70812608"
 ---
-# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Een Azure-tenant maken voor een multi-tenanttoepassing  
+# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Een Azure-Tenant maken voor een toepassing met meerdere tenants  
 
-Als u toegang wilt bieden tot uw multi-tenanttoepassing, moet u een Azure Active Directory-tenant maken om de toepassing te registreren en de federatie van de identiteiten van uw klant in te schakelen. Zie [Het juiste federatieprotocol voor uw multi-tenanttoepassing kiezen.](isv-choose-multi-tenant-federation.md) Met deze tenant u uw toepassing en de federatie testen in een omgeving die vergelijkbaar is met uw Azure AD-omgevingen voor klanten.
+Als u toegang tot uw multi tenant-toepassing wilt verlenen, moet u een Azure Active Directory-Tenant maken om de toepassing te registreren en de Federatie van de identiteit van uw klant in te scha kelen. Zie [het juiste Federatie protocol kiezen voor uw multi tenant-toepassing](isv-choose-multi-tenant-federation.md). Met deze Tenant kunt u uw toepassing en de Federatie testen in een omgeving die vergelijkbaar is met de Azure AD-omgevingen van uw klanten.
 
-## <a name="costs-of-hosting-a-multi-tenant-application"></a>Kosten voor het hosten van een multi-tenant applicatie
+## <a name="costs-of-hosting-a-multi-tenant-application"></a>Kosten voor het hosten van een multi tenant-toepassing
 
-Azure Active Directory is beschikbaar in meerdere edities. [Zie de gedetailleerde functievergelijking](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory is beschikbaar in meerdere edities. [Bekijk de gedetailleerde functie vergelijking](https://azure.microsoft.com/pricing/details/active-directory/).
 
-U uw Azure-abonnement en Azure active directory gratis maken en basisfuncties gebruiken.
+U kunt uw Azure-abonnement en Azure Active Directory gratis maken en basis functies gebruiken.
 
-## <a name="create-your-tenant"></a>Uw tenant maken
+## <a name="create-your-tenant"></a>Uw Tenant maken
 
-1. Maak uw tenant. Zie [Een dev-omgeving instellen](../develop/quickstart-create-new-tenant.md).
+1. Maak uw Tenant. Zie [een ontwikkel omgeving instellen](../develop/quickstart-create-new-tenant.md).
 
-2. Toegang tot één aanmelding tot uw toepassing inschakelen en testen,
+2. Toegang tot uw toepassing met eenmalige aanmelding inschakelen en testen
 
-   a. **Voor OIDC- of Oath-toepassingen** [registreer u uw aanvraag](../develop/quickstart-register-app.md) als een multi-tenant applicatie. Selecteer de optie Accounts in een organisatiemap en persoonlijke Microsoft-accounts in ondersteunde accounttypen
+   a. **Voor OIDC-of Oath-toepassingen** [registreert u uw toepassing](../develop/quickstart-register-app.md) als multi tenant-toepassing. Selecteer de optie accounts in een organisatorische map en persoonlijke micro soft-accounts in ondersteunde account typen
 
-   b. **Voor SAML- en WS-Fed-gebaseerde toepassingen** [configureert u SAML-gebaseerde toepassingen voor één aanmelding](configure-single-sign-on-non-gallery-applications.md) met behulp van een generieke SAML-sjabloon in Azure AD.
+   b. **Voor SAML-en WS-based-toepassingen**kunt u [eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md) met behulp van een algemene SAML-sjabloon in azure AD.
 
-U ook [een toepassing met één tenant converteren naar multi-tenant](../develop/howto-convert-app-to-be-multi-tenant.md) indien nodig.
+U kunt indien nodig ook [een toepassing met één Tenant converteren naar meerdere tenants](../develop/howto-convert-app-to-be-multi-tenant.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[SSO integreren in uw applicatie](isv-sso-content.md)
+[SSO in uw toepassing integreren](isv-sso-content.md)

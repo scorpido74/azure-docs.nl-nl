@@ -1,6 +1,6 @@
 ---
-title: De Azure-portal gebruiken om het uploaden van bestanden te configureren | Microsoft Documenten
-description: De Azure-portal gebruiken om uw IoT-hub te configureren om bestandsuploads vanaf verbonden apparaten in te schakelen. Bevat informatie over het configureren van het Azure-opslagaccount voor bestemming.
+title: Gebruik de Azure Portal voor het configureren van bestand uploaden | Microsoft Docs
+description: De Azure Portal gebruiken om uw IoT-hub te configureren om het uploaden van bestanden vanaf verbonden apparaten mogelijk te maken. Bevat informatie over het configureren van het Azure Storage-doel account.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60735012"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Uploaden van IoT Hub-bestanden configureren met behulp van de Azure-portal
@@ -21,36 +21,36 @@ ms.locfileid: "60735012"
 
 ## <a name="file-upload"></a>Bestand uploaden
 
-Als u de functionaliteit voor het uploaden van bestanden wilt gebruiken [in IoT Hub,](iot-hub-devguide-file-upload.md)moet u eerst een Azure Storage-account koppelen aan uw hub. Selecteer **Het uploaden** van bestanden om een lijst met eigenschappen voor het uploaden van bestanden weer te geven voor de IoT-hub die wordt gewijzigd.
+Als u de [functie voor het uploaden van bestanden in IOT hub](iot-hub-devguide-file-upload.md)wilt gebruiken, moet u eerst een Azure Storage-account koppelen aan uw hub. Selecteer **bestand uploaden** om een lijst weer te geven met eigenschappen voor het uploaden van bestanden voor de IOT-hub die wordt gewijzigd.
 
-![Instellingen voor het uploaden van IoT-hub-bestanden weergeven in de portal](./media/iot-hub-configure-file-upload/file-upload-settings.png)
+![Instellingen voor het uploaden van IoT Hub bestanden weer geven in de portal](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Opslagcontainer:** gebruik de Azure-portal om een blobcontainer in een Azure Storage-account in uw huidige Azure-abonnement te selecteren om te koppelen aan uw IoT Hub. Indien nodig u een Azure Storage-account maken op het blade **van opslagaccounts** en de blobcontainer op het **containerblad Containers.** IoT Hub genereert automatisch SAS-URI's met schrijfmachtigingen voor deze blobcontainer voor apparaten die kunnen worden gebruikt wanneer ze bestanden uploaden.
+* **Opslag container**: gebruik de Azure Portal om een BLOB-container te selecteren in een Azure Storage-account in uw huidige Azure-abonnement om te koppelen aan uw IOT hub. Als dat nodig is, kunt u een Azure Storage-account maken op de Blade **opslag accounts** en de BLOB-container op de Blade **containers** . IoT Hub genereert automatisch SAS-Uri's met schrijf machtigingen voor deze BLOB-container zodat apparaten kunnen worden gebruikt bij het uploaden van bestanden.
 
-   ![Opslagcontainers weergeven voor het uploaden van bestanden in de portal](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
+   ![Opslag containers voor het uploaden van bestanden weer geven in de portal](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Meldingen ontvangen voor geüploade bestanden:** Meldingen voor het uploaden van bestanden inschakelen of uitschakelen via de toggle.
+* **Meldingen ontvangen voor geüploade bestanden**: Schakel meldingen over het uploaden van bestanden via de wissel knop in of uit.
 
-* **SAS TTL**: Deze instelling is de time-to-live van de SAS URI's die door IoT Hub naar het apparaat worden teruggestuurd. Stel standaard in op een uur, maar kan met de schuifregelaar worden aangepast aan andere waarden.
+* **SAS TTL**: deze instelling is de time-to-Live van de SAS-uri's die op het apparaat worden geretourneerd door IOT hub. Is standaard ingesteld op één uur, maar kan worden aangepast aan andere waarden met behulp van de schuif regelaar.
 
-* **Standaardttl-instellingen voor bestandsmeldingen:** de time-to-live van een melding voor het uploaden van bestanden voordat deze is verlopen. Stel standaard in op één dag, maar kan met de schuifregelaar worden aangepast aan andere waarden.
+* **Instellingen voor bestands meldingen standaard-TTL**: de time-to-Live van een melding bij het uploaden van een bestand voordat deze is verlopen. Is standaard ingesteld op één dag, maar kan worden aangepast aan andere waarden met behulp van de schuif regelaar.
 
-* **Maximale leveringshoeveelheid bestandsmeldingen:** het aantal keren dat de IoT Hub een melding voor het uploaden van bestanden probeert te leveren. Stel standaard in op 10, maar kan met de schuifregelaar worden aangepast aan andere waarden.
+* **Aantal bestands meldingen maximale leverings**duur: het aantal keren dat de IOT hub een melding over het uploaden van een bestand probeert te leveren. Standaard ingesteld op 10, maar kan worden aangepast aan andere waarden met behulp van de schuif regelaar.
 
-   ![Upload van IoT-hubbestanden configureren in de portal](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
+   ![IoT Hub bestand uploaden configureren in de portal](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Bestanden uploaden vanaf een apparaat](iot-hub-devguide-file-upload.md) in de ontwikkelaarshandleiding voor IoT Hub voor meer informatie over de mogelijkheden voor het uploaden van bestanden van IoT Hub.
+Zie [bestanden uploaden van een apparaat](iot-hub-devguide-file-upload.md) in de ontwikkelaars handleiding voor IOT hub voor meer informatie over de mogelijkheden voor het uploaden van bestanden van IOT hub.
 
-Volg deze koppelingen voor meer informatie over het beheer van Azure IoT Hub:
+Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 
 * [IoT-apparaten bulksgewijs beheren](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub-statistieken](iot-hub-metrics.md)
+* [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [Controle van bewerkingen](iot-hub-operations-monitoring.md)
 
-Zie:
+Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
-* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)
+* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 * [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
-* [Beveilig uw IoT-oplossing van de grond af aan](../iot-fundamentals/iot-security-ground-up.md)
+* [Beveilig uw IoT-oplossing vanaf de grond](../iot-fundamentals/iot-security-ground-up.md)

@@ -1,6 +1,6 @@
 ---
-title: Toegangsbeheer voor externe bewaking - Azure | Microsoft Documenten
-description: In dit artikel vindt u informatie over hoe u op rollen gebaseerde toegangscontroles (RBAC) configureren in de versneller van de oplossing voor externe bewaking
+title: Toegangs beheer op afstand controleren-Azure | Microsoft Docs
+description: Dit artikel bevat informatie over het configureren van op rollen gebaseerde toegangs beheer (RBAC) in de oplossings versneller voor externe controle
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,27 +9,27 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67203166"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerde toegangscontroles configureren in de versneller van de oplossing voor externe bewaking
+# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerde toegangs beheer configureren in de oplossings versneller voor externe controle
 
-In dit artikel vindt u informatie over het configureren van op rollen gebaseerde toegangscontroles in de versneller van de oplossing voor externe bewaking. Met toegangsbesturingselementen op basis van rollen u de toegang voor individuele gebruikers beperken tot specifieke functies in de oplossing.
+Dit artikel bevat informatie over het configureren van op rollen gebaseerde toegangs beheer in de oplossings versneller voor externe controle. Met toegangs beheer op basis van rollen kunt u de toegang voor afzonderlijke gebruikers beperken tot specifieke functies in de oplossing.
 
 ## <a name="default-settings"></a>Standaardinstellingen
 
-Wanneer u de oplossing voor externe bewaking voor het eerst implementeert, zijn er twee rollen: **Beheerder** en **Alleen lezen**.
+Wanneer u de oplossing voor externe controle voor het eerst implementeert, zijn er twee rollen: **beheerder** en **alleen-lezen**.
 
-Elke gebruiker in de rol **Beheerder** heeft volledige toegang tot de oplossing, inclusief de volgende machtigingen hieronder. Een gebruiker in de rol **Alleen lezen** heeft alleen toegang tot de oplossing.
+Alle gebruikers in de rol **beheerder** hebben volledige toegang tot de oplossing, met inbegrip van de volgende machtigingen hieronder. Een gebruiker met de **alleen-lezen** rol heeft alleen toegang tot het weer geven van de oplossing.
 
 | Machtiging            | Beheerder | Alleen-lezen |
 |----------------       |-------|-----------|
-| Oplossing weergeven         | Ja   | Ja       |
-| Alarmen bijwerken         | Ja   | Nee        |
-| Alarmen verwijderen         | Ja   | Nee        |
+| Oplossing weer geven         | Ja   | Ja       |
+| Waarschuwingen bijwerken         | Ja   | Nee        |
+| Waarschuwingen verwijderen         | Ja   | Nee        |
 | Apparaten maken        | Ja   | Nee        |
 | Apparaten bijwerken        | Ja   | Nee        |
 | Apparaten verwijderen        | Ja   | Nee        |
@@ -37,67 +37,67 @@ Elke gebruiker in de rol **Beheerder** heeft volledige toegang tot de oplossing,
 | Apparaatgroepen bijwerken  | Ja   | Nee        |
 | Apparaatgroepen verwijderen  | Ja   | Nee        |
 | Regels maken          | Ja   | Nee        |
-| Regels bijwerken          | Ja   | Nee        |
+| Update regels          | Ja   | Nee        |
 | Regels verwijderen          | Ja   | Nee        |
 | Taken maken           | Ja   | Nee        |
-| Sim-beheer bijwerken | Ja   | Nee        |
+| SIM-beheer bijwerken | Ja   | Nee        |
 
-De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatisch de functie **Beheerder** toegewezen en is eigenaar van een Azure Active Directory-toepassings. Als eigenaar van een toepassing u rollen toewijzen aan andere gebruikers via de Azure-portal. Als u wilt dat een andere gebruiker rollen in de oplossing toewijst, moet deze ook worden ingesteld als eigenaar van de toepassing in de Azure-portal.
+De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatisch de rol **admin** toegewezen en is een Azure Active Directory eigenaar van de toepassing. Als eigenaar van een toepassing kunt u rollen toewijzen aan andere gebruikers via de Azure Portal. Als u wilt dat een andere gebruiker rollen toewijst in de oplossing, moeten deze ook worden ingesteld als eigenaar van een toepassing in de Azure Portal.
 
 > [!NOTE]
-> De gebruiker die de oplossing heeft geïmplementeerd, is de **enige persoon** die de oplossing direct na het maken kan bekijken. Als u anderen toegang wilt verlenen om de toepassing te bekijken als een alleen-lezen- of beheerder- of aangepaste rol, raadpleegt u de volgende aanwijzingen hieronder voor het toevoegen of verwijderen van gebruikers.
+> De gebruiker die de oplossing heeft geïmplementeerd, is de **enige persoon** die deze kan weer geven direct nadat deze is gemaakt. Als u anderen toegang wilt verlenen om de toepassing weer te geven als een alleen-lezen, beheerder of een aangepaste rol, raadpleegt u de onderstaande instructies bij gebruikers toevoegen of verwijderen.
 
 ## <a name="add-or-remove-users"></a>Gebruikers toevoegen of verwijderen
 
-Als eigenaar van een Azure Active Directory-toepassings u de Azure-portal gebruiken om een gebruiker toe te voegen of te verwijderen aan een rol uit de oplossing voor externe bewaking. In de volgende stappen wordt de [Azure Active Directory-bedrijfstoepassing](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) gebruikt die is gemaakt toen u de oplossing voor externe bewaking hebt geïmplementeerd.
+Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Controleer of de [gebruiker zich in de map](../active-directory/fundamentals/add-users-azure-active-directory.md) bevindt die u gebruikt. U hebt de map gekozen die u wilt gebruiken toen u zich aanmeldde bij de [Microsoft Azure IoT Solution Accelerators-site.](https://www.azureiotsolutions.com/Accelerators) De naam van de map is zichtbaar in de rechterbovenhoek van de [pagina.](https://www.azureiotsolutions.com/Accelerators)
+1. Controleer of de [gebruiker zich in de map bevindt](../active-directory/fundamentals/add-users-azure-active-directory.md) die u gebruikt. U hebt gekozen voor de map die u wilt gebruiken wanneer u zich aanmeldt bij de [Microsoft Azure IOT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -site. De mapnaam wordt weer gegeven in de rechter bovenhoek van de [pagina](https://www.azureiotsolutions.com/Accelerators).
 
-1. Zoek de **Enterprise-toepassing** voor uw oplossing in de Azure-portal. Eenmaal daar filtert u de lijst door **Toepassingstype** in te stellen op **Alle toepassingen.** Zoek naar uw toepassing op toepassingsnaam. De naam van de toepassing is de naam van uw oplossing voor externe bewaking. In de volgende screenshot, de oplossing en toepassing display namen zijn **contoso-rm4**.
+1. Zoek de **bedrijfs toepassing** voor uw oplossing in de Azure Portal. Daarna kunt u de lijst filteren door **toepassings type** in te stellen op **alle toepassingen**. Zoek naar uw toepassing op toepassings naam. De naam van de toepassing is de naam van uw oplossing voor externe controle. In de volgende scherm afbeelding zijn de weergave namen van de oplossing en toepassing **Contoso-RM4**.
 
-    ![Bedrijfstoepassing](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
+    ![Bedrijfs toepassing](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. Controleer of u eigenaar bent van de toepassing door op de toepassing te klikken en vervolgens op **Eigenaren**te klikken. In de volgende screenshot, **Contoso admin** is een eigenaar van de **contoso-rm4** applicatie:
+1. Controleer of u de eigenaar van de toepassing bent door te klikken op de toepassing en vervolgens te klikken op **eigen aren**. In de volgende scherm afbeelding is **Contoso-beheerder** een eigenaar van de toepassing **Contoso-RM4** :
 
     ![Eigenaren](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
-    Als u geen eigenaar bent, moet u een bestaande eigenaar vragen om u aan de lijst toe te voegen. Alleen eigenaren kunnen toepassingsrollen zoals **Beheerder** of **Alleen lezen** toewijzen aan andere gebruikers.
+    Als u geen eigenaar bent, moet u een bestaande eigenaar vragen om u toe te voegen aan de lijst. Alleen eigen aars kunnen toepassings rollen toewijzen, zoals **beheerder** of **alleen-lezen** aan andere gebruikers.
 
-1. Als u de lijst met gebruikers wilt zien die zijn toegewezen aan rollen in de toepassing, klikt u op **Gebruikers en groepen**.
+1. Klik op **gebruikers en groepen**voor een overzicht van de gebruikers die zijn toegewezen aan de rollen in de toepassing.
 
-1. Als u een gebruiker wilt toevoegen, klikt u op **+ Gebruiker toevoegen**en klikt u vervolgens op Gebruikers en **groepen, Niet geselecteerd** om een gebruiker in de map te selecteren.
+1. Als u een gebruiker wilt toevoegen, klikt u op **+ gebruiker toevoegen**en klikt u vervolgens op **gebruikers en groepen, geen geselecteerd** om een gebruiker te selecteren in de map.
 
-1. Als u de gebruiker aan een rol wilt toewijzen, klikt u op **Rol selecteren, Niet geselecteerd** en kiest u de rol **Beheerder** of **Alleen lezen** voor de gebruiker. Klik **op Selecteren**en klik vervolgens op **Toewijzen**.
+1. Als u de gebruiker aan een rol wilt toewijzen, klikt u op **rol selecteren, geen geselecteerd** en kiest u de rol **beheerder** of **alleen-lezen** voor de gebruiker. Klik op **selecteren**en vervolgens op **toewijzen**.
 
     ![Rol selecteren](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
-1. De gebruiker heeft nu toegang tot de oplossing voor externe bewaking met de machtigingen die door de rol zijn gedefinieerd.
+1. De gebruiker heeft nu toegang tot de oplossing voor externe controle met de machtigingen die zijn gedefinieerd door de rol.
 
-1. U gebruikers verwijderen uit de toepassing op de pagina **Gebruikers en groepen** in de portal.
+1. U kunt gebruikers uit de toepassing verwijderen op de pagina **gebruikers en groepen** in de portal.
 
 ## <a name="create-a-custom-role"></a>Een aangepaste rol maken
 
-De oplossing Voor externe bewaking bevat de rollen **Beheerder** en **Alleen-lezen** wanneer deze voor het eerst wordt geïmplementeerd. U aangepaste rollen toevoegen met verschillende sets machtigingen. Als u een aangepaste rol wilt definiëren, moet u het:
+De oplossing voor controle op afstand bevat de rollen **beheerder** en **alleen lezen** wanneer deze voor het eerst wordt geïmplementeerd. U kunt aangepaste rollen toevoegen met verschillende sets machtigingen. Als u een aangepaste rol wilt definiëren, moet u het volgende doen:
 
-- Voeg een nieuwe rol toe aan de toepassing in de Azure-portal.
-- Definieer een beleid voor de nieuwe rol in de microservice Verificatie en autorisatie.
-- De webgebruikersinterface van de oplossing bijwerken.
+- Voeg een nieuwe rol toe aan de toepassing in de Azure Portal.
+- Definieer een beleid voor de nieuwe rol in de micro service verificatie en autorisatie.
+- Update de Web-UI van de oplossing.
 
-### <a name="define-a-custom-role-in-the-azure-portal"></a>Een aangepaste rol definiëren in de Azure-portal
+### <a name="define-a-custom-role-in-the-azure-portal"></a>Een aangepaste rol definiëren in de Azure Portal
 
-In de volgende stappen wordt beschreven hoe u een rol toevoegt aan een toepassing in Azure Active Directory. In dit voorbeeld maakt u een nieuwe rol waarmee leden apparaten kunnen maken, bijwerken en verwijderen in de oplossing voor externe bewaking.
+In de volgende stappen wordt beschreven hoe u een rol kunt toevoegen aan een toepassing in Azure Active Directory. In dit voor beeld maakt u een nieuwe rol die leden in staat stelt om apparaten te maken, bij te werken en te verwijderen in de oplossing voor controle op afstand.
 
-1. Zoek de **app-registratie** voor uw oplossing in de Azure-portal. De naam van de toepassing is de naam van uw oplossing voor externe bewaking. In de volgende screenshot, de oplossing en toepassing display namen zijn **contoso-rm4**.
+1. Zoek de **app-registratie** voor uw oplossing in de Azure Portal. De naam van de toepassing is de naam van uw oplossing voor externe controle. In de volgende scherm afbeelding zijn de weergave namen van de oplossing en toepassing **Contoso-RM4**.
 
     ![App-registratie](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. Selecteer uw toepassing en klik op **Manifest**. U de twee bestaande [app-rollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) zien die voor de toepassing zijn gedefinieerd:
+1. Selecteer uw toepassing en klik vervolgens op **manifest**. U kunt de twee bestaande [app-rollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) zien die zijn gedefinieerd voor de toepassing:
 
-    ![Manifest weergeven](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
+    ![Manifest weer geven](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
-1. Bewerk het manifest om een rol toe te voegen die ManageDevices wordt **genoemd,** zoals in het volgende fragment wordt weergegeven. U hebt een unieke tekenreeks nodig, zoals een GUID voor de nieuwe rol-ID. U een nieuwe GUID genereren met behulp van een service zoals de [Online GUID Generator:](https://www.guidgenerator.com/)
+1. Bewerk het manifest om een functie met de naam **ManageDevices** toe te voegen, zoals wordt weer gegeven in het volgende code fragment. U hebt een unieke teken reeks nodig, zoals een GUID voor de nieuwe functie-ID. U kunt een nieuwe GUID genereren met behulp van een service zoals de [online GUID-Generator](https://www.guidgenerator.com/):
 
     ```json
     "appRoles": [
@@ -138,11 +138,11 @@ In de volgende stappen wordt beschreven hoe u een rol toevoegt aan een toepassin
 
 ### <a name="define-a-policy-for-the-new-role"></a>Een beleid voor de nieuwe rol definiëren
 
-Nadat u de rol aan de app in de Azure-portal hebt toegevoegd, moet u een beleid definiëren in [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) voor de rol waarin de machtigingen worden toegevoegd die nodig zijn om apparaten te beheren.
+Nadat u de rol aan de app hebt toegevoegd in de Azure Portal, moet u een beleid definiëren in [rollen. json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) voor de rol die de benodigde machtigingen voor het beheren van apparaten toewijst.
 
-1. Kloon de [Remote Monitoring Microservices](https://github.com/Azure/remote-monitoring-services-dotnet) repository van GitHub naar uw lokale machine.
+1. Kopieer de micro Services-opslag plaats voor [externe controle](https://github.com/Azure/remote-monitoring-services-dotnet) van github naar uw lokale computer.
 
-1. Bewerk het **bestand auth/Services/data/policies/roles.json** om het beleid voor de rol **ManageDevices** toe te voegen zoals weergegeven in het volgende fragment. De **id-** en **rolwaarden** moeten overeenkomen met de roldefinitie in het app-manifest uit de vorige sectie. Met de lijst met toegestane acties kan iemand in de rol **ManageDevices** apparaten maken, bijwerken en verwijderen die met de oplossing zijn verbonden:
+1. Bewerk het bestand **auth/services/Data/policies/roles. json** om het beleid toe te voegen aan de **ManageDevices** -functie, zoals wordt weer gegeven in het volgende code fragment. De **id-** waarden en **rolinstellingen** moeten overeenkomen met de roldefinitie in het app-manifest uit de vorige sectie. Met de lijst met toegestane acties kan iemand in de **ManageDevices** -rol apparaten maken, bijwerken en verwijderen die zijn verbonden met de oplossing:
 
     ```json
     {
@@ -184,11 +184,11 @@ Nadat u de rol aan de app in de Azure-portal hebt toegevoegd, moet u een beleid 
     }
     ```
 
-1. Wanneer u klaar bent met het bewerken van het bestand **Services/data/policies/roles.json,** u de microservice Verificatie en autorisatie opnieuw herstellen naar uw oplossingsversneller.
+1. Wanneer u klaar bent met het bewerken van het bestand **Services/Data/policies/roles. json** , bouwt u de micro service voor verificatie en autorisatie opnieuw en implementeert u deze in uw oplossings versneller.
 
-### <a name="how-the-web-ui-enforces-permissions"></a>Hoe de webgebruikersinterface machtigingen afdwingt
+### <a name="how-the-web-ui-enforces-permissions"></a>Hoe de Web-UI machtigingen afdwingt
 
-De webgebruikersinterface gebruikt de [microservice Verificatie en autorisatie](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) om te bepalen welke acties een gebruiker mag uitvoeren en welke besturingselementen zichtbaar zijn in de gebruikersinterface. Als uw oplossing bijvoorbeeld **contoso-rm4**wordt genoemd, haalt de web-gebruikersinterface een lijst met toegestane acties voor de huidige gebruiker op door het volgende verzoek te verzenden:
+De Web-UI gebruikt de micro [service verificatie en autorisatie](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) om te bepalen welke acties een gebruiker mag ondernemen en welke besturings elementen zichtbaar zijn in de gebruikers interface. Als uw oplossing bijvoorbeeld **Contoso-RM4**heet, haalt de Web-UI een lijst met toegestane acties voor de huidige gebruiker op door de volgende aanvraag te verzenden:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -197,7 +197,7 @@ X-Source: true
 Authorization: Bearer <JWT Token from ADAL>
 ```
 
-Voor een gebruiker die **Apparaatbeheer** heet in de rol **ManageDevices,** bevat het antwoord de volgende JSON in de hoofdtekst:
+Voor een gebruiker met de naam **Apparaatbeheer** in de rol **ManageDevices** bevat het antwoord de volgende json in de hoofd tekst:
 
 ```json
 {
@@ -212,7 +212,7 @@ Voor een gebruiker die **Apparaatbeheer** heet in de rol **ManageDevices,** beva
 }
 ```
 
-In het volgende fragment van [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) in de [webgebruikersinterface](https://github.com/Azure/pcs-remote-monitoring-webui/) ziet u hoe de machtigingen declaratief worden afgedwongen:
+In het volgende code fragment van [deviceDelete. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) in de [Web-UI](https://github.com/Azure/pcs-remote-monitoring-webui/) ziet u hoe de machtigingen declaratief worden afgedwongen:
 
 ```json
 <FlyoutContent>
@@ -224,13 +224,13 @@ In het volgende fragment van [deviceDelete.js](https://github.com/Azure/pcs-remo
 </FlyoutContent>
 ```
 
-Zie [Beveiligde componenten voor](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md)meer informatie . U aanvullende machtigingen definiëren in het [bestand authModel.js.](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js)
+Zie [beveiligde onderdelen](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md)voor meer informatie. U kunt aanvullende machtigingen definiëren in het bestand [authModel. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) .
 
-### <a name="how-the-microservices-enforce-permissions"></a>Hoe de microservices machtigingen afdwingen
+### <a name="how-the-microservices-enforce-permissions"></a>De manier waarop de micro Services machtigingen afdwingen
 
-De microservices controleren ook machtigingen om te beschermen tegen ongeautoriseerde API-aanvragen. Wanneer een microservice een API-aanvraag ontvangt, wordt het JWT-token gedecodeerd en gevalideerd om de gebruikers-id en machtigingen die zijn gekoppeld aan de rol van de gebruiker te krijgen.
+De micro Services controleren ook de machtigingen om te beveiligen tegen ongeautoriseerde API-aanvragen. Wanneer een micro service een API-aanvraag ontvangt, wordt de JWT-token gedecodeerd en gevalideerd om de gebruikers-ID en de machtigingen voor de rol van de gebruiker op te halen.
 
-In het volgende fragment van het [DevicesController.cs-bestand](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) in de [IoTHub Manager-microservice](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)wordt weergegeven hoe de machtigingen worden afgedwongen:
+In het volgende code fragment uit het [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) -bestand in de [IoTHub Manager](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)-micro service ziet u hoe de machtigingen worden afgedwongen:
 
 ```csharp
 [HttpDelete("{id}")]
@@ -243,11 +243,11 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u hoe op rollen gebaseerde toegangscontroles worden geïmplementeerd in de versneller van de oplossing voor externe bewaking.
+In dit artikel hebt u geleerd hoe toegangs beheer op basis van rollen wordt geïmplementeerd in de oplossings versneller voor externe controle.
 
-Zie [Toegangsbesturingselementen configureren voor de Time Series Insights-verkenner](iot-accelerators-remote-monitoring-rbac-tsi.md) voor informatie over het beheren van toegang tot de Time Series Insights-verkenner in de accelerator voor oplossingen voor externe bewaking.
+Zie [toegangs beheer configureren voor de time series Insights Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md) voor informatie over het beheren van toegang tot de time series Insights Verkenner in de oplossing voor externe controle.
 
-Zie [Remote Monitoring-architectuur](iot-accelerators-remote-monitoring-sample-walkthrough.md) voor meer conceptuele informatie over de remote monitoring-oplossingsversneller
+Zie [architectuur voor externe bewaking](iot-accelerators-remote-monitoring-sample-walkthrough.md) voor meer conceptuele informatie over de oplossings versneller voor externe controle
 
-Zie [Een microservice aanpassen en opnieuw implementeren](iot-accelerators-microservices-example.md) voor meer informatie over het aanpassen van de oplossing voor externe bewaking
+Zie [een micro service aanpassen en opnieuw implementeren](iot-accelerators-microservices-example.md) voor meer informatie over het aanpassen van de oplossing voor controle op afstand.
 <!-- Next tutorials in the sequence -->

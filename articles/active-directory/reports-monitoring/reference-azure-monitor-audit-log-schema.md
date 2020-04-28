@@ -1,6 +1,6 @@
 ---
-title: Het azure Active Directory-controlelogboekschema interpreteren in Azure Monitor | Microsoft Documenten
-description: Het Azure AD-controlelogboekschema beschrijven voor gebruik in Azure Monitor
+title: Het Azure Active Directory controle logboek schema in Azure Monitor interpreteren | Microsoft Docs
+description: Beschrijf het schema voor het audit logboek van Azure AD voor gebruik in Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68987946"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Het Azure AD-controlelogboekenschema interpreteren in Azure Monitor (voorbeeld)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Het Azure AD audit logs-schema interpreteren in Azure Monitor (preview)
 
-In dit artikel wordt het Azure Active Directory-controlelogboekschema (Azure AD) in Azure Monitor beschreven. Elke afzonderlijke logboekvermelding wordt opgeslagen als tekst en opgemaakt als een JSON-blob, zoals in de volgende twee voorbeelden wordt weergegeven: 
+In dit artikel wordt het schema voor het audit logboek voor Azure Active Directory (Azure AD) beschreven in Azure Monitor. Elke afzonderlijke logboek vermelding wordt als tekst opgeslagen en opgemaakt als een JSON-blob, zoals wordt weer gegeven in de volgende twee voor beelden: 
 
 ```json
 { 
@@ -145,39 +145,39 @@ In dit artikel wordt het Azure Active Directory-controlelogboekschema (Azure AD)
 
 ```
 
-## <a name="field-and-property-descriptions"></a>Beschrijvingen van velden en eigendommen
+## <a name="field-and-property-descriptions"></a>Beschrijvingen van velden en eigenschappen
 
 | Veldnaam | Beschrijving |
 |------------|-------------|
 | tijd       | De datum en tijd (UTC). |
 | operationName | De naam van de bewerking. |
-| operationVersion | De REST API-versie die door de client wordt aangevraagd. |
-| category | Momenteel is *Audit* de enige ondersteunde waarde. |
-| tenantId | De tenant-GUID die is gekoppeld aan de logboeken. |
-| resultType | Het resultaat van de operatie. Het resultaat kan *succes* of *mislukking*zijn. |
-| resultSignature |  Dit veld is niet in kaart gebracht en u het veilig negeren. | 
+| operationVersion | De REST API versie die door de client is aangevraagd. |
+| category | De *controle* is momenteel de enige ondersteunde waarde. |
+| tenantId | De Tenant-GUID die is gekoppeld aan de logboeken. |
+| resultType | Het resultaat van de bewerking. Het resultaat kan *slagen* of *mislukken*. |
+| resultSignature |  Dit veld is niet-toegewezen en u kunt het veilig negeren. | 
 | resultDescription | Een aanvullende beschrijving van het resultaat, indien beschikbaar. | 
-| durationMs |  Dit veld is niet in kaart gebracht en u het veilig negeren. |
-| callerIpAddress | Het IP-adres van de klant die het verzoek heeft ingediend. | 
-| correlationId | Een optionele GUID die door de client wordt doorgegeven. Het kan helpen bij het correleren van client-side operations met server-side operations en het is handig wanneer u logboeken bijhoudt die services overspannen. |
-| identity | De identiteit van het token dat werd gepresenteerd toen u het verzoek indiende. De identiteit kan een gebruikersaccount, systeemaccount of serviceprincipal zijn. |
-| niveau | Het berichttype. Voor auditlogs is het niveau altijd *informatief.* |
-| location | De locatie van het datacenter. |
-| properties | Hier worden de ondersteunde eigenschappen weergegeven die gerelateerd zijn aan een controlelogboek. Zie de volgende tabel voor meer informatie. | 
+| durationMs |  Dit veld is niet-toegewezen en u kunt het veilig negeren. |
+| callerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
+| correlationId | Een optionele GUID die door de client wordt door gegeven. Dit kan helpen bij het correleren aan de client zijde met bewerkingen aan de server zijde en is handig wanneer u Logboeken traceert die services omvatten. |
+| identity | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. De identiteit kan een gebruikers account, systeem account of Service-Principal zijn. |
+| niveau | Het bericht type. Voor audit Logboeken is het niveau altijd *informatief*. |
+| location | De locatie van het Data Center. |
+| properties | Een lijst met ondersteunde eigenschappen die betrekking hebben op een audit logboek. Zie de volgende tabel voor meer informatie. | 
 
 <br>
 
 | Naam van eigenschap | Beschrijving |
 |---------------|-------------|
-| AuditEventCategorie | Het type auditgebeurtenis. Het kan *Gebruikersbeheer,* *Toepassingsbeheer*of een ander type zijn.|
-| Identiteitstype | Het type kan *toepassing* of *gebruiker*zijn. |
-| Type bewerking | Het type kan *Toevoegen,* *Bijwerken*, *Verwijderen*. of *Andere*. |
-| Doelbrontype | Hiermee geeft u het doelbrontype op waarop de bewerking is uitgevoerd. Het type kan *toepassing,* *gebruiker,* *rol,* *beleid* zijn | 
-| Naam van doelbron | De naam van de doelbron. Het kan een toepassingsnaam, een rolnaam, een gebruikersnaam of een hoofdnaam van de service zijn. |
-| aanvullende doelen | Geeft een lijst van eventuele extra eigenschappen voor specifieke bewerkingen. Voor een updatebewerking worden bijvoorbeeld de oude waarden en de nieuwe waarden weergegeven onder *targetUpdatedProperties*. | 
+| AuditEventCategory | Het type controle gebeurtenis. Dit kan *gebruikers beheer*, *toepassings beheer*of een ander type zijn.|
+| Identiteits type | Het type kan *toepassing* of *gebruiker*zijn. |
+| Type bewerking | Het type kan worden *toegevoegd*, *bijgewerkt*, *verwijderd*. of *andere*. |
+| Doel resource type | Hiermee geeft u het doel resource type op waarop de bewerking is uitgevoerd. Het type kan *toepassing*, *gebruiker*, *rol*, *beleid* zijn | 
+| Doel resource naam | De naam van de doel resource. Dit kan een toepassings naam, een rolnaam, een user principal name of een Service Principal Name zijn. |
+| additionalTargets | Een lijst met aanvullende eigenschappen voor specifieke bewerkingen. Voor een update bewerking worden bijvoorbeeld de oude waarden en de nieuwe waarden weer gegeven onder *targetUpdatedProperties*. | 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Aanmeldingslogboekenschema interpreteren in Azure Monitor)
-* [Azure-diagnostische logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Veelgestelde vragen en bekende problemen](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

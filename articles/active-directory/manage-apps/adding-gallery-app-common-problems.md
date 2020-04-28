@@ -1,6 +1,6 @@
 ---
-title: Probleem met het toevoegen van een Azure AD Gallery-toepassing | Microsoft Documenten
-description: Inzicht krijgen in de veelvoorkomende problemen waarmee mensen worden geconfronteerd bij het toevoegen van Azure AD Gallery-toepassingen en wat u doen om deze op te lossen
+title: Probleem bij het toevoegen van een Azure AD-galerie toepassing | Microsoft Docs
+description: Meer informatie over de veelvoorkomende problemen bij het toevoegen van Azure AD Gallery-toepassingen en wat u kunt doen om ze op te lossen
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,119 +16,119 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784431"
 ---
-# <a name="problem-adding-an-azure-ad-gallery-application"></a>Probleem met het toevoegen van een Azure AD Gallery-toepassing
+# <a name="problem-adding-an-azure-ad-gallery-application"></a>Probleem bij het toevoegen van een Azure AD-galerie toepassing
 
-In dit artikel u inzicht krijgen in de veelvoorkomende problemen waarmee mensen worden geconfronteerd bij het toevoegen van Azure AD Gallery-toepassingen en wat u doen om deze op te lossen.
+Dit artikel helpt u bij het begrijpen van de veelvoorkomende problemen bij het toevoegen van Azure AD Gallery-toepassingen en wat u kunt doen om ze op te lossen.
 
-## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Ik klikte op de "add" knop en mijn aanvraag duurde een lange tijd om te verschijnen
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Ik heb op de knop toevoegen geklikt en het duurt lang voordat mijn toepassing wordt weer gegeven
 
-Onder bepaalde omstandigheden kan het 1-2 minuten (en soms langer) duren voordat een toepassing wordt weergegeven nadat deze aan uw directory is toegevoegd. Hoewel dit niet de normale verwachte prestaties is, u zien dat de toevoeging van de toepassing aan de gang is door te klikken op het pictogram **Meldingen** (de bel) in de rechterbovenhoek van de [Azure-portal](https://portal.azure.com/) en op zoek bent naar een **melding in uitvoering** of **voltooid** met het label Toevoegen **van toepassing.**
+In sommige gevallen kan het 1-2 minuten (en soms langer) duren voordat een toepassing wordt weer gegeven nadat deze is toegevoegd aan uw Directory. Dit is niet de normale verwachte prestaties, maar u kunt ook zien dat de toepassing wordt toegevoegd door te klikken op het pictogram **meldingen** (de Bell) in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com/) en te zoeken naar een **lopende** of **voltooide** melding die de **toepassing toevoegt.**
 
-Als uw toepassing nooit wordt toegevoegd of als u een fout tegenkomt wanneer u op de knop **Toevoegen** klikt, ziet u een **melding** in de **status Fout.** Als u meer informatie wilt over de fout om meer te weten te komen of te delen met een ondersteuningstechnicus, u meer informatie over de fout bekijken door de stappen in de sectie [Hoe u de details van een portalmelding zien.](#how-to-see-the-details-of-a-portal-notification)
+Als uw toepassing nooit wordt toegevoegd of als er een fout optreedt wanneer u op de knop **toevoegen** klikt, ziet u een **melding** in een **fout** status. Als u meer informatie wilt over de fout voor meer informatie over of als u wilt delen met een ondersteunings technicus, kunt u de volgende stappen volgen in de sectie [Details van een portal melding weer geven](#how-to-see-the-details-of-a-portal-notification) .
 
-## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Ik klikte op de knop "toevoegen" en mijn toepassing is niet weergegeven
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Ik heb geklikt op de knop toevoegen en mijn toepassing wordt niet weer gegeven
 
-Soms, als gevolg van tijdelijke problemen, netwerkproblemen of een bug, mislukt het toevoegen van een toepassing. U zien dat dit gebeurt wanneer u op het pictogram **Meldingen** (de bel) rechtsboven in de Azure-portal klikt en u een rood (!) pictogram ziet naast de melding van de **toepassing toevoegen.** Dit geeft aan dat er een fout is opgetreden bij het maken van de toepassing.
+Soms mislukt het toevoegen van een toepassing als gevolg van tijdelijke problemen, netwerk problemen of een bug. U kunt dit zien wanneer u op het pictogram **meldingen** (de Bell) in de rechter bovenhoek van de Azure Portal klikt en er een rood pictogram (!) wordt weer geven naast de melding voor het toevoegen van de **toepassing** . Dit geeft aan dat er een fout is opgetreden bij het maken van de toepassing.
 
-Als u een fout tegenkomt wanneer u op de knop **Toevoegen** klikt, wordt een **melding** in een **foutstatus** weergegeven. Als u meer informatie wilt over de fout om meer te weten te komen of te delen met een ondersteuningstechnicus, u meer informatie over de fout bekijken door de stappen in de sectie [Hoe u de details van een portalmelding zien.](#how-to-see-the-details-of-a-portal-notification)
+Als er een fout optreedt wanneer u op de knop **toevoegen** klikt, wordt er een **melding** weer geven met een **fout** status. Als u meer informatie wilt over de fout voor meer informatie over of als u wilt delen met een ondersteunings technicus, kunt u de volgende stappen volgen in de sectie [Details van een portal melding weer geven](#how-to-see-the-details-of-a-portal-notification) .
 
-## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Ik weet niet hoe ik mijn aanvraag moet instellen zodra ik deze heb toegevoegd
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Ik weet niet hoe ik mijn toepassing moet instellen nadat ik deze heb toegevoegd
 
-Als u hulp nodig hebt bij het leren over toepassingen, is de [lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory-artikel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) een goede plek om te beginnen.
+Als u hulp nodig hebt bij het leren van toepassingen, is de [lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) -artikel een goede plaats om te starten.
 
-Daarnaast helpt de [Documentbibliotheek azure AD-toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) u om meer te weten te komen over eenmalige aanmelding met Azure AD en hoe het werkt.
+Daarnaast kunt u met de [document bibliotheek van Azure AD-toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) meer te weten komen over eenmalige aanmelding met Azure AD en hoe deze werkt.
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>De details van een portalmelding bekijken
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>De details van een portal melding weer geven
 
-U de details van een portalmelding bekijken door de onderstaande stappen te volgen:
+U kunt de details van een portal melding bekijken door de volgende stappen uit te voeren:
 
-1.  Het pictogram **Meldingen** (de bel) rechtsboven in de Azure-portal selecteren
+1.  Selecteer het pictogram **meldingen** (de Bell) in de rechter bovenhoek van de Azure Portal
 
-2.  Selecteer een melding in een **foutstatus** (meldingen met een rode (!) ernaast).
+2.  Selecteer een melding in een **fout** status (die met een rood (!) ernaast).
 
     >[!NOTE]
-    >U niet op meldingen klikken in de status **Geslaagd** of **In uitvoering.**
+    >U kunt niet klikken op meldingen met de status **geslaagd** of **in uitvoering** .
     >
     >
 
-4.  Gebruik de informatie onder **Meldingsgegevens** om meer details over het probleem te begrijpen.
+4.  Gebruik de informatie onder **meldings Details** voor meer informatie over het probleem.
 
-5.  Als u nog steeds hulp nodig hebt, u deze informatie ook delen met een ondersteuningstechnicus of de productgroep om hulp te krijgen bij uw probleem.
+5.  Als u nog steeds hulp nodig hebt, kunt u deze informatie ook delen met een ondersteunings technicus of de product groep om hulp te krijgen bij het probleem.
 
-6.  Klik op het **kopieerpictogram** **icon** rechts van het tekstvak **Fout kopiëren** om alle meldingsgegevens te kopiëren die u wilt delen met een ondersteunings- of productgroeptechnicus.
+6.  Klik op het **pictogram** **kopiëren** rechts van het tekstvak **Kopieer fout** om alle meldings details te kopiëren die u wilt delen met de engineer ondersteuning of productgroep.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Hulp krijgen door meldingsgegevens naar een ondersteuningstechnicus te sturen
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Hulp vragen door het verzenden van meldings gegevens naar een ondersteunings technicus
 
-Het is erg belangrijk dat u **alle onderstaande gegevens** deelt met een ondersteuningstechnicus als u hulp nodig hebt, zodat ze u snel kunnen helpen. U dit eenvoudig doen door **een screenshot te maken of** door te klikken op het pictogram Fout **kopiëren**, rechts van het tekstvak Met **fout kopiëren.**
+Het is belang rijk dat u **alle details die hieronder worden weer gegeven** , deelt met een ondersteunings technicus als u hulp nodig hebt, zodat u snel aan de slag kunt. U kunt dit eenvoudig doen door **een scherm afbeelding te maken** of door te klikken op het **pictogram copy error**rechts van het tekstvak **copy error** .
 
-## <a name="notification-details-explained"></a>Details van de melding uitgelegd
+## <a name="notification-details-explained"></a>Details van de melding
 
-Zie de volgende beschrijvingen voor meer informatie over de meldingen.
+Raadpleeg de volgende beschrijvingen voor meer informatie over de meldingen.
 
-### <a name="essential-notification-items"></a>Essentiële meldingsitems
+### <a name="essential-notification-items"></a>Essentiële meldings items
 
-- **Titel** – de beschrijvende titel van de kennisgeving
+- **Titel** : de beschrijvende titel van de melding
 
-  * Voorbeeld : **Instellingen voor toepassingsproxy**
+  * Voor beeld: **proxy-instellingen** van de toepassing
 
-- **Beschrijving** – de beschrijving van wat er is gebeurd als gevolg van de operatie
+- **Beschrijving** : de beschrijving van wat er is gebeurd als gevolg van de bewerking
 
-  -   Voorbeeld : **interne url wordt al gebruikt door een andere toepassing**
+  -   Voor beeld: de **ingevoerde interne URL wordt al gebruikt door een andere toepassing**
 
-- **Meldings-ID** – de unieke id van de melding
+- **Meldings-id** : de unieke id van de melding
 
-  -   Voorbeeld – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Voor beeld – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
-- **Client request ID** – de specifieke aanvraag-ID van uw browser
+- **Client aanvraag-id** : de specifieke aanvraag-id die is gemaakt door de browser
 
-  -   Voorbeeld – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Voor beeld – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
-- **Time Stamp UTC** – de tijdstempel waarin de melding heeft plaatsgevonden, in UTC
+- **Tijds tempel UTC** : de tijds tempel waarin de melding is opgetreden, in UTC
 
-  -   Voorbeeld – **2017-03-23T19:50:43.7583681Z**
+  -   Voor beeld – **2017-03-23T19:50:43.7583681 z**
 
-- **Interne transactie-ID** – de interne ID die we kunnen gebruiken om de fout in onze systemen op te zoeken
+- **Interne trans actie-id** : de interne id die we kunnen gebruiken om de fout op te sporen in onze systemen
 
-  -   Voorbeeld – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Voor beeld – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **UPN** – de gebruiker die de bewerking heeft uitgevoerd
+- **UPN** : de gebruiker die de bewerking heeft uitgevoerd
 
-  -   Voorbeeld – **tperkins\@f128.info**
+  -   Voor beeld **–\@tperkins f128.info**
 
-- **Tenant-ID** – de unieke id van de tenant waarvan de gebruiker die de bewerking heeft uitgevoerd, lid was van
+- **Tenant-id** : de unieke id van de Tenant waarvan de gebruiker die de bewerking heeft uitgevoerd lid is van
 
-  -   Voorbeeld – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Voor beeld – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
-- **Gebruikersnaam :** de unieke id van de gebruiker die de bewerking heeft uitgevoerd
+- **Gebruikers object-id** : de unieke id van de gebruiker die de bewerking heeft uitgevoerd
 
-  -   Voorbeeld – **17f84be4-51f8-483a-b533-383791227a99**
+  -   Voor beeld – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>Gedetailleerde meldingsitems
+### <a name="detailed-notification-items"></a>Gedetailleerde meldings items
 
--   **Weergavenaam** – **(kan leeg zijn)** een meer gedetailleerde weergavenaam voor de fout
+-   **Weergave naam** – **(kan leeg zijn)** een meer gedetailleerde weergave naam voor de fout
 
-    -   Voorbeeld : **Instellingen voor toepassingsproxy**
+    -   Voor beeld: **proxy-instellingen** van de toepassing
 
--   **Status** – de specifieke status van de kennisgeving
+-   **Status** : de specifieke status van de melding
 
-    -   Voorbeeld – **Mislukt**
+    -   Voor beeld: **mislukt**
 
--   **Object-ID** – **(kan leeg zijn)** de object-id waartegen de bewerking is uitgevoerd
+-   **Object-id** – **(kan leeg zijn)** de object-id waartegen de bewerking is uitgevoerd
 
-    -   Voorbeeld – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Voor beeld – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Details** – de gedetailleerde beschrijving van wat er gebeurde als gevolg van de operatie
+-   **Details** : de gedetailleerde beschrijving van wat er is gebeurd als gevolg van de bewerking
 
-    -   Voorbeeld : **interne url `https://bing.com/` is ongeldig omdat deze al in gebruik is**
+    -   Voor beeld: **interne `https://bing.com/` URL is ongeldig omdat deze al wordt gebruikt**
 
--   **Fout kopiëren** : klik op het **kopieerpictogram** rechts van het tekstvak **Fout kopiëren** om alle meldingsgegevens te kopiëren die u wilt delen met een ondersteuningsgroep of productgroep 
+-   **Kopieer fout** : Klik op het **pictogram kopiëren** rechts van het tekstvak **Kopieer fout** om alle meldings gegevens te kopiëren die moeten worden gedeeld met een ondersteuning of product groep 
 -   technicus
 
-    -   Voorbeeld```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Hierbij```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

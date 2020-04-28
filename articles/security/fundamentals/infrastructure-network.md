@@ -1,6 +1,6 @@
 ---
-title: Azure-netwerkarchitectuur
-description: In dit artikel vindt u een algemene beschrijving van het Microsoft Azure-infrastructuurnetwerk.
+title: Azure-netwerk architectuur
+description: Dit artikel bevat een algemene beschrijving van het Microsoft Azure infrastructuur netwerk.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,96 +16,96 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727177"
 ---
-# <a name="azure-network-architecture"></a>Azure-netwerkarchitectuur
-De Azure-netwerkarchitectuur volgt een aangepaste versie van het industriestandaard core/distribution/access-model, met verschillende hardwarelagen. De lagen omvatten:
+# <a name="azure-network-architecture"></a>Azure-netwerk architectuur
+De Azure-netwerk architectuur volgt een gewijzigde versie van het model Standard/Distribution/Access van de branche, met afzonderlijke hardwareapparaten. De lagen zijn onder andere:
 
-- Core (datacenterrouters)
-- Distributie (toegangsrouters en L2-aggregatie). De distributielaag scheidt L3-routering van L2-schakelen.
-- Toegang (L2-hostswitches)
+- Core (Data Center-routers)
+- Distributie (toegangs routers en L2-aggregatie). De distributie-laag scheidt N3-route ring van L2-switches.
+- Toegang (L2-hostservice)
 
-De netwerkarchitectuur heeft twee niveaus van laag 2-switches. De ene laag verzamelt verkeer van de andere laag. De tweede laag lussen om redundantie op te nemen. De architectuur zorgt voor een flexibelere VLAN-voetafdruk en verbetert de poortschaling. De architectuur houdt L2 en L3 verschillend, waardoor het gebruik van hardware in elk van de verschillende lagen in het netwerk mogelijk is en de fout in één laag wordt geminimaliseerd om de andere laag(en) te beïnvloeden. Het gebruik van trunks maakt het delen van resources mogelijk, zoals de connectiviteit met de L3-infrastructuur.
+De netwerk architectuur heeft twee niveaus van laag 2-switches. Met één laag wordt het verkeer geaggregeerd vanuit de andere laag. De tweede laag is een lus voor het opnemen van redundantie. De architectuur biedt een flexibeler VLAN-footprint en verbetert de schaal baarheid van poorten. De architectuur houdt een DISTINCT van L2 en L3, waardoor het gebruik van hardware in elk van de afzonderlijke lagen in het netwerk wordt geminimaliseerd, en het minimaliseren van de fout in één laag van invloed is op een of meer lagen. Het gebruik van trunks maakt het delen van resources mogelijk, zoals de connectiviteit met de L3-infra structuur.
 
 ## <a name="network-configuration"></a>Netwerkconfiguratie
-De netwerkarchitectuur van een Azure-cluster binnen een datacenter bestaat uit de volgende apparaten:
+De netwerk architectuur van een Azure-cluster binnen een Data Center bestaat uit de volgende apparaten:
 
-- Routers (datacenter, toegangsrouter en border leaf-routers)
-- Switches (aggregatie en top-of-rack switches)
+- Routers (Data Center, toegangs router en Border blad routers)
+- Switches (aggregatie en top-of-rack-switches)
 - Digi CMs
-- Stroomverdelingseenheden
+- Energie distributie-eenheden
 
-Azure heeft twee afzonderlijke architecturen. Sommige bestaande Azure-klanten en gedeelde services bevinden zich op de standaard LAN-architectuur (DLA), terwijl nieuwe regio's en virtuele klanten zich bevinden in de Quantum 10 -architectuur (Q10). De DLA-architectuur is een traditioneel boomontwerp, met actieve/passieve toegangsrouters en acl.n.s.- De Quantum 10-architectuur is een Close/mesh-ontwerp van routers, waarbij ACL's niet worden toegepast op de routers. In plaats daarvan worden ACL's toegepast onder de routering, via Software Load Balancing (SLB) of software defined VLAN's.
+Azure heeft twee afzonderlijke architecturen. Sommige bestaande Azure-klanten en gedeelde services bevinden zich op de standaard LAN-architectuur (DLA), terwijl nieuwe regio's en virtuele klanten zich op een Quantum 10-architectuur (Q10) bevinden. De DLA-architectuur is een traditioneel structuur ontwerp, met actieve/passieve toegangs routers en Acl's (Security Access Control Lists) die worden toegepast op de toegangs routers. De Quantum 10-architectuur is een sluit/mesh ontwerp van routers, waarbij Acl's niet worden toegepast op de routers. In plaats daarvan worden Acl's onder de route ring toegepast, via software Load Balancing (SLB) of door software gedefinieerde VLAN'S.
 
-Het volgende diagram biedt een overzicht op hoog niveau van de netwerkarchitectuur binnen een Azure-cluster:
+In het volgende diagram vindt u een overzicht van de netwerk architectuur in een Azure-cluster:
 
 ![Diagram van Azure-netwerk](./media/infrastructure-network/network-arch.png)
 
 ### <a name="quantum-10-devices"></a>Quantum 10-apparaten
-Het Quantum 10-ontwerp voert laag 3-schakelen uit, verspreid over meerdere apparaten in een Clos/mesh-ontwerp. De voordelen van het Q10-ontwerp omvatten een grotere capaciteit en een grotere mogelijkheid om bestaande netwerkinfrastructuur te schalen. Het ontwerp maakt gebruik van border leaf routers, spine switches en top-of-rack routers om verkeer door te geven aan clusters over meerdere routes, waardoor fouttolerantie mogelijk is. Software load balancing, in plaats van hardware-apparaten, behandelt beveiligingsservices zoals netwerkadres vertaling.
+Het ontwerp van de Quantum 10 voert de switch van laag 3 uit op meerdere apparaten in een Clos/mesh-ontwerp. De voor delen van het ontwerp van Q10 bevatten een grotere mogelijkheid en een grotere mogelijkheid om bestaande netwerk infrastructuur te schalen. Het ontwerp maakt gebruik van Border-blad routers, spin-switches en top-of-rack-routers voor het door geven van verkeer aan clusters in meerdere routes, waardoor fout tolerantie mogelijk is. Software-taak verdeling, in plaats van hardwareapparaten, verwerkt beveiligings Services, zoals Network Address Translation.
 
-### <a name="access-routers"></a>Access-routers
-De Distributie/Access L3-routers (AR's) voeren de primaire routeringsfunctionaliteit uit voor de distributie- en toegangslagen. Deze apparaten worden geïmplementeerd als een paar en zijn de standaardgateway voor subnetten. Elk AR-paar kan meerdere L2-aggregatieschakelparen ondersteunen, afhankelijk van de capaciteit. Het maximale aantal is afhankelijk van de capaciteit van het apparaat en de foutdomeinen. Een typisch getal is drie L2 aggregatieswitchparen per AR-paar.
+### <a name="access-routers"></a>Toegangs routers
+De distributie/toegang tot L3-routers (ARs) voeren de primaire routerings functionaliteit uit voor de distributie-en toegangs lagen. Deze apparaten worden geïmplementeerd als een paar en zijn de standaard gateway voor subnetten. Elk AR-paar kan meerdere N2-aggregatie switch paren ondersteunen, afhankelijk van de capaciteit. Het maximum aantal is afhankelijk van de capaciteit van het apparaat en de fout domeinen. Een typisch aantal is drie MB aggregatie switch paren per AR-paar.
 
-### <a name="l2-aggregation-switches"></a>L2-aggregatieswitches  
-Deze apparaten dienen als aggregatiepunt voor L2-verkeer. Zij zijn de distributielaag voor de L2-stof en kunnen grote hoeveelheden verkeer verwerken. Omdat deze apparaten verkeer samenvoegen, vereisen ze 802.1q-functionaliteit en technologieën met hoge bandbreedte, zoals poortaggregatie en 10GE.
+### <a name="l2-aggregation-switches"></a>L2-aggregatie switches  
+Deze apparaten fungeren als een aggregatie punt voor L2-verkeer. Ze zijn de distributie-laag voor de L2-infra structuur en kunnen grote hoeveel heden verkeer verwerken. Omdat deze apparaten verkeer verzamelen, zijn er 802.1 q-functies en technologieën met een hoge band breedte zoals poort aggregatie en 10GE vereist.
 
-### <a name="l2-host-switches"></a>L2-hostschakelaars
-Hosts maken rechtstreeks verbinding met deze switches. Het kunnen rack-mounted switches zijn, of chassis implementaties. De 802.1q standaard maakt het mogelijk voor de aanwijzing van een VLAN als een native VLAN, behandelen dat VLAN als normale (untagged) Ethernet framing. Onder normale omstandigheden worden frames op de inheemse VLAN verzonden en ongemerkt ontvangen op een 802.1q trunk port. Deze functie is ontworpen voor migratie naar 802.1q en compatibiliteit met apparaten die niet geschikt zijn voor niet-802.1q. In deze architectuur maakt alleen de netwerkinfrastructuur gebruik van de native VLAN.
+### <a name="l2-host-switches"></a>L2-host switches
+Hosts maken rechtstreeks verbinding met deze switches. Ze kunnen rack-gekoppelde switches of chassis implementaties zijn. De 802.1 q-standaard staat het aanwijzen van één VLAN toe als systeem eigen VLAN en behandelt dat VLAN als normale (niet-gelabeld) Ethernet-framing. Onder normale omstandigheden worden frames op het systeem eigen VLAN verzonden en worden ze ongecodeerd ontvangen op een 802.1 q-trunk-poort. Deze functie is ontworpen voor migratie naar 802.1 q en compatibiliteit met apparaten die niet voldoen aan het 802.1 q-apparaat. In deze architectuur gebruikt alleen de netwerk infrastructuur het systeem eigen VLAN.
 
-Deze architectuur specificeert een standaard voor native VLAN-selectie. De standaard zorgt er, waar mogelijk, voor dat de AR-apparaten een unieke, native VLAN hebben voor elke trunk en de L2Aggregation naar L2Aggregation trunks. De L2Aggregation naar L2Host Switch trunks hebben een niet-standaard native VLAN.
+Deze architectuur bevat een standaard voor een systeem eigen VLAN-selectie. De standaard garandeert, waar mogelijk, dat de AR-apparaten een uniek, systeem eigen VLAN hebben voor elke trunk en de L2Aggregation voor L2Aggregation-Trunks. De L2Aggregation-naar-L2Host-switch-Trunks hebben een niet-standaard systeem eigen VLAN.
 
-### <a name="link-aggregation-8023ad"></a>Koppelingsaggregatie (802.3ad)
-Link aggregatie maakt het mogelijk om meerdere afzonderlijke koppelingen samen te voegen en te behandelen als één logische koppeling. Om operationele foutopsporing te vergemakkelijken, moet het aantal dat wordt gebruikt om poortkanaalinterfaces aan te wijzen, worden gestandaardiseerd. De rest van het netwerk gebruikt hetzelfde nummer aan beide uiteinden van een poortkanaal.
+### <a name="link-aggregation-8023ad"></a>Koppelings aggregatie (802.3 AD)
+Koppelings aggregatie maakt het mogelijk meerdere afzonderlijke koppelingen samen te bundelen en te worden behandeld als één logische koppeling. Om operationele fout opsporing te vergemakkelijken, moet het nummer dat wordt gebruikt voor het toewijzen van poort kanaal interfaces, worden gestandaardiseerd. De rest van het netwerk gebruikt hetzelfde nummer aan beide uiteinden van een poort kanaal.
 
-De nummers die zijn opgegeven voor de L2Agg-switch naar L2Host zijn de poortkanaalnummers die aan de L2Agg-zijde worden gebruikt. Omdat het bereik van nummers is beperkter aan de L2Host kant, de standaard is het gebruik van nummers 1 en 2 aan de L2Host kant. Deze verwijzen naar het havenkanaal dat respectievelijk naar de "a"-kant en de "b"-kant gaat.
+De getallen die zijn opgegeven voor de switch L2Agg naar L2Host, zijn de poort kanaal nummers die worden gebruikt voor de L2Agg-zijde. Omdat het bereik van getallen groter is dan aan de L2Host zijde, is de standaard het gebruik van de nummers 1 en 2 aan de kant van de L2Host. Deze verwijzen naar het poort kanaal, respectievelijk naar de kant a en de b-zijde.
 
-### <a name="vlans"></a>VLAN's
-De netwerkarchitectuur gebruikt VLAN's om servers samen te groeperen in één broadcastdomein. VLAN-nummers voldoen aan de norm 802.1q, die VLAN's nummer 1-4094 ondersteunt.
+### <a name="vlans"></a>Vlan's
+De netwerk architectuur maakt gebruik van VLAN'S voor het groeperen van servers in één broadcast-domein. VLAN-nummers voldoen aan de 802.1 q-standaard, die ondersteuning biedt voor VLAN'S met de nummering 1-4094.
 
-### <a name="customer-vlans"></a>Klant VLAN's
-U beschikt over verschillende VLAN-implementatieopties die u via de Azure-portal implementeren om te voldoen aan de scheidings- en architectuurbehoeften van uw oplossing. U implementeert deze oplossingen via virtuele machines. Zie [Azure-referentiearchitecturen](https://docs.microsoft.com/azure/architecture/reference-architectures/)voor voorbeelden van klantreferentiearchitecturen .
+### <a name="customer-vlans"></a>Klanten-VLAN'S
+U kunt verschillende VLAN-implementatie opties implementeren via de Azure Portal om te voldoen aan de schei ding en architectuur vereisten van uw oplossing. U implementeert deze oplossingen via virtuele machines. Zie [Azure-referentie architecturen](https://docs.microsoft.com/azure/architecture/reference-architectures/)voor voor beelden van klant referentie architectuur.
 
-### <a name="edge-architecture"></a>Randarchitectuur
-Azure-datacenters zijn gebouwd op zeer redundante en goed ingerichte netwerkinfrastructuren. Microsoft implementeert netwerken binnen de Azure-datacenters met 'need plus one' (N+1) redundantiearchitecturen of beter. Volledige failoverfuncties binnen en tussen datacenters zorgen voor de beschikbaarheid van het netwerk en de service. Extern worden datacenters bediend door speciale netwerkcircuits met hoge bandbreedte. Deze circuits verbinden redundant eigenschappen met meer dan 1200 internetserviceproviders wereldwijd op meerdere peeringpunten. Dit biedt meer dan 2.000 Gbps potentiële randcapaciteit in het hele netwerk.
+### <a name="edge-architecture"></a>Edge-architectuur
+Azure-data centers zijn gebouwd op zeer redundante en goed ingerichte netwerk infrastructuur. Micro soft implementeert netwerken binnen de Azure-data centers met ' behoefte plus één ' (N + 1) redundantie architecturen of beter. Volledige failover-functies binnen en tussen data centers helpen de beschik baarheid van netwerken en services te garanderen. Extern, Data Centers worden geleverd met een speciale netwerk circuit met hoge band breedte. Deze circuits verloopt redundante verbinding met eigenschappen met meer dan 1200 Internet serviceproviders globaal op meerdere peering punten. Dit biedt een capaciteit van meer dan 2.000 Gbps aan het netwerk.
 
-Filterrouters aan de rand en toegangslaag van het Azure-netwerk bieden gevestigde beveiliging op pakketniveau en helpen ongeautoriseerde pogingen om verbinding te maken met Azure te voorkomen. De routers helpen ervoor te zorgen dat de werkelijke inhoud van de pakketten gegevens in de verwachte indeling bevat en voldoet aan het verwachte communicatieschema voor client/server. Azure implementeert een gelaagde architectuur, bestaande uit de volgende componenten voor netwerksegregatie en toegangscontrole:
+Het filteren van routers aan de Edge-en Access-laag van het Azure-netwerk biedt goed opgezette beveiliging op pakket niveau en helpt te voor komen dat niet-geautoriseerde pogingen om verbinding te maken met Azure. De routers helpen ervoor te zorgen dat de daad werkelijke inhoud van de pakketten gegevens in de verwachte indeling bevatten en in overeenstemming is met het verwachte client/server-communicatie schema. Azure implementeert een gelaagde architectuur, die bestaat uit de volgende onderdelen voor netwerk scheiding en-toegangs beheer:
 
-- **Edge-routers.** Deze scheiden de applicatie-omgeving van het internet. Edge-routers zijn ontworpen om anti-spoofbescherming te bieden en de toegang te beperken met behulp van ACL's.
-- **Distributie (toegangs)routers.** Hiermee kunnen alleen door Microsoft goedgekeurde IP-adressen worden goedgekeurd, anti-spoofing worden verstrekt en verbindingen worden gemaakt met behulp van ACL's.
+- **Edge-routers.** Deze schei ding de toepassings omgeving van het internet. Edge-routers zijn ontworpen om beveiliging tegen spoofberichten te bieden en toegang te beperken met behulp van Acl's.
+- **Distributie-routers (Access).** Hiermee worden alleen door micro soft goedgekeurde IP-adressen toegestaan, wordt anti-spoofing geboden en worden verbindingen tot stand gebracht met behulp van Acl's.
 
-### <a name="ddos-mitigation"></a>DDOS mitigatie
-Distributed denial of service (DDoS) aanvallen blijven een echte bedreiging vormen voor de betrouwbaarheid van online services. Naarmate aanvallen meer gericht en geavanceerd worden, en naarmate de diensten die Microsoft biedt geografisch diverser worden, is het identificeren en minimaliseren van de impact van deze aanvallen een hoge prioriteit.
+### <a name="ddos-mitigation"></a>DDOS-beperking
+DDoS-aanvallen (Distributed Denial of service) blijven een echte bedreiging bieden voor de betrouw baarheid van onlineservices. Als aanvallen zijn gerichter en Geavanceerd geworden, en naarmate de services van micro soft meer geografisch worden, is het identificeren en beperken van de impact van deze aanvallen een hoge prioriteit.
 
-[Azure DDoS Protection Standard](../../virtual-network/ddos-protection-overview.md) biedt bescherming tegen DDoS-aanvallen. Zie [Azure DDoS Protection: aanbevolen procedures en referentiearchitecturen](ddos-best-practices.md) voor meer informatie.
+[Azure DDoS Protection Standard](../../virtual-network/ddos-protection-overview.md) biedt beveiliging tegen DDoS-aanvallen. Zie [Azure DDoS Protection: Aanbevolen procedures en referentie architecturen](ddos-best-practices.md) voor meer informatie.
 
 > [!NOTE]
-> Microsoft biedt standaard DDoS-bescherming voor alle Azure-klanten.
+> Micro soft biedt standaard DDoS-beveiliging voor alle Azure-klanten.
 >
 >
 
-## <a name="network-connection-rules"></a>Regels voor netwerkverbindingen
-In het netwerk implementeert Azure edge-routers die beveiliging bieden op pakketniveau om ongeautoriseerde pogingen om verbinding te maken met Azure te voorkomen. Edge-routers zorgen ervoor dat de werkelijke inhoud van de pakketten gegevens in de verwachte indeling bevat en voldoen aan het verwachte communicatieschema voor client/server.
+## <a name="network-connection-rules"></a>Regels voor netwerk verbindingen
+Op het netwerk implementeert Azure Edge-routers die beveiliging op pakket niveau bieden om te voor komen dat niet-geautoriseerde pogingen om verbinding te maken met Azure. Edge-routers zorgen ervoor dat de daad werkelijke inhoud van de pakketten gegevens in de verwachte indeling bevat en aan het verwachte client/server-communicatie schema voldoet.
 
-Edge-routers scheiden de toepassingsomgeving van het internet. Deze routers zijn ontworpen om anti-spoofbescherming te bieden en de toegang te beperken met acl.. Microsoft configureert edge routers met behulp van een gelaagde ACL-benadering, om netwerkprotocollen te beperken die de edge routers en access routers mogen doorleiden.
+Edge-routers scheiden de toepassings omgeving van het internet. Deze routers zijn ontworpen om beveiliging tegen spoofberichten te bieden en de toegang te beperken met behulp van Acl's. Micro soft configureert Edge-routers door gebruik te maken van een gelaagde ACL-benadering, om netwerk protocollen te beperken die de Edge-routers mogen door geven en toegang krijgen tot routers.
 
-Microsoft positioneert netwerkapparaten op toegangs- en randlocaties om te fungeren als grenspunten waar invallen- of uitgangsfilters worden toegepast.
+Micro soft positioneert netwerk apparaten op toegang en Edge-locaties om te fungeren als grens punten waar ingangs-of uitzonderings filters worden toegepast.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
+Zie voor meer informatie over wat micro soft doet bij het beveiligen van de Azure-infra structuur:
 
-- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
-- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
-- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
-- [Azure-productienetwerk](production-network.md)
-- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
-- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
-- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
-- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
-- [Azure-klantgegevensbeveiliging](protection-customer-data.md)
+- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
+- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
+- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
+- [Productie netwerk van Azure](production-network.md)
+- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
+- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
+- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
+- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
+- [Azure-klant gegevens beveiliging](protection-customer-data.md)
 
 

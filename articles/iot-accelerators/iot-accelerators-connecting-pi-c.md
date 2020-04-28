@@ -1,6 +1,6 @@
 ---
-title: Raspberry Pi inrichten voor bewaking op afstand met C - Azure | Microsoft Documenten
-description: Beschrijft hoe u een Raspberry Pi-apparaat aansluit op de remote monitoring-oplossingsversneller met behulp van een toepassing die in C is geschreven.
+title: Raspberry Pi naar externe bewaking inrichten met C-Azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Raspberry Pi-apparaat verbindt met de oplossings versneller voor externe bewaking met behulp van een toepassing die is geschreven in C.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61454493"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Sluit uw Raspberry Pi-apparaat aan op de Remote Monitoring solution accelerator (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Sluit uw Raspberry Pi-apparaat aan op de oplossings versneller voor externe controle (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In deze zelfstudie ziet u hoe u een echt apparaat aansluiten op de versneller van de oplossing op afstand. Zoals bij de meeste ingesloten toepassingen die op apparaten met beperkte beperkingen worden uitgevoerd, wordt de clientcode voor de Raspberry Pi-apparaattoepassing in C geschreven. In deze zelfstudie bouw je de applicatie op een Raspberry Pi met het Raspbian OS.
+In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle. Net als bij de meeste Inge sloten toepassingen die op beperkte apparaten worden uitgevoerd, wordt de client code voor de Raspberry Pi Device-toepassing geschreven in C. In deze zelf studie bouwt u de toepassing op een Raspberry Pi met het besturings systeem Raspbian.
 
-Zie Een nieuw gesimuleerd apparaat maken en testen als u een apparaat liever [simuleert.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Als u liever een apparaat simuleert, raadpleegt u [een nieuw gesimuleerd apparaat maken en testen](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Vereiste hardware
 
-Een desktopcomputer waarmee u op afstand verbinding maken met de opdrachtregel op de Raspberry Pi.
+Een desktop computer waarmee u extern verbinding kunt maken met de opdracht regel op de Raspberry pi.
 
-[Microsoft IoT Starter Kit voor Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) of gelijkwaardige componenten. In deze zelfstudie worden de volgende items uit de kit gebruikt:
+[Micro soft IOT Starter Kit voor Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) of gelijkwaardige onderdelen. In deze zelf studie wordt gebruikgemaakt van de volgende items uit de kit:
 
 - Raspberry Pi 3
 - MicroSD-kaart (met NOOBS)
-- Een USB Mini-kabel
+- Een USB-mini kabel
 - Een Ethernet-kabel
 
-### <a name="required-desktop-software"></a>Vereiste desktopsoftware
+### <a name="required-desktop-software"></a>Vereiste bureaublad software
 
-U hebt SSH-client op uw desktopmachine nodig om op afstand toegang te krijgen tot de opdrachtregel op de Raspberry Pi.
+U hebt SSH-client op uw computer nodig om u in staat te stellen op afstand toegang te krijgen tot de opdracht regel op de Raspberry pi.
 
-- Windows bevat geen SSH-client. Wij raden u aan [PuTTY te](https://www.putty.org/)gebruiken.
-- De meeste Linux-distributies en Mac OS bevatten het ssh-hulpprogramma voor de command-line. Zie [SSH Gebruiken met Linux of Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)voor meer informatie.
+- Windows bevat geen SSH-client. U kunt het beste [putty](https://www.putty.org/)gebruiken.
+- De meeste Linux-distributies en Mac OS bevatten het opdracht regel SSH-hulp programma. Zie [SSH using Linux of Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)voor meer informatie.
 
 ### <a name="required-raspberry-pi-software"></a>Vereiste Raspberry Pi-software
 
-In dit artikel wordt ervan uitgegaan dat u de nieuwste versie van het [Raspbian OS op uw Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/)hebt geïnstalleerd.
+In dit artikel wordt ervan uitgegaan dat u de nieuwste versie van het [Raspbian-besturings systeem hebt geïnstalleerd op uw Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-De volgende stappen laten zien hoe u uw Raspberry Pi voorbereidt op het bouwen van een C-toepassing die verbinding maakt met de oplossingsversneller:
+De volgende stappen laten zien hoe u uw Raspberry Pi voorbereidt voor het bouwen van een C-toepassing die verbinding maakt met de oplossings versneller:
 
-1. Maak verbinding met je Raspberry Pi met **ssh.** Zie [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) op de [Raspberry Pi-website](https://www.raspberrypi.org/)voor meer informatie.
+1. Maak verbinding met uw Raspberry Pi met **SSH**. Zie [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) op de [Raspberry Pi-website](https://www.raspberrypi.org/)voor meer informatie.
 
-1. Gebruik de volgende opdracht om je Raspberry Pi bij te werken:
+1. Gebruik de volgende opdracht om uw Raspberry Pi bij te werken:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Om de stappen in deze handleiding te voltooien, volg je de stappen in het [instellen van je Linux-ontwikkelomgeving](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) om de vereiste ontwikkeltools en -bibliotheken toe te voegen aan je Raspberry Pi.
+1. Volg de stappen in [uw Linux-ontwikkel omgeving instellen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) om de vereiste ontwikkel hulpprogramma's en-bibliotheken toe te voegen aan uw Raspberry pi voor meer informatie over het uitvoeren van de stappen in deze hand leiding.
 
-## <a name="view-the-code"></a>De code weergeven
+## <a name="view-the-code"></a>De code weer geven
 
-De [voorbeeldcode](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) die in deze handleiding wordt gebruikt, is beschikbaar in de GitHub-repository van Azure IoT C SDKs.
+De [voorbeeld code](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) die in deze hand leiding wordt gebruikt, is beschikbaar in de Azure IOT C sdk's github-opslag plaats.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Download de broncode en bereid het project voor
+### <a name="download-the-source-code-and-prepare-the-project"></a>De bron code downloaden en het project voorbereiden
 
-Als u het project wilt voorbereiden, kloont of downloadt u de [Azure IoT C SDKs-repository](https://github.com/Azure/azure-iot-sdk-c) van GitHub.
+Om het project voor te bereiden, moet u de [Azure IOT C-opslag plaats](https://github.com/Azure/azure-iot-sdk-c) van github klonen of downloaden.
 
-Het voorbeeld bevindt zich in de map **samples/solutions/remote_monitoring_client.**
+Het voor beeld bevindt zich in de map **samples/Solutions/remote_monitoring_client** .
 
-Open het **remote_monitoring.c-bestand** in de map **samples/solutions/remote_monitoring_client** in een teksteditor.
+Open het bestand **remote_monitoring. c** in de map **samples/Solutions/remote_monitoring_client** in een tekst editor.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-In de volgende stappen wordt beschreven hoe *u CMake kunt* gebruiken om de clienttoepassing te bouwen. De clienttoepassing voor externe bewaking is gebouwd als onderdeel van het buildproces voor de SDK.
+In de volgende stappen wordt beschreven hoe u *cmake* kunt gebruiken om de client toepassing te bouwen. De client toepassing voor externe controle is gebouwd als onderdeel van het bouw proces voor de SDK.
 
-1. Bewerk het **remote_monitoring.c-bestand** dat u wilt vervangen `<connectionstring>` door de verbindingstekenreeks van het apparaat die u aan het begin van deze handleiding hebt opgemerkt wanneer u een apparaat aan de oplossingsversneller hebt toegevoegd.
+1. Bewerk het **remote_monitoring. c** -bestand dat `<connectionstring>` u wilt vervangen door het apparaat Connection String u hebt genoteerd aan het begin van deze hand leiding wanneer u een apparaat aan de oplossings versneller hebt toegevoegd.
 
-1. Navigeer naar de hoofdmap van uw gekloonde kopie van de [Azure IoT C SDKs-repository](https://github.com/Azure/azure-iot-sdk-c) en voer de volgende opdrachten uit om de clienttoepassing te bouwen:
+1. Ga naar de hoofdmap van de gekloonde kopie van de [Azure IOT C-opslagplaats](https://github.com/Azure/azure-iot-sdk-c) opslagplaats en voer de volgende opdrachten uit om de client toepassing te bouwen:
 
     ```sh
     mkdir cmake
@@ -86,15 +86,15 @@ In de volgende stappen wordt beschreven hoe *u CMake kunt* gebruiken om de clien
     make
     ```
 
-1. Voer de clienttoepassing uit en stuur telemetrie naar IoT Hub:
+1. Voer de client toepassing uit en verzend telemetrie naar IoT Hub:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    Op de console worden berichten weergegeven als:
+    De console geeft berichten weer als:
 
-    - De toepassing stuurt voorbeeldtelemetrie naar de oplossingsversneller.
-    - Reageert op methoden die worden aangeroepen vanuit het oplossingsdashboard.
+    - De toepassing verzendt voor beeld-telemetrie naar de oplossings versneller.
+    - Reageert op methoden die zijn aangeroepen vanuit het dash board van de oplossing.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

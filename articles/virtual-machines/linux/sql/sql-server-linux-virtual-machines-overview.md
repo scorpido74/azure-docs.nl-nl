@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70081955"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
@@ -29,7 +29,7 @@ Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server
 
 Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen.
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Aan de slag met SQL VM's
+## <a name="get-started-with-sql-vms"></a><a id="create"></a>Aan de slag met SQL-Vm's
 
 Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine voor SQL Server met de vereiste versie, de vereiste editie en het vereiste besturingssysteem. De volgende gedeelten bevatten directe koppelingen naar Azure Portal voor de galerie met installatiekopieën van virtuele SQL Server-machines.
 
@@ -49,7 +49,7 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 
 Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pakket en vervolgens verschillende optionele pakketten afhankelijk van uw vereisten. De installatiekopieën van SQL Server voor de virtuele Linux-machines installeren de meeste pakketten automatisch voor u. De volgende tabel laat zien welke pakketten zijn geïnstalleerd voor elke distributie.
 
-| Distributie | [Database Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Zoekopdracht in volledige tekst](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distributie | [Database Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Zoek opdracht in volledige tekst](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nee](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | SLES | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nee](./media/sql-server-linux-virtual-machines-overview/no.png) | ![nee](./media/sql-server-linux-virtual-machines-overview/no.png) |
@@ -67,7 +67,7 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 
 ### <a name="networking"></a>Netwerken
 
-* [Overzicht van virtueel netwerk](../../../virtual-network/virtual-networks-overview.md)
+* [Overzicht van Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP-adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](../portal-create-fqdn.md)
 

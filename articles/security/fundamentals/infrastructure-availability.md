@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheid azure-infrastructuur - Azure-beveiliging
-description: In dit artikel vindt u informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen en de maximale beschikbaarheid van gegevens van klanten te bieden.
+title: Beschik baarheid van Azure-infra structuur-Azure-beveiliging
+description: Dit artikel bevat informatie over wat micro soft doet bij het beveiligen van de Azure-infra structuur en maximale Beschik baarheid van gegevens van klanten biedt.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,42 +16,42 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727220"
 ---
-# <a name="azure-infrastructure-availability"></a>Beschikbaarheid azure-infrastructuur
-In dit artikel vindt u informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen en de maximale beschikbaarheid van gegevens van klanten te bieden. Azure biedt robuuste beschikbaarheid, gebaseerd op uitgebreide redundantie die is bereikt met virtualisatietechnologie.
+# <a name="azure-infrastructure-availability"></a>Beschik baarheid van Azure-infra structuur
+Dit artikel bevat informatie over wat micro soft doet bij het beveiligen van de Azure-infra structuur en maximale Beschik baarheid van gegevens van klanten biedt. Azure biedt robuuste Beschik baarheid, gebaseerd op uitgebreide redundantie die is behaald met de virtualisatiesoftware.
 
-## <a name="temporary-outages-and-natural-disaster"></a>Tijdelijke uitval en natuurramp
-Het Microsoft Cloud Infrastructure and Operations-team ontwerpt, bouwt, exploiteert en verbetert de beveiliging van de cloudinfrastructuur. Dit team zorgt ervoor dat de Azure-infrastructuur hoge beschikbaarheid en betrouwbaarheid, hoge efficiëntie en slimme schaalbaarheid biedt. Het team biedt een veiligere, privé- en vertrouwdere cloud.
+## <a name="temporary-outages-and-natural-disaster"></a>Tijdelijke storingen en natuur rampen
+Het ontwerp van de infra structuur en het operationele team van Microsoft Cloud, bouwt, werkt en verbetert de beveiliging van de Cloud infrastructuur. Dit team zorgt ervoor dat de Azure-infra structuur hoge Beschik baarheid en betrouw baarheid, een hoge efficiëntie en een slimme schaal baarheid levert. Het team biedt een veiligere, persoonlijke en vertrouwde Cloud.
 
-Ononderbreekbare voedingen en grote oevers van batterijen zorgen ervoor dat de elektriciteit continu blijft als er op korte termijn stroomonderbrekingen optreedt. Noodgeneratoren leveren back-upstroom voor langdurige uitval en gepland onderhoud. Als zich een natuurramp voordoet, kan het datacenter on-site brandstofreserves gebruiken.
+De nood voedingen en de grote banken van accu's zorgen ervoor dat elektriciteit continu blijft als er sprake is van een onderbreking van de korte-termijn stroom. Met nood Generators beschikt u over back-upkracht voor verouderde storingen en gepland onderhoud. Als er een natuur ramp optreedt, kan het Data Center gebruikmaken van brandstof reserves op locatie.
 
-Snelle en robuuste glasvezelnetwerken verbinden datacenters met andere grote hubs en internetgebruikers. Compute nodes host workloads dichter bij gebruikers om latentie te verminderen, georedundantie te bieden en de algehele servicetolerantie te verhogen. Een team van ingenieurs werkt de klok rond om ervoor te zorgen diensten zijn voortdurend beschikbaar.
+High-Speed en robuuste glasvezel netwerken verbinden data centers met andere grote hubs en Internet gebruikers. Reken knooppunten hosten de werk belasting dichter bij gebruikers om de latentie te verminderen, geografische redundantie te bieden en de algehele service tolerantie te verhogen. Een team van ingenieurs werkt rond de klok om ervoor te zorgen dat de services permanent beschikbaar zijn.
 
-Microsoft zorgt voor een hoge beschikbaarheid door geavanceerde monitoring- en incidentrespons, serviceondersteuning en back-upfailovermogelijkheden. Geografisch verspreide Microsoft-operations centers werken 24/7/365. Het Azure-netwerk is een van de grootste ter wereld. Het glasvezel- en contentdistributienetwerk verbindt datacenters en randknooppunten om hoge prestaties en betrouwbaarheid te garanderen.
+Micro soft zorgt voor hoge Beschik baarheid door middel van geavanceerde bewaking en reactie op incidenten, service ondersteuning en failover van back-upfunctie. Geografisch gedistribueerd micro soft Operations Centers wordt uitgevoerd op 24/7/365. Het Azure-netwerk is een van de grootste ter wereld. Het glasvezel netwerk en de inhouds distributie maken verbinding met data centers en Edge-knoop punten om hoge prestaties en betrouw baarheid te garanderen.
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
-Azure houdt uw gegevens duurzaam op twee locaties. U de locatie van de back-upsite kiezen. Op beide locaties onderhoudt Azure voortdurend drie gezonde replica's van uw gegevens.
+Azure houdt uw gegevens duurzaam op twee locaties. U kunt de locatie van de back-upsite kiezen. Op beide locaties onderhoudt Azure voortdurend drie gezonde replica's van uw gegevens.
 
-## <a name="database-availability"></a>Beschikbaarheid van de database
-Azure zorgt ervoor dat een database internettoegankelijk is via een internetgateway met langdurige beschikbaarheid van de database. Monitoring beoordeelt de status en status van de actieve databases met een tijdsinterval van vijf minuten.
+## <a name="database-availability"></a>Beschik baarheid van data base
+Azure zorgt ervoor dat een Data Base toegankelijk is via een Internet gateway met aanhoudende Beschik baarheid van de data base. Bewaking evalueert de status en de status van de actieve data bases met een tijds interval van vijf minuten.
 
 ## <a name="storage-availability"></a>Opslagbeschikbaarheid
-Azure levert opslag via een zeer schaalbare en duurzame opslagservice, die verbindingseindpunten biedt. Dit betekent dat een toepassing rechtstreeks toegang heeft tot de opslagservice. De opslagservice verwerkt binnenkomende opslagaanvragen efficiënt, met transactionele integriteit.
+Azure biedt opslag via een zeer schaal bare en duurzame opslag service, waarmee connectiviteit-eind punten worden geboden. Dit betekent dat een toepassing rechtstreeks toegang kan krijgen tot de opslag service. De opslag service verwerkt inkomende opslag aanvragen efficiënt, met transactionele integriteit.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
+Zie voor meer informatie over wat micro soft doet bij het beveiligen van de Azure-infra structuur:
 
-- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
-- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
-- [Azure-netwerkarchitectuur](infrastructure-network.md)
-- [Azure-productienetwerk](production-network.md)
-- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
-- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
-- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
-- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
-- [Azure-klantgegevensbeveiliging](protection-customer-data.md)
+- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
+- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
+- [Azure-netwerk architectuur](infrastructure-network.md)
+- [Productie netwerk van Azure](production-network.md)
+- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
+- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
+- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
+- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
+- [Azure-klant gegevens beveiliging](protection-customer-data.md)

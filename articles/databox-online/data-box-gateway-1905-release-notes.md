@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway 1905 release notes| Microsoft Documenten
-description: Beschrijft kritieke open problemen en oplossingen voor de Azure Data Box Gateway met de release van algemene beschikbaarheid.
+title: Opmerkingen bij de release van Azure Data Box Gateway 1905 | Microsoft Docs
+description: Hierin worden essentiële openstaande problemen en oplossingen beschreven voor het Azure Data Box Gateway uitvoeren van algemene Beschik baarheid.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67078610"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge en Azure Data Box Gateway 1905 release notes Azure Data Box Edge en Azure Data Box Gateway 1905 release notes Azure Data Box Edge and Azure Data Box Gateway 1905 release notes Azure Data
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Release opmerkingen bij Azure Data Box Edge en Azure Data Box Gateway 1905
 
 ## <a name="overview"></a>Overzicht
 
-In de volgende releasenotes worden de kritieke open problemen en de opgeloste problemen voor de release van 1905 voor Azure Data Box Edge en Azure Data Box Gateway geïdentificeerd.
+De volgende opmerkingen bij de release identificeren de kritieke openstaande problemen en de opgeloste problemen voor de 1905-release voor Azure Data Box Edge en Azure Data Box Gateway.
 
-De release notes worden voortdurend bijgewerkt en als kritieke problemen die een tijdelijke oplossing vereisen worden ontdekt, worden ze toegevoegd. Voordat u uw Data Box Edge/Data Box Gateway implementeert, controleert u zorgvuldig de informatie in de releasenotes.
+De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Data Box Edge/Data Box Gateway implementeert.
 
-Deze release komt overeen met de softwareversies:
+Deze release komt overeen met de software versies:
 
 - **Data Box Gateway 1905 (1.6.887.626)**
-- **Gegevensvakrand 1905 (1.6.887.626)**
+- **Data Box Edge 1905 (1.6.887.626)**
 
 > [!NOTE]
-> Update 1905 kan alleen worden toegepast op Data Box Edge-apparaten waarop de GA-versie van de software wordt uitgevoerd.
+> Update 1905 kan alleen worden toegepast op Data Box Edge apparaten met de versie van de software.
 
 ## <a name="whats-new"></a>Nieuwe functies
 
-- **Field Programmeble Gate Array (FPGA) logging verbeteringen** - In deze release hebben we logging en alert verbeteringen met betrekking tot FPGA. Dit is een vereiste update voor Data Box Edge als u de edge compute-functie met de FPGA gebruikt. Zie voor meer informatie hoe [u gegevens transformeren met Edge compute op uw Data Box Edge.](data-box-edge-deploy-configure-compute-advanced.md)
+- **Verbeteringen in de logboek registratie van de Programmeer bare gate array (FPGA)** -in deze release hebben we logboek registratie-en waarschuwings verbeteringen aangebracht die betrekking hebben op FPGA. Dit is een vereiste update voor Data Box Edge als u de functie Edge Compute gebruikt met de FPGA. Zie [gegevens transformeren met Edge Compute op uw data Box Edge](data-box-edge-deploy-configure-compute-advanced.md)voor meer informatie.
 
 ## <a name="known-issues-in-ga-release"></a>Bekende problemen in GA release
 
-Geen nieuwe problemen zijn release bekend voor deze release. Alle release opgemerkt problemen hebben overgedragen van de vorige releases. Als u een lijst met bekende problemen wilt zien, gaat u naar [Bekende problemen in de GA-versie.](data-box-gateway-release-notes.md#known-issues-in-ga-release)
+Er worden geen nieuwe problemen vermeld voor deze release. Alle vermelde release problemen zijn overgenomen uit de vorige releases. Als u een lijst met bekende problemen wilt zien, gaat u naar [bekende problemen in de Ga-release](data-box-gateway-release-notes.md#known-issues-in-ga-release).
 
 
 ## <a name="next-steps"></a>Volgende stappen

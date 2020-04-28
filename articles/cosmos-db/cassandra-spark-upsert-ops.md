@@ -1,6 +1,6 @@
 ---
-title: Upsert-gegevens in Azure Cosmos DB Cassandra API van Spark
-description: In dit artikel wordt beschreven hoe u upseren in tabellen in Azure Cosmos DB Cassandra API van Spark
+title: Gegevens in Azure Cosmos DB Cassandra-API van Spark Upsert
+description: In dit artikel vindt u informatie over het upsert van tabellen in Azure Cosmos DB Cassandra-API vanuit Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60893397"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-gegevens in Azure Cosmos DB Cassandra API van Spark
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Gegevens in Azure Cosmos DB Cassandra-API van Spark Upsert
 
-In dit artikel wordt beschreven hoe u gegevens upsert in Azure Cosmos DB Cassandra API van Spark.
+In dit artikel wordt beschreven hoe u gegevens upsert in Azure Cosmos DB Cassandra-API van Spark.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API-configuratie
+## <a name="cassandra-api-configuration"></a>Cassandra-API configuratie
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Api voor gegevensframe
+## <a name="dataframe-api"></a>Data frame-API
 
-### <a name="create-a-dataframe"></a>Een gegevensframe maken 
+### <a name="create-a-dataframe"></a>Een data frame maken 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -85,12 +85,12 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 
 ## <a name="rdd-api"></a>RDD-API
 > [!NOTE]
-> Upsert van de RDD API is hetzelfde als de create-bewerking 
+> Upsert van de RDD-API is hetzelfde als de maak bewerking 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de volgende artikelen om andere bewerkingen uit te voeren op de gegevens die zijn opgeslagen in Azure Cosmos DB Cassandra API-tabellen:
+Ga verder met de volgende artikelen om andere bewerkingen uit te voeren op de gegevens die zijn opgeslagen in Azure Cosmos DB Cassandra-API tabellen:
  
 * [Bewerkingen verwijderen](cassandra-spark-delete-ops.md)
 * [Aggregatiebewerkingen](cassandra-spark-aggregation-ops.md)
-* [Bewerkingen voor tabelkopiëren](cassandra-spark-table-copy-ops.md)
+* [Tabel Kopieer bewerkingen](cassandra-spark-table-copy-ops.md)

@@ -1,6 +1,6 @@
 ---
-title: Hybride identiteitsontwerp - vereisten voor incidentrespons Azure | Microsoft Documenten
-description: Bepaal de monitoring- en rapportagemogelijkheden voor de hybride identiteitsoplossing die door IT kan worden gebruikt om acties te ondernemen om potentiële bedreigingen te identificeren en te beperken
+title: Hybride identiteits ontwerp-vereisten voor respons op incidenten Azure | Microsoft Docs
+description: Bepaal de bewakings-en rapportage mogelijkheden voor de hybride identiteits oplossing die door IT kan worden gebruikt om maat regelen te nemen om mogelijke bedreigingen te identificeren en te verhelpen
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,55 +18,55 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109282"
 ---
-# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Stel vereisten voor incidentrespons voor uw hybride identiteitsoplossing
-Grote of middelgrote organisaties zullen hoogstwaarschijnlijk een [beveiligingsincidentrespons](https://technet.microsoft.com/library/cc700825.aspx) hebben om IT te helpen acties te ondernemen die neigen naar het niveau van het incident. Het identiteitsbeheersysteem is een belangrijk onderdeel van het incidentresponsproces, omdat het kan worden gebruikt om te bepalen wie een specifieke actie tegen het doel heeft uitgevoerd. De hybride identiteitsoplossing moet monitoring- en rapportagemogelijkheden kunnen bieden die door IT kunnen worden gebruikt om acties te ondernemen om een potentiële bedreiging te identificeren en te beperken. In een typisch incident response plan heb je de volgende fasen als onderdeel van het plan:
+# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Vereisten voor respons op incidenten bepalen voor uw hybride identiteits oplossing
+Voor grote of middel groot organisaties is het mogelijk dat er een reactie op een [beveiligings incident](https://technet.microsoft.com/library/cc700825.aspx) plaatsvindt ter ondersteuning van het onderhouds plan op het niveau van incidenten. Het identiteits beheersysteem is een belang rijk onderdeel van het proces voor reactie op incidenten, omdat het kan worden gebruikt om te helpen identificeren wie een specifieke actie heeft uitgevoerd op het doel. De hybride identiteits oplossing moet kunnen voorzien in bewakings-en rapportage mogelijkheden die kunnen worden gebruikt om maat regelen te nemen om een mogelijke bedreiging te identificeren en te verhelpen. In een typisch antwoord plan voor incidenten hebt u de volgende fasen als onderdeel van het plan:
 
 1. Eerste beoordeling.
 2. Incident communicatie.
-3. Schadebeperking en risicoreductie.
-4. Identificatie van wat het was compromis en ernst.
-5. Bewijsbehoud.
+3. Beschadigings controle en risico beperking.
+4. Identificatie van de inbreuk en ernst.
+5. Behoud van de bewijzen.
 6. Kennisgeving aan de juiste partijen.
-7. Systeemherstel.
+7. Systeem herstel.
 8. Documentatie.
-9. Schade en kostenanalyse.
-10. Revisie verwerken en plannen.
+9. Schade en kosten beoordeling.
+10. Wijzigingen verwerken en plannen.
 
-Tijdens de identificatie van wat het was compromis en ernst-fase, zal het noodzakelijk zijn om de systemen die zijn gecompromitteerd, bestanden die zijn benaderd te identificeren en de gevoeligheid van die bestanden te bepalen. Uw hybride identiteitssysteem moet aan deze vereisten kunnen voldoen om u te helpen bij het identificeren van de gebruiker die deze wijzigingen heeft aangebracht. 
+Tijdens de identificatie van de aanval en ernst fase is het nood zakelijk om de systemen te identificeren die zijn aangetast, bestanden die zijn geopend en de gevoeligheid van deze bestanden te bepalen. Uw hybride identiteits systeem moet aan deze vereisten kunnen voldoen om u te helpen bij het identificeren van de gebruiker die deze wijzigingen heeft aangebracht. 
 
 ## <a name="monitoring-and-reporting"></a>Controle en rapportage
-Vaak kan het identiteitssysteem ook helpen in de eerste beoordelingsfase, voornamelijk als het systeem heeft ingebouwd in auditing- en rapportagemogelijkheden. Tijdens de eerste beoordeling moet de IT-beheerder een verdachte activiteit kunnen identificeren of moet het systeem deze automatisch kunnen activeren op basis van een vooraf geconfigureerde taak. Veel activiteiten kunnen wijzen op een mogelijke aanval, maar in andere gevallen kan een slecht geconfigureerd systeem leiden tot een aantal valse positieven in een inbraakdetectiesysteem. 
+Vaak kan het identiteits systeem ook in de eerste beoordelings fase kunnen helpen, voornamelijk als het systeem ingebouwde controle-en rapportage mogelijkheden heeft. Tijdens de eerste beoordeling moet de IT-beheerder een verdachte activiteit kunnen identificeren, of het systeem moet het automatisch kunnen activeren op basis van een vooraf geconfigureerde taak. Veel activiteiten kunnen duiden op een mogelijke aanval, maar in andere gevallen kan een onjuist geconfigureerd systeem leiden tot een aantal valse positieven in een indringings detectie systeem. 
 
-Het identiteitsbeheersysteem moet IT-beheerders helpen bij het identificeren en rapporteren van deze verdachte activiteiten. Meestal kunnen aan deze technische vereisten worden voldaan door alle systemen te bewaken en een rapportagecapaciteit te hebben die potentiële bedreigingen kan markeren. Gebruik de onderstaande vragen om u te helpen bij het ontwerpen van uw hybride identiteitsoplossing, rekening houdend met de vereisten voor incidentrespons:
+Het identiteits beheersysteem moet IT-beheerders helpen bij het identificeren en rapporteren van deze verdachte activiteiten. Normaal gesp roken kunnen deze technische vereisten worden vervuld door alle systemen te bewaken en een rapportage mogelijkheid te hebben waarmee mogelijke dreigingen kunnen worden gemarkeerd. Gebruik de onderstaande vragen om u te helpen bij het ontwerpen van uw hybride identiteits oplossing, waarbij u rekening houdt met de vereisten voor de reactie op incidenten:
 
-* Heeft uw bedrijf een beveiligingsincident reactie op zijn plaats?
-  * Zo ja, wordt het huidige identiteitsbeheersysteem gebruikt als onderdeel van het proces?
-* Moet uw bedrijf verdachte aanmeldingspogingen van gebruikers op verschillende apparaten identificeren?
-* Moet uw bedrijf de referenties van potentiële gecompromitteerde gebruikers detecteren?
-* Moet uw bedrijf de toegang en actie van de gebruiker controleren?
-* Moet uw bedrijf weten wanneer een gebruiker zijn wachtwoord opnieuw instelt?
+* Heeft uw bedrijf een reactie op een beveiligings incident?
+  * Zo ja, is het huidige systeem voor identiteits beheer gebruikt als onderdeel van het proces?
+* Moet uw bedrijf verdachte aanmeldings pogingen van gebruikers op verschillende apparaten identificeren?
+* Moet uw bedrijf mogelijk referenties van de gebruiker detecteren?
+* Moet uw bedrijf de toegang tot en de actie van de gebruiker controleren?
+* Moet uw bedrijf weten wanneer een gebruiker het wacht woord opnieuw instelt?
 
 ## <a name="policy-enforcement"></a>Beleidsafdwinging
-Tijdens de schadebeperking en de risicoreductiefase is het belangrijk om de werkelijke en potentiële effecten van een aanval snel te verminderen. Die actie die u op dit punt zal nemen kan het verschil maken tussen een minderjarige en een grote. De exacte reactie is afhankelijk van uw organisatie en de aard van de aanval waarmee u wordt geconfronteerd. Als in de eerste beoordeling is geconcludeerd dat een account is gecompromitteerd, moet u beleid afdwingen om dit account te blokkeren. Dat is slechts een voorbeeld waar het identiteitsbeheersysteem zal worden benut. Gebruik de onderstaande vragen om u te helpen bij het ontwerpen van uw hybride identiteitsoplossing, waarbij u rekening houdt met de manier waarop beleid wordt afgedwongen om te reageren op een lopend incident:
+Tijdens beschadigings controle en risico reductie-fase is het belang rijk om snel de daad werkelijke en mogelijke gevolgen van een aanval te verminderen. Deze actie die u op dit punt gaat uitvoeren, kan het verschil tussen een secundaire en een groot deel hiervan maken. Het exacte antwoord is afhankelijk van uw organisatie en de aard van de aanval die u aanneemt. Als de eerste evaluatie heeft geconcludeerd dat er is geknoeid met een account, moet u beleid afdwingen om dit account te blok keren. Dat is slechts één voor beeld waarin het identiteits beheersysteem wordt benut. Gebruik de onderstaande vragen om u te helpen bij het ontwerpen van uw hybride identiteits oplossing, waarbij rekening wordt gehouden met de manier waarop beleids regels worden afgedwongen om te reageren op een doorlopend incident:
 
-* Heeft uw bedrijf beleid om gebruikers te blokkeren van toegang tot het netwerk indien nodig?
-  * Zo ja, integreert de huidige oplossing met het hybride identiteitsbeheersysteem dat u gaat gebruiken?
-* Moet uw bedrijf voorwaardelijke toegang afdwingen voor gebruikers die in quarantaine zitten? 
+* Heeft uw bedrijf beleid voor het blok keren van gebruikers, indien nodig, toegang tot het netwerk?
+  * Zo ja, is de huidige oplossing geïntegreerd met het hybride identiteits beheersysteem dat u gaat nemen?
+* Moet uw bedrijf voorwaardelijke toegang afdwingen voor gebruikers die zich in quarantaine bevinden? 
 
 > [!NOTE]
-> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Definieer gegevensbescherming strategie](plan-hybrid-identity-design-considerations-data-protection-strategy.md) zal gaan over de beschikbare opties en voordelen / nadelen van elke optie.  Door deze vragen te hebben beantwoord, selecteert u welke optie het beste bij uw bedrijfsbehoeften past.
+> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Strategie voor gegevens beveiliging definiëren](plan-hybrid-identity-design-considerations-data-protection-strategy.md) gaat over de beschik bare opties en de voor-en nadelen van elke optie.  Als u deze vragen hebt beantwoord, selecteert u welke optie het beste past bij uw bedrijfs behoeften.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Strategie voor gegevensbescherming definiëren](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+[Strategie voor gegevens beveiliging definiëren](plan-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)
+[Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

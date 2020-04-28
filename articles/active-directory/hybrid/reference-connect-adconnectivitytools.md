@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTools PowerShell-referentie | Microsoft Documenten'
-description: Dit document bevat referentie-informatie voor de ADConnectivityTools.psm1 PowerShell-module.
+title: 'Azure AD Connect: ADConnectivityTools Power shell-referentie | Microsoft Docs'
+description: Dit document bevat referentie-informatie voor de Power shell-module ADConnectivityTools. psm1.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,21 +11,21 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66473787"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell-referentie
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools Power shell-referentie
 
-De volgende documentatie bevat referentiegegevens voor de ADConnectivityTools.psm1 PowerShell-module die is opgenomen in Azure AD Connect.
+De volgende documentatie bevat referentie-informatie voor de Power shell-module ADConnectivityTools. psm1, die deel uitmaakt van Azure AD Connect.
 
-## <a name="confirm-dnsconnectivity"></a>Bevestigde-DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Bevestigen-DnsConnectivity
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Detecteert lokale Dns-problemen.
+Lokale DNS-problemen worden gedetecteerd.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -35,18 +35,18 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>BESCHRIJVING
 
-Met lokale Dns-connectiviteitstests wordt lokale Dns-connectiviteitstests uitgevoerd.
-Om de Active Directory-connector te configureren, moet de gebruiker zowel een naamresolutie hebben voor het forest waarmee hij verbinding probeert te maken als in de domeincontrollers die aan dit forest zijn gekoppeld.
+Voert lokale DNS-connectiviteits tests uit.
+Voor het configureren van de Active Directory-connector moet de gebruiker zowel de naam resolutionthe hebben voor het forest waarmee ze verbinding maken, maar ook in de domein controllers die aan dit forest zijn gekoppeld.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
@@ -54,9 +54,9 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Hiermee geeft u de naam op van het forest waartegen moet worden getest.
+Hiermee geeft u de naam op van het forest dat u wilt testen.
 
 ```yml
 Type: String
@@ -70,9 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC's
+#### <a name="-dcs"></a>-Dc's
 
-Geef DC's op om tegen te testen.
+Geef Dc's op om te testen.
 
 ```yml
 Type: Array
@@ -88,8 +88,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Geeft als resultaat het resultaat van deze diagnose in de vorm van een PSObject.
-Niet nodig tijdens handmatige interactie met deze tool.
+Retourneert het resultaat van deze diagnose in de vorm van een PSObject.
+Niet nodig tijdens hand matige interactie met dit hulp programma.
 
 ```yml
 Type: SwitchParameter
@@ -106,13 +106,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-forestexists"></a>Bevestigen-forestexists
+## <a name="confirm-forestexists"></a>Bevestigen-ForestExists
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Hiermee bepaalt u of er een opgegeven forest bestaat.
+Hiermee wordt bepaald of een opgegeven forest bestaat.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -122,11 +122,11 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 
 ### <a name="description"></a>BESCHRIJVING
 
-Hiermee wordt een DNS-server opgevraagd voor de IP-adressen die aan een forest zijn gekoppeld.
+Query's uitvoeren op een DNS-server voor de IP-adressen die zijn gekoppeld aan een forest.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
@@ -134,9 +134,9 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Hiermee geeft u de naam op van het forest waartegen moet worden getest.
+Hiermee geeft u de naam op van het forest dat u wilt testen.
 
 ```yml
 Type: String
@@ -153,17 +153,17 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-functionallevel"></a>Bevestigen-functioneel niveau
+## <a name="confirm-functionallevel"></a>Bevestigen-FunctionalLevel
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Hiermee controleert u het functionaliteitsniveau van AD-forest.
+Hiermee wordt het functionele niveau van het AD-forest gecontroleerd.
 
 ### <a name="syntax"></a>SYNTAXIS
 
-#### <a name="samaccount"></a>SamAccount (SamAccount)
+#### <a name="samaccount"></a>SamAccount
 
 ```
 Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -177,24 +177,24 @@ Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCrede
 
 ### <a name="description"></a>BESCHRIJVING
 
-Controleert of het functionaliteitsniveau van het AD-forest gelijk is aan of meer is dan een bepaalde MinAdForestVersion (WindowsServer2003).
-Account (Domein\Gebruikersnaam) en Wachtwoord kunnen worden aangevraagd.
+Verifieert of het functionele niveau van het AD-forest gelijk is aan of hoger is dan een opgegeven MinAdForestVersion (WindowsServer2003).
+Account (Domein\gebruikersnaam) en wacht woord kunnen worden aangevraagd.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-FunctionalLevel -Forest "test.contoso.com"
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-#### <a name="example-3"></a>VOORBEELD 3
+#### <a name="example-3"></a>VOOR BEELD 3
 
 ```powershell
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -202,10 +202,10 @@ Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCre
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Doelbos.
-Standaardwaarde is het forest van de momenteel ingelogde gebruiker.
+Doel-forest.
+De standaard waarde is het forest van de gebruiker die momenteel is aangemeld.
 
 ```yml
 Type: String
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 
 #### <a name="-forestfqdn"></a>-ForestFQDN
 
-DoelforestFQDn-object.
+Doel-ForestFQDN-object.
 
 ```yml
 Type: Forest
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-De functie gebruikt de referenties van de gebruiker die momenteel op de computer is ingelogd, in plaats van aangepaste referenties van de gebruiker op te vragen.
+De functie gebruikt de referenties van de gebruiker die momenteel is aangemeld op de computer, in plaats van dat er aangepaste referenties van de gebruiker worden aangevraagd.
 
 ```yml
 Type: SwitchParameter
@@ -254,13 +254,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-networkconnectivity"></a>Bevestig-NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Bevestigen-NetworkConnectivity
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Detecteert problemen met lokale netwerkconnectiviteit.
+Detecteert problemen met de lokale netwerk verbinding.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -270,20 +270,20 @@ Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObje
 
 ### <a name="description"></a>BESCHRIJVING
 
-Voert lokale netwerkconnectiviteitstests uit.
+Voert lokale netwerk connectiviteits tests uit.
 
-Voor de lokale netwerktests moet AAD Connect kunnen communiceren met de benoemde domeincontrollers op poorten 53 (DNS), 88 (Kerberos) en 389 (LDAP) De meeste organisaties draaien DNS op hun DC's, daarom is deze test momenteel geïntegreerd.
-Poort 53 moet worden overgeslagen als een andere DNS-server is opgegeven.
+Voor de lokale netwerk tests moet AAD Connect kunnen communiceren met de benoemde domein controllers op poort 53 (DNS), 88 (Kerberos) en 389 (LDAP) de meeste organisaties DNS op hun Dc's uitvoeren. Dit is de reden waarom deze test momenteel is geïntegreerd.
+Poort 53 moet worden overgeslagen als er een andere DNS-server is opgegeven.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
@@ -291,9 +291,9 @@ Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbos
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-dcs"></a>-DC's
+#### <a name="-dcs"></a>-Dc's
 
-Geef DC's op om tegen te testen.
+Geef Dc's op om te testen.
 
 ```yml
 Type: Array
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Als de gebruiker geen DNS-services van de AD-site / Logon DC gebruikt, kan het zijn dat de controlepoort 53 wordt overgeslagen.
-De gebruiker moet nog steeds in staat zijn om _.ldap._tcp op te lossen. \<forestfqdn\> om de Active Directory Connector-configuratie te laten slagen.
+Als de gebruiker geen DNS-services van de AD-site/aanmeldings domein controller gebruikt, kan het zijn dat u poort 53 wilt overs Laan.
+De gebruiker moet nog wel _. LDAP. _tcp kunnen omzetten. \<forestfqdn\> , zodat de configuratie van de Active Directory-Connector slaagt.
 
 ```yml
 Type: SwitchParameter
@@ -326,8 +326,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Geeft als resultaat het resultaat van deze diagnose in de vorm van een PSObject.
-Niet nodig tijdens handmatige interactie met deze tool.
+Retourneert het resultaat van deze diagnose in de vorm van een PSObject.
+Niet nodig tijdens hand matige interactie met dit hulp programma.
 
 ```yml
 Type: SwitchParameter
@@ -344,13 +344,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-targetsarereachable"></a>Bevestigingsdoelen zijn bereikbaar
+## <a name="confirm-targetsarereachable"></a>Bevestigen-TargetsAreReachable
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Hiermee bepaalt u of een opgegeven forest en de bijbehorende domeincontrollers bereikbaar zijn.
+Hiermee wordt bepaald of een opgegeven forest en de bijbehorende domein controllers bereikbaar zijn.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -360,17 +360,17 @@ Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters
 
 ### <a name="description"></a>BESCHRIJVING
 
-Voert "ping"-tests uit (of een computer een doelcomputer kan bereiken via het netwerk en/of het internet)
+Voert ' ping '-tests uit (of een computer een doel computer kan bereiken via het netwerk en/of het Internet)
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
@@ -378,9 +378,9 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Hiermee geeft u de naam op van het forest waartegen moet worden getest.
+Hiermee geeft u de naam op van het forest dat u wilt testen.
 
 ```yml
 Type: String
@@ -394,9 +394,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC's
+#### <a name="-dcs"></a>-Dc's
 
-Geef DC's op om tegen te testen.
+Geef Dc's op om te testen.
 
 ```yml
 Type: Array
@@ -413,17 +413,17 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-validdomains"></a>Domeinen bevestigen-geldig
+## <a name="confirm-validdomains"></a>Bevestigen-ValidDomains
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Valideren dat de domeinen in de verkregen Forest FQDN bereikbaar zijn
+Controleren of de domeinen in de opgehaalde forest-FQDN bereikbaar zijn
 
 ### <a name="syntax"></a>SYNTAXIS
 
-#### <a name="samaccount"></a>SamAccount (SamAccount)
+#### <a name="samaccount"></a>SamAccount
 
 ```
 Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -437,24 +437,24 @@ Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredenti
 
 ### <a name="description"></a>BESCHRIJVING
 
-Valideer dat alle domeinen in de verkregen Forest FQDN bereikbaar zijn door te proberen DomainGuid en DomainDN op te halen.
-Account (Domein\Gebruikersnaam) en Wachtwoord kunnen worden aangevraagd.
+Controleer of alle domeinen in de opgehaalde forest-FQDN bereikbaar zijn door te proberen DomainGuid en DomainDN op te halen.
+Account (Domein\gebruikersnaam) en wacht woord kunnen worden aangevraagd.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-ValidDomains -Forest "test.contoso.com" -Verbose
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-#### <a name="example-3"></a>VOORBEELD 3
+#### <a name="example-3"></a>VOOR BEELD 3
 
 ```powershell
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -462,9 +462,9 @@ Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Doelbos.
+Doel-forest.
 
 ```yml
 Type: String
@@ -480,7 +480,7 @@ Accept wildcard characters: False
 
 #### <a name="-forestfqdn"></a>-ForestFQDN
 
-DoelforestFQDn-object.
+Doel-ForestFQDN-object.
 
 ```yml
 Type: Forest
@@ -496,7 +496,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-De functie gebruikt de referenties van de gebruiker die momenteel op de computer is ingelogd, in plaats van aangepaste referenties van de gebruiker op te vragen.
+De functie gebruikt de referenties van de gebruiker die momenteel is aangemeld op de computer, in plaats van dat er aangepaste referenties van de gebruiker worden aangevraagd.
 
 ```yml
 Type: SwitchParameter
@@ -513,13 +513,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Bevestigde-ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Bevestigen-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Controleert of een gebruiker enterprise-beheerdersreferenties heeft.
+Controleert of een gebruiker referenties voor ondernemings Administrator heeft.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -529,18 +529,18 @@ Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredential
 
 ### <a name="description"></a>BESCHRIJVING
 
-Zoekt als de opgegeven gebruiker enterprise admin referenties heeft.
-Account (Domein\Gebruikersnaam) en Wachtwoord kunnen worden aangevraagd.
+Zoek opdrachten als de gegeven gebruiker referenties voor ondernemings Administrator heeft.
+Account (Domein\gebruikersnaam) en wacht woord kunnen worden aangevraagd.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -550,7 +550,7 @@ Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-De functie gebruikt de referenties van de gebruiker die momenteel op de computer is ingelogd, in plaats van aangepaste referenties van de gebruiker op te vragen.
+De functie gebruikt de referenties van de gebruiker die momenteel is aangemeld op de computer, in plaats van dat er aangepaste referenties van de gebruiker worden aangevraagd.
 
 ```yml
 Type: SwitchParameter
@@ -567,13 +567,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Haalt een DomainFQDN op uit een combinatie van account en wachtwoorden.
+Hiermee wordt een DomainFQDN van een combi natie van account en wacht woord opgehaald.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -584,19 +584,19 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
 
 ### <a name="description"></a>BESCHRIJVING
 
-Pogingen om een domeinFQDN-object te verkrijgen uit verstrekte referenties.
-Als het domeinFQDN geldig is, wordt een DomainFQDNName of RootDomainName geretourneerd, afhankelijk van de keuze van de gebruiker.
-Account (Domein\Gebruikersnaam) en Wachtwoord kunnen worden aangevraagd.
+Er wordt geprobeerd een domainFQDN-object te verkrijgen met de referenties.
+Als de domainFQDN geldig is, wordt er een DomainFQDNName of RootDomainName geretourneerd, afhankelijk van de keuze van de gebruiker.
+Account (Domein\gebruikersnaam) en wacht woord kunnen worden aangevraagd.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
@@ -606,7 +606,7 @@ Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInU
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
-Gewenste soort gegevens die worden opgehaald.
+Gewenst soort gegevens dat wordt opgehaald.
 Momenteel beperkt tot "DomainFQDNName" of "RootDomainName".
 
 ```yml
@@ -623,7 +623,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-De functie gebruikt de referenties van de gebruiker die momenteel op de computer is ingelogd, in plaats van aangepaste referenties van de gebruiker op te vragen.
+De functie gebruikt de referenties van de gebruiker die momenteel is aangemeld op de computer, in plaats van dat er aangepaste referenties van de gebruiker worden aangevraagd.
 
 ```yml
 Type: SwitchParameter
@@ -637,9 +637,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnexceptiononerror"></a>-ReturnExceptiononError
+#### <a name="-returnexceptiononerror"></a>-ReturnExceptionOnError
 
-Hulpparameter die wordt gebruikt door de functie Start-NetworkConnectivityDiagnosisTools, functie
+Para meter die wordt gebruikt door de functie start-NetworkConnectivityDiagnosisTools
 
 ```yml
 Type: SwitchParameter
@@ -656,13 +656,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Haalt een ForestFQDN op uit een combinatie van account en wachtwoorden.
+Hiermee wordt een ForestFQDN van een combi natie van account en wacht woord opgehaald.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -672,18 +672,18 @@ Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<C
 
 ### <a name="description"></a>BESCHRIJVING
 
-Pogingen om een ForestFQDN te verkrijgen uit de verstrekte referenties.
-Account (Domein\Gebruikersnaam) en Wachtwoord kunnen worden aangevraagd.
+Er wordt geprobeerd een ForestFQDN op te halen uit de gegeven referenties.
+Account (Domein\gebruikersnaam) en wacht woord kunnen worden aangevraagd.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
@@ -691,9 +691,9 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Doelbos. Standaardwaarde is het domein van de momenteel ingelogde gebruiker.
+Doel-forest. De standaard waarde is het domein van de momenteel aangemelde gebruiker.
 
 ```yml
 Type: String
@@ -709,7 +709,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-De functie gebruikt de referenties van de gebruiker die momenteel op de computer is ingelogd, in plaats van aangepaste referenties van de gebruiker op te vragen.
+De functie gebruikt de referenties van de gebruiker die momenteel is aangemeld op de computer, in plaats van dat er aangepaste referenties van de gebruiker worden aangevraagd.
 
 ```yml
 Type: SwitchParameter
@@ -726,13 +726,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
-## <a name="start-connectivityvalidation"></a>Validatie van startconnectiviteit
+## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Hoofdfunctie.
+Hoofd functie.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -743,11 +743,11 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 
 ### <a name="description"></a>BESCHRIJVING
 
-Hier worden alle beschikbare mechanismen uitgevoerd die controleren of AD-referenties geldig zijn.
+Hiermee worden alle beschik bare mechanismen uitgevoerd waarmee de AD-referenties geldig zijn.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
@@ -755,9 +755,9 @@ Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAcco
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Doelbos.
+Doel-forest.
 
 ```yml
 Type: String
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Voor aangepaste installaties: vlag die wordt $True als de gebruiker 'Nieuw AD-account maken' heeft gekozen in het venster AD-forestaccount van de wizard AADConnect.
-$False als de gebruiker 'Bestaand AD-account gebruiken' kiest.
-Voor Express-installaties: De waarde van deze variabele moet worden $True voor Express-installaties.
+Voor aangepaste installaties: een vlag die $True als de gebruiker ' nieuwe AD-account maken ' hebt gekozen in het venster AD-forest-account van de wizard AADConnect.
+$False als de gebruiker ' bestaand AD-account gebruiken ' hebt gekozen.
+Voor snelle installaties: de waarde van deze variabele moet worden $True voor snelle installatie.
 
 ```yml
 Type: Boolean
@@ -791,7 +791,7 @@ Accept wildcard characters: False
 
 #### <a name="-username"></a>-GebruikersNaam
 
-Parameter die vooraf het veld Gebruikersnaam vult wanneer de referenties van de gebruiker worden aangevraagd.
+Para meter waarmee het veld username vooraf wordt ingevuld wanneer de referenties van de gebruiker zijn aangevraagd.
 
 ```yml
 Type: String
@@ -808,13 +808,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
 ### <a name="synopsis"></a>SAMENVATTING
 
-Belangrijkste functie voor netwerkconnectiviteitstests.
+Hoofd functie voor testen van de netwerk verbinding.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -826,17 +826,17 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
 
 ### <a name="description"></a>BESCHRIJVING
 
-Voert lokale netwerkconnectiviteitstests uit.
+Voert lokale netwerk connectiviteits tests uit.
 
 ### <a name="examples"></a>VOORBEELDEN
 
-#### <a name="example-1"></a>VOORBEELD 1
+#### <a name="example-1"></a>VOOR BEELD 1
 
 ```powershell
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 ```
 
-#### <a name="example-2"></a>VOORBEELD 2
+#### <a name="example-2"></a>VOOR BEELD 2
 
 ```powershell
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
@@ -844,9 +844,9 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TES
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-forest"></a>-Bos
+#### <a name="-forest"></a>-Forest
 
-Hiermee geeft u de forestnaam op waartegen moet worden getest.
+Hiermee geeft u de naam van het forest op waartegen moet worden getest.
 
 ```yml
 Type: String
@@ -862,8 +862,8 @@ Accept wildcard characters: False
 
 #### <a name="-credentials"></a>-Referenties
 
-De gebruikersnaam en het wachtwoord van de gebruiker die de test uitvoert.
-Hiervoor is hetzelfde niveau van machtigingen vereist dat nodig is om de wizard Azure AD Connect uit te voeren.
+De gebruikers naam en het wacht woord van de gebruiker die de test uitvoert.
+Hiervoor is hetzelfde machtigings niveau vereist dat vereist is voor het uitvoeren van de Azure AD Connect wizard.
 
 ```yml
 Type: PSCredential
@@ -877,9 +877,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-logfilelocation"></a>-LogFileLocatie
+#### <a name="-logfilelocation"></a>-LogFileLocation
 
-Hiermee geeft u de locatie op van een logboekbestand dat de uitvoer van deze functie bevat.
+Hiermee geeft u de locatie van een logboek bestand op dat de uitvoer van deze functie bevat.
 
 ```yml
 Type: String
@@ -893,9 +893,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC's
+#### <a name="-dcs"></a>-Dc's
 
-Geef DC's op om tegen te testen.
+Geef Dc's op om te testen.
 
 ```yml
 Type: Array
@@ -909,9 +909,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-displayinformativemessage"></a>-Informatief bericht weergeven
+#### <a name="-displayinformativemessage"></a>-DisplayInformativeMessage
 
-Vlag waarmee een bericht over het doel van deze functie kan worden weergegeven.
+Vlag waarmee een bericht over het doel van deze functie kan worden weer gegeven.
 
 ```yml
 Type: SwitchParameter
@@ -927,8 +927,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Geeft als resultaat het resultaat van deze diagnose in de vorm van een PSObject.
-Niet nodig om op te geven tijdens handmatige interactie met deze tool.
+Retourneert het resultaat van deze diagnose in de vorm van een PSObject.
+U hoeft niet in te stellen tijdens hand matige interactie met dit hulp programma.
 
 ```yml
 Type: SwitchParameter
@@ -944,8 +944,8 @@ Accept wildcard characters: False
 
 #### <a name="-validcredentials"></a>-ValidCredentials
 
-Geeft aan of de referenties die de gebruiker heeft getypt geldig zijn.
-Niet nodig om op te geven tijdens handmatige interactie met deze tool.
+Hiermee wordt aangegeven of de door de gebruiker ingevoerde referenties geldig zijn.
+U hoeft niet in te stellen tijdens hand matige interactie met dit hulp programma.
 
 ```yml
 Type: SwitchParameter
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
+Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.

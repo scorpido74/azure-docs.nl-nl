@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: wat is de ADConnectivityTool PowerShell-module | Microsoft Documenten'
-description: Dit document introduceert de nieuwe ADConnectivity PowerShell-module en hoe deze kan worden gebruikt om problemen op te lossen.
+title: 'Azure AD Connect: wat is de ADConnectivityTool Power shell-module | Microsoft Docs'
+description: In dit document wordt de nieuwe ADConnectivity Power shell-module geïntroduceerd en wordt uitgelegd hoe u deze kunt gebruiken om problemen op te lossen.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,70 +12,70 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64571126"
 ---
-# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Azure AD-connectiviteit oplossen met de ADConnectivityTool PowerShell-module
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Problemen met Azure AD-connectiviteit oplossen met de Power shell-module ADConnectivityTool
 
-De ADConnectivity-tool is een PowerShell-module die in een van de volgende opties wordt gebruikt:
+Het hulp programma ADConnectivity is een Power shell-module die wordt gebruikt in een van de volgende:
 
-- Tijdens de installatie wanneer een probleem met de netwerkverbinding de succesvolle validatie van de Active Directory-referenties verhindert, wordt de gebruiker in de wizard opgegeven.
-- Plaats de installatie door een gebruiker die de functies van een PowerShell-sessie aanroept.
+- Tijdens de installatie van een probleem met een netwerk verbinding wordt voor komen dat de Active Directory referenties die de gebruiker in de wizard heeft gegeven, correct worden gevalideerd.
+- Post-installatie door een gebruiker die de functies aanroept vanuit een Power shell-sessie.
 
-Het hulpprogramma bevindt zich in: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
+Het hulp programma bevindt zich in: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool. psm1** 
 
 ## <a name="adconnectivitytool-during-installation"></a>ADConnectivityTool tijdens de installatie
 
-Op de pagina **Uw mappen verbinden** in de wizard Azure AD Connect gebruikt adConnectivityTool automatisch een van de functies om te bepalen wat er aan de hand is.  Een van de volgende opties kan worden beschouwd als netwerkproblemen:
+Als er een netwerk probleem optreedt op de pagina **verbinding maken met uw adres lijsten** Azure AD Connect, gebruikt de ADConnectivityTool automatisch een van de functies om te bepalen wat er gebeurt.  Een van de volgende kan worden beschouwd als netwerk problemen:
 
-- De naam van het forest dat de gebruiker heeft verstrekt, is verkeerd getypt of er staat niet dat Forest niet bestaat 
-- UDP-poort 389 is gesloten in de domeincontrollers die zijn gekoppeld aan het forest dat de gebruiker heeft verstrekt
-- De referenties die zijn opgegeven in het venster 'AD-forestaccount' hebben geen bevoegdheden om de domeincontrollers op te halen die zijn gekoppeld aan het doelforest
-- Een van de TCP-poorten 53, 88 of 389 wordt gesloten in de domeincontrollers die zijn gekoppeld aan het forest dat de gebruiker heeft verstrekt 
-- Zowel UDP 389 als een TCP-poort (of poorten) zijn gesloten
-- DNS kan niet worden opgelost voor het meegeleverde forest en de bijbehorende domeincontrollers
+- De naam van het forest dat door de gebruiker is opgegeven, is onjuist getypt of het forest bestaat niet 
+- UDP-poort 389 is gesloten op de domein controllers die zijn gekoppeld aan het forest dat door de gebruiker is gegeven
+- De referenties die in het venster ' AD-forest-account ' zijn opgenomen, hebben geen bevoegdheden voor het ophalen van de domein controllers die zijn gekoppeld aan de doel-forest
+- Een van de TCP-poorten 53, 88 of 389 is gesloten op de domein controllers die zijn gekoppeld aan het forest dat de gebruiker heeft gegeven 
+- UDP 389 en een TCP-poort (of poorten) zijn gesloten
+- Kan DNS niet omzetten voor het gegeven forest en/of de bijbehorende domein controllers
 
-Wanneer een van deze problemen wordt gevonden, wordt een gerelateerd foutbericht weergegeven in de wizard AADConnect:
+Wanneer een van deze problemen wordt gevonden, wordt er een verwant fout bericht weer gegeven in de wizard AADConnect:
 
 
 ![Fout](media/how-to-connect-adconnectivitytools/error1.png)
 
-Wanneer we bijvoorbeeld een map proberen toe te voegen aan het scherm **Connect your directories,** moet Azure AD Connect dit verifiëren en verwacht het te kunnen communiceren met een domeincontroller via poort 389.  Als dit niet het niet kan, zien we de fout die wordt weergegeven in de bovenstaande schermafbeelding.  
+Als we bijvoorbeeld proberen een directory toe te voegen op het scherm **verbinding maken met uw mappen** , moet Azure AD Connect dit controleren en verwacht te kunnen communiceren met een domein controller via poort 389.  Als dat niet het geval is, ziet u de fout die wordt weer gegeven in de bovenstaande scherm afbeelding.  
 
-Wat er achter de schermen gebeurt, is dat `Start-NetworkConnectivityDiagnosisTools` Azure AD Connect de functie aanroept.  Deze functie wordt aangeroepen wanneer de validatie van referenties mislukt als gevolg van een probleem met de netwerkverbinding.
+Wat er daad werkelijk gebeurt achter de schermen, is dat Azure AD Connect de `Start-NetworkConnectivityDiagnosisTools` functie aanroept.  Deze functie wordt aangeroepen wanneer de validatie van de referenties mislukt vanwege een probleem met de netwerk verbinding.
 
-Ten slotte wordt een gedetailleerd logboekbestand gegenereerd wanneer het hulpprogramma vanuit de wizard wordt aangeroepen. Het logboek bevindt zich in **C:\ProgramData\AADConnect\ADConnectivityTool-datum\<>-time\<>.log**
+Ten slotte wordt er een gedetailleerd logboek bestand gegenereerd wanneer het hulp programma wordt aangeroepen vanuit de wizard. Het logboek bevindt zich in **\<C:\ProgramData\AADConnect\ADConnectivityTool-date\<>-time>. log**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools na installatie
-Nadat Azure AD Connect is geïnstalleerd, kan een van de functies in de ADConnectivityTools PowerShell-module worden gebruikt.  
+Nadat Azure AD Connect is geïnstalleerd, kunnen alle functies in de Power shell-module ADConnectivityTools worden gebruikt.  
 
-U vindt referentie-informatie over de functies in de [ADConnectivityTools-referentie](reference-connect-adconnectivitytools.md)
+U kunt referentie-informatie vinden over de functies in de [ADConnectivityTools-verwijzing](reference-connect-adconnectivitytools.md)
 
-### <a name="start-connectivityvalidation"></a>Validatie van startconnectiviteit
+### <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-We gaan deze functie oproepen omdat deze **alleen** handmatig kan worden aangeroepen als de ADConnectivityTool.psm1 is geïmporteerd in PowerShell. 
+We gaan deze functie aanroepen omdat deze **alleen** hand matig kan worden aangeroepen nadat de ADConnectivityTool. Psm1 in Power shell is geïmporteerd. 
 
-Met deze functie wordt dezelfde logica uitgevoerd als de wizard Azure AD Connect uitvoert om de opgegeven AD-referenties te valideren.  Maar het biedt een veel meer uitgebreide uitleg over het probleem en een voorgestelde oplossing. 
+Deze functie voert dezelfde logica uit die de Azure AD Connect wizard uitvoert om de gegeven AD-referenties te valideren.  Het biedt echter een veel uitgebreidere uitleg over het probleem en een voorgestelde oplossing. 
 
-De connectiviteitsvalidatie bestaat uit de volgende stappen:
--   Domein FQDN-object (volledig gekwalificeerde domeinnaam)
--   Valideren dat deze referenties behoren tot de groep Enterprise Administrators als de gebruiker 'Nieuw AD-account maken' heeft geselecteerd.
--   Forest FQDN-object
--   Controleren of ten minste één domein dat is gekoppeld aan het eerder verkregen Forest FQDN-object bereikbaar is
--   Controleer of het functionele niveau van het forest Windows Server 2003 of hoger is.
+De connectiviteits validatie bestaat uit de volgende stappen:
+-   Domein-FQDN (Fully Qualified Domain Name) object ophalen
+-   Controleer of, als de gebruiker ' nieuwe AD-account maken ' is geselecteerd, deze referenties deel uitmaken van de groep Ondernemings Administrators
+-   FQDN-object van forest ophalen
+-   Controleer of ten minste één domein dat is gekoppeld aan het eerder verkregen forest-FQDN-object bereikbaar is
+-   Controleer of het functionaliteits niveau van het forest Windows Server 2003 of hoger is.
 
 De gebruiker kan een map toevoegen als al deze acties zijn uitgevoerd.
 
-Als de gebruiker deze functie uitvoert nadat een probleem is opgelost (of als er helemaal geen probleem is), geeft de uitvoer aan dat de gebruiker terug gaat naar de wizard Azure AD Connect en probeert de referenties opnieuw in te voegen.
+Als de gebruiker deze functie uitvoert nadat een probleem is opgelost (of als er geen probleem is), wordt in de uitvoer aangegeven dat de gebruiker terug moet gaan naar de wizard Azure AD Connect en vervolgens de referenties opnieuw kunt invoegen.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure AD Connect: accounts en machtigingen](reference-connect-accounts-permissions.md)
-- [Express-installatie](how-to-connect-install-express.md)
+- [Snelle installatie](how-to-connect-install-express.md)
 - [Aangepaste installatie](how-to-connect-install-custom.md)
 - [ADConnectivityTools-verwijzing](reference-connect-adconnectivitytools.md)
 

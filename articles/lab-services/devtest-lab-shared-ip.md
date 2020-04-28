@@ -1,6 +1,6 @@
 ---
-title: Gedeelde IP-adressen in Azure DevTest Labs begrijpen | Microsoft Documenten
-description: Lees hoe Azure DevTest Labs gedeelde IP-adressen gebruikt om de openbare IP-adressen te minimaliseren die nodig zijn om toegang te krijgen tot uw lab-VM's.
+title: Gedeelde IP-adressen in Azure DevTest Labs begrijpen | Microsoft Docs
+description: Meer informatie over hoe Azure DevTest Labs gedeelde IP-adressen gebruikt om de open bare IP-adressen te minimaliseren die nodig zijn voor toegang tot uw Lab-Vm's.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65236897"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Gedeelde IP-adressen in Azure DevTest Labs begrijpen
 
-Azure DevTest Labs laat lab-VM's hetzelfde openbare IP-adres delen om het aantal openbare IP-adressen te minimaliseren dat nodig is om toegang te krijgen tot uw afzonderlijke laboratorium-VM's.  In dit artikel wordt beschreven hoe gedeelde IP's werken en de bijbehorende configuratieopties.
+Azure DevTest Labs kunnen Lab-Vm's hetzelfde open bare IP-adres delen om het aantal open bare IP-adressen te beperken dat nodig is voor toegang tot uw afzonderlijke Lab-Vm's.  In dit artikel wordt beschreven hoe gedeelde IP-adressen en de bijbehorende configuratie opties worden gebruikt.
 
 ## <a name="shared-ip-setting"></a>Gedeelde IP-instelling
 
-Wanneer u een lab maakt, wordt het gemaakt in een subnet van een virtueel netwerk.  Standaard wordt dit subnet gemaakt met **Gedeelde IP-ingesteld voor gedeelde openbaar** maken op *Ja*.  Met deze configuratie wordt één openbaar IP-adres voor het gehele subnet gemaakt.  Zie Een virtueel netwerk configureren in Azure [DevTest Labs](devtest-lab-configure-vnet.md)voor meer informatie over het configureren van virtuele netwerken en subnetten.
+Wanneer u een Lab maakt, wordt dit gemaakt in een subnet van een virtueel netwerk.  Dit subnet wordt standaard gemaakt met de **optie Gedeelde open bare IP inschakelen** ingesteld op *Ja*.  Deze configuratie maakt één openbaar IP-adres voor het hele subnet.  Zie [Configure a Virtual Network in azure DevTest Labs](devtest-lab-configure-vnet.md)voor meer informatie over het configureren van virtuele netwerken en subnetten.
 
-![Nieuw lab subnet](media/devtest-lab-shared-ip/lab-subnet.png)
+![Nieuw Lab-subnet](media/devtest-lab-shared-ip/lab-subnet.png)
 
-Voor bestaande labs u deze optie inschakelen door **Configuratie en beleid > virtuele netwerken te**selecteren. Selecteer vervolgens een virtueel netwerk in de lijst en kies **GEDEELD OPENBAAR IP inschakelen** voor een geselecteerd subnet. U deze optie ook in elk lab uitschakelen als u geen openbaar IP-adres wilt delen in laboratorium-VM's.
+Voor bestaande Labs kunt u deze optie inschakelen door **configuratie en beleid > virtuele netwerken**te selecteren. Selecteer vervolgens een virtueel netwerk in de lijst en kies **gedeeld openbaar IP-adres inschakelen** voor een geselecteerd subnet. U kunt deze optie ook uitschakelen in een Lab als u geen openbaar IP-adres wilt delen via Lab-Vm's.
 
-Alle VM's die in dit lab zijn gemaakt, gebruiken standaard een gedeeld IP-adres.  Bij het maken van de VM kan deze instelling worden waargenomen op de pagina **Geavanceerde instellingen** onder **IP-adresconfiguratie.**
+Alle Vm's die zijn gemaakt in deze Lab, worden standaard gebruikt voor het gebruik van een gedeeld IP-adres.  Bij het maken van de virtuele machine kan deze instelling worden waargenomen op de pagina **Geavanceerde instellingen** onder **IP-adres configuratie**.
 
 ![Nieuwe VM](media/devtest-lab-shared-ip/new-vm.png)
 
-- **Gedeeld:** Alle VM's die zijn gemaakt **als Gedeeld,** worden in één brongroep (RG) geplaatst. Voor die RG wordt één IP-adres toegewezen en alle VM's in de RG gebruiken dat IP-adres.
-- **Publiek:** Elke VM die u maakt heeft zijn eigen IP-adres en wordt gemaakt in een eigen resourcegroep.
-- **Privé:** Elke vm die u maakt, gebruikt een privé-IP-adres. U niet rechtstreeks vanaf internet verbinding maken met deze virtuele machine met Extern bureaublad.
+- **Gedeeld:** Alle Vm's die zijn gemaakt als **gedeeld** , worden in één resource groep (RG) geplaatst. Er wordt één IP-adres toegewezen voor die RG en alle virtuele machines in RG zullen dat IP-adres gebruiken.
+- **Openbaar:** Elke VM die u maakt, heeft een eigen IP-adres en wordt gemaakt in een eigen resource groep.
+- **Privé:** Elke virtuele machine die u maakt, maakt gebruik van een privé-IP-adres. U kunt niet rechtstreeks via Internet verbinding maken met deze virtuele machine met Extern bureaublad.
 
-Wanneer een VM met gedeelde IP-functionaliteit aan het subnet wordt toegevoegd, voegt DevTest Labs de VM automatisch toe aan een load balancer en wijst een TCP-poortnummer toe op het openbare IP-adres, doorsturen naar de RDP-poort op de VM.  
+Wanneer een virtuele machine waarop gedeeld IP-adres is ingeschakeld, wordt toegevoegd aan het subnet, voegt DevTest Labs de virtuele machine automatisch toe aan een load balancer en wordt een TCP-poort nummer op het open bare IP-adressen toegewezen en doorgestuurd naar de RDP-poort op de virtuele machine.  
 
-## <a name="using-the-shared-ip"></a>Het gedeelde IP gebruiken
+## <a name="using-the-shared-ip"></a>Het gedeelde IP-adres gebruiken
 
-- **Linux-gebruikers:** SSH naar de VM met behulp van het IP-adres of volledig gekwalificeerde domeinnaam, gevolgd door een dubbele punt, gevolgd door de poort. In de afbeelding hieronder is `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`bijvoorbeeld het RDP-adres om verbinding te maken met de VM .
+- **Linux-gebruikers:** SSH naar de virtuele machine met behulp van het IP-adres of Fully Qualified Domain Name, gevolgd door een dubbele punt, gevolgd door de poort. In de onderstaande afbeelding ziet u bijvoorbeeld het RDP-adres om verbinding te maken met de `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`virtuele machine.
 
-  ![VM-voorbeeld](media/devtest-lab-shared-ip/vm-info.png)
+  ![VM-voor beeld](media/devtest-lab-shared-ip/vm-info.png)
 
-- **Windows-gebruikers:** Selecteer de knop **Verbinding maken** op de Azure-portal om een vooraf geconfigureerd RDP-bestand te downloaden en toegang te krijgen tot de VM.
+- **Windows-gebruikers:** Selecteer de knop **verbinding maken** op het Azure Portal om een vooraf geconfigureerd RDP-bestand te downloaden en toegang te krijgen tot de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Labbeleid definiëren in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
+* [Lab-beleid definiëren in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
 * [Een virtueel netwerk configureren in Azure DevTest Labs](devtest-lab-configure-vnet.md)
 
 

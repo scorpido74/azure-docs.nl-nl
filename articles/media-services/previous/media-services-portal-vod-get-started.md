@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69015061"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Aan de slag met het leveren van inhoud op aanvraag via Azure Portal
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In deze zelfstudie wordt u begeleid bij het implementeren van een basisservice voor levering van video on demand-inhoud met een Azure Media Services-toepassing via Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 
-* Een Azure-account. Zie gratis [proefversie van Azure voor](https://azure.microsoft.com/pricing/free-trial/)meer informatie. 
-* Een Media Services-account. Zie [Een Media Services-account maken](media-services-portal-create-account.md)als u een Media Services-account wilt maken.
+* Een Azure-account. Zie [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie. 
+* Een Media Services-account. Zie [een Media Services account maken](media-services-portal-create-account.md)als u een Media Services account wilt maken.
 
 Deze zelfstudie bevat de volgende taken:
 
@@ -51,9 +51,9 @@ Bij het werken met Azure Media Services wordt video meestal via Adaptive Bitrate
 
 Het streaming-eindpunt starten:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **Streaming-eindpunten**. 
-3. Selecteert het standaardstreaming-eindpunt. Het venster **STANDAARDSTREAMING ENDPOINT DETAILS** wordt weergegeven.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Selecteer **instellingen** > **streaming-eind punten**. 
+3. Selecteert het standaardstreaming-eindpunt. Het venster **standaard gegevens van het streaming-eind punt** wordt weer gegeven.
 4. Selecteer het pictogram **Start**.
 5. Selecteer de knop **Opslaan**.
 
@@ -61,7 +61,7 @@ Het streaming-eindpunt starten:
 Als u video's wilt streamen met Media Services, moet u de bronvideo's uploaden, ze coderen in meerdere bitsnelheden en vervolgens het resultaat publiceren. De eerste stap wordt in deze sectie beschreven. 
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **-middelen**. Selecteer de knop **Uploaden**.
+2. Selecteer **instellingen** > **assets**. Selecteer de knop **Uploaden**.
    
     ![Bestanden uploaden](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,7 +84,7 @@ U moet het bronbestand coderen in een set multi-bitrate MP4-bestanden om van dyn
 Uw inhoud coderen met behulp van Media Encoder Standard in Azure Portal:
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **-middelen**. Selecteer de asset die u wilt coderen.
+2. Selecteer **instellingen** > **assets**. Selecteer de asset die u wilt coderen.
 3. Selecteer de knop **Coderen**.
 4. Selecteer in het deelvenster **Een asset coderen** de processor **Media Encoder Standard** en een standaardinstelling. Zie [automatisch een bitrate ladder genereren](media-services-autogen-bitrate-ladder-with-mes.md) en [Standaardinstellingen voor taken in Media Encoder Standard](media-services-mes-presets-overview.md) voor informatie over standaardinstellingen. Het is belangrijk om de standaardinstelling te kiezen die het meest geschikt is voor uw invoervideo. Als u bijvoorbeeld weet dat uw invoervideo een resolutie van 1920 x 1080 pixels heeft, kunt u de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken. Als u een video met lage resolutie hebt (640 x 360), kunt u beter niet de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken.
    
@@ -104,7 +104,7 @@ Als u aan uw gebruikers een URL wilt leveren die ze kunnen gebruiken om uw inhou
 * **Streaming-locators (OnDemandOrigin)**. Streaming-locators worden gebruikt voor adaptief streamen. Voorbeelden van adaptief streamen zijn HLS, Smooth Streaming en MPEG-DASH. Als u een streaming-locator wilt maken, moet uw asset een ISM-bestand bevatten. 
 * **Progressieve locators (Shared Access Signature)**. Progressieve locators worden gebruikt voor het leveren van video via progressief downloaden.
 
-Als u een HLS-streaming-URL wilt maken, wordt de URL toegevoegd *(format=m3u8-aapl):*
+Als u een HLS streaming-URL wilt maken, voegt u *(Format = M3U8-AAPL)* toe aan de URL:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -132,7 +132,7 @@ Als u een vervaldatum van een locator wilt bijwerken, kunt u een [REST API](http
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>De portal gebruiken om een asset te publiceren
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **-middelen**. Selecteer de asset die u wilt publiceren.
+2. Selecteer **instellingen** > **assets**. Selecteer de asset die u wilt publiceren.
 3. Selecteer de knop **Publiceren**.
 4. Selecteer het type locator.
 5. Selecteer **Toevoegen**.

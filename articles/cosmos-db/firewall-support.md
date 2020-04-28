@@ -1,37 +1,37 @@
 ---
-title: IP-firewall voor Azure Cosmos-accounts
-description: Meer informatie over het beveiligen van Azure Cosmos DB-gegevens met behulp van IP-toegangscontrolebeleid voor firewallondersteuning.
+title: IP-Firewall voor Azure Cosmos-accounts
+description: Meer informatie over het beveiligen van Azure Cosmos DB gegevens met behulp van IP-toegangs beheer beleid voor firewall ondersteuning.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66241085"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>IP-firewall in Azure Cosmos DB
 
-Azure Cosmos DB ondersteunt een geheim autorisatiemodel dat gebruikmaakt van een sterke Hash-gebaseerde Message Authentication Code (HMAC). Daarnaast ondersteunt Azure Cosmos DB IP-gebaseerde toegangscontroles voor inkomende firewallondersteuning. Dit model is vergelijkbaar met de firewallregels van een traditioneel databasesysteem en biedt een extra beveiligingsniveau voor uw account. Met firewalls u instellen dat uw Azure Cosmos-account alleen toegankelijk is vanaf een goedgekeurde set machines en/of cloudservices. Toegang tot gegevens die zijn opgeslagen in uw Azure Cosmos-database vanuit deze goedgekeurde sets machines en services vereist nog steeds dat de beller een geldig autorisatietoken moet presenteren.
+Voor het beveiligen van gegevens die zijn opgeslagen in uw account, ondersteunt Azure Cosmos DB een geheim autorisatie model dat gebruikmaakt van een sterk op hash gebaseerde Message Authentication Code (HMAC). Daarnaast ondersteunt Azure Cosmos DB ondersteuning voor toegangs beheer op basis van IP-adressen voor binnenkomende firewalls. Dit model is vergelijkbaar met de firewall regels van een traditioneel database systeem en biedt een extra beveiligings niveau voor uw account. Met firewalls kunt u uw Azure Cosmos-account zodanig configureren dat dit alleen toegankelijk is vanuit een goedgekeurde set machines en/of Cloud Services. Voor toegang tot gegevens die zijn opgeslagen in uw Azure Cosmos-Data Base op basis van deze goedgekeurde sets van machines en services, moet de aanroeper nog steeds een geldig autorisatie token presen teren.
 
-## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>Overzicht van IP-toegangscontrole
+## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>Overzicht van IP-toegangs beheer
 
-Standaard is uw Azure Cosmos-account toegankelijk vanaf internet, zolang de aanvraag vergezeld gaat van een geldig autorisatietoken. Om IP-beleidsgebaseerde toegangscontrole te configureren, moet de gebruiker de set IP-adressen of IP-adresbereiken opgeven in cidr-formulier (Classless Inter-Domain Routing) om te worden opgenomen als de toegestane lijst met client-IP-adressen om toegang te krijgen tot een bepaald Azure Cosmos-account. Zodra deze configuratie is toegepast, ontvangen alle aanvragen die afkomstig zijn van machines buiten deze toegestane lijst 403 (Verboden) respons. Bij het gebruik van IP-firewall wordt aanbevolen om Azure-portal toegang te geven tot uw account. Toegang is vereist om het gebruik van data explorer toe te staan en om statistieken op te halen voor uw account die worden weergegeven op de Azure-portal. Wanneer u data explorer gebruikt, moet u niet alleen azure portal toestaan om toegang te krijgen tot uw account, maar ook uw firewall-instellingen bijwerken om uw huidige IP-adres toe te voegen aan de firewallregels. Houd er rekening mee dat het tot 15 min kan duren voordat firewallwijzigingen worden doorgevoerd. 
+Uw Azure Cosmos-account is standaard toegankelijk via internet, zolang de aanvraag vergezeld gaat van een geldig autorisatie token. Voor het configureren van toegangs beheer op basis van IP-beleid, moet de gebruiker de set IP-adressen of IP-adresbereiken in CIDR (Klasseloze route ring van het ene domein) opgeven die moet worden opgenomen als de lijst met toegestane client-Ip's om toegang te krijgen tot een opgegeven Azure Cosmos-account. Zodra deze configuratie is toegepast, ontvangen aanvragen die afkomstig zijn van computers buiten deze toegestane lijst, het antwoord 403 (verboden). Wanneer u IP-firewall gebruikt, is het raadzaam om Azure Portal toegang te geven tot uw account. Toegang is vereist om het gebruik van Data Explorer toe te staan en om de metrische gegevens voor uw account op te halen die worden weer gegeven op de Azure Portal. Wanneer u Data Explorer gebruikt, moet u niet alleen Azure Portal toegang geven tot uw account, maar ook uw firewall instellingen bijwerken om uw huidige IP-adres toe te voegen aan de firewall regels. Houd er rekening mee dat de wijzigingen van de firewall kunnen worden doorgevoerd in 15min. 
 
-U IP-gebaseerde firewall combineren met subnet en VNET access control. Door ze te combineren, u de toegang beperken tot elke bron die een openbaar IP en/of van een specifiek subnet binnen VNET heeft. Zie [Toegang tot Azure Cosmos DB-bronnen van virtuele netwerken](vnet-service-endpoint.md)voor meer informatie over het gebruik van subnet en VNET-gebaseerde toegangscontrole.
+U kunt op IP gebaseerde firewalls combi neren met toegangs beheer voor subnetten en VNET. Door ze te combi neren, kunt u de toegang tot een bron met een openbaar IP-adres en/of van een specifiek subnet in VNET beperken. Zie [toegang Azure Cosmos DB bronnen vanuit virtuele netwerken](vnet-service-endpoint.md)voor meer informatie over het gebruik van het subnet en op VNET gebaseerd toegangs beheer.
 
-Om samen te vatten dat autorisatietoken altijd vereist is om toegang te krijgen tot een Azure Cosmos-account. Als IP-firewall en VNET Access Control List (ACL's) niet zijn ingesteld, kan het Azure Cosmos-account worden geopend met het autorisatietoken. Nadat de IP-firewall of VNET-ACL's of beide zijn ingesteld op het Azure Cosmos-account, krijgen alleen aanvragen afkomstig van de bronnen die u hebt opgegeven (en met het autorisatietoken) geldige antwoorden. 
+Om samen te vatten is het autorisatie token altijd vereist voor toegang tot een Azure Cosmos-account. Als de IP-firewall en de VNET-Access Control lijst (Acl's) niet zijn ingesteld, is het Azure Cosmos-account toegankelijk met het autorisatie token. Nadat de IP-firewall-of VNET-Acl's of beide zijn ingesteld op het Azure Cosmos-account, krijgen alleen aanvragen die afkomstig zijn van de bronnen die u hebt opgegeven (en met het autorisatie token) geldige reacties. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens u IP-firewall of VNET-serviceeindpunt voor uw account configureren met behulp van de volgende documenten:
+Vervolgens kunt u de IP-firewall of het VNET-service-eind punt voor uw account configureren met behulp van de volgende documenten:
 
-* [IP-firewall configureren voor uw Azure Cosmos-account](how-to-configure-firewall.md)
-* [Toegang tot Azure Cosmos DB-bronnen via virtuele netwerken](vnet-service-endpoint.md)
-* [Eindpunt van virtuele netwerkservice configureren voor uw Azure Cosmos-account](how-to-configure-vnet-service-endpoint.md)
+* [IP-Firewall configureren voor uw Azure Cosmos-account](how-to-configure-firewall.md)
+* [Toegang tot Azure Cosmos DB bronnen vanuit virtuele netwerken](vnet-service-endpoint.md)
+* [Service-eind punten voor virtuele netwerken configureren voor uw Azure Cosmos-account](how-to-configure-vnet-service-endpoint.md)
 
 
 

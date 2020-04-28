@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60348609"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: upgraden van DirSync
@@ -28,12 +28,12 @@ Azure AD Connect is de opvolger van DirSync. In dit onderwerp vindt u de maniere
 
 Zorg ervoor dat u, voordat u begint met de installatie van Azure AD Connect, [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen in [Azure AD Connect: Hardware and prerequisites](how-to-connect-install-prerequisites.md) voltooit. In het bijzonder raden we u aan het volgende te lezen, omdat deze gebieden verschillen van DirSync:
 
-* De vereiste versie van .NET en PowerShell. Nieuwere versies zijn vereist op de server voor DirSync.
+* De vereiste versie van .NET en Power shell. Nieuwere versies zijn vereist op de server voor DirSync.
 * De proxyserverconfiguratie. Als u een proxyserver gebruikt om verbinding te maken met internet, moet deze instelling worden geconfigureerd voordat u een upgrade uitvoert. DirSync gebruikte altijd de proxyserver die was geconfigureerd voor de gebruiker die de installatie uitvoerde, maar Azure AD Connect gebruikt de instellingen van de machine.
 * De URL's die moeten zijn geopend in de proxyserver. Voor algemene scenario's die ook worden ondersteund door DirSync, zijn de vereisten hetzelfde. Als u gebruik wilt maken van een van de nieuwe functies van Azure AD Connect, moeten er een aantal nieuwe URL's worden geopend.
 
 > [!NOTE]
-> Nadat u uw nieuwe Azure AD Connect-server hebt ingeschakeld om wijzigingen in Azure AD te synchroniseren, mag u niet meer teruglopen naar dirsync of Azure AD Sync. Downgraden van Azure AD Connect naar oudere clients, waaronder DirSync en Azure AD Sync, worden niet ondersteund en kunnen leiden tot problemen zoals gegevensverlies in Azure AD.
+> Zodra u de nieuwe Azure AD Connect-server hebt ingeschakeld om de wijzigingen te synchroniseren met Azure AD, mag u geen gebruikmaken van DirSync of Azure AD Sync. Downgrade van Azure AD Connect naar verouderde clients, waaronder DirSync en Azure AD Sync wordt niet ondersteund en kan leiden tot problemen zoals gegevens verlies in azure AD.
 
 Als u de upgrade niet vanaf DirSync wilt uitvoeren, zie dan verwante documentatie voor andere scenario's.
 
@@ -128,7 +128,7 @@ Als u wilt doorgaan met de parallelle implementatie, moet u de volgende stappen 
 
 * Klik op de knop **Instellingen exporteren**. Als u Azure AD Connect op een afzonderlijke server installeert, worden deze instellingen gemigreerd van uw huidige DirSync naar de nieuwe Azure AD Connect-installatie.
 
-Wanneer uw instellingen zijn geëxporteerd, kunt u de Azure AD Connect-wizard afsluiten op de DirSync-server. Ga verder met de volgende stap om Azure AD Connect op een aparte server te installeren
+Wanneer uw instellingen zijn geëxporteerd, kunt u de Azure AD Connect-wizard afsluiten op de DirSync-server. Ga door met de volgende stap om Azure AD Connect op een afzonderlijke server te installeren
 
 **Parallelle implementatie met minder dan 50.000 objecten**
 
@@ -162,7 +162,7 @@ Wanneer u Azure AD Connect installeert op een nieuwe server, gaat deze ervan uit
      ![Voer uw Azure AD-referenties in](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klik op **Volgende**.
 8. Laat op de pagina **Gereed voor configuratie** het vakje **Start het synchronisatieproces zodra de configuratie is voltooid** aangevinkt. De server is nu in de [faseringsmodus](how-to-connect-sync-staging-server.md) dus wijzigingen worden niet geëxporteerd naar Azure AD.
-9. Klik **op Installeren**.
+9. Klik op **installeren**.
 10. Nadat de installatie is voltooid, dient u zich af te melden en weer aan te melden bij Windows vóór u Synchronization Service Manager of Synchronization Rule Editor gaat gebruiken of andere configuratiewijzigingen gaat maken.
 
 > [!NOTE]
@@ -171,7 +171,7 @@ Wanneer u Azure AD Connect installeert op een nieuwe server, gaat deze ervan uit
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Controleren of Azure AD Connect gereed is voor de synchronisatie
 Om te controleren of Azure AD Connect gereed is om het over te nemen van DirSync dient u **Synchronization Service Manager** in de groep **Azure AD Connect** te openen vanuit het startmenu.
 
-Ga in de toepassing naar het tabblad **Bewerkingen.** Controleer op dit tabblad of de volgende bewerkingen zijn voltooid:
+Ga in de toepassing naar het tabblad **bewerkingen** . Controleer op dit tabblad of de volgende bewerkingen zijn voltooid:
 
 * Importeren op de AD-connector
 * Importeren op de Azure AD-connector
@@ -206,7 +206,7 @@ U ziet nu het volgende:
 
 ![Voer uw Azure AD-referenties in](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
-* Klik **op** de knop Volgende
+* Klik op de knop **volgende**
 * Klik op de bevestigingspagina op de knop **Installeren**.
 
 Azure AD Connect is nu uw actieve server. Schakel niet over op de bestaande DirSync-server.

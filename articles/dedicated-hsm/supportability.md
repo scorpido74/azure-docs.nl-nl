@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning - Azure Dedicated HSM | Microsoft Documenten
-description: Ondersteuningsopties en verantwoordelijkheden voor Azure Dedicated HSM in verschillende scenario's
+title: Ondersteunings-Azure-specifieke HSM | Microsoft Docs
+description: Ondersteunings opties en verantwoordelijkheids gebieden voor specifieke HSM van Azure in verschillende scenario's
 services: dedicated-hsm
 author: johndaw
 manager: rkarlin
@@ -13,88 +13,88 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881018"
 ---
-# <a name="azure-dedicated-hsm-supportability"></a>Azure Dedicated HSM-ondersteuning
+# <a name="azure-dedicated-hsm-supportability"></a>Exclusieve HSM-ondersteuning van Azure
 
-De Azure Dedicated HSM-service biedt een fysiek apparaat voor uitsluitend gebruik door de klant met volledige beheercontrole en beheerverantwoordelijkheid. Het apparaat ter beschikking gesteld is een [Gemalto SafeNet Luna 7 HSM model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Microsoft heeft geen beheerderstoegang zodra deze door een klant is ingericht, naast fysieke seriële poortbijlage als controlerol.  Zonder toegang kan Microsoft geen doorlopend onderhoud op softwareniveau of verantwoordelijkheden voor systeembeheer hebben. Als gevolg hiervan zijn klanten verantwoordelijk voor typische operationele activiteiten.
-Klanten zijn volledig verantwoordelijk voor toepassingen die gebruik maken van de HSM's en moeten samenwerken met Gemalto voor ondersteuning of consulting-gebaseerde hulp. Vanwege de mate van klantbezit van operationele hygiëne, is het niet mogelijk voor Microsoft om enige vorm van hoge beschikbaarheid garantie voor deze dienst te bieden. Het is de verantwoordelijkheid van de klant om ervoor te zorgen dat hun toepassingen correct zijn geconfigureerd om een hoge beschikbaarheid te bereiken. Microsoft controleert en onderhoudt de status van het apparaat en de netwerkconnectiviteit.
+De speciale HSM-service van Azure biedt een fysiek apparaat voor exclusief gebruik door de klant met volledige administratieve beheer-en beheer verantwoordelijkheid. Het apparaat dat beschikbaar is gemaakt is een [Gemalto SafeNet Luna 7 HSM model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Micro soft heeft geen administratieve toegang meer nadat een klant, buiten de fysieke seriële poort van de bijlage, is ingericht als een bewakings functie.  Zonder toegang kan micro soft geen voortdurende onderhouds-en systeem beheer verantwoordelijkheden hebben. Als gevolg hiervan zijn klanten verantwoordelijk voor typische operationele activiteiten.
+Klanten zijn volledig verantwoordelijk voor toepassingen die gebruikmaken van de Hsm's en moeten samen werken met Gemalto voor ondersteuning of advies. Vanwege de omvang van de eigendom van de operationele hygiëne is het niet mogelijk dat micro soft een gegarandeerde garantie voor hoge Beschik baarheid biedt voor deze service. Het is de verantwoordelijkheid van de klant om ervoor te zorgen dat hun toepassingen op de juiste wijze zijn geconfigureerd om hoge Beschik baarheid te garanderen. Micro soft controleert en beheert de status van het apparaat en de netwerk verbinding.
 
 ## <a name="getting-support"></a>Ondersteuning zoeken
 
-Customer support voor Dedicated HSM is een gezamenlijke inspanning tussen Microsoft en Gemalto. Eventuele hardwareproblemen of netwerkpadproblemen worden door Microsoft aangepakt en alles wat met de werkelijke HSM te maken heeft, zoals configuratie, software, firmware en applicatieontwikkeling, wordt door Gemalto aangepakt. Dit ondersteuningsmodel zorgt voor de snelste route naar de meest effectieve ondersteuning. Als u twijfelt over een bepaald probleem, dient u een ondersteuningsverzoek in bij Microsoft en zorgen we ervoor dat u op de juiste manier wordt geleid. Microsoft blijft betrokken bij alle ondersteuningsscenario's en streeft naar de beste ondersteuningservaring voor onze klanten.
+Klanten ondersteuning voor toegewezen HSM is een gezamenlijke inspanning tussen micro soft en Gemalto. Eventuele hardwareproblemen of problemen met het netwerkpad worden door micro soft verholpen, en alles wat u kunt doen met de daad werkelijke HSM, zoals configuratie, software, firmware en toepassings ontwikkeling, wordt geadresseerd door Gemalto. Dit ondersteunings model zorgt voor een snelle route naar de meest efficiënte ondersteuning. Als u twijfelt met een bepaald probleem, verhoogt u een ondersteunings aanvraag met micro soft en zorgt u ervoor dat u op de juiste wijze omgaat. Micro soft blijft in de ondersteunings scenario's werken en streeft naar de beste ondersteunings ervaring voor onze klanten.
 
-## <a name="gemalto-support"></a>Ondersteuning voor Gemalto
+## <a name="gemalto-support"></a>Gemalto-ondersteuning
 
-Klanten die de Dedicated HSM-service gebruiken, komen in aanmerking voor ondersteuning van Gemalto volgens hun Plus-ondersteuningsplan. Dit vereist alleen een registratieproces met behulp van de Gemalto support portal. Hiervoor worden een klant-id en instructies verstrekt als onderdeel van de eerste afspraak met Microsoft om toegang te krijgen tot de Dedicated HSM-service. Het mechanisme om ondersteuning te krijgen van Gemalto is via hun [customer support portal.](https://supportportal.gemalto.com/csm/)
-Een belangrijk punt van opmerking is dat Gemalto alle software en documentatie zal leveren die nodig is om de HSM (bijvoorbeeld client access software en SDKs) te gebruiken via download op de customer support portal.
+Klanten die gebruikmaken van de speciale HSM-service, komen in aanmerking voor ondersteuning van Gemalto conform hun plus ondersteunings plan. Hiervoor hebt u alleen een registratie proces nodig met behulp van de Gemalto-ondersteunings portal. Er wordt een klant-ID en instructies voor dit gegeven als onderdeel van de eerste betrokkenheid bij micro soft om toegang te krijgen tot de toegewezen HSM-service. Het mechanisme voor het verkrijgen van ondersteuning van Gemalto is via hun [Portal voor klant ondersteuning](https://supportportal.gemalto.com/csm/).
+Een belang rijk punt van de opmerking is dat Gemalto alle software en documentatie biedt die nodig zijn om de HSM (bijvoorbeeld Client Access software en Sdk's) te gebruiken via down load op de portal voor klant ondersteuning.
 
-### <a name="software-components"></a>Softwarecomponenten
+### <a name="software-components"></a>Software onderdelen
 
-Verschillende softwarecomponenten worden gebruikt in de configuratie van HSM-apparaten:
+Diverse software onderdelen worden gebruikt in de configuratie van HSM-apparaten:
 
-* Clientsoftware
+* Client software
 * SDK
 * Hulpprogramma's
 
 ### <a name="guidance"></a>Richtlijnen
 
-Gemalto stelt beheer- en configuratiebegeleiding beschikbaar via het [customer support portal.](https://supportportal.gemalto.com/csm/) Eenmaal aangemeld met een geldige klant-ID, zijn deze documenten beschikbaar om te downloaden. Gemalto biedt ook een reeks integratiegidsen om klanten te helpen met verschillende scenario's en software-integraties. Zie voor meer informatie de [gemalto-partnersite voor Microsoft.](https://safenet.gemalto.com/partners/microsoft/)
+Gemalto maakt beschik bare beheer-en configuratie richtlijnen via de [Portal voor klant ondersteuning](https://supportportal.gemalto.com/csm/). Nadat u zich hebt aangemeld met een geldige klant-ID, zijn deze documenten beschikbaar voor downloaden. Gemalto biedt ook een reeks integratie handleidingen om klanten te helpen met verschillende scenario's en software-integraties. Zie de [Gemalto-partner site voor micro soft](https://safenet.gemalto.com/partners/microsoft/)voor meer informatie.
 
 ### <a name="support"></a>Ondersteuning
 
-Elk probleem of vraag op softwareniveau met betrekking tot het gebruik van de HSM's als onderdeel van de Dedicated HSM-service, moet rechtstreeks worden gericht aan gemalto-ondersteuning. Alle hierboven genoemde softwarecomponenten en elke aangepaste HSM-configuratie die na de inprovisioning is, worden door Gemalto aangepakt. Zie voor meer informatie het [Gemalto customer support portal.](https://supportportal.gemalto.com/csm/)
+Een probleem met het software niveau of vraag in verband met het gebruik van de Hsm's als onderdeel van de speciale HSM-service moet rechtstreeks worden geadresseerd aan Gemalto-ondersteuning. Alle software onderdelen die hierboven worden vermeld en een aangepaste HSM-configuratie die na inrichting is, worden verzorgd door Gemalto. Zie de Gemalto-portal voor [klanten ondersteuning](https://supportportal.gemalto.com/csm/)voor meer informatie.
 
 ### <a name="consulting-services"></a>Adviesservices
 
-Neem contact op met uw Gemalto-accountvertegenwoordiger voor alle hulp bij het ontwerpen, ontwikkelen en implementeren van aangepaste toepassingen die gebruik maken van de HSM.
+Neem contact op met de vertegenwoordiger van uw Gemalto-account voor hulp bij het ontwerpen, ontwikkelen en implementeren van aangepaste toepassingen die gebruikmaken van de HSM.
 
 ## <a name="microsoft-support"></a>Microsoft Ondersteuning
 
-Microsoft zorgt ervoor dat fysieke HSM-apparaten netwerktoegankelijk zijn en in operationele staat zijn voor het exclusieve gebruik van één enkele klant. Klanten zijn verantwoordelijk voor de configuratie, het beheer en het beheer van het apparaat. De verantwoordelijkheden van Microsoft zijn onder andere:
+Micro soft zorgt ervoor dat fysieke HSM-apparaten toegankelijk zijn via het netwerk en in een operationele status voor exclusief gebruik van één klant. Klanten zijn verantwoordelijk voor de configuratie, het beheer en het beheer van het apparaat. De verantwoordelijkheden van micro soft zijn:
 
-* Ervoor zorgen dat het apparaat stroom en koeling heeft
-* Een operationele status van de HSM behouden (bijvoorbeeld pauze-/fixscenario's)
+* Controleren of het apparaat stroom en koeling heeft
+* Het onderhouden van een operationele status van de HSM (bijvoorbeeld scenario's voor beëindigen/herstellen)
 * Het apparaat is toegankelijk via het netwerk.
 
-Problemen zoals de volgende moeten worden gemeld aan Microsoft:
+De volgende problemen moeten worden gerapporteerd aan micro soft:
 
-* Componentfouten
-* Volledig apparaatfalen
-* Problemen met netwerktoegang
-* Problemen met het inrichten en deprovisioneren.
+* Onderdeel fouten
+* Volledige apparaatfout
+* Problemen met netwerk toegang
+* Problemen met inrichten en ongedaan maken van de inrichting.
 
-Microsoft heeft fysieke seriële poort toegang tot het apparaat via een controlerol (dat wil zeggen, niet administratieve rol) die basisgezondheid telemetrie mogelijk maakt.  Hierdoor kan Microsoft de klant proactief op de hoogte stellen van problemen, tenzij de klant ervoor kiest deze machtiging te beperken. 
+Micro soft heeft fysieke seriële poort toegang tot het apparaat via een bewakings functie (dat wil zeggen, geen administratieve rol) die basis status telemetrie mogelijk maakt.  Hierdoor kan micro soft proactieve meldingen over problemen aan de klant aanbieden, tenzij de klant kiest om deze machtiging te beperken. 
 
-### <a name="provisioning-and-decommissioning"></a>Inrichting en ontmanteling
+### <a name="provisioning-and-decommissioning"></a>Inrichting en buiten gebruik stellen
 
-Nadat een klant een goedgekeurde registratie heeft voor de Dedicated HSM-service, kunnen ze HSM-resources maken (momenteel via PowerShell- of command-line-interface en niet via de Azure-portal). De resource gaat door een toewijzingsproces dat een fysiek apparaat in een bepaald gebied in kaart brengt, naar het vooraf gedefinieerde virtuele netwerk (VNet) van een klant. Eenmaal zichtbaar op een VNet, kan de klant toegang krijgen tot het apparaat en het verder configureren volgens de vereisten. Klanten hebben toegang tot hun speciale HSM's met behulp van Gemalto-clientsoftware en -tools. Het proces voor het maken van resources wordt ondersteund door Microsoft. Aangepaste configuratieproces en daarbuiten worden ondersteund door Gemalto. (zie Gemalto ondersteuning hierboven). Wanneer een klant klaar is met het gebruik van een HSM, moet deze worden gereset (of gezeroiseerd) om ervoor te zorgen dat gegevens niet worden persistent. Het proces van het opnieuw instellen van het apparaat verwijdert alle aangepaste configuratie en gegevens. Microsoft dekent het apparaat af en retourneert het in een onberispelijke staat naar het zwembad. Dit betekent dat wanneer het apparaat wordt teruggestuurd naar de pool er geen bewijs is van eerdere activiteiten van de klant. 
+Nadat een klant een goedgekeurde registratie heeft voor de toegewezen HSM-service, kunnen ze HSM-bronnen maken (momenteel via Power shell of de opdracht regel interface en niet de Azure Portal). De resource gaat via een toewijzings proces dat een fysiek apparaat in een opgegeven regio toewijst aan een vooraf gedefinieerd virtueel netwerk (VNet) van een klant. Nadat de klant op een VNet is weer gegeven, heeft deze toegang tot het apparaat en wordt het opnieuw geconfigureerd volgens de vereisten. Klanten hebben toegang tot hun specifieke Hsm's met Gemalto-client software en-hulpprogram ma's. Het proces voor het maken van resources wordt ondersteund door micro soft. Het aangepaste configuratie proces en daarbuiten worden ondersteund door Gemalto. (Zie Gemalto-ondersteuning hierboven). Wanneer een klant klaar is met het gebruik van een HSM, moet deze opnieuw worden ingesteld (of nul) om ervoor te zorgen dat er geen gegevens persistentie is. Het proces van het opnieuw instellen van het apparaat verwijdert alle aangepaste configuratie en gegevens. Micro soft wijst het apparaat toe en retourneert het naar de groep in een pristine-status. Dit betekent dat wanneer het apparaat wordt geretourneerd naar de groep, er geen bewijs is van de vorige klant activiteit. 
 
 ### <a name="hardware-issues"></a>Hardwareproblemen
 
-Het HSM-apparaat heeft redundante en vervangbare voedingen en ventilatorunits.  Het verwijderen van ventilatoreenheden zal echter nog steeds een sabotagegebeurtenis veroorzaken. Wanneer een componentfout optreedt, gebruikt Microsoft het meest geschikte proces om het probleem op componentniveau aan te pakken op een manier die een minimale onderbreking en het laagste risico voor de beschikbaarheid van onze klantenservice veroorzaakt.
-Een ernstiger defect van het apparaat zal resulteren in dat apparaat wordt vervangen door een verse een van de vrije zwembad. De klant neemt eenvoudig het nieuwe apparaat in het bestaande HA-paar op om het te synchroniseren en terug te keren naar volledige operationele status. Het defecte apparaat laat zijn gegevensdragende apparaten ter plaatse in het datacenter verwijderen en versnipperen. Alleen het chassis wordt teruggegeven aan Gemalto voor recycling.
+Het HSM-apparaat heeft redundante en vervangbaar voedingen en ventilator eenheden.  Het verwijderen van een ventilator eenheid heeft echter nog steeds een onrecht matige gebeurtenis. Als er een fout optreedt in een onderdeel, gebruikt micro soft het meest geschikte proces om het probleem op onderdeel niveau op een manier te verhelpen, waardoor de beschik baarheid van de klanten service mini maal wordt onderbroken.
+Een ernstige storing van het apparaat leidt ertoe dat het apparaat wordt vervangen door een nieuw van de gratis groep. De klant bevat gewoon het nieuwe apparaat in het bestaande HA-paar voor het synchroniseren en keert u terug naar de volledige operationele status. Op het apparaat kan de gegevens apparaten worden verwijderd en vernietigd op de site in het Data Center. Alleen het chassis wordt geretourneerd naar Gemalto voor recycling.
 
 
-### <a name="networking-issues"></a>Netwerkproblemen
+### <a name="networking-issues"></a>Netwerk problemen
 
-Als klanten problemen ondervinden met netwerktoegang tot het HSM-apparaat, moeten ze contact opnemen met de ondersteuning van Microsoft. Een eenvoudige test voor netwerktoegang is om SSH te gebruiken om verbinding te maken met het HSM-apparaat. Als dit niet lukt, neemt u contact op met de ondersteuning van Microsoft.
+Als klanten problemen met netwerk toegang tot het HSM-apparaat ondervinden, moeten ze contact opnemen met micro soft ondersteuning. Een eenvoudige test voor netwerk toegang is het gebruik van SSH om verbinding te maken met het HSM-apparaat. Als dit mislukt, neemt u contact op met micro soft ondersteuning.
 
-## <a name="service-level-expectations-for-support"></a>Verwachtingen op serviceniveau voor ondersteuning
+## <a name="service-level-expectations-for-support"></a>Service Level verwachtingen voor ondersteuning
 
-Raadpleeg voor ondersteuningsserviceniveaus van Microsoft het [Azure-ondersteuningsplan](https://azure.microsoft.com/support/plans/).
-Voor gemalto ondersteuning service niveaus, verwijzen naar de [Gemalto Support Essentials](https://azure.microsoft.com/support/plans/).
+Raadpleeg het [ondersteunings plan voor Azure](https://azure.microsoft.com/support/plans/)voor micro soft Support service niveaus.
+Raadpleeg voor Gemalto-ondersteunings service niveaus de [Gemalto-ondersteuning](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het wordt aanbevolen dat belangrijke concepten zoals hoge beschikbaarheid en beveiliging goed worden begrepen voordat apparaatinrichting en toepassingsontwerp of -implementatie worden geïmplementeerd.
+Het is raadzaam om de belangrijkste concepten, zoals hoge Beschik baarheid en beveiliging, goed te begrijpen voor het inrichten van apparaten en het ontwerpen of implementeren van toepassingen.
 
-* [Implementatiearchitectuur](deployment-architecture.md)
-* [Hoge beschikbaarheid](high-availability.md)
+* [Implementatie architectuur](deployment-architecture.md)
+* [Hoge Beschik baarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
-* [Networking](networking.md)
+* [Netwerken](networking.md)
 

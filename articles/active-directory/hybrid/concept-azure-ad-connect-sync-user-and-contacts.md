@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie: gebruikers, groepen en contactpersonen begrijpen | Microsoft Documenten'
-description: Hiermee worden gebruikers, groepen en contactpersonen in Azure AD Connect-synchronisatie uitgelegd.
+title: 'Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen | Microsoft Docs'
+description: Hierin worden gebruikers, groepen en contact personen beschreven in Azure AD Connect synchronisatie.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,64 +16,64 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245483"
 ---
-# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronisatie van Azure AD Connect: gebruikers, groepen en contactpersonen begrijpen
-Er zijn verschillende redenen waarom u meerdere Active Directory-forests zou hebben en er verschillende implementatietopologieën zijn. Veelvoorkomende modellen zijn een account-resource implementatie en GAL sync'ed forests na een fusie & overname. Maar zelfs als er pure modellen zijn, zijn hybride modellen ook gebruikelijk. De standaardconfiguratie in Azure AD Connect-synchronisatie gaat niet uit van een bepaald model, maar afhankelijk van hoe gebruikersmatching is geselecteerd in de installatiehandleiding, kunnen verschillende gedragingen worden waargenomen.
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen
+Er zijn verschillende redenen waarom u meerdere Active Directory forests zou hebben en er verschillende implementatie topologieën zijn. Algemene modellen bevatten een account-resource-implementatie en algemene sync'ed-forests na een fusie & overname. Maar zelfs als er zuivere modellen zijn, zijn hybride modellen ook gebruikelijk. De standaard configuratie in Azure AD Connect-synchronisatie gaat niet uit van een bepaald model, maar afhankelijk van de manier waarop gebruikers overeenkomst in de installatie handleiding is geselecteerd, kan verschillende gedragingen worden waargenomen.
 
-In dit onderwerp gaan we door hoe de standaardconfiguratie zich gedraagt in bepaalde topologieën. We gaan door de configuratie en de Synchronisatie regels Editor kan worden gebruikt om te kijken naar de configuratie.
+In dit onderwerp gaan we uit van de manier waarop de standaard configuratie zich in bepaalde topologieën gedraagt. De configuratie wordt door lopen en de editor voor synchronisatie regels kan worden gebruikt om de configuratie te bekijken.
 
-Er zijn een paar algemene regels die de configuratie veronderstelt:
-* Ongeacht welke order we importeren uit de bron Active Directories, het eindresultaat moet altijd hetzelfde zijn.
-* Een actief account draagt altijd aanmeldingsgegevens bij, waaronder **userPrincipalName** en **sourceAnchor.**
-* Een uitgeschakeld account zal userPrincipalName en sourceAnchor bijdragen, tenzij het een gekoppeld postvak is, als er geen actief account te vinden is.
-* Een account met een gekoppeld postvak wordt nooit gebruikt voor userPrincipalName en sourceAnchor. Er wordt van uitgegaan dat een actieve account later zal worden gevonden.
-* Een contactobject kan worden ingericht in Azure AD als contactpersoon of als gebruiker. U weet het pas echt als alle Active Directory-forests van de bron zijn verwerkt.
+Er zijn enkele algemene regels die de configuratie veronderstelt:
+* Ongeacht de volg orde die we importeren vanuit de bron Active Directory, moet het eind resultaat altijd hetzelfde zijn.
+* Bij een actief account worden aanmeldings gegevens altijd bijgemeld, waaronder **userPrincipalName** en **Source Anchor**.
+* Met een uitgeschakeld account worden userPrincipalName en source Anchor gedraagt, tenzij het een gekoppeld postvak is, als er geen actief account is gevonden.
+* Een account met een gekoppeld postvak wordt nooit gebruikt voor userPrincipalName en source Anchor. Er wordt van uitgegaan dat een actief account later wordt gevonden.
+* Een contact-object kan worden ingericht naar Azure AD als contact persoon of als gebruiker. U weet pas zeker totdat alle bron Active Directory bossen zijn verwerkt.
 
 ## <a name="groups"></a>Groepen
-Belangrijke punten om rekening mee te houden bij het synchroniseren van groepen van Active Directory naar Azure AD:
+Belang rijke punten waar u rekening mee moet houden bij het synchroniseren van groepen van Active Directory naar Azure AD:
 
-* Azure AD Connect sluit ingebouwde beveiligingsgroepen uit van adreslijstsynchronisatie.
+* Azure AD Connect ingebouwde beveiligings groepen uit te sluiten van Directory synchronisatie.
 
-* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [lidmaatschappen](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) van primaire groepen naar Azure AD.
+* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [primaire groepslid maatschappen](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) naar Azure AD.
 
-* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van lidmaatschappen van [dynamische distributiegroepen](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) naar Azure AD.
+* Azure AD Connect biedt geen ondersteuning voor het synchroniseren van [dynamische distributie groepslid maatschappen](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) naar Azure AD.
 
-* Ga als lid van de groep Active Directory naar Azure AD als een groep met e-mail:
+* Een Active Directory groep als een e-mail groep synchroniseren met Azure AD:
 
-    * Als het *kenmerk proxyAdres* van de groep leeg is, moet het *e-mailkenmerk* een waarde hebben
+    * Als het kenmerk *proxyAddress attribuut* van de groep leeg is, moet het *e-mail* kenmerk een waarde hebben
 
-    * Als het kenmerk *proxyAdres* van de groep niet leeg is, moet het ten minste één SMTP-proxyadreswaarde bevatten. Hier volgen enkele voorbeelden:
+    * Als het kenmerk *proxyAddress attribuut* van de groep niet-leeg is, moet deze ten minste één SMTP-proxy adres waarde bevatten. Hier volgen enkele voorbeelden:
     
-      * Een Active Directory-groep waarvan het kenmerk proxyAdres waarde heeft *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* is niet e-mailingeschakeld in Azure AD. Het heeft geen SMTP-adres.
+      * Een Active Directory groep waarvan het kenmerk proxyAddress attribuut de waarde *{"een x500:/0 = contoso. com/OE = users/CN = testgroup"}* heeft, wordt in azure AD geen e-mail ingeschakeld. Het bevat geen SMTP-adres.
       
-      * Een Active Directory-groep waarvan het kenmerk proxyAddress waarden *heeft\@{"X500:/0=contoso.com/ou=users/cn=testgroep","SMTP:johndoe contoso.com"}* wordt e-mail ingeschakeld in Azure AD.
+      * Een Active Directory groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP: janjansen\@contoso.com"} heeft,* wordt in azure AD ingeschakeld als e-mail adres.
       
-      * Een Active Directory-groep waarvan het kenmerk proxyAddress waarden heeft *{"X500:/0=contoso.com/ou=users/cn=testgroep",\@"smtp:johndoe contoso.com"}* wordt ook e-mail ingeschakeld in Azure AD.
+      * Een Active Directory-groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP:\@JANJANSEN contoso.com"} heeft,* wordt ook in azure AD ingeschakeld.
 
 ## <a name="contacts"></a>Contactpersonen
-Het hebben van contactpersonen die een gebruiker in een ander forest vertegenwoordigen, is gebruikelijk na een fusie & overname waarbij een GALSync-oplossing twee of meer Exchange-forests overbrugt. Het contactobject wordt altijd vanuit de verbindingsruimte naar het metaverse verbonden met behulp van het kenmerk e-mail. Als er al een contactobject of gebruikersobject met hetzelfde e-mailadres is, worden de objecten samengevoegd. Dit is geconfigureerd in de regel **In van AD – Join contact .** Er is ook een regel met de naam **In van AD – Algemeen contact** met een kenmerkstroom naar het metaverse kenmerk **sourceObjectType** met de constante **contactpersoon**. Deze regel heeft een zeer lage prioriteit, dus als een gebruikersobject is verbonden met hetzelfde doel, dan zal de regel **In van AD – User Common** de waardegebruiker aan dit kenmerk bijdragen. Met deze regel heeft dit kenmerk de waarde Contactpersoon als er geen gebruiker is lid en de waarde Gebruiker als ten minste één gebruiker is gevonden.
+Het hebben van contact personen die een gebruiker in een ander forest vertegenwoordigen, is gebruikelijk nadat een fusie & verwerving waarbij een GALSync-oplossing twee of meer Exchange-forests overbrugget. Het contact-object wordt altijd aan de hand van de ruimte van de connector aan de tekst toegevoegd met behulp van het kenmerk mail. Als er al een contact object of gebruikers object is met hetzelfde e-mail adres, worden de objecten samengevoegd. Dit wordt geconfigureerd in de regel **in vanuit AD: contact opnemen met**. Er is ook een regel genoemd **in van AD: contact opnemen met common** met een kenmerk stroom naar het **sourceObjectType** kenmerk van de permanente **contact persoon**. Deze regel heeft een zeer lage prioriteit, dus als een gebruikers object lid is van hetzelfde omgekeerde object, wordt de waarde gebruiker door de regel **in van AD: gemeen schappelijk door de gebruiker gebruikt** . Met deze regel krijgt dit kenmerk de waarde contact als er geen gebruiker is toegevoegd en de waarde gebruiker als er ten minste één gebruiker is gevonden.
 
-Voor het inrichten van een object op Azure AD maakt de uitgaande regel **Out to AAD – Contact Join** een contactobject als het metaverse kenmerk **sourceObjectType** is ingesteld op **Contact**. Als dit kenmerk is ingesteld op **Gebruiker,** maakt de **regel Uit naar AAD – User Join** in plaats daarvan een gebruikersobject.
-Het is mogelijk dat een object wordt gepromoot van Contact naar Gebruiker wanneer meer actieve mappen worden geïmporteerd en gesynchroniseerd.
+Voor het inrichten van een object voor Azure AD wordt met de uitgaande regel **out naar Aad – contact opnemen** gemaakt een object contact opgenomen als het **sourceObjectType** -kenmerk is ingesteld op **contact persoon**. Als dit kenmerk is ingesteld op **gebruiker**, wordt in plaats daarvan in de regel **naar Aad** een gebruikers object gemaakt.
+Het is mogelijk dat een object wordt gepromoveerd van een contact persoon naar een gebruiker wanneer er meer Active Directory-bronnen worden geïmporteerd en gesynchroniseerd.
 
-In een GALSync-topologie vinden we bijvoorbeeld contactobjecten voor iedereen in het tweede forest wanneer we het eerste forest importeren. Hiermee worden nieuwe contactobjecten in de AAD-connector opgenomen. Wanneer we later het tweede forest importeren en synchroniseren, zullen we de echte gebruikers vinden en ze aansluiten bij de bestaande metaverse objecten. Vervolgens verwijderen we het contactobject in AAD en maken we in plaats daarvan een nieuw gebruikersobject.
+In een GALSync-topologie worden bijvoorbeeld contact objecten voor iedereen in het tweede forest gevonden bij het importeren van het eerste forest. Hiermee worden nieuwe contact objecten in de AAD-connector gemaakt. Wanneer we het tweede forest later importeren en synchroniseren, zullen we de echte gebruikers vinden en deze koppelen aan de bestaande omgekeerde objecten. Vervolgens wordt het contact object in AAD verwijderd en wordt in plaats daarvan een nieuw gebruikers object gemaakt.
 
-Als u een topologie hebt waarbij gebruikers worden weergegeven als contactpersonen, moet u ervoor zorgen dat u gebruikers in het e-mailkenmerk in de installatiehandleiding matcht. Als u een andere optie selecteert, hebt u een orderafhankelijke configuratie. Contactobjecten worden altijd lid van het e-mailkenmerk, maar gebruikersobjecten worden alleen lid van het e-mailkenmerk als deze optie is geselecteerd in de installatiehandleiding. U dan eindigen met twee verschillende objecten in het metaverse met hetzelfde e-mailkenmerk als het contactobject vóór het object is geïmporteerd. Tijdens het exporteren naar Azure AD wordt er een fout gegenereerd. Dit gedrag is door het ontwerp en zou wijzen op slechte gegevens of dat de topologie niet correct werd geïdentificeerd tijdens de installatie.
+Als u een topologie hebt waarin gebruikers worden weer gegeven als contact personen, zorg er dan voor dat u selecteert dat gebruikers overeenkomen met het kenmerk mail in de installatie handleiding. Als u een andere optie selecteert, hebt u een order afhankelijke configuratie. Contact objecten worden altijd gekoppeld aan het e-mail kenmerk, maar gebruikers objecten worden alleen toegevoegd aan het e-mail kenmerk als deze optie is geselecteerd in de installatie handleiding. U kunt vervolgens op twee verschillende objecten in de omgekeerde met hetzelfde e-mail kenmerk eindigen als het object contact persoon is geïmporteerd vóór het gebruikers object. Tijdens het exporteren naar Azure AD wordt een fout gegenereerd. Dit gedrag is inherent aan het ontwerp en duidt op onjuiste gegevens of de topologie is onjuist geïdentificeerd tijdens de installatie.
 
 ## <a name="disabled-accounts"></a>Uitgeschakelde accounts
-Uitgeschakelde accounts worden ook gesynchroniseerd met Azure AD. Uitgeschakelde accounts zijn gebruikelijk om bronnen in Exchange weer te geven, bijvoorbeeld vergaderruimtes. De uitzondering is gebruikers met een gekoppeld postvak; zoals eerder vermeld, zullen deze nooit een account inrichten bij Azure AD.
+Uitgeschakelde accounts worden ook gesynchroniseerd met Azure AD. Uitgeschakelde accounts zijn gebruikelijk om resources te vertegenwoordigen in Exchange, bijvoorbeeld Vergader zalen. De uitzonde ring is gebruikers met een gekoppeld postvak. zoals eerder vermeld, wordt er nooit een account in azure AD ingericht.
 
-De aanname is dat als er een uitgeschakeld gebruikersaccount wordt gevonden, we later geen ander actief account meer vinden en het object is ingericht op Azure AD met de userPrincipalName en sourceAnchor gevonden. In het geval dat een ander actief account wordt samengevoegd tot hetzelfde metaverse object, worden de userPrincipalName en sourceAnchor gebruikt.
+De veronderstelling is dat als er een uitgeschakeld gebruikers account wordt gevonden, er nog geen ander actief account wordt gedetecteerd en dat het object wordt ingericht in azure AD met de userPrincipalName en source Anchor gevonden. Als een ander actief account wordt toegevoegd aan hetzelfde omgekeerde object, worden de userPrincipalName en source Anchor gebruikt.
 
-## <a name="changing-sourceanchor"></a>Bronanker wijzigen
-Wanneer een object is geëxporteerd naar Azure AD, mag het sourceAnchor niet meer worden gewijzigd. Wanneer het object is geëxporteerd, wordt de metaverse **kenmerkcloudSourceAnchor** ingesteld met de **sourceAnchor-waarde** die is geaccepteerd door Azure AD. Als **sourceAnchor** is gewijzigd en niet overeenkomt met **cloudSourceAnchor,** wordt de regel **uit naar AAD – User Join** het kenmerk error **sourceAnchor verwijderd.** In dit geval moeten de configuratie of gegevens worden gecorrigeerd, zodat dezelfde sourceAnchor weer in de metaverse aanwezig is voordat het object opnieuw kan worden gesynchroniseerd.
+## <a name="changing-sourceanchor"></a>Source Anchor wijzigen
+Wanneer een object naar Azure AD is geëxporteerd, mag het source Anchor niet meer worden gewijzigd. Wanneer het object is geëxporteerd, wordt het **cloudSourceAnchor** -kenmerk dat is ingesteld met de **Source Anchor** -waarde die is geaccepteerd door Azure AD. Als **Source Anchor** is gewijzigd en niet overeenkomt met **cloudSourceAnchor**, wordt met de regel **uit voor Aad-gebruiker toevoegen** het fout **kenmerk source Anchor**verwijderd. In dit geval moeten de configuratie of de gegevens worden gecorrigeerd, zodat dezelfde source anchor in de omgekeerde tekst opnieuw wordt weer gegeven voordat het object opnieuw kan worden gesynchroniseerd.
 
 ## <a name="additional-resources"></a>Aanvullende resources
-* [Synchronisatie van Azure AD Connect: synchronisatieopties aanpassen](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronisatie: synchronisatie opties aanpassen](how-to-connect-sync-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
 

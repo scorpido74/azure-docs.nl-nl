@@ -1,6 +1,6 @@
 ---
-title: Identiteitsvereisten voor hybride cloudidentiteitsontwerp Azure | Microsoft Documenten
-description: Identificeer de bedrijfsbehoeften van het bedrijf die u ertoe zullen brengen de vereisten voor het hybride identiteitsontwerp te definiëren.
+title: Identiteits vereisten voor hybride Cloud identiteits ontwerp Azure | Microsoft Docs
+description: Identificeer de bedrijfs behoeften van het bedrijf waarmee u de vereisten voor het ontwerp van de hybride identiteit kunt definiëren.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,98 +18,98 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65950891"
 ---
-# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Identiteitsvereisten voor uw hybride identiteitsoplossing bepalen
-De eerste stap in het ontwerpen van een hybride identiteitsoplossing is het bepalen van de vereisten voor de bedrijfsorganisatie die gebruik zal maken van deze oplossing.  Hybride identiteit begint als een ondersteunende rol (het ondersteunt alle andere cloudoplossingen door verificatie te bieden) en biedt nieuwe en interessante mogelijkheden die nieuwe workloads voor gebruikers ontgrendelen.  Deze workloads of services die u voor uw gebruikers wilt gebruiken, bepalen de vereisten voor het hybride identiteitsontwerp.  Deze services en workloads moeten zowel on-premises als in de cloud gebruik maken van hybride identiteit.  
+# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Bepaal de identiteits vereisten voor uw hybride identiteits oplossing
+De eerste stap bij het ontwerpen van een hybride identiteits oplossing is het bepalen van de vereisten voor de zakelijke organisatie die deze oplossing gebruiken.  Hybride identiteit wordt gestart als een ondersteunende rol (alle andere cloud oplossingen worden ondersteund door verificatie) en gaat in om nieuwe en interessante mogelijkheden te bieden voor het ontgrendelen van nieuwe werk belastingen voor gebruikers.  Deze werk belastingen of services die u wilt aannemen voor uw gebruikers, bepalen de vereisten voor het ontwerp van de hybride identiteit.  Deze services en workloads moeten zowel on-premises als in de Cloud gebruikmaken van hybride identiteiten.  
 
-U moet deze belangrijke aspecten van het bedrijf doornemen om te begrijpen wat het nu een vereiste is en wat het bedrijf voor de toekomst van plan is. Als u niet de zichtbaarheid van de lange termijn strategie voor hybride identiteit ontwerp, is de kans groot dat uw oplossing niet schaalbaar zal zijn als de zakelijke behoeften groeien en veranderen. Het onderstaande diagram toont een voorbeeld van een hybride identiteitsarchitectuur en de workloads die worden ontgrendeld voor gebruikers. Dit is slechts een voorbeeld van alle nieuwe mogelijkheden die kunnen worden ontgrendeld en geleverd met een solide hybride identiteitsstrategie. 
+U moet de belang rijke aspecten van het bedrijf door lopen om te begrijpen wat het is wat er nu nodig is en wat het bedrijf voor de toekomst plant. Als u niet de zicht baarheid van de strategie voor de lange termijn voor het ontwerpen van hybride identiteiten hebt, is de kans groot dat uw oplossing niet schaalbaar is wanneer de bedrijfs behoeften groeien en veranderen. In het onderstaande diagram ziet u een voor beeld van een hybride identiteits architectuur en de workloads die worden ontgrendeld voor gebruikers. Dit is slechts een voor beeld van alle nieuwe mogelijkheden die kunnen worden ontgrendeld en geleverd met een solide hybride identiteits strategie. 
 
-Sommige componenten die deel uitmaken ![van de hybride identiteitsarchitectuur](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Sommige onderdelen die deel uitmaken van de hybride identiteits architectuur hybride identiteits architectuur ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
-## <a name="determine-business-needs"></a>Bepalen van de zakelijke behoeften
-Elk bedrijf zal verschillende eisen hebben, zelfs als deze bedrijven deel uitmaken van dezelfde industrie, de werkelijke zakelijke eisen kunnen variëren. U nog steeds gebruikmaken van best practices uit de industrie, maar uiteindelijk is het bedrijf zakelijke behoeften die u zal leiden tot het definiëren van de eisen voor de hybride identiteit ontwerp. 
+## <a name="determine-business-needs"></a>Bedrijfs behoeften bepalen
+Elk bedrijf heeft verschillende vereisten, zelfs als deze bedrijven deel uitmaken van dezelfde bedrijfstak, kunnen de echte zakelijke behoeften verschillen. U kunt nog steeds gebruikmaken van best practices uit de branche, maar het is uiteindelijk de bedrijfs behoeften van het bedrijf waarmee u de vereisten voor het ontwerp van de hybride identiteit definieert. 
 
-Zorg ervoor dat u de volgende vragen beantwoordt om uw zakelijke behoeften te identificeren:
+Zorg ervoor dat u de volgende vragen beantwoordt om uw bedrijfs behoeften te identificeren:
 
-* Wil uw bedrijf de operationele kosten van IT verlagen?
-* Is uw bedrijf op zoek naar cloudassets (SaaS-apps, infrastructuur)?
-* Is uw bedrijf op zoek naar modernisering van uw IT?
-  * Zijn uw gebruikers mobieler en eisen ze it om uitzonderingen te maken op uw DMZ, zodat verschillende soorten verkeer toegang krijgen tot verschillende bronnen?
-  * Heeft uw bedrijf verouderde apps die moesten worden gepubliceerd aan deze moderne gebruikers, maar zijn niet gemakkelijk te herschrijven?
-  * Moet uw bedrijf al deze taken uitvoeren en tegelijkertijd onder controle brengen?
-* Is uw bedrijf op zoek naar het beveiligen van de identiteit van gebruikers en het verminderen van risico's door nieuwe tools te brengen die gebruikmaken van de expertise van microsoft's Azure-beveiligingsexpertise on-premises?
-* Probeert uw bedrijf de gevreesde "externe" accounts on-premises te verwijderen en ze naar de cloud te verplaatsen, waar ze niet langer een sluimerende bedreiging zijn in uw on-premises omgeving?
+* Is uw bedrijf bezig met het knippen van IT-bedrijfs kosten?
+* Is uw bedrijf bezig met het beveiligen van Cloud assets (SaaS-apps, infra structuur)?
+* Wilt u uw bedrijf moderniseren?
+  * Zijn uw gebruikers mobiel en veeleisend hij het om uitzonde ringen in uw DMZ te maken zodat verschillende soorten verkeer toegang hebben tot verschillende bronnen?
+  * Heeft uw bedrijf verouderde apps die moeten worden gepubliceerd naar deze moderne gebruikers, maar zijn ze niet eenvoudig te herschrijven?
+  * Moet uw bedrijf al deze taken uitvoeren en het op hetzelfde moment onder controle brengen?
+* Beveiligt uw bedrijf de identiteiten van gebruikers en vermindert het risico door nieuwe hulp middelen te gebruiken die gebruikmaken van de expertise van Azure-beveiligings expertise van micro soft on-premises?
+* Probeert uw bedrijf de dreaded "externe" accounts on-premises te verwijderen en deze naar de cloud te verplaatsen, waar ze niet langer een bedreiging voor inactieve bedreigingen in uw on-premises omgeving zijn?
 
-## <a name="analyze-on-premises-identity-infrastructure"></a>On-premises identiteitsinfrastructuur analyseren
-Nu u een idee hebt over uw bedrijfsvereisten, moet u uw on-premises identiteitsinfrastructuur evalueren. Deze evaluatie is belangrijk voor het definiëren van de technische vereisten om uw huidige identiteitsoplossing te integreren in het cloud identity management systeem. Zorg ervoor dat u de volgende vragen beantwoordt:
+## <a name="analyze-on-premises-identity-infrastructure"></a>On-premises identiteits infrastructuur analyseren
+Nu u een idee hebt over de bedrijfs vereisten van uw bedrijf, moet u uw on-premises identiteits infrastructuur evalueren. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor het integreren van uw huidige identiteits oplossing in het Cloud Identity Management-systeem. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Welke authenticatie- en autorisatieoplossing gebruikt uw bedrijf on-premises? 
-* Heeft uw bedrijf momenteel on-premises synchronisatieservices?
-* Maakt uw bedrijf gebruik van externe identiteitsproviders (IdP)?
+* Welke verificatie-en autorisatie oplossing gebruikt uw bedrijf on-premises? 
+* Heeft uw bedrijf momenteel een on-premises synchronisatie service?
+* Maakt uw bedrijf gebruik van id-providers van derden (IdP)?
 
-U moet zich ook bewust zijn van de cloudservices die uw bedrijf zou kunnen hebben. Het uitvoeren van een beoordeling om inzicht te krijgen in de huidige integratie met SaaS-, IaaS- of PaaS-modellen in uw omgeving is erg belangrijk. Zorg ervoor dat u de volgende vragen beantwoordt tijdens deze beoordeling:
+U moet ook rekening houden met de Cloud Services die uw bedrijf kan hebben. Het is zeer belang rijk een evaluatie uit te voeren om inzicht te krijgen in de huidige integratie met SaaS-, IaaS-of PaaS-modellen in uw omgeving. Zorg ervoor dat u de volgende vragen beantwoordt tijdens deze beoordeling:
 
-* Heeft uw bedrijf enige integratie met een cloudserviceprovider?
-* Zo ja, welke diensten worden gebruikt?
-* Is deze integratie momenteel in productie of is het een pilot?
+* Heeft uw bedrijf een integratie met een Cloud serviceprovider?
+* Zo ja, welke services worden er gebruikt?
+* Is deze integratie momenteel in productie of is deze een pilot?
 
 > [!NOTE]
-> Cloud Discovery analyseert uw verkeerslogboeken ten opzichte van de cloud-appcatalogus van Microsoft Cloud App Security van meer dan 16.000 cloud-apps die zijn gerangschikt en beoordeeld op basis van meer dan 70 risicofactoren, om u voortdurend inzicht te geven in cloudgebruik, Shadow IT en het risico dat Shadow IT in uw organisatie vormt. Zie [Clouddiscovery instellen](/cloud-app-security/set-up-cloud-discovery)om aan de slag te gaan.
+> Cloud Discovery analyseert uw verkeers logboeken tegen Microsoft Cloud App Security van de Cloud-app-catalogus van meer dan 16.000 cloud-apps die zijn geclassificeerd en gescoord op basis van meer dan 70 risico factoren, om u te laten zien hoe u gebruik kunt maken van de Cloud, schaduw IT en de risico schaduw in uw organisatie. Zie [set up Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)om aan de slag te gaan.
 > 
 > 
 
-## <a name="evaluate-identity-integration-requirements"></a>Vereisten voor identiteitsintegratie evalueren
-Vervolgens moet u de vereisten voor identiteitsintegratie evalueren. Deze evaluatie is belangrijk om de technische vereisten te definiëren voor hoe gebruikers zich zullen verifiëren, hoe de aanwezigheid van de organisatie eruit zal zien in de cloud, hoe de organisatie autorisatie toestaat en wat de gebruikerservaring zal zijn. Zorg ervoor dat u de volgende vragen beantwoordt:
+## <a name="evaluate-identity-integration-requirements"></a>Vereisten voor identiteits integratie evalueren
+Vervolgens moet u de vereisten voor identiteits integratie evalueren. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten voor de manier waarop gebruikers zich verifiëren, hoe de aanwezigheid van de organisatie in de Cloud zal zien, hoe de organisatie autorisatie toestaat en wat de gebruikers ervaring zal zijn. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Gebruikt uw organisatie federatie, standaardverificatie of beide?
-* Is federatie een vereiste?  Vanwege het volgende:
+* Maakt uw organisatie gebruik van Federatie, standaard verificatie of beide?
+* Is een vereiste voor Federatie?  Vanwege de volgende:
   * SSO op basis van Kerberos
-  * Uw bedrijf heeft een on-premises applicaties (in-house of 3rd party) die SAML of soortgelijke federatie mogelijkheden gebruikt.
-  * MFA via Smart Cards. RSA SecurID, enz.
-  * Clienttoegangsregels die de onderstaande vragen beantwoorden:
-    1. Kan ik alle externe toegang tot Office 365 blokkeren op basis van het IP-adres van de client?
-    2. Kan ik alle externe toegang tot Office 365 blokkeren, behalve Exchange ActiveSync?
-    3. Kan ik alle externe toegang tot Office 365 blokkeren, behalve voor browsergebaseerde apps (OWA, SPO)
-    4. Kan ik alle externe toegang tot Office 365 blokkeren voor leden van aangewezen AD-groepen
-* Bezorgdheid over beveiliging en controle
-* Reeds bestaande investering in federated authenticatie
-* Welke naam zal onze organisatie gebruiken voor ons domein in de cloud?
+  * Uw bedrijf heeft een on-premises toepassing (ingebouwde interne of externe partij) die gebruikmaakt van SAML-of vergelijk bare Federatie mogelijkheden.
+  * MFA via Smart Cards. RSA SecurID, etc.
+  * Regels voor client toegang die de onderstaande vragen beantwoorden:
+    1. Kan ik alle externe toegang tot Office 365 blok keren op basis van het IP-adres van de client?
+    2. Kan ik alle externe toegang tot Office 365, met uitzonde ring van Exchange ActiveSync, blok keren?
+    3. Kan ik alle externe toegang tot Office 365 blok keren, met uitzonde ring van op browser gebaseerde apps (OWA, SPO)
+    4. Kan ik alle externe toegang tot Office 365 blok keren voor leden van aangewezen AD-groepen
+* Aandachtspunten voor beveiliging/controles
+* Al bestaande investeringen in Federated Authentication
+* Welke naam zal onze organisatie gebruiken voor ons domein in de Cloud?
 * Heeft de organisatie een aangepast domein?
-  1. Is dat domein openbaar en gemakkelijk verifieerbaar via DNS?
-  2. Is dat niet zo, dan heeft u een publiek domein dat kan worden gebruikt om een alternatieve UPN in AD te registreren?
-* Zijn de gebruikers-id's consistent voor cloudrepresentatie? 
-* Heeft de organisatie apps die integratie met cloudservices vereisen?
-* Heeft de organisatie meerdere domeinen en gebruiken ze allemaal standaard of federatieve authenticatie?
+  1. Is dat domein openbaar en eenvoudig te controleren via DNS?
+  2. Als dat niet het geval is, hebt u dan een openbaar domein dat kan worden gebruikt voor het registreren van een alternatieve UPN in AD?
+* Zijn de gebruikers-id's consistent voor de Cloud weergave? 
+* Heeft de organisatie apps waarvoor integratie met Cloud Services is vereist?
+* Heeft de organisatie meerdere domeinen en worden deze allemaal standaard of Federated Authentication gebruikt?
 
 ## <a name="evaluate-applications-that-run-in-your-environment"></a>Toepassingen evalueren die in uw omgeving worden uitgevoerd
-Nu u een idee hebt over uw on-premises en cloudinfrastructuur, moet u de toepassingen evalueren die in deze omgevingen worden uitgevoerd. Deze evaluatie is belangrijk om de technische vereisten te definiëren om deze toepassingen te integreren in het cloud identity management systeem. Zorg ervoor dat u de volgende vragen beantwoordt:
+Nu u een idee hebt met betrekking tot uw on-premises en Cloud infrastructuur, moet u de toepassingen evalueren die in deze omgevingen worden uitgevoerd. Deze evaluatie is belang rijk voor het definiëren van de technische vereisten om deze toepassingen te integreren in het Cloud Identity Management-systeem. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Waar zullen onze applicaties wonen?
-* Krijgen gebruikers toegang tot on-premises applicaties?  In de cloud? Of allebei?
-* Zijn er plannen om de bestaande toepassingsworkloads naar de cloud te verplaatsen?
-* Zijn er plannen om nieuwe toepassingen te ontwikkelen die on-premises of in de cloud zullen verblijven en die cloudverificatie gebruiken?
+* Waar worden onze toepassingen Live?
+* Hebben gebruikers toegang tot on-premises toepassingen?  In de Cloud? Of beide?
+* Zijn er plannen om de bestaande workloads van de toepassing uit te voeren en deze naar de cloud te verplaatsen?
+* Zijn er plannen voor het ontwikkelen van nieuwe toepassingen die on-premises of in de cloud worden geplaatst en die gebruikmaken van Cloud verificatie?
 
-## <a name="evaluate-user-requirements"></a>Gebruikersvereisten evalueren
-U moet ook de gebruikersvereisten evalueren. Deze evaluatie is belangrijk om de stappen te definiëren die nodig zijn voor het instappen en het assisteren van gebruikers bij de overgang naar de cloud. Zorg ervoor dat u de volgende vragen beantwoordt:
+## <a name="evaluate-user-requirements"></a>Gebruikers vereisten evalueren
+U moet ook de gebruikers vereisten evalueren. Deze evaluatie is belang rijk voor het definiëren van de stappen die nodig zijn voor de on-boarding en het ondersteunen van gebruikers wanneer deze naar de cloud worden overgezet. Zorg ervoor dat u de volgende vragen beantwoordt:
 
-* Krijgen gebruikers on-premises toegang tot applicaties?
-* Krijgen gebruikers toegang tot applicaties in de cloud?
-* Hoe loggen gebruikers meestal in op hun on-premises omgeving?
-* Hoe loggen gebruikers in bij de cloud?
+* Hebben gebruikers on-premises toegang tot toepassingen?
+* Hebben gebruikers toegang tot toepassingen in de Cloud?
+* Hoe melden gebruikers zich meestal aan bij hun on-premises omgeving?
+* Hoe kunnen gebruikers zich aanmelden bij de Cloud?
 
 > [!NOTE]
-> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Bepaal incident response eisen](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zal gaan over de beschikbare opties en voor-/tegens van elke optie.  Door deze vragen te hebben beantwoord, selecteert u welke optie het beste bij uw bedrijfsbehoeften past.
+> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Bepaal de vereisten voor de reactie op incidenten](plan-hybrid-identity-design-considerations-incident-response-requirements.md) over de beschik bare opties en voor-en nadelen van elke optie.  Als u deze vragen hebt beantwoord, selecteert u welke optie het beste past bij uw bedrijfs behoeften.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Adreslijstsynchronisatievereisten bepalen](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+[Vereisten voor adreslijst synchronisatie bepalen](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)
+[Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure API-beheer beheren met Azure Automation
-description: Meer informatie over hoe de Azure Automation-service kan worden gebruikt voor het beheer van Azure API Management.
+title: Azure API Management beheren met Azure Automation
+description: Meer informatie over hoe de Azure Automation-Service kan worden gebruikt voor het beheren van Azure API Management.
 services: api-management, automation
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: a472e00f9ecab8a5ffa6b19e4fe9a5f8b5ee5b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70072049"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Azure API Management met behulp van Azure Automation beheren
-Deze handleiding laat u kennismaken met de Azure Automation-service en hoe deze kan worden gebruikt om het beheer van Azure API-beheer te vereenvoudigen.
+In deze hand leiding vindt u informatie over de Azure Automation-Service en hoe u deze kunt gebruiken om het beheer van Azure API Management te vereenvoudigen.
 
 ## <a name="what-is-azure-automation"></a>Wat is Azure Automation?
-[Azure Automation](https://azure.microsoft.com/services/automation/) is een Azure-service voor het vereenvoudigen van cloudbeheer door procesautomatisering. Met Azure Automation kunnen handmatige, herhaalde, langlopende en foutgevoelige taken worden geautomatiseerd om de betrouwbaarheid, efficiëntie en time-to-value voor uw organisatie te verhogen.
+[Azure Automation](https://azure.microsoft.com/services/automation/) is een Azure-service voor het vereenvoudigen van het beheer van Clouds met behulp van proces automatisering. Het gebruik van Azure Automation, hand matige, herhaalde, langlopende en fout gevoelige taken kunnen worden geautomatiseerd om de betrouw baarheid, efficiëntie en tijd voor uw organisatie te verg Roten.
 
-Azure Automation biedt een zeer betrouwbare, zeer beschikbare workflow-uitvoeringsengine die wordt geschaald om aan uw behoeften te voldoen. In Azure Automation kunnen processen handmatig, door systemen van derden of met geplande intervallen worden gestart, zodat taken precies plaatsvinden wanneer dat nodig is.
+Azure Automation biedt een Maxi maal beschik bare engine voor werk stroom uitvoering die kan worden geschaald om aan uw behoeften te voldoen. In Azure Automation kunnen processen hand matig worden gestart door systemen van derden of op geplande intervallen, zodat taken precies worden uitgevoerd wanneer dat nodig is.
 
-Verminder de operationele overhead en maak IT- en DevOps-medewerkers vrij om zich te concentreren op werk dat bedrijfswaarde toevoegt door uw cloudbeheertaken te verplaatsen om automatisch te worden uitgevoerd door Azure Automation.
+Verminder de operationele overhead en maak IT-en DevOps-personeel meer nadruk op werk dat bedrijfs waarde toevoegt door uw cloud Beheer taken te verplaatsen zodat deze automatisch door Azure Automation worden uitgevoerd.
 
 ## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Hoe kan Azure Automation helpen bij het beheren van Azure API Management?
-API-beheer kan worden beheerd in Azure Automation met behulp van de [Windows PowerShell-cmdlets voor Azure API Management API.](https://docs.microsoft.com/powershell/module/az.apimanagement) Binnen Azure Automation u PowerShell-werkstroomscripts schrijven om veel van uw API-beheertaken uit te voeren met behulp van de cmdlets. U deze cmdlets ook koppelen in Azure Automation met de cmdlets voor andere Azure-services, om complexe taken te automatiseren in Azure-services en systemen van derden.
+API Management kunnen worden beheerd in Azure Automation met behulp van de [Windows Power shell-cmdlets voor Azure API Management API](https://docs.microsoft.com/powershell/module/az.apimanagement). In Azure Automation kunt u Power shell-werk stroom scripts schrijven om veel van uw API Management taken uit te voeren met de-cmdlets. U kunt deze cmdlets ook in Azure Automation koppelen met de cmdlets voor andere Azure-Services, om complexe taken in Azure-Services en systemen van derden te automatiseren.
 
-Hier volgen enkele voorbeelden van het gebruik van API-beheer met Powershell:
+Hier volgen enkele voor beelden van het gebruik van API Management met Power shell:
 
 * [Voorbeelden van Azure PowerShell voor API Management](https://docs.microsoft.com/azure/api-management/powershell-samples)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basisbeginselen van Azure Automation hebt geleerd en hoe deze kan worden gebruikt om Azure API-beheer te beheren, volgt u deze koppelingen voor meer informatie.
+Nu u de basis principes van Azure Automation hebt geleerd en hoe u deze kunt gebruiken om Azure API Management te beheren, volgt u deze koppelingen voor meer informatie.
 
-* Zie de [zelfstudie](../automation/automation-first-runbook-graphical.md)Azure Automation aan de slag .
+* Zie de Azure Automation [aan de slag-zelf studie](../automation/automation-first-runbook-graphical.md).
 

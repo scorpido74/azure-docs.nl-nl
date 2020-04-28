@@ -1,6 +1,6 @@
 ---
-title: Extern bureaublad-services of het beheerderswachtwoord opnieuw instellen in een Windows-vm | Microsoft Documenten
-description: Meer informatie over het opnieuw instellen van een accountwachtwoord of Extern bureaublad-services op een Windows-vm met behulp van de Azure-portal of Azure PowerShell.
+title: Extern bureaublad-services of het beheerders wachtwoord opnieuw instellen in een Windows-VM | Microsoft Docs
+description: Meer informatie over het opnieuw instellen van een account wachtwoord of Extern bureaublad-services op een Windows-VM met behulp van de Azure Portal of Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,51 +15,51 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71058446"
 ---
-# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Extern bureaublad-services of het beheerderswachtwoord ervan opnieuw instellen in een Windows-vm
-Als u geen verbinding maken met een virtuele Windows-machine (VM), u het wachtwoord van uw lokale beheerder opnieuw instellen of de configuratie van Extern bureaublad-services opnieuw instellen (niet ondersteund op Windows-domeincontrollers). Voor het opnieuw instellen van het wachtwoord gebruikt u de Azure-portal of de VM-toegangsextensie in Azure PowerShell. Wanneer u zich bij de VM hebt aangemeld, stelt u het wachtwoord van die lokale beheerder opnieuw in.  
-Als u PowerShell gebruikt, controleert u of u de [nieuwste PowerShell-module](/powershell/azure/overview) hebt geïnstalleerd en geconfigureerd en bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+# <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Extern bureaublad-services of het beheerders wachtwoord opnieuw instellen in een Windows-VM
+Als u geen verbinding kunt maken met een virtuele Windows-machine (VM), kunt u het lokale beheerders wachtwoord opnieuw instellen of de Extern bureaublad-services configuratie opnieuw instellen (niet ondersteund op Windows-domein controllers). Voor het opnieuw instellen van het wachtwoord gebruikt u de Azure-portal of de VM-toegangsextensie in Azure PowerShell. Wanneer u zich bij de VM hebt aangemeld, stelt u het wachtwoord van die lokale beheerder opnieuw in.  
+Als u Power shell gebruikt, moet u ervoor zorgen dat de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/overview) en dat u bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
 
 U kunt Extern bureaublad-services en de referenties op de volgende manieren opnieuw instellen:
 
-- [Opnieuw instellen met de Azure-portal](#reset-by-using-the-azure-portal)
+- [Opnieuw instellen met behulp van de Azure Portal](#reset-by-using-the-azure-portal)
 
-- [Opnieuw instellen met de VMAccess-extensie en PowerShell](#reset-by-using-the-vmaccess-extension-and-powershell)
+- [Opnieuw instellen met behulp van de VMAccess-extensie en Power shell](#reset-by-using-the-vmaccess-extension-and-powershell)
 
-## <a name="reset-by-using-the-azure-portal"></a>Opnieuw instellen met de Azure-portal
+## <a name="reset-by-using-the-azure-portal"></a>Opnieuw instellen met behulp van de Azure Portal
 
-Meld u eerst aan bij de [Azure-portal](https://portal.azure.com) en selecteer **virtuele machines** in het linkermenu. 
+Meld u eerst aan bij de [Azure Portal](https://portal.azure.com) en selecteer vervolgens **virtuele machines** in het menu links. 
 
-### <a name="reset-the-local-administrator-account-password"></a>**Het wachtwoord van het lokale beheerdersaccount opnieuw instellen**
+### <a name="reset-the-local-administrator-account-password"></a>**Het wacht woord voor het lokale Administrator-account opnieuw instellen**
 
-1. Selecteer uw Windows-vm en selecteer **vervolgens Wachtwoord opnieuw instellen** onder Ondersteuning + **Probleemoplossing**. Het **venster Wachtwoord opnieuw instellen** wordt weergegeven.
+1. Selecteer uw Windows-VM en selecteer vervolgens **wacht woord opnieuw instellen** onder **ondersteuning en probleem oplossing**. Het venster **wacht woord opnieuw instellen** wordt weer gegeven.
 
-2. Selecteer **Wachtwoord opnieuw instellen,** voer een gebruikersnaam en een wachtwoord in en selecteer **Bijwerken**. 
+2. Selecteer **wacht woord opnieuw instellen**, voer een gebruikers naam en wacht woord in en selecteer vervolgens **bijwerken**. 
 
-3. Probeer opnieuw verbinding te maken met uw virtuele machine.
+3. Probeer opnieuw verbinding te maken met uw VM.
 
-### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van Extern bureaublad-services opnieuw instellen**
+### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van de Extern bureaublad-services opnieuw instellen**
 
-Met dit proces schakelt u de Extern bureaublad-service in de VM in en maakt u een firewallregel voor de standaard RDP-poort 3389.
+Met dit proces wordt Extern bureaublad-service in de VM ingeschakeld en wordt een firewall regel gemaakt voor de standaard RDP-poort 3389.
 
-1. Selecteer uw Windows-vm en selecteer **vervolgens Wachtwoord opnieuw instellen** onder Ondersteuning + **Probleemoplossing**. Het **venster Wachtwoord opnieuw instellen** wordt weergegeven. 
+1. Selecteer uw Windows-VM en selecteer vervolgens **wacht woord opnieuw instellen** onder **ondersteuning en probleem oplossing**. Het venster **wacht woord opnieuw instellen** wordt weer gegeven. 
 
-2. Selecteer **Alleen configuratie opnieuw instellen** en selecteer **Bijwerken**. 
+2. Selecteer **alleen configuratie opnieuw instellen** en selecteer vervolgens **bijwerken**. 
 
-3. Probeer opnieuw verbinding te maken met uw virtuele machine.
+3. Probeer opnieuw verbinding te maken met uw VM.
 
-## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Opnieuw instellen met de VMAccess-extensie en PowerShell
+## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Opnieuw instellen met behulp van de VMAccess-extensie en Power shell
 
-Zorg er eerst voor dat u de [nieuwste PowerShell-module hebt geïnstalleerd en geconfigureerd](/powershell/azure/overview) en bent aangemeld bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount.](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)
+Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/overview) en of u bent aangemeld bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
-### <a name="reset-the-local-administrator-account-password"></a>**Het wachtwoord van het lokale beheerdersaccount opnieuw instellen**
+### <a name="reset-the-local-administrator-account-password"></a>**Het wacht woord voor het lokale Administrator-account opnieuw instellen**
 
-- Stel het beheerderswachtwoord of de gebruikersnaam opnieuw in met de PowerDlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell. De `typeHandlerVersion` instelling moet 2.0 of hoger zijn, omdat versie 1 is afgeschaft. 
+- Stel het beheerders wachtwoord of de gebruikers naam opnieuw in met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . De `typeHandlerVersion` instelling moet 2,0 of hoger zijn, omdat versie 1 is afgeschaft. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -73,28 +73,28 @@ Zorg er eerst voor dat u de [nieuwste PowerShell-module hebt geïnstalleerd en g
     ```
 
     > [!NOTE] 
-    > Als u een andere naam invoert dan het huidige lokale beheerdersaccount op uw vm, voegt de VMAccess-extensie een lokaal beheerdersaccount met die naam toe en wijst u uw opgegeven wachtwoord toe aan dat account. Als het lokale beheerdersaccount op uw VM bestaat, wordt het wachtwoord opnieuw ingesteld door de VMAccess-extensie. Als het account is uitgeschakeld, wordt het account ingeschakeld door de VMAccess-extensie.
+    > Als u een andere naam opgeeft dan het huidige lokale beheerders account op uw virtuele machine, wordt met de uitbrei ding VMAccess een lokaal beheerders account met die naam toegevoegd en wordt het opgegeven wacht woord aan dat account toegewezen. Als het lokale beheerders account op uw virtuele machine bestaat, wordt het wacht woord opnieuw ingesteld door de VMAccess-extensie. Als het account is uitgeschakeld, wordt het door de VMAccess-extensie ingeschakeld.
 
-### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van Extern bureaublad-services opnieuw instellen**
+### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van de Extern bureaublad-services opnieuw instellen**
 
-1. Stel externe toegang tot uw VM opnieuw in met de [PowerShell-cmdlet set-AzVMAccessExtension.](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) In het volgende voorbeeld wordt `myVMAccess` de toegangsextensie met de naam van de VM met de naam `myVM` in de `myResourceGroup` resourcegroep opnieuw ingesteld:
+1. Externe toegang tot uw virtuele machine opnieuw instellen met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . In het volgende voor beeld wordt de toegangs `myVMAccess` extensie opnieuw ingesteld op de naam `myResourceGroup` van de virtuele machine in de resource groep: `myVM`
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > Op elk moment kan een VM slechts één VM-toegangsagent hebben. Als u de eigenschappen van `-ForceRerun` de VM-agent wilt instellen, gebruikt u de optie. Wanneer u `-ForceRerun`deze gebruikt, moet u ervoor zorgen dat u dezelfde naam gebruikt voor de VM-toegangsagent die u mogelijk hebt gebruikt in eerdere opdrachten.
+    > Een virtuele machine kan op elk gewenst moment slechts één VM-toegangs agent hebben. Gebruik de `-ForceRerun` optie om de eigenschappen van de VM-toegangs agent in te stellen. Wanneer u gebruikt `-ForceRerun`, moet u ervoor zorgen dat u dezelfde naam gebruikt als voor de VM-toegangs agent die u mogelijk in een van de vorige opdrachten hebt gebruikt.
 
-1. Zie [Problemen met Verbindingen met extern bureaublad met een windows-gebaseerde virtuele machine op](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)afstand. Als u de verbinding met de Windows-domeincontroller verliest, moet u deze herstellen vanuit een back-up van een domeincontroller.
+1. Als u nog steeds geen externe verbinding met uw virtuele machine kunt maken, raadpleegt u [problemen met extern bureaublad verbindingen met een virtuele Windows-machine voor Azure oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Als u de verbinding met de Windows-domein controller kwijtraakt, moet u deze herstellen vanaf een back-up van een domein controller.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als de Azure VM-toegangsextensie niet reageert en u het wachtwoord niet opnieuw instellen, u [het lokale Windows-wachtwoord offline opnieuw instellen.](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Deze methode is geavanceerder en vereist dat u de virtuele harde schijf van de problematische VM aansluit op een andere VM. Volg eerst de stappen die in dit artikel zijn gedocumenteerd en probeer de methode voor het opnieuw instellen van offline wachtwoorden alleen als deze stappen niet werken.
+- Als de toegang tot de Azure VM-extensie niet reageert en u het wacht woord niet opnieuw kunt instellen, [stelt u het lokale Windows-wacht woord offline opnieuw](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)in. Deze methode is Geavanceerd en vereist dat u de virtuele harde schijf van de problematische VM verbindt met een andere virtuele machine. Volg de stappen die in dit artikel worden beschreven eerst en probeer de methode voor offline wachtwoord herstel alleen uit te voeren als deze stappen niet werken.
 
-- [Meer informatie over Azure VM-extensies en -functies](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Meer informatie over Azure VM-extensies en-functies](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [Maak verbinding met een virtuele Azure-machine met RDP of SSH.](https://msdn.microsoft.com/library/azure/dn535788.aspx)
+- [Verbinding maken met een virtuele machine van Azure met RDP of SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
-- [Problemen met Extern bureaublad-verbindingen met een windows-gebaseerde virtuele azure-machine](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)oplossen .
+- [Problemen met extern bureaublad verbindingen met een virtuele Azure-machine op basis van Windows oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

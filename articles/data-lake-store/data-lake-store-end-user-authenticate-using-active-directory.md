@@ -1,6 +1,6 @@
 ---
-title: 'Verificatie door eindgebruikers: Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het bereiken van verificatie door eindgebruikers met Azure Data Lake Storage Gen1 met Azure Active Directory
+title: 'Verificatie door eind gebruikers: Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,114 +12,114 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66234056"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Verificatie van eindgebruikers met Azure Data Lake Storage Gen1 met Azure Active Directory
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Verificatie van de eindgebruiker](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [Verificatie van service-tot-service](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 > 
 
-Azure Data Lake Storage Gen1 gebruikt Azure Active Directory voor verificatie. Voordat u een toepassing maakt die werkt met Data Lake Storage Gen1 of Azure Data Lake Analytics, moet u bepalen hoe u uw toepassing verifieert met Azure Active Directory (Azure AD). De twee belangrijkste beschikbare opties zijn:
+Azure Data Lake Storage Gen1 gebruikt Azure Active Directory voor verificatie. Voordat u een toepassing ontwerpt die werkt met Data Lake Storage Gen1 of Azure Data Lake Analytics, moet u bepalen hoe u uw toepassing verifieert met Azure Active Directory (Azure AD). De twee belangrijkste beschik bare opties zijn:
 
-* Verificatie door eindgebruikers (dit artikel)
-* Service-to-service-verificatie (kies deze optie in de vervolgkeuzelijst hierboven)
+* Verificatie door eind gebruikers (dit artikel)
+* Service-naar-service-verificatie (Kies deze optie in de vervolg keuzelijst hierboven)
 
-Beide opties zorgen ervoor dat uw toepassing wordt voorzien van een OAuth 2.0-token, dat wordt gekoppeld aan elk verzoek aan Data Lake Storage Gen1 of Azure Data Lake Analytics.
+Beide opties hebben als resultaat dat uw toepassing wordt geleverd met een OAuth 2,0-token dat wordt gekoppeld aan elke aanvraag die wordt gedaan aan Data Lake Storage Gen1 of Azure Data Lake Analytics.
 
-In dit artikel wordt uitgelegd hoe u een **Azure AD-native toepassing maakt voor verificatie door eindgebruikers.** Zie [Service-to-service-verificatie met Data Lake Storage Gen1 met Azure Active Directory](data-lake-store-authenticate-using-active-directory.md)voor instructies over azure AD-toepassingsconfiguratie voor service-to-service-verificatie.
+In dit artikel wordt uitgelegd hoe u een **systeem eigen Azure AD-toepassing maakt voor verificatie door eind gebruikers**. Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-authenticate-using-active-directory.md)voor instructies over de configuratie van de Azure AD-toepassing voor service-naar-service-verificatie.
 
 ## <a name="prerequisites"></a>Vereisten
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* Uw abonnements-ID. U het ophalen uit de Azure-portal. Het is bijvoorbeeld beschikbaar via het Data Lake Storage Gen1-accountblad.
+* Uw abonnements-ID. U kunt deze ophalen uit de Azure Portal. Het is bijvoorbeeld beschikbaar op de Blade Data Lake Storage Gen1-account.
   
-    ![Abonnement-id](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
+    ![Abonnements-ID ophalen](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Uw Azure AD-domeinnaam. U deze ophalen door met de muis in de rechterbovenhoek van de Azure-portal te zweven. Van de screenshot hieronder, de domeinnaam is **contoso.onmicrosoft.com**, en de GUID binnen haakjes is de tenant-ID. 
+* De naam van uw Azure AD-domein. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. In de onderstaande scherm afbeelding is de domein naam **contoso.onmicrosoft.com**en de GUID tussen haakjes is de Tenant-id. 
   
-    ![Aad-domein oppakken](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
+    ![AAD-domein ophalen](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Uw Azure-tenant-id. Zie Het tenant-id ophalen voor instructies over het ophalen van de [tenant-id.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
+* De ID van uw Azure-Tenant. Voor instructies over het ophalen van de Tenant-ID raadpleegt u [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
-Dit verificatiemechanisme is de aanbevolen aanpak als u wilt dat een eindgebruiker zich aanmeldt bij uw toepassing via Azure AD. Uw toepassing heeft dan toegang tot Azure-bronnen met hetzelfde toegangsniveau als de eindgebruiker die is aangemeld. Uw eindgebruiker moet zijn of haar referenties periodiek verstrekken om ervoor te zorgen dat uw toepassing de toegang behoudt.
+Dit verificatie mechanisme is de aanbevolen benadering als u wilt dat een eind gebruiker zich bij uw toepassing aanmeldt via Azure AD. Uw toepassing kan vervolgens toegang krijgen tot Azure-resources met hetzelfde toegangs niveau als de eind gebruiker die zich heeft aangemeld. Uw eind gebruiker moet uw referenties regel matig opgeven om de toegang tot de toepassing te behouden.
 
-Het resultaat van het aanmelden van de eindgebruiker is dat uw toepassing een toegangstoken en een vernieuwingstoken krijgt. Het toegangstoken wordt gekoppeld aan elk verzoek aan Data Lake Storage Gen1 of Data Lake Analytics en is standaard één uur geldig. Het vernieuwingstoken kan worden gebruikt om een nieuw toegangstoken te verkrijgen en is standaard maximaal twee weken geldig. U twee verschillende benaderingen gebruiken voor aanmelden door eindgebruikers.
+Het resultaat van het afmelden van de eind gebruiker is dat uw toepassing een toegangs token en een vernieuwings token krijgt. Het toegangs token wordt gekoppeld aan elke aanvraag van Data Lake Storage Gen1 of Data Lake Analytics en is standaard één uur geldig. Het vernieuwings token kan worden gebruikt om een nieuw toegangs token op te halen en is standaard Maxi maal twee weken geldig. U kunt twee verschillende benaderingen gebruiken voor aanmelding door de eind gebruiker.
 
-### <a name="using-the-oauth-20-pop-up"></a>De pop-up van OAuth 2.0 gebruiken
-Uw toepassing kan leiden tot een OAuth 2.0 autorisatie pop-up, waarin de eindgebruiker kan hun referenties in te voeren. Deze pop-up werkt ook met het Azure AD Two-factor Authentication (2FA) proces, indien nodig. 
+### <a name="using-the-oauth-20-pop-up"></a>De OAuth 2,0 pop-up gebruiken
+Uw toepassing kan een OAuth 2,0-autorisatie pop-up activeren, waarbij de eind gebruiker de referenties kan invoeren. Deze pop-up werkt ook met het Azure AD-proces voor twee ledige verificatie (twee ledige), indien nodig. 
 
 > [!NOTE]
-> Deze methode wordt nog niet ondersteund in de Azure AD Authentication Library (ADAL) voor Python of Java.
+> Deze methode wordt nog niet ondersteund in de Azure AD-verificatie bibliotheek (ADAL) voor python of Java.
 > 
 > 
 
-### <a name="directly-passing-in-user-credentials"></a>Rechtstreeks doorgeven van gebruikersreferenties
-Uw toepassing kan rechtstreeks gebruikersreferenties aan Azure AD verstrekken. Deze methode werkt alleen met gebruikersaccounts van een organisatie-id; het is niet compatibel met persoonlijke / "live ID" @outlook.com @live.comgebruikersaccounts, met inbegrip van de accounts eindigend in of . Bovendien is deze methode niet compatibel met gebruikersaccounts waarvoor Azure AD Two-factor Authentication (2FA) vereist is.
+### <a name="directly-passing-in-user-credentials"></a>Rechtstreeks door geven in gebruikers referenties
+Uw toepassing kan rechtstreeks gebruikers referenties opgeven voor Azure AD. Deze methode werkt alleen met gebruikers accounts voor organisatie-id's; het is niet compatibel met gebruikers accounts voor persoonlijk/' Live ID ', met inbegrip van @outlook.com de @live.comaccounts die eindigen op of. Bovendien is deze methode niet compatibel met gebruikers accounts waarvoor Azure AD Two-Factor Authentication (twee ledige) is vereist.
 
 ### <a name="what-do-i-need-for-this-approach"></a>Wat heb ik nodig voor deze aanpak?
-* Azure AD-domeinnaam. Deze eis is al opgenomen in de voorwaarde van dit artikel.
-* Azure AD-tenant-id. Deze eis is al opgenomen in de voorwaarde van dit artikel.
-* Azure **AD-native toepassing**
-* Toepassings-id voor de Azure AD-native toepassing
-* URI omleiden voor de Azure AD-native toepassing
+* Azure AD-domein naam. Deze vereiste is al opgenomen in de vereisten van dit artikel.
+* ID van Azure AD-Tenant. Deze vereiste is al opgenomen in de vereisten van dit artikel.
+* **Systeem eigen** Azure AD-toepassing
+* Toepassings-ID voor de systeem eigen Azure AD-toepassing
+* Omleidings-URI voor de systeem eigen Azure AD-toepassing
 * Gedelegeerde machtigingen instellen
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>Stap 1: Een active directory-native toepassing maken
+## <a name="step-1-create-an-active-directory-native-application"></a>Stap 1: een Active Directory systeem eigen toepassing maken
 
-Een Azure AD-native toepassing maken en configureren voor verificatie van eindgebruikers met Data Lake Storage Gen1 met Azure Active Directory. Zie Een [Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md)voor instructies .
+Maak en configureer een systeem eigen Azure AD-toepassing voor verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van Azure Active Directory. Zie [een Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md)voor instructies.
 
-Controleer tijdens het volgen van de instructies in de koppeling of u **Native** selecteert voor toepassingstype, zoals in de volgende schermafbeelding wordt weergegeven:
+Zorg dat u bij het volgen van de instructies in de koppeling **systeem eigen** voor toepassings type selecteert, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Web-app maken](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Native-app maken")
+![Web-app maken](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Systeem eigen app maken")
 
-## <a name="step-2-get-application-id-and-redirect-uri"></a>Stap 2: Get application ID and redirect URI Stap 2: Get application ID and redirect URI
+## <a name="step-2-get-application-id-and-redirect-uri"></a>Stap 2: toepassings-ID en omleidings-URI ophalen
 
-Zie [De toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) om de toepassings-id op te halen.
+Zie [de toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) om de toepassings-id op te halen.
 
-Als u de omleidingsURI wilt ophalen, neemt u de volgende stappen uit.
+Voer de volgende stappen uit om de omleidings-URI op te halen.
 
-1. Selecteer in de **Azure-portal Azure Active Directory**, klik op **App-registraties**en zoek en klik vervolgens op de Azure AD-native toepassing die u hebt gemaakt.
+1. Selecteer **Azure Active Directory**in het Azure Portal, klik op **app-registraties**en zoek en klik vervolgens op de systeem eigen Azure AD-toepassing die u hebt gemaakt.
 
-2. Klik in het **pagina-blad Instellingen** voor de toepassing op **URI's omleiden**.
+2. Klik op de Blade **instellingen** voor de toepassing op **omleidings-uri's**.
 
-    ![Download Redirect URI](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
+    ![Omleidings-URI ophalen](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
 
-3. Kopieer de weergegeven waarde.
+3. Kopieer de waarde die wordt weer gegeven.
 
 
-## <a name="step-3-set-permissions"></a>Stap 3: Machtigingen instellen
+## <a name="step-3-set-permissions"></a>Stap 3: machtigingen instellen
 
-1. Selecteer in de **Azure-portal Azure Active Directory**, klik op **App-registraties**en zoek en klik vervolgens op de Azure AD-native toepassing die u hebt gemaakt.
+1. Selecteer **Azure Active Directory**in het Azure Portal, klik op **app-registraties**en zoek en klik vervolgens op de systeem eigen Azure AD-toepassing die u hebt gemaakt.
 
-2. Klik in het **pagina-blad Instellingen** voor de toepassing op **Vereiste machtigingen**en klik vervolgens op **Toevoegen**.
+2. Klik op de Blade **instellingen** voor de toepassing op **vereiste machtigingen**en klik vervolgens op **toevoegen**.
 
     ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. Klik in het **beheer API-toegangs** toevoegen op **Een API selecteren,** klik op **Azure Data Lake**en klik vervolgens op **Selecteren**.
+3. Klik op de Blade **API-toegang toevoegen** op **een API selecteren**, klik op **Azure data Lake**en klik vervolgens op **selecteren**.
 
     ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
-4.  Klik in het **beheer API-toegangs** toevoegen op **Machtigingen selecteren,** schakel het selectievakje in om **Volledige toegang tot Data Lake Store te**geven en klik vervolgens op **Selecteren**.
+4.  Klik op de Blade **API-toegang toevoegen** op **machtigingen selecteren**, schakel het selectie vakje in als u **volledige toegang tot data Lake Store wilt**geven en klik vervolgens op **selecteren**.
 
     ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     Klik op **Gereed**.
 
-5. Herhaal ook de laatste twee stappen om machtigingen toe te kennen voor **Windows Azure Service Management API.**
+5. Herhaal de laatste twee stappen om machtigingen voor **Windows Azure Service Management-API** ook toe te kennen.
    
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een Azure AD-native toepassing gemaakt en de informatie verzameld die u nodig hebt in uw clienttoepassingen die u maakt met behulp van .NET SDK, Java SDK, REST API, enz. U nu verder gaan naar de volgende artikelen waarin wordt gesproken over het gebruik van de Azure AD-webtoepassing om eerst te verifiëren met Data Lake Storage Gen1 en vervolgens andere bewerkingen in de winkel uit te voeren.
+In dit artikel hebt u een systeem eigen Azure AD-toepassing gemaakt en de informatie verzameld die u nodig hebt in uw client toepassingen die u hebt geschreven met behulp van .NET SDK, Java SDK, REST API, enzovoort. U kunt nu door gaan met de volgende artikelen over het gebruik van de Azure AD-webtoepassing om eerst te verifiëren met Data Lake Storage Gen1 en vervolgens andere bewerkingen uit te voeren in de Store.
 
-* [Verificatie van eindgebruikers met Data Lake Storage Gen1 met Java SDK](data-lake-store-end-user-authenticate-java-sdk.md)
-* [Verificatie van eindgebruikers met Data Lake Storage Gen1 met .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
-* [Verificatie van eindgebruikers met Data Lake Storage Gen1 met Python](data-lake-store-end-user-authenticate-python.md)
-* [Verificatie van eindgebruikers met Data Lake Storage Gen1 met REST API](data-lake-store-end-user-authenticate-rest-api.md)
+* [Eind gebruiker-verificatie met Data Lake Storage Gen1 met behulp van Java SDK](data-lake-store-end-user-authenticate-java-sdk.md)
+* [Verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
+* [Verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van python](data-lake-store-end-user-authenticate-python.md)
+* [Verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van REST API](data-lake-store-end-user-authenticate-rest-api.md)
 

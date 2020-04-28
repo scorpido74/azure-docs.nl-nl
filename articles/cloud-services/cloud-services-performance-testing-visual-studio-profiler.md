@@ -1,7 +1,7 @@
 ---
-title: Een cloudservice lokaal profileren in de Compute Emulator | Microsoft Documenten
+title: Een Cloud service lokaal profileren in de compute-emulator | Microsoft Docs
 services: cloud-services
-description: Prestatieproblemen in cloudservices onderzoeken met de Visual Studio-profiler
+description: Prestatie problemen in Cloud Services onderzoeken met de Visual Studio Profiler
 documentationcenter: ''
 author: mikejo
 manager: jillfra
@@ -15,34 +15,34 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70094107"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testen van de prestaties van een cloudservice lokaal in de Azure Compute Emulator met behulp van de Visual Studio Profiler
-Er zijn verschillende tools en technieken beschikbaar voor het testen van de prestaties van cloudservices.
-Wanneer u een cloudservice naar Azure publiceert, u Visual Studio profileringsgegevens laten verzamelen en deze vervolgens lokaal analyseren, zoals beschreven in [Profilering van een Azure-toepassing.][1]
-U ook diagnostische gegevens gebruiken om verschillende prestatiemeteritems bij te houden, zoals beschreven in [Het gebruik van prestatiemeteritems in Azure.][2]
-U uw toepassing ook lokaal profileren in de compute emulator voordat u deze implementeert in de cloud.
+# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>De prestaties van een Cloud service lokaal in de Azure Compute-emulator testen met behulp van de Visual Studio Profiler
+Er zijn verschillende hulpprogram ma's en technieken beschikbaar voor het testen van de prestaties van Cloud Services.
+Wanneer u een Cloud service naar Azure publiceert, kunt u met Visual Studio profilerings gegevens verzamelen en deze lokaal analyseren, zoals beschreven in [profileren van een Azure-toepassing][1].
+U kunt ook diagnostische gegevens gebruiken voor het bijhouden van verschillende prestatie meter items, zoals beschreven in [prestatie meter items gebruiken in azure][2].
+Mogelijk wilt u uw toepassing ook lokaal in de compute-emulator gebruiken voordat u deze implementeert in de Cloud.
 
-Dit artikel behandelt de CPU Sampling methode van profilering, die lokaal kan worden gedaan in de emulator. CPU sampling is een methode van profilering die niet erg opdringerig is. Met een aangewezen bemonsteringsinterval maakt de profiler een momentopname van de oproepstack. De gegevens worden verzameld over een periode van tijd en weergegeven in een rapport. Deze methode van profilering heeft de neiging om aan te geven waar in een rekenintensieve toepassing het grootste deel van het CPU-werk wordt gedaan.  Dit geeft u de mogelijkheid om zich te concentreren op de "hot path" waar uw toepassing is de meeste tijd doorbrengen.
+Dit artikel heeft betrekking op de CPU-steekproef methode voor profile ring, die lokaal kan worden uitgevoerd in de emulator. CPU-steek proeven zijn een manier om een profileren te doen die niet zeer opvallend is. Bij een aangewezen steekproef interval maakt de Profiler een moment opname van de aanroep stack. De gegevens worden verzameld over een bepaalde tijd en weer gegeven in een rapport. Deze methode van profile ring geeft aan waar in een reken kundige, intensieve toepassing het meren deel van het CPU-werk wordt uitgevoerd.  Zo kunt u zich richten op het ' warme pad ' waar uw toepassing de meeste tijd in de praktijk brengt.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio configureren voor profilering
-Ten eerste zijn er een paar Visual Studio-configuratieopties die handig kunnen zijn bij het profileren. Om de profileringsrapporten te begrijpen, hebt u symbolen (.pdb-bestanden) nodig voor uw toepassing en ook symbolen voor systeembibliotheken. U wilt er zeker van zijn dat u naar de beschikbare symboolservers verwijst. Kies hiervoor in het menu **Extra** in Visual Studio **de**optie Opties en kies **Vervolgens Foutopsporing**en **Symbolen**. Controleer of Microsoft Symbol Servers wordt vermeld onder **Locaties voor symboolbestand (.pdb).**  U https://referencesource.microsoft.com/symbolsook verwijzen naar, die mogelijk extra symboolbestanden hebben.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio configureren voor profile ring
+Eerst zijn er enkele opties voor Visual Studio-configuratie die handig kunnen zijn bij het profileren van een profiel. Om inzicht te hebben in de profilerings rapporten, hebt u symbolen (. PDB-bestanden) nodig voor uw toepassing en ook symbolen voor systeem bibliotheken. U wilt er zeker van zijn dat u naar de beschik bare symbool servers verwijst. U doet dit door in het menu **extra** in Visual Studio **Opties**te kiezen en vervolgens **fout opsporing**en **symbolen**te kiezen. Zorg ervoor dat de micro soft-symbool servers worden weer gegeven onder **symbool bestand (. pdb)-locaties**.  U kunt ook verwijzen https://referencesource.microsoft.com/symbolsnaar, die mogelijk aanvullende symbool bestanden bevat.
 
-![Symboolopties][4]
+![Symbool opties][4]
 
-Indien gewenst u de rapporten vereenvoudigen die de profiler genereert door Alleen Mijn code in te stellen. Met Just My Code ingeschakeld, worden functiecallstacks vereenvoudigd, zodat oproepen volledig intern naar bibliotheken en het .NET Framework worden verborgen in de rapporten. Kies **Opties** in **Options**het menu Extra . Vouw vervolgens het knooppunt **Prestatiehulpmiddelen** uit en kies **Algemeen**. Schakel het selectievakje in voor **Alleen Mijn code inschakelen voor profilerrapporten**.
+Desgewenst kunt u de rapporten die door de Profiler worden gegenereerd, vereenvoudigen door Just My Code in te stellen. Als Just My Code is ingeschakeld, worden aanroep stacks van functies vereenvoudigd, zodat ze volledig intern aan bibliotheken aanroepen en de .NET Framework in de rapporten worden verborgen. Kies **Opties**in het menu **extra** . Vouw vervolgens het knoop punt **prestatie hulpprogramma's** uit en kies **Algemeen**. Schakel het selectie vakje in voor het **inschakelen van Just my code voor Profiler rapporten**.
 
-![Alleen mijn code-opties][17]
+![Just My Code opties][17]
 
-U deze instructies gebruiken bij een bestaand project of bij een nieuw project.  Als u een nieuw project maakt om de hieronder beschreven technieken uit te proberen, kiest u een C# **Azure Cloud Service-project** en selecteert u een **webrol** en een **werknemersrol.**
+U kunt deze instructies gebruiken met een bestaand project of met een nieuw project.  Als u een nieuw project maakt om de hieronder beschreven technieken te proberen, kiest u een C# **Azure-Cloud service** project en selecteert u een **Ondernemingsrol** en een **werk rollen**.
 
-![Azure Cloud Service-projectrollen][5]
+![Azure Cloud service-project rollen][5]
 
-Voeg bijvoorbeeld een code toe aan uw project die veel tijd in beslag neemt en een duidelijk prestatieprobleem aantoont. Voeg bijvoorbeeld de volgende code toe aan een project voor een werkrol:
+U kunt bijvoorbeeld een code toevoegen aan uw project die veel tijd in beslag neemt en een duidelijk beeld van het prestatie probleem illustreren. Voeg bijvoorbeeld de volgende code toe aan het project worker-rol:
 
 ```csharp
 public class Concatenator
@@ -60,7 +60,7 @@ public class Concatenator
 }
 ```
 
-Roep deze code aan vanuit de RunAsync-methode in de klasse RoleEntryPoint van de werknemerrol. (Negeer de waarschuwing over de methode die synchroon wordt uitgevoerd.)
+Roep deze code aan vanuit de methode RunAsync in de RoleEntryPoint-afgeleide klasse van de rol van de werk nemer. (Negeer de waarschuwing over de methode die synchroon wordt uitgevoerd.)
 
 ```csharp
 private async Task RunAsync(CancellationToken cancellationToken)
@@ -74,23 +74,23 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Bouw en voer uw cloudservice lokaal uit zonder foutopsporing (Ctrl+F5), waarbij de oplossingsconfiguratie is ingesteld op **Release.** Dit zorgt ervoor dat alle bestanden en mappen worden gemaakt voor het lokaal uitvoeren van de toepassing en zorgt ervoor dat alle emulators worden gestart. Start de Compute Emulator-gebruikersinterface vanaf de taakbalk om te controleren of uw werkrol wordt uitgevoerd.
+Uw Cloud service lokaal bouwen en uitvoeren zonder fouten opsporen (CTRL + F5), waarbij de oplossings configuratie is ingesteld op **release**. Dit zorgt ervoor dat alle bestanden en mappen worden gemaakt om de toepassing lokaal uit te voeren en ervoor te zorgen dat alle emulators worden gestart. Start de gebruikers interface van de compute-emulator vanuit de taak balk om te controleren of uw werknemersrol actief is.
 
-## <a name="2-attach-to-a-process"></a>2: Hechten aan een proces
-In plaats van de toepassing te profileren door deze te starten vanuit de Visual Studio 2010 IDE, moet u de profiler aan een lopend proces koppelen. 
+## <a name="2-attach-to-a-process"></a>2: koppelen aan een proces
+In plaats van de toepassing te profileren door deze vanuit de Visual Studio 2010 IDE te starten, moet u de Profiler koppelen aan een actief proces. 
 
-Als u de profiler aan een proces wilt koppelen, kiest u in het menu **Analyseren** **de** optie Profiler en **Koppelen/koppelen**.
+Als u de Profiler aan een proces wilt koppelen, kiest u in het menu **analyseren** de optie **Profiler** en **koppelen/loskoppelen**.
 
-![Profiel toevoegen, optie][6]
+![Profiel optie bijvoegen][6]
 
-Zoek voor een werkrol het WaWorkerHost.exe-proces.
+Zoek het proces WaWorkerHost. exe voor een rol van werk rollen.
 
 ![WaWorkerHost-proces][7]
 
-Als uw projectmap zich op een netwerkstation bevindt, vraagt de profiler u een andere locatie op te geven om de profileringsrapporten op te slaan.
+Als uw projectmap zich op een netwerk station bevindt, wordt u door de Profiler gevraagd een andere locatie op te geven voor het opslaan van de profilerings rapporten.
 
- U ook een webrol toevoegen door u te koppelen aan WaIISHost.exe.
-Als er meerdere werkrolprocessen in uw toepassing zijn, moet u de processID gebruiken om deze te onderscheiden. U de processID programmatisch opvragen door toegang te krijgen tot het object Proces. Als u deze code bijvoorbeeld toevoegt aan de methode Uitvoeren van de klasse RoleEntryPoint in een rol, u het logboek in de Compute Emulator-gebruikersinterface bekijken om te weten met welk proces u verbinding moet maken.
+ U kunt ook koppelen aan een ondernemingsrol door te koppelen aan WaIISHost. exe.
+Als er meerdere werk rollen worden verwerkt in uw toepassing, moet u de processID gebruiken om ze te onderscheiden. U kunt de processID programmatisch opvragen door het proces object te openen. Als u deze code bijvoorbeeld toevoegt aan de run-methode van de RoleEntryPoint-afgeleide klasse in een rol, kunt u het logboek in de interface van de compute-emulator bekijken om te weten welk proces moet worden gebruikt om verbinding te maken.
 
 ```csharp
 var process = System.Diagnostics.Process.GetCurrentProcess();
@@ -98,39 +98,39 @@ var message = String.Format("Process ID: {0}", process.Id);
 Trace.WriteLine(message, "Information");
 ```
 
-Als u het logboek wilt bekijken, start u de Compute Emulator-gebruikersinterface.
+Als u het logboek wilt weer geven, start u de gebruikers interface van de compute-emulator.
 
-![De Compute Emulator-gebruikersinterface starten][8]
+![De gebruikers interface van Compute emulator starten][8]
 
-Open het consolevenster voor de rolvan de werknemer in de Gebruikersinterface van Compute Emulator door op de titelbalk van het consolevenster te klikken. U de proces-ID in het logboek zien.
+Open het venster werk rollen logboek console in de gebruikers interface van de reken emulator door te klikken op de titel balk van het console venster. U kunt de proces-ID bekijken in het logboek.
 
-![Proces-id weergeven][9]
+![Proces-ID weer geven][9]
 
-Een die u hebt gekoppeld, voert de stappen in de gebruikersinterface van uw toepassing uit (indien nodig) om het scenario te reproduceren.
+Als u een koppeling hebt gemaakt, voert u de stappen in de gebruikers interface van uw toepassing (indien nodig) uit om het scenario te reproduceren.
 
-Als u wilt stoppen met profileren, kiest u de koppeling **Profilering stoppen.**
+Wanneer u het profileren wilt stoppen, kiest u de koppeling **Profiler stoppen** .
 
-![Profilering stoppen, optie][10]
+![Optie profile ring stoppen][10]
 
-## <a name="3-view-performance-reports"></a>3: Prestatierapporten bekijken
-Het prestatierapport voor uw toepassing wordt weergegeven.
+## <a name="3-view-performance-reports"></a>3: prestatie rapporten weer geven
+Het prestatie rapport voor uw toepassing wordt weer gegeven.
 
-Op dit moment stopt de profiler met uitvoeren, slaat gegevens op in een .vsp-bestand en geeft een rapport weer dat een analyse van deze gegevens weergeeft.
+Op dit punt stopt de Profiler de uitvoering, worden gegevens opgeslagen in een. VSP-bestand en wordt een rapport weer gegeven met een analyse van deze gegevens.
 
-![Profiler-rapport][11]
+![Rapport Profiler][11]
 
-Als u String.wstrcpy in het hoofdpad ziet, klikt u op Alleen Mijn code om de weergave te wijzigen om alleen gebruikerscode weer te geven.  Als u String.Concat ziet, probeert u op de knop Alle code weergeven te drukken.
+Als u string. wstrcpy in het warme pad ziet, klikt u op Just My Code om de weer gave te wijzigen zodat alleen gebruikers code wordt weer gegeven.  Als u teken reeks. concat ziet, drukt u op de knop alle code weer geven.
 
-U zou de methode Concatenate en String.Concat moeten zien die een groot gedeelte van de uitvoeringstijd in beslag nemen.
+U ziet de methode en teken reeks voor samen voegen. deze functie neemt een groot deel van de uitvoerings tijd op.
 
 ![Analyse van het rapport][12]
 
-Als u de tekenreekssamenvoegcode in dit artikel hebt toegevoegd, ziet u hiervoor een waarschuwing in de takenlijst. U ook een waarschuwing zien dat er een te grote hoeveelheid garbage collection is, wat te wijten is aan het aantal tekenreeksen dat wordt gemaakt en verwijderd.
+Als u de code voor het samen voegen van teken reeksen in dit artikel hebt toegevoegd, ziet u hier een waarschuwing in de Takenlijst. Er wordt ook een waarschuwing weer gegeven dat er sprake is van een buitensporige hoeveelheid Garbage Collection, die wordt veroorzaakt door het aantal teken reeksen dat is gemaakt en verwijderd.
 
-![Prestatiewaarschuwingen][14]
+![Prestatie waarschuwingen][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: Wijzigingen aanbrengen en prestaties vergelijken
-U de prestaties ook vergelijken voor en na een codewijziging.  Stop het lopende proces en bewerk de code om de tekenreekssamenvoegbewerking te vervangen door het gebruik van StringBuilder:
+## <a name="4-make-changes-and-compare-performance"></a>4: wijzigingen aanbrengen en prestaties vergelijken
+U kunt de prestaties ook vergelijken vóór en na een code wijziging.  Stop het actieve proces en bewerk de code om de bewerking voor het samen voegen van teken reeksen te vervangen door het gebruik van string Builder:
 
 ```csharp
 public static string Concatenate(int number)
@@ -145,26 +145,26 @@ public static string Concatenate(int number)
 }
 ```
 
-Doe een andere performance run, en vergelijk de prestaties. Als de uitvoeringen zich in dezelfde sessie bevinden, u in de Prestatieverkenner gewoon beide rapporten selecteren, het snelmenu openen en **Prestatierapporten vergelijken**kiezen. Als u wilt vergelijken met een run in een andere prestatiesessie, opent u het menu **Analyseren** en kiest **u Prestatierapporten vergelijken**. Geef beide bestanden op in het dialoogvenster dat wordt weergegeven.
+Voer een andere prestaties uit en vergelijkt de prestaties. Als de uitvoeringen zich in dezelfde sessie in de performance Explorer bevinden, kunt u beide rapporten selecteren, het snelmenu openen en **prestatie rapporten vergelijken**kiezen. Als u wilt vergelijken met een uitvoering in een andere prestatie sessie, opent u het menu **analyseren** en kiest u **prestatie rapporten vergelijken**. Geef beide bestanden op in het dialoog venster dat wordt weer gegeven.
 
-![Prestatierapporten vergelijken, optie][15]
+![De optie prestatie rapporten vergelijken][15]
 
-In de rapporten worden de verschillen tussen de twee runs belicht.
+De rapporten markeren de verschillen tussen de twee uitvoeringen.
 
-![Vergelijkingsrapport][16]
+![Vergelijkend rapport][16]
 
-Gefeliciteerd! Je bent begonnen met de profiler.
+Gefeliciteerd! U bent klaar met de Profiler.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-* Zorg ervoor dat u een release build profileert en start zonder foutopsporing.
-* Als de optie Koppelen/koppelen niet is ingeschakeld in het menu Profiler, voert u de wizard Prestaties uit.
-* Gebruik de Compute Emulator-gebruikersinterface om de status van uw toepassing weer te geven. 
-* Als u problemen hebt met het starten van toepassingen in de emulator of als u de profiler bevestigt, sluit u de compute emulator af en start u deze opnieuw op. Als dat het probleem niet oplost, probeer dan opnieuw op te starten. Dit probleem kan optreden als u de Compute Emulator gebruikt om lopende implementaties op te schorten en te verwijderen.
-* Als u een van de profileringsopdrachten van de opdrachtregel hebt gebruikt, met name de globale instellingen, moet u ervoor zorgen dat VSPerfClrEnv /globaloff is aangeroepen en dat VsPerfMon.exe is uitgeschakeld.
-* Als u bij het samplen het bericht 'PRF0025: er zijn geen gegevens is verzameld' ziet, controleert u of het proces waaraan u bent gekoppeld, CPU-activiteit heeft. Toepassingen die geen rekenwerk doen, produceren mogelijk geen bemonsteringsgegevens.  Het is ook mogelijk dat het proces is afgesloten voordat een steekproef werd gedaan. Controleer of de methode Uitvoeren voor een rol die u nu profileert, niet wordt beëindigd.
+* Zorg ervoor dat u een release-build profileert en start zonder fouten opsporen.
+* Als de optie koppelen/loskoppelen niet is ingeschakeld in het menu Profiler, voert u de wizard prestaties uit.
+* Gebruik de compute emulator-gebruikers interface om de status van uw toepassing weer te geven. 
+* Als u problemen ondervindt bij het starten van toepassingen in de emulator of het koppelen van de Profiler, sluit u de compute-emulator af en start u deze opnieuw. Als het probleem hiermee niet is opgelost, probeert u opnieuw op te starten. Dit probleem kan optreden als u de compute-emulator gebruikt voor het onderbreken en verwijderen van implementaties die worden uitgevoerd.
+* Als u een van de profilerings opdrachten van de opdracht regel hebt gebruikt, met name de algemene instellingen, moet u ervoor zorgen dat VSPerfClrEnv/globaloff is aangeroepen en dat VsPerfMon. exe is afgesloten.
+* Als bij de steek proef het bericht ' PRF0025: er zijn geen gegevens verzameld, ' wordt weer gegeven, controleert u of het proces dat u hebt gekoppeld, een CPU-activiteit heeft. Toepassingen die geen reken werkzaamheden uitvoeren, produceren mogelijk geen steekproef gegevens.  Het is ook mogelijk dat het proces is afgesloten voordat er een steek proef is uitgevoerd. Controleer of de uitvoerings methode voor een rol waarvoor u een profile ring maakt, niet wordt beëindigd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Het instrumenteren van Azure-binaries in de emulator wordt niet ondersteund in de Visual Studio-profiler, maar als u geheugentoewijzing wilt testen, u die optie kiezen bij profilering. U ook kiezen voor gelijktijdigheidsprofilering, waarmee u bepalen of threads tijd verspillen aan het concurreren om vergrendelingen of niveauinteractieprofilering, waardoor u prestatieproblemen opsporen bij interactie tussen lagen van een toepassing, de meeste vaak tussen de gegevenslaag en een werkrol.  U de databasequery's bekijken die uw app genereert en de profileringsgegevens gebruiken om uw gebruik van de database te verbeteren. Zie de [blogpost Walkthrough: Met behulp van de Tier Interaction Profiler in Visual Studio Team System 2010][3]voor informatie over het profileren van niveauinteractie.
+Het instrumenteren van Azure binaire bestanden in de emulator wordt niet ondersteund in de Visual Studio Profiler, maar als u geheugen toewijzing wilt testen, kunt u die optie kiezen tijdens het profileren. U kunt ook gelijktijdigheids profilering kiezen, waarmee u kunt bepalen of de duur van threads wordt verspild op vergren delingen of laag interactie Profiler, waarmee u prestatie problemen kunt volgen wanneer interactie tussen lagen van een toepassing, het vaakst tussen de gegevenslaag en een werk rollen.  U kunt de database query's weer geven die door uw app worden gegenereerd en gebruikmaken van de profilerings gegevens voor het verbeteren van het gebruik van de data base. Zie het blog bericht [scenario: using the tier interactie Profiler in Visual Studio Team System 2010][3]voor informatie over de profile ring van lagen.
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
